@@ -94,7 +94,7 @@ SELECT [value] FROM OPENJSON(
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Copie ADF":::
 
 
-Pour le récepteur de l’activité de copie SqlJsonToBlobText, nous choisissons « Texte délimité » et pointons vers un dossier spécifique dans le Stockage Blob Azure avec un nom de fichier unique généré de manière dynamique (par exemple, « @concat(pipeline().RunId,'.json »).
+Pour le récepteur de l’activité de copie SqlJsonToBlobText, nous choisissons « Texte délimité » et pointons vers un dossier spécifique dans le Stockage Blob Azure avec un nom de fichier unique généré de manière dynamique (par exemple, « @concat(pipeline().RunId,'.json') »).
 Étant donné que notre fichier texte n’est pas vraiment « délimité » et que nous ne voulons pas qu’il soit analysé dans des colonnes distinctes à l’aide des virgules et que nous souhaitons conserver les guillemets doubles ("), nous définissons « Délimiteur de colonne » sur un onglet ("\t"), ou un autre caractère qui ne se trouve pas dans les données, et « Guillemets » en « Sans guillemets ».
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Capture d’écran mettant en évidence les paramètres Délimiteur de colonne et Guillemets.":::
