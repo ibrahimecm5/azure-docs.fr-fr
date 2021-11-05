@@ -1,102 +1,235 @@
 ---
 title: Machine Learning avec Azure Arc (préversion)
-description: Configurer un cluster Kubernetes avec Azure Arc pour entraîner des modèles Machine Learning dans Azure Machine Learning
+description: Configurer un cluster Kubernetes avec Azure Arc pour entraîner et alimenter des modèles Machine Learning dans Azure Machine Learning
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
 ms.subservice: mlops
-ms.date: 06/18/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.openlocfilehash: c3aea87e32aef24bfc17637720e81d30da0d30eb
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5e9d95f863e5107a71118da9fdc9b0c5329acbb0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713275"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084656"
 ---
 # <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Configurer le machine learning avec Azure Arc (préversion)
 
-Découvrez comment configurer le machine learning avec Azure Arc pour l’entraînement.
+Découvrez comment configurer le machine learning avec Azure Arc pour l’entraînement et l’alimentation.
 
 ## <a name="what-is-azure-arc-enabled-machine-learning"></a>Qu’est-ce que le machine learning avec Azure Arc ?
 
 Azure Arc permet d’exécuter des services Azure dans n’importe quel environnement Kubernetes, qu’il soit local, multicloud ou situé à la périphérie.
 
-Le machine learning avec Azure Arc vous permet de configurer et d’utiliser des clusters Kubernetes avec Azure Arc pour entraîner et gérer des modèles Machine Learning dans Azure Machine Learning.
-
-Le machine learning avec Azure Arc prend en charge les scénarios d’entraînement suivants :
-
-* Entraîner des modèles avec CLI (v2)
-  * Entraînement distribué
-  * Balayage d’hyperparamètres
-* Apprentissage de modèles avec le kit SDK Python Azure Machine Learning
-  * Optimisation des hyperparamètres
-* Création et utilisation de pipelines Machine Learning
-* Apprentissage d’un modèle local avec un serveur proxy sortant
-* Apprentissage d’un modèle local avec un magasin de données NFS
+Le machine learning avec Azure Arc vous permet de configurer et d’utiliser des clusters Kubernetes avec Azure Arc pour entraîner; alimenter et gérer des modèles Machine Learning dans Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Prérequis
 
 * Un abonnement Azure. Si vous n’en possédez pas, [créez un compte gratuit](https://azure.microsoft.com/free) avant de commencer.
 * Cluster Kubernetes avec Azure Arc. Pour plus d’informations, consultez [Guide de démarrage de la connexion d’un cluster Kubernetes existant à Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md).
+
+    > [!NOTE]
+    > Pour les clusters Azure Kubernetes service (AKS), la connexion à Azure arc est **facultative**.
+
 * Exécutez les [Prérequis des extensions de cluster Kubernetes avec Azure Arc](../azure-arc/kubernetes/extensions.md#prerequisites).
   * Azure CLI version 2.24.0 ou ultérieure
-  * Extension k8s-extension d’Azure CLI version 0.4.3 ou ultérieure
+  * Extension k8s-extension d’Azure CLI version 1.0.0 ou ultérieure
+* Répondre à la [Configuration requise du réseau Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)
+
+    > [!IMPORTANT]
+    > Les clusters qui s’exécutent derrière un serveur proxy ou un pare-feu sortant ont besoin de configurations réseau supplémentaires. Pour plus d’informations, consultez [Configurer le trafic du réseau entrant et sortant](how-to-access-azureml-behind-firewall.md#arc-kubernetes).
+
 * Un espace de travail Azure Machine Learning. [Créez un espace de travail](how-to-manage-workspace.md?tabs=python) avant de commencer si vous n’en possédez pas.
   * Kit SDK Python Azure Machine Learning version 1.30 ou ultérieure
+* Connectez-vous à Azure via Azure CLI
 
-## <a name="deploy-azure-machine-learning-extension"></a>Déploiement de l’extension Azure Machine Learning
-
-Kubernetes avec Azure Arc a une fonctionnalité d’extension de cluster permettant d’installer divers agents, notamment des définitions Azure Policy, la supervision, le machine learning, etc. Azure Machine Learning impose d’utiliser l’extension de cluster *Microsoft.AzureML.Kubernetes* pour déployer l’agent Azure Machine Learning sur le cluster Kubernetes. Une fois l’extension Azure Machine Learning installée, vous pouvez attacher le cluster à un espace de travail Azure Machine Learning et l’utiliser pour l’apprentissage.
-
-Utilisez l’extension Azure CLI `k8s-extension` pour déployer l’extension Azure Machine Learning sur votre cluster Kubernetes avec Azure Arc.
-
-1. Connexion à Azure
-    
     ```azurecli
     az login
     az account set --subscription <your-subscription-id>
-    ```
+    ```  
 
-1. Déploiement de l’extension Azure Machine Learning
+* **Azure RedHat OpenShift service (ARO) et OpenShift Container Platform (OCP) uniquement**
+
+    * Un cluster Kubernetes ARO ou OCP est opérationnel. Pour plus d’informations, consultez [Créer un cluster ARO Kubernetes](/azure/openshift/tutorial-create-cluster) et [Créer un cluster OCP Kubernetes](https://docs.openshift.com/container-platform/4.6/installing/installing_platform_agnostic/installing-platform-agnostic.html)
+    * Accordez un accès privilégié aux comptes de service AzureML.
+
+        Exécutez `oc edit scc privileged` et ajoutez les éléments suivants 
+
+        * ```system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa```
+        * ```system:serviceaccount:azureml:{EXTENSION NAME}-kube-state-metrics``` **(Remarque :** ```{EXTENSION NAME}```**ici doit correspondre au nom d’extension utilisé à** ```az k8s-extension create --name``` **l’étape)**
+        * ```system:serviceaccount:azureml:cluster-status-reporter```
+        * ```system:serviceaccount:azureml:prom-admission```
+        * ```system:serviceaccount:azureml:default```
+        * ```system:serviceaccount:azureml:prom-operator```
+        * ```system:serviceaccount:azureml:csi-blob-node-sa```
+        * ```system:serviceaccount:azureml:csi-blob-controller-sa```
+        * ```system:serviceaccount:azureml:load-amlarc-selinux-policy-sa```
+        * ```system:serviceaccount:azureml:azureml-fe```
+        * ```system:serviceaccount:azureml:prom-prometheus```
+
+## <a name="deploy-azure-machine-learning-extension"></a>Déploiement de l’extension Azure Machine Learning
+
+Kubernetes avec Azure Arc a une fonctionnalité d’extension de cluster permettant d’installer divers agents, notamment des définitions Azure Policy, la supervision, le machine learning, etc. Azure Machine Learning impose d’utiliser l’extension de cluster *Microsoft.AzureML.Kubernetes* pour déployer l’agent Azure Machine Learning sur le cluster Kubernetes. Une fois l’extension Azure Machine Learning installée, vous pouvez attacher le cluster à un espace de travail Azure Machine Learning et l’utiliser pour les scénarios suivants :
+
+* [Entrainement](#training)
+* [Inférence en temps réel uniquement](#inferencing)
+* [Apprentissage et inférence](#training-inferencing)
+
+> [!TIP]
+> Les clusters d’apprentissage prennent également en charge l’inférence par lot dans le cadre des pipelines Azure Machine Learning.
+
+Utilisez la commande [`create`](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) de l’extension Azure CLI `k8s-extension` pour déployer l’extension Azure Machine Learning sur votre cluster Kubernetes avec Azure Arc.
+
+> [!IMPORTANT]
+> Affectez au paramètre `--cluster-type` la valeur `managedCluster` pour déployer l’extension d’Azure Machine Learning sur les clusters AKS.
+
+La liste suivante répertorie les paramètres de configuration disponibles à utiliser pour différents scénarios de déploiement d’extension d’Azure Machine Learning.
+
+Vous pouvez utiliser ```--config``` ou ```--config-protected``` pour spécifier la liste des paires clé-valeur pour les configurations de déploiement d’Azure Machine Learning.
+
+> [!TIP]
+> Affectez au paramètre `openshift` la valeur `True` pour déployer l’extension d’Azure Machine Learning sur les clusters Kubernetes ARO et OCP.
+
+| Nom de la clé du paramètre de configuration  | Description  | Entrainement | Inférence | Apprentissage et inférence |
+|---|---|---|---|---|
+| ```enableTraining``` | Par défaut, `False`. Définissez-le sur `True` pour créer une instance d’extension servant à l’apprentissage des modèles Machine Learning. |  **&check;** | N/A |  **&check;** |
+|```logAnalyticsWS```  | Par défaut, `False`. L’extension Azure Machine Learning s’intègre à l’espace de travail Azure Log Analytics. Définissez-le sur `True` pour fournir des fonctionnalités de visionnage et d’analyse des journaux dans l’espace de travail Log Analytics. Des coûts associés à l’espace de travail Log Analytics peuvent s’appliquer. | Facultatif | Facultatif | Facultatif |
+|```installNvidiaDevicePlugin```  | Par défaut, `True`. Le plug-in d’appareil NVIDIA est requis pour l’apprentissage et l’inférence sur du matériel GPU NVIDIA. L’extension Azure Machine Learning installe ce plug-in par défaut lors de la création de l’instance Azure Machine Learning, que le cluster Kubernetes dispose ou non de matériel GPU. Définissez-le sur `False` si vous ne prévoyez pas d’utiliser de GPU ou si le plug-in d’appareil NVIDIA est déjà installé.  | Facultatif |Facultatif | Facultatif |
+| ```enableInference``` | Par défaut, `False`.  Définissez-le sur `True` pour créer une instance d’extension servant à l’inférence des modèles Machine Learning. | N/A | **&check;** |  **&check;** |
+| ```allowInsecureConnections``` | Par défaut, `False`. Affectez à la valeur `True` pour le déploiement d’extension d’Azure Machine Learning avec prise en charge du point de terminaison HTTP pour l’inférence, lorsque ```sslCertPemFile``` et ne ```sslKeyPemFile``` sont pas fournis. | N/A | Facultatif |  Facultatif |
+| ```sslCertPemFile``` & ```ssKeyPMFile``` | Chemin d’accès au fichier de clé et au certificat SSL (encodé en PEM). Requis pour le déploiement de l’extension AzureML avec prise en charge du point de terminaison HTTPS pour l’inférence. | N/A | Facultatif |  Facultatif |
+| ```privateEndpointNodeport``` | Par défaut, `False`.  Affectez à la valeur `True` pour le déploiement de l'extension Azure Machine Learning avec la prise en charge des terminaux privés d'inférence de Machine Learning à l'aide de NodePort. | N/A | Facultatif |  Facultatif |
+| ```privateEndpointILB``` | Par défaut, `False`.  Affectez à la valeur `True` pour le déploiement de l'extension Azure Machine Learning avec la prise en charge des terminaux privés d'inférence de Machine Learning à l'aide de l’équilibreur de charge interne serviceType | N/A| Facultatif |  Facultatif |
+| ```inferenceLoadBalancerHA``` | Par défaut, `True`. Par défaut, l’extension d’Azure Machine Learning déploie plusieurs réplicas de contrôleur d’entrée pour la haute disponibilité. Affectez la valeur `False` si vous avez des ressources de cluster limitées ou si vous souhaitez déployer l’extension d’Azure Machine Learning à des fins de développement et de test uniquement. Si vous n’utilisez pas un équilibreur de charge à haute disponibilité, vous ne déployez qu’un seul réplica de contrôleur d’entrée. | N/A | Facultatif |  Facultatif |
+|```openshift``` | Par défaut, `False`. Affectez la valeur `True` pour le déploiement de l’extension Azure Machine Learning sur le cluster ARO ou OCP. Le processus de déploiement compile automatiquement un package de stratégie et un package de stratégie de chargement sur chaque nœud afin que l’opération des services Azure Machine Learning puisse fonctionner correctement. | Facultatif | Facultatif |  Facultatif |
+
+> [!WARNING]
+> Si vous réinstallez le plug-in d’appareil NVIDIA, alors qu’il est déjà installé dans votre cluster, il peut se produire une erreur d’installation de l’extension. Affectez la valeur `installNvidiaDevicePlugin` à `False` pour empêcher les erreurs de déploiement.
+
+### <a name="deploy-extension-for-training-workloads"></a>Déployer l’extension pour les charges de travail d’apprentissage <a id="training"></a>
+
+Utilisez la commande Azure CLI suivante pour déployer l’extension Azure Machine Learning et activer les charges de travail d’apprentissage sur votre cluster Kubernetes :
+
+```azurecli
+az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --config enableTraining=True --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group> --scope cluster
+```
+
+### <a name="deploy-extension-for-real-time-inferencing-workloads"></a>Déployer une extension pour les charges de travail d’inférence en temps réel <a id="inferencing"></a>
+
+En fonction de la configuration de votre réseau, de la variante de distribution Kubernetes et de l’emplacement où votre cluster Kubernetes est hébergé (en local ou dans le cloud), choisissez l’une des options suivantes pour déployer l’extension Azure Machine Learning et activer les charges de travail d’inférence sur votre cluster Kubernetes.
+
+#### <a name="public-endpoints-support-with-public-load-balancer"></a>Prise en charge des points de terminaison publics avec l’équilibreur de charge public
+
+* **HTTPS**
 
     ```azurecli
-    az k8s-extension create --name amlarc-compute --extension-type Microsoft.AzureML.Kubernetes --configuration-settings enableTraining=True  --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group> --scope cluster
+    az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file> --resource-group <resource-group> --scope cluster
     ```
 
-    >[!IMPORTANT]
-    > Pour activer l’apprentissage sur le cluster avec Azure Arc, vous devez définir `enableTraining` sur **True**. Cette commande crée une ressource Azure Service Bus et une ressource Azure Relay sous le même groupe de ressources que le cluster Arc. Ces ressources servent à communiquer avec le cluster. Toute modification apportée à ces ressources a pour effet d’arrêter les clusters attachés utilisés comme cibles de calcul d’apprentissage.
-
-    Vous pouvez également configurer les paramètres suivants lorsque vous déployez l’extension Azure Machine Learning pour l’apprentissage de modèles :
-
-    |Nom de la clé du paramètre de configuration  |Description  |
-    |--|--|
-    | ```enableTraining``` | Par défaut, `False`. Définissez-le sur `True` pour créer une instance d’extension servant à l’apprentissage des modèles Machine Learning.  |
-    |```logAnalyticsWS```  | Par défaut, `False`. L’extension Azure Machine Learning s’intègre à l’espace de travail Azure Log Analytics. Définissez-le sur `True` pour fournir des fonctionnalités de visionnage et d’analyse des journaux dans l’espace de travail Log Analytics. Des coûts associés à l’espace de travail Log Analytics peuvent s’appliquer.   |
-    |```installNvidiaDevicePlugin```  | Par défaut, `True`. Le plug-in d’appareil NVIDIA est requis pour l’apprentissage sur du matériel GPU NVIDIA. L’extension Azure Machine Learning installe ce plug-in par défaut lors de la création de l’instance Azure Machine Learning, que le cluster Kubernetes dispose ou non de matériel GPU. Définissez-le sur `False` si vous ne prévoyez pas d’utiliser de GPU pour l’apprentissage ou si le plug-in d’appareil NVIDIA est déjà installé.  |
-    |```installBlobfuseSysctl```  | Par défaut, `True` si « enableTraining=True ». Blobfuse 1.3.7 est requis pour l’apprentissage. Azure Machine Learning installe Blobfuse par défaut lors de la création de l’instance d’extension. Définissez ce paramètre de configuration sur `False` si Blobfuse 1.37 est déjà installé sur votre cluster Kubernetes.   |
-    |```installBlobfuseFlexvol```  | Par défaut, `True` si « enableTraining=True ». Blobfuse Flexvolume est requis pour l’apprentissage. Azure Machine Learning installe Blobfuse Flexvolume par défaut sur le chemin par défaut. Définissez ce paramètre de configuration sur `False` si Blobfuse Flexvolume est déjà installé sur votre cluster Kubernetes.   |
-    |```volumePluginDir```  | Chemin d’ordinateur hôte pour l’installation de Blobfuse Flexvolume. Applicable uniquement si « enableTraining=True ». Par défaut, Azure Machine Learning installe Blobfuse Flexvolume sous le chemin par défaut */etc/kubernetes/volumeplugins*. Spécifiez un emplacement d’installation personnalisé en indiquant ce paramètre de configuration.   |
+* **HTTP**
 
     > [!WARNING]
-    > Si vous réinstallez le plug-in d’appareil NVIDIA, Blobfuse et Blobfuse Flexvolume alors qu’ils sont déjà installés dans votre cluster, il peut se produire une erreur d’installation de l’extension. Définissez `installNvidiaDevicePlugin`, `installBlobfuseSysctl` et `installBlobfuseFlexvol` sur `False` pour éviter toute erreur d’installation.
-
-1. Vérifiez le déploiement de votre extension AzureML.
+    > La prise en charge des points de terminaison HTTP publics avec l’équilibreur de charge public est la solution la moins sécurisée pour déployer l’extension Azure Machine Learning pour les scénarios d’inférence en temps réel et n’est donc **pas** recommandée.
 
     ```azurecli
-    az k8s-extension show --name amlarc-compute --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group>
+    az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name>  --configuration-settings enableInference=True allowInsecureConnections=True --resource-group <resource-group> --scope cluster
     ```
 
-    Dans la réponse, recherchez `"extensionType": "amlarc-compute"` et `"installState": "Installed"`. Il est à noter qu’elle peut afficher `"installState": "Pending"` les premières minutes.
+#### <a name="private-endpoints-support-with-internal-load-balancer"></a>Prise en charge des points de terminaison privés avec l’équilibreur de charge interne
 
-    Lorsque `installState` indique **Installé**, exécutez la commande suivante sur votre ordinateur en faisant pointer le fichier kubeconfig sur votre cluster pour vérifier que tous les pods situés sous l’espace de noms *azureml* se trouvent à l’état *En cours d’exécution* :
+* **HTTPS**
 
-   ```bash
-    kubectl get pods -n azureml
+    ```azurecli
+    az k8s-extension create --name amlarc-compute --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True privateEndpointILB=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file> --resource-group <resource-group> --scope cluster
+    ```
+
+* **HTTP**
+
+   ```azurecli
+   az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True privateEndpointILB=True allowInsecureConnections=True --resource-group <resource-group> --scope cluster
    ```
 
-## <a name="attach-arc-cluster-studio"></a>Attachement d’un cluster Arc (studio)
+#### <a name="endpoints-support-with-nodeport"></a>Prise en charge des points de terminaison avec NodePort
+
+L’utilisation d’un NodePort vous donne la possibilité de configurer votre propre solution d’équilibrage de charge, de configurer des environnements qui ne sont pas entièrement pris en charge par Kubernetes, ou même d’exposer directement une ou plusieurs adresses IP de nœuds.
+
+Lorsque vous procédez à un déploiement avec le service NodePort, l’URL de notation (ou l’URL Swagger) est remplacée par l’une des adresses IP de nœud (par exemple ```http://<NodeIP><NodePort>/<scoring_path>```) et reste inchangée même si le nœud n’est pas disponible. Mais vous pouvez la remplacer par n’importe quelle autre adresse IP de nœud.
+
+* **HTTPS**
+
+    ```azurecli
+    az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group> --scope cluster --config enableInference=True privateEndpointNodeport=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file>
+    ```
+
+* **HTTP**
+
+   ```azurecli
+   az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableInference=True privateEndpointNodeport=True allowInsecureConnections=Ture --resource-group <resource-group> --scope cluster
+   ```
+
+### <a name="deploy-extension-for-training-and-inferencing-workloads"></a>Déployer l’extension pour les charges de travail d’apprentissage et d’inférence <a id="training-inferencing"></a>
+
+Utilisez la commande Azure CLI suivante pour déployer l’extension Azure Machine Learning et activer l’inférence en temps réel du cluster, l’inférence de lots et les charges de travail de formation sur votre cluster Kubernetes.
+
+```azurecli
+az k8s-extension create --name arcml-extension --extension-type Microsoft.AzureML.Kubernetes --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --config enableTraining=True enableInference=True --config-protected sslCertPemFile=<path-to-the-SSL-cert-PEM-ile> sslKeyPemFile=<path-to-the-SSL-key-PEM-file>--resource-group <resource-group> --scope cluster
+```
+
+## <a name="resources-created-during-deployment"></a>Ressources créées pendant le déploiement
+
+Une fois l’extension Azure Machine Learning déployée, les ressources suivantes sont créées dans Azure, ainsi que dans votre cluster Kubernetes, en fonction des charges de travail que vous exécutez sur votre cluster.
+
+|Nom de la ressource  |Type de ressource |Entrainement |Inférence |Apprentissage et inférence|
+|---|---|---|---|---|
+|Azure ServiceBus|Ressource Azure|**&check;**|**&check;**|**&check;**|
+|Azure Relay|Ressource Azure|**&check;**|**&check;**|**&check;**|
+|{EXTENSION-NAME}|Ressource Azure|**&check;**|**&check;**|**&check;**|
+|aml-operator|Déploiement Kubernetes|**&check;**|N/A|**&check;**|
+|{EXTENSION-NAME}-kube-state-metrics|Déploiement Kubernetes|**&check;**|**&check;**|**&check;**|
+|{EXTENSION-NAME}-prometheus-operator|Déploiement Kubernetes|**&check;**|**&check;**|**&check;**|
+|amlarc-identity-controller|Déploiement Kubernetes|N/A|**&check;**|**&check;**|
+|amlarc-identity-proxy|Déploiement Kubernetes|N/A|**&check;**|**&check;**|
+|azureml-fe|Déploiement Kubernetes|N/A|**&check;**|**&check;**|
+|inference-operator-controller-manager|Déploiement Kubernetes|N/A|**&check;**|**&check;**|
+|metrics-controller-manager|Déploiement Kubernetes|**&check;**|**&check;**|**&check;**|
+|relayserver|Déploiement Kubernetes|**&check;**|**&check;**|**&check;**|
+|cluster-status-reporter|Déploiement Kubernetes|**&check;**|**&check;**|**&check;**|
+|nfd-master|Déploiement Kubernetes|**&check;**|N/A|**&check;**|
+|passerelle|Déploiement Kubernetes|**&check;**|**&check;**|**&check;**|
+|csi-blob-controller|Déploiement Kubernetes|**&check;**|N/A|**&check;**|
+|csi-blob-node|Daemonset Kubernetes|**&check;**|N/A|**&check;**|
+|fluent-bit|Daemonset Kubernetes|**&check;**|**&check;**|**&check;**|
+|k8s-host-device-plugin-daemonset|Daemonset Kubernetes|**&check;**|**&check;**|**&check;**|
+|nfd-worker|Daemonset Kubernetes|**&check;**|N/A|**&check;**|
+|prometheus-prom-prometheus|Statefulset Kubernetes|**&check;**|**&check;**|**&check;**|
+|frameworkcontroller|Statefulset Kubernetes|**&check;**|N/A|**&check;**|
+
+> [!IMPORTANT]
+> Les ressources Azure ServiceBus et Azure Relay se trouvent sous le même groupe de ressources que la ressource de cluster Arc. Ces ressources sont utilisées pour communiquer avec le cluster Kubernetes et leur modification va rompre les cibles de calcul attachées.
+
+> [!NOTE]
+> **{EXTENSION-NAME}** est le nom d’extension spécifié par la ```az k8s-extension create --name``` commande Azure CLI.
+
+## <a name="verify-your-azureml-extension-deployment"></a>Vérifiez le déploiement de votre extension AzureML.
+
+```azurecli
+az k8s-extension show --name arcml-extension --cluster-type connectedClusters --cluster-name <your-connected-cluster-name> --resource-group <resource-group>
+```
+
+Dans la réponse, recherchez `"extensionType": "arcml-extension"` et `"installState": "Installed"`. Il est à noter qu’elle peut afficher `"installState": "Pending"` les premières minutes.
+
+Lorsque `installState` indique **Installé**, exécutez la commande suivante sur votre ordinateur en faisant pointer le fichier kubeconfig sur votre cluster pour vérifier que tous les pods situés sous l’espace de noms *azureml* se trouvent à l’état *En cours d’exécution* :
+
+```bash
+kubectl get pods -n azureml
+```
+
+## <a name="attach-arc-cluster"></a>Attacher un cluster Arc
+
+### <a name="studio"></a>[Studio](#tab/studio)
 
 En attachant un cluster Kubernetes avec Azure Arc vous le rendez disponible dans votre espace de travail pour l’entraînement.
 
@@ -109,11 +242,9 @@ En attachant un cluster Kubernetes avec Azure Arc vous le rendez disponible dans
 
 1. Entrez un nom de calcul et sélectionnez votre cluster Kubernetes avec Azure Arc dans la liste déroulante.
 
-   ![Configuration du cluster Kubernetes](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster.png)
+   **(Facultatif)** Assigner l’identité managée attribuée par le système ou par l’utilisateur. Les identités managées permettent aux développeurs de ne plus avoir à gérer les informations d'identification. Pour plus d’informations, consultez [Vue d’ensemble des identités managées](/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. (Facultatif) Pour les scénarios avancés, parcourez et chargez un fichier de configuration.
-
-   ![Chargement d’un fichier de configuration](./media/how-to-attach-arc-kubernetes/upload-configuration-file.png)
+   ![Configuration du cluster Kubernetes](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster-2.png)
 
 1. Sélectionnez **Attacher**.
 
@@ -121,194 +252,88 @@ En attachant un cluster Kubernetes avec Azure Arc vous le rendez disponible dans
 
     ![Provisionner les ressources](./media/how-to-attach-arc-kubernetes/provision-resources.png)
 
-### <a name="advanced-attach-scenario"></a>Scénario d’attachement avancé
+### <a name="python-sdk"></a>[Kit de développement logiciel (SDK) Python](#tab/sdk)
 
-Utilisez un fichier de configuration JSON pour configurer des fonctionnalités de cible de calcul avancées sur des clusters Kubernetes avec Azure Arc.
+Vous pouvez utiliser le kit de développement logiciel (SDK) Python Azure Machine Learning pour attacher des clusters Kubernetes avec Azure Arc en tant que cibles de calcul à l’aide de la méthode [`attach_configuration`](/python/api/azureml-core/azureml.core.compute.kubernetescompute.kubernetescompute?view=azure-ml-py&preserve-view=true).
 
-Voici un exemple de fichier de configuration :
+Le code Python suivant montre comment attacher un cluster Kubernetes avec Azure Arc et l’utiliser comme cible de calcul avec l’identité managée activée.
 
-```json
-{
-   "namespace": "amlarc-testing",
-   "defaultInstanceType": "gpu_instance",
-   "instanceTypes": {
-      "gpu_instance": {
-         "nodeSelector": {
-            "accelerator": "nvidia-tesla-k80"
-         },
-         "resources": {
-            "requests": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            },
-            "limits": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            }
-         }
-      },
-      "big_cpu_sku": {
-         "nodeSelector": {
-            "VMSizes": "VM-64vCPU-256GB"
-         },
-         "resources": {
-            "requests": {
-               "cpu": "4",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "0"
-            },
-            "limits": {
-               "cpu": "4",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "0"
-            }
-         }
-      }
-   }
-}
-```
-
-Voici les propriétés de cible de calcul personnalisées qui peuvent être configurées avec un fichier de configuration :
-
-* `namespace` : par défaut, l’espace de noms `default`. Il s’agit de l’espace de noms dans lequel les travaux et les pods s’exécutent. Il est à noter que, si l’espace de noms défini est différent de l’espace de noms par défaut, il doit déjà exister. La création d’espaces de noms requiert des privilèges d’administrateur de cluster.
-
-* `defaultInstanceType` : type d’instance sur lequel les travaux d’apprentissage s’exécutent par défaut. Obligatoire si la propriété `instanceTypes` est spécifiée. La valeur de `defaultInstanceType` doit correspondre à l’une des valeurs définies dans la propriété `instanceTypes`.
-
-    > [!IMPORTANT]
-    > Actuellement, seuls les envois de tâches utilisant le nom de cible de calcul sont pris en charge. Par conséquent, la configuration est toujours définie par défaut sur defaultInstanceType.
-
-* `instanceTypes` : liste des types d’instances utilisés pour les travaux d’apprentissage. Chaque type d’instance est défini par les propriétés `nodeSelector` et `resources requests/limits` :
-
-  * `nodeSelector` : une ou plusieurs étiquettes de nœud utilisées pour identifier des nœuds dans un cluster. Des privilèges d’administrateur de cluster sont nécessaires pour créer les étiquettes des nœuds de cluster. Si cette propriété est spécifiée, les travaux d’apprentissage sont planifiés pour s’exécuter sur les nœuds qui possèdent les étiquettes spécifiées. Vous pouvez utiliser `nodeSelector` pour cibler un sous-ensemble de nœuds dans le placement de la charge de travail d’apprentissage. Cela peut être utile dans les scénarios où un cluster possède différentes références SKU ou différents types de nœuds, tels que des nœuds processeur et GPU. Par exemple, vous pouvez créer des étiquettes pour tous les nœuds GPU et définir un `instanceType` pour le pool de nœuds GPU. Vous ciblez ainsi le pool de nœuds GPU exclusivement lors de la planification des travaux d’apprentissage. 
-
-  * `resources requests/limits` : spécifie les demandes de ressources et limite l’exécution d’un pod de travail d’apprentissage. Par défaut, 1 processeur et 4 Go de mémoire.
-
-    >[!IMPORTANT]
-    > Par défaut, une ressource de cluster est déployée avec un processeur et 4 Go de mémoire. Si un cluster est configuré avec moins de ressources, l’exécution du travail échoue. Pour garantir la réussite de l’exécution du travail, nous vous recommandons de toujours spécifier les demandes/limites des ressources en fonction des besoins du travail d’apprentissage. Voici un exemple de fichier de configuration par défaut :
-    >
-    > ```json
-    > {
-    >    "namespace": "default",
-    >    "defaultInstanceType": "defaultInstanceType",
-    >    "instanceTypes": {
-    >       "defaultInstanceType": {
-    >          "nodeSelector": null,
-    >          "resources": {
-    >             "requests": {
-    >                "cpu": "1",
-    >                "memory": "4Gi",
-    >                "nvidia.com/gpu": "0"
-    >             },
-    >             "limits": {
-    >                "cpu": "1",
-    >                "memory": "4Gi",
-    >                "nvidia.com/gpu": "0"
-    >             }
-    >          }
-    >       }
-    >    }
-    > }
-    > ```
-
-## <a name="attach-arc-cluster-python-sdk"></a>Attachement d’un cluster Arc (kit SDK Python)
-
-Le code Python suivant montre comment attacher un cluster Kubernetes avec Azure Arc et l’utiliser comme cible de calcul pour l’entraînement :
+Les identités managées permettent aux développeurs de ne plus avoir à gérer les informations d'identification. Pour plus d’informations, consultez [Vue d’ensemble des identités managées](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```python
 from azureml.core.compute import KubernetesCompute
 from azureml.core.compute import ComputeTarget
+from azureml.core.workspace import Workspace
 import os
 
 ws = Workspace.from_config()
 
-# choose a name for your Azure Arc-enabled Kubernetes compute
-amlarc_compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "amlarc-compute")
+# Specify a name for your Kubernetes compute
+amlarc_compute_name = "<COMPUTE_CLUSTER_NAME>"
 
-# resource ID for your Azure Arc-enabled Kubernetes cluster
-resource_id = "/subscriptions/123/resourceGroups/rg/providers/Microsoft.Kubernetes/connectedClusters/amlarc-cluster"
+# resource ID for the Kubernetes cluster and user-managed identity
+resource_id = "/subscriptions/<sub ID>/resourceGroups/<RG>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>"
+
+user_assigned_identity_resouce_id = ['subscriptions/<sub ID>/resourceGroups/<RG>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity name>']
+
+ns = "default" 
 
 if amlarc_compute_name in ws.compute_targets:
     amlarc_compute = ws.compute_targets[amlarc_compute_name]
     if amlarc_compute and type(amlarc_compute) is KubernetesCompute:
         print("found compute target: " + amlarc_compute_name)
 else:
-    print("creating new compute target...")
-
-    amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id) 
-    amlarc_compute = ComputeTarget.attach(ws, amlarc_compute_name, amlarc_attach_configuration)
-
- 
-    amlarc_compute.wait_for_completion(show_output=True)
-    
-     # For a more detailed view of current KubernetesCompute status, use get_status()
-    print(amlarc_compute.get_status().serialize())
-```
-
-### <a name="advanced-attach-scenario"></a>Scénario d’attachement avancé
-
-Le code suivant montre comment configurer des propriétés de cible de calcul avancées, telles que l’espace de noms, nodeSelector et les demandes/limites de ressources :
-
-```python
-from azureml.core.compute import KubernetesCompute
-from azureml.core.compute import ComputeTarget
-import os
-
-ws = Workspace.from_config()
-
-# choose a name for your Azure Arc-enabled Kubernetes compute
-amlarc_compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "amlarc-compute")
-
-# resource ID for your Azure Arc-enabled Kubernetes cluster
-resource_id = "/subscriptions/123/resourceGroups/rg/providers/Microsoft.Kubernetes/connectedClusters/amlarc-cluster"
-
-if amlarc_compute_name in ws.compute_targets:
-   amlarc_compute = ws.compute_targets[amlarc_compute_name]
-   if amlarc_compute and type(amlarc_compute) is KubernetesCompute:
-      print("found compute target: " + amlarc_compute_name)
-else:
    print("creating new compute target...")
-   ns = "amlarc-testing"
-    
-   instance_types = {
-      "gpu_instance": {
-         "nodeSelector": {
-            "accelerator": "nvidia-tesla-k80"
-         },
-         "resources": {
-            "requests": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            },
-            "limits": {
-               "cpu": "2",
-               "memory": "16Gi",
-               "nvidia.com/gpu": "1"
-            }
-        }
-      },
-      "big_cpu_sku": {
-         "nodeSelector": {
-            "VMSizes": "VM-64vCPU-256GB"
-         }
-      }
-   }
 
-   amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id = resource_id, namespace = ns, default_instance_type="gpu_instance", instance_types = instance_types)
- 
-   amlarc_compute = ComputeTarget.attach(ws, amlarc_compute_name, amlarc_attach_configuration)
 
- 
-   amlarc_compute.wait_for_completion(show_output=True)
-    
-   # For a more detailed view of current KubernetesCompute status, use get_status()
-   print(amlarc_compute.get_status().serialize())
+# assign user-assigned managed identity
+amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id = resource_id, namespace = ns,  identity_type ='UserAssigned',identity_ids = user_assigned_identity_resouce_id) 
+
+# assign system-assigned managed identity
+# amlarc_attach_configuration = KubernetesCompute.attach_configuration(resource_id = resource_id, namespace = ns,  identity_type ='SystemAssigned') 
+
+amlarc_compute = ComputeTarget.attach(ws, amlarc_compute_name, amlarc_attach_configuration)
+amlarc_compute.wait_for_completion(show_output=True)
+
+# get detailed compute description containing managed identity principle ID, used for permission access. 
+print(amlarc_compute.get_status().serialize())
 ```
+
+Utilisez le `identity_type` paramètre pour activer `SystemAssigned` ou `UserAssigned` gérer les identités.
+
+### <a name="cli"></a>[INTERFACE DE LIGNE DE COMMANDE](#tab/cli)
+
+Vous pouvez attacher un cluster Kubernetes AKS ou Azure Arc activé à l’aide de l’interface de commande Azure Machine Learning 2.0 (version préliminaire).
+
+Utilisez la commande CLI Azure Machine Learning [`attach`](/cli/azure/ml/compute?view=azure-cli-latest&preserve-view=true) et affectez à l’argument la valeur `--type``kubernetes` pour attacher votre cluster Kubernetes à l’aide de l’interface cli Azure Machine Learning 2.0.
+
+> [!NOTE]
+> La prise en charge de l’attachement de calcul pour les clusters Kubernetes AKS ou Azure arc requiert une version de l'extension Azure CLI `ml` >= 2.0.1a4. Pour plus d’informations, consultez [Installer et configurer et l’interface CLI (v2)](how-to-configure-cli.md).
+
+La commande suivante montre comment attacher un cluster Kubernetes avec Azure Arc et l’utiliser comme cible de calcul avec l’identité managée activée.
+
+**AKS**
+
+```azurecli
+az ml compute attach --resource-group <resource-group-name> --workspace-name <workspace-name> --name amlarc-compute --resource-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Kubernetes/managedclusters/<cluster-name>" --type kubernetes --identity-type UserAssigned --user-assigned-identities "subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>" --no-wait
+```
+
+**Kubernetes compatible avec Azure Arc**
+
+```azurecli
+az ml compute attach --resource-group <resource-group-name> --workspace-name <workspace-name> --name amlarc-compute --resource-id "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Kubernetes/connectedClusters/<cluster-name>" --type kubernetes --user-assigned-identities "subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identity-name>" --no-wait
+```
+
+Utilisez l’argument `identity_type` pour activer `SystemAssigned` ou `UserAssigned` gérer les identités.
+
+> [!IMPORTANT]
+> `--user-assigned-identities` est requis uniquement pour les `UserAssigned` identités gérées. Bien que vous puissiez fournir une liste d’identités gérées par des utilisateurs séparés par des virgules, seule la première est utilisée lorsque vous attachez votre cluster.
+
+---
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+- [Créer et sélectionner différents types d’instances pour les charges de travail d’apprentissage et d’inférence](how-to-kubernetes-instance-type.md)
 - [Entraîner des modèles avec CLI (v2)](how-to-train-cli.md)
 - [Configurer et soumettre des exécutions d’entraînement](how-to-set-up-training-targets.md)
 - [Optimiser les hyperparamètres](how-to-tune-hyperparameters.md)
