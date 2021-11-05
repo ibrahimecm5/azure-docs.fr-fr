@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4e2a220b9b595bd94fd835d12860800a439f8bb8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 60d99ea9b1add522701a82bbd461e4ef064286aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825246"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070448"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatiser la permutation d’un secret pour des ressources qui ont deux jeux d’informations d’authentification
 
@@ -195,7 +195,7 @@ Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
 
 Remarquez que `CredentialId` est mis à jour vers l’autre `keyName` et que `value` est regénérée :
 
-![Capture d’écran montrant la sortie de la commande az keyvault secret show pour le premier compte de stockage.](../media/secrets/rotation-dual/dual-rotation-4.png)
+![Capture d’écran montrant la sortie de la commande A Z keyvault secret show pour le premier compte de stockage.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Récupérez les clés d’accès pour comparer les valeurs :
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -211,7 +211,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 
 Notez que la `value` de la clé est identique au secret du coffre de clés :
 
-![Capture d’écran montrant la sortie de la commande az storage account keys list pour le premier compte de stockage.](../media/secrets/rotation-dual/dual-rotation-5.png)
+![Capture d’écran montrant la sortie de la commande A Z storage account keys list pour le premier compte de stockage.](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-storage-accounts-for-rotation"></a>Ajouter des comptes de stockage pour la permutation
 
@@ -298,7 +298,7 @@ Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
 
 Remarquez que `CredentialId` est mis à jour vers l’autre `keyName` et que `value` est regénérée :
 
-![Capture d’écran montrant la sortie de la commande az keyvault secret show pour le second compte de stockage.](../media/secrets/rotation-dual/dual-rotation-8.png)
+![Capture d’écran montrant la sortie de la commande A Z keyvault secret show pour le second compte de stockage.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Récupérez les clés d’accès pour comparer les valeurs :
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -314,7 +314,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 
 Notez que la `value` de la clé est identique au secret du coffre de clés :
 
-![Capture d’écran montrant la sortie de la commande az storage account keys list pour le second compte de stockage.](../media/secrets/rotation-dual/dual-rotation-9.png)
+![Capture d’écran montrant la sortie de la commande A Z storage account keys list pour le second compte de stockage.](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Fonctions de permutation Key Vault pour deux jeux d’informations d’identification
 

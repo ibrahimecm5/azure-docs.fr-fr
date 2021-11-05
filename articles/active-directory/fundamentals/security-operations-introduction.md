@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf83185b5c36723621ad586839d6b92260e1a99a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a0e35c11a94e1c0c6e86964d68c784c5cb3e7741
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046199"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060190"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Guide des opérations de sécurité dans Azure Active Directory
 
@@ -118,7 +118,7 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 * [Journaux Azure Key Vault](../../key-vault/general/logging.md?tabs=Vault)
 
-Dans le portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV ou JSON. Le portail Azure offre plusieurs moyens d’intégrer des journaux Azure AD aux autres outils, ce qui permet une plus grande automatisation de la supervision et des alertes :
+Dans le portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV ou JSON. Le Portail Azure offre plusieurs méthodes d’intégration entre les journaux Azure AD et d’autres outils, ce qui permet une plus grande automatisation du monitoring et des alertes :
 
 * **[Azure Sentinel](../../sentinel/overview.md)** – Permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et de gestion d’événements management (SIEM). 
 
@@ -128,9 +128,9 @@ Dans le portail Azure, vous pouvez afficher les journaux d’audit Azure AD et 
 
 * **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)**  : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources, et de vérifier la conformité des applications cloud.
 
-La plupart des éléments qui font l’objet d’une supervision et d’alertes sont déterminés par vos stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Rapports et insights sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que les résultats des stratégies, y compris l’état de l’appareil. Ce classeur vous permet de voir un résumé de l’impact et d’identifier l’impact sur une période de temps spécifique. Vous pouvez également utiliser le classeur pour investiguer les connexions d’un utilisateur spécifique. 
+La plupart des éléments qui font l’objet d’une supervision et d’alertes sont déterminés par vos stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Rapports et insights sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que les résultats des stratégies, y compris l’état de l’appareil. Ce classeur permet de voir un résumé de l’impact et d’identifier l’incidence sur une période donnée. Vous pouvez également vous en servir pour examiner les connexions d’un utilisateur spécifique. 
 
-Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies, nous fournissons des liens vers celles-ci ou nous en fournissons des exemples après le tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents. 
+Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies spécifiques, nous en indiquons le lien ou donnons des exemples après le tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents. 
 
 * **[Identity Protection](../identity-protection/overview-identity-protection.md)**  : génère trois rapports clés que vous pouvez utiliser dans le cadre de votre investigation :
 
@@ -156,7 +156,7 @@ Dans le cadre d’un environnement hybride Azure, les éléments suivants doiven
 
 * **Agent PTA** : l’agent d’authentification directe est utilisé pour permettre une authentification directe, et il est installé en local. Pour savoir comment vérifier votre version de l’agent et connaître les étapes à suivre, consultez [Agent d’authentification directe Azure AD : Historique de publication des versions](../hybrid/reference-connect-pta-version-history.md). 
 
-* **AD FS/WAP** : les services de fédération Active Directory Azure (Azure AD FS) et le proxy d’application web (WAP) permettent le partage sécurisé des identités numériques et des droits d’utilisation entre les différentes limites de sécurité et les différents services de l’entreprise. Pour plus d’informations sur les bonnes pratiques de sécurité, consultez [Bonnes pratiques relatives à la sécurisation des services de fédération Active Directory]/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs). 
+* **AD FS/WAP** : les services de fédération Active Directory Azure (Azure AD FS) et le proxy d’application web (WAP) permettent le partage sécurisé des identités numériques et des droits d’utilisation entre les différentes limites de sécurité et les différents services de l’entreprise. Pour plus d’informations sur les meilleures pratiques en matière de sécurité, consultez [Meilleures pratiques pour la sécurisation des services de fédération Active Directory (AD FS)](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs). 
 
 * **Agent Azure AD Connect Health** : agent utilisé dans le but de fournir une liaison de communication pour Azure AD Connect Health. Pour plus d’informations sur l’installation de l’agent, consultez [Installation de l’agent Azure AD Connect Health](../hybrid/how-to-connect-health-agent-install.md). 
 

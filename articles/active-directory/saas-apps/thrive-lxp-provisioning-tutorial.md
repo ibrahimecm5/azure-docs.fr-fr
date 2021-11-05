@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: thwimmer
-ms.openlocfilehash: ab5550c9e89d1cd755e376a1aaae8db9564ae484
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7341d833ad1ddf00379c6d8a4e780a54456a8d73
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326942"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046011"
 ---
 # <a name="tutorial-configure-thrive-lxp-for-automatic-user-provisioning"></a>Tutoriel : Configurer Thrive LXP pour l’approvisionnement automatique d’utilisateurs
 
@@ -50,7 +50,7 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 
 ## <a name="step-2-configure-thrive-lxp-to-support-provisioning-with-azure-ad"></a>Étape 2. Configurer Thrive LXP pour la prise en charge du provisionnement avec Azure AD
 
-Commniquez avec votre contact Thrive LXP pour générer votre **URL de locataire** et votre **Jeton secret**. Ces valeurs doivent être entrées dans les champs URL de locataire et Jeton secret dans l’onglet Approvisionnement de votre application Thrive LXP dans le portail Azure.
+Commniquez avec votre contact Thrive LXP pour générer votre **URL de locataire** et votre **Jeton secret**. Ces valeurs doivent être entrées dans les champs URL de locataire et Jeton secret de l’onglet Approvisionnement de votre application Thrive LXP dans le portail Azure.
 
 ## <a name="step-3-add-thrive-lxp-from-the-azure-ad-application-gallery"></a>Étape 3. Ajouter Thrive LXP à partir de la galerie d’applications Azure AD
 

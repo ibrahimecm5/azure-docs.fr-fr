@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 439248f37075f7cbc91af0e15dcdf6b029e95b92
-  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+  ms.openlocfilehash: 45e86a925c83f32ab4f704ea7ffc4f83ff3089ae
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130066696"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131059924"
 title: Questions fréquemment posées sur Azure Monitor
 summary: >
   Cette FAQ Microsoft est une liste de questions fréquemment posées sur Azure Monitor. Si vous avez d’autres questions, rendez-vous sur le [forum de discussion](/answers/questions/topics/single/24223.html) et publiez vos questions. Lorsqu’une question est fréquemment posée, nous l’ajoutons à cet article pour qu’elle soit facile et rapide à trouver.
@@ -74,6 +74,15 @@ sections:
       Comment accéder aux données collectées par Azure Monitor ?
     answer: >
       Les insights et les solutions permettent une expérience d'utilisation personnalisée des données stockées dans Azure Monitor. Vous pouvez utiliser directement les données de journal à l’aide d’une requête de journal écrite en langage de requête Kusto (KQL). Dans le portail Azure, vous pouvez écrire et exécuter des requêtes, et analyser les données de manière interactive à l’aide de Log Analytics. Dans le portail Azure, analysez des métriques avec Metrics Explorer. Consultez [Analyser les données de journal dans Azure Monitor](logs/log-query-overview.md) et [Prise en main d’Azure Metrics Explorer](essentials/metrics-getting-started.md).
+  - question: >
+      Pourquoi est-ce que je vois des enregistrements en double dans les journaux Azure Monitor ?
+    answer: >
+      Vous pouvez parfois voir des enregistrements en double dans les journaux Azure Monitor. Il s’agit généralement de l’une des deux conditions suivantes.
+
+
+      - Les composants du pipeline ont de nouvelles tentatives pour garantir une livraison fiable à la destination. Parfois, cela peut entraîner des doublons pour un très petit pourcentage d’éléments de télémétrie.
+
+      - Si les enregistrements en double proviennent d’une machine virtuelle, il se peut que l’agent Log Analytics et l’agent Azure Monitor soient installés. Si vous avez toujours besoin de l’agent Log Analytics installé, configurez l’espace de travail Log Analytics pour qu’il ne collecte plus les données qui sont également collectées par la règle de collection de données utilisée par l’agent Azure Monitor.
 - name: Solutions et insights
   questions:
   - question: >

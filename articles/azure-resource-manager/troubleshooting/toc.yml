@@ -1,0 +1,82 @@
+- name: Documentation sur la résolution des problèmes de déploiement
+  href: index.yml
+- name: Vue d’ensemble
+  items:
+    - name: "Qu’est-ce que la résolution des problèmes de déploiement\_?"
+      href: overview.md
+- name: Démarrages rapides
+  items:
+    - name: Résoudre les problèmes de déploiement ARM
+      href: quickstart-troubleshoot-arm-deployment.md
+    - name: Résoudre les problèmes de déploiement Bicep
+      href: quickstart-troubleshoot-bicep-deployment.md
+- name: Procédures
+  items:
+    - name: Résoudre les problèmes de déploiement
+      items:
+        - name: Résoudre les erreurs de déploiement
+          href: common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: error-storage-account-name.md
+        - name: DeploymentQuotaExceeded
+          href: deployment-quota-exceeded.md
+        - name: InvalidTemplate
+          href: error-invalid-template.md
+        - name: JobSizeExceeded
+          href: error-job-size-exceeded.md
+        - name: NoRegisteredProviderFound
+          href: error-register-resource-provider.md
+        - name: NotFound
+          href: error-not-found.md
+        - name: ParentResourceNotFound
+          href: error-parent-resource.md
+        - name: Problèmes de provisionnement et d’allocation pour Linux
+          href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux
+        - name: Problèmes de provisionnement et d’allocation pour Windows
+          href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows
+        - name: RequestDisallowedByPolicy
+          href: error-policy-requestdisallowedbypolicy.md
+        - name: ReservedResourceName
+          href: error-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: error-resource-quota.md
+        - name: SkuNotAvailable
+          href: error-sku-not-available.md
+- name: Référence
+  items:
+    - name: Informations de référence sur les modèles Bicep et ARM
+      href: /azure/templates/
+    - name: Fonctions
+      items:
+        - name: Fonctions des modèles ARM
+          href: ../templates/template-functions.md
+        - name: Fonctions Bicep
+          href: ../bicep/bicep-functions.md
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources
+- name: Ressources
+  items:
+    - name: Développer vos compétences avec Microsoft Learn
+      href: /learn/paths/deploy-manage-resource-manager-templates/
+    - name: "Modèles de démarrage rapide Microsoft\_Azure"
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: Feuille de route Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Calculatrice de prix
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Mises à jour de service
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Vidéos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

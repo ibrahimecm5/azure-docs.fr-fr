@@ -3,14 +3,14 @@ author: baanders
 description: Fichier include pour les limites Azure Digital Twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 4/8/2021
+ms.date: 10/20/2021
 ms.author: baanders
-ms.openlocfilehash: fae919afc12afd5a6169dd119b57ae72ae7c14f0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c64606f4816491da803d2c5116ff4ad248ec29a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472870"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288326"
 ---
 ### <a name="functional-limits"></a>Limitations fonctionnelles
 
@@ -22,11 +22,13 @@ Le tableau suivant liste les limites opérationnelles d’Azure Digital Twins.
 | Domaine | Fonctionnalité | Limite par défaut | Ajustable ? |
 | --- | --- | --- | --- |
 | Ressource Azure | Nombre d’instances Azure Digital Twins dans une région, par abonnement | 10 | Oui |
-| Jumeaux numériques | Nombre de jumeaux dans une instance Azure Digital Twins | 200 000 | Oui |
+| Jumeaux numériques | Nombre de jumeaux dans une instance Azure Digital Twins | 500 000 | Oui |
 | Jumeaux numériques | Nombre de relations entrantes à un seul jumeau | 5 000 | Non |
 | Jumeaux numériques | Nombre de relations sortantes à partir d’un seul jumeau | 5 000 | Non |
 | Jumeaux numériques | Taille maximale (du corps JSON dans une requête PUT ou PATCH) d’un seul jumeau | 32 Ko | Non |
 | Jumeaux numériques | Taille maximale de la charge utile de requête | 32 Ko | Non | 
+| Jumeaux numériques | Taille maximale d’une valeur de propriété de type chaîne (UTF-8) | 4 Ko | Non|
+| Jumeaux numériques | Taille maximale du nom d’une propriété | 1 Ko | Non| 
 | Routage | Nombre de points de terminaison pour une même instance Azure Digital Twins | 6 | Non |
 | Routage | Nombre d’itinéraires pour une même instance Azure Digital Twins | 6 | Oui |
 | Modèles | Nombre de modèles dans une même instance Azure Digital Twins | 10 000 | Oui |

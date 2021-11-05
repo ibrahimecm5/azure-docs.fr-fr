@@ -198,12 +198,34 @@
       items:
         - name: Vue d’ensemble
           href: backup-azure-database-postgresql-overview.md
-        - name: Sauvegarde
-          href: backup-azure-database-postgresql.md
-        - name: Restaurer
-          href: restore-azure-database-postgresql.md
-        - name: Gérer
-          href: manage-azure-database-postgresql.md
+        - name: À partir du portail Azure
+          items:
+            - name: Sauvegarde
+              href: backup-azure-database-postgresql.md
+            - name: Restaurer
+              href: restore-azure-database-postgresql.md
+            - name: Gérer
+              href: manage-azure-database-postgresql.md
+        - name: Avec PowerShell
+          items:
+            - name: Sauvegarde
+              href: backup-postgresql-ps.md
+            - name: Restaurer
+              href: restore-postgresql-database-ps.md
+        - name: Avec l’interface CLI
+          items:
+            - name: Sauvegarde
+              href: backup-postgresql-cli.md
+            - name: Restaurer
+              href: restore-postgresql-database-cli.md
+        - name: Avec l’API REST
+          items:
+            - name: Stratégie
+              href: backup-azure-data-protection-use-rest-api-create-update-postgresql-policy.md
+            - name: Sauvegarde
+              href: backup-azure-data-protection-use-rest-api-backup-postgresql.md
+            - name: Restaurer
+              href: restore-postgresql-database-use-rest-api.md
     - name: Sauvegarde Windows avec l’agent MARS
       items:
         - name: Vue d’ensemble
@@ -430,12 +452,14 @@
           href: offline-backup-server-previous-versions.md
     - name: Supervision et alertes
       items:
-        - name: Vue d'ensemble
+        - name: Vue d’ensemble
           href: monitoring-and-alerts-overview.md
         - name: Utilisation de l’Explorateur de sauvegarde
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Utilisation du portail Azure
           href: backup-azure-monitoring-built-in-monitor.md
+        - name: Utilisation des métriques Azure Monitor
+          href: metrics-overview.md
         - name: Utilisation des journaux Azure Monitor
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Rapports
@@ -458,13 +482,15 @@
               href: backup-azure-diagnostics-mode-data-model.md
     - name: Automatisation
       items:
+        - name: Utiliser l’automatisation Azure Backup
+          href: automation-backup.md
         - name: Azure Policy intégré pour Sauvegarde Azure
           items:
             - name: Activer automatiquement la sauvegarde lors de la création de machines virtuelles avec Azure Policy
               href: backup-azure-auto-enable-backup.md
             - name: Configurer les paramètres de diagnostic de coffre à grande échelle
               href: azure-policy-configure-diagnostics.md
-        - name: PowerShell
+        - name: Utiliser PowerShell
           items:
             - name: Machines virtuelles Azure
               href: backup-azure-vms-automation.md
@@ -504,6 +530,8 @@
           href: security-overview.md
         - name: Contrôle d'accès en fonction du rôle Azure
           href: backup-rbac-rs-vault.md
+        - name: Autorisation multi-utilisateur à l’aide de la protection des ressources
+          href: multi-user-authorization.md
         - name: Suppression réversible
           items:
             - name: Vue d’ensemble
@@ -533,10 +561,12 @@
           href: ./security-controls-policy.md
         - name: Base de référence de la sécurité
           href: /security/benchmark/azure/baselines/backup-security-baseline?toc=/azure/backup/toc.json
-    - name: Niveau d’accès
+    - name: Niveau de stockage archive
       items:
-        - name: Niveau de stockage archive
+        - name: Vue d’ensemble
           href: archive-tier-support.md
+        - name: Utilisation du niveau archive
+          href: use-archive-tier-support.md
     - name: Dépanner
       items:
         - name: Azure VM
@@ -565,6 +595,8 @@
           href: backup-azure-sap-hana-database-troubleshoot.md
         - name: État du système
           href: backup-azure-system-state-troubleshoot.md
+        - name: Niveau de stockage archive
+          href: troubleshoot-archive-tier.md
 - name: Informations de référence
   items:
     - name: .NET

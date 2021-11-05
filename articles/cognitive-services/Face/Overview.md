@@ -11,12 +11,12 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: reconnaissance faciale, logiciel de reconnaissance faciale, analyse faciale, correspondance de visage, application de reconnaissance faciale, recherche de visage par image, recherche de reconnaissance faciale
-ms.openlocfilehash: 90a2b656d66c15eed10d68be8e5af5c35f35d135
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 25e79bb8ab2d37c5b32a6519158cd53d79c1d94b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005688"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071417"
 ---
 # <a name="what-is-the-azure-face-service"></a>Présentation du service Visage Azure
 
@@ -86,9 +86,9 @@ L’exemple suivant montre le visage cible :
 
 Et ces images sont les visages candidats :
 
-![Cinq images de personnes qui sourient. Les images a et b correspondent à la même personne.](./Images/FaceFindSimilar.Candidates.jpg)
+![Cinq images de personnes qui sourient. Les images A et B correspondent à la même personne.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Pour rechercher quatre visages semblabes, le mode **matchPerson** renvoie a et b, qui représentent le même visage que la cible. Le mode **matchFace** retourne a, b, c et d, soit exactement quatre candidats, même si certains ne sont pas la même personne que la cible ou s’ils présentent une faible similarité. Pour plus d’informations, consultez le guide relatif aux concepts de la [reconnaissance faciale](concepts/face-recognition.md) ou la documentation de référence de l’[API de recherche de visages semblables](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+Pour rechercher quatre visages semblables, le mode **matchPerson** renvoie A et B, qui représentent le même visage que la cible. Le mode **matchFace** renvoie A, B, C et D, soit exactement quatre candidats, même si certains n’appartiennent pas à la même personne que le visage cible ou s’ils présentent une faible similarité. Pour plus d’informations, consultez le guide relatif aux concepts de la [reconnaissance faciale](concepts/face-recognition.md) ou la documentation de référence de l’[API de recherche de visages semblables](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
 ## <a name="group-faces"></a>Regrouper les visages
 

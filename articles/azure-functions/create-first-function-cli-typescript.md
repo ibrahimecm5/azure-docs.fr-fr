@@ -4,12 +4,12 @@ description: Apprenez à créer une fonction TypeScript à partir de la ligne de
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: dbbc5f6115b3f6d9d1776885f976e00a2f8db2ab
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: b015f74b0477cbd46ae56eb1e452c462e1cd9a13
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830623"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039389"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Démarrage rapide : Créer une fonction TypeScript dans Azure à partir de la ligne de commande
 
@@ -33,7 +33,7 @@ Avant de commencer la lecture cet article, vous devez disposer des éléments su
 
     + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 ou ultérieure.
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) version 5.0 ou ultérieure.
+    + Le [module Azure Az PowerShell](/powershell/azure/install-az-ps) version 5.9.0 ou ultérieure.
 
 + [Node.js](https://nodejs.org/), Active LTS et Maintenance LTS (versions 8.11.1 et 10.14.1 recommandées).
 
@@ -53,7 +53,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 + Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
 
-+ Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure. 
++ Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure.
 
 + Exécutez `Connect-AzAccount` pour vous connecter à Azure et vérifier que l’abonnement est actif.
 
@@ -63,7 +63,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 Dans Azure Functions, un projet de fonction est un conteneur pour une ou plusieurs fonctions qui répondent chacune à un déclencheur spécifique. Toutes les fonctions d’un projet partagent les mêmes configurations locale et d’hébergement. Dans cette section, vous créez un projet de fonction qui contient une seule fonction.
 
-1. Exécutez la commande `func init`, de la façon suivante, pour créer un projet Functions dans un dossier nommé *LocalFunctionProj* avec le runtime spécifié :  
+1. Exécutez la commande `func init`, de la façon suivante, pour créer un projet Functions dans un dossier nommé *LocalFunctionProj* avec le runtime spécifié :
 
     ```console
     func init LocalFunctionProj --typescript
@@ -74,15 +74,15 @@ Dans Azure Functions, un projet de fonction est un conteneur pour une ou plusieu
     ```console
     cd LocalFunctionProj
     ```
-    
+
     Ce dossier contient divers fichiers pour le projet, notamment des fichiers config nommés [local.settings.json](functions-develop-local.md#local-settings-file) et [host.json](functions-host-json.md). Dans la mesure où *local.settings.json* peut contenir des secrets téléchargés à partir d’Azure, le fichier est exclu du contrôle de code source par défaut dans le fichier *.gitignore*.
 
 1. Ajoutez une fonction à votre projet à l’aide de la commande suivante, où l’argument `--name` est le nom unique de votre fonction (HttpExample) et où l’argument `--template` spécifie le déclencheur de la fonction (HTTP).
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ``` 
-    
+    ```
+
     `func new` crée un sous-dossier correspondant au nom de la fonction qui contient le fichier de code approprié au langage choisi pour le projet, et un fichier config nommé *function.json*.
 
 ### <a name="optional-examine-the-file-contents"></a>(Facultatif) Examiner le contenu du fichier
@@ -95,11 +95,11 @@ Si vous le souhaitez, vous pouvez passer à [Exécuter la fonction localement](#
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-Pour un déclencheur HTTP, la fonction reçoit les données de requête dans la variable `req` de type **HttpRequest**, tel que cela est défini dans *function.json*. L’objet retourné, défini comme `$return` dans *function.json*, est la réponse. 
+Pour un déclencheur HTTP, la fonction reçoit les données de requête dans la variable `req` de type **HttpRequest**, tel que cela est défini dans *function.json*. L’objet retourné, défini comme `$return` dans *function.json*, est la réponse.
 
 #### <a name="functionjson"></a>function.json
 
-*function.json* est un fichier config qui définit le `bindings` d’entrée et de sortie de la fonction, notamment le type du déclencheur. 
+*function.json* est un fichier config qui définit le `bindings` d’entrée et de sortie de la fonction, notamment le type du déclencheur.
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/function.json":::
 
@@ -113,29 +113,29 @@ Chaque liaison nécessite une direction, un type et un nom unique. Le déclenche
     npm install
     npm start
     ```
-    
+
     Vers la fin de la sortie, les lignes suivantes doivent s’afficher :
-    
+
     <pre>
     ...
-    
+
     Now listening on: http://0.0.0.0:7071
     Application started. Press Ctrl+C to shut down.
-    
+
     Http Functions:
-    
+
             HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
     ...
-    
+
     </pre>
-    
-    >[!NOTE]  
+
+    >[!NOTE]
     > Si HttpExample n’apparaît pas comme indiqué ci-dessous, cela signifie probablement que vous avez démarré l’hôte à partir d’un emplacement autre que le dossier racine du projet. Dans ce cas, utilisez **Ctrl**+**C** pour arrêter l’hôte, accédez au dossier racine du projet, puis réexécutez la commande précédente.
 
 1. Copiez dans un navigateur l’URL de votre fonction `HttpExample` à partir de cette sortie, puis ajoutez la chaîne de requête `?name=<your-name>` pour obtenir une URL complète semblable à `http://localhost:7071/api/HttpExample?name=Functions`. Le navigateur doit afficher un message similaire à `Hello Functions` :
 
     ![Résultat de la fonction exécutée localement dans le navigateur](./media/functions-create-first-azure-function-azure-cli/function-test-local-browser.png)
-    
+
     Le terminal dans lequel vous avez démarré votre projet affiche également une sortie de journal quand vous effectuez des requêtes.
 
 1. Quand vous êtes prêt, utilisez **Ctrl**+**C**, puis choisissez `y` pour arrêter l’hôte de fonctions.
@@ -145,25 +145,25 @@ Chaque liaison nécessite une direction, un type et un nom unique. Le déclenche
 4. Créer l’application de fonction dans Azure :
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-        
+
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location <REGION> --runtime node --runtime-version 12 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
-    
+
     La commande [az functionapp create](/cli/azure/functionapp#az_functionapp_create) crée l’application de fonction dans Azure. Si vous utilisez Node.js 10, remplacez aussi `--runtime-version` par `10`.
-    
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -RuntimeVersion 12 -FunctionsVersion 3 -Location '<REGION>'
     ```
-    
+
     L’applet de commande [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) crée l’application de fonction dans Azure. Si vous utilisez Node.js 10, remplacez `-RuntimeVersion` par `10`.
 
     ---
-        
-    Dans l’exemple précédent, remplacez `<STORAGE_NAME>` par le nom du compte que vous avez utilisé à l’étape précédente, puis remplacez `<APP_NAME>` par le nom global unique qui vous convient. `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction. 
-    
+
+    Dans l’exemple précédent, remplacez `<STORAGE_NAME>` par le nom du compte que vous avez utilisé à l’étape précédente, puis remplacez `<APP_NAME>` par le nom global unique qui vous convient. `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction.
+
     Cette commande crée une application de fonction qui s’exécute dans votre runtime de langage spécifié dans le [Plan Consommation Azure Functions](consumption-plan.md), qui est gratuit pour l’utilisation faite ici. La commande provisionne également une instance d’Azure Application Insights associée dans le même groupe de ressources, avec laquelle vous pouvez superviser votre application de fonction et visualiser les journaux. Pour plus d’informations, consultez [Surveiller l’exécution des fonctions Azure](functions-monitoring.md). L’instance n’entraîne aucun coût tant que vous ne l’activez pas.
 
 ## <a name="deploy-the-function-project-to-azure"></a>Déployer le projet de fonction sur Azure
@@ -173,7 +173,7 @@ Avant d’utiliser Core Tools pour déployer votre projet sur Azure, vous créez
 1. Utilisez la commande suivante permettant de préparer votre projet TypeScript pour le déploiement :
 
     ```console
-    npm run build:production 
+    npm run build:production
     ```
 
 1. Une fois les ressources nécessaires en place, vous êtes prêt à déployer votre projet Functions local sur l’application de fonction dans Azure à l’aide de la commande [func azure functionapp publish](functions-run-local.md#project-file-deployment). Dans l’exemple suivant, remplacez `<APP_NAME>` par le nom de votre application.
@@ -181,20 +181,20 @@ Avant d’utiliser Core Tools pour déployer votre projet sur Azure, vous créez
     ```console
     func azure functionapp publish <APP_NAME>
     ```
-    
+
     Si vous voyez l’erreur « Impossible de localiser l’application nommée... », attendez quelques secondes, puis réessayez, car Azure n’a peut-être pas complètement initialisé l’application après la commande `az functionapp create` précédente.
-    
+
     La commande de publication affiche des résultats similaires à la sortie suivante (tronquée par souci de simplicité) :
-    
+
     <pre>
     ...
-    
+
     Getting site publishing info...
     Creating archive for current directory...
     Performing remote build for functions project.
-    
+
     ...
-    
+
     Deployment successful.
     Remote build succeeded!
     Syncing triggers...

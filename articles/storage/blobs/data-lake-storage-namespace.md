@@ -4,16 +4,16 @@ description: Décrit le concept d’espace de noms hiérarchique pour Azure Data
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/01/2021
+ms.date: 10/22/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4eaee714d079836e0919621b2d2e5661d07dfe80
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 38a5298bcbefcacdd6869eba75d8accec207c821
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664843"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008747"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Espace de noms hiérarchique d’Azure Data Lake Storage Gen2
 
@@ -33,7 +33,7 @@ Auparavant, les magasins d’objets ne prenaient pas en charge les espaces de no
 
 ## <a name="deciding-whether-to-enable-a-hierarchical-namespace"></a>Choix de l’activation ou non d’un espace de noms hiérarchique
 
-Une fois que vous avez activé un espace de noms hiérarchique sur votre compte, vous ne pouvez pas revenir à un espace de noms plat. Par conséquent, déterminez s’il est judicieux d’activer un espace de noms hiérarchique basé sur la nature de vos charges de travail de magasin d’objets.
+Une fois que vous avez activé un espace de noms hiérarchique sur votre compte, vous ne pouvez pas revenir à un espace de noms plat. Par conséquent, déterminez s’il est judicieux d’activer un espace de noms hiérarchique basé sur la nature de vos charges de travail de magasin d’objets. Pour évaluer l’impact de l’activation des espace de noms hiérarchique sur les charges de travail, les applications, les coûts, les intégrations de service, les outils, les fonctionnalités et la documentation, consultez [Mise à niveau du Stockage Blob Azure avec les fonctionnalités d’Azure Data Lake Storage Gen2](upgrade-to-data-lake-storage-gen2.md).
 
 Certaines charges de travail peuvent ne pas tirer profit de l’activation d’un espace de noms hiérarchique. Ces charges de travail sont, par exemple, les sauvegardes, le stockage d’images et d’autres applications où l’organisation des objets est stockées séparément des objets eux-mêmes (dans une base de données distincte, par exemple).
 
@@ -45,10 +45,7 @@ Les raisons de l’activation d’un espace de noms hiérarchique sont détermin
 
 Pour analyser les différences de prix de stockage des données, de prix des transactions et de tarifs de réservation de capacité de stockage entre les comptes qui ont un espace de noms hiérarchique plat et un espace de noms hiérarchique ordinaire, voir [Tarifications d’Azure Data Lake Storage Gen2](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
-## <a name="enabling-a-hierarchical-namespace"></a>Activation d’un espace de noms hiérarchique
-
-Vous ne pouvez pas activer un espace de noms hiérarchique sur un compte de stockage existant. Vous pouvez activer un espace de noms hiérarchique lorsque vous créez un compte de stockage. Pour obtenir des instructions, consultez [Créer un compte de stockage à utiliser avec Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
-
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Créer un compte de stockage](../common/storage-account-create.md)
+- Activez un espace de noms hiérarchique lorsque vous créez un compte de stockage. Consultez [Créer un compte de stockage](../common/storage-account-create.md).
+- Activez un espace de noms hiérarchique sur un compte de stockage existant. Consultez [Mettre à niveau Stockage Blob Azure avec les capacités d’Azure Data Lake Storage Gen2](upgrade-to-data-lake-storage-gen2-how-to.md).

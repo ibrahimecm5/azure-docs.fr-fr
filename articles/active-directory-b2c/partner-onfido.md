@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 1441210303984bf777c6b580f6f7ab0c67ce6f21
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 25d24c6f9d1f8346ad088308badca181a5bf1944
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257855"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012792"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Tutoriel de configuration d’Onfido avec Azure Active Directory B2C
 
@@ -110,9 +110,9 @@ Les paramètres de l’application peuvent être configurés dans le [service d�
 
 2. Ouvrez chaque fichier HTML.
 
-3. Recherchez et remplacez {your-ui-blob-container-url} par l’URL de l’emplacement où se trouvent les dossiers **ocean_blue**, **dist** et **assets** de votre interface utilisateur.
+3. Recherchez et remplacez `{your-ui-blob-container-url}` par l’URL de l’emplacement où se trouvent les dossiers **ocean_blue**, **dist** et **assets** de votre interface utilisateur.
 
-4. Recherchez et remplacez {your-intermediate-api-url} par l’URL du service d’application API intermédiaire.
+4. Recherchez et remplacez `{your-intermediate-api-url}` par l’URL du service d’application API intermédiaire.
 
 #### <a name="upload-your-files"></a>Charger vos fichiers
 

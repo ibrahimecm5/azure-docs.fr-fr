@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/14/2021
 ms.author: joarroyo
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b116c7481dcbbdf05bf7aba476feeef853c0c87f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 398117120e560db00be97a344feed09351a26258
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993641"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050334"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa-using-auth-code-flow"></a>Tutoriel : Connecter les utilisateurs et appeler l’API Microsoft Graph à partir d’une application monopage (SPA) Angular à l’aide du flux de code d’authentification
 
@@ -265,7 +265,7 @@ Inscrivez la valeur de l’**URI de redirection** en tant que **http://localhost
 
 Ajoutez le code des sections suivantes pour appeler la connexion à l’aide d’une fenêtre indépendante ou d’une redirection plein cadre : 
 
-### <a name="sign-in-using-popups"></a>Se connecter à l’aide de fenêtres indépendantes
+### <a name="sign-in-using-pop-ups"></a>Se connecter à l’aide de fenêtres contextuelles
 
 1. Changez le code dans *src/app/app.component.ts* par ce qui suit pour connecter un utilisateur à l’aide d’une fenêtre indépendante :
 
@@ -555,7 +555,7 @@ Pour permettre l’affichage de certaines IU uniquement pour les utilisateurs au
 
 ### <a name="angular-guard"></a>Protection Angular
 
-MSAL Angular fournit `MsalGuard`, une classe qui vous permet de protéger les routes et d’imposer une authentification avant tout accès à la route protégée. Les étapes ci-dessous permettent d’ajouter `MsalGuard` à la route `Profile`. Protéger la route `Profile` signifie que même si un utilisateur ne se connecte pas à l’aide du bouton `Login`, s’il tente d’accéder à la route `Profile` ou s’il clique sur le bouton `Profile`, `MsalGuard` l’invite à s’authentifier via une fenêtre indépendante ou une redirection avant d’afficher la page `Profile`.
+MSAL Angular fournit `MsalGuard`, une classe qui vous permet de protéger les routes et d’imposer une authentification avant tout accès à la route protégée. Les étapes ci-dessous permettent d’ajouter `MsalGuard` à la route `Profile`. Protéger l’itinéraire `Profile` signifie que même si un utilisateur ne se connecte pas à l’aide du bouton `Login`, s’il tente d’accéder à l’itinéraire `Profile` ou s’il clique sur le bouton `Profile`, `MsalGuard` l’invite à s’authentifier via une fenêtre contextuelle ou le redirige avant d’afficher la page `Profile`.
 
 `MsalGuard` est une classe pratique qui vous permet d’améliorer l’expérience utilisateur. Toutefois, son utilisation est déconseillée pour des raisons de sécurité. Les attaquants peuvent éventuellement contourner les protections côté client. Vous devez vérifier que le serveur ne retourne aucune donnée à laquelle l’utilisateur ne doit pas accéder.
 
@@ -930,9 +930,9 @@ export class AppComponent implements OnInit, OnDestroy {
 }
 ```
 
-### <a name="sign-out-using-popups"></a>Se déconnecter à l’aide de fenêtres indépendantes
+### <a name="sign-out-using-pop-ups"></a>Se déconnecter à l’aide de fenêtres contextuelles
 
-Mettez à jour le code dans *src/app/app.component.ts* pour déconnecter un utilisateur à l’aide de fenêtres indépendantes :
+Mettez à jour le code dans *src/app/app.component.ts* pour déconnecter un utilisateur à l’aide de fenêtres contextuelles :
 
 ```javascript
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';

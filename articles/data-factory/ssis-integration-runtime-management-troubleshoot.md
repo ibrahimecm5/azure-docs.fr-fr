@@ -9,12 +9,12 @@ ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b7d6605f1a387a917c9d106078ead404842ea02c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5736e893242f1e24837132dc11b4b7607d22bbf9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251924"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086459"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Résoudre les problèmes de gestion du runtime d’intégration SSIS dans Azure Data Factory
 
@@ -182,12 +182,18 @@ Si l’approvisionnement Azure-SSIS IR échoue, toutes les ressources qui ont �
 
 ### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
 
-Lorsque vous arrêtez Azure-SSIS IR, toutes les ressources réseau créées dans le groupe de ressources contenant votre IP publique seront supprimées. Toutefois, la suppression peut échouer s’il existe un verrou de suppression de ressource au niveau de l’abonnement ou du groupe de ressources (qui contient votre IP publique statique). Veuillez supprimer le verrou de suppression et redémarrer le runtime d’intégration.
+Lorsque vous arrêtez Azure-SSIS IR, toutes les ressources réseau créées dans le groupe de ressources contenant votre IP publique seront supprimées. Toutefois, la suppression peut échouer s’il existe un verrou de suppression de ressource au niveau de l’abonnement ou du groupe de ressources (qui contient votre IP publique statique). Supprimez le verrou de suppression et redémarrez le runtime d’intégration.
 
 ### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
 
-Azure-SSIS IR est automatiquement mis à jour de façon régulière. De nouveaux nœuds IR sont créés lors de la mise à niveau et les anciens nœuds sont supprimés. En outre, les ressources réseau créées (par exemple, l’équilibreur de charge et le groupe de sécurité réseau) pour les anciens nœuds sont supprimées, et les nouvelles ressources réseau sont créées dans le cadre de votre abonnement. Cette erreur signifie que la suppression des ressources réseau pour les anciens nœuds a échoué en raison d’un verrou de suppression de ressource au niveau de l’abonnement ou du groupe de ressources (qui contient votre IP publique statique). Supprimez le verrou de suppression pour pouvoir nettoyer les anciens nœuds et libérer l’IP publique statique pour ces derniers. Dans le cas contraire, l’IP publique statique ne peut pas être libérée et nous ne pourrons plus mettre à niveau votre runtime d’intégration.
+Azure-SSIS IR est automatiquement mis à jour de façon régulière. De nouveaux nœuds IR sont créés lors de la mise à niveau et les anciens nœuds sont supprimés. En outre, les ressources réseau créées (par exemple, l’équilibreur de charge et le groupe de sécurité réseau) pour les anciens nœuds sont supprimées, et les nouvelles ressources réseau sont créées dans le cadre de votre abonnement. Cette erreur signifie que la suppression des ressources réseau pour les anciens nœuds a échoué en raison d’un verrou de suppression de ressource au niveau de l’abonnement ou du groupe de ressources (qui contient votre IP publique statique). Supprimez le verrou de suppression pour pouvoir nettoyer les anciens nœuds et libérer l’adresse IP publique statique pour ces derniers. Dans le cas contraire, l’IP publique statique ne peut pas être libérée et nous ne pourrons plus mettre à niveau votre runtime d’intégration.
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 
 Si vous souhaitez apporter vos propres IP publiques statiques, vous devez fournir deux IP publiques. L’une d’elles est utilisée pour créer les nœuds IR immédiatement, et l’autre sera utilisée lors la mise à niveau de l’IR. Cette erreur peut se produire lorsque l’autre IP publique est inutilisable pendant la mise à niveau. Reportez-vous à [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) pour les causes possibles.
+
+## <a name="resource-management"></a>Gestion des ressources
+
+### <a name="resource-tag-not-updated"></a>Étiquette de ressource non mise à jour
+
+Vous allez appliquer des [étiquettes](../azure-resource-manager/management/tag-resources.md) à vos ressources Azure pour les organiser de façon logique dans une taxonomie. Pendant que le runtime d’intégration SSIS est en cours d’exécution, les modifications apportées aux étiquettes de fabrique de données parentes de runtime d'intégration SSIS ne prendront effet qu’après le redémarrage du runtime d’intégration SSIS.

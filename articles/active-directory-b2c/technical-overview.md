@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 5a01eb29caee02874cf828d1b2dd6b2df7440b4d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ca637cec58531de65847d5f1e7d19e81ed45318d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043051"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036425"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Vue d’ensemble technique et fonctionnelle d’Azure Active Directory B2C
 
@@ -212,9 +212,9 @@ Plusieurs applications peuvent utiliser le même flux utilisateur ou la même st
 
 Par exemple, pour se connecter à une application, l’application utilise le flux utilisateur *d’inscription ou de connexion*. Une fois connecté, l’utilisateur peut avoir envie de modifier son profil ; l’application initie donc une autre requête d’autorisation, cette fois-ci au moyen du flux utilisateur de *modification de profil*.
 
-## <a name="multi-factor-authentication-mfa"></a>Authentification multifacteur (MFA)
+## <a name="multifactor-authentication-mfa"></a>Authentification multifacteur (MFA)
 
-L’authentification multifacteur (MFA) AD B2C participe à la sécurisation de l’accès aux données et aux applications tout en maintenant une simplicité de gestion pour vos utilisateurs. Elle fournit une sécurité supplémentaire en exigeant une deuxième forme d’authentification, et procure une authentification renforcée en proposant toute une palette de méthodes d’authentification faciles à utiliser. 
+L’authentification multifacteur (MFA) Azure AD B2C participe à la sécurisation de l’accès aux données et aux applications tout en maintenant une simplicité de gestion pour vos utilisateurs. Elle fournit une sécurité supplémentaire en exigeant une deuxième forme d’authentification, et procure une authentification renforcée en proposant toute une palette de méthodes d’authentification faciles à utiliser. 
 
 Vos utilisateurs peuvent être amenés à s’authentifier par l’intermédiaire de MFA, selon les choix de configuration que vous avez faits en tant qu’administrateur.
 
@@ -299,6 +299,11 @@ Azure AD B2C vous permet de savoir à quel moment les personnes s’inscrivent 
 En intégrant Azure Application Insights dans les stratégies personnalisées Azure AD B2C, vous pouvez obtenir des informations sur la façon dont les utilisateurs s’inscrivent, se connectent, réinitialisent leur mot de passe ou modifient leur profil. Grâce à de telles informations, vous pouvez prendre des décisions fondées sur des données pour les cycles de développement à venir.
 
 Pour plus d’informations, consultez [Suivre le comportement des utilisateurs dans Azure Active Directory B2C à l’aide d’Application Insights](analytics-with-application-insights.md).
+
+## <a name="region-availability-and-data-residency"></a>Disponibilité des régions et résidence des données
+Le service Azure AD B2C est généralement disponible dans le monde entier, pour la disponibilité, avec la possibilité de résidence des données dans des régions comme indiqué dans [Produits disponibles par région](https://azure.microsoft.com/regions/services/). La résidence des données est déterminée par le pays ou la région que vous sélectionnez quand vous [créez votre locataire](tutorial-create-tenant.md). 
+
+Apprenez-en plus sur la [disponibilité régionale et la résidence des données dans Azure Active Directory B2C](data-residency.md).
 
 ## <a name="automation-using-microsoft-graph-api"></a>Automatisation à l’aide de l’API Microsoft Graph
 

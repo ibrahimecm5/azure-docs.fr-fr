@@ -3,19 +3,17 @@ title: Comprendre la fonctionnalité de configuration invité de la Stratégie A
 description: Découvrez comment la Stratégie Azure utilise la fonctionnalité de configuration invité pour auditer ou configurer les paramètres à l’intérieur des machines virtuelles.
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d562842da341394247a02516c08b062ee12a01cc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6a40469b6cd391672ba953bac37402285ac4a097
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042633"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040413"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Comprendre la fonctionnalité de configuration invité de la Stratégie Azure
 
 La fonctionnalité de configuration d’invité d’Azure Policy fournit des fonctionnalités natives pour auditer ou configurer des paramètres de système d’exploitation en tant que code, à la fois pour les machines s’exécutant dans Azure et les machines hybrides [avec Arc](../../../azure-arc/servers/overview.md).
 La fonctionnalité peut être utilisée directement par machine ou être orchestrée à grande échelle par Azure Policy.
-
-Les configurations sont différentes des définitions de stratégie. La configuration d’invité utilise Azure Policy pour attribuer dynamiquement des configurations aux machines. Vous pouvez également attribuer des configurations à des machines [manuellement](/guest-configuration-assignments.md#manually-creating-guest-configuration-assignments) ou à l’aide d’autres services Azure comme [AutoManage](../../../automanage/automanage-virtual-machines.md).
 
 Les ressources de configuration dans Azure sont conçues comme une [ressource d’extension](../../../azure-resource-manager/management/extension-resource-types.md).
 Vous pouvez imaginer chaque configuration comme un ensemble de propriétés supplémentaires pour la machine. Les configurations peuvent inclure des paramètres comme :
@@ -24,9 +22,18 @@ Vous pouvez imaginer chaque configuration comme un ensemble de propriétés supp
 - La configuration ou la présence de l’application
 - Paramètres d'environnement
 
-Les résultats de chaque configuration peuvent être affichés sur la [Page des affectations d’invités](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ou si la configuration est orchestrée par une affectation Azure Policy, en cliquant sur le lien « Dernière ressource évaluée » sur la [page « Détails de conformité »](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale).
+Les configurations sont différentes des définitions de stratégie. La configuration d’invité utilise Azure Policy pour attribuer dynamiquement des configurations aux machines. Vous pouvez également attribuer des configurations à des machines [manuellement](guest-configuration-assignments.md#manually-creating-guest-configuration-assignments) ou à l’aide d’autres services Azure comme [AutoManage](../../../automanage/automanage-virtual-machines.md).
 
-[Un guide vidéo de ce document est disponible](https://youtu.be/t9L8COY-BkM).
+Vous trouverez des exemples de chaque scénario dans le tableau suivant.
+
+| Type | Description | Exemple de scénario |
+| - | - | - |
+| [Gestion des configurations](guest-configuration-assignments.md) | Vous souhaitez la représentation complète d’un serveur, en tant que code dans le contrôle de code source. Le déploiement doit inclure les propriétés du serveur (taille, réseau, stockage) et la configuration des paramètres du système d’exploitation et de l’application. | « Cet ordinateur doit être un serveur web configuré pour héberger mon site Web. » |
+| [Conformité](../assign-policy-portal.md) | Vous souhaitez auditer ou déployer des paramètres sur tous les ordinateurs de l’étendue, soit de manière réactive vers des machines existantes, soit de manière proactive vers les nouveaux ordinateurs à mesure qu’ils sont déployés. | « Tous les ordinateurs doivent utiliser TLS 1.2. Auditez les machines existantes afin de pouvoir les modifier où cela est nécessaire, de manière contrôlée, à l’échelle. Pour les nouveaux ordinateurs, appliquez le paramètre lors de leur déploiement. » |
+
+Les résultats par paramètre des configurations peuvent être affichés sur la [Page des affectations d’invités](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ou si la configuration est orchestrée par une affectation Azure Policy, en cliquant sur le lien « Dernière ressource évaluée » sur la [page « Détails de conformité »](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale).
+
+[Un guide vidéo de ce document est disponible](https://youtu.be/t9L8COY-BkM). (mise à jour prochaine)
 
 ## <a name="enable-guest-configuration"></a>Activer la configuration invité
 

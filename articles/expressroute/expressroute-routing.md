@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 9d87f2641fb53a2372afcae27ebd7e92e8885e66
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: cc6013a46da32438e0863016eca9917cb08a7bf8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903989"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086243"
 ---
 # <a name="expressroute-routing-requirements"></a>Configuration requise pour le routage ExpressRoute
 Pour vous connecter aux services de cloud Microsoft à l’aide d’ExpressRoute, vous devez configurer et gérer le routage. Certains fournisseurs de connectivité proposent la configuration et la gestion du routage comme un service géré. Vérifiez auprès de votre fournisseur de connectivité s’il offre ce service. Si ce n’est pas le cas, vous devez respecter les conditions suivantes :
@@ -31,45 +31,45 @@ Vous devez réserver quelques blocs d’adresses IP pour configurer le routage e
 Pour configurer les peerings, vous pouvez utiliser des adresses IP privées ou publiques. La plage d’adresses utilisée pour configurer des routages ne doit pas chevaucher les plages d’adresses utilisées pour créer des réseaux virtuels dans Azure. 
 
 * IPv4 :
-    * Vous devez réserver un sous-réseau /29 ou deux sous-réseaux /30 pour les interfaces de routage.
+    * Vous devez réserver un sous-réseau `/29` ou deux sous-réseaux `/30` pour les interfaces de routage.
     * Les sous-réseaux utilisés pour le routage peuvent être des adresses IP privées ou publiques.
     * Les sous-réseaux ne doivent pas entrer en conflit avec la plage réservée par le client pour une utilisation dans le cloud Microsoft.
-    * Si un sous-réseau /29 est utilisé, il est subdivisé en deux sous-réseaux /30. 
-      * Le premier sous-réseau /30 est utilisé pour le lien principal, et le second sous-réseau /30 est utilisé pour le lien secondaire.
-      * Pour chacun des sous-réseaux /30, vous devez utiliser la première adresse IP du sous-réseau /30 sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau /30 pour configurer une session BGP.
+    * Si un sous-réseau `/29` est utilisé, il est subdivisé en deux sous-réseaux `/30`. 
+      * Le premier sous-réseau `/30` est utilisé pour la liaison principale, et le second sous-réseau `/30` est utilisé pour la liaison secondaire.
+      * Pour chacun des sous-réseaux `/30`, vous devez utiliser la première adresse IP du sous-réseau `/30` sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau `/30` pour configurer une session BGP.
       * Vous devez configurer les deux sessions BGP pour que notre [contrat SLA de disponibilité](https://azure.microsoft.com/support/legal/sla/) soit valide.
 * IPv6 :
-    * Vous devez réserver un sous-réseau /125 ou deux sous-réseaux /126 pour les interfaces de routage.
+    * Vous devez réserver un sous-réseau `/125` ou deux sous-réseaux `/126` pour les interfaces de routage.
     * Les sous-réseaux utilisés pour le routage peuvent être des adresses IP privées ou publiques.
     * Les sous-réseaux ne doivent pas entrer en conflit avec la plage réservée par le client pour une utilisation dans le cloud Microsoft.
-    * Si un sous-réseau /125 est utilisé, il est subdivisé en deux sous-réseaux /126. 
-      * Le premier sous-réseau /126 est utilisé pour la liaison principale, et le second sous-réseau /126 est utilisé pour la liaison secondaire.
-      * Pour chacun des sous-réseaux /126, vous devez utiliser la première adresse IP du sous-réseau /126 sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau /126 pour configurer une session BGP.
+    * Si un sous-réseau `/125` est utilisé, il est subdivisé en deux sous-réseaux `/126`. 
+      * Le premier sous-réseau `/126` est utilisé pour la liaison principale, et le second sous-réseau `/126` est utilisé pour la liaison secondaire.
+      * Pour chacun des sous-réseaux `/126`, vous devez utiliser la première adresse IP du sous-réseau `/126` sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau `/126` pour configurer une session BGP.
       * Vous devez configurer les deux sessions BGP pour que notre [contrat SLA de disponibilité](https://azure.microsoft.com/support/legal/sla/) soit valide.
 
 #### <a name="example-for-private-peering"></a>Exemple pour le peering privé
-Si vous choisissez d’utiliser un sous-réseau a.b.c.d/29 pour configurer le peering, il est scindé en deux sous-réseaux /30. Dans l’exemple suivant, notez le mode d’utilisation du sous-réseau a.b.c.d/29 :
+Si vous choisissez d’utiliser un sous-réseau `a.b.c.d/29` pour configurer le peering, il est scindé en deux sous-réseaux `/30`. Dans l’exemple suivant, notez que le sous-réseau `a.b.c.d/29` est utilisé :
 
-* a.b.c.d/29 est scindé en a.b.c.d/30 et a.b.c.d+4/30 puis transmis à Microsoft via les API d’approvisionnement.
-  * Vous utilisez a.b.c.d+1 comme l’IP VRF pour le PE principal et Microsoft utilisera a.b.c.d+2 comme IP VRF pour le MSEE principal.
-  * Vous utilisez a.b.c.d+5 comme l’IP VRF pour le PE secondaire et Microsoft utilisera a.b.c.d+6 IP VRF pour le MSEE secondaire.
+* `a.b.c.d/29` est scindé en `a.b.c.d/30` et `a.b.c.d+4/30`, puis transmis à Microsoft via les API d’approvisionnement.
+  * Utilisez `a.b.c.d+1` comme adresse IP VRF pour le PE principal et Microsoft utilisera `a.b.c.d+2` comme adresse IP VRF pour le routeur MSEE principal.
+  * Utilisez `a.b.c.d+5` comme adresse IP VRF pour le PE secondaire et Microsoft utilisera `a.b.c.d+6` comme adresse IP VRF pour le routeur MSEE secondaire.
 
-Imaginons que vous sélectionnez 192.168.100.128/29 pour configurer le peering privé. 192.168.100.128/29 inclut les adresses de 192.168.100.128 à 192.168.100.135, parmi lesquelles :
+Imaginez que vous sélectionnez `192.168.100.128/29` pour configurer le peering privé. `192.168.100.128/29` inclut les adresses de `192.168.100.128` à `192.168.100.135`, parmi lesquelles :
 
-* 192.168.100.128/30 sera attribuée à link1, et le fournisseur utilisera 192.168.100.129 tandis que Microsoft utilisera 192.168.100.130.
-* 192.168.100.132/30 sera attribuée à link2, et le fournisseur utilisera 192.168.100.133 tandis que Microsoft utilisera 192.168.100.134.
+* `192.168.100.128/30` sera attribuée à `link1`, le fournisseur utilisera `192.168.100.129`, tandis que Microsoft utilisera `192.168.100.130`.
+* `192.168.100.132/30` sera attribuée à `link2`, le fournisseur utilisera `192.168.100.133`, tandis que Microsoft utilisera `192.168.100.134`.
 
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>Adresses IP utilisées pour le peering Microsoft
 Vous devez utiliser des adresses IP publiques que vous possédez pour configurer les sessions BGP. Microsoft doit être en mesure de vérifier la propriété des adresses IP via les Registres Internet de routage régional (RIR) et les Registres Internet de routage (IRR).
 
 * Les adresses IP répertoriées dans le portail pour les préfixes publics publiés pour le peering Microsoft créent les listes de contrôle d’accès pour les routeurs principaux Microsoft pour autoriser le trafic entrant à partir de ces adresses IP. 
-* Vous devez utiliser un sous-réseau unique /29 (IPv4) ou /125 (IPv6) ou bien deux sous-réseaux /30 (IPv4) ou /126 (IPv6) afin de configurer le peering BGP pour chaque peering par circuit ExpressRoute (si vous en avez plusieurs).
-* Si un sous-réseau /29 est utilisé, il est subdivisé en deux sous-réseaux /30.
-* Le premier sous-réseau /30 est utilisé pour le lien principal, et le second sous-réseau /30 sera utilisé pour le lien secondaire.
-* Pour chacun des sous-réseaux /30, vous devez utiliser la première adresse IP du sous-réseau /30 sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau /30 pour configurer une session BGP.
-* Si un sous-réseau /125 est utilisé, il est subdivisé en deux sous-réseaux /126.
-* Le premier sous-réseau /126 est utilisé pour le lien principal, et le second sous-réseau /126 sera utilisé pour le lien secondaire.
-* Pour chacun des sous-réseaux /126, vous devez utiliser la première adresse IP du sous-réseau /126 sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau /126 pour configurer une session BGP.
+* Vous devez utiliser un sous-réseau unique `/29` (IPv4) ou `/125` (IPv6), ou bien deux sous-réseaux `/30` (IPv4) ou `/126` (IPv6) afin de configurer le peering BGP pour chaque peering par circuit ExpressRoute (si vous en avez plusieurs).
+* Si un sous-réseau `/29` est utilisé, il est subdivisé en deux sous-réseaux `/30`.
+* Le premier sous-réseau `/30` est utilisé pour le lien principal, et le second sous-réseau `/30` sera utilisé pour le lien secondaire.
+* Pour chacun des sous-réseaux `/30`, vous devez utiliser la première adresse IP du sous-réseau `/30` sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau `/30` pour configurer une session BGP.
+* Si un sous-réseau `/125` est utilisé, il est subdivisé en deux sous-réseaux `/126`.
+* Le premier sous-réseau `/126` est utilisé pour le lien principal, et le second sous-réseau `/126` sera utilisé pour le lien secondaire.
+* Pour chacun des sous-réseaux `/126`, vous devez utiliser la première adresse IP du sous-réseau `/126` sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau `/126` pour configurer une session BGP.
 * Vous devez configurer les deux sessions BGP pour que notre [contrat SLA de disponibilité](https://azure.microsoft.com/support/legal/sla/) soit valide.
 
 ### <a name="ip-addresses-used-for-azure-public-peering"></a>Adresses IP utilisées pour le peering public Azure
@@ -80,10 +80,10 @@ Vous devez utiliser des adresses IP publiques que vous possédez pour configurer
 
 Vous devez utiliser des adresses IP publiques que vous possédez pour configurer les sessions BGP. Microsoft doit être en mesure de vérifier la propriété des adresses IP via les Registres Internet de routage régional (RIR) et les Registres Internet de routage (IRR). 
 
-* Vous devez utiliser un sous-réseau unique /29 ou deux sous-réseaux /30 afin de configurer le peering BGP pour chaque peering par circuit ExpressRoute (si vous en avez plusieurs). 
-* Si un sous-réseau /29 est utilisé, il est subdivisé en deux sous-réseaux /30. 
-  * Le premier sous-réseau /30 est utilisé pour le lien principal, et le second sous-réseau /30 est utilisé pour le lien secondaire.
-  * Pour chacun des sous-réseaux /30, vous devez utiliser la première adresse IP du sous-réseau /30 sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau /30 pour configurer une session BGP.
+* Vous devez utiliser un sous-réseau unique `/29` ou deux sous-réseaux `/30` afin de configurer le peering BGP pour chaque peering par circuit ExpressRoute (si vous en avez plusieurs). 
+* Si un sous-réseau `/29` est utilisé, il est subdivisé en deux sous-réseaux `/30`. 
+  * Le premier sous-réseau `/30` est utilisé pour la liaison principale, et le second sous-réseau `/30` est utilisé pour la liaison secondaire.
+  * Pour chacun des sous-réseaux `/30`, vous devez utiliser la première adresse IP du sous-réseau `/30` sur votre routeur. Microsoft utilise la deuxième adresse IP du sous-réseau `/30` pour configurer une session BGP.
   * Vous devez configurer les deux sessions BGP pour que notre [contrat SLA de disponibilité](https://azure.microsoft.com/support/legal/sla/) soit valide.
 
 ## <a name="public-ip-address-requirement"></a>Spécification d’adresse IP publique

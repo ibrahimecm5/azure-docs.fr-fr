@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/05/2021
-ms.openlocfilehash: 5be8a3cfa8681bced90ba6fc74ebc69baa2f7962
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 507e7a97c0ec884580b0a29fd8a8691035221751
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065670"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085977"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Créer un workflow d’intégration avec Azure Logic Apps monolocataire (Standard) dans le Portail Azure
 
@@ -65,7 +66,7 @@ Bien que cet exemple de flux de travail soit basé sur le cloud et ne comporte q
 
 1. Dans la zone de recherche du portail Azure, entrez `logic apps`, puis sélectionnez **Logic Apps**.
 
-   ![Capture d’écran montrant la zone de recherche du portail Azure contenant le texte de recherche « logic apps » et la ressource « Logic App (Standard) » sélectionnée.](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
+   ![Capture d’écran montrant la zone de recherche Portail Azure avec le terme de recherche « Logic Apps » et le groupe « Logic Apps » sélectionné.](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
 
 1. Dans la page **Applications logiques**, sélectionnez **Ajouter**.
 
@@ -76,7 +77,7 @@ Bien que cet exemple de flux de travail soit basé sur le cloud et ne comporte q
    | **Abonnement** | Oui | <*Azure-subscription-name*> | Abonnement Azure à utiliser pour votre application logique. |
    | **Groupe de ressources** | Oui | <*nom-groupe-de-ressources-Azure*> | Groupe de ressources Azure dans lequel vous créez votre application logique et les ressources associées. Ce nom de ressource doit être unique d’une région à l’autre et peut uniquement contenir des lettres, des chiffres, des traits d’union ( **-** ), des traits de soulignement ( **_** ), des parenthèses [ **()** ] et des points ( **.** ). <p><p>Cet exemple crée un groupe de ressources nommé `Fabrikam-Workflows-RG`. |
    | **Type** | Oui | **Standard** | Ce type de ressource d’application logique s’exécute dans l’environnement Azure Logic Apps monolocataire et utilise le [modèle d’utilisation, de facturation et de tarification Standard](logic-apps-pricing.md#standard-pricing). |
-   | **Nom de l’application logique** | Oui | <*logic-app-name*> | Nom à utiliser pour votre application logique. Ce nom de ressource doit être unique d’une région à l’autre et peut uniquement contenir des lettres, des chiffres, des traits d’union ( **-** ), des traits de soulignement ( **_** ), des parenthèses [ **()** ] et des points ( **.** ). <p><p>Cet exemple crée une application logique nommée `Fabrikam-Workflows`. <p><p>**Remarque** : le nom de votre application logique reçoit automatiquement le suffixe `.azurewebsites.net`, car la ressource **Application logique (standard)** est alimentée par Azure Functions, qui utilise la même convention d’affectation de noms d’application. |
+   | **Nom de l’application logique** | Oui | <*logic-app-name*> | Nom à utiliser pour votre application logique. Ce nom de ressource doit être unique d’une région à l’autre et peut uniquement contenir des lettres, des chiffres, des traits d’union ( **-** ), des traits de soulignement ( **_** ), des parenthèses [ **()** ] et des points ( **.** ). <p><p>Cet exemple crée une application logique nommée `Fabrikam-Workflows`. <p><p>**Remarque** : Le nom de votre application logique obtient automatiquement le suffixe, `.azurewebsites.net`, car la ressource **Application logique (Standard)** repose sur le runtime Azure Logic Apps monolocataire qui utilise le modèle d’extensibilité d’Azure Functions et qui est hébergé en tant qu’extension sur le runtime Azure Functions. Azure Functions utilise la même convention d’affectation de noms d’application. |
    | **Publier** | Oui | <*deployment-environment*> | Destination de déploiement pour votre application logique. Par défaut, le **flux de travail** est sélectionné pour le déploiement sur un seul locataire Azure Logic Apps. Azure crée une ressource d’application logique vide dans laquelle vous devez ajouter votre premier flux de travail. <p><p>**Remarque** : actuellement, l’option de **conteneur Docker** requiert un [*emplacement personnalisé*](../azure-arc/kubernetes/conceptual-custom-locations.md) sur un cluster Kubernetes avec Azure Arc, que vous pouvez utiliser sur [Azure Arc avec Logic Apps (préversion)](azure-arc-enabled-logic-apps-overview.md). Les emplacements de ressources doivent tous être identiques pour votre application logique, votre emplacement personnalisé et votre cluster. |
    | **Région** | Oui | <*Azure-region*> | L’emplacement à utiliser pour la création de votre groupe de ressources et de vos ressources. Cet exemple déploie l’exemple d’application logique sur Azure et utilise **USA Ouest**. <p>– Si vous avez sélectionné **Conteneur Docker**, sélectionnez votre emplacement personnalisé. <p>– Pour déployer sur une ressource [ASEv3](../app-service/environment/overview.md), qui doit d’abord exister, sélectionnez cette ressource d’environnement dans la liste **Région**. |
    |||||
@@ -89,6 +90,7 @@ Bien que cet exemple de flux de travail soit basé sur le cloud et ne comporte q
 
    | Propriété | Obligatoire | Valeur | Description |
    |----------|----------|-------|-------------|
+   | **Type de stockage** | Oui | - **SQL et Stockage Azure** <br>- **Stockage Azure** | Type de stockage que vous souhaitez utiliser pour les artefacts et les données liés aux workflows. <p><p>- Pour déployer uniquement sur Azure, sélectionnez **Stockage Azure**. <p><p>- Pour utiliser SQL comme stockage principal et stockage Azure en tant que stockage secondaire, sélectionnez **SQL et stockage Azure**, puis consultez [Configurer le stockage de base de données SQL pour les applications logiques Standard dans les applications logiques Azure à client unique](set-up-sql-db-storage-single-tenant-standard-workflows.md). <p><p>**Remarque** : Si votre déploiemenent cible une région Azure, vous avez toujours besoin d’un compte Stockage Azure. Celui-ci est utilisé à une seule reprise pour héberger la configuration de l’application logique sur la plateforme Azure Logic Apps. L’état, l’historique des exécutions et les autres artefacts de runtime du workflow en cours sont stockés dans votre base de données SQL. <p><p>Pour les déploiements sur un emplacement personnalisé hébergé sur un cluster Azure Arc, vous n’avez besoin que de SQL comme fournisseur de stockage. |
    | **Compte de stockage** | Oui | <*Azure-storage-account-name*> | [Compte de stockage Azure](../storage/common/storage-account-overview.md) à utiliser pour les transactions de stockage. <p><p>Ce nom de ressource doit être unique d’une région à l’autre et comporter entre 3 et 24 caractères avec uniquement des chiffres et des lettres minuscules. Sélectionnez un compte existant ou créez un nouveau compte. <p><p>Cet exemple crée un compte de stockage nommé `fabrikamstorageacct`. |
    | **Type de plan** | Oui | <*hosting-plan*> | Plan d’hébergement à utiliser pour déployer votre application logique. <p><p>Pour plus d’informations, consultez [Plans d’hébergement et niveaux tarifaires](logic-apps-pricing.md#standard-pricing). |
    | **Plan Windows** | Oui | <*plan-name*> | Nom du plan à utiliser. Sélectionnez un plan existant ou fournissez ou nom de nouveau plan. <p><p>L’exemple suivant utilise le nom `Fabrikam-Service-Plan`. |

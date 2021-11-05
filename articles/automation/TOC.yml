@@ -3,7 +3,7 @@
 - name: Vue d’ensemble
   items:
     - name: "Qu’est-ce qu’Automation\_?"
-      href: automation-intro.md
+      href: overview.md
     - name: Questions fréquentes (FAQ)
       href: automation-faq.md
     - name: Nouveautés
@@ -249,7 +249,7 @@
               items:
                 - name: Supprimer Suivi des modifications et inventaire
                   href: change-tracking/remove-feature.md
-                - name: Supprimer des machines virtuelles de Suivi des modifications et inventaire
+                - name: Supprimer des machines
                   href: change-tracking/remove-vms-from-change-tracking.md
             - name: Dépanner
               items:
@@ -321,7 +321,7 @@
           items:
             - name: Supprimer Update Management
               href: update-management/remove-feature.md
-            - name: Supprimer des machines virtuelles d’Update Management
+            - name: Supprimer des machines
               href: update-management/remove-vms.md
         - name: Dépanner
           items:
@@ -386,5 +386,5 @@
       href: 'https://azure.microsoft.com/updates/?product=automation'
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-automation'
-    - name: Videos
+    - name: Vidéos
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

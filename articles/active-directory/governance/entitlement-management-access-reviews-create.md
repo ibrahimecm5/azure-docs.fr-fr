@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 10/26/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2497e47078f91c1649db107dd105227e219ae2
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: d8e4b08f407417136462ff066d0f0e81312662ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565714"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051696"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Créer une révision d’accès d’un package d’accès dans la gestion des droits d’utilisation Azure AD
 
@@ -40,9 +40,33 @@ Pour plus d’informations, consultez [Exigences des licences](entitlement-manag
 
 Vous pouvez activer des révisions d’accès lorsque [vous créez un nouveau package d’accès](entitlement-management-access-package-create.md) ou [modifiez une stratégie de package d’accès existant](entitlement-management-access-package-lifecycle-policy.md). Pour activer les révisions d’accès d’un package d’accès, procédez comme suit :
 
-1. Ouvrez l’onglet **Cycle de vie** d’un package d’accès et faites défiler jusqu’à **Révisions d’accès**.
+1. Ouvrez l’onglet **Cycle de vie** pour un package d'accès afin de spécifier l’expiration de l’attribution du package d’accès à un utilisateur. Vous pouvez également spécifier si les utilisateurs peuvent étendre leurs attributions.
 
-1. Déplacez la bascule **Demander des révisions d’accès** vers **Oui**.
+1. Dans la section **Expiration**, définissez L’affectation de package d’accès expire sur **Date**, **Nombre de jours**, **Nombre d’heures** ou **Jamais**.
+
+    Pour **Date**, sélectionnez une date d’expiration.
+
+    Pour **Nombre de jours**, spécifiez un nombre de jours compris entre 0 et 3 660.
+
+    Dans **Nombre d’heures**, indiquez un nombre d’heures.
+
+    Selon votre sélection, l’attribution du package d’accès à un utilisateur expire à une date définie, un nombre de jours définis après approbation ou n’expire jamais.
+    
+    ![Package d’accès - Paramètres d’expiration du cycle de vie](./media/entitlement-management-access-reviews/expiration.png)
+
+1. Cliquez sur Afficher les paramètres avancés d’expiration pour afficher plus de paramètres.
+
+1. Pour autoriser un utilisateur à étendre son attribution, définissez **Autoriser un utilisateur à étendre son accès** sur **Oui**.
+
+    Si les extensions sont autorisées dans la stratégie, l’utilisateur recevra un e-mail 14 jours ainsi qu’un jour avant l’expiration de son attribution l’invitant à étendre l’attribution. L’utilisateur doit toujours se trouver dans l’étendue de la stratégie au moment où il demande une prolongation. En outre, si la stratégie a une date de fin explicite pour les attributions et qu’un utilisateur envoie une demande de prolongation de l’accès, la date de prolongation de la demande doit être au plus tard la date d’expiration des attributions, comme défini dans la stratégie utilisée pour accorder à l’utilisateur l’accès au package d’accès. Par exemple, si la stratégie indique que les affectations sont configurées pour expirer le 30 juin, l’extension maximale qu’un utilisateur peut demander est le 30 juin.
+
+    Si l’accès d’un utilisateur est étendu, il ne pourra pas demander le package d’accès après la date d’extension spécifiée (date définie dans le fuseau horaire de l’utilisateur qui a créé la stratégie).
+
+1. Pour demander une approbation pour accorder une extension, définissez **Exiger une approbation pour accorder l'extension** sur **Oui**.
+
+    Les mêmes paramètres d’approbation que ceux spécifiés sous l’onglet Requêtes seront utilisés.
+
+1. Ensuite, déplacez la bascule **Demander des révisions d’accès** vers **Oui**.
 
     ![Ajouter la révision d’accès](./media/entitlement-management-access-reviews/access-reviews-pane.png)
 

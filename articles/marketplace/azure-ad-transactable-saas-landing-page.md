@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.openlocfilehash: 8a0e7ab7fad8b0da025f143ab2401e5740972ec7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549870"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078253"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Créer la page d'accueil de votre offre SaaS à vendre dans le Marketplace commercial
 
@@ -46,7 +46,9 @@ Les sections suivantes vous guideront tout au long du processus de création d�
 
 ## <a name="create-an-azure-ad-app-registration"></a>Créer une inscription d’application Azure AD
 
-Le marketplace commercial est entièrement intégrée à Azure AD. Les acheteurs arrivent sur le marketplace authentifiés avec un [compte Azure AD ou un compte Microsoft (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Après l’achat, l’acheteur passe du marketplace commercial à l’URL de votre page d’accueil pour activer et gérer son abonnement à votre application SaaS. Vous devez laisser l’acheteur se connecter à votre application avec Azure AD SSO. (L’URL de la page d’accueil est spécifiée dans la page [Configuration technique](plan-saas-offer.md#technical-information) de l’offre).
+Le marketplace commercial est entièrement intégrée à Azure AD. Les acheteurs arrivent sur le marketplace authentifiés avec un [compte Azure AD ou un compte Microsoft (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Après l’achat, l’acheteur passe du marketplace commercial à l’URL de votre page d’accueil pour activer et gérer son abonnement à votre application SaaS. Vous devez laisser l’acheteur se connecter à votre application avec Azure AD SSO. (L’URL de la page de destination est spécifiée dans la page [Configuration technique](plan-saas-offer.md#technical-information) de l’offre.)
+
+[!INCLUDE [pound-sign-note](./includes/pound-sign-note.md)]
 
 La première étape de l’utilisation de l’identité consiste à s’assurer que votre page d’accueil est inscrite en tant qu’application Azure AD. Inscrire l’application vous permet d’utiliser Azure AD pour authentifier les utilisateurs et demander l’accès aux ressources utilisateur. Cela peut être considéré comme la définition de l’application, ce qui permet au service de savoir comment émettre des jetons pour l’application en fonction des paramètres de l’application.
 

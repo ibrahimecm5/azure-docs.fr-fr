@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 858234982aa4a148fe6af71ba8993923e80044dd
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2fa29b8cfd15ccee133ef416d729c1807aa0a400
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230184"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017917"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Application monopage : Se connecter et se déconnecter
 
@@ -456,9 +456,9 @@ function App() {
 
 ## <a name="sign-out-with-a-pop-up-window"></a>Se déconnecter avec une fenêtre contextuelle
 
-MSAL.js v2 fournit une méthode `logoutPopup` qui vide le cache dans le stockage du navigateur et ouvre une fenêtre contextuelle sur la page de déconnexion d'Azure Active Directory (Azure AD). Après la déconnexion, Azure AD redirige la fenêtre contextuelle vers votre application et MSAL.js ferme la fenêtre contextuelle.
+MSAL.js v2 fournit une méthode `logoutPopup` qui vide le cache dans le stockage du navigateur et ouvre une fenêtre contextuelle sur la page de déconnexion d'Azure Active Directory (Azure AD). Après la déconnexion, Azure AD redirige la fenêtre contextuelle vers votre application et MSAL.js ferme la fenêtre contextuelle.
 
-Vous pouvez configurer l'URI vers lequel Azure AD doit rediriger après la déconnexion en définissant `postLogoutRedirectUri`. Cet URI doit être enregistré en tant qu'URI de redirection dans l'inscription de votre application.
+Vous pouvez configurer l'URI vers lequel Azure AD doit rediriger après la déconnexion en définissant `postLogoutRedirectUri`. Cet URI doit être enregistré en tant qu’URI de redirection dans l’inscription de votre application.
 
 Vous pouvez également configurer `logoutPopup` de manière à rediriger la fenêtre principale vers une autre page, telle que la page d'accueil ou la page de connexion, une fois la déconnexion terminée en transmettant `mainWindowRedirectUri` dans le cadre de la requête.
 
@@ -558,7 +558,7 @@ function App() {
 
 MSAL.js fournit une méthode `logout` dans la v1, et une méthode `logoutRedirect` dans la v2, qui vide le cache dans le stockage du navigateur et redirige la fenêtre vers la page de déconnexion d'Azure Active Directory (Azure AD). Après la déconnexion, Azure AD redirige par défaut vers la page qui a appelé la déconnexion.
 
-Vous pouvez configurer l’URI de redirection après la déconnexion en définissant `postLogoutRedirectUri`. Cet URI doit être enregistré en tant qu'URI de redirection dans l'inscription de votre application.
+Vous pouvez configurer l’URI de redirection après la déconnexion en définissant `postLogoutRedirectUri`. Cet URI doit être enregistré en tant qu’URI de redirection dans l’inscription de votre application.
 
 # <a name="javascript-msaljs-v2"></a>[JavaScript (MSAL.js v2)](#tab/javascript2)
 

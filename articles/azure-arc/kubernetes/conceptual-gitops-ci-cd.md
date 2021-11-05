@@ -1,21 +1,19 @@
 ---
-title: Workflow CI/CD avec GitOps - Kubernetes compatible avec Azure Arc
+title: Workflow CI/CD avec GitOps – Kubernetes avec Azure Arc
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: conceptual
-author: tcare
-ms.author: tcare
 description: Cet article fournit une vue d’ensemble conceptuelle d’un workflow CI/CD avec GitOps
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, conteneurs, intégration continue, livraison continue, Azure DevOps
-ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 837c0124739fa6659fc4c7652fcb9ca7be4fbf85
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025864"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039655"
 ---
-# <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>Flux de travail CI/CD avec GitOps – Kubernetes avec Azure Arc
+# <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>Workflow CI/CD avec GitOps – Kubernetes avec Azure Arc
 
 Les déploiements Kubernetes modernes hébergent plusieurs applications, clusters et environnements. GitOps vous permet de gérer ces configurations complexes plus facilement, en effectuant le suivi de l’état souhaité des environnements Kubernetes avec Git. En utilisant les outils Git courants pour suivre l’état des clusters, vous pouvez augmenter la responsabilité, faciliter l’investigation des défaillances et activer l’automatisation pour gérer les environnements.
 
@@ -74,4 +72,4 @@ Supposons qu’Alice souhaite apporter une modification d’application qui modi
 8.  Lorsque tous les environnements ont reçu des déploiements réussis, le pipeline prend fin.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Apprenez-en davantage sur la création de connexions entre votre cluster et un dépôt Git en guise de [ressource de configuration intégrant Kubernetes avec Azure Arc](./conceptual-configurations.md).
+Découvrez comment créer des connexions entre votre cluster et un dépôt Git en guise de [ressource de configuration intégrant Kubernetes avec Azure Arc](./conceptual-configurations.md)

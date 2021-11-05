@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 481d4534f7213d55c795383d6112fd93f7997c9c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 861a4669f36abc8e69f51b0ad24c1a5bd5b43f13
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596863"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018885"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Démarrage rapide : Transformer des données avec des flux de données de mappage
 
@@ -107,7 +107,7 @@ Une fois que vous avez créé votre flux de données, vous êtes automatiquement
 
 1. Le générateur d’expressions de flux de données vous permet de générer de manière interactive des expressions à utiliser dans diverses transformations. Les expressions peuvent inclure des fonctions intégrées, des colonnes du schéma d’entrée et des paramètres définis par l’utilisateur. Pour plus d’informations sur la génération d’expressions, consultez [Générateur d’expressions de flux de données](../data-factory/concepts-data-flow-expression-builder.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
-    Dans ce démarrage rapide, vous voulez filtrer les films du genre comédie qui sont sortis entre 1910 et 2000. Comme l’année est actuellement une chaîne, vous devez la convertir en un entier à l’aide de la fonction ```toInteger()```. Utilisez les opérateurs supérieur ou égal à (>=) et inférieur ou égal à (<=) pour effectuer une comparaison avec les valeurs d’années (year) littérales 1910 et 2000. Unissez ces expressions avec l’opérateur And (&&). L’expression se présente comme suit :
+    Dans ce démarrage rapide, vous voulez filtrer les films du genre comédie qui sont sortis entre 1910 et 2000. Comme l’année est actuellement une chaîne, vous devez la convertir en un entier à l’aide de la fonction ```toInteger()```. Utilisez les opérateurs supérieur ou égal à (>=) et inférieur ou égal à (<=) pour effectuer une comparaison avec les valeurs d’années (year) littérales 1910 et 2000. Unissez ces expressions avec l’opérateur `&&` (and). L’expression se présente comme suit :
 
     `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/25/2021
+ms.date: 10/26/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ce5da1ae3ae87d3dbfc91b72fbda412ad179cfa9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 48577b7625b80954d856d02fcee9e0696393bc55
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233958"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036254"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutoriel : Créer un locataire Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Vous découvrirez comment inscrire une application dans le didacticiel suivant.
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/). 
 
-1. Sélectionnez le répertoire qui contient votre abonnement :
+1. Passez au répertoire qui contient votre abonnement :
     1. Sélectionnez l’icône du filtre **Annuaires + abonnements** dans la barre d’outils du portail Azure. 
     
         ![Icône du filtre Annuaires + abonnements](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
@@ -58,8 +58,8 @@ Vous découvrirez comment inscrire une application dans le didacticiel suivant.
 
 1. Ajoutez **Microsoft.AzureActiveDirectory** comme fournisseur de ressources pour l’abonnement Azure que vous utilisez ([En savoir plus](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)) :
 
-    1. Dans le menu du portail Azure ou dans la page **Accueil**, sélectionnez **Abonnements**.
-    2. Sélectionnez votre abonnement, puis dans le menu gauche, sélectionnez **Fournisseurs de ressources**.
+    1. Dans le portail Azure, recherchez et sélectionnez **Abonnements**.
+    2. Sélectionnez votre abonnement, puis dans le menu gauche, sélectionnez **Fournisseurs de ressources**. Si vous ne voyez pas le menu de gauche, sélectionnez l’icône **Afficher le menu de <nom de votre abonnement>** dans la partie supérieure gauche de la page pour l’ouvrir.
     3. Assurez-vous que la ligne **Microsoft.AzureActiveDirectory** affiche l’état **Inscrit**. Si ce n’est pas le cas, sélectionnez la ligne, puis sélectionnez **S’inscrire**.
 
 1. Dans le menu du Portail Azure ou dans la page **Accueil**, sélectionnez **Créer une ressource**.

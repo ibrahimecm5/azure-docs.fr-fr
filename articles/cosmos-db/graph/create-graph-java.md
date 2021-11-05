@@ -9,12 +9,12 @@ ms.date: 03/26/2019
 author: manishmsfte
 ms.author: mansha
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 52060633158c66e0cbf981b46b34347bdcece649
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 79b8c95a43d4e9d083c8021c1b0ec4d606cd80f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782639"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131041061"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Démarrage rapide : Créer une base de données de graphe avec le SDK Java et l’API Azure Cosmos DB Gremlin
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -35,6 +35,7 @@ Dans ce guide de démarrage rapide, vous allez créer et gérer un compte d’AP
 - [Kit de développement Java (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Faites pointer la variable d’environnement `JAVA_HOME` vers le dossier dans lequel le JDK est installé.
 - [Archive binaire Maven](https://maven.apache.org/download.cgi). 
 - [Git](https://www.git-scm.com/downloads). 
+- [Gremlin-driver 3.4.0](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver/3.4.0), cette dépendance est mentionnée dans l’exemple de démarrage rapide pom.xml
 
 ## <a name="create-a-database-account"></a>Création d’un compte de base de données
 

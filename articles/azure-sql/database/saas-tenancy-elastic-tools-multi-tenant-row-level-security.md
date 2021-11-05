@@ -1,7 +1,6 @@
 ---
 title: Applications mutualisées avec une SNL et des outils de base de données élastique
 description: Utilisez les outils de base de données élastique avec une sécurité au niveau des lignes pour générer une application avec une couche Données hautement évolutive.
-services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
@@ -11,12 +10,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 5ea87afa5b66701a3d28f98a446c9307ccac0fc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b7bc3f44b5b794ece77296d84b4d21cf12a57eb3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532123"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062828"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Applications multi-locataires avec des outils de base de données élastique et la sécurité au niveau des lignes
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +45,7 @@ L’objectif est d’utiliser les API de [routage dépendant des données](elast
 
 Ce projet étend celui que décrit la section [Outils de base de données pour base de données SQL Microsoft Azure - Intégration d’Entity Framework](elastic-scale-use-entity-framework-applications-visual-studio.md) , en ajoutant la prise en charge des bases de données de partition multi-locataires. Le projet crée une application de console simple pour la création de blogs et de publications. Le projet inclut quatre locataires, ainsi que deux bases de données de partition mutualisée. Cette configuration est illustrée dans le précédent diagramme.
 
-Générez et exécutez l’application. Cette exécution démarre le gestionnaire de mappage de la partition dédiée aux outils de base de données élastique et effectue les tests suivants :
+Générez et exécutez l’application. Cette exécution démarre le gestionnaire de mappage de la partition dédiée aux outils de base de données élastique et effectue les tests suivants :
 
 1. À l’aide d’Entity Framework et de LINQ, créez un blog et affichez tous les blogs pour chaque client.
 2. À l’aide de la fonction SqlClient ADO.NET, affichez tous les blogs d’un locataire.
@@ -239,7 +238,7 @@ CREATE FUNCTION rls.fn_tenantAccessPredicate(@TenantId int)
     WITH SCHEMABINDING
 AS
     RETURN SELECT 1 AS fn_accessResult
-        -- Use the user in your application’s connection string.
+        -- Use the user in your application's connection string.
         -- Here we use 'dbo' only for demo purposes!
         WHERE DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('dbo')
         AND CAST(SESSION_CONTEXT(N'TenantId') AS int) = @TenantId;
@@ -346,7 +345,7 @@ GO
 
 ## <a name="summary"></a>Résumé
 
-Les outils de base de données élastique et la fonction de sécurité au niveau des lignes (RLS) peuvent être utilisés ensemble pour effectuer un scale-out de la couche Données d’une application prenant en charge les partitions multi-locataires ou à un seul locataire. Les partitions mutualisées peuvent être utilisées pour stocker les données plus efficacement. Cette efficacité est prononcée lorsqu’un grand nombre de locataires possède seulement quelques lignes de données. Les partitions de locataire unique peuvent prendre en charge les locataires premium aux exigences de performances et d’isolation plus strictes. Pour plus d’informations, consultez [Sécurité au niveau des lignes][rls].
+Les outils de base de données élastique et la fonction de sécurité au niveau des lignes (RLS) peuvent être utilisés ensemble pour effectuer un scale-out de la couche de données d’une application prenant en charge les partitions multi-locataire ou à un seul locataire. Les partitions mutualisées peuvent être utilisées pour stocker les données plus efficacement. Cette efficacité est prononcée lorsqu’un grand nombre de locataires possède seulement quelques lignes de données. Les partitions de locataire unique peuvent prendre en charge les locataires premium aux exigences de performances et d’isolation plus strictes. Pour plus d’informations, consultez [Sécurité au niveau des lignes][rls].
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -358,7 +357,7 @@ Les outils de base de données élastique et la fonction de sécurité au niveau
 
 ## <a name="questions-and-feature-requests"></a>Questions et demandes de fonctionnalités
 
-Pour toute question, contactez-nous sur la [page de questions Microsoft Q&R pour SQL Database](/answers/topics/azure-sql-database.html). Ajoutez également des demandes de fonctionnalités dans le [forum de commentaires de Base de données SQL](https://feedback.azure.com/forums/217321-sql-database/).
+Pour toute question, contactez-nous sur la [page de questions Microsoft Q&R pour SQL Database](/answers/topics/azure-sql-database.html). Ajoutez également des demandes de fonctionnalités dans le [forum de commentaires de Base de données SQL](https://feedback.azure.com/d365community/forum/04fe6ee0-3b25-ec11-b6e6-000d3a4f0da0).
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png

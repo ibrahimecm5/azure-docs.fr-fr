@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 9df6e2c1bd937f275fb3b35db8cd6ac2e3909502
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 7d7eb6bae2a6000f2f117dbe8f38976a13504825
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532871"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014801"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Recherche sémantique dans la Recherche cognitive Azure
 
@@ -90,7 +90,9 @@ La recherche sémantique est disponible via [l’enregistrement d’inscription]
 | Fonctionnalité | Niveau | Région | Inscription | Tarifs |
 |---------|------|--------|---------------------|-------------------|
 | Recherche sémantique (classement, légendes, surlignages, réponses) | Niveau Standard (S1, S2, S3) | USA Centre Nord, USA Ouest, USA Ouest 2, USA Est 2, Europe Nord, Europe Ouest | Obligatoire | [Page de tarification de la Recherche cognitive](https://azure.microsoft.com/pricing/details/search/)  |
-| Vérification orthographique | De base et niveaux supérieurs | Tous | None | Aucun (gratuit) |
+| Vérification orthographique | De base<sup>1</sup> et niveaux supérieurs  | Tous | None | Aucun (gratuit) |
+
+<sup>1</sup> En raison des mécanismes d’approvisionnement et de la durée de vie des services de recherche partagés (gratuits), un petit nombre de services dispose d’un contrôle orthographique sur le niveau gratuit. Toutefois, la disponibilité de la vérification orthographique sur les services de niveau gratuit n’est pas garantie et ne peut pas être ajoutée si elle n’existe pas déjà.
 
 Des frais de recherche sémantique sont prélevés lorsque les demandes de requête incluent « queryType=semantic » et que la chaîne de recherche n’est pas vide (par exemple, « search=hôtels acceptant les animaux à new york »). Si votre chaîne de recherche est vide (« search=* »), vous ne serez pas facturé, même si queryType est défini sur « semantic ».
 
@@ -118,7 +120,7 @@ PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups
 Pour réactiver la recherche sémantique, réexécutez la requête ci-dessus, en affectant la valeur « free » (par défaut) ou « standard » à « semanticSearch ».
 
 > [!TIP]
-> Les appels de l’API REST de gestion sont authentifiés via le Répertoire actif Azure. Pour obtenir des conseils sur la configuration d’un principe de sécurité et d’une demande, consultez ce billet de blog [Azure REST API with poster (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). L’exemple précédent a été testé à l’aide des instructions et de la collection de publications fournies dans le billet de blog.
+> Les appels de l’API REST de gestion sont authentifiés via le Répertoire actif Azure. Pour obtenir des conseils sur la configuration d’un principe de sécurité et d’une demande, consultez ce billet de blog [API REST Azure avec Billet (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). L’exemple précédent a été testé à l’aide des instructions et de la collection de publications fournies dans le billet de blog.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

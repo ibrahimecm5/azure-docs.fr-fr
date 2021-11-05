@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 5422fe324ca1f3ef5bb2d14fb04664c8fb03fe3c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57abd00282067b66be0da55bf33324fc55dc435
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866231"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020062"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Échec du débogage du travail Spark avec le kit de ressources Azure pour IntelliJ (préversion)
 
@@ -115,11 +115,6 @@ En cas d’échec de l’envoi du travail, vous pouvez télécharger le profil d
 ## <a name="next-steps"></a><a name="seealso"></a>Étapes suivantes
 
 * [Vue d’ensemble : Déboguer les applications Apache Spark](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-
-### <a name="demo"></a>Démonstration
-
-* Créer un projet Scala (vidéo) : [Créer des applications Apache Spark Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Débogage à distance (vidéo) : [Utiliser Azure Toolkit for IntelliJ pour déboguer des applications Apache Spark à distance sur un cluster HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scénarios
 

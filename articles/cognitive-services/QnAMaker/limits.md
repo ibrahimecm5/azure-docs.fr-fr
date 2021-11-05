@@ -4,13 +4,14 @@ description: QnA Maker présente des limites de métadonnées pour certaines par
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 11/09/2020
-ms.openlocfilehash: 0d9e3d4c9ec9eab75ce5917e9ea20011653ff133
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ac7741a6404f47e3cabdd9eff81f81c6ad39de36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790191"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011976"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Limites de la base de connaissances QnA Maker
 
@@ -24,7 +25,7 @@ Le nombre maximal de bases de connaissances est basé sur les [limites de niveau
 |---|---|---|---|---|---|----|
 |Nombre maximal de bases de connaissances publiées autorisées|2|14|49|199|199|2 999|
 
- Par exemple, si votre niveau comporte 15 index autorisés, vous pouvez publier 14 bases de connaissances (1 index par base de connaissances publiée). Le quinzième index, `testkb`, est utilisé pour toutes les bases de connaissances à des fins de création et de test.
+ Par exemple, si votre niveau comporte 15 index autorisés, vous pouvez publier 14 bases de connaissances (un index par base de connaissances publiée). Le 15e index, `testkb`, est utilisé pour toutes les bases de connaissances à des fins de création et de test.
 
 ## <a name="extraction-limits"></a>Limites d’extraction
 
@@ -51,9 +52,6 @@ Les noms de fichiers ne peuvent pas inclure les caractères suivants :
 
 Le nombre maximal de fichiers qui peuvent être extraits et la taille de fichier maximale sont basés sur vos **[limites du niveau de tarification QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** .
 
-> [!NOTE]
-> Les réponses aux questions personnalisées (préversion) est un service gratuit sans aucune limite quant au nombre de sources pouvant être ajoutées. Le débit est actuellement limité à 10 transactions par seconde pour à la fois les API de gestion et les API de prédiction.
-
 ### <a name="maximum-number-of-deep-links-from-url"></a>Nombre maximal de liens ciblés à partir de l’URL
 
 Le nombre maximal de liens ciblés pouvant être analysés pour l’extraction de questions/réponses à partir d’une page URL est de **20**.
@@ -62,29 +60,11 @@ Le nombre maximal de liens ciblés pouvant être analysés pour l’extraction d
 
 Les métadonnées sont présentées sous la forme d’une paire clé-valeur textuelle, telle que `product:windows 10`. Elles sont stockées et comparées en minuscules. Le nombre maximal de champs de métadonnées est basé sur les **[limites du niveau de Recherche cognitive Azure](../../search/search-limits-quotas-capacity.md)** .
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
-
 Pour la version en disposition générale, étant donné que l’index de test est partagé entre toutes les bases de connaissances, la limite est appliquée à toutes les bases de connaissances du service QnA Maker.
 
 |**Niveau de Recherche cognitive Azure** | **Gratuit** | **De base** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Nombre maximal de champs de métadonnées par service QnA Maker (pour tous les Kbits/s)|1 000|100*|1 000|1 000|1 000|1 000|
-
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Si vous choisissez d’avoir des bases de connaissances en plusieurs langues dans un service, il y a un index de test dédié par base de connaissances. Par conséquent, la limite est appliquée par base de connaissances dans le service QnA Maker.
-
-|**Niveau de Recherche cognitive Azure** | **Gratuit** | **De base** |**S1** | **S2**| **S3** |**S3 HD**|
-|---|---|---|---|---|---|----|
-|Nombre maximal de champs de métadonnées par service QnA Maker (par base de connaissances)|1 000|100*|1 000|1 000|1 000|1 000|
-
-Si vous ne choisissez pas l’option permettant d’avoir les bases de connaissance dans plusieurs langues, les limites sont appliquées à toutes les bases de connaissance du service QnA Maker.
-
-|**Niveau de Recherche cognitive Azure** | **Gratuit** | **De base** |**S1** | **S2**| **S3** |**S3 HD**|
-|---|---|---|---|---|---|----|
-|Nombre maximal de champs de métadonnées par service QnA Maker (pour tous les Kbits/s)|1 000|100*|1 000|1 000|1 000|1 000|
-
----
+|Nombre maximal de champs de métadonnées par service QnA Maker (pour tous les Kbits/s)|1 000|100*|1 000|1 000|1 000|1 000|
 
 ### <a name="by-name-and-value"></a>Par nom et valeur
 
@@ -92,7 +72,7 @@ La longueur et les caractères acceptables pour le nom et la valeur des métadon
 
 |Élément|Caractères autorisés|Modèle d’expression régulière|Caractères max.|
 |--|--|--|--|
-|Nom (clé)|Sont autorisés<br>les caractères alphanumériques (lettres et chiffres) et<br>`_` (trait de soulignement)<br> Ne doit pas contenir d’espaces.|`^[a-zA-Z0-9_]+$`|100|
+|Nom (clé)|Sont autorisés<br>Les caractères alphanumériques (lettres et chiffres)<br>`_` (trait de soulignement)<br> Ne doit pas contenir d’espaces.|`^[a-zA-Z0-9_]+$`|100|
 |Valeur|Tous sauf<br>`:` (deux points)<br>`|` (barre verticale)<br>Une seule valeur autorisée.|`^[^:|]+$`|500|
 |||||
 
@@ -102,7 +82,7 @@ Limites globales sur le contenu de la base de connaissances :
 * Longueur du texte de question : 1 000 caractères
 * Longueur du texte de clé des métadonnées : 100 caractères
 * Longueur du texte de valeur des métadonnées : 500 caractères
-* Caractères pris en charge pour le nom des métadonnées : lettres, chiffres et `_`
+* Caractères pris en charge pour le nom des métadonnées : lettres, chiffres et `_`
 * Caractères pris en charge pour la valeur des métadonnées : Tous sauf `:` et `|`
 * Longueur de nom de fichier : 200
 * Formats de fichier pris en charge : « .tsv », « .pdf », « .txt », « .docx », « .xlsx ».
@@ -132,7 +112,7 @@ Elles représentent les limites pour chaque action de mise à jour, autrement di
 
 Voici les limites lors de l’utilisation de fichiers non structurés pour *créer une base de connaissances* ou appeler l’API CreateKnowledgeBase :
 * Longueur du fichier : Nous allons extraire les 32 000 premiers caractères
-* Maximum trois réponses par fichier
+* Trois réponses maximum par fichier.
 
 ## <a name="prebuilt-question-answering-limits"></a>Limites de réponse aux questions prédéfinies
 
@@ -143,10 +123,10 @@ Voici les limites lors de l’utilisation de fichiers non structurés pour *cré
 Voici les limites lorsque l’API prédéfinie est utilisée pour *générer une réponse* ou appeler l’API GenerateAnswer :
 * Nombre de documents : 5
 * Taille maximale d’un seul document : 5 120 caractères
-* Maximum trois réponses par document
+* Trois réponses maximum par document.
 
 > [!IMPORTANT]
-> La prise en charge des fichiers/contenus non structurés et des API prédéfinies n’est disponible que dans les réponses aux questions personnalisées (préversion)
+> La prise en charge des fichiers/contenus non structurés est disponible uniquement dans Réponses aux questions.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

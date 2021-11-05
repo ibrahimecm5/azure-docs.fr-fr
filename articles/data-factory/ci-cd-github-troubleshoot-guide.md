@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
-ms.openlocfilehash: afba2903fc01a8f6e866f91074bdefa427dff7aa
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/25/2021
+ms.openlocfilehash: 1c73346cde1eb20f17973b65e43a8d1c4148b41c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217938"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073241"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>Résoudre les problèmes de CD-rom, de Azure DevOps et de GitHub dans Azure Data Factory et Synapse Analytics 
 
@@ -266,7 +266,7 @@ Vous souhaitez exécuter CI/CD lors de la progression et de la mise en file d’
 Lorsque le pipeline est en progression/file d’attente, vous devez d’abord le monitorer, ainsi que ses activités. Ensuite, vous pouvez décider d’attendre la fin de l’exécution du pipeline ou d’annuler cette exécution. 
  
 #### <a name="resolution"></a>Résolution
-Vous pouvez également monitorer le pipeline à l’aide du **Kit de développement logiciel (SDK)** , d’**Azure Monitor** ou de[Monitor](./monitor-visually.md). Pour obtenir d’autres conseils, référez-vous aux [meilleures pratiques CI/CD](./continuous-integration-delivery.md#best-practices-for-cicd). 
+Vous pouvez également monitorer le pipeline à l’aide du **Kit de développement logiciel (SDK)** , d’**Azure Monitor** ou de [Monitor](./monitor-visually.md). Pour obtenir d’autres conseils, référez-vous aux [meilleures pratiques CI/CD](./continuous-integration-delivery.md#best-practices-for-cicd). 
 
 ### <a name="perform-unit-testing-during-development-and-deployment"></a>Effectuer des **TESTS UNITAIRES** pendant le développement et le déploiement
 
@@ -299,6 +299,29 @@ Il existe plusieurs scénarios qui peuvent déclencher ce comportement, qui impl
 #### <a name="resolution"></a>Résolution
 
 Les nouvelles exécutions du pipeline parent démarrent automatiquement, donc aucune action n’est généralement nécessaire. Toutefois, pour éviter ces erreurs, les clients doivent prendre en compte les dépendances lors de la création et de la planification des déploiements afin d’éviter toute modification avec rupture. 
+
+### <a name="cannot-parameterize-integration-run-time-in-linked-service"></a>Impossible de paramétrer l’exécution de l’intégration dans le service lié
+
+#### <a name="issue"></a>Problème
+Vous devez paramétriser l’exécution de l’intégration du service lié
+
+#### <a name="cause"></a>Cause :
+Cette fonctionnalité n'est pas prise en charge. 
+
+#### <a name="resolution"></a>Résolution
+Vous devez sélectionner manuellement et définir un runtime d’intégration. Vous pouvez également utiliser l’API PowerShell pour changer.  Cette modification peut avoir des implications en aval. 
+
+### <a name="updatechange-integration-runtime-during-cicd"></a>Mise à jour/modification du runtime d’intégration au cours de CI/CD. 
+ 
+#### <a name="issue"></a>Problème
+Modification du nom du runtime d’intégration pendant le déploiement de CI/CD.  
+ 
+#### <a name="cause"></a>Cause :
+Le paramétrage d’une référence d’entité (runtime d’intégration dans le service lié, jeu de données dans l’activité, service lié dans le jeu de données) n’est pas pris en charge.  Si vous modifiez le nom du runtime pendant le déploiement, la ressource dépendante (qui référence le runtime d’intégration) devient incorrecte avec une référence non valide.  
+ 
+#### <a name="resolution"></a>Résolution
+Data Factory s’attend à ce que vous ayez le même nom et le même type de runtime d’intégration dans toutes les phases de CI/CD. 
+
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -4,12 +4,12 @@ description: Cet article offre une vue d'ensemble du traitement transactionnel e
 ms.topic: article
 ms.date: 09/21/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eb3bf6eef551fd13788f7659eb8becede8e250d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5cdfa306b19c528fd66c6566f54c5c7992a2462e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666209"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046734"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Vue d’ensemble du traitement des transactions Service Bus
 
@@ -82,8 +82,7 @@ Pour plus d’informations sur les files d’attente de lettres mortes Service B
 
 * [Utilisation des files d’attente Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Chaînage des entités Service Bus avec transfert automatique](service-bus-auto-forwarding.md)
-* [Exemple de transfert automatique](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
-* Exemple [Atomic Transactions with Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions) (Transactions atomiques avec Service Bus)
-* [Comparaison des files d’attente Azure et Service Bus](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-
-
+* [Exemple de transfert automatique](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward) (bibliothèque `Microsoft.ServiceBus.Messaging`)
+* [Exemple de transactions atomiques avec Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions) (bibliothèque `Microsoft.ServiceBus.Messaging`)
+* [Utilisation d’exemple de transactions](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/samples/Sample06_Transactions.md) (bibliothèque `Azure.Messaging.ServiceBus`)
+* [Comparaison entre le stockage File d’attente et les files d’attentes Service Bus](service-bus-azure-and-service-bus-queues-compared-contrasted.md)

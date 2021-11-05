@@ -13,12 +13,12 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 77d564cb54910391b0a0eb9f2492bfa74a044512
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f4ef55cd1a780612647e5e39eb13eed84fdead42
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619025"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032166"
 ---
 # <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Personnaliser des revendications émises dans le jeton SAML pour les applications d’entreprise
 
@@ -141,7 +141,7 @@ Vous pouvez utiliser les fonctions suivantes pour transformer des revendications
 | **IfEmpty()** | Génère un attribut ou une constante en sortie si l’entrée est Null ou vide.<br/>Par exemple, si vous souhaitez générer un attribut stocké dans un extensionattribute si l’ID d’employé pour un utilisateur donné est vide. Pour ce faire, configurez les valeurs suivantes :<br/>Paramètre 1 (entrée) : user.employeeid<br/>Paramètre 2 (sortie) : user.extensionattribute1<br/>Paramètre 3 (sortie s’il n’existe aucune correspondance) : user.employeeid |
 | **IfNotEmpty()** | Génère un attribut ou une constante en sortie si l’entrée n’est pas Null ou vide.<br/>Par exemple, si vous souhaitez générer un attribut stocké dans un extensionattribute si l’ID d’employé pour un utilisateur donné n’est pas vide. Pour ce faire, configurez les valeurs suivantes :<br/>Paramètre 1 (entrée) : user.employeeid<br/>Paramètre 2 (sortie) : user.extensionattribute1 |
 
-Si vous avez besoin de transformations supplémentaires, soumettez votre idée dans le [Forum de commentaires Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) sous la catégorie *Application SaaS*.
+Si vous avez besoin de transformations supplémentaires, soumettez votre idée dans le [Forum de commentaires Azure AD](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) sous la catégorie *Application SaaS*.
 
 ## <a name="add-the-upn-claim-to-saml-tokens"></a>Ajouter la revendication UPN à des jetons SAML
 

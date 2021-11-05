@@ -1,6 +1,6 @@
 ---
 title: 'Démarrage rapide : Connecter un appareil et envoyer la télémétrie à Azure IoT Central'
-description: Ce guide de démarrage rapide montre aux développeurs d’appareils comment connecter un appareil à Azure IoT Central de manière sécurisée. Vous utilisez Azure IoT device SDK pour C, C#, Python, Node.js ou Java afin d’exécuter une application cliente sur un appareil simulé, puis vous vous connectez à IoT Central pour envoyer la télémétrie.
+description: Ce guide de démarrage rapide montre aux développeurs d’appareils comment connecter un appareil à Azure IoT Central de manière sécurisée. Vous utilisez Azure IoT device SDK pour C, C#, Python, Node.js ou Java afin d’exécuter une application cliente sur un appareil, puis vous vous connectez à IoT Central pour envoyer la télémétrie.
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/27/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 376d26a591fb2cbe0d33fb9bdc261bcb535203e5
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f6955c10aab9b21be43cc3b346e564cb9114979d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114712999"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032737"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central"></a>Démarrage rapide : Envoyer la télémétrie d’un appareil à Azure IoT Central
 
@@ -50,7 +50,7 @@ ms.locfileid: "114712999"
 :::zone-end
 
 ## <a name="view-telemetry"></a>Afficher les données de télémétrie
-Une fois que l’appareil simulé est connecté à IoT Central, il commence à envoyer la télémétrie. Vous pouvez voir la télémétrie et d’autres informations sur les appareils connectés dans IoT Central. 
+Une fois que l’appareil est connecté à IoT Central, il commence à envoyer la télémétrie. Vous pouvez voir la télémétrie et d’autres informations sur les appareils connectés dans IoT Central. 
 
 Dans IoT Central, sélectionnez **Appareils**, cliquez sur le nom de votre appareil, puis sélectionnez l’onglet **Vue d’ensemble**. Cette vue présente un graphe des températures indiquées par les deux thermostats.
 
@@ -71,7 +71,7 @@ Pour supprimer l’exemple d’application Azure IoT Central et tous ses apparei
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce démarrage rapide, vous avez appris un workflow de base d’application Azure IoT pour connecter de façon sécurisée un appareil au cloud et envoyer des données de télémétrie appareil-à-cloud. Vous avez utilisé Azure IoT Central pour créer une application et une instance d’appareil. Vous avez ensuite utilisé Azure IoT device SDK pour créer un appareil simulé, le connecter à IoT Central et envoyer la télémétrie. Vous avez également utilisé IoT Central pour surveiller les données de télémétrie.
+Dans ce démarrage rapide, vous avez appris un workflow de base d’application Azure IoT pour connecter de façon sécurisée un appareil au cloud et envoyer des données de télémétrie appareil-à-cloud. Vous avez utilisé Azure IoT Central pour créer une application et une instance d’appareil. Vous avez ensuite utilisé Azure IoT device SDK pour créer un contrôleur de température, le connecter à IoT Central et envoyer la télémétrie. Vous avez également utilisé IoT Central pour surveiller les données de télémétrie.
 
 À présent, explorez les articles suivants pour en savoir plus sur la création de solutions d’appareils avec Azure IoT. 
 

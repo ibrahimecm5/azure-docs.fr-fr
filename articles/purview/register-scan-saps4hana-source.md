@@ -1,19 +1,19 @@
 ---
 title: Se connecter à une source SAP S/4HANA et la gérer
 description: Ce guide décrit comment se connecter à SAP S/4HANA dans Azure Purview et utiliser les fonctionnalités de Purview pour analyser et gérer votre source SAP S/4HANA.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 8c08c76ebfe624be3f6724dfdebabc277a3a3795
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c3497b39699d66cc665ea2c217dea5e016ca42df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010951"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472406"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Se connecter à SAP S/4HANA et le gérer dans Azure Purview
 
@@ -52,7 +52,7 @@ Cet article explique comment inscrire SAP S/4HANA, ainsi que comment s’authent
   * STFC_CONNECTION (vérifier la connectivité)
   * RFC_SYSTEM_INFO (vérifier les informations système)
 
-## <a name="register"></a>Inscrire
+## <a name="register"></a>S’inscrire
 
 Cette section explique comment inscrire SAP S/4HANA dans Azure Purview en utilisant [Purview Studio](https://web.purview.azure.com/).
 

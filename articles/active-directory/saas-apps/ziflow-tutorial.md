@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: eccd83b7c29ec31c40271efc09d5318d35ba6d2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fd6979056859c9ed0d38413d9bd6713e8cb4fb62
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764903"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Didacticiel : Intégration d’Azure Active Directory à Ziflow
 
@@ -156,7 +156,7 @@ Pour approvisionner un compte d’utilisateur, procédez comme suit :
 
     ![Capture d’écran montrant l’option Add user sélectionnée.](./media/ziflow-tutorial/add-tab.png)
 
-4. Dans la section **Add a User (Ajouter un utilisateur)** , procédez comme suit :
+4. Dans la fenêtre contextuelle **Ajouter un utilisateur**, effectuez les étapes suivantes :
 
     ![Capture d’écran montrant la boîte de dialogue Add a user dans laquelle vous pouvez entrer les valeurs décrites.](./media/ziflow-tutorial/add-user.png)
 

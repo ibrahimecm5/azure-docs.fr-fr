@@ -4,12 +4,12 @@ description: Discussion relative aux valeurs NULL et zéro lors de l’exportati
 services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
-ms.openlocfilehash: 47b98fe46ac1f2a3e2f3f1a8078ad9ca6f867554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53c5aad7061afb0479e9678a188fe99779893fef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048843"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017879"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Métriques de plateforme Azure Monitor exportables par le biais des paramètres de diagnostic
 
@@ -17,11 +17,11 @@ Azure Monitor fournit des métriques de [plateforme](../essentials/data-platform
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>Métriques non exportables par le biais des paramètres de diagnostic
 
-Le contenu qui se trouvait à cet emplacement a été déplacé dans [Liste des métriques Azure Monitor prises en charge](./metrics-supported.md#exporting-platform-metrics-to-other-locations).
+Voir la colonne « exportable ? » dans la [liste prise en charge des métriques Azure Monitor](./metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
-L’exportation de métriques par le biais des paramètres de diagnostic fait l’objet de limitations. Toutes les métriques sont exportables à l’aide de l’API REST. 
+L’exportation de métriques par le biais des paramètres de diagnostic fait l’objet de limitations. Cependant, toutes les métriques sont exportables à l’aide de l’API REST.
 
-## <a name="exported-zero-vs-null-values"></a>Valeurs zéro et NULL exportées 
+## <a name="exported-zero-vs-null-values"></a>Valeurs zéro et NULL exportées
 
 Les métriques ont un comportement différent pour la gestion des valeurs 0 et NULL.  Certaines métriques (par exemple, les métriques sur les échecs HTTP) indiquent 0 quand aucune donnée n’est récupérée. D’autres stockent des valeurs NULL quand elles n’obtiennent aucune donnée, car cela peut indiquer que la ressource est hors connexion. Vous pouvez voir la différence lorsque vous représentez ces métriques sous forme graphique, les valeurs NULL apparaissant sous forme de [lignes en pointillés](metrics-troubleshoot.md#chart-shows-dashed-line). 
 
@@ -36,7 +36,7 @@ Si vous supprimez un groupe de ressources ou une ressource spécifique, les donn
 La modification s’est produite dans tous les clouds publics et privés.
 
 Le changement n’a pas eu d’impact sur le comportement des expériences suivantes : 
-   - Journaux de ressources de plateforme exportés par le biais des paramètres de diagnostic
+   - Journaux de ressources de plateforme exportés via les paramètres de diagnostic
    - Graphiques de métriques dans Metrics Explorer
    - Alertes sur les métriques de plateforme
  

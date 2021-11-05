@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 86d6fa3c7c5552c0bb48844e543c20dc3493b15e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 89a65c133a2478b38755b05a8c2fe5d1bb6623a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361480"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081293"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Présentation des recommandations en matière de migration pour Azure Allemagne
 
@@ -95,7 +95,7 @@ Ces termes sont utilisés dans les articles de migration Azure Allemagne :
 - **Région cible** : vous pouvez utiliser presque toutes les régions dans Azure international. Vous souhaiterez probablement migrer vos ressources vers les régions Europe Ouest (**westeurope**) ou Europe Nord (**northeurope**).
 
 > [!NOTE]
-> Vérifiez que le service Azure que vous migrez est disponible dans la région cible. Tous les services Azure disponibles dans Azure Allemagne sont disponibles dans la région Europe Ouest. Tous les services Azure disponibles dans Azure Allemagne sont disponibles dans la région Europe Nord, à l’exception d’Azure Machine Learning Studio (classique) et de la série de machine virtuelle G/GS dans les machines virtuelles Azure.
+> Vérifiez que le service Azure que vous migrez est disponible dans la région cible. Tous les services Azure disponibles dans Azure Allemagne sont disponibles dans la région Europe Ouest. Tous les services Azure disponibles dans Azure Allemagne sont disponibles dans la région Europe Nord, à l’exception de Machine Learning Studio (classique) et de la série de machine virtuelle G/GS dans les machines virtuelles Azure.
 
 Il est judicieux d’ajouter les portails source et cible à vos favoris dans votre navigateur :
 

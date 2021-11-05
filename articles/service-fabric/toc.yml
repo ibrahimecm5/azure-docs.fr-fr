@@ -402,6 +402,12 @@
       items:
         - name: Configurer votre cluster managé
           href: how-to-managed-cluster-configuration.md
+        - name: Se connecter à votre cluster géré
+          href: how-to-managed-cluster-connect.md
+        - name: Configurer la mise à l’échelle automatique sur un cluster géré
+          href: how-to-managed-cluster-autoscale.md
+        - name: Configurer des types de nœuds sur un cluster géré
+          href: how-to-managed-cluster-modify-node-type.md
         - name: Ajouter une extension de groupe de machines virtuelles identiques à un type de nœud de cluster managé
           href: how-to-managed-cluster-vmss-extension.md
         - name: Configurer les paramètres réseau d’un cluster managé
@@ -498,6 +504,8 @@
                   href: service-fabric-cross-availability-zones.md
                 - name: Déployer un cluster Azure Service Fabric avec des types de nœud sans état
                   href: service-fabric-stateless-node-types.md
+                - name: Déployer un cluster Azure Service Fabric avec des disques de données gérés
+                  href: service-fabric-managed-disk.md
                 - name: Configurer l’authentification Azure Active Directory
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Créer un modèle de cluster personnalisé

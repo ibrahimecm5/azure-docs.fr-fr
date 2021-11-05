@@ -9,17 +9,17 @@ ms.service: virtual-machines-sql
 ms.subservice: service-overview
 ms.topic: overview
 ms.workload: iaas-sql-server
-ms.date: 04/10/2018
+ms.date: 10/26/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e303c886e1cecb0306849c96da966bc8614eccc2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7bcf2e64643d27822f2f58e56b054e25d3adaca5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264976"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080951"
 ---
-# <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Présentation de SQL Server sur les machines virtuelles Azure (Linux)
+# <a name="overview-of-sql-server-on-linux-azure-virtual-machines"></a>Présentation de SQL Server sur les machines virtuelles Linux Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -61,6 +61,10 @@ Quand vous configurez SQL Server sur Linux, vous installez le package Moteur de 
 | RHEL | ![RHEL et moteur de base de données](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL et outils](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL et agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL et recherche en texte intégral](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL et SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL et module complémentaire HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES et moteur de base de données](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES et outils](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES et agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES et recherche en texte intégral](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES et SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES et module complémentaire HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
 | Ubuntu | ![Ubuntu et moteur de base de données](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu et outils](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu et agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu et recherche en texte intégral](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu et SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu et module complémentaire HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+
+
+> [!NOTE]
+> Extension de l’agent IaaS SQL pour SQL Server sur machines virtuelles Linux Azure est disponible uniquement pour la distribution Ubuntu Linux.
 
 ## <a name="related-products-and-services"></a>Produits et services associés
 

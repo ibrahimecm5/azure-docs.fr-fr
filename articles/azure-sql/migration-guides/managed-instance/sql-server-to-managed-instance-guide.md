@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 06/25/2021
-ms.openlocfilehash: 9d1ae8214467d38958597136877baca0309b2ffc
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: d00eb47a1e366d5ae9f3ba559a65e57f5c9c9baa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675262"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043999"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>Guide de migration : SQL Server vers Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -157,7 +157,7 @@ Ce guide décrit les deux options les plus répandues : Azure Database Migratio
 
 Pour effectuer des migrations à l’aide de DMS, suivez les étapes ci-dessous :
 
-1. Inscrivez le fournisseur de ressources **Microsoft.DataMigration** dans votre abonnement, si vous effectuez cette opération pour la première fois.
+1. [Inscrivez le fournisseur de ressources **Microsoft.DataMigration**](../../../dms/quickstart-create-data-migration-service-portal.md#register-the-resource-provider) dans votre abonnement, si vous effectuez cette opération pour la première fois.
 1. Créez une instance Azure Database Migration Service là où vous voulez (de préférence dans la même région que votre instance cible d’Azure SQL Managed Instance), puis sélectionnez un réseau virtuel existant, ou créez-en un autre pour héberger votre instance de DMS.
 1. Une fois votre instance de DMS créée, créez un projet de migration, puis spécifiez le type de serveur source **SQL Server** et le type de serveur cible **Azure SQL Database Managed Instance**. Choisissez le type d’activité dans le panneau de création de projet : migration de données en ligne ou hors connexion. 
 1.  Spécifiez les détails du serveur SQL Server source dans la page **Détails de la source de migration** ainsi que les détails de la cible Azure SQL Managed Instance dans la page **Détails de la cible de migration**. Sélectionnez **Suivant**.
@@ -208,7 +208,7 @@ Pour effectuer une migration à l’aide de la fonctionnalité de sauvegarde et 
    ```
 1. Restaurez la sauvegarde à partir du conteneur Azure Storage Blob. Par exemple : 
 
-    ```sql
+   ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
@@ -269,7 +269,7 @@ Certaines fonctionnalités SQL Server sont disponibles uniquement une fois que v
 - Pour en savoir plus sur Azure SQL Managed Instance, consultez :
    - [Niveaux de service dans Azure SQL Managed Instance](../../managed-instance/sql-managed-instance-paas-overview.md#service-tiers)
    - [Différences entre SQL Server et Azure SQL Managed Instance](../../managed-instance/transact-sql-tsql-differences-sql-server.md)
-   - [Outil de calcul du coût total de possession Azure](https://azure.microsoft.com/pricing/tco/calculator/) 
+   - [Calculatrice du coût total de possession Azure](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
 - Pour plus d’informations sur l’infrastructure et le cycle d’adoption pour les migrations cloud, consultez :

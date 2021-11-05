@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 285fea57252c23776c9d7bc3b172889311356909
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c55a1fd185e9ff730ad55b046d4b843e0d1264da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768474"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046220"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Tutoriel : Intégrer iLMS à Azure Active Directory
 
@@ -93,7 +93,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. En plus de ce qui précède, l’application iLMS s’attend à ce que quelques attributs supplémentaires soient repassés dans la réponse SAML. Dans la section **Revendications des utilisateurs** de la boîte de dialogue **Attributs utilisateur**, effectuez les étapes suivantes pour ajouter le jeton SAML comme indiqué dans le tableau ci-dessous :
 
-    | Name | Attribut source|
+    | Nom | Attribut source|
     | --------|------------- |
     | division | user.department |
     | region | user.state |

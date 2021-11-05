@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 981ebfece7bc12584adfdf1e565bd275d8e1b2fb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 210978e3ecc817c55103267014fef9bd9e36a0e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226688"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032785"
 ---
 ## <a name="create-an-application"></a>Créer une application
 Il existe plusieurs méthodes pour connecter des appareils à Azure IoT. Dans cette section, vous allez apprendre à connecter un appareil à l’aide d’Azure IoT Central. IoT Central est une plateforme d’application IoT qui réduit le coût et la complexité de la gestion des appareils dans une solution IoT.
@@ -38,16 +38,15 @@ Pour créer une application :
     :::image type="content" source="media/iot-develop-create-central-app-with-device/iot-central-created.png" alt-text="Tableau de bord Nouvelle application d’IoT Central":::
 
 ## <a name="add-a-device"></a>Ajout d’un appareil
-Dans cette section, vous ajoutez un nouvel appareil à votre application IoT Central. L’appareil est l’instance d’un modèle d’appareil qui représente un appareil réel ou simulé auquel vous allez connecter à l’application. 
+Dans cette section, vous ajoutez un nouvel appareil à votre application IoT Central. L’appareil est l’instance d’un modèle d’appareil qui représente un appareil que vous allez connecter à l’application. 
 
 Pour créer un nouvel appareil :
 1. Dans le volet gauche, sélectionnez **Appareils**, puis sélectionnez **+Nouveau**.
-1. Laissez **Modèle d’appareil** défini sur *Non attribué*.
+1. Laissez **Modèle d’appareil** défini sur *Non affecté* et **Simuler cet appareil ?** défini sur *Non*.
 
-    > [!NOTE]
-    > Dans ce démarrage rapide, pour des raisons de simplicité, vous connectez un appareil simulé qui utilise un modèle non attribué. Si vous continuez à utiliser IoT Central pour gérer les appareils, vous apprendrez à utiliser des modèles d’appareil. Pour obtenir une vue d’ensemble de l’utilisation des modèles d’appareil, consultez [Démarrage rapide : Ajouter un appareil simulé à votre application IoT Central](../articles/iot-central/core/quick-create-simulated-device.md).
 1. Définissez un **nom d’appareil** convivial et un **ID d’appareil**. Si vous le souhaitez, utilisez les valeurs générées.
     :::image type="content" source="media/iot-develop-create-central-app-with-device/iot-central-create-device.png" alt-text="Boîte de dialogue Nouvel appareil d’IoT Central":::
+
 1. Sélectionnez **Create** (Créer).
 
     L’appareil créé s’affiche dans la liste **Tous les appareils**.

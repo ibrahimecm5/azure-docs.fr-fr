@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 381cc0d1114e60cbb9678c0df9a66176f3b51e99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74341e9f4c2436768a73591878f29e7f392b1f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627593"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006826"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Utiliser des références Key Vault pour App Service et Azure Functions
 
@@ -88,7 +88,7 @@ Sinon :
 
 ## <a name="rotation"></a>Rotation
 
-Si aucune version n’est spécifiée dans la référence, l’application utilise la dernière version qui existe dans Key Vault. Lorsque des versions plus récentes sont disponibles, par exemple avec un événement de renouvellement, l’application est automatiquement mise à jour de façon à utiliser la dernière version dans un délai d’un jour. Toutes les modifications de configuration apportées à l’application entraînent une mise à jour immédiate à la dernière version de tous les secrets indiqués.
+Si aucune version n’est spécifiée dans la référence, l’application utilise la dernière version qui existe dans le coffre de clés. Lorsque des versions plus récentes sont disponibles, par exemple avec un événement de renouvellement, l’application est automatiquement mise à jour de façon à utiliser la dernière version dans un délai de 24 heures. Le délai est dû au fait que App Service met en cache les valeurs des références du coffre de clés et les récupère toutes les 24 heures. Toute modification de la configuration de l’application entraîne une récupération immédiate de tous les secrets référencés.
 
 ## <a name="source-application-settings-from-key-vault"></a>Paramètres d’application sources dans Key Vault
 

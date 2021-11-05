@@ -1,21 +1,21 @@
 ---
-title: ID de chaînes de localisation - Azure Active Directory B2C | Microsoft Docs
+title: ID de chaînes de localisation – Azure Active Directory B2C
 description: Spécifiez les ID d’une définition de contenu avec un ID api.signuporsignin dans une stratégie personnalisée au sein d'Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 88c320d8296972ee84776aa232d688cc9e981f83
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: eab029ea4640199b6ed1086c85cdf59fe92f45c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349642"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036396"
 ---
 # <a name="localization-string-ids"></a>ID de chaînes de localisation
 
@@ -57,9 +57,8 @@ Les ID suivants sont utilisés pour une définition de contenu avec un ID de `ap
 | **invalid_generic** | Entrez une valeur {0} valide | `>= 2.1.1` |
 | **heading** | Se connecter | `>= 2.1.1` |
 
-
 > [!NOTE]
-> * Les espaces réservés comme {0} seront remplis automatiquement avec la valeur `DisplayName` de `ClaimType`. 
+> * Les espaces réservés comme {0} seront remplis automatiquement avec la valeur `DisplayName` de `ClaimType`.
 > * Pour savoir comment localiser `ClaimType`, consultez [Exemple d’inscription ou de connexion](#signupsigninexample).
 
 L’exemple suivant illustre l’utilisation de certains des éléments d’interface utilisateur dans la page d’inscription ou de connexion :
@@ -373,7 +372,7 @@ Voici les ID d’un [contrôle d’affichage de vérification](display-control-v
 |but_change_claims | Modifier l'adresse e-mail|
 
 Remarque : L’élément `intro_msg` est masqué et ne s’affiche pas sur la page autodéclarée. Pour le rendre visible, utilisez la [personnalisation HTML](customize-ui-with-html.md) avec des feuilles de style en cascade. Exemple :
-    
+
 ```css
 .verificationInfoText div{display: block!important}
 ```
@@ -438,7 +437,6 @@ Voici les ID des messages d’erreur de [profil technique du service Restful](re
 |UserMessageIfDnsResolutionFailed | Échec de la résolution du nom d’hôte du point de terminaison du service Restful. URL du service Restful : {0} |
 |UserMessageIfRequestTimeout | Échec de l’établissement de la connexion au point de terminaison du service Restful dans la limite de délai d'expiration de {0} secondes. URL du service Restful : {1} |
 
-
 ### <a name="restful-service-example"></a>Exemple de service Restful
 
 ```xml
@@ -492,10 +490,9 @@ Voici les ID des messages d’erreur de [profil technique Azure AD SSPR](aad-ssp
 |UserMessageIfVerificationFailedNoRetry | Vous avez dépassé le nombre maximal de tentatives de vérification.|
 |UserMessageIfVerificationFailedRetryAllowed | La vérification a échoué. Réessayez.|
 
-
 ### <a name="azure-ad-sspr-example"></a>Exemple SSPR Azure AD
 
-```XML
+```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInternalError">We are having trouble verifying your email address. Please try again later.</LocalizedString>
@@ -511,7 +508,7 @@ Voici les ID des messages d’erreur de [profil technique Azure AD SSPR](aad-ssp
 
 Voici les ID d’un message d’erreur de [profil technique à mot de passe à usage unique](one-time-password-technical-profile.md)
 
-| id | Valeur par défaut | Description | 
+| id | Valeur par défaut | Description |
 | --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Non | Message à afficher à l'utilisateur si la session de vérification du code a expiré. Indique soit que le code a expiré, soit que le code n'a jamais été généré pour un identificateur donné. |
 | UserMessageIfMaxRetryAttempted | Non | Message à afficher à l'utilisateur s'il a dépassé les tentatives de vérification maximales autorisées. |
@@ -541,7 +538,7 @@ Voici les ID des messages d’erreur relatifs aux transformations de revendicati
 
 | id | Transformation de revendications | Valeur par défaut |
 | --- | ------------- |------------- |
-|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | Échec de comparaison des valeurs de la revendication booléenne pour le type de revendication « inputClaim ».| 
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | Échec de comparaison des valeurs de la revendication booléenne pour le type de revendication « inputClaim ».|
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | Échec de comparaison des valeurs de la revendication : L’opérande de gauche fourni est supérieur à l’opérande de droite.|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | Échec de comparaison des valeurs de la revendication à l’aide de StringComparison « OrdinalIgnoreCase ».|
 

@@ -1,19 +1,19 @@
 ---
 title: Se connecter Teradata et le gérer
 description: Ce guide explique comment se connecter à Teradata dans Azure Purview et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Teradata.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9e049c6e277846661b33e54756ca5ef9f8707fdd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5e0d1de26a87cb4a0ac7ddf440b2ce529e02de34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010882"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441929"
 ---
 # <a name="connect-to-and-manage-teradata-in-azure-purview"></a>Connecter à Teradata et le gérer dans Azure Purview
 
@@ -47,7 +47,7 @@ Cet article explique comment inscrire Teradata, ainsi que comment s’authentifi
     > [!Note]
     > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne procédez pas à l’installation dans un compte d’utilisateur.
 
-## <a name="register"></a>Inscrire
+## <a name="register"></a>S’inscrire
 
 Cette section explique comment inscrire Teradata dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
 

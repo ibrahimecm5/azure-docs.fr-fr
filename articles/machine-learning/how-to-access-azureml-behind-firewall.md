@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Comment configurer le trafic réseau entrant et sortant requis lors de l’utilisation d’un espace de travail Azure Machine Learning sécurisé.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 09/14/2021
-ms.custom: devx-track-python
-ms.openlocfilehash: 2207ac32595d3780bf662d9a4124b7cbf74ce6a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/21/2021
+ms.custom: devx-track-python, ignite-fall-2021
+ms.openlocfilehash: 075c6404acbb4e2d74967873e3a8359076c1a228
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633967"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056525"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>Configurer le trafic réseau entrant et sortant
 
@@ -221,6 +221,45 @@ Lorsque vous utilisez Azure Kubernetes Service avec Azure Machine Learning, le t
 * Exigences générales en entrée/sortie pour AKS, comme décrit dans l’article [Restreindre le trafic sortant dans le service Kubernetes Azure](../aks/limit-egress-traffic.md).
 * __Sortant__ vers mcr.microsoft.com.
 * Lors du déploiement d’un modèle sur un cluster AKS, suivez les instructions de l’article [Déployer des modèles ML dans Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#connectivity).
+
+### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes compatible avec Azure Arc<a id="arc-kubernetes"></a>
+
+Les clusters Kubernetes Azure Arc dépendent des connexions Azure Arc. Veillez à respecter la [Configuration requise pour le réseau Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
+
+Les hôtes de cette section sont utilisés pour déployer l’extension Azure Machine Learning sur les clusters Kubernetes et envoyer des charges de travail d’apprentissage et d’inférence aux clusters.
+
+**Déploiement de l’extension d’Azure Machine Learning**
+
+Activez l’accès sortant aux points de terminaison suivants lors du déploiement de l’extension d’Azure Machine Learning sur le cluster.
+
+| Point de terminaison de destination| Port | Utilisation |
+|--|--|--|
+|  *.data.mcr.microsoft.com| https:443 | Obligatoire pour le stockage MCR assuré par Azure Content Delivery Network (CDN). |
+| quay.io, *.quay.io | https:443 | Registre Quay.io, requis pour extraire des images conteneur pour les composants d’extension AML |
+| gcr.io| https:443 | Référentiel cloud Google, requis pour extraire des images conteneur pour les composants d’extension AML |
+| storage.googleapis.com | https:443 | Google Cloud Storage, les images GCR sont hébergées sur |
+| registry-1.docker.io, production.cloudflare.docker.com  | https:443 | Registre du hub Docker, requis pour extraire les images de conteneur pour les composants d’extension AML |
+| auth.docker.io| https:443 | Authentification du référentiel Docker, requis pour accéder au registre du Hub docker |
+| *.kusto.windows.net, *.table.core.windows.net, *.queue.core.windows.net | https:443 | Requis pour télécharger et analyser les journaux système dans Kusto |
+
+**Uniquement les charges de travail d’apprentissage**
+
+Activez l’accès sortant aux points de terminaison suivants pour soumettre des charges de travail d’apprentissage au cluster.
+
+| Point de terminaison de destination| Port | Utilisation |
+|--|--|--|
+| pypi.org | https:443 | Index du package Python, pour installer les packages PIP utilisés pour initialiser l’environnement de travail |
+| archive.ubuntu.com, security.ubuntu.com, ppa.launchpad.net | http:80 | Cette adresse permet au conteneur init de télécharger les mises à jour et les correctifs de sécurité requis |
+
+**Charges de travail d’apprentissage et d’inférence**
+
+En plus des points de terminaison pour les charges de travail d’apprentissage, activez l’accès sortant pour les points de terminaison suivants pour soumettre des charges de travail d’apprentissage et d’inférence.
+
+| Point de terminaison de destination| Port | Utilisation |
+|--|--|--|
+| *.azurecr.io | https:443 | Azure Container Registry, requis pour extraire les images de conteneur pour héberger des tâches d’apprentissage ou d’inférence|
+| *.blob.core.windows.net | https:443 | Stockage d’objets BLOB Azure, requis pour extraire les scripts de projet Machine Learning, les images de conteneur et les journaux de travail/métriques |
+| *.workspace.\<region\>.api.azureml.ms ,  \<region\>.experiments.azureml.net,  \<region\>.api.azureml.ms | https:443 | API du service Azure Machine Learning, nécessaire pour communiquer avec AML |
 
 ### <a name="visual-studio-code-hosts"></a>Hôtes Visual Studio Code
 

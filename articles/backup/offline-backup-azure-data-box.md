@@ -3,12 +3,12 @@ title: Sauvegarde hors connexion avec Azure Data Box
 description: Découvrez comment vous pouvez utiliser Azure Data Box pour amorcer des données de sauvegarde initiales volumineuses hors connexion à partir de l’agent MARS dans un coffre Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 7793259797a47eb0353de7ecb27686ea2eafa24c
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 40fb046506238c5f02c7e36d6ce12b31ed44fcaa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185900"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020537"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Sauvegarde hors connexion Sauvegarde Microsoft Azure avec Azure Data Box
 
@@ -109,7 +109,7 @@ Vous pouvez également :
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
     ```
 
-Azure PowerShell peut également avoir été installé à l’aide d’un fichier msi. Pour le supprimer, désinstallez-le à l’aide de l’option **Désinstallation des programmes** dans le Panneau de configuration.
+Azure PowerShell peut également avoir été installé à l’aide d’un fichier MSI. Pour le supprimer, désinstallez-le à l’aide de l’option **Désinstallation des programmes** dans le Panneau de configuration.
 
 ### <a name="order-and-receive-the-data-box-device"></a>Commander et recevoir l’appareil Data Box
 
