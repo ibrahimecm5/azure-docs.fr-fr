@@ -1,5 +1,5 @@
 ---
-title: Interroger des fichiers Delta Lake à l’aide d’un pool SQL serverless (préversion)
+title: Interroger des fichiers Delta Lake à l’aide d’un pool SQL serverless
 description: Dans cet article, vous apprendrez comment interroger des fichiers stockés au format Apache Delta Lake à l’aide d’un pool SQL serverless.
 services: synapse analytics
 ms.service: synapse-analytics
@@ -9,14 +9,15 @@ ms.date: 07/15/2021
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: c06826fa8d08a06ed49bdd56e86c999aff849899
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e103cad62f213cdd39c92c8743753aede7cc0a75
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002831"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018618"
 ---
-# <a name="query-delta-lake-files-preview-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Interroger des fichiers Delta Lake (préversion) à l’aide d’un pool SQL dans Azure Synapse Analytics
+# <a name="query-delta-lake-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Interroger des fichiers Delta Lake à l’aide d’un pool SQL dans Azure Synapse Analytics
 
 Dans cet article, vous apprendrez comment écrire une requête à l’aide du pool Synapse SQL serverless pour lire les fichiers Apache Delta Lake.
 Delta Lake est une couche de stockage open source qui apporte des transactions ACID (atomicité, cohérence, isolation et durabilité) à Apache Spark et aux charges de travail Big Data.
@@ -24,8 +25,6 @@ Delta Lake est une couche de stockage open source qui apporte des transactions A
 Le pool SQL serverless de l’espace de travail Synapse vous permet de lire les données stockées au format Delta Lake et de les traiter dans des outils de création de rapports. Un pool SQL serverless peut lire les fichiers Delta Lake créés à l’aide d’Apache Spark, Azure Databricks ou tout autre producteur du format Delta Lake.
 
 Les pools Apache Spark dans Azure Synapse permettent aux ingénieurs des données de modifier les fichiers Delta Lake à l’aide de Scala, PySpark et .NET. Les pools SQL serverless aident les analystes de données à créer des rapports sur les fichiers Delta Lake créés par des ingénieurs de données.
-
-[!INCLUDE [synapse-analytics-preview-features](../../../includes/synapse-analytics-preview-features.md)]
 
 ## <a name="quickstart-example"></a>Exemple de démarrage rapide
 
@@ -174,7 +173,7 @@ Le deuxième argument de la fonction `DeltaTable.convertToDeltaLake` représente
 
 ## <a name="limitations"></a>Limites
 
-- Cette fonctionnalité est en préversion publique, et il existe quelques problèmes connus et des limitations. Consultez les problèmes connus sur la [page d’aide relative aux pools SQL serverless Synapse](resources-self-help-sql-on-demand.md#delta-lake).
+- Consultez les limitations et problèmes connus dans la [page d’aide relative aux pools SQL serverless Synapse](resources-self-help-sql-on-demand.md#delta-lake).
 - À l’heure actuelle, le pool Spark et le pool SQL serverless dans Azure Synapse Analytics prennent en charge le format Delta Lake. Les pools SQL serverless ne prennent pas en charge la mise à jour des fichiers Delta Lake. Seules les tables au format Parquet sont partagées à partir des pools Spark vers un pool SQL serverless. Pour plus d’informations, consultez [Tables Spark partagées](../metadata/table.md#shared-spark-tables).
 
 ## <a name="next-steps"></a>Étapes suivantes

@@ -4,13 +4,14 @@ description: Suivez ces bonnes pratiques pour améliorer votre base de connaissa
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 6b3f12881bd0cb7114f32cab5b7a67d80a73f4fe
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c4cea81d3e3e5a60672423d05c836947da95da1d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372839"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043772"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Bonnes pratiques pour une base de connaissances QnA Maker
 
@@ -64,7 +65,7 @@ Les échanges de conversation sont pris en charge pour plusieurs personnalités 
 |Attentif |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
 |Enthousiaste |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-Les réponses vont du formel à l’informel, en passant par l’irrévérencieux. Vous devez sélectionner la personnalité qui correspond le plus au ton souhaité pour votre bot. Vous pouvez afficher les [jeux de données](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets), en choisir un qui sert de base pour votre bot, puis personnaliser les réponses.
+Les réponses vont du formel à l’informel, en passant par l’irrévérencieux. Sélectionnez la personnalité qui correspond le plus au ton souhaité pour votre bot. Vous pouvez afficher les [jeux de données](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets), en choisir un qui sert de base pour votre bot, puis personnaliser les réponses.
 
 ### <a name="edit-bot-specific-questions"></a>Modifier les questions propres au bot
 Il existe certaines questions propres au bot qui font partie du jeu de données d’échanges de conversation et qui ont été remplies avec des réponses génériques. Modifiez ces réponses pour qu’elles reflètent mieux les caractéristiques de votre bot.
@@ -89,7 +90,7 @@ L’API GenerateAnswer utilise des questions et leur réponse pour rechercher le
 
 Utilisez le paramètre [`RankerType=QuestionOnly`](#choosing-ranker-type) si vous ne voulez pas rechercher des réponses.
 
-Voici un exemple : une base de connaissances est un catalogue d’acronymes sous la forme de questions, avec leur forme complète en tant que réponse. La valeur de la réponse ne facilite pas la recherche de la réponse appropriée.
+Voici un exemple : une base de connaissances est un catalogue d’acronymes sous la forme de questions, avec leur forme complète en tant que réponse. La valeur de la réponse ne facilite pas la recherche de la réponse appropriée.
 
 ## <a name="rankingscoring"></a>Classement/scoring
 Essayez d’optimiser l’utilisation des fonctionnalités de classement que QnA Maker prend en charge. Ces fonctionnalités augmentent la probabilité de retourner une réponse pertinente à une requête utilisateur.
@@ -116,17 +117,8 @@ Les [questions alternatives](../How-To/edit-knowledge-base.md) augmentent la pro
 Les [métadonnées](../How-To/edit-knowledge-base.md) ajoutent à une application cliente la possibilité de savoir qu’elle ne doit pas récupérer toutes les réponses, mais réduire les résultats d’une requête utilisateur en fonction des balises de métadonnées. La réponse de la base de connaissances peut varier en fonction du mot clé de métadonnées, même si la requête est la même. Par exemple, dans le cas d’une chaîne de restaurants, la question *« Où se trouve le parking ? »* peut donner une réponse différente en fonction du lieu du restaurant (ici, les métadonnées sont *Location: Seattle* et *Location: Redmond*.)
 
 ### <a name="use-synonyms"></a>Utiliser des synonymes
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
+
 Les synonymes en langue anglaise sont pris en charge. Utilisez des variantes de mots (sans respect de la casse) avec [l’API Alterations](/rest/api/cognitiveservices/qnamaker/alterations/replace), afin d’ajouter des synonymes à des mots clés qui prennent différentes formes. Les synonymes sont ajoutés au niveau du service QnA Maker et **partagés par toutes les bases de connaissances du service**.
-
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (en préversion)](#tab/v2)
-Les synonymes en langue anglaise sont pris en charge. Utilisez des variantes de mots (sans respect de la casse) avec [l’API Alterations](/rest/api/cognitiveservices/qnamaker/alterations/replace), afin d’ajouter des synonymes à des mots clés qui prennent différentes formes. Les synonymes de la fonctionnalité Réponses aux questions personnalisées (préversion) sont **ajoutés pour chaque base de connaissances**.
-
-|Mot d’origine|Synonymes|
-|--|--|
-|buy|purchase<br>net-banking<br>net banking|
-
----
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Utiliser des mots distincts pour différencier les questions
 L’algorithme de classement de QnA Maker, qui recherche une correspondance entre une requête utilisateur et les questions de la base de connaissances, retourne de meilleurs résultats si chaque question répond à un besoin différent. La répétition du même mot défini entre les questions réduit la probabilité de sélection de la réponse appropriée pour une requête utilisateur qui contient ces mots.
@@ -142,8 +134,6 @@ Ces deux entités QnA employant des mots très similaires, elles pourraient gén
 
 ## <a name="collaborate"></a>Travailler en collaboration
 QnA Maker permet aux utilisateurs de travailler en collaboration sur une base de connaissances. Les utilisateurs doivent avoir accès au groupe de ressources Azure QnA Maker pour accéder à la base de connaissances. Certaines organisations souhaitent externaliser la mise à jour et la gestion des bases de connaissances tout en pouvant quand même protéger l’accès à leurs ressources Azure. Ce modèle éditeur-approbateur s’obtient en configurant deux [services QnA Maker](../How-to/set-up-qnamaker-service-azure.md) identiques dans des abonnements différents et en sélectionnant l’un d’entre eux pour le cycle de modification-test. À la fin des tests, le contenu de la base de connaissances est transféré, par un processus [importation-exportation](../Tutorials/migrate-knowledge-base.md), au service QnA Maker de l’approbateur, qui publiera la base de connaissances et mettra à jour le point de terminaison.
-
-
 
 ## <a name="active-learning"></a>Apprentissage actif
 

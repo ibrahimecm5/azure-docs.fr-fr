@@ -1,19 +1,19 @@
 ---
 title: Connexion à Google BigQuery et gestion de projets
 description: Ce guide explique comment se connecter aux projets Google BigQuery dans Azure Purview et comment utiliser les fonctionnalités de Purview pour analyser et gérer votre source Google BigQuery.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: e264aaef00eb0e1af12db3a7a2f3047de5e6e3e5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c300e315571c90fd2aa1892336b6ad40d5593ed9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056221"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433438"
 ---
 # <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview"></a>Connexion à Google BigQuery et gestion de projets dans Azure Purview
 
@@ -50,7 +50,7 @@ Cet article décrit comment inscrire des projets Google BigQuery et comment s’
     > [!Note]
     > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne l’installez pas dans un compte d’utilisateur.
 
-## <a name="register"></a>Inscrire
+## <a name="register"></a>S’inscrire
 
 Cette section explique comment inscrire un projet Google BigQuery dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
 
