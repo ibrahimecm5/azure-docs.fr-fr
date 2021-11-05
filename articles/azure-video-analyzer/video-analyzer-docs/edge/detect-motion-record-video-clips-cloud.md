@@ -2,14 +2,14 @@
 title: Détecter des mouvements et enregistrer des vidéos avec Azure Video Analyzer
 description: Ce guide de démarrage rapide montre comment utiliser le module de périphérie Azure Video Analyzer pour appliquer la détection de mouvement à un stream vidéo en direct et enregistrer une vidéo dans le compte Video Analyzer.
 ms.topic: quickstart
-ms.date: 11/04/2021
+ms.date: 06/01/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5cc04dc9ce6a149a64a61fb9fabdeeaca6593f51
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: a62af8ee0ac3859a6d8f7e7d81d7115877afda35
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552883"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131029176"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>Démarrage rapide : Détecter des mouvements et enregistrer une vidéo dans Video Analyzer
 

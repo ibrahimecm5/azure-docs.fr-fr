@@ -1,20 +1,23 @@
 ---
-title: Renforcez votre système d’exploitation Windows et Linux avec la ligne de base de sécurité Azure et Azure Security Center
-description: Découvrez comment Azure Security Center utilise la configuration Invité pour comparer le renforcement de votre système d’exploitation avec les conseils du Benchmark de sécurité Azure
+title: Renforcer votre système d’exploitation Windows et Linux avec la base de référence de sécurité Azure et Microsoft Defender pour le cloud
+description: Découvrez comment Microsoft Defender pour le cloud utilise la configuration Invité pour comparer le renforcement de votre système d’exploitation avec les conseils du Benchmark de sécurité Azure.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: memildin
-ms.openlocfilehash: 9a15a87eb5f00316f88109e05e069032de795807
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a48f95c3bedd291a3639f7aabc97eb92c25d735f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129435987"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010400"
 ---
 # <a name="apply-azure-security-baselines-to-machines"></a>Appliquer des bases de référence de sécurité Azure sur des ordinateurs
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Pour réduire la surface d’attaque d’un ordinateur et éviter les risques connus, il est important de configurer le système d’exploitation de manière aussi sécurisée que possible.
 
@@ -37,7 +40,7 @@ Les recommandations de sécurité décrites dans cet article permettent d’éva
 
 ## <a name="what-are-the-hardening-recommendations"></a>Quelles sont les recommandations relatives au renforcement de la sécurité ?
 
-Azure Security Center comprend deux recommandations qui vérifient si la configuration des ordinateurs Windows et Linux dans votre environnement est conforme aux configurations de la ligne de base de sécurité Azure :
+Microsoft Defender pour le cloud comprend deux recommandations qui vérifient si la configuration des ordinateurs Windows et Linux dans votre environnement est conforme aux configurations de la ligne de base de sécurité Azure :
 
 - Pour les ordinateurs **Windows**, [Vulnérabilités dans la configuration de la sécurité sur vos machines Windows doivent être corrigées (avec Configuration Invité)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1f655fb7-63ca-4980-91a3-56dbc2b715c6) compare la configuration avec la [ligne de base de la sécurité Windows](../governance/policy/samples/guest-configuration-baseline-windows.md).
 - Pour les ordinateurs **Linux**, [Les vulnérabilités dans la configuration de la sécurité sur vos machines Linux doivent être corrigées (avec Configuration Invité)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/8c3d9ad0-3639-4686-9cd2-2b2ab2609bda) compare la configuration avec la [ligne de base de la sécurité Linux](../governance/policy/samples/guest-configuration-baseline-linux.md).
@@ -48,7 +51,7 @@ Ces recommandations utilisent la fonctionnalité de configuration d’invité d�
 
 Pour comparer des ordinateurs avec les lignes de base de la sécurité du système d’exploitation :
  
-1. Sur les pages du portail de Security Center, ouvrez la page **Recommandations**. 
+1. À partir des pages du portail de Defender pour le cloud, ouvrez la page **Recommandations**. 
 1. Sélectionnez la recommandation appropriée :
     - Pour les ordinateurs **Windows**, [Les vulnérabilités dans la configuration de la sécurité sur vos machines Windows doivent être corrigées (avec Configuration Invité)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1f655fb7-63ca-4980-91a3-56dbc2b715c6)
     - Pour les ordinateurs **Linux**, [Les vulnérabilités dans la configuration de la sécurité sur vos ordinateurs Linux doivent être corrigées (avec Configuration Invité)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/8c3d9ad0-3639-4686-9cd2-2b2ab2609bda)
@@ -98,7 +101,7 @@ La liste des ressources sous l’onglet **Non applicable** contient une colonne 
 |                                                                   |                                                                                                                                                                                |
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce document, vous avez appris à utiliser les recommandations de configuration Ivité de Security Center pour comparer le renforcement de votre système d’exploitation avec la ligne de base de sécurité Azure.
+Dans ce document, vous avez appris à utiliser les recommandations de configuration invité de Defender pour le cloud afin de comparer le renforcement de votre système d’exploitation avec la base de référence de sécurité Azure.
 
 Pour en savoir plus sur ces paramètres de configuration, consultez :
 

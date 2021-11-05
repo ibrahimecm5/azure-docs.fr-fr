@@ -4,21 +4,22 @@ description: QnA Maker utilise plusieurs sources Azure, dont chacune a un object
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: e69b39415ea90deb6ce4477569d372f9bd8f2134
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 10/11/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e421c2e799e7eeb002cffab2748f099f21f81199
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368661"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011995"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Ressources Azure pour QnA Maker
 
 QnA Maker utilise plusieurs sources Azure, dont chacune a un objectif différent. Comprendre comment elles sont utilisées individuellement vous permet de planifier et de sélectionner le niveau tarifaire approprié ou de savoir quand modifier celui-ci. Comprendre comment elles sont utilisées _en combinaison_ vous permet d’épingler et de résoudre des problèmes quand ils se produisent.
 
-## <a name="resource-planning"></a>Planification des ressources
+[!INCLUDE [Info on question answering GA](../includes/new-version.md)]
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
+## <a name="resource-planning"></a>Planification des ressources
 
 La première fois que vous développez une base de connaissances QnA Maker, lors de la phase prototypage, il est courant d’avoir une seule ressource QnA Maker pour les tests et la production.
 
@@ -30,21 +31,7 @@ Lorsque vous passez à la phase de développement du projet, vous devez prendre 
 
 Prévoyez d’avoir une ressource QnA Maker unique contenant toutes les bases de connaissances ayant en commun la langue, la région et la combinaison de domaines.
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-La première fois que vous développez une base de connaissances, dans la phase prototype, il est courant de n’avoir qu’une seule ressource pour les tests et la production.
-
-Lorsque vous passez à la phase de développement du projet, vous devez prendre en compte les aspects suivants :
-
-* Combien de langues que votre système de base de connaissances doit-il prendre en charge ?
-* Dans combien de régions votre base de connaissances doit-elle être accessible ?
-* Combien de documents dans chaque domaine votre système doit-il contenir ?
-
----
-
 ## <a name="pricing-tier-considerations"></a>Considérations relatives au niveau tarifaire
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 En général, il existe trois paramètres dont vous devez tenir compte :
 
@@ -59,7 +46,7 @@ Votre ressource de service Azure Search doit avoir été créée après le janvi
 > [!IMPORTANT]
 > Vous pouvez publier N-1 bases de connaissances dans un niveau spécifique, où N correspond au nombre maximal d’index autorisé dans le niveau. Vérifiez également la taille maximale et le nombre de documents autorisés par niveau.
 
-Par exemple, si votre niveau comporte 15 index autorisés, vous pouvez publier 14 bases de connaissances (1 index par base de connaissances publiée). Le quinzième index est utilisé pour toutes les bases de connaissances à des fins de création et de test.
+Par exemple, si votre niveau comporte 15 index autorisés, vous pouvez publier 14 bases de connaissances (un index par base de connaissances publiée). Le quinzième index est utilisé pour toutes les bases de connaissances à des fins de création et de test.
 
 * **Nombre de documents comme sources** : la référence SKU gratuite du service de gestion QnA Maker limite à 3 le nombre de documents (d’une taille de 1 Mo chacun) que vous pouvez gérer via le portail et les API. La référence SKU Standard n’a aucune limite en termes de nombre de documents que vous pouvez gérer. Vous trouverez plus de détails [ici](https://aka.ms/qnamaker-pricing).
 
@@ -69,61 +56,19 @@ Le tableau suivant vous donne des indications d’ordre général.
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **Expérimentation**        | Référence SKU Gratuite             | Niveau Gratuit   | Niveau Gratuit    | Publier jusqu’à 2 Ko, taille de 50 Mo  |
 | **Environnement Dev/Test**   | Référence SKU standard         | Partagé      | De base        | Publier jusqu’à 14 Ko, taille de 2 Go    |
-| **Environnement de production** | Référence SKU standard         | De base       | standard     | Publier jusqu’à 49 Ko, taille de 25 Go |
-
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-En général, il existe trois paramètres dont vous devez tenir compte :
-
-* **Débit dont vous avez besoin** :
-    * La fonctionnalité Réponses aux questions personnalisées (préversion) est gratuite, et son débit est actuellement plafonné à 10 transactions par seconde (TPS) tant pour les API de gestion que pour les API de prédiction.
-    * Ceci doit également influencer votre sélection de la référence SKU de la [Recherche cognitive](../../../search/search-sku-tier.md) Azure. Voir **ici** pour plus d’informations. En outre, vous devrez peut-être ajuster la [capacité](../../../search/search-capacity-planning.md) de la Recherche cognitive capacité avec des réplicas.
-
-* **Taille et nombre de bases de connaissances** : Choisissez la [référence SKU Recherche Azure](https://azure.microsoft.com/pricing/details/search/) adaptée à votre scénario. En règle générale, vous fixez le nombre de bases de connaissances dont vous avez besoin en fonction du nombre de domaines différents. Un domaine (pour une langue) doit se trouver dans une base de connaissances.
-
-    La fonctionnalité Réponses aux questions personnalisées (préversion), vous permet de configurer votre service Analyse de texte pour une ou plusieurs langues. Vous pouvez opérer cette sélection lors de la création de votre première base de connaissances dans la fonctionnalité Réponses aux questions personnalisées (préversion).
-
-> [!div class="mx-imgBorder"]
-> ![Sélection de base de connaissances multilingue](../media/qnamaker-create-publish-knowledge-base/select-language-custom-qna.png)
-
-> [!IMPORTANT]
-> Vous pouvez publier N-1 bases de connaissances d’une langue unique ou N/2 bases de connaissances de langues différentes dans un niveau particulier, où N est le nombre maximal d’index autorisés dans le niveau. Vérifiez également la taille maximale et le nombre de documents autorisés par niveau.
-
-Par exemple, si votre niveau comporte 15 index autorisés, vous pouvez publier 14 bases de connaissances de la même langue (1 index par base de connaissances publiée). Le quinzième index est utilisé pour toutes les bases de connaissances à des fins de création et de test. Si vous choisissez d’utiliser des bases de connaissances dans différentes langues, vous pouvez uniquement en publier 7.
-
-* **Nombre de documents comme sources** : la fonctionnalité Réponses aux questions personnalisées (préversion) est gratuite. Le nombre de documents que vous pouvez ajouter en tant que sources est illimité. Vous trouverez plus de détails [ici](https://aka.ms/qnamaker-pricing).
-
-Le tableau suivant vous donne des indications d’ordre général.
-
-|                            |Recherche cognitive Azure | Limites                      |
-| -------------------------- |------------ | -------------------------------- |
-| **Expérimentation**        |Niveau Gratuit    | Publier jusqu’à 2 Ko, taille de 50 Mo  |
-| **Environnement Dev/Test**   |De base        | Publier jusqu’à 14 Ko, taille de 2 Go    |
-| **Environnement de production** |standard     | Publier jusqu’à 49 Ko, taille de 25 Go |
-
----
+| **Environnement de production** | Référence SKU standard         | De base       | Standard     | Publier jusqu’à 49 Ko, taille de 25 Go |
 
 ## <a name="recommended-settings"></a>Paramètres recommandés
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
-
 |RPS cible | App Service | Recherche cognitive Azure |
 | -------------------- | ----------- | ------------ |
-| 3             | S1, 1 réplica   | S1, 1 réplica    |
+| 3             | S1, un réplica   | S1, un réplica    |
 | 50         | S3, 10 réplicas       | S1, 12 réplicas         |
 | 80         | S3, 10 réplicas      |  S3, 12 réplicas  |
 | 100         | P3V2, 10 réplicas  | S3, 12 réplicas, 3 partitions   |
 | 200 à 250         | P3V2, 20 réplicas | S3, 12 réplicas, 3 partitions    |
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-La fonctionnalité Réponses aux questions personnalisées (préversion) est gratuite. Son débit est actuellement plafonné à 10 transactions par seconde tant pour les API de gestion que pour les API de prédiction. Pour cibler 10 transactions par seconde pour votre service, nous vous recommandons d’utiliser la référence SKU S1 (1 instance) de Recherche cognitive Azure.
-
----
-
 ## <a name="when-to-change-a-pricing-tier"></a>Quand modifier un niveau tarifaire
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 |Mettre à niveau|Motif|
 |--|--|
@@ -133,15 +78,7 @@ La fonctionnalité Réponses aux questions personnalisées (préversion) est gra
 
 Procurez-vous les dernières mises à jour du runtime en [mettant à jour votre App Service dans le portail Azure](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates).
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-[Mettez à niveau](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) le service Recherche cognitive Azure quand vous envisagez d’utiliser de nombreuses bases de connaissances.
-
----
-
 ## <a name="keys-in-qna-maker"></a>Clés dans QnA Maker
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 Votre service QnA Maker gère deux types de clés : **clés de création** et **clés de point de terminaison de requête** utilisées avec le runtime hébergé dans App service.
 
@@ -184,55 +121,11 @@ Les clés de point de terminaison peuvent être gérées à partir du [portail Q
     >[!NOTE]
     >Actualisez vos clés si vous pensez qu’elles ont été compromises. Cette opération peut nécessiter des modifications correspondantes de votre code de bot ou d’application cliente.
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Votre fonctionnalité Réponses aux questions personnalisées (préversion) traite deux types de clés : les **clés de création** et les **clés de Recherche cognitive Azure** utilisées pour accéder au service dans l’abonnement du client.
-
-Utilisez ces clés lorsque vous adressez des demandes au service via des API.
-
-> [!div class="mx-imgBorder"]
-> ![Préversion managée de la gestion des clés](../media/qnamaker-how-to-key-management/custom-question-answering-key-management.png)
-
-|Nom|Emplacement|Objectif|
-|--|--|--|
-|Clé de création/d’abonnement|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|ces clés sont utilisées pour accéder aux [API du service d’administration QnA Maker](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Ces API vous permettent de modifier les questions et réponses dans votre base de connaissances, et de publier votre base de connaissances. Ces clés sont créées lorsque vous créez un service.<br><br>Recherchez ces clés dans la ressource **Cognitive Services** de la page **Clés et point de terminaison**.|
-|Clé d’administration de Recherche cognitive Azure|[Azure portal](../../../search/search-security-api-keys.md)|Ces clés sont utilisées pour communiquer avec le service de recherche cognitive Azure déployé dans l’abonnement Azure de l’utilisateur. Quand vous associez une recherche cognitive Azure à la fonctionnalité Réponses aux questions personnalisées (préversion), la clé d’administration est automatiquement transmise au service QnA Maker. <br><br>Vous pouvez trouver ces clés sur la ressource **Recherche cognitive Azure** dans la page **Clés**.|
-
-### <a name="find-authoring-keys-in-the-azure-portal"></a>Rechercher des clés de création dans le portail Azure
-
-Vous pouvez afficher et réinitialiser vos clés de création à partir du portail Azure, là où vous avez ajouté la fonctionnalité Réponses aux questions personnalisées (préversion) dans la ressource Analyse de texte.
-
-1. Accédez à la ressource Analyse de texte dans le portail Azure et sélectionnez la ressource dont le type est *Cognitive Services* :
-
-> [!div class="mx-imgBorder"]
-> ![Liste des ressources de la fonctionnalité Réponses aux questions personnalisées (préversion)](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
-
-2. Accédez aux **clés et point de terminaison** :
-
-> [!div class="mx-imgBorder"]
-> ![Clé d’abonnement de la fonctionnalité Réponses aux questions personnalisées (version préliminaire)](../media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
-
-### <a name="update-the-resources"></a>Mettre à jour les ressources
-
-Découvrez comment mettre à niveau les ressources utilisées par votre base de connaissances. La fonctionnalité Réponses aux questions personnalisées (préversion) est **gratuite** pendant la durée de la préversion. 
-
----
-
 ## <a name="management-service-region"></a>Région du service de gestion
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 Le service de gestion de QnA Maker est utilisé uniquement pour le portail QnA Maker et pour le traitement initial des données. Ce service est disponible uniquement dans la région **USA Ouest**. Il n’y a pas de stockage de données de clients dans ce service aux USA Ouest.
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Dans la fonctionnalité Réponses aux questions personnalisées (préversion), les services de gestion et de prédiction sont localisés dans la même région. Actuellement, la fonctionnalité Réponses aux questions personnalisées (préversion) est disponible dans les régions **USA Centre Sud, Europe Nord et Australie Est**.
-
----
-
 ## <a name="resource-naming-considerations"></a>Considérations relatives à l’affection de noms aux ressources
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 Le nom de la ressource QnA Maker, tel que `qna-westus-f0-b`, est également utilisé pour nommer les autres ressources.
 
@@ -252,29 +145,7 @@ Une fois les ressources créées, elles portent le même nom, à l’exception d
 > [!TIP]
 > Utilisez une convention d’affectation de noms pour indiquer les niveaux tarifaires dans le nom de la ressource ou du groupe de ressources. Si vous recevez des erreurs lors de la création d’une base de connaissances ou de l’ajout de documents, la limite de niveau tarifaire de Recherche cognitive est un problème courant.
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Le nom de la ressource Analyse de texte, tel `qna-westus-f0-b`, est également utilisé pour nommer les autres ressources.
-
-La fenêtre Créer du portail Azure vous permet de créer une ressource Analyse de texte et de sélectionner les niveaux tarifaires des autres ressources.
-
-> [!div class="mx-imgBorder"]
-> ![Capture d’écran du portail Azure pour la création de ressources QnA Maker managé (préversion)](../media/qnamaker-how-to-setup-service/custom-qna-create-button.png). Une fois que les ressources sont créées, elles portent le même nom.
-
-> [!div class="mx-imgBorder"]
-> ![Capture d’écran de la liste des ressources QnA Maker managé (préversion) dans le portail Azure](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
-
-> [!TIP]
-> Créez un groupe de ressources lorsque vous créez une ressource Analyse de texte. Cela vous permet de voir toutes les ressources associées à la ressource Analyse de texte lors d’une recherche par groupe de ressources.
-
-> [!TIP]
-> Utilisez une convention d’affectation de noms pour indiquer les niveaux tarifaires dans le nom de la ressource ou du groupe de ressources. Si vous recevez des erreurs lors de la création d’une base de connaissances ou de l’ajout de documents, la limite de niveau tarifaire de Recherche cognitive est un problème courant.
-
----
-
 ## <a name="resource-purposes"></a>Objectifs des ressources
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 Chaque ressource Azure créée avec QnA Maker a un objectif spécifique :
 
@@ -340,36 +211,6 @@ QnA Maker crée plusieurs ressources Azure. Pour alléger la gestion et profiter
 |App Service|X|Impossible à la base|
 |Application Insights|✔|Peut être partagé|
 |Service de recherche|✔|1. `testkb` est un nom réservé pour le service QnAMaker ; il ne peut pas être utilisé par d’autres.<br>2. Le nom de carte de synonymes `synonym-map` est réservé au service QnAMaker.<br>3. Le nombre de bases de connaissances publiées est limité par le niveau de service de recherche. Si des index gratuits sont disponibles, les autres services peuvent les utiliser.|
-
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Chaque ressource Azure créée avec la fonctionnalité Réponses aux questions personnalisées (préversion) a un objectif spécifique :
-
-* Ressource Analyse de texte
-* Ressource Recherche cognitive
-
-### <a name="text-analytics-resource"></a>Ressource Analyse de texte
-
-La ressource Analyse de texte avec la fonctionnalité Réponses aux questions personnalisées (préversion) donne accès aux API de création et de publication, héberge le runtime de classement et fournit une télémétrie.
-
-### <a name="azure-cognitive-search-resource"></a>Ressource Recherche cognitive Azure
-
-La ressource [Recherche cognitive](../../../search/index.yml) est utilisée pour :
-
-* Stocker les paires de questions-réponses
-* fournir le classement initial (ranker #1) des paires de questions-réponses lors du runtime
-
-#### <a name="index-usage"></a>Utilisation de l’index
-
-Vous pouvez publier N-1 bases de connaissances d’une langue unique ou N/2 bases de connaissances de langues différentes dans un niveau particulier, où N est le nombre maximal d’index autorisés dans le niveau Recherche cognitive Azure. Vérifiez également la taille maximale et le nombre de documents autorisés par niveau.
-
-Par exemple, si votre niveau comporte 15 index autorisés, vous pouvez publier 14 bases de connaissances de la même langue (1 index par base de connaissances publiée). Le quinzième index est utilisé pour toutes les bases de connaissances à des fins de création et de test. Si vous choisissez d’utiliser des bases de connaissances dans différentes langues, vous pouvez uniquement en publier 7.
-
-#### <a name="language-usage"></a>Utilisation de la langue
-
-La fonctionnalité Réponses aux questions personnalisées (préversion), vous permet de configurer votre service pour des bases de connaissances dans une ou plusieurs langues. Vous opérez ce choix lors de la création de la première base de connaissances dans votre service Analyse de texte. Consultez [ceci](#pricing-tier-considerations) pour savoir comment configurer la langue par base de connaissances.
-
----
 
 ## <a name="next-steps"></a>Étapes suivantes
 

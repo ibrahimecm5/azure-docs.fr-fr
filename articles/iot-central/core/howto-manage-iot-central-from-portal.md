@@ -1,18 +1,18 @@
 ---
 title: Gérer et superviser IoT Central dans le portail Azure | Microsoft Docs
-description: Cet article explique comment créer, gérer et superviser vos applications IoT Central à partir du portail Azure.
+description: Cet article explique comment créer, gérer et superviser vos applications IoT Central et autoriser la gestion des identités à partir du portail Azure.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 57486312b380fc18cfdb399343535e5e12245bff
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 2d8ab101b39412d9345fa470d3b6584036990581
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091558"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084964"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Gérer et superviser IoT Central à partir du portail Azure
 
@@ -71,6 +71,25 @@ Pour déplacer l’application vers un autre groupe de ressources, sélectionnez
 Pour déplacer l’application vers un autre abonnement, sélectionnez **Modifier** en regard de l’abonnement. Dans la page **Déplacer des ressources**, choisissez l’abonnement vers lequel vous souhaitez déplacer cette application :
 
 ![Portail de gestion : gestion des ressources](media/howto-manage-iot-central-from-portal/highlight-subscription.png)
+
+## <a name="configure-a-managed-identity"></a>Configurer une identité managée
+
+Quand vous configurez une exportation de données dans votre application IoT Central, vous pouvez choisir de configurer la connexion à la destination à l’aide d’une *chaîne de connexion* ou d’une [identité gérée](../../active-directory/managed-identities-azure-resources/overview.md). L’utilisation d’une identité gérée est plus sécurisée, car vous n’avez pas besoin de stocker les informations d’identification pour la destination dans votre application IoT Central. IoT Central utilise actuellement des [identités managées affectées par le système](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Pour créer l’identité managée de votre application, utilisez le Portail Azure ou l’API REST.
+
+> [!NOTE]
+> Vous pouvez uniquement ajouter une identité managée à une application IoT Central qui a été créée dans une région. Toutes les nouvelles applications sont créées dans une région. Pour en savoir plus, consultez [Mises à jour](https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/).
+
+Quand vous configurez une identité managée, la configuration comprend une *étendue* et un *rôle* :
+
+* L’étendue définit l’emplacement où vous pouvez utiliser l’identité managée. Par exemple, vous pouvez utiliser un groupe de ressources Azure comme étendue. Dans ce cas, l’application IoT Central et la destination doivent être dans le même groupe de ressources.
+* Le rôle définit les autorisations qui sont accordées à l’application IoT Central dans le service de destination. Par exemple, pour qu’une application IoT Central envoie des données à un Event Hub, l’identité managée a besoin de l’attribution de rôle **Expéditeur de données Azure Event Hubs**.
+
+[!INCLUDE [iot-central-managed-identity](../../../includes/iot-central-managed-identity.md)]
+
+Vous pouvez configurer les attributions de rôles dans le Portail Azure ou utiliser Azure CLI :
+
+* Pour en savoir plus sur la configuration des attributions de rôles dans le Portail Azure pour des destinations spécifiques, consultez [Exporter des données IoT vers des destinations Cloud à l’aide de l’exportation de données](howto-export-data.md).
+* Pour en savoir plus sur la configuration des attributions de rôles à l’aide de l’interface Azure CLI, consultez [Gérer IoT Central à partir depuis Azure CLI ou PowerShell](howto-manage-iot-central-from-cli.md).
 
 ## <a name="monitor-application-health"></a>Superviser l’intégrité de l’application
 

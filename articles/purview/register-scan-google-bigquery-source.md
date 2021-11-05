@@ -1,141 +1,153 @@
 ---
-title: Inscrire le projet Google BigQuery et configurer des analyses dans Azure Purview
-description: Cet article explique comment inscrire un projet Google BigQuery dans Azure Purview et configurer une analyse.
+title: Connexion à Google BigQuery et gestion de projets
+description: Ce guide explique comment se connecter aux projets Google BigQuery dans Azure Purview et comment utiliser les fonctionnalités de Purview pour analyser et gérer votre source Google BigQuery.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: caaf78e14669d67f525e5756efd8e2fd301f9b38
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: e264aaef00eb0e1af12db3a7a2f3047de5e6e3e5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218531"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056221"
 ---
-# <a name="register-and-scan-google-bigquery-source-preview"></a>Inscrire et analyser la source Google BigQuery (préversion)
+# <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview"></a>Connexion à Google BigQuery et gestion de projets dans Azure Purview
 
-Cet article explique comment inscrire un projet Google BigQuery dans Purview et configurer une analyse.
+Cet article décrit comment inscrire des projets Google BigQuery et comment s’authentifier et interagir avec Google BigQuery dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
+
+> [!IMPORTANT]
+> Google BigQuery en tant que source est actuellement en préversion. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale.
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
-La source BigQuery prend en charge l’Analyse complète pour extraire les métadonnées d’un projet BigQuery et récupère la Traçabilité entre les ressources de données.
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui](how-to-lineage-google-bigquery.md)|
+
+> [!Important]
+> La version de Google BigQuery prise en charge est 11.0.0.
 
 ## <a name="prerequisites"></a>Prérequis
 
-1.  Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717).
-    Pour plus d’informations, consultez [Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+* Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-2.  Assurez-vous que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+* Une [ressource Purview](create-catalog-portal.md) active.
 
-3.  Vérifiez que le package \"Visual C++ Redistributable 2012 Update 4\" est installé sur la machine dotée du runtime d’intégration auto-hébergé. S\'il n’est pas déjà installé, vous pouvez le télécharger [ici](https://www.microsoft.com/download/details.aspx?id=30679).
+* Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
 
-4.  Vous devez télécharger manuellement le pilote JDBC de BigQuery sur la machine virtuelle où s’exécute le runtime d’intégration auto-hébergé à partir d’[ici](https://cloud.google.com/bigquery/providers/simba-drivers)
+* Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717). Pour plus d’informations, consultez [le guide Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+
+* Vérifiez que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+
+* Vérifiez que le package Redistributable Visual C++ pour Visual Studio 2012 Update 4 est installé sur la machine dotée du runtime d’intégration auto-hébergé. Si cette mise à jour n’est pas installée, [vous pouvez la télécharger ici](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Téléchargez et installez le pilote JDBC de BigQuery sur la machine sur laquelle le runtime d’intégration auto-hébergé est en cours d’exécution. Le pilote est disponible [ici](https://cloud.google.com/bigquery/providers/simba-drivers).
 
     > [!Note]
     > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne l’installez pas dans un compte d’utilisateur.
 
-5.  La version de Google BigQuery prise en charge est 11.0.0
+## <a name="register"></a>Inscrire
 
-## <a name="register-a-google-bigquery-project"></a>Inscrire un projet Google BigQuery
+Cette section explique comment inscrire un projet Google BigQuery dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
 
-Pour inscrire un nouveau projet Google BigQuery dans votre catalogue de données, procédez comme suit :
+### <a name="steps-to-register"></a>Procédure d’inscription
 
-1.  Accédez à votre compte Purview.
-2.  Sélectionnez **Data Map** dans le volet de navigation de gauche.
-3.  Sélectionnez **Inscrire**.
-4.  Dans Inscrire des sources, sélectionnez **Google BigQuery**. Sélectionnez **Continuer.** 
-    :::image type="content" source="media/register-scan-google-bigquery-source/register-sources.png" alt-text="Inscrire la source BigQuery" border="true":::
-   
+1. Accédez à votre compte Purview.
+1. Sélectionnez **Data Map** dans le volet de navigation de gauche.
+1. Sélectionnez **Inscrire**.
+1. Dans Inscrire des sources, sélectionnez **Google BigQuery**. Sélectionnez **Continuer.**
+
+    :::image type="content" source="media/register-scan-google-bigquery-source/register-sources.png" alt-text="inscrire la source BigQuery" border="true":::
+
 Sur l’écran Inscrire des sources (Google BigQuery), procédez comme suit :
 
-1.  Entrez le **Nom** sous lequel la source de données apparaîtra dans le catalogue.
+1. Entrez le **Nom** sous lequel la source de données apparaîtra dans le catalogue.
 
-2.  Entrez le **ProjectID.** Il doit s’agir d’un ID de projet complet. Par exemple, mydomain.com:myProject
+1. Entrez le **ProjectID.** Il doit s’agir d’un ID de projet complet. Par exemple mydomain.com:myProject
 
-3.  Sélectionnez une collection ou créez-en une (facultatif).
+1. Sélectionnez une collection ou créez-en une (facultatif).
 
-4.  Sélectionnez **Inscription**.
+1. Sélectionnez **Inscription**.
+
     :::image type="content" source="media/register-scan-google-bigquery-source/configure-sources.png" alt-text="Configurer la source BigQuery" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Création et exécution d’une analyse
+## <a name="scan"></a>Analyser
 
-Pour créer une analyse et l’exécuter, procédez comme suit :
+Suivez les étapes ci-dessous pour analyser un projet Google BigQuery pour identifier automatiquement les ressources et classer vos données. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md).
 
-1.  Dans le centre d’administration, sélectionnez Runtimes d’intégration. Assurez-vous qu’un runtime d’intégration auto-hébergé est configuré. Si ce n’est pas le cas, suivez les étapes mentionnées [ici](./manage-integration-runtimes.md) pour configurer un runtime d’intégration auto-hébergé
+### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 
-2.  Accédez aux **Sources**.
+1. Dans le centre d’administration, sélectionnez Runtimes d’intégration. Assurez-vous qu’un runtime d’intégration auto-hébergé est configuré. S’il n’est pas configuré, suivez les étapes mentionnées [ici](./manage-integration-runtimes.md).
 
-3.  Sélectionnez le projet **BigQuery** inscrit.
+1. Accédez aux **Sources**.
 
-4.  Sélectionnez **+ Nouvelle analyse**.
+1. Sélectionnez le projet **BigQuery** inscrit.
 
-5.  Fournissez les renseignements ci-dessous :
+1. Sélectionnez **+ Nouvelle analyse**.
 
-    a.  **Nom** : nom de l’analyse
+1. Fournissez les renseignements ci-dessous :
 
-    b.  **Se connecter via le runtime d’intégration** : sélectionnez le runtime d’intégration auto-hébergé configuré
+    1. **Nom** : nom de l’analyse
 
-    c.  **Informations d’identification** : lors de la configuration des informations d’identification BigQuery, veillez à :
+    1. **Se connecter via le runtime d’intégration** : sélectionnez le runtime d’intégration auto-hébergé configuré
 
-    - Sélectionner **Authentification de base** comme méthode d’authentification
-    - Indiquer l’ID de messagerie du compte de service dans le champ nom d’utilisateur. Par exemple, xyz\@developer.gserviceaccount.com
-    - Enregistrer un fichier de clé privée du compte de service au format JSON dans le coffre de clés
+    1. **Informations d’identification** : lors de la configuration des informations d’identification BigQuery, veillez à :
 
-    Pour créer une nouvelle clé privée à partir de la plateforme cloud de Google, dans le menu de navigation, sélectionnez IAM et Admin -\> Comptes de service -\> sélectionnez un projet -\> sélectionnez l’adresse de messagerie du compte de service pour lequel vous souhaitez créer une clé -\> sélectionnez l’onglet **Clés** -\> sélectionnez le menu déroulant **Ajouter une clé**, puis sélectionnez Créer une clé. Choisissez maintenant le format JSON.
+        * Sélectionner **Authentification de base** comme méthode d’authentification
+        * Indiquer l’ID de messagerie du compte de service dans le champ nom d’utilisateur. Par exemple, xyz\@developer.gserviceaccount.com
+        * Enregistrer un fichier de clé privée du compte de service au format JSON dans le coffre de clés
 
-      > [!Note]
-      > Le contenu de la clé privée est enregistré dans un fichier temporaire sur la machine virtuelle lorsque les processus d’analyse sont en cours d’exécution. Ce fichier temporaire est supprimé une fois que les analyses sont terminées avec succès. En cas d’échec de l’analyse, le système continue à réessayer jusqu’à ce qu’il réussisse. Assurez-vous que l’accès est correctement limité sur la machine virtuelle où SHIR est en cours d’exécution.**
+        Pour créer une nouvelle clé privée à partir de la plateforme cloud de Google :
+        1. Dans le menu de navigation, sous les options IAM & admin, \>Comptes de service\>, sélectionnez un projet - \> 
+        1. Sélectionnez l’adresse e-mail du compte de service pour lequel vous souhaitez créer une clé.
+        1. Sélectionnez l’onglet **Clés**.
+        1. Sélectionnez le menu déroulant **Ajouter une clé**, puis sélectionnez Créer une nouvelle clé. 
+        1. Choisissez le format JSON.
 
-    Pour plus d’informations sur les informations d’identification, reportez-vous à [ce lien](manage-credentials.md).
+          > [!Note]
+          > Le contenu de la clé privée est enregistré dans un fichier temporaire sur la machine virtuelle lorsque les processus d’analyse sont en cours d’exécution. Ce fichier temporaire est supprimé une fois que les analyses sont terminées avec succès. En cas d’échec de l’analyse, le système continue à réessayer jusqu’à ce qu’il réussisse. Assurez-vous que l’accès est correctement limité sur la machine virtuelle où SHIR est en cours d’exécution.
 
-    d.  **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide    
-    > [!Note]
-    > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne l’installez pas dans un compte d’utilisateur.
+        Pour plus d’informations sur les informations d’identification, reportez-vous à [ce lien](manage-credentials.md).
 
-    e.  **Jeu de données** : spécifiez une liste de jeux de données BigQuery à importer. Par exemple, dataset1 ; dataset2. Si la liste est vide, tous les jeux de données disponibles sont importés.
-        Les modèles de nom de jeu de données acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %, 
+    1. **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide. 
 
-    par exemple, A%; %B; %C%; D
-    - commençant par A ou
-    - se terminant par B ou
-    - contenant C ou
-    - égalant D    
-L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
-    
-    f.  **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Cela dépend de la taille du serveur Google BigQuery à analyser.
+        > [!Note]
+        > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne l’installez pas dans un compte d’utilisateur.
+
+    1. **Jeu de données** : spécifiez une liste de jeux de données BigQuery à importer.
+        Par exemple, dataset1 ; dataset2. Si la liste est vide, tous les jeux de données disponibles sont importés.
+        Les modèles de nom de jeu de données acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %.
+
+        Par exemple : A%; %B; %C%; D
+        * commençant par A ou
+        * se terminant par B ou
+        * contenant C ou
+        * égalant D
+
+        L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
+
+    1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur votre machine virtuelle pouvant être utilisée par les processus d’analyse. Cela dépend de la taille du serveur Google BigQuery à analyser.
+
         :::image type="content" source="media/register-scan-google-bigquery-source/scan.png" alt-text="Analyser la source BigQuery" border="true":::
 
-6.  Sélectionnez **Test Connection** (Tester la connexion).
+1. Sélectionnez **Test Connection** (Tester la connexion).
 
-7.  Sélectionnez **Continuer**.
+1. Sélectionnez **Continuer**.
 
-8.  Choisissez votre **déclencheur d’analyse**. Vous pouvez configurer une planification ou exécuter l’analyse une seule fois.
+1. Choisissez votre **déclencheur d’analyse**. Vous pouvez configurer une planification ou exécuter l’analyse une seule fois.
 
-9.  Passez en revue votre analyse et sélectionnez **Enregistrer et exécuter**.
+1. Passez en revue votre analyse et sélectionnez **Enregistrer et exécuter**.
 
-## <a name="viewing-your-scans-and-scan-runs"></a>Affichage des analyses et des exécutions d’analyse
-
-1. Accédez au centre d’administration. Sélectionnez **Sources de données** sous la section **Sources et analyse**.
-
-2. Sélectionnez la source de données souhaitée. La liste des analyses existantes sur cette source de données apparaît.
-
-3. Sélectionnez l’analyse dont vous souhaitez afficher les résultats.
-
-4. Cette page affiche toutes les exécutions précédentes de l’analyse ainsi que les métriques et l’état de chaque exécution de l’analyse. Elle indique également si votre analyse a été planifiée ou était manuelle, le nombre de ressources pour lesquelles ont été appliquées des classifications, le nombre total de ressources découvertes, l’heure de début et de fin de l’analyse et la durée totale de l’analyse.
-
-## <a name="manage-your-scans"></a>Gestion de vos analyses
-
-Pour gérer ou supprimer une analyse, effectuez les opérations suivantes :
-
-1. Accédez au centre d’administration. Sélectionnez **Sources de données** sous la section **Sources et analyse**, puis sélectionnez la source de données souhaitée.
-
-2. Sélectionnez l’analyse que vous souhaitez gérer. Vous pouvez modifier l’analyse en sélectionnant **Modifier**.
-
-3. Vous pouvez supprimer votre analyse en sélectionnant **Supprimer**.
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Navigation dans le catalogue de données Azure Purview](how-to-browse-catalog.md)
-- [Recherche dans le catalogue de données Azure Purview](how-to-search-catalog.md)
+Maintenant que vous avez inscrit votre source, suivez les guides ci-dessous pour en savoir plus sur Purview et sur vos données.
+
+- [Insights de données dans Azure Purview](concept-insights.md)
+- [Lignage dans Azure Purview](catalog-lineage-user-guide.md)
+- [Rechercher dans un catalogue de données](how-to-search-catalog.md)

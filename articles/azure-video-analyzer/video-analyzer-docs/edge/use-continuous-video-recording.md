@@ -2,14 +2,14 @@
 title: Tutoriel sur l’enregistrement et la lecture vidéo en continu - Azure Video Analyzer
 description: Dans ce tutoriel, vous allez voir comment utiliser Azure Video Analyzer pour enregistrer des vidéos en continu dans le cloud et comment lire les enregistrements.
 ms.topic: tutorial
-ms.date: 09/27/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c7fb6e35b3fa4f06734ab5aedb4c7b8df6d8ba27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a86dac6b242139d406dd6513a70846c57fa1c05
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030336"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559349"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>Tutoriel : Enregistrement et lecture vidéo en continu
 
@@ -277,7 +277,7 @@ Comme son nom l’indique, l’événement **RecordingStarted** est envoyé lors
 
 Cet événement indique que suffisamment de données ont été écrites dans la ressource vidéo pour que les lecteurs ou les clients commencent la lecture de la vidéo.
 
-La section subject dans applicationProperties référence le nœud récepteur vidéo dans le pipeline en direct qui a généré ce message.
+La section subject dans applicationProperties fait référence au nœud récepteur vidéo dans le pipeline en direct qui a généré ce message.
 
 La section body contient des informations sur l’emplacement de sortie. Dans ce cas, il s’agit du nom de la ressource Video Analyzer dans laquelle la vidéo est enregistrée.
 

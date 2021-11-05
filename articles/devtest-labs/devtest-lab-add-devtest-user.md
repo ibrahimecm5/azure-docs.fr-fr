@@ -4,12 +4,12 @@ description: Ajouter des propriétaires et des utilisateurs dans Azure DevTest L
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e3c85ed9f38996bfa542bd5d71d19419fc2fde6b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6edf548658d02ae3427fe5ac448dcc3e38a6b4e2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251791"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068757"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Ajouter des propriétaires et des utilisateurs dans Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -54,17 +54,24 @@ Le tableau suivant décrit les actions pouvant être effectuées par les utilisa
 Les propriétaires et les utilisateurs peuvent être ajoutés au niveau du laboratoire via le portail Azure. Un utilisateur peut être un utilisateur externe avec un [compte Microsoft (MSA)](./devtest-lab-faq.yml) valide.
 Les étapes suivantes vous guident dans le processus d’ajout d’un propriétaire ou d’un utilisateur à un laboratoire dans Azure DevTest Labs :
 
-1. Connectez-vous au [portail Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Sélectionnez **Tous les services**, puis **DevTest Labs** dans la liste.
-3. Sélectionnez le laboratoire souhaité dans la liste des laboratoires.
-4. Dans le panneau du laboratoire, sélectionnez **Configuration et stratégies**. 
-5. Dans la page **Configuration et stratégies**, sélectionnez **Contrôle d’accès (IAM)** à partir du menu de gauche. 
-6. Sélectionnez **Ajouter une attribution de rôle** sur la barre d’outils pour ajouter un utilisateur à un rôle.
-1. Dans la fenêtre **Ajouter des autorisations**, effectuez les actions suivantes : 
-    1. Sélectionnez un rôle (par exemple : utilisateur DevTest Labs). La section [Actions qui peuvent être effectuées dans chaque rôle](#actions-that-can-be-performed-in-each-role) répertorie les différentes actions qui peuvent être effectuées par les utilisateurs dans les rôles Propriétaire, Utilisateur de DevTest Labs et Collaborateur.
-    2. Sélectionnez l’utilisateur à ajouter au rôle. 
-    3. Sélectionnez **Enregistrer**. 
-11. Lorsque vous revenez sur le panneau **Utilisateurs** , l’utilisateur a été ajouté.  
+1. Connectez-vous au [Portail Azure](https://portal.azure.com) avec un [rôle d’administrateur de l’accès utilisateur](../role-based-access-control/built-in-roles.md#user-access-administrator) ou de [propriétaire](../role-based-access-control/built-in-roles.md#owner).
+
+1. Ouvrez le groupe de ressources souhaité et sélectionnez **DevTest Labs**.
+
+1. Dans le menu de navigation, cliquez sur **Contrôle d’accès (IAM)** .
+
+1. Sélectionnez **Ajouter** > **Ajouter une attribution de rôle**.
+
+    ![Page Contrôle d’accès (IAM) avec le menu Ajouter une attribution de rôle ouvert.](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Dans l’onglet **Rôle**, sélectionnez le rôle **PROPRIÉTAIRE** ou **UTILISATEUR**.
+
+    ![Page Ajouter une attribution de rôle avec l’onglet Rôle sélectionné.](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Dans l’onglet **Membres**, sélectionnez l’utilisateur auquel vous souhaitez ajouter le rôle souhaité.
+
+1. Dans l’onglet **Passer en revue + affecter**, sélectionnez **Passer en revue + affecter** pour affecter le rôle.
+
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Ajouter un utilisateur externe à un laboratoire à l’aide de PowerShell
 
@@ -111,20 +118,23 @@ Vous pouvez ajouter des propriétaires supplémentaires à un laboratoire via le
 
 Pour ajouter un propriétaire à un abonnement Azure, procédez comme suit :
 
-1. Connectez-vous au [portail Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Sélectionnez **Tous les services**, puis sélectionnez **Abonnements** dans la liste.
-3. Sélectionnez l’abonnement souhaité.
-4. Sélectionnez l’icône **Accès** . 
-   
-    ![Accéder aux utilisateurs](./media/devtest-lab-add-devtest-user/access-users.png)
-5. Dans le panneau **Utilisateurs**, sélectionnez **Ajouter**.
-   
-    ![Ajouter un utilisateur](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-6. Dans le panneau **Sélectionner un rôle**, sélectionnez **Propriétaire**.
-7. Dans le panneau **Ajouter des utilisateurs** , entrez l’adresse de messagerie ou le nom de l’utilisateur que vous souhaitez ajouter en tant que propriétaire. Si l’utilisateur n’est pas trouvé, vous obtenez un message d’erreur expliquant le problème. Si l’utilisateur est trouvé, cet utilisateur est répertorié sous la zone de texte **Utilisateur** .
-8. Sélectionnez le nom d'utilisateur trouvé.
-9. Sélectionnez **Sélectionner**.
-10. Cliquez sur **OK** pour fermer le panneau **Ajouter un accès**.
-11. Lorsque vous revenez sur le panneau **Utilisateurs** , l’utilisateur a été ajouté en tant que propriétaire. Cet utilisateur est désormais propriétaire de tous les laboratoires créés sous cet abonnement, et peut par conséquent effectuer des tâches de propriétaire. 
+1. Connectez-vous au [Portail Azure](https://portal.azure.com) avec un [rôle d’administrateur de l’accès utilisateur](../role-based-access-control/built-in-roles.md#user-access-administrator) ou de [propriétaire](../role-based-access-control/built-in-roles.md#owner).
+
+1. Ouvrez le groupe d’abonnement souhaité.
+
+1. Dans le menu de navigation, cliquez sur **Contrôle d’accès (IAM)** .
+
+1. Sélectionnez **Ajouter** > **Ajouter une attribution de rôle**.
+
+    ![Page Contrôle d’accès (IAM) avec le menu Ajouter une attribution de rôle ouvert.](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Dans l’onglet **Rôle**, sélectionnez le rôle **PROPRIÉTAIRE**.
+
+    ![Page Ajouter une attribution de rôle avec l’onglet Rôle sélectionné.](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Dans l’onglet **Membres**, sélectionnez l’utilisateur auquel vous souhaitez ajouter le rôle de propriétaire.
+
+1. Dans l’onglet **Passer en revue + affecter**, sélectionnez **Passer en revue + affecter** pour affecter le rôle.
+
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

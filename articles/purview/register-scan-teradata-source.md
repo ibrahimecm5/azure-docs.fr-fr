@@ -1,56 +1,66 @@
 ---
-title: Inscrire une source Teradata et configurer des analyses
-description: Cet article explique comment inscrire une source Teradata dans Azure Purview et configurer une analyse.
+title: Se connecter Teradata et le gérer
+description: Ce guide explique comment se connecter à Teradata dans Azure Purview et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Teradata.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 5ba69e4b20edc74dfd9de43f19b2ba582b196353
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 9e049c6e277846661b33e54756ca5ef9f8707fdd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211299"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010882"
 ---
-# <a name="register-and-scan-teradata-source"></a>Inscrire et analyser une source Teradata
+# <a name="connect-to-and-manage-teradata-in-azure-purview"></a>Connecter à Teradata et le gérer dans Azure Purview
 
-Cet article explique comment inscrire une source Teradata dans Purview et configurer une analyse.
+Cet article explique comment inscrire Teradata, ainsi que comment s’authentifier et interagir avec Teradata dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
-La source Teradata gère l’**Analyse complète** pour extraire les métadonnées d’une base de données Teradata, et récupère la **Traçabilité** entre les ressources de données.
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui](how-to-lineage-teradata.md)|
+
+> [!Important]
+> Les versions de base de données Teradata reconnues sont 12.x à 16.x.
 
 ## <a name="prerequisites"></a>Prérequis
 
-1.  Configurez le dernier [runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717).
-    Pour plus d’informations, consultez [Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+* Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-2.  Assurez-vous que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+* Une [ressource Purview](create-catalog-portal.md) active.
 
-3.  Vérifiez que le package \"Visual C++ Redistributable 2012 Update 4\" est installé sur la machine dotée du runtime d’intégration auto-hébergé. S\'il n’est pas déjà installé, vous pouvez le télécharger [ici](https://www.microsoft.com/download/details.aspx?id=30679).
+* Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
 
-4.  Vous devez télécharger manuellement le pilote JDBC de Teradata sur la machine virtuelle où s’exécute le runtime d’intégration auto-hébergé.
-    Le fichier JAR exécutable peut être téléchargé à partir du [site web de Teradata](https://downloads.teradata.com/).
+* Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717). Pour plus d’informations, consultez [le guide Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+
+* Vérifiez que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+
+* Vérifiez que le package Redistributable Visual C++ pour Visual Studio 2012 Update 4 est installé sur la machine dotée du runtime d’intégration auto-hébergé. Si cette mise à jour n’est pas installée, [vous pouvez la télécharger ici](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Vous devez télécharger manuellement le pilote JDBC de Teradata sur la machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Le fichier JAR exécutable peut être téléchargé à partir du [site web de Teradata](https://downloads.teradata.com/).
 
     > [!Note]
     > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne procédez pas à l’installation dans un compte d’utilisateur.
 
-5.  Les versions de base de données Teradata reconnues sont 12.x à 16.x. Assurez-vous d’avoir un accès en lecture à la source Teradata qui est analysée.
+## <a name="register"></a>Inscrire
 
-## <a name="setting-up-authentication-for-a-scan"></a>Configuration de l’authentification pour une analyse
+Cette section explique comment inscrire Teradata dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
 
-La seule authentification prise en charge pour une source Teradata est l’**Authentification de base**.
+### <a name="authentication-for-registration"></a>Authentification pour l’inscription
 
-## <a name="register-a-teradata-source"></a>Inscription d’une source Teradata
+La seule authentification prise en charge pour une source Teradata est l’**Authentification de base**. Assurez-vous d’avoir un accès en lecture à la source Teradata qui est analysée.
 
-Pour inscrire une nouvelle source Teradata dans votre catalogue de données, effectuez les actions suivantes :
+### <a name="steps-to-register"></a>Procédure d’inscription
 
 1.  Accédez à votre compte Purview.
-2.  Sélectionnez **Data Map** dans le volet de navigation de gauche.
-3.  Sélectionnez **Inscrire**.
-4.  Dans Inscrire des sources, sélectionnez **Teradata**. Sélectionnez **Continue** (Continuer)
+1.  Sélectionnez **Data Map** dans le volet de navigation de gauche.
+1.  Sélectionnez **Inscrire**.
+1.  Dans Inscrire des sources, sélectionnez **Teradata**. Sélectionnez **Continue** (Continuer)
 
     :::image type="content" source="media/register-scan-teradata-source/register-sources.png" alt-text="Options d’inscription de Teradata" border="true":::
 
@@ -58,86 +68,72 @@ Dans l’écran **Inscrire des sources (Teradata)** , effectuez les actions suiv
 
 1.  Entrez le **Nom** avec lequel la source de données sera listée dans le catalogue.
 
-2.  Entrez le nom d’**hôte** pour la connexion à une source Teradata. Il peut également s’agir d’une adresse IP ou d’une chaîne de connexion complète au serveur.
+1.  Entrez le nom d’**hôte** pour la connexion à une source Teradata. Il peut également s’agir d’une adresse IP ou d’une chaîne de connexion complète au serveur.
 
-3.  Sélectionnez une collection ou créez-en une (facultatif).
+1.  Sélectionnez une collection ou créez-en une (facultatif).
 
-4.  Terminez pour inscrire la source de données.
+1.  Terminez pour inscrire la source de données.
 
     :::image type="content" source="media/register-scan-teradata-source/register-sources-2.png" alt-text="Inscrire Teradata" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Création et exécution d’une analyse
+## <a name="scan"></a>Analyser
 
-Pour créer une analyse et l’exécuter, procédez comme suit :
+Suivez les étapes ci-dessous pour analyser Teradata afin d’identifier les ressources et de classer vos données automatiquement. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md).
 
-1.  Dans le centre d’administration, sélectionnez **Runtimes d’intégration**. Assurez-vous qu’un runtime d’intégration auto-hébergé est configuré. Si ce n’est pas le cas, suivez les étapes mentionnées [ici](./manage-integration-runtimes.md) pour configurer un runtime d’intégration auto-hébergé
+### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 
-2.  Sélectionnez l’onglet **Data Map** dans le volet gauche de [Purview Studio](https://web.purview.azure.com/resource/).
+1. Dans le centre d’administration, sélectionnez **Runtimes d’intégration**. Assurez-vous qu’un runtime d’intégration auto-hébergé est configuré. Si ce n’est pas le cas, suivez les étapes mentionnées [ici](./manage-integration-runtimes.md) pour configurer un runtime d’intégration auto-hébergé.
 
-3.  Sélectionnez la source Teradata inscrite.
+1. Sélectionnez l’onglet **Data Map** dans le volet gauche de [Purview Studio](https://web.purview.azure.com/resource/).
 
-4.  Sélectionnez **Nouvelle analyse**.
+1. Sélectionnez la source Teradata inscrite.
 
-5.  Fournissez les renseignements ci-dessous :
+1. Sélectionnez **Nouvelle analyse**.
 
-    a.  **Nom** : nom de l’analyse
+1. Fournissez les renseignements ci-dessous :
 
-    b.  **Se connecter via le runtime d’intégration** : sélectionnez le runtime d’intégration auto-hébergé configuré.
+    1. **Nom** : nom de l’analyse
 
-    c.  **Informations d’identification** : sélectionnez les informations d’identification pour vous connecter à votre source de données. Veillez à respecter les points suivants :
+    1. **Se connecter via le runtime d’intégration** : sélectionnez le runtime d’intégration auto-hébergé configuré.
 
-    -   Sélectionnez Authentification de base quand vous créez des informations d’identification.
-    -   Indiquez un nom d’utilisateur pour la connexion au serveur de base de données dans le champ d’entrée Nom d’utilisateur
-    -   Stockez le mot de passe du serveur de base de données dans la clé secrète.
+    1. **Informations d’identification** : sélectionnez les informations d’identification pour vous connecter à votre source de données. Veillez à respecter les points suivants :
+        * Sélectionnez Authentification de base quand vous créez des informations d’identification.
+        * Indiquez un nom d’utilisateur pour la connexion au serveur de base de données dans le champ d’entrée Nom d’utilisateur
+        * Stockez le mot de passe du serveur de base de données dans la clé secrète.
 
         Pour en savoir plus sur les informations d’identification, reportez-vous au lien [ici](./manage-credentials.md)
 
-6.  **Schéma** : répertorie le sous-ensemble de schémas à importer, exprimé sous la forme d’une liste séparée par des points-virgules. Par exemple : schema1; schema2. Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. Si la liste est vide, tous les schémas disponibles sont importés.
+1. **Schéma** : répertorie le sous-ensemble de schémas à importer, exprimé sous la forme d’une liste séparée par des points-virgules. Par exemple : schema1; schema2. Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. Si la liste est vide, tous les schémas disponibles sont importés.
 
-    Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %, par exemple A%; %B; %C%; D
-    - commençant par A ou    
-    - se terminant par B ou    
-    - contenant C ou    
-    - égalant D
+    Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %. Par exemple : A%; %B; %C%; D
+     * commençant par A ou
+     * se terminant par B ou
+     * contenant C ou
+     * égalant D
 
     L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
 
-7.  **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide.
+1. **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide.
 
-8.  **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la source Teradata à analyser.
+1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la source Teradata à analyser.
 
-    > [!Note] 
+    > [!Note]
     > En règle générale, prévoyez 2 Go de mémoire pour 1 000 tables.
 
     :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="configuration de l’analyse" border="true":::
 
-6.  Sélectionnez **Continuer**.
+1. Sélectionnez **Continuer**.
 
-7.  Choisissez votre **déclencheur d’analyse**. Vous pouvez configurer une planification ou exécuter l’analyse une seule fois.
+1. Choisissez votre **déclencheur d’analyse**. Vous pouvez configurer une planification ou exécuter l’analyse une seule fois.
 
-8.  Passez en revue votre analyse et sélectionnez **Enregistrer et exécuter**.
+1. Passez en revue votre analyse et sélectionnez **Enregistrer et exécuter**.
 
-## <a name="viewing-your-scans-and-scan-runs"></a>Affichage des analyses et des exécutions d’analyse
-
-1. Accédez au centre d’administration. Sélectionnez **Sources de données** sous la section **Sources et analyse**.
-
-2. Sélectionnez la source de données souhaitée. La liste des analyses existantes sur cette source de données apparaît.
-
-3. Sélectionnez l’analyse dont vous souhaitez afficher les résultats.
-
-4. Cette page affiche toutes les exécutions précédentes de l’analyse ainsi que les métriques et l’état de chaque exécution de l’analyse. Elle indique également si votre analyse a été planifiée ou était manuelle, le nombre de ressources pour lesquelles ont été appliquées des classifications, le nombre total de ressources découvertes, l’heure de début et de fin de l’analyse et la durée totale de l’analyse.
-
-## <a name="manage-your-scans"></a>Gestion de vos analyses
-
-Pour gérer ou supprimer une analyse, effectuez les opérations suivantes :
-
-1. Accédez au centre d’administration. Sélectionnez **Sources de données** sous la section **Sources et analyse**, puis sélectionnez la source de données souhaitée.
-
-2. Sélectionnez l’analyse que vous souhaitez gérer. Vous pouvez modifier l’analyse en sélectionnant **Modifier**.
-
-3. Vous pouvez supprimer votre analyse en sélectionnant **Supprimer**.
+[!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Navigation dans le catalogue de données Azure Purview](how-to-browse-catalog.md)
-- [Recherche dans le catalogue de données Azure Purview](how-to-search-catalog.md)
+Maintenant que vous avez inscrit votre source, suivez les guides ci-dessous pour en savoir plus sur Purview et sur vos données.
+
+- [Insights de données dans Azure Purview](concept-insights.md)
+- [Lignage dans Azure Purview](catalog-lineage-user-guide.md)
+- [Rechercher dans un catalogue de données](how-to-search-catalog.md)

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: 46b5503e6c2c99c2c99f5cd18dc695ecb16275d1
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8e7c77093ba3ddd2496d2e8ac8a78481d71fd1f6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166855"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088157"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Architecture monolocataire ou multilocataire et environnement de service d’intégration pour Azure Logic Apps
 
@@ -252,7 +253,7 @@ Pour la ressource **Application logique (Standard)** , ces capacités ont chang�
 
     * L’action intégrée, [Azure Logic Apps – Choisir un workflow d’application logique](logic-apps-http-endpoint.md) est désormais **Workflow Operations – Appeler un workflow dans cette application de workflow**.
 
-    * Certains [déclencheurs et actions pour les comptes d’intégration](../connectors/managed.md#integration-account-connectors) ne sont pas disponibles, par exemple, les actions de fichier plat, les actions AS2 (v2) et les actions RosettaNet.
+    * Certains [déclencheurs et actions pour les comptes d’intégration](../connectors/managed.md#integration-account-connectors) ne sont pas disponibles, par exemple, les actions AS2 (v2) et les actions RosettaNet.
 
     * Les [connecteurs gérés personnalisés](../connectors/apis-list.md#custom-apis-and-connectors) ne sont actuellement pas pris en charge. Toutefois, vous pouvez créer des *opérations intégrées personnalisées* lorsque vous utilisez Visual Studio Code. Pour plus d’informations, consultez [Créer des workflows monolocataires avec Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring).
 

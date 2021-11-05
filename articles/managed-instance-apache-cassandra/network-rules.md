@@ -4,21 +4,17 @@ description: En savoir plus sur les règles de réseau sortant requises et les n
 author: christopheranderson
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 11/02/2021
 ms.author: chrande
-ms.openlocfilehash: fc96e4a09a24348ab8344733c8059925af209b39
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6d52f1c72765b3e7d3b7dd171c53c84e85138a20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767144"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005230"
 ---
 # <a name="required-outbound-network-rules"></a>Règles de trafic réseau sortant requises
-
-> [!IMPORTANT]
-> Azure Managed Instance pour Apache Cassandra est actuellement disponible en préversion publique.
-> Cette préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge.
-> Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Le service Azure Managed Instance pour Apache Cassandra requiert certaines règles de réseau pour gérer correctement le service. En vous assurant que les règles appropriées sont exposées, vous pouvez sécuriser votre service et prévenir les problèmes opérationnels.
 
@@ -33,13 +29,21 @@ Si vous utilisez le pare-feu Azure pour limiter l’accès sortant, nous vous re
 | Event Hub | HTTPS | 443 | Requis pour transférer des journaux vers Azure |
 | AzureMonitor | HTTPS | 443 | Requis pour transférer des métriques vers Azure |
 | AzureActiveDirectory| HTTPS | 443 | Obligatoire pour l’authentification Azure Active Directory.|
+| AzureResourceManager| HTTPS | 443 | Requis pour collecter des informations sur les nœuds Cassandra et les gérer (par exemple, redémarrer)|
+| AzureFrontDoor.FirstParty| HTTPS | 443 | Requis pour les opérations de journalisation.|
 | GuestAndHybridManagement | HTTPS | 443 |  Requis pour collecter des informations sur les nœuds Cassandra et les gérer (par exemple, redémarrer) |
 | ApiManagement  | HTTPS | 443 | Requis pour collecter des informations sur les nœuds Cassandra et les gérer (par exemple, redémarrer) |
-| Storage.\<Region\>  | HTTPS | 443 | Requis pour une communication sécurisée entre les nœuds et Stockage Azure pour la communication et la configuration du plan de contrôle **Vous avez besoin d’une entrée pour chaque région dans laquelle vous avez déployé un centre de données.** |
+
+> [!NOTE]
+> Outre ce qui précède, vous devez ajouter les préfixes d’adresse suivants, car il n’existe pas d’étiquette de service pour le service concerné : 104.40.0.0/13 13.104.0.0/14 40.64.0.0/10
+
+## <a name="user-defined-routes"></a>Itinéraires définis par l’utilisateur
+
+Si vous utilisez un pare-feu tiers pour limiter l’accès sortant, nous vous recommandons vivement de configurer des [itinéraires définis par l’utilisateur (UDR)](../virtual-network/virtual-networks-udr-overview.md#user-defined) pour les préfixes d’adresses Microsoft, au lieu de tenter d’autoriser la connectivité via votre propre pare-feu. Pour voir comment ajouter les préfixes d’adresse requis dans les itinéraires définis par l’utilisateur, consultez exemple de [script bash](https://github.com/Azure-Samples/cassandra-managed-instance-tools/blob/main/configureUDR.sh).
 
 ## <a name="azure-global-required-network-rules"></a>Règles de réseau requises pour Azure Global
 
-Si vous n’utilisez pas le pare-feu Azure, les règles de réseau et les dépendances d’adresse IP requises sont les suivantes :
+Les règles de réseau et les dépendances d’adresse IP requises sont les suivantes :
 
 | Point de terminaison de destination                                                             | Protocol | Port    | Utilisation  |
 |----------------------------------------------------------------------------------|----------|---------|------|

@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Comprendre comment utiliser les fonctionnalités d’Azure Digital Twins Explorer
 author: baanders
 ms.author: baanders
-ms.date: 4/20/2021
+ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ad40dadf36b711bde4b7af7e8b24b09610ab89
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e17d6026f9b655c6a08bc7e91939482d734a911d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459501"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070942"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Utiliser Azure Digital Twins Explorer (préversion)
 
-[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) est un outil permettant de visualiser et de travailler avec Azure Digital Twins. Cet article décrit les fonctionnalités d’Azure Digital Twins Explorer et explique comment les utiliser pour gérer les données dans votre instance Azure Digital Twins. 
+[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) est un outil permettant de visualiser et de travailler avec Azure Digital Twins. Cet article décrit les fonctionnalités d’Azure Digital Twins Explorer et explique comment les utiliser pour gérer les données dans votre instance Azure Digital Twins. Vous pouvez interagir avec Azure Digital Twins Explorer à l’aide de clics ou de [raccourcis clavier](#accessibility-and-advanced-settings).
 
 >[!NOTE]
 >Cet outil est actuellement en **préversion publique**.
@@ -46,7 +46,7 @@ Vous pouvez utiliser le panneau **Explorateur de requêtes** pour exécuter des 
 Entrez la requête que vous voulez exécuter, puis sélectionnez le bouton **Exécuter la requête**. Ceci va charger les résultats de la requête dans le panneau **Graphe des jumeaux**.
 
 >[!NOTE]
-> Les résultats de la requête contenant des relations peuvent être restitués dans le panneau **Graphe des jumeaux** seulement si les résultats incluent également au moins un jumeau. Si les requêtes retournant seulement des relations sont possibles dans Azure Digital Twins, vous pouvez les visualiser seulement dans Azure Digital Twins Explorer en utilisant le [panneau Sortie](#advanced-settings).
+> Les résultats de la requête contenant des relations peuvent être restitués dans le panneau **Graphe des jumeaux** seulement si les résultats incluent également au moins un jumeau. Si les requêtes retournant seulement des relations sont possibles dans Azure Digital Twins, vous pouvez les visualiser seulement dans Azure Digital Twins Explorer en utilisant le [panneau Sortie](#accessibility-and-advanced-settings).
 
 ### <a name="overlay-query-results"></a>Superposer les résultats des requêtes
 
@@ -99,19 +99,19 @@ Exécutez une requête en utilisant l’[Explorateur de requêtes](#query-your-d
 
 #### <a name="view-twin-and-relationship-properties"></a>Afficher les propriétés des jumeaux et des relations
 
-Pour afficher les valeurs des propriétés d’un jumeau ou d’une relation, sélectionnez le jumeau ou la relation dans le **Graphe des jumeaux** et utilisez le bouton **Passer à l’inspecteur de propriétés** pour développer le panneau **Propriétés**. Ce panneau va afficher toutes les propriétés associées à l’élément ainsi que leurs valeurs. Il montre aussi les valeurs par défaut pour les propriétés qui n’ont pas encore été définies.
+Pour afficher les valeurs des propriétés d’un jumeau ou d’une relation, sélectionnez le jumeau ou la relation dans le **Graphe des jumeaux** et utilisez le bouton **Passer à l’inspecteur de propriétés** pour développer le panneau **Propriétés du jumeau** ou le panneau **Propriétés de la relation**. Ce panneau va afficher toutes les propriétés associées à l’élément ainsi que leurs valeurs. Il montre aussi les valeurs par défaut pour les propriétés qui n’ont pas encore été définies.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et le panneau Propriétés est développé, montrant les propriétés du jumeau." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et le panneau Propriétés du jumeau est développé, montrant les propriétés du jumeau." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-Les propriétés apparaissent généralement en texte blanc, mais elles peuvent aussi apparaître dans les couleurs suivantes pour indiquer des informations supplémentaires :
+Le volet Propriétés du jumeau affiche des messages d’erreur si le jumeau ou certaines de ses propriétés ne correspondent plus à son modèle. Si le modèle du jumeau est introuvable ou si une propriété ne fait pas partie de la définition du modèle que le jumeau utilise, vous pouvez voir des messages d’erreur de ce type :
 
-* **Texte rouge pour le modèle** : indique que le modèle du jumeau est introuvable. Cela peut se produire si le modèle a été supprimé depuis la création du jumeau.
-
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-color-red.png" alt-text="Capture d’écran du panneau Propriétés d’Azure Digital Twins Explorer montrant les propriétés d’un exemple de jumeau. Le champ $model et sa valeur sont affichés avec du texte rouge." lightbox="media/how-to-use-azure-digital-twins-explorer/properties-color-red.png":::
-
-* **Texte jaune pour la propriété** : indique que la propriété ne fait pas partie de la définition du modèle utilisé par le jumeau. Ceci peut se produire si le modèle pour le jumeau a été remplacé ou modifié depuis la création de la propriété, et que la propriété n’existe plus dans la version la plus récente du modèle. **Les jumeaux avec des propriétés obsolètes ne peuvent pas être mis à jour, sauf si la mise à jour corrige ou supprime également les propriétés obsolètes.**
-
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-color-yellow.png" alt-text="Capture d’écran du panneau Propriétés d’Azure Digital Twins Explorer montrant les propriétés d’un exemple de jumeau. Plusieurs noms de propriétés sont affichés en texte jaune." lightbox="media/how-to-use-azure-digital-twins-explorer/properties-color-yellow.png":::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-errors.png" alt-text="Capture d’écran du panneau des propriétés du jumeau Azure Digital Twins Explorer, montrant deux messages d’erreur. Une erreur indique que des modèles sont manquants, et l’autre indique qu’un modèle est manquant pour les propriétés. " lightbox="media/how-to-use-azure-digital-twins-explorer/properties-errors.png":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 #### <a name="view-a-twins-relationships"></a>Visualiser les relations d’un jumeau
 
@@ -125,9 +125,9 @@ Pour cela, cliquez avec le bouton droit sur un jumeau dans le graphe, puis chois
 
 Vous pouvez réorganiser les jumeaux selon différentes configurations en cliquant sur ceux-ci et en les faisant glisser dans l’écran Graphe des jumeaux.
 
-Vous pouvez aussi appliquer un des nombreux algorithmes de mise en page au graphe à partir des options du menu **Exécuter une disposition**. 
+Vous pouvez également appliquer un des nombreux algorithmes de disposition au graph à partir des options du menu **Choisir une disposition**. 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le bouton Exécuter une disposition est mis en évidence et montre un menu avec les options de disposition Cola, Dagre, fCoSE et Klay." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le bouton Choisir une disposition est mis en évidence et montre un menu avec les options de disposition Cola, Dagre, fCoSE et Klay." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-layout.png":::
 
 ### <a name="control-twin-graph-expansion"></a>Contrôler l’expansion du graphe des jumeaux
 
@@ -137,15 +137,15 @@ Pour définir le nombre de couches à développer, utilisez l’option **Niveau 
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-level.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le bouton Niveau d’expansion est mis en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-level.png":::
 
-Pour indiquer les types de relations à suivre lors de l’expansion, utilisez le bouton **Mode d’expansion**. Ceci vous permet de choisir entre seulement les relations entrantes, seulement les relations sortantes, ou à la fois les relations entrantes et sortantes.
+Pour indiquer les types de relations à suivre lors de l’expansion, utilisez le bouton **Direction d’expansion**. Ceci vous permet de choisir entre seulement les relations entrantes, seulement les relations sortantes, ou à la fois les relations entrantes et sortantes.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-mode.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le bouton Mode d’expansion est mis en évidence et montre un menu avec les options Entrantes, Sortantes et Entrantes/Sortantes." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-mode.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-direction.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le bouton Direction d’expansion est mis en évidence et montre un menu avec les options Entrantes, Sortantes et Entrantes/Sortantes." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-expansion-direction.png":::
 
 ### <a name="show-and-hide-twin-graph-elements"></a>Afficher et masquer les éléments du graphe des jumeaux
 
 Vous pouvez activer ou désactiver l’option pour masquer des jumeaux ou des relations dans la vue du graphe. 
 
-Pour masquer un jumeau ou une relation, cliquez dessus avec le bouton droit dans la fenêtre de **Graphe des jumeaux**. Ceci fait apparaître un menu avec une option pour masquer l’élément ou d’autres éléments associés.
+Pour masquer un jumeau ou une relation, cliquez dessus avec le bouton droit dans la fenêtre de **Graphe des jumeaux**. Ceci fait apparaître un menu avec des options pour masquer l’élément ou d’autres éléments associés.
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-hide.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et il y a un menu contenant les options Masquer les éléments sélectionnés, Masquer les éléments sélectionnés + les enfants, Masquer tous les autres et Masquer les éléments non enfants." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-hide.png":::
 
@@ -170,6 +170,7 @@ Vous pouvez aussi mettre en surbrillance les jumeaux et le graphe qui apparaisse
 Azure Digital Twins Explorer offre plusieurs moyens de gérer les [jumeaux](concepts-twins-graph.md#digital-twins) et les [relations](concepts-twins-graph.md#relationships-a-graph-of-digital-twins) dans votre instance.
 
 Cette section décrit comment effectuer les activités de gestion suivantes :
+* [Afficher la liste plate des jumeaux et des relations](#view-flat-list-of-twins-and-relationships)
 * [Créer des jumeaux](#create-twins), avec ou sans propriétés initiales
 * [Créer des relations](#create-relationships) entre des jumeaux
 * [Modifier des jumeaux et des relations](#edit-twins-and-relationships)
@@ -177,15 +178,21 @@ Cette section décrit comment effectuer les activités de gestion suivantes :
 
 Pour plus d’informations sur l’expérience de visualisation pour les jumeaux et les relations, consultez [Explorer les jumeaux et le graphique des jumeaux](#explore-the-twin-graph).
 
+### <a name="view-flat-list-of-twins-and-relationships"></a>Afficher la liste plate des jumeaux et des relations
+
+Le volet **Jumeaux** affiche une liste plate de vos jumeaux et leurs relations associées. Vous pouvez rechercher des jumeaux par nom et les développer pour obtenir des détails sur leurs relations entrantes et sortantes.
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twins-panel.png" alt-text="Capture d’écran du panneau Jumeaux d’Azure Digital Twins Explorer. Un jumeau est mis en surbrillance et ses relations sont affichées." lightbox="media/how-to-use-azure-digital-twins-explorer/twins-panel.png":::
+
 ### <a name="create-twins"></a>Créer des jumeaux
 
 Vous pouvez créer un jumeau numérique à partir de sa définition de modèle dans le panneau **Modèles**.
 
-Pour créer un jumeau à partir d’un modèle, recherchez ce modèle dans la liste et choisissez l’icône **Créer un jumeau** en regard du nom du modèle. Vous êtes invité à entrer un **nom** pour le nouveau jumeau ; ce nom doit être unique. Enregistrez ensuite le jumeau, qui sera alors ajouté à votre graphe.
+Pour créer un jumeau à partir d’un modèle, recherchez ce modèle dans la liste et sélectionnez les points de menu en regard du nom du modèle. Sélectionnez ensuite **Créer un jumeau**. Vous êtes invité à entrer un **nom** pour le nouveau jumeau ; ce nom doit être unique. Enregistrez ensuite le jumeau, qui sera alors ajouté à votre graphe.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. L’icône Créer un jumeau pour un seul modèle est mise en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. Les points de menu d’un modèle unique sont mis en surbrillance, et l’option de menu permettant de créer un jumeau est également mise en surbrillance." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-create-a-twin.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -197,7 +204,7 @@ Pour ajouter des valeurs de propriété à votre jumeau, consultez [Modifier des
 
 Pour créer une relation entre deux jumeaux, commencez par sélectionner le jumeau source pour la relation dans la fenêtre **Graphe des jumeaux**. Ensuite, maintenez la touche Ctrl/Cmd ou Maj enfoncée tout en sélectionnant un deuxième jumeau comme cible de la relation.
 
-Une fois les deux jumeaux sélectionnés, cliquez avec le bouton droit sur un des jumeaux. Ceci fait apparaître un menu avec une option pour **Ajouter des relations** entre ces jumeaux.
+Une fois les deux jumeaux sélectionnés, cliquez avec le bouton droit sur le jumeau cible. Ceci fait apparaître un menu avec une option pour **Ajouter des relations** entre ces jumeaux.
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-add-relationship.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Les jumeaux FactoryA et Consumer sont sélectionnés et un menu montre l’option permettant d’ajouter des relations." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-add-relationship.png":::
 
@@ -205,11 +212,11 @@ Ceci fait apparaître la boîte de dialogue **Créer une relation**, qui montre 
 
 ### <a name="edit-twins-and-relationships"></a>Modifier des jumeaux et des relations
 
-Pour visualiser les valeurs des propriétés d’un jumeau ou d’une relation, sélectionnez l’élément dans le **Graphe des jumeaux** et utilisez le bouton **Passer à l’inspecteur de propriétés** pour développer le panneau **Propriétés**.
+Pour afficher les valeurs des propriétés d’un jumeau ou d’une relation, sélectionnez l’élément dans le **Graphe des jumeaux** et utilisez le bouton **Passer à l’inspecteur de propriétés** pour développer le panneau **Propriétés du jumeau** ou le panneau **Propriétés de la relation**.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et le panneau Propriétés est développé, montrant les propriétés du jumeau." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et le panneau Propriétés du jumeau est développé, montrant les propriétés du jumeau." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-Vous pouvez utiliser ce panneau pour modifier directement les propriétés accessibles en écriture. Mettez à jour leurs valeurs inline, puis cliquez sur le bouton **Corriger le jumeau** (enregistrer) en haut du panneau pour enregistrer vos modifications. Quand la mise à jour est enregistrée, l’écran affiche une fenêtre modale montrant l’opération de correction JSON qui a été appliquée par l’[API de mise à jour](/rest/api/azure-digitaltwins/).
+Vous pouvez utiliser ce panneau pour modifier directement les propriétés accessibles en écriture. Mettez à jour leurs valeurs inline, puis cliquez sur le bouton **Enregistrer les modifications** en haut du panneau pour enregistrer. Quand la mise à jour est enregistrée, l’écran affiche une fenêtre modale montrant l’opération de correction JSON qui a été appliquée par l’[API de mise à jour](/rest/api/azure-digitaltwins/).
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le centre de l’écran contient une boîte de dialogue modale Informations de correction montrant le code du correctif JSON." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png":::
 
@@ -248,19 +255,19 @@ Vous pouvez utiliser le panneau **Graphe des modèles** pour visualiser une repr
 
 #### <a name="view-model-definition"></a>Visualiser la définition d’un modèle
 
-Pour voir la définition complète d’un modèle, recherchez ce modèle dans le volet **Modèles**, puis choisissez l’icône **Visualiser le modèle** en regard du nom du modèle. Ceci va afficher une boîte de dialogue modale **Informations sur le modèle** montrant la définition DTDL brute du modèle.
+Pour voir la définition complète d’un modèle, recherchez ce modèle dans le volet **Modèles**, puis sélectionnez les points de menu en regard du nom du modèle. Puis sélectionnez **Afficher le modèle**. Ceci va afficher une boîte de dialogue modale **Informations sur le modèle** montrant la définition DTDL brute du modèle.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. L’icône Visualiser le modèle pour un seul modèle est mise en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. Les points de menu d’un modèle unique sont mis en surbrillance, et l’option de menu permettant d’afficher le modèle est également mise en surbrillance." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-view.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
 
-Vous pouvez aussi voir la définition complète d’un modèle en le sélectionnant dans le **Graphe des modèles** et en utilisant le bouton **Afficher/masquer les détails du modèle** pour développer le panneau **DÉTAILS DU MODÈLE**. Ce panneau affiche également le code DTDL complet pour le modèle.
+Vous pouvez aussi voir la définition complète d’un modèle en le sélectionnant dans le **Graphe des modèles** et en utilisant le bouton **Afficher/masquer les détails du modèle** pour développer le panneau **Détails du modèle**. Ce panneau affiche également le code DTDL complet pour le modèle.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png" alt-text="Capture d’écran du panneau Graphe des modèles d’Azure Digital Twins Explorer. Le modèle Floor est sélectionné et le panneau DÉTAILS DU MODÈLE est développé, montrant le code DTDL du modèle." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png" alt-text="Capture d’écran du panneau Graphe des modèles d’Azure Digital Twins Explorer. Le modèle Floor est sélectionné et le panneau Détails du modèle est développé, montrant le code DTDL du modèle." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-highlight-graph-details.png":::
 
 ### <a name="edit-model-graph-layout"></a>Modifier la disposition du graphe du modèle
 
@@ -291,11 +298,11 @@ Vous pouvez charger des images personnalisées pour représenter différents mod
 >[!NOTE]
 >Ces images sont stockées dans le stockage local du navigateur. Cela signifie que les images ne seront pas disponibles dans les navigateurs autres que celui où vous les avez enregistrées, et qu’elles resteront indéfiniment dans le stockage du navigateur jusqu’à ce que le stockage local soit effacé.
 
-Pour charger une image pour un seul modèle, recherchez ce modèle dans le panneau **Modèles**, puis choisissez l’icône **Charger l’image du modèle** en regard du nom du modèle. Dans la zone de sélection de fichier qui apparaît, accédez sur votre machine au fichier image que vous voulez charger pour ce modèle. Choisissez **Ouvrir** pour le charger.
+Pour charger une image pour un seul modèle, recherchez ce modèle dans le panneau **Modèles**, puis sélectionnez les points de menu en regard du nom du modèle. Ensuite, sélectionnez **Charger l’image du modèle**. Dans la zone de sélection de fichier qui apparaît, accédez sur votre machine au fichier image que vous voulez charger pour ce modèle. Choisissez **Ouvrir** pour le charger.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. L’icône Charger l’image du modèle pour un seul modèle est mise en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. Les points de menu d’un modèle unique sont mis en surbrillance, et l’option de menu permettant de charger l’image du modèle est également mise en surbrillance." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-upload-one-image.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -339,7 +346,7 @@ Pour plus d’informations sur l’expérience de visualisation des modèles, co
 
 Vous pouvez charger des modèles depuis votre machine en les sélectionnant individuellement ou en chargeant un dossier entier de modèles en une seule fois.
 
-Pour télécharger un ou plusieurs modèles qui sont sélectionnés individuellement, sélectionnez l’icône **Charger un modèle** qui représente une flèche pointant vers un nuage.
+Pour télécharger un ou plusieurs modèles qui sont sélectionnés individuellement, sélectionnez l’icône **Charger un modèle** qui représente une flèche pointant vers le haut.
 
 :::row:::
     :::column:::
@@ -370,11 +377,11 @@ Dans la zone de sélection de fichier qui apparaît, accédez sur votre machine 
 
 Vous pouvez utiliser le panneau Modèles pour supprimer des modèles individuels ou tous les modèles de votre instance à la fois.
 
-Pour supprimer un seul modèle, recherchez ce modèle dans la liste, puis choisissez l’icône **Supprimer le modèle** en regard du nom du modèle.
+Pour supprimer un modèle unique, recherchez ce modèle dans la liste et sélectionnez les points de menu en regard du nom du modèle. Ensuite, sélectionnez **Supprimer le modèle**.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. L’icône Supprimer le modèle pour un seul modèle est mise en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png" alt-text="Capture d’écran du panneau Modèles d’Azure Digital Twins Explorer. Les points de menu d’un modèle unique sont mis en surbrillance, et l’option de menu permettant de supprimer le modèle est également mise en surbrillance." lightbox="media/how-to-use-azure-digital-twins-explorer/models-panel-delete-one.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -394,7 +401,7 @@ Pour supprimer tous les modèles à la fois dans votre instance, choisissez l’
 
 Quand vous ouvrez Azure Digital Twins Explorer, le panneau Modèles doit montrer automatiquement tous les modèles disponibles dans votre environnement. 
 
-Cependant, vous pouvez actualiser manuellement le panneau à tout moment pour recharger la liste de tous les modèles dans votre instance Azure Digital Twins. Pour cela, sélectionnez l’icône **Actualiser les modèles**, qui représente une flèche pointant vers le bas depuis un nuage. 
+Cependant, vous pouvez actualiser manuellement le panneau à tout moment pour recharger la liste de tous les modèles dans votre instance Azure Digital Twins. Pour ce faire, sélectionnez l’icône **Actualiser les modèles**. 
 
 :::row:::
     :::column:::
@@ -506,20 +513,26 @@ Voici un exemple de paramètre pour une requête **SELECT * FROM digitaltwins**�
 
 Vous pouvez ensuite partager l’URL complétée.
 
-## <a name="advanced-settings"></a>Paramètres avancés
+## <a name="accessibility-and-advanced-settings"></a>Accessibilité et paramètres avancés
 
-Vous pouvez activer plusieurs options de paramétrage avancées pour Azure Digital Twins Explorer.
+Vous pouvez activer plusieurs paramètres avancés d’Azure Digital Twins Explorer pour personnaliser votre expérience ou le rendre plus accessible.
 
-Le fait de cliquer sur l’icône d’engrenage des paramètres dans le coin supérieur droit permet de configurer les fonctionnalités avancées suivantes :
-* **Chargement hâtif** : *Accessible via l’icône d’engrenage **Paramètres** dans la barre d’outils du haut*. Quand une requête retourne des jumeaux qui ont des relations avec d’autres jumeaux qui **ne sont pas** inclus dans les résultats de la requête, cette fonctionnalité va charger les jumeaux « manquants » avant de rendre le graphe.
-* **Mise en cache** : *Accessible via l’icône d’engrenage **Paramètres** dans la barre d’outils du haut*. Quand cette fonctionnalité est activée, Azure Digital Twins Explorer conserve un cache local des relations et des modèles en mémoire pour améliorer les performances des requêtes. Ces caches sont effacés quand il y a des opérations d’écriture sur les éléments concernés et lors de l’actualisation du navigateur.
-* **Console** : *Accessible via l’icône d’engrenage **Paramètres** dans la barre d’outils du haut*. Cette fonctionnalité permet d’afficher une fenêtre de console qui permet d’utiliser des fonctions de shell simples pour travailler sur le graphe.
-* **Sortie** : *Accessible via l’icône d’engrenage **Paramètres** dans la barre d’outils du haut*. Cette fonctionnalité permet d’afficher une fenêtre de sortie, qui montre une trace de diagnostic des opérations.
-* **Personnaliser la disposition des panneaux** : Vous pouvez modifier la position des panneaux qui composent Azure Digital Twins Explorer (Explorateur de requêtes, Modèles, Graphe des jumeaux, Graphe des modèles). Pour déplacer un panneau à un autre emplacement, cliquez sur le nom du panneau et maintenez le bouton enfoncé, puis faites-le glisser à la nouvelle position souhaitée.
+Vous pouvez utiliser l’icône **Raccourcis clavier** dans la barre d’outils en haut à droite pour afficher la liste des raccourcis clavier qui peuvent être utilisés pour naviguer dans Azure Digital Twins Explorer.
 
-    :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/panels.png" alt-text="Capture d’écran d’Azure Digital Twins Explorer. Les noms des panneaux Explorateur de requêtes, Modèles, Graphe des jumeaux et Graphe des modèles sont mis en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/panels.png":::
+ :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/keyboard-shortcuts.png" alt-text="Capture d’écran d’Azure Digital Twins Explorer. L’icône Raccourcis clavier est mise en surbrillance dans la barre d’outils supérieure." lightbox="media/how-to-use-azure-digital-twins-explorer/keyboard-shortcuts.png":::
 
-    Les positions des panneaux sont réinitialisées lors de l’actualisation de la fenêtre du navigateur.
+Vous pouvez accéder à plusieurs fonctionnalités avancées sous l’engrenage Paramètres dans la barre d’outils supérieure droite :
+* **Chargement hâtif** : Quand une requête retourne des jumeaux qui ont des relations avec d’autres jumeaux qui **ne sont pas** inclus dans les résultats de la requête, cette fonctionnalité va charger les jumeaux « manquants » avant de rendre le graphe.
+* **Mise en cache** : Quand cette fonctionnalité est activée, Azure Digital Twins Explorer conserve un cache local des relations et des modèles en mémoire pour améliorer les performances des requêtes. Ces caches sont effacés quand il y a des opérations d’écriture sur les éléments concernés et lors de l’actualisation du navigateur.
+* **Console** : Cette fonctionnalité permet d’afficher une fenêtre de console qui permet d’utiliser des fonctions de shell simples pour travailler sur le graphe.
+* **Sortie** : Cette fonctionnalité permet d’afficher une fenêtre de sortie, qui montre une trace de diagnostic des opérations.
+* **Contraste élevé** : cette fonctionnalité modifie les couleurs d’Azure Digital Twins Explorer pour qu’elles apparaissent avec un contraste plus élevé.
+
+Vous pouvez **personnaliser la position des panneaux** qui composent Azure Digital Twins Explorer (Explorateur de requêtes, Modèles, Graphe des jumeaux, Graphe des modèles). Pour déplacer un panneau à un autre emplacement, cliquez sur le nom du panneau et maintenez le bouton enfoncé, puis faites-le glisser à la nouvelle position souhaitée.
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/panels.png" alt-text="Capture d’écran d’Azure Digital Twins Explorer. Les noms des panneaux Explorateur de requêtes, Modèles, Graphe des jumeaux et Graphe des modèles sont mis en évidence." lightbox="media/how-to-use-azure-digital-twins-explorer/panels.png":::
+
+Les positions des panneaux sont réinitialisées lors de l’actualisation de la fenêtre du navigateur.
 
 ## <a name="next-steps"></a>Étapes suivantes 
 

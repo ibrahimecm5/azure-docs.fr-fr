@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 6e5c6bb17c4b31126b05af32a8b1582c7f025c2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0ba6e7a0a336a5fbcb560a07a7731c8cdcc66e9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097468"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439022"
 ---
 # <a name="improve-quality-of-response-with-synonyms"></a>Améliorer la qualité de la réponse avec les synonymes
 
@@ -80,8 +80,7 @@ Comme vous pouvez le voir, lorsque `troubleshoot` n’a pas été ajouté en tan
 
 > [!NOTE]
 > Les synonymes sont insensibles à la casse. Les synonymes peuvent également ne pas fonctionner comme prévu si vous ajoutez des mots vides en tant que synonymes. La liste de mots vides est disponible ici : [liste des mots vides](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md).
-
-Par exemple, si vous ajoutez l’abréviation **IT** (Information Technology) pour Technologies de l’information, il est possible que le système ne puisse pas reconnaître Technologies de l’information, car **IT** est un mot vide qui est filtré quand une demande est traitée.
+> Par exemple, si vous ajoutez l’abréviation **IT** (Information Technology) pour Technologies de l’information, il est possible que le système ne puisse pas reconnaître Technologies de l’information, car **IT** est un mot vide qui est filtré quand une demande est traitée.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

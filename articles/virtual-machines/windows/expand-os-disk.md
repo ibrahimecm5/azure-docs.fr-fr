@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 11/02/2021
 ms.author: kirpas
 ms.subservice: disks
-ms.custom: devx-track-azurepowershell, ignite-fall-2021
-ms.openlocfilehash: 4588627fdfe64c4ba005b6b3c7defadd5994e3d6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: devx-track-azurepowershell, references_regions, ignite-fall-2021
+ms.openlocfilehash: d744bf5ec5619985aaa899183657504c7e3afeff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046562"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466672"
 ---
 # <a name="how-to-expand-virtual-hard-disks-attached-to-a-windows-virtual-machine"></a>Guide pratique pour développer des disques durs virtuels attachés à une machine virtuelle Windows
 
@@ -39,12 +39,7 @@ Vous pouvez maintenant redimensionner vos disques managés sans libérer votre m
 
 Pour cette opération, la préversion présente les limitations suivantes :
 
-- Disponible uniquement dans la région USA Centre-Ouest.
-
-- Prise en charge uniquement pour les disques de données.
-- Les disques de moins de 4 Tio ne peuvent pas être étendus à 4 Tio ou plus sans temps d’arrêt.
-    - Une fois que vous avez augmenté la taille d’un disque à 4 Tio ou plus, il peut être étendu sans temps d’arrêt.
-- Vous devez installer et utiliser la [dernière interface de ligne de commande Azure](/cli/azure/install-azure-cli), le [dernier module d’Azure PowerShell](/powershell/azure/install-az-ps), le portail Azure si vous y accédez par le biais de [https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) ou un modèle Azure Resource Manager avec une version d’API 2021-04-01 ou plus récente.
+[!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../../../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
 
 Pour vous inscrire à la fonctionnalité, utilisez la commande suivante :
 

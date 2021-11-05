@@ -9,18 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8d118d72b267cc42780f198a1fb0dc63f0f0d965
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 685a5f6a7eec89f966e165179db7417f7d848d9b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233598"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026597"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-azure-form-recognizer"></a>Nouveautés dans Azure Form Recognizer
 
-Le service Form Recognizer est régulièrement mis à jour. Ajoutez cette page aux favoris pour rester informé des mises à jour des notes de publication, des améliorations apportées aux fonctionnalités et des mises à jour de la documentation.
+Le service Form Recognizer est régulièrement mis à jour. Ajoutez cette page aux favoris pour vous tenir informé des notes de publication, des améliorations apportées aux fonctionnalités et des mises à jour de la documentation.
 
 ## <a name="october-2021"></a>Octobre 2021
 
@@ -63,7 +64,7 @@ Commencez par la nouvelle [API REST](https://westus2.dev.cognitive.microsoft.com
 
     ### <a name="charts"></a>Graphiques
 
-    :::image type="content" source="media/portal-metrics-charts.png" alt-text="Capture d’écran montrant un exemple de graphique de métriques dans le portail Azure.":::
+    :::image type="content" source="media/portal-metrics-charts.png" alt-text="Capture d’écran montrant un exemple de graphique de métrique dans le portail Azure.":::
 
 *  Mise à jour du modèle **Document d’identité** : les noms donnés incluant un suffixe, avec ou sans point (point final), sont traités correctement :
 
@@ -457,7 +458,7 @@ Package pip version 3.1.0b4
 
   [**Essayer l’outil d’étiquetage des exemples Form Recognizer**](https://fott-2-1.azurewebsites.net)
 
-  ![Capture d’écran : Outil d’étiquetage des exemples](./media/ui-preview.jpg)
+  ![Capture d’écran : Outil d’étiquetage des exemples.](./media/ui-preview.jpg)
 
 * **Boucle de commentaires** : quand vous analysez des fichiers par le biais de l’outil d’étiquetage des exemples, vous pouvez maintenant l’ajouter au jeu d’apprentissage et ajuster les étiquettes au besoin pour effectuer l’apprentissage du modèle afin d’améliorer celui-ci.
 * **Étiquetage automatique des documents** : étiquetez automatiquement d’autres documents en fonction de documents précédemment étiquetés dans le projet.
@@ -555,7 +556,7 @@ De **nouveaux exemples** sont disponibles sur GitHub.
   L’image suivante illustre la façon dont les tables sont reconnues et extraites :
 
   > [!div class="mx-imgBorder"]
-  > ![Visualisation de table à l'aide de l'outil d'étiquetage des exemples](./media/whats-new/table-viz.png)
+  > ![Visualisation de table à l’aide de l’outil d’étiquetage des exemples](./media/whats-new/table-viz.png)
 
     Les tables extraites sont disponibles dans la sortie JSON sous `"pageResults"`.
 

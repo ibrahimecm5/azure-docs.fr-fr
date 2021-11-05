@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 04/25/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: acaefa655593a70caca049c536b0ed7cde9f90f2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4ed4868cdaa8363419d1f4ca5e9267509df5ed4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055841"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437977"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Couverture des fonctionnalités pour les services Azure PaaS <a name="paas-services"></a>
 

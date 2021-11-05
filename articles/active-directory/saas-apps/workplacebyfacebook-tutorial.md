@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: e6dd9403912d6fddf0b0c6a8d3953756c7432ea6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cec6bb5bb4e74526ef2fae6a288a7bc996a9084e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039991"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Workplace by Facebook
 
@@ -43,7 +43,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * Workplace by Facebook prend en charge l’authentification unique initiée par le **fournisseur de services**.
 * Workplace by Facebook prend en charge **l’approvisionnement juste-à-temps**.
-* Workplace by Facebook prend en charge **[l’Attribution d’utilisateurs automatique](workplacebyfacebook-provisioning-tutorial.md)** .
+* Workplace by Facebook prend en charge **[l’Attribution d’utilisateurs automatique](workplace-by-facebook-provisioning-tutorial.md)** .
 * L’application mobile Workplace by Facebook peut désormais être configurée avec Azure AD pour activer l’authentification unique. Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 
@@ -83,11 +83,11 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. Dans la section **Configuration SAML de base**, entrez les valeurs pour les champs suivants :
 
-    a. Dans la zone de texte **URL de connexion** (qui correspond à « Recipient URL » dans WorkPlace), tapez une URL au format suivant : `https://.workplace.com/work/saml.php`
+    a. Dans la zone de texte **URL de connexion** (qui correspond à « Recipient URL » dans WorkPlace), tapez une URL au format suivant : `https://.facebook.com/work/saml.php`
 
-    b. Dans la zone de texte **Identificateur (ID d’entité)** (qui correspond à « Audience URL » dans WorkPlace), tapez une URL au format suivant : `https://www.workplace.com/company/`
+    b. Dans la zone de texte **Identificateur (ID d’entité)** (qui correspond à « Audience URL » dans WorkPlace), tapez une URL au format suivant : `https://www.facebook.com/company/`
 
-    c. Dans la zone de texte **URL de réponse** (qui correspond à « Assertion Consumer Service » dans WorkPlace), tapez une URL au format suivant : `https://.workplace.com/work/saml.php`
+    c. Dans la zone de texte **URL de réponse** (qui correspond à « Assertion Consumer Service » dans WorkPlace), tapez une URL au format suivant : `https://.facebook.com/work/saml.php`
 
     > [!NOTE]
     > Il ne s’agit pas des valeurs réelles. Mettez à jour ces valeurs avec l’URL de connexion, l’identificateur et l’URL de réponse réels. Pour connaître les valeurs correctes pour votre communauté Workplace, consultez la page d’authentification du tableau de bord Entreprise de Workplace. Ceci est expliqué plus loin dans le tutoriel.

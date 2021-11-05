@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/24/2021
+ms.date: 10/28/2021
 ms.author: aahi
 keywords: local, Docker, conteneur, Kubernetes
-ms.openlocfilehash: 0057888a85acc2356660fecbf8a77071401e8e3c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b81d190aa7b565f40dd73fa5054253a46ae7041
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033472"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439250"
 ---
 # <a name="azure-cognitive-services-containers"></a>Conteneurs Azure Cognitive Services
 
@@ -53,7 +53,7 @@ Les conteneurs Azure Cognitive Services fournissent l’ensemble suivant de cont
 | [Service Language][ta-containers-keyphrase] | **Extraction de phrases clés** ([image](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraire des expressions clés pour identifier les points principaux. Par exemple, pour le texte d’entrée « Le repas était délicieux et le personnel adorable », l’API renvoie les principaux points de discussion : « repas » et « personnel adorable ». | Préversion |
 | [Service Language][ta-containers-language] |  **Détection de la langue du texte** ([image](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Détecter la langue (parmi 120 langues maximum) dans laquelle le texte d’entrée est rédigé et générer un code de langue unique pour chaque document envoyé dans la demande. Le code de langue est associé à un score indiquant la puissance de l’analyse. | Mise à la disposition générale |
 | [Service Language][ta-containers-sentiment] | **Analyse des sentiments** ([image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyser le texte brut pour obtenir des indices sur un sentiment positif ou négatif. Cette version d’Analyse des sentiments renvoie des étiquettes de sentiment (par exemple, *positif* ou *négatif*) pour chaque document et phrase qu’elle contient. |  Mise à la disposition générale |
-| [Service Language][ta-containers-health] |  **Analyse de texte pour la santé** | Extraire et étiqueter des informations médicales à partir de textes cliniques non structurés. | Préversion |
+| [Service Language][ta-containers-health] |  **Analyse de texte pour la santé** | Extraire et étiqueter des informations médicales à partir de textes cliniques non structurés. | PRÉVERSION |
 | [Translator][tr-containers] | **Translator** | Traduisez du texte en plusieurs langues et dialectes. | Préversion contrôlée. [Demandez l’accès](https://aka.ms/csgate-translator). | 
 
 ### <a name="speech-containers"></a>Conteneurs Speech
@@ -78,7 +78,7 @@ Les conteneurs Azure Cognitive Services fournissent l’ensemble suivant de cont
 | Service |  Conteneur | Description | Disponibilité |
 |--|--|--|--|
 | [Vision par ordinateur][cv-containers] | **Lire OCR** ([image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Le conteneur Read OCR vous permet d’extraire du texte imprimé et manuscrit à partir d’images et de documents avec la prise en charge des formats de fichier JPEG, PNG, BMP, PDF et TIFF. Pour plus d’informations, consultez la [documentation sur l’API Read](./computer-vision/overview-ocr.md). | Préversion contrôlée. [Demandez l’accès][request-access]. |
-| [Analyse spatiale][spa-containers] | **Analyse spatiale** ([image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analyser le flux vidéo en temps réel afin de comprendre les relations spatiales entre les personnes, leurs déplacements et les interactions avec des objets dans des environnements physiques. | Préversion |
+| [Analyse spatiale][spa-containers] | **Analyse spatiale** ([image](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analyser le flux vidéo en temps réel afin de comprendre les relations spatiales entre les personnes, leurs déplacements et les interactions avec des objets dans des environnements physiques. | PRÉVERSION |
 | [Visage][fa-containers] | **Visage** | Détecter les visages humains sur des images et identifier les attributs, y compris les caractéristiques (par exemple, le nez et les yeux), le sexe, l’âge et d’autres caractéristiques du visage prévues par la machine. En plus de la détection, le conteneur Visage peut vérifier si deux visages sur la même image ou sur des images différentes sont identiques à l’aide d’un score de confiance, ou de comparer des visages par rapport à une base de données pour voir si un visage similaire ou identique existe déjà. Il peut également regrouper des visages similaires à l’aide de caractéristiques visuelles partagées. | Non disponible |
 
 <!--
@@ -90,7 +90,7 @@ En outre, certains conteneurs sont pris en charge dans l’offre de [ressources 
 * Vision par ordinateur
 * Face
 * LUIS
-* Analyse de texte
+* Service Language
 
 ## <a name="prerequisites"></a>Prérequis
 

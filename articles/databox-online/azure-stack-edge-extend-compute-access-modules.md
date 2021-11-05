@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b4b509e359976fcf8ff0c47270c814a203fcbdd
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 335b1429cceb60f99fada1b7eaf207fb4a64ce2d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108331"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088214"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Activer le réseau de calcul sur Azure Stack Edge Pro
 
@@ -62,7 +62,7 @@ Procédez comme suit pour ajouter un module d’application de serveur web sur v
 3. Dans le panneau **Modules personnalisés IoT Edge** :
 
     1. Spécifiez un **nom** pour le module d’application de serveur web que vous souhaitez déployer.
-    2. Indiquez un **URI d’image** pour votre image de module. Un module de mise en correspondance du nom et des balises est récupéré. Dans ce cas, `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` extrait une image nginx (nommée 1.15.5-alpine) à partir du registre `mcr.microsoft.com` public.
+    2. Indiquez un **URI d’image** pour votre image de module. Un module de mise en correspondance du nom et des balises est récupéré. Dans ce cas, `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` extrait une image nginx (nommée `1.15.5-alpine`) à partir du registre `mcr.microsoft.com` public.
     3. Dans **Options de création de conteneur**, collez l’exemple de code suivant :  
 
         ```

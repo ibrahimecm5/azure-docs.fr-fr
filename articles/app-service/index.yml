@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: c77ec3cc1abd0f27efc6720d007118346b3def03
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: b4771486e8f64df5005a6cc3a29d5b7c960cde3d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130253342"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131045783"
 landingContent:
 - title: À propos d’App Service
   linkLists:
@@ -56,8 +56,6 @@ landingContent:
       url: configure-ssl-bindings.md
     - text: Exécuter une application dans des environnements de préproduction
       url: deploy-staging-slots.md
-    - text: Accéder au stockage et à Microsoft Graph de façon sécurisée
-      url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
     - text: Se connecter à un conteneur Linux via SSH
@@ -102,6 +100,24 @@ landingContent:
       url: tutorial-python-postgresql-app.md
     - text: Application Ruby (Rails) avec PostgreSQL
       url: tutorial-ruby-postgres-app.md
+- title: Sécuriser
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sécurité dans Azure App Service
+      url: overview-security.md
+  - linkListType: tutorial
+    links:
+    - text: Accès à SQL Database sans secret avec des identités managées
+      url: tutorial-connect-msi-sql-database.md
+    - text: Accès sans secret au stockage et Microsoft Graph avec des identités managées
+      url: scenario-secure-app-overview.md
+    - text: Se connecter en toute sécurité aux services avec des secrets Key Vault
+      url: tutorial-connect-msi-key-vault.md
+    - text: Isoler le trafic réseau pour la connectivité du serveur principal
+      url: tutorial-networking-isolate-vnet.md
+    - text: Authentification des utilisateurs
+      url: tutorial-auth-aad.md
 - title: Gérer et intégrer
   linkLists:
   - linkListType: concept
@@ -110,10 +126,6 @@ landingContent:
       url: app-service-plan-manage.md
   - linkListType: tutorial
     links:
-    - text: Sécuriser l’accès aux ressources avec des identités managées
-      url: app-service-web-tutorial-connect-msi.md
-    - text: Authentification des utilisateurs
-      url: tutorial-auth-aad.md
     - text: Héberger des API RESTful avec CORS
       url: app-service-web-tutorial-rest-api.md
     - text: Ajouter un CDN à votre application

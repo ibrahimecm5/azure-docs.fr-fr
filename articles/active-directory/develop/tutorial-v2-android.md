@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: marsma
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40, has-adal-ref
-ms.openlocfilehash: 0c79ad939a28913a13193b2743c6fda98f553663
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 44afa745df2799b18e67e43fe4a24b09089636d5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587078"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050391"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Tutoriel : Connecter des utilisateurs et appeler l’API Microsoft Graph à partir d’une application Android
 
@@ -141,12 +141,12 @@ Si vous n’avez pas encore d’application Android, effectuez les étapes suiva
     ```
 
     Remplacez le nom de package que vous avez inscrit dans le portail Azure pour la valeur `android:host=`.
-    Remplacez le hachage de clé que vous avez inscrit dans le portail Azure pour la valeur `android:path=`. Le hachage de signature **ne doit pas** être encodé en tant qu’URL. Assurez-vous de la présence d’un caractère `/` de début dans votre hachage de signature.
+    Remplacez le hachage de clé que vous avez inscrit dans le portail Azure pour la valeur `android:path=`. Le code de hachage de la signature **ne doit pas** être encodé par URL. Assurez-vous de la présence d’un caractère `/` de début dans votre hachage de signature.
     
-    Le « nom du package » par lequel vous remplacez la valeur `android:host` doit ressembler à ceci : « com.azuresamples.msalandroidapp ».
-    Le code de « hachage de signature » par lequel vous remplacez votre valeur `android:path` doit ressembler à ce qui suit : « /1wIqXSqBj7w+h11ZifsnqwgyKrY= ».
+    Le « nom du package » par lequel vous remplacez la valeur `android:host` doit ressembler à ceci : `com.azuresamples.msalandroidapp`.
+    Le « code de hachage de la signature » par lequel vous remplacez votre valeur `android:path` doit ressembler à ce qui suit : `/1wIqXSqBj7w+h11ZifsnqwgyKrY=`.
     
-    Vous pouvez également trouver ces valeurs dans le panneau Authentification de l’inscription de votre application. Notez que votre URI de redirection ressemblera à : « msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D ». Le hachage de signature est encodé avec une URL à la fin de cette valeur, mais le hachage de signature **ne doit pas** être encodé avec une URL dans votre valeur `android:path`.
+    Vous pouvez également trouver ces valeurs dans le panneau Authentification de l’inscription de votre application. Notez que votre URI de redirection doit ressembler à ce qui suit : `msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D`. Le code de hachage de la signature est encodé avec une URL à la fin de cette valeur, mais il **ne doit pas** être encodé avec une URL dans votre valeur `android:path`.
 
 ## <a name="use-msal"></a>Utiliser MSAL
 

@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: d55c178456336c5a1c81845ae3eee611e8d9ee33
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 432e65d3d2f3dc3d4bc71157f165311e7fad87e9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097743"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476658"
 ---
 # <a name="precise-answering"></a>Réponse précise
 
@@ -38,7 +38,3 @@ Le service retourne également le score de confiance de la réponse exacte sous 
 ## <a name="deploying-a-bot"></a>Déploiement d’un bot
 
 Quand vous publiez un bot, vous obtenez l’expérience de réponse précise par défaut dans votre application, qui vous permet de voir une réponse brève en plus du passage de la réponse. Reportez-vous à la référence d’API pour l’API REST pour voir comment utiliser la réponse précise (appelée AnswerSpan) dans la réponse. L’utilisateur a la possibilité de choisir d’autres expériences en mettant à jour le modèle par le biais du service d’application Bot.
-
-## <a name="language-support"></a>Support multilingue
-
-Actuellement, la fonctionnalité de réponse précise est uniquement prise en charge pour l’anglais.

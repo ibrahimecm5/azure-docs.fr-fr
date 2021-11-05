@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.custom: cog-serv-seo-aug-2020
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 keywords: traitement de documents
-ms.openlocfilehash: 23f525449edfa8d37a7bd8e3ebeff1fb9cdff601
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 61654777f94b44b2fca0d2976ea6fd4470987a62
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224495"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021699"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
-# <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>Entraîner un modèle personnalisé à l’aide de l’exemple d’outil d’étiquetage
+# <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>Effectuer l’apprentissage d’un modèle personnalisé à l’aide de l’exemple d’outil d’étiquetage
 
 Dans cet article, vous allez utiliser l’API REST Form Recognizer avec l’exemple d’outil d’étiquetage pour entraîner un modèle de traitement de documents personnalisé avec des données étiquetées manuellement. 
 
@@ -68,7 +68,7 @@ Vous allez utiliser le moteur Docker pour exécuter l’outil d’étiquetage de
 
     | Conteneur | Minimum | Recommandé|
     |:--|:--|:--|
-    |Outil d’étiquetage des exemples|2 cœurs, 4 Go de mémoire|4 cœurs, 8 Go de mémoire|
+    |Outil d’étiquetage d’exemples|2 cœurs, 4 Go de mémoire|4 cœurs, 8 Go de mémoire|
 
     Installez Docker sur votre ordinateur en suivant les instructions appropriées pour votre système d’exploitation :
 
@@ -156,7 +156,7 @@ Sélectionnez **Run OCR on all files** (Exécuter l’OCR sur tous les fichiers)
 
 L’outil d’étiquetage indique aussi les tables qui ont été automatiquement extraites. Sélectionnez l’icône de table/grille à gauche du document pour voir la table extraite. Dans ce démarrage rapide, le contenu des tables étant automatiquement extrait, nous n’étiquèterons pas le contenu des tables et ferons confiance à l’extraction automatisée.
 
-:::image type="content" source="media/label-tool/table-extraction.png" alt-text="Visualisation d’une table dans l’outil d'étiquetage des exemples.":::
+:::image type="content" source="media/label-tool/table-extraction.png" alt-text="Visualisation d’une table dans l’outil d’étiquetage des exemples.":::
 
 Dans v2.1, si votre document d’entraînement n’a pas de valeur renseignée, vous pouvez dessiner une zone là où la valeur devrait être. Utilisez la **zone de dessin** située dans le coin supérieur gauche de la fenêtre pour rendre la région étiquetable.
 
@@ -192,7 +192,7 @@ Effectuez les étapes ci-dessus pour étiqueter au moins cinq de vos formulaires
 Vous pouvez définir le type de données attendu pour chaque étiquette. Ouvrez le menu contextuel à droite d’une étiquette et sélectionnez un type dans le menu. Cette fonctionnalité permet à l’algorithme de détection d’effectuer des hypothèses qui amélioreront la justesse de la détection de texte. Elle garantit également que les valeurs détectées sont retournées dans un format normalisé dans la sortie JSON finale. Les informations sur le type de valeur sont enregistrées dans le fichier **fields.json** sous le même chemin que vos fichiers d’étiquette.
 
 > [!div class="mx-imgBorder"]
-> ![Sélection d'un type valeur avec l'outil d'étiquetage des exemples](media/whats-new/value-type.png)
+> ![Sélection d’un type valeur avec l’outil d’étiquetage des exemples](media/whats-new/value-type.png)
 
 Les types et variantes de valeurs suivants sont actuellement pris en charge :
 

@@ -5,15 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5bf77a3c5e2803ea6a89c460136f3630630065d1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1d8999a368d2aaf201a6aa77e290145e7f17fb0b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014610"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422422"
 ---
 # <a name="archive-for-whats-new-in-defender-for-cloud"></a>Archive des nouveautés de Defender pour le cloud ?
 
@@ -26,6 +25,187 @@ Cette page fournit des informations sur les points suivants :
 - Nouvelles fonctionnalités
 - Résolution des bogues
 - Fonctionnalités dépréciées
+
+## <a name="may-2021"></a>Mai 2021
+
+Les mises à jour du mois de mai incluent :
+
+- [Azure Defender pour DNS et Azure Defender pour Resource Manager en disponibilité générale](#azure-defender-for-dns-and-azure-defender-for-resource-manager-released-for-general-availability-ga)
+- [Azure Defender pour les bases de données relationnelles open source en disponibilité générale](#azure-defender-for-open-source-relational-databases-released-for-general-availability-ga)
+- [Nouvelles alertes pour Azure Defender pour Resource Manager](#new-alerts-for-azure-defender-for-resource-manager)
+- [Analyse des vulnérabilités CI/CD des images conteneur avec les workflows GitHub et Azure Defender (préversion)](#cicd-vulnerability-scanning-of-container-images-with-github-workflows-and-azure-defender-preview)
+- [Plus de requêtes Resource Graph disponibles pour certaines recommandations](#more-resource-graph-queries-available-for-some-recommendations)
+- [Changement de la gravité de la recommandation de classification des données SQL](#sql-data-classification-recommendation-severity-changed)
+- [Nouvelles recommandations pour activer les fonctionnalités de lancement fiable (en préversion)](#new-recommendations-to-enable-trusted-launch-capabilities-in-preview)
+- [Nouvelles recommandations pour renforcer les clusters Kubernetes (en préversion)](#new-recommendations-for-hardening-kubernetes-clusters-in-preview)
+- [Développement de l’API Évaluations avec deux nouveaux champs](#assessments-api-expanded-with-two-new-fields)
+- [L’inventaire des ressources obtient un filtre d’environnement cloud](#asset-inventory-gets-a-cloud-environment-filter)
+
+
+### <a name="azure-defender-for-dns-and-azure-defender-for-resource-manager-released-for-general-availability-ga"></a>Azure Defender pour DNS et Azure Defender pour Resource Manager en disponibilité générale
+
+Ces deux plans de protection contre les menaces au niveau cloud natif sont désormais en disponibilité générale.
+
+Ces nouvelles protections améliorent nettement votre résilience face aux attaques des acteurs des menaces et accroissent considérablement le nombre de ressources Azure protégées par Azure Defender.
+
+- **Azure Defender pour Ressource Manager** – Supervise automatiquement toutes les opérations de gestion de ressources effectuées dans votre organisation. Pour plus d'informations, consultez les pages suivantes :
+    - [Présentation d’Azure Defender pour Resource Manager](defender-for-resource-manager-introduction.md)
+    - [Répondre aux alertes Azure Defender pour Resource Manager](defender-for-resource-manager-usage.md)
+    - [Liste des alertes fournies par Azure Defender pour Resource Manager](alerts-reference.md#alerts-resourcemanager)
+
+- **Azure Defender pour DNS** – Supervise en continu toutes les requêtes DNS émanant de vos ressources Azure. Pour plus d'informations, consultez les pages suivantes :
+    - [Présentation d’Azure Defender pour DNS](defender-for-dns-introduction.md)
+    - [Répondre aux alertes Azure Defender pour DNS](defender-for-dns-usage.md)
+    - [Liste des alertes fournies par Azure Defender pour DNS](alerts-reference.md#alerts-dns)
+
+Pour simplifier le processus d’activation de ces plans, utilisez les recommandations suivantes :
+
+- **Azure Defender pour Resource Manager doit être activé**
+- **Azure Defender pour DNS doit être activé**
+
+> [!NOTE]
+> L’activation des plans Azure Defender engendre des frais. Découvrez-en plus sur les détails des prix par région dans la page des tarifs de Security Center : https://aka.ms/pricing-security-center.
+
+
+### <a name="azure-defender-for-open-source-relational-databases-released-for-general-availability-ga"></a>Azure Defender pour les bases de données relationnelles open source en disponibilité générale
+
+Azure Security Center étend son offre de protection SQL avec un nouveau bundle pour couvrir vos bases de données relationnelles open source :
+
+- **Azure Defender pour serveurs de base de données Azure SQL** : défend vos serveurs Azure SQL natifs
+- **Azure Defender pour les serveurs SQL sur machines** : étend les mêmes protections à vos serveurs SQL dans les environnements hybrides, multicloud et locaux
+- **Azure Defender pour les bases de données relationnelles open source** : protège vos serveurs uniques Azure Database pour MySQL, pour PostgreSQL et for MariaDB
+
+Azure Defender pour les bases de données relationnelles open source supervise en permanence vos serveurs à la recherche de menaces de sécurité et détecte les activités anormales de base de données indiquant des menaces potentielles envers Azure Database pour MySQL, pour PostgreSQL et for MariaDB. Quelques exemples :
+
+- **Détection précise des attaques par force brute** : Azure Defender pour les bases de données relationnelles open source fournit des informations détaillées sur les attaques par force brute tentées et réussies. Cela vous permet d’investiguer et de répondre avec une meilleure compréhension de la nature et de l’état de l’attaque sur votre environnement.
+- **Détection des alertes comportementales** : Azure Defender pour les bases de données relationnelles open source vous avertit des comportements suspects et inattendus sur vos serveurs, tels que les modifications apportées au modèle d’accès à votre base de données.
+- **Détection basée sur le renseignement sur les menaces** : Azure Defender utilise le renseignement sur les menaces de Microsoft et la vaste base de connaissances pour exposer les alertes de menace afin que vous puissiez agir sur ces dernières.
+
+Pour en savoir plus, consultez [Présentation d’Azure Defender pour les bases de données relationnelles open source](defender-for-databases-introduction.md).
+
+### <a name="new-alerts-for-azure-defender-for-resource-manager"></a>Nouvelles alertes pour Azure Defender pour Resource Manager
+
+Pour développer les protections contre les menaces fournies par Azure Defender pour Resource Manager, nous avons ajouté les alertes suivantes :
+
+| Alerte (type d’alerte)                                                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                              | Tactiques MITRE | severity |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------:|----------|
+|**Autorisations accordées à un rôle RBAC de manière inhabituelle pour votre environnement Azure (préversion)**<br>(ARM_AnomalousRBACRoleAssignment)|Azure Defender pour Resource Manager a détecté une attribution de rôle RBAC qui est inhabituelle par rapport à d’autres attributions effectuées par le même attributeur / pour le même attributaire / dans votre locataire en raison des anomalies suivantes : heure d’attribution, adresse de l’attributeur, attributeur, méthode d’authentification, entités attribuées, logiciel client utilisé, extension d’attribution. Cette opération a probablement été effectuée par un utilisateur légitime de votre organisation. Elle peut également indiquer qu’un compte de votre organisation a été violé et que l’acteur de menaces tente d’accorder des autorisations à un autre compte d’utilisateur dont il est propriétaire.|Mouvement latéral, évasion de la défense|Moyenne|
+|**Rôle personnalisé privilégié créé pour votre abonnement de façon suspecte (préversion)**<br>(ARM_PrivilegedRoleDefinitionCreation)|Azure Defender pour Resource Manager a détecté une création suspecte de définition de rôle personnalisé privilégié dans votre abonnement. Cette opération a probablement été effectuée par un utilisateur légitime de votre organisation. Elle peut également indiquer qu’un compte de votre organisation a été violé et que l’acteur de menaces tente de créer un rôle privilégié qu’il utilisera pour s’évader de la détection.|Mouvement latéral, évasion de la défense|Faible|
+|**Opération Azure Resource Manager depuis une adresse IP suspecte (préversion)**<br>(ARM_OperationFromSuspiciousIP)|Azure Defender pour Resource Manager a détecté une opération depuis une adresse IP qui a été marquée comme suspecte dans les flux de renseignement sur les menaces.|Exécution|Moyenne|
+|**Opération Azure Resource Manager depuis une adresse IP proxy suspecte (préversion)**<br>(ARM_OperationFromSuspiciousProxyIP)|Azure Defender pour Resource Manager a détecté une opération de gestion des ressources depuis une adresse IP associée à des services proxy comme TOR. Bien que ce comportement puisse être légitime, il est souvent observé dans le cadre d’activités malveillantes, lorsque les acteurs de menaces tentent de dissimuler leur IP source.|Évasion de défense|Moyenne|
+||||
+
+Pour plus d'informations, consultez les pages suivantes :
+- [Présentation d’Azure Defender pour Resource Manager](defender-for-resource-manager-introduction.md)
+- [Répondre aux alertes Azure Defender pour Resource Manager](defender-for-resource-manager-usage.md)
+- [Liste des alertes fournies par Azure Defender pour Resource Manager](alerts-reference.md#alerts-resourcemanager)
+
+
+### <a name="cicd-vulnerability-scanning-of-container-images-with-github-workflows-and-azure-defender-preview"></a>Analyse des vulnérabilités CI/CD des images conteneur avec les workflows GitHub et Azure Defender (préversion)
+
+Azure Defender pour les registres de conteneurs offre désormais aux équipes DevSecOps une observabilité des workflows d’action GitHub.
+
+La nouvelle fonctionnalité d’analyse des vulnérabilités pour les images conteneur, utilisant Trivy, aide vos développeurs à rechercher les vulnérabilités courantes dans leurs images conteneur *avant* d’envoyer les images vers des registres de conteneurs.
+
+Les rapports d’analyse de conteneur sont résumés dans Azure Security Center, ce qui offre aux équipes de sécurité un meilleur insight et une meilleure compréhension de la source des images conteneur vulnérables ainsi que des workflows et dépôts desquels elles proviennent.
+
+Apprenez-en davantage dans [Identifier les images conteneur vulnérables dans vos workflows CI/CD](defender-for-container-registries-cicd.md).
+
+### <a name="more-resource-graph-queries-available-for-some-recommendations"></a>Plus de requêtes Resource Graph disponibles pour certaines recommandations
+
+Toutes les recommandations de Security Center permettent d’afficher les informations relatives à l’état des ressources affectées en utilisant Azure Resource Graph à partir du bouton **Ouvrir une requête**. Pour obtenir tous les détails sur cette fonctionnalité puissante, consultez [Examiner les données de recommandation dans l’Explorateur Azure Resource Graph (ARG)](review-security-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg).
+
+Security Center comporte des analyseurs de vulnérabilités intégrés pour analyser vos machines virtuelles, vos serveurs SQL et leurs hôtes ainsi que les registres de conteneurs pour les vulnérabilités de sécurité. Les résultats sont retournés sous forme de recommandations avec toutes les découvertes individuelles pour chaque type de ressource rassemblées dans une vue unique. Les recommandations sont les suivantes :
+
+- Les vulnérabilités dans les images Azure Container Registry doivent être corrigées (avec Qualys)
+- Les vulnérabilités de vos machines virtuelles doivent être corrigées
+- Les résultats des vulnérabilités des bases de données SQL doivent être résolus
+- Les résultats des vulnérabilités des serveurs SQL Server sur les machines doivent être résolus
+
+Une fois cette modification apportée, vous pouvez aussi utiliser le bouton **Ouvrir une requête** pour ouvrir la requête qui affiche les résultats de la sécurité.
+
+:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="Le bouton Ouvrir une requête propose désormais des options pour une requête plus détaillée présentant les résultats de la sécurité pour les recommandations relatives à l’analyseur de vulnérabilités.":::
+
+Le bouton **Ouvrir une requête** offre des options supplémentaires pour d’autres recommandations, le cas échéant.
+
+Découvrez plus d’informations sur les analyseurs de vulnérabilités de Security Center :
+
+- [Analyseur de vulnérabilités intégré Qualys d’Azure Defender pour les machines Azure et hybrides](deploy-vulnerability-assessment-vm.md)
+- [Analyseur d’évaluation des vulnérabilités intégré d’Azure Defender pour les serveurs SQL](defender-for-sql-on-machines-vulnerability-assessment.md)
+- [Analyseur d’évaluation des vulnérabilités intégré d’Azure Defender pour les registres de conteneurs](defender-for-container-registries-usage.md)
+
+### <a name="sql-data-classification-recommendation-severity-changed"></a>Changement de la gravité de la recommandation de classification des données SQL
+
+La gravité de la recommandation **Les données sensibles de vos bases de données SQL doivent être classifiées** est passée d’un niveau **élevé** à un niveau **faible**.
+
+Ce changement s’inscrit dans le cadre des changements apportés à cette recommandation annoncés dans [Améliorations apportées à la recommandation de classification des données sensibles dans les bases de données SQL](upcoming-changes.md#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases).
+
+### <a name="new-recommendations-to-enable-trusted-launch-capabilities-in-preview"></a>Nouvelles recommandations pour activer les fonctionnalités de lancement fiable (en préversion)
+
+Azure propose le lancement fiable pour améliorer de manière fluide la sécurité des machines virtuelles de [2e génération](../virtual-machines/generation-2.md). Le lancement fiable protège contre les techniques d’attaque avancées et persistantes. Le lancement fiable se compose de plusieurs technologies d’infrastructure coordonnées qui peuvent être activées indépendamment. Chaque technologie offre une couche de défense supplémentaire contre les menaces sophistiquées. Apprenez-en davantage dans [Lancement fiable pour les machines virtuelles Azure](../virtual-machines/trusted-launch.md).
+
+> [!IMPORTANT]
+> Le lancement fiable requiert la création de nouvelles machines virtuelles. Vous ne pouvez pas activer le lancement fiable sur les machines virtuelles existantes qui ont été créées initialement sans cette fonctionnalité.
+> 
+> Le lancement fiable est actuellement disponible en préversion publique. La préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge.
+
+La recommandation de Security Center, **vTPM doit être activé sur les machines virtuelles prises en charge**, garantit que vos machines virtuelles Azure utilisent un vTPM. Cette version virtualisée d’un module de plateforme sécurisée matériel permet d’effectuer l’attestation en mesurant la chaîne de démarrage complète de votre machine virtuelle (UEFI, système d’exploitation, système et pilotes).
+
+Lorsque le vTPM est activé, l’**extension Attestation d’invité** peut valider à distance le démarrage sécurisé. Les recommandations suivantes garantissent le déploiement de cette extension :
+
+- **Le démarrage sécurisé doit être activé sur les machines virtuelles Windows prises en charge**
+- **L’extension Attestation d’invité doit être installée sur les machines virtuelles Windows prises en charge**
+- **L’extension Attestation d’invité doit être installée sur les groupes de machines virtuelles identiques Windows pris en charge**
+- **L’extension Attestation d’invité doit être installée sur les machines virtuelles Linux prises en charge**
+- **L’extension Attestation d’invité doit être installée sur les groupes de machines virtuelles identiques Linux pris en charge**
+
+Apprenez-en davantage dans [Lancement fiable pour les machines virtuelles Azure](../virtual-machines/trusted-launch.md). 
+
+### <a name="new-recommendations-for-hardening-kubernetes-clusters-in-preview"></a>Nouvelles recommandations pour renforcer les clusters Kubernetes (en préversion)
+
+Les recommandations suivantes vous permettent de renforcer davantage vos clusters Kubernetes
+
+- **Les clusters Kubernetes ne doivent pas utiliser l’espace de noms par défaut** : pour éviter tout accès non autorisé aux types de ressources ConfigMap, Pod, Secret, Service et ServiceAccount, empêchez l’utilisation de l’espace de noms par défaut dans les clusters Kubernetes.
+- **Les clusters Kubernetes doivent désactiver le montage automatique des informations d’identification d’API** : pour empêcher une ressource Pod potentiellement compromise d’exécuter des commandes API sur des clusters Kubernetes, désactivez le montage automatique des informations d’identification de l’API.
+- **Les clusters Kubernetes ne doivent pas octroyer de fonctionnalités de sécurité CAPSYSADMIN**
+
+Découvrez comment Security Center peut protéger vos environnements conteneurisés dans [Sécurité des conteneurs dans Security Center](container-security.md).
+
+### <a name="assessments-api-expanded-with-two-new-fields"></a>Développement de l’API Évaluations avec deux nouveaux champs
+
+Nous avons ajouté les deux champs suivants à l’[API REST Évaluations](/rest/api/securitycenter/assessments) :
+
+- **FirstEvaluationDate** : Heure à laquelle la recommandation a été créée et évaluée pour la première fois. Retournée sous forme de temps universel coordonné (UTC) au format ISO 8601.
+- **StatusChangeDate** : Heure de la dernière modification de l’état de la recommandation. Retournée sous forme de temps universel coordonné (UTC) au format ISO 8601.
+
+La valeur initiale par défaut de ces champs (pour toutes les recommandations) est `2021-03-14T00:00:00+0000000Z`.
+
+Pour accéder à ces informations, vous pouvez utiliser l’une des méthodes indiquées dans le tableau ci-dessous.
+
+| Outil                 | Détails                                                                                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Appel d’API REST        | GET https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Security/assessments?api-version=2019-01-01-preview& $expand=statusEvaluationDates |
+| Azure Resource Graph | `securityresources`<br>`where type == "microsoft.security/assessments"`                                                                                                |
+| Exportation continue    | Les deux champs dédiés seront disponibles dans les données de l’espace de travail Log Analytics                                                                                            |
+| [Exportation CSV](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations) | Les deux champs sont inclus dans les fichiers CSV.                                                        |
+|                      |                                                                                                                                                                        |
+
+
+Découvrez-en plus sur l’[API REST Évaluations](/rest/api/securitycenter/assessments).
+
+
+### <a name="asset-inventory-gets-a-cloud-environment-filter"></a>L’inventaire des ressources obtient un filtre d’environnement cloud
+
+La page d’inventaire des ressources de Security Center propose de nombreux filtres pour affiner rapidement la liste des ressources affichées. Pour en savoir plus, consultez [Explorer et gérer vos ressources avec l’inventaire des ressources](asset-inventory.md).
+
+Un nouveau filtre offre la possibilité d’affiner la liste en fonction des comptes cloud que vous avez connectés avec les fonctionnalités multiclouds de Security Center :
+
+:::image type="content" source="media/asset-inventory/filter-environment.png" alt-text="Filtre d’environnement de l’inventaire":::
+
+Découvrez plus d’informations sur les fonctionnalités multiclouds :
+
+- [Connecter vos comptes AWS à Azure Security Center](quickstart-onboard-aws.md)
+- [Connectez vos comptes GCP à Azure Security Center](quickstart-onboard-gcp.md)
 
 
 ## <a name="april-2021"></a>Avril 2021

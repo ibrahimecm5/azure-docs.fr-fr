@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
-ms.openlocfilehash: a25f5bf28feb8fcb3903094f45568e96388ec0bd
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 16b2a041dc384e8c04df077638a51db1a7823da2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162160"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072107"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Gérer des machines virtuelles SQL Server à partir du portail Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -124,6 +125,13 @@ Utilisez la page **Security Center** de la ressource Machines virtuelles SQL pou
 
 ![Configurer les paramètres de SQL Server Security Center sur le portail Azure à l'aide de la ressource Machines virtuelles SQL](./media/manage-sql-vm-portal/sql-vm-security-center.png)
 
+## <a name="sql-assessment-preview"></a>SQL Assessment (préversion)
+
+Utilisez la page **SQL Assessment** de la ressource des machines virtuelles SQL pour évaluer l’intégrité de votre machine virtuelle SQL Server. Une fois la fonctionnalité activée, vos instances et bases de données SQL Server sont analysées, et des recommandations sont exposées pour améliorer les performances (index, statistiques, indicateurs de trace, etc.) et identifier des configurations manquantes correspondant aux meilleures pratiques. SQL Assessment est actuellement en préversion. 
+
+:::image type="content" source="./media/manage-sql-vm-portal/sql-vm-assessment-workbook.png" alt-text="Regardez SQL Assessment dans le portail Azure sur la page des ressources de machines virtuelles SQL." lightbox="./media/manage-sql-vm-portal/sql-vm-assessment-workbook.png":::
+
+Pour plus d’informations, consultez [SQL Assessment pour SQL Server sur machines virtuelles Azure](sql-assessment-for-sql-vm.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -133,5 +141,3 @@ Pour plus d’informations, consultez les articles suivants :
 * [Questions fréquentes (FAQ) pour SQL Server sur une machine virtuelle Windows](frequently-asked-questions-faq.yml)
 * [Guide des tarifs pour SQL Server sur une machine virtuelle Windows](pricing-guidance.md)
 * [Nouveautés de SQL Server sur des machines virtuelles Azure](doc-changes-updates-release-notes-whats-new.md)
-
-

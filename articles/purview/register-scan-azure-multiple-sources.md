@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: aefb039e17ee75b92829feb9e2f0b06fb5bef99a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 49e6ca8cf0fc3121aba3c3216d2a1dd5936b56d7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076203"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449523"
 ---
 # <a name="connect-to-and-manage-multiple-azure-sources-in-azure-purview"></a>Se connecter à plusieurs sources Azure et les gérer dans Azure Purview
 
@@ -114,7 +114,7 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
     - Si vous conservez la valeur **Tout** pour l’option, les ressources futures de ce type seront également analysées lors des exécutions d’analyse ultérieures.
     - Si vous sélectionnez des comptes de stockage ou des bases de données SQL spécifiques, les ressources futures de ce type créées dans cet abonnement ou ce groupe de ressources ne seront pas incluses dans les analyses, sauf si l’analyse est explicitement modifiée par la suite.
 
-1. Sélectionnez **Tester la connexion**. Cette opération teste l’accès pour vérifier si vous avez appliqué le fichier MSI Azure Purview en tant que lecteur sur l’abonnement ou le groupe de ressources. Si vous recevez un message d’erreur, suivez [ces instructions](#prerequisites-for-registration) pour y remédier. Elle teste ensuite votre authentification et votre connexion à chacune de vos sources sélectionnées, puis génère un rapport. Le nombre de sources sélectionnées a un impact sur le temps nécessaire à la génération de ce rapport. L’option Tester la connexion teste d’abord la connectivité et l’accès au niveau de l’abonnement/du groupe de ressources/de l’espace de travail Synapse. Elle continue ensuite en testant l’accès et la connectivité à chaque ressource individuelle, puis affiche le résultat dans le rapport. En cas d’échec sur certaines ressources, si vous pointez sur l’icône **X**, le message d’erreur détaillé s’affiche.
+1. Sélectionnez **Tester la connexion**. Cette opération teste l’accès pour vérifier si vous avez appliqué le fichier MSI Azure Purview en tant que lecteur sur l’abonnement ou le groupe de ressources. Si vous recevez un message d’erreur, suivez [ces instructions](#prerequisites-for-registration) pour y remédier. Elle teste ensuite votre authentification et votre connexion à chacune de vos sources sélectionnées, puis génère un rapport. Le nombre de sources sélectionnées a un impact sur le temps nécessaire à la génération de ce rapport. En cas d’échec sur certaines ressources, si vous pointez sur l’icône **X**, le message d’erreur détaillé s’affiche.
 
     :::image type="content" source="media/register-scan-azure-multiple-sources/test-connection.png" alt-text="Capture d’écran montrant le curseur de configuration de l’analyse, avec le bouton Tester la connexion mis en évidence.":::
     :::image type="content" source="media/register-scan-azure-multiple-sources/test-connection-report.png" alt-text="Capture d’écran montrant un exemple de rapport de test de connexion, avec des connexions qui réussissent et d’autres qui échouent. Si vous pointez sur l’une des connexions ayant échoué, un rapport détaillé de l’erreur s’affiche.":::

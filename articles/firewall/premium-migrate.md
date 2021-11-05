@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 10/26/2021
+ms.date: 11/02/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a27f2432ec309f6ff9203921122ddd9f6b1860eb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1aeb31ff49389235d54950b76c68deb882e13797
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086224"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438490"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Migrer vers le Pare-feu Azure Premium
 
@@ -187,6 +187,9 @@ TransformPolicyToPremium -Policy $policy
 ## <a name="migrate-azure-firewall-using-stopstart"></a>Migrer le pare-feu Azure à l’aide d’une opération d’arrêt/démarrage
 
 Si vous utilisez la référence SKU standard du Pare-feu Azure avec la stratégie de pare-feu, vous pouvez utiliser la méthode Allouer/Libérer pour migrer votre référence SKU de pare-feu vers Premium. Cette approche de migration est prise en charge sur les pare-feu de hub sécurisé et de hub de réseau virtuel. Lorsque vous migrez un déploiement de hub sécurisé, l’adresse IP publique du pare-feu est conservée.
+
+La version minimale requise de Azure PowerShell est 6.5.0. Pour plus d’informations, consultez [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0).
+
  
 ### <a name="migrate-a-vnet-hub-firewall"></a>Migrer un pare-feu de hub de réseau virtuel
 
@@ -210,7 +213,6 @@ Si vous utilisez la référence SKU standard du Pare-feu Azure avec la stratégi
 
 ### <a name="migrate-a-secure-hub-firewall"></a>Migrer un pare-feu de hub sécurisé
 
-La version minimale requise de Azure PowerShell est 6.5.0. Pour plus d’informations, consultez [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0).
 
 - Libérer le pare-feu standard
 

@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: f65f03a35d744b3131b89c2e973abd1cd6b7e3ef
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 53af4de413739318a78f3ced65f64ffa89ba0545
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131018504"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131424681"
 title: Forum aux questions sur les disques de machines virtuelles et les disques Premium gérés et non gérés Azure IaaS
 summary: Dans cet article, nous allons répondre à certaines questions fréquentes sur Azure Disques managés et les disques SSD Premium Azure.
 sections:
@@ -537,4 +537,4 @@ sections:
       Si votre question n’est pas répertoriée ici, faites-le-nous savoir et nous vous aiderons à trouver une réponse. Vous pouvez poser une question à la fin de cet article dans les commentaires. Pour prendre contact avec l’équipe de Stockage Azure et d’autres membres de la Communauté concernant cet article, consultez la [page de Q&R de Microsoft sur Stockage Azure](/answers/products/azure?product=storage).
 
 
-      Pour soumettre une demande de fonctionnalité, transmettez vos questions et vos idées sur le [forum dédié aux commentaires sur le stockage Azure](https://feedback.azure.com/forums/217298-storage).
+      Pour soumettre une demande de fonctionnalité, transmettez vos questions et vos idées sur le [forum dédié aux commentaires sur le stockage Azure](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84).

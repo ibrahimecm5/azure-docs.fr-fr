@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: 960ade1209b6473884e75c660d658abaf6e73af7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 08690347f9a0dae5237ad74bfda9ad3eb6c8ef84
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609951"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072848"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>Créer un flux de travail d’intégration avec Azure Logic Apps monolocataire (standard) dans Visual Studio Code
 
@@ -80,7 +81,7 @@ Pour plus d’informations, consultez la [documentation Azurite](https://github.
 
   * [Extension C# pour Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), qui permet à la fonctionnalité F5 d’exécuter votre application logique.
 
-  * [Azure Functions Core Tools 3.0.3477 ou version ultérieure](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3477) en utilisant la version Microsoft Installer (MSI), à savoir `func-cli-3.0.3477-x*.msi`.
+  * [Azure Functions Core Tools, dernière version](https://github.com/Azure/azure-functions-core-tools/releases) en utilisant la version Microsoft Installer (MSI), à savoir `func-cli-X.X.XXXX-x*.msi`.
 
     Ces outils incluent une version du même runtime qui optimise le runtime d’Azure Functions que l’extension Azure Logic Apps (standard) utilise dans Visual Studio Code.
 
@@ -727,6 +728,8 @@ Pour rechercher les noms de domaine complets (FQDN) de ces connexions, procédez
 
 Le déploiement du type de ressource **Application logique (standard)** requiert un plan d’hébergement et un niveau tarifaire que vous sélectionnez pendant le déploiement. Pour plus d’informations, consultez [Plans d’hébergement et niveaux tarifaires](logic-apps-pricing.md#standard-pricing).
 
+<a name="publish-new-logic-app"></a>
+
 ### <a name="publish-to-a-new-logic-app-standard-resource"></a>Publier dans une nouvelle ressource Application logique (standard)
 
 1. Dans la barre d’activités de Visual Studio Code, sélectionnez l’icône Azure.
@@ -920,7 +923,7 @@ Dans Visual Studio Code, vous pouvez afficher toutes les applications logiques d
 
    ![Capture d’écran montrant Visual Studio Code avec le volet d’extension « Azure Logic Apps (standard) » ouvert et le flux de travail déployé.](./media/create-single-tenant-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. Pour afficher tous les workflows de l’application logique, développez votre application logique, puis développez le nœud nommé **Workflows**.
+1. Pour afficher tous les workflows de l’application logique, développez votre application logique, puis développez le nœud **Workflows**.
 
 1. Pour afficher un workflow spécifique, ouvrez le menu contextuel du workflow, puis sélectionnez **Ouvrir dans le concepteur**, ce qui ouvre le workflow en mode lecture seule.
 

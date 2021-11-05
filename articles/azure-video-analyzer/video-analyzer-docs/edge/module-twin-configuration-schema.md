@@ -2,14 +2,14 @@
 title: Schéma JSON de jumeau de module Azure Video Analyzer
 description: Cet article fournit une vue d’ensemble du schéma JSON de jumeau de module pour le module périphérique Azure Video Analyzer
 ms.topic: how-to
-ms.date: 10/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6dd3ae2e188e8179fde0cd3a684e647cbf92fe3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 360102a551ea6321a4b40063123176fc13672929
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096846"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559387"
 ---
 # <a name="module-twin-configuration-schema"></a>Schéma de configuration de jumeau de module
 
