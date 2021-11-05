@@ -4,12 +4,12 @@ description: Cet article fournit des informations sur l’authentification d’u
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: cf9e65468567764e5fe7c91455f010dd6d46831f
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3ca9284746460b3ab3369b4c9c00d7951784cff8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359949"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064009"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Authentifier et autoriser une application avec Azure Active Directory pour accéder aux entités Azure Service Bus
 Azure Service Bus prend en charge l’utilisation d’Azure Active Directory (Azure AD) pour autoriser les requêtes d’accès aux entités Service Bus (files d’attente, rubriques, abonnements ou filtres). Avec Azure AD, vous pouvez utiliser le contrôle d’accès en fonction du rôle d’Azure (Azure RBAC) pour accorder des autorisations à un principal de sécurité, qui peut être un utilisateur, un groupe ou un principal de service d’application. Pour en savoir plus sur les rôles et les attributions de rôles, consultez [Comprendre les différents rôles](../role-based-access-control/overview.md).
@@ -104,7 +104,7 @@ L’application a besoin d’une clé secrète client pour prouver son identité
 ### <a name="permissions-for-the-service-bus-api"></a>Autorisations pour l’API Service Bus
 Si votre application est une application console, vous devez inscrire une application native et ajouter des autorisations d’API pour **Microsoft.ServiceBus** dans l’ensemble des **autorisations requises**. Les applications natives ont également besoin d’un **URI de redirection** dans Azure AD, qui servira d’identificateur. Cet URI n’est pas obligatoirement une destination réseau. Utilisez `https://servicebus.microsoft.com` pour cet exemple, étant donné que l’exemple de code utilise déjà cet URI.
 
-### <a name="authenticating-the-service-bus-client"></a>Authentification du client Service Bus   
+### <a name="authenticating-the-service-bus-client"></a>Authentification du client Service Bus
 Une fois que vous avez inscrit votre application et que vous lui avez accordé les autorisations nécessaires pour envoyer/recevoir des données dans Azure Service Bus, vous pouvez authentifier votre client avec les informations d’identification de la clé secrète client, ce qui vous permettra d’effectuer des requêtes sur Azure Service Bus.
 
 Pour obtenir la liste de scénarios pour lesquels l’acquisition de jetons est pris en charge, veuillez consulter la section [Scénarios](https://aka.ms/msal-net-scenarios) du référentiel GitHub [Microsoft Authentication Library (MSAL) pour .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet).

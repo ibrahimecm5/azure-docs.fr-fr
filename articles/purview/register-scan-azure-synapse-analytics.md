@@ -1,54 +1,63 @@
 ---
-title: Comment analyser des pools SQL dédiés
-description: Ce guide pratique explique en détail comment analyser des pools SQL dédiés dans Azure Purview.
+title: Se connecter à des pools SQL dédiés (anciennement SQL DW) et les gérer
+description: Ce guide explique comment se connecter à des pools de SQL dédiés (anciennement SQL DW) dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source de pools de SQL dédiés.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: 507ea92f6aa50d4d1441874e8dc62bbb06621aec
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 7d01566c2c9f20b86d3cf135fc126bd5d5982e98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047396"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056316"
 ---
-# <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Inscrire et analyser des pools SQL dédiés (anciennement SQL DW)
+# <a name="connect-to-and-manage-dedicated-sql-pools-in-azure-purview"></a>Se connecter à des pools SQL dédiés et les gérer dans Azure Purview
+
+Cet article explique comment inscrire des pools SQL dédiés (anciennement SQL DW), ainsi que s’authentifier et interagir avec des pools SQL dédiés dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 > [!NOTE]
 > Si vous cherchez à inscrire et à analyser une base de données SQL dédiée au sein d’un espace de travail Synapse, vous devez suivre les instructions fournies [ici](register-scan-synapse-workspace.md).
 
-Cet article explique comment inscrire et analyser une instance de pool SQL dédié (anciennement SQL DW) dans Purview.
-
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
-Des pools SQL dédiés (anciennement SQL DW) prennent en charge les analyses complètes et incrémentielles pour capturer les métadonnées et le schéma. Ces analyses permettent également de classer les données automatiquement selon des règles de classification système et personnalisées.
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| [Oui](#register) | [Oui](#scan)| [Oui](#scan)| [Oui](#scan)| [Oui](#scan)| Non | Non|
 
 ### <a name="known-limitations"></a>Limitations connues
 
-> * Azure Purview prend en charge 300 colonnes au maximum sous l’onglet Schéma. Au-delà, il affiche « Additional-Columns-Truncated » (Colonnes-Supplémentaires-Tronquées). 
+* Azure Purview prend en charge 300 colonnes au maximum sous l’onglet Schéma. Au-delà, il affiche « Additional-Columns-Truncated » (Colonnes-Supplémentaires-Tronquées).
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Avant d’inscrire des sources de données, créez un compte Azure Purview. Pour plus d’informations sur la création d’un compte Purview, consultez [Démarrage rapide : Créer un compte Azure Purview](create-catalog-portal.md).
-- Vous devez être administrateur de la source de données Azure Purview.
-- Accès réseau entre le compte Purview et le pool de SQL dédié dans Azure Synapse Analytics.
- 
-## <a name="setting-up-authentication-for-a-scan"></a>Configuration de l’authentification pour une analyse
+* Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+* Une [ressource Purview](create-catalog-portal.md) active.
+
+* Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
+
+## <a name="register"></a>Inscrire
+
+Cette section explique comment inscrire des pools SQL dédiés dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
+
+### <a name="authentication-for-registration"></a>Authentification pour l’inscription
 
 Il existe trois façons de configurer l’authentification :
 
-- Identité managée
-- Authentification SQL
-- Principal de service
+- [Identité managée](#managed-identity-to-register) (recommandé)
+- [Principal du service](#service-principal-to-register)
+- [Authentification SQL](#sql-authentication-to-register)
 
     > [!Note]
     > Seule la connexion principale au niveau du serveur (créée par le processus de configuration) ou les membres du rôle de base de données `loginmanager` dans la base de données master peuvent créer des connexions. Cela nécessite environ 15 minutes une fois l’autorisation accordée. Le compte Purview doit disposer des autorisations appropriées pour pouvoir analyser la ou les ressources.
 
-### <a name="managed-identity-recommended"></a>Identité managée (recommandé) 
-   
-Votre compte Purview possède sa propre identité managée, qui est fondamentalement votre nom Purview lorsque vous l’avez créé. Vous devez créer un utilisateur Azure AD dans le pool SQL dédié avec le nom d’identité managée exact de Purview en suivant les conditions préalables et le didacticiel sur [Créer des utilisateurs Azure AD avec des applications Azure AD](../azure-sql/database/authentication-aad-service-principal-tutorial.md).
+#### <a name="managed-identity-to-register"></a>Identité managée pour l’inscription
+
+Votre compte Purview possède sa propre identité managée, qui est fondamentalement votre nom Purview lorsque vous l’avez créé. Créez un utilisateur Azure AD dans le pool SQL dédié avec le nom d’identité managée exact de Purview en suivant les conditions préalables et le didacticiel [Créer des utilisateurs Azure AD avec des applications Azure AD](../azure-sql/database/authentication-aad-service-principal-tutorial.md).
 
 Exemple de syntaxe SQL pour créer l’utilisateur et accorder l’autorisation :
 
@@ -62,20 +71,19 @@ GO
 
 L’authentification doit avoir l’autorisation d’obtenir des métadonnées pour la base de données, les schémas et les tables. Elle doit également être en mesure d’interroger les tables à échantillonner pour la classification. Il est recommandé d’attribuer l’autorisation `db_datareader` à l’identité.
 
-### <a name="service-principal"></a>Principal de service
+#### <a name="service-principal-to-register"></a>Principal de service pour l’inscription
 
-Si vous souhaitez appliquer l’authentification par principal de service pour les analyses, vous pouvez utiliser un principal de service existant ou en créer un. 
+Si vous souhaitez appliquer l’authentification par principal de service pour les analyses, vous pouvez utiliser un principal de service existant ou en créer un.
 
-> [!Note]
-> Si vous devez créer un principal de service, procédez comme suit :
-> 1. Accédez au [portail Azure](https://portal.azure.com).
-> 1. Dans le menu de gauche, sélectionnez **Azure Active Directory**.
-> 1. Sélectionnez **Inscriptions d’applications**.
-> 1. Sélectionnez **+ Nouvelle inscription d’application**.
-> 1. Entrez un nom pour l’**application** (nom du principal de service).
-> 1. Sélectionnez **Comptes dans ce répertoire organisationnel uniquement**.
-> 1. Pour l’URI de redirection, sélectionnez **Web** et entrez l’URL de votre choix. Il n’est pas nécessaire qu’elle soit réelle ni qu’elle fonctionne.
-> 1. Sélectionnez ensuite **Inscription**.
+Si vous devez créer un principal de service, procédez comme suit :
+ 1. Accédez au [portail Azure](https://portal.azure.com).
+ 1. Dans le menu de gauche, sélectionnez **Azure Active Directory**.
+ 1. 1. Sélectionnez **Inscriptions d’applications**.
+ 1. Sélectionnez **+ Nouvelle inscription d’application**.
+ 1. Entrez un nom pour l’**application** (nom du principal de service).
+ 1. Sélectionnez **Comptes dans ce répertoire organisationnel uniquement**.
+ 1. Pour l’URI de redirection, sélectionnez **Web** et entrez l’URL de votre choix. Il n’est pas nécessaire qu’elle soit réelle ni qu’elle fonctionne.
+ 1. Sélectionnez ensuite **Inscription**.
 
 Il est nécessaire de récupérer l’ID d’application et le secret du principal de service :
 
@@ -86,9 +94,9 @@ Il est nécessaire de récupérer l’ID d’application et le secret du princip
 1. Sélectionnez **+ Générer/importer** et entrez le **nom** de votre choix et la **valeur** comme **secret client** de votre principal de service.
 1. Sélectionnez **Créer** pour terminer.
 1. Si votre coffre de clés n’est pas encore connecté à Purview, vous devrez [créer une connexion de coffre de clés](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
-1. Enfin, [créez des informations d’identification](manage-credentials.md#create-a-new-credential) à l’aide du principal de service pour configurer votre analyse 
+1. Enfin, [créez des informations d’identification](manage-credentials.md#create-a-new-credential) à l’aide du principal de service pour configurer votre analyse.
 
-#### <a name="granting-the-service-principal-access"></a>Accorder l’accès au principal de service
+##### <a name="granting-the-service-principal-access"></a>Accorder l’accès au principal de service
 
 En outre, vous devez créer un utilisateur Azure AD dans le pool dédié en suivant les conditions préalables et le didacticiel sur [Créer des utilisateurs Azure AD avec des applications Azure AD](../azure-sql/database/authentication-aad-service-principal-tutorial.md). Exemple de syntaxe SQL pour créer l’utilisateur et accorder l’autorisation :
 
@@ -103,7 +111,7 @@ GO
 > [!Note]
 > Purview a besoin de l’**ID d’application (client)** et du **secret client** pour effectuer l’analyse.
 
-### <a name="sql-authentication"></a>Authentification SQL
+#### <a name="sql-authentication-to-register"></a>Authentification SQL pour l’inscription
 
 Vous pouvez suivre les instructions dans [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1) pour créer une connexion pour votre pool SQL dédié (anciennement SQL DW) si vous n’en avez pas encore.
 
@@ -117,7 +125,7 @@ Lorsque la méthode d’authentification sélectionnée est **Authentification S
 1. Si votre coffre de clés n’est pas encore connecté à Purview, vous devrez [créer une connexion de coffre de clés](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. Enfin, [créez des informations d’identification](manage-credentials.md#create-a-new-credential) à l’aide de la clé pour configurer votre analyse.
 
-## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>Inscrire un pool SQL dédié (anciennement SQL DW)
+### <a name="steps-to-register"></a>Procédure d’inscription
 
 Pour inscrire un nouveau pool SQL dédié dans Purview, procédez comme suit :
 
@@ -135,7 +143,11 @@ Dans l’écran **Inscrire des sources**, procédez comme suit :
 4. Sélectionnez une collection ou créez-en une (facultatif).
 5. Sélectionnez **Inscrire** pour inscrire la source de données.
 
-## <a name="creating-and-running-a-scan"></a>Création et exécution d’une analyse
+## <a name="scan"></a>Analyser
+
+Suivez les étapes ci-dessous pour analyser des pools SQL dédiés afin d’identifier des ressources et de classer vos données automatiquement. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md)
+
+### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 
 Pour créer une analyse et l’exécuter, procédez comme suit :
 
@@ -167,5 +179,8 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Navigation dans le catalogue de données Azure Purview](how-to-browse-catalog.md)
-- [Recherche dans le catalogue de données Azure Purview](how-to-search-catalog.md)
+Maintenant que vous avez inscrit votre source, suivez les guides ci-dessous pour en savoir plus sur Purview et sur vos données.
+
+- [Insights de données dans Azure Purview](concept-insights.md)
+- [Lignage dans Azure Purview](catalog-lineage-user-guide.md)
+- [Rechercher dans un catalogue de données](how-to-search-catalog.md)

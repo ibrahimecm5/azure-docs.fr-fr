@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: e5f71566d3e31858a60f805bf45fe95793dd9b20
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c5dbbb41f75e3b1d2646c00019843d9a08805db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094255"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058651"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Contrôler le trafic de sortie pour les nœuds de cluster dans Azure Kubernetes Service (AKS)
 
@@ -208,6 +208,26 @@ Les noms de domaine complets/règles d’application suivants sont requis pour l
 |-----------------------------------------------|-----------|----------|
 | **`data.policy.azure.us`** | **`HTTPS:443`** | Cette adresse est utilisée pour extraire les stratégies Kubernetes et pour signaler l’état de conformité du cluster au service de stratégie. |
 | **`store.policy.azure.us`** | **`HTTPS:443`** | Cette adresse est utilisée pour extraire les artefacts Gatekeeper de stratégies intégrées. |
+
+## <a name="cluster-extensions"></a>Extensions de cluster
+
+### <a name="required-fqdn--application-rules"></a>Règles de nom FQDN/d’application requises
+
+Les règles de nom de domaine complet/d’application suivantes sont requises pour l’utilisation des extensions de cluster sur les clusters AKS.
+
+| FQDN | Port | Utilisation |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.com`** | **`HTTPS:443`** | Cette adresse est utilisée pour récupérer les informations de configuration du service Extensions du cluster et de l’état de l’extension de rapport jusqu’au service.|
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | Cette adresse est nécessaire pour extraire les images conteneur pour l’installation des agents d’extension de cluster sur le cluster AKS.|
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Règles de nom FQDN/d’application requises pour Azure US Government
+
+Les règles de nom de domaine complet/d’application suivantes sont requises pour l’utilisation des extensions de cluster sur les clusters AKS.
+
+| FQDN | Port | Utilisation |
+|-----------------------------------------------|-----------|----------|
+| **`<region>.dp.kubernetesconfiguration.azure.us`** | **`HTTPS:443`** | Cette adresse est utilisée pour récupérer les informations de configuration du service Extensions du cluster et de l’état de l’extension de rapport jusqu’au service. |
+| **`mcr.microsoft.com, *.data.mcr.microsoft.com`** | **`HTTPS:443`** | Cette adresse est nécessaire pour extraire les images conteneur pour l’installation des agents d’extension de cluster sur le cluster AKS.|
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Limitation du trafic de sortie à l’aide du Pare-feu Azure
 

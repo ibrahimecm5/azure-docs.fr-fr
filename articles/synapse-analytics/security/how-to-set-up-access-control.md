@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 513b2edd432a274f155e79362e715fbc426a9f9e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 3e90ab30e8eb916ef70248af32b7b95ff0a48428
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081507"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003539"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Guide pratique pour configurer le contrôle d’accès pour votre espace de travail Azure Synapse 
 
@@ -181,16 +181,15 @@ Le créateur de l'espace de travail est automatiquement configuré comme Adminis
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>ÉTAPE 7 : Accorder l’accès aux pools SQL
 
-Par défaut, tous les utilisateurs disposant du rôle Administrateur Synapse disposent aussi du rôle `db_owner` SQL sur le pool SQL dédié et serverless dans l’espace de travail.
+Par défaut, tous les utilisateurs disposant du rôle Administrateur Synapse disposent aussi du rôle `db_owner` SQL sur les pools SQL serverless dans l’espace de travail.
 
-L’accès aux pools SQL pour d’autres utilisateurs et pour l’identité MSI de l’espace de travail est contrôlé à l’aide d’autorisations SQL.  L’attribution d’autorisations SQL nécessite l’exécution de scripts SQL sur chaque bases de données SQL après la création.  Il existe trois cas qui exigent l’exécution de ces scripts :
+L’accès aux pools SQL pour les autres utilisateurs est contrôlé à l’aide d’autorisations SQL.  L’attribution d’autorisations SQL nécessite l’exécution de scripts SQL sur chaque bases de données SQL après la création.  Il existe trois cas qui exigent l’exécution de ces scripts :
 1. Octroi à d’autres utilisateurs de l’accès au pool SQL serverless, « Intégré », et à ses bases de données
 2. Octroi à tout utilisateur de l’accès à des bases de données de pool SQL dédié
-3. Octroi à l’identité MSI de l’espace de travail de l’accès à une base de données de pool SQL afin de permettre aux pipelines qui nécessitent un accès au pool SQL de s’exécuter correctement
 
 Vous trouverez ci-dessous des exemples de scripts SQL.
 
-Pour accorder l’accès à une base de données de pool SQL dédié, les scripts peuvent être exécutés par le créateur de l’espace de travail ou par n’importe quel membre du groupe `workspace1_SQLAdmins` ou du groupe `workspace1_SynapseAdministrators`.  
+Pour accorder l’accès à une base de données de pool SQL dédié, les scripts peuvent être exécutés par le créateur de l’espace de travail ou par n’importe quel membre du groupe `workspace1_SynapseAdministrators`.  
 
 Pour accorder l’accès au pool SQL serverless, « Intégré », les scripts peuvent être exécutés par n’importe quel membre du groupe `workspace1_SQLAdmins` ou du groupe `workspace1_SynapseAdministrators`. 
 
@@ -268,36 +267,6 @@ Pour accorder l’accès à une **seule** base de données de pool SQL dédié,
 
 Après avoir créé les utilisateurs, exécutez des requêtes pour vérifier que le pool SQL serverless peut interroger le compte de stockage.
 
-### <a name="step-73-sql-access-control-for-azure-synapse-pipeline-runs"></a>ÉTAPE 7.3 : Contrôle d’accès SQL pour les exécutions de pipelines Azure Synapse
-
-### <a name="workspace-managed-identity"></a>Identité managée de l’espace de travail
-
-> [!IMPORTANT]
-> Pour exécuter des pipelines comprenant des jeux de données ou des activités qui référencent un pool SQL, l’identité de l’espace de travail doit pouvoir accéder au pool SQL.
-
-Pour plus d’informations sur l’identité managée de l’espace de travail, consultez [Identité managée de l’espace de travail Azure Synapse](synapse-workspace-managed-identity.md). Exécutez les commandes suivantes sur chaque pool SQL pour autoriser l’identité système managée de l’espace de travail à exécuter des pipelines sur les bases de données de pools SQL :  
-
->[!note]
->Dans les scripts ci-dessous, pour une base de données de pool SQL dédié, `<databasename>` correspond au nom du pool.  Pour une base de données dans le pool SQL serverless « Intégré », `<databasename>` correspond au nom de la base de données.
-
-```sql
---Create a SQL user for the workspace MSI in database
-CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
-
---Granting permission to the identity
-GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
-```
-
-Cette autorisation peut être supprimée en exécutant le script suivant sur le même pool SQL :
-
-```sql
---Revoke permission granted to the workspace MSI
-REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
-
---Delete the workspace MSI user in the database
-DROP USER [<workspacename>];
-```
-
 ## <a name="step-8-add-users-to-security-groups"></a>ÉTAPE 8 : Ajouter des utilisateurs à des groupes de sécurité
 
 La configuration initiale de votre système de contrôle d’accès est terminée.
@@ -320,7 +289,7 @@ Votre espace de travail est maintenant entièrement configuré et sécurisé.
 
 Ce guide est axé sur la configuration d’un système de contrôle d’accès de base. Vous pouvez prendre en charge des scénarios plus avancés en créant des groupes de sécurité supplémentaires et en attribuant à ces groupes des rôles plus précis à des étendues plus spécifiques. Prenez les cas suivants :
 
-**Activez la prise en charge de Git** pour l’espace de travail pour des scénarios de développement plus avancés, notamment CI/CD.  En mode Git, les autorisations Git déterminent si un utilisateur peut valider les modifications apportées à sa branche de travail.  La publication sur le service a lieu uniquement à partir de la branche de collaboration.  Il peut être judicieux de créer un groupe de sécurité pour les développeurs qui doivent développer et déboguer des mises à jour dans une branche de travail mais qui n’ont pas besoin de publier des modifications dans le service actif.
+**Activez la prise en charge de Git** pour l’espace de travail pour des scénarios de développement plus avancés, notamment CI/CD.  En mode Git, les autorisations Git et RBAC Synapse déterminent si un utilisateur peut valider les modifications apportées à sa branche de travail.  La publication sur le service a lieu uniquement à partir de la branche de collaboration.  Il peut être judicieux de créer un groupe de sécurité pour les développeurs qui doivent développer et déboguer des mises à jour dans une branche de travail mais qui n’ont pas besoin de publier des modifications dans le service actif.
 
 **Limitez l’accès des développeurs** à des ressources spécifiques.  Créez des groupes de sécurité plus fins pour les développeurs qui ont besoin d’accéder uniquement à des ressources spécifiques.  Attribuez à ces groupes des rôles Azure Synapse appropriés qui sont délimités à des pools Spark, des runtimes d’intégration ou des informations d’identification spécifiques.
 

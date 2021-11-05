@@ -8,12 +8,12 @@ ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
 fluid.url: https://fluidframework.com/docs/build/tokenproviders/
-ms.openlocfilehash: d6987b4e4592167fcb41a7f6654ff46140a79724
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 80524d6ab2da2e805e1107755cef4cfb367f6d2a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661861"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039446"
 ---
 # <a name="how-to-write-a-tokenprovider-with-an-azure-function"></a>Guide pratique : Écrire un TokenProvider avec une fonction Azure
 
@@ -22,70 +22,20 @@ ms.locfileid: "129661861"
 
 Dans l’[infrastructure Fluid](https://fluidframework.com/), les fournisseurs de jetons sont chargés de créer et signer des jetons que `@fluidframework/azure-client` utilise pour adresser des demandes au service Relais Azure Fluid. L’infrastructure Fluid inclut un fournisseur de jetons simple non sécurisé à des fins de développement, judicieusement nommé **InsecureTokenProvider**. Chaque service Fluid doit implémenter un fournisseur de jetons personnalisé en fonction des considérations relatives à l’authentification et à la sécurité du service particulier.
 
-## <a name="implementing-your-own-tokenprovider-class"></a>Implémentation de votre propre classe TokenProvider
+Chaque locataire du service Relais Azure Fluid que vous créez se voit attribuer un **ID de locataire** et sa propre **clé secrète de locataire** unique. La clé secrète est un **secret partagé**. Votre application/service la connaît, et le service Relais Azure Fluid la connaît également. Les fournisseurs de jetons doivent connaître la clé secrète pour signer des demandes, mais cette clé ne peut pas être incluse dans le code client.
 
-Chaque locataire du service Relais Azure Fluid que vous créez se voit attribuer un **ID de locataire** et sa propre **clé secrète de locataire** unique. La clé secrète est un **secret partagé**. Votre application/service la connaît, et le service Relais Azure Fluid la connaît également. 
+## <a name="implement-an-azure-function-to-sign-tokens"></a>Implémentation d’une fonction Azure pour signer des jetons
 
-Les fournisseurs de jetons doivent connaître la clé secrète pour signer des demandes, mais cette clé ne peut pas être incluse dans le code client. Les fournisseurs de jetons contactent le serveur Fluid au moment de l’exécution afin d’obtenir la clé secrète en toute sécurité sans l’exposer au client. Cela s’effectue par le biais de deux appels d’API distincts : `fetchOrdererToken` et `fetchStorageToken`. Ceux-ci sont chargés de récupérer respectivement les URL de l’ordonnanceur et du stockage à partir de l’hôte. Les deux fonctions retournent des `TokenResponse` objets représentant la valeur du jeton.
+L’une des options possibles pour générer un fournisseur de jetons sécurisé consiste à créer un point de terminaison HTTPS et une implémentation de TokenProvider qui adresse des demandes HTTPS authentifiées à ce point de terminaison pour récupérer des jetons. Cela vous permet de stocker la *clé secrète du locataire* dans un emplacement sécurisé, comme [Azure Key Vault](../../key-vault/general/overview.md).
 
-## <a name="tokenprovider-class-example"></a>Exemple de classe TokenProvider
+La solution complète se compose de deux éléments :
 
-Pour créer un fournisseur de jetons sécurisés, une option consiste à créer une fonction Azure serverless et à l’exposer en tant que fournisseur de jetons. Cela vous permet de stocker la *clé secrète du locataire* sur un serveur sécurisé. Votre application appelle ensuite la fonction Azure pour générer des jetons.
+1. Un point de terminaison HTTPS qui accepte les demandes et retourne des jetons Relais Azure Fluid
+1. Une implémentation de ITokenProvider qui accepte l’URL d’un point de terminaison, puis adresse des demandes à ce point de terminaison pour récupérer des jetons
 
-Cet exemple implémente ce modèle dans une classe nommée **AzureFunctionTokenProvider**. Il accepte l’URL de votre fonction Azure, `userId` et `userName`. Cette implémentation spécifique vous est également fournie en tant qu’exportation à partir du package `@fluidframework/azure-client`.
+### <a name="create-an-endpoint-for-your-tokenprovider-using-azure-functions"></a>Création d’un point de terminaison pour un TokenProvider avec Azure Functions
 
-```typescript
-import { ITokenProvider, ITokenResponse } from "@fluidframework/azure-client";
-
-export class AzureFunctionTokenProvider implements ITokenProvider {
-  constructor(
-    private readonly azFunctionUrl: string,
-    private readonly userId: string,
-    private readonly userName: string,
-  );
-
-  public async fetchOrdererToken(tenantId: string, documentId: string): Promise<ITokenResponse> {
-        return {
-            jwt: await this.getToken(tenantId, documentId),
-        };
-    }
-
-    public async fetchStorageToken(tenantId: string, documentId: string): Promise<ITokenResponse> {
-        return {
-            jwt: await this.getToken(tenantId, documentId),
-        };
-    }
-}
-```
-
-Pour garantir la sécurité de la clé secrète du locataire, celle-ci est stockée dans un emplacement principal sécurisé et n’est accessible qu’à partir de la fonction Azure. L’une des méthodes permettant de récupérer un jeton signé consiste à adresser une demande `GET` à votre fonction Azure, en fournissant les valeurs `tenantID`, `documentId` et `userID`/`userName`. La fonction Azure assure le mappage entre l’ID de locataire et la clé secrète du locataire pour générer et signer le jeton de manière appropriée pour que le service Relais Azure Fluid l’accepte.
-
-```typescript
-private async getToken(tenantId: string, documentId: string): Promise<string> {
-    const params = {
-        tenantId,
-        documentId,
-        userId: this.userId,
-        userName: this.userName,
-    };
-    const token = this.getTokenFromServer(params);
-    return token;
-}
-```
-
-L’exemple ci-dessous utilise la bibliothèque [`axios`](https://www.npmjs.com/package/axios) pour effectuer des requêtes HTTP. Vous pouvez utiliser d’autres bibliothèques ou approches pour effectuer une requête HTTP.
-
-```typescript
-private async getTokenFromServer(input: any): Promise<string> {
-    return axios.get(this.azFunctionUrl, {
-        params: input,
-    }).then((response) => {
-        return response.data as string;
-    }).catch((err) => {
-        return err as string;
-    });
-}
-```
+Les [fonctions Azure Functions](../../azure-functions/functions-overview.md) représentent un moyen rapide de créer un tel point de terminaison HTTPS. Dans l’exemple suivant, ce modèle est implémenté dans une classe nommée **AzureFunctionTokenProvider**. Il accepte l’URL de votre fonction Azure, `userId` et `userName`. Cette implémentation spécifique vous est également fournie en tant qu’exportation à partir du package `@fluidframework/azure-client`.
 
 Cet exemple montre comment créer votre propre **fonction Azure HTTPTrigger** qui récupère le jeton en passant votre clé de locataire.
 
@@ -94,7 +44,7 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { ScopeType } from "@fluidframework/azure-client";
 import { generateToken } from "@fluidframework/azure-service-utils";
 
-//Replace "myTenantKey" with your key here.
+// NOTE: retrieve the key from a secure location.
 const key = "myTenantKey";
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
@@ -110,6 +60,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             status: 400,
             body: "No tenantId provided in query params",
         };
+        return;
     }
 
     if (!key) {
@@ -117,6 +68,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             status: 404,
             body: `No key found for the provided tenantId: ${tenantId}`,
         };
+        return;
     }
 
     if (!documentId) {
@@ -124,6 +76,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             status: 400,
             body: "No documentId provided in query params"
         };
+        return;
     }
 
     let user = { name: userName, id: userId };
@@ -146,8 +99,68 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 export default httpTrigger;
 ```
 
-La fonction `generateToken` génère un jeton pour l’utilisateur donné qui s’est connecté à l’aide de la clé secrète du locataire. Cela permet de retourner le jeton au client sans jamais lui exposer le secret proprement dit. Au lieu de cela, le jeton est généré en utilisant le secret pour fournir un accès délimité au document donné. Ce jeton peut être retourné par une implémentation de `ITokenProvider` à utiliser avec l’`AzureClient`.
+La fonction `generateToken`, qui se trouve dans le package `@fluidframework/azure-service-utils`, génère un jeton pour l’utilisateur connecté avec la clé secrète du locataire. Cela permet de retourner le jeton au client sans exposer le secret. Le jeton est en effet généré côté serveur en utilisant le secret pour fournir un accès délimité au document en question. L’exemple d’ITokenProvider suivant adresse des requêtes HTTP à cette fonction Azure pour récupérer des jetons.
 
+### <a name="deploy-the-azure-function"></a>Déployer la fonction Azure
+
+Les fonctions Azure Functions peuvent être déployées de plusieurs façons. Pour plus d’informations sur le déploiement de fonctions Azure Functions, consultez la section **Déploiement** de la documentation [Azure Functions](../../azure-functions/functions-continuous-deployment.md).
+
+### <a name="implement-the-tokenprovider"></a>Implémentation du TokenProvider
+
+Les TokenProvider peuvent être implémentés de plusieurs façons. Ils doivent cependant mettre en œuvre deux appels d’API distincts : `fetchOrdererToken` et `fetchStorageToken`. Ces API sont respectivement chargées d’extraire les jetons pour les services d’ordonnanceur et de stockage Fluid. Les deux fonctions retournent des `TokenResponse` objets représentant la valeur du jeton. Le runtime de l’Infrastructure Fluid appelle ces deux API en fonction des besoins pour récupérer les jetons.
+
+
+Pour garantir la sécurité de la clé secrète du locataire, celle-ci est stockée dans un emplacement principal sécurisé et n’est accessible qu’à partir de la fonction Azure. Pour récupérer des jetons, vous devez adresser une demande `GET` ou `POST` à la fonction Azure déployée, en fournissant les valeurs `tenantID`, `documentId` et `userID`/`userName`. La fonction Azure assure le mappage entre l’ID de locataire et la clé secrète d’un locataire pour générer et signer le jeton de manière appropriée.
+
+Dans l’exemple d’implémentation suivant, c’est la bibliothèque [axios](https://www.npmjs.com/package/axios) qui est utilisée pour effectuer des requêtes HTTP. Vous pouvez opter pour d’autres bibliothèques ou d’autres approches afin d’adresser une requête HTTP à partir du code serveur.
+
+```typescript
+import { ITokenProvider, ITokenResponse } from "@fluidframework/routerlicious-driver";
+import axios from "axios";
+import { AzureMember } from "./interfaces";
+
+/**
+ * Token Provider implementation for connecting to an Azure Function endpoint for
+ * Azure Fluid Relay token resolution.
+ */
+export class AzureFunctionTokenProvider implements ITokenProvider {
+    /**
+     * Creates a new instance using configuration parameters.
+     * @param azFunctionUrl - URL to Azure Function endpoint
+     * @param user - User object
+     */
+    constructor(
+        private readonly azFunctionUrl: string,
+        private readonly user?: Pick<AzureMember, "userId" | "userName" | "additionalDetails">,
+    ) { }
+
+    public async fetchOrdererToken(tenantId: string, documentId?: string): Promise<ITokenResponse> {
+        return {
+            jwt: await this.getToken(tenantId, documentId),
+        };
+    }
+
+    public async fetchStorageToken(tenantId: string, documentId: string): Promise<ITokenResponse> {
+        return {
+            jwt: await this.getToken(tenantId, documentId),
+        };
+    }
+
+    private async getToken(tenantId: string, documentId: string | undefined): Promise<string> {
+        const response = await axios.get(this.azFunctionUrl, {
+            params: {
+                tenantId,
+                documentId,
+                userId: this.user?.userId,
+                userName: this.user?.userName,
+                additionalDetails: this.user?.additionalDetails,
+            },
+        });
+        return response.data as string;
+    }
+}
+```
 ## <a name="see-also"></a>Voir aussi
 
 - [Ajouter des données personnalisées à un jeton d’authentification](connect-fluid-azure-service.md#adding-custom-data-to-tokens)
+- [Guide pratique pour déployer des applications Fluid avec Azure Static Web Apps](deploy-fluid-static-web-apps.md)

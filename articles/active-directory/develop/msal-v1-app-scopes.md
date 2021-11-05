@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: c1d9c88825dc8460c619131b8f69b5e802a8758b
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 03926f656bd96205057703e610bfab17c144dd5e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080747"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059373"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Étendues pour une API web acceptant des jetons v1.0
 
@@ -65,7 +65,7 @@ La logique utilisée par Azure AD est la suivante :
 
 - Pour le point de terminaison ADAL ( Azure AD v1.0) avec un jeton d’accès v1.0 (le seul possible), aud=resource
 - Pour MSAL (plateforme d’identités Microsoft) qui demande un jeton d’accès pour une ressource qui accepte des jetons v2.0, `aud=resource.AppId`
-- Pour le point de terminaison MSAL (v2.0) qui demande un jeton d’accès pour une ressource qui accepte un jeton d’accès v1.0 (ce qui correspond au cas ci-dessus), Azure AD analyse l’audience souhaitée d’après l’étendue demandée en prenant tout ce qui précède la dernière barre oblique et en l’utilisant comme identificateur de la ressource. Par conséquent, si https:\//database.windows.net attend une audience de https:\//database.windows.net/, vous devrez demander une étendue de https:\//database.windows.net//.default. Voir également problème GitHub [#747 : la barre oblique de fin est omise dans l’URL de la ressource, ce qui a entraîné un échec d’authentification sql ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+- Pour le point de terminaison MSAL (v2.0) qui demande un jeton d’accès pour une ressource qui accepte un jeton d’accès v1.0 (ce qui correspond au cas ci-dessus), Azure AD analyse l’audience souhaitée d’après l’étendue demandée en prenant tout ce qui précède la dernière barre oblique et en l’utilisant comme identificateur de la ressource. Ainsi, si `https://database.windows.net` attend une audience de `https://database.windows.net`, vous devez demander une étendue de `https://database.windows.net//.default`. Consultez également le problème GitHub [#747 : `Resource url's trailing slash is omitted, which caused sql auth failure`](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Étendues pour demander l’accès à toutes les autorisations d’une application v1.0
 

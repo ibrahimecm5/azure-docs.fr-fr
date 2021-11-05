@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 315fe35a79ade39de9f541504fc2fe52754614de
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 4b1860fd614ab0074896f51a16a268d21f82c11a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749345"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049308"
 ---
 # <a name="ssh"></a>SSH  
 
-Le protocole SSH (Secure Shell) est un protocole réseau qui fournit un chiffrement permettant d’exploiter en toute sécurité des services réseau sur un réseau non sécurisé. SSH fournit également une connexion en ligne de commande, exécute des commandes à distance et transfère des fichiers de façon sécurisée. Il est couramment utilisé sur les systèmes UNIX tels que Linux®. SSH remplace le protocole Telnet, qui ne fournit pas de chiffrement sur un réseau non sécurisé. 
+Le protocole SSH (Secure Shell) est un protocole réseau qui fournit un chiffrement permettant d’exploiter en toute sécurité des services réseau sur un réseau non sécurisé. SSH fournit également une connexion en ligne de commande, exécute des commandes à distance et transfère des fichiers de façon sécurisée. Il est couramment utilisé sur les systèmes Unix tels que Linux®. SSH remplace le protocole Telnet, qui ne fournit pas de chiffrement sur un réseau non sécurisé. 
 
 Azure Active Directory (Azure AD) fournit une extension de machine virtuelle (VM) pour les systèmes Linux® exécutés sur Azure. 
 
@@ -57,4 +57,3 @@ SSH avec Azure AD
 * [Flux de code d’appareil OAuth 2.0 - Plateforme d’identités Microsoft](../develop/v2-oauth2-device-code.md)
 
 * [Intégrer à Azure Active Directory (akamai.com)](https://learn.akamai.com/en-us/webhelp/enterprise-application-access/enterprise-application-access/GUID-6B16172C-86CC-48E8-B30D-8E678BF3325F.html)
-

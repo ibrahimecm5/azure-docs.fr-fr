@@ -4,12 +4,12 @@ description: Découvrez comment créer un cluster Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: fd91a848a2da7ca503f74def67c0fab268d253c7
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 3cb83bd9b3aded2ab167afb39b024266a76163ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387978"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049080"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Créer un cluster Azure Kubernetes Service privé
 
@@ -81,14 +81,61 @@ Les paramètres suivants peuvent être utilisés pour configurer une zone de DNS
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
 ```
+### <a name="create-a-private-aks-cluster-with-a-byo-private-dns-subzone-preview"></a>Créer un cluster AKS privé avec sous-zone DNS privée BYO (préversion)
 
-### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone"></a>Créer un cluster AKS privé avec zone DNS privée personnalisée
+Configuration requise :
+
+* Azure CLI >= 2.29.0 ou Azure CLI avec l’extension aks-preview 0.5.34 ou version ultérieure.
+
+### <a name="register-the-enableprivateclustersubzone-preview-feature"></a>Inscrire la fonctionnalité d’évaluation `EnablePrivateClusterSubZone`
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Pour créer un cluster AKS capable d’utiliser le pilote CSI de magasin de secrets, vous devez activer l’indicateur de fonctionnalité `EnablePrivateClusterSubZone` sur votre abonnement.
+
+Inscrivez l’indicateur de fonctionnalité `EnablePrivateClusterSubZone` à l’aide de la commande [az feature register][az-feature-register], comme indiqué dans l’exemple suivant :
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterSubZone"
+```
+
+Quelques minutes sont nécessaires pour que l’état s’affiche *Registered* (Inscrit). Vérifiez l’état de l’inscription à l’aide de la commande [az feature list][az-feature-list] :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterSubZone')].{Name:name,State:properties.state}"
+```
+
+Lorsque vous êtes prêt, actualisez l’inscription du fournisseur de ressources *Microsoft.ContainerService* à l’aide de la commande [az provider register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="install-the-aks-preview-cli-extension"></a>Installer l’extension CLI aks-preview
+
+Vous devez également disposer de l’extension Azure CLI *aks-preview* version 0.5.34 ou ultérieure. Installez l’extension d’Azure CLI *aks-preview* à l’aide de la commande [az extension add][az-extension-add]. Si vous avez déjà installé l’extension, passez à la dernière version disponible avec la commande [az extension update][az-extension-update].
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="private-aks-cluster-with-byo-private-dns-subzone"></a>Cluster AKS privé avec sous-zone DNS privé BYOD
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <BYO private dns zone ResourceId>
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-subzone"></a>Créer un cluster AKS privé avec sous-zone DNS privé personnalisée
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 
-## <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>Créer un cluster AKS privé avec un nom de domaine complet public (FQDN) public
+### <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>Créer un cluster AKS privé avec un nom de domaine complet public (FQDN) public
 
 Configuration requise :
 

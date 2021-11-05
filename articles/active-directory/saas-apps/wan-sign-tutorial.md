@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique Azure Active Directory à WAN-Sign | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à WAN-Sign'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et WAN-Sign.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 10/21/2021
 ms.author: jeedes
-ms.openlocfilehash: b7df43c394d3df20f4d423fde6cf680432c80337
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 82438827cc09b4f0fc40f71a514a21884f732c33
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731478"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066975"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wan-sign"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à WAN-Sign
+# <a name="tutorial-azure-ad-sso-integration-with-wan-sign"></a>Tutoriel : Intégration de l’authentification unique Azure AD à WAN-Sign
 
 Dans ce tutoriel, vous allez apprendre à intégrer WAN-Sign à Azure Active Directory (Azure AD). Quand vous intégrez WAN-Sign à Azure AD, vous pouvez :
 
@@ -37,10 +37,9 @@ Pour commencer, vous devez disposer de ce qui suit :
 
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
+* WAN-Sign prend en charge l’authentification unique initiée par le **Fournisseur de services** et le **Fournisseur d’identité**.
 
-* WAN-Sign prend en charge l’authentification unique initiée par le **fournisseur d’identité**.
-
-## <a name="adding-wan-sign-from-the-gallery"></a>Ajouter WAN-Sign à partir de la galerie
+## <a name="add-wan-sign-from-the-gallery"></a>Ajouter WAN-Sign à partir de la galerie
 
 Pour configurer l’intégration de WAN-Sign dans Azure AD, vous devez ajouter WAN-Sign à partir de la galerie à votre liste d’applications SaaS gérées.
 
@@ -50,7 +49,6 @@ Pour configurer l’intégration de WAN-Sign dans Azure AD, vous devez ajouter 
 1. Pour ajouter une nouvelle application, sélectionnez **Nouvelle application**.
 1. Dans la section **Ajouter à partir de la galerie**, saisissez **WAN-Sign** dans la zone de recherche.
 1. Sélectionnez **WAN-Sign** dans le volet de résultats, puis ajoutez l’application. Patientez quelques secondes pendant que l’application est ajoutée à votre locataire.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-wan-sign"></a>Configurer et tester l’authentification unique Azure AD pour WAN-Sign
 
@@ -75,14 +73,18 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
    ![Modifier la configuration SAML de base](common/edit-urls.png)
 
-1. Dans la page **Configurer l’authentification unique avec SAML**, entrez les valeurs pour les champs suivants :
+1. Dans la section **Configuration SAML de base**, effectuez les étapes suivantes :
 
-    a. Dans la zone de texte **Identificateur**, tapez une URL au format suivant : `https://service10.wanbishi.ne.jp/saml/metadata/azuread/<CUSTOMER_ID>`
+    a. Dans la zone de texte **Identificateur**, tapez une URL au format suivant : `https://service10.wanbishi.ne.jp/saml/metadata/azuread/<CustomerID>`
 
-    b. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://service10.wanbishi.ne.jp/saml/azuread/<CUSTOMER_ID>`
+    b. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://service10.wanbishi.ne.jp/saml/azuread/<CustomerID>`
+
+1. Cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes si vous souhaitez configurer l’application en mode Initié par le fournisseur de services :
+
+    Dans la zone de texte **URL de connexion**, tapez une URL en utilisant le modèle suivant : `https://service10.wanbishi.ne.jp/saml/login/azuread/<CustomerID>`
 
     > [!NOTE]
-    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur et l’URL de réponse réels. Pour obtenir ces valeurs, contactez l’[équipe du support technique de WAN-Sign](mailto:wansign-help@wanbishi.ne.jp). Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
+    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL d’authentification et l’URL de réponse réels. Pour obtenir ces valeurs, contactez l’[équipe du support technique de WAN-Sign](mailto:wansign-help@wanbishi.ne.jp). Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
 
 1. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, recherchez **Certificat (en base64)** , puis sélectionnez **Télécharger** pour télécharger le certificat et l’enregistrer sur votre ordinateur.
 
@@ -126,12 +128,19 @@ Dans cette section, vous allez créer un utilisateur appelé Britta Simon dans 
 
 ## <a name="test-sso"></a>Tester l’authentification unique (SSO) 
 
-Dans cette section, vous allez tester votre configuration de l’authentification unique Azure AD avec les options suivantes.
+Dans cette section, vous allez tester votre configuration de l’authentification unique Azure AD avec les options suivantes. 
 
-* Cliquez sur Tester cette application dans Portail Azure : vous devez être connecté automatiquement à l’instance de WAN-Sign pour laquelle vous avez configuré l’authentification unique.
+#### <a name="sp-initiated"></a>Lancée par le fournisseur de services :
 
-* Vous pouvez utiliser Mes applications de Microsoft. Quand vous cliquez sur la vignette WAN-Sign dans Mes applications, vous êtes automatiquement connecté à l’instance de WAN-Sign pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Cliquez sur **Tester cette application** dans le portail Azure. Cette opération redirige vers l’URL de connexion WAN-Sign où vous pouvez lancer le flux de connexion.  
 
+* Accédez directement à l’URL de connexion WAN-Sign pour lancer le flux de connexion à partir de là.
+
+#### <a name="idp-initiated"></a>Lancée par le fournisseur d’identité :
+
+* Cliquez sur **Tester cette application** dans le Portail Azure. Vous devez être connecté automatiquement à WAN-Sign pour laquelle vous avez configuré l’authentification unique. 
+
+Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’application dans n’importe quel mode. Si, quand vous cliquez sur la vignette WAN-Sign dans Mes applications, le mode Fournisseur de services est configuré, vous êtes redirigé vers la page de connexion de l’application pour lancer le flux de connexion. S’il s’agit du mode Fournisseur d’identité, vous êtes automatiquement connecté à WAN-Sign pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

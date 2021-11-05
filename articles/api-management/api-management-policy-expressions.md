@@ -6,32 +6,26 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 07/07/2021
+ms.date: 10/25/2021
 ms.author: danlep
-ms.openlocfilehash: c70e72550b88850b6b30c8f96f7f2dc4a460b222
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bf95131892703fcb7ce8c31c68f7b1da6dca1dee
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678950"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031743"
 ---
 # <a name="api-management-policy-expressions"></a>Expressions de stratégie de la Gestion des API
-Cet article décrit la syntaxe des expressions de stratégie dans C# 7. Chaque expression a accès à la variable de [contexte](api-management-policy-expressions.md#ContextVariables) fournie implicitement et à un [sous-ensemble](api-management-policy-expressions.md#CLRTypes) autorisé de types .NET Framework.
-
-Pour plus d'informations :
-
-- Découvrez comment fournir des informations de contexte à votre service backend. Utilisez les stratégies [Set query string parameter](api-management-transformation-policies.md#SetQueryStringParameter) et [Set HTTP header](api-management-transformation-policies.md#SetHTTPheader) pour fournir ces informations.
-- Découvrez comment utiliser la stratégie [Validate JWT](api-management-access-restriction-policies.md#ValidateJWT) pour pré-autoriser l’accès aux opérations à partir de revendications de jetons.
-- Découvrez comment utiliser une trace [Inspecteur d’API](./api-management-howto-api-inspector.md) pour détecter comment les stratégies sont évaluées et connaître les résultats de ces évaluations.
-- Découvrez comment utiliser les expressions avec les stratégies [Get from cache](api-management-caching-policies.md#GetFromCache) et [Store to cache](api-management-caching-policies.md#StoreToCache) pour configurer la durée de mise en cache des réponses de Gestion des API. Définissez une durée qui correspond à la mise en cache des réponses du service principal comme le spécifie la directive `Cache-Control` du service principal.
-- Découvrez comment effectuer le filtrage de contenu. Supprimez des éléments de données de la réponse reçue du service principal à l’aide des stratégies [Control flow](api-management-advanced-policies.md#choose) et [Set body](api-management-transformation-policies.md#SetBody).
-- Pour télécharger les instructions de stratégie, consultez le référentiel GitHub [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).
-
+Cet article décrit la syntaxe des expressions de stratégie dans C# 7. Chaque expression a accès à :
+* La variable de [contexte](api-management-policy-expressions.md#ContextVariables) fournie implicitement.
+* Un [sous-ensemble](api-management-policy-expressions.md#CLRTypes) autorisé de types .NET Framework.
 
 ## <a name="syntax"></a><a name="Syntax"></a> Syntaxe
-Les expressions à instruction unique sont entre `@(expression)`, où `expression` est une instruction d’expression C# bien formée.
-
-Les expressions à instructions multiples sont entre `@{expression}`. Tous les chemins d’accès de code au sein des expressions à instructions multiples doivent se terminer par une instruction `return`.
+* **Expressions à instruction unique :**
+    * Inclus dans `@(expression)`, où `expression` est une instruction d’expression C# bien formée.
+* **Expressions à plusieurs instructions :** 
+    * Inclus dans `@{expression}`. 
+    * Tous les chemins d’accès de code au sein des expressions à instructions multiples doivent se terminer par une instruction `return`.
 
 ## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> Exemples
 
@@ -61,13 +55,13 @@ Les expressions à instructions multiples sont entre `@{expression}`. Tous les c
 ```
 
 ## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>Utilisation
-Les expressions peuvent être utilisées comme valeurs d’attribut ou valeurs de texte dans l’une des [stratégies](api-management-policies.md) de la Gestion des API, sauf si la référence de la stratégie le spécifie autrement.
+Sauf si la référence de stratégie spécifie le contraire, les expressions peuvent être utilisées comme valeurs d’attribut ou valeurs de texte dans l’une des [stratégies](api-management-policies.md) de la Gestion des API.
 
 > [!IMPORTANT]
-> Lorsque vous utilisez des expressions de stratégie, elles ne font l’objet que d’une vérification limitée lors de la définition de la stratégie. Les expressions sont exécutées par la passerelle lors de l’exécution, et toutes les exceptions générées par les expressions de stratégie entraînent une erreur d’exécution.
+> Lorsque la stratégie est définie, les expressions de stratégie ne disposent que d’une vérification limitée. Les expressions sont exécutées par la passerelle au moment de l’exécution. Toutes les exceptions générées par les expressions de stratégie entraînent une erreur d’exécution.
 
 ## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> Types .NET Framework autorisés dans les expressions de stratégie
-Le tableau suivant liste les types .NET Framework et leurs membres qui sont autorisés dans les expressions de stratégie.
+Le tableau suivant liste les types .NET Framework et les membres autorisés dans les expressions de stratégie.
 
 |Type|Membres pris en charge|
 |--------------|-----------------------|
@@ -202,7 +196,9 @@ Le tableau suivant liste les types .NET Framework et leurs membres qui sont auto
 |System.Xml.XmlNodeType|Tous|
 
 ## <a name="context-variable"></a><a name="ContextVariables"></a> Variable de contexte
-Une variable nommée `context` est implicitement disponible dans toutes les [expressions](api-management-policy-expressions.md#Syntax) de stratégie. Ses membres fournissent des informations pertinentes pour la `\request`. Tous les membres `context` sont en lecture seule.
+La variable `context` est implicitement disponible dans toutes les [expressions](api-management-policy-expressions.md#Syntax) de stratégie. Ses membres :
+* Fournissent des informations relatives à la [demande](#ref-context-request) et à la [réponse](#ref-context-response) de l’API, ainsi que les propriétés associées. 
+* Sont en lecture seule.
 
 |Variable de contexte|Méthodes, propriétés et valeurs de paramètres autorisées|
 |----------------------|-------------------------------------------------------|
@@ -220,7 +216,7 @@ Une variable nommée `context` est implicitement disponible dans toutes les [exp
 |<a id="ref-context-user"></a>context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: string<br /><br /> Name: string|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false): Où T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Les méthodes `context.Request.Body.As<T>` et `context.Response.Body.As<T>` sont utilisées pour lire un corps de message de demande et de réponse dans un type `T` spécifié. Par défaut, la méthode utilise le flux du corps du message d’origine et le rend indisponible après son retour. Pour éviter cela en faisant en sorte que la méthode agisse sur une copie du flux du corps, définissez le paramètre `preserveContent` sur `true`, comme dans [cet exemple](api-management-transformation-policies.md#SetBody).|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false): Où T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Les méthodes `context.Request.Body.As<T>` et `context.Response.Body.As<T>` sont utilisées pour lire un corps de message de demande et de réponse dans un type `T` spécifié. Par défaut, la méthode :<br /><ul><li>Utilise le flux du corps du message d’origine.</li><li>Le rend non disponible après son retour.</li></ul> <br />Pour éviter cela en faisant en sorte que la méthode agisse sur une copie du flux du corps, définissez le paramètre `preserveContent` sur `true`, comme dans [cet exemple](api-management-transformation-policies.md#SetBody).|
 |<a id="ref-iurl"></a>IUrl|Host: string<br /><br /> Path: string<br /><br /> Port: int<br /><br /> [Requête](#ref-iurl-query) : IReadOnlyDictionary<string, string[]><br /><br /> QueryString: string<br /><br /> Scheme: string|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id: string<br /><br /> Provider: string|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: string<br /><br /> Query: string|
@@ -250,3 +246,13 @@ Pour plus d’informations sur l’utilisation de stratégies, consultez les pag
 + [Transform and protect your API](transform-api.md) (Transformer et protéger votre API)
 + [Référence de stratégie](./api-management-policies.md) pour obtenir la liste complète des instructions et des paramètres de stratégie
 + [Exemples de stratégie](./policy-reference.md)
+
+Pour plus d'informations :
+
+- Découvrez comment fournir des informations de contexte à votre service backend. Utilisez les stratégies [Set query string parameter](api-management-transformation-policies.md#SetQueryStringParameter) et [Set HTTP header](api-management-transformation-policies.md#SetHTTPheader) pour fournir ces informations.
+- Découvrez comment utiliser la stratégie [Validate JWT](api-management-access-restriction-policies.md#ValidateJWT) pour pré-autoriser l’accès aux opérations à partir de revendications de jetons.
+- Découvrez comment utiliser une trace [Inspecteur d’API](./api-management-howto-api-inspector.md) pour détecter comment les stratégies sont évaluées et connaître les résultats de ces évaluations.
+- Découvrez comment utiliser les expressions avec les stratégies [Get from cache](api-management-caching-policies.md#GetFromCache) et [Store to cache](api-management-caching-policies.md#StoreToCache) pour configurer la durée de mise en cache des réponses de Gestion des API. Définissez une durée qui correspond à la mise en cache des réponses du service principal comme le spécifie la directive `Cache-Control` du service principal.
+- Découvrez comment effectuer le filtrage de contenu. Supprimez des éléments de données de la réponse reçue du service principal à l’aide des stratégies [Control flow](api-management-advanced-policies.md#choose) et [Set body](api-management-transformation-policies.md#SetBody).
+- Pour télécharger les instructions de stratégie, consultez le référentiel GitHub [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).
+

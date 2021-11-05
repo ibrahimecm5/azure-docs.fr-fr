@@ -7,12 +7,12 @@ ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 39c96be31a8a8be0cf1c2fc4f16fcbfa7468cb41
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28efc06f2d7c3b5a9fca8d96dda7fa885a98f088
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584234"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070334"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>Comment authentifier et autoriser les appels d’API REST IoT Central
 
@@ -164,4 +164,4 @@ Pour utiliser un jeton d’API au moment d’effectuer un appel d’API REST, vo
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Maintenant que vous savez comment autoriser les appels d’API REST, nous vous suggérons à présent d’apprendre à [utiliser l’API REST IoT Central pour gérer les utilisateurs et les rôles](howto-manage-users-roles-with-rest-api.md).
+Maintenant que vous savez comment autoriser les appels d’API REST, nous vous suggérons à présent d’apprendre à [utiliser l’API REST IoT Central pour interroger des requêtes](howto-query-with-rest-api.md).

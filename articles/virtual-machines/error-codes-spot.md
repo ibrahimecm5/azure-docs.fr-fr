@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: f035d7813dfcf84d21e5913fa4626188e125db9a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b38730604072fdf61c551ade8e147e18a487a160
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691084"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082743"
 ---
 # <a name="error-messages-for-azure-spot-virtual-machines-and-scale-sets"></a>Messages d’erreur pour les groupes de machines virtuelles identiques et les machines virtuelles Azure Spot
 
@@ -39,6 +39,8 @@ Voici quelques codes d’erreur que vous pouvez recevoir lorsque vous utilisez d
 | MoveResourcesWithAzureSpotVMNotSupported  |  La demande de déplacement de ressources contient une machine virtuelle Azure Spot. Non pris en charge. Consultez les détails de l’erreur pour connaître les ID des machines virtuelles. | Vous ne pouvez pas déplacer des machines virtuelles Azure spot. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  La demande de déplacement de ressources contient un groupe de machines virtuelles identiques Azure Spot. Non pris en charge. Consultez les détails de l’erreur pour connaître les ID des groupes de machines virtuelles identiques. | Vous ne pouvez pas déplacer des instances de groupe de machines virtuelles Azure spot. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Les machines virtuelles Azure Spot ne sont pas prises en charge dans les groupes de machines virtuelles identiques avec le mode d’orchestration de machine virtuelle. | Définissez le mode d’orchestration sur le groupe de machines virtuelles identiques pour utiliser des instances de groupe de machines virtuelles Azure Spot. |
+| SpotRestorationIsNotSupportedForThisAPIVersion | La fonctionnalité de restauration par spots n’est pas prise en charge pour cette version d’API. |  Pour un groupe identique existant, effectuez un PATCH à l’aide de l’API version 2021-07-01 ou ultérieure. <br><br> Pour les nouveaux déploiements de groupes identiques, ajoutez la propriété suivante au modèle Azure Resource Manager à l’aide de l’API version 2021-07-01 ou ultérieure : <br><br> :::image type="content" source="media/spot/spot-try-restore-error-codes-1.png" alt-text="Exemple de code d’erreur pour utiliser la version d’API correcte.":::| 
+| SpotRestorationIsSupportedOnlyForAzureSpotScaleSets | La fonctionnalité de restauration par spots est prise en charge uniquement pour les groupes de machines virtuelles spot identiques Azure. | La fonctionnalité de restauration par spots est prise en charge uniquement pour les groupes de machines virtuelles spot identiques Azure. Pour utiliser cette fonctionnalité, déployez Azure Spot à l’aide des groupes de machines virtuelles identiques. | 
 
 
 **Étapes suivantes** Pour plus d’informations, consultez [Machines virtuelles Spot](./spot-vms.md).

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16def8c00db3702a77e261b71841aa7d2d3c3728
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 029202fa236f5a7be2e3b3cbc650f2e54a4d1015
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655502"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085751"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Gérer les espaces de travail Azure Machine Learning à l’aide d’Azure CLI
 
@@ -104,7 +104,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
 
 # <a name="bring-existing-resources-10-cli"></a>[Importer des ressources existantes (CLI 1.0)](#tab/bringexistingresources1)
-Pour créer un espace de travail qui utilise des ressources existantes, vous devez fournir l’ID de chaque ressource. Vous pouvez obtenir cet ID via l’onglet « Propriétés » de chaque ressource, via le portail Azure, ou en exécutant les commandes suivantes à l’aide d’Azure CLI.
+Pour créer un espace de travail qui utilise des ressources existantes, vous devez fournir l’ID de chaque ressource. Vous pouvez obtenir cet ID via l’onglet « Propriétés » de chaque ressource, via le portail Azure ou en exécutant les commandes suivantes à l’aide d’Azure CLI.
 
   * **Compte de stockage Azure** :     `az storage account show --name <storage-account-name> --query "id"`
   * **Azure Application Insights** :     `az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"`
@@ -141,7 +141,7 @@ Ensuite, vous pouvez référencer ce fichier de configuration dans la commande C
 az ml workspace create -w <workspace-name> -g <resource-group-name> --file workspace.yml
 ```
 
-Si vous attachez des ressources existantes, vous devez fournir leur ID. Vous pouvez obtenir cet ID via l’onglet « Propriétés » de chaque ressource, via le portail Azure, ou en exécutant les commandes suivantes à l’aide d’Azure CLI.
+Si vous attachez des ressources existantes, vous devez fournir leur ID. Vous pouvez obtenir cet ID via l’onglet « Propriétés » de chaque ressource dans le portail Azure ou en exécutant les commandes suivantes à l’aide d’Azure CLI.
 
 * **Compte de stockage Azure** :     `az storage account show --name <storage-account-name> --query "id"`
 * **Azure Application Insights** :     `az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"`
@@ -248,7 +248,7 @@ Les commandes CLI ci-dessous fournissent des exemples pour créer un espace de t
 
 # <a name="10-cli"></a>[CLI 1.0](#tab/vnetpleconfigurationsv1cli)
 
-Utilisez le paramètre `--cmk-keyvault` pour spécifier le coffre Azure Key Vault contenant la clé, et `--resource-cmk-uri` pour spécifier l’ID de ressource et l’URI de la clé dans le coffre.
+Utilisez le paramètre `--cmk-keyvault` pour spécifier quel Azure Key Vault contient la clé et `--resource-cmk-uri` pour spécifier l’ID de ressource et l’URI de la clé dans le coffre.
 
 Pour [limiter les données que Microsoft collecte](./concept-data-encryption.md#encryption-at-rest) sur votre espace de travail, vous pouvez en outre spécifier le paramètre `--hbi-workspace`. 
 
@@ -262,7 +262,7 @@ az ml workspace create -w <workspace-name>
 
 # <a name="cli-v2---preview"></a>[CLI (v2) – préversion](#tab/vnetpleconfigurationsv2cli)
 
-Utilisez le paramètre `customer_managed_key` et les paramètres `key_vault` et `key_uri` pour spécifier l’ID de ressource et l’URI de la clé à l’intérieur du coffre.
+Utilisez le paramètre `customer_managed_key` contenant les paramètres `key_vault` et `key_uri` pour spécifier l’ID de ressource et l’URI de la clé à l’intérieur du coffre.
 
 Pour [limiter les données que Microsoft collecte](./concept-data-encryption.md#encryption-at-rest) sur votre espace de travail, vous pouvez en outre spécifier la propriété `hbi_workspace`. 
 
@@ -346,6 +346,8 @@ Pour plus d’informations sur la commande sync-keys, consultez [az ml workspace
 
 ### <a name="delete-a-workspace"></a>Supprimer un espace de travail
 
+[!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
+
 Pour supprimer un espace de travail une fois qu’il n’est plus nécessaire, utilisez la commande suivante :
 
 ```azurecli-interactive
@@ -362,6 +364,8 @@ az group delete -g <resource-group-name>
 ```
 
 Pour plus d’informations, consultez la documentation [az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete).
+
+Si vous avez supprimé accidentellement votre espace de travail, vous pouvez toujours récupérer vos blocs-notes. Reportez-vous à [cette documentation](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
 
 ## <a name="troubleshooting"></a>Dépannage
 

@@ -11,12 +11,12 @@ ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: de89199f3400b3d6e434916835411531f288747f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2d6aeddaaf2efc039150d7060f76f46045bd0efe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041117"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008310"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Demander un jeton d’accès dans Azure Active Directory B2C
 
@@ -66,7 +66,7 @@ Si le paramètre **response_type** dans une requête `/authorize` inclut `token`
 
 Pour demander un jeton, il vous faut un code d’autorisation. Voici un exemple de demande adressée au point de terminaison `/authorize` pour obtenir un code d’autorisation. Les domaines personnalisés ne sont pas pris en charge avec les jetons d’accès. Utilisez votre domaine tenant-name.onmicrosoft.com dans l’URL de la requête.
 
-Dans l'exemple suivant, vous remplacez ces valeurs :
+Dans l'exemple suivant, vous remplacez ces valeurs dans la chaîne de requêtes :
 
 - `<tenant-name>` - Nom de votre locataire Azure AD B2C.
 - `<policy-name>` - Nom de votre stratégie personnalisée ou de votre flux d'utilisateurs.
@@ -90,7 +90,7 @@ La réponse avec le code d’autorisation ressemble à ce qui suit :
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Après avoir reçu le code d’autorisation, vous pouvez l’utiliser pour demander un jeton d’accès :
+Après avoir reçu le code d’autorisation, vous pouvez l’utiliser pour demander un jeton d’accès. Notez que les paramètres se trouvent dans le corps de la requête HTTP POST après :
 
 ```http
 POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
@@ -104,7 +104,7 @@ grant_type=authorization_code
 &redirect_uri=https://jwt.ms
 &client_secret=2hMG2-_:y12n10vwH...
 ```
-
+ 
 Vous devriez voir quelque chose de similaire à la réponse suivante :
 
 ```json

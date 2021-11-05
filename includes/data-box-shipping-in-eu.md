@@ -3,22 +3,22 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/21/2021
+ms.date: 10/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bd845eef3e2f41bc9f14303430e3e44ab68c1b68
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 20476e26d9120b883fcc577d68f5e8455ee88988
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247217"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005571"
 ---
 Effectuez les étapes suivantes si le retour de l’appareil s’effectue en Europe.
 
 1. Vérifiez que l’appareil est hors tension et que les câbles sont débranchés.
 2. Enroulez le cordon d’alimentation fourni avec la Data Box et fixez-le à l’arrière de l’appareil.
-3. Assurez-vous que l’étiquette d’expédition est affichée sur l’écran E-ink et planifiez l’enlèvement avec votre transporteur. Si l’étiquette est endommagée ou perdue, ou si elle ne s’affiche pas sur l’écran E-ink, contactez le support Microsoft. Si le support technique le suggère, vous pouvez accéder à **Vue d’ensemble > Télécharger une étiquette d’expédition** dans le portail Azure. Téléchargez l’étiquette d’expédition et collez-la sur l’appareil.
+3. Assurez-vous que l’étiquette d’expédition est affichée sur l’écran E-ink et planifiez l’enlèvement avec votre transporteur. Si l’étiquette est endommagée ou perdue, ou si elle ne s’affiche pas sur l’écran E-ink, [contactez le support Microsoft](..\articles\databox\data-box-disk-contact-microsoft-support.md). Si le support technique le suggère, vous pouvez accéder à **Vue d’ensemble > Télécharger une étiquette d’expédition** dans le portail Azure. Téléchargez l’étiquette d’expédition et collez-la sur l’appareil.
 1. **Si vous effectuez l’expédition en Allemagne ou en Suisse,** le centre de données Azure exige un avis préalable concernant tous les retours d’appareil :
-    1. Envoyez un e-mail à Azure Data Box Operations, à l’aide du modèle suivant, pour recevoir un ID entrant. Envoyez un e-mail à [adbops@microsoft.com](mailto:adbops@microsoft.com).
+    1. Envoyez un e-mail aux opérations Azure Data Box sur [adbops@microsoft.com](mailto:adbops@microsoft.com) pour recevoir un ID entrant. Envoyez un e-mail à [adbops@microsoft.com](mailto:adbops@microsoft.com). Utilisez le modèle suivant.
 
        ```
        To: adbops@microsoft.com

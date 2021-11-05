@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: dc1cf6a9a250b64b84cacbcf300183b913144b45
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4d5b00526219b0a4ade24b7522ea4826236fd70e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180170"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057758"
 ---
 # <a name="tutorial-deploy-and-walkthrough-the-continuous-patient-monitoring-app-template"></a>Tutoriel : Déployer et découvrir pas à pas un modèle d’application de suivi continu des patients
 
@@ -25,7 +25,7 @@ De nombreux appareils médicaux de type wearable utilisés dans les solutions m�
 
 ## <a name="mobile-phone-gateway"></a>Passerelle de téléphone portable
 
-La fonction principale de l’application de téléphone mobile est de collecter les données BLE des appareils médicaux et de les communiquer à IoT Central. L’application guide également les patients dans la configuration de l’appareil et leur permet de visualiser leurs données médicales personnelles. D’autres solutions pourraient utiliser une passerelle de tablette ou une passerelle statique dans une chambre d’hôpital. Un exemple d’application mobile open source est disponible pour Android et iOS, que vous pouvez utiliser comme point de départ pour le développement de votre application. Pour plus d’informations, consultez l’[application mobile de surveillance continue des patients IoT Central](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+La fonction principale de l’application de téléphone mobile est de collecter les données BLE des appareils médicaux et de les communiquer à IoT Central. L’application guide également les patients dans la configuration de l’appareil et leur permet de visualiser leurs données médicales personnelles. D’autres solutions pourraient utiliser une passerelle de tablette ou une passerelle statique dans une chambre d’hôpital. Un exemple d’application mobile open source est disponible pour Android et iOS, que vous pouvez utiliser comme point de départ pour le développement de votre application. Pour plus d’informations, consultez l’[exemple d’application mobile d’analyse continue des patients sur GitHub](https://github.com/iot-for-all/iotc-cpm-sample).
 
 ## <a name="export-to-azure-api-for-fhirreg"></a>Exporter vers l’API Azure pour FHIR&reg;
 

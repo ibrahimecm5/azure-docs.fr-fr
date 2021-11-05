@@ -3,14 +3,14 @@ title: Créer et gérer des groupes d’actions sur le Portail Azure
 description: Découvrez comment créer et gérer des groupes d’action sur le Portail Azure.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 10/18/2021
 ms.author: dukek
-ms.openlocfilehash: cc5d5aa589b56fb6e6fda1845e50606ff492fbdd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 7a2efe5a47e88fd8ad8e9a382d522271d8ab4c3b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217880"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017898"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Créer et gérer des groupes d’actions sur le Portail Azure
 Un groupe d’actions est une collection de préférences de notification définies par le propriétaire d’un abonnement Azure. Les alertes Azure Monitor, Service Health et Azure Advisor utilisent des groupes d’actions pour informer les utilisateurs qu’une alerte a été déclenchée. Plusieurs alertes peuvent utiliser le même groupe d’actions ou des groupes d’actions différents selon les besoins de l’utilisateur. 
@@ -158,6 +158,14 @@ Lors de la configuration du *rôle ARM d’e-mail*, vous devez vous assurer que 
 
 > [!NOTE]
 > Il faut compter jusqu’à **24 heures** pour que le client commence à recevoir des notifications après avoir ajouté un nouveau rôle ARM à son abonnement.
+
+### <a name="event-hub-preview"></a>Event Hub (préversion)
+> [!NOTE]
+> Le type d’action Event Hub est actuellement en *préversion*. Pendant la préversion, il peut y avoir des bogues et des interruptions de la disponibilité de la fonctionnalité.
+
+Une action Event Hub publie des notifications sur un [Event Hub Azure](~/articles/event-hubs/event-hubs-about.md). Vous pouvez ensuite vous abonner au flux de notification d’alerte à partir de votre récepteur d’événements.
+
+Actuellement, l’action Event Hub ne peut être définie qu’à l’aide d’un [modèle Azure Resource Manager](./action-groups-create-resource-manager-template.md).
 
 ### <a name="function"></a>Fonction
 Appelle un point de terminaison de déclencheur HTTP existant dans [Azure Functions](../../azure-functions/functions-get-started.md). Pour gérer une demande, votre point de terminaison doit gérer le verbe HTTP POST.

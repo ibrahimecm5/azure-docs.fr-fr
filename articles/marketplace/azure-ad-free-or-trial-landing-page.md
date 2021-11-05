@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/04/2020
-ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/25/2021
+ms.openlocfilehash: 8e73947a45f06420cf94119892b19e77802f65bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559288"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056468"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Créer la page d'accueil de votre offre SaaS gratuite ou d’évaluation dans la Place de marché commerciale
 
@@ -44,6 +44,8 @@ Les sections suivantes de cet article vous guideront tout au long du processus d
 ## <a name="create-an-azure-ad-app-registration"></a>Créer une inscription d’application Azure AD
 
 La Place de marché commerciale est entièrement intégrée à Azure AD. Les utilisateurs arrivent sur la Place de marché, authentifiés avec un [compte Azure AD ou un compte Microsoft (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Après avoir acquis un abonnement ou un essai gratuit par le biais de votre offre à consulter uniquement, l’utilisateur passe de la Place de marché commerciale à l’URL de votre page d’accueil pour activer et gérer son abonnement à votre application SaaS. Vous devez laisser l’utilisateur se connecter à votre application avec Azure AD SSO. (L’URL de la page d’accueil est spécifiée dans la page [Configuration technique](plan-saas-offer.md#technical-information) de l’offre).
+
+[!INCLUDE [pound-sign-note](./includes/pound-sign-note.md)]
 
 La première étape de l’utilisation de l’identité consiste à s’assurer que votre page d’accueil est inscrite en tant qu’application Azure AD. Inscrire l’application vous permet d’utiliser Azure AD pour authentifier les utilisateurs et demander l’accès aux ressources utilisateur. Cela peut être considéré comme la définition de l’application, ce qui permet au service de savoir comment émettre des jetons pour l’application en fonction des paramètres de l’application.
 

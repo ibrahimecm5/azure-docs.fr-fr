@@ -29,18 +29,8 @@
       href: gallery-how-to-use-contribute-publish.md
 - name: Concepts
   items:
-    - name: Science des données pour les débutants
-      items:
-        - name: "1\_- Cinq questions"
-          href: data-science-for-beginners-the-5-questions-data-science-answers.md
-        - name: "2\_- Vos données sont-elles prêtes\_?"
-          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
-        - name: "3\_- Poser la bonne question"
-          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
-        - name: "4\_- Prédire une réponse"
-          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
-        - name: "5\_- Copier le travail des autres"
-          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: "Mis hors service\_: science des données pour les débutants"
+      href: retired-data-science-for-beginners-videos.md
     - name: Gestion des modèles
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md

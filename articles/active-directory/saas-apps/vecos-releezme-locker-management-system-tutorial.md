@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/08/2021
+ms.date: 10/20/2021
 ms.author: jeedes
-ms.openlocfilehash: caca1503e0ea4c272708bce34ecfd8993b4d6113
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 59c3166bbbd5117e084808aaadfa1b1fafaf2dee
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007534"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056873"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-vecos-releezme-locker-management-system"></a>Tutoriel : Intégration de l’authentification unique Azure AD à VECOS Releezme Locker management system
 
 Dans ce tutoriel, vous allez apprendre à intégrer Azure Active Directory (Azure AD) à VECOS Releezme Locker management system. Lorsque vous intégrez Azure AD à VECOS Releezme Locker management system, vous pouvez :
 
-* Contrôler dans Azure AD qui a accès à VECOS Releezme Locker management system.
+* Contrôler dans Azure AD qui a accès à VECOS Releezme Locker management system. L’accès au système d’administration Locker de VECOS Releezme est uniquement nécessaire pour les utilisateurs qui ont besoin de gérer les lockers, par exemple, les gestionnaires d’installations, les employés du service d’assistance, etc.
 * Permettre à vos utilisateurs de se connecter automatiquement à VECOS Releezme Locker management system avec leur compte Azure AD.
 * Gérer vos comptes à un emplacement central : le Portail Azure.
 
@@ -78,16 +78,44 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. Dans la section **Configuration SAML de base**, effectuez les étapes suivantes : 
 
-    a. Dans la zone de texte **Identificateur (ID d’entité)**, tapez l’URL : `https://au.releezme.net/`
+    a. Dans la zone de texte **Identificateur (ID d’entité)** , tapez une URL selon le modèle suivant : `https://<baseURL>/`
 
-    b. Dans la zone de texte **URL de réponse**, tapez l’URL : `https://au.releezme.net/Saml2/Acs`
+    b. Dans la zone de texte **URL de réponse** , tapez une URL au format suivant : `https://<baseURL>/Saml2/Acs`
     
-    c. Dans la zone de texte **URL de connexion**, tapez l’URL :  
-    `https://sso-na.releezme.net`
+    c. Dans la zone de texte **URL de connexion**, saisissez une URL au format suivant :    
+    `https://<baseURL>/sso` (si vous le souhaitez, ajoutez le paramètre de requête `?companycode=` avec la valeur de code d’entreprise donnée par VECOS.)
+
+    > [!NOTE]
+    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL d’authentification et l’URL de réponse réels. Contactez l'[équipe de support technique du système d'administration Locker VECOS Releezme](mailto:servicedesk@vecos.com) pour connaître la région à laquelle vous vous connectez. En fonction de votre région, les URL ci-dessous seront différentes :
+
+    | **Région** | **baseURL** |
+    |-------|-------|
+    | Europe| `https://www.releezme.net` |
+    | Amérique du Nord | `https://na.releezme.net` |
+    | Asie-Pacifique | `https://au.releezme.net` |
 
 1. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, cliquez sur le bouton Copier pour copier l’**URL des métadonnées de fédération d’application**, puis enregistrez-la sur votre ordinateur.
 
     ![Lien Téléchargement de certificat](common/copy-metadataurl.png)
+
+## <a name="configure-vecos-releezme-locker-management-system-roles"></a>Configurer les rôles du système d'administration Locker de VECOS Releezme
+
+1. Dans le Portail Azure, sélectionnez **Inscriptions d’applications**, puis sélectionnez **Toutes les applications**.
+1. Dans la liste des inscriptions de l’application, sélectionnez **Système d'administration Locker VECOS Releezme**.
+1. Dans l’inscription de l’application, ouvrez **Rôles de l’application**.
+1. Dans la page des rôles de l’application, créez un nouveau rôle de l’application en cliquant sur **Créer un rôle de l’application**
+1. Dans le champ **Nom complet**, entrez un nom pour le rôle, par ex. `VECOS Company Facility Manager`.
+1. Sélectionnez **Utilisateurs/groupes**, comme valeur de **types de membres autorisés**.
+1. Entrez le nom du rôle de système d'administration Locker de VECOS Releezme dans le champ **Valeur**. Consultez le tableau ci-dessous.
+1. Cliquez sur **Appliquer**.
+
+| Role | Valeur de rôle | Description |
+| -- | --------- | ---------- |
+| Service Desk | CompanyServiceDesk | Accès limité au service d’assistance. Accès en lecture seule principalement |
+| Service Desk+ | CompanyServiceDeskPlus | Version avancée du service d’assistance avec un accès en lecture/écriture plus important |
+| Gestionnaire des installations | CompanyFacilityManager | Gestionnaire des installations avec accès à la configuration de l’entreprise |
+| Gestionnaire des installations+ | CompanyFacilityManagerPlus | Gestionnaire des installations avancé avec accès supplémentaire au sein de l’entreprise. |
+| Administrateur | CompanyAdmin | Administrateur avec accès complet à l’entreprise |
 
 ### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 

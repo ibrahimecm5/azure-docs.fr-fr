@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ff2ea374768189881c9e1ff28511bc403dd6306
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: b91a9c451c0160523029cd8688dfa9a91f433b37
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122533027"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085921"
 ---
 # <a name="iot-central-administrator-guide"></a>Guide de l’administrateur IoT Central
 
@@ -22,6 +22,7 @@ Une application IoT Central vous permet de surveiller et de gérer des millions 
 Dans IoT Central, un administrateur :
 
 - Gère les utilisateurs et les rôles dans l’application.
+- Crée et gère des organisations.
 - Gère la sécurité, telle que l’authentification des appareils.
 - Configure les paramètres d’application.
 - Met à niveau les applications.
@@ -34,6 +35,12 @@ IoT Central utilise un système de contrôle d’accès en fonction du rôle pou
 
 Pour en savoir plus, consultez [Gérer les utilisateurs et les rôles dans votre application IoT Central](howto-manage-users-roles.md).
 
+## <a name="organizations"></a>Organisations
+
+Les organisations vous permettent de définir une hiérarchie que vous utilisez pour gérer quels utilisateurs peuvent voir quels appareils dans votre application IoT Central. Le rôle de l’utilisateur détermine ses autorisations sur les appareils qu’il voit et les expériences auxquelles il peut accéder.
+
+Pour plus d’informations, consultez [Créer une application IoT Central](howto-create-organizations.md).
+
 ## <a name="application-security"></a>Sécurité des applications
 
 Les appareils qui se connectent à votre application IoT Central utilisent généralement des certificats X.509 ou des signatures d’accès partagé (SAP) en guise d’informations d’identification. L’administrateur gère les certificats ou les clés de groupe dont les informations d’identification des appareils sont issues.
@@ -41,6 +48,12 @@ Les appareils qui se connectent à votre application IoT Central utilisent gén�
 Pour plus d’informations, consultez [Inscription de groupe par certificat X.509](concepts-get-connected.md#x509-group-enrollment), [Inscription de groupe par SAP](concepts-get-connected.md#sas-group-enrollment) et [Renouvellement des certificats d’appareil X.509](how-to-roll-x509-certificates.md).
 
 L’administrateur peut également créer et gérer les jetons d’API qu’une application cliente utilise pour s’authentifier auprès de votre application IoT Central. Les applications clientes utilisent l’API REST pour interagir avec IoT Central.
+
+Pour les exportations de données, l’administrateur peut configurer des [identités gérées](../../active-directory/managed-identities-azure-resources/overview.md) pour sécuriser les connexions aux [destinations d’exportation](howto-export-data.md). Pour plus d'informations, consultez les rubriques suivantes :
+
+- [Configurer une identité managée (Portail Azure)](howto-manage-iot-central-from-portal.md#configure-a-managed-identity)
+- [Configurer une identité managée (API REST)](howto-manage-iot-central-with-rest-api.md)
+- [Configurer une identité managée (Azure CLI)](howto-manage-iot-central-from-cli.md#configure-a-managed-identity)
 
 ## <a name="configure-an-application"></a>Configurer une application
 

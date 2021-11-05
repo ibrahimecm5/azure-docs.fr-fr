@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: nichola
 ms.reviewer: kkrishna, kylemar
-ms.openlocfilehash: abce87c8d5c5d88c9edd1303f0a585aa773d2ec8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6d1998673b3295129c494b4568e1ba6313984898
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471378"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067250"
 ---
 # <a name="claims-challenges-claims-requests-and-client-capabilities"></a>Contestations liées aux revendications, demandes de revendications, et fonctionnalités clientes
 

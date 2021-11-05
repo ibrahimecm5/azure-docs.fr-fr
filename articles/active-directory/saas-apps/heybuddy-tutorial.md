@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 415e397ff9e8ef1a2194f081cd9e854335725a93
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5d5e3f51d7b50ae57d6e627d97ba4e07dd40ec1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761001"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory avec HeyBuddy
 
@@ -82,7 +82,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
    a. Dans la zone de texte **URL de connexion**, saisissez une URL au format suivant : `https://api.heybuddy.com/auth/<ENTITY ID>`
 
    > [!NOTE]
-   > Cette valeur n’est pas la valeur réelle. Mettez à jour la valeur avec l’URL de connexion réelle. Dans l’URL de connexion, l’`Entity ID` est généré automatiquement pour chaque organisation. Pour obtenir ces valeurs, contactez l’[équipe de support aux clients HeyBuddy](mailto:support@heybuddy.com).
+   > Cette valeur n’est pas la valeur réelle. Mettez à jour la valeur avec l’URL de connexion réelle. Dans l’URL de connexion, le `Entity ID` est généré automatiquement pour chaque organisation. Pour obtenir ces valeurs, contactez l’[équipe de support aux clients HeyBuddy](mailto:support@heybuddy.com).
 
 1. L’application HeyBuddy attend les assertions SAML dans un format spécifique, ce qui vous oblige à ajouter des mappages d’attributs personnalisés à votre configuration des attributs de jeton SAML. La capture d’écran suivante montre la liste des attributs par défaut.
 

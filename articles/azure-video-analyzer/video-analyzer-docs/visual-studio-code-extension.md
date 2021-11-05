@@ -1,17 +1,18 @@
 ---
-title: Utiliser l’extension Visual Studio Code pour Azure Video Analyzer
+title: Extension Visual Studio Code pour Azure Video Analyzer
 description: Cet article de référence explique comment utiliser les différentes fonctionnalités de l’extension Visual Studio Code pour Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: cec3b6549b854cf321390b7598d36b5a4b12378b
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 11/01/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0e69938b340d88a4e0002aaf9155d42ad0899189
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604337"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073640"
 ---
-# <a name="use-azure-video-analyzer-visual-studio-code-extension"></a>Utiliser l’extension Visual Studio Code pour Azure Video Analyzer
+# <a name="visual-studio-code-extension-for-azure-video-analyzer"></a>Extension Visual Studio Code pour Azure Video Analyzer
 
 Azure Video Analyzer est une plateforme qui facilite la création de programmes d’analyse vidéo et l’extension Visual Studio Code associée est un outil qui facilite l’apprentissage de cette plateforme.  Cet article fait référence aux différentes fonctionnalités offertes par l’extension.  Il aborde les concepts de base suivants :
 
@@ -19,7 +20,7 @@ Azure Video Analyzer est une plateforme qui facilite la création de programmes 
 * Pipelines en direct : création, activation, désactivation, suppression, affichage du code JSON
 * Modification d’une topologie de pipeline : modules, paramètres, variables système, connexions, validation
 
-Si vous n’avez pas configuré l’extension de façon à ce qu’elle se connecte à votre périphérique, suivez le guide de démarrage rapide sur l’[extension Visual Studio Code pour Azure Video Analyzer](./create-pipeline-vs-code-extension.md).
+Si vous n’avez pas configuré l’extension de façon à ce qu’elle se connecte à votre appareil de périphérie, suivez les étapes dans [Utiliser l’extension Visual Studio Code pour Azure Video Analyzer](./edge/use-visual-studio-code-extension.md).
 
 ## <a name="managing-pipelines-topology"></a>Gestion de la topologie des pipelines
 
@@ -47,7 +48,7 @@ Si vous souhaitez afficher le code JSON sous-jacent derrière un pipeline en dir
 
 ## <a name="editing-a-topology"></a>Modification d’une topologie 
 
-Les topologies de pipeline sont constituées d’un grand nombre d’éléments.  Pour en savoir plus sur ces éléments, consultez la documentation de conception sur les [pipelines](./pipeline.md). Cette section concerne les parties de l’interface qui vous aident à créer ou à modifier une topologie.
+Les topologies de pipeline sont constituées d’un grand nombre d’éléments. Pour en savoir plus sur ces éléments, consultez la documentation de conception sur les [pipelines](pipeline.md). Cette section concerne les parties de l’interface qui vous aident à créer ou à modifier une topologie.
 
 ### <a name="modules"></a>Modules
 
@@ -81,4 +82,4 @@ Lors de la création d’une série de pipelines en direct, vous voudrez probabl
 
 Lorsque vous créez une topologie, vous devez connecter les différents modules.  Cette opération s’effectue à l’aide de connexions.  À partir du cercle sur le bord d’un module, faites glisser vers le cercle du module suivant vers lequel vous souhaitez que les données soient acheminées.  Une connexion est alors générée.
 
-Par défaut, les connexions envoient toutes les données d’un module à un autre.  Si vous souhaitez envoyer uniquement certains types de données, vous pouvez cliquer sur la connexion et modifier les types de sortie qui sont envoyés.  Les types de données sélectionnables sont les suivants : vidéo, audio et application.
+Par défaut, les connexions envoient les données vidéo d’un module à un autre. Si vous souhaitez envoyer uniquement des données audio ou des données d’application, vous pouvez cliquer sur la connexion et modifier les types de sortie. Les types de données sélectionnables sont les suivants : vidéo, audio et application. La sélection de aucun des types de sortie est traitée comme l’envoi de toutes les données applicables à partir du nœud d’expéditeur.

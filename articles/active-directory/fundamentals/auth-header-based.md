@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72651ac47ebf3f67a8ee3aae9f71a533ded53a83
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 99cf28c88b3c94fad5e9abe7eaee1e11bcfacbe6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954972"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052367"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Authentification basée sur l’en-tête avec Azure Active Directory
 
-Les applications héritées utilisent couramment l’authentification basée sur les en-têtes. Dans ce scénario, un utilisateur (ou un expéditeur de message) s’authentifie auprès d’une solution d’identité intermédiaire. La solution intermédiaire authentifie l’utilisateur et propage les en-têtes HTTP (Hypertext Transfer Protocol) requis au service web de destination. Azure Active Directory (AD) prend en charge ce modèle via son service de proxy d’application et l’intégration à d’autres solutions de contrôleur réseau. 
+Les applications héritées utilisent couramment l’authentification basée sur les en-têtes. Dans ce scénario, un utilisateur (ou un expéditeur de message) s’authentifie auprès d’une solution d’identité intermédiaire. La solution intermédiaire authentifie l’utilisateur et propage les en-têtes HTTP (Hypertext Transfer Protocol) requis au service web de destination. Azure Active Directory (AD) prend en charge ce modèle via son service de proxy d’application et l’intégration à d’autres solutions de contrôleur réseau.
 
 Dans notre solution, le proxy d’application fournit un accès à distance à l’application, authentifie l’utilisateur et transmet les en-têtes requis par l’application. 
 

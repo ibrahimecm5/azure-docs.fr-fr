@@ -8,21 +8,22 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: cherylmc
-ms.openlocfilehash: ca2425aad93d5878060c723d4c43f41765483a65
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 433b86cb879fbe0541b9da3a6ae2edcb99e98b7b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700500"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071550"
 ---
-# <a name="create-an-ssh-connection-to-a-windows-vm-using-azure-bastion-preview"></a>Créer une connexion SSH à une machine virtuelle Windows avec Azure Bastion (préversion)
+# <a name="create-an-ssh-connection-to-a-windows-vm-using-azure-bastion"></a>Créer une connexion SSH à une machine virtuelle Windows avec Azure Bastion
 
 Cet article vous montre comment créer de manière sécurisée et fluide une connexion RDP à des machines virtuelles Windows situées dans un réseau virtuel Azure, directement au moyen du portail Azure. Quand vous utilisez Azure Bastion, vos machines virtuelles n’ont pas besoin de client, d’agent ni de logiciel supplémentaire. Vous pouvez également vous connecter à une machine virtuelle Windows avec RDP. Pour plus d’informations, consultez [Créer une connexion RDP à une machine virtuelle Windows](bastion-connect-vm-rdp-windows.md).
 
 Azure Bastion fournit une connectivité sécurisée à toutes les machines virtuelles du réseau virtuel dans lequel il est provisionné. Azure Bastion protège vos machines virtuelles contre l’exposition des ports RDP/SSH au monde extérieur, tout en fournissant un accès sécurisé à l’aide de RDP/SSH. Pour plus d’informations, consultez la page [Présentation d’Azure Bastion](bastion-overview.md).
 
 > [!NOTE]
-> Si vous souhaitez créer une connexion SSH à une machine virtuelle Windows, vous devez configurer Azure Bastion avec la référence SKU Standard. La référence SKU standard est actuellement en préversion.
+> Si vous souhaitez créer une connexion SSH à une machine virtuelle Windows, vous devez configurer Azure Bastion avec la référence SKU Standard.
 >
 
 Quand vous vous connectez à une machine virtuelle Windows avec SSH, vous pouvez utiliser un nom d’utilisateur/mot de passe et des clés SSH pour l’authentification. Vous pouvez vous connecter à votre machine virtuelle avec des clés SSH en utilisant :
@@ -38,7 +39,7 @@ Assurez-vous que vous avez configuré un hôte Azure Bastion pour le réseau vir
 
 Pour créer une connexion SSH à une machine virtuelle Windows, vous devez également vérifier que :
 * Votre machine virtuelle Windows exécute Windows Server 2019 ou ultérieur.
-* OpenSSH Server est installé et en cours d’exécution sur votre machine virtuelle Windows. Pour savoir comment procéder, consultez [Installer OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse).
+* OpenSSH Server est installé et en cours d’exécution sur votre machine virtuelle Windows. Pour savoir comment procéder, consultez [Installer OpenSSH](/windows-server/administration/openssh/openssh_install_firstuse).
 * Azure Bastion est configuré pour utiliser la référence SKU Standard.
 
 ### <a name="required-roles"></a>Rôles nécessaires

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: 12a07bb3dca953d134f3532701521ae4797358ef
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b31b3fa622621f7b94ad3c78910fdb8ce3436467
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129988598"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059430"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Résoudre les problèmes de proxy d’application et les messages d’erreur
 
@@ -51,8 +51,8 @@ Une fois l’erreur de connecteur identifiée dans le journal des événements, 
 | Échec de l’inscription du connecteur : assurez-vous que vous avez activé le proxy d’application dans le portail de gestion Azure, et que vous avez entré correctement votre nom d’utilisateur et votre mot de passe Active Directory. Erreur : « AADSTS50059 : pas d’informations d’identification de locataire trouvées dans la demande ou déduites des informations d’identification fournies. Échec de la recherche selon l’URI du principal du service. | Vous tentez de vous connecter avec un compte Microsoft et non un domaine qui fait partie de l’ID d’organisation de l’annuaire auquel vous tentez d’accéder. Assurez-vous que l’administrateur fait partie du même nom de domaine que le domaine du locataire. Par exemple, si le domaine Azure AD est contoso.com, l’administrateur doit être admin@contoso.com. |
 | Impossible de récupérer la stratégie d’exécution actuelle pour l’exécution de scripts PowerShell. | En cas d’échec de l’installation du connecteur, vérifiez que la stratégie d’exécution de PowerShell n’est pas désactivée. <br><br>1. Ouvrez l’Éditeur de stratégie de groupe.<br>2. Accédez à **Configuration ordinateur** > **Modèles d’administration** > **Composants Windows** > **Windows PowerShell** et double-cliquez sur **Activer l’exécution des scripts**.<br>3. Cette stratégie d’exécution peut être définie sur **Non configuré** ou **Activé**. Si elle est définie sur **Activé**, vérifiez que sous Options, la stratégie d’exécution est définie sur **Autoriser les scripts locaux et les scripts signés distants** ou sur **Autoriser tous les scripts**. |
 | Échec du téléchargement de la configuration par le connecteur. | Le certificat client du connecteur, qui est utilisé pour l’authentification, est expiré. Ceci peut également se produire si le connecteur est installé derrière un proxy. Dans ce cas, le connecteur ne peut pas accéder à Internet et ne sera pas en mesure de fournir des applications aux utilisateurs distants. Renouvelez l’approbation manuellement à l’aide de l’applet de commande `Register-AppProxyConnector` dans Windows PowerShell. Si votre connecteur est derrière un proxy, il est nécessaire d’octroyer l’accès à Internet aux comptes du connecteur « services réseau » et « système local ». Ceci peut être effectué en leur accordant l’accès au proxy ou en les configurant pour qu’ils ignorent le proxy. |
-| Échec de l’inscription du connecteur : vous devez être un administrateur d’application de votre instance Active Directory pour inscrire le connecteur. Erreur : « La demande d’inscription a été refusée. » | L’alias avec lequel vous essayez de vous connecter n’est pas un administrateur sur ce domaine. Votre connecteur est toujours installé pour l’annuaire qui détient le domaine de l’utilisateur. Vérifiez que le compte Administrateur avec lequel vous essayez de vous connecter dispose au moins des autorisations d’administrateur d’application sur le locataire Azure AD. |
-| Le connecteur n’a pas pu se connecter au service en raison de problèmes réseau. Le connecteur a essayé d’accéder à l’URL suivante. | Le connecteur ne peut pas se connecter au service cloud de proxy d’application. Cela peut se produire si vous avez une règle de pare-feu qui bloque la connexion. Veillez à autoriser l’accès aux ports appropriés et aux URL listées dans [Conditions préalables pour le proxy d’application](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
+| Échec de l’inscription du connecteur : vous devez être un administrateur d’application de votre instance Active Directory pour inscrire le connecteur. Erreur : « La demande d’inscription a été refusée. » | L’alias avec lequel vous essayez de vous connecter n’est pas un administrateur sur ce domaine. Votre connecteur est toujours installé pour l’annuaire qui détient le domaine de l’utilisateur. Vérifiez que le compte Administrateur avec lequel vous essayez de vous connecter dispose au moins des autorisations d’administrateur d’application sur l’abonné Azure AD. |
+| Le connecteur n’a pas pu se connecter au service en raison de problèmes réseau. Le connecteur a essayé d’accéder à l’URL suivante. | Le connecteur ne peut pas se connecter au service cloud de proxy d’application. Cela peut se produire si vous avez une règle de pare-feu qui bloque la connexion. Veillez à autoriser l’accès aux ports appropriés et aux URL répertoriées dans [Composants requis du Proxy d’application](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
 
 ## <a name="kerberos-errors"></a>Erreurs Kerberos
 

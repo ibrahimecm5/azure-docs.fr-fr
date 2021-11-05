@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 9f0b1a3f51a5eae7b10ed74880c8abe1c92aae7a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 99e8830b1b4b667d68bb8db1243d1c0ddaeab15a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278991"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006769"
 ---
 # <a name="configure-your-private-link"></a>Configurer votre liaison privée
 La configuration d’une liaison privée nécessite plusieurs étapes : 
@@ -303,5 +303,5 @@ Cette zone configure la connectivité au compte de stockage des packs de solutio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Découvrir le [stockage privé](private-storage.md)
+- En savoir plus sur le [stockage privé](private-storage.md) pour les journaux personnalisés et les clés gérées par le client (CMK)
 - Découvrir [Private Link pour Automation](../../automation/how-to/private-link-security.md)

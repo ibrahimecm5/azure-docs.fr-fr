@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 2385bfead10efc82e0a1f3c8f0f02f1cd8d9f2f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275503"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019264"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>Exécuter une fonction Azure en réponse à un événement de réactivation d’objet blob
 
@@ -253,7 +253,7 @@ Chaque fois que vous apportez des modifications au code de votre fonction Azure,
 
 Vous disposez maintenant d’une application de fonction qui contient une fonction Azure qui peut s’exécuter en réponse à un événement. L’étape suivante consiste à créer un abonnement à un événement à partir de votre compte de stockage. L’abonnement aux événements configure le compte de stockage pour publier un événement via Event Grid en réponse à une opération sur un objet blob dans votre compte de stockage. Event Grid envoie ensuite l’événement au point de terminaison du gestionnaire d’événements que vous avez spécifié. Dans ce cas, le gestionnaire d’événements est la fonction Azure que vous avez créée dans la section précédente.
 
-Lorsque vous créez l’abonnement aux événements, vous pouvez filtrer les événements qui sont envoyés au gestionnaire d’événements. Les événements à capturer lors de la réactivation d’un objet blob de niveau Archive sont **Microsoft.Storage.BlobTierChanged**, correspondant à une opération [Définir le niveau d’objet blob](/rest/api/storageservices/set-blob-tier), et **Microsoft.Storage.BlobCreated**, correspondant à une opération [Copier un objet blob](/rest/api/storageservices/copy-blob) ou [Copier un objet blob à partir d’une URL](/rest/api/storageservices/copy-blob-from-url). Selon votre scénario, vous souhaiterez peut-être gérer un seul de ces événements.
+Lorsque vous créez l’abonnement aux événements, vous pouvez filtrer les événements qui sont envoyés au gestionnaire d’événements. Les événements à capturer lors de la réactivation d’un objet blob de niveau Archive sont **Microsoft.Storage.BlobTierChanged**, correspondant à une opération [Définir le niveau d’objet blob](/rest/api/storageservices/set-blob-tier), et **Microsoft.Storage.BlobCreated**, correspondant à une opération [Copier un objet blob](/rest/api/storageservices/copy-blob). Selon votre scénario, vous souhaiterez peut-être gérer un seul de ces événements.
 
 Pour créer l’abonnement à l’événement, procédez comme suit :
 

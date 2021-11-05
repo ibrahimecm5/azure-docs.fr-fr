@@ -7,12 +7,12 @@ ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: dcbbe63754bdcfc4ded249720b58940e0c219bf9
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: d106830a4fb2d0b7060a38d978bcd71e0fd08eff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525410"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077304"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Intégrer Azure Key Vault à Azure Policy
 
@@ -39,11 +39,16 @@ Key Vault a créé un ensemble de stratégies qui peuvent être utilisées pour 
 
 # <a name="certificate-policies"></a>[Stratégies du certificat](#tab/certificates)
 
-### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>La période de validité maximale des certificats doit être spécifiée (préversion)
+### <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration"></a>Gérer les certificats arrivés à un nombre de jours spécifiés avant expiration 
 
-Cette stratégie vous permet de gérer la durée de validité maximale de vos certificats stockés dans le coffre de clés. La limitation de la durée de validité maximale de vos certificats est une pratique de sécurité recommandée. Si une clé privée de votre certificat devenait compromise sans que cela ne soit détecté, l’utilisation de certificats à durée de vie limitée réduit le délai d’exécution des dégâts en cours et également la valeur du certificat pour un attaquant.
+Votre service peut subir une panne si un certificat qui n’est pas surveillé correctement n’est pas pivoté avant son expiration. Cette stratégie est critique pour vous assurer que vos certificats stockés dans un coffre de clés sont sous surveillance. Nous vous recommandons d’appliquer cette stratégie plusieurs fois avec différents seuils d’expiration, par exemple 180, 90, 60 et 30 jours. Cette stratégie peut être utilisée pour surveiller et trier l’expiration des certificats dans votre organisation. 
 
-### <a name="certificates-should-use-allowed-key-types-preview"></a>Les certificats doivent utiliser des types de clés autorisés (préversion)
+
+### <a name="certificates-should-have-the-specified-lifetime-action-triggers"></a>Les certificats doivent avoir les déclencheurs d’action de durée de vie spécifiés  
+
+Cette stratégie vous permet de gérer l’action de durée de vie spécifiée pour les certificats qui expirent dans un certain nombre de jours ou qui ont atteint un certain pourcentage de durée de vie.
+
+### <a name="certificates-should-use-allowed-key-types"></a>Les certificats doivent utiliser des types de clés autorisés  
 
 Cette stratégie vous permet de restreindre le type de certificats acceptés dans votre coffre de clés. Vous pouvez utiliser cette stratégie pour vous assurer que les clés privées de vos certificats sont RSA, ECC ou sauvegardées par HSM. Vous pouvez choisir les types de certificats autorisés dans la liste suivante.
 
@@ -52,19 +57,15 @@ Cette stratégie vous permet de restreindre le type de certificats acceptés dan
 - ECC
 - ECC - HSM
 
-### <a name="certificates-should-have-the-specified-lifetime-action-triggers-preview"></a>Les certificats doivent avoir les déclencheurs d’action de durée de vie spécifiés (préversion)
-
-Cette stratégie vous permet de gérer l’action de durée de vie spécifiée pour les certificats qui expirent dans un certain nombre de jours ou qui ont atteint un certain pourcentage de durée de vie.
-
-### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>Les certificats doivent être émis par l’autorité de certification intégrée spécifiée (préversion)
+### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority"></a>Les certificats doivent être émis par l’autorité de certification intégrée spécifiée  
 
 Si vous utilisez une autorité de certification intégrée Key Vault (Digicert ou GlobalSign) et que vous voulez que les utilisateurs fassent appel à l’un de ces deux fournisseurs, vous pouvez utiliser cette stratégie pour mener un audit ou appliquer votre sélection. Cette stratégie évalue l’autorité de certification sélectionnée dans la stratégie d’émission du certificat et le fournisseur de l’autorité de certification défini dans le coffre de clés. Cette stratégie peut également être utilisée pour auditer ou refuser la création de certificats auto-signés dans le coffre de clés.
 
-### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>Les certificats doivent être émis par l’autorité de certification non intégrée spécifiée (préversion)
+### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority"></a>Les certificats doivent être émis par l’autorité de certification non intégrée spécifiée  
 
 Si vous utilisez une autorité de certification interne ou non intégrée à Key Vault et que vous voulez que les utilisateurs fassent appel à une autorité de certification figurant dans une liste que vous fournissez, vous pouvez utiliser cette stratégie pour créer une liste autorisée d’autorités de certification par nom d’émetteur. Cette stratégie peut également être utilisée pour auditer ou refuser la création de certificats auto-signés dans le coffre de clés.
 
-### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names-preview"></a>Les certificats utilisant un chiffrement à courbe elliptique doivent avoir des noms de courbes autorisés (préversion)
+### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names"></a>Les certificats utilisant le chiffrement à courbe elliptique doivent avoir des noms de courbe autorisés 
 
 Si vous utilisez des certificats à courbe elliptique ou ECC, vous pouvez personnaliser une liste autorisée de noms de courbes à partir de la liste ci-dessous. L’option par défaut autorise tous les noms de courbes suivants.
 
@@ -73,7 +74,7 @@ Si vous utilisez des certificats à courbe elliptique ou ECC, vous pouvez person
 - P-384
 - P-521
 
-## <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates-preview"></a>Les certificats utilisant le chiffrement RSA gèrent la taille de clé minimale pour les certificats RSA (préversion)
+### <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates"></a>Les certificats utilisant le chiffrement RSA gèrent la taille de clé minimale pour les certificats RSA  
 
 Si vous utilisez des certificats RSA, vous pouvez choisir une taille de clé minimale requise pour vos certificats. Vous pouvez sélectionner une option dans la liste ci-dessous.
 
@@ -81,13 +82,13 @@ Si vous utilisez des certificats RSA, vous pouvez choisir une taille de clé min
 - 3072 bits
 - 4096 bits
 
-## <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Gérer les certificats arrivés à un nombre de jours spécifié avant expiration (préversion)
+### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>La période de validité maximale des certificats doit être spécifiée (préversion)
 
-Votre service peut subir une panne si un certificat qui n’est pas surveillé correctement n’est pas pivoté avant son expiration. Cette stratégie est critique pour vous assurer que vos certificats stockés dans un coffre de clés sont sous surveillance. Nous vous recommandons d’appliquer cette stratégie plusieurs fois avec différents seuils d’expiration, par exemple 180, 90, 60 et 30 jours. Cette stratégie peut être utilisée pour surveiller et trier l’expiration des certificats dans votre organisation.
+Cette stratégie vous permet de gérer la durée de validité maximale de vos certificats stockés dans le coffre de clés. La limitation de la durée de validité maximale de vos certificats est une pratique de sécurité recommandée. Si une clé privée de votre certificat devenait compromise sans que cela ne soit détecté, l’utilisation de certificats à durée de vie limitée réduit le délai d’exécution des dégâts en cours et également la valeur du certificat pour un attaquant.
 
 # <a name="key-policies"></a>[Stratégies de clé](#tab/keys)
 
-### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>Les clés ne doivent pas être actives pendant une durée supérieure au nombre de jours spécifié (préversion)
+### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days"></a>Les clés ne doivent pas être actives pendant une durée supérieure au nombre de jours spécifié 
 
 Si vous souhaitez vous assurer que vos clés n’ont pas été actives pendant plus qu’un nombre spécifié de jours, vous pouvez utiliser cette stratégie pour auditer la durée pendant laquelle votre clé a été active.
 
@@ -95,7 +96,7 @@ Si vous souhaitez vous assurer que vos clés n’ont pas été actives pendant p
 
 **Si votre clé n’a pas de date d’activation définie**, cette stratégie calcule le nombre de jours écoulés depuis la **date de création** de la clé jusqu’à la date actuelle. Si le nombre de jours dépasse le seuil que vous définissez, la clé est marquée comme non conforme à la stratégie.
 
-### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Les clés doivent être du type de chiffrement spécifié, RSA ou EC (préversion)
+### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec"></a>Les clés doivent être du type de chiffrement spécifié, RSA ou EC 
 
 Cette stratégie vous permet de restreindre le type des certificats pouvant figurer dans votre coffre de clés. Vous pouvez utiliser cette stratégie pour vous assurer que vos clés sont de type RSA, ECC ou sauvegardées avec HSM. Vous pouvez choisir les types de certificats autorisés dans la liste suivante.
 
@@ -104,7 +105,7 @@ Cette stratégie vous permet de restreindre le type des certificats pouvant figu
 - ECC
 - ECC - HSM
 
-### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names-preview"></a>Les clés utilisant un chiffrement à courbe elliptique doivent avoir les noms de courbes spécifiés (préversion)
+### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names"></a>Les clés utilisant un chiffrement à courbe elliptique doivent avoir les noms de courbes spécifiés 
 
 Si vous utilisez un chiffrement à courbe elliptique ou des clés ECC, vous pouvez personnaliser une liste autorisée de noms de courbes à partir de la liste ci-dessous. L’option par défaut autorise tous les noms de courbes suivants.
 
@@ -113,29 +114,29 @@ Si vous utilisez un chiffrement à courbe elliptique ou des clés ECC, vous pouv
 - P-384
 - P-521
 
-### <a name="keys-should-have-expirations-dates-set-preview"></a>Les clés doivent avoir des dates d’expiration définies (préversion)
+### <a name="keys-should-have-expirations-dates-set"></a>Les clés doivent avoir des dates d’expiration définies 
 
 Cette stratégie audite toutes les clés de vos coffres de clés et signale les clés qui n’ont pas de date d’expiration définie comme non conformes. Vous pouvez également utiliser cette stratégie pour bloquer la création de clés qui n’ont pas de date d’expiration définie.
 
-### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>Les clés doivent avoir une durée de vie supérieure au nombre spécifié de jours avant l’expiration (préversion)
+### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration"></a>Les clés doivent avoir une durée de vie supérieure au nombre spécifié de jours avant l’expiration 
 
 Si une clé a une durée de vie trop proche de l’expiration, un délai organisationnel pour la rotation de la clé peut occasionner une interruption. Les clés doivent faire l’objet d’une rotation un nombre spécifié de jours avant leur expiration, afin d’offrir suffisamment de temps pour réagir en cas de défaillance. Cette stratégie audite les clés dont la date d’expiration est proche, et vous permet de définir ce seuil en jours. Vous pouvez également l’utiliser pour empêcher la création de clés trop proches de leur date d’expiration.
 
-### <a name="keys-should-be-backed-by-a-hardware-security-module-preview"></a>Les clés doivent être adossées à un module de sécurité matériel ou HSM (préversion)
+### <a name="keys-should-be-backed-by-a-hardware-security-module"></a>Les clés doivent être adossées à un module de sécurité matériel 
 
 Un HSM est un module de sécurité matériel qui stocke des clés. Un HSM fournit une couche physique de protection des clés de chiffrement. La clé de chiffrement ne peut pas quitter un HSM physique, ce qui offre un niveau de sécurité supérieur à celui d’une clé logicielle. Certaines organisations ont des exigences de conformité qui rendent obligatoire l’utilisation de clés HSM. Utilisez cette stratégie pour auditer les clés stockées dans votre coffre de clés qui ne sont pas sauvegardées par HSM. Vous pouvez également utiliser cette stratégie pour bloquer la création de clés non sauvegardées par HSM. Cette stratégie s’applique à tous les types de clés, tant RSA qu’ECC.
 
-### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size-preview"></a>Les clés utilisant le chiffrement RSA doivent avoir une taille minimale spécifiée (préversion)
+### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size"></a>Les clés utilisant le chiffrement RSA doivent avoir une taille minimale spécifiée 
 
 L’utilisation de clés RSA de taille inférieure n’est pas une pratique de conception sécurisée. Il se peut que vous soyez soumis à des normes d’audit et de certification qui rendent obligatoire l’utilisation d’une taille de clé minimale. La stratégie suivante vous permet de définir une exigence de taille minimale de clé sur votre coffre de clés. Vous pouvez auditer les clés qui ne répondent pas à cette exigence. Vous pouvez également utiliser cette stratégie pour bloquer la création de clés qui ne satisfont pas à l’exigence de taille minimale de clé.
 
-### <a name="keys-should-have-the-specified-maximum-validity-period-preview"></a>La période de validité maximale doit être spécifiée pour les clés (préversion)
+### <a name="keys-should-have-the-specified-maximum-validity-period"></a>La période de validité maximale doit être spécifiée pour les clés
 
 Gérez les exigences en matière de conformité de votre organisation en spécifiant le nombre maximal de jours pendant lesquels une clé peut être valide au sein de votre coffre de clés. Les clés qui sont valides au-delà du seuil que vous définissez seront marquées comme non conformes. Vous pouvez également utiliser cette stratégie pour bloquer la création de clés dont la date d’expiration est postérieure à la période de validité maximale que vous spécifiez.
 
 # <a name="secret-policies"></a>[Stratégies de secret](#tab/secrets)
 
-### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>Les secrets ne doivent pas être actifs pendant une période plus longue que le nombre spécifié de jours (préversion)
+### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days"></a>Les secrets ne doivent pas être actifs pendant une période plus longue que le nombre spécifié de jours 
 
 Si vous souhaitez vous assurer que vos secrets n’ont pas été actifs pendant plus qu’un nombre spécifié de jours, vous pouvez utiliser cette stratégie pour auditer la durée pendant laquelle votre secret a été actif.
 
@@ -143,19 +144,19 @@ Si vous souhaitez vous assurer que vos secrets n’ont pas été actifs pendant 
 
 **Si votre secret n’a pas de date d’activation définie**, cette stratégie calcule le nombre de jours écoulés depuis la **date de création** du secret jusqu’à la date actuelle. Si le nombre de jours dépasse le seuil que vous définissez, le secret est marqué comme non conforme à la stratégie.
 
-### <a name="secrets-should-have-content-type-set-preview"></a>Les secrets doivent avoir un type de contenu défini (préversion)
+### <a name="secrets-should-have-content-type-set"></a>Les secrets doivent avoir un type de contenu défini 
 
 Tout fichier de texte brut ou encodé peut être stocké en tant que secret de coffre de clés. Toutefois, votre organisation peut définir différentes stratégies de rotation et restrictions sur les mots de passe, les chaînes de connexion ou les certificats stockés en tant que clés. Une balise de type de contenu peut aider un utilisateur à voir ce qui est stocké dans un objet secret sans lire la valeur du secret. Vous pouvez utiliser cette stratégie pour auditer des secrets qui n’ont pas de balise de type de contenu définie. Vous pouvez également utiliser cette stratégie pour empêcher la création de secrets si aucune balise de type de contenu n’est définie.
 
-### <a name="secrets-should-have-expiration-date-set-preview"></a>Les secrets doivent avoir une date d’expiration définie (préversion)
+### <a name="secrets-should-have-expiration-date-set"></a>Les secrets doivent avoir une date d’expiration définie 
 
 Cette stratégie audite tous les secrets de vos coffres de clés et signale les secrets qui n’ont pas de date d’expiration définie comme non conformes. Vous pouvez également utiliser cette stratégie pour bloquer la création de secrets qui n’ont pas de date d’expiration définie.
 
-### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>Les secrets doivent avoir une durée de vie supérieure au nombre spécifié de jours avant l’expiration (préversion)
+### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration"></a>Les secrets doivent avoir une durée de vie supérieure au nombre spécifié de jours avant l’expiration 
 
 Si un secret a une durée de vie trop proche de l’expiration, un délai organisationnel pour la rotation du secret peut occasionner une interruption. Les secrets doivent faire l’objet d’une rotation un nombre spécifié de jours avant leur expiration, afin d’offrir suffisamment de temps pour réagir en cas de défaillance. Cette stratégie audite les secrets dont la date d’expiration est proche, et vous permet de définir ce seuil en jours. Vous pouvez également l’utiliser pour empêcher la création de secrets trop proches de leur date d’expiration.
 
-### <a name="secrets-should-have-the-specified-maximum-validity-period-preview"></a>La période de validité maximale doit être spécifiée pour les secrets (préversion)
+### <a name="secrets-should-have-the-specified-maximum-validity-period"></a>La période de validité maximale doit être spécifiée pour les secrets 
 
 Gérez les exigences en matière de conformité de votre organisation en spécifiant le nombre maximal de jours pendant lesquels un secret peut être valide au sein de votre coffre de clés. Les secrets qui sont valides au-delà du seuil que vous définissez seront marqués comme non conformes. Vous pouvez également utiliser cette stratégie pour bloquer la création de secrets dont la date d’expiration est postérieure à la période de validité maximale que vous spécifiez.
 
@@ -242,16 +243,25 @@ Vous gérez un coffre de clés utilisé par plusieurs équipes qui contient 100�
 
 ## <a name="feature-limitations"></a>Limitations des fonctionnalités
 
-Après avoir attribué une stratégie avec un effet « refuser », la prise d’effet du refus de créer des ressources non conformes peut prendre entre 30 minutes (en moyenne) et 1 heure (pire des cas). Une fois l’évaluation de stratégie des composants existants d’un coffre effectuée, l’affichage des résultats de conformité dans l’interface utilisateur du portail peut prendre entre 1 heure (en moyenne) et 2 heures (pire des cas). Si les résultats de conformité présentent le statut « Non démarré », cela peut être dû aux raisons suivantes :
+Après avoir attribué une stratégie avec un effet « refuser », la prise d’effet du refus de créer des ressources non conformes peut prendre entre 30 minutes (en moyenne) et 1 heure (pire des cas). Le retard fait référence aux scénarios suivants :
+1.  une nouvelle stratégie est attribuée
+2.  l’affectation d’une stratégie existante est modifiée
+3.  un nouveau Key Vault (ressource) est créé dans une étendue avec des stratégies existantes.
+
+Une fois l’évaluation de stratégie des composants existants d’un coffre effectuée, l’affichage des résultats de conformité dans l’interface utilisateur du portail peut prendre entre 1 heure (en moyenne) et 2 heures (pire des cas). Si les résultats de conformité présentent le statut « Non démarré », cela peut être dû aux raisons suivantes :
 - L’évaluation des stratégies n’est pas encore terminée. La latence de l’évaluation initiale peut atteindre 2 heures dans le pire des cas. 
 - Il n’y a pas de coffres de clés dans l’étendue de l’attribution de stratégie.
 - Il n’y a pas de coffres de clés avec des certificats dans l’étendue de l’attribution de stratégie.
+
+
+
 
 > [!NOTE]
 > Les [modes de fournisseur de ressources](../../governance/policy/concepts/definition-structure.md#resource-provider-modes) d’Azure Policy, tels que ceux destinées à la solution Azure Key Vault, fournissent des informations relatives à la conformité dans la page [Conformité des composants](../../governance/policy/how-to/get-compliance-data.md#component-compliance).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+- [Journalisation et Forum aux questions pour la stratégie Azure pour le coffre de clés](../general/troubleshoot-azure-policy-for-key-vault.md)
 - En savoir plus sur le [service Azure Policy](../../governance/policy/overview.md)
 - Consultez des exemples Key Vault : [Définitions de stratégies prédéfinies Key Vault](../../governance/policy/samples/built-in-policies.md#key-vault)
 - En savoir plus sur [Aide des points de référence de la sécurité Azure sur le coffre de clés](/security/benchmark/azure/baselines/key-vault-security-baseline?source=docs#network-security)

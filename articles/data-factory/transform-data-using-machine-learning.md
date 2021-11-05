@@ -1,6 +1,6 @@
 ---
 title: Créer des pipelines de données prédictifs
-description: Découvrez la procédure de création d’un pipeline prédictif à l’aide d’Azure Machine Learning Studio (classique) - Activité d’exécution par lot dans Azure Data Factory ou Synapse Analytics.
+description: Découvrez la procédure de création d’un pipeline prédictif à l’aide de Machine Learning Studio (classique) - Activité d’exécution par lot dans Azure Data Factory ou Synapse Analytics.
 titleSuffix: Azure Data Factory & Azure Synapse
 author: nabhishek
 ms.author: abnarain
@@ -9,14 +9,14 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 5645dcf87906f1e88ffb5e680a3a02f59fbfdeea
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fea9f928a42503448c249ed04c753ab416cce35f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124805980"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020138"
 ---
-# <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Créer un pipeline prédictif à l’aide d’Azure Machine Learning Studio (classique) avec Azure Data Factory ou Synapse Analytics
+# <a name="create-a-predictive-pipeline-using-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Créer un pipeline prédictif à l’aide de Machine Learning Studio (classique) avec Azure Data Factory ou Synapse Analytics
 
 > [!div class="op_single_selector" title1="Sélectionnez la version du service Data Factory que vous utilisez :"]
 > * [Version 1](v1/data-factory-azure-ml-batch-execution-activity.md)
@@ -30,10 +30,10 @@ ms.locfileid: "124805980"
 2. **Convertissez-la en une expérience prédictive**. Une fois que votre modèle a été formé avec des données existantes et que vous êtes prêt à l’utiliser pour la notation de nouvelles données, vous préparez et simplifiez votre expérience de notation.
 3. **Déployez-la en tant que service web**. Vous pouvez publier votre expérience de notation comme un service web Azure. Vous pouvez envoyer des données à votre modèle via ce point de terminaison de service web et recevoir des prédictions de résultats du modèle.
 
-### <a name="using-azure-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Utilisation d’Azure Machine Learning Studio (classique) avec Azure Data Factory ou Synapse Analytics
-Azure Data Factory et Synapse Analytics vous permettent de créer facilement des pipelines qui utilisent un service web [Azure Machine Learning Studio (classique)](https://azure.microsoft.com/documentation/services/machine-learning) publié pour l’analyse prédictive. À l’aide de l’**activité d’exécution du lot** dans un pipeline, vous pouvez appeler un service web Azure Machine Learning Studio (classique) pour effectuer des prédictions sur les données par lots.
+### <a name="using-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Utilisation de Machine Learning Studio (classique) avec Azure Data Factory ou Synapse Analytics
+Azure Data Factory et Synapse Analytics vous permettent de créer facilement des pipelines qui utilisent un service web [Machine Learning Studio (classique)](https://azure.microsoft.com/documentation/services/machine-learning) publié pour l’analyse prédictive. À l’aide de l’**activité d’exécution du lot** dans un pipeline, vous pouvez appeler un service web Machine Learning Studio (classique) pour effectuer des prédictions sur les données par lots.
 
-Au fil du temps, les modèles prédictifs dans les expériences de scoring Azure Machine Learning Studio (classique) doivent être réentraînés à l’aide de nouveaux jeux de données d’entrée. Vous pouvez réentraîner un modèle à partir d’un pipeline en effectuant les étapes suivantes :
+Au fil du temps, les modèles prédictifs dans les expériences de scoring Machine Learning Studio (classique) doivent être réentraînés à l’aide de nouveaux jeux de données d’entrée. Vous pouvez réentraîner un modèle à partir d’un pipeline en effectuant les étapes suivantes :
 
 1. Publiez l’expérience de formation (et non l’expérience prédictive) comme un service web. Vous pouvez effectuer cette tâche dans ML Studio (classique) comme vous l’avez fait pour exposer l’expérience prédictive en tant que service web dans le scénario précédent.
 2. Utilisez l’activité d’exécution par lots ML Studio (classique) pour appeler le service web pour l’expérience de formation. En fait, vous pouvez utiliser l’activité Batch Execution de ML Studio (classique) pour appeler à la fois le service web de formation et le service web de notation.
@@ -42,7 +42,7 @@ Une fois que vous avez fini la reformation, mettez à jour le service web de not
 
 ## <a name="ml-studio-classic-linked-service"></a>Service lié ML Studio (classique)
 
-Vous créez un service lié **Azure Machine Learning Studio (classique)** pour lier un service web Azure Machine Learning Studio (classique). Le service lié est utilisé par l'Activité d'exécution par lot et l'[Activité des ressources de mise à jour](update-machine-learning-models.md) Azure Machine Learning Studio (classique).
+Vous créez un service lié **Machine Learning Studio (classique)** pour lier un service web Machine Learning Studio (classique). Le service lié est utilisé par l'Activité d'exécution par lot et l'[Activité des ressources de mise à jour](update-machine-learning-models.md) Machine Learning Studio (classique).
 
 ```JSON
 {
@@ -67,7 +67,7 @@ Vous créez un service lié **Azure Machine Learning Studio (classique)** pour l
 
 Consultez l’article sur les [services liés de calcul](compute-linked-services.md) pour obtenir les descriptions des propriétés dans la définition JSON.
 
-Azure Machine Learning Studio (classique) prend à la fois en charge les services web classiques et les nouveaux services web pour votre expérience prédictive. Vous pouvez choisir celui qui vous convient à partir de votre espace de travail Data Factory ou Synapse. Pour obtenir les informations requises afin de créer le service lié Azure Machine Learning Studio (classique), accédez à https://services.azureml.net, où tous vos (nouveaux) services web et les services web classiques sont répertoriés. Cliquez sur le service web auquel vous voulez accéder, puis cliquez sur la page **Consommer**. Copiez la **clé primaire** de la propriété **apiKey**, puis les **requêtes de lots** de la propriété **mlEndpoint**.
+Machine Learning Studio (classique) prend à la fois en charge les services web classiques et les nouveaux services web pour votre expérience prédictive. Vous pouvez choisir celui qui vous convient à partir de votre espace de travail Data Factory ou Synapse. Pour obtenir les informations requises afin de créer le service lié Machine Learning Studio (classique), accédez à https://services.azureml.net, où tous vos (nouveaux) services web et les services web classiques sont répertoriés. Cliquez sur le service web auquel vous voulez accéder, puis cliquez sur la page **Consommer**. Copiez la **clé primaire** de la propriété **apiKey**, puis les **requêtes de lots** de la propriété **mlEndpoint**.
 
 :::image type="content" source="./media/transform-data-using-machine-learning/web-services.png" alt-text="Services web ML Studio (classiques)":::
 
@@ -137,7 +137,7 @@ L’extrait de code JSON suivant définit une activité d’exécution par lot M
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scénario 1 : Expériences qui utilisent des entrées/sorties de service web qui font référence à des données dans Stockage Blob Azure
 
-Dans ce scénario, le service web Azure Machine Learning Studio (classique) effectue des prédictions à l’aide des données d’un fichier dans un stockage d’objets blob Azure et stocke les résultats des prédictions dans le stockage d’objets blob. Le code JSON suivant définit un pipeline avec une activité AzureMLBatchExecution. Les données d’entrée et de sortie dans le stockage d’objets blob Azure sont référencées à l’aide d’une paire LinkedName/FilePath. Dans l’exemple, le service lié des entrées et des sorties est différent. Vous pouvez utiliser des services liés différents pour chacune de vos entrées/sorties pour que le service puisse récupérer les bons fichiers et les envoyer au service web Azure Machine Learning Studio (classique).
+Dans ce scénario, le service web Machine Learning Studio (classique) effectue des prédictions à l’aide des données d’un fichier dans un stockage d’objets blob Azure et stocke les résultats des prédictions dans le stockage d’objets blob. Le code JSON suivant définit un pipeline avec une activité AzureMLBatchExecution. Les données d’entrée et de sortie dans le stockage d’objets blob Azure sont référencées à l’aide d’une paire LinkedName/FilePath. Dans l’exemple, le service lié des entrées et des sorties est différent. Vous pouvez utiliser des services liés différents pour chacune de vos entrées/sorties pour que le service puisse récupérer les bons fichiers et les envoyer au service web Machine Learning Studio (classique).
 
 > [!IMPORTANT]
 > Dans votre expérience ML Studio (classique), les ports et paramètres globaux de l’entrée et la sortie du service web ont des noms par défaut (« input1 », « input2 ») que vous pouvez personnaliser. Les noms que vous utilisez pour les paramètres globalParameters, webServiceOutputs et webServiceInputs doivent correspondre exactement aux noms utilisés dans les expériences. Vous pouvez afficher la charge utile de l’exemple de requête sur la page d’aide relative à l’exécution par lots pour votre point de terminaison ML Studio (classique) afin de vérifier le mappage attendu.

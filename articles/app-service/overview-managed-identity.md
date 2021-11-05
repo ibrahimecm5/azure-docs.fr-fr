@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 27e17fd6cc9f50a5a46bf3de9bf2603209894bf3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1fbb9ead768c20f4630629f5afd1be51c985d0d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368245"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045677"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Guide pratique pour utiliser des identités managées pour App Service et Azure Functions
 
@@ -525,8 +525,9 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Accéder à Azure SQL Database de manière sécurisée à l’aide d’une identité managée](app-service-web-tutorial-connect-msi.md)
+- [Accéder à Azure SQL Database de manière sécurisée à l’aide d’une identité managée](tutorial-connect-msi-sql-database.md)
 - [Accéder à Stockage Azure de manière sécurisée à l’aide d’une identité managée](scenario-secure-app-access-storage.md)
 - [Appeler Microsoft Graph de manière sécurisée à l’aide d’une identité managée](scenario-secure-app-access-microsoft-graph-as-app.md)
+- [Se connecter en toute sécurité aux services avec des secrets Key Vault](tutorial-connect-msi-key-vault.md)
 
 [Guide de référence technique sur Microsoft.Azure.Services.AppAuthentication]: /dotnet/api/overview/azure/service-to-service-authentication

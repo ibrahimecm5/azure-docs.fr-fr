@@ -36,20 +36,10 @@
       href: quickstart-arc.md
 - name: Tutoriels
   items:
-    - name: 'Sécuriser les accès aux applications, le stockage et Microsoft Graph'
-      items:
-        - name: Vue d’ensemble
-          href: scenario-secure-app-overview.md
-        - name: Configurer l’authentification App Service
-          href: scenario-secure-app-authentication-app-service.md
-        - name: Sécuriser les accès d’application au stockage
-          href: scenario-secure-app-access-storage.md
-        - name: Sécuriser les accès d’application à Microsoft Graph en tant qu’utilisateur
-          href: scenario-secure-app-access-microsoft-graph-as-user.md
-        - name: Sécuriser les accès d’application à Microsoft Graph en tant qu’application
-          href: scenario-secure-app-access-microsoft-graph-as-app.md
-        - name: Nettoyer les ressources
-          href: scenario-secure-app-clean-up-resources.md
+    - name: Mapper un domaine personnalisé
+      href: app-service-web-tutorial-custom-domain.md
+    - name: Sécuriser le domaine avec TLS/SSL
+      href: configure-ssl-bindings.md
     - name: Application avec base de données
       items:
         - name: ASP.NET Core avec SQL DB
@@ -72,18 +62,34 @@
           href: tutorial-custom-container.md
         - name: Application pour plusieurs conteneurs
           href: tutorial-multi-container-app.md
-    - name: Accéder à la base de données SQL en toute sécurité
-      href: app-service-web-tutorial-connect-msi.md
-    - name: Héberger une API RESTful
-      href: app-service-web-tutorial-rest-api.md
-    - name: Mapper un domaine personnalisé
-      href: app-service-web-tutorial-custom-domain.md
-    - name: Sécuriser le domaine avec TLS/SSL
-      href: configure-ssl-bindings.md
-    - name: Ajouter un CDN
-      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
+    - name: Connectivité back end sans secret
+      items:
+        - name: Accéder à SQL DB avec une identité managée
+          href: tutorial-connect-msi-sql-database.md
+        - name: Accéder aux services sans prise en charge de l’identité managée
+          href: tutorial-connect-msi-key-vault.md
     - name: Authentification des utilisateurs
       href: tutorial-auth-aad.md
+    - name: 'Sécuriser les accès aux applications, le stockage et Microsoft Graph'
+      items:
+        - name: Vue d’ensemble
+          href: scenario-secure-app-overview.md
+        - name: Configurer l’authentification App Service
+          href: scenario-secure-app-authentication-app-service.md
+        - name: Sécuriser les accès d’application au stockage
+          href: scenario-secure-app-access-storage.md
+        - name: Sécuriser les accès d’application à Microsoft Graph en tant qu’utilisateur
+          href: scenario-secure-app-access-microsoft-graph-as-user.md
+        - name: Sécuriser les accès d’application à Microsoft Graph en tant qu’application
+          href: scenario-secure-app-access-microsoft-graph-as-app.md
+        - name: Nettoyer les ressources
+          href: scenario-secure-app-clean-up-resources.md
+    - name: Isoler le trafic réseau
+      href: tutorial-networking-isolate-vnet.md
+    - name: Héberger une API RESTful
+      href: app-service-web-tutorial-rest-api.md
+    - name: Ajouter un CDN
+      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Envoyer un e-mail ou un tweet
       href: tutorial-send-email.md
     - name: Résoudre les erreurs
@@ -364,8 +370,10 @@
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Service Kudu
       href: resources-kudu.md
-    - name: Assistant Migration
-      href: app-service-migration-assistant.md
+    - name: Migrer ASP.NET
+      href: app-service-asp-net-migration.md
+    - name: Migrer Java
+      href: app-service-java-migration.md
     - name: Meilleures pratiques
       href: app-service-best-practices.md
     - name: Exemples

@@ -4,14 +4,14 @@ description: Découvrez comment Azure Cosmos DB garantit la protection de la bas
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/25/2021
 ms.author: mjbrown
-ms.openlocfilehash: 818c380d1ec2b3d7095eccec94b8e6f324cb45d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f6851fa1e129522afbf59b6d1035029e72b231b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615001"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086523"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Indexation dans Azure Cosmos DB - Vue d’ensemble
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -74,7 +74,7 @@ Examinons à présent chacune d’entre elles en détail.
 |Réponse aux attaques|Une fois que vous avez contacté le support Azure pour signaler une attaque potentielle, un processus de réponse aux incidents en 5 étapes est lancé. L’objectif de ce processus en 5 étapes est de restaurer aussi rapidement que possible dans des conditions normales les opérations et la sécurité du service suite à la détection d’un problème et au lancement d’une investigation.<br><br>Pour en savoir plus, consultez [Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) (Réponse de Microsoft Azure en matière de sécurité dans le cloud).|
 |Délimitation géographique|Azure Cosmos DB garantit la gouvernance des données dans les régions souveraines (par exemple, Allemagne, Chine, US Gov).|
 |Installations protégées|Dans Azure Cosmos DB, les données sont stockées sur des disques SSD dans les centres de données protégées d’Azure.<br><br>Pour en savoir plus, consultez les [centres de données Microsoft globaux](https://www.microsoft.com/en-us/cloud-platform/global-datacenters).|
-|Chiffrement HTTPS/SSL/TLS|Toutes les connexions à Azure Cosmos DB prennent en charge le protocole HTTPS. Azure Cosmos DB prend également en charge le protocole TLS 1.2.<br>Il est possible d’appliquer une version TLS minimale côté serveur. Pour ce faire, veuillez contacter [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
+|Chiffrement HTTPS/SSL/TLS|Toutes les connexions à Azure Cosmos DB prennent en charge le protocole HTTPS. Azure Cosmos DB prend également en charge le protocole TLS 1.2.<br>Il est possible d’appliquer une version TLS minimale côté serveur. Pour cela, ouvrez un [ticket de support Azure](https://azure.microsoft.com/support/options/).|
 |Chiffrement au repos|Toutes les données stockées dans Azure Cosmos DB sont chiffrées au repos. Pour en savoir plus, consultez [Chiffrement de base de données Azure Cosmos DB au repos](./database-encryption-at-rest.md).|
 |Serveurs corrigés|En tant que base de données NoSQL gérée, Azure Cosmos DB ne nécessite aucune gestion ou correction des serveurs. Tout est fait automatiquement.|
 |Comptes administratifs avec des mots de passe forts|Il est difficile de croire que nous devions encore mentionner cette exigence, mais contrairement à certains de nos concurrents, il est impossible d’avoir un compte d’administrateur sans mot de passe dans Azure Cosmos DB.<br><br> La sécurité via TLS et l’authentification basée sur un secret HMAC sont intégrées par défaut.|

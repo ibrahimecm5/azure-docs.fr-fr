@@ -1,0 +1,57 @@
+### YamlMime:FAQ
+metadata:
+  title: Forum aux questions sur la mise à jour partielle des documents dans Azure Cosmos DB
+  description: Forum aux questions relatives à la mise à jour partielle des documents pour Azure Cosmos DB
+  author: abhirockzz
+  ms.author: abhishgu
+  ms.service: cosmos-db
+  ms.topic: conceptual
+  ms.date: 09/16/2021
+  ms.openlocfilehash: 07a5a1daf0500938189ff79817a9d2a4ce058ae3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131096535"
+title: Forum aux questions relatives à la mise à jour partielle des documents dans Azure Cosmos DB
+summary: >
+  [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+
+  La mise à jour partielle des documents vous permet de modifier des propriétés ou des champs d’un élément sans avoir à effectuer d’opération de remplacement de document complète. Cet article répond aux questions fréquemment posées sur la mise à jour partielle des documents Azure Cosmos DB.
+sections:
+- name: Général
+  questions:
+  - question: >
+      S’agit-il d’une implémentation du correctif JSON RFC 6902 ?
+    answer: >
+      La mise à jour partie des documents Azure Cosmos DB est *inspirée* par le [correctif JSON RFC 6902](https://datatracker.ietf.org/doc/html/rfc6902). Il existe d’autres fonctionnalités, telles que le [correctif conditionnel](partial-document-update.md#supported-modes), tandis que certaines des fonctionnalités du correctif JSON RFC 6902, telles que (`Copy`, `Move`, `Test`) n’ont pas été implémentées.
+  - question: >
+      La mise à jour partielle des documents est-elle compatible avec les modes de facturation serverless, approvisionnés et mise à l’échelle automatique ?
+    answer: >
+      Oui, la mise à jour partielle des documents est disponible sur les modes serverless, approvisionnés et mise à l’échelle automatique.
+  - question: >
+      Comment le tarif des RU/s est-il calculé ?
+    answer: >
+      La mise à jour partielle des documents est normalisée dans la facturation des unités de requête de la même façon que les [autres opérations de base de données](how-pricing-works.md). Les utilisateurs ne doivent pas s’attendre à une réduction significative des RU.
+  - question: >
+      Existe-t-il une limite au nombre d’opérations de mise à jour partielle de documents ?
+    answer: >
+      Il existe une limite de 10 opérations de patch qui peut être ajoutée dans une seule spécification de patch. Si vous avez besoin d’augmenter ce nombre, contactez l’[équipe du support technique](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+  - question: >
+      La mise à jour partielle de document est-elle prise en charge pour les propriétés générées par le système ?
+    answer: >
+      Nous ne prenons pas en charge la mise à jour partielle des documents pour les propriétés générées par le système comme `_id`, `_ts`, `_etag`, `_rid`.
+  - question: >
+      La durée de vie (TTL) peut-elle être corrigée ?
+    answer: >
+      Oui, il est possible de mettre à jour la propriété [durée de vie](time-to-live.md) (`ttl`) d’un document.
+  - question: >
+      Comment fonctionne la résolution des conflits dans plusieurs régions pour les tableaux ?
+    answer: >
+      Les tableaux sont traités comme une unité atomique. Si la même propriété dans un tableau est mise à jour simultanément dans différentes régions (provoquant ainsi un conflit), une seule des modifications sera conservée.
+  - question: >
+      La mise à jour de document partielle est-elle prise en charge pour les comptes de magasin analytique/Synapse Link ?
+    answer: >
+      Oui, la mise à jour de document partielle est prise en charge pour les comptes de magasin analytique/Synapse Link.
+additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\n* En savoir plus sur la [mise à jour partielle de document](partial-document-update.md)."

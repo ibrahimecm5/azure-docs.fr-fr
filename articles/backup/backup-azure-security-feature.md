@@ -4,12 +4,12 @@ description: Découvrez comment utiliser les fonctionnalités de sécurité dans
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 04/26/2021
-ms.openlocfilehash: 6cf2af6016df358243b36d47766eab38dacc5db4
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 10a3420003197fc76f9baefbfd4c58c40a6dacfc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064194"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073659"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Fonctionnalités de sécurité pour la protection des sauvegardes hybrides ayant recours à la Sauvegarde Azure
 
@@ -51,13 +51,13 @@ Si vous créez un coffre Recovery Services, vous pouvez utiliser toutes les fonc
 5. Dans la liste déroulante **Avez-vous configuré Azure AD Multi-Factor Authentication ?** , sélectionnez une valeur pour confirmer que vous avez activé ou non [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md). Si tel est le cas, vous êtes invité à vous authentifier à partir d’un autre appareil (par exemple, un téléphone mobile) lors de votre connexion au portail Azure.
 
    Lorsque vous effectuez des opérations critiques dans la sauvegarde, vous devez entrer un code PIN de sécurité, disponible sur le portail Azure. L’activation de la fonctionnalité Azure AD Multi-Factor Authentication offre une couche de sécurité supplémentaire. Seuls les utilisateurs autorisés, disposant d’informations d’identification Azure valides et authentifiés à partir d’un deuxième appareil peuvent accéder au portail Azure.
-6. Pour enregistrer les paramètres de sécurité, sélectionnez **Activer**, puis **Enregistrer**. Vous pouvez sélectionner **Activer** uniquement après avoir sélectionné une valeur dans la liste **Avez-vous configuré Azure AD Multi-Factor Authentication ?** à l’étape précédente.
+6. Pour enregistrer les paramètres de sécurité, sélectionnez **Activer**, puis **Enregistrer**.
 
     ![Capture d’écran des paramètres de sécurité](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>Récupérer les données de sauvegarde supprimées
 
-La sauvegarde conserve les données de sauvegarde supprimées pendant 14 jours supplémentaires et ne les supprime pas immédiatement si l’opération **Arrêter la sauvegarde avec suppression des données de sauvegarde** est effectuée. Pour restaurer ces données dans la période de 14 jours autorisée, procédez comme suit, selon ce que vous utilisez :
+Si le paramètre de fonctionnalités de sécurité est activé, Sauvegarde Azure conserve les données de sauvegarde supprimées pendant 14 jours supplémentaires et ne les supprime pas immédiatement si l’opération **Arrêter la sauvegarde avec suppression des données de sauvegarde** est effectuée. Pour restaurer ces données dans la période de 14 jours autorisée, procédez comme suit, selon ce que vous utilisez :
 
 Pour les utilisateurs de l’**agent Azure Recovery Services** :
 

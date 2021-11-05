@@ -1,5 +1,5 @@
 ---
-title: Résolution des problèmes d’implémentation d’Azure Policy sur Key Vault
+title: Résoudre des problèmes d’implémentation de la stratégie Azure sur Key Vault
 description: Résolvez les problèmes d’implémentation d’Azure Policy sur Key Vault.
 author: sebansal
 ms.author: sebansal
@@ -7,14 +7,14 @@ ms.date: 08/17/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8b6084f411ec948eb7655c5c7c6b54bf7d2e2c30
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 380077339920071fa56d385e6de8f7e7a9e84321
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858978"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072538"
 ---
-# <a name="troubleshooting-issues-with-implementing-azure-policy-on-key-vault"></a>Résolution des problèmes d’implémentation d’Azure Policy sur Key Vault
+# <a name="troubleshoot-issues-with-implementing-azure-policy-on-key-vault"></a>Résoudre des problèmes d’implémentation de la stratégie Azure sur Key Vault
 
 Cet article vous explique comment résoudre les erreurs générales qui peuvent se produire lorsque vous configurez [Azure Policy pour Key Vault](./azure-policy.md) et donne des suggestions de résolution.
 
@@ -33,7 +33,7 @@ Lorsque la journalisation est activée, un nouveau conteneur appelé **AzurePoli
 > 
 > 
 
-Les objets blob individuels sont stockés sous forme de texte en tant qu’objet blob JSON. Examinons un exemple d’entrée du journal pour une stratégie de clé : [Les clés doivent avoir une date d’expiration](azure-policy.md?tabs=keys#secrets-should-have-expiration-date-set-preview). Cette stratégie évalue toutes les clés de vos coffres de clés et signale comme non conformes celles qui n’ont pas de date d’expiration.
+Les objets blob individuels sont stockés sous forme de texte en tant qu’objet blob JSON. Examinons un exemple d’entrée du journal pour une stratégie de clé : [Les clés doivent avoir une date d’expiration](azure-policy.md?tabs=keys#secrets-should-have-expiration-date-set). Cette stratégie évalue toutes les clés de vos coffres de clés et signale comme non conformes celles qui n’ont pas de date d’expiration.
 
 ```json
 {
@@ -77,8 +77,14 @@ Le tableau ci-après répertorie les noms de champ et leurs descriptions :
 | **ObjectName** |Nom de l’objet |
 | **ObjectType** |Type d’objet de coffre de clés (certificat, secret ou clé) |
 | **IsComplianceCheck** |True si l’évaluation s’est produite pendant l’audit nocturne, false si elle s’est produite pendant la création ou la mise à jour de la ressource |
-| **Résultat** | Retourne l’évaluation de la stratégie |
-| **ExpressionEvaluationDetails** | Informations sur le champ d’évaluation et la valeur de l’expression |
+| **AssignmentId** | ID de l’attribution de stratégie |
+| **AssignmentDisplayName** | Nom convivial de l’attribution de stratégie |
+| **DefinitionId** | ID de la définition de stratégie pour l’affectation |
+| **DefinitionDisplayName** | Nom convivial de la définition de stratégie pour l’affectation |
+| **Résultat** | Résultat de l’évaluation de la stratégie |
+| **ExpressionEvaluationDetails** | Détails sur les évaluations effectuées pendant l’évaluation de la stratégie |
+| **ExpressionValue** | Valeur réelle du champ spécifié pendant l’évaluation de la stratégie |
+| **TargetValue** | Valeur attendue du champ spécifié |
 
 
 ### <a name="frequently-asked-questions"></a>Forum aux questions

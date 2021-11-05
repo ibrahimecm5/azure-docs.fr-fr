@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: thwimmer
-ms.openlocfilehash: 87c00971c9205df6e9740a1614480fa7a9faa764
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 41d0e9cb85e79f30c1633d86441e4759abd5f208
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767003"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060266"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Tutoriel : Configurer IDEO pour l’attribution automatique d’utilisateurs
 

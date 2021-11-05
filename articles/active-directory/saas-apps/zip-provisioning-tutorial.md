@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: thwimmer
-ms.openlocfilehash: c548e0398ad7d27d6a145f518a9351e706aacf08
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 9450d8fddcee604aed05a8d7d8e8194a1044840e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323330"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056810"
 ---
 # <a name="tutorial-configure-zip-for-automatic-user-provisioning"></a>Tutoriel : Configurer Zip pour l’attribution automatique d’utilisateurs
 
@@ -48,7 +48,7 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 
 ## <a name="step-2-configure-zip-to-support-provisioning-with-azure-ad"></a>Étape 2. Configurer Zip pour prendre en charge l’approvisionnement avec Azure AD
 
-Pour configurer Zip afin de prendre en charge l’approvisionnement avec Azure AD, veuillez contacter l’équipe du support technique de Zip <support@ziphq.com>, qui vous fournira l’URL du locataire et le jeton secret nécessaires pour configurer l’approvisionnement automatique des utilisateurs dans Zip comme mentionné à l’étape 5.
+Pour configurer Zip et prendre en charge l’approvisionnement avec Azure AD, veuillez contacter l’équipe du support technique de Zip <support@ziphq.com>, qui vous fournira l’URL de l’abonné et le jeton secret nécessaires pour configurer l’approvisionnement automatique des utilisateurs dans Zip comme mentionné à l’étape 5.
 
 ## <a name="step-3-add-zip-from-the-azure-ad-application-gallery"></a>Étape 3. Ajouter Zip à partir de la galerie d’applications Azure AD
 
