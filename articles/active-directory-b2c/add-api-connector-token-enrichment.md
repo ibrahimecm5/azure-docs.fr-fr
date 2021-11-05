@@ -2,21 +2,21 @@
 title: Enrichissement de jetons – Azure Active Directory B2C
 description: Enrichissez les jetons avec des revendications provenant de sources externes en utilisant des API.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/29/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 20473d6a5dcbdc826605d46928a7bfbb90792e0e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 8f5bf34424754106c6d86195c37d23c3c9060c1c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186062"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008348"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>Enrichir les jetons avec des revendications provenant de sources externes à l’aide de connecteurs API
 
@@ -48,7 +48,7 @@ Pour utiliser un [connecteur d’API](api-connectors-overview.md), vous devez d�
 
 5. Indiquez un nom d’affichage pour l’appel. Par exemple, **Enrichir le jeton à partir d’une source externe**.
 6. Indiquez l’**URL du point de terminaison** pour l’appel d’API.
-7. Choisissez le **Type d'authentification** et configurez les informations d'authentification pour appeler votre API. Découvrez comment [Sécuriser votre connecteur d’API](secure-rest-api.md).
+7. Choisissez le **Type d'authentification** et configurez les informations d'authentification pour appeler votre API. Découvrez comment [sécuriser votre connecteur d’API](secure-rest-api.md).
 
    ![Capture d’écran de la configuration de l’authentification pour un connecteur d’API](media/add-api-connector-token-enrichment/api-connector-config.png)
 
@@ -105,7 +105,7 @@ Seules les propriétés utilisateur et les attributs personnalisés répertorié
 Les attributs personnalisés existent au format **extension_\<extensions-app-id>_CustomAttribute** dans le répertoire. Votre API doit s’attendre à recevoir des revendications dans ce même format sérialisé. Pour plus d’informations sur les attributs personnalisés, consultez [Définir des attributs personnalisés dans Azure AD B2C](user-flow-custom-attributes.md).
 
 En outre, ces revendications sont généralement envoyées dans toutes les requêtes de cette étape :
-- **Paramètres régionaux de l’interface utilisateur (’ui_locales’)** : paramètres régionaux de l’utilisateur final comme configurés sur leur appareil. Cela peut être utilisé par votre API pour retourner des réponses internationalisées.
+- **Paramètres régionaux de l’interface utilisateur (’ui_locales’)** : paramètres régionaux de l’utilisateur final comme configurés sur leur appareil. Ils peuvent être utilisés par votre API pour retourner des réponses internationalisées.
 - **Étape (« step »)**  : étape ou point du flux d’utilisateur pour lequel le connecteur d’API a été appelé. La valeur de cette étape est `
 - **ID client (« client_id »)**  : valeur `appId` de l’application sur laquelle un utilisateur final s’authentifie dans un flux d’utilisateur. Il ne s’agit *pas* de l’`appId` de la ressource d’application dans les jetons d’accès.
 - **objectId** : identifiant de l’utilisateur. Vous pouvez l’utiliser pour interroger les services en aval dans le but d’obtenir des informations sur l’utilisateur.
@@ -255,7 +255,7 @@ Après avoir déployé votre API REST, définissez les métadonnées du profil t
     
 Pour plus d’informations sur les configurations, consultez [Métadonnées du profil technique RESTful](restful-technical-profile.md#metadata).
 
-Les commentaires ci -dessus `AuthenticationType` et `AllowInsecureAuthInProduction` indiquent les modifications que vous devez effectuer lorsque vous passez à un environnement de production. Pour savoir comment sécuriser vos API RESTful pour la production, consultez [Sécuriser une API RESTful](secure-rest-api.md).
+Les commentaires ci -dessus `AuthenticationType` et `AllowInsecureAuthInProduction` indiquent les modifications que vous devez effectuer lorsque vous passez à un environnement de production. Pour savoir comment sécuriser vos API RESTful pour la production, consultez [Sécuriser votre API RESTful](secure-rest-api.md).
 
 ## <a name="add-an-orchestration-step"></a>Ajouter une étape d’orchestration
 
@@ -387,10 +387,10 @@ En général, il est judicieux d’utiliser les outils de journalisation activé
 * Si nécessaire, utilisez des niveaux de journalisation plus agressifs (par exemple, « trace » ou « debug ») lors du développement.
 * Surveillez votre API en cas de temps de réponse longs. 
 
-En outre, Azure AD B2C consigne les métadonnées relatives aux transactions d’API qui se produisent lors de l’authentification des utilisateurs via un flux d’utilisateur. Pour les rechercher :
+De plus, Azure AD B2C journalise les métadonnées relatives aux transactions d’API qui se produisent lors de l’authentification des utilisateurs via un flux d’utilisateur. Pour les rechercher :
 1. Accédez à **Azure AD B2C**.
 2. Sous **Activités**, sélectionnez **Journaux d’audit**.
-3. Filtrez l’affichage de la liste : pour **Date**, sélectionnez l’intervalle de temps souhaité, et pour **Activité**, sélectionnez **Une API a été appelée dans le cadre d’un flux d’utilisateur**.
+3. Filtrez la vue Liste : pour **Date**, sélectionnez l’intervalle de temps souhaité, et pour **Activité**, sélectionnez **Une API a été appelée dans le cadre d’un flux d’utilisateur**.
 4. Inspectez les journaux individuels. Chaque ligne représente un connecteur d’API qui tente d’être appelé pendant un flux d’utilisateur. Si un appel d’API échoue et qu’une nouvelle tentative a lieu, il est toujours représenté par une seule ligne. `numberOfAttempts` indique le nombre de fois où votre API a été appelée. Cette valeur peut être `1` ou `2`. D’autres informations sur l’appel d’API sont détaillées dans les journaux.
 
    ![Capture d’écran d’un exemple de journal d’audit avec transaction de connecteur d’API](media/add-api-connector-token-enrichment/example-anonymized-audit-log.png)
@@ -415,5 +415,3 @@ Pour en savoir plus sur la sécurisation de vos API, consultez les articles suiv
 - [Reference : Profil technique RESTful](restful-technical-profile.md)
 
 ::: zone-end
-
-

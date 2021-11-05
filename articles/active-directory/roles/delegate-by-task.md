@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df3c243970709ad7ae4bc52f179117affc2d8613
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a1b237e8347a6a9238dfef505993410413537324
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776432"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057188"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rôles d'administrateur par tâche administrateur dans Azure Active Directory
 
@@ -366,6 +366,7 @@ Dans cet article, vous trouverez les informations nécessaires pour restreindre 
 > | Ajouter un utilisateur à un groupe | Administrateur d'utilisateurs |  |
 > | Affecter une licence | Administrateur de licence | Administrateur d'utilisateurs |
 > | Créer un utilisateur invité | Inviteur d’invités | Administrateur d'utilisateurs |
+> | Réinitialiser l’invitation d’un utilisateur invité | Administrateur d'utilisateurs | Administrateur général |
 > | Créer un utilisateur | Administrateur d'utilisateurs |  |
 > | Suppression d’utilisateurs | Administrateur d'utilisateurs |  |
 > | Invalider les jetons d’actualisation des administrateurs limités (consultez la documentation) | Administrateur d'utilisateurs |  |

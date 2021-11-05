@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f34d031bafd801cf068d19a4885bb9a818885c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 754520be35cbac4321fb7fbb65135016642a7ee1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561914"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018316"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Conditions d’utilisation d’Azure Active Directory
 
@@ -44,7 +44,7 @@ Les stratégies de conditions d’utilisation d’Azure AD vous permettent d’
 - Faire accepter votre stratégie de conditions d'utilisation à vos employés ou à vos utilisateurs invités avant d'inscrire les informations de sécurité dans Azure AD Multi-Factor Authentication (MFA)
 - Faire accepter votre stratégie de conditions d’utilisation à vos employés avant d’inscrire les informations de sécurité dans la réinitialisation de mot de passe en libre-service (SSPR) Azure AD
 - Présenter une stratégie de conditions d’utilisation générales à tous les utilisateurs de votre organisation
-- Présenter les stratégies de conditions d’utilisation spécifiques en fonction des attributs d’un utilisateur (par exemple, docteurs/infirmières ou employés nationaux/internationaux dans des [groupes dynamiques](../enterprise-users/groups-dynamic-membership.md)).
+- Présenter des stratégies de conditions d’utilisation spécifiques basées sur des attributs utilisateur (par exemple médecins/infirmières, ou employés nationaux/internationaux) à l’aide de [groupes dynamiques](../enterprise-users/groups-dynamic-membership.md)).
 - Présenter les stratégies de conditions d’utilisation spécifiques lors de l’accès aux applications à fort impact commercial, comme Salesforce
 - Présenter les stratégies de conditions d’utilisation dans différentes langues
 - Lister qui a accepté ou refusé vos stratégies de conditions d’utilisation

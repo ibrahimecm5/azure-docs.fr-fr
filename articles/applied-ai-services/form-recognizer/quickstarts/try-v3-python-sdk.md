@@ -7,46 +7,35 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 261b0d20ae5e5f2438b559bc79c271b717606083
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ced6bd08895993c18a305418bd68ae8a0557301f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161144"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026673"
 ---
-# <a name="quickstart-form-recognizer-python-client-library-sdks-v30--preview"></a>Démarrage rapide : Form Recognizer v3.0 avec les kits SDK de la bibliothèque de client Python | Préversion
-
-Démarrez avec Azure Form Recognizer en utilisant le langage de programmation Python. Azure Form Recognizer est un service cloud [Azure Applied AI Services](../../../applied-ai-services/index.yml) qui vous permet de générer des logiciels de traitement de données automatisés à l’aide de la technologie du machine learning. Vous pouvez utiliser Form Recognizer via l’API REST ou un kit SDK. Nous vous recommandons d’utiliser le service gratuit pendant que vous apprenez la technologie. N’oubliez pas que le nombre de pages gratuites est limité à 500 par mois.
+# <a name="quickstart-python-client-library-sdk-v30--preview"></a>Démarrage rapide : SDK de bibliothèque cliente Python v3.0 | Préversion
 
 >[!NOTE]
-> Form Recognizer v3.0 est actuellement en préversion publique. Certaines fonctionnalités risquent de ne pas être prises en charge ou d’avoir des capacités limitées.
+> Form Recognizer v3.0 est actuellement en préversion publique. Certaines fonctionnalités peuvent ne pas être prises en charge ou avoir des capacités limitées. 
 
 [Documentation de référence](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-formrecognizer/latest/azure.ai.formrecognizer.html) | [Code source de la bibliothèque](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [Package (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [Exemples](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-Azure Cognitive Services Form Recognizer est un service cloud qui utilise le machine learning pour extraire et analyser les champs de formulaire, le texte et les tableaux de vos documents. Vous pouvez facilement appeler des modèles Form Recognizer en intégrant les kits SDK de notre bibliothèque de client dans vos workflows et applications.
+ Démarrez avec Azure Form Recognizer en utilisant le langage de programmation Python. Azure Form Recognizer est un service Azure Applied AI Service qui utilise le machine learning pour extraire et analyser les champs de formulaire, le texte et les tableaux de vos documents. Vous pouvez facilement appeler des modèles Form Recognizer en intégrant les kits SDK de notre bibliothèque de client dans vos workflows et applications. Nous vous recommandons d’utiliser le service gratuit pendant que vous apprenez la technologie. N’oubliez pas que le nombre de pages gratuites est limité à 500 par mois.
 
-### <a name="form-recognizer-models"></a>Modèles Form Recognizer
-
-Le kit SDK Python prend en charge les modèles et les fonctionnalités suivants :
-
-* 🆕Document général – Analysez et extrayez le texte, les tableaux, la structure, les paires clé-valeur et les entités nommées.|
-* Disposition – Analysez et extrayez les tableaux, les lignes, les mots et les marques de sélection telles que les cases d’option et les cases à cocher dans des formulaires, sans avoir besoin d’entraîner un modèle.
-* Personnalisé – Analysez et extrayez les champs de formulaire et d’autres contenus de vos formulaires personnalisés en utilisant des modèles que vous avez entraînés avec vos propres types de formulaires.
-* Factures – Analysez et extrayez les champs courants des factures en utilisant un modèle de facture préentraîné.
-* Reçus – Analysez et extrayez les champs courants des reçus en utilisant un modèle de reçu préentraîné.
-* Documents d’identité – Analysez et extrayez les champs courants des documents d’identité, tels que les passeports ou les permis de conduire, en utilisant un modèle de pièce d’identité préentraîné.
-* Cartes de visite – Analysez et extrayez les champs courants des cartes de visite en utilisant un modèle de carte de visite préentraîné.
+Pour en savoir plus sur les fonctionnalités Form Recognizer et les options de développement, visitez notre page de [présentation](../overview.md#form-recognizer-features-and-development-options).
 
 Dans ce guide de démarrage rapide, vous allez utiliser les fonctionnalités suivantes pour analyser et extraire les données et les valeurs de formulaires et de documents :
 
-* [**Document général**](#try-it-general-document-model)
+* [🆕 **Document général**](#try-it-general-document-model) – Analysez et extrayez le texte, les tableaux, la structure, les paires clé-valeur et les entités nommées.|
 
-* [**Layout**](#try-it-layout-model)
+* [**Disposition**](#try-it-layout-model) – Analysez et extrayez les tableaux, les lignes, les mots et les marques de sélection telles que les cases d’option et les cases à cocher dans des formulaires, sans avoir besoin d’entraîner un modèle.
 
-* [**Facture prédéfinie**](#try-it-prebuilt-invoice-model)
+* [**Facture prédéfinie**](#try-it-prebuilt-model)Analysez et extrayez les champs courants des factures en utilisant un modèle de facture préentraîné.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -59,9 +48,9 @@ Dans ce guide de démarrage rapide, vous allez utiliser les fonctionnalités sui
 * Une ressource Cognitive Services ou Form Recognizer. Une fois que vous avez votre abonnement Azure, créez une ressource Form Recognizer [monoservice](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) ou [multiservice](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) dans le portail Azure pour obtenir votre clé et votre point de terminaison. Vous pouvez utiliser le niveau tarifaire Gratuit (`F0`) pour tester le service, puis passer par la suite à un niveau payant pour la production.
 
 > [!TIP]
-> Créez une ressource Cognitive Services si vous envisagez d’accéder à plusieurs services Cognitive Services sous un seul point de terminaison/clé. Pour l’accès à Form Recognizer uniquement, créez une ressource Form Recognizer. Notez que vous avez besoin d’une ressource monoservice si vous avez l’intention d’utiliser l’[authentification Azure Active Directory](/azure/active-directory/authentication/overview-authentication).
+> Créez une ressource Cognitive Services si vous envisagez d’accéder à plusieurs services Cognitive Services sous un seul point de terminaison/clé. Pour l’accès à Form Recognizer uniquement, créez une ressource Form Recognizer. Notez que vous avez besoin d’une ressource monoservice si vous avez l’intention d’utiliser l’[authentification Azure Active Directory](../../../active-directory/authentication/overview-authentication.md).
 
-* Une fois que votre ressource est déployée, cliquez sur **Accéder à la ressource**. Vous avez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Vous collerez votre clé et votre point de terminaison dans le code ci-dessous plus loin dans ce guide de démarrage rapide :
+* Après le déploiement de votre ressource, sélectionnez **Accéder à la ressource**. Vous avez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Vous collerez votre clé et votre point de terminaison dans le code ci-dessous plus loin dans le guide de démarrage rapide :
 
   :::image type="content" source="../media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le portail Azure":::
 
@@ -105,12 +94,26 @@ key = "YOUR_FORM_RECOGNIZER_SUBSCRIPTION_KEY"
 
 ```
 
+### <a name="select-a-code-sample-to-copy-and-paste-into-your-application"></a>Sélectionnez un exemple de code à copier-coller dans votre application :
+
+* [**Document général**](#try-it-general-document-model)
+
+* [**Layout**](#try-it-layout-model)
+
+* [**Facture prédéfinie**](#try-it-prebuilt-model)
+
+> [!IMPORTANT]
+>
+> N’oubliez pas de supprimer la clé de votre code une fois que vous avez terminé, et ne la postez jamais publiquement. En production, utilisez des méthodes sécurisées pour stocker vos informations d’identification et y accéder. Pour plus d’informations, consultez l’article sur la [sécurité](../../../cognitive-services/cognitive-services-security.md) de Cognitive Services.
+
 ## <a name="try-it-general-document-model"></a>**Essayez** : modèle de document général
 
 > [!div class="checklist"]
 >
 > * Pour cet exemple, vous aurez besoin d’un **fichier de formulaire au niveau d’un URI**. Vous pouvez utiliser notre [exemple de formulaire](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf) pour ce guide de démarrage rapide.
-> * Ajoutez la valeur de l’URI du fichier à la variable `formUrl` vers le haut de votre fichier.
+> * Pour analyser un fichier donné au niveau d’un URI, vous utilisez la méthode `begin_analyze_document` et passez `prebuilt-document` comme ID de modèle. La valeur retournée est un objet `result` contenant des données sur le document envoyé.
+> * Nous avons ajouté la valeur de l’URI du fichier à la variable `formUrl` en haut du fichier.
+> * Par souci de simplicité, tous les champs d’entité retournés par le service ne sont pas indiqués ici. Pour afficher la liste de tous les champs pris en charge et les types correspondants, consultez notre page conceptuelle [Document général](../concept-general-document.md#named-entity-recognition-ner-categories).
 
 ### <a name="add-the-following-code-to-your-general-document-application-on-the-line-below-the-key-variable"></a>Ajouter le code suivant à votre application de document général sur la ligne située sous la variable `key`
 
@@ -242,7 +245,8 @@ if __name__ == "__main__":
 > [!div class="checklist"]
 >
 > * Pour cet exemple, vous aurez besoin d’un **fichier de formulaire au niveau d’un URI**. Vous pouvez utiliser notre [exemple de formulaire](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf) pour ce guide de démarrage rapide.
-> * Ajoutez la valeur de l’URI du fichier à la variable `formUrl` vers le haut de votre fichier.
+> * Nous avons ajouté la valeur de l’URI du fichier à la variable `formUrl` en haut du fichier.
+> * Pour analyser un fichier donné au niveau d’un URI, vous utilisez la méthode `begin_analyze_document` et passez `prebuilt-layout` comme ID de modèle. La valeur retournée est un objet `result` contenant des données sur le document envoyé.
 
 ### <a name="add-the-following-code-to-your-layout-application-on-the-line-below-the-key-variable"></a>Ajouter le code suivant à votre application de disposition sur la ligne située sous la variable `key`
 
@@ -275,25 +279,27 @@ def analyze_layout():
 
 ```
 
-## <a name="try-it-prebuilt-invoice-model"></a>**Essayez** : modèle de facture prédéfinie
+## <a name="try-it-prebuilt-model"></a>**Essayez** : Modèle prédéfini
 
-Cet exemple montre comment analyser les données de certains types de documents courants avec des modèles préentraînés, à l’aide d’une facture à titre d’exemple. *Consultez* notre page de concept prédéfini pour obtenir la liste complète des [**paires clé-valeur de la facture**](../concept-invoice.md#key-value-pair-extraction).
+Cet exemple montre comment analyser les données de certains types de documents courants avec un modèle préentraîné, à l’aide d’une facture à titre d’exemple.
 
 > [!div class="checklist"]
 >
-> * Pour cet exemple, vous aurez besoin d’un **fichier de facture au niveau d’un URI**. Vous pouvez utiliser notre [exemple de facture](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf) pour ce guide de démarrage rapide.
-> * Ajoutez la valeur de l’URI du fichier à la variable `string fileUri` en haut de la méthode Main.
+> * Pour cet exemple, nous analysons un document de facture à l’aide d’un modèle prédéfini. Vous pouvez utiliser notre [exemple de facture](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf) pour ce guide de démarrage rapide.
+> * Nous avons ajouté la valeur de l’URI du fichier à la variable `string fileUri` en haut du fichier.
+> * Pour analyser un fichier donné au niveau d’un URI, vous utilisez la méthode `begin_analyze_document` et passez `prebuilt-invoice` comme ID de modèle. La valeur retournée est un objet `result` contenant des données sur le document envoyé.
+> * Par souci de simplicité, toutes les paires clé-valeur retournées par le service ne sont pas indiquées ici. Pour afficher la liste de tous les champs pris en charge et les types correspondants, consultez notre page conceptuelle [Facture](../concept-invoice.md#field-extraction).
 
 ### <a name="choose-the-invoice-prebuilt-model-id"></a>Choisir l’ID de modèle de facture prédéfinie
 
 Vous n’êtes pas limité aux factures – Vous avez le choix entre plusieurs modèles prédéfinis, chacun ayant son propre ensemble de champs pris en charge. Le modèle à utiliser pour l’opération d’analyse dépend du type de document à analyser. Voici les ID de modèle pour les modèles prédéfinis actuellement pris en charge par le service Form Recognizer :
 
-* **prebuilt-invoice** : extrait le texte, les marques de sélection, les tableaux, les paires clé-valeur et les informations clés des factures.
-* **prebuilt-businessCard** : extrait le texte et les informations clés des cartes de visite.
-* **prebuilt-idDocument** : extrait le texte et les informations clés des permis de conduire et des passeports internationaux.
-* **prebuilt-receipt** : extrait le texte et les informations clés des reçus.
+* [**Facture prédéfinie**](../concept-invoice.md) : extrait le texte, les marques de sélection, les tableaux, les paires clé-valeur et les informations clés des factures.
+* [**Reçu prédéfini**](../concept-receipt.md) : extrait le texte et les informations clés des reçus.
+* [**Document d’identité prédéfini**](../concept-id-document.md) : extrait le texte et les informations clés des permis de conduire et des passeports internationaux.
+* [**Carte de visite prédéfinie**](../concept-business-card.md) : extrait le texte et les informations clés des cartes de visite.
 
-### <a name="add-the-following-code-to-your-prebuilt-invoice-application-below-the-document_analysis_client-variable"></a>Ajouter le code suivant à votre application de facture prédéfinie sous la variable `document_analysis_client`
+### <a name="add-the-following-code-to-your-prebuilt-invoice-application-below-the-key-variable"></a>Ajouter le code suivant à votre application de facture prédéfinie sous la variable `key`
 
 ```python
 
@@ -575,9 +581,9 @@ if __name__ == "__main__":
 
 1. Accédez au dossier contenant votre fichier **form_recognizer_quickstart.py**.
 
-1. Dans votre terminal, tapez la commande suivante :
+1. Tapez la commande suivante dans votre terminal :
 
-```python
+```console
 python form_recognizer_quickstart.py
 ```
 
@@ -586,4 +592,7 @@ Félicitations ! Dans ce guide de démarrage rapide, vous avez utilisé Form Rec
 ## <a name="next-steps"></a>Étapes suivantes
 
 > [!div class="nextstepaction"]
-> [Documentation de référence de l’API REST v3.0](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)
+> [Documentation de référence de l’API REST v3.0](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)
+
+> [!div class="nextstepaction"]
+> [Bibliothèque de référence Python Form Recognizer](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-formrecognizer/3.2.0b1/index.html)

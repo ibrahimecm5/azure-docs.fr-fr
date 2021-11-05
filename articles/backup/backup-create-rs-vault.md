@@ -4,12 +4,12 @@ description: Dans cet article, découvrez comment créer et configurer des coffr
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: cbb1280b1ed78d82c312169f99a0d46f312fbd9d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dde592064c5cd4f42bd8baf94854fa2f95f4945e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122531391"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078272"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Créer et configurer un coffre Recovery Services
 
@@ -22,7 +22,7 @@ La Sauvegarde Azure gère automatiquement le stockage du coffre. Vous devez spé
 > [!NOTE]
 > La modification du paramètre **Type de réplication du stockage** (Localement redondant/Géoredondant) pour un coffre Recovery Services doit être opérée avant de configurer des sauvegardes dans le coffre. Une fois que vous avez configuré la sauvegarde, l’option de modification est désactivée.
 >
->- Si vous n’avez pas encore configuré la sauvegarde, [procédez comme suit](#set-storage-redundancy) pour vérifier et modifier les paramètres.
+>- Si vous n’avez pas encore configuré la sauvegarde, procédez comme suit pour vérifier et modifier les paramètres.
 >- Si vous avez déjà configuré la sauvegarde et que vous devez passer de GRS à LRS, [consultez ces solutions de contournement](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. Dans le volet **Coffres Recovery Services**, sélectionnez le nouveau coffre. Dans la section **Paramètres**, sélectionnez **Propriétés**.

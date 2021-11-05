@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: pafarley
-ms.openlocfilehash: 73076c141f28bc22450c87491053130ace6b5793
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e45c5badecfe97cb0be75e3e30f9442bf71beb69
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540754"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080571"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Entraîner et déployer un modèle Custom Speech
 
@@ -27,8 +28,8 @@ Si vous rencontrez des problèmes de reconnaissance avec un modèle de base, vou
 
 | Cas d’utilisation | Type de données |
 | -------- | --------- |
-| Améliorez l’exactitude de reconnaissance du vocabulaire ou de la grammaire spécifiques d’un secteur, par exemple, de la terminologie médicale ou du jargon informatique. | Texte associé (phrases/énoncés) |
-| Définissez les formes phonétique et affichée d’un mot ou d’un terme dont la prononciation n’est pas standard, par exemple, de noms de produits ou d’acronymes. | Texte associé (prononciation) |
+| Améliorez l’exactitude de reconnaissance du vocabulaire ou de la grammaire spécifiques d’un secteur, par exemple, de la terminologie médicale ou du jargon informatique. | Données de texte brut ou de texte structuré |
+| Définissez les formes phonétique et affichée d’un mot ou d’un terme dont la prononciation n’est pas standard, par exemple, de noms de produits ou d’acronymes. | Données de prononciation ou prononciation phonétique dans du texte structuré |
 | Améliorez la précision de la reconnaissance des styles de discours, des accents ou des bruits de fond spécifiques | Transcriptions audio + étiquetées à la main |
 
 ## <a name="train-and-evaluate-a-model"></a>Entraîner et évaluer un modèle

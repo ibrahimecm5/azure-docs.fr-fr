@@ -3,15 +3,15 @@ title: Gérer les modules dans Azure Automation
 description: Cet article explique comment utiliser des modules PowerShell pour activer des cmdlets de runbooks et de ressources DSC dans des configurations DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 04/28/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f10c1f70026b905521193a0dd511ba1e65de6849
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 733cc6cb4b783a379c20328f0a31a4373ee3e372
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274023"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427220"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Gérer les modules dans Azure Automation
 
@@ -152,19 +152,29 @@ Le fait d’importer un module Az dans votre compte Automation n’a pas pour ef
 
 Vous pouvez importer les modules Az dans le compte Automation à partir du portail Azure. [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) étant une dépendance pour les autres modules Az, veillez à importer ce module avant tout autre.
 
+> [!NOTE]
+>  Avec l’introduction de la prise en charge de **PowerShell 7.1 (préversion)** , l’option **Rechercher dans la galerie** a été mise à jour avec les changements suivants :
+
+-  **Rechercher dans la galerie** est disponible dans le panneau **Automatisation des processus** > **Modules**. 
+-  La page **Modules** affiche deux nouvelles colonnes : **Version du module** et **Version du runtime**
+
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 1. Recherchez et sélectionnez **Comptes Automation**.
 1. Sur la page **Comptes Automation**, accédez à la liste et sélectionnez votre compte Automation.
 1. À partir de votre compte Automation, sous **Ressources partagées**, sélectionnez **Modules**.
-1. Sélectionnez **Parcourir la galerie**.  
-1. Dans la barre de recherche, entrez le nom du module, par exemple, `Az.Accounts`.
-1. Dans la page Module PowerShell, sélectionnez **Importer** pour importer le module dans votre compte Automation.
+1. Sélectionnez **Ajouter un module**. Dans la page **Ajouter un module**, vous pouvez sélectionner l’une des options suivantes :
+      1. **Rechercher un fichier** : sélectionne un fichier sur votre machine locale.
+      1. **Rechercher dans la galerie** : vous pouvez rechercher et sélectionner un module existant à partir de la galerie.
+1. Cliquez sur **Sélectionner** pour sélectionner un module.
+1. Sélectionnez **Version du runtime** et cliquez sur **Importer**.
 
-    ![Capture d’écran de l’importation de modules dans votre compte Automation](../media/modules/import-module.png)
+      :::image type="content" source="../media/modules/import-module.png" alt-text="Capture d’écran de l’importation de modules dans votre compte Automation.":::
+
+1. Dans la page **Modules**, vous pouvez voir le module importé sous le compte Automation.
 
 Vous pouvez également effectuer ce processus d’importation via [PowerShell Gallery](https://www.powershellgallery.com) en recherchant le module à importer. Une fois le module trouvé, sélectionnez-le, puis choisissez l’onglet **Azure Automation**. Sélectionnez **Déployer sur Azure Automation**.
 
-![Capture d’écran de l’importation de modules directement à partir de PowerShell Gallery](../media/modules/import-gallery.png)
+:::image type="content" source="../media/modules/import-gallery.png" alt-text="Capture d’écran de l’importation de modules directement à partir de PowerShell Gallery.":::
 
 ### <a name="test-your-runbooks"></a>Tester vos runbooks
 

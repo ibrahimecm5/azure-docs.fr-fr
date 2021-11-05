@@ -7,21 +7,21 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: ece84cc15c9945d8f39e3163ab0da2941d4f1349
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0dcc729ea622c42592d1f118f58a831d3a637aea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162009"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056183"
 ---
 # <a name="authorize-search-requests-using-azure-ad-preview"></a>Autoriser les demandes de recherche à l’aide d’Azure AD (préversion)
 
 > [!IMPORTANT]
 > Le contrôle d’accès en fonction du rôle pour les opérations du plan de données, telles que la création d’un index ou l’interrogation d’un index, est actuellement en préversion publique et disponible sous [des Conditions d’utilisation supplémentaires](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Cette fonctionnalité est uniquement disponible dans les clouds publics et peut avoir un impact sur la latence de vos opérations pendant la période de préversion. 
 
-Grâce à Azure Active Directory (Azure AD), vous pouvez utiliser le contrôle d’accès en fonction du rôle (RBAC) pour accorder l’accès à vos services Recherche cognitive Azure. L’un des principaux avantages de l’utilisation d’Azure AD est que vos informations d’identification n’ont plus besoin d’être stockées dans votre code. Azure AD authentifie le principal de sécurité (un utilisateur, un groupe ou un principal de service) qui exécute l’application. Si l’authentification réussit, Azure AD renvoie le jeton d’accès à l’application, et l’application peut ensuite l’utiliser pour autoriser les requêtes adressées à Recherche cognitive Azure. Pour en savoir plus sur les avantages de l’utilisation d’Azure AD dans vos applications, consultez [Intégration à Azure Active Directory](/azure/active-directory/develop/active-directory-how-to-integrate#benefits-of-integration).
+Grâce à Azure Active Directory (Azure AD), vous pouvez utiliser le contrôle d’accès en fonction du rôle (RBAC) pour accorder l’accès à vos services Recherche cognitive Azure. L’un des principaux avantages de l’utilisation d’Azure AD est que vos informations d’identification n’ont plus besoin d’être stockées dans votre code. Azure AD authentifie le principal de sécurité (un utilisateur, un groupe ou un principal de service) qui exécute l’application. Si l’authentification réussit, Azure AD renvoie le jeton d’accès à l’application, et l’application peut ensuite l’utiliser pour autoriser les requêtes adressées à Recherche cognitive Azure. Pour en savoir plus sur les avantages de l’utilisation d’Azure AD dans vos applications, consultez [Intégration à Azure Active Directory](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration).
 
-Cet article vous montre comment configurer votre application pour l’authentification à l’aide de le plateforme d’identités Microsoft. Pour en savoir plus sur la plateforme d’identités Microsoft, consultez [Vue d’ensemble de la plateforme d’identités Microsoft](/azure/active-directory/develop/v2-overview). Pour en savoir plus sur le flux d’octroi de code OAuth 2.0 utilisé par Azure AD, consultez [Autoriser l’accès aux applications web Azure Active Directory à l’aide du flux d’octroi de code OAuth 2.0](/azure/active-directory/develop/v2-oauth2-auth-code-flow).
+Cet article vous montre comment configurer votre application pour l’authentification à l’aide de le plateforme d’identités Microsoft. Pour en savoir plus sur la plateforme d’identités Microsoft, consultez [Vue d’ensemble de la plateforme d’identités Microsoft](../active-directory/develop/v2-overview.md). Pour en savoir plus sur le flux d’octroi de code OAuth 2.0 utilisé par Azure AD, consultez [Autoriser l’accès aux applications web Azure Active Directory à l’aide du flux d’octroi de code OAuth 2.0](../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
 ## <a name="prepare-your-search-service"></a>Préparer votre service de recherche
 
@@ -29,11 +29,20 @@ Dans un premier temps, [créez un service de recherche](search-create-service-po
 
 ### <a name="sign-up-for-the-preview"></a>S’inscrire à la version préliminaire
 
-Les parties des capacités RBAC de Recherche cognitive Azure nécessaires à l’utilisation d’Azure AD pour interroger le service de recherche sont encore en phase de préversion. 
+Les parties des capacités RBAC de Recherche cognitive Azure nécessaires à l’utilisation d’Azure AD pour interroger le service de recherche sont encore en préversion. Pour utiliser ces fonctionnalités, vous devez ajouter la fonctionnalité d’évaluation à votre abonnement Azure.
 
-Pour vous inscrire à la préversion, [remplissez ce formulaire](https://aka.ms/azure-cognitive-search/rbac-preview).
+Pour ajouter votre abonnement à la version préliminaire :
 
-Le traitement de votre demande peut prendre quelques jours ouvrables. 
+1. Accédez à la page **Abonnements** dans le [portail Azure](https://portal.azure.com/).
+1. Sélectionnez l’abonnement que vous souhaitez utiliser.
+1. Sur le côté gauche de la page d’abonnement, sélectionnez **Fonctionnalités d’évaluation**.
+1. Utilisez la barre de recherche ou les filtres pour rechercher et sélectionner des **Access Control basées sur les rôles pour Search service (version préliminaire)** .
+1. Sélectionnez **Inscrire** pour ajouter la fonctionnalité à votre abonnement.
+
+![s’inscrire à rbac sur afec](media/search-howto-aad/rbac-signup-afec.png)
+
+Pour plus d’informations sur l’ajout de fonctionnalités en préversion, consultez [Configurer des fonctionnalités d’évaluation dans un abonnement Azure](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+
 
 ### <a name="enable-rbac-for-data-plane-operations"></a>Activer le RBAC pour les opérations du plan de données
 
@@ -47,11 +56,11 @@ Pour activer le contrôle d’accès en fonction du rôle :
 
 ![options d’authentification pour recherche cognitive Azure dans le portail](media/search-howto-aad/portal-api-access-control.png)
 
-Vous pouvez également modifier ces paramètres par programmation, comme décrit dans la [documentation de Recherche cognitive Azure relative au RBAC](/azure/search/search-security-rbac?tabs=config-svc-rest%2Croles-powershell%2Ctest-rest#step-2-preview-configuration).
+Vous pouvez également modifier ces paramètres par programmation, comme décrit dans la [documentation de Recherche cognitive Azure relative au RBAC](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-2-preview-configuration).
 
 ## <a name="register-an-application-with-azure-ad"></a>inscrire une application auprès d’Azure AD ;
 
-L’étape suivante pour utiliser Azure AD pour l’authentification consiste à inscrire une application auprès de la [plateforme d’identités Microsoft](/azure/active-directory/develop/quickstart-register-app). Si vous rencontrez des problèmes lors de la création de l’application, vérifiez que vous disposez des [autorisations nécessaires pour inscrire une application](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app).
+L’étape suivante pour utiliser Azure AD pour l’authentification consiste à inscrire une application auprès de la [plateforme d’identités Microsoft](../active-directory/develop/quickstart-register-app.md). Si vous rencontrez des problèmes lors de la création de l’application, vérifiez que vous disposez des [autorisations nécessaires pour inscrire une application](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 Pour inscrire une application auprès d’Azure AD :
 
@@ -80,9 +89,9 @@ Veillez à enregistrer la valeur du secret dans un endroit sûr, car vous ne pou
 
 ## <a name="grant-your-application-permissions-to-azure-cognitive-search"></a>Accordez vos permissions d’application à Recherche cognitive Azure.
 
-Ensuite, vous devez accorder à votre application Azure AD l’accès à votre service de recherche. Recherche cognitive Azure dispose de plusieurs [rôles intégrés](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#built-in-roles-used-in-search) qui peuvent être utilisés en fonction de l’accès requis par votre application.
+Ensuite, vous devez accorder à votre application Azure AD l’accès à votre service de recherche. Recherche cognitive Azure dispose de plusieurs [rôles intégrés](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#built-in-roles-used-in-search) qui peuvent être utilisés en fonction de l’accès requis par votre application.
 
-En général, il est préférable de fournir à votre application uniquement l’accès requis. Par exemple, si votre application doit uniquement être en mesure d’interroger l’index de recherche, vous pouvez lui accorder le rôle [Lecteur de données d’index de recherche (préversion)](/azure/role-based-access-control/built-in-roles#search-index-data-reader). Par contre, si elle doit pouvoir lire et écrire dans un index de recherche, vous pouvez utiliser le rôle [Contributeur de données d’index de recherche (préversion)](/azure/role-based-access-control/built-in-roles#search-index-data-contributor).
+En général, il est préférable de fournir à votre application uniquement l’accès requis. Par exemple, si votre application doit uniquement être en mesure d’interroger l’index de recherche, vous pouvez lui accorder le rôle [Lecteur de données d’index de recherche (préversion)](../role-based-access-control/built-in-roles.md#search-index-data-reader). Par contre, si elle doit pouvoir lire et écrire dans un index de recherche, vous pouvez utiliser le rôle [Contributeur de données d’index de recherche (préversion)](../role-based-access-control/built-in-roles.md#search-index-data-contributor).
 
 Pour attribuer un rôle à votre inscription d’application :
 
@@ -95,11 +104,11 @@ Pour attribuer un rôle à votre inscription d’application :
 
 ![Ajouter une attribution de rôle dans le portail Azure](media/search-howto-aad/role-assignment.png)
 
-Vous pouvez également [attribuer des rôles à l’aide de PowerShell](/azure/search/search-security-rbac?tabs=config-svc-rest%2Croles-powershell%2Ctest-rest#step-3-assign-roles).
+Vous pouvez également [attribuer des rôles à l’aide de PowerShell](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-3-assign-roles).
 
 ### <a name="create-a-custom-role"></a>Créer un rôle personnalisé
 
-Outre l’utilisation de [rôles intégrés](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#built-in-roles-used-in-search), vous pouvez également créer un [rôle personnalisé](/azure/role-based-access-control/custom-roles) pour définir exactement ce que vous souhaitez que votre application soit en mesure de faire.
+Outre l’utilisation de [rôles intégrés](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#built-in-roles-used-in-search), vous pouvez également créer un [rôle personnalisé](../role-based-access-control/custom-roles.md) pour définir exactement ce que vous souhaitez que votre application soit en mesure de faire.
 
 Par exemple, si vous souhaitez un rôle qui a la capacité de gérer intégralement des index, y compris la capacité de créer des index et de lire des données à partir de ceux-ci, vous pouvez définir le rôle indiqué ci-dessous :
 
@@ -124,9 +133,9 @@ Par exemple, si vous souhaitez un rôle qui a la capacité de gérer intégralem
 }
 ```
 
-Vous pouvez créer des rôles personnalisés à l’aide du [portail Azure](/azure/role-based-access-control/custom-roles-portal), d’[Azure PowerShell](/azure/role-based-access-control/custom-roles-powershell), d’[Azure CLI](/azure/role-based-access-control/custom-roles-cli) ou de l’[API REST](/azure/role-based-access-control/custom-roles-rest). Le JSON ci-dessus montre la syntaxe permettant de créer un rôle personnalisé avec PowerShell.
+Vous pouvez créer des rôles personnalisés à l’aide du [portail Azure](../role-based-access-control/custom-roles-portal.md), d’[Azure PowerShell](../role-based-access-control/custom-roles-powershell.md), d’[Azure CLI](../role-based-access-control/custom-roles-cli.md) ou de l’[API REST](../role-based-access-control/custom-roles-rest.md). Le JSON ci-dessus montre la syntaxe permettant de créer un rôle personnalisé avec PowerShell.
 
-Pour obtenir la liste complète des opérations disponibles, consultez [Opérations du fournisseur de ressources Microsoft.Search](/azure/role-based-access-control/resource-provider-operations#microsoftsearch).
+Pour obtenir la liste complète des opérations disponibles, consultez [Opérations du fournisseur de ressources Microsoft.Search](../role-based-access-control/resource-provider-operations.md#microsoftsearch).
 
 
 ### <a name="grant-access-to-only-a-single-index"></a>Accorder l’accès à un seul index
@@ -190,11 +199,11 @@ La documentation d’Azure.Identity contient également des détails supplément
 
 ### <a name="azure-ad-authentication-with-the-rest-api"></a>Authentification Azure AD avec l’API REST
 
-L’utilisation d’un Kit de développement logiciel (SDK) Azure simplifie le flux OAuth 2.0, mais vous pouvez également programmer directement dans le protocole de votre application. Tous les détails sont disponibles dans [Plateforme d’identités Microsoft et flux d’informations d’identification du client OAuth 2.0](/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
+L’utilisation d’un Kit de développement logiciel (SDK) Azure simplifie le flux OAuth 2.0, mais vous pouvez également programmer directement dans le protocole de votre application. Tous les détails sont disponibles dans [Plateforme d’identités Microsoft et flux d’informations d’identification du client OAuth 2.0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).
 
 #### <a name="get-a-token"></a>Obtention d’un jeton
 
-Commencez par [obtenir un jeton](/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#get-a-token) auprès de la plateforme d’identités Microsoft :
+Commencez par [obtenir un jeton](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token) auprès de la plateforme d’identités Microsoft :
 
 ```
 POST /[tenant id]/oauth2/v2.0/token HTTP/1.1
@@ -222,7 +231,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ## <a name="see-also"></a>Voir aussi
 
 + [Utiliser l’autorisation basée sur les rôles dans Azure Recherche cognitive](search-security-rbac.md)
-+ [Autoriser l’accès aux applications web Azure Active Directory à l’aide du flux d’octroi de code OAuth 2.0](/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-+ [Intégration à Azure Active Directory](/azure/active-directory/develop/active-directory-how-to-integrate#benefits-of-integration)
-+ [Rôle personnalisés Azure](/azure/role-based-access-control/custom-roles)
-
++ [Autoriser l’accès aux applications web Azure Active Directory à l’aide du flux d’octroi de code OAuth 2.0](../active-directory/develop/v2-oauth2-auth-code-flow.md)
++ [Intégration à Azure Active Directory](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration)
++ [Rôle personnalisés Azure](../role-based-access-control/custom-roles.md)

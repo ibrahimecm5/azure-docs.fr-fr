@@ -3,7 +3,7 @@ title: Comprendre les renseignements sur les menaces dans Azure Sentinel | Micro
 description: Découvrez comment les flux de renseignements sur les menaces sont connectés, gérés et utilisés dans Azure Sentinel pour analyser les données, détecter les menaces et enrichir les alertes.
 services: sentinel
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2021
-ms.author: yelevin
-ms.openlocfilehash: 6ab9ecbe3b67ec933604ab1d8f6efdc7dbd8a5af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/19/2021
+ms.author: bagol
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9b8bafe6cbfb9f2351bcf3e8004fbed2a08e61b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524665"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055062"
 ---
 # <a name="understand-threat-intelligence-in-azure-sentinel"></a>Comprendre les renseignements sur les menaces dans Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="introduction-to-threat-intelligence"></a>Introduction au renseignement sur les menaces
 
@@ -29,26 +32,33 @@ ms.locfileid: "122524665"
 
 Le renseignement sur les cybermenaces (CTI, Cyber Threat Intelligence) est constitué d’informations qui décrivent des menaces connues existantes ou potentielles pour les systèmes et les utilisateurs. Ce type d’informations prend de nombreuses formes, depuis des rapports écrits détaillant les motivations, l’infrastructure et les techniques d’un auteur de menace particulier jusqu’à des observations spécifiques d’adresses IP, de domaines, de hachages de fichier et d’autres artefacts associés à des cybermenaces connues. Les organisations utilisent le renseignement sur les cybermenaces pour fournir un contexte essentiel à une activité inhabituelle, afin que le personnel de sécurité puisse prendre rapidement des mesures pour protéger leurs collaborateurs, informations et autres ressources. Le renseignement sur les cybermenaces peut provenir de plusieurs emplacements, comme des communautés de partage de renseignements sur les menaces, des flux de renseignements commerciaux et des renseignements recueillis au niveau local, le tout collecté au cours d’enquêtes de sécurité au sein d’une organisation.
 
-Dans une solution SIEM (Informations de sécurité et gestion d’événements) comme Azure Sentinel, les indicateurs de menace, souvent appelés « indicateurs de compromission » ou « IoC », constituent la forme de renseignement sur les cybermenaces la plus utilisée. Les indicateurs de menace sont des données qui associent des artefacts observés comme des URL, des hachages de fichier ou des adresses IP, à une activité de menace connue comme le hameçonnage, les botnets ou les programmes malveillants. Cette forme de renseignement sur les menaces est souvent appelée « renseignement tactique sur les menaces », car elle peut être appliquée à des produits de sécurité et à l’automatisation à grande échelle. Elle permet également de détecter les menaces potentielles auxquelles une organisation est exposée et de la protéger contre celles-ci. Dans Azure Sentinel, vous pouvez utiliser des indicateurs de menace pour détecter les activités malveillantes observées dans votre environnement et fournir un contexte aux enquêteurs sur la sécurité afin d’éclairer leurs décisions.
+Dans une solution SIEM (Informations de sécurité et gestion d’événements) comme Azure Sentinel, les indicateurs de menace, souvent appelés « indicateurs de compromission » ou « IoC », constituent la forme de renseignement sur les cybermenaces la plus utilisée. Les indicateurs de menace sont des données qui associent des artefacts observés comme des URL, des hachages de fichier ou des adresses IP, à une activité de menace connue comme le hameçonnage, les botnets ou les programmes malveillants. Cette forme de renseignement sur les menaces est souvent appelée *renseignement tactique sur les menaces*, car elle peut être appliquée à des produits de sécurité et à l’automatisation à grande échelle. Elle permet également de détecter les menaces potentielles auxquelles une organisation est exposée et de la protéger contre celles-ci. Dans Azure Sentinel, vous pouvez utiliser des indicateurs de menace pour détecter les activités malveillantes observées dans votre environnement et fournir un contexte aux enquêteurs sur la sécurité afin d’éclairer leurs décisions.
 
-Vous pouvez intégrer le renseignement sur les menaces à Azure Sentinel par le biais des activités suivantes :
+Intégrez le renseignement sur les menaces à Azure Sentinel par le biais des activités suivantes :
 
 - **Importez le renseignement sur les menaces** dans Azure Sentinel en activant des **connecteurs de données** sur différents [flux](connect-threat-intelligence-taxii.md) et [plateformes](connect-threat-intelligence-tip.md) de renseignement sur les menaces.
+
 - **Affichez et gérez** le renseignement sur les menaces importé dans des **journaux** et dans le panneau **Threat Intelligence** d’Azure Sentinel.
+
 - **Détectez les menaces** et générez des alertes et des incidents de sécurité à l’aide des modèles de règle d’**analytique** intégrés basés sur le renseignement sur les menaces importé.
+
 - **Visualisez les informations essentielles** concernant le renseignement sur les menaces importé dans Azure Sentinel à l’aide du **workbook Threat Intelligence**.
 
-Threat Intelligence fournit également un contexte utile dans d’autres expériences Azure Sentinel, comme le **repérage** et les **notebooks**. Bien qu’elles ne soient pas abordées dans cet article, ces expériences sont traitées dans l’excellent billet de blog de Ian Hellen sur les [ notebooks Jupyter dans Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), qui porte sur l’utilisation du renseignement sur les cybermenaces dans les notebooks.
+Microsoft enrichit tous les indicateurs du renseignement sur les menaces importés avec des [données de géolocalisation et WhoIs](#view-your-geolocation-and-whois-data-enrichments-public-preview), qui sont affichées avec d’autres détails d’indicateur.
+
+> [!TIP]
+> Le renseignement sur les menaces fournit également un contexte utile dans d’autres expériences Azure Sentinel, telles que la **chasse** et les **notebooks**. Pour plus d’informations, consultez [Notebooks Jupyter dans Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239) et le [Tutoriel : Prise en main des notebooks Jupyter et de MSTICPy dans Azure Sentinel](notebook-get-started.md).
+>
 
 ## <a name="import-threat-intelligence-with-data-connectors"></a>Importer le renseignement sur les menaces avec des connecteurs de données
 
-Comme toutes les autres données d’événement dans Azure Sentinel, les indicateurs de menace sont importés à l’aide de connecteurs de données. Il existe deux connecteurs de données dans Azure Sentinel fournis spécifiquement pour les indicateurs de menace, **Threat Intelligence-TAXII** pour les flux STIX/TAXII standard et les **plateformes de renseignement sur les menaces** pour les flux de renseignement intégrés et organisés. Vous pouvez utiliser soit un connecteur de données seul, soit les deux connecteurs ensemble, en fonction de l’endroit d’où proviennent les indicateurs de menace utilisés par votre organisation. 
+Comme toutes les autres données d’événement dans Azure Sentinel, les indicateurs de menace sont importés à l’aide de connecteurs de données. Il existe deux connecteurs de données dans Azure Sentinel fournis spécifiquement pour les indicateurs de menace, **Threat Intelligence-TAXII** pour les flux STIX/TAXII standard et les **plateformes de renseignement sur les menaces** pour les flux de renseignement intégrés et organisés. Vous pouvez utiliser soit un connecteur de données seul, soit les deux connecteurs ensemble, en fonction de l’endroit d’où proviennent les indicateurs de menace utilisés par votre organisation.
 
 Consultez le catalogue des [intégrations du renseignement sur les menaces](threat-intelligence-integration.md) disponibles avec Azure Sentinel.
 
-### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>Ajout d’indicateurs de menace à Azure Sentinel avec le connecteur de données Plateformes Threat Intelligence
+### <a name="add-threat-indicators-to-azure-sentinel-with-the-threat-intelligence-platforms-data-connector"></a>Ajout d’indicateurs de menace à Azure Sentinel avec le connecteur de données Plateformes Threat Intelligence
 
-De nombreuses organisations utilisent des solutions de plateforme de renseignement sur les menaces pour agréger les flux d’indicateurs de menace provenant de diverses sources, organiser les données au sein de la plateforme, puis choisir les indicateurs de menace à appliquer à différentes solutions de sécurité, comme les appareils réseau, les solutions EDR/XDR ou les solutions SIEM comme Azure Sentinel. Si votre organisation utilise une [solution de plateforme de renseignement sur les menaces intégrée](connect-threat-intelligence-tip.md), le **connecteur de données de plateformes de renseignement sur les menaces** vous permet d’utiliser cette plateforme pour importer des indicateurs de menace dans Azure Sentinel. 
+De nombreuses organisations utilisent des solutions de plateforme de renseignement sur les menaces pour agréger les flux d’indicateurs de menace provenant de diverses sources, organiser les données au sein de la plateforme, puis choisir les indicateurs de menace à appliquer à différentes solutions de sécurité, comme les appareils réseau, les solutions EDR/XDR ou les solutions SIEM comme Azure Sentinel. Si votre organisation utilise une [solution de plateforme de renseignement sur les menaces intégrée](connect-threat-intelligence-tip.md), le **connecteur de données de plateformes de renseignement sur les menaces** vous permet d’utiliser cette plateforme pour importer des indicateurs de menace dans Azure Sentinel.
 
 Étant donné que le connecteur de données de plateformes de renseignement sur les menaces fonctionne avec l’[API Microsoft Graph Security tiIndicators](/graph/api/resources/tiindicator) pour effectuer cette opération, il peut également être utilisé par n’importe quelle plateforme de renseignement sur les menaces personnalisée qui communique avec l’API tiIndicators pour envoyer des indicateurs à Azure Sentinel (et à d’autres solutions de sécurité Microsoft comme Microsoft 365 Defender).
 
@@ -56,7 +66,7 @@ De nombreuses organisations utilisent des solutions de plateforme de renseigneme
 
 Pour plus d’informations sur les solutions de plateformes de renseignement sur les menaces intégrées à Azure Sentinel, consultez [Produits de la plateforme de renseignement sur les menaces intégrée](threat-intelligence-integration.md#integrated-threat-intelligence-platform-products).
 
-Voici les principales étapes à suivre pour importer des indicateurs de menace dans Azure Sentinel à partir de votre solution de plateforme de renseignement sur les menaces intégrée ou de renseignement sur les menaces personnalisée :
+**Pour importer des indicateurs de menace dans Azure Sentinel à partir de votre plateforme Threat Intelligence (TIP) intégrée ou de renseignement sur les menaces personnalisée** :
 
 1. Obtenir un **ID d’application** et un **secret client** à partir de votre instance Azure Active Directory
 
@@ -64,22 +74,21 @@ Voici les principales étapes à suivre pour importer des indicateurs de menace 
 
 1. Activer le connecteur de données Plateformes Threat Intelligence dans Azure Sentinel
 
-Pour un examen détaillé de chacune de ces étapes, consultez [Connecter votre plateforme de renseignement sur les menaces à Azure Sentinel](connect-threat-intelligence-tip.md).
+Pour plus d’informations, consultez [Connecter votre plateforme de renseignement sur les menaces (TIP) à Azure Sentinel](connect-threat-intelligence-tip.md).
 
-
-### <a name="adding-threat-indicators-to-azure-sentinel-with-the-threat-intelligence---taxii-data-connector"></a>Ajout d’indicateurs de menace à Azure Sentinel avec le connecteur de données Threat Intelligence - TAXII
+### <a name="add-threat-indicators-to-azure-sentinel-with-the-threat-intelligence---taxii-data-connector"></a>Ajouter des indicateurs de menace à Azure Sentinel avec le connecteur de données Threat Intelligence - TAXII
 
 La norme du secteur la plus largement adoptée pour la transmission du renseignement sur les menaces est une [combinaison du format de données STIX et du protocole TAXII](https://oasis-open.github.io/cti-documentation/). Si votre organisation obtient des indicateurs de menace à partir de solutions qui prennent en charge la version actuelle de STIX/TAXII (2.0 ou 2.1), vous pouvez utiliser le connecteur de données **Threat Intelligence - TAXII** pour apporter vos indicateurs de menace dans Azure Sentinel. Le connecteur de données Threat Intelligence - TAXII permet à un client TAXII intégré d’Azure Sentinel d’importer le renseignement sur les menaces à partir de serveurs TAXII 2.x.
 
 :::image type="content" source="media/understand-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Chemin d’importation de TAXII":::
- 
-Effectuez les étapes suivantes pour importer des indicateurs de menace au format STIX dans Azure Sentinel à partir d’un serveur TAXII :
+
+**Pour importer des indicateurs de menace au format STIX dans Azure Sentinel à partir d’un serveur TAXII** :
 
 1. Obtenir la racine d’API et l’ID de collection du serveur TAXII
 
 1. Activer le connecteur de données Threat Intelligence - TAXII dans Azure Sentinel
 
-Pour un examen détaillé de chacune de ces étapes, consultez [Connecter Azure Sentinel aux flux de renseignement sur les menaces STIX/TAXII](connect-threat-intelligence-taxii.md).
+Pour plus d’informations, consultez [Connecter Azure Sentinel aux flux de renseignement sur les menaces STIX/TAXII](connect-threat-intelligence-taxii.md).
 
 ## <a name="view-and-manage-your-threat-indicators"></a>Afficher et gérer vos indicateurs de menace
 
@@ -97,6 +106,14 @@ L’étiquetage des indicateurs de menace est un moyen simple de les regrouper p
 
 Pour plus d’informations sur l’affichage et la gestion de vos indicateurs de menace, consultez [Utiliser des indicateurs de menace dans Azure Sentinel](work-with-threat-indicators.md#view-your-threat-indicators-in-azure-sentinel).
 
+### <a name="view-your-geolocation-and-whois-data-enrichments-public-preview"></a>Voir vos enrichissements de données de géolocalisation et WhoIs (préversion publique)
+
+Microsoft enrichit chaque indicateur avec des données de géolocalisation et WhoIs supplémentaires, fournissant davantage de contexte pour les investigations dans lesquelles l’indicateur de compromission (IOC) sélectionné est trouvé.
+
+Vous pouvez voir les données de géolocalisation et WhoIs dans le volet **Renseignement sur les menaces** pour chaque indicateur de compromission que vous avez importé dans Azure Sentinel.
+
+Par exemple, utilisez les données de géolocalisation pour rechercher des détails tels que l’*organisation* ou le *pays* associé à l’indicateur, et les données Whois pour rechercher des données telles que celles sur le *bureau d’enregistrement* et la *création d’enregistrements*.
+
 ## <a name="detect-threats-with-threat-indicator-based-analytics"></a>Détecter les menaces avec l’analytique basée sur des indicateurs de menace
 
 Le cas d’usage le plus important pour les indicateurs de menace dans les solutions SIEM comme Azure Sentinel consiste à fournir des règles analytiques dans le cadre de la détection des menaces. Ces règles basées sur les indicateurs comparent les événements bruts provenant de vos sources de données avec vos indicateurs de menace pour détecter les menaces de sécurité qui pèsent sur votre organisation. Dans l’**analytique** Azure Sentinel, vous créez des règles analytiques qui s’exécutent selon une planification et qui génèrent des alertes de sécurité. Les règles sont pilotées par des requêtes ainsi que par des configurations qui déterminent la fréquence à laquelle la règle doit s’exécuter, le type de résultats de requête qui doivent générer des alertes et incidents de sécurité et, le cas échéant, les réponses automatisées à déclencher.
@@ -113,13 +130,14 @@ Pour plus d’informations sur l’utilisation des indicateurs de menace dans vo
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>Les classeurs fournissent des insights concernant le renseignement sur les menaces
 
-Les workbooks fournissent des tableaux de bord interactifs puissants qui vous donnent des insights sur tous les aspects d’Azure Sentinel, et le renseignement sur les menaces ne fait pas exception à cette règle. Vous pouvez utiliser le **workbook Threat Intelligence** intégré pour visualiser des informations essentielles concernant le renseignement sur les menaces et vous pouvez facilement personnaliser le workbook en fonction des besoins de votre entreprise. Vous pouvez même créer des tableaux de bord qui associent de nombreuses sources de données pour vous permettre de visualiser vos données de manière unique. Étant donné que les classeurs Azure Sentinel sont basés sur des classeurs Azure Monitor, une documentation complète et de nombreux autres modèles sont déjà disponibles. Cet article est idéal pour découvrir comment [Créer des rapports interactifs avec les classeurs Azure Monitor](../azure-monitor/visualize/workbooks-overview.md). 
+Les workbooks fournissent des tableaux de bord interactifs puissants qui vous donnent des insights sur tous les aspects d’Azure Sentinel, et le renseignement sur les menaces ne fait pas exception à cette règle. Vous pouvez utiliser le **workbook Threat Intelligence** intégré pour visualiser des informations essentielles concernant le renseignement sur les menaces et vous pouvez facilement personnaliser le workbook en fonction des besoins de votre entreprise. Vous pouvez même créer des tableaux de bord qui associent de nombreuses sources de données pour vous permettre de visualiser vos données de manière unique. Étant donné que les classeurs Azure Sentinel sont basés sur des classeurs Azure Monitor, une documentation complète et de nombreux autres modèles sont déjà disponibles. Cet article est idéal pour découvrir comment [Créer des rapports interactifs avec les classeurs Azure Monitor](../azure-monitor/visualize/workbooks-overview.md).
 
 Il existe également une vaste communauté de [classeurs Azure Monitor sur GitHub](https://github.com/microsoft/Application-Insights-Workbooks) où vous pouvez télécharger des modèles supplémentaires et partager vos propres modèles.
 
 Pour plus d’informations sur l’utilisation et la personnalisation du workbook Threat Intelligence, consultez [Utiliser des indicateurs de menace dans Azure Sentinel](work-with-threat-indicators.md#workbooks-provide-insights-about-your-threat-intelligence).
 
 ## <a name="next-steps"></a>Étapes suivantes
+
 Dans ce document, vous avez découvert les fonctionnalités du renseignement sur les menaces d’Azure Sentinel, notamment le panneau Threat Intelligence. Pour obtenir des conseils pratiques sur l’utilisation des fonctionnalités du renseignement sur les menaces d’Azure Sentinel, consultez les articles suivants :
 
 - Connecter Azure Sentinel aux [flux de renseignement sur les menaces STIX/TAXII](./connect-threat-intelligence-taxii.md).

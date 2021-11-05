@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d090d6c97a26b78799adf8c5927e6e680c43938a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 173ef82e77e44f3b7e2a664d613b1810995fee21
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596502"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044795"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>Tutoriel : Configurer BioCatch avec Azure Active Directory B2C
 
@@ -84,7 +84,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 2. Créez un nouveau fichier, qui hérite du fichier d’extensions.
 
-    ```XML
+    ```xml
     <BasePolicy> 
 
         <TenantId>tenant.onmicrosoft.com</TenantId> 
@@ -96,7 +96,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 3. Créez une référence à l’interface utilisateur personnalisée pour masquer la zone d’entrée, sous la ressource BuildingBlocks.
 
-    ```XML
+    ```xml
     <ContentDefinitions> 
 
         <ContentDefinition Id="api.selfasserted"> 
@@ -112,7 +112,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. Ajoutez les revendications suivantes sous la ressource BuildingBlocks.
 
-    ```XML
+    ```xml
     <ClaimsSchema> 
 
           <ClaimType Id="riskLevel"> 
@@ -146,7 +146,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 5. Configurez le fournisseur de revendications auto-déclaré pour le champ d’ID de session client.
 
-    ```XML
+    ```xml
     <ClaimsProvider> 
 
           <DisplayName>Client Session ID Claims Provider</DisplayName> 
@@ -190,7 +190,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 6. Configurez le fournisseur de revendications de l’API REST pour BioCatch. 
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="BioCatch-API-GETSCORE"> 
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
@@ -236,8 +236,8 @@ document.getElementById("clientSessionId").style.display = 'none';
       </TechnicalProfiles>
     ```
 
-    > [!Note]
-    > BioCatch vous fournira l’URL, l’ID client et l’ID d’utilisateur unique (uuID) à configurer. La revendication SessionID client est transmise en tant que paramètre QueryString à BioCatch. Vous pouvez choisir le type d’activité, par exemple *MAKE_PAYMENT*.
+    > [!NOTE]
+    > BioCatch vous fournira l’URL, l’ID client et l’ID d’utilisateur unique (UUID) à configurer. La revendication SessionID du client est passée comme paramètre de chaîne de requête à BioCatch. Vous pouvez choisir le type d’activité, par exemple *MAKE_PAYMENT*.
 
 7. Configurer le parcours utilisateur ; suivre l’exemple
 
@@ -247,7 +247,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
    1. Si le *risque* de revendication retourné est égal à *faible*, ignorez l’étape pour l’authentification multifacteur, sinon forcez l’authentification multifacteur de l’utilisateur
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
           <ClaimsExchanges> 
@@ -295,7 +295,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
     Il est utile de transmettre les informations renvoyées par BioCatch à votre application sous forme de revendications dans le jeton, en particulier *risklevel* et *score*.
 
-    ```XML
+    ```xml
     <RelyingParty> 
 
     <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 

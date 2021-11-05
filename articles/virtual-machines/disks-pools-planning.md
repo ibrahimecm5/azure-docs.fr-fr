@@ -4,15 +4,16 @@ description: Découvrez comment optimiser les performances d’un pool de disque
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74d50826811198811e6cea671641cae378d1235c
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: db70740b484290b56d140d6b71d570d61afd138d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122535159"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082718"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Guide de planification des pools de disques Azure (préversion)
 
@@ -28,7 +29,7 @@ Si vous privilégiez une faible latence, ajoutez des disques Ultra à votre pool
 
 ## <a name="optimize-for-high-throughput"></a>Optimiser pour un débit élevé
 
-Si vous privilégiez le débit, commencez par évaluer le nombre de pools de disques requis pour atteindre vos cibles de débit. Une fois que vous disposez des cibles nécessaires, vous pouvez les fractionner entre les disques et leurs types. Actuellement, vous pouvez utiliser deux types de disques dans un pool de disques, à savoir SSD Premium et Ultra. Les disques SSD Premium offrent des niveaux d’IOPS et de Mbits/s élevés à l’échelle de leur capacité de stockage, tandis que les disques ULTRA peuvent mettre à l’échelle leurs performances indépendamment de leur capacité de stockage. Sélectionnez le type correspondant à l’équilibre coûts-performances que vous souhaitez. Vérifiez également que la connectivité réseau entre vos clients et le pool de disques ne constitue pas un goulot d’étranglement, en particulier en matière de débit.
+Si vous établissez la priorité du débit, commencez par évaluer les objectifs de performance des différentes références SKU du pool de disques, ainsi que le nombre de pools de disques requis pour fournir vos cibles de débit. Si vos besoins en performances dépassent ce qu’un pool de disques premium peut fournir, vous pouvez fractionner votre déploiement sur plusieurs pools de disques. Ensuite, vous pouvez décider comment utiliser au mieux les performances proposées sur un pool de disques entre chaque disque individuel et leurs types. Pour un pool de disques, vous pouvez mélanger et faire correspondre les disques SSD standard et premium, ou utiliser uniquement des disques ultra. Vous ne pouvez pas utiliser des disques ultra avec des disques SSD premium ou standard. Sélectionnez le type de disque qui correspond le mieux à vos besoins. Vérifiez également que la connectivité réseau entre vos clients et le pool de disques ne constitue pas un goulot d’étranglement, en particulier en matière de débit.
 
 
 ## <a name="use-cases"></a>Cas d'utilisation
@@ -36,36 +37,40 @@ Si vous privilégiez le débit, commencez par évaluer le nombre de pools de dis
 Le tableau suivant présente des cas d’usage classiques pour des pools de disques avec Azure VMware Solution et une configuration recommandée.
 
 
-|Cas d’usage d’Azure VMware Solution  |Type de disque suggéré  |Configuration réseau suggérée  |
-|---------|---------|---------|
-|Stockage par blocs pour les pages de travail actives, comme une extension de vSAN Azure VMware Solution.     |Disques Ultra         |Utilisez une passerelle de réseau virtuel ExpressRoute Ultra-performance ou ErGw3AZ (10 Gbits/s) pour connecter le réseau virtuel du pool de disques au cloud Azure VMware Solution et permettre à FastPath de réduire la latence du réseau.         |
-|Hiérarchisation : hiérarchiser les données rarement utilisées sur le pool de disques à partir du vSAN Azure VMware Solution.     |SSD Premium         |Utiliser la passerelle de réseau virtuel ExpressRoute Standard (1 Gbits/s) ou Haute performance (2 Gbits/s) pour connecter le réseau virtuel du pool de disques au cloud Azure VMware Solution.         |
-|Stockage de données pour site de récupération d’urgence sur Azure VMware Solution : répliquer des données à partir d’un environnement VMware local ou principal vers le pool de disques en tant que site secondaire.     |SSD Premium         |Utiliser la passerelle de réseau virtuel ExpressRoute Standard (1 Gbits/s) ou Haute performance (2 Gbits/s) pour connecter le réseau virtuel du pool de disques au cloud Azure VMware Solution.         |
+|Cas d’usage d’Azure VMware Solution  |Type de disque suggéré  |Référence SKU du pool de disques suggéré  |Configuration réseau suggérée  |
+|---------|---------|---------|---------|
+|Stockage par blocs pour les pages de travail actives, comme une extension de vSAN Azure VMware Solution.     |Disques Ultra         |Premium         |Utilisez une passerelle de réseau virtuel ExpressRoute Ultra-performance ou ErGw3AZ (10 Gbits/s) pour connecter le réseau virtuel du pool de disques au cloud Azure VMware Solution et permettre à FastPath de réduire la latence du réseau.         |
+|Hiérarchisation : hiérarchiser les données rarement utilisées sur le pool de disques à partir du vSAN Azure VMware Solution.     |SSD premium, SSD standard         |Standard         |Utiliser la passerelle de réseau virtuel ExpressRoute Standard (1 Gbits/s) ou Haute performance (2 Gbits/s) pour connecter le réseau virtuel du pool de disques au cloud Azure VMware Solution.         |
+|Stockage de données pour site de récupération d’urgence sur Azure VMware Solution : répliquer des données à partir d’un environnement VMware local ou principal vers le pool de disques en tant que site secondaire.     |SSD premium, SSD standard         |Standard, De base         |Utiliser la passerelle de réseau virtuel ExpressRoute Standard (1 Gbits/s) ou Haute performance (2 Gbits/s) pour connecter le réseau virtuel du pool de disques au cloud Azure VMware Solution.         |
+
 
 Consultez [Liste de vérification pour la planification réseau pour Azure VMware Solution](../azure-vmware/tutorial-network-checklist.md) pour planifier votre configuration réseau, ainsi que découvrir d’autres considérations relatives à Azure VMware Solution.
 
 ## <a name="disk-pool-scalability-and-performance-targets"></a>Objectifs de performance et d’extensibilité de pool de disques
 
-|Ressource  |Limite  |
-|---------|---------|
-|Nombre maximal de disques par pool|8|
-|Nombre maximal d’IOPS par pool de disques|25 600|
-|Nombre maximal de Mbits/s par pool de disques|384|
+|Ressource  |Pool de disques de base  |Type de disques standards  |Type de disques premium  |
+|---------|---------|---------|---------|
+|Nombre maximal de disques par pool     |16         |32         |32         |
+|Nombre maximal d’IOPS par pool de disques     |12 800         |25 600         |51 200         |
+|Nombre maximal de Mbits/s par pool de disques     |192         |384         |768         |
 
 L’exemple suivant doit vous donner une idée de la façon dont les différents facteurs de performance fonctionnent ensemble :
 
-Par exemple, si vous ajoutez 2 disques SSD Premium de 1 Tio (P30, avec cible approvisionnée de 5 000 IOPS et 200 Mbits/s)  dans un pool de disques, vous obtenez 2 x 5000 = 10 000 IOPS. Toutefois, le débit est plafonné à 384 Mbits/s par pool de disques. Pour aller au-delà de cette limite de 384 Mbits/s, vous pouvez déployer davantage de pools de disques pour effectuer un scale-out afin d’augmenter débit. Le débit de votre réseau limite l’efficacité du scale-out.
+Par exemple, si vous ajoutez 2 disques SSD Premium de 1 Tio (P30, avec cible approvisionnée de 5 000 IOPS et 200 Mbits/s) dans un pool de disques standards, vous obtenez 2 x 5000 = 10 000 IOPS. Toutefois, le débit est plafonné à 384 Mbits/s par pool de disques. Pour aller au-delà de cette limite de 384 Mbits/s, vous pouvez déployer davantage de pools de disques pour effectuer un scale-out afin d’augmenter débit. Le débit de votre réseau limite l’efficacité du scale-out.
 
 ## <a name="availability"></a>Disponibilité
 
-Les pools de disques étant actuellement en préversion, ils ne doivent pas être utilisés pour des charges de travail de production.
+Les pools de disques étant actuellement en préversion, ils ne doivent pas être utilisés pour des charges de travail de production. Par défaut, un pool de disques prend uniquement en charge les disques SSD premium et standards. Vous pouvez activer la prise en charge des disques ultra sur un pool de disques, mais un pool de disques avec disques ultra n’est pas compatible avec les disques SSD premium ou standards.
+
+Les pools de disques avec prise en charge des disques SSD premium et standards sont basés sur une architecture à haute disponibilité, avec des multiples qui hébergent le point de terminaison iSCSI. Les pools de disques avec prise en charge de disques ultra sont hébergés sur un déploiement d’instance unique.
 
 Si votre pool de disques devient inaccessible à votre cloud Azure VMware Solution pour une raison quelconque, les conséquences seront les suivantes :
 
 - Tous les magasins de données associés au pool de disques cesseront d’être accessibles.
-- Toutes les machines virtuelles VMware hébergées dans ce cloud Azure VMware Solution qui utilisent les magasins de données concernés seront dans un état non sain.
-- L’intégrité des clusters dans ce cloud Azure VMware Solution ne sera pas affectée, à l’exception d’une opération : vous ne pourrez pas mettre un ordinateur hôte en mode maintenance. Azure VMware Solution gèrera cet échec et tentera une récupération en déconnectant les magasins de données concernés.
+- Toutes les machines virtuelles VMware hébergées dans le cloud Azure VMware Solution qui utilisent les magasins de données concernés seront dans un état non sain.
+- L’intégrité des clusters dans le cloud Azure VMware Solution ne sera pas affectée, à l’exception d’une opération : vous ne pourrez pas mettre un ordinateur hôte en mode maintenance. Azure VMware Solution gèrera cet échec et tentera une récupération en déconnectant les magasins de données concernés.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-[Déployer un pool de disques](disks-pools-deploy.md).
+- [Déployer un pool de disques](disks-pools-deploy.md).
+- Pour en savoir plus sur la façon dont les solutions VMware Azure intègrent les pools de disques, consultez [Attacher des pools de disques à des hôtes de solution VMware Azure (version préliminaire)](../azure-vmware/attach-disk-pools-to-azure-vmware-solution-hosts.md).

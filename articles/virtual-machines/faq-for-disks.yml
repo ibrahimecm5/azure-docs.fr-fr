@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 2e3e13f0db5b96d8d1cd8ca3eaa7b900dacb0d72
-  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+  ms.openlocfilehash: f65f03a35d744b3131b89c2e973abd1cd6b7e3ef
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113358312"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131018504"
 title: Forum aux questions sur les disques de machines virtuelles et les disques Premium gérés et non gérés Azure IaaS
 summary: Dans cet article, nous allons répondre à certaines questions fréquentes sur Azure Disques managés et les disques SSD Premium Azure.
 sections:
@@ -143,10 +143,6 @@ sections:
 
       Les [images de génération 2](./generation-2.md) peuvent utiliser le partitionnement GPT aussi bien sur les disques de système d’exploitation que sur les disques de données.
   - question: >
-      Quels types de disque prennent en charge les captures instantanées ?
-    answer: >
-      Les disques SSD Premium, SSD Standard et HDD Standard prennent en charge les captures instantanées. Pour ces trois types de disques, les captures instantanées sont prises en charge pour toutes les tailles (dont les disques allant jusqu’à 32 To). Les disques Ultra ne prennent pas en charge les captures instantanées.
-  - question: >
       Qu’est-ce que des réservations de disque Azure ?
     answer: >
       La réservation de disque est la possibilité d’acheter à l’avance un an de stockage sur disque, ce qui réduit le coût total pour vous. Pour plus d’informations sur les réservations de disque Azure, consultez notre article sur le sujet : [Comprendre comment la remise de réservation est appliquée à Azure Data Box Disk](../cost-management-billing/reservations/understand-disk-reservations.md).
@@ -163,6 +159,39 @@ sections:
       Les disques SSD standard prennent-ils en charge les « SLA de machine virtuelle à instance unique » ?
     answer: >
       Oui, tous les types de disques prennent en charge les SLA de machine virtuelle à instance unique.
+- name: Instantanés
+  questions:
+  - question: >
+      Est-il possible de copier une capture instantanée incrémentielle chiffrée entre régions ?
+    answer: >
+      Oui.
+  - question: >
+      Est-il possible de copier plusieurs captures instantanées incrémentielles du même disque en parallèle d’une région à une autre ?
+    answer: >
+      Non, avant d’opérer une copie, il faut attendre la fin de la copie précédente.
+  - question: >
+      Est-il possible de copier des captures instantanées incrémentielles de plusieurs disques en même temps ?
+    answer: >
+      Actuellement, oui.
+  - question: >
+      Comment puis-je vérifier quand la copie d’une capture instantanée incrémentielle vers une autre région est terminée ?
+    answer: >
+      Vous pouvez vérifier l’état de la copie en observant la propriété **completionPercent**. Une capture instantanée est prête quand la valeur de cette propriété est 100.
+  - question: >
+      Puis-je copier des captures instantanées vers une autre région dans un ordre différent de celui de leur création ?
+    answer: >
+      Non, les captures instantanées doivent être copiés vers d’autres régions dans l’ordre de leur création.
+  - question: >
+      Que se passe-t-il ai une capture instantanée incrémentielle source est supprimée avant la fin de sa copie vers d’autres régions ?
+    answer: >
+      La copie échouera.
+  - question: >
+      Les instantanés et les images gérés sont-ils chiffrés ?
+    answer: "Oui. Toutes les captures instantanées et images managées sont automatiquement chiffrées. \n"
+  - question: >
+      Quels types de disque prennent en charge les captures instantanées ?
+    answer: >
+      Les disques SSD Premium, SSD Standard et HDD Standard prennent en charge les captures instantanées. Pour ces trois types de disques, les captures instantanées sont prises en charge pour toutes les tailles (dont les disques allant jusqu’à 32 To). Les disques Ultra ne prennent pas en charge les captures instantanées.
 - name: Disques partagés Azure
   questions:
   - question: >
@@ -347,12 +376,9 @@ sections:
     answer: >
       Oui.
   - question: >
-      Les instantanés et les images gérés sont-ils chiffrés ?
-    answer: "Oui. Toutes les captures instantanées et images managées sont automatiquement chiffrées. \n"
-  - question: >
       Puis-je convertir des machines virtuelles avec des disques non managés situés sur des comptes de stockage qui sont ou ont été chiffrés sur des disques managés ?
     answer: >
-      Yes
+      Oui
   - question: >
       Un disque dur virtuel exporté à partir d’un disque géré ou un instantané seront-ils également chiffrés ?
     answer: >

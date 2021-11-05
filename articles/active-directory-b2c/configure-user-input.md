@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2021
+ms.date: 10/22/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9ebc40c8777a4b49f0bd6aaeccff4b2f82d4f7a4
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 042829ac525ed911f1a9ec984843931e8029b0a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064416"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007464"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Ajouter des attributs utilisateur et personnaliser l’entrée utilisateur dans Azure Active Directory B2C
 
@@ -37,6 +37,10 @@ Dans cet article, vous collectez un nouvel attribut lors de votre parcours d’i
 
 ## <a name="add-user-attributes-your-user-flow"></a>Ajouter des attributs utilisateur à votre flux d’utilisateur
 
+1. Connectez-vous au [portail Azure](https://portal.azure.com/).
+1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
+1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
+1. Sous **Services Azure**, sélectionnez **Azure AD B2C**. Vous pouvez aussi utiliser la zone de recherche pour rechercher et sélectionner **Azure AD B2C**.
 1. Dans votre locataire Azure AD B2C, sélectionnez **Flux d’utilisateur**.
 1. Sélectionnez votre stratégie (par exemple, « B2C_1_SignupSignin ») pour l’ouvrir.
 1. Sélectionnez **Attributs utilisateur**, puis sélectionnez l’attribut utilisateur (par exemple, « City »). 
@@ -112,7 +116,7 @@ Pour fournir une liste définie de valeurs pour l’attribut Ville :
 1. Sélectionnez **Flux d’utilisateurs** et votre stratégie (par exemple, « B2C_1_SignupSignin ») pour l’ouvrir.
 1. Sélectionnez **Langues**.
 1. Sélectionnez la langue dans laquelle vous voulez traduire.
-1. Sélectionnez la **page d’inscription à un compte local**.
+1. Sous **Fichiers de ressources de niveau page**, sélectionnez **Page d’inscription au compte local**.
 1. Sélectionnez l’icône de dossier et sélectionnez le fichier JSON à charger. Ces changements sont automatiquement enregistrés dans votre flux utilisateur.
 
 ## <a name="test-your-user-flow"></a>Tester votre flux d’utilisateur

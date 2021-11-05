@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: cd67f81868d43ece3638d3d46ed07d4044642b19
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ac4d0240f73f2165abed0fb11bd248f9af997124
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468345"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048738"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Démarrage rapide : Créer une fonction Python dans Azure à partir de la ligne de commande
 
@@ -35,12 +35,12 @@ Avant de commencer la lecture cet article, vous devez disposer des éléments su
 + Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) version 3.x.
-  
+
 + Un des outils suivants pour créer des ressources Azure :
 
     + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 ou ultérieure.
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) version 5.0 ou ultérieure.
+    + Le [module Az PowerShell](/powershell/azure/install-az-ps) version 5.9.0 ou ultérieure.
 
 + [Versions de Python prises en charge par Azure Functions](supported-languages.md#languages-by-runtime-version)
 
@@ -62,7 +62,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 + Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
 
-+ Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure. 
++ Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure.
 
 + Exécutez `Connect-AzAccount` pour vous connecter à Azure et vérifier que l’abonnement est actif.
 
@@ -112,13 +112,13 @@ py -m venv .venv
 
 ---
 
-Vous devez exécuter toutes les commandes suivantes dans cet environnement virtuel activé. 
+Vous devez exécuter toutes les commandes suivantes dans cet environnement virtuel activé.
 
 ## <a name="create-a-local-function-project"></a>Créer un projet de fonction local
 
 Dans Azure Functions, un projet de fonction est un conteneur pour une ou plusieurs fonctions qui répondent chacune à un déclencheur spécifique. Toutes les fonctions d’un projet partagent les mêmes configurations locale et d’hébergement. Dans cette section, vous créez un projet de fonction qui contient une seule fonction.
 
-1. Exécutez la commande `func init`, de la façon suivante, pour créer un projet Functions dans un dossier nommé *LocalFunctionProj* avec le runtime spécifié :  
+1. Exécutez la commande `func init`, de la façon suivante, pour créer un projet Functions dans un dossier nommé *LocalFunctionProj* avec le runtime spécifié :
 
     ```console
     func init LocalFunctionProj --python
@@ -129,15 +129,15 @@ Dans Azure Functions, un projet de fonction est un conteneur pour une ou plusieu
     ```console
     cd LocalFunctionProj
     ```
-    
+
     Ce dossier contient divers fichiers pour le projet, notamment des fichiers config nommés [local.settings.json](functions-develop-local.md#local-settings-file) et [host.json](functions-host-json.md). Dans la mesure où *local.settings.json* peut contenir des secrets téléchargés à partir d’Azure, le fichier est exclu du contrôle de code source par défaut dans le fichier *.gitignore*.
 
 1. Ajoutez une fonction à votre projet à l’aide de la commande suivante, où l’argument `--name` est le nom unique de votre fonction (HttpExample) et où l’argument `--template` spécifie le déclencheur de la fonction (HTTP).
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ```   
-    
+    ```
+
     `func new` crée un sous-dossier correspondant au nom de la fonction qui contient le fichier de code approprié au langage choisi pour le projet, et un fichier config nommé *function.json*.
 
 ### <a name="optional-examine-the-file-contents"></a>(Facultatif) Examiner le contenu du fichier
@@ -183,7 +183,7 @@ Utilisez les commandes suivantes pour créer ces éléments. Azure CLI et PowerS
 
     La commande [az login](/cli/azure/reference-index#az_login) vous connecte à votre compte Azure.
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     ```azurepowershell
     Connect-AzAccount
     ```
@@ -191,27 +191,27 @@ Utilisez les commandes suivantes pour créer ces éléments. Azure CLI et PowerS
     L’applet de commande [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) vous connecte à votre compte Azure.
 
     ---
-    
-1. Lorsque vous utilisez Azure CLI, vous pouvez activer l’option `param-persist` qui permet de suivre automatiquement les noms des ressources que vous avez créées. Pour en savoir plus, consultez [Paramètre persistant Azure CLI](/cli/azure/param-persist-howto).  
+
+1. Lorsque vous utilisez Azure CLI, vous pouvez activer l’option `param-persist` qui permet de suivre automatiquement les noms des ressources que vous avez créées. Pour en savoir plus, consultez [Paramètre persistant Azure CLI](/cli/azure/param-persist-howto).
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az config param-persist on
     ```
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
-    
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
     Cette fonctionnalité n’est pas disponible dans Azure PowerShell.
-    
+
     ---
 
-1. Créez un groupe de ressources nommé `AzureFunctionsQuickstart-rg` dans la région de votre choix : 
+1. Créez un groupe de ressources nommé `AzureFunctionsQuickstart-rg` dans la région de votre choix :
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
+
     ```azurecli
     az group create --name AzureFunctionsQuickstart-rg --location <REGION>
     ```
- 
+
     La commande [az group create](/cli/azure/group#az_group_create) crée un groupe de ressources. Dans la commande ci-dessus, remplacez `<REGION>` par une région près de chez vous, en utilisant un code de région disponible retourné par la commande [az account list-locations](/cli/azure/account#az_account_list_locations).
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -235,7 +235,7 @@ Utilisez les commandes suivantes pour créer ces éléments. Azure CLI et PowerS
     az storage account create --name <STORAGE_NAME> --sku Standard_LRS
     ```
 
-    La commande [az storage account create](/cli/azure/storage/account#az_storage_account_create) crée le compte de stockage. 
+    La commande [az storage account create](/cli/azure/storage/account#az_storage_account_create) crée le compte de stockage.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -248,31 +248,31 @@ Utilisez les commandes suivantes pour créer ces éléments. Azure CLI et PowerS
     ---
 
     Dans l’exemple précédent, remplacez `<STORAGE_NAME>` par un nom qui vous convient et qui est unique dans Stockage Azure. Les noms doivent contenir entre 3 et 24 caractères, et comporter uniquement des lettres minuscules. `Standard_LRS` spécifie un compte universel, qui est [pris en charge par Functions](storage-considerations.md#storage-account-requirements).
-    
+
     Le compte de stockage n’engendre que quelques centimes (USD) de dépense dans ce guide de démarrage rapide.
 
 1. Créer l’application de fonction dans Azure :
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-        
+
     ```azurecli
     az functionapp create --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --os-type linux
     ```
-    
+
     La commande [az functionapp create](/cli/azure/functionapp#az_functionapp_create) crée l’application de fonction dans Azure. Si vous utilisez Python 3.7 ou 3.6, remplacez `--runtime-version` par `3.7` ou `3.6`, respectivement. Vous devez fournir `--os-type linux`, car les fonctions Python ne peuvent pas s’exécuter sur Windows (option par défaut).
-    
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location '<REGION>'
     ```
-    
+
     L’applet de commande [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) crée l’application de fonction dans Azure. Si vous utilisez Python 3.7 ou 3.6, remplacez `-RuntimeVersion` par `3.7` ou `3.6`, respectivement.
 
     ---
-    
-    Dans l’exemple précédant, remplacez `<APP_NAME>` par un nom globalement unique qui vous convient.  `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction. 
-    
+
+    Dans l’exemple précédant, remplacez `<APP_NAME>` par un nom globalement unique qui vous convient.  `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction.
+
     Cette commande crée une application de fonction qui s’exécute dans votre runtime de langage spécifié dans le [Plan Consommation Azure Functions](consumption-plan.md), qui est gratuit pour l’utilisation faite ici. La commande provisionne également une instance d’Azure Application Insights associée dans le même groupe de ressources, avec laquelle vous pouvez superviser votre application de fonction et visualiser les journaux. Pour plus d’informations, consultez [Surveiller l’exécution des fonctions Azure](functions-monitoring.md). L’instance n’entraîne aucun coût tant que vous ne l’activez pas.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
@@ -285,7 +285,7 @@ Exécutez la commande suivante pour afficher en temps quasi-réel les [journaux 
 func azure functionapp logstream <APP_NAME> --browser
 ```
 
-Dans une fenêtre de terminal distincte ou dans le navigateur, appelez à nouveau la fonction distante. Un journal détaillé de l’exécution de la fonction dans Azure est affiché dans le terminal. 
+Dans une fenêtre de terminal distincte ou dans le navigateur, appelez à nouveau la fonction distante. Un journal détaillé de l’exécution de la fonction dans Azure est affiché dans le terminal.
 
 [!INCLUDE [functions-cleanup-resources-cli](../../includes/functions-cleanup-resources-cli.md)]
 

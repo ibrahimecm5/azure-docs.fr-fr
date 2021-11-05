@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: dba4bd60c428bd833812e212a67d308204228e6c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4cd3ca1b08518cfed87b2d25b92d41478d536715
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745176"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workshop"></a>Tutoriel : Intégration de l'authentification unique Azure Active Directory à Workshop
 
@@ -142,7 +142,7 @@ Dans cette section, vous allez permettre à B.Simon d'utiliser l'authentificatio
 
 1. Dans la zone de texte **URL des métadonnées du fournisseur d'identité**, collez l'**URL des métadonnées de fédération d'application** que vous avez copiée à partir du portail Azure. 
 
-    ![Capture d'écran de l'URL des métadonnées](./media/workshop-tutorial/metadata-url.png)
+    ![Capture d'écran de l’URL des métadonnées](./media/workshop-tutorial/metadata-url.png)
 
 1. Cliquez sur **Créer l'authentification unique**.
 

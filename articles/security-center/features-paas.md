@@ -1,24 +1,27 @@
 ---
-title: Fonctionnalités Azure Security Center pour les ressources Azure PaaS prises en charge.
-description: Cette page indique la disponibilité des fonctionnalités Azure Security Center pour les ressources Azure PaaS prises en charge.
+title: Fonctionnalités de Microsoft Defender pour le cloud pour les ressources Azure PaaS prises en charge.
+description: Cette page montre la disponibilité des fonctionnalités de Microsoft Defender pour le cloud pour les ressources Azure PaaS prises en charge.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 04/25/2021
 ms.author: memildin
-ms.openlocfilehash: 4ee6b02ad60ad08022cbe2428bb9fb52c3ac2194
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: acaefa655593a70caca049c536b0ed7cde9f90f2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992338"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055841"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a>Couverture des fonctionnalités pour les services Azure PaaS <a name="paas-services"></a>
 
-Le tableau ci-dessous indique la disponibilité des fonctionnalités Azure Security Center pour les ressources Azure PaaS prises en charge.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-|Service|Recommandations (Gratuit)|Alertes de sécurité (Azure Defender)|Évaluation des vulnérabilités (Azure Defender)|
+La table ci-dessous montre la disponibilité des fonctionnalités de Microsoft Defender pour le cloud pour les ressources Azure PaaS prises en charge.
+
+|Service|Recommandations (Gratuit)|Alertes de sécurité |Évaluation des vulnérabilités|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Compte Azure Automation|✔|-|-|
@@ -50,4 +53,4 @@ Le tableau ci-dessous indique la disponibilité des fonctionnalités Azure Secur
 
 \* Ces fonctionnalités sont actuellement prises en charge en préversion.
 
-\*\* Les recommandations Azure Active Directory (Azure AD) sont uniquement disponibles pour les abonnements avec Azure Defender activé.
+\*\* Les recommandations Azure Active Directory (Azure AD) sont uniquement disponibles pour les abonnements qui ont des [fonctionnalités de sécurité renforcée](enable-enhanced-security.md) activées.

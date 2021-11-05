@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e4be8f3bac712136fc2cbfea5a6a6febbd81e0e1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: deac46666be5c77d48597d2e75838c167040badf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991087"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059525"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Planifier un déploiement d’attribution automatique d’utilisateurs dans Azure Active Directory
 
@@ -99,7 +99,7 @@ Dans cet exemple, les utilisateurs et/ou les groupes sont créés dans une base 
 
 Dans cet exemple, la création d’utilisateurs a lieu dans Azure AD tandis que le service de provisionnement Azure AD gère le provisionnement automatique d’utilisateurs dans les applications (SaaS) cibles.
 
-![Diagramme illustrant le processus de création d’utilisateurs/de groupes d’une application RH locale aux applications SaaS cibles, en passant par le service d’approvisionnement Azure AD.](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Diagramme illustrant le processus de création d’utilisateurs/de groupes d’une application RH locale aux applications SaaS cibles, en passant par le service d’approvisionnement Azure AD vers les applications SaaS cibles.](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **Description du workflow :**
 
@@ -318,7 +318,7 @@ Reportez-vous aux liens suivants pour résoudre les problèmes susceptibles de s
 
 #### <a name="resources"></a>Ressources
 
-* [Indiquer des commentaires sur le produit](https://feedback.azure.com/forums/169401-azure-active-directory)
+* [Indiquer des commentaires sur le produit](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)
 
 * [Se tenir informé des nouveautés d’Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
 

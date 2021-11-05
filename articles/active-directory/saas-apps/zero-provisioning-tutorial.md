@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: 9b50ef87ba6ea41d3ab983d1f93bcf94043064af
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1538c412d1b2caa895de68173dc2567286f3e814
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004803"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056928"
 ---
 # <a name="tutorial-configure-zero-for-automatic-user-provisioning"></a>Tutoriel : Configurer Zero pour l’approvisionnement automatique d’utilisateurs
 
@@ -49,7 +49,7 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 ## <a name="step-2-configure-zero-to-support-provisioning-with-azure-ad"></a>Étape 2. Configurer Zero pour prendre en charge l’approvisionnement avec Azure AD
 
 1. Demandez à votre administrateur de compte Zero de contacter le [support de Zero](https://help.teamzero.com/) pour obtenir votre jeton de secret SCIM. Cette valeur sera entrée dans le champ Jeton secret sous l’onglet Approvisionnement de votre application Zero dans le portail Azure.
-1. L’URL du locataire est `https://api.teamzero.com/scim/v2/`. Vous devrez entrer cette valeur dans le champ URL du locataire sous l’onglet Approvisionnement de votre application Zero dans le portail Azure.
+1. L’URL de l’abonné est : `https://api.teamzero.com/scim/v2/`. Vous devrez entrer cette valeur dans le champ URL du locataire sous l’onglet Approvisionnement de votre application Zero dans le portail Azure.
 
 ## <a name="step-3-add-zero-from-the-azure-ad-application-gallery"></a>Étape 3. Ajouter Zero à partir de la galerie d’applications Azure AD
 

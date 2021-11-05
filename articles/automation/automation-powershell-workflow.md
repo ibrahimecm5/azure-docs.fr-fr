@@ -3,15 +3,15 @@ title: Découvrir PowerShell Workflow pour Azure Automation
 description: Cet article explique les différences qui existent entre PowerShell Workflow et PowerShell, et les concepts applicables aux runbooks Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/14/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3b3beb8b3eda4dfabf9240aa328a24d5f855689b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ee42e5aefd457c79fdf82ff388724dd9983c57b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833505"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432526"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Découvrir PowerShell Workflow pour Azure Automation
 
@@ -20,7 +20,8 @@ Dans Azure Automation, les runbooks sont implémentés comme des workflows Windo
 Le workflow est écrit avec la syntaxe Windows PowerShell et il est lancé par Windows PowerShell, mais il est traité par Windows Workflow Foundation. Les avantages d’un workflow par rapport à un script normal incluent la possibilité d’exécuter simultanément une action sur plusieurs appareils et de récupérer automatiquement après une défaillance. 
 
 > [!NOTE]
-> Un script PowerShell Workflow est très similaire à un script Windows PowerShell. Cependant, il présente des différences significatives qui peuvent être déconcertantes pour un nouvel utilisateur. Par conséquent, nous vous recommandons d’écrire vos runbooks à l’aide de PowerShell Workflow uniquement si vous devez utiliser des [points de contrôle](#use-checkpoints-in-a-workflow). 
+>  Cet article s’applique à PowerShell 5.1. PowerShell 7.1 (préversion) ne prend pas en charge les workflows. Un script PowerShell Workflow est très similaire à un script Windows PowerShell. Cependant, il présente des différences significatives qui peuvent être déconcertantes pour un nouvel utilisateur. Par conséquent, nous vous recommandons d’écrire vos runbooks à l’aide de PowerShell Workflow uniquement si vous devez utiliser des [points de contrôle](#use-checkpoints-in-a-workflow). 
+ 
 
 Pour plus d’informations sur les rubriques de cet article, consultez [Présentation du workflow Windows PowerShell](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11)).
 

@@ -3,14 +3,14 @@ title: Utiliser Azure AD dans Azure Kubernetes Service
 description: Découvrez comment utiliser Azure AD dans Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 02/1/2021
+ms.date: 10/20/2021
 ms.author: miwithro
-ms.openlocfilehash: c78c48bc86c999ab85c02f0ba596d425b516ac5a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 488b5a6736e308abc78d53b3e9bdbf14af488ca3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984969"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067863"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Intégration d’Azure Active Directory géré par AKS
 
@@ -31,7 +31,7 @@ Pour en savoir plus sur le flux de l’intégration d’Azure AD, consultez la [
 
 ## <a name="prerequisites"></a>Prérequis
 
-* Azure CLI 2.11.0 ou une version ultérieure
+* Azure CLI version 2.29.0 ou ultérieure
 * Kubectl avec une version minimale [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) ou [kubelogin](https://github.com/Azure/kubelogin)
 * Si vous utilisez [helm](https://github.com/helm/helm), version minimale de helm 3.3.
 
@@ -188,36 +188,15 @@ Mettez à jour kubeconfig pour accéder au cluster. Suivez les étapes décrites
 
 Certains scénarios non interactifs, tels que les pipelines d’intégration continue, ne sont pas possibles avec kubectl. Utilisez [`kubelogin`](https://github.com/Azure/kubelogin) pour accéder au cluster à l’aide d’une connexion non interactive avec le principal de service.
 
-## <a name="disable-local-accounts-preview"></a>Désactiver les comptes locaux (préversion)
+## <a name="disable-local-accounts"></a>Désactiver les comptes locaux
 
 Lors du déploiement d’un cluster AKS, les comptes locaux sont activés par défaut. Même lors de l’activation de l’intégration RBAC ou Azure Active Directory, l’accès à `--admin` existe toujours, essentiellement comme une option d’accès par porte dérobée ne pouvant pas être auditée. Dans cette optique, AKS offre aux utilisateurs la possibilité de désactiver les comptes locaux via un indicateur, `disable-local-accounts`. Un champ `properties.disableLocalAccounts` a également été ajouté à l’API de cluster géré pour indiquer si la fonctionnalité a été activée sur le cluster.
 
 > [!NOTE]
 > Sur les clusters sur lesquels l’intégration Azure AD est activée, les utilisateurs qui appartiennent à un groupe spécifié par `aad-admin-group-object-ids` disposeront toujours d’un accès via des informations d’identification non-administrateur. Sur les clusters sans intégration Azure AD activée et pour lesquels `properties.disableLocalAccounts` est définie sur true, l’obtention d’informations d’identification échouera à la fois pour l’utilisateur et l’administrateur.
 
-### <a name="register-the-disablelocalaccountspreview-preview-feature"></a>Inscrire la fonctionnalité d’évaluation `DisableLocalAccountsPreview`
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-Pour utiliser un cluster AKS sans comptes locaux, vous devez activer l’indicateur de fonctionnalité `DisableLocalAccountsPreview` sur votre abonnement. Vérifiez que vous utilisez bien la dernière version de l’interface de ligne de commande Azure et l’extension `aks-preview`.
-
-Inscrivez l’indicateur de fonctionnalité `DisableLocalAccountsPreview` à l’aide de la commande [az feature register][az-feature-register], comme indiqué dans l’exemple suivant :
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "DisableLocalAccountsPreview"
-```
-
-Quelques minutes sont nécessaires pour que l’état s’affiche *Registered* (Inscrit). Vous pouvez vérifier l’état de l’enregistrement à l’aide de la commande [az feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/DisableLocalAccountsPreview')].{Name:name,State:properties.state}"
-```
-
-Lorsque vous êtes prêt, actualisez l’inscription du fournisseur de ressources *Microsoft.ContainerService* à l’aide de la commande [az provider register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+> [!NOTE]
+> Après la désactivation de comptes locaux sur un cluster AKS existant où des utilisateurs ont peut-être utilisé un ou plusieurs comptes locaux, l’administrateur doit [effectuer une rotation des certificats de cluster](certificate-rotation.md#rotate-your-cluster-certificates) afin de révoquer les certificats auxquels ces utilisateurs peuvent avoir accès.  S’il s’agit d’un nouveau cluster, aucune action n’est requise.
 
 ### <a name="create-a-new-cluster-without-local-accounts"></a>Créer un nouveau cluster sans comptes locaux
 

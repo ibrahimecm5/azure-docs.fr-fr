@@ -1,57 +1,60 @@
 ---
-title: Azure Defender pour les bases de données relationnelles open source - Avantages et fonctionnalités
-description: Découvrez les avantages et les fonctionnalités d’Azure Defender pour les bases de données relationnelles open source, telles que PostgreSQL, MySQL et MariaDB
+title: Microsoft Defender pour les bases de données relationnelles open source - Avantages et fonctionnalités
+description: Découvrez les avantages et les fonctionnalités de Microsoft Defender pour les bases de données relationnelles open source, telles que PostgreSQL, MySQL et MariaDB
 author: memildin
 ms.author: memildin
 ms.date: 05/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 209fdfd71b4e2c0a5d1d5ede3f411b6476c19570
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8fd35ef089ad581d596d2958191dd43816441841
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732574"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056037"
 ---
-# <a name="introduction-to-azure-defender-for-open-source-relational-databases"></a>Présentation d’Azure Defender pour les bases de données relationnelles open source
+# <a name="introduction-to-microsoft-defender-for-open-source-relational-databases"></a>Présentation de Microsoft Defender pour les bases de données relationnelles open source
 
-Ce plan Azure Defender offre des protections contre les menaces pour les bases de données relationnelles open source suivantes :
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Ce plan offre des protections contre les menaces pour les bases de données relationnelles open source suivantes :
 
 - [Base de données Azure pour PostgreSQL](../postgresql/index.yml)
 - [Azure Database pour MySQL](../mysql/index.yml)
 - [Azure Database for MariaDB](../mariadb/index.yml)
 
-Azure Defender détecte les activités anormales indiquant des tentatives inhabituelles et potentiellement dangereuses pour accéder à des bases de données ou les exploiter. Le plan vous permet de réagir facilement aux menaces potentielles visant les bases de données sans devenir un expert en sécurité ou gérer des systèmes avancés de supervision de la sécurité.
+Defender pour le cloud détecte les activités anormales indiquant des tentatives inhabituelles et potentiellement dangereuses pour accéder à des bases de données ou les exploiter. Le plan vous permet de réagir facilement aux menaces potentielles visant les bases de données sans devenir un expert en sécurité ou gérer des systèmes avancés de supervision de la sécurité.
 
 ## <a name="availability"></a>Disponibilité
 
 | Aspect                             | Détails                                                                                                                                    |
 |------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|
 | État de sortie :                     | Disponibilité générale                                                     |
-| Prix :                           | **Azure Defender pour les bases de données relationnelles open source** est facturé conformément aux [tarifs de Security Center](https://azure.microsoft.com/pricing/details/security-center/)   |
+| Prix :                           | **Microsoft Defender pour les bases de données relationnelles open source** est facturé comme indiqué dans la [page des tarifs](https://azure.microsoft.com/pricing/details/security-center/).   |
 | Versions protégées de PostgreSQL :  | Monoserveur : Usage général et À mémoire optimisée. Découvrez-en plus dans [Niveaux tarifaires de PostgreSQL](../postgresql/concepts-pricing-tiers.md).   |
 | Versions protégées de MySQL :       | Monoserveur : Usage général et À mémoire optimisée. Découvrez-en plus dans [Niveaux tarifaires de MySQL](../mysql/concepts-pricing-tiers.md).                        |
 | Versions protégées de MariaDB :     | Usage général et À mémoire optimisée. Découvrez-en plus dans [Niveaux tarifaires de MariaDB](../mariadb/concepts-pricing-tiers.md).                      |
-| Clouds :                            | :::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Souverain (Azure Government, Azure China 21Vianet) |
+| Clouds :                            | :::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/no-icon.png"::: Nationaux/Souverains (Azure Government, Azure China 21Vianet) |
 |                                    |                                                                                                                                            |
 
-## <a name="what-are-the-benefits-of-azure-defender-for-open-source-relational-databases"></a>Quels sont les avantages d’Azure Defender pour les bases de données relationnelles open source ?
+## <a name="what-are-the-benefits-of-microsoft-defender-for-open-source-relational-databases"></a>Quels sont les avantages de Microsoft Defender pour les bases de données relationnelles open source ?
 
-Azure Defender fournit des alertes de sécurité sur les activités anormales afin que vous puissiez détecter les menaces potentielles et y répondre à mesure qu’elles se produisent.
+Defender pour le cloud fournit des alertes de sécurité concernant des activités anormales afin que vous puissiez détecter les menaces potentielles et y répondre à mesure qu’elles se produisent.
 
-Quand vous activez ce plan, Azure Defender fournit des alertes s’il détecte des modèles de requête et un accès à la base de données anormaux ainsi que des activités de base de données suspectes.
+Quand vous activez ce plan, Defender pour le cloud fournit des alertes s’il détecte des modèles de requête et un accès à la base de données anormaux, ainsi que des activités de base de données suspectes.
 
-Ces alertes apparaissent dans la page des alertes de sécurité d’Azure Defender et comprennent les informations suivantes :
+Ces alertes s’affichent dans la page des alertes de sécurité de Defender pour le cloud et comprennent les informations suivantes :
 
 - Détails de l’activité suspecte qui les a déclenchées
 - Tactique MITRE ATT&CK associée
 - Actions recommandées pour investiguer et atténuer la menace
-- Options pour poursuivre vos investigations avec Azure Sentinel
+- Options pour poursuivre vos investigations avec Microsoft Sentinel
 
-:::image type="content" source="media/defender-for-databases-introduction/defender-alerts.png" alt-text="Certaines des alertes de sécurité que vous pouvez voir avec vos bases de données protégées par Azure Defender pour les bases de données relationnelles open source." lightbox="./media/defender-for-databases-introduction/defender-alerts.png":::
+:::image type="content" source="media/defender-for-databases-introduction/defender-alerts.png" alt-text="Certaines des alertes de sécurité que vous pouvez voir avec vos bases de données protégées par Microsoft Defender pour les bases de données relationnelles open source." lightbox="./media/defender-for-databases-introduction/defender-alerts.png":::
 
-## <a name="what-kind-of-alerts-does-azure-defender-for-open-source-relational-databases-provide"></a>Quel type d’alertes Azure Defender pour les bases de données relationnelles open source fournit-il ?
+## <a name="what-kind-of-alerts-does-microsoft-defender-for-open-source-relational-databases-provide"></a>Quel type d’alertes Microsoft Defender pour les bases de données relationnelles open source fournit-il ?
 
 Les alertes de sécurité enrichies par le renseignement sur les menaces sont déclenchées dans les cas suivants :
 
@@ -66,7 +69,7 @@ Les alertes de sécurité enrichies par le renseignement sur les menaces sont d�
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez découvert Azure Defender pour les bases de données relationnelles open source.
+Dans cet article, vous avez découvert Microsoft Defender pour les bases de données relationnelles open source.
 
 > [!div class="nextstepaction"]
-> [Activer Azure Defender](enable-azure-defender.md)
+> [Activer les protections renforcées](enable-enhanced-security.md)

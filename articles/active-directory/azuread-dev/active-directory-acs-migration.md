@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24bdbb37a2ec88d930752f728acecd23eb2896b7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 7d3034c37251f293763f7b65d380284d9716e670
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106926"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018259"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procédure : Effectuer une migration à partir d’Azure Access Control Service
 
@@ -112,9 +112,9 @@ Depuis novembre 2017, tous les composants d’Access Control Service sont entiè
 
 Voici le planning de la mise hors service des composants d’Access Control Service :
 
-- **Novembre 2017** :  l’expérience d’administration d’Azure AD dans le Portail Azure Classic a été [mise hors service](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). La gestion des espaces de noms pour Access Control sera alors disponible à une nouvelle URL dédiée : `https://manage.windowsazure.com?restoreClassic=true`. Utilisez cette URL pour afficher vos espaces de noms, activer et désactiver des espaces de noms et pour en supprimer si vous le souhaitez.
+- **Novembre 2017** : l’expérience d’administration d’Azure AD dans le portail Azure Classic a été [mise hors service](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). La gestion des espaces de noms pour Access Control sera alors disponible à une nouvelle URL dédiée : `https://manage.windowsazure.com?restoreClassic=true`. Utilisez cette URL pour afficher vos espaces de noms, activer et désactiver des espaces de noms, et pour en supprimer si vous le souhaitez.
 - **2 avril 2018** : le Portail Azure Classic est entièrement mis hors service, ce qui signifie que la gestion des espaces de noms d’Access Control n’est plus disponible à aucune URL. Dès lors, vous ne pourrez pas désactiver, activer, supprimer ou énumérer vos espaces de noms Access Control Service. Toutefois, le portail de gestion d’Access Control sera entièrement fonctionnel et accessible à l’adresse `https://<namespace>.accesscontrol.windows.net`. Tous les autres composants d’Access Control Service continueront à fonctionner normalement.
-- **7 novembre 2018** : tous les composants d’Access Control sont définitivement mis hors service. Cela inclut le portail de gestion Access Control Service, le service de gestion, le service STS et le moteur de règles de transformation des jetons. À ce moment-là, toutes les demandes envoyées à Access Control Service (sur \<namespace\>.accesscontrol.windows.net) échoueront. Vous devrez avoir migré l’ensemble des applications et services vers d’autres technologies bien avant cette date.
+- **7 novembre 2018** : tous les composants d’Access Control sont définitivement mis hors service. Cela inclut le portail de gestion Access Control Service, le service de gestion, le service STS et le moteur de règles de transformation des jetons. À ce stade, toutes les requêtes envoyées au contrôle d’accès (situé à `<namespace>.accesscontrol.windows.net`) échouent. Vous devrez avoir migré l’ensemble des applications et services vers d’autres technologies bien avant cette date.
 
 > [!NOTE]
 > Une stratégie désactive les espaces de noms qui n’ont pas demandé de jeton pendant une période donnée. Depuis début septembre 2018, cette période est actuellement de 14 jours d’inactivité, mais sera réduite à 7 jours d’inactivité dans les semaines à venir. Si vous disposez d’espaces de noms Access Control actuellement désactivés, vous pouvez [télécharger et installer ACS PowerShell](#download-and-install-acs-powershell) pour réactiver les espaces de noms.

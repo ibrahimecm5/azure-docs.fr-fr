@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/22/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb
+ms.reviewer: calebb, sandeo-MSFT
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae75a0526dcccb39ba6d3b6b7779b9f6b3051039
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 89dab74b476345e08a5b995ad04d7d512d0e3a28
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592013"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012640"
 ---
 # <a name="conditional-access-conditions"></a>Accès conditionnel : Conditions
 
@@ -190,18 +190,23 @@ Pour plus d’informations, consultez les articles suivants :
 En sélectionnant **Autres clients**, vous pouvez spécifier une condition affectant les applications qui utilisent l’authentification de base avec des protocoles de messagerie comme IMAP, MAPI, POP et SMTP ainsi que les applications Office plus anciennes qui n’utilisent pas l’authentification moderne.
 
 ## <a name="device-state-preview"></a>État de l’appareil (préversion)
+> [!CAUTION]
+> **Cette fonctionnalité d’évaluation est dépréciée.** Les clients doivent utiliser la condition **Filtre pour appareils** dans l’accès conditionnel pour activer les scénarios précédemment obtenus à l’aide de la condition d’état de l’appareil (préversion).
 
 Une organisation peut utiliser la condition État de l’appareil pour exclure de ses stratégies d’accès conditionnel les appareils joints à une version hybride d’Azure AD et/ou les appareils marqués comme conformes à une stratégie de conformité Microsoft Intune.
 
 Par exemple, *Tous les utilisateurs* qui accèdent à l’application cloud *Microsoft Azure Management*, incluant **Tous les états d’appareils**, mais excluant **Appareil joint à une version hybride d’Azure AD** et **Appareil marqué comme conforme**, et pour *Contrôles d’accès*, **Bloquer**. 
    - Cet exemple crée une stratégie qui autorise l’accès à Microsoft Azure Management uniquement à partir d’appareils avec jointure hybride Azure AD ou d’appareils marqués comme étant conformes.
 
+Le scénario ci-dessus peut être configuré à l’aide de *Tous les utilisateurs* accédant à l’application cloud *Microsoft Azure Management*, à l’exclusion de la condition **Filtrer pour appareils** avec la règle suivante **device.trustType -ne "ServerAD" -or device.isCompliant -ne True** et pour *Contrôles d’accès*, **Bloquer**.
+- Cet exemple crée une stratégie qui autorise l’accès à Microsoft Azure Management uniquement à partir d’appareils avec jointure hybride Azure AD ou d’appareils marqués comme étant conformes.
+
 > [!IMPORTANT]
 > L’état de l’appareil et les filtres pour appareils ne peuvent pas être utilisés ensemble dans la stratégie d’accès conditionnel. Les filtres pour appareils fournissent un ciblage plus granulaire, incluant la prise en charge du ciblage des informations d’état des appareils via les propriétés `trustType` et `isCompliant`.
 
-## <a name="filters-for-devices-preview"></a>Filtres pour appareils (préversion)
+## <a name="filter-for-devices"></a>Filtre pour les appareils
 
-Il existe une nouvelle condition facultative dans l’accès conditionnel, appelée Filtres pour appareils. Lors de la configuration des filtres pour appareils comme condition, les organisations peuvent choisir d’inclure ou d’exclure des appareils en fonction de filtres à l’aide d’une expression de règle sur les propriétés de l’appareil. L’expression de règle pour les filtres pour appareils peut être créée à l’aide du générateur de règles ou de la syntaxe de règle. Cette expérience est semblable à celle utilisée pour les règles d’appartenance dynamiques pour les groupes. Pour plus d’informations, consultez l’article [Accès conditionnel : filtres pour appareils (préversion)](concept-condition-filters-for-devices.md).
+Il existe une nouvelle condition facultative dans l’accès conditionnel, appelée Filtre pour appareils. Lors de la configuration du filtre pour appareils comme condition, les organisations peuvent choisir d’inclure ou d’exclure des appareils en fonction d’un filtre à l’aide d’une expression de règle sur les propriétés de l’appareil. L’expression de règle pour le filtre pour appareils peut être créée à l’aide du générateur de règles ou de la syntaxe de règle. Cette expérience est semblable à celle utilisée pour les règles d’appartenance dynamiques pour les groupes. Pour plus d’informations, consultez l’article [Accès conditionnel : Filtre pour appareils (préversion)](concept-condition-filters-for-devices.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

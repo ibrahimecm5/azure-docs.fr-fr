@@ -9,12 +9,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 5446bf3c2271fd31fc99e5fadb2f3ab92ca38e26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0f7c3c85e07bb2a17685e283b5212432864a4818
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806288"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005781"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>Utiliser des activités personnalisées dans un pipeline Azure Data Factory ou Azure Synapse Analytics
 
@@ -26,7 +26,7 @@ ms.locfileid: "124806288"
 Vous pouvez utiliser deux types d’activités dans un pipeline Azure Data Factory ou Synapse.
 
 - Les [activités de déplacement de données](copy-activity-overview.md) permettent de transférer des données entre les [magasins de données source et récepteur pris en charge](copy-activity-overview.md#supported-data-stores-and-formats).
-- Les [activités de transformation de données](transform-data.md) permettent de transformer des données à l’aide de services de calcul, comme Azure HDInsight, Azure Batch et ML Studio (classique).
+- [Activités de transformation de données](transform-data.md) pour transformer les données à l’aide de services de calcul tels qu’Azure HDInsight et Azure Batch.
 
 Pour déplacer des données vers ou depuis un magasin de données que le service ne prend pas en charge, ou pour transformer et traiter les données d’une manière qui n’est pas prise en charge par le service, créez une **Activité personnalisée** avec votre propre logique de déplacement ou de transformation des données, et utilisez cette activité dans un pipeline. L’activité personnalisée exécute votre logique de code personnalisé sur un pool de machines virtuelles **Azure Batch**.
 
@@ -389,5 +389,4 @@ Consultez les articles suivants qui expliquent comment transformer des données 
 * [Activité MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Activité de diffusion en continu Hadoop](transform-data-using-hadoop-streaming.md)
 * [Activité Spark](transform-data-using-spark.md)
-* [Activité Batch Execution ML Studio (classique)](transform-data-using-machine-learning.md)
 * [Activité de procédure stockée](transform-data-using-stored-procedure.md)

@@ -1,0 +1,69 @@
+### YamlMime:Landing
+title: Documentation relative à Azure Virtual Network Manager
+summary: Découvrez comment utiliser Azure Virtual Network Manager pour simplifier le routage dynamique entre vos appliances virtuelles réseau et votre réseau virtuel.
+metadata:
+  title: Documentation relative à Azure Virtual Network Manager
+  description: En savoir plus sur Azure Virtual Network Manager
+  services: virtual-network-manager
+  ms.service: virtual-network-manager
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 11/02/2021
+  ms.openlocfilehash: 7b61df1521d2e80ff4c4e4847f54eff84669e4e6
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088321"
+landingContent:
+- title: À propos d’Azure Virtual Network Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Qu’est-ce qu’Azure Virtual Network Manager ?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Questions fréquentes (FAQ)
+      url: faq.md
+- title: Bien démarrer
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Étendue
+      url: concept-network-manager-scope.md
+    - text: Groupes réseau
+      url: concept-network-groups.md
+    - text: Déploiement
+      url: concept-deployments.md
+  - linkListType: quickstart
+    links:
+    - text: Créer et configurer une instance Virtual Network Manager - Portail
+      url: create-virtual-network-manager-portal.md
+    - text: Créer et configurer une instance Virtual Network Manager - PowerShell
+      url: create-virtual-network-manager-powershell.md
+  - linkListType: tutorial
+    links:
+    - text: Créer un réseau hub-and-spoke sécurisé
+      url: tutorial-create-secured-hub-and-spoke.md
+- title: Connectivité
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Configuration de la connectivité
+      url: concept-connectivity-configuration.md
+  - linkListType: how-to-guide
+    links:
+    - text: Créer une topologie hub-and-spoke
+      url: how-to-create-hub-and-spoke.md
+- title: Sécurité
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Configuration de l’administration de la sécurité
+      url: concept-security-admins.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bloquer le trafic réseau avec les règles d’administration de sécurité
+      url: how-to-block-network-traffic-portal.md

@@ -3,12 +3,12 @@ title: 'Guide pratique pour concevoir votre déploiement Application Insights :
 description: Télémétrie directe de différentes ressources pour les tampons de développement, de test et de production.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffa3c0c6248fd34f91ec1756c3e7e5177134717e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424663"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078234"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Combien de ressources Application Insights déployer
 
@@ -24,23 +24,23 @@ Chaque ressource Application Insights est accompagnée de métriques prêtes à 
 
 ### <a name="when-to-use-a-single-application-insights-resource"></a>Quand utiliser une seule ressource Application Insights
 
--   Pour les composants d’application qui sont déployés ensemble. Habituellement développés par une équipe unique, gérés par le même ensemble d’utilisateurs DevOps/ITOps.
--   S’il semble plus logique d’agréger des indicateurs de performance clés (KPI), tels que les durées de réponse, les taux d’échec dans le tableau de bord, et ainsi de suite, pour tous les composants par défaut (vous pouvez choisir de segmenter par nom de rôle dans l’expérience Metrics Explorer).
--   Si vous n’avez pas besoin de gérer le contrôle d’accès en fonction du rôle Azure (Azure RBAC) différemment entre les composants d’application.
--   Si vous n’avez pas besoin de critères d’alerte de métriques différents entre les composants.
--   Si vous n’avez pas besoin de gérer les exportations continues différemment entre les composants.
--   Si vous n’avez pas besoin de gérer la facturation/les quotas différemment entre les composants.
--   Si cela ne pose pas de problème qu’une clé API ait le même accès aux données à partir de tous les composants. Et que 10 clés API suffisent pour répondre aux besoins de tous.
--   Si cela ne pose pas de problème d’avoir les mêmes paramètres d’intégration d’élément de travail et de détection intelligente parmi tous les rôles.
+- Pour les composants d’application qui sont déployés ensemble. Habituellement développés par une équipe unique, gérés par le même ensemble d’utilisateurs DevOps/ITOps.
+- S’il semble plus logique d’agréger des indicateurs de performance clés (KPI), tels que les durées de réponse, les taux d’échec dans le tableau de bord, et ainsi de suite, pour tous les composants par défaut (vous pouvez choisir de segmenter par nom de rôle dans l’expérience Metrics Explorer).
+- Si vous n’avez pas besoin de gérer le contrôle d’accès en fonction du rôle Azure (Azure RBAC) différemment entre les composants d’application.
+- Si vous n’avez pas besoin de critères d’alerte de métriques différents entre les composants.
+- Si vous n’avez pas besoin de gérer les exportations continues différemment entre les composants.
+- Si vous n’avez pas besoin de gérer la facturation/les quotas différemment entre les composants.
+- Si cela ne pose pas de problème qu’une clé API ait le même accès aux données à partir de tous les composants. Et que 10 clés API suffisent pour répondre aux besoins de tous.
+- Si cela ne pose pas de problème d’avoir les mêmes paramètres d’intégration d’élément de travail et de détection intelligente parmi tous les rôles.
 
 > [!NOTE]
 > Si vous souhaitez fusionner plusieurs ressources Application Insights, vous pouvez faire pointer vos composants d’application existants vers une nouvelle ressource Application Insights fusionnée. Les données de télémétrie stockées dans votre ancienne ressource ne seront pas transférées vers la nouvelle ressource. Par conséquent, supprimez l’ancienne ressource uniquement lorsque vous avez suffisamment de données de télémétrie dans la nouvelle ressource pour la continuité de l’activité.
 
 ### <a name="other-things-to-keep-in-mind"></a>Autres points à prendre en compte
 
--   Vous devrez peut-être ajouter du code personnalisé pour vous assurer que des valeurs significatives sont définies dans l’attribut [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name). Si aucune valeur significative n’est définie pour cet attribut, *AUCUNE* expérience du portail ne fonctionnera.
+- Vous devrez peut-être ajouter du code personnalisé pour vous assurer que des valeurs significatives sont définies dans l’attribut [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name). Si aucune valeur significative n’est définie pour cet attribut, *AUCUNE* expérience du portail ne fonctionnera.
 - Pour les applications Service Fabric et les services cloud classiques, le SDK lit automatiquement à partir de l’environnement de rôle Azure et les définit. Pour tous les autres types d’applications, vous devrez probablement définir cela de manière explicite.
--   L’expérience de métriques en temps réel ne prend pas en charge le fractionnement par nom de rôle.
+- L’expérience de métriques en temps réel ne prend pas en charge le fractionnement par nom de rôle.
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Clé d'instrumentation dynamique
 
@@ -99,7 +99,7 @@ Il existe plusieurs méthodes de définition de la propriété Version de l’ap
 * Encapsulez cette ligne dans un [initialiseur de télémétrie](../../azure-monitor/app/api-custom-events-metrics.md#defaults) pour vous assurer que toutes les instances de TelemetryClient sont définies de manière cohérente.
 * [ASP.NET] Définissez la version dans `BuildInfo.config`. Le module web sélectionnera la version dans le nœud BuildLabel. Incluez ce fichier dans votre projet et n’oubliez pas de définir la propriété Toujours copier dans l’Explorateur de solutions.
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
@@ -113,7 +113,7 @@ Il existe plusieurs méthodes de définition de la propriété Version de l’ap
     ```
 * [ASP.NET] Générez automatiquement BuildInfo.config dans MSBuild. Pour ce faire, ajoutez quelques lignes à votre fichier `.csproj` :
 
-    ```XML
+    ```xml
     <PropertyGroup>
       <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
     </PropertyGroup>
@@ -126,9 +126,9 @@ Il existe plusieurs méthodes de définition de la propriété Version de l’ap
     Pour permettre à MSBuild de générer des numéros de version, définissez la version comme `1.0.*` dans AssemblyReference.cs
 
 ## <a name="version-and-release-tracking"></a>Suivi de la version
-Pour vérifier la version de l’application, assurez-vous que `buildinfo.config` est généré par votre processus Microsoft Build Engine. Dans votre fichier `.csproj`, ajoutez :  
+Pour vérifier la version de l’application, assurez-vous que `buildinfo.config` est généré par votre processus Microsoft Build Engine. Dans votre fichier `.csproj`, ajoutez :
 
-```XML
+```xml
 <PropertyGroup>
   <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>
   <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
@@ -140,7 +140,8 @@ Quand il détient les informations de version, le module web Application Insight
 Toutefois, notez que le numéro de version de build est uniquement généré par Microsoft Build Engine, et non par la build de développement dans Visual Studio.
 
 ### <a name="release-annotations"></a>Annotations de version
-Si vous utilisez Azure DevOps, vous pouvez [obtenir un marqueur d’annotation](../../azure-monitor/app/annotations.md) ajouté à vos graphiques lorsque vous publiez une nouvelle version. 
+
+Si vous utilisez Azure DevOps, vous pouvez [obtenir un marqueur d’annotation](../../azure-monitor/app/annotations.md) ajouté à vos graphiques lorsque vous publiez une nouvelle version.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

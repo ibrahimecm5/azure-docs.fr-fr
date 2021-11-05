@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa1b92e34def30f276b50d4f19e3a4ed4ae3922a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93392331"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017860"
 ---
 # <a name="configure-azure-sql-edge"></a>Configurer Azure SQL Edge
 
@@ -64,7 +64,7 @@ Ajoutez des valeurs dans **Options de création de conteneur**.
 > [!NOTE]
 > En mode de déploiement déconnecté, les variables d'environnement peuvent être spécifiées à l'aide de l'option `-e`, `--env` ou `--env-file` de la commande `docker run`.
 
-## <a name="configure-by-using-an-mssqlconf-file"></a>Configurer à l’aide d’un fichier mssql.conf
+## <a name="configure-by-using-an-mssqlconf-file"></a>Configurer à l’aide d’un fichier `mssql.conf`
 
 Azure SQL Edge n’inclut pas [l’utilitaire de configuration mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf/) comme le fait SQL Server sur Linux. Vous devez configurer manuellement le fichier mssql.conf et le placer dans le lecteur de stockage persistant qui est mappé au dossier /var/opt/mssql/ dans le module SQL Edge. Lors du déploiement de SQL Edge à partir de la Place de marché Azure, ce mappage est spécifié en tant qu’option **Mounts** dans les **Options de création de conteneur**.
 
@@ -99,7 +99,7 @@ Les options mssql.conf suivantes ne s’appliquent pas à SQL Edge :
 |**CLUF ML Services** | Accepter les CLUF R et Python pour les packages Azure Machine Learning. S'applique à SQL Server 2019 uniquement.|
 |**outboundnetworkaccess** |Activez l'accès réseau sortant pour les extensions [Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R, Python et Java.|
 
-L’exemple suivant de fichier mssql.conf fonctionne pour SQL Edge. Pour plus d’informations sur le format du fichier mssql.conf, consultez [Format mssql.conf](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+L’exemple suivant de fichier mssql.conf fonctionne pour SQL Edge. Pour plus d’informations sur le format d’un fichier , consultez `mssql.conf` [Format mssql.conf](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]

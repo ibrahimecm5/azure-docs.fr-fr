@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/01/2019
+ms.date: 10/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9d1ef18a0cd7852227e50b116ec6ff9c1b1250
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dc56bcf1407180aefa5ac888669f1eb2db37fbad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732696"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032189"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Options de création de rapports pour la gestion des mots de passe Azure AD
 
@@ -118,6 +119,10 @@ La liste suivante explique cette activité en détail :
 * **Activity statuses** (États de l'activité) :
   * _Réussite_ : indique qu’un administrateur a correctement réinitialisé le mot de passe d’un utilisateur.
   * _Échec_ : indique qu’un administrateur n’a pas réussi à modifier le mot de passe d’un utilisateur. Vous pouvez sélectionner la ligne pour voir la catégorie **Activity status reason** (Motif de l’état de l’activité) et en savoir plus sur la cause de l’échec.
+- **Détails supplémentaires sur les activités OnPremisesAgent** :
+  - _Aucune_ : indique une réinitialisation cloud uniquement.
+  - _AAD Connect_ : indique que le mot de passe a été réinitialisé localement via l’agent d’écriture différée Azure AD Connect.
+  - _CloudSync_ : indique que le mot de passe a été réinitialisé localement via l’agent d’écriture différée CloudSync.
 
 ### <a name="activity-type-reset-password-self-service"></a>Type d’activité : Réinitialiser un mot de passe (libre-service)
 

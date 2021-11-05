@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2021
 ms.author: yelevin
-ms.openlocfilehash: bcb84b0beba762342c6ecf8b8f3be81cbcaf24d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 083af667592be828b7d46b459376f8938521d7f0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122531365"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023231"
 ---
 # <a name="detect-threats-out-of-the-box"></a>Détection des menaces prête à l’emploi
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Une fois que vous avez [connecté vos sources de données](quickstart-onboard.md) à Azure Sentinel, vous souhaitez être averti en cas d’activité suspecte. C’est pourquoi Azure Sentinel fournit des modèles intégrés et prêts à l’emploi pour vous aider à créer des règles de détection des menaces.
 
@@ -41,23 +44,21 @@ Pour afficher toutes les détections et les règles analytiques dans Azure Senti
 
 Les détections intégrées sont les suivantes :
 
-|Type de règle  |Description  |
-|---------|---------|
-|**Sécurité Microsoft**     |  Les modèles de sécurité Microsoft créent automatiquement des incidents Azure Sentinel à partir des alertes générées dans d’autres solutions de sécurité Microsoft, en temps réel. Vous pouvez utiliser des règles de sécurité Microsoft comme modèle pour créer des règles ayant une logique similaire. <br><br>Pour plus d’informations sur les règles de sécurité, consultez [Créer automatiquement des incidents à partir d’alertes de sécurité Microsoft](create-incidents-from-alerts.md).       |
-|**Fusion**     | Basée sur la technologie Fusion, la détection avancée des attaques en plusieurs étapes dans Azure Sentinel utilise des algorithmes de Machine Learning évolutifs qui peuvent mettre en corrélation un grand nombre d’alertes et d’événements basse fidélité sur plusieurs produits dans des incidents haute fidélité et exploitables. La fusion est activée par défaut. Comme la logique est cachée et donc non personnalisable, vous ne pouvez créer qu’une seule règle avec ce modèle. <br><br>Le moteur Fusion peut également corréler des alertes produites par des [règles analytiques planifiées](#scheduled) avec celles d’autres systèmes, en produisant à la fin des incidents haute-fidélité.      |
-|**Analytique comportementale du Machine Learning**     |    Les modèles d’analyse comportementale ML sont basés sur des algorithmes Microsoft Machine Learning propriétaires. Vous ne pouvez donc pas voir la logique interne de leur fonctionnement et du moment de leur exécution. <br><br>Comme la logique est cachée et donc non personnalisable, vous ne pouvez créer qu’une seule règle avec chaque modèle de ce type.|
-|<a name="anomaly"></a>**Anomalie**     |    Les modèles de règle d’anomalie utilisent SOC-ML (Machine Learning) pour détecter des types spécifiques de comportement anormal. Chaque règle a ses propres paramètres et seuils uniques, adaptés au comportement en cours d’analyse. <br><br>Même si ces configurations de règles ne peuvent pas être changées ni ajustées, vous pouvez dupliquer la règle, changer et ajuster la duplication. Dans ce cas, exécutez la duplication en mode **Flighting** et l’original simultanément en mode **Production**. Comparez ensuite les résultats et basculez la duplication en mode **Production** si et quand son ajustement vous convient. <br><br>Pour plus d’informations, consultez [Utiliser des anomalies SOC-ML pour détecter des menaces dans Azure Sentinel](soc-ml-anomalies.md) et [Utiliser des règles d’analyse de détection d’anomalie dans Azure Sentinel](work-with-anomaly-rules.md).     |
-| <a name="scheduled"></a>**Planifié**    |    Les règles d’analytique planifiées sont basées sur des requêtes intégrées écrites par des experts en sécurité de Microsoft. Vous pouvez voir la logique de la requête et y apporter des changements. Vous pouvez utiliser le modèle de règles planifiées et personnaliser la logique des requêtes et les paramètres de planification pour créer de nouvelles règles. <br><br>Plusieurs nouveaux modèles de règle d’analyse planifiée produisent des alertes que le moteur de fusion met en corrélation avec des alertes d’autres systèmes afin de produire des incidents de haute fidélité. Pour plus d’informations, consultez [Détection avancée des attaques multiphases](fusion.md#configure-scheduled-analytics-rules-for-fusion-detections).<br><br>**Conseil** : Les options de planification de règles incluent la configuration de la règle pour qu’elle s’exécute chaque nombre spécifié de minutes, d’heures ou de jours, l’horloge démarrant quand vous activez la règle. <br><br>Nous vous recommandons d’être attentif lorsque vous activez une règle d’analyse nouvelle ou modifiée pour vous assurer que les règles obtiendront la nouvelle pile d’incidents en temps opportun. Par exemple, vous pouvez exécuter une règle au moment où vos analystes du centre des opérations de sécurité commencent leur journée de travail, puis activer les règles.|
+| Type de règle | Description |
+| --------- | --------- |
+| **Sécurité Microsoft** | Les modèles de sécurité Microsoft créent automatiquement des incidents Azure Sentinel à partir des alertes générées dans d’autres solutions de sécurité Microsoft, en temps réel. Vous pouvez utiliser des règles de sécurité Microsoft comme modèle pour créer des règles ayant une logique similaire. <br><br>Pour plus d’informations sur les règles de sécurité, consultez [Créer automatiquement des incidents à partir d’alertes de sécurité Microsoft](create-incidents-from-alerts.md). |
+| <a name="fusion"></a>**Fusion**<br>(certaines détections en préversion) | Azure Sentinel utilise le moteur de corrélation de fusion, avec ses algorithmes d’apprentissage automatique évolutifs, pour détecter les attaques multi-étapes avancées en mettant en corrélation de nombreuses alertes et événements de faible fidélité sur plusieurs produits en incidents haute fidélité et actionnables. La fusion est activée par défaut. Comme la logique est cachée et donc non personnalisable, vous ne pouvez créer qu’une seule règle avec ce modèle. <br><br>Le moteur Fusion peut également corréler des alertes produites par des [règles analytiques planifiées](#scheduled) avec celles d’autres systèmes, en produisant à la fin des incidents haute-fidélité. |
+| **Analytique comportementale du Machine Learning** | Les modèles d’analyse comportementale ML sont basés sur des algorithmes Microsoft Machine Learning propriétaires. Vous ne pouvez donc pas voir la logique interne de leur fonctionnement et du moment de leur exécution. <br><br>Comme la logique est cachée et donc non personnalisable, vous ne pouvez créer qu’une seule règle avec chaque modèle de ce type. |
+| <a name="anomaly"></a>**Anomalie**<br>(Préversion) | Les modèles de règle d’anomalie utilisent SOC-ML (Machine Learning) pour détecter des types spécifiques de comportement anormal. Chaque règle a ses propres paramètres et seuils uniques, adaptés au comportement en cours d’analyse. <br><br>Même si ces configurations de règles ne peuvent pas être changées ni ajustées, vous pouvez dupliquer la règle, changer et ajuster la duplication. Dans ce cas, exécutez la duplication en mode **Flighting** et l’original simultanément en mode **Production**. Comparez ensuite les résultats et basculez la duplication en mode **Production** si et quand son ajustement vous convient. <br><br>Pour plus d’informations, consultez [Utiliser des anomalies SOC-ML pour détecter des menaces dans Azure Sentinel](soc-ml-anomalies.md) et [Utiliser des règles d’analyse de détection d’anomalie dans Azure Sentinel](work-with-anomaly-rules.md). |
+| <a name="scheduled"></a>**Planifié** | Les règles d’analytique planifiées sont basées sur des requêtes intégrées écrites par des experts en sécurité de Microsoft. Vous pouvez voir la logique de la requête et y apporter des changements. Vous pouvez utiliser le modèle de règles planifiées et personnaliser la logique des requêtes et les paramètres de planification pour créer de nouvelles règles. <br><br>Plusieurs nouveaux modèles de règle d’analyse planifiée produisent des alertes que le moteur de fusion met en corrélation avec des alertes d’autres systèmes afin de produire des incidents de haute fidélité. Pour plus d’informations, consultez [Détection avancée des attaques multiphases](configure-fusion-rules.md#configure-scheduled-analytics-rules-for-fusion-detections).<br><br>**Conseil** : Les options de planification de règles incluent la configuration de la règle pour qu’elle s’exécute chaque nombre spécifié de minutes, d’heures ou de jours, l’horloge démarrant quand vous activez la règle. <br><br>Nous vous recommandons d’être attentif lorsque vous activez une règle d’analyse nouvelle ou modifiée pour vous assurer que les règles obtiendront la nouvelle pile d’incidents en temps opportun. Par exemple, vous pouvez exécuter une règle au moment où vos analystes du centre des opérations de sécurité commencent leur journée de travail, puis activer les règles.|
+| <a name="nrt"></a>**Quasi-temps réel (NRT)**<br>(Préversion) | Les règles NRT sont un ensemble limité de règles planifiées, conçues pour s’exécuter une fois toutes les minutes, afin de vous fournir des informations aussi récentes que possible. <br><br>Elles fonctionnent principalement comme des règles planifiées et sont configurées de façon similaire, avec certaines limitations. Pour plus d’informations, consultez [Détecter rapidement les menaces avec des règles d’analytique en quasi-temps réel (NRT) dans Azure Sentinel](near-real-time-rules.md). |
 | | |
 
 > [!IMPORTANT]
->  - Certaines des détections dans le modèle de règle Fusion sont actuellement en **préversion**. Pour les détections en préversion, consultez [Détection avancée des attaques multiphases dans Azure Sentinel](fusion.md).
+> - Les modèles de règle, comme indiqué ci-dessus, sont actuellement en **PRÉVERSION**, tout comme certains modèles de détection **Fusion** (pour voir lesquels, consultez [Détection avancée des attaques en plusieurs étapes dans Azure Sentinel](fusion.md)). Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 >
-> -  Les modèles de règle d’anomalie sont actuellement en **PRÉVERSION**.
+> - En créant et en activant des règles basées sur des modèles d’**analytique du comportement de Machine Learning**, **vous autorisez Microsoft à copier les données ingérées en dehors de la zone géographique de votre espace de travail Azure Sentinel**, le cas échéant, en vue de leur traitement par des moteurs et modèles de Machine Learning.
 >
-> - Les modèles de règle analytique comportementale de Machine Learning sont actuellement en **préversion**. En créant et en activant des règles basées sur des modèles d’analytique du comportement de Machine Learning, **vous autorisez Microsoft à copier les données ingérées en dehors de la zone géographique de votre espace de travail Azure Sentinel**, le cas échéant, en vue de leur traitement par des moteurs et modèles de Machine Learning.
->
-> Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
 ## <a name="use-built-in-analytics-rules"></a>Utiliser des règles analytiques intégrées
 
@@ -80,7 +81,7 @@ Cette procédure décrit comment utiliser les modèles de règles analytiques in
 > 
 > - Vous pouvez également **envoyer des règles à Azure Sentinel via l’[API](/rest/api/securityinsights/) et [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0)** , même si cela demande davantage d’effort. 
 > 
->     Quand vous utilisez l’API ou PowerShell, vous devez d’abord exporter les règles vers JSON avant de les activer. L’API ou PowerShell peut être utile lors de l’activation de règles dans plusieurs instances d’Azure Sentinel avec des paramètres identiques dans chaque instance.
+>     Lorsque vous utilisez l’API ou PowerShell, vous devez d’abord exporter les règles vers JSON avant de les activer. L’API ou PowerShell peut être utile lors de l’activation de règles dans plusieurs instances d’Azure Sentinel avec des paramètres identiques dans chaque instance.
 > 
 ## <a name="export-rules-to-an-arm-template"></a>Exporter des règles vers un modèle ARM
 

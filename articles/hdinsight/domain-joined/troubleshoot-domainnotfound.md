@@ -4,12 +4,12 @@ description: Étapes de détection de problèmes et résolutions possibles pour 
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 0f5734197c0c00bb43584215f8eb26ad85e823c0
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 953feca9542d73776aee749eff416ba3f2e04921
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284182"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079963"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Scénario : La création du cluster échoue avec l’erreur DomainNotFound dans Azure HDInsight
 

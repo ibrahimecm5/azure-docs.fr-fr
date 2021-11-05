@@ -4,15 +4,16 @@ description: Apprenez à déployer un pool de disques Azure.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/29/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72a25b6bc51732ac9b598cbcb6b45f9ac84fc21b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7230bf83f5ca203aa40cb043b3ea02d983ba7a4a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351059"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022185"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>Déployer un pool de disques Azure (préversion)
 
@@ -64,8 +65,9 @@ Pour plus d'informations sur la délégation de sous-réseau, consultez [Ajouter
 Pour qu'un disque puisse être utilisé dans un pool de disques, il doit remplir les conditions suivantes :
 
 - Le fournisseur de ressources **StoragePool** doit disposer d'un rôle RBAC avec autorisations de **lecture** et d'**écriture** pour chacun des disques managés du pool de disques.
-- Il doit s'agir d'un disque SSD Premium ou d'un disque Ultra intégré dans la même zone de disponibilité que le pool de disques.
+- Il doit s’agir d’un disque SSD premium, d’un disque SSD standard ou d’un disque ultra dans la même zone de disponibilité que le pool de disques.
     - Les disques Ultra doivent avoir une taille de secteur de disque de 512 octets.
+- Les pools de disques ne peuvent pas être configurés pour contenir à la fois des disques SSD premium et standards. Un pool de disques configuré pour les disques ultra-ne peut contenir que des disques ultra. De même, un pool de disques configuré pour les disques SSD premium ou standards ne peut contenir que des disques SSD standards et premium.
 - Il doit s'agir d'un disque partagé dont la valeur maxShares est supérieure ou égale à deux.
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/).
@@ -98,10 +100,11 @@ Pour des performances optimales, déployez le pool de disques dans la même zone
 
 Pour ajouter un disque, celui-ci doit remplir les conditions suivantes :
 
-- Il doit s'agir d'un disque SSD Premium ou d'un disque Ultra intégré dans la même zone de disponibilité que le pool de disques.
-    - Pour le moment, vous ne pouvez ajouter que des disques SSD Premium sur le portail. Les disques Ultra doivent être ajoutés à l'aide du module Azure PowerShell ou d'Azure CLI.
+- Il doit s’agir d’un disque SSD premium, d’un disque SSD standard ou d’un disque ultra dans la même zone de disponibilité que le pool de disques.
+    - Actuellement, vous pouvez uniquement ajouter des disques SSD premium et standards dans le portail. Les disques Ultra doivent être ajoutés à l'aide du module Azure PowerShell ou d'Azure CLI.
     - Les disques Ultra doivent avoir une taille de secteur de disque de 512 octets.
 - Il doit s'agir d'un disque partagé dont la valeur maxShares est supérieure ou égale à deux.
+- Les pools de disques ne peuvent pas être configurés pour contenir à la fois des disques SSD premium et standards. Un pool de disques configuré pour les disques ultra-ne peut contenir que des disques ultra. De même, un pool de disques configuré pour les disques SSD premium ou standards ne peut contenir que des disques SSD standards et premium.
 - Vous devez accorder des autorisations RBAC au fournisseur de ressources du pool de disques pour gérer le disque que vous prévoyez d'ajouter.
 
 Si votre disque répond à ces exigences, vous pouvez l'ajouter à un pool de disques en sélectionnant **+Ajouter un disque** dans le volet des pools de disques.
@@ -113,7 +116,6 @@ Si votre disque répond à ces exigences, vous pouvez l'ajouter à un pool de di
 1. Sélectionnez le volet **iSCSI**.
 1. Sélectionnez **Activer iSCSI**.
 1. Entrez le nom de la cible iSCSI ; le nom qualifié de la cible iSCSI sera généré en fonction de ce nom.
-    - Si vous souhaitez désactiver la cible iSCSI pour un disque individuel, sélectionnez **Désactiver** sous **État**.
     - Par défaut, le mode ACL est défini sur **Dynamique**. Pour utiliser votre pool de disques en tant que solution de stockage pour Azure VMware Solution, le mode ACL doit être défini sur **Dynamique**.
 1. Sélectionnez **Revoir + créer**.
 
@@ -131,7 +133,7 @@ Remplacez les variables de ce script par vos propres variables avant d'exécuter
 
 ```azurepowershell
 # Install the required module for Disk Pool
-Install-Module -Name Az.DiskPool -RequiredVersion 0.1.1 -Repository PSGallery
+Install-Module -Name Az.DiskPool -RequiredVersion 0.3.0 -Repository PSGallery
 
 # Sign in to the Azure account and setup the variables
 $subscriptionID = "<yourSubID>"
@@ -155,7 +157,8 @@ $rpId = (Get-AzADServicePrincipal -SearchString "StoragePool Resource Provider")
 New-AzRoleAssignment -ObjectId $rpId -RoleDefinitionName "Virtual Machine Contributor" -Scope $scopeDef
 
 # Create a Disk Pool
-New-AzDiskPool -Name $diskPoolName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $subnetId -AvailabilityZone $availabilityZone -SkuName Standard
+# If you want to create a disk pool configured for ultra disks, add -AdditionalCapability "DiskPool.Disk.Sku.UltraSSD_LRS" to the command
+New-AzDiskPool -Name $diskPoolName -ResourceGroupName $resourceGroupName -Location $location -SubnetId $subnetId -AvailabilityZone $availabilityZone -SkuName Standard_S1
 $diskpool = Get-AzDiskPool -ResourceGroupName $resourceGroupName -Name $DiskPoolName
 
 # Add disks to the Disk Pool
@@ -185,7 +188,7 @@ Remplacez les variables de ce script par vos propres variables avant d'exécuter
 # Add disk pool CLI extension
 az extension add -n diskpool
 
-#az extension add -s https://zuhdefault.blob.core.windows.net/cliext/diskpool-0.1.1-py3-none-any.whl
+#az extension add -s https://azcliprod.blob.core.windows.net/cli-extensions/diskpool-0.2.0-py3-none-any.whl
 
 #Select subscription
 az account set --subscription "<yourSubscription>"
@@ -210,13 +213,14 @@ storagePoolObjectId="${storagePoolObjectId#"}"
 
 az role assignment create --assignee-object-id $storagePoolObjectId --role "Virtual Machine Contributor" --resource-group $resourceGroupName
 
-#Create a disk pool 
+#Create a disk pool
+#To create a disk pool configured for ultra disks, add --additional-capabilities "DiskPool.Disk.Sku.UltraSSD_LRS" to your command
 az disk-pool create --name $diskPoolName \
 --resource-group $resourceGroupName \
 --location $location \
 --availability-zones $zone \
 --subnet-id $subnetId \
---sku name="Standard"
+--sku name="Standard_S1" \
 
 #Initialize an iSCSI target. You can have 1 iSCSI target per disk pool
 az disk-pool iscsi-target create --name $targetName \

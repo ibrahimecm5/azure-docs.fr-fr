@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5fd43ebed8d1ebcad3d5f76bda21b978bdb0950e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a58462910a3f673a050bdb252d65369ef6fb3b45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693233"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003425"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Démarrage rapide : Créer un groupe de machines virtuelles identiques dans le portail Azure
 
@@ -61,6 +61,7 @@ Vous pouvez déployer un groupe identique avec une image Windows Server ou une i
 1. Sous l’onglet **De base**, sous **Détails du projet**, vérifiez que l’abonnement correct est sélectionné, puis sélectionnez *myVMSSResourceGroup* dans la liste des groupes de ressources. 
 1. Tapez *myScaleSet* comme nom de votre groupe identique.
 1. Dans **Région**, sélectionnez une région proche de vous.
+1. Sous **Orchestration**, assurez-vous que l’option *Uniforme* est sélectionnée pour le **mode Orchestration**. 
 1. Sélectionnez une image de la place de marché pour **Image**. Dans cet exemple, nous avons choisi *Ubuntu Server 18.04 LTS*.
 1. Entrez le nom d’utilisateur de votre choix, puis sélectionnez le type d’authentification que vous préférez.
    - Un **mot de passe** doit comporter au moins 12 caractères, avec au moins trois des quatre caractères suivants : une minuscule, une majuscule, un chiffre et un caractère spécial. Pour plus d’informations, consultez les [critères de nom d’utilisateur et de mot de passe](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).

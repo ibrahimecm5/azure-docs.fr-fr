@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 06/23/2021
-ms.openlocfilehash: c3f6046617458606d13aab243c96ef24246714fd
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 290065bb7410c42695cf2b0062cdd11cb02c9580
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090310"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065529"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent Data Encryption Azure SQL avec une clé managée par le client
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -82,15 +82,21 @@ Les auditeurs peuvent utiliser Azure Monitor pour évaluer les journaux AuditEve
 
 - Le coffre de clés et SQL Database/instance gérée doivent appartenir au même abonné Azure Active Directory. Les interactions entre un serveur et un coffre de clés inter-abonnés ne sont pas prises en charge. Pour déplacer des ressources par la suite, vous devez reconfigurer TDE avec AKV. En savoir plus sur le [déplacement des ressources](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- La fonctionnalité [suppression réversible](../../key-vault/general/soft-delete-overview.md) doit être activée sur le coffre de clés pour protéger contre la suppression accidentelle d’une clé de perte de données (ou d’un coffre de clés). Les ressources supprimées de manière réversible sont conservées pendant 90 jours, sauf si elles sont récupérées ou purgées par le client entre-temps. Les actions de *récupération* et de *vidage* ont leurs propres autorisations associées dans une stratégie d’accès au coffre de clés. La fonctionnalité de suppression réversible désactivée par défaut peut être activée via [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) ou [la CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli). Elle ne peut pas être activée via le portail Azure.  
+- Les fonctionnalités [Suppression réversible](../../key-vault/general/soft-delete-overview.md) et [Protection contre le vidage](../../key-vault/general/soft-delete-overview.md#purge-protection) doivent être activées sur le coffre de clés pour éviter une perte de données due à une suppression accidentelle d’une clé (ou d’un coffre de clés). 
+    - Les ressources supprimées de manière réversible sont conservées pendant 90 jours, sauf si elles sont récupérées ou vidées par le client. Les actions de *récupération* et de *vidage* ont leurs propres autorisations associées dans une stratégie d’accès au coffre de clés. La fonctionnalité Suppression réversible peut être activée en utilisant le portail Azure, [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) ou [Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli).
+    - La protection contre le vidage peut être activée en utilisant [Azure CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) ou [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell). Lorsque la protection contre le vidage est activée, il n’est pas possible de vider un coffre ou un objet à l’état supprimé avant la fin de la période de conservation de 90 jours. La période de conservation par défaut est de 90 jours, mais elle peut être configurée entre 7 et 90 jours dans le portail Azure.   
 
-- Accordez au serveur ou à l’instance gérée l’accès au coffre de clés (get, wrapKey, unwrapKey) à l’aide de son identité Azure Active Directory. Lors de l’utilisation du portail Azure, l’identité Azure AD est créée automatiquement. Lors de l’utilisation de PowerShell ou de la CLI, l’identité Azure AD doit être explicitement créée et sa saisie vérifiée. Consultez [Configurer TDE avec BYOK](transparent-data-encryption-byok-configure.md) et [Configure TDE with BYOK for SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) (Configurer TDE avec BYOK pour SQL Managed Instance) pour obtenir des instructions détaillées lors de l’utilisation de PowerShell.
+> [!IMPORTANT]
+> La suppression réversible et la protection contre le vidage doivent être toutes les deux activées sur le(s) coffre(s) de clés pour les serveurs en cours de configuration avec le TDE géré par le client et pour les serveurs existants utilisant le TDE géré par le client. Pour un serveur utilisant le TDE géré par le client, si la suppression réversible et la protection contre le vidage ne sont pas activées sur le coffre de clés associé, les actions, comme la création de base de données, la configuration de la géoréplication, la restauration de base de données ou la mise à jour du protecteur TDE, échoueront avec le message d’erreur suivant : *« L’URI Key Vault fourni n’est pas valide. Vérifiez que le coffre de clés a été configuré avec la suppression réversible et la protection contre le vidage. »*
+
+- Accordez au serveur ou à l’instance managée l’accès au coffre de clés (*get*, *wrapKey*, *unwrapKey*) à l’aide de son identité Azure Active Directory. Lors de l’utilisation du portail Azure, l’identité Azure AD est créée automatiquement en même temps que le serveur. En utilisant PowerShell ou Azure CLI, l’identité Azure AD doit être explicitement créée et vérifiée. Consultez [Configurer TDE avec BYOK](transparent-data-encryption-byok-configure.md) et [Configure TDE with BYOK for SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) (Configurer TDE avec BYOK pour SQL Managed Instance) pour obtenir des instructions détaillées lors de l’utilisation de PowerShell.
+    - En fonction du modèle d’autorisation du coffre de clés (stratégie d’accès ou RBAC Azure), l’accès au coffre de clés peut être accordé en créant une stratégie d’accès sur le coffre de clés ou en créant une attribution de rôle Azure RBAC avec le rôle [Utilisateur du chiffrement du service de chiffrement Key Vault](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations).
 
 - Lorsque vous utilisez le pare-feu avec AKV, vous devez activer l’option *Autoriser les services Microsoft approuvés pour contourner le pare-feu*.
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Exigences pour la configuration du protecteur TDE
 
-- Le protecteur TDE peut uniquement être une clé asymétrique, RSA ou RSA HSM. Les longueurs de clé prises en charge sont 2048 octets et 3072 octets.
+- Le protecteur TDE peut uniquement être une clé asymétrique, RSA ou RSA HSM. Les longueurs de clé prises en charge sont 2048 bits et 3072 bits.
 
 - La date d’activation de la clé (si définie) doit être une date et une heure passées. La date d’expiration (si définie) doit être une date et une heure ultérieures.
 
@@ -113,6 +119,9 @@ Les auditeurs peuvent utiliser Azure Monitor pour évaluer les journaux AuditEve
 - Activer l’audit et la création de rapports sur toutes les clés de chiffrement : Le coffre de clés fournit des journaux d’activité faciles à injecter dans d’autres outils de gestion d’événements et d’informations de sécurité. Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) est un exemple de service déjà intégré.
 
 - Reliez chaque serveur à deux coffres de clés résidant dans des régions différentes et détenant le même matériau clé pour garantir la haute disponibilité des bases de données chiffrées. Marquez uniquement la clé du coffre de clés dans la même région qu’un protecteur TDE. Le système bascule automatiquement vers le coffre de clés dans la région distante en cas de panne affectant le coffre situé dans la même région.
+
+> [!NOTE]
+> Pour bénéficier d’une plus grande souplesse dans la configuration du TDE géré par le client, le serveur Azure SQL Database et Managed Instance d’une même région peuvent maintenant être liés au coffre de clés de n’importe quelle autre région. Le serveur et le coffre de clés n’ont pas besoin d’être colocalisés dans la même région. 
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>Suggestions lors de la configuration du protecteur TDE
 
@@ -210,6 +219,8 @@ Pour éviter tout problème lors de l’établissement ou de la géoréplication
 ![Groupes de basculement et géo-reprise](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
 Pour tester un basculement, suivez les étapes décrites dans [Aperçu de la géo-réplication active](active-geo-replication-overview.md). Le test de basculement doit être effectué régulièrement pour confirmer que SQL Database a conservé l’autorisation d’accès aux deux coffres de clés.
+
+**Le serveur Azure SQL Database et Managed Instance d’une même région peuvent maintenant être liés au coffre de clés de n’importe quelle autre région.** Le serveur et le coffre de clés n’ont pas besoin d’être colocalisés dans la même région. Pour faire simple, les serveurs principaux et secondaires peuvent être connectés au même coffre de clés (de n’importe quelle région). Les scénarios où le matériel de clé peut être désynchronisé si des coffres de clés distincts sont utilisés pour les deux serveurs sont ainsi évités. Azure Key Vault a mis en place plusieurs couches de redondance pour s’assurer que vos clés et coffres de clés restent disponibles en cas de panne du service ou de la région. [Disponibilité et redondance d’Azure Key Vault](../../key-vault/general/disaster-recovery-guidance.md)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

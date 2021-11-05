@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4113f9743c92ab5809977f681e35d41b759fe599
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: faed36e348a8716e1023705ca077e892a24ac2d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130217332"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007236"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Configurer l’inscription et la connexion avec un compte Google à l’aide d’Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ ms.locfileid: "130217332"
 
 ## <a name="create-a-google-application"></a>Créer une application Google
 
-Pour permettre la connexion des utilisateurs avec un compte Google dans Azure Active Directory B2C (Azure AD B2C), vous devez créer une application sur la [console Google Developers](https://console.developers.google.com/). Pour plus d’informations, consultez [Configuration d’OAuth 2.0](https://support.google.com/googleapi/answer/6158849). Si vous ne disposez pas déjà d’un compte Google, vous pouvez vous inscrire à l’adresse [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp).
+Pour permettre la connexion des utilisateurs avec un compte Google dans Azure Active Directory B2C (Azure AD B2C), vous devez créer une application sur la [console Google Developers](https://console.developers.google.com/). Pour plus d’informations, consultez [Configuration d’OAuth 2.0](https://support.google.com/googleapi/answer/6158849). Si vous ne disposez pas déjà d’un compte Google, vous pouvez vous inscrire à l’adresse [`https://accounts.google.com/signup`](https://accounts.google.com/signup).
 
 1. Connectez-vous à la [Console Google Developers](https://console.developers.google.com/) avec les informations d’identification de votre compte Google.
 1. Dans le coin supérieur gauche de la page, sélectionnez la liste des projets, puis **Nouveau projet**.
@@ -197,4 +197,4 @@ Si le processus de connexion réussit, votre navigateur est redirigé vers `http
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Découvrez comment [transmettre un jeton Google à votre application](idp-pass-through-user-flow.md).
+Découvrez comment [passer un jeton Google à votre application](idp-pass-through-user-flow.md).

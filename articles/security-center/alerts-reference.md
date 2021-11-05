@@ -1,28 +1,35 @@
 ---
-title: Tableau de référence pour toutes les alertes de sécurité dans Azure Security Center
-description: Cet article répertorie les alertes de sécurité visibles dans le tableau de bord Azure Defender d’Azure Security Center.
+title: Tableau de référence pour toutes les alertes de sécurité dans Microsoft Defender pour le cloud
+description: Cet article liste les alertes de sécurité visibles dans Microsoft Defender pour le cloud
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 10/18/2021
 ms.author: memildin
-ms.openlocfilehash: 3ebcf82d59262bf36eb7dfb9f2cf6910263517f9
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3c26bf3cd5b5b6e130f89c3e3b593112e2853d1c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138749"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014820"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alertes de sécurité - guide de référence
 
-Cet article liste les alertes de sécurité que vous pouvez recevoir à partir d’Azure Security Center et des plans Azure Defender que vous avez activés. Les alertes présentées dans votre environnement dépendent des ressources et services que vous protégez ainsi que de votre configuration personnalisée.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-En bas de cette page, un tableau décrit la kill chain d’Azure Security Center alignée sur la version 7 de la [matrice MITRE ATT&CK](https://attack.mitre.org/versions/v7/).
+Cet article liste les alertes de sécurité que vous pouvez recevoir de la part de Microsoft Defender pour le cloud et des plans Microsoft Defender que vous avez activés. Les alertes présentées dans votre environnement dépendent des ressources et services que vous protégez ainsi que de votre configuration personnalisée.
 
-[Découvrez comment répondre à ces alertes](security-center-managing-and-responding-alerts.md).
+En bas de cette page, un tableau décrit la kill chain de Microsoft Defender pour le cloud alignée sur la version 7 de la [matrice MITRE ATT&CK](https://attack.mitre.org/versions/v7/).
+
+[Découvrez comment répondre à ces alertes](managing-and-responding-alerts.md).
 
 [Découvrez comment exporter des alertes](continuous-export.md).
+
+> [!NOTE]
+> Les alertes provenant de différentes sources peuvent prendre différentes durées d’affichage. Par exemple, l’affichage des alertes qui nécessitent une analyse du trafic réseau peut prendre plus de temps que pour les alertes liées à des processus suspects s’exécutant sur des machines virtuelles.
+
 
 ## <a name="alerts-for-windows-machines"></a><a name="alerts-windows"></a>Alertes pour les machines Windows
 
@@ -531,7 +538,7 @@ Les alertes Azure Defender pour les hôtes de conteneurs ne sont pas limitées a
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Alertes d’incident de sécurité
 
-[Informations complémentaires et notes](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
+[Informations complémentaires et notes](alerts-overview.md#cloud-smart-alert-correlation-incidents)
 
 | Alerte                                                | Description                                                                                                                                                                         | Tactiques MITRE<br>([En savoir plus](#intentions)) | Gravité |
 |------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
@@ -544,11 +551,11 @@ Les alertes Azure Defender pour les hôtes de conteneurs ne sont pas limitées a
 
 ## <a name="mitre-attck-tactics"></a>Tactiques MITRE ATT&CK <a name="intentions"></a>
 
-Comprendre l’intention d’une attaque facilite l’examen et le signalement de l’événement. Dans cette optique, les alertes Azure Security Center comportent les tactiques MITRE avec de nombreuses alertes.
+Comprendre l’intention d’une attaque facilite l’examen et le signalement de l’événement. Pour faciliter ces efforts, les alertes de Microsoft Defender pour le cloud incluent les tactiques MITRE avec de nombreuses alertes.
 
 La série d’étapes qui décrit la progression d’une cyberattaque, de la reconnaissance à l’exfiltration de données, est souvent appelée « kill chain ». 
 
-Les intentions de kill chain prises en charge par Security Center sont basées sur la [version 7 de la matrice MITRE ATT&CK](https://attack.mitre.org/versions/v7/) et décrites dans le tableau ci-dessous.
+Les intentions de kill chain prises en charge par Defender pour le cloud sont basées sur la [version 7 de la matrice MITRE ATT&CK](https://attack.mitre.org/versions/v7/) et décrites dans le tableau ci-dessous.
 
 | Tactique                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -573,6 +580,6 @@ Les intentions de kill chain prises en charge par Security Center sont basées s
 ## <a name="next-steps"></a>Étapes suivantes
 Pour plus d’informations sur les alertes de sécurité Azure Defender, consultez les pages suivantes :
 
-- [Alertes de sécurité dans le Centre de sécurité Azure](security-center-alerts-overview.md)
-- [Gérer et répondre aux alertes de sécurité dans Azure Security Center](security-center-managing-and-responding-alerts.md)
-- [Exporter en continu les données Security Center](continuous-export.md)
+- [Alertes de sécurité dans Microsoft Defender pour le cloud](alerts-overview.md)
+- [Gérer les alertes de sécurité et y répondre dans Microsoft Defender pour le cloud](managing-and-responding-alerts.md)
+- [Exportation continue des données Defender pour le cloud](continuous-export.md)

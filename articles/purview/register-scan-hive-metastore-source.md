@@ -1,89 +1,100 @@
 ---
-title: Inscrire une base de données de metastore Hive et configurer des analyses dans Azure Purview
-description: Cet article explique comment inscrire une base de données de metastore Hive dans Azure Purview et configurer une analyse.
+title: Connexion à des bases de données Hive Metastore et gestion
+description: Ce guide décrit comment se connecter à des bases de données Hive Metastore dans Azure Purview et comment utiliser les fonctionnalités de Purview pour analyser et gérer votre source de base de données Hive Metastore.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 7552b562e930e39ba4a0f848ba095762d3838c22
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 9fc76402393e32f018454569a087ec69074d444a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214102"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076184"
 ---
-# <a name="register-and-scan-hive-metastore-database"></a>Inscrire et analyser une base de données de metastore Hive
+# <a name="connect-to-and-manage-hive-metastore-databases-in-azure-purview"></a>Connexion à des bases de données Hive Metastore et gestion dans Azure Purview
 
-Cet article explique comment inscrire une base de données de metastore Hive dans Purview et configurer une analyse.
+Cet article explique comment inscrire des bases de données Hive Metastore et comment s’authentifier et interagir avec les bases de données Hive Metastore dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
-La source metastore Hive prend en charge une analyse complète pour extraire les métadonnées d’une **base de données de metastore Hive** et récupère la traçabilité entre les ressources de données. Les plateformes prises en charge sont Apache Hadoop, Cloudera, Hortonworks et Databricks.
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| Oui |
+
+> [!Important]
+> Les plateformes prises en charge sont Apache Hadoop, Cloudera, Hortonworks et Databricks.
+> Les versions de Hive prises en charge sont 2.x à 3.x. Les versions de Databricks prises en charge sont 8.0 et versions ultérieures.
 
 ## <a name="prerequisites"></a>Prérequis
 
-1.  Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717).
-    Pour plus d’informations, consultez [Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+* Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-2.  Assurez-vous que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+* Une [ressource Purview](create-catalog-portal.md) active.
 
-3.  Vérifiez que le package \"Visual C++ Redistributable 2012 Update 4\" est installé sur la machine dotée du runtime d’intégration auto-hébergé. S\'il n’est pas déjà installé, vous pouvez le télécharger [ici](https://www.microsoft.com/download/details.aspx?id=30679).
+* Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
 
-4.  Vous devrez télécharger manuellement le pilote JDBC de la base de données de metastore Hive sur votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Par exemple, si la base de données utilisée est mssql, veillez à télécharger le [pilote JDBC pour SQL Server de Microsoft](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
+* Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717). Pour plus d’informations, consultez [le guide Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+
+* Vérifiez que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+
+* Vérifiez que le package Redistributable Visual C++ pour Visual Studio 2012 Update 4 est installé sur la machine dotée du runtime d’intégration auto-hébergé. Si cette mise à jour n’est pas installée, [vous pouvez la télécharger ici](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Téléchargez et installez le pilote JDBC de Hive Metastore sur la machine sur laquelle le runtime d’intégration auto-hébergé est en cours d’exécution. Par exemple, si la base de données utilisée est mssql, veillez à télécharger le [pilote JDBC pour SQL Server de Microsoft](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).
 
     > [!Note]
     > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne l’installez pas dans un compte d’utilisateur.
 
-5.  Les versions de Hive prises en charge sont 2.x à 3.x. Les versions de Databricks prises en charge sont 8.0 et versions ultérieures. 
+## <a name="register"></a>Inscrire
 
-## <a name="setting-up-authentication-for-a-scan"></a>Configuration de l’authentification pour une analyse
+Cette section explique comment inscrire des bases de données Hive Metastore dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
 
 La seule authentification prise en charge pour une base de données de metastore Hive est l’**authentification de base**.
 
-## <a name="register-a-hive-metastore-database"></a>Inscrire une base de données de metastore Hive
+### <a name="steps-to-register"></a>Procédure d’inscription
 
-Pour inscrire une nouvelle base de données de metastore Hive dans votre catalogue de données, effectuez les actions suivantes :
+1. Accédez à votre compte Purview.
 
-1.  Accédez à votre compte Purview.
+1. Sélectionnez **Data Map** dans le volet de navigation de gauche.
 
-2.  Sélectionnez **Data Map** dans le volet de navigation de gauche.
+1. Sélectionnez **Inscrire**.
 
-3.  Sélectionnez **Inscrire**.
-
-4.  Dans Inscrire des sources, sélectionnez **Metastore** Hive. Sélectionnez **Continuer.**
+1. Dans Inscrire des sources, sélectionnez **Metastore** Hive. Sélectionnez **Continuer.**
 
     :::image type="content" source="media/register-scan-hive-metastore-source/register-sources.png" alt-text="Inscrire une source Hive" border="true":::
 
 Dans l’écran Inscrire des sources (Metastore Hive), effectuez les actions suivantes :
 
-1.  Entrez le **Nom** sous lequel la source de données apparaîtra dans le catalogue.
+1. Entrez le **Nom** sous lequel la source de données apparaîtra dans le catalogue.
 
-2.  Entrez l’**URL du cluster Hive**. L’URL du cluster peut être obtenue à partir de l’URL d’Ambari ou de l’URL de l’espace de travail Databricks. Par exemple, hive.azurehdinsight.net ou adb-19255636414785.5.azuredatabricks.net
+1. Entrez l’**URL du cluster Hive**. L’URL du cluster peut être obtenue à partir de l’URL d’Ambari ou de l’URL de l’espace de travail Databricks. Par exemple, hive.azurehdinsight.net ou adb-19255636414785.5.azuredatabricks.net
 
-3.  Entrez l’**URL du serveur Metastore Hive.** Par exemple, sqlserver://hive.database.windows.net ou jdbc:spark://adb-19255636414785.5.azuredatabricks.net:443
+1. Entrez l’**URL du serveur Metastore Hive.** Par exemple, sqlserver://hive.database.windows.net ou jdbc:spark://adb-19255636414785.5.azuredatabricks.net:443
 
-4.  Sélectionnez une collection ou créez-en une (facultatif)
+1. Sélectionnez une collection ou créez-en une (facultatif).
 
-5.  Terminez pour inscrire la source de données.
+1. Terminez pour inscrire la source de données.
 
-       :::image type="content" source="media/register-scan-hive-metastore-source/configure-sources.png" alt-text="Configurer une source Hive" border="true":::
+    :::image type="content" source="media/register-scan-hive-metastore-source/configure-sources.png" alt-text="Configurer une source Hive" border="true":::
 
+## <a name="scan"></a>Analyser
 
-## <a name="creating-and-running-a-scan"></a>Création et exécution d’une analyse
+Suivez les étapes ci-dessous pour analyser les bases de données Hive Metastore pour identifier automatiquement les ressources et classer vos données. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md).
 
-Pour créer une analyse et l’exécuter, procédez comme suit :
+### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 
-1.  Dans le centre d’administration, sélectionnez Runtimes d’intégration. Assurez-vous qu’un runtime d’intégration auto-hébergé est configuré. Si ce n’est pas le cas, suivez les étapes mentionnées [ici](./manage-integration-runtimes.md) pour configurer un runtime d’intégration auto-hébergé
+1. Dans le centre d’administration, sélectionnez Runtimes d’intégration. Assurez-vous qu’un runtime d’intégration auto-hébergé est configuré. S’il n’est pas configuré, suivez les étapes mentionnées [ici] (./manage-integration-runtimes.md) pour configurer un runtime d’intégration auto-hébergé.
 
-2.  Accédez aux **Sources**.
+1. Accédez aux **Sources**.
 
-3.  Sélectionnez la base de données **Metastore Hive** inscrite.
+1. Sélectionnez la base de données **Metastore Hive** inscrite.
 
-4.  Sélectionnez **+ Nouvelle analyse**.
+1. Sélectionnez **+ Nouvelle analyse**.
 
-5.  Fournissez les renseignements ci-dessous :
+1. Fournissez les renseignements ci-dessous :
 
     1. **Nom** : nom de l’analyse
 
@@ -91,15 +102,15 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
 
     1. **Informations d’identification** : sélectionnez les informations d’identification pour vous connecter à votre source de données. Veillez à respecter les points suivants :
 
-       - Sélectionnez Authentification de base quand vous créez des informations d’identification.
-       - Spécifiez le nom d’utilisateur du metastore dans le champ d’entrée Nom d’utilisateur
-       - Stockez le mot de passe du metastore dans la clé secrète.
+       * Sélectionnez Authentification de base quand vous créez des informations d’identification.
+       * Spécifiez le nom d’utilisateur du metastore dans le champ d’entrée Nom d’utilisateur
+       * Stockez le mot de passe du metastore dans la clé secrète.
 
-       Pour plus d’informations sur les informations d’identification, reportez-vous à [ce lien](manage-credentials.md). 
+       Pour plus d’informations sur les informations d’identification, reportez-vous à [ce lien](manage-credentials.md).
 
        **Utilisation de Databricks** : accédez à votre cluster Databricks -> Applications -> Lancer le terminal web. Exécutez l’applet de commande **cat /databricks/hive/conf/hive-site.xml**
 
-       Le nom d’utilisateur et le mot de passe sont accessibles à partir des deux propriétés, comme indiqué ci-dessous.
+       Le nom d’utilisateur et le mot de passe sont accessibles à partir des deux propriétés, comme indiqué ci-dessous :
 
        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
 
@@ -111,83 +122,67 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
        > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne procédez pas à l’installation dans un compte d’utilisateur.
 
     1. **Classe du pilote JDBC Metastore** : spécifiez le nom de la classe du pilote de connexion. Par exemple : \com.microsoft.sqlserver.jdbc.SQLServerDriver.
-    
+
        **Utilisation de Databricks** : accédez à votre cluster Databricks -> Applications -> Lancer le terminal web. Exécutez l’applet de commande **cat /databricks/hive/conf/hive-site.xml**
-    
+
        La classe du pilote est accessible à partir de la propriété, comme indiqué ci-dessous.
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
 
-    1. **URL JDBC du metastore** : spécifiez la valeur de l’URL de connexion et définissez la connexion à l’URL du serveur de base de données du metastore. Par exemple,     `jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300`.
+        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
+
+    1. **URL JDBC du metastore** : spécifiez la valeur de l’URL de connexion et définissez la connexion à l’URL du serveur de base de données du metastore. Par exemple : `jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300`.
 
        **Utilisation de Databricks** : accédez à votre cluster Databricks -> Applications -> Lancer le terminal web. Exécutez l’applet de commande **cat /databricks/hive/conf/hive-site.xml**
-    
+
        L’URL JDBC est accessible à partir de la propriété URL de connexion, comme indiqué ci-dessous.
-       
+
        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
-    
+
        > [!NOTE]
        > Lorsque vous copiez l’URL de *hive-site.xml*, assurez-vous de supprimer `amp;` de la chaîne ou l’analyse échouera.
 
        À cette URL, ajoutez le chemin de l’emplacement où le certificat SSL est placé sur votre machine virtuelle. Le certificat SSL peut être téléchargé à partir d’[ici](../mysql/howto-configure-ssl.md).
 
        L’URL JDBC du metastore est donc :
-    
+
        `jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem`
 
     1. **Nom de la base de données du metastore** : spécifiez le nom de la base de données du metastore Hive.
-    
+
        Si vous analysez Databricks, reportez-vous à la section sur Databricks ci-dessous.
 
        **Utilisation de Databricks** : accédez à votre cluster Databricks -> Applications -> Lancer le terminal web. Exécutez l’applet de commande **cat /databricks/hive/conf/hive-site.xml**
 
        Le nom de la base de données est accessible à partir de la propriété URL JDBC, comme indiqué ci-dessous. Par exemple : organization1829255636414785
-       
+
        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
 
-    1. **Schéma** : spécifiez une liste de schémas Hive à importer. Par exemple : schema1; schema2. 
-    
-        Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. 
+    1. **Schéma** : spécifiez une liste de schémas Hive à importer. Par exemple : schema1; schema2.
 
-        Si la liste est vide, tous les schémas disponibles sont importés. Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %, par exemple A%; %B; %C%; D
+        Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut.
 
-        - commençant par A ou    
-        - se terminant par B ou    
-        - contenant C ou    
-        - égalant D
+        Si la liste est vide, tous les schémas disponibles sont importés. Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %. Par exemple : A%; %B; %C%; D
+
+        * commençant par A ou
+        * se terminant par B ou
+        * contenant C ou
+        * égalant D
 
         L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
 
-     1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la base de données du metastore Hive à analyser.
+    1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la base de données du metastore Hive à analyser.
 
         :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="analyser une source Hive" border="true":::
 
-6.  Sélectionnez **Continuer**.
+1. Sélectionnez **Continuer**.
 
-7.  Choisissez votre **déclencheur d’analyse**. Vous pouvez configurer une planification ou exécuter l’analyse une seule fois.
+1. Choisissez votre **déclencheur d’analyse**. Vous pouvez configurer une planification ou exécuter l’analyse une seule fois.
 
-8.  Passez en revue votre analyse et sélectionnez **Enregistrer et exécuter**.
-
-## <a name="viewing-your-scans-and-scan-runs"></a>Affichage des analyses et des exécutions d’analyse
-
-1. Accédez au centre d’administration. Sélectionnez **Sources de données** sous la section **Sources et analyse**.
-
-2. Sélectionnez la source de données souhaitée. La liste des analyses existantes sur cette source de données apparaît.
-
-3. Sélectionnez l’analyse dont vous souhaitez afficher les résultats.
-
-4. Cette page affiche toutes les exécutions précédentes de l’analyse ainsi que les métriques et l’état de chaque exécution de l’analyse. Elle indique également si votre analyse a été planifiée ou était manuelle, le nombre de ressources pour lesquelles ont été appliquées des classifications, le nombre total de ressources découvertes, l’heure de début et de fin de l’analyse et la durée totale de l’analyse.
-
-## <a name="manage-your-scans"></a>Gestion de vos analyses
-
-Pour gérer ou supprimer une analyse, effectuez les opérations suivantes :
-
-1. Accédez au centre d’administration. Sélectionnez **Sources de données** sous la section **Sources et analyse**, puis sélectionnez la source de données souhaitée.
-
-2. Sélectionnez l’analyse que vous souhaitez gérer. Vous pouvez modifier l’analyse en sélectionnant **Modifier**.
-
-3. Vous pouvez supprimer votre analyse en sélectionnant **Supprimer**.
+1. Passez en revue votre analyse et sélectionnez **Enregistrer et exécuter**.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Navigation dans le catalogue de données Azure Purview](how-to-browse-catalog.md)
-- [Recherche dans le catalogue de données Azure Purview](how-to-search-catalog.md)
+Maintenant que vous avez inscrit votre source, suivez les guides ci-dessous pour en savoir plus sur Purview et sur vos données.
+
+- [Insights de données dans Azure Purview](concept-insights.md)
+- [Lignage dans Azure Purview](catalog-lineage-user-guide.md)
+- [Rechercher dans un catalogue de données](how-to-search-catalog.md)

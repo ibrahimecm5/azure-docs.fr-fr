@@ -1,0 +1,206 @@
+### YamlMime:FAQ
+metadata:
+  title: Forum aux questions sur Azure Static Web Apps
+  description: Trouvez des réponses aux questions fréquemment posées sur Azure Static Web Apps.
+  keywords: azure static web apps, frequently asked questions
+  author: craigshoemaker
+  ms.topic: article
+  ms.service: static-web-apps
+  ms.date: 10/23/2021
+  ms.author: cshoe
+  ms.openlocfilehash: e4bab9b55051ecd6bbb35a99b0962132d8a5fd60
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131097541"
+title: Forum aux questions sur Azure Static Web Apps
+sections:
+- name: Builds et déploiements
+  questions:
+  - question: >
+      Quels sont les frameworks front-end qui peuvent être générés automatiquement par Static Web Apps ?
+    answer: >
+      Static Web Apps peut générer automatiquement :
+
+
+      * Des applications monopages populaires, notamment : React, Vue.js, Angular, Blazor WebAssembly.
+
+      * Des générateurs de sites statiques couramment utilisés, notamment : Next.js, Nuxt.js, Gatsby, Hugo, Jekyll, Eleventy.
+
+
+      Pour plus d’informations, consultez [Configurer des frameworks front-end](front-end-frameworks.md).
+  - question: >
+      Que se passe-t-il pendant le processus de génération ?
+    answer: >
+      Le moteur de génération d’Azure Static Web Apps utilise la technologie [Oryx](https://github.com/microsoft/Oryx), qui génère le front-end et l’API de votre application.
+
+
+      Lorsque votre application est générée, Oryx détecte les étapes de génération et les exécute automatiquement. Par exemple, si votre application utilise Node.js, il installe des packages à l’aide de npm ou de Yarn. Ensuite, il exécute le script `build` ou `build:azure` fourni dans le fichier _package.json_ de votre application.
+  - question: >
+      Puis-je personnaliser le processus de génération ?
+    answer: >
+      Si vous souhaitez disposer d’un contrôle total sur la façon de générer votre application, vous pouvez configurer vos propres étapes de génération dans le pipeline Azure DevOps ou le workflow GitHub de votre application. Vous pouvez ensuite utiliser la tâche Static Web Apps GitHub Action ou Azure Pipelines pour déployer votre application. Vérifiez que `skip_app_build` a la valeur `true`. Pour plus d’informations, consultez [Configuration de build](build-configuration.md?skip-building-front-end-app).
+
+
+      La commande `skip_app_build` n’est actuellement prise en charge que pour l’application front-end. L’application API doit être générée par la tâche Azure Static Web Apps GitHub Action ou Azure Pipelines.
+  - question: >
+      Puis-je déployer mon application sans utiliser GitHub Actions ou Azure DevOps ?
+    answer: >
+      À l’heure actuelle, Azure Static Web Apps prend en charge GitHub Actions et Azure DevOps. D’autres options de déploiement seront ajoutées à l’avenir.
+  - question: >
+      La génération de mon application React échoue avec le message « Treating warnings as errors because process.env.CI = true ». Comment résoudre cette erreur ?
+    answer: >
+      Si votre application utilise [create-react-app](https://github.com/facebook/create-react-app), sa commande de génération traite les avertissements comme des erreurs lors de l’exécution dans un environnement d’intégration continue (CI) tel que GitHub Actions ou Azure Pipelines. Si votre application contient des avertissements, elle ne pourra pas être générée. Pour résoudre ces problèmes, modifiez votre application pour supprimer les avertissements. Si vous souhaitez que la génération aboutisse, même s’il y a des avertissements, mettez à jour votre script de build dans _package.json_ pour annuler la variable d’environnement `CI` :
+
+
+      ```json
+
+      "scripts": {
+        "build": "CI= react-scripts build"
+      }
+
+      ```
+  - question: >
+      Comment faire pour changer la branche dans GitHub ?
+    answer: >
+      Pour changer la branche à partir de laquelle générer et déployer, mettez à jour les noms des branches dans le workflow GitHub de votre application. Par exemple, si vous souhaitez modifier votre application pour qu’elle soit générée et déployée à partir d’une branche nommée `release`, mettez à jour la section `on` de votre workflow :
+
+
+      ```yaml
+
+      on:
+        push:
+          branches:
+            - release
+        pull_request:
+          types: [opened, synchronize, reopened, closed]
+          branches:
+            - release
+      ```
+
+
+      Pour les applications web statiques créées pendant la période d’évaluation, vous devrez peut-être [réinitialiser le jeton de déploiement](deployment-token-management.md).
+  - question: >
+      Dois-je exécuter la tâche/action Static Web Apps sur un agent de build Linux GitHub Actions ou Azure Pipelines ?
+    answer: >
+      Le moteur de génération d’Azure Static Web Apps s’exécute dans un conteneur Docker Linux. Il ne peut donc être exécuté que sur un agent de build Linux.
+  - question: >
+      Comment faire pour déployer une application qui utilise le stockage Git LFS (Large File Stockage) ?
+    answer: >
+      Dans votre workflow GitHub, configurez l’action `actions/checkout` pour activer LFS :
+
+
+      ```yaml
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          lfs: true
+      ```
+  - question: >
+      Dois-je vider ou invalider manuellement le cache après un déploiement ?
+    answer: >
+      Azure Static Web Apps gère automatiquement l’invalidation du cache. Une fois le déploiement terminé, toutes les requêtes sont traitées avec la dernière version de vos fichiers. Toutefois, des fichiers peuvent toujours être mis en cache dans les navigateurs de vos utilisateurs ou dans un CDN si vous en avez configuré un. Pour contrôler la façon dont les navigateurs et les CDN mettent en cache votre contenu, configurez les en-têtes appropriés dans le [fichier de configuration](configuration.md) de votre application.
+  - question: >
+      Puis-je utiliser des environnements de pré-production si je déploie avec Azure Pipelines ?
+    answer: >
+      À l’heure actuelle, les [déploiements de pré-production](review-publish-pull-requests.md) sont pris en charge uniquement pour GitHub Actions.
+- name: Hébergement
+  questions:
+  - question: >
+      Static Web Apps prend-il en charge les domaines personnalisés et les certificats TLS ?
+    answer: >
+      Vous pouvez configurer votre application pour utiliser des domaines personnalisés, y compris des domaines apex. Static Web Apps fournit automatiquement un certificat TLS gratuit lorsque vous ajoutez un domaine personnalisé. Pour en savoir plus, consultez [Configurer un domaine personnalisé avec un certificat gratuit](custom-domain.md).
+  - question: >
+      Puis-je personnaliser la page d’erreurs 404 de mon application ?
+    answer: >
+      Vous pouvez configurer des pages d’erreurs personnalisées à l’aide de la section `responseOverrides` du [fichier de configuration](configuration.md#response-overrides).
+  - question: >
+      Comment faire pour s’assurer que mon application est déployée dans une région Azure spécifique ?
+    answer: >
+      Azure Static Web Apps est un service mondial. Les ressources statiques de votre application sont distribuées dans le monde entier. Lorsque vous créez votre application, vous sélectionnez une région dans laquelle l’application Azure Functions managée est déployée. Si vous avez besoin de votre application Functions dans une région qui ne prend pas en charge les fonctions managées, vous pouvez utiliser la fonctionnalité [Apporter votre propre application Functions](functions-bring-your-own.md) avec une application Functions que vous déployez séparément.
+  - question: >
+      Comment faire pour configurer mon application web statique derrière Azure Application Gateway ou un CDN comme Azure Front Door ?
+    answer: >
+      Azure Static Web Apps comprend la distribution mondiale des ressources statiques de votre application. Si vous souhaitez optimiser votre empreinte mondial ou si vous avez besoin de fonctionnalités avancées, vous pouvez ajouter un réseau de distribution de contenu (CDN) dédié ou une passerelle Azure Application Gateway.
+
+
+      Pour limiter le trafic à un CDN spécifique, configurez votre CDN pour ajouter un en-tête contenant une valeur secrète prédéfinie à chaque requête, et configurez Static Web Apps pour [exiger l’en-tête](configuration.md#required-headers). Pour limiter le trafic vers une passerelle Azure Application Gateway, [configurez votre application](configuration.md#networking) de façon à autoriser uniquement le trafic provenant de l’adresse IP de votre passerelle applicative.
+
+
+      De plus, configurez votre application pour [autoriser le transfert](configuration.md#allowed-forwarded-hosts) des noms d’hôte de votre CDN ou passerelle applicative.
+
+
+      Pour en savoir plus sur la configuration d’Azure Front Door consultez [ce tutoriel](front-door-manual.md).
+  - question: >
+      Comment faire pour activer la compression Gzip ou Brotli ?
+    answer: >
+      Pour les ressources avec des extensions de fichier de formats de texte populaires, tels que `.html`, `.css` et `.js`, Azure Static Web Apps fournit automatiquement des versions compressées [Gzip](https://en.wikipedia.org/wiki/Gzip) ou [Brotli](https://en.wikipedia.org/wiki/Brotli) de vos ressources statiques si le client les prend en charge.
+
+
+      Pour les autres types de fichiers, Static Web Apps vous permet d’inclure une version compressée Brotli de votre fichier avec une extension `.br`. Par exemple, si vous avez un fichier non compressé nommé `app.wasm`, vous pouvez ajouter une version compressée nommée `app.wasm.br` à votre application. Cette version est automatiquement fournie si un client qui prend en charge Brotli demande `app.wasm`.
+  - question: >
+      Pourquoi mon application web statique retourne-t-elle une erreur 404 quand j’accède à une route qui existe ?
+    answer: >
+      La plupart des frameworks front-end comme React, Angular ou Blazor WebAssembly utilisent le routage côté client pour gérer la navigation. Les routes côté client sont uniquement connues de l’application en cours d’exécution dans le navigateur. Si vous demandez une route côté client à partir de Static Web Apps, il retourne une erreur 404, car la route n’existe pas dans les ressources déployées de votre application. Pour résoudre ce problème, ajoutez une route de secours au [fichier de configuration](configuration.md#fallback-routes) de votre application.
+- name: Configuration
+  questions:
+  - question: >
+      Comment faire pour configurer des variables d’environnement pour mon application ?
+    answer: >
+      Il existe différents types de variables d’environnement que vous pouvez définir pour votre application. Configurez les variables qui affectent le processus de génération front-end de votre application dans la [configuration de build](build-configuration.md#environment-variables) de votre application. Pour configurer des variables qui sont utilisées par l’API de votre application, utilisez les [paramètres de l’application](application-settings.md). Pour plus d’informations, consultez [Vue d’ensemble de la configuration](configuration-overview.md).
+  - question: >
+      Static Web Apps prend-il en charge l’identité managée ?
+    answer: >
+      Static Web Apps prend en charge l’identité managée, mais elle est utilisée uniquement pour [récupérer des secrets d’authentification](key-vault-secrets.md) à partir de Key Vault.
+
+
+      Si vous avez besoin d’une identité managée ou de références Key Vault dans votre API, utilisez la fonctionnalité [Apporter votre propre application Functions](functions-bring-your-own.md) pour utiliser une application Functions distincte qui utilise une identité managée.
+- name: Authentification
+  questions:
+  - question: >
+      Combien d’utilisateurs peuvent se connecter à mon application web statique ?
+    answer: Static Web Apps n’a pas de limite quant au nombre d’utilisateurs pouvant se connecter à votre application. Vous pouvez assigner des rôles personnalisés à 25 utilisateurs au maximum à l’aide du système d’invitations intégré. Si vous devez assigner des rôles personnalisés à d’autres utilisateurs, vous pouvez utiliser une [fonction API pour affecter des rôles par programmation](authentication-authorization.md?tabs=function#role-management).
+  - question: >
+      Comment faire pour récupérer le jeton d’accès ou les revendications d’un utilisateur à partir du fournisseur d’identité ?
+    answer: >
+      Vous pouvez récupérer le jeton d’accès et les revendications de l’utilisateur lorsque vous utilisez une [fonction API pour la gestion des rôles](authentication-authorization.md?tabs=function#role-management).
+  - question: >
+      Suis-je limité à l’utilisation d’un seul fournisseur d’identité ?
+    answer: >
+      Lors de l’utilisation de l’authentification intégrée Static Web Apps, les utilisateurs peuvent se connecter avec n’importe quel fournisseur d’identité pris en charge. Si vous souhaitez empêcher les utilisateurs de se connecter avec un fournisseur d’identité spécifique, vous pouvez [le bloquer](authentication-authorization.md?#block-an-authorization-provider).
+
+
+      Si vous utilisez l’[authentification personnalisée](authentication-custom.md), vous pouvez configurer un ou plusieurs fournisseurs d’identité.
+- name: Fonctions de l’API
+  questions:
+  - question: >
+      Comment faire pour écrire mes API à l’aide d’un langage ou d’une version de langage que Static Web Apps ne prend pas en charge ?
+    answer: >
+      Les applications de fonction managées de Static Web Apps ne prennent pas en charge tous les langages ou versions de langage pris en charge par Azure Functions. Vous pouvez utiliser la fonctionnalité [Apporter votre propre application Functions](functions-bring-your-own.md)  pour lier une application Functions distincte à votre application web statique.
+  - question: >
+      Comment faire pour créer des fonctions serverless qui répondent à des événements autres que HTTP ?
+    answer: >
+      Les applications de fonction managées dans Static Web Apps sont optimisées pour les scénarios d’API, et ne prennent en charge que les déclencheurs HTTP. Si vous devez utiliser d’autres types de déclencheurs pris en charge par Azure Functions, comme pour les travaux cron ou Durable Functions pour les workflows avec état, vous pouvez utiliser la fonctionnalité [Apporter votre propre application Functions](functions-bring-your-own.md) pour lier une application Functions distincte à votre application web statique.
+- name: Général
+  questions:
+  - question: >
+      Quelles sont les limitations du plan Gratuit ?
+    answer: >
+      Le plan Gratuit comprend un grand nombre des mêmes fonctionnalités que le plan Standard, telles que la distribution mondiale, les domaines personnalisés, les certificats TLS gratuits, les fonctions API managées et bien plus encore. Toutefois, si vous avez besoin de davantage de bande passante, d’un contrat de niveau de service (SLA) ou de fonctionnalités avancées, vous devez privilégier l’adoption du plan Standard. Pour en savoir plus, consultez [Plans d’hébergement](plans.md) et [Quotas](quotas.md).
+  - question: >
+      Puis-je changer de plan d’hébergement après avoir créé mon application ?
+    answer: >
+      Vous pouvez effectuer une mise à niveau du plan Gratuit vers le plan Standard à tout moment. Vous pouvez également passer du plan Standard au plan Gratuit si vous n’utilisez pas de fonctionnalités qui nécessitent le plan Standard.
+  - question: >
+      Puis-je développer mon application web statique localement sans la déployer ?
+    answer: >
+      La plupart des frameworks front-end fournissent un serveur de développement pour l’exécution locale de votre application. Toutefois, si vous souhaitez utiliser l’authentification ou les fonctions API, il peut être difficile de tester toutes les fonctionnalités de votre application sans la déployer sur Azure. Pour exécuter votre application localement, vous pouvez utiliser l’[interface de ligne de commande (CLI) Static Web Apps](https://www.npmjs.com/package/@azure/static-web-apps-cli), qui émule l’expérience du cloud, y compris l’authentification, et s’intègre à [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) pour exécuter vos fonctions API. Il existe également une [extension Visual Studio Code Static Web Apps](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) avec laquelle vous pouvez déployer votre application sur Azure.
+  - question: >
+      Comment puis-je obtenir de l’aide ou suggérer une nouvelle fonctionnalité ?
+    answer: >-
+      Si vous avez besoin d’aide ou si vous avez une suggestion, vous pouvez créer un problème dans le [dépôt GitHub Static Web Apps](https://github.com/Azure/static-web-apps/issues).
+
+
+      Pour obtenir une aide immédiate sur un problème, [contactez le support Azure](https://azure.microsoft.com/support/options/).

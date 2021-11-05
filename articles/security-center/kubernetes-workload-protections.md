@@ -1,6 +1,6 @@
 ---
 title: Protections de charge de travail pour vos charges de travail Kubernetes
-description: Découvrez comment utiliser l’ensemble de recommandations de sécurité d’Azure Security Center pour la protection des charges de travail Kubernetes
+description: Découvrez comment utiliser l’ensemble des recommandations de sécurité pour la protection des charges de travail Kubernetes de Microsoft Defender pour le cloud
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,23 +8,26 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: a1581742e599c24f69e6aa56bf7caf694726ae66
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5b8aa02e2c8ada5213d6e16659008b048ec293a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225640"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075766"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Protéger vos charges de travail Kubernetes
 
-Cette page explique comment utiliser l’ensemble de recommandations de sécurité d’Azure Security Center pour la protection des charges de travail Kubernetes.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Cette page explique comment utiliser l’ensemble de recommandations de sécurité de Microsoft Defender pour le cloud dédiées à la protection des charges de travail Kubernetes.
 
 Pour en savoir plus sur ces fonctionnalités, consultez [Meilleures pratiques pour la protection de charge de travail à l’aide du contrôle d’admission Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
-Security Center offre davantage de fonctionnalités de sécurité de conteneur si vous activez Azure Defender. Plus précisément :
+Defender pour le cloud offre davantage de fonctionnalités de sécurité des conteneurs si vous activez Microsoft Defender pour Kubernetes. Plus précisément :
 
-- Analysez vos registres de conteneurs pour identifier les vulnérabilités avec [Azure Defender pour les registres de conteneurs](defender-for-container-registries-introduction.md)
-- Recevez des alertes de détection des menaces en temps réel pour vos clusters K8s avec [Azure Defender pour Kubernetes](defender-for-kubernetes-introduction.md)
+- Analysez vos registres de conteneurs pour identifier les vulnérabilités avec [Microsoft Defender pour les registres de conteneurs](defender-for-container-registries-introduction.md)
+- Recevez des alertes de détection des menaces en temps réel pour vos clusters K8s avec [Microsoft Defender pour Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
 > Pour obtenir la liste de *toutes* les recommandations de sécurité qui peuvent s’afficher pour les clusters et nœuds Kubernetes, consultez la [section relative au calcul](recommendations-reference.md#recs-compute) de la table de référence de recommandations.
@@ -45,15 +48,15 @@ Security Center offre davantage de fonctionnalités de sécurité de conteneur s
 
 ## <a name="set-up-your-workload-protection"></a>Configurer la protection de votre charge de travail
 
-Azure Security Center comprend un ensemble de recommandations qui sont disponibles lorsque vous installez le **module complémentaire Azure Policy pour Kubernetes**.
+Microsoft Defender pour le cloud comprend un ensemble de recommandations qui sont disponibles lorsque vous installez le **module complémentaire Azure Policy pour Kubernetes**.
 
 ### <a name="step-1-deploy-the-add-on"></a>Étape 1 : Déployer le module complémentaire
 
 Pour configurer les recommandations, installez le **module complémentaire Azure Policy pour Kubernetes**. 
 
-- Vous pouvez déployer automatiquement ce module complémentaire comme décrite dans [Activer l’approvisionnement automatique de l’agent et des extensions Log Analytics](security-center-enable-data-collection.md#auto-provision-mma). Lorsque le provisionnement automatique du module complémentaire est défini sur « activé », l’extension est activée par défaut dans tous les clusters existants et futurs (qui répondent à la configuration requise de l’installation du module complémentaire).
+- Vous pouvez déployer automatiquement ce module complémentaire comme décrite dans [Activer l’approvisionnement automatique de l’agent et des extensions Log Analytics](enable-data-collection.md#auto-provision-mma). Lorsque le provisionnement automatique du module complémentaire est défini sur « activé », l’extension est activée par défaut dans tous les clusters existants et futurs (qui répondent à la configuration requise de l’installation du module complémentaire).
 
-    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Utilisation de l’outil d’approvisionnement automatique de Security Center pour installer le module complémentaire de stratégie pour Kubernetes":::
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Utilisation de l’outil d’approvisionnement automatique de Defender pour le cloud pour installer le module complémentaire de stratégie pour Kubernetes":::
 
 - Pour déployer manuellement le module complémentaire
 
@@ -71,7 +74,10 @@ Pour configurer les recommandations, installez le **module complémentaire Azure
 
 ### <a name="step-2-view-and-configure-the-bundle-of-recommendations"></a>Étape 2 : Afficher et configurer le bundle de recommandations
 
-1. Environ 30 minutes après l’installation du module complémentaire, Security Center affiche l’état d’intégrité des clusters pour les recommandations suivantes, chacune dans le contrôle de sécurité approprié, comme indiqué ci-dessous :
+1. Environ 30 minutes après l’installation du module complémentaire, Defender pour le cloud affiche l’état d’intégrité des clusters pour les recommandations suivantes, chacune dans le contrôle de sécurité approprié, comme indiqué ci-dessous :
+
+    > [!NOTE]
+    > Si vous installez le module complémentaire pour la première fois, ces recommandations s’affichent sous la forme de nouveaux ajouts dans la liste des recommandations. 
 
     > [!TIP]
     > Certaines recommandations ont des paramètres qui doivent être personnalisés via Azure Policy pour les utiliser efficacement. Par exemple, pour tirer parti de la recommandation **Les images conteneur doivent être déployées à partir de registres approuvés uniquement**, vous devez définir vos registres de confiance.
@@ -91,6 +97,7 @@ Pour configurer les recommandations, installez le **module complémentaire Azure
     | Tout conteneur avec une élévation des privilèges doit être évité                       | Gérer l’accès et les autorisations            | Non                     |
     | Les clusters Kubernetes doivent désactiver le montage automatique des informations d’identification d’API             | Gérer l’accès et les autorisations            | Non                     |
     | Le système de fichiers racine immuable (en lecture seule) doit être appliqué pour les conteneurs     | Gérer l’accès et les autorisations            | Non                     |
+    | Tout conteneur avec une élévation des privilèges doit être évité                       | Gérer l’accès et les autorisations            | Non                     |
     | L’exécution des conteneurs en tant qu’utilisateur racine doit être évitée                           | Gérer l’accès et les autorisations            | Non                     |
     | Éviter les conteneurs partageant des espaces de noms d’hôte sensibles              | Gérer l’accès et les autorisations            | Non                     |
     | Les limites de mémoire et du processeur du conteneur doivent être appliquées                          | Protéger les applications contre les attaques DDoS | Non                     |
@@ -101,9 +108,9 @@ Pour configurer les recommandations, installez le **module complémentaire Azure
 
 1. Pour les recommandations avec des paramètres à personnaliser, définissez les paramètres :
 
-    1. Dans le menu de Security Center, sélectionnez **Stratégie de sécurité**.
+    1. Dans le menu de Defender pour le cloud, sélectionnez **Stratégie de sécurité**.
     1. Sélectionnez l’abonnement approprié.
-    1. Dans la section **Stratégie par défaut de Security Center**, sélectionnez **Afficher la stratégie actuelle**.
+    1. Dans la section **Stratégie par défaut de Defender pour le cloud**, sélectionnez **Afficher la stratégie actuelle**.
     1. Sélectionnez la stratégie par défaut pour l’étendue que vous mettez à jour.
     1. Ouvrez l’onglet **Paramètres** et modifiez les valeurs selon vos besoins.
 
@@ -125,7 +132,7 @@ Pour configurer les recommandations, installez le **module complémentaire Azure
 
 1. Pour voir quelles recommandations s’appliquent à vos clusters :
 
-    1. Ouvrez la page d'[inventaire des ressources](asset-inventory.md) de Security Center et utilisez le filtre de type de ressource pour **Services Kubernetes**.
+    1. Ouvrez la page d’[inventaire des ressources](asset-inventory.md) de Defender pour le cloud et utilisez le filtre de type de ressource pour **Services Kubernetes**.
 
     1. Sélectionnez un cluster à examiner et passez en revue les recommandations disponibles pour celui-ci. 
 
@@ -258,6 +265,6 @@ Dans cet article, vous avez appris à configurer la protection d’une charge de
 
 Pour d’autres informations connexes, consultez les pages suivantes : 
 
-- [Recommandations de Security Center pour le calcul](recommendations-reference.md#recs-compute)
+- [Recommandations de Defender pour le cloud pour le calcul](recommendations-reference.md#recs-compute)
 - [Alertes pour le niveau du cluster AKS](alerts-reference.md#alerts-k8scluster)
 - [Alertes pour niveau de l’hôte du conteneur](alerts-reference.md#alerts-containerhost)

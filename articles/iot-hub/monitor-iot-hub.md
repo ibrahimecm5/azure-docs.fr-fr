@@ -6,13 +6,13 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.custom: subject-monitoring
-ms.date: 11/06/2020
-ms.openlocfilehash: c9e6107e981d2bae96c5d9f368c8122d3ce245f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/26/2021
+ms.openlocfilehash: 9782190bb917492770f6870675bff768b80ff61a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570944"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061412"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Surveillance d’Azure IoT Hub
 
@@ -82,7 +82,7 @@ Vous pouvez analyser les métriques d’Azure IoT Hub avec les métriques d’au
 
 Dans le portail Azure, vous pouvez sélectionner **Métriques** sous **Surveillance** dans le volet de gauche de votre hub IoT pour ouvrir Metrics explorer étendu, par défaut, aux métriques de la plateforme émises par votre hub IoT :
 
-:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Page de Metrics Explorer pour un hub IoT.":::
+:::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="Capture d’écran montrant la page Metrics Explorer pour un hub IoT." border="true":::
 
 Pour obtenir la liste des métriques de plateforme collectées pour Azure IoT Hub, consultez [Métriques dans les informations de référence des données de surveillance Azure IoT Hub](monitor-iot-hub-reference.md#metrics). Pour obtenir la liste des métriques de plateforme collectées pour tous les services Azure, consultez [Métriques prises en charge avec Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 

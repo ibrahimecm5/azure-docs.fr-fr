@@ -6,23 +6,24 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9fbe16756bc178ed012af7f96e937614b0b3a855
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8704ade5def1938e789ad4e092cca804cb9af62b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700669"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033510"
 ---
-# <a name="create-an-rdp-connection-to-a-linux-vm-using-azure-bastion-preview"></a>Créer une connexion RDP à une machine virtuelle Linux avec Azure Bastion (préversion)
+# <a name="create-an-rdp-connection-to-a-linux-vm-using-azure"></a>Créer une connexion RDP à une machine virtuelle Linux avec Azure 
 
 Cet article vous montre comment créer de manière sécurisée et fluide une connexion RDP à des machines virtuelles Linux situées dans un réseau virtuel Azure, directement par le biais du portail Azure. Quand vous utilisez Azure Bastion, vos machines virtuelles n’ont pas besoin de client, d’agent ni de logiciel supplémentaire. Vous pouvez également vous connecter à une machine virtuelle Linux avec SSH. Pour plus d’informations, consultez [Créer une connexion SSH à une machine virtuelle Linux](bastion-connect-vm-ssh-linux.md).
 
 Azure Bastion fournit une connectivité sécurisée à toutes les machines virtuelles du réseau virtuel dans lequel il est provisionné. Azure Bastion protège vos machines virtuelles contre l’exposition des ports RDP/SSH au monde extérieur, tout en fournissant un accès sécurisé à l’aide de RDP/SSH. Pour plus d’informations, consultez la page [Présentation d’Azure Bastion](bastion-overview.md).
 
 > [!NOTE]
-> L’utilisation du protocole RDP pour se connecter à une machine virtuelle Linux nécessite la référence SKU Azure Bastion standard, actuellement disponible en version préliminaire.
+> L’utilisation du protocole RDP pour se connecter à une machine virtuelle Linux nécessite la référence SKU Azure Bastion Standard.
 >
 
 Lorsque vous utilisez Azure Bastion pour vous connecter à une machine virtuelle Linux à l’aide de RDP, vous devez utiliser le nom d’utilisateur/mot de passe pour l’authentification.
@@ -38,6 +39,7 @@ Pour établir une connexion RDP à une machine virtuelle Linux, vous devez égal
 ### <a name="required-roles"></a>Rôles nécessaires
 
 Pour établir une connexion, les rôles suivants sont nécessaires :
+
 * Rôle de lecteur sur la machine virtuelle
 * Rôle de lecteur sur la carte réseau avec adresse IP privée de la machine virtuelle
 * Rôle de lecteur sur la ressource Azure Bastion
@@ -45,8 +47,9 @@ Pour établir une connexion, les rôles suivants sont nécessaires :
 ### <a name="ports"></a>Ports
 
 Pour vous connecter à la machine virtuelle Linux par le biais du protocole RDP, les ports suivants doivent être ouverts sur votre machine virtuelle :
-*   Port d’entrée : RDP (3389) *ou*
-*   Port d’entrée : valeur personnalisée (vous devez spécifier ce port personnalisé quand vous vous connectez à la machine virtuelle avec Azure Bastion)
+
+* Port d’entrée : RDP (3389) *ou*
+* Port d’entrée : valeur personnalisée (vous devez spécifier ce port personnalisé quand vous vous connectez à la machine virtuelle avec Azure Bastion)
 
 ### <a name="supported-configurations"></a>Configurations prises en charge
 

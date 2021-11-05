@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 24f3d5bfa5883477b436956d90b7af70142311aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57e608348e460c0598f7003af96ea1ac55bbf951
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587743"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022813"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Déplacer des machines virtuelles Azure entre Azure Government et des régions publiques 
 
@@ -57,11 +57,10 @@ Assurez-vous que votre compte Azure dispose des autorisations nécessaires pour 
 
 ### <a name="set-up-an-azure-network"></a>Configurer un réseau Azure
 
-Configurer une cible [réseau Azure](../virtual-network/quick-create-portal.md).
+Configurez le [réseau Azure](../virtual-network/quick-create-portal.md) cible.
 
 - Les machines virtuelles Azure sont placées dans ce réseau une fois créées après le basculement.
 - Ce réseau doit se trouver dans la même région que le coffre Recovery Services.
-
 
 ### <a name="set-up-an-azure-storage-account"></a>Configurer un compte de stockage Azure
 
@@ -79,7 +78,7 @@ Le service Mobilité doit être installé sur chaque serveur que vous souhaitez 
 
 - Vous pouvez utiliser un compte local ou de domaine
 - Pour les machines virtuelles Windows, si vous n’utilisez pas un compte de domaine, désactivez le contrôle d’accès des utilisateurs distants sur la machine locale. Pour cela, dans le registre situé sous **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**, ajoutez l’entrée DWORD **LocalAccountTokenFilterPolicy** avec une valeur de 1.
-- Pour ajouter l’entrée de registre afin de désactiver le paramètre à partir d’une interface CLI, tapez : `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.`
+- Pour ajouter l’entrée de registre afin de désactiver le paramètre à partir d’une interface CLI, saisissez : `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.`
 - Pour Linux, le compte doit être un utilisateur racine sur le serveur Linux source.
 
 
@@ -98,7 +97,7 @@ Le service Mobilité doit être installé sur chaque serveur que vous souhaitez 
 
     - [Groupes de sécurité réseau](../virtual-network/manage-network-security-group.md)
     - [Équilibreurs de charge](../load-balancer/index.yml)
-    - [Adresse IP publique](../virtual-network/virtual-network-public-ip-address.md)
+    - [Adresse IP publique](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     
     Pour tous les autres composants réseau, reportez-vous à la [documentation](../index.yml?pivot=products&panel=network) sur la mise en réseau.
 

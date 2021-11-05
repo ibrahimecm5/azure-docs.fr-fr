@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9653e837350f1149a19eed52283187a356cf9efc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7178d525a1f38083fe732a1e2b7a0183dd16d39e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791115"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058176"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Tutoriel : Intégrer Freedcamp à Azure Active Directory
 
@@ -87,7 +87,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
     Dans la zone de texte **URL de connexion**, tapez une URL au format suivant : `https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL de réponse et l’URL de connexion réels. Les utilisateurs peuvent entrer également les valeurs d’URL de leur propre domaine client qui ne sont pas nécessairement dans le modèle `freedcamp.com` ; il peut s’agir de n’importe quelle valeur de domaine client propre à leur instance d’application. Vous pouvez également contacter [l'équipe du support client Freedcamp ](mailto:devops@freedcamp.com) pour plus d’informations sur les modèles d’URL.
+    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL de réponse et l’URL de connexion réels. Les utilisateurs peuvent entrer également les valeurs d’URL de leur propre domaine client qui ne sont pas nécessairement dans le modèle `freedcamp.com` ; il peut s’agir de n’importe quelle valeur de domaine client propre à leur instance d’application. Vous pouvez également contacter [l’équipe du support client de Freedcamp ](mailto:devops@freedcamp.com) pour plus d’informations sur les modèles d’URL.
 
 1. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, recherchez **Certificat (Base64)** , puis sélectionnez **Télécharger** pour télécharger le certificat et l’enregistrer sur votre ordinateur.
 

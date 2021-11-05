@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: ce03fc4007ad55485150feb715242d4cc216433e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5b8e056cd360a66c42324292d7e40e8fb25ce668
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123441004"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066878"
 ---
 # <a name="manually-deploy-prometheus-grafana-and-jaeger-to-view-open-service-mesh-osm-metrics-for-observability"></a>Déployer manuellement Prometheus, Grafana et Jaeger afin d’afficher les métriques d’Open Service Mesh (OSM) pour l’observabilité
 
@@ -33,23 +33,20 @@ Ce didacticiel présente les procédures suivantes :
 > [!div class="checklist"]
 >
 > - Créer et déployer une instance Prometheus
-> - Configurer OSM pour permettre le scraping de Prometheus
 > - Mettre à jour la `Configmap` Prometheus
 > - Créer et déployer une instance Grafana
 > - Configurer Grafana avec la source de données Prometheus
+> - Activer les métriques Prometheus pour un espace de noms d’utilisateur
 > - Importer le tableau de bord OSM pour Grafana
 > - Créer et déployer une instance Jaeger
 > - Configurer le traçage de Jaeger pour OSM
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Avant de commencer
 
 Les ressources suivantes doivent être installées :
 
 - Azure CLI, version 2.20.0 ou ultérieure
-- L’extension `aks-preview` version 0.5.5 ou ultérieure
-- OSM, version 0.8.0 ou ultérieure
+- OSM version 0.11.1 ou ultérieure
 - Processeur JSON « jq » version 1.6+
 
 ## <a name="deploy-and-configure-a-prometheus-instance-for-osm"></a>Déployer et configurer une instance Prometheus pour OSM
@@ -108,29 +105,9 @@ For more information on running Prometheus, visit:
 https://prometheus.io/
 ```
 
-### <a name="configure-osm-to-allow-prometheus-scraping"></a>Configurer OSM pour permettre le scraping de Prometheus
-
-Pour vous assurer que les composants d’OSM sont configurés pour les scrapes de Prometheus, nous voulons vérifier la configuration de **prometheus_scraping** située dans le fichier config osm-config. Visualisez la configuration avec la commande suivante :
-
-```azurecli-interactive
-kubectl get configmap -n kube-system osm-config -o json | jq '.data.prometheus_scraping'
-```
-
-La sortie de la commande précédente doit renvoyer `true` si OSM est configuré pour le scraping de Prometheus. Si la valeur renvoyée est `false`, vous devez mettre à jour la configuration pour qu’elle soit `true`. Exécutez la commande suivante pour **activer** le scraping de Prometheus par OSM :
-
-```azurecli-interactive
-kubectl patch configmap -n kube-system osm-config --type merge --patch '{"data":{"prometheus_scraping":"true"}}'
-```
-
-Vous devez voir la sortie suivante.
-
-```Output
-configmap/osm-config patched
-```
-
 ### <a name="update-the-prometheus-configmap"></a>Mettre à jour le Configmap Prometheus
 
-L’installation par défaut de Prometheus contiendra deux `configmaps` Kubernetes. Vous pouvez afficher la liste des `configmaps` de Prometheus à l’aide de la commande suivante.
+Par défaut, Prometheus est défini pour scraper les composants OSM. L’installation par défaut de Prometheus contiendra deux `configmaps` Kubernetes. Vous pouvez afficher la liste des `configmaps` de Prometheus à l’aide de la commande suivante.
 
 ```azurecli-interactive
 kubectl get configmap | grep prometheus
@@ -417,7 +394,7 @@ Si vous faites défiler la page vers le bas, vous devriez voir tous les points d
 
 ![Image de l’interface utilisateur, métriques cibles de Prometheus OSM](./media/aks-osm-addon/osm-prometheus-smi-metrics-target-scrape.png)
 
-## <a name="deploy-and-configure-a-grafana-instance-for-osm&quot;></a>Déployer et configurer une instance Grafana pour OSM
+## <a name="deploy-and-configure-a-grafana-instance-for-osm"></a>Déployer et configurer une instance Grafana pour OSM
 
 Nous allons utiliser Helm pour déployer l’instance Grafana. Exécutez les commandes suivantes pour installer Grafana via Helm :
 
@@ -430,7 +407,7 @@ helm install osm-grafana grafana/grafana
 Nous allons ensuite récupérer le mot de passe Grafana par défaut pour nous connecter au site de Grafana.
 
 ```azurecli-interactive
-kubectl get secret --namespace default osm-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
+kubectl get secret --namespace default osm-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 
 Notez le mot de passe Grafana.
@@ -438,7 +415,7 @@ Notez le mot de passe Grafana.
 Nous allons ensuite récupérer le pod Grafana afin de rediriger le port vers le tableau de bord Grafana pour la connexion.
 
 ```azurecli-interactive
-GRAF_POD_NAME=$(kubectl get pods -l &quot;app.kubernetes.io/name=grafana&quot; -o jsonpath=&quot;{.items[0].metadata.name}")
+GRAF_POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=grafana" -o jsonpath="{.items[0].metadata.name}")
 kubectl port-forward $GRAF_POD_NAME 3000
 ```
 
@@ -460,11 +437,17 @@ Cliquez sur le bouton **Add data source** (Ajouter une source de données) et s�
 
 Dans la page **Configure your Prometheus data source below** (Configurez votre source de données Prometheus ci-dessous), entrez le nom de domaine complet du cluster Kubernetes pour le service Prometheus pour le paramètre URL HTTP. Le nom de domaine complet par défaut doit être `stable-prometheus-server.default.svc.cluster.local`. Une fois que vous avez entré ce point de terminaison de service Prometheus, faites défiler la page vers le bas et sélectionnez **Save & Test** (Enregistrer et tester). Vous devez recevoir une coche verte indiquant que la source de données fonctionne.
 
+### <a name="enable-prometheus-metrics-for-a-user-namespace"></a>Activer les métriques Prometheus pour un espace de noms d’utilisateur
+Pour configurer Prometheus afin de scraper les métriques d’un espace de noms d’application, exécutez la commande suivante.
+```azurecli-interactive
+osm metrics enable --namespace <app-namespace>
+```
+
 ### <a name="importing-osm-dashboards"></a>Importer des tableaux de bord OSM
 
 Les tableaux de bord OSM sont disponibles à la fois via :
 
-- [notre référentiel](https://github.com/grafana/grafana), et peuvent être importés sous forme de blobs json via le portail d’administration web ; ou
+- [notre référentiel](https://github.com/openservicemesh/osm/tree/release-v0.11/charts/osm/grafana/dashboards), et peuvent être importés sous forme de blobs json via le portail d’administration web ; ou
 - [en ligne à l’adresse grafana.com](https://grafana.com/grafana/dashboards/14145).
 
 Pour importer un tableau de bord, recherchez le signe `+` dans le menu de gauche et sélectionnez `import`.
@@ -481,6 +464,12 @@ Dès que vous sélectionnez l’option d’importation, le tableau de bord impor
 [Jaeger](https://www.jaegertracing.io/) est un système de traçage open source utilisé pour la surveillance et la résolution des problèmes des systèmes distribués. Il peut être déployé avec OSM comme nouvelle instance, ou vous pouvez apporter votre propre instance. Les instructions suivantes déploient une nouvelle instance de Jaeger dans l’espace de noms `jaeger` sur le cluster AKS.
 
 ### <a name="deploy-jaeger-to-the-aks-cluster"></a>Déployer Jaeger sur le cluster AKS
+
+Tout d’abord, créez un espace de noms Jaeger :
+
+```azurecli-interactive
+kubectl create namespace jaeger
+```
 
 Appliquez le manifeste suivant pour installer Jaeger :
 
@@ -543,6 +532,42 @@ deployment.apps/jaeger created
 service/jaeger created
 ```
 
+### <a name="add-rbac-for-jaeger-sa"></a>Ajouter RBAC pour Jaeger SA
+
+Appliquez le RBAC suivant pour accorder au compte de service Jaeger le rôle de cluster spécifié :
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: jaeger
+  name: jaeger
+  namespace: jaeger
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app: jaeger
+  name: jaeger
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jaeger
+  labels:
+    app: jaeger
+subjects:
+  - kind: ServiceAccount
+    name: jaeger
+    namespace: jaeger
+roleRef:
+  kind: ClusterRole
+  name: jaeger
+  apiGroup: rbac.authorization.k8s.io
+```
+
 ### <a name="enable-tracing-for-the-osm-add-on"></a>Activer le traçage pour le module complémentaire OSM
 
 Ensuite, nous devons activer le traçage pour le module complémentaire OSM.
@@ -550,7 +575,7 @@ Ensuite, nous devons activer le traçage pour le module complémentaire OSM.
 Exécutez la commande suivante pour activer le traçage pour le module complémentaire OSM :
 
 ```azurecli-interactive
-kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"enable":true}}}}' --type=merge
+kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"enable":true, "address": "jaeger.jaeger.svc.cluster.local"}}}}' --type=merge
 ```
 
 ```Output

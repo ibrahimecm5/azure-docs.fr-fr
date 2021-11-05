@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 511f546437d12714ae77d1e3a99f15feda31e33f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ad00a74871373338a2b4e8b557297a808e8186fc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130228127"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007293"
 ---
 # <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Ajouter AD FS en tant que fournisseur d’identité OpenID Connect à l’aide de stratégies personnalisées dans Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ Dans cette étape, configurez les réclamations que l’application AD FS renvo
 
     | Attribut LDAP | Type de revendication sortante |
     | -------------- | ------------------- |
-    | User-Principal-Name | UPN |
+    | User-Principal-Name | upn |
     | Surname | family_name |
     | Given-Name | given_name |
     | Display-Name | name |
@@ -94,10 +94,10 @@ Dans cette étape, configurez les réclamations que l’application AD FS renvo
 1. (Facultatif) Pour l'**Indication de domaine**, entrez `contoso.com`. Pour plus d’informations, consultez [Configurer la connexion directe avec Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
 1. Sous **Mappage des revendications du fournisseur d’identité**, sélectionnez les revendications suivantes :
 
-    - **ID d’utilisateur** : *upn*
-    - **Nom d’affichage** : *unique_name*
-    - **Prénom** : *given_name*
-    - **Nom** : *family_name*
+    - **ID d’utilisateur** : `upn`
+    - **Nom d’affichage** : `unique_name`
+    - **Prénom** : `given_name`
+    - **Nom de famille** : `family_name`
 
 1. Sélectionnez **Enregistrer**.
 

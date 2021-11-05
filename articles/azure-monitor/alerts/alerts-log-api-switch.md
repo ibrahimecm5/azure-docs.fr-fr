@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 101a575d9acac5da4a8c0399f60e8f32e591d2cf
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: f3d55bfe93ec3bcaa713e77db6326488851994d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285356"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026219"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Mise à niveau vers l'API Alertes de journal actuelle à partir de l'API Alerte héritée de Log Analytics
 
@@ -25,11 +25,12 @@ Autrefois, les utilisateurs utilisaient l'[API Alerte héritée de Log Analytics
 ## <a name="benefits"></a>Avantages
 
 - Modèle unique pour la création de règles d'alerte (auparavant, trois modèles distincts étaient nécessaires).
-- API unique pour les espaces de travail Log Analytics ou les ressources Application Insights.
+- API unique pour toutes les alertes liées aux journaux de ressources Azure.
+- Prise en charge des aperçus d’alerte de journal (avec état et 1 minute).
 - [Prise en charge des cmdlets PowerShell](./alerts-log.md#managing-log-alerts-using-powershell).
 - Alignement des niveaux de gravité avec tous les autres types d'alertes.
 - Possibilité de créer des [alertes de journal inter-espaces de travail](../logs/cross-workspace-query.md) couvrant différentes ressources externes telles que les espaces de travail Log Analytics ou les ressources Application Insights.
-- Les utilisateurs peuvent spécifier des dimensions pour fractionner les alertes à l'aide du paramètre « Agréger sur ».
+- Les utilisateurs peuvent spécifier des dimensions pour fractionner les alertes.
 - Les alertes de journal disposent d'une période prolongée allant jusqu'à deux jours de données (celle-ci était auparavant limitée à un jour).
 
 ## <a name="impact"></a>Impact

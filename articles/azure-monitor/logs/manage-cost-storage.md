@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/17/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1713d3091794ed95438a5e9d7944b3f5ee41f5ee
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 650ccc08d5cec7e037a6203f71ac8429f1bc2bf0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131787"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078994"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gérer l’utilisation et les coûts avec les journaux Azure Monitor    
 
@@ -201,7 +201,7 @@ Par défaut, deux types de données, `Usage` et `AzureActivity`, sont conservée
 
 Les types de données provenant des ressources Application Insights basées sur l’espace de travail (`AppAvailabilityResults`, `AppBrowserTimings`, `AppDependencies`, `AppExceptions`, `AppEvents`, `AppMetrics`, `AppPageViews`, `AppPerformanceCounters`, `AppRequests`, `AppSystemEvents` et `AppTraces`) sont également conservés 90 jours sans frais par défaut. Leur rétention peut être ajustée à l’aide de la fonctionnalité de rétention par type de données. 
 
-L’[API de purge](/rest/api/loganalytics/workspacepurge/purge) Log Analytics n’affecte pas la facturation de la conservation et est destinée à être utilisée dans des cas très limités. Pour réduire votre facture de rétention, la période de rétention doit être réduite pour l’espace de travail ou pour des types de données spécifiques. 
+L’[API de purge](/rest/api/loganalytics/workspacepurge/purge) Log Analytics n’affecte pas la facturation de la conservation et est destinée à être utilisée dans des cas très limités. Pour réduire votre facture de rétention, la période de rétention doit être réduite pour l’espace de travail ou pour des types de données spécifiques. Découvrez-en plus sur la gestion des [données personnelles stockées dans Log Analytics et Application Insights](./personal-data-mgmt.md).
 
 ### <a name="retention-by-data-type"></a>Durée de conservation par type de données
 

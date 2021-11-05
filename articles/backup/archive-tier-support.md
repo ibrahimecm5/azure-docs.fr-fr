@@ -1,331 +1,92 @@
 ---
-title: Prise en charge du niveau de stockage archive
-description: En savoir plus sur la prise en charge du niveau Archive pour le service Sauvegarde Azure
-ms.topic: conceptual
-ms.date: 09/29/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc3ea68353f7e6cc3bb16a11e8a7868df2b02310
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+title: Vue d’ensemble de la prise en charge du niveau Archive
+description: En savoir plus sur la prise en charge du niveau Archive pour le service Sauvegarde Azure.
+ms.topic: overview
+ms.date: 10/23/2021
+ms.custom: references_regions
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 3c28d99c066bf71ea3970ce8a01eb68989e11123
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534928"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080894"
 ---
-# <a name="archive-tier-support"></a>Prise en charge du niveau de stockage archive
+# <a name="about-archive-tier-support"></a>À propos de la prise en charge du niveau Archive
 
 Les clients s’appuient sur le service Sauvegarde Azure pour stocker leurs données de sauvegarde, notamment pour une conservation à long terme (LTR), avec des exigences de conservation définies par les règles de conformité de l’organisation. Dans la plupart des cas, les données de sauvegarde plus anciennes sont rarement utilisées, et stockées uniquement à des fins de conformité.
 
 Le service Sauvegarde Azure prend en charge la sauvegarde des points de conservation à long terme dans le niveau Archive, en plus des captures instantanées et du niveau Standard.
 
-## <a name="scope"></a>Étendue
+## <a name="supported-workloads"></a>Charges de travail prises en charge
 
-Charges de travail prises en charge :
+Le niveau Archive prend en charge les charges de travail suivantes :
 
-- Machines virtuelles Azure
-  - Uniquement les points de récupération mensuels et annuels. Les points de récupération quotidiens et hebdomadaires ne sont pas pris en charge.
-  - Âge >= 3 mois au niveau Coffre-Standard.
-  - Conservation restante >= 6 mois.
-  - Aucune dépendance quotidienne ou hebdomadaire active.
-- SQL Server dans des machines virtuelles Azure
-  - Uniquement les points de récupération complets. Les journaux et les différentiels ne sont pas pris en charge.
-  - Âge >= 45 jours au niveau Coffre-Standard.
-  - Conservation restante >= 6 mois.
-  - Aucune dépendance
-
-Clients pris en charge :
-
-- La fonctionnalité est fournie à l’aide de PowerShell.
+| Charges de travail | Operations |
+| --- | --- |
+| Machines virtuelles Azure | <ul><li>Uniquement les points de récupération mensuels et annuels. Les points de récupération quotidiens et hebdomadaires ne sont pas pris en charge.  </li><li>Âge >= 3 mois au niveau Coffre-Standard. </li><li>Conservation restante >= 6 mois. </li><li>Aucune dépendance quotidienne ou hebdomadaire active. </li></ul> |
+| SQL Server dans des machines virtuelles Azure/SAP HANA dans des machines virtuelles Azure | <ul><li>Uniquement les points de récupération complets. Les journaux et les différentiels ne sont pas pris en charge. </li><li>Âge >= 45 jours au niveau Coffre-Standard. </li><li>Conservation restante >= 6 mois. </li><li>Aucune dépendance </li></ul> |
 
 >[!Note]
->La prise en charge du niveau de stockage archive pour les serveurs SQL dans les machines virtuelles Azure est désormais généralement disponible dans plusieurs régions. Pour obtenir la liste détaillée des régions prises en charge, consultez la [matrice de prise en charge](#support-matrix).    <br><br>    Pour les autres régions pour les serveurs SQL Server dans des machines virtuelles Azure, la prise en charge du niveau archive est en préversion publique limitée. La prise en charge du niveau archive pour les machines virtuelles Azure est également en préversion publique limitée. Pour vous inscrire à la préversion publique limitée, utilisez [ce lien](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u).
+>- La prise en charge du niveau de stockage archive pour les serveurs SQL dans les machines virtuelles Azure et SAP HANA dans les machines virtuelles Azure est à présent généralement disponible dans plusieurs régions. Pour obtenir la liste détaillée des régions prises en charge, consultez la [matrice de prise en charge](#support-matrix).
+>- La prise en charge du niveau archive pour les machines virtuelles Azure est également en préversion publique limitée. Pour vous inscrire à la préversion publique limitée, utilisez [ce formulaire](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u).
 
-## <a name="get-started-with-powershell"></a>Bien démarrer avec PowerShell
+## <a name="supported-clients"></a>Clients pris en charge
 
-1. Téléchargez la [dernière](https://github.com/PowerShell/PowerShell/releases) version de PowerShell à partir de GitHub.
+Le niveau Archive prend en charge les clients suivants :
 
-1. Exécutez la commande suivante dans PowerShell :
-  
-    ```azurepowershell
-    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.4.0 -AllowPrerelease -force
-    ```
+- [PowerShell](/azure/backup/use-archive-tier-support?pivots=client-powershelltier)
+- [INTERFACE DE LIGNE DE COMMANDE](/azure/backup/use-archive-tier-support?pivots=client-clitier)
+- [Azure portal](/azure/backup/use-archive-tier-support?pivots=client-portaltier)
 
-1. Connectez-vous à Azure à l’aide la cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
-1. Connectez-vous à votre abonnement :
+## <a name="how-azure-backup-moves-recovery-points-to-the-vault-archive-tier"></a>Comment Sauvegarde Azure déplace les points de récupération vers le niveau Coffre-Archive ?
 
-   `Set-AzContext -Subscription "SubscriptionName"`
+> [!VIDEO https://www.youtube.com/embed/nQnH5mpiz60?start=416]
 
-1. Obtenez le coffre :
+## <a name="archive-recommendations-only-for-azure-virtual-machines"></a>Recommandations sur les archives (uniquement pour les machines virtuelles Azure)
 
-    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+Les points de récupération pour les machines virtuelles Azure sont incrémentiels. Lorsque vous déplacez des points de récupération vers le niveau Archive, ils sont convertis en points de récupération complets (pour s’assurer que tous les points de récupération du niveau Archive sont indépendants et isolés les uns des autres). Ainsi, le stockage de sauvegarde global (coffre-standard + coffre-archive) peut augmenter.
 
-1. Obtenez la liste des éléments de sauvegarde :
+La quantité d’augmentation du stockage dépend du modèle d’attrition des machines virtuelles.
 
-    - Pour des machines virtuelles Azure :
+- Plus l’attrition des machines virtuelles est élevée, plus le stockage de sauvegarde global est petit lorsqu’un point de récupération est déplacé vers le niveau archive.
+- Si l’attrition de la machine virtuelle est faible, le passage au niveau archive peut entraîner une augmentation du stockage de sauvegarde, ce qui peut compenser la différence de prix entre le niveau Coffre-Standard et le niveau Coffre-Archive. Par conséquent, cela peut augmenter le coût global.
 
-        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+Pour résoudre cela, Sauvegarde Azure fournit un ensemble de recommandations. L’ensemble de recommandations renvoie une liste de points de récupération qui, s’ils sont déplacés ensemble vers le niveau Archive, garantissent des économies.
 
-    - Pour des machines virtuelles SQL Server dans Azure :
+>[!Note]
+>Les économies dépendent de divers facteurs et peuvent différer selon l’instance.
 
-        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
+## <a name="modify-protection"></a>Modifier la protection
 
-1. Obtenez l’élément de sauvegarde.
-
-    - Pour des machines virtuelles Azure :
-
-        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
-
-    - Pour des machines virtuelles SQL Server dans Azure :
-
-        `$bckItm = $BackupItemList | Where-Object {$_.FriendlyName -eq '<dbName>' -and $_.ContainerName -match '<vmName>'}`
-
-1. Ajoutez la plage de dates pour laquelle vous souhaitez afficher les points de récupération. Par exemple, si vous voulez afficher les points de récupération correspondant à la plage de dates allant du 124e au 95e derniers jours, utilisez la commande suivante :
-
-   ```azurepowershell
-    $startDate = (Get-Date).AddDays(-124)
-    $endDate = (Get-Date).AddDays(-95) 
-
-    ```
-    >[!NOTE]
-    >Si vous voulez afficher les points de récupération pour un autre intervalle de temps, modifiez les dates de début et de fin en conséquence.
-## <a name="use-powershell"></a>Utiliser PowerShell
-
-### <a name="check-the-archivable-status-of-all-the-recovery-points"></a>Vérifier l’état d’archivage de tous les points de récupération
-
-Vous pouvez maintenant vérifier l’état d’archivage de tous les points de récupération d’un élément de sauvegarde en utilisant la cmdlet suivante :
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() 
-
-$rp | select RecoveryPointId, @{ Label="IsArchivable";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].IsReadyForMove}}, @{ Label="ArchivableInfo";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].AdditionalInfo}}
-```
-
-### <a name="check-archivable-recovery-points"></a>Vérifier les points de récupération archivables
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $true -TargetTier VaultArchive
-```
-
-Cela a pour effet de répertorier tous les points de récupération associés à un élément de sauvegarde spécifique, qui sont prêts à être déplacés vers une archive (de la date de début à la date de fin). Vous pouvez également modifier les dates de début et de fin.
-
-### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>Vérifier pourquoi un point de récupération ne peut pas être déplacé vers une archive
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $false -TargetTier VaultArchive
-$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
-```
-
-Où `$rp[0]` est le point de récupération dont vous souhaitez savoir pourquoi il n’est pas archivable.
-
-Exemple de sortie :
-
-```output
-IsReadyForMove  AdditionalInfo
---------------  --------------
-False           Recovery-Point Type is not eligible for archive move as it is already moved to archive tier
-```
-
-### <a name="check-recommended-set-of-archivable-points-only-for-azure-vms"></a>Vérifier l’ensemble recommandé de points archivables (uniquement pour les machines virtuelles Azure)
-
-Les points de récupération associés à une machine virtuelle sont incrémentiels par nature. Quand un point de récupération est déplacé vers l’archive, il est au préalable converti en sauvegarde complète. Les économies de coûts associées au déplacement vers une archive dépendent donc de l’évolution de la source de données.
-
-Par conséquent, le service Sauvegarde Azure a proposé un ensemble recommandé de points de récupération permettant de réaliser des économies de coûts en cas de déplacement simultané.
-
->[!NOTE]
->Les économies de coûts dépendent de diverses raisons et peuvent différer pour deux instances quelconques.
-
-```azurepowershell
-$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
-```
-
-### <a name="move-to-archive"></a>Déplacer une archive
-
-```azurepowershell
-Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[0] -SourceTier VaultStandard -DestinationTier VaultArchive
-```
-
-Où `$rp[0]` est le premier point de récupération dans la liste. Si vous souhaitez déplacer d’autres points de récupération, utilisez les commandes `$rp[1]`, `$rp[2]`, et ainsi de suite.
-
-Cette commande déplace un point de récupération archivable vers UNE archive. Elle retourne un travail utilisable pour effectuer le suivi de l’opération de déplacement tant à partir du portail qu’avec PowerShell.
-
-### <a name="view-archived-recovery-points"></a>Afficher les points de récupération archivés
-
-Cette commande retourne tous les points de récupération archivés.
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-```
-
-### <a name="restore-with-powershell"></a>Restaurer avec PowerShell
-
-Pour les points de récupération dans l’archive, le service Sauvegarde Azure fournit une méthodologie de restauration intégrée.
-
-La restauration intégrée est un processus en deux étapes. La première étape consiste à réalimenter les points de récupération stockés dans l’archive, et à stocker celle-ci temporairement au niveau Coffre-Standard pour une durée (également appelée « durée de réalimentation ») de 10 à 30 jours. La durée par défaut est de 15 jours. Il existe deux priorités de réalimentation : Standard et Haute. Apprenez-rn davantage sur la [priorité de réalimentation](../storage/blobs/archive-rehydrate-overview.md#rehydration-priority).
-
->[!NOTE]
->
->- Une fois la durée de réalimentation sélectionnée, il n’est pas possible de la modifier et les points de récupération réalimentés restent au niveau Standard pendant la durée de réalimentation.
->- L’étape supplémentaire de réalimentation entraîne un coût.
-
-Pour plus d’informations sur les différentes méthodes de restauration pour les machines virtuelles Azure, consultez [Restaurer une machine virtuelle Azure avec PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm).
-
-```azurepowershell
-Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePriority "Standard" -RehydrateDuration 15 -RecoveryPoint $rp -StorageAccountName "SampleSA" -StorageAccountResourceGroupName "SArgName" -TargetResourceGroupName $vault.ResourceGroupName -VaultId $vault.ID
-```
-
-Pour restaurer SQL Server, procédez [comme suit](backup-azure-sql-automation.md#restore-sql-dbs). La `Restore-AzRecoveryServicesBackupItem` commande requiert deux paramètres supplémentaires, **RehydrationDuration** et **RehydrationPriority**.
-
-### <a name="view-jobs-from-powershell"></a>Afficher les travaux à partir de PowerShell
-
-Pour afficher les travaux de déplacement et de restauration, utilisez la cmdlet PowerShell suivante :
-
-```azurepowershell
-Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
-```
-
-### <a name="move-recovery-points-to-archive-tier-at-scale"></a>Déplacer des points de récupération vers le niveau archive à grande échelle
-
-Vous pouvez maintenant utiliser des exemples de scripts pour effectuer des opérations à l’échelle. [En savoir plus](https://github.com/hiaga/Az.RecoveryServices/blob/master/README.md) sur la procédure d’exécution des exemples de scripts. Vous pouvez télécharger les scripts [ici](https://github.com/hiaga/Az.RecoveryServices).
-
-Vous pouvez effectuer les opérations suivantes à l’aide des exemples de scripts fournis par Sauvegarde Azure :
-
-- Déplacez tous les points de récupération admissibles pour une base de données spécifique ou pour toutes les bases de données d’un serveur SQL dans une machine virtuelle Azure vers le niveau archive.
-- Déplacez tous les points de récupération recommandés pour une machine virtuelle Azure particulière vers le niveau archive.
- 
-Vous pouvez également écrire un script en fonction de vos besoins ou modifier les exemples de scripts ci-dessus pour récupérer (fetch) les éléments de sauvegarde requis.
-
-## <a name="use-the-portal"></a>Utiliser le portail
-
-### <a name="check-archived-recovery-point"></a>Vérifier un point de récupération archivé
-
-Vous pouvez maintenant afficher tous les points de récupération qui ont été déplacés vers l’archive.
-
-![Tous les points de récupération.](./media/archive-tier-support/restore-points.png)
-
-### <a name="restore-in-the-portal"></a>Restaurer dans le portail
-
-Pour les points de récupération qui ont été déplacés vers l’archive, la restauration nécessite que vous ajoutiez les paramètres de durée de réalimentation et de priorité de réhydratation.
-
-![Restaurer dans le portail.](./media/archive-tier-support/restore-in-portal.png)
-
-### <a name="view-jobs-in-the-portal"></a>Afficher les travaux dans le portail
-
-![Afficher les travaux dans le portail.](./media/archive-tier-support/view-jobs-portal.png)
-
-### <a name="modify-protection"></a>Modifier la protection
-
-Vous pouvez modifier la protection d’une source de données de deux manières :
+Sauvegarde Azure offre deux moyens de modifier la protection d’une source de données :
 
 - Modifier une stratégie existante
 - Protection de la source de source avec une nouvelle stratégie
 
-Dans les deux cas, la nouvelle stratégie est appliquée à tous les points de récupération plus anciens du niveau Standard, ainsi qu’à ceux du niveau Archive. Ainsi, des points de récupération plus anciens peuvent être supprimés en cas de changement de stratégie.
+Dans les deux scénarios, la nouvelle stratégie est appliquée à tous les points de récupération plus anciens du niveau Standard, qui sont dans le niveau Standard ou le niveau Archive. Ainsi, des points de récupération plus anciens peuvent être supprimés en cas de changement de stratégie.
 
-Lorsque les points de récupération sont déplacés vers l’archive, ils sont soumis à une période de suppression précoce de 180 jours. Les frais sont calculés au prorata. Si un point de récupération qui n’est pas resté au niveau Archive pendant 180 jours est supprimé, cela occasionne un coût équivalent à 180 moins le nombre de jours qu’il est resté au niveau Standard.
+Lorsque vous déplacez les points de récupération vers l’archive, ils sont soumis à une période de suppression précoce de 180 jours. Les frais sont calculés au prorata. Si un point de récupération qui n’est pas resté au niveau Archive pendant 180 jours est supprimé, cela occasionne un coût équivalent à 180 moins le nombre de jours qu’il est resté au niveau Standard.
 
-Les points de récupération qui ne sont pas restés au niveau Archive pendant au minimum six mois occasionnent un coût de suppression précoce.
+Si vous supprimez les points de récupération qui ne sont pas restés au niveau Archive pendant au minimum 180 jours, cela occasionne un coût de suppression précoce.
 
 ## <a name="stop-protection-and-delete-data"></a>Arrêter la protection et supprimer les données
 
 L’option Arrêter la protection et supprimer les données supprime tous les points de récupération. Pour les points de récupération qui ne sont pas restés pendant une durée de 180 jours au niveau Archive, leur suppression occasionne un coût de suppression précoce.
 
+## <a name="archive-tier-pricing"></a>Tarification du niveau Archive
+
+Vous pouvez consulter la tarification du niveau Archive dans notre [page de tarification](azure-backup-pricing.md).
+
 ## <a name="support-matrix"></a>Matrice de prise en charge
 
 | Charges de travail | Préversion | Mise à la disposition générale |
 | --- | --- | --- |
-| SQL Server dans les machines virtuelles Azure | None | Australie Est, Inde Centre, Europe Nord, Asie Sud-Est, Asie Est, Australie Sud-Est, Canada Centre, Brésil Sud, Canada Est, France Centre, France Sud, Japon Est, Japon Ouest, Corée Centre, Corée Sud, Inde Sud, Royaume-Uni Ouest, Royaume-Uni Sud, USA Centre, USA Est 2, USA Ouest, USA Ouest 2, USA Centre-Ouest, USA Est, USA Centre Sud, USA Centre Nord, Europe Ouest, US Gov Virginie, US Gov Texas, US Gov Arizona. |
+| SQL Server dans des machines virtuelles Azure/SAP HANA dans des machines virtuelles Azure | None | Australie Est, Inde Centre, Europe Nord, Asie Sud-Est, Asie Est, Australie Sud-Est, Canada Centre, Brésil Sud, Canada Est, France Centre, France Sud, Japon Est, Japon Ouest, Corée Centre, Corée Sud, Inde Sud, Royaume-Uni Ouest, Royaume-Uni Sud, USA Centre, USA Est 2, USA Ouest, USA Ouest 2, USA Centre-Ouest, USA Est, USA Centre Sud, USA Centre Nord, Europe Ouest, US Gov Virginie, US Gov Texas, US Gov Arizona. |
 | Machines virtuelles Azure | USA Est, USA Est 2, USA Centre, USA Centre Sud, USA Ouest, USA Ouest 2, USA Centre-Ouest, USA Centre Nord, Brésil Sud, Canada Est, Canada Centre, Europe Ouest, Royaume-Uni Sud, Royaume-Uni Ouest, Asie Est, Japon Est, Inde Sud, Asie Sud-Est, Australie Est, Inde Centre, Europe Nord, Australie Sud-Est, France Centre, France Sud, Japon Ouest, Corée Centre, Corée Sud. | Aucun |
 
-## <a name="error-codes-and-troubleshooting-steps"></a>Codes d’erreur et étapes de résolution des problèmes
-
-Il existe plusieurs codes d’erreur qui apparaissent quand un point de récupération ne peut pas être déplacé vers une archive.
-
-### <a name="recoverypointtypenoteligibleforarchive"></a>RecoveryPointTypeNotEligibleForArchive
-
-**Message d’erreur** : Le type de point de récupération ne peut pas être déplacé vers l’archive.
-
-**Description** : ce code d’erreur s’affiche quand le type de point de récupération sélectionné ne peut pas être déplacé vers l’archive.
-
-**Action recommandée** : vérifiez l’éligibilité du point de récupération [ici](#scope).
-
-### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
-
-**Message d’erreur** : Un point de récupération avec des dépendances actives pour la restauration ne peut pas être déplacé vers l’archive.
-
-**Description** : le point de récupération sélectionné a des dépendances actives et ne peut donc pas être déplacé vers l’archive.
-
-**Action recommandée** : vérifiez l’éligibilité du point de récupération [ici](#scope).
-
-### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
-
-**Message d’erreur** : Le point de récupération ne peut pas être déplacé vers Archive, car la durée de vie passée dans le niveau Standard de coffre est inférieure au minimum nécessaire.
-
-**Description** : le point de récupération doit rester au niveau Standard pendant un minimum de trois mois pour les machines virtuelles Azure, et 45 jours pour SQL Server sur des machines virtuelles Azure.
-
-**Action recommandée** : vérifiez l’éligibilité du point de récupération [ici](#scope).
-
-### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
-
-**Message d’erreur** : La durée de vie restante du point de récupération est inférieure au minimum nécessaire.
-
-**Description** : la durée de vie minimale requise pour un point de récupération pour l’éligibilité du déplacement d’archive est de six mois.
-
-**Action recommandée** : vérifiez l’éligibilité du point de récupération [ici](#scope).
-
-### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
-
-**Message d’erreur** : Le point de récupération ne peut pas être déplacé vers Archive, car il est déjà dans le niveau Archive.
-
-**Description** : le point de récupération sélectionné figure déjà dans l’archive. Il n’est donc pas possible de le déplacer vers l’archive.
-
-### <a name="usererrordatasourcetypeisnotsupportedforrecommendationapi"></a>UserErrorDatasourceTypeIsNotSupportedForRecommendationApi
-
-**Message d’erreur** : Le type de source de données n’est pas éligible pour l’API Recommandation.
-
-**Description** : l’API Recommandation s’applique uniquement aux machines virtuelles Azure. Elle ne s’applique pas au type de source de donnée sélectionné.
-
-### <a name="usererrorrecoverypointalreadyrehydrated"></a>UserErrorRecoveryPointAlreadyRehydrated
-
-**Message d’erreur** : le point de récupération est déjà réalimenté. La réalimentation n’est pas autorisée sur ce point de récupération.
-
-**Description** : le point de récupération sélectionné est déjà réalimenté.
-
-### <a name="usererrorrecoverypointisnoteligibleforarchivemove"></a>UserErrorRecoveryPointIsNotEligibleForArchiveMove
-
-**Message d’erreur** : Le point de récupération ne peut pas être déplacé vers Archive.
-
-**Description** : le point de récupération sélectionné n’est pas éligible pour un déplacement vers l’archive.
-
-### <a name="usererrorrecoverypointnotrehydrated"></a>UserErrorRecoveryPointNotRehydrated
-
-**Message** **d’erreur** : le point de récupération d’archive n’est pas réalimenté. Réessayez la restauration une fois la réalimentation terminée sur le point de récupération Archive.
-
-**Description** : le point de récupération n’est pas réalimenté. Essayez de restaurer après avoir réalimenté le point de récupération.
-
-### <a name="usererrorrecoverypointrehydrationnotallowed"></a>UserErrorRecoveryPointRehydrationNotAllowed
-
-**Message** **d’erreur** : La réalimentation n’est prise en charge que pour les points de récupération Archive.
-
-**Description** : la réalimentation n’est pas autorisée pour le point de récupération sélectionné.
-
-### <a name="usererrorrecoverypointrehydrationalreadyinprogress"></a>UserErrorRecoveryPointRehydrationAlreadyInProgress
-
-**Message d’erreur** : La réhydratation est déjà en cours pour le point de récupération d’archive.
-
-**Description** : la réalimentation du point de récupération sélectionné est déjà en cours.
-
-### <a name="rpmovenotsupportedduetoinsufficientretention"></a>RPMoveNotSupportedDueToInsufficientRetention
-
-**Message d’erreur** : Impossible de déplacer le point de récupération vers le niveau Archive en raison d’une durée de conservation insuffisante spécifiée dans la stratégie.
-
-**Action recommandée** : mettez à jour la stratégie sur l’élément protégé avec le paramètre de conservation approprié, puis réessayez.
-
-### <a name="rpmovereadinesstobedetermined"></a>RPMoveReadinessToBeDetermined
-
-**Message d’erreur** : Nous essayons encore de déterminer si ce point de récupération peut être déplacé.
-
-**Description** : l’état de préparation au déplacement du point de récupération n’est pas encore déterminée.
-
-**Action recommandée** : vérifiez à nouveau après avoir attendu un certain temps.
 
 ## <a name="frequently-asked-questions"></a>Forum aux questions
 
@@ -339,6 +100,15 @@ Lorsque vous déplacez vos données dans des coffres GRS du niveau standard au n
 
 Lors de la restauration d’un point de récupération de niveau archive dans la région primaire, le point de récupération est copié vers le niveau standard et conservé conformément à la durée de réhydratation, tant dans la région primaire que dans la région secondaire. Vous pouvez effectuer une restauration entre régions à partir de ces points de récupération réhydratés.
 
+### <a name="i-can-see-eligible-recovery-points-for-my-virtual-machine-but-i-cant-seeing-any-recommendation-what-can-be-the-reason"></a>Je peux voir les points de récupération éligibles pour ma machine virtuelle, mais je ne vois aucune recommandation. Quelle peut être la raison ?
+
+Les points de récupération des machines virtuelles répondent aux critères d’éligibilité. Par conséquent, il existe des points de récupération archivables. Toutefois, l’attrition de la machine virtuelle peut être faible, de sorte qu’il n’y a aucune recommandation. Dans ce scénario, bien que vous puissiez déplacer les points de récupération archivables vers le niveau Archive, cela peut augmenter les coûts de stockage de sauvegarde globaux.
+
+### <a name="i-have-stopped-protection-and-retained-data-for-my-workload-can-i-move-the-recovery-points-to-archive-tier"></a>J’ai arrêté la protection et conservé les données pour ma charge de travail. Puis-je déplacer les points de récupération vers le niveau Archive ?
+
+Non. Une fois la protection arrêtée pour une charge de travail particulière, les points de récupération correspondants ne peuvent pas être déplacés vers le niveau Archive. Pour déplacer des points de récupération vers le niveau Archive, vous devez reprendre la protection de la source de données.
+
 ## <a name="next-steps"></a>Étapes suivantes
 
+- [Utilisation du niveau Archive](use-archive-tier-support.md)
 - [Tarifs Sauvegarde Azure](azure-backup-pricing.md)

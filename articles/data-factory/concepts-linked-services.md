@@ -10,12 +10,12 @@ ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: d9b6695824b5fc19d2cd2ee40aec929a372750f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ce62577dd73d6c6318c5358e4cff3ada4f4bc0a5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812032"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068860"
 ---
 # <a name="linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>Services liés dans Azure Data Factory et Azure Synapse Analytics
 
@@ -29,7 +29,7 @@ Cet article décrit ce que sont les services liés, comment ils sont définis au
 
 Pour en savoir plus, lisez l’article d’introduction d’[Azure Data Factory](introduction.md) ou d’[Azure Synapse](../synapse-analytics/overview-what-is.md).
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Azure Data Factory et Azure Synapse Analytics peuvent avoir un ou plusieurs pipelines. Un **pipeline** constitue un regroupement logique d’**activités** qui exécutent ensemble une tâche. Les activités d’un pipeline définissent les actions à effectuer sur les données. Par exemple, vous pouvez utiliser une activité de copie pour copier des données d’un serveur SQL Server vers un stockage Blob Azure. Ensuite, vous pouvez utiliser une activité Hive qui exécute un script Hive sur un cluster Azure HDInsight pour traiter les données du stockage Blob afin de produire des données de sortie. Enfin, vous pouvez utiliser une deuxième activité de copie pour copier les données de sortie dans Azure Synapse Analytics sur lequel des solutions de génération de rapports d’aide à la décision sont développées. Pour plus d’informations sur les pipelines et les activités, consultez [Pipelines et activités](concepts-pipelines-activities.md).
 
@@ -109,7 +109,9 @@ Reportez-vous aux [environnements de calcul pris en charge](compute-linked-servi
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Consultez les didacticiels suivants pour obtenir des instructions pas à pas sur la création de pipelines et de jeux de données à l’aide de l’un de ces outils ou Kits de développement logiciel (SDK).
+- [Découvrez comment utiliser les informations d’identification d’une identité managée affectée par l’utilisateur dans un service lié](credentials.md).
+
+Consultez les didacticiels suivants pour obtenir des instructions pas à pas sur la création de pipelines et de jeux de données à l’aide de l’un de ces outils ou kits de développement logiciel (SDK).
 
 - [Démarrage rapide : Créer une fabrique de données avec .NET](quickstart-create-data-factory-dot-net.md)
 - [Démarrage rapide : Créer une fabrique de données à l’aide de PowerShell](quickstart-create-data-factory-powershell.md)

@@ -5,22 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/28/2021
+ms.date: 10/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
-ms.reviewer: rhicock
+ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6ff8a64ac82b27df6e49ef7f500af3fd65316
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a695c5d207bb441bfc3393ee0c5c1222efac4e79
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352722"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063382"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Comment fonctionne la réécriture de la réinitialisation de mot de passe en libre-service dans Azure Active Directory ?
 
-La technologie SSPR (réinitialisation de mot de passe en libre-service) d’Azure AD (Azure Active Directory) permet aux utilisateurs de réinitialiser leurs mots de passe dans le cloud. Toutefois, la plupart des entreprises disposent également d’un environnement AD DS (Active Directory Domain Services) local où sont situés leurs utilisateurs. La réécriture du mot de passe est une fonctionnalité activée avec [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) qui permet aux modifications de mot de passe dans le cloud d’être réécrites sur un annuaire local existant en temps réel. Dans cette configuration, quand les utilisateurs changent ou réinitialisent leurs mots de passe via SSPR dans le cloud, les mots de passe mis à jour sont également réécrits dans l’environnement AD DS local
+La technologie SSPR (réinitialisation de mot de passe en libre-service) d’Azure Active Directory (Azure AD) permet aux utilisateurs de réinitialiser leurs mots de passe dans le cloud. Toutefois, la plupart des entreprises disposent également d’un environnement Active Directory Domain Services (AD DS) local pour leurs utilisateurs. La réécriture du mot de passe permet de réécrire les modifications de mot de passe effectuées dans le cloud dans un annuaire local en temps réel, en utilisant [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ou la [synchronisation cloud Azure AD Connect](tutorial-enable-cloud-sync-sspr-writeback.md). Lorsque les utilisateurs modifient ou réinitialisent leur mot de passe à l’aide du SSPR dans le cloud, les mots de passe mis à jour sont également réécrits dans l’environnement AD DS local.
 
 > [!IMPORTANT]
 > Cet article conceptuel explique à un administrateur le fonctionnement de la réécriture de la réinitialisation de mot de passe en libre-service. Si vous êtes un utilisateur final déjà inscrit pour la réinitialisation de mot de passe en libre-service et que vous devez récupérer votre compte, accédez à https://aka.ms/sspr.
@@ -40,18 +41,23 @@ La réécriture du mot de passe fournit les fonctionnalités suivantes :
 * **La prise en charge de la modification des mots de passe à partir du panneau d’accès et de Microsoft 365** : quand des utilisateurs fédérés ou disposant de la synchronisation du code de hachage de mot de passe changent leurs mots de passe (arrivés ou non à expiration), ces derniers sont réécrits dans AD DS.
 * **La prise en charge de la réécriture du mot de passe lorsqu’un administrateur le réinitialise depuis le portail Azure** : quand un administrateur réinitialise le mot de passe d’un utilisateur dans le [portail Azure](https://portal.azure.com), si cet utilisateur est fédéré ou s’il dispose de la synchronisation du code de hachage de mot de passe, le mot de passe est réécrit localement. Actuellement, cette fonctionnalité n’est pas prise en charge dans le portail d’administration Office.
 * **Absence de règles de pare-feu obligatoires entrantes** : la réécriture de mot de passe utilise un relais Microsoft Azure Service Bus comme canal de communication sous-jacent. Toutes les communications sont sortantes sur le port 443.
+* **Prend en charge le déploiement côte à côte au niveau du domaine** à l’aide d’[Azure AD Connect](tutorial-enable-sspr-writeback.md) ou de la [synchronisation cloud](tutorial-enable-cloud-sync-sspr-writeback.md) pour cibler différents groupes d’utilisateurs en fonction de leurs besoins, y compris les utilisateurs qui se trouvent dans des domaines déconnectés.  
 
 > [!NOTE]
-> Les comptes d’administrateur qui existent dans des groupes protégés de votre annuaire AD local peuvent bénéficier de la réécriture du mot de passe. Les administrateurs peuvent changer leur mot de passe dans le cloud, mais ils ne peuvent pas utiliser la réinitialisation de mot de passe pour réinitialiser un mot de passe oublié. Pour plus d’informations sur les groupes protégés, consultez [Comptes et groupes protégés dans AD DS](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> Les comptes d’administrateur qui existent dans des groupes protégés de votre annuaire AD local peuvent bénéficier de la réécriture du mot de passe. Les administrateurs peuvent changer leur mot de passe dans le cloud, mais ils ne peuvent pas réinitialiser un mot de passe oublié. Pour plus d’informations sur les groupes protégés, consultez [Comptes et groupes protégés dans AD DS](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
-Pour bien démarrer avec la réécriture SSPR, suivez le tutoriel suivant :
+Pour bien démarrer avec l’écriture différée SSPR, suivez l’un des tutoriels suivants (ou les deux) :
 
-> [!div class="nextstepaction"]
-> [Tutoriel : Activer la réécriture SSPR (réinitialisation de mot de passe en libre-service)](./tutorial-enable-sspr-writeback.md)
+- [Tutoriel : Activer la réécriture SSPR (réinitialisation de mot de passe en libre-service)](tutorial-enable-cloud-sync-sspr-writeback.md)
+- [Tutoriel : Activer la réécriture et la réinitialisation de mot de passe en libre-service d’Azure Active Directory Connect et de la synchronisation cloud dans un environnement local (préversion)](tutorial-enable-cloud-sync-sspr-writeback.md)
+
+## <a name="azure-ad-connect-and-cloud-sync-side-by-side-deployment"></a>Déploiement côte à côte d’Azure AD Connect et de la synchronisation cloud
+
+Vous pouvez déployer Azure AD Connect et la synchronisation cloud côte à côte dans différents domaines pour cibler différents ensembles d’utilisateurs. Cela permet aux utilisateurs existants de continuer à réécrire les modifications de mot de passe quand les utilisateurs se trouvent dans des domaines déconnectés en raison d’une fusion ou d’une division au sein de l’entreprise. Azure AD Connect et la synchronisation cloud peuvent être configurés dans des domaines différents afin que les utilisateurs d’un domaine utilisent Azure AD Connect, et que les utilisateurs d’un autre domaine utilisent la synchronisation cloud. La synchronisation cloud peut également fournir une disponibilité plus élevée, car elle ne repose pas sur une seule instance d’Azure AD Connect. Pour obtenir une comparaison des fonctionnalités fournies par ces deux options de déploiement, consultez [Comparaison entre la synchronisation Azure AD Connect et la synchronisation cloud](../cloud-sync/what-is-cloud-sync.md#comparison-between-azure-ad-connect-and-cloud-sync).
 
 ## <a name="how-password-writeback-works"></a>Fonctionnement de la réécriture du mot de passe
 
-Lorsqu’un utilisateur fédéré, disposant de la synchronisation du hachage de mot de passe ou doté de l’authentification directe réinitialise ou modifie son mot de passe dans le cloud, les événements suivants ont lieu :
+Lorsqu’un compte d’utilisateur configuré pour la fédération, la synchronisation de hachage du mot de passe (ou, dans le cas d’un déploiement Azure AD Connect, l’authentification directe) tente de réinitialiser ou de modifier un mot de passe dans le cloud, les actions suivantes se produisent :
 
 1. Vérification du type de mot de passe de l’utilisateur. Si le mot de passe de l’utilisateur est géré localement :
    * Vérification du bon fonctionnement du service de réécriture. Dans le cas, l’utilisateur peut continuer.

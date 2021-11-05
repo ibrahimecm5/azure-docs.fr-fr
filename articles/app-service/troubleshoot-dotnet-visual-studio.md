@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: f44d3eb84715233e6d9aa4a1d06d626d162973ee
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2dc6e9deba6f1e6c5f7e43b5a87ef32aa53061be
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205266"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049101"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Dépanner une application dans Azure App Service à l'aide de Visual Studio
 ## <a name="overview"></a>Vue d’ensemble
@@ -78,9 +78,9 @@ En général, vous déployez un projet Web avec l’indicateur `customErrors` d
 
 **Le site Web ne peut pas afficher la page**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Capture d’écran montrant que le site web ne peut pas afficher l’erreur de page dans un navigateur web.":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Capture d’écran montrant le message **Le site web ne peut pas afficher l’erreur de page dans un navigateur web**.":::
 
-Généralement, la méthode la plus simple pour rechercher la cause d’une erreur consiste à activer les messages d’erreur détaillés : la première capture d’écran de la série précédente montre comment procéder. Vous devez modifier le fichier Web.config déployé. Vous pouvez modifier le fichier *Web.config* dans le projet et redéployer ce dernier, ou vous pouvez créer une [transformation Web.config](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) et déployer une build de débogage, mais la solution la plus rapide est la suivante : dans l'**Explorateur de solutions**, vous pouvez afficher et modifier directement les fichiers dans l'application distante à l'aide de la fonctionnalité d'*affichage à distance*.
+Généralement, la méthode la plus simple pour rechercher la cause d’une erreur consiste à activer les messages d’erreur détaillés : la première capture d’écran de la série précédente montre comment procéder. Vous devez modifier le fichier Web.config déployé. Vous pouvez modifier le fichier *Web.config* dans le projet et redéployer ce dernier, ou vous pouvez créer une [transformation `Web.config`](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) et déployer une build de débogage, mais la solution la plus rapide est la suivante : dans l’**Explorateur de solutions**, vous pouvez afficher et modifier directement les fichiers dans l’application distante à l’aide de la fonctionnalité d’*affichage à distance*.
 
 1. Dans l'**Explorateur de serveurs**, développez l'élément **Azure**, **App Service**, puis le groupe de ressources où se trouve votre application, et développez le nœud de votre application.
 

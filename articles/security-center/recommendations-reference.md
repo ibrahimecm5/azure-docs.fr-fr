@@ -1,28 +1,30 @@
 ---
-title: Table de référence pour toutes les recommandations Azure Security Center
-description: Cet article liste les recommandations de sécurité d’Azure Security Center qui vous permettent de durcir la sécurité et de protéger vos ressources.
+title: Tableau de référence pour toutes les recommandations de Microsoft Defender pour le cloud
+description: Cet article liste les recommandations de sécurité de Defender pour le cloud qui vous permettent de durcir la sécurité et de protéger vos ressources.
 author: memildin
 ms.service: security-center
 ms.topic: reference
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: a1fd045bebf4a5821d9f411f409d301b5d2c453d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 34f970884c97105a3831734cf672376e17f43a98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536868"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014464"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Recommandations de sécurité - Guide de référence
 
-Cet article liste les recommandations que vous pouvez voir dans Azure Security Center. Les recommandations présentées dans votre environnement dépendent des ressources que vous protégez et de votre configuration personnalisée.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Les recommandations de Security Center sont basées sur le [Benchmark de sécurité Azure](../security/benchmarks/introduction.md). Le Benchmark de sécurité Azure est l’ensemble des directives propres à Azure et créées par Microsoft contenant les bonnes pratiques de sécurité et de conformité basées sur les infrastructures de conformité courantes. Ce point de référence, largement respecté et centré sur le cloud, est basé sur les contrôles du [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) et du [National Institute of Standards and Technology (NIST)](https://www.nist.gov/).
+Cet article liste les recommandations que vous pouvez voir dans Microsoft Defender pour le cloud. Les recommandations présentées dans votre environnement dépendent des ressources que vous protégez et de votre configuration personnalisée.
 
-Pour en savoir plus sur la façon de répondre à ces recommandations, consultez [Appliquer les recommandations d’Azure Security Center](security-center-remediate-recommendations.md).
+Les recommandations de Defender pour le cloud sont basées sur le [Benchmark de sécurité Azure](../security/benchmarks/introduction.md). Le Benchmark de sécurité Azure est l’ensemble des directives propres à Azure et créées par Microsoft contenant les bonnes pratiques de sécurité et de conformité basées sur les infrastructures de conformité courantes. Ce benchmark, largement respecté et centré sur le cloud, est basé sur les contrôles du [CIS (Center for Internet Security)](https://www.cisecurity.org/benchmark/azure/) et du [NIST (National Institute of Standards and Technology)](https://www.nist.gov/).
 
-Votre degré de sécurisation est basé sur le nombre de recommandations Security Center que vous avez appliquées. Pour déterminer quelles recommandations doivent être suivies en premier, examinez la gravité de chacune d’entre elles et son impact potentiel sur votre degré de sécurisation.
+Pour en savoir plus sur la façon de répondre à ces recommandations, consultez [Appliquer les recommandations de Microsoft Defender pour le cloud](implement-security-recommendations.md).
+
+Votre degré de sécurisation est basé sur le nombre de recommandations Defender pour le cloud que vous avez appliquées. Pour déterminer quelles recommandations doivent être suivies en premier, examinez la gravité de chacune d’entre elles et son impact potentiel sur votre degré de sécurisation.
 
 > [!TIP]
 > Si la description d’une recommandation indique « aucune stratégie associée », cela est généralement dû au fait que cette recommandation est dépendante d’une autre recommandation et de _sa_ stratégie. Par exemple, la recommandation « Les échecs d’intégrité d’Endpoint Protection doivent être corrigés... », s’appuie sur la recommandation qui vérifie si une solution Endpoint Protection est _installée_ en premier lieu (« La solution Endpoint Protection doit être installée... »). La recommandation sous-jacente _est associée_ à une stratégie.
@@ -73,4 +75,4 @@ Votre degré de sécurisation est basé sur le nombre de recommandations Securit
 Pour en savoir plus sur les recommandations, consultez les articles suivants :
 
 - [Présentation des stratégies de sécurité, des initiatives et des recommandations](security-policy-concept.md).
-- [Consulter vos recommandations de sécurité](security-center-recommendations.md)
+- [Consulter vos recommandations de sécurité](review-security-recommendations.md)

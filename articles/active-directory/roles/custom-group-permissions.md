@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 10/18/2021
+ms.date: 10/26/2021
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
-ms.openlocfilehash: 1c798104e950312b49c86d88a83428772aeb1ef0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5e768d9661a7030fb75d8089a6a49e9d5022d612
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167791"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057207"
 ---
 # <a name="group-management-permissions-for-azure-ad-custom-roles-preview"></a>Autorisations de gestion de groupes pour les rôles personnalisés Azure AD (préversion)
 
@@ -34,6 +34,9 @@ Les autorisations de gestion de groupes peuvent être utilisées dans les défin
 - Gérer un type spécifique de groupe
 
 Cet article répertorie les autorisations que vous pouvez utiliser dans vos rôles personnalisés pour différents scénarios de gestion de groupes. Pour plus d’informations sur la création de rôles personnalisés, consultez [Créer et attribuer un rôle personnalisé](custom-create.md).
+
+> [!NOTE]
+> L’attribution de rôles personnalisés dans l’étendue d’un groupe en utilisant le portail Azure est actuellement disponible **seulement** pour Azure AD Premium P1.
 
 ## <a name="how-to-interpret-group-management-permissions"></a>Interprétation des autorisations de gestion de groupes
 

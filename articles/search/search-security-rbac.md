@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: ceb65226c30d6ee9768388bb18807dd7cf6d6f85
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5318ee205c66757409b9e0ffd8de864bcb69689a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070581"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064978"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Utiliser l’autorisation basée sur les rôles dans Azure Recherche cognitive
 
@@ -21,10 +21,10 @@ Azure fournit un système d'autorisation global de[contrôle d'accès basé sur 
 
 + Utilisez les rôles généralement disponibles pour l’administration des services.
 
-+ Utilisez les nouveaux rôles d’aperçu pour la gestion de contenu (création et gestion d’index et autres objets de niveau supérieur), [**disponible par demande**](https://aka.ms/azure-cognitive-search/rbac-preview).
++ Utilisez les nouveaux rôles de préversion pour la gestion de contenu (création et gestion d’index et autres objets de niveau supérieur), [**disponible en préversion**](#step-1-preview-sign-up).
 
 > [!NOTE]
-> Le Contributeur du Service de recherche est un rôle de « disponibilité générale » qui dispose de fonctionnalités de « préversion ». Il s’agit du seul rôle qui prend en charge un véritable hybride de tâches de gestion de service et de contenu, ce qui permet d’effectuer toutes les opérations sur un service de recherche donné. Pour obtenir la préversion de la gestion de contenu sur ce rôle, [**inscrivez-vous à la préversion**](https://aka.ms/azure-cognitive-search/rbac-preview).
+> Le Contributeur du Service de recherche est un rôle de « disponibilité générale » qui dispose de fonctionnalités de « préversion ». Il s’agit du seul rôle qui prend en charge un véritable hybride de tâches de gestion de service et de contenu, ce qui permet d’effectuer toutes les opérations sur un service de recherche donné. Pour obtenir la préversion de la gestion de contenu sur ce rôle, [**inscrivez-vous à la préversion**](#step-1-preview-sign-up).
 
 Certains scénarios RBAC ne sont **pas** pris en charge ou ne sont pas traités dans cet article :
 
@@ -47,7 +47,7 @@ Il n’existe aucune restriction régionale, de niveau ou de tarification pour l
 | [Propriétaire](../role-based-access-control/built-in-roles.md#owner) | Opérations de service (généralement disponibles) | Accès complet à la ressource de recherche, y compris la possibilité d’affecter des rôles Azure. Les administrateurs d’abonnements sont membres par défaut. |
 | [Contributeur](../role-based-access-control/built-in-roles.md#contributor) | Opérations de service (généralement disponibles) | Même niveau d’accès que le Propriétaire, moins la possibilité d’affecter des rôles ou de modifier les options d’autorisation. |
 | [Lecteur](../role-based-access-control/built-in-roles.md#reader) | Opérations de service (généralement disponibles) | Accès limité à des informations de service partielles. Sur le portail, le rôle Lecteur permet d'accéder aux informations de la page de présentation du service, de la section Éléments principaux et de l'onglet Surveillance. Tous les autres onglets et pages sont inaccessibles. </br></br>Ce rôle a accès aux informations de service : groupe de ressources, état du service, emplacement, nom et ID de l’abonnement, balises, URL, niveau tarifaire, réplicas, partitions et unités de recherche. </br></br>Ce rôle a aussi accès aux métriques de service : latence de recherche, pourcentage de demandes limitées, nombre moyen de requêtes par seconde. </br></br>Il n’y a pas d’accès aux clés API, aux attributions de rôles, au contenu (index ou cartes de synonymes) ou aux métriques de contenu (stockage consommé, nombre d’objets). |
-| [Contributeur du service de recherche](../role-based-access-control/built-in-roles.md#search-service-contributor) | Service OPS (généralement disponible), objets de niveau supérieur (préversion) | Ce rôle est une combinaison du Contributeur au niveau du service, mais avec un accès complet à toutes les actions sur les index, les cartes de synonymes, les indexeurs, les sources de données et les compétences dans [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch). Ce rôle est destiné aux administrateurs de service de recherche qui ont besoin de gérer intégralement le service. </br></br>Comme le Contributeur, les membres de ce rôle ne peuvent pas créer ou gérer des attributions de rôles, ni modifier les options d’autorisation. |
+| [Contributeur du service de recherche](../role-based-access-control/built-in-roles.md#search-service-contributor) | Service OPS (généralement disponible), objets de niveau supérieur (préversion) | Ce rôle est une combinaison du Contributeur au niveau du service, mais avec un accès complet à toutes les actions sur les index, les cartes de synonymes, les indexeurs, les sources de données et les compétences dans [`Microsoft.Search/searchServices/*`](../role-based-access-control/resource-provider-operations.md#microsoftsearch). Ce rôle est destiné aux administrateurs de service de recherche qui ont besoin de gérer intégralement le service. </br></br>Comme le Contributeur, les membres de ce rôle ne peuvent pas créer ou gérer des attributions de rôles, ni modifier les options d’autorisation. |
 | [Contributeur de données d’index de la Recherche](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | Collection de documents (préversion) | Fournit un accès complet au contenu de tous les index sur le service de recherche. Ce rôle est destiné aux développeurs ou aux propriétaires d’index qui ont besoin d’importer, d’actualiser ou d’interroger la collection de documents d’un index. |
 | [Lecteur de données d’index de la Recherche](../role-based-access-control/built-in-roles.md#search-index-data-reader) | Collection de documents (préversion) | Fournit un accès en lecture seule aux index de recherche sur le service de recherche. Ce rôle est destiné aux applications et utilisateurs qui exécutent des requêtes. |
 
@@ -62,11 +62,18 @@ Ignorez cette étape si vous utilisez des rôles généralement disponibles (Pro
 
 Les nouveaux rôles intégrés en préversion fournissent un ensemble granulaire d’autorisations sur le contenu du service de recherche. Bien que les rôles intégrés soient toujours visibles dans le portail Azure, l’inscription du service est nécessaire pour qu’ils soient opérationnels.
 
-Pour l’inscription dans le programme de préversion :
+Pour ajouter votre abonnement à la version préliminaire :
 
-+ [Remplir ce formulaire](https://aka.ms/azure-cognitive-search/rbac-preview)
+1. Accédez à la page **Abonnements** dans le [portail Azure](https://portal.azure.com/).
+1. Sélectionnez l’abonnement que vous souhaitez utiliser.
+1. Sur le côté gauche de la page d’abonnement, sélectionnez **Fonctionnalités d’évaluation**.
+1. Utiliser la barre de recherche ou les filtres pour rechercher et sélectionner des **Access Control basées sur les rôles pour Search service (version préliminaire)**
+1. Sélectionnez **Inscrire** pour ajouter la fonctionnalité à votre abonnement.
 
-Le traitement de la demande d’inscription de processus peut prendre jusqu’à deux jours ouvrables. Vous recevrez un courriel lorsque votre service sera prêt.
+![s’inscrire à rbac sur afec](media/search-howto-aad/rbac-signup-afec.png)
+
+Pour plus d’informations sur l’ajout de fonctionnalités en préversion, consultez [Configurer des fonctionnalités d’évaluation dans un abonnement Azure](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+
 
 ## <a name="step-2-preview-configuration"></a>Étape 2 : Aperçu de la configuration
 
@@ -218,7 +225,7 @@ Rappelez-vous que vous pouvez uniquement limiter l’accès à des ressources de
 
   :::image type="content" source="media/search-security-rbac/rest-authorization-header.png" alt-text="Capture d’écran d’une requête HTTP avec un en-tête d’Autorisation" border="true":::
 
-Pour plus d’informations sur l’acquisition d’un jeton pour un environnement spécifique, consultez les [Bibliothèques d’authentification de la plateforme d’identités Microsoft](/azure/active-directory/develop/reference-v2-libraries).
+Pour plus d’informations sur l’acquisition d’un jeton pour un environnement spécifique, consultez les [Bibliothèques d’authentification de la plateforme d’identités Microsoft](../active-directory/develop/reference-v2-libraries.md).
 
 ### <a name="net-sdk"></a>[**Kit de développement logiciel (SDK) .NET**](#tab/test-dotnet)
 

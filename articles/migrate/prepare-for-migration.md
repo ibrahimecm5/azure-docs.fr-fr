@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 288a78ee3b3e8c0a3d32d72d289c2b3e4c3d4aff
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9504d37c631116e041aa07b7044cfb69a86c7027
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619012"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084612"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Préparer des ordinateurs locaux à une migration vers Azure
 
@@ -90,7 +90,7 @@ Les modifications apportées sont résumées dans le tableau.
 **Installer l’agent invité Azure Windows** <br/><br/> L’agent de machine virtuelle est un processus léger et sécurisé qui gère l’interaction des machines virtuelles avec le contrôleur de structure Azure. L’agent de machine virtuelle a un rôle important dans l’activation et l’exécution des extensions de machine virtuelle Azure qui permettent de configurer des machines virtuelles après le déploiement, comme installer et configurer des logiciels. |  Configuration automatique pour les machines exécutant Windows Server 2008 R2 ou ultérieur. <br/> Configuration manuelle pour les systèmes d’exploitation antérieurs. | Configuration automatique pour les machines exécutant Windows Server 2008 R2 ou ultérieur. | Configuration automatique pour les machines exécutant Windows Server 2008 R2 ou ultérieur.
 **Se connecter après la migration**<br/><br/> Pour vous connecter après la migration, vous devez effectuer quelques étapes préalablement à la migration. | [Configuration](#prepare-to-connect-to-azure-windows-vms) manuelle. | [Configuration](#prepare-to-connect-to-azure-windows-vms) manuelle. | [Configuration](#prepare-to-connect-to-azure-windows-vms) manuelle.
 
-[En savoir plus](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-windows-servers) sur les modifications apportées aux serveurs Windows pour les migrations VMware sans agent.
+[En savoir plus](./prepare-for-agentless-migration.md#changes-performed-on-windows-servers) sur les modifications apportées aux serveurs Windows pour les migrations VMware sans agent.
 
 #### <a name="configure-san-policy"></a>Configurer la stratégie SAN
 
@@ -113,8 +113,8 @@ Configurez ce paramètre manuellement de la façon suivante :
 
 Azure Migrate effectue automatiquement ces actions pour les versions suivantes
 
-- Red Hat Enterprise Linux 8, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x (l’agent VM Azure Linux est également installé automatiquement pendant la migration)
-- CentOS 8, 7.7, 7.6, 7.5, 7.4, 6.x (l’agent VM Azure Linux est également installé automatiquement pendant la migration)
+- Red Hat Enterprise Linux 8.x, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x (l’agent VM Azure Linux est également installé automatiquement pendant la migration)
+- Cent OS 8.x, 7.7, 7.6, 7.5, 7.4, 6.x (l’agent VM Azure Linux est également installé automatiquement pendant la migration)
 - SUSE Linux Enterprise Server 15 SP0, 15 SP1, 12
 - Ubuntu 20.04, 19.04, 19.10, 18.04LTS, 16.04LTS, 14.04LTS (l’agent VM Linux Azure est également installé automatiquement pendant la migration)
 - Debian 9, 8, 7
@@ -152,7 +152,7 @@ Le tableau suivant récapitule les étapes accomplies automatiquement pour les s
 
 Apprenez-en davantage sur les étapes nécessaires à l’[exécution d’une machine virtuelle Linux sur Azure](../virtual-machines/linux/create-upload-generic.md) et obtenez des instructions pour certaines distributions Linux très répandues.
 
-Passez en revue la liste des [packages requis](../virtual-machines/extensions/agent-linux.md#requirements) pour installer l’agent VM Linux. Azure Migrate installe automatiquement l’agent de machine virtuelle Linux pour RHEL 8/7/6, CentOS 8/7/6, Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04, SUSE 15 SP0/15 SP1/12, Debian 9/8/7 et Oracle 7 lors de l’utilisation de la méthode de migration VMware sans agent.
+Passez en revue la liste des [packages requis](../virtual-machines/extensions/agent-linux.md#requirements) pour installer l’agent VM Linux. Azure Migrate installe automatiquement l’agent de machine virtuelle Linux pour RHEL 8.x/7.x/6.x, CentOS 8.x/7.x/6.x, Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04, SUSE 15 SP0/15 SP1/12, Debian 9/8/7 et Oracle 7 lors de l’utilisation de la méthode de migration VMware sans agent.
 
 ## <a name="check-azure-vm-requirements"></a>Exigences des machines virtuelles Azure
 
@@ -189,7 +189,7 @@ Sur les ordinateurs Linux locaux :
 
 Après la migration, effectuez ces étapes sur les machines virtuelles Azure qui ont été créées :
 
-1. Pour vous connecter à la machine virtuelle via Internet, attribuez-lui une adresse IP publique. Pour la machine virtuelle Azure, vous devez utiliser une adresse IP publique différente de celle que vous avez utilisée pour votre ordinateur local. [Plus d’informations](../virtual-network/virtual-network-public-ip-address.md)
+1. Pour vous connecter à la machine virtuelle via Internet, attribuez-lui une adresse IP publique. Pour la machine virtuelle Azure, vous devez utiliser une adresse IP publique différente de celle que vous avez utilisée pour votre ordinateur local. [Plus d’informations](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 2. Vérifiez que les règles de groupe de sécurité réseau (NSG) de la machine virtuelle autorisent les connexions entrantes sur le port RDP ou SSH.
 3. Cochez [diagnostics de démarrage](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) pour afficher la machine virtuelle.
 

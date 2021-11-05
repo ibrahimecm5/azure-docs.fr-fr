@@ -1,6 +1,6 @@
 ---
 title: 'Tutoriel : Rechercher des lieux à proximité sur une carte | Microsoft Azure Maps'
-description: Tutoriel sur la recherche de points d’intérêt sur une carte. Découvrez comment utiliser le Kit de développement logiciel (SDK) web Azure Maps pour ajouter des fonctionnalités de recherche et des zones contextuelles interactives à une carte.
+description: Tutoriel sur la recherche de points d’intérêt sur une carte. Découvrez comment utiliser le SDK web Azure Maps pour ajouter des fonctionnalités de recherche et des zones contextuelles interactives à une carte.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61ea9691e30fe401946a43d2ffd8488b905c0835
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624965"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072387"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutoriel : Rechercher des points d’intérêt de proximité à l’aide d’Azure Maps
 
@@ -145,18 +145,18 @@ Cette section montre comment utiliser l’[API de recherche](/rest/api/maps/sear
 
 1. Dans le gestionnaire d’événements `ready` de carte, construisez l’URL du service de recherche en ajoutant le code JavaScript suivant.
 
-    ```JavaScript
-   // Use SubscriptionKeyCredential with a subscription key
-   var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
+    ```javascript
+    // Use SubscriptionKeyCredential with a subscription key
+    var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas. getSubscriptionKey());
+ 
+    // Use subscriptionKeyCredential to create a pipeline
+    var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
+ 
+    // Construct the SearchURL object
+    var searchURL = new atlas.service.SearchURL(pipeline); 
+    ```
 
-   // Use subscriptionKeyCredential to create a pipeline
-   var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
-
-   // Construct the SearchURL object
-   var searchURL = new atlas.service.SearchURL(pipeline); 
-   ```
-
-   `SubscriptionKeyCredential` crée un `SubscriptionKeyCredentialPolicy` pour authentifier les requêtes HTTP auprès d’Azure Maps avec la clé d’abonnement. `atlas.service.MapsURL.newPipeline()` utilise la stratégie `SubscriptionKeyCredential` et crée une instance de [pipeline](/javascript/api/azure-maps-rest/atlas.service.pipeline). `searchURL` représente une URL vers les opérations de [recherche](/rest/api/maps/search) d’Azure Maps.
+    `SubscriptionKeyCredential` crée un `SubscriptionKeyCredentialPolicy` pour authentifier les requêtes HTTP auprès d’Azure Maps avec la clé d’abonnement. `atlas.service.MapsURL.newPipeline()` utilise la stratégie `SubscriptionKeyCredential` et crée une instance de [pipeline](/javascript/api/azure-maps-rest/atlas.service.pipeline). `searchURL` représente une URL vers les opérations de [recherche](/rest/api/maps/search) d’Azure Maps.
 
 2. Ajoutez ensuite le bloc de script suivant pour générer la requête de recherche. Il utilise le service Fuzzy Search, qui est l’API de recherche de base de Search Service. Le service Fuzzy Search gère la plupart des entrées partielles comme des adresses, des lieux et des points d’intérêt (POI). Ce code recherche les stations-service situées à proximité dans le rayon spécifié par la latitude et la longitude fournies. Une collection de fonctionnalités GeoJSON déterminée par la réponse est ensuite extraite à l’aide de la méthode `geojson.getFeatures()` et ajoutée à la source de données. Les données sont alors automatiquement restituées sur la carte par le biais de la couche de symboles. La dernière partie du script définit la vue de caméra de la carte en utilisant le rectangle englobant des résultats à l’aide de la propriété [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) de la carte.
 
@@ -203,8 +203,8 @@ La carte développée jusqu’à présent produit des résultats de recherche co
 
 1. Ajoutez les lignes de code suivantes dans le gestionnaire d’événements `ready` de la carte après le code pour interroger le service de recherche approximative. Ce code crée une instance de fenêtre contextuelle et il ajoute un événement mouseover à la couche de symbole.
 
-    ```JavaScript
-   //Create a popup but leave it closed so we can update it and display it later.
+    ```javascript
+    // Create a popup but leave it closed so we can update it and display it later.
     popup = new atlas.Popup();
 
     //Add a mouse over event to the result layer and display a popup when this event fires.
@@ -241,7 +241,7 @@ La carte développée jusqu’à présent produit des résultats de recherche co
     }
     ```
 
-3. Enregistrez le fichier et actualisez votre navigateur. Désormais, la carte dans le navigateur affiche des fenêtres contextuelles de données lorsque vous survolez les repères de recherche.
+3. Enregistrez le fichier et actualisez votre navigateur. Désormais, la carte dans le navigateur affiche des fenêtres contextuelles d’informations lorsque vous pointez sur l’un des marqueurs de recherche.
 
     ![Azure Map Control et Search Service](./media/tutorial-search-location/popup-map.png)
 

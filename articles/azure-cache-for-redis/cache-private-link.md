@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: 25572c32eff7fcdaffe3bad2bbf349bc8ca885f7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4a98b229497aa3b11692fff044bb0f0347ada9d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045803"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039522"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Cache pour Redis avec Azure Private Link
 
@@ -208,6 +208,116 @@ Pour créer un point de terminaison privé, procédez comme suit.
 > Il existe un indicateur `publicNetworkAccess` qui est `Disabled` par défaut.
 > Vous pouvez définir la valeur sur `Disabled` ou `Enabled`. Lorsqu’il est activé, cet indicateur autorise l’accès public et privé au cache au point de terminaison. Lorsqu'il est réglé sur `Disabled`, il n'autorise que l'accès aux points de terminaison privés. Pour plus d’informations sur la modification de la valeur, consultez la [FAQ](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access).
 >
+## <a name="create-a-private-endpoint-using-azure-powershell"></a>Créer une instance Private Endpoint à l’aide d’Azure PowerShell
+
+Pour créer un point de terminaison privé nommé *MyPrivateEndpoint* pour une instance Azure Cache pour Redis existante, exécutez le script PowerShell suivant. Remplacez les valeurs des variables par les informations de votre environnement :
+
+```azurepowershell-interactive
+
+$SubscriptionId = "<your Azure subscription ID>"
+# Resource group where the Azure Cache for Redis instance and virtual network resources are located
+$ResourceGroupName = "myResourceGroup"
+# Name of the Azure Cache for Redis instance
+$redisCacheName = "mycacheInstance"
+
+# Name of the existing virtual network
+$VNetName = "myVnet"
+# Name of the target subnet in the virtual network
+$SubnetName = "mySubnet"
+# Name of the private endpoint to create
+$PrivateEndpointName = "MyPrivateEndpoint"
+# Location where the private endpoint can be created. The private endpoint should be created in the same location where your subnet or the virtual network exists
+$Location = "westcentralus"
+
+$redisCacheResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Cache/Redis/$($redisCacheName)"
+
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnectionPS" -PrivateLinkServiceId $redisCacheResourceId -GroupId "redisCache"
+ 
+$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  $ResourceGroupName -Name $VNetName  
+ 
+$subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $SubnetName}  
+ 
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
+```
+
+## <a name="retrieve-a-private-endpoint-using-azure-powershell"></a>Récupérer un point de terminaison privé en utilisant Azure PowerShell
+
+Pour obtenir les détails d’un point de terminaison privé, utilisez cette commande PowerShell :
+
+```azurepowershell-interactive
+Get-AzPrivateEndpoint -Name $PrivateEndpointName -ResourceGroupName $ResourceGroupName
+```
+
+## <a name="remove-a-private-endpoint-using-azure-powershell"></a>Supprimer un point de terminaison privé en utilisant Azure PowerShell
+
+Pour supprimer un point de terminaison privé, utilisez la commande PowerShell suivante :
+
+```azurepowershell-interactive
+Remove-AzPrivateEndpoint -Name $PrivateEndpointName -ResourceGroupName $ResourceGroupName
+```
+
+## <a name="create-a-private-endpoint-using-azure-cli"></a>Créer une instance Private Endpoint à l’aide d’Azure CLI
+
+Pour créer un point de terminaison privé nommé *myPrivateEndpoint* pour une instance Azure Cache pour Redis existante, exécutez le script Azure CLI suivant. Remplacez les valeurs des variables par les informations de votre environnement :
+
+```azurecli-interactive
+# Resource group where the Azure Cache for Redis and virtual network resources are located
+ResourceGroupName="myResourceGroup"
+
+# Subscription ID where the Azure Cache for Redis and virtual network resources are located
+SubscriptionId="<your Azure subscription ID>"
+
+# Name of the existing Azure Cache for Redis instance
+redisCacheName="mycacheInstance"
+
+# Name of the virtual network to create
+VNetName="myVnet"
+
+# Name of the subnet to create
+SubnetName="mySubnet"
+
+# Name of the private endpoint to create
+PrivateEndpointName="myPrivateEndpoint"
+
+# Name of the private endpoint connection to create
+PrivateConnectionName="myConnection"
+
+az network vnet create \
+    --name $VNetName \
+    --resource-group $ResourceGroupName \
+    --subnet-name $SubnetName
+
+az network vnet subnet update \
+    --name $SubnetName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName \
+    --disable-private-endpoint-network-policies true
+
+az network private-endpoint create \
+    --name $PrivateEndpointName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName  \
+    --subnet $SubnetName \
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Cache/Redis/$redisCacheName" \
+    --group-ids "redisCache" \
+    --connection-name $PrivateConnectionName
+```
+
+## <a name="retrieve-a-private-endpoint-using-azure-cli"></a>Récupérer un point de terminaison privé en utilisant Azure CLI
+
+Pour obtenir les détails d’un point de terminaison privé, utilisez la commande CLI suivante :
+
+```azurecli-interactive
+az network private-endpoint show --name MyPrivateEndpoint --resource-group MyResourceGroup
+```
+
+## <a name="remove-a-private-endpoint-using-azure-cli"></a>Supprimer un point de terminaison privé en utilisant Azure CLI
+
+Pour supprimer un point de terminaison privé, utilisez la commande CLI suivante :
+
+```azurecli-interactive
+az network private-endpoint delete --name MyPrivateEndpoint --resource-group MyResourceGroup
+```
 
 ## <a name="faq"></a>Questions fréquentes (FAQ)
 
@@ -223,11 +333,14 @@ Pour créer un point de terminaison privé, procédez comme suit.
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Pourquoi ne puis-je pas me connecter à un point de terminaison privé ?
 
-Si votre cache est déjà un cache injecté sur un réseau virtuel, les points de terminaison privés ne peuvent pas être utilisés avec votre instance de cache. Si votre instance de cache utilise une fonctionnalité non prise en charge (voir la liste ci-dessous), vous ne pouvez pas vous connecter à votre instance de point de terminaison privé.
+- Les points de terminaison privés ne peuvent pas être utilisés avec votre instance de cache si votre cache est déjà injecté sur un réseau virtuel.
+- La limite est d’une liaison privée pour les caches en cluster. Pour tous les autres caches, la limite est de 100 liaisons privées.
+- Vous tentez de [rendre les données persistantes dans le compte de stockage](cache-how-to-premium-persistence.md) où les règles de pare-feu appliquées peuvent vous empêcher de créer la liaison privée.
+- Vous pouvez être dans l’impossibilité de vous connecter à votre point de terminaison privé si votre instance de cache utilise une [fonctionnalité non prise en charge](#what-features-arent-supported-with-private-endpoints).
 
 ### <a name="what-features-arent-supported-with-private-endpoints"></a>Quelles sont les fonctionnalités non prises en charge avec les points de terminaison privés ?
 
-Actuellement, la prise en charge de la console du portail et la persistance dans les comptes de stockage du pare-feu ne sont pas prises en charge.
+Une tentative de connexion à partir de la console du portail Azure est un scénario non pris en charge dans lequel la connexion échoue.
 
 ### <a name="how-do-i-verify-if-my-private-endpoint-is-configured-correctly"></a>Comment vérifier si mon point de terminaison privé est correctement configuré ?
 

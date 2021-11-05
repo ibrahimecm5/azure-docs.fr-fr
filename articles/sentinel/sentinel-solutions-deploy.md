@@ -1,12 +1,11 @@
 ---
-title: Déployer des solutions Azure Sentinel | Microsoft Docs
-description: Cet article montre comment les clients peuvent facilement rechercher et déployer des outils d’analyse de données empaquetés avec des connecteurs de données.
+title: Découvrir et déployer de manière centralisée du contenu et des solutions Azure Sentinel prêts à l’emploi | Microsoft Docs
+description: Cet article montre comment les clients peuvent facilement rechercher et déployer des outils d’analyse de données empaquetés avec des connecteurs de données et d’autres contenus.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,78 +14,88 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 5cb84ad912e5430948d0dedc71d94e69d1dd1a86
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8c2c749ff6b77d9d63778e6ff02e83fe40a0205f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251898"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064166"
 ---
-# <a name="discover-and-deploy-azure-sentinel-solutions"></a>Découvrir et déployer des solutions Azure Sentinel
+# <a name="centrally-discover-and-deploy-azure-sentinel-out-of-the-box-content-and-solutions-public-preview"></a>Découvrir et déployer de manière centralisée du contenu et des solutions Azure Sentinel prêts à l’emploi (préversion publique)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
-> L’expérience des solutions Azure Sentinel est actuellement en **préversion**, tout comme les packages de solutions individuels. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
+> Les solutions Azure Sentinel et le hub de contenu Azure Sentinel sont en **préversion**, tout comme les packages de solutions individuels. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 
-Les solutions Azure Sentinel assurent la détectabilité des produits, le déploiement en une seule étape et l’activation de scénarios de produits, de domaines et/ou verticaux de bout en bout dans Azure Sentinel. Cette expérience est basée sur la [Place de marché Azure](https://azuremarketplace.microsoft.com/marketplace) pour la détectabilité, le déploiement et l’activation des solutions, ainsi que sur l’[Espace partenaires Microsoft](/partner-center/overview) pour la création et la publication de solutions.
+Le hub de contenu Azure Sentinel fournit un accès au contenu et aux solutions Azure Sentinel prêts à l’emploi (intégrés), qui sont empaquetés avec du contenu répondant à des besoins de produits, de domaines ou de secteurs de bout en bout.
 
-Les solutions peuvent se composer de tout ou partie des composants suivants :
+Cet article explique comment installer des solutions dans votre espace de travail Azure Sentinel, afin que vous puissiez exploiter leur contenu.
 
-- **Connecteurs de données**, certains avec des **analyseurs** associés
-- **Classeurs**
-- **Règles analytiques**
-- **Requêtes de chasse**
-- **Playbooks**
+- Trouvez vos solutions dans le hub de contenu en fonction de leurs états, du contenu inclus, du support et bien plus encore.
 
-## <a name="find-your-solution"></a>Trouver votre solution
+- Installez la solution dans votre espace de travail quand vous en trouvez une qui répond aux besoins de votre organisation. Veillez à la mettre à jour avec les dernières modifications.
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Solutions (préversion)** .
+> [!TIP]
+> Si vous êtes un partenaire qui souhaite créer sa propre solution, consultez le [Guide de génération de solutions Azure Sentinel](https://aka.ms/sentinelsolutionsbuildguide) pour la création et la publication de solutions.
+>
+## <a name="find-a-solution"></a>Trouver une solution
 
-1. Le panneau **Solutions** affiche une liste de solutions pouvant faire l’objet d’une recherche.
+1. Dans le menu de navigation Azure Sentinel, sous **Gestion du contenu**, sélectionnez **Hub de contenu (préversion)** .
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/solutions-list.png" alt-text="Liste des solutions":::
+1. La page **Hub de contenu** affiche une grille de solutions pouvant faire l’objet de recherches et pouvant être filtrée.
 
-    - Si vous faites défiler la liste vers le bas, mais que vous ne trouvez pas ce que vous recherchez, sélectionnez le lien **Charger plus** en bas pour développer la liste.
+    Filtrez la liste affichée, soit en sélectionnant des valeurs spécifiques dans les filtres, soit en entrant une partie du nom ou de la description d’une solution dans le champ de **recherche**.
 
-        :::image type="content" source="./media/sentinel-solutions-deploy/load-more.png" alt-text="Charger plus de solutions":::
+    Pour plus d’informations, consultez [Catégories des solutions et du contenu prêt à l’emploi d’Azure Sentinel](sentinel-solutions.md#azure-sentinel-out-of-the-box-content-and-solution-categories).
 
-1. Pour affiner vos choix et trouver la solution qui vous intéresse plus facilement, entrez une partie du nom de la solution dans le champ **Rechercher** en haut de la liste. (Le moteur de recherche ne reconnaît que les mots entiers.)
+    > [!TIP]
+    > Si vous avez déployé une solution et qu’elle a, par la suite, fait l’objet de mises à jour, un triangle orange indique que vous avez des mises à jour à déployer, information reprise dans le triangle bleu en haut de la page.
+    >
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/solutions-search-1.png" alt-text="Rechercher des solutions":::
+Chaque solution dans la grille affiche les catégories qui lui sont appliquées ainsi que les types de contenu qu’elle inclut.
 
-1. Sélectionnez la solution de votre choix dans la liste pour la déployer. La page des détails de la solution s’ouvre sous l’onglet **Vue d’ensemble**, qui affiche des informations essentielles et importantes sur la solution.
+Par exemple, dans l’image suivante, la solution **Cisco Umbrella** présente une catégorie **Sécurité - Autres**, et cette solution comprend 10 règles d’analytique, 11 requêtes de chasse, un analyseur, trois playbooks et bien plus encore.
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/proofpoint-tap-solution.png" alt-text="Solution Proofpoint Tap à la demande":::
+:::image type="content" source="./media/sentinel-solutions-deploy/solutions-list.png" alt-text="Capture d’écran du hub de contenu Azure Sentinel." lightbox="./media/sentinel-solutions-deploy/solutions-list.png":::
 
-1. Vous pouvez consulter d’autres informations utiles sur votre solution dans les onglets **Plans** et **Informations d’utilisation + Support**, et vous pouvez consulter les impressions d’autres des clients sous l’onglet **Avis**.
+## <a name="install-or-update-a-solution"></a>Installer ou mettre à jour une solution
 
-## <a name="deploy-your-solution"></a>Déployer votre solution
+1. Dans le hub de contenu, sélectionnez une solution pour afficher plus d’informations à droite. Ensuite, sélectionnez **Installer** ou **Mettre à jour**, si vous avez besoin de mises à jour. Par exemple :
 
-1. Sélectionnez le bouton **Créer** pour lancer l’Assistant Déploiement de solution, qui s’ouvre dans l’onglet **De base**.
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/wizard-basics.png" alt-text="Onglet De base de l’Assistant Déploiement":::
+1. Dans la page des détails de la solution, sélectionnez **Créer** ou **Mettre à jour** pour démarrer l’Assistant Solution. Sous l’onglet **Bases** de l’Assistant, entrez l’abonnement, le groupe de ressources et l’espace de travail dans lequel vous souhaitez déployer la solution. Par exemple :
 
-1. Entrez l’abonnement, le groupe de ressources et l’espace de travail dans lequel vous souhaitez déployer la solution. 
+    :::image type="content" source="media/sentinel-solutions-deploy/wizard-basics.png" alt-text="Capture d’écran de l’Assistant Installation de la solution, avec l’onglet Bases.":::
 
-1. Sélectionnez **Suivant** pour parcourir les autres onglets (correspondant aux composants inclus dans la solution), où vous pouvez en savoir plus sur et, dans certains cas, configurer, chacun des composants.
+1. Sélectionnez **Suivant** pour parcourir les autres onglets (correspondant aux composants inclus dans la solution), où vous pouvez en savoir plus sur et, dans certains cas, configurer, chacun des composants de contenu.
 
     > [!NOTE]
-    > Les onglets répertoriés ci-dessous correspondent aux composants proposés par la solution indiquée dans les captures d’écran qui l’accompagnent. Différentes solutions peuvent avoir différents types de composants. Par conséquent, vous ne verrez peut-être pas les mêmes onglets dans chaque solution et vous risquez de voir des onglets non présentés ci-dessous.
+    > Les onglets affichés correspondent au contenu proposé par la solution. Différentes solutions pouvant avoir différents types de contenu, vous ne verrez peut-être pas les mêmes onglets dans chaque solution.
+    >
+    > Vous pouvez également être invité à entrer des informations d’identification associées à un service tiers afin qu’Azure Sentinel puisse s’authentifier auprès de vos systèmes. Par exemple, avec des playbooks, vous souhaiterez peut-être effectuer des actions de réponse comme prévu dans votre système.
+    >
 
-    1. Onglet **Analytique** de l’:::image type="content" source="./media/sentinel-solutions-deploy/wizard-analytics.png" alt-text="onglet Analytique de l’Assistant Déploiement":::
+1. Enfin, sous l’onglet **Vérifier + créer**, attendez que le message `Validation Passed` s’affiche, puis sélectionnez **Créer** ou **Mettre à jour** pour déployer la solution. Vous pouvez également sélectionner le lien **Télécharger un modèle d’automatisation** afin d’obtenir un lien pour déployer la solution en tant que code.
 
-    1. Onglet **Workbooks** :::image type="content" source="./media/sentinel-solutions-deploy/wizard-workbooks.png" alt-text="Onglet Workbooks de l’Assistant Déploiement":::
+Pour plus d’informations, consultez [Catalogue du hub de contenu Azure Sentinel](sentinel-solutions-catalog.md) et [Rechercher votre connecteur de données Azure Sentinel](data-connectors-reference.md).
 
-    1. Onglet **Playbooks** : vous devez entrer ici des informations d’identification Proofpoint TAP valides, afin que le playbook puisse s’authentifier auprès de votre système Proofpoint pour prendre les mesures de réponse prescrites.
-        :::image type="content" source="./media/sentinel-solutions-deploy/wizard-playbooks.png" alt-text="Onglet Playbooks de l’Assistant Déploiement":::
 
-1. Enfin, sous l’onglet **Vérifier + créer**, attendez que le message Validation réussie s’affiche, puis sélectionnez **Créer** pour déployer la solution. Vous pouvez également sélectionner le lien **Télécharger un modèle d’automatisation** afin d’obtenir un lien pour déployer la solution en tant que code.
+## <a name="find-the-support-model-for-your-solution"></a>Rechercher le modèle de support pour votre solution
 
-    :::image type="content" source="./media/sentinel-solutions-deploy/wizard-create.png" alt-text="Onglet Vérifier et créer de l’Assistant Déploiement":::
+Le volet d’informations de chaque solution liste des détails sur le modèle de support de celle-ci ; dans la zone **Support**, **Microsoft** ou le nom d’un partenaire est listé. Par exemple :
+
+:::image type="content" source="media/sentinel-solutions-deploy/find-support-details.png" alt-text="Capture d’écran de l’endroit où vous pouvez trouver le modèle de support pour votre solution." lightbox="media/sentinel-solutions-deploy/find-support-details.png":::
+
+Quand vous contactez le support, vous pouvez avoir besoin d’autres détails sur votre solution, tels que le nom d’un éditeur, d’un fournisseur et des valeurs d’ID de plan. Vous pouvez trouver chacun de ces éléments dans la page de détails de la solution, sous l’onglet **Informations d’utilisation + support**. Par exemple :
+
+:::image type="content" source="media/sentinel-solutions-deploy/usage-support.png" alt-text="Capture d’écran des détails d’utilisation et de support pour une solution.":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez découvert les solutions Azure Sentinel et appris à les trouver et à les déployer.
+Dans ce document, vous avez découvert les solutions Azure Sentinel et appris à rechercher et à déployer du contenu intégré.
 
 - En savoir plus sur les [solutions Azure Sentinel](sentinel-solutions.md).
-- Consultez le [catalogue complet des solutions Sentinel](sentinel-solutions-catalog.md).
+- Consultez le [catalogue complet des solutions Azure Sentinel](sentinel-solutions-catalog.md).

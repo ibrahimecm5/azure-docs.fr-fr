@@ -3,12 +3,12 @@ title: Modules Bicep
 description: Décrit comment définir un module dans un fichier Bicep et comment utiliser des étendues de module.
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 21dc273e506f0c0f148e8a220ca4ea160c7423a8
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: a8a0b9c1eeeb56c12926774a78d45bb58e7d8437
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074491"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087378"
 ---
 # <a name="bicep-modules"></a>Modules Bicep
 
@@ -17,6 +17,10 @@ Bicep vous permet d’organiser les déploiements en modules. Un module est simp
 Pour partager des modules avec d’autres personnes de votre organisation, [créez un registre privé](private-module-registry.md). Les modules du registre ne sont accessibles qu’aux utilisateurs disposant des autorisations adéquates.
 
 Les modules Bicep sont convertis en un seul modèle Azure Resource Manager avec des [modèles imbriqués](../templates/linked-templates.md#nested-template).
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Pour en savoir plus sur les modules et obtenir des conseils pratiques, consultez [Créer des fichiers Bicep composables en utilisant des modules](/learn/modules/create-composable-bicep-files-using-modules/) sur **Microsoft Learn**.
 
 ## <a name="definition-syntax"></a>Définition de la syntaxe
 
@@ -49,17 +53,17 @@ Pour **déployer un module de manière conditionnelle**, ajoutez une expression 
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-Pour déployer **plus d’une instance** d’un module, ajoutez l’expression `for`. Pour plus d’informations, voir [Itération de sorties dans Bicep](loop-modules.md).
+Pour déployer **plus d’une instance** d’un module, ajoutez l’expression `for`. Pour plus d’informations, consultez [Boucles itératives dans Bicep](loops.md).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 
-À l’instar des ressources, les modules sont déployés en parallèle, sauf s’ils dépendent d’autres modules ou ressources. En règle générale, vous n’avez pas besoin de définir des dépendances, car elles sont déterminées de manière implicite. Si vous devez définir une dépendance explicite, vous pouvez ajouter `dependsOn` à la définition du module. Pour en savoir plus sur les dépendances, consultez [Définir des dépendances de ressources](resource-declaration.md#set-resource-dependencies).
+À l’instar des ressources, les modules sont déployés en parallèle, sauf s’ils dépendent d’autres modules ou ressources. En général, vous n’avez pas besoin de définir des dépendances car elles sont déterminées de manière implicite. Si vous devez définir une dépendance explicite, vous pouvez ajouter `dependsOn` à la définition du module. Pour en savoir plus sur les dépendances, consultez [Dépendances des ressources](resource-declaration.md#dependencies).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/dependsOn-definition.bicep" highlight="6-8" :::
 
 ## <a name="path-to-module"></a>Chemin d’accès au module
 
-Le fichier du module peut être soit un fichier local, soit un fichier externe dans un registre de modules Bicep. La syntaxe des deux options est indiquée ci-dessous.
+Le fichier du module peut être soit un fichier local, soit un fichier externe dans un registre de modules Bicep. Ces deux options sont expliquées ci-dessous.
 
 ### <a name="local-file"></a>Fichier local
 
@@ -71,7 +75,7 @@ Par exemple, pour déployer un fichier qui se trouve à un niveau supérieur dan
 
 ### <a name="file-in-registry"></a>Fichier dans le registre
 
-Si vous avez [publié un module dans un registre](bicep-cli.md#publish), vous pouvez le lier à ce module. Indiquez le nom du registre de conteneurs Azure et un chemin d’accès au module. Spécifiez le chemin d’accès au module avec la syntaxe suivante :
+Si vous avez [publié un module dans un registre](bicep-cli.md#publish), vous pouvez établir un lien à ce module. Indiquez le nom du registre de conteneurs Azure et un chemin d’accès au module. Spécifiez le chemin d’accès au module avec la syntaxe suivante :
 
 ```bicep
 module <symbolic-name> 'br:<registry-name>.azurecr.io/<file-path>:<tag>' = {

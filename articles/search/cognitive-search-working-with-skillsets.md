@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: c189fd8d77d33a2397e5a83f73dcdda759247a03
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 08bf1a57c4b7d4905693c3f11964feeb04c8beef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535236"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014858"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Concepts des ensembles de compétences dans Recherche cognitive Azure
 
@@ -91,7 +91,7 @@ Un document enrichi est une structure de données temporaire sous forme d’arbo
 
 Au départ, un document enrichi correspond simplement au contenu extrait d’une source de données durant le [*craquage de document*](search-indexer-overview.md#document-cracking), où le texte et les images sont extraits de la source à des fins d’analyse du langage ou des images. 
 
-Le contenu initial est le *nœud racine*. Il s’agit généralement d’un document entier ou d’une image normalisée. La façon dont il est articulé dans une arborescence d’enrichissement varie pour chaque type de source de données. Le tableau suivant montre l’état d’un document entrant dans le pipeline d’enrichissement pour plusieurs sources de données prises en charge :
+Le contenu initial est le *nœud racine* (`document\content`) et il s’agit généralement d’un document entier ou d’une image normalisée extraite d’une source de données lors du craquage de document. La façon dont il est articulé dans une arborescence d’enrichissement varie pour chaque type de source de données. Le tableau suivant montre l’état d’un document entrant dans le pipeline d’enrichissement pour plusieurs sources de données prises en charge :
 
 |Data Source\Parsing Mode|Default|JSON, JSON Lines & CSV|
 |---|---|---|
@@ -99,7 +99,7 @@ Le contenu initial est le *nœud racine*. Il s’agit généralement d’un docu
 |Azure SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
-Au fur et à mesure de l’exécution des compétences, la sortie est ajoutée à l’arborescence d’enrichissement sous forme de nouveaux nœuds. Ces nœuds peuvent ensuite être utilisés en tant qu’entrées pour les compétences en aval. Ils seront finalement projetés dans une base de connaissances ou mappés à des champs d’index. Les compétences qui créent du contenu, par exemple les chaînes traduites, écrivent leur sortie dans le document enrichi. De même, les compétences qui consomment la sortie des compétences en amont lisent le document enrichi pour obtenir les entrées nécessaires. 
+Au fur et à mesure de l’exécution des compétences, la sortie est ajoutée à l’arborescence d’enrichissement sous forme de nouveaux nœuds. Ces nœuds peuvent ensuite être utilisés en tant qu’entrées pour les compétences en aval. Ils seront finalement projetés dans une base de connaissances ou mappés à des champs d’index. Les compétences qui créent du contenu, par exemple les chaînes traduites, écrivent leur sortie dans le document enrichi. De même, les compétences qui consomment la sortie des compétences en amont lisent le document enrichi pour obtenir les entrées nécessaires.
 
 :::image type="content" source="media/cognitive-search-working-with-skillsets/skillset-def-enrichment-tree.png" alt-text="Lecture et écriture des compétences à partir de l’arborescence d’enrichissement" border="false":::
 

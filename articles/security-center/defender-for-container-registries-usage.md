@@ -1,26 +1,29 @@
 ---
-title: Guide pratique d’utilisation d’Azure Defender pour les registres de conteneurs
-description: Découvrez comment analyser les images Linux de vos registres hébergés par Linux avec Azure Defender pour les registres de conteneurs
+title: Guide pratique d’utilisation de Defender pour le cloud pour les registres de conteneurs
+description: Découvrez comment analyser les images Linux de vos registres hébergés par Linux avec Microsoft Defender pour les registres de conteneurs
 author: memildin
 ms.author: memildin
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 195e47ce7165a02c5bb7126521432d448e2199a9
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9925fcb9f6a4d4284c7c6784a45e896ea825abc0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238808"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056088"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Analyse des vulnérabilités dans les images avec Azure Defender pour les registres de conteneurs
+# <a name="use-microsoft-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Analyse des vulnérabilités dans les images avec Microsoft Defender pour les registres de conteneurs
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Cette page explique comment utiliser le scanner de vulnérabilité intégré pour analyser les images conteneur stockées dans un conteneur Azure Container Registry basé sur Azure Resource Manager.
 
-Lorsque **Azure Defender pour les registres de conteneurs** est activé, chaque image envoyée au registre est immédiatement analysée, de même que chaque image extraite au cours des 30 derniers jours. 
+Lorsque **Microsoft Defender pour les registres de conteneurs** est activé, chaque image envoyée au registre est immédiatement analysée, de même que chaque image extraite au cours des 30 derniers jours. 
 
-Lorsque le scanner signale des vulnérabilités à Security Center, ce dernier présente les résultats et les informations connexes sous forme de recommandations. En outre, les résultats incluent des informations connexes, telles que les étapes de correction, les CVE pertinents, les scores CVSS et bien plus encore. Les vulnérabilités identifiées peuvent être affichées pour un ou plusieurs abonnements ou pour un registre en particulier.
+Lorsque l’analyseur signale des vulnérabilités à Defender pour le cloud, ce dernier présente les résultats et les informations connexes sous forme de recommandations. En outre, les résultats incluent des informations connexes, telles que les étapes de correction, les CVE pertinents, les scores CVSS et bien plus encore. Les vulnérabilités identifiées peuvent être affichées pour un ou plusieurs abonnements ou pour un registre en particulier.
 
 > [!TIP]
 > Vous pouvez également analyser des images conteneur pour détecter des vulnérabilités au fur et à mesure que les images sont générées dans votre workflow GitHub CI/CD. En savoir plus en consultant [Identifier les images conteneur vulnérables dans vos workflows CI/CD](defender-for-container-registries-cicd.md).
@@ -30,24 +33,24 @@ Lorsque le scanner signale des vulnérabilités à Security Center, ce dernier p
 
 Pour activer l’analyse de vulnérabilité des images stockées dans un registre de conteneurs Azure Container Registry basé sur Azure Resource Manager :
 
-1. Activez **Azure Defender pour les registres de conteneurs** dans votre abonnement. Security Center est maintenant prêt à analyser les images dans les registres.
+1. Activez **Microsoft Defender pour les registres de conteneurs** dans votre abonnement. Defender pour le cloud est maintenant prêt à analyser les images dans les registres.
 
     >[!NOTE]
     > Cette fonctionnalité est facturée par image.
 
 1. Les analyses d’images sont déclenchées à chaque envoi ou importation, et si l’image a été extraite au cours des 30 derniers jours. 
 
-    Une fois l’analyse terminée (généralement après environ deux minutes, mais parfois au bout de 15 minutes), les résultats sont disponibles sous forme de recommandations Security Center.
+    Une fois l’analyse terminée (généralement après environ deux minutes, mais parfois au bout de 15 minutes), les résultats sont disponibles sous forme de recommandations Defender pour le cloud.
 
 1. [Affichez et corrigez les résultats (cf. explications ci-dessous)](#view-and-remediate-findings).
 
 ## <a name="identify-vulnerabilities-in-images-in-other-container-registries"></a>Identification des vulnérabilités dans les images d’autres registres de conteneurs 
 
-1. Utilisez les outils ACR pour importer des images dans votre registre à partir de Docker Hub ou de Microsoft Container Registry.  Une fois l’importation terminée, les images importées sont analysées par Azure Defender. 
+1. Utilisez les outils ACR pour importer des images dans votre registre à partir de Docker Hub ou de Microsoft Container Registry.  Une fois l’importation terminée, les images importées sont analysées par la solution d’évaluation des vulnérabilités intégrée.
 
     Pour plus d’informations, consultez [Importation d’images conteneur dans un registre de conteneurs](../container-registry/container-registry-import-images.md).
 
-    Une fois l’analyse terminée (généralement après environ deux minutes, mais parfois au bout de 15 minutes), les résultats sont disponibles sous forme de recommandations Security Center.
+    Une fois l’analyse terminée (généralement après environ deux minutes, mais parfois au bout de 15 minutes), les résultats sont disponibles sous forme de recommandations Defender pour le cloud.
 
 1. [Affichez et corrigez les résultats (cf. explications ci-dessous)](#view-and-remediate-findings).
 
@@ -149,5 +152,4 @@ Pour créer une règle :
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-> [!div class="nextstepaction"]
-> [En savoir plus sur Azure Defender](azure-defender.md)
+Apprenez-en davantage sur [les plans de protection avancée de Microsoft Defender](defender-for-cloud-introduction.md).

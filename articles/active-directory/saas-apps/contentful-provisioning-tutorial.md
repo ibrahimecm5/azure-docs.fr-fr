@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/11/2020
 ms.author: thwimmer
-ms.openlocfilehash: bb87222737e4c85eebb2869a812f44d9e703c8d4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 60647cbceed7b7917daa18e8b8c7ed6531ebe0c9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326937"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059104"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>Tutoriel : Configuration de Contentful pour l’attribution automatique d’utilisateurs
 
@@ -62,7 +62,7 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 
 5. Sélectionnez **Générer un jeton d’accès personnel**.
 
-    ![url](media/contentful-provisioning-tutorial/generate.png)
+    ![Capture d’écran montrant l’URL SCIM pour générer un jeton d’accès personnel.](media/contentful-provisioning-tutorial/generate.png)
 
 6. Dans la fenêtre modale, entrez un nom pour votre jeton d’accès personnel, puis sélectionnez **Générer**.
 

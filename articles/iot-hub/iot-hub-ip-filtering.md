@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: jlian
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20edf9c0977db3b9557214220df1a76e7363e704
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: b984b7ee718a051456f8f51e5c9a49c247b884b4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695709"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040551"
 ---
 # <a name="use-ip-filters"></a>Utiliser des filtres IP
 
@@ -27,7 +27,7 @@ Utilisez le filtre IP pour recevoir le trafic uniquement à partir d’une plag
 
 Pour accéder à la page Paramètres de filtre IP, sélectionnez **Réseau**, **Accès public**, puis choisissez **Plages d’adresses IP sélectionnées** :
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="Paramètres de filtre IP par défaut d’IoT Hub":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="Capture d’écran montrant comment définir les paramètres de filtre IP par défaut.":::
 
 Par défaut, la grille **Filtre IP** dans le portail pour un IoT Hub est vide. Ce paramètre par défaut signifie que votre hub bloque les connexions provenant de toutes les adresses IP. Ce paramètre par défaut est équivalent à une règle qui bloque la plage d’adresses IP `0.0.0.0/0`.
 
@@ -35,11 +35,11 @@ Par défaut, la grille **Filtre IP** dans le portail pour un IoT Hub est vide. C
 
 Pour ajouter une règle de filtre IP, sélectionnez **+ Ajouter une règle de filtre IP**. Pour ajouter rapidement l’adresse IP de votre ordinateur, cliquez sur **Ajouter l’adresse IP de votre client**. 
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Ajouter une règle de filtre IP à un IoT Hub":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Capture d’écran montrant comment ajouter une règle de filtre IP IoT Hub.":::
 
 Après avoir sélectionné **Ajouter une règle de filtre IP**, renseignez les champs. Ces champs sont préremplis si vous avez choisi d’ajouter l’adresse IP de votre client.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Après avoir sélectionné Ajouter une règle de filtre IP":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Capture d’écran montrant ce qu’il faut faire après l’ajout d’une règle de filtre IP.":::
 
 * Donnez un **nom** à la règle de filtre IP. Ce nom doit être une chaîne alphanumérique unique qui ne respecte pas la casse et qui ne dépasse pas 128 caractères. Seuls les caractères alphanumériques ASCII 7 bits et `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` sont acceptés.
 
@@ -47,7 +47,7 @@ Après avoir sélectionné **Ajouter une règle de filtre IP**, renseignez les c
 
 Après avoir rempli les champs, sélectionnez **Enregistrer** pour enregistrer la règle. Une alerte s’affiche vous informant que la mise à jour est en cours.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Notification sur l’enregistrement d’une règle de filtre IP":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Capture d’écran montrant une notification sur l’enregistrement d’une règle de filtre IP.":::
 
 L’option **Ajouter** est désactivée lorsque vous atteignez le nombre maximal de dix règles de filtre IP.
 
@@ -57,13 +57,13 @@ Pour modifier une règle existante, sélectionnez les données que vous souhaite
 
 Pour supprimer une règle de filtre IP, sélectionnez l’icône de la corbeille sur cette ligne, puis sélectionnez **Enregistrer**. La règle est supprimée et la modification est enregistrée.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Supprimer une règle de filtre IP de l’IoT Hub":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Capture d’écran montrant comment supprimer une règle de filtre IP IoT Hub.":::
 
 ## <a name="apply-ip-filter-rules-to-the-built-in-event-hub-compatible-endpoint"></a>Appliquer des règles de filtre IP au point de terminaison intégré compatible avec Event Hub
 
 Pour appliquer les règles de filtre IP au point de terminaison intégré compatible avec Event Hub, cochez la case à côté de l’option **Appliquer des filtres IP au point de terminaison intégré ?** , puis sélectionnez **Enregistrer**.
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-built-in-endpoint.png" alt-text="Image illustrant le bouton bascule pour le point de terminaison intégré l’enregistrement":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-built-in-endpoint.png" alt-text="Capture d’écran montrant le bouton bascule pour le point de terminaison intégré.":::
 
 > [!NOTE]
 > Cette option n’est pas disponible pour les hubs IoT (F1) gratuits. Pour appliquer des règles de filtre IP au point de terminaison intégré, utilisez un hub IoT payant.

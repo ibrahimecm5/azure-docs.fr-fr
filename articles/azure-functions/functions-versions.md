@@ -3,13 +3,13 @@ title: Vue d’ensemble des versions du runtime Azure Functions
 description: Azure Functions prend en charge plusieurs versions du runtime. Découvrez les différences entre elles et comment choisir celle qui vous convient.
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 10/13/2021
-ms.openlocfilehash: e04ab727e1bb7e168a4461e69b62ab049e59cacf
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 10/26/2021
+ms.openlocfilehash: 1a1d2cc0e5aab3daac5bb65881f9e891497fd994
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003398"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048719"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Vue d’ensemble des versions du runtime Azure Functions
 
@@ -74,6 +74,60 @@ Les applications de fonction épinglées à `~2.0` continuent de s’exécuter s
 
 Azure Functions version 4.x (préversion) offre une compatibilité descendante forte avec la version 3.x. De nombreuses applications doivent être mises à niveau sans problème vers la version 4.x sans modification importante du code. Veillez néanmoins à effectuer des tests intensifs avant de changer la version principale dans les applications de production.
 
+### <a name="upgrading-an-existing-app"></a>Mise à niveau d’une application existante
+
+#### <a name="local-project"></a>Projet local
+
+# <a name="c"></a>[C\#](#tab/csharp)
+ 
+Pour mettre à jour une application .NET vers .NET 6 et Azure Functions 4.x, mettez à jour `TargetFramework` et `AzureFunctionsVersion` :
+
+```xml
+<TargetFramework>net6.0</TargetFramework>
+<AzureFunctionsVersion>v4</AzureFunctionsVersion>
+```
+
+Veillez également à mettre à jour les packages NuGet référencés par votre application vers les dernières versions. Pour plus d’informations, consultez les [changements cassants](#breaking-changes-between-3x-and-4x).
+
+##### <a name="net-6-in-process"></a>.NET 6 in-process
+
+* [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 4.0.0 ou ultérieur
+
+##### <a name="net-6-isolated"></a>.NET 6 isolé
+
+* [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) 1.5.2 ou ultérieur
+* [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) 1.2.0 ou ultérieur
+
+# <a name="java"></a>[Java](#tab/java)
+
+Pour mettre à jour votre application Java avec Azure Functions 4.x, mettez à jour votre installation locale d’[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) vers la version 4.x et le [bundle d’extensions Azure Functions](functions-bindings-register.md#extension-bundles) de votre application vers la version 2.x ou ultérieure. Pour plus d’informations, consultez les [changements cassants](#breaking-changes-between-3x-and-4x).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Pour mettre à jour votre application Node.js avec Azure Functions 4.x, mettez à jour votre installation locale d’[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) vers la version 4.x et le [bundle d’extensions Azure Functions](functions-bindings-register.md#extension-bundles) de votre application vers la version 2.x ou ultérieure. Pour plus d’informations, consultez les [changements cassants](#breaking-changes-between-3x-and-4x).
+
+> [!NOTE]
+> Node.js 10 et 12 ne sont pas pris en charge dans Azure Functions 4.x.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Pour mettre à jour votre application PowerShell avec Azure Functions 4.x, mettez à jour votre installation locale d’[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) vers la version 4.x et le [bundle d’extensions Azure Functions](functions-bindings-register.md#extension-bundles) de votre application vers la version 2.x ou ultérieure. Pour plus d’informations, consultez les [changements cassants](#breaking-changes-between-3x-and-4x).
+
+> [!NOTE]
+> PowerShell 6 n’est pas pris en charge dans Azure Functions 4.x.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Pour mettre à jour votre application Python avec Azure Functions 4.x, mettez à jour votre installation locale d’[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) vers la version 4.x et le [bundle d’extensions Azure Functions](functions-bindings-register.md#extension-bundles) de votre application vers la version 2.x ou ultérieure. Pour plus d’informations, consultez les [changements cassants](#breaking-changes-between-3x-and-4x).
+
+> [!NOTE]
+> Python 3.6 n’est pas pris en charge dans Azure Functions 4.x.
+
+---
+
+
+#### <a name="azure"></a>Azure
+
 Pour migrer une application de la version 3.x à la version 4.x, définissez le paramètre d’application `FUNCTIONS_EXTENSION_VERSION` sur `~4` à l’aide de la commande Azure CLI suivante :
 
 ```bash
@@ -97,7 +151,11 @@ Voici quelques changements à prendre en considération avant de mettre à nivea
 
 - Des délais d’expiration par défaut et maximum sont désormais appliqués dans les applications de fonction de consommation Linux 4.x. ([#1915](https://github.com/Azure/Azure-Functions/issues/1915))
 
-- La fonctionnalité Application Insights n’est plus incluse par défaut dans la version 4.x. Elle est désormais disponible en tant qu’extension distincte. ([#2027](https://github.com/Azure/Azure-Functions/issues/2027))
+- Application Insights n’est pas inclus par défaut dans Azure Functions 4.0.0.16714 (préversion). Il est disponible sous forme d’extension distincte. ([#2027](https://github.com/Azure/Azure-Functions/issues/2027))
+    
+    > [!NOTE]
+    > Il s’agit d’un changement temporaire dans la version 4.0.0.16714. Une extension n’est pas demandée pour utiliser Application Insights dans les versions ultérieures. Si vous avez installé l’extension, supprimez-la de votre application quand vous utilisez Azure Functions version 4.0.1.16815 ou ultérieure.
+    
     - Pour les applications .NET in-process, ajoutez le package d’extension [Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) à votre application de fonction.
     - Pour les applications .NET isolées :
         - Ajoutez le package d’extension [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) à votre application de fonction.
@@ -109,6 +167,8 @@ Voici quelques changements à prendre en considération avant de mettre à nivea
 #### <a name="languages"></a>Langages
 
 # <a name="c"></a>[C\#](#tab/csharp)
+
+- Azure Functions 4.x prend en charge les applications in-process et isolées .NET 6.
 
 - `InvalidHostServicesException` est désormais une erreur irrécupérable. ([#2045](https://github.com/Azure/Azure-Functions/issues/2045))
 
@@ -124,9 +184,19 @@ Voici quelques changements à prendre en considération avant de mettre à nivea
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
+- Node.js 10 et 12 ne sont pas pris en charge dans Azure Functions 4.x. ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
+
 - La sérialisation de sortie dans les applications Node.js a été mise à jour pour résoudre les incohérences précédentes. ([#2007](https://github.com/Azure/Azure-Functions/issues/2007))
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+- PowerShell 6 n’est pas pris en charge dans Azure Functions 4.x. ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
+
+- Le nombre de Threads par défaut a été mis à jour. Les fonctions qui ne sont pas thread-safe ou qui présentent une utilisation élevée de la mémoire peuvent être affectées. ([#1962](https://github.com/Azure/Azure-Functions/issues/1962))
+
 # <a name="python"></a>[Python](#tab/python)
+
+- Python 3.6 n’est pas pris en charge dans Azure Functions 4.x. ([#1999](https://github.com/Azure/Azure-Functions/issues/1999))
 
 - Le transfert de mémoire partagée est activé par défaut. ([#1973](https://github.com/Azure/Azure-Functions/issues/1973))
 
@@ -168,6 +238,10 @@ Aucun.
 * La charge utile des requêtes HTTP n’est plus accessible via `context.bindingData.req`.  Elle néanmoins toujours accessible en tant que paramètre d’entrée, `context.req`, et dans `context.bindings`.
 
 * Node.js 8 n’est plus pris en charge et ne s’exécute pas dans les fonctions 3.x.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aucun.
 
 # <a name="python"></a>[Python](#tab/python)
 

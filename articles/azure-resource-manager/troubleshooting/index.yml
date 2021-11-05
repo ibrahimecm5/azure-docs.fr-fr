@@ -1,0 +1,107 @@
+### YamlMime:Landing
+title: Documentation sur la résolution des problèmes de déploiement
+summary: Découvrez comment résoudre les problèmes de déploiement Azure pour les modèles Azure Resource Manager et les fichiers Bicep.
+metadata:
+  title: Documentation sur la résolution des problèmes de déploiement
+  description: Découvrez comment résoudre les problèmes de déploiement pour les modèles Azure Resource Manager et les fichiers Bicep.
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates, bicep
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 11/01/2021
+  ms.openlocfilehash: 04756d25bf54a560753f890e654fd13df349444a
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088341"
+landingContent:
+- title: À propos des déploiements
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Qu’est-ce que la résolution des problèmes de déploiement ?
+      url: overview.md
+- title: Bien démarrer
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Résoudre les problèmes de déploiement de modèle ARM
+      url: quickstart-troubleshoot-arm-deployment.md
+    - text: Résoudre les problèmes de déploiement de fichier Bicep
+      url: quickstart-troubleshoot-bicep-deployment.md
+- title: Résoudre les problèmes de déploiement
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Erreurs de déploiement courantes
+      url: common-deployment-errors.md
+    - text: Syntaxe des fichiers de modèle ARM
+      url: ../templates/syntax.md
+    - text: Kit de ressources de test de modèle ARM
+      url: ../templates/test-toolkit.md
+    - text: Syntaxe des fichiers Bicep
+      url: ../bicep/file.md
+    - text: Linter Bicep
+      url: ../bicep/linter.md
+    - text: Modèles de démarrage rapide Azure
+      url: https://azure.microsoft.com/resources/templates/
+- title: Déployer des modèles
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Déploiement de modèle ARM
+      url: ../templates/deployment-tutorial-local-template.md
+    - text: Déploiement de fichiers Bicep
+      url: ../bicep/deploy-powershell.md
+    - text: Voir l’historique des déploiements
+      url: ../templates/deployment-history.md
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: ../templates/deploy-powershell.md
+    - text: Azure CLI
+      url: ../templates/deploy-cli.md
+    - text: Portail
+      url: ../templates/deploy-portal.md
+    - text: API REST
+      url: ../templates/deploy-rest.md
+    - text: Bouton Déployer dans Azure
+      url: ../templates/deploy-to-azure-button.md
+    - text: Cloud Shell de modèle ARM
+      url: ../templates/deploy-cloud-shell.md
+    - text: Cloud Shell de fichier Bicep
+      url: ../bicep/deploy-cloud-shell.md
+    - text: Déploiement de simulation de modèle ARM
+      url: ../templates/deploy-what-if.md
+    - text: Déploiement de simulation de fichier Bicep
+      url: ../bicep/deploy-what-if.md
+- title: Explorer le contenu de référence
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Informations de référence sur les modèles
+      url: /azure/templates/
+    - text: API REST
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources
+- title: Gérer les modèles
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exporter des modèles
+      url: ../templates/export-template-portal.md
+    - text: CI/CD
+      url: ../templates/add-template-to-azure-pipelines.md

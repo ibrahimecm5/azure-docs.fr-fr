@@ -3,22 +3,22 @@ title: Enregistrer une vidéo pour la lire avec Azure Video Analyzer
 description: Cet article décrit l’enregistrement d’une vidéo à lire avec Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 4c5d0121df90791d8eb77782fb6d949548a0185e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/30/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 94ac0847b4cb4783ad16044514960b88c67d2a03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604357"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073716"
 ---
 # <a name="record-video-for-playback"></a>Enregistrer une vidéo à lire
 
-Dans le contexte d’un système de gestion vidéo à base de caméras de surveillance, l’enregistrement vidéo fait référence au processus qui consiste à capturer et enregistrer les données vidéo des caméras pour les afficher via des applications mobiles ou de navigateur. L’enregistrement vidéo peut être catégorisé comme enregistrement vidéo continu et enregistrement vidéo basé sur les événements.
+Dans le contexte d’un système de gestion vidéo à base de caméras de surveillance, l’enregistrement vidéo fait référence au processus qui consiste à capturer et enregistrer les données vidéo des caméras pour les afficher via des applications mobiles ou de navigateur. L’enregistrement vidéo peut être classé dans la catégorie de l’enregistrement vidéo en continu et l’enregistrement vidéo basé sur des événements.
 
 ## <a name="continuous-video-recording"></a>Enregistrement de vidéo continu
 
-L’enregistrement vidéo continu (CVR) fait référence au processus d’enregistrement vidéo en continu à partir d’une source vidéo. L’enregistrement vidéo continu (CVR) garantit que la durée souhaitée de la vidéo est disponible (conformément à la **[stratégie d’enregistrement](#recording-policy))** à des fins d’analyse et/ou d’audit.
-
+L’enregistrement vidéo continu (CVR) fait référence au processus d’enregistrement vidéo en continu à partir d’une source vidéo. L’enregistrement vidéo continu (CVR) garantit que la durée souhaitée de la vidéo est disponible (conformément à la **[stratégie de conservation](#retention-policy))** à des fins d’analyse et/ou d’audit.
 
 ## <a name="event-based-video-recording"></a>Enregistrement de vidéo basé sur les événements
 
@@ -28,9 +28,9 @@ Un enregistrement vidéo basé sur les événements est un enregistrement vidéo
 
 Le choix d’utiliser les solutions CVR ou EVR dépend des objectifs métier. Azure Video Analyzer (AVA) fournit des fonctionnalités de plateforme pour l’enregistrement vidéo continu (CVR) et l’enregistrement vidéo basé sur les événements (EVR). Pour en savoir plus sur le sujet, consultez les articles relatifs aux scénarios d’enregistrement **[CVR](continuous-video-recording.md)** et **[EVR](event-based-video-recording-concept.md)** .
 
-## <a name="recording-policy"></a>Stratégie d’enregistrement
+## <a name="retention-policy"></a>Stratégie de rétention
 
-La stratégie d’enregistrement fait référence aux stratégies qui dictent la longueur ou la durée de l’enregistrement vidéo conservé. Les stratégies d’enregistrement vous permettent d’équilibrer les coûts de stockage avec les besoins métier. Pour CVR, la stratégie d’enregistrement définit le nombre de jours pendant lesquels la vidéo doit être stockée (par exemple, les 7 derniers jours). Pour en savoir plus sur le sujet, consultez les articles relatifs aux scénarios d’enregistrement **[CVR](continuous-video-recording.md)** .
+La stratégie de conservation fait référence aux stratégies qui dictent la longueur ou la durée de l’enregistrement vidéo conservé. Les stratégies de conservation vous permettent d’équilibrer les coûts de stockage avec les besoins métier. Dans le cadre d’un scénario CVR, la stratégie de conservation définit le nombre de jours pendant lesquels la vidéo doit être stockée (par exemple, les 7 derniers jours). Pour plus d’informations à ce sujet, consultez l’article **[Gérer la stratégie de conservation](manage-retention-policy.md)** .
 
 ## <a name="next-steps"></a>Étapes suivantes
 

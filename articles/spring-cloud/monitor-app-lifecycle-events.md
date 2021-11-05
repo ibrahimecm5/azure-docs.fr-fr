@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 77e6704808cf54f84f0261c07236bfa27d17a1f6
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 594c8f48a51b386c687feda5d46a2423dd4e973b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835863"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064028"
 ---
 # <a name="monitor-app-lifecycle-events-using-azure-activity-log-and-azure-service-health"></a>Surveiller des événements de cycle de vie d’application à l’aide du Journal des activités Azure et d’Azure Service Health
 
@@ -23,7 +23,7 @@ Azure Spring Cloud fournit des outils intégrés pour surveiller l’état et l�
 ## <a name="prerequisites"></a>Prérequis
 
 - Un abonnement Azure. Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) avant de commencer.
-- Une instance du service Azure Spring Cloud déployée avec au moins une application déjà été créée dans celle-ci. Pour plus d’informations, consultez [Démarrage rapide : Déployer votre première application Azure Spring Cloud](quickstart.md). 
+- Une instance du service Azure Spring Cloud déployée avec au moins une application déjà été créée dans celle-ci. Pour plus d’informations, consultez [Démarrage rapide : Déployer votre première application Spring Boot dans Azure Spring Cloud](quickstart.md). 
 
 ## <a name="monitor-app-lifecycle-events-triggered-by-users-in-azure-activity-logs"></a>Surveiller des événements de cycle de vie d’application déclenchés par des utilisateurs dans les journaux d’activité Azure
 
@@ -63,6 +63,9 @@ Votre application peut être redémarrée pendant une maintenance de plateforme.
 Lors d’une maintenance de plateforme, votre instance Azure Spring Cloud présente également un état **dégradé**. Si un redémarrage est nécessaire lors d’une maintenance de plateforme, Azure Spring Cloud effectue une mise à jour propagée pour mettre à jour vos applications de manière incrémentielle. Les mises à jour propagées sont conçues pour mettre à jour vos charges de travail sans temps d’arrêt. L’état le plus récent figure dans la page de l’historique d’intégrité.
 
 :::image type="content" source="media/monitor-app-lifecycle-events/planned-maintenance-in-progress.png" lightbox="media/monitor-app-lifecycle-events/planned-maintenance-in-progress.png" alt-text="Capture d’écran d’un exemple de journal pour une maintenance planifiée en cours":::
+
+>[!NOTE]
+> Actuellement, Azure Spring Cloud effectue une maintenance planifiée régulière pour mettre à niveau la version Kubernetes sous-jacente tous les 2-4 mois. Pour obtenir une chronologie détaillée de la maintenance, vérifiez les notifications sur la page Azure Service Health.
 
 ## <a name="set-up-alerts"></a>Configurer des alertes
 

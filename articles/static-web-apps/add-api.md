@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/14/2021
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 568117bf629117e42af177845c9444996853f6c2
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: be664a5bf29c95143e7706b2df2b49648959f584
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067209"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013666"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-with-azure-functions"></a>Ajouter une API dans Azure Static Web Apps avec Azure Functions
 
@@ -311,7 +311,7 @@ Exécutez l’application front-end et l’API ensemble en démarrant l’applic
 
 1. Quand les processus de la CLI démarrent, accédez à votre application à l’adresse `http://localhost:4280/`. Notez que la page appelle l’API et affiche sa sortie, `Hello from the API`.
 
-1. Pour arrêter l’interface CLI, tapez <kbd>Ctrl-C</kbd>.
+1. Pour arrêter l’interface CLI, tapez <kbd>Ctrl + C</kbd>.
 
 ## <a name="add-api-location-to-workflow"></a>Ajouter l’emplacement de l’API au flux de travail
 

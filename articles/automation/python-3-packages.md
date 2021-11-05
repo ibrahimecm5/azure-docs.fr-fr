@@ -3,19 +3,23 @@ title: Gérer des packages Python 3 dans Azure Automation
 description: Cet article explique comment gérer des packages Python 3 (préversion) dans Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/25/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: d3ec338b6d6edac2c56c8b42f877a1095aace2a0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a33f4f9b6403d1f4aff88cadb57ae0f78f02038b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349619"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443733"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>Gérer des packages Python 3 (préversion) dans Azure Automation
 
-Azure Automation vous permet d’exécuter des runbooks Python 3 (préversion) dans un environnement de bac à sable Azure et sur des runbooks Worker hybrides Linux. Pour aider à simplifier les runbooks, vous pouvez utiliser des packages Python afin d’importer les modules dont vous avez besoin. Le package Azure 4.0.0 est installé par défaut dans l’environnement d’automatisation Python 3. La version par défaut peut être remplacée en important les packages Python dans le compte Automation. La préférence est donnée à la version importée dans le compte Automation. Pour importer un package unique, consultez [Importer un package](#import-a-package). Pour importer un package avec plusieurs packages, consultez [Importer un package avec des dépendances](#import-a-package-with-dependencies). Cet article décrit comment gérer et utiliser les packages Python 3 (préversion) dans Azure Automation.
+Cet article décrit comment importer, gérer et utiliser des packages Python 3 (préversion) dans Azure Automation s’exécutant sur l’environnement de bac à sable Azure et des Runbooks Worker hybrides. Vous pouvez simplifier les runbooks en utilisant des packages Python pour importer les modules dont vous avez besoin. 
+
+Pour prendre en charge les runbooks Python 3 dans le service Automation, le package Azure 4.0.0 est installé par défaut dans le compte Automation. La version par défaut peut être remplacée en important des packages Python dans votre compte Automation. La préférence est donnée à la version importée dans le compte Automation. Pour importer un package unique, consultez [Importer un package](#import-a-package). Pour importer un package avec plusieurs packages, consultez [Importer un package avec des dépendances](#import-a-package-with-dependencies). 
+
+Pour plus d’informations sur la gestion des packages Python 2, consultez [Gérer les packages Python 2](./python-packages.md).
 
 ## <a name="packages-as-source-files"></a>Packages en tant que fichiers sources
 
@@ -35,17 +39,19 @@ Certains packages Python disponibles sur PyPI ne fournissent pas de fichier whee
 
 ## <a name="import-a-package"></a>Importer un package
 
-Dans votre compte Automation, sélectionnez **Packages Python** sous **Ressources partagées**. Puis sélectionnez **+ Add a Python package** (Ajouter un package Python).
+1. Dans votre compte Automation, sélectionnez **Packages Python** sous **Ressources partagées**. Puis sélectionnez **+ Add a Python package** (Ajouter un package Python).
 
-:::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="Capture d’écran de la page des packages Python 3 montrant les packages Python 3 dans le menu de gauche et Ajouter un package Python 2 mis en évidence":::
+   :::image type="content" source="media/python-3-packages/add-python-3-package.png" alt-text="Capture d’écran de la page des packages Python montrant les packages Python dans le menu de gauche et Ajouter un package Python sélectionné.":::
 
-Dans la page **Ajouter un package Python**, sélectionnez **Python 3** comme **Version** et choisissez un package local à charger. Le package peut être un fichier **.whl** ou **.tar.gz**. Lorsque le package est sélectionné, sélectionnez **OK** pour le charger.
+1. Dans la page **Ajouter un package Python**, sélectionnez un package local à charger. Le package peut être un fichier **.whl** ou **.tar.gz**. 
+1. Entrez un nom et sélectionnez Python 3.8.x (préversion) comme **Version du runtime**
+1. Sélectionnez **Importer**
 
-:::image type="content" source="media/python-3-packages/upload-package.png" alt-text="Capture d’écran montrant la page Ajouter un package Python 3 avec un fichier tar.gz chargé sélectionné":::
+   :::image type="content" source="media/python-3-packages/upload-package.png" alt-text="Capture d’écran montrant la page Ajouter un package Python 3.8.x avec un fichier tar.gz chargé sélectionné.":::
 
-Une fois qu’un package a été importé, il est répertorié dans la page Packages Python de votre compte Automation, sous l’onglet **Packages Python 3 (préversion)** . Pour supprimer un package, sélectionnez-le, puis cliquez sur **Supprimer**.
+Dès qu’un package est importé, il est listé dans la page des packages Python de votre compte Automation. Pour supprimer un package, sélectionnez-le et cliquez sur **Supprimer**.
 
-:::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="Capture d’écran montrant la page Packages Python 3 après l’importation d’un package":::
+:::image type="content" source="media/python-3-packages/python-3-packages-list.png" alt-text="Capture d’écran montrant la page des packages Python 3.8.x après l’importation d’un package.":::
 
 ### <a name="import-a-package-with-dependencies"></a>Importer un package avec des dépendances
 

@@ -1,29 +1,32 @@
 ---
-title: Utilisation du tableau de bord de conformité réglementaire dans Azure Security Center
-description: Découvrez comment ajouter des normes réglementaires au tableau de bord de conformité réglementaire dans Security Center et comment les supprimer.
+title: Tableau de bord de conformité réglementaire dans Microsoft Defender pour le cloud
+description: Découvrez comment ajouter des normes réglementaires au tableau de bord de conformité réglementaire dans Defender pour le cloud et comment les supprimer.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: 523375ff69d6139a1e910b9253a6816235bfecc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d5d54fe73c417f3d79c518ec1e78bade71135cfb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524862"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037381"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Personnaliser l’ensemble de normes du tableau de bord de conformité réglementaire
 
-Azure Security Center compare continuellement la configuration de vos ressources avec les exigences des normes, réglementations et tests d’évaluation du secteur. Le **tableau de bord de conformité réglementaire** fournit des analyses sur votre situation de conformité selon la façon dont vous répondez aux exigences de conformité.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender pour le cloud compare continuellement la configuration de vos ressources avec les exigences des normes, réglementations et tests d’évaluation du secteur. Le **tableau de bord de conformité réglementaire** fournit des analyses sur votre situation de conformité selon la façon dont vous répondez aux exigences de conformité.
 
 > [!TIP]
-> Pour en savoir plus sur le tableau de bord de conformité réglementaire de Security Center, consultez la [FAQ](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard).
+> Pour en savoir plus sur le tableau de bord de conformité réglementaire de Defender pour le cloud, consultez la [FAQ](regulatory-compliance-dashboard.md#faq---regulatory-compliance-dashboard).
 
-## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Comment les normes de conformité réglementaire sont-elles représentées dans Security Center ?
+## <a name="how-are-regulatory-compliance-standards-represented-in-defender-for-cloud"></a>Comment les normes de conformité réglementaire sont-elles représentées dans Defender pour le cloud ?
 
-Les normes du secteur d’activité, les normes réglementaires et les points de référence sont représentés dans le tableau de bord de conformité réglementaire de Security Center. Chaque norme correspond à une initiative définie dans Azure Policy.
+Les normes du secteur d’activité, les normes réglementaires et les points de référence sont représentés dans le tableau de bord de conformité réglementaire de Defender pour le cloud. Chaque norme correspond à une initiative définie dans Azure Policy.
 
 Pour voir la correspondance entre les données de conformité et les évaluations dans votre tableau de bord, ajoutez une norme de conformité à votre groupe d’administration ou à votre abonnement sur la page **Stratégie de sécurité**. Pour en savoir plus sur Azure Policy et les initiatives, consultez [Utilisation des stratégies de sécurité](tutorial-security-policy.md).
 
@@ -32,7 +35,7 @@ Une fois que vous avez attribué une norme ou un point de référence à l’ét
 Microsoft suit les normes réglementaires et améliore automatiquement sa couverture dans certains packages au fur et à mesure. Lorsque Microsoft publie du nouveau contenu pour l’initiative, il s’affiche automatiquement dans votre tableau de bord en tant que nouvelles stratégies mappées aux contrôles de la norme.
 
 
-## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Quelles sont les normes de conformité réglementaire disponibles dans Security Center ?
+## <a name="what-regulatory-compliance-standards-are-available-in-defender-for-cloud"></a>Quelles sont les normes de conformité réglementaire disponibles dans Defender pour le cloud ?
 
 Par défaut, le **Benchmark de sécurité Azure** est attribué à chaque abonnement. Il s’agit de l’ensemble des directives propres à Azure et créées par Microsoft contenant les meilleures pratiques de sécurité et de conformité basées sur les infrastructures de conformité courantes. [En savoir plus sur le Benchmark de sécurité Azure](/security/benchmark/azure/introduction).
 
@@ -53,10 +56,15 @@ Les normes sont ajoutées au tableau de bord dès qu’elles sont disponibles.
 
 La procédure suivante permet d’ajouter un package pour surveiller la conformité avec l’une des normes réglementaires prises en charge.
 
-> [!NOTE]
-> Pour ajouter des normes à votre tableau de bord, Azure Defender doit être activé sur l’abonnement. En outre, seuls les utilisateurs qui sont propriétaires ou contributeurs de stratégie disposent des autorisations nécessaires pour ajouter des normes de conformité. 
+### <a name="prerequisites"></a>Prérequis
+Pour ajouter des normes à votre tableau de bord :
 
-1. Dans la barre latérale de Security Center, sélectionnez **Conformité réglementaire** pour ouvrir le tableau de bord de conformité réglementaire. Ici, vous pouvez voir les normes de conformité actuellement attribuées aux abonnements actuellement sélectionnés.   
+- Les fonctionnalités de sécurité renforcée de Defender pour le cloud doivent être activées pour l’abonnement
+- L’utilisateur doit disposer d’autorisations de propriétaire ou de contributeur de stratégie
+
+### <a name="add-a-standard"></a>Ajouter une norme
+
+1. Dans le menu de Defender pour le cloud, sélectionnez **Conformité réglementaire** pour ouvrir le tableau de bord de conformité réglementaire. Ici, vous pouvez voir les normes de conformité actuellement attribuées aux abonnements actuellement sélectionnés.   
 
 1. En haut de la page, sélectionnez **Gérer les stratégies de conformité**. La page Gestion des stratégies s’affiche.
 
@@ -79,18 +87,18 @@ La procédure suivante permet d’ajouter un package pour surveiller la conformi
     - **CMMC niveau 3**
     - **New Zealand ISM Restricted**
     
-    ![Ajout de normes réglementaires au tableau de bord de conformité réglementaire d’Azure Security Center.](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Ajout de normes réglementaires au tableau de bord de conformité réglementaire de Defender pour le cloud.](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. Sélectionnez **Ajouter** et entrez tous les détails nécessaires pour l’initiative spécifique, comme l’étendue, les paramètres et la correction.
 
-1. Dans la barre latérale de Security Center, sélectionnez à nouveau **Conformité réglementaire** pour revenir au tableau de bord de conformité réglementaire.
+1. Dans le menu de Defender pour le cloud, sélectionnez à nouveau **Conformité réglementaire** pour revenir au tableau de bord de conformité réglementaire.
 
     Votre nouvelle norme s’affiche à présent dans la liste des normes réglementaires et des standards du secteur. 
 
     > [!NOTE]
     > L’affichage d’une norme nouvellement ajoutée dans le tableau de bord de conformité peut prendre quelques heures.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Tableau de bord de conformité réglementaire." lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/regulatory-compliance-dashboard/compliance-dashboard.png" alt-text="Tableau de bord de conformité réglementaire." lightbox="./media/regulatory-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>Supprimer une norme de votre tableau de bord
 
@@ -98,7 +106,7 @@ Si certaines des normes réglementaires fournies ne sont pas pertinentes pour vo
 
 Pour supprimer une norme :
 
-1. Dans le menu de Security Center, sélectionnez **Stratégie de sécurité**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Stratégie de sécurité**.
 
 1. Sélectionnez l’abonnement approprié à partir duquel vous souhaitez supprimer une norme.
 
@@ -107,7 +115,7 @@ Pour supprimer une norme :
 
     La page Stratégie de sécurité s’ouvre. Pour l’abonnement sélectionné, il affiche la stratégie par défaut, le secteur et les normes réglementaires, ainsi que les initiatives personnalisées que vous avez créées.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Suppression d’une norme réglementaire de votre tableau de bord de conformité réglementaire dans Azure Security Center.":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Supprimer une norme réglementaire de votre tableau de bord de conformité réglementaire dans Microsoft Defender pour le cloud.":::
 
 1. Pour la norme que vous souhaitez supprimer, sélectionnez **Désactiver**. Une fenêtre de confirmation s’ouvre.
 
@@ -123,5 +131,5 @@ Dans cet article, vous avez découvert comment **ajouter des normes de conformit
 Pour obtenir des informations connexes, consultez les pages suivantes :
 
 - [Benchmark de sécurité Azure](/security/benchmark/azure/introduction)
-- [Tableau de bord de conformité réglementaire de Security Center](security-center-compliance-dashboard.md) : découvrez comment suivre et exporter vos données de conformité réglementaire avec Security Center et des outils externes
+- [Tableau de bord de conformité réglementaire de Defender pour le cloud](regulatory-compliance-dashboard.md) : découvrez comment suivre et exporter vos données de conformité réglementaire avec Defender pour le cloud et des outils externes
 - [Utilisation de stratégies de sécurité](tutorial-security-policy.md)

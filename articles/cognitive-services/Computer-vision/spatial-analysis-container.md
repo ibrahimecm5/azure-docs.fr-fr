@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 10/14/2021
 ms.author: pafarley
-ms.openlocfilehash: 7e168c650361bf0579b5e718a71243ee485ba9dd
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f866db833381b8dc6c75538265eefdc057445b3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824685"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057891"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installer et exécuter le conteneur d’analyse spatiale (préversion)
 
@@ -59,7 +60,7 @@ Dans cet article, vous allez télécharger et installer les packages logiciels s
 * [Pilotes graphiques NVIDIA](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) et [NVIDIA CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * Configurations pour [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (service multiprocessus).
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) et [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* Runtime [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md).
+* Runtime [Azure IoT Edge](../../iot-edge/how-to-provision-single-device-linux-symmetric.md).
 
 #### <a name="azure-vm-with-gpu"></a>[Machine virtuelle Azure avec GPU](#tab/virtual-machine)
 Dans notre exemple, nous utilisons une [machine virtuelle de série NC](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dotée d’un GPU K80.
@@ -273,7 +274,7 @@ sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<
 sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled
 ```
 
-Vous devez installer la version 1.0.9 d’[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md). Pour télécharger la version correcte, procédez comme suit :
+Vous devez installer la version 1.0.9 d’[Azure IoT Edge](../../iot-edge/how-to-provision-single-device-linux-symmetric.md). Pour télécharger la version correcte, procédez comme suit :
 
 Ubuntu Server 18.04 :
 ```bash
@@ -306,7 +307,7 @@ Installez la version 1.0.9 :
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Ensuite, inscrivez l’ordinateur hôte en tant qu’appareil IoT Edge dans votre instance IoT Hub à l’aide d’une [chaîne de connexion](../../iot-edge/how-to-register-device.md).
+Ensuite, inscrivez l’ordinateur hôte en tant qu’appareil IoT Edge dans votre instance IoT Hub à l’aide d’une [chaîne de connexion](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device).
 
 Vous devez connecter l’appareil IoT Edge à votre service IoT Hub Azure. Vous devez copier la chaîne de connexion à partir de l’appareil IoT Edge que vous avez créé précédemment. Vous pouvez aussi exécuter la commande Azure CLI ci-dessous.
 
@@ -347,7 +348,7 @@ Sélectionnez ensuite **NC6** ou **NC6_Promo**.
 
 :::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="Sélection promotionnelle" lightbox="media/spatial-analysis/promotional-selection.png":::
 
-Ensuite, créez la machine virtuelle. Une fois créée, accédez à la ressource de machine virtuelle dans le portail Azure et sélectionnez `Extensions` dans le volet gauche. La fenêtre des extensions s’affiche, montrant toutes les extensions disponibles. Sélectionnez `NVIDIA GPU Driver Extension`, cliquez sur Créer, puis effectuez l’Assistant.
+Ensuite, créez la machine virtuelle. Une fois créée, accédez à la ressource de machine virtuelle dans le portail Azure et sélectionnez `Extensions` dans le volet gauche. Cliquez sur « Ajouter » pour afficher la fenêtre des extensions avec toutes les extensions disponibles. Recherchez et sélectionnez `NVIDIA GPU Driver Extension`, cliquez sur Créer, puis suivez l’Assistant.
 
 Une fois l’extension correctement appliquée, accédez à la page principale de la machine virtuelle dans le portail Azure, puis cliquez sur `Connect`. La machine virtuelle est accessible via SSH ou RDP. RDP est utile, car il permet d’afficher la fenêtre de visualiseur (expliquée plus loin). Configurez l’accès RDP en suivant [ces étapes](../../virtual-machines/linux/use-remote-desktop.md) et en ouvrant une connexion Bureau à distance à la machine virtuelle.
 
@@ -438,7 +439,7 @@ sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<
 sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled
 ```
 
-Vous devez installer la version 1.0.9 d’[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md). Pour télécharger la version correcte, procédez comme suit :
+Vous devez installer la version 1.0.9 d’[Azure IoT Edge](../../iot-edge/how-to-provision-single-device-linux-symmetric.md). Pour télécharger la version correcte, procédez comme suit :
 
 Ubuntu Server 18.04 :
 ```bash
@@ -471,7 +472,7 @@ Installez la version 1.0.9 :
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Ensuite, inscrivez la machine virtuelle en tant que périphérique IoT Edge dans votre instance IoT Hub à l’aide d’une [chaîne de connexion](../../iot-edge/how-to-register-device.md).
+Ensuite, inscrivez la machine virtuelle en tant que périphérique IoT Edge dans votre instance IoT Hub à l’aide d’une [chaîne de connexion](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device).
 
 Vous devez connecter l’appareil IoT Edge à votre service IoT Hub Azure. Vous devez copier la chaîne de connexion à partir de l’appareil IoT Edge que vous avez créé précédemment. Vous pouvez aussi exécuter la commande Azure CLI ci-dessous.
 
@@ -588,6 +589,8 @@ Le module d’analyse spatiale va commencer à consommer un fichier vidéo et le
 ## <a name="troubleshooting"></a>Dépannage
 
 Si vous rencontrez des problèmes lors du démarrage ou de l’exécution du conteneur, consultez [Télémétrie et résolution des problèmes](spatial-analysis-logging.md) pour connaître les étapes de problèmes courants. Cet article contient également des informations sur la génération et la collecte de journaux et sur la collecte de l’intégrité du système.
+
+[!INCLUDE [Diagnostic container](../containers/includes/diagnostics-container.md)]
 
 ## <a name="billing"></a>Facturation
 

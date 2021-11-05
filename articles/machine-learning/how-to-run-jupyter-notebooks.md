@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 1a4fbbb84eb296acabd383461e01e90cbf570d9d
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 1bbc831b32d2a29cf590f36ea0f2c436f739ee6b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657375"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076696"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Exécuter des notebooks Jupyter dans votre espace de travail
 
@@ -150,6 +150,8 @@ Pour exécuter un notebook ou un script Python, vous devez d’abord vous connec
 * Si vous avez une instance de calcul arrêtée, sélectionnez **Démarrer le calcul** à droite de la liste déroulante Calcul. Selon la taille de votre écran, cette option peut se trouver dans un menu **...** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="Démarrer l’instance de calcul":::
+    
+Une fois que vous êtes connecté à une instance de calcul, utilisez la barre d’outils pour exécuter toutes les cellules du notebook ou Ctrl + Entrée pour exécuter une seule cellule sélectionnée. 
 
 Vous seul pouvez voir et utiliser les instances de calcul que vous créez.  Vos **Fichiers utilisateur** sont stockés séparément de la machine virtuelle, et partagés entre toutes les instances de calcul dans l’espace de travail.
 
@@ -188,7 +190,7 @@ Ces actions ne modifient pas l’état du bloc-notes ou les valeurs des variable
 
 Les actions ci-après ont pour effet de réinitialiser l’état du bloc-notes et toutes les variables dans celui-ci.
 
-|Action  |Résultats  |
+|Action  |Résultat  |
 |---------|---------| --------|
 | Modifier le noyau | Le bloc-notes utilise le nouveau noyau. |
 | Changer d’instance de calcul    |     Le bloc-notes utilise automatiquement la nouvelle instance de calcul. |

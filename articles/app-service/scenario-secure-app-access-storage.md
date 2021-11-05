@@ -11,12 +11,12 @@ ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: be170a07340fdea84b9b4af03bd329fcdf91483d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290030"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065548"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutoriel : Accéder au stockage Azure à partir d’une application web
 
@@ -81,7 +81,7 @@ Pour créer un compte de stockage v2 universel dans le portail Azure, procédez
     |Champ|Valeur|
     |--|--|
     |Modèle de déploiement|Gestionnaire de ressources|
-    |Performances|standard|
+    |Performances|Standard|
     |Type de compte|StorageV2 (v2 universel)|
     |Réplication|Stockage géoredondant avec accès en lecture (RA-GRS)|
     |Niveau d’accès|À chaud|
@@ -301,4 +301,10 @@ Dans ce didacticiel, vous avez appris à :
 > * Accéder au stockage à partir d’une application web avec des identités managées.
 
 > [!div class="nextstepaction"]
+> [Tutoriel : Isoler les communications back-end avec l’intégration du réseau virtuel](tutorial-networking-isolate-vnet.md)
+
+> [!div class="nextstepaction"]
 > [Accès d’un service d’application à Microsoft Graph pour le compte de l’utilisateur](scenario-secure-app-access-microsoft-graph-as-user.md)
+
+> [!div class="nextstepaction"]
+> [Mapper un nom DNS personnalisé existant à Azure App Service](app-service-web-tutorial-custom-domain.md)

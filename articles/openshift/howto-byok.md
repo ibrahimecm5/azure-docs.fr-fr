@@ -7,19 +7,21 @@ ms.service: azure-redhat-openshift
 keywords: chiffrement, byok, aro, déploiement, openshift, red hat
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.custom: template-how-to
-ms.openlocfilehash: f9b60767f929f8fc9d40836daa6435d0c69d110f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: b4df39040ac3cfbab2ecfa8cb24c72ff19ee5bdc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134325"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048232"
 ---
 # <a name="encrypt-os-disks-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Chiffrer des disques de système d’exploitation avec une clé gérée par le client (CMK) sur Azure Red Hat OpenShift (ARO) (préversion)
 
 Par défaut, les disques de système d’exploitation des machines virtuelles d’un cluster Azure Red Hat OpenShift étaient chiffrés avec les clés générées automatiquement, gérées par Microsoft Azure. Pour renforcer la sécurité, les clients peuvent chiffrer les disques de système d’exploitation avec des clés auto-gérées lors du déploiement d’un cluster ARO. Cette fonctionnalité permet de mieux contrôler le chiffrement des données confidentielles avec les clés gérées par le client.
 
 Les clusters créés avec des clés gérées par le client ont une classe de stockage par défaut activée avec leurs clés. Par conséquent, les disques de système d’exploitation et les disques de données sont chiffrés par ces clés. Les clés gérées par le client doivent être stockées dans Azure Key Vault. Pour plus d’informations sur l’utilisation d’Azure Key Vault pour créer et gérer des clés, consultez la page [Chiffrement côté serveur de Stockage sur disque Azure](../key-vault/general/basic-concepts.md) dans la documentation Microsoft Azure.
+
+Avec le chiffrement basé sur l’hôte, les données stockées sur l’hôte de machine virtuelle des machines virtuelles de vos nœuds d’agent ARO sont chiffrées au repos et les flux sont chiffrés dans le service de Stockage. Cela signifie que les disques temporaires sont chiffrés au repos avec des clés gérées par la plateforme. Le cache du système d’exploitation et des disques de données est chiffré au repos avec des clés gérées par le client ou par la plateforme, selon le type de chiffrement défini sur ces disques. Par défaut, lorsque vous utilisez ARO, le système d’exploitation et les disques de données sont chiffrés au repos avec des clés gérées par la plateforme, ce qui signifie que les caches de ces disques sont également chiffrés au repos par défaut avec des clés gérées par la plateforme. Vous pouvez spécifier vos propres clés gérées en suivant les étapes de chiffrement ci-dessous. Le cache de ces disques sera également chiffré à l’aide de la clé que vous spécifiez au cours de cette étape.
 
 > [!IMPORTANT]
 > Les fonctionnalités d’évaluation ARO sont disponibles en libre-service en y adhérant. Les fonctionnalités en préversion sont fournies « en l’état » et « en fonction des disponibilités », et sont exclues des contrats de niveau de service et de la garantie limitée. Les fonctionnalités en préversion sont, dans la mesure du possible, partiellement couvertes par le service clientèle. En tant que tel, ces fonctionnalités ne sont pas destinées à une utilisation en production.

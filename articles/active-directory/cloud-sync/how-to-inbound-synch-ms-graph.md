@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f12e0d99a2444510d9a26c2bebb4147614f871a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 14b9ae4733773c45650f2efae8ad72d41f17aff2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164270"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018221"
 ---
 # <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Comment configurer par programmation la synchronisation cloud avec l’API MS Graph
 
@@ -54,7 +54,7 @@ La première de ces deux commandes nécessite des informations d’identificatio
 
 Ensuite, nous devons créer [l’application ou le principal de service AD2AAD](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http&preserve-view=true).
 
-Vous devez utiliser l’ID d’application 1a4721b3-e57f-4451-ae87-ef078703ec94. Le displayName correspond à l’URL du domaine Active Directory, si vous en utilisez une dans le portail (par exemple, contoso.com). Toutefois, elle peut porter un autre nom.
+Vous devez utiliser l’ID d’application 1a4721b3-e57f-4451-ae87-ef078703ec94. Le displayName correspond à l’URL du domaine Active Directory, si vous en utilisez une dans le portail (par exemple, contoso.com). Toutefois, elle peut porter un autre nom.
 
 ```
 POST https://graph.microsoft.com/beta/applicationTemplates/1a4721b3-e57f-4451-ae87-ef078703ec94/instantiate

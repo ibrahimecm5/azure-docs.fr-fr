@@ -1,23 +1,23 @@
 ---
-title: Configurer le comportement de session – Azure Active Directory B2C | Microsoft Docs
+title: Configurer le comportement de session - Azure Active Directory B2C
 description: Découvrez comment configurer le comportement de session dans Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/05/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8c6e1e1e22f8d694a020174af15ee8f12c6838d7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59d14afdbe6f4949f2761ddccb3a48a4770c3bd1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594723"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028174"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Configurer le comportement de session dans Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Examinez le cas suivant :
 
 ### <a name="application-session"></a>Session d’application
 
-Une application web, mobile ou monopage peut être protégée par un accès OAuth, des jetons d’ID ou des jetons SAML. Quand un utilisateur tente d’accéder à une ressource protégée sur l’application, celle-ci vérifie s’il existe une session active côté application. S’il n’y a pas de session d’application ou si la session a expiré, l’application dirige l’utilisateur vers la page de connexion d’Azure AD B2C.
+Une application web, mobile ou monopage peut être protégée par un jeton d’accès OAuth2, un jeton d’ID ou un jeton SAML. Quand un utilisateur tente d’accéder à une ressource protégée sur l’application, celle-ci vérifie s’il existe une session active côté application. S’il n’y a pas de session d’application ou si la session a expiré, l’application dirige l’utilisateur vers la page de connexion d’Azure AD B2C.
 
 La session d’application peut être une session basée sur un cookie stockée sous le nom de domaine de l’application, par exemple `https://contoso.com`. Les applications mobiles peuvent stocker la session d’une façon différente, mais dont l’approche est similaire.
 
@@ -246,7 +246,7 @@ Lors d’une demande de déconnexion, Azure AD B2C effectue les opérations suiv
 
 ::: zone pivot="b2c-user-flow"
 1. Invalide la session Azure AD B2C basée sur un cookie.
-1. Tente de se déconnecter des fournisseurs d’identité fédérés
+1. Tente de se déconnecter des fournisseurs d’identité fédérés.
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -265,11 +265,13 @@ La déconnexion efface l’état d’authentification unique de l’utilisateur 
 
 ::: zone pivot="b2c-custom-policy"
 
-### <a name="single-sign-out"></a>Déconnexion unique 
+## <a name="single-sign-out"></a>Déconnexion unique 
 
-Lorsque vous redirigez l’utilisateur vers le point de terminaison de déconnexion Azure AD B2C (pour les protocoles OAuth2 et SAML), Azure AD B2C efface la session de l’utilisateur du navigateur. Toutefois, l’utilisateur pourrait rester connecté à d’autres applications utilisant Azure AD B2C pour l’authentification. Pour permettre à ces applications de déconnecter l’utilisateur simultanément, Azure AD B2C envoie une requête HTTP GET à la `LogoutUrl` inscrite de toutes les applications auxquelles l’utilisateur est actuellement connecté.
+Quand vous redirigez l’utilisateur vers le [point de terminaison de déconnexion Azure AD B2C](openid-connect.md#send-a-sign-out-request) (pour OAuth2 et OpenID Connect) ou que vous envoyez une `LogoutRequest` (pour SAML), Azure AD B2C efface la session de l’utilisateur du navigateur. Toutefois, l’utilisateur pourrait rester connecté à d’autres applications utilisant Azure AD B2C pour l’authentification. Pour déconnecter l’utilisateur de toutes les applications qui ont une session active, Azure AD B2C prend en charge la *déconnexion unique*, également appelée *SLO (Single Log-Out)* .
 
-Les applications doivent répondre à cette requête en effaçant toute session qui identifie l’utilisateur et en renvoyant une réponse `200`. Si vous souhaitez prendre en charge la déconnexion unique dans votre application, vous devez implémenter une `LogoutUrl` dans le code de votre application. 
+Lors de la déconnexion, Azure AD B2C envoie simultanément une requête HTTP à l’URL de déconnexion inscrite de toutes les applications auxquelles l’utilisateur est actuellement connecté.
+
+### <a name="configure-your-custom-policy"></a>Configurer votre stratégie personnalisée
 
 Pour prendre en charge la déconnexion unique, les profils techniques de l’émetteur de jetons pour JWT et SAML doivent spécifier les éléments suivants :
 
@@ -314,6 +316,29 @@ L’exemple suivant illustre les émetteurs de jetons JWT et SAML avec la foncti
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
+
+### <a name="configure-your-application"></a>Configuration de votre application
+
+Pour qu’une application participe à la déconnexion unique :
+
+- Pour les [fournisseurs de services SAML](saml-service-provider.md), configurez l’application avec l’[emplacement SingleLogoutService dans son document de métadonnées SAML](saml-service-provider.md#override-or-set-the-logout-url-optional). Vous pouvez aussi configurer la `logoutUrl` de l’inscription de l’application. Pour plus d’informations, consultez [Défini l’URL de déconnexion](saml-service-provider.md#override-or-set-the-logout-url-optional).
+- Pour les applications OpenID Connect ou OAuth2, définissez l’attribut `logoutUrl` du manifeste d’inscription de votre application. Pour configurer l’URL de déconnexion :
+    1. Dans le menu Azure AD B2C, sélectionnez **Inscriptions d’applications**.
+    1. Sélectionnez votre inscription d’application.
+    1. Sous **Gérer**, sélectionnez **Authentification**.
+    1. Sous l’**URL de déconnexion du canal frontal**, configurez votre URL de déconnexion.
+
+### <a name="handling-single-sign-out-requests"></a>Gestion des demandes de déconnexion unique
+
+Quand Azure AD B2C reçoit la demande de déconnexion, il utilise un iframe HTML de canal frontal pour envoyer une requête HTTP à l’URL de déconnexion inscrite de chaque application participante à laquelle l’utilisateur est actuellement connecté. Notez que l’application qui déclenche la demande de déconnexion ne recevra pas ce message de déconnexion. Vos applications doivent répondre à la demande de déconnexion en effaçant la session d’application qui identifie l’utilisateur.
+
+- Pour les applications OpenID Connect et OAuth2, Azure AD B2C envoie une requête HTTP GET à l’URL de déconnexion inscrite.
+- Pour les applications SAML, Azure AD B2C envoie une requête de déconnexion SAML à l’URL de déconnexion inscrite.
+
+Quand toutes les applications ont été informées de la déconnexion, Azure AD B2C effectue une des opérations suivantes :
+
+- Pour les applications OpenID Connect ou OAuth2, l’utilisateur est redirigé vers l’URI `post_logout_redirect_uri` demandée incluant le paramètre (facultatif) `state` spécifié dans la demande initiale. Par exemple, `https://contoso.com/logout?state=foo`.
+- Pour les applications SAML, une réponse de déconnexion SAML est envoyée via HTTP POST à l’application qui a initialement envoyé la demande de déconnexion.
 
 ::: zone-end
 

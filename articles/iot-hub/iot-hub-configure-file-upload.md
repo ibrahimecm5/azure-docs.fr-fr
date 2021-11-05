@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
 ms.author: robinsh
-ms.openlocfilehash: bf8bf9d1b472ff1986596f6cae7e1f7b415d3bc6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 64d0c6120b5e74b1693f4d7965bb780c62583b53
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524350"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015260"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Configurer les chargements de fichiers IoT Hub à l’aide du portail Azure
 
@@ -32,15 +32,13 @@ Pour utiliser la [fonctionnalité de chargement de fichiers dans IoT Hub](iot-hu
 
 1. Dans le [portail Azure](https://portal.azure.com), accédez à votre hub IoT et sélectionnez **Chargement de fichiers** pour afficher les propriétés de chargement de fichiers. Puis sélectionnez **Conteneur de stockage Azure** sous **paramètres du Conteneur de stockage**.
 
-    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-settings.png" alt-text="Afficher les paramètres de chargement de fichier IoT Hub dans le portail":::
+    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-settings.png" alt-text="Capture d’écran montrant comment configurer les paramètres de chargement de fichiers dans le portail.":::
 
-1. Sélectionnez un compte de Stockage et un conteneur d’objets blob Azure dans votre abonnement actuel à associer à votre hub IoT. Si nécessaire, vous pouvez créer un compte de Stockage Azure dans le volet **Comptes de stockage** et un conteneur d’objets blob dans le volet **Conteneurs**. 
+1. Sélectionnez un compte de Stockage et un conteneur d’objets blob Azure dans votre abonnement actuel à associer à votre hub IoT. Si nécessaire, vous pouvez créer un compte de Stockage Azure dans le volet **Comptes de stockage** et un conteneur d’objets blob dans le volet **Conteneurs**.
 
-   :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-container-selection.png" alt-text="Afficher les conteneurs de stockage pour le chargement de fichiers dans le portail":::
+   :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-container-selection.png" alt-text="Capture d’écran montrant comment afficher les conteneurs de stockage pour le chargement de fichiers.":::
 
-1. Après avoir sélectionné un compte Stockage Azure et un conteneur d’objets blob, configurez le reste des propriétés de chargement de fichiers.    
-
-    :::image type="content" source="./media/iot-hub-configure-file-upload/file-upload-selected-container.png" alt-text="Configurer le chargement de fichier IoT Hub dans le portail":::
+1. Après avoir sélectionné un compte Stockage Azure et un conteneur d’objets blob, configurez le reste des propriétés de chargement de fichiers.
 
     * **Recevoir des notifications pour les fichiers chargés** : Activez ou désactivez les notifications de chargement de fichiers via le bouton bascule.
 
@@ -61,4 +59,4 @@ Pour utiliser la [fonctionnalité de chargement de fichiers dans IoT Hub](iot-hu
 
 * [Charger des fichiers à partir de l’aperçu d’un appareil](iot-hub-devguide-file-upload.md)
 * [Prise en charge des identités managées par IoT Hub](./iot-hub-managed-identity.md)
-* [Guides de procédures pour le chargement de fichiers](./iot-hub-csharp-csharp-file-upload.md)
+* [Guides pratiques sur le chargement de fichiers](./iot-hub-csharp-csharp-file-upload.md)

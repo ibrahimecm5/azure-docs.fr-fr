@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1b06b52bfad748414f18787ae186094bdd53c7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e31624edd168b1fa5b1846b4c347b4915ba96c82
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826004"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068053"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Tutoriel : Intégrer Qlik Sense Enterprise avec Azure Active Directory
 
@@ -169,11 +169,11 @@ Dans cette section, vous allez autoriser Britta Simon à utiliser l’authentifi
 
     ![Capture d’écran montrant la section Edit virtual proxy Authentication, dans laquelle vous pouvez entrer les valeurs décrites.][qs10]
 
-    a. La liste déroulante **Anonymous access mode (Mode d’accès anonyme)** détermine si des utilisateurs anonymes peuvent accéder à Qlik Sense via le proxy virtuel.  L’option par défaut est No anonymous user (Pas d’utilisateur anonyme).
+    a. La liste déroulante **Anonymous access mode** (Mode d’accès anonyme) détermine si des utilisateurs anonymes peuvent accéder à Qlik Sense via le proxy virtuel. L’option par défaut est **No anonymous user** (Pas d’utilisateur anonyme).
 
-    b. La liste déroulante **Méthode d’authentification** détermine le schéma d’authentification qui sera utilisé par le proxy virtuel.  Dans la liste déroulante, sélectionnez SAML.  À la suite de cette sélection, d’autres options s’affichent.
+    b. La liste déroulante **Méthode d’authentification** détermine le schéma d’authentification qui sera utilisé par le proxy virtuel. Sélectionnez SAML dans la liste déroulante. À la suite de cette sélection, d’autres options s’affichent.
 
-    c. Dans le champ **SAML host URI**(URI d’hôte SAML), indiquez le nom d’hôte que les utilisateurs doivent entrer pour accéder à Qlik Sense via ce proxy virtuel SAML.  Le nom d’hôte est l’URI du serveur Qlik Sense.
+    c. Dans le champ **SAML host URI**(URI d’hôte SAML), indiquez le nom d’hôte que les utilisateurs doivent entrer pour accéder à Qlik Sense via ce proxy virtuel SAML. Le nom d’hôte est l’URI du serveur Qlik Sense.
 
     d. Dans le champ **SAML entity ID (ID d’entité SAML)** , entrez la valeur indiquée dans le champ SAML host URI (URI d’hôte SAML).
 
@@ -199,7 +199,7 @@ Dans cette section, vous allez autoriser Britta Simon à utiliser l’authentifi
 
     ![Capture d’écran montrant l’écran Edit virtual proxy avec l’option Advanced.][qs13]
 
-    La liste verte Hôte répertorie les noms d’hôte acceptés lors de la connexion au serveur Qlik Sense.  **Entrez le nom d’hôte spécifié par les utilisateurs pour se connecter au serveur Qlik Sense.** Le nom d’hôte est défini sur la même valeur que l’URI d’hôte SAML sans https://.
+    La liste verte Hôte répertorie les noms d’hôte acceptés lors de la connexion au serveur Qlik Sense. **Entrez le nom d’hôte spécifié par les utilisateurs pour se connecter au serveur Qlik Sense.** Le nom d’hôte est défini sur la même valeur que l’URI d’hôte SAML sans `https://`.
 
 11. Cliquez sur le bouton **Appliquer**.
 

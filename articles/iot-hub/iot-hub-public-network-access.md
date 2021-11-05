@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: a729cd14c2f65b7ff4ab478f9efd25e13a1170b4
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: b77fa4d3e82114c4b52edca250aada9837157782
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515601"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068274"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Gestion de l’accès réseau public pour votre hub IoT
 
@@ -26,7 +26,7 @@ Pour limiter l’accès à un seul [point de terminaison privé pour un hub IoT 
 4. Sous « Autoriser l’accès du réseau public à », sélectionnez **Désactivé**
 5. Sélectionnez **Enregistrer**.
 
-:::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Image qui montre le portail Azure où désactiver l’accès au réseau public" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
+:::image type="content" source="./media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Capture d’écran qui montre où désactiver l’accès au réseau public sur le Portail Azure.":::
 
 Pour activer l’accès au réseau public, sélectionnez **Tous les réseaux**, puis **Enregistrer**.
 
@@ -57,7 +57,7 @@ Il existe un bogue dans IoT Hub où le [point de terminaison intégré compatibl
 5. Dans la boîte de dialogue **Filtre IP** qui s’affiche, sélectionnez **Ajouter votre adresse IP client** et entrez un nom et une plage d’adresses.
 6. Sélectionnez **Enregistrer**. Si le bouton est grisé, vérifiez que l’adresse IP de votre client est déjà ajoutée en tant que filtre IP.
 
-:::image type="content" source="media/iot-hub-publicnetworkaccess/turn-on-public-network-access.png" alt-text="Image montrant le portail Azure où activer l’accès au réseau public":::
+:::image type="content" source="./media/iot-hub-publicnetworkaccess/turn-on-public-network-access.png" alt-text="Capture d’écran qui montre où activer l’accès au réseau public sur le Portail Azure.":::
 
 ### <a name="turn-on-all-network-ranges"></a>Activer toutes les plages réseau
 

@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 2e06616914f1e78a71a540fbd64021c0e1bfcbab
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9901caefe7d50b1042ea5c621bb064efc8c3eb0b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785970"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045270"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatiser les workflows pour une base de données SQL à l’aide d’Azure Logic Apps
 
@@ -78,6 +78,7 @@ La première fois que vous ajoutez un [déclencheur SQL](#add-sql-trigger) ou un
    |----------------|-------------|
    | [**Azure AD Integrated**](../azure-sql/database/authentication-aad-overview.md) | - Prend en charge le connecteur SQL Server non-ISE et ISE. <p><p>- Nécessite une identité valide dans Azure Active Directory (Azure AD) qui a accès à votre base de données. <p>Pour plus d’informations, consultez les rubriques suivantes : <p>- [Vue d’ensemble de la sécurité Azure SQL : authentification](../azure-sql/database/security-overview.md#authentication) <br>- [Autoriser l’accès à la base de données Azure SQL : authentification et autorisation](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL : authentification Azure AD Integrated](../azure-sql/database/authentication-aad-overview.md) |
    | [**Authentification SQL Server**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - Prend en charge le connecteur SQL Server non-ISE et ISE. <p><p>- Requiert un nom d’utilisateur et un mot de passe sécurisé valides qui sont créés et stockés dans votre base de données. <p>Pour plus d’informations, consultez les rubriques suivantes : <p>- [Vue d’ensemble de la sécurité Azure SQL : authentification](../azure-sql/database/security-overview.md#authentication) <br>- [Autoriser l’accès à la base de données Azure SQL : authentification et autorisation](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | **Identité gérée** | - Prend en charge le connecteur SQL Server non-ISE et ISE. <p><p>- Nécessite une identité managée valide qui a [accès à votre base de données](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md), un accès de rôle **Contributeur de SQL DB** à la ressource SQL Server et à l’accès **Contributeur** au groupe de ressources qui inclut la ressource SQL Server. <p>Pour plus d’informations, consultez [SQL - Rôles de niveau serveur](/sql/relational-databases/security/authentication-access/server-level-roles).
    |||
 
    Cet exemple se poursuit avec **Azure AD Integrated** :

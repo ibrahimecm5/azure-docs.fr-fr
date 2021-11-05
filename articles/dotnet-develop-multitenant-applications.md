@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a65d72835a7a5af2681c5cbf0fd14e36adfb5cbe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95524094"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033035"
 ---
 # <a name="multitenant-applications-in-azure"></a>Applications mutualisées dans Azure
 Une application mutualisée est une ressource partagée qui autorise des « utilisateurs de locataires distincts » à afficher l’application comme s’il s’agissait de la leur. Un scénario typique qui se prête à une application mutualisée est celui dans lequel tous les utilisateurs de l’application répartis dans différents locataires peuvent personnaliser leur expérience utilisateur, tout en ayant les mêmes besoins professionnels de base. Exemples d'applications mutualisées : Microsoft 365, Outlook.com et visualstudio.com.
@@ -41,7 +41,7 @@ Une application mutualisée correctement mise en œuvre offre les avantages suiv
 * **Coûts** : les coûts sont inférieurs au coût d’exécution d’une application dédiée à un seul locataire, car une architecture mutualisée permet de partager les ressources.
 * **Possibilités de personnalisation**. possibilité de personnaliser l'application d'un locataire individuel de diverses façons telles qu'en ajoutant ou en supprimant des fonctionnalités, en changeant les couleurs et les logos, ou même en ajoutant son propre code ou script.
 
-En résumé, bien que de nombreux aspects soient à prendre en compte pour fournir un service hautement évolutif, il y a également une série d’objectifs et d’exigences communs à de nombreuses applications mutualisées. Certains peuvent ne pas concerner des scénarios spécifiques, et l'importance d'objectifs et d'exigences individuels peut différer pour chaque scénario. En tant que fournisseur de l’application mutualisée, vous aurez également des objectifs et des exigences tels que la satisfaction des objectifs et des exigences des locataires, la rentabilité, la facturation, les niveaux de service multiples, l’approvisionnement, la surveillance de la maintenabilité et l’automatisation.
+En résumé, bien que de nombreux aspects soient à prendre en compte pour fournir un service hautement évolutif, il y a également une série d’objectifs et d’exigences communs à de nombreuses applications mutualisées. Certains peuvent ne pas concerner des scénarios spécifiques, et l'importance d'objectifs et d'exigences individuels peut différer pour chaque scénario. En tant que fournisseur de l’application mutualisée, vous aurez également des objectifs et des exigences tels que la satisfaction des besoins des locataires, la rentabilité, la facturation, les niveaux de service multiples, l’approvisionnement, la surveillance de la maintenabilité et l’automatisation.
 
 Pour plus d'informations sur les considérations supplémentaires d'une application mutualisée en matière de conception, consultez la page [Hébergement d'une application mutualisée dans Azure][Hosting a Multi-Tenant Application on Azure]. Pour plus d’informations sur les modèles d’architecture de données courants pour les applications de base de données SaaS (software as a service) multilocataires, consultez [Modèles de conception pour les applications SaaS multilocataires avec Azure SQL Database](./azure-sql/database/saas-tenancy-app-design-patterns.md). 
 
@@ -84,7 +84,7 @@ Azure offre une série de méthodes permettant d’approvisionner de nouveaux lo
 * Les rôles de travail vous permettent d'approvisionner ou d'annuler l'approvisionnement de ressources par locataire (comme lorsqu'un nouveau locataire s'inscrit ou annule), de recueillir des mesures et de gérer la mise à l'échelle sur la base d'une planification spécifique ou en réponse au dépassement des seuils d'indicateurs de performance clé. Ce même rôle peut également être utilisé pour transmettre des mises à jour et des mises à niveau vers la solution.
 * Les objets blob Azure peuvent être utilisés pour approvisionner des ressources de calcul ou de stockage pré-initialisées pour les nouveaux locataires tout en fournissant des stratégies d'accès de niveau conteneur visant à protéger les packages de service de calcul, les images de disque dur virtuel et d'autres ressources.
 * Options pour l'approvisionnement de ressources de la base de données SQL pour un locataire :
-  
+
   * Langage DDL dans les scripts ou incorporé en tant que ressource au sein d’assemblys.
   * Packages DAC SQL Server 2008 R2 déployés par programme
   * Copie à partir d’une base de données de référence principale.

@@ -4,12 +4,12 @@ description: Cet article explique comment authentifier l’accès aux ressources
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b338f42ecd0f12e361aaf1defcfed22e0aaad7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 151f91741394d5b723eed88ac94b9177a7d50a95
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307086"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028281"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifier l’accès aux ressources Event Hubs avec des signatures d’accès partagé
 La signature d’accès partagé (SAS, shared access signature) vous offre un contrôle granulaire sur le type d’accès que vous octroyez aux clients qui la possèdent. Voici quelques-uns des contrôles que vous pouvez définir dans une signature d’accès partagé : 
@@ -217,6 +217,66 @@ Par exemple, pour définir des règles d’autorisation limitées à l’envoi e
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Authentification des consommateurs Event Hubs avec une signature d’accès partagé 
 Pour authentifier les applications back-end qui consomment des données générées par des producteurs Event hubs, l’authentification par jeton Event Hubs nécessite que les clients disposent des droits de **gestion** ou des privilèges d’**écoute** attribués à l’espace de noms Event hubs ou à l’instance ou la rubrique de hub d’événements. Les données sont consommées à partir de Event Hubs par le biais de groupes de consommateurs. Même si la stratégie SAS vous donne une étendue granulaire, cette étendue est définie uniquement au niveau de l’entité et non au niveau du consommateur. Cela signifie que les privilèges définis au niveau de l’espace de noms ou au niveau de la rubrique ou de l’instance du hub d’événements seront appliqués aux groupes de consommateurs de cette entité.
+
+## <a name="disabling-localsas-key-authentication"></a>Désactivation de l’authentification de la clé locale/SAS  
+Pour certaines exigences de sécurité de l’organisation, vous devrez peut-être désactiver complètement l’authentification par clé locale/SAS et vous utiliser l’authentification Azure Active Directory (Azure AD), qui est la méthode recommandée pour la connexion à Azure Event Hubs. Vous pouvez désactiver l’authentification par clé locale/SAS au niveau de l’espace de noms Event Hubs à l’aide de Portail Azure ou d’un modèle Azure Resource Manager. 
+
+### <a name="disabling-localsas-key-authentication-via-the-portal"></a>Désactivation de l’authentification par clé locale/SAS via le portail 
+Vous pouvez désactiver l’authentification de clé locale/SAS pour un espace de noms Event Hubs donné à l’aide du Portail Azure. 
+
+Comme indiqué dans l’image suivante, dans la section Vue d’ensemble de l’espace de noms, cliquez sur *Authentification locale*. 
+
+![Vue d’ensemble de l’espace de noms pour la désactivation de l’authentification locale](./media/authenticate-shared-access-signature/disable-local-auth-overview.png)
+
+Sélectionnez l’option *Désactivé*, puis cliquez sur *OK* comme indiqué ci-dessous. 
+![Désactivation de l’authentification locale](./media/authenticate-shared-access-signature/disabling-local-auth.png)
+
+### <a name="disabling-localsas-key-authentication-using-a-template"></a>Désactivation de l’authentification par clé locale/SAS à l’aide d’un modèle 
+Vous pouvez désactiver l’authentification locale pour un espace de noms Event Hubs donné en définissant la propriété `disableLocalAuth` sur `true`, comme indiqué dans le modèle de Azure Resource Manager suivant (modèle ARM).
+
+```json
+"resources":[
+      {
+         "apiVersion":"[variables('ehVersion')]",
+         "name":"[parameters('eventHubNamespaceName')]",
+         "type":"Microsoft.EventHub/Namespaces",
+         "location":"[variables('location')]",
+         "sku":{
+            "name":"Standard",
+            "tier":"Standard"
+         },
+         "resources": [
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('eventHubNamespaceName')]",
+      "type": "Microsoft.EventHub/Namespaces",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "isAutoInflateEnabled": "true",
+        "maximumThroughputUnits": "7", 
+        "disableLocalAuth": false
+      },
+      "resources": [
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[parameters('eventHubName')]",
+          "type": "EventHubs",
+          "dependsOn": [
+            "[concat('Microsoft.EventHub/namespaces/', parameters('eventHubNamespaceName'))]"
+          ],
+          "properties": {
+            "messageRetentionInDays": "[parameters('messageRetentionInDays')]",
+            "partitionCount": "[parameters('partitionCount')]"
+          }
+
+        }
+      ]
+    }
+  ]
+``` 
 
 ## <a name="next-steps"></a>Étapes suivantes
 Voir les articles suivants :

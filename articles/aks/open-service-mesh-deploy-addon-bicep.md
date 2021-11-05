@@ -6,26 +6,23 @@ ms.topic: article
 ms.date: 9/20/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: f479a05fb305887d5e901ca236cb0183d4a2d87b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b0452588b8eb9eebbf8ab592ad2d0a8a0e9a6b92
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227299"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066783"
 ---
 # <a name="deploy-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-using-bicep"></a>Déployer le module complémentaire Open Service Mesh (OSM) Azure Kubernetes Service (AKS) à l’aide de Bicep
 
 Cet article explique comment déployer le module complémentaire OSM sur AKS à l’aide d’un modèle [Bicep](../azure-resource-manager/bicep/index.yml).
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-[Bicep](../azure-resource-manager/bicep/overview.md) est un langage spécifique à un domaine (DSL) qui utilise la syntaxe déclarative pour déployer des ressources Azure. Bicep peut être utilisé à la place de la création de modèles [ARM](../azure-resource-manager/templates/overview.md) pour déployer vos ressources Azure infrastructure-as-code.
+[Bicep](/azure/azure-resource-manager/bicep/overview) est un langage spécifique à un domaine (DSL) qui utilise la syntaxe déclarative pour déployer des ressources Azure. Bicep peut être utilisé à la place de la création de modèles [ARM](/azure/azure-resource-manager/templates/overview) pour déployer vos ressources Azure infrastructure-as-code.
 
 ## <a name="prerequisites"></a>Prérequis
 
 - Azure CLI, version 2.20.0 ou ultérieure
-- L’extension `aks-preview` version 0.5.5 ou ultérieure
-- OSM, version 1.9.0 ou ultérieure
+- OSM version 0.11.1 ou ultérieure
 - Une clé publique SSH utilisée pour le déploiement d’AKS
 - [Visual Studio Code](https://code.visualstudio.com/) utilisant un terminal Bash
 - L’[extension Bicep](../azure-resource-manager/bicep/install.md) pour Visual Studio Code

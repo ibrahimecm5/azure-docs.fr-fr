@@ -8,16 +8,17 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 5ed0dd6ad86b5f7758f0e1972867876eedc3b51a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f88ab798618608b8dbb0e27fb772a82a5199a889
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225939"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080856"
 ---
-# <a name="upgrade-a-sku-preview"></a>Mettre à niveau une référence SKU
+# <a name="upgrade-a-sku"></a>Mettre à niveau un SKU
 
-Cet article vous aide à effectuer la mise à niveau du niveau de base (SKU) vers le niveau standard. Une fois la mise à niveau effectuée, vous ne pouvez plus revenir à la référence SKU de base sans supprimer et reconfigurer Bastion. Dans la préversion, ce paramètre ne peut être configuré que dans le portail Azure. Pour plus d’informations sur la mise à l’échelle des hôtes, consultez [Paramètres de configuration – Références SKU](configuration-settings.md#skus). 
+Cet article vous aide à effectuer la mise à niveau du niveau de base (SKU) vers le niveau standard. Une fois la mise à niveau effectuée, vous ne pouvez plus revenir à la référence SKU de base sans supprimer et reconfigurer Bastion. Actuellement, ce paramètre ne peut être configuré que dans le portail Azure. Pour plus d’informations sur la mise à l’échelle des hôtes, consultez [Paramètres de configuration – Références SKU](configuration-settings.md#skus). 
 
 ## <a name="configuration-steps"></a>Étapes de configuration
 

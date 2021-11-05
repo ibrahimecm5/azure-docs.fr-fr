@@ -1,34 +1,47 @@
 ---
-title: Supprimer des machines virtuelles d’Azure Automation Update Management
-description: Cet article explique comment supprimer des machines gérées avec Update Management.
+title: Supprimer des machines d’Azure Automation Update Management
+description: Cet article explique comment supprimer des machines Azure et non-Azure gérées avec Update Management.
 services: automation
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 10/26/2021
 ms.custom: mvc
-ms.openlocfilehash: 621367ba04893e7a8030b4a284125a6247c5d091
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: e5e4e80833bc21e5ffc5533d208b1642de359fd5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854969"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006731"
 ---
 # <a name="remove-vms-from-update-management"></a>Supprimer des machines virtuelles d’Update Management
 
-Lorsque vous avez terminé de gérer les mises à jour sur vos machines virtuelles dans votre environnement, vous pouvez arrêter de gérer les machines virtuelles grâce à la fonctionnalité [Update Management](overview.md). Pour arrêter leur gestion, vous allez modifier la requête de recherche enregistrée `MicrosoftDefaultComputerGroup` dans l’espace de travail Log Analytics qui est lié à votre compte Automation.
+Quand vous avez terminé de gérer les mises à jour sur des machines Azure ou non-Azure dans votre environnement, vous pouvez arrêter de les gérer avec la fonctionnalité [Update Management](overview.md). Pour arrêter leur gestion, vous allez modifier la requête de recherche enregistrée `MicrosoftDefaultComputerGroup` dans l’espace de travail Log Analytics qui est lié à votre compte Automation.
 
 ## <a name="sign-into-the-azure-portal"></a>Se connecter au portail Azure
 
 Connectez-vous au [portail Azure](https://portal.azure.com).
 
-## <a name="to-remove-your-vms"></a>Pour supprimer vos machines virtuelles
+## <a name="to-remove-your-machines"></a>Pour supprimer des machines
 
 1. Dans le portail Azure, lancez **Cloud Shell** dans le volet de navigation en haut du portail. Si vous ne connaissez pas Azure Cloud Shell, consultez [Vue d’ensemble d’Azure Cloud Shell](../../cloud-shell/overview.md).
 
-2. Utilisez la commande suivante pour identifier l’UUID d’une machine que vous souhaitez supprimer de la gestion.
+2. Utilisez la méthode suivante pour identifier l’UUID d’une machine virtuelle Azure ou d’une machine non-Azure que vous souhaitez supprimer de la gestion.
 
-    ```azurecli
-    az vm show -g MyResourceGroup -n MyVm -d
-    ```
+   # <a name="azure-vm"></a>[Microsoft Azure](#tab/azure-vm)
+
+   ```azurecli
+   az vm show -g MyResourceGroup -n MyVm -d
+   ```
+
+   # <a name="non-azure-machine"></a>[Machine non-Azure](#tab/non-azure-machine)
+
+   ```kusto
+   Heartbeat
+   | where TimeGenerated > ago(30d)
+   | where ComputerEnvironment == "Non-Azure"
+   | summarize by Computer, VMUUID
+   ```
+
+   ---
 
 3. Dans le portail Azure, accédez à **Espaces de travail Log Analytics**. Sélectionnez votre espace de travail dans la liste.
 
@@ -38,7 +51,7 @@ Connectez-vous au [portail Azure](https://portal.azure.com).
 
 6. Dans le tableau, cliquez sur l’icône **Exécuter la requête** à droite de l’élément **MicrosoftDefaultComputerGroup** avec la valeur **Catégorie héritée** de **Mises à jour**.
 
-7. Dans l’éditeur de requêtes, passez en revue la requête et recherchez l’UUID de la machine virtuelle. Supprimez l’UUID de la machine virtuelle et répétez les étapes pour toutes les machines virtuelles que vous souhaitez supprimer.
+7. Dans l’éditeur de requête, passez en revue la requête et recherchez l’UUID de la machine. Supprimez l’UUID de la machine et répétez les étapes pour toutes les machines que vous souhaitez supprimer.
 
    > [!NOTE]
    > Pour une protection supplémentaire, avant d’apporter des modifications, veillez à effectuer une copie de la requête. De cette manière, vous pourrez le restaurer si un problème survient.
@@ -62,4 +75,4 @@ Connectez-vous au [portail Azure](https://portal.azure.com).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour réactiver la gestion de votre machine virtuelle, consultez [Activer Update Management à partir du portail Azure](enable-from-portal.md) ou [Activer Update Management à partir d’une machine virtuelle Azure](enable-from-vm.md).
+Pour réactiver la gestion de votre machine Azure ou non-Azure, consultez [Activer Update Management à partir du portail Azure](enable-from-portal.md) ou [Activer Update Management à partir d’une machine virtuelle Azure](enable-from-vm.md).

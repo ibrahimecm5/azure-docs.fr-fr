@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: 25d1d07edabdc8ee3d46175a51d8a20c5d9cc9eb
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: f5dc1ad57b745ee26f9edb1b9c31091a1aaec42c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133109"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069973"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Exportation des données de l’espace de travail Log Analytics dans Azure Monitor (préversion)
 L’exportation des données de l’espace de travail Log Analytics dans Azure Monitor vous permet d’exporter en continu des données de tables sélectionnées dans votre espace de travail Log Analytics vers un compte de stockage Azure ou Azure Event Hubs à mesure qu’elles sont collectées. Cet article fournit des informations détaillées sur cette fonctionnalité et les étapes à suivre pour configurer l’exportation de données dans vos espaces de travail.
@@ -45,7 +45,7 @@ L’exportation des données d’espace de travail Log Analytics exporte en cont
 - L’exportation des données sera disponible dans toutes les régions, mais elle est actuellement prises en charge dans les régions suivantes : 
     - Centre de l’Australie
     - Australie Est
-    - Sud-Australie Est
+    - Australie Sud-Est
     - Brésil Sud
     - Centre du Canada
     - Inde centrale
@@ -173,7 +173,8 @@ Les destinations d’exportation de données ont des limites et doivent être su
     | namespaces-name | Métriques standard du Event Hub | Erreurs de dépassement de quota | Count | Entre 1 % et 5 % de la demande |
 
 1. Actions de correction des alertes
-   - Augmenter le nombre d’unités (TU ou PU)
+   - Configurez la fonctionnalité de [majoration automatique](../../event-hubs/event-hubs-auto-inflate.md) pour augmenter ou diminuer automatiquement le nombre d’unités de débit pour répondre aux besoins d’utilisation.
+   - Vérifier l’augmentation des unités de débit pour s’adapter à la charge
    - Fractionner des tables entre des espaces de noms supplémentaires
    - Utiliser des niveaux « Premium » ou « Dédié » pour un débit plus élevé
 
@@ -653,6 +654,10 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | ABSBotRequests |  |
 | ACSAuthIncomingOperations |  |
 | ACSBillingUsage |  |
+| ACRConnectedClientList |  |
+| ACRConnectedClientList |  |
+| ACSCallDiagnostics |  |
+| ACSCallSummary |  |
 | ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
 | ADAssessmentRecommendation |  |
@@ -674,7 +679,19 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
 | AEWAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmOperationLogs |  |
+| AgriFoodInsightLogs |  |
+| AgriFoodJobProcessedLogs |  |
+| AgriFoodModelInferenceLogs |  |
+| AgriFoodProviderAuthLogs |  |
+| AgriFoodSatelliteLogs |  |
+| AgriFoodWeatherLogs |  |
 | Alerte |  |
+| AlertEvidence |  |
 | AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
@@ -685,6 +702,7 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | AppServiceFileAuditLogs |  |
 | AppServiceHTTPLogs |  |
 | AppServicePlatformLogs |  |
+| ATCExpressRouteCircuitIpfix |  |
 | AuditLogs |  |
 | AutoscaleEvaluationsLog |  |
 | AutoscaleScaleActionsLog |  |
@@ -704,9 +722,10 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | CDBPartitionKeyRUConsumption |  |
 | CDBPartitionKeyStatistics |  |
 | CDBQueryRuntimeStatistics |  |
+| CloudAppEvents |  |
 | CommonSecurityLog |  |
 | ComputerGroup |  |
-| ConfigurationData | Prise en charge partielle : Certaines des données sont ingérées par le biais de services internes qui ne sont pas pris en charge pour l’exportation. Cette partie est manquante dans l’exportation actuellement. |
+| ConfigurationData | Prise en charge partielle – Certaines données sont ingérées par le biais de services internes qui ne sont pas pris en charge dans l’exportation. Cette partie est manquante dans l’exportation actuellement. |
 | ContainerImageInventory |  |
 | ContainerInventory |  |
 | ContainerLog |  |
@@ -747,9 +766,9 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | HDInsightHiveAndLLAPMetrics |  |
 | HDInsightHiveTezAppStats |  |
 | HDInsightJupyterNotebookEvents |  |
-| HDInsightKafkaLogs |  |
 | HDInsightKafkaMetrics |  |
 | HDInsightOozieLogs |  |
+| HDInsightRangerAuditLogs |  |
 | HDInsightSecurityLogs |  |
 | HDInsightSparkApplicationEvents |  |
 | HDInsightSparkBlockManagerEvents |  |
@@ -763,7 +782,7 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | HDInsightSparkTaskEvents |  |
 | Heartbeat |  |
 | HuntingBookmark |  |
-| InsightsMetrics | Prise en charge partielle : Certaines des données sont ingérées par le biais de services internes qui ne sont pas pris en charge pour l’exportation. Cette partie est manquante dans l’exportation actuellement. |
+| InsightsMetrics | Prise en charge partielle – Certaines données sont ingérées par le biais de services internes qui ne sont pas pris en charge dans l’exportation. Cette partie est manquante dans l’exportation actuellement. |
 | IntuneAuditLogs |  |
 | IntuneDevices |  |
 | IntuneOperationalLogs |  |
@@ -784,18 +803,18 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | NWConnectionMonitorPathResult |  |
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | Prise en charge partielle dans les clouds gouvernementaux – Certaines données sont ingérées via des webhooks d’O365 vers LA. Cette partie est manquante dans l’exportation actuellement. |
-| Opération | Prise en charge partielle – Certaines données sont ingérées via des services internes qui ne sont pas pris en charge pour l’exportation. Cette partie est manquante dans l’exportation actuellement. |
+| Opération | Prise en charge partielle – Certaines données sont ingérées par le biais de services internes qui ne sont pas pris en charge dans l’exportation. Cette partie est manquante dans l’exportation actuellement. |
 | Perf | Prise en charge partielle : Seules les données de performances Windows sont actuellement prises en charge. Les données de performances Linux sont actuellement manquantes dans l’exportation. |
 | PowerBIDatasetsWorkspace |  |
+| HDInsightRangerAuditLogs |  |
 | PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |
 | SCOMAssessmentRecommendation |  |
 | SecurityAlert |  |
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
-| SecurityCef |  |
 | SecurityDetection |  |
-| SecurityEvent | Prise en charge partielle : les données provenant de l'agent Log Analytics (MMA) ou de l'agent Azure Monitor (AMA) sont entièrement prises en charge lors de l'exportation. Les données arrivant via l’agent Diagnostics Extension sont collectées par le biais du stockage alors que ce chemin n’est pas pris en charge lors de l’exportation.2 |
+| SecurityEvent | Prise en charge partielle : les données provenant de l'agent Log Analytics (MMA) ou de l'agent Azure Monitor (AMA) sont entièrement prises en charge lors de l'exportation. Les données arrivant via l'agent Diagnostics Extension sont collectées par le biais du stockage alors que ce chemin n'est pas pris en charge lors de l'exportation. |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -822,9 +841,9 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | Prise en charge partielle : les données provenant de l'agent Log Analytics (MMA) ou de l'agent Azure Monitor (AMA) sont entièrement prises en charge lors de l'exportation. Les données arrivant via l’agent Diagnostics Extension sont collectées par le biais du stockage alors que ce chemin n’est pas pris en charge lors de l’exportation.2 |
+| syslog | Prise en charge partielle : les données provenant de l'agent Log Analytics (MMA) ou de l'agent Azure Monitor (AMA) sont entièrement prises en charge lors de l'exportation. Les données arrivant via l'agent Diagnostics Extension sont collectées par le biais du stockage alors que ce chemin n'est pas pris en charge lors de l'exportation. |
 | ThreatIntelligenceIndicator |  |
-| Update | Prise en charge partielle – Certaines données sont ingérées via des services internes qui ne sont pas pris en charge pour l’exportation. Cette partie est manquante dans l’exportation actuellement. |
+| Update | Prise en charge partielle – Certaines données sont ingérées par le biais de services internes qui ne sont pas pris en charge dans l’exportation. Cette partie est manquante dans l’exportation actuellement. |
 | UpdateRunProgress |  |
 | UpdateSummary |  |
 | Utilisation |  |
@@ -833,7 +852,7 @@ Les tables prises en charge sont actuellement limitées à celles spécifiées c
 | Liste de surveillance |  |
 | WindowsEvent |  |
 | WindowsFirewall |  |
-| WireData | Prise en charge partielle – Certaines données sont ingérées via des services internes qui ne sont pas pris en charge pour l’exportation. Cette partie est manquante dans l’exportation actuellement. |
+| WireData | Prise en charge partielle – Certaines données sont ingérées par le biais de services internes qui ne sont pas pris en charge dans l’exportation. Cette partie est manquante dans l’exportation actuellement. |
 | WorkloadDiagnosticLogs |  |
 | WVDAgentHealthStatus |  |
 | WVDCheckpoints |  |

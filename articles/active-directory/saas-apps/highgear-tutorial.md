@@ -11,17 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d8a093e4008d747aee8bab48ed2db7dcd81fd2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ae50e0d9cee09cafe0b6a43cec1122832857b7fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826312"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Tutoriel : Intégration d’Azure Active Directory à HighGear
 
-Dans ce tutoriel, vous pouvez apprendre à intégrer HighGear à Azure Active Directory (Azure AD).
-L’intégration de HighGear à Azure AD vous offre les avantages suivants :
+Dans ce tutoriel, vous pouvez apprendre à intégrer HighGear à Azure Active Directory (Azure AD). L’intégration de HighGear à Azure AD vous offre les avantages suivants :
 
 * Dans Azure AD, vous pouvez contrôler qui a accès à HighGear.
 * Vous pouvez permettre aux utilisateurs de se connecter automatiquement à HighGear (par le biais de l’authentification unique) avec leur compte Azure AD.
@@ -101,29 +100,29 @@ Pour configurer l’authentification unique Azure AD auprès de votre système H
 
     ![Capture d’écran montrant Basic SAML Configuration, où vous pouvez entrer Identifier, et Reply URL, et sélectionner Save.](common/idp-intiated.png)
 
-    a. Dans la zone de texte **Identificateur**, collez la valeur du champ **Service Provider Entity ID** (ID d’entité du fournisseur de services) figurant dans la page Single Sign-On Settings (Paramètres d’authentification unique) au sein de votre système HighGear.
+    1. Dans la zone de texte **Identificateur**, collez la valeur du champ **Service Provider Entity ID** (ID d’entité du fournisseur de services) figurant dans la page Single Sign-On Settings (Paramètres d’authentification unique) au sein de votre système HighGear.
 
-    ![Champ Service Provider Entity ID (ID d’entité du fournisseur de services)](media/highgear-tutorial/service-provider-entity-id-field.png)
-    
-    > [!NOTE]
-    > Vous devez vous connecter à votre système HighGear pour accéder à la page Single Sign-On Settings (Paramètres d’authentification unique). Une fois que vous êtes connecté, déplacez votre souris sur l’onglet Administration dans HighGear et cliquez sur l’élément de menu Single Sign-On Settings (Paramètres d’authentification unique).
-    
-    ![Élément de menu Single Sign-On Settings (Paramètres d’authentification unique)](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+       ![Champ Service Provider Entity ID (ID d’entité du fournisseur de services)](media/highgear-tutorial/service-provider-entity-id-field.png)
 
-    b. Dans la zone de texte **URL de réponse**, collez la valeur du champ **Assertion Consumer Service (ACS) URL** (URL du service ACS) à partir de la page Single Sign-On Settings (Paramètres d’authentification unique) de votre système HighGear.
+       > [!NOTE]
+       > Vous devez vous connecter à votre système HighGear pour accéder à la page Single Sign-On Settings (Paramètres d’authentification unique). Une fois que vous êtes connecté, déplacez votre souris sur l’onglet Administration dans HighGear et cliquez sur l’élément de menu Single Sign-On Settings (Paramètres d’authentification unique).
 
-    ![Champ Assertion Consumer Service (ACS) URL (URL du service ACS)](media/highgear-tutorial/assertion-consumer-service-url-field.png)
+       ![Élément de menu Single Sign-On Settings (Paramètres d’authentification unique)](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-    c. Si vous souhaitez configurer l’application en **mode démarré par le fournisseur de services**, cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes :
+    1. Dans la zone de texte **URL de réponse**, collez la valeur du champ **Assertion Consumer Service (ACS) URL** (URL du service ACS) à partir de la page Single Sign-On Settings (Paramètres d’authentification unique) de votre système HighGear.
 
-     ![Capture d’écran montrant Set additional URLs, où vous pouvez entrer une URL de connexion.](common/metadata-upload-additional-signon.png)
+       ![Champ Assertion Consumer Service (ACS) URL (URL du service ACS)](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
-     Dans la zone de texte **URL de connexion**, collez la valeur du champ **Service Provider Entity ID** (ID d’entité du fournisseur de services) figurant dans la page Single Sign-On Settings (Paramètres d’authentification unique) au sein de votre système HighGear. (Cet ID d’entité est également l’URL de base du système HighGear qui doit être utilisée pour l’authentification démarrée par le fournisseur de services.)
+    1. Si vous souhaitez configurer l’application en **mode démarré par le fournisseur de services**, cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes :
 
-    ![Champ Service Provider Entity ID (ID d’entité du fournisseur de services)](media/highgear-tutorial/service-provider-entity-id-field.png)
+       ![Capture d’écran montrant Set additional URLs, où vous pouvez entrer une URL de connexion.](common/metadata-upload-additional-signon.png)
 
-    > [!NOTE]
-    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL de réponse et l’URL de connexion réels à partir de la page **Single Sign-On Settings** (Paramètres d’authentification unique) de votre système HighGear. Si vous avez besoin d’aide, contactez l’[équipe du support technique HighGear](mailto:support@highgear.com).
+       Dans la zone de texte **URL de connexion**, collez la valeur du champ **Service Provider Entity ID** (ID d’entité du fournisseur de services) figurant dans la page Single Sign-On Settings (Paramètres d’authentification unique) au sein de votre système HighGear. (Cet ID d’entité est également l’URL de base du système HighGear qui doit être utilisée pour l’authentification démarrée par le fournisseur de services.)
+
+       ![Champ Service Provider Entity ID (ID d’entité du fournisseur de services)](media/highgear-tutorial/service-provider-entity-id-field.png)
+
+       > [!NOTE]
+       > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL de réponse et l’URL de connexion réels à partir de la page **Single Sign-On Settings** (Paramètres d’authentification unique) de votre système HighGear. Si vous avez besoin d’aide, contactez l’[équipe du support technique HighGear](mailto:support@highgear.com).
 
 4. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, cliquez sur **Télécharger** pour télécharger le **Certificat (Base64)** , puis enregistrez-le sur votre ordinateur. Vous en aurez besoin à une étape ultérieure de la configuration de l’authentification unique.
 
@@ -133,11 +132,11 @@ Pour configurer l’authentification unique Azure AD auprès de votre système H
 
     ![Copier les URL de configuration](common/copy-configuration-urls.png)
 
-    a. URL de connexion. Vous aurez besoin de cette valeur à l’étape 2 de la procédure **Configurer l’authentification unique HighGear** ci-après.
+    1. URL de connexion. Vous aurez besoin de cette valeur à l’étape 2 de la procédure **Configurer l’authentification unique HighGear** ci-après.
 
-    b. Identificateur Azure AD. Vous aurez besoin de cette valeur à l’étape 3 de la procédure **Configurer l’authentification unique HighGear** ci-après.
+    1. Identificateur Azure AD. Vous aurez besoin de cette valeur à l’étape 3 de la procédure **Configurer l’authentification unique HighGear** ci-après.
 
-    c. URL de déconnexion. Vous aurez besoin de cette valeur à l’étape 4 de la procédure **Configurer l’authentification unique HighGear** ci-après.
+    1. URL de déconnexion. Vous aurez besoin de cette valeur à l’étape 4 de la procédure **Configurer l’authentification unique HighGear** ci-après.
 
 ### <a name="configure-highgear-single-sign-on"></a>Configurer l’authentification unique HighGear
 
@@ -175,14 +174,13 @@ L’objectif de cette section est de créer un utilisateur de test appelé Britt
 
     ![Boîte de dialogue Utilisateur](common/user-properties.png)
 
-    a. Dans le champ **Nom**, entrez **BrittaSimon**.
+    1. Dans le champ **Nom**, entrez **BrittaSimon**.
   
-    b. Dans le champ **Nom d’utilisateur**, tapez **brittasimon\@domainedevotreentreprise.extension**.  
-    Par exemple : BrittaSimon@contoso.com
+    1. Dans le champ **Nom d’utilisateur**, tapez **brittasimon\@domainedevotresociété.extension** (par exemple, BrittaSimon@contoso.com).
 
-    c. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ Mot de passe.
+    1. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ Mot de passe.
 
-    d. Cliquez sur **Créer**.
+    1. Cliquez sur **Créer**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 

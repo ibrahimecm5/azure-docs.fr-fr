@@ -12,15 +12,15 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.date: 02/22/2019
+ms.date: 10/26/2021
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 43ec1680d0855ba70b084771e7e98f4285c0af58
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39f29933a8b4d9858ca12de8e79f29cbda55c1c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724430"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024433"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutoriel : Utiliser un appareil simulé pour tester la connectivité avec votre hub IoT
 
@@ -193,7 +193,7 @@ La fenêtre de terminal affiche des informations lorsqu’il envoie des données
 
 Vous pouvez utiliser les **Métriques** dans le portail pour vérifier que les messages de télémétrie arrivent jusqu’à votre hub IoT. Sélectionnez votre Hub IoT dans la liste déroulante **Ressource**, sélectionnez **Messages de télémétrie envoyés** en tant que métrique et définissez l’intervalle de temps sur **Dernière heure**. Le graphique indique le nombre agrégé de messages envoyés par l’appareil simulé :
 
-![Afficher les métriques IoT Hub](media/tutorial-connectivity/metrics-portal.png)
+:::image type="content" source="media/tutorial-connectivity/metrics-portal.png" alt-text="Capture d’écran montrant les métriques du volet de gauche." border="true":::
 
 Après le démarrage de l’appareil simulé, les mesures deviennent disponibles après quelques minutes.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: c72ce281697b23092530571114dafb3aece5d0d1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b621616790394df54d312af86719b24ff90a59c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990080"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068148"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Paramètres de cookies pour l'accès aux applications locales dans Azure Active Directory
 
@@ -40,7 +40,7 @@ Le [proxy d'application](application-proxy.md) utilise les paramètres de cookie
 
 Ces modifications apportées aux cookies du proxy d’application seront déployées au cours des prochaines semaines, avant la date de publication de Chrome 80.
 
-De plus, si votre application principale comporte des cookies qui doivent être disponibles dans un contexte tiers, vous devez explicitement choisir en changeant le paramètre SameSite=None pour ces cookies. Le proxy d’application convertit l’en-tête Set-Cookie en ses propres URL et respecte les paramètres définis pour ces cookies par l’application principale.
+De plus, si votre application principale comporte des cookies qui doivent être disponibles dans un contexte tiers, vous devez explicitement choisir en changeant le paramètre SameSite=None pour ces cookies. Le proxy d’application convertit l’en-tête Set-Cookie en ses propres URL et respecte les paramètres définis pour ces cookies par l’application back-end.
 
 
 

@@ -2,13 +2,14 @@
 title: Notes de publication d’Azure Video Analyzer - Azure
 description: Cette rubrique fournit des notes de publication sur les versions, les améliorations, les correctifs de bogues et les problèmes connus d’Azure Video Analyzer.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: f7189e6bda42ad77cb4bb6f426bf73209f46c363
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 11/01/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8b17c19d96699a6442bd6d606ffbc88b25088afe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601923"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087036"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Notes de publication d’Azure Video Analyzer
 
@@ -22,6 +23,39 @@ Cet article vous fournit des informations sur :
 * Fonctionnalités dépréciées
 
 <hr width=100%>
+
+## <a name="november-2-2021"></a>2 novembre 2021
+
+Cette version est une mise à jour du module de périphérie Video Analyzer et du service Video Analyzer. La balise de version du module de périphérie est :
+
+```
+mcr.microsoft.com/media/video-analyzer:1.1.0
+```
+
+> [!NOTE]
+> Dans les démarrages rapides et les tutoriels, les manifestes de déploiement utilisent une balise 1 (video-analyzer:1). Par conséquent, le simple redéploiement de tels manifestes doit mettre à jour le module sur vos appareils périphériques quand de nouvelles balises sont publiées.
+
+La version d’API ARM du service Video Analyzer est :
+
+```
+2021-11-01-preview
+```
+
+### <a name="new-functionalities"></a>Nouvelles fonctionnalités
+
+* Quand vous utilisez Video Analyzer avec le service IA [Vision par ordinateur pour l’analyse spatiale](edge/computer-vision-for-spatial-analysis.md) de Cognitive Services, vous pouvez générer et voir de nouveaux insights tels que la vitesse, l’orientation et le cheminement des personnes dans la vidéo en direct.
+* Vous pouvez [découvrir les appareils ONVIF](edge/camera-discovery.md) dans le sous-réseau local de votre appareil de périphérie.
+* Vous pouvez [capturer et enregistrer de la vidéo en direct directement dans le cloud](cloud/connect-cameras-to-cloud.md).
+  * Vous pouvez utiliser le [streaming à faible latence](playback-recordings-how-to.md#low-latency-streaming) pour voir la vidéo en direct à partir de la caméra RTSP avec des latences de bout en bout d’environ 2 secondes.
+  * Vous pouvez implémenter le [contrat Video Analyzer IoT PnP](cloud/connect-devices.md) sur votre caméra RTSP pour activer la capture vidéo à partir de votre appareil vers le service Video Analyzer.
+* Vous pouvez [exporter la partie souhaitée de votre vidéo enregistrée](cloud/export-portion-of-video-as-mp4.md) vers un fichier MP4.
+* Vous pouvez spécifier, pour toute vidéo enregistrée, une stratégie de conservation avec laquelle le service supprime régulièrement le contenu antérieur à la période spécifiée en nombre de jours.
+* Les vidéos enregistrées à l’aide du module de périphérie Video Analyzer peuvent inclure des [images d’aperçu](edge/enable-video-preview-images.md) ou des miniatures de façon régulière, pour une meilleure expérience de navigation.
+
+## <a name="october-1-2021"></a>1er octobre 2021
+Le service Video Analyzer est désormais disponible (en version préliminaire) dans la région Australie Est. Pour obtenir les informations les plus récentes sur la disponibilité, cliquez [ici](https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all).
+
+Un nouvel article a été ajouté pour décrire comment vous pouvez [incorporer le widget Video Analyzer dans Power BI](embed-player-in-power-bi.md).
 
 ## <a name="june-3-2021"></a>3 juin 2021
 
@@ -58,7 +92,7 @@ mcr.microsoft.com/media/video-analyzer:1.0.0
 * Suivre les objets détectés avec votre propre modèle de détection 
 * Utiliser les widgets du lecteur Video Analyzer (composants web) pour lire la vidéo et les métadonnées d’inférence enregistrées
 * Déployer et configurer le module via le hub IoT à l’aide de Portail Azure ou Visual Studio Code
-* Gérer les [topologies de pipeline](pipeline.md#pipeline-topologies) à distance ou localement à l’aide d’appels de [méthode directe](direct-methods.md)
+<!--REDIRECT* Manage [pipeline topologies](pipeline.md#pipeline-topologies) remotely or locally using [direct method](direct-methods.md) calls-->
 
 ## <a name="next-steps"></a>Étapes suivantes
 

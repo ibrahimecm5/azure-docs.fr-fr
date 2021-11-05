@@ -2,17 +2,17 @@
 title: Améliorer la fiabilité d’une application avec Advisor
 description: Utilisez Azure Advisor pour garantir et améliorer la fiabilité de vos déploiements Azure vitaux pour l’entreprise.
 ms.topic: article
-ms.date: 09/27/2020
-ms.openlocfilehash: 8d0c8902c41d50f4391a5431aba7a58faa917208
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 10/26/2021
+ms.openlocfilehash: f7ea986424271315843af9557555aa82a708a12c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887543"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045859"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Améliorer la fiabilité d’une application à l’aide d’Azure Advisor
 
-Azure Advisor vous aide à garantir et à améliorer la continuité de vos applications stratégiques. Vous pouvez recevoir des recommandations en matière de fiabilité de la part d’Advisor dans l’onglet **Fiabilité** du tableau de bord Advisor.
+Azure Advisor vous aide à garantir et à améliorer la continuité de vos applications stratégiques. Vous pouvez recevoir des recommandations en matière de fiabilité sous l’onglet **Fiabilité** d’[Azure Advisor](https://aka.ms/azureadvisordashboard).
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Vérifier la version de l’image d’appliance virtuelle réseau Check Point
 
@@ -59,6 +59,9 @@ Azure Advisor recherche les passerelles VPN qui utilisent une référence SKU de
 - Une stratégie IPsec/IKE personnalisée. 
 - Une stabilité et disponibilité accrues.
 
+## <a name="ensure-reliable-outbound-connectivity-with-vnet-nat"></a>Garantir une connectivité sortante fiable avec VNet NAT
+L’utilisation de la connectivité sortante par défaut fournie par un équilibreur de charge standard ou d’autres ressources Azure n’est pas recommandée pour les charges de travail de production en raison des échecs de connexion résultants (ou « épuisement des ports SNAT »). Pour empêcher tout échec de connectivité, l’approche recommandée consiste à utiliser VNet NAT. NAT peut s’adapter en toute transparence de façon à ce que votre application ne manque jamais de ports. [Découvrez-en plus sur VNet NAT](../virtual-network/nat-gateway/nat-overview.md).
+
 ## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>Assurer la tolérance de panne des machines virtuelles (temporairement désactivée)
 
 Pour assurer la redondance de votre application, nous vous recommandons de regrouper au moins deux machines virtuelles dans un groupe à haute disponibilité. Advisor identifie les machines virtuelles qui ne font pas partie d’un groupe à haute disponibilité et recommande de les y déplacer. Cette configuration garantit que lors d’une maintenance planifiée ou non, au moins une machine virtuelle est disponible et répond au SLA de machine virtuelle Azure. Vous pouvez choisir de créer un groupe à haute disponibilité pour la machine virtuelle ou d’ajouter la machine virtuelle à un groupe à haute disponibilité existant.
@@ -70,9 +73,9 @@ Pour assurer la redondance de votre application, nous vous recommandons de regro
 
 Pour assurer la redondance de votre application, nous vous recommandons de regrouper au moins deux machines virtuelles dans un groupe à haute disponibilité. Advisor identifie les groupes à haute disponibilité contenant une seule machine virtuelle et recommande d’y ajouter au moins une machine virtuelle.  Cette configuration garantit que lors d’une maintenance planifiée ou non, au moins une machine virtuelle est disponible et répond au SLA de machine virtuelle Azure.  Vous pouvez créer une machine virtuelle ou ajouter une machine virtuelle existante au groupe à haute disponibilité.  
 
-## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Utiliser des disques managés pour améliorer la fiabilité des données (temporairement désactivé)
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Utiliser des disques managés pour améliorer la fiabilité des données
 
-Les machines virtuelles situées dans un groupe à haute disponibilité avec des disques partageant des comptes de stockage ou des unités d’échelle de stockage ne sont pas résilientes face aux échecs des unités d’échelle de stockage en cas de pannes. Advisor identifie ces groupes à haute disponibilité et conseille leur migration vers des disques managés Azure. Cette migration permet de s’assurer que les disques des machines virtuelles du groupe à haute disponibilité sont suffisamment isolés pour éviter un point de défaillance unique. 
+Les machines virtuelles dans un groupe à haute disponibilité avec disques partageant des comptes de stockage ou des unités d’échelle de stockage ne sont pas résistantes aux échecs des unités d’échelle de stockage en cas de pannes. Effectuez une migration vers des disques managés Azure pour vérifier que les disques des différentes machines virtuelles du groupe à haute disponibilité sont suffisamment isolés pour éviter un point de défaillance unique.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Réparer les règles d’alerte de journal invalides
 
@@ -113,13 +116,7 @@ Les machines virtuelles pour lesquelles la réplication n’est pas activée ver
 [Azure Connected Machine Agent](../azure-arc/servers/manage-agent.md) est régulièrement mis à jour avec des correctifs de bogues, des améliorations en termes de stabilité et de nouvelles fonctionnalités. Nous avons identifié des ressources qui ne travaillent pas sur la dernière version de l’agent de machine, et cette recommandation d’Advisor vous suggérera de mettre à niveau votre agent vers la dernière version pour bénéficier de la meilleure expérience Azure Arc.
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Ne pas remplacer le nom d’hôte pour garantir l’intégrité du site web
-Advisor recommande d’éviter, dans la mesure du possible, de remplacer le nom d’hôte lors de la configuration d’Application Gateway. Le fait d’avoir un domaine différent sur le serveur frontal d’Application Gateway que celui qui est utilisé pour accéder au serveur principal peut entraîner des ruptures de cookies ou d’URL de redirection. Cela peut ne pas être le cas dans toutes les situations et certaines catégories de backends (comme les API REST) y sont en général moins sensibles. Assurez-vous que le serveur principal peut traiter ce problème ou mettez à jour la configuration d’Application Gateway pour que le nom d’hôte ne doive pas être remplacé par le serveur principal. Lorsqu’il est utilisé avec App Service, associez un nom de domaine personnalisé à l’application web et évitez d’utiliser le *nom d’hôte .azurewebsites.net vers le serveur principal.* [En savoir plus sur le domaine personnalisé](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
-
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Comment accéder aux recommandations en matière de haute disponibilité dans Advisor
-
-1. Connectez-vous au [portail Azure](https://portal.azure.com), puis ouvrez [Advisor](https://aka.ms/azureadvisordashboard).
-
-2.  Dans le tableau de bord Advisor, sélectionnez l’onglet **Haute disponibilité**.
+Advisor recommande d’éviter, dans la mesure du possible, de remplacer le nom d’hôte lors de la configuration d’Application Gateway. Le fait d’avoir un domaine différent sur le serveur front-end d’Application Gateway que celui qui est utilisé pour accéder au back-end peut entraîner des ruptures de cookies ou d’URL de redirection. Cela peut ne pas être le cas dans toutes les situations et certaines catégories de backends (comme les API REST) y sont en général moins sensibles. Assurez-vous que le serveur principal peut traiter ce problème ou mettez à jour la configuration d’Application Gateway pour que le nom d’hôte ne doive pas être remplacé par le serveur principal. Lorsqu’il est utilisé avec App Service, associez un nom de domaine personnalisé à l’application web et évitez d’utiliser le nom d’hôte `*.azurewebsites.net` vers le back-end. [En savoir plus sur le domaine personnalisé](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

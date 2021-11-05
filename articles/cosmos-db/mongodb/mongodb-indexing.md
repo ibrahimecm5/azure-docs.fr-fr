@@ -9,17 +9,17 @@ ms.date: 10/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 115876aab202c550d694267294345b5472ad1f2a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: b33e80ad409c20be36a4c743573ea959525f82e8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811728"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045148"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Gérer l’indexation dans l’API pour MongoDB d’Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
 
-L’API d’Azure Cosmos DB pour MongoDB tire parti des fonctionnalités de base de gestion des index d’Azure Cosmos DB. Cet article décrit comment ajouter des index à l’aide de l’API d’Azure Cosmos DB pour MongoDB. Vous pouvez également lire une [vue d’ensemble de l’indexation dans Azure Cosmos DB](../index-overview.md) qui est pertinente pour toutes les API.
+L’API d’Azure Cosmos DB pour MongoDB tire parti des fonctionnalités de base de gestion des index d’Azure Cosmos DB. Cet article décrit comment ajouter des index à l’aide de l’API d’Azure Cosmos DB pour MongoDB. Les index sont des structures de données spécialisées qui permettent l’interrogation de vos données dans un ordre de grandeur approximatif plus rapide.
 
 ## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>Indexation pour le serveur MongoDB versions 3.6 et ultérieures
 

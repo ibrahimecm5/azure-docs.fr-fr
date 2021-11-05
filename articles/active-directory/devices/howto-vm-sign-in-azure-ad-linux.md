@@ -5,26 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996c82b428c01ce9f598fbf8e35e2fb664ef8763
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aeca09f5763cf11edc13cecd2df0c267fad8a23d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601954"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049745"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>Préversion : Se connecter à une machine virtuelle Linux dans Azure avec Azure Active Directory à l’aide de l’authentification par certificat SSH
 
 Pour améliorer la sécurité des machines virtuelles Linux dans Azure, vous pouvez intégrer l’authentification Azure Active Directory (Azure AD). Vous pouvez désormais utiliser Azure AD comme plateforme d’authentification principale et autorité de certification pour vous connecter par protocole SSH à une machine virtuelle Linux avec Azure AD et l’authentification par certificat SSH. Cette fonctionnalité permet aux organisations de contrôler et d’appliquer de manière centralisée le contrôle d’accès en fonction du rôle (RBAC) Azure et les stratégies d’accès conditionnel qui gèrent l’accès aux machines virtuelles. Cet article vous explique comment créer et configurer une machine virtuelle Linux et comment vous connecter avec Azure AD en utilisant l’authentification par certificat SSH.
 
 > [!IMPORTANT]
-> Pour le moment, cette fonctionnalité est disponible dans la version préliminaire publique. [La version précédente qui utilisait le flux de code d’appareil sera dépréciée le 15 août 2021](../../virtual-machines/linux/login-using-aad.md). Pour migrer de l’ancienne version vers cette dernière, consultez la section [Migration à partir de la préversion précédente](#migration-from-previous-preview).
+> Pour le moment, cette fonctionnalité est disponible dans la version préliminaire publique. [La version précédente qui utilisait le flux de code d’appareil a été dépréciée le 15 août 2021](../../virtual-machines/linux/login-using-aad.md). Pour migrer de l’ancienne version vers cette dernière, consultez la section [Migration à partir de la préversion précédente](#migration-from-previous-preview).
 > Cette préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge. Utilisez cette fonctionnalité sur une machine virtuelle de test que vous prévoyez d’abandonner après le test. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 L’utilisation d’Azure AD avec l’authentification par certificat SSH pour se connecter aux machines virtuelles Linux dans Azure présente de nombreux avantages en termes de sécurité, notamment :
@@ -44,19 +44,17 @@ Les distributions Linux suivantes sont actuellement prises en charge dans la pr�
 
 | Distribution | Version |
 | --- | --- |
-| CentOS | CentOS 7, CentOS 8.3 |
+| CentOS | CentOS 7, CentOS 8 |
 | Debian | Debian 9, Debian 10 |
-| OpenSUSE | openSUSE Leap 42.3 |
-| RedHat Enterprise Linux | RHEL 7.4 à RHEL 7.10, RHEL 8.3 |
-| SUSE Linux Enterprise Server | SLES 12 |
+| OpenSUSE | openSUSE Leap 42.3, openSUSE Leap 15.1+ |
+| RedHat Enterprise Linux | RHEL 7.4 à RHEL 7.10, RHEL 8.3+ |
+| SUSE Linux Enterprise Server | SLES 12, SLES 15.1+ |
 | Serveur Ubuntu | Ubuntu Server 16.04 à Ubuntu Server 20.04 |
 
 Les régions Azure suivantes sont actuellement prises en charge dans la préversion de cette fonctionnalité :
 
 - Azure Global
 
-> [!Note]
-> La préversion de cette fonctionnalité sera prise en charge dans Azure Government et Azure China 21Vianet d’ici juin 2021.
  
 L’utilisation de cette extension n’est pas prise en charge sur les clusters Azure Kubernetes Service (AKS). Pour plus d’informations, consultez [Stratégies de support pour AKS](../../aks/support-policies.md).
 
@@ -96,7 +94,7 @@ Pour Azure Chine
 Vérifiez que votre machine virtuelle est configurée avec les fonctionnalités suivantes :
 
 - Identité managée affectée par le système. Cette option est sélectionnée automatiquement lorsque vous utilisez Portail Azure pour créer une machine virtuelle et sélectionnez l’option de connexion Azure AD. Vous pouvez également activer l’identité managée affectée par le système sur une machine virtuelle nouvelle ou existante à l’aide d’Azure CLI.
-- aadsshlogin et aadsshlogin-selinux (le cas échéant). Ces packages sont installés avec l’extension de machine virtuelle AADSSHLoginForLinux. L’extension est installée lorsque vous utilisez Portail Azure pour créer une machine virtuelle et activez la connexion Azure AD (onglet Gestion) ou via l’interface de ligne de commande Azure.
+- `aadsshlogin` et `aadsshlogin-selinux` (selon ce qui est approprié). Ces packages sont installés avec l’extension de machine virtuelle AADSSHLoginForLinux. L’extension est installée lorsque vous utilisez Portail Azure pour créer une machine virtuelle et activez la connexion Azure AD (onglet Gestion) ou via l’interface de ligne de commande Azure.
 
 ### <a name="client"></a>Client
 
@@ -340,19 +338,19 @@ Une fois que les utilisateurs auxquels est attribué le rôle Administrateur de 
 
 Les groupes de machines virtuelles identiques sont pris en charge, mais les étapes sont légèrement différentes pour l’activation et la connexion aux machines virtuelles du groupe de machines virtuelles identiques.
 
-Tout d’abord, créez un groupe de machines virtuelles identiques ou choisissez-en un qui existe déjà. Activez une identité managée affectée par le système pour votre groupe de machines virtuelles identiques.
+1. Créez un groupe de machines virtuelles identiques ou choisissez-en un qui existe déjà. Activez une identité managée affectée par le système pour votre groupe de machines virtuelles identiques.
 
 ```azurecli
 az vmss identity assign --vmss-name myVMSS --resource-group AzureADLinuxVMPreview
 ```
 
-Installez l’extension Azure AD sur votre groupe de machines virtuelles identiques.
+2. Installez l’extension Azure AD sur votre groupe de machines virtuelles identiques.
 
 ```azurecli
 az vmss extension set --publisher Microsoft.Azure.ActiveDirectory --name Azure ADSSHLoginForLinux --resource-group AzureADLinuxVMPreview --vmss-name myVMSS
 ```
 
-Le groupe de machines virtuelles identiques n’a généralement pas d’IP publiques. Vous devez donc vous y connecter à partir d’un autre ordinateur qui peut atteindre son réseau virtuel Azure. Cet exemple montre comment utiliser l’adresse IP privée d’une machine virtuelle du groupe de machines virtuelles identiques pour se connecter à partir d’une machine du même réseau virtuel. 
+Le groupe de machines virtuelles identiques n’a généralement pas d’adresses IP publiques : vous devez donc vous y connecter à partir d’une autre machine qui peut atteindre son réseau virtuel Azure. Cet exemple montre comment utiliser l’adresse IP privée d’une machine virtuelle du groupe de machines virtuelles identiques pour se connecter à partir d’une machine du même réseau virtuel. 
 
 ```azurecli
 az ssh vm --ip 10.11.123.456
@@ -363,21 +361,30 @@ az ssh vm --ip 10.11.123.456
 
 ## <a name="migration-from-previous-preview"></a>Migration à partir de la préversion précédente
 
-Pour les clients qui utilisent une version précédente de la connexion Azure AD pour Linux basée sur le flux de code d’appareil, procédez comme suit.
+Pour les clients qui utilisent une version précédente de la connexion Azure AD pour Linux basée sur le flux de code d’appareil, effectuez les étapes suivantes en utilisant Azure CLI.
 
 1. Désinstallez l’extension AADLoginForLinux sur la machine virtuelle.
-   1. En utilisant Azure CLI : `az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux`
+   
+   ```azurecli
+   az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux
+   ```
+
 1. Activez l’identité managée affectée par le système sur votre machine virtuelle.
-   1. En utilisant Azure CLI : `az vm identity assign -g myResourceGroup -n myVm`
+
+   ```azurecli
+   az vm identity assign -g myResourceGroup -n myVm
+   ```
+
 1. Installez l’extension AADSSHLoginForLinux sur la machine virtuelle.
-   1. En utilisant Azure CLI :
-      ```azurecli
-      az vm extension set \
-                --publisher Microsoft.Azure.ActiveDirectory \
-                --name AADSSHLoginForLinux \
-                --resource-group myResourceGroup \
-                --vm-name myVM
-      ```
+
+    ```azurecli
+    az vm extension set \
+        --publisher Microsoft.Azure.ActiveDirectory \
+        --name AADSSHLoginForLinux \
+        --resource-group myResourceGroup \
+        --vm-name myVM
+    ```
+
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Utilisation d’Azure Policy pour garantir les normes et évaluer la conformité
 
 Utilisez Azure Policy pour vous assurer que la connexion Azure AD est activée pour vos machines virtuelles Linux nouvelles et existantes, et évaluer la conformité de votre environnement à grande échelle sur votre tableau de bord de conformité Azure Policy. Grâce à cette capacité, vous pouvez utiliser plusieurs niveaux d’application : vous pouvez signaler les machines virtuelles Linux nouvelles et existantes de votre environnement pour lesquelles la connexion Azure AD n’est pas activée. Vous pouvez également utiliser Azure Policy pour déployer l’extension Azure AD sur de nouvelles machines virtuelles Linux pour lesquelles la connexion Azure AD n’est pas activée, ainsi que pour corriger les machines virtuelles Linux existantes afin qu’elles respectent la même norme. Outre ces capacités, vous pouvez également utiliser Azure Policy pour détecter et signaler les machines virtuelles Linux sur lesquelles des comptes locaux non approuvés sont créés. Pour en savoir plus, consultez [Azure Policy](../../governance/policy/overview.md).
@@ -447,6 +454,6 @@ Les connexions aux machines virtuelles du groupe de machines virtuelles identiqu
 
 ## <a name="preview-feedback"></a>Commentaires de la préversion
 
-Partagez vos commentaires sur cette fonctionnalité d’évaluation ou signalez des problèmes lors de son utilisation sur le [forum de commentaires d’Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Partagez vos commentaires sur cette fonctionnalité d’évaluation ou signalez des problèmes lors de son utilisation sur le [forum de commentaires d’Azure AD](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789).
 
 ## <a name="next-steps"></a>Étapes suivantes

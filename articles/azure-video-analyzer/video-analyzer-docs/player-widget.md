@@ -1,15 +1,16 @@
 ---
-title: Utiliser le widget du lecteur d’Azure Video Analyzer
-description: Cet article de référence explique comment ajouter un widget du lecteur de Video Analyzer à votre application.
+title: Utiliser le widget de lecteur Video Analyzer
+description: Cet article explique comment ajouter un widget de lecteur Video Analyzer à votre application.
 ms.service: azure-video-analyzer
-ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: ffc17e756a303723fe1d21c6ba221fed31147eaa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.topic: how-to
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 4617d7db16d674ff74419fc43744ff04b9e239cb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620570"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012052"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Utiliser le widget du lecteur d’Azure Video Analyzer
 
@@ -18,11 +19,11 @@ Ce tutoriel explique comment utiliser un widget du lecteur dans votre applicatio
 Ce didacticiel présente les procédures suivantes :
 
 > [!div class="checklist"]
-> * Créer un jeton
-> * Répertorier les vidéos
-> * Obtenir l’URL de base pour lire une [ressource d’application vidéo](./terminology.md#video)
 > * Créer une page avec le lecteur
+> * Répertorier les vidéos
 > * Passer un point de terminaison de streaming et un jeton au lecteur
+> * Ajouter un lecteur Dessinateur de zone
+> * Voir des vidéos tronquées selon les heures de début et de fin spécifiées
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -30,15 +31,39 @@ Les éléments suivants sont requis pour suivre ce tutoriel :
 
 * Un compte Azure disposant d’un abonnement actif. Si vous n’en avez pas déjà un, [créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual Studio Code](https://code.visualstudio.com/) ou un autre éditeur pour le fichier HTML.
-* [Enregistrement et lecture de vidéo continue](./use-continuous-video-recording.md) ou [Détecter les mouvements et enregistrer des vidéos sur des appareils de périphérie](./detect-motion-record-video-clips-cloud.md)
+* Exécuter les topologies du tutoriel [Enregistrement et lecture de vidéo continue](edge/use-continuous-video-recording.md) ou du guide de démarrage rapide [Détecter les mouvements et enregistrer des vidéos sur des appareils de périphérie](./detect-motion-record-video-clips-cloud.md)
 * Créer un [jeton](./access-policies.md#creating-a-token)
 * Créer une [stratégie d’accès](./access-policies.md#creating-an-access-policy)
 
+
+## <a name="create-a-web-page-with-a-video-player"></a>Créer une page web avec un lecteur vidéo
+
+Utilisez l’exemple de code ci-dessous pour créer une page web.
+
+```html
+<html>
+<head>
+<title>Video Analyzer Player Widget Demo</title>
+</head>
+<script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets"></script>
+<body>
+Client API endpoint URL: <input type="text" id="clientApiEndpointUrl" /><br><br>
+JWT Auth Token for Client API: <input type="text" id="token" /><br><br>
+<button type="submit" onclick="getVideos()">Get Videos</button><br><br>
+<textarea rows="20" cols="100" id="videoList"></textarea><br><br>
+Video name: <input type="text" id="videoName" /><br><br>
+<button type="submit" onclick="playVideo()">Play Video</button><br><br>
+</body>
+</body>
+</html>
+```
 ## <a name="list-video-resources"></a>Lister les ressources vidéo
 
 Ensuite, générez une liste des ressources vidéo. Vous effectuez un appel REST au point de terminaison de compte que vous avez utilisé précédemment et vous vous authentifiez avec le jeton que vous avez généré.
 
 Il existe de nombreuses façons d’envoyer une requête GET à une API REST. En l’occurrence, vous allez utiliser une fonction JavaScript. Le code ci-dessous utilise une requête [XMLHttpRequest](https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp) couplée aux valeurs que vous stockez dans les champs `clientApiEndpointUrl` et `token` de la page pour envoyer une requête `GET` synchrone. Il prend ensuite la liste des vidéos obtenue et stocke celles-ci dans la zone de texte `videoList` que vous avez configurée sur la page.
+
+L’extrait de code suivant permet de demander la liste de vidéos.
 
 ```javascript
 function getVideos()
@@ -52,7 +77,7 @@ function getVideos()
 }
 ```
    > [!NOTE]
-   >Le `clientApiEndPoint` et le jeton sont ceux traités lors de la [création d’un jeton](./access-policies.md#creating-a-token).
+   >Le `clientApiEndPoint` et le `token` sont ceux traités dans la section [Création d’un jeton](./access-policies.md#creating-a-token).
 
 ## <a name="add-the-video-analyzer-player-component"></a>Ajouter le composant de lecteur de Video Analyzer
 
@@ -68,7 +93,7 @@ Vous disposez à présent d’une URL de point de terminaison d’API client, d�
    ```
 1. Obtenez un lien vers le widget du lecteur de Video Analyzer qui se trouve dans la page :
    ```javascript
-   const avaPlayer = document.getElementById("avaPlayer");
+   const avaPlayer = document.getElementById("videoPlayer");
    ```
 1. Pour configurer le lecteur avec les valeurs dont vous disposez, vous devez configurer celles-ci en tant qu’objet comme ici :
    ```javascript
@@ -78,18 +103,38 @@ Vous disposez à présent d’une URL de point de terminaison d’API client, d�
       videoName: document.getElementById("videoName").value
    } );
    ```
-1. Chargez la vidéo dans le lecteur pour commencer.
+1. Chargez la vidéo dans le lecteur pour commencer :
    ```javascript
    avaPlayer.load();
    ```
    
 ## <a name="add-the-zone-drawer-component"></a>Ajouter le composant de dessinateur de zone
 
+Le composant de dessinateur de zone vous permet de dessiner des lignes et des polygones sur le lecteur Video Analyzer. 
+
 1. Ajoutez un élément AVA-Zone-Drawer au document :
    ```html
-   <ava-zone-drawer width="720px" id="zoneDrawer"></ava-zone-drawer>
+   <ava-zone-drawer width="720px" id="zoneDrawer">
+        <ava-player id="videoPlayer2"></ava-player>
+   </ava-zone-drawer>
    ```
-1. Obtenez un lien vers le dessinateur de zone de Video Analyzer qui se trouve dans la page :
+1. Récupérez un lien vers le widget de lecteur Video Analyzer avec lequel s’effectuera la lecture dans le dessinateur de zone :
+   ```javascript
+   const avaPlayer2 = document.getElementById("videoPlayer2");
+   ```
+1. Configurez le lecteur avec lequel s’effectuera la lecture dans le dessinateur de zone :
+   ```javascript
+   avaPlayer2.configure( {
+      token: document.getElementById("token").value,
+      clientApiEndpointUrl: document.getElementById("clientApiEndpointUrl").value,
+      videoName: document.getElementById("videoName").value
+   } );
+   ```
+1. Chargez la vidéo dans le lecteur dans le dessinateur de zone :
+   ```javascript
+   avaPlayer2.load();
+   ```
+1. Récupérez un lien vers le dessinateur de zone qui se trouve dans la page :
    ```javascript
    const zoneDrawer = document.getElementById("zoneDrawer");
    ```
@@ -132,13 +177,21 @@ En associant les éléments web précédents, vous obtenez la page HTML statique
         document.getElementById("videoList").value = xhttp.responseText.toString();
     }
     function playVideo() {
-        const avaPlayer = document.getElementById("avaPlayer");
+        const avaPlayer = document.getElementById("videoPlayer");
         avaPlayer.configure( {
             token: document.getElementById("token").value,
             clientApiEndpointUrl: document.getElementById("clientApiEndpointUrl").value,
             videoName: document.getElementById("videoName").value
         } );
         avaPlayer.load();
+        
+        const avaPlayer2 = document.getElementById("videoPlayer2");
+        avaPlayer2.configure( {
+            token: document.getElementById("token").value,
+            clientApiEndpointUrl: document.getElementById("clientApiEndpointUrl").value,
+            videoName: document.getElementById("videoName").value
+        } );
+        avaPlayer2.load();
     
         const zoneDrawer = document.getElementById("zoneDrawer");
         zoneDrawer.load();
@@ -155,14 +208,17 @@ En associant les éléments web précédents, vous obtenez la page HTML statique
     }
 </script>
 Client API endpoint URL: <input type="text" id="clientApiEndpointUrl" /><br><br>
-Token: <input type="text" id="token" /><br><br>
+JWT Auth Token for Client API: <input type="text" id="token" /><br><br>
 <button type="submit" onclick="getVideos()">Get Videos</button><br><br>
 <textarea rows="20" cols="100" id="videoList"></textarea><br><br>
-Video name: <input type="text" id="videoName" /><br><br>
 <button type="submit" onclick="playVideo()">Play Video</button><br><br>
+Video name: <input type="text" id="videoName" /><br><br>
+<div id="container" style="width:720px" class="widget-container">
+    <ava-player width="720px" id="videoPlayer"></ava-player>
+</div>
 <textarea rows="5" cols="100" id="zoneList"></textarea><br><br>
 <ava-zone-drawer width="720px" id="zoneDrawer">
-    <ava-player id="avaPlayer"></ava-player>
+    <ava-player id="videoPlayer2"></ava-player>
 </ava-zone-drawer>
 </body>
 </html>
@@ -182,7 +238,7 @@ Vous pouvez tester cette page localement, mais vous souhaiterez peut-être teste
 1. Au-dessus de **Point de terminaison principal**, sélectionnez **$web**.
 1. À l’aide du bouton **Charger** situé en haut, chargez votre page HTML statique en tant que **index.html**.
 
-## <a name="play-a-video"></a>Lire une vidéo
+### <a name="play-a-video"></a>Lire une vidéo
 
 La page est à présent hébergée. Accédez-y et suivez les étapes pour lire une vidéo.
 
@@ -191,10 +247,47 @@ La page est à présent hébergée. Accédez-y et suivez les étapes pour lire u
 1. Dans la liste de vidéos, sélectionnez un nom de vidéo et entrez-le dans le champ **Video name**.
 1. Sélectionnez **Play video**.
 
+### <a name="live-video-playback"></a>Lecture de vidéo en direct
+
+Si votre livePipeline est à l’état `activated` et que la vidéo est en cours d’enregistrement, le lecteur charge automatiquement la vue **EN DIRECT**. Cette lecture vidéo est en quasi-temps réel et présentera une faible latence d’environ 2 secondes.
+
+Dans la vue **EN DIRECT** :
+1. Vous voyez la vidéo en quasi-temps réel.
+1. Vous ne voyez pas la chronologie.
+1. Vous pouvez cliquer sur l’icône de **cadre** pour afficher les cadres englobants, s’ils existent.
+
+> [!Tip]
+> Pour basculer vers la vue dans laquelle vous pouvez voir tous les clips précédemment enregistrés, cliquez sur le bouton **EN DIRECT**.
+ 
+### <a name="capture-lines-and-zones"></a>Capturer des lignes et des zones
+
+1. Accédez au lecteur **Dessinateur de zone**
+1. Cliquez sur la première icône située dans le coin supérieur gauche pour dessiner des zones.
+1. Pour dessiner des zones et des lignes, vous devez simplement cliquer sur les points sur lesquels vous souhaitez placer les points de terminaison. Il n’existe pas de fonctionnalité de glissement pour dessiner les zones et les lignes.
+1. Vous voyez les zones et les lignes créées dans la section de droite du lecteur.
+1. Pour obtenir les coordonnées des lignes et des zones, cliquez sur le bouton **Enregistrer**.
+1. En procédant ainsi, vous afficherez la réponse JSON avec les coordonnées de point, que vous pouvez utiliser avec les topologies appropriées.
+
+### <a name="video-clips"></a>Clips vidéo
+Vous permet de créer des clips vidéo en sélectionnant une heure de début et une heure de fin.
+
+Le widget de lecteur vidéo Video Analyzer prend en charge la lecture de clips vidéo avec spécification d’une date et d’une heure de début et de fin comme indiqué ci-dessous :
+
+> [!Note] 
+> Le widget de lecteur vidéo Video Analyzer utilise la norme de temps universel coordonné (UTC). L’heure de début et l’heure de fin sélectionnées doivent donc être converties dans ce format.
+
+Utilisez le code ci-dessous dans votre fichier HTML pour ouvrir un lecteur vidéo qui chargera une vidéo selon l’heure de début (startTime) et l’heure de fin (endTime) spécifiées.
+
+```javascript
+    const avaPlayer = document.getElementById("videoPlayer");
+    const startUTCDate = new Date(Date.UTC(selectedClip.start.getFullYear(), selectedClip.start.getMonth(), selectedClip.start.getDate(), selectedClip.start.getHours(), selectedClip.start.getMinutes(), selectedClip.start.getSeconds()));
+    const endUTCDate = new Date(Date.UTC(selectedClip.end.getFullYear(), selectedClip.end.getMonth(), selectedClip.end.getDate(), selectedClip.end.getHours(), selectedClip.end.getMinutes(), selectedClip.end.getSeconds()));
+    avaPlayer.load({ startTime: startUTCDate, endTime: endUTCDate });
+``` 
+
 ## <a name="additional-details"></a>Informations supplémentaires
 
 Les sections suivantes contiennent des informations supplémentaires importantes, que vous devez connaître.
-
 ### <a name="refresh-the-access-token"></a>Actualiser le jeton d’accès
 
 Le lecteur utilise le jeton d’accès que vous avez généré précédemment pour obtenir un jeton d’autorisation de lecture. Les jetons expirent périodiquement et doivent être actualisés. Il existe deux manières d’actualiser le jeton d’accès pour le lecteur après en avoir généré un :
@@ -269,4 +362,5 @@ zoneDrawer.appendChild(playerWidget);
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Apprenez-en davantage sur l’[API widget](https://github.com/Azure/video-analyzer/tree/main/widgets).
+* Essayez nos [exemples de lecture avec des widgets](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/video-player).
+* Pour découvrir comment les différentes fonctionnalités de widget peuvent être implémentées, consultez notre [dépôt de widgets](https://github.com/Azure/video-analyzer-widgets).

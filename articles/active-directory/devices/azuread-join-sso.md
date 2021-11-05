@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a48cf9d6912fae91cd789ae16bb68e1d95a4a9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 442a2e4d5f88d9716b6cc197c503888edb314040
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128585424"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049973"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Fonctionnement de l’authentification unique auprès de ressources locales sur des appareils joints à Azure AD
 
@@ -34,7 +34,7 @@ Avec un appareil joint à Azure AD, vos utilisateurs ont déjà une expérience 
 
 Les appareils joints à AD Azure n’ont pas connaissance de votre environnement AD local, car ils n’y sont pas joints. Cependant, vous pouvez fournir à ces appareils des informations supplémentaires sur votre annuaire AD local avec Azure AD Connect.
 
-Si vous avez un environnement hybride, avec Azure AD et un AD local, il est probable que vous avez déjà déployé Azure AD Connect pour synchroniser vos informations d’identité locales sur le cloud. Dans le cadre du processus de synchronisation, Azure AD Connect synchronise les informations de l’utilisateur et du domaine locaux sur Azure AD. Quand un utilisateur se connecte à un appareil joint à Azure AD dans un environnement hybride :
+Si vous avez un environnement hybride, avec à la fois Azure AD et un AD local, il est probable que vous avez déjà déployé Azure AD Connect ou la synchronisation cloud Azure AD Connect pour synchroniser vos informations d’identité locales sur le cloud. Dans le cadre du processus de synchronisation, les informations locales de l’utilisateur et du domaine sont synchronisées sur Azure AD. Quand un utilisateur se connecte à un appareil joint à Azure AD dans un environnement hybride :
 
 1. Azure AD renvoie les détails du domaine local de l’utilisateur à l’appareil, ainsi que le [jeton d’actualisation principal](concept-primary-refresh-token.md)
 1. Le service de l’autorité de sécurité locale (LSA) active l’authentification Kerberoset NTLM sur l’appareil.
@@ -47,7 +47,7 @@ Si vous avez un environnement hybride, avec Azure AD et un AD local, il est prob
 Lors d’une tentative d’accès à une ressource demandant Kerberos ou NTLM dans l’environnement local de l’utilisateur, l’appareil :
 
 1. Envoie les informations du domaine local et les informations d’identification au contrôleur de domaine localisé pour authentifier l’utilisateur.
-1. Reçoit un ticket TGT (Ticket-Granting Ticket) [Kerberos](/windows/desktop/secauthn/ticket-granting-tickets) ou un jeton NTLM basé sur le protocole pris en charge par la ressource ou l’application locale. Si la tentative visant à obtenir le TGT Kerberos ou le jeton NTLM pour le domaine échoue (le délai d’expiration du DCLocator associé peut entraîner un retard), des entrées du gestionnaire d’informations d’identification sont tentées ou l’utilisateur peut recevoir une fenêtre contextuelle d’authentification demandant des informations d’identification pour la ressource cible.
+1. Reçoit un ticket TGT (Ticket-Granting Ticket) [Kerberos](/windows/desktop/secauthn/ticket-granting-tickets) ou un jeton NTLM basé sur le protocole pris en charge par la ressource ou l’application locale. Si la tentative d’obtenir le ticket TGT Kerberos ou le jeton NTLM pour le domaine échoue (le délai d’expiration du DCLocator associé peut entraîner un retard), des entrées du gestionnaire d’informations d’identification sont tentées ou l’utilisateur peut recevoir une fenêtre contextuelle d’authentification demandant des informations d’identification pour la ressource cible.
 
 Toutes les applications qui sont configurées pour l’**authentification Windows intégrée** bénéficient automatiquement de l’authentification unique quand un utilisateur tente d’y accéder.
 

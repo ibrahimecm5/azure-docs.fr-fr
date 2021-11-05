@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18cc593e3aa1f50dcdaeaea32d7ac584f8bd4a24
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 71a1e5f8ee6bb3641fce243233a654d15363e254
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354070"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012621"
 ---
 # <a name="continuous-access-evaluation"></a>Évaluation de l’accès continu
 
@@ -67,22 +67,22 @@ Ce processus permet l’émergence du scénario dans lequel des utilisateurs per
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Prise en charge | Prise en charge | Pris en charge | Prise en charge | Prise en charge |
-| **Exchange Online** | Prise en charge | Pris en charge | Prise en charge | Pris en charge | Prise en charge |
+| **SharePoint Online** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
+| **Exchange Online** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
 
 | | Applications web Office | Applications Win32 Office | Office pour iOS | Office pour Android | Office pour Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Non pris en charge | Prise en charge | Pris en charge | Pris en charge | Prise en charge |
-| **Exchange Online** | Non pris en charge | Prise en charge | Pris en charge | Pris en charge | Prise en charge |
+| **SharePoint Online** | Non pris en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
+| **Exchange Online** | Non pris en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
 
 | | Web OneDrive | OneDrive Win32 | IOS OneDrive | Android OneDrive | Mac OneDrive |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Prise en charge | Pris en charge | Prise en charge | Pris en charge | Pris en charge |
+| **SharePoint Online** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Pris en charge |
 
 | | Teams web | Teams Win32 | Teams iOS | Teams Android | Teams Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Teams Service** | Pris en charge | Pris en charge | Pris en charge | Pris en charge | Pris en charge |
-| **SharePoint Online** | Prise en charge | Prise en charge | Prise en charge | Pris en charge | Prise en charge |
+| **Teams Service** | Pris en charge | Prise en charge | Prise en charge | Prise en charge | Pris en charge |
+| **SharePoint Online** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
 | **Exchange Online** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
 
 ## <a name="client-capabilities"></a>Fonctionnalités du client
@@ -93,10 +93,10 @@ Avant l’évaluation de l’accès continu, les clients essayaient de relire le
 
 | | Web | Win32 | iOS | Android | Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Outlook** | Prise en charge | Pris en charge | Pris en charge | Pris en charge | Prise en charge |
-| **Équipes** | Prise en charge | Pris en charge | Pris en charge | Pris en charge | Prise en charge |
-| **Office** | Non pris en charge | Prise en charge | Pris en charge | Pris en charge | Prise en charge |
-| **OneDrive** | Prise en charge | Pris en charge | Pris en charge | Pris en charge | Prise en charge |
+| **Outlook** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
+| **Équipes** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
+| **Office** | Non pris en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
+| **OneDrive** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
 
 ### <a name="token-lifetime"></a>Durée de vie des jetons
 
@@ -155,6 +155,23 @@ Les organisations ont des options en matière d’activation de l’EAC.
 1. Le fait de laisser l’activation automatique sélectionnée par défaut **après la disponibilité générale** active la fonctionnalité quand IAO est mis à la disposition générale.
 1. Les clients qui sélectionnent l’option **Activer l’aperçu** bénéficient immédiatement de la nouvelle fonctionnalité et n’ont pas à apporter de modifications à la disponibilité générale. 
 1. Les clients qui sélectionnent l’option **Désctiver l’aperçu** de la version préliminaire ont le temps d’adopter IAO au rythme de leur organisation. Ce paramètre est conservé comme étant **Désactivé** au niveau de la disponibilité générale.
+
+#### <a name="migration"></a>Migration
+
+Le paramètre d’évaluation continue de l’accès a été déplacé sous Accès conditionnel. Les clients qui ont configuré les paramètres d’évaluation continue de l’accès sous Sécurité doivent migrer ces paramètres vers une stratégie d’accès conditionnel. Effectuez les étapes suivantes pour migrer vos paramètres vers une stratégie d’accès conditionnel.
+
+:::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="Vue du portail présentant l’option de migration de l’évaluation continue de l’accès vers une stratégie d’accès conditionnel." lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
+
+1. Connectez-vous au **portail Azure** en tant qu’administrateur de l’accès conditionnel, administrateur de la sécurité ou administrateur général. 
+1.  Accédez à **Azure Active Directory** > **Sécurité** > **Évaluation continue de l’accès (préversion)** . 
+1.  L’option vous permettant de **Migrer** votre stratégie sera alors visible. Cette action sera la seule à laquelle vous aurez accès à ce stade.
+1. Accédez à **Accès conditionnel** ; vous trouverez une nouvelle stratégie nommée **Stratégie d’accès conditionnel créée à partir des paramètres d’évaluation continue de l’accès** avec vos paramètres configurés. Les administrateurs peuvent choisir de personnaliser cette stratégie ou de créer leur propre stratégie pour la remplacer.
+
+Vous trouverez plus d’informations sur l’évaluation continue de l’accès en tant que contrôle de session dans la section [Personnaliser l’évaluation continue de l’accès](concept-conditional-access-session.md#customize-continuous-access-evaluation).
+
+### <a name="strict-enforcement"></a>Application stricte 
+
+Avec le dernier paramètre d’évaluation continue de l’accès sous Accès conditionnel, l’application stricte est une nouvelle fonctionnalité qui permet une sécurité renforcée basée sur deux facteurs : la variation d’adresse IP et la capacité du client. Cette fonctionnalité peut être activée lors de la personnalisation des options d’évaluation continue de l’accès pour une stratégie donnée. Lorsque vous activez l’application stricte, l’évaluation continue de l’accès révoque l’accès en cas de détection d’instance de [variation d’adresse IP](#ip-address-variation) ou en cas d’absence de [capacité de client](#client-capabilities) d’évaluation continue de l’accès.
 
 ## <a name="limitations"></a>Limites
 
@@ -229,4 +246,5 @@ La fréquence de connexion sera respectée avec ou sans EAC.
 
 - [Guide pratique pour utiliser des API dotées d’Évaluation continue de l’accès dans vos applications](../develop/app-resilience-continuous-access-evaluation.md)
 - [Contestations liées aux revendications, demandes de revendications, et fonctionnalités clientes](../develop/claims-challenge.md)
+- [Accès conditionnel : session](concept-conditional-access-session.md)
 - [Résoudre les problèmes rencontrés avec la fonctionnalité Évaluation continue de l’accès](howto-continuous-access-evaluation-troubleshoot.md)

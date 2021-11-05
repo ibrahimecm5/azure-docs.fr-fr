@@ -1,59 +1,118 @@
 ---
-title: 'Azure Defender pour Key Vault : avantages et fonctionnalités'
-description: Découvrez les avantages et les fonctionnalités d’Azure Defender pour Key Vault.
+title: 'Microsoft Defender pour Key Vault : avantages et fonctionnalités'
+description: Découvrez les avantages et les fonctionnalités de Microsoft Defender pour Key Vault.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/20/2021
 ms.topic: overview
 ms.service: security-center
-ms.custom: references_regions
+ms.custom: references_regions, ignite-fall-2021
 manager: rkarlin
-ms.openlocfilehash: 0b14b30e5ea749b53819d94fc69ff7f3d2eee0b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bec034539b7969a7552952eddd6d7673e35ebcaf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743118"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055905"
 ---
-# <a name="introduction-to-azure-defender-for-key-vault"></a>Présentation d’Azure Defender pour Key Vault
+# <a name="introduction-to-microsoft-defender-for-key-vault"></a>Présentation de Microsoft Defender pour Key Vault
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Azure Key Vault est un service cloud qui protège les clés et secrets de chiffrement comme les certificats, chaînes de connexion et mots de passe. 
 
-Activez **Azure Defender pour Key Vault** pour bénéficier d’une protection native Azure avancée contre les menaces pour Azure Key Vault, apportant une couche supplémentaire de renseignements de sécurité. 
+Activez **Microsoft Defender pour Key Vault** afin de bénéficier d’une protection avancée native Azure contre les menaces pour Azure Key Vault, qui fournit une couche supplémentaire de veille de sécurité. 
 
 ## <a name="availability"></a>Disponibilité
 
 |Aspect|Détails|
 |----|:----|
 |État de sortie :|Disponibilité générale|
-|Prix :|**Azure Defender pour Key Vault** est facturé conformément à la [tarification de Security Center](https://azure.microsoft.com/pricing/details/security-center/)|
-|Clouds :|:::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Souverain (Azure Government, Azure China 21Vianet)|
+|Prix :|**Microsoft Defender pour Key Vault** est facturé comme indiqué dans la [page des tarifs](https://azure.microsoft.com/pricing/details/security-center/)|
+|Clouds :|:::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/no-icon.png"::: Nationaux/Souverains (Azure Government, Azure China 21Vianet)|
 |||
 
-## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Quels sont les avantages d’Azure Defender pour Key Vault ?
+## <a name="what-are-the-benefits-of-microsoft-defender-for-key-vault"></a>Quels sont les avantages de Microsoft Defender pour Key Vault ?
 
-Azure Defender détecte les tentatives inhabituelles et potentiellement dangereuses d’accès ou d’exploitation des comptes Key Vault. Cette couche de protection vous permet de traiter efficacement les menaces sans pour autant être un expert en sécurité ni avoir besoin de gérer des systèmes tiers de supervision de la sécurité.  
+Microsoft Defender détecte les tentatives inhabituelles et potentiellement dangereuses d’accès ou d’exploitation des comptes Key Vault. Cette couche de protection vous permet de traiter efficacement les menaces sans pour autant être un expert en sécurité ni avoir besoin de gérer des systèmes tiers de supervision de la sécurité.  
 
-Quand des activités anormales se produisent, Azure Defender affiche des alertes et les envoie éventuellement par e-mail aux membres concernés de votre organisation. Ces alertes fournissent des détails sur l’activité suspecte, ainsi que des suggestions pour examiner et corriger les menaces. 
+Quand des activités anormales se produisent, Defender affiche des alertes et les envoie éventuellement par e-mail aux membres concernés de votre organisation. Ces alertes fournissent des détails sur l’activité suspecte, ainsi que des suggestions pour examiner et corriger les menaces. 
 
-## <a name="azure-defender-for-key-vault-alerts"></a>Alertes Azure Defender pour Key Vault
-Lorsque vous recevez une alerte d’Azure Defender pour Key Vault, nous vous recommandons de l’examiner et d’y répondre de la façon décrite dans [Répondre aux alertes Azure Defender pour Key Vault](defender-for-key-vault-usage.md). Azure Defender pour Key Vault protège les applications et les informations d’identification. Ainsi, même si vous connaissez l’application ou l’utilisateur qui a déclenché l’alerte, il est important de vérifier la situation dans laquelle s’inscrit cette dernière.
+## <a name="microsoft-defender-for-key-vault-alerts"></a>Alertes Microsoft Defender pour Key Vault
+Quand vous recevez une alerte de Microsoft Defender pour Key Vault, nous vous recommandons de l’examiner et d’y répondre en suivant les instructions de [Répondre aux alertes Microsoft Defender pour Key Vault](defender-for-key-vault-usage.md). Microsoft Defender pour Key Vault protège les applications et les informations d’identification. Même si vous connaissez l’application ou l’utilisateur qui a déclenché l’alerte, vérifiez bien la situation dans laquelle s’inscrit cette dernière.
 
-Les alertes s’affichent dans la page **Sécurité** de Key Vault, le tableau de bord Azure Defender, et la page des alertes de Security Center.
+Les alertes s’affichent dans la page **Sécurité** de Key Vault, dans la page Protections de charge de travail et la page des alertes Defender pour le cloud.
 
 :::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Page de sécurité d’Azure Key Vault":::
 
 
 > [!TIP]
-> Vous pouvez simuler Azure Defender pour les alertes Key Vault en suivant les instructions fournies dans [Validation de la détection des menaces d’Azure Key Vault dans Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336).
+> Vous pouvez simuler des alertes Microsoft Defender pour Key Vault en suivant les instructions de [Validation de la détection des menaces d’Azure Key Vault dans Microsoft Defender pour le cloud](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336).
+
+
+## <a name="respond-to-microsoft-defender-for-key-vault-alerts"></a>Répondre aux alertes Microsoft Defender pour Key Vault
+Quand vous recevez une alerte de [Microsoft Defender pour Key Vault](defender-for-key-vault-introduction.md), nous vous recommandons de l’examiner et d’y répondre de la façon suivante. Microsoft Defender pour Key Vault protège les applications et les informations d’identification. Même si vous connaissez l’application ou l’utilisateur qui a déclenché l’alerte, vérifiez bien la situation dans laquelle s’inscrit cette dernière.  
+
+Les alertes de Microsoft Defender pour Key Vault comprennent ces éléments :
+
+- ID objet
+- Nom d’utilisateur principal ou adresse IP de la ressource suspecte 
+
+Selon le *type* d’accès qui s’est produit, certains champs peuvent ne pas être disponibles. Par exemple, si c’est une application qui accède à votre coffre de clés, vous ne verrez pas de nom d’utilisateur principal associé. Si le trafic provient de l’extérieur d’Azure, il n’y aura aucun ID objet.
+
+> [!TIP]
+> Des adresses IP Microsoft sont attribuées aux machines virtuelles Azure. Cela signifie qu’une alerte peut contenir une adresse IP Microsoft même si elle se rapporte à l’activité effectuée en dehors de Microsoft. Ainsi, même si une alerte a une adresse IP Microsoft, vous devez tout de même procéder à une investigation comme décrit dans cette page.
+
+### <a name="step-1-identify-the-source"></a>Étape 1. Identifier la source
+
+1. Vérifiez si le trafic provient de votre locataire Azure. Si le pare-feu du coffre de clés est activé, il est probable que vous ayez donné accès à l’utilisateur ou à l’application qui a déclenché cette alerte.
+1. Si vous ne pouvez pas vérifier la source du trafic, passez à l'[Etape 2. Répondre en conséquence](#step-2-respond-accordingly).
+1. Si vous pouvez identifier la source du trafic dans votre locataire, contactez l’utilisateur ou le propriétaire de l’application. 
+
+> [!CAUTION]
+> Microsoft Defender pour Key Vault est conçu pour aider à identifier les activités suspectes provoquées par le vol d’informations d’identification. **N’ignorez pas** l’alerte simplement parce que vous reconnaissez l’utilisateur ou l’application. Contactez le propriétaire de l’application ou l’utilisateur pour vérifier que l’activité est légitime. Vous pouvez créer une règle de suppression pour éliminer le bruit si nécessaire. Pour plus d’informations, consultez [Supprimer les alertes de sécurité](alerts-suppression-rules.md).
+
+
+### <a name="step-2-respond-accordingly"></a>Étape 2. Répondre en conséquence 
+Si vous ne reconnaissez pas l’utilisateur ni l’application, ou si vous pensez que l’accès n’aurait pas dû être autorisé :
+
+- Si le trafic provient d’une adresse IP non reconnue :
+    1. Activez le pare-feu Azure Key Vault conformément aux indications de [Configuration des pare-feu et réseaux virtuels Azure Key Vault](../key-vault/general/network-security.md).
+    1. Configurez le pare-feu avec des ressources et des réseaux virtuels approuvés.
+
+- Si la source de l’alerte était une application non autorisée ou un utilisateur suspect :
+    1. Ouvrez les paramètres de stratégie d’accès du coffre de clés.
+    1. Supprimez le principal de sécurité correspondant ou restreignez les opérations qu’il peut effectuer.  
+
+- Si la source de l’alerte possède un rôle Azure Active Directory dans votre locataire :
+    1. Contactez votre administrateur.
+    1. Déterminez s’il est nécessaire de réduire ou de révoquer les autorisations Azure Active Directory.
+
+### <a name="step-3-measure-the-impact"></a>Étape 3. Evaluer l’impact
+Une fois l’impact atténué, examinez les secrets affectés dans votre coffre de clés :
+1. Ouvrez la page **Sécurité** de votre coffre de clés Azure et consultez l’alerte déclenchée.
+1. Sélectionnez l’alerte précise qui a été déclenchée.
+    Passez en revue la liste des secrets auxquels vous avez accédé et le timestamp.
+1. Éventuellement, si vous avez activé les journaux de diagnostic du coffre de clés, examinez les opérations précédentes pour l’adresse IP de l’appelant, l’utilisateur principal ou l’ID objet correspondant.  
+
+### <a name="step-4-take-action"></a>Étape 4. Effectuer une action 
+Une fois que vous avez compilé la liste des secrets, des clés et des certificats qui ont été consultés par l’application ou l’utilisateur suspect, vous devez renouveler immédiatement ces objets.
+
+1. Les secrets affectés doivent être désactivés ou supprimés de votre coffre de clés.
+1. Si les informations d’identification ont été utilisées pour une application spécifique :
+    1. Contactez l’administrateur de l’application et demandez-lui d’auditer son environnement pour identifier toute utilisation des informations d’identification depuis qu’elles ont été compromises.
+    1. Si les informations d’identification compromises ont été utilisées, le propriétaire de l’application doit identifier les informations qui ont été consultées et atténuer l’impact.
+
+
+
 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez découvert Azure Defender pour Key Vault.
+Dans cet article, vous avez découvert Microsoft Defender pour Key Vault.
 
 Pour des informations connexes, consultez les articles suivants : 
 
-- [Alertes de sécurité Key Vault](alerts-reference.md#alerts-azurekv) : section Key Vault de la table de référence pour toutes les alertes d’Azure Security Center.
-- [Exporter en continu les données Security Center](continuous-export.md)
-- [Supprimer les alertes d’Azure Defender](alerts-suppression-rules.md)
+- [Alertes de sécurité Key Vault](alerts-reference.md#alerts-azurekv) : section Key Vault de la table de référence pour toutes les alertes de Microsoft Defender pour le cloud
+- [Exportation continue des données Defender pour le cloud](continuous-export.md)
+- [Supprimer les alertes de sécurité](alerts-suppression-rules.md)

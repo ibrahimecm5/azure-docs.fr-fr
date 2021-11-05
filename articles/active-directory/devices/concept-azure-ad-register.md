@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 217663ae8dc1f2a0cba7bcd001ee12a20f1b6826
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 18bd3f6993c56187a64ba9db3397a659f9dea098
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618036"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049916"
 ---
 # <a name="azure-ad-registered-devices"></a>Appareils inscrits sur Azure AD
 
@@ -29,8 +29,8 @@ L’objectif des appareils inscrits sur Azure AD est de fournir à vos utilisate
 |   | (Apportez votre propre appareil) |
 |   | Appareils mobiles |
 | **Appartenance de l’appareil** | Utilisateur ou organisation |
-| **Systèmes d’exploitation** | Windows 10, iOS, Android et macOS |
-| **Approvisionnement** | Windows 10 : paramètres |
+| **Systèmes d’exploitation** | Windows 10 et ultérieur, iOS, Android et macOS |
+| **Approvisionnement** | Windows 10 et ultérieur – Paramètres |
 |   | iOS/Android : application Microsoft Authenticator ou de portail d’entreprise |
 |   | macOS : portail d’entreprise |
 | **Options de connexion de l’appareil** | Informations d’identification locales de l’utilisateur final |
@@ -47,11 +47,11 @@ L’objectif des appareils inscrits sur Azure AD est de fournir à vos utilisate
 
 ![Appareils inscrits sur Azure AD](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Les appareils inscrits dans Azure AD sont connectés à l’aide d’un compte local, comme un compte Microsoft sur un appareil Windows 10. Ces appareils disposent d’un compte Azure AD pour accéder aux ressources de l’organisation. L’accès aux ressources de l’organisation peut être limité par ce compte Azure AD et les stratégies d’accès conditionnel appliquées à l’identité de l’appareil.
+Les appareils inscrits sur Azure AD sont connectés en utilisant un compte local, comme un compte Microsoft sur un appareil Windows 10 et ultérieur. Ces appareils disposent d’un compte Azure AD pour accéder aux ressources de l’organisation. L’accès aux ressources de l’organisation peut être limité par ce compte Azure AD et les stratégies d’accès conditionnel appliquées à l’identité de l’appareil.
 
 Les administrateurs peuvent sécuriser et mieux contrôler ces appareils inscrits sur Azure AD à l’aide d’outils de gestion des périphériques mobiles (MDM) tels que Microsoft Intune. Ces outils permettent d’appliquer les configurations requises par l’organisation, comme l’exigence du chiffrement du stockage, la complexité des mots de passe et la mise à jour des logiciels de sécurité. 
 
-L’inscription sur Azure AD peut être effectuée en accédant à une application professionnelle pour la première fois ou vous pouvez vous inscrire manuellement à l’aide du menu Paramètres de Windows 10. 
+L’inscription sur Azure AD peut être effectuée en accédant à une application professionnelle pour la première fois ou manuellement en utilisant le menu Paramètres de Windows 10 ou Windows 11. 
 
 ## <a name="scenarios"></a>Scénarios
 

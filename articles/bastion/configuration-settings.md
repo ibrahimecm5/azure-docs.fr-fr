@@ -5,14 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0f73cc08b2e6e44508a6535ba0d6c420e998a011
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d1cf4c18c4722c327d9d74569e7709d11068dc7c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732023"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087061"
 ---
 # <a name="about-bastion-configuration-settings"></a>À propos des paramètres de configuration de Bastion
 
@@ -22,8 +23,8 @@ Les sections de cet article décrivent les ressources et les paramètres pour Az
 
 Une référence SKU est également appelée niveau. Azure Bastion prend en charge deux types de SKU : De base et Standard. La référence SKU est configurée dans le portail Azure pendant le workflow lorsque vous configurez Bastion. Vous pouvez [mettre à niveau un SKU De base vers un SKU Standard](#upgradesku).
 
-* Le **SKU De base** fournit une fonctionnalité de base, permettant à Azure Bastion de gérer la connectivité RDP/SSH aux machines virtuelles sans exposer les adresses IP publiques sur les machines virtuelles de l’application cible. 
-* La référence **SKU Standard** est disponible en **préversion**. La référence SKU Standard active les fonctionnalités Premium qui permettent à Azure Bastion de gérer la connectivité à distance à une plus grande échelle. 
+* Le **SKU De base** fournit une fonctionnalité de base, permettant à Azure Bastion de gérer la connectivité RDP/SSH aux machines virtuelles sans exposer les adresses IP publiques sur les machines virtuelles de l’application cible.
+* La référence SKU Standard active les fonctionnalités Premium qui permettent à Azure Bastion de gérer la connectivité à distance à une plus grande échelle.
 
 La table suivante présente les fonctionnalités et les références SKU correspondantes. 
 
@@ -31,17 +32,17 @@ La table suivante présente les fonctionnalités et les références SKU corresp
 
 ### <a name="configuration-methods"></a>Méthodes de configuration
 
-Pendant la préversion, vous devez utiliser le portail Azure si vous souhaitez spécifier la référence SKU Standard. Si vous utilisez Azure CLI ou Azure PowerShell pour configurer Bastion, la référence SKU ne peut pas être spécifiée et le SKU De base est défini par défaut.
+Actuellement, vous devez utiliser le portail Azure si vous souhaitez spécifier la référence SKU Standard. Si vous utilisez Azure CLI ou Azure PowerShell pour configurer Bastion, la référence SKU ne peut pas être spécifiée et le SKU De base est défini par défaut.
 
 | Méthode | Valeur | Liens |
 | --- | --- | --- |
-| Portail Azure | Niveau : De base ou <br>Standard (Aperçu) | [Démarrage rapide : Configurer Bastion à partir des paramètres de la machine virtuelle](quickstart-host-portal.md)<br>[Tutoriel - Configurer Bastion](tutorial-create-host-portal.md) |
+| Portail Azure | Niveau : De base ou <br>Standard | [Démarrage rapide : Configurer Bastion à partir des paramètres de la machine virtuelle](quickstart-host-portal.md)<br>[Tutoriel - Configurer Bastion](tutorial-create-host-portal.md) |
 | Azure PowerShell | De base uniquement - aucun paramètre |[Configurer Bastion - PowerShell](bastion-create-host-powershell.md) |
 | Azure CLI |  De base uniquement - aucun paramètre | [Configurer Bastion - CLI](create-host-cli.md) |
 
 ### <a name="upgrade-a-sku"></a><a name="upgradesku"></a>Mettre à niveau un SKU
 
-Azure Bastion prend en charge la mise à niveau d’une référence SKU De base vers Standard. La référence SKU Standard est disponible en préversion. 
+Azure Bastion prend en charge la mise à niveau d’une référence SKU De base vers Standard.
 
 > [!NOTE]
 > La rétrogradation d’une référence SKU Standard vers De base n’est pas prise en charge. Pour rétrograder, vous devez supprimer et recréer l’instance Azure Bastion.
@@ -53,9 +54,9 @@ Vous pouvez configurer ce paramètre à l’aide de la méthode suivante :
 
 | Méthode | Valeur | Liens |
 | --- | --- | --- |
-| Portail Azure |Niveau  | [Mettre à niveau une référence SKU - Préversion](upgrade-sku.md)|
+| Portail Azure |Niveau  | [Mettre à niveau un SKU](upgrade-sku.md)|
 
-## <a name="instances-and-host-scaling-preview"></a><a name="instance"></a>Instances et mise à l’échelle de l’hôte (préversion)
+## <a name="instances-and-host-scaling"></a><a name="instance"></a>Instances et mise à l’échelle de l’hôte
 
 Une instance est une machine virtuelle Azure optimisée qui est créée lorsque vous configurez Azure Bastion. Elle est entièrement gérée par Azure et exécute tous les processus nécessaires pour Azure Bastion. Une instance est également appelée unité d’échelle. Vous vous connectez aux machines virtuelles clientes via une instance Azure Bastion. Quand vous configurez Azure Bastion à l’aide de la référence SKU De base, deux instances sont créées. Si vous utilisez la référence SKU Standard, vous pouvez spécifier le nombre d’instances. Cela s’appelle la **mise à l’échelle de l’hôte**. 
 
@@ -69,7 +70,7 @@ Vous pouvez configurer ce paramètre à l’aide de la méthode suivante :
 
 | Méthode | Valeur | Liens |
 | --- | --- | --- |
-| Portail Azure |Nombre d’instances  | [Configurer la mise à l’échelle de l’hôte - Aperçu](configure-host-scaling.md)|
+| Portail Azure |Nombre d’instances  | [Configurer la mise à l’échelle de l’hôte](configure-host-scaling.md)|
 
 
 ## <a name="azure-bastion-subnet"></a><a name="subnet"></a>Sous-réseau d’Azure Bastion

@@ -4,12 +4,13 @@ description: Cet article décrit les quotas et les limitations d’Azure Video A
 ms.service: azure-video-analyzer
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a94ebd36728519b7ae73d9cc48c82097dcfdbb21
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 45c867d3420c51e931b1cc9a0a8e1b54836f7494
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602087"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012014"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Quotas et limitations de Video Analyzer
 
@@ -62,10 +63,79 @@ Vous ne pouvez utiliser que des caméras IP qui prennent en charge le protocole 
 
 Vous devez configurer ces caméras pour utiliser la vidéo H.264 et l’audio AAC. Les autres codecs ne sont actuellement pas pris en charge.
 
-Video Analyzer prend en charge RTSP uniquement avec des [flux RTP entrelacés]( https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). Dans ce mode, le trafic RTP est traité par tunnel par le biais de la connexion TCP RTSP. Le trafic RTP sur UDP n’est pas pris en charge.
+Video Analyzer prend en charge RTSP uniquement avec des [flux RTP entrelacés](https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). Dans ce mode, le trafic RTP est traité par tunnel par le biais de la connexion TCP RTSP. Le trafic RTP sur UDP n’est pas pris en charge. 
 
 ### <a name="support-for-video-ai"></a>Prise en charge de l’intelligence artificielle vidéo
 Les processeurs d’extension HTTP ou gRPC prennent uniquement en charge l’envoi de données d’image ou de vidéo avec un module d’IA externe. Ainsi, l’exécution de l’inférence sur des données audio n’est pas prise en charge. Par conséquent, les nœuds de processeur dans les topologies de pipeline qui ont un nœud source RTSP parmi leur `inputs` utilisent également une propriété `outputSelectors` pour s’assurer que seules des vidéos sont transmises au processeur. Pour un exemple, regardez cette [topologie](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-grpcExtension-video-sink/topology.json).
+
+## <a name="quotas-and-limitations---live-and-batch-pipeline"></a>Quotas et limitations - pipeline en direct et par lot
+
+Cette section énumère les quotas et limitations des pipelines cloud Video Analyzer. 
+
+### <a name="maximum-number-of-pipeline-topologies"></a>Nombre maximal de topologies de pipeline 
+
+Au plus 5 topologies de pipeline par compte Video Analyzer sont prises en charge. 
+
+### <a name="limits-on-concurrent-activation-of-live-pipelines"></a>Limites concernant l’activation simultanée des pipelines en direct 
+
+Au plus 10 pipelines en direct peuvent être activés sur une fenêtre de temps de 5 minutes et au maximum 10 de ces pipelines peuvent être dans un état `Activating` à tout moment.
+
+Ces limites ne s’appliquent pas aux travaux de pipeline.  
+
+### <a name="maximum-live-pipelines-per-topology"></a>Nombre maximal de pipelines en direct par topologie  
+
+Au plus 50 pipelines en direct par topologie sont pris en charge.  
+
+### <a name="concurrent-low-latency-streaming-sessions"></a>Sessions simultanées de streaming à faible latence  
+
+Pour chaque pipeline en direct actif, il peut y avoir au plus une application cliente affichant le [flux à faible latence](playback-recordings-how-to.md#low-latency-streaming). Si un autre client tente de se connecter, la demande est refusée.  
+
+### <a name="limitations-on-designing-pipeline-topologies"></a>Limitations concernant la conception de topologies de pipeline 
+
+Voici les différents nœuds qui peuvent être connectés les uns aux autres dans une topologie de pipeline et leurs limitations : 
+
+* Source RTSP
+   * Une seule source RTSP est autorisée par topologie de pipeline.
+* Source vidéo
+   * Une seule source vidéo est autorisée par topologie de pipeline.
+   * Peut uniquement être utilisée dans les topologies de pipeline du [genre lot](pipeline.md#batch-pipeline). Elle peut uniquement accepter une ressource vidéo de type `archive`. 
+* Processeur d’encodeur 
+   * Un seul processeur d’encodeur est autorisé par topologie de pipeline.
+   * Peut uniquement être utilisé dans les topologies de pipeline du [genre lot](pipeline.md#batch-pipeline), et il doit être immédiatement en amont du nœud du récepteur vidéo dans ces topologies.
+   * Il prend uniquement en charge l’encodage vidéo avec le codec H.264 et audio avec le codec AAC.
+   * Permet à l’utilisateur de spécifier des propriétés d’encodage lors de la conversion de la vidéo enregistrée dans le format souhaité pour le traitement en aval. Deux types : (a) Valeur système prédéfinie (b) Valeur prédéfinie personnalisée. Les configurations autorisées pour chaque présélection sont répertoriées dans le tableau ci-dessous : 
+     
+     | Configuration       | Présélection du système        | Valeur prédéfinie personnalisée |
+     | -----------         | -----------          |----------- |
+     | Vitesse de transmission en kbits/s de l’encodeur vidéo      | identique à la source      | 200 à 16 000 kbits/s |
+     | Fréquence d’images       | identique à la source      | 0 à 300 |
+     | Hauteur    | identique à la source        | 1 à 4 320 |
+     | Largeur    | identique à la source       | 1 à 8 192 |
+     | Mode   | Remplir        | Pad, PreserveAspectRatio, Stretch |     
+     | Vitesse de transmission en kbits/s de l’encodeur audio  | identique à la source        | Valeurs autorisées : 96, 112, 128, 160, 192, 224, 256 |
+     
+* Récepteur vidéo 
+   *  Un seul récepteur vidéo est autorisé par topologie de pipeline.
+   *  Doit être immédiatement en aval de la source RTSP ou du nœud de processeur d’encodeur. 
+   *  Lorsqu’il est utilisé dans une topologie de pipeline du genre lot, il génère un fichier MP4 comme sortie.
+
+### <a name="support-for-batch-video-export"></a>Prise en charge de l’exportation de vidéos par lot 
+
+* Segmenter la sélection 
+   * La séquence de temps, qui correspond à l’horodatage de début et de fin de la partie de la vidéo archivée à exporter, doit être spécifiée en heure UTC. 
+   * L’étendue maximale de la séquence de temps (horodatage de fin - horodatage de début) doit être inférieure ou égale à 24 heures. 
+
+### <a name="supported-cameras"></a>Caméras prises en charge
+
+Vous ne pouvez utiliser que des caméras IP qui prennent en charge le protocole RTSP. Vous trouverez les caméras IP qui prennent RTSP en charge dans la page des [produits conformes ONVIF](https://www.onvif.org/conformant-products). Recherchez les appareils conformes aux profils G, S ou T. 
+
+Vous devez configurer ces caméras pour utiliser la vidéo H.264 et l’audio AAC. Les autres codecs ne sont actuellement pas pris en charge. La vitesse de transmission de l’encodage vidéo doit être comprise entre 500 et 3 000 kbit/s.Si la vitesse de transmission d’ingestion exacte est supérieure à ce seuil, l’ingestion est déconnectée et reconnectée avec un backoff exponentiel.
+
+Video Analyzer prend en charge RTSP uniquement avec des [flux RTP entrelacés](https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). Dans ce mode, le trafic RTP est traité par tunnel par le biais de la connexion TCP RTSP. Le trafic RTP sur UDP n’est pas pris en charge. 
+
+### <a name="support-for-video-ai"></a>Prise en charge de l’intelligence artificielle vidéo 
+
+L’analyse de la vidéo en direct ou enregistrée n’est pas prise en charge actuellement.
 
 ## <a name="quotas-and-limitations---service"></a>Quotas et limitations – Service
 

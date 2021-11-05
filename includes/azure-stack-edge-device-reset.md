@@ -2,14 +2,14 @@
 author: v-dalc
 ms.service: databox
 ms.topic: include
-ms.date: 03/03/2021
+ms.date: 09/20/2021
 ms.author: alkohli
-ms.openlocfilehash: df3e040b80ac8a7f78a27e06a0433a1cf1d86be0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fe4af9325d86227716ae51796d12718286d3c1ca
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443510"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005641"
 ---
 Pour réinitialiser votre appareil à l’aide de l’interface utilisateur web locale, effectuez les étapes suivantes.
 
@@ -18,7 +18,7 @@ Pour réinitialiser votre appareil à l’aide de l’interface utilisateur web 
 
     ![Réinitialisation de l’appareil](media/azure-stack-edge-device-reset/device-reset-1.png)
 
-3. Lorsque vous êtes invité à confirmer l’opération, passez en revue l’avertissement et sélectionnez **Oui** pour continuer.
+3. Lorsque vous êtes invité à confirmer l’analyse, examinez l’avertissement. Saisissez **Oui** puis, sélectionnez **Oui** pour continuer.
 
     ![Confirmer la réinitialisation](media/azure-stack-edge-device-reset/device-reset-2.png)  
 

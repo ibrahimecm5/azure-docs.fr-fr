@@ -1,26 +1,29 @@
 ---
-title: Analyseur de vulnérabilité d’Azure Defender pour les images conteneur dans les workflows CI/CD
-description: Découvrir comment analyser les images conteneur dans les workflows CI/CD avec Azure Defender pour les registres de conteneurs
+title: Analyseur de vulnérabilité de Defender pour le cloud pour les images conteneurs dans des flux de travail CI/CD
+description: Découvrez comment analyser les images conteneurs dans des flux de travail CI/CD avec Microsoft Defender pour les registres de conteneurs
 author: memildin
 ms.author: memildin
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: eb7309f067c350eac0d9455767b137377caf588b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 97fed8a7afce16a33497860cda70b12fc90bed2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532014"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014896"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>Identifier les images conteneur vulnérables dans vos workflows CI/CD
 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
 Cette page explique comment analyser vos images conteneur basées sur Azure Container Registry à l’aide de l’analyseur de vulnérabilité intégré lorsqu’elles sont créées dans le cadre de vos workflows GitHub.
 
-Pour configurer l’analyseur, vous devez activer **Azure Defender pour les registres de conteneurs** et l’intégration CI/CD. Lorsque vos workflows CI/CD envoient des images à vos registres, vous pouvez afficher les résultats d’analyse des registres et une synthèse des résultats d’analyse CI/CD.
+Pour configurer l’analyseur, vous devez activer **Microsoft Defender pour les registres de conteneurs** et l’intégration de CI/CD. Lorsque vos workflows CI/CD envoient des images à vos registres, vous pouvez afficher les résultats d’analyse des registres et une synthèse des résultats d’analyse CI/CD.
 
-Les conclusions des analyses CI/CD sont un enrichissement pour les résultats d’analyse de registres existants effectués par Qualys. L’analyse CI/CD d’Azure Defender est optimisée par [Aqua Trivy](https://github.com/aquasecurity/trivy).
+Les conclusions des analyses CI/CD sont un enrichissement pour les résultats d’analyse de registres existants effectués par Qualys. L’analyse CI/CD de Defender pour le cloud est optimisée par [Aqua Trivy](https://github.com/aquasecurity/trivy).
 
 Vous obtiendrez des informations de traçabilité, telles que le workflow GitHub et l’URL d’exécution GitHub, pour permettre l’identification des workflows qui aboutissent à des images vulnérables.
 
@@ -32,25 +35,25 @@ Vous obtiendrez des informations de traçabilité, telles que le workflow GitHub
 |Aspect|Détails|
 |----|:----|
 |État de sortie :| **Cette intégration CI/CD est en préversion.**<br>Nous vous recommandons de l’expérimenter uniquement sur les workflows hors production.<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
-|Prix :|**Azure Defender pour les registres de conteneurs** est facturé conformément aux [tarifs de Security Center](https://azure.microsoft.com/pricing/details/security-center/).|
+|Prix :|**Microsoft Defender pour les registres de conteneurs** est facturé comme indiqué dans la [page des tarifs](https://azure.microsoft.com/pricing/details/security-center/)|
 |Clouds :|:::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Souverain (Azure Government, Azure China 21Vianet)|
 |||
 
 ## <a name="prerequisites"></a>Prérequis
 
-Pour analyser vos images lorsqu’elles sont envoyées par des workflows CI/CD dans vos registres, **Azure Defender pour les registres de conteneurs** doit être activé sur l’abonnement. 
+Pour analyser vos images lorsqu’elles sont envoyées par des workflows CI/CD dans vos registres, **Microsoft Defender pour les registres de conteneurs** doit être activé sur l’abonnement. 
 
 ## <a name="set-up-vulnerability-scanning-of-your-cicd-workflows"></a>Configuration de l’analyse de vulnérabilité de vos workflows CI/CD
 
 Pour activer les analyses de vulnérabilité des images dans vos workflows GitHub :
 
-[Étape 1. Activer l’intégration CI/CD dans Security Center](#step-1-enable-the-cicd-integration-in-security-center)
+[Étape 1. Activer l’intégration de CI/CD dans Defender pour le cloud](#step-1-enable-the-cicd-integration-in-defender-for-cloud)
 
 [Étape 2. Ajouter les lignes nécessaires à votre workflow GitHub](#step-2-add-the-necessary-lines-to-your-github-workflow-and-perform-a-scan)
 
-### <a name="step-1-enable-the-cicd-integration-in-security-center"></a>Étape 1. Activer l’intégration CI/CD dans Security Center
+### <a name="step-1-enable-the-cicd-integration-in-defender-for-cloud"></a>Étape 1. Activer l’intégration de CI/CD dans Defender pour le cloud
 
-1. Dans la barre latérale de Security Center, sélectionnez **Tarification et paramètres**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
 1. Sélectionnez l’abonnement approprié.
 1. Dans la barre latérale de la page des paramètres de cet abonnement, sélectionnez **Intégrations**.
 1. Dans le volet qui s’affiche, sélectionnez un compte Application Insights pour envoyer les résultats de l’analyse CI/CD à partir de votre workflow.
@@ -67,6 +70,10 @@ Pour activer les analyses de vulnérabilité des images dans vos workflows GitHu
 
     > [!TIP]
     > Nous vous recommandons de créer deux secrets dans votre dépôt pour référencer dans votre fichier YAML, comme indiqué ci-dessous. Les secrets peuvent être nommés en fonction de vos propres conventions de nommage. Dans cet exemple, les secrets sont référencés en tant que **AZ_APPINSIGHTS_CONNECTION_STRING** et **AZ_SUBSCRIPTION_TOKEN**.
+
+    > [!IMPORTANT]
+    >  L’envoi (push) au registre doit se produire avant la publication des résultats.
+
 
 
     ```yml
@@ -93,7 +100,7 @@ Pour activer les analyses de vulnérabilité des images dans vos workflows GitHu
         subscription-token: ${{ secrets.AZ_SUBSCRIPTION_TOKEN }} 
     ```
 
-1. Exécutez le workflow qui enverra l’image vers le registre de conteneurs sélectionné. Une fois l’image envoyée dans le registre, une analyse du registre est effectuée et vous pouvez afficher les résultats de l’analyse CI/CD avec ceux de l’analyse du registre dans Azure Security Center.
+1. Exécutez le workflow qui enverra l’image vers le registre de conteneurs sélectionné. Une fois l’image envoyée au registre, une analyse de celui-ci est effectuée et vous pouvez afficher les résultats de l’analyse CI/CD avec ceux de l’analyse du registre dans Microsoft Defender pour le cloud.
 
 1. [Affichez les résultats de l’analyse CI/CD](#view-cicd-scan-results).
 
@@ -135,5 +142,4 @@ Pour activer les analyses de vulnérabilité des images dans vos workflows GitHu
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-> [!div class="nextstepaction"]
-> [En savoir plus sur Azure Defender](azure-defender.md)
+En savoir plus sur [les plans de protection avancée de Microsoft Defender](defender-for-cloud-introduction.md).

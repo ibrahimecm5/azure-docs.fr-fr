@@ -4,12 +4,12 @@ description: Découvrez comment restaurer les sauvegardes d’Azure Database pou
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: df48d37f61b910dd9e8396fb8460d98479186f9c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2eb0d8bd462c50a0da09b4da059d8c0d185dbd3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224027"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020518"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Restaurer les sauvegardes d’Azure Database pour PostgreSQL (préversion)
 
@@ -17,8 +17,7 @@ Cet article explique comment restaurer une base de données sur un serveur Azure
 
 Vous pouvez restaurer une base de données sur n’importe quel serveur Azure PostgreSQL au sein du même abonnement, si le service dispose de l’[ensemble d’autorisations](backup-azure-database-postgresql-overview.md#azure-backup-authentication-with-the-postgresql-server) approprié sur le serveur cible.
 
-## <a name="restore-a-database-on-the-target-storage-account"></a>Restaurer une base de données sur le compte de stockage cible
-
+## <a name="restore-azure-postgresql-database"></a>Restaurer la base de données Azure PostgreSQL
 
 1. Accédez à **Coffre de sauvegarde** -> **Instances de sauvegarde**. Sélectionnez une base de données et cliquez sur **Restaurer**.
 

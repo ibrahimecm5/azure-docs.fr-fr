@@ -3,12 +3,13 @@ title: Autorisations pour des référentiels dans Azure Container Registry
 description: Créer un jeton avec des autorisations étendues à des référentiels spécifiques dans un registre Premium pour tirer (pull) ou envoyer (push) des images ou effectuer d’autres actions
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 796d98173a5ec850af2f8dbec3e8bfd1db902ca0
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 560722669dc663799af3219393cb7bdc4acdf3ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220431"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037983"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Créer un jeton avec des autorisations délimitées par le référentiel
 
@@ -428,7 +429,7 @@ Dans le portail, sélectionnez le jeton dans l’écran **Tokens (Preview)** [Je
 
 * Pour gérer les mappages d’étendue et les jetons, utilisez des commandes supplémentaires dans les groupes de commande [az acr scope-map][az-acr-scope-map] et [az acr token][az-acr-token].
 * Consultez la [page de présentation de l’authentification](container-registry-authentication.md) pour obtenir d’autres options d’authentification avec un registre de conteneurs Azure, notamment à l’aide d’une identité Azure Active Directory, d’un principal de service ou d’un compte administrateur.
-
+* Découvrez-en plus sur les [registres connectés](intro-connected-registry.md) et l’utilisation de jetons pour l’[accès](overview-connected-registry-access.md).
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

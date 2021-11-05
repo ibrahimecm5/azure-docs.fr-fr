@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ec3ba6a71ea1430dc060d431776a31bc6c5e1b81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a82d67cf0bb1644e31ff3d87d315cd920a92749a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128547501"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074590"
 ---
 # <a name="migrate-automatically-from-azure-virtual-desktop-classic-preview"></a>Migrer automatiquement à partir d’Azure Virtual Desktop (classique) [préversion]
 
@@ -234,7 +234,7 @@ Pour migrer vos ressources Azure Virtual Desktop (classique) vers Azure Resource
 
    Toutefois, la cmdlet ne supprimera pas l’espace de travail créé par le module ni le groupe de ressources qui lui est associé. Vous devrez supprimer manuellement ces éléments pour vous en débarrasser.
 
-6. Si vous ne voulez pas supprimer vos objets de service Azure Virtual Desktop (classique) pour le moment, mais que vous souhaitez tester la migration, vous pouvez exécuter **Set-RdsHostPoolHidden**.
+6. Si vous ne voulez pas supprimer vos objets de service (classiques) Azure Virtual Desktop pour le moment, mais que vous souhaitez tester la migration, vous pouvez exécuter **Set-RdsHostPoolHidden**.
 
     Par exemple :
 

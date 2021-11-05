@@ -4,19 +4,22 @@ description: Apprenez à améliorer la qualité de votre base de connaissances a
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: 4d346610ecb4e0552a52775c086eeb16e6e11680
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9d7a7eee1540690cf5d18516eeb602318e6d2c76
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373013"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005882"
 ---
 # <a name="active-learning"></a>Apprentissage actif
 
 La fonctionnalité _Suggestions d’apprentissage actif_ vous permet d’améliorer la qualité de votre base de connaissances en suggérant d’autres questions à vos paires de question-réponse en fonction des soumissions d’utilisateurs. Après avoir passé en revue ces suggestions, ajoutez-les aux questions existantes ou rejetez-les.
 
 Votre base de connaissances ne change pas automatiquement. Vous devez accepter les suggestions afin que toute modification prenne effet. Ces suggestions ajoutent des questions, mais elles ne modifient pas les questions existantes pas plus qu’elles ne les suppriment.
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 ## <a name="what-is-active-learning"></a>Présentation de l’apprentissage actif
 
@@ -31,13 +34,13 @@ Les deux méthodes fournissent à l’outil de classement des requêtes similair
 
 L’apprentissage actif est déclenché en fonction des scores des principales réponses renvoyées par QnA Maker. Si les différences de scores entre les paires de Q/R qui correspondent à la requête s’inscrivent dans une petite plage, la requête est considérée comme suggestion possible (en tant que question alternative) pour chacune des paires de Q/R possibles. Une fois que vous acceptez la question suggérée pour une paire de question-réponse spécifique, elle est rejetée pour les autres paires. Vous devez penser à enregistrer et effectuer l’apprentissage, après avoir accepté les suggestions.
 
-L’apprentissage actif offre les meilleures suggestions possible dans les cas où les points de terminaison reçoivent une quantité raisonnable de différentes requêtes d’utilisation. Lorsque 5 requêtes similaires ou plus sont ordonnées en cluster, toutes les 30 minutes, QnA Maker suggère les questions de l’utilisateur au concepteur de la base de connaissances pour qu’il les accepte ou les rejette. Toutes les suggestions sont regroupées par similarité, et les principales suggestions pour les questions alternatives sont affichées en fonction de la fréquence des requêtes particulières des utilisateurs finals.
+L’apprentissage actif offre les meilleures suggestions possible dans les cas où les points de terminaison reçoivent une quantité raisonnable de différentes requêtes d’utilisation. Lorsque cinq requêtes similaires ou plus sont ordonnées en cluster, toutes les 30 minutes, QnA Maker suggère les questions de l’utilisateur au concepteur de la base de connaissances pour qu’il les accepte ou les rejette. Toutes les suggestions sont regroupées par similarité, et les principales suggestions pour les questions alternatives sont affichées en fonction de la fréquence des requêtes particulières des utilisateurs finals.
 
 Une fois les questions suggérées dans le portail QnA Maker, vous pouvez examiner, puis vérifier et accepter, ou rejeter, ces suggestions. Il n’existe pas d’API permettant de gérer des suggestions.
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>Fonctionnement des commentaires implicites de QnA Maker
 
-Les commentaires implicites de QnA Maker utilisent un algorithme pour déterminer la proximité de score, puis pour faire des suggestions d’apprentissage actif. L’algorithme permettant de déterminer la proximité n’est pas un calcul simple. Les plages indiquées dans l’exemple suivant ne sont pas censées être fixes, mais doivent servir de guide pour comprendre l’impact de l’algorithme uniquement.
+Les commentaires implicites de QnA Maker utilisent un algorithme pour déterminer la proximité de score, puis pour faire des suggestions d’apprentissage actif. L’algorithme permettant de déterminer la proximité n’est pas un calcul simple. Les plages indiquées dans l’exemple suivant ne sont pas censées être fixes, mais doivent servir de guide pour comprendre l’effet de l’algorithme uniquement.
 
 Lorsque le niveau de confiance du score d’une question est élevé, par exemple 80 %, la plage des scores pris en compte pour l’apprentissage actif est large, environ 10 %. À mesure que le score de confiance diminue, par exemple 40 %, la plage des scores décroît également et passe à environ 4 %.
 
@@ -126,19 +129,9 @@ Utilisez l’[API Train](/rest/api/cognitiveservices/qnamaker4.0/runtime/train) 
 
 ## <a name="upgrade-runtime-version-to-use-active-learning"></a>Mettre à niveau votre version de runtime pour utiliser l’apprentissage actif
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
-
 L’apprentissage actif est pris en charge dans la version 4.4.0 du runtime et dans les versions ultérieures. Si votre base de connaissances a été créée dans une version antérieure, [mettez à niveau votre runtime](configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) pour utiliser cette fonctionnalité.
 
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Dans le cas de réponses aux questions personnalisées (préversion), il n’est pas nécessaire de mettre à niveau le runtime manuellement.
-
----
-
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>Activer l’apprentissage actif pour les questions alternatives
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (version stable)](#tab/v1)
 
 L’apprentissage actif est désactivé par défaut. Activez-le pour afficher les suggestions de questions. Une fois l’apprentissage actif activé, vous devez envoyer des informations de l’application cliente vers QnA Maker. Pour plus d’informations, consultez [Flux architectural pour utiliser les API Train et GenerateAnswer à partir d’un bot](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
 
@@ -158,12 +151,6 @@ L’apprentissage actif est désactivé par défaut. Activez-le pour afficher le
     > La version exacte sur l’image précédente est présentée à titre d’exemple uniquement. Votre version peut être différente.
 
     Une fois que la fonctionnalité **Apprentissage actif** est activée, la base de connaissances suggère de nouvelles questions à intervalles réguliers en fonction des questions soumises par l’utilisateur. Vous pouvez désactiver la stratégie **Apprentissage actif** en basculant de nouveau le paramètre.
-    
-# <a name="custom-question-answering-preview-release"></a>[Réponses aux questions personnalisées (préversion)](#tab/v2)
-
-Par défaut, la formation active est **activée** dans les réponse aux questions personnalisées (préversion). Pour voir les autres questions suggérées, [utilisez les options Affichage](../How-To/improve-knowledge-base.md#view-suggested-questions) sur la page Modifier.
-
----
 
 ## <a name="review-suggested-alternate-questions"></a>Passer en revue les questions alternatives suggérées
 

@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 09/02/2021
-ms.openlocfilehash: 32bf7849a8d15b455fc6028ac94009ebd46791e4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 51da9cba732c5654709d0c1e84398035d4675cc8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123441128"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005724"
 ---
 # <a name="access-a-secured-azure-purview-account-from-azure-data-factory"></a>Accéder à un compte Azure Purview sécurisé à partir d'Azure Data Factory
 
@@ -22,7 +22,7 @@ Cet article explique la procédure d’accès à un compte Azure Purview sécuri
 
 ## <a name="azure-purview-private-endpoint-deployment-scenarios"></a>Scénarios de déploiement d’un point de terminaison privé Azure Purview
 
-Vous pouvez utiliser des [points de terminaison privés Azure](../private-link/private-endpoint-overview.md) pour vos comptes Azure Purview afin de permettre aux utilisateurs d’un réseau virtuel (VNet) d’accéder en toute sécurité au catalogue via une liaison privée. Purview fournit différents types de points privés pour différents besoins d’accès : le point de terminaison privé de *compte*, le point de terminaison privé du *portail* et les points de terminaison privés d’*ingestion*. Pour en savoir plus, consultez [Vue d’ensemble conceptuelle des points de terminaison privés de Purview](../purview/catalog-private-link.md#conceptual-overview). 
+Vous pouvez utiliser des [points de terminaison privés Azure](../private-link/private-endpoint-overview.md) pour vos comptes Azure Purview afin d’autoriser un accès sécurisé au catalogue à partir d’un réseau virtuel (VNet) via une liaison privée. Purview fournit différents types de points privés pour différents besoins d’accès : le point de terminaison privé de *compte*, le point de terminaison privé du *portail* et les points de terminaison privés d’*ingestion*. Pour en savoir plus, consultez [Vue d’ensemble conceptuelle des points de terminaison privés de Purview](../purview/catalog-private-link.md#conceptual-overview). 
 
 Si votre compte Purview est protégé par un pare-feu et refuse l’accès public, veillez à suivre la liste de vérification ci-dessous pour configurer les points de terminaison privés de sorte que Data Factory puisse se connecter à Purview. 
 
@@ -51,9 +51,9 @@ Pour créer des points de terminaison privés managés pour Purview dans l’int
 
    :::image type="content" source="./media/how-to-access-secured-purview-account/name-purview-private-endpoints.png" alt-text="Nommez les points de terminaison privés managés pour votre compte Purview connecté.":::
 
-5. Cliquez sur **Créer** pour créer les points de terminaison privés. Après la création, 4 requêtes de point de terminaison privé sont générées et doivent [être approuvées par un propriétaire de Purview](#approve-private-endpoint-connections).
+5. Cliquez sur **Créer** pour créer les points de terminaison privés. Après la création, 4 requêtes de point de terminaison privé sont générées et doivent [être approuvées par un propriétaire de Purview](#approve-private-endpoint-connections).
 
-La création d’un point de terminaison privé managé par lot n’est offerte que dans l’interface utilisateur de Data Factory. Si vous souhaitez créer des points de terminaison privés managés par programme, vous devez créer ces points de terminaison individuellement. Vous trouverez des informations sur les ressources managées Purview dans le portail Azure -> votre compte Purview -> Ressources managées.
+La création de points de terminaison privés managés par lots est fournie uniquement dans l’IU de Purview. Si vous souhaitez créer des points de terminaison privés managés par programme, vous devez créer ces points de terminaison individuellement. Vous trouverez des informations sur les ressources managées Purview dans le portail Azure -> votre compte Purview -> Ressources managées.
 
 ### <a name="approve-private-endpoint-connections"></a>Approuver les connexions de point de terminaison privé
 

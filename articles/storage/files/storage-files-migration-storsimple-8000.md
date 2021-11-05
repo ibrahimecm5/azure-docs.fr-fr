@@ -4,28 +4,21 @@ description: Découvrez comment effectuer une migration d’une appliance StorSi
 author: fauhse
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/22/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: dbf422beeea23cee975b5721c7becae95bf24b6c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9bb33a10314460462cc32838227cadd3480cf362
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434613"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022626"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migration de StorSimple 8100 et 8600 vers Azure File Sync
 
-La série StorSimple 8000 est représentée par les appliances physiques locales 8100 ou 8600 et leurs composants de service cloud. Il est possible d’effectuer la migration des données de l’une ou l’autre de ces appliances vers un environnement Azure File Sync. Azure File Sync est le service Azure à long terme stratégique et par défaut vers lequel les appliances StorSimple peuvent être migrées.
+La série StorSimple 8000 est représentée par les appliances physiques locales 8100 ou 8600 et leurs composants de service cloud. Les appliances virtuelles StorSimple 8010 et 8020 sont également traitées dans ce guide de migration. Il est possible de migrer les données de l’une ou l’autre de ces appliances vers des partages de fichiers Azure avec éventuellement Azure File Sync. Azure File Sync est le service Azure à long terme stratégique et par défaut qui remplace la fonctionnalité locale StorSimple.
 
 StorSimple série 8000 atteindra sa [fin de vie](/lifecycle/products/azure-storsimple-8000-series) en décembre 2022. Il est important de planifier votre migration le plus tôt possible. Cet article donne les étapes à suivre pour effectuer correctement une migration vers Azure File Sync, en fournissant toutes les connaissances générales nécessaires.
-
-## <a name="applies-to"></a>S’applique à
-| Type de partage de fichiers | SMB | NFS |
-|-|:-:|:-:|
-| Partages de fichiers Standard (GPv2), LRS/ZRS | ![Oui](../media/icons/yes-icon.png) | ![Non](../media/icons/no-icon.png) |
-| Partages de fichiers Standard (GPv2), GRS/GZRS | ![Oui](../media/icons/yes-icon.png) | ![Non](../media/icons/no-icon.png) |
-| Partages de fichiers Premium (FileStorage), LRS/ZRS | ![Oui](../media/icons/yes-icon.png) | ![Non](../media/icons/no-icon.png) |
 
 ## <a name="phase-1-prepare-for-migration"></a>Phase 1 : Préparation de la migration
 
@@ -84,6 +77,29 @@ Si vous ne trouvez pas les clés dans vos dossiers, vous pouvez générer une no
 > * La connexion via une session HTTPS est l’option la plus sûre et celle qui est recommandée.
 > * Une connexion directe à la console série de l’appareil est sécurisée, mais une connexion à la console via des commutateurs réseau ne l’est pas.
 > * Les connexions de session HTTP sont possibles, mais elles ne sont *pas chiffrées*. Elles ne sont donc pas recommandées, sauf si vous les utilisez au sein d’un réseau approuvé et fermé.
+
+### <a name="known-limitations"></a>Limites connues
+
+StorSimple Data Manager et les partages de fichiers Azure présentent quelques limitations que vous devez prendre en compte avant de commencer la migration, car elles peuvent empêcher une migration :
+* Seuls les volumes NTFS de votre appliance StorSimple sont pris en charge.
+* Le service ne fonctionne pas avec les volumes chiffrés par BitLocker.
+* Les sauvegardes StorSimple endommagées ne peuvent pas être migrées.
+* Des options réseau spéciales, telles que les pare-feu ou la communication avec point de terminaison privé uniquement, ne peuvent pas être activées sur le compte de stockage source dans lequel les sauvegardes StorSimple sont stockées, ni sur le compte de stockage cible qui contient vos partages de fichiers Azure.
+
+
+### <a name="file-fidelity"></a>Fidélité de fichier
+
+Si aucune des [Limitations connues](#known-limitations) n’empêche une migration, il existe quand même des limitations sur ce qui peut être stocké dans les partages de fichiers Azure que vous devez connaître.
+La _Fidélité de fichier_ fait référence à la multitude d’attributs, d’horodatages et de données qui composent un fichier. Dans une migration, la fidélité de fichier indique dans quelle mesure les informations sur la source (volume StorSimple) peuvent être correctement traduites (migrées) vers la cible (partage de fichiers Azure).
+[Azure Files prend en charge un sous-ensemble](/rest/api/storageservices/set-file-properties) des [propriétés de fichier NTFS](/windows/win32/fileio/file-attribute-constants). Les listes de contrôle d’accès, les métadonnées communes et certains horodatages seront migrés. Les éléments suivants n’empêchent pas la migration, mais entraînent des problèmes par élément au cours d’une migration :
+
+* Horodatages : L’heure de changement des fichiers ne sera pas définie, elle est actuellement en lecture seule sur le protocole REST. L’horodatage du dernier accès à un fichier ne sera pas déplacé. Actuellement, ce n’est pas un attribut pris en charge sur les fichiers stockés dans un partage de fichiers Azure.
+* Des [flux de données alternatifs](/openspecs/windows_protocols/ms-fscc/b134f29a-6278-4f3f-904f-5e58a713d2c5) ne peuvent pas être stockés dans les partages de fichiers Azure. Les fichiers qui contiennent des flux de données alternatifs sont copiés, mais les flux de données alternatifs sont supprimés du fichier pendant le processus.
+* Les liens symboliques, les liens physiques, les jonctions et les points d’analyse sont ignorés pendant une migration. Les journaux de copie de migration listent chaque élément ignoré, accompagné d’une raison.
+* La copie des fichiers chiffrés EFS échoue. Les journaux de copie indiquent l’élément qui n’a pas pu être copié avec « L’accès est refusé ».
+* Les fichiers endommagés sont ignorés. Les journaux de copie peuvent lister différentes erreurs pour chaque élément endommagé sur le disque StorSimple : « Échec de la requête en raison d’une grave erreur matérielle de l’appareil. » ou « Le fichier ou le répertoire est endommagé ou illisible » ou « Structure de liste de contrôle de l’accès non valide ».
+* Les fichiers qui dépassent 4 TiO sont ignorés.
+* Les longueurs de chemin de fichier doivent être inférieures ou égales à 2 048 caractères. Les fichiers et les dossiers avec des chemins plus longs sont ignorés.
 
 ### <a name="storsimple-volume-backups"></a>Sauvegardes de volume StorSimple
 
@@ -182,11 +198,7 @@ Vous ne savez toujours pas ?
 
 * Choisissez le stockage Premium si vous avez besoin des [performances d’un partage de fichiers Azure Premium](understanding-billing.md#provisioned-model).
 * Choisissez le stockage Standard pour les charges de travail du serveur de fichiers à usage général, y compris les données chaudes et les données d’archivage. Choisissez également le stockage Standard si la seule charge de travail sur le partage dans le cloud sera Azure File Sync.
-
-#### <a name="account-kind"></a>Type de compte
-
-* Pour le stockage standard, choisissez *StorageV2 (universel v2)* .
-* Pour les partages de fichiers Premium, choisissez *FileStorage*.
+* Pour les partages de fichiers premium, choisissez *Partages de fichiers* dans l’Assistant de création de compte de stockage.
 
 #### <a name="replication"></a>Réplication
 
@@ -261,7 +273,7 @@ Cette section décrit comment configurer une tâche de migration et mapper avec 
 
 :::row:::
     :::column:::
-       ![Tâche de migration de StorSimple série 8000.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Capture d'écran du nouveau formulaire de création d'une tâche de migration.")
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png" alt-text="Capture d'écran du nouveau formulaire de création d'une tâche de migration.":::
     :::column-end:::
     :::column:::
         **Nom de la définition de travail**</br>Ce nom doit indiquer l’ensemble des fichiers que vous déplacez. Donnez-lui un nom similaire à celui de votre partage de fichiers Azure. </br></br>**Emplacement d’exécution de la tâche**</br>Lorsque vous sélectionnez une région, vous devez sélectionner celle de votre compte de stockage StorSimple ou, si cela n’est pas possible, une région proche de celui-ci. </br></br><h3>Source</h3>**Abonnement source**</br>Sélectionnez l’abonnement dans lequel vous stockez votre ressource StorSimple Device Manager. </br></br>**Ressource StorSimple**</br>Sélectionnez la ressource StorSimple Device Manager auprès de laquelle votre appliance est inscrite. </br></br>**Clé de chiffrement de données du service**</br>Consultez la [section précédente de cet article](#storsimple-service-data-encryption-key) si vous ne trouvez pas la clé dans vos dossiers. </br></br>**Appareil**</br>Sélectionnez l’appareil StorSimple contenant le volume vers lequel vous souhaitez effectuer la migration. </br></br>**Volume**</br>Sélectionnez le volume source. Plus tard, vous déciderez si vous souhaitez migrer l’ensemble du volume ou des sous-répertoires vers le partage de fichiers Azure cible.</br></br> **Sauvegardes de volume**</br>Vous pouvez sélectionner *Sélectionner des sauvegardes de volume* pour choisir les sauvegardes à déplacer dans le cadre de cette tâche. [Une section dédiée de cet article](#selecting-volume-backups-to-migrate) sera prochainement disponible. Celle-ci couvrira le processus en détail.</br></br><h3>Cible</h3>Sélectionnez l’abonnement, le compte de stockage et le partage de fichiers Azure comme cible de cette tâche de migration.</br></br><h3>Mappage de répertoires</h3>[Une section dédiée de cet article](#directory-mapping) traite de tous les détails pertinents.
@@ -272,7 +284,7 @@ Cette section décrit comment configurer une tâche de migration et mapper avec 
 
 Le choix des sauvegardes à migrer repose sur différents aspects importants :
 
-- Vos tâches de migration ne peuvent déplacer que des sauvegardes, pas les données d'un volume actif. La sauvegarde la plus récente est donc la plus proche des données actives et doit toujours figurer dans la liste des sauvegardes déplacées lors d'une migration.
+- Vos tâches de migration peuvent uniquement déplacer des sauvegardes, pas les données de volume actives. La sauvegarde la plus récente est donc la plus proche des données actives et doit toujours figurer dans la liste des sauvegardes déplacées lors d'une migration. Lorsque vous ouvrez la boîte de dialogue de sélection de sauvegarde, celle-ci est sélectionnée par défaut.
 - Vérifiez que votre dernière sauvegarde est récente afin de réduire au maximum le delta sur le partage actif. Il peut être intéressant de procéder manuellement au déclenchement et à la sauvegarde d'un autre volume avant de créer une tâche de migration. Un delta réduit sur le partage actif améliorera votre expérience de migration. Si ce delta peut être égal à zéro = aucune autre modification du volume StorSimple n'a eu lieu après la dernière sauvegarde de votre liste - alors en phase 5 : Le basculement des utilisateurs sera considérablement simplifié et accéléré.
 - Sur le partage de fichiers Azure, les sauvegardes doivent être lues dans l'ordre suivant : **de la plus ancienne à la plus récente**. Une sauvegarde ancienne ne peut pas être « triée » dans la liste des sauvegardes du partage de fichiers Azure après l'exécution d'une tâche de migration. Par conséquent, vous devez vous assurer que votre liste de sauvegardes est terminée *avant* de créer une tâche. 
 - Cette liste de sauvegardes ne peut pas être modifiée une fois la tâche créée, même si celle-ci n'a jamais été exécutée. 
@@ -300,7 +312,7 @@ Le choix des sauvegardes à migrer repose sur différents aspects importants :
         :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time.png" alt-text="Capture d'écran illustrant la sélection d'un intervalle de temps dans le panneau de sélection des sauvegardes." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time-expanded.png":::
     :::column-end:::
     :::column:::
-        Par défaut, la liste est filtrée pour afficher les sauvegardes de volume StorSimple datant des sept derniers jours afin de faciliter la sélection de la sauvegarde la plus récente. Pour les sauvegardes plus anciennes, utilisez le filtre d'intervalle de temps disponible en haut du panneau. Vous pouvez effectuer une sélection à partir d'un filtre existant ou définir un intervalle de temps personnalisé pour filtrer uniquement les sauvegardes effectuées au cours de cette période.
+        Par défaut, la liste est filtrée pour montrer les sauvegardes de volume StorSimple des sept derniers jours. La sauvegarde la plus récente est sélectionnée par défaut, même si elle n’a pas eu lieu au cours des sept derniers jours. Pour les sauvegardes plus anciennes, utilisez le filtre d’intervalle de temps en haut du panneau. Vous pouvez effectuer une sélection à partir d'un filtre existant ou définir un intervalle de temps personnalisé pour filtrer uniquement les sauvegardes effectuées au cours de cette période.
     :::column-end:::
 :::row-end:::
 
@@ -373,40 +385,84 @@ Trie plusieurs emplacements sources dans une nouvelle structure de répertoires�
 Vos tâches de migration sont répertoriées sous *Définitions des tâches* dans la ressource Data Manager que vous avez déployée dans un groupe de ressources.
 Dans la liste des définitions de tâches, sélectionnez la tâche que vous souhaitez exécuter.
 
-Dans le panneau qui s'ouvre, vous pouvez voir que votre tâche est exécutée dans la liste inférieure. Initialement, cette liste est vide. En haut du panneau se trouve une commande appelée *Exécuter la tâche*. Cette commande n'exécute pas immédiatement la tâche, elle ouvre le panneau **Exécution de la tâche** :
+Dans le panneau de tâche qui s’ouvre, vous pouvez voir l’état actuel de votre tâche et une liste des sauvegardes que vous avez sélectionnées. La liste des sauvegardes est triée de la plus ancienne à la plus récente et est migrée vers votre partage de fichiers Azure dans cet ordre.  
+
+:::row:::
+    :::column:::        
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-never-ran-focused.png" alt-text="Capture d’écran du panneau de tâche de migration mettant en évidence la commande pour démarrer la tâche. Elle montre aussi les sauvegardes sélectionnées qui sont planifiées pour la migration." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-never-ran.png":::
+    :::column-end:::
+    :::column:::
+        Au départ, la tâche de migration aura l’état **Jamais exécuté**. </br>Lorsque vous êtes prêt, vous pouvez démarrer cette tâche de migration. (Sélectionnez l’image d’une version avec une résolution plus élevée.) </br> Lorsqu’une sauvegarde a été migrée avec succès, un instantané de partage de fichiers Azure automatique est pris. La date de sauvegarde d’origine de votre sauvegarde StorSimple est placée dans la section *Commentaires* de l’instantané de partage de fichiers Azure. L’utilisation de ce champ vous permet de voir quand les données ont été sauvegardées au départ par rapport à l’heure à laquelle l’instantané de partage de fichiers a été pris.
+        </br></br>
+        > [!CAUTION]
+        > Les sauvegardes doivent être traitées de la plus ancienne à la plus récente. Une fois qu’une tâche de migration est créée, vous ne pouvez pas modifier la liste des sauvegardes de volume StorSimple sélectionnées. Ne démarrez pas la tâche si la liste des sauvegardes est incorrecte ou incomplète. Supprimez la tâche et créez-en une nouvelle avec les sauvegardes appropriées sélectionnées.
+    :::column-end:::
+:::row-end:::
+
+### <a name="per-item-errors"></a>Erreurs par élément
+
+Les tâches de migration ont deux colonnes dans la liste des sauvegardes, qui répertorient les problèmes qui se sont éventuellement produits lors de la copie :
+
+* Erreurs de copie </br>Cette colonne répertorie les fichiers ou dossiers qui auraient dû être copiés mais qui ne l’ont pas été. Ces erreurs sont souvent récupérables. Quand une sauvegarde répertorie des problèmes d’élément dans cette colonne, consultez les journaux de copie. Si vous devez migrer ces fichiers, sélectionnez **Réessayer la sauvegarde**. Cette option devient disponible une fois le traitement de la sauvegarde terminé. La section [Gestion d’une tâche de migration](#manage-a-migration-job) décrit vos options plus en détail.
+* Fichiers non pris en charge </br>Cette colonne répertorie les fichiers ou dossiers qui ne peuvent pas être migrés. Le Stockage Azure présente des limitations dans les noms de fichier, les longueurs de chemin et les types de fichier qui ne peuvent pas être stockés actuellement ou logiquement dans un partage de fichiers Azure. Une tâche de migration ne s’interrompt pas pour ce type d’erreur. Toute nouvelle tentative de migration de la sauvegarde ne changera pas le résultat. Quand une sauvegarde répertorie des problèmes d’élément dans cette colonne, consultez les journaux de copie et prenez des notes. Si de tels problèmes surviennent dans votre dernière sauvegarde et que vous avez trouvé dans le journal de copie que c’était dû à un nom de fichier, une longueur de chemin ou un autre problème sur lequel vous avez une influence, vous voudrez peut-être remédier au problème dans le volume StorSimple actif, effectuer une sauvegarde de volume StorSimple et créer une nouvelle tâche de migration juste avec cette sauvegarde. Vous migrerez ensuite cet espace de noms réparé, lequel deviendra la version la plus récente/active du partage de fichiers Azure. Il s’agit d’un processus manuel et long. Examinez attentivement les journaux de copie et évaluez s’il en vaut la peine.
+
+Ces journaux de copie sont des fichiers *\*.csv* qui listent les éléments d’espace de noms qui ont pu être copiés et ceux qui n’ont pas pu l’être. Les erreurs sont ensuite réparties dans les catégories présentées précédemment.
+À partir de l’emplacement du fichier journal, vous pouvez trouver les journaux des fichiers ayant échoué en recherchant « échec ». Le résultat devrait être un ensemble de journaux pour les fichiers qui n’ont pas pu être copiés. Triez ces journaux par taille. Il peut y avoir d’autres journaux générés de 17 octets. Ils sont vides et peuvent être ignorés. Ce tri vous permet de vous concentrer sur les journaux avec du contenu.
+
+Le même processus s’applique pour l’enregistrement des copies réussies des fichiers journaux.
+
+### <a name="manage-a-migration-job"></a>Gérer une tâche de migration
+
+Les tâches de migration ont les états suivants :
+* **Jamais exécuté** </br>Nouvelle tâche qui a été définie, mais jamais exécutée.
+* **En attente** </br>Une tâche avec cet état attend que les ressources soient provisionnées dans le service de migration. Elle passe automatiquement à un autre état quand elle est prête.
+* **Échec** </br>Une tâche ayant échoué rencontre une erreur irrécupérable qui l’empêche de traiter d’autres sauvegardes. Une tâche n’est pas censée entrer dans cet état. Une demande de support est la meilleure marche à suivre.
+* **Annulé** / **Annulation**</br>Il est possible d’annuler une tâche de migration en entier ou des sauvegardes individuelles dans la tâche. Les sauvegardes annulées ne sont pas traitées, une tâche de migration annulée arrête le traitement d’autres sauvegardes. Attendez-vous à ce que l’annulation d’une tâche dure longtemps. Cela ne vous empêche pas de créer une nouvelle tâche. La meilleure marche à suivre pour laisser une tâche arriver complètement à l’état **Annulé** est la patience. Vous pouvez ignorer les tâches ayant échoué/annulées ou les supprimer ultérieurement. Vous n’aurez pas à supprimer les tâches avant de pouvoir supprimer la ressource Data Manager à la fin de votre migration StorSimple.
+
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job.png" alt-text="Image du panneau d'exécution de la tâche dans lequel une liste déroulante est ouverte, avec la sélection des sauvegardes à migrer. La sauvegarde la plus ancienne est en surbrillance. Elle doit être sélectionnée en premier." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job-expanded.png":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-running-focused.png" alt-text="Capture d’écran du panneau de tâche de migration avec une grande icône d’état en haut montrant l’état Exécution." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-running.png":::
     :::column-end:::
     :::column:::
-        Dans cette version, chaque tâche doit être exécutée plusieurs fois. </br></br>**Vous devez commencer par la sauvegarde la plus ancienne de la liste des sauvegardes que vous souhaitez migrer.** (mis en surbrillance dans l'image)</br></br>Vous ré-exécutez la tâche, autant de fois que vous avez de sauvegardes sélectionnées, chaque fois sur une sauvegarde plus récente.
-        </br></br>
-        > [!CAUTION]
-        > Il est impératif d'exécuter la tâche de migration en commençant par la sauvegarde la plus ancienne sélectionnée, puis en passant à une sauvegarde plus récente. Vous devez toujours maintenir l'ordre de vos sauvegardes manuellement, de la plus ancienne à la plus récente.
+        **Exécution** </br></br>Une tâche en cours d’exécution est en train de traiter une sauvegarde. Reportez-vous au tableau situé dans la partie inférieure du panneau pour voir quelle sauvegarde est en cours de traitement et quelles sont celles qui ont éventuellement déjà été migrées. </br>Les sauvegardes déjà migrées ont une colonne avec un lien vers un journal de copie. Si des erreurs sont signalées pour une sauvegarde, vous devez consulter le journal de copie.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-paused-focused.png" alt-text="Capture d’écran du panneau de tâche de migration avec une grande icône d’état en haut montrant l’état En pause." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-paused.png":::
+    :::column-end:::
+    :::column:::
+        **En pause** </br></br>Une tâche de migration est en pause lorsqu’une décision est à prendre. Cette condition active deux boutons de commande en haut du panneau : </br>Choisissez **Réessayer la sauvegarde** lorsque la sauvegarde montre des fichiers qui étaient censés être déplacés mais qui ne l’ont pas été (colonne *Erreur de copie*). </br>Choisissez **Ignorer la sauvegarde** lorsque la sauvegarde est manquante (a été supprimée par la stratégie depuis que vous avez créé la tâche de migration) ou lorsque la sauvegarde est endommagée. Vous trouverez des informations détaillées sur l’erreur dans le panneau qui s’ouvre lorsque vous cliquez sur la sauvegarde qui a échoué. </br></br>Lorsque vous *ignorez* ou *réessayez* la sauvegarde actuelle, le service de migration crée un nouvel instantané dans votre partage de fichiers Azure cible. Vous souhaiterez peut-être supprimer la précédente plus tard, qui sera probablement incomplète.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-success-focused.png" alt-text="Image qui montre le panneau de tâche de migration avec une grande icône d’état en haut montrant l’état Terminé." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-success.png":::
+    :::column-end:::
+    :::column:::
+        **Terminé** et **Terminé avec des avertissements**</br></br>Une tâche de migration est marquée **Terminé** lorsque toutes les sauvegardes qu’elle contient ont été traitées avec succès. </br>**Terminé avec des avertissements** est un état qui se produit lorsque : <ul><li>Une sauvegarde a rencontré un problème récupérable. Cette sauvegarde est marquée comme *partiellement réussi* ou *en échec*.</li><li>Vous avez décidé de poursuivre la tâche en pause, en ignorant la sauvegarde avec les problèmes cités. (Vous avez choisi *Ignorer la sauvegarde* au lieu de *Réessayer la sauvegarde*.)</li></ul> Si la tâche de migration se termine avec des avertissements, vous devez toujours examiner le journal de copie des sauvegardes associées.
     :::column-end:::
 :::row-end:::
 
 #### <a name="run-jobs-in-parallel"></a>Exécuter des tâches en parallèle
 
-Vous aurez probablement plusieurs emplacements StorSimple qui doivent être copiés sur un partage de fichiers Azure différent. Pour une seule appliance StorSimple, vous pouvez exécuter jusqu’à quatre tâches de migration en parallèle sous réserve que chacune cible un partage de fichiers Azure différent. 
+Vous aurez probablement plusieurs volumes StorSimple, chacun avec des partages qui doivent être migrés vers un partage de fichiers Azure. Il est important de bien comprendre ce que vous pouvez faire en parallèle. Certaines limitations ne sont pas appliquées dans l’expérience utilisateur et dégradent ou empêchent une migration complète si les tâches sont exécutées en même temps.
 
-Chaque tâche passe par plusieurs phases. Le démarrage d’une autre tâche n’est possible que lorsque la tâche précédente est passée à la phase de copie de fichiers. En général, dans les 25 à 35 minutes suivant le début de la tâche, une autre tâche peut être démarrée, dans la limite de quatre tâches en parallèle. Les tâches ciblant le même partage de fichiers (pour les sauvegardes ultérieures) doivent être copiées une sauvegarde après l’autre.
+Il n’existe aucune limite dans la définition des tâches de migration. Vous pouvez définir le même volume source StorSimple, le même partage de fichiers Azure, sur des appliances StorSimple identiques ou différentes. Toutefois, leur exécution présente des limitations :
 
-> [!CAUTION]
-> Démarrez une seule tâche de migration à la fois pour toutes les données transférées vers le même partage de fichiers Azure.
+* Une seule tâche de migration avec le même volume source StorSimple peut s’exécuter en même temps.
+* Une seule tâche de migration avec le même partage de fichiers Azure cible peut s’exécuter en même temps.
+* Vous pouvez exécuter jusqu’à quatre tâches de migration en parallèle par Gestionnaire d’appareil StorSimple, à condition de respecter les règles précédentes.
 
-#### <a name="interpret-the-log-files"></a>Interpréter les fichiers journaux
+Lorsque vous tentez de démarrer une tâche de migration, les règles précédentes sont vérifiées. Si des tâches sont en cours d’exécution, vous ne pourrez peut-être pas démarrer la tâche actuelle. Vous recevrez une alerte qui liste le nom de la ou des tâches en cours d’exécution qui doivent être finies avant de pouvoir démarrer la nouvelle tâche.
 
-Une tâche de migration terminée affiche un lien vers les journaux de copie. Ces journaux sont des fichiers *\*.csv* qui répertorient les éléments d’espace de noms réussis et les éléments qui n’ont pas pu être copiés.
-
-Après avoir accédé à l’emplacement des fichiers journaux, vous pouvez localiser les journaux des fichiers ayant échoué en filtrant la liste avec le terme de recherche « failed » (échec). Le résultat correspondra à un ensemble de journaux pour les fichiers qui n’ont pas pu être copiés. Triez-les ensuite par taille. Il peut y avoir des journaux supplémentaires générés à une taille de 17 octets. Ils sont vides et peuvent être ignorés. Ce tri vous permet de facilement vous concentrer sur les journaux présentant du contenu.
-
-Le même processus s’applique pour l’enregistrement des copies réussies des fichiers journaux.
+> [!TIP]
+> Il est judicieux de vérifier régulièrement vos tâches de migration sous l’onglet *Définition de la tâche* de votre ressource *Data Manager*, afin de voir si l’une d’entre elles est en pause et a besoin de votre intervention pour se terminer.
 
 ### <a name="phase-3-summary"></a>Récapitulatif de la phase 3
 
-À la fin de la phase 3, vous aurez exécuté au moins une de vos tâches de migration entre les volumes StorSimple et le(s) partage(s) de fichiers Azure. Vous aurez exécuté la même tâche de migration plusieurs fois, des sauvegardes les plus anciennes aux plus récentes qui doivent être migrées. À présent, vous pouvez soit configurer Azure File Sync pour le partage (une fois que les tâches de migration d'un partage seront terminées), soit diriger l'accès de vos applications et de vos travailleurs de l'information vers le partage de fichiers Azure.
+À la fin de la phase 3, vous aurez exécuté au moins une de vos tâches de migration entre les volumes StorSimple et le(s) partage(s) de fichiers Azure. Avec votre exécution, vous aurez migré vos sauvegardes spécifiées dans des instantanés de partage de fichiers Azure. À présent, vous pouvez soit configurer Azure File Sync pour le partage (une fois que les tâches de migration d’un partage seront terminées) ou l’accès direct au partage pour vos applications et vos travailleurs de l’information vers le partage de fichiers Azure.
 
 ## <a name="phase-4-access-your-azure-file-shares"></a>Phase 4 : Accéder aux partages de fichiers Azure
 
@@ -483,7 +539,7 @@ Votre instance Windows Server locale inscrite doit être prête et connectée à
 
 ### <a name="phase-4-summary"></a>Récapitulatif de la phase 4
 
-Au cours de cette phase, vous avez créé et exécuté plusieurs tâches de migration dans StorSimple Data Manager. Ces tâches ont migré vos fichiers et dossiers vers des partages de fichiers Azure. Vous avez également déployé Azure File Sync ou préparé votre réseau et vos comptes de stockage pour un accès direct au partage.
+À la fin de cette phase, vous avez créé et exécuté plusieurs tâches de migration dans StorSimple Data Manager. Ces tâches ont migré vos fichiers et dossiers, et leurs sauvegardes, vers des partages de fichiers Azure. Vous avez également déployé Azure File Sync ou préparé votre réseau et vos comptes de stockage pour un accès direct au partage.
 
 ## <a name="phase-5-user-cut-over"></a>Phase 5 : Transfert de l’utilisateur
 
@@ -500,6 +556,8 @@ Cette approche de migration nécessite un temps d’arrêt pour vos utilisateurs
 * Gardez vos volumes StorSimple disponibles pendant l'exécution de vos tâches de migration.
 * Lorsque vous avez terminé d’exécuter vos tâches de migration des données pour un partage, vous devez supprimer l’accès utilisateur (au moins l’accès en écriture) des volumes ou partages StorSimple. Une RoboCopy finale récupèrera les modifications de votre partage de fichiers Azure. Vous pourrez alors faire basculer vos utilisateurs. L’emplacement où vous exécutez RoboCopy varie selon que vous avez choisi d’utiliser Azure File Sync ou l’accès direct au partage. La prochaine section sur RoboCopy aborde ce sujet.
 * Une fois que vous avez terminé la récupération RoboCopy, vous êtes prêt à exposer le nouvel emplacement à vos utilisateurs, soit directement par le biais du partage de fichiers Azure, soit par le biais d’un partage SMB présent sur une instance Windows Server avec Azure File Sync. Souvent, un déploiement DFS-N permet d’effectuer une opération de basculement rapide et efficace. Il conserve la cohérence de vos adresses de partage existantes et les redirigent vers un nouvel emplacement où se trouvent vos fichiers et vos dossiers déplacés.
+
+Pour les données d’archivage, il s’agit d’une approche entièrement viable pour mettre en place un temps d’arrêt sur votre volume StorSimple (ou sous-dossier), faire une sauvegarde de volume StorSimple, migrer puis ouvrir la destination de migration pour que les utilisateurs et les applications puissent y accéder. Ainsi, vous n’aurez pas besoin d’un RoboCopy de récupération comme décrit dans cette section. Toutefois, cette approche s’accompagne d’une fenêtre de temps d’arrêt prolongée qui peut s’étendre sur plusieurs jours ou plus, en fonction du nombre de fichiers et de sauvegardes à migrer. Il s’agit vraisemblablement d’une option pour les charges de travail d’archivage seules, qui peut convenir sans avoir d’accès en écriture pendant des périodes prolongées.
 
 ### <a name="determine-when-your-namespace-has-fully-synced-to-your-server"></a>Déterminer le moment où votre espace de noms est entièrement synchronisé à votre serveur
 
@@ -567,7 +625,7 @@ Si vous avez un déploiement DFS-N, vous pouvez faire pointer les espaces de nom
 
 En savoir plus sur [DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview).
 
-## <a name="deprovision"></a>annulation du déploiement
+## <a name="phase-6-deprovision"></a>Phase 6 : Déprovisionner
 
 Lorsque vous déprovisionnez une ressource, vous perdez l’accès à la configuration de cette ressource, ainsi qu’à ses données. Le déprovisionnement ne peut pas être annulé. Ne poursuivez pas tant que vous n’avez pas vérifié les points suivants :
 
@@ -577,7 +635,7 @@ Lorsque vous déprovisionnez une ressource, vous perdez l’accès à la configu
 Avant de commencer, il est recommandé d’observer quelque temps votre nouveau déploiement Azure File Sync en production. Cette période d’observation vous donne l’occasion de corriger tout problème que vous pourriez rencontrer. Une fois que vous avez observé votre déploiement Azure File Sync pendant au moins quelques jours, vous pouvez commencer à déprovisionner les ressources dans cet ordre :
 
 1. Déprovisionnez votre ressource StorSimple Data Manager via le portail Azure. Toutes vos tâches DTS seront supprimées avec elle. Vous ne pourrez pas récupérer facilement les journaux de copie. S’ils sont importants pour vos dossiers, récupérez-les avant de déprovisionner la ressource.
-1. Vérifiez que vos appliances physiques StorSimple ont été déplacées, puis désinscrivez-les. Si vous n’êtes pas tout à fait sûr qu’elles ont été déplacées, ne poursuivez pas. Si vous déprovisionnez ces ressources alors qu’elles sont encore nécessaires, vous ne pourrez pas récupérer les données ni leur configuration.<br>Si vous le souhaitez, vous pouvez d’abord déprovisionner la ressource de volume StorSimple, ce qui nettoiera les données de l’appliance. Ce processus peut prendre plusieurs jours et **n’aura pas comme effet** de supprimer l’intégralité des données de l’appliance. Si cela est important pour vous, supprimez l’intégralité des données d’un disque dans un cadre autre que celui du déprovisionnement des ressources, et conformément à vos stratégies.
+1. Vérifiez que vos appliances physiques StorSimple ont été déplacées, puis désinscrivez-les. Si vous n’êtes pas sûr qu’elles ont été migrées, ne poursuivez pas. Si vous déprovisionnez ces ressources alors qu’elles sont encore nécessaires, vous ne pourrez pas récupérer les données ni leur configuration.<br>Si vous le souhaitez, vous pouvez d’abord déprovisionner la ressource de volume StorSimple, ce qui nettoiera les données de l’appliance. Ce processus peut prendre plusieurs jours et n’aura pas comme effet de supprimer l’intégralité des données de l’appliance. Si cela est important pour vous, supprimez l’intégralité des données d’un disque dans un cadre autre que celui du déprovisionnement des ressources, et conformément à vos stratégies.
 1. S’il ne reste plus d’appareils inscrits dans une ressource StorSimple Device Manager, vous pouvez supprimer cette dernière.
 1. Il est maintenant temps de supprimer le compte de stockage StorSimple dans Azure. Là encore, avant de poursuivre, vérifiez que la migration est terminée, et que rien ni personne ne dépend de ces données.
 1. Débranchez l’appliance physique StorSimple de votre centre de données.

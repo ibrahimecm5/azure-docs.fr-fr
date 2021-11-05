@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/14/2020
 ms.author: danlep
-ms.openlocfilehash: 0aa147063c9fc67442c1c15e297f66bf3612f645
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1d1e75f16c2431a5fad475233510e2c220a06d57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588216"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065719"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Comment autoriser des comptes de développeurs à l'aide de OAuth 2.0 dans Gestion des API Azure
 
@@ -118,7 +118,7 @@ Sélectionnez l’opération **Ressource GET**, cliquez sur **Ouvrir la console*
 Lorsque **Code d'autorisation** est sélectionné, une fenêtre contextuelle s'affiche, avec le formulaire d'inscription du fournisseur OAuth 2.0. Dans cet exemple, le formulaire d'inscription est fourni par Azure Active Directory.
 
 > [!NOTE]
-> Si l'utilisation des fenêtres contextuelles est désactivée, vous êtes invité à l'activer par le navigateur. Après l'activation, sélectionnez à nouveau **Code d'autorisation** , et le formulaire d'inscription s'affiche.
+> Si les fenêtres contextuelles sont désactivées, vous êtes invité à les activer par le navigateur. Après l'activation, sélectionnez à nouveau **Code d'autorisation** , et le formulaire d'inscription s'affiche.
 
 ![Se connecter][api-management-oauth2-signin]
 

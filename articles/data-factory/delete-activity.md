@@ -9,12 +9,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: c3e5dc6c0a45d8db64d697232d7a5d3f0c212317
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 30aa69b414770a1d787767f0be4b1e27b50d86d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782624"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084915"
 ---
 # <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Activité Delete dans Azure Data Factory et Azure Synapse Analytics
 
@@ -365,10 +365,10 @@ Vous pouvez créer un pipeline pour nettoyer les fichiers anciens ou ayant expir
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Déplacer des fichiers par chaînage des activités Copy et Delete
 
-Vous pouvez déplacer un fichier en utilisant une activité Copy pour copier un fichier, puis une activité Delete pour supprimer un fichier d’un pipeline.  Pour déplacer plusieurs fichiers, vous pouvez utiliser les activités GetMetadata, Filter, Foreach, Copy et Delete comme dans l’exemple suivant :
+Vous pouvez déplacer un fichier en utilisant une activité Copy pour copier un fichier, puis une activité Delete pour supprimer un fichier d’un pipeline.  Pour déplacer plusieurs fichiers, vous pouvez utiliser les activités GetMetadata, Filter, Foreach, Copy et Delete comme dans l’exemple suivant.
 
 > [!NOTE]
-> Soyez très prudent si, pour déplacer la totalité d’un dossier, vous définissez un jeu de données contenant un chemin de dossier uniquement, puis utilisez une activité Copy et une activité Delete pour faire référence au même jeu de données représentant un dossier. En effet, vous devez veiller à ce qu’aucun nouveau fichier n’arrive dans le dossier entre l’opération de copie et l’opération de suppression.  Si de nouveaux fichiers arrivent dans le dossier au moment où votre activité Copy vient juste d’achever la copie mais avant le démarrage de l’activité Delete, il est possible que cette dernière, en supprimant la totalité du dossier, supprime le nouveau fichier qui n’a pas encore été copié dans la destination. 
+> Soyez très prudent si, pour déplacer la totalité d’un dossier, vous définissez un jeu de données contenant un chemin de dossier uniquement, puis utilisez une activité Copy et une activité Delete pour faire référence au même jeu de données représentant un dossier. Vous devez vous assurer **qu’aucun nouveau fichier n’arrive** dans le dossier entre l’opération de copie et l’opération de suppression. Si de nouveaux fichiers arrivent dans le dossier au moment où votre activité Copy vient juste d’achever la copie, mais avant le démarrage de l’activité Delete, cette dernière, en supprimant la totalité du dossier, risque de supprimer le nouveau fichier qui n’a pas encore été copié dans la destination. 
 
 #### <a name="sample-pipeline"></a>Exemple de pipeline
 

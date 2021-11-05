@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: d6265163ad60b1ac057ccc3a08cc281b7b54ca5d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9be5d831afc5781c4951f76e72a332abd7be1e4c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835610"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Didacticiel : intégration d’Azure Active Directory à Envi MMIS
 
@@ -75,9 +75,9 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 4. À la section **Configuration SAML de base**, si vous souhaitez configurer l’application en mode initié par **IDP**, suivez les étapes ci-dessous :
 
-    a. Dans la zone de texte **Identificateur**, tapez une URL au format suivant : `https://www.<CUSTOMER DOMAIN>.com/Account`
+    1. Dans la zone de texte **Identificateur**, tapez une URL au format suivant : `https://www.<CUSTOMER DOMAIN>.com/Account`
 
-    b. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
+    1. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
 5. Si vous souhaitez configurer l’application en **mode démarré par le fournisseur de services**, cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes :
 
@@ -138,15 +138,15 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 
     ![Capture d’écran montrant l’onglet « Resources » avec l’action « Upload Metadata » sélectionnée.](./media/envimmis-tutorial/metadata.png)
 
-6. Dans la section **Upload Metadata** (Charger les métadonnées), procédez comme suit :
+6. Dans la section **Upload Metadata** (Charger les métadonnées), suivez ces étapes :
 
     ![Capture d’écran montrant la fenêtre contextuelle « Upload Metadata » avec l’option « File » sélectionnée et l’icône de choix de fichier et le bouton « OK » mis en évidence.](./media/envimmis-tutorial/file.png)
 
-    a. Dans la liste déroulante **Upload From** (Charger à partir de), sélectionnez **File** (Fichier).
+    1. Dans la liste déroulante **Upload From** (Charger à partir de), sélectionnez **File** (Fichier).
 
-    b. Chargez le fichier de métadonnées téléchargé à partir du Portail Azure en sélectionnant **l’icône de choix de fichier**.
+    1. Chargez le fichier de métadonnées téléchargé à partir du Portail Azure en sélectionnant **l’icône de choix de fichier**.
 
-    c. Cliquez sur **OK**.
+    1. Cliquez sur **OK**.
 
 7. Une fois que vous avez chargé le fichier de métadonnées téléchargé, les champs sont automatiquement renseignés. Cliquez sur **Update**.
 
@@ -172,19 +172,19 @@ Pour se connecter à Envi MMIS, les utilisateurs Azure AD doivent être provisio
 
     ![Capture d’écran illustrant l’ajout d’un employé.](./media/envimmis-tutorial/add-user.png)
 
-    a. Dans la zone de texte **User Name** (Nom d’utilisateur), tapez le nom d’utilisateur du compte de Britta Simon, comme **brittasimon\@contoso.com**.
+    1. Dans la zone de texte **User Name** (Nom d’utilisateur), tapez le nom d’utilisateur du compte de Britta Simon, comme **brittasimon\@contoso.com**.
     
-    b. Dans la zone de texte **First Name** (Prénom), tapez le prénom de Britta Simon, tel que **Britta**.
+    1. Dans la zone de texte **First Name** (Prénom), tapez le prénom de Britta Simon, tel que **Britta**.
 
-    c. Dans la zone de texte **Last Name** (Nom de famille), tapez le nom de Britta Simon, par exemple **Simon**.
+    1. Dans la zone de texte **Last Name** (Nom de famille), tapez le nom de Britta Simon, par exemple **Simon**.
 
-    d. Dans la zone de texte **Title** (Titre), entrez le titre de l’utilisateur.
-    
-    e. Dans la zone de texte **Email Address** (Adresse e-mail), tapez l’adresse e-mail du compte de Britta Simon, comme **brittasimon\@contoso.com**.
+    1. Dans la zone de texte **Title** (Titre), entrez le titre de l’utilisateur.
 
-    f. Dans la zone de texte **SSO User Name** (Nom d’utilisateur SSO), tapez le nom d’utilisateur du compte de Britta Simon, comme **brittasimon\@contoso.com**.
+    1. Dans la zone de texte **Email Address** (Adresse e-mail), tapez l’adresse e-mail du compte de Britta Simon, comme **brittasimon\@contoso.com**.
 
-    g. Cliquez sur **Enregistrer**.
+    1. Dans la zone de texte **SSO User Name** (Nom d’utilisateur SSO), tapez le nom d’utilisateur du compte de Britta Simon, comme **brittasimon\@contoso.com**.
+
+    1. Cliquez sur **Enregistrer**.
 
 ## <a name="test-sso"></a>Tester l’authentification unique (SSO)
 

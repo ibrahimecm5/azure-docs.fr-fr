@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
-ms.date: 09/05/2019
-ms.openlocfilehash: b84ff58517d413be884b81b6498f5b626ba02016
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/25/2021
+ms.openlocfilehash: 3812be11d53b8a9c70e871b88ee61c474312c872
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697238"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031382"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Qu’est-ce qu’un pool Azure SQL Managed Instance (préversion) ?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ Il existe plusieurs limitations de ressources concernant les pools d’instances
     - un pool de 8 vCores prend en charge jusqu’à 200 bases de données,
     - un pool de 16 vCores prend en charge jusqu’à 400 bases de données,
     - un pool de 24 vCores et plus prend en charge jusqu’à 500 bases de données.
-- Vous ne pouvez pas définir l’administrateur AAD pour les instances déployées à l’intérieur du pool d’instances. Vous ne pouvez donc pas utiliser l’authentification AAD.
+- L’authentification Azure AD peut être utilisée après la création ou la définition d’une instance managée avec l’indicateur `-AssignIdentity`. Pour plus d’informations, consultez [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) et [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance). Les utilisateurs peuvent ensuite définir un administrateur Azure AD pour l’instance en suivant [Approvisionner un administrateur Azure AD (SQL Managed Instance)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance).
 
 L’allocation de stockage totale et le nombre de bases de données sur toutes les instances doivent être inférieurs ou égaux aux limites exposées par les pools d’instances.
 
@@ -104,6 +104,7 @@ La préversion publique présente les limitations suivantes :
 - La prise en charge du portail Azure pour la création et la configuration du pool d’instances n’est pas encore disponible. Toutes les opérations sur les pools d’instances sont uniquement prises en charge par le biais de PowerShell. Le déploiement d’instance initial dans un pool créé au préalable est également pris en charge uniquement via PowerShell. Une fois déployées dans un pool, les instances managées peuvent être mises à jour à l’aide du portail Azure.
 - Les instances managées créées en dehors du pool ne peuvent pas être déplacées dans un pool existant, et les instances créées à l’intérieur d’un pool ne peuvent pas être déplacées en dehors en tant qu’instance unique ou vers un autre pool.
 - Les tarifs des instances de la [capacité de réserve](../database/reserved-capacity-overview.md) ne sont pas disponibles.
+- Les groupes de basculement ne sont pas pris en charge pour les instances du pool.
 
 ## <a name="sql-features-supported"></a>Fonctionnalités SQL prises en charge
 

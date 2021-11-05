@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9ad82e65258dd985ce351b5fa11156ccdd2ef977
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: f74228b918b3d87ab77b75132501327b08b25668
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771990"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022040"
 ---
 1. Vérifiez que vous avez installé la [version d’Azure PowerShell](/powershell/azure/install-az-ps) la plus récente et que vous êtes connecté à un compte Azure avec Connect-AzAccount.
 
@@ -61,3 +61,38 @@ ms.locfileid: "122771990"
         ```powershell  
         Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
         ```
+
+### <a name="use-a-key-vault-in-a-different-subscription"></a>Utilisation d’un coffre de clés dans un autre abonnement
+
+Vous pouvez également gérer vos coffres de clés Azure de manière centralisée à partir d’un seul abonnement, et utiliser les clés stockées dans le Key Vault pour chiffrer des disques managés et des captures instantanées dans d’autres abonnements de votre organisation. Cela permet à votre équipe de sécurité d’appliquer et de gérer facilement une stratégie de sécurité fiable à un seul abonnement.
+
+> [!IMPORTANT]
+> Pour cette configuration, votre Key Vault et votre jeu de chiffrement de disque doivent se trouver dans la même région et utiliser le même locataire.
+
+Le script suivant illustre la façon de configurer un jeu de chiffrement de disque pour utiliser une clé d’un Key Vault dans un abonnement différent, mais situé dans la même région :
+
+```azurepowershell
+$sourceSubscriptionId="<sourceSubID>"
+$sourceKeyVaultName="<sourceKVName>"
+$sourceKeyName="<sourceKeyName>"
+
+$targetSubscriptionId="<targetSubID>"
+$targetResourceGroupName="<targetRGName>"
+$targetDiskEncryptionSetName="<targetDiskEncSetName>"
+$location="<targetRegion>"
+
+Set-AzContext -Subscription $sourceSubscriptionId
+
+$key = Get-AzKeyVaultKey -VaultName $sourceKeyVaultName -Name $sourceKeyName
+
+Set-AzContext -Subscription $targetSubscriptionId
+
+$desConfig=New-AzDiskEncryptionSetConfig -Location $location `
+-KeyUrl $key.Key.Kid `
+-IdentityType SystemAssigned `
+-RotationToLatestKeyVersionEnabled $false
+
+$des=New-AzDiskEncryptionSet -Name $targetDiskEncryptionSetName `
+-ResourceGroupName $targetResourceGroupName `
+-InputObject $desConfig
+```

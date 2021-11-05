@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/2020
+ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: fc474bf8a6df613a8dc1e95169b4730251ff22b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5000ac68cc0e00cdbe9d0ebd430f8cd88fe49e98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472847"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057701"
 ---
 # <a name="azure-load-balancer-skus"></a>Références SKU Azure Load Balancer
 
@@ -34,6 +34,7 @@ Les machines virtuelles autonomes, les groupes à haute disponibilité et les gr
 
 | | Standard Load Balancer | Basic Load Balancer |
 | --- | --- | --- |
+| **Type de backend** | Basé sur IP, basé sur une carte réseau | Basée sur une carte réseau |
 | **[Taille du pool de back-ends](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Prend en charge jusqu’à 1 000 instances. | Prend en charge jusqu’à 300 instances. |
 | **Points de terminaison du pool de back-ends** | Toutes les machines virtuelles ou tous les groupes de machines virtuelles identiques d’un seul réseau virtuel. | Machines virtuelles dans un groupe à haute disponibilité ou un groupe de machines virtuelles identiques unique. |
 | **[Sondes d’intégrité](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
@@ -53,7 +54,7 @@ Pour plus d’informations, consultez [Limites de Load balancer](../azure-resour
 
 ## <a name="limitations"></a>Limites
 
-- Les références SKU ne sont pas mutables. Vous ne pouvez pas changer la référence SKU d’une ressource existante.
+- Vous pouvez [mettre à niveau les références SKU Load Balancer](upgrade-basic-standard.md).
 - Une ressource de machine virtuelle autonome, une ressource de groupe à haute disponibilité ou une ressource de groupe de machines virtuelles identiques peut faire référence à une seule référence SKU, jamais aux deux.
 - [Opérations de déplacement](../azure-resource-manager/management/move-resource-group-and-subscription.md) :
   - Les opérations de déplacement de groupe de ressources (dans un même abonnement) **sont prises en charge** pour Standard Load Balancer et les adresses IP publiques standard. 

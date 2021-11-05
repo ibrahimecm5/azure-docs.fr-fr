@@ -1,5 +1,5 @@
 ---
-title: Comment sauvegarder et récupérer des ressources de personnalisation de la parole
+title: Guide pratique pour sauvegarder et récupérer des ressources de clients de la reconnaissance vocale
 titleSuffix: Azure Cognitive Services
 description: Apprenez à préparer les interruptions de service avec Custom Speech et Custom Voice.
 services: cognitive-services
@@ -10,18 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
-ms.openlocfilehash: 0f540025561b6e452371a74093133bf3e1183b1b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 860e70f567742a418e8de75c68793b29fb691df2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744121"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058366"
 ---
-# <a name="back-up-and-recover-speech-customization-resources"></a>Sauvegarder et récupérer des ressources de personnalisation de la parole
+# <a name="back-up-and-recover-speech-customer-resources"></a>Sauvegarder et récupérer des ressources de clients de la reconnaissance vocale
 
 Le service Speech est [disponible dans différentes régions](./regions.md). Les clés d’abonnement de service sont liées à une seule région. Lorsque vous acquérez une clé, vous sélectionnez une région spécifique dans laquelle résident vos données, votre modèle et vos déploiements.
 
-Des jeux de données pour les ressources de données créées par le client, telles que des modèles vocaux personnalisés et des polices de la voix personnalisées, sont également **disponibles uniquement dans la région de déploiement du service**. Ces ressources sont les suivantes :
+Des jeux de données pour les ressources de données créées par le client, telles que des modèles vocaux personnalisés, des polices de la voix personnalisées et des profils vocaux de reconnaissance de l’orateur, sont également **disponibles uniquement dans la région de déploiement du service**. Ces ressources sont les suivantes :
 
 **Custom Speech**
 -   Données audio/texte d’apprentissage
@@ -33,6 +34,10 @@ Des jeux de données pour les ressources de données créées par le client, tel
 -   Données audio/texte d’apprentissage
 -   Données audio/texte de test
 -   Polices de la voix personnalisées
+
+**Reconnaissance de l’orateur**
+- Audio de l’inscription de l’orateur
+- Signature vocale de l’orateur
 
 Bien que certains clients utilisent nos points de terminaison par défaut pour transcrire des voix audio ou standard à des fins de synthèse vocale, les autres clients créent des ressources pour la personnalisation.
 
@@ -114,3 +119,9 @@ Vérifiez les [voix publiques disponibles](./language-support.md#neural-voices).
     -   Remarque : un point de terminaison supplémentaire occasionne des frais supplémentaires. [Consultez la tarification de l’hébergement de modèle ici](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 4.  Configurez votre client pour basculer vers la région secondaire. Consultez l’exemple de code en C# : [GitHub : basculement de voix personnalisée vers une région secondaire](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_samples.cs#L920).
+
+### <a name="speaker-recognition"></a>Reconnaissance de l’orateur
+
+La Reconnaissance de l’orateur utilise des [régions associées Azure](/azure/best-practices-availability-paired-regions) pour basculer automatiquement des opérations. Les inscriptions et les signatures vocales des orateurs sont sauvegardées régulièrement pour éviter toute perte de données et pour qu’elles puissent être utilisées en cas de panne.
+
+Lors d’une panne, le service Reconnaissance de l’orateur bascule automatiquement vers une région associée et utilise les données sauvegardées pour poursuivre le traitement des demandes jusqu’à ce que la région principale soit de nouveau en ligne.

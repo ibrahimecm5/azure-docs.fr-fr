@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87149785d670e85f991d0fbc851b642688526630
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724923"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059335"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Résilience grâce aux meilleures pratiques des développeurs
 
@@ -42,13 +42,14 @@ Le service d’annuaire Microsoft Azure AD B2C prend en charge des milliards d�
 
   - Les [conditions préalables](../../active-directory-b2c/userjourneys.md) d’un parcours utilisateur se présentent comme suit :
 
-  ``
+  ```xml
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
   <Value>requiresMigration</Value>
   ...
-  < Precondition/>
-  ``
-  - Renforcez la résistance vis-à-vis des [inscriptions par des bots en intégrant un système CAPTCHA](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration).
+  <Precondition/>
+  ```
+
+  - Renforcez la résistance vis-à-vis des [inscriptions gérées par des bots en intégrant un système CAPTCHA](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration).
 
   - Utilisez un [exemple de test de charge](../../active-directory-b2c/best-practices.md#testing) pour simuler l’inscription et la connexion. 
 

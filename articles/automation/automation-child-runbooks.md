@@ -3,15 +3,15 @@ title: Créer des runbooks modulaires dans Azure Automation
 description: Cet article explique comment créer un runbook qu’un autre runbook appelle.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 11bd439b511f6ae60078f5006a1ff4571b5908e9
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4eff80637886901644b36b19f74d79ae83e7cfe3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617261"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455489"
 ---
 # <a name="create-modular-runbooks-in-automation"></a>Créer des runbooks modulaires dans Automation
 
@@ -42,7 +42,7 @@ Les paramètres d’un runbook enfant appelé inlined peuvent être de n’impor
 
 ### <a name="runbook-types"></a>Types de runbook
 
-Seuls certains types de runbooks peuvent s’appeler entre eux :
+Actuellement, PowerShell 5.1 et 7.1 (préversion) sont pris en charge et seuls certains types de runbook peuvent s’appeler les uns les autres :
 
 * Un [runbook PowerShell](automation-runbook-types.md#powershell-runbooks) et un [runbook graphique](automation-runbook-types.md#graphical-runbooks) peuvent s’appeler mutuellement de manière incluse, car tous deux sont basés sur PowerShell.
 * Un [runbook de flux de travail PowerShell](automation-runbook-types.md#powershell-workflow-runbooks) et un runbook de flux de travail PowerShell graphique peuvent s’appeler mutuellement de manière incluse, car tous deux sont basés sur PowerShell.

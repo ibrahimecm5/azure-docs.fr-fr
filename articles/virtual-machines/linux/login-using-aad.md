@@ -4,24 +4,24 @@ description: Découvrez comment créer et configurer une machine virtuelle Linux
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/11/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7679c10a5b40edb163974c246fe7fb219ec8effa
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 5ad78f50685aeb7a5b2133173ae726980012878b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274631"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074465"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>Déconseillé : Se connecter à une machine virtuelle Linux dans Azure avec Azure Active Directory à l’aide de l’authentification du flux de code de l’appareil
 
 > [!CAUTION]
-> **La fonctionnalité en préversion publique décrite dans cet article est déconseillée à compter du 15 août 2021.**
+> **La fonctionnalité en préversion publique décrite dans cet article est déconseillée à compter du 15 août 2021.**
 > 
 > Cette fonctionnalité est remplacée par la possibilité d’utiliser Azure AD et SSH par le biais de l’authentification basée sur les certificats. Pour plus d’informations, consultez l’article [Préversion : Se connecter à une machine virtuelle Linux dans Azure avec Azure Active Directory à l’aide de l’authentification par certificat SSH](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md). Pour migrer de l’ancienne version vers cette dernière, consultez [Migration à partir de la préversion précédente](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md#migration-from-previous-preview).
 
@@ -211,7 +211,7 @@ Les utilisateurs qui héritent de droits d’accès par le biais de groupes imbr
 
 ## <a name="preview-feedback"></a>Commentaires de la préversion
 
-Partager vos commentaires sur cette version préliminaire fonctionnalité ou signaler des problèmes sur le [forum de commentaires d’Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
+Partager vos commentaires sur cette version préliminaire fonctionnalité ou signaler des problèmes sur le [forum de commentaires d’Azure AD](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

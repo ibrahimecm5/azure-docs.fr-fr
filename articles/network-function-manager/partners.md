@@ -4,22 +4,21 @@ description: En savoir plus sur les partenaires qui proposent leurs fonctions r�
 author: prmitt
 ms.service: network-function-manager
 ms.topic: article
-ms.date: 06/30/2021
+ms.date: 11/02/2021
 ms.author: prmitt
-ms.openlocfilehash: 5186d16d36503ad5f057424b6251ee8be109b958
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2fdd216b15bba15f65b4fe8547e2bfc2b729348
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258484"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024047"
 ---
-# <a name="network-function-manager-partners-preview"></a>Partenaires du Gestionnaire de fonction réseau Azure (Préversion)
+# <a name="network-function-manager-partners"></a>Partenaires Network Function Manager
 
-Nous disposons d’un écosystème de partenaires en pleine croissance offrant la fonction de leur réseau en tant qu’application managée à utiliser avec ce service. 
+Nous disposons d’un écosystème de partenaires en pleine croissance offrant la fonction de leur réseau en tant qu’application managée à utiliser avec ce service.
 
 ## <a name="devices-and-configuration-links"></a><a name="devices"></a>Périphériques et liens de configuration
-
-Pour la version préliminaire, les références SKU suivantes sont actuellement disponibles.
 
 |Function |Category|Lien|
 | ---  | --- | --- |

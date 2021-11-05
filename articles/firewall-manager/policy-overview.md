@@ -5,18 +5,18 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 10/26/2021
 ms.author: victorh
-ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98524c2c5c73ab7a75395464911585f80bcd092c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95802024"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024293"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Vue d’ensemble de la stratégie Azure Firewall Manager
 
-Une stratégie de pare-feu est une ressource Azure qui contient des collections de règles NAT, de réseau et d’application ainsi que des paramètres de renseignement sur les menaces. Cette ressource globale peut s’utiliser sur plusieurs instances du Pare-feu Azure dans des hubs virtuels sécurisés et des réseaux virtuels hubs. Les stratégies sont applicables sur plusieurs régions et abonnements.
+Stratégie de pare-feu : méthode recommandée pour configurer votre pare-feu Azure. Cette ressource globale peut s’utiliser sur plusieurs instances du Pare-feu Azure dans des hubs virtuels sécurisés et des réseaux virtuels hubs. Les stratégies sont applicables sur plusieurs régions et abonnements.
 
 ![Stratégie Azure Firewall Manager](media/policy-overview/policy-overview.png)
 
@@ -24,9 +24,34 @@ Une stratégie de pare-feu est une ressource Azure qui contient des collections 
 
 Une stratégie peut être créée et gérée de plusieurs façons, notamment avec le portail Azure, l’API REST, des modèles, Azure PowerShell et l’interface CLI.
 
-Vous pouvez également créer des stratégies en migrant des règles existantes du Pare-feu Azure à l’aide du portail ou d’Azure PowerShell. Pour plus d’informations, consultez [Guide pratique pour migrer des configurations Pare-feu Azure vers une stratégie Pare-feu Azure](migrate-to-policy.md). 
+Vous pouvez également créer des stratégies en migrant des règles classiques existantes du Pare-feu Azure à l’aide du portail ou d’Azure PowerShell. Pour plus d’informations, consultez [Guide pratique pour migrer des configurations Pare-feu Azure vers une stratégie Pare-feu Azure](migrate-to-policy.md). 
 
 Les stratégies peuvent être associées à un ou plusieurs hubs virtuels ou réseaux virtuels. Le pare-feu peut être utilisé dans n’importe quel abonnement associé à votre compte et dans toutes les régions.
+
+## <a name="classic-rules-and-policies"></a>Règles et stratégies classiques
+
+Le pare-feu Azure prend en charge les règles et stratégies classiques, mais les stratégies sont la configuration recommencée. Le tableau suivant compare les différentes stratégies et règles classiques :
+
+
+| Objet | Policy  | Règles classiques |
+| ------- | ------- | ----- |
+|Contient     |NAT, réseau, règles d’application, DNS personnalisé et paramètres de proxy DNS, groupes IP et paramètres de renseignement sur les menaces (notamment liste verte), IDPS, inspection TLS, catégories web, filtrage d’URL|NAT, réseau, règles d’application, DNS personnalisé et paramètres de proxy DNS, groupes IP et paramètres de renseignement sur les menaces (notamment liste verte)|
+|Protection     |Hubs virtuels et réseaux virtuels|Réseaux virtuels uniquement|
+|Utilisation du portail     |Gestion centralisée à l’aide de Firewall Manager|Expérience de pare-feu autonome|
+|Prise en charge de plusieurs pare-feu     |Une stratégie de pare-feu est une ressource distincte qui peut être utilisée sur plusieurs pare-feu|Importation et exportation manuelles des règles, ou à l’aide de solutions de gestion tierces |
+|Tarifs     |Facturation en fonction de l’association de pare-feu. Consultez la section [Tarifs](#pricing).|Gratuit|
+|Méthodes de déploiement prises en charge     |Portail, API REST, modèles, Azure PowerShell et interface CLI|Portail, API REST, modèles, PowerShell et interface CLI |
+
+## <a name="standard-and-premium-policies"></a>Stratégies Standard et Premium
+
+Le Pare-feu Azure prend en charge les stratégies Standard et Premium. Le tableau suivant décrit les différences entre les deux stratégies :
+
+
+|Type de stratégie|Prise en charge des fonctionnalités  | Prise en charge du SKU de pare-feu|
+|---------|---------|----|
+|Stratégie standard    |Règles NAT, règles de réseau, règles d’application<br>DNS personnalisé, proxy DNS<br>Groupes IP<br>Catégories web<br>Informations sur les menaces|Standard ou Premium|
+|Stratégie Premium    |Toutes les fonctionnalités de prise en charge Standard, plus :<br><br>Inspection TLS<br>Catégories web<br>Filtrage d'URL<br>IDPS|Premium
+
 
 ## <a name="hierarchical-policies"></a>Stratégies hiérarchiques
 
@@ -42,19 +67,7 @@ Les collections de règles NAT ne sont pas héritées, car elles sont propres à
 
 Avec l’héritage, les modifications apportées à la stratégie parente sont automatiquement répercutées dans les stratégies de pare-feu enfants associées.
 
-## <a name="traditional-rules-and-policies"></a>Règles et stratégies traditionnelles
 
-Le Pare-feu Azure prend en charge les règles et stratégies traditionnelles. Le tableau suivant compare les différentes stratégies et règles :
-
-
-| Objet | Policy  | Règles |
-| ------- | ------- | ----- |
-|Contient     |NAT, réseau, règles d’application, DNS personnalisé et paramètres de proxy DNS, groupes IP et paramètres de renseignement sur les menaces (notamment liste verte)|NAT, réseau, règles d’application, DNS personnalisé et paramètres de proxy DNS, groupes IP et paramètres de renseignement sur les menaces (notamment liste verte)|
-|Protection     |Hubs virtuels et réseaux virtuels|Réseaux virtuels uniquement|
-|Utilisation du portail     |Gestion centralisée à l’aide de Firewall Manager|Expérience de pare-feu autonome|
-|Prise en charge de plusieurs pare-feu     |Une stratégie de pare-feu est une ressource distincte qui peut être utilisée sur plusieurs pare-feu|Importation et exportation manuelles des règles, ou à l’aide de solutions de gestion tierces |
-|Tarifs     |Facturation en fonction de l’association de pare-feu. Consultez la section [Tarifs](#pricing).|Gratuit|
-|Méthodes de déploiement prises en charge     |Portail, API REST, modèles, Azure PowerShell et interface CLI|Portail, API REST, modèles, PowerShell et interface CLI |
 
 ## <a name="pricing"></a>Tarifs
 

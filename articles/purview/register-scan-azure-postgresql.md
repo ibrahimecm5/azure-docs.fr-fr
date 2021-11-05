@@ -1,52 +1,59 @@
 ---
-title: Inscrire et analyser une base de données Azure pour PostgreSQL
-description: Ce tutoriel explique comment analyser une base de données Azure pour PostgreSQL dans Azure Purview.
+title: Se connecter à une base de données Azure pour PostgreSQL et la gérer
+description: Ce guide décrit comment se connecter à une base de données Azure pour PostgreSQL dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Azure Database pour PostgreSQL.
 author: evwhite
 ms.author: evwhite
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: tutorial
-ms.date: 06/30/2021
-ms.openlocfilehash: abc676fbff551781f720db5937a9c35c7c8f81ea
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 723a0121c57d0601c77c2337f6ab6a57feb92fe7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209797"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037869"
 ---
-# <a name="register-and-scan-an-azure-database-for-postgresql"></a>Inscrire et analyser une base de données Azure pour PostgreSQL
+# <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Se connecter à une base de données Azure pour PostgreSQL et la gérer dans Azure Purview
 
-Cet article explique comment inscrire et analyser une base de données Azure pour PostgreSQL.
-
+Cet article décrit comment inscrire une base de données Azure pour PostgreSQL, et comment s’authentifier et interagir avec elle dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
-- **Analyses complètes et incrémentielles** pour capturer les métadonnées et la classification dans des bases de données Azure pour PostgreSQL.
 
-- **Traçabilité** entre les ressources de données pour les activités de copie et de flux de données ADF
-
-### <a name="known-limitations"></a>Limitations connues
-
-Purview prend uniquement en charge l’authentification SQL pour les bases de données Azure pour PostgreSQL.
-
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| [Oui](#register) | [Oui](#scan)| [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non | [Traçabilité des données Data Factory](how-to-link-azure-data-factory.md) |
 
 ## <a name="prerequisites"></a>Prérequis
 
-1. Créez un compte Purview si vous n’en avez pas déjà un.
+* Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-2. Accès réseau entre votre compte Purview et la base de données Azure pour PostgreSQL.
+* Une [ressource Purview](create-catalog-portal.md) active.
 
-#### <a name="sql-authentication-for-an-azure-database-for-postgresql"></a>Authentification SQL pour une base de données Azure pour PostgreSQL
+* Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
+
+## <a name="register"></a>Inscrire
+
+Cette section décrit comment inscrire une base de données Azure pour PostgreSQL dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
+
+### <a name="authentication-for-registration"></a>Authentification pour l’inscription
+
+Actuellement, pour gérer une base de données Azure pour PostgreSQL et interagir avec elle, seule l’authentification SQL est prise en charge.
+
+#### <a name="sql-authentication"></a>Authentification SQL
 
 La connexion d’une base de données Azure Database pour PostgreSQL nécessite un nom de serveur complet et des informations d’identification de connexion. Vous pouvez suivre les instructions fournies dans [CONNECTER ET INTERROGER](../postgresql/connect-python.md) pour créer une connexion pour une base de données Azure pour PostgreSQL si vous n’en avez pas. Vous aurez besoin d’un **nom d’utilisateur** et d’un **mot de passe** pour les étapes suivantes.
 
+1. Si vous n’avez pas de coffre de clés Azure, suivez [ce guide pour créer un coffre de clés Azure](../key-vault/certificates/quick-create-portal.md).
 1. Accédez à votre coffre de clés dans le portail Azure.
 1. Sélectionnez **Paramètres > Secrets**.
 1. Sélectionnez **+ Générer/importer** et entrez le **nom** et la **valeur** comme *mot de passe* de votre base de données Azure PostgreSQL
 1. Sélectionnez **Créer** pour terminer.
 1. Si votre coffre de clés n’est pas encore connecté à Purview, vous devrez [créer une connexion de coffre de clés](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
-1. Enfin, [créez de nouvelles informations d’identification](manage-credentials.md#create-a-new-credential) d’authentification SQL à l’aide du **nom d’utilisateur** et du **mot de passe** pour configurer votre analyse
+1. Enfin, [créez des informations d’identification](manage-credentials.md#create-a-new-credential) de type authentification SQL en utilisant le **nom d’utilisateur** et le **mot de passe** pour configurer votre analyse
 
-## <a name="register-an-azure-database-for-postgresql-data-source"></a>Inscrire une source de données de base de données Azure pour PostgreSQL
+### <a name="steps-to-register"></a>Procédure d’inscription
 
 Pour inscrire une nouvelle base de données Azure pour PostgreSQL dans votre catalogue de données, effectuez les actions suivantes :
 
@@ -64,12 +71,15 @@ Dans l’écran **Inscrire des sources de base de données Azure pour PostgreSQL
 
 1. Entrez un **nom** pour votre source de données. Il s’agit du nom d’affichage de cette source de données dans votre catalogue.
 1. Sélectionnez **À partir de l’abonnement Azure**, puis sélectionnez l’abonnement approprié dans la zone de liste déroulante **Abonnement Azure** et le serveur approprié dans la zone de liste déroulante **Nom du serveur**.
-1. Sélectionnez **Inscrire** pour inscrire la source de données. 
- 
+1. Sélectionnez **Inscrire** pour inscrire la source de données.
 
 :::image type="content" source="media/register-scan-azure-postgresql/02-register-source-azure-postgres.png" alt-text="options pour inscrire des sources" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Création et exécution d’une analyse
+## <a name="scan"></a>Analyser
+
+Suivez les étapes ci-dessous pour analyser une base de données Azure Database pour PostgreSQL afin d’automatiquement identifier les ressources et classer vos données. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md)
+
+### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 
 Pour créer une analyse et l’exécuter, procédez comme suit :
 
@@ -99,11 +109,10 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
 
 [!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
-> [!NOTE]
-> * La suppression de votre analyse ne supprime pas les ressources de votre catalogue créées à partir des analyses précédentes.
-> * La ressource n’est plus mise à jour avec les modifications de schéma si votre table source a été modifiée et que vous relancez l’analyse de la table source après avoir modifié la description sous l’onglet Schéma de Purview.
-
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Navigation dans le catalogue de données Azure Purview](how-to-browse-catalog.md)
-- [Recherche dans le catalogue de données Azure Purview](how-to-search-catalog.md)
+Maintenant que vous avez inscrit votre source, suivez les guides ci-dessous pour en savoir plus sur Purview et sur vos données.
+
+- [Insights de données dans Azure Purview](concept-insights.md)
+- [Lignage dans Azure Purview](catalog-lineage-user-guide.md)
+- [Rechercher dans un catalogue de données](how-to-search-catalog.md)

@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
-ms.date: 09/24/2021
-ms.custom: data4ml
-ms.openlocfilehash: b8681974510b6d3fbee74248aab95b33de443109
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 10/21/2021
+ms.custom: data4ml, ignite-fall-2021
+ms.openlocfilehash: b1fc133b02c667ae46d543da3fe020d116d6eb54
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003815"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068890"
 ---
 # <a name="create-an-image-labeling-project-and-export-labels"></a>Créer un projet d’étiquetage d’image et exporter des étiquettes
 
@@ -127,9 +127,12 @@ Pour les cadres englobants, les questions importantes sont les suivantes :
 
 La page **Étiquetage assisté par ML** vous permet de déclencher des modèles Machine Learning automatiques pour accélérer les tâches d’étiquetage. Les images médicales (« .dcm ») ne sont pas incluses dans l’étiquetage assisté.
 
-Au début de votre projet d’étiquetage, les éléments sont mélangés dans un ordre aléatoire pour réduire le biais potentiel. Cependant, le biais éventuellement présent dans le jeu de données se reflète dans le modèle entraîné. Par exemple, si 80 % de vos éléments appartiennent à une même classe, environ 80 % des données utilisées pour l’entraînement du modèle feront partie de cette classe. Cet entraînement n’inclut pas l’apprentissage actif.
+Au début de votre projet d’étiquetage, les éléments sont mélangés dans un ordre aléatoire pour réduire le biais potentiel. Cependant, le biais éventuellement présent dans le jeu de données se reflète dans le modèle entraîné. Par exemple, si 80 % de vos éléments appartiennent à une même classe, environ 80 % des données utilisées pour l’entraînement du modèle feront partie de cette classe.
 
-Sélectionnez *Enable ML assisted labeling* (Activer l’étiquetage assisté par ML) et spécifiez un GPU pour activer l’étiquetage assisté, qui se compose de deux phases :
+Sélectionnez *Activer l’étiquetage assisté par ML* et spécifiez un GPU pour activer l’étiquetage assisté. Si votre espace de travail n’en contient pas, un cluster du GPU est créé pour vous et ajouté à votre espace de travail.   Le cluster est créé avec un minimum de 0 nœud, ce qui signifie qu’il ne coûte rien quand il n’est pas utilisé.
+
+
+L’étiquetage ML est constitué de deux phases :
 
 * Clustering
 * Préétiquetage
@@ -220,7 +223,7 @@ Accédez aux jeux de données Azure Machine Learning exportés dans la section *
 
 ![Jeu de données exporté](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-Une fois que vous avez exporté vos données étiquetées vers un jeu de données Azure Machine Learning, vous pouvez utiliser l’AutoML pour créer des modèles de vision par ordinateur formés sur vos données étiquetées. En savoir plus : [Configurer l’AutoML pour effectuer l’apprentissage de modèles de vision par ordinateur avec Python (préversion)](how-to-auto-train-image-models.md)
+Une fois que vous avez exporté vos données étiquetées vers un jeu de données Azure Machine Learning, vous pouvez utiliser AutoML pour créer des modèles de vision par ordinateur formés sur vos données étiquetées. En savoir plus : [Configurer l’AutoML pour effectuer l’apprentissage de modèles de vision par ordinateur avec Python (préversion)](how-to-auto-train-image-models.md)
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 

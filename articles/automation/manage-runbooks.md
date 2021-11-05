@@ -3,19 +3,19 @@ title: Gérer les runbooks dans Azure Automation
 description: Cet article explique comment gérer des runbooks dans Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 88122af7da4472db497713b4f417092cca7e87df
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 99f86065b9a33125e3ca4cf72af5b8ec442e3cc0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351459"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455454"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Gérer les runbooks dans Azure Automation
 
-Vous pouvez ajouter un runbook à Azure Automation en en créant un ou en en important un existant à partir d’un fichier ou de la [galerie de runbooks](automation-runbook-gallery.md). Cet article fournit des informations sur la gestion d’un runbook importé à partir d’un fichier. Vous trouverez toutes les informations sur l’accès aux runbooks et modules communautaires dans [Galeries de runbooks et de modules pour Azure Automation](automation-runbook-gallery.md).
+Vous pouvez ajouter un runbook à Azure Automation en en créant un ou en en important un existant à partir d’un fichier ou de la [galerie de runbooks](automation-runbook-gallery.md). Cet article fournit des informations sur la gestion d’un runbook ainsi que des modèles recommandés et les bonnes pratiques en matière de conception de runbook. Vous trouverez toutes les informations sur l’accès aux runbooks et modules communautaires dans [Galeries de runbooks et de modules pour Azure Automation](automation-runbook-gallery.md).
 
 ## <a name="create-a-runbook"></a>Créer un runbook
 
@@ -33,8 +33,11 @@ Créez un runbook dans Azure Automation à l’aide du portail Azure ou de Power
 1. Sur la page **Comptes Automation**, accédez à la liste et sélectionnez votre compte Automation.
 1. À partir du compte Automation, sélectionnez **Runbooks** sous **Automatisation de processus** pour ouvrir la liste des runbooks.
 1. Cliquez sur **Créer un runbook**.
-1. Entrez un nom pour le runbook et sélectionnez son [type](automation-runbook-types.md). Le nom du runbook doit commencer par une lettre et peut contenir des lettres, des chiffres, des traits de soulignement et des tirets.
-1. Cliquez sur **Créer** pour créer le runbook et ouvrez l’éditeur.
+    1. Nommez le runbook.
+    1. Dans la liste déroulante **Type de runbook**, sélectionnez son [type](automation-runbook-types.md). Le nom du runbook doit commencer par une lettre et peut contenir des lettres, des chiffres, des traits de soulignement et des tirets
+    1. Sélectionnez la **Version du runtime**
+    1. Entrez la **Description** applicable
+1. Cliquez sur **Créer** pour créer le runbook.
 
 ### <a name="create-a-runbook-with-powershell"></a>Créer un Runbook avec PowerShell
 
@@ -74,11 +77,14 @@ Vous pouvez utiliser la procédure suivante pour importer un fichier de script d
 1. Sur le portail Azure, recherchez et sélectionnez **Comptes Automation**.
 1. Sur la page **Comptes Automation**, accédez à la liste et sélectionnez votre compte Automation.
 1. À partir du compte Automation, sélectionnez **Runbooks** sous **Automatisation de processus** pour ouvrir la liste des runbooks.
-1. Cliquez sur **Importer un runbook**.
-1. Cliquez sur **Fichier runbook** et sélectionnez le fichier à importer.
+1. Cliquez sur **Importer un runbook**. Vous pouvez sélectionner l'une des options suivantes :
+    1. **Rechercher un fichier** : sélectionne un fichier sur votre machine locale.
+    1. **Rechercher dans la galerie** : vous pouvez rechercher et sélectionner un runbook existant à partir de la galerie.
+1. Sélectionnez le fichier.
 1. Si le champ **Nom** est activé, vous avez la possibilité de modifier le nom du runbook. Celui-ci doit commencer par une lettre et peut contenir des lettres, des chiffres, des traits de soulignement et des tirets.
-1. Le [type de runbook](automation-runbook-types.md) est sélectionné automatiquement, mais vous pouvez le modifier après avoir pris en compte les restrictions applicables.
-1. Cliquez sur **Créer**. Le nouveau runbook apparaît dans la liste des runbooks pour le compte Automation.
+1. Le [**Type de runbook**](automation-runbook-types.md) est rempli automatiquement, mais vous pouvez le changer après avoir pris en compte les restrictions applicables.
+1. La **Version du runtime** est remplie automatiquement, mais vous pouvez sélectionner la version dans la liste déroulante.
+1. Cliquez sur **Importer**. Le nouveau runbook apparaît dans la liste des runbooks pour le compte Automation.
 1. Vous devez [publier le runbook](#publish-a-runbook) avant de pouvoir l'exécuter.
 
 > [!NOTE]
@@ -201,6 +207,7 @@ if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Stat
 ```
 
 Si vous souhaitez que le runbook s’exécute avec l’identité managée affectée par le système, laissez le code tel quel. Si vous préférez utiliser une identité managée affectée par l’utilisateur, procédez comme suit :
+
 1. À la ligne 5, supprimez `$AzureContext = (Connect-AzAccount -Identity).context`,
 1. Remplacez-la par `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` et
 1. Entrez l'ID client.
@@ -243,6 +250,7 @@ Start-AzAutomationRunbook @startParams
 ```
 
 Si vous souhaitez que le runbook s’exécute avec l’identité managée affectée par le système, laissez le code tel quel. Si vous préférez utiliser une identité managée affectée par l’utilisateur, procédez comme suit :
+
 1. À la ligne 5, supprimez `$AzureContext = (Connect-AzAccount -Identity).context`,
 1. Remplacez-la par `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` et
 1. Entrez l'ID client.
@@ -255,8 +263,8 @@ Si vous souhaitez que le runbook s’exécute avec l’identité managée affect
 Pour utiliser un script personnalisé :
 
 1. Créer un compte Automation.
-2. Déployez un rôle [Runbook Worker hybride](automation-hybrid-runbook-worker.md). 
-4. Si vous utilisez un ordinateur Linux, vous devez disposer de privilèges élevés. Connectez-vous pour [désactiver les vérifications de signature](automation-linux-hrw-install.md#turn-off-signature-validation).
+2. Déployez un rôle [Runbook Worker hybride](automation-hybrid-runbook-worker.md).
+3. Si vous utilisez un ordinateur Linux, vous devez disposer de privilèges élevés. Connectez-vous pour [désactiver les vérifications de signature](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Tester un runbook
 
@@ -280,9 +288,11 @@ Lorsque vous créez ou importez un runbook, vous devez le publier avant de pouvo
 
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>Publier un runbook dans le portail Azure
 
-1. À partir du portail Azure, ouvrez le runbook de votre compte Automation.
-2. Cliquez sur **Modifier**.
-3. Cliquez sur **Publier**, puis sur **Oui** en réponse au message de vérification.
+1. Sur le portail Azure, recherchez et sélectionnez **Comptes Automation**.
+1. Sur la page **Comptes Automation**, accédez à la liste et sélectionnez votre compte Automation.
+1. Ouvrez le runbook dans votre compte Automation.
+1. Cliquez sur **Modifier**.
+1. Cliquez sur **Publier**, puis sélectionnez **Oui** en réponse au message de vérification.
 
 ### <a name="publish-a-runbook-using-powershell"></a>Publier un runbook à l’aide de PowerShell
 
@@ -305,14 +315,16 @@ Publish-AzAutomationRunbook @publishParams
 
 Une fois votre runbook publié, vous pouvez le planifier en vue de l'utiliser :
 
-1. À partir du portail Azure, ouvrez le runbook de votre compte Automation.
-2. Sélectionnez **Planifications** sous **Ressources**.
-3. Sélectionnez **Ajouter une planification**.
-4. Dans le volet Planifier le runbook, sélectionnez **Associer une planification à votre runbook**.
-5. Choisissez **Créer une planification** dans le volet Planification.
-6. Entrez un nom, une description et d'autres paramètres dans le volet Nouvelle planification.
-7. Une fois la planification créée, mettez-la en surbrillance et cliquez sur **OK**. Elle doit maintenant être associée à votre runbook.
-8. Accédez à votre boîte aux lettres et recherchez-y un e-mail qui vous informe de l'état du runbook.
+1. Sur le portail Azure, recherchez et sélectionnez **Comptes Automation**.
+1. Sur la page **Comptes Automation**, accédez à la liste et sélectionnez votre compte Automation.
+1. Sélectionnez le runbook dans votre liste de runbooks.
+1. Sélectionnez **Planifications** sous **Ressources**.
+1. Sélectionnez **Ajouter une planification**.
+1. Dans le volet **Planifier un runbook**, sélectionnez **Associer une planification à votre runbook**.
+1. Choisissez **Créer une planification** dans le volet **Planification**.
+1. Entrez un nom, une description et d’autres paramètres dans le volet **Nouvelle planification**.
+1. Une fois la planification créée, mettez-la en surbrillance et cliquez sur **OK**. Elle doit maintenant être associée à votre runbook.
+1. Accédez à votre boîte aux lettres et recherchez-y un e-mail qui vous informe de l'état du runbook.
 
 ## <a name="obtain-job-statuses"></a>Obtenir les états des tâches
 

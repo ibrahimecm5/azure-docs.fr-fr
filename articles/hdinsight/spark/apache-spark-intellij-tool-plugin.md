@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: aeb6c9e266bdb663b9a664c8509e9cafab8a5128
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 77bfb5c0197ba64c71e142f9b21c0e6d57f5ac20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743002"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068719"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Utiliser Azure Toolkit for IntelliJ afin de créer des applications Apache Spark pour le cluster HDInsight
 
@@ -34,7 +34,7 @@ Dans cet article, vous apprendrez comment :
 
 * Le [SDK Oracle Java](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  Cet article utilise la version 8.0.202 de Java.
 
-* IntelliJ IDEA. Cet article utilise [IntelliJ IDEA Community  version 2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ IDEA. Cet article utilise [IntelliJ IDEA Community 2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Consultez [Installation d’Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/).
 

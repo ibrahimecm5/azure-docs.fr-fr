@@ -1,45 +1,48 @@
 ---
-title: Changements importants à venir sur Azure Security Center
-description: Changements à venir sur Azure Security Center dont vous devez peut-être tenir compte et pour lesquels une planification peut être nécessaire
+title: Modifications importantes concernant Microsoft Defender pour le cloud
+description: Changements à venir concernant Microsoft Defender pour le cloud dont vous devez peut-être tenir compte et pour lesquels une planification peut être nécessaire
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 10/13/2021
 ms.author: memildin
-ms.openlocfilehash: e019e0acefe8acb8bf56f829fad38c6ac2a3c1c2
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7f5cedfbb5b5003c968559112b9557696c7e09e3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129013"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064694"
 ---
-# <a name="important-upcoming-changes-to-azure-security-center"></a>Changements importants à venir sur Azure Security Center
+# <a name="important-upcoming-changes-to-microsoft-defender-for-cloud"></a>Modifications importantes à venir concernant Microsoft Defender pour le cloud
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 > Les informations de cette page concernent des produits ou fonctionnalités en préversion, qui peuvent être modifiés de façon substantielle avant d’être commercialisés, le cas échéant. Microsoft n’offre aucun engagement ni garantie, formel ou implicite, concernant les informations contenues dans ce document.
 
-Dans cette page, vous allez découvrir les changements planifiés pour Security Center. La page décrit les changements planifiés du produit qui peuvent avoir un impact sur votre degré de sécurisation ou vos workflows.
+Dans cette page, vous allez découvrir les changements qui sont planifiés pour Defender pour le cloud. Elle décrit les changements planifiés du produit qui peuvent avoir un impact sur votre degré de sécurisation ou vos workflows.
 
-Si vous recherchez les notes de publication les plus récentes, vous les trouverez dans [Nouveautés d’Azure Security Center](release-notes.md).
+Si vous recherchez les notes de publication les plus récentes, vous les trouverez dans [Nouveautés de Microsoft Defender pour le cloud](release-notes.md).
 
 
 ## <a name="planned-changes"></a>Changements planifiés
 
 | Modifications planifiées       | Date estimée de la modification |
 |----------------------|---------------------------|
-| [Dépréciation d’une alerte de préversion : ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | Octobre 2021|
-| [L’implémentation héritée de la norme ISO 27001 est remplacée par la nouvelle norme ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| Octobre 2021|
+| [Dépréciation d’une alerte de préversion : ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | Novembre 2021|
+| [L’implémentation héritée de la norme ISO 27001 est remplacée par la nouvelle norme ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| Novembre 2021|
 | [Modifications apportées aux suggestions pour la gestion des solutions de protection des points de terminaison](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | Novembre 2021| 
 | [L’affichage de l’inventaire des machines locales utilise un autre modèle pour le nom de ressource](#inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name)    | Novembre 2021    |
 | [Changements multiples apportés aux recommandations sur l’identité](#multiple-changes-to-identity-recommendations)                                                                                          | Novembre 2021    |
-| [Modifications apportées à une alerte de sécurité provenant d’Azure Defender pour Stockage](#changes-to-a-security-alert-from-azure-defender-for-storage)  | Novembre 2021    |
+| [Modifications apportées à une alerte de sécurité provenant de Microsoft Defender pour le stockage](#changes-to-a-security-alert-from-microsoft-defender-for-storage)  | Novembre 2021    |
 | [Améliorations apportées à la recommandation pour classer les données sensibles dans les bases de données SQL](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)                              | PREMIER TRIMESTRE 2022    |
 |||
 
 ### <a name="deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses"></a>Dépréciation d’une alerte de préversion : ARM.MCAS_ActivityFromAnonymousIPAddresses
 
-**Date estimée de la modification :** octobre 2021
+**Date estimée du changement :** novembre 2021
 
 Nous allons déprécier l’alerte de préversion suivante :
 
@@ -48,15 +51,15 @@ Nous allons déprécier l’alerte de préversion suivante :
 |**PRÉVERSION – Activité à partir d’une adresse IP à risque**<br>(ARM.MCAS_ActivityFromAnonymousIPAddresses)|Une activité utilisateur depuis une adresse IP qui a été identifiée comme adresse IP de proxy anonyme a été détectée.<br>Ces proxys sont utilisés par des individus souhaitant masquer l’adresse IP de leur appareil et peuvent être utilisés dans un but malveillant. Cette détection utilise un algorithme Machine Learning qui réduit les faux positifs, tels que les adresses IP mal étiquetées qui sont largement utilisées par d’autres utilisateurs de l’organisation.<br>Requiert une licence active de Microsoft Cloud App Security.|
 |||
 
-Nous avons mis au point de nouvelles alertes qui fournissent ces informations et qui les complètent. De plus, les alertes plus récentes (ARM_OperationFromSuspiciousIP, ARM_OperationFromSuspiciousProxyIP) ne demandent pas de licence pour Microsoft Cloud App Security.
+Nous avons mis au point de nouvelles alertes qui fournissent ces informations et qui les complètent. De plus, les alertes plus récentes (ARM_OperationFromSuspiciousIP, ARM_OperationFromSuspiciousProxyIP) ne demandent pas de licence pour Microsoft Defender pour les applications cloud (anciennement Microsoft Cloud App Security).
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>L’implémentation héritée de la norme ISO 27001 est remplacée par la nouvelle norme ISO 27001:2013
 
-**Date estimée de la modification :** octobre 2021
+**Date estimée du changement :** novembre 2021
 
-L’implémentation héritée de la norme ISO 27001 sera supprimée du tableau de bord de conformité réglementaire de Security Center. Si vous effectuez le suivi de la conformité ISO 27001 avec Security Center, intégrez la nouvelle norme ISO 27001:2013 pour tous les groupes d’administration ou abonnements appropriés, car la norme ISO 27001 actuelle sera bientôt supprimée du tableau de bord.
+L’implémentation héritée de la norme ISO 27001 sera supprimée du tableau de bord de conformité réglementaire de Defender pour le cloud. Si vous effectuez le suivi de la conformité ISO 27001 avec Defender pour le cloud, intégrez la nouvelle norme ISO 27001:2013 pour tous les groupes d’administration ou abonnements appropriés, car la norme ISO 27001 actuelle sera bientôt supprimée du tableau de bord.
 
-:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Tableau de bord de conformité réglementaire Security Center présentant le message relatif à la suppression de l’implémentation héritée de la norme ISO 27001." lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Tableau de bord de conformité réglementaire Defender pour le cloud présentant le message relatif à la suppression de l’implémentation héritée de la norme ISO 27001." lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
 ### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>Modifications apportées aux suggestions pour la gestion des solutions de protection des points de terminaison
 
@@ -75,8 +78,8 @@ Lorsque les suggestions sont publiées en disponibilité générale, elles rempl
     - Clé d’évaluation pour la recommandation **GA** : 3bcd234d-c9c7-c2a2-89e0-c01f419c1a8a
 
 En savoir plus :
-- [Solutions de protection des points de terminaison prises en charge par Security Center](security-center-services.md#endpoint-supported)
-- [Comment ces suggestions évaluent l’état de vos solutions déployées](security-center-endpoint-protection.md)
+- [Solutions de protection des points de terminaison prises en charge par Defender pour le cloud](supported-machines-endpoint-solutions-clouds.md#endpoint-supported)
+- [Comment ces suggestions évaluent l’état de vos solutions déployées](endpoint-protection-recommendations-technical.md)
 
 
 
@@ -94,11 +97,11 @@ Pour améliorer la présentation des ressources dans l’[inventaire des ressour
 
 **Date estimée du changement :** novembre 2021
 
-Security Center inclut plusieurs recommandations pour améliorer la gestion des utilisateurs et des comptes. En novembre, nous allons effectuer les changements décrits ci-dessous.
+Defender pour le cloud inclut plusieurs recommandations permettant d’améliorer la gestion des utilisateurs et des comptes. En novembre, nous allons effectuer les changements décrits ci-dessous.
 
 - **Intervalle d’actualisation amélioré** - Pour le moment, les recommandations sur l’identité ont un intervalle d’actualisation de 24 heures. Cette mise à jour va réduire l’intervalle à 12 heures.
 
-- **Fonctionnalité d’exemption de compte** - Security Center dispose de nombreuses fonctionnalités qui permettent de personnaliser l’expérience utilisateur et de vérifier que le niveau de sécurité reflète les priorités de sécurité de votre organisation. L’option d’exemption des recommandations de sécurité est l’une de ces fonctionnalités. Pour obtenir une vue d’ensemble complète et des instructions, consultez [Exemption de ressources et de recommandations dans votre niveau de sécurité](exempt-resource.md). Avec cette mise à jour, vous pouvez exempter d’évaluation des comptes spécifiques en fonction des huit recommandations listées dans le tableau suivant.
+- **Fonctionnalité d’exemption de compte** : Defender pour le cloud dispose de nombreuses fonctionnalités qui permettent de personnaliser l’expérience utilisateur et de vérifier que le niveau de sécurité reflète les priorités de sécurité de votre organisation. L’option d’exemption des recommandations de sécurité est l’une de ces fonctionnalités. Pour obtenir une vue d’ensemble complète et des instructions, consultez [Exemption de ressources et de recommandations dans votre niveau de sécurité](exempt-resource.md). Avec cette mise à jour, vous pouvez exempter d’évaluation des comptes spécifiques en fonction des huit recommandations listées dans le tableau suivant.
 
     En règle générale, vous exemptez les comptes « de secours » d’urgence des recommandations relatives à l’authentification MFA, car ces comptes sont souvent délibérément exclus des obligations d’authentification MFA d’une organisation. Vous pouvez également disposer de comptes externes auxquels vous souhaitez autoriser l’accès, mais pour lesquels l’authentification MFA n’est pas activée.
 
@@ -124,7 +127,7 @@ Security Center inclut plusieurs recommandations pour améliorer la gestion des 
     |---------|---------|---------|
     |Clé d’évaluation     | e52064aa-6853-e252-a11e-dffc675689c2        | Inchangé|
     |Name     |[Les comptes déconseillés disposant d’autorisations de propriétaire doivent être supprimés de votre abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/e52064aa-6853-e252-a11e-dffc675689c2)         |Les comptes bloqués dans Active Directory et qui disposent d’autorisations de propriétaire doivent être supprimés définitivement dans les abonnements        |
-    |Description     |Les comptes d’utilisateur qui ne peuvent plus se connecter doivent être supprimés de vos abonnements.<br>Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.|Les comptes d’utilisateur dont la connexion à Active Directory a été bloquée doivent être supprimés de vos abonnements. Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.<br>Découvrez plus en détail la sécurisation du périmètre d’identité dans [Bonnes pratiques pour la sécurité du contrôle d’accès et la gestion des identités Azure](/azure/security/fundamentals/identity-management-best-practices).|
+    |Description     |Les comptes d’utilisateur qui ne peuvent plus se connecter doivent être supprimés de vos abonnements.<br>Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.|Les comptes d’utilisateur dont la connexion à Active Directory a été bloquée doivent être supprimés de vos abonnements. Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.<br>Découvrez plus en détail la sécurisation du périmètre d’identité dans [Bonnes pratiques pour la sécurité du contrôle d’accès et la gestion des identités Azure](../security/fundamentals/identity-management-best-practices.md).|
     |Stratégie associée     |[Les comptes déconseillés disposant d’autorisations de propriétaire doivent être supprimés de votre abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)         |Les comptes bloqués dans Active Directory et qui disposent d’autorisations de propriétaire doivent être supprimés définitivement dans les abonnements |
     |||
 
@@ -132,7 +135,7 @@ Security Center inclut plusieurs recommandations pour améliorer la gestion des 
     |---------|---------|---------|
     |Clé d’évaluation     | 00c6d40b-e990-6acf-d4f3-471e747a27c4        | Inchangé|
     |Name     |[Les comptes déconseillés doivent être supprimés de votre abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/00c6d40b-e990-6acf-d4f3-471e747a27c4)|Les comptes bloqués dans Active Directory et qui disposent d’autorisations en lecture et en écriture doivent être supprimés définitivement dans les abonnements|
-    |Description     |Les comptes d’utilisateur qui ne peuvent plus se connecter doivent être supprimés de vos abonnements.<br>Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.|Les comptes d’utilisateur dont la connexion à Active Directory a été bloquée doivent être supprimés de vos abonnements. Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.<br>Découvrez plus en détail la sécurisation du périmètre d’identité dans [Bonnes pratiques pour la sécurité du contrôle d’accès et la gestion des identités Azure](/azure/security/fundamentals/identity-management-best-practices).|
+    |Description     |Les comptes d’utilisateur qui ne peuvent plus se connecter doivent être supprimés de vos abonnements.<br>Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.|Les comptes d’utilisateur dont la connexion à Active Directory a été bloquée doivent être supprimés de vos abonnements. Ces comptes peuvent être des cibles pour les attaquants qui cherchent des moyens d’accéder à vos données sans être remarqués.<br>Découvrez plus en détail la sécurisation du périmètre d’identité dans [Bonnes pratiques pour la sécurité du contrôle d’accès et la gestion des identités Azure](../security/fundamentals/identity-management-best-practices.md).|
     |Stratégie associée     |[Les comptes déconseillés doivent être supprimés de votre abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)|Les comptes bloqués dans Active Directory et qui disposent d’autorisations en lecture et en écriture doivent être supprimés définitivement dans les abonnements|
     |||
  
@@ -140,11 +143,11 @@ Security Center inclut plusieurs recommandations pour améliorer la gestion des 
 
 
 
-### <a name="changes-to-a-security-alert-from-azure-defender-for-storage"></a>Modifications apportées à une alerte de sécurité provenant d’Azure Defender pour Stockage
+### <a name="changes-to-a-security-alert-from-microsoft-defender-for-storage"></a>Modifications apportées à une alerte de sécurité provenant de Microsoft Defender pour le stockage
 
 **Date estimée du changement :** novembre 2021
 
-L’une des alertes en préversion fournies par Azure Defender pour Stockage se divise en deux nouvelles recommandations pour offrir une plus grande clarté sur les événements suspects découverts. Cette alerte concerne uniquement Stockage Blob Azure.
+L’une des alertes en préversion fournies par Microsoft Defender pour le stockage se divise en deux nouvelles recommandations pour offrir une plus grande clarté sur les événements suspects découverts. Cette alerte concerne uniquement Stockage Blob Azure.
 
 **Le type d’alerte change également.**
 
@@ -168,4 +171,4 @@ La recommandation **Les données sensibles de vos bases de données SQL doivent 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour toutes les modifications récentes de Security Center, consultez [Nouveautés dans Azure Security Center](release-notes.md)
+Pour toutes les modifications récentes apportées à Defender pour le cloud, consultez [Nouveautés de Microsoft Defender pour le cloud](release-notes.md).

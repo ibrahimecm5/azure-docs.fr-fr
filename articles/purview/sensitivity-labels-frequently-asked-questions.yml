@@ -1,0 +1,109 @@
+### YamlMime:FAQ
+metadata:
+  title: FAQ sur les étiquettes de confidentialité dans Azure Purview
+  description: En savoir plus sur les questions fréquemment posées sur les étiquettes de confidentialité Azure Purview.
+  services: purview
+  author: ajaykar
+  ms.service: purview
+  ms.subservice: purview-insights
+  ms.topic: 
+  ms.date: 09/17/2021
+  ms.author: ajaykar
+  ms.openlocfilehash: 9d5ab94d9c398c6efecd110c4292ad669a389720
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131014932"
+title: FAQ sur les étiquettes de confidentialité dans Azure Purview
+summary: >
+  Cet article répertorie les questions fréquemment posées sur les étiquettes de confidentialité dans Azure Purview, avec leurs réponses et des liens vers des informations supplémentaires si nécessaire.</br></br>
+
+
+  > [!IMPORTANT]
+
+  > Les étiquettes de confidentialité Azure Purview sont actuellement disponibles en PRÉVERSION. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale.
+
+  >
+sections:
+- name: Gestion des licences et configuration
+  questions:
+  - question: Quelles sont les conditions de licence pour utiliser les étiquettes de confidentialité sur les fichiers et les colonnes de base de données dans Azure Purview ?
+    answer: "Pour utiliser les étiquettes de confidentialité dans Azure Purview, vous avez besoin d’au moins une licence ou d’un compte Microsoft 365 au sein du même locataire Azure Active Directory (AAD) que votre compte Azure Purview.  \n\nLes licences Microsoft 365 suivantes sont requises pour appliquer automatiquement des étiquettes de confidentialité à vos ressources dans [Microsoft 365](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance#which-licenses-provide-the-rights-for-a-user-to-benefit-from-the-service-10) et [Azure Purview](how-to-automatically-label-your-content.md) :  \n\n* Microsoft 365 E5/A5/G5\n* Microsoft 365 E5/A5/G5 Compliance \n* Microsoft 365 E5/A5/G5 Information Protection et Governance,  \n* Office 365 E5, Enterprise Mobility + Security E5/A5/G5, et AIP Plan  \n\nPour plus d’informations, consultez [Descriptions des services Microsoft 365](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance#information-protection).\n"
+  - question: Si mon organisation possède plusieurs comptes Azure Purview au sein d’un locataire Azure AD, dois-je étendre les étiquettes manuellement à chaque compte Purview séparément ?
+    answer: >
+      Non. Lorsque vous étendez des étiquettes de confidentialité à Azure Purview, ces étiquettes sont étendues à tous les comptes Purview de votre locataire.
+  - question: Mon organisation utilise déjà des étiquettes de confidentialité dans Microsoft 365. Quel est l’impact de l’extension de ces étiquettes à Purview ? Aura-t-elle une incidence sur mon installation existante dans Microsoft 365 ?
+    answer: "L’extension des étiquettes à Purview n’affecte pas votre configuration Microsoft 365 ni ne modifie vos ressources de quelque manière que ce soit, y compris les fichiers et les bases de données.  \n\n* Lorsque vous étendez les étiquettes de confidentialité à Purview, la configuration Microsoft 365 continue de fonctionner de la même façon que d’habitude. \n* L’extension des étiquettes de confidentialité permet à Purview d’appliquer ces étiquettes à vos ressources Azure et multiclouds dans le catalogue Purview. Le catalogue est un magasin de métadonnées que vous pouvez supprimer à tout moment. \n* Les étiquettes de confidentialité sont appliquées uniquement aux métadonnées de ressources dans le catalogue Purview et ne sont pas appliquées aux colonnes de base de données et aux fichiers réels. L’application d’étiquettes de confidentialité ne modifie pas vos fichiers et bases de données de quelque manière que ce soit.</br></br>\n"
+- name: Classification et étiquettes de confidentialité
+  questions:
+  - question: Quelle est la différence entre les classifications et les étiquettes de confidentialité dans Azure Purview ?
+    answer: "Le tableau suivant répertorie les différences entre les classifications et les étiquettes de confidentialité dans Azure Purview :\n\n|Comparaison|Classifications|Étiquette de confidentialité|\n|---|---|---|\n|**Définition**| Les classifications sont des expressions régulières ou des modèles qui peuvent aider à identifier les types de données qui existent dans une ressource. | Les étiquettes de confidentialité sont des balises qui permettent aux organisations de classer les données en fonction de leur impact sur l’activité, tout en faisant abstraction du type de données de l’utilisateur. |\n|**Exemples**| Numéro de sécurité sociale, numéro de permis de conduire, numéro de compte bancaire, etc. | Hautement confidentiel, confidentiel, général, public, etc. |\n| **Étendue** | L’étendue des classifications appliquées à une ressource est limitée au compte Purview dans lequel les classifications ont été appliquées. Si les données sont déplacées vers une ressource gérée par un autre compte Purview, les classifications appliquées à l’emplacement d’origine ne sont pas visibles dans le nouvel emplacement. | Les étiquettes de confidentialité appliquées à une ressource voyagent avec les données, quel que soit l’emplacement des données. Par exemple, cela signifie que les étiquettes de confidentialité appliquées à un fichier dans Microsoft 365 sont automatiquement visibles et restent appliquées au fichier, même s’il est déplacé vers Azure, SharePoint ou Teams. |\n| **Processus d’analyse** | L’analyse d’une ressource dans Azure Purview recherche à la fois les classifications définies par le système et celles définies par l’utilisateur dans vos données. Si des classifications sont trouvées, elles sont ajoutées au catalogue Purview pour la ressource analysée. | Si vous avez des étiquettes de confidentialité étendues à Azure Purview et des règles d’étiquetage automatique définies, l’analyse d’une ressource dans Purview applique les étiquettes aux ressources dans le catalogue en fonction des classifications détectées dans l’analyse. |\n| **Environnement de création** | Vous pouvez créer des classifications personnalisées et des règles de classification dans Azure Purview Studio. Vous pouvez également créer des classifications personnalisées dans Microsoft 365. Toutefois, nous ne prenons pas encore en charge l’importation dans Purview. | Gestion des étiquettes de confidentialité dans le [Centre de conformité Microsoft 365](/microsoft-365/compliance/create-sensitivity-labels). |\n| **Limites d’affectation** | Les ressources peuvent ne pas avoir de classification, ou avoir une ou plusieurs classifications affectées. | Chaque ressource ne peut avoir qu’une seule étiquette de confidentialité. |\n| **Workflow d’application de ressource** | Vous pouvez utiliser Purview pour ajouter ou modifier manuellement des classifications affectées à une ressource. | Dans Purview, les étiquettes de confidentialité sont automatiquement affectées aux ressources en fonction des classifications trouvées. L’application manuelle des étiquettes dans Purview n’est pas prise en charge actuellement. | \n| **Plus d’informations** | [En savoir plus sur les classifications](create-a-custom-classification-and-classification-rule.md). | [En savoir plus sur les étiquettes de confidentialité](/microsoft-365/compliance/create-sensitivity-labels).|\n||||\n"
+  - question: Les classifications dans Purview et les types d’informations sensibles (SIT) dans Microsoft 365 représentent-ils la même chose ?
+    answer: Même si les classifications et les types d’informations sensibles sont fondamentalement la mêmes chose, les classifications sont un concept Azure Purview, tandis que les types d’informations sensibles sont un concept Microsoft 365. Les classifications et les SIT sont utilisés par leurs services respectifs pour identifier le type de données trouvé dans une ressource.
+  - question: j’ai créé un type d’informations sensibles (SIT) personnalisé dans Microsoft 365 et je l’ai utilisé dans mes règles d’étiquetage automatique pour les colonnes de base de données. Puis-je utiliser ce SIT personnalisé dans Azure Purview ?
+    answer: >
+      Non, les [types d’informations sensibles personnalisés](/microsoft-365/compliance/sensitive-information-type-learn-about#creating-custom-sensitive-information-types) de Microsoft 365 ne sont pas pris en charge dans Azure Purview pour l’instant. Actuellement, Azure Purview prend uniquement en charge les [types d’informations sensibles intégrés](/microsoft-365/compliance/sensitive-information-type-learn-about) à Microsoft 365.</br></br>
+- name: Étiquetage des fonctionnalités dans Azure Purview
+  questions:
+  - question: Comment puis-je déterminer si le consentement a été accordé pour étendre l’étiquetage à Purview ?
+    answer: "Seuls les administrateurs de conformité, les administrateurs généraux du locataire ou un rôle personnalisé qui a accès à la cmdlet [Set-PolicyConfig](/powershell/module/exchange/set-policyconfig) peuvent [activer des étiquettes pour Azure Purview](how-to-automatically-label-your-content.md). Pour vérifier si un administrateur a étendu l’étiquetage à Purview, connectez-vous à Exchange Online PowerShell et exécutez la cmdlet [Get-PolicyConfig](/powershell/module/exchange/get-policyconfig).  Par exemple :\n\n~~~powershell\nGet-PolicyConfig | format-list Purview*\n~~~\n\nLorsque l’étiquetage a été étendu à Purview, vous verrez **True** pour le paramètre **PurviewLabelConsent** et un timestamp indiquant quand le consentement a été activé et un **ObjectID** de l’auteur du consentement.\n\n~~~output\nPurviewLabelConsent        : True\nPurviewLabelConsentCaller  : d8675309-1111-2222-3333-1234567890ab\nPurviewLabelConsentTime    : 9/28/2021 6:04:45 PM\nPurviewLabelConsentDetails : {\"Consent\":true,\"Caller\":\"d8675309-1111-2222-3333-1234567890ab\",\"Time\":\"9/28/2021 6:04:45 PM\"}\n~~~\n\nSi l’étiquetage n’a pas été étendu, vous verrez False pour le paramètre **PurviewLabelConsent**, comme dans l’exemple ci-dessous :\n\n~~~output\nPurviewLabelConsent        : False\nPurviewLabelConsentCaller  : \nPurviewLabelConsentTime    : \nPurviewLabelConsentDetails :\n~~~\n\nCela diffère de l’audit de l’action d’ajout de Purview à l’étendue d’une étiquette de confidentialité. Cette activité se trouve dans les journaux d’audit unifiés. Par exemple,\n\n~~~powershell\nSearch-UnifiedAuditLog -Operations \"Set-Label\" -StartDate 10/05/2021 -EndDate 10/16/2021\n~~~\n\nPour plus d’informations, vous pouvez [Rechercher le journal d’audit](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) dans le Centre de conformité Microsoft 365.\n"
+  - question: À quelles sources de données puis-je appliquer des étiquettes de confidentialité dans Azure Purview ?
+    answer: "Vous pouvez appliquer des étiquettes de confidentialité à toutes les sources de données qui peuvent être analysées dans Azure Purview. Pour plus d’informations, consultez [Types de données pris en charge pour les étiquettes de confidentialité dans Azure Purview](create-sensitivity-label.md#supported-data-sources). \n"
+  - question: Puis-je étiqueter manuellement une ressource, ou modifier ou supprimer manuellement une étiquette dans Azure Purview ?
+    answer: "Azure Purview prend uniquement en charge l’étiquetage automatique. Les étiquettes sont automatiquement appliquées aux ressources dans Azure Purview en fonction des classifications figurant sur les ressources et des règles d’étiquetage automatique des étiquettes. \n\nPurview ne prend pas actuellement en charge l’application manuelle d’une étiquette, la modification ou la suppression d’une étiquette d’une ressource. \n"
+  - question: L’étiquetage automatique peut-il s’appliquer aux ressources pouvant inclure des informations d’identification ?
+    answer: Azure Purview ne prend pas actuellement en charge l’analyse des informations d’identification. Lorsque Purview prendra en charge l’analyse des informations d’identification, vous pourrez être en mesure d’appliquer des étiquettes en fonction des informations d’identification trouvées.
+  - question: Puis-je appliquer le chiffrement et/ou le marquage de contenu aux fichiers dans Azure Purview, de la même façon que dans Microsoft 365 ?
+    answer: Non, actuellement, nous ne prenons pas en charge le chiffrement et le marquage de contenu pour les fichiers dans Azure Purview.
+  - question: À quels types de fichiers puis-je appliquer des étiquettes de confidentialité dans Azure Purview ?
+    answer: >
+      Vous pouvez appliquer des étiquettes de confidentialité à tous les [types de fichiers et sources de données pris en charge par Azure Purview](sources-and-scans.md).
+  - question: Azure Purview prend-il actuellement en charge les capacités de protection contre la perte de données ?
+    answer: >
+      Non, Azure Purview ne fournit pas de capacités de protection contre la perte de données à ce stade. La [protection contre la perte de données](/microsoft-365/compliance/information-protection#prevent-data-loss) n’est actuellement prise en charge que dans Microsoft 365.</br></br>
+- name: Accès et rôles
+  questions:
+  - question: Où puis-je gérer mes étiquettes de confidentialité ?
+    answer: >
+      Les étiquettes de confidentialité sont gérées uniquement dans le [Centre de conformité Microsoft 365](https://compliance.microsoft.com/). Pour plus d’informations, consultez le [Guide pratique pour créer des étiquettes de confidentialité dans Microsoft 365](how-to-automatically-label-your-content.md).
+
+
+      La prise en charge de la gestion des étiquettes de confidentialité dans Azure Purview Studio n’est pas disponible actuellement.
+  - question: Qui peut gérer les étiquettes de confidentialité dans le Centre de conformité Microsoft 365 ?
+    answer: "Les rôles d’administrateur intégrés suivants incluent des autorisations pour gérer les étiquettes de confidentialité dans le centre de conformité : \n\n* Administrateur général  \n* Administrateur de conformité \n\nPour plus d’informations, consultez [Autorisations requises pour créer et gérer des étiquettes de confidentialité](/microsoft-365/compliance/get-started-with-sensitivity-labels#permissions-required-to-create-and-manage-sensitivity-labels).  Une fois que vous avez configuré la conformité et les administrateurs généraux, ces administrateurs peuvent [accorder l’accès à des utilisateurs individuels](/microsoft-365/security/office-365-security/grant-access-to-the-security-and-compliance-center). \n"
+  - question: Qui peut rechercher et parcourir les ressources avec des étiquettes de confidentialité dans Azure Purview ?
+    answer: Tous les utilisateurs disposant d’au moins un accès en lecture aux données du compte Purview sont autorisés à rechercher et à parcourir les ressources avec des étiquettes de confidentialité dans Azure Purview.
+  - question: Qui peut afficher le rapport d’insights des étiquettes de confidentialité dans Azure Purview ?
+    answer: Tous les utilisateurs disposant d’au moins un accès en lecture aux données du compte Purview sont autorisés à afficher les rapports d’insights des étiquettes de confidentialité dans Azure Purview. </br></br>
+- name: Détails techniques
+  questions:
+  - question: Azure Purview et Microsoft 365 utilisent-t-ils le même moteur de classification ?
+    answer: Oui, Azure Purview et Microsoft 365 utilisent le même moteur de classification.
+  - question: Purview analyse-t-il l’intégralité d’une ressource lors de l’application d’étiquettes automatiques aux colonnes de base de données ?
+    answer: "Le scanneur Purview échantillonne les fichiers comme suit : \n\n* **Pour les types de fichiers structurés**, Purview échantillonne 128 lignes dans chaque colonne ou 1 Mo, selon la valeur la plus faible. \n* **Pour les formats de fichiers de document**, Purview échantillonne 20 Mo de chaque fichier. \n* **Un fichier de document dont la taille est supérieure à 20 Mo** n’est pas soumis à une analyse détaillée ou à une classification. Dans ce cas, Purview capture uniquement les métadonnées de base, telles que les noms de fichier et les noms complets. \n"
+  - question: S’il existe plusieurs étiquettes de confidentialité qui répondent aux critères de classification, quelle étiquette est appliquée ?
+    answer: "Dans Microsoft 365, les étiquettes de confidentialité ont un ordre de priorité et Purview utilise cet ordre pour affecter des étiquettes. Si plusieurs étiquettes répondent aux critères de classification, Purview choisit la première étiquette dans l’ordre de priorité.  \n\nPour plus d’informations, consultez [Priorité des étiquettes (ordre significatif)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters).</br></br>\n"
+- name: Découverte et classification des données SQL
+  questions:
+  - question: Pourquoi Microsoft prend-il en charge deux expériences de classification pour les bases de données SQL (« Azure Purview » et « Découverte et classification des données SQL ») ?
+    answer: "Azure Purview fournit une expérience de classification et d’étiquetage pour toutes vos ressources Azure, notamment les bases de données SQL. Azure Purview est destiné aux organisations qui souhaitent gérer l’ensemble de leurs données dans un emplacement unique grâce à la puissance de la classification, l’étiquetage, les alertes et bien plus encore. Azure Purview utilise des étiquettes de confidentialité, qui ont une portée globale et qui déplacent vos données, quel que soit l’endroit où elles se déplacent ou ce qu’elles transforment. \n\nÀ l’inverse, l’expérience [Découverte et classification des données SQL](../azure-sql/database/data-discovery-and-classification-overview.md) est intégrée à SQL. La découverte et la classification des données SQL existaient avant Purview pour fournir des fonctionnalités de base pour la découverte, la classification, l’étiquetage et la génération de rapports sur les données sensibles dans vos bases de données SQL. La découverte et la classification des données SQL utilisent des étiquettes locales qui n’ont pas de portée globale et ne prennent pas en charge les étiquettes de confidentialité. \n"
+  - question: J’ai appliqué des étiquettes dans la découverte et la classification des données SQL. Pourquoi ces étiquettes n’apparaissent-elles pas pour ma ressource dans Azure Purview ?
+    answer: >
+      La classification SQL utilise des étiquettes locales, tandis qu’Azure Purview utilise des étiquettes de confidentialité. Les étiquettes appliquées dans l’expérience de classification SQL ne s’affichent pas dans Purview. Pour plus d’informations, consultez [Étiquetage des bases de données SQL](create-sensitivity-label.md#labeling-for-sql-databases).
+additionalContent: >
+  Pour plus d'informations, consultez les pages suivantes : </br>
+
+  > [!div class="nextstepaction"]
+
+  > [Étiqueter automatiquement votre contenu](how-to-automatically-label-your-content.md)</br>
+
+
+  > [!div class="nextstepaction"]
+
+  > [Insights relatifs aux étiquettes de confidentialité](sensitivity-insights.md)</br>
+
+
+  > [!div class="nextstepaction"]
+
+  > [Insights relatifs aux classifications](./classification-insights.md)

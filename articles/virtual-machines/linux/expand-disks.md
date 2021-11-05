@@ -5,15 +5,16 @@ author: roygara
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 10/15/2018
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c8c8881de696143be60c9ff61c1649eb31fe59b3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8f54e1f74c5f4f6a8502285f5e4c36c09892ec71
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695609"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082604"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Étendre des disques durs virtuels sur une machine virtuelle Linux avec Azure CLI
 
@@ -25,11 +26,41 @@ Cet article explique comment étendre des disques managés pour une machine virt
 > Assurez-vous que l’état d’intégrité de votre système de fichiers soit toujours sain, votre type de table de partition de disque prendra en charge la nouvelle taille. Veillez également à sauvegarder vos données avant de redimensionner les disques. Pour plus d’informations, consultez le [démarrage rapide de Sauvegarde Azure](../../backup/quick-backup-vm-portal.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Étendre un disque managé Azure
+
+### <a name="resize-without-downtime-preview"></a>Redimensionner sans temps d’arrêt (préversion)
+
+Vous pouvez maintenant redimensionner vos disques managés sans libérer votre machine virtuelle.
+
+Pour cette opération, la préversion présente les limitations suivantes :
+
+- Disponible uniquement dans la région USA Ouest.
+- Prise en charge uniquement pour les disques de données.
+- Les disques de moins de 4 Tio ne peuvent pas être étendus à 4 Tio ou plus sans temps d’arrêt.
+    - Une fois que vous avez augmenté la taille d’un disque à 4 Tio ou plus, il peut être étendu sans temps d’arrêt.
+- Vous devez installer et utiliser la [dernière interface de ligne de commande Azure](/cli/azure/install-azure-cli), le [dernier module d’Azure PowerShell](/powershell/azure/install-az-ps), le portail Azure si vous y accédez par le biais de [https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) ou un modèle Azure Resource Manager avec une version d’API 2021-04-01 ou plus récente.
+
+Pour vous inscrire à la fonctionnalité, utilisez la commande suivante :
+
+```azurecli
+az feature register --namespace Microsoft.Compute --name LiveResize
+```
+
+L’inscription peut prendre quelques minutes. Pour vérifier que vous vous êtes inscrit, utilisez la commande suivante :
+
+```azurecli
+az feature show --namespace Microsoft.Compute --name LiveResize
+```
+
+### <a name="get-started"></a>Bien démarrer
+
 Vérifiez que vous avez installé la dernière version [d’Azure CLI](/cli/azure/install-az-cli2) et que vous êtes connecté à un compte Azure avec la commande [az login](/cli/azure/reference-index#az_login).
 
 Cet article nécessite une machine virtuelle existante dans Azure avec au moins un disque de données attaché et préparé. Si vous n’avez pas encore de machine virtuelle à utiliser, consultez [Create and prepare a VM with data disks](tutorial-manage-disks.md#create-and-attach-disks) (Créer et préparer une machine virtuelle avec des disques de données).
 
 Dans les exemples ci-après, remplacez les exemples de nom de paramètre, tels que *myResourceGroup* et *myVM*, par vos propres valeurs.
+
+> [!IMPORTANT]
+> Si vous avez activé **LiveResize** et que votre disque répond aux exigences indiquées dans [Redimensionner sans temps d’arrêt (préversion)](#resize-without-downtime-preview), vous pouvez ignorer les étapes 1 et 3. 
 
 1. Il est impossible d’effectuer des opérations sur les disques durs virtuels avec la machine virtuelle en cours d’exécution. Libérez la machine virtuelle avec la commande [az vm deallocate](/cli/azure/vm#az_vm_deallocate). L’exemple suivant libère la machine virtuelle nommée *myVM* dans le groupe de ressources nommé *myResourceGroup* :
 

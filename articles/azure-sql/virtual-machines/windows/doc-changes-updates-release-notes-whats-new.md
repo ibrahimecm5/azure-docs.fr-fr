@@ -12,17 +12,32 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/01/2021
-ms.openlocfilehash: 69d709dc6d58e732f56ef28c9b2e69b2a5ad5594
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 592f2ae9b3d09ce84296dca31d68031b7d5fff84
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047988"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080913"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Modifications apportées à la documentation concernant SQL Server sur des machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur celle-ci, soit manuellement, soit via une image intégrée, vous pouvez tirer parti des fonctionnalités Azure pour améliorer votre expérience. Cet article résume les modifications apportées à la documentation en lien avec les nouvelles fonctionnalités et les améliorations introduites dans les mises en production récentes de [SQL Server sur des machines virtuelles Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Pour en savoir plus sur SQL Server sur machines virtuelles Azure, consultez la [présentation](sql-server-on-azure-vm-iaas-what-is-overview.md). 
+
+## <a name="november-2021"></a>Novembre 2021
+
+| Modifications | Détails |
+| --- | --- |
+| **SQL Assessment** | Il est désormais possible d’évaluer l’intégrité de votre machine virtuelle SQL Server dans le portail Azure à l’aide de [SQL Assessment](sql-assessment-for-sql-vm.md) pour détecter les recommandations qui améliorent les performances et identifier les configurations recommandées manquantes. Actuellement, cette fonctionnalité est uniquement disponible en tant que version préliminaire. |
+
+
+## <a name="october-2021"></a>Octobre 2021
+
+| Modifications | Détails |
+| --- | --- |
+| **L’extension SQL IaaS prend désormais en charge Ubuntu** | La prise en charge a été ajoutée pour [inscrire](../linux/sql-iaas-agent-extension-register-vm-linux.md) votre machine virtuelle SQL Server s’exécutant sur Ubuntu Linux avec l’[extension IaaS SQL Server](../linux/sql-server-iaas-agent-extension-linux.md) pour des fonctionnalités limitées. | 
+
 
 ## <a name="september-2021"></a>Septembre 2021
 

@@ -1,61 +1,64 @@
 ---
-title: Intégrer un groupe d’administration à Azure Security Center
-description: Découvrez comment utiliser une définition Azure Policy fournie afin d’activer Azure Security Center pour tous les abonnements d’un groupe d’administration.
+title: Intégration d’un groupe d’administration à Microsoft Defender pour le cloud
+description: Découvrez comment utiliser une définition Azure Policy fournie afin d’activer Microsoft Defender pour le cloud pour tous les abonnements d’un groupe d’administration.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: ea5522cfd8f407ffd7259335706cc69555ce2329
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5a39a46bbc78cb915e57f7e584c5c567ff8718ff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238241"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064749"
 ---
-# <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Activer Security Center sur tous les abonnements d’un groupe d’administration
+# <a name="enable-defender-for-cloud-on-all-subscriptions-in-a-management-group"></a>Activer Defender pour le cloud sur tous les abonnements d’un groupe d’administration
 
-Vous pouvez utiliser Azure Policy pour activer Azure Security Center sur tous les abonnements Azure au sein du même groupe d’administration. Cela est plus pratique que d’accéder aux abonnements individuellement à partir du portail et fonctionne même s’ils appartiennent à des propriétaires différents. 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Vous pouvez utiliser Azure Policy pour activer Defender pour le cloud sur tous les abonnements Azure au sein du même groupe d’administration. Cela est plus pratique que d’accéder aux abonnements individuellement à partir du portail et fonctionne même s’ils appartiennent à des propriétaires différents. 
 
 Pour intégrer un groupe d’administration et tous ses abonnements :
 
-1. En tant qu’utilisateur disposant des autorisations **Administration de sécurité**, ouvrez Azure Policy et recherchez la définition **Activer Azure Security Center sur votre abonnement**.
+1. En tant qu’utilisateur disposant des autorisations **Administration de sécurité**, ouvrez Azure Policy et recherchez la définition **Activer Defender pour le cloud sur votre abonnement**.
 
-    :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Définition Azure Policy Activer Azure Security Center sur votre abonnement.":::
+    :::image type="content" source="./media/get-started/enable-security-center-policy.png" alt-text="La définition Azure Policy Activer Defender pour le cloud sur votre abonnement.":::
 
 1. Sélectionnez **Affecter** et veillez à définir l’étendue sur le niveau du groupe d’administration.
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Affectation de la définition Activer Azure Security Center sur votre abonnement.":::
+    :::image type="content" source="./media/get-started/assign-policy.png" alt-text="Attribution de la définition Activer Defender pour le cloud sur votre abonnement.":::
 
     > [!TIP]
     > Hormis l’étendue, il n’existe aucun paramètre obligatoire.
 
-1. Sélectionnez **Créer une tâche de correction** afin que soient intégrés tous les abonnements existants pour lesquels Security Center n’est pas activé.
+1. Sélectionnez **Créer une tâche de correction** afin que soient intégrés tous les abonnements existants pour lesquels Defender pour le cloud n’est pas activé.
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Création d’une tâche de correction pour la définition Azure Policy Activer Azure Security Center sur votre abonnement.":::
+    :::image type="content" source="./media/get-started/remediation-task.png" alt-text="Création d’une tâche de correction pour la définition Azure Policy Activer Defender pour le cloud sur votre abonnement.":::
 
 1. Quand la définition est assignée, elle effectue les opérations suivantes :
 
-    1. Elle détecte tous les abonnements du groupe d’administration qui ne sont pas encore inscrits auprès de Security Center.
+    1. Elle détecte tous les abonnements du groupe d’administration qui ne sont pas encore inscrits auprès de Defender pour le cloud.
     1. Elle marque ces abonnements comme étant « non conformes ».
-    1. Elle marque comme « conformes » tous les abonnements inscrits (qu’ils aient ou non Azure Defender activé ou désactivé).
+    1. Marquer comme « conforme » tous les abonnements inscrits (que les fonctionnalités de sécurité renforcée de Defender pour le cloud soient activées ou non).
 
-    La tâche de correction active ensuite Security Center, gratuitement, sur les abonnements non conformes.
+    La tâche de correction active ensuite Defender pour le cloud, gratuitement, sur les abonnements non conformes.
 
 > [!IMPORTANT]
-> La définition de stratégie active uniquement Security Center sur les **abonnements** existants. Pour inscrire les nouveaux abonnements, ouvrez l’onglet Conformité, sélectionnez les abonnements non conformes appropriés et créez une tâche de correction. Répétez cette étape si vous souhaitez superviser un ou plusieurs nouveaux abonnements avec Security Center.
+> La définition de stratégie active uniquement Defender pour le cloud sur les **abonnements** existants. Pour inscrire de nouveaux abonnements, ouvrez l’onglet Conformité, sélectionnez les abonnements non conformes appropriés et créez une tâche de correction. Répétez cette étape si vous souhaitez superviser un ou plusieurs nouveaux abonnements avec Defender pour le cloud.
 
 ## <a name="optional-modifications"></a>Modifications facultatives
 
 Vous pouvez modifier la définition Azure Policy de plusieurs façons : 
 
-- **Définir la conformité différemment** : la stratégie fournie classifie comme « non conformes » tous les abonnements du groupe d’administration qui ne sont pas encore inscrits auprès de Security Center. Vous pouvez choisir de la définir sur tous les abonnements sans Azure Defender.
+- **Définir la conformité différemment** : la stratégie fournie classifie comme « non conformes » tous les abonnements du groupe d’administration qui ne sont pas encore inscrits auprès de Defender pour le cloud. Vous pouvez choisir de la définir sur tous les abonnements où les fonctionnalités de sécurité renforcée de Defender pour le cloud sont activées.
 
     La définition fournie définit *un* des paramètres de tarif ci-dessous comme étant conforme. Cela signifie qu’un abonnement défini sur « standard » ou « free » (gratuit) est conforme.
 
     > [!TIP]
-    > Quand un plan Azure Defender est activé, il est décrit dans une définition de stratégie comme étant associé au paramètre « Standard ». Quand il est désactivé, il est « Gratuit ». Pour en savoir plus sur les différences entre ces plans, consultez [Security Center gratuit ou Azure Defender activé](security-center-pricing.md). 
+    > Quand un plan Microsoft Defender est activé, il est décrit dans une définition de stratégie comme étant associé au paramètre « Standard ». Quand il est désactivé, il est « Gratuit ». Pour en savoir plus sur les différences entre ces plans, consultez [Fonctionnalités de sécurité renforcée de Microsoft Defender pour le cloud](enhanced-security-features-overview.md). 
 
     ```
     "existenceCondition": {
@@ -83,14 +86,14 @@ Vous pouvez modifier la définition Azure Policy de plusieurs façons :
     },
     ```
 
-- **Définir des plans Azure Defender à appliquer lors de l’activation de Security Center** : la stratégie fournie active Security Center sans aucun des plans Azure Defender facultatifs. Vous pouvez choisir d’activer un ou plusieurs d’entre eux.
+- **Définir des plans Microsoft Defender à appliquer lors de l’activation de Defender pour le cloud** : la stratégie fournie active Defender pour le cloud sans aucune des fonctionnalités de sécurité renforcée facultatives. Vous pouvez choisir d’activer un ou plusieurs plans Microsoft Defender.
 
     La section `deployment` de la définition fournie a un paramètre `pricingTier`. Par défaut, ce paramètre est défini sur `free`, mais vous pouvez le modifier. 
 
 
 ## <a name="next-steps"></a>Étapes suivantes :
 
-Maintenant que vous avez intégré un groupe d’administration entier, activez les protections avancées d’Azure Defender. 
+Maintenant que vous avez intégré un groupe d’administration entier, activez les fonctionnalités de sécurité renforcée. 
 
 > [!div class="nextstepaction"]
-> [Activation d’Azure Defender](enable-azure-defender.md)
+> [Activer les protections renforcées](enable-enhanced-security.md)

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc4bfc48c9b8f6891c45730215f2c49e84467a42
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8c0e4e5c0c12284bd3cc2f777f6951e04cc06926
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161887"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071854"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Inscrire plusieurs machines virtuelles SQL dans Azure avec l’extension SQL IaaS Agent
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,6 +38,8 @@ Cet article vous apprend à inscrire des machines virtuelles SQL Server manuelle
 L’applet de commande `Register-SqlVMs` peut être utilisée pour inscrire toutes les machines virtuelles d’une liste donnée d’abonnements, de groupes de ressources ou d’une liste de machines virtuelles spécifiques. La cmdlet inscrira les machines virtuelles en [mode d’administration léger](sql-server-iaas-agent-extension-automate-management.md#management-modes), puis générera [un rapport et un fichier journal](#output-description). 
 
 Le processus d’inscription ne présente aucun risque, n’a pas de temps d’arrêt et ne redémarrera pas le service SQL Server ou la machine virtuelle. 
+
+Par défaut, les machines virtuelles Azure avec SQL Server 2016 ou ultérieur installé sont automatiquement inscrites à l’extension Agent IaaS SQL quand elles sont détectées par le [service CEIP (Programme d’amélioration du produit)](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server).  Pour plus d’informations, consultez l’[Avenant à la déclaration de confidentialité de SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
 
 ## <a name="prerequisites"></a>Prérequis
 

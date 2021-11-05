@@ -9,72 +9,57 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/02/2021
+ms.date: 10/22/2021
 ms.author: curtand
-ms.reviewer: krbain
+ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c1c30008a45130ba044cfaad91f4a3fd0726f00
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 8774bef1dd939daea4384a25bc35d22f3475f57a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986356"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049595"
 ---
-# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Rechercher des groupes et des membres (préversion) dans Azure Active Directory
+# <a name="search-groups-and-members-in-azure-active-directory"></a>Rechercher des groupes et des membres dans Azure Active Directory
 
-Cet article explique comment rechercher des membres et des propriétaires d’un groupe, ainsi que comment utiliser des filtres de recherche dans le cadre de la préversion d’amélioration des groupes dans le portail Azure Active Directory (Azure AD). De nombreuses améliorations ont été apportées à l’expérience des groupes pour vous aider à gérer vos groupes, ainsi que leurs membres et propriétaires, rapidement et facilement. Pour plus d’informations sur les préversions, consultez [Conditions d’utilisation supplémentaires pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Cet article explique comment rechercher les membres et les propriétaires d’un groupe, et comment utiliser des filtres de recherche dans le dans le portail Azure Active Directory (Azure AD). Les fonctions de recherche pour les groupes sont les suivantes :
 
-Les modifications apportées à cette préversion sont les suivantes :
+- Fonctionnalités de recherche dans les groupes, comme la recherche d’une sous-chaîne dans les noms des groupes
+- Options de filtrage et de tri sur les listes de membres et de propriétaires
+- Fonctionnalités de recherche pour les listes de membres et de propriétaires
 
-- Nouvelles fonctionnalités de recherche de groupes, telles que la recherche de sous-chaînes dans des noms de groupes
-- Nouvelles options de filtrage et de tri sur des listes de membres et de propriétaires
-- Nouvelles fonctionnalités de recherche pour les listes de membres et de propriétaires
-- Comptage de groupes plus précis pour les grands groupes
+## <a name="group-search-and-sort"></a>Recherche et tri des groupes
 
-## <a name="enabling-and-managing-the-preview"></a>Activation et gestion de la préversion
+Dans la page **Tous les groupes**, quand vous entrez une chaîne de recherche, vous pouvez maintenant basculer entre les recherches « contient » et « commence par » seulement sur la page **Tous les groupes**. La recherche de sous-chaînes est effectuée seulement sur des mots entiers, et les caractères spéciaux sont recherchés aussi comme recherche liée par un ET. Par exemple, la recherche de -Nom lance une recherche de la sous-chaîne « Nom » et une recherche de « - ». La recherche substring respecte la casse. La recherche se fait également dans les propriétés ID d’objet ou mailNickname.
 
-Nous avons facilité l’accès à la préversion :
+![Nouvelles recherches de sous-chaînes dans la page Tous les groupes](./media/groups-members-owners-search/members-list.png)
 
-  1. Connectez-vous au [portail Azure](https://portal.azure.com), puis sélectionnez **Groupes**.
-  2. Dans la page Groupes – Tous les groupes, sélectionnez la bannière en haut pour accéder à la préversion.
+Par exemple, une recherche portant sur le mot « stratégie » retourne les chaînes « stratégie MDM – Ouest » et « groupe de stratégies ». Un groupe nommé « Nouvelle_stratégie » n’est pas retourné. Vous pouvez trier la liste **Tous les groupes** par nom dans l’ordre croissant ou décroissant.
 
-Vous pouvez également découvrir les fonctionnalités et améliorations les plus récentes en sélectionnant le lien **Informations d’aperçu** dans la page **Tous les groupes**. Lorsque vous accédez à la préversion, vous pouvez voir la balise de la préversion sur toutes les pages de groupes qui ont fait l’objet d’améliorations et font partie de la préversion. Certaines pages de groupes n’ont pas été mises à jour dans le cadre de cette préversion.
-
-Si vous rencontrez des problèmes, vous pouvez revenir à l’expérience héritée en sélectionnant la bannière en haut de la page **Tous les groupes**. Vos commentaires sont les bienvenus, car ils nous permettent d’améliorer l’expérience.
-
-## <a name="group-search-and-sorting"></a>Recherche et tri de groupe
-
-La recherche dans une liste de groupes a été améliorée. Lorsque vous entrez une chaîne à rechercher, la fonction de recherche exécute automatiquement la commande `startswith` et effectue une recherche substring dans la liste des noms de groupes. La recherche de sous-chaîne porte uniquement sur des mots entiers et n’inclut pas de caractères spéciaux. La recherche substring respecte la casse.
-
-![Nouvelles recherches de sous-chaînes dans la page Tous les groupes](./media/groups-members-owners-search/groups-search-preview.png)
-
-Par exemple, une recherche portant sur le mot « stratégie » retourne les chaînes « stratégie MDM – Ouest » et « groupe de stratégies ». Un groupe nommé « Nouvelle_stratégie » n’est pas retourné.
-
-- Vous pouvez également effectuer la même recherche sur des listes d’appartenance à des groupes.
-- Vous pouvez désormais trier la liste des groupes par nom à l’aide des flèches situées à droite de l’en-tête de la colonne des noms dans l’ordre croissant ou décroissant.
-
-## <a name="group-member-search-and-filtering"></a>Recherche et filtrage de membres de groupe
+## <a name="group-member-search-and-filter"></a>Recherche et filtrage de membres de groupe
 
 ### <a name="search-group-member-and-owner-lists"></a>Rechercher dans les listes de membres et de propriétaires de groupes
 
-Vous pouvez désormais rechercher des membres d’un groupe spécifique par leur nom et effectuer la même recherche dans la liste des propriétaires du groupe. Dans la nouvelle expérience, si vous entrez une chaîne dans la zone de recherche, une commande startswith est effectuée automatiquement. Par exemple, la recherche de « Scott » renvoie Scott Wilkinson.
+Vous pouvez rechercher les membres ou propriétaires d’un groupe spécifique par nom, et quand vous entrez une chaîne de recherche, une recherche `contains` est effectuée automatiquement. Par exemple, une recherche de « Scott » retourne à la fois « Scott Wilkinson » et « Maya Scott ».
 
-![nouvelles recherches de sous-chaînes sur les listes de membres et propriétaires de groupes](./media/groups-members-owners-search/members-list.png)
+![nouvelles recherches de sous-chaînes sur les listes de membres et propriétaires de groupes](./media/groups-members-owners-search/groups-search-preview.png)
 
-### <a name="filter-member-and-owners-list"></a>Filtrer une liste de membres et de propriétaires
+### <a name="filter-member-and-owner-lists"></a>Filtrer des listes de membres et de propriétaires
 
-En plus de la recherche, vous pouvez désormais filtrer les listes de membres et de propriétaires par type d’utilisateur. Il s’agit des informations figurant dans la colonne Type d’utilisateur de la liste. Par conséquent, vous pouvez filtrer la liste par membres et invités afin de déterminer si le groupe comprend des invités.
+Vous pouvez également filtrer les listes de membres et de propriétaires des groupes par type d’utilisateur. Ces informations se trouvent dans la colonne **Type d’utilisateur** de la liste de membres ou de propriétaires. Vous pouvez filtrer la liste pour voir seulement les membres ou les invités.
 
-### <a name="view-and-manage-membership"></a>Afficher et gérer l’appartenance
+La page **Membres** inclut tous les membres uniques du groupe, y compris les personnes qui héritent de leur appartenance à un groupe d’un autre groupe.
 
-En plus de l’affichage des membres directs d’un groupe spécifique, vous pouvez désormais afficher la liste de tous les membres du groupe dans la page Membres. Cette liste inclut tous les membres uniques d’un groupe, y compris les membres transitifs.
+Vous pouvez également rechercher et filtrer les listes individuellement. Le filtrage de la liste tous les membres n’affecte pas les filtres appliqués à la liste des membres directs.
 
-Vous pouvez également rechercher et filtrer individuellement dans les listes des membres directs et de tous les membres. Le filtrage de la liste tous les membres n’affecte pas les filtres appliqués à la liste des membres directs.
+## <a name="group-memberships"></a>Appartenances aux groupes
 
-## <a name="improved-group-member-counts"></a>Comptages de membres de groupes amélioré
+Vous pouvez également visualiser les appartenances au groupe pour un groupe dans la page **Appartenances aux groupes**. La page **Appartenances aux groupes** prend en charge les opérations de recherche, de tri et de filtrage de façon similaire aux autres pages Groupes.
 
-Nous avons amélioré la page **Vue d’ensemble** de groupe pour fournir des comptages de membres pour les groupes de toutes tailles. Vous pouvez voir le nombre de membres même pour des groupes comptant plus de 1 000 membres. Vous pouvez maintenant voir le nombre total de membres directs d’un groupe et le nombre total d’appartenances (tous les membres uniques du groupe, membres transitifs inclus) sur la page **Vue d’ensemble**.
+## <a name="group-member-counts"></a>Nombre de membres par groupe
+
+La page **Vue d’ensemble** indique des comptages de membres pour les groupes. Vous pouvez voir le nombre total de membres directs d’un groupe et le nombre total d’appartenances (tous les membres uniques du groupe, y compris les appartenances héritées) dans la page **Vue d’ensemble**.
 
 ![Plus grande précision des comptages d’appartenances aux groupes](./media/groups-members-owners-search/member-numbers.png)
 

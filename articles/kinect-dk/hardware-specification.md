@@ -7,18 +7,16 @@ ms.prod: kinect-dk
 ms.date: 03/18/2021
 ms.topic: article
 keywords: azure, kinect, spécifications, matériel, DK, fonctionnalités, profondeur, couleur, RVB, IMU, microphone, réseau, profondeur
-ms.custom:
-- CI 114092
-- CSSTroubleshooting
+ms.custom: CI 114092, CSSTroubleshooting
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: b5ec67537fe0bd8732b4068c0ed52861ed8f2c1a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 45941395864bde4442748671c6b5c33da81b319d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "116985849"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082490"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Spécifications matérielles pour Azure Kinect DK
 
@@ -52,7 +50,7 @@ Un fichier STEP pour l’appareil Azure Kinect est disponible [ici](https://gith
 
 Azure Kinect DK est destiné aux développeurs et aux entreprises commerciales disposant des conditions ambiantes suivantes :
 
-- **Température** : 10-25<sup>°</sup>C
+- **Température** : 10-25 <sup>°</sup>C
 - **Humidité** : 8 à 90 % d’humidité relative (sans condensation)
 
 > [!NOTE]
@@ -155,7 +153,7 @@ L’ID de fournisseur est 0x045E (Microsoft). La table Product ID est montrée c
 
 |    Interface USB        |    IP PNP    |     Notes            |
 |-------------------------|--------------|----------------------|
-|    Hub USB3.1 Gen1    |    0x097A    |    Hub principal    |
+|    Hub USB 3.1 Gen2    |    0x097A    |    Hub principal    |
 |    Hub USB 2.0         |    0x097B    |    HS USB          |
 |    Caméra à profondeur de champ       |    0x097C    |    USB 3.0            |
 |    Caméra couleur       |    0x097D    |    USB 3.0            |

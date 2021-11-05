@@ -2,14 +2,14 @@
 title: Diagnostiquer à l’aide du Flux de métriques temps réel – Azure Application Insights
 description: Surveillez votre application web en temps réel avec des métriques personnalisées, et diagnostiquez les problèmes avec un flux temps réel des échecs, des traces et des événements.
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 10/12/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 3e19d424f8aa56f37b12ab776c9ff85ca78f6738
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 7c587cc9bdfa4fdc0483a99d9248fbd986c048e8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614951"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026238"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Flux de métriques temps réel : Surveiller et diagnostiquer avec une latence de 1 seconde
 
@@ -160,7 +160,7 @@ Si vous voulez surveiller une instance de rôle serveur spécifique, vous pouvez
 ## <a name="secure-the-control-channel"></a>Sécuriser le canal de contrôle
 
 > [!NOTE]
-> Actuellement, vous pouvez uniquement configurer un canal authentifié à l’aide de la supervision basée sur le code, et vous ne pouvez pas authentifier les serveurs à l’aide de l’attachement sans code.
+> Pour le moment, vous pouvez uniquement configurer un canal authentifié en utilisant l’instrumentation manuelle (SDK). Vous ne pouvez pas authentifier les serveurs en utilisant l’intégration aux services Azure (ou instrumentation automatique).
 
 Les critères de filtres personnalisés que vous spécifiez dans la portail des métriques temps réel sont renvoyés au composant de métriques temps réel dans le Kit de développement logiciel (SDK) Application Insights. Les filtres peuvent potentiellement contenir des informations sensibles telles que des ID clients. Vous pouvez sécuriser le canal avec une clé API secrète en plus de la clé d’instrumentation.
 
@@ -175,7 +175,7 @@ Les critères de filtres personnalisés que vous spécifiez dans la portail des 
 
 Dans le fichier applicationinsights.config, ajoutez AuthenticationApiKey à QuickPulseTelemetryModule :
 
-```XML
+```xml
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
@@ -233,8 +233,8 @@ Toutefois, si vous connaissez et faites confiance à tous les serveurs connecté
 
 ![Options d’authentification de métriques temps réel](./media/live-stream/live-stream-auth.png)
 
->[!NOTE]
->Nous vous recommandons vivement de configurer le canal authentifié avant d’entrer des informations potentiellement sensibles comme un ID client dans les critères de filtre.
+> [!NOTE]
+> Nous vous recommandons vivement de configurer le canal authentifié avant d’entrer des informations potentiellement sensibles comme un ID client dans les critères de filtre.
 >
 
 ## <a name="supported-features-table"></a>Tableau des fonctionnalités prises en charge
@@ -244,7 +244,7 @@ Toutefois, si vous connaissez et faites confiance à tous les serveurs connecté
 | .NET Framework                   | Pris en charge (V2.7.2 et versions ultérieures) | Pris en charge (V2.7.2 et versions ultérieures) | Pris en charge (V2.7.2 et versions ultérieures) | Pris en charge (V2.7.2 et versions ultérieures) | Pris en charge (V2.7.2 et versions ultérieures)  |
 | .NET Core (cible=. NET Framework)| Pris en charge (V2.4.1 et versions ultérieures) | Pris en charge (V2.4.1 et versions ultérieures) | Pris en charge (V2.4.1 et versions ultérieures) | Pris en charge (V2.4.1 et versions ultérieures) | Pris en charge (V2.4.1 et versions ultérieures)  |
 | .NET Core (cible=. NET Core)     | Pris en charge (V2.4.1 et versions ultérieures) | Pris en charge*          | Pris en charge (V2.4.1 et versions ultérieures) | Pris en charge (V2.4.1 et versions ultérieures) | **Non pris en charge**    |
-| Azure Functions v2               | Prise en charge           | Pris en charge           | Pris en charge           | Prise en charge           | **Non pris en charge**    |
+| Azure Functions v2               | Prise en charge           | Prise en charge           | Prise en charge           | Prise en charge           | **Non pris en charge**    |
 | Java                             | Pris en charge (V2.0.0 et versions ultérieures) | Pris en charge (V2.0.0 et versions ultérieures) | **Non pris en charge**   | Pris en charge (V3.2.0+) | **Non pris en charge**    |
 | Node.js                          | Pris en charge (V1.3.0 et versions ultérieures) | Pris en charge (V1.3.0 et versions ultérieures) | **Non pris en charge**   | Pris en charge (V1.3.0 et versions ultérieures) | **Non pris en charge**    |
 

@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 01f51e20176a7535681bdb21b4cee6c7fa298292
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 262d9a123180588ed8eaee35a5faf17797cbbc07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038020"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008101"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nouvelle expérience d’inscriptions d’applications pour Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ L’expérience d’inscriptions d’applications Azure AD B2C est basée sur l�
 
 - Le volet **Points de terminaison** vous permet d’identifier rapidement les points de terminaison appropriés pour votre scénario, notamment la configuration OpenID Connect, les métadonnées SAML, l’API Microsoft Graph et les [points de terminaison de flux d’utilisateurs OAuth 2.0](tokens-overview.md#endpoints).
 
-- **Autorisations de l’API** et **Exposer une API** permettent une gestion plus étendue de l’étendue, des permissions et du consentement. Désormais, vous pouvez également attribuer des autorisations MS Graph et Azure AD Graph à une application.
+- **Autorisations de l’API** et **Exposer une API** permettent une gestion plus étendue de l’étendue, des permissions et du consentement. Désormais, vous pouvez aussi affecter des autorisations MS Graph à une application.
 
 -   **Propriétaires** et **Manifeste** sont désormais disponibles pour les applications qui s’authentifient auprès d’Azure AD B2C. Vous pouvez ajouter des propriétaires pour vos inscriptions et modifier directement les propriétés de l’application [à l’aide de l’éditeur de manifeste](../active-directory/develop/reference-app-manifest.md).
 
@@ -79,7 +79,7 @@ L’étendue **openid** est nécessaire pour qu’Azure AD B2C puisse connecter 
 En savoir plus sur [les autorisations et le consentement](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Plateformes/Authentification : URL de réponse/URl de redirection
-Dans l’expérience héritée, les différents types de plateformes étaient gérés sous **Propriétés** en tant qu’URL de réponse pour les API/applications web et en tant qu’URI de redirection pour les clients natifs. Les « clients natifs » sont également appelés « clients publics » et incluent des applications pour iOS, macOS, Android et d’autres types d’applications mobiles et de bureau.
+Dans l’expérience héritée, les différents types de plateformes étaient gérés sous **Propriétés** en tant qu’URL de réponse pour les API/applications web, et en tant qu’URI de redirection pour les clients natifs. Les « clients natifs » sont également appelés « clients publics » et incluent des applications pour iOS, macOS, Android et d’autres types d’applications mobiles et de bureau.
 
 Dans la nouvelle expérience, les URL de réponse et les URI de redirection sont tous deux appelés URI de redirection et se trouvent dans la section **Authentification** d’une application. Les inscriptions d’applications ne se limitent pas aux applications web ou natives. Vous pouvez utiliser le même processus d’inscription d’applications pour tous ces types de plateformes en inscrivant les URI de redirection correspondants.
 

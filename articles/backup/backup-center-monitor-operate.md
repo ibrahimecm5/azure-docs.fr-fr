@@ -2,13 +2,13 @@
 title: Surveiller et utiliser les sauvegardes avec le Centre de sauvegarde
 description: Cet article explique comment surveiller et utiliser les sauvegardes à grande échelle à l’aide du Centre de sauvegarde
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: cab9e710cfe4bf43b0d225d64e8f64b16c09e3a6
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 10/20/2021
+ms.openlocfilehash: 45e190fdd495cd5ea074386f601eb6296a90a14a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659846"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131035924"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>Superviser et utiliser des sauvegardes avec le Centre de sauvegarde
 
@@ -67,6 +67,46 @@ Sélectionnez un élément de la grille pour afficher plus de détails sur le tr
 ![Centre de sauvegarde - Travaux](./media/backup-center-monitor-operate/backup-center-jobs.png)
 
 L’onglet **Travaux de sauvegarde** vous permet de consulter les travaux des sept derniers jours. Pour afficher les travaux plus anciens, utilisez [Rapports de sauvegarde](backup-center-obtain-insights.md).
+
+## <a name="metrics"></a>Mesures
+
+Sauvegarde Azure fournit un ensemble de mesures intégrées via Azure Monitor qui vous permettent de surveiller l’intégrité de vos sauvegardes. Pour afficher les métriques, accédez au **Centre de sauvegarde** et cliquez sur **Métriques** dans le menu.
+
+:::image type="content" source="./media/metrics-overview/metrics-chart-inline.png" alt-text="Capture d’écran montrant les métriques intégrées pour surveiller l’intégrité de vos sauvegardes." lightbox="./media/metrics-overview/metrics-chart-expanded.png":::
+
+Sauvegarde Azure offre les principales fonctionnalités suivantes :
+
+* Possibilité d’afficher les métriques prêtes à l’emploi liées à la sauvegarde et à la restauration de l’intégrité de vos éléments de sauvegarde, ainsi que les tendances associées.
+* Possibilité d’écrire des règles d’alerte personnalisées sur ces métriques pour surveiller efficacement l’intégrité de vos éléments de sauvegarde.
+* Possibilité d’acheminer les alertes de métriques déclenchées vers différents canaux de notification pris en charge par Azure Monitor, tels que la messagerie, ITSM, webhook, les applications logiques, etc.
+
+[En savoir plus sur les métriques Sauvegarde Azure](metrics-overview.md)
+
+## <a name="alerts"></a>Alertes
+
+Pour afficher les alertes, accédez au **Centre de sauvegarde** et cliquez sur **Alertes** dans le menu.
+
+Vous pouvez également consulter un résumé des alertes ouvertes au cours des dernières 24 heures dans le tableau de bord **Vue d’ensemble**.
+
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-azure-monitor-alert-inline.png" alt-text="Capture d’écran montrant les alertes dans le Centre de sauvegarde." lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-azure-monitor-alert-expanded.png":::
+
+Actuellement, les types d’alertes suivants s’affichent dans le Centre de sauvegarde :
+
+* **Alertes Azure Monitor par défaut pour Sauvegarde Azure (préversion)**  : inclut les alertes de sécurité intégrées et les alertes configurées fournies par Sauvegarde Azure via Azure Monitor. [En savoir plus sur les scénarios d’alerte pris en charge par cette solution](backup-azure-monitoring-built-in-monitor.md#azure-monitor-alerts-for-azure-backup-preview)
+* **Alertes de métrique pour Sauvegarde Azure (préversion)**  : cela inclut les alertes déclenchées en fonction des règles d’alerte de métriques que vous avez créées. [En savoir plus sur les alertes de métriques Sauvegarde Azure](metrics-overview.md)
+
+>[!NOTE]
+>- Actuellement, le Centre de sauvegarde affiche uniquement les alertes des charges de travail basées sur Azure. Pour afficher les alertes pour les ressources locales, accédez au coffre Recovery Services et cliquez sur **Alertes** dans le menu.
+>- Le Centre de sauvegarde affiche uniquement les alertes Azure Monitor. Les alertes générées par l’ancienne solution d’alerte (accessible sous l’onglet [Alertes Sauvegarde](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) dans le coffre Recovery Services) ne sont pas affichées dans Centre de sauvegarde.
+
+Pour plus d’informations concernant les alertes d’Azure Monitor, consultez [Vue d’ensemble des alertes dans Azure](../azure-monitor/alerts/alerts-overview.md).
+
+### <a name="datasource-and-global-alerts"></a>Source de source et alertes globales
+
+Les classes d’alertes suivantes sont affichées :
+
+* **Alertes de source de données** : les alertes liées à une source de données spécifique en cours de sauvegarde (par exemple, échec de la sauvegarde ou de la restauration d’une machine virtuelle, suppression des données de sauvegarde d’une base de données, etc.) apparaissent sous la section **Alertes de source de données**. Pour les alertes de métriques, si l’alerte déclenchée est associée à une dimension d’ID de source de code, l’alerte déclenchée s’affiche sous **Alertes de source de données**.
+* **Alertes globales** : les alertes qui ne sont pas liées à une source de données spécifique (par exemple, la désactivation de la fonctionnalité de suppression réversible pour un coffre) apparaissent sous la section **Alertes globales**. Pour les alertes de métriques, si l’alerte déclenchée n’est pas associée à un ID de source de données, l’alerte déclenchée s’affiche sous **Alertes globales**.
 
 ## <a name="vaults"></a>Coffres
 

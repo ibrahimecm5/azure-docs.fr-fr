@@ -13,16 +13,16 @@ ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e03b288934ce01a25a8ee7b4ad3569af6507b8a6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7fbe4e45e48d3416f530b6845faf702959f92463
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734780"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067334"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Plug-in Microsoft Enterprise Single Sign-On pour appareils Apple (préversion)
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Cette fonctionnalité [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Le *plug-in Microsoft Enterprise SSO pour appareils Apple* fournit une authentification unique (SSO) pour les comptes Azure Active Directory (Azure AD) sur macOS, iOS et iPadOS, dans toutes les applications qui prennent en charge la fonctionnalité [Enterprise Single Sign-on](https://developer.apple.com/documentation/authenticationservices) d’Apple. Le plug-in fournit une authentification unique même pour d’anciennes applications dont votre entreprise peut dépendre, mais qui ne prennent pas encore en charge les bibliothèques d’identité ou les protocoles les plus récents. Microsoft a travaillé en étroite collaboration avec Apple pour développer ce plug-in afin de faciliter l’utilisation de votre application tout en offrant la meilleure protection disponible.
@@ -52,12 +52,12 @@ Pour utiliser le plug-in Microsoft Enterprise Single Sign-On pour des appareils 
 - L’appareil doit être *inscrit dans MDM*, par exemple par le biais de Microsoft Intune.
 - La configuration doit être *envoyée (push) à l’appareil* afin d’activer le plug-in Enterprise Single Sign-On. Apple requiert cette contrainte de sécurité.
 
-### <a name="ios-requirements"></a>Configuration requise pour iOS :
+### <a name="ios-requirements"></a>Configuration requise pour iOS
 - iOS version 13.0 ou ultérieure doit être installé sur l’appareil.
 - Une application Microsoft qui fournit le plug-in Microsoft Enterprise SSO pour les appareils Apple doit être installée sur l’appareil. Dans la préversion publique, ces applications correspondent à l’[application Microsoft Authenticator](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).
 
 
-### <a name="macos-requirements"></a>Configuration requise pour macOS :
+### <a name="macos-requirements"></a>Configuration requise pour macOS
 - macOS 10.15 ou ultérieur doit être installé sur l’appareil. 
 - Une application Microsoft qui fournit le plug-in Microsoft Enterprise SSO pour les appareils Apple doit être installée sur l’appareil. Dans la préversion publique, ces applications comprennent l’[application Portail d’entreprise Intune](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp).
 
@@ -193,7 +193,7 @@ N’essayez cette configuration que pour les applications qui rencontrent des é
     | Clé | Valeur |
     | -------- | ----------------- |
     | `Enable_SSO_On_All_ManagedApps` | `1` |
-    | `AppBlockList` | Les ID d’offre groupée (liste de valeurs séparées par des virgules) des applications Safari pour lesquelles vous souhaitez empêcher l’authentification unique.<br/><li>Pour iOS : `com.apple.mobilesafari`, `com.apple.SafariViewService`<br/><li>Pour macOS : `com.apple.Safari` |
+    | `AppBlockList` | Les ID d’offre groupée (liste de valeurs séparées par des virgules) des applications Safari pour lesquelles vous souhaitez empêcher l’authentification unique.<ul><li>Pour iOS : `com.apple.mobilesafari`, `com.apple.SafariViewService`</li><li>Pour macOS : `com.apple.Safari`</li></ul> |
 
 - *Scénario* : je souhaite activer l’authentification unique sur toutes les applications managées et sur quelques applications non managées, mais désactiver l’authentification unique pour d’autres applications.
 
@@ -251,15 +251,23 @@ Nous vous recommandons de laisser cet indicateur désactivé, car il réduit le 
 
 #### <a name="disable-oauth-2-application-prompts"></a>Désactiver les invites d’application OAuth 2
 
-Le plug-in Microsoft Enterprise SSO fournit l’authentification unique en ajoutant les informations d’identification partagées aux demandes réseau provenant des applications autorisées. Toutefois, certaines applications OAuth 2 peuvent appliquer à tort les invites de l’utilisateur final au niveau de la couche de protocole. Si vous rencontrez ce problème, vous verrez également que les informations d’identification partagées sont ignorées pour ces applications. L’utilisateur est invité à se connecter même si le plug-in Microsoft Enterprise Single Sign-On fonctionne pour d’autres applications.  
+Si une application invite vos utilisateurs à se connecter, même si le plug-in Microsoft Enterprise SSO fonctionne pour d’autres applications sur l’appareil, l’application peut ignorer l’authentification unique au niveau de la couche de protocole.  Les informations d’identification partagées sont également ignorées par ces applications, car le plug-in fournit l’authentification unique en ajoutant les informations d’identification aux requêtes réseau effectuées par les applications autorisées.
 
-L’activation de l’indicateur `disable_explicit_app_prompt` restreint la capacité des applications natives et des applications web à forcer une invite d’utilisateur final sur la couche de protocole et à contourner l’authentification unique. Pour activer l’indicateur, utilisez les paramètres suivants :
+Ces paramètres spécifient si l’extension d’authentification unique doit empêcher les applications natives et web d’ignorer l’authentification unique au niveau de la couche de protocole et forcer l’affichage d’une invite de connexion à l’utilisateur.
+
+Pour une expérience d’authentification unique cohérente sur toutes les applications sur l’appareil, nous vous recommandons d’activer l’un de ces paramètres, qui sont désactivés par défaut.
+  
+Désactiver l’invite de l’application et afficher le sélecteur de compte :
 
 - **Clé** : `disable_explicit_app_prompt`
 - **Type** : `Integer`
 - **Valeur** : 1 ou 0
+  
+Désactiver l’invite de l’application et sélectionner automatiquement un compte dans la liste des comptes d’authentification unique correspondants :
+- **Clé** : `disable_explicit_app_prompt_and_autologin`
+- **Type** : `Integer`
+- **Valeur** : 1 ou 0
 
-Nous vous recommandons d’activer cet indicateur pour bénéficier d’une expérience cohérente dans toutes les applications. Elle est désactivée par défaut. 
 
 #### <a name="use-intune-for-simplified-configuration"></a>Utiliser Intune pour une configuration simplifiée
 

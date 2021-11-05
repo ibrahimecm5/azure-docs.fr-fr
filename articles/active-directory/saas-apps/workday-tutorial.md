@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: d3e027c8a6de4cdd73197909289a00659a5839e7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a0a65e424d295b6cecd478a7fdff9ae8df79a3fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745486"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039942"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Workday
 
@@ -115,7 +115,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
    ![Copier les URL de configuration](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Créer un utilisateur de test Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
 Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
 
@@ -127,7 +127,7 @@ Dans cette section, vous allez créer un utilisateur de test appelé B. Simon da
    1. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ **Mot de passe**.
    1. Cliquez sur **Créer**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Affecter l’utilisateur de test Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 
 Dans cette section, vous allez autoriser B.Simon à utiliser l’authentification unique Azure en lui accordant l’accès à Workday.
 
@@ -139,13 +139,13 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
-## <a name=&quot;configure-workday&quot;></a>Configurer Workday
+## <a name="configure-workday"></a>Configurer Workday
 
 1. Dans une autre fenêtre de navigateur web, connectez-vous à votre site d’entreprise Workday en tant qu’administrateur.
 
 1. Dans la **zone de recherche**, recherchez le nom **Edit Tenant Setup - Security** en haut à gauche de la page d’accueil.
 
-    ![Modifier la sécurité du locataire](./media/workday-tutorial/search-box.png &quot;Modifier la sécurité du locataire")
+    ![Modifier la sécurité du locataire](./media/workday-tutorial/search-box.png "Modifier la sécurité du locataire")
 
 
 1. Dans la section **SAML Setup** (Configuration SAML), cliquez sur **Import Identity Provider** (Importer le fournisseur d’identité).
@@ -197,7 +197,7 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
     e. Cliquez sur **OK**.
 
     > [!NOTE]
-    > Vérifiez que vous avez correctement configuré l’authentification unique. Si vous activez l’authentification unique avec une configuration incorrecte, vous risquez de ne pas pouvoir accéder à l’application avec vos informations d’identification et de vous retrouver verrouillé. Dans ce type de situation, Workday fournit une URL de connexion de secours permettant aux utilisateurs de se connecter en utilisant leurs nom d’utilisateur et mot de passe standard au format suivant : [votre URL Workday]/login.flex?redirect=n
+    > Vérifiez que vous avez correctement configuré l’authentification unique. Si vous activez l’authentification unique avec une configuration incorrecte, vous risquez de ne pas pouvoir accéder à l’application avec vos informations d’identification et de vous retrouver coincé. Dans ce type de situation, Workday fournit une URL de connexion de secours permettant aux utilisateurs de se connecter en utilisant leurs nom d’utilisateur et mot de passe standard au format suivant : [votre URL Workday]/login.flex?redirect=n
 
 ### <a name="create-workday-test-user"></a>Créer un utilisateur de test Workday
 

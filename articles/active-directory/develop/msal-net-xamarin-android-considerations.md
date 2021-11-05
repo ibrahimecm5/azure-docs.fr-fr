@@ -13,12 +13,12 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 11642480ac817b50d102e396b8ab5e200948a615
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04194dc73b7c91bd1e59140a032232246b72420e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199561"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052699"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Configuration requise et conseils de dépannage pour Xamarin Android avec MSAL.NET
 
@@ -129,7 +129,7 @@ Pour utiliser System WebView comme solution de secours pour l’authentification
 </activity>
 ```
 
-Remplacez le nom de package que vous avez inscrit dans le Portail Azure par la valeur `android:host=`. Remplacez le hachage de clé que vous avez inscrit dans le Portail Azure par la valeur `android:path=`. Le hachage de signature *ne doit pas* être encodé par URL. Assurez-vous qu’une barre oblique (`/`) précède votre hachage de signature.
+Remplacez le nom de package que vous avez inscrit dans le Portail Azure par la valeur `android:host=`. Remplacez le hachage de clé que vous avez inscrit dans le Portail Azure par la valeur `android:path=`. Le hachage de signature **ne doit pas** être encodé dans l’URL. Assurez-vous qu’une barre oblique (`/`) précède votre hachage de signature.
 
 ### <a name="xamarinforms-43x-manifest"></a>Manifeste Xamarin.Forms 4.3.x
 

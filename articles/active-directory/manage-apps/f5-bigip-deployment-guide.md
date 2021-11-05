@@ -14,12 +14,12 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: 2bc309ed4d4fcfcc205ff3b464d23769d1e2182c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 3e00bce1090a623efbab0c84722e4dbc46200f5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611854"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039807"
 ---
 # <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>Déployer une machine virtuelle F5 BIG-IP Virtual Edition sur Azure Active Directory
 
@@ -47,9 +47,9 @@ Aucune expérience ni connaissance préalable de F5 BIG-IP n’est requise. Tout
 
 - Un certificat SAN (autre nom de sujet) ou générique pour publier des applications web via SSL (Secure Socket Layer). [Let’s Encrypt](https://letsencrypt.org/) offre un certificat gratuit de 90 jours à des fins de test.
 
-- Un certificat SSL pour la sécurisation de l’interface de gestion BIG-IP. Un certificat servant à publier des applications web peut être utilisé si son sujet correspond au nom de domaine complet (FQDN) du système BIG-IP. Par exemple, un certificat générique défini avec un sujet *.contoso.com convient pour `https://big-ip-vm.contoso.com:8443`
+- Un certificat SSL pour la sécurisation de l’interface de gestion BIG-IP. Un certificat servant à publier des applications web peut être utilisé si son sujet correspond au nom de domaine complet (FQDN) du système BIG-IP. Par exemple, un certificat générique défini avec un sujet `*.contoso.com` conviendrait pour `https://big-ip-vm.contoso.com:8443`
 
-Les configurations du système de base et du déploiement de machine virtuelle prennent environ 30 minutes. À ce stade, votre plateforme BIG-IP est prête pour l’implémentation des différents scénarios SHA listés [ici](f5-aad-integration.md).
+Le déploiement de machines virtuelles et les configurations système de base prennent environ 30 minutes. À ce stade, votre plateforme BIG-IP est prête pour l’implémentation des scénarios SHA listés dans [Intégrer F5 BIG-IP à Azure Active Directory](f5-aad-integration.md).
 
 Pour tester ces scénarios, ce tutoriel suppose que le système BIG-IP sera déployé dans un groupe de ressources Azure contenant un environnement Active Directory (AD). Cet environnement doit se composer d’un contrôleur de domaine (DC) et de machines virtuelles d’hôte web (IIS). Le fait de disposer de ces serveurs dans d’autres emplacements sur la machine virtuelle BIG-IP ne pose pas de problème, à condition que le système BIG-IP ait en vue chacun des rôles nécessaires à la prise en charge d’un scénario donné. Les scénarios où la machine virtuelle BIG-IP est connectée à un autre environnement via une connexion VPN sont également pris en charge.
 
@@ -234,7 +234,7 @@ Les étapes suivantes supposent que la zone DNS du domaine public utilisé pour 
   Si vous gérez votre espace de noms de domaine DNS à l’aide d’un fournisseur externe comme [GoDaddy](https://www.godaddy.com/), vous devez créer des enregistrements à l’aide de son propre dispositif de gestion DNS.
 
 >[!NOTE]
->Vous pouvez également utiliser le fichier des hôtes locaux d’un PC si vous testez et échangez fréquemment les enregistrements DNS. Le fichier localhosts sur un PC Windows est accessible en appuyant sur Win + R sur le clavier et en soumettant le mot **drivers** dans la zone Ouvrir. N’oubliez pas qu’un enregistrement localhost fournira uniquement la résolution DNS pour le PC local, et non pour d’autres clients.
+>Vous pouvez également utiliser le fichier des hôtes locaux d’un PC si vous testez et échangez fréquemment les enregistrements DNS. Le fichier des hôtes locaux sur un PC Windows est accessible en appuyant sur Win+R sur le clavier et en entrant *drivers* dans la zone **Exécuter**. N’oubliez pas qu’un enregistrement d’hôte local fournira seulement la résolution DNS pour le PC local, mais pas pour d’autres clients.
 
 ## <a name="client-traffic"></a>Trafic client
 
@@ -355,7 +355,7 @@ Le provisionnement des deux profils SSL client et serveur permet d’avoir le sy
 
 2. Dans la liste déroulante **Import Type** (Type d’importation), sélectionnez **PKCS 12(IIS)** .
 
-3. Donnez un nom au certificat importé, par exemple, `ContosoWilcardCert`.
+3. Donnez un nom au certificat importé, par exemple `ContosoWildcardCert`.
 
 4. Sélectionnez **Choose File** (Choisir un fichier) pour accéder au certificat web SSL dont le nom de sujet correspond au suffixe de domaine que vous prévoyez d’utiliser pour les services publiés.
 
@@ -363,7 +363,7 @@ Le provisionnement des deux profils SSL client et serveur permet d’avoir le sy
 
 6. Dans la barre de navigation de gauche, accédez à **Local Traffic** (Trafic local) > **Profiles** (Profils) > **SSL** > **Client**, puis sélectionnez **Create** (Créer).
 
-7. Dans la page **New Client SSL Profile** (Nouveau profil SSL client), fournissez un nom convivial unique pour le nouveau profil SSL client et veillez à ce que le profil parent soit défini sur **clientssl**.
+7. Dans la page **New Client SSL Profile** (Nouveau profil SSL client), spécifiez un nom convivial unique pour le nouveau profil SSL client et veillez à ce que le profil parent soit défini sur `clientssl`.
 
 ![Image montrant la mise à jour BIG-IP](./media/f5ve-deployment-plan/client-ssl.png)
 
@@ -375,7 +375,7 @@ Le provisionnement des deux profils SSL client et serveur permet d’avoir le sy
 
 10. Répétez les étapes 6-9 pour créer un **profil de certificat de serveur SSL**. Dans le ruban supérieur, sélectionnez **SSL** > **Server** (Serveur) > **Create** (Créer).
 
-11. Dans la page **New Server SSL Profile** (Nouveau profil SSL serveur), fournissez un nom convivial unique pour le nouveau profil SSL serveur et veillez à ce que le profil parent soit défini sur **serverssl**.
+11. Dans la page **New Server SSL Profile** (Nouveau profil SSL serveur), spécifiez un nom convivial unique pour le nouveau profil SSL serveur et veillez à ce que le profil parent soit défini sur `serverssl`.
 
 12. Cochez la case la plus à droite dans les lignes Certificate (Certificat) et Key (Clé), sélectionnez votre certificat importé dans la liste déroulante, puis sélectionnez **Finished** (Terminé).
 

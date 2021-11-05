@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca70009eea6f8988fadd8f09a0460911fac299de
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b81bdc056bd56e96669bde7e6d0473ef3feb3402
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630316"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049840"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identité d’appareil et virtualisation de bureau
 
@@ -94,7 +94,7 @@ Lors du déploiement d’une VDI non persistante, Microsoft recommande aux admin
    - Implémentez **dsregcmd /join** dans le cadre de la séquence (ordre) de démarrage des machines virtuelles, avant que l’utilisateur se connecte.
    - **N’EXÉCUTEZ PAS** dsregcmd /leave dans le cadre du processus d’arrêt/de redémarrage de la machine virtuelle.
 - Définissez et implémentez le processus de [gestion des appareils obsolètes](manage-stale-devices.md).
-   - Une fois que vous disposez d’une stratégie d’identification de vos appareils Azure AD Hybride joints non persistants (par exemple, en utilisant le préfixe du nom d’affichage de l’ordinateur), vous devez être plus agressif lors du nettoyage de ces appareils pour être certain que votre répertoire ne sera pas consommé par un grand nombre d’appareils obsolètes.
+   - Une fois que vous disposez d’une stratégie d’identification de vos appareils joints à Azure AD Hybride non persistants (par exemple l’utilisation du préfixe du nom d’affichage de l’ordinateur), vous devez être plus agressif lors du nettoyage de ces appareils pour être certain que votre annuaire ne sera pas consommé par un grand nombre d’appareils obsolètes.
    - Pour les déploiements VDI non persistants sur Windows actuel et de bas niveau, vous devez supprimer les appareils qui ont une propriété **ApproximateLastLogonTimestamp** antérieure à 15 jours.
 
 > [!NOTE]

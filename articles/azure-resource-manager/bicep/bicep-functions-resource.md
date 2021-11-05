@@ -4,13 +4,13 @@ description: Décrit les fonctions à utiliser dans un fichier Bicep pour récup
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/30/2021
-ms.openlocfilehash: 4cfbac80e9783dd9424a4b2ee63607fb6f2a7f17
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/25/2021
+ms.openlocfilehash: a14019e3cdf595efe0a32a7021333aa5b4f6a6b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361908"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087416"
 ---
 # <a name="resource-functions-for-bicep"></a>Fonctions de ressources pour Bicep
 
@@ -191,7 +191,7 @@ Un [qualificateur d’espace de noms](bicep-functions.md#namespaces-for-function
 
 Les fonctions de liste peuvent être utilisés dans les propriétés d’une définition de ressource. N’utilisez pas de fonction de liste qui expose des informations sensibles dans la section de sortie d’un fichier Bicep. Les valeurs de sortie sont stockées dans l’historique de déploiement et peuvent être récupérées par un utilisateur malveillant.
 
-Lorsqu’elles sont utilisées avec une [boucle de propriété](./loop-properties.md), vous pouvez utiliser les fonctions list pour `input`, car l’expression est affectée à la propriété de ressource. Vous ne pouvez pas les utiliser avec `count`, car le nombre doit être déterminé avant que la fonction list ne soit résolue.
+Lorsqu’elles sont utilisées avec une [boucle itérative](loops.md), vous pouvez utiliser les fonctions list pour `input`, car l’expression est affectée à la propriété de ressource. Vous ne pouvez pas les utiliser avec `count`, car le nombre doit être déterminé avant que la fonction list ne soit résolue.
 
 Si vous utilisez une fonction **list** dans une ressource qui est déployée conditionnellement, la fonction est évaluée même si la ressource n’est pas déployée. Vous obtenez une erreur si la fonction **list** fait référence à une ressource qui n’existe pas. Utilisez l’opérateur [d’expression conditionnelle **?:**](./operators-logical.md#conditional-expression--) pour vous assurer que la fonction est uniquement évaluée lorsque la ressource est déployée.
 
@@ -522,8 +522,9 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 output blobAddress string = stg.properties.primaryEndpoints.blob
 ```
 
-Pour plus d’informations, consultez [Ressources de référence](./compare-template-syntax.md#reference-resources) et la [fonction de référence du modèle JSON](../templates/template-functions-resource.md#reference).
+Si vous tentez de référencer une ressource qui n’existe pas, vous recevez l’erreur `NotFound` et votre déploiement échoue.
 
+Pour plus d’informations, consultez [Ressources de référence](./compare-template-syntax.md#reference-resources) et la [fonction de référence du modèle JSON](../templates/template-functions-resource.md#reference).
 
 ## <a name="resourceid"></a>resourceId
 
@@ -675,4 +676,4 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour obtenir les valeurs du déploiement actuel, consultez [Fonctions de valeur de déploiement](./bicep-functions-deployment.md).
-* Pour itérer un nombre de fois spécifié lors de la création d’un type de ressource, consultez [Déployer plusieurs instances de ressources dans Bicep](./loop-resources.md).
+* Pour itérer un nombre spécifié de fois lors de la création d’un type de ressource, consultez [Boucles itératives dans Bicep](loops.md).

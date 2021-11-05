@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31c8d885f5139f26cf2fb72ea0ceb0624c8945bf
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 44bbb2e9d5a599aad3e8f705dcc3ba4602e262ca
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264367"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073279"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Surveiller et gérer les pipelines Azure Data Factory à l’aide du portail Azure et de PowerShell
 > [!div class="op_single_selector"]
@@ -169,7 +169,7 @@ Vous pouvez réinitialiser la tranche pour revenir de l’état **Prête** ou **
 Vous pouvez gérer vos pipelines à l’aide d’Azure PowerShell. Par exemple, vous pouvez suspendre et reprendre les pipelines en exécutant les applets de commande Azure PowerShell. 
 
 > [!NOTE] 
-> La vue schématique ne prend pas en charge la suspension et la reprise des pipelines. Si vous souhaitez utiliser une interface utilisateur, utilisez l’application de surveillance et gestion. Pour en savoir plus sur l’utilisation de l’application, consultez l’article [Surveiller et gérer les pipelines Azure Data Factory à l’aide de l’application de surveillance et gestion](data-factory-monitor-manage-app.md). 
+> La vue schématique ne prend pas en charge la suspension et la reprise des pipelines. Si vous souhaitez utiliser une interface utilisateur, utilisez l’application de supervision et gestion. Pour en savoir plus sur l’utilisation de l’application, consultez l’article [Surveiller et gérer les pipelines Azure Data Factory à l’aide de l’application de surveillance et gestion](data-factory-monitor-manage-app.md). 
 
 Vous pouvez suspendre l’exécution des pipelines à l’aide de la cmdlet PowerShell **Suspend-AzDataFactoryPipeline**. Cette applet de commande est utile lorsque vous ne voulez pas exécuter vos pipelines jusqu'à ce qu’un problème est résolu. 
 
@@ -214,19 +214,22 @@ En cas d’échec d’exécution de l’activité dans un pipeline, le jeu de do
    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png" alt-text="Panneau de détails sur l’exécution d’activité":::     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Utiliser PowerShell pour déboguer une erreur
+
 1. Lancez **PowerShell**.
-2. Exécutez la commande **Get-AzDataFactorySlice** pour voir les tranches et leur état. Une tranche dont l’état est **Échec** devrait apparaître.        
+2. Exécutez la commande **Get-AzDataFactorySlice** pour voir les tranches et leur état. Une tranche dont l’état est **Échec** devrait apparaître.
 
-    ```powershell   
+    ```powershell
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
-    ```   
-   Par exemple :
+    ```
 
-    ```powershell   
+    Par exemple :
+
+    ```powershell
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    Remplacez **StartDateTime** par l’heure de début de votre pipeline. 
+
 3. Exécutez maintenant la cmdlet **Get-AzDataFactoryRun** pour obtenir des détails sur l’exécution de l’activité de la tranche.
 
     ```powershell   
@@ -236,14 +239,15 @@ En cas d’échec d’exécution de l’activité dans un pipeline, le jeu de do
 
     Par exemple :
 
-    ```powershell   
+    ```powershell
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     La valeur de StartDateTime est l’heure de début de la tranche qui pose problème/l’erreur que vous avez notée à l’étape précédente. La valeur date-heure doit être entourée de guillemets doubles.
+
 4. Vous devez voir la sortie avec les détails sur l’erreur qui est semblable à ce qui suit :
 
-    ```   
+    ```output
     Id                      : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
     ResourceGroupName       : ADF
     DataFactoryName         : LogProcessingFactory3
@@ -265,6 +269,7 @@ En cas d’échec d’exécution de l’activité dans un pipeline, le jeu de do
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
+
 5. Vous pouvez exécuter la cmdlet **Save-AzDataFactoryLog** avec la valeur d’ID indiquée dans la sortie et télécharger les fichiers journaux en utilisant le paramètre **-DownloadLogsoption** pour la cmdlet.
 
     ```powershell

@@ -17,12 +17,12 @@ ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 187d6fbb8f398291325a04bb07f2ce31b7aca721
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b5940205b9a1a17a6d6d51d96a6ab792ac744d3f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997418"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051626"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Journaux des connexions dans Azure Active Directory
 
@@ -120,12 +120,12 @@ Bien que l’élément de journal vous fournisse la raison de l’échec, dans c
 
 
 
-## <a name="filter-sign-in-activities&quot;></a>Filtrer les activités de connexion
+## <a name="filter-sign-in-activities"></a>Filtrer les activités de connexion
 
 
 Vous pouvez filtrer les données d’un journal pour les limiter à un niveau qui vous convient :
 
-![Capture d’écran montrant l’option Ajouter des filtres.](./media/concept-sign-ins/04.png &quot;Activité de connexion")
+![Capture d’écran montrant l’option Ajouter des filtres.](./media/concept-sign-ins/04.png "Activité de connexion")
 
 **ID de requête** : ID de la requête qui vous intéresse.
 

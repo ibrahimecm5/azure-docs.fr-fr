@@ -7,12 +7,12 @@ ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 54917fced3fb561add82d8e1f78078e7562858e1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d9892efecf010ea698e9f628cd92308e9ac8608b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680449"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078500"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>Comment utiliser l’API REST IoT Central pour gérer les utilisateurs et les rôles
 
@@ -233,4 +233,4 @@ DELETE https://{your app subdomain}.azureiotcentral.com/api/users/user-001?api-v
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Maintenant que vous savez comment gérer les utilisateurs et les rôles dans l’API REST, nous vous suggérons d’apprendre à [utiliser l’API REST IoT Central pour contrôler les appareils](howto-control-devices-with-rest-api.md).
+Maintenant que vous savez comment gérer les utilisateurs et les rôles dans l’API REST, nous vous suggérons d’apprendre à [utiliser l’API REST IoT Central pour gérer les exportations de données](howto-manage-data-export-with-rest-api.md).

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 9a431a2088ac01b3e0bec21b951fa4af0c5347e0
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: b53166da12d2949cbebb590cd326b8bd86d5bec4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122563991"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052694"
 ---
 # <a name="using-web-browsers-msalnet"></a>Utilisation de navigateurs web (MSAL.NET)
 
@@ -65,7 +65,7 @@ L’utilisation du navigateur système présente l’énorme avantage de partage
 
 ## <a name="system-browser-experience-on-net"></a>Expérience relative au navigateur du système sur .NET 
 
-Sur .NET Core, MSAL.NET lance le navigateur du système sous forme de processus distinct. MSAL.NET n'a aucun contrôle sur ce navigateur, mais au terme de l'authentification de l'utilisateur, la page web est redirigée de manière à ce que MSAL.NET puisse intercepter l'URI.
+Sur .NET Core, MSAL.NET lance le navigateur du système sous forme de processus distinct. MSAL.NET n’a pas de contrôle sur ce navigateur, mais au terme de l’authentification de l’utilisateur, la page web est redirigée de manière à ce que MSAL.NET puisse intercepter l’URI.
 
 Vous pouvez également configurer les applications écrites pour .NET Classic ou .NET 5 de manière à ce qu’elles utilisent ce navigateur, en spécifiant :
 
@@ -82,8 +82,8 @@ MSAL.NET doit écouter sur `http://localhost:port` et intercepter le code envoy�
 
 Pour activer le navigateur du système :
 
-1. Lors de l'inscription de l'application, configurez `http://localhost` comme URI de redirection (non prise en charge par B2C).
-2. Lorsque vous générez votre application PublicClientApplication, spécifiez l'URI de redirection suivante :
+1. Lors de l’inscription de l’application, configurez `http://localhost` comme URI de redirection (actuellement non pris en charge par B2C).
+2. Quand vous générez votre application PublicClientApplication, spécifiez cette URI de redirection :
 
 ```csharp
 IPublicClientApplication pca = PublicClientApplicationBuilder
@@ -105,7 +105,7 @@ Sous Linux, MSAL.NET ouvre le navigateur du système d'exploitation par défaut 
 > [!NOTE]
 > La personnalisation est disponible dans MSAL.NET 4.1.0 ou version ultérieure.
 
-MSAL.NET peut répondre avec un message HTTP lors de la réception d'un jeton ou en cas d'erreur. Vous pouvez afficher un message HTML ou effectuer une redirection vers l'URL de votre choix :
+MSAL.NET peut répondre avec un message HTTP lors de la réception d'un jeton ou en cas d'erreur. Vous pouvez afficher un message HTML ou rediriger vers une URL de votre choix :
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -227,4 +227,4 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 #### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>.NET Core ne prend pas en charge l'authentification interactive auprès d'un navigateur incorporé
 
 Pour .NET Core, l'acquisition interactive de jetons ne peut s'effectuer que via le navigateur web du système, et non avec les affichages web incorporés. En effet, .NET Core ne fournit pas encore d'interface utilisateur.
-Si vous souhaitez personnaliser l'expérience de navigation avec le navigateur web du système, vous pouvez implémenter l'interface [IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) et même fournir votre propre navigateur.
+Si vous souhaitez personnaliser l'expérience de navigation avec le navigateur web du système, vous pouvez implémenter l'interface [IWithCustomUI](scenario-desktop-acquire-token-interactive.md#withcustomwebui) et même fournir votre propre navigateur.

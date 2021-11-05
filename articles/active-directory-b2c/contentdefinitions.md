@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: Spécifiez l’élément ContentDefinitions d’une stratégie personnalisée dans Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/12/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: bbe79082f63065ed73b573ab87f3299f7df79148
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: af77df3d3839a019e4977b32c6b8b138b375b4f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740248"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007445"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -79,7 +79,7 @@ L’élément **ContentDefinition** contient les éléments suivants :
 
 L’élément **LoadUri** est utilisé pour spécifier l’URL de la page HTML5 pour la définition du contenu. Les [packs de démarrage de stratégie personnalisée](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) Azure AD B2C sont fournis avec des définitions de contenu qui utilisent des pages HTML d’Azure AD B2C. L’élément **LoadUri** commence par `~`, qui est un chemin d’accès relatif vers votre locataire Azure AD B2C.
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri>
   ...
@@ -88,12 +88,12 @@ L’élément **LoadUri** est utilisé pour spécifier l’URL de la page HTML5
 
 Vous pouvez [personnaliser l’interface utilisateur avec des modèles HTML](customize-ui-with-html.md). Lorsque vous utilisez des modèles HTML, indiquez une URL absolue. L’exemple suivant illustre une définition de contenu avec un modèle HTML :
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
   ...
 </ContentDefinition>
-``` 
+```
 
 ### <a name="datauri"></a>DataUri
 
@@ -103,7 +103,7 @@ L’élément **DataUri** est utilisé pour spécifier l’identificateur de pag
 | ----- | ----------- |
 | `globalexception` | Affiche une page d’erreur quand une exception ou une erreur sont rencontrées. |
 | `providerselection`, `idpselection` | Répertorie les fournisseurs d’identité parmi lesquels les utilisateurs peuvent choisir au moment de la connexion.  |
-| `unifiedssp` | Affiche un formulaire pour la connexion avec un compte local basé sur une adresse e-mail ou un nom d’utilisateur. Cette valeur fournit également la fonctionnalité de maintien de connexion et le lien de rappel de mot de passe. . |
+| `unifiedssp` | Affiche un formulaire pour la connexion avec un compte local basé sur une adresse e-mail ou un nom d’utilisateur. Cette valeur fournit également la fonctionnalité de maintien de la connexion et le lien « Vous avez oublié votre mot de passe ? » . |
 | `unifiedssd` | Affiche un formulaire pour la connexion avec un compte local basé sur une adresse e-mail ou un nom d’utilisateur. Cet identificateur de page est déconseillé. Utiliser l’identificateur de page `unifiedssp` à la place.  |
 | `multifactor` | Vérifie des numéros de téléphone (par voie textuelle ou vocale) au cours d’une inscription ou d’une connexion. |
 | `selfasserted` | Affiche un formulaire permettant de collecter des données auprès d'un utilisateur. Par exemple, permet aux utilisateurs de créer ou de mettre à jour leur profil. |
@@ -112,7 +112,7 @@ L’élément **DataUri** est utilisé pour spécifier l’identificateur de pag
 
 Vous pouvez activer le [code JavaScript côté client](javascript-and-page-layout.md) en insérant `contract` entre `elements` et le type de page. Par exemple : `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
-La partie [version](page-layout.md) de `DataUri` spécifie le package de contenu contenant du code HTML, CSS et JavaScript pour les éléments d’interface utilisateur de votre stratégie. Si vous prévoyez d’activer le code JavaScript côté client, les éléments sur lesquels vous basez votre JavaScript doivent être immuables. S’ils ne le sont pas, toute modification pourrait provoquer un comportement inattendu sur vos pages d’utilisateurs. Pour éviter ces problèmes, imposez l’utilisation d’une mise en page et spécifiez une version de mise en page. Toutes les définitions de contenu sur lesquelles vous avez basé votre code JavaScript sont ainsi immuables. Même si vous ne souhaitez pas activer JavaScript, vous pouvez spécifier la version de mise en page pour vos pages.
+La partie [version](page-layout.md) de `DataUri` spécifie le package de contenu contenant du code HTML, CSS et JavaScript pour les éléments d’interface utilisateur de votre stratégie. Si vous prévoyez d’activer le code JavaScript côté client, les éléments sur lesquels vous basez votre JavaScript doivent être immuables. S’ils ne le sont pas, toute modification pourrait provoquer un comportement inattendu sur vos pages d’utilisateurs. Pour éviter ces problèmes, imposez l’utilisation d’une mise en page et spécifiez une version de mise en page. Toutes les définitions de contenu sur lesquelles vous avez basé votre code JavaScript sont ainsi immuables. Même si vous ne prévoyez pas d’activer JavaScript, vous devez néanmoins toujours spécifier la version de la disposition de page pour vos pages.
 
 L’exemple suivant montre le **DataUri** de `selfasserted` version `1.2.0` :
 
@@ -150,7 +150,7 @@ Pour migrer de l’ancienne valeur **DataUri** (sans contrat de page) vers la ve
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 
-L’exemple suivant montre les identificateurs de définition de contenu et les **DataUri** correspondants pour la [dernière version de la page](page-layout.md) : 
+L’exemple suivant montre les identificateurs de définition de contenu et les **DataUri** correspondants pour la [dernière version de la page](page-layout.md) :
 
 ```xml
 <!-- 

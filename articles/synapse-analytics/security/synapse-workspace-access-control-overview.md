@@ -6,15 +6,16 @@ author: meenalsri
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 12/03/2020
+ms.date: 11/02/2021
 ms.author: mesrivas
-ms.reviewer: jrasnick
-ms.openlocfilehash: 6ee619e6036b9d8bc3b0323bc793903dab0a2735
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.reviewer: wiassaf
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 39eba039a8f7b381e998be3d8bfe5cd213217ab3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207318"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013419"
 ---
 # <a name="azure-synapse-access-control"></a>Contrôle d’accès Azure Synapse 
 
@@ -34,16 +35,17 @@ Le contrôle d’accès peut être simplifié en utilisant des groupes de sécur
 
 ## <a name="access-control-elements"></a>Éléments du contrôle d’accès
 
-### <a name="creating-and-managing-synapse-compute-resources"></a>Création et gestion des ressources de calcul Synapse
+### <a name="create-and-manage-azure-synapse-compute-resources"></a>Créer et gérer des ressources de calcul Azure Synapse
 
 Les rôles Azure sont utilisés pour contrôler la gestion des éléments suivants : 
-- Pools SQL dédiés 
-- Pools Apache Spark 
-- Runtimes d’intégration 
+- Pools SQL dédiés
+- Pools Explorateur de données
+- Pools Apache Spark
+- Runtimes d’intégration
 
 Pour *créer* ces ressources, vous devez être propriétaire ou contributeur Azure sur le groupe de ressources. Pour les *gérer* une fois créées, vous devez être propriétaire ou contributeur Azure sur le groupe de ressources ou les ressources individuelles. 
 
-### <a name="developing-and-executing-code-in-synapse"></a>Développement et exécution du code dans Synapse 
+### <a name="develop-and-execute-code-in-azure-synapse"></a>Développer et exécuter du code dans Azure Synapse 
 
 Synapse prend en charge deux modèles de développement.
 
@@ -52,9 +54,9 @@ Synapse prend en charge deux modèles de développement.
 
 Dans les deux modèles de développement, tout utilisateur ayant accès à Synapse Studio peut créer des artefacts de code. En revanche, vous avez besoin d’autorisations supplémentaires pour publier des artefacts dans le service et lire des artefacts publiés, également pour valider des modifications dans Git, exécuter du code et accéder à des données liées, protégées par des informations d’identification.
 
-### <a name="synapse-roles"></a>Rôles Synapse
+### <a name="azure-synapse-roles"></a>Rôles Azure Synapse
 
-Les rôles Synapse servent à contrôler l’accès au service Synapse qui vous permet d’effectuer les opérations suivantes : 
+Les rôles Azure Synapse servent à contrôler l’accès au service Synapse qui vous permet d’effectuer les opérations suivantes : 
 - Lister les artefacts de code publiés 
 - Publier les artefacts de code, les services liés et les définitions d’informations d’identification
 - Exécuter du code ou des pipelines qui utilisent des ressources de calcul Synapse
@@ -62,13 +64,14 @@ Les rôles Synapse servent à contrôler l’accès au service Synapse qui vous 
 - Afficher les sorties associées aux artefacts de code publiés
 - Superviser l’état des ressources de calcul et afficher les journaux du runtime.
 
-Les rôles Synapse peuvent être affectés au niveau de l’étendue de l’espace de travail ou à des étendues plus fines pour limiter les autorisations accordées à des ressources Synapse spécifiques.
+Les rôles Azure Synapse peuvent être affectés au niveau de l’étendue de l’espace de travail ou au niveau d’étendues plus précises afin de limiter les autorisations qui sont accordées à des ressources Azure Synapse spécifiques.
 
 ### <a name="git-permissions"></a>Autorisations Git
 
-Lors de l’utilisation du développement compatible Git en mode Git, vos autorisations Git déterminent si vous pouvez lire et valider les modifications apportées aux artefacts de code, y compris les définitions d’informations d’identification et les services liés.   
+Lorsque vous utilisez le développement compatible Git en mode Git, vous avez besoin d’autorisations Git, en plus des rôles Utilisateur Synapse ou RBAC Synapse, pour lire les artefacts de code, y compris les définitions de service lié et d’informations d’identification. Pour valider les modifications apportées aux artefacts de code en mode Git, vous devez disposer des autorisations Git, du rôle Contributeur Azure (Azure RBAC) dans l’espace de travail et du rôle Éditeur d’artefact Synapse (RBAC Synapse).
+
    
-### <a name="accessing-data-in-sql"></a>Accès aux données dans SQL
+### <a name="access-data-in-sql"></a>Accéder aux données dans SQL
 
 Lorsque vous travaillez avec des pools SQL dédiés et serverless, l’accès du plan de données est contrôlé à l’aide d’autorisations SQL. 
 
@@ -76,9 +79,14 @@ Le créateur d’un espace de travail est assigné en tant qu’administrateur A
 
 **Pools SQL serverless** : Les administrateurs Synapse disposent d’autorisations `db_owner` (`DBO`) sur le pool SQL serverless, « intégré ». Pour accorder à d’autres utilisateurs l’accès à des pools SQL serverless, les administrateurs Synapse doivent exécuter des scripts SQL sur chaque pool serverless.  
 
-**Pools SQL dédiés** : les administrateurs Synapse se voient accorder des autorisations `db_owner` (`DBO`) sur les pools SQL dédiés. l’autorisation d’administrateur Active Directory est accordée au créateur de l’espace de travail et aux identités managées pour les ressources Azure de l’espace de travail.  L’autorisation d’accès aux pools SQL dédiés n’est, sinon, pas octroyée automatiquement. Pour accorder à d’autres utilisateurs ou groupes l’accès aux pools SQL dédiés, l’administrateur Active Directory doit exécuter des scripts SQL sur chaque pool SQL dédié.
+**Pools SQL dédiés** : les administrateurs Synapse ont un accès complet aux données des pools SQL dédiés. Ils peuvent également accorder l’accès à d’autres utilisateurs. Les administrateurs Synapse peuvent également effectuer des tâches de configuration et de maintenance sur des pools dédiés, mais ils ne peuvent pas supprimer des bases de données. l’autorisation d’administrateur Active Directory est accordée au créateur de l’espace de travail et aux identités managées pour les ressources Azure de l’espace de travail.  L’autorisation d’accès aux pools SQL dédiés n’est, sinon, pas octroyée automatiquement. Pour accorder à d’autres utilisateurs ou groupes l’accès aux pools SQL dédiés, l’administrateur Active Directory ou Synapse doit exécuter des scripts SQL sur chaque pool SQL dédié.
 
 Consultez [Guide pratique pour configurer le contrôle d’accès Synapse](./how-to-set-up-access-control.md) qui donne des exemples de scripts SQL permettant d’accorder des autorisations SQL dans les pools SQL.  
+
+### <a name="accessing-data-in-data-explorer-pools"></a>Accès aux données des pools Data Explorer
+
+Lorsque vous utilisez des pools Data Explorer, l’accès au plan de données est contrôlé via des autorisations Data Explorer. Les administrateurs Synapse disposent d’autorisations `All Database admin` sur les pools Data Explorer. Pour accorder à d’autres utilisateurs ou groupes l’accès aux pools Data Explorer, les administrateurs Synapse doivent se référer à [Gestion des rôles de sécurité](/azure/data-explorer/kusto/management/security-roles?context=/azure/synapse-analytics/context/context). Pour plus d’informations sur l’accès au plan de données, consultez [Vue d’ensemble du contrôle d’accès Data Explorer](/azure/data-explorer/kusto/management/access-control/index?context=/azure/synapse-analytics/context/context).
+
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Accès aux données gérées par le système dans le stockage
 
@@ -95,7 +103,7 @@ Afin de simplifier la gestion du contrôle d’accès, vous pouvez utiliser des 
 
 Synapse Studio se comporte différemment selon vos autorisations et le mode actif :
 - **Mode direct Synapse :** Synapse Studio vous empêche d’afficher du contenu publié, de publier du contenu ou d’effectuer d’autres actions si vous ne détenez pas l’autorisation adéquate.  Dans certains cas, vous ne pourrez pas créer les artefacts de code que vous ne pouvez pas utiliser ou enregistrer. 
-- **Mode Git :** Si vous disposez d’autorisations Git qui vous permettent de valider les modifications apportées à la branche en cours, l’action de validation sera autorisée même si vous n’avez pas l’autorisation de publier des modifications sur le service direct.  
+- **Mode Git** : si vous disposez d’autorisations Git qui vous permettent de valider les modifications apportées à la version Current Branch, l’action de validation sera autorisée si vous avez l’autorisation de publier des modifications dans le service en direct (rôle Éditeur d’artefact Synapse) et si vous disposez du rôle Contributeur Azure dans l’espace de travail.  
 
 Dans certains cas, vous êtes autorisé à créer des artefacts de code même sans autorisation de publication ou de validation. Cela vous permet d’exécuter du code (avec les autorisations d’exécution requises). [Découvrez-en plus](./synapse-workspace-understand-what-role-you-need.md) sur les rôles requis pour les tâches courantes. 
 

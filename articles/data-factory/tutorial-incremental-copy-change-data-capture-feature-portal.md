@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 6297956cb77898c26beaa617a59b1b43cc111e80
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1c0e6e052b9e65f02ab57a7a2c165c9ba67be0a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771761"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031040"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Charger de façon incrémentielle des données d’Azure SQL Managed Instance sur le Stockage Azure à l’aide de la capture des changements de données
 
@@ -230,7 +230,9 @@ Dans cette étape, vous allez créer un pipeline, qui vérifie d’abord le nomb
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-name.png" alt-text="Activité de recherche - nom":::
 4. Accédez à **Paramètres** dans la fenêtre **Propriétés** :
+
    1. Spécifiez le nom du jeu de données SQL MI dans le champ **Jeu de données source**.
+
    2. Sélectionnez l’option Requête et entrez ce qui suit dans la zone de requête :
     ```sql
     DECLARE  @from_lsn binary(10), @to_lsn binary(10);  
@@ -238,9 +240,11 @@ Dans cette étape, vous allez créer un pipeline, qui vérifie d’abord le nomb
     SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal',  GETDATE());
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
     ```
+
    3. Activez **Utiliser la première ligne comme en-tête**
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-settings.png" alt-text="Activité de recherche - paramètres":::
+
 5. Cliquez sur le bouton **Aperçu des données** pour vérifier la validité de la sortie obtenue par l’activité de recherche
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-preview.png" alt-text="Activité de recherche – aperçu":::
@@ -337,31 +341,38 @@ Dans cette étape, vous allez créer un déclencheur de fenêtre bascule pour ex
    1. Cliquez sur l’onglet **Connexion** des propriétés du jeu de données et ajoutez du contenu dynamique pour les sections **Répertoire** et **Fichier**. 
    2. Entrez l’expression suivante dans la section **Répertoire** en cliquant sur le lien de contenu dynamique en dessous de la zone de texte :
     
-    ```sql
-    @concat('customers/incremental/',formatDateTime(dataset().triggerStart,'yyyy/MM/dd'))
-    ```
+      ```sql
+      @concat('customers/incremental/',formatDateTime(dataset().triggerStart,'yyyy/MM/dd'))
+      ```
    3. Entrez l’expression suivante dans la section **Fichier**. Cela aura pour effet de créer des noms de fichiers basés sur la date et l’heure de début du déclencheur, avec l’extension CSV pour suffixe :
     
-    ```sql
-    @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
-    ```
-    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="Configuration du jeu de données récepteur-3":::
+      ```sql
+      @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
+      ```
+
+      :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="Configuration du jeu de données récepteur-3":::
 
    4. Revenez aux paramètres du **Récepteur**  dans l’activité **Copier** en cliquant sur l’onglet **IncrementalCopyPipeline**. 
    5. Développez les propriétés du jeu de données et entrez du contenu dynamique dans la valeur du paramètre triggerStart avec l’expression suivante :
-     ```sql
-     @pipeline().parameters.triggerStartTime
-     ```
-    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="Configuration du jeu de données récepteur-4":::
+
+      ```sql
+      @pipeline().parameters.triggerStartTime
+      ```
+
+     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="Configuration du jeu de données récepteur-4":::
 
 6. Cliquez sur Déboguer pour tester le pipeline et vérifier que la structure de dossiers et le fichier de sortie sont générés comme prévu. Téléchargez et ouvrez le fichier pour vérifier son contenu. 
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-3.png" alt-text="Débogage de la copie incrémentielle-3":::
+
 7. Vérifiez que les paramètres sont injectés dans la requête en examinant les paramètres d’entrée de l’exécution du pipeline.
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-4.png" alt-text="Débogage de la copie incrémentielle-4":::
+
 8. Publiez des entités (services liés, jeux de données et pipelines) sur le service Data Factory en cliquant sur le bouton **Publier tout**. Patientez jusqu’à ce que le message **Publication réussie** s’affiche.
+
 9. Enfin, configurez un déclencheur de fenêtre bascule pour exécuter le pipeline à intervalles réguliers et définir les paramètres d’heure de début et de fin. 
+
    1. Cliquez sur le bouton **Ajouter un déclencheur**, puis sélectionnez **Nouveau/Modifier**
 
    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/add-trigger.png" alt-text="Ajouter un déclencheur":::
@@ -371,17 +382,19 @@ Dans cette étape, vous allez créer un déclencheur de fenêtre bascule pour ex
    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png" alt-text="Déclencheur de fenêtre bascule":::
 
    3. Dans l’écran suivant, spécifiez les valeurs ci-dessous pour les paramètres de début et de fin, respectivement.
-    ```sql
-    @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
-    @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
-    ```
 
-   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="Déclencheur de fenêtre bascule-2":::
+      ```sql
+      @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
+      @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
+      ```
+
+      :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="Déclencheur de fenêtre bascule-2":::
 
 > [!NOTE]
-> Notez que le déclencheur s’exécute une fois qu’il a été publié. Par ailleurs, le comportement attendu de la fenêtre bascule est d’exécuter tous les intervalles historiques de la date de début jusqu’au moment présent. Vous trouverez des informations complémentaires sur les déclencheurs de fenêtre bascule [ici](./how-to-create-tumbling-window-trigger.md). 
-  
+> Le déclencheur s’exécute uniquement une fois qu’il a été publié. Par ailleurs, le comportement attendu de la fenêtre bascule est d’exécuter tous les intervalles historiques de la date de début jusqu’au moment présent. Vous trouverez des informations complémentaires sur les déclencheurs de fenêtre bascule [ici](./how-to-create-tumbling-window-trigger.md). 
+
 10. L’utilisation de **SQL Server Management Studio** apporte des modifications supplémentaires à la table customer en exécutant le code SQL suivant :
+
     ```sql
     insert into customers (customer_id, first_name, last_name, email, city) values (4, 'Farlie', 'Hadigate', 'fhadigate3@zdnet.com', 'Reading');
     insert into customers (customer_id, first_name, last_name, email, city) values (5, 'Anet', 'MacColm', 'amaccolm4@yellowbook.com', 'Portsmouth');
@@ -390,10 +403,11 @@ Dans cette étape, vous allez créer un déclencheur de fenêtre bascule pour ex
     delete from customers where customer_id=5;
     ```
 11. Cliquez sur le bouton **Publier tout**. Patientez jusqu’à ce que le message **Publication réussie** s’affiche.  
+
 12. Au bout de quelques minutes, le pipeline est déclenché et un nouveau fichier est chargé dans Stockage Azure
 
-
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Surveiller le pipeline de copie incrémentielle
+
 1. Cliquez sur l’onglet **Surveiller** sur la gauche. Vous voyez l’exécution du pipeline dans la liste et son état. Pour actualiser la liste, cliquez sur **Actualiser**. Placez le curseur près du nom du pipeline pour accéder à l’action Réexécuter et au rapport de consommation.
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-pipeline-runs.png" alt-text="Exécutions de pipeline":::

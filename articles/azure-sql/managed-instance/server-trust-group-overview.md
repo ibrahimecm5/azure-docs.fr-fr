@@ -1,86 +1,102 @@
 ---
 title: Groupe d’approbations de serveurs
 titleSuffix: Azure SQL Managed Instance
-description: En savoir plus sur le groupe d’approbations de serveurs et sur la gestion de l’approbation entre instances Azure SQL Managed Instance.
+description: Découvrez comment gérer l’approbation entre les instances à l’aide d’un groupe d’approbations de serveurs dans Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: service-overview
-ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: sasapopo
 ms.author: sasapopo
 ms.reviewer: mathoma
-ms.date: 10/08/2020
-ms.openlocfilehash: 454b5c20c7e1e28c87e2be38662c12055f14079e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ad3d7c45fb621d3f12146548bdb9e5ac5693a622
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226808"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071991"
 ---
-# <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Utiliser des groupes d’approbations de serveurs pour configurer et gérer l’approbation entre des instances managées SQL
+# <a name="set-up-trust-between-instances-with-server-trust-group-azure-sql-managed-instance"></a>Configurer l’approbation entre les instances avec le groupe d’approbations de serveurs (Azure SQL Managed Instance)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Le groupe d’approbations de serveurs est un concept utilisé pour la gestion de l’approbation entre des instances Azure SQL Managed Instance. En créant un groupe, une approbation basée sur un certificat est établie entre ses membres. Cette approbation peut être utilisée pour différents scénarios inter-instances. La suppression de serveurs du groupe ou la suppression du groupe supprime l’approbation entre les serveurs. Pour créer ou supprimer un groupe d’approbations de serveurs, l’utilisateur doit disposer d’autorisations en écriture sur l’instance managée.
-[Groupe d’approbations de serveurs](/azure/templates/microsoft.sql/allversions) est un objet Azure Resource Manager qui a été étiqueté comme **Groupe d’approbations SQL** dans le Portail Azure.
+Le groupe d’approbations de serveurs (également appelé groupe d’approbations SQL) est un concept utilisé pour gérer l’approbation entre les instances dans Azure SQL Managed Instance. En créant un groupe, une approbation basée sur un certificat est établie entre ses membres. Cette approbation peut être utilisée pour différents scénarios inter-instances. La suppression de serveurs du groupe ou la suppression du groupe supprime l’approbation entre les serveurs. Pour créer ou supprimer un groupe d’approbations de serveurs, l’utilisateur doit disposer d’autorisations en écriture sur l’instance managée.
+[Groupe d’approbations de serveurs](/azure/templates/microsoft.sql/allversions) est un objet Azure Resource Manager qui a été étiqueté comme **Groupe d’approbations SQL** dans le portail Azure.
 
-> [!NOTE]
-> Le groupe d’approbations de serveurs est introduit dans la préversion publique des transactions distribuées entre instances Azure SQL Managed Instance et présente actuellement certaines limitations qui seront décrites plus loin dans cet article.
 
-## <a name="server-trust-group-setup"></a>Configuration du groupe d’approbations de serveurs
+## <a name="set-up-group"></a>Configurer un groupe
 
-Le groupe d'approbations de serveurs peut être configuré via [Azure PowerShell](/powershell/module/az.sql/new-azsqlservertrustgroup) ou [Azure CLI](/cli/azure/sql/stg). La section suivante décrit la configuration du groupe d'approbations de serveurs à l'aide du portail Azure.
+Le groupe d’approbations de serveurs peut être configuré via [Azure PowerShell](/powershell/module/az.sql/new-azsqlservertrustgroup) ou [Azure CLI](/cli/azure/sql/stg). 
+
+Pour créer un groupe d’approbations de serveurs à l’aide du portail Azure, procédez comme suit : 
 
 1. Accédez au [portail Azure](https://portal.azure.com/).
 
-2. Accédez à l’instance Azure SQL Managed Instance que vous prévoyez d’ajouter à un groupe d’approbations de serveurs nouvellement créé.
+2. Accédez à l’instance Azure SQL Managed Instance que vous prévoyez d’ajouter à un groupe d’approbations de serveurs.
 
 3. Dans la page de paramètres **Sécurité**, sélectionnez l’onglet **Groupes d’approbations SQL**.
 
-   :::image type="content" source="./media/server-trust-group-overview/security-sql-trust-groups.png" alt-text="Groupes d’approbations de serveurs":::
+   :::image type="content" source="./media/server-trust-group-overview/sql-trust-groups.png" alt-text="Groupes d’approbations SQL":::
 
-4. Dans la page Configuration du groupe d’approbations de serveurs, sélectionnez l’icône **Nouveau groupe**.
+4. Dans la page de configuration **Groupes d’approbations SQL**, sélectionnez l’icône **Nouveau groupe**.
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Nouveau groupe":::
+   :::image type="content" source="./media/server-trust-group-overview/new-sql-trust-group-button.png" alt-text="Nouveau groupe":::
 
-5. Dans le panneau **Groupe d’approbations SQL**, définissez le **Nom du groupe**. Il doit être unique dans toutes les régions où résident les membres du groupe. L’**Étendue d’approbation** définit le type de scénario inter-instances qui est activé avec le groupe d’approbations de serveurs. Dans la préversion, la seule étendue d’approbation applicable est **Transactions distribuées**, elle est donc présélectionnée et ne peut pas être modifiée. Tous les **Membres du groupe** doivent appartenir au même **abonnement**, mais ils peuvent se trouver sous des groupes de ressources différents. Sélectionnez le **Groupe de ressources** et **SQL Server/instance** pour choisir l’instance Azure SQL Managed Instance qui sera membre du groupe.
+5. Dans le panneau **Groupe d’approbations SQL**, définissez le **Nom du groupe**. Il doit être unique dans l’abonnement, le groupe de ressources et la région du groupe. L’**étendue d’approbation** définit le type de scénario entre les instances qui est activé avec le groupe d’approbations de serveurs. L’étendue d’approbation est fixe : toutes les fonctionnalités disponibles sont présélectionnées et ne peuvent pas être modifiées. Sélectionnez **Abonnement** et **Groupe de ressources** pour choisir les instances managées qui seront membres du groupe.
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Panneau Créer un groupe d’approbations de serveurs":::
+   :::image type="content" source="./media/server-trust-group-overview/new-sql-trust-group.png" alt-text="Panneau Créer un groupe d’approbations SQL":::
 
-6. Une fois tous les champs obligatoires remplis, cliquez sur **Enregistrer**.
+6. Une fois tous les champs obligatoires remplis, sélectionnez **Enregistrer**.
 
-## <a name="server-trust-group-maintenance-and-deletion"></a>Maintenance et suppression du groupe d’approbations de serveurs
+## <a name="edit-group"></a>Modifier un groupe 
 
-Impossible de modifier le groupe d’approbations de serveurs. Pour supprimer une instance managée d’un groupe, vous devez supprimer le groupe et en créer un nouveau.
+Pour modifier un groupe d’approbations de serveurs, procédez comme suit : 
 
-La section suivante décrit le processus de suppression d’un groupe d’approbations de serveurs. 
 1. Accédez au portail Azure.
-2. Accédez à une instance managée qui appartient au groupe d’approbations.
-3. Dans les paramètres de **Sécurité**, sélectionnez l’onglet **Groupes d’approbations SQL**.
-4. Sélectionnez le groupe d’approbations que vous souhaitez supprimer.
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Sélectionner un groupe d’approbations de serveurs":::
-5. Cliquez sur **Supprimer un groupe**.
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Supprimer un groupe d’approbations de serveurs":::
-6. Entrez le nom du groupe d’approbations de serveurs pour confirmer la suppression, puis cliquez sur **Supprimer**.
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Confirmer la suppression du groupe d’approbations de serveurs":::
+1. Accédez à une instance managée qui appartient au groupe d’approbations.
+1. Dans les paramètres de **Sécurité**, sélectionnez l’onglet **Groupes d’approbations SQL**.
+1. Sélectionnez le groupe d’approbations que vous souhaitez modifier.
+1. Cliquez sur **Configurer le groupe**.
+
+   :::image type="content" source="./media/server-trust-group-overview/configure-sql-trust-group.png" alt-text="Configurer le groupe d’approbations SQL":::
+
+1. Ajoutez ou supprimez des instances managées dans le groupe.
+1. Cliquez sur **Enregistrer** pour confirmer la sélection ou sur **Annuler** pour abandonner les modifications.
+
+## <a name="delete-group"></a>Supprimer un groupe
+
+Pour supprimer un groupe d’approbations de serveurs, procédez comme suit : 
+
+1. Accédez au portail Azure.
+1. Accédez à une instance managée qui appartient au groupe d’approbations SQL.
+1. Dans les paramètres de **Sécurité**, sélectionnez l’onglet **Groupes d’approbations SQL**.
+1. Sélectionnez le groupe d’approbations que vous souhaitez supprimer.
+
+   :::image type="content" source="./media/server-trust-group-overview/select-delete-sql-trust-group.png" alt-text="Sélectionner un groupe d’approbations SQL":::
+
+1. Sélectionnez **Supprimer un groupe**.
+
+   :::image type="content" source="./media/server-trust-group-overview/delete-sql-trust-group.png" alt-text="Supprimer le groupe d’approbations SQL"::: 
+
+1. Entrez le nom du groupe d’approbations SQL pour confirmer la suppression, puis sélectionnez **Supprimer**.
+
+   :::image type="content" source="./media/server-trust-group-overview/confirm-delete-sql-trust-group-2.png" alt-text="Confirmer la suppression du groupe d’approbations SQL":::
 
 > [!NOTE]
-> La suppression du groupe d’approbations de serveurs risque de ne pas supprimer immédiatement l’approbation entre les deux instances managées. La suppression de l’approbation peut être appliquée en appelant un [basculement](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) d’instances managées. Consultez les [Problèmes connus](../database/doc-changes-updates-release-notes-whats-new.md?tabs=managed-instance) pour obtenir les dernières mises à jour à ce sujet.
+> La suppression du groupe d’approbations SQL risque de ne pas supprimer immédiatement l’approbation entre les deux instances managées. La suppression de l’approbation peut être appliquée en appelant un [basculement](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) d’instances managées. Consultez les [Problèmes connus](../managed-instance/doc-changes-updates-known-issues.md) pour obtenir les dernières mises à jour à ce sujet.
 
 ## <a name="limitations"></a>Limites
 
-Au cours de la préversion publique, les limitations suivantes s’appliquent aux groupes d’approbations de serveur.
- * Le nom du groupe d’approbations de serveurs doit être unique dans toutes les régions où ses membres se trouvent.
- * Le groupe peut contenir uniquement des instances Azure SQL Managed Instance et il doit se trouver dans le même abonnement Azure.
- * En préversion, le groupe peut avoir exactement deux instances managées. Pour exécuter des transactions distribuées sur plus de deux instances managées, vous devez créer un groupe d’approbations de serveurs pour chaque paire d’instances managées.
- * Les transactions distribuées sont la seule étendue applicable pour les groupes d’approbations de serveurs.
- * Le groupe d’approbations de serveurs peut uniquement être géré à partir du Portail Azure. La prise en charge de PowerShell et de l’interface CLI sera ajoutée plus tard.
- * Il est impossible de modifier le groupe d’approbations de serveurs sur le Portail Azure. Il peut uniquement être créé ou supprimé.
- * Des limitations supplémentaires sur les transactions distribuées peuvent être liées à votre scénario. La plus notable est qu’il doit exister une connectivité entre les instances managées sur des points de terminaison privés, par le biais d’un réseau virtuel ou d’un peering de réseaux virtuels. Assurez-vous que vous avez pris connaissance des [limitations actuelles des transactions distribuées pour Managed Instance](../database/elastic-transactions-overview.md#limitations).
+Les limitations suivantes s’appliquent aux groupes d’approbations de serveurs : 
+
+ * Le groupe peut contenir uniquement des instances d’Azure SQL Managed Instance.
+ * Impossible de modifier l’étendue d’approbation lors de la création ou de la modification d’un groupe.
+ * Le nom du groupe d’approbations de serveurs doit être unique pour son abonnement, son groupe de ressources et sa région.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour plus d’informations sur les transactions distribuées dans Azure SQL Managed Instance, consultez [Transactions distribuées](../database/elastic-transactions-overview.md).
 * Pour obtenir les mises à jour de version et l’état des problèmes connus, consultez [Nouveautés](doc-changes-updates-release-notes-whats-new.md).
-* Si vous avez des demandes de fonctionnalités, ajoutez-les au [forum Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance).
+* Si vous avez des demandes de fonctionnalités, ajoutez-les au [forum SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance).

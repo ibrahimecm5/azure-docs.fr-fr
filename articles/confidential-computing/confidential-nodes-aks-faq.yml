@@ -8,21 +8,21 @@ metadata:
   ms.topic: conceptual
   ms.date: 06/30/2021
   ms.author: amgowda
-  ms.openlocfilehash: 21a4b0fdd3a000469339e6ac49df0a43dc56e451
-  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.openlocfilehash: 96e478b61630b90f0253b65b54968f5f05aa1fe3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123101597"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131086542"
 title: Forum aux questions concernant les nœuds d’informatique confidentielle sur Azure Kubernetes service (AKS)
 summary: >
   Cet article répond à des questions fréquentes sur les nœuds d’informatique confidentielle basés sur Intel SGX sur Azure Kubernetes service (AKS). Si vous avez d’autres questions, envoyez un e-mail à **acconaks@microsoft.com** .
 sections:
 - name: Product
   questions:
-  - question: Les nœuds de traitement confidentiel sur AKS sont-ils en disponibilité générale ?
+  - question: Les nœuds d’informatique confidentielle sur AKS peuvent-ils être utilisés en production ?
     answer: >
-      Oui
+      Oui, pour les nœuds d’enclave Intel SGX.
   - question: Puis-je activer les performances réseau accélérées avec des clusters AKS d’informatique confidentielle Azure ?
     answer: >
       Non. La mise en réseau accélérée n’est pas prise en charge sur les machines virtuelles DCSv2 qui constituent des nœuds de traitement confidentiel sur AKS.
@@ -33,7 +33,7 @@ sections:
       Non. Les [nœuds de traitement confidentiel basés sur le moteur AKS](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) prennent en charge les nœuds de traitement confidentiel qui autorisent les installations personnalisées et qui ont un contrôle total sur votre plan de contrôle Kubernetes.
   - question: Puis-je exécuter des nœuds ACC avec d’autres références (SKU) AKS standard (créer un cluster de pools de nœuds hétérogènes) ?
     answer: >
-      Oui. Vous pouvez exécuter différents pools de nœuds dans le même cluster AKS, notamment des nœuds ACC. Pour cibler vos applications d’enclave sur un pool de nœuds spécifique, pensez à ajouter des sélecteurs de nœud ou à appliquer des limites EPC. Pour plus d’informations concernant le démarrage rapide sur des nœuds confidentiels, consultez [cette rubrique](confidential-nodes-aks-get-started.md).
+      Oui. Vous pouvez exécuter différents pools de nœuds dans le même cluster AKS, notamment des nœuds ACC. Pour cibler vos applications d’enclave sur un pool de nœuds spécifique, pensez à ajouter des sélecteurs de nœud ou à appliquer des limites EPC. Pour plus d’informations concernant le démarrage rapide sur des nœuds confidentiels, consultez [cette rubrique](confidential-enclave-nodes-aks-get-started.md).
   - question: Puis-je exécuter des nœuds et des conteneurs Windows avec ACC ?
     answer: >
       Pas pour l'instant. Contactez l’équipe produit à l’adresse *acconaks@microsoft.com* si vous avez besoin de nœuds ou de conteneurs Windows.
@@ -41,25 +41,24 @@ sections:
     answer: >
       Oui. Les machines virtuelles sont également dotées d’une mémoire ordinaire capable d’exécuter des charges de travail de conteneur standard. Prenez en considération le modèle de sécurité et de menace de vos applications avant de choisir les modèles de déploiement.
   - question: Quelle référence (SKU) de machine virtuelle dois-je choisir pour les nœuds d’informatique confidentielle ?
-    answer: >
-      Références (SKU) DCSv2. Les [références (SKU) DCSv2](../virtual-machines/dcv2-series.md) sont disponibles dans les [régions prises en charge](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all).
+    answer: "Références SKU DCSv2/DCsv3. Plus d’informations sur [DCSv2](../virtual-machines/dcv2-series.md) et [DCSv3](../virtual-machines/dcv3-series.md) sont disponibles dans les [régions prises en charge](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)      \n"
   - question: Puis-je approvisionner AKS avec des pools de nœuds DCSv2 via le portail Azure ?
     answer: >
-      Oui. Azure CLI peut également être utilisé en guise d’alternative comme expliqué [ici](confidential-nodes-aks-get-started.md).
+      Oui. Azure CLI peut également être utilisé en guise d’alternative comme expliqué [ici](confidential-enclave-nodes-aks-get-started.md).
   - question: Quelles sont la version d’Ubuntu et la génération de machine virtuelle prises en charge ?
     answer: "18.04 sur la génération 2. \n"
   - question: Quelles sont les limitations actuelles connues du produit ?
     answer: "- Prend en charge uniquement les nœuds de machines virtuelles de deuxième génération Ubuntu 18.04. \n- Aucune prise en charge de nœuds ou conteneurs Windows.\n- La mise à l’échelle automatique de pod horizontal basée sur la mémoire EPC n’est pas prise en charge. La mise à l’échelle basée sur la mémoire ordinaire et l’UC est prise en charge.\n- Le service Dev Spaces sur AKS pour les applications confidentielles n’est pas pris en charge actuellement   \n"
-  - question: Puis-je approvisionner AKS avec des pools de nœuds DCSv2 via le portail Azure ?
+  - question: Puis-je provisionner AKS avec des pools de nœuds DCSv2/DCSv3 dans le portail Azure ?
     answer: >
-      Oui. Azure CLI peut également être utilisé en guise d’alternative comme expliqué [ici](confidential-nodes-aks-get-started.md).
+      Oui. Azure CLI peut également être utilisé en guise d’alternative comme expliqué [ici](confidential-enclave-nodes-aks-get-started.md).
   - question: Quelles sont la version d’Ubuntu et la génération de machine virtuelle prises en charge ?
     answer: "18.04 sur la génération 2. \n"
 - name: Développement et déploiement
   questions:
   - question: Puis-je venir avec mes applications en conteneur existantes et les exécuter sur AKS avec l’informatique confidentielle Azure ?
     answer: >
-      Oui, vous pouvez exécuter un logiciel de wrapper SGX dans une enclave. Pour plus d’informations sur les activateurs de plateforme, consultez la [page sur les conteneurs confidentiels](confidential-containers.md).
+      Oui, vous pouvez apporter un logiciel de wrapper SGX dans une enclave Intel SGX. Pour plus d’informations sur les activateurs de plateforme, consultez la [page sur les conteneurs confidentiels](confidential-containers.md).
   - question: Dois-je utiliser une image de base Docker pour commencer à utiliser des applications d’enclave ?
     answer: >
       Divers activateurs (éditeurs de logiciels indépendants et projets OSS) permettent d’activer des conteneurs confidentiels. Pour plus d’informations et pour obtenir des références individuelles à des implémentations, consultez la [page relative aux conteneurs confidentiels](confidential-containers.md).
@@ -69,20 +68,20 @@ sections:
     answer: >
       Une attestation est un processus consistant à démontrer et à valider qu’un élément de logiciel a été correctement instancié sur la plateforme matérielle spécifique. Elle garantit également l’existence de preuves vérifiables garantissant qu’elle s’exécute dans une plateforme sécurisée et qu’elle n’a pas été falsifiée. [Apprenez-en davantage](attestation.md) sur la façon dont une attestation est délivrée pour des applications d’enclave.
   - question: Que se passe-t-il si la taille de mon conteneur est supérieure à la mémoire EPC disponible ?
-    answer: "La mémoire EPC s’applique à la partie de votre application qui est programmée pour s’exécuter dans l’enclave. La taille totale de votre conteneur n’est pas le bon indicateur pour comparer celui-ci avec la mémoire EPC maximale disponible. En fait, les machines DCSv2 avec SGX autorisent une mémoire de machine virtuelle maximale de 32 Go que votre partie non approuvée de l’application utiliserait. Cependant, si votre conteneur consomme plus que la mémoire EPC disponible, les performances de la partie du programme s’exécutant dans l’enclave peuvent être impactées.\n\nPour mieux gérer la mémoire EPC dans les nœuds Worker, envisagez de gérer des limites de mémoire EPC via Kubernetes. Suivez l’exemple ci-dessous à titre de référence.\n\n> [!NOTE] \n> L’exemple suivant tire (pull) une image conteneur publique à partir de Docker Hub. Nous vous recommandons de configurer un secret d’extraction pour l’authentification à l’aide d’un compte Docker Hub au lieu de créer une requête de tirage anonyme. Pour une plus grande fiabilité lors de l’utilisation de contenu public, importez et gérez l’image dans un registre de conteneurs Azure privé. [En savoir plus sur l’utilisation des images publiques.](../container-registry/buffer-gate-public-content.md)\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test:1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to nodepools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
+    answer: "La mémoire EPC s’applique à la partie de votre application qui est programmée pour s’exécuter dans l’enclave. La taille totale de votre conteneur n’est pas le bon indicateur pour comparer celui-ci avec la mémoire EPC maximale disponible. En fait, les machines DCSv2 avec SGX autorisent une mémoire de machine virtuelle maximale de 32 Go que votre partie non approuvée de l’application utiliserait. Cependant, si votre conteneur consomme plus que la mémoire EPC disponible, les performances de la partie du programme s’exécutant dans l’enclave peuvent être impactées.\n\nPour mieux gérer la mémoire EPC dans les nœuds Worker, envisagez de gérer des limites de mémoire EPC via Kubernetes. Suivez l’exemple ci-dessous à titre de référence.\n\n> [!NOTE] \n> L’exemple suivant tire (pull) une image conteneur publique à partir de Docker Hub. Nous vous recommandons de configurer un secret d’extraction pour l’authentification à l’aide d’un compte Docker Hub au lieu de créer une demande de tirage anonyme. Pour une plus grande fiabilité lors de l’utilisation de contenu public, importez et gérez l’image dans un registre de conteneurs Azure privé. [En savoir plus sur l’utilisation des images publiques.](../container-registry/buffer-gate-public-content.md)\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test: 1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to node pools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
   - question: Que se passe-t-il si mon enclave consomme plus que la mémoire EPC disponible maximale ?
     answer: "La mémoire EPC disponible totale est partagée entre les applications d’enclave dans les mêmes machines virtuelles ou nœuds Worker. Si votre application utilise plus de mémoire EPC que celle qui est disponible, ses performances peuvent en être impactées. Pour cette raison, nous vous recommandons de définir la tolérance par application dans votre fichier yaml de déploiement afin de mieux gérer la mémoire EPC disponible par nœud Worker, comme dans les exemples ci-dessus. Vous pouvez également augmenter les tailles de machine virtuelle du pool de nœuds Worker ou ajouter des nœuds. \n"
   - question: Pourquoi ne puis-je pas effectuer des fourches () et exécutions pour exécuter plusieurs processus dans mon application d’enclave ?
     answer: >
       À l’heure actuelle, les machines virtuelles de référence SKU DCsv2 pour le traitement confidentiel Azure prennent en charge un seul espace d’adressage pour le programme s’exécutant dans une enclave. Un processus unique est une limitation actuelle conçue autour de la haute sécurité. Toutefois, des activateurs de conteneurs confidentiels peuvent avoir d’autres implémentations pour surmonter cette limitation.
   - question: Est-ce que je dois monter les volumes de pilote dans mon fichier yaml de déploiement ?
-    answer: "Non. Le produit fournit l’add-on ACC qui comprend le (confcom) qui vous aidera. Explorez les détails du déploiement [ici](confidential-nodes-aks-overview.md).  \n        \n"
+    answer: "Non. Le produit fournit l’extension ACC qui comprend le (confcom) pour vous aider à le faire. Explorez les détails du déploiement [ici](confidential-enclave-nodes-aks-get-started.md).  \n        \n"
   - question: Pouvez-vous modifier la version actuelle du pilote Intel SGX DCAP sur AKS ?
     answer: "Non. Pour effectuer des installations personnalisées, nous vous recommandons de choisir des déploiements de [nœuds Worker d’informatique confidentielle de moteur AKS](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md). \n"
   - question: Est-ce que seules les images signées et approuvées sont chargées dans l’enclave pour le traitement confidentiel ?
     answer: "Non en mode natif lors de l’initialisation de l’enclave, mais oui jusqu’à ce que la signature du processus d’attestation puisse être validée. Vous trouverez des références [ici](../attestation/basic-concepts.md#benefits-of-policy-signing). \n"
   - question: La signature de conteneurs est-elle possible pour assurer la protection de l’intégrité du code dans les conteneurs confidentiels ?
-    answer: "Les conteneurs confidentiels vous permettent de signer le code de l’enclave, mais pas les conteneurs Docker eux-mêmes. Avec la signature du code d’enclave (qui est généralement votre code d’application de base en Java, Python, etc.), vous pouvez vérifier par le biais de l’attestation les détails MRSIGNER du code d’enclave avant de pouvoir faire confiance au code et à l’environnement d’exécution par le biais du flux d’attestation. \n"
+    answer: "Les conteneurs confidentiels vous permettent de signer le code d’enclave, mais pas les conteneurs Docker eux-mêmes. Avec la signature du code d’enclave (qui est généralement votre code d’application de base en Java, Python, etc.), vous pouvez vérifier dans l’attestation les détails MRSIGNER du code d’enclave avant de pouvoir faire confiance au code et à l’environnement d’exécution dans le flux d’attestation. \n"
 additionalContent: >-
   ## <a name="next-steps"></a>Étapes suivantes
 

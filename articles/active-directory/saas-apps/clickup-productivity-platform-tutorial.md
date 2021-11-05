@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 25e0b4d072f797ad7263c71645b30cbe1fa75131
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bf21fbec454dc16e00c67bb9885e5694ad73ed57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124817556"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Tutoriel : Intégration d’Azure Active Directory à ClickUp Productivity Platform
 
@@ -130,7 +130,7 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l'authentification 
 
     a. Cliquez sur **Copy** (Copier) pour copier la valeur de l’ID d’entité et collez-la dans la zone de texte **Identificateur (ID d’entité)** de la section **Configuration SAML de base** du portail Azure.
 
-    b. Dans la zone de texte **Azure Federation Metadata URL** (URL des métadonnées de fédération d’application Azure), collez la valeur de l’URL des métadonnées de fédération d’application que vous avez copiée à partir du portail Azure, puis cliquez sur **Save** (Enregistrer).
+    b. Dans la zone de texte **URL des métadonnées de la fédération Azur**, collez la valeur de l’URL des métadonnées de la fédération de l’application que vous avez copiée à partir du Portail Azure, puis cliquez sur **Enregistrer**.
 
 5. Pour terminer l’installation, cliquez sur **Authenticate With Microsoft to complete setup** (S’authentifier auprès de Microsoft pour terminer l’installation) et authentifiez-vous avec un compte Microsoft.
 

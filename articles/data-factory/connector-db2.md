@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: def376920d111f915edfa7f367fcbedd4bc370f4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5fb5a7c83aba80d5eb58bac4437121ce37b6345a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778055"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024388"
 ---
 # <a name="copy-data-from-db2-using-azure-data-factory-or-synapse-analytics"></a>Copier des données de DB2 à l’aide d’Azure Data Factory ou de Synapse Analytics
 > [!div class="op_single_selector" title1="Sélectionnez la version du service Data Factory que vous utilisez :"]
@@ -108,7 +108,7 @@ Propriétés courantes dans la chaîne de connexion :
 | certificateCommonName | Lorsque vous utilisez le chiffrement SSL (Secure Sockets Layer) ou TLS (Transport Layer Security), vous devez entrer une valeur pour le nom commun du certificat. | Non |
 
 > [!TIP]
-> Si vous recevez un message d’erreur indiquant `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, la raison est qu’un package nécessaire n’est pas créé pour l’utilisateur. Par défaut, le service tente de créer le package sous le regroupement nommé en tant qu’utilisateur que vous avez utilisé pour vous connecter à DB2. Spécifiez la propriété du regroupement des packages pour indiquer à quel endroit vous souhaitez que le service crée les packages nécessaires lors de l’interrogation de la base de données.
+> Si vous recevez un message d’erreur indiquant `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, la raison est qu’un package nécessaire n’est pas créé pour l’utilisateur. Par défaut, le service tente de créer le package sous la collection désignée à l’aide du nom de l’utilisateur dont vous vous êtes servi pour vous connecter à DB2. Spécifiez la propriété du regroupement des packages pour indiquer à quel endroit vous souhaitez que le service crée les packages nécessaires lors de l’interrogation de la base de données.
 
 **Exemple :**
 

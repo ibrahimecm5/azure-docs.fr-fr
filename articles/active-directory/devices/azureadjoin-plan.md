@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3eb56d9de903fc6013600908e3b44e8e0f547ed
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 28a6ca16de88df5bde2b003879814c032ed0c519
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618112"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049954"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procédure : Planifier votre implémentation de la jointure d’Azure AD
 
@@ -84,7 +84,7 @@ Si votre fournisseur d’identité ne prend pas en charge ces protocoles, la jon
 
 Vous ne pouvez pas utiliser l’authentification basée sur des cartes à puce ou sur des certificats pour joindre des appareils à Azure AD. Cependant, vous pouvez utiliser des cartes à puce pour vous connecter à des appareils joints à Azure AD si vous avez configuré AD FS.
 
-**Recommandation :** Implémentez Windows Hello Entreprise pour l'authentification forte sans mot de passe à des appareils Windows 10.
+**Recommandation :** Implémentez Windows Hello Entreprise pour une authentification forte sans mot de passe sur des appareils Windows 10 et ultérieur.
 
 ### <a name="user-configuration"></a>Configuration des utilisateurs
 
@@ -103,8 +103,8 @@ Les modifications d’UPN ne sont prises en charge qu’à partir de la mise à 
 
 La jonction Azure AD :
 
-- Est applicable seulement aux appareils Windows 10. 
-- N’est pas applicable aux versions antérieures de Windows ou à d’autres systèmes d’exploitation. Si vous avez des appareils Windows 7/8.1, vous devez les mettre à niveau vers Windows 10 pour déployer la jonction Azure AD.
+- S’applique aux appareils Windows 10 et Windows 11. 
+- N’est pas applicable aux versions antérieures de Windows ou à d’autres systèmes d’exploitation. Si vous avez des appareils Windows 7/8.1, vous devez les mettre à niveau vers Windows 10 pour déployer la jonction à Azure AD.
 - Est prise en charge pour les modules TPM 2.0 compatibles FIPS, mais pas pour les modules TPM 1.2. Si vos appareils sont dotés de modules TPM 1.2 compatibles FIPS, vous devez les désactiver avant de procéder à la jonction Azure AD. Microsoft ne propose aucun outil permettant de désactiver le mode FIPS pour les modules TPM car il dépend du fabricant de ces modules. Pour obtenir de l'aide, contactez votre fabricant OEM.
  
 **Recommandation :** Utilisez toujours la version la plus récente de Windows 10 pour bénéficier de fonctionnalités à jour.

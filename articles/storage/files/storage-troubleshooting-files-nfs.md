@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: e2cdcf3b42fbb71751644efbaa394c51d2f861fc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 730b7344a213922bd87d5efa3a659d352ff8624f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258322"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019137"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Résolvez les problèmes liés au partage de fichiers Azure NFS
 
@@ -40,7 +40,7 @@ Vérifiez qu’idmapping est désactivé et que rien n’est réactivé, puis pr
 - Démonter le partage
 - Désactiver id-mapping avec # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping
 - Remonter le partage
-- Si vous exécutez rsync, exécutez rsync avec l’argument « —numeric-ids » à partir d’un répertoire ne contenant aucun nom de répertoire ou de fichier incorrect.
+- Si vous exécutez rsync, exécutez rsync avec l’argument "—numeric-ids" depuis un répertoire qui n’a pas de nom de répertoire/fichier incorrect.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Incapacité à créer un partage NFS
 
@@ -122,7 +122,7 @@ Le chiffrement double n’est pas encore pris en charge pour les partages NFS. A
 
 Désactivez le transfert sécurisé requis dans le panneau de configuration de votre compte de stockage.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Capture d’écran du panneau de configuration du compte de stockage : désactivation du transfert sécurisé requis.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Capture d’écran du panneau de configuration du compte de stockage : désactivation du transfert sécurisé requis.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Cause 3 : Le package nfs-common n’est pas installé
 Avant d’exécuter la commande de montage, installez le package en exécutant la commande spécifique à la distribution, ci-dessous.
@@ -157,43 +157,14 @@ Le protocole NFS communique avec son serveur sur le port 2049. Assurez-vous que
 
 Vérifiez que le port 2049 est ouvert sur votre client en exécutant la commande suivante : `telnet <storageaccountnamehere>.file.core.windows.net 2049`. Si le port n’est pas ouvert, ouvrez-le.
 
-## <a name="ls-list-files-command-shows-incorrectinconsistent-results"></a>La commande ls (list files) affiche des résultats incorrects/incohérents
-
-### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>Cause : Incohérence entre les valeurs mises en cache et les valeurs de métadonnées de fichier serveur lorsque le descripteur de fichier est ouvert
-Parfois, la commande « list files », ou « df » ou « fins » affiche une taille différente de zéro comme prévu et, à la place, la commande « list files » suivante affiche la taille 0 ou un ancien horodatage. Il s’agit d’un problème connu en raison d’une mise en cache incohérente des valeurs de métadonnées de fichier lorsque le fichier est ouvert. Vous pouvez utiliser l’une des solutions de contournement suivantes pour résoudre ce problème :
-
-#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>Solution de contournement 1 : Pour récupérer la taille du fichier, utilisez wc -c au lieu de ls -l
-L’utilisation de wc -c récupère toujours la valeur la plus récente à partir du serveur et n’entraîne pas d’incohérence.
-
-#### <a name="workaround-2-use-noac-mount-flag"></a>Solution de contournement 2 : Utiliser l’indicateur de montage « noac »
-Remontez le système de fichiers à l’aide de l’indicateur « noac » avec votre commande mount. Cette opération récupère toujours toutes les valeurs de métadonnées du serveur. Il peut y avoir une surcharge de performances mineure pour toutes les opérations de métadonnées si cette solution de contournement est utilisée.
-
-
-## <a name="unable-to-mount-an-nfs-share-that-is-restored-back-from-soft-deleted-state"></a>Impossible de monter un partage NFS restauré à partir d’un état de suppression réversible
-La préversion présente un problème connu, à savoir que les partages NFS sont supprimés de manière réversible bien que la plateforme ne le prenne pas en charge. Ces partages seront supprimés lors de son expiration. Vous pouvez également les supprimer manuellement à l’aide du flux « annuler la suppression du partage + désactiver la suppression réversible + supprimer le partage ». Cela étant, si vous tentez de récupérer et d’utiliser les partages, vous recevrez une erreur d’accès refusé, d’autorisation refusée ou une erreur d’E/S NFS sur le client.
-
-## <a name="ls-la-throws-io-error"></a>La commande ls –la lève une erreur d’E/S
-
-### <a name="cause-a-known-bug-that-has-been-fixed-in-newer-linux-kernel"></a>Cause : bogue connu qui a été résolu dans un noyau Linux plus récent
-Sur des noyaux plus anciens, NFS4ERR_NOT_SAME provoque l’arrêt de l’énumération du client (au lieu d’un redémarrage pour le répertoire). Cela pourrait débloquer immédiatement des noyaux plus récents mais, malheureusement, pour des distributions comme SUSE, il n’existe aucun correctif pour SUSE Enterprise Linux Server 12 ou 15 susceptible de mettre à jour le noyau pour ce correctif.  Le correctif est disponible dans le noyau 5.12+.  Le correctif pour le côté client est décrit ici [PATCH v3 15/17 NFS: Handle NFS4ERR_NOT_SAME and NFSERR_BADCOOKIE from readdir calls](https://www.spinics.net/lists/linux-nfs/msg80096.html).
-
-#### <a name="workaround-use-latest-kernel-workaround-while-the-fix-reaches-the-region-hosting-your-storage-account"></a>Solution de contournement : utilisez la dernière solution de contournement du noyau pendant que le correctif atteint la région hébergeant votre compte de stockage.
-Le correctif est disponible dans le noyau 5.12+.
-
 ## <a name="ls-hangs-for-large-directory-enumeration-on-some-kernels"></a>ls suspend une énumération de répertoire de grande taille sur certains noyaux
 
 ### <a name="cause-a-bug-was-introduced-in-linux-kernel-v511-and-was-fixed-in-v5125"></a>Cause : un bogue a été introduit dans le noyau Linux v 5.11 et a été corrigé dans v 5.12.5.  
-Certaines versions du noyau contiennent un bogue qui a pour effet que les affichages de listes de répertoires entraînent des séquences de READDIR sans fin. Les répertoires très petits dans lesquels toutes les entrées peuvent être expédiées en un seul appel ne présentent pas le problème.
+Certaines versions du noyau contiennent un bogue où les listes de répertoires entraînent une séquence de READDIR sans fin. Les répertoires très petits dans lesquels toutes les entrées peuvent être expédiées en un seul appel ne présentent pas le problème.
 Le bogue a été introduit dans le noyau Linux v 5.11 et a été corrigé dans v 5.12.5. Ainsi, toutes les versions intermédiaires contiennent le bogue. RHEL 8.4 est connu pour avoir cette version de noyau.
 
 #### <a name="workaround-downgrading-or-upgrading-the-kernel"></a>Solution de contournement : mise à niveau du noyau vers une version antérieure ou ultérieure
-La rétrogradation ou la mise à niveau du noyau vers quoi que ce soit en dehors du noyau affecté permet de résoudre le problème.
-
-## <a name="df-and-find-command-shows-inconsistent-results-on-clients-other-than-where-the-writes-happen"></a>Les commandes df et find affichent des résultats incohérents sur des clients autres que ceux où les écritures ont lieu
-Il s’agit d’un problème connu. Microsoft travaille activement à sa résolution.
-
-## <a name="application-fails-with-error-underlying-file-changed-by-an-external-force-when-using-exclusive-open"></a>L’application échoue et affiche un message d’erreur indiquant qu’un fichier sous-jacent a été modifié par une force externe lors de l’utilisation d’une OUVERTURE exclusive 
-Il s’agit d’un problème connu. Microsoft travaille activement à sa résolution.
+La rétrogradation ou la mise à niveau du noyau vers tout ce qui est en dehors du noyau affecté permet de résoudre le problème.
 
 ## <a name="need-help-contact-support"></a>Vous avez besoin d’aide ? Contactez le support technique.
 Si vous avez encore besoin d’aide, [contactez le support technique](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pour résoudre rapidement votre problème.

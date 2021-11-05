@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 10/26/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 580dcb11ae04aaae78d2c15f24c2c08d1df6158d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a27f2432ec309f6ff9203921122ddd9f6b1860eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061843"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086224"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Migrer vers le Pare-feu Azure Premium
 
@@ -34,6 +34,21 @@ Le débit du pare-feu peut être inférieur à 30 Gbits/s quand une ou plusieur
 ## <a name="downtime"></a>Temps d’arrêt
 
 Effectuez la migration de votre pare-feu pendant une période de maintenance planifiée, car il y aura un certain temps d’arrêt pendant la migration.
+
+## <a name="migrate-classic-rules-to-standard-policy"></a>Migrer les règles classiques vers une stratégie standard
+
+Pendant votre processus de migration, vous devrez peut-être migrer vos règles de pare-feu classiques vers une stratégie standard. Vous pouvez réaliser cette opération à l’aide du Portail Azure :
+
+1. Dans le portail Azure, sélectionnez votre pare-feu standard. Sur la page **Vue d’ensemble**, sélectionnez **Migrer vers une stratégie de pare-feu**.
+
+   :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="Migrer vers une stratégie de pare-feu":::
+
+1. Sur la page **Migrer vers une stratégie de pare-feu**, sélectionnez **Vérifier + créer**.
+1. Sélectionnez **Create** (Créer).
+
+   Le déploiement prend quelques minutes.
+
+Vous pouvez également créer des stratégies en migrant des règles classiques existantes du Pare-feu Azure àl’aide d’Azure PowerShell. Pour plus d’informations, consultez [Migrer des configurations Pare-feu Azure vers une stratégie Pare-feu Azure à l’aide de PowerShell](../firewall-manager/migrate-to-policy.md).
 
 ## <a name="migrate-an-existing-policy-using-azure-powershell"></a>Migrer une stratégie existante à l’aide d’Azure PowerShell
 
@@ -169,45 +184,50 @@ TransformPolicyToPremium -Policy $policy
 
 ```
 
-## <a name="migrate-an-existing-standard-firewall-using-the-azure-portal"></a>Migrer un pare-feu standard existant à l’aide du portail Azure
+## <a name="migrate-azure-firewall-using-stopstart"></a>Migrer le pare-feu Azure à l’aide d’une opération d’arrêt/démarrage
 
-Cet exemple montre comment utiliser le portail Azure pour migrer un pare-feu standard (règles classiques) vers le Pare-feu Azure Premium avec une stratégie Premium.
+Si vous utilisez la référence SKU standard du Pare-feu Azure avec la stratégie de pare-feu, vous pouvez utiliser la méthode Allouer/Libérer pour migrer votre référence SKU de pare-feu vers Premium. Cette approche de migration est prise en charge sur les pare-feu de hub sécurisé et de hub de réseau virtuel. Lorsque vous migrez un déploiement de hub sécurisé, l’adresse IP publique du pare-feu est conservée.
+ 
+### <a name="migrate-a-vnet-hub-firewall"></a>Migrer un pare-feu de hub de réseau virtuel
 
-1. Dans le portail Azure, sélectionnez votre pare-feu standard. Sur la page **Vue d’ensemble**, sélectionnez **Migrer vers une stratégie de pare-feu**.
+- Libérer le pare-feu standard 
 
-   :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="Migrer vers une stratégie de pare-feu":::
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Deallocate()
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
-1. Sur la page **Migrer vers une stratégie de pare-feu**, sélectionnez **Vérifier + créer**.
-1. Sélectionnez **Create** (Créer).
 
-   Le déploiement prend quelques minutes.
-1. Utilisez le `Transform-Policy.ps1`script [Azure PowerShell ](#migrate-an-existing-policy-using-azure-powershell) pour transformer cette nouvelle stratégie standard en stratégie Premium.
-1. Dans le portail, sélectionnez votre ressource de pare-feu standard. 
-1. Sous **Automation**, sélectionnez **Exporter le modèle**. Laissez cet onglet de navigateur ouvert. Vous y reviendrez plus tard.
-   > [!TIP]
-   > Pour vous assurer de ne pas perdre le modèle, téléchargez-le et enregistrez-le au cas où votre onglet de navigateur venait à être fermé ou actualisé.
-1. Ouvrez un nouvel onglet de navigateur, accédez au portail Azure et ouvrez le groupe de ressources contenant votre pare-feu.
-1. Supprimez l’instance de pare-feu standard existante.
+- Allouer le pare-feu Premium
 
-   Ceci prend quelques minutes.
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Sku.Tier="Premium"
+   $azfw.Allocate($vnet,$pip, $mgmtpip)
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
-1. Revenez à l’onglet du navigateur avec le modèle exporté.
-1. Sélectionnez **Déployer**, puis dans la page **Déploiement personnalisé**, sélectionnez **Modifier un modèle**.
-1. Modifier le texte du modèle :
-   
-   1. Sous la ressource `Microsoft.Network/azureFirewalls`, sous `Properties`, `sku`, basculez `tier` de « Standard » vers « Premium ».
-   1. Sous le modèle `Parameters` , modifiez `defaultValue` pour `firewallPolicies_FirewallPolicy_,<your policy name>_externalid` à partir de :
-      
-       `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>"`
+### <a name="migrate-a-secure-hub-firewall"></a>Migrer un pare-feu de hub sécurisé
 
-      to:
+La version minimale requise de Azure PowerShell est 6.5.0. Pour plus d’informations, consultez [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0).
 
-      `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>_premium"`
-1. Sélectionnez **Enregistrer**.
-1. Sélectionnez **Vérifier + créer**.
-1. Sélectionnez **Create** (Créer).
+- Libérer le pare-feu standard
 
-Une fois le déploiement terminé, vous pouvez configurer toutes les nouvelles fonctionnalités du Pare-feu Azure Premium.
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Deallocate()
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
+
+- Allouer le pare-feu Premium
+
+   ```azurepowershell
+   $azfw = Get-AzFirewall -Name -Name "<firewall-name>" -ResourceGroupName "<resource-group-name>"
+   $azfw.Sku.Tier="Premium"
+   $azfw.Allocate($hub.id)
+   Set-AzFirewall -AzureFirewall $azfw
+   ```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

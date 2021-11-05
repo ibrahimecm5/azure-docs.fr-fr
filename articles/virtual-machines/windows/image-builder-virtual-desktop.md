@@ -1,6 +1,6 @@
 ---
-title: Image Builder – Créer une image Windows Virtual Desktop
-description: Créez une image de machine virtuelle Azure de Windows Virtual Desktop à l’aide d’Azure Image Builder dans PowerShell.
+title: 'Image Builder : Créer une image Azure Virtual Desktop'
+description: Créez une image de machine virtuelle Azure pour Windows Virtual Desktop à l’aide d’Azure Image Builder dans PowerShell.
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: cynthn
@@ -10,18 +10,18 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fdda25ecc9d111d626b7c9836757c31d4972c25f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 046bec93d3a9ae0ffef8b189470f412ab357943d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692446"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018486"
 ---
-# <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Créer une image Windows Virtual Desktop à l’aide d’Azure VM Image Builder et PowerShell
+# <a name="create-a-azure-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Créer une image Windows Virtual Desktop à l’aide d’Azure VM Image Builder et PowerShell
 
 **S’applique à :** :heavy_check_mark : Machines virtuelles Windows 
 
-Cet article vous montre comment créer une image Windows Virtual Desktop avec ces personnalisations :
+Cet article vous montre comment créer une image Azure Virtual Desktop avec ces personnalisations :
 
 * Installation de [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1).
 * Exécution d’un [script d’optimisation de Windows Virtual Desktop](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) provenant du référentiel de la communauté.

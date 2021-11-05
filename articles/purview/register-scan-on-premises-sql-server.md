@@ -1,77 +1,78 @@
 ---
-title: Inscrire et analyser un serveur SQL local
-description: Ce tutoriel explique comment analyser un serveur SQL local à l’aide d’un runtime d’intégration auto-hébergé dans Azure Purview.
+title: Se connecter à des instances de serveur SQL local et les gérer
+description: Ce guide explique comment se connecter à des instances de serveur SQL local dans Azure Purview, et comment utiliser les fonctionnalités de Purview pour analyser et gérer votre source de serveur SQL local.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 1921349be07d129e9889da3af6c72a7b25a58ff5
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: d517f3a54963f08a4607e7f95cb5cffbea2486d9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074434"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010989"
 ---
-# <a name="register-and-scan-an-on-premises-sql-server"></a>Inscrire et analyser un serveur SQL local
+# <a name="connect-to-and-manage-an-on-premises-sql-server-instance-in-azure-purview"></a>Se connecter à une instance de serveur SQL local et la gérer dans Azure Purview
 
-Cet article explique comment inscrire une source de données de serveur SQL dans Purview et configurer une analyse sur celle-ci.
+Cet article explique comment inscrire des instances de serveur SQL local, et comment s’authentifier auprès d’une instance de serveur SQL local et interagir avec elle dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
-La source de données locale de serveur SQL prend en charge les fonctionnalités suivantes :
-
-- **Analyses complètes et incrémentielles** pour capturer des métadonnées et une classification dans un réseau local ou un serveur SQL installé sur une machine virtuelle Azure.
-
-- **Traçabilité** entre les ressources de données pour les activités de copie/dataflow d’ADF.
-
-La source de données locale du serveur SQL prend en charge :
-
-- toutes les versions, de SQL Server 2019 à SQL Server 2000 ;
-
-- méthode d’authentification Authentification SQL
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non| [Traçabilité des données Data Factory](how-to-link-azure-data-factory.md) |
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Avant d’inscrire des sources de données, créez un compte Azure Purview. Pour plus d’informations sur la création d’un compte Purview, consultez [Démarrage rapide : Créer un compte Azure Purview](create-catalog-portal.md).
+* Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Configurez un [runtime d’intégration auto-hébergé](manage-integration-runtimes.md) pour analyser la source de données.
+* Une [ressource Purview](create-catalog-portal.md) active.
 
-## <a name="setting-up-authentication-for-a-scan"></a>Configuration de l’authentification pour une analyse
+* Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
+
+* Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717). Pour plus d’informations, consultez [le guide Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+
+## <a name="register"></a>Inscrire
+
+Cette section explique comment inscrire une instance de serveur SQL local dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
+
+### <a name="authentication-for-registration"></a>Authentification pour l’inscription
 
 Il n’existe qu’une seule façon de configurer l’authentification pour un serveur SQL local :
 
 - Authentification SQL
 
-### <a name="sql-authentication"></a>Authentification SQL
+#### <a name="sql-authentication-to-register"></a>Authentification SQL pour l’inscription
 
 Le compte SQL doit avoir accès à la base de données **MASTER**. Cela est dû au fait que `sys.databases` se trouve dans la base de données MASTER. Le scanneur Purview doit énumérer `sys.databases` pour rechercher toutes les bases de données SQL sur le serveur.
 
-#### <a name="creating-a-new-login-and-user"></a>Création d’une connexion et d’un utilisateur
+##### <a name="creating-a-new-login-and-user"></a>Création d’une connexion et d’un utilisateur
 
 Si vous souhaitez créer une connexion et un utilisateur pour pouvoir analyser votre serveur SQL, procédez comme suit :
 
 > [!Note]
-   > Toutes les étapes ci-dessous peuvent être exécutées à l’aide du code fourni [ici](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql).
+> Toutes les étapes ci-dessous peuvent être exécutées à l’aide du code fourni [ici](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql).
 
 1. Accédez à SQL Server Management Studio (SSMS), connectez-vous au serveur, accédez à la sécurité, sélectionnez et maintenez l’appui (ou cliquez avec le bouton droit) sur la connexion et créez une connexion. Veillez à sélectionner l’authentification SQL.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="Créer une connexion et un utilisateur.":::
 
-2. Sélectionnez Rôles serveur dans le volet de navigation gauche et vérifiez que le rôle public est attribué.
+1. Sélectionnez Rôles serveur dans le volet de navigation gauche et vérifiez que le rôle public est attribué.
 
-3. Sélectionnez Mappage d’utilisateur dans le volet de navigation de gauche, sélectionnez toutes les bases de données dans le mappage et sélectionnez le rôle de base de données : **db_datareader**.
+1. Sélectionnez Mappage d’utilisateur dans le volet de navigation de gauche, sélectionnez toutes les bases de données dans le mappage et sélectionnez le rôle de base de données : **db_datareader**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="mappage d’utilisateur.":::
 
-4. Sélectionnez OK pour enregistrer.
+1. Sélectionnez OK pour enregistrer.
 
-5. Accédez de nouveau à l’utilisateur que vous avez créé, en sélectionnant et en maintenant l’appui (ou en cliquant avec le bouton droit) et en sélectionnant **Propriétés**. Entrez un nouveau mot de passe et confirmez-le. Sélectionnez « Spécifier l’ancien mot de passe », puis entrez l’ancien mot de passe. **Vous devez modifier votre mot de passe dès que vous créez une connexion.**
+1. Accédez de nouveau à l’utilisateur que vous avez créé, en sélectionnant et en maintenant l’appui (ou en cliquant avec le bouton droit) et en sélectionnant **Propriétés**. Entrez un nouveau mot de passe et confirmez-le. Sélectionnez « Spécifier l’ancien mot de passe », puis entrez l’ancien mot de passe. **Vous devez modifier votre mot de passe dès que vous créez une connexion.**
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/change-password.png" alt-text="modifier un mot de passe.":::
 
-#### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>Stockage de votre mot de passe de connexion SQL dans un coffre de clés et création d’informations d’identification dans Purview
+##### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>Stockage de votre mot de passe de connexion SQL dans un coffre de clés et création d’informations d’identification dans Purview
 
 1. Accédez à votre coffre de clés dans le portail Azure1. Sélectionnez **Paramètres > Secrets**.
 1. Sélectionnez **+ Générer/importer**, puis entrez le **Nom** et la **Valeur** en tant que *mot de passe* de votre connexion au serveur SQL.
@@ -79,7 +80,7 @@ Si vous souhaitez créer une connexion et un utilisateur pour pouvoir analyser v
 1. Si votre coffre de clés n’est pas encore connecté à Purview, vous devrez [créer une connexion de coffre de clés](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. Enfin, [créez de nouvelles informations d’identification](manage-credentials.md#create-a-new-credential) à l’aide du **nom d’utilisateur** et du **mot de passe** pour configurer votre analyse.
 
-## <a name="register-a-sql-server-data-source"></a>Inscrire une source de données de serveur SQL
+### <a name="steps-to-register"></a>Procédure d’inscription
 
 1. Accédez à votre compte Purview.
 
@@ -93,11 +94,15 @@ Si vous souhaitez créer une connexion et un utilisateur pour pouvoir analyser v
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/set-up-sql-data-source.png" alt-text="Configurer la source de données SQL.":::
 
-1. Fournissez un nom convivial. Il s’agit d’un nom court que vous pouvez utiliser pour identifier votre serveur et le point de terminaison de serveur. 
- 
+1. Fournissez un nom convivial. Il s’agit d’un nom court que vous pouvez utiliser pour identifier votre serveur et le point de terminaison de serveur.
+
 1. Sélectionnez **Terminer** pour inscrire la source de données.
 
-## <a name="creating-and-running-a-scan"></a>Création et exécution d’une analyse
+## <a name="scan"></a>Analyser
+
+Suivez les étapes ci-dessous pour analyser des instances de serveur SQL local afin d’identifier automatiquement des ressources et classifier vos données. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md)
+
+### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 
 Pour créer une analyse et l’exécuter, procédez comme suit :
 
@@ -129,5 +134,8 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Navigation dans le catalogue de données Azure Purview](how-to-browse-catalog.md)
-- [Recherche dans le catalogue de données Azure Purview](how-to-search-catalog.md)
+Maintenant que vous avez inscrit votre source, suivez les guides ci-dessous pour en savoir plus sur Purview et sur vos données.
+
+- [Insights de données dans Azure Purview](concept-insights.md)
+- [Lignage dans Azure Purview](catalog-lineage-user-guide.md)
+- [Rechercher dans un catalogue de données](how-to-search-catalog.md)

@@ -6,130 +6,80 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: b73c46896c142b76e644eed9815ae4d5e76b6f85
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 27a553bee765dd1369490cd9f6825cc44c48c59a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227262"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065662"
 ---
 # <a name="open-service-mesh-osm-aks-add-on-troubleshooting-guides"></a>Guides de résolution des problèmes du module complémentaire Open Service Mesh (OSM) AKS
 
 Lorsque vous déployez le module complémentaire OSM AKS, vous risquez de rencontrer des problèmes liés à la configuration de la maille du service. Le guide suivant vous aidera à résoudre les erreurs et les problèmes courants.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
 ## <a name="verifying-and-troubleshooting-osm-components"></a>Vérification et résolution des problèmes des composants OSM
 
-### <a name="check-osm-controller-deployment"></a>Vérifier le déploiement du contrôleur OSM
+### <a name="check-osm-controller-deployment-pod-and-service"></a>Vérifier le déploiement, le pod et le service du contrôleur OSM
 
 ```azurecli-interactive
-kubectl get deployment -n kube-system --selector app=osm-controller
+kubectl get deployment,pod,service -n kube-system --selector app=osm-controller
 ```
 
 Un contrôleur OSM sain ressemble à ceci :
 
 ```Output
-NAME             READY   UP-TO-DATE   AVAILABLE   AGE
-osm-controller   1/1     1            1           59m
-```
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/osm-controller   2/2     2            2           3m4s
 
-### <a name="check-the-osm-controller-pod"></a>Vérifier le pod du contrôleur OSM
+NAME                                  READY   STATUS    RESTARTS   AGE
+pod/osm-controller-65bd8c445c-zszp4   1/1     Running   0          2m
+pod/osm-controller-65bd8c445c-xqhmk   1/1     Running   0          16s
 
-```azurecli-interactive
-kubectl get pods -n kube-system --selector app=osm-controller
-```
-
-Un pod OSM sain ressemble à ceci :
-
-```Output
-NAME                            READY   STATUS    RESTARTS   AGE
-osm-controller-b5bd66db-wglzl   0/1     Evicted   0          61m
-osm-controller-b5bd66db-wvl9w   1/1     Running   0          31m
-```
-
-Même si un contrôleur a été expulsé à un moment donné, un autre indique READY 1/1 et Running avec 0 redémarrage. Si la colonne READY indique un résultat différent de 1/1, le maillage de services est en panne.
-La colonne READY avec 0/1 indique que le conteneur du plan de contrôle rencontre un incident. Nous devons donc récupérer les journaux. Consultez la section Obtenir les journaux du contrôleur OSM du Centre de support Azure ci-dessous. La colonne READY avec un nombre supérieur à 1 après le signe « / » indique que des side-cars sont installés. Le contrôleur OSM ne fonctionnera probablement pas si des side-cars lui sont attachés.
-
-### <a name="check-osm-controller-service"></a>Vérifier le service du contrôleur OSM
-
-```azurecli-interactive
-kubectl get service -n kube-system osm-controller
-```
-
-Un service de contrôleur OSM sain ressemble à ceci :
-
-```Output
-NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)              AGE
-osm-controller   ClusterIP   10.0.31.254   <none>        15128/TCP,9092/TCP   67m
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                       AGE
+service/osm-controller   ClusterIP   10.96.185.178   <none>        15128/TCP,9092/TCP,9091/TCP   3m4s
+service/osm-validator    ClusterIP   10.96.11.78     <none>        9093/TCP                      3m4s
 ```
 
 > [!NOTE]
-> La valeur pour CLUSTER-IP sera différente. Les propriétés NAME et PORT(S) du service doivent être les mêmes que dans l’exemple ci-dessus.
+> Pour les services osm-controller, CLUSTER-IP est différent. Les propriétés NAME et PORT(S) du service doivent être les mêmes que dans l’exemple ci-dessus.
 
-### <a name="check-osm-controller-endpoints"></a>Vérifier les points de terminaison du contrôleur OSM
-
-```azurecli-interactive
-kubectl get endpoints -n kube-system osm-controller
-```
-
-Un point de terminaison de contrôleur OSM sain ressemble à ceci :
-
-```Output
-NAME             ENDPOINTS                              AGE
-osm-controller   10.240.1.115:9092,10.240.1.115:15128   69m
-```
-
-### <a name="check-osm-injector-deployment"></a>Vérifier le déploiement de l’injecteur OSM
+### <a name="check-osm-injector-deployment-pod-and-service"></a>Vérifier le déploiement, le pod et le service de l’injecteur OSM
 
 ```azurecli-interactive
-kubectl get pod -n kube-system --selector app=osm-injector
+kubectl get deployment,pod,service -n kube-system --selector app=osm-injector
 ```
 
-Un déploiement d’injecteur OSM sain ressemble à ceci :
+Un injecteur OSM sain ressemble à ceci :
 
 ```Output
-NAME                            READY   STATUS    RESTARTS   AGE
-osm-injector-5986c57765-vlsdk   1/1     Running   0          73m
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/osm-injector   2/2     2            2           4m37s
+
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/osm-injector-5c49bd8d7c-b6cx6   1/1     Running   0          4m21s
+pod/osm-injector-5c49bd8d7c-dx587   1/1     Running   0          4m37s
+
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/osm-injector   ClusterIP   10.96.236.108   <none>        9090/TCP   4m37s
 ```
 
-### <a name="check-osm-injector-pod"></a>Vérifier le pod de l’injecteur OSM
+### <a name="check-osm-bootstrap-deployment-pod-and-service"></a>Vérifier le déploiement, le pod et le service du démarrage OSM
 
 ```azurecli-interactive
-kubectl get pod -n kube-system --selector app=osm-injector
+kubectl get deployment,pod,service -n kube-system --selector app=osm-bootstrap
 ```
 
-Un pod d’injecteur OSM sain ressemble à ceci :
+Un démarrage OSM sain ressemble à ceci :
 
 ```Output
-NAME                            READY   STATUS    RESTARTS   AGE
-osm-injector-5986c57765-vlsdk   1/1     Running   0          73m
-```
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/osm-bootstrap   1/1     1            1           5m25s
 
-### <a name="check-osm-injector-service"></a>Vérifier le service de l’injecteur OSM
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod/osm-bootstrap-594ffc6cb7-jc7bs   1/1     Running   0          5m25s
 
-```azurecli-interactive
-kubectl get service -n kube-system osm-injector
-```
-
-Un service d’injecteur OSM sain ressemble à ceci :
-
-```Output
-NAME           TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-osm-injector   ClusterIP   10.0.39.54   <none>        9090/TCP   75m
-```
-
-### <a name="check-osm-endpoints"></a>Vérifier les points de terminaison OSM
-
-```azurecli-interactive
-kubectl get endpoints -n kube-system osm-injector
-```
-
-Un point de terminaison OSM sain ressemble à ceci :
-
-```Output
-NAME           ENDPOINTS           AGE
-osm-injector   10.240.1.172:9090   75m
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+service/osm-bootstrap   ClusterIP   10.96.250.208   <none>        9443/TCP,9095/TCP   5m25s
 ```
 
 ### <a name="check-validating-and-mutating-webhooks"></a>Vérifier les webhooks Validating et Mutating
@@ -142,7 +92,7 @@ Un webhook Validating OSM sain ressemble à ceci :
 
 ```Output
 NAME              WEBHOOKS   AGE
-aks-osm-webhook-osm   1      81m
+aks-osm-validator-mesh-osm   1      81m
 ```
 
 ```azurecli-interactive
@@ -190,59 +140,6 @@ Un webhook Mutating bien configuré doit ressembler à ceci :
 }
 ```
 
-### <a name="check-whether-osm-controller-has-given-the-validating-or-mutating-webhook-a-ca-bundle"></a>Vérifiez si le contrôleur OSM a donné au webhook Validating (or Mutating) un pack d’autorité de certification.
-
-> [!NOTE]
-> À partir de la version 0.8.2, il est important de savoir qu’AKS RP installe le webhook Validating, que l’outil de rapprochement AKS s’assure de son existence, mais que le contrôleur OSM est celui qui remplit le pack de l’autorité de certification.
-
-```azurecli-interactive
-kubectl get ValidatingWebhookConfiguration aks-osm-webhook-osm -o json | jq -r '.webhooks[0].clientConfig.caBundle' | wc -c
-```
-
-```azurecli-interactive
-kubectl get MutatingWebhookConfiguration aks-osm-webhook-osm -o json | jq -r '.webhooks[0].clientConfig.caBundle' | wc -c
-```
-
-```Example Output
-1845
-```
-
-Ce nombre indique le nombre d’octets ou la taille du pack de l’autorité de certification. S’il est vide, égal à 0 ou inférieur à 1000, cela signifie que le pack de l’autorité de certification n’est pas correctement approvisionné. Sans un pack d’autorité de certification correct, le webhook Validating émettrait une erreur et interdirait à l’utilisateur d’apporter des modifications au ConfigMap osm-config dans l’espace de noms kube-system.
-
-Exemple d’erreur lorsque le pack de l’autorité de certification est incorrect :
-
-- Tentative de modification du ConfigMap osm-config :
-
-  ```azurecli-interactive
-  kubectl patch ConfigMap osm-config -n kube-system --type merge --patch '{"data":{"config_resync_interval":"2m"}}'
-  ```
-
-- Erreur :
-
-  ```
-  Error from server (InternalError): Internal error occurred: failed calling webhook "osm-config-webhook.k8s.io": Post https://osm-config-validator.kube-system.svc:9093/validate-webhook?timeout=30s: x509: certificate signed by unknown authority
-  ```
-
-Solution de contournement lorsque la configuration du webhook **Validating** a un certificat incorrect :
-
-- Option 1 : Redémarrer le contrôleur OSM. Cette option permet de redémarrer le contrôleur OSM. Au démarrage, il remplacera le pack de l’autorité de certification des webhooks Mutating et Validating.
-
-  ```azurecli-interactive
-  kubectl rollout restart deployment -n kube-system osm-controller
-  ```
-
-- Option 2 : Supprimer le webhook Validating. La suppression du webhook Validating invalide les mutations du ConfigMap `osm-config`. Tous les patchs seront concernés. L’outil de rapprochement AKS s’assurera à un moment donné que le webhook Validating existe et le recréera. Il peut être nécessaire de redémarrer le contrôleur OSM pour réécrire rapidement le pack de l’autorité de certification.
-
-  ```azurecli-interactive
-  kubectl delete ValidatingWebhookConfiguration aks-osm-webhook-osm
-  ```
-
-- Option 3 : Supprimer et corriger. La commande suivante permet de supprimer le webhook Validating, ce qui nous permet d’ajouter des valeurs et de tenter immédiatement d’appliquer un patch. Il est fort probable que l’outil de rapprochement AKS n’ait pas suffisamment de temps pour rapprocher et restaurer le webhook Validating, ce qui nous permet d’appliquer une modification en dernier recours :
-
-  ```azurecli-interactive
-  kubectl delete ValidatingWebhookConfiguration aks-osm-webhook-osm; kubectl patch ConfigMap osm-config -n kube-system --type merge --patch '{"data":{"config_resync_interval":"15s"}}'
-  ```
-
 ### <a name="check-the-osm-mesh-config-resource"></a>Vérifiez la `osm-mesh-config` ressource
 
 Vérifiez son existence :
@@ -254,7 +151,7 @@ kubectl get meshconfig osm-mesh-config -n kube-system
 Vérifier le contenu de la MeshConfig OSM
 
 ```azurecli-interactive
-kubectl get meshconfig osm-mesh-config -n osm-system -o yaml
+kubectl get meshconfig osm-mesh-config -n kube-system -o yaml
 ```
 
 ```
@@ -278,7 +175,7 @@ spec:
     enableDebugServer: true
     osmLogLevel: info
     tracing:
-      address: jaeger.osm-system.svc.cluster.local
+      address: jaeger.kube-system.svc.cluster.local
       enable: false
       endpoint: /api/v2/spans
       port: 9411
@@ -305,23 +202,33 @@ spec:
 
 | Clé | Type | Valeur par défaut | Exemples de commandes patch Kubectl |
 |-----|------|---------------|--------------------------------|
-| spec.traffic.enableEgress | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"traffic":{"enableEgress":true}}}'  --type=merge` |
-| spec.traffic.enablePermissiveTrafficPolicyMode | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"traffic":{"enablePermissiveTrafficPolicyMode":true}}}'  --type=merge` |
-| spec.traffic.useHTTPSIngress | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"traffic":{"useHTTPSIngress":true}}}'  --type=merge` |
-| spec.traffic.outboundPortExclusionList | tableau | `[]` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"traffic":{"outboundPortExclusionList":6379,8080}}}'  --type=merge` |
-| spec.traffic.outboundIPRangeExclusionList | tableau | `[]` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"traffic":{"outboundIPRangeExclusionList":"10.0.0.0/32,1.1.1.1/24"}}}'  --type=merge` |
-| spec.certificate.serviceCertValidityDuration | string | `"24h"` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"certificate":{"serviceCertValidityDuration":"24h"}}}'  --type=merge` |
-| spec.observability.enableDebugServer | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"observability":{"serviceCertValidityDuration":true}}}'  --type=merge` |
-| spec.observability.tracing.enable | bool | `"jaeger.osm-system.svc.cluster.local"`| `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"observability":{"tracing":{"address": "jaeger.osm-system.svc.cluster.local"}}}}'  --type=merge` |
-| spec.observability.tracing.enable | string | `"/api/v2/spans"` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"observability":{"tracing":{"endpoint":"/api/v2/spans"}}}}'  --type=merge' --type=merge` |
-| spec.observability.tracing.endpoint | string | `false`| `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"observability":{"tracing":{"enable":true}}}}'  --type=merge` |
-| spec.observability.tracing.port | int | `9411`| `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"observability":{"tracing":{"port":9411}}}}'  --type=merge` |
-| spec.sidecar.enablePrivilegedInitContainer | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"sidecar":{"enablePrivilegedInitContainer":true}}}'  --type=merge` |
-| spec.sidecar.logLevel | string | `"error"` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"sidecar":{"logLevel":"error"}}}'  --type=merge` |
-| spec.sidecar.maxDataPlaneConnections | int | `0` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"sidecar":{"maxDataPlaneConnections":"error"}}}'  --type=merge` |
-| spec.sidecar.envoyImage | string | `"envoyproxy/envoy-alpine:v1.17.2"` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"sidecar":{"envoyImage":"envoyproxy/envoy-alpine:v1.17.2"}}}'  --type=merge` |
-| spec.sidecar.initContainerImage | string | `"openservicemesh/init:v0.9.2"` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"sidecar":{"initContainerImage":"openservicemesh/init:v0.9.2"}}}' --type=merge` |
-| spec.sidecar.configResyncInterval | string | `"0s"` | `kubectl patch meshconfig osm-mesh-config -n osm-system -p '{"spec":{"sidecar":{"configResyncInterval":"30s"}}}'  --type=merge` |
+| spec.traffic.enableEgress | bool | `true` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"enableEgress":true}}}'  --type=merge` |
+| spec.traffic.enablePermissiveTrafficPolicyMode | bool | `true` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"enablePermissiveTrafficPolicyMode":true}}}'  --type=merge` |
+| spec.traffic.useHTTPSIngress | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"useHTTPSIngress":true}}}'  --type=merge` |
+| spec.traffic.outboundPortExclusionList | tableau | `[]` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"outboundPortExclusionList":[6379,8080]}}}'  --type=merge` |
+| spec.traffic.outboundIPRangeExclusionList | tableau | `[]` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"outboundIPRangeExclusionList":["10.0.0.0/32","1.1.1.1/24"]}}}'  --type=merge` |
+| spec.traffic.inboundPortExclusionList | tableau | `[]` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"inboundPortExclusionList":[6379,8080]}}}'  --type=merge` |
+| spec.certificate.serviceCertValidityDuration | string | `"24h"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"certificate":{"serviceCertValidityDuration":"24h"}}}'  --type=merge` |
+| spec.observability.enableDebugServer | bool | `true` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"enableDebugServer":true}}}'  --type=merge` |
+| spec.observability.tracing.enable | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"enable":true}}}}'  --type=merge` |
+| spec.observability.tracing.enable | string | `"jaeger.kube-system.svc.cluster.local"`| `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"address": "jaeger.kube-system.svc.cluster.local"}}}}'  --type=merge` |
+| spec.observability.tracing.endpoint | string | `"/api/v2/spans"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"endpoint":"/api/v2/spans"}}}}'  --type=merge' --type=merge` |
+| spec.observability.tracing.port | int | `9411`| `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"port":9411}}}}'  --type=merge` |
+| spec.observability.tracing.osmLogLevel | string | `"info"`| `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"observability":{"tracing":{"osmLogLevel": "info"}}}}'  --type=merge` |
+| spec.sidecar.enablePrivilegedInitContainer | bool | `false` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"sidecar":{"enablePrivilegedInitContainer":true}}}'  --type=merge` |
+| spec.sidecar.logLevel | string | `"error"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"sidecar":{"logLevel":"error"}}}'  --type=merge` |
+| spec.sidecar.maxDataPlaneConnections | int | `0` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"sidecar":{"maxDataPlaneConnections":"error"}}}'  --type=merge` |
+| spec.sidecar.envoyImage | string | `"mcr.microsoft.com/oss/envoyproxy/envoy:v1.19.1"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"sidecar":{"envoyImage":"mcr.microsoft.com/oss/envoyproxy/envoy:v1.19.1"}}}'  --type=merge` |
+| spec.sidecar.initContainerImage | string | `"mcr.microsoft.com/oss/openservicemesh/init:v0.11.1"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"sidecar":{"initContainerImage":"mcr.microsoft.com/oss/openservicemesh/init:v0.11.1"}}}' --type=merge` |
+| spec.sidecar.configResyncInterval | string | `"0s"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"sidecar":{"configResyncInterval":"30s"}}}'  --type=merge` |
+| spec.featureFlags.enableWASMStats | bool | `"true"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableWASMStats":"true"}}}'  --type=merge` |
+| spec.featureFlags.enableEgressPolicy | bool | `"true"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableEgressPolicy":"true"}}}'  --type=merge` |
+| spec.featureFlags.enableMulticlusterMode | bool | `"false"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableMulticlusterMode":"false"}}}'  --type=merge` |
+| spec.featureFlags.enableSnapshotCacheMode | bool | `"false"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableSnapshotCacheMode":"false"}}}'  --type=merge` |
+| spec.featureFlags.enableAsyncProxyServiceMapping | bool | `"false"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableAsyncProxyServiceMapping":"false"}}}'  --type=merge` |
+| spec.featureFlags.enableIngressBackendPolicy | bool | `"true"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableIngressBackendPolicy":"true"}}}'  --type=merge` |
+| spec.featureFlags.enableEnvoyActiveHealthChecks | bool | `"false"` | `kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"featureFlags":{"enableEnvoyActiveHealthChecks":"false"}}}'  --type=merge` |
+
 
 ### <a name="check-namespaces"></a>Vérifier les espaces de noms
 
@@ -364,7 +271,7 @@ Si un espace de noms n’est pas annoté avec `"openservicemesh.io/sidecar-injec
 > [!NOTE]
 > Une fois que `osm namespace add` est appelé, seuls les **nouveaux** pods sont injectés avec un side-car Envoy. Les pods existants doivent être redémarrés à l’aide de la commande `kubectl rollout restart deployment ...`.
 
-### <a name="verify-the-smi-crds"></a>Vérifier les CRD SMI :
+### <a name="verify-osm-crds"></a>Vérifiez les CRD OSM :
 
 Vérifiez si le cluster possède les CRD requis :
 
@@ -374,60 +281,35 @@ kubectl get crds
 
 Les éléments suivants doivent être installés sur le cluster :
 
-- httproutegroups.specs.smi-spec.io
+- egresses.policy.openservicemesh.io
+- httproutegroups.specs.smi-spec.io 
+- ingressbackends.policy.openservicemesh.io
+- meshconfigs.config.openservicemesh.io
+- multiclusterservices.config.openservicemesh.io
 - tcproutes.specs.smi-spec.io
 - trafficsplits.split.smi-spec.io
 - traffictargets.access.smi-spec.io
-- udproutes.specs.smi-spec.io
 
-Récupérez les versions des CRD installés avec cette commande :
+Récupérez les versions des CRD SMI installés avec cette commande :
 
 ```azurecli-interactive
-for x in $(kubectl get crds --no-headers | awk '{print $1}' | grep 'smi-spec.io'); do
-    kubectl get crd $x -o json | jq -r '(.metadata.name, "----" , .spec.versions[].name, "\n")'
-done
+osm mesh list
 ```
 
 Sortie attendue :
 
-```Output
-httproutegroups.specs.smi-spec.io
-----
-v1alpha4
-v1alpha3
-v1alpha2
-v1alpha1
+```
+MESH NAME   MESH NAMESPACE   VERSION   ADDED NAMESPACES
+osm         kube-system      v0.11.1
 
+MESH NAME   MESH NAMESPACE   SMI SUPPORTED
+osm         kube-system      HTTPRouteGroup:v1alpha4,TCPRoute:v1alpha4,TrafficSplit:v1alpha2,TrafficTarget:v1alpha3
 
-tcproutes.specs.smi-spec.io
-----
-v1alpha4
-v1alpha3
-v1alpha2
-v1alpha1
-
-
-trafficsplits.split.smi-spec.io
-----
-v1alpha2
-
-
-traffictargets.access.smi-spec.io
-----
-v1alpha3
-v1alpha2
-v1alpha1
-
-
-udproutes.specs.smi-spec.io
-----
-v1alpha4
-v1alpha3
-v1alpha2
-v1alpha1
+To list the OSM controller pods for a mesh, please run the following command passing in the mesh's namespace
+        kubectl get pods -n <osm-mesh-namespace> -l app=osm-controller
 ```
 
-Le contrôleur OSM v0.8.2 requiert les versions suivantes :
+Le contrôleur OSM v0.11.1 nécessite les versions suivantes :
 
 - traffictargets.access.smi-spec.io : [v1alpha3](https://github.com/servicemeshinterface/smi-spec/blob/v0.6.0/apis/traffic-access/v1alpha3/traffic-access.md)
 - httproutegroups.specs.smi-spec.io : [v1alpha4](https://github.com/servicemeshinterface/smi-spec/blob/v0.6.0/apis/traffic-specs/v1alpha4/traffic-specs.md#httproutegroup)
@@ -436,19 +318,6 @@ Le contrôleur OSM v0.8.2 requiert les versions suivantes :
 - trafficsplits.split.smi-spec.io : [v1alpha2](https://github.com/servicemeshinterface/smi-spec/blob/v0.6.0/apis/traffic-split/v1alpha2/traffic-split.md)
 - \*.metrics.smi-spec.io : [v1alpha1](https://github.com/servicemeshinterface/smi-spec/blob/v0.6.0/apis/traffic-metrics/v1alpha1/traffic-metrics.md)
 
-Si des CRD sont manquants, utilisez les commandes suivantes pour les installer sur le cluster :
-
-```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/v0.8.2/charts/osm/crds/access.yaml
-```
-
-```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/v0.8.2/charts/osm/crds/specs.yaml
-```
-
-```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/v0.8.2/charts/osm/crds/split.yaml
-```
 
 ### <a name="certificate-management"></a>Gestion des certificats
 

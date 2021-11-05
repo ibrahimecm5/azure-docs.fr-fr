@@ -6,12 +6,12 @@ author: nickomang
 ms.topic: article
 ms.date: 09/09/2021
 ms.author: nickoman
-ms.openlocfilehash: 43ee8a41ad6c487f5998760396b05a3ec56206d7
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 871a2f97ab8b95cca46fea91f5613cb489cb19a3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004746"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066916"
 ---
 # <a name="http-proxy-support-in-azure-kubernetes-service-preview"></a>Prise en charge du proxy HTTP dans Azure Kubernetes Service (préversion)
 
@@ -40,6 +40,17 @@ Par défaut, *httpProxy*, *httpsProxy* et *trustedCa* n’ont aucune valeur.
 * Un abonnement Azure. Si vous n’avez pas d’abonnement Azure, vous pouvez créer un [compte gratuit](https://azure.microsoft.com/free).
 * [Azure CLI](/cli/azure/install-azure-cli).
 
+### <a name="install-the-aks-preview-azure-cli"></a>Installez l’interface de ligne de commande Azure `aks-preview`
+
+Vous devez également disposer de l’extension Azure CLI *aks-preview* version 0.5.25 ou ultérieure. Installez l’extension d’Azure CLI *aks-preview* à l’aide de la commande [az extension add][az-extension-add]. Ou installez toutes les mises à jour disponibles à l’aide de la commande [az extension update][az-extension-update].
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
 ### <a name="register-the-httpproxyconfigpreview-preview-feature"></a>Inscrire la fonctionnalité d’évaluation `HTTPProxyConfigPreview`
 
 Pour utiliser la fonctionnalité, vous devez activer l’indicateur de fonctionnalité `HTTPProxyConfigPreview` sur votre abonnement.
@@ -64,19 +75,17 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="configuring-an-http-proxy-using-azure-cli"></a>Configuration d’un proxy HTTP à l’aide d’Azure CLI 
 
-L’utilisation d’AKS avec un proxy HTTP est effectuée à la création du cluster, à l’aide de la commande [az aks create][az-aks-create] et en passant la configuration sous forme de fichier JSON ou YAML.
+Utilisez AKS avec un proxy HTTP au moment de la création du cluster, en utilisant la commande [az aks create][az-aks-create] et en passant la configuration sous forme d’un fichier JSON.
 
 Le schéma du fichier config est du type suivant :
 
 ```json
-"httpProxyConfig": {
-    "httpProxy": "string",
-    "httpsProxy": "string",
-    "noProxy": [
-        "string"
-    ],
-    "trustedCa&quot;: &quot;string"
-}
+"httpProxy": "string",
+"httpsProxy": "string",
+"noProxy": [
+    "string"
+],
+"trustedCa&quot;: &quot;string"
 ```
 
 `httpProxy` : URL de proxy à utiliser pour créer des connexions HTTP à l’extérieur du cluster. Le schéma d’URL doit être `http`.
@@ -87,15 +96,13 @@ Le schéma du fichier config est du type suivant :
 Exemple d’entrée : notez que le certificat de l’autorité de certification doit être la chaîne encodée en base64 du contenu du certificat au format PEM.
 
 ```json
-"httpProxyConfig": { 
-     "httpProxy": "http://myproxy.server.com:8080/", 
-     "httpsProxy": "https://myproxy.server.com:8080/", 
-     "noProxy": [
-         "localhost",
-         "127.0.0.1"
-     ],
-     "trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
-}
+"httpProxy": "http://myproxy.server.com:8080/", 
+"httpsProxy": "https://myproxy.server.com:8080/", 
+"noProxy": [
+   "localhost",
+   "127.0.0.1"
+],
+"trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
 ```
 
 Créez un fichier et fournissez des valeurs pour *httpProxy*, *HttpsProxy* et *NoProxy*. Si votre environnement l’exige, fournissez également une valeur *trustedCa*. Ensuite, déployez un cluster, en passant votre nom de fichier au moyen de l’indicateur `http-proxy-config`.
@@ -147,3 +154,5 @@ az aks update -n $clusterName -g $resourceGroup --http-proxy-config aks-proxy-co
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az-extension-update

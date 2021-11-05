@@ -1,5 +1,5 @@
 ---
-title: Exempter une recommandation Azure Security Center d’une ressource, d’un abonnement, d’un groupe d’administration et d’un score sécurisé
+title: Exempter une recommandation Microsoft Defender pour le cloud d’une ressource, d’un abonnement, d’un groupe d’administration et d’un degré de sécurisation
 description: Découvrez comment créer des règles pour exempter les recommandations de sécurité des abonnements ou des groupes d’administration et les empêcher d’avoir un impact sur votre score sécurisé
 author: memildin
 ms.author: memildin
@@ -7,20 +7,23 @@ ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f69b7174ec37a38fd972f53daaaf09776a279cea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2adced83b238e471027bb7c1bf86f1fb13c64239
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525007"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075842"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Exempter une ressource des recommandations et du degré de sécurisation 
 
-Une priorité de base de chaque équipe de sécurité s’assure que les analystes peuvent se concentrer sur les tâches et les incidents importants pour l’entreprise. Security Center dispose de nombreuses fonctionnalités permettant de personnaliser l’expérience et de s’assurer que votre score sécurisé reflète les priorités de sécurité de votre organisation. L’option **exempt** est une fonctionnalité de ce type.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Quand vous examinez vos recommandations de sécurité dans Azure Security Center, l’une des premières informations que vous examinez est la liste des ressources affectées.
+Une priorité de base de chaque équipe de sécurité s’assure que les analystes peuvent se concentrer sur les tâches et les incidents importants pour l’entreprise. Defender pour le cloud dispose de nombreuses fonctionnalités permettant de personnaliser l’expérience et de s’assurer que votre degré de sécurisation reflète les priorités de sécurité de votre organisation. L’option **exempt** est une fonctionnalité de ce type.
 
-Parfois, une ressource sera répertoriée et ne devrait pas être incluse. D’autres fois, il arrive qu’une recommandation s’affiche dans une étendue à laquelle elle n’est pas censée appartenir. La ressource a peut-être été corrigée par un processus non suivi par Security Center. La recommandation peut ne pas convenir à un abonnement. Ou encore, il est possible que votre organisation ait simplement décidé d’accepter les risques liés à une ressource ou à une recommandation.
+Quand vous examinez vos recommandations de sécurité dans Microsoft Defender pour le cloud, l’une des premières informations que vous examinez est la liste des ressources affectées.
+
+Parfois, une ressource sera répertoriée et ne devrait pas être incluse. D’autres fois, il arrive qu’une recommandation s’affiche dans une étendue à laquelle elle n’est pas censée appartenir. La ressource a peut-être été corrigée par un processus non suivi par Defender pour le cloud. La recommandation peut ne pas convenir à un abonnement. Ou encore, il est possible que votre organisation ait simplement décidé d’accepter les risques liés à une ressource ou à une recommandation.
 
 Dans ce cas, vous pouvez créer une exemption pour une recommandation pour :
 
@@ -33,21 +36,21 @@ Dans ce cas, vous pouvez créer une exemption pour une recommandation pour :
 | Aspect                          | Détails                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | État de sortie :                  | PRÉVERSION<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| Prix :                        | Il s’agit d’une capacité premium d’Azure Policy proposée sans surcoût aux clients d’Azure Defender. Pour les autres utilisateurs, des frais pourront s’appliquer.                                                                                                                                                                 |
+| Prix :                        | Il s’agit d’une fonctionnalité premium d’Azure Policy proposée gratuitement aux clients disposant des fonctionnalités de sécurité améliorées de Microsoft Defender pour le cloud. Pour les autres utilisateurs, des frais pourront s’appliquer.                                                                                                                                                                 |
 | Rôles et autorisations obligatoires : | **Propriétaire** ou **Contributeur de stratégie de ressource** pour créer une exemption<br>Pour créer une règle, vous devez disposer de l’autorisation de modifier des stratégies dans Azure Policy.<br>Pour plus d’informations, consultez [Autorisations Azure RBAC dans Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
-| Limites :                    | Les exemptions ne peuvent être créées que pour les recommandations incluses dans l’initiative par défaut de Security Center, [Azure Security Benchmark](/security/benchmark/azure/introduction), ou l’une des initiatives de normes réglementaires fournies. Les recommandations générées à partir d’initiatives personnalisées ne peuvent pas être exemptées. En savoir plus sur les relations entre les [stratégies, les initiatives et les recommandations](security-policy-concept.md). |
+| Limites :                    | Les exemptions ne peuvent être créées que pour les recommandations incluses dans l’initiative par défaut de Defender pour le cloud, [Azure Security Benchmark](/security/benchmark/azure/introduction), ou l’une des initiatives de normes réglementaires fournies. Les recommandations générées à partir d’initiatives personnalisées ne peuvent pas être exemptées. En savoir plus sur les relations entre les [stratégies, les initiatives et les recommandations](security-policy-concept.md). |
 | Clouds :                         | :::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Souverain (Azure Government, Azure China 21Vianet)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Définir une exemption
 
-Pour affiner les recommandations de sécurité que Security Center fournit concernant vos abonnements, vos groupes d’administration ou vos ressources, vous pouvez créer une règle d’exemption afin de :
+Pour affiner les recommandations de sécurité que Defender pour le cloud fournit concernant vos abonnements, vos groupes d’administration ou vos ressources, vous pouvez créer une règle d’exemption afin de :
 
 - Marquer une **recommandation** spécifique ou en tant que « atténué » ou « risque accepté ». Vous pouvez créer des exemptions de recommandation pour un abonnement, plusieurs abonnements ou un groupe d’administration entier.
 - Marquer **une ou plusieurs ressources** comme « atténué » ou « risque accepté » pour une recommandation spécifique.
 
 > [!NOTE]
-> Les exemptions ne peuvent être créées que pour les recommandations incluses dans l’initiative par défaut de Security Center, Azure Security Benchmark, ou l’une des initiatives de normes réglementaires fournies. Les recommandations générées à partir d’initiatives personnalisées assignées à vos abonnements ne peuvent pas être exemptées. En savoir plus sur les relations entre les [stratégies, les initiatives et les recommandations](security-policy-concept.md).
+> Les exemptions ne peuvent être créées que pour les recommandations incluses dans l’initiative par défaut de Defender pour le cloud, Azure Security Benchmark, ou l’une des initiatives de normes réglementaires fournies. Les recommandations générées à partir d’initiatives personnalisées assignées à vos abonnements ne peuvent pas être exemptées. En savoir plus sur les relations entre les [stratégies, les initiatives et les recommandations](security-policy-concept.md).
 
 > [!TIP]
 > Vous pouvez également créer des exemptions à l’aide de l’API. Pour obtenir un exemple de code JSON et une explication des structures pertinentes, consultez [Structure d’exemption Azure Policy](../governance/policy/concepts/exemption-structure.md).
@@ -68,7 +71,7 @@ Pour créer une règle d’exemption :
     1. Entrez un nom pour cette règle d’exemption.
     1. Éventuellement, définissez une date d’expiration.
     1. Sélectionnez la catégorie de l’exemption :
-        - **Résolu par le biais du tiers (atténué)**  : si vous utilisez un service tiers que Security Center n’a pas identifié. 
+        - **Résolu par le biais du tiers (atténué)**  : si vous utilisez un service tiers que Defender pour le cloud n’a pas identifié. 
 
             > [!NOTE]
             > Lorsque vous exemptez une recommandation comme étant atténuée, vous ne recevez pas de points pour votre score de sécurité. Toutefois, étant donné que les points ne sont pas *supprimés* pour les ressources défectueuses, le résultat est que votre score augmente.
@@ -82,9 +85,9 @@ Pour créer une règle d’exemption :
     Lorsque l’exemption prend effet (cela peut prendre jusqu’à 30 minutes) :
     - La recommandation ou les ressources n’ont pas d’impact sur votre score sécurisé.
     - Si vous avez exempté des ressources spécifiques, celles-ci sont listées dans l’onglet **Non applicable** de la page Détails de la recommandation.
-    - Si vous avez exempté une recommandation, elle est masquée par défaut sur la page Recommandations de Security Center. Cela est dû au fait que les options par défaut du filtre de l’**état Recommandation** de cette page doivent exclure les recommandations **Non applicable**. Il en va de même si vous n’avez pas exempté toutes les recommandations dans un contrôle de sécurité.
+    - Si vous avez exempté une recommandation, elle est masquée par défaut sur la page Recommandations de Defender pour le cloud. Cela est dû au fait que les options par défaut du filtre de l’**état Recommandation** de cette page doivent exclure les recommandations **Non applicable**. Il en va de même si vous n’avez pas exempté toutes les recommandations dans un contrôle de sécurité.
 
-        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Filtres par défaut sur la page recommandations de Azure Security Center masque les recommandations et les contrôles de sécurité non applicables":::
+        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Les filtres par défaut sur la page recommandations de Microsoft Defender pour le cloud masquent les recommandations et les contrôles de sécurité non applicables":::
 
     - La bande d’informations en haut de la page des détails de la recommandation met à jour le nombre de ressources exemptées :
         
@@ -114,17 +117,17 @@ Comme expliqué plus haut sur cette page, les règles d'exemption constituent un
 
 Pour garder une trace de la façon dont vos utilisateurs exercent cette fonctionnalité, nous avons créé un modèle Azure Resource Manager (ARM) qui déploie un guide opérationnel d'application logique et toutes les connexions API nécessaires pour vous avertir lorsqu'une exemption a été créée.
 
-- Pour en savoir plus sur le playbook, consultez le billet de blog de la communauté technique, intitulé [How to keep track of Resource Exemptions in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) (Suivi des exemptions de ressources dans Azure Security Center)
-- Vous trouverez le modèle ARM dans le [référentiel GitHub Azure Security Center](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)
+- Pour en savoir plus sur le playbook, consultez le billet de blog de la communauté technique, intitulé [How to keep track of Resource Exemptions in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) (Suivi des exemptions de ressources dans Microsoft Defender pour le cloud)
+- Vous trouverez le modèle ARM dans le [référentiel GitHub de Microsoft Defender pour le cloud](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)
 - Pour déployer tous les composants nécessaires, [utilisez ce processus automatisé](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)
 
 ## <a name="use-the-inventory-to-find-resources-that-have-exemptions-applied"></a>Utilisez l’inventaire pour rechercher les ressources auxquelles des exemptions sont appliquées
 
-La page d’inventaire des ressources d’Azure Security Center fournit une page unique pour visualiser la posture de sécurité des ressources que vous avez connectées à Security Center. Pour en savoir plus, consultez [Explorer et gérer vos ressources avec l’inventaire des ressources](asset-inventory.md).
+La page d’inventaire des actifs de Microsoft Defender pour le cloud fournit une page unique pour l’affichage de la position de sécurité des ressources que vous avez connectées à Defender pour le cloud. Pour en savoir plus, consultez [Explorer et gérer vos ressources avec l’inventaire des ressources](asset-inventory.md).
 
 La page d’inventaire comprend de nombreux filtres pour vous permettre de limiter la liste aux ressources les plus intéressantes pour un scénario donné. L’un de ces filtres est **Contient des exemptions**. Utilisez ce filtre pour rechercher toutes les ressources qui ont été exemptées d’une ou de plusieurs recommandations.
 
-:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Page d’inventaire des ressources Security Center et filtre pour rechercher des ressources avec exemptions":::
+:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Page d’inventaire des ressources Defender pour le cloud et filtre pour rechercher des ressources avec exemptions":::
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Rechercher des recommandations avec des exemptions à l’aide d’Azure Resource Graph
@@ -135,7 +138,7 @@ Pour afficher toutes les recommandations qui ont des règles d’exemption :
 
 1. Ouvrez l’**Explorateur Azure Resource Graph**.
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Lancement de la page de recommandations de l’Explorateur Azure Resource Graph**" :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Lancement de la page de recommandations de l’Explorateur Azure Resource Graph**" :::
 
 1. Entrez la requête suivante et sélectionnez **Exécuter la requête**.
 
@@ -182,15 +185,15 @@ Pour en savoir plus, consultez les pages suivantes :
 
 Parfois, une recommandation de sécurité apparaît dans plusieurs initiatives de stratégie. Si vous disposez de plusieurs instances de la même recommandation affectées au même abonnement et que vous créez une exemption pour la recommandation, cela affecte toutes les initiatives que vous êtes autorisé à modifier. 
 
-Par exemple, la recommandation **** fait partie de l’initiative de stratégie par défaut affectée à tous les abonnements Azure par Azure Security Center. Elle figure également dans XXXXX.
+Par exemple, la recommandation **** fait partie de l’initiative de stratégie par défaut affectée à tous les abonnements Azure par Microsoft Defender pour le cloud. Elle figure également dans XXXXX.
 
 Si vous essayez de créer une exemption pour cette recommandation, vous verrez l’un des deux messages suivants :
 
-- Si vous disposez des autorisations nécessaires pour modifier les deux initiatives, vous verrez :
+- Si **vous disposez** des autorisations nécessaires pour modifier les deux initiatives, vous verrez :
 
     *Cette recommandation est incluse dans plusieurs initiatives de stratégie : [noms d’initiative séparés par une virgule]. Des exemptions seront créées sur chacune d’elles.*  
 
-- Si vous ne disposez pas des autorisations suffisantes pour les deux initiatives, vous verrez ce message à la place :
+- Si **vous ne disposez pas** des autorisations suffisantes pour les deux initiatives, vous verrez ce message à la place :
 
     *Vous avez des autorisations limitées pour appliquer l’exemption à toutes les initiatives de stratégie, les exemptions sont créées uniquement sur les initiatives avec des autorisations suffisantes.*
 
@@ -217,4 +220,4 @@ Ces recommandations ne prennent pas en charge l’exemption :
 
 Dans cet article, vous avez appris à exempter une ressource d’une recommandation afin qu’elle n’affecte pas votre degré de sécurisation. Pour plus d’informations sur le degré de sécurisation, voir :
 
-- [Degré de sécurisation dans Azure Security Center](secure-score-security-controls.md)
+- [Degré de sécurisation dans Microsoft Defender pour le cloud](secure-score-security-controls.md)

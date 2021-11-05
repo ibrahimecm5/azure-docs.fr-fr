@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 362704368958d2600d16cd907421917b824a59cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 18dd0fef7cc4a2d344abaf392bcc2ca3331bd828
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256597"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021901"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Tutoriel pour configurer LexisNexis avec Azure Active Directory B2C
 
@@ -84,10 +84,10 @@ Les paramètres d’application peuvent être [configurés dans le service d’a
 
 | Paramètres de l’application | Source | Notes |
 | :-------- | :------------| :-----------|
-|ThreatMetrix: Url | Configuration du compte ThreatMetrix |     |
+|ThreatMetrix:Url | Configuration du compte ThreatMetrix |     |
 |ThreatMetrix:OrgId | Configuration du compte ThreatMetrix |     |
 |ThreatMetrix:ApiKey |Configuration du compte ThreatMetrix|  |
-|ThreatMetrix: Policy | Nom de la stratégie créée dans ThreatMetrix | |
+|ThreatMetrix:Policy | Nom de la stratégie créée dans ThreatMetrix | |
 | BasicAuth:ApiUsername |Définition d’un nom d’utilisateur pour l’API| Le nom d’utilisateur sera utilisé pour la configuration d’Azure AD B2C.
 | BasicAuth:ApiPassword | Définition d’un mot de passe pour l’API | Le mot de passe sera utilisé pour la configuration d’Azure AD B2C.
 

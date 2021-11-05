@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 10/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad562e46b88772cd38e3e3d39920e7fdcf29d23
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: e33f2c7393a9c7b91dcd6fd9188bd9a89f190215
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137320"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050707"
 ---
 # <a name="conditional-access-session"></a>Accès conditionnel : session
 
@@ -26,7 +26,7 @@ Dans une stratégie d’accès conditionnel, un administrateur peut utiliser des
 
 ## <a name="application-enforced-restrictions"></a>Restrictions appliquées par l’application
 
-Les organisations peuvent utiliser ce contrôle pour demander à Azure AD de transmettre les informations d’appareil aux applications cloud sélectionnées. Les informations d’appareil permettent aux applications cloud de savoir si une connexion est établie à partir d’un appareil conforme ou joint au domaine et après l’expérience de la session. Ce contrôle prend uniquement en charge SharePoint Online et Exchange Online comme applications cloud sélectionnées. Lorsque cette option est sélectionnée, l’application cloud utilise les informations de l’appareil pour fournir aux utilisateurs, en fonction de l’état de l’appareil, une expérience limitée (lorsque l’appareil n’est pas géré) ou complète (lorsque l’appareil est géré et conforme).
+Les organisations peuvent utiliser ce contrôle pour demander à Azure AD de transmettre les informations d’appareil aux applications cloud sélectionnées. Les informations d’appareil permettent aux applications cloud de savoir si une connexion est établie à partir d’un appareil conforme ou joint au domaine et de changer l’expérience de la session. Ce contrôle prend uniquement en charge SharePoint Online et Exchange Online comme applications cloud sélectionnées. Lorsque cette option est sélectionnée, l’application cloud utilise les informations de l’appareil pour fournir aux utilisateurs, en fonction de l’état de l’appareil, une expérience limitée (lorsque l’appareil n’est pas géré) ou complète (lorsque l’appareil est géré et conforme).
 
 Pour plus d’informations sur l’utilisation et la configuration de restrictions appliquées par l’application, consultez les articles suivants :
 
@@ -52,7 +52,7 @@ Pour plus d’informations, consultez l’article [Déployer le contrôle d’ap
 
 La fréquence de connexion définit la durée à l’issue de laquelle un utilisateur est invité à se reconnecter lorsqu’il tente d’accéder à une ressource.
 
-Le paramètre de fréquence de connexion fonctionne avec les applications qui ont implémenté les protocoles OAUTH2 ou OIDC conformément aux standards. La plupart des applications natives de Microsoft pour Windows, Mac et Mobile, notamment les applications web suivantes, sont conformes au paramètre.
+Le paramètre de fréquence de connexion fonctionne avec les applications qui ont implémenté les protocoles OAUTH2 ou OIDC conformément aux standards. La plupart des applications natives de Microsoft pour Windows, Mac et Mobile, notamment les applications web suivantes, appliquent le paramètre.
 
 - Word, Excel, PowerPoint Online
 - OneNote Online
@@ -71,6 +71,23 @@ Pour plus d’informations, consultez l’article [Configurer la gestion de sess
 Une session de navigateur persistante permet aux utilisateurs de rester connectés après la fermeture et la réouverture de la fenêtre du navigateur.
 
 Pour plus d’informations, consultez l’article [Configurer la gestion de session d’authentification avec l’accès conditionnel](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions).
+
+## <a name="customize-continuous-access-evaluation"></a>Personnaliser l’évaluation continue de l’accès
+
+L’[évaluation continue de l’accès](concept-continuous-access-evaluation.md) est activée automatiquement dans le cadre des stratégies d’accès conditionnel d’une organisation. Pour les organisations qui souhaitent désactiver ou appliquer strictement l’évaluation continue de l’accès, cette configuration est désormais une option dans le contrôle de session au sein de l’accès conditionnel. Les stratégies d’évaluation continue de l’accès peuvent être étendues à tous les utilisateurs ou à des utilisateurs et groupes spécifiques. Les administrateurs peuvent effectuer les sélections suivantes lors de la création d’une stratégie ou de la modification d’une stratégie d’accès conditionnel existante.
+
+- La **désactivation** est effectuée lorsque l’option **Toutes les applications cloud** est sélectionnée, qu’aucune condition n’est sélectionnée et que **Désactiver** est sélectionné sous **Session** > **Personnaliser l’évaluation continue de l’accès** dans une stratégie d’accès conditionnel.
+- L’**application stricte** signifie que tout événement critique et toute stratégie seront appliqués en temps réel. Tous les services compatibles avec l’évaluation continue de l’accès obtiennent toujours des jetons d’évaluation continue de l’accès, indépendamment de ce que le client ou l’utilisateur peut demander ou faire. Il existe deux scénarios où l’évaluation continue de l’accès n’entre pas en jeu lorsque le mode d’application stricte est activé :
+   - Les clients non compatibles avec l’évaluation continue de l’accès ne doivent pas obtenir de jeton standard pour les services compatibles avec l’évaluation continue de l’accès.
+   - Rejeter lorsque l’adresse IP détectée par le fournisseur de ressources ne se trouve pas dans la plage autorisée.
+
+:::image type="content" source="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png" alt-text="Paramètres d’évaluation continue de l’accès dans une nouvelle stratégie d’accès conditionnel dans le portail Azure." lightbox="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png":::
+
+## <a name="disable-resilience-defaults-preview"></a>Désactiver les valeurs par défaut de la résilience (préversion)
+
+Pendant une panne, Azure AD étend l’accès aux sessions existantes tout en appliquant les stratégies d’accès conditionnel. Si une stratégie ne peut pas être évaluée, l’accès est déterminé par les paramètres de résilience. 
+
+Si les valeurs par défaut de résilience sont désactivées, l’accès est refusé une fois les sessions existantes expirées. Pour plus d’informations, consultez l’article [Accès conditionnel : Valeurs de résilience par défaut](resilience-defaults.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

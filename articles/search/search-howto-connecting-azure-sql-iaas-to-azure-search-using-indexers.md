@@ -2,17 +2,17 @@
 title: Connexion de l’indexeur à SQL Server sur les machines virtuelles Azure
 titleSuffix: Azure Cognitive Search
 description: Activer les connexions chiffrées et configurer le pare-feu pour autoriser les connexions à SQL Server sur une machine virtuelle Azure à partir d’un indexeur sur la Recherche cognitive Azure.
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 11dbe95a63ce22602985cb7ff9b4db11f5e8f8dc
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d405b28acfcac8270b0e2ec4b3493f151108e4cf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856749"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076108"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Connexions de l’indexeur à SQL Server sur une machine virtuelle Azure
 
@@ -89,7 +89,7 @@ Vous pouvez trouver la plage d’adresses IP de `AzureCognitiveSearch` [l’ét
 
 Si vous utilisez le Portail Azure pour créer un indexeur, vous devez octroyer l’accès entrant au portail à votre machine virtuelle SQL Azure. Pour une règle de trafic entrant dans le pare-feu, vous devez fournir l’adresse IP du portail.
 
-Pour obtenir l’adresse IP du portail, exécutez la commande ping `stamp2.ext.search.windows.net`, qui est le domaine du gestionnaire de trafic. La requête expire, mais l’adresse IP est visible dans le message d’état. Par exemple, dans le message « Pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48] », l’adresse IP est « 52.252.175.48 ».
+Pour obtenir l’adresse IP du portail, exécutez la commande ping `stamp2.ext.search.windows.net`, qui est le domaine du gestionnaire de trafic. La requête expire, mais l’adresse IP est visible dans le message d’état. Par exemple, dans le message « Pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48] », l’adresse IP est « 52.252.175.48 ».
 
 > [!NOTE]
 > Les clusters dans différentes régions se connectent à différents gestionnaires de trafic. Quel que soit le nom de domaine, l’adresse IP renvoyée par la commande ping est la bonne à utiliser lors de la définition d’une règle de pare-feu entrante pour le Portail Azure dans votre région.

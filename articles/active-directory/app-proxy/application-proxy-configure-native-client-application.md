@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: bf6afd93833bb8e81046f4bc84d53203920d4733
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: de40ab35343a096f8259c446289f549528f2bcab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129989890"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068186"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Comment autoriser les applications clientes natives à interagir avec des applications de proxy
 
@@ -111,7 +111,7 @@ Les informations requises dans l’exemple de code sont disponibles dans le port
 | \<Tenant ID> | **Azure Active Directory** > **Propriétés** > **ID de répertoire** |
 | \<App ID of the Native app> | **Inscription d’application** > *votre application native* > **Présentation** > **ID d’application** |
 | \<Scope> | **Inscription d’application** > *votre application native* > **Autorisations de l’API** > Cliquez sur l’API d’autorisation (user_impersonation). > Un panneau avec la légende **user_impersonation** apparaît sur le côté droit. > L’étendue est l’URL dans la zone d’édition.
-| \<Proxy App Url> | URL externe et chemin d’accès à l’API
+| \<Proxy App URL> | URL externe et chemin de l’API
 
 Une fois que vous avez modifié le code MSAL avec ces paramètres, vos utilisateurs peuvent s’authentifier auprès des applications clientes natives, même lorsqu’ils ne sont pas sur le réseau d’entreprise.
 

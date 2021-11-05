@@ -12,12 +12,12 @@ ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7e2b1e02f63257a74d66a70531cfbf7ef56a1c65
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 73d1649881428047cf0c593335d66d9d3145ec2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043906"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021863"
 ---
 # <a name="user-flows-and-custom-policies-overview"></a>Vue d’ensemble des flux d’utilisateurs et des stratégies personnalisées
 
@@ -60,7 +60,7 @@ Une stratégie personnalisée est entièrement configurable et basée sur des st
 La stratégie personnalisée vous donne la possibilité de construire des parcours utilisateur avec toutes sortes de combinaisons d’étapes. Par exemple :
 
 * Fédération avec d’autres fournisseurs d’identités
-* Défis d’authentification multifacteur (MFA) internes ou de tiers
+* Problématiques de l’authentification multifacteur (MFA) interne ou de tiers
 * Collecte d’entrées utilisateur
 * Intégration à des systèmes externes à l’aide de la communication API REST
 
@@ -82,9 +82,9 @@ Le table suivante fournit une comparaison détaillée des scénarios que vous po
 |-|-------------------|-----------------|
 | Utilisateurs cibles | Tous les développeurs d’applications avec ou sans expertise de l’identité | Professionnels de l’identité, intégrateurs système, consultants et équipes d’identité internes. Ils sont à l’aise avec les flux OpenID Connect et comprennent les fournisseurs d’identité et l’authentification basée sur les revendications. |
 | Mode de configuration | Portail Azure avec interface utilisateur (UI) conviviale | Modification directe des fichiers XML, puis chargement sur le portail Azure |
-| Personnalisation de l’interface utilisateur | [Personnalisation complète de l’interface utilisateur](customize-ui-with-html.md), y compris HTML, CSS et [JavaScript](javascript-and-page-layout.md).<br><br>[Support multilingue](language-customization.md) avec des chaînes personnalisées. | Identique |
-| Personnalisation des attributs | Attributs standard et personnalisés | Identique |
-| Gestion des jetons et des sessions | [Personnalisez des jetons](configure-tokens.md) et [le comportement de sessions](session-behavior.md). | Identique |
+| Personnalisation de l’interface utilisateur | [Personnalisation complète de l’interface utilisateur](customize-ui-with-html.md), y compris HTML, CSS et [JavaScript](javascript-and-page-layout.md).<br><br>[Support multilingue](language-customization.md) avec des chaînes personnalisées. | Identique aux flux utilisateur |
+| Personnalisation des attributs | Attributs standard et personnalisés | Identique aux flux utilisateur |
+| Gestion des jetons et des sessions | [Personnalisez des jetons](configure-tokens.md) et [le comportement de sessions](session-behavior.md). | Identique aux flux utilisateur |
 | Identity Providers | [Fournisseur local prédéfini](identity-provider-local.md) ou [social](add-identity-provider.md), tel que la fédération avec des locataires Azure Active Directory. | OIDC basé sur les normes, OAUTH et SAML  L’authentification est également possible via l’intégration avec les API REST. |
 | Tâches d’identité | [Inscrivez-vous ou connectez-vous](add-sign-up-and-sign-in-policy.md)avec des comptes locaux et de nombreux comptes sociaux.<br><br>[Réinitialisation de mots de passe en libre service](add-password-reset-policy.md).<br><br>[Modification de profil](add-profile-editing-policy.md).<br><br>Authentification multifacteur<br><br>Flux de jetons d’accès | Réalisation des mêmes tâches que les flux d’utilisateur à l’aide de fournisseurs d’identité personnalisés ou utilisation des étendues personnalisées<br><br>Provisionnement d’un compte d’utilisateur dans un autre système au moment de l’inscription<br><br>Envoi d’un e-mail de bienvenue avec votre propre fournisseur de service de messagerie<br><br>Utilisation d’un magasin d’utilisateurs en dehors d’Azure AD B2C<br><br>Validation des informations fournies par l’utilisateur avec un système approuvé à l’aide d’une API |
 

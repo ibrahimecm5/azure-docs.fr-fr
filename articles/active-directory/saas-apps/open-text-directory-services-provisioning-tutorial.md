@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: thwimmer
-ms.openlocfilehash: f82c46c6853f33e2137cd54c03b2bfa1df9dca8a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 2dc6d75a816ab40eb66dad46307c5f24bb2685b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760260"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060171"
 ---
 # <a name="tutorial-configure-opentext-directory-services-for-automatic-user-provisioning"></a>Tutoriel : Configurer OpenText Directory Services pour l’approvisionnement automatique d’utilisateurs
 
@@ -122,8 +122,8 @@ Cette section vous guide tout au long des étapes de configuration du service d�
     ![Onglet Provisionnement automatique](common/provisioning-automatic.png)
 
 5. Sous la section **Informations d’identification de l’administrateur**, entrez l’URL de votre locataire OpenText Directory Services
-   * URL de locataire non spécifique : {OTDS URL}/scim/{partitionName}
-   * URL de locataire spécifique : {OTDS URL}/otdstenant/{tenantID}/scim/{partitionName}
+   * URL d’abonné non spécifique : {OTDS URL}/scim/{partitionName}
+   * URL d’abonné spécifique : {OTDS URL}/otdstenant/{tenantID}/scim/{partitionName}
 
 6. Entrez le jeton secret récupéré à l’étape 2. Cliquez sur **Tester la connexion** pour vérifier qu’Azure AD peut se connecter à OpenText Directory Services. Si la connexion échoue, vérifiez que votre compte OpenText Directory Services dispose des autorisations d’administrateur, puis réessayez.
 

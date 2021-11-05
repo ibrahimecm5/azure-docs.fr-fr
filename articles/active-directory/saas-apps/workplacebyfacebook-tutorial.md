@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ceb5200f716a00d0c8599ab596b29c727dff486e
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e6dd9403912d6fddf0b0c6a8d3953756c7432ea6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232467"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Workplace by Facebook
 
@@ -179,7 +179,7 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificati
 
 1. **Redirection de déconnexion SAML (facultatif)**  -
 
-    Vous pouvez choisir de configurer une URL de déconnexion SAML, qui peut être utilisée pour pointer vers la page de déconnexion d’Azure AD. Quand ce paramètre est activé et configuré, l’utilisateur n’est plus dirigé vers la page de déconnexion de Workplace. Au lieu de cela, il est redirigé vers l’URL qui a été ajoutée dans le paramètre SAML Logout Redirect.
+    Vous pouvez choisir de configurer une URL de déconnexion SAML, qui peut être utilisée pour pointer vers la page de déconnexion d’Azure AD. Quand ce paramètre est activé et configuré, l’utilisateur n’est plus dirigé vers la page de déconnexion de Workplace. Au lieu de cela, il est redirigé vers l’URL qui a été ajoutée dans le paramètre SAML Logout Redirect.
 
 ### <a name="configuring-reauthentication-frequency"></a>Configuration de la fréquence de réauthentification
 

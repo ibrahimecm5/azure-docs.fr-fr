@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cfa2c8b029a8c8267249907d3f67582a2a38c139
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4344d8c12c139c428f44d417ccde2c5e950ed307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272089"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477159"
 ---
 # <a name="update-azure-powershell-modules-in-automation"></a>Mettre à jour des modules Azure PowerShell dans Automation
 
@@ -36,11 +36,12 @@ Si vous développez vos scripts localement, il est recommandé de disposer local
 Actuellement, la mise à jour des modules Az est disponible uniquement via le portail. Les mises à jour par le biais de PowerShell et du modèle ARM seront disponibles à l’avenir. Seuls les modules Az par défaut sont mis à jour lors de l’exécution des étapes suivantes :
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com) et accédez à votre compte Automation.
-1. Sous  **Ressources partagées**, sélectionnez  **Modules PowerShell**.
+1. Sous  **Ressources partagées**, sélectionnez  **Modules**.
 1. Sélectionnez  **Mettre à jour les modules Az**.
 1. Sélectionnez **Module à mettre à jour**. Par défaut, cela affiche le module Az.  
-1. Dans la liste déroulante, sélectionnez une **Version du module**.
+1. Dans la liste déroulante, sélectionnez une **Version de module** et une **Version de runtime**
 1. Sélectionnez **Mettre à jour** pour mettre à jour le module Az avec la version que vous avez sélectionnée.
+   Dans la page **Modules**, vous pouvez voir la liste, comme illustré ci-dessous :
 
    :::image type="content" source="./media/automation-update-azure-modules/update-az-modules-portal.png" alt-text="Page Mettre à jour les modules Az avec les sélections.":::
 

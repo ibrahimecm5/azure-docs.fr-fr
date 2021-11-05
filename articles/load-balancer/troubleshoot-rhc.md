@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: kumud
-ms.openlocfilehash: 8c43a0125dac9931e68ae9567f47d63b3409f878
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: f3f0e1d714c5edef75f0f042edce1749b8f01bcf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357226"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056506"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Résoudre les problèmes d’intégrité des ressources et de disponibilité entrante 
 
@@ -62,8 +62,8 @@ Supposons que nous vérifions l’état de la sonde d’intégrité et que nous 
 * Passer en revue les groupes de sécurité réseau appliqués aux ressources back-end. Vérifier qu’il n’existe pas de règles dont la priorité est supérieure à celle de AllowAzureLoadBalancerInBound et qui bloqueraient la sonde d’intégrité
   * Pour ce faire, vous pouvez accéder au panneau Réseau de vos groupes de machines virtuelles identiques ou machines virtuelles back-end
   * Si vous constatez que ce problème de groupe de sécurité réseau est bien le cause, déplacez la règle d’autorisation existante ou créez une règle de haute priorité pour autoriser le trafic AzureLoadBalancer
-* Vérifier le système d’exploitation. Vérifier que les machines virtuelles écoutent le port de la sonde et examiner leurs règles de pare-feu du système d’exploitation pour s’assurer qu’elles ne bloquent pas le trafic de la sonde en provenance de l’adresse IP 168.63.129.16
-  * Vous pouvez vérifier les ports d’écoute en exécutant netstat -a à l’invite de commandes Windows ou netstat -l dans un terminal Linux
+* Vérifier le système d’exploitation. Vérifier que les machines virtuelles écoutent le port de la sonde et examiner leurs règles de pare-feu du système d’exploitation pour s’assurer qu’elles ne bloquent pas le trafic de la sonde en provenance de l’adresse IP `168.63.129.16`
+  * Vous pouvez vérifier les ports d’écoute en exécutant `netstat -a` à l’invite de commandes Windows ou `netstat -l` à partir d’un terminal Linux
 * Ne pas placer une machine virtuelle d’appliance virtuelle réseau de pare-feu dans le pool back-end de l’équilibreur de charge, utiliser des [routes définies par l’utilisateur](../virtual-network/virtual-networks-udr-overview.md#user-defined) pour router le trafic vers des instances back-end via le pare-feu
 * Vérifier que vous utilisez le bon protocole ; si vous utilisez HTTP pour sonder un port à l’écoute d’une application non HTTP, la sonde échoue
 

@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: FAQ Azure Security Center – Collecte de données et agents
-  description: Forum aux questions sur la collecte de données, les agents et les espaces de travail pour Azure Security Center, produit qui vous aide à prévenir, détecter et répondre aux menaces
+  title: FAQ sur Microsoft Defender pour le cloud - Collecte de données et agents
+  description: Forum aux questions sur la collecte de données, les agents et les espaces de travail pour Microsoft Defender pour le cloud, produit qui vous aide à prévenir, détecter et répondre aux menaces
   services: security-center
   documentationcenter: na
   author: memildin
@@ -14,243 +14,243 @@ metadata:
   ms.workload: na
   ms.date: 11/15/2020
   ms.author: memildin
-  ms.openlocfilehash: efee81f34c1cec045b25d28608f8340ce14eaa52
-  ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+  ms.openlocfilehash: 8dfad55fff78e88aadd05f4fda64b37683dbde5d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 08/14/2021
-  ms.locfileid: "122525577"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131084199"
 title: FAQ – Question relatives à la collecte de données, aux agents et aux espaces de travail
 summary: >
-  Azure Security Center collecte des données à partir de vos machines virtuelles Azure, groupes de machines virtuelles identiques, conteneurs IaaS et ordinateurs autres qu’Azure (y compris les ordinateurs locaux) pour surveiller les menaces et vulnérabilités de sécurité. Les données sont collectées à l’aide de l’agent Log Analytics, qui lit divers journaux d’événements et configurations liées à la sécurité de la machine et copie les données dans votre espace de travail à des fins d’analyse.
+  Defender pour le cloud collecte des données à partir de vos machines virtuelles Azure, groupes de machines virtuelles identiques, conteneurs IaaS et ordinateurs autres qu’Azure (y compris les ordinateurs locaux) pour superviser les menaces et vulnérabilités de sécurité. Les données sont collectées à l’aide de l’agent Log Analytics, qui lit divers journaux d’événements et configurations liées à la sécurité de la machine et copie les données dans votre espace de travail à des fins d’analyse.
 sections:
 - name: Ignoré
   questions:
   - question: >
-      Am I billed for Azure Monitor logs on the workspaces created by Security Center?
+      Est-ce que je suis facturé pour Journaux Azure Monitor sur des espaces de travail créés par Defender pour le cloud ?
     answer: >
-      No. Workspaces created by Security Center, while configured for Azure Monitor logs per node billing, don't incur Azure Monitor logs charges. Security Center billing is always based on your Security Center security policy and the solutions installed on a workspace:
+      Non. Les espaces de travail créés par Defender pour le cloud, même s’ils sont configurés pour une facturation Journaux Azure Monitor par nœud, n’entraînent pas de frais de journaux Azure Monitor. La facturation Defender pour le cloud est toujours basée sur votre stratégie de sécurité Defender pour le cloud et sur les solutions installées sur un espace de travail :
 
 
-      - **Azure Defender off** – Security Center enables the "SecurityCenterFree" solution on the default workspace. You won't be billed if Azure Defender is off.
+      - **Azure Defender désactivé** : Defender pour le cloud active la solution « SecurityCenterFree » sur l’espace de travail par défaut. Vous ne serez pas facturé si Azure Defender est désactivé.
 
 
-      - **Azure Defender on** – Security Center enables the "Security" solution on the default workspace.
+      - **Azure Defender activé** : Defender pour le cloud active la solution « Security » sur l’espace de travail par défaut.
 
 
-      For pricing details in your currency of choice and according to your region, see [Security Center pricing](https://azure.microsoft.com/pricing/details/security-center/).
+      Pour plus d’informations sur les prix dans la devise de votre choix et en fonction de votre région, consultez la [page sur les tarifs](https://azure.microsoft.com/pricing/details/security-center/).
 
 
       > [!NOTE]
 
-      > The log analytics pricing tier of workspaces created by Security Center does not affect Security Center billing.
+      > Le niveau tarifaire Log Analytics des espaces de travail créés par Defender pour le cloud n’affecte pas la facturation Defender pour le cloud.
 
 
       [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
   - question: >
-      What is the Log Analytics agent?
-    answer: "To monitor for security vulnerabilities and threats, Azure Security Center depends on the [Log Analytics Agent](../azure-monitor/agents/log-analytics-agent.md) - this is the same agent used by the Azure Monitor service. \n\nThe agent is sometimes referred to as the Microsoft Monitoring Agent (or \"MMA\"). \n\nThe agent collects various security-related configuration details and event logs from connected machines, and then copies the data to your Log Analytics workspace for further analysis. Examples of such data are: operating system type and version, operating system logs (Windows event logs), running processes, machine name, IP addresses, and logged in user.\n\nEnsure your machines are running one of the supported operating systems for the agent as described on the following pages:\n\n* [Log Analytics agent for Windows supported operating systems](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\n* [Log Analytics agent for Linux supported operating systems](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\nLearn more about the [data collected by the Log Analytics agent](security-center-enable-data-collection.md).\n"
+      Qu’est-ce que l’agent Log Analytics ?
+    answer: "Pour superviser les menaces et les failles de sécurité, Microsoft Defender pour le cloud dépend de l’[agent Log Analytics](../azure-monitor/agents/log-analytics-agent.md) ; il s’agit du même agent que celui utilisé par le service Azure Monitor. \n\nCet agent est parfois appelé Microsoft Monitoring Agent (ou « MMA »). \n\nL’agent collecte différents journaux des événements et détails de configuration liés à la sécurité à partir des ordinateurs connectés, puis copie les données dans votre espace de travail Log Analytics pour une analyse approfondie. Il peut s’agir des données suivantes : type et version de système d’exploitation, journaux d’activité de système d’exploitation (journaux d’événements Windows), processus en cours d’exécution, nom de machine, adresses IP et utilisateur connecté.\n\nVérifiez que vos machines exécutent l’un des systèmes d’exploitation pris en charge pour l’agent, comme décrit dans les pages suivantes :\n\n* [Agent Log Analytics pour les systèmes d’exploitation pris en charge par Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\n* [Agent Log Analytics pour les systèmes d’exploitation pris en charge par Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\nApprenez-en davantage sur les [données collectées par l’agent Log Analytics](enable-data-collection.md).\n"
   - question: >
-      What qualifies a VM for automatic provisioning of the Log Analytics agent installation?
+      Qu’est-ce qui rend une machine virtuelle apte pour le provisionnement automatique de l’installation de l’agent Log Analytics ?
     answer: >
-      Windows or Linux IaaS VMs qualify if:
+      Les machines virtuelles Windows ou Linux IaaS sont retenues dans les cas suivants :
 
 
-      - The Log Analytics agent extension is not currently installed on the VM.
+      - L’extension de l’agent Log Analytics n’est pas actuellement installée sur la machine virtuelle.
 
-      - The VM is in running state.
+      - La machine virtuelle est en cours d’exécution.
 
-      - The Windows or Linux [Azure Virtual Machine Agent](../virtual-machines/extensions/agent-windows.md) is installed.
+      - L’[agent de machine virtuelle Azure](../virtual-machines/extensions/agent-windows.md) pour Windows ou Linux est installé.
 
-      - The VM is not used as an appliance such as web application firewall or next generation firewall.
+      - La machine virtuelle n’est pas utilisée comme pare-feu d’applications web ou comme pare-feu de nouvelle génération.
   - question: >
-      Where is the default Log Analytics workspace created?
+      Où est créé l’espace de travail Log Analytics par défaut ?
     answer: >
-      The location of the default workspace depends on your Azure region:
+      La localisation de l’espace de travail par défaut dépend de votre région Azure :
 
 
-      - For VMs in the United States and Brazil the workspace location is the United States
+      - Pour les machines virtuelles aux États-Unis et au Brésil, la localisation de l’espace de travail est les États-Unis
 
-      - For VMs in Canada, the workspace location is Canada
+      - Pour les machines virtuelles au Canada, la localisation de l’espace de travail est le Canada
 
-      - For VMs in Europe the workspace location is Europe
+      - Pour les machines virtuelles en Europe, la localisation de l’espace de travail est l’Europe
 
-      - For VMs in the UK the workspace location is the UK
+      - Pour les machines virtuelles au Royaume-Uni, la localisation de l’espace de travail est le Royaume-Uni
 
-      - For VMs in East Asia and Southeast Asia the workspace location is Asia
+      - Pour les machines virtuelles dans les régions Asie Est et Asie Sud-Est, la localisation de l’espace de travail est l’Asie
 
-      - For VMs in Korea, the workspace location is Korea
+      - Pour les machines virtuelles en Corée, la localisation de l’espace de travail est la Corée
 
-      - For VMs in India, the workspace location is India
+      - Pour les machines virtuelles en Inde, la localisation de l’espace de travail est l’Inde
 
-      - For VMs in Japan, the workspace location is Japan
+      - Pour les machines virtuelles au Japon, la localisation de l’espace de travail est le Japon
 
-      - For VMs in China, the workspace location is China
+      - Pour les machines virtuelles en Chine, la localisation de l’espace de travail est la Chine
 
-      - For VMs in Australia, the workspace location is Australia
+      - Pour les machines virtuelles en Australie, la localisation de l’espace de travail est l’Australie
   - question: >
-      What security events are collected by the Log Analytics agent?
-    answer: "For a full list of the security events collected by the agent, see [What event types are stored for the \"Common\" and \"Minimal\" security events settings?](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal).\n\n> [!IMPORTANT]\n> For some services, such as Azure Firewall, if you have enabled logging and chosen a chatty resource to log (for example, setting the log to *verbose*) you may see significant impacts on your Log Analytics workspace storage needs. \n"
+      Quels sont les événements de sécurité collectés par l'agent Log Analytics ?
+    answer: "Pour obtenir la liste complète des événements de sécurité collectés par l'agent, consultez [Quels types d'événements sont stockés pour les paramètres d'événements de sécurité « Commun » et « Minimal » ?](enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal).\n\n> [!IMPORTANT]\n> Pour certains services, comme Pare-feu Azure, si vous avez activé la journalisation et choisi une ressource bavarde à journaliser (par exemple, en définissant le journal sur *détaillé*), vous pourriez constater des impacts significatifs sur les besoins de stockage de votre espace de travail Log Analytics. \n"
   - question: >
-      Can I delete the default workspaces created by Security Center?
+      Puis-je supprimer les espaces de travail par défaut créés par Defender pour le cloud ?
     answer: >
-      **Deleting the default workspace is not recommended.** Security Center uses the default workspaces to store security data from your VMs. If you delete a workspace, Security Center is unable to collect this data and some security recommendations and alerts are unavailable.
+      **Il n’est pas recommandé de supprimer l’espace de travail par défaut.** Defender pour le cloud utilise les espaces de travail par défaut pour stocker les données de sécurité de vos machines virtuelles. Si vous supprimez un espace de travail, Defender pour le cloud n’est pas en mesure de collecter ces données, et certaines recommandations de sécurité et alertes ne sont pas disponibles.
 
 
-      To recover, remove the Log Analytics agent on the VMs connected to the deleted workspace. Security Center reinstalls the agent and creates new default workspaces.
+      Pour effectuer une récupération, supprimez l’agent Log Analytics sur les machines virtuelles connectées à l’espace de travail supprimé. Defender pour le cloud réinstalle l’agent et crée des espaces de travail par défaut.
   - question: >
-      How can I use my existing Log Analytics workspace?
-    answer: "You can select an existing Log Analytics workspace to store data collected by Security Center. To use your existing Log Analytics workspace:\n\n- The workspace must be associated with your selected Azure subscription.\n- At a minimum, you must have read permissions to access the workspace.\n\n> [!NOTE]\n> A Log Analytics agent and the machine on which it’s running should both report to a Log Analytics workspace in the same tenant. If they’re reporting to different tenants, you won’t get security alerts from that agent.\n\nTo select an existing Log Analytics workspace:\n\n1. From Security Center's menu, select **Pricing & settings**.\n1. Select the relevant subscription.\n1. Open the **Auto provisioning** page.\n1. For the Log Analytics agent, select **Edit configuration**. \n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"The configuration of the Log Analytics agent to use when using auto deploy\" lightbox=\"./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. Select **Connect Azure VMs to a different workspace** and choose your existing workspace.\n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/choose-workspace.png\" alt-text=\"Selecting a non-default workspace for your Log Analytics agent to report to\" lightbox=\"./media/security-center-enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > The list only includes workspaces to which you have access and which are in your Azure subscription.\n\n1. Select **Save**. You will be asked if you would like to reconfigure monitored VMs.\n\n    - Select **No** if you want the new workspace settings to **apply on new VMs only**. The new workspace settings only apply to new agent installations; newly discovered VMs that do not have the Log Analytics agent installed.\n    - Select **Yes** if you want the new workspace settings to **apply on all VMs**. In addition, every VM connected to a Security Center created workspace is reconnected to the new target workspace.\n\n    > [!NOTE]\n    > If you select **Yes**, don't delete any workspaces created by Security Center until all VMs have been reconnected to the new target workspace. This operation fails if a workspace is deleted too early.\n"
+      Comment puis-je utiliser mon espace de travail Log Analytics existant ?
+    answer: "Vous pouvez sélectionner un espace de travail Log Analytics existant pour stocker les données collectées par Defender pour le cloud. Pour utiliser votre espace de travail Log Analytics existant :\n\n- L’espace de travail doit être associé à votre abonnement Azure sélectionné.\n- Au minimum, vous devez avoir des autorisations de lecture pour accéder à l’espace de travail.\n\n> [!NOTE]\n> Un agent Log Analytics et la machine sur laquelle il s’exécute doivent tous deux rendre compte à un espace de travail Log Analytics dans le même locataire. S’ils rendent compte à des locataires différents, vous n’obtenez pas d’alertes de sécurité à partir de cet agent.\n\nPour sélectionner un espace de travail Log Analytics existant :\n\n1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.\n1. Sélectionnez l’abonnement approprié.\n1. Ouvrez la page **Approvisionnement automatique**.\n1. Pour l’agent Log Analytics, sélectionnez **Modifier la configuration**. \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"Configuration de l’agent Log Analytics à utiliser lors de l’utilisation du déploiement automatique\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. Sélectionnez **Connect Azure VMs to a different workspace** (Connecter des machines virtuelles Azure à un autre espace de travail) et choisissez votre espace de travail existant.\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Sélection d’un espace de travail autre que celui par défaut auquel votre agent Log Analytics doit se rapporter\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > La liste comprend uniquement les espaces de travail auxquels vous avez accès et ceux qui se trouvent dans votre abonnement Azure.\n\n1. Sélectionnez **Enregistrer**. Vous serez invité à reconfigurer les machines virtuelles surveillées.\n\n    - Sélectionnez **Non** si vous souhaitez que les nouveaux paramètres de l’espace de travail **s’appliquent uniquement aux nouvelles machines virtuelles**. Les nouveaux paramètres de l’espace de travail s’appliquent uniquement aux nouvelles installations d’agent ; machines virtuelles nouvellement détectées sur lesquelles l’agent Log Analytics n’est pas installé.\n    - Sélectionnez **Oui** si vous souhaitez que les nouveaux paramètres de l’espace de travail **s’appliquent à toutes les machines virtuelles**. En outre, chaque machine virtuelle connectée à un espace de travail créé par Defender pour le cloud est reconnectée au nouvel espace de travail cible.\n\n    > [!NOTE]\n    > Si vous sélectionnez **Oui**, ne supprimez pas les espaces de travail créés par Defender pour le cloud tant que toutes les machines virtuelles n’ont pas été reconnectées au nouvel espace de travail cible. Cette opération échoue si un espace de travail est supprimé trop tôt.\n"
   - question: >
-      What if the Log Analytics agent was already installed as an extension on the VM?
+      Que se passe-t-il si l’agent Log Analytics est déjà installé en tant qu’extension sur la machine virtuelle ?
     answer: >
-      When the Monitoring Agent is installed as an extension, the extension configuration allows reporting to only a single workspace. Security Center does not override existing connections to user workspaces. Security Center will store security data from a VM in a workspace that is already connected, provided that the "Security" or "SecurityCenterFree" solution has been installed on it. Security Center may upgrade the extension version to the latest version in this process.
+      Lorsque l’Agent Monitoring est installé en tant qu’extension, la configuration de l’extension permet de rendre compte à un seul espace de travail. Defender pour le cloud n’écrase pas les connexions existantes des espaces de travail utilisateur. Defender pour le cloud stocke les données de sécurité à partir d’une machine virtuelle dans un espace de travail qui est déjà connecté, sous réserve que la solution « Security » ou « SecurityCenterFree » y soit installée. Defender pour le cloud peut mettre à niveau la version de l’extension vers la dernière version lors de ce processus.
 
 
-      For more information, see [Automatic provisioning in cases of a pre-existing agent installation](security-center-enable-data-collection.md#preexisting).
+      Pour plus d’informations, voir [Approvisionnement automatique en cas d’installation d’un agent préexistant](enable-data-collection.md#preexisting).
   - question: >
-      What if a Log Analytics agent is directly installed on the machine but not as an extension (Direct Agent)?
+      Que faire si l’agent Log Analytics est installé directement sur la machine, mais pas en tant qu’extension (agent direct) ?
     answer: >
-      If the Log Analytics agent is installed directly on the VM (not as an Azure extension), Security Center will install the Log Analytics agent extension, and may upgrade the Log Analytics agent to the latest version.
+      Si l’agent Log Analytics est installé directement sur la machine virtuelle (pas en tant qu’extension Azure), Defender pour le cloud installe l’extension de l’agent Log Analytics, et peut mettre à niveau l’agent Log Analytics vers la dernière version.
 
 
-      The agent installed will continue to report to its already configured workspace(s), and in addition will report to the workspace configured in Security Center (Multi-homing is supported on Windows machines).
+      L’agent installé continue de rendre compte à ses espaces de travail déjà configurés et à l’espace de travail configuré dans Defender pour le cloud (multihébergement pris en charge sur les machines Windows).
 
 
-      If the configured workspace is a user workspace (not Security Center's default workspace), you will need to install the "Security" or "SecurityCenterFree" solution on it for Security Center to start processing events from VMs and computers reporting to that workspace.
+      Si l’espace de travail configuré est un espace de travail utilisateur (et non l’espace de travail par défaut de Defender pour le cloud), vous devez y installer la solution « Security » ou « SecurityCenterFree » pour que Defender pour le cloud commence à traiter les événements provenant des machines virtuelles et des ordinateurs relevant de cet espace de travail.
 
 
-      For Linux machines, Agent multi-homing is not yet supported - hence, if an existing agent installation is detected, automatic provisioning will not occur and the machine's configuration will not be altered.
+      Pour les machines Linux, le multihébergement d’agent n’est pas encore pris en charge, par conséquent, si une installation existante de l’agent est détectée, l’approvisionnement automatique n’a pas lieu et la configuration de la machine n’est pas modifiée.
 
 
-      For existing machines on subscriptions onboarded to Security Center before March 17 2019, when an existing agent will be detected, the Log Analytics agent extension will not be installed and the machine will not be affected. For these machines, see the "Resolve monitoring agent health issues on your machines" recommendation to resolve the agent installation issues on these machines
+      Pour les machines existantes sur les abonnements intégrés à Defender pour le cloud avant le 17 mars 2019, quand un agent existant est détecté, l’extension de l’agent Log Analytics n’est pas installée et la machine n’est pas affectée. Pour ces machines, consultez la recommandation « Résoudre les problèmes d’intégrité de l’agent d’analyse sur vos machines » pour résoudre les problèmes d’installation de l’agent sur ces machines.
 
 
-      For more information, see the next section [What happens if a System Center Operations Manager or OMS direct agent is already installed on my VM?](#what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm-)
+      Pour plus d’informations, consultez la prochaine section, [Que se passe-t-il si l’agent direct System Center Operations Manager ou OMS est déjà installé sur ma machine virtuelle ?](#what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm-)
   - question: >
-      What if a System Center Operations Manager agent is already installed on my VM?
+      Que se passe-t-il si un agent Operations Manager est déjà installé sur ma machine virtuelle ?
     answer: >
-      Security center will install the Log Analytics agent extension side by side to the existing System Center Operations Manager agent. The existing agent will continue to report to the System Center Operations Manager server normally. Note that the Operations Manager agent and Log Analytics agent share common run-time libraries, which will be updated to the latest version during this process. Note - If version 2012 of the Operations Manager agent is installed, do not turn on automatic provisioning (manageability capabilities can be lost when the Operations Manager server is also version 2012).
+      Defender pour le cloud installe l’extension de l’agent Log Analytics parallèlement à l’agent System Center Operations Manager existant. L’agent existant continue de rendre compte normalement au serveur System Center Operations Manager. Notez que l’agent Operations Manager et l’agent Log Analytics partagent des bibliothèques runtime communes, qui sont mises à jour vers la dernière version lors de ce processus. Remarque : si la version 2012 de l’agent Operations Manager est installée, n’activez pas l’approvisionnement automatique (les fonctionnalités de facilité de gestion peuvent être perdues si la version du serveur Operations Manager date également de 2012).
   - question: >
-      What is the impact of removing these extensions?
+      Quel est l’impact de la suppression de ces extensions ?
     answer: >
-      If you remove the Microsoft Monitoring Extension, Security Center is not able to collect security data from the VM and some security recommendations and alerts are unavailable. Within 24 hours, Security Center determines that the VM is missing the extension and reinstalls the extension.
+      Si vous supprimez l’extension Microsoft Monitoring, Defender pour le cloud n’est pas en mesure de collecter des données de sécurité sur la machine virtuelle et certaines recommandations de sécurité et alertes ne sont pas disponibles. Sous 24 heures, Defender pour le cloud détermine que l’extension est absente de la machine virtuelle et la réinstalle.
   - question: >
-      How do I stop the automatic agent installation and workspace creation?
+      Comment empêcher l’installation automatique de l’agent et la création de l’espace de travail ?
     answer: >
-      You can turn off automatic provisioning for your subscriptions in the security policy but this is not recommended. Turning off auto provisioning limits Security Center recommendations and alerts. To disable automatic provisioning:
+      Vous pouvez désactiver l’approvisionnement automatique pour vos abonnements dans la stratégie de sécurité, mais ce n’est pas recommandé. La désactivation du provisionnement automatique a pour effet de limiter les alertes et recommandations de Defender pour le cloud. Pour désactiver l’approvisionnement automatique :
 
 
-      1. From Security Center's menu, select **Pricing & settings**.
+      1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
 
-      1. Select the relevant subscription.
+      1. Sélectionnez l’abonnement approprié.
 
-      1. If your subscription has Azure Defender enabled, open **Azure Defender plans** and select **Azure Defender off**.
+      1. Si les [fonctionnalités de sécurité renforcée sont activées](enable-enhanced-security.md) pour votre abonnement, ouvrez **Plans Defender** et sélectionnez **Sécurité renforcée désactivée**.
 
-          :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Enable or disable Azure Defender":::
+          :::image type="content" source="./media/platform-migration-faq/pricing-tier.png" alt-text="Activer ou désactiver les fonctionnalités de sécurité renforcée":::
 
-      1. From the **Auto provisioning** page, Select pen  and the turn off auto provisioning in the  **Security policy – Data collection** page.
+      1. Dans la page **Approvisionnement automatique**, sélectionnez Pen et désactivez l’approvisionnement automatique dans la page **Stratégie de sécurité – Collecte de données**.
 
-          :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Enable auto deploy for the Log Analytics agent":::
+          :::image type="content" source="./media/enable-data-collection/agent-toggles.png" alt-text="Activer le déploiement automatique pour l’agent Log Analytics":::
 
-      1. Select **Save**.
+      1. Sélectionnez **Enregistrer**.
   - question: >
-      Should I opt out of the automatic agent installation and workspace creation?
+      Dois-je refuser l’installation automatique de l’agent et la création de l’espace de travail ?
     answer: >
       > [!NOTE]
 
-      > Be sure to review sections [What are the implications of opting out?](#what-are-the-implications-of-opting-out-of-automatic-provisioning-) and [recommended steps when opting out](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-) if you choose to opt out of automatic provisioning.
+      > Veillez à consulter les sections [Quelles sont les implications d’un refus ?](#what-are-the-implications-of-opting-out-of-automatic-provisioning-) et [Étapes recommandées en cas de refus](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-) si vous choisissez de refuser le provisionnement automatique.
 
 
-      You may want to opt out of automatic provisioning if the following applies to you:
+      Vous pouvez souhaiter refuser le provisionnement automatique si les points suivants s’appliquent à vous :
 
 
-      - Automatic agent installation by Security Center applies to the entire subscription. You cannot apply automatic installation to a subset of VMs. If there are critical VMs that cannot be installed with the Log Analytics agent, then you should opt out of automatic provisioning.
+      - L’installation automatique de l’agent par Defender pour le cloud s’applique à l’ensemble de l’abonnement. Vous ne pouvez pas appliquer l’installation automatique à un sous-ensemble de machines virtuelles. Si des machines virtuelles critiques ne peuvent pas être installées avec l’agent Log Analytics, vous devez refuser le provisionnement automatique.
 
-      - Installation of the Log Analytics agent extension updates the agent's version. This applies to a direct agent and a System Center Operations Manager agent (in the latter, the Operations Manager and Log Analytics agent share common runtime libraries - which will be updated in the process). If the installed Operations Manager agent is version 2012 and is upgraded, manageability capabilities can be lost when the Operations Manager server is also version 2012. Consider opting out of automatic provisioning if the installed Operations Manager agent is version 2012.
+      - L’installation de l’extension de l’agent Log Analytics met à jour la version de l’agent. Cela s’applique à un agent direct et un agent System Center Operations Manager (dans le dernier cas, les bibliothèques Operations Manager et l’agent Log Analytics partagent des bibliothèques runtime communes, qui sont mises à jour dans le processus). Si l’agent Operations Manager installé est en version 2012 et qu’il est mis à niveau, les fonctionnalités de facilité de gestion peuvent être perdues quand le serveur Operations Manager est également en version 2012. Vous pouvez refuser le provisionnement automatique si l’agent Operations Manager installé est en version 2012.
 
-      - If you want to avoid creation of multiple workspaces per subscription and you have your own custom workspace within the subscription, then you have two options:
+      - Si vous souhaitez éviter de créer plusieurs espaces de travail par abonnement et que vous disposez de votre propre espace de travail personnalisé dans l’abonnement, deux options s’offrent à vous :
 
-         - You can opt out of automatic provisioning. After migration, set the default workspace settings as described in [How can I use my existing Log Analytics workspace?](#how-can-i-use-my-existing-log-analytics-workspace-)
+         - Vous pouvez refuser le provisionnement automatique. Après la migration, définissez les paramètres d’espace de travail par défaut comme décrit dans [Comment puis-je utiliser mon espace de travail Log Analytics existant ?](#how-can-i-use-my-existing-log-analytics-workspace-)
 
-         - Or, you can allow the migration to complete, the Log Analytics agent to be installed on the VMs, and the VMs connected to the created workspace. Then, select your own custom workspace by setting the default workspace setting with opting in to reconfiguring the already installed agents. For more information, see [How can I use my existing Log Analytics workspace?](#how-can-i-use-my-existing-log-analytics-workspace-)
+         - Vous pouvez aussi autoriser l’exécution de la migration, l’installation de l’agent Log Analytics sur les machines virtuelles et la connexion des machines virtuelles à l’espace de travail créé. Sélectionnez ensuite votre propre espace de travail personnalisé en définissant le paramètre d’espace de travail par défaut avec l’activation de la reconfiguration des agents déjà installés. Pour plus d’informations, consultez [Comment puis-je utiliser mon espace de travail Log Analytics existant ?](#how-can-i-use-my-existing-log-analytics-workspace-)
   - question: >
-      What are the implications of opting out of automatic provisioning?
+      Quelles sont les implications d’un refus du provisionnement automatique ?
     answer: >
-      When migration is complete, Security Center can't collect security data from the VM and some security recommendations and alerts are unavailable. If you opt out, install the Log Analytics agent manually. See [recommended steps when opting out](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-).
+      Une fois la migration terminée, Defender pour le cloud n’est pas en mesure de collecter des données de sécurité sur la machine virtuelle, et certaines recommandations de sécurité et alertes ne sont pas disponibles. En cas de refus, installez manuellement l’agent Log Analytics. Consultez les [étapes recommandées en cas de refus](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-).
   - question: >
-      What are the recommended steps when opting out of automatic provisioning?
+      Quelles sont les étapes recommandées en cas de refus du provisionnement automatique ?
     answer: >
-      Manually install the Log Analytics agent extension so Security Center can collect security data from your VMs and provide recommendations and alerts. See [agent installation for Windows VM](../virtual-machines/extensions/oms-windows.md) or [agent installation for Linux VM](../virtual-machines/extensions/oms-linux.md) for guidance on installation.
+      Installez manuellement l’extension de l’agent Log Analytics pour que Defender pour le cloud puisse collecter des données de sécurité sur vos machines virtuelles et fournir des suggestions et des alertes. Consultez [Installation de l’agent pour les machines virtuelles Windows](../virtual-machines/extensions/oms-windows.md) ou [Installation de l’agent pour les machines virtuelles Linux](../virtual-machines/extensions/oms-linux.md) pour obtenir des instructions sur l’installation.
 
 
-      You can connect the agent to any existing custom workspace or Security Center created workspace. If a custom workspace does not have the "Security" or "SecurityCenterFree" solutions enabled, then you will need to apply a solution. To apply, select the custom workspace or subscription and apply a pricing tier via the **Security policy – Pricing tier** page.
+      Vous pouvez connecter l’agent à n’importe quel espace de travail personnalisé existant ou à l’espace de travail créé par Defender pour le cloud. Si les solutions « Security » ou « SecurityCenterFree » ne sont pas activées dans un espace de travail personnalisé, vous devez appliquer une solution. Pour ce faire, sélectionnez l’abonnement ou l’espace de travail personnalisé, puis appliquez un niveau tarifaire via la page **Stratégie de sécurité – Niveau tarifaire**.
 
 
-      :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Enable or disable Azure Defender":::
+      :::image type="content" source="./media/platform-migration-faq/pricing-tier.png" alt-text="Activer ou désactiver Azure Defender":::
 
 
-      Security Center will enable the correct solution on the workspace based on the selected pricing tier.
+      Defender pour le cloud active la solution appropriée sur l’espace de travail en fonction du niveau tarifaire sélectionné.
   - question: >
-      How do I remove OMS extensions installed by Security Center?
+      Comment supprimer des extensions OMS installées par Defender pour le cloud ?
     answer: >
-      You can manually remove the Log Analytics agent. This is not recommended as it limits Security Center recommendations and alerts.
+      Vous pouvez manuellement supprimer l’agent Log Analytics. Ce n’est pas recommandé car cela limite les alertes et les recommandations de Defender pour le cloud.
 
 
       > [!NOTE]
 
-      > If data collection is enabled, Security Center will reinstall the agent after you remove it.  You need to disable data collection before manually removing the agent. See How do I stop the automatic agent installation and workspace creation? for instructions on disabling data collection.
+      > Si la collecte de données est activée, Defender pour le cloud réinstalle l’agent une fois que vous l’avez supprimé.  Vous devez désactiver la collecte de données avant de supprimer manuellement l’agent. Consultez Comment empêcher l’installation automatique de l’agent et la création de l’espace de travail ? pour obtenir des instructions sur la désactivation de la collecte de données.
 
 
-      To manually remove the agent:
+      Pour supprimer manuellement l’agent :
 
 
-      1.    In the portal, open **Log Analytics**.
+      1.    Dans le portail, ouvrez **Log Analytics**.
 
 
-      1.    On the Log Analytics page, select a workspace:
+      1.    Sur la page Log Analytics, sélectionnez un espace de travail :
 
 
-      1.    Select the VMs that you don't want to monitor and select **Disconnect**.
+      1.    Sélectionnez les machines virtuelles que vous ne souhaitez pas surveiller, puis choisissez **Déconnecter**.
 
-         ![Remove the agent](./media/security-center-platform-migration-faq/remove-the-agent.png)
+         ![Supprimer l’agent](./media/platform-migration-faq/remove-the-agent.png)
 
       > [!NOTE]
 
-      > If a Linux VM already has a non-extension OMS agent, removing the extension removes the agent as well and you'll have to reinstall it.
+      > Si une machine virtuelle Linux possède déjà un agent OMS qui n’est pas un agent d’extension, la suppression de l’extension a pour effet de supprimer également l’agent. Vous devrez alors le réinstaller.
   - question: >
-      How do I disable data collection?
+      Comment désactiver la collecte des données ?
     answer: >
-      Automatic provisioning is highly recommended in order to get security alerts and recommendations about system updates, OS vulnerabilities, and endpoint protection. By default, auto provisioning is disabled.
+      L’approvisionnement automatique est fortement recommandé si vous souhaitez obtenir des alertes de sécurité et des recommandations sur les mises à jour système, les vulnérabilités du système d’exploitation et la protection du point de terminaison. Par défaut, le provisionnement automatique désactivé.
 
 
-      If you've enabled it but now want to disable it:
+      Si vous l’avez activé, mais que vous souhaitez maintenant le désactiver :
 
 
-      1. From [the Azure portal](https://portal.azure.com), open **Security Center** and select **Pricing and settings**.
+      1. Dans le [portail Azure](https://portal.azure.com), ouvrez **Defender pour le cloud** et sélectionnez **Tarification et paramètres**.
 
 
-      1. Select the subscription on which you want to disable automatic provisioning.
+      1. Sélectionnez l’abonnement pour lequel vous souhaitez désactiver le provisionnement automatique.
 
 
-      1. Under **Auto provisioning**, turn off the toggle for the Log Analytics agent.
+      1. Sous **Approvisionnement automatique**, désactivez la bascule de l’agent d’analytique des journaux d'activité.
   - question: >
-      How do I enable data collection?
+      Comment activer la collecte des données ?
     answer: >
-      You can enable data collection for your Azure subscription in the Security policy. To enable data collection. [Sign in to the Azure portal](https://portal.azure.com), select **Browse**, select **Security Center**, and select **Security policy**. Select the subscription that you wish to enable automatic provisioning. When you select a subscription **Security policy - Data collection** opens. Under **Auto provisioning**, select **On**.
+      Vous pouvez activer la collecte des données pour votre abonnement Azure dans la stratégie de sécurité. Pour activer la collecte de données. [Connectez-vous au portail Azure](https://portal.azure.com), sélectionnez **Parcourir**, **Defender pour le cloud**, puis **Stratégie de sécurité**. Sélectionnez l’abonnement pour lequel vous souhaitez activer l’approvisionnement automatique. Lorsque vous sélectionnez un abonnement, **Stratégie de sécurité - Collecte de données** s’ouvre. Sous **Auto provisioning** (Approvisionnement automatique), sélectionnez **On** (Activé).
   - question: >
-      What happens when data collection is enabled?
-    answer: "When automatic provisioning is enabled, Security Center provisions the Log Analytics agent on all supported Azure VMs and any new ones that are created. Automatic provisioning is recommended but manual agent installation is also available. [Learn how to install the Log Analytics agent extension](../azure-monitor/vm/monitor-virtual-machine.md#agents). \n\nThe agent enables the process creation event 4688 and the *CommandLine* field inside event 4688. New processes created on the VM are recorded by EventLog and monitored by Security Center's detection services. For more information on the details recorded for each new process, see [description fields in 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). The agent also collects the 4688 events created on the VM and stores them in search.\n\nThe agent also enables data collection for [Adaptive Application Controls](security-center-adaptive-application.md), Security Center configures a local AppLocker policy in Audit mode to allow all applications. This policy will cause AppLocker to generate events, which are then collected and leveraged by Security Center. It is important to note that this policy will not be configured on any machines on which there is already a configured AppLocker policy. \n\nWhen Security Center detects suspicious activity on the VM, the customer is notified by email if [security contact information](security-center-provide-security-contact-details.md) has been provided. An alert is also visible in Security Center's security alerts dashboard.\n"
+      Que se passe-t-il quand la collecte des données est activée ?
+    answer: "Quand le provisionnement automatique est activé, Defender pour le cloud provisionne l’agent Log Analytics sur toutes les machines virtuelles Azure prises en charge et toutes celles créées. L’approvisionnement automatique est recommandé. Toutefois, l’installation manuelle de l’agent est également disponible. [Découvrez comment installer l’extension de l’agent Log Analytics](../azure-monitor/vm/monitor-virtual-machine.md#agents). \n\nL’agent active l’événement de création de processus 4688 et le champ *CommandLine* à l’intérieur de l’événement 4688. Les processus créés sur la machine virtuelle sont enregistrés par le journal des événements et supervisés par les services de détection de Defender pour le cloud. Pour plus d’informations sur les détails enregistrés pour chaque nouveau processus, voir [Description des champs 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). L’agent collecte également les événements 4688 créés sur la machine virtuelle et les stocke dans la recherche.\n\nL’agent permet également d’activer la collecte de données pour les [Contrôles d’application adaptatifs](adaptive-application-controls.md). Defender pour le cloud configure une stratégie AppLocker locale en mode Audit pour autoriser toutes les applications. Cette stratégie amène AppLocker à générer des événements qui sont ensuite recueillis et exploités par Defender pour le cloud. Il est important de noter que cette stratégie ne sera configurée sur aucun ordinateur sur lequel une stratégie AppLocker est déjà configurée. \n\nQuand Defender pour le cloud détecte une activité suspecte sur la machine virtuelle, le client est averti par e-mail si [des informations de contact de sécurité](configure-email-notifications.md) ont été fournies. Une alerte est également visible dans le tableau de bord des alertes de sécurité de Defender pour le cloud.\n"
   - question: >
-      Will Security Center work using an OMS gateway?
+      Defender pour le cloud est-il opérationnel avec une passerelle OMS ?
     answer: >
-      Yes. Azure Security Center leverages Azure Monitor to collect data from Azure VMs and servers, using the Log Analytics agent.
+      Oui. Microsoft Defender pour le cloud utilise Azure Monitor pour collecter des données à partir de serveurs et de machines virtuelles Azure, avec l’agent Log Analytics.
 
-      To collect the data, each VM and server must connect to the Internet using HTTPS. The connection can be direct, using a proxy, or through the [OMS Gateway](../azure-monitor/agents/gateway.md).
+      Pour collecter les données, chaque machine virtuelle et chaque serveur doivent se connecter à Internet à l’aide du protocole HTTPS. Il peut s’agir d’une connexion directe, d’une connexion obtenue par un proxy ou bien établie via la [passerelle OMS](../azure-monitor/agents/gateway.md).
   - question: >
-      Does the Monitoring Agent impact the performance of my servers?
+      Est-ce que l’agent d’analyse a un impact sur les performances de mes serveurs ?
     answer: >-
-      The agent consumes a nominal amount of system resources and should have little impact on the performance. For more information on performance impact and the agent and extension, see the [planning and operations guide](security-center-planning-and-operations-guide.md#data-collection-and-storage).
+      L’agent utilise une quantité minime de ressources système et n’a donc qu’un faible impact sur les performances. Pour en savoir plus sur l’impact sur les performances, l’agent et l’extension, consultez le [Guide de planification et de fonctionnement](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
 
@@ -258,8 +258,8 @@ sections:
 
       <!--Image references-->
 
-      [2]: ./media/security-center-platform-migration-faq/data-collection.png
+      [2]: ./media/platform-migration-faq/data-collection.png
 
-      [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
+      [3]: ./media/platform-migration-faq/remove-the-agent.png
 
-      [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png
+      [4]: ./media/platform-migration-faq/use-another-workspace.png

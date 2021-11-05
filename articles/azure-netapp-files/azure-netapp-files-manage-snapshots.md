@@ -12,21 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 10/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 2a17ed67830dfcfc3f1c5c3cbd6cc06ceedc8028
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c6bbc11fc77de516d2e163d1463444f2a3c0210e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614179"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069935"
 ---
 # <a name="create-an-on-demand-snapshot-for-a-volume"></a>Créer un instantané à la demande pour un volume
 
 Azure NetApp Files prend en charge la création de [captures instantanées](snapshots-introduction.md) à la demande et l’utilisation de stratégies de capture instantanée pour planifier la création automatique de captures instantanées. Vous pouvez également restaurer un [instantané sur un nouveau volume](snapshots-restore-new-volume.md), [restaurer un fichier unique à l’aide d’un client](snapshots-restore-file-client.md), ou [rétablir un volume existant à l’aide d’un instantané](snapshots-revert-volume.md). Cet article explique comment créer un instantané à la demande pour un volume. 
 
 > [!NOTE] 
-> Pour plus d’informations sur la gestion des instantanés dans la réplication entre les régions, consultez [Configuration requise et considérations pour la réplication entre régions](cross-region-replication-requirements-considerations.md).
+> * Pour plus d’informations sur la gestion des instantanés dans la réplication entre les régions, consultez [Configuration requise et considérations pour la réplication entre régions](cross-region-replication-requirements-considerations.md).
+> * Vous pouvez utiliser l’outil Azure Application Consistent Snapshot (AzAcSnap) afin d’activer la protection des données pour les bases de données tierces. Pour plus d’informations, consultez la [présentation de l’outil Azure Application Consistent Snapshot](azacsnap-introduction.md).
  
 ## <a name="steps"></a>Étapes
 

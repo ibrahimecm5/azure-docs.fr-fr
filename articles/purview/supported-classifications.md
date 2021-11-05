@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: edd43fc34a1b94c3d389670c7417ea9123d1586f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e3018a1b9d94ca1f750bf8d17b1ea6ba028ad07f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214728"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056145"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Classifications prises en charge dans Azure Purview
 
@@ -43,13 +43,16 @@ Le filtre de Bloom Person a été préparé à l’aide des deux jeux de donnée
 - [Données de recensement des noms de famille aux États-Unis en 2010 (162 000 entrées)](https://www.census.gov/topics/population/genealogy/data/2010_surnames.html)
 - [Noms de bébés populaires (à partir des numéros de sécurité sociale aux USA) entre 1880 et 2019 (98 000 entrées)](https://www.ssa.gov/oact/babynames/limits.html)
 
+> [!NOTE]
+> Azure Purview classe les colonnes uniquement lorsque les données contiennent des noms et des noms de famille. Azure Purview ne classe pas les colonnes qui contiennent des noms complets.
+
 ## <a name="regex-classifications"></a>Classifications RegEx
 
 ## <a name="aba-routing-number"></a>Numéro de routage ABA
 
 ### <a name="format"></a>Format
 
-neuf chiffres, qui peuvent être dans un modèle mis en forme ou non mis en forme
+Neuf chiffres qui peuvent être dans un modèle mis en forme ou non mis en forme.
 
 ### <a name="pattern"></a>Modèle
 

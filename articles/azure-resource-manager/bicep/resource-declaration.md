@@ -4,35 +4,67 @@ description: Explique comment déclarer des ressources en vue de les déployer d
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/07/2021
-ms.openlocfilehash: 4b3b355016057af00c361a118aed2728948768dd
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.date: 10/25/2021
+ms.openlocfilehash: 28f61a3fb3a40cb4db0a06f3c59fe6b07ec7d5bc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659618"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074210"
 ---
 # <a name="resource-declaration-in-bicep"></a>Déclaration de ressources dans Bicep
 
-Pour déployer une ressource via un fichier Bicep, vous devez ajouter une déclaration de ressource à l’aide du mot clé `resource`.
+Cet article décrit la syntaxe utilisée pour ajouter une ressource à votre fichier Bicep.
 
-## <a name="set-resource-type-and-version"></a>Définir le type et la version d’une ressource
+## <a name="declaration"></a>Déclaration
 
-Lorsque vous ajoutez une ressource à votre fichier Bicep, commencez par définir le type de la ressource et la version de l’API. Ces valeurs déterminent les autres propriétés disponibles pour la ressource.
-
-L’exemple suivant montre comment définir le type de ressource et la version de l’API pour un compte de stockage. L’exemple n’affiche pas la déclaration de ressource complète.
+Ajoutez une déclaration de ressource en utilisant le mot clé `resource`. Vous définissez un nom symbolique pour la ressource. Le nom symbolique n’est pas le même que le nom de la ressource. Vous utiliserez le nom symbolique pour référencer la ressource dans d’autres parties de votre fichier Bicep.
 
 ```bicep
-resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource <symbolic-name> '<full-type-name>@<api-version>' = {
+  <resource-properties>
+}
+```
+
+Une déclaration pour un compte de stockage peut donc commencer par :
+
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   ...
 }
 ```
 
-Vous définissez un nom symbolique pour la ressource. Dans l’exemple précédent, le nom symbolique est `stg` .  Le nom symbolique n’est pas le même que le nom de la ressource. Vous utiliserez le nom symbolique pour référencer la ressource dans d’autres parties de votre fichier Bicep. Les noms symboliques respectent la casse.  Ils peuvent contenir des lettres, des chiffres et _ ; mais ils ne peuvent pas commencer par un chiffre.
+Les noms symboliques respectent la casse.  Ils peuvent contenir des lettres, des chiffres et _ ; mais ils ne peuvent pas commencer par un chiffre.
 
-Bicep ne prend pas en charge `apiProfile`, qui est disponible dans le [JSON des modèles Azure Resource Manager (modèles ARM)](../templates/syntax.md).
+Pour obtenir les types et versions des ressources disponibles, consultez les [informations de référence sur les ressources Bicep](/azure/templates/). Bicep ne prend pas en charge `apiProfile`, qui est disponible dans le [JSON des modèles Azure Resource Manager (modèles ARM)](../templates/syntax.md).
 
-## <a name="set-resource-name"></a>Définit un nom de ressource
+Pour déployer une ressource de manière conditionnelle, utilisez la syntaxe `if`. Pour plus d’informations, consultez [Déploiement conditionnel dans Bicep](conditional-resource-deployment.md).
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = if (condition) {
+  <resource-properties>
+}
+```
+
+Pour déployer plusieurs instances d’une ressource, utilisez la syntaxe `for`. Pour plus d’informations, consultez [Boucles itératives dans Bicep](loops.md).
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = [for <item> in <collection>: {
+  <properties-to-repeat>
+}]
+```
+
+Vous pouvez également utiliser la syntaxe `for` sur les propriétés de ressource pour créer un tableau.
+
+```bicep
+resource <symbolic-name> '<full-type-name>@<api-version>' = {
+  properties: {
+    <array-property>: [for <item> in <collection>: <value-to-repeat>]
+  }
+}
+```
+
+## <a name="resource-name"></a>Nom de la ressource
 
 Chaque ressource a un nom. Lorsque vous définissez le nom de la ressource, soyez attentif aux [règles et restrictions applicables aux noms de ressources](../management/resource-name-rules.md).
 
@@ -56,7 +88,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-## <a name="set-location"></a>Définissez un emplacement
+## <a name="location"></a>Location
 
 De nombreuses ressources nécessitent un emplacement. Vous pouvez déterminer si la ressource a besoin d’un emplacement via IntelliSense ou une [référence de modèle](/azure/templates/). L’exemple suivant ajoute un paramètre d’emplacement utilisé pour le compte de stockage.
 
@@ -100,11 +132,11 @@ az provider show \
 
 ---
 
-## <a name="set-tags"></a>Définir des étiquettes
+## <a name="tags"></a>Étiquettes
 
 Vous pouvez appliquer des étiquettes à une ressource pendant le déploiement. Les étiquettes vous aident à organiser logiquement vos ressources déployées. Pour obtenir des exemples de différentes façons de spécifier les étiquettes, consultez [Étiquettes de modèle ARM](../management/tag-resources.md#arm-templates).
 
-## <a name="set-managed-identities-for-azure-resources"></a>Définir des identités managées pour les ressources Azure
+## <a name="managed-identities-for-azure-resources"></a>Identités gérées pour les ressources Azure
 
 Certaines ressources prennent en charge des [identités managées pour les ressources Azure](../../active-directory/managed-identities-azure-resources/overview.md). Ces ressources ont un objet Identité au niveau racine de la déclaration de ressource.
 
@@ -138,11 +170,11 @@ resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
   }
 ```
 
-## <a name="set-resource-specific-properties"></a>Définir des propriétés spécifiques d’une ressource
+## <a name="resource-specific-properties"></a>Propriétés spécifiques aux ressources
 
 Les propriétés précédentes sont génériques pour la plupart des types de ressources. Après avoir défini ces valeurs, vous devez définir les propriétés qui sont spécifiques du type de ressource que vous déployez.
 
-Utilisez IntelliSense ou une [référence de modèle](/azure/templates/) pour déterminer les propriétés disponibles et celles qui sont requises. L’exemple suivant définit les propriétés restantes pour un compte de stockage.
+Utilisez IntelliSense ou les [informations de référence sur les ressources Bicep](/azure/templates/) pour déterminer les propriétés disponibles et celles qui sont exigées. L’exemple suivant définit les propriétés restantes pour un compte de stockage.
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
@@ -159,7 +191,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-## <a name="set-resource-dependencies"></a>Définir des dépendances de ressources
+## <a name="dependencies"></a>Les dépendances
 
 Quand vous déployez des ressources, vous devez éventuellement vous assurer que certaines ressources existent au préalable avant d’autres ressources. Par exemple, vous avez besoin d’un serveur SQL logique avant de déployer une base de données. Vous établissez cette relation en marquant une seule ressource comme dépendante de l’autre ressource. L’ordre de déploiement des ressources peut être influencé de deux manières : une [dépendance implicite](#implicit-dependency) et une [dépendance explicite](#explicit-dependency)
 
@@ -233,7 +265,7 @@ Visual Studio Code fournit un outil qui permet de visualiser les dépendances. O
 
 :::image type="content" source="./media/resource-declaration/bicep-resource-visualizer.png" alt-text="Capture d’écran du visualiseur de ressources Bicep dans Visual Studio Code":::
 
-## <a name="reference-existing-resources"></a>Référencer des ressources existantes
+## <a name="existing-resources"></a>Ressources existantes
 
 Pour référencer une ressource qui ne se trouve pas dans le fichier Bicep actuel, utilisez le mot clé `existing` dans une déclaration de ressource.
 
@@ -257,6 +289,8 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 
 output blobEndpoint string = stg.properties.primaryEndpoints.blob
 ```
+
+Si vous tentez de référencer une ressource qui n’existe pas, vous recevez l’erreur `NotFound` et votre déploiement échoue.
 
 Pour plus d’informations sur la définition de l’étendue, consultez [Fonctions d’étendue pour Bicep](bicep-functions-scope.md).
 

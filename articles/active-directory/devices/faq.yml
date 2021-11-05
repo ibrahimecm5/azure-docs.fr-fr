@@ -12,12 +12,12 @@ metadata:
   manager: karenhoran
   ms.reviewer: ravenn
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: ddb697605b12505970f25609eb2365e39646de4f
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 34faf66c08f951ea5cfc53d56ae359a1a5cdda0f
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128620879"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131049859"
 title: FAQ sur la gestion des appareils Azure Active Directory
 summary: ''
 sections:
@@ -66,6 +66,9 @@ sections:
     answer: "Oui. Windows possède une fonctionnalité de mise en cache du nom d’utilisateur et du mot de passe qui permet aux utilisateurs qui se sont précédemment connectés d’accéder au bureau rapidement, même sans connectivité réseau. \n\nQuand un appareil est supprimé ou désactivé dans Azure AD, ce fait n’est pas connu par l’appareil Windows. Par conséquent, les utilisateurs qui se sont précédemment connectés continuent d’avoir accès au bureau avec le nom d’utilisateur et le mot de passe mis en cache. Cependant, comme l’appareil est supprimé ou désactivé, les utilisateurs ne peuvent pas accéder aux ressources protégées par l’accès conditionnel basé sur l’appareil. \n\nLes utilisateurs qui ne se sont pas connectés précédemment ne peuvent pas accéder à l’appareil. La mise en cache du nom d’utilisateur et du mot de passe n’est pas activée pour eux. \n"
   - question: Des utilisateurs désactivés ou supprimés peuvent-ils se connecter à un appareil joint à Azure AD ?
     answer: "Oui, mais uniquement pour une durée limitée. Quand un utilisateur est supprimé ou désactivé dans Azure AD, ce fait n’est pas connu immédiatement par l’appareil Windows. Par conséquent, les utilisateurs qui se sont précédemment connectés peuvent avoir accès au bureau avec le nom d’utilisateur et le mot de passe mis en cache. \n\nEn règle générale, il faut moins de quatre heures à l’appareil pour être au courant de l’état utilisateur. Alors, Windows bloque l’accès de ces utilisateurs au bureau. Quand l’utilisateur est supprimé ou désactivé dans Azure AD, tous ses jetons sont révoqués. Par conséquent, il ne peut pas accéder aux ressources. \n\nLes utilisateurs supprimés ou désactivés qui ne se sont pas connectés précédemment ne peuvent pas accéder à un appareil. La mise en cache du nom d’utilisateur et du mot de passe n’est pas activée pour eux. \n"
+  - question: Un utilisateur invité peut-il se connecter à un appareil joint Azure AD ?
+    answer: >
+      Non, actuellement, les utilisateurs invités ne peuvent pas se connecter à un appareil joint Azure AD.
   - question: Pourquoi mes utilisateurs rencontrent-ils des problèmes sur les appareils joints Azure AD après avoir modifié leur UPN ?
     answer: "Actuellement, les UPN ne sont pas entièrement pris en charge sur les appareils joints Azure AD. Dès lors, leur authentification auprès d’Azure AD échoue après la modification de leur UPN. C'est la raison pour laquelle les utilisateurs rencontrent des problèmes liés à l'authentification unique et à l'accès conditionnel sur leurs appareils. Pour l'instant, les utilisateurs doivent se connecter à Windows via la vignette « Autre utilisateur » à l’aide de leur nouvel UPN pour résoudre ce problème. Nous mettons tout en œuvre pour résoudre ce problème. Cela étant, les utilisateurs qui se connectent avec Windows Hello Entreprise ne rencontrent pas ce problème. \n\nLes modifications d’UPN sont prises en charge avec la mise à jour Windows 10 2004. Les utilisateurs d’appareils comportant cette mise à jour n’auront pas de problèmes après avoir modifié leurs UPN\n"
   - question: Mes utilisateurs ne peuvent pas rechercher d’imprimantes à partir d’appareils joints à Azure AD. Comment activer l’impression à partir de ces appareils ?

@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: Le Stockage Azure offre différents niveaux d’accès afin que vous puissiez stocker vos données d’objet blob de la manière la plus économique en fonction de la façon dont elles sont utilisées. En savoir plus sur les niveaux d’accès chaud, froid et archive pour Stockage Blob.
 author: tamram
 ms.author: tamram
-ms.date: 10/07/2021
+ms.date: 10/25/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 7af8e29890c63429a50c9818baa001bb5990c26b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 45f330ad2e40cce5b5fca0b6f6fd99d3271bea76
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709007"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063781"
 ---
 # <a name="hot-cool-and-archive-access-tiers-for-blob-data"></a>Niveaux d’accès chaud, froid et archive pour les données d’objet blob
 
@@ -57,22 +57,21 @@ Le niveau Archive est un niveau hors connexion pour le stockage des données rar
 
 Les données doivent rester dans le niveau d’accès archive pendant au moins 180 jours ; sinon, elles sont soumises à des frais de suppression anticipée. Par exemple, si un objet blob est déplacé vers le niveau archive puis supprimé ou déplacé vers le niveau d’accès chaud après 45 jours, des frais de suppression anticipée équivalents à 135 (180 moins 45) jours de stockage de cet objet blob dans le niveau archive vous seront facturés.
 
-Tant qu'un objet blob se trouve dans le niveau Archive, il ne peut être ni lu ni modifié. Pour lire ou télécharger un objet blob dans le niveau Archive, vous devez d’abord le réactiver sur un niveau en ligne, chaud ou froid. La réactivation des données dans le niveau Archive peut prendre jusqu’à 15 heures. Pour plus d’informations sur la réactivation des objets blob, consultez [Vue d’ensemble de la réactivation d’objets blob à partir du niveau Archive](archive-rehydrate-overview.md).
+Tant qu'un objet blob se trouve dans le niveau Archive, il ne peut être ni lu ni modifié. Pour lire ou télécharger un objet blob dans le niveau Archive, vous devez d’abord le réactiver sur un niveau en ligne, chaud ou froid. La réhydratation des données dans le niveau archive peut prendre jusqu’à 15 heures, en fonction de la priorité que vous spécifiez pour l’opération de réhydratation. Pour plus d’informations sur la réactivation des objets blob, consultez [Vue d’ensemble de la réactivation d’objets blob à partir du niveau Archive](archive-rehydrate-overview.md).
 
 Les métadonnées d’un objet blob archivé restent disponibles pour l’accès en lecture, ce qui vous permet de répertorier l’objet blob et ses propriétés, métadonnées et étiquettes d’index. Les métadonnées d’un objet blob dans le niveau Archive sont en lecture seule, tandis que les étiquettes d’index blob peuvent être lues ou écrites. Les instantanés ne sont pas pris en charge pour les objets blob archivés.
 
 Les opérations suivantes sont prises en charge pour les objets blob dans le niveau Archive :
 
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
-- [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)
-- [Définir des étiquettes d’objet blob](/rest/api/storageservices/set-blob-tags)
-- [Obtenir les étiquettes d’objet blob](/rest/api/storageservices/get-blob-tags)
-- [Rechercher des objets blob par étiquettes](/rest/api/storageservices/find-blobs-by-tags)
-- [Lister les objets blob](/rest/api/storageservices/list-blobs)
-- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 - [Copy Blob](/rest/api/storageservices/copy-blob)
-- [Copy Blob From URL](/rest/api/storageservices/copy-blob-from-url)
 - [Delete Blob](/rest/api/storageservices/delete-blob)
+- [Rechercher des objets blob par étiquettes](/rest/api/storageservices/find-blobs-by-tags)
+- [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
+- [Obtenir les étiquettes d’objet blob](/rest/api/storageservices/get-blob-tags)
+- [Lister les objets blob](/rest/api/storageservices/list-blobs)
+- [Définir des étiquettes d’objet blob](/rest/api/storageservices/set-blob-tags)
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 
 > [!NOTE]
 > Le niveau archive n’est pas pris en charge sur les comptes ZRS, GZRS et RA-GZRS. La migration de LRS vers GRS est prise en charge à condition qu’aucun objet blob n’ait été déplacé vers le niveau archive lorsque le compte était défini sur LRS. Un compte peut être redéfini sur GRS si la mise à jour est effectuée moins de 30 jours après la définition du compte sur LRS et si aucun objet blob n’a été déplacé vers le niveau archive lorsque le compte était défini sur LRS.
@@ -85,7 +84,7 @@ Par défaut, le niveau d’accès pour un nouveau compte de stockage universel v
 
 Tout objet blob ne disposant pas d’un niveau explicitement attribué déduit le niveau à partir du paramètre de niveau d’accès du compte par défaut. Si le niveau d’accès d’un objet blob est déduit du paramètre de niveau d’accès au compte par défaut, le portail Azure affiche le niveau d’accès comme **Chaud (inféré)** ou **Froid (inféré)** .
 
-La modification du paramètre de niveau d’accès au compte par défaut s’applique à tous les objets blob du compte pour lesquels un niveau d’accès n’a pas été défini explicitement. Si vous basculez le paramètre de niveau d’accès du compte par défaut de chaud à froid dans un compte à usage général v2, vous êtes facturé pour les opérations d’écriture (par tranche de 10 000) pour tous les objets blob pour lesquels le niveau d’accès est inféré. Les opérations de lecture (par 10 000) et d’extraction de données (par Go) sont facturées si vous faites passer votre compte universel v2 du niveau froid au niveau chaud.
+La modification du paramètre de niveau d’accès au compte de stockage par défaut s’applique à tous les blobs du compte pour lesquels un niveau d’accès n’a pas été défini explicitement. Si vous basculez le paramètre de niveau d’accès par défaut de chaud à froid dans un compte à usage général v2, vous êtes facturé pour les opérations d’écriture (par tranche de 10 000) pour tous les blobs pour lesquels le niveau d’accès est inféré. Les opérations de lecture (par 10 000) et d’extraction de données (par Go) sont facturées si vous faites passer votre compte universel v2 du niveau froid au niveau chaud.
 
 Quand vous créez un compte de stockage hérité, vous devez spécifier le niveau d’accès par défaut sur chaud ou froid au moment de la création. Aucuns frais n’incombent pour modifier le paramètre de niveau d’accès du compte par défaut de chaud à froid dans un compte de stockage d’objets blob hérité. Les opérations de lecture (par 10 000) et d’extraction de données (par Go) sont facturées si vous faites passer votre compte de stockage d’objets blob du niveau froid au niveau chaud. Microsoft recommande d’utiliser des comptes de stockage universel v2 plutôt que des comptes de stockage d’objets blob si possible.
 
@@ -98,7 +97,7 @@ Pour définir explicitement le niveau d’un objet blob lorsque vous le créez, 
 
 Une fois qu’un objet blob est créé, vous pouvez modifier son niveau de l’une des manières suivantes :
 
-- En appelant l’opération [Définir le niveau d’objet blob](/rest/api/storageservices/set-blob-tier), soit directement, soit via une stratégie de [gestion du cycle de vie](#blob-lifecycle-management). L’appel de [Définir le niveau d’objet blob](/rest/api/storageservices/set-blob-tier) est généralement la meilleure option lors de la modification du niveau d’un objet blob d’un niveau chaud à un niveau froid.
+- En appelant l’opération [Définir le niveau d’objet blob](/rest/api/storageservices/set-blob-tier), soit directement, soit via une stratégie de [gestion du cycle de vie](#blob-lifecycle-management). L’appel de [Définir le niveau du blob](/rest/api/storageservices/set-blob-tier) est généralement la meilleure option quand vous changez le niveau d’un blob pour passer d’un niveau plus chaud à un niveau plus froid.
 - En appelant l’opération [Copier l’objet blob](/rest/api/storageservices/copy-blob) pour copier un objet blob d’un niveau à un autre. L’appel de [Copier l’objet blob](/rest/api/storageservices/copy-blob) est recommandé pour la plupart des scénarios dans lesquels vous réactivez un objet blob du niveau Archive vers un niveau en ligne, ou déplacez un objet blob d’un niveau froid à chaud. En copiant un objet blob, vous pouvez éviter la pénalité de suppression précoce, si l’intervalle de stockage requis pour l’objet blob source n’a pas encore expiré. Toutefois, la copie d’un objet blob entraîne des frais de capacité pour deux objets blob, l’objet blob source et l’objet blob de destination.
 
 La modification du niveau d’un objet blob de chaud à froid ou Archive est instantanée, tout comme le passage de froid à chaud. La réactivation d’un objet blob d’un niveau archive vers un niveau chaud ou froid peut prendre jusqu’à 15 heures.
@@ -107,6 +106,14 @@ Gardez à l’esprit les points suivants lors du déplacement d’un objet blob 
 
 - S’il est déduit qu’un objet blob se trouve au niveau froid en fonction du niveau d’accès par défaut du compte de stockage et que l’objet blob est déplacé vers le niveau archive, il n’y a aucuns frais de suppression anticipée.
 - Si un objet blob est explicitement déplacé vers le niveau froid, puis déplacé vers le niveau archive, des frais de suppression anticipée s’appliquent.
+
+Le tableau suivant récapitule les approches que vous pouvez suivre pour déplacer des blobs entre différents niveaux.
+
+| Origine/Destination | Niveau de stockage chaud | Niveau de stockage froid | Niveau de stockage archive |
+|--|--|--|--|
+| **Niveau chaud** | N/A | Modifiez le niveau d’un blob de chaud à froid avec **Définir le niveau du blob** ou **Copier le blob**. [En savoir plus…](manage-access-tier.md)<br /><br />Déplacez des blobs vers le niveau froid avec une stratégie de gestion du cycle de vie. [En savoir plus…](lifecycle-management-overview.md) | Modifiez le niveau d’un blob de chaud à archive avec **Définir le niveau du blob** ou **Copier le blob**. [En savoir plus…](archive-blob.md) <br /><br />Archivez les blobs avec une stratégie de gestion du cycle de vie. [En savoir plus…](lifecycle-management-overview.md) |
+| **Niveau froid** | Modifiez le niveau d’un blob de froid à chaud avec **Définir le niveau du blob** ou **Copier le blob**. [En savoir plus…](manage-access-tier.md) <br /><br />Déplacez des blobs vers le niveau chaud avec une stratégie de gestion du cycle de vie. [En savoir plus…](lifecycle-management-overview.md) | N/A | Modifiez le niveau d’un blob de froid à archive avec **Définir le niveau du blob** ou **Copier le blob**. [En savoir plus…](archive-blob.md) <br /><br />Archivez les blobs avec une stratégie de gestion du cycle de vie. [En savoir plus…](lifecycle-management-overview.md) |
+| **Niveau archive** | Réhydratez vers le niveau chaud avec **Définir le niveau du blob** ou **Copier le blob**. [En savoir plus…](archive-rehydrate-to-online-tier.md) | Réhydratez vers le niveau froid avec **Définir le niveau du blob** ou **Copier le blob**. [En savoir plus…](archive-rehydrate-to-online-tier.md) | N/A |
 
 ## <a name="blob-lifecycle-management"></a>Gestion de cycle de vie des objets blob
 
