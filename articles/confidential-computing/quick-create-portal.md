@@ -1,51 +1,46 @@
 ---
-title: 'Démarrage rapide : Créer une machine virtuelle d’informatique confidentielle Azure dans le portail Azure'
-description: Commencez vos déploiements en apprenant à créer rapidement une machine virtuelle d’informatique confidentielle dans le portail Azure.
+title: 'Démarrage rapide : Créer une machine virtuelle Intel SGX dans le portail Azure'
+description: Commencez vos déploiements en découvrant comment créer rapidement une machine virtuelle Intel SGX dans le portail Azure.
 author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: quickstart
-ms.date: 06/13/2021
+ms.date: 11/1/2021
 ms.author: JenCook
-ms.openlocfilehash: 8fb93b7697e2dd9077995572fc91b6e82a7d8512
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.custom: mode-portal, ignite-fall-2021
+ms.openlocfilehash: 51a91b6bb5ff5991ad2d92a41f7f70ef39c2a0c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107215"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033276"
 ---
-# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Démarrage rapide : Déployer une machine virtuelle d’informatique confidentielle Azure dans le portail Azure
+# <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>Démarrage rapide : Créer une machine virtuelle Intel SGX dans le portail Azure
 
-Découvrez comment commencer à utiliser l’informatique confidentielle Azure avec le portail Azure pour créer une machine virtuelle reposant sur Intel SGX. Vous pourrez ensuite exécuter des applications d’enclave.
-
-Nous vous recommandons de suivre ce tutoriel si vous souhaitez déployer une machine virtuelle d’informatique confidentielle avec une configuration personnalisée. Sinon, suivez les [étapes de déploiement d’une machine virtuelle d’informatique confidentielle pour la Place de marché commerciale de Microsoft](quick-create-marketplace.md).
-
+Ce didacticiel vous guide tout au long du processus de déploiement de machines virtuelles Intel SGX à l’aide du portail Azure. Autrement, nous vous recommandons de suivre les modèles de la [Place de marché Azure](quick-create-marketplace.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
 Si vous n’avez pas d’abonnement Azure, [créez un compte](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) avant de commencer.
 
 > [!NOTE]
-> Les comptes associés à un essai gratuit n’ont pas accès aux machines virtuelles utilisées dans ce tutoriel. Veuillez passer à un abonnement avec paiement à l’utilisation.
+> Les comptes associés à un essai gratuit n’ont pas accès aux machines virtuelles utilisées dans ce didacticiel. Veuillez passer à un abonnement avec paiement à l’utilisation.
 
 
 ## <a name="sign-in-to-azure"></a>Connexion à Azure
 
-1. Connectez-vous au [portail Azure](https://portal.azure.com/).
+1. Connectez-vous au [Portail Azure](https://portal.azure.com/).
 
 1. En haut, sélectionnez **Créer une ressource**.
 
-1. Dans le volet **Place de marché**, sélectionnez **Compute** sur la gauche.
+1. Dans le volet gauche, sélectionnez **Compute**.
 
-1. Recherchez et sélectionnez **Machine virtuelle**.
+1. Sélectionnez **Créer une machine virtuelle**.
 
     ![Déployer une machine virtuelle](media/quick-create-portal/compute-virtual-machine.png)
 
-1. Dans la page d’arrivée Machine virtuelle, sélectionnez **Créer**.
-
-
-## <a name="configure-a-confidential-computing-virtual-machine"></a>Configurer une machine virtuelle d’informatique confidentielle
+## <a name="configure-an-intel-sgx-virtual-machine"></a>Configurer une machine virtuelle Intel SGX
 
 1. Sous l’onglet **De base**, sélectionnez votre **Abonnement** et votre **Groupe de ressources**.
 
@@ -56,28 +51,23 @@ Si vous n’avez pas d’abonnement Azure, [créez un compte](https://azure.micr
    * **Région** : sélectionnez la région Azure qui vous convient.
 
         > [!NOTE]
-        > Les machines virtuelles d’informatique confidentielle fonctionnent uniquement sur du matériel spécialisé disponible dans des régions spécifiques. Pour connaître les régions prenant en charge les machines virtuelles de la série DCsv2, consultez la [liste des produits disponibles par région](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+        > Les machines virtuelles Intel SGX s’exécutent sur du matériel spécialisé dans des régions spécifiques. Pour connaître la disponibilité régionale la plus récente, recherchez les séries DCsv2 ou DCsv3/DCdsv3 dans les [régions disponibles](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 1. Configurez l’image du système d’exploitation à utiliser pour votre machine virtuelle.
 
-    * **Choisir une image** : pour ce tutoriel, sélectionnez Ubuntu 18.04 LTS. Vous pouvez également sélectionner Windows Server 2019, Windows Server 2016 ou Ubuntu 16.04 LTS. Dans ce cas, vous serez redirigé en conséquence dans ce tutoriel.
+    * **Choisir une image** : pour ce didacticiel, sélectionnez Ubuntu 20.04 LTS – Gen 2. Vous pouvez également sélectionner Ubuntu 18.04 LTS – Gen2 ou Windows Server 2019.
     
-    * **Activer l’image de 2e génération** : les machines virtuelles d’informatique confidentielle s’exécutent uniquement sur des images de [2e génération](../virtual-machines/generation-2.md). Vérifiez que l’image que vous sélectionnez est une image de 2e génération. Cliquez sur l’onglet **Avancé** au-dessus de l’emplacement où vous configurez la machine virtuelle. Faites défiler vers le bas jusqu’à la section intitulée « Génération de machine virtuelle ». Sélectionnez Génération 2, puis revenez à l’onglet **Options de base**.
+    * **Mettre à jour vers Génération 2** : sous Image, sélectionnez **Configurer la génération de machine virtuelle**, dans le menu volant, puis **Génération 2**.
     
+        ![image](https://user-images.githubusercontent.com/63871188/137009767-421ee49a-ded8-4cfd-ac53-a3d6750880b9.png)
 
-        ![Options avancées, onglet](media/quick-create-portal/advanced-tab-virtual-machine.png)
 
-
-        ![Génération de machine virtuelle](media/quick-create-portal/gen2-virtual-machine.png)
-
-    * **Revenir à la configuration de base** : utilisez les options de navigation dans la partie supérieure pour revenir à l’onglet **Options de base**.
-
-1. Sélectionnez **changer la taille** pour choisir une machine virtuelle dotée de capacités d’informatique confidentielle dans le sélecteur de taille. Dans le sélecteur de taille de la machine virtuelle, cliquez sur **Effacer tous les filtres**. Choisissez **Ajouter un filtre**, sélectionnez **Famille** comme type de filtre, puis sélectionnez uniquement **Informatique confidentielle**.
+1. Sélectionnez **Changer la taille** pour choisir une machine virtuelle dotée de fonctionnalités Intel SGX dans le sélecteur de taille. Dans le sélecteur de taille de la machine virtuelle, cliquez sur **Effacer tous les filtres**. Choisissez **Ajouter un filtre**, sélectionnez **Famille** comme type de filtre, puis sélectionnez uniquement **Informatique confidentielle**.
 
     ![Machines virtuelles de la série DCsv2](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Vous devriez voir les tailles **DC1s_v2**, **DC2s_v2**, **DC4s_V2** et **DC8_v2**. Seules ces tailles de machines virtuelles prennent actuellement en charge l’informatique confidentielle. [Plus d’informations](virtual-machine-solutions.md)
+    > Vous devriez voir les tailles **DC(number)s_v2**, **DC(number)s_v3** et **DC(number)ds_v3**. [Plus d’informations](virtual-machine-solutions-sgx.md)
 
 1. Renseignez les informations suivantes :
 
@@ -102,8 +92,8 @@ Si vous n’avez pas d’abonnement Azure, [créez un compte](https://azure.micr
 
 1. Apportez les modifications souhaitées sous l’onglet **Disques**.
 
-   * Si vous avez choisi une machine virtuelle **DC1s_v2**, **DC2s_v2** ou **DC4s_V2**, optez pour un type de disque **SSD Standard** ou **SSD Premium**. 
-   * Si vous avez choisi une machine virtuelle **DC8_v2**, optez pour **SSD Standard** comme type de disque.
+   * La **série DCsv2** prend en charge **SSD Standard**, **SSD Premium** est pris en charge sur DC1, DC2 et DC4. 
+   * Les **séries DCsv3 et DCdsv3** prennent en charge **SSD Standard**, **SSD Premium** et **Disque Ultra**
 
 1. Apportez les modifications souhaitées aux paramètres des onglets suivants ou conservez les paramètres par défaut.
 
@@ -134,7 +124,7 @@ Vous trouverez l’adresse IP publique de votre machine virtuelle dans le portai
 
 Si vous êtes sous Windows et que vous n’avez pas d’interpréteur de commandes BASH, installez un client SSH, tel que PuTTY.
 
-1. [Téléchargez et installez PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+1. [Téléchargez et installez PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html).
 
 1. Exécutez PuTTY.
 
@@ -147,26 +137,22 @@ Pour en savoir plus la connexion aux machines virtuelles Linux, consultez [Créa
 > [!NOTE]
 > Si vous voyez une alerte de sécurité PuTTY relative à la clé d’hôte du serveur non mise en cache dans le Registre, choisissez parmi les options suivantes. Si vous faites confiance à cet ordinateur hôte, sélectionnez **Yes** (Oui) pour ajouter la clé à la mémoire cache de PuTTy et poursuivre la connexion. Si vous souhaitez vous connecter une seule fois, sans ajouter la clé dans le cache, sélectionnez **No** (Non). Si vous ne faites pas confiance à cet ordinateur hôte, sélectionnez **Cancel** (Annuler) pour abandonner la connexion.
 
-## <a name="intel-sgx-drivers"></a>Pilotes Intel SGX
+## <a name="install-azure-dcap-client"></a>Installer un client Azure DCAP
 
 > [!NOTE]
-> Les pilotes Intel SGX font déjà partie des images de la galerie Azure Ubuntu et Windows. Aucune installation spéciale des pilotes n’est requise. Vous pouvez également mettre à jour les pilotes existants fournis dans les images en consultant la [liste des pilotes Intel SGX DCAP](https://01.org/intel-software-guard-extensions/downloads).
+> Trusted Hardware Identity Management (THIM) est un service Azure gratuit qui vous permet de gérer les identités matérielles des différents environnements d’exécution de confiance (TEE). Il récupère la documentation auprès du service de certification d’approvisionnement (PCS) Intel et le met en cache. Le service applique un niveau de base de calcul de confiance (TCB) minimal comme ligne de base de sécurité Azure à des fins d’attestation.
 
-## <a name="optional-testing-enclave-apps-built-with-open-enclave-sdk-oe-sdk"></a>Facultatif : test des applications enclave créées avec le SDK Open Enclave SDK (OE SDK) <a id="Install"></a>
-
-Suivez les instructions pas à pas pour installer le [SDK OE](https://github.com/openenclave/openenclave) sur votre machine virtuelle de la série DCsv2 exécutant une image Ubuntu 18.04 LTS Gen 2. 
-
-Si votre machine virtuelle s’exécute sur Ubuntu 18.04 LTS Gen 2, vous devez suivre les [instructions d’installation pour Ubuntu 18.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md).
+Il est recommandé aux utilisateurs de machines virtuelles Azure des séries DCsv2, DCsv3 et DCdsv3 d’installer un client Azure DCAP afin d’interagir avec THIM et de récupérer la documentation TEE à des fins de génération de Quote, durant le processus d’attestation. Pour en savoir plus sur l’attestation, consultez [Microsoft Azure Attestation](/azure/attestation/overview) ou [Attestation ECDSA](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html).
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
-Dès que vous n’en avez plus besoin, vous pouvez supprimer le groupe de ressources, la machine virtuelle et toutes les ressources associées. 
+Dès que vous n’en avez plus besoin, vous pouvez supprimer le groupe de ressources, la machine virtuelle et toutes ses ressources associées. 
 
 Sélectionnez le groupe de ressources de la machine virtuelle, puis sélectionnez **Supprimer**. Confirmez le nom du groupe de ressources pour terminer la suppression des ressources.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce guide de démarrage rapide, vous avez déployé une machine virtuelle d’informatique confidentielle et installé le SDK Open Enclave. Pour plus d’informations sur les machines virtuelles d’informatique confidentielle sur Azure, consultez [Solutions sur les machines virtuelles](virtual-machine-solutions.md). 
+Dans ce guide de démarrage rapide, vous avez opéré un déploiement et une connexion à votre machine virtuelle Intel SGX. Pour plus d’informations, consultez [Solutions sur les machines virtuelles](virtual-machine-solutions-sgx.md). 
 
 Découvrez comment créer des applications d’informatique confidentielle en accédant aux exemples du SDK Open Enclave sur GitHub. 
 

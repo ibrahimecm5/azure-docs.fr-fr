@@ -10,25 +10,27 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2021
 ms.author: yelevin
-ms.openlocfilehash: 4efc7411fe3755e7cbe14769ff061d2a2b6efa98
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 46a5bcf0db580d652f045efa0c4a381bdbd7143a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252399"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075464"
 ---
 # <a name="azure-sentinel-data-connectors"></a>Connecteurs de données Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Après l’intégration d’Azure Sentinel à votre espace de travail, connectez des sources de données pour commencer à ingérer vos données dans Azure Sentinel. Azure Sentinel est fourni avec plusieurs connecteurs pour les produits Microsoft, prêts à l’emploi et offrant une intégration en temps réel. Par exemple, les connecteurs de service à service incluent des connecteurs Microsoft 365 Defender et des sources Microsoft 365, comme Office 365, Azure Active Directory (Azure AD), Microsoft Defender pour Identity et Microsoft Cloud App Security.
 
-Vous pouvez également activer des connecteurs intégrés aux écosystèmes de sécurité élargis pour les produits non Microsoft. Par exemple, vous pouvez utiliser [Syslog](#syslog), le [format CEF (Common Event Format)](#common-event-format-cef) ou les [API REST](#rest-api-integration) pour connecter vos sources de données à Azure Sentinel.
+Vous pouvez également activer des connecteurs prêts à l’emploi aux écosystèmes de sécurité élargis pour les produits non Microsoft. Par exemple, vous pouvez utiliser [Syslog](#syslog), le [format CEF (Common Event Format)](#common-event-format-cef) ou les [API REST](#rest-api-integration) pour connecter vos sources de données à Azure Sentinel.
 
 La page **Connecteurs de données**, accessible à partir du menu de navigation Azure Sentinel, affiche la liste complète des connecteurs fournis par Azure Sentinel, et leur état dans votre espace de travail. Sélectionnez le connecteur que vous souhaitez connecter, puis sélectionnez **Ouvrir la page du connecteur**.
 
@@ -117,7 +119,7 @@ Pour plus d’information, reportez-vous à [Collecter des données dans des for
 
 ## <a name="service-to-service-integration"></a>Intégration de service à service
 
-Azure Sentinel utilise la fondation Azure pour assurer la prise en charge intégrée de service à service pour les services Microsoft et Amazon Web Services.
+Azure Sentinel utilise la fondation Azure pour assurer la prise en charge prête à l’emploi de service à service pour les services Microsoft et Amazon Web Services.
 
 Pour plus d’informations, reportez-vous à [Connecter des services Azure, Windows, Microsoft et Amazon](connect-azure-windows-microsoft-services.md) ainsi qu’à la page [Référence des connecteurs de données](data-connectors-reference.md).
 
@@ -125,7 +127,7 @@ Pour plus d’informations, reportez-vous à [Connecter des services Azure, Wind
 
 Les [solutions Azure Sentinel](sentinel-solutions.md) fournissent des packages de contenu de sécurité, notamment des connecteurs de données, des classeurs, des règles d’analyse, des playbooks et bien plus. Lorsque vous déployez une solution avec un connecteur de données, vous obtenez le connecteur de données et le contenu associé dans le même déploiement. 
 
-Pour plus d’informations, consultez [Découvrir et déployer les solutions Azure Sentinel](sentinel-solutions-deploy.md) et le [catalogue de solutions Azure Sentinel](sentinel-solutions-catalog.md).
+Pour plus d’informations, consultez [Découvrir et déployer de manière centralisée du contenu et des solutions Azure Sentinel prêts à l’emploi](sentinel-solutions-deploy.md) et le [Catalogue de solutions Azure Sentinel](sentinel-solutions-catalog.md).
 ## <a name="data-connector-support"></a>Prise en charge du connecteur de données
 
 Microsoft et d’autres organisations créent des connecteurs de données Azure Sentinel. Chaque connecteur de données dispose de l’un des types de prise en charge suivants :

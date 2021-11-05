@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: eca68b90756f0da4d34a5ceff6d3194b57297dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42179895f60e56f33b41097375c583c3b272c038
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469613"
 ---
 # <a name="create-projects-in-multiple-languages"></a>Créer des projets dans plusieurs langues
 
@@ -21,7 +21,6 @@ Dans ce tutoriel, vous allez apprendre à :
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Créer un projet qui prend en charge plusieurs langues.
 > * Créer un projet qui prend en charge l’anglais.
 > * Créer un projet qui prend en charge l’allemand.
 
@@ -34,7 +33,7 @@ Pour pouvoir créer un projet en plusieurs langues, le paramètre de langue mult
 > [!div class="mx-imgBorder"]
 > [ ![Capture d’écran de l’interface utilisateur pour créer un projet avec l’option « I want to select the language when I create a project in this resource » (Je souhaite sélectionner la langue lorsque je crée un projet dans cette ressource) sélectionnée.]( ../media/multiple-languages/multiple-languages.png) ](../media/multiple-languages/multiple-languages.png#lightbox)
 
-1. Dans [Language Studio](https://aka.ms/languageStudio), ouvrez la page de réponse aux questions. Sélectionnez **Create new project** > **I want to select the language when I create a project in this resource** > **Next**.
+1. Dans la page d’accueil de [Language Studio](https://aka.ms/languageStudio), sélectionnez les réponses aux questions personnalisées. Sélectionnez **Create new project** > **I want to select the language when I create a project in this resource** > **Next**.
 
 2. Renseignez la page Enter basic information et sélectionnez **Next** > **Create project**.
 
@@ -69,7 +68,7 @@ Nous répétons maintenant les étapes ci-dessus mais cette fois, sélectionnez 
 
 2. Renseignez la page Enter basic information et sélectionnez **Next** > **Create project**.
 
-    |Paramètre| Value|
+    |Paramètre| Valeur|
     |---|----|
     |Nom | Nom unique de votre projet|
     |Description | Description unique pour aider à identifier le projet |

@@ -1,27 +1,19 @@
 ---
 title: Fonctionnalités de repérage dans Azure Sentinel | Microsoft Docs
 description: Utilisez les requêtes de chasse intégrées à Azure Sentinel pour vous aider à poser les bonnes questions afin de détecter les problèmes dans vos données.
-services: sentinel
-documentationcenter: na
 author: yelevin
-manager: rkarlin
-editor: ''
-ms.assetid: 6aa9dd27-6506-49c5-8e97-cc1aebecee87
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/08/2021
+ms.date: 11/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 8d93c98da0144d7081803abad174aa09a0087ccb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 88c0b2919b680feb7776e9de63566ad70d885dee
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014046"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475302"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Repérer les menaces avec Azure Sentinel
 
@@ -29,7 +21,7 @@ ms.locfileid: "131014046"
 
 > [!IMPORTANT]
 >
-> L’expérience de requête inter-ressource et les mises à niveau du **tableau de bord de chasse** (voir les éléments marqués ci-dessous) sont actuellement en **PRÉVERSION**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
+> L’expérience de requête inter-ressources et les mises à niveau des **requêtes personnalisées et signets** (voir les éléments marqués ci-dessous) sont actuellement en **préversion**. Consultez l’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) pour connaître les conditions juridiques supplémentaires s’appliquant aux fonctionnalités Azure sont en version bêta, en préversion ou non encore en disponibilité générale.
 >
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
@@ -40,7 +32,7 @@ Par exemple, l’une des requêtes intégrées fournit des données sur les proc
 
 ## <a name="use-built-in-queries"></a>Utiliser les requêtes intégrées
 
-Le [tableau de bord de chasse](#use-the-hunting-dashboard-public-preview) fournit des exemples de requêtes prêtes à l’emploi conçus pour vous aider à prendre en main les tables et le langage de requête et à vous familiariser avec eux. Les requêtes s’exécutent sur les données stockées dans les tables de journal, par exemple pour la création de processus, les événements DNS ou d’autres types d’événements.
+Le [tableau de bord de chasse](#use-the-hunting-dashboard) fournit des exemples de requêtes prêtes à l’emploi conçus pour vous aider à prendre en main les tables et le langage de requête et à vous familiariser avec eux. Les requêtes s’exécutent sur les données stockées dans les tables de journal, par exemple pour la création de processus, les événements DNS ou d’autres types d’événements.
 
 Les requêtes de chasse intégrées sont élaborées en permanence par les chercheurs en sécurité de Microsoft, qui ajoutent de nouvelles requêtes et affinent les requêtes existantes afin de vous fournir un point d’entrée pour rechercher de nouvelles détections et chasser l’origine des nouvelles attaques.
 
@@ -67,40 +59,89 @@ Utilisez des requêtes avant, pendant et après une compromission pour effectuer
 > - Utilisez les ressources de la communauté, comme le [référentiel GitHub d’Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries), pour trouver des requêtes et des sources de données supplémentaires.
 >
 
-## <a name="use-the-hunting-dashboard-public-preview"></a>Utiliser le tableau de bord de chasse (préversion publique)
+## <a name="use-the-hunting-dashboard"></a>Utiliser le tableau de bord de chasse
 
 Le tableau de bord de chasse vous permet d’exécuter toutes vos requêtes, ou un sous-ensemble sélectionné, en une seule sélection. Dans le portail Azure Sentinel, sélectionnez **Chasse**.
 
-Le tableau affiché répertorie toutes les requêtes rédigées par l’équipe d’analystes de la sécurité Microsoft et toute requête supplémentaire que vous avez créée ou modifiée. Chaque requête décrit l’objet du repérage, ainsi que le type de données sur lequel ce processus s’exécute. Ces modèles sont regroupés par tactique : les icônes situées sur la droite classent le type de menace (par exemple, accès initial, persistance et exfiltration).
+Le tableau affiché répertorie toutes les requêtes rédigées par l’équipe d’analystes de la sécurité Microsoft et toute requête supplémentaire que vous avez créée ou modifiée. Chaque requête décrit l’objet du repérage, ainsi que le type de données sur lequel ce processus s’exécute. Ces requêtes sont groupées par **tactiques** MITRE ATT&CK. Les icônes de droite catégorisent le type de menace, telles que l’accès initial, la persistance et l’exfiltration. Les **techniques** MITRE ATT&CK s’affichent dans la colonne **Techniques** et décrivent le comportement spécifique identifié par la requête de chasse.
 
 :::image type="content" source="media/hunting/hunting-start.png" alt-text="Début du repérage par Azure Sentinel" lightbox="media/hunting/hunting-start.png":::
 
-Utilisez le tableau de bord de chasse pour identifier où commencer la chasse, en examinant le nombre de résultats, les pics ou l’évolution du nombre de résultats sur une période de 24 heures. Triez et filtrez par favoris, source de données, tactique ou technique MITRE ATT&CK, résultats ou delta de résultat. Affichez les requêtes qui ont encore besoin de sources de données connectées** et recevez des recommandations sur la façon d’activer ces requêtes.
+Utilisez le tableau de bord de chasse pour identifier où commencer la chasse, en examinant le nombre de résultats, les pics ou l’évolution du nombre de résultats sur une période de 24 heures. Triez et filtrez par favoris, source de données, tactique ou technique MITRE ATT&CK, résultats, delta de résultats pour pourcentage de delta de résultats. Affichez les requêtes qui ont encore besoin de sources de données connectées** et recevez des recommandations sur la façon d’activer ces requêtes.
 
 Le tableau suivant décrit les actions détaillées disponibles dans le tableau de bord de chasse :
 
-|Action  |Description  |
-|---------|---------|
-|**Voir la façon dont les requêtes s’appliquent à votre environnement**     |   Sélectionnez le bouton **Exécuter toutes les requêtes (préversion)** ou sélectionnez un sous-ensemble de requêtes à l’aide des cases à cocher situées à gauche de chaque ligne, puis sélectionnez le bouton **Exécuter les requêtes sélectionnées (préversion)** . <br><br>L’exécution de vos requêtes peut prendre de quelques secondes à plusieurs minutes, en fonction du nombre de requêtes sélectionnées, de l’intervalle de temps et de la quantité de données interrogées.      |
-|**Afficher les requêtes qui ont renvoyé des résultats**    |      Une fois l’exécution de vos requêtes terminée, affichez les requêtes qui ont renvoyé des résultats à l’aide du filtre **Résultats** : <br>- Triez pour voir quelles requêtes ont le plus ou le moins de résultats. <br>- Affichez les requêtes qui ne sont pas du tout actives dans votre environnement en sélectionnant *s.o.* dans le filtre **Résultats**. <br>- Passez la souris sur l’icône d’information (**i**) à côté de *s.o.* pour voir quelles sources de données sont nécessaires pour activer cette requête.  |
-|**Identifier les pics de vos données**     |   Identifiez les pics dans les données en triant ou en filtrant sur **Delta des résultats**. <br><br>Cela compare les résultats des dernières 24 heures à ceux des 24 à 48 heures précédentes, mettant en évidence les grandes différences de volume.     |
-|**Afficher les requêtes associées à la tactique MITRE ATT&CK**     | La **barre tactique MITRE ATT&CK**, en haut du tableau, indique le nombre de requêtes associées à chaque tactique MITRE ATT&CK. La barre tactique est mise à jour dynamiquement en fonction de l’ensemble actuel de filtres appliqués. <br><br>Cela vous permet de voir quelles tactiques MITRE ATT&CK s’affichent lorsque vous filtrez selon un nombre de résultats donné, un delta de résultat élevé, des résultats *s.o.* ou tout autre ensemble de filtres.        |
-|**Afficher les requêtes associées aux techniques MITRE ATT&CK**     | Les requêtes peuvent également être associées aux techniques MITRE ATT&CK. Vous pouvez filtrer ou trier par techniques MITRE ATT&CK à l’aide du filtre **Technique**. En ouvrant une requête, vous pourrez sélectionner la technique pour afficher la description MITRE ATT&CK de cette technique.        |
-|**Enregistrer une requête dans vos favoris**     |   Les requêtes enregistrées dans vos favoris s’exécutent automatiquement chaque fois que vous accédez à la page **Repérage**. Vous pouvez créer votre propre requête de repérage ou cloner et personnaliser un modèle de requête de repérage existant.      |
-|**Exécuter des requêtes**     |   Sélectionnez **Exécuter la requête** dans la page de détails de la requête de chasse pour exécuter la requête directement à partir de la page de chasse. Le nombre de correspondances s’affiche dans la colonne **Résultats** du tableau. Passez en revue la liste des requêtes de repérage et leurs correspondances.     |
-|**Passer en revue une requête sous-jacente**     | Effectuez un examen rapide de la requête sous-jacente dans le volet d’informations de la requête. Vous pouvez voir les résultats en cliquant sur le lien **Afficher les résultats de la requête** (sous la fenêtre de requête) ou sur le bouton **Afficher les résultats** (en bas du volet). La requête s’ouvre dans le panneau **Journaux** (Log Analytics) et sous la requête, vous pouvez examiner les correspondances pour la requête.         |
+| Action | Description  |
+| --------- | --------- |
+| **Voir la façon dont les requêtes s’appliquent à votre environnement**      | Sélectionnez le bouton **Exécuter toutes les requêtes (préversion)** ou sélectionnez un sous-ensemble de requêtes à l’aide des cases à cocher situées à gauche de chaque ligne, puis sélectionnez le bouton **Exécuter les requêtes sélectionnées (préversion)** . <br><br>L’exécution de vos requêtes peut prendre de quelques secondes à plusieurs minutes, en fonction du nombre de requêtes sélectionnées, de l’intervalle de temps et de la quantité de données interrogées.      |
+| **Afficher les requêtes qui ont renvoyé des résultats**         | Une fois l’exécution de vos requêtes terminée, affichez les requêtes qui ont renvoyé des résultats à l’aide du filtre **Résultats** : <br>- Triez pour voir quelles requêtes ont le plus ou le moins de résultats. <br>- Affichez les requêtes qui ne sont pas du tout actives dans votre environnement en sélectionnant *s.o.* dans le filtre **Résultats**. <br>- Passez la souris sur l’icône d’information (**i**) à côté de *s.o.* pour voir quelles sources de données sont nécessaires pour activer cette requête.  |
+| **Identifier les pics de vos données**                   | Identifiez les pics de données en triant ou en filtrant sur **Delta de résultats** ou **Pourcentage de delta de résultats**. <br><br>Cela permet de comparer les résultats des dernières 24 heures aux résultats des 24-48 heures précédentes, en mettant en évidence les différences importantes ou relatives en termes de volume.   |
+| **Afficher les requêtes associées à la tactique MITRE ATT&CK** | La **barre tactique MITRE ATT&CK**, en haut du tableau, indique le nombre de requêtes associées à chaque tactique MITRE ATT&CK. La barre tactique est mise à jour dynamiquement en fonction de l’ensemble actuel de filtres appliqués. <br><br>Cela vous permet de voir quelles tactiques MITRE ATT&CK s’affichent lorsque vous filtrez selon un nombre de résultats donné, un delta de résultat élevé, des résultats *s.o.* ou tout autre ensemble de filtres.        |
+| **Afficher les requêtes associées aux techniques MITRE ATT&CK** | Les requêtes peuvent également être associées aux techniques MITRE ATT&CK. Vous pouvez filtrer ou trier par techniques MITRE ATT&CK à l’aide du filtre **Technique**. En ouvrant une requête, vous pourrez sélectionner la technique pour afficher la description MITRE ATT&CK de cette technique.        |
+| **Enregistrer une requête dans vos favoris**                 |   Les requêtes enregistrées dans vos favoris s’exécutent automatiquement chaque fois que vous accédez à la page **Repérage**. Vous pouvez créer votre propre requête de repérage ou cloner et personnaliser un modèle de requête de repérage existant.      |
+| **Exécuter des requêtes**                                    |   Sélectionnez **Exécuter la requête** dans la page de détails de la requête de chasse pour exécuter la requête directement à partir de la page de chasse. Le nombre de correspondances s’affiche dans la colonne **Résultats** du tableau. Passez en revue la liste des requêtes de repérage et leurs correspondances.     |
+| **Passer en revue une requête sous-jacente**                     | Effectuez un examen rapide de la requête sous-jacente dans le volet d’informations de la requête. Vous pouvez voir les résultats en cliquant sur le lien **Afficher les résultats de la requête** (sous la fenêtre de requête) ou sur le bouton **Afficher les résultats** (en bas du volet). La requête s’ouvre dans le panneau **Journaux** (Log Analytics) et sous la requête, vous pouvez examiner les correspondances pour la requête.         |
 |     |         |
 
 
-## <a name="create-your-own-bookmarks"></a>Créez vos propres signets
+## <a name="create-a-custom-hunting-query"></a>Créer une requête de chasse personnalisée
 
-Au cours du processus de chasse et d’enquête, vous pouvez tomber sur des résultats de requête qui vous semblent inhabituels ou suspects. Ajoutez un signet à ces éléments pour vous y référer ultérieurement, par exemple lorsque vous créez ou enrichissez un incident à des fins d’investigation.
+Créez ou modifiez une requête et sauvegardez-la comme votre propre requête ou partagez-la avec des utilisateurs situés dans le même locataire.
 
-- Dans vos résultats, cochez les cases des lignes que vous souhaitez conserver, puis sélectionnez **Ajouter un signet**. Cela crée un enregistrement pour chaque ligne marquée (signet) qui contient les résultats de la ligne, la requête qui a créé les résultats et les mappages d’entités pour extraire les utilisateurs, les hôtes et les adresses IP. Vous pouvez ajouter vos propres étiquettes et des notes à chaque signet.
+:::image type="content" source="./media/hunting/save-query.png" alt-text="Enregistrer la requête" lightbox="./media/hunting/save-query.png":::
+
+**Pour créer une nouvelle requête** :
+
+1. Sélectionnez **Nouvelle requête**.
+
+1. Renseignez tous les champs vides, puis sélectionnez **Créer**.
+
+    1. **(Préversion)** Créez des mappages d’entités en sélectionnant les types d’entités, les identificateurs et les colonnes.
+    
+        :::image type="content" source="media/hunting/map-entity-types-hunting.png" alt-text="Capture d’écran pour le mappage des types d’entités dans les requêtes de chasse.":::
+
+    1. **(Préversion)** Mappez les techniques MITRE ATT&CK à vos requêtes de chasse en sélectionnant la tactique, la technique et la sous-technique (le cas échéant).
+
+        :::image type="content" source="./media/hunting/mitre-attack-mapping-hunting.png" alt-text="Nouvelle requête" lightbox="./media/hunting/new-query.png":::
+
+**Pour cloner et modifier une requête existante** :
+
+1. Dans la table, sélectionnez la requête à modifier.
+
+1. Sélectionnez les points de suspension (...) sur la ligne de la requête que vous souhaitez modifier, puis sélectionnez **Cloner la requête**.
+
+    :::image type="content" source="./media/hunting/clone-query.png" alt-text="Cloner la requête" lightbox="./media/hunting/clone-query.png":::
+
+1. Modifiez la requête, puis sélectionnez **Créer**.
+
+## <a name="sample-query"></a>Exemple de requête
+
+Une requête classique commence par un nom de table suivi d’une série d’opérateurs séparés par un caractère \|.
+
+Dans l’exemple ci-dessus, démarrez par le nom de table SecurityEvent et ajoutez les éléments enchaînés à l’aide d’une barre verticale selon vos besoins.
+
+1. Définissez un filtre de temps pour consulter uniquement les enregistrements des sept jours qui précèdent.
+
+1. Ajoutez un filtre à la requête pour qu’elle présente uniquement l’ID d’événement 4688.
+
+1. Ajoutez un filtre à la requête sur l’élément CommandLine pour qu’il contienne uniquement les instances de cscript.exe.
+
+1. Projetez uniquement les colonnes que vous souhaitez explorer et limitez les résultats à 1000, puis sélectionnez **Exécuter la requête**.
+
+1. Sélectionnez le triangle vert et exécutez la requête. Vous pouvez tester la requête et l’exécuter pour rechercher un comportement anormal.
+
+## <a name="create-bookmarks"></a>Créer des signets
+
+Au cours du processus de chasse et d’enquête, vous pouvez tomber sur des résultats de requête qui vous semblent inhabituels ou suspects. Ajoutez un signet à ces éléments pour y faire référence ultérieurement, par exemple lors de la création ou de l’enrichissement d’un incident à des fins d’investigation.
+
+- Dans vos résultats, cochez les cases des lignes que vous souhaitez conserver, puis sélectionnez **Ajouter un signet**. Cela crée un enregistrement pour chaque ligne marquée (un signet) qui contient les résultats de la ligne ainsi que la requête qui a créé les résultats. Vous pouvez ajouter vos propres étiquettes et des notes à chaque signet.
+
+    - **(Préversion)** Comme avec les requêtes personnalisées, vous pouvez enrichir vos signets avec des mappages d’entités pour extraire plusieurs types d’entités et identificateurs, et des mappages MITRE ATT&CK pour associer des tactiques et des techniques particulières.
+    - **(Préversion)** Les signets utilisent par défaut les mêmes mappages d’entités et de techniques MITRE ATT&CK que la requête de chasse qui a produit les résultats marqués d’un signet. 
 
 - Affichez tous les résultats avec un signet en cliquant sur l’onglet **Signets** dans la page **Chasse** principale. Ajoutez des étiquettes aux signets pour les classer à des fins de filtrage. Par exemple, si vous examinez une campagne d’attaque, vous pouvez créer une étiquette pour cette dernière, appliquer l’étiquette aux signets pertinents, puis filtrer tous les signets en fonction de la campagne.
 
-- Examinez un seul résultat avec signet en sélectionnant le signet, puis en cliquant sur **Examiner** dans le volet d’informations pour ouvrir l’expérience d’investigation.
+- Examinez un seul résultat avec signet en sélectionnant le signet, puis en cliquant sur **Examiner** dans le volet d’informations pour ouvrir l’expérience d’investigation. Vous pouvez également sélectionner directement une entité dans la liste pour afficher la page d’entité correspondante de cette entité.
 
     Vous pouvez également créer un incident à partir d’un ou plusieurs signets ou ajouter un ou plusieurs signets à un incident existant. Cochez la case située à gauche des signets que vous souhaitez utiliser, puis sélectionnez **Actions relatives aux incidents** > **Créer un nouvel incident** ou **Ajouter à un incident existant**. Triez et examinez l’incident comme pour tout autre incident.
 
@@ -189,50 +230,6 @@ Les opérateurs suivants sont particulièrement utiles dans les requêtes de cha
 - **find** : recherche les lignes qui correspondent à un prédicat dans un ensemble de tables.
 
 - **adx() (préversion)**  : effectue des requêtes inter-ressources dans les sources de données Azure Data Explorer à partir de l’expérience de chasse Azure Sentinel et de Log Analytics. Pour plus d’informations, consultez [Requête inter-ressources Azure Data Explorer à l’aide d’Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
-
-## <a name="save-a-query"></a>Enregistrement d’une requête
-
-Créez ou modifiez une requête et sauvegardez-la comme votre propre requête ou partagez-la avec des utilisateurs situés dans le même locataire.
-
-:::image type="content" source="./media/hunting/save-query.png" alt-text="Enregistrer la requête" lightbox="./media/hunting/save-query.png":::
-
-**Pour créer une nouvelle requête** :
-
-1. Sélectionnez **Nouvelle requête**.
-
-1. Renseignez tous les champs vides, puis sélectionnez **Créer**.
-
-    :::image type="content" source="./media/hunting/new-query.png" alt-text="Nouvelle requête" lightbox="./media/hunting/new-query.png":::
-
-**Pour cloner et modifier une requête existante** :
-
-1. Dans la table, sélectionnez la requête à modifier.
-
-1. Sélectionnez les points de suspension (...) sur la ligne de la requête que vous souhaitez modifier, puis sélectionnez **Cloner la requête**.
-
-    :::image type="content" source="./media/hunting/clone-query.png" alt-text="Cloner la requête" lightbox="./media/hunting/clone-query.png":::
-
-1. Modifiez la requête, puis sélectionnez **Créer**.
-
-    :::image type="content" source="./media/hunting/custom-query.png" alt-text="Requête personnalisée" lightbox="./media/hunting/custom-query.png":::
-
-
-
-## <a name="sample-query"></a>Exemple de requête
-
-Une requête classique commence par un nom de table suivi d’une série d’opérateurs séparés par \|.
-
-Dans l’exemple ci-dessus, démarrez par le nom de table SecurityEvent et ajoutez les éléments enchaînés à l’aide d’une barre verticale selon vos besoins.
-
-1. Définissez un filtre de temps pour consulter uniquement les enregistrements des sept jours qui précèdent.
-
-1. Ajoutez un filtre à la requête pour qu’elle présente uniquement l’ID d’événement 4688.
-
-1. Ajoutez un filtre à la requête sur l’élément CommandLine pour qu’il contienne uniquement les instances de cscript.exe.
-
-1. Projetez uniquement les colonnes que vous souhaitez explorer et limitez les résultats à 1000, puis sélectionnez **Exécuter la requête**.
-
-1. Sélectionnez le triangle vert et exécutez la requête. Vous pouvez tester la requête et l’exécuter pour rechercher un comportement anormal.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

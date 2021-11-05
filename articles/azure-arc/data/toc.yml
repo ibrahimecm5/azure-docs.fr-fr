@@ -85,6 +85,10 @@ items:
             href: retrieve-the-username-password-for-data-controller.md
           - name: Mettre à jour les informations d’identification du principal de service
             href: update-service-principal-credentials.md
+      - name: Mettre à niveau
+        items:
+          - name: Contrôleur de données indirect - CLI
+            href: upgrade-data-controller-indirect-cli.md
       - name: Dépannage
         items:
           - name: Guide
@@ -191,8 +195,12 @@ items:
                 href: managed-instance-high-availability.md
               - name: Capacité réservée
                 href: reserved-capacity-overview.md
-              - name: Supprimer
+              - name: DELETE
                 href: delete-managed-instance.md
+          - name: Mettre à niveau
+            items:
+              - name: Mettre à niveau via CLI
+                href: upgrade-sql-managed-instance-cli.md
           - name: Migrer
             items:
               - name: Effectuer une migration vers SQL Managed Instance (Azure Arc)

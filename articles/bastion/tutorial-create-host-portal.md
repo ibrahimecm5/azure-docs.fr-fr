@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3765b1abb6996e364ed3f7004e56f323fe256450
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7d2e071fd7dc368df867b17a53f9e994ee5c16a6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017038"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430968"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>Tutoriel : Configurer Bastion et se connecter à une machine virtuelle Windows
 
@@ -65,7 +65,7 @@ Lors de la création de cette configuration, vous pouvez utiliser les exemples d
 | --- | --- |
 | Nom | VNet1-bastion |
 | + Nom du sous-réseau | AzureBastionSubnet |
-| Adresses AzureBastionSubnet | Un sous-réseau dans votre espace d’adressage de réseau virtuel avec un masque de sous-réseau /27 ou supérieur.<br> Par exemple, 10.1.1.0/26.  |
+| Adresses AzureBastionSubnet | Un sous-réseau dans votre espace d’adressage de réseau virtuel avec un masque de sous-réseau /26 ou supérieur.<br> Par exemple, 10.1.1.0/26.  |
 | Niveau/référence SKU | standard |
 | Nombre d’instances (mise à l’échelle de l’hôte)| Au moins 3 |
 | Adresse IP publique |  Création |
@@ -119,7 +119,7 @@ En règle générale, vous ne disposez pas déjà d’un sous-réseau Azure Bas
 1. Créez un sous-réseau en utilisant les instructions suivantes :
 
    * Le sous-réseau doit être nommé **AzureBastionSubnet**.
-   * Le sous-réseau doit être au moins égal à /27 ou supérieur. Pour la référence SKU Standard, nous vous recommandons d’utiliser un sous-réseau /26 ou supérieur pour prendre en charge les instances de mise à l’échelle de l’hôte supplémentaires futures.
+   * Le sous-réseau doit être au moins égal à /26. Pour la référence SKU Standard, nous vous recommandons d’utiliser un sous-réseau /26 ou supérieur pour prendre en charge les instances de mise à l’échelle de l’hôte supplémentaires futures.
 
    :::image type="content" source="./media/tutorial-create-host-portal/bastion-subnet.png" alt-text="Capture d’écran du sous-réseau AzureBastionSubnet":::
 

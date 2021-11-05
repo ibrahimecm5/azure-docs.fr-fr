@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: contperf-fy2q1-portal, ignite-fall-2021
-ms.openlocfilehash: ea5fb6c17346059ab35467c654a17815e711d213
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6fbfd04283e5bf89be32c89294ad5d26fb6e5af2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087188"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426693"
 ---
 # <a name="what-is-azure-bastion"></a>Qu’est-ce qu’Azure Bastion ?
 
@@ -50,7 +50,7 @@ RDP et SSH font partie des moyens fondamentaux par lesquels vous pouvez vous con
 
 Cette figure représente l’architecture d’un déploiement Azure Bastion. Dans ce diagramme :
 
-* L’hôte bastion est déployé dans le réseau virtuel qui contient le sous-réseau AzureBastionSubnet avec un préfixe minimum/27.
+* L’hôte Bastion est déployé dans le réseau virtuel qui contient le sous-réseau AzureBastionSubnet avec un préfixe minimum /26.
 * L’utilisateur se connecte au portail Azure à l’aide de n’importe quel navigateur HTML5.
 * L’utilisateur sélectionne la machine virtuelle à laquelle se connecter.
 * D’un simple clic, la session RDP/SSH s’ouvre dans le navigateur.

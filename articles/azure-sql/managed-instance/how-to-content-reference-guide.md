@@ -5,18 +5,18 @@ description: Guide de référence de contenu qui explique comment configurer et 
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, ignite-fall-2021
 ms.devlang: ''
 ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: 2b64353da7de0b7f7d29502695c9d7ea22d6a19f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 86511b0cb494ecd5cb9f60fb8aa825a11fe48065
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130244677"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045629"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Référence du contenu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,8 @@ Dans cet article, vous trouverez une référence du contenu des guides, des scri
 
 - [Déterminer la taille du sous-réseau](vnet-subnet-determine-size.md) : le sous-réseau ne pouvant pas être redimensionné après le déploiement de SQL Managed Instance, vous devez calculer la plage d’adresses IP requise pour la quantité et les types d’instances managées que vous envisagez de déployer sur le sous-réseau. 
 - [Créer un réseau virtuel et un sous-réseau](virtual-network-subnet-create-arm-template.md) : configurez le réseau virtuel et le sous-réseau en fonction de la [configuration réseau requise](connectivity-architecture-overview.md#network-requirements). 
-- [Configurer un réseau virtuel et un sous-réseau existants](vnet-existing-add-subnet.md) : vérifiez la configuration réseau requise et configurez votre réseau virtuel et votre sous-réseau existants pour déployer SQL Managed Instance. 
+- [Configurer un réseau virtuel et un sous-réseau existants](vnet-existing-add-subnet.md) : vérifiez la configuration réseau requise et configurez votre réseau virtuel et votre sous-réseau existants pour déployer SQL Managed Instance.
+- [Configurer des stratégies de point de terminaison de service pour Stockage Azure (préversion)](service-endpoint-policies-configure.md) : sécurisez votre sous-réseau contre l’exfiltration de données erronée ou malveillante dans des comptes Stockage Azure non autorisés.
 - [Configurer un système DNS personnalisé](custom-dns-configure.md) : configurez un système DNS personnalisé pour accorder l’accès aux ressources externes à des domaines personnalisés à partir de SQL Managed Instance par le biais d’un serveur lié de profils de messagerie de base de données. 
 - [Synchroniser la configuration du réseau](azure-app-sync-network-configuration.md) : actualisez le plan de configuration réseau si vous ne parvenez pas à établir une connexion après avoir [intégré votre application à un réseau virtuel Azure](../../app-service/overview-vnet-integration.md).
 - [Déterminer l’adresse IP du point de terminaison de gestion](management-endpoint-find-ip-address.md) : identifiez le point de terminaison public utilisé par SQL Managed Instance à des fins de gestion. 

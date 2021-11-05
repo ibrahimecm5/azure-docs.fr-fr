@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.author: pafarley
-ms.openlocfilehash: fa62d0e7c24c6a63c63f082333823b5e74a24cf0
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d73f17d3e3eb8d5511dcb98c6a074a73120eaf06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132278"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080609"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Préparer des données pour Custom Speech
 
@@ -51,12 +52,13 @@ Ce tableau liste les types de données acceptés, les cas d’utilisation pour c
 | [Audio](#audio-data-for-testing) | Oui<br>Utilisé pour l’inspection visuelle | 5 fichiers audio et plus | Non | N/A |
 | [Transcriptions audio + étiquetées à la main](#audio--human-labeled-transcript-data-for-trainingtesting) | Oui<br>Utilisé pour évaluer la précision | 0,5 - 5 heures d’audio | Oui | 1 à 20 heures d’audio |
 | [Texte brut](#plain-text-data-for-training) | Non | n/a | Oui | 1 – 200 Mo de texte associé |
+| [Texte structuré](#structured-text-data-for-training-public-preview) (préversion publique) | Non | n/a | Oui | Jusqu’à 20 classes avec jusqu’à 2 000 éléments et jusqu’à 50 000 phrases d’apprentissage |
 | [Prononcer](#pronunciation-data-for-training) | Non | n/a | Oui | 1 ko à 1 Mo de texte de prononciation |
 
 Les fichiers doivent être regroupées par type dans un jeu de données et chargés sous forme de fichier .zip. Chaque jeu de données ne peut contenir qu’un seul type de données.
 
 > [!TIP]
-> Lorsque vous effectuez l’apprentissage d’un nouveau modèle, commencez par le texte brut. Ces données permettront déjà d’améliorer la reconnaissance des expressions et termes spéciaux. L’apprentissage avec du texte est beaucoup plus rapide que l’apprentissage avec audio (quelques minutes au lieu de quelques jours).
+> Lorsque vous effectuez l’apprentissage d’un nouveau modèle, commencez par des données de texte brut ou de structuré. Ces données permettront d’améliorer la reconnaissance de termes et phrases spécifiques. L’apprentissage avec du texte est beaucoup plus rapide que l’apprentissage avec audio (quelques minutes au lieu de quelques jours).
 
 > [!NOTE]
 > Tous les modèles de base ne prennent pas en charge l’audio. Si un modèle de base ne le prend pas en charge, le service vocal utilise uniquement le texte des transcriptions et ignore l’audio. Pour obtenir la liste des modèles de base prenant en charge l’entraînement avec des données audio, consultez les informations relatives à la [prise en charge des langues](language-support.md#speech-to-text). Même si un modèle de base prend en charge l’apprentissage avec des données audio, il est possible que le service n’utilise qu’une partie de l’audio. Il utilisera néanmoins toutes les transcriptions.
@@ -66,6 +68,11 @@ Les fichiers doivent être regroupées par type dans un jeu de données et charg
 > Si vous êtes confronté au problème décrit dans le paragraphe ci-dessus, vous pouvez rapidement faire baisser le temps d’entraînement en réduisant la quantité du contenu audio dans le jeu de données, ou en supprimant complètement le contenu audio pour ne garder que le texte. Cette dernière option est fortement recommandée si votre abonnement au service Speech ne se situe **pas** dans une [région disposant du matériel dédié](custom-speech-overview.md#set-up-your-azure-account) à l’entraînement.
 >
 > Dans les régions avec un matériel dédié pour l’apprentissage, le service Speech utilise jusqu’à 20 heures d’audio pour l’apprentissage. Dans d’autres régions, il n’utilise que jusqu’à 8 heures d’audio.
+
+> [!NOTE]
+> L’apprentissage avec du texte structuré est pris en charge uniquement pour les paramètres régionaux en-US, en-UK, en-IN, de-DE, fr-FR, fr-CA, es-ES, es-MX, et vous devez utiliser le modèle de base le plus récent pour ces paramètres régionaux. 
+>
+> Pour les paramètres régionaux qui ne prennent pas en charge la formation avec du texte structuré, le service prend toutes les phrases de formation qui ne font pas référence à des classes dans le cadre de l’apprentissage avec des données de texte brut.
 
 ## <a name="upload-data"></a>Charger des données
 
@@ -125,7 +132,7 @@ Les fichiers audio peuvent avoir un silence au début et à la fin de l’enregi
 | Longueur maximale par fichier audio | 2 heures (test) /60 s (entraînement) |
 | Format d’échantillonnage            | PCM, 16 bits                         |
 | Format d’archive           | .zip                                |
-| Taille maximale de zip         | 2 Go                                |
+| Taille maximale de zip         | 2 Go                                |
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
@@ -183,12 +190,79 @@ Par ailleurs, vous devez prendre en compte les restrictions suivantes :
 * Les URI sont rejetés.
 * Pour certaines langues (le japonais ou le coréen par exemple), l’importation de grandes quantités de données texte peut prendre beaucoup de temps ou expirer. Envisagez de diviser les données chargées dans des fichiers texte jusqu’à 20 000 lignes chacun.
 
+## <a name="structured-text-data-for-training-public-preview"></a>Données de texte structuré pour l’apprentissage (préversion publique)
+
+Souvent, les énoncés attendus suivent un certain modèle. Un modèle courant est que les énoncés diffèrent uniquement par des mots ou des expressions extraits d’une liste. Il peut s’agir, par exemple, de « J’ai une question sur `product` », où `product` est une liste de produits possibles. Ou « Colorier `object` en `color` » où `object` est une liste de formes géométriques, et `color` une liste de couleurs. Pour simplifier la création de données d’apprentissage et permettre une meilleure modélisation dans le Modèle de langage personnalisé, vous pouvez utiliser un texte structuré de format Markdown pour définir des listes d’éléments, puis référencer celles-ci à l’intérieur de vos énoncés d’apprentissage. En outre, le format Markdown prend également en charge la spécification de la prononciation phonétique des mots. Le format Markdown est partagé avec le format Markdown _.lu_ utilisé pour l’apprentissage des modèles de compréhension du langage (LUIS), en particulier les entités de liste et les exemples d’énoncés. Pour plus d’informations sur le format Markdown _.lu_ complet, consultez <a href="https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0" target="_blank">Format de fichier. lu</a>. 
+
+Voici un exemple de format Markdown :
+
+```markdown
+// This is a comment
+
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 20 of these
+@ list food =
+- pizza
+- burger
+- ice cream
+- soda
+
+@ list pet =
+- cat
+- dog
+
+@ list sports =
+- soccer
+- tennis
+- cricket
+- basketball
+- baseball
+- football
+
+// This is a list of phonetic pronunciations. 
+// This adjusts the pronunciation of every instance of these word in both a list or example training sentences 
+@ speech:phoneticlexicon
+- cat/k ae t
+- cat/f i l ai n
+
+// Here are example training sentences. They are grouped into two sections to help organize the example training sentences.
+// You can refer to one of the lists we declared above by using {@listname} and you can refer to multiple lists in the same training sentence
+// A training sentence does not have to refer to a list.
+# SomeTrainingSentence
+- you can include sentences without a class reference
+- what {@pet} do you have
+- I like eating {@food} and playing {@sports}
+- my {@pet} likes {@food}
+
+# SomeMoreSentence
+- you can include more sentences without a class reference
+- or more sentences that have a class reference like {@pet} 
+```
+
+À l’instar du texte brut, l’apprentissage avec du texte structuré prend généralement quelques minutes. En outre, vos exemples de phrases et de listes doivent refléter le type d’entrée parlée que vous attendez en production.
+Pour les entrées de prononciation, consultez la description du [Jeu de phonèmes universel](phone-sets.md).
+
+Le tableau ci-dessous spécifie les limites et d’autres propriétés pour le format Markdown :
+
+| Propriété | Valeur |
+|----------|-------|
+| Encodage de texte | UTF-8 BOM |
+| Taille maximale du fichier | 200 Mo |
+| Nombre maximal d’exemples de phrases | 50 000 |
+| Nombre maximal de classes de liste | 10 |
+| Nombre maximal d’éléments dans une classe de liste | 4 000 |
+| Nombre maximal d’entrées speech:phoneticlexicon | 15000 |
+| Nombre maximal de prononciations par mot | 2 |
+
+
 ## <a name="pronunciation-data-for-training"></a>Données de prononciation pour la formation
 
 Si vos utilisateurs sont appelés à rencontrer ou à utiliser des termes peu communs qui se prononcent d’une façon particulière, vous pouvez fournir un fichier de prononciation personnalisé pour améliorer la reconnaissance. Pour obtenir la liste des langues qui prennent en charge la prononciation personnalisée, consultez **prononciation** dans la colonne **personnalisations** de [la table Speech-to-Text](language-support.md#speech-to-text).
 
 > [!IMPORTANT]
 > Il est déconseillé d’utiliser des fichiers de prononciation personnalisée pour altérer la prononciation des mots communs.
+
+> [!NOTE]
+> Vous ne pouvez pas combiner ce type de fichier de prononciation avec des données d’apprentissage de texte structuré. Pour les données de texte structurées, utilisez la fonctionnalité de prononciation phonétique incluse dans le format Markdown de texte structuré.
 
 Fournissez des prononciations dans un fichier texte unique. Ce tableau contient des exemples d’énoncés oraux et une prononciation personnalisée pour chacun d’eux :
 
@@ -222,7 +296,7 @@ Custom Speech nécessite des fichiers audio avec les propriétés suivantes :
 | Longueur maximale par fichier audio | 2 heures               |
 | Format d’échantillonnage            | PCM, 16 bits           |
 | Format d’archive           | .zip                  |
-| Taille d’archive maximale     | 2 Go                  |
+| Taille d’archive maximale     | 2 Go                  |
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
