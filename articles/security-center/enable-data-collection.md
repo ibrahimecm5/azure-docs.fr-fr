@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 10/08/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e70c3abc258cb39da17755aea937d13cfaa77d2d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8d9fa0e724c20d0327d6b3907fee8e954deda41f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028944"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453095"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-microsoft-defender-for-cloud"></a>Configurer l’approvisionnement automatique pour les agents et les extensions à partir de Microsoft Defender pour le cloud
 
@@ -68,7 +67,7 @@ Lorsque l’approvisionnement automatique est activé pour l’agent Log Analyt
 
 Pour activer le provisionnement automatique de l’agent Log Analytics :
 
-1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
+1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
 1. Sélectionnez l’abonnement approprié.
 1. Dans la page **Approvisionnement automatique**, définissez l’état d’approvisionnement automatique pour l’agent Log Analytics sur **Activé**.
 
@@ -211,7 +210,7 @@ Pour installer manuellement l’agent Log Analytics :
 
 1. Activez Microsoft Defender sur l’espace de travail sur lequel vous installez l’agent Log Analytics :
 
-    1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
+    1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
 
     1. Définissez l’espace de travail sur lequel vous installez l’agent. Assurez-vous que l’espace de travail est dans le même abonnement que vous utilisez dans Defender pour le cloud et que vous disposez d’autorisations en lecture/écriture pour l’espace de travail.
 

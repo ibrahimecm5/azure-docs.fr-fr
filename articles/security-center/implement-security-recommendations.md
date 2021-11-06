@@ -7,12 +7,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: d01a8f806154cdf0260f0dcf8c9f6c65386c99f6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c11a416ec381c41a04739e3e1a04682781e6f929
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131437907"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131096235"
 ---
 # <a name="implement-security-recommendations-in-microsoft-defender-for-cloud"></a>Recommandations de sécurité dans Microsoft Defender pour le cloud
 
