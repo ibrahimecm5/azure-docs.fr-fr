@@ -17,8 +17,14 @@ items:
   - name: Concepts
     expanded: true
     items:
-      - name: Flux de données IoT
+      - name: Workflow de données du connecteur IoT
         href: iot-data-flow.md
+      - name: connecteur IoT et Service de Azure Machine Learning
+        href: iot-connector-machine-learning.md
+      - name: Connecteur IoT et Power BI Microsoft
+        href: iot-connector-power-bi.md
+      - name: Connecteur IoT et Microsoft Teams
+        href: iot-connector-teams.md
   - name: Guides pratiques
     expanded: true
     items:
