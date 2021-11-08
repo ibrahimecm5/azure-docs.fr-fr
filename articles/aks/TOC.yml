@@ -319,8 +319,16 @@
           href: azure-disk-customer-managed-keys.md
         - name: Activer le chiffrement basé sur l’hôte
           href: enable-host-encryption.md
-        - name: Pilote de magasin de secrets CSI (préversion)
-          href: csi-secrets-store-driver.md
+        - name: Pilote CSI du magasin de secrets
+          items:
+            - name: Configuration du pilote CSI du magasin des secrets
+              href: csi-secrets-store-driver.md
+            - name: Fournir un accès à Azure Key Vault
+              href: csi-secrets-store-identity-access.md
+            - name: Configurer TLS pour le contrôleur d’entrée NGINX
+              href: csi-secrets-store-nginx-tls.md
+            - name: Dépannage
+              href: csi-secrets-store-troubleshooting.md
     - name: Surveillance et journalisation
       items:
         - name: Superviser AKS

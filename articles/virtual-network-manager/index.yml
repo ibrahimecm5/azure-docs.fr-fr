@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Documentation relative à Azure Virtual Network Manager
-summary: Découvrez comment utiliser Azure Virtual Network Manager pour simplifier le routage dynamique entre vos appliances virtuelles réseau et votre réseau virtuel.
+summary: Découvrez comment utiliser Azure Virtual Network Manager pour gérer la connectivité des réseaux virtuels et appliquer des règles de sécurité à l’ensemble de vos abonnements Azure.
 metadata:
   title: Documentation relative à Azure Virtual Network Manager
   description: En savoir plus sur Azure Virtual Network Manager
@@ -10,12 +10,12 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 11/02/2021
-  ms.openlocfilehash: 7b61df1521d2e80ff4c4e4847f54eff84669e4e6
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: a573a44075ecc5263f5533967194393ca78970ed
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131088321"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131444475"
 landingContent:
 - title: À propos d’Azure Virtual Network Manager
   linkLists:

@@ -136,6 +136,8 @@
       items:
         - name: "Sécuriser l’accès hybride avec Azure\_AD"
           href: secure-hybrid-access.md
+        - name: Sécuriser l’accès hybride avec des intégrations de partenaires
+          href: secure-hybrid-access-integrations.md
         - name: Datawiza
           href: datawiza-with-azure-ad.md
         - name: F5

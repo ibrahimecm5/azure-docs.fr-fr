@@ -7,15 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 458e6d9b9de91dcf9f9214f2021fb780841ff7b4
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0f9c2f1603a87e30b0db32041f7d7aeff259600e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164347"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027350"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -23,40 +24,59 @@ ms.locfileid: "130164347"
 
  Le modèle de facture combine de puissantes capacités de reconnaissance optique de caractères (OCR) à des modèles Deep Learning pour analyser et extraire les champs clés et les éléments de ligne des factures de vente.  Les factures peuvent être de formats et de qualités divers, notamment des images capturées par téléphone, des documents numérisés et des fichiers PDF. L’API analyse le texte de la facture, extrait les informations clés, telles que le nom du client, l’adresse de facturation, la date d’échéance et le montant dû, et renvoie une représentation structurée des données JSON.
 
-##### <a name="sample-invoice-processed-with-form-recognizer-sample-labeling-tool"></a>Exemple de facture traitée avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+**Exemple de facture traitée avec l’[outil d’étiquetage des exemples Form Recognizer](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=invoice)** :
 
-:::image type="content" source="media/overview-invoices.jpg" alt-text="Exemple de facture" lightbox="media/overview-invoices-big.jpg":::
+:::image type="content" source="media/studio/overview-invoices.png" alt-text="Exemple de facture" lightbox="media/overview-invoices-big.jpg":::
 
-## <a name="try-form-recognizer-studio-preview"></a>Essayer Form Recognizer Studio (préversion)
+## <a name="development-options"></a>Options de développement
 
-* Form Recognizer Studio est disponible avec l’API (v 3.0) en préversion.
+Les ressources suivantes sont prises en charge par Form Recognizer v2.1 :
 
-* Extrayez les détails du client et du fournisseur, les éléments de ligne, et plus encore grâce à notre fonctionnalité Facture Form Recognizer Studio :
+| Fonctionnalité | Ressources |
+|----------|-------------------------|
+|**Modèle de facture**| <ul><li>[**Outil d’étiquetage Form Recognizer**](https://fott-2-1.azurewebsites.net/prebuilts-analyze)</li><li>[**API REST**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-invoices)</li><li>[**Kit SDK Bibliothèque de client**](quickstarts/try-sdk-rest-api.md)</li><li>[**Conteneur Docker de Form Recognizer**](containers/form-recognizer-container-install-run.md?tabs=invoice#run-the-container-with-the-docker-compose-up-command)</li></ul>|
+
+Les ressources suivantes sont prises en charge par Form Recognizer v3.0 :
+
+| Fonctionnalité | Ressources | ID de modèle |
+|----------|-------------|-----------|
+|**Modèle de facture** | <ul><li>[**Form Recognizer Studio**](https://formrecognizer.appliedai.azure.com)</li><li>[**API REST**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**Kit de développement logiciel (SDK) C#**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Kit de développement logiciel (SDK) Python**](quickstarts/try-v3-python-sdk.md)</li><li>[**Kit SDK Java**](quickstarts/try-v3-java-sdk.md)</li><li>[**Kit de développement logiciel (SDK) JavaScript**](quickstarts/try-v3-javascript-sdk.md)</li></ul>|**Facture prédéfinie**|
+
+### <a name="try-form-recognizer"></a>Essayer Form Recognizer
+
+Découvrez comment les données, y compris les informations sur les clients, les détails du fournisseur et les articles, sont extraites des factures à l’aide de Form Recognizer Studio ou de notre outil d’étiquetage des exemples. Vous aurez besoin des éléments suivants :
+
+* Un abonnement Azure : [vous pouvez en créer un gratuitement](https://azure.microsoft.com/free/cognitive-services/)
+
+* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, sélectionnez **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
+
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le portail Azure":::
+
+#### <a name="form-recognizer-studio-preview"></a>Form Recognizer Studio (préversion)
+
+1. Dans la page d’accueil de Form Recognizer Studio, sélectionnez **Factures**.
+
+1. Vous pouvez analyser l’exemple de facture ou sélectionner le bouton **+ Ajouter** pour charger votre propre exemple.
+
+1. Sélectionnez le bouton **Analyser** :
+
+    :::image type="content" source="media/studio/invoice-analyze.png" alt-text="Capture d’écran : menu analyser la facture.":::
 
 > [!div class="nextstepaction"]
 > [Essayer Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=invoice)
 
-## <a name="try-it-sample-labeling-tool"></a>Essayer : Outil d’étiquetage des exemples
+#### <a name="sample-labeling-tool"></a>Outil d’étiquetage d’exemples
 
-Vous pouvez voir la méthode d’extraction des données de facturation en essayant notre outil d’étiquetage des exemples. Vous aurez besoin des éléments suivants :
+Vous aurez besoin d’une facture. Vous pouvez utiliser notre [exemple de facture](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf).
 
-* Un abonnement Azure : [vous pouvez en créer un gratuitement](https://azure.microsoft.com/free/cognitive-services/)
+1. Dans la page d’accueil de l’outil d’étiquetage des exemples, sélectionnez **Utiliser un modèle prédéfini pour obtenir des données**.
 
-* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, cliquez sur **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
+1. Sélectionnez **Facture** dans le menu déroulant **Type de formulaire** :
 
- :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le Portail Azure.":::
+    :::image type="content" source="media/try-invoice.png" alt-text="Capture d’écran : menu déroulant de sélection du modèle prédéfini de l’outil d’étiquetage des exemples.":::
 
-* Une facture. Vous pouvez utiliser notre [exemple de facture](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf).
-
-> [!div class="nextstepaction"]
-  > [Essayer](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
-
-  Dans l’interface utilisateur de Form Recognizer :
-
-  1. Sélectionnez **Utiliser un modèle prédéfini pour extraire des données**.
-  1. Sélectionnez **Facture** dans le menu déroulant **Type de formulaire** :
-
-  :::image type="content" source="media/try-invoice.png" alt-text="Capture d’écran : menu déroulant de sélection du modèle prédéfini de l’outil d’étiquetage des exemples.":::
+    > [!div class="nextstepaction"]
+    > [Essayer l’outil d’étiquetage d’exemples](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
 
 ## <a name="input-requirements"></a>Critères des entrées
 
@@ -73,7 +93,7 @@ Vous pouvez voir la méthode d’extraction des données de facturation en essay
   * Les clés doivent apparaître au-dessus ou à gauche des valeurs, pas en dessous ni à droite.
 
 > [!NOTE]
-> L'[outil d’étiquetage des exemples](https://fott-2-1.azurewebsites.net/) ne prend pas en charge le format de fichier BMP. Il s’agit d’une limitation de l’outil et non du service Form Recognizer.
+> L’[outil d’étiquetage des exemples](https://fott-2-1.azurewebsites.net/) ne prend pas en charge le format de fichier BMP. Il s’agit d’une limitation de l’outil et non du service Form Recognizer.
 
 ## <a name="supported-languages-and-locales"></a>Langues et régions prises en charge
 
@@ -81,36 +101,36 @@ Vous pouvez voir la méthode d’extraction des données de facturation en essay
 |--------|:----------------------|:---------|
 |Facture| <ul><li>Anglais (États-Unis) : en-US</li></ul>| Anglais (États-Unis) : en-US|
 
-## <a name="key-value-pair-extraction"></a>Extraction de paires clé-valeur
+## <a name="field-extraction"></a>Extraction de champ
 
-|Name| Type | Description | Sortie standardisée |
+|Nom| Type | Description | Sortie standardisée |
 |:-----|:----|:----|:---:|
-| CustomerName | string | Client facturé| |
-| CustomerId | string | ID de référence client | |
-| PurchaseOrder | string | Numéro de référence du bon de commande | |
-| InvoiceId | string | ID de cette facture (souvent appelé « numéro de facture ») | |
+| CustomerName | String | Client facturé| |
+| CustomerId | String | ID de référence client | |
+| PurchaseOrder | String | Numéro de référence du bon de commande | |
+| InvoiceId | String | ID de cette facture (souvent appelé « numéro de facture ») | |
 | InvoiceDate | Date | Date d’émission de la facture | aaaa-mm-jj|
 | DueDate | Date | Date d’échéance du paiement de cette facture | aaaa-mm-jj|
-| VendorName | string | Nom du fournisseur |  |
-| VendorAddress | string |  Adresse postale du vendeur|  |
-| VendorAddressRecipient | string | Nom associé à l’adresse postale du fournisseur |  |
-| CustomerAddress | string | Adresse postale du client | |
-| CustomerAddressRecipient | string | Nom associé à l’adresse postale du client | |
-| BillingAddress | string | Adresse de facturation explicite du client |  |
-| BillingAddressRecipient | string | Nom associé à l’adresse de facturation | |
-| ShippingAddress | string | Adresse d’expédition explicite du client | |
-| ShippingAddressRecipient | string | Nom associé à l’adresse d’expédition |  |
-| SubTotal | nombre | Champ de sous-total identifié sur cette facture | entier |
-| TotalTax | nombre | Champ du total des taxes identifié sur cette facture | entier |
-| InvoiceTotal | nombre (USD) | Total des nouveaux frais associés à cette facture | entier |
-| AmountDue |  nombre (USD) | Montant total dû au fournisseur | entier |
-| ServiceAddress | string | Adresse du service ou de la propriété explicite du client | |
-| ServiceAddressRecipient | string | Nom associé à l’adresse du service |  |
-| RemittanceAddress | string | Adresse d’envoi du paiement explicite pour le client |   |
-| RemittanceAddressRecipient | string | Nom associé à l’adresse d’envoi du paiement explicite |  |
+| VendorName | String | Nom du fournisseur |  |
+| VendorAddress | String |  Adresse postale du vendeur|  |
+| VendorAddressRecipient | String | Nom associé à l’adresse postale du fournisseur |  |
+| CustomerAddress | String | Adresse postale du client | |
+| CustomerAddressRecipient | String | Nom associé à l’adresse postale du client | |
+| BillingAddress | String | Adresse de facturation explicite du client |  |
+| BillingAddressRecipient | String | Nom associé à l’adresse de facturation | |
+| ShippingAddress | String | Adresse d’expédition explicite du client | |
+| ShippingAddressRecipient | String | Nom associé à l’adresse d’expédition |  |
+| SubTotal | Number | Champ de sous-total identifié sur cette facture | Integer |
+| TotalTax | Number | Champ du total des taxes identifié sur cette facture | Integer |
+| InvoiceTotal | Nombre (USD) | Total des nouveaux frais associés à cette facture | Integer |
+| AmountDue |  Nombre (USD) | Montant total dû au fournisseur | Integer |
+| ServiceAddress | String | Adresse du service ou de la propriété explicite du client | |
+| ServiceAddressRecipient | String | Nom associé à l’adresse du service |  |
+| RemittanceAddress | String | Adresse d’envoi du paiement explicite pour le client |   |
+| RemittanceAddressRecipient | String | Nom associé à l’adresse d’envoi du paiement explicite |  |
 | ServiceStartDate | Date | Date de début de la période de service (par exemple, pour une période de service de facturation d’utilitaire) | aaaa-mm-jj |
 | ServiceEndDate | Date | Date de fin de la période de service (par exemple, pour une période de service de facturation d’utilitaire) | aaaa-mm-jj|
-| PreviousUnpaidBalance | nombre | Solde précédent impayé explicite | entier |
+| PreviousUnpaidBalance | Number | Solde précédent impayé explicite | Integer |
 
 ### <a name="line-items"></a>Éléments de ligne
 
@@ -118,15 +138,15 @@ Voici les élément de ligne extraits d’une facture dans la réponse de la sor
 
 |Name| Type | Description | Texte (élément de ligne no 1) | Valeur (sortie standardisée) |
 |:-----|:----|:----|:----| :----|
-| Éléments | string | Texte complet de l’élément de ligne | 04/03/2021 A123 Services de conseil 2 heures 30,00 $ 10 % 60,00 $ | |
-| Montant | nombre | Montant de l’élément de ligne | 60,00 $ | 100 |
-| Description | string | Description textuelle de l’élément de ligne de la facture | Service de conseil | Service de conseil |
-| Quantité | nombre | Quantité pour cet élément de ligne de la facture | 2 | 2 |
-| UnitPrice | nombre | Prix net ou brut (en fonction du paramètre de facturation brute de la facture) d’une unité de cet élément | 30,00 $ | 30 |
-| ProductCode | string| Code du produit, numéro de produit ou référence SKU associé à l’élément de ligne spécifique | A123 | |
-| Unité | string| L’unité de l’élément de ligne (par exemple : kg, lb, etc.) | heures | |
-| Date | date| Date correspondant à chaque élément de ligne. Il s’agit souvent de la date d’expédition de l’élément de ligne | 04/03/2021| 04-03-2021 |
-| Taxe | nombre | Taxe associée à chaque élément de ligne. Les valeurs possibles incluent le montant des taxes, le pourcentage de la taxe et la valeur d’application de la taxe (O/N) | 10 % | |
+| Éléments | String | Texte complet de l’élément de ligne | 04/03/2021 A123 Services de conseil 2 heures 30,00 $ 10 % 60,00 $ | |
+| Montant | Number | Montant de l’élément de ligne | 60,00 $ | 100 |
+| Description | String | Description textuelle de l’élément de ligne de la facture | Service de conseil | Service de conseil |
+| Quantité | Number | Quantité pour cet élément de ligne de la facture | 2 | 2 |
+| UnitPrice | Number | Prix net ou brut (en fonction du paramètre de facturation brute de la facture) d’une unité de cet élément | 30,00 $ | 30 |
+| ProductCode | String| Code du produit, numéro de produit ou référence SKU associé à l’élément de ligne spécifique | A123 | |
+| Unité | String| L’unité de l’élément de ligne (par exemple : kg, lb, etc.) | Heures | |
+| Date | Date| Date correspondant à chaque élément de ligne. Il s’agit souvent de la date d’expédition de l’élément de ligne | 04/03/2021| 04-03-2021 |
+| Taxe | Number | Taxe associée à chaque élément de ligne. Les valeurs possibles incluent le montant des taxes, le pourcentage de la taxe et la valeur d’application de la taxe (O/N) | 10 % | |
 
 Les paires clé-valeur et les éléments de ligne de facture extraits se trouvent dans la section `documentResults` de la sortie JSON. 
 
@@ -134,7 +154,7 @@ Les paires clé-valeur et les éléments de ligne de facture extraits se trouven
 
  La version préliminaire de Form Recognizer introduit plusieurs nouvelles fonctionnalités.
 
-* Suivez le [**Guide de migration de Form Recognizer v3.0**](v3-migration-guide.md) pour apprendre à utiliser la version préliminaire dans vos applications et vos flux de travail.
+* Suivez notre [**guide de migration Form Recognizer v3.0**](v3-migration-guide.md) pour apprendre à utiliser la préversion dans vos applications et workflows.
 
 * Découvrez notre [**API REST (préversion)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) pour en savoir plus sur la préversion et les nouvelles fonctionnalités.
 

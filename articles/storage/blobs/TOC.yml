@@ -210,7 +210,7 @@ items:
             items:
               - name: Vue d’ensemble
                 href: access-tiers-overview.md
-              - name: Réhydratation d’objets blob à partir du niveau Archive
+              - name: Réhydratation de blobs du niveau Archive
                 href: archive-rehydrate-overview.md
               - name: Stratégies de gestion du cycle de vie
                 href: lifecycle-management-overview.md

@@ -74,6 +74,8 @@
           items:
             - name: Créer un catalogue de ressources
               href: entitlement-management-catalog-create.md
+            - name: Créer une extension personnalisée (Logic Apps) pour les catalogues
+              href: entitlement-management-logic-apps-integration.md
             - name: Déléguer pour accéder aux gestionnaires de packages
               href: entitlement-management-delegate-managers.md
         - name: Gestionnaires de package d’accès et gestionnaires d’attribution de package d’accès

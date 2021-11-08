@@ -9,30 +9,31 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: e0555050b6457cc25a3d66d902d7de9232247ae3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5c5a260a1f5c1ab6cd6232dbd0ea9c1035a110cf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122535045"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027015"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>Déployer l’outil d’étiquetage des exemples
+# <a name="deploy-the-sample-labeling-tool"></a>Déployer l’outil d’étiquetage d’exemples
 
 L’outil d’étiquetage des exemples Form Recognizer est une application qui fournit une interface utilisateur simple, que vous pouvez utiliser pour étiqueter manuellement des formulaires (documents) pour un apprentissage supervisé. Dans cet article, nous allons vous fournir des liens et des instructions qui vous apprendront à :
 
 * [Exécuter l’outil d’étiquetage des exemples localement](#run-the-sample-labeling-tool-locally)
-* [Déployer l’outil d’étiquetage des exemples dans une Azure Container Instances (ACI)](#deploy-with-azure-container-instances-aci)
+* [Déployer l’outil d’étiquetage des exemples dans une instance Azure Container Instances (ACI)](#deploy-with-azure-container-instances-aci)
 * [Utiliser et contribuer à l’outil open source OCR Form Labeling Tool](#open-source-on-github)
 
 ## <a name="run-the-sample-labeling-tool-locally"></a>Exécuter l’outil d’étiquetage des exemples localement
 
-Le moyen le plus rapide de commencer à étiqueter des données consiste à exécuter l’outil d’étiquetage des exemples localement. Le guide de démarrage rapide suivant utilise l’API REST Form Recognizer et l’outil d’étiquetage des exemples pour entraîner un modèle personnalisé avec des données étiquetées manuellement.
+Le moyen le plus rapide pour commencer à étiqueter des données consiste à exécuter l’outil d’étiquetage des exemples localement. Le guide de démarrage rapide suivant utilise l’API REST Form Recognizer et l’outil d’étiquetage des exemples pour entraîner un modèle personnalisé avec des données étiquetées manuellement.
 
 * [Bien démarrer avec Azure Form Recognizer](label-tool.md)
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Déployer avec Azure Container Instances (ACI)
 
-Avant de commencer, il est important de noter qu’il existe deux façons de déployer l’outil d’étiquetage des exemples sur Azure Container Instance (ACI). Les deux options sont utilisées pour exécuter l’outil d’étiquetage des exemples avec ACI :
+Avant de commencer, il est important de noter qu’il existe deux façons de déployer l’outil d’étiquetage des exemples sur une instance Azure Container Instances (ACI). Les deux options sont utilisées pour exécuter l’outil d’étiquetage des exemples avec ACI :
 
 * [À l’aide du portail Azure](#azure-portal)
 * [Utilisation de l’interface de ligne de commande Azure (CLI)](#azure-cli)
@@ -77,7 +78,7 @@ Suivez ces étapes pour créer une nouvelle ressource à partir du portail Azure
 * Nom d’utilisateur (facultatif) : créez un nom d’utilisateur.
 * Mot de passe (facultatif) : créez un mot de passe sécurisé dont vous vous souviendrez.
 * Image et étiquette : spécifiez `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-2.1`
-* Déploiement continu : spécifiez **Activé** si vous souhaitez recevoir des mises à jour automatiques lorsque l’équipe de développement apporte des modifications à l’outil d’étiquetage des exemples.
+* Déploiement continu : spécifiez **Activé** si vous souhaitez recevoir des mises à jour automatiques lorsque l’équipe de développement apporte des modifications à l’outil d’étiquetage des exemples.
 * Commande de démarrage : spécifiez `./run.sh eula=accept`
 
 > [!div class="mx-imgBorder"]
@@ -111,7 +112,7 @@ Voici quelques éléments que vous devez savoir à propos de cette commande :
 * Vous devez spécifier l’emplacement auquel vous souhaitez créer la ressource. Remplacez `<region name>` par la région de votre choix pour l’application web.
 * Cette commande accepte automatiquement le CLUF.
 
-À partir d’Azure CLI, exécutez cette commande pour créer une ressource d’application web pour l’outil d’étiquetage des exemples :
+À partir d’Azure CLI, exécutez cette commande pour créer une ressource d’application web pour l’outil d’étiquetage des exemples :
 
 <!-- markdownlint-disable MD024 -->
 

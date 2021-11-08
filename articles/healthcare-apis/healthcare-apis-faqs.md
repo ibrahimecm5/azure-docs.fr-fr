@@ -6,14 +6,14 @@ author: ginalee-dotcom
 ms.custom: references_regions
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/21/2021
+ms.date: 11/05/2021
 ms.author: ginle
-ms.openlocfilehash: 6debd85f084a68cc96133cc7128f97beefa2dfcb
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6ce51e4cf916baaa22d14e902872185901b4d5da
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259372"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988612"
 ---
 # <a name="frequently-asked-questions-about-azure-healthcare-apis-preview"></a>Forum aux questions sur les API Azure Healthcare (version préliminaire)
 
@@ -49,17 +49,17 @@ Pour obtenir les informations les plus récentes, reportez-vous à la page [prod
 #### <a name="workspace-logical-container"></a>Espace de travail (conteneur logique) :
 * 200 instances par abonnement (non ajustables)
 
-#### <a name="dicom-server"></a>Serveur DICOM :
+#### <a name="dicom-service"></a>Service DICOM :
 * 800 instances par abonnement (non ajustables)
 * 10 instances DICOM par espace de travail (non réglable)
 
-#### <a name="fhir-server"></a>Serveur FHIR :
+#### <a name="fhir-service"></a>Service FHIR :
 * 25 instances par abonnement (non réglable)
 * 10 instances FHIR par espace de travail (non réglable)
 
 #### <a name="iot-connector"></a>Connecteur IoT :
-* 25 connecteurs IoT par abonnement (ajustables avec une demande de support Azure)
-* 10 connecteurs IoT par espace de travail (ajustables avec une demande de support Azure)
+* 25 connecteurs IoT par abonnement (non ajustables)
+* 10 connecteurs IoT par espace de travail (non réglable)
 * Une destination FHIR * par connecteur IoT (non réglable)
 
 (*-FHIR destination est une ressource enfant du connecteur IoT)

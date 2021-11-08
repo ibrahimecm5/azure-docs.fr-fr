@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: f2e2ef59d4c3608065edab4ffd1d1ec55122f2ad
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0ac003f812078f2bb3b27710068b7350468ad8fb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754612"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027136"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -37,35 +38,41 @@ ms.locfileid: "129754612"
 
 ### <a name="general-document-preview"></a>Document général (préversion)
 
+:::image type="content" source="media/studio/general-document.png" alt-text="Capture d’écran : icône de document général Studio.":::
+
 * L’API de document général prend en charge la plupart des types de formulaires. Elle analyse vos documents et associe des valeurs aux clés et des entrées aux tableaux qu’elle découvre. Elle est idéale pour extraire les paires clé-valeur courantes des documents. Vous pouvez utiliser le modèle de document général comme alternative à la [formation d’un modèle personnalisé sans étiquettes](compose-custom-models.md#train-without-labels).
 
 * Le document général est un modèle préformé qui peut être appelé directement par le biais de l’API REST.
 
 * Le modèle de document général prend en charge la reconnaissance d’entité nommée (NER) pour plusieurs catégories d’entités. La reconnaissance d’entité nommée est la capacité d’identifier différentes entités dans du texte et de les catégoriser en classes ou types prédéfinis tels que : personne, lieu, événement, produit et organisation. L’extraction d’entités peut être utile dans les scénarios où vous souhaitez valider des valeurs extraites. Les entités sont extraites de l’ensemble du contenu.
 
-##### <a name="sample-document-processed-in-the-form-recognizer-studio"></a>Exemple de document traité dans [Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=document) :
+***Exemple de document traité dans [Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=document)*** :
 
-:::image type="content" source="media/general-document-analyze.png" alt-text="Capture d’écran : analyse d’un document général dans Form Recognizer Studio.":::
+:::image type="content" source="media/studio/general-document-analyze.png" alt-text="Capture d’écran : analyse d’un document général dans Form Recognizer Studio.":::
 
 > [!div class="nextstepaction"]
 > [En savoir plus : Modèle de document général](concept-general-document.md)
 
 ### <a name="layout"></a>Layout
 
-L’API de disposition analyse et extrait le texte, les tableaux et les en-têtes, les marques de sélection et les informations de structure des documents et renvoie une représentation structurée des données JSON.
+:::image type="content" source="media/studio/layout.png" alt-text="Capture d’écran : icône de disposition Studio.":::
 
-##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>Exemple de formulaire traité avec la fonctionnalité de disposition [Outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+L’API de disposition analyse et extrait du texte, des tableaux, des en-têtes, des marques de sélection et des informations de structure à partir de formulaires et de documents.
 
-:::image type="content" source="media/overview-layout.png" alt-text="{alt-text}":::
+***Exemple de formulaire traité avec la fonctionnalité de disposition de l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)*** :
+
+:::image type="content" source="media/overview-layout.png" alt-text="Capture d’écran : analyse de l’exemple de document traité dans Form Recognizer Studio":::
 
 > [!div class="nextstepaction"]
 > [En savoir plus : Modèle de disposition](concept-layout.md)
 
 ### <a name="invoice"></a>Facture
 
-Le modèle de facture analyse et extrait les informations clés des factures. L’API analyse les factures dans différents formats, extrait les informations clés, telles que le nom du client, l’adresse de facturation, la date d’échéance et le montant dû, et renvoie une représentation structurée des données JSON.
+:::image type="content" source="media/studio/invoice.png" alt-text="Capture d’écran : icône de facture Studio.":::
 
-##### <a name="sample-invoice-processed-with-form-recognizer-sample-labeling-tool"></a>Exemple de facture traitée avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+Le modèle de facture analyse et extrait les informations clés des factures. L’API analyse les factures dans différents formats et extrait les informations clés, telles que le nom du client, l’adresse de facturation, la date d’échéance et le montant dû.
+
+***Exemple de facture traitée avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)*** :
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="Exemple de facture" lightbox="./media/overview-invoices.jpg":::
 
@@ -74,9 +81,11 @@ Le modèle de facture analyse et extrait les informations clés des factures. L�
 
 ### <a name="receipt"></a>Réception
 
-Le modèle de reçu analyse et extrait les informations clés des reçus. L’API analyse les reçus imprimés et manuscrits, extrait les informations clés telles que le nom du commerçant, le numéro de téléphone du commerçant, la date de la transaction, la taxe et le total de la transaction et renvoie une représentation structurée des données JSON.
+:::image type="content" source="media/studio/receipt.png" alt-text="Capture d’écran : icône de réception Studio.":::
 
-##### <a name="sample-receipt-processed-with-form-recognizer-sample-labeling-tool"></a>Exemple de reçu traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+Le modèle de reçu analyse et extrait les informations clés des reçus. L’API analyse les reçus imprimés et manuscrits et extrait les informations clés, telles que le nom du commerçant, le numéro de téléphone du commerçant, la date de la transaction, la taxe et le total de la transaction. 
+
+***Exemple de reçu traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)*** :
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="exemple de ticket de caisse" lightbox="./media/overview-receipt.jpg":::
 
@@ -85,9 +94,11 @@ Le modèle de reçu analyse et extrait les informations clés des reçus. L’AP
 
 ### <a name="id-document"></a>Document d’identité
 
-Le modèle de document d’identité analyse et extrait les informations clés des permis de conduire américains (des 50 États et du district de Columbia) et des pages biographiques des passeports internationaux (à l’exclusion des visas et autres documents de voyage). L’API analyse les documents d’identité, extrait les informations clés, telles que le prénom, le nom, l’adresse et la date de naissance, et renvoie une représentation structurée des données JSON.
+:::image type="content" source="media/studio/id-document.png" alt-text="Capture d’écran : icône de document d’identité Studio.":::
 
-##### <a name="sample-us-drivers-license-processed-with-form-recognizer-sample-labeling-tool"></a>Exemple de permis de conduire américain traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+Le modèle de document d’identité analyse et extrait les informations clés des permis de conduire américains (des 50 États et du district de Columbia) et des pages biographiques des passeports internationaux (à l’exclusion des visas et autres documents de voyage). L’API analyse les documents d’identité et extrait les informations clés, telles que le prénom, le nom, l’adresse et la date de naissance.
+
+***Exemple de permis de conduire américain traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)*** :
 
 :::image type="content" source="./media/id-example-drivers-license.jpg" alt-text="exemple de carte d’identité" lightbox="./media/overview-id.jpg":::
 
@@ -96,9 +107,11 @@ Le modèle de document d’identité analyse et extrait les informations clés d
 
 ### <a name="business-card"></a>Carte de visite
 
-Le modèle de carte de visite analyse et extrait des informations clés à partir d’images de carte de visite. L’API analyse les cartes de visite imprimées, extrait les informations clés, telles que le prénom, le nom, le nom de la société, l’adresse e-mail et le numéro de téléphone, et renvoie une représentation structurée des données JSON.
+:::image type="content" source="media/studio/business-card.png" alt-text="Capture d’écran: icône de carte de visite Studio.":::
 
-##### <a name="sample-business-card-processed-with-form-recognizer-sample-labeling-tool"></a>Exemple de carte de visite traitée avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+Le modèle de carte de visite analyse et extrait des informations clés à partir d’images de carte de visite. L’API analyse les images de carte de visite imprimées et extrait des informations clés, telles que le prénom, le nom, le nom de la société, l’adresse e-mail et le numéro de téléphone.
+
+***Exemple de carte de visite traitée avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)*** :
 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="exemple de carte de visite" lightbox="./media/overview-business-card.jpg":::
 
@@ -107,9 +120,11 @@ Le modèle de carte de visite analyse et extrait des informations clés à parti
 
 ### <a name="custom"></a>Custom
 
+ :::image type="content" source="media/studio/custom.png" alt-text="Capture d’écran : icône de formulaire personnalisé Studio.":::
+
 Le modèle personnalisé analyse et extrait les données de formulaires et de documents spécifiques à votre entreprise. L’API est un programme de Machine Learning dont l’apprentissage a pour but de reconnaître les champs de formulaire dans vos contenus spécifiques et d’extraire des paires clé-valeur et des données de table. Vous avez seulement besoin de cinq exemples du même type de formulaire pour commencer. L’apprentissage de votre modèle personnalisé peut s’effectuer avec ou sans jeux de données étiquetés.
 
-##### <a name="sample-custom-form-processed-with-form-recognizer-sample-labeling-tool"></a>Exemple de formulaire personnalisé traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+***Exemple de formulaire personnalisé traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)*** :
 
 :::image type="content" source="media/analyze.png" alt-text="Capture d’écran : outil Form Recognizer, fenêtre de l’analyse de formulaire personnalisé.":::
 
@@ -118,15 +133,15 @@ Le modèle personnalisé analyse et extrait les données de formulaires et de do
 
 ## <a name="data-extraction"></a>Extraction de données
 
- | **Modèle**   | **Extraction de texte** |**Paires clé-valeur** |**Marques de sélection**   | **Tables**   |**Entités** |
-  | --- | :---: |:---:| :---: | :---: |:---: |
-  |🆕Document général  | ✓  |  ✓ | ✓  | ✓  | ✓  |
-  | Layout  | ✓  |   | ✓  | ✓  |   |
-  | Facture  | ✓ | ✓  | ✓  | ✓ ||
-  |Réception  | ✓  |   ✓ |   |  ||
-  | Document d’identité | ✓  |   ✓  |   |   ||
-  | Carte de visite    | ✓  |   ✓ |   |   ||
-  | Custom             |✓  |  ✓ | ✓  | ✓  | ✓  |
+ | **Modèle**   | **Extraction de texte** |**Paires clé-valeur** |**Fields**|**Marques de sélection**   | **Tables**   |**Entités** |
+  | --- | :---: |:---:| :---: | :---: |:---: |:---: |
+  |🆕Document général  | ✓  |  ✓ || ✓  | ✓  | ✓  |
+  | Layout  | ✓  |   || ✓  | ✓  |   |
+  | Facture  | ✓ | ✓  |✓| ✓  | ✓ ||
+  |Réception  | ✓  |   ✓ |✓|   |  ||
+  | Document d’identité | ✓  |   ✓  |✓|   |   ||
+  | Carte de visite    | ✓  |   ✓ | ✓|  |   ||
+  | Custom             |✓  |  ✓ || ✓  | ✓  | ✓  |
 
 ## <a name="input-requirements"></a>Critères des entrées
 
@@ -149,10 +164,10 @@ Le modèle personnalisé analyse et extrait les données de formulaires et de do
 
   Form Recognizer v3.0 (préversion) introduit plusieurs nouvelles fonctionnalités et capacités :
 
-* Le modèle [**Document général (préversion)** ](concept-general-document.md) est une nouvelle API qui utilise un modèle préformé pour extraire du texte, des tableaux, une structure, des paires clé-valeur et des entités nommées à partir de formulaires et de documents.
-* Le modèle [**Reçu (préversion)** ](concept-receipt.md) prend en charge le traitement des reçus d’hôtel d’une seule page.
-* Le modèle [**Document d’identité (préversion)** ](concept-id-document.md) prend en charge l’extraction des approbations, des restrictions et des classifications de véhicules à partir de permis de conduire américains.
-* L’[**API Modèle personnalisé (préversion)** ](concept-custom.md) prend en charge la détection de signatures pour les formulaires personnalisés.
+* Le modèle [**Document général (préversion)**](concept-general-document.md) est une nouvelle API qui utilise un modèle préformé pour extraire du texte, des tableaux, une structure, des paires clé-valeur et des entités nommées à partir de formulaires et de documents.
+* Le modèle [**Reçu (préversion)**](concept-receipt.md) prend en charge le traitement des reçus d’hôtel d’une seule page.
+* Le modèle [**Document d’identité (préversion)**](concept-id-document.md) prend en charge l’extraction des approbations, des restrictions et des classifications de véhicules à partir de permis de conduire américains.
+* L’[**API Modèle personnalisé (préversion)**](concept-custom.md) prend en charge la détection de signatures pour les formulaires personnalisés.
 
 ### <a name="version-migration"></a>Migration de version
 

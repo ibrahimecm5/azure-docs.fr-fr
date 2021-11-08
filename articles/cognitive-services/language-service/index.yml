@@ -11,7 +11,7 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 09/13/2021
+  ms.date: 11/02/2021
   ms.author: aahi
 highlightedContent:
   items:
@@ -30,6 +30,7 @@ highlightedContent:
 conceptualContent:
   items:
     - title: Extraire les informations
+      summary: 'Utilisez la Compréhension du langage naturel pour extraire des informations d’un texte non structuré. Par exemple, identifiez les phrases clés ou les informations d’identification personnelle (PII), synthétisez le texte, reconnaissez et classez les entités nommées, ou personnalisez un modèle d’extraction d’entité en plus de votre ensemble de domaines.'
       links:
         - itemType: overview
           text: Extraire les phrases clés
@@ -49,7 +50,11 @@ conceptualContent:
         - itemType: overview
           text: Analyse de texte pour la santé
           url: text-analytics-for-health/overview.md
+        - itemType: overview
+          text: Synthèse de texte
+          url: text-summarization/overview.md
     - title: Classifier le texte
+      summary: Utilisez la Compréhension du langage naturel pour détecter la langue ou classifier le sentiment du texte que vous avez. Vous pouvez également classifier vos documents texte en personnalisant un modèle de classification sur votre jeu de données.
       links:
         - itemType: overview
           text: Analyser le sentiment et explorer des opinions dans du texte
@@ -60,24 +65,24 @@ conceptualContent:
         - itemType: overview
           text: Classification de texte personnalisée
           url: custom-classification/overview.md
-    - title: Comprendre les conversations et répondre aux questions
+    - title: Répondre aux questions
+      summary: 'Donnez des réponses aux questions posées dans des textes non structurés à l’aide de nos fonctionnalités prédéfinies, ou personnalisez vos paires questions/réponses spécifiques à un domaine sur les données que vous fournissez.'
       links:
-        - itemType: overview
-          text: Compréhension du langage conversationnel
-          url: conversational-language-understanding/overview.md
         - itemType: overview
           text: Réponses aux questions
           url: question-answering/overview.md
+    - title: Comprendre les conversations
+      summary: Créez votre propre modèle de compréhension du langage courant pour classifier les énoncés courants et en extraire des informations détaillées visant à répondre à des scénarios.
+      links:
+        - itemType: overview
+          text: Compréhension du langage courant
+          url: conversational-language-understanding/overview.md
     - title: Traduire le texte
+      summary: Utilisez la traduction automatique neuronale basée sur le cloud afin de créer des solutions multilingues intelligentes pour vos applications.
       links:
         - itemType: overview
           text: Utilisez la traduction automatique sur du texte.
           url: ../translator/translator-overview.md
-    - title: Résumer le texte
-      links:
-        - itemType: overview
-          text: Synthèse de texte
-          url: text-summarization/overview.md
 additionalContent:
   sections:
     - items:

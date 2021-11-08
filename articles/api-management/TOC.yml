@@ -112,9 +112,11 @@
           href: websocket-api.md
         - name: Importer une API GraphQL
           href: graphql-api.md
-        - name: Importer une application web
+        - name: Importer une API web App Service
           href: import-app-service-as-api.md
-        - name: Importer une application de fonction
+        - name: Importer une API web Container App
+          href: import-container-app-with-oas.md
+        - name: Importer une API web Function App
           href: import-function-app-as-api.md
         - name: Importer une application logique
           href: import-logic-app-as-api.md

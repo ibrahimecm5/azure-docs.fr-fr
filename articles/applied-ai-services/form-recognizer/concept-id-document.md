@@ -7,15 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 98364df02238c36f7e15f00eaff6ec124631987c
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d598c3af52f8b62b23b49f9d661a79a2979574a0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178236"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027293"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -23,40 +24,62 @@ ms.locfileid: "130178236"
 
 Le modèle de document d’identité associe de puissantes fonctionnalités de reconnaissance optique de caractères (OCR) à des modèles de Deep Learning pour analyser et extraire des informations clés de permis de conduire américains (les 50 états et le District de Columbia) et de pages biographiques de passeports internationaux (à l’exclusion des visas et autres documents de voyage). L’API analyse les documents d’identité ; extrait des informations clés, telles que le prénom, le nom, l’adresse et la date de naissance ; et retourne une représentation des données JSON structurée.
 
-***Exemple de permis de conduire américain traité avec [l’outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :***
+***Exemple de permis de conduire américain traité avec Form Recognizer Studio***
 
-:::image type="content" source="./media/id-example-drivers-license.jpg" alt-text="exemple de carte d’identité" lightbox="./media/overview-id.jpg":::
+:::image type="content" source="media/studio/drivers-license.png" alt-text="exemple de carte d’identité" lightbox="media/overview-id.jpg":::
 
-## <a name="try-form-recognizer-studio-preview"></a>Essayer Form Recognizer Studio (préversion)
+## <a name="development-options"></a>Options de développement
 
-* Form Recognizer Studio est disponible avec l’API (v3.0) en préversion.
+Les ressources suivantes sont prises en charge par Form Recognizer v2.1 :
 
-* Extrayez le nom, la zone lisible par l’ordinateur et la date d’expiration avec la fonctionnalité de document d’identité Form Recognizer Studio :
+| Fonctionnalité | Ressources |
+|----------|-------------------------|
+|**Modèle de pièce d’identité**| <ul><li>[**Outil d’étiquetage Form Recognizer**](https://fott-2-1.azurewebsites.net/prebuilts-analyze)</li><li>[**API REST**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-identity-id-documents)</li><li>[**Kit SDK Bibliothèque de client**](quickstarts/try-sdk-rest-api.md)</li><li>[**Conteneur Docker de Form Recognizer**](containers/form-recognizer-container-install-run.md?tabs=id-document#run-the-container-with-the-docker-compose-up-command)</li></ul>|
 
-> [!div class="nextstepaction"]
-> [Essayer Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=idDocument)
+Les ressources suivantes sont prises en charge par Form Recognizer v3.0 :
 
-## <a name="try-it-sample-labeling-tool"></a>Essayer : Outil d’étiquetage des exemples
+| Fonctionnalité | Ressources | ID de modèle |
+|----------|-------------|-----------|
+|**Modèle de pièce d’identité**|<ul><li> [**Form Recognizer Studio**](https://formrecognizer.appliedai.azure.com)</li><li>[**API REST**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**Kit de développement logiciel (SDK) C#**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Kit de développement logiciel (SDK) Python**](quickstarts/try-v3-python-sdk.md)</li><li>[**Kit SDK Java**](quickstarts/try-v3-java-sdk.md)</li><li>[**Kit de développement logiciel (SDK) JavaScript**](quickstarts/try-v3-javascript-sdk.md)</li></ul>|**prebuilt-idDocument**|
 
-Vous pouvez voir comment les données du document d’identité sont extraites en essayant notre outil d’étiquetage des exemples. Vous aurez besoin des éléments suivants :
+### <a name="try-form-recognizer"></a>Essayer Form Recognizer
+
+Découvrez comment les données, y compris le nom, la date de naissance, la zone lisible par ordinateur et la date d’expiration, sont extraites de documents d’identité à l’aide de Form Recognizer Studio ou de notre outil d’étiquetage des exemples. Vous aurez besoin des éléments suivants :
 
 * Un abonnement Azure : [vous pouvez en créer un gratuitement](https://azure.microsoft.com/free/cognitive-services/)
 
-* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, cliquez sur **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
+* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, sélectionnez **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
 
- :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le Portail Azure.":::
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le portail Azure":::
 
-* Un document d’identité. Vous pouvez utiliser notre [exemple de document d’identité](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/applied-ai-services/form-recognizer/media/id-license.jpg).
+#### <a name="form-recognizer-studio-preview"></a>Form Recognizer Studio (préversion)
 
-> [!div class="nextstepaction"]
-  > [Essayer](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+> [!NOTE]
+> Form Recognizer Studio est disponible avec l’API (v 3.0) en préversion.
 
-Dans l’interface utilisateur de Form Recognizer :
+1. Dans la page d’accueil de Form Recognizer Studio, sélectionnez **Factures**.
 
-  1. Sélectionnez **Utiliser un modèle prédéfini pour extraire des données**.
-  1. Sélectionnez **Reçu** dans le menu déroulant **Type de formulaire** :
+1. Vous pouvez analyser l’exemple de facture ou sélectionner le bouton **+ Ajouter** pour charger votre propre exemple.
 
-  :::image type="content" source="media/try-id-document.png" alt-text="Capture d’écran : menu déroulant de sélection du modèle prédéfini de l’outil d’étiquetage des exemples.":::
+1. Sélectionnez le bouton **Analyser** :
+
+    :::image type="content" source="media/studio/id-document-analyze.png" alt-text="Capture d’écran : menu analyser le document d’identité.":::
+
+    > [!div class="nextstepaction"]
+    > [Essayer Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=idDocument)
+
+#### <a name="sample-labeling-tool"></a>Outil d’étiquetage d’exemples
+
+Vous aurez besoin d’un document d’identité. Vous pouvez utiliser notre [exemple de document d’identité](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png).
+
+1. Dans la page d’accueil de l’outil d’étiquetage des exemples, sélectionnez **Utiliser un modèle prédéfini pour obtenir des données**.
+
+1. Sélectionnez **Identifier des documents** dans le menu déroulant **Type de formulaire** :
+
+    :::image type="content" source="media/try-id-document.png" alt-text="Capture d’écran : menu déroulant de sélection du modèle prédéfini de l’outil d’étiquetage des exemples.":::
+
+   > [!div class="nextstepaction"]
+   > [Essayer l’outil d’étiquetage d’exemples](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
 
 ## <a name="input-requirements"></a>Critères des entrées
 
@@ -73,7 +96,7 @@ Dans l’interface utilisateur de Form Recognizer :
   * Les clés doivent apparaître au-dessus ou à gauche des valeurs, pas en dessous ni à droite.
 
 > [!NOTE]
-> L'[outil d’étiquetage des exemples](https://fott-2-1.azurewebsites.net/) ne prend pas en charge le format de fichier BMP. Il s’agit d’une limitation de l’outil et non du service Form Recognizer.
+> L’[outil d’étiquetage des exemples](https://fott-2-1.azurewebsites.net/) ne prend pas en charge le format de fichier BMP. Il s’agit d’une limitation de l’outil et non du service Form Recognizer.
 
 ## <a name="supported-languages-and-locales-v21"></a>Langues et régions prises en charge v2.1
 
@@ -81,22 +104,22 @@ Dans l’interface utilisateur de Form Recognizer :
 |--------|:----------------------|:---------|
 |Document d’identité| <ul><li>Anglais (États-Unis) : en-US (permis de conduire)</li><li>Pages biographiques de passeports internationaux</br> (sauf visa et autres documents de voyage)</li></ul></br>|Anglais (États-Unis) : en-US|
 
-## <a name="key-value-pair-extraction"></a>Extraction de paires clé-valeur
+## <a name="field-extraction"></a>Extraction de champ
 
-|Name| Type | Description | Sortie standardisée|
+|Nom| Type | Description | Sortie standardisée|
 |:-----|:----|:----|:----|
 |  CountryRegion | countryRegion | Code de pays ou de région conforme à la norme ISO 3166 |  |
 |  DateOfBirth | Date | DOB | aaaa-mm-jj |
 |  DateOfExpiration | Date | Date d’expiration DOB | aaaa-mm-jj |
-|  DocumentNumber | string | Numéro de passeport, numéro de permis de conduire, etc. |  |
-|  FirstName | string | Prénom et initiale du second prénom extraits, le cas échéant |  |
-|  LastName | string | Nom de famille extrait |  |
+|  DocumentNumber | String | Numéro de passeport, numéro de permis de conduire, etc. |  |
+|  FirstName | String | Prénom et initiale du second prénom extraits, le cas échéant |  |
+|  LastName | String | Nom de famille extrait |  |
 |  Nationalité | countryRegion | Code de pays ou de région conforme à la norme ISO 3166 (passeport uniquement) |  |
-|  Sex | string | Les valeurs extraites possibles sont « M », « F » et « X ». | |
-|  MachineReadableZone | object | MRZ du passeport extraite, y compris 2 lignes de 44 caractères chacun | « P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816 » |
-|  DocumentType ; | string | Type de document, par exemple, passeport ou permis de conduire | « passeport » |
-|  Adresse | string | Adresse extraite (permis de conduire uniquement) ||
-|  Region | string | Région, État, province et autres informations extraites (permis de conduire uniquement) |  |
+|  Sex | String | Les valeurs extraites possibles sont « M », « F » et « X ». | |
+|  MachineReadableZone | Object | MRZ du passeport extraite, y compris 2 lignes de 44 caractères chacun | « P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816 » |
+|  DocumentType ; | String | Type de document, par exemple, passeport ou permis de conduire | « passeport » |
+|  Adresse | String | Adresse extraite (permis de conduire uniquement) ||
+|  Region | String | Région, État, province et autres informations extraites (permis de conduire uniquement) |  |
 
 ## <a name="form-recognizer-preview-v30"></a>Form Recognizer préversion v3.0
 
@@ -104,27 +127,29 @@ Dans l’interface utilisateur de Form Recognizer :
 
 * Le modèle **Document d’identité (v3.0)** prend en charge l’extraction des approbations, des restrictions et des classifications de véhicules à partir de permis de conduire américains.
 
-    ### <a name="id-document-preview-key-value-pair-extraction"></a>Préversion du document d’identité - Extraction de paires clé-valeur
+### <a name="id-document-preview-field-extraction"></a>Extraction de champ de préversion de document d’identité
 
-    |Name| Type | Description | Sortie standardisée|
-    |:-----|:----|:----|:----|
-    | 🆕 Approbations | string | Privilèges de conduite supplémentaires accordés à un conducteur comme Motocyclette ou Bus scolaire.  | |
-    | 🆕 Restrictions | string | Privilèges de conduite restreints applicables aux permis suspendus ou révoqués.| |
-    | 🆕VehicleClassification | string | Types de véhicules qui peuvent être pilotés par un conducteur. ||
-    |  CountryRegion | countryRegion | Code de pays ou de région conforme à la norme ISO 3166 |  |
-    |  DateOfBirth | Date | DOB | aaaa-mm-jj |
-    |  DateOfExpiration | Date | Date d’expiration DOB | aaaa-mm-jj |
-    |  DocumentNumber | string | Numéro de passeport, numéro de permis de conduire, etc. |  |
-    |  FirstName | string | Prénom et initiale du second prénom extraits, le cas échéant |  |
-    |  LastName | string | Nom de famille extrait |  |
-    |  Nationalité | countryRegion | Code de pays ou de région conforme à la norme ISO 3166 (passeport uniquement) |  |
-    |  Sex | string | Les valeurs extraites possibles sont « M », « F » et « X ». | |
-    |  MachineReadableZone | object | MRZ du passeport extraite, y compris 2 lignes de 44 caractères chacun | « P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816 » |
-    |  DocumentType ; | string | Type de document, par exemple, passeport ou permis de conduire | « passeport » |
-    |  Adresse | string | Adresse extraite (permis de conduire uniquement) ||
-    |  Region | string | Région, État, province et autres informations extraites (permis de conduire uniquement) |  |
+|Nom| Type | Description | Sortie standardisée|
+|:-----|:----|:----|:----|
+| 🆕 Approbations | String | Privilèges de conduite supplémentaires accordés à un conducteur comme Motocyclette ou Bus scolaire.  | |
+| 🆕 Restrictions | String | Privilèges de conduite restreints applicables aux permis suspendus ou révoqués.| |
+| 🆕VehicleClassification | String | Types de véhicules qui peuvent être pilotés par un conducteur. ||
+|  CountryRegion | countryRegion | Code de pays ou de région conforme à la norme ISO 3166 |  |
+|  DateOfBirth | Date | DOB | aaaa-mm-jj |
+|  DateOfExpiration | Date | Date d’expiration DOB | aaaa-mm-jj |
+|  DocumentNumber | String | Numéro de passeport, numéro de permis de conduire, etc. |  |
+|  FirstName | String | Prénom et initiale du second prénom extraits, le cas échéant |  |
+|  LastName | String | Nom de famille extrait |  |
+|  Nationalité | countryRegion | Code de pays ou de région conforme à la norme ISO 3166 (passeport uniquement) |  |
+|  Sex | String | Les valeurs extraites possibles sont « M », « F » et « X ». | |
+|  MachineReadableZone | Object | MRZ du passeport extraite, y compris 2 lignes de 44 caractères chacun | « P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816 » |
+|  DocumentType ; | String | Type de document, par exemple, passeport ou permis de conduire | « passeport » |
+|  Adresse | String | Adresse extraite (permis de conduire uniquement) ||
+|  Region | String | Région, État, province et autres informations extraites (permis de conduire uniquement) |  |
 
-* Suivez le [**Guide de migration de Form Recognizer v3.0**](v3-migration-guide.md) pour apprendre à utiliser la préversion dans vos applications et vos flux de travail.
+### <a name="migration-guide-and-rest-api-v30"></a>Guide de migration et API REST v 3.0
+
+* Suivez notre [**guide de migration Form Recognizer v3.0**](v3-migration-guide.md) pour apprendre à utiliser la préversion dans vos applications et workflows.
 
 * Découvrez notre [**API REST (préversion)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) pour en savoir plus sur la préversion et les nouvelles fonctionnalités.
 

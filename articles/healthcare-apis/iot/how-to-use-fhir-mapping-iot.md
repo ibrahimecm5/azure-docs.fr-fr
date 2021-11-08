@@ -4,29 +4,36 @@ description: Cet article explique comment utiliser le modèle de mappage de dest
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
-ms.topic: conceptual
-ms.date: 10/26/2021
+ms.topic: how-to
+ms.date: 11/05/2021
 ms.author: jasteppe
-ms.openlocfilehash: 856355f2f511a9fecdce586e3b7ef4b176366f68
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0839376e1f04acc525cd7b33cd281edd3e66ee56
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131468816"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990354"
 ---
 # <a name="how-to-use-the-fhir-destination-mappings"></a>Comment utiliser les mappages de destination FHIR
 
 > [!IMPORTANT]
 > Les API Azure Healthcare sont actuellement en version préliminaire. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale.
 
-Cet article explique comment configurer le connecteur IoT à l’aide du mappage de destination Fast Healthcare Interoperability Resources (FHIR&#174;).
+Cet article explique comment configurer le connecteur IoT à l’aide des mappages de destination Fast Healthcare Interoperability Resources (FHIR&#174;).
 
 > [!TIP]
 > Consultez l’outil [Mappeur de données du connecteur IoMT](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) pour la modification, le test et la résolution des problèmes des mappages de destination FHIR et des appareils IOT Connector. Exportez les mappages de chargement vers le connecteur IoT dans le Portail Azure ou utilisez avec la [version open source](https://github.com/microsoft/iomt-fhir) du connecteur IOT.
 
+Voici un exemple conceptuel de ce qui se produit pendant le processus de normalisation et de transformation dans le connecteur IoT :
+
+:::image type="content" source="media/iot-data-normalization-high-level.png" alt-text="Diagramme de normalisation des données IoT example1" lightbox="media/iot-data-normalization-high-level.png":::
+
 ## <a name="fhir-destination-mappings"></a>Mappages de destination FHIR
 
-Une fois que le contenu de l’appareil est extrait dans un modèle normalisé, les données sont collectées et regroupées en fonction de l’identificateur de l’appareil, du type de mesure et de la période de temps. La sortie de ce regroupement est envoyée pour la conversion en ressource FHIR (actuellement [Observation](https://www.hl7.org/fhir/observation.html)). Le modèle de mappage de destination FHIR contrôle la manière dont les données sont mappées à une observation FHIR. Une observation doit-elle être créée pour un point dans le temps ou sur une période d’une heure ? Quels codes doivent être ajoutés à l’observation ? La valeur doit-elle être représentée en tant que [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) ou [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity) ? Ces types de données sont toutes des options que la configuration de mappage de destination FHIR contrôle.
+Une fois que le contenu de l’appareil est extrait dans un modèle normalisé, les données sont collectées et regroupées en fonction de l’identificateur de l’appareil, du type de mesure et de la période de temps. La sortie de ce regroupement est envoyée pour la conversion en ressource FHIR (actuellement [Observation](https://www.hl7.org/fhir/observation.html)). Le modèle de mappage de destination FHIR contrôle la manière dont les données sont mappées à une observation FHIR. Une observation doit-elle être créée pour un point dans le temps ou sur une période d’une heure ? Quels codes doivent être ajoutés à l’observation ? La valeur doit-elle être représentée en tant que [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) ou en tant que [quantité](https://www.hl7.org/fhir/datatypes.html#Quantity)? Ces types de données sont toutes des options que la destination FHIR mappe à des contrôles de configuration.
+
+> [!NOTE]
+> Les mappages sont stockés dans un stockage d’objets BLOB sous-jacent et chargés à partir d’un objet BLOB par exécution de calcul. Une fois mis à jour, ils doivent prendre effet immédiatement. 
 
 ### <a name="codevaluefhirtemplate"></a>CodeValueFhirTemplate
 
@@ -266,7 +273,9 @@ Représente le type de données [CodeableConcept](http://hl7.org/fhir/datatypes.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+Dans cet article, vous avez appris à utiliser les mappages de destination FHIR. Pour savoir comment utiliser les mappages de périphériques, consultez.
+
 >[!div class="nextstepaction"]
->[Utilisation du mappage des appareils](how-to-use-device-mapping-iot.md)
+>[Comment utiliser les mappages de périphérique](how-to-use-device-mapping-iot.md)
 
 (FHIR&#174;) est une marque déposée de [HL7](https://hl7.org/fhir/) qui est utilisée avec l’autorisation de HL7.

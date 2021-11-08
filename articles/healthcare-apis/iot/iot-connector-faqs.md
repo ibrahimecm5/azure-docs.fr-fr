@@ -6,14 +6,14 @@ author: msjasteppe
 ms.custom: references_regions
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 11/05/2021
 ms.author: jasteppe
-ms.openlocfilehash: 00f3153981a07e436b714dadfd2785aac61dd8ab
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 153a4c86d0f6f1b2617327360569cd92d1a318ca
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578891"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990241"
 ---
 # <a name="frequently-asked-questions-about-iot-connector"></a>Forum aux questions sur le connecteur IoT
 
@@ -40,9 +40,9 @@ Actuellement, le connecteur IoT prend uniquement en charge la persistance de [HL
 
 ### <a name="what-are-the-subscription-quota-limits-for-iot-connector"></a>Quelles sont les limites de quota d’abonnement pour le connecteur IoT ?
 
-* 25 connecteurs IoT par abonnement (ajustables avec une demande de support Azure)
-* 10 connecteurs IoT par espace de travail (ajustables avec une demande de support Azure)
-* une Destination FHIR * par IoT Connector (non réglable)
+* 25 connecteurs IoT par abonnement (non ajustables)
+* 10 connecteurs IoT par espace de travail (non réglable)
+* Une destination FHIR * par connecteur IoT (non réglable)
 
 (*-FHIR destination est une ressource enfant du connecteur IoT)
 

@@ -9,12 +9,13 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 7053bcc1e28eeb262dda8833ddf98806aae770b5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ac1a72efe9d71725e27162ee19fc3b8b02645023
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472102"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014268"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Tutoriel : Trier les alertes de sécurité, les examiner et y répondre
 
@@ -106,7 +107,7 @@ D’autres guides de démarrage rapide et didacticiels de cette collection repos
 
 Si vous n’envisagez pas de continuer ou si vous souhaitez désactiver l’une de ces fonctionnalités :
 
-1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
 1. Sélectionnez l’abonnement approprié.
 1. Sélectionnez **Plans de Defender** et sélectionnez **Sécurité renforcée désactivée**.
 
@@ -117,7 +118,7 @@ Si vous n’envisagez pas de continuer ou si vous souhaitez désactiver l’une 
     > [!NOTE]
     > Une fois que vous avez désactivé les fonctionnalités de sécurité renforcée (un seul plan ou tous à la fois), il peut arriver que la collecte des données se poursuive pendant une courte durée. 
 
-1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
 1. Sélectionnez l’abonnement approprié.
 1. Sélectionnez **Provisionnement automatique**.
 1. Désactivez les extensions appropriées.
