@@ -1,5 +1,5 @@
 ---
-title: 'Guide pratique : Modèles personnalisés et composés'
+title: 'Guide pratique : Utiliser des modèles personnalisés et composés'
 titleSuffix: Azure Applied AI Services
 description: Découvrez comment créer, utiliser et gérer des modèles personnalisés et composés de Form Recognizer.
 author: laujan
@@ -7,17 +7,18 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: ef5514b44ad2d35870674a85958c28f5f780c308
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5389e30e2aca2d93ba0fb27c71a6b934d7bf10e0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233693"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027781"
 ---
-# <a name="how-to-use-custom-and-composed-models"></a>Guide pratique : Utiliser des modèles personnalisés et composés
+# <a name="use-custom-and-composed-models"></a>Utiliser des modèles personnalisés et composés
 
 Form Recognizer utilise la technologie de Machine Learning avancée pour détecter et extraire des informations à partir d’images de document et retourner les données extraites dans une sortie JSON structurée. Avec Form Recognizer, vous pouvez effectuer l’apprentissage de modèles personnalisés autonomes ou combiner des modèles personnalisés pour créer des modèles composés.
 
@@ -25,15 +26,19 @@ Form Recognizer utilise la technologie de Machine Learning avancée pour détect
 
 * **Modèles composés**. Un modèle composé est créé sur la base d’une collection de modèles personnalisés qui sont affectés à un modèle unique englobant les types de formulaire. Quand un document est soumis à un modèle composé, le service effectue une étape de classification pour déterminer le modèle personnalisé qui représente précisément le formulaire présenté pour l’analyse.
 
-Dans cet article, nous allons examiner la création de modèles personnalisés et composés de Form Recognizer à l’aide de notre [outil d’étiquetage des exemples Form Recognizer](label-tool.md), nos [API REST](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model) ou nos [Kits de développement logiciel (SDK) de bibliothèque de client](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-csharp#train-a-custom-model).
+***Fenêtre Configuration du modèle dans Form Recognizer Studio***
 
-## <a name="try-it-sample-labeling-tool"></a>Essayer : Outil d’étiquetage des exemples
+:::image type="content" source="media/studio/composed-model.png" alt-text="Capture d’écran : Fenêtre Configuration du modèle dans Form Recognizer Studio.":::
 
-Vous pouvez voir la façon dont les données sont extraites des formulaires personnalisés en essayant notre outil Étiquetage des exemples. Vous aurez besoin des éléments suivants :
+Dans cet article, nous allons découvrir la création de modèles personnalisés et composés de Form Recognizer à l’aide de notre [outil d’étiquetage des exemples Form Recognizer](label-tool.md), nos [API REST](quickstarts/client-library.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model) ou nos [Kits de développement logiciel (SDK) de bibliothèque de client](quickstarts/client-library.md?branch=main&pivots=programming-language-csharp#train-a-custom-model).
+
+## <a name="sample-labeling-tool"></a>Outil d’étiquetage d’exemples
+
+Vous pouvez voir comment les données sont extraites de formulaires personnalisés en testant notre outil d'étiquetage des exemples. Vous aurez besoin des éléments suivants :
 
 * Un abonnement Azure : [vous pouvez en créer un gratuitement](https://azure.microsoft.com/free/cognitive-services/)
 
-* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, cliquez sur **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
+* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, sélectionnez **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le Portail Azure.":::
 
@@ -96,7 +101,7 @@ Form Recognizer utilise l’API [Layout](concept-layout.md) pour connaître les
 
 L’opération de composition de modèle permet d’affecter un ID de modèle unique à jusqu’à 100 modèles personnalisés entraînés. Quand vous appelez la fonction d’analyse avec l’ID de modèle composé, Form Recognizer commence par classifier le formulaire envoyé. Il choisit le modèle affecté qui correspond le mieux, puis retourne les résultats pour ce modèle. Cette opération est utile quand les formulaires entrants sont susceptibles d’appartenir à l’un des différents modèles.
 
-À l’aide de l’outil d’étiquetage des exemples Form Recognizer, de l’API REST ou des kits SDK de la bibliothèque de client, procédez comme suit pour configurer un modèle composé :
+À l’aide de l’outil d’étiquetage des exemples Form Recognizer, de l’API REST ou des kits SDK de la bibliothèque de client, procédez comme suit pour configurer un modèle composé :
 
 1. [**Collecter vos ID de modèles personnalisés**](#gather-your-custom-model-ids)
 1. [**Composer vos modèles personnalisés**](#compose-your-custom-models)
@@ -107,7 +112,7 @@ Une fois le processus d’apprentissage réussi, un ID de modèle est affecté �
 
 ### <a name="form-recognizer-sample-labeling-tool"></a>[**Outil d’étiquetage des exemples Form Recognizer**](#tab/fott)
 
-Quand vous effectuez l’apprentissage des modèles à l’aide de [**l’outil d’étiquetage des exemples Form Recognizer**](https://fott-2-1.azurewebsites.net/), l’ID de modèle se trouve dans la fenêtre de résultat de l’apprentissage :
+Quand vous effectuez l’apprentissage des modèles à l’aide de [**l’outil d’étiquetage des exemples Form Recognizer**](https://fott-2-1.azurewebsites.net/), l’ID de modèle se trouve dans la fenêtre de résultat de l’apprentissage :
 
 :::image type="content" source="media/fott-training-results.png" alt-text="Capture d’écran : fenêtre des résultats de l’apprentissage.":::
 

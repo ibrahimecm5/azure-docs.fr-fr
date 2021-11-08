@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7318baacb8765a6009c0cd502a5eafe1ad7ba20e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6ab8c0d7d1e547d564ddc3329858ddc49d51185b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082667"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448972"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Disques de système d’exploitation éphémères pour les machines virtuelles Azure
 
@@ -24,7 +24,7 @@ Les disques de système d’exploitation éphémères sont créés sur le stocka
  
 Les principales caractéristiques des disques éphémères sont les suivantes : 
 - Idéal pour les applications sans état.
-- Pris en charge par la place de marché, les images personnalisées et [Shared Image Gallery](./shared-image-galleries.md).
+- Prise en charge par la Place de marché, par les images personnalisées et par [Azure Compute Gallery](./shared-image-galleries.md) (anciennement appelé Shared Image Gallery).
 - Capacité de réinitialisation rapide de leurs machines virtuelles et instances de groupe identique à l’état de démarrage d’origine.  
 - Faible latence, comparable à celle d’un disque temporaire. 
 - Les disques de système d’exploitation éphémères sont gratuits, c’est-à-dire qu’ils n’impliquent aucun coût de stockage.

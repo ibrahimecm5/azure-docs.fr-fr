@@ -3,14 +3,16 @@ title: Analyse de vidéo en direct sans enregistrement – Azure
 description: Vous pouvez utiliser une topologie de pipeline pour simplement extraire des analyses d’un flux vidéo en direct, sans avoir à les enregistrer en périphérie ou dans le cloud. Cet article aborde ce concept.
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 8444759d231153419873679624645a96e07058ce
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5bf4490a058fb00e12c9c43faa5af0a6f261fede
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122535429"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043942"
 ---
 # <a name="analyzing-live-videos-without-recording"></a>Analyse de vidéos en direct sans enregistrement
+
 
 ## <a name="suggested-pre-reading"></a>Lecture préalable suggérée 
 
@@ -22,12 +24,15 @@ ms.locfileid: "122535429"
 
 Vous pouvez utiliser une topologie de pipeline pour analyser une vidéo en direct sans enregistrer de portions de la vidéo dans un fichier ou une ressource. Les topologies de pipeline ci-dessous sont similaires à celles décrites dans l’article [Enregistrement de vidéo basé sur un événement](event-based-video-recording-concept.md), mais sans nœud récepteur de vidéo ou de fichier.
 
+> [!NOTE]
+> L’analyse des vidéos en direct est actuellement disponible uniquement pour le module Edge et non pour le cloud.
+
 ### <a name="motion-detection"></a>Détection de mouvement
 
 La topologie de pipeline ci-dessous se compose d’un nœud [source RTSP](pipeline.md#rtsp-source), d’un nœud [processeur de détection de mouvement](pipeline.md#motion-detection-processor) et d’un nœud [récepteur de messages IoT Hub](pipeline.md#iot-hub-message-sink). Vous pouvez voir les paramètres utilisés dans sa [représentation JSON](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/motion-detection/topology.json). Cette topologie vous permet de détecter des mouvements dans les flux vidéo en direct entrants et de transmettre les événements à d’autres applications et services via le nœud récepteur de messages du IoT Hub. Les applications ou services externes peuvent déclencher une alerte ou envoyer une notification aux personnes appropriées.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/get-started-detect-motion-emit-events/motion-detection.svg" alt-text="Détection de mouvement dans une vidéo en direct":::
+> :::image type="content" source="./media/analyze-live-video-without-recording/motion-detection.svg" alt-text="Détection de mouvement dans une vidéo en direct":::
 
 ### <a name="analyzing-video-using-a-custom-vision-model"></a>Analyse de vidéos à l’aide d’un modèle Custom Vision 
 

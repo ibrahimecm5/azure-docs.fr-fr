@@ -10,12 +10,12 @@ ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 5b779df91c4f0347e329348b7bdccd49691d0d5d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d83cb752eaaa2ed3edf58d3d1f31d6d7c5af76cd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096361"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433134"
 ---
 # <a name="archive-a-blob"></a>Archiver un objet blob
 

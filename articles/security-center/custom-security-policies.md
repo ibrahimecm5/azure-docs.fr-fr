@@ -1,6 +1,6 @@
 ---
-title: Créer des stratégies de sécurité personnalisées dans Azure Security Center | Microsoft Docs
-description: Définitions de stratégie Azure personnalisées surveillées dans Azure Security Center.
+title: Créer des stratégies de sécurité personnalisées dans Microsoft Defender pour le cloud | Microsoft Docs
+description: Définitions de stratégies personnalisées Azure analysées par Microsoft Defender pour le cloud.
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -8,18 +8,21 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: 828dd2cc5b83737a313156876c54c290a2a67d73
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e596312807e2f6d5292c4910a7e2c3e9e7d75b3f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238845"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009982"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Créer des stratégies et des initiatives de sécurité personnalisées
 
-Pour vous aider à sécuriser vos systèmes et votre environnement, Azure Security Center génère des recommandations de sécurité. Ces recommandations sont basées sur les meilleures pratiques du secteur, qui sont incorporées à la stratégie de sécurité par défaut générique fournie à tous les clients. Elles peuvent également provenir des connaissances que Security Center a des normes et réglementations du secteur.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Avec cette fonctionnalité, vous pouvez ajouter vos propres initiatives *personnalisées*. Vous recevez ensuite des recommandations si votre environnement ne suit pas les stratégies que vous créez. Toutes les initiatives personnalisées que vous créez apparaîtront à côté des initiatives intégrées dans le tableau de bord de conformité à la réglementation, comme décrit dans le tutoriel [Améliorer votre conformité aux normes](security-center-compliance-dashboard.md).
+Pour vous aider à sécuriser vos systèmes et votre environnement, Microsoft Defender pour le cloud génère des recommandations de sécurité. Ces recommandations sont basées sur les meilleures pratiques du secteur, qui sont incorporées à la stratégie de sécurité par défaut générique fournie à tous les clients. Elles peuvent également provenir des connaissances que Defender pour le cloud a des normes et réglementations du secteur.
+
+Avec cette fonctionnalité, vous pouvez ajouter vos propres initiatives *personnalisées*. Vous recevez ensuite des recommandations si votre environnement ne suit pas les stratégies que vous créez. Toutes les initiatives personnalisées que vous créez apparaîtront à côté des initiatives intégrées dans le tableau de bord de conformité à la réglementation, comme décrit dans le tutoriel [Améliorer votre conformité aux normes](regulatory-compliance-dashboard.md).
 
 Comme nous l’avons vu dans la [documentation Azure Policy](../governance/policy/concepts/definition-structure.md#definition-location), quand vous spécifiez un emplacement pour votre initiative personnalisée, il doit correspondre à un groupe d’administration ou à un abonnement. 
 
@@ -30,14 +33,14 @@ Comme nous l’avons vu dans la [documentation Azure Policy](../governance/polic
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Pour ajouter une initiative personnalisée à votre abonnement 
 
-1. Dans la barre latérale de Security Center, ouvrez la page **Stratégie de sécurité**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Stratégie de sécurité**.
 
 1. Sélectionnez un abonnement ou un groupe d’administration auquel vous voulez ajouter une initiative personnalisée.
 
     [![Sélection d’un abonnement pour lequel vous allez créer votre stratégie personnalisée.](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Vous devez ajouter des initiatives personnalisées au niveau de l’abonnement (ou à un niveau supérieur) pour qu’elles soient évaluées et affichées dans Security Center. Nous vous recommandons de sélectionner l’étendue la plus vaste disponible.
+    > Pour que vos initiatives personnalisées soient évaluées et affichées dans Defender pour le cloud, vous devez les ajouter au niveau de l’abonnement (ou à un niveau supérieur). Nous vous recommandons de sélectionner l’étendue la plus vaste disponible.
 
 1. Dans la page Stratégie de sécurité, sous vos initiatives personnalisées, cliquez sur **Ajouter une initiative personnalisée**.
 
@@ -60,11 +63,11 @@ Comme nous l’avons vu dans la [documentation Azure Policy](../governance/polic
     1. Cliquez sur **Ajouter** et affectez-la à votre abonnement.
 
     > [!NOTE]
-    > La création d’initiatives nécessite les informations d’identification du propriétaire de l’abonnement. Pour plus d’informations sur les rôles Azure, consultez [Autorisations dans Azure Security Center](security-center-permissions.md).
+    > La création d’initiatives nécessite les informations d’identification du propriétaire de l’abonnement. Pour plus d’informations sur les rôles Azure, consultez [Autorisations dans Microsoft Defender pour le cloud](permissions.md).
 
     Votre nouvelle initiative est appliquée et vous pouvez visualiser son impact de deux façons :
 
-    * Dans la barre latérale de Security Center, sous Stratégie et conformité, sélectionnez **Conformité avec la réglementation**. Le tableau de bord de conformité s'ouvre pour montrer votre nouvelle initiative personnalisée à côté des initiatives intégrées.
+    * Dans le menu de Defender pour le cloud, sélectionnez **Conformité réglementaire**. Le tableau de bord de conformité s'ouvre pour montrer votre nouvelle initiative personnalisée à côté des initiatives intégrées.
     
     * Vous commencerez ensuite à recevoir des recommandations si votre environnement ne suit pas les stratégies que vous avez définies.
 
@@ -78,7 +81,7 @@ Comme nous l’avons vu dans la [documentation Azure Policy](../governance/polic
 
 ## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Configurer une stratégie de sécurité dans Azure Policy à l’aide de l’API REST
 
-Dans le cadre de l’intégration native à Azure Policy, Azure Security Center vous permet de tirer parti de l’API REST d’Azure Policy pour créer des affectations de stratégie. Les instructions suivantes vous guident tout au long de la création d’affectations de stratégies, ainsi que de la personnalisation d’affectations existantes. 
+Dans le cadre de l’intégration native à Azure Policy, Microsoft Defender pour le cloud vous permet de tirer parti de l’API REST d’Azure Policy pour créer des affectations de stratégie. Les instructions suivantes vous guident tout au long de la création d’affectations de stratégies, ainsi que de la personnalisation d’affectations existantes. 
 
 Concepts importants utilisés dans Azure Policy : 
 
@@ -88,9 +91,9 @@ Concepts importants utilisés dans Azure Policy :
 
 - Une **affectation** est l’application d’une initiative ou d’une stratégie à une étendue spécifique (groupe d’administration, abonnement, etc.) 
 
-Security Center dispose d’une initiative intégrée, [Azure Security Benchmark](/security/benchmark/azure/introduction), qui inclut toutes ses stratégies de sécurité. Pour évaluer les stratégies de Security Center sur vos ressources Azure, vous devez créer une affectation sur le groupe d’administration ou un abonnement que vous voulez évaluer.
+Defender pour le cloud dispose d’une initiative intégrée, [Azure Security Benchmark](/security/benchmark/azure/introduction), qui inclut toutes ses stratégies de sécurité. Pour évaluer les stratégies de Defender pour le cloud sur vos ressources Azure, vous devez créer une affectation sur le groupe d’administration ou un abonnement que vous voulez évaluer.
 
-L’initiative intégrée a toutes les stratégies de Security Center activées par défaut. Vous pouvez choisir de désactiver certaines stratégies de l’initiative intégrée. Par exemple, pour appliquer toutes les stratégies de Security Center à l’exception de **Pare-feu d’application web**, changez la valeur du paramètre d’effet de la stratégie à **Désactivé**.
+L’initiative intégrée a toutes les stratégies de Defender pour le cloud activées par défaut. Vous pouvez choisir de désactiver certaines stratégies de l’initiative intégrée. Par exemple, pour appliquer toutes les stratégies de Defender pour le cloud à l’exception de **Pare-feu d’application web**, changez la valeur du paramètre d’effet de la stratégie à **Désactivé**.
 
 ## <a name="api-examples"></a>Exemples d'API
 
@@ -100,7 +103,7 @@ Dans les exemples suivants, remplacez les variables suivantes :
 - **{policyAssignmentName}** entrez le nom de l’attribution de stratégie appropriée
 - **{name}** entrez votre nom ou le nom de l’administrateur qui a approuvé le changement de stratégie
 
-Cet exemple vous montre comment affecter l’initiative Security Center intégrée sur un abonnement ou un groupe d’administration :
+Cet exemple vous montre comment affecter l’initiative Defender pour le cloud intégrée sur un abonnement ou un groupe d’administration
  
  ```
     PUT  
@@ -112,7 +115,7 @@ Cet exemple vous montre comment affecter l’initiative Security Center intégr�
 
       "properties":{ 
 
-    "displayName":"Enable Monitoring in Azure Security Center", 
+    "displayName":"Enable Monitoring in Microsoft Defender for Cloud", 
 
     "metadata":{ 
 
@@ -129,7 +132,7 @@ Cet exemple vous montre comment affecter l’initiative Security Center intégr�
     } 
  ```
 
-Cet exemple vous montre comment affecter l’initiative Security Center intégrée sur un abonnement, avec les stratégies suivantes désactivées : 
+Cet exemple vous montre comment affecter l’initiative Defender pour le cloud intégrée sur un abonnement, avec les stratégies suivantes désactivées : 
 
 - Mises à jour système (“systemUpdatesMonitoringEffect”) 
 
@@ -146,7 +149,7 @@ Cet exemple vous montre comment affecter l’initiative Security Center intégr�
     
       "properties":{ 
     
-    "displayName":"Enable Monitoring in Azure Security Center", 
+    "displayName":"Enable Monitoring in Microsoft Defender for Cloud", 
     
     "metadata":{ 
     
@@ -181,7 +184,7 @@ Cet exemple vous montre comment supprimer une affectation :
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Améliorez vos recommandations personnalisées grâce à des informations détaillées
 
-Les recommandations intégrées fournies avec Azure Security Center incluent des détails tels que des niveaux de gravité et des instructions de correction. Si vous souhaitez ajouter ce type d’informations à vos recommandations personnalisées afin qu’elles apparaissent dans le portail Azure ou à l’endroit où vous accédez à vos recommandations, vous devez utiliser l’API REST. 
+Les recommandations intégrées fournies avec Microsoft Defender pour le cloud incluent des détails tels que des niveaux de gravité et des instructions de correction. Si vous souhaitez ajouter ce type d’informations à vos recommandations personnalisées afin qu’elles apparaissent dans le portail Azure ou à l’endroit où vous accédez à vos recommandations, vous devez utiliser l’API REST. 
 
 Les deux types d’informations que vous pouvez ajouter sont les suivants :
 

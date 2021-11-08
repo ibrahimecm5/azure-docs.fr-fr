@@ -4,31 +4,33 @@ description: Cet article explique comment afficher, créer, gérer, visualiser e
 services: sentinel
 cloud: na
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2021
-ms.author: yelevin
-ms.openlocfilehash: 05aa211d5a96b712862fbb8c81e10ba313ef3b74
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/17/2021
+ms.author: bagol
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a00a0c0d3507323314adb3dbb1052051f8caf184
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278787"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422099"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>Utiliser des indicateurs de menace dans Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Vous pouvez intégrer le renseignement sur les menaces à Azure Sentinel par le biais des activités suivantes :
 
 - **Importez le renseignement sur les menaces** dans Azure Sentinel en activant des **connecteurs de données** sur différents [flux](connect-threat-intelligence-taxii.md) et [plateformes](connect-threat-intelligence-tip.md) de renseignement sur les menaces.
 
-- **Affichez et gérez** le renseignement sur les menaces importé dans des **journaux** et dans le panneau **Threat Intelligence** d’Azure Sentinel.
+- **Affichez et gérez** le renseignement sur les menaces importé dans des **journaux** et dans la page **Renseignement sur les menaces** d’Azure Sentinel.
 
 - **Détectez les menaces** et générez des alertes et des incidents de sécurité à l’aide des modèles de règle d’**analytique** intégrés basés sur le renseignement sur les menaces importé.
 
@@ -38,11 +40,15 @@ Vous pouvez intégrer le renseignement sur les menaces à Azure Sentinel par le 
 
 ### <a name="find-and-view-your-indicators-in-logs"></a>Rechercher et afficher vos indicateurs dans les journaux
 
-Vous pouvez afficher les indicateurs de menace correctement importés, quel que soit le flux source ou le connecteur utilisé, dans la table **ThreatIntelligenceIndicator** (sous le groupe **Azure Sentinel**) dans **Journaux**, où sont stockées toutes vos données d’événement Azure Sentinel. Cette table est la base des requêtes de renseignement sur les menaces effectuées par d’autres fonctionnalités Azure Sentinel, comme l’analytique et les classeurs.
+Cette procédure décrit comment afficher les indicateurs de menace importés dans la zone **Journaux** d’Azure Sentinel, ainsi que d’autres données d’événement Azure Sentinel, quel que soit le flux source ou le connecteur utilisé.
+
+Les indicateurs de menace importés sont répertoriés dans le tableau **Azure Sentinel > ThreatIntelligenceIndicator**, qui est la base des requêtes de renseignement sur les menaces exécutées ailleurs dans Azure Sentinel, par exemple dans les analyses ou les classeurs.
+
+**Pour afficher les indicateurs de renseignements sur les menaces dans les journaux** :
 
 1. Ouvrez le [portail Azure](https://portal.azure.com/), puis accédez au service **Azure Sentinel**.
 
-1. Choisissez l’**espace de travail** dans lequel vous avez importé des indicateurs de menace à l’aide de l’un ou l’autre des connecteurs de données du renseignement sur les menaces.
+1. Sélectionnez l’espace de travail dans lequel vous avez importé des indicateurs de menace à l’aide de l’un ou l’autre des connecteurs de données du renseignement sur les menaces.
 
 1. Sélectionnez **Journaux** dans la section **Général** du menu Azure Sentinel.
 
@@ -54,9 +60,31 @@ Vos résultats doivent ressembler à l’exemple d’indicateur de menace illust
 
 :::image type="content" source="media/work-with-threat-indicators/threat-intel-sample-query.png" alt-text="Exemple de données de requête":::
 
-### <a name="find-and-view-your-indicators-in-the-threat-intelligence-blade"></a>Rechercher et afficher vos indicateurs dans le panneau du renseignement sur les menaces
+### <a name="find-and-view-your-indicators-in-the-threat-intelligence-page"></a>Rechercher et afficher vos indicateurs dans la page Renseignement sur les menaces
 
-Vous pouvez également afficher et gérer vos indicateurs dans le nouveau panneau **Threat Intelligence**, accessible à partir du menu Azure Sentinel principal. Vous pouvez trier et filtrer vos indicateurs de menace importés, et y effectuer des recherches, sans même écrire de requête Log Analytics. Cette fonctionnalité vous permet également de créer des indicateurs de menace directement dans l’interface Azure Sentinel ainsi que d’effectuer deux des tâches d’administration les plus courantes concernant le renseignement sur les menaces : l’étiquetage des indicateurs et la création d’indicateurs liés aux investigations de sécurité.
+Vous pouvez également afficher et gérer vos indicateurs dans la page **Renseignement sur les menaces**, accessible à partir du menu Azure Sentinel principal. Utilisez la page **Renseignement sur les menaces** pour trier et filtrer vos indicateurs de menace importés, et y effectuer des recherches, sans même écrire de requête Log Analytics.
+
+**Pour afficher vos indicateurs d’informations sur les menaces dans la page Renseignement sur les menaces** :
+
+1. Ouvrez le [portail Azure](https://portal.azure.com/), puis accédez au service **Azure Sentinel**.
+
+1. Sélectionnez l’espace de travail dans lequel vous avez importé les indicateurs de menace à l’aide des connecteurs/playbooks ou avez créé des données de renseignement sur les menaces.
+
+1. Sélectionnez la page **Renseignement sur les menaces** dans la section **Gestion des menaces** sur la gauche.
+
+1. Dans la grille, sélectionnez l’indicateur pour lequel vous souhaitez afficher plus de détails. Les détails de l’indicateur s’affichent à droite, présentant des informations telles que les niveaux de confiance, les balises, les types de menaces, etc.
+
+    Microsoft enrichit chaque indicateur avec des données de géolocalisation et WhoIs supplémentaires, fournissant davantage de contexte pour les investigations dans lesquelles l’indicateur sélectionné est trouvé.
+
+    Par exemple :
+
+    :::image type="content" source="media/whats-new/geolocation-whois-ti.png" alt-text="Capture d’écran de la page Renseignement sur les menaces avec un indicateur montrant les données de géolocalisation et WhoIs." lightbox="media/whats-new/geolocation-whois-ti.png":::
+
+La page **Renseignement sur les menaces** vous permet également de créer des indicateurs de menace directement dans l’interface Azure Sentinel ainsi que d’effectuer deux des tâches d’administration les plus courantes concernant le renseignement sur les menaces : l’étiquetage des indicateurs et la création d’indicateurs liés aux investigations de sécurité.
+
+> [!IMPORTANT]
+> La géolocalisation et l’enrichissement WhoIs sont actuellement en VERSION PRÉLIMINAIRE. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
+>
 
 #### <a name="create-a-new-indicator"></a>Créer un indicateur
 
@@ -102,7 +130,7 @@ Vous trouverez ci-dessous un exemple montrant comment activer et configurer une 
 
     :::image type="content" source="media/work-with-threat-indicators/threat-intel-required-data-sources.png" alt-text="Sources de données nécessaires":::
 
-1. Sélectionnez cette règle, puis sélectionnez le bouton **Créer une règle**. Cette opération ouvre un Assistant permettant de configurer la règle. Renseignez les paramètres affichés ici, puis sélectionnez le bouton **Suivant : Définir la logique de la règle >** .
+1. Sélectionnez la règle **TI map IP entity to AzureActivity** (entité IP de carte de renseignement sur les menaces sur AzureActivity), puis sélectionnez **Créer une règle** pour ouvrir l’Assistant Configuration de la règle. Configurez les paramètres de l’Assistant, puis sélectionnez **Suivant : Définir la logique de la règle >** .
 
     :::image type="content" source="media/work-with-threat-indicators/threat-intel-create-analytics-rule.png" alt-text="Créer une règle d’analytique":::
 
@@ -122,7 +150,7 @@ Vous trouverez ci-dessous un exemple montrant comment activer et configurer une 
 
     - Générer une alerte de sécurité si les résultats de requête sont supérieurs à zéro, c’est-à-dire si des correspondances sont trouvées.
 
-    Vous pouvez conserver les paramètres par défaut ou les modifier en fonction de vos besoins, ainsi que définir des paramètres de génération d’incident sous l’onglet **Incident settings** (Paramètres d’incident). Pour plus d’informations, consultez [Incident settings](detect-threats-custom.md). Lorsque vous avez terminé, sélectionnez l’onglet **Automated response** (Réponse automatique).
+    Vous pouvez conserver les paramètres par défaut ou les modifier en fonction de vos besoins, et définir des paramètres de génération d’incident sous l’onglet **Paramètres d’incident**. Pour plus d’informations, consultez [Créer des règles d’analytique personnalisées pour détecter des menaces](detect-threats-custom.md). Lorsque vous avez terminé, sélectionnez l’onglet **Automated response** (Réponse automatique).
 
 1. Configurez une automatisation que vous souhaitez déclencher quand une alerte de sécurité est générée à partir de cette règle d’analytique. Dans Azure Sentinel, l’automatisation est effectuée à l’aide de **règles d’automatisation** et de **playbooks** alimentés par Azure Logic Apps. Pour plus d’informations, consultez [Didacticiel : Utiliser des playbooks avec des règles d’automatisation dans Azure Sentinel](./tutorial-respond-threats-playbook.md). Lors que vous avez fini, sélectionnez le bouton **Suivant : Révision >** pour continuer.
 
@@ -176,12 +204,12 @@ Dans la page **Threat Intelligence** :
 
 La règle **Analyse de correspondance Microsoft Threat Intelligence** est actuellement prise en charge pour les sources de journal suivantes :
 
-|Source de journal  |Description  |
-|---------|---------|
-|[CEF](connect-common-event-format.md)     |  La correspondance est établie pour tous les journaux CEF ingérés dans la table **CommonSecurityLog** de Log Analytics, sauf pour ceux où la valeur `DeviceVendor` est `Cisco`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux CEF, veillez à mapper le domaine dans le champ `RequestURL` du journal CEF.      |
-|[DNS](./data-connectors-reference.md#domain-name-server)     | La correspondance est établie pour tous les journaux DNS qui sont des requêtes DNS de recherche adressées par des clients aux services DNS (`SubType == "LookupQuery"`). Les requêtes DNS sont traitées uniquement pour les requêtes IPv4 (`QueryType=”A”`) et IPv6 (`QueryType=” AAAA”`).<br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux DNS, aucun mappage manuel de colonnes n’est nécessaire, car toutes les colonnes du serveur DNS Windows sont standard, et les domaines se trouvent dans la colonne `Name` par défaut.   |
-|[Syslog](connect-syslog.md)     |  La correspondance est actuellement établie uniquement pour les événements Syslog où `Facility` est `cron`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec Syslog, aucun mappage manuel de colonnes n’est nécessaire. Les détails sont fournis dans le champ `SyslogMessage` du Syslog par défaut, et la règle analyse le domaine directement à partir du SyslogMessage.     |
-|     |         |
+| Source de journal | Description |
+| --------- | --------- |
+| [CEF](connect-common-event-format.md) | La correspondance est établie pour tous les journaux CEF ingérés dans la table **CommonSecurityLog** de Log Analytics, sauf pour ceux où la valeur `DeviceVendor` est `Cisco`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux CEF, veillez à mapper le domaine dans le champ `RequestURL` du journal CEF. |
+| [DNS](./data-connectors-reference.md#windows-dns-server-preview) | La correspondance est établie pour tous les journaux DNS qui sont des requêtes DNS de recherche adressées par des clients aux services DNS (`SubType == "LookupQuery"`). Les requêtes DNS sont traitées uniquement pour les requêtes IPv4 (`QueryType=”A”`) et IPv6 (`QueryType=” AAAA”`).<br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux DNS, aucun mappage manuel de colonnes n’est nécessaire, car toutes les colonnes du serveur DNS Windows sont standard, et les domaines se trouvent dans la colonne `Name` par défaut. |
+| [Syslog](connect-syslog.md) | La correspondance est actuellement établie uniquement pour les événements Syslog où `Facility` est `cron`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec Syslog, aucun mappage manuel de colonnes n’est nécessaire. Les détails sont fournis dans le champ `SyslogMessage` du Syslog par défaut, et la règle analyse le domaine directement à partir du SyslogMessage. |
+|  |  |
 
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>Les classeurs fournissent des insights concernant le renseignement sur les menaces
@@ -225,7 +253,7 @@ Il existe également une vaste communauté de [classeurs Azure Monitor sur GitHu
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez appris toutes les façons dont vous pouvez utiliser des indicateurs du renseignement sur les menaces dans Azure Sentinel. Pour plus d’informations sur le renseignement sur les menaces dans Azure Sentinel, consultez les articles suivants :
+Dans cet article, vous avez appris toutes les façons dont vous pouvez utiliser des indicateurs de renseignement sur les menaces dans Azure Sentinel. Pour plus d’informations sur le renseignement sur les menaces dans Azure Sentinel, consultez les articles suivants :
 - [Comprendre le renseignement sur les menaces dans Azure Sentinel](understand-threat-intelligence.md).
 - Connecter Azure Sentinel aux [flux de renseignement sur les menaces STIX/TAXII](./connect-threat-intelligence-taxii.md).
 - [Connecter des plateformes de renseignement sur les menaces](./connect-threat-intelligence-tip.md) à Azure Sentinel.

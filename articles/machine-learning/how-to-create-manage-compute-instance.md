@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 09/22/2021
-ms.openlocfilehash: 4897b557626be5071a21d2cc1a6a8194eaed8994
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.date: 10/21/2021
+ms.openlocfilehash: 8515ad8c9a3db24c8504094cf7273cd149b7ab2d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154277"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559178"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Créer et gérer une instance de calcul Azure Machine Learning
 
@@ -419,7 +419,7 @@ Démarrez, arrêtez, redémarrez et supprimez une instance de calcul. Une instan
 Vous pouvez [créer une planification](#schedule) pour que l’instance de calcul démarre et s’arrête automatiquement en fonction d’une heure et d’un jour de la semaine.
 
 > [!TIP]
-> L’instance de calcul a un disque de système d’exploitation de 120 Go. Si vous ne disposez pas de suffisamment d’espace disque, [utilisez le terminal](how-to-access-terminal.md) pour effacer au moins 1 à 2 Go avant d’arrêter ou redémarrer l’instance de calcul. N’arrêtez pas l’instance de calcul en émettant la commande sudo shutdown depuis le terminal.
+> L’instance de calcul a un disque de système d’exploitation de 120 Go. Si vous ne disposez pas de suffisamment d’espace disque, [utilisez le terminal](how-to-access-terminal.md) pour effacer au moins 1 à 2 Go avant d’arrêter ou redémarrer l’instance de calcul. N’arrêtez pas l’instance de calcul en émettant la commande sudo shutdown depuis le terminal. La taille du disque temporaire sur l’instance de calcul dépend de la taille de machine virtuelle choisie et est montée sur/mnt.
 
 # <a name="python"></a>[Python](#tab/python)
 

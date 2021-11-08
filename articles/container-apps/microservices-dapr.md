@@ -5,15 +5,15 @@ services: app-service
 author: asw101
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1fa71d13aa43d9fd681ab3eb6799734ea65c1482
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cbca0dbd5449e5461e938d7c252c06f2ef0c18e3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097459"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578914"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-the-azure-cli"></a>Tutoriel : Déployer une application Dapr sur Azure Container Apps à l’aide de l’interface Azure CLI
 
@@ -25,7 +25,7 @@ Vous allez apprendre à effectuer les actions suivantes :
 > * Créer un environnement Container Apps pour vos applications de conteneur
 > * Créer un magasin d’état Stockage Blob Azure pour l’application de conteneur
 > * Déployer deux applications qui génèrent et consomment des messages et les conservent à l’aide du magasin d’état
-> * Vérifier l’interaction entre les deux microservices.
+> * Vérifier l’interaction entre les deux microservices
 
 Azure Container Apps offre une version complètement managée des API Dapr lors de la création de microservices. Quand vous utilisez Dapr dans Azure Container Apps, vous pouvez autoriser les side-car à s’exécuter à côté de vos microservices qui fournissent un ensemble complet de fonctionnalités. Les API Dapr disponibles incluent [Appels de service à service](https://docs.dapr.io/developing-applications/building-blocks/service-invocation/), [Pub/Sub](https://docs.dapr.io/developing-applications/building-blocks/pubsub/), [Liaisons d’événements](https://docs.dapr.io/developing-applications/building-blocks/bindings/), [Magasins d’état](https://docs.dapr.io/developing-applications/building-blocks/state-management/) et [Acteurs](https://docs.dapr.io/developing-applications/building-blocks/actors/).
 
@@ -131,6 +131,22 @@ az extension add \
 ```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
+```
+
+---
+
+Maintenant que l’extension est installée, inscrivez l’espace de noms `Microsoft.Web`.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -279,7 +295,9 @@ Récupérez la clé du compte de stockage à l’aide de la commande suivante.
 
 ```bash
 STORAGE_ACCOUNT_KEY=`az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query '[0].value' --out tsv`
+```
 
+```bash
 echo $STORAGE_ACCOUNT_KEY
 ```
 
@@ -287,7 +305,9 @@ echo $STORAGE_ACCOUNT_KEY
 
 ```powershell
 $STORAGE_ACCOUNT_KEY=(az storage account keys list --resource-group $RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query '[0].value' --out tsv)
+```
 
+```powershell
 echo $STORAGE_ACCOUNT_KEY
 ```
 
@@ -421,11 +441,11 @@ Vous pouvez vérifier que les services fonctionnent correctement en affichant le
 
 1. Cliquez sur l’onglet **Modifier**.
 
-1. Cliquez sur le bouton **Actualiser** pour observer les mises à jour.
+1. Cliquez sur le bouton **Actualiser** pour observer la mise à jour automatique des données.
 
 ### <a name="view-logs"></a>Voir les journaux
 
-Les données journalisées via une application conteneur sont stockées dans la table personnalisée `ContainerAppConsoleLogs_CL` de l’espace de travail Log Analytics. Vous pouvez voir les journaux dans le portail Azure ou avec l’interface CLI.
+Les données journalisées via une application conteneur sont stockées dans la table personnalisée `ContainerAppConsoleLogs_CL` de l’espace de travail Log Analytics. Vous pouvez voir les journaux dans le portail Azure ou avec l’interface CLI. Avant que vous puissiez interroger les données journalisées, vous devrez peut-être patienter quelques minutes avant que l’analyse n’arrive pour la première fois.
 
 Utilisez la commande CLI suivante pour voir les journaux sur la ligne de commande.
 

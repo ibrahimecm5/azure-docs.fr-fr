@@ -13,12 +13,12 @@ ms.date: 10/18/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: contperf-fy21q4, aaddev
-ms.openlocfilehash: b4d0dcee8791ad43c0b216ffb289bf4de1b819d6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 94abf8e362dabea48c0fa20c488d7b1ca3c70093
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067315"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451784"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Informations d’identification de certificat d’authentification d’application de la Plateforme d’identités Microsoft
 
@@ -96,7 +96,7 @@ Vous pouvez associer les informations d’identification du certificat à l’ap
 ### <a name="uploading-the-certificate-file"></a>Chargement du fichier de certificat
 
 Dans l’inscription d’application Azure pour l’application cliente :
-1. Cliquez sur **Certificats et secrets**.
+1. Sélectionnez **Certificats et secrets** > **Certificats**.
 2. Cliquez sur **Charger un certificat** et sélectionnez le fichier de certificat à charger.
 3. Cliquez sur **Add**.
   Une fois le certificat chargé, les valeurs d'empreinte numérique, de date de début et d’expiration s'affichent.

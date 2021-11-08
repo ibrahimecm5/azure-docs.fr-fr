@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 055ffcb662b5a12dfefe194b08e293f277ba5005
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95cce7e79ea8eaf3a542b52ac5c04b954ed56e0e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005574"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469100"
 ---
 ::: zone target="docs"
 
@@ -89,7 +89,7 @@ Suivez les instructions applicables à la région à partir de laquelle vous eff
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-**Si vous effectuez l’expédition en Allemagne ou en Suisse,** vous pouvez également [utiliser l’expédition autogérée](#self-managed-shipping).
+**Si vous réexpédiez vers des centres de données situés en Allemagne ou en Suisse,** vous pouvez également [utiliser l’expédition autogérée](#self-managed-shipping).
 
 ## <a name="uk"></a>[Royaume-Uni](#tab/in-uk)
 

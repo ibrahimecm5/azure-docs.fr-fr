@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Découvrez comment les calculs et les magasins de données Azure Machine Learning fournissent le chiffrement des données au repos et en transit.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 08/02/2021
-ms.openlocfilehash: 8f4bb5279442abb10a9b19e5cb3e3666a1319bb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/21/2021
+ms.openlocfilehash: 1ac26da492c4236d89ed71edf738dbc6cd813563
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621589"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552693"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Chiffrement des données avec Azure Machine Learning
 
@@ -66,10 +66,13 @@ Pour activer l’approvisionnement d’une instance de Cosmos DB dans votre abon
 
 * Utilisez les paramètres suivants lors de la création de l’espace de travail Azure Machine Learning. Les deux paramètres sont obligatoires et pris en charge dans le Kit de développement logiciel (SDK), Azure CLI, les API REST et les modèle Resource Manager.
 
+    * `cmk_keyvault`: Ce paramètre est l’ID de la ressource du coffre de clés dans votre abonnement. Ce coffre de clés doit être dans les mêmes région et abonnement que vous utiliserez pour l’espace de travail Azure Machine Learning. 
+
     * `resource_cmk_uri`: Ce paramètre est l’URI de ressource complète de la clé gérée par le client dans votre coffre de clés, y compris les [informations de version pour la clé](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). 
 
-    * `cmk_keyvault`: Ce paramètre est l’ID de la ressource du coffre de clés dans votre abonnement. Ce coffre de clés doit être dans les mêmes région et abonnement que vous utiliserez pour l’espace de travail Azure Machine Learning. 
-    
+        > [!NOTE]
+        > L’activation de la suppression réversible et de la protection de purge sur l’instance de coffre de clés CMK est requise avant la création d’un espace de travail Machine Learning chiffré pour assurer la protection contre les pertes de données accidentelles en cas de suppression du coffre.
+        
         > [!NOTE]
         > Cette instance de coffre de clés peut être différente du coffre de clés créé par Azure Machine Learning lorsque vous configurez l’espace de travail. Si vous voulez utiliser la même instance de coffre de clés pour l’espace de travail, passez le même coffre de clés pendant la configuration de l’espace de travail en utilisant le [paramètre key_vault](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 

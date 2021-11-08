@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2021
 ms.author: mmcrey
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a7fc9d45db3469fa9198990e4308e431ac0cbc68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 09d4c88bec94c881fd9895557aa35264ea4ffab4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097844"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561211"
 ---
 # <a name="dcsv3-and-dcdsv3-series"></a>Séries DCsv3 et DCdsv3
 
@@ -39,7 +39,7 @@ Processeur : processeur Intel® Xeon Scalable 8370C de 3e génération<br>
 Fréquence tous noyaux de base : 2.8 GHz<br>
 [Turbo Boost Max 3.0](https://www.intel.com/content/www/us/en/gaming/resources/turbo-boost.html): activé, fréquence maximale 3.5 GHz<br>
 [Hyper-threading](https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html) : non pris en charge<br>
-Chiffrement de mémoire total : multi-clé activé<br>
+[Chiffrement de mémoire total : multi-clé](https://itpeernetwork.intel.com/memory-encryption/) : Activé<br>
 [Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Stockage sur disque Ultra](disks-enable-ultra-ssd.md) : pris en charge<br>
 [Mise en réseau accélérée](../virtual-network/create-vm-accelerated-networking-cli.md) : prise en charge (approvisionnement CLI ou modèle ARM uniquement)<br>

@@ -1,0 +1,75 @@
+items:
+  - name: Documentation Service Connector
+    href: index.yml
+  - name: Vue d’ensemble de Service Connector
+    href: overview.md
+  - name: Démarrages rapides
+    expanded: true
+    items:
+      - name: Service Connector dans Azure App Service
+        expanded: true
+        items:
+          - name: Portail
+            href: quickstart-portal-app-service-connection.md
+          - name: Interface de ligne de commande
+            href: quickstart-cli-app-service-connection.md
+      - name: Service Connector dans Azure Spring Cloud
+        expanded: true
+        items:
+          - name: Portail
+            href: quickstart-portal-spring-cloud-connection.md
+          - name: Interface de ligne de commande
+            href: quickstart-cli-spring-cloud-connection.md
+  - name: Tutoriels
+    expanded: true
+    items:
+      - name: Application Python (Django) avec PostgreSQL
+        href: tutorial-django-webapp-postgres-cli.md
+      - name: Application ASP.NET avec Stockage Blob
+        href: tutorial-csharp-webapp-storage-cli.md
+      - name: Application Spring Cloud avec MySQL
+        href: tutorial-java-spring-mysql.md
+      - name: Application Spring Cloud avec Kafka sur Confluent Cloud
+        href: tutorial-java-spring-confluent-kafka.md
+  - name: Concepts
+    expanded: true
+    items:
+      - name: Services internes de Service Connector
+        href: concept-service-connector-internals.md
+      - name: Prise en charge des régions
+        href: concept-region-support.md
+  - name: Guides pratiques
+    expanded: true
+    items:
+      - name: Integrate
+        expanded: true
+        items:
+          - name: Azure Database pour PostgreSQL
+            href: how-to-integrate-postgres.md
+          - name: Azure Database pour MySQL
+            href: how-to-integrate-mysql.md
+          - name: Stockage Blob Azure
+            href: how-to-integrate-storage-blob.md
+          - name: Stockage File d’attente Azure
+            href: how-to-integrate-storage-queue.md
+          - name: Stockage Table Azure
+            href: how-to-integrate-storage-table.md
+          - name: Stockage Fichier Azure
+            href: how-to-integrate-storage-file.md
+          - name: "Azure\_Key\_Vault"
+            href: how-to-integrate-key-vault.md
+          - name: Service Azure SignalR
+            href: how-to-integrate-signalr.md
+          - name: Apache Kafka sur Confluent Cloud
+            href: how-to-integrate-confluent-kafka.md
+      - name: Dépanner
+        items:
+          - name: Guide de résolution des problèmes
+            href: how-to-troubleshoot-front-end-error.md
+  - name: Informations de référence
+    expanded: true
+    items:
+      - name: API REST
+        href: /rest/api/servicelinker
+      - name: Kit de développement logiciel (SDK) Python
+        href: /python/api/overview/azure/servicelinker

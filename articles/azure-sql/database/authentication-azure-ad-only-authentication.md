@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2021
+ms.date: 11/03/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 74b02577e6bb59481182afda881216ebff0544cf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 050a9690f22ef34b39d89a5cd0cf4d8a6c7d340b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044035"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503050"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Authentification Azure AD uniquement avec Azure SQL
 
@@ -402,7 +402,7 @@ Quand l’authentification Azure AD uniquement est activée pour SQL Database,
 - [Rôles serveur Azure SQL Database](security-server-roles.md)
 - [Tâches élastiques](job-automation-overview.md)
 - [Synchronisation des données SQL](sql-data-sync-data-sql-server-sql-database.md)
-- [Capture des changements de données (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)
+- [Capture des changements de données](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) - Si vous créez une base de données dans Azure SQL Database en tant qu’utilisateur Azure AD et que vous activez la capture des changements de données dessus, un utilisateur SQL n’est pas en mesure de désactiver ou de modifier les artefacts de la capture des changements de données. Toutefois, un autre utilisateur Azure AD peut activer ou désactiver la capture des changements de données sur la même base de données. De même, si vous créez une base de données Azure SQL Database en tant qu’utilisateur SQL, l’activation ou la désactivation de la capture des changements de données en tant qu’utilisateur Azure AD ne fonctionne pas.
 - [Réplication transactionnelle](/azure/azure-sql/managed-instance/replication-transactional-overview) - Dans la mesure où l’authentification SQL est nécessaire pour établir la connectivité entre les participants à la réplication, lorsque l’authentification Azure AD uniquement est activée, la réplication transactionnelle n’est pas prise en charge pour SQL Database dans les scénarios où elle est utilisée pour envoyer (push) les modifications apportées à une instance managée Azure SQL, un serveur SQL local ou une instance SQL de machine virtuelle Azure à une base de données dans Azure SQL Database.
 - [Insights SQL](/azure/azure-monitor/insights/sql-insights-overview)
 - Instruction EXEC AS pour les comptes de membres de groupe Azure AD

@@ -1,22 +1,25 @@
 ---
-title: Protéger des déploiements Kubernetes hybrides et multicloud avec Azure Defender pour Kubernetes
-description: Utiliser Azure Defender pour Kubernetes avec vos clusters Kubernetes locaux et multicloud
+title: Protéger des déploiements Kubernetes hybrides et multicloud avec Microsoft Defender pour Kubernetes
+description: Utiliser Microsoft Defender pour Kubernetes avec vos clusters Kubernetes locaux et multicloud
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/14/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.openlocfilehash: 76134a5da21056ca493911a7d1242cf8a269d067
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c3d328732f35a35c663f04c7bfed9209adbcb7f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858997"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009913"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Défendre des clusters Kubernetes avec Azure Arc s’exécutant dans des environnements locaux et multicloud
 
-L’**Extension de cluster Azure Defender pour Kubernetes** peut défendre vos clusters locaux avec les mêmes fonctionnalités de détection des menaces que celles offertes pour les clusters Azure Kubernetes Service. Activez [Kubernetes avec Azure Arc](../azure-arc/kubernetes/overview.md) sur vos clusters et déployez l’extension comme décrit dans cette page. 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+L’**extension de cluster Microsoft Defender pour Kubernetes** peut défendre vos clusters locaux avec les mêmes fonctionnalités de détection des menaces que celles offertes pour les clusters Azure Kubernetes Service. Activez [Kubernetes avec Azure Arc](../azure-arc/kubernetes/overview.md) sur vos clusters et déployez l’extension comme décrit dans cette page. 
 
 L’extension peut également protéger des clusters Kubernetes sur d’autres fournisseurs de cloud, mais pas sur leurs services Kubernetes managés.
 
@@ -31,18 +34,18 @@ L’extension peut également protéger des clusters Kubernetes sur d’autres f
 | Rôles et autorisations obligatoires | L’[administrateur de sécurité](../role-based-access-control/built-in-roles.md#security-admin) peut ignorer les alertes<br>Le [Lecteur de sécurité](../role-based-access-control/built-in-roles.md#security-reader) peut afficher les résultats |
 | Tarifs | Gratuit (pendant la préversion) |
 | Distributions Kubernetes prises en charge | [Service Azure Kubernetes sur Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [Moteur AKS](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (version 4.6 ou plus récente)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
-| Limites | Kubernetes avec Azure Arc et l’extension Azure Defender **ne prennent pas en charge** les offres Kubernetes managées, telles que Google Kubernetes Engine et Elastic Kubernetes Service. [Azure Defender est disponible en mode natif pour Azure Kubernetes Service (AKS)](defender-for-kubernetes-introduction.md), et ne nécessite pas de connexion du cluster à Azure Arc. |
+| Limites | Kubernetes avec Azure Arc et l’extension Defender **ne prennent pas en charge** les offres Kubernetes managées, telles que Google Kubernetes Engine et Elastic Kubernetes Service. [Defender pour le cloud est disponible en mode natif pour Azure Kubernetes Service (AKS)](defender-for-kubernetes-introduction.md), et ne nécessite pas de connexion du cluster à Azure Arc. |
 | Environnements et régions | La disponibilité de cette extension est identique à celle de [Kubernetes avec Azure Arc](../azure-arc/kubernetes/overview.md)|
 
 ## <a name="architecture-overview"></a>Présentation de l'architecture
 
-Pour tous les clusters Kubernetes autres que AKS, vous devez connecter votre cluster à Azure Arc. Une fois le cluster connecté, Azure Defender pour Kubernetes peut être déployé sur des ressources [Kubernetes Azure avec Azure Arc](../azure-arc/kubernetes/overview.md) en tant qu’[extension de cluster](../azure-arc/kubernetes/extensions.md).
+Pour tous les clusters Kubernetes autres que AKS, vous devez connecter votre cluster à Azure Arc. Une fois le cluster connecté, Microsoft Defender pour Kubernetes peut être déployé sur des ressources [Kubernetes Azure avec Azure Arc](../azure-arc/kubernetes/overview.md) en tant qu’[extension de cluster](../azure-arc/kubernetes/extensions.md).
 
-Les composants d’extension collectent les données des journaux d’audit Kubernetes de tous les nœuds de plan de contrôle du cluster, et les envoient serveur principal Azure Defender pour Kubernetes dans le cloud à des fins d’analyse plus approfondie. L’extension est inscrite auprès d’un espace de travail Log Analytics utilisé comme pipeline de données, mais les données du journal d’audit ne sont pas stockées dans l’espace de travail Log Analytics.
+Les composants d’extension collectent les données des journaux d’audit Kubernetes de tous les nœuds de plan de contrôle du cluster, et les envoient au serveur principal Microsoft Defender pour Kubernetes dans le cloud à des fins d’analyse plus approfondie. L’extension est inscrite auprès d’un espace de travail Log Analytics utilisé comme pipeline de données, mais les données du journal d’audit ne sont pas stockées dans l’espace de travail Log Analytics.
 
-Ce diagramme illustre l’interaction entre Azure Defender pour Kubernetes et le cluster Kubernetes avec Azure Arc :
+Ce diagramme illustre l’interaction entre Microsoft Defender pour Kubernetes et le cluster Kubernetes avec Azure Arc :
 
-:::image type="content" source="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png" alt-text="Diagramme d’architecture de haut niveau présentant l’interaction entre Azure Defender pour Kubernetes et un cluster Kubernetes avec Azure Arc." lightbox="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png":::
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png" alt-text="Diagramme d’architecture de haut niveau présentant l’interaction entre Microsoft Defender pour Kubernetes et un cluster Kubernetes avec Azure Arc." lightbox="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png":::
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -59,24 +62,24 @@ Avant de déployer l’extension, effectuez les opérations suivantes :
         - *.oms.opinsights.azure.com
         - :::no-loc text="login.microsoftonline.com":::
 
-## <a name="deploy-the-azure-defender-extension"></a>Déployer l’extension Azure Defender
+## <a name="deploy-the-defender-extension"></a>Déployer l’extension Defender
 
-Vous pouvez déployer l’extension Azure Defender à l’aide d’une plage de méthodes. Pour obtenir des instructions détaillées, sélectionnez l’onglet approprié.
+Vous pouvez déployer l’extension Defender à l’aide de différentes méthodes. Pour obtenir des instructions détaillées, sélectionnez l’onglet approprié.
 
 ### <a name="azure-portal"></a>[**Portail Azure**](#tab/k8s-deploy-asc)
 
-### <a name="use-the-fix-button-from-the-security-center-recommendation"></a>Utilisez le bouton Corriger de la recommandation de Security Center
+### <a name="use-the-fix-button-from-the-defender-for-cloud-recommendation"></a>Utiliser le bouton Corriger à partir de la recommandation Defender pour le cloud
 
-Une recommandation dédiée dans Azure Security Center offre ce qui suit :
+Une recommandation dédiée à Microsoft Defender pour le cloud offre les éléments suivants :
 
 - **Visibilité** sur les clusters sur lesquels l’extension Defender pour Kubernetes est déployée
 - Bouton **Corriger** pour opérer un déploiement sur ces clusters sans l’extension
 
-1. Dans la page des recommandations d’Azure Security Center, ouvrez le contrôle de sécurité **Activer Azure Defender**.
+1. À partir de la page de recommandations Microsoft Defender pour le cloud, ouvrez le contrôle de sécurité **Activer la sécurité renforcée**.
 
-1. Utilisez le filtre pour trouver la recommandation nommée **Les clusters Kubernetes avec Azure Arc doivent avoir l’extension Azure Defender installée**.
+1. Utilisez le filtre pour trouver la recommandation nommée **Les clusters Kubernetes avec Azure Arc doivent avoir l’extension Defender installée**.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Recommandation d’Azure Security Center relative au déploiement de l’extension Azure Defender pour les clusters Kubernetes avec Azure Arc." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Recommandation Microsoft Defender pour le cloud relative au déploiement de l’extension Defender pour les clusters Kubernetes avec Azure Arc." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
     > [!TIP]
     > Notez l’icône **Corriger** dans la colonne actions
@@ -87,12 +90,12 @@ Une recommandation dédiée dans Azure Security Center offre ce qui suit :
 
 1. Sélectionnez l’espace de travail Log Analytics approprié, puis choisissez **Corriger la ressource x**.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="Déployez l’extension Azure Defender pour Azure Arc avec l’option de correctif de Security Center.":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="Déployez l’extension Defender pour Azure Arc avec Defender pour l’option de correctif de Defender pour le cloud.":::
 
 
 ### <a name="azure-cli"></a>[**Azure CLI**](#tab/k8s-deploy-cli)
 
-### <a name="use-azure-cli-to-deploy-the-azure-defender-extension"></a>Utiliser Azure CLI pour déployer l’extension Azure Defender
+### <a name="use-azure-cli-to-deploy-the-defender-extension"></a>Utiliser Azure CLI pour déployer l’extension Defender
 
 1. Connexion à Azure :
 
@@ -110,7 +113,7 @@ Une recommandation dédiée dans Azure Security Center offre ce qui suit :
     az k8s-extension create --name microsoft.azuredefender.kubernetes --cluster-type connectedClusters --cluster-name <cluster-name> --resource-group <resource-group> --extension-type microsoft.azuredefender.kubernetes
     ```
 
-    Vous trouverez ci-dessous une description de tous les paramètres de configuration pris en charge sur le type d’extension Azure Defender :
+    Vous trouverez ci-dessous une description de tous les paramètres de configuration pris en charge sur le type d’extension Defender :
 
     | Propriété | Description |
     |----------|-------------|
@@ -125,23 +128,23 @@ Une recommandation dédiée dans Azure Security Center offre ce qui suit :
 
 ### <a name="resource-manager"></a>[**Gestionnaire de ressources**](#tab/k8s-deploy-resource-manager)
 
-### <a name="use-azure-resource-manager-to-deploy-the-azure-defender-extension"></a>Utiliser Azure Resource Manager pour déployer l’extension Azure Defender
+### <a name="use-azure-resource-manager-to-deploy-the-defender-extension"></a>Utiliser Azure Resource Manager pour déployer l’extension Defender
 
-Pour utiliser Azure Resource Manager pour déployer l’extension Azure Defender, vous avez besoin d’un espace de travail Log Analytics sur votre abonnement. En savoir plus sur les [Espaces de travail Log Analytics](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces).
+Pour utiliser Azure Resource Manager afin de déployer l’extension Defender, vous avez besoin d’un espace de travail Log Analytics sur votre abonnement. En savoir plus sur les [Espaces de travail Log Analytics](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces).
 
-Vous pouvez utiliser le modèle Resource Manager **azure-defender-extension-arm-template.json** figurant dans les [exemples d’installation](https://aka.ms/kubernetes-extension-installation-examples) de Security Center.
+Vous pouvez utiliser le modèle Resource Manager **azure-defender-extension-arm-template.json** figurant dans les [exemples d’installation](https://aka.ms/kubernetes-extension-installation-examples) de Defender pour le cloud.
 
 > [!TIP]
 > Si vous ne connaissez pas les modèles Resource Manager, commencez ici : [Que sont les modèles Azure Resource Manager ?](../azure-resource-manager/templates/overview.md)
 
 ### <a name="rest-api"></a>[**API REST**](#tab/k8s-deploy-api)
 
-### <a name="use-rest-api-to-deploy-the-azure-defender-extension"></a>Utiliser l’API REST pour déployer l’extension Azure Defender 
+### <a name="use-rest-api-to-deploy-the-defender-extension"></a>Utiliser l’API REST pour déployer l’extension Defender 
 
-Pour utiliser l’API REST afin de déployer l’extension Azure Defender, vous avez besoin d’un espace de travail Log Analytics sur votre abonnement. En savoir plus sur les [Espaces de travail Log Analytics](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces).
+Pour utiliser l’API REST afin de déployer l’extension Defender, vous avez besoin d’un espace de travail Log Analytics sur votre abonnement. En savoir plus sur les [Espaces de travail Log Analytics](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces).
 
 > [!TIP]
-> La façon la plus simple d’utiliser l’API pour déployer l’extension Azure Defender consiste à utiliser l’exemple **JSON de collection Postman** fourni parmi les [Exemples d’installation](https://aka.ms/kubernetes-extension-installation-examples) de Security Center.
+> La façon la plus simple d’utiliser l’API pour déployer l’extension Defender consiste à utiliser l’exemple **JSON de collection Postman** fourni parmi les [exemples d’installation](https://aka.ms/kubernetes-extension-installation-examples) de Defender pour le cloud.
 - Pour modifier le JSON de collection Postamn, ou pour déployer manuellement l’extension avec l’API REST, exécutez la commande PUT suivante :
 
     ```rest
@@ -187,17 +190,17 @@ Pour utiliser l’API REST afin de déployer l’extension Azure Defender, vous 
 
 ## <a name="verify-the-deployment"></a>Vérifier le déploiement
 
-Pour vérifier que l’extension Azure Defender est installée sur votre cluster, suivez les étapes de l’un des onglets ci-dessous :
+Pour vérifier que l’extension Defender est installée sur votre cluster, suivez les étapes de l’un des onglets ci-dessous :
 
-### <a name="azure-portal---security-center"></a>[**Portail Azure – Security Center**](#tab/k8s-verify-asc)
+### <a name="azure-portal---defender-for-cloud"></a>[**Portail Azure : Defender pour le cloud**](#tab/k8s-verify-asc)
 
-### <a name="use-security-center-recommendation-to-verify-the-status-of-your-extension"></a>Utiliser une recommandation de Security Center pour vérifier l’état de votre extension
+### <a name="use-defender-for-cloud-recommendation-to-verify-the-status-of-your-extension"></a>Utiliser une recommandation Defender pour le cloud pour vérifier l’état de votre extension
 
-1. Dans la page des recommandations d’Azure Security Center, ouvrez le contrôle de sécurité **Activer Azure Defender**.
+1. À partir de la page de recommandations Microsoft Defender pour le cloud, ouvrez le contrôle de sécurité **Activer Azure Defender**.
 
 1. Sélectionnez la recommandation nommée **L’extension d’Azure Defender doit être installée sur les clusters Kubernetes avec Azure Arc**.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Recommandation d’Azure Security Center relative au déploiement de l’extension Azure Defender pour les clusters Kubernetes avec Azure Arc." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Recommandation Microsoft Defender pour le cloud relative au déploiement de l’extension Defender pour les clusters Kubernetes avec Azure Arc." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
 1. Vérifiez que le cluster sur lequel vous avez déployé l’extension est répertorié comme **Sain**.
 
@@ -208,7 +211,7 @@ Pour vérifier que l’extension Azure Defender est installée sur votre cluster
 
 1. Dans le portail Azure, ouvrez **Azure Arc**.
 1. Dans la liste d’infrastructures, sélectionnez **Clusters Kubernetes**, puis choisissez le cluster spécifique.
-1. Ouvrez la page Extensions. Les extensions sur le cluster sont répertoriées. Vérifiez la colonne **État de l’installation** pour vérifier que l’extension Azure Defender a été correctement installée.
+1. Ouvrez la page Extensions. Les extensions sur le cluster sont répertoriées. Vérifiez la colonne **État de l’installation** pour vérifier que l’extension Defender a été correctement installée.
 
     :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-installed-clusters-page.png" alt-text="Page Azure Arc pour vérifier l’état de toutes les extensions installées sur un cluster Kubernetes." lightbox="media/defender-for-kubernetes-azure-arc/extension-installed-clusters-page.png":::
 
@@ -254,19 +257,20 @@ Pour confirmer la réussite du déploiement ou valider l’état de votre extens
 
     > [!TIP]
     > La réponse peut afficher « installState » : « Pending » pour les premières minutes.
-    
+
 1. Si l’état est **Installed**, exécutez la commande suivante sur votre machine avec le fichier `kubeconfig` pointé vers votre cluster pour vérifier qu’un pod appelé « azuredefender-xxxxx » est dans l’état « Running » :
-    
+
     ```console
     kubectl get pods -n azuredefender
     ```
+
 ---
 
-## <a name="simulate-security-alerts-from-azure-defender-for-kubernetes"></a>Simuler des alertes de sécurité d’Azure Defender pour Kubernetes
+## <a name="simulate-security-alerts-from-microsoft-defender-for-kubernetes"></a>Simuler des alertes de sécurité de Microsoft Defender pour Kubernetes
 
-La liste complète des alertes prises en charge est disponible dans le [tableau de référence de toutes les alertes de sécurité dans Azure Security Center](alerts-reference.md#alerts-k8scluster).
+La liste complète des alertes prises en charge est disponible dans le [tableau de référence de toutes les alertes de sécurité dans Microsoft Defender pour le cloud](alerts-reference.md#alerts-k8scluster).
 
-1. Pour simuler une alerte Azure Defender, exécutez la commande suivante :
+1. Pour simuler une alerte de sécurité, exécutez la commande suivante :
 
     ```console
     kubectl get pods --namespace=asc-alerttest-662jfi039n
@@ -274,13 +278,13 @@ La liste complète des alertes prises en charge est disponible dans le [tableau 
 
     La réponse attendue est « Aucune ressource trouvée ».
 
-    Dans les 30 minutes, Azure Defender détectera cette activité et déclenchera une alerte de sécurité.
+    Dans les 30 minutes, Defender pour le cloud détectera cette activité et déclenchera une alerte de sécurité.
 
-1. Dans le portail Azure, ouvrez la page des alertes de sécurité d’Azure Security Center et recherchez l’alerte sur la ressource concernée :
+1. Dans le Portail Azure, ouvrez la page des alertes de sécurité de Microsoft Defender pour le cloud et recherchez l’alerte sur la ressource concernée :
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/sample-kubernetes-security-alert.png" alt-text="Exemple d’alerte d’Azure Defender pour Kubernetes." lightbox="media/defender-for-kubernetes-azure-arc/sample-kubernetes-security-alert.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/sample-kubernetes-security-alert.png" alt-text="Exemple d’alerte de Microsoft Defender pour Kubernetes." lightbox="media/defender-for-kubernetes-azure-arc/sample-kubernetes-security-alert.png":::
 
-## <a name="removing-the-azure-defender-extension"></a>Suppression de l’extension Azure Defender
+## <a name="removing-the-defender-extension"></a>Suppression de l’extension Defender
 
 Vous pouvez supprimer l’extension à l’aide du portail Azure, d’Azure CLI ou de l’API REST, comme expliqué dans les onglets ci-dessous.
 
@@ -297,9 +301,9 @@ Vous pouvez supprimer l’extension à l’aide du portail Azure, d’Azure CLI
 
 ### <a name="azure-cli"></a>[**Azure CLI**](#tab/k8s-remove-cli)
 
-### <a name="use-azure-cli-to-remove-the-azure-defender-extension"></a>Utiliser Azure CLI pour supprimer l’extension Azure Defender
+### <a name="use-azure-cli-to-remove-the-defender-extension"></a>Utiliser Azure CLI pour supprimer l’extension Defender
 
-1. Supprimez l’extension Azure Defender pour Kubernetes avec Azure Arc avec les commandes suivantes :
+1. Supprimez l’extension Microsoft Defender pour Kubernetes avec Azure Arc à l’aide des commandes suivantes :
 
     ```azurecli
     az login
@@ -325,7 +329,7 @@ Vous pouvez supprimer l’extension à l’aide du portail Azure, d’Azure CLI
 
 ### <a name="rest-api"></a>[**API REST**](#tab/k8s-remove-api)
 
-### <a name="use-rest-api-to-remove-the-azure-defender-extension"></a>Utiliser l’API REST pour supprimer l’extension Azure Defender 
+### <a name="use-rest-api-to-remove-the-defender-extension"></a>Utiliser l’API REST pour supprimer l’extension Defender 
 
 Pour supprimer l’extension à l’aide de l’API REST, exécutez la commande DELETE suivante :
 
@@ -351,8 +355,8 @@ L’exécution de la demande peut prendre plusieurs minutes.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Cette page vous a expliqué comment déployer l’extension Azure Defender pour des clusters Kubernetes avec Azure Arc. Pour en savoir plus sur Azure Defender et les fonctionnalités de sécurité de conteneur d’Azure Security Center, consultez les pages suivantes :
+Cette page vous a expliqué comment déployer l’extension Defender pour des clusters Kubernetes avec Azure Arc. En savoir plus sur les fonctionnalités de sécurité des conteneurs Microsoft Defender pour le cloud dans les pages suivantes :
 
-- [Sécurité des conteneurs dans Security Center](container-security.md)
-- [Présentation d’Azure Defender pour Kubernetes](defender-for-kubernetes-introduction.md)
+- [Sécurité des conteneurs dans Defender pour le cloud](container-security.md)
+- [Présentation de Microsoft Defender pour Kubernetes](defender-for-kubernetes-introduction.md)
 - [Protéger vos charges de travail Kubernetes](kubernetes-workload-protections.md)

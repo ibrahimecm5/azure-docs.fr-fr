@@ -1,22 +1,24 @@
 ---
-title: Exemples de requêtes Azure Resource Graph pour Azure Security Center
-description: Exemples de requêtes Azure Resource Graph pour Azure Security Center montrant l’utilisation des types de ressources et des tables pour accéder aux ressources et aux propriétés d’Azure Security Center.
+title: Exemples de requêtes Azure Resource Graph pour Microsoft Defender pour le cloud
+description: Exemple de requêtes Azure Resource Graph pour Microsoft Defender pour le cloud présentant l’utilisation de types de ressources et de tables pour accéder aux ressources et aux propriétés liées à Microsoft Defender pour le cloud.
 ms.date: 09/03/2021
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
-ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 11955d140e8b0e6af219af1c62f1dfca54056749
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: subject-resourcegraph-sample, ignite-fall-2021
+ms.openlocfilehash: 16e116e558bc9870de89f2bbbbe5fc93d83cf648
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540304"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004603"
 ---
-# <a name="azure-resource-graph-sample-queries-for-azure-security-center"></a>Exemples de requêtes Azure Resource Graph pour Azure Security Center
+# <a name="azure-resource-graph-sample-queries-for-microsoft-defender-for-cloud"></a>Exemples de requêtes Azure Resource Graph pour Microsoft Defender pour le cloud
 
-Cette page est une collection d’exemples de requêtes [Azure Resource Graph](../governance/resource-graph/overview.md) pour Azure Security Center. Pour obtenir la liste complète des exemples Azure Resource Graph, consultez [Exemples Resource Graph par catégorie](../governance/resource-graph/samples/samples-by-category.md) et [Exemples Resource Graph par table](../governance/resource-graph/samples/samples-by-table.md).
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Cette page rassemble des exemples de requêtes [Azure Resource Graph](../governance/resource-graph/overview.md) pour Microsoft Defender pour le cloud. Pour obtenir la liste complète des exemples Azure Resource Graph, consultez [Exemples Resource Graph par catégorie](../governance/resource-graph/samples/samples-by-category.md) et [Exemples Resource Graph par table](../governance/resource-graph/samples/samples-by-table.md).
 
 ## <a name="sample-queries"></a>Exemples de requêtes
 

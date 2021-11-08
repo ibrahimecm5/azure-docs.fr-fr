@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/01/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
 ms.subservice: blobs
-ms.openlocfilehash: 4c8f1c2f769340cb36832b06bf5a76258b69cd9f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e24c058239d57cba1c66ebff06ba9d482bcb594
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008803"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433191"
 ---
 # <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Réalimenter un objet blob archivé dans un niveau en ligne
 
@@ -214,7 +214,7 @@ Pour modifier la priorité de réhydratation pour une opération en attente avec
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pour modifier la priorité de réhydratation d’une opération en attente avec PowerShell, commencez par obtenir les propriétés de l’objet blob à partir du service. Cette étape est nécessaire pour s’assurer que vous disposez d’un objet avec les paramètres de propriété les plus récents. Ensuite, utilisez la propriété **BlobClient** de l’objet blob pour retourner une référence .NET à l’objet blob, puis appelez la méthode **SetAccessTier** sur cette référence.
+Pour modifier la priorité de réactivation pour une opération en attente avec PowerShell, vérifiez que vous avez installé le module [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage), version 3.12.0 ou ultérieure. Ensuite, récupérez les propriétés de l’objet blob à partir du service. Cette étape est nécessaire pour s’assurer que vous disposez d’un objet avec les paramètres de propriété les plus récents. Enfin, utilisez la propriété **BlobClient** de l’objet blob pour retourner une référence .NET à l’objet blob, puis appelez la méthode **SetAccessTier** sur cette référence.
 
 ```azurepowershell
 # Get the blob from the service.
@@ -224,7 +224,6 @@ $rehydratingBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName -
 if ($rehydratingBlob.BlobProperties.RehydratePriority -eq "Standard")
 {
     # Change rehydration priority to High, using the same target tier.
-    
     if ($rehydratingBlob.BlobProperties.ArchiveStatus -eq "rehydrate-pending-to-hot")
     {
         $rehydratingBlob.BlobClient.SetAccessTier("Hot", $null, "High")
@@ -241,7 +240,9 @@ if ($rehydratingBlob.BlobProperties.RehydratePriority -eq "Standard")
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pour modifier la priorité de réhydratation d’une opération en attente avec Azure CLI, appelez la commande [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) avec le paramètre `--rehydrate-priority` défini sur *Élevé*. Le niveau cible (chaud ou froid) doit être le même que celui spécifié à l’origine pour l’opération de réhydratation. N’oubliez pas de remplacer les espaces réservés entre crochets par vos propres valeurs :
+Pour modifier la priorité de réactivation pour une opération en attente avec Azure CLI, vérifiez d’abord que vous avez installé Azure CLI version 2.29.2 ou ultérieure. Pour plus d’informations sur l'installation d’Azure CLI, consultez [Comment installer Azure CLI](/cli/azure/install-azure-cli).
+
+Ensuite, appelez la commande [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) avec le paramètre `--rehydrate-priority` défini sur *High*. Le niveau cible (chaud ou froid) doit être le même que celui spécifié à l’origine pour l’opération de réhydratation. N’oubliez pas de remplacer les espaces réservés entre crochets par vos propres valeurs :
 
 ```azurecli
 # Update the rehydration priority for a blob moving to the Hot tier.

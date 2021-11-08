@@ -1,19 +1,19 @@
 ---
 title: Connexion à Oracle et gestion
-description: Ce guide décrit comment se connecter à v dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Oracle.
-author: chandrakavya
-ms.author: kchandra
+description: Ce guide décrit comment se connecter à Oracle dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Oracle.
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 6b04ef7f0ea408f1529346ed7fbc2b4cc45b4b35
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6387149cc9f2392d2dccf382280ca7559593a6cc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010932"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441987"
 ---
 # <a name="connect-to-and-manage-oracle-in-azure-purview"></a>Connexion à Oracle et gestion dans Azure Purview
 
@@ -49,7 +49,7 @@ Le serveur proxy n’est pas pris en charge lors de l’analyse de la source Ora
     > [!Note]
     > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne l’installez pas dans un compte d’utilisateur.
 
-## <a name="register"></a>Inscrire
+## <a name="register"></a>S’inscrire
 
 Cette section décrit comment inscrire Oracle dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
 

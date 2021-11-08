@@ -5,12 +5,12 @@ ms.author: pprystinka
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ef83937970e1c4d657841ba2599dac14f02c212
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 276c85523b9b3df19a436543dd01a8a5121e510a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181771"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520573"
 ---
 ## <a name="prerequisites"></a>Prérequis
 
@@ -35,8 +35,8 @@ Cliquez sur `Finish`.
 
 ## <a name="maven-repository-credentials"></a>Informations d’identification du dépôt Maven
 
-- Vous devez fournir votre jeton d’accès personnel pour lequel l’étendue read:packages est sélectionnée.
-- Vous devrez peut-être activer l’authentification SSO pour ce jeton PAT.
+- Vous devez fournir votre jeton d’accès personnel pour lequel l’étendue `read:packages` est sélectionnée.
+- Vous devrez peut-être activer `SSO enabled` pour ce jeton d’accès personnel.
 - Vérifiez également que votre utilisateur GitHub a accès à https://github.com/Azure/communication-preview
 - Le jeton d’accès personnel peut être généré : [ici](https://github.com/settings/tokens
 
@@ -219,6 +219,8 @@ Générez et démarrez l’application à partir d’Android Studio.
 - Acceptez les autorisations audio, puis sélectionnez les paramètres de l’appareil, du micro et de la vidéo.
 - Cliquez sur `Join Call`.
 
+## <a name="sample-application-code-can-be-found-here"></a>Un exemple de code d’application est disponible [ici](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/ui-library-quickstart/ui-library-quick-start)
+
 ![Lancer](../../media/composite-android.gif)
 
 ## <a name="object-model"></a>Modèle objet
@@ -233,7 +235,9 @@ Les classes et interfaces suivantes prennent en charge certaines des fonctionnal
 | [TeamsMeetingOptions](#teams-meeting)                              | Passée au lancement de CallComposite pour permettre de rejoindre la réunion Teams.                                |
 | [ThemeConfiguration](#apply-theme-configuration)                   | Injectée de manière facultative dans CallCompositeBuilder pour permettre le changement de la couleur principale du composite.           |
 
-## <a name="create-call-composite"></a>Créer un composite d’appel
+## <a name="ui-library-functionality"></a>Fonctionnalités de la bibliothèque d’IU
+
+### <a name="create-call-composite"></a>Créer un composite d’appel
 
 Initialisez une instance de `CallCompositeBuilder` et une instance de `CallComposite` dans la fonction `startCallComposite`.
 
@@ -249,7 +253,7 @@ CallComposite callComposite = new CallCompositeBuilder().build();
 ```
 
 -----
-### <a name="create-communicationtokencredential"></a>Créez `CommunicationTokenCredential`.
+### <a name="setup-authentication"></a>Configurer l’authentification
 
 Initialisez une instance de `CommunicationTokenCredential` dans la fonction `startCallComposite`. Remplacez `"<USER_ACCESS_TOKEN>"` par votre jeton.
 
@@ -278,7 +282,7 @@ CommunicationTokenCredential communicationTokenCredential = new CommunicationTok
 Consultez la documentation sur les [jetons d’accès utilisateur](../../../identity/quick-create-identity.md) si vous n’avez pas encore de jeton disponible.
 
 -----
-## <a name="setup-group-call-or-teams-meeting-options"></a>Configurer les options d’appel de groupe ou de réunion Teams
+### <a name="setup-group-call-or-teams-meeting-options"></a>Configurer les options d’appel de groupe ou de réunion Teams
 
 Selon le type d’appel/de réunion que vous souhaitez configurer, utilisez l’objet d’options approprié.
 
@@ -344,11 +348,11 @@ TeamsMeetingOptions options = new TeamsMeetingOptions(
 -----
 ### <a name="get-a-microsoft-teams-meeting-link"></a>Obtenir un lien de réunion Microsoft Teams
 
-Un lien de réunion Microsoft Teams peut être récupéré par le biais des API Graph. Ce processus est détaillé dans la [documentation de Graph](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true).
+Un lien de réunion Microsoft Teams peut être récupéré par le biais des API Graph. Ce processus est détaillé dans la [documentation de Graph](/graph/api/onlinemeeting-createorget?preserve-view=true&tabs=http&view=graph-rest-beta).
 
-Le kit SDK d’appels Communication Services accepte un lien de réunion Microsoft Teams complet. Ce lien est retourné comme faisant partie de la ressource `onlineMeeting`, accessible sous la [propriété `joinWebUrl`](https://docs.microsoft.com/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true). Vous pouvez également récupérer les informations de réunion nécessaires à partir de l’URL **Rejoindre la réunion** dans l’invite de réunion Teams elle-même.
+Le kit SDK d’appels Communication Services accepte un lien de réunion Microsoft Teams complet. Ce lien est retourné comme faisant partie de la ressource `onlineMeeting`, accessible sous la [propriété `joinWebUrl`](/graph/api/resources/onlinemeeting?preserve-view=true&view=graph-rest-beta). Vous pouvez également récupérer les informations de réunion nécessaires à partir de l’URL **Rejoindre la réunion** dans l’invite de réunion Teams elle-même.
 
-## <a name="launch"></a>Lancer
+### <a name="launch"></a>Lancer
 
 Appelez `launch` sur l’instance de `CallComposite` dans la fonction `startCallComposite`
 
@@ -366,19 +370,21 @@ callComposite.launch(options);
 
 -----
 
-## <a name="subscribe-on-events-from-callcomposite"></a>S’abonner aux événements de `CallComposite`
+### <a name="subscribe-to-events-from-callcomposite"></a>S’abonner aux événements à partir de `CallComposite`
 
 Pour recevoir des événements, injectez un gestionnaire dans `CallCompositeBuilder`.
 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
 ```kotlin
-val communicationCallComposite: CallComposite =
+val callComposite: CallComposite =
             CallCompositeBuilder()
                 .callCompositeEventsHandler(ApplicationCallCompositeEventsHandler())
                 .build()
 
 ...
+import com.azure.android.communication.ui.CallCompositeEventsHandler
+import com.azure.android.communication.ui.configuration.events.OnExceptionEventArgs
 
 class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
     override fun onException(eventArgs: OnExceptionEventArgs) {
@@ -390,11 +396,13 @@ class ApplicationCallCompositeEventsHandler : CallCompositeEventsHandler {
 #### <a name="java"></a>[Java](#tab/java)
 
 ```java
-CallComposite communicationCallComposite =
+CallComposite callComposite =
                 new CallCompositeBuilder()
                         .callCompositeEventsHandler(new ApplicationCallCompositeEventsHandler())
                         .build();
 ...
+import com.azure.android.communication.ui.CallCompositeEventsHandler;
+import com.azure.android.communication.ui.configuration.events.OnExceptionEventArgs;
 
 class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandler {
     @Override
@@ -406,7 +414,7 @@ class ApplicationCallCompositeEventsHandler implements CallCompositeEventsHandle
 
 -----
 
-## <a name="apply-theme-configuration"></a>Appliquer la configuration du thème
+### <a name="apply-theme-configuration"></a>Appliquer la configuration du thème
 
 Pour changer la couleur principale du composite, créez un style de thème dans `src/main/res/values/themes.xml` et `src/main/res/values-night/themes.xml` en prenant en compte `AzureCommunicationUI.Theme.Calling` comme thème parent. Pour appliquer le thème, injectez l’ID du thème dans `CallCompositeBuilder`.
 
@@ -419,6 +427,8 @@ Pour changer la couleur principale du composite, créez un style de thème dans 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
 ```kotlin
+import com.azure.android.communication.ui.configuration.ThemeConfiguration
+
 val communicationCallComposite: CallComposite =
         CallCompositeBuilder()
             .theme(ThemeConfiguration(R.style.MyCompany_CallComposite))
@@ -428,6 +438,8 @@ val communicationCallComposite: CallComposite =
 #### <a name="java"></a>[Java](#tab/java)
 
 ```java
+import com.azure.android.communication.ui.configuration.ThemeConfiguration;
+
 CallComposite callComposite = 
     new CallCompositeBuilder()
         .theme(new ThemeConfiguration(R.style.MyCompany_CallComposite))

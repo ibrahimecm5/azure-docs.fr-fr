@@ -1,22 +1,25 @@
 ---
-title: L’exportation continue peut envoyer des alertes et des recommandations d’Azure Security Center à des espaces de travail Log Analytics ou à Azure Event Hubs
+title: L’exportation continue peut envoyer des alertes et des recommandations Microsoft Defender pour le cloud à des espaces de travail Log Analytics ou à Azure Event Hubs
 description: Découvrez comment configurer l’exportation continue d’alertes et de recommandations de sécurité vers des espaces de travail Log Analytics ou vers Azure Event Hubs.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/05/2021
+ms.date: 10/18/2021
 ms.author: memildin
-ms.openlocfilehash: e2b1b238e7f893df5eb56818f256eb324c5be6aa
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1557503699a47e471abee173733007cb3d0b5380
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536039"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010153"
 ---
-# <a name="continuously-export-security-center-data"></a>Exporter en continu des données Security Center
+# <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Exportation continue des données de Microsoft Defender pour le cloud
 
-Azure Security Center génère des alertes et recommandations de sécurité détaillées. Vous pouvez les afficher dans le portail ou au moyen d’outils de programmation. Si nécessaire, vous pouvez également exporter en partie ou en totalité ces informations à des fins de suivi avec d’autres outils de supervision dans votre environnement. 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender pour le cloud génère des alertes de sécurité et des recommandations détaillées. Vous pouvez les afficher dans le portail ou au moyen d’outils de programmation. Si nécessaire, vous pouvez également exporter en partie ou en totalité ces informations à des fins de suivi avec d’autres outils de supervision dans votre environnement. 
 
 **L’exportation continue** vous permet de personnaliser entièrement *ce qui* sera exporté et *où* cela sera exporté. Par exemple, vous pouvez la configurer de sorte que :
 
@@ -30,10 +33,10 @@ Bien que la fonctionnalité soit appelée *continue*, il existe également une o
 Cet article explique comment configurer l’exportation continue vers des espaces de travail Log Analytics ou vers Azure Event Hubs.
 
 > [!NOTE]
-> Si vous avez besoin d’intégrer Security Center à un SIEM, consultez [Diffuser des alertes vers un système SIEM, SOAR ou une solution de gestion des services informatiques](export-to-siem.md).
+> Si vous avez besoin d’intégrer Defender pour le cloud à un SIEM, consultez [Diffuser des alertes vers un système SIEM, SOAR ou une solution de gestion des services informatiques](export-to-siem.md).
 
 > [!TIP]
-> Security Center offre également la possibilité d’effectuer une exportation manuelle ponctuelle au format CSV. Pour plus d’informations, consultez [Exportation ponctuelle et manuelle des alertes de sécurité](#manual-one-time-export-of-alerts-and-recommendations).
+> Defender pour le cloud offre également la possibilité d’effectuer une exportation manuelle ponctuelle au format CSV. Pour plus d’informations, consultez [Exportation ponctuelle et manuelle des alertes de sécurité](#manual-one-time-export-of-alerts-and-recommendations).
 
 
 ## <a name="availability"></a>Disponibilité
@@ -64,21 +67,21 @@ L’exportation continue peut exporter les types de données suivants à chaque 
 
 ## <a name="set-up-a-continuous-export"></a>Configurer une exportation continue 
 
-Vous pouvez configurer l’exportation continue à partir des pages Security Center dans Portail Azure, via l’API REST Security Center ou à grande échelle à l’aide des modèles Azure Policy fournis. Sélectionnez l’onglet approprié ci-dessous pour obtenir des informations détaillées sur chacune des options.
+Vous pouvez configurer l’exportation continue à partir des pages Defender pour le cloud dans le Portail Azure, via l’API REST, ou à grande échelle à l’aide des modèles Azure Policy fournis. Sélectionnez l’onglet approprié ci-dessous pour obtenir des informations détaillées sur chacune des options.
 
 ### <a name="use-the-azure-portal"></a>[**Utilisation du portail Azure**](#tab/azure-portal)
 
-### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Configurer l’exportation continue à partir des pages Security Center dans Portail Azure
+### <a name="configure-continuous-export-from-the-defender-for-cloud-pages-in-azure-portal"></a>Configurer l’exportation continue à partir des pages Defender pour le cloud dans le Portail Azure
 
 Les étapes ci-dessous sont nécessaires si vous configurez une exportation continue vers un espace de travail Log Analytics ou vers Azure Event Hubs.
 
-1. Dans la barre latérale de Security Center, sélectionnez **Tarification et paramètres**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
 
 1. Sélectionnez l’abonnement pour lequel vous souhaitez configurer l’exportation de données.
 
 1. Dans la barre latérale de la page de paramètres de cet abonnement, sélectionnez **Exportation continue**.
 
-    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Options d’exportation dans Azure Security Center":::
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Options d’exportation dans Microsoft Defender pour le cloud.":::
 
     Les options d’exportation sont affichées ici. Il y a un onglet distinct pour chaque cible d’exportation disponible. 
 
@@ -106,7 +109,7 @@ Les étapes ci-dessous sont nécessaires si vous configurez une exportation cont
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Configurer l’exportation continue à l’aide de l’API REST
 
-L’exportation continue peut être configurée et gérée via l’[API Automations](/rest/api/securitycenter/automations) d’Azure Security Center. Utilisez cette API pour créer ou mettre à jour des règles d’exportation vers l’une des destinations possibles suivantes :
+L’exportation continue peut être configurée et gérée via l’[API Automations](/rest/api/securitycenter/automations) de Microsoft Defender pour le cloud. Utilisez cette API pour créer ou mettre à jour des règles d’exportation vers l’une des destinations possibles suivantes :
 
 - Azure Event Hub
 - Espace de travail Log Analytics
@@ -114,14 +117,14 @@ L’exportation continue peut être configurée et gérée via l’[API Automati
 
 L’API fournit des fonctionnalités supplémentaires qui ne sont pas disponibles dans le portail Azure, par exemple :
 
-* **Volume supérieur** : l’API vous permet de créer plusieurs configurations d’exportation sur un seul abonnement. La page **Exportation continue** dans l’interface utilisateur du portail du service Security Center ne prend en charge qu’une seule configuration d’exportation par abonnement.
+* **Volume supérieur** : l’API vous permet de créer plusieurs configurations d’exportation sur un seul abonnement. La page **Exportation continue** dans l’interface utilisateur du portail Defender pour le cloud ne prend en charge qu’une seule configuration d’exportation par abonnement.
 
-* **Fonctionnalités supplémentaires** : l’API offre des paramètres supplémentaires qui n’apparaissent pas dans l’interface utilisateur. Par exemple, vous pouvez ajouter des balises à votre ressource d’automatisation, ainsi que définir votre exportation sur la base d’un ensemble plus vaste de propriétés d’alerte et de recommandation que celles proposées dans la page **Exportation continue** de l’interface utilisateur du portail du service Security Center.
+* **Fonctionnalités supplémentaires** : l’API offre des paramètres supplémentaires qui n’apparaissent pas dans l’interface utilisateur. Par exemple, vous pouvez ajouter des balises à votre ressource d’automatisation, ainsi que définir votre exportation sur la base d’un ensemble plus vaste de propriétés d’alerte et de recommandation que celles proposées dans la page **Exportation continue** de l’interface utilisateur du portail Defender pour le cloud.
 
-* **Étendue plus ciblée** : l’API fournit un niveau plus granulaire pour l’étendue de vos configurations d’exportation. Lorsque vous définissez une exportation avec l’API, vous pouvez le faire au niveau du groupe de ressources. Si vous utilisez la page **Exportation continue** dans l’interface utilisateur du portail du service Security Center, vous devez la définir au niveau de l’abonnement.
+* **Étendue plus ciblée** : l’API fournit un niveau plus granulaire pour l’étendue de vos configurations d’exportation. Lorsque vous définissez une exportation avec l’API, vous pouvez le faire au niveau du groupe de ressources. Si vous utilisez la page **Exportation continue** dans l’interface utilisateur du portail Defender pour le cloud, vous devez la définir au niveau de l’abonnement.
 
     > [!TIP]
-    > Si vous avez défini plusieurs configurations d’exportation à l’aide de l’API, ou si vous avez utilisé des paramètres uniquement d’API, ces fonctionnalités supplémentaires n’apparaissent pas dans l’interface utilisateur du service Security Center. Au lieu de cela, une bannière s’affiche, qui vous informe que d’autres configurations existent.
+    > Si vous avez défini plusieurs configurations d’exportation à l’aide de l’API, ou si vous avez utilisé des paramètres uniquement d’API, ces fonctionnalités supplémentaires n’apparaissent pas dans l’interface utilisateur du service Defender pour le cloud. Au lieu de cela, une bannière s’affiche, qui vous informe que d’autres configurations existent.
 
 Pour plus d’informations sur l’API Automations, consultez la [documentation de l’API REST](/rest/api/securitycenter/automations).
 
@@ -139,8 +142,8 @@ Pour déployer vos configurations d’exportation continue à l’échelle de vo
 
     |Objectif  |Policy  |ID de stratégie  |
     |---------|---------|---------|
-    |Exportation continue vers Event Hub|[Déployer l’exportation vers Event Hub pour les alertes et les recommandations Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-    |Exportation continue vers l’espace de travail Log Analytics|[Déployer l’exportation vers un espace de travail Log Analytics pour les alertes et les recommandations Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    |Exportation continue vers Event Hub|[Déployer l’exportation vers Event Hub pour les alertes et recommandations Microsoft Defender pour le cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Exportation continue vers l’espace de travail Log Analytics|[Déployer l’exportation vers l’espace de travail Log Analytics pour les alertes et recommandations Microsoft Defender pour le cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
     ||||
 
     > [!TIP]
@@ -158,7 +161,7 @@ Pour déployer vos configurations d’exportation continue à l’échelle de vo
         > [!TIP]
         > Chaque paramètre est accompagné d’une info-bulle qui explique les options disponibles.
         >
-        > L’onglet Paramètres d’Azure Policy (1) donne accès à des options de configuration similaires à celles de la page d’exportation continue de Security Center (2).
+        > L’onglet Paramètres d’Azure Policy (1) donne accès à des options de configuration similaires à celles de la page d’exportation continue de Defender pour le cloud (2).
         > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Comparaison des paramètres de l’exportation continue avec la Stratégie Azure." lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. Si vous le souhaitez, pour appliquer cette attribution à des abonnements existants, ouvrez l’onglet **Correction** et sélectionnez l’option permettant de créer une tâche de correction.
 1. Consultez la page de résumé et sélectionnez **Créer**.
@@ -167,13 +170,13 @@ Pour déployer vos configurations d’exportation continue à l’échelle de vo
 
 ## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Informations relatives à l’exportation vers un espace de travail Log Analytics
 
-Si vous voulez analyser des données Azure Security Center dans un espace de travail Log Analytics ou utiliser des alertes Azure avec des alertes Security Center, configurez l’exportation continue vers votre espace de travail Log Analytics.
+Si vous voulez analyser des données Microsoft Defender pour le cloud dans un espace de travail Log Analytics ou utiliser des alertes Azure avec des alertes Defender pour le cloud, configurez l’exportation continue vers votre espace de travail Log Analytics.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Tables et schémas Log Analytics
 
 Les alertes et les recommandations de sécurité sont stockées dans les tables *SecurityAlert* et *SecurityRecommendation* respectivement. 
 
-Le nom de la solution Log Analytics contenant ces tables varie selon que vous avez activé Azure Defender ou non : Security ('Security and Audit') ou SecurityCenterFree. 
+Le nom de la solution Log Analytics contenant ces tables varie selon que vous avez activé les fonctionnalités de sécurité renforcée : Security (« Security and Audit ») ou SecurityCenterFree. 
 
 > [!TIP]
 > Pour afficher les données dans l’espace de travail de destination, vous devez activer l’une de ces solutions : **Security and Audit** ou **SecurityCenterFree**.
@@ -189,7 +192,7 @@ Vous pouvez choisir de voir les alertes de sécurité exportées et/ou les recom
 
 Azure Monitor fournit une expérience d’alerte unifiée pour diverses alertes Azure, dont le Journal de diagnostic, les Alertes de métriques et les alertes personnalisées basées sur des requêtes d’espace de travail Log Analytics.
 
-Pour voir les alertes et les recommandations à partir de Security Center dans Azure Monitor, configurez une règle d’alerte en fonction des requêtes Log Analytics (Alerte de journal) :
+Pour voir les alertes et les recommandations à partir de Defender pour le cloud dans Azure Monitor, configurez une règle d’alerte en fonction des requêtes Log Analytics (Alerte de journal) :
 
 1. Dans la page **Alertes** d’Azure Monitor, sélectionnez **Nouvelle règle d’alerte**.
 
@@ -199,12 +202,12 @@ Pour voir les alertes et les recommandations à partir de Security Center dans A
 
     * Pour **Ressource**, sélectionnez l’espace de travail Log Analytics vers lequel vous avez exporté des alertes de sécurité et des recommandations.
 
-    * Pour **Condition**, sélectionnez **Recherche personnalisée dans les journaux**. Dans la page qui s’affiche, configurez la requête, la période de recherche arrière et la période de fréquence. Dans la requête de recherche, vous pouvez taper *SecurityAlert* ou *SecurityRecommendation* pour interroger les types de données vers lequel Security Center exporte en continu quand vous activez la fonctionnalité d’exportation continue vers Log Analytics. 
+    * Pour **Condition**, sélectionnez **Recherche personnalisée dans les journaux**. Dans la page qui s’affiche, configurez la requête, la période de recherche arrière et la période de fréquence. Dans la requête de recherche, vous pouvez taper *SecurityAlert* ou *SecurityRecommendation* pour interroger les types de données vers lequel Defender pour le cloud exporte en continu quand vous activez la fonctionnalité d’exportation continue vers Log Analytics. 
     
     * Vous pouvez éventuellement configurer le [Groupe d’actions](../azure-monitor/alerts/action-groups.md) que vous souhaitez déclencher. Les groupes d’actions peuvent déclencher l’envoi d’e-mails, des tickets ITSM, des webhooks, et plus encore.
     ![Règle d’alerte Azure Monitor.](./media/continuous-export/azure-monitor-alert-rule.png)
 
-Vous voyez maintenant de nouvelles alertes ou recommandations Azure Security Center (en fonction des règles d’exportation continue configurées et de la condition que vous avez définie dans votre règle d’alerte Azure Monitor) dans les alertes Azure Monitor, avec le déclenchement automatique d’un groupe d’actions (le cas échéant).
+Vous voyez maintenant de nouvelles alertes ou recommandations Microsoft Defender pour le cloud (en fonction des règles d’exportation continue configurées et de la condition que vous avez définie dans votre règle d’alerte Azure Monitor) dans les alertes Azure Monitor, avec le déclenchement automatique d’un groupe d’actions (le cas échéant).
 
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Exportation ponctuelle et manuelle des alertes de sécurité
 
@@ -252,9 +255,9 @@ Lors de la préparation de votre environnement pour les scénarios BCDR, où la 
 Pour en savoir plus, consultez [Azure Event Hubs - Géorécupération d’urgence](../event-hubs/event-hubs-geo-dr.md).
 
 
-### <a name="is-continuous-export-available-with-azure-security-center-free"></a>L’exportation continue est-elle disponible avec le service gratuit Azure Security Center ?
+### <a name="is-continuous-export-available-for-free"></a>L’exportation continue est-elle disponible gratuitement ?
 
-Oui ! Notez que de nombreuses alertes Security Center ne sont fournies que lorsque vous avez activé Azure Defender. Pour afficher les alertes obtenues dans vos données exportées, vous pouvez afficher les alertes présentées dans les pages Security Center du portail Azure.
+Oui. Notez que de nombreuses alertes sont fournies uniquement lorsque vous avez activé les protections avancées. Pour afficher les alertes obtenues dans vos données exportées, vous pouvez afficher les alertes présentées dans les pages Defender pour le cloud du Portail Azure.
 
 
 
@@ -266,6 +269,6 @@ Pour des informations connexes, consultez la documentation suivante :
 
 - En savoir plus sur les [modèles d’automatisation de workflow](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 - [Documentation Azure Event Hubs](../event-hubs/index.yml)
-- [Documentation Azure Sentinel](../sentinel/index.yml)
+- [Documentation Microsoft Sentinel](../sentinel/index.yml)
 - [Documentation Azure Monitor](../azure-monitor/index.yml)
 - [Exporter des schémas de types de données](https://aka.ms/ASCAutomationSchemas)

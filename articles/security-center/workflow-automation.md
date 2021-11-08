@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4cf12721cc691f4719cc4442b4092b44f6d8e1b7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cefeb17946f5723d7ea44ee89f8245eef01d28c3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004565"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445133"
 ---
 # <a name="automate-responses-to-microsoft-defender-for-cloud-triggers"></a>Automatiser les réponses aux déclencheurs Microsoft Defender pour le cloud
 
@@ -40,13 +39,15 @@ Cet article décrit la fonctionnalité d’automatisation de workflow de Microso
 
 1. Dans la barre latérale de Defender pour le cloud, sélectionnez **Automatisation du workflow**.
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Liste d’automatisations des workflows.":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Capture d’écran de la page d’automatisation du flux de travail montrant la liste des automations définies." lightbox="./media/workflow-automation/list-of-workflow-automations.png":::
 
     À partir de cette page, vous pouvez créer des règles d’automatisation, et activer, désactiver ou supprimer des règles existantes.
 
-1. Pour définir un nouveau workflow, cliquez sur **Add workflow automation** (Ajouter une automatisation de workflow). 
+1. Pour définir un nouveau workflow, cliquez sur **Add workflow automation** (Ajouter une automatisation de workflow). Le volet Options de votre nouvelle automatisation s’ouvre.
 
-    Un volet s’affiche avec les options de votre nouvelle automatisation. Vous pouvez y entrer :
+    :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Volet Ajouter des automatisations de workflow.":::
+
+    Vous pouvez y entrer :
     1. Le nom et la description de l’automatisation.
     1. Les déclencheurs qui lanceront l’exécution de ce workflow automatique. Par exemple, vous pouvez définir que votre application logique s’exécute quand une alerte de sécurité contenant « SQL » est générée.
 
@@ -54,8 +55,6 @@ Cet article décrit la fonctionnalité d’automatisation de workflow de Microso
         > Si votre déclencheur est une recommandation qui contient des « sous-recommandations », par exemple **Les résultats de l’évaluation des vulnérabilités sur vos bases de données SQL doivent être corrigés**, l’application logique ne se déclenchera pas pour chaque nouvelle recherche de sécurité, mais uniquement lorsque l’état de la recommandation mère change.
 
     1. L’application logique à exécuter lorsque les conditions du déclencheur définies seront remplies. 
-
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Volet Ajouter des automatisations de workflow.":::
 
 1. Dans la section Actions, sélectionnez **Accéder à la page Logic Apps** pour commencer le processus de création de l’application logique.
 

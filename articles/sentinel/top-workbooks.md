@@ -1,12 +1,11 @@
 ---
 title: Classeurs Azure Sentinel courants | Microsoft Docs
-description: Découvrez les classeurs les plus courants pour utiliser des ressources Azure Sentinel intégrées et populaires.
+description: Découvrez les classeurs les plus courants pour utiliser des ressources Azure Sentinel populaires et prêtes à l’emploi.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: 76800b0f7a90dacd1447b87fdc1f1d23300873ec
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a8e96969dc4edd5a79e1ca85ac32529c10b8a343
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784391"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019549"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>Classeurs Azure Sentinel courants
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Le tableau suivant présente les classeurs Azure Sentinel intégrés les plus courants.
 
@@ -31,7 +33,7 @@ Accédez aux classeurs dans Azure Sentinel sous **Gestion des menaces** > **Clas
 > [!TIP]
 > Nous vous recommandons de déployer tous les workbooks associés aux données que vous ingérez. Les workbooks permettent d’obtenir une supervision et des investigations plus poussées en fonction des données collectées.
 >
-> Pour plus d’informations, consultez [Connecter des sources de données](connect-data-sources.md) et [Découvrir et déployer des solutions Azure Sentinel](sentinel-solutions-deploy.md).
+> Pour plus d’informations, consultez [Connecter des sources de données](connect-data-sources.md) et [Découvrir et déployer de manière centralisée du contenu et des solutions Azure Sentinel prêts à l’emploi](sentinel-solutions-deploy.md).
 >
 
 |Nom du classeur  |Description  |

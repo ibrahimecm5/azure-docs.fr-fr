@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 53cf2144dfbb858d21030da7147805155ca1b982
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 85dc954dcb352f9bc2447e72322d35e8d5e73cb3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056297"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552655"
 ---
 # <a name="azure-purview-scanning-best-practices"></a>Meilleures pratiques pour l’analyse Azure Purview
 
@@ -98,6 +98,7 @@ Pour éviter les coûts inattendus et le travail, nous vous recommandons de plan
             - Clé de compte ou authentification de base (par exemple, pour les sources SAP S/4HANA)
             > [!Note]
             > Si un pare-feu est activé pour le compte de stockage, vous devez utiliser la méthode d’authentification Identité managée lors de la configuration d’une analyse.
+            > Lors de la configuration d’informations d’identification, le nom des informations d’identification ne peut contenir que des _lettres, des chiffres, des traits de soulignement et des traits d’union_. 
 
     - **Runtime d’intégration**
         - Utilisez le runtime d’intégration de résolution automatique Azure, dans la mesure du possible.

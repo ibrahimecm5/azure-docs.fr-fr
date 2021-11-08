@@ -5,15 +5,15 @@ services: app-service
 author: jorgearteiro
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: joarteir
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 57d5c01290f59a876a187538c9578b84fab26773
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5c5cda6e2793ca70c1d53b8a4b4ce4235fa07efd
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096958"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577666"
 ---
 # <a name="tutorial-deploy-a-background-processing-application-with-azure-container-apps-preview"></a>Tutoriel : déployer une application de traitement en arrière-plan avec Azure Container Apps (version préliminaire)
 
@@ -124,6 +124,22 @@ az extension add \
 ```powershell
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl
+```
+
+---
+
+Maintenant que l’extension est installée, inscrivez l’espace de noms `Microsoft.Web`.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -429,7 +445,7 @@ L’application met à l’échelle jusqu’à 10 réplicas en fonction de la l
 
 ## <a name="verify-the-result"></a>Vérifier le résultat
 
-L’application conteneur qui s’exécute en tant que processus en arrière-plan crée des entrées de journal dans Log analytics à mesure que les messages arrivent dans la file d’attente de Stockage Azure.
+L’application conteneur qui s’exécute en tant que processus en arrière-plan crée des entrées de journal dans Log analytics à mesure que les messages arrivent dans la file d’attente de Stockage Azure. Avant que vous puissiez interroger les données journalisées, vous devrez peut-être patienter quelques minutes avant que l’analyse n’arrive pour la première fois.
 
 Exécutez la commande suivante pour afficher les messages journalisés. Cette commande requiert l’extension log Analytics. vous devez donc accepter l’invite d’installation de l’extension lorsque vous y êtes invité.
 

@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/16/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 57a3f1f9d9665e23ba40479062f0f60e59608b66
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 669b14511c13ac1571082507ad8c16ed6b571600
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707428"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556537"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Créer des cibles de calcul pour l’entraînement et le déploiement de modèle dans Azure Machine Learning Studio
 
@@ -204,6 +204,9 @@ Si vous avez créé une instance de calcul ou un cluster de calcul avec l’acc�
       `ssh -i <keyname.pem> azureuser@... (rest of connection string)`
 
 1. Pour les utilisateurs Linux, suivez les étapes de la section [Créer et utiliser une paire de clés SSH pour les machines virtuelles Linux dans Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
+1. Pour SCP, utilisez : 
+
+   `scp -i key.pem -P {port} {fileToCopyFromLocal }  azureuser@yourComputeInstancePublicIP:~/{destination}`
 
 ## <a name="next-steps"></a>Étapes suivantes
 

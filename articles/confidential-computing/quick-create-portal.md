@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/1/2021
 ms.author: JenCook
 ms.custom: mode-portal, ignite-fall-2021
-ms.openlocfilehash: 51a91b6bb5ff5991ad2d92a41f7f70ef39c2a0c2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ebb48c3c3b0f7273b7ceeebd8a615b19444dab5b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033276"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508397"
 ---
 # <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>Démarrage rapide : Créer une machine virtuelle Intel SGX dans le portail Azure
 
@@ -140,9 +140,9 @@ Pour en savoir plus la connexion aux machines virtuelles Linux, consultez [Créa
 ## <a name="install-azure-dcap-client"></a>Installer un client Azure DCAP
 
 > [!NOTE]
-> Trusted Hardware Identity Management (THIM) est un service Azure gratuit qui vous permet de gérer les identités matérielles des différents environnements d’exécution de confiance (TEE). Il récupère la documentation auprès du service de certification d’approvisionnement (PCS) Intel et le met en cache. Le service applique un niveau de base de calcul de confiance (TCB) minimal comme ligne de base de sécurité Azure à des fins d’attestation.
+> Trusted Hardware Identity Management (THIM) est un service Azure gratuit qui vous permet de gérer les identités matérielles des différents environnements d’exécution de confiance (TEE). Il récupère la documentation auprès du service de certification d’approvisionnement (PCS) Intel et le met en cache. Le service applique un niveau de base de calcul de confiance (TCB) minimal comme ligne de base de sécurité Azure à des fins d’attestation. Pour les machines virtuelles Azure des séries DCsv3 et DCdsv3, les certificats Intel peuvent uniquement être récupérés à partir de THIM, car il n’est pas possible d’effectuer des appels directs au service Intel à partir des machines virtuelles. 
 
-Il est recommandé aux utilisateurs de machines virtuelles Azure des séries DCsv2, DCsv3 et DCdsv3 d’installer un client Azure DCAP afin d’interagir avec THIM et de récupérer la documentation TEE à des fins de génération de Quote, durant le processus d’attestation. Pour en savoir plus sur l’attestation, consultez [Microsoft Azure Attestation](/azure/attestation/overview) ou [Attestation ECDSA](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html).
+Avec la sortie des processeurs Intel® Xeon Scalable, la prise en charge de l’attestation à distance est modifiée. Les séries DCsv3 et DCdsv3 prennent uniquement en charge l’[attestation ECDSA](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html) et les utilisateurs doivent installer le client [Azure DCAP](https://github.com/Microsoft/Azure-DCAP-Client) pour interagir avec THIM et récupérer les brochures pour la documentation des environnements d’exécution de confiance pour la génération de devis au cours du processus d’attestation. DCsv2 continue à prendre en charge l’[attestation basée sur EPID](https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/attestation-services.html). 
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
@@ -158,3 +158,6 @@ Découvrez comment créer des applications d’informatique confidentielle en ac
 
 > [!div class="nextstepaction"]
 > [Création d’exemples de SDK Open Enclave](https://github.com/openenclave/openenclave/blob/master/samples/README.md)
+
+Microsoft Azure Attestation est un framework d’attestation ECDSA gratuit, qui permet de vérifier à distance la crédibilité de plusieurs environnements d’exécution de confiance et l’intégrité des fichiers binaires qui s’y trouvent. En savoir [plus](/azure/attestation/overview)
+

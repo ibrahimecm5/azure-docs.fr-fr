@@ -4,12 +4,12 @@ description: Découvrez comment créer un cluster Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: 3cb83bd9b3aded2ab167afb39b024266a76163ae
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0e89a59e9051de255be21103121569e45a2621a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049080"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440542"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Créer un cluster Azure Kubernetes Service privé
 
@@ -72,7 +72,7 @@ Les paramètres suivants peuvent être utilisés pour configurer une zone de DNS
 
 - « system », qui correspond aussi à la valeur par défaut. Si l’argument --private-dns-zone est omis, AKS crée une zone de DNS privé dans le groupe de ressources du nœud.
 - « none », valeur par défaut pour le DNS public qui signifie que AKS ne crée pas de zone DNS privé.  
-- « CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID », qui vous oblige à créer une zone DNS privée au format suivant pour le cloud global Azure : `privatelink.<region>.azmk8s.io`. À partir de maintenant, vous allez avoir besoin de l’ID de ressource de la zone DNS privée.  De plus, vous aurez besoin d’une identité affectée par l’utilisateur ou d’un principal de service disposant au minimum des rôles `private dns zone contributor` et `vnet contributor`.
+- « CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID », qui vous oblige à créer une zone de DNS privé au format suivant pour le cloud global Azure : `privatelink.<region>.azmk8s.io` ou `<subzone>.privatelink.<region>.azmk8s.io`. À partir de maintenant, vous allez avoir besoin de l’ID de ressource de la zone DNS privée.  De plus, vous aurez besoin d’une identité affectée par l’utilisateur ou d’un principal de service disposant au minimum des rôles `private dns zone contributor` et `vnet contributor`.
   - Si la zone DNS privé se trouve dans un autre abonnement que le cluster AKS, vous devez inscrire Microsoft.ContainerServices dans les deux abonnements.
   - « fqdn-subdomain » peut être utilisé avec « CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID » uniquement pour fournir des fonctionnalités de sous-domaine à `privatelink.<region>.azmk8s.io`
 
@@ -91,7 +91,7 @@ Configuration requise :
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-Pour créer un cluster AKS capable d’utiliser le pilote CSI de magasin de secrets, vous devez activer l’indicateur de fonctionnalité `EnablePrivateClusterSubZone` sur votre abonnement.
+Pour créer un cluster privé AKS avec SubZone, vous devez activer l’indicateur de fonctionnalité `EnablePrivateClusterSubZone` sur votre abonnement.
 
 Inscrivez l’indicateur de fonctionnalité `EnablePrivateClusterSubZone` à l’aide de la commande [az feature register][az-feature-register], comme indiqué dans l’exemple suivant :
 
@@ -113,8 +113,6 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-the-aks-preview-cli-extension"></a>Installer l’extension CLI aks-preview
 
-Vous devez également disposer de l’extension Azure CLI *aks-preview* version 0.5.34 ou ultérieure. Installez l’extension d’Azure CLI *aks-preview* à l’aide de la commande [az extension add][az-extension-add]. Si vous avez déjà installé l’extension, passez à la dernière version disponible avec la commande [az extension update][az-extension-update].
-
 ```azurecli-interactive
 # Install the aks-preview extension
 az extension add --name aks-preview
@@ -123,16 +121,25 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="private-aks-cluster-with-byo-private-dns-subzone"></a>Cluster AKS privé avec sous-zone DNS privé BYOD
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-zone"></a>Créer un cluster AKS privé avec zone de DNS privé personnalisée
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <BYO private dns zone ResourceId>
+# Custom Private DNS Zone name should be in format "privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId>
 ```
 
 ### <a name="create-a-private-aks-cluster-with-custom-private-dns-subzone"></a>Créer un cluster AKS privé avec sous-zone DNS privé personnalisée
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
+# Custom Private DNS Zone name should be in format "<subzone>.privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId>
+```
+
+### <a name="create-a-private-aks-cluster-with-custom-private-dns-zone-and-custom-subdomain"></a>Créer un cluster AKS privé avec une zone de DNS privé personnalisée et un sous-domaine personnalisé
+
+```azurecli-interactive
+# Custom Private DNS Zone name could be in formats "privatelink.<region>.azmk8s.io&quot; or &quot;<subzone>.privatelink.<region>.azmk8s.io"
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain>
 ```
 
 ### <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>Créer un cluster AKS privé avec un nom de domaine complet public (FQDN) public

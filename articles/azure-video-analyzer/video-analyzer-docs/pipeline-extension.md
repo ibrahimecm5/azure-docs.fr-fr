@@ -3,13 +3,14 @@ title: Extension de pipeline - Azure Video Analyzer
 description: Azure Video Analyzer vous permet d’étendre les fonctionnalités de traitement de pipeline à l’aide d’un nœud d’extension de pipeline. Cet article décrit le nœud d’extension de pipeline.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 55cb6a265e74eb4209742f8fb0a8b6f34cb08254
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 70c5ab2f2bc3a82889501496d23eb8a681c7ec68
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604697"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020581"
 ---
 # <a name="pipeline-extension"></a>Extension de pipeline
 
@@ -19,9 +20,11 @@ Video Analyzer prend en charge les processeurs d’extensions de pipeline suivan
 
 * [Processeur d’extension HTTP](pipeline.md#http-extension-processor) 
 * [Processeur d’extension gRPC](pipeline.md#grpc-extension-processor)
-* [Processeur d’extension Cognitive Services](pipeline.md#cognitive-services-extension-processor) 
-    
-Le nœud d’extension de pipeline attend des résultats au format JSON de la part du plug-in d’extension analytique. Dans l’idéal, les résultats doivent suivre le [modèle d’objet du schéma des métadonnées d’inférence](inference-metadata-schema.md)
+* [Processeur d’extension Cognitive Services](pipeline.md#cognitive-services-extension-processor)
+
+Le nœud d’extension de pipeline attend des résultats au format JSON de la part du plug-in d’extension analytique. Dans l’idéal, les résultats doivent suivre le [modèle d’objet du schéma des métadonnées d’inférence](inference-metadata-schema.md).
+
+[!INCLUDE [available-features](./includes/available-features.md)]
 
 ## <a name="http-extension-processor"></a>Processeur d’extension HTTP
 
@@ -49,12 +52,12 @@ Le processeur d’extension gRPC peut être utilisé pour envoyer des propriét�
 
 ## <a name="cognitive-services-extension-processor"></a>Processeur d’extension Cognitive Services
 
-Le processeur d’extension Cognitive Services est un processeur d’extension personnalisé qui permet à Video Analyzer de fonctionner correctement avec les fonctionnalités d’[analyse spatiale de Vision par ordinateur]../../cognitive-services/computer-vision/) à l’aide du [protocole structuré](grpc-extension-protocol.md) gRPC hautement performant. 
+Le processeur d’extension Cognitive Services (IA prise en charge et générée par Microsoft) est un processeur d’extension personnalisé qui permet à Video Analyzer de fonctionner correctement avec les fonctionnalités d’[analyse spatiale Vision par ordinateur](../../cognitive-services/computer-vision/overview.md) à l’aide du [protocole structuré](grpc-extension-protocol.md) gRPC hautement performant. 
 
 Utilisez le nœud de processeur d’extension Cognitive Services quand :
 
 * Vous voulez une meilleure interopérabilité avec les [opérations d’analyse spatiale](../../cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview.md) existantes.
-* Vous voulez tirer parti de tous les avantages du protocole gRPC, de la précision et des performances de l’IA prise en charge et générée par Microsoft.
+* Vous voulez tirer parti de tous les avantages du protocole gRPC, de la précision et des performances de l’**IA prise en charge et générée par Microsoft**.
 * Vous analysez plusieurs flux de caméra à faible latence et haut débit.
 
 ## <a name="use-your-inferencing-model"></a>Utiliser votre modèle d’inférence
@@ -70,8 +73,6 @@ Le diagramme ci-dessous illustre le flux de données général :
 
 Vous pouvez démarrer en utilisant l’un de nos guides de démarrage rapide qui décrivent l’utilisation de Video Analyzer avec un service d’extension prédéfini à des fréquences d’images faibles à l’aide du [processeur d’extension HTTP](pipeline.md#http-extension-processor) ou à des fréquences d’images élevées à l’aide du [processeur d’extension gRPC](pipeline.md#grpc-extension-processor).
 
-
 ## <a name="next-steps"></a>Étapes suivantes 
 
-Concept : [Enregistrement vidéo basé sur un événement](event-based-video-recording-concept.md)
-
+Concept : [Enregistrement vidéo](video-recording.md)

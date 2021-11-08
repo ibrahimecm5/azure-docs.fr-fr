@@ -1,39 +1,42 @@
 ---
 title: Utilisation de stratégies de sécurité | Microsoft Docs
-description: Cet article décrit comment utiliser des stratégies de sécurité dans Azure Security Center.
+description: Découvrez comment utiliser les stratégies de sécurité dans Microsoft Defender pour le cloud.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: b7c8003bd40df21fb749fcb576afeaec5dacead9
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 600d2bd187d3814d994893285ba19457bdfb2339
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236838"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009488"
 ---
 # <a name="manage-security-policies"></a>Gérer les stratégies de sécurité
 
-Cet article explique comment configurer des stratégies de sécurité et comment les afficher dans Security Center. 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Cette page explique comment les stratégies de sécurité sont configurées et comment les afficher dans Microsoft Defender pour le cloud. 
 
 Pour comprendre les relations entre les initiatives, les stratégies et les recommandations, consultez [Que sont les stratégies de sécurité, les initiatives et les recommandations ?](security-policy-concept.md)
 
 ## <a name="who-can-edit-security-policies"></a>Qui peut modifier des stratégies de sécurité ?
 
-Security Center utilise le contrôle d’accès en fonction du rôle (Azure RBAC), lequel fournit des rôles intégrés que vous pouvez attribuer à des utilisateurs, groupes et services Azure. Lorsque les utilisateurs ouvrent Security Center, ils ne voient que les informations associées aux ressources auxquelles ils peuvent accéder. Autrement dit, les utilisateurs se voient attribuer le rôle de *propriétaire*, *contributeur* ou *lecteur* pour l’abonnement de la ressource. Il existe également deux rôles spécifiques à Security Center :
+Defender pour le cloud utilise le contrôle d’accès en fonction du rôle (Azure RBAC), lequel fournit des rôles intégrés que vous pouvez attribuer à des utilisateurs, groupes et services Azure. Lorsque les utilisateurs ouvrent Defender pour le cloud, ils ne voient que les informations associées aux ressources auxquelles ils peuvent accéder. Autrement dit, les utilisateurs se voient attribuer le rôle de *propriétaire*, *contributeur* ou *lecteur* pour l’abonnement de la ressource. Il existe également deux rôles spécifiques à Defender pour le cloud :
 
-- **Lecteur Sécurité** : a le droit de consulter les éléments de Security Center tels que les recommandations, les alertes, la stratégie et l’intégrité. Ne peut pas apporter de modifications.
+- **Lecteur de sécurité** : a le droit de consulter les éléments de Defender pour le cloud tels que les recommandations, les alertes, la stratégie et l’intégrité. Ne peut pas apporter de modifications.
 - **Administrateur Sécurité** : a les mêmes droits de consultation que *Lecteur Sécurité*. Peut également mettre à jour la stratégie de sécurité et ignorer les alertes.
 
 Vous pouvez modifier les stratégies de sécurité sur le portail Azure Policy, par l’intermédiaire de l’API REST ou à l’aide de Windows PowerShell.
 
 ## <a name="manage-your-security-policies"></a>Gérer vos stratégies de sécurité
 
-Pour afficher vos stratégies de sécurité dans Security Center :
+Pour afficher vos stratégies de sécurité dans Defender pour le cloud :
 
-1. Dans le tableau de bord **Security Center**, sélectionnez **Stratégie de sécurité**.
+1. Dans le menu de **Defender pour le cloud**, sélectionnez **Stratégie de sécurité**.
 
     :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Page Gestion de stratégie.":::
 
@@ -43,7 +46,7 @@ Pour afficher vos stratégies de sécurité dans Security Center :
 
 1. La page relative à la stratégie de sécurité de cet abonnement ou ce groupe d’administration s’affiche. Elle présente les stratégies disponibles et attribuées.
 
-    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Page des stratégies de sécurité de Security Center" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Page stratégie de sécurité de Defender pour le cloud" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > Si l’étiquette « Groupe d’administration hérité » figure en regard de votre stratégie par défaut, cela signifie que la stratégie a été attribuée à un groupe d’administration et que l’abonnement que vous consultez en a hérité.
@@ -74,20 +77,20 @@ Pour afficher vos stratégies de sécurité dans Security Center :
 
 Lorsque votre initiative de sécurité déclenche une recommandation qui n’est pas pertinente pour votre environnement, vous pouvez empêcher cette recommandation de s’afficher à nouveau. Pour désactiver une recommandation, désactivez la stratégie spécifique qui génère la recommandation.
 
-La recommandation que vous souhaitez désactiver continuera de s’afficher si elle est requise par une norme réglementaire que vous avez appliquée à l’aide des outils de conformité réglementaire de Security Center. Même si vous avez désactivé une stratégie dans l’initiative intégrée, une autre de l’initiative de la norme réglementaire déclenchera toujours la recommandation si celle-ci est nécessaire à la conformité. Vous ne pouvez pas désactiver les stratégies d’initiatives de normes réglementaires.
+La recommandation que vous souhaitez désactiver continuera de s’afficher si elle est requise par une norme réglementaire que vous avez appliquée à l’aide des outils de conformité réglementaire de Defender pour le cloud. Même si vous avez désactivé une stratégie dans l’initiative intégrée, une autre de l’initiative de la norme réglementaire déclenchera toujours la recommandation si celle-ci est nécessaire à la conformité. Vous ne pouvez pas désactiver les stratégies d’initiatives de normes réglementaires.
 
-Pour plus d’informations sur les recommandations, consultez [Gestion des recommandations de sécurité](security-center-recommendations.md).
+Pour plus d’informations sur les recommandations, consultez [Gestion des recommandations de sécurité](review-security-recommendations.md).
 
-1. Dans la section **Stratégie et conformité** de Security Center, sélectionnez **Stratégie de sécurité**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Stratégie de sécurité**.
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Lancement du processus de gestion des stratégies dans Azure Security Center.":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Démarrage du processus de gestion des stratégies dans Microsoft Defender pour le cloud.":::
 
 1. Sélectionnez le groupe d'abonnements ou d'administration pour lequel vous souhaitez désactiver la recommandation (et la stratégie).
 
    > [!NOTE]
    > N’oubliez pas qu’un groupe d’administration applique ses stratégies à ses abonnements. Par conséquent, si vous désactivez la stratégie d’un abonnement et que celui-ci appartient à un groupe d’administration qui utilise encore la même stratégie, vous continuez à recevoir les recommandations de la stratégie. La stratégie sera toujours appliquée à partir du niveau d’administration, et les suggestions seront toujours générées.
 
-1. Dans les sections **Security Center stratégie par défaut**, **secteur & normes réglementaires** ou **initiatives personnalisées**, sélectionnez l’initiative appropriée contenant la stratégie que vous souhaitez désactiver.
+1. Dans les sections **Stratégie par défaut**, **Normes réglementaires et de l’industrie** ou **Vos initiatives personnalisées**, sélectionnez l’initiative appropriée contenant la stratégie que vous souhaitez désactiver.
 
 1. Ouvrez la section **Paramètres** et recherchez la stratégie qui appelle la suggestion que vous souhaitez désactiver.
 
@@ -107,13 +110,13 @@ Certaines stratégies de vos initiatives peuvent être désactivées par défaut
 
 Pour activer une stratégie désactivée et vous assurer qu’elle est évaluée pour vos ressources :
 
-1. Dans la section **Stratégie et conformité** de Security Center, sélectionnez **Stratégie de sécurité**.
+1. Dans le menu de Defender pour le cloud, sélectionnez **Stratégie de sécurité**.
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Lancement du processus de gestion des stratégies dans Azure Security Center.":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Démarrage du processus de gestion des stratégies dans Microsoft Defender pour le cloud.":::
 
 1. Sélectionnez le groupe d'abonnements ou d'administration pour lequel vous souhaitez activer la recommandation (et la stratégie).
 
-1. Dans les sections **Security Center stratégie par défaut**, **secteur & normes réglementaires** ou **initiatives personnalisées**, sélectionnez l’initiative appropriée avec la stratégie que vous souhaitez activer.
+1. Dans les sections **Stratégie par défaut**, **Normes réglementaires et de l’industrie** ou **Vos initiatives personnalisées**, sélectionnez l’initiative appropriée contenant la stratégie que vous souhaitez désactiver.
 
 1. Ouvrez la section **Paramètres** et recherchez la stratégie qui appelle la suggestion que vous souhaitez désactiver.
 
@@ -131,4 +134,4 @@ Cette page a décrit les stratégies de sécurité. Pour accéder à des informa
 - [Découvrez comment définir des stratégies avec PowerShell](../governance/policy/assign-policy-powershell.md)
 - [Découvrez comment modifier une stratégie de sécurité dans Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [Découvrez comment définir une stratégie qui couvre plusieurs abonnements ou s’applique à des groupes d’administration avec Azure Policy](../governance/policy/overview.md)
-- [Découvrez comment activer Security Center sur tous les abonnements d’un groupe d’administration](onboard-management-group.md)
+- [Découvrez comment activer Defender pour le cloud sur tous les abonnements d’un groupe d’administration](onboard-management-group.md)
