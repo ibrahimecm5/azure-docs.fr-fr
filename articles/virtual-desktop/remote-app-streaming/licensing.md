@@ -1,5 +1,5 @@
 ---
-title: Tarification de l’accès par utilisateur gestion de Azure Virtual Desktop pour la diffusion d’applications distantes - Azure
+title: Présentation de la tarification par accès utilisateur d’Azure Virtual Desktop pour la diffusion en continu d’applications distantes – Azure
 description: Une présentation des licences d’Azure Virtual Desktop pour le streaming d’applications distantes.
 services: virtual-desktop
 author: Heidilohr
@@ -8,24 +8,29 @@ ms.topic: conceptual
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2fb4ec6ebe5960a6a782b3d76fe2aaec91603302
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 563d49ff66bdcd81a37a0bf1b12e910f16f2f5ff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798793"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036691"
 ---
 # <a name="understanding-licensing-and-per-user-access-pricing"></a>Compréhension de la tarification des licences et de l’accès par utilisateur
 
 Cet article explique les conditions de licence pour l’utilisation du bureau virtuel Azure pour diffuser des applications distantes vers des utilisateurs externes. Dans cet article, vous apprendrez comment la gestion des licences des bureaux virtuels Azure pour les utilisateurs externes est différente de celle des utilisateurs internes, la tarification de l’accès par utilisateur et la licence d’autres produits que vous prévoyez d’utiliser avec le bureau virtuel Azure.
 
-## <a name="licensing-azure-virtual-desktop-for-external-users"></a>Licence Azure Virtual Desktop pour les utilisateurs externes
+## <a name="internal-users-and-external-users"></a>Utilisateurs internes et externes
 
-Vous pouvez utiliser Azure Virtual Desktop de deux manières différentes. Chaque méthode présente des conditions de licence différentes :
+Dans le contexte de la fourniture d’une infrastructure virtualisée avec Azure Virtual Desktop, les **utilisateurs internes** font référence aux membres de votre propre organisation, par exemple les employés d’une entreprise ou les élèves d’un établissement scolaire. Les **utilisateurs externes**, eux, ne sont pas membres de votre organisation (par exemple les clients d’une entreprise).
 
-- Pour la diffusion en continu de RemoteApps et de postes de travail à des utilisateurs internes. Par exemple, la société de fabrication Fabrikam, Inc. peut utiliser Azure Virtual Desktop pour fournir aux employés de Fabrikam un accès aux stations de travail virtuelles et aux applications métier. Dans ce cas, Fabrikam doit acheter l’une des licences éligibles énumérées dans [Tarification de Azure Virtual Desktop](https://azure.microsoft.com/pricing/details/virtual-desktop/) pour chacun de ses employés accédant à Azure Virtual Desktop.
+>[!NOTE]
+>Veillez à ne pas confondre les *utilisateurs* externes avec les *identités* externes. À l’heure actuelle, Azure Virtual Desktop ne prend pas en charge les identités externes, notamment les comptes Invités et les identités B2B (Business-to-Business). Que vous traitiez des utilisateurs internes ou externes avec Azure Virtual Desktop, vous devez créer et gérer des identités pour ces utilisateurs. La tarification par accès utilisateur ne constitue pas un moyen d’activer les comptes d’utilisateurs Invités avec Azure Virtual Desktop. Pour plus d’informations, consultez [Recommandations architecturales](architecture-recs.md).
 
-- Pour la diffusion en continu de RemoteApps et de postes de travail à des utilisateurs internes. Par exemple, un fournisseur de logiciels appelé Contoso peut utiliser Azure Virtual Desktop pour traiter des flux distants de l’application de productivité de Contoso pour les clients de Contoso (les utilisateurs qui ne sont pas des employés de Contoso). Dans ce cas, Contoso doit s’inscrire au tarif de l’accès par utilisateur d’Azure Virtual Desktop. Ce type de licence permet à Contoso de payer pour les droits d’accès à Azure Virtual Desktop pour le compte de ces utilisateurs via un compteur Azure en fonction du nombre d’utilisateurs qui accèdent à Azure Virtual Desktop chaque mois. Les utilisateurs du déploiement n’ont pas besoin d’une licence distincte comme Microsoft 365 pour accéder à Azure Virtual Desktop.
+Les licences Azure Virtual Desktop fonctionnent différemment pour les utilisateurs internes et externes. Penchez-vous sur les exemples suivants :
+
+- Une société de fabrication du nom de Fabrikam, Inc. peut utiliser Azure Virtual Desktop pour fournir à ses employés (utilisateurs internes) un accès aux stations de travail virtuelles et aux applications métier. Puisqu’elle traite des utilisateurs internes, elle doit acheter l’une des licences éligibles de la liste [Tarification d’Azure Virtual Desktop](https://azure.microsoft.com/pricing/details/virtual-desktop/) pour chaque employé qui devra accéder à Azure Virtual Desktop.
+
+- Un éditeur de logiciels du nom de Contoso peut utiliser Azure Virtual Desktop pour vendre des flux distants de son application de productivité à ses clients (utilisateurs externes). Puisqu’il traite des utilisateurs externes, il doit s’inscrire à la tarification par accès utilisateur d’Azure Virtual Desktop. Cela lui permet de s’acquitter des droits d’accès à Azure Virtual Desktop pour le compte des utilisateurs externes qui se connectent au déploiement de Contoso. Les utilisateurs n’ont pas besoin d’une licence distincte comme Microsoft 365 pour accéder à Azure Virtual Desktop. Contoso doit dans tous les cas créer et gérer des identités pour ces utilisateurs externes.
 
 ## <a name="per-user-access-pricing-for-azure-virtual-desktop"></a>Tarification par accès utilisateur pour Azure Virtual Desktop
 
@@ -49,19 +54,19 @@ Azure Virtual Desktop émet au plus un coût d’accès pour un utilisateur donn
 
 ## <a name="comparing-licensing-options"></a>Comparaison des options de licence
 
-Comme indiqué dans [Tarification de l’accès par utilisateur pour Azure Virtual Desktop](#per-user-access-pricing-for-azure-virtual-desktop), vous pouvez choisir parmi deux types de licences :
+Voici un résumé des deux types de licences pour Azure Virtual Desktop que vous pouvez choisir :
 
-- Une licence Windows ou Microsoft 365 :
-   - Octroie des droits d’accès à Azure Virtual Desktop pour les utilisateurs internes uniquement.
-   - Payé à l’avance par le biais d’un abonnement.
-   - Même coût par utilisateur chaque mois, quel que soit le comportement de l’utilisateur
-   - Comprend des droits à d’autres produits et services Microsoft
+- Une licence Windows ou Microsoft 365 éligible :
+  - Accorde des droits d’accès à Azure Virtual Desktop pour les utilisateurs internes uniquement
+  - Réglée à l’avance sous la forme d’un abonnement
+  - Même coût par utilisateur chaque mois, quel que soit le comportement de l’utilisateur
+  - Comprend des droits à d’autres produits et services Microsoft
 
 - Tarification de l’accès par utilisateur :
-   - Octroie des droits d’accès à Azure Virtual Desktop pour les utilisateurs externes uniquement
-   - Paiement à l’aide d’un compteur Azure
-   - Coût dynamique par utilisateur chaque mois basé sur le comportement de l’utilisateur
-   - Comprend uniquement des droits d’accès à Azure Virtual Desktop
+  - Octroie des droits d’accès à Azure Virtual Desktop pour les utilisateurs externes uniquement
+  - Paiement à l’aide d’un compteur Azure
+  - Coût par utilisateur et par mois variable selon le comportement utilisateur
+  - Comprend uniquement des droits d’accès à Azure Virtual Desktop
 
 ## <a name="licensing-other-products-and-services-for-use-with-azure-virtual-desktop"></a>Licences d’autres produits et services à utiliser avec Azure Virtual Desktop
 

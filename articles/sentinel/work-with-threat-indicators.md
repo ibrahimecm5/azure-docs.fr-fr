@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 10/17/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a00a0c0d3507323314adb3dbb1052051f8caf184
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: cfa9d14d13270a038586d5c0949a510ccd5ad44b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131422099"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019517"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>Utiliser des indicateurs de menace dans Azure Sentinel
 
@@ -204,12 +204,12 @@ Dans la page **Threat Intelligence** :
 
 La règle **Analyse de correspondance Microsoft Threat Intelligence** est actuellement prise en charge pour les sources de journal suivantes :
 
-| Source de journal | Description |
-| --------- | --------- |
-| [CEF](connect-common-event-format.md) | La correspondance est établie pour tous les journaux CEF ingérés dans la table **CommonSecurityLog** de Log Analytics, sauf pour ceux où la valeur `DeviceVendor` est `Cisco`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux CEF, veillez à mapper le domaine dans le champ `RequestURL` du journal CEF. |
-| [DNS](./data-connectors-reference.md#windows-dns-server-preview) | La correspondance est établie pour tous les journaux DNS qui sont des requêtes DNS de recherche adressées par des clients aux services DNS (`SubType == "LookupQuery"`). Les requêtes DNS sont traitées uniquement pour les requêtes IPv4 (`QueryType=”A”`) et IPv6 (`QueryType=” AAAA”`).<br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux DNS, aucun mappage manuel de colonnes n’est nécessaire, car toutes les colonnes du serveur DNS Windows sont standard, et les domaines se trouvent dans la colonne `Name` par défaut. |
-| [Syslog](connect-syslog.md) | La correspondance est actuellement établie uniquement pour les événements Syslog où `Facility` est `cron`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec Syslog, aucun mappage manuel de colonnes n’est nécessaire. Les détails sont fournis dans le champ `SyslogMessage` du Syslog par défaut, et la règle analyse le domaine directement à partir du SyslogMessage. |
-|  |  |
+|Source de journal  |Description  |
+|---------|---------|
+|[CEF](connect-common-event-format.md)     |  La correspondance est établie pour tous les journaux CEF ingérés dans la table **CommonSecurityLog** de Log Analytics, sauf pour ceux où la valeur `DeviceVendor` est `Cisco`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux CEF, veillez à mapper le domaine dans le champ `RequestURL` du journal CEF.      |
+|[DNS](./data-connectors-reference.md#domain-name-server)     | La correspondance est établie pour tous les journaux DNS qui sont des requêtes DNS de recherche adressées par des clients aux services DNS (`SubType == "LookupQuery"`). Les requêtes DNS sont traitées uniquement pour les requêtes IPv4 (`QueryType=”A”`) et IPv6 (`QueryType=” AAAA”`).<br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec les journaux DNS, aucun mappage manuel de colonnes n’est nécessaire, car toutes les colonnes du serveur DNS Windows sont standard, et les domaines se trouvent dans la colonne `Name` par défaut.   |
+|[Syslog](connect-syslog.md)     |  La correspondance est actuellement établie uniquement pour les événements Syslog où `Facility` est `cron`. <br><br>Pour faire correspondre le renseignement sur les menaces généré par Microsoft avec Syslog, aucun mappage manuel de colonnes n’est nécessaire. Les détails sont fournis dans le champ `SyslogMessage` du Syslog par défaut, et la règle analyse le domaine directement à partir du SyslogMessage.     |
+|     |         |
 
 
 ## <a name="workbooks-provide-insights-about-your-threat-intelligence"></a>Les classeurs fournissent des insights concernant le renseignement sur les menaces

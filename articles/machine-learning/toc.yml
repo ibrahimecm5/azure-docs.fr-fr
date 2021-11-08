@@ -42,12 +42,6 @@
           href: tutorial-1st-experiment-sdk-train.md
         - name: 3. Utiliser vos propres données
           href: tutorial-1st-experiment-bring-data.md
-    - name: CLI (v2)
-      items:
-        - name: "Entraîner des modèles avec CLI\_(v2)"
-          href: how-to-train-cli.md
-        - name: Accéder aux ressources avec des points de terminaison managés
-          href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
     - name: Notebooks Jupyter
       items:
         - name: Classification d’images (données MNIST)
@@ -115,16 +109,14 @@
     - name: Notebooks Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Exemple de dépôt
+    - name: Référentiel d’exemples
       displayName: 'example, examples, jupyter, python, notebook, github'
       href: 'https://github.com/Azure/azureml-examples'
     - name: Exemples et jeux de données du concepteur
-      displayName: 'example, examples, studio, pipelines, data sets, modules'
+      displayName: 'example, examples, studio, pipelines, data sets, modules, components'
       href: samples-designer.md
     - name: Exemples MLOps de bout en bout
       href: 'https://github.com/microsoft/MLOps'
-    - name: Open Datasets (public)
-      href: ../open-datasets/samples.md?context=azure%2fmachine-learning%2fcontext%2fml-context
 - name: Concepts
   items:
     - name: Entraîner des modèles
@@ -172,6 +164,8 @@
           href: concept-open-source.md
         - name: Pipelines ML
           href: concept-ml-pipelines.md
+        - name: Composants ML
+          href: concept-component.md
         - name: MLflow
           href: concept-mlflow.md
         - name: ML responsable
@@ -327,12 +321,12 @@
               href: how-to-create-attach-compute-studio.md
     - name: Configurer un environnement
       items:
-        - name: "Installer et configurer l’interface CLI\_(v2)"
-          displayName: 'azurecli, mlops'
-          href: how-to-configure-cli.md
         - name: Configurer des environnements de développement
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: "Installer et configurer l’interface CLI\_(v2)"
+          displayName: 'azurecli, mlops'
+          href: how-to-configure-cli.md
         - name: Configurer un environnement de studio
           items:
             - name: Gérer des environnements dans le studio
@@ -365,7 +359,7 @@
           displayName: github gitlab
           href: concept-train-model-git-integration.md
         - name: Guide pratique pour résoudre les problèmes d’environnement
-          displayName: 'troubleshoot, envrionment, debug, image'
+          displayName: 'troubleshoot, environment, debug, image'
           href: how-to-troubleshoot-environments.md
     - name: Utilisation des données
       items:
@@ -434,10 +428,6 @@
               href: how-to-export-delete-data.md
     - name: Entraîner des modèles
       items:
-        - name: "Entraîner avec l’interface CLI\_(v2)"
-          href: how-to-train-cli.md
-        - name: Entraîner avec l’API REST
-          href: how-to-train-with-rest.md
         - name: Entraîner avec l’interface utilisateur de création de tâche
           href: how-to-train-with-ui.md
         - name: Entraîner avec le SDK Python
@@ -493,14 +483,21 @@
             - name: Utiliser Key Vault lors de l’entraînement
               displayName: secrets keyvault
               href: how-to-use-secrets-in-runs.md
+        - name: "Entraîner avec l’interface CLI\_(v2)"
+          href: how-to-train-cli.md
+        - name: Entraîner avec l’API REST
+          href: how-to-train-with-rest.md
+        - name: Gérer les environnements avec l’interface CLI (v2)
+          displayName: environment
+          href: how-to-manage-environments-v2.md
         - name: Interpréter et expliquer les modèles
           displayName: interpretability
           items:
             - name: Interpréter les modèles ML
-              displayName: 'SDK, interpret, explain, explanability, interpretability'
+              displayName: 'SDK, interpret, explain, explainability, interpretability'
               href: how-to-machine-learning-interpretability-aml.md
             - name: Expliquer les modèles de ML automatisé
-              displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
+              displayName: 'SDK, interpret, interpret, explain, explainability, interpretability, automated ML, automl, auto ml'
               href: how-to-machine-learning-interpretability-automl.md
         - name: Évaluer et atténuer l’impartialité d’un modèle
           href: how-to-machine-learning-fairness-aml.md
@@ -552,20 +549,34 @@
               items:
                 - name: Déployer un modèle de ML avec un point de terminaison en ligne
                   href: how-to-deploy-managed-online-endpoints.md
+                - name: Déployer un modèle MLflow avec un point de terminaison en ligne managé
+                  href: how-to-deploy-mlflow-models-online-endpoints.md
                 - name: Déployer un conteneur personnalisé avec un point de terminaison en ligne managé
                   href: how-to-deploy-custom-container.md
                 - name: Déploiement sécurisé pour les points de terminaison en ligne
                   href: how-to-safely-rollout-managed-endpoints.md
                 - name: Utiliser des points de terminaison en ligne managés dans le studio
                   href: how-to-use-managed-online-endpoint-studio.md
+                - name: Utilisation de hautes performances avec Triton
+                  href: how-to-deploy-with-triton.md
+                - name: Accéder au stockage avec un point de terminaison en ligne managé et une identité managée
+                  href: how-to-access-resources-from-endpoints-managed-identities.md
                 - name: Affichage des coûts des points de terminaison en ligne managés
                   href: how-to-view-online-endpoints-costs.md
                 - name: Utiliser REST pour déployer un modèle comme point de terminaison en ligne managé
                   href: how-to-deploy-with-rest.md
+                - name: Déployer un modèle AutoML avec un point de terminaison en ligne managé
+                  href: how-to-deploy-automl-endpoint.md
+                - name: Mettre à l’échelle des points de terminaison managés automatiquement
+                  href: how-to-autoscale-endpoints.md
+                - name: Affichage des coûts des points de terminaison en ligne managés
+                  href: how-to-view-online-endpoints-costs.md
                 - name: Liste des références SKU de VM pour les points de terminaison en ligne managés
                   href: reference-managed-online-endpoints-vm-sku-list.md
                 - name: Surveillance des points de terminaison en ligne managés
                   href: how-to-monitor-online-endpoints.md
+                - name: Déboguer des points de terminaison en ligne managés localement VS Code
+                  href: how-to-debug-managed-online-endpoints-visual-studio-code.md
                 - name: Résoudre les problèmes liés aux points de terminaison en ligne managés
                   href: how-to-troubleshoot-online-endpoints.md
             - name: Batch
@@ -574,6 +585,8 @@
                   href: how-to-use-batch-endpoint.md
                 - name: Points de terminaison de traintement de lots dans Studio
                   href: how-to-use-batch-endpoints-studio.md
+                - name: Utiliser REST pour déployer un modèle en tant que point de terminaison de traitement de lots
+                  href: how-to-deploy-batch-with-rest.md
                 - name: Résoudre les problèmes liés aux points de terminaison de traitement de lots
                   href: how-to-troubleshoot-batch-endpoints.md
         - name: Cibles de déploiement
@@ -626,10 +639,8 @@
               href: how-to-enable-data-collection.md
             - name: Surveiller avec Application Insights
               href: how-to-enable-app-insights.md
-        - name: Utilisation de hautes performances avec Triton
-          href: how-to-deploy-with-triton.md
         - name: Déployer le service d’inférence chiffrée
-          displayName: 'homomorhic,encryption,deployment'
+          displayName: 'homomorphic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
         - name: Modèles de profil
           displayName: profile resource requirement
@@ -660,6 +671,8 @@
           items:
             - name: Créer des pipelines ML (Python)
               href: how-to-create-machine-learning-pipelines.md
+            - name: "Créer des pipelines ML à l’aide de composants (CLI\_v2)"
+              href: how-to-create-component-pipelines-cli.md
             - name: "Déplacement de données au sein d’un pipeline\_ML et vers un autre pipeline\_ML (Python)"
               href: how-to-move-data-in-out-of-pipelines.md
             - name: Utiliser le ML automatisé dans des pipelines ML (Python)
@@ -717,11 +730,11 @@
           href: how-to-debug-parallel-run-step.md
 - name: Informations de référence
   items:
-    - name: API REST
-      href: /rest/api/azureml/
     - name: Kit de développement logiciel (SDK) Python
       displayName: 'api, core, package, python, class'
       href: /python/api/overview/azure/ml/intro
+    - name: API REST
+      href: /rest/api/azureml/
     - name: CLI (v2)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: /cli/azure/ml/
@@ -729,19 +742,35 @@
       items:
         - name: Vue d’ensemble
           href: reference-yaml-overview.md
-        - name: Éléments multimédias
+        - name: Syntaxe de base
+          href: reference-yaml-core-syntax.md
+        - name: Espace de travail
+          href: reference-yaml-workspace.md
+        - name: Environnement
+          href: reference-yaml-environment.md
+        - name: Dataset
+          href: reference-yaml-dataset.md
+        - name: Modèle
+          href: reference-yaml-model.md
+        - name: Calcul
           items:
-            - name: Espace de travail
-              href: reference-yaml-workspace.md
-            - name: Calcul
-              href: reference-yaml-compute.md
-            - name: Environnement
-              href: reference-yaml-environment.md
-            - name: Dataset
-              href: reference-yaml-dataset.md
-            - name: Modèle
-              href: reference-yaml-model.md
-        - name: Magasins de données
+            - name: Cluster de calcul (AmlCompute)
+              href: reference-yaml-compute-aml.md
+            - name: Instance de calcul
+              href: reference-yaml-compute-instance.md
+            - name: Machine virtuelle attachée
+              href: reference-yaml-compute-vm.md
+        - name: Travail
+          items:
+            - name: Commande
+              href: reference-yaml-job-command.md
+            - name: Sweep
+              href: reference-yaml-job-sweep.md
+            - name: Pipeline
+              href: reference-yaml-job-pipeline.md
+            - name: Composant
+              href: reference-yaml-job-component.md
+        - name: Magasin de données
           items:
             - name: Objets blob Azure
               href: reference-yaml-datastore-blob.md
@@ -751,28 +780,22 @@
               href: reference-yaml-datastore-data-lake-gen1.md
             - name: Azure Data Lake Gen2
               href: reference-yaml-datastore-data-lake-gen2.md
-        - name: travaux
-          items:
-            - name: Commande
-              href: reference-yaml-job-command.md
-            - name: Sweep
-              href: reference-yaml-job-sweep.md
-        - name: Points de terminaison
+        - name: Point de terminaison
           items:
             - name: Managé en ligne (en temps réel)
               href: reference-yaml-endpoint-managed-online.md
-            - name: Lot managé
-              href: reference-yaml-endpoint-managed-batch.md
-            - name: Kubernetes (k8s) en ligne
-              href: reference-yaml-endpoint-k8s-online.md
-        - name: Déploiements
+            - name: Batch
+              href: reference-yaml-endpoint-batch.md
+        - name: Déploiement
           items:
             - name: Managé en ligne (en temps réel)
               href: reference-yaml-deployment-managed-online.md
-            - name: Lot managé
-              href: reference-yaml-deployment-managed-batch.md
-            - name: Kubernetes (k8s) en ligne
-              href: reference-yaml-deployment-k8s-online.md
+            - name: Batch
+              href: reference-yaml-deployment-batch.md
+        - name: Composant
+          items:
+            - name: Commande
+              href: reference-yaml-component-command.md
     - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
@@ -796,9 +819,12 @@
       href: /cli/azure/ml
 - name: Ressources
   items:
-    - name: Notes de publication
+    - name: Notes de publication du kit SDK Python
       displayName: 'what''s, new, issues, bugs'
       href: azure-machine-learning-release-notes.md
+    - name: Notes de publication de CLI (v2)
+      displayName: 'what''s, new, issues, bugs'
+      href: azure-machine-learning-release-notes-cli-v2.md
     - name: Feuille de route Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Tarifs

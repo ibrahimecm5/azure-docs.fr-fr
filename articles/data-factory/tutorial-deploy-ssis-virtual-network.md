@@ -1,72 +1,50 @@
 ---
-title: Didacticiel pour configurer un runtime d’intégration Azure-SSIS pour joindre un réseau virtuel
-description: Découvrez comment joindre un runtime d’intégration Azure-SSIS à un réseau virtuel Azure.
-author: chugugrace
-ms.author: chugu
+title: Tutoriel pour configurer un runtime Azure-SSIS Integration Runtime de façon à le joindre à un réseau virtuel
+description: Découvrez comment configurer un runtime Azure-SSIS Integration Runtime de façon à le joindre à un réseau virtuel.
+author: swinarko
+ms.author: sawinark
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 1/10/2020
-ms.openlocfilehash: a79229537b76dc62bca48985720f9c911de0c68c
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.date: 10/27/2021
+ms.openlocfilehash: 8ee28e9c310002c0a0b2e29a77b35c71045c9fc4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400664"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040855"
 ---
-# <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Configurer un runtime d’intégration (IR) Azure-SQL Server Integration Services (SSIS) pour joindre un réseau virtuel
+# <a name="configure-azure-ssis-integration-runtime-to-join-a-virtual-network"></a>Configuration d’un runtime Azure-SSIS Integration Runtime de façon à le joindre à un réseau virtuel
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ce didacticiel décrit les étapes de base de l’utilisation du Portail Azure pour configurer un runtime d’intégration (IR) Azure-SQL Server Integration Services (SSIS) afin de joindre un réseau virtuel.
+Ce tutoriel présente la procédure minimale à suivre sur le Portail Azure et l’interface utilisateur (IU) Azure Data Factory (ADF) pour configurer un runtime Azure-SSIS (SQL Server Integration Services) Integration Runtime (IR) de façon à le joindre à un réseau virtuel suivant la méthode d’injection rapide.  Procédez comme suit :
 
-Procédez comme suit :
-
-- Configurez un réseau virtuel.
-- Joignez Azure-SSIS IR à un réseau virtuel à partir du portail Azure Data Factory.
+1. Configurez un réseau virtuel pour la méthode d’injection rapide sur le Portail Azure.
+1. Joignez votre runtime Azure-SSIS IR au réseau virtuel suivant la méthode d’injection rapide au moyen de l’IU ADF.
 
 ## <a name="prerequisites"></a>Prérequis
 
-- **Runtime d’intégration Azure SSIS**. Si vous n’avez pas de runtime d’intégration Azure-SSIS, [approvisionnez un runtime d’intégration Azure-SSIS dans Azure Data Factory](tutorial-deploy-ssis-packages-azure.md) avant de commencer.
+- **Runtime Azure-SSIS IR** : si vous n’en possédez pas déjà un, commencez par [créer un runtime Azure-SSIS IR au moyen de l’IU ADF](tutorial-deploy-ssis-packages-azure.md).
 
-- **Autorisation utilisateur**. L’utilisateur qui crée Azure-SSIS IR doit disposer de l’[attribution de rôle](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) au moins sur la ressource Azure Data Factory avec l’une des options ci-dessous :
+- **Réseau virtuel** : si vous n’en possédez pas déjà un, commencez par [créer un réseau virtuel au moyen du Portail Azure](../virtual-network/quick-create-portal.md). Veillez à respecter les critères suivants :
+  - Il n’existe aucun verrou de ressource dans votre réseau virtuel.
+  - L’utilisateur qui crée le runtime Azure-SSIS IR dispose des autorisations de contrôle d’accès en fonction du rôle (RBAC, Role-Based Access Control) nécessaires pour être joint à votre réseau virtuel ou votre sous-réseau. Consultez la section [Sélection des autorisations relatives aux réseaux virtuels](azure-ssis-integration-runtime-express-virtual-network-injection.md#perms).
 
-    - Utilisez le rôle Contributeur de réseaux intégré. Ce rôle inclut l’autorisation _Microsoft.Network/\*_ , mais dispose d’une étendue plus large que nécessaire.
-    - Créez un rôle personnalisé qui inclut uniquement l’autorisation _Microsoft.Network/virtualNetworks/\*/join/action_ nécessaire. Si vous voulez également apporter vos propres adresses IP publiques pour Azure-SSIS IR tout en le joignant à un réseau virtuel Azure Resource Manager, incluez également l’autorisation _Microsoft.Network/publicIPAddresses/*/join/action_ dans le rôle.
+Les configurations de réseau virtuel suivantes ne sont pas abordées dans ce tutoriel :
 
-- **Réseau virtuel**.
+- Vous utilisez une adresse IP publique statique pour le runtime Azure-SSIS IR.
+- Vous utilisez votre propre serveur DNS (Domain Name System).
+- Vous utilisez un groupe de sécurité réseau (NSG, Network Security Group).
+- Vous utilisez des itinéraires définis par l’utilisateur (UDR, User-Defined Route).
 
-    - Si vous n’avez pas de réseau virtuel, [créez un réseau virtuel à l’aide du Portail Azure](../virtual-network/quick-create-portal.md).
-
-    - Vérifiez que le groupe de ressources du réseau virtuel peut créer et supprimer certaines ressources réseau Azure.
-    
-        Le runtime d’intégration Azure-SSIS doit créer certaines ressources réseau sous le même groupe de ressources que le réseau virtuel. Ces ressources incluent :
-        - Un équilibreur de charge Azure, dont le nom est *\<Guid>-azurebatch-cloudserviceloadbalancer*
-        - Un groupe de sécurité réseau, dont le nom est *\<Guid>-azurebatch-cloudservicenetworksecuritygroup
-        - Une adresse IP publique Azure, avec le nom -azurebatch-cloudservicepublicip
-    
-        Ces ressources sont créées au démarrage de votre Azure-SSIS IR. Elles sont supprimées lorsqu’il est arrêté. Pour éviter de bloquer l’arrêt du runtime d’intégration Azure-SSIS IR, ne réutilisez pas ces ressources réseau dans vos autres ressources.
-
-    - Vérifiez qu’il n’existe aucun [verrou de ressource](../azure-resource-manager/management/lock-resources.md) sur le groupe de ressources/abonnement auquel appartient le réseau virtuel. Si vous configurez un verrou en lecture seule ou de suppression, le démarrage et l’arrêt du runtime d’intégration Azure-SSIS IR échoueront ou celui-ci ne répondra plus.
-
-    - Vérifiez qu’aucune affectation Azure Policy n’empêche la création des ressources suivantes sous le groupe de ressources/abonnement auquel appartient le réseau virtuel :
-        - Microsoft.Network/LoadBalancers
-        - Microsoft.Network/NetworkSecurityGroups
-
-- Les scénarios de **configuration réseau** ci-dessous ne sont pas abordés dans ce didacticiel :
-    - Si vous apportez vos propres adresses IP publiques pour Azure-SSIS IR.
-    - Si vous utilisez votre propre serveur DNS (Domain Name System).
-    - Si vous utilisez un groupe de sécurité réseau sur le sous-réseau.
-    - Si vous utilisez Azure ExpressRoute ou une route définie par l’utilisateur (UDR).
-    - Si vous utilisez un Azure-SSIS IR personnalisé.
-    
-    Pour plus d’informations, consultez [Configuration du réseau virtuel](azure-ssis-integration-runtime-virtual-network-configuration.md).
+Si vous souhaitez suivre ces étapes facultatives, consultez l’article [Méthode d’injection rapide de réseau virtuel](azure-ssis-integration-runtime-express-virtual-network-injection.md).
 
 ## <a name="configure-a-virtual-network"></a>Configurer un réseau virtuel
 
-Utilisez le portail Azure pour configurer un réseau virtuel avant de tenter d’y joindre une instance Azure-SSIS IR.
+Utilisez le Portail Azure pour configurer un réseau virtuel avant de tenter d’y joindre votre runtime Azure-SSIS IR.
 
-1. Démarrez Microsoft Edge ou Google Chrome. Actuellement, seuls les navigateurs web prennent en charge l’interface utilisateur.
+1. Démarrez Microsoft Edge ou Google Chrome. À l’heure actuelle, seuls ces navigateurs Web prennent en charge l’IU ADF.
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 
@@ -74,43 +52,29 @@ Utilisez le portail Azure pour configurer un réseau virtuel avant de tenter d�
 
 1. Filtrez et sélectionnez votre réseau virtuel dans la liste.
 
-1. Dans la page **Réseau virtuel**, sélectionnez **Propriétés**.
+1. Dans le menu de gauche, sélectionnez **Réseaux** :
 
-1. Sélectionnez le bouton Copier au niveau de **ID DE RESSOURCE** pour copier l’ID de ressource du réseau virtuel dans le Presse-papiers. Enregistrez dans OneNote ou un fichier l’ID se trouvant dans le Presse-papiers.
+   - Veillez à ce qu’il existe un sous-réseau auquel vous pouvez joindre votre runtime Azure-SSIS IR. Consultez la section [Sélection d’un sous-réseau](azure-ssis-integration-runtime-express-virtual-network-injection.md#subnet).
 
-1. Dans le menu de gauche, sélectionnez **Sous-réseaux**.
+   - Veillez à ce que le sous-réseau sélectionné soit délégué à Azure Batch. Consultez la section [Délégation d’un sous-réseau à Azure Batch](azure-ssis-integration-runtime-virtual-network-configuration.md#delegatesubnet).
 
-    - Vérifiez que le sous-réseau sélectionné dispose de suffisamment d’espace d’adressage pour le runtime d’intégration Azure-SSIS IR. Les adresses IP disponibles doivent représenter au moins le double du nombre de nœuds de runtime d’intégration. Azure réserve des adresses IP dans chaque sous-réseau. Ces adresses ne peuvent pas être utilisées. Les première et dernière adresse IP des sous-réseaux sont réservées à la conformité du protocole, et trois adresses supplémentaires sont utilisées pour les services Azure. Pour plus d’informations, consultez [Existe-t-il des restrictions sur l’utilisation des adresses IP au sein de ces sous-réseaux ?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
-    - Ne sélectionnez pas le GatewaySubnet pour déployer un runtime d’intégration Azure-SSIS IR. Il est réservé aux passerelles de réseau virtuel.
-    - N'utilisez pas un sous-réseau qui est exclusivement occupé par d'autres services Azure (par exemple, SQL Database SQL Managed Instance, App Service, etc.).
+1. Vérifiez que *Microsoft.Batch* constitue un fournisseur de ressources inscrit dans l’abonnement Azure comportant le réseau virtuel auquel votre runtime Azure-SSIS IR doit être joint. Pour des instructions détaillées, consultez la section [Inscription d’Azure Batch comme fournisseur de ressources](azure-ssis-integration-runtime-virtual-network-configuration.md#registerbatch).
 
-1. Vérifiez que le fournisseur Azure Batch est bien inscrit dans l’abonnement Azure qui contient le réseau virtuel. Si ce n’est pas le cas, inscrivez le fournisseur Azure Batch. Si vous possédez déjà un compte Azure Batch dans votre abonnement, ce dernier est inscrit pour Azure Batch. (Si vous créez le runtime d’intégration Azure SSIS dans le portail Data Factory, le fournisseur Azure Batch est inscrit automatiquement pour vous.)
+## <a name="join-azure-ssis-ir-to-the-virtual-network"></a>Jonction du runtime Azure-SSIS IR à un réseau virtuel
 
-   1. Dans le menu de gauche du Portail Azure, sélectionnez **Abonnements**.
+Maintenant que vous avez configuré un réseau virtuel, vous pouvez y joindre votre runtime Azure-SSIS IR :
 
-   1. Sélectionnez votre abonnement.
-
-   1. À gauche, sélectionnez **Fournisseurs de ressources**, puis confirmez que **Microsoft.Batch** est un fournisseur inscrit.
-
-   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png" alt-text="Confirmation de l’état &quot;Inscrit&quot;":::
-
-   Si **Microsoft.Batch** ne figure pas dans la liste, il vous faut l’inscrire. Pour cela, [créez un compte Azure Batch vide](../batch/batch-account-create-portal.md) dans votre abonnement. Vous pourrez le supprimer par la suite.
-
-## <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>Joindre le runtime d’intégration Azure-SSIS à un réseau virtuel
-
-Après avoir configuré votre réseau virtuel Azure Resource Manager ou votre réseau virtuel classique, vous pouvez joindre le runtime d’intégration Azure-SSIS IR au réseau virtuel :
-
-1. Démarrez Microsoft Edge ou Google Chrome. Actuellement, seuls les navigateurs web prennent en charge l’interface utilisateur.
+1. Démarrez Microsoft Edge ou Google Chrome. À l’heure actuelle, seuls ces navigateurs Web prennent en charge l’IU ADF.
 
 1. Dans le menu de gauche du [Portail Azure](https://portal.azure.com), sélectionnez **Fabriques de données**. Si vous ne voyez pas **Fabriques de données** dans le menu, sélectionnez **Autres services**, puis sélectionnez **Fabriques de données** dans la section **INTELLIGENCE + ANALYSE**.
 
    :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png" alt-text="Liste de fabriques de données":::
 
-1. Dans la liste, sélectionnez votre fabrique de données avec Azure-SSIS IR. La page d’accueil de votre fabrique de données apparaît. Sélectionnez la vignette **Créer et surveiller**. L’interface utilisateur de Data Factory apparaît sous un onglet séparé.
+1. Sélectionnez votre fabrique ADF avec Azure-SSIS IR dans la liste. La page d’accueil correspondante apparaît. Sélectionnez la vignette **Créer et surveiller**. L’IU ADF s’affiche sous un onglet distinct.
 
    :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png" alt-text="Page d’accueil Data Factory":::
 
-1. Dans l’interface utilisateur de Data Factory, basculez vers l’onglet **Modifier**, sélectionnez **Connexions**, puis basculez vers l’onglet **Runtimes d’intégration**.
+1. Dans l’IU ADF, basculez vers l’onglet **Modifier**, sélectionnez **Connexions**, puis basculez vers l’onglet **Runtimes d’intégration**.
 
    :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png" alt-text="Onglet &quot;Runtimes d’intégration&quot;":::
 
@@ -122,29 +86,43 @@ Après avoir configuré votre réseau virtuel Azure Resource Manager ou votre r�
 
    :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png" alt-text="Modifier le runtime d’intégration":::
 
-1. Dans le panneau de configuration du runtime d’intégration, passez les sections **Paramètres généraux** et **Paramètres SQL** en sélectionnant le bouton **Suivant**.
+1. Dans le volet **Configuration du runtime d’intégration**, parcourez les pages **Paramètres généraux** et **Paramètres de déploiement** en sélectionnant le bouton **Suivant**.
 
-1. Dans la section **Paramètres avancés** :
+1. Sur la page **Paramètres avancés**, procédez comme suit.
+
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet-express.png" alt-text="Paramètres avancés d’injection rapide de réseau virtuel":::
+
    1. Activez la case à cocher **Sélectionner un réseau virtuel auquel joindre votre Azure-SSIS Integration Runtime, autoriser ADF à créer certaines ressources réseau, et éventuellement apporter vos propres adresses IP publiques statiques**.
 
    1. Dans **Abonnement**, sélectionnez l’abonnement Azure possédant votre réseau virtuel.
 
    1. Pour **Emplacement**, sélectionnez le même emplacement que celui de votre runtime d’intégration.
 
-   1. Pour **Type**, sélectionnez le type de votre réseau virtuel : classique ou Azure Resource Manager. Nous vous recommandons de sélectionner un réseau virtuel Azure Resource Manager, car les réseaux virtuels classiques seront bientôt dépréciés.
+   1. Pour **Type**, sélectionnez le type de votre réseau virtuel : **Réseau virtuel Azure Resource Manager** ou Réseau virtuel Classic. Nous vous recommandons de sélectionner **Réseau virtuel Azure Resource Manager**, car le réseau virtuel Classic sera bientôt déconseillé.
 
-   1. Pour **Nom du réseau virtuel**, sélectionnez le nom de votre réseau virtuel. Il doit être identique à celui utilisé pour SQL Database avec des points de terminaison de service de réseau virtuel ou SQL Managed Instance avec un point de terminaison privé pour héberger le catalogue SSISDB. Il peut également s’agir de celui connecté à votre réseau local. Sinon, vous pouvez utiliser n’importe quel réseau virtuel pour apporter vos propres adresses IP publiques statiques pour Azure-SSIS IR.
+   1. Pour **Nom du réseau virtuel**, sélectionnez le nom de votre réseau virtuel. Il doit en principe s’agir du réseau ayant servi à configurer un point de terminaison de service de réseau virtuel ou un point de terminaison privé pour votre serveur Azure SQL Database qui héberge SSISDB. Ce peut également être le réseau joint par votre serveur Azure SQL Managed Instance qui héberge SSISDB. Il peut également s’agir de celui connecté à votre réseau local.
 
-   1. Pour **Nom du sous-réseau**, sélectionnez le nom du sous-réseau de votre réseau virtuel. Il doit être identique à celui utilisé pour SQL Database avec des points de terminaison de service de réseau virtuel pour héberger le catalogue SSISDB. Il peut également s'agir d'un autre sous-réseau que celui utilisé pour votre instance de SQL Managed Instance avec un point de terminaison privé pour héberger le catalogue SSISDB. Sinon, vous pouvez utiliser n’importe quel sous-réseau pour apporter vos propres adresses IP publiques statiques pour Azure-SSIS IR.
+   1. Pour **Nom du sous-réseau**, sélectionnez le nom du sous-réseau de votre réseau virtuel. Il doit en principe s’agir du réseau ayant servi à configurer un point de terminaison de service de réseau virtuel pour votre serveur Azure SQL Database qui héberge SSISDB. Ce peut également être un autre réseau que celui qui a été joint par votre serveur Azure SQL Managed Instance qui héberge SSISDB.
+
+   1. Pour **Méthode d’injection de réseau virtuel**, sélectionnez **Rapide** pour choisir la méthode d’injection rapide de réseau virtuel.
 
    1. Sélectionnez **Validation de réseau virtuel**. Si la validation réussit, sélectionnez **Continuer**.
 
-   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png" alt-text="Paramètres avancés avec un réseau virtuel":::
+1. Sur la page **Résumé**, passez en revue tous les paramètres de votre runtime Azure-SSIS IR, puis sélectionnez **Mettre à jour**.
 
-1. Dans la section **Résumé**, passez en revue tous les paramètres de votre runtime d’intégration Azure-SSIS IR. Sélectionnez ensuite **Mettre à jour**.
-
-1. Démarrez votre Azure-SSIS IR en sélectionnant le bouton **Démarrer** situé dans la colonne **Actions** en regard de votre Azure-SSIS IR. Le démarrage de votre Azure-SSIS IR qui joint un réseau virtuel prend 20 à 30 minutes environ.
+1. Lancez votre runtime Azure-SSIS IR en sélectionnant le bouton **Démarrer** situé dans la colonne **Actions** de votre runtime Azure-SSIS IR. Le démarrage de votre runtime Azure-SSIS IR joint à un réseau virtuel avec la méthode d’injection rapide prend environ 5 minutes.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En savoir plus sur la [jonction d’Azure-SSIS IR à un réseau virtuel](join-azure-ssis-integration-runtime-virtual-network.md).
+- [Configuration d’un réseau virtuel pour injecter un runtime Azure-SSIS IR](azure-ssis-integration-runtime-virtual-network-configuration.md)
+- [Méthode d’injection rapide de réseau virtuel](azure-ssis-integration-runtime-express-virtual-network-injection.md)
+- [Jonction d’un runtime Azure-SSIS IR à un réseau virtuel avec l’IU ADF](join-azure-ssis-integration-runtime-virtual-network-ui.md)
+- [Jonction d’un runtime Azure-SSIS IR à un réseau virtuel avec Azure PowerShell](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
+
+Pour plus d’informations sur le runtime d’intégration Azure-SSIS IR, voir les articles suivants : 
+
+- [Runtime d’intégration Azure SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Cet article fournit des informations conceptuelles générales sur les runtimes d’intégration, notamment sur Azure-SSIS IR. 
+- [Tutoriel : Déployer des packages SSIS vers Azure](tutorial-deploy-ssis-packages-azure.md). Ce didacticiel fournit des instructions pas à pas pour créer votre Azure-SSIS IR. Il utilise le serveur Azure SQL Database pour héberger SSISDB. 
+- [Créez un runtime d’intégration Azure-SSIS IR](create-azure-ssis-integration-runtime.md). Cet article s’appuie sur le didacticiel. Il donne des instructions sur pour utiliser un serveur Azure SQL Database configuré avec un point de terminaison de service de réseau virtuel/une règle de pare-feu IP/un point de terminaison privé ou une instance Azure SQL Managed Instance jointe à un réseau virtuel pour héberger SSISDB. Il vous montre comment joindre votre runtime Azure-SSIS IR à un réseau virtuel. 
+- [Monitor an Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime) (Surveiller le runtime d’intégration Azure-SSIS). Cet article vous montre comment récupérer et comprendre des informations sur votre runtime d’intégration Azure-SSIS.
+- [Manage an Azure-SSIS IR](manage-azure-ssis-integration-runtime.md) (Gérer un runtime d’intégration Azure-SSIS). Cet article vous explique comment arrêter, démarrer ou supprimer votre Azure-SSIS IR. Il vous montre également comment effectuer un scale-out de votre IR Azure-SSIS en ajoutant des nœuds.

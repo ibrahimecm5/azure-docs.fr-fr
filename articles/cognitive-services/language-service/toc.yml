@@ -8,6 +8,8 @@ items:
         href: overview.md
       - name: Nouveautés
         href: whats-new.md
+      - name: 'Migrer à partir de LUIS, QnA Maker et Analyse de texte'
+        href: concepts/migrate.md
       - name: Tarifs
         href: 'https://aka.ms/unifiedLanguagePricing'
       - name: Démarrage rapide de Language Studio
@@ -67,9 +69,9 @@ items:
           - name: API REST (v3.2-preview.2)
             items:
               - name: Création d’API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2176818'
+                href: 'https://aka.ms/ct-authoring-swagger'
               - name: API de prédiction du runtime
-                href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+                href: 'https://aka.ms/ct-runtime-swagger'
   - name: Reconnaissance d’entité nommée (NER) personnalisée (préversion)
     items:
       - name: Vue d’ensemble
@@ -115,9 +117,9 @@ items:
           - name: API REST (v3.2-preview.2)
             items:
               - name: Création d’API
-                href: 'https://go.microsoft.com/fwlink/?linkid=2176711'
+                href: 'https://aka.ms/ct-authoring-swagger'
               - name: API de prédiction du runtime
-                href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+                href: 'https://aka.ms/ct-runtime-swagger'
   - name: Compréhension du langage courant (préversion)
     items:
       - name: Vue d’ensemble
@@ -138,8 +140,6 @@ items:
             href: conversational-language-understanding/how-to/tag-utterances.md
           - name: Effectuer l’apprentissage d’un modèle
             href: conversational-language-understanding/how-to/train-model.md
-          - name: Afficher l’évaluation et le scoring du modèle
-            href: custom-named-entity-recognition/how-to/view-model-evaluation.md
           - name: Déployer un modèle et interroger l’API d’exécution
             href: conversational-language-understanding/how-to/deploy-query-model.md
       - name: Concepts
@@ -174,9 +174,6 @@ items:
         href: entity-linking/language-support.md
       - name: Utilisation responsable de l’IA
         items:
-          - name: Note de transparence pour la liaison d’entités
-            href: /legal/cognitive-services/language-service/transparency-note-entity-linking?context=/azure/cognitive-services/language-service/context/context
-            displayName: 'Transparency note for entity linking, entity linking transparency, Responsible AI, Responsible use of AI'
           - name: Intégration et utilisation responsable
             href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
             displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
@@ -504,20 +501,26 @@ items:
             href: question-answering/how-to/analytics.md
           - name: Gérer une base de connaissances
             href: question-answering/how-to/manage-knowledge-base.md
-          - name: Filtrer les réponses
-            href: ../qnamaker/how-to/query-knowledge-base-with-metadata.md?context=/azure/cognitive-services/language-service/context/context
           - name: Isolement réseau et points de terminaison privés
             href: question-answering/how-to/network-isolation.md
+          - name: Dépannage
+            href: question-answering/how-to/troubleshooting.md
       - name: Concepts
         items:
+          - name: Cycle de vie de développement
+            href: question-answering/concepts/project-development-lifecycle.md
           - name: Planification des ressources
             href: question-answering/concepts/azure-resources.md
+          - name: Planification des applications
+            href: question-answering/concepts/plan.md
           - name: Réponse précise
             href: question-answering/concepts/precise-answering.md
           - name: Score de confiance
             href: question-answering/concepts/confidence-score.md
-          - name: Bonnes pratiques
+          - name: Meilleures pratiques
             href: question-answering/concepts/best-practices.md
+          - name: limites
+            href: question-answering/concepts/limits.md
       - name: Tutoriels
         items:
           - name: Créer un bot FAQ
@@ -717,8 +720,6 @@ items:
     items:
       - name: Prise en charge multilingue et des emojis
         href: concepts/multilingual-emoji-support.md
-      - name: 'Migrer à partir de LUIS, QnA Maker et Analyse de texte'
-        href: concepts/migrate.md
   - name: Tutoriels
     items:
       - name: Utiliser Cognitive Services dans des applications de canevas

@@ -23,6 +23,8 @@
       href: notebook-get-started.md
     - name: "Créer un rapport Power\_BI depuis Azure Sentinel"
       href: powerbi.md
+    - name: Déployer et superviser des honeytokens de leurre
+      href: monitor-key-vault-honeytokens.md
 - name: Concepts
   items:
     - name: Prérequis Azure Sentinel
@@ -135,7 +137,7 @@
             - name: "Microsoft\_365 Defender"
               href: connect-microsoft-365-defender.md
             - name: Événements de sécurité Windows
-              href: connect-windows-security-events.md
+              href: data-connectors-reference.md#windows-security-events-via-ama
         - name: Instructions de connexion par type
           items:
             - name: 'Connecteurs Azure, Windows et Microsoft'
@@ -316,6 +318,8 @@
               href: registry-event-normalization-schema.md
             - name: Schéma de normalisation de réseau hérité
               href: normalization-schema-v1.md
+        - name: Ensembles d’événements de sécurité Windows
+          href: windows-security-event-id-reference.md
     - name: Informations de référence sur la détection et l’analyse
       items:
         - name: Principaux workbools Azure Sentinel

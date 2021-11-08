@@ -1,55 +1,64 @@
 ---
-title: Comprendre les rôles requis pour effectuer des tâches courantes dans Synapse
+title: Comprendre les rôles requis pour effectuer des tâches courantes dans Azure Synapse
 description: Cet article décrit le(s) rôle(s) RBAC Synapse intégré(s) requis pour accomplir des tâches spécifiques
 author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 12/1/2020
+ms.date: 11/02/2021
 ms.author: mesrivas
-ms.reviewer: jrasnick
-ms.openlocfilehash: 88597690ca4b3bf9cfd51b6e56eb9395df8ee1ba
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.reviewer: wiassaf
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 376c91c93c61f3070c5b81a24fd8ae145bdee6ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128583669"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018828"
 ---
-# <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Comprendre les rôles requis pour effectuer des tâches courantes dans Synapse
+# <a name="understand-the-roles-required-to-perform-common-tasks-in-azure-synapse"></a>Comprendre les rôles requis pour effectuer des tâches courantes dans Azure Synapse
 
 Cet article vous aidera à comprendre les différents rôles de type de contrôle d’accès en fonction du rôle (RBAC) Azure nécessaires pour effectuer vos tâches dans Synapse Studio.  
 
 ## <a name="synapse-studio-access-control-and-workflow-summary"></a>Résumé du contrôle d’accès et du flux de travail Synapse Studio 
 
-### <a name="accessing-synapse-studio-and-viewing-its-content"></a>Accès à Synapse Studio et affichage de son contenu
+### <a name="access-synapse-studio"></a>Accéder à Synapse Studio
 
-- Vous pouvez ouvrir Synapse Studio et afficher les détails de l’espace de travail, et répertorier l’une de ses ressources Azure (pools SQL, pools Spark ou runtimes d’intégration) si un rôle RBAC Synapse vous a été attribué ou si vous disposez du rôle Propriétaire, Contributeur ou Lecteur Azure sur l’espace de travail.
+Vous pouvez ouvrir Synapse Studio et afficher les détails de l’espace de travail, et répertorier l’une de ses ressources Azure (pools SQL, pools Spark ou runtimes d’intégration) si un rôle RBAC Synapse vous a été attribué ou si vous disposez du rôle Propriétaire, Contributeur ou Lecteur Azure sur l’espace de travail.
 
 ### <a name="resource-management"></a>Gestion des ressources
 
-- Vous pouvez créer des pools SQL, des pools Apache Spark et des runtimes d’intégration, si vous avez le statut de Propriétaire ou de Contributeur Azure sur l’espace de travail. Lorsque vous utilisez des modèles ARM pour un déploiement automatisé, vous devez être un contributeur Azure sur le groupe de ressources.
-- Vous pouvez suspendre ou mettre à l’échelle un pool SQL dédié, configurer un pool Spark ou un runtime d’intégration si vous êtes un Propriétaire ou un Contributeur Azure sur l’espace de travail ou cette ressource.
+Vous pouvez créer des pools SQL, des pools Data Explorer et des runtimes d’intégration, si vous avez le statut de Propriétaire ou de Contributeur Azure sur l’espace de travail. Lorsque vous utilisez des modèles ARM pour un déploiement automatisé, vous devez être un contributeur Azure sur le groupe de ressources.
 
-### <a name="viewing-and-editing-code-artifacts"></a>Affichage et modification des artefacts de code
+Vous pouvez suspendre ou mettre à l’échelle un pool SQL dédié, configurer un pool Spark ou un runtime d’intégration si vous êtes un Propriétaire ou un Contributeur Azure sur l’espace de travail ou cette ressource.
 
-- L’accès à Synapse Studio vous permet de créer des artefacts de code, par exemple des scripts SQL, des notebooks, des travaux Spark, des services liés, des pipelines, des flux de données, des déclencheurs et des informations d’identification.  (Ces artefacts peuvent être publiés ou enregistrés avec des autorisations supplémentaires.)  
-- Si vous êtes un Utilisateur d’artefact Synapse, un Éditeur d’artefact Synapse, un Contributeur Synapse ou un Administrateur Synapse, vous pouvez répertorier, ouvrir et modifier des artefacts de code déjà publiés.
+### <a name="view-and-edit-code-artifacts"></a>Afficher et modifier les artefacts de code
 
-### <a name="executing-your-code"></a>Exécution de votre code
+L’accès à Synapse Studio vous permet de créer des artefacts de code, par exemple des scripts SQL, des scripts KQL, des notebooks, des travaux Spark, des services liés, des pipelines, des flux de données, des déclencheurs et des informations d’identification.  (Ces artefacts peuvent être publiés ou enregistrés avec des autorisations supplémentaires.)  
 
-- Vous pouvez exécuter des scripts SQL sur des pools SQL si vous avez défini les autorisations SQL nécessaires dans les pools SQL.  
-- Vous pouvez exécuter des notebooks et des travaux Spark si vous disposez d’autorisations de type Opérateur de capacité de calcul Synapse sur l’espace de travail ou sur des pools Apache Spark spécifiques.  
-- Avec les autorisations Opérateur de capacité de calcul sur l’espace de travail ou des runtimes d’intégration spécifiques, ainsi que les autorisations d’informations d’identification appropriées, vous pouvez exécuter des pipelines.
+Si vous êtes un Utilisateur d’artefact Synapse, un Éditeur d’artefact Synapse, un Contributeur Synapse ou un Administrateur Synapse, vous pouvez répertorier, ouvrir et modifier des artefacts de code déjà publiés.
 
-### <a name="monitoring-and-managing-execution"></a>Surveillance et gestion de l’exécution
-- Vous pouvez consulter l’état des notebooks et des travaux en cours d’exécution dans les pools Apache Spark si vous êtes un utilisateur Synapse.
-- Vous pouvez consulter les journaux et annuler les travaux et pipelines en cours d’exécution si vous êtes un opérateur de capacité de calcul Synapse sur l’espace de travail, ou pour un pool ou un pipeline Spark spécifique.  
+### <a name="execute-your-code"></a>Exécuter votre code
 
-### <a name="publishing-and-saving-your-code"></a>Publication et enregistrement de votre code
+Vous pouvez exécuter des scripts SQL sur des pools SQL si vous avez défini les autorisations SQL nécessaires dans les pools SQL. Vous pouvez exécuter des scripts KQL sur des pools Data Explorer si vous disposez des autorisations nécessaires.  
 
-- Vous pouvez publier des artefacts de code nouveaux ou mis à jour sur le service si vous êtes un Éditeur d’artefact Synapse, un Contributeur Synapse ou un Administrateur Synapse. 
-- Vous pouvez valider des artefacts de code dans une branche de travail d’un référentiel Git si l’espace de travail est compatible Git et que vous disposez d’autorisations Git. Si Git est activé, la publication est uniquement autorisée à partir de la branche de collaboration.
-- Si vous fermez Synapse Studio sans publier ni valider les modifications apportées aux artefacts de code, ces modifications seront perdues.
+Vous pouvez exécuter des notebooks et des travaux Spark si vous disposez d’autorisations de type Opérateur de capacité de calcul Synapse sur l’espace de travail ou sur des pools Apache Spark spécifiques.  
+
+Avec les autorisations Opérateur de capacité de calcul sur l’espace de travail ou des runtimes d’intégration spécifiques, ainsi que les autorisations d’informations d’identification appropriées, vous pouvez exécuter des pipelines.
+
+### <a name="monitor-and-manage-execution"></a>Surveiller et gérer l’exécution
+
+Vous pouvez consulter l’état des notebooks et des travaux en cours d’exécution dans les pools Apache Spark si vous êtes un utilisateur Synapse.
+
+Vous pouvez consulter les journaux et annuler les travaux et pipelines en cours d’exécution si vous êtes un opérateur de capacité de calcul Synapse sur l’espace de travail, ou pour un pool ou un pipeline Spark spécifique.  
+
+### <a name="publish-and-save-your-code"></a>Publier et enregistrer votre code
+
+Vous pouvez publier des artefacts de code nouveaux ou mis à jour sur le service si vous êtes un Éditeur d’artefact Synapse, un Contributeur Synapse ou un Administrateur Synapse. 
+
+Vous pouvez valider des artefacts de code dans une branche de travail d’un référentiel Git si l’espace de travail est compatible Git et que vous disposez d’autorisations Git. Si Git est activé, la publication est uniquement autorisée à partir de la branche de collaboration.
+
+Si vous fermez Synapse Studio sans publier ni valider les modifications apportées aux artefacts de code, ces modifications seront perdues.
 
 
 ## <a name="tasks-and-required-roles"></a>Tâches et rôles requis
@@ -57,17 +66,20 @@ Cet article vous aidera à comprendre les différents rôles de type de contrôl
 Le tableau ci-dessous répertorie les tâches courantes et, pour chaque tâche, le RBAC Synapse ou les rôles RBAC Azure requis.  
 
 >[!Note]
->- L’administrateur Synapse n’est pas indiqué pour chaque tâche, sauf s’il s’agit du seul rôle qui fournit l’autorisation nécessaire.  Un administrateur Synapse peut effectuer toutes les tâches activées par d’autres rôles RBAC Synapse.</br>
->- Le rôle RBAC Synapse minimal requis est indiqué.
->- Tous les rôles RBAC Synapse dans toutes les étendues fournissent des autorisations de type Utilisateur Synapse pour l’espace de travail
->- Toutes les autorisations/actions RBAC Synapse présentées dans le tableau sont préfixées avec Microsoft/Synapse/workspaces/... </br>
+> L’administrateur Synapse n’est pas indiqué pour chaque tâche, sauf s’il s’agit du seul rôle qui fournit l’autorisation nécessaire. Un administrateur Synapse peut effectuer toutes les tâches activées par d’autres rôles RBAC Synapse.</br>
+
+Le rôle RBAC Synapse minimal requis est indiqué. 
+
+Tous les rôles RBAC Synapse dans toutes les étendues fournissent des autorisations de type Utilisateur Synapse pour l’espace de travail.
+
+Toutes les autorisations/actions RBAC Synapse présentées dans le tableau sont préfixées avec `Microsoft/Synapse/workspaces/...`.
 
 
 Tâche (je souhaite...) |Rôle (je dois être...)|Autorisation/action RBAC Synapse
 --|--|--
 |Ouvrir Synapse Studio sur un espace de travail|Utilisateur Synapse, ou|lire
 | |Propriétaire, Contributeur ou Lecteur Azure sur l’espace de travail|aucun
-|Répertorier des pools SQL, des pools Apache Spark, des runtimes d’intégration et accéder à leurs détails de configuration|Utilisateur Synapse, ou|lire|
+|Répertorier des pools SQL, des pools Data Explorer, des runtimes d’intégration et accéder à leurs détails de configuration|Utilisateur Synapse, ou|lire|
 ||Propriétaire, Contributeur ou Lecteur Azure sur l’espace de travail|aucun
 |Répertorier les services liés, les informations d’identification, les points de terminaison privés managés|Utilisateur Synapse|lire
 POOLS SQL|
@@ -80,6 +92,14 @@ Exécuter un script SQL sur un pool SQL dédié|Autorisations SQL sur le pool (a
 Publier un script SQL nouveau, mis à jour ou supprimé|Éditeur d’artefacts Synapse, Contributor Synapse|sqlScripts/write, delete
 Valider les modifications apportées à un script SQL dans le référentiel Git|Nécessite des autorisations Git sur le référentiel|
 Attribuer des droits Administrateur Active Directory sur l’espace de travail (via les propriétés de l’espace de travail dans le portail Azure)|Propriétaire ou Contributeur Azure sur l’espace de travail |
+POOLS DATA EXPLORER|
+Créer un pool Data Explorer |Propriétaire ou Contributeur Azure sur l’espace de travail|aucun
+Gérer (suspendre, mettre à l’échelle ou supprimer) un pool Data Explorer|Propriétaire ou Contributeur Azure sur le pool ou l’espace de travail Data Explorer|aucun
+Créer un script KQL</br>|Utilisateur Synapse, </br>*Des autorisations Data Explorer supplémentaires sont requises pour exécuter un script ou pour publier ou valider des modifications*.|
+Répertorier et ouvrir tout script KQL publié| Utilisateur d'artefact Synapse, Éditeur d’artefacts, Contributor Synapse|artifacts/read
+Exécuter un script KQL sur un pool Data Explorer| Autorisations Data Explorer sur le pool (accordées automatiquement à un Administrateur Synapse)|aucun
+Publier, mettre à jour ou supprimer un script KQL|Éditeur d’artefacts Synapse, Contributor Synapse|kqlScripts/write, delete
+Valider les modifications apportées à un script KQL dans le référentiel Git|Nécessite des autorisations Git sur le référentiel|
 POOLS APACHE SPARK|
 Créer un pool Apache Spark|Propriétaire ou Contributeur Azure sur l’espace de travail|
 Surveiller les applications Apache Spark| Utilisateur Synapse|lire
@@ -115,11 +135,10 @@ GESTION DES ACCÈS|
 Passer en revue les attributions de rôles RBAC Synapse dans n’importe quelle étendue|Utilisateur Synapse|lire
 Attribuer et supprimer des rôles RBAC Synapse pour des utilisateurs, groupes et principaux de service| Administrateur Synapse dans l’espace de travail ou au niveau d’une étendue d’élément d’espace de travail spécifique|roleAssignments/write, delete 
 
->[!Note]
->Les utilisateurs invités d’un autre locataire peuvent aussi consulter, ajouter ou modifier les attributions de rôles une fois que l’administrateur Synapse leur a attribué un rôle. 
+> [!Note]
+> Les utilisateurs invités d’un autre locataire peuvent aussi consulter, ajouter ou modifier les attributions de rôles une fois que l’administrateur Synapse leur a attribué un rôle. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Découvrir le [Guide pratique pour passer en revue les attributions de rôles RBAC Synapse](./how-to-review-synapse-rbac-role-assignments.md)
-
-Découvrez [comment gérer les attributions de rôles RBAC Synapse](./how-to-manage-synapse-rbac-role-assignments.md). 
+ - [Passer en revue les attributions de rôles RBAC Synapse](./how-to-review-synapse-rbac-role-assignments.md)
+ - [Gérer les attributions de rôles RBAC Synapse](./how-to-manage-synapse-rbac-role-assignments.md)

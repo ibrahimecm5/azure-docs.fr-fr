@@ -8,12 +8,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 345b1373371cc8643cb6d9c82e8a98e2eee42def
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 045dbd56f1177f334916850f481c7fa4f9f48f4c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131457142"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009507"
 ---
 # <a name="defender-for-cloud-readiness-roadmap"></a>Feuille de route de préparation de Defender pour le cloud
 

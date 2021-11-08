@@ -8,6 +8,8 @@ items:
       - name: "Qu’est-ce qu’Azure Synapse\_?"
         href: overview-what-is.md
         displayName: overview
+      - name: Nouveautés
+        href: whats-new.md
       - name: Terminologie
         href: overview-terminology.md
       - name: Questions fréquentes (FAQ)
@@ -24,28 +26,31 @@ items:
       - name: 2 Analyser en utilisant un pool SQL serverless
         href: get-started-analyze-sql-on-demand.md
         displayName: 'get, started'
-      - name: 3 Analyser en utilisant un pool Spark serverless
+      - name: 3 Analyser en utilisant un pool Data Explorer
+        href: get-started-analyze-data-explorer.md
+        displayName: 'get, started'
+      - name: 4 Analyser en utilisant un pool Spark serverless
         href: get-started-analyze-spark.md
         displayName: 'get, started'
-      - name: 4 Analyser en utilisant un pool SQL dédié
+      - name: 5 Analyser en utilisant un pool SQL dédié
         href: get-started-analyze-sql-pool.md
         displayName: 'get, started'
-      - name: 5 Analyser des données dans un compte de stockage
+      - name: 6 Analyser des données dans un compte de stockage
         href: get-started-analyze-storage.md
         displayName: 'get, started'
-      - name: 6 Intégrer avec des pipelines
+      - name: 7 Intégrer à des pipelines
         href: get-started-pipelines.md
         displayName: 'get, started'
-      - name: 7 Visualiser avec Power BI
+      - name: "8 Visualiser avec Power\_BI"
         href: get-started-visualize-power-bi.md
         displayName: 'get, started'
-      - name: 8 Superviser
+      - name: 9 Superviser
         href: get-started-monitor.md
         displayName: 'get, started'
-      - name: 9 Explorer le Centre de connaissances
+      - name: 10 Explorer le Centre des connaissances
         href: get-started-knowledge-center.md
         displayName: 'get, started'
-      - name: 10 Ajouter un administrateur
+      - name: 11 Ajouter un administrateur
         href: get-started-add-admin.md
         displayName: 'get, started'
   - name: Espace de travail
@@ -588,12 +593,50 @@ items:
             href: data-explorer/data-explorer-overview.md
           - name: Comparer avec Azure Explorateur de données
             href: data-explorer/data-explorer-compare.md
+          - name: Ingestion de données
+            items:
+              - name: Vue d’ensemble de l’ingestion de données
+                href: data-explorer/ingest-data/data-explorer-ingest-data-overview.md
+              - name: Propriétés d’ingestion de données
+                href: data-explorer/ingest-data/data-explorer-ingest-data-properties.md
+              - name: Formats d’ingestion de données
+                href: data-explorer/ingest-data/data-explorer-ingest-data-supported-formats.md
       - name: Démarrages rapides
         items:
           - name: Créer un pool d’explorateur de données à l’aide du portail Azure
             href: data-explorer/data-explorer-create-pool-portal.md
           - name: Créer un pool d’explorateur de données à l’aide de Synapse Studio
             href: data-explorer/data-explorer-create-pool-studio.md
+          - name: Réception de données
+            items:
+              - name: Vue d’ensemble
+                href: data-explorer/ingest-data/data-explorer-ingest-data-overview.md
+              - name: Ingestion en un clic
+                href: data-explorer/ingest-data/data-explorer-ingest-data-one-click.md
+              - name: Ingestion de streaming
+                href: data-explorer/ingest-data/data-explorer-ingest-data-streaming.md
+              - name: Event Hub
+                items:
+                  - name: "Connexion de données Event\_Hub"
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-hub-overview.md
+                  - name: Portail Azure
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-hub-portal.md
+                  - name: En un clic
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-hub-one-click.md
+                  - name: C#
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-hub-csharp.md
+                  - name: Python
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-hub-python.md
+                  - name: "Modèle Azure\_Resource\_Manager"
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-hub-resource-manager.md
+              - name: Event Grid
+                items:
+                  - name: "Connexion de données Event\_Hub"
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-grid-overview.md
+                  - name: Portail Azure
+                    href: data-explorer/ingest-data/data-explorer-ingest-event-grid-portal.md
+              - name: Ingérer les données à l’aide de pipelines
+                href: data-explorer/ingest-data/data-explorer-ingest-data-pipeline.md
           - name: Surveiller et diagnostiquer les pools
             href: data-explorer/data-explorer-monitor-pools.md
       - name: Langage de requête Kusto

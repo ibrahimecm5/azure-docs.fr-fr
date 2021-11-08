@@ -209,6 +209,8 @@
           items:
             - name: Identifier les problèmes de performance des requêtes
               href: identify-query-performance-issues.md
+            - name: Résoudre les problèmes de performances
+              href: database/intelligent-insights-troubleshoot-performance.md
             - name: Traitement par lot pour de meilleures performances
               href: performance-improve-use-batching.md
             - name: Chargement des données avec BCP
@@ -1450,6 +1452,8 @@
           href: database/troubleshoot-common-errors-issues.md
         - name: Problèmes de connexion courants
           href: database/troubleshoot-common-connectivity-issues.md
+        - name: Résoudre les erreurs de mémoire insuffisante
+          href: database/troubleshoot-memory-errors-issues.md
         - name: Le service d’importation/exportation se bloque
           href: database/database-import-export-hang.md
         - name: Erreurs de journal des transactions

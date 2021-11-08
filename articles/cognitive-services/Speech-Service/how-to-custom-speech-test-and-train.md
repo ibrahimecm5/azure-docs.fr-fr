@@ -3,20 +3,20 @@ title: Préparer des données pour Custom Speech - Service Speech
 titleSuffix: Azure Cognitive Services
 description: Lors du test de la précision de la reconnaissance vocale Microsoft ou de l’apprentissage de vos modèles personnalisés, vous aurez besoin de données audio et texte. Dans cette page, nous nous intéressons aux types de données, à la façon dont ils sont utilisés et à leur gestion.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d73f17d3e3eb8d5511dcb98c6a074a73120eaf06
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 645a45ed2ad16abc92b0dded9f1950a3e1ad47d6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080609"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509931"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Préparer des données pour Custom Speech
 
@@ -52,7 +52,7 @@ Ce tableau liste les types de données acceptés, les cas d’utilisation pour c
 | [Audio](#audio-data-for-testing) | Oui<br>Utilisé pour l’inspection visuelle | 5 fichiers audio et plus | Non | N/A |
 | [Transcriptions audio + étiquetées à la main](#audio--human-labeled-transcript-data-for-trainingtesting) | Oui<br>Utilisé pour évaluer la précision | 0,5 - 5 heures d’audio | Oui | 1 à 20 heures d’audio |
 | [Texte brut](#plain-text-data-for-training) | Non | n/a | Oui | 1 – 200 Mo de texte associé |
-| [Texte structuré](#structured-text-data-for-training-public-preview) (préversion publique) | Non | n/a | Oui | Jusqu’à 20 classes avec jusqu’à 2 000 éléments et jusqu’à 50 000 phrases d’apprentissage |
+| [Texte structuré](#structured-text-data-for-training-public-preview) (préversion publique) | Non | n/a | Oui | Jusqu’à 10 classes avec jusqu’à 4000 éléments et jusqu’à 50 000 phrases d’apprentissage |
 | [Prononcer](#pronunciation-data-for-training) | Non | n/a | Oui | 1 ko à 1 Mo de texte de prononciation |
 
 Les fichiers doivent être regroupées par type dans un jeu de données et chargés sous forme de fichier .zip. Chaque jeu de données ne peut contenir qu’un seul type de données.
@@ -192,14 +192,14 @@ Par ailleurs, vous devez prendre en compte les restrictions suivantes :
 
 ## <a name="structured-text-data-for-training-public-preview"></a>Données de texte structuré pour l’apprentissage (préversion publique)
 
-Souvent, les énoncés attendus suivent un certain modèle. Un modèle courant est que les énoncés diffèrent uniquement par des mots ou des expressions extraits d’une liste. Il peut s’agir, par exemple, de « J’ai une question sur `product` », où `product` est une liste de produits possibles. Ou « Colorier `object` en `color` » où `object` est une liste de formes géométriques, et `color` une liste de couleurs. Pour simplifier la création de données d’apprentissage et permettre une meilleure modélisation dans le Modèle de langage personnalisé, vous pouvez utiliser un texte structuré de format Markdown pour définir des listes d’éléments, puis référencer celles-ci à l’intérieur de vos énoncés d’apprentissage. En outre, le format Markdown prend également en charge la spécification de la prononciation phonétique des mots. Le format Markdown est partagé avec le format Markdown _.lu_ utilisé pour l’apprentissage des modèles de compréhension du langage (LUIS), en particulier les entités de liste et les exemples d’énoncés. Pour plus d’informations sur le format Markdown _.lu_ complet, consultez <a href="https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0" target="_blank">Format de fichier. lu</a>. 
+Souvent, les énoncés attendus suivent un certain modèle. Un modèle courant est que les énoncés diffèrent uniquement par des mots ou des expressions extraits d’une liste. Il peut s’agir, par exemple, de « J’ai une question sur `product` », où `product` est une liste de produits possibles. Ou « Colorier `object` en `color` » où `object` est une liste de formes géométriques, et `color` une liste de couleurs. Pour simplifier la création de données d’apprentissage et permettre une meilleure modélisation dans le Modèle de langage personnalisé, vous pouvez utiliser un texte structuré de format Markdown pour définir des listes d’éléments, puis référencer celles-ci à l’intérieur de vos énoncés d’apprentissage. En outre, le format Markdown prend également en charge la spécification de la prononciation phonétique des mots. Le format Markdown est partagé avec le format Markdown `.lu` utilisé pour l’apprentissage des modèles de compréhension du langage (LUIS), en particulier les entités de liste et les exemples d’énoncés. Pour plus d’informations sur le Markdown `.lu` complet, consultez le <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">format de fichier `.lu`</a>.
 
 Voici un exemple de format Markdown :
 
 ```markdown
 // This is a comment
 
-// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 20 of these
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 10 of these
 @ list food =
 - pizza
 - burger

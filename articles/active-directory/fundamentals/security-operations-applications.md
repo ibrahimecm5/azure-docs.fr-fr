@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe41b61a21aea87a35446f1b5c7052f62595b29
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 1a139ffb47ad9f92cdb275191fc3eb983523c72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046617"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046329"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>Guide sur les opérations de sécurité Azure Active Directory pour les applications
 
@@ -76,7 +76,7 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 * [Journaux Azure Key Vault](../../key-vault/general/logging.md)
 
-Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV (valeurs séparées par des virgules) ou JSON (JavaScript Object Notation). Le portail Azure offre plusieurs moyens d’intégrer des journaux Azure AD aux autres outils, ce qui permet une plus grande automatisation de la supervision et des alertes :
+Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV (valeurs séparées par des virgules) ou JSON (JavaScript Object Notation). Le Portail Azure offre plusieurs méthodes d’intégration entre les journaux Azure AD et d’autres outils, ce qui permet une plus grande automatisation du monitoring et des alertes :
 
 * **[Azure Sentinel](../../sentinel/overview.md)** – Permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et de gestion d’événements management (SIEM). 
 
@@ -86,9 +86,9 @@ Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et l
 
 * **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)**  : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources, et de vérifier la conformité des applications cloud.
 
-La plupart des éléments qui font l’objet d’une supervision et d’alertes sont déterminés par vos stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Rapports et insights sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que les résultats des stratégies, y compris l’état de l’appareil. Ce classeur vous permet de voir un résumé de l’impact et d’identifier l’impact sur une période de temps spécifique. Vous pouvez également utiliser le classeur pour investiguer les connexions d’un utilisateur spécifique. 
+La plupart des éléments qui font l’objet d’une supervision et d’alertes sont déterminés par vos stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Rapports et insights sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que les résultats des stratégies, y compris l’état de l’appareil. Ce classeur permet de voir un résumé de l’impact et d’identifier l’incidence sur une période donnée. Vous pouvez également vous en servir pour examiner les connexions d’un utilisateur spécifique. 
 
- Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies, nous fournissons des liens vers celles-ci ou nous en fournissons des exemples après le tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents. 
+ Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies spécifiques, nous en indiquons le lien ou donnons des exemples après le tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents. 
 
 ## <a name="application-credentials"></a>Informations d’identification d’application
 
@@ -181,7 +181,7 @@ Supervisez les modifications apportées à la configuration d’une application,
 | Éléments à analyser| Niveau de risque| Where| Filtre/Sous-filtre| Notes |
 |-|-|-|-|-|
 | URI non résolu| Élevé| Journaux Azure AD et inscription d’application| Annuaire Service-Core, Category-ApplicationManagement<br>Activité : Mise à jour de l’application<br>Réussite : nom de propriété AppAddress| Recherchez des URI non résolus, par exemple, qui pointent vers un nom de domaine qui n’existe plus ou qui ne vous appartient pas explicitement. |
-| Modification de la configuration des URI de redirection| Élevé| Journaux Azure AD| Annuaire Service-Core, Category-ApplicationManagement<br>Activité : Mise à jour de l’application<br>Réussite : nom de propriété AppAddress| Recherchez les URI qui n’utilisent pas HTTPS*, les URI avec des caractères génériques à la fin ou le domaine de l’URL, les URI qui ne sont pas uniques à l’application, les URI qui pointent vers un domaine que vous ne contrôlez pas. |
+| Modification de la configuration des URI de redirection| Élevé| Journaux Azure AD| Annuaire Service-Core, Category-ApplicationManagement<br>Activité : Mise à jour de l’application<br>Réussite : nom de propriété AppAddress| Recherchez les URI qui n’utilisent pas HTTPS*, qui comportent des caractères génériques à la fin ou le domaine de l’URL, qui ne sont PAS uniques par rapport à l’application ou qui pointent vers un domaine que vous ne contrôlez pas. |
 
 Déclenchez une alerte chaque fois que ces modifications sont détectées.
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 11c04c9a513e454e8a9296c00b716a154b5bc541
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a1e887b9cbab6c8393dacf83a0e148ba257630d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028928"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452620"
 ---
 # <a name="tutorial-deploy-web-application-connected-to-azure-storage-blob-with-service-connector"></a>Didacticiel : Déployer une application web connectée à Azure Storage Blob avec Service Connector
 
@@ -92,6 +92,8 @@ az webapp connection create storage-blob -g ServiceConnector-tutorial-rg -n <app
 - **Remplacez** *\<app-name>* par le nom de l’application web que vous avez utilisée à l’étape 3.
 - **Remplacez** *\<storage-name>* par le nom de l’application de stockage que vous avez utilisée à l’étape 4.
 
+> [!NOTE]
+> Si vous voyez le message d’erreur « L’abonnement n’est pas inscrit pour utiliser Microsoft.ServiceLinker », exécutez `az provider register -n Microsoft.ServiceLinker` pour inscrire le fournisseur de ressources Service Connector et réexécutez la commande de connexion. 
 
 ## <a name="6-run-sample-code"></a>A6. Exécuter un exemple de code
 

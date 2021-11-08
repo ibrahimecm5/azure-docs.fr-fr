@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f878e18a914b0319657790864d02832bf91fbe36
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c3ee6cc0c913533b83be1eb389e7d7402875e4dd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889649"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012413"
 ---
 # <a name="nist-authenticator-types-and-aligned-azure-active-directory-methods"></a>Types d’authentificateurs NIST et alignement des méthodes Azure Active Directory
 
@@ -27,7 +27,7 @@ Le processus d’authentification commence lorsqu’un demandeur déclare son co
 | Type d’authentificateur NIST (National Institute of Standards and Technology)| Méthodes d’authentification Azure Active Directory (Azure AD) |
 | - | - |
 |  Secret mémorisé <br> (quelque chose que vous savez)|  Mot de passe (comptes Cloud)  <br>Mot de passe (fédéré)<br> Mot de passe (synchronisation du hachage de mot de passe)<br>Mot de passe (authentification directe) |
-|Recherche de secret <br> (quelque chose que vous avez)| Aucun. Par définition, une recherche de secret est constituée de données qui ne sont pas contenues dans un système. |
+|Secret de recherche <br> (quelque chose que vous avez)| Aucun. Par définition, une recherche de secret est constituée de données qui ne sont pas contenues dans un système. |
 |Hors bande <br>(quelque chose que vous avez)| Téléphone (SMS) - non recommandé |
 | Mot de passe monofacteur à usage unique <br>‎(quelque chose que vous avez)| Application Microsoft Authenticator (mot de passe à usage unique)  <br>Mot de passe monofacteur à usage unique (par l’intermédiaire de fabricants de mots de passe à usage unique)<sup data-htmlnode="">1</sup> | 
 | Mot de passe multifacteur à usage unique<br>(quelque chose que vous avez + quelque chose que vous savez ou quelque chose que vous êtes)| Mot de passe multifacteur à usage unique (par l’intermédiaire de fabricants de mots de passe à usage unique)<sup data-htmlnode="">1</sup>| 

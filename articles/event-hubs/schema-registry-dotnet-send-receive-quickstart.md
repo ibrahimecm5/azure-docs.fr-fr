@@ -2,14 +2,14 @@
 title: 'Valider le schéma lors de l’envoi et de la réception d’événements : AMQP et .NET'
 description: Cet article décrit la procédure à suivre pour créer une application .NET Core qui envoie/reçoit des événements vers/depuis Azure Event Hubs avec une validation de schéma à l’aide du registre de schémas.
 ms.topic: quickstart
-ms.date: 11/02/2021
+ms.date: 10/20/2021
 ms.custom: devx-track-csharp, ignite-fall-2021
-ms.openlocfilehash: d87fdaff91e46811319b259de01300fb2a70dff3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a0c14102f4db010b641685d89f2ac1bb09022ee9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433858"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028964"
 ---
 # <a name="validate-schema-when-sending-and-receiving-events---amqp-and-net"></a>Valider le schéma lors de l’envoi et de la réception d’événements : AMQP et .NET 
 Ce guide de démarrage rapide montre comment recevoir des événements d’un hub d’événements et lui en envoyer avec une validation de schéma à l’aide de la bibliothèque .NET **Azure.Messaging.EventHubs**. 

@@ -1,47 +1,49 @@
 ---
-title: Définitions de stratégie intégrées pour Azure Security Center
-description: Liste les définitions de stratégie intégrées d’Azure Policy pour Azure Security Center. Ces définitions de stratégie intégrées fournissent des approches courantes pour la gestion de vos ressources Azure.
-ms.date: 10/11/2021
+title: Définitions de stratégie intégrées pour Microsoft Defender pour le cloud
+description: Répertorie les définitions de stratégie intégrées d’Azure Policy pour Microsoft Defender pour le cloud. Ces définitions de stratégie intégrées fournissent des approches courantes pour la gestion de vos ressources Azure.
+ms.date: 10/17/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 55ef6c25cd7d40f407c2036bb4c58794f0fe239b
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 61bcd4428c00e5500fbceda77a5f38e98bfc0253
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129807281"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422384"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Définitions intégrées d’Azure Policy pour Azure Security Center
+# <a name="azure-policy-built-in-definitions-for-microsoft-defender-for-cloud"></a>Définitions de stratégie intégrées d’Azure Policy pour Microsoft Defender pour le cloud
 
-Cette page est un index des définitions de stratégie intégrées d’[Azure Policy](../governance/policy/overview.md) relatives à Azure Security Center. Les regroupements suivants de définitions de stratégie sont disponibles :
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-- Le groupe [Initiatives](#azure-security-center-initiatives) liste les définitions d’initiative d’Azure Policy dans la catégorie « Security Center ».
-- Le groupe [Initiative par défaut](#azure-security-center-initiatives) répertorie toutes les définitions d’Azure Policy qui font partie de l’initiative par défaut de Security Center,[Benchmark de sécurité Azure](/security/benchmark/azure/introduction). Ce benchmark largement respecté créé par Microsoft s’appuie sur les contrôles du [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) et du [National Institute of Standards and Technology (NIST)](https://www.nist.gov/), et se focalise sur la sécurité du cloud.
-- Le groupe [Catégorie](#azure-security-center-category) liste toutes les définitions d’Azure Policy dans la catégorie « Security Center ».
+Cette page est un index des définitions de stratégie intégrées d’[Azure Policy](../governance/policy/overview.md) relatives à Microsoft Defender pour le cloud. Les regroupements suivants de définitions de stratégie sont disponibles :
+
+- Le groupe [Initiatives](#microsoft-defender-for-cloud-initiatives) liste les définitions d’initiative d’Azure Policy dans la catégorie « Defender pour le cloud ».
+- Le groupe [Initiative par défaut](#defender-for-clouds-default-initiative-azure-security-benchmark) répertorie toutes les définitions d’Azure Policy qui font partie de l’initiative par défaut de Defender pour le cloud,[Point de référence de sécurité Azure](/security/benchmark/azure/introduction). Ce benchmark largement respecté créé par Microsoft s’appuie sur les contrôles du [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) et du [National Institute of Standards and Technology (NIST)](https://www.nist.gov/), et se focalise sur la sécurité du cloud.
+- Le groupe [Catégorie](#microsoft-defender-for-cloud-category) liste toutes les définitions d’Azure Policy dans la catégorie « Defender pour le cloud ».
 
 Pour plus d’informations sur les stratégies de sécurité, consultez [Utilisation des stratégies de sécurité](./tutorial-security-policy.md). Pour obtenir des éléments intégrés supplémentaires d’Azure Policy pour d’autres services, consultez [Définitions intégrées d’Azure Policy](../governance/policy/samples/built-in-policies.md).
 
-Le nom de chaque définition de stratégie intégrée est un lien vers la définition de la stratégie dans le portail Azure. Utilisez le lien figurant dans la colonne **Version** pour voir la source dans le [dépôt GitHub Azure Policy](https://github.com/Azure/azure-policy).
+Le nom de chaque définition de stratégie intégrée est un lien vers la définition de la stratégie dans le portail Azure. Utilisez le lien de la colonne **Version** pour voir la source dans le [dépôt GitHub Azure Policy](https://github.com/Azure/azure-policy).
 
-## <a name="azure-security-center-initiatives"></a>Initiatives d’Azure Security Center
+## <a name="microsoft-defender-for-cloud-initiatives"></a>Initiatives Microsoft Defender pour le cloud
 
-Pour plus d’informations sur les initiatives intégrées supervisées par Security Center, consultez le tableau suivant :
+Pour plus d’informations sur les initiatives intégrées supervisées par Defender pour le cloud, consultez le tableau suivant :
 
 [!INCLUDE [azure-policy-reference-policyset-security-center](../../includes/policy/reference/bycat/policysets-security-center.md)]
 
-## <a name="security-centers-default-initiative-azure-security-benchmark"></a>Initiative par défaut de Security Center (benchmark de sécurité Azure)
+## <a name="defender-for-clouds-default-initiative-azure-security-benchmark"></a>Initiative par défaut de Defender pour le cloud (point de référence de sécurité Azure)
 
-Pour plus d’informations sur les stratégies intégrées supervisées par Security Center, consultez le tableau suivant :
+Pour plus d’informations sur les stratégies intégrées supervisées par Defender pour le cloud, consultez le tableau suivant :
 
 [!INCLUDE [azure-policy-reference-init-asc](../../includes/policy/reference/custom/init-asc.md)]
 
-## <a name="azure-security-center-category"></a>Catégorie d’Azure Security Center
+## <a name="microsoft-defender-for-cloud-category"></a>Catégorie Microsoft Defender pour le cloud
 
 [!INCLUDE [azure-policy-reference-category-securitycenter](../../includes/policy/reference/bycat/policies-security-center.md)]
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez découvert les définitions de stratégies de sécurité Azure Policy dans Security Center. Pour en savoir plus sur les initiatives, les stratégies et la façon dont elles sont liées aux recommandations de Security Center, consultez [Que sont les stratégies de sécurité, les initiatives et les recommandations ?](security-policy-concept.md).
+Dans cet article, vous avez découvert les définitions de stratégies de sécurité Azure Policy dans Defender pour le cloud. Pour en savoir plus sur les initiatives, les stratégies et la façon dont elles sont liées aux recommandations de Defender pour le cloud, consultez [Que sont les stratégies de sécurité, les initiatives et les recommandations ?](security-policy-concept.md).

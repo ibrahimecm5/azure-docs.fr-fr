@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/21/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7fc9731769f568107a1ce6dacb5658fe164bd616
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 058d80b85a9a669612c64de6f0f705f6d605e419
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657516"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065016"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Encoder avec une échelle de débit générée automatiquement
 
@@ -37,7 +37,7 @@ Pour voir un exemple d’utilisation de cette présélection, consultez [Diffuse
 
 ## <a name="output"></a>Output
 
-Cette section présente trois exemples des couches vidéo de sortie produites par l’encodeur des Services Media à la suite de l’encodage avec les préréglages **AdaptiveStreaming**(H. 264) ou **H265AdaptiveStreaming** (HEVC). Dans tous les cas, la sortie contient un fichier MP4 audio uniquement avec des données audio stéréo encodées à 128 Kbits/s.
+Cette section présente trois exemples des couches vidéo de sortie produites par l’encodeur Media Services après encodage avec la présélection **AdaptiveStreaming** (H.264) ou la présélection **H265AdaptiveStreaming** (HEVC). Dans tous les cas, la sortie contient un fichier MP4 audio uniquement avec des données audio stéréo encodées à 128 Kbits/s.
 
 ### <a name="example-1"></a>Exemple 1
 Une source avec une hauteur de « 1080 » et une fréquence d’images de « 29.970 » crée 6 couches vidéo :

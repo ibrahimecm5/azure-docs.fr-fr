@@ -94,6 +94,8 @@
           href: howto-mfa-mfasettings.md
         - name: Configurer des utilisateurs
           href: howto-mfa-userdevicesettings.md
+        - name: Rechercher les absences de couverture
+          href: how-to-authentication-find-coverage-gaps.md
         - name: Activer MFA par utilisateur
           href: howto-mfa-userstates.md
         - name: Configurer des fournisseurs d’authentification
@@ -162,6 +164,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Encourager l’installation de Microsoft Authenticator (préversion)
       href: how-to-nudge-authenticator-app.md
+    - name: Utiliser les paramètres managés Microsoft
+      href: how-to-mfa-microsoft-managed.md
     - name: Utiliser un passe d’accès temporaire (préversion)
       href: howto-authentication-temporary-access-pass.md
     - name: Utiliser une authentification par SMS

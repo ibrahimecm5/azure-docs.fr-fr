@@ -44,6 +44,8 @@ items:
             href: concept-guidelines-pricing.md
           - name: Bonnes pratiques de déploiement
             href: deployment-best-practices.md
+          - name: Bonnes pratiques de traçabilité
+            href: concept-best-practices-lineage-azure-data-factory.md
           - name: Architecture des comptes
             href: concept-best-practices-accounts.md
           - name: Architecture des collections
@@ -76,13 +78,9 @@ items:
         href: concept-insights.md
       - name: Comptes Azure Purview mis à niveau
         href: concept-account-upgrade.md
-      - name: Stratégies d’accès
-        href: concept-data-policies.md
-      - name: Accès libre-service
-        href: concept-self-service.md
   - name: Guides pratiques
     items:
-      - name: Créer et gérer des collections
+      - name: Gérer des regroupements
         href: how-to-create-and-manage-collections.md
       - name: Gérer les sources
         items:

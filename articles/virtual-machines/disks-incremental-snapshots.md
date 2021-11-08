@@ -4,16 +4,16 @@ description: Découvrez les instantanés incrémentiels pour les disques managé
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f00a0f69bf00c42ef120250cbc4a770fb1b7a09
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: ba03ec11522ea5a4e4a011d1e62fa09b25aec749
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689415"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022293"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>Création d’un instantané incrémentiel pour les disques managés
 
@@ -148,6 +148,48 @@ Vous pouvez également utiliser des modèles Azure Resource Manager pour créer 
 }
 ```
 ---
+
+## <a name="cross-region-snapshot-copy-preview"></a>Copie de capture instantanée entre régions (version préliminaire)
+
+Vous pouvez utiliser l’option CopyStart (préversion) pour initier une copie d’instantanés incrémentiels d’une région à une région de votre choix. Azure gère le processus de copie des instantanés incrémentiels et garantit que seules les modifications Delta depuis le dernier instantané sont copiées dans la région cible, ce qui réduit l’encombrement des données. Les clients peuvent vérifier la progression de la copie afin de savoir quand un instantané cible est prêt à restaurer les disques dans la région cible. Vous pouvez utiliser ce processus pour copier des instantanés vers un autre abonnement pour la rétention à long terme. Vous pouvez également l’utiliser pour copier des instantanés dans la même région, pour vous assurer que les instantanés sont entièrement renforcés sur le [stockage redondant](disks-redundancy.md#zone-redundant-storage-for-managed-disks) dans une zone et s’assurer que les captures instantanées sont disponibles en cas de défaillance zonale.
+
+:::image type="content" source="media/disks-incremental-snapshots/cross-region-snapshot.png" alt-text="Diagramme de la copie inter-région d’Azure orchestrée des instantanés incrémentiels via l’option de clonage." lightbox="media/disks-incremental-snapshots/cross-region-snapshot.png":::
+
+### <a name="pre-requisites"></a>Conditions préalables
+
+Vous devez activer la fonctionnalité de votre abonnement pour pouvoir utiliser la fonctionnalité en version préliminaire. Utilisez la commande suivante pour inscrire la fonctionnalité :
+
+```azurecli
+az feature register --namespace Microsoft.Compute --name CreateOptionClone
+```
+
+L’inscription peut prendre quelques minutes, vous pouvez utiliser la commande suivante pour vérifier son état :
+
+```azurecli
+az feature show --namespace Microsoft.Compute --name CreateOptionClone
+```
+
+### <a name="restrictions"></a>Restrictions
+
+- La copie d’instantané entre régions est actuellement disponible uniquement dans la région USA Est 2 et USA Centre-Ouest.
+- Vous devez utiliser la version 2020-12-01 ou une version plus récente de l’API REST Azure Compute.
+
+### <a name="get-started"></a>Bien démarrer
+
+```azurecli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+name=<targetSnapshotName>
+sourceSnapshotResourceId=<sourceSnapshotResourceId>
+targetRegion=<validRegion>
+
+az login
+az account set --subscription $subscriptionId
+az group deployment create -g $resourceGroupName \
+--template-uri https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/CrossRegionCopyOfSnapshots/CopyStartIncrementalSnapshots.json \
+--parameters "name=$name" "sourceSnapshotResourceId=$sourceSnapshotResourceId" "targetRegion=$targetRegion"
+az resource show -n $name -g $resourceGroupName --namespace Microsoft.Compute --resource-type snapshots --api-version 2020-12-01 --query [properties.completionPercent] -o tsv
+```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

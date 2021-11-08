@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: tutorial
 ms.custom: vs-azure, devx-track-azurepowershell
 ms.date: 10/22/2021
-ms.openlocfilehash: 37ebe53f72841141171cb463b53d4de7c1e1d705
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 51c421fbb6dc38dbf4de26e95b82bb455e0b35bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130229500"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051170"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Didacticiel : Créer une fabrique de données à l’aide de Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -98,7 +98,7 @@ Avec le service lié HDInsight à la demande, le cluster HDInsight à la demande
 2. Sélectionnez **Service lié à la demande HDInsight** puis cliquez sur **Ajouter**.
 3. Remplacez le code **JSON** par le code JSON suivant :
 
-     ```json
+    ```json
     {
         "name": "HDInsightOnDemandLinkedService",
         "properties": {
@@ -299,17 +299,17 @@ Dans cette étape, vous allez publier les entités Data Factory (services liés,
 
     :::image type="content" source="media/data-factory-build-your-first-pipeline-using-vs/publish-new-data-factory.png" alt-text="Publier - Nouveau paramètres de fabrique de données":::
 
-   1. Sélectionnez l'option **Créer une fabrique de données** .
+   1. Sélectionnez l’option **Créer une fabrique de données**.
    2. Entrez un **nom** unique pour la fabrique de données. Par exemple : **DataFactoryUsingVS09152016**. Le nom doit être globalement unique.
    3. Sélectionnez l’abonnement approprié pour le champ **Abonnement** . 
-        > [!IMPORTANT]
-        > Si vous ne voyez pas les abonnements, vérifiez que vous êtes connecté à l’aide d’un compte administrateur ou coadministrateur de l’abonnement.
+      > [!IMPORTANT]
+      > Si vous ne voyez pas les abonnements, vérifiez que vous êtes connecté à l’aide d’un compte administrateur ou coadministrateur de l’abonnement.
    4. Sélectionnez le **groupe de ressources** pour la fabrique de données à créer.
    5. Sélectionnez la **région** pour la fabrique de données.
    6. Cliquez sur **Suivant** pour basculer vers la page **Publier des éléments**. (Utilisez la touche **TABULATION** pour passer au champ Nom si le bouton **Suivant** est désactivé.)
-
       > [!IMPORTANT]
       > Si vous recevez l’erreur **Le nom de la fabrique de données « DataFactoryUsingVS » n’est pas disponible** au moment de la publication, changez le nom (par exemple en votrenomDataFactoryUsingVS). Consultez la rubrique [Data Factory - Règles d’affectation des noms](data-factory-naming-rules.md) pour savoir comment nommer les artefacts Data Factory.   
+
 1. Dans la page **Publier des éléments**, vérifiez que toutes les entités de fabriques de données sont sélectionnées, puis cliquez sur **Suivant** pour basculer vers la page **Résumé**.
 
     :::image type="content" source="media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png" alt-text="Page Publier des éléments":::     
@@ -321,20 +321,27 @@ Dans cette étape, vous allez publier les entités Data Factory (services liés,
 Quelques points importants à prendre en compte :
 
 - Si vous recevez le message d’erreur : « **L’abonnement n’est pas inscrit pour utiliser l’espace de noms Microsoft.DataFactory** », effectuez l’une des opérations suivantes et essayez de relancer la publication :
-    - Dans Azure PowerShell, exécutez la commande suivante pour enregistrer le fournisseur Data Factory.
-        ```powershell   
-        Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-        ```
-        Vous pouvez exécuter la commande suivante pour confirmer que le fournisseur Data Factory est bien enregistré.
 
-        ```powershell
-        Get-AzResourceProvider
-        ```
-    - Connectez-vous au [portail Azure](https://portal.azure.com) à l’aide de l’abonnement Azure et accédez à un panneau Data Factory (ou) créez une fabrique de données dans le portail Azure. Cette action enregistre automatiquement le fournisseur.
+  - Dans Azure PowerShell, exécutez la commande suivante pour enregistrer le fournisseur Data Factory.
+
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+    ```
+
+    Vous pouvez exécuter la commande suivante pour confirmer que le fournisseur Data Factory est bien enregistré.
+
+    ```powershell
+    Get-AzResourceProvider
+    ```
+
+  - Connectez-vous au [portail Azure](https://portal.azure.com) à l’aide de l’abonnement Azure et accédez à un panneau Data Factory (ou) créez une fabrique de données dans le portail Azure. Cette action enregistre automatiquement le fournisseur.
+
 - Le nom de la fabrique de données pourra être enregistré en tant que nom DNS et devenir ainsi visible publiquement.
+
 - Pour créer des instances Data Factory, vous devez être administrateur ou co-administrateur de l’abonnement Azure
 
 ### <a name="monitor-pipeline"></a>Surveillance d’un pipeline
+
 Au cours de cette étape, vous allez surveiller le pipeline à l’aide de la Vue de diagramme de la fabrique de données. 
 
 #### <a name="monitor-pipeline-using-diagram-view"></a>Surveillance d’un pipeline à l’aide de la Vue de diagramme
@@ -489,7 +496,7 @@ Ajoutez un fichier de configuration pour chaque environnement en effectuant les 
             "name": "LastName",
             "type": "String"
         }
-    ],
+    ]
     ```
 
     Configurez les propriétés comme indiqué dans le fichier de configuration suivant (utilisez indexation de base zéro) :
@@ -498,15 +505,15 @@ Ajoutez un fichier de configuration pour chaque environnement en effectuant les 
     {
         "name": "$.properties.structure[0].name",
         "value": "FirstName"
-    }
+    },
     {
         "name": "$.properties.structure[0].type",
         "value": "String"
-    }
+    },
     {
         "name": "$.properties.structure[1].name",
         "value": "LastName"
-    }
+    },
     {
         "name": "$.properties.structure[1].type",
         "value": "String"
@@ -514,13 +521,14 @@ Ajoutez un fichier de configuration pour chaque environnement en effectuant les 
     ```
 
 ### <a name="property-names-with-spaces"></a>Noms de propriétés avec des espaces
+
 Si un nom de propriété comporte des espaces, utilisez des crochets comme indiqué dans l’exemple suivant (nom de serveur de base de données) :
 
 ```json
- {
-     "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
-     "value": "MyAsqlServer.database.windows.net"
- }
+{
+    "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
+    "value": "MyAsqlServer.database.windows.net"
+}
 ```
 
 ### <a name="deploy-solution-using-a-configuration"></a>Déployer une solution à l’aide d’une configuration

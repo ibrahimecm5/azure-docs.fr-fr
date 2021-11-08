@@ -9,14 +9,14 @@ ms.date: 06/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb
+ms.reviewer: calebb, sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c0bf5ac063fbf300cf43cd46a22e8904cb6bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 36d6283bd8304a33b80797e502edde45c952e06a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548784"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067391"
 ---
 # <a name="conditional-access-grant"></a>Accès conditionnel : Accorder
 
@@ -62,11 +62,25 @@ Un appareil peut être marqué comme conforme par Intune (pour n’importe quel 
 
 Les appareils doivent être inscrits dans Azure AD pour pouvoir être marqués comme conformes. Pour plus d’informations sur l’inscription des appareils, consultez l’article [Qu’est-ce qu’une identité d’appareil ?](../devices/overview.md)
 
+**Remarques**
+
+- L’exigence **Exiger que l’appareil soit marqué comme conforme** présente les caractéristiques suivantes :
+   - Elle ne prend en charge que les appareils Windows actuels (Windows 10 et versions ultérieures), iOS, Android et macOS inscrits auprès d’Azure AD et d’Intune.
+   - Pour les appareils inscrits auprès de systèmes MDM tiers, consultez [Prise en charge des partenaires tiers de conformité des appareils dans Intune](/mem/intune/protect/device-compliance-partners).
+   - L’accès conditionnel ne peut pas considérer Microsoft Edge en mode InPrivate comme un appareil conforme.
+
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Exiger un appareil joint à Azure AD hybride
 
 Les organisations peuvent choisir d’utiliser l’identité de l’appareil dans le cadre de leur stratégie d’accès conditionnel. Elles peuvent utiliser cette case à cocher pour exiger que les appareils soient joints à Azure AD hybride. Pour plus d’informations sur les identités d’appareils, consultez l’article [Qu’est-ce qu’une identité d’appareil ?](../devices/overview.md)
 
 Lorsque le [flux OAuth de code d’appareil](../develop/v2-oauth2-device-code.md) est utilisé, ni le contrôle Exiger une autorisation d’appareil géré ni la condition d’état d’appareil ne sont pris en charge. En effet, l’appareil qui effectue l’authentification ne peut pas fournir son état à celui qui fournit un code, et l’état de l’appareil dans le jeton est verrouillé sur celui qui effectue l’authentification. Utilisez plutôt le contrôle Exiger l’autorisation d’authentification multifacteur.
+
+**Remarques**
+
+- L’exigence **Exiger un appareil à jointure hybride Azure AD** présente les caractéristiques suivantes :
+   - Elle ne prend en charge que les Windows joints à un domaine de niveau inférieur (avant Windows 10) et les appareils Windows actuels (Windows 10 et versions ultérieures).
+   - L’accès conditionnel ne peut pas considérer Microsoft Edge en mode InPrivate comme un appareil à jointure hybride Azure AD.
 
 ### <a name="require-approved-client-app"></a>Demander une application cliente approuvée
 
@@ -146,7 +160,7 @@ La prise en charge de ce paramètre est confirmée pour les applications cliente
 - Nine Mail - Email & Calendar
 
 > [!NOTE]
-> Microsoft Kaizala, Microsoft Skype Entreprise et Microsoft Visio ne prennent pas en charge l’octroi **Exiger une stratégie de protection des applications**. Si vous avez besoin que ces applications fonctionnent, utilisez exclusivement l’octroi **Exiger une stratégie de protection des applications**. L’utilisation de la clause entre les deux octrois ne fonctionnera pas pour ces trois applications.
+> Microsoft Kaizala, Microsoft Skype Entreprise et Microsoft Visio ne prennent pas en charge l’octroi **Exiger une stratégie de protection des applications**. Si vous avez besoin que ces applications fonctionnent, utilisez exclusivement l’octroi **Exiger une stratégie de protection des applications**. L’utilisation de la clause `or` entre les deux octrois ne fonctionne pas pour ces trois applications.
 
 **Remarques**
 

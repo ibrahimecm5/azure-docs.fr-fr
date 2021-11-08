@@ -9,12 +9,12 @@ ms.author: barclayn
 ms.topic: tutorial
 ms.date: 04/01/2021
 ROBOTS: NOINDEX
-ms.openlocfilehash: 17229aca9833dced65ef07cebb59bd0a3569d6b4
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 096ca46c2a2c7c54553005fcb4a264c6ef8221d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006904"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049175"
 ---
 #  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Tutoriel : Prise en main des justificatifs vérifiables Azure Active Directory à l’aide d’un exemple d’application (préversion)
 
@@ -141,7 +141,7 @@ Maintenant que vous avez terminé la partie émission du tutoriel et que vous di
     ngrok http 8082
     ```
 
-4. Ouvrez l’URL de transfert https ngrok dans votre navigateur et appuyez sur le bouton **Vérifier les justificatifs**.  
+4. Ouvrez l’URL de transfert HTTPS ngrok dans votre navigateur et appuyez sur le bouton **VÉRIFIER LES INFORMATIONS D’IDENTIFICATION**.  
 
    ![Bouton d’expert Vérifier les justificatifs](media/get-started-verifiable-credentials/prove-credential-expert.png)
 

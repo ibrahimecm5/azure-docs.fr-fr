@@ -826,16 +826,28 @@ groups:
     title: C#
   - id: programming-language-python
     title: Python
-- id: app-service-ide
+- id: app-service-vscode-cli-portal
   title: Environnement de développement
   prompt: Choisir un environnement de développement
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: Interface de ligne de commande
+  - id: development-environment-azure-portal
+    title: Portail Azure
+- id: app-service-ide
+  title: Environnement de développement
+  prompt: Choisir un environnement de déploiement
   pivots:
   - id: development-environment-vs
     title: Visual Studio
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-cli
-    title: Interface de ligne de commande
+    title: Azure CLI
+  - id: development-environment-ps
+    title: Azure PowerShell
 - id: app-service-ide-oss
   title: Environnement de développement
   prompt: Choisir un environnement de développement
@@ -1126,6 +1138,14 @@ groups:
     title: Dans le portail Azure
   - id: rest-api
     title: Avec les API REST
+- id: connect-aws-accounts
+  title: Connecter un compte AWS à un abonnement Azure
+  prompt: Comment allez-vous connecter votre compte AWS ?
+  pivots:
+  - id: env-settings
+    title: Page des paramètres d’environnement
+  - id: classic-connector
+    title: Connecteur cloud classique
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: Système d’exploitation/console
   prompt: Choisir un système d’exploitation et une console
@@ -1373,9 +1393,9 @@ groups:
   - id: client-portaltier
     title: Portail Azure
 metadata:
-  ms.openlocfilehash: 68d5906853d11b7309b716cc7f04c8e6be664c2b
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 871fbc4fe1242f30d1fcb141e8be97be3cb02787
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131046486"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131466349"

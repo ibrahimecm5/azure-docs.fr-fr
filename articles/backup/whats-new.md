@@ -2,13 +2,13 @@
 title: Nouveautés de Sauvegarde Azure
 description: En savoir plus sur les nouvelles fonctionnalités de Sauvegarde Azure.
 ms.topic: conceptual
-ms.date: 08/05/2021
-ms.openlocfilehash: e05b98e61a632ee494689eeb1cf013996150bcb3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 10/20/2021
+ms.openlocfilehash: 398833135c97d3d067e7e2b29704ffd6bad25bbd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130244226"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020423"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nouveautés de Sauvegarde Azure
 
@@ -18,6 +18,8 @@ Pour en savoir plus sur les nouvelles versions, vous pouvez créer un signet sur
 
 ## <a name="updates-summary"></a>Résumé des mises à jour
 
+- Octobre 2021
+  - [Métriques de Sauvegarde Azure et alertes de métriques (préversion)](#azure-backup-metrics-and-metrics-alerts-in-preview)
 - Juillet 2021
   - [La prise en charge du niveau Archive pour SQL Server dans une machine virtuelle Azure pour le service Sauvegarde Azure est désormais généralement disponible](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
 - Mai 2021
@@ -46,6 +48,25 @@ Pour en savoir plus sur les nouvelles versions, vous pouvez créer un signet sur
   - [Sauvegarde SAP HANA sur des machines virtuelles RHEL Azure (en préversion)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Stockage redondant interzone (ZRS) pour les données de sauvegarde (en préversion)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Suppression réversible pour les charges de travail SQL Server et SAP HANA dans les machines virtuelles Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-backup-metrics-and-metrics-alerts-in-preview"></a>Métriques de Sauvegarde Azure et alertes de métriques (préversion)
+
+La Sauvegarde Azure fournit maintenant, avec [Azure Monitor](/azure/azure-monitor/essentials/data-platform-metrics), un ensemble de métriques intégrées qui vous permettent d’effectuer un monitoring de l’intégrité de vos sauvegardes. Vous pouvez également configurer des règles qui déclenchent des alertes lorsque les métriques dépassent les seuils définis.
+
+Voici les principales fonctionnalités offertes par la Sauvegarde Azure :
+ 
+- Possibilité d’afficher des métriques prêtes à l’emploi liées à la sauvegarde et à la restauration de l’intégrité des éléments de sauvegarde, ainsi que les tendances associées
+- Possibilité d’écrire des règles d’alerte personnalisées sur ces métriques pour effectuer un monitoring efficace de l’intégrité des éléments de sauvegarde
+- Possibilité d’acheminer les alertes de métriques déclenchées suivant différents canaux de notification pris en charge par Azure Monitor (e-mail, ITSM, Webhook, applications logiques, etc.)
+ 
+Actuellement, la Sauvegarde Azure prend en charge les métriques intégrées pour les types de charges de travail suivants :
+
+- Azure VM
+- Bases de données SQL dans une machine virtuelle Azure
+- Bases de données SAP HANA dans une machine virtuelle Azure
+- Azure Files
+
+Pour plus d’informations, consultez [Monitoring de l’intégrité des sauvegardes avec les métriques de la Sauvegarde Azure (préversion)](metrics-overview.md).
 
 ## <a name="archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available"></a>La prise en charge du niveau Archive pour SQL Server dans une machine virtuelle Azure pour le service Sauvegarde Azure est désormais généralement disponible
 
@@ -167,7 +188,7 @@ Pour plus d’informations, consultez [Matrice de prise en charge du scénario d
 
 ## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>Stockage redondant interzone (ZRS) pour les données de sauvegarde (en préversion)
 
-Stockage Azure offre un bon compromis entre hautes performances, haute disponibilité et haute résilience des données grâce à ses diverses options de redondance. Sauvegarde Azure vous permet d’étendre ces avantages aux données de sauvegarde, avec des options pour stocker vos sauvegardes dans un stockage localement redondant (LRS) et un stockage géoredondant (GRS). Maintenant, il existe des options de durabilité supplémentaires avec la prise en charge supplémentaire du stockage redondant interzone (ZRS).
+Stockage Azure offre un bon compromis entre hautes performances, haute disponibilité et haute résilience des données grâce à ses diverses options de redondance. La Sauvegarde Azure permet d’étendre ces avantages aux données de sauvegarde, en offrant la possibilité de stocker les sauvegardes dans un stockage localement redondant (LRS, Locally Redundant Storage) et un stockage géoredondant (GRS, Geo-Redundant Storage). Maintenant, il existe des options de durabilité supplémentaires avec la prise en charge supplémentaire du stockage redondant interzone (ZRS).
 
 Pour plus d’informations, consultez [Définir la redondance du stockage pour le coffre Recovery Services](backup-create-rs-vault.md#set-storage-redundancy).
 

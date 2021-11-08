@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2021
+ms.date: 10/25/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: a39b34f0b783997a90e634157354543aa3eab79a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c0713bd45f344ce6dc994cde61cb275f9fdef3a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042975"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036330"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Gérer votre locataire Azure Active Directory B2C
 
@@ -39,19 +39,21 @@ Pour créer un compte d’administration, procédez comme suit :
 1. Sous **Services Azure**, sélectionnez **Azure AD B2C**. Vous pouvez également utiliser la zone de recherche pour rechercher et sélectionner **Azure AD B2C**.
 1. Sous **Gérer**, sélectionnez **Utilisateurs**.
 1. Sélectionnez **Nouvel utilisateur**.
+1. Sélectionnez **Créer un utilisateur** (vous pouvez en créer plusieurs à la fois en sélectionnant **Je souhaite créer des utilisateurs en bloc**).
 1. Sur la page **Utilisateur**, entrez les informations pour cet utilisateur :
 
-   - **Nom**. Obligatoire. Prénom et nom du nouvel utilisateur. Par exemple, *Mary Parker*.
-   - **Nom d’utilisateur**. Obligatoire. Nom d’utilisateur du nouvel utilisateur. Par exemple : `mary@contoso.com`.
-     Le domaine qui fait partie du nom d’utilisateur doit correspondre au nom de domaine par défaut initial, *\<yourdomainname>.onmicrosoft.com*.
-   - **Groupes**. Si vous le souhaitez, vous pouvez ajouter l’utilisateur à un ou plusieurs groupes existants. Vous pouvez également ajouter l’utilisateur à des groupes ultérieurement. 
+  
+   - **Nom d’utilisateur**. *Requis*. Nom d’utilisateur du nouvel utilisateur. Par exemple : `mary@contoso.com`.
+     Le domaine qui fait partie du nom d’utilisateur doit utiliser le nom de domaine par défaut initial, *\<tenant name>.onmicrosoft.com*, ou votre [domaine personnalisé](custom-domain.md), par exemple `contoso.com`.
+   - **Nom**. *Requis*. Prénom et nom du nouvel utilisateur. Par exemple, *Mary Parker*.
+   - **Groupes**. *Facultatif*. Vous pouvez ajouter l’utilisateur à un ou plusieurs groupes existants. Vous pouvez également ajouter l’utilisateur à des groupes ultérieurement. 
    - **Rôle d’annuaire** : si vous devez attribuer des autorisations d’administration Azure AD à l’utilisateur, vous pouvez les ajouter à un rôle Azure AD. Vous pouvez attribuer à l'utilisateur le rôle d'Administrateur général, ou lui confier un ou plusieurs des rôles d'administrateur limités dans Azure AD. Pour plus d’informations sur l’attribution de rôles, consultez [Utiliser des rôles pour contrôler l’accès aux ressources](roles-resource-access-control.md).
    - **Informations sur l’emploi** : Vous pouvez ajouter ici des informations supplémentaires sur l’utilisateur, ou le faire ultérieurement. 
 
 1. Copiez le mot de passe généré automatiquement fourni dans le champ **Mot de passe**. Vous devrez fournir ce mot de passe à l’utilisateur pour qu’il se connecte la première fois.
 1. Sélectionnez **Create** (Créer).
 
-L’utilisateur est créé et ajouté à votre locataire Azure AD B2C. Il est préférable d’avoir au moins un compte professionnel natif pour votre locataire Azure AD B2C affecté au rôle d’administrateur général. Ce compte peut être considéré comme un compte de secours.
+L’utilisateur est créé et ajouté à votre locataire Azure AD B2C. Il est préférable d’avoir au moins un compte professionnel natif pour votre locataire Azure AD B2C affecté au rôle d’administrateur général. Ce compte peut être considéré comme un *compte de secours*.
 
 ## <a name="invite-an-administrator-guest-account"></a>Inviter un administrateur (compte invité)
 
@@ -67,10 +69,10 @@ Pour inviter un utilisateur, procédez comme suit :
 1. Sélectionnez **Nouveau compte Invité**.
 1. Sur la page **Utilisateur**, entrez les informations pour cet utilisateur :
 
-   - **Nom**. Obligatoire. Prénom et nom du nouvel utilisateur. Par exemple, *Mary Parker*.
-   - **Adresse e-mail**. Obligatoire. Adresse e-mail de l’utilisateur que vous souhaitez inviter. Par exemple : `mary@contoso.com`.   
+   - **Nom**. *Requis*. Prénom et nom du nouvel utilisateur. Par exemple, *Mary Parker*.
+   - **Adresse e-mail**. *Requis*. Adresse e-mail de l’utilisateur que vous souhaitez inviter, qui doit correspondre à un compte Microsoft. Par exemple : `mary@contoso.com`.   
    - **Message personnel** : vous ajoutez un message personnel qui sera inclus dans l’e-mail d’invitation.
-   - **Groupes**. Si vous le souhaitez, vous pouvez ajouter l’utilisateur à un ou plusieurs groupes existants. Vous pouvez également ajouter l’utilisateur à des groupes ultérieurement.
+   - **Groupes**. *Facultatif*. Vous pouvez ajouter l’utilisateur à un ou plusieurs groupes existants. Vous pouvez également ajouter l’utilisateur à des groupes ultérieurement.
    - **Rôle d’annuaire** : si vous devez attribuer des autorisations d’administration Azure AD à l’utilisateur, vous pouvez les ajouter à un rôle Azure AD. Vous pouvez attribuer à l'utilisateur le rôle d'Administrateur général, ou lui confier un ou plusieurs des rôles d'administrateur limités dans Azure AD. Pour plus d’informations sur l’attribution de rôles, consultez [Utiliser des rôles pour contrôler l’accès aux ressources](roles-resource-access-control.md).
    - **Informations sur l’emploi** : Vous pouvez ajouter ici des informations supplémentaires sur l’utilisateur, ou le faire ultérieurement.
 
@@ -137,7 +139,7 @@ L’utilisateur est supprimé et n’apparaît plus sur la page **Utilisateurs :
 
 ## <a name="protect-administrative-accounts"></a>Protéger des comptes d’administration
 
-Il est recommandé de protéger tous les comptes administrateur avec une authentification multifacteur (MFA) pour plus de sécurité. MFA est un processus de vérification d’identité lors de la connexion qui invite l’utilisateur à fournir une plus grande forme d’identification, telle qu’un code de vérification sur son appareil mobile ou une requête dans son application Microsoft Authenticator.
+Il est recommandé de protéger tous les comptes Administrateur avec l’authentification multifacteur (MFA, Multifactor Authentication) pour plus de sécurité. MFA est un processus de vérification d’identité lors de la connexion qui invite l’utilisateur à fournir une plus grande forme d’identification, telle qu’un code de vérification sur son appareil mobile ou une requête dans son application Microsoft Authenticator.
 
 ![Méthodes d’authentification utilisées dans la capture d’écran de connexion](./media/tenant-management/sing-in-with-multi-factor-authentication.png)
 

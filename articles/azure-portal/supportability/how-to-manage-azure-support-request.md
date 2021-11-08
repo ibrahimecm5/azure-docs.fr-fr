@@ -1,19 +1,21 @@
 ---
 title: Gérer une demande de support Azure
-description: Décrit les procédures d’affichage des demandes de support, d’envoi de messages, de modification du niveau de gravité de la demande, de partage des informations de diagnostic avec le support Azure, de réouverture d’une demande de support clôturée et de chargement de fichiers.
+description: Découvrez comment afficher les demandes de support et comment envoyer des messages, charger des fichiers et gérer les options.
 tags: billing
 ms.topic: how-to
-ms.date: 09/30/2021
-ms.openlocfilehash: 8e7b074883fe2dcfb79913e54cf7180e26f29c2a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 11/02/2021
+ms.openlocfilehash: 361ab4b643dac6fb54fae8d236dfac38ee024701
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353198"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508341"
 ---
 # <a name="manage-an-azure-support-request"></a>Gérer une demande de support Azure
 
-Après avoir [créé une demande de support Azure](how-to-create-azure-support-request.md), vous pouvez la gérer dans le [portail Azure](https://portal.azure.com), comme décrit dans cet article. Vous pouvez également créer et gérer des demandes par programmation, en utilisant l’[API REST de ticket de support Azure](/rest/api/support) ou [Azure CLI](/cli/azure/azure-cli-support-request).
+Après avoir [créé une demande de support Azure](how-to-create-azure-support-request.md), vous pouvez la gérer dans le [portail Azure](https://portal.azure.com). Vous pouvez également créer et gérer des demandes par programmation, en utilisant l’[API REST de ticket de support Azure](/rest/api/support) ou [Azure CLI](/cli/azure/azure-cli-support-request).
+
+Pour gérer une demande de support, vous devez être [Propriétaire](../../role-based-access-control/built-in-roles.md#owner), [Contributeur](../../role-based-access-control/built-in-roles.md#contributor) ou [Collaborateur de la demande de support](../../role-based-access-control/built-in-roles.md#support-request-contributor) au niveau de l’abonnement. Pour gérer une demande de support qui a été créée sans abonnement, vous devez être [administrateur](../../active-directory/roles/permissions-reference.md).
 
 ## <a name="view-support-requests"></a>Afficher les demandes de support
 
@@ -50,15 +52,15 @@ Sur cette page, vous pouvez rechercher, filtrer et trier des demandes de support
 
         :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Impossible de sélectionner un nouveau niveau de gravité":::
 
-## <a name="share-diagnostic-information-with-azure-support"></a>Partager des informations de diagnostic avec le support Azure
+## <a name="allow-collection-of-advanced-diagnostic-information"></a>Autoriser la collecte d’informations de diagnostic avancées
 
-Lors de la création d’une demande de support, vous pouvez sélectionner **Oui** ou **Non** dans la section **Partager les informations de diagnostic**. Cette option détermine si le support Azure peut collecter des [informations de diagnostic](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) telles que les [fichiers journaux](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs) à partir de vos ressources Azure qui peuvent éventuellement aider à résoudre votre problème.
+Lors de la création d’une demande de support, vous pouvez sélectionner **Oui** ou **Non** dans la section **Informations de diagnostic avancées**. Cette option détermine si le support Azure peut collecter des [informations de diagnostic](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) telles que les [fichiers journaux](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs) à partir de vos ressources Azure qui peuvent éventuellement aider à résoudre votre problème.
 
-Pour modifier la sélection des **informations de diagnostic de partage** après la création de la requête :
+Pour modifier la sélection des **informations de diagnostic avancées** après la création de la demande :
 
 1. Sur la page **Toutes les demandes de support**, sélectionnez la demande de support.
 
-1. Sur la page **Demande de support**, recherchez **Informations de diagnostic de partage**, puis sélectionnez **Modifier**.
+1. Sur la page **Demande de support**, recherchez **Informations de diagnostic avancées**, puis sélectionnez **Modifier**.
 
 1. Sélectionnez **Oui** ou **Non**, puis cliquez sur **OK** pour confirmer.
 
@@ -117,7 +119,7 @@ Suivez ces instructions lorsque vous utilisez l’option de chargement de fichie
 
 ## <a name="close-a-support-request"></a>Fermeture d’une demande de support
 
-Pour fermer une demande de support, [envoyez un message](#send-a-message) demandant de fermer la demande.
+Pour fermer une demande de support, [envoyez un message](#send-a-message) et indiquez-nous que vous souhaitez clôturer la demande.
 
 ## <a name="reopen-a-closed-request"></a>Rouvrir une demande clôturée
 

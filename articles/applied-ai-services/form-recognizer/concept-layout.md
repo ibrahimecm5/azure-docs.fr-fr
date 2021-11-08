@@ -1,29 +1,30 @@
 ---
 title: Dispositions - Form Recognizer
 titleSuffix: Azure Applied AI Services
-description: Découvrez les concepts liés à l’analyse des dispositions avec l’API Form Recognizer - utilisation et limites.
+description: 'Découvrez les concepts liés à l’analyse de l’API de disposition avec Form Recognizer : utilisation et limites.'
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 913eb155820832936295a6cc9df6a22175a9bec5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 325e11a16162646b7cd4a57c0330d9bc36d51f46
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041972"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027426"
 ---
 # <a name="form-recognizer-layout-model"></a>Modèle de disposition Form Recognizer
 
-L’API de disposition d’Azure Form Recognizer extrait du texte, des tableaux, des marques de sélection et des informations de structure à partir de documents (PDF, TIFF) et d’images (JPG, PNG, BMP). Elle permet aux clients de prendre des documents dans différents formats et de retourner des représentations de données structurées des documents. Elle combine une version améliorée de nos puissantes capacités de [reconnaissance optique de caractères (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) avec des modèles de deep learning (apprentissage approfondi) pour extraire du texte, des tableaux, des marques de sélection et la structure du document.
+L’API de disposition d’Azure Form Recognizer extrait du texte, des tableaux, des marques de sélection et des informations de structure à partir de documents (PDF, TIFF) et d’images (JPG, PNG, BMP).  Le modèle de disposition combine une version améliorée de nos puissantes capacités de [reconnaissance optique de caractères (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) avec des modèles de Deep Learning (apprentissage approfondi) pour extraire du texte, des tableaux, des marques de sélection et la structure du document.
 
-##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>Exemple de formulaire traité avec la fonctionnalité de disposition [Outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/) :
+***Exemple de formulaire traité avec la fonctionnalité de disposition [Outil d’étiquetage des exemples Form Recognizer](https://fott-2-1.azurewebsites.net/)***
 
-:::image type="content" source="media/layout-demo.gif" alt-text="{alt-text}":::
+:::image type="content" source="media/layout-demo.gif" alt-text="Capture d’écran : gif de traitement de l’outil d’étiquetage d’exemples.":::
 
 **Fonctionnalités d’extraction des données**
 
@@ -31,37 +32,64 @@ L’API de disposition d’Azure Form Recognizer extrait du texte, des tableaux
 | --- | --- | --- | --- |
 | Layout  | ✓  | ✓  | ✓  |
 
-## <a name="try-form-recognizer-studio-preview"></a>Essayer Form Recognizer Studio (préversion)
+## <a name="development-options"></a>Options de développement
 
-* Form Recognizer Studio est disponible avec l’API (v 3.0) en préversion.
+Les ressources suivantes sont prises en charge par Form Recognizer v2.1 :
 
-* Extrayez des tables, des cases à cocher et du texte à partir de formulaires et de documents à l’aide de notre fonctionnalité de disposition Form Recognizer Studio :
+| Fonctionnalité | Ressources |
+|----------|-------------------------| 
+|**API de disposition**| <ul><li>[**Outil d’étiquetage Form Recognizer**](https://fott-2-1.azurewebsites.net/layout-analyze)</li><li>[**API REST**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-layout)</li><li>[**Kit SDK Bibliothèque de client**](quickstarts/try-sdk-rest-api.md)</li><li>[**Conteneur Docker de Form Recognizer**](containers/form-recognizer-container-install-run.md?branch=main&tabs=layout#run-the-container-with-the-docker-compose-up-command)</li></ul>|
 
-> [!div class="nextstepaction"]
-> [Essayer Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/layout)
+Les ressources suivantes sont prises en charge par Form Recognizer v3.0 :
 
-## <a name="try-form-recognizer-sample-labeling-tool"></a>Essayer l’outil d’étiquetage des exemples Form Recognizer
+| Fonctionnalité | Ressources | ID de modèle |
+|----------|------------|------------|
+|**Modèle de disposition**| <ul><li>[**Form Recognizer Studio**](https://formrecognizer.appliedai.azure.com)</li><li>[**API REST**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**Kit de développement logiciel (SDK) C#**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Kit de développement logiciel (SDK) Python**](quickstarts/try-v3-python-sdk.md)</li><li>[**Kit SDK Java**](quickstarts/try-v3-java-sdk.md)</li><li>[**Kit de développement logiciel (SDK) JavaScript**](quickstarts/try-v3-javascript-sdk.md)</li></ul>|**prebuilt-layout**|
 
-Vous pouvez voir comment les données de disposition sont extraites en essayant notre outil d’étiquetage des exemples. Vous aurez besoin des éléments suivants :
+### <a name="try-form-recognizer"></a>Essayer Form Recognizer
+
+Découvrez comment les données, y compris les tables, les cases et le texte, sont extraites des formulaires et des documents à l’aide de Form Recognizer Studio ou de notre outil d’étiquetage d’exemples. Vous aurez besoin des éléments suivants :
 
 * Un abonnement Azure : [vous pouvez en créer un gratuitement](https://azure.microsoft.com/free/cognitive-services/)
 
-* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, cliquez sur **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
+* Une [instance Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) dans le portail Azure. Vous pouvez utiliser le niveau tarifaire gratuit (`F0`) pour tester le service. Une fois votre ressource déployée, sélectionnez **Accéder à la ressource** pour accéder à la clé et au point de terminaison de votre API.
 
- :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le Portail Azure.":::
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Capture d’écran : clés et emplacement du point de terminaison dans le portail Azure":::
 
-* Un document de formulaire. Vous pouvez utiliser notre [exemple de document de formulaire](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf).
+#### <a name="form-recognizer-studio-preview"></a>Form Recognizer Studio (préversion)
 
-> [!div class="nextstepaction"]
-  > [Essayer](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+> [!NOTE]
+> Form Recognizer Studio est disponible avec l’API (v 3.0) en préversion.
 
-  Dans l’interface utilisateur de Form Recognizer :
+***Exemple de formulaire traité avec l’[outil d’étiquetage des exemples Form Recognizer](https://formrecognizer.appliedai.azure.com/studio/layout)***
 
-  1. Sélectionnez **Utiliser le service Disposition pour obtenir du texte, des tables et des marques de sélection**.
-  1. Dans le menu déroulant, sélectionnez **fichier local** .
-  1. Téléchargez votre fichier et sélectionnez **Exécuter la disposition**
+:::image type="content" source="media/studio/sample-layout.png" alt-text="Capture d’écran : traitement de document dans Form Recognizer Studio.":::
 
-  :::image type="content" source="media/try-layout.png" alt-text="Capture d’écran : capture d’écran : menu de sélection de fichier source de disposition du menu déroulant de l’outil d’étiquetage des exemples.":::
+1. Dans la page d’accueil de Form Recognizer Studio, sélectionnez **Disposition**
+
+1. Vous pouvez analyser l’exemple de document ou sélectionner le bouton **+ Ajouter** pour charger votre propre exemple.
+
+1. Sélectionnez le bouton **Analyser** :
+
+    :::image type="content" source="media/studio/layout-analyze.png" alt-text="Capture d’écran : menu analyser la disposition.":::
+
+   > [!div class="nextstepaction"]
+   > [Essayer Form Recognizer Studio](https://formrecognizer.appliedai.azure.com/studio/layout)
+
+#### <a name="sample-labeling-tool"></a>Outil d’étiquetage d’exemples
+
+Vous aurez besoin d’un document de formulaire. Vous pouvez utiliser notre [exemple de document de formulaire](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf).
+
+1. Dans la page d’accueil de l’outil d’étiquetage des exemples, sélectionnez **Utiliser Disposition pour obtenir du texte, des tableaux et des marques de sélection**.
+
+1. Dans le menu déroulant, sélectionnez **fichier local** .
+
+1. Téléchargez votre fichier et sélectionnez **Exécuter la disposition**
+
+   :::image type="content" source="media/try-layout.png" alt-text="Capture d’écran : menu déroulant de sélection de fichier source de disposition de l’outil d’étiquetage des exemples.":::
+
+   > [!div class="nextstepaction"]
+   > [Essayer l’outil d’étiquetage d’exemples](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
 
 ## <a name="input-requirements"></a>Critères des entrées
 
@@ -78,7 +106,7 @@ Vous pouvez voir comment les données de disposition sont extraites en essayant 
   * Les clés doivent apparaître au-dessus ou à gauche des valeurs, pas en dessous ni à droite.
 
 > [!NOTE]
-> L'[outil d’étiquetage des exemples](https://fott-2-1.azurewebsites.net/) ne prend pas en charge le format de fichier BMP. Il s’agit d’une limitation de l’outil et non du service Form Recognizer.
+> L’[outil d’étiquetage des exemples](https://fott-2-1.azurewebsites.net/) ne prend pas en charge le format de fichier BMP. Il s’agit d’une limitation de l’outil et non du service Form Recognizer.
 
 ## <a name="supported-languages-and-locales"></a>Langues et régions prises en charge
 
@@ -126,7 +154,7 @@ Pour les documents volumineux comportant plusieurs pages, utilisez le paramètre
 
  La version préliminaire de Form Recognizer introduit plusieurs nouvelles fonctionnalités.
 
-* Suivez le [**Guide de migration de Form Recognizer v3.0**](v3-migration-guide.md) pour apprendre à utiliser la version préliminaire dans vos applications et vos flux de travail.
+* Suivez notre [**guide de migration Form Recognizer v3.0**](v3-migration-guide.md) pour apprendre à utiliser la préversion dans vos applications et workflows.
 
 * Découvrez notre [**API REST (préversion)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) pour en savoir plus sur la préversion et les nouvelles fonctionnalités.
 

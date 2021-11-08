@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: 1457bfcee61ba019a2b9009e734688d44117c349
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: d1cecd0ae685e7a55b4b9069ed4c3afb2aa80c40
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131008538"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131502670"
 landingContent:
 - title: À propos d’Azure Synapse Analytics
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Qu’est-ce qu’Azure Synapse
       url: overview-what-is.md
+    - text: Nouveautés
+      url: whats-new.md
     - text: Terminologie
       url: overview-terminology.md
     - text: Questions fréquentes (FAQ)
@@ -75,6 +77,16 @@ landingContent:
     links:
     - text: Créer un pool d’explorateur de données à l’aide de Synapse Studio
       url: data-explorer/data-explorer-create-pool-studio.md
+- title: Modèles de base de données
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Modèles de base de données dans Azure Synapse Analytics
+      url: database-designer/overview-database-templates.md
+  - linkListType: quickstart
+    links:
+    - text: Créer une base de données de lac en tirant parti des modèles de base de données
+      url: database-designer/quick-start-create-lake-database.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview

@@ -5,12 +5,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 09/22/2021
 ms.author: lajanuar
-ms.openlocfilehash: e3296ee84928256e399891b9f8a29318c565e5de
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c93a34308e235ba487cc1ffa3f668f2b179b8055
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725564"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027687"
 ---
 * Pour de meilleurs résultats, fournissez une photo nette ou une copie de qualité par document.
 * Formats de fichier pris en charge : JPEG, PNG, BMP, TIFF et PDF (texte incorporé ou numérisé). Les PDF avec du texte incorporé sont préférables pour éviter tout risque d’erreur au niveau de l’extraction et de l’emplacement des caractères.

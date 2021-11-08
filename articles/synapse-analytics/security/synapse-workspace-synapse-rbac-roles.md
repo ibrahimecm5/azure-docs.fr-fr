@@ -5,19 +5,20 @@ author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 12/1/2020
+ms.date: 11/02/2021
 ms.author: mesrivas
-ms.reviewer: jrasnick
-ms.openlocfilehash: 6b6c2cbf04b0e68f86bd11b8295c54b8c65d0360
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.reviewer: wiassaf
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 076e5fe14eeceb15e7f72a8f09168e5a9902f07a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352787"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018809"
 ---
 # <a name="synapse-rbac-roles"></a>Rôles RBAC Synapse
 
-L’article décrit les rôles RBAC Synapse intégrés, les autorisations qu’ils accordent, ainsi que les étendues au niveau desquelles ils peuvent être utilisés.  
+L’article décrit les rôles RBAC (contrôle d’accès en fonction du rôle) Synapse intégrés, les autorisations qu’ils accordent, ainsi que les étendues au niveau desquelles ils peuvent être utilisés.  
 
 ## <a name="whats-changed-since-the-preview"></a>Qu’est-ce qui a changé depuis la préversion ?
 Pour les utilisateurs connaissant les rôles RBAC Synapse fournis dans la préversion, voici les modifications apportées :
@@ -39,7 +40,7 @@ Le tableau suivant décrit les rôles intégrés et les étendues à partir desq
 
 |Role |Autorisations|Étendues|
 |---|---|-----|
-|Administrateur Synapse  |Accès complet de Synapse aux pools SQL, aux pools Apache Spark et aux runtimes d'intégration.  Comprend un accès en création, lecture, mise à jour et suppression portant sur tous les artefacts de code publiés.  Comprend les autorisations d’opérateur de calcul, de gestionnaire des données liées et d’utilisateur d’informations d’identification sur les informations d’identification système de l’espace de travail.  Comprend l’attribution de rôles RBAC Synapse. En plus de l’administrateur Synapse, les propriétaires Azure peuvent également attribuer des rôles Synapse RBAC. Des autorisations Azure sont requises pour créer, supprimer et gérer des ressources de calcul. </br></br>_Peut lire et écrire des artefacts</br> Peut effectuer toutes les actions sur les activités Spark </br> Peut afficher les journaux des pools Spark</br> Peut afficher le notebook enregistré et la sortie du pipeline </br> Peut utiliser les secrets stockés par les services liés ou les informations d’identification</br> Peut attribuer et révoquer des rôles RBAC Synapse au niveau de l’étendue actuelle_|Espace de travail </br> Pool Spark<br/>Runtime d’intégration </br>Service lié</br>Informations d'identification |
+|Administrateur Synapse  |Accès complet de Synapse aux pools SQL, aux pools Data Explorer, aux pools Apache Spark et aux runtimes d’intégration.  Comprend un accès en création, lecture, mise à jour et suppression portant sur tous les artefacts de code publiés.  Comprend les autorisations d’opérateur de calcul, de gestionnaire des données liées et d’utilisateur d’informations d’identification sur les informations d’identification système de l’espace de travail.  Comprend l’attribution de rôles RBAC Synapse. En plus de l’administrateur Synapse, les propriétaires Azure peuvent également attribuer des rôles Synapse RBAC. Des autorisations Azure sont requises pour créer, supprimer et gérer des ressources de calcul. </br></br>_Peut lire et écrire des artefacts</br> Peut effectuer toutes les actions sur les activités Spark </br> Peut afficher les journaux des pools Spark</br> Peut afficher le notebook enregistré et la sortie du pipeline </br> Peut utiliser les secrets stockés par les services liés ou les informations d’identification</br> Peut attribuer et révoquer des rôles RBAC Synapse au niveau de l’étendue actuelle_|Espace de travail </br> Pool Spark<br/>Runtime d’intégration </br>Service lié</br>Informations d'identification |
 |Administrateur Synapse Apache Spark</br>|Accès Synapse complet aux pools Apache Spark.  Accès en création, lecture, mise à jour et suppression aux définitions de travail Spark publiées, aux notebooks et à leurs sorties, ainsi qu’aux bibliothèques, services liés et informations d’identification.  Comprend un accès en lecture à tous les autres artefacts de code publiés. Ne permet pas d’utiliser des informations d’identification et d’exécuter des pipelines. Ne comprend pas l’octroi d’accès. </br></br>_Peut effectuer toutes les actions sur les artefacts Spark</br>Peut effectuer toutes les actions sur les activités Spark_|Espace de travail</br>Pool Spark|
 |Administrateur Synapse SQL|Accès Synapse complet aux pools SQL serverless.  Accès en création, lecture, mise à jour et suppression aux scripts SQL publiés, informations d’identification et services liés.  Comprend un accès en lecture à tous les autres artefacts de code publiés.  Ne permet pas d’utiliser des informations d’identification et d’exécuter des pipelines. Ne comprend pas l’octroi d’accès. </br></br>*Peut effectuer toutes les actions sur les scripts SQL<br/>Peut se connecter à des points de terminaison SQL serverless avec les autorisations SQL `db_datareader`, `db_datawriter`, `connect` et `grant`*|Espace de travail|
 |Contributeur Synapse|Accès Synapse complet aux pools Apache Spark et runtimes d’intégration. Comprend un accès en création, lecture, mise à jour et suppression à tous les artefacts de code publiés et leurs sorties, y compris les informations d’identification et les services liés.  Comprend les autorisations d’opérateur de calcul. Ne permet pas d’utiliser des informations d’identification et d’exécuter des pipelines. Ne comprend pas l’octroi d’accès. </br></br>_Peut lire et écrire des artefacts</br>Peut afficher le notebook enregistré et la sortie du pipeline</br>Peut effectuer toutes les actions sur les activités Spark</br>Peut afficher les journaux des pools Spark_|Espace de travail </br> Pool Spark<br/> Runtime d’intégration|
@@ -48,7 +49,7 @@ Le tableau suivant décrit les rôles intégrés et les étendues à partir desq
 |Opérateur de capacité de calcul Synapse |Soumettre des travaux et des notebooks Spark et afficher les journaux.  Comprend l’annulation des travaux Spark soumis par n’importe quel utilisateur. Nécessite des autorisations supplémentaires d’utilisation des informations d’identification sur l’identité du système de l’espace de travail pour exécuter des pipelines, afficher des exécutions de pipeline et des sorties. </br></br>_Peut soumettre et annuler des travaux, y compris des travaux soumis par d’autres</br>Peut afficher les journaux des pools Spark_|Espace de travail</br>Pool Spark</br>Runtime d’intégration|
 |Utilisateur d’informations d’identification Synapse|Exécution et configuration, utilisation des secrets dans les informations d’identification et des services liés dans des activités telles que les exécutions de pipeline. Pour exécuter des pipelines, ce rôle est requis, étendu à l’identité du système de l’espace de travail. </br></br>_Étendu à des informations d’identification, permet l’accès aux données via un service lié protégé par des informations d’identification (nécessite également une autorisation d’utilisation du calcul) </br>Permet l’exécution de pipelines protégés par les informations d’identification de l’identité du système de l’espace de travail (avec une autorisation d’utilisation du calcul supplémentaire)_|Espace de travail </br>Service lié</br>Informations d'identification
 |Gestionnaire des données liées Synapse|Création et gestion des points de terminaison privés managés, des services liés et des informations d’identification. Peut créer des points de terminaison privés managés utilisant des services liés protégés par des informations d’identification|Espace de travail|
-|Utilisateur Synapse|Répertorier et afficher les détails des pools SQL, des pools Apache Spark, des runtimes d’intégration, des services liés et informations d’identification publiés. Ne comprend pas d’autres artefacts de code publiés.  Peut créer des artefacts, mais ne peut pas exécuter ou publier sans autorisations supplémentaires.</br></br>_Peut répertorier et lire les pools Spark, les runtimes d’intégration._|Espace de travail, pool Spark</br>Service lié </br>Informations d'identification|
+|Utilisateur Synapse|Répertorier et afficher les détails des pools SQL, des pools Apache Spark, des runtimes d’intégration, des services liés et informations d’identification publiés. Ne comprend pas d’autres artefacts de code publiés.  Peut créer des artefacts, mais ne peut pas exécuter ou publier sans autorisations supplémentaires. </br></br>_Peut répertorier et lire les pools Spark, les runtimes d’intégration._|Espace de travail, pool Spark</br>Service lié </br>Informations d'identification|
 
 ## <a name="synapse-rbac-roles-and-the-actions-they-permit"></a>Rôles RBAC Synapse et actions qu’ils permettent
 
@@ -60,11 +61,11 @@ Le tableau suivant répertorie les rôles intégrés et les actions/autorisation
 
 Rôle|Actions
 --|--
-Administrateur Synapse|workspaces/read</br>workspaces/roleAssignments/write, delete</br>workspaces/managedPrivateEndpoint/write, delete</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
+Administrateur Synapse|workspaces/read</br>workspaces/roleAssignments/write, delete</br>workspaces/managedPrivateEndpoint/write, delete</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/kqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
 |Administrateur Synapse Apache Spark|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/notebooks/viewOutputs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete|
 |Administrateur Synapse SQL|workspaces/read</br>workspaces/artifacts/read</br>workspaces/sqlScripts/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete|
-|Contributeur Synapse|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
-|Éditeur d'artefact Synapse|workspaces/read</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
+|Contributeur Synapse|workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/kqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
+|Éditeur d'artefact Synapse|workspaces/read</br>workspaces/artifacts/read</br>workspaces/notebooks/write, delete</br>workspaces/sparkJobDefinitions/write, delete</br>workspaces/sqlScripts/write, delete</br>workspaces/kqlScripts/write, delete</br>workspaces/dataFlows/write, delete</br>workspaces/pipelines/write, delete</br>workspaces/triggers/write, delete</br>workspaces/datasets/write, delete</br>workspaces/libraries/write, delete</br>workspaces/linkedServices/write, delete</br>workspaces/credentials/write, delete</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
 |Utilisateur d'artefact Synapse|workspaces/read</br>workspaces/artifacts/read</br>workspaces/notebooks/viewOutputs/action</br>workspaces/pipelines/viewOutputs/action|
 |Opérateur de capacité de calcul Synapse |workspaces/read</br>workspaces/bigDataPools/useCompute/action</br>workspaces/bigDataPools/viewLogs/action</br>workspaces/integrationRuntimes/useCompute/action</br>workspaces/integrationRuntimes/viewLogs/action|
 |Utilisateur d’informations d’identification Synapse|workspaces/read</br>workspaces/linkedServices/useSecret/action</br>workspaces/credentials/useSecret/action|
@@ -88,6 +89,7 @@ workspaces/artifacts/read|Administrateur Synapse</br>Administrateur Synapse Apac
 workspaces/notebooks/write, delete|Administrateur Synapse</br>Administrateur Synapse Apache Spark</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
 workspaces/sparkJobDefinitions/write, delete|Administrateur Synapse</br>Administrateur Synapse Apache Spark</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
 workspaces/sqlScripts/write, delete|Administrateur Synapse</br>Administrateur Synapse SQL</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
+workspaces/kqlScripts/write, delete|Administrateur Synapse</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
 workspaces/dataFlows/write, delete|Administrateur Synapse</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
 workspaces/pipelines/write, delete|Administrateur Synapse</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
 workspaces/triggers/write, delete|Administrateur Synapse</br>Contributeur Synapse</br>Éditeur d'artefact Synapse
@@ -104,7 +106,7 @@ workspaces/credentials/useSecret/action|Administrateur Synapse</br>Utilisateur d
 
 Le tableau ci-dessous répertorie les étendues RBAC Synapse et les rôles qui pouvant être attribués à chaque étendue. 
 
->[!note]
+>[!NOTE]
 >Pour créer ou supprimer un objet, vous devez disposer d’autorisations dans une étendue de niveau supérieur.
 
 Étendue|Rôles
@@ -115,7 +117,7 @@ Runtime d’intégration | Administrateur Synapse </br>Contributeur Synapse </br
 Service lié |Administrateur Synapse </br>Utilisateur d’informations d’identification Synapse
 Informations d'identification |Administrateur Synapse </br>Utilisateur d’informations d’identification Synapse
  
->[!note]
+>[!NOTE]
 >Tous les rôles et actions d’artefact sont étendus au niveau de l’espace de travail. 
 
 ## <a name="next-steps"></a>Étapes suivantes

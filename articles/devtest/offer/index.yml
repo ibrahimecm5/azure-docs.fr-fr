@@ -1,0 +1,61 @@
+### YamlMime:Hub
+title: Documentation sur les offres Azure Dev/Test
+summary: 'Découvrez comment utiliser les avantages de votre abonnement Visual Studio pour développer et tester sur Azure sans frais supplémentaires. Tutoriels, guides pratiques et plus encore.'
+metadata:
+  title: Documentation sur les offres Azure Dev/Test
+  description: 'Découvrez comment utiliser les avantages de votre abonnement Visual Studio pour développer et tester sur Azure sans frais supplémentaires. Tutoriels, guides pratiques et plus encore.'
+  ms.topic: hub-page
+  ms.collection: collection
+  ms.prod: visual-studio-windows
+  ms.author: jmartens
+  author: j-martens
+  ms.date: 10/06/2021
+  ms.custom: devtestoffer
+  adobe-target: true
+highlightedContent:
+  items:
+    - title: Présentation de l’offre Azure Dev/Test
+      itemType: overview
+      url: overview-what-is-devtest-offer-visual-studio.md
+    - title: Prise en main des crédits Azure
+      itemType: quickstart
+      url: quickstart-individual-credit.md
+    - title: Création d’abonnements pour les entreprises et les organisations
+      itemType: quickstart
+      url: concepts-gitops-azure-devtest.md
+conceptualContent:
+  items:
+    - title: Offre Azure Dev/Test pour les particuliers
+      links:
+        - url: ../../devtest/offer/quickstart-individual-credit.md
+          itemType: how-to-guide
+          text: Prise en main des crédits Azure
+        - url: ../../devtest/offer/how-to-add-users-directory.md
+          itemType: how-to-guide
+          text: Ajout d’utilisateurs à un annuaire
+        - url: ../../devtest/offer/how-to-remove-credit-limits.md
+          itemType: how-to-guide
+          text: Suppression des limites de crédit
+        - url: ../../devtest/offer/how-to-sign-into-azure-with-github.md
+          itemType: how-to-guide
+          text: Connexion à Azure avec des informations d’identification GitHub
+        - url: ../../devtest/offer/how-to-change-directory-tenants-visual-studio-azure.md
+          itemType: how-to-guide
+          text: Changement de locataire d’annuaire avec un abonnement Azure VSS
+    - title: Offre Azure Dev/Test pour les entreprises
+      links:
+        - url: ../../devtest/offer/quickstart-create-enterprise-devtest-subscriptions.md
+          itemType: how-to-guide
+          text: Création d’abonnements pour les entreprises et les organisations
+        - url: ../../devtest/offer/concepts-gitops-azure-devtest.md
+          itemType: how-to-guide
+          text: GitOps avec Azure Dev/Test
+        - url: ../../devtest/offer/how-to-manage-monitor-devtest.md
+          itemType: how-to-guide
+          text: Gestion des abonnements Azure Dev/Test
+        - url: ../../devtest/offer/how-to-manage-reliability-performance.md
+          itemType: how-to-guide
+          text: Intégration de la fiabilité dans des applications
+        - url: ../../devtest/offer/concepts-security-governance-devtest.md
+          itemType: how-to-guide
+          text: Gestion de la sécurité et de la gouvernance

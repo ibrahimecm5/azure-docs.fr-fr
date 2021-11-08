@@ -4,6 +4,8 @@
   items:
     - name: À propos d’Azure Container Apps
       href: overview.md
+    - name: Comparaison des options de conteneur dans Azure
+      href: compare-options.md
 - name: Démarrages rapides
   expanded: true
   items:
@@ -13,7 +15,7 @@
   items:
     - name: Environnement
       href: environment.md
-    - name: Conteneurs
+    - name: Containers
       href: containers.md
     - name: Révisions
       href: revisions.md
@@ -35,6 +37,8 @@
       href: ingress.md
     - name: Connecter plusieurs applications
       href: connect-apps.md
+    - name: Publier les révisions avec GitHub Actions
+      href: github-actions-cli.md
 - name: Tutoriels
   items:
     - name: Microservices avec Dapr à l’aide de l’interface CLI
@@ -43,15 +47,13 @@
       href: microservices-dapr-azure-resource-manager.md
     - name: Traitement en arrière-plan
       href: background-processing.md
-- name: Informations de référence
+- name: Référence
   items:
-    - name: Azure CLI
-      href: /cli/azure/containerapps
     - name: Spécification de l’API ARM
       href: azure-resource-manager-api-spec.md
 - name: Ressources
   items:
     - name: Tarifs
-      href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
+      href: 'https://azure.microsoft.com/pricing/details/container-apps/'
     - name: Quotas
       href: quotas.md

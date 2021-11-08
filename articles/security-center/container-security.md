@@ -1,19 +1,18 @@
 ---
-title: Sécurité des conteneurs avec Microsoft Defender pour le cloud et Microsoft Defender
+title: Sécurité des conteneurs avec Microsoft Defender pour le cloud
 description: En savoir plus sur les fonctionnalités de sécurité des conteneurs de Microsoft Defender pour le cloud
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/06/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e3b839d572437e3fd9677ebabb111de68ef4d005
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 947aa4c5506b01ee3d22cd4372a4e5a5f0ca4992
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010084"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579271"
 ---
 # <a name="container-security-in-microsoft-defender-for-cloud"></a>Sécurité des conteneurs dans Microsoft Defender pour le cloud
 

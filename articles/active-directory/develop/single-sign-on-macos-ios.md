@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 94174eeb943f4016fde8baf329fa6ba27768e486
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 02140728536e458c85e8c63a0fa1ca3c9663506b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039931"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050503"
 ---
 # <a name="configure-sso-on-macos-and-ios"></a>Configurer l’authentification unique sur macOS et iOS
 
@@ -72,7 +72,7 @@ URI de redirection App2 : `msauth.com.contoso.mytestapp2://auth`
 URI de redirection App3 : `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> Le format des URI de redirection doit être compatible avec le format pris en charge par MSAL, qui est documenté dans [Spécifications du format d’URI de redirection MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
+> Le format des URI de redirection doit être compatible avec le format pris en charge par MSAL, qui est documenté dans [Exigences du format d’URI de redirection de MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
 
 ### <a name="setup-keychain-sharing-between-applications"></a>Créer le partage de trousseau entre les applications
 

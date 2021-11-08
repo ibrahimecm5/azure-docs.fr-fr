@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 27353b62255e22f342ce0648a3a9ebde4bd5eb30
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 81067c8c1b24897d88f3d8da4d21329b030cbd03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130227846"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036444"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Configurer la connexion pour une organisation Azure Active Directory spécifique dans Azure Active Directory B2C
 
@@ -51,10 +51,10 @@ Pour autoriser la connexion des utilisateurs avec un compte Azure AD d’une org
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 1. Veillez à utiliser le répertoire qui contient votre locataire Azure AD de l’organisation (par exemple, Contoso). Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
 1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire Azure AD dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
-1. Choisissez **Tous les services** dans le coin supérieur gauche du portail Azure, puis recherchez et sélectionnez **Inscriptions d’applications**.
+1. Sous **Services Azure**, recherchez et sélectionnez **Inscriptions d’applications**.
 1. Sélectionnez **Nouvelle inscription**.
 1. Entrez un **nom** pour votre application. Par exemple : `Azure AD B2C App`.
-1. Acceptez la sélection par défaut de **Comptes dans cet annuaire organisationnel uniquement** pour cette application.
+1. Acceptez la sélection par défaut de **Comptes dans cet annuaire organisationnel uniquement (annuaire par défaut uniquement – Un seul locataire)** pour cette application.
 1. Pour le champ **URI de redirection**, acceptez la valeur **Web**, puis entrez l’URL suivante en minuscules, où `your-B2C-tenant-name` est remplacé par le nom de votre locataire Azure AD B2C :
 
     ```

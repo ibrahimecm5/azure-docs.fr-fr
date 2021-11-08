@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/23/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5b27e3db548c54cec4e77ee169921e45ac700524
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2d61c48204478cc19be51d5d2c0d2974c674661d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122527663"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020841"
 ---
 # <a name="use-table-tags-to-train-your-custom-form-model"></a>Utiliser des étiquettes de tableau pour effectuer l’apprentissage de votre modèle de formulaire personnalisé
 
@@ -30,7 +31,7 @@ Voici quelques exemples de cas où l’utilisation d’étiquettes de tableau se
 > [!NOTE]
 > Form Recognizer recherche et extrait automatiquement tous les tableaux de vos documents, que les tableaux soient étiquetés ou non. Par conséquent, il n’est pas nécessaire d’étiqueter chaque tableau de votre formulaire avec une étiquette de tableau ,et vos étiquettes de tableau n’ont pas à reproduire la structure de chaque tableau trouvé dans votre formulaire. Les tableaux extraits automatiquement par Form Recognizer seront inclus dans la section pageResults de la sortie JSON.
 
-## <a name="create-a-table-tag-with-the-form-recognizer-sample-labeling-tool"></a>Créer une étiquette de table à l’aide de l’outil de reconnaissance de l’exemple d’étiquetage de formulaire
+## <a name="create-a-table-tag-with-the-form-recognizer-sample-labeling-tool"></a>Créer une étiquette de table à l’aide de l’outil d’étiquetage des exemples Form Recognizer
 <!-- markdownlint-disable MD004 -->
 * Déterminez si vous souhaitez une étiquette de tableau **dynamique** ou **de taille fixe**. Si le nombre de lignes varie d’un document à l’autre, utilisez une étiquette de tableau dynamique. Si le nombre de lignes est constant d’un document à l’autre, utilisez une étiquette de tableau de taille fixe.
 * Si votre étiquette de tableau est dynamique, définissez les noms des colonnes ainsi que le type et le format des données pour chaque colonne.
@@ -47,9 +48,9 @@ Voici quelques exemples de cas où l’utilisation d’étiquettes de tableau se
 Suivez notre démarrage rapide pour effectuer l’apprentissage de votre modèle Form Recognizer personnalisé et l’utiliser :
 
 > [!div class="nextstepaction"]
-> [Entraînement avec des étiquettes à l’aide de l’outil Exemple d’étiquetage](label-tool.md)
+> [Entraînement avec des étiquettes à l’aide de l’outil d’étiquetage des exemples](label-tool.md)
 
 ## <a name="see-also"></a>Voir aussi
 
-* [Entraîner un modèle personnalisé avec l’exemple d’outil d’étiquetage](label-tool.md)
+* [Entraîner un modèle personnalisé avec l’outil d’étiquetage des exemples](label-tool.md)
 >

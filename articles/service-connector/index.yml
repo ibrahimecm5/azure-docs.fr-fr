@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Documentation Service Connector
+summary: Service Connector est un service géré par Azure qui permet aux développeurs de connecter facilement le service de calcul aux services de stockage cibles.
+metadata:
+  title: Documentation Service Connector
+  description: Connectez facilement votre service de calcul Azure aux services de sauvegarde avec Service Connector.
+  ms.service: service-connector
+  ms.topic: landing-page
+  author: shizn
+  ms.author: xshi
+  ms.date: 10/29/2021
+  ms.openlocfilehash: 9388686488d452f08610485a1fedeecb9daf8e5d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088299"
+landingContent:
+- title: À propos de Service Connector
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Qu’est-ce que Service Connector ?
+      url: overview.md
+    - text: Concepts clés de Service Connector
+      url: concept-service-connector-internals.md
+- title: Bien démarrer
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Créer une nouvelle connexion de service dans App Service
+      url: quickstart-portal-app-service-connection.md
+    - text: Créer une nouvelle connexion de service dans Spring Cloud
+      url: quickstart-portal-spring-cloud-connection.md
+- title: Tâches communes
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Application Python (Django) avec PostgreSQL
+      url: tutorial-django-webapp-postgres-cli.md
+    - text: Application Spring Cloud avec MySQL
+      url: tutorial-java-spring-mysql.md
+    - text: Application ASP.NET avec Stockage Blob
+      url: tutorial-csharp-webapp-storage-cli.md
+    - text: Application Spring Cloud avec Kafka sur Confluent Cloud
+      url: tutorial-java-spring-confluent-kafka.md
+  - linkListType: how-to-guide
+    links:
+    - text: Guide de résolution des problèmes
+      url: how-to-troubleshoot-front-end-error.md
+    - text: Prise en charge de la région
+      url: concept-region-support.md
