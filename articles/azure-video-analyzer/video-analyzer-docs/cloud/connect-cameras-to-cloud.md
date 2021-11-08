@@ -3,14 +3,14 @@ title: Connexion des caméras au service Azure Video Analyzer
 description: Cet article explique comment connecter des caméras directement au service Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 11/04/2021
+ms.date: 11/01/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 35a7ad74c8f20ccf748140841332ee6e9b6cd27b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 973db00ad3d8b7d0581d74b9de602322c20ac7b3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558798"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131096762"
 ---
 # <a name="connect-cameras-to-the-cloud"></a>Connecter des caméras au cloud
 

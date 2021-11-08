@@ -2,14 +2,14 @@
 title: Bien démarrer avec Azure Video Analyzer en utilisant le portail Azure - Azure
 description: Ce guide de démarrage rapide vous aide à commencer à utiliser Azure Video Analyzer étape par étape en utilisant le Portail Azure.
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1dd1a5cdf68c60d4f5da75f324c163bc78dffa8f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c449b86ca4718ad93c2b0c4be0a1623169916ecc
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029148"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556518"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-in-the-portal"></a>Démarrage rapide : Prise en main de Video Analyzer sur le portail
 

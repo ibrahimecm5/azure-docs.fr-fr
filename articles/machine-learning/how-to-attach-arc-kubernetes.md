@@ -1,6 +1,6 @@
 ---
 title: Machine Learning avec Azure Arc (préversion)
-description: Configurer un cluster Kubernetes avec Azure Arc pour entraîner et alimenter des modèles Machine Learning dans Azure Machine Learning
+description: Configurer des clusters Azure Kubernetes Service et Kubernetes avec Azure Arc pour l’entraînement et l’inférence des modèles Machine Learning dans Azure Machine Learning
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
@@ -9,22 +9,30 @@ ms.subservice: mlops
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5e9d95f863e5107a71118da9fdc9b0c5329acbb0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4c2867382ffd3c3369417b0e83fb89bc6dd6561
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084656"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460941"
 ---
-# <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Configurer le machine learning avec Azure Arc (préversion)
+# <a name="configure-kubernetes-clusters-for-machine-learning-preview"></a>Configurer des clusters Kubernetes pour Machine Learning (préversion)
 
-Découvrez comment configurer le machine learning avec Azure Arc pour l’entraînement et l’alimentation.
+Découvrez comment configurer les clusters Azure Kubernetes Service (AKS) et Kubernetes avec Azure Arc pour l’entraînement et l’inférence des charges de travail Machine Learning.
 
 ## <a name="what-is-azure-arc-enabled-machine-learning"></a>Qu’est-ce que le machine learning avec Azure Arc ?
 
 Azure Arc permet d’exécuter des services Azure dans n’importe quel environnement Kubernetes, qu’il soit local, multicloud ou situé à la périphérie.
 
-Le machine learning avec Azure Arc vous permet de configurer et d’utiliser des clusters Kubernetes avec Azure Arc pour entraîner; alimenter et gérer des modèles Machine Learning dans Azure Machine Learning.
+Le Machine Learning avec Azure Arc vous permet de configurer et d’utiliser des clusters Kubernetes avec Azure Arc ou Azure Kubernetes Service pour l’entraînement, l’inférence et la gestion des modèles Machine Learning dans Azure Machine Learning.
+
+## <a name="machine-learning-on-azure-kubernetes-service"></a>Machine Learning avec Azure Kubernetes Service
+
+Pour utiliser des clusters Azure Kubernetes Service pour les charges de travail d’inférence et d’entraînement Azure Machine Learning, vous n’êtes pas obligé de les connecter à Azure Arc.
+
+Vous devez configurer le trafic réseau entrant et sortant. Pour plus d’informations, consultez [Configurer le trafic du réseau entrant et sortant (AKS)](how-to-access-azureml-behind-firewall.md#azure-kubernetes-services-1).
+
+Pour déployer l’extension Azure Machine Learning sur des clusters Azure Kubernetes Service, consultez la section [Déployer une extension Azure Machine Learning](#deploy-azure-machine-learning-extension).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -32,15 +40,18 @@ Le machine learning avec Azure Arc vous permet de configurer et d’utiliser des
 * Cluster Kubernetes avec Azure Arc. Pour plus d’informations, consultez [Guide de démarrage de la connexion d’un cluster Kubernetes existant à Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
     > [!NOTE]
-    > Pour les clusters Azure Kubernetes service (AKS), la connexion à Azure arc est **facultative**.
+    > Pour les clusters AKS, la connexion à Azure Arc est **facultative**.
+
+* Répondre à la [Configuration requise du réseau Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)
+
+    > [!IMPORTANT]
+    > Les clusters qui s’exécutent derrière un serveur proxy ou un pare-feu sortant ont besoin de configurations réseau supplémentaires.
+    >
+    > Pour plus d’informations, consultez [Configurer le trafic du réseau entrant et sortant (Kubernetes avec Azure Arc)](how-to-access-azureml-behind-firewall.md#arc-kubernetes).
 
 * Exécutez les [Prérequis des extensions de cluster Kubernetes avec Azure Arc](../azure-arc/kubernetes/extensions.md#prerequisites).
   * Azure CLI version 2.24.0 ou ultérieure
   * Extension k8s-extension d’Azure CLI version 1.0.0 ou ultérieure
-* Répondre à la [Configuration requise du réseau Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements)
-
-    > [!IMPORTANT]
-    > Les clusters qui s’exécutent derrière un serveur proxy ou un pare-feu sortant ont besoin de configurations réseau supplémentaires. Pour plus d’informations, consultez [Configurer le trafic du réseau entrant et sortant](how-to-access-azureml-behind-firewall.md#arc-kubernetes).
 
 * Un espace de travail Azure Machine Learning. [Créez un espace de travail](how-to-manage-workspace.md?tabs=python) avant de commencer si vous n’en possédez pas.
   * Kit SDK Python Azure Machine Learning version 1.30 ou ultérieure
@@ -84,7 +95,7 @@ Kubernetes avec Azure Arc a une fonctionnalité d’extension de cluster permett
 Utilisez la commande [`create`](/cli/azure/k8s-extension?view=azure-cli-latest&preserve-view=true) de l’extension Azure CLI `k8s-extension` pour déployer l’extension Azure Machine Learning sur votre cluster Kubernetes avec Azure Arc.
 
 > [!IMPORTANT]
-> Affectez au paramètre `--cluster-type` la valeur `managedCluster` pour déployer l’extension d’Azure Machine Learning sur les clusters AKS.
+> Affectez au paramètre `--cluster-type` la valeur `managedClusters` pour déployer l’extension d’Azure Machine Learning sur les clusters AKS.
 
 La liste suivante répertorie les paramètres de configuration disponibles à utiliser pour différents scénarios de déploiement d’extension d’Azure Machine Learning.
 

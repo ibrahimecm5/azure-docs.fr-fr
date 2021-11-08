@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 1a51af8fd34516ca87d7ab98332221a308480193
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/22/2021
+ms.openlocfilehash: d939af34afba8a240b4edc2ee1a3b0ed145b62ff
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217134"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503119"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Création et gestion d’un runtime d’intégration auto-hébergé
 
@@ -42,6 +42,9 @@ L’installation du runtime d’intégration auto-hébergé sur un contrôleur d
 - Vous devez disposer de droits d'administrateur sur la machine pour correctement installer et configurer le runtime d’intégration auto-hébergé.
 - Les analyses sont effectuées à une fréquence spécifique, selon le calendrier que vous avez établi. L'utilisation du processeur et de la RAM sur la machine suit le même modèle avec des périodes de pointe et d’inactivité. L'utilisation des ressources dépend aussi fortement de la quantité de données qui sont analysées. Lorsque plusieurs tâches de numérisation sont en cours, vous constatez une augmentation de l'utilisation des ressources aux heures de pointe.
 - Les tâches peuvent échouer lors de l’extraction de données aux formats Parquet, ORC ou Avro.
+
+> [!IMPORTANT]
+> Si vous souhaitez utiliser le runtime d'intégration auto-hébergé pour analyser des fichiers Parquet, vous devez installer **JRE 8 (Java Runtime Environment) 64 bits ou OpenJDK** sur votre machine IR. Consultez notre [section Java Runtime Environment au bas de la page](#java-runtime-environment-installation) pour obtenir un guide d’installation.
 
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>Installation d’un runtime d’intégration auto-hébergé
 
@@ -78,6 +81,61 @@ Pour créer et installer un runtime d’intégration auto-hébergé, suivez les 
 6. Une fois le runtime d’intégration auto-hébergé inscrit, la fenêtre suivante s’affiche :
 
    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="Inscription réussie":::
+
+### <a name="configure-proxy-server-settings"></a>Configurer les paramètres du serveur proxy
+
+Si vous sélectionnez l'option **Utiliser le proxy système** pour le proxy HTTP, le runtime d’intégration auto-hébergé utilise les paramètres du proxy dans diahost.exe.config et diawp.exe.config. Si ces fichiers ne spécifient aucun proxy, le runtime d’intégration auto-hébergé se connecte directement au service cloud sans passer par un proxy. La procédure suivante fournit des instructions pour mettre à jour le fichier diahost.exe.config :
+
+1. Dans l’Explorateur de fichiers, effectuez une copie de sauvegarde de C:\Program Files\Microsoft Integration Runtime\5.0\Shared\diahost.exe.config en tant que sauvegarde du fichier d’origine.
+1. Ouvrez le Bloc-notes en tant qu’administrateur.
+1. Dans le Bloc-notes, ouvrez le fichier texte C:\Program Files\Microsoft Integration Runtime\5.0\Shared\diahost.exe.config.
+1. Localisez la balise par défaut **system.net** comme indiqué dans le code suivant :
+
+    ```xml
+    <system.net>
+        <defaultProxy useDefaultCredentials="true" />
+    </system.net>
+    ```
+
+    Vous pouvez ensuite ajouter les détails du serveur proxy comme illustré dans l’exemple suivant :
+
+    ```xml
+    <system.net>
+        <defaultProxy enabled="true">
+              <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
+        </defaultProxy>
+    </system.net>
+    ```
+
+    La balise de proxy permet des propriétés supplémentaires pour spécifier les paramètres requis comme `scriptLocation`. Consultez [\<proxy\>Elément (paramètres réseau)](/dotnet/framework/configure-apps/file-schema/network/proxy-element-network-settings) pour connaître la syntaxe.
+
+    ```xml
+    <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
+    ```
+
+1. Enregistrez le fichier config dans son emplacement d’origine. Redémarrez ensuite le service hôte du runtime d’intégration auto-hébergé, qui relève les modifications.
+
+   Pour redémarrer le service, utilisez l’applet des services dans le Panneau de configuration. Ou, dans le Gestionnaire de configuration Integration Runtime, sélectionnez le bouton **Arrêter le service**, puis **Démarrer le service**.
+
+   Si le service ne démarre pas, il est probable que vous ayez ajouté une syntaxe de balise XML incorrecte au fichier de configuration de l’application modifié.
+
+> [!IMPORTANT]
+> N’oubliez pas de mettre à jour diahost.exe.config et diawp.exe.config.
+
+Vous devez également vérifier que Microsoft Azure figure dans la liste d’autorisation de votre entreprise. Vous pouvez télécharger la liste des adresses IP Azure valides. Les plages d’adresses IP pour chaque cloud, réparties par région et par les services marqués dans ce cloud, sont désormais disponibles sur MS Download : 
+   - Public : https://www.microsoft.com/download/details.aspx?id=56519
+
+### <a name="possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server"></a>Symptômes possibles problèmes liés au pare-feu et au serveur proxy
+
+Si des messages d’erreur semblables aux suivants s’affichent, il est fort probable qu'ils soient dus à une mauvaise configuration du pare-feu ou du serveur proxy. Une telle configuration empêche le runtime d’intégration auto-hébergé de se connecter aux sources de données ou aux comptes de stockage managés Azure. Pour vous assurer que votre pare-feu et votre serveur proxy sont correctement configurés, reportez-vous à la section précédente.
+
+- Lorsque vous tentez d’inscrire le runtime d’intégration auto-hébergé, le message d'erreur suivant s'affiche : Échec d’inscription de ce nœud Runtime d’intégration ! Vérifiez que la clé d’authentification est valide et que le service hôte d’intégration est en cours d’exécution sur cette machine.
+- Lorsque vous ouvrez le Gestionnaire de configuration Integration Runtime, l’état indiqué est **Déconnecté** ou **En cours de connexion**. Lorsque vous affichez les journaux des événements Windows, sous **Observateur d’événements** > **Journaux des applications et services** > **Microsoft Integration Runtime**, des messages d’erreur tels que le suivant s’affichent :
+
+  ```output
+  Unable to connect to the remote server
+  A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
+  ```
 
 ## <a name="networking-requirements"></a>Configuration requise du réseau
 
@@ -128,6 +186,51 @@ Vous pouvez modifier un runtime d'intégration hébergé par vous-même en accé
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime-settings.png" alt-text="Modification des détails du runtime d’intégration":::
 
 Vous pouvez supprimer un runtime d'intégration auto-hébergé en accédant à **Integration runtimes** dans le Management center, en sélectionnant l'IR, puis en sélectionnant **Supprimer**. Une fois le runtime d’intégration supprimé, toutes les analyses en cours qui en dépendent échouent.
+
+## <a name="java-runtime-environment-installation"></a>Installation de Java Runtime Environment
+
+Si vous souhaitez analyser des fichiers Parquet à l’aide du runtime d'intégration auto-hébergé avec Purview, vous devez installer Java Runtime Environment ou le OpenJDK sur votre ordinateur de runtime d'intégration auto-hébergé.
+
+Lors de l’analyse des fichiers Parquet à l’aide du runtime d’intégration auto-hébergé, le service localise le runtime Java en vérifiant d’abord le registre *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pour JRE, et s’il est introuvable, en vérifiant la variable système *`JAVA_HOME`* pour OpenJDK.
+
+- **Pour utiliser JRE** : Le runtime d’intégration de 64 bits requiert la version 64 bits de JRE. Vous pouvez la récupérer [ici](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Pour utiliser OpenJDK** : il est pris en charge à compter de la version 3.13 du runtime d’intégration. Empaquetez jvm.dll avec tous les autres assemblys requis d’OpenJDK dans la machine d’IR auto-hébergé et définissez la variable d’environnement système JAVA_HOME en conséquence.
+
+## <a name="proxy-server-considerations"></a>Considérations relatives aux serveurs proxy
+
+Si votre environnement de réseau d’entreprise utilise un serveur proxy pour accéder à Internet, configurez le runtime d’intégration auto-hébergé pour utiliser les bons paramètres de proxy. Vous pouvez définir le proxy lors de la phase initiale de l’enregistrement.
+
+:::image type="content" source="media/manage-integration-runtimes/self-hosted-proxy.png" alt-text="Spécifiez le proxy.":::
+
+Une fois configuré, le runtime d’intégration auto-hébergé utilise le serveur proxy pour se connecter à la source et à la destination du service cloud (à l'aide du protocole HTTP ou HTTPS). C'est la raison pour laquelle vous sélectionnez **Changer le lien** lors de la configuration initiale.
+
+:::image type="content" source="media/manage-integration-runtimes/set-http-proxy.png" alt-text="Configurer le proxy":::
+
+Il existe trois options de configuration :
+
+- **Ne pas utiliser de proxy** : le runtime d’intégration auto-hébergé n’utilise pas explicitement de proxy pour se connecter aux services cloud.
+- **Utiliser le proxy système** : le runtime d’intégration autohébergé utilise le paramètre de proxy configuré dans diahost.exe.config et diawp.exe.config. Si ces fichiers ne spécifient aucune configuration de proxy, le runtime d’intégration auto-hébergé se connecte directement au service cloud sans passer par un proxy.
+- **Utiliser un proxy personnalisé** : configurez les paramètres du proxy HTTP à utiliser pour le runtime d’intégration auto-hébergé au lieu d’utiliser les configurations dans diahost.exe.config et diawp.exe.config. Les valeurs **Adresse** et **Port** sont requises. Les valeurs **Nom d’utilisateur** et **Mot de passe** sont facultatives, en fonction des paramètres d’authentification de votre proxy. Tous les paramètres sont chiffrés avec Windows DPAPI sur le runtime d’intégration autohébergé et stockés localement sur l’ordinateur.
+
+Le service hôte du runtime d’intégration auto-hébergé redémarre automatiquement après avoir enregistré les paramètres de proxy mis à jour.
+
+Une fois le runtime d’intégration auto-hébergé inscrit, si vous souhaitez afficher ou mettre à jour les paramètres de proxy, utilisez le Gestionnaire de configuration Microsoft Integration Runtime.
+
+1. Ouvrez le **Gestionnaire de configuration de Microsoft Integration Runtime**.
+3. Sous **Proxy HTTP**, sélectionnez le lien **Modifier** pour ouvrir la boîte de dialogue **Définir le proxy HTTP**.
+4. Sélectionnez **Suivant**. Vous pouvez voir un avertissement demandant l’autorisation d’enregistrer les paramètres de proxy et de redémarrer le service hôte du runtime d’intégration.
+
+Vous pouvez utiliser l'outil Gestionnaire de configuration pour afficher et mettre à jour le proxy HTTP.
+
+> [!NOTE]
+> Si vous configurez un serveur proxy avec l’authentification NTLM, le service hôte du runtime d’intégration s’exécute sous le compte du domaine. Si vous modifiez ultérieurement le mot de passe du compte du domaine, veillez à mettre à jour les paramètres de configuration du service et à redémarrer ce dernier. En raison de cette exigence, nous vous conseillons d'accéder au serveur proxy à l'aide d'un compte de domaine dédié qui ne nécessite pas de mettre à jour le mot de passe fréquemment.
+
+## <a name="installation-best-practices"></a>Bonnes pratiques d’installation
+
+Vous pouvez installer le runtime d’intégration auto-hébergé en téléchargeant un package de configuration d’identité gérée à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
+
+- Configurez un plan d’alimentation sur la machine hôte du runtime d’intégration auto-hébergé afin d’empêcher la mise en veille prolongée de la machine. Si cette dernière se met en veille prolongée, le runtime d’intégration auto-hébergé passe à l’état hors connexion.
+- Sauvegardez régulièrement les informations d’identification associées au runtime d’intégration auto-hébergé.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

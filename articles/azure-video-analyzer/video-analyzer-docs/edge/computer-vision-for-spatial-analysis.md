@@ -5,14 +5,14 @@ author: Juliako
 ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 11/04/2021
+ms.date: 06/01/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b3de27af4dab9dd8968f97487cb120dbcd0d08c8
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f492272e2365d242859357e86056fd3d5095e88b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554485"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131097157"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Tutoriel : Analyser des flux vidéo en direct avec le service Vision par ordinateur pour l’analyse spatiale (préversion)
 

@@ -2,14 +2,14 @@
 title: Détection des caméras compatibles ONVIF dans le sous-réseau local
 description: Ce guide pratique vous montre comment utiliser le module périphérique Video Analyzer pour découvrir des caméras compatibles ONVIF dans votre sous-réseau local.
 ms.topic: how-to
-ms.date: 11/04/2021
+ms.date: 10/22/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8e0629294ba5d19315da096072fa804824649acc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 04d46daedd88ceef8b91ce4f0135d80b2d1c9045
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564021"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131097162"
 ---
 # <a name="discovering-onvif-capable-cameras-in-the-local-subnet"></a>Détection des caméras compatibles ONVIF dans le sous-réseau local
 
