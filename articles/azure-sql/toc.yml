@@ -841,6 +841,8 @@
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
         - name: Réplication transactionnelle
           href: managed-instance/replication-transactional-overview.md
+        - name: Fonctionnalité de liaison pour SQL MI
+          href: managed-instance/link-feature.md
         - name: Opérations de gestion
           items:
             - name: Vue d’ensemble
@@ -1047,19 +1049,23 @@
               href: managed-instance/timezones-overview.md
             - name: Configurer les types de connexion
               href: managed-instance/connection-types-overview.md
-            - name: Créer des alertes sur une instance managée
+            - name: créer des alertes sur SQL MI
               href: managed-instance/alerts-create.md
             - name: Configurer la détection des menaces
               href: managed-instance/threat-detection-configure.md
         - name: Configurer la mise en réseau
           items:
-            - name: Déterminer la taille du sous-réseau d’instances managées
+            - name: Déterminer la taille du sous-réseau SQL MI
               href: managed-instance/vnet-subnet-determine-size.md
-            - name: Créer un réseau virtuel et un sous-réseau pour une instance managée
+            - name: Créer un réseau virtuel et un sous-réseau pour SQL MI
               href: managed-instance/virtual-network-subnet-create-arm-template.md
-            - name: Configurer un réseau virtuel et un sous-réseau existants pour une instance managée
+            - name: Configurer un réseau virtuel et un sous-réseau existants pour SQL MI
               href: managed-instance/vnet-existing-add-subnet.md
-            - name: Supprimer le sous-réseau après avoir supprimé l’instance managée
+            - name: Configurer des stratégies de point de terminaison de service pour SQL MI
+              href: managed-instance/service-endpoint-policies-configure.md
+            - name: Déplacer SQL MI vers un autre sous-réseau
+              href: managed-instance/vnet-subnet-move-instance.md
+            - name: Supprimer un sous-réseau après la suppression de SQL MI
               href: managed-instance/virtual-cluster-delete.md
             - name: Configurer un système DNS personnalisé
               href: managed-instance/custom-dns-configure.md
@@ -1073,7 +1079,7 @@
               href: managed-instance/management-endpoint-verify-built-in-firewall.md
         - name: Migrate
           items:
-            - name: Guide de migration de SQL Server vers Azure SQL Managed Instance
+            - name: Migrer SQL Server vers SQL Guide de MI
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: Migrer une base de données avec Log Replay Service
               href: managed-instance/log-replay-service-migrate.md
@@ -1101,14 +1107,14 @@
   items:
     - name: Documentation
       href: virtual-machines/index.yml
+    - name: Nouveautés
+      href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
     - name: Windows
       items:
         - name: Vue d’ensemble
           items:
             - name: "Qu’est-ce qu’une machine virtuelle SQL\_Server\_?"
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: Nouveautés
-              href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
         - name: Démarrages rapides
           items:
             - name: Portail
@@ -1187,6 +1193,8 @@
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Mise à jour corrective automatisée
                   href: virtual-machines/windows/automated-patching.md
+                - name: SQL Assessment
+                  href: virtual-machines/windows/sql-assessment-for-sql-vm.md
                 - name: Intégration d’Azure Key Vault
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrer le stockage vers le stockage SSD Ultra
@@ -1315,6 +1323,14 @@
           items:
             - name: "Créer une machine virtuelle\_SQL\_- Portail"
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: Concepts
+          items:
+            - name: Extension d’agent IaaS SQL
+              href: virtual-machines/linux/sql-server-iaas-agent-extension-linux.md
+        - name: Guides pratiques
+          items:
+            - name: S’inscrire à l’extension IaaS SQL
+              href: virtual-machines/linux/sql-iaas-agent-extension-register-vm-linux.md
         - name: Tutoriels
           items:
             - name: Configuration du groupe de disponibilité de machine virtuelle Azure RHEL avec STONITH

@@ -5,11 +5,14 @@
   items:
     - name: À propos de Network Function Manager
       href: overview.md
-- name: Tutoriels
+- name: Démarrages rapides
   expanded: true
   items:
     - name: Créer une ressource d’appareil
       href: create-device.md
+- name: Tutoriels
+  expanded: true
+  items:
     - name: Déployer des fonctions réseau
       href: deploy-functions.md
 - name: Concepts
@@ -19,6 +22,13 @@
       href: partners.md
     - name: Questions fréquentes (FAQ)
       href: faq.md
+    - name: Conditions préalables et configuration requise
+      href: requirements.md
+- name: Guides pratiques
+  expanded: true
+  items:
+    - name: Configurer des autorisations et inscrire des ressources
+      href: resources-permissions.md
 - name: Informations de référence
   items:
     - name: REST

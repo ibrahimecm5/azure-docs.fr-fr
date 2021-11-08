@@ -75,6 +75,8 @@
           href: create-single-tenant-workflows-azure-portal.md
         - name: Créer des workflows monolocataires - Visual Studio Code
           href: create-single-tenant-workflows-visual-studio-code.md
+        - name: Configurer le stockage SQL pour les flux de travail à locataire unique
+          href: set-up-sql-db-storage-single-tenant-standard-workflows.md
         - name: Modifier les paramètres de l’hôte et de l’application pour les applications logiques dans une instance monolocataire
           href: edit-app-settings-host-settings.md
         - name: Créer des paramètres pour les workflows monolocataires
@@ -247,8 +249,6 @@
               href: logic-apps-enterprise-integration-liquid-transform.md
         - name: Résoudre les erreurs B2B
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
-        - name: Concevoir un plan de récupération d'urgence
-          href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: "Connecteurs\_: rubriques approfondies"
       items:
         - name: AS2
@@ -257,6 +257,8 @@
           href: ../connectors/connectors-create-api-azureblobstorage.md
         - name: Azure Container Instances
           href: ../connectors/connectors-create-api-container-instances.md
+        - name: Azure Cosmos DB
+          href: ../connectors/connectors-create-api-cosmos-db.md
         - name: Azure Event Grid
           href: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md
         - name: Hubs d'événements Azure
@@ -401,6 +403,12 @@
           href: monitor-b2b-messages-log-analytics.md
         - name: Créer des requêtes de supervision et de suivi
           href: create-monitoring-tracking-queries.md
+    - name: Continuité d’activité et reprise d’activité
+      items:
+        - name: Répliquer des ressources Azure pour la continuité d’activité et la récupération d’urgence
+          href: create-replication-tasks-azure-resources.md
+        - name: Créer un plan de continuité des activités B2B et de récupération d’urgence
+          href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: 'Exemples, scénarios et procédures pas à pas'
       href: logic-apps-examples-and-scenarios.md
       items:
@@ -479,6 +487,6 @@
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
     - name: Indiquer des commentaires sur le produit
-      href: 'https://feedback.azure.com/forums/287593-logic-apps'
+      href: 'https://feedback.azure.com/d365community/forum/cb47c115-7926-ec11-b6e6-000d3a4f032c'
     - name: Mises à jour de service
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'

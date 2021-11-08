@@ -194,7 +194,7 @@
 - name: Tâches
   expanded: true
   items:
-    - name: Vue d'ensemble
+    - name: Vue d’ensemble
       expanded: false
       items:
         - name: À propos d’ACR Tasks
@@ -253,6 +253,37 @@
           href: container-registry-tasks-pack-build.md
         - name: Afficher les journaux d’activité de tâches
           href: container-registry-tasks-logs.md
+- name: Registre connecté
+  expanded: true
+  items:
+    - name: Vue d’ensemble
+      expanded: false
+      items:
+        - name: À propos du registre connecté
+          href: intro-connected-registry.md
+        - name: Utiliser avec IoT Edge
+          href: overview-connected-registry-and-iot-edge.md
+    - name: Démarrages rapides
+      expanded: true
+      items:
+        - name: Créer un registre connecté - CLI
+          href: quickstart-connected-registry-cli.md
+        - name: Créer un registre connecté - Portail
+          href: quickstart-connected-registry-portal.md
+        - name: Déployer le registre connecté sur IoT Edge
+          href: quickstart-deploy-connected-registry-iot-edge-cli.md
+    - name: Tutoriels
+      items:
+        - name: Déployer le registre connecté sur IoT Edge imbriqué
+          href: tutorial-deploy-connected-registry-nested-iot-edge-cli.md
+    - name: Concepts
+      items:
+        - name: Accéder au registre connecté
+          href: overview-connected-registry-access.md
+    - name: Guides pratiques
+      items:
+        - name: Extraire l’image du registre connecté
+          href: pull-images-from-connected-registry.md
 - name: Informations de référence
   expanded: false
   items:

@@ -1146,6 +1146,12 @@ productDirectory:
       azureCategories:
         - networking
       url: virtual-network/index.yml
+    - title: Gestionnaire de réseau virtuel Azure (version préliminaire)
+      summary: Gestion centralisée de la connectivité de réseau virtuel et mise en œuvre des règles de sécurité entre les abonnements.
+      imageSrc: ./media/index/azure-virtual-network-manager.svg
+      azureCategories:
+        - networking
+      url: virtual-network-manager/index.yml
     - title: WAN virtuel
       summary: Service hub-and-spoke géré par Microsoft pour la connectivité et la sécurité
       imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-wans.svg'

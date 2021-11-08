@@ -1,28 +1,26 @@
 ---
-title: Tutoriel sur la réponse aux alertes - Azure Security Center
+title: Tutoriel de réponse aux alertes - Microsoft Defender pour le cloud
 description: Dans ce tutoriel, vous allez apprendre à trier les alertes de sécurité et à déterminer la cause racine et l’étendue d’une alerte.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.assetid: 181e3695-cbb8-4b4e-96e9-c4396754862f
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 6d11384a3a1cab1ef5145a8e29a64e26552862da
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 7053bcc1e28eeb262dda8833ddf98806aae770b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236874"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472102"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Tutoriel : Trier les alertes de sécurité, les examiner et y répondre
-Security Center analyse continuellement vos charges de travail de cloud hybride à l’aide de l’analytique avancée et du renseignement sur les menaces, afin de vous avertir des activités potentiellement malveillantes détectées sur vos ressources cloud. Vous pouvez également intégrer à Security Center des alertes provenant d’autres produits et services de sécurité. Lorsqu’une alerte est déclenchée, vous devez agir rapidement pour examiner et résoudre le problème de sécurité potentiel. 
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender pour le cloud analyse continuellement vos charges de travail de cloud hybride à l’aide de l’analytique avancée et du renseignement sur les menaces, afin de vous avertir des activités potentiellement malveillantes détectées sur vos ressources cloud. Vous pouvez également intégrer à Defender pour le cloud des alertes provenant d’autres produits et services de sécurité. Lorsqu’une alerte est déclenchée, vous devez agir rapidement pour examiner et résoudre le problème de sécurité potentiel. 
 
 Dans ce didacticiel, vous apprendrez à :
 
@@ -34,22 +32,22 @@ Dans ce didacticiel, vous apprendrez à :
 Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/) avant de commencer.
 
 ## <a name="prerequisites"></a>Prérequis
-Pour parcourir les fonctionnalités couvertes dans ce tutoriel, vous devez avoir activé Azure Defender. Vous pouvez essayer gratuitement Azure Defender. Pour en savoir plus, consultez la [page de tarification](https://azure.microsoft.com/pricing/details/security-center/). Le guide de démarrage rapide [Bien démarrer avec Security Center](security-center-get-started.md) vous guide tout au long de la procédure de mise à niveau.
+Pour parcourir les fonctionnalités abordées dans ce tutoriel, vous devez activer les fonctionnalités de sécurité renforcée de Defender pour le cloud. Vous pouvez les tester gratuitement. Pour en savoir plus, consultez la [page de tarification](https://azure.microsoft.com/pricing/details/security-center/). Le guide de démarrage rapide [Bien démarrer avec Defender pour le cloud](get-started.md) vous guide tout au long de la procédure de mise à niveau.
 
 
 ## <a name="triage-security-alerts"></a>Trier les alertes de sécurité
-Security Center fournit une vue unifiée de toutes les alertes de sécurité. Les alertes de sécurité sont classées en fonction de la gravité de l’activité détectée. 
+Defender pour le cloud fournit une vue unifiée de toutes les alertes de sécurité. Les alertes de sécurité sont classées en fonction de la gravité de l’activité détectée. 
 
 Triez vos alertes à partir de la page **Alertes de sécurité** :
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste d’alertes de sécurité d’Azure Security Center":::
+:::image type="content" source="media/managing-and-responding-alerts/alerts-page.png" alt-text="Liste des alertes de sécurité de Microsoft Defender pour le cloud":::
 
 Utilisez cette page pour examiner les alertes de sécurité actives dans votre environnement pour décider de l’alerte à examiner en premier.
 
-Quand vous triez les alertes de sécurité, hiérarchisez-les en fonction de leur gravité en traitant d’abord celles qui présentent un niveau de gravité supérieur. Découvrez-en plus sur la gravité des alertes dans [Comment les alertes sont-elles classifiées ?](security-center-alerts-overview.md#how-are-alerts-classified).
+Quand vous triez les alertes de sécurité, hiérarchisez-les en fonction de leur gravité en traitant d’abord celles qui présentent un niveau de gravité supérieur. Découvrez-en plus sur la gravité des alertes dans [Comment les alertes sont-elles classifiées ?](alerts-overview.md#how-are-alerts-classified).
 
 > [!TIP]
-> Vous pouvez connecter Azure Security Center aux solutions SIEM les plus populaires, y compris Azure Sentinel, et consommer les alertes à partir de l’outil de votre choix. Apprenez-en davantage dans [Diffuser des alertes vers un système SIEM, SOAR ou une solution de gestion des services informatiques](export-to-siem.md).
+> Vous pouvez connecter Microsoft Defender pour le cloud à la plupart des solutions SIEM populaires, y compris Microsoft Sentinel, et utiliser les alertes de l’outil de votre choix. Apprenez-en davantage dans [Diffuser des alertes vers un système SIEM, SOAR ou une solution de gestion des services informatiques](export-to-siem.md).
 
 
 ## <a name="investigate-a-security-alert"></a>Examiner une alerte de sécurité
@@ -76,7 +74,7 @@ Quand vous avez décidé de l’alerte à examiner en premier :
     - Examinez les journaux bruts générés par la ressource attaquée.
 
 ## <a name="respond-to-a-security-alert"></a>Répondre à une alerte de sécurité
-Après avoir examiné une alerte de sécurité et compris son étendue, vous pouvez y répondre à partir d’Azure Security Center :
+Une fois que vous avez étudié une alerte de sécurité et que vous avez compris son étendue, vous pouvez répondre à l’alerte à partir de Microsoft Defender pour le cloud :
 
 1.  Ouvrez l’onglet **Entreprendre une action** pour voir les réponses recommandées.
 
@@ -104,23 +102,32 @@ Après avoir examiné une alerte de sécurité et compris son étendue, vous pou
 
 ## <a name="end-the-tutorial"></a>Terminer le tutoriel
 
-D’autres guides de démarrage rapide et didacticiels de cette collection reposent sur ce guide. Si vous envisagez de suivre les tutoriels et guides de démarrage rapide suivants, maintenez activés le provisionnement automatique et Azure Defender. 
+D’autres guides de démarrage rapide et didacticiels de cette collection reposent sur ce guide. Si vous envisagez de continuer à utiliser les guides de démarrage rapide et les tutoriels suivants, veillez à ce que les fonctionnalités de Defender pour le cloud soient activées. 
 
 Si vous n’envisagez pas de continuer ou si vous souhaitez désactiver l’une de ces fonctionnalités :
 
-1. Revenez au menu principal de Security Center et sélectionnez **Tarifs et paramètres**.
+1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
 1. Sélectionnez l’abonnement approprié.
-1. Pour passer à une version antérieure, sélectionnez **Azure Defender désactivé**.
-1. Pour désactiver le provisionnement automatique, ouvrez la page **Collecte de données** et définissez **Provisionnement automatique** sur **Désactivé**.
+1. Sélectionnez **Plans de Defender** et sélectionnez **Sécurité renforcée désactivée**.
+
+    :::image type="content" source="./media/enable-enhanced-security/disable-plans.png" alt-text="Activez ou désactivez Defender pour les fonctionnalités de sécurité renforcée du cloud.":::
+
 1. Sélectionnez **Enregistrer**.
 
->[!NOTE]
-> La désactivation du provisionnement automatique ne supprime pas l’agent Log Analytics des machines virtuelles Azure sur lesquelles il est déjà installé. La désactivation de l’approvisionnement automatique limite la surveillance de la sécurité pour vos ressources.
->
+    > [!NOTE]
+    > Une fois que vous avez désactivé les fonctionnalités de sécurité renforcée (un seul plan ou tous à la fois), il peut arriver que la collecte des données se poursuive pendant une courte durée. 
+
+1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
+1. Sélectionnez l’abonnement approprié.
+1. Sélectionnez **Provisionnement automatique**.
+1. Désactivez les extensions appropriées.
+
+    >[!NOTE]
+    > La désactivation du provisionnement automatique ne supprime pas l’agent Log Analytics des machines virtuelles Azure sur lesquelles il est déjà installé. La désactivation de l’approvisionnement automatique limite la surveillance de la sécurité pour vos ressources.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce tutoriel, vous avez appris les fonctionnalités de Security Center à utiliser pour répondre à une alerte de sécurité. Pour des documents connexes, consultez :
+Dans ce tutoriel, vous avez appris les fonctionnalités de Defender pour le cloud à utiliser pour répondre à une alerte de sécurité. Pour des documents connexes, consultez :
 
-- [Répondre aux alertes Azure Defender pour Key Vault](defender-for-key-vault-usage.md)
+- [Répondre aux alertes Microsoft Defender pour Key Vault](defender-for-key-vault-usage.md)
 - [Alertes de sécurité - guide de référence](alerts-reference.md)
-- [Présentation d’Azure Defender](azure-defender.md)
+- [Présentation de Defender pour le cloud](defender-for-cloud-introduction.md)

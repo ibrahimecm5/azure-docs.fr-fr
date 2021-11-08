@@ -7,13 +7,12 @@ ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: b08ffb4e19a74f04ef597c03881f2eb8246826bb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ea1f2259d34389498bcdf144a463973baeb3919d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084271"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453171"
 ---
 # <a name="introduction-to-microsoft-defender-for-resource-manager"></a>Présentation de Microsoft Defender pour Resource Manager
 
@@ -28,7 +27,7 @@ Microsoft Defender pour Resource Manager supervise automatiquement les opératio
 >[!NOTE]
 > Certaines de ces analyses sont alimentées par [Microsoft Defender pour les applications cloud (anciennement Microsoft Cloud App Security)](/cloud-app-security/what-is-cloud-app-security). Pour tirer parti de ces analyses, vous devez activer une licence Cloud App Security. Si vous avez une licence Cloud App Security, ces alertes sont activées par défaut. Pour désactiver les alertes :
 >
-> 1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
+> 1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
 > 1. Sélectionnez l’abonnement que vous souhaitez modifier.
 > 1. Sélectionnez **Intégrations**.
 > 1. Désactiver **Autoriser Microsoft Defender pour le cloud à accéder à mes données**, puis sélectionnez **Enregistrer**.

@@ -11,6 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: "Activer l’authentification multifacteur Azure\_AD"
       href: tutorial-enable-azure-mfa.md
+    - name: Activer l’écriture différée du mot de passe de synchronisation Cloud (version préliminaire)
+      href: tutorial-enable-cloud-sync-sspr-writeback.md
     - name: Activer l’écriture différée du mot de passe au niveau local
       href: tutorial-enable-sspr-writeback.md
     - name: Configurer des listes de mots de passe interdits personnalisées
@@ -272,7 +274,7 @@
 - name: Ressources
   items:
     - name: Forum de commentaires Azure
-      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+      href: 'https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789'
     - name: Page de questions Microsoft Q&A
       href: /answers/topics/azure-active-directory.html
     - name: Tarifs

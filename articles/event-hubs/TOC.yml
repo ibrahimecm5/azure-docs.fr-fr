@@ -48,6 +48,12 @@
           href: event-hubs-capture-python.md
     - name: Diffuser en continu dans Event Hubs pour Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+    - name: Utiliser le registre de schémas
+      items:
+        - name: Créer un registre de schémas
+          href: create-schema-registry.md
+        - name: Valider des événements à l’aide d’un schéma (.NET et AMQP)
+          href: schema-registry-dotnet-send-receive-quickstart.md
     - name: Créer un cluster dédié
       href: event-hubs-dedicated-cluster-create-portal.md
 - name: Tutoriels
@@ -157,8 +163,6 @@
           href: configure-processing-units-premium-namespace.md
         - name: Ajouter des données personnalisées aux événements
           href: add-custom-data-event.md
-        - name: Créer un registre de schémas
-          href: create-schema-registry.md
         - name: Ajouter dynamiquement des partitions
           href: dynamically-add-partitions.md
         - name: Utiliser le Stockage Blob comme magasin de points de contrôle sur Azure Stack Hub

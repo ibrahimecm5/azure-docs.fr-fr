@@ -7,12 +7,12 @@ ms.date: 10/18/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0816cb3a7662b62804a1864f3c0579387ded7ca0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cb538b6c8777a9aeb1d02fe705a87831f7aaf5b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131098042"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433778"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-data-exports"></a>Comment utiliser l’API REST IoT Central pour gérer les exportations de données
 
@@ -33,7 +33,7 @@ Chaque définition d’exportation de données peut envoyer des données à une 
 Pour créer ou mettre à jour une définition de destination, utilisez la requête suivante :
 
 ```http
-PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 * destinationId : ID unique de la destination.
@@ -74,7 +74,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 Utilisez la requête suivante pour récupérer les détails d’une destination à partir de votre application :
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 La réponse à cette demande ressemble à l’exemple suivant :
@@ -95,7 +95,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 Utilisez la requête suivante pour récupérer une liste de destinations à partir de votre application :
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.1-preview
 ```
 
 La réponse à cette demande ressemble à l’exemple suivant : 
@@ -130,7 +130,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 ### <a name="patch-a-destination"></a>Corriger une destination
 
 ```http
-PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 Vous pouvez l’utiliser pour effectuer une mise à jour incrémentielle d’une exportation. L’exemple de corps de la demande ressemble à l’exemple suivant, qui met à jour le `displayName` vers une destination :
@@ -162,7 +162,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 Pour supprimer une destination, utilisez la requête suivante :
 
 ```http
-DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 ### <a name="create-or-update-an-export-definition"></a>Créer ou mettre à jour une définition d’exportation
@@ -170,7 +170,7 @@ DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destination
 Pour créer ou mettre à jour une définition d’exportation de données, utilisez la requête suivante :
 
 ```http
-PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.0
+PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 L’exemple suivant montre un corps de la demande qui crée une définition d’exportation pour la télémétrie de l’appareil :
@@ -232,7 +232,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 Utilisez la requête suivante pour récupérer les détails d’une définition d’exportation à partir de votre application :
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 La réponse à cette demande ressemble à l’exemple suivant :
@@ -253,7 +253,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 Utilisez la requête suivante pour récupérer une liste de définitions d’exportation à partir de votre application :
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.1-preview
 ```
 
 La réponse à cette demande ressemble à l’exemple suivant : 
@@ -302,7 +302,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 ### <a name="patch-an-export-definition"></a>Corriger une définition d’exportation
 
 ```http
-PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version=1.0
+PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 Vous pouvez l’utiliser pour effectuer une mise à jour incrémentielle d’une exportation. L’exemple de corps de la demande ressemble à l’exemple suivant, qui met à jour le `enrichments` vers une exportation :
@@ -352,7 +352,7 @@ La réponse à cette demande ressemble à l’exemple suivant :
 Pour supprimer une définition d’exportation, utilisez la requête suivante :
 
 ```http
-DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 ## <a name="next-steps"></a>Étapes suivantes

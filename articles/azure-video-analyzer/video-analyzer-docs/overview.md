@@ -2,14 +2,14 @@
 title: Qu’est-ce qu’Azure Video Analyzer
 description: Cette rubrique fournit une vue d’ensemble d’Azure Video Analyzer
 ms.topic: overview
-ms.date: 10/30/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7485eb54996228ae9a781c0f0bb97c0fa55ba936
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b72abcd0f3df246e441d68643456ee7134522728
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058404"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563147"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Qu’est-ce qu’Azure Video Analyzer ? (préversion)
  

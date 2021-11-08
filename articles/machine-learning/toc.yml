@@ -313,6 +313,9 @@
             - name: Machine learning avec Azure Arc
               displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
               href: how-to-attach-arc-kubernetes.md
+            - name: Types d’instances Kubernetes
+              displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
+              href: how-to-kubernetes-instance-type.md
             - name: Azure Kubernetes Service
               displayName: 'AKS, inference'
               href: how-to-create-attach-kubernetes.md
@@ -547,7 +550,7 @@
           items:
             - name: Temps réel
               items:
-                - name: Déployer un modèle ML avec un point de terminaison en ligne managé
+                - name: Déployer un modèle de ML avec un point de terminaison en ligne
                   href: how-to-deploy-managed-online-endpoints.md
                 - name: Déployer un conteneur personnalisé avec un point de terminaison en ligne managé
                   href: how-to-deploy-custom-container.md

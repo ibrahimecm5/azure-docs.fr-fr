@@ -4,16 +4,16 @@ description: Découvrez comment créer dans Azure Synapse Analytics une base de 
 author: aamerril
 ms.author: aamerril
 ms.service: synapse-analytics
-ms: 'subservice:'
+ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 8717168532f84c8a3ed8735b5298eb0bb8065d20
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9612fabc94e3425c42bb30e3075a56fb3f789626
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096865"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510451"
 ---
 # <a name="how-to-create-an-empty-lake-database"></a>Guide pratique : Créer une base de données de lac vide
 
@@ -62,7 +62,7 @@ Cet article explique comment créer une [base de données de lac](./concepts-lak
     - Les erreurs sont validées dans votre base de données avant sa publication. Toutes les erreurs détectées s’affichent sous l’onglet Notifications, avec des instructions sur la façon de les corriger.
     
        ![Capture d’écran du volet de validation montrant des erreurs de validation dans la base de données](./media/create-empty-lake-database/validation-error.png)
-    - La publication a pour effet de créer votre schéma de base de données dans le metastore Azure Synapse. La publication a pour effet de créer votre schéma de base de données dans le metastore Azure Synapse. Après publication, la base de données et les objets de table sont visibles par d’autres services Azure, et autorisent la circulation des métadonnées de votre base de données dans des applications telles que Power BI ou Purview.
+    - La publication a pour effet de créer votre schéma de base de données dans le metastore Azure Synapse. Après publication, la base de données et les objets de table sont visibles par d’autres services Azure, et autorisent la circulation des métadonnées de votre base de données dans des applications telles que Power BI ou Purview.
 
 11. Vous avez maintenant créé une base de données de lac vide dans Azure Synapse, et y avez ajouté des tables à l’aide des options **Personnalisée** et **À partir du lac de données**.
 

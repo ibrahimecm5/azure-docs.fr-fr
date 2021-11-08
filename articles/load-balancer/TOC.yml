@@ -43,6 +43,14 @@
           href: tutorial-cross-region-powershell.md
         - name: "Créer un équilibreur de charge interrégional - Azure\_CLI"
           href: tutorial-cross-region-cli.md
+    - name: Équilibreur de charge de passerelle
+      items:
+        - name: Créer un équilibreur de charge de passerelle - Portail
+          href: tutorial-gateway-portal.md
+        - name: Créer un équilibreur de charge de passerelle - PowerShell
+          href: tutorial-gateway-powershell.md
+        - name: Créez un équilibreur de charge de passerelle - Azure CLI
+          href: tutorial-gateway-cli.md
     - name: Passerelle NAT
       items:
         - name: "Intégrer l’équilibreur de charge public de la passerelle\_NAT"
@@ -67,6 +75,8 @@
       href: manage.md
     - name: Équilibreur de charge inter-région
       href: cross-region-overview.md
+    - name: Équilibreur de charge de passerelle
+      href: gateway-overview.md
     - name: Nouveautés
       href: whats-new.md
     - name: Components

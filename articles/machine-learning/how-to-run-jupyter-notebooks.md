@@ -9,13 +9,13 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 07/22/2021
-ms.openlocfilehash: 1bbc831b32d2a29cf590f36ea0f2c436f739ee6b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.openlocfilehash: f6ac69d8bd3049efc55844ddd562e18a2950ef2b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076696"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560869"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Exécuter des notebooks Jupyter dans votre espace de travail
 
@@ -190,7 +190,7 @@ Ces actions ne modifient pas l’état du bloc-notes ou les valeurs des variable
 
 Les actions ci-après ont pour effet de réinitialiser l’état du bloc-notes et toutes les variables dans celui-ci.
 
-|Action  |Résultat  |
+|Action  |Résultats  |
 |---------|---------| --------|
 | Modifier le noyau | Le bloc-notes utilise le nouveau noyau. |
 | Changer d’instance de calcul    |     Le bloc-notes utilise automatiquement la nouvelle instance de calcul. |

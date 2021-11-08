@@ -12,6 +12,8 @@
       href: whats-new.md
     - name: Réponses aux questions personnalisées (préversion)
       href: custom-question-answering.md
+    - name: Migrer vers Réponses aux questions personnalisées
+      href: ../language-service/question-answering/how-to/migrate-qnamaker.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: Démarrages rapides
   items:
     - name: Créer et interroger une base de connaissances
@@ -21,7 +23,7 @@
         - name: Bibliothèques de client ou API REST
           href: Quickstarts/quickstart-sdk.md
 - name: Exemples
-  href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face&terms=qna-maker'
+  href: /samples/browse/?products=azure&term=face&terms=qna-maker
 - name: Utilisation responsable de l’IA
   items:
     - name: Notes de transparence
@@ -64,9 +66,6 @@
           href: How-To/edit-knowledge-base.md
         - name: Ajouter des étiquettes de métadonnées
           href: Quickstarts/add-question-metadata-portal.md
-        - name: Ajouter des invites de suivi
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
         - name: Changer la réponse par défaut
           href: How-To/change-default-answer.md
     - name: Interroger une base de connaissances
@@ -104,8 +103,6 @@
       href: Concepts/data-sources-and-content.md
     - name: Contrôle d’accès en fonction du rôle Azure (Azure RBAC)
       href: Concepts/role-based-access-control.md
-    - name: Réponse précise
-      href: reference-precise-answering.md
     - name: Activation de l’apprentissage actif
       href: How-To/use-active-learning.md
     - name: Processus de classement
@@ -128,15 +125,15 @@
     - name: Personnaliser votre bot FAQ
       items:
         - name: Créer des conversations guidées avec des invites multitours
-          href: Tutorials/guided-conversations.md
+          href: ../language-service/question-answering/tutorials/guided-conversations.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: Ajouter plusieurs domaines à un bot
-          href: Tutorials/create-faq-bot-for-multiple-domains.md
+          href: ../language-service/question-answering/tutorials/multiple-domains.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: Améliorer les bases de connaissances avec l’apprentissage actif
-          href: Tutorials/active-learning.md
-        - name: Ajouter des bases de connaissances dans plusieurs langues
-          href: Tutorials/multiple-languages.md
+          href: ../language-service/question-answering/tutorials/active-learning.md?context=/azure/cognitive-services/qnamaker/context/context
         - name: Ajouter des synonymes pour améliorer la pertinence
-          href: Tutorials/adding-synonyms.md
+          href: ../language-service/question-answering/tutorials/adding-synonyms.md?context=/azure/cognitive-services/qnamaker/context/context
+        - name: Ajouter des bases de connaissances dans plusieurs langues
+          href: ../language-service/question-answering/tutorials/multiple-languages.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: Informations de référence
   items:
     - name: API REST

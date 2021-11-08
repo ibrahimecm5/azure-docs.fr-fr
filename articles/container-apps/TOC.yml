@@ -1,0 +1,57 @@
+- name: Documentation sur la préversion d’Azure Container Apps
+  href: index.yml
+- name: Vue d’ensemble
+  items:
+    - name: À propos d’Azure Container Apps
+      href: overview.md
+- name: Démarrages rapides
+  expanded: true
+  items:
+    - name: Déployer votre première application conteneur
+      href: get-started.md
+- name: Concepts
+  items:
+    - name: Environnement
+      href: environment.md
+    - name: Conteneurs
+      href: containers.md
+    - name: Révisions
+      href: revisions.md
+    - name: Gestion du cycle de vie des applications
+      href: application-lifecycle-management.md
+    - name: Microservices
+      href: microservices.md
+- name: Guides pratiques
+  items:
+    - name: Mettre à l’échelle une application
+      href: scale-app.md
+    - name: Sécuriser une application
+      href: secure-app.md
+    - name: Surveiller une application
+      href: monitor.md
+    - name: Gérer les révisions
+      href: revisions-manage.md
+    - name: Configurer l’entrée HTTPS
+      href: ingress.md
+    - name: Connecter plusieurs applications
+      href: connect-apps.md
+- name: Tutoriels
+  items:
+    - name: Microservices avec Dapr à l’aide de l’interface CLI
+      href: microservices-dapr.md
+    - name: Microservices avec Dapr à l’aide d’ARM
+      href: microservices-dapr-azure-resource-manager.md
+    - name: Traitement en arrière-plan
+      href: background-processing.md
+- name: Informations de référence
+  items:
+    - name: Azure CLI
+      href: /cli/azure/containerapps
+    - name: Spécification de l’API ARM
+      href: azure-resource-manager-api-spec.md
+- name: Ressources
+  items:
+    - name: Tarifs
+      href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
+    - name: Quotas
+      href: quotas.md
