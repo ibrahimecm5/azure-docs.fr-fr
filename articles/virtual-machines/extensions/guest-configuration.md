@@ -8,12 +8,12 @@ author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea70d25bae9b30e1170046a7a7d470b4fea1a08d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25e167f80ff209a60b30113ffe681e033cc612e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626624"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046524"
 ---
 # <a name="overview-of-the-guest-configuration-extension"></a>Vue d’ensemble de l’extension Guest Configuration
 
@@ -50,6 +50,10 @@ Le nom d’instance de l’extension doit être défini sur « AzurePolicyforWi
 
 Par défaut, tous les déploiements sont mis à jour vers la version la plus récente. La valeur de la propriété _autoUpgradeMinorVersion_ est définie sur « true » par défaut, sauf spécification contraire. Vous n’avez pas à vous soucier de la mise à jour de votre code lorsque de nouvelles versions de l’extension sont publiées.
 
+## <a name="automatic-upgrade"></a>Mise à jour automatique
+
+L’extension de configuration d’invité prend en charge la propriété `enableAutomaticUpgrade`. Lorsque cette propriété est définie sur `true`, Azure effectue automatiquement une mise à niveau vers la version la plus récente de l’extension au fur et à mesure que les versions ultérieures sont disponibles. Pour plus d’informations, consultez la page [Mise à niveau automatique des extensions pour les machines virtuelles et les groupes identiques dans Azure](../automatic-extension-upgrade.md).
+
 ### <a name="azure-policy"></a>Azure Policy
 
 Pour déployer à grande échelle la dernière version de l’extension, notamment les exigences en matière d’identité, [attribuez](../../governance/policy/assign-policy-portal.md) l’instance Azure Policy :
@@ -62,13 +66,13 @@ Pour déployer l’extension pour Linux :
 
 
 ```azurecli
-az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforLinux --extension-instance-name AzurePolicyforLinux --resource-group myResourceGroup --vm-name myVM
+az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforLinux --extension-instance-name AzurePolicyforLinux --resource-group myResourceGroup --vm-name myVM --enable-auto-upgrade true
 ```
 
 Pour déployer l’extension pour Windows :
 
 ```azurecli
-az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforWindows --extension-instance-name AzurePolicyforWindows --resource-group myResourceGroup --vm-name myVM
+az vm extension set  --publisher Microsoft.GuestConfiguration --name ConfigurationforWindows --extension-instance-name AzurePolicyforWindows --resource-group myResourceGroup --vm-name myVM --enable-auto-upgrade true
 ```
 
 ### <a name="powershell"></a>PowerShell
@@ -82,7 +86,7 @@ Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -Type 'Configuration
 Pour déployer l’extension pour Windows :
 
 ```powershell
-Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -Type 'ConfigurationforWindows' -Name 'AzurePolicyforWindows' -TypeHandlerVersion 1.0 -ResourceGroupName 'myResourceGroup' -Location 'myLocation' -VMName 'myVM' --enable-auto-upgrade
+Set-AzVMExtension -Publisher 'Microsoft.GuestConfiguration' -Type 'ConfigurationforWindows' -Name 'AzurePolicyforWindows' -TypeHandlerVersion 1.0 -ResourceGroupName 'myResourceGroup' -Location 'myLocation' -VMName 'myVM' -EnableAutomaticUpgrade $true
 ```
 
 ### <a name="resource-manager-template"></a>Modèle Resource Manager

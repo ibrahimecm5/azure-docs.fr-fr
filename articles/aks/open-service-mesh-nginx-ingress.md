@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: c06e6fe787070adbe0817e295380b2a2ef2775b5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ee313000b5b2fd21e7f629c57f45bbe0d3557835
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123441023"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066821"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-with-nginx-ingress"></a>Déployer une application gérée par Open Service Mesh (OSM) avec entrée NGINX
 
@@ -36,11 +36,8 @@ Les étapes détaillées dans cet article supposent que vous avez créé un clus
 Les ressources suivantes doivent être installées :
 
 - Azure CLI, version 2.20.0 ou ultérieure
-- L’extension `aks-preview` version 0.5.5 ou ultérieure
-- OSM, version 0.8.0 ou ultérieure
+- OSM version 0.11.1 ou ultérieure
 - Processeur JSON « jq » version 1.6+
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="view-and-verify-the-current-osm-cluster-configuration"></a>Afficher et vérifier la configuration actuelle du cluster OSM
 

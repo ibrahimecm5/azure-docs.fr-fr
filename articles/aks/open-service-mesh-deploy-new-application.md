@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 77728c7b61fc6b76cb5ecb51ff1d90e0c0a93e99
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1dc58fa0709cdf1e09482a3f3ac3ee05788cd1eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535547"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066859"
 ---
 # <a name="manage-a-new-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Gérez une nouvelle application avec le module complémentaire Open Service Mesh (OSM) Azure Kubernetes Service (AKS)
 
@@ -22,11 +22,8 @@ Les étapes détaillées dans cette procédure pas à pas supposent que vous ave
 Les ressources suivantes doivent être installées :
 
 - Azure CLI, version 2.20.0 ou ultérieure
-- L’extension `aks-preview` version 0.5.5 ou ultérieure
-- OSM, version 0.8.0 ou ultérieure
+- OSM version 0.11.1 ou ultérieure
 - Processeur JSON « jq » version 1.6+
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="create-namespaces-for-the-application"></a>Créer des espaces de noms pour l’application
 
@@ -72,19 +69,19 @@ Namespace [bookwarehouse] successfully added to mesh [osm]
 ## <a name="deploy-the-bookstore-application-to-the-aks-cluster"></a>Déployer l’application Bookstore sur le cluster AKS
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookbuyer.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookbuyer.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookthief.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookthief.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookstore.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookstore.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookwarehouse.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookwarehouse.yaml
 ```
 
 Toutes les sorties du déploiement sont résumées ci-dessous.

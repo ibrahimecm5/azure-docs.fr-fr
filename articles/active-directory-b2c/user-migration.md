@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 90e1600c54bb7bf7a405ca3748f15edc29ad53a6
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 0cd0b976ec511070432538e99b7a8e20001a0156
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043830"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058147"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrer des utilisateurs vers Azure AD B2C
 
@@ -88,7 +88,7 @@ Toutes les informations du fournisseur d’identité précédent ne doivent pas 
   - Données sensibles comme des numéros de carte de crédit, des numéros de sécurité sociale, des dossiers médicaux ou d’autres données réglementées par des organismes de conformité nationaux ou sectoriels.
   - Préférences marketing ou de communication, comportements des utilisateurs et insights.
 
-### <a name="directory-clean-up"></a>Nettoyage de l’annuaire
+### <a name="directory-cleanup"></a>Nettoyage de répertoire
 
 Avant de commencer le processus de migration, vous pouvez en profiter pour nettoyer votre annuaire.
 

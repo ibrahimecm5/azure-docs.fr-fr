@@ -13,12 +13,12 @@ ms.date: 10/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 068fe4e98b3beb3f365cd16070fd134fda7c48b9
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 0af9ea42dbe47ab9c0e62ad13e055164c3ec2464
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617736"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058192"
 ---
 # <a name="integrate-f5-big-ip-for-password-less-vpn-with-azure-active-directory"></a>Intégrer F5 BIG-IP pour VPN sans mot de passe avec Azure Active Directory
 
@@ -92,7 +92,7 @@ La configuration d’une approbation de fédération SAML entre BIG-IP permet au
 
    - Dans cette seule configuration, l’application fonctionne dans un mode initié par le fournisseur d’identité, où Azure AD fournit à l’utilisateur une assertion SAML avant de le rediriger vers le service BIG-IP SAML. Pour les applications qui ne prennent pas en charge le mode initié par le fournisseur d’identité, spécifiez l’**URL de connexion** pour le service BIG-IP SAML. Par exemple : `https://ssl-vpn.contoso.com`.
 
-   - Pour l’URL de déconnexion, entrez le point de terminaison de déconnexion unique (SLO) BIG-IP APM précédé par l’en-tête d’hôte du service en cours de publication. Par exemple : `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
+   - Pour l’URL de déconnexion, entrez le point de terminaison de Single Logout (SLO) de BIG-IP APM précédé de l’en-tête de l’hôte du service en cours de publication. Par exemple : `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`
 
    La fourniture d’une URL SLO garantit qu’une session utilisateur est terminée aux deux extrémités, côté BIG-IP et côté Azure AD, une fois que l’utilisateur s’est déconnecté. BIG-IP APM fournit également une [option](https://support.f5.com/csp/article/K12056) pour mettre fin à toutes les sessions lors de l’appel d’une URL d’application spécifique.
 
@@ -309,7 +309,7 @@ Avec tous les paramètres en place, le service APM nécessite désormais un serv
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Ouvrez un navigateur sur un client Windows distant et accédez à l’URL du **service VPN BIG-IP**. Après vous être authentifié auprès d’Azure AD, vous verrez le portail Webtop de BIG-IP et le lanceur VPN.
+Ouvrez un navigateur sur un client Windows distant et accédez à l’URL du **service VPN de BIG-IP**. Après vous être authentifié auprès d’Azure AD, vous verrez le portail Webtop de BIG-IP et le lanceur VPN.
 
 ![Image montrant le lanceur VPN](media/f5-sso-vpn/vpn-launcher.png)
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: f306186fd079a32df68631055fcae6594d997d0d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afd7a50a9c18299fb295d6ed978ce1b22bf90e9c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562917"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072576"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Procédure de mise à niveau de votre IoT Hub
 
@@ -36,13 +36,9 @@ Ces exemples sont destinés à vous aider à comprendre comment ajuster votre Io
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/) et accédez à votre IoT Hub.
 
-2. Sélectionnez **Tarification et mise à l'échelle**.
-
-   ![Tarification et mise à l'échelle](./media/iot-hub-upgrade/pricing-scale.png)
+2. Sélectionnez **Tarification et niveau de mise à l’échelle** dans le volet de navigation gauche.
 
 3. Pour modifier le niveau de votre hub, sélectionnez **Tarification et niveau de mise à l’échelle**. Choisissez un nouveau niveau, puis cliquez sur **Sélectionner**.
-
-   ![Tarification et niveau de mise à l’échelle](./media/iot-hub-upgrade/select-tier.png)
 
 4. Pour modifier le nombre d’unités de votre hub, entrez une nouvelle valeur sous **Unités IoT Hub**.
 

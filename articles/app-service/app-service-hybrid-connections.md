@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/05/2021
 ms.author: madsd
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6ebfa0cb7e65ce09178e3b468a1bf766a0379595
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: b907e6539762f08dc299304eea49ee2950f18ab7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425825"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065700"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Connexions hybrides d’Azure App Service
 
@@ -225,6 +225,7 @@ Si l’état indique **Connecté** mais que votre application ne peut pas attein
 * Vérifiez que vous utilisez un nom DNS dans votre connexion hybride. Si vous utilisez une adresse IP, la recherche DNS du client requis peut ne pas se produire. Si le client en cours d’exécution dans votre application web n’effectue pas de recherche DNS, la connexion hybride ne fonctionnera pas
 * Vérifiez que le nom DNS utilisé dans votre connexion hybride peut être résolu à partir de l’hôte HCM. Vérifiez la résolution à l’aide de *nslookup EndpointDNSname* où EndpointDNSname correspond exactement à ce qui est utilisé dans votre définition de connexion hybride.
 * Testez l’accès de votre hôte HCM à votre point de terminaison à l’aide de la commande PowerShell *Test-NetConnection EndpointDNSname -P Port*  Si vous ne pouvez pas atteindre le point de terminaison à partir de votre hôte HCM, alors vérifiez les pare-feux entre les deux hôtes, notamment les pare-feux basés sur un hôte, sur l’hôte de destination.
+* Si vous utilisez App Service sur Linux, assurez-vous que vous n’utilisez pas « localhost » comme hôte de point de terminaison. Utilisez plutôt le nom de votre machine si vous essayez de créer une connexion avec une ressource sur votre ordinateur local.
 
 Dans App Service, l’outil de ligne de commande **tcpping** peut être appelé à partir de la console Outils avancés (Kudu). Cet outil peut vous indiquer si vous avez accès à un point de terminaison TCP, mais ne vous dit pas si vous avez accès à un point de terminaison de connexion hybride. Lorsque vous utilisez l’outil dans la console par rapport à un point de terminaison de connexion hybride, vous confirmez seulement qu’il utilise une combinaison hôte:port.  
 

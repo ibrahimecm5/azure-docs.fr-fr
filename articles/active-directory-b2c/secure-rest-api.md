@@ -3,21 +3,21 @@ title: Sécuriser les API utilisées comme connecteurs d’API dans Azure AD B2C
 titleSuffix: Azure AD B2C
 description: Sécurisez vos API RESTful personnalisées utilisées en tant que connecteurs d’API dans Azure AD B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/25/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f77c099425aac4f6484db8745e036a6dd1833ed4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2166b2c730a6101c59dddc38ad9a09c809f4eab2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578942"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040487"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Sécuriser votre API utilisée en tant que connecteur d’API dans Azure AD B2C 
 
@@ -43,7 +43,7 @@ L’authentification de base HTTP est définie dans le document [RFC 2617](https
 Pour configurer un connecteur d'API avec l'authentification de base HTTP, procédez comme suit :
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/).
-2. Sous **Services Azure**, sélectionnez **Azure AD B2C**.
+2. Sous **Services Azure**, sélectionnez **Azure AD B2C** ou recherchez et sélectionnez **Azure AD B2C**.
 3. Sélectionnez **Connecteurs d’API**, puis choisissez le **Connecteur d’API** que vous souhaitez configurer.
 4. Dans le champ **Type d'authentification**, sélectionnez **De base**.
 5. Entrez le **Nom d'utilisateur** et le **Mot de passe** de votre point de terminaison d'API REST.

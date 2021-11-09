@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 4492eb9a346d89789f1527bf80b46a08cc74fe92
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 393706ca463d8a3cc6edaede2689feae3e867bfa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696087"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074495"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Télécharger un disque VHD Linux à partir d’Azure
 
@@ -48,7 +48,7 @@ Prenez un instantané du disque à télécharger.
 Votre instantané sera créé sous peu, et pourra ensuite être utilisé pour télécharger ou créer une autre machine virtuelle.
 
 > [!NOTE]
-> Si vous n’arrêtez pas d’abord la machine virtuelle, l’instantané ne sera pas propre. L’instantané sera dans le même état que si la machine virtuelle avait été mise hors tension ou s’était bloquée au moment où l’instantané a été réalisé.  Bien que cette méthode soit généralement sans danger, elle peut causer des problèmes si les applications en cours d’exécution à ce moment-là ne sont pas résistantes aux pannes.
+> Si vous n’arrêtez pas d’abord la machine virtuelle, l’instantané ne sera pas propre. L’instantané sera dans le même état que si la machine virtuelle avait été mise hors tension ou s’était bloquée au moment où l’instantané a été réalisé. Bien que cette méthode soit généralement sans danger, elle peut causer des problèmes si les applications en cours d’exécution à ce moment-là ne sont pas résistantes aux pannes.
 >  
 > Cette méthode est recommandée uniquement pour les machines virtuelles avec un seul disque de système d’exploitation. Les machines virtuelles avec un ou plusieurs disques de données doivent être arrêtées avant le téléchargement ou avant la création d’un instantané du disque du système d’exploitation et de chaque disque de données.
 

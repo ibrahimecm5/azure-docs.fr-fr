@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 431b19595fbe2f5bc1f989e712c9c104af8e839b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30715eee331547fe3747ff121797bb3e0939380f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711516"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012299"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Résolution des problèmes de diagnostics Azure
 Cet article contient des informations de dépannage pour Diagnostics Azure. Pour plus d’informations sur les diagnostics Microsoft Azure, voir [Vue d’ensemble des diagnostics Azure](diagnostics-extension-overview.md).
@@ -20,7 +20,7 @@ Cet article contient des informations de dépannage pour Diagnostics Azure. Pour
 
 **Plug-in Diagnostics (DiagnosticsPlugin.exe)**  : configure, exécute et gère la durée de vie de l’agent de supervision. Il s’agit du principal processus exécuté par le lanceur.
 
-**Monitoring Agent (processus MonAgent\*.exe)**  : supervise, collecte et transfère les données de diagnostic.  
+**Monitoring Agent (processus MonAgent\*.exe)**  : supervise, collecte et transfère les données de diagnostic.
 
 ## <a name="logartifact-paths"></a>Chemins d’accès des journaux/artefacts
 Voici les chemins d’accès de quelques journaux d’activité et artefacts importants. Nous nous référons à ces informations dans le reste du document.
@@ -77,13 +77,12 @@ S’il n’existe aucune donnée pour cette métrique en particulier, vérifiez 
 
 Si la configuration est correctement définie, mais que vous ne voyez toujours pas les données métriques, reportez-vous aux indications suivantes. Elles vous aideront à résoudre les problèmes rencontrés.
 
-
 ## <a name="azure-diagnostics-is-not-starting"></a>Diagnostics Azure ne démarre pas
 Pour savoir pourquoi Diagnostics Azure ne démarre pas, voir les journaux **DiagnosticsPluginLauncher.log** et **DiagnosticsPlugin.log** dont nous avons fourni le chemin d’accès précédemment.
 
 Si ces journaux d’activité indiquent `Monitoring Agent not reporting success after launch`, cela signifie que le lancement de MonAgentHost.exe a échoué. Consultez ces journaux d’activité à l’emplacement indiqué pour `MonAgentHost log file` dans la section précédente.
 
-La dernière ligne des fichiers journaux contient le code de sortie.  
+La dernière ligne des fichiers journaux contient le code de sortie.
 
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
@@ -111,7 +110,6 @@ Si cela ne résout pas le problème, essayez les manipulations suivantes :
 2. Supprimer le répertoire C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
 3. Réinstaller l’agent
 
-
 ### <a name="part-of-the-data-is-missing"></a>Une partie des données est manquante
 Si vous obtenez une partie des données, mais pas la totalité, cela signifie que le pipeline de collecte ou de transfert des données est défini correctement. Suivez les instructions des sous-sections ci-après pour tenter de localiser le problème.
 
@@ -121,7 +119,7 @@ La configuration des diagnostics contient des instructions pour un type bien pr�
 #### <a name="is-the-host-generating-data"></a>L’hôte génère-t-il des données ?
 - **Compteurs de performances** : ouvrez PerfMon et vérifiez le compteur.
 
-- **Journaux d’activité des traces** :  accédez à distance à la machine virtuelle, puis ajoutez un élément TextWriterTraceListener dans le fichier de configuration de l’application.  Consultez https://msdn.microsoft.com/library/sk36c28t.aspx pour configurer l’écouteur de texte.  Vérifiez que l’élément `<trace>` a la valeur `<trace autoflush="true">`.<br />
+- **Journaux d’activité de suivi** : accédez à distance à la machine virtuelle, puis ajoutez un élément TextWriterTraceListener dans le fichier config de l’application.  Consultez https://msdn.microsoft.com/library/sk36c28t.aspx pour configurer l’écouteur de texte.  Vérifiez que l’élément `<trace>` a la valeur `<trace autoflush="true">`.<br />
 Si aucun journal de suivi n’a été généré, voir En savoir plus sur les journaux de suivi manquants.
 
 - **Traces ETW** : accédez à distance à la machine virtuelle, puis installez PerfView.  Dans PerfView, exécutez **Fichier** > **Commande utilisateur** > **Écouter etwprovder1** > **etwprovider2**, etc. Notez que la commande **Écouter** est sensible à la casse et que les espaces ne sont pas autorisés entre les listes de fournisseurs ETW séparées par des virgules. En cas d’échec de l’exécution de la commande, vous pouvez cliquer sur le bouton **Journal** dans l’angle inférieur droit de l’outil PerfView pour voir l’exécution qui était attendue et le résultat final de celle-ci.  Partons du principe que l’entrée est correcte. Une nouvelle fenêtre s’ouvre alors. En quelques secondes, vous commencer à voir les traces ETW.
@@ -166,7 +164,7 @@ Les tables de stockage Azure qui contiennent les événements ETW utilisent le 
 
 Voici un exemple :
 
-```XML
+```xml
         <EtwEventSourceProviderConfiguration provider="prov1">
           <Event id="1" />
           <Event id="2" eventDestination="dest1" />
@@ -257,12 +255,12 @@ L’agent de supervision collecte les journaux d’activité et artefacts en tan
 ```
 Un nouveau fichier appelé `<relevantLogFile>.csv` est créé et il a le même chemin d’accès que le fichier `.tsf` correspondant.
 
->[!NOTE]
+> [!NOTE]
 > Vous devez exécuter cet utilitaire uniquement dans le fichier .tsf principal (par exemple, PerformanceCountersTable.tsf). Les fichiers d’accompagnement (par exemple, PerformanceCountersTables_\*\*001.tsf, PerformanceCountersTables_\*\*002. tsf, etc.) sont traités automatiquement.
 
 ### <a name="more-about-missing-trace-logs"></a>En savoir plus sur les journaux d’activité de suivi manquants
 
->[!NOTE]
+> [!NOTE]
 > Les informations suivantes concernent principalement Azure Cloud Services, à moins que vous n’ayez configuré l’élément DiagnosticsMonitorTraceListener dans une application qui s’exécute sur votre machine virtuelle IaaS.
 
 - Vérifiez que l’élément **DiagnosticMonitorTraceListener** est configuré dans le fichier web.config ou app.config.  Il est configuré par défaut dans les projets de service cloud. Toutefois, certains clients y ajoutent des commentaires, ce qui empêche la collecte des instructions de suivi par les diagnostics.
@@ -271,7 +269,7 @@ Un nouveau fichier appelé `<relevantLogFile>.csv` est créé et il a le même c
 
 - Veillez à utiliser **Diagnostics.Trace.TraceXXX** plutôt que **Diagnostics.Debug.WriteXXX**. Les instructions de débogage seront supprimées de la version de mise en production.
 
-- Vérifiez que le code compilé contient effectivement les **lignes Diagnostics.Trace** (utilisez Reflector, ildasm ou ILSpy pour le vérifier). Les commandes **Diagnostics.Trace** sont supprimées du fichier binaire compilé, sauf si vous utilisez le symbole de compilation conditionnelle TRACE. Il s’agit d’un problème courant qui se produit lorsque vous utilisez msbuild pour générer un projet.   
+- Vérifiez que le code compilé contient effectivement les **lignes Diagnostics.Trace** (utilisez Reflector, ildasm ou ILSpy pour le vérifier). Les commandes **Diagnostics.Trace** sont supprimées du fichier binaire compilé, sauf si vous utilisez le symbole de compilation conditionnelle TRACE. Il s’agit d’un problème courant qui se produit lorsque vous utilisez msbuild pour générer un projet.
 
 ## <a name="known-issues-and-mitigations"></a>Problèmes connus et atténuations des risques
 Voici la liste des problèmes connus avec les atténuations des risques :

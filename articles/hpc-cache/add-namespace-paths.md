@@ -1,17 +1,17 @@
 ---
 title: Configurer l’espace de noms agrégé d’Azure HPC Cache
 description: Création de chemins d’accès côté client pour le stockage principal avec Azure HPC Cache
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/22/2021
-ms.author: v-erkel
-ms.openlocfilehash: 0374c2da7cda001da779c42cacaf11db6f797356
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.author: femila
+ms.openlocfilehash: 903ed4b3d17b0fc7290e5ce2755518cf768ac342
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587388"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015368"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Configurer l’espace de noms agrégé
 
@@ -101,7 +101,7 @@ Renseignez ces valeurs pour chaque chemin d’espace de noms :
 
 * **Sous-répertoire d’exportation** - Si vous souhaitez que ce chemin monte un sous-répertoire spécifique de l’exportation, entrez-le ici. Sinon, laissez ce champ vide.
 
-![Capture d’écran de la page Espace de noms du portail avec la page de modification ouverte à droite. Le formulaire de modification affiche les paramètres du chemin d’espace de noms d’une cible de stockage NFS](media/namespace-edit-nfs.png)
+![Capture d’écran de la page Espace de noms du portail avec la page de modification ouverte à droite. Le formulaire de modification affiche les paramètres du chemin d’espace de noms d’une cible de stockage NFS.](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

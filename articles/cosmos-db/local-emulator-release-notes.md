@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ca9606f3e4a431a60b1373cae72f1f1b4e427938
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b87f9cef973be22397773ed11701362662f34793
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736928"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070980"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Émulateur Azure Cosmos DB – Notes de publication et informations sur le téléchargement
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ Cet article présente les notes de publication de l’émulateur Azure Cosmos D
 |**Prise en main**|[Développer localement avec l’émulateur Azure Cosmos DB](local-emulator.md)|
 
 ## <a name="release-notes"></a>Notes de publication
+
+### <a name="2144-25-october-2021"></a>2.14.4 (25 octobre 2021)
+
+ - Cette version met à jour les services Cosmos Emulator en arrière-plan afin qu’ils correspondent aux dernières fonctionnalités en ligne des services Azure Cosmos DB.
 
 ### <a name="2143-8-september-2021"></a>2.14.3 (8 septembre 2021)
 

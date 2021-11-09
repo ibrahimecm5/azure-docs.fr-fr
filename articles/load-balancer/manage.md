@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/16/2021
 ms.author: allensu
-ms.openlocfilehash: 024a523939e5f03cf01aec937a646f1159f6b79b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1911c3a97892a440d0819025c6f040732d03e6e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130254643"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079545"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Paramètres du portail Azure Load Balancer
 
@@ -161,11 +161,11 @@ Si vous avez sélectionné **Créer** lors de la configuration de la sonde d’i
 
 :::image type="content" source="./media/manage/add-health-probe.png" alt-text="Capture d’écran de l’ajout d’une sonde d’intégrité." border="true":::
 
-Sous l’onglet **Règles de trafic entrant** de la page Créer un équilibreur de charge, sélectionnez **Ajouter une règle NAT de trafic entrant** pour ouvrir la page de création.
+Sous l’onglet **Règles de trafic entrant** de la page Créer un équilibreur de charge, sélectionnez **+ Ajouter une règle NAT de trafic entrant** pour ouvrir la page de création.
 
-#### <a name="-add-a-an-inbound-nat-rule"></a>**Ajouter une règle NAT de trafic entrant**
+#### <a name="-add-an-inbound-nat-rule"></a>**+ Ajouter une règle NAT de trafic entrant**
 
-La page de création **Ajouter une règle NAT de trafic entrant** contient les éléments suivants :
+La page de création **+ Ajouter une règle NAT de trafic entrant** contient les éléments suivants :
 
 | Paramètre | Détails |
 | ---------- | ---------- |

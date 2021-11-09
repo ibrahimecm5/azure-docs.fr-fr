@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 674f4cf80d68095ebd7b134c679b60b45ff2a548
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 54155113920c61d2f32474f0fac2414a6751bcdf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619341"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067410"
 ---
 # <a name="building-a-conditional-access-policy"></a>Créer une stratégie d’accès conditionnel
 
@@ -26,7 +26,9 @@ Comment une organisation crée-t-elle ces stratégies ? Qu’est-ce qui est req
 
 ![Accès conditionnel (signaux + décisions + application = stratégies)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-Plusieurs stratégies d’accès conditionnel peuvent s’appliquer à un utilisateur individuel à tout moment. Dans ce cas, toutes les stratégies qui s’appliquent doivent être satisfaites. Par exemple, si une première stratégie demande une authentification multifacteur (MFA) et qu’une autre demande un appareil conforme, vous devez procéder à la MFA et utiliser un appareil compatible. Toutes les attributions sont reliées par l’opérateur logique **AND**. Si vous configurez plusieurs affectations, ces dernières doivent toutes être satisfaites pour qu’une stratégie soit déclenchée.
+Plusieurs stratégies d’accès conditionnel peuvent s’appliquer à un utilisateur individuel à tout moment. Dans ce cas, toutes les stratégies qui s’appliquent doivent être satisfaites. Par exemple, si une première stratégie demande une authentification multifacteur (MFA) et qu’une autre demande un appareil conforme, vous devez procéder à la MFA et utiliser un appareil compatible. Toutes les attributions sont reliées par l’opérateur logique **AND**. Si vous configurez plusieurs attributions, ces dernières doivent toutes être satisfaites pour qu’une stratégie soit déclenchée.
+
+Si une stratégie « Demander un des contrôles sélectionnés » est sélectionnée, nous vous inviterons dans l’ordre défini dès que les conditions de la stratégie sont satisfaites, et l’accès sera accordé.
 
 Toutes les stratégies sont appliquées en deux phases :
 
@@ -36,7 +38,7 @@ Toutes les stratégies sont appliquées en deux phases :
 - Phase 2 : Application 
    - Utilisez les détails de la session collectés lors de la phase 1 pour identifier les exigences qui n’ont pas été respectées. 
    - Si une stratégie est configurée pour bloquer l’accès, grâce au contrôle d’octroi et de blocage, l’application s’arrête ici et l’utilisateur est bloqué. 
-   - L’utilisateur est invité à remplir les exigences supplémentaires de contrôle d’octroi qui n’ont pas été satisfaites durant la phase 1 dans l’ordre suivant, jusqu’à ce que la stratégie soit satisfaite :  
+   - L’utilisateur sera invité à remplir d’autres exigences de contrôle d’octroi qui n’ont pas été satisfaites durant la phase 1 dans l’ordre suivant, jusqu’à ce que la stratégie soit satisfaite :  
       - Authentification multifacteur 
       - Application cliente approuvée/stratégie de protection d’application 
       - Appareil géré (jonction d’Azure AD conforme ou hybride) 
@@ -79,7 +81,7 @@ Les données d’emplacement sont fournies par les données de géolocalisation 
 
 Par défaut, toutes les stratégies d’accès conditionnel nouvellement créées s’appliquent à tous les types d’applications clientes, même si la condition des applications clientes n’est pas configurée.
 
-Le comportement de la condition des applications clientes a été mis à jour en août 2020. Si vous disposez de stratégies d’accès conditionnel, elles restent inchangées. Toutefois, si vous cliquez sur une stratégie, le bouton bascule de configuration a été supprimé et les applications clientes auxquelles la stratégie s’applique sont sélectionnées.
+Le comportement de la condition des applications clientes a été mis à jour en août 2020. Si vous disposez de stratégies d’accès conditionnel, elles restent inchangées. Toutefois, si vous sélectionnez une stratégie, le bouton bascule de configuration a été supprimé et les applications clientes auxquelles la stratégie s’applique sont sélectionnées.
 
 #### <a name="device-state"></a>État de l’appareil
 

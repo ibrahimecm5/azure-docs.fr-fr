@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a782a2194b64fa82163c8c4df14e78de7e83a57f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a766415eab11a0486b4609d181e5f01dcf4ef2a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612545"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049688"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procédure : Planifier l’implémentation de la jonction Azure AD Hybride
 
@@ -29,6 +29,10 @@ ms.locfileid: "128612545"
 En mettant vos appareils sur Azure AD, vous optimisez la productivité de vos utilisateurs par le biais de l’authentification unique (SSO) sur vos ressources cloud et locales. Dans le même temps, vous pouvez sécuriser l’accès à ces ressources avec [l’accès conditionnel](../conditional-access/overview.md).
 
 Si vous disposez d’un environnement Active Directory (AD) local et que vous souhaitez lier vos ordinateurs joints au domaine AD à Azure AD, vous pouvez y parvenir en effectuant une jonction Azure AD Hybride. Cet article présente les étapes à suivre pour implémenter une jointure Azure AD hybride dans un environnement. 
+
+> [!TIP]
+> L’accès par authentification unique aux ressources locales est également disponible pour les appareils joints à Azure AD. Pour plus d’informations, consultez [Fonctionnement de l’authentification unique auprès de ressources locales sur des appareils joints à Azure AD](azuread-join-sso.md).
+>
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -63,6 +67,7 @@ La jointure Azure AD hybride prend en charge un large éventail d’appareils Wi
 ### <a name="windows-current-devices"></a>Appareils Windows actuels
 
 - Windows 10
+- Windows 11
 - Windows Server 2016
   - **Remarque** : Les clients Cloud national Azure doivent avoir la version 1803
 - Windows Server 2019

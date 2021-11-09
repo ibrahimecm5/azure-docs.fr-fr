@@ -8,13 +8,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54bd889d4c6a82b911441b83fb76fe432bc8665c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: 8885bafbe94665fd7dcbb265383c87b0f4e6cc08
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265933"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253647"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -27,9 +27,9 @@ ms.locfileid: "130265933"
 
 * Abonnement Azure - [En créer un gratuitement](https://azure.microsoft.com/free/cognitive-services)
 * Version actuelle de [Node.js](https://nodejs.org/)
-* Un blob Stockage Azure qui contient un jeu de données d’apprentissage. Consultez [Créer un jeu de données d’entraînement pour un modèle personnalisé](../../build-training-data-set.md) pour obtenir des conseils et des options pour constituer votre jeu de données d’entraînement. Dans le cadre de ce guide de démarrage rapide, vous pouvez utiliser les fichiers disponibles dans le dossier **Train** de l’[exemple de jeu de données](https://go.microsoft.com/fwlink/?linkid=2090451) (téléchargez et extrayez *sample_data.zip*).
+* Un blob Stockage Azure qui contient un jeu de données d’apprentissage. Voir [Créer un jeu de données d’apprentissage pour un modèle personnalisé](../../build-training-data-set.md). Dans le cadre de ce guide de démarrage rapide, vous pouvez utiliser les fichiers disponibles dans le dossier **Train** de l’[exemple de jeu de données](https://go.microsoft.com/fwlink/?linkid=2090451) (téléchargez et extrayez *sample_data.zip*).
 * Une fois que vous avez votre abonnement Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="créez une ressource Form Recognizer"  target="_blank">créer une ressource Form Recognizer</a> sur le portail Azure pour obtenir votre clé et votre point de terminaison. À la fin du déploiement, sélectionnez **Accéder à la ressource**.
-  * Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Vous collerez votre clé et votre point de terminaison dans le code ci-dessous plus loin dans le guide de démarrage rapide.
+  * Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Collez votre clé et votre point de terminaison dans le code ci-dessous, plus loin dans le guide de démarrage rapide.
   * Vous pouvez utiliser le niveau tarifaire Gratuit (`F0`) pour tester le service, puis passer par la suite à un niveau payant pour la production.
 
 ## <a name="setting-up"></a>Configuration
@@ -90,8 +90,8 @@ Avec Form Recognizer, vous pouvez créer deux types de client différents. Le pr
 
 `FormTrainingClient` propose des opérations pour :
 
-* Entraîner les modèles personnalisés à analyser tous les champs et les valeurs rencontrés dans vos formulaires personnalisés. Un `CustomFormModel` est retourné indiquant les types de formulaire que le modèle va analyser et les champs qu’il va extraire pour chaque type de formulaire. _Consultez_ la [documentation du service sur l’entraînement d’un modèle sans étiquettes](#train-a-model-without-labels) pour obtenir des informations plus détaillées.
-* Entraîner les modèles personnalisés à analyser des champs et des valeurs spécifiques que vous spécifiez en étiquetant vos formulaires personnalisés. Un `CustomFormModel` est retourné indiquant les champs que le modèle va extraire ainsi que la précision estimée pour chaque champ. Pour obtenir des informations plus détaillées sur l’application d’étiquettes à un jeu de données d’entraînement, consultez la [documentation du service sur l’entraînement d’un modèle avec étiquettes](#train-a-model-with-labels).
+* Entraîner les modèles personnalisés à analyser tous les champs et les valeurs rencontrés dans vos formulaires personnalisés. Un `CustomFormModel` est retourné indiquant les types de formulaire que le modèle va analyser et les champs qu’il va extraire pour chaque type de formulaire. _Consultez_ la [documentation du service sur la formation d’un modèle sans étiquettes](#train-a-model-without-labels).
+* Entraîner les modèles personnalisés à analyser des champs et des valeurs spécifiques que vous spécifiez en étiquetant vos formulaires personnalisés. Un `CustomFormModel` est retourné indiquant les champs que le modèle va extraire ainsi que la précision estimée pour chaque champ. Consultez la [documentation du service sur la formation d’un modèle avec étiquettes](#train-a-model-with-labels).
 * Gérer les modèles créés dans votre compte.
 * Copier un modèle personnalisé d’une ressource Form Recognizer vers une autre.
 
@@ -177,7 +177,7 @@ First receipt:
 
 ## <a name="train-a-custom-model"></a>Entraîner un modèle personnalisé
 
-Cette section montre comment entraîner un modèle avec vos propres données. Un modèle entraîné peut restituer des données structurées qui incluent les relations clé/valeur du document de formulaire d’origine. Une fois que le modèle est entraîné, vous pouvez le tester, le réentraîner et l’utiliser ensuite pour extraire de manière fiable des données d’autres formulaires, en fonction de vos besoins.
+Cette section montre comment entraîner un modèle avec vos propres données. Un modèle formé peut restituer des données structurées qui incluent les relations clé-valeur du formulaire d’origine. Après avoir effectué l’apprentissage du modèle, testez-le et effectuez à nouveau son apprentissage, le cas échéant. Enfin, utilisez-le pour extraire de manière fiable des données d’autres formulaire selon vos besoins.
 
 > [!NOTE]
 > Vous pouvez aussi entraîner des modèles à l’aide d’une interface graphique utilisateur telle que l’[outil d’étiquetage des exemples Form Recognizer](../../label-tool.md).
@@ -192,7 +192,7 @@ La fonction suivante entraîne un modèle sur un ensemble donné de documents et
 
 ### <a name="output"></a>Output
 
-Ceci est la sortie d’un modèle entraîné avec les données d’entraînement disponibles dans le [SDK JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer). Cet exemple de sortie a été tronqué pour une meilleure lisibilité.
+Voici la sortie d’un modèle formé avec les données d’apprentissage. Le code est disponible dans le [Kit de développement logiciel (SDK) JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer). Cet exemple de sortie a été tronqué pour une meilleure lisibilité.
 
 ```console
 training status: creating
@@ -234,7 +234,7 @@ Vous pouvez aussi entraîner les modèles personnalisés en étiquetant manuelle
 
 ### <a name="output"></a>Output
 
-Ceci est la sortie d’un modèle entraîné avec les données d’entraînement disponibles dans le [SDK JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples). Cet exemple de sortie a été tronqué pour une meilleure lisibilité.
+Voici la sortie d’un modèle formé avec les données d’apprentissage disponibles dans le [Kit de développement logiciel (SDK) JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples). Cet exemple de sortie a été tronqué pour une meilleure lisibilité.
 
 ```console
 training status: creating
@@ -328,7 +328,7 @@ Le bloc de code suivant obtient le nombre de modèles présents dans votre compt
 
 ### <a name="get-list-of-models-in-account"></a>Obtenir la liste des modèles du compte
 
-Le bloc de code suivant fournit la liste complète des modèles disponibles dans votre compte, notamment des informations sur la date de création du modèle et son état actuel.
+Le bloc de code suivant fournit une liste complète des modèles disponibles dans votre compte. Elle comprend des informations sur le moment où le modèle a été créé et son état actuel.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
 
@@ -426,7 +426,7 @@ Pour obtenir des instructions plus détaillées sur l’activation des journaux,
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce guide de démarrage rapide, vous avez utilisé la bibliothèque de client JavaScript Form Recognizer pour entraîner des modèles et analyser des formulaires de différentes manières. Découvrez ensuite les astuces pour créer un jeu de données d’apprentissage plus performant et produire des modèles plus précis.
+Dans ce démarrage rapide, vous avez utilisé le Kit de développement logiciel (SDK) JavaScript Form Recognizer pour effectuer l’apprentissage de modèles et analyser des formulaires de différentes manières. Découvrez ensuite les astuces pour créer un jeu de données d’apprentissage plus performant et produire des modèles plus précis.
 
 > [!div class="nextstepaction"]
 > [Créer un jeu de données d’apprentissage](../../build-training-data-set.md)

@@ -8,24 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/20/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ecbb461e45b19630319622e978ad3bd49a376e74
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 62e4557b003c0347c6ecbf8a39102260abb66386
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092734"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050239"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Plateforme d’identités Microsoft et flux d’informations d’identification du client OAuth 2.0
 
-Vous pouvez utiliser [l’octroi des informations d’identification du client OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.4) spécifié dans RFC 6749, parfois appelé *OAuth à deux branches* pour accéder à des ressources hébergées sur le web à l’aide de l’identité d’une application. Ce type d’octroi est couramment utilisé pour les interactions de serveur à serveur qui doivent s’exécuter en arrière-plan sans l’interaction immédiate d’un utilisateur. Ces types d’application sont souvent appelés *démons* (daemons) ou *comptes de service*.
+Vous pouvez utiliser l’octroi des informations d’identification du client OAuth 2.0 spécifié dans [RFC 6749](https://tools.ietf.org/html/rfc6749#section-4.4), parfois appelé *OAuth à deux branches*, pour accéder à des ressources hébergées sur le web à l’aide de l’identité d’une application. Ce type d’octroi est couramment utilisé pour les interactions de serveur à serveur qui doivent s’exécuter en arrière-plan sans l’interaction immédiate d’un utilisateur. Ces types d’application sont souvent appelés *démons* (daemons) ou *comptes de service*.
 
 Cet article explique comment programmer directement par rapport au protocole dans votre application. Dans la mesure du possible, nous vous recommandons d’utiliser les bibliothèques d’authentification Microsoft (MSAL) prises en charge au lieu d’[acquérir des jetons et d’appeler des API web sécurisées](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Jetez également un coup d’œil aux [exemples d’applications qui utilisent MSAL](sample-v2-code.md).
 
-Le flux d’octroi des informations d’identification du client OAuth 2.0 permet à un service web (client confidentiel) d’utiliser ses propres informations d’identification pour s’authentifier lorsqu’il appelle un autre service web, au lieu d’emprunter l’identité d’un utilisateur. Pour augmenter le niveau d’assurance, la plateforme d’identités Microsoft autorise également le service d’appel à utiliser un certificat (au lieu d’un secret partagé) comme une information d’identification.  Étant donné que les informations d’identification propres à l’application sont utilisées, ces informations d’identification doivent être conservées en toute sécurité. Ne publiez _jamais_ ces informations d’identification dans votre code source, ne les incorporez pas dans des pages web et ne les utilisez pas dans une application native largement distribuée. 
+Le flux d’octroi des informations d’identification du client OAuth 2.0 permet à un service web (client confidentiel) d’utiliser ses propres informations d’identification pour s’authentifier lorsqu’il appelle un autre service web, au lieu d’emprunter l’identité d’un utilisateur. Pour augmenter le niveau d’assurance, la plateforme d’identités Microsoft permet également au service appelant de s’authentifier à l’aide d’un [certificat](#second-case-access-token-request-with-a-certificate) ou d’informations d’identification fédérées au lieu d’un secret partagé.  Étant donné que les informations d’identification propres à l’application sont utilisées, ces informations d’identification doivent être conservées en toute sécurité. Ne publiez _jamais_ ces informations d’identification dans votre code source, ne les incorporez pas dans des pages web et ne les utilisez pas dans une application native largement distribuée. 
 
 Dans le flux des informations d’identification du client, les autorisations sont accordées directement à l’application elle-même par l’administrateur. Lorsque l’application présente un jeton à une ressource, la ressource impose que l’application elle-même, et non pas l'utilisateur (puisqu’il n’est pas impliqué, ait l’autorisation d’effectuer une action.  Cet article décrit les étapes nécessaires pour [autoriser une application à appeler une API](#application-permissions), ainsi que [comment récupérer les jetons nécessaires pour appeler cette API](#get-a-token).
 
@@ -104,7 +104,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | --- | --- | --- |
 | `tenant` | Obligatoire | Le client d’annuaire auquel vous souhaitez demander l’autorisation. Peut être au format GUID ou sous forme de nom convivial. Si vous ne savez pas à quel client appartient l’utilisateur et si vous souhaitez lui permettre de se connecter avec n’importe quel client, utilisez `common`. |
 | `client_id` | Obligatoire | L’**ID (client) d’application** attribué à votre application par l’environnement [Inscriptions d’applications du portail Azure](https://go.microsoft.com/fwlink/?linkid=2083908). |
-| `redirect_uri` | Obligatoire | L'URI de redirection où vous souhaitez que la réponse soit envoyée pour être gérée par votre application. Il doit correspondre exactement à l’un des URI de redirection enregistrés dans le portail, auquel s’ajoute le codage dans une URL, et peut avoir des segments de chemin d’accès supplémentaires. |
+| `redirect_uri` | Obligatoire | L'URI de redirection où vous souhaitez que la réponse soit envoyée pour être gérée par votre application. Il doit correspondre exactement à l’un des URI de redirection enregistrés dans le portail, sauf qu’il doit être codé en URL et qu’il peut comporter des segments de chemin d’accès supplémentaires. |
 | `state` | Recommandé | Une valeur incluse dans la requête qui est également renvoyée dans la réponse de jeton. Il peut s’agir d’une chaîne du contenu de votre choix. La valeur d’état est utilisée pour coder les informations sur l’état de l’utilisateur dans l’application avant la requête d’authentification, comme la page ou l’écran sur lequel ou laquelle il était positionné. |
 
 À ce stade, Azure AD impose que seul un administrateur de locataire peut se connecter pour terminer la demande. L’administrateur est invité à approuver toutes les autorisations directes d’application demandées pour votre application dans le portail d’inscription des applications.
@@ -193,9 +193,29 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Les paramètres pour la requête basée sur le certification ne différent que sur un point de la requête basée sur le secret partagé : le paramètre `client_secret` est remplacé par les paramètres `client_assertion_type` et `client_assertion`.
 
+### <a name="third-case-access-token-request-with-a-federated-credential"></a>Troisième cas : Requête de jeton d’accès avec des informations d’identification fédérées
+
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
+
+scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+&grant_type=client_credentials
+```
+
+| Paramètre | Condition | Description |
+| --- | --- | --- |
+| `client_assertion` | Obligatoire | Une assertion (un JWT, ou JSON Web Token) que votre application obtient d’un autre fournisseur d’identité en dehors de la plateforme d’identités Microsoft, comme Kubernetes. Les caractéristiques de ce JWT doivent être inscrites dans votre application en tant qu’[informations d’identification d’identité fédérée](workload-identity-federation-create-trust.md). Lisez la section sur la [fédération des identités de charge de travail](workload-identity-federation.md) pour apprendre à configurer et utiliser des assertions générées à partir d’autres fournisseurs d’identité.|
+
+Tous les éléments de la requête sont identiques à ceux du flux basé sur un certificat ci-dessus, à une exception cruciale près : la source de `client_assertion`. Dans ce flux, votre application ne crée pas l’assertion JWT elle-même.  Au lieu de cela, votre application utilise un JWT créé par un autre fournisseur d’identité.  C’est ce que l’on appelle la « [fédération des identités de charge de travail](workload-identity-federation.md) », où l’identité de vos applications dans une autre plateforme d’identités est utilisée pour acquérir des jetons dans la plateforme d’identités de Microsoft.  Cette solution est la plus adaptée aux scénarios interclouds, comme l’hébergement de votre calcul en dehors d’Azure, mais avec un accès aux API protégées par la plateforme d’identités Microsoft. 
+
 ### <a name="successful-response"></a>Réponse correcte
 
-Une réponse correcte de l’une des deux méthodes ressemble à ceci :
+Une réponse correcte, quelle que soit la méthode, ressemble à ceci :
 
 ```json
 {

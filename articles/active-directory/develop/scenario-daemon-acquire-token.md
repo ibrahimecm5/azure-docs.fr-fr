@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e037a1ba1ba3c0820321662d4f3feffa6dd2b35
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578411"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050619"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Application démon conçue pour appeler des API web - acquisition d'un jeton
 
@@ -65,7 +65,7 @@ L’étendue utilisée pour les informations d’identification client doit touj
 
 > [!IMPORTANT]
 > Quand MSAL demande un jeton d’accès pour une ressource acceptant un jeton d’accès de version 1.0, Azure AD analyse l’audience souhaitée d’après l’étendue demandée, en prenant tout ce qui précède la dernière barre oblique et en l’utilisant comme identificateur de la ressource.
-> Par conséquent, si, comme Azure SQL Database (**https :\//database.windows.net**), la ressource attend une audience se terminant par une barre oblique (pour Azure SQL Database, `https://database.windows.net/`), vous devez demander une étendue de `https://database.windows.net//.default` (notez la double barre oblique). Voir aussi le problème MSAL.NET [#747 : la barre oblique de fin est omise dans l’URL de la ressource, ce qui a entraîné un échec d’authentification sql ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Par conséquent, si, comme Azure SQL Database (`https://database.windows.net`), la ressource attend une audience se terminant par une barre oblique (pour Azure SQL Database, `https://database.windows.net/`), vous devez demander une étendue de `https://database.windows.net//.default`. (Notez la double barre oblique.) Voir aussi le problème MSAL.NET [no 747 : `Resource url's trailing slash is omitted, which caused sql auth failure`](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>API AcquireTokenForClient
 

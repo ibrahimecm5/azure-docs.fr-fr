@@ -6,31 +6,32 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/25/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8be955312d377f871ab3d09164c23c8cfdf214b9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8420373d452cdcb6a1add4d45fc990af1690ef29
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265909"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520266"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
 
-[Documentation de référence](/java/api/overview/azure/ai-formrecognizer-readme) | [Code source de la bibliothèque](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src) | [Package (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [Exemples](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Documentation de référence](/java/api/overview/azure/ai-formrecognizer-readme) | [Code source de la bibliothèque](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-formrecognizer_3.1.1/sdk/formrecognizer/azure-ai-formrecognizer/src) | [Package (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [Exemples](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-formrecognizer_3.1.1/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Prérequis
 
 * Abonnement Azure - [En créer un gratuitement](https://azure.microsoft.com/free/cognitive-services)
 * La version actuelle du [JDK (Java Development Kit)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * L’[outil de génération Gradle](https://gradle.org/install/) ou un autre gestionnaire de dépendances.
-* Une fois que vous avez votre abonnement Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="créez une ressource Form Recognizer"  target="_blank">créer une ressource Form Recognizer</a> sur le portail Azure pour obtenir votre clé et votre point de terminaison. Une fois le déploiement effectué, cliquez sur **Accéder à la ressource**.
-  * Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Vous collerez votre clé et votre point de terminaison dans le code ci-dessous plus loin dans le guide de démarrage rapide.
+* Une fois que vous avez votre abonnement Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="créez une ressource Form Recognizer"  target="_blank">créer une ressource Form Recognizer</a> sur le portail Azure pour obtenir votre clé et votre point de terminaison. À la fin du déploiement, sélectionnez **Accéder à la ressource**.
+  * Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Collez votre clé et votre point de terminaison dans le code ci-dessous, plus loin dans le guide de démarrage rapide.
   * Vous pouvez utiliser le niveau tarifaire Gratuit (`F0`) pour tester le service, puis passer par la suite à un niveau payant pour la production.
-* Un blob Stockage Azure qui contient un jeu de données d’apprentissage. Consultez [Créer un jeu de données d’entraînement pour un modèle personnalisé](../../build-training-data-set.md) pour obtenir des conseils et des options pour constituer votre jeu de données d’entraînement. Dans le cadre de ce guide de démarrage rapide, vous pouvez utiliser les fichiers disponibles dans le dossier **Train** de l’[exemple de jeu de données](https://go.microsoft.com/fwlink/?linkid=2090451) (téléchargez et extrayez *sample_data.zip*).
+* Un blob Stockage Azure qui contient un jeu de données d’apprentissage. Voir [Créer un jeu de données d’apprentissage pour un modèle personnalisé](../../build-training-data-set.md). Dans le cadre de ce guide de démarrage rapide, vous pouvez utiliser les fichiers disponibles dans le dossier **Train** de l’[exemple de jeu de données](https://go.microsoft.com/fwlink/?linkid=2090451) (téléchargez et extrayez *sample_data.zip*).
 
 ## <a name="setting-up"></a>Configuration
 
@@ -97,9 +98,9 @@ Dans la classe **FormRecognizer** de l’application, créez des variables pour 
 > [!IMPORTANT]
 > Accédez au portail Azure. Si la ressource Form Recognizer que vous avez créée dans la section **Prérequis** a été déployée, cliquez sur le bouton **Accéder à la ressource** sous **Étapes suivantes**. La clé et le point de terminaison se trouvent dans la page **Clé et point de terminaison** de la ressource, sous **Gestion des ressources**.
 >
-> N’oubliez pas de supprimer la clé de votre code une fois que vous avez terminé, et ne la postez jamais publiquement. En production, utilisez des méthodes sécurisées pour stocker vos informations d’identification et y accéder. Pour plus d’informations, consultez l’article sur la [sécurité](../../../../cognitive-services/cognitive-services-security.md) de Cognitive Services.
+> N’oubliez pas de supprimer la clé de votre code une fois que vous avez terminé, et ne la postez jamais publiquement. En production, utilisez des méthodes sécurisées pour stocker vos informations d’identification et y accéder. Pour plus d’informations, _consultez_ [Sécurité](../../../../cognitive-services/cognitive-services-security.md) Cognitive Services.
 
-Dans la méthode **main** de l’application, ajoutez des appels pour les méthodes utilisées dans ce guide de démarrage rapide. Vous les définirez plus tard. Vous devrez aussi ajouter des références aux URL pour vos données d’entraînement et de test.
+Dans la méthode **main** de l’application, ajoutez des appels pour les méthodes utilisées dans ce guide de démarrage rapide. Vous définissez ces méthodes plus tard. Vous devrez aussi ajouter des références aux URL pour vos données d’entraînement et de test.
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
@@ -226,7 +227,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="train-a-custom-model"></a>Entraîner un modèle personnalisé
 
-Cette section montre comment entraîner un modèle avec vos propres données. Un modèle entraîné peut restituer des données structurées qui incluent les relations clé/valeur du document de formulaire d’origine. Une fois que le modèle est entraîné, vous pouvez le tester, le réentraîner et l’utiliser ensuite pour extraire de manière fiable des données d’autres formulaires, en fonction de vos besoins.
+Cette section montre comment entraîner un modèle avec vos propres données. Un modèle formé peut restituer des données structurées qui incluent les relations clé-valeur du formulaire d’origine. Après avoir effectué l’apprentissage du modèle, testez-le et effectuez à nouveau son apprentissage, le cas échéant. Enfin, utilisez-le pour extraire de manière fiable des données d’autres formulaire selon vos besoins.
 
 > [!NOTE]
 > Vous pouvez aussi entraîner des modèles à l’aide d’une interface graphique utilisateur telle que l’[outil d’étiquetage des exemples Form Recognizer](../../label-tool.md).
@@ -311,7 +312,7 @@ Vous allez utiliser la méthode **beginRecognizeCustomFormsFromUrl**.
 > [!TIP]
 > Vous pouvez également analyser un fichier local. Consultez les méthodes [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient), telles que **beginRecognizeCustomForms**. Ou consultez l’exemple de code sur [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) pour obtenir des scénarios impliquant des images locales.
 
-La valeur retournée est une collection d’objets **RecognizedForm** : un pour chaque page du document envoyé. Le code suivant affiche les résultats de l’analyse dans la console. Il imprime chaque champ reconnu et la valeur correspondante ainsi qu’un score de confiance.
+La valeur retournée est une collection d’objets **RecognizedForm** : un pour chaque page du document envoyé. Le code suivant imprime les résultats de l’analyse dans la console. Il imprime chaque champ reconnu et la valeur correspondante ainsi qu’un score de confiance.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_print)]
 
@@ -425,4 +426,4 @@ Dans ce guide de démarrage rapide, vous avez utilisé la bibliothèque de clien
 > [Créer un jeu de données d’apprentissage](../../build-training-data-set.md)
 
 * [Qu’est-ce que Form Recognizer ?](../../overview.md)
-* Vous trouverez l’exemple de code de ce guide (et bien plus encore) sur [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples).
+* Vous trouverez l’exemple de code de ce guide (et bien plus encore) sur [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-formrecognizer_3.1.1/sdk/formrecognizer/azure-ai-formrecognizer/src/samples).

@@ -2,26 +2,27 @@
 title: Corriger le système d’exploitation Windows dans votre cluster Service Fabric
 description: Voici comment activer les mises à niveau automatiques de l’image du système d’exploitation pour corriger les nœuds de cluster Service Fabric s’exécutant sur Windows.
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 5a3b2c78f0a7a3103c2fc56fe518739ac648ad31
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/19/2021
+ms.openlocfilehash: 940a0af02f5355e9d28bb057798004fc963dfeca
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796492"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019397"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Corriger le système d’exploitation Windows dans votre cluster Service Fabric
 
 L’obtention de [mises à niveau automatiques de l’image du système d’exploitation sur Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) est la meilleure façon d’assurer la mise à jour corrective de votre système d’exploitation dans Azure. Le groupe de machines virtuelles identiques basé sur des mises à niveau d’images de système d’exploitation automatiques nécessitent une durabilité Silver ou supérieure sur un groupe identique.
 
-### <a name="requirements-for-automatic-os-image-upgrades-by-virtual-machine-scale-sets"></a>Conditions requises pour les mises à niveau automatiques de l’image du système d’exploitation par Virtual Machine Scale Sets
+## <a name="requirements-for-automatic-os-image-upgrades-by-virtual-machine-scale-sets"></a>Conditions requises pour les mises à niveau automatiques de l’image du système d’exploitation par Virtual Machine Scale Sets
 
--   Le [niveau de durabilité](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) de Service Fabric est Silver ou Gold, et non Bronze.
--   L’extension Service Fabric sur la définition du modèle de groupe identique doit avoir TypeHandlerVersion 1.1 ou version ultérieure.
--   Le niveau de durabilité doit être identique au cluster Service Fabric et à l’extension de Service Fabric de la définition du modèle de groupe identique.
+- Le [niveau de durabilité](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) de Service Fabric est Silver ou Gold, et non Bronze.
+- L’extension Service Fabric sur la définition du modèle de groupe identique doit avoir TypeHandlerVersion 1.1 ou version ultérieure.
+- Le niveau de durabilité doit être identique au cluster Service Fabric et à l’extension de Service Fabric de la définition du modèle de groupe identique.
 - Une sonde d’intégrité supplémentaire ou l’utilisation de l’extension d’intégrité d’application pour Virtual Machine Scale Sets n’est pas nécessaire.
+- Les types de nœuds sans état sont la seule exception, avec une durabilité Bronze, mais les mises à niveau automatiques de l’image du système d’exploitation peuvent toujours y être configurées. Pour plus d’informations, consultez [Déployer un cluster Azure Service Fabric avec des types de nœuds sans état](service-fabric-stateless-node-types.md).
 
-Assurez-vous que les paramètres de durabilité ne sont pas incompatibles avec le cluster Service Fabric et l’extension Service Fabric, car une incompatibilité entraînera des erreurs de mise à niveau. Les niveaux de durabilité peuvent être modifiés selon les instructions indiquées sur[cette page](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels).
+Assurez-vous que les paramètres de durabilité ne sont pas incompatibles avec le cluster Service Fabric et l’extension Service Fabric, car une incompatibilité entraînera des erreurs de mise à niveau. Les niveaux de durabilité peuvent être modifiés selon les instructions indiquées sur[cette page](service-fabric-cluster-capacity.md#changing-durability-levels).
 
 Avec la durabilité Bronze, la mise à jour automatique de l'image du système d'exploitation n'est pas disponible. Bien que l'[application Patch Orchestration](service-fabric-patch-orchestration-application.md) (destinée uniquement aux clusters hébergés non-Azure) *ne soit pas recommandée* pour les niveaux de durabilité Argent ou supérieurs, il s’agit de votre seule option pour automatiser les mises à jour Windows en ce qui concerne les domaines de mise à niveau de Service Fabric.
 

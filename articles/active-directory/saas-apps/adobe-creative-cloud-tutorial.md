@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ba23a1bc5740eece8aa5e48d4f6cd81fab7b87e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e22f85a0e6e5bef133d60570f9eba519a7725670
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803434"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032157"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Adobe Creative Cloud
 
@@ -161,7 +161,7 @@ Pour permettre aux utilisateurs Azure AD de se connecter à Adobe Creative Cloud
 
 2. Ajoutez l’utilisateur au sein de la console Adobe en tant qu’ID fédéré et attribuez-le à un profil de produits. Pour plus d’informations sur l’ajout d’utilisateurs, consultez [Add users in Adobe Admin Console](https://helpx.adobe.com/enterprise/using/users.html#Addusers).
 
-3. À ce stade, tapez votre adresse de messagerie/nom d’utilisateur principal dans le formulaire de connexion Adobe, appuyez sur la touche de tabulation, et vous devez être fédéré à Azure AD :
+3. À ce stade, saisissez votre adresse e-mail/nom d’utilisateur principal dans le formulaire de connexion Adobe, appuyez sur la touche TABULATION et vous devriez être fédéré à Azure AD :
    * Accès Web : www\.adobe.com > connexion
    * Dans l’utilitaire de l’application de bureau > connexion
    * Dans l’application > aide > connexion

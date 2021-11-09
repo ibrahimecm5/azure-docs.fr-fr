@@ -4,19 +4,19 @@ description: Apprenez à créer une fonction JavaScript à partir de la ligne de
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f31251bf690d6ed3ae83335c90bf30feafa009db
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 3afe1cb5912f025b5ff33446c73e72f3e5bbcefd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830335"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031496"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Démarrage rapide : Créer une fonction JavaScript dans Azure à partir de la ligne de commande
 
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-Dans cet article, vous allez utiliser des outils en ligne de commande pour créer une fonction JavaScript qui répond aux requêtes HTTP. Après avoir testé le code localement, vous le déployez dans l’environnement serverless d’Azure Functions. 
+Dans cet article, vous allez utiliser des outils en ligne de commande pour créer une fonction JavaScript qui répond aux requêtes HTTP. Après avoir testé le code localement, vous le déployez dans l’environnement serverless d’Azure Functions.
 
 Le fait de suivre ce guide de démarrage rapide entraîne une faible dépense de quelques cents USD tout au plus dans votre compte Azure.
 
@@ -34,7 +34,7 @@ Avant de commencer la lecture cet article, vous devez disposer des éléments su
 
     + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 ou ultérieure.
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) version 5.0 ou ultérieure.
+    + Le [module Azure Az PowerShell](/powershell/azure/install-az-ps) version 5.9.0 ou ultérieure.
 
 + [Node.js](https://nodejs.org/) version 12. La version 10 de Node.js est également prise en charge.
 
@@ -54,7 +54,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 + Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
 
-+ Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure. 
++ Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure.
 
 + Exécutez `Connect-AzAccount` pour vous connecter à Azure et vérifier que l’abonnement est actif.
 
@@ -64,7 +64,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 Dans Azure Functions, un projet de fonction est un conteneur pour une ou plusieurs fonctions qui répondent chacune à un déclencheur spécifique. Toutes les fonctions d’un projet partagent les mêmes configurations locale et d’hébergement. Dans cette section, vous créez un projet de fonction qui contient une seule fonction.
 
-1. Exécutez la commande `func init`, de la façon suivante, pour créer un projet Functions dans un dossier nommé *LocalFunctionProj* avec le runtime spécifié :  
+1. Exécutez la commande `func init`, de la façon suivante, pour créer un projet Functions dans un dossier nommé *LocalFunctionProj* avec le runtime spécifié :
 
     ```console
     func init LocalFunctionProj --javascript
@@ -82,10 +82,10 @@ Dans Azure Functions, un projet de fonction est un conteneur pour une ou plusieu
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ```  
-    
+    ```
+
     `func new` crée un sous-dossier correspondant au nom de la fonction qui contient le fichier de code approprié au langage choisi pour le projet, et un fichier config nommé *function.json*.
-    
+
 ### <a name="optional-examine-the-file-contents"></a>(Facultatif) Examiner le contenu du fichier
 
 Si vous le souhaitez, vous pouvez passer à [Exécuter la fonction localement](#run-the-function-locally) et examiner le contenu du fichier plus tard.
@@ -100,7 +100,7 @@ Pour un déclencheur HTTP, la fonction reçoit les données de requête dans la 
 
 #### <a name="functionjson"></a>function.json
 
-*function.json* est un fichier config qui définit le `bindings` d’entrée et de sortie de la fonction, notamment le type du déclencheur. 
+*function.json* est un fichier config qui définit le `bindings` d’entrée et de sortie de la fonction, notamment le type du déclencheur.
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/function.json":::
 
@@ -113,25 +113,25 @@ Chaque liaison nécessite une direction, un type et un nom unique. Le déclenche
 4. Créer l’application de fonction dans Azure :
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-        
+
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location <REGION> --runtime node --runtime-version 12 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
-    
+
     La commande [az functionapp create](/cli/azure/functionapp#az_functionapp_create) crée l’application de fonction dans Azure. Si vous utilisez Node.js 10, remplacez aussi `--runtime-version` par `10`.
-    
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -RuntimeVersion 12 -FunctionsVersion 3 -Location <REGION>
     ```
-    
+
     L’applet de commande [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) crée l’application de fonction dans Azure. Si vous utilisez Node.js 10, remplacez `-RuntimeVersion` par `10`.
-    
+
     ---
-    
-    Dans l’exemple précédent, remplacez `<STORAGE_NAME>` par le nom du compte que vous avez utilisé à l’étape précédente, puis remplacez `<APP_NAME>` par le nom global unique qui vous convient. `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction. 
-    
+
+    Dans l’exemple précédent, remplacez `<STORAGE_NAME>` par le nom du compte que vous avez utilisé à l’étape précédente, puis remplacez `<APP_NAME>` par le nom global unique qui vous convient. `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction.
+
     Cette commande crée une application de fonction qui s’exécute dans votre runtime de langage spécifié dans le [Plan Consommation Azure Functions](consumption-plan.md), qui est gratuit pour l’utilisation faite ici. La commande provisionne également une instance d’Azure Application Insights associée dans le même groupe de ressources, avec laquelle vous pouvez superviser votre application de fonction et visualiser les journaux. Pour plus d’informations, consultez [Surveiller l’exécution des fonctions Azure](functions-monitoring.md). L’instance n’entraîne aucun coût tant que vous ne l’activez pas.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]

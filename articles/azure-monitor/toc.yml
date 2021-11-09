@@ -4,6 +4,8 @@
   items:
     - name: "Qu’est-ce qu’Azure Monitor\_?"
       href: overview.md
+    - name: "Que pouvez-vous superviser\_?"
+      href: monitor-reference.md
     - name: Questions fréquentes (FAQ)
       href: faq.yml
     - name: Nouveautés
@@ -111,8 +113,6 @@
       href: azure-cli-metrics-alert-sample.md
 - name: Concepts
   items:
-    - name: "Que pouvez-vous superviser\_?"
-      href: monitor-reference.md
     - name: Supervision continue
       href: continuous-monitoring.md
     - name: Sources de données
@@ -1214,61 +1214,6 @@
           href: insights/resource-group-insights.md
         - name: Résoudre des problèmes d’insights
           href: insights/troubleshoot-workbooks.md
-        - name: Solutions
-          items:
-            - name: Vue d’ensemble
-              href: insights/solutions.md
-              displayName: 'Azure CLI, az monitor log-analytics'
-            - name: Solutions cibles
-              href: insights/solution-targeting.md
-            - name: Solutions disponibles
-              items:
-                - name: Évaluation de l’intégrité d’AD
-                  href: insights/ad-assessment.md
-                - name: AD Replication Status
-                  href: insights/ad-replication-status.md
-                - name: Solution Capacité et performances
-                  href: insights/capacity-performance.md
-                - name: Surveillance de Docker et du conteneur Windows
-                  href: containers/containers.md
-                - name: Réseaux
-                  items:
-                    - name: Analyse de mise en réseau
-                      href: insights/azure-networking-analytics.md
-                    - name: DNS
-                      href: insights/dns-analytics.md
-                    - name: Network Performance Monitor
-                      items:
-                        - name: Vue d’ensemble de la solution
-                          href: insights/network-performance-monitor.md
-                        - name: Analyseur de performances
-                          href: insights/network-performance-monitor-performance-monitor.md
-                        - name: Moniteur de connectivité de service
-                          href: insights/network-performance-monitor-service-connectivity.md
-                        - name: ExpressRoute
-                          href: insights/network-performance-monitor-expressroute.md
-                        - name: Tarifs
-                          href: insights/network-performance-monitor-pricing-faq.yml
-                        - name: Questions fréquentes (FAQ)
-                          href: insights/network-performance-monitor-faq.yml
-                - name: "Office\_365"
-                  href: insights/solution-office-365.md
-                - name: Solution Service Map
-                  href: vm/service-map.md
-                - name: Service Map et Operations Manager
-                  href: vm/service-map-scom.md
-                - name: Azure SQL
-                  href: insights/azure-sql.md
-                - name: SQL Server
-                  href: insights/sql-assessment.md
-                - name: Surface Hub
-                  href: insights/surface-hubs.md
-                - name: Solution Analytique VMware
-                  href: insights/vmware.md
-                - name: Solution Wire Data
-                  href: insights/wire-data.md
-                - name: Solution Alert Management
-                  href: insights/alert-management-solution.md
     - name: Workbooks
       items:
         - name: Vue d’ensemble
@@ -1346,6 +1291,61 @@
               href: visualize/view-designer-conversion-examples.md
     - name: Autres visualisations
       items:
+        - name: Solutions de supervision
+          items:
+            - name: Vue d’ensemble
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: Solutions cibles
+              href: insights/solution-targeting.md
+            - name: Solutions disponibles
+              items:
+                - name: Évaluation de l’intégrité d’AD
+                  href: insights/ad-assessment.md
+                - name: AD Replication Status
+                  href: insights/ad-replication-status.md
+                - name: Solution Capacité et performances
+                  href: insights/capacity-performance.md
+                - name: Surveillance de Docker et du conteneur Windows
+                  href: containers/containers.md
+                - name: Réseaux
+                  items:
+                    - name: Analyse de mise en réseau
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: Network Performance Monitor
+                      items:
+                        - name: Vue d’ensemble de la solution
+                          href: insights/network-performance-monitor.md
+                        - name: Analyseur de performances
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: Moniteur de connectivité de service
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: Tarifs
+                          href: insights/network-performance-monitor-pricing-faq.yml
+                        - name: Questions fréquentes (FAQ)
+                          href: insights/network-performance-monitor-faq.yml
+                - name: "Office\_365"
+                  href: insights/solution-office-365.md
+                - name: Solution Service Map
+                  href: vm/service-map.md
+                - name: Service Map et Operations Manager
+                  href: vm/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: Solution Analytique VMware
+                  href: insights/vmware.md
+                - name: Solution Wire Data
+                  href: insights/wire-data.md
+                - name: Solution Alert Management
+                  href: insights/alert-management-solution.md
         - name: Power BI
           items:
             - name: Exporter des données de journal
@@ -1382,18 +1382,18 @@
       items:
         - name: Métriques de plateforme
           href: essentials/metrics-supported.md
-        - name: Métriques dans les paramètres de diagnostic
+        - name: Exporter par le biais des paramètres de diagnostic
           href: essentials/metrics-supported-export-diagnostic-settings.md
         - name: Métriques dans les alertes
           href: alerts/alerts-metric-near-real-time.md
     - name: Journaux de plateforme
       items:
-        - name: Schéma du journal d'activité
-          href: essentials/activity-log-schema.md
-        - name: Schémas des journaux de ressources
-          href: essentials/resource-logs-schema.md
         - name: Catégories de journaux de ressources prises en charge
           href: essentials/resource-logs-categories.md
+        - name: Schémas des journaux de ressources
+          href: essentials/resource-logs-schema.md
+        - name: Schéma du journal d'activité
+          href: essentials/activity-log-schema.md
     - name: Schémas d’extension de diagnostic
       items:
         - name: Extension de diagnostic Windows

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8292a4d79c7b2a83b11d1f006a6fda9521208c7c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5a0cd6b33caea0cd8f9a46a2f967a1291c5c94ce
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986337"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052633"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Appliquer une stratégie d’attribution de noms à des groupes Microsoft 365 dans Azure Active Directory
 
@@ -240,7 +240,7 @@ Portails Azure Active Directory | Le portail Azure AD et le portail Panneau d�
 Outlook Web Access (OWA) | Outlook Web Access affiche le nom appliqué de la stratégie de nommage quand l’utilisateur tape un nom ou alias de groupe. Quand un utilisateur entre un mot bloqué personnalisé, un message d’erreur s’affiche dans l’interface utilisateur avec le mot bloqué pour qu’il puisse le supprimer.
 Bureau Outlook | Les groupes créés dans le bureau Outlook sont conformes aux paramètres de stratégie de nommage. L’application de bureau Outlook n’affiche pas encore l’aperçu du nom de groupe appliqué et ne retourne pas d’erreurs liées aux mots bloqués personnalisés au moment où l’utilisateur entre le nom du groupe. Cependant, la stratégie de nommage est appliquée automatiquement pendant la création ou la modification d’un groupe, et les utilisateurs obtiennent des messages d’erreur si le nom ou l’alias de groupe contient des mots bloqués personnalisés.
 Microsoft Teams | Microsoft Teams présente le nom appliqué de la stratégie de nommage de groupes quand l’utilisateur entre un nom d’équipe. Quand un utilisateur entre un mot bloqué personnalisé, un message d’erreur s’affiche avec le mot bloqué pour qu’il puisse le supprimer.
-SharePoint  |  SharePoint affiche le nom appliqué de la stratégie de nommage quand l’utilisateur tape un nom de site ou une adresse e-mail de groupe. Quand un utilisateur entre un mot bloqué personnalisé, un message d’erreur s’affiche avec le mot bloqué pour qu’il puisse le supprimer.
+SharePoint | SharePoint affiche le nom appliqué de la stratégie de nommage quand l’utilisateur tape un nom de site ou une adresse e-mail de groupe. Quand un utilisateur entre un mot bloqué personnalisé, un message d’erreur s’affiche avec le mot bloqué pour qu’il puisse le supprimer.
 Microsoft Stream | Microsoft Stream affiche le nom appliqué de la stratégie de nommage de groupes quand l’utilisateur tape un nom de groupe ou un alias d’e-mail de groupe. Quand un utilisateur entre un mot bloqué personnalisé, un message d’erreur s’affiche avec le mot bloqué pour qu’il puisse le supprimer.
 Application Outlook pour iOS et Android | Les groupes créés dans les applications Outlook sont conformes à la stratégie de nommage configurée. L’application mobile Outlook n’affiche pas encore l’aperçu du nom appliqué de la stratégie de nommage et ne retourne pas d’erreurs liées aux mots bloqués personnalisés au moment où l’utilisateur entre le nom du groupe. Cependant, la stratégie de nommage est appliquée automatiquement quand l’utilisateur clique sur Créer ou Modifier, et des messages d’erreur s’affichent en présence de mots bloqués personnalisés dans le nom ou l’alias de groupe.
 Application mobile Groups | Les groupes créés dans l’application mobile Groups sont conformes à la stratégie de nommage. L’application mobile Groups n’affiche pas l’aperçu de la stratégie de nommage et ne retourne pas d’erreurs liées aux mots bloqués personnalisés au moment où l’utilisateur entre le nom du groupe. En revanche, la stratégie de nommage est appliquée automatiquement pendant la création ou la modification d’un groupe, et les erreurs appropriées sont présentées aux utilisateurs si le nom ou l’alias de groupe contient des mots bloqués personnalisés.

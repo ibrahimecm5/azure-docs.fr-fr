@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: ab2e9c691f17b8f0891ecbc82ff42cd3529a1328
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f862f6f467d491d1aeb992a0e918244bde40a0d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031189"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051398"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Créer un pipeline de données avec l’API Collecte de données
 
@@ -36,7 +36,7 @@ Cet article n’explique pas comment créer des données ou [les charger dans un
 
 1. Un processus détectera que des nouvelles données ont été chargées.  Notre exemple utilise une [Azure Logic App](../../logic-apps/logic-apps-overview.md), qui dispose d’un déclencheur pour détecter les nouvelles données en cours de chargement dans un blob.
 
-2. Un processeur lit ces nouvelles données et les convertit au format JSON, format requis par Azure Monitor. Dans cet exemple, nous utilisons une [fonction Azure](../../azure-functions/functions-overview.md) pour exécuter notre code de traitement car il s'agit d'un moyen simple et économique. La fonction est déclenchée par la même application logique que nous avons utilisée pour détecter les nouvelles données.
+2. Un processeur lit ces nouvelles données et les convertit au format JSON, format requis par Azure Monitor. Dans cet exemple, nous utilisons une [fonction Azure](../../azure-functions/functions-overview.md) pour exécuter notre code de traitement car il s'agit d'un moyen simple et économique. La fonction est déclenchée par la même application logique que celle que nous avons utilisée pour détecter les nouvelles données.
 
 3. Enfin, une fois que l'objet JSON est disponible, il est envoyé à Azure Monitor. La même application logique envoie les données à Azure Monitor en utilisant l'activité de collecte de données intégrée de Log Analytics.
 

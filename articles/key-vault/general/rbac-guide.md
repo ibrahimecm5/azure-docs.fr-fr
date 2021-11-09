@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34938a6d5e52912db8d82b39bed3fdbad9f4814c
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: c92b17158beee9d1f6c60becb858564555bf56bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859017"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048441"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Donner accès aux clés, certificats et secrets du coffre de clés avec un contrôle d’accès en fonction du rôle Azure
 
@@ -35,9 +35,8 @@ Nous recommandons d’utiliser un coffre par application et par environnement (d
 
 Vous ne devez utiliser des autorisations sur des clés, secrets et certificats individuels que pour des scénarios spécifiques :
 
--   Applications multicouches qui doivent séparer le contrôle d’accès entre les couches
-
--   Partage d’un secret individuel entre plusieurs applications
+-   Partage de secrets individuels entre plusieurs applications, par exemple, lorsqu’une application doit accéder aux données d’une autre application
+-   Chiffrement entre locataires avec une clé de client, par exemple, lorsqu’un fournisseur de services Internet utilise un coffre de clés de client pour chiffrer ses données
 
 Pour des instructions sur la gestion d’Azure Key Vault, consultez :
 

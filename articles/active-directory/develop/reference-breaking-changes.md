@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 6/4/2021
+ms.date: 10/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 606d1d06a76a1783b38841f2344f2e5273add915
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 04dffd4dcebee3cee9023cf445fda6e3fd05b008
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069561"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050676"
 ---
 # <a name="whats-new-for-authentication"></a>Quelles sont les nouveautés en matière d’authentification ?
 
@@ -35,7 +35,27 @@ Le système d’authentification modifie et ajoute des fonctionnalités en perma
 
 ## <a name="upcoming-changes"></a>Changements à venir
 
+Aucune modification à venir à signaler. 
+
 ## <a name="october-2021"></a>Octobre 2021
+
+### <a name="error-50105-has-been-fixed-to-not-return-interaction_required-during-interactive-authentication"></a>L’erreur 50105 a été corrigée pour ne pas renvoyer `interaction_required` pendant l’authentification interactive
+
+**Date d’effet** : octobre 2021
+
+**Points de terminaison impactés** : v2.0 et v1.0
+
+**Protocole concerné** : Tous les flux d’utilisateur pour les applications [nécessitant une attribution d’utilisateurs](../manage-apps/what-is-access-management.md#requiring-user-assignment-for-an-app)
+
+**Changement**
+
+L’erreur 50105 (la désignation actuelle) est émise lorsqu’un utilisateur non attribué tente de se connecter à une application qu’un administrateur a marqué comme nécessitant une attribution d’utilisateurs.  Il s’agit d’un modèle de contrôle d’accès courant, et les utilisateurs doivent souvent trouver un administrateur pour demander une attribution afin de débloquer l’accès.  L’erreur comportait un bogue qui provoquait des boucles infinies dans les applications bien codées qui traitaient correctement la réponse d’erreur `interaction_required`. `interaction_required` indique à une application d’effectuer une authentification interactive, mais, même après avoir effectué cette opération, Azure AD renvoie toujours une réponse d’erreur `interaction_required`.  
+
+Le scénario d’erreur a été mis à jour. Ainsi, lors de l’authentification non interactive (où `prompt=none` est utilisé pour masquer l’expérience utilisateur), l’application est invitée à effectuer une authentification interactive à l’aide d’une réponse d’erreur `interaction_required`. Lors de l’authentification interactive suivante, Azure AD retiendra désormais l’utilisateur et affichera directement un message d’erreur, empêchant ainsi une boucle de se produire. 
+
+Pour rappel, Azure AD ne prend pas en charge les applications détectant les codes d’erreur individuels, comme la vérification des chaînes pour `AADSTS50105`. Au lieu de cela, [Azure AD recommande](reference-aadsts-error-codes.md#handling-error-codes-in-your-application) de suivre les normes et d’utiliser les [réponses d’authentification standardisées](https://openid.net/specs/openid-connect-core-1_0.html#AuthError) telles que `interaction_required` et `login_required`. Celles-ci se trouvent dans le champ `error` standard de la réponse : les autres champs sont destinés à la consommation humaine lors de la résolution des problèmes. 
+
+Vous pouvez consulter le texte actuel de l’erreur 50105 et d’autres informations sur le service de recherche d’erreurs : https://login.microsoftonline.com/error?code=50105. 
 
 ### <a name="appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains"></a>Dans les applications à locataire unique, l’URI AppId nécessite l’utilisation du schéma par défaut ou des domaines vérifiés
 
@@ -47,8 +67,8 @@ Le système d’authentification modifie et ajoute des fonctionnalités en perma
 
 **Changement**
 
-Pour les applications à locataire unique, une demande d’ajout/de mise à jour de l’URI AppId (identifierUris) valide que le domaine dans la valeur de l’URI fait partie de la liste de domaines vérifiés dans le locataire du client ou la valeur utilise le schéma par défaut (`api://{appId}`) fourni par AAD.
-Cela peut empêcher les applications d’ajouter un URI AppId si le domaine ne se trouve pas dans la liste de domaines vérifiée ou si la valeur n’utilise pas le schéma par défaut.
+Pour les applications monolocataire, une demande d’ajout/de mise à jour de l’URI AppId (identifierUris) valide que le domaine dans la valeur de l’URI fait partie de la liste des domaines vérifiés dans le locataire du client ou la valeur utilise le schéma par défaut (`api://{appId}`) fourni par AAD.
+Cela peut empêcher les applications d’ajouter un URI AppId si le domaine ne se trouve pas dans la liste des domaines vérifiés ou si la valeur n’utilise pas le schéma par défaut.
 Pour plus d’informations sur les domaines vérifiés, reportez-vous à la [documentation sur les domaines personnalisés](../../active-directory/fundamentals/add-custom-domain.md).
 
 Le changement n’affecte pas les applications existantes utilisant des domaines non vérifiés dans leur URI AppId. Il valide uniquement les nouvelles applications ou quand une application existante met à jour un URI d’identificateur ou en ajoute une nouvelle à la collection identifierUri. Les nouvelles restrictions s’appliquent uniquement aux URI ajoutés à la collection identifierUris d’une application après le 15 octobre 2021. Les URI AppId qui se trouvent déjà dans la collection identifierUris d’une application au moment où la restriction prend effet le 15 octobre 2021 continueront de fonctionner même si vous ajoutez de nouveaux URI à cette collection.
@@ -57,21 +77,7 @@ Si la vérification de validation d’une demande échoue, l’API d’applicati
 
 [!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
 
-## <a name="june-2021"></a>Juin 2021
-
-### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>L’expérience utilisateur du flux de code d’appareil inclut désormais une invite de confirmation d’application
-
-**Date d’effet** : juin 2021
-
-**Points de terminaison impactés** : v2.0 et v1.0
-
-**Protocole affecté**: le [flux de code d’appareil](v2-oauth2-device-code.md)
-
-Pour améliorer la sécurité, le flux de code d’appareil a été mis à jour pour ajouter une invite destinée à confirmer que l’utilisateur se connecte bien à l’application prévue. Cet ajout vise à prévenir les attaques par hameçonnage.
-
-L’invite qui s’affiche ressemble à ceci :
-
-:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="Nouvelle invite, lecture « Essayez-vous de vous connecter à l’interface de ligne de commande Azure ? »":::
+## <a name="august-2021"></a>Août 2021
 
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>L’accès conditionnel se déclenchera uniquement pour les étendues demandées explicitement
 
@@ -97,9 +103,26 @@ Si l’application demande ensuite `scope=files.readwrite`, l’accès condition
 
 Si l’application émet ensuite une dernière demande pour l’une des trois étendues (par exemple, `scope=tasks.read`), Azure AD déterminera que l’utilisateur a déjà satisfait aux stratégies d’accès conditionnel nécessaires pour `files.readwrite` et émettre de nouveau un jeton incluant les trois autorisations. 
 
+
+## <a name="june-2021"></a>Juin 2021
+
+### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>L’expérience utilisateur du flux de code d’appareil inclut désormais une invite de confirmation d’application
+
+**Date d’effet** : juin 2021
+
+**Points de terminaison impactés** : v2.0 et v1.0
+
+**Protocole affecté**: le [flux de code d’appareil](v2-oauth2-device-code.md)
+
+Pour améliorer la sécurité, le flux de code d’appareil a été mis à jour pour ajouter une invite destinée à confirmer que l’utilisateur se connecte bien à l’application prévue. Cet ajout vise à prévenir les attaques par hameçonnage.
+
+L’invite qui s’affiche ressemble à ceci :
+
+:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="Nouvelle invite, lecture « Essayez-vous de vous connecter à l’interface de ligne de commande Azure ? »":::
+
 ## <a name="may-2020"></a>Mai 2020
 
-### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Résolution de bogue : Azure AD n’encodera plus le paramètre d’état dans l’URL à deux reprises.
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Correctif de bogue : Azure AD n’encodera plus le paramètre d’état dans l’URL à deux reprises.
 
 **Date d’effet** : mars 2021
 
@@ -107,7 +130,7 @@ Si l’application émet ensuite une dernière demande pour l’une des trois é
 
 **Protocole impacté** : Tous les flux qui visitent le point de terminaison `/authorize` (flux de code d’autorisation et flux implicite)
 
-Un bogue a été trouvé et résolu dans la réponse d’autorisation d’Azure AD. Lors de l’étape `/authorize` de l’authentification, le paramètre `state` de la demande est inclus dans la réponse, afin de préserver l’état de l’application et d’empêcher les attaques CSRF. Azure AD a incorrectement codé l’URL du paramètre `state` avant de l’insérer dans la réponse, où elle a été encodée une fois de plus.  En conséquence, les applications ne rejetaient pas correctement la réponse d’Azure AD. 
+Un bogue a été trouvé et résolu dans la réponse d’autorisation d’Azure AD. Lors de l’étape `/authorize` de l’authentification, le paramètre `state` de la demande est inclus dans la réponse, afin de préserver l’état de l’application et d’empêcher les attaques CSRF. Azure AD a incorrectement codé l’URL du paramètre `state` avant de l’insérer dans la réponse, où elle a été encodée une fois de plus.  En conséquence, les applications ne rejetaient pas correctement la réponse d’Azure AD.
 
 Azure AD ne codera plus ce paramètre deux fois, ce qui permettra aux applications d’analyser correctement le résultat. Cette modification sera appliquée à toutes les applications. 
 

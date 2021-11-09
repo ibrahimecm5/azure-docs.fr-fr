@@ -4,12 +4,12 @@ description: Découvrez la mise en package d’une application Azure Service Fab
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f575ea61f2406e8e1a636c2cf633a034753853bf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789700"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003919"
 ---
 # <a name="package-an-application"></a>Empaqueter une application
 
@@ -207,12 +207,11 @@ Si vous le souhaitez, Visual Studio peut compresser des packages lors du déploi
 ## <a name="create-an-sfpkg"></a>Créer un sfpkg
 
 À compter de la version 6.1, Service Fabric autorise le provisionnement à partir d’un magasin externe.
-Cette option vous évite de devoir copier le package d’application dans le magasin d’images. Au lieu de cela, créez un `sfpkg` et chargez-le sur un magasin externe, puis fournissez l’URI de téléchargement à Service Fabric au moment du provisionnement. Le même package peut être provisionné sur plusieurs clusters. Le provisionnement à partir du magasin externe vous fait gagner du temps puisqu’il est inutile de copier le package sur chaque cluster.
+Cette option vous évite de devoir copier le package d’application dans le magasin d’images. Au lieu de cela, créez un fichier `sfpkg` et chargez-le sur un magasin externe, puis fournissez l’URI de téléchargement à Service Fabric au moment de l’approvisionnement. Le même package peut être provisionné sur plusieurs clusters. Le provisionnement à partir du magasin externe vous fait gagner du temps puisqu’il est inutile de copier le package sur chaque cluster.
 
-`sfpkg` est un fichier zip qui contient le package d’application initial avec l’extension « .sfpkg ».
-Dans le fichier zip, le package d’application peut être compressé ou non compressé. La compression du package d’application dans le fichier zip est effectuée aux niveaux du code, de la configuration et du package de données, comme [mentionné précédemment](service-fabric-package-apps.md#compress-a-package).
+`sfpkg` est un fichier zip qui contient le package d’application initial avec l’extension `.sfpkg`. Dans le fichier zip, le package d’application peut être compressé ou non compressé. La compression du package d’application dans le fichier zip est effectuée aux niveaux du code, de la configuration et du package de données, comme [mentionné précédemment](service-fabric-package-apps.md#compress-a-package).
 
-Pour créer un `sfpkg`, commencez par un dossier qui contient le package d’application d’origine, compressé ou non. Ensuite, utilisez n’importe quel utilitaire pour compresser le dossier avec l’extension « .sfpkg ». Par exemple, utilisez [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
+Pour créer un fichier `sfpkg`, commencez par un dossier qui contient le package d’application d’origine, compressé ou non. Ensuite, utilisez n’importe quel utilitaire pour compresser le dossier avec l’extension « .sfpkg ». Par exemple, utilisez [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

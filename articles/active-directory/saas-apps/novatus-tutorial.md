@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f59bd00e110fd281d44db68030e0ad0d7c07ddf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fd5bab28d73781339b959e5d8e51eb6d8c455a39
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761217"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>Didacticiel : Intégration d’Azure Active Directory à Novatus
 
@@ -182,7 +182,7 @@ Dans cette section, vous allez autoriser Britta Simon à utiliser l’authentifi
 Dans cette section, un utilisateur nommé Britta Simon est créé dans Novatus. Novatus prend en charge l’approvisionnement d’utilisateurs juste-à-temps, option activée par défaut. Vous n’avez aucune opération à effectuer dans cette section. S’il n’existe pas encore d’utilisateur dans Novatus, il en est créé un après l’authentification.
 
 >[!NOTE]
->Si vous devez créer un utilisateur manuellement, contactez [l’équipe du support technique Novatus](mailto:jvinci@novatusinc.com). 
+>Si vous devez créer un utilisateur manuellement, contactez [l’équipe du support technique de Novatus](mailto:jvinci@novatusinc.com). 
 > 
 
 ### <a name="test-single-sign-on"></a>Tester l’authentification unique 

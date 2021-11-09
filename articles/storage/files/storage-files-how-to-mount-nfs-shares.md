@@ -4,16 +4,16 @@ description: Apprenez à monter un partage NFS (Network File System).
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 04d3174900ce5aa788f3793b39fa4d6c06222001
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225249"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036786"
 ---
 # <a name="how-to-mount-an-nfs-file-share-preview"></a>Comment monter un partage de fichiers NFS (préversion)
 
@@ -42,12 +42,12 @@ ms.locfileid: "113225249"
 
 ## <a name="disable-secure-transfer"></a>Désactiver le transfert sécurisé
 
-1. Connectez-vous au portail Azure et accédez au compte de stockage contenant le partage NFS que vous avez créé.
+1. Connectez-vous au [portail Azure](https://portal.azure.com/) et accédez au compte de stockage contenant le partage NFS que vous avez créé.
 1. Sélectionnez **Configuration**.
 1. Sous **Transfert sécurisé requis**, sélectionnez **Désactivé**.
 1. Sélectionnez **Enregistrer**.
 
-    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Capture de l'écran de configuration du compte de stockage, sur lequel le transfert sécurisé est désactivé. ":::
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Capture de l'écran de configuration du compte de stockage, sur lequel le transfert sécurisé est désactivé. " lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
 
 ## <a name="mount-an-nfs-share"></a>Monter un partage NFS
 

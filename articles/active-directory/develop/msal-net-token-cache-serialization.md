@@ -13,12 +13,12 @@ ms.date: 09/30/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 896e52bf70229358a25055a23403ab2a5a2d7963
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351833"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054302"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Sérialisation du cache de jetons dans MSAL.NET
 
@@ -39,7 +39,7 @@ La bibliothèque [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-i
 
 | Méthode d’extension | Description  |
 | ---------------- | ------------ |
-| `AddInMemoryTokenCaches` | Sérialisation de cache de jeton en mémoire. Cette implémentation est idéale pour les tests. Elle est également adaptée aux applications de production, mais sachez que le cache de jeton est perdu lorsque l’application web est redémarrée. `AddInMemoryTokenCaches` prend un paramètre facultatif de type `MsalMemoryTokenCacheOptions` qui vous permet de spécifier la durée après laquelle l’entrée de cache expire, sauf si elle est utilisée.
+| `AddInMemoryTokenCaches` | Sérialisation de cache de jeton en mémoire. Cette implémentation est idéale pour les échantillons et les applications démons (jetons application à application / `AcquireTokenForClient`). Elle est également adaptée aux applications de production, mais sachez que le cache de jeton est perdu lorsque l’application web est redémarrée. À partir de Microsoft.Identity.Web 1.19.0, MSAL est configuré de manière à utiliser un cache statique (partagé) dans toutes les instances d’applications, ce qui est nettement plus rapide que les autres mécanismes de mise en cache.
 | `AddSessionTokenCaches` | Le cache de jeton est lié à la session utilisateur. Cette option n’est pas idéale si le jeton d’ID contient de nombreuses revendications dans la mesure où le cookie devient trop volumineux.
 | `AddDistributedTokenCaches` | Le cache de jeton est un adaptateur par rapport à l’implémentation `IDistributedCache` ASP.NET Core, ce qui vous permet donc de choisir entre un cache de mémoire distribuée, un cache Redis, un cache Ncache distribué ou un cache SQL Server. Pour plus d’informations sur les implémentations `IDistributedCache`, consultez [Cache mémoire distribué](/aspnet/core/performance/caching/distributed).
 

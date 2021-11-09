@@ -1,30 +1,30 @@
 ---
-title: Utilisation de points de terminaison Azure Machine Learning studio (classique) dans Azure Stream Analytics
+title: Utiliser des points de terminaison Machine Learning Studio (classique) dans Azure Stream Analytics
 description: Cet article décrit comment utiliser des fonctions Machine Learning définies par l’utilisateur dans Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 1dc85cb10a9e4300c57ad03900d8c8924988c6d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d16ad0ea147343b0880ba0b50e2365ac47ace31d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588118"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003520"
 ---
-# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics"></a>Intégration d’Azure Machine Learning Studio (classique) dans Stream Analytics
-Stream Analytics prend en charge les fonctions définies par l’utilisateur qui appellent des points de terminaison Azure Machine Learning Studio (classique). Prise en charge de l’API REST de cette fonctionnalité est détaillée dans la [bibliothèque de l’API REST Stream Analytics](/rest/api/streamanalytics/). Cet article fournit les informations supplémentaires nécessaires à la mise en œuvre réussie de cette fonctionnalité dans Stream Analytics. Un didacticiel a également été validé et est disponible [ici](stream-analytics-machine-learning-integration-tutorial.md).
+# <a name="machine-learning-studio-classic-integration-in-stream-analytics"></a>Intégration de Machine Learning Studio (classique) dans Stream Analytics
+Stream Analytics prend en charge les fonctions définies par l’utilisateur qui appellent des points de terminaison Machine Learning Studio (classique). Prise en charge de l’API REST de cette fonctionnalité est détaillée dans la [bibliothèque de l’API REST Stream Analytics](/rest/api/streamanalytics/). Cet article fournit les informations supplémentaires nécessaires à la mise en œuvre réussie de cette fonctionnalité dans Stream Analytics. Un didacticiel a également été validé et est disponible [ici](stream-analytics-machine-learning-integration-tutorial.md).
 
-## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Présentation : Terminologie Azure Machine Learning Studio (classique)
-Microsoft Azure Machine Learning Studio (classique) offre un outil collaboratif fonctionnant par glisser-déplacer qui vous permet de générer, tester et déployer des solutions d’analyse prédictive sur vos données. Cet outil s’appelle *Azure Machine Learning studio (classique)* . Studio (classique) permet d’interagir avec les ressources de Machine Learning et facilite la création, les tests et le remaniement d’un projet de conception. Ces ressources et leurs définitions se trouvent ci-dessous.
+## <a name="overview-machine-learning-studio-classic-terminology"></a>Présentation : Terminologie de Machine Learning Studio (classique)
+Microsoft Machine Learning Studio (classique) offre un outil collaboratif fonctionnant par glisser-déplacer qui vous permet de générer, tester et déployer des solutions d’analyse prédictive sur vos données. Cet outil s’appelle *Machine Learning Studio (classique)* . Studio (classique) permet d’interagir avec les ressources de Machine Learning et facilite la création, les tests et le remaniement d’un projet de conception. Ces ressources et leurs définitions se trouvent ci-dessous.
 
 * **Espace de travail** : il s’agit d’un conteneur regroupant toutes les autres ressources Machine Learning à des fins de gestion et de contrôle.
 * **Expérience** : Les *expériences* sont créées par des scientifiques des données qui utilisent des jeux de données et effectuent l’apprentissage d’un modèle Machine Learning.
 * **Point de terminaison** : il s’agit de l’objet studio (classique) utilisé pour prendre des fonctionnalités en entrée, appliquer un modèle Machine Learning donné et renvoyer la sortie évaluée.
 * **Service Web d’évaluation** : Un *service web d’évaluation* représente une collection de points de terminaison, comme indiqué ci-dessus.
 
-Chaque point de terminaison dispose d’API servant à l’exécution de lots et l’exécution synchronisée. Stream Analytics utilise l’exécution synchronisée. Le service spécifique est nommé [Service requête/réponse](../machine-learning/classic/consume-web-services.md) dans Azure Machine Learning Studio (classique).
+Chaque point de terminaison dispose d’API servant à l’exécution de lots et l’exécution synchronisée. Stream Analytics utilise l’exécution synchronisée. Le service spécifique est nommé [Service requête-réponse](../machine-learning/classic/consume-web-services.md) dans Machine Learning Studio (classique).
 
 ## <a name="studio-classic-resources-needed-for-stream-analytics-jobs"></a>Ressources studio (classique) nécessaires aux travaux Stream Analytics
 Pour les besoins de l’analyse des travaux Stream Analytics, un point de terminaison demande/réponse, une clé [apikey](../machine-learning/classic/consume-web-services.md)et une définition swagger sont nécessaires pour une exécution réussie. Stream Analytics est doté d’un point de terminaison supplémentaire qui génère l’URL d’un point de terminaison swagger, fait des recherches dans l’interface et retourne une définition de fonction UDF par défaut à l’utilisateur.
@@ -40,7 +40,7 @@ Pour les besoins de l’analyse des travaux Stream Analytics, un point de termin
 6. Démarrage du travail
 
 ## <a name="creating-a-udf-with-basic-properties"></a>Création d’une fonction définie par l’utilisateur avec des propriétés de base
-Par exemple, l’échantillon de code suivant crée un fichier UDF scalaire nommé *newudf* associé à un point de terminaison Azure Machine Learning Studio (classique). Notez que le *point de terminaison* (URI de service) se trouve sur la page d’aide API correspondant au service choisi et la clé *apiKey* se trouve sur la page principale des services.
+Par exemple, l’exemple de code suivant crée un fichier UDF scalaire nommé *newudf* associé à un point de terminaison Machine Learning Studio (classique). Notez que le *point de terminaison* (URI de service) se trouve sur la page d’aide API correspondant au service choisi et la clé *apiKey* se trouve sur la page principale des services.
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
@@ -67,7 +67,7 @@ Exemple de corps de requête :
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Appeler le point de terminaison RetrieveDefaultDefinition pour la fonction définie par l’utilisateur par défaut
-Une fois la structure de la fonction définie par l’utilisateur créée, une définition complète de la fonction définie par l’utilisateur est nécessaire. Le point de terminaison RetrieveDefaultDefinition vous permet d’obtenir une définition par défaut d’une fonction scalaire liée à un point de terminaison Azure Machine Learning Studio (classique). La charge utile ci-dessous impose d’obtenir la définition par défaut d’une fonction scalaire définie par l’utilisateur liée à un point de terminaison studio (classique). Il ne spécifie pas le point de terminaison réel tel qu’il a déjà été fourni pendant la requête PUT. Stream Analytics appelle le point de terminaison fourni dans la demande s’il est indiqué de façon explicite. Dans le cas contraire, il utilise celui qui a été référencé à l’origine. Ici, la fonction définie par l’utilisateur prend un paramètre à chaîne unique (une phrase) et retourne un seul résultat de type chaîne qui mentionne le libellé « sentiment » de cette phrase.
+Une fois la structure de la fonction définie par l’utilisateur créée, une définition complète de la fonction définie par l’utilisateur est nécessaire. Le point de terminaison RetrieveDefaultDefinition vous permet d’obtenir la définition par défaut d’une fonction scalaire liée à un point de terminaison Machine Learning Studio (classique). La charge utile ci-dessous impose d’obtenir la définition par défaut d’une fonction scalaire définie par l’utilisateur liée à un point de terminaison studio (classique). Il ne spécifie pas le point de terminaison réel tel qu’il a déjà été fourni pendant la requête PUT. Stream Analytics appelle le point de terminaison fourni dans la demande s’il est indiqué de façon explicite. Dans le cas contraire, il utilise celui qui a été référencé à l’origine. Ici, la fonction définie par l’utilisateur prend un paramètre à chaîne unique (une phrase) et retourne un seul résultat de type chaîne qui mentionne le libellé « sentiment » de cette phrase.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>

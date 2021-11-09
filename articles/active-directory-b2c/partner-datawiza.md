@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 7/07/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 87cce83adcd24c9933d1d0668e4b9ce5a8fb6c2e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c33694c624deafa8cdc7ef37ac1dc39d98b5a4f9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036072"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044738"
 ---
 # <a name="tutorial-configure-azure-ad-b2c-with-datawiza-to-provide-secure-hybrid-access"></a>Tutoriel : Configurer Azure AD B2C avec Datawiza pour fournir un accès hybride sécurisé
 
@@ -67,7 +67,7 @@ Pour intégrer votre application locale héritée avec Azure AD B2C, contactez [
 
 2. [Configurez un flux utilisateur d’inscription et de connexion](https://docs.datawiza.com/idp/azureb2c.html#configure-a-user-flow) dans le portail de gestion Azure.
 
-  >[!Note]
+  >[!NOTE]
   >Plus tard, vous aurez besoin du nom du locataire, du nom du flux utilisateur, de l’ID client et du secret client lorsque vous configurerez DAB dans la console DCMC.
 
 ## <a name="create-an-application-on-dcmc"></a>Créer une application dans la console DCMC
@@ -82,7 +82,7 @@ Pour intégrer votre application locale héritée avec Azure AD B2C, contactez [
 
 1. Vous pouvez utiliser Docker ou Kubernetes pour exécuter DAB. L’image Docker est nécessaire pour que les utilisateurs puissent créer un exemple d’application basée sur un en-tête. Consultez les instructions sur la façon de [configurer l’intégration DAB et SSO](https://docs.datawiza.com/step-by-step/step3.html) pour obtenir plus de détails et sur la façon de [déployer DAB avec Kubernetes](https://docs.datawiza.com/tutorial/web-app-AKS.html) pour obtenir des instructions spécifiques à Kubernetes. Vous pouvez télécharger et utiliser un exemple d’image Docker `docker-compose.yml file`. Connectez-vous au registre de conteneurs pour télécharger les images de DAB et de l’application basée sur un en-tête. Suivez [ces instructions](https://docs.datawiza.com/step-by-step/step3.html#important-step).
  
-   ```YML
+   ```yaml
    version: '3'
 
     services:

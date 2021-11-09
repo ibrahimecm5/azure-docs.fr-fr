@@ -1,21 +1,21 @@
 ---
-title: Gérer les accès utilisateur dans Azure Active Directory B2C | Microsoft Docs
+title: Gérer l’accès utilisateur dans Azure Active Directory B2C
 description: Découvrez comment identifier les mineurs, recueillir des données sur la date de naissance et le pays/région et obtenir l’acceptation des conditions d’utilisation dans votre application à l’aide d’Azure AD B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae1e0c55642865550d58a299041fff6445c67360
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518052"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007728"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Gérer l’accès utilisateur dans Azure Active Directory B2C
 
@@ -141,7 +141,7 @@ Les étapes suivantes décrivent comment vous pouvez gérer les conditions d’u
 
 1. Enregistrez l’acceptation des conditions d’utilisation et la date d’acceptation à l’aide de l’API Graph et des attributs étendus. Cette opération est possible avec les flux utilisateur intégrés et personnalisés. Nous vous recommandons de créer et d’utiliser les attributs **extension_termsOfUseConsentDateTime** et **extension_termsOfUseConsentVersion**.
 
-2. Créez une case à cocher obligatoire intitulée « Accepter les conditions d’utilisation » et enregistrez le résultat pendant l’inscription. Cette opération est possible avec les flux utilisateur intégrés et personnalisés.
+2. Créez une case à cocher obligatoire intitulée « Accepter les Conditions d’utilisation » et enregistrez le résultat pendant l’inscription. Cette opération est possible avec les flux utilisateur intégrés et personnalisés.
 
 3. Azure AD B2C stocke les données d’acceptation liées aux conditions d’utilisation et l’acceptation de l’utilisateur. Vous pouvez utiliser l’API Graph pour interroger l’état d’un utilisateur en lisant l’attribut d’extension qui sert à enregistrer la réponse (par exemple en lisant **termsOfUseTestUpdateDateTime**). Cette opération est possible avec les flux utilisateur intégrés et personnalisés.
 

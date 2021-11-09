@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 68f4437ce75bfe2a9017133ed523bb5e9ce10a8c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 57d7cba072e51483732d103d358910ba443a525a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787127"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059411"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Instancier une application cliente publique avec des options de configuration à l’aide de MSAL.NET
 
@@ -48,7 +48,7 @@ Pour la plateforme UWP, l’expérience a été améliorée en activant l’auth
 Pour .NET Core, MSAL.Net définit la valeur sur l’hôte local pour permettre à l’utilisateur d’utiliser le navigateur système pour l’authentification interactive.
 
 > [!NOTE]
-> Pour les navigateurs incorporés dans les scénarios de bureau, l’URI de redirection utilisé est intercepté par MSAL pour détecter qu’une réponse est retournée par le fournisseur d’identité pour retourner un code d’authentification. Cet URI peut donc être utilisé dans n’importe quel cloud sans voir une redirection réelle vers cet URI. Cela signifie que vous pouvez et devez utiliser `https://login.microsoftonline.com/common/oauth2/nativeclient` dans n’importe quel cloud. Si vous préférez, vous pouvez également utiliser un autre URI tant que vous configurez correctement l’URI de redirection avec MSAL et dans l’inscription de l’application. La spécification de l’URI par défaut dans l’inscription de l’application signifie qu’il y a un paramétrage moindre dans MSAL.
+> Pour les navigateurs incorporés dans les scénarios de bureau, l’URI de redirection utilisé est intercepté par MSAL pour détecter qu’une réponse est renvoyée par le fournisseur d’identité indiquant qu’un code d’authentification a été renvoyé. Cet URI peut donc être utilisé dans n’importe quel cloud sans voir une redirection réelle vers cet URI. Cela signifie que vous pouvez et devez utiliser `https://login.microsoftonline.com/common/oauth2/nativeclient` dans n’importe quel cloud. Si vous préférez, vous pouvez également utiliser un autre URI tant que vous configurez correctement l’URI de redirection avec MSAL et dans l’inscription de l’application. La spécification de l’URI par défaut dans l’inscription de l’application signifie qu’il y a un paramétrage moindre dans MSAL.
 
 
 Une application de console .NET Core peut avoir le fichier de configuration *appsettings.json* suivant :
@@ -116,4 +116,3 @@ SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.j
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .Build();
 ```
-

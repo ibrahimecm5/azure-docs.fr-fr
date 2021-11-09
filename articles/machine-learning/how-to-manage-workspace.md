@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a8dd26019d94cbaeca620d4dbb6e1bdf9dabdb2d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8f18b4f7c39ba16fbd70301c36d08319c2e3fcf9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130246451"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065282"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Gérer les espaces de travail Azure Machine Learning dans le portail ou avec le SDK Python
 
@@ -336,6 +336,8 @@ Workspace.list('<subscription-id>')
 Lorsque vous n’avez plus besoin d’un espace de travail, supprimez-le.  
 
 [!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
+
+Si vous avez supprimé accidentellement votre espace de travail, vous pouvez toujours récupérer vos blocs-notes. Reportez-vous à [cette documentation](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
 
 # <a name="python"></a>[Python](#tab/python)
 

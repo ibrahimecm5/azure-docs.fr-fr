@@ -4,14 +4,14 @@ description: Dans ce tutoriel, vous allez découvrir comment intégrer Azure Def
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/23/2021
+ms.date: 10/25/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 30c60a71c15b8b597735c69f2f1f76178016b749
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 81bbedf86c3559b8f668dcfcf26cb0d9dab21af0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701382"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070904"
 ---
 # <a name="tutorial-integrate-fortinet-with-azure-defender-for-iot"></a>Tutoriel : Intégrer Fortinet à Azure Defender pour IoT
 
@@ -133,9 +133,9 @@ Le pare-feu FortiGate peut être utilisé pour bloquer le trafic suspect.
     |--|--|
     | **Hôte** | Entrez l’adresse IP du serveur FortiGate. |
     | **Clé API** | Entrez la [clé API](#create-an-api-key-in-fortinet) que vous avez créée dans FortiGate. |
-    | **Incoming Interface (Interface entrante)** | Entrez le port de l’interface entrante. |
-    | **Outgoing Interface (Interface sortante)** | Entrez le port de l’interface sortante. |
-    | **Configurer**| Assurez-vous qu’un **√** est affiché dans les options suivantes pour activer le blocage des sources suspectes via le pare-feu FortiGate : <br> - **Bloquer les codes de fonction non conformes** : Violations de protocole - Valeur de champ non conforme qui ne respecte pas la spécification de protocole ICS (attaque potentielle) <br /> - **Bloquer les mises à jour non autorisées des microprogrammes/programmes PLC** : Changements de contrôleur PLC non autorisés <br /> - **Bloquer l’arrêt de PLC non autorisé** : Arrêt du PLC (temps d’arrêt) <br /> - **Bloquer les alertes liées aux programmes malveillants** : Blocage des tentatives de programmes malveillants industriels (TRITON, NotPetya, etc.). <br /> -  **(Facultatif)** Vous pouvez sélectionner l’option **Blocage automatique**. Si l’option Blocage automatique est sélectionnée, le blocage est exécuté automatiquement et immédiatement. <br /> - **Bloquer l’analyse non autorisée** : Analyse non autorisée (reconnaissance potentielle) |
+    | **Incoming Interface (Interface entrante)** | Entrez le port de l’interface de pare-feu entrante. |
+    | **Outgoing Interface (Interface sortante)** | Entrez le port de l’interface de pare-feu sortante. |
+    | **Configurer**| Assurez-vous qu’un **√** est affiché dans les options suivantes pour activer le blocage des sources suspectes via le pare-feu FortiGate : <br> - **Bloquer les codes de fonction non conformes** : Violations de protocole - Valeur de champ non conforme qui ne respecte pas la spécification de protocole ICS (attaque potentielle) <br /> - **Bloquer les mises à jour non autorisées des microprogrammes/programmes PLC** : Changements de contrôleur PLC non autorisés <br /> - **Bloquer l’arrêt de PLC non autorisé** : Arrêt du PLC (temps d’arrêt) <br> - **Bloquer les alertes liées aux programmes malveillants** : Blocage des tentatives de programmes malveillants industriels (TRITON, NotPetya, etc.). <br> -  **(Facultatif)** Vous pouvez sélectionner l’option **Blocage automatique**. Si l’option Blocage automatique est sélectionnée, le blocage est exécuté automatiquement et immédiatement. <br /> - **Bloquer l’analyse non autorisée** : Analyse non autorisée (reconnaissance potentielle) |
 
 1. Sélectionnez **Envoyer**.
 
@@ -241,13 +241,24 @@ Par exemple, l’alerte suivante peut bloquer la source malveillante :
 
    :::image type="content" source="media/tutorial-fortinet/edit.png" alt-text="Capture d’écran de la vue de la fenêtre permettant de modifier une stratégie IPv4 de FortiGate.":::
 
+    | Paramètre | Description|
+    |--|--|
+    | **Nom** | Nom de la stratégie. |
+    | **Incoming Interface (Interface entrante)** | Interface de pare-feu entrante pour le trafic. |
+    | **Outgoing Interface (Interface sortante)** | Interface de pare-feu sortante pour le trafic. |
+    | **Source** | Adresse(s) source(s) du trafic. |
+    | **Destination** | Adresse(s) de destination pour le trafic. |
+    | **Planification** | Occurrence de la règle nouvellement définie. Par exemple : `always`. |
+    | **Service** | Protocole, ou ports spécifiques pour le trafic. |
+    | **Action** | Action que le pare-feu doit effectuer. |
+
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
 Il n’y a pas de ressources à nettoyer.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce tutoriel, vous avez découvert comment bien démarrer avec l’intégration de Fortinet. Poursuivez pour en savoir plus sur notre [intégration de Palo Alto](./tutorial-palo-alto.md).
+Dans ce tutoriel, vous avez découvert comment bien démarrer avec l’intégration de Fortinet. Poursuivez pour en savoir plus sur notre intégration de Palo Alto.
 
 > [!div class="nextstepaction"]
 > [Bouton Étapes suivantes](./tutorial-palo-alto.md)

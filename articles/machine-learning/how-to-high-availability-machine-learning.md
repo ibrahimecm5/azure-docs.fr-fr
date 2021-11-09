@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: fc13ac868f2abb1ccd466b245c22682af79ba915
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 70429e7d9b1628f17672aaaa545c6c5bba3c30b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161259"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032680"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>Basculement de la continuité d’activité et reprise d’activité
 
@@ -29,6 +29,8 @@ Microsoft s’efforce de faire en sorte que les services Azure soient toujours d
 
 > [!NOTE]
 > Azure Machine Learning lui-même ne fournit pas de basculement automatique ou de récupération d’urgence.
+
+Si vous avez accidentellement supprimé votre espace de travail ou les composants correspondants, cet article vous fournit également les options de récupération actuellement prises en charge.
 
 ## <a name="understand-azure-services-for-azure-machine-learning"></a>Comprendre les services Azure pour Azure Machine Learning
 
@@ -186,6 +188,18 @@ Les artefacts suivants peuvent être exportés et importés entre les espaces de
 > [!TIP]
 > * Les __jeux de données inscrits__ ne peuvent pas être téléchargés ou déplacés. Cela comprend les jeux de données générés par Azure ML, comme les jeux de données de pipeline intermédiaire. Toutefois, les jeux de données qui font référence à un emplacement de fichier partagé auquel les deux espaces de travail peuvent accéder, ou où le stockage de données sous-jacent est répliqué, peuvent être inscrits sur les deux espaces de travail. Utilisez la commande [az ml dataset register](/cli/azure/ml(v1)/dataset#ext_azure_cli_ml_az_ml_dataset_register) pour inscrire un jeu de données.
 > * Les __sorties d’exécution__ sont stockées dans le compte de stockage par défaut associé à un espace de travail. Si les sorties d’exécution peuvent devenir inaccessibles à partir de l’interface utilisateur de Studio en cas de panne d’un service, vous pouvez accéder directement aux données via le compte de stockage. Pour plus d’informations sur l’utilisation des données stockées dans des objets blob, consultez [Créer, télécharger et lister des objets blob avec Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md).
+
+## <a name="recovery-options"></a>Options de récupération
+
+### <a name="workspace-deletion"></a>Suppression de l’espace de travail
+
+Si vous avez accidentellement supprimé votre espace de travail, il est actuellement impossible de le récupérer. Toutefois, vous pouvez récupérer vos notebooks existants à partir du stockage correspondant en procédant comme suit :
+* Dans le [portail Azure](https://portal.azure.com), accédez au compte de stockage qui était lié à l’espace de travail Azure Machine Learning supprimé.
+* Dans la section Stockage de données sur la gauche, cliquez sur **Partages de fichiers**.
+* Vos notebooks se trouvent sur le partage de fichiers dont le nom contient l’ID de votre espace de travail. 
+
+![Partage de fichiers des notebooks de référence](./media/how-to-high-availability-machine-learning/notebook-file-share.png)
+
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour déployer Azure Machine Learning avec les ressources associées avec vos paramètres de haute disponibilité, utilisez un [Modèle Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/).

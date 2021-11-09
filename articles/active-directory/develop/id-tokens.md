@@ -12,16 +12,13 @@ ms.topic: conceptual
 ms.date: 06/25/2021
 ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom:
-- aaddev
-- identityplatformtop40
-- fasttrack-edit
-ms.openlocfilehash: a6c2b3bb09160d60cfd03311329666d6e2b80487
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: fb20ed3a3a09c7bef7495d439ad2856f646e8a51
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657908"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067189"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Jetons d’ID de la plateforme d’identités Microsoft
 
@@ -78,10 +75,10 @@ Le tableau ci-dessous indique les revendications présentes par défaut dans la 
 |-----|--------|-------------|
 |`aud` |  Chaîne, GUID de l'ID d'application | Identifie le destinataire du jeton. Dans les jetons `id_tokens`, l'audience est l'ID attribué à votre application dans le portail Azure. Cette valeur doit être validée. Le jeton doit être rejeté s'il ne correspond pas à l'ID de votre application. |
 |`iss` |  Chaîne, URI d'un émetteur | Identifie l'émetteur, ou « serveur d'autorisation », qui construit et renvoie le jeton. Il identifie également le locataire Azure AD pour lequel l'utilisateur a été authentifié. Si le jeton a été émis par le terminal v2.0, l’URI se termine par `/v2.0`.  La partie GUID qui indique que l’utilisateur est un utilisateur consommateur d’un compte Microsoft est `9188040d-6c67-4c5b-b112-36a304b66dad`. Votre application doit utiliser la partie GUID de la revendication pour restreindre l’ensemble des clients qui peuvent se connecter à l’application, le cas échéant. |
-|`iat` |  int, horodatage UNIX | « Issued At » (Délivré le) indique quand l'authentification de ce jeton a eu lieu.  |
+|`iat` |  int, timestamp UNIX | « Issued At » (Délivré le) indique quand l'authentification de ce jeton a eu lieu.  |
 |`idp`|Chaîne, généralement un URI STS | Enregistre le fournisseur d’identité qui a authentifié le sujet du jeton. Cette valeur est identique à la valeur de la revendication de l’émetteur sauf si le compte d’utilisateur n’est pas dans le même locataire que l’émetteur (invités par exemple). Si la revendication n’est pas présente, cela signifie que la valeur `iss` peut être utilisée à la place.  Pour les comptes personnels utilisés dans un contexte organisationnel (par exemple, un compte personnel invité dans un locataire Azure AD), la revendication `idp` peut être « live.com » ou un URI STS contenant le locataire de compte Microsoft `9188040d-6c67-4c5b-b112-36a304b66dad`. |
-|`nbf` |  int, horodatage UNIX | La revendication « nbf » (pas avant) indique le délai avant lequel le JWT ne doit PAS être accepté pour être traité.|
-|`exp` |  int, horodatage UNIX | La revendication « exp » (délai d'expiration) indique le délai d'expiration à partir duquel le JWT ne doit PAS être accepté pour être traité.  Il est convient de noter que dans certaines circonstances, une ressource peut rejeter le jeton avant l'expiration de ce délai. Par exemple, si une modification de l’authentification est nécessaire ou si une révocation de jeton a été détectée. |
+|`nbf` |  int, timestamp UNIX | La revendication « nbf » (pas avant) indique le délai avant lequel le JWT ne doit PAS être accepté pour être traité.|
+|`exp` |  int, timestamp UNIX | La revendication « exp » (délai d’expiration) indique le délai d’expiration après lequel le JWT **ne doit pas** être accepté pour traitement.  Il est convient de noter que dans certaines circonstances, une ressource peut rejeter le jeton avant l'expiration de ce délai. Par exemple, si une modification de l’authentification est nécessaire ou si une révocation de jeton a été détectée. |
 | `c_hash`| String |Le hachage de code n’est inclus dans un jeton d’ID que si ce dernier est émis avec un code d’autorisation OAuth 2.0. Il peut servir à valider l’authenticité d’un code d’autorisation. Pour plus d'informations sur l'exécution de cette validation, consultez la [spécification OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). |
 |`at_hash`| String |Le hachage de jeton d’accès n’est inclus dans un jeton d’ID que si ce dernier est émis du point de terminaison `/authorize` avec un jeton d’accès OAuth 2.0. Il peut servir à valider l’authenticité d’un jeton d’accès. Pour plus d'informations sur l'exécution de cette validation, consultez la [spécification OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). Cela n’est pas retourné sur les jetons d’ID du point de terminaison `/token`. |
 |`aio` | Chaîne opaque | Revendication interne utilisée par Azure AD pour enregistrer des données afin de réutiliser les jetons. Cette valeur doit être ignorée.|

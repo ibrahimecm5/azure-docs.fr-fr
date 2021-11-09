@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: b57e8f4725e1f6d97cd86406f95c26fbbf7b47e7
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 754f3671734125a47f633876e31e39f72dcbaa7d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358584"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076677"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Connecteur d’analyse multicloud Amazon S3 pour Azure Purview
 
@@ -29,11 +29,12 @@ Pour ce service, Purview vous permet de fournir un compte Microsoft avec un acc
 
 ## <a name="purview-scope-for-amazon-s3"></a>Étendue Purview pour Amazon S3
 
+Actuellement, nous ne prenons pas en charge les points de terminaison privés d’ingestion qui fonctionnent avec vos sources AWS.
+
 Pour plus d’informations sur les limites de Purview, consultez :
 
 - [Gestion et augmentation des quotas de ressources avec Azure Purview](how-to-manage-quotas.md)
 - [Sources de données et types de fichiers pris en charge dans Azure Purview](sources-and-scans.md)
-- [Utiliser des points de terminaison privés pour votre compte Purview](catalog-private-link.md)
 
 ### <a name="storage-and-scanning-regions"></a>Régions de stockage et d’analyse
 

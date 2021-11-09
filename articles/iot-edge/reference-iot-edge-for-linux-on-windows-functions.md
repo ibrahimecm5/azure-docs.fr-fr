@@ -3,17 +3,17 @@ title: Fonctions PowerShell pour Azure IoT Edge pour Linux sur Windows | Microso
 description: Informations de référence sur les fonctions PowerShell pour Azure IoT Edge pour Linux sur Windows pour déployer, approvisionner et obtenir l’état IoT Edge pour Linux sur des machines virtuelles Windows.
 author: v-tcassi
 ms.author: fcabrera
-ms.date: 06/18/2021
+ms.date: 10/15/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: cfa116f91978ea5f9bc076c7d666a0428f3b6c72
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9038f8b99728b2808cb1d4cf6b23a7673fa5d92e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259183"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085902"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>Fonctions PowerShell pour IoT Edge pour Linux sur Windows
 
@@ -21,7 +21,7 @@ ms.locfileid: "130259183"
 
 Découvrez les fonctions PowerShell qui déploient, approvisionnent et obtiennent l’état de votre IoT Edge pour Linux sur une machine virtuelle Windows (EFLOW).
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Prérequis
 
 Les commandes décrites dans cet article proviennent du fichier `AzureEFLOW.psm1`, qui se trouve sur votre système dans votre répertoire `WindowsPowerShell` sous `C:\Program Files\WindowsPowerShell\Modules\AzureEFLOW`.
 
@@ -49,13 +49,13 @@ Si vous n’avez pas le dossier **AzureEflow** dans votre répertoire PowerShell
    Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
    ```
 
-## <a name="connect-eflowvm"></a>Connect-EflowVM
+## <a name="connect-eflowvm"></a>Connect-EflowVm
 
-La commande **Connect-EflowVM** se connecte à la machine virtuelle via SSH. Le seul compte autorisé à accéder via SSH à la machine virtuelle est celui de l’utilisateur qui l’a créée.
+La commande **Connect-EflowVm** se connecte à la machine virtuelle via SSH. Le seul compte autorisé à accéder via SSH à la machine virtuelle est celui de l’utilisateur qui l’a créée.
 
 Cette commande fonctionne uniquement sur une session PowerShell en cours d’exécution sur l’appareil hôte. Elle ne fonctionnera pas lors de l’utilisation du centre d’administration Windows ou de PowerShell ISE.
 
-Pour plus d'informations, utilisez la commande `Get-Help Connect-EflowVM -full`.
+Pour plus d'informations, utilisez la commande `Get-Help Connect-EflowVm -full`.
 
 ## <a name="copy-eflowvmfile"></a>Copy-EflowVmFile
 
@@ -73,7 +73,7 @@ Pour plus d'informations, utilisez la commande `Get-Help Copy-EflowVMFile -full`
 
 ## <a name="deploy-eflow"></a>Deploy-Eflow
 
-La commande **Deploy-Eflow** est la principale méthode de déploiement. La commande de déploiement crée la machine virtuelle, approvisionne des fichiers et déploie le module d’agent IoT Edge. Si aucun des paramètres n’est requis, vous pouvez les utiliser pour approvisionner votre appareil IoT Edge pendant le déploiement et modifier les paramètres de la machine virtuelle lors de la création.
+La commande **Deploy-Eflow** est la principale méthode de déploiement. La commande de déploiement crée la machine virtuelle, approvisionne des fichiers et déploie le module d’agent IoT Edge. Bien qu’aucun des paramètres ne soit obligatoire, ils peuvent être utilisés pour modifier les paramètres de la machine virtuelle pendant sa création.
 
 | Paramètre | Valeurs acceptées | Commentaires |
 | --------- | --------------- | -------- |
@@ -103,7 +103,6 @@ La commande **Get-EflowHostConfiguration** renvoie la configuration de l’hôte
 * GpuInfo
 
 Pour plus d'informations, utilisez la commande `Get-Help Get-EflowHostConfiguration -full`.
-
 
 ## <a name="get-eflowlogs"></a>Get-EflowLogs
 
@@ -140,7 +139,7 @@ La commande **Get-EflowVmFeature** renvoie l’état de l’activation d’IoT E
 
 | Paramètre | Valeurs acceptées | Commentaires |
 | --------- | --------------- | -------- |
-| fonctionnalité | **DpsTpm** | Nom de la fonctionnalité à activer/désactiver. |
+| fonctionnalité | **DpsTpm** | Nom de la fonctionnalité à interroger. |
 
 Pour plus d'informations, utilisez la commande `Get-Help Get-EflowVmFeature -full`.
 
@@ -156,17 +155,14 @@ La commande **Get-EflowVmTelemetryOption** affiche l’état de la télémétrie
 
 Pour plus d'informations, utilisez la commande `Get-Help Get-EflowVmTelemetryOption -full`.
 
-
 ## <a name="get-eflowvmtpmprovisioninginfo"></a>Get-EflowVmTpmProvisioningInfo
 
 La commande **Get-EflowVmTpmProvisioningInfo** renvoie les informations d’approvisionnement du Module de plateforme sécurisée (TPM). Cette commande n’accepte aucun paramètre. Elle retourne un objet qui contient quatre propriétés :
 
 * EK (Endorsement Key)
-* ID d’inscription 
+* ID d’inscription
 
 Pour plus d'informations, utilisez la commande `Get-Help Get-EflowVmTpmProvisioningInfo -full`.
-
-
 
 ## <a name="invoke-eflowvmcommand"></a>Invoke-EflowVmCommand
 
@@ -205,7 +201,7 @@ La commande **Set-EflowVM** actualise la configuration de la machine virtuelle a
 
 | Paramètre | Valeurs acceptées | Commentaires |
 | --------- | --------------- | -------- |
-| cpuCount | Valeur entière comprise entre 1 et les cœurs GPU de l’appareil | Nombre de cœurs de processeur pour la machine virtuelle. |
+| cpuCount | Valeur entière comprise entre 1 et les cœurs d’UC de l’appareil | Nombre de cœurs de processeur pour la machine virtuelle. |
 | memoryInMB | Valeur entière comprise entre 1 024 et la quantité maximale de mémoire disponible de l’appareil | Mémoire allouée pour la machine virtuelle. |
 | gpuName | Nom du Périphérique GPU |  Nom du périphérique GPU à utiliser pour le relais. |
 | gpuPassthroughType | **DirectDeviceAssignment**, **ParaVirtualization**, ou aucun (pas de relais) |  Type de relais GPU |

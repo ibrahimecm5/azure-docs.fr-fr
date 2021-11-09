@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/16/2021
 ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e3481ee896e6caed33bdf7e59c64307a88136fde
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a42f4e5cd0b58c2078a4ba498b262efb804edcf8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993650"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050277"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>Tutoriel : Connecter les utilisateurs et appeler l’API Microsoft Graph à partir d’une application monopage (SPA) React à l’aide du flux de code d’authentification
 
@@ -163,9 +163,9 @@ Suivez les étapes décrites dans [Application monopage : inscription d’appli
 
 Créez un dossier dans *src* appelé *components*, puis créez dans ce dossier un fichier nommé *SignInButton.jsx*. Ajoutez le code de l’une des sections suivantes pour appeler la connexion à l’aide d’une fenêtre indépendante ou d’une redirection plein cadre :
 
-### <a name="sign-in-using-popups"></a>Se connecter à l’aide de fenêtres indépendantes
+### <a name="sign-in-using-pop-ups"></a>Se connecter à l’aide de fenêtres contextuelles
 
-Ajoutez le code suivant à *src/components/SignInButton.jsx* pour créer un composant de bouton qui appelle une connexion par fenêtre indépendante quand l’utilisateur le sélectionne :
+Ajoutez le code suivant à *src/components/SignInButton.jsx* pour créer un composant de bouton qui appelle une fenêtre de connexion quand l’utilisateur le sélectionne :
 
 ```jsx
 import React from "react";
@@ -277,9 +277,9 @@ Un code d’autorisation protégé par PKCE est alors envoyé au point de termin
 
 Dans *src/components*, créez un fichier nommé *SignOutButton.jsx*. Ajoutez le code de l’une des sections suivantes pour appeler la déconnexion à l’aide d’une fenêtre indépendante ou d’une redirection plein cadre :
 
-### <a name="sign-out-using-popups"></a>Se déconnecter à l’aide de fenêtres indépendantes
+### <a name="sign-out-using-pop-ups"></a>Se déconnecter à l’aide de fenêtres contextuelles
 
-Ajoutez le code suivant à *src/components/SignOutButton.jsx* pour créer un composant de bouton qui appelle une déconnexion par fenêtre indépendante quand l’utilisateur le sélectionne :
+Ajoutez le code suivant à *src/components/SignOutButton.jsx* pour créer un composant de bouton qui appelle une fenêtre de déconnexion quand l’utilisateur le sélectionne :
 
 ```jsx
 import React from "react";

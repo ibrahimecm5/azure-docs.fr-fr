@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1d3bac4cb1ca6bc5849ba743c83922f0283cc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dcd5f888622b1ce054f5fbb30db7b668f6501c70
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620974"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049897"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Référence des paramètres d’itinérance Windows 10
 
@@ -102,7 +102,7 @@ Les paramètres non itinérants ou la synchronisation n’appartiennent pas à u
 | **Navigateur Microsoft Edge** : sites les plus consultés <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
 | **Navigateur Microsoft Edge** : paramètres de la barre des favoris <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
 | **Navigateur Microsoft Edge** : afficher le bouton Accueil <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
-| **Navigateur Microsoft Edge** : bloquer les fenêtres publicitaires <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
+| **Navigateur Microsoft Edge** : bloquer les fenêtres publicitaires <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
 | **Navigateur Microsoft Edge** : me demander ce qu’il faut faire avec chaque téléchargement <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
 | **Navigateur Microsoft Edge** : proposer d’enregistrer les mots de passe <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |
 | **Navigateur Microsoft Edge** : envoyer les demandes Ne pas me suivre <sup>[[1]](#footnote-1)</sup> |synchronisation |synchronisation |internal |

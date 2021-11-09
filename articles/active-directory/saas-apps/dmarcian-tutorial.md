@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 67dfcb774faf966dc54c150dbaf60e6cebf719ac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a7bc336c84c1f992482dc8b8b6a841533a9dd58e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124770336"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068034"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Tutoriel : Intégrer dmarcian à Azure Active Directory
 
@@ -68,45 +68,45 @@ Pour configurer et tester l’authentification unique Azure AD avec dmarcian, p
 Effectuez les étapes suivantes pour activer l’authentification unique Azure AD dans le Portail Azure.
 
 1. Dans le portail Azure, accédez à la page d’intégration de l’application **dmarcian**, recherchez la section **Gérer** et sélectionnez **Authentification unique**.
+
 1. Dans la page **Sélectionner une méthode d’authentification unique**, sélectionnez **SAML**.
+
 1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de crayon pour **Configuration SAML de base** afin de modifier les paramètres.
 
    ![Modifier la configuration SAML de base](common/edit-urls.png)
 
-4. À la section **Configuration SAML de base**, si vous souhaitez configurer l’application en mode initié par **IDP**, suivez les étapes ci-dessous :
+1. À la section **Configuration SAML de base**, si vous souhaitez configurer l’application en mode initié par **IDP**, suivez les étapes ci-dessous :
 
-    a. Dans la zone de texte **Identificateur**, tapez une URL au format suivant :
+    1. Dans la zone de texte **Identificateur**, tapez une URL au format suivant :
 
-    | **Identificateur** |
-    |-----|
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    
+       | **Identificateur** |
+       |-----|
+       | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+       | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+       | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
-    b. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant :
+    1. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant :
 
-    | **URL de réponse** |
-    |----|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
-   
+       | **URL de réponse** |
+       |----|
+       | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
+       | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
+       | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
-5. Si vous souhaitez configurer l’application en **mode démarré par le fournisseur de services**, cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes :
+1. Si vous souhaitez configurer l’application en **mode démarré par le fournisseur de services**, cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes :
 
     Dans la zone de texte **URL d’authentification**, tapez une URL au format suivant :
-    
+
     | **URL d’authentification** |
     |-----|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
     | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
     | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
-     
+
     > [!NOTE] 
     > Il ne s’agit pas de valeurs réelles. Vous mettez à jour ces valeurs avec l’identificateur, l’URL de réponse et l’URL de connexion réels. La procédure est expliquée plus loin dans le didacticiel.
 
-4. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, cliquez sur le bouton Copier pour copier l’**URL des métadonnées de fédération d’application**, puis enregistrez-la sur votre ordinateur.
+1. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, cliquez sur le bouton Copier pour copier l’**URL des métadonnées de fédération d’application**, puis enregistrez-la sur votre ordinateur.
 
     ![Lien Téléchargement de certificat](common/copy-metadataurl.png)
 
@@ -158,20 +158,22 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 
     ![L’authentification](./media/dmarcian-tutorial/status.png)
 
-    a. Sous la section **Add dmarcian to your Identity Provider** (Ajouter dmarcian à votre fournisseur d’identité), cliquez sur **COPIER** pour copier l’**URL du service consommateur d’assertion** de votre instance et collez-la dans la zone de texte **URL de réponse** dans la section **Configuration SAML de base** du portail Azure.
+    1. Sous la section **Add dmarcian to your Identity Provider** (Ajouter dmarcian à votre fournisseur d’identité), cliquez sur **COPIER** pour copier l’**URL du service consommateur d’assertion** de votre instance et collez-la dans la zone de texte **URL de réponse** dans la section **Configuration SAML de base** du portail Azure.
 
-    b. Sous la section **Add dmarcian to your Identity Provider** (Ajouter dmarcian à votre fournisseur d’identité), cliquez sur **COPIER** pour copier l’**ID d’entité** de votre instance et collez-la dans la zone de texte **Identificateur** dans la section **Configuration SAML de base** du portail Azure.
+    1. Sous la section **Add dmarcian to your Identity Provider** (Ajouter dmarcian à votre fournisseur d’identité), cliquez sur **COPIER** pour copier l’**ID d’entité** de votre instance et collez-la dans la zone de texte **Identificateur** dans la section **Configuration SAML de base** du portail Azure.
 
-    c. Sous la section **Set up Authentication** (Configurer l’authentification), dans la zone de texte **Identity Provider Metadata** (Métadonnées du fournisseur d’identité), collez **l’URL des métadonnées de fédération d’application**, que vous avez copiée à partir du Portail Azure.
+    1. Sous la section **Set up Authentication** (Configurer l’authentification), dans la zone de texte **Identity Provider Metadata** (Métadonnées du fournisseur d’identité), collez **l’URL des métadonnées de fédération d’application**, que vous avez copiée à partir du portail Azure.
 
-    d. Sous la section **Set up Authentication** (Configurer l’authentification), dans la zone de texte **Attribute Statements** (Instructions d’attribut), collez l’URL `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    1. Sous la section **Set up Authentication** (Configurer l’authentification), dans la zone de texte **Attribute Statements** (Instructions d’attribut), collez l’URL suivante :
+    
+       `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    e. Sous la section **Set up Login URL** (Configurer l’URL de connexion), copiez l’**URL de connexion** de votre instance et collez-la dans la zone de texte **URL de connexion** de la section **Configuration SAML de base** du portail Azure.
+    1. Sous la section **Set up Login URL** (Configurer l’URL de connexion), copiez l’**URL de connexion** de votre instance et collez-la dans la zone de texte **URL de connexion** de la section **Configuration SAML de base** du portail Azure.
 
-    > [!Note]
-    > Vous pouvez modifier l’**URL de connexion** en fonction de votre organisation.
+       > [!NOTE]
+       > Vous pouvez modifier l’**URL de connexion** en fonction de votre organisation.
 
-    f. Cliquez sur **Enregistrer**.
+    1. Cliquez sur **Enregistrer**.
 
 ### <a name="create-dmarcian-test-user"></a>Créer un utilisateur de test dmarcian
 
@@ -189,15 +191,15 @@ Pour se connecter à dmarcian, les utilisateurs Azure AD doivent être approvisi
 
     ![L’utilisateur ajouté](./media/dmarcian-tutorial/new-user.png)
 
-4. Dans la fenêtre contextuelle **Ajouter un nouvel utilisateur**, procédez comme suit :
+4. Dans la fenêtre contextuelle **Add New User** (Ajouter un nouvel utilisateur), procédez comme suit :
 
     ![Le nouvel utilisateur](./media/dmarcian-tutorial/save-user.png)
 
-    a. Dans la zone de texte **Nouvel e-mail d’utilisateur**, entrez l’e-mail de l’utilisateur, par exemple **brittasimon\@contoso.com**.
+    1. Dans la zone de texte **New User Email** (Adresse e-mail du nouvel utilisateur), entrez l’adresse e-mail de l’utilisateur, par exemple `brittasimon@contoso.com`.
 
-    b. Si vous souhaitez accorder des droits d’administrateur à l’utilisateur, sélectionnez **Make User an Admin** (Rendre l’utilisateur administrateur).
+    1. Si vous souhaitez accorder des droits d’administrateur à l’utilisateur, sélectionnez **Make User an Admin** (Rendre l’utilisateur administrateur).
 
-    c. Cliquez sur **Add User**.
+    1. Cliquez sur **Add User**.
 
 ## <a name="test-sso"></a>Tester l’authentification unique (SSO) 
 

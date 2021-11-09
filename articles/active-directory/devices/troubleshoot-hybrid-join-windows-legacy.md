@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68c08c8ed88ae9973a453288bd3e55660505caa3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 633d7ae014ed5778483958266268a702b730e911
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620898"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052747"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Dépanner des appareils hybrides de bas niveau joints à Azure Active Directory 
 
@@ -45,7 +45,7 @@ Cet article vous fournit des conseils sur la façon de résoudre les problèmes 
 - Vous pouvez également obtenir plusieurs entrées pour un appareil dans l’onglet Informations utilisateur en raison d’une réinstallation du système d’exploitation ou d’une réinscription manuelle.
 - L’inscription / jointure d’appareils initiale est configurée pour effectuer une tentative à la connexion ou au verrouillage / déverrouillage. Un délai de cinq minutes peut être déclenché par une tâche du Planificateur de tâches. 
 - Si le système d’exploitation est Windows 7 SP1 ou Windows Server 2008 R2 SP1, vérifiez que [KB4284842](https://support.microsoft.com/help/4284842) est installé. Cette mise à jour empêche les échecs d’authentification qui se produisent lorsque le client perd l’accès aux clés protégées après avoir modifié le mot de passe.
-- La jointure Azure AD Hybride peut échouer après qu’un utilisateur a changé son nom d’utilisateur principal, rompant ainsi le processus d’authentification unique transparente. Pendant le processus de jointure, vous pouvez constater que l’ancien nom d’utilisateur principal est toujours envoyé à Azure AD, sauf si les cookies de session du navigateur sont effacés ou si l’utilisateur se déconnecte explicitement et supprime l’ancien nom d’utilisateur principal.
+- La jonction Azure AD Hybride peut échouer après qu’un utilisateur a changé son nom d’utilisateur principal, rompant ainsi le processus d’authentification unique transparente. Pendant le processus de jointure, vous pouvez constater que l’ancien nom d’utilisateur principal est toujours envoyé à Azure AD, sauf si les cookies de session du navigateur sont effacés ou si l’utilisateur se déconnecte explicitement et supprime l’ancien nom d’utilisateur principal.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Étape 1 : Récupérer l’état de l’inscription 
 

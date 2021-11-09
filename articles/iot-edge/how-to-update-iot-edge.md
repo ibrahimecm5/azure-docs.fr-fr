@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc123b47ed10252b050743955015b89d434a42b0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1899da83ff4e963c6fecf371f6d888b5bb120e7a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218070"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070467"
 ---
 # <a name="update-iot-edge"></a>Mettre à jour IoT Edge
 
@@ -125,6 +125,8 @@ Si vous souhaitez effectuer une mise à jour vers la version la plus récente d�
 
 >[!NOTE]
 >Actuellement, il n’existe pas de prise en charge d’IoT Edge version 1.2 s’exécutant sur des machines virtuelles Linux sur Windows.
+>
+>Pour consulter les étapes de mise à jour d’IoT Edge pour Linux sous Windows, consultez [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true&tabs=linuxonwindows).
 
 :::moniker-end
 <!-- end 1.2 -->
@@ -162,6 +164,8 @@ Afin de recevoir les mises à jour d’IoT Edge pour Linux sur Windows, l’hô
 
 >[!NOTE]
 >Actuellement, il n’existe pas de prise en charge d’IoT Edge version 1.2 s’exécutant sur des appareils Windows.
+>
+>Pour consulter les étapes de mise à jour d’IoT Edge pour Linux sous Windows, consultez [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true&tabs=windows).
 
 :::moniker-end
 <!-- end 1.2 -->

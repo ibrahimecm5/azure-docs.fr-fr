@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 26e3c3f5daded5feaaa9063592e772314939f90f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 1c2f8d327596c3f2d1ed3dde8611152b0bccd72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164614"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033054"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Tutoriel : Créer une application Scala Maven pour Apache Spark dans HDInsight à l’aide d’IntelliJ
 
@@ -34,7 +34,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 * Le [SDK Oracle Java](https://www.azul.com/downloads/azure-only/zulu/).  Ce tutoriel utilise Java version 8.0.202.
 
-* IDE Java. Cet article utilise [IntelliJ IDEA Community  version 2018.3.4](https://www.jetbrains.com/idea/download/).
+* IDE Java. Cet article utilise [IntelliJ IDEA Community 2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure Toolkit for IntelliJ.  Consultez [Installation d’Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
 
@@ -226,7 +226,7 @@ Si vous ne comptez pas continuer à utiliser cette application, effectuez les é
 
 1. Sélectionnez **Supprimer**. Sélectionnez **Oui**.
 
-:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="Supprimer le cluster HDInsight dans le portail Azure" border="true":::
+:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="Capture d’écran montrant comment supprimer un cluster HDInsight via le portail Azure." border="true":::
 
 ## <a name="next-step"></a>Étape suivante
 

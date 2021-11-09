@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0af9aeb9efe3b652f52b01e3b45307253e810742
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 392b9d5b753ff75ab64a2f21a87301ba17de24c3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122563979"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058005"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Déplacer un espace de travail Log Analytics vers un autre abonnement ou groupe de ressources
 
@@ -42,6 +42,7 @@ Les abonnements source et de destination de l’espace de travail doivent existe
 > **Clients Azure Sentinel**
 > - Actuellement, une fois Azure Sentinel déployé dans un espace de travail, le déplacement de l’espace de travail vers un autre groupe de ressources ou abonnement n’est pas pris en charge. 
 > - Si vous avez déjà déplacé l’espace de travail, désactivez toutes les règles actives dans **Analytics**, puis réactivez-les après cinq minutes. Cette solution s’avère efficace la plupart du temps, mais pour rappel, elle n’est pas prise en charge et relève de votre propre responsabilité.
+> - L’opération peut prendre quelques heures à Azure Resource Manager, et les solutions peuvent ne pas répondre pendant l’opération.
 > 
 > **Recréer des alertes**
 > - Toutes les alertes doivent être recréées car les autorisations sont basées sur l’ID de ressource de l’espace de travail, qui change lors du déplacement d’un espace de travail ou de la modification du nom de ressource. Les alertes dans les espaces de travail créés après le 1er juin 2019, ou dans les espaces de travail qui ont été [mis à niveau à partir de l’API d’alerte Log Analytics héritée vers l’API scheduledQueryRules](../alerts/alerts-log-api-switch.md) peuvent être exportées dans le modèle et déployées après le déplacement. Vous pouvez [vérifier si l’API scheduledQueryRules est utilisée pour les alertes dans votre espace de travail](../alerts/alerts-log-api-switch.md#check-switching-status-of-workspace). Vous pouvez également configurer manuellement les alertes dans l’espace de travail cible.

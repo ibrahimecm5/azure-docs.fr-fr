@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 1e08dc5c0dc0d8e427de9ae1ebc53f16cb8e015a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7f4c509b1f59db05db9bf6fca34960f7f2ab6b87
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043602"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054473"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutoriel - Personnaliser les mappages d’attributs d’attribution d’utilisateurs pour les applications SaaS dans Azure Active Directory
 
@@ -331,7 +331,7 @@ Cette option entraîne une resynchronisation forcée de tous les utilisateurs pe
 - Microsoft Azure AD fournit une implémentation efficace d’un processus de synchronisation. Dans un environnement initialisé, seuls les objets nécessitant des mises à jour sont traités pendant un cycle de synchronisation.
 - La mise à jour des mappages d’attributs impacte les performances d’un cycle de synchronisation. Une mise à jour de la configuration des mappages d’attributs nécessite une réévaluation de tous les objets gérés.
 - Il est recommandé d’apporter le moins de modifications consécutives possible à vos mappages d’attributs.
-- L’ajout d’un attribut de photo à approvisionner pour une application n’est pas actuellement pris en charge, car vous ne pouvez pas spécifier le format de synchronisation de la photo. Vous pouvez demander cette fonctionnalité via [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory).
+- L’ajout d’un attribut de photo à approvisionner pour une application n’est pas actuellement pris en charge, car vous ne pouvez pas spécifier le format de synchronisation de la photo. Vous pouvez demander cette fonctionnalité via [User Voice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789).
 - L’attribut IsSoftDeleted fait souvent partie des mappages par défaut pour une application. IsSoftdeleted peut avoir la valeur « true » dans l’un des quatre scénarios (l’utilisateur est hors de portée en raison d’une non-affectation de l’application, l’utilisateur est hors de portée en raison de non réponse à un filtre d’étendue, l’utilisateur a été supprimé de manière réversible dans Azure AD ou la propriété AccountEnabled est définie sur « false » pour l’utilisateur). Il n’est pas recommandé de supprimer l’attribut IsSoftDeleted de vos mappages d’attributs.
 - Le service d’approvisionnement Azure AD ne prend pas en charge l’approvisionnement de valeurs Null.
 - Leur clé primaire, en général « ID », ne doit pas être incluse en tant qu’attribut cible dans vos mappages d’attributs. 

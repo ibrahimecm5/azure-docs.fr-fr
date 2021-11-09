@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84c121788d3af6279ac2ef1ef4c149f803bf308
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 081451297e35eb76ebd8d5eecf8ea1833e91007a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245566"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052348"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Nouveautés d’Azure Active Directory
 
@@ -78,7 +78,7 @@ Le navigateur moderne Edge est désormais inclus dans la configuration requise p
 **Type :** Nouvelle fonctionnalité  
 **Catégorie de service :** Gestion de l’accès utilisateur **Fonctionnalité produit :** Gestion des droits d’utilisation
  
-Il existe désormais une option supplémentaire pour les paramètres d’expiration avancés dans la gestion des droits d’utilisation. Il est possible de configurer un package d’accès qui expire en quelques heures, en plus des paramètres précédents. [En savoir plus](../governance/entitlement-management-access-package-create.md#lifecycle)
+Il existe désormais une option supplémentaire pour les paramètres d’expiration avancés dans la gestion des droits d’utilisation. Il est possible de configurer un package d’accès qui expire en quelques heures, en plus des paramètres précédents. [Plus d’informations](../governance/entitlement-management-access-package-create.md#lifecycle)
 
 ---
 
@@ -98,7 +98,7 @@ Par défaut, Mes applications affiche les applications sous forme de grille. Les
 **Catégorie de service :** Audit  
 **Fonctionnalité de produit :** Gestion du cycle de vie des appareils
  
-Les administrateurs peuvent désormais voir divers journaux d’audit, nouveaux et améliorés, liés aux appareils. Les nouveaux journaux d’audit comprennent la création et la suppression des informations d’identification sans mot de passe (connexion téléphone, clé FIDO2 et Windows Hello Entreprise), l’inscription et la désinscription d’appareile et la précréation/suppression d’un appareil précréé. En outre, des améliorations mineures ont été apportées aux journaux d’audit existants liés aux appareils, avec l’ajout de plus de détails sur les appareils. [Plus d’informations](../reports-monitoring/concept-audit-logs.md)
+Les administrateurs peuvent désormais voir divers journaux d’audit, nouveaux et améliorés, liés aux appareils. Les nouveaux journaux d’audit comprennent la création et la suppression des informations d’identification sans mot de passe (connexion par téléphone, clé FIDO2 et Windows Hello Entreprise), l’inscription et la désinscription d’appareils et la précréation d’un appareil ou la suppression d’un appareil précréé. En outre, des améliorations mineures ont été apportées aux journaux d’audit existants liés aux appareils, avec l’ajout de plus de détails sur les appareils. [Plus d’informations](../reports-monitoring/concept-audit-logs.md)
 
 ---
 
@@ -149,8 +149,6 @@ Vous pouvez désormais automatiser la création, la mise à jour et la suppressi
 Pour découvrir comment sécuriser plus efficacement votre organisation à l’aide de l’approvisionnement automatique de comptes utilisateur, voir [Automatisation de l’approvisionnement des utilisateurs pour les applications SaaS avec Azure AD](../manage-apps/user-provisioning.md).
  
 ---
- 
-[1585267](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1585267&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---september-2021"></a>Nouvelles applications fédérées disponibles dans la galerie d’applications Azure AD – Septembre 2021
 
@@ -165,7 +163,6 @@ En septembre 2021, nous avons ajouté les 44 applications suivantes à notre g
 Pour accéder à la documentation de ces applications, cliquez https://aka.ms/AppsTutorial
 
 Pour référencer votre application dans la Galerie d’applications Azure AD, lisez les informations détaillées ici : https://aka.ms/AzureADAppRequest
-
 
 ---
 
@@ -290,14 +287,14 @@ Pour savoir comment mieux sécuriser votre organisation grâce au provisionnemen
  
 ---
 
-### <a name="multi-factor-mfa-fraud-report--new-audit-event"></a>Rapport sur les fraudes d’authentification multifacteur (MFA) – nouvel événement d’audit
+### <a name="multifactor-mfa-fraud-report--new-audit-event"></a>Rapport sur les fraudes d’authentification multifacteur (MFA) – nouvel événement d’audit
 
 **Type :** Fonctionnalité modifiée  
 **Catégorie de service :** MFA  
 **Fonctionnalité de produit :** Protection et sécurité des identités
  
 
-Pour aider les administrateurs à comprendre que leurs utilisateurs sont bloqués pour l’authentification multifacteur à la suite d’un rapport de fraude, nous avons ajouté un nouvel événement d’audit. Cet événement d’audit est suivi lorsque l’utilisateur signale une fraude. Le journal d’audit est disponible en plus des informations existantes dans les journaux de connexion concernant le rapport des fraudes. Pour savoir comment obtenir le rapport d’audit, consultez [Authentification multifacteur pour l’alerte de fraude](../authentication/howto-mfa-mfasettings.md#fraud-alert).
+Pour aider les administrateurs à comprendre que l’authentification multifacteur de leurs utilisateurs est bloquée à la suite d’un rapport de fraude, nous avons ajouté un nouvel événement d’audit. Cet événement d’audit est suivi lorsque l’utilisateur signale une fraude. Le journal d’audit est disponible en plus des informations existantes dans les journaux de connexion concernant le rapport des fraudes. Pour savoir comment obtenir le rapport d’audit, consultez [Authentification multifacteur pour l’alerte de fraude](../authentication/howto-mfa-mfasettings.md#fraud-alert).
 
 ---
 
@@ -607,7 +604,7 @@ Pour les rapports sur les utilisateurs à risque, les connexions risquées et le
 **Catégorie de service :** Révisions d’accès  
 **Fonctionnalité de produit :** Gouvernance des identités
  
-Les propriétaires de groupes dans Azure AD peuvent désormais créer et gérer des révisions d’accès Azure AD sur leurs groupes. Cette fonctionnalité peut être activée par les administrateurs clients via les paramètres de révision d’accès Azure AD et est désactivée par défaut. [Plus d’informations](../governance/create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)
+Les propriétaires de groupes dans Azure AD peuvent désormais créer et gérer des révisions d’accès Azure AD sur leurs groupes. Cette fonctionnalité peut être activée par les administrateurs clients via les paramètres de révision d’accès Azure AD et est désactivée par défaut. [Plus d’informations](../governance/create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview)
  
 ---
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 2cacb9a975dba536fc4744a24ea26ec1083b5668
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b79f878b7149bb41732f924c657f711f9bdf3128
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827060"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033111"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Configuration système exigée pour Azure Stack Edge Pro avec GPU 
 
@@ -85,6 +85,17 @@ Utilisez le tableau suivant pour configurer les ports des serveurs hébergeant l
 | TCP 443 (HTTPS)| Sortie       | WAN        | Oui      | Sortie ouverte pour le déploiement de IoT Edge. Cette configuration est requise en cas d’utilisation de scripts manuels ou du service Azure IoT Device Provisioning.|
 
 Pour plus d'informations, consultez [Règles de configuration du pare-feu et des ports pour le déploiement d’IoT Edge](../iot-edge/troubleshoot.md).
+
+
+### <a name="port-requirements-for-kubernetes-on-azure-stack-edge"></a>Configuration de port requise pour Kubernetes sur Azure Stack Edge
+
+| N° de port | Entrant ou sortant | Étendue de ports | Obligatoire | Guidance |
+|----------|-----------|------------|----------|----------|
+| TCP 31000 (HTTPS)| Dans       | LAN        | Dans certains cas. <br> Consultez les remarques.      |Ce port est requis uniquement si vous vous connectez au tableau de bord Kubernetes pour surveiller votre appareil. |
+| TCP 6443 (HTTPS)| Dans       | LAN        | Dans certains cas. <br> Consultez les remarques.       |Ce port est requis par le serveur d’API Kubernetes uniquement si vous utilisez `kubectl` pour accéder à votre appareil. |
+
+> [!IMPORTANT]
+> Si le pare-feu de votre centre de données restreint ou filtre le trafic en fonction des adresses IP ou MAC sources, assurez-vous que les adresses IP de calcul (adresses IP des nœuds Kubernetes) et les adresses MAC figurent dans la liste des adresses autorisées. Les adresses MAC peuvent être spécifiées en exécutant la cmdlet `Set-HcsMacAddressPool` sur l’interface PowerShell de l’appareil.
 
 ## <a name="url-patterns-for-firewall-rules"></a>Modèles d’URL pour règles de pare-feu
 

@@ -3,20 +3,20 @@ title: Définir un profil technique autodéclaré dans une stratégie personnali
 titleSuffix: Azure AD B2C
 description: Définissez un profil technique autodéclaré dans une stratégie personnalisée dans Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 8d3343838216522abfc11ec3f202ae2da1c0e38f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 031b7b1ae4d776ce08a18da5e292d83206c4c3b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611876"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040149"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Définir un profil technique autodéclaré dans une stratégie personnalisée Azure Active Directory B2C
 

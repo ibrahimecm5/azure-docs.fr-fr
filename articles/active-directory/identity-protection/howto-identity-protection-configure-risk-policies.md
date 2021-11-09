@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11751323d1341cbcde19451bc101197c7d714368
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c9e3bfc88442f495d49116e01cc06e876be95787
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532216"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051588"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Procédure : Configurer et activer des stratégies de risque
 
@@ -41,7 +41,7 @@ Les [emplacements réseau](../conditional-access/location-condition.md) approuv�
 
 ### <a name="risk-remediation"></a>Mesures de correction des risques
 
-Les organisations peuvent choisir de bloquer l’accès en cas de détection d’un risque. Le blocage empêche parfois les utilisateurs légitimes de faire ce dont ils ont besoin. Une meilleure solution consiste à autoriser l’auto-correction à l’aide de l’authentification multifacteur (MFA) Azure AD et de la réinitialisation de mot de passe en libre-service (SSPR). 
+Les organisations peuvent choisir de bloquer l’accès en cas de détection d’un risque. Le blocage empêche parfois les utilisateurs légitimes de faire ce dont ils ont besoin. Une meilleure solution consiste à autoriser l’auto-correction à l’aide de l’authentification multifacteur (MFA) Azure AD et de la réinitialisation de mot de passe en libre-service (SSPR).
 
 - En cas de déclenchement d’une stratégie de risque utilisateur : 
    - Les administrateurs peuvent exiger une réinitialisation de mot de passe sécurisé. Pour ce faire, Azure AD MFA doit avoir été appliqué avant que l’utilisateur ne crée un mot de passe avec SSPR, ce qui réinitialise le risque de l’utilisateur. 
@@ -67,6 +67,8 @@ Il existe deux emplacements où ces stratégies peuvent être configurées, l’
    - Utiliser d’autres attributs d’accès conditionnel dans la stratégie
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+Avant d’activer les stratégies de correction, les organisations peuvent vouloir [examiner](howto-identity-protection-investigate-risk.md) et [corriger](howto-identity-protection-remediate-unblock.md) tout risque actif.
 
 ### <a name="user-risk-with-conditional-access"></a>Risque utilisateur avec accès conditionnel
 

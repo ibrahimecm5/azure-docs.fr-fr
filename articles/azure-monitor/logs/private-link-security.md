@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e0c9a1d640a4ac1596370cace9cd657e082aee48
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 872a9c1f58974f1394286a6dd8f2a1c35892930c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275750"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078177"
 ---
 # <a name="use-azure-private-link-to-connect-networks-to-azure-monitor"></a>Utiliser Azure Private Link pour connecter des réseaux à Azure Monitor
 
@@ -83,5 +83,5 @@ Par conséquent, les liaisons privées créés à partir de septembre 2021 ont 
 ## <a name="next-steps"></a>Étapes suivantes
 - [Conception de votre configuration Private Link](private-link-design.md)
 - Apprenez à [Configurer votre liaison privée](private-link-configure.md)
-
+- En savoir plus sur le [stockage privé](private-storage.md) pour les journaux personnalisés et les clés gérées par le client (CMK)
 <h3><a id="connect-to-a-private-endpoint"></a></h3>

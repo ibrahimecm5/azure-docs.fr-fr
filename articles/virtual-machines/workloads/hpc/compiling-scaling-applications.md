@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c6396eab9cb7a2224d660e0e034f8592a879510d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 408f55592ee7a192172c85e7a417db0b277f0f46
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688457"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054511"
 ---
 # <a name="scaling-hpc-applications"></a>Mise à l’échelle d’applications HPC
 
@@ -91,14 +91,14 @@ $ gfortran [gFortran flags]
 ```
    
 ### <a name="pgi-compiler"></a>Compilateur PGI
-Le fonctionnement de PGI Community Edition version 17 est garanti avec AMD EPYC. Une version compilée par PGI de STREAM permet de proposer la bande passante de mémoire complète de la plateforme. Community Edition 18.10 (plus récent, car datant de novembre 2018) devrait également fonctionner avec ce logiciel. Voici un exemple de CLI offrant une compilation optimale avec Intel Compiler :
+Il a été confirmé que PGI Community Edition 17 fonctionne avec AMD EPYC. Une version compilée par PGI de STREAM permet de proposer la bande passante de mémoire complète de la plateforme. Community Edition 18.10 (plus récent, car datant de novembre 2018) devrait également fonctionner avec ce logiciel. Voici un exemple de CLI offrant une compilation optimale avec Intel Compiler :
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
 ### <a name="intel-compiler"></a>Intel Compiler
-Le fonctionnement du logiciel Intel Compiler ver. 18 est garanti avec AMD EPYC. Voici un exemple de CLI offrant une compilation optimale avec Intel Compiler.
+Il a été confirmé qu’Intel Compiler 18 fonctionne avec AMD EPYC. Voici un exemple de CLI offrant une compilation optimale avec Intel Compiler.
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp

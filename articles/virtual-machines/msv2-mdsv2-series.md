@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: e129b596473784c72cab93568be88dd6dcb6fe2a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: dd97273c37f4707827f5706889152811745199ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697992"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063635"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Mémoire moyenne des séries Msv2 et Mdsv2
 
@@ -32,7 +32,7 @@ Les machines virtuelles de mémoire moyenne des séries Msv2 et Mdsv2 sont dot
 [Génération de machine virtuelle prise en charge](generation-2.md) : Génération 2<br>
 [Accélérateur d’écriture](./how-to-enable-write-accelerator.md) : Pris(e) en charge<br>
 [Performances réseau accélérées](../virtual-network/create-vm-accelerated-networking-cli.md) : Pris en charge<br>
-[Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Non pris en charge <br>
+[Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge pour Mdsv2 <br>
 <br>
  
 ## <a name="msv2-medium-memory-diskless"></a>Msv2 mémoire moyenne sans disque 

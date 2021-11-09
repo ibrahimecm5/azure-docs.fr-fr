@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: dba6962199f61eeb93dfb2f98e3e448c94ff633a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 110021730ecc91281f2c187a5ef6f1f989fbaf87
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567097"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018467"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Attestation FPGA pour les machines virtuelles de la série Azure NP (préversion)
 
@@ -34,9 +34,9 @@ Votre client et votre ID d’abonnement doivent être autorisés à envoyer des 
 
 ## <a name="building-your-design-for-attestation"></a>Création de votre conception pour l’attestation  
 
-L’ensemble d’outils Xilinx préféré pour créer des conceptions est Vitis 2020.2. Les fichiers netlist qui ont été créés avec une version antérieure de l’ensemble d’outils et qui sont toujours compatibles avec 2020.2 peuvent être utilisés. Vérifiez que vous avez chargé le bon interpréteur de commandes pour la génération. La version actuellement prise en charge est xilinx_u250_gen3x16_xdma_2_1_202010_1. Les fichiers de support peuvent être téléchargés à partir du salon Xilinx Alveo. 
+L’ensemble d’outils Xilinx préféré pour créer des conceptions est Vitis 2020.2. Les fichiers netlist qui ont été créés avec une version antérieure de l’ensemble d’outils et qui sont toujours compatibles avec 2020.2 peuvent être utilisés. Vérifiez que vous avez chargé le bon interpréteur de commandes pour la génération. La version `xilinx_u250_gen3x16_xdma_2_1_202010_1` est actuellement prise en charge. Les fichiers de support peuvent être téléchargés à partir du salon Xilinx Alveo.
 
-Vous devez inclure l’argument suivant dans Vitis (ligne de commande v++) pour générer un fichier xclbin qui contient une netlist au lieu d’un flux binaire.   
+Vous devez inclure l’argument suivant dans Vitis (ligne de commande v++) pour générer un fichier `xclbin` qui contient une netlist au lieu d’un flux binaire.
 
 `--advanced.param compiler.acceleratorBinaryContent=dcp`
 

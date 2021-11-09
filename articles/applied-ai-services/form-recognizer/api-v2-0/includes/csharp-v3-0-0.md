@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/25/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 3195feac890455ae2f70c059d2c0b14b94cb1fe7
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: 452b41614508a74909b36b6e7ad13520e0dcc8bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265910"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131254021"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
@@ -26,8 +26,8 @@ ms.locfileid: "130265910"
 * Abonnement Azure - [En créer un gratuitement](https://azure.microsoft.com/free/cognitive-services/)
 * L’[IDE Visual Studio](https://visualstudio.microsoft.com/vs/) ou la version actuelle de [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Un blob Stockage Azure qui contient un jeu de données d’apprentissage. Consultez [Créer un jeu de données d’entraînement pour un modèle personnalisé](../../build-training-data-set.md) pour obtenir des conseils et des options pour constituer votre jeu de données d’entraînement. Dans le cadre de ce guide de démarrage rapide, vous pouvez utiliser les fichiers disponibles dans le dossier **Train** de l’[exemple de jeu de données](https://go.microsoft.com/fwlink/?linkid=2090451) (téléchargez et extrayez *sample_data.zip*).
-* Une fois que vous avez votre abonnement Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="créez une ressource Form Recognizer"  target="_blank">créer une ressource Form Recognizer</a> sur le portail Azure pour obtenir votre clé et votre point de terminaison. Une fois le déploiement effectué, cliquez sur **Accéder à la ressource**.
-  * Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Vous collerez votre clé et votre point de terminaison dans le code ci-dessous plus loin dans le guide de démarrage rapide.
+* Une fois que vous avez votre abonnement Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="créez une ressource Form Recognizer"  target="_blank">créer une ressource Form Recognizer</a> sur le portail Azure pour obtenir votre clé et votre point de terminaison. À la fin du déploiement, sélectionnez **Accéder à la ressource**.
+  * Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API Form Recognizer. Collez votre clé et votre point de terminaison dans le code ci-dessous, plus loin dans le guide de démarrage rapide.
   * Vous pouvez utiliser le niveau tarifaire Gratuit (`F0`) pour tester le service, puis passer par la suite à un niveau payant pour la production.
 
 ## <a name="setting-up"></a>Configuration
@@ -74,11 +74,11 @@ Dans la classe **Program** de l’application, créez des variables pour la clé
 > [!IMPORTANT]
 > Accédez au portail Azure. Si la ressource Form Recognizer que vous avez créée dans la section **Prérequis** a été déployée, cliquez sur le bouton **Accéder à la ressource** sous **Étapes suivantes**. La clé et le point de terminaison se trouvent dans la page **Clé et point de terminaison** de la ressource, sous **Gestion des ressources**.
 >
-> N’oubliez pas de supprimer la clé de votre code une fois que vous avez terminé, et ne la postez jamais publiquement. En production, utilisez des méthodes sécurisées pour stocker vos informations d’identification et y accéder. Pour plus d’informations, consultez l’article sur la [sécurité](../../../../cognitive-services/cognitive-services-security.md) de Cognitive Services.
+> N’oubliez pas de supprimer la clé de votre code une fois que vous avez terminé, et ne la postez jamais publiquement. En production, utilisez des méthodes sécurisées pour stocker vos informations d’identification et y accéder. Pour plus d’informations, _consultez_ [Sécurité](../../../../cognitive-services/cognitive-services-security.md) Cognitive Services.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
-Dans la méthode **Main** de l’application, ajoutez un appel aux tâches asynchrones utilisées dans ce guide de démarrage rapide. Vous les implémenterez ultérieurement.
+Dans la méthode **Main** de l’application, ajoutez un appel aux tâches asynchrones utilisées dans ce guide de démarrage rapide.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
 
@@ -122,7 +122,7 @@ Ces extraits de code montrent comment effectuer les tâches suivantes avec la bi
 
 ## <a name="authenticate-the-client"></a>Authentifier le client
 
-En dessous de **Main**, créez une méthode sous le nom `AuthenticateClient`. Vous vous en servirez dans d’autres tâches pour authentifier vos demandes auprès du service Form Recognizer. Cette méthode utilise l’objet `AzureKeyCredential` pour que, le cas échéant, vous puissiez mettre à jour la clé API sans créer de nouveaux objets clients.
+En dessous de **Main**, créez une méthode sous le nom `AuthenticateClient`. Vous utiliserez cette méthode dans d’autres tâches pour authentifier vos demandes auprès du service Form Recognizer. Cette méthode utilise l’objet `AzureKeyCredential` pour que, le cas échéant, vous puissiez mettre à jour la clé API sans créer de nouveaux objets clients.
 
 > [!IMPORTANT]
 > Obtenez votre clé et votre point de terminaison à partir du portail Azure. Si la ressource Form Recognizer que vous avez créée dans la section **Prérequis** a été déployée, cliquez sur le bouton **Accéder à la ressource** sous **Étapes suivantes**. La clé et le point de terminaison se trouvent dans la page **Clé et point de terminaison** de la ressource, sous **Gestion des ressources**.
@@ -137,9 +137,9 @@ Répétez les étapes ci-dessus pour une nouvelle méthode qui authentifie un cl
 
 ## <a name="get-assets-for-testing"></a>Obtenir des ressources à des fins de test
 
-Vous devrez aussi ajouter des références aux URL pour vos données d’entraînement et de test. Ajoutez-les à la racine de votre **Program**.
+Vous devrez aussi ajouter des références aux URL pour vos données d’entraînement et de test. Ajoutez ces références à la racine de votre classe **Program**.
 
-* Si vous souhaitez récupérer l’URL SAS pour vos données d’entraînement de modèle personnalisé, accédez à votre ressource de stockage dans le portail Azure, puis sélectionnez l’onglet **Explorateur Stockage**. Accédez à votre conteneur, cliquez avec le bouton droit, puis sélectionnez **Obtenir une signature d’accès partagé**. Il est important d’obtenir la signature d’accès partagé de votre conteneur, et non celle du compte de stockage. Vérifiez que les autorisations de **lecture**, d’**écriture**, de **suppression** et de **liste** sont cochées, puis cliquez sur **Créer**. Copiez ensuite la valeur de la section **URL** dans un emplacement temporaire. Il doit avoir le format : `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Si vous souhaitez récupérer l’URL SAS pour vos données d’entraînement de modèle personnalisé, accédez à votre ressource de stockage dans le portail Azure, puis sélectionnez l’onglet **Explorateur Stockage**. Accédez à votre conteneur, cliquez avec le bouton droit, puis sélectionnez **Obtenir une signature d’accès partagé**. Il est important d’obtenir la signature d’accès partagé de votre conteneur, et non celle du compte de stockage. Vérifiez que les autorisations de **lecture**, d’**écriture**, de **suppression** et de **liste** sont cochées, puis sélectionnez **Créer**. Copiez ensuite la valeur de la section **URL** dans un emplacement temporaire. Il doit avoir le format : `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Récupération d’URL SAS":::
 

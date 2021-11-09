@@ -4,16 +4,16 @@ description: Découvrez comment créer un partage de fichiers Azure qui peut êt
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2b1e7f17445fe2b24b19acf4669637ef4c47c196
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f146d51cdd43b8c4a52285476e47d0c6237efe0f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524276"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046600"
 ---
 # <a name="how-to-create-an-nfs-share-preview"></a>Guide pratique pour créer un partage NFS (préversion)
 Les partages de fichiers Azure sont des partages de fichiers entièrement gérés qui résident dans le cloud. Cet article explique comment créer un partage de fichiers qui utilise le protocole NFS (préversion).
@@ -111,7 +111,7 @@ Actuellement, les partages NFS 4.1 sont uniquement disponibles en tant que part
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 Pour créer un compte de stockage FileStorage, accédez au portail Azure.
 
-1. Dans le portail Azure, sélectionnez **Comptes de stockage** dans le menu de gauche.
+1. Dans le [portail Azure](https://portal.azure.com/), sélectionnez **Comptes de stockage** dans le menu de gauche.
 
     ![Sur la page principale du portail Azure, sélectionnez le compte de stockage.](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
@@ -164,6 +164,32 @@ az storage account create \
     --location $location \
     --sku Premium_LRS \
     --kind FileStorage
+```
+---
+
+## <a name="disable-secure-transfer"></a>Désactiver le transfert sécurisé
+
+Vous ne pouvez pas monter un partage de fichiers NFS, sauf si vous désactivez le transfert sécurisé.
+
+# <a name="portal"></a>[Portail](#tab/azure-portal)
+
+1. Accédez au compte de stockage que vous avez créé.
+1. Sélectionnez **Configuration**.
+1. Sous **Transfert sécurisé requis**, sélectionnez **Désactivé**.
+1. Sélectionnez **Enregistrer**.
+
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Capture de l'écran de configuration du compte de stockage, sur lequel le transfert sécurisé est désactivé. " lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $False
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only false
 ```
 ---
 

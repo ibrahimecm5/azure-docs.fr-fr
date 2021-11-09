@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: 4194c277a8472f8834362de462d804db2a3b406d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4d99139e708f0b69b3ddacd40e380853dabf8b2b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798861"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077949"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Intégration de données avec Azure Data Factory et Azure Data Share
 
@@ -97,7 +97,7 @@ Dans Azure Data Factory, les services liés définissent les informations de con
 
 Dans la section *Transform data using mapping data flow* (Transformer les données à l’aide du flux de données de mappage), vous allez créer des flux de données de mappage. Parmi les bonnes pratiques relatives à la création de flux de données de mappage, il en existe une qui consiste à activer le mode débogage. Cela vous permet de tester la logique de transformation en quelques secondes sur un cluster Spark actif.
 
-Pour activer le débogage, cliquez sur le curseur **Débogage du flux de données** dans la barre supérieure du canevas de flux de données ou du canevas de pipeline quand vous avez des activités de **Flux de données**. Quand la boîte de dialogue de confirmation s’affiche, cliquez sur OK. Le cluster va prendre entre 5 et 7 minutes environ pour démarrer. Pendant l’initialisation, passez à *Ingérer des données d’Azure SQL DB dans ADLS Gen2 à l’aide de l’activité de copie*.
+Pour activer le débogage, cliquez sur le curseur **Débogage du flux de données** dans la barre supérieure du canevas de flux de données ou du canevas de pipeline quand vous avez des activités de **Flux de données**. Quand la boîte de dialogue de confirmation s’affiche, cliquez sur **OK**. Le cluster démarrera dans environ cinq à sept minutes. Pendant l’initialisation, passez à *Ingérer des données d’Azure SQL DB dans ADLS Gen2 à l’aide de l’activité de copie*.
 
 :::image type="content" source="media/lab-data-flow-data-share/configure10.png" alt-text="Configuration du portail 10":::
 

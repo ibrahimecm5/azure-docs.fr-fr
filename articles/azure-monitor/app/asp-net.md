@@ -2,18 +2,21 @@
 title: Configurer l’analyse pour ASP.NET avec Azure Application Insights | Microsoft Docs
 description: Configurez les outils d’analytique des performances, de la disponibilité et du comportement des utilisateurs de votre site web ASP.NET, hébergé en local ou dans Azure.
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/12/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a0a262564306448fd587a699b24982595506df50
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: c1609e40d83e7064f7a840e178333a229d12083f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740699"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070011"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Configurer Application Insights pour votre site web ASP.NET
 
 Cette procédure configure votre application web ASP.NET pour l’envoi de données de télémétrie à la fonctionnalité [Application Insights](./app-insights-overview.md) du service Azure Monitor. Elle fonctionne pour les applications ASP.NET hébergées sur vos propres serveurs IIS locaux ou dans le cloud. 
+
+> [!NOTE]
+> Une [offre .NET basée sur OpenTelemetry](opentelemetry-enable.md?tabs=net) est disponible en préversion. [Plus d’informations](opentelemetry-overview.md)
 
 ## <a name="prerequisites"></a>Prérequis
 Pour Application Insights à votre site web ASP.NET, vous devez :
@@ -51,6 +54,7 @@ Cette section vous guide tout au long de l’ajout automatique d’Application I
     ```xml
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
+
 4. Sélectionnez **Projet** > **Gérer les packages NuGet** > **Mises à jour**. Ensuite, mettez à jour chaque package NuGet `Microsoft.ApplicationInsights` vers la dernière version stable.   
 5. Exécutez votre application en sélectionnant **IIS Express**. Une application ASP.NET basique s’ouvre. Lorsque vous parcourez les pages du site, la télémétrie est envoyée à Application Insights.
 

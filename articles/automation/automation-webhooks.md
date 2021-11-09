@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 07/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ccdbb04942e946d251008187693ee948b960178
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e79feb7b45500a53bc7e13557aedcd1c0410554b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836926"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026446"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Démarrer un runbook depuis un Webhook
 
@@ -139,7 +139,7 @@ Ensuite, enregistrez et publiez le runbook révisé. Les exemples ci-dessous mon
 
 1. Entrez le **nom** du webhook. La date d’expiration par défaut pour le champ **Expire** est d’un an à partir de la date actuelle.
 
-1. Cliquez sur l’icône de copie ou appuyez sur <kbd>Ctrl+C</kbd> pour copier l’URL du webhook. Ensuite, enregistrez l’URL en lieu sûr.
+1. Cliquez sur l’icône de copie ou appuyez sur <kbd>Ctrl + C</kbd> pour copier l’URL du webhook. Ensuite, enregistrez l’URL en lieu sûr.
 
     :::image type="content" source="media/automation-webhooks/create-new-webhook.png" alt-text="Page Créer un webhook avec l’URL mise en évidence":::
 

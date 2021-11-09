@@ -1,7 +1,6 @@
 ---
 title: Exemples de code pour Azure Active Directory v1.0 | Microsoft Docs
 description: Fournit un index des exemples de code Azure Active Directory (point de terminaison v1.0), organisés par scénario.
-services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
@@ -14,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fab3983d4061b494fdadf9ab2c09f2827735e9da
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 89c96384400d9a8942021c0c8c6a9793f35de2f5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229959"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059468"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Exemples de code Azure Active Directory (point de terminaison v1.0)
 
@@ -75,16 +74,16 @@ Les exemples suivants illustrent des applications clientes publiques (applicatio
 - de manière silencieuse (avec l’authentification Windows intégrée sur Windows ou une combinaison nom d’utilisateur/mot de passe),
 - en déléguant la connexion interactive à un autre appareil (flux de code d’appareil utilisé sur les appareils qui ne fournissent pas de contrôles web).
 
-Application cliente | Plateforme | Flux/Grant | Appelle Microsoft Graph | Appelle une API web ASP.NET ou ASP.NET Core 2.x
------------------- | -------- | ---------- | -------------------- | -------------------------
-Bureau (WPF)           | ![Cette image affiche le logo .NET/C#](media/sample-v2-code/logo-net.png)  | Interactive | Partie de [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-Mobile (UWP)            | .![Cette image affiche le logo .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | Interactive | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Cet exemple utilise [WAM](/windows/uwp/security/web-account-manager), et non [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (application UWP utilisant ADAL.NET pour appeler une API web de locataire unique) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (application UWP utilisant ADAL.NET pour appeler une API web multilocataire)|
-Mobile (Android, iOS, UWP)   | ![Cette image affiche le logo .NET/C# (Xamarin)](media/sample-v2-code/logo-xamarin.png) | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
-Mobile (Android)           | ![Cette image affiche le logo Android](media/sample-v2-code/logo-android.png) | Interactive |   [android](https://github.com/Azure-Samples/active-directory-android) |
-Mobile (iOS)           | ![Cette image affiche iOS/Objective-C ou Swift](media/sample-v2-code/logo-ios.png) | Interactive |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-Bureau (Console)          | ![Cette image affiche le logo .NET/C#](media/sample-v2-code/logo-net.png) | Nom d’utilisateur / mot de passe </p>  Authentification Windows intégrée | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
-Bureau (Console)          | ![Cette image affiche le logo Java](media/sample-v2-code/logo-java.png) | Nom d’utilisateur / mot de passe | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Bureau (Console)           | ![Cette image affiche le logo .NET Core/C#](media/sample-v2-code/logo-netcore.png) | Flux de code d’appareil | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+| Application cliente | Plateforme | Flux/Grant | Appelle Microsoft Graph | Appelle une API web ASP.NET ou ASP.NET Core 2.x |
+|------------------ | -------- | ---------- | -------------------- | ------------------------- |
+| Bureau (WPF) | ![Cette image affiche le logo .NET/C#](media/sample-v2-code/logo-net.png) | Interactive | Partie de [`dotnet-native-multitarget`](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [`dotnet-native-desktop`](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [`dotnet-native-aspnetcore`](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [`dotnet-webapi-manual-jwt-validation`](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation) |
+| Mobile (UWP) | ![Cette image affiche le logo .NET/C#/UWP](media/sample-v2-code/logo-windows.png) | Interactive | [`dotnet-native-uwp-wam`](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Cet exemple utilise [WAM](/windows/uwp/security/web-account-manager), et non [ADAL.NET](https://aka.ms/adalnet) | [`dotnet-windows-store`](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (application UWP utilisant ADAL.NET pour appeler une API web monolocataire) </p> [`dotnet-webapi-multitenant-windows-store`](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (application UWP utilisant ADAL.NET pour appeler une API web multilocataire) |
+| Mobile (Android, iOS, UWP) | ![Cette image affiche le logo .NET/C# (Xamarin)](media/sample-v2-code/logo-xamarin.png) | Interactive | [`dotnet-native-multitarget`](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
+| Mobile (Android) | ![Cette image affiche le logo Android](media/sample-v2-code/logo-android.png) | Interactive | [`android`](https://github.com/Azure-Samples/active-directory-android) |
+| Mobile (iOS) | ![Cette image affiche iOS/Objective-C ou Swift](media/sample-v2-code/logo-ios.png) | Interactive | [`nativeClient-iOS`](https://github.com/azureadquickstarts/nativeclient-ios) |
+| Bureau (Console) | ![Cette image affiche le logo .NET/C#](media/sample-v2-code/logo-net.png) | Nom d’utilisateur / mot de passe </p> Authentification Windows intégrée | | [`dotnet-native-headless`](https://github.com/azure-samples/active-directory-dotnet-native-headless) |
+| Bureau (Console) | ![Cette image affiche le logo Java](media/sample-v2-code/logo-java.png) | Nom d’utilisateur / mot de passe | | [`java-native-headless`](https://github.com/Azure-Samples/active-directory-java-native-headless) |
+| Bureau (Console) | ![Cette image affiche le logo .NET Core/C#](media/sample-v2-code/logo-netcore.png) | Flux de code d’appareil | | [`dotnet-deviceprofile`](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile) |
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Applications de démon (accédant à des API web avec l’identité de l’application)
 

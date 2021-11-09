@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 07/30/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: d46a4f812d9fd6a4de89bb2e0e0f82fdaf48dca6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3f865d28452c6930ef53f5882e59570b07ef551
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524748"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016603"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Utiliser les commandes d’extension MongoDB pour gérer les données stockées dans les API d’Azure Cosmos DB pour MongoDB 
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -221,7 +221,7 @@ Le tableau suivant décrit les paramètres inclus dans la commande :
 | `offerThroughput` | `int` | Facultatif | Débit approvisionné à définir sur la base de données. Si ce paramètre n'est pas fourni, la valeur par défaut est la valeur minimum, 400 RU/s. * Pour spécifier un débit supérieur à 10 000 RU/s, le paramètre `shardKey` est obligatoire.|
 | `shardKey` | `string` | Obligatoire pour les collections avec un débit élevé | Chemin d'accès à la clé de partition pour la collection partitionnée. Ce paramètre est obligatoire si vous définissez plus de 10 000 RU/s dans `offerThroughput`.  S’il est spécifié, tous les documents insérés auront besoin de cette clé et de cette valeur. |
 | `autoScaleSettings` | `Object` | Obligatoire pour le [mode de mise à l’échelle automatique](../provision-throughput-autoscale.md) | Cet objet contient les paramètres associés au mode de capacité de mise à l’échelle automatique. Vous pouvez configurer la valeur `maxThroughput`, qui décrit le nombre d’unités de requête le plus élevé auquel la collection sera augmentée de manière dynamique. |
-| `indexes` | `Array` | Si vous le souhaitez, vous pouvez également configurer les index. Ce paramètre est pris en charge uniquement pour les comptes 3.6 et versions ultérieures. | Quand il est présent, un index sur _id est requis. Chaque entrée du tableau doit inclure une clé d’un ou plusieurs champs ainsi qu’un nom et peut contenir des options d’index. Par exemple, pour créer un index unique composé sur les champs a et b, utilisez l’entrée suivante : `{key: {a: 1, b: 1}, name:"a_1_b_1", unique: true}`.
+| `indexes` | `Array` | Si vous le souhaitez, vous pouvez également configurer les index. Ce paramètre est pris en charge uniquement pour les comptes 3.6 et versions ultérieures. | Quand il est présent, un index sur _id est requis. Chaque entrée du tableau doit inclure une clé d’un ou plusieurs champs ainsi qu’un nom et peut contenir des options d’index. Par exemple, pour créer un index unique composé sur les champs `a`et `b`, utilisez l’entrée suivante : `{key: {a: 1, b: 1}, name:"a_1_b_1", unique: true}`.
 
 ### <a name="output"></a>Output
 
@@ -316,7 +316,7 @@ Le tableau suivant décrit les paramètres inclus dans la commande :
 | `autoScaleSettings` | `Object` | Requis pour le [mode de mise à l’échelle automatique](../provision-throughput-autoscale.md). Cet objet contient les paramètres associés au mode de capacité de mise à l’échelle automatique. La valeur `maxThroughput` décrit le nombre d’unités de requête le plus élevé auquel la collection sera augmentée de manière dynamique. |
 | `indexes` | `Array` | Si vous le souhaitez, vous pouvez également configurer les index. Ce paramètre est pris en charge uniquement pour les comptes 3.6 et versions ultérieures. Quand ils sont présents, les index existants de la collection sont remplacés par l’ensemble d’index spécifié (y compris les index de suppression). Un index sur _id est requis. Chaque entrée du tableau doit inclure une clé d’un ou plusieurs champs ainsi qu’un nom et peut contenir des options d’index. Par exemple, pour créer un index unique composé sur les champs a et b, utilisez l’entrée suivante : `{key: {a: 1, b: 1}, name: "a_1_b_1", unique: true}`.
 
-## <a name="output"></a>Output
+### <a name="output"></a>Output
 
 Retourne une réponse de commande personnalisée par défaut. Consultez la [sortie par défaut](#default-output) de la commande personnalisée pour connaître les paramètres de la sortie.
 

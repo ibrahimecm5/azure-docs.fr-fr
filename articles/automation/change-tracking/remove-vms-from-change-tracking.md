@@ -1,34 +1,47 @@
 ---
-title: Supprimer des machines virtuelles de la fonctionnalité Suivi des modifications et inventaire d’Azure Automation
-description: Cet article explique comment supprimer des machines virtuelles de la fonctionnalité Suivi des modifications et inventaire.
+title: Supprimer des machines de la fonctionnalité Suivi des modifications et inventaire d’Azure Automation
+description: Cet article explique comment supprimer des machines Azure et non Azure de Suivi des modifications et inventaire.
 services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 3a39294c2ecfe7b26cb3ef3d65c11cbcd665d220
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.date: 10/26/2021
+ms.openlocfilehash: 810b2ac388b0f387183f735437ccc2b2a3918cfd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110654122"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026296"
 ---
-# <a name="remove-vms-from-change-tracking-and-inventory"></a>Supprimer des machines virtuelles de Change Tracking et Inventory
+# <a name="remove-machines-from-change-tracking-and-inventory"></a>Supprimer des machines de la fonctionnalité Suivi des modifications et inventaire
 
-Une fois que vous avez terminé le suivi des modifications sur les machines virtuelles de votre environnement, vous pouvez cesser de les gérer avec la fonctionnalité [Suivi des modifications et inventaire](overview.md) . Pour arrêter leur gestion, vous allez modifier la requête de recherche enregistrée `MicrosoftDefaultComputerGroup` dans l’espace de travail Log Analytics qui est lié à votre compte Automation.
+Une fois que vous avez terminé le suivi des modifications sur les machines Azure ou non Azure de votre environnement, vous pouvez cesser de les gérer avec la fonctionnalité [Suivi des modifications et inventaire](overview.md). Pour arrêter leur gestion, vous allez modifier la requête de recherche enregistrée `MicrosoftDefaultComputerGroup` dans l’espace de travail Log Analytics qui est lié à votre compte Automation.
 
 ## <a name="sign-into-the-azure-portal"></a>Se connecter au portail Azure
 
 Connectez-vous au [portail Azure](https://portal.azure.com).
 
-## <a name="to-remove-your-vms"></a>Pour supprimer vos machines virtuelles
+## <a name="to-remove-your-machines"></a>Pour supprimer des machines
 
 1. Dans le portail Azure, lancez **Cloud Shell** dans le volet de navigation en haut du portail. Si vous ne connaissez pas Azure Cloud Shell, consultez [Vue d’ensemble d’Azure Cloud Shell](../../cloud-shell/overview.md).
 
-2. Utilisez la commande suivante pour identifier l’UUID d’une machine que vous souhaitez supprimer de la gestion.
+2. Utilisez la méthode suivante pour identifier l’UUID d’une machine virtuelle Azure ou d’une machine non-Azure que vous souhaitez supprimer de la gestion.
 
-    ```azurecli
-    az vm show -g MyResourceGroup -n MyVm -d
-    ```
+   # <a name="azure-vm"></a>[Microsoft Azure](#tab/azure-vm)
+
+   ```azurecli
+   az vm show -g MyResourceGroup -n MyVm -d
+   ```
+
+   # <a name="non-azure-machine"></a>[Machine non-Azure](#tab/non-azure-machine)
+
+   ```kusto
+   Heartbeat
+   | where TimeGenerated > ago(30d)
+   | where ComputerEnvironment == "Non-Azure"
+   | summarize by Computer, VMUUID
+   ```
+
+   ---
 
 3. Dans le portail Azure, accédez à **Espaces de travail Log Analytics**. Sélectionnez votre espace de travail dans la liste.
 

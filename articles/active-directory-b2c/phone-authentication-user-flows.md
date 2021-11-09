@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 414884fe0ef72b7628c99dd4b6ca39d4e851f9fe
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 5c63cb4f4e2ce41fa488e49201ba90bfc4b16222
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035806"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012830"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>Configurer l’inscription et la connexion par téléphone pour les flux d’utilisateurs
 
@@ -75,10 +75,10 @@ Voici un exemple montrant comment ajouter l’inscription par téléphone à un 
 
     ![Bouton Créer un flux d’utilisateur](./media/phone-authentication-user-flows/select-version.png)
 
-1. Entrez un **Nom** pour le flux d’utilisateur. Par exemple, *signupsignin1*.
+1. Entrez un **nom** pour le flux d’utilisateur, par exemple *signupsignin1*.
 1. Dans la section **Fournisseurs d’identité**, sous **Comptes locaux**, sélectionnez **Inscription par téléphone**.
 
-   ![Option Inscription par téléphone du flux d’utilisateur sélectionnée](media/phone-authentication-user-flows/user-flow-phone-signup.png)
+   ![Option **Inscription par téléphone** du flux d’utilisateur sélectionnée](media/phone-authentication-user-flows/user-flow-phone-signup.png)
 
 1. Sous **Fournisseurs d’identité sociaux**, sélectionnez tout autre fournisseur d’identité que vous souhaitez autoriser pour ce flux d’utilisateur.
 

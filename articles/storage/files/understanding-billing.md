@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4656c98718d024a43096081df2ac662b38b2efb8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6cac0f689592aa6840520c87438add4bda987b32
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163003"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019093"
 ---
 # <a name="understand-azure-files-billing"></a>Comprendre la facturation d’Azure Files
 Azure Files propose deux modèles de facturation distincts : provisionné et paiement à l’utilisation. Le modèle provisionné est disponible uniquement pour les partages de fichiers Premium, qui sont déployés dans le type de compte de stockage **FileStorage**. Le modèle de paiement à l’utilisation est disponible uniquement pour les partages de fichiers standard, qui sont déployés dans le type de compte de stockage **Usage général version 2 (GPv2)** . Cet article explique comment fonctionnent les deux modèles pour vous aider à comprendre votre facture mensuelle Azure Files.
@@ -151,6 +151,39 @@ Il existe cinq catégories de transactions de base : écriture, liste , lecture
 
 > [!Note]  
 > NFS 4.1 est disponible uniquement pour les partages de fichiers Premium, qui utilisent le modèle de facturation provisionné. Les transactions n’affectent pas la facturation pour les partages de fichiers Premium.
+
+## <a name="value-add-services"></a>Services à valeur ajoutée
+
+### <a name="azure-file-sync"></a>Azure File Sync
+Si vous envisagez d’utiliser Azure File Sync, tenez compte des éléments suivants lors de l’évaluation des coûts :
+
+#### <a name="server-fee"></a>Frais liés au serveur
+Pour chaque serveur que vous avez connecté à un groupe de synchronisation, des frais supplémentaires de 5 USD sont facturés. Ces frais sont indépendants du nombre de points de terminaison du serveur. Par exemple, si vous avez un serveur qui contient trois points de terminaison différents, les frais encourus ne seront que de 5 USD. Un serveur de synchronisation est gratuit par service de synchronisation de stockage. 
+
+#### <a name="data-cost"></a>Coût des données
+Le coût des données au repos dépend du niveau de facturation que vous choisissez. Il s’agit du coût de stockage des données dans le partage de fichiers Azure dans le cloud, y compris le stockage des instantanés.  
+
+#### <a name="cloud-enumeration-scans-cost"></a>Coût des analyses d’énumération du cloud
+Azure File Sync énumère le partage de fichiers Azure dans le cloud une fois par jour pour découvrir les modifications qui ont été apportées directement au partage afin qu’elles puissent être synchronisées avec les points de terminaison de serveur. Cette analyse génère des transactions qui sont facturées au compte de stockage à raison de deux transactions LIST par répertoire et par jour. Vous pouvez entrer ce chiffre dans la [calculatrice de prix](https://azure.microsoft.com/pricing/calculator/) pour estimer le coût de l’analyse.  
+
+> [!Tip]  
+> Si vous ne savez pas combien de dossiers vous avez, consultez l’outil TreeSize de JAM Software GmbH.
+
+#### <a name="churn-and-tiering-costs"></a>Coûts d’attrition et de hiérarchisation
+Lorsque les fichiers sont modifiés sur les points de terminaison du serveur, les modifications sont chargées sur le partage du cloud, ce qui génère des transactions. Lorsque la hiérarchisation cloud est activée, des transactions supplémentaires sont générées pour la gestion des fichiers hiérarchisés, y compris les E/S qui se produisent sur les fichiers hiérarchisés, en plus des coûts de sortie. La quantité et le type de transactions sont difficiles à prédire en raison de l’attrition et de l’efficacité du cache, mais vous pouvez utiliser vos modèles de transaction précédents pour prédire les coûts futurs si vous disposez d’un seul partage de fichiers dans votre compte de stockage. Pour plus d’informations sur la façon d’afficher les transactions précédentes, consultez [Choix d’un niveau de facturation](#choosing-a-billing-tier).  
+
+#### <a name="choosing-a-billing-tier"></a>Choix d’un niveau de facturation
+Pour les clients d’Azure File Sync, nous recommandons de choisir des partages de fichiers standard plutôt que des partages de fichiers premium. En effet, grâce à Azure File Sync, les clients bénéficient de la faible latence locale qu’ils ont toujours eue, de sorte que les performances supérieures fournies par les partages de fichiers premium ne sont pas nécessaires. Lors de la migration initiale vers Azure Files via Azure File Sync, nous recommandons le niveau Transaction optimisée en raison du grand nombre de transactions effectuées pendant la migration. Une fois la migration terminée, vous pouvez intégrer vos transactions précédentes dans la [calculatrice de prix](https://azure.microsoft.com/pricing/calculator/) pour déterminer le niveau le plus adapté à votre charge de travail. 
+
+Pour voir les transactions précédentes :
+1. Accédez à votre compte de stockage et sélectionnez **Métriques** dans la barre de navigation de gauche.
+2. Sélectionnez **Étendue** comme nom de compte de stockage, **Espace de noms de métrique** pour « Fichier », **Métrique** pour « Transactions » et **Agrégation** pour « Somme ».
+3. Sélectionnez **Appliquer le fractionnement**.
+4. Sélectionnez **Valeurs** pour « Nom d’API ». Sélectionnez les valeurs souhaitées pour **Limite** et **Tri**.
+5. Sélectionnez la période de temps de votre choix.
+
+> [!Note]  
+> Veillez à afficher les transactions sur une période donnée pour avoir une meilleure idée du nombre moyen de transactions. Assurez-vous que la période choisie ne chevauche pas l’approvisionnement initial. Multipliez le nombre moyen de transactions pendant cette période pour obtenir une estimation du nombre de transactions pour un mois entier.
 
 ## <a name="file-storage-comparison-checklist"></a>Liste de contrôle pour la comparaison du stockage de fichiers
 Pour évaluer correctement le coût d’Azure Files par rapport aux autres options de stockage de fichiers, posez-vous les questions suivantes :

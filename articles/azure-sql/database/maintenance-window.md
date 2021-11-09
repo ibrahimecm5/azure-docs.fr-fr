@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
 ms.date: 10/15/2021
-ms.openlocfilehash: 123ea592e46c270830bccef1dc06f9caa3e8fd6e
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c73ee217fd802a839b565cd1174c94f8da288a0e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071870"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026048"
 ---
 # <a name="maintenance-window-preview"></a>Fenêtre de maintenance (préversion)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,8 +42,10 @@ Par défaut, la stratégie de maintenance Azure SQL bloque les mises à jour à
 
 Pour les mises à jour de maintenance, vous pouvez choisir une heure adaptée à vos ressources Azure SQL en choisissant parmi deux créneaux de fenêtres de maintenance supplémentaires :
  
-* En semaine, de 22 h 00 à 6 h 00 heure locale, du lundi au jeudi
-* Fenêtre week-end, de 22h00 à 6h00 heure locale, du vendredi au dimanche
+* Fenêtre **Jour ouvrable** : De 22 h à 6 h, heure locale, du lundi au jeudi
+* Fenêtre **Week-end** : De 22 h à 6 h, heure locale, du vendredi au dimanche
+
+Les jours de fenêtre de maintenance cités indiquent le jour de début de chaque fenêtre de maintenance de huit heures. Par exemple, « De 22 h à 6 h, heure locale, du lundi au jeudi » signifie que les fenêtres de maintenance commencent à 22 h, heure locale, chaque jour (du lundi au jeudi) et se terminent à 6 h, heure locale, le jour suivant (du mardi au vendredi).
 
 Une fois que la fenêtre de maintenance est sélectionnée et que la configuration du service est terminée, les maintenances planifiées auront lieu uniquement pendant la fenêtre de maintenance de votre choix. Si les événements de maintenance se terminent généralement dans une seule fenêtre, certains d’entre eux peuvent s’étendre sur deux ou plusieurs fenêtres adjacentes.   
 

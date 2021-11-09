@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22de8b7775d6825d99afe8eb4f0dc043f8ec639c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724247"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031553"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Démarrage rapide : Ajouter des indicateurs de fonctionnalités à une application Azure Functions
 
@@ -81,7 +81,7 @@ Ce projet utilise l’[injection de dépendances dans .NET Azure Functions](../a
 
 3. Mettez à jour la méthode `ConfigureAppConfiguration` et ajoutez le fournisseur Azure App Configuration comme source de configuration supplémentaire en appelant `AddAzureAppConfiguration()`. 
 
-   La méthode `UseFeatureFlags()` indique au fournisseur de charger les indicateurs de fonctionnalités. Tous les indicateurs de fonctionnalités étant par défaut mis en cache pendant 30 secondes, les éventuelles modifications ne sont détectées qu’au terme de ce délai. Vous pouvez changer cet intervalle d’expiration en définissant la propriété `FeatureFlagsOptions.CacheExpirationInterval` passée à la méthode `UseFeatureFlags`. 
+    La méthode `UseFeatureFlags()` indique au fournisseur de charger les indicateurs de fonctionnalités. Tous les indicateurs de fonctionnalités étant par défaut mis en cache pendant 30 secondes, les éventuelles modifications ne sont détectées qu’au terme de ce délai. Vous pouvez changer cet intervalle d’expiration en définissant la propriété `FeatureFlagsOptions.CacheExpirationInterval` passée à la méthode `UseFeatureFlags`. 
 
     ```csharp
     public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
@@ -94,8 +94,9 @@ Ce projet utilise l’[injection de dépendances dans .NET Azure Functions](../a
         });
     }
     ```
-   > [!TIP]
-   > Si vous souhaitez limiter les configurations chargées dans votre application aux indicateurs de fonctionnalités, vous pouvez appeler `Select("_")` pour charger uniquement une clé factice « _ » non existante. Par défaut, toutes les valeurs de clé de configuration dans votre magasin App Configuration sont chargées si aucune méthode `Select` n’est appelée.
+
+    > [!TIP]
+    > Si vous souhaitez limiter les configurations chargées dans votre application aux indicateurs de fonctionnalités, vous pouvez appeler `Select("_")` pour charger uniquement une clé factice `"_"` non existante. Par défaut, toutes les valeurs de clé de configuration dans votre magasin App Configuration sont chargées si aucune méthode `Select` n’est appelée.
 
 4. Mettez à jour la méthode `Configure` pour rendre le gestionnaire de fonctionnalités et les services Azure App Configuration accessibles par le biais de l’injection de dépendances.
 

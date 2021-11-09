@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 08/27/2019
-ms.openlocfilehash: 534aa867ed763292ad36b74dd500eca77e5c2559
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5552faa01df1fd21af75c638549770c737920d9d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161697"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031420"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Tutoriel : Ajouter une instance managée SQL Managed Instance à un groupe de basculement
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -985,7 +985,7 @@ Créez le groupe de basculement à l’aide du portail Azure.
 
 1. Dans le menu de gauche du **Portail Azure**, sélectionnez [Azure SQL](https://portal.azure.com). Si **Azure SQL** ne figure pas dans la liste, sélectionnez **Tous les services**, puis tapez `Azure SQL` dans la zone de recherche. (Facultatif) Sélectionnez l’étoile en regard d’**Azure SQL** pour l’ajouter aux favoris et l’ajouter en tant qu’élément dans le volet de navigation de gauche. 
 1. Sélectionnez l’instance managée principale que vous avez créée dans le cadre de la première section, par exemple `sql-mi-primary`. 
-1. Sous **Paramètres**, accédez à **Groupes de basculement d’instance**, puis choisissez **Ajouter un groupe** pour ouvrir la page **Groupe de basculement d’instance**. 
+1. Sous **Gestion des données**, accédez à **Groupes de basculement**, puis choisissez **Ajouter un groupe** pour ouvrir la page **Groupe de basculement d’instance**. 
 
    ![Ajouter un groupe de basculement](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b782de623deac68e9a5a305e5cfd1e7ad8578040
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c08b2b8e11aa4086c5861733a4a0d49529c416e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775718"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032009"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à SiteIntel
 
@@ -98,7 +98,7 @@ Pour activer l’authentification unique Azure AD dans le portail Azure, effectu
 
 1. Dans la section **Certificat de signature SAML** de la page **Configurer l’authentification unique avec SAML**, sélectionnez le bouton **Copier** pour copier l’URL mentionnée dans la zone **URL des métadonnées de fédération d’application**.
 
-    ![Capture d’écran du bouton de copie de l’« URL des métadonnées de fédération d’application »](common/copy-metadataurl.png)
+    ![Capture d’écran du bouton de copie « URL des métadonnées de fédération d’application »](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 

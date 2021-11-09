@@ -5,17 +5,17 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 10/26/2021
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02be8a37814eb37e50425b7593b7717b1f0a292e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92545393"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068345"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Gestion automatique des Modules et des appareils IoT avec le portail Azure
 
@@ -56,13 +56,13 @@ Avant de pouvoir créer une configuration, vous devez spécifier les appareils o
 
 ## <a name="create-a-configuration"></a>Créer une configuration
 
-1. Accédez à votre IoT Hub dans le [Portail Azure](https://portal.azure.com). 
+1. Accédez à votre IoT Hub dans le [Portail Azure](https://portal.azure.com).
 
-2. Sélectionnez **Configuration de l’appareil IoT**.
+2. Sélectionnez **Configurations** dans le volet de navigation de gauche.
 
 3. Sélectionnez **Ajouter une configuration d’appareil** ou **Ajouter une configuration de Module**.
 
-   ![Ajouter une configuration d’appareil ou Ajouter une configuration de Module](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
+   :::image type="content" source="./media/iot-hub-automatic-device-management/create-automatic-configuration.png" alt-text="Capture d’écran montrant comment ajouter une configuration." border="true":::
 
 La création d’une configuration nécessite cinq étapes. Les sections suivantes les décrivent en détail. 
 

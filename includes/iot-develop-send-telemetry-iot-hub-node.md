@@ -7,22 +7,22 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d4ff330662cab9c9ef573af3ea834d15ac3426a5
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d448a7179e2fa512690dba638747010ec292427c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725462"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521046"
 ---
-[![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
+[![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript)
 
-Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Vous utilisez l’interface Azure CLI pour créer un hub Azure IoT et un appareil. Ensuite, vous utilisez un exemple Azure IoT device SDK pour exécuter un contrôleur de température simulé, le connecter en toute sécurité au hub et envoyer des données de télémétrie.
+Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Vous utilisez l’interface Azure CLI pour créer un hub Azure IoT et un appareil. Ensuite, vous utilisez un exemple d’Azure IoT device SDK pour exécuter un contrôleur de température, le connecter en toute sécurité au hub et envoyer de la télémétrie. L’exemple d’application de contrôleur de température s’exécute sur votre ordinateur local et génère des données de capteur simulées à envoyer à IoT Hub.
 
 ## <a name="prerequisites"></a>Prérequis
 Ce guide de démarrage rapide s’exécute sur Windows, Linux et Raspberry Pi. Il a été testé sur les versions de système d’exploitation et d’appareil suivantes :
 
 - Windows 10
-- Ubuntu 20.04 LTS exécuté sur le sous-système Windows pour Linux (WSL)
+- Ubuntu 20.04 LTS
 - Système d’exploitation Raspberry Pi version 10 (Raspian) exécuté sur un Raspberry Pi 3 modèle B+
 
 Installez les prérequis suivants sur votre ordinateur de développement, sauf mention prévue pour Raspberry Pi :
@@ -37,8 +37,8 @@ Installez les prérequis suivants sur votre ordinateur de développement, sauf m
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-simulated-device"></a>Exécuter un appareil simulé
-Dans cette section, vous allez utiliser le kit SDK Node.js pour envoyer des messages d’un appareil simulé à votre hub IoT. Vous allez exécuter un exemple qui implémente un contrôleur de température avec deux capteurs de thermostat.
+## <a name="run-a-device"></a>Exécuter un appareil
+Dans cette section, vous allez utiliser le Kit de développement logiciel (SDK) Node.js pour envoyer des messages d’un appareil à votre hub IoT. Vous allez exécuter un exemple qui implémente un contrôleur de température avec deux capteurs de thermostat.
 
 1. Ouvrez une nouvelle console telle que Windows CMD, PowerShell ou Bash. Dans la procédure suivante, vous allez utiliser cette console pour installer le kit SDK Node.js et travailler avec un exemple de code Node.js.
 
@@ -55,12 +55,12 @@ Dans cette section, vous allez utiliser le kit SDK Node.js pour envoyer des mes
 
     **Windows**
     ```console
-    cd azure-iot-sdk-node\device\samples\javascript\pnp
+    cd azure-iot-sdk-node\device\samples\javascript
     ```
 
     **Système d’exploitation Linux ou Raspberry Pi**
     ```console
-    cd azure-iot-sdk-node/device/samples/javascript/pnp
+    cd azure-iot-sdk-node/device/samples/javascript
     ```
 
 1. Installez le Kit de développement logiciel (SDK) Azure IoT Node.js et les dépendances nécessaires :
@@ -71,7 +71,7 @@ Dans cette section, vous allez utiliser le kit SDK Node.js pour envoyer des mes
 
     Cette commande installe les dépendances appropriées comme spécifié dans le fichier *package.json* du répertoire des exemples d’appareils.
 
-1. Définissez les deux variables d’environnement suivantes pour permettre à votre appareil simulé de se connecter à Azure IoT.
+1. Définissez les deux variables d’environnement suivantes pour permettre à votre appareil de se connecter à Azure IoT.
     * Définissez une variable d’environnement appelée `IOTHUB_DEVICE_CONNECTION_STRING`. Pour la valeur de la variable, utilisez la chaîne de connexion de l’appareil que vous avez enregistrée dans la section précédente.
     * Définissez une variable d’environnement appelée `IOTHUB_DEVICE_SECURITY_TYPE`. Pour la variable, utilisez la valeur de chaîne littérale `connectionString`.
 
@@ -101,7 +101,7 @@ Dans cette section, vous allez utiliser le kit SDK Node.js pour envoyer des mes
 1. Exécutez l’exemple de code suivant :
 
     ```console
-    node pnpTemperatureController.js
+    node pnp_temperature_controller.js
     ```
     > [!NOTE]
     > Cet exemple de code utilise Azure IoT Plug-and-Play, qui vous permet d’intégrer des appareils intelligents dans vos solutions sans aucune configuration manuelle.  Par défaut, la plupart des exemples de cette documentation utilisent IoT Plug-and-Play. Pour en savoir plus sur les avantages et les cas d’utilisation d’IoT PnP, consultez [Qu’est ce qu’IoT Plug-and-Play ?](../articles/iot-develop/overview-iot-plug-and-play.md).
@@ -133,7 +133,7 @@ Pour lire les données de télémétrie envoyées par les composants d’apparei
 
 Pour afficher la télémétrie de l’appareil avec Azure CLI :
 
-1. Exécutez la commande [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) pour surveiller les événements envoyés par l’appareil simulé à votre hub IoT. Utilisez les noms que vous avez créés précédemment dans Azure IoT pour votre appareil et le hub IoT.
+1. Exécutez la commande [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) pour surveiller les événements envoyés par l’appareil à votre hub IoT. Utilisez les noms que vous avez créés précédemment dans Azure IoT pour votre appareil et le hub IoT.
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 2bae7f2466363861afe99d37748e7ea41fc0e1c9
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: da2f6977890f7b1d6537cb557635733a7fcb1c5a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046636"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058233"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Connecter une application Mongoose Node.js à Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -74,25 +74,26 @@ Après avoir créé la base de données, vous utiliserez son nom dans la variabl
 
 4. Importez les dépendances dans votre `index.js` fichier.
 
-    ```JavaScript
+   ```javascript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
 5. Ajoutez la chaîne de connexion Cosmos DB et le nom Cosmos DB au fichier ```.env```. Remplacez les espaces réservés {cosmos-account-name} et {dbname} par le nom de votre compte Cosmos et le nom de la base de données, sans les symboles de l’accolade.
 
-    ```JavaScript
-   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+   ```javascript
+   // You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
    COSMOSDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
    COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
-    ```
+   ```
 
 6. Connectez-vous à Cosmos DB à l’aide du framework Mongoose en ajoutant le code suivant à la fin du fichier index.js.
-    ```JavaScript
+
+   ```javascript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
         username: process.env.COSMOSDB_USER,
@@ -105,8 +106,9 @@ Après avoir créé la base de données, vous utiliserez son nom dans la variabl
     .then(() => console.log('Connection to CosmosDB successful'))
     .catch((err) => console.error(err));
     ```
-    >[!Note]
-    > Ici, les variables d’environnement sont chargées à l’aide de process.env.{nomVariable} en utilisant le package npm « dotenv ».
+
+    >[!NOTE]
+    > Ici, les variables d’environnement sont chargées à l’aide de process.env.{variableName} en utilisant le package npm `dotenv`.
 
     Une fois connecté à Azure Cosmos DB, vous pouvez commencer à configurer des modèles d’objet dans Mongoose.
 

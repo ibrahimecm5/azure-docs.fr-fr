@@ -13,20 +13,20 @@ ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f73951e34ada242dd70b9e9f99839d3072a52f76
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 9f7cb3e5869070e8120e39b21c2708887505043c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223745"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050258"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Plateforme d’identités Microsoft et flux de code d’autorisation OAuth
 
-L'octroi d'un code d'autorisation OAuth 2.0 peut servir dans les applications qui sont installées sur un périphérique pour accéder à des ressources protégées, comme des API Web. Avec la mise en œuvre de la plateforme d’identités Microsoft d’OAuth 2.0, vous pouvez ajouter une connexion et un accès API à vos applications mobiles et de bureau.
+L'octroi d'un code d'autorisation OAuth 2.0 peut servir dans les applications qui sont installées sur un périphérique pour accéder à des ressources protégées, comme des API Web. En implémentant OAuth 2.0 et Open ID Connect (OIDC) sur la plateforme d’identités Microsoft, vous pouvez ajouter une connexion et un accès API à vos applications mobiles et de bureau.
 
 Cet article explique comment programmer directement par rapport au protocole dans votre application en utilisant n’importe quel langage.  Dans la mesure du possible, nous vous recommandons d’utiliser les bibliothèques d’authentification Microsoft (MSAL) prises en charge au lieu d’[acquérir des jetons et d’appeler des API web sécurisées](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Jetez également un coup d’œil aux [exemples d’applications qui utilisent MSAL](sample-v2-code.md).
 
-Le flux de code d’autorisation OAuth 2.0 est décrit dans la [section 4.1 des spécifications OAuth 2.0](https://tools.ietf.org/html/rfc6749). Il est utilisé pour exécuter des activités d’authentification et d’autorisation dans la majorité des types d’applications, notamment les [applications monopages](v2-app-types.md#single-page-apps-javascript), les [applications web](v2-app-types.md#web-apps) et les [applications installées de façon native](v2-app-types.md#mobile-and-native-apps). Le flux permet aux applications d’acquérir en toute sécurité des jetons d’accès (access_tokens) utilisables pour accéder à des ressources sécurisées par la plateforme d’identités Microsoft, ainsi que des jetons d’actualisation pour obtenir des jetons d’accès supplémentaires, ainsi que des jetons d’identification pour l’utilisateur connecté.
+Le flux de code d’autorisation OAuth 2.0 est décrit dans la [section 4.1 des spécifications OAuth 2.0](https://tools.ietf.org/html/rfc6749). Grâce à OIDC, il est utilisé pour exécuter des activités d’authentification et d’autorisation dans la majorité des types d’applications, notamment les [applications monopages](v2-app-types.md#single-page-apps-javascript), les [applications web](v2-app-types.md#web-apps) et les [applications installées de façon native](v2-app-types.md#mobile-and-native-apps). Le flux permet aux applications d’acquérir en toute sécurité des jetons d’accès (access_tokens) utilisables pour accéder à des ressources sécurisées par la plateforme d’identités Microsoft, ainsi que des jetons d’actualisation pour obtenir des jetons d’accès supplémentaires, ainsi que des jetons d’identification pour l’utilisateur connecté.
 
 [!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | Obligatoire    | La valeur `{tenant}` dans le chemin d’accès de la requête peut être utilisée pour contrôler les utilisateurs qui peuvent se connecter à l’application. Les valeurs autorisées sont `common`, `organizations`, `consumers` et les identificateurs du client. Pour plus d’informations, consultez les [principes de base du protocole](active-directory-v2-protocols.md#endpoints). Notez que dans les scénarios d’invités, où vous connectez l’utilisateur d’un locataire à un autre locataire, vous *devez* impérativement fournir l’identificateur du locataire pour connecter correctement l’utilisateur au locataire des ressources.|
 | `client_id`   | Obligatoire    | L’**ID (client) d’application** attribué à votre application par l’environnement [Inscriptions d’applications du portail Azure](https://go.microsoft.com/fwlink/?linkid=2083908).  |
 | `response_type` | Obligatoire    | Doit inclure `code` pour le flux de code d’autorisation. Peut également inclure `id_token` ou `token` si vous utilisez le [flux hybride](#request-an-id-token-as-well-hybrid-flow). |
-| `redirect_uri`  | obligatoire | L’URI de redirection de votre application, vers lequel votre application peut envoyer et recevoir des réponses d’authentification. Il doit correspondre exactement à l’un des URI de redirection enregistrés dans le portail, auquel s’ajoute le codage dans une URL. Pour les applications mobiles et natives, vous devez utiliser l’une des valeurs recommandées : `https://login.microsoftonline.com/common/oauth2/nativeclient` pour les applications utilisant des navigateurs incorporés ou `http://localhost` pour les applications qui utilisent des navigateurs système. |
+| `redirect_uri` | obligatoire | redirect_uri de votre application, où les réponses d’authentification peuvent être envoyées et reçues par votre application. Il doit correspondre exactement à l’un des URI de redirection enregistrés dans le portail, auquel s’ajoute le codage dans une URL. Pour les applications mobiles et natives, vous devez utiliser l’une des valeurs recommandées : `https://login.microsoftonline.com/common/oauth2/nativeclient` pour les applications utilisant des navigateurs incorporés ou `http://localhost` pour les applications qui utilisent des navigateurs système. |
 | `scope`  | Obligatoire    | Liste séparée par des espaces d’ [étendues](v2-permissions-and-consent.md) pour lesquelles vous souhaitez que l’utilisateur donne son consentement.  Pour le tronçon `/authorize` de la requête, cela peut couvrir plusieurs ressources, ce qui permet à votre application d’obtenir le consentement pour les multiples API que vous souhaitez appeler. |
 | `response_mode`   | recommandé | Spécifie la méthode à utiliser pour envoyer le jeton résultant à votre application. Il peut s'agir d'une des méthodes suivantes :<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` fournit le code en tant que paramètre d’une chaîne de requête sur votre URI de redirection. Si vous demandez un jeton ID à l’aide du flux implicite, vous ne pouvez pas utiliser `query` comme indiqué dans les [spécifications OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Si vous ne demandez que le code, vous pouvez utiliser `query`, `fragment` ou `form_post`. `form_post` exécute une requête POST contenant le code pour votre URI de redirection. |
 | `state`                 | recommandé | Une valeur incluse dans la requête, qui sera également renvoyée dans la réponse de jeton. Il peut s’agir d’une chaîne du contenu de votre choix. Une valeur unique générée de manière aléatoire est généralement utilisée pour [empêcher les falsifications de requête intersite](https://tools.ietf.org/html/rfc6749#section-10.12). La valeur peut également encoder les informations sur l’état de l’utilisateur dans l’application avant la requête d’authentification, comme la page ou la vue sur laquelle il était. |
@@ -224,7 +224,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="request-an-access-token-with-a-certificate-credential"></a>Demander un jeton d’accès avec des informations d’identification de certificat
 
-```HTTP
+```http
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded

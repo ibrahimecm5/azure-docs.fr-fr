@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 77ec7a7dad4b215ae22bf3766172f1e92e932593
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 344b3aeba1c10e3a66d01458800d771ca31dd3a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736203"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056431"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Fonctionnalités de transaction de la place de marché commerciale
 
@@ -59,7 +59,7 @@ Selon l’option Transaction choisie, les frais d’abonnement se présentent ai
 
 - **Tarification par abonnement** : les frais de licence logicielle sont facturés mensuellement ou annuellement dans le cadre d’un abonnement selon un tarif fixe ou par poste. Les frais d’abonnement récurrents ne sont pas calculés au prorata en cas d’annulation en cours de trimestre ou en cas de services non utilisés. Les frais d’abonnement réactualisés peuvent être facturés au prorata si le client met à niveau ou rétrograde son abonnement au milieu de la durée de l’abonnement.
 - **Tarification basée sur l’utilisation** : pour les offres de machines virtuelles Azure, les clients sont facturés en fonction de l’étendue de leur utilisation de l’offre. Pour les images Machines Virtuelles, les frais Place de marché Azure facturés aux clients sont basés sur l’utilisation réelle des machines virtuelles déployées à partir de ces images de machine virtuelle, selon un tarif horaire convenu par les éditeurs. Le tarif horaire peut être fixe ou variable en fonction de la taille des machines virtuelles. Les heures non terminées sont facturées à la minute. Les plans sont facturés tous les mois.
-- **Tarification limitée** : pour les offres Azure Application et les offres SaaS, les éditeurs peuvent utiliser le [service de mesure de la place de marché Microsoft Azure](marketplace-metering-service-apis.md) pour facturer la consommation en fonction des dimensions de mesure personnalisées qu’ils configurent. Ces modifications s’ajoutent aux frais mensuels ou annuels inclus dans le contrat (droit d’utilisation). Exemples de dimensions de mesure personnalisée : bande passante, tickets ou e-mails. Les éditeurs peuvent définir une ou plusieurs dimensions mesurables pour chaque plan, avec un maximum de 30 par offre. Les éditeurs sont chargés d’effectuer le suivi personnel de l’utilisation pour chaque mesure définie dans l’offre. Les événements doivent être signalés à Microsoft dans un délai d’une heure. Celui-ci facture ensuite les clients en fonction des informations collectées par les éditeurs pour la période de facturation applicable.
+- **Tarification limitée** : pour les offres Azure Application et les offres SaaS, les éditeurs peuvent utiliser le [service de mesure de la place de marché Microsoft Azure](marketplace-metering-service-apis.md) pour facturer la consommation en fonction des dimensions de mesure personnalisées qu’ils configurent. Ces modifications s’ajoutent aux frais mensuels ou annuels inclus dans le contrat (droit d’utilisation). Exemples de dimensions de mesure personnalisée : bande passante, tickets ou e-mails. Les éditeurs peuvent définir une ou plusieurs dimensions mesurables pour chaque plan, avec un maximum de 30 par offre. Les éditeurs sont chargés d’effectuer le suivi personnel de l’utilisation pour chaque mesure définie dans l’offre. Les événements doivent être signalés à Microsoft dans l’heure qui suit leur survenance. Celui-ci facture ensuite les clients en fonction des informations collectées par les éditeurs pour la période de facturation applicable.
 
 > [!NOTE]
 > Les offres qui sont facturées en fonction de la consommation après l’utilisation d’une solution ne sont pas éligibles à un remboursement.
@@ -81,13 +81,13 @@ Les offres de machines virtuelles et Azure Application sont adaptées si vous so
 
 ### <a name="usage-based-and-subscription-pricing"></a>Tarification basée sur l’utilisation et les abonnements
 
-Quand vous publiez une offre basée sur l’utilisateur ou une transaction d’abonnement, Microsoft fournit la technologie et les services nécessaires pour traiter les achats, retours et rétrofacturations des licences logicielles. Dans ce scénario, l’éditeur autorise Microsoft à agir en tant qu’agent. L’éditeur permet à Microsoft de faciliter la transaction de gestion des licences logicielles. L’éditeur conserve votre désignation en tant que vendeur, fournisseur, distributeur et concédant de licence.
+Quand vous publiez une offre basée sur l’utilisateur ou une transaction d’abonnement, Microsoft fournit la technologie et les services nécessaires pour traiter les achats, retours et rétrofacturations des licences logicielles. Dans ce scénario, l’éditeur autorise Microsoft à agir en tant qu’agent. L’éditeur permet à Microsoft de faciliter la transaction de gestion des licences logicielles. L’éditeur conserve toutefois la désignation en tant que vendeur, fournisseur, distributeur et concédant de licence.
 
 Microsoft permet aux clients de commander, d’acquérir sous licence et d’utiliser votre logiciel selon les conditions générales de la place de marché commerciale Microsoft et de votre contrat de licence utilisateur final. Vous êtes tenu de fournir votre contrat de licence utilisateur final ou de sélectionner le [contrat Standard](./standard-contract.md) lors de la création de l’offre.
 
 ### <a name="free-software-trials"></a>Essai logiciel gratuit
 
-Dans les scénarios de publication d’offres Transaction, vous pouvez proposer gratuitement une licence logicielle pendant une période de 30 ou 120 jours selon l’abonnement. Les clients seront modifiés pour l’utilisation de l’infrastructure Azure applicable.
+Dans les scénarios de publication d’offres Transaction, vous pouvez proposer gratuitement une licence logicielle pendant une période de 30 ou 120 jours selon l’abonnement. Les clients seront facturés pour l’utilisation de l’infrastructure Azure applicable.
 
 ### <a name="examples-of-pricing-and-store-fees"></a>Exemples de tarifs et de frais de stockage
 
@@ -165,7 +165,7 @@ Quand les modèles tarifaires Abonnement ou Paiement à l'utilisation sont séle
 
 ### <a name="publisher-payout-and-reporting"></a>Paiement de l’éditeur et rapports
 
-Les frais de licence logicielle collectés par Microsoft en tant qu’agent sont soumis à des frais de service de 3 %, sauf indication contraire, et sont déduits au moment du paiement à l’éditeur.
+Les frais de licence logicielle collectés par Microsoft en tant qu’agent sont soumis à des frais de service de 3 %, sauf indication contraire, et sont déduits au [moment du paiement à l’éditeur](/partner-center/payout-policy-details).
 
 Les clients achètent généralement avec un Contrat Entreprise, ou par carte de crédit dans le cadre d’un contrat de paiement à l’utilisation. Le type de contrat détermine la tarification, la facturation, la collecte et le calendrier de paiement.
 
@@ -201,10 +201,10 @@ La possibilité d’effectuer des transactions par le biais de Microsoft est dis
 
 Vous pouvez créer un plan privé pour une offre, compléter avec une tarification négociée et spécifique à l’offre ou des configurations personnalisées.
 
-Les plans privés vous permettent de fournir des tarifs supérieurs ou inférieurs à des clients spécifiques par rapport à l’offre publiquement disponible. Les plans privés permettent d’appliquer une remise ou d’ajouter un supplément à une offre. Ils peuvent être proposés à un ou plusieurs clients en mentionnant leur abonnement Azure au niveau de l’offre.
+Les plans privés vous permettent de fournir des tarifs supérieurs ou inférieurs à des clients spécifiques par rapport au plan publiquement disponible. Les plans privés permettent d’appliquer une remise ou d’ajouter un supplément à une offre. Ils peuvent être proposés à un ou plusieurs clients en mentionnant leur abonnement Azure au niveau de l’offre.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Passez en revue les modèles de publication par magasin en ligne pour obtenir des exemples sur la manière dont votre solution correspond à un type d’offre et à une configuration.
+- Pour connaître les options d’offre et de tarification par magasin en ligne, consultez [Présentation des options de référencement](determine-your-listing-type.md#listing-and-pricing-options-by-online-store).
 - [Guide de publication par type d’offre](publisher-guide-by-offer-type.md).
 - [Plans et tarification pour les offres de la place de marché commerciale](./plans-pricing.md)

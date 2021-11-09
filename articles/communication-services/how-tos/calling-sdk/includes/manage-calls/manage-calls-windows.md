@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: c2d11835a455cb0a8a9456aad95d5be4da423259
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9737c4e756e034c88800264e5cc56a4ca1f81741
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128700476"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131254075"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-windows.md)]
 
@@ -65,7 +65,7 @@ Call call_;
 
 ## <a name="create-button-handlers"></a>Créer des gestionnaires de bouton
 
-Précédemment, deux boutons d’interface utilisateur ont été ajoutés au code XAML. Le code suivant ajoute les gestionnaires à exécuter lorsqu’un utilisateur clique sur le bouton.
+Précédemment, deux boutons d’interface utilisateur ont été ajoutés au code XAML. Le code suivant ajoute les gestionnaires à exécuter lorsqu’un utilisateur sélectionne le bouton.
 Le code suivant doit être ajouté après les membres de données de la section précédente.
 
 ```csharp

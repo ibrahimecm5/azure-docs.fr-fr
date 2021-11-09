@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: srijangupta
-ms.openlocfilehash: 1e62653a7b48ac22f4482974696ad14c13b39a88
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 7ebabe554121e2ad07ef776ed78046a09db9ca9c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698854"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054587"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Prise en charge cloud-init pour les machines virtuelles dans Azure
 
@@ -140,14 +140,13 @@ packages:
   - httpd
 ```
 > [!NOTE]
-> cloud-init a plusieurs [types d’entrée](https://cloudinit.readthedocs.io/en/latest/topics/format.html). Il utilise la première ligne de customData/userData pour indiquer comment il doit traiter l’entrée. Par exemple, `#cloud-config` indique que le contenu doit être traité comme une configuration cloud-init.
+> cloud-init a plusieurs [types d’entrée](https://cloudinit.readthedocs.io/en/latest/topics/format.html). Il utilise la première ligne de customData/userData pour indiquer le traitement de l’entrée. Par exemple, `#cloud-config` indique que le contenu doit être traité comme une configuration cloud-init.
 
-
-Appuyez sur `ctrl-X` pour quitter le fichier, saisissez `y` pour l’enregistrer, puis appuyez sur `enter` pour confirmer le nom lors de la sortie.
+Appuyez sur <kbd>Ctrl + X</kbd> pour quitter le fichier, saisissez <kbd>y</kbd> pour l’enregistrer, puis appuyez sur <kbd>Entrée</kbd> pour confirmer le nom lors de la sortie.
 
 Enfin, vous devez créer une machine virtuelle avec la commande [az vm create](/cli/azure/vm). 
 
-L’exemple suivant crée une machine virtuelle nommée *centos74* et des clés SSH si elles n’existent pas déjà dans un emplacement de clé par défaut. Pour utiliser un ensemble spécifique de clés, utilisez l’option `--ssh-key-value`.  Utilisez le paramètre `--custom-data` à transmettre dans votre fichier de configuration cloud-init. Indiquez le chemin complet vers la configuration *cloud-init.txt* si vous avez enregistré le fichier en dehors de votre répertoire de travail actuel. 
+L’exemple suivant crée une machine virtuelle nommée `centos74` et crée des clés SSH si elles n’existent pas déjà dans un emplacement de clé par défaut. Pour utiliser un ensemble spécifique de clés, utilisez l’option `--ssh-key-value`.  Utilisez le paramètre `--custom-data` à transmettre dans votre fichier de configuration cloud-init. Indiquez le chemin complet vers la configuration *cloud-init.txt* si vous avez enregistré le fichier en dehors de votre répertoire de travail actuel. 
 
 ```azurecli-interactive 
 az vm create \

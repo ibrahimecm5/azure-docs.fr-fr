@@ -4,16 +4,20 @@ description: Si votre adresse IP TLS/SSL va être modifiée, découvrez les chos
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3712931f73463ec1a799f003b82197752a735136
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: a370a2f1ad07b6f2ce4ea2e23f9132d46aadd044
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895280"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045650"
 ---
 # <a name="how-to-prepare-for-a-tlsssl-ip-address-change"></a>Comment se préparer à un changement d’adresse IP TLS/SSL
 
 Si vous avez reçu une notification indiquant la modification de l’adresse IP TLS/SSL de votre application Azure App Service, suivez les instructions dans cet article pour libérer l’adresse IP TLS/SSL existante et en affecter une nouvelle.
+
+> [!NOTE] 
+> Le point de terminaison de service n’est actuellement pas pris en charge lors de l’activation du protocole SSL sur IP sur les liaisons TLS/SSL d’App Service. 
+
 
 ## <a name="release-tlsssl-ip-addresses-and-assign-new-ones"></a>Libérer des adresses IP TLS/SSL et en affecter de nouvelles
 

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ae80ac5833e90164fc4ff92010fd1830ae932cd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3622f2a46a0e5c22b7e63c6cdad635227a30714
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92174043"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003881"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Intégration de Cluster Resource Manager à la gestion de cluster Service Fabric
 Service Fabric Cluster Resource Manager n’actionne pas les mises à niveau dans Service Fabric, mais il y participe. La première manière dont Cluster Resource Manager aide à la gestion consiste à suivre l’état souhaité du cluster et des services qu’il contient. Cluster Resource Manager envoie des rapports d’intégrité lorsqu’il ne peut pas placer le cluster dans la configuration souhaitée. Par exemple, si la capacité est insuffisante, Cluster Resource Manager envoie des avertissements d’intégrité et des erreurs indiquant le problème. Le fonctionnement des mises à niveau est un autre composant de l’intégration. Cluster Resource Manager modifie légèrement son comportement pendant les mises à niveau.  
@@ -194,9 +194,9 @@ L’élément principal à retenir est que les règles (les contraintes strictes
 Lorsqu’une mise à niveau démarre, Resource Manager prend une capture instantanée de l’organisation actuelle du cluster. À mesure que chaque domaine de mise à niveau aboutit, il tente de rétablir l’organisation initiale des services qui figuraient dans ce domaine de mise à niveau. De cette manière, il existe tout au plus deux transitions possibles pour un service pendant la mise à niveau. Il y a une sortie du nœud affecté et un retour dans celui-ci. Le fait de rétablir le cluster ou le service tel qu’il était avant la mise à niveau garantit également que la mise à niveau n’affecte pas la disposition du cluster. 
 
 ### <a name="reduced-churn"></a>Évolution limitée
-Pendant les mises à niveau, Cluster Resource Manager désactive aussi l’équilibrage. Le fait de suspendre l’équilibrage empêche les réactions inutiles envers la mise à niveau, comme le déplacement de services vers des nœuds qui ont été vidés pour la mise à niveau. Si la mise à niveau en question est une mise à niveau du cluster, alors l’ensemble du cluster n’est pas équilibré au cours de la mise à niveau. La vérification des contraintes reste active, seul le mouvement basé sur l’équilibrage proactif des métriques est désactivé.
+Pendant les mises à niveau, Gestionnaire des ressources clusters désactive également l’équilibrage. Le fait de suspendre l’équilibrage empêche les réactions inutiles envers la mise à niveau, comme le déplacement de services vers des nœuds qui ont été vidés pour la mise à niveau. Si la mise à niveau en question est une mise à niveau du cluster, alors l’ensemble du cluster n’est pas équilibré au cours de la mise à niveau. La vérification des contraintes reste active, seul le mouvement basé sur l’équilibrage proactif des métriques est désactivé.
 
-### <a name="buffered-capacity--upgrade"></a>Capacité mise en mémoire tampon et mise à niveau
+### <a name="buffered-capacity-and-upgrade"></a>Capacité mise en mémoire tampon et mise à niveau
 En règle générale, vous voulez que la mise à niveau arrive à son terme même si le cluster est ralenti ou proche de la saturation. La gestion de la capacité du cluster est encore plus importante pendant les mises à niveau qu’en temps normal. Selon le nombre de domaines de mise à niveau, entre 5 et 20 pour cent de la capacité doit être migrée pendant le déploiement de la mise à niveau sur le cluster. Ce travail doit aller quelque part. C’est dans ce contexte que la notion de [capacité mise en mémoire tampon](service-fabric-cluster-resource-manager-cluster-description.md#node-buffer-and-overbooking-capacity) prend tout son sens. La capacité mise en mémoire tampon est respectée en phase de fonctionnement normal. Cluster Resource Manager peut remplir les nœuds jusqu’à leur capacité totale (en consommant la mémoire tampon) au cours des mises à niveau, si nécessaire.
 
 ## <a name="next-steps"></a>Étapes suivantes

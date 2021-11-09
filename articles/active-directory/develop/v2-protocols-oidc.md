@@ -13,12 +13,12 @@ ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a23fd4f764773dfa29e1abd20f4952cc86049c42
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7aab9abf57b94f07edda0e6f2c27c4720c747b20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464075"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050201"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Plateforme d’identités Microsoft et protocole OpenID Connect
 
@@ -122,8 +122,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant` | Obligatoire | Vous pouvez utiliser la valeur `{tenant}` dans le chemin d’accès de la requête pour contrôler les utilisateurs qui peuvent se connecter à l’application. Les valeurs autorisées sont `common`, `organizations`, `consumers` et les identificateurs du client. Pour plus d’informations, consultez les [principes de base du protocole](active-directory-v2-protocols.md#endpoints). Notez que dans les scénarios d’invités, où vous connectez l’utilisateur d’un locataire à un autre locataire, vous *devez* impérativement fournir l’identificateur du locataire pour connecter correctement l’utilisateur au locataire des ressources.|
 | `client_id` | Obligatoire | L’**ID (client) d’application** attribué à votre application par l’environnement [Inscriptions d’applications du portail Azure](https://go.microsoft.com/fwlink/?linkid=2083908). |
 | `response_type` | Obligatoire | Doit inclure `id_token` pour la connexion à OpenID Connect. Il peut également inclure d’autres valeurs `response_type`, par exemple `code`. |
-| `redirect_uri` | Recommandé | L’URI de redirection de votre application, vers lequel votre application peut envoyer et recevoir des réponses d’authentification. Il doit correspondre exactement à l’un des URI de redirection enregistrés dans le portail, auquel s’ajoute le codage dans une URL. Si vous ne disposez pas d’un URI de redirection, le point de terminaison sélectionnera un élément redirect_uri inscrit au hasard vers lequel il redirigera l’utilisateur. |
-| `scope` | Obligatoire | Une liste d’étendues séparées par des espaces. Pour OpenID Connect, vous devez inclure l’étendue `openid`, qui correspond à l’autorisation de connexion dans l’interface utilisateur de consentement. Vous pouvez inclure d’autres étendues dans cette requête pour solliciter le consentement. |
+| `redirect_uri` | Recommandé | L’URI de redirection de votre application, vers lequel votre application peut envoyer et recevoir des réponses d’authentification. Il doit correspondre exactement à un des URI de redirection inscrits dans le portail, sauf qu’il doit être codé dans une URL. Si vous ne disposez pas d’un URI de redirection, le point de terminaison sélectionnera un élément `redirect_uri` inscrit au hasard vers lequel il redirigera l’utilisateur. |
+| `scope` | Obligatoire | Une liste d’étendues séparées par des espaces. Pour OpenID Connect, vous devez inclure l’étendue `openid`, qui correspond à l’autorisation **Vous connecter** dans l’interface utilisateur de consentement. Vous pouvez inclure d’autres étendues dans cette requête pour solliciter le consentement. |
 | `nonce` | Obligatoire | Une valeur incluse dans la requête, générée par l’application, qui sera intégrée dans la valeur id_token résultant en tant que revendication. L’application peut vérifier cette valeur afin de contrer les attaques par relecture de jetons. La valeur est généralement une valeur unique, aléatoire pouvant être utilisé pour identifier l’origine de la requête. |
 | `response_mode` | Recommandé | Spécifie la méthode à utiliser pour envoyer le code d’autorisation résultant à votre application. Peut être `form_post` ou `fragment`. Pour les applications web, nous vous recommandons d’utiliser `response_mode=form_post` pour garantir le transfert le plus sécurisé des jetons à votre application. |
 | `state` | Recommandé | Une valeur incluse dans la requête qui sera également renvoyée dans la réponse de jeton. Il peut s’agir d’une chaîne du contenu de votre choix. Une valeur unique générée de manière aléatoire est généralement utilisée pour [empêcher les attaques par falsification de requête intersites](https://tools.ietf.org/html/rfc6749#section-10.12). La valeur d’état est également utilisée pour coder les informations sur l’état de l’utilisateur dans l’application avant la requête d’authentification, comme la page ou l’écran sur lequel ou laquelle il était positionné. |
