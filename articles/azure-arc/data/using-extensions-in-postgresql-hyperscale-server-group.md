@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 831b3e220afe826b5190588b8855b72a8d648916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52e024043726c463c0bea5b9b16421a0674a2cd2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524960"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558836"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Utiliser les extensions PostgreSQL dans votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
 
@@ -25,7 +25,7 @@ PostgreSQL est optimal quand vous l’utilisez avec des extensions. En fait, un 
 
 ## <a name="supported-extensions"></a>Extensions prises en charge
 Les extensions [`contrib`](https://www.postgresql.org/docs/12/contrib.html) standard et les extensions suivantes sont déjà déployées dans les conteneurs de votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc :
-- [`citus`](https://github.com/citusdata/citus), v: 10.0. L’extension Citus par [Citus Data](https://www.citusdata.com/) est chargée par défaut, car elle apporte la fonctionnalité Hyperscale au moteur PostgreSQL. La suppression de l’extension Citus de votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc n’est pas prise en charge.
+- [`citus`](https://github.com/citusdata/citus), v : 10.2 L’extension Citus par [Citus Data](https://www.citusdata.com/) est chargée par défaut, car elle apporte la fonctionnalité Hyperscale au moteur PostgreSQL. La suppression de l’extension Citus de votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc n’est pas prise en charge.
 - [`pg_cron`](https://github.com/citusdata/pg_cron), v: 1.3
 - [`pgaudit`](https://www.pgaudit.org/), v: 1.4
 - plpgsql, v: 1.0
@@ -60,11 +60,11 @@ Pour plus d’informations sur `shared_preload_libraries`, veuillez lire la docu
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Ajouter une extension au moment de la création d’un groupe de serveurs
 ```azurecli
-az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names>
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>Ajouter une extension à une instance qui existe déjà
 ```azurecli
-az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names>
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 
 
@@ -75,31 +75,30 @@ Exécutez une des commandes suivantes.
 
 ### <a name="with-cli-command"></a>Avec la commande CLI
 ```azurecli
-az postgres arc-server show -n <server group name>
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 Faites défiler la sortie et notez les sections moteur\extensions dans les spécifications de votre groupe de serveurs. Exemple :
 ```console
-"engine": {
+  "spec": {
+    "dev": false,
+    "engine": {
       "extensions": [
         {
           "name": "citus"
-        },
-        {
-          "name": "pg_cron"
         }
-      ]
-    },
+      ],
 ```
 ### <a name="with-kubectl"></a>Avec kubectl
 ```console
-kubectl describe postgresql-12s/postgres02
+kubectl describe postgresqls/<server group name> -n <namespace>
 ```
 Faites défiler la sortie et notez les sections moteur\extensions dans les spécifications de votre groupe de serveurs. Exemple :
 ```console
-Engine:
+Spec:
+  Dev:  false
+  Engine:
     Extensions:
-      Name:  citus
-      Name:  pg_cron
+      Name:   citus
 ```
 
 

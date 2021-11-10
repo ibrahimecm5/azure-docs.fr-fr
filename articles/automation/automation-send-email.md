@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/21/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3f781b32c000ec42c876fa61a90d9ef70c3eb01c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5f89a755cecd2dcf36d3a8a41711fe941108ffa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354553"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427263"
 ---
 # <a name="send-an-email-from-am-automation-runbook"></a>Envoyer un e-mail à partir d’un runbook Automation
 
@@ -26,7 +26,7 @@ Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://az
 * Votre [clé d’API SendGrid](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key).
 
 * Un compte Azure Automation avec au moins une identité managée affectée par l’utilisateur. Pour plus d’informations, consultez [Activer les identités managées](./quickstarts/enable-managed-identity.md).
-* Modules Az : `Az.Accounts` et `Az.KeyVault` importés dans le compte Automation. Pour plus d’informations, consultez [Importer des modules Az](./shared-resources/modules.md#import-az-modules).
+* Modules Az : `Az.Accounts` et `Az.KeyVault` importés dans le compte Automation. Pour plus d’informations, consultez [Importer des modules Az](./shared-resources/modules.md#import-az-modules).
 * Le [module PowerShell Azure Az](/powershell/azure/new-azureps-module-az) installé sur votre ordinateur. Pour plus d'informations sur son installation ou sa mise à niveau, consultez [Installer le module PowerShell Azure Az](/powershell/azure/install-az-ps).
 
 ## <a name="create-an-azure-key-vault"></a>Créer un Azure Key Vault
@@ -103,7 +103,7 @@ Créez une instance Azure Key Vault et [stratégie d’accès Key Vault](../key-
 
 ## <a name="assign-permissions-to-managed-identities"></a>Attribuer des autorisations aux identités managées
 
-Affectez des autorisations à l’[identité managée](./automation-security-overview.md#managed-identities-preview) appropriée. Le runbook peut utiliser l’identité managée affectée par le système du compte Automation ou une identité managée affectée par l'utilisateur. Des étapes sont fournies pour affecter des autorisations à chaque identité. Les étapes ci-dessous utilisent PowerShell. Si vous préférez utiliser le portail, consultez [Attribuer des rôles Azure à l’aide du portail Azure](./../role-based-access-control/role-assignments-portal.md).
+Affectez des autorisations à l’[identité managée](./automation-security-overview.md#managed-identities) appropriée. Le runbook peut utiliser l’identité managée affectée par le système du compte Automation ou une identité managée affectée par l’utilisateur. Des étapes sont fournies pour affecter des autorisations à chaque identité. Les étapes ci-dessous utilisent PowerShell. Si vous préférez utiliser le portail, consultez [Attribuer des rôles Azure à l’aide du portail Azure](./../role-based-access-control/role-assignments-portal.md).
 
 1. Utilisez la cmdlet PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) pour affecter un rôle à l’identité managée affectée par le système.
 
@@ -131,7 +131,7 @@ Affectez des autorisations à l’[identité managée](./automation-security-ove
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Créer le runbook pour envoyer un e-mail
 
-Une fois que vous avez créé un coffre de clés et stocké votre clé API `SendGrid`, il est temps de créer le runbook qui récupère la clé API et envoie un e-mail. Utilisons un runbook qui utilise l'[Identité managée affectée par le système](./automation-security-overview.md#managed-identities-preview) pour s'authentifier auprès d'Azure et extraire le secret d'Azure Key Vault. Nous allons appeler le runbook **Send-GridMailMessage**. Vous pouvez modifier le script PowerShell utilisé pour différents scénarios.
+Une fois que vous avez créé un coffre de clés et stocké votre clé API `SendGrid`, il est temps de créer le runbook qui récupère la clé API et envoie un e-mail. Utilisons un runbook qui utilise l'[Identité managée affectée par le système](./automation-security-overview.md#managed-identities) pour s'authentifier auprès d'Azure et extraire le secret d'Azure Key Vault. Nous allons appeler le runbook **Send-GridMailMessage**. Vous pouvez modifier le script PowerShell utilisé pour différents scénarios.
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com) et accédez à votre compte Automation.
 
@@ -139,7 +139,7 @@ Une fois que vous avez créé un coffre de clés et stocké votre clé API `Send
 
 1. Sélectionnez **+ Créer un runbook**.
     1. Nommez le runbook `Send-GridMailMessage`.
-    1. Dans la liste **Type de runbook**, sélectionnez **PowerShell**.
+    1. Dans la liste déroulante **Type de runbook**, sélectionnez **PowerShell**.
     1. Sélectionnez **Create** (Créer).
 
    ![Créer un Runbook](./media/automation-send-email/automation-send-email-runbook.png)
