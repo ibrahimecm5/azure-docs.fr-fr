@@ -4,12 +4,12 @@ description: Surveillance des performances d’application pour Azure App Servic
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 5e85a12d017f5fc812ac4f910ce9517d73cc41c7
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 97c0d2710d14e523338ac7cd670383caa75c7cef
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154588"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443601"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet"></a>Surveillance d’applications pour Azure App Service et ASP.NET 
 
@@ -121,6 +121,9 @@ Pour connaître la version de votre extension, accédez à l’adresse `https://
 Si vous réalisez la mise à niveau à partir d’une version antérieure à 2.5.1, vérifiez que les DLL ApplicationInsigths sont supprimées du dossier bin de l’application. Pour plus d’informations, [consultez les étapes de résolution des problèmes](#troubleshooting).
 
 ## <a name="troubleshooting"></a>Dépannage
+
+> [!NOTE]
+> Quand vous créez une application Web avec les runtime `ASP.NET` dans les Services App Azure, elle déploie une seule page HTML statique en tant que site Web de démarrage. Il n’est **pas** recommandé de résoudre un problème lié au modèle par défaut. Déployez une application avant de résoudre un problème.
 
 Vous trouverez ci-après les étapes à suivre pas à pas pour résoudre les problèmes rencontrés avec la surveillance basée sur un agent/une extension pour les applications ASP.NET exécutées sur les Services App Azure.
 

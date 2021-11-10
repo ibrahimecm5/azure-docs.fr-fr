@@ -3,19 +3,19 @@ title: Transcription de centre d’appels - Service Speech
 titleSuffix: Azure Cognitive Services
 description: Un scénario courant pour la reconnaissance vocale est la transcription de grands volumes de données de téléphonie provenant de différents systèmes, tels que la réponse vocale interactive (RVI). À l’aide du service Speech et du modèle vocal unifié, une entreprise peut obtenir des transcriptions de qualité, avec des systèmes de capture audio.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: pafarley
-ms.openlocfilehash: 0c1e1ca9b38c342d469c7d4ea1589b48038c95db
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: ba4e6fc3d128daf54f55456163acb6a563745b55
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538864"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507944"
 ---
 # <a name="speech-service-for-telephony-data"></a>Service Speech pour les données de téléphonie
 
@@ -76,7 +76,7 @@ Un autre élément de base de l’analytique consiste à identifier les interact
 
 ### <a name="key-phrase-extraction"></a>Extraction d’expressions clés
 
-Ce domaine correspond à une des applications d’analytique les plus complexes, qui bénéficie de l’application de l’intelligence artificielle et du Machine Learning. Le principal scénario dans ce cas consiste à déduire l’intention du client. Pourquoi le client appelle-t-il ? Quel est le problème du client ? Pourquoi le client a-t-il eu une expérience négative ? Notre [service d’analyse de texte](https://azure.microsoft.com/services/cognitive-services/text-analytics/) met à votre disposition un ensemble d’analytiques que vous pouvez exploiter immédiatement pour effectuer une mise à niveau rapide de votre solution de bout en bout afin d’extraire les mots clés ou expressions importants.
+Ce domaine correspond à une des applications d’analytique les plus complexes, qui bénéficie de l’application de l’intelligence artificielle et du Machine Learning. Le principal scénario dans ce cas consiste à déduire l’intention du client. Pourquoi le client appelle-t-il ? Quel est le problème du client ? Pourquoi le client a-t-il eu une expérience négative ? Notre [service de langage](https://azure.microsoft.com/services/cognitive-services/text-analytics/) met à votre disposition un ensemble d’analytiques que vous pouvez exploiter immédiatement pour effectuer une mise à niveau rapide de votre solution de bout en bout afin d’extraire les mots clés ou expressions importants.
 
 Voyons maintenant un peu plus en détail le traitement par lot et les pipelines en temps réel pour la reconnaissance vocale.
 

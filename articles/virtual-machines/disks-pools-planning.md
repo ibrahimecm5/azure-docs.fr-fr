@@ -8,12 +8,12 @@ ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db70740b484290b56d140d6b71d570d61afd138d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 801930dc58993a81c29969f602da64f201919bd0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082718"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428004"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Guide de planification des pools de disques Azure (préversion)
 
@@ -57,6 +57,8 @@ Consultez [Liste de vérification pour la planification réseau pour Azure VMwar
 L’exemple suivant doit vous donner une idée de la façon dont les différents facteurs de performance fonctionnent ensemble :
 
 Par exemple, si vous ajoutez 2 disques SSD Premium de 1 Tio (P30, avec cible approvisionnée de 5 000 IOPS et 200 Mbits/s) dans un pool de disques standards, vous obtenez 2 x 5000 = 10 000 IOPS. Toutefois, le débit est plafonné à 384 Mbits/s par pool de disques. Pour aller au-delà de cette limite de 384 Mbits/s, vous pouvez déployer davantage de pools de disques pour effectuer un scale-out afin d’augmenter débit. Le débit de votre réseau limite l’efficacité du scale-out.
+
+Les pools de disques créés sans spécifier la référence (SKU) dans l’API REST sont le pool de disques standard par défaut.
 
 ## <a name="availability"></a>Disponibilité
 

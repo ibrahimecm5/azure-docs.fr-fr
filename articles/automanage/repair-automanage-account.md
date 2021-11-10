@@ -7,15 +7,19 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2ce8bc5c26eb99ed19578a036a4569829bc44879
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 8f86b7659e3147fcdf4a450820db31c3f72c0b4d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458299"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450967"
 ---
 # <a name="repair-an-automanage-account"></a>Réparer un compte Automanage
-Votre [compte Azure Automanage](./automanage-virtual-machines.md#automanage-account) est l’identité ou le contexte de sécurité où les opérations automatisées se produisent. Si vous avez récemment déplacé un abonnement qui contient un compte Automanage vers un nouveau locataire, vous devez reconfigurer le compte. Pour le reconfigurer, vous devez réinitialiser le type d’identité et attribuer les rôles appropriés pour le compte.
+
+> [!IMPORTANT]
+> Cet article s’applique uniquement aux machines intégrées à la version antérieure d’Automanage (version d’API 2020-06-30-Preview). L’état de ces machines sera **Nécessite une mise à niveau**. 
+
+Votre compte Azure Automanage est l’identité ou le contexte de sécurité où les opérations automatisées se produisent. Si vous avez récemment déplacé un abonnement qui contient un compte Automanage vers un nouveau locataire, vous devez reconfigurer le compte. Pour le reconfigurer, vous devez réinitialiser le type d’identité et attribuer les rôles appropriés pour le compte.
 
 ## <a name="step-1-reset-the-automanage-account-identity-type"></a>Étape 1 : Réinitialiser le type d’identité du compte Automanage
 Réinitialisez le type d’identité du compte Automanage en utilisant le modèle ARM (Azure Resource Manager) suivant. Enregistrez le fichier localement sous le nom armdeploy.json ou un nom similaire. Notez le nom et l’emplacement de votre compte Automanage, car il s’agit de paramètres requis dans le modèle ARM.

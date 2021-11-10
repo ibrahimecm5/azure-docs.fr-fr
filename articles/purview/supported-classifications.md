@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: e3018a1b9d94ca1f750bf8d17b1ea6ba028ad07f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa92330fcbae0bba9e3f9d18cb3e56d9c16a9ee6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056145"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449447"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Classifications prises en charge dans Azure Purview
 
@@ -410,7 +410,10 @@ huit ou neuf caractères alphanumériques
 
 ### <a name="pattern"></a>Modèle
 
-- une lettre (N, E, D, F, A, C, U, X) suivie de sept chiffres ou
+- une lettre (N, E, D, F, A, C, U, X) suivie de sept chiffres
+
+**or**
+
 - Deux lettres (PA, PB, PC, PD, PE, PF, PU, PW, PX, PZ) suivies de sept chiffres.
 
 ### <a name="checksum"></a>Somme de contrôle
@@ -1566,9 +1569,13 @@ Non
 Le numéro de compte bancaire du Canada inclut 7 ou 12 chiffres.
 
 Le numéro de transit d’un compte bancaire au Canada est le suivant :
+
 - cinq chiffres
 - trait d’union
-- trois chiffres OU
+- trois chiffres
+
+**or**
+
 - un zéro « 0 »
 - huit chiffres
 
@@ -7170,9 +7177,13 @@ Non
 ### <a name="pattern"></a>Modèle
 
 7-12 chiffres :
+
 - quatre chiffres
 - un trait d’union (facultatif)
-- six chiffres OU
+- six chiffres
+
+*or*
+
 - 7-12 chiffres consécutifs
 
 ### <a name="checksum"></a>Somme de contrôle
@@ -9352,7 +9363,10 @@ nombre à 9 chiffres ou 14 chiffres
 
 nombre à 9 chiffres ou 14 chiffres :
 
-- neuf chiffres ou
+- neuf chiffres
+
+**or**
+
 - neuf chiffres
 - trait d’union
 - cinq chiffres

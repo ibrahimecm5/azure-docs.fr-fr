@@ -8,15 +8,15 @@ ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/29/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: ef84fea20ce59af11abf2f76de409f1363db94c9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9d47a19e4890ac6e81a86aeb04e6a139be555599
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051075"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061189"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Sécuriser les ressources d’espace de travail Azure Machine Learning à l’aide de réseaux virtuels
@@ -89,6 +89,8 @@ Si vous souhaitez accéder à l’espace de travail via l’Internet public en m
     | __Compte Stockage Azure__ | [Service et point de terminaison privé](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[Point de terminaison privé](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Accorder l’accès aux services Azure approuvés](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure Container Registry__ | [Point de terminaison privé](../container-registry/container-registry-private-link.md) | [Autoriser les services approuvés](../container-registry/allow-access-trusted-services.md) |
 
+1. Dans les propriétés du ou des comptes Stockage Azure de votre espace de travail, ajoutez l’adresse IP de votre client à la liste verte des paramètres du pare-feu. Pour plus d’informations, consultez [Configurer des pare-feu et réseaux virtuels](/azure/storage/common/storage-network-security#configuring-access-from-on-premises-networks).
+
 ## <a name="secure-the-workspace-and-associated-resources"></a>Sécuriser l’espace de travail et les ressources associées
 
 Utilisez la procédure ci-dessous pour sécuriser votre espace de travail et les ressources associées. Ces étapes permettent à vos services de communiquer dans le réseau virtuel.
@@ -111,7 +113,6 @@ Retrouvez les instructions détaillées relatives à cette procédure dans l’a
 ### <a name="limitations"></a>Limites
 
 La sécurisation de votre espace de travail et des ressources associées dans un réseau virtuel présente les limitations suivantes :
-- L’utilisation d’un espace de travail Azure Machine Learning avec point de terminaison privé n’est pas disponible dans les régions Azure China 21Vianet.
 - Toutes les ressources doivent se trouver derrière le même réseau virtuel. Toutefois, des sous-réseaux peuvent être utilisés au sein d’un même réseau virtuel.
 
 ## <a name="secure-the-training-environment"></a>Sécuriser l’environnement d’entraînement

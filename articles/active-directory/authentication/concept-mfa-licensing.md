@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 11/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6596b5a61c4c65bdfd5172c4acd1c50b960097dd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dff3c04ee74d17aeb0b96d8d0e2348a9667f9729
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763155"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456306"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Fonctionnalités et licences d'Azure AD Multi-Factor Authentication
 
@@ -60,7 +60,7 @@ Le tableau suivant fournit la liste des fonctionnalités disponibles dans les di
 
 ## <a name="compare-multi-factor-authentication-policies"></a>Stratégies basées sur l’emplacement et l’authentification multifacteur
 
-Le tableau suivant fournit des considérations relatives au déploiement pour différentes stratégies MFA.
+Notre approche recommandée pour appliquer l’authentification multifacteur consiste à utiliser un [accès conditionnel](../conditional-access/overview.md). Consultez le tableau suivant pour déterminer les fonctionnalités incluses dans vos licences.
 
 | Stratégie | Paramètres de sécurité par défaut | Accès conditionnel | Authentification multifacteur par utilisateur |
 | --- |:---:|:---:|:---:|

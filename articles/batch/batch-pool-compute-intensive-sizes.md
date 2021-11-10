@@ -3,12 +3,12 @@ title: Utiliser des machines virtuelles Azure nécessitant beaucoup de ressource
 description: Découvrez comment tirer parti des tailles de machines virtuelles HPC et GPU dans des pools Azure Batch Apprenez-en davantage sur les dépendances du système d’exploitation et découvrez plusieurs exemples de scénarios.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 8f3156296e1ae1ec892be86fc41738fcb7f29090
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 10abcfeb8a754ccaeac6de9986612c81fe4decbe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988331"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426655"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Utiliser des instances RDMA ou GPU dans des pools Batch
 
@@ -116,7 +116,7 @@ Pour exécuter des applications CUDA sur un pool de nœuds de contrôleur de ré
 1. Déployez une machine virtuelle de série NC Azure exécutant Ubuntu 16.04 LTS. Par exemple, créez la machine virtuelle dans la région USA Centre Sud. 
 2. Ajoutez l’[extension NVIDIA GPU Drivers](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) à la machine virtuelle à l’aide du portail Azure, d’un ordinateur client qui se connecte à l’abonnement Azure ou d’Azure Cloud Shell. Vous pouvez également suivre les étapes permettant de se connecter à la machine virtuelle et d’[installer les pilotes CUDA](../virtual-machines/linux/n-series-driver-setup.md) manuellement.
-3. Suivez les étapes pour créer une [image de Shared Image Gallery](batch-sig-images.md) pour Batch.
+3. Suivez les étapes pour créer une [image Azure Compute Gallery](batch-sig-images.md) pour Batch.
 4. Créez un compte Batch dans une région qui prend en charge des machines virtuelles NC.
 5. En utilisant les API Batch ou le portail Azure, créez un pool [avec l’image personnalisée](batch-sig-images.md), et le nombre de nœuds et l’échelle souhaités. Le tableau suivant contient des exemples de paramètres de pool pour l’image :
 
@@ -135,8 +135,8 @@ Pour exécuter des applications Windows MPI sur un pool de nœuds de machine vir
 2. Ajoutez l’extension HpcVmDrivers à la machine virtuelle en [exécutant une commande Azure PowerShell](../virtual-machines/sizes-hpc.md) à partir d’un ordinateur client qui se connecte à votre abonnement Azure, ou bien à l’aide d’Azure Cloud Shell. 
 1. Établissez une connexion Bureau à distance à la machine virtuelle.
 1. Téléchargez le [package d’installation](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup.exe) pour obtenir la dernière version de Microsoft MPI, puis installez Microsoft MPI.
-1. Suivez les étapes pour créer une [image de Shared Image Gallery](batch-sig-images.md) pour Batch.
-1. À l’aide des API Batch ou via le portail Azure, créez un pool [utilisant Shared Image Gallery](batch-sig-images.md) et offrant le nombre de nœuds ainsi que l’échelle souhaités. Le tableau suivant contient des exemples de paramètres de pool pour l’image :
+1. Suivez les étapes pour créer une [image Azure Compute Gallery](batch-sig-images.md) pour Batch.
+1. À l’aide des API Batch ou via le portail Azure, créez un pool [utilisant Azure Compute Gallery](batch-sig-images.md) et offrant le nombre de nœuds ainsi que l’échelle souhaités. Le tableau suivant contient des exemples de paramètres de pool pour l’image :
 
 | Paramètre | Value |
 | ---- | ---- |

@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
-ms.date: 09/24/2021
-ms.custom: data4ml, ignite-fall-2021
-ms.openlocfilehash: 3fae9f8f6e5c0e54d42751456b693a4bc094771c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a811c63e29800fa7f79d620f358e06939168ce4c
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131079374"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563033"
 ---
 # <a name="labeling-images-and-text-documents"></a>Étiquetage des images et des documents texte
 
@@ -67,6 +67,8 @@ Des algorithmes de Machine Learning peuvent être déclenchés pendant l’étiq
     * À un moment donné, **Tâches préétiquetées** peut apparaître en regard du nom du projet.  Les éléments s’affichent alors avec une suggestion d’étiquette qui provient d’un modèle de classification Machine Learning. Aucun modèle Machine Learning n’est fiable à 100 %. Seules sont utilisées des données pour lesquelles le modèle est fiable, ce qui n’empêche pas un préétiquetage incorrect.  Si c’est le cas, corrigez les étiquettes erronées avant d’envoyer la page.
 
 Au tout début d’un projet d’étiquetage, en particulier, un modèle Machine Learning peut n’être capable de préétiqueter correctement qu’un petit sous-ensemble d’images. Une fois ces images étiquetées, le projet d’étiquetage retourne à l’étiquetage manuel afin de collecter plus de données pour le prochain cycle d’entraînement du modèle. Au fil du temps, le modèle sera davantage fiable pour un plus grand nombre d’images, ce qui augmentera le nombre de tâches de préétiquettage plus tard dans le projet.
+
+Quand il n’y a plus de tâches pré-étiquetées, vous arrêtez de confirmer ou de corriger les étiquettes et revenez en arrière pour étiqueter manuellement les éléments.
 
 ## <a name="image-tasks"></a><a name="image-tasks"></a> Tâches liées aux images
 

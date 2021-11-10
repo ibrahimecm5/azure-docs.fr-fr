@@ -8,14 +8,14 @@ manager: nitinme
 keywords: services cognitifs, intelligence cognitive, solutions cognitives, services ia
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: dfd5edc2444b3aa56dce556766013370a08ba846
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 5ebccc07b4816237f12363e7729175dde5537e50
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475959"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458339"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Démarrage rapide : Créer un compte Cognitive Services dans le portail Azure
 
@@ -43,7 +43,7 @@ La ressource multiservice est nommée **Cognitive Services** dans le portail. [C
 
 * **Vision** - Vision par ordinateur, vision personnalisée, visage
 * **Speech** – Speech
-* **Langue** – Language Understanding (LUIS), Analyse de texte, Translator
+* **Langue** – Langue, Traducteur
 * **Décision** - Content Moderator
 
 ### <a name="single-service-resource"></a>[Ressource monoservice](#tab/singleservice)
@@ -55,7 +55,7 @@ Utilisez les liens ci-dessous afin de créer une ressource pour les services Cog
 | [Vision par ordinateur](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Services Speech](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Lecteur immersif](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Détecteur d’anomalies](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
 | [Service Custom Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Visage](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-|        |                         | [Analyse de texte](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+|        |                         | [Service Language](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
 | | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---

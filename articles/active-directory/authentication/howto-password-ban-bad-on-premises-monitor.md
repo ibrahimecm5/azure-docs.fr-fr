@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 37192a38376536143472f406b9fd11c490a98e5b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 81dcb85302158adfe8be4df0715fee8cb5633fa6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578815"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459574"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Surveiller les environnements de protection par mot de passe Azure AD locaux et en consulter les journaux d’activité
 
@@ -100,6 +100,9 @@ PasswordSetErrors               : 1
 ```
 
 L’étendue du rapport de la cmdlet peut être influencée à l’aide d’un des paramètres -Forest, -Domain ou -DomainController. Ne pas spécifier un paramètre équivaut à –Forest.
+
+> [!NOTE]
+> Si vous n’installez l’agent DC que sur un contrôleur de domaine, la commande Get-AzureADPasswordProtectionSummaryReport lit les événements uniquement à partir de ce contrôleur de domaine. Pour recevoir des événements de plusieurs DC, vous avez besoin de l’agent DC installé sur chaque DC.
 
 L’applet de commande `Get-AzureADPasswordProtectionSummaryReport` demande le journal des événements d’administration de l’agent DC, puis compte le nombre total d’événements dans chaque catégorie de résultats affichés. Le tableau suivant indique à quel ID d’événement correspond chaque résultat :
 

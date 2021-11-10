@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6808160b97d6d1d46917f2e1733b7b1badb4c5f4
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1c3f90087c2e016cdfd160c98df28cf3da25ca28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534366"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471950"
 ---
 # <a name="object-replication-for-block-blobs"></a>Réplication d'objets blob de blocs
 

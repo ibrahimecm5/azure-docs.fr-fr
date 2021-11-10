@@ -4,15 +4,15 @@ description: Découvrez comment activer le lien Synapse pour les comptes Azure C
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: 116997c8abbad382dc10014fd76e7933f333c113
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 271b0a6c41f37a3ac8efe6e5562af48f3f267692
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123109348"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425857"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Configurer et utiliser Azure Synapse Link pour Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -280,6 +280,9 @@ Le pool SQL serverless vous permet d’interroger et d’analyser les données d
 
 Il est possible de créer une base de données de pool SQL serverless et des vues sur Synapse Link pour Azure Cosmos DB. Par la suite, vous pouvez interroger les conteneurs Azure Cosmos, puis créer un modèle avec Power BI sur ces vues pour refléter cette requête. Il n’y a aucun impact sur les performances ou les coûts de vos charges de travail transactionnelles, ni de complexité liée à la gestion des pipelines ETL. Vous pouvez utiliser les modes [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) ou [Import](/power-bi/connect-data/service-dataset-modes-understand#import-mode). Pour plus d’informations, consultez l’article [Guide pratique d’utilisation du pool SQL serverless pour analyser les données Azure Cosmos DB avec Synapse Link](synapse-link-power-bi.md).
 
+## <a name="configure-custom-partitioning"></a>Configurer le partitionnement personnalisé
+
+Le partitionnement personnalisé vous permet de partitionner des données de magasin analytique sur des champs couramment utilisés comme filtres dans des requêtes analytiques, ce qui améliore les performances des requêtes.Pour plus d’informations, consultez les articles [Présentation du partitionnement personnalisé](custom-partitioning-analytical-store.md) et [Comment configurer un partitionnement personnalisé](configure-custom-partitioning.md).
 
 ## <a name="azure-resource-manager-template"></a>Modèle Azure Resource Manager
 

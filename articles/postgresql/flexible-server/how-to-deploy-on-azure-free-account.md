@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 08/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 38a1e264d3febfc114df253a24479d9580c86bb5
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0d1ba0118360f579b675f4f64d8ecba1b4764ff5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538360"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425401"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-postgresql---flexible-server-for-free"></a>Utilisez un compte gratuit Azure pour essayer gratuitement une Base de données Azure pour PostgreSQL - Serveur flexible gratuit
 
@@ -93,7 +93,7 @@ Pour suivre ce didacticiel, vous avez besoin des éléments suivants :
     
     Lorsque vous utilisez l’accès public, l’accès à votre serveur est limité aux adresses IP autorisées que vous ajoutez à une règle de pare-feu. Cette méthode empêche les applications et les outils externes de se connecter à ce serveur et à toute base de données sur ce serveur, sauf si vous créez une règle pour ouvrir le pare-feu pour une adresse IP ou une plage d’adresses IP spécifique.
     
-    Avec l’accès privé (intégration au réseau virtuel), l'accès à votre serveur est limité à votre réseau virtuel. Pour plus d’informations sur les méthodes de connectivité, consultez vue d’ensemble de la Mise en réseau.
+    Avec l’accès privé (intégration au réseau virtuel), l'accès à votre serveur est limité à votre réseau virtuel. Pour plus d’informations sur les méthodes de connectivité, consultez [**Vue d’ensemble de la mise en réseau**](https://docs.microsoft.com/azure/postgresql/flexible-server/concepts-networking).
     
     Dans le cadre de ce didacticiel, activez l’accès public pour la connexion au serveur.
 

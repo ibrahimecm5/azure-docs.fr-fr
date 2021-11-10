@@ -3,12 +3,12 @@ title: Activer l’extension de machine virtuelle à partir du portail Azure
 description: Cet article explique comment déployer des extensions de machine virtuelle sur des serveurs avec Azure Arc qui s’exécutent dans des environnements cloud hybrides à partir du portail Azure.
 ms.date: 10/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d6ecbbc57237192f68b9949ab960fb36cda64c81
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b3bb6e6b6dcb70dc229dc01a02d04cf195c89700
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069593"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423904"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Activer les extensions de machine virtuelle Azure à partir du portail Azure
 
@@ -89,7 +89,7 @@ Vous pouvez mettre à niveau une extension de trois manières :
 
     :::image type="content" source="media/manage-vm-extensions-portal/vm-extensions-update-selected.png" alt-text="Mettre à jour l’extension sélectionnée" border="true":::
 
-## <a name="uninstall-extensions"></a>Désinstaller les extensions
+## <a name="remove-extensions"></a>Supprimer des extensions
 
 Vous pouvez supprimer une ou plusieurs extensions d’un serveur avec Azure Arc à partir du portail Azure. Ensuite, effectuez les opérations suivantes pour supprimer une extension.
 

@@ -1,21 +1,23 @@
 ---
-title: Exécuter des scripts PowerShell dans une machine virtuelle Windows dans Azure
+title: Exécuter des scripts sur une machine virtuelle Windows dans Azure à l’aide de commandes d’exécution d’action
 description: Cette rubrique explique comment exécuter des scripts PowerShell au sein d’une machine virtuelle Windows Azure à l’aide de la fonctionnalité Run Command
+services: automation
 ms.service: virtual-machines
 ms.collection: windows
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/22/2021
+author: cynthn
+ms.author: cynthn
+ms.date: 10/28/2021
 ms.topic: how-to
+ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 81ffce59b1f99628580418836d690d650ea94a1c
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: b9501004578068f2c7841fd5f52091f50e97924b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566243"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441093"
 ---
-# <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Exécuter des scripts PowerShell dans votre machine virtuelle Windows à l’aide de Run Command
+# <a name="run-scripts-in-your-windows-vm-by-using-action-run-commands"></a>Exécuter des scripts dans votre machine virtuelle Windows à l’aide de commandes d’exécution d’action
 
 La fonctionnalité Run Command utilise l’agent de machine virtuelle pour exécuter des scripts PowerShell au sein d’une machine virtuelle Windows Azure. Vous pouvez utiliser ces scripts pour la gestion générale des ordinateurs ou des applications. Ils peuvent vous aider à diagnostiquer et corriger rapidement les problèmes de réseau et d’accès aux machines virtuelles et à rétablir l’état de la machine virtuelle.
 

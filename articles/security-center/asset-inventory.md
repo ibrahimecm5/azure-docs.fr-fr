@@ -5,16 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.service: security-center
 ms.topic: how-to
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: cca9811423449692f0e71cdb62ade1447cba86f2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 795d54406230dbc7ea6e9666cfef51c8f96219fe
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010461"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576184"
 ---
 # <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>Utiliser l’inventaire des ressources pour gérer l’état de sécurité de vos ressources
 
@@ -119,7 +118,7 @@ Grâce au [langage de requête Kusto (KQL)](/azure/data-explorer/kusto/query/), 
 
     - **Désactivé** : ressources non protégées par un plan Microsoft Defender. Vous pouvez cliquer avec le bouton droit sur l'un de ces éléments et les mettre à niveau :
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Mettre à niveau une ressource vers Microsoft Defender à l’aide d’un clic droit." lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Mettez à niveau une ressource à protéger par le plan Microsoft Defender approprié en cliquant avec le bouton droit." lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - **Activé** : ressources protégées par un plan Microsoft Defender
     - **Partiel** : s’applique aux **abonnements** pour lesquels certains plans Microsoft Defender ont été désactivés. Par exemple, l’abonnement suivant a sept plans Microsoft Defender désactivés.
@@ -183,7 +182,7 @@ Exemples d'utilisation d’Azure Resource Graph Explorer pour accéder aux donn�
         | where count_ > 1
         ```
 
-    - Combinaison d’un produit logiciel et d’une autre recommandation ASC :
+    - Combinaison d’un produit logiciel avec une autre recommandation de sécurité :
 
         (Dans cet exemple, ordinateurs sur lesquels MySQL est installé et dont les ports de gestion sont exposés)
 

@@ -5,17 +5,17 @@ description: Découvrez l’outil de révision de Content Moderator, un site Web
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
-ms.date: 03/15/2019
+ms.date: 10/28/2021
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: b4336b24dd68df2ce52081e6b0d3d1e49517f3d8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 10caecde2eb28a73252ce8581d279c657223f1c9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031760"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469974"
 ---
 # <a name="content-moderator-review-tool"></a>Outil de révision de Content Moderator
 
@@ -31,7 +31,7 @@ Quand il est utilisé conjointement avec les API de modération assistée par or
 - Automatisez la création de [révisions](../review-api.md#reviews) humaines lorsque les résultats de l’API de modération deviennent disponibles.
 - Affectez ou remontez les révisions de contenu à plusieurs équipes de révision organisées par catégorie de contenu ou niveau d’expérience.
 - Utilisez des filtres de logique ([flux de travail](../review-api.md#workflows)) personnalisés ou ceux par défaut pour trier et suivre le contenu sans écrire de code.
-- Utilisez des [connecteurs](./configure.md#connectors) pour traiter le contenu avec les services Microsoft PhotoDNA, Analyse de texte et Visage en plus des API Content Moderator.
+- Utilisez des [connecteurs](./configure.md#connectors) pour traiter le contenu avec les services Microsoft PhotoDNA, Langage et Visage en plus des API Content Moderator.
 - Récupérez les principales métriques de performances de vos processus de modération du contenu.
 
 ## <a name="review-tool-dashboard"></a>Tableau de bord de l’outil de révision

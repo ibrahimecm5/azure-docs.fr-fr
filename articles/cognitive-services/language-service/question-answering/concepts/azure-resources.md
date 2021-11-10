@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 10/10/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 0ed037e44ff202ec1fd0cacfbbbcfb16ee9be273
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ddd5ed0c51c412342b6e8093a69cdef900346be2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097749"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476677"
 ---
 # <a name="azure-resources-for-question-answering"></a>Ressources Azure pour les réponses aux questions
 
@@ -67,9 +67,6 @@ Votre fonctionnalité Réponses aux questions personnalisées traite deux types 
 
 Utilisez ces clés lorsque vous adressez des demandes au service via des API.
 
-> [!div class="mx-imgBorder"]
-> ![Capture d’écran de la version préliminaire gérée de gestion de clés.](../../../qnamaker/media/qnamaker-how-to-key-management/custom-question-answering-key-management.png)
-
 |Nom|Emplacement|Objectif|
 |--|--|--|
 |Clé de création/d’abonnement|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|Ces clés sont utilisées pour accéder aux API du service de langage. Ces API vous permettent de modifier les questions et réponses dans votre base de connaissances, et de publier votre base de connaissances. Ces clés sont créées lorsque vous créez une ressource.<br><br>Recherchez ces clés dans la ressource **Cognitive Services** de la page **Clés et point de terminaison**.|
@@ -77,9 +74,9 @@ Utilisez ces clés lorsque vous adressez des demandes au service via des API.
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Rechercher des clés de création dans le portail Azure
 
-Vous pouvez afficher et réinitialiser vos clés de création à partir du portail Azure, là où vous avez ajouté la fonctionnalité Réponses aux questions personnalisées (préversion) dans la ressource Analyse de texte.
+Vous pouvez afficher et réinitialiser vos clés de création à partir du portail Azure, là où vous avez ajouté la fonctionnalité de réponses aux questions personnalisées dans la ressource de langue.
 
-1. Accédez à la ressource Analyse de texte dans le portail Azure et sélectionnez la ressource dont le type est *Cognitive Services* :
+1. Accédez à la ressource de langue dans le portail Azure, puis sélectionnez la ressource de type *Cognitive Services* :
 
     > [!div class="mx-imgBorder"]
     > ![Capture d’écran de la liste des ressources de réponse aux questions.](../../../qnamaker/media/qnamaker-how-to-setup-service/resources-created-question-answering.png)

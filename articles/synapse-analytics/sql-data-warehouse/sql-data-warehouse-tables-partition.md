@@ -1,22 +1,22 @@
 ---
 title: Partitionnement de tables dans le pool SQL dédié
-description: Recommandations et exemples relatifs à l’utilisation de partitions de tables dans un pool SQL dédié
+description: Recommandations et exemples relatifs à l’utilisation de partitions de tables dans un pool SQL dédié.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 08/19/2021
-ms.author: xiaoyul
-ms.reviewer: igorstan, wiassaf
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ea941ae782e7da33cc07932d4b0c79613790b2e8
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: af068f531a07be05da8ff8911ffff68242f7f4cf
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122528011"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504737"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Partitionnement de tables dans le pool SQL dédié
 
@@ -42,7 +42,7 @@ Le partitionnement peut également servir à améliorer les performances des req
 
 Par exemple, si la table de faits Sales (Ventes) est partagée en 36 mois grâce au champ de date des ventes, les requêtes filtrées par date de vente peuvent ignorer la recherche dans les partitions qui ne correspondent pas au filtre.
 
-## <a name="sizing-partitions"></a>Dimensionnement des partitions
+## <a name="partition-sizing"></a>Dimensionnement des partitions
 
 Tandis que le partitionnement peut être utilisé pour améliorer les performances de certains scénarios, la création d’une table avec **trop** de partitions peut nuire aux performances dans certaines circonstances.  Ces inquiétudes sont particulièrement avérées pour les tables columnstore en cluster. 
 
@@ -60,7 +60,7 @@ Le pool SQL dédié présente un mode de définition des partitions qui est plu
 
 Bien que la syntaxe de partitionnement puisse être légèrement différente de SQL Server, les concepts de base sont les mêmes. SQL Server et le pool SQL dédié prennent en charge une colonne de partition par table, qui peut être une partition par spécification de plages de valeurs. Pour en savoir plus sur le partitionnement, consultez [Tables et index partitionnés](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-L’exemple suivant utilise l’instruction [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour partitionner la table FactInternetSales sur la colonne OrderDateKey :
+L’exemple suivant utilise l’instruction [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour partitionner la table `FactInternetSales` sur la colonne `OrderDateKey` :
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -86,7 +86,7 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>Migration du partitionnement dans SQL Server
+## <a name="migrate-partitions-from-sql-server"></a>Migrer des partitions à partir de SQL Server
 
 Pour migrer les définitions de partitions SQL Server vers le pool SQL dédié, il vous suffit d’effectuer les opérations suivantes :
 
@@ -194,7 +194,10 @@ La commande de fractionnement suivante génère un message d’erreur :
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Le message 35346, au niveau 15, état 1, ligne 44, indique que la clause SPLIT de l’instruction ALTER PARTITION a échoué, car la partition n’est pas vide. Seules les partitions vides peuvent être fractionnées quand il existe un index columnstore sur la table. Vous pouvez envisager de désactiver l’index columnstore avant de lancer l’instruction ALTER PARTITION, puis de reconstruire l’index columnstore une fois l’opération ALTER PARTITION terminée.
+```
+Msg 35346, Level 15, State 1, Line 44
+SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.
+```
 
 Cependant, vous pouvez utiliser la commande `CTAS` pour créer une table afin de stocker les données.
 

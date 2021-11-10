@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: d2f39d06046cd9d51baef0a2b09be00a37a35ca3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: be9bae5d67b7ce341e7444a183788ab1f158ce72
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993945"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217446"
 ---
 # <a name="azure-virtual-network-concepts-and-best-practices"></a>Concepts et meilleures pratiques relatifs au Réseau virtuel Azure
 

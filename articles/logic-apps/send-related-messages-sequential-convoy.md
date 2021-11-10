@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0df7b263ef5d62b064a5afe537cffc926230b0a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87048662"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238673"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Envoi de messages connexes dans l’ordre en suivant un convoi séquentiel dans Azure Logic Apps avec Azure Service Bus
 
@@ -283,7 +283,7 @@ Cette [boucle **Tant que**](../logic-apps/logic-apps-control-flow-loops.md#until
 
 * Vérifier si la variable `isDone` a la valeur `true`.
 
-  * Si `isDone` n’a pas la valeur `true`, le flux de travail traite toujours les messages, de sorte qu’il renouvelle le verrou sur la session dans la file d’attente et vérifie à nouveau la condition de la boucle.
+  * Si `isDone` a la valeur `true`, le flux de travail traite toujours les messages, de sorte qu’il renouvelle le verrou sur la session dans la file d’attente et vérifie à nouveau la condition de la boucle.
 
     Vous devez indiquer le nom de votre file d’attente Service Bus dans l’action Service Bus [**Renouveler le verrou sur la session dans une file d’attente**](#renew-lock-on-session).
 

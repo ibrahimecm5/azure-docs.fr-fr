@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a462809ca7be524e0e5149808bdcbe28f49dd77
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4485b41c10322a9a289a22e7822031fd64cf98cf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649035"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237849"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analyser les journaux et les métriques avec les paramètres de diagnostic
 
@@ -240,4 +240,4 @@ Vous pourrez peut-être appliquer la même stratégie pour d’autres bibliothè
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* [Démarrage rapide : Déployer votre première application Azure Spring Cloud](./quickstart.md)
+* [Démarrage rapide – Déployer votre première application Spring Boot dans Azure Spring Cloud](./quickstart.md)

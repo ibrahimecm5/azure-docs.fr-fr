@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/08/2021
+ms.date: 10/20/2021
 ms.author: barclayn
-ms.openlocfilehash: 7d2f09d3990f9e71e55b29b1eac771266627237a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 48d3d5e0e1b6adfb1c0763d1fb7824d604628962
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791286"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266123"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Identités managées pour les ressources Azure - Forum aux questions - Azure AD
 
@@ -38,7 +38,7 @@ Vous pouvez obtenir la liste des ressources qui ont une identité managée affec
 az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
 ```
 
-### <a name="what-azure-rbac-permissions-are-required-to-work-with-managed-identities"></a>Quelles sont les autorisations RBAC Azure nécessaires pour utiliser des identités managées ? 
+### <a name="which-azure-rbac-permissions-are-required-to-use-a-managed-identity-on-a-resource"></a>Quelles sont les autorisations RBAC Azure nécessaires pour une identité managée sur une ressource ?
 
 - Identité managée affectée par le système : Vous avez besoin d’autorisations en écriture sur la ressource. Par exemple, pour les machines virtuelles, vous avez besoin de `Microsoft.Compute/virtualMachines/write`. Cette action est incluse dans les rôles intégrés spécifiques de la ressource, tel que le [Contributeur de machines virtuelles](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 - Attribution d’identités managées affectées par l’utilisateur aux ressources : vous devez disposer d’autorisations en écriture sur la ressource. Par exemple, pour les machines virtuelles, vous avez besoin de `Microsoft.Compute/virtualMachines/write`. Vous aurez également besoin de l’action sur l’identité affectée par l’utilisateur. Cette action est incluse dans le rôle intégré [Opérateur de l’identité managée](../../role-based-access-control/built-in-roles.md#managed-identity-operator).

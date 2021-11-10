@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 77f8ff8cf7e3e9a83b207f8d98ef570437b27b47
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ee1f3c956f683e3362138a7534c403e2162e64df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111156"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462383"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hébergement haute densité sur Azure App Service à l’aide de la mise à l’échelle par application
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Lorsque vous utilisez App Service, vous pouvez mettre à l’échelle vos applications en mettant à l’échelle le [plan App Service](overview-hosting-plans.md) sur lequel elles sont exécutées. Lorsque plusieurs applications sont exécutées dans un même plan App Service, chaque instance mise à l’échelle exécute toutes les applications du plan.
+Lorsque vous utilisez App Service, vous pouvez mettre à l’échelle vos applications en mettant à l’échelle le [plan App Service](overview-hosting-plans.md) sur lequel elles sont exécutées. Lorsque plusieurs applications s’exécutent dans un même plan App Service, chaque instance mise à l’échelle exécute toutes les applications du plan.
 
 La *mise à l’échelle par application* peut être activée au niveau du plan App Service pour permettre la mise à l’échelle d’une application en ignorant le plan App Service qui l’héberge. De cette manière, un plan App Service peut passer à 10 instances, mais une application peut être définie de manière à n’en utiliser que cinq.
 

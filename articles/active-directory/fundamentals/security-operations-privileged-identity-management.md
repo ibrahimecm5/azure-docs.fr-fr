@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac4f2982166fabf7a49a92966ca783a260ca875a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: bdca219a352527114123cdf0179a5eb7fc486852
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038723"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435888"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Opérations de sécurité Azure Active Directory pour Privileged Identity Management (PIM)
 
@@ -26,7 +26,7 @@ La sécurité des ressources professionnelles dépend de l’intégrité des com
 
 Pour les services cloud, la prévention et la réponse sont de la responsabilité conjointe du fournisseur de services cloud et du client. 
 
-En général, la sécurité d’une organisation est axée sur les points d’entrée et de sortie d’un réseau faisant office de périmètre de sécurité. Toutefois, en raison de l’utilisation d’applications SaaS et d’appareils personnels, cette approche a perdu en efficacité. Dans Azure Active Directory (Azure AD), nous remplaçons le périmètre de sécurité réseau par l’authentification dans la couche d’identité de l’organisation. Lorsque les utilisateurs se voient attribuer des rôles d’administration privilégiés, leur accès doit être protégé dans des environnements locaux, cloud et hybrides. 
+En général, la sécurité d’une organisation est axée sur les points d’entrée et de sortie d’un réseau faisant office de périmètre de sécurité. Toutefois, en raison de l’utilisation d’applications SaaS et d’appareils personnels, cette approche a perdu en efficacité. Dans Azure Active Directory (Azure AD), nous remplaçons le périmètre de sécurité réseau par l’authentification dans la couche d’identité de l’organisation. Lorsque les utilisateurs se voient attribuer des rôles d’administration privilégiés, leur accès doit être protégé dans des environnements locaux, cloud et hybrides.
 
 Vous êtes entièrement responsable de toutes les couches de sécurité de votre environnement informatique local. Lorsque vous utilisez les services cloud Azure, la prévention et la réponse aux problèmes sont des responsabilités qui sont partagées entre Microsoft en tant que fournisseur de services cloud, et vous en tant que client. 
 
@@ -68,7 +68,7 @@ Dans le portail Azure, vous pouvez afficher les journaux d’audit Azure AD et 
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md) **avec intégration SIEM**- [Les journaux Azure AD peuvent être intégrés à d’autres SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) comme Splunk, ArcSight, QRadar et Sumo Logic via l’intégration Azure Event Hub Hub.
 
-* [**Microsoft Cloud App Security (MCAS)** ](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
+* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
 
 Le reste de cet article fournit des recommandations concernant la définition d’une base de référence pour la supervision et les alertes, qui sont organisées par niveau. Les liens vers les solutions prédéfinies sont listés après le tableau. Vous pouvez également créer des alertes à l’aide des outils précédents. Le contenu est organisé par thème PIM :
 
@@ -104,8 +104,8 @@ Un administrateur de rôle privilégié peut personnaliser PIM dans son organisa
 
 | Éléments à analyser| Niveau de risque| Where| Filtre/Sous-filtre| Notes |
 | - |- |- |- |- |
-| Alerte lors de l’ajout de modifications aux autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Ajout d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Ajout d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Supervisez et signalez systématiquement toute modification apportée aux rôles Administrateur de rôle privilégié et Administrateur général. <li>Cela peut indiquer qu’un attaquant tente d’obtenir un privilège pour modifier les paramètres d’attribution de rôle.<li> Si vous n’avez pas défini de seuil, déclenchez une alerte si 4 modifications ont lieu sur une période de 60 minutes dans les comptes utilisateurs, et si 2 modifications ont lieu en 60 minutes dans les comptes privilégiés. |
-| Alerte lors de suppressions en bloc des autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Suppression d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Suppression d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Investiguez immédiatement en cas de modification non planifiée. Ce paramètre peut permettre à un attaquant d’accéder aux abonnements Azure de votre environnement. |
+| Alerte lors de l’ajout de modifications aux autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Ajout d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Ajout d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Supervisez et signalez systématiquement toute modification apportée aux rôles Administrateur de rôle privilégié et Administrateur général. <li>Cela peut indiquer qu’un attaquant tente d’obtenir un privilège pour modifier les paramètres d’attribution de rôle.<li> Si vous n’avez pas défini de seuil, déclenchez une alerte si 4 modifications ont lieu sur une période de 60 minutes dans les comptes utilisateurs, et si 2 modifications ont lieu en 60 minutes dans les comptes privilégiés. |
+| Alerte lors de suppressions en bloc des autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Suppression d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Suppression d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Investiguez immédiatement en cas de modification non planifiée. Ce paramètre peut permettre à un attaquant d’accéder aux abonnements Azure de votre environnement. |
 | Modifications apportées aux paramètres PIM| Élevé| Journaux d’audit Azure AD| Service = PIM<br>-et-<br>Catégorie = Gestion des rôles<br>-et-<br>Type d’activité = Mise à jour du paramètre de rôle dans PIM<br>-et-<br>Raison de l’état = MFA à l’activation désactivée (exemple)| Supervisez et signalez systématiquement toute modification apportée aux rôles Administrateur de rôle privilégié et Administrateur général. <li>Cela peut indiquer qu’un attaquant a déjà obtenu l’accès et peut modifier les paramètres d’attribution de rôle.<li>L’une de ces actions est susceptible de réduire le niveau de sécurité de l’élévation PIM et permettre aux attaquants d’obtenir facilement un compte privilégié. |
 | Approbations et refus des demandes d’élévation| Élevé| Journaux d’audit Azure AD| Service = Révision de l’accès<br>-et-<br>Catégorie = UserManagement<br>-et-<br>Type d’activité = Demande approuvée/refusée<br>-et-<br>Initié par (acteur) = UPN| Toutes les élévations doivent être supervisées. Journalisez toutes les élévations, car celles-ci peuvent vous donner une indication claire de la chronologie d’une attaque. |
 | Désactivation d’un paramètre d’alerte.| Élevé| Journaux d’audit Azure AD| Service = PIM<br>-et-<br>Catégorie = Gestion des rôles<br>-et-<br>Type d’activité = Désactivation de l’alerte PIM<br>-et-<br>État = Réussite/Échec| Toujours déclencher une alerte. <li>Permet de détecter lorsqu’un acteur malveillant supprime les alertes concernant les exigences Azure MFA dans le but d’activer l’accès privilégié.<li>Permet de détecter les activités suspectes ou non sûres. |

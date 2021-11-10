@@ -4,12 +4,12 @@ description: Options d’authentification pour un registre de conteneurs Azure p
 ms.topic: article
 ms.date: 06/16/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e21d1a12c0fc9e4cc818ee96f211f541c3ed511a
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 7c6510247ff6900145241834841964271db6530b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545941"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578960"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Authentification avec un registre de conteneurs Azure
 
@@ -84,6 +84,13 @@ Ensuite, exécutez `docker login`, en transmettant `00000000-0000-0000-0000-0000
 
 ```console
 docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
+```
+De même, vous pouvez utiliser le jeton retourné par `az acr login` avec la commande `helm registry login` pour l’authentification auprès du Registre :
+
+```console
+echo $TOKEN | helm registry login myregistry.azurecr.io \
+            --username 00000000-0000-0000-0000-000000000000 \
+            --password-stdin
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)

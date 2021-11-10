@@ -9,14 +9,14 @@ ms.subservice: shared-image-gallery
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: b1833fe7c692529649e078e18e17e9333d74bfa6
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 80b04757c228a7402fc6679b42846d68c908a379
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693201"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424700"
 ---
-# <a name="share-images-across-tenants-with-shared-image-gallery"></a>Partager des images entre les locataires avec Shared Image Gallery
+# <a name="share-images-across-tenants-with-azure-compute-gallery"></a>Partager des images entre les locataires avec Azure Compute Gallery
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques uniformes
 

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/22/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 0e5b8daff5c3e13524d5193e97588a7ecc1bff65
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: fe6b7e334352630eb3797cb96b33422a84721813
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043811"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266103"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Vue d’ensemble des comptes d’utilisateur dans Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Dans Azure Active Directory B2C (Azure AD B2C), plusieurs types de comptes peuve
 Les types de comptes suivants sont disponibles :
 
 - **Compte professionnel** – Un compte professionnel peut accéder aux ressources dans un locataire et, avec un rôle d’administrateur, peut gérer des locataires.
-- **Compte invité** – Un compte invité peut uniquement être un compte Microsoft ou un utilisateur Azure AD qui peut être utilisé pour accéder à des applications ou gérer des locataires.
+- **Compte invité** – Un compte invité peut uniquement être un compte Microsoft ou un utilisateur Azure AD qui peut être utilisé pour partager des responsabilités d’administration telles que la [gestion d’un locataire](tenant-management.md).
 - **Compte de consommateur** – Un compte de consommateur est utilisé par un utilisateur des applications inscrites auprès d’Azure AD B2C. Il existe plusieurs moyens de créer des comptes de consommateur :
   - L’utilisateur suit un flux utilisateur d’inscription dans une application Azure AD B2C
   - Utilisation de l’API Microsoft Graph

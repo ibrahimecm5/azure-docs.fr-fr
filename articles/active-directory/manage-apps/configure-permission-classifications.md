@@ -9,35 +9,33 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8a2bfb1e76a323ab3fb9d4daa3bbb3e6ba2408ab
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c061dcbbf21c67e0b14768f5918e76f8bcb43e0d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619782"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471228"
 ---
-# <a name="configure-permission-classifications-with-azure-active-directory"></a>Configurer des classifications d’autorisations avec Azure Active Directory
+# <a name="configure-permission-classifications-in-azure-active-directory"></a>Configurer des classifications d’autorisations dans Azure Active Directory
 
-Les classifications d’autorisations vous permettent d’identifier l’impact des différentes autorisations en fonction des stratégies et des évaluations des risques de votre organisation. Par exemple, vous pouvez utiliser des classifications d’autorisations dans des stratégies de consentement afin d’identifier les autorisations que les utilisateurs peuvent accorder.
-
-## <a name="prerequisites"></a>Configuration requise
-
-Pour réaliser les tâches présentées dans ce guide, vous avez besoin de ce qui suit :
-
-- Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Rôle Administrateur général.
-- Configurez Azure AD PowerShell. Voir [Azure AD PowerShell](/powershell/azure/)
-
-## <a name="manage-permission-classifications"></a>Gérer des classifications d’autorisations
+Dans cet article, vous allez apprendre à configurer les classifications des autorisations dans Azure Active Directory (Azure AD). Les classifications d’autorisations vous permettent d’identifier l’impact des différentes autorisations en fonction des stratégies et des évaluations des risques de votre organisation. Par exemple, vous pouvez utiliser des classifications d’autorisations dans des stratégies de consentement afin d’identifier les autorisations que les utilisateurs peuvent accorder.
 
 Actuellement, seule la classification d’autorisation ayant un « Faible impact » est prise en charge. Seules des autorisations déléguées qui ne nécessitent pas de consentement de l’administrateur peuvent être classifiées comme ayant un « Faible impact ».
 
-> [!TIP]
-> Les autorisations minimales requises pour effectuer une connexion de base (`openid`, `profile`, `email`, `User.Read` et `offline_access`) sont toutes des autorisations déléguées sur Microsoft Graph. Avec ces autorisations, une application peut lire les détails complets du profil de l’utilisateur connecté, et maintenir cet accès même quand l’utilisateur n’utilise plus l’application.
+Les autorisations minimales requises pour effectuer une connexion de base (`openid`, `profile`, `email`, `User.Read` et `offline_access`) sont toutes des autorisations déléguées sur Microsoft Graph. Avec ces autorisations, une application peut lire les détails complets du profil de l’utilisateur connecté, et maintenir cet accès même quand l’utilisateur n’utilise plus l’application.
+
+## <a name="prerequisites"></a>Prérequis
+
+Pour configurer des classifications d’autorisations, vous avez besoin des éléments suivants :
+
+- Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Un des rôles suivants : Administrateur général, Administrateur d’application cloud, Administrateur d’application ou propriétaire du principal de service.
+
+## <a name="manage-permission-classifications"></a>Gérer des classifications d’autorisations
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
@@ -128,12 +126,4 @@ Vous pouvez utiliser le dernier module Azure AD PowerShell en préversion, [Azur
 
 Pour en savoir plus :
 
-* [Configurer les paramètres de consentement de l’utilisateur](configure-user-consent.md)
-* [Configurer le workflow du consentement administrateur](configure-admin-consent-workflow.md)
-* [Découvrez comment gérer le consentement pour les applications et évaluer les demandes de consentement](manage-consent-requests.md)
-* [Accorder le consentement de l’administrateur au niveau locataire à une application](grant-admin-consent.md)
-* [Autorisations et consentement dans la plateforme d’identités Microsoft](../develop/v2-permissions-and-consent.md)
-
-Pour obtenir de l’aide ou trouver des réponses à vos questions :
-
-* [Azure AD sur Microsoft Q&A](/answers/topics/azure-active-directory.html)
+- Consultez [Autorisations et consentement dans la plateforme d’identités Microsoft](../develop/v2-permissions-and-consent.md)

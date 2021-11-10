@@ -3,12 +3,12 @@ title: Créer et gérer des machines virtuelles revendicables
 description: Découvrez comment utiliser le portail Azure pour ajouter une machine virtuelle revendicable dans Azure DevTest Labs, et voir les processus à suivre pour revendiquer/cesser de revendiquer une machine virtuelle.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8fb89e77308751a1a40a849991740228a6c465f5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 68c82c359f5fe0a0c146756cd3a9e1f74e33f6b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660934"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218125"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Créer et gérer des machines virtuelles revendicables dans un laboratoire dans Azure DevTest Labs
 Vous ajoutez une machine virtuelle exigible à un laboratoire comme vous [ajouteriez une machine virtuelle standard](devtest-lab-add-vm.md), à partir d’une *base* qui est une [image personnalisée](devtest-lab-create-template.md), une [formule](devtest-lab-manage-formulas.md) ou une [image de la plateforme Place de marché](devtest-lab-configure-marketplace-images.md). Ce didacticiel vous guide tout au long de l’utilisation du Portail Azure pour ajouter une machine virtuelle revendicable à un laboratoire dans DevTest Labs, et vous présente la procédure qu’un utilisateur suit pour revendiquer ou cesser de revendiquer la machine virtuelle.
@@ -31,7 +31,9 @@ Vous ajoutez une machine virtuelle exigible à un laboratoire comme vous [ajoute
         Vous pouvez également enregistrer d’abord les secrets dans le coffre de clés, puis les utiliser lors de la création d’une machine virtuelle dans le laboratoire. Pour plus d’informations, consultez [Stocker des secrets dans un coffre de clés](devtest-lab-store-secrets-in-key-vault.md). Pour utiliser le mot de passe stocké dans le coffre de clés, sélectionnez **Utiliser un secret enregistré** et spécifiez une valeur de clé correspondant à votre secret (mot de passe).
     4. Dans la section **Autres options**, sélectionnez **Modifier la taille**. Sélectionnez l’un des éléments prédéfinis qui spécifient les cœurs du processeur, la taille de la RAM et la taille du disque dur de la machine virtuelle à créer.
     5. Sélectionnez **Ajouter ou supprimer des artefacts**. Sélectionnez et configurez les artefacts que vous souhaitez ajouter à l’image de base.
-    **Remarque :** Si vous n’êtes pas familier avec DevTest Labs ou avec la configuration d’artefacts, reportez-vous à la section [Ajout d’un artefact existant à une machine virtuelle](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm), puis reprenez la procédure à ce stade.
+    
+    >[!NOTE] 
+    >Si vous n’êtes pas familier avec DevTest Labs ou avec la configuration d’artefacts, reportez-vous à la section [Ajouter des artefacts après l’installation](./devtest-lab-add-vm.md#add-artifacts-after-installation), puis reprenez la procédure à ce stade.
 2. Basculez vers l’onglet **Paramètres avancés** en haut et effectuez les actions suivantes :
     1. Pour changer le réseau virtuel où se trouve la machine virtuelle, sélectionnez **Changer le réseau virtuel**.
     2. Pour changer de sous-réseau, sélectionnez **Changer de sous-réseau**.

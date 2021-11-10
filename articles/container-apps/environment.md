@@ -1,19 +1,19 @@
 ---
 title: Version préliminaire des environnements d’applications Azure Container
 description: Découvrez comment les environnements sont gérés dans les applications Azure Container.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3de8b98a992a97bb96d5e6164321e89da01f6342
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 122b172fc9fe2a66bae742f907d910cbccbf8fbc
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097462"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025795"
 ---
 # <a name="azure-container-apps-preview-environments"></a>Version préliminaire des environnements d’applications Azure Container
 
@@ -34,23 +34,14 @@ Les raisons pour lesquelles déployer des applications de conteneur dans différ
 - Deux applications ne partagent jamais les mêmes ressources de calcul
 - Deux applications ne peuvent pas communiquer entre elles via Dapr
 
-## <a name="virtual-network-integration"></a>Intégration du réseau virtuel
-
-Une adresse IP externe est automatiquement affectée à chaque environnement. Toutefois, vous pouvez configurer des applications de conteneur individuelles afin qu’elles ne soient pas accessibles à partir de l’extérieur du réseau virtuel.
-
-| Propriété | Description |
-|---|---|
-| `properties.workerAppsConfiguration.subnetResourceId` | L’ID de la ressource Azure Resource Manager pour le sous-réseau utilisé pour l’infrastructure de l’environnement. |
-| `properties.workerAppsConfiguration.aciSubnetResourceName` | Nom d’un sous-réseau dans le même réseau virtuel où s’exécutent les applications de conteneur. |
-
 ## <a name="logs"></a>Journaux d’activité
 
-Paramètres pertinentes pour la ressource de l’API d’environnement Kubernetes.
+Paramètres pertinents pour la ressource API d’environnement Azure Container Apps.
 
 | Propriété | Description |
 |---|---|
 | `properties.appLogsConfiguration` | Utilisé pour configurer l’espace de travail Log Analytics dans lequel les journaux de toutes les applications de l’environnement seront publiés |
-| `properties.workerAppsConfiguration.daprAIInstrumentationKey` | Clé d’instrumentation des informations d’application fournie à Dapr pour le suivi |
+| `properties.containerAppsConfiguration.daprAIInstrumentationKey` | Clé d’instrumentation des informations d’application fournie à Dapr pour le suivi |
 
 ## <a name="billing"></a>Facturation
 

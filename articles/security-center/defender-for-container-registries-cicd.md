@@ -7,13 +7,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 97fed8a7afce16a33497860cda70b12fc90bed2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 044976ac6fb0e017c7cf9c5cff8bc7f6c31f3da2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014896"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428897"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>Identifier les images conteneur vulnérables dans vos workflows CI/CD
 
@@ -53,7 +52,7 @@ Pour activer les analyses de vulnérabilité des images dans vos workflows GitHu
 
 ### <a name="step-1-enable-the-cicd-integration-in-defender-for-cloud"></a>Étape 1. Activer l’intégration de CI/CD dans Defender pour le cloud
 
-1. Dans le menu de Defender pour le cloud, sélectionnez **Paramètres de l’environnement**.
+1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
 1. Sélectionnez l’abonnement approprié.
 1. Dans la barre latérale de la page des paramètres de cet abonnement, sélectionnez **Intégrations**.
 1. Dans le volet qui s’affiche, sélectionnez un compte Application Insights pour envoyer les résultats de l’analyse CI/CD à partir de votre workflow.

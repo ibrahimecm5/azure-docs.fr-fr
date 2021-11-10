@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: cf55dc19a78b667056da9ef614ec75f3817b5773
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 65de72576ac484ea29710baaba9f391bfdcbc7b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141196"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421586"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Installation de SAP HANA sur des machines virtuelles Azure
 ## <a name="introduction"></a>Introduction
@@ -55,7 +55,7 @@ Cette section liste les différentes étapes que vous devez suivre avant de comm
 ## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>Déploiement pas à pas de machines virtuelles et considérations sur les systèmes d’exploitation invités
 Au cours de cette phase, vous devez suivre les étapes de déploiement de la ou des machines virtuelles pour installer HANA et optimiser finalement le système d’exploitation choisi après l’installation.
 
-1. Choisissez l’image de base à partir de la galerie Azure. Si vous souhaitez créer votre propre image de système d’exploitation pour SAP HANA, vous devez connaître tous les packages nécessaires à une installation réussie de SAP HANA. Dans le cas contraire, il est recommandé d’utiliser les images SUSE et Red Hat pour SAP ou SAP HANA, disponibles dans la galerie d’images Azure. Ces images incluent les packages nécessaires à une installation HANA réussie. En fonction de votre contrat de support avec le fournisseur de système d’exploitation, vous devez choisir une image où apporter votre propre licence. Vous pouvez également choisir une image de système d’exploitation qui inclut un support.
+1. Choisissez l’image de base à partir de la galerie Azure. Si vous souhaitez créer votre propre image de système d’exploitation pour SAP HANA, vous devez connaître tous les packages nécessaires à une installation réussie de SAP HANA. Dans le cas contraire, il est recommandé d’utiliser les images SUSE et Red Hat pour SAP ou SAP HANA disponibles dans la galerie. Ces images incluent les packages nécessaires à une installation HANA réussie. En fonction de votre contrat de support avec le fournisseur de système d’exploitation, vous devez choisir une image où apporter votre propre licence. Vous pouvez également choisir une image de système d’exploitation qui inclut un support.
 2. Si vous avez choisi une image de système d’exploitation invité qui requiert que vous apportiez votre propre licence, vous devez inscrire l’image de système d’exploitation à votre abonnement, afin de pouvoir télécharger et appliquer les derniers correctifs. Cette étape nécessite un accès à l’Internet public. À moins que vous ne configuriez votre instance privée avec, par exemple, un serveur SMT dans Azure.
 3. Choisissez la configuration réseau de la machine virtuelle. Vous trouverez plus d’informations dans le document [Configurations et opérations de l’infrastructure SAP HANA sur Azure](./hana-vm-operations.md). N’oubliez pas qu’il n’existe aucun quota de débit réseau que vous pouvez attribuer aux cartes réseau virtuelles dans Azure. Par conséquent, le seul objectif qu’il y a à diriger le trafic via différentes cartes réseau virtuelles est basé sur des considérations de sécurité. Nous sommes confiants que vous trouverez un compromis acceptable entre la complexité du routage du trafic via plusieurs cartes réseau virtuelles et les exigences imposées par les aspects sécuritaires.
 3. Appliquez les derniers correctifs au système d’exploitation une fois la machine virtuelle déployée et inscrite. Inscrite à votre propre abonnement, ou, si vous avez choisi une image comprenant la prise en charge du système d’exploitation, la machine virtuelle doit déjà avoir accès aux correctifs. 

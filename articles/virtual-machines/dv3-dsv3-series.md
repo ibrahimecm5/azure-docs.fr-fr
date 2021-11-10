@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: c3accb7edfb65ee2f21c924e4b028a6fdcaccea4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e6439acb72bffabf117387182ee6eb08f1041873
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774250"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437274"
 ---
 # <a name="dv3-and-dsv3-series"></a>Séries Dv3 et Dsv3
 
@@ -40,7 +40,7 @@ Machines virtuelles de série Dv3 dotées de la technologie Hyper-Threading d’
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Non pris en charge <br>
 <br>
 
-| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire max. : IOPS/Mbits/s en lecture/Mbits/s en écriture | Nombre de cartes réseau/bande passante réseau max. |
+| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire max. : IOPS/Mbits/s en lecture/Mbits/s en écriture | Nombre max. de cartes réseau/Bande passante réseau attendue |
 |---|---|---|---|---|---|---|
 | Standard_D2_v3<sup>1</sup>  | 2  | 8   | 50   | 4  | 3000/46/23     | 2/1 000  |
 | Standard_D4_v3  | 4  | 16  | 100  | 8  | 6000/93/46     | 2/2 000  |
@@ -68,7 +68,7 @@ Machines virtuelles de série Dsv3 dotées de la technologie Hyper-Threading d�
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
 <br>
 
-| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire et mis en cache max. : IOPS/Mbits/s (taille du cache en Gio) | Débit de stockage temporaire et débit maximal de rafale mis en cache : IOPS/Mbits/s<sup>2</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s | Débit du disque maximal de rafale non mis en cache : IOPS/Mo/s<sup>1</sup> | Nombre de cartes réseau/bande passante réseau attendue (Mbits/s) max. |
+| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire et mis en cache max. : IOPS/Mbits/s (taille du cache en Gio) | Débit de stockage temporaire et débit maximal de rafale mis en cache : IOPS/Mbits/s<sup>2</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s | Débit du disque maximal de rafale non mis en cache : IOPS/Mo/s<sup>1</sup> | Nombre max. de cartes réseau/Bande passante réseau attendue (Mbits/s) |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_D2s_v3<sup>2</sup>  | 2  | 8   | 16  | 4  | 4 000/32 (50)       | 4 000/100    |3 200/48    | 4 000/100   | 2/1 000  |
 | Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8 000/64 (100)      | 8 000/200    |6 400/96    | 8 000/200   | 2/2 000  |

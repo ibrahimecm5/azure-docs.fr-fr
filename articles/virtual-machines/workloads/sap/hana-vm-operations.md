@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6507e2367005c1f400c68f46f2ea15705205e819
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 81b40887710645f4ee9164ab6c6c2da3bf60e0da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262980"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466577"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configurations et opérations de l’infrastructure SAP HANA sur Azure
 Ce document fournit des instructions pour la configuration des infrastructures Azure et le fonctionnement des systèmes SAP HANA qui sont déployés sur des machines virtuelles Azure natives. Le document inclut également des informations de configuration pour le scale-out de SAP HANA sur la référence SKU de machine virtuelle M128s. Ce document n’a pas pour but de remplacer la documentation SAP standard, qui propose le contenu suivant :
@@ -67,7 +67,7 @@ Déployez les machines virtuelles sur Azure en utilisant :
 Vous pouvez également déployer une plateforme SAP HANA installée et complète sur les services de machine virtuelle Azure par le biais de la [plateforme cloud SAP](https://cal.sap.com/). Le processus d’installation est décrit dans [Déploiement de SAP S/4HANA ou BW/4HANA sur Azure](./cal-s4h.md) ou avec le processus d’automatisation publié sur [GitHub](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
 
 >[!IMPORTANT]
-> Pour pouvoir utiliser des machines virtuelles M208xx_v2, vous devez sélectionner avec soin votre image Linux dans la galerie d’images de machine virtuelle Azure. Pour plus d’informations, lisez l’article [Tailles de machine virtuelle à mémoire optimisée](../../mv2-series.md).
+> Pour pouvoir utiliser des machines virtuelles M208xx_v2, vous devez sélectionner avec soin votre image Linux. Pour plus de détails, consultez [Tailles de machine virtuelle à mémoire optimisée](../../mv2-series.md).
 > 
 
 
@@ -143,7 +143,7 @@ La configuration de base d’un nœud de machine virtuelle pour le scale-out de 
 - Les autres volumes de disque ne sont pas partagés entre les différents nœuds et ne sont pas basés sur NFS. Les configurations d'installation et les étapes relatives aux installations de scale-out HANA avec **/hana/data** et **/hana/log** non partagés sont fournies plus loin dans ce document. Pour savoir si un stockage certifié HANA peut être utilisé, consultez l'article [Configurations du stockage des machines virtuelles SAP HANA Azure](./hana-vm-operations-storage.md).
 
 
-Pour le dimensionnement des volumes ou des disques, vous devez vérifier la taille requise en fonction du nombre de nœuds Worker en consultant le document [Exigences de stockage TDI SAP HANA](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf). Le document contient une formule que vous devez appliquer pour obtenir la capacité requise du volume
+Pour le dimensionnement des volumes ou des disques, vous devez vérifier la taille requise en fonction du nombre de nœuds Worker en consultant le document [Exigences de stockage TDI SAP HANA](https://archive.sap.com/kmuuid2/70c8e423-c8aa-3210-3fae-e043f5c1ca92/SAP%20HANA%20TDI%20-%20Storage%20Requirements.pdf). Le document contient une formule que vous devez appliquer pour obtenir la capacité requise du volume
 
 L'autre critère de conception illustré dans le graphique de la configuration de nœud unique pour un scale-out de machine virtuelle SAP HANA est le réseau virtuel, plus précisément la configuration du sous-réseau. SAP recommande fortement de séparer le trafic client/application des communications entre les nœuds HANA. Comme indiqué dans les graphiques, cet objectif est réalisé en attachant deux cartes réseau virtuelles différentes à la machine virtuelle. Chacune des cartes réseau virtuelles est dans un sous-réseau différent et dispose d’un adresse IP distincte. Vous contrôlez le trafic avec les règles de routage à l’aide de groupes de sécurité réseau ou d’itinéraires définis par l’utilisateur.
 

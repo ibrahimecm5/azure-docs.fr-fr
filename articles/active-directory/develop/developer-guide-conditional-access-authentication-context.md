@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: kkrishna
 ms.workload: identity
 ms.custom: aaddev
-ms.openlocfilehash: 0a310df6793d2caecda095f0c89244ffee5e46eb
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 48e9598acac2739b7663fcd9a46006208d44783c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113728027"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459498"
 ---
 # <a name="developers-guide-to-conditional-access-authentication-context"></a>Aide aux développeurs pour le contexte d’authentification de l’accès conditionnel
 
@@ -43,7 +43,7 @@ Voici les conditions préalables et les étapes à suivre si vous souhaitez util
 
 ### <a name="prerequisites"></a>Prérequis
 
-**Tout d’abord**, votre application doit être intégrée à la plateforme d’identités Microsoft à l’aide des protocoles [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md) pour l’authentification et l’autorisation. Nous vous recommandons d’utiliser les [bibliothèques d’authentification de la plateforme d’identités Microsoft](reference-v2-libraries.md) pour intégrer et sécuriser votre application avec Azure Active Directory. La [documentation de la plateforme d’identités Microsoft](index.yml) est un bon point de départ pour apprendre à intégrer vos applications à la plateforme d’identités Microsoft. La prise en charge de la fonctionnalité du contexte d’authentification de l’accès conditionnel repose sur les extensions de protocole fournies par le protocole [OpenID Connect](v2-protocols-oidc.md) standard. Les développeurs utilisent une **valeur** de [référence pour le contexte d’authentification de l’accès conditionnel](/graph/api/resources/authenticationcontextclassreference) avec le paramètre [Demande de revendications](claims-challenge.md) pour permettre aux applications de déclencher et de satisfaire la stratégie.
+**Tout d’abord**, votre application doit être intégrée à la plateforme d’identités Microsoft à l’aide des protocoles [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md) pour l’authentification et l’autorisation. Nous vous recommandons d’utiliser les [bibliothèques d’authentification de la plateforme d’identités Microsoft](reference-v2-libraries.md) pour intégrer et sécuriser votre application avec Azure Active Directory. La [documentation de la plateforme d’identités Microsoft](index.yml) est un bon point de départ pour apprendre à intégrer vos applications à la plateforme d’identités Microsoft. La prise en charge de la fonctionnalité du contexte d’authentification de l’accès conditionnel repose sur les extensions de protocole fournies par le protocole [OpenID Connect](v2-protocols-oidc.md) standard. Les développeurs utilisent une **valeur** de [référence pour le contexte d’authentification de l’accès conditionnel](/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences) avec le paramètre [Demande de revendications](claims-challenge.md) pour permettre aux applications de déclencher et de satisfaire la stratégie.
 
 **Deuxièmement**, l’[accès conditionnel](../conditional-access/overview.md) nécessite une licence Azure AD Premium P1. Pour plus d’informations sur les licences, consultez la [page de tarification d’Azure AD](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 

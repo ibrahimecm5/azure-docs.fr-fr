@@ -2,23 +2,24 @@
 title: Attribuer des rôles à des noms de principal du service Contrat Entreprise Azure
 description: Cet article vous aide à attribuer des rôles aux noms de principal de service à l’aide de PowerShell et des API REST.
 author: bandersmsft
-ms.reviewer: ruturajd
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/12/2021
+ms.date: 10/22/2021
 ms.author: banders
-ms.openlocfilehash: 79e32c7514e561cc3c245464038130f5d4bef763
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 65f37b3f071286d143dc83674a7c7108a37cff44
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001007"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260376"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Attribuer des rôles à des noms de principal du service Contrat Entreprise Azure
 
-Vous pouvez gérer votre inscription Contrat Entreprise (EA) dans [Microsoft Azure Enterprise Portal](https://ea.azure.com/). Vous pouvez créer différents rôles pour gérer votre organisation, afficher les coûts et créer des abonnements. Cet article vous aide à automatiser certaines de ces tâches en utilisant Azure PowerShell et les API REST avec des noms de principal de service (SPN) Azure.
+Vous pouvez gérer votre inscription Contrat Entreprise (EA) dans [Microsoft Azure Enterprise Portal](https://ea.azure.com/). Un client Entreprise direct peut désormais gérer l’inscription d’Accord Entreprise (EA) dans le [portail Azure](https://portal.azure.com/).
+Vous pouvez créer différents rôles pour gérer votre organisation, afficher les coûts et créer des abonnements. Cet article vous aide à automatiser certaines de ces tâches en utilisant Azure PowerShell et les API REST avec des noms de principal de service (SPN) Azure.
 
 Avant de commencer, assurez-vous que vous êtes familiarisé avec les articles suivants :
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dec042c66ebed15a51d5c6c1f3ef6a3e3e2fb456
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734778"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428023"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Isolation des groupes de charges de travail Azure Synapse Analytics
 
@@ -61,7 +61,7 @@ La configuration de l’autonomie de la charge de travail définit implicitement
 
 ## <a name="resources-per-request-definition"></a>Ressources par définition de requête
 
-Les groupes de charges de travail fournissent un mécanisme permettant de définir le nombre minimal et maximal de ressources qui sont allouées par requête avec les paramètres REQUEST_MIN_RESOURCE_GRANT_PERCENT et REQUEST_MAX_RESOURCE_GRANT_PERCENT dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Dans ce cas, les ressources sont l’UC et la mémoire.  La configuration de ces valeurs détermine la quantité de ressources et le niveau de concurrence pouvant être atteint sur le système.
+Les groupes de charges de travail fournissent un mécanisme permettant de définir le nombre minimal et maximal de ressources qui sont allouées par requête avec les paramètres REQUEST_MIN_RESOURCE_GRANT_PERCENT et REQUEST_MAX_RESOURCE_GRANT_PERCENT dans la syntaxe [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Dans ce cas, la ressource est la mémoire. Les ressources du processeur sont limitées par la valeur CAP_PERCENTAGE_RESOURCE du groupe de charge de travail, et ne sont pas régies au niveau de la requête individuelle. La configuration de ces valeurs détermine la quantité de ressources et le niveau de concurrence pouvant être atteint sur le système.
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT est un paramètre facultatif qui a comme valeur par défaut la même valeur que celle spécifiée pour REQUEST_MIN_RESOURCE_GRANT_PERCENT.

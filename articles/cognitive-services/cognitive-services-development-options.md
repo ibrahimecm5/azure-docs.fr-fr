@@ -7,13 +7,13 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: c06cdae9bd7e2b0d3830cd57327253206970b3c6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/28/2021
+ms.openlocfilehash: 1d6f882a52a66b478a34b0da129a53c502ccbbca
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077930"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458225"
 ---
 # <a name="cognitive-services-development-options"></a>Options de développement Cognitive Services
 
@@ -95,7 +95,7 @@ Power Automate est un service de [Microsoft Power Platform](/power-platform/) 
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[Le générateur IA](/ai-builder/overview) est une capacité de Microsoft Power Platform que vous pouvez utiliser pour améliorer les performances de l’entreprise en automatisant les processus et en prédisant les résultats. AI Builder apporte la puissance de l’intelligence artificielle à vos solutions grâce à une expérience de pointer-cliquer. De nombreux services cognitifs tels que Analyse de texte et Vision par ordinateur ont été directement intégrés ici, et vous n’avez pas besoin de créer vos propres services cognitifs. 
+[Le générateur IA](/ai-builder/overview) est une capacité de Microsoft Power Platform que vous pouvez utiliser pour améliorer les performances de l’entreprise en automatisant les processus et en prédisant les résultats. AI Builder apporte la puissance de l’intelligence artificielle à vos solutions grâce à une expérience de pointer-cliquer. De nombreux services cognitifs tels que le service de langage et Vision par ordinateur ont été directement intégrés ici, et vous n’avez pas besoin de créer vos propres services cognitifs. 
 
 * **Utilisateur(s) cible(s)**  : Utilisateurs professionnels (analystes) et administrateurs SharePoint
 * **Avantages** : Solution clé en main qui apporte la puissance de l’intelligence artificielle grâce à une expérience de pointer-cliquer. Aucune qualification en codage ou en science des données n’est requise

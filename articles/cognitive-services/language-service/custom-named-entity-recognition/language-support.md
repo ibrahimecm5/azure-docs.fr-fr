@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: references_regions, language-service-custom-ner, ignite-fall-2021
 ms.author: aahi
-ms.openlocfilehash: 499fa25a09699e21610fb2c1812612616fb818da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 996a04ae69e8e511a8dd74b5cad82b76eb1c6d8d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096994"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502575"
 ---
 # <a name="language-support-for-custom-named-entity-recognition-ner"></a>Prise en charge linguistique pour la reconnaissance d’entités nommées personnalisées (NER)
 
@@ -27,7 +27,7 @@ Utilisez cet article pour en savoir plus sur les langues et les régions actuell
 Avec les NER personnalisées, vous pouvez effectuer l’apprentissage d’un modèle dans un langage et le tester dans un autre langage. Cette fonctionnalité est très intéressante, car elle vous permet de gagner du temps : au lieu de créer des projets distincts pour chaque langage, vous pouvez gérer des jeux de données multilingues dans un seul projet. Votre jeu de données n’a pas besoin d’être entièrement dans la même langue, mais vous devez spécifier cette option lors de la création du projet. Si vous remarquez que votre modèle fonctionne mal dans certains langages pendant le processus d’évaluation, envisagez d’ajouter des données dans cette langue à votre jeu d’apprentissage.
 
 > [!NOTE]
-> Pour activer la prise en charge de plusieurs langues, vous devez activer cette option lors de [la création de votre projet](how-to/create-project.md).
+> Pour activer la prise en charge multilingue, vous devez activer cette option lors de la [création de votre projet](how-to/create-project.md). Vous pouvez également l’activer ultérieurement à partir de la page des paramètres du projet.
 
 ## <a name="language-support"></a>Support multilingue
 

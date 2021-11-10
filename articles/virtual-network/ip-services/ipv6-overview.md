@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: beaa5df1d0a8e8537574e6e1e6284272d3a8a294
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 259be22f0d69326617845d4b14a249e3b5cf4939
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261231"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424606"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Qu’est-ce que le protocole IPv6 pour réseau virtuel Azure ?
 
@@ -72,9 +72,7 @@ Le protocole IPv6 pour réseaux virtuels Azure VNET est un ensemble de fonctionn
 
 ## <a name="limitations"></a>Limites
 La version actuelle du protocole IPv6 pour réseau virtuel Azure présente les limitations suivantes :
-- IPv6 pour réseau virtuel Azure est disponible dans les régions US Government et toutes les régions commerciales Azure dans le monde avec toutes les méthodes de déploiement.  
-- Les passerelles ExpressRoute PEUVENT être utilisées pour le trafic IPv4 uniquement dans un réseau virtuel où le protocole IPv6 est activé.  La prise en charge du trafic IPv6 pour ExpressRoute est en préversion.   
-- Les passerelles VPN ne peuvent PAS être utilisés dans un réseau virtuel où le protocole IPv6 est activé, que ce soit directement ou appairé avec « UseRemoteGateway ».
+- Les passerelles VPN prennent actuellement en charge le trafic IPv6, mais PEUVENT toujours être déployées dans un réseau virtuel à double pile.
 - La plateforme Azure (AKS, etc.) ne prend pas en charge la communication IPv6 pour les conteneurs. 
 - Les machines virtuelles ou groupes de machines virtuelles identiques exclusivement IPv6 ne sont pas pris en charge, chaque carte réseau doit inclure au moins une configuration IP IPv4. 
 - Lorsque vous ajoutez IPv6 à des déploiements IPv4 existants, les plages IPv6 ne peuvent pas être ajoutées à un réseau virtuel avec des liens de navigation vers les ressources qui existent déjà.  

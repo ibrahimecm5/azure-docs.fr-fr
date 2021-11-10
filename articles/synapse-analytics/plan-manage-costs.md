@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 1527888458a494e0b2d7177246c991228440d255
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 053ff6ec2a2b690ef612d9d6d2d188dfe5f6198a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525382"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460049"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planifier et gérer les coûts pour Azure Synapse Analytics
 
@@ -42,7 +42,7 @@ Lorsque vous créez ou utilisez des ressources Azure Synapse Analytics, les comp
 - Exploration de données et entreposage des données 
     - Pool SQL dédié : vous êtes facturé en fonction du nombre de blocs DWU et d’heures d’exécution.
     - Stockage : vous êtes facturé en fonction du nombre de To stockés.
-    - Pool SQL sans serveur : vous êtes facturé par To de données traitées.
+    - Pool SQL serverless : vous êtes facturé par To de données traitées.
 - Pool Apache Spark : vous êtes facturé pour le nombre d’instances et les heures d’exécution.
 - Intégration de données 
     - Exécutions d’activités d’orchestration : sur la base du nombre d’exécutions d’activités.

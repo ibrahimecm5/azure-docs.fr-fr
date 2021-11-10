@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: dd32e421b678b9cfc6277bdc593a06f93fab447f
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: e63867a4c46f8249db93c13914ab7a7297252f48
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136109"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238451"
 ---
 # <a name="azure-key-vault-security"></a>Sécurité d’Azure Key Vault
 
@@ -73,6 +73,12 @@ Un principal de sécurité est un objet qui représente un utilisateur, un group
 - Un **principal de service** est un type de principal de sécurité qui identifie une application ou un service, c’est-à-dire un morceau de code plutôt qu’un utilisateur ou un groupe. L’ID d’objet d’un principal de service, appelé **ID client**, lui sert de nom d’utilisateur. La **clé secrète client** ou le **certificat** du principal de service fonctionne comme un mot de passe. De nombreux services Azure prennent en charge l’attribution de l’[identité managée](../../active-directory/managed-identities-azure-resources/overview.md) avec la gestion automatisée de l’**ID client** et du **certificat**. L’identité managée est l’option la plus sécurisée et recommandée pour l’authentification dans Azure.
 
 Pour plus d’informations sur l’authentification sur Key Vault, consultez [S’authentifier auprès d’Azure Key Vault](authentication.md).
+
+## <a name="conditional-access"></a>Accès conditionnel 
+
+Key Vault prend en charge les stratégies d’accès conditionnel Azure Active Directory. En utilisant des stratégies d’accès conditionnel, vous pouvez appliquer les contrôles d’accès appropriés au Key Vault pour garantir la sécurité de votre organisation sans pour autant freiner inutilement votre utilisateur.
+
+Pour plus d’informations, consultez [Vue d’ensemble de l’accès conditionnel](../../active-directory/conditional-access/overview.md).
 
 ## <a name="privileged-access"></a>Accès privilégié
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 3126eb9a2c3289f6fbc97a14fadf94300d1c2e84
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: facad7dbe4adf674438564b26c61a0f9aa9bceed
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728776"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429125"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Choisir l’option MySQL Server appropriée dans Azure
 
@@ -24,12 +24,12 @@ Pour prendre votre décision, envisagez les deux options suivantes :
 - **Azure Database pour MySQL**. Cette option est un moteur de base de données MySQL entièrement managé, basé sur la version stable de MySQL Community Edition. Cette base de données en tant que service (DBaaS) relationnelle, hébergée sur la plateforme cloud Azure, appartient à la catégorie de secteur PaaS.
 
   Avec une instance gérée de MySQL sur Azure, vous pouvez utiliser des fonctionnalités intégrées, par exemple, de mise à jour corrective automatisée, de haute disponibilité, de sauvegardes automatisées, de mise à l’échelle élastique, de sécurité de niveau entreprise, de conformité et de gouvernance, de surveillance et d’alertes, qui requièrent une configuration intensive lorsque MySQL Server est local ou dans une machine virtuelle Azure. Quand vous utilisez MySQL en tant que service, vous payez à l’utilisation avec des options de scale-up ou de scale-out pour bénéficier de plus de contrôle sans interruption de service.
-  
+
   Deux modes de déploiement sont disponibles pour [Azure Database pour MySQL](overview.md) optimisé par MySQL Community Edition :
 
   - Un [Serveur unique](single-server-overview.md) est un service de base de données complètement managé avec des exigences minimales pour les personnalisations de la base de données. La plateforme de serveur unique est conçue pour prendre en charge la plupart des fonctions de gestion de base de données, comme les correctifs, les sauvegardes, la haute disponibilité et la sécurité, avec un minimum de configuration et de contrôle de la part de l’utilisateur. L’architecture est optimisée pour fournir une disponibilité de 99,99 % sur une seule zone de disponibilité. Les serveurs uniques sont particulièrement adaptés aux applications natives Cloud conçues pour gérer les correctifs automatisés sans qu’il soit nécessaire d’exercer un contrôle précis sur le calendrier des correctifs et les paramètres de configuration MySQL personnalisés.
 
-  - Un [serveur flexible (version préliminaire)](flexible-server/overview.md) est un service de base de données entièrement géré conçu pour offrir un contrôle et une flexibilité plus granulaires des fonctions de gestion de base de données et des paramètres de configuration. En général, le service offre davantage de flexibilité et de personnalisations de configuration de serveur par rapport au déploiement de serveur unique en fonction des besoins des utilisateurs. L’architecture de serveur flexible permet aux utilisateurs d’opter pour une haute disponibilité au sein d’une même zone de disponibilité et dans plusieurs zones de disponibilité. Les serveurs flexibles offrent également de meilleurs contrôles d’optimisation des coûts grâce à la possibilité de démarrer/d’arrêter votre serveur et vos références (SKU) expansibles, idéales pour les charges de travail qui n’ont pas besoin en permanence d’une capacité de calcul complète.
+  - Un [serveur flexible](flexible-server/overview.md) est un service de base de données entièrement géré conçu pour offrir un contrôle et une flexibilité plus précise des fonctions de gestion de base de données et des paramètres de configuration. En général, le service offre davantage de flexibilité et de personnalisations de configuration de serveur par rapport au déploiement de serveur unique en fonction des besoins des utilisateurs. L’architecture de serveur flexible permet aux utilisateurs d’opter pour une haute disponibilité au sein d’une même zone de disponibilité et dans plusieurs zones de disponibilité. Les serveurs flexibles offrent également de meilleurs contrôles d’optimisation des coûts grâce à la possibilité de démarrer/d’arrêter votre serveur et vos références (SKU) expansibles, idéales pour les charges de travail qui n’ont pas besoin en permanence d’une capacité de calcul complète.
 
 Les serveurs flexibles sont adaptés de façon optimale pour ce qui suit :
 
@@ -61,7 +61,7 @@ Le tableau suivant liste les principales différences entre ces options :
 | Mise à l’échelle du stockage automatique | Prise en charge| Prise en charge| Non pris en charge|
 | Mise à l’échelle des E/S par seconde | Non pris en charge| Prise en charge| Non pris en charge|
 | [**Optimisation des coûts**](https://azure.microsoft.com/pricing/details/mysql/flexible-server/) | | | |
-| Prix ​​des instances réservées | Prise en charge | Pris en charge | Prise en charge |
+| Prix ​​des instances réservées | Prise en charge | Prise en charge | Prise en charge |
 | Arrêter/démarrer le serveur pour le développement | Le serveur peut être arrêté jusqu’à 7 jours | Le serveur peut être arrêté jusqu’à 30 jours | Prise en charge |
 | Références SKU Burstable à faible coût | Non pris en charge | Prise en charge | Prise en charge |
 | [**Mise en réseau et sécurité**](concepts-security.md) | | | |
@@ -113,7 +113,7 @@ Le tableau suivant liste les principales différences entre ces options :
 | Supervision des opérations de base de données | Prise en charge | Prise en charge | Géré par l’utilisateur |
 | Query Performance Insight | Prise en charge | Prise en charge (à l’aide de Workbooks)| Géré par l’utilisateur |
 | Journaux d’activité du serveur | Prise en charge | Prise en charge (à l’aide des journaux de diagnostic) | Géré par l’utilisateur |
-| Journaux d’audit | Prise en charge | Pris en charge | Prise en charge | 
+| Journaux d’audit | Prise en charge | Prise en charge | Prise en charge | 
 | Journaux d’activité d’erreurs | Non pris en charge | Prise en charge | Prise en charge |
 | Prise en charge Azure Advisor | Prise en charge | Non pris en charge | Non pris en charge |
 | **Plug-ins** | | | |
@@ -154,7 +154,7 @@ Avec IaaS, Microsoft :
 
 - Administre l’infrastructure sous-jacente.
 - Fournit une mise à jour corrective automatisée pour le matériel et le système d’exploitation sous-jacents.
-  
+
 Avec PaaS, Microsoft :
 
 - Administre l’infrastructure sous-jacente.

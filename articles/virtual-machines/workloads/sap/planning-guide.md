@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6a707f349d4153c7b7a5dca78e2a739625cc7db5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b6d31f3a55338a9a92549954dd8ae1a3367c3da4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428061"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Planification et implémentation de machines virtuelles Azure pour SAP NetWeaver
 
@@ -455,7 +455,7 @@ Azure met à votre disposition une grande variété de machines virtuelles pour 
 
 ![Positionnement des services Microsoft Azure Virtual Machine][planning-guide-figure-400]
 
-Grâce aux services de machines virtuelles Azure, Microsoft vous permet de déployer des images serveur personnalisées sur Azure en tant qu'instances IaaS. Différentes images de système d'exploitation sont également à votre disposition dans la bibliothèque d'images Azure.
+Grâce aux services de machines virtuelles Azure, Microsoft vous permet de déployer des images serveur personnalisées sur Azure en tant qu'instances IaaS. Vous pouvez également choisir dans une vaste sélection d’images de système d’exploitation consommables à partir de la Place de marché Azure.
 
 D’un point de vue opérationnel, Azure Virtual Machine Services offre des expériences similaires à celles des machines virtuelles déployées en local. Vous êtes responsable de l'administration, de l'exploitation et des mises à jour correctives du système d'exploitation exécuté sur une machine virtuelle Azure et des applications de cette machine virtuelle. Microsoft ne fournit aucun service en dehors de l'hébergement de cette machine virtuelle sur son infrastructure Azure (Infrastructure as a Service - IaaS). Pour la charge de travail SAP que vous déployez en tant que client, Microsoft ne propose aucune offre en dehors des offres IaaS.
 

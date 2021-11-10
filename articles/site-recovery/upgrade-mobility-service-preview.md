@@ -4,12 +4,12 @@ description: Cet article décrit les mises à jour automatiques pour la prévers
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: 97cfba3e14268385632a47a5898b21e8d68811cb
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a683aacc762ce169045ee17891b49624ef1ee991
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539728"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437641"
 ---
 # <a name="upgrade-mobility-service-and-appliance-components-preview"></a>Mettre à niveau vers la préversion du service Mobilité et des composants de l’appliance
 
@@ -117,6 +117,25 @@ Pour vérifier l’état de mise à jour de l’un des composants, accédez au s
 Si une mise à jour est requise, cela est indiqué dans la colonne **État**. Dans ce cas, cliquez sur le message d’état pour mettre à niveau le composant.
 
   ![composants d’appliance de réplication](./media/upgrade-mobility-service-preview/appliance-components.png)
+
+### <a name="turn-off-auto-update"></a>Désactiver la mise à jour automatique
+
+1. Sur le serveur exécutant l’appliance, ouvrez l’Éditeur du Registre.
+2. Accédez à **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
+3. Pour désactiver la mise à jour automatique, créez une clé de Registre **AutoUpdate** avec la valeur DWORD 0.
+
+    ![Définir la clé de Registre](./media/upgrade-mobility-service-preview/registry-key.png)
+
+
+### <a name="turn-on-auto-update"></a>Activer la mise à jour automatique
+
+Vous pouvez activer la mise à jour automatique en supprimant la clé de Registre AutoUpdate de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance.
+
+Pour supprimer la clé de Registre :
+
+1. Sur le serveur exécutant l’appliance, ouvrez l’Éditeur du Registre.
+2. Accédez à **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
+3. Supprimez la clé de Registre **AutoUpdate** précédemment créée pour désactiver la mise à jour automatique.
 
 ### <a name="resolve-issues-with-component-upgrade"></a>Résoudre les problèmes de mise à niveau des composants
 

@@ -1,5 +1,5 @@
 ---
-title: Résoudre les problèmes de pool de capacités pour Azure NetApp Files | Microsoft Docs
+title: Résoudre des erreurs de pool de capacités pour Azure NetApp Files | Microsoft Docs
 description: Décrit les problèmes potentiels que vous pouvez rencontrer lors de la gestion des pools de capacités et fournit des solutions aux problèmes.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 7ca7f042aaa97967d47dd9f35afaa647e0d37361
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: e637c80f864592f89252e52f27325762cd43582b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407263"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219770"
 ---
-# <a name="troubleshoot-capacity-pool-issues"></a>Résoudre les problèmes de pools de capacités
+# <a name="troubleshoot-capacity-pool-errors"></a>Résoudre les problèmes de pools de capacités
 
 Cet article décrit les résolutions des problèmes que vous pouvez rencontrer lors de la gestion des pools de capacités, notamment l’opération de modification de pool. 
 

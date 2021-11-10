@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 1fb950fb0a589d4ac9dc6554b95a8f72fa8ca7b3
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: e6cb3ecf7bdc352617f5b418b6fa802cdf2c7d63
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122831565"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439003"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Instructions pour une implémentation responsable de Personalizer
 
@@ -77,7 +77,7 @@ Réfléchissez à l’impact de ces caractéristiques :
 * **Données démographiques des utilisateurs** : Caractéristiques relatives au sexe, à l’âge, à la race et à la religion : Ces caractéristiques peuvent être interdites dans certaines applications pour des raisons légales, et leur appliquer une personnalisation peut ne pas être éthique car celle-ci transmettrait des généralisations et des préjugés. Exemple de ce genre de propagation biaisée : une offre d’emploi d’ingénieur qui ne serait pas présentée aux personnes d’un certain âge ou d’un certain sexe.
 * **Informations de localisation** : Dans de nombreuses régions du monde, les informations de localisation (par exemple un code postal ou un nom de quartier) peuvent être fortement corrélées avec un niveau de revenus, une race ou une religion.
 * **Perception de l’équité par l’utilisateur** : Même dans les cas où votre application prend des décisions saines, prenez en compte que les utilisateurs peuvent percevoir que le contenu affiché dans votre application change d’une manière qui semble être liée à des caractéristiques qui seraient discriminatoires.
-* **Préjugé involontaire dans les caractéristiques** :       Il existe des types de préjugés qui peuvent être introduits par l’utilisation de caractéristiques affectant uniquement une partie de la population. Vous devez faire doublement attention si des caractéristiques sont générées par un algorithme, par exemple en cas d’utilisation d’analyse d’images pour extraire des éléments dans une image ou d’analytique d’un texte pour découvrir des entités dans le texte. Familiarisez-vous avec les caractéristiques des services que vous utilisez pour créer ces caractéristiques.
+* **Préjugé involontaire dans les caractéristiques** :       Il existe des types de préjugés qui peuvent être introduits par l’utilisation de caractéristiques affectant uniquement une partie de la population. Vous devez faire doublement attention si des caractéristiques sont générées par un algorithme, par exemple en cas d’utilisation d’analyse d’images pour extraire des éléments dans une analyse d’image ou de texte pour découvrir des entités dans le texte. Familiarisez-vous avec les caractéristiques des services que vous utilisez pour créer ces caractéristiques.
 
 Appliquez les pratiques suivantes lors du choix des caractéristiques à envoyer dans les contextes et les actions à Personalizer :
 

@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: mamccrea
-ms.openlocfilehash: 59a89c069c332d4d0346e0f3c795763818c601de
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cb15ab04a92e22099f9c04d9e05bb2e44c182826
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457104"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471475"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Images Gold BYOS (Apportez votre propre abonnement) de Red Hat Enterprise Linux dans Azure
 
@@ -193,7 +193,7 @@ Pour connaître les étapes à suivre pour appliquer Azure Disk Encryption, cons
 
     Dans ce cas, contactez Microsoft ou Red Hat pour activer votre abonnement.
 
-- Si vous modifiez un instantané à partir d’une image BYOS RHEL et que vous tentez de publier cette image personnalisée sur [Shared Image Gallery](../../shared-image-galleries.md), vous devez fournir des informations d’abonnement qui correspondent à la source d’origine de l’instantané. Par exemple, la commande peut se présenter comme suit :
+- Si vous modifiez un instantané à partir d’une image BYOS RHEL, et tentez de publier cette image personnalisée sur [Azure Compute Gallery](../../shared-image-galleries.md) (anciennement Shared Image Gallery), vous devez fournir des informations d’abonnement correspondant à la source d’origine de l’instantané. Par exemple, la commande peut se présenter comme suit :
 
     ```azurecli
     az vm create –image \

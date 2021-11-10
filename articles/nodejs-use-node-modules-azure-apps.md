@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: f61f08f32ebb2b721846d3c3017405af99421104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0abb7a982cc3be95c92035ffffb7c3a4778ab40
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95542216"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457314"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Utilisation de modules Node.js avec des applications Azure
 Ce document fournit des instructions sur l'utilisation de modules Node.js avec des applications hébergées sur Azure. Il vous explique comment vous assurer que votre application utilise une version spécifique d’un module et vous présente l’utilisation de modules natifs avec Azure.
@@ -70,7 +70,7 @@ Un problème potentiel avec le fichier **package.json** est qu'il n'indique la v
 >
 >
 
-### <a name="using-a-npm-shrinkwrapjson-file"></a>Utilisation d'un fichier npm-shrinkwrap.json
+### <a name="using-an-npm-shrinkwrapjson-file"></a>Utilisation d'un fichier npm-shrinkwrap.json
 Le fichier **npm-shrinkwrap.json** tente de résoudre les limitations de contrôle de version des modules du fichier **package.json**. Alors que le fichier **package.json** n'inclut que des versions pour les modules de niveau supérieur, le fichier **npm-shrinkwrap.json** contient les exigences de version pour l'ensemble de la chaîne de dépendance des modules.
 
 Lorsque votre application est prête pour la production, vous pouvez verrouiller les exigences de version et créer un fichier **npm-shrinkwrap.json** à l'aide de la commande **npm shrinkwrap**. Cette commande utilise les versions actuellement installées dans le dossier **modules\_de nœuds** et les enregistre dans le fichier **npm-shrinkwrap.json**. Une fois que l'application a été déployée vers l'environnement d'hébergement, la commande **npm install** permet d'analyser le fichier **npm-shrinkwrap.json** et d'installer toutes les dépendances répertoriées. Pour plus d’informations, consultez [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).

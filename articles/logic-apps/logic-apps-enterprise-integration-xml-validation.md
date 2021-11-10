@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: f295054913dbf275533d4d14f39497071c6984a8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 20edb5f3b94e9014ce08d012cb0033a3bfb28db5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353217"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457465"
 ---
 # <a name="validate-xml-in-workflows-with-azure-logic-apps"></a>Valider des données XML dans des flux de travail à l’aide d’Azure Logic Apps
 
@@ -41,9 +41,9 @@ Si vous débutez avec les applications logiques, voir [Qu’est-ce qu’Azure Lo
 
     * Un [lien vers votre ressource d'application logique](logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-  * Si vous utilisez le [type de ressource **Application logique (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences), vous ne stockez pas de schémas dans votre compte d’intégration. Au lieu de cela, vous pouvez [directement ajouter des schémas à votre ressource d’application logique](logic-apps-enterprise-integration-schemas.md) à l’aide du portail Azure ou de Visual Studio Code. Vous pouvez ensuite utiliser ces schémas sur plusieurs flux de travail au sein de la *même ressource d’application logique*.
+  * Si vous utilisez le [type de ressource **Application logique (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences), vous ne stockez pas de schéma dans votre compte d’intégration. Au lieu de cela, vous pouvez [directement ajouter des schémas à votre ressource d’application logique](logic-apps-enterprise-integration-schemas.md) à l’aide du portail Azure ou de Visual Studio Code. Vous pouvez ensuite utiliser ces schémas sur plusieurs flux de travail au sein de la *même ressource d’application logique*.
 
-    Toutefois, vous avez toujours besoin de ce compte pour stocker les artefacts, tels que les partenaires, les contrats et les certificats, en plus d’utiliser les opérations [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) ou [EDIFACT](logic-apps-enterprise-integration-edifact.md). Toutefois, vous n’avez pas besoin de lier votre ressource d’application logique à votre compte d’intégration, donc la fonctionnalité de liaison n’existe pas. Votre compte d’intégration doit toujours répondre à d’autres exigences, comme l’utilisation du même abonnement Azure et la présence dans le même emplacement que votre ressource d’application logique.
+    Toutefois, vous avez toujours besoin de ce compte pour stocker les artefacts, tels que les partenaires, les contrats et les certificats, en plus d’utiliser les opérations [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) ou [EDIFACT](logic-apps-enterprise-integration-edifact.md). Toutefois, vous n’avez pas besoin de lier votre ressource d’application logique à votre compte d’intégration, donc la fonctionnalité de liaison n’existe pas. Votre compte d’intégration doit encore répondre à d’autres exigences, telles que l’utilisation du même abonnement Azure et le même emplacement que votre ressource d’application logique.
 
     > [!NOTE]
     > Actuellement, seul le type de ressource **Application logique (Consommation)** prend en charge les opérations [RosettaNet](logic-apps-enterprise-integration-rosettanet.md). Le type de ressource **Application logique (Standard)** n’inclut pas les opérations [RosettaNet](logic-apps-enterprise-integration-rosettanet.md).

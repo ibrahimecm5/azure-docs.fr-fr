@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: 6e5949f22000c930f101ae36042587d97a5293a0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 13808d38a4ddb7e00af64b02df390eee1e1f9469
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664862"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421966"
 ---
 # <a name="known-issues-with-network-file-system-nfs-30-protocol-support-in-azure-blob-storage"></a>Problèmes connus de la prise en charge du protocole NFS 3.0 dans le service Stockage Blob Azure
 
@@ -27,6 +27,8 @@ Cet article décrit les limitations et les problèmes connus de la prise en char
 - La prise en charge NFS 3.0 ne peut pas être activée sur les comptes de stockage existants.
 
 - Une fois activée, la prise en charge NFS 3.0 ne peut pas être désactivée dans un compte de stockage.
+
+- Les options de redondance GRS, GZRS et RA-GRS ne sont pas prises en charge lorsque vous créez un compte de stockage NFS 3.0.
 
 ## <a name="nfs-30-features"></a>Fonctionnalités NFS 3.0
 

@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: cfa6865ee7facdc00303f725de78a3e523ff301d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5a405c50c94a16394a92ba7c4830ab3f3aee072f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595989"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449713"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Utiliser le routage des messages IoT Hub pour envoyer des messages appareil-à-cloud à différents points de terminaison
 
@@ -49,7 +49,7 @@ IoT Hub prend actuellement en charge les points de terminaison suivants :
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Point de terminaison intégré en tant que point de terminaison de routage
 
-Vous pouvez utiliser [l’intégration et les SDK standard Event Hubs](iot-hub-devguide-messages-read-builtin.md) pour recevoir des messages appareil-à-cloud du point de terminaison intégré (**messages/événements**). Une fois qu’une route est créée, les données cessent de circuler vers le point de terminaison intégré, sauf si une route est créée vers ce point de terminaison.
+Vous pouvez utiliser [l’intégration et les SDK standard Event Hubs](iot-hub-devguide-messages-read-builtin.md) pour recevoir des messages appareil-à-cloud du point de terminaison intégré (**messages/événements**). Une fois qu’une route est créée, les données cessent de circuler vers le point de terminaison intégré, sauf si une route est créée vers ce point de terminaison. Même si aucun itinéraire n’est créé, un itinéraire de secours doit être activé pour acheminer les messages vers le point de terminaison intégré. L’itinéraire de secours est activé par défaut si vous créez votre hub à l’aide du portail ou de l’interface de ligne de commande.
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>Stockage Azure en tant que point de terminaison de routage
 

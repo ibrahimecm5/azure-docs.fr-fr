@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 8aba6f13957d37f843114572f001029baf41ded6
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 5838185328920587b11bb66d21c9402ce93e9b6b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889346"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458244"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Sélectionner un domaine pour un projet Custom Vision
 
@@ -50,6 +50,8 @@ Sous l’onglet Paramètres de votre projet Custom Vision, vous pouvez sélectio
 ## <a name="compact-domains"></a>Domaines compacts
 
 Les modèles générés par les domaines compacts sont exportables pour s’exécuter localement. Dans l’API Custom Vision 3.4 en préversion publique, vous pouvez obtenir la liste des plateformes exportables pour les domaines compacts en appelant l’API GetDomains.
+
+Tous les domaines suivants prennent en charge l’exportation aux formats ONNX, TensorFlow, TensorFlowLite, TensorFlow.js, CoreML et VAIDK, à l’exception du domaine **Object Detection General (compact)** qui ne prend pas en charge le format VAIDK.
 
 Les performances du modèle varient selon le domaine sélectionné. Le tableau ci-dessous spécifie la taille du modèle et le temps d'inférence sur processeur Intel Desktop et GPU NVidia \[1\]. Ces chiffres n'incluent pas les délais de prétraitement et de post-traitement.
 

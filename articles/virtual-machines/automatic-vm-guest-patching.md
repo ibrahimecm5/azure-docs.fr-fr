@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.subservice: maintenance
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 10/18/2021
+ms.date: 10/20/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7df73a0e09cf845f0dd7b5fda10bbb370057e998
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 91d172cf1d3ba5bf78feb8e18382631464619c04
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181385"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459726"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>Préversion : Mise à jour corrective automatique des systèmes invités des machines virtuelles Azure
+# <a name="automatic-vm-guest-patching-for-azure-vms"></a>Mise à jour corrective automatique d’invité pour les machines virtuelles Azure
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles
 
@@ -28,11 +28,6 @@ La mise à jour corrective automatique de l’invité de machine virtuelle prés
 - L’orchestration des patchs est gérée par Azure et les patchs sont appliqués selon les [principes de première disponibilité](#availability-first-updates).
 - L’intégrité des machines virtuelles, telle que déterminée par les signaux d’intégrité de la plateforme, est surveillée pour détecter les échecs de mise à jour corrective.
 - Elle fonctionne pour toutes les tailles de machine virtuelle.
-
-> [!IMPORTANT]
-> La mise à jour corrective automatique de l’invité de machine virtuelle est actuellement disponible en Préversion publique.
-> Cette préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge.
-> Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-does-automatic-vm-guest-patching-work"></a>Fonctionnement de la mise à jour corrective automatique de l’invité de machine virtuelle
 
@@ -78,7 +73,7 @@ Pour les types de système d’exploitation qui publient des patchs à une caden
 Étant donné qu’un nouveau déploiement est déclenché chaque mois, une machine virtuelle reçoit au moins un déploiement de patchs chaque mois si elle est mise sous tension pendant les heures creuses. Ce processus garantit que les derniers patchs de sécurité et critiques disponibles sont appliqués à la machine virtuelle sur une base mensuelle. Pour garantir la cohérence de l’ensemble de patchs installés, vous pouvez configurer vos machines virtuelles pour évaluer et télécharger des patchs à partir de vos propres référentiels privés.
 
 ## <a name="supported-os-images"></a>Images de système d’exploitation prises en charge
-Seules les machines virtuelles créées à partir de certaines images de plateforme de système d’exploitation sont actuellement prises en charge dans la préversion. Les images personnalisées ne sont actuellement pas prises en charge dans la préversion.
+Seules les machines virtuelles créées à partir de certaines images de plateforme de système d’exploitation sont actuellement prises en charge. Les images personnalisées ne sont actuellement pas prises en charge.
 
 Les références SKU de plateforme suivantes sont prises en charge (et d’autres sont régulièrement ajoutées) :
 
@@ -91,8 +86,8 @@ Les références SKU de plateforme suivantes sont prises en charge (et d’autre
 | Redhat  | RHEL | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7_9, 7-RAW, 7-LVM |
 | Redhat  | RHEL | 8, 8.1, 8.2, 8_3, 8_4, 8-LVM |
 | Redhat  | RHEL RAW | 8-raw |
-| OpenLogic  | Centos | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7_8, 7_9, 7-LVM |
-| OpenLogic  | Centos | 8.0, 8_1, 8_2, 8_3, 8-lvm |
+| OpenLogic  | CentOS | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7_8, 7_9, 7-LVM |
+| OpenLogic  | CentOS | 8.0, 8_1, 8_2, 8_3, 8-lvm |
 | SUSE  | sles-12-sp5 | gen1, gen2 |
 | SUSE  | sles-15-sp2 | gen1, gen2 |
 | MicrosoftWindowsServer  | WindowsServer | 2008-R2-SP1 |
@@ -232,7 +227,7 @@ L’activation des mises à jour automatiques de l’invité de machine virtuell
 Les mises à jour automatiques sont désactivées dans la plupart des scénarios, et l’installation des patchs s’effectue désormais par le biais de l’extension. Les conditions suivantes s’appliquent.
 - Si les mises à jour automatiques Windows Update étaient activées sur une machine virtuelle Windows par le biais du mode correctif AutomaticByOS, elles sont désactivées pour la machine virtuelle quand l’extension est installée.
 - Pour les machines virtuelles Ubuntu, les mises à jour automatiques par défaut sont désactivées automatiquement à l’issue du processus d’activation de la mise à jour corrective automatique des systèmes invités des machines virtuelles.
-- Pour RHEL, les mises à jour automatiques doivent être désactivées manuellement dans la préversion. Exécutez :
+- Pour RHEL, les mises à jour automatiques doivent être désactivées manuellement. Exécutez :
 
 ```
 systemctl stop packagekit

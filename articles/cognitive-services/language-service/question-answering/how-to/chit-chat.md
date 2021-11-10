@@ -9,14 +9,14 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 2e46b7b877e3ce8e82782356339261ff5204bf26
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c925fdf1b5b53f703d7c996110fe1b6b5f52cde8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096339"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476582"
 ---
-# <a name="use-chitchat-with-a-knowledge-base"></a>Utiliser un chit-chat avec une base de connaissances
+# <a name="use-chitchat-with-a-project"></a>Utiliser chit-chat avec un projet
 
 L’ajout du chit-chat de conversation à votre bot rend ses conversations plus naturelles et engageantes. La fonctionnalité de chit-chat de réponses aux questions personnalisées vous permet d’ajouter facilement un ensemble prédéfini de chit-chat supérieur dans votre base de connaissances (KB). Cela peut constituer un point de départ pour la personnalité de votre bot, et vous permettra d’économiser le temps et les efforts qui seraient nécessaires à leur écriture à partir de zéro.
 

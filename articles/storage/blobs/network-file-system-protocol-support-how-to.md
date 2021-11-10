@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 54d406303019ebfa967133c26bd5487c848575b2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6b22b99cdd883ed8dedb90f925a918fe9c25d9bb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664881"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444873"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>Monter le Stockage Blob avec le protocole NFS 3.0
 
@@ -44,7 +44,7 @@ Au fur et à mesure que vous configurez le compte, choisissez les valeurs suivan
 |Paramètre | Niveau de performance Premium | Niveau de performance Standard
 |----|---|---|
 |Emplacement|Toutes les régions disponibles |Toutes les régions disponibles
-|Performances|Premium| standard
+|Performances|Premium| Standard
 |Type de compte|BlockBlobStorage| Universel v2
 |Réplication|Stockage localement redondant (LRS), Stockage redondant interzone (ZRS)| Stockage localement redondant (LRS), Stockage redondant interzone (ZRS)
 |Méthode de connectivité|Point de terminaison public (réseaux sélectionnés) pour point de terminaison privé |Point de terminaison public (réseaux sélectionnés) pour point de terminaison privé
@@ -100,7 +100,7 @@ Créez un répertoire sur votre système Linux, puis montez un conteneur dans le
 |Error | Cause/Résolution|
 |---|---|
 |`Access denied by server while mounting`|Vérifiez que votre client s’exécute sur un sous-réseau pris en charge. Consultez les [emplacements réseau pris en charge](network-file-system-protocol-support.md#supported-network-connections).|
-|`No such file or directory`| Vous devez taper la commande de montage et ses paramètres directement dans le terminal. Si vous copiez et collez une partie de cette commande dans le terminal à partir d’une autre application, les caractères masqués dans les informations collées peuvent provoquer l’apparition de cette erreur.|
+|`No such file or directory`| Vous devez taper la commande de montage et ses paramètres directement dans le terminal. Si vous copiez et collez une partie de cette commande dans le terminal à partir d’une autre application, les caractères masqués dans les informations collées peuvent provoquer l’apparition de cette erreur. Cette erreur peut également se produire si le compte n’est pas activé pour NFS 3.0. |
 |`Permision denied`| Le mode par défaut d’un nouveau conteneur NFS v3 est 0750. Les utilisateurs non racines n’ont pas accès au volume. Si un utilisateur non racine doit y accéder, il doit passer en mode 0755. Exemple de commande : `sudo chmod 0755 /mnt/<newcontainer>`|
 |`EINVAL ("Invalid argument"`) |Cette erreur peut se produire lorsqu’un client tente d’effectuer les opérations suivantes :<li>Écrire des données dans un objet blob créé à partir d’un point de terminaison d’objet blob.<li>Supprimer un objet blob qui comprend un instantané ou qui se trouve dans un conteneur auquel est appliquée une stratégie WORM.|
 |`EROFS ("Read-only file system"`) |Cette erreur peut se produire lorsqu’un client tente d’effectuer les opérations suivantes :<li>Écrire des données dans un objet blob ou supprimer un objet blob dont le bail est actif.<li>Écrire des données dans un objet blob ou supprimer un objet blob qui se trouve dans un conteneur auquel est appliquée une stratégie WORM. |

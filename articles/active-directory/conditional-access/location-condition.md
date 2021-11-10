@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/21/2021
+ms.date: 10/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb, olhuan
+ms.reviewer: calebb, mewal
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 09dbcf3557dd45d005a61f9aed99e29abbc684e6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ef2a7671b1db13e1db9fae8339ae33726a2eb3b1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626415"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444273"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Utilisation de la condition d’emplacement dans une stratégie d’accès conditionnel 
 
@@ -80,7 +80,7 @@ Si vous sélectionnez **Déterminer la localisation par adresse IP (IPv4 unique
 > [!NOTE]
 > Les connexions à partir d’adresses IPv6 ne peuvent pas être mappées à des pays ou régions et sont considérées comme des zones inconnues. Seules les adresses IPv4 peuvent être mappées à des pays ou des régions.
 
-Si vous sélectionnez **Déterminer la localisation par coordonnées GPS (préversion)** , l’utilisateur doit avoir installé l’application Microsoft Authenticator sur son appareil mobile. Toutes les heures, le système contacte l’application Microsoft Authenticator de l’utilisateur pour collecter la position GPS de son appareil mobile.
+Si vous sélectionnez **Déterminer la localisation par coordonnées GPS**, l’utilisateur doit avoir installé l’application Microsoft Authenticator sur son appareil mobile. Toutes les heures, le système contacte l’application Microsoft Authenticator de l’utilisateur pour collecter la position GPS de son appareil mobile.
 
 La première fois que l’utilisateur est tenu de partager sa localisation à partir de l’application Microsoft Authenticator, il reçoit une notification dans l’application. L’utilisateur doit ouvrir l’application et accorder des autorisations de localisation. 
 

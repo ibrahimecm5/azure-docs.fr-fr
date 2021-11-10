@@ -11,12 +11,12 @@ author: rothja
 ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 2a725512f3fa18a9af43d2725cda4ce1248e796a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e425644b279b19b9ea6e894e7e81130742bbf60e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524639"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432203"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Copier une copie cohérente au niveau transactionnel d’une base de données dans Azure SQL Database
 
@@ -94,11 +94,8 @@ Démarrez la copie de la base de données source avec l’instruction [CREATE DA
 
 > [!NOTE]
 > L’arrêt de l’instruction T-SQL ne met pas fin à l'opération de copie de la base de données. Pour mettre fin à l'opération, supprimez la base de données cible.
-> [!NOTE]
-> La copie de base de données n’est pas prise en charge lorsque les serveurs source et/ou de destination ont un point de terminaison privé configuré et que l’accès au réseau public est désactivé. Si le point de terminaison privé est configuré mais que l’accès au réseau public est autorisé, le lancement de la copie de la base de données lors de la connexion au serveur de destination à partir d’une adresse IP publique réussira.
-Pour déterminer l’adresse IP source de la connexion actuelle, exécutez `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;`
- 
-
+>
+> La copie de base de données n’est pas prise en charge lorsque les serveurs source et/ou de destination ont un [point de terminaison privé](private-endpoint-overview.md) configuré et que [l’accès au réseau public est refusé](connectivity-settings.md#deny-public-network-access). Si le point de terminaison privé est configuré mais que l’accès au réseau public est autorisé, le lancement de la copie de la base de données lors de la connexion au serveur de destination à partir d’une adresse IP publique est pris en charge. Une fois l’opération de copie terminée, l’accès public peut être refusé.
 
 > [!IMPORTANT]
 > La sélection de la redondance du stockage de sauvegarde lors de l’utilisation de la commande T-SQL CREATE DATABASE... AS COPY OF n’est pas encore prise en charge. 
@@ -141,7 +138,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Les pare-feu des deux serveurs doivent être configurés pour autoriser la connexion entrante à partir de l’adresse IP du client émettant la commande T-SQL CREATE DATABASE ... AS COPY OF.
+> Les pare-feu des deux serveurs doivent être configurés pour autoriser la connexion entrante à partir de l’adresse IP du client émettant la commande T-SQL CREATE DATABASE ... AS COPY OF. Pour déterminer l’adresse IP source de la connexion actuelle, exécutez `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;`
 
 ### <a name="copy-to-a-different-subscription"></a>Copier sur un autre abonnement
 

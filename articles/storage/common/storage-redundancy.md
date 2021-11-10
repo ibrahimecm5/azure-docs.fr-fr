@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 72b8df5a79ae1d4da9821d6d7d275dc5744ebb17
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: f6de961bce052818270a949b45ed821d34b19b6c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272734"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463294"
 ---
 # <a name="azure-storage-redundancy"></a>Redondance de Stockage Azure
 
@@ -221,7 +221,7 @@ Le tableau suivant indique quelles options de redondance sont prises en charge p
 |:-|:-|:-|:-|
 | Usage général v2<br /> Usage général v1<br /> Objet blob de blocs Premium<br /> Objet blob hérité<br /> Partages de fichiers Premium | Usage général v2<br /> Objets blob de blocs Premium<br /> Partages de fichiers Premium | Usage général v2<br /> Usage général v1<br /> Objet blob hérité | Usage général v2 |
 
-Toutes les données de tous les comptes de stockage sont copiées en fonction de l’option de redondance définie pour le compte de stockage. Des objets, dont des objets blob de blocs, les objets blob d’ajout, des objets blob de pages, des files d’attente, des tables et des fichiers sont copiés. Les données de tous les niveaux, y compris le niveau d’archive, sont copiées. Pour plus d’informations sur les niveaux de blob, consultez [Niveaux d’accès chaud, froid et archive pour les données blob](../blobs/access-tiers-overview.md).
+Toutes les données de tous les comptes de stockage sont copiées en fonction de l’option de redondance définie pour le compte de stockage. Des objets, dont des objets blob de blocs, les objets blob d’ajout, des objets blob de pages, des files d’attente, des tables et des fichiers sont copiés. Les données de tous les niveaux, y compris le niveau d’archive, sont copiées. Pour plus d’informations sur les niveaux des objets blob, consultez [Niveaux d’accès chaud, froid et archive pour les données d’objet blob](../blobs/access-tiers-overview.md).
 
 Pour des informations sur les prix des différentes options de redondance, voir [Tarification de Stockage Azure](https://azure.microsoft.com/pricing/details/storage/).
 

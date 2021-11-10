@@ -6,19 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: b317dc91f8d4768e767a93d618e9c768d4039659
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 076dc23568c2cc6570da8f7ee1e614a225568dc5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122531968"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472672"
 ---
-# <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Créer et gérer des réseaux virtuels dans le serveur flexible Azure Database pour MySQL à l’aide du portail Azure
+# <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Créer et gérer des réseaux virtuels dans le serveur flexible Azure Database pour MySQL à l’aide du portail Azure
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Le serveur flexible Azure Database pour MySQL est actuellement en préversion publique.
 
 Le serveur flexible Azure Database pour MySQL prend en charge deux types de méthodes de connectivité réseau mutuellement exclusives pour se connecter à votre serveur flexible. Les deux options sont les suivantes :
 

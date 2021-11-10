@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 02/05/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 85562dd33031ae0f392efac6aed6d5e4ecc5c2e5
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: da37ffd719585c5f4d00d2cac1411ee3057a8472
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428271"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562140"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Exécuter des prédictions par lots à l’aide du concepteur Azure Machine Learning
 
@@ -67,7 +67,7 @@ Pour créer des prédictions sur de nouvelles données, vous pouvez connecter ma
 
 Dans cette section, vous allez créer un paramètre de jeu de données afin de spécifier un autre jeu de données pour les prédictions.
 
-1. Sélectionnez le module de jeu de données.
+1. Sélectionnez le composant Jeu de données.
 
 1. Un volet s'affiche à droite du canevas. En bas du volet, sélectionnez **Définir en tant que paramètre de pipeline**.
    
@@ -153,13 +153,13 @@ Si vous apportez des modifications à votre pipeline d’entraînement, vous dev
 
 Notez que seuls les modèles sont mis à jour dans le pipeline d’inférence, pas la transformation de données.
 
-Pour utiliser la transformation mise à jour dans le pipeline d’inférence, vous devez inscrire la sortie de transformation du module de transformation en tant que jeu de données.
+Pour utiliser la transformation mise à jour dans le pipeline d’inférence, vous devez inscrire la sortie de transformation du composant de transformation en tant que jeu de données.
 
 ![Capture d’écran montrant comment inscrire le jeu de données de transformation](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
 
-Ensuite, remplacez manuellement le module **TD-** dans le pipeline d’inférence par le jeu de données inscrit.
+Ensuite, remplacez manuellement le composant **TD-** dans le pipeline d’inférence par le jeu de données inscrit.
 
-![Capture d’écran montrant comment remplacer le module de transformation](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+![Capture d’écran montrant comment remplacer le composant de transformation](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
 
 Vous pouvez ensuite soumettre le pipeline d’inférence avec le modèle et la transformation mis à jour, puis publier.
 

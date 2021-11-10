@@ -4,12 +4,12 @@ description: Découvrez comment traiter des charges de travail de calcul parall�
 ms.topic: how-to
 ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2140fd4f2bfc383743b84f0b635afba3dda9afe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683698"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458662"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Configurer des nœuds de calcul Linux dans des pools Batch
 
@@ -21,7 +21,7 @@ Lorsque vous créez un pool de nœuds de calcul dans Batch, vous avez deux optio
 
 ### <a name="virtual-machine-image-reference"></a>Référence de l’image de la machine virtuelle
 
-Le service Batch utilise des [groupes de machines virtuelles identiques](../virtual-machine-scale-sets/overview.md) pour fournir des nœuds de calcul dans la configuration de la machine virtuelle. Vous pouvez spécifier une image à partir de la [Place de marché Azure](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1) ou [utiliser Shared Image Gallery pour préparer une image personnalisée](batch-sig-images.md).
+Le service Batch utilise des [groupes de machines virtuelles identiques](../virtual-machine-scale-sets/overview.md) pour fournir des nœuds de calcul dans la configuration de la machine virtuelle. Vous pouvez spécifier une image à partir de la [Place de marché Azure](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1) ou [utiliser l’Azure Compute Gallery pour préparer une image personnalisée](batch-sig-images.md).
 
 Lorsque vous créez une référence d’image de machine virtuelle, vous devez spécifier les propriétés suivantes :
 

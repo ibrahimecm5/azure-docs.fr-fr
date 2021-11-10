@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/13/2021
+ms.date: 10/20/2021
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee31a8df6d94093565dbc6bb66c1774f0c34c249
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3b6763ba1b465a0689ab076da69b0efc40d6bd9f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129987021"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262619"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Supprimer un locataire dans Azure Active Directory
 
@@ -27,8 +27,9 @@ La suppression d’une organisation Azure AD (locataire) a également pour effet
 
 ## <a name="prepare-the-organization"></a>Préparer l’organisation
 
-Avant de supprimer une organisation d’Azure AD, vous devez faire quelques vérifications. Celles-ci limitent le risque d’un impact négatif de la suppression de l’organisation Azure AD sur l’accès des utilisateurs, par exemple sur leur capacité à se connecter à Microsoft 365 ou à accéder à des ressources dans Azure. En effet, en cas de suppression d’une organisation associée à un abonnement, les utilisateurs ne peuvent plus accéder aux ressources Azure de cet abonnement. Les conditions à remplir sont les suivantes :
+Avant de supprimer une organisation d’Azure AD, vous devez faire quelques vérifications. Celles-ci limitent le risque d’un impact négatif de la suppression de l’organisation Azure AD sur l’accès des utilisateurs, par exemple sur leur capacité à se connecter à Microsoft 365 ou à accéder à des ressources dans Azure. En effet, en cas de suppression d’une organisation associée à un abonnement, les utilisateurs ne peuvent plus accéder aux ressources Azure de cet abonnement. Les conditions suivantes doivent être vérifiées :
 
+* Vous devez avoir payé l’ensemble des factures en suspens et montants dus ou en retard.
 * Le locataire Azure AD ne peut contenir aucun utilisateur, à l’exception de l’administrateur général qui doit supprimer l’organisation. Tous les autres utilisateurs doivent être supprimés au préalable. Si des utilisateurs se synchronisent à partir d’un emplacement local, la synchronisation doit être désactivée, et les utilisateurs supprimés de l’organisation cloud via le portail Azure ou à l’aide de cmdlets Azure PowerShell.
 * L’organisation ne doit contenir aucune application. Toute application doit être supprimée de l’organisation avant la suppression de celle-ci.
 * Aucun fournisseur d’authentification multifacteur ne peut être lié à l’organisation.

@@ -7,22 +7,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/06/2017
+ms.date: 11/02/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: eae21e8f7305f307a343e44145f6ed435c8ffcd1
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: f01a8a51f467d9a090847aeea5da0426fe66e163
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041383"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424398"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C : application Extensions
+# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C : application Extensions 
 
-Lors de la création d’un annuaire Azure AD B2C, une application appelée `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` est automatiquement créée dans celui-ci. L’application **b2c-extensions-app** est visible sous *Inscriptions des applications*. Elle est utilisée par le service Azure AD B2C pour stocker des informations sur les utilisateurs et les attributs personnalisés. Si l’application est supprimée, Azure AD B2C ne pourra plus fonctionner correctement et votre environnement de production en sera affecté.
+Lors de la création d’un annuaire Azure AD B2C, une application appelée **b2c-extensions-app** est automatiquement créée dans celui-ci. Cette application est visible dans *Inscriptions d’applications*. Elle est utilisée par le service Azure AD B2C pour stocker des informations sur les utilisateurs et les attributs personnalisés. Si l’application est supprimée, Azure AD B2C ne pourra plus fonctionner correctement et votre environnement de production en sera affecté.
 
 > [!IMPORTANT]
-> Ne supprimez pas l’application b2c-extensions-app, sauf si vous prévoyez de supprimer immédiatement votre locataire. Si l’application reste supprimée pendant plus de 30 jours, les informations utilisateur sont définitivement perdues.
+> Ne supprimez pas l’application **b2c-extensions-app**, sauf si vous prévoyez de supprimer immédiatement votre locataire. Si l’application reste supprimée pendant plus de 30 jours, les informations utilisateur sont définitivement perdues.
 
 ## <a name="verifying-that-the-extensions-app-is-present"></a>Vérification de la présence de l’application Extensions
 

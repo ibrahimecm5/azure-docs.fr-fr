@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a82d67cf0bb1644e31ff3d87d315cd920a92749a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6d5fed6547a32382413c1a128b1a9003bf099c88
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074590"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471760"
 ---
 # <a name="migrate-automatically-from-azure-virtual-desktop-classic-preview"></a>Migrer automatiquement à partir d’Azure Virtual Desktop (classique) [préversion]
 
@@ -146,40 +146,40 @@ Pour migrer vos ressources Azure Virtual Desktop (classique) vers Azure Resource
 
 2. Ensuite, exécutez la cmdlet **Start-RdsHostPoolMigration** pour choisir de migrer un seul pool d’hôtes ou tous les pools d’hôtes d’un locataire.
 
-    Par exemple :
+   Par exemple :
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -Location WestUS
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -Location WestUS
+   ```
 
-    Si vous souhaitez migrer les ressources d’un pool d’hôtes spécifique, incluez le nom du pool d’hôtes. Par exemple, si vous voulez déplacer le pool d’hôtes nommé « Office », exécutez une commande comme celle-ci :
+   Si vous souhaitez migrer les ressources d’un pool d’hôtes spécifique, incluez le nom du pool d’hôtes. Par exemple, si vous voulez déplacer le pool d’hôtes nommé « Office », exécutez une commande comme celle-ci :
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments $false -Location EastUS
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments $false -Location EastUS
+   ```
 
-    Si vous ne fournissez pas de nom d’espace de travail, le module en créera automatiquement un pour vous en fonction du nom du locataire. Toutefois, si vous préférez utiliser un espace de travail spécifique, vous pouvez entrer son ID de ressource comme ceci :
+   Si vous ne fournissez pas de nom d’espace de travail, le module en créera automatiquement un pour vous en fonction du nom du locataire. Toutefois, si vous préférez utiliser un espace de travail spécifique, vous pouvez entrer son ID de ressource comme ceci :
 
-    ```powershell
-    Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments -Location EastUS -Workspace <Resource ID of workspacename>
-    ```
+   ```powershell
+   Start-RdsHostPoolMigration -Tenant Contoso -HostPool Office -CopyUserAssignments -Location EastUS -Workspace <Resource ID of workspacename>
+   ```
     
-    Si vous souhaitez utiliser un espace de travail spécifique, mais que vous ne connaissez pas son ID de ressource, exécutez cette cmdlet :
+   Si vous souhaitez utiliser un espace de travail spécifique, mais que vous ne connaissez pas son ID de ressource, exécutez cette cmdlet :
 
-    ```powershell
-    Get-AzWvdWorkspace -WorkspaceName <workspace> -ResourceGroupName <resource group> |fl
-    ```
+   ```powershell
+   Get-AzWvdWorkspace -WorkspaceName <workspace> -ResourceGroupName <resource group> |fl
+   ```
 
-  Vous devrez également spécifier un mode d’affectation d’utilisateur pour les affectations d’utilisateur existantes :
+   Vous devrez également spécifier un mode d’affectation d’utilisateur pour les affectations d’utilisateur existantes :
 
-  - Utilisez **Copy** pour copier toutes les affectations d’utilisateur de vos anciens groupes d’applications vers les groupes d’applications Azure Resource Manager. Les utilisateurs pourront voir les flux pour les deux versions de leurs clients.
-  - Utilisez **Aucun** si vous ne souhaitez pas modifier les affectations d’utilisateur. Plus tard, vous pourrez affecter des utilisateurs ou des groupes d’utilisateurs à des groupes d’applications à l’aide du portail Azure, de PowerShell ou de l’API. Les utilisateurs pourront voir les flux uniquement en utilisant les clients Azure Virtual Desktop (classique).
+      - Utilisez **Copy** pour copier toutes les affectations d’utilisateur de vos anciens groupes d’applications vers les groupes d’applications Azure Resource Manager. Les utilisateurs pourront voir les flux pour les deux versions de leurs clients.
+      - Utilisez **Aucun** si vous ne souhaitez pas modifier les affectations d’utilisateur. Plus tard, vous pourrez affecter des utilisateurs ou des groupes d’utilisateurs à des groupes d’applications à l’aide du portail Azure, de PowerShell ou de l’API. Les utilisateurs pourront voir les flux uniquement en utilisant les clients Azure Virtual Desktop (classique).
 
-  Vous pouvez uniquement copier 2 000 affectations d’utilisateur par abonnement. Votre limite dépendra donc du nombre d’affectations déjà présentes dans votre abonnement. Le module calcule la limite en fonction du nombre d’affectations que vous avez déjà. Si vous n’avez pas assez d’affectations à copier, vous obtiendrez le message d’erreur suivant : « Quota d’attributions de rôle insuffisant pour copier les attributions utilisateur. Réexécutez la commande sans le commutateur -CopyUserAssignments pour effectuer la migration. »
+   Vous pouvez uniquement copier 2 000 affectations d’utilisateur par abonnement. Votre limite dépendra donc du nombre d’affectations déjà présentes dans votre abonnement. Le module calcule la limite en fonction du nombre d’affectations que vous avez déjà. Si vous n’avez pas assez d’affectations à copier, vous obtiendrez le message d’erreur suivant : « Quota d’attributions de rôle insuffisant pour copier les attributions utilisateur. Réexécutez la commande sans le commutateur -CopyUserAssignments pour effectuer la migration. »
 
 3. Une fois que vous avez exécuté les commandes, le module peut prendre jusqu’à 15 minutes pour créer les objets de service. Si vous avez copié ou déplacé des affectations d’utilisateur, cela augmentera le temps nécessaire au module pour terminer la configuration de tous les éléments.
 
-   Une fois que la cmdlet **Start-RdsHostPoolMigration** est terminée, vous devriez voir les éléments suivants :
+   Une fois l’exécution de la cmdlet **Start-RdsHostPoolMigration** terminée, vous devriez voir les éléments suivants :
 
       - Des objets de service Azure pour le locataire ou le pool d’hôtes que vous avez spécifié.
 

@@ -10,13 +10,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 01/12/2021
-ms.openlocfilehash: 53549869098504396d1fa1039ed43b5ff02d2a9b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 10/28/2021
+ms.openlocfilehash: 8c006a47f6967be5387e462a2387d1b59195b685
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083635"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430778"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publier votre application active, formée sur un point de terminaison intermédiaire ou de production
 
@@ -71,9 +71,9 @@ Si vous avez besoin de l’URL de point de terminaison, sélectionnez le lien. V
 
 <a name="enable-sentiment-analysis"></a>
 
-L’analyse des sentiments permet à LUIS de s’intégrer avec l’[Analyse de texte](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pour fournir une analyse des sentiments et des expressions clés.
+L’analyse des sentiments permet à LUIS de s’intégrer avec le [service de langage](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pour fournir une analyse des sentiments et des expressions clés.
 
-Vous ne devez pas nécessairement fournir une clé d’Analyse de texte, et votre compte Azure ne sera pas facturé pour ce service.
+Vous ne devez pas nécessairement fournir une clé de service de langage, et votre compte Azure ne sera pas facturé pour ce service.
 
 Les données de sentiment correspondent à un score compris entre 1 et 0 indiquant le sentiment, positif (plus proche de 1) ou négatif (plus proche de 0), des données. L’étiquette de sentiment de `positive`, `neutral` et `negative` est fonction de la culture prise en charge. Actuellement, seul l’anglais prend en charge les étiquettes de sentiment.
 

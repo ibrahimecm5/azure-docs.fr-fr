@@ -1,6 +1,6 @@
 ---
 title: Créer un groupe identique à partir d’une version d’image spécialisée à l’aide d’Azure CLI
-description: Créez un groupe identique à l’aide d’une version d’image spécialisée dans une galerie d’images partagées à l’aide d’Azure CLI.
+description: Créez un groupe identique à l’aide d’une version d’image spécialisée dans une Azure Compute Gallery à l’aide d’Azure CLI.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 361ea49a9ab740cc981beac3952301a137e629af
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ae75ac06b49bd5faa7851dd7cfc2f2a236fd3952
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691239"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441242"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Créer un groupe identique à l’aide d’une version d’image spécialisée avec Azure CLI
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques uniformes
 
-Créez un groupe identique à partir d’une [version d’image spécialisée](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) stockée dans une galerie d’images partagées. Si vous souhaitez créer un groupe identique à l’aide d’une version d’image généralisée, consultez [Créer un groupe identique à partir d’une image généralisée](instance-generalized-image-version-cli.md).
+Créez un groupe identique à partir d’une [version d’image spécialisée](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) stockée dans une Azure Compute Gallery. Si vous souhaitez créer un groupe identique à l’aide d’une version d’image généralisée, consultez [Créer un groupe identique à partir d’une image généralisée](instance-generalized-image-version-cli.md).
 
 Si vous choisissez d’installer et d’utiliser l’interface CLI localement, ce tutoriel demande au minimum la version 2.4.0 d’Azure CLI. Exécutez `az --version` pour trouver la version. Si vous devez installer ou mettre à niveau, voir [Installer Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -58,8 +58,8 @@ az vmss create \
 ## <a name="next-steps"></a>Étapes suivantes
 [Générateur d’image Azure (préversion)](../virtual-machines/image-builder-overview.md) permet d’automatiser la création d’une version de l’image. Vous pouvez même l’utiliser pour mettre à jour et [créer une nouvelle version de l’image à partir d’une image existante](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
 
-Vous pouvez également créer la ressource de galerie d’images partagées à l’aide de modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
+Vous pouvez également créer la ressource Azure Compute Gallery en utilisant des modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
 
-- [Créer une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Créer une définition d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Créer une version d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Créer une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Créer une définition d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Créer une version d’image dans une instance Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-version-create/)

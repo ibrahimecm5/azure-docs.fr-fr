@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: mathoma, danil
 ms.date: 11/02/2021
-ms.openlocfilehash: fcae82f988ed019717f6693d0d3a63a025113fb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0d2a02510a70f35a9744370da8675636a7f296c5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096774"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465259"
 ---
 # <a name="link-feature-for-azure-sql-managed-instance-limited-preview"></a>Fonctionnalité de liaison pour Azure SQL Managed Instance (préversion limitée)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Utilisez le lien suivant pour vous inscrire à la préversion limitée de la fon
 
 Pour plus d’informations sur la fonctionnalité de liaison, consultez :
 
-- [Fonctionnalité de liaison pour SQL Managed Instance – refonte de la mobilité des données entre SQL Server et Azure](https://aka.ms/mi-link-techblog).
+- [Liaison Managed Instance – Refonte de la connexion de SQL Server à Azure](https://aka.ms/mi-link-techblog).
 
 Pour d’autres scénarios de réplication, considérez : 
 

@@ -1,6 +1,6 @@
 ---
 title: Enrichissement de jetons – Azure Active Directory B2C
-description: Enrichissez les jetons avec des revendications provenant de sources externes en utilisant des API.
+description: Enrichissez les jetons avec des revendications de sources de données d’identité externes en utilisant des API ou des webhooks sortants.
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -11,18 +11,18 @@ ms.date: 08/29/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8f5bf34424754106c6d86195c37d23c3c9060c1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b27fcb43d815a6a2567ebb11c0ea768914582eb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008348"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440960"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>Enrichir les jetons avec des revendications provenant de sources externes à l’aide de connecteurs API
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure Active Directory B2C (Azure AD B2C) permet aux développeurs d’identité d’intégrer une interaction avec une API RESTful dans leur flux d’utilisateur à l’aide de [connecteurs d’API](api-connectors-overview.md). À la fin de cette procédure pas à pas, vous serez en mesure de créer un flux d’utilisateur Azure AD B2C qui interagit avec les API pour enrichir les jetons avec des informations provenant de sources externes.
+Azure Active Directory B2C (Azure AD B2C) permet aux développeurs d’identité d’intégrer une interaction avec une API RESTful dans leur flux d’utilisateur à l’aide de [connecteurs d’API](api-connectors-overview.md). Il permet aux développeurs de récupérer de manière dynamique des données à partir de sources d’identité externes. À la fin de cette procédure pas à pas, vous serez en mesure de créer un flux d’utilisateur Azure AD B2C qui interagit avec les API pour enrichir les jetons avec des informations provenant de sources externes.
 
 ::: zone pivot="b2c-user-flow"
 

@@ -1,18 +1,18 @@
 ---
-title: Supprimer une identité managée affectée par l’utilisateur pour un compte Azure Automation (préversion)
+title: Supprimer une identité managée affectée par l’utilisateur pour un compte Azure Automation
 description: Cet article explique comment supprimer une identité managée affectée par l’utilisateur pour un compte Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2f5aba42974c34f9d6799f3965848bdd0ca3787c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11db735a21e4d4007c35f1a82f1e5dfadb377fd1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635163"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432450"
 ---
-# <a name="remove-user-assigned-managed-identity-for-azure-automation-account-preview"></a>Supprimer une identité managée affectée par l’utilisateur pour un compte Azure Automation (préversion)
+# <a name="remove-user-assigned-managed-identity-for-azure-automation-account"></a>Supprimer une identité managée affectée par l’utilisateur pour un compte Azure Automation
 
 Vous pouvez supprimer une identité managée affectée par l'utilisateur dans Azure Automation à l’aide du portail Azure, de PowerShell, de l’API REST Azure ou d’un modèle Azure Resource Manager (ARM).
 
@@ -233,6 +233,6 @@ Utilisez la cmdlet [Get-AzAutomationAccount](/powershell/module/az.automation/ge
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour plus d’informations sur l’activation d’identités managées dans Azure Automation, consultez [Activer et utiliser l’identité managée pour Automation (préversion)](enable-managed-identity-for-automation.md).
+- Pour plus d’informations sur l’activation d’identités managées dans Azure Automation, consultez [Activer et utiliser l’identité managée pour Automation](enable-managed-identity-for-automation.md).
 
 - Pour obtenir une vue d’ensemble de la sécurité du compte Automation, consultez [Vue d’ensemble de l’authentification du compte Automation](automation-security-overview.md).

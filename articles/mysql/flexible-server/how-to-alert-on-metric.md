@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: c257941079c3a43639337dd1b010002ddac4672e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0e7e2da03d90f4111601871db7085749f9efc75a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122641171"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457351"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Utiliser le portail Azure pour configurer des alertes sur des métriques pour Azure Database pour MySQL - Serveur flexible 
+# <a name="set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Configurer des alertes sur des métriques pour Azure Database pour MySQL – Serveur flexible
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL – Serveur flexible est actuellement en préversion publique.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Cet article explique comment configurer des alertes Azure Database pour MySQL à l’aide du portail Azure. Vous pouvez recevoir une alerte basée sur des métriques de surveillance pour vos services Azure.
 
@@ -54,14 +51,14 @@ Vous pouvez configurer et obtenir des informations sur les règles d’alerte à
 12. Vous pouvez aussi créer un groupe d’actions pour recevoir des notifications sur l’alerte. Pour plus d’informations, consultez [Créer et gérer un groupe d’actions](../../azure-monitor/alerts/action-groups.md).
 13. Pour créer un groupe d’actions, choisissez **+ Créer un groupe d’actions**. Renseignez le formulaire « Créer un groupe d’actions » avec un **abonnement**, un **groupe de ressources**, un **nom de groupe d’actions** et un **nom d’affichage**.
 14. Configurez des **notifications** pour le groupe d’actions.
-    
+
     Dans **Type de notification**, choisissez « Envoyer un e-mail au rôle Azure Resource Manager » pour sélectionner les propriétaires de l’abonnement, les contributeurs et les lecteurs qui recevront les notifications. Choisissez le **rôle Azure Resource Manager** pour envoyer l’e-mail.
     Vous pouvez également choisir **E-mail/SMS/Push/Message vocal** pour envoyer des notifications à des destinataires spécifiques.
 
     Indiquez le **nom** du type de notification et sélectionnez **Vérifier + créer** quand vous avez terminé.
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Action group":::-->
-    
+
 15. Renseignez les **détails de la règle d’alerte** comme le **nom de la règle d’alerte**, la **description**, l’option **Enregistrer la règle d’alerte dans le groupe de ressources** et la **gravité**.
 
     <!--:::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Action group":::-->

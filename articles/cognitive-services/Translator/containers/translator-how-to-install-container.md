@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 10/14/2021
 ms.author: lajanuar
 recommendations: false
 keywords: local, Docker, conteneur, identifier
-ms.openlocfilehash: 680f1f6f1bfddc5bf525ae06b61bcf9098dc850f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dbee487212f56eb5c99d3cc785cf8a2205280fcf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563036"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426142"
 ---
 # <a name="install-and-run-translator-containers-preview"></a>Installer et exécuter des conteneurs Translator (préversion)
 
-  Les conteneurs vous permettent d’exécuter plusieurs des fonctionnalités du service Translator dans votre propre environnement. Les conteneurs conviennent particulièrement bien à certaines exigences de sécurité et de gouvernance des données. Cet article explique comment télécharger, installer et exécuter un conteneur Translator.
+Les conteneurs vous permettent d’exécuter plusieurs des fonctionnalités du service Translator dans votre propre environnement. Les conteneurs conviennent particulièrement bien à certaines exigences de sécurité et de gouvernance des données. Cet article explique comment télécharger, installer et exécuter un conteneur Translator.
 
 Les conteneurs Translator vous permettent de créer une architecture d’application Translator optimisée pour tirer parti des fonctionnalités robustes du cloud et de la localité en périphérie.
+
+Lors de l’utilisation de conteneurs Translator, consultez la liste des [langues prises en charge](../language-support.md). 
 
 > [!IMPORTANT]
 >
@@ -158,6 +160,8 @@ Il existe plusieurs façons de vérifier que le conteneur est exécuté :
 | `http://localhost:5000/swagger` | Le conteneur fournit un ensemble complet de documentation pour les points de terminaison et une fonctionnalité **Essayer**. Avec cette fonctionnalité, vous pouvez entrer vos paramètres dans un formulaire HTML basé sur le web, et constituer la requête sans avoir à écrire du code. Une fois la requête retournée, un exemple de commande CURL est fourni pour illustrer les en-têtes HTTP, et le format du corps qui est nécessaire. |
 
 :::image type="content" source="../../../../includes/media/cognitive-services-containers-api-documentation/container-webpage.png" alt-text="Page d’accueil du conteneur":::
+
+[!INCLUDE [Diagnostic container](../../containers/includes/diagnostics-container.md)]
 
 ## <a name="text-translation-code-samples"></a>Exemples de code de traduction de texte
 

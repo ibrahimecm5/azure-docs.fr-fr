@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d1cf4c18c4722c327d9d74569e7709d11068dc7c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 71a86e1440d96a37fd72afc67aaaaa7d122c6d4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087061"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426674"
 ---
 # <a name="about-bastion-configuration-settings"></a>À propos des paramètres de configuration de Bastion
 
@@ -78,7 +78,7 @@ Vous pouvez configurer ce paramètre à l’aide de la méthode suivante :
 Azure Bastion nécessite un sous-réseau dédié : **AzureBastionSubnet**. Ce sous-réseau doit être créé dans le réseau virtuel sur lequel Azure Bastion est déployé. Le sous-réseau doit avoir la configuration suivante :
 
 * Le nom du sous-réseau doit être *AzureBastionSubnet*.
-* La taille du sous-réseau doit être /27 ou supérieure (/26,/25, etc.).
+* La taille du sous-réseau doit être /26 ou supérieure (/25,/24, etc.).
 * Pour la mise à l’échelle de l’hôte, un sous-réseau /26 ou plus grand est recommandé. L’utilisation d’un espace de sous-réseau plus petit limite le nombre d’unités d’échelle. Pour plus d’informations, consultez la section [Mise à l’échelle de l’hôte](#instance) de cet article.
 * Le sous-réseau doit se trouver dans le même réseau virtuel et le même groupe de ressources que l’hôte Bastion.
 * Le sous-réseau ne peut pas contenir des ressources supplémentaires.

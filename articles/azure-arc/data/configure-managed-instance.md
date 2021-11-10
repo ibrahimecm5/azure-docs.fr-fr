@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/1/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b95688eca33400956997b44bda43565454f82479
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: d4dc8843804d48fb98fef7cd336e6b56f54f49ae
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481215"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554352"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Configurer une instance managée de SQL avec Azure Arc
 

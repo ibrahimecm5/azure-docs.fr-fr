@@ -6,21 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 5500a197b7cb2566b3ea78b6c2acba9403a7a8ae
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 677301275beb561a583ffeea92861132a54b3e34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122641167"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445454"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Gérer un serveur flexible Azure Database pour MySQL (préversion) à l’aide du portail Azure
+# <a name="manage-an-azure-database-for-mysql---flexible-server-using-azure-portal"></a>Gérer un serveur flexible Azure Database pour MySQL à l’aide du portail Azure
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
-
-Cet article vous explique comment gérer vos serveurs flexibles Azure Database pour MySQL (préversion). Les tâches de gestion comprennent la mise à l’échelle du calcul et du stockage, la réinitialisation du mot de passe de l’administrateur du serveur et la suppression de votre serveur.
+Cet article vous explique comment gérer vos serveurs flexibles Azure Database pour MySQL. Les tâches de gestion comprennent la mise à l’échelle du calcul et du stockage, la réinitialisation du mot de passe de l’administrateur du serveur et la suppression de votre serveur.
 
 ## <a name="sign-in"></a>Se connecter
 
@@ -37,7 +34,7 @@ Après la création d’un serveur, vous pouvez modifier les différents [niveau
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/howto-manage-server-portal/scale-server.png" alt-text="mise à l’échelle du stockage du serveur flexible":::
 
-   
+
 > [!IMPORTANT]
    > - Le stockage ne peut pas faire l’objet d’un scale-down.
    > - La mise à l’échelle des vCores entraîne un redémarrage du serveur.

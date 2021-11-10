@@ -3,17 +3,17 @@ title: Mode rafale des disques managés
 description: Découvrez le bursting de disque pour les disques Azure et les machines virtuelles Azure.
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d6e326bdc08b58d4dc32eb8a3d7592f3fd85b4af
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: bd9cc8e9a9e60655d7d1805c1ceae4168353ec20
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074408"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506318"
 ---
 # <a name="managed-disk-bursting"></a>Mode rafale des disques managés
 
@@ -33,7 +33,7 @@ Le mode rafale peut être très avantageux pour les scénarios suivants :
 
 Actuellement, il existe deux types de disques gérés qui peuvent utiliser le bursting, les [SSD Premium](disks-types.md#premium-ssds) et les [SSD standard](disks-types.md#standard-ssds). Les autres types de disque ne peuvent actuellement pas utiliser le bursting. Il existe deux modèles de bursting pour les disques :
 
-- Un modèle de bursting à la demande (préversion), où un bursting de disque a lieu chaque fois que les besoins du disque dépassent sa capacité actuelle. Ce modèle entraîne des frais supplémentaires à chaque bursting de disque. Le bursting à la demande est disponible uniquement pour les disques SSD Premium d’une taille supérieure à 512 Gio.
+- Un modèle de bursting à la demande, où un bursting de disque a lieu chaque fois que les besoins du disque dépassent sa capacité actuelle. Ce modèle entraîne des frais supplémentaires à chaque bursting de disque. Le bursting à la demande est disponible uniquement pour les disques SSD Premium d’une taille supérieure à 512 Gio.
 - Un modèle basé sur les crédits, où le bursting de disque n’a lieu que si des crédits de bursting ont été accumulés dans le compartiment de crédits associé. Avec ce modèle, les burstings de disque n’entraînent pas de frais supplémentaires. Le bursting basé sur les crédits est disponible uniquement pour les disques SSD Premium et SSD Standard de 512 Gio ou moins.
 
 Les disques [SSD Premium](disks-types.md#premium-ssds) d’Azure peuvent utiliser le modèle de bursting, mais les disques [SSD standard](disks-types.md#standard-ssds) ne proposent actuellement que le bursting basé sur le crédit.

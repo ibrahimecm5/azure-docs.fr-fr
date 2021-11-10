@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 05/20/2020
-ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/29/2021
+ms.openlocfilehash: 6767ef2786ca57353690dde19bbe20235a7c80f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488874"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429714"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Contrat Standard pour le marketplace commercial de Microsoft
 
@@ -36,7 +36,7 @@ Deux types de modifications sont proposées aux éditeurs de la place de marché
 >[!Note]
 >Ces deux types de modifications s’ajoutent l’un à l’autre. Les clients ciblés par les modifications personnalisées reçoivent aussi la modification universelle apportée au contrat Standard lors de l’achat. Les modifications sont limitées à 4 000 caractères, espaces comprises.
 
-Vous pouvez tirer parti du contrat Standard pour la place de marché commerciale de Microsoft pour les types d’offre suivants :  Applications Azure (modèles de solution et applications managées), machines virtuelles et SaaS.
+Vous pouvez tirer parti du contrat Standard pour la Place de marché commerciale Microsoft pour les types d’offre suivants : applications Azure (modèles de solution et applications managées), Conteneurs Azure, Applications de conteneur, Machines virtuelles et SaaS.
 
 ## <a name="customer-experience"></a>Expérience client
 

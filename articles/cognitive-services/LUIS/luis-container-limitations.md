@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd29ef48f2d1042091a1379570e8ea710c718ff9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96002333"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426219"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Limitations des conteneurs Language Understanding (LUIS)
 
@@ -46,7 +46,7 @@ Configurations d’application non prises en charge|Détails|
 
 Les conteneurs LUIS prennent en charge un sous-ensemble des [langues prises en charge](luis-language-support.md#languages-supported) par LUIS. Les conteneurs LUIS sont capables de comprendre les énoncés dans les langues suivantes :
 
-| Langage | Paramètres régionaux | Domaine prédéfini | Entité prédéfinie | Recommandations de liste d’expression | \**[Analyse de texte](../text-analytics/language-support.md)<br>(Sentiment et<br>mots clés)|
+| Langage | Paramètres régionaux | Domaine prédéfini | Entité prédéfinie | Recommandations de liste d’expression | **[Analyse des sentiments](../language-service/sentiment-opinion-mining/language-support.md) et [Extraction de phrases clés](../language-service/key-phrase-extraction/language-support.md)|
 |--|--|:--:|:--:|:--:|:--:|
 | Anglais (États-Unis) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Arabe (préversion ; arabe standard moderne) |`ar-AR`|❌|❌|❌|❌|
@@ -67,4 +67,4 @@ Les conteneurs LUIS prennent en charge un sous-ensemble des [langues prises en c
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
-[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
+[!INCLUDE [Language service support notes](includes/text-analytics-support-notes.md)]

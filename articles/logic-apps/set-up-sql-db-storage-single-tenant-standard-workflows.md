@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c88bc4adc49dfb5ddad3ccfd8f20267fc5a420d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5dd6f2d024055a75e350bfb5b0eee0e26c115193
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131098139"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475803"
 ---
 # <a name="set-up-sql-database-storage-for-standard-logic-apps-in-single-tenant-azure-logic-apps-preview"></a>Configurer le stockage de base de données SQL pour des applications logiques Standard dans Azure Logic Apps monolocataire (préversion)
 
@@ -21,7 +21,7 @@ ms.locfileid: "131098139"
 
 Quand vous choisissez le type de ressource **Application logique (Standard)** pour créer des workflows qui s’exécutent dans Azure Logic Apps monolocataire, App Service Environment v3 ou en dehors d’Azure, vous devez également créer un compte Stockage Azure pour enregistrer les artefacts, états et données d’exécution liés aux workflows. Toutefois, si vous souhaitez davantage de flexibilité et de contrôle sur l’environnement d’exécution, le débit, la mise à l’échelle, les performances et la gestion de vos workflows d’application logique, vous pouvez utiliser le fournisseur de stockage SQL à la place du Stockage Azure pour les transactions de stockage liées aux workflows.
 
-Cet article donne un aperçu des raisons pour lesquelles vous pouvez utiliser le stockage SQL comme fournisseur de stockage principal pour Azure Logic Apps à la place du Stockage Azure. Il montre également comment configurer SQL à des fins de stockage durant la création d’une application logique dans le portail Azure ou durant son déploiement à partir de Visual Studio Code.
+Cet article donne un aperçu des raisons pour lesquelles vous pouvez utiliser un stockage SQL comme fournisseur de stockage principal pour Azure Logic Apps à la place du Stockage Azure. Il montre également comment configurer SQL à des fins de stockage durant la création d’une application logique dans le portail Azure ou durant son déploiement à partir de Visual Studio Code.
 
 Si vous débutez avec les applications logiques, consultez la documentation suivante :
 
@@ -160,7 +160,7 @@ Quand vous créez votre application logique en utilisant le type de ressource **
    | Propriété | Obligatoire | Valeur | Description |
    |----------|----------|-------|-------------|
    | **Type de stockage** | Oui | **SQL et Stockage Azure** | Type de stockage que vous souhaitez utiliser pour les artefacts et les données liés aux workflows. <p><p>- Si vous avez précédemment choisi un emplacement personnalisé comme région, sélectionnez **SQL**. <p><p>- Si vous avez précédemment choisi une région Azure ou un emplacement ASEv3, sélectionnez **SQL et Stockage Azure**. <p><p>**Remarque** : Si votre déploiemenent cible une région Azure, vous avez toujours besoin d’un compte Stockage Azure. Celui-ci est utilisé à une seule reprise pour héberger la configuration de l’application logique sur la plateforme Azure Logic Apps. La définition, l’état, l’historique des exécutions et les autres artefacts de runtime du workflow sont stockés dans votre base de données SQL. <p><p>Pour les déploiements sur un emplacement personnalisé hébergé sur un cluster Azure Arc, vous n’avez besoin que de SQL comme fournisseur de stockage. |
-   | <bpt id="p1">**</bpt>Storage account<ept id="p1">**</ept> | Oui | <*Azure-storage-account-name*> | [Compte de stockage Azure](../storage/common/storage-account-overview.md) à utiliser pour les transactions de stockage. <p><p>Ce nom de ressource doit être unique d’une région à l’autre et comporter entre 3 et 24 caractères avec uniquement des chiffres et des lettres minuscules. Sélectionnez un compte existant ou créez un nouveau compte. <p><p>Cet exemple crée un compte de stockage nommé `fabrikamstorageacct`. |
+   | **Compte de stockage** | Oui | <*Azure-storage-account-name*> | [Compte de stockage Azure](../storage/common/storage-account-overview.md) à utiliser pour les transactions de stockage. <p><p>Ce nom de ressource doit être unique d’une région à l’autre et comporter entre 3 et 24 caractères avec uniquement des chiffres et des lettres minuscules. Sélectionnez un compte existant ou créez un nouveau compte. <p><p>Cet exemple crée un compte de stockage nommé `fabrikamstorageacct`. |
    | **Chaîne de connexion SQL** | Oui | <*sql-connection-string*> | Votre chaîne de connexion SQL, qui prend actuellement en charge uniquement l’authentification SQL, et non OAuth ou l’authentification avec une identité managée. <p><p>**Remarque** : Veillez à entrer une chaîne de connexion correcte, car le portail Azure ne validera pas cette chaîne pour vous. |
    | **Type de plan** | Oui | <*hosting-plan*> | Plan d’hébergement à utiliser pour déployer votre application logique. <p><p>Pour plus d’informations, consultez [Plans d’hébergement et niveaux tarifaires](logic-apps-pricing.md#standard-pricing). |
    | **Plan Windows** | Oui | <*plan-name*> | Nom du plan à utiliser. Sélectionnez un plan existant ou fournissez ou nom de nouveau plan. <p><p>L’exemple suivant utilise le nom `Fabrikam-Service-Plan`. |

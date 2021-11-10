@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 9bb33a10314460462cc32838227cadd3480cf362
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 069529d2f97e18e1b5d99b4f96e5bee98d80f497
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022626"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421938"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migration de StorSimple 8100 et 8600 vers Azure File Sync
 
@@ -287,7 +287,8 @@ Le choix des sauvegardes à migrer repose sur différents aspects importants :
 - Vos tâches de migration peuvent uniquement déplacer des sauvegardes, pas les données de volume actives. La sauvegarde la plus récente est donc la plus proche des données actives et doit toujours figurer dans la liste des sauvegardes déplacées lors d'une migration. Lorsque vous ouvrez la boîte de dialogue de sélection de sauvegarde, celle-ci est sélectionnée par défaut.
 - Vérifiez que votre dernière sauvegarde est récente afin de réduire au maximum le delta sur le partage actif. Il peut être intéressant de procéder manuellement au déclenchement et à la sauvegarde d'un autre volume avant de créer une tâche de migration. Un delta réduit sur le partage actif améliorera votre expérience de migration. Si ce delta peut être égal à zéro = aucune autre modification du volume StorSimple n'a eu lieu après la dernière sauvegarde de votre liste - alors en phase 5 : Le basculement des utilisateurs sera considérablement simplifié et accéléré.
 - Sur le partage de fichiers Azure, les sauvegardes doivent être lues dans l'ordre suivant : **de la plus ancienne à la plus récente**. Une sauvegarde ancienne ne peut pas être « triée » dans la liste des sauvegardes du partage de fichiers Azure après l'exécution d'une tâche de migration. Par conséquent, vous devez vous assurer que votre liste de sauvegardes est terminée *avant* de créer une tâche. 
-- Cette liste de sauvegardes ne peut pas être modifiée une fois la tâche créée, même si celle-ci n'a jamais été exécutée. 
+- Cette liste de sauvegardes ne peut pas être modifiée une fois la tâche créée, même si celle-ci n'a jamais été exécutée.
+- Pour pouvoir sélectionner des sauvegardes, le volume StorSimple à migrer doit être en ligne.
 
 :::row:::
     :::column:::        

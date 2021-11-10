@@ -3,17 +3,17 @@ title: Sélectionner un type de disque pour les machines virtuelles Azure IaaS -
 description: Découvrez les types de disques Azure disponibles pour les machines virtuelles, notamment les disques Ultra, les disques SSD Premium, les disques SSD Standard et les disques HDD Standard.
 author: roygara
 ms.author: rogarana
-ms.date: 10/14/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 90612eecede80ae83247cb3727411db8c43e1eb2
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5e4eb581f8cf9b95e9a8ba4dffd442efc6c055ef
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074358"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505438"
 ---
 # <a name="azure-managed-disk-types"></a>Types de disques managés Azure
 
@@ -35,7 +35,7 @@ Le tableau suivant compare les quatre types de disques pour vous aider à choisi
 | **Type de disque** | SSD | SSD | SSD | HDD |
 | **Scénario**  | Charges de travail gourmandes en E/S, telles que le système [SAP HANA](workloads/sap/hana-vm-operations-storage.md), les bases de données de niveau supérieur (par exemple, SQL et Oracle), et autres charges de travail très lourdes en transactions. | Charges de travail de production et sensibles aux performances | Serveurs web, applications d’entreprise peu utilisées et Dev/Test | Sauvegarde, non critique, accès peu fréquent |
 | **Taille maximale du disque** | 65 536 gibioctets (Gio) | 32 767 Gio | 32 767 Gio | 32 767 Gio |
-| **Débit max.** | 2 000 Mo/s | 900 Mo/s | 750 Mo/s | 500 Mo/s |
+| **Débit max.** | 4 000 Mo/s | 900 Mo/s | 750 Mo/s | 500 Mo/s |
 | **Nb max. d’E/S par seconde** | 160 000 | 20 000 | 6 000 / 750 | 2 000 |
 
 ## <a name="ultra-disks"></a>Disques Ultra
@@ -55,12 +55,12 @@ Le tableau suivant compare les tailles des disques et les limites de performance
 |4     |1,200         |300         |
 |8     |2 400         |600         |
 |16     |4 800         |1,200         |
-|32     |9 600         |2 000         |
-|64     |19 200         |2 000         |
-|128     |38 400         |2 000         |
-|256     |76 800         |2 000         |
-|512     |153 600         |2 000         |
-|1 024 à 65 536 (dans cette plage, les tailles augmentent par incréments de 1 Tio)     |160 000         |2 000         |
+|32     |9 600         |2 400         |
+|64     |19 200         |4 000         |
+|128     |38 400         |4 000         |
+|256     |76 800         |4 000         |
+|512     |153 600         |4 000         |
+|1 024 à 65 536 (dans cette plage, les tailles augmentent par incréments de 1 Tio)     |160 000         |4 000         |
 
 Les disques Ultra sont conçus pour fournir des latences inférieure à la milliseconde ainsi que l’IOPS et le débit cibles décrits dans le tableau précédent 99,99 % du temps.
 
@@ -80,7 +80,7 @@ Pour plus d’informations sur l’IOPS, consultez [Performances des machines vi
 
 ### <a name="ultra-disk-throughput"></a>Débit du disque Ultra
 
-La limite de débit d’un seul disque Ultra est de 256 Kio/s pour chaque IOPS provisionnée, avec au maximum 2 000 Mbits/s par disque (où 1 Mbits/s = 10^6 octets par seconde). Le débit minimal garanti par disque est de 4 Kio/s pour chaque IOPS provisionnée avec une base de référence globale minimale de 1 Mbits/s.
+La limite de débit d’un seul disque Ultra est de 256 Kio/s pour chaque IOPS approvisionnée, avec au maximum 4 000 Mbits/s par disque (où 1 Mbits/s = 10^6 octets par seconde). Le débit minimal garanti par disque est de 4 Kio/s pour chaque IOPS provisionnée avec une base de référence globale minimale de 1 Mbits/s.
 
 Vous pouvez ajuster les performances d’IOPS et de débit du disque lors de l’exécution sans détacher le disque de la machine virtuelle. Une fois qu’une opération de redimensionnement des performances est émise sur un disque, elle peut mettre jusqu’à une heure à être appliquée. Vous pouvez effectuer jusqu’à quatre opérations de redimensionnement des performances sur une période de 24 heures.
 

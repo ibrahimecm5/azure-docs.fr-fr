@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 08f4c00d5d0d1d0d6d060d2170024ac166c308b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a353a2d95f9da4b78d88118555d20fc79bae5fd7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458552"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437604"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Configurer la reprise d’activité pour une application web multiniveau basée sur IIS
 
@@ -69,9 +69,9 @@ Azure|N/D|Oui
 
 Pour démarrer la réplication de toutes les machines virtuelles de la batterie de serveurs IIS web vers Azure, suivez les instructions dans [Tester le basculement vers Azure dans Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Si vous utilisez une adresse IP statique, vous pouvez spécifier l’adresse IP que vous souhaitez attribuer à la machine virtuelle. Pour définir l’adresse IP, accédez à **Paramètres Calcul et réseau** > **ADRESSE IP CIBLE**.
+Si vous utilisez une adresse IP statique, vous pouvez spécifier l’adresse IP que vous souhaitez attribuer à la machine virtuelle. Pour définir l’adresse IP, accédez à **Paramètres réseau** > **ADRESSE IP CIBLE**.
 
-![Capture d’écran illustrant la définition de l’adresse IP cible dans le volet Calcul et réseau de Site Recovery](./media/site-recovery-active-directory/dns-target-ip.png)
+![Capture d’écran illustrant la définition de l’adresse IP cible dans le volet Réseau de Site Recovery](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>Créer un plan de récupération
 Lors d’un basculement, un plan de récupération prend en charge le séquencement des différents niveaux d’une application multiniveau. La mise en séquence permet d’assurer la cohérence de l’application. Lorsque vous créez un plan de récupération pour une application web multiniveau, suivez les étapes décrites dans [Créer un plan de récupération à l’aide de Site Recovery](site-recovery-create-recovery-plans.md).

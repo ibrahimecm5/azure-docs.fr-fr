@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5451c8b5211fec91872b05eba5c30d9622f51dc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ff95f0f4f1b9b2685b928e6f5c81655b7b4ec80
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787298"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444247"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Résoudre les problèmes relatifs à la réinitialisation de mot de passe en libre-service dans Azure Active Directory
 

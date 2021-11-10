@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8b456b534dd176fd8dc6bcd3b31b2a713fd8d7a2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5faea9929fb62af8736e62ca6e629cb2bde01f3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096288"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452164"
 ---
 # <a name="azure-virtual-desktop-for-azure-stack-hci-preview"></a>Azure Virtual Desktop pour Azure Stack HCI (version préliminaire)
 
@@ -66,7 +66,7 @@ Nous avons pris en compte les problèmes suivants qui affectent la version prél
 
 - L’onglet Azure Virtual Desktop dans le Portail Azure ne peut pas créer de nouvelles machines virtuelles directement sur Azure Stack HCI. Au lieu de cela, les administrateurs doivent créer des machines virtuelles locales séparément, puis les inscrire auprès d’un pool d’hôtes d’Azure Virtual Desktop.
 
-- Lors de la connexion à un bureau virtuel multisession Windows 10 ou 11 Enterprise, les utilisateurs peuvent voir un message indiquant « activation nécessaire », même s’ils disposent d’une licence éligible.
+- Lors de la connexion à un bureau virtuel à multisession Windows 10 ou 11 Entreprise, les utilisateurs peuvent rencontrer des problèmes d’activation, tels qu’un filigrane de bureau indiquant « activate Windows », même s’ils disposent d’une licence éligible.
 
 - Azure Virtual Desktop pour Azure Stack HCI ne prend actuellement pas en charge les pools d’hôtes contenant à la fois des hôtes de session Cloud et locaux. Chaque pool hôte dans le déploiement ne doit avoir qu’un seul type de pool hôte.
 

@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: e6ea151e7f8449a8dc3e86944fff4bcf55932784
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5bee5e85fe7529ae783e99be02159bc8d62442b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770400"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437217"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Utiliser Azure Image Builder pour les machines virtuelles Linux autorisant l’accès à un réseau virtuel Azure existant
 
@@ -153,7 +153,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>Définir des autorisations sur le groupe de ressources
 
-Image Builder utilise l’[identité managée affectée par l’utilisateur](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) fournie pour injecter l’image dans Azure Shared Image Gallery (SIG). Dans cet exemple, vous allez créer une définition de rôle Azure qui dispose des actions granulaires pour distribuer l’image à la galerie SIG. La définition de rôle sera ensuite attribuée à l’identité de l’utilisateur.
+Image Builder utilise l’[identité de l’utilisateur](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) fournie pour injecter l’image dans l’Azure Compute Gallery (anciennement appelée Shared Image Gallery). Dans cet exemple, vous allez créer une définition de rôle Azure qui dispose des actions granulaires pour distribuer l’image à la galerie SIG. La définition de rôle sera ensuite attribuée à l’identité de l’utilisateur.
 
 ```bash
 # create user assigned identity for image builder
@@ -266,7 +266,7 @@ Si vous souhaitez à présent essayer de personnaliser à nouveau la version de 
 
 La procédure suivante permet de supprimer l’image créée ainsi que tous les autres fichiers de ressources. Terminez ce déploiement avant de supprimer les ressources.
 
-En ce qui concerne la suppression des ressources de la bibliothèque d’images, il est nécessaire de supprimer toutes les versions de l’image pour pouvoir supprimer la définition de l’image utilisée pour les créer. Supprimer une galerie implique de supprimer au préalable toutes les définitions de l’image qu’elle comporte.
+Lors de la suppression de ressources de la galerie, il est nécessaire de supprimer toutes les versions de l’image pour pouvoir supprimer la définition de l’image utilisée pour les créer. Supprimer une galerie implique de supprimer au préalable toutes les définitions de l’image qu’elle comporte.
 
 Supprimez le modèle du Générateur d’images.
 
@@ -306,4 +306,4 @@ Si vous avez créé un réseau virtuel pour ce démarrage rapide, vous pouvez su
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En savoir plus sur les [galeries d’images partagées Azure](../shared-image-galleries.md).
+Apprenez-en davantage sur les [galeries de calcul Azure](../shared-image-galleries.md).

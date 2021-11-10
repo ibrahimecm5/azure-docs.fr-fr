@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 10/12/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b7f0cc91f8705ac865cac4820402051dce1e9eff
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b02ce290d0910e2dccc19643c94ee338f80b6989
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064104"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467451"
 ---
 # <a name="azure-sentinel-content-hub-catalog"></a>Catalogue du hub de contenu Azure Sentinel
 
@@ -41,7 +41,8 @@ Pour plus d’informations, consultez [Découvrir et déployer de manière centr
 |Nom    |Includes  |Catégories |Pris en charge par  |
 |---------|---------|---------|---------|
 |**Gestion des risques internes Microsoft** |[Connecteur de données](data-connectors-reference.md#microsoft-365-insider-risk-management-irm-preview), workbook, règles d’analytique, requêtes de chasse |Sécurité - Menace interne | Microsoft|
-|**Solution Microsoft MITRE ATT&CK pour le cloud**| Workbooks, règles d’analytique, requêtes de chasse|Sécurité - Protection contre les menaces, sécurité - Autres |Microsoft |
+| **Solution Microsoft MITRE ATT&CK pour le cloud**| Workbooks, règles d’analytique, requêtes de chasse|Sécurité - Protection contre les menaces, sécurité - Autres |Microsoft |
+| **Azure Sentinel Deception** | [Classeurs, règles d’analytique, watchlists](monitor-key-vault-honeytokens.md)  | Sécurité - Protection contre les menaces  |Microsoft |
 |**Confiance Zéro** (TIC 3.0) |Workbooks |Identité, sécurité - Autres |Microsoft |
 | | | | |
 

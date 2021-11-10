@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 10/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45663b7a2229de0600e60ec2e40c5b721440b997
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5e7a9dd7ba8cd719e95582fee3650cb99a84e057
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532157"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448541"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Méthodes d’authentification dans Azure Active Directory - Application Microsoft Authenticator
 
@@ -32,7 +32,7 @@ Pour utiliser l’application Authenticator dans une invite de connexion au lieu
 
 Au lieu d’obtenir une invite de mot de passe après avoir entré un nom d’utilisateur, un utilisateur qui a activé la connexion par téléphone dans l’application Microsoft Authenticator voit s’afficher un message lui demandant d’entrer un nombre dans son application. Lorsque le nombre correct est sélectionné, le processus de connexion est terminé.
 
-![Exemple de connexion dans un navigateur demandant à l’utilisateur d’approuver la connexion](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Exemple de connexion dans un navigateur demandant à l’utilisateur d’approuver la connexion.](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
 Cette méthode d’authentification offre un niveau élevé de sécurité et évite à l’utilisateur de fournir un mot de passe lors de la connexion. 
 
@@ -42,7 +42,7 @@ Pour commencer à utiliser la connexion sans mot de passe, consultez [Activer la
 
 L’application Authenticator peut aider à empêcher tout accès non autorisé aux comptes et à arrêter les transactions frauduleuses en envoyant une notification à votre smartphone ou tablette. Les utilisateurs voient la notification et, si elle est légitime, sélectionnent **Vérifier**. Sinon, ils peuvent sélectionner **Refuser**.
 
-![Capture d’écran d’exemple de l’invite du navigateur Web affichant la notification de l’application Authenticator permettant de terminer le processus de connexion](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+![Capture d’écran d’exemple de l’invite du navigateur Web affichant la notification de l’application Authenticator permettant de terminer le processus de connexion.](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
 > Si votre organisation dispose de personnel travaillant ou voyageant en Chine, la méthode *Notification via une application mobile* sur les appareils Android ne fonctionne pas dans ce pays ou cette région, car les services Google Play (y compris les notifications Push) sont bloqués dans la région. En revanche, la notification iOS fonctionne. Pour Android, d’autres méthodes d’authentification doivent être proposées à ces utilisateurs.

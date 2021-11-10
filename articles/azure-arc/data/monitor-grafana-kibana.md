@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: d8d18d296a54b85cb3b571099e13f8c3e4e7a9c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 27f338d093d2084df5ca00b61a8c258d04067b69
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525255"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563356"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Afficher les journaux et les métriques à l’aide de Kibana et Grafana
 
@@ -24,10 +24,10 @@ Les tableaux de bord web Kibana et Grafana sont fournis pour apporter des insigh
 
 ## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Suivre les instances managées Azure SQL sur Azure Arc
 
-Pour accéder aux journaux et aux tableaux de bord de surveillance pour la SQL Managed Instance avec Arc activé, exécutez la commande CLI `azdata` suivante
+Pour accéder aux journaux et aux tableaux de bord de surveillance pour la SQL Managed Instance avec Azure Arc, exécutez la commande CLI `azdata` suivante
 
 ```azurecl
-az sql mi-arc endpoint list -n <name of SQL instance>
+az sql mi-arc endpoint list -n <name of SQL instance> --use-k8s
 
 ```
 Les tableaux de bord Grafana sont les suivants :
@@ -96,4 +96,3 @@ az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 60
    - [Guide Kibana](https://www.elastic.co/guide/en/kibana/current/index.html)
    - [Présentation des explorations du tableau de bord avec des visualisations de données dans Kibana](https://www.elastic.co/webinars/dashboard-drilldowns-with-data-visualizations-in-kibana/)
    - [Comment créer des tableaux de bord Kibana](https://www.elastic.co/webinars/how-to-build-kibana-dashboards/)
-

@@ -2,13 +2,13 @@
 title: Azure Service Bus - Expiration des messages
 description: Cet article traite de l'expiration et de la durée de vie des messages Azure Service Bus. Passé ce délai, le message n’est plus remis.
 ms.topic: conceptual
-ms.date: 07/09/2021
-ms.openlocfilehash: ac37096b411df0fa1a52286f82ce421dff459239
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.date: 11/01/2021
+ms.openlocfilehash: 5534a2ee94db118f4429eaec2409683f68fa5547
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585462"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460524"
 ---
 # <a name="message-expiration-time-to-live"></a>Expiration des messages (durée de vie)
 La charge utile dans un message, ou une commande ou demande transmise par un message à un destinataire, est presque toujours soumise à une forme de délai d’expiration au niveau de l’application. Passé ce délai, le contenu n’est plus remis, ou l’opération demandée n’est plus exécutée.
@@ -62,6 +62,7 @@ Voici ce qui considéré comme inactivité d’entités (files d’attente, rubr
     - Aucun envoi  
     - Aucune mise à jour de la rubrique  
     - Aucun message planifié 
+    - Aucune opération sur les abonnements de la rubrique (comme indiqué ci-dessous)
 - Abonnements
     - Aucune réception  
     - Aucune mise à jour de l’abonnement  

@@ -14,12 +14,12 @@ ms.date: 04/20/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36f78327459c8bf6efc3a1cad9d4c5b306e4ba1f
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 45e8fb5d37d5fcfe5054a1eb4c677c2afe71b310
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668311"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451442"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Affichez l’activité et l’historique d’audit des rôles de ressources Azure dans Privileged Identity Management
 
@@ -70,7 +70,7 @@ Vous pouvez avoir une exigence de conformité selon laquelle vous devez fournir 
 
     ![Attributions de rôle exportées dans le fichier CSV comme affiché dans Excel](media/azure-pim-resource-rbac/export-csv.png)
 
-## <a name="view-resource-audit-history&quot;></a>Afficher l’historique d’audit des ressources
+## <a name="view-resource-audit-history"></a>Afficher l’historique d’audit des ressources
 
 L’audit des ressources vous donne une vue d’ensemble de l’activité des rôles d’une ressource.
 
@@ -84,7 +84,7 @@ L’audit des ressources vous donne une vue d’ensemble de l’activité des r�
 
 1. Filtrez l’historique en choisissant une date prédéfinie ou une plage personnalisée.
 
-    [![Liste des audits de ressources avec filtres](media/azure-pim-resource-rbac/rbac-resource-audit.png &quot;Liste des audits de ressources avec filtres")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    [![Liste des audits de ressources avec filtres](media/azure-pim-resource-rbac/rbac-resource-audit.png "Liste des audits de ressources avec filtres")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. Pour **Type d’audit**, sélectionnez **Activer (Attribué + Activé)**.
 
@@ -94,7 +94,7 @@ L’audit des ressources vous donne une vue d’ensemble de l’activité des r�
 
     ![Détails de l’activité utilisateur pour une action particulière](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-## <a name="view-my-audit&quot;></a>Afficher mon audit
+## <a name="view-my-audit"></a>Afficher mon audit
 
 Mon audit vous permet d’afficher votre activité personnelle de rôle.
 
@@ -108,7 +108,7 @@ Mon audit vous permet d’afficher votre activité personnelle de rôle.
 
 1. Filtrez l’historique en choisissant une date prédéfinie ou une plage personnalisée.
 
-    [![Liste d’audits pour l’utilisateur actuel](media/azure-pim-resource-rbac/my-audit-time.png &quot;Liste d’audits pour l’utilisateur actuel")](media/azure-pim-resource-rbac/my-audit-time.png)
+    [![Liste d’audits pour l’utilisateur actuel](media/azure-pim-resource-rbac/my-audit-time.png "Liste d’audits pour l’utilisateur actuel")](media/azure-pim-resource-rbac/my-audit-time.png)
 
 > [!NOTE]
 > Pour accéder à l’historique d’audit, vous devez avoir un rôle Administrateur général ou Administrateur de rôle privilégié.
