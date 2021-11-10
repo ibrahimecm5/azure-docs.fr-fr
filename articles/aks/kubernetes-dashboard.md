@@ -2,16 +2,16 @@
 title: Gérer un cluster Azure Kubernetes Service avec le tableau de bord web
 description: Découvrez comment utiliser le tableau de bord intégré de l’interface utilisateur web de Kubernetes pour gérer un cluster Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
+author: georgewallace
 ms.topic: article
 ms.date: 06/03/2020
-ms.author: mlearned
-ms.openlocfilehash: e7356319a875f3289531c24e5a053e745a543c0a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.author: gwallace
+ms.openlocfilehash: 64898c6e8782c0830439d35c023a3c90fa1ebe26
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124830143"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053176"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Accéder au tableau de bord web Kubernetes dans Azure Kubernetes Service (AKS)
 

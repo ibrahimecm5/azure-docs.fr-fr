@@ -4,16 +4,16 @@ description: Découvrez comment créer un runtime d'intégration Azure-SSIS dans
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 10/27/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bcbb939f35e7bb4fa1a3508f7403f990edd6e282
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 13c5a0d77e82e699c24f13fce3f27d0ddea7fc9e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131038749"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851170"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-via-azure-portal"></a>Créer un runtime d’intégration Azure-SSIS via le portail Azure 
 
@@ -202,11 +202,11 @@ Dans la page **Paramètres avancés** du volet **Configuration du runtime d’in
 
       1. Pour **Emplacement**, sélectionnez le même emplacement que celui de votre runtime d’intégration.
 
-      1. Pour **Type**, sélectionnez le type de votre réseau virtuel : **réseau virtuel Azure Resource Manager**/réseau virtuel classique. Nous vous recommandons de sélectionner **Réseau virtuel Azure Resource Manager**, car le réseau virtuel classique sera bientôt déconseillé.
+      1. Pour **Type**, sélectionnez le type de votre réseau virtuel : **Réseau virtuel Azure Resource Manager** ou Réseau virtuel Classic. Nous vous recommandons de sélectionner **Réseau virtuel Azure Resource Manager**, car le réseau virtuel Classic sera bientôt déconseillé.
 
-      1. Pour **Nom du réseau virtuel**, sélectionnez le nom de votre réseau virtuel. Il doit être le même que celui utilisé pour configurer un point de terminaison de service de réseau virtuel/un point de terminaison privé pour votre serveur Azure SQL Database qui héberge SSISDB. Ou il doit être le même que celui joint par votre Azure SQL Managed Instance qui héberge SSISDB. Il peut également s’agir de celui connecté à votre réseau local. Sinon, vous pouvez utiliser n’importe quel réseau virtuel pour apporter vos propres adresses IP publiques statiques pour Azure-SSIS IR.
+      1. Pour **Nom du réseau virtuel**, sélectionnez le nom de votre réseau virtuel. Il doit en principe s’agir du réseau ayant servi à configurer un point de terminaison de service de réseau virtuel ou un point de terminaison privé pour votre serveur Azure SQL Database qui héberge SSISDB. Ce peut également être le réseau joint par votre serveur Azure SQL Managed Instance qui héberge SSISDB. Il peut également s’agir de celui connecté à votre réseau local. Sinon, vous pouvez utiliser n’importe quel réseau virtuel pour apporter vos propres adresses IP publiques statiques pour Azure-SSIS IR.
 
-      1. Pour **Nom du sous-réseau**, sélectionnez le nom du sous-réseau de votre réseau virtuel. Il doit être le même que celui utilisé pour configurer un point de terminaison de service de réseau virtuel pour votre serveur Azure SQL Database qui héberge SSISDB. Ou il doit s’agir d’un sous-réseau différent de celui joint par votre Azure SQL Managed Instance qui héberge SSISDB. Sinon, vous pouvez utiliser n’importe quel sous-réseau pour apporter vos propres adresses IP publiques statiques pour Azure-SSIS IR.
+      1. Pour **Nom du sous-réseau**, sélectionnez le nom du sous-réseau de votre réseau virtuel. Il doit en principe s’agir du réseau ayant servi à configurer un point de terminaison de service de réseau virtuel pour votre serveur Azure SQL Database qui héberge SSISDB. Ou il doit s’agir d’un sous-réseau différent de celui joint par votre Azure SQL Managed Instance qui héberge SSISDB. Sinon, vous pouvez utiliser n’importe quel sous-réseau pour apporter vos propres adresses IP publiques statiques pour Azure-SSIS IR.
 
       1. Pour la **méthode d’injection de réseau virtuel**, sélectionnez la méthode de votre injection de réseau virtuel : **Express**/**Standard**. 
    

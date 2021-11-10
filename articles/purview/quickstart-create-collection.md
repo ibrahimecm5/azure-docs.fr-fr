@@ -6,21 +6,16 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: quickstart
-ms.date: 09/27/2021
+ms.date: 11/04/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 47db60e99048d5be58eb1aae6707caa6ae9c4d6e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5dff616c6fa7ee8e72a932da281935f77db19010
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218780"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853697"
 ---
 # <a name="quickstart-create-a-collection-and-assign-permissions-in-purview"></a>Démarrage rapide : Création d’une collection et attribution d’autorisations dans Purview
-
-> [!NOTE]
-> Pour le moment, ce guide de démarrage rapide ne s’applique qu’aux instances Azure Purview créées le 18 août 2021 ou après cette date. Les instances créées auparavant peuvent créer des collections, mais ne gèrent pas les autorisations par le biais de ces collections. Pour plus d’informations sur la création d’une collection pour une instance Purview créée avant le 18 août, consultez notre [**guide des collections héritées**](#legacy-collection-guide) en bas de la page.
-> 
-> Tous les comptes hérités seront automatiquement mis à niveau dans les semaines à venir. Vous recevrez une notification par e-mail lors de la mise à niveau de votre compte Purview. Pour plus d’informations sur ce qui va changer une fois votre compte mis à niveau, consultez notre [Guide des comptes mis à niveau](concept-account-upgrade.md).
 
 Les collections constituent l’outil d’Azure Purview permettant de gérer la propriété et le contrôle d’accès sur les différentes ressources, sources et informations. Elles organisent également vos sources et ressources dans des catégories personnalisées en fonction de votre expérience de gestion avec vos données. Ce guide vous explique comment configurer votre première collection et votre premier administrateur de collection afin de préparer votre environnement Purview pour votre organisation.
 
@@ -96,25 +91,6 @@ Tous les rôles attribués s’appliquent aux sources, aux ressources et aux aut
     :::image type="content" source="./media/quickstart-create-collection/edit-role-assignments.png" alt-text="Capture d’écran de la fenêtre de collection Purview Studio, avec la liste déroulante Modifier les attributions de rôles sélectionnée." border="true":::
 
 1. Tapez dans la zone de texte pour rechercher les utilisateurs que vous souhaitez ajouter aux membres de rôles. Sélectionnez **OK** pour enregistrer la modification.
-
-## <a name="legacy-collection-guide"></a>Guide des collections héritées
-
-> [!NOTE]
-> Ce guide des collections héritées ne concerne que les instances Purview créées avant le 18 août 2021. Pour les instances créées après cette date, vous devez suivre le guide ci-dessus.
-
-### <a name="create-a-legacy-collection"></a>Création d’une collection héritée
-
-1. Sélectionnez Data Map dans le volet gauche pour ouvrir le mappage de données. Cette vue vous permet de voir vos collections et les sources listées dessous.
-
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-view.png" alt-text="Capture d’écran de la fenêtre Purview Studio, ouverte sur la Data Map." border="true":::
-
-1. Sélectionnez **+ Nouvelle collection**.
-
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-create.png" alt-text="Capture d’écran de la fenêtre Purview Studio, ouverte sur la Data Map, avec l’option + Nouvelle collection mise en évidence." border="true":::
-
-1. Donnez un nom à votre collection et sélectionnez un parent ou « Aucun ». Sélectionnez **Create** (Créer). Les informations sur la collection sont répercutées sur la carte des données.
-
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-name.png" alt-text="Capture d’écran de la fenêtre contextuelle Nouvelle collection de Purview Studio." border="true":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

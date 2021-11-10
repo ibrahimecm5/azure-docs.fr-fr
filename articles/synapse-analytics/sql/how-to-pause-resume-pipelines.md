@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.topic: how-to
 ms.date: 08/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 60425a0915921632874620ef5a1faf0d3ba22115
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d31cb6d07958c5f14ac5e45f0094e772b168a535
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013115"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847923"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>Suspendre et reprendre des pools SQL dédiés avec des pipelines Synapse
 
@@ -223,6 +223,6 @@ Pour planifier votre pipeline, sélectionnez **Ajouter un déclencheur** en haut
 
 Vous trouverez plus d’informations sur l’identité managée pour Azure Synapse et sur l’ajout d’une identité managée à votre pool SQL dédié ici :
 
-[Identité managée de l’espace de travail Azure Synapse](../security/synapse-workspace-managed-identity.md)
+[Identité managée de l’espace de travail Azure Synapse](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics)
 
 [Octroyer des autorisations à une identité managée de l’espace de travail](../security/how-to-grant-workspace-managed-identity-permissions.md)

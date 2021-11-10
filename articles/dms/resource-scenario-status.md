@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: a57f13b9dc54c69e079e652be94f4b08b716a079
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 81803facdff8012ee01b6cca0c408755c81f5233
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112523057"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853906"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>État des scénarios de migration pris en charge par Azure Database Migration Service
 
@@ -45,10 +45,10 @@ Le tableau suivant présente la prise en charge d’Azure Database Migration Ser
 | Cible  | Source | Support | Statut |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Base de données Azure SQL** | SQL Server | ✔ | GA |
-|   | RDS SQL | X |  |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | X |  |
 | **Base de données Azure SQL MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | X |  |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | X |   |
 | **Machine virtuelle Azure SQL** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
@@ -76,7 +76,7 @@ Le tableau suivant présente la prise en charge d’Azure Database Migration Ser
 |   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Base de données Azure SQL MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | X |  |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | X |  |
 | **Machine virtuelle Azure SQL** | SQL Server | X |   |
 |   | Oracle  | X |  |

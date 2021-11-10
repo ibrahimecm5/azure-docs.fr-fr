@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: ce451558d91b164cd6b291edc6eeff05c7b8b749
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e5d83a17edd2cff6c58ee7ac646c2bdf2fe30f5e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032754"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860902"
 ---
 [![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
 
-Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Tout d’abord, vous créez une application Azure IoT Central pour héberger des appareils. Ensuite, vous utilisez un exemple Azure IoT device SDK pour créer un contrôleur de température, le connecter de manière sécurisée à IoT Central et envoyer des données de télémétrie. L’exemple d’application de contrôleur de température s’exécute sur votre ordinateur local et génère des données de capteur simulées à envoyer à IoT Central.
+Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Tout d’abord, vous créez une application Azure IoT Central pour héberger des appareils. Ensuite, vous utilisez un exemple Azure IoT device SDK pour créer un contrôleur de température, le connecter en toute sécurité à IoT Central et envoyer la télémétrie. L’exemple d’application de contrôleur de température s’exécute sur votre ordinateur local et génère des données de capteur simulées à envoyer à IoT Central.
 
 ## <a name="prerequisites"></a>Prérequis
 Ce guide de démarrage rapide s’exécute sur Windows, Linux et Raspberry Pi. Il a été testé sur les versions de système d’exploitation et d’appareil suivantes :
@@ -32,7 +32,7 @@ Installez les prérequis suivants sur votre ordinateur de développement :
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>Exécution d’un appareil
+## <a name="run-the-device-sample"></a>Exécuter l’exemple d’appareil
 Dans cette section, vous allez configurer votre environnement local, installer le kit Python Azure IoT device SDK et exécuter un exemple qui crée un contrôleur de température.
 
 ### <a name="configure-your-environment"></a>Configurer votre environnement
@@ -100,12 +100,12 @@ Dans cette section, vous allez configurer votre environnement local, installer l
 
 ### <a name="run-the-code"></a>Exécuter le code
 
-1. Dans votre console, exécutez l’exemple de code suivant à partir du kit SDK. L’exemple crée un contrôleur de température comportant des capteurs de thermostat.
+1. Dans votre console, exécutez l’exemple de code suivant à partir du kit SDK. L’exemple crée un contrôleur de température avec des capteurs de thermostat.
     ```console
     python3 temp_controller_with_thermostats.py
     ```
 
-    Une fois connecté à votre application IoT Central, votre appareil se connecte à l’instance d’appareil que vous avez créée dans l’application et commence à envoyer des données de télémétrie. Les détails de la connexion et la sortie de la télémétrie sont affichés dans votre console : 
+    Une fois que votre appareil se connecte à votre application IoT Central, il se connecte à l’instance d’appareil que vous avez créée dans l’application et commence à envoyer de la télémétrie. Les détails de la connexion et la sortie de la télémétrie sont affichés dans votre console : 
     
     ```output
     Device was assigned

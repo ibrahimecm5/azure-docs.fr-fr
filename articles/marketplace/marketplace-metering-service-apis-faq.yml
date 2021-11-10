@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/01/2020
   author: saasguide
   ms.author: souchak
-  ms.openlocfilehash: 0abeb7dd6573293a72e8b6aede6f5e281b553049
-  ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+  ms.openlocfilehash: 8666fdbb7618b1698d4480e187cfb4affdd49781
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129455301"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132063172"
 title: API de facturation à la consommation de la Place de marché - FAQ
 summary: Quand un utilisateur s’abonne à un service SaaS ou Azure Application avec un plan Applications gérées qui comprend la facturation à la consommation, vous devez effectuer le suivi de la consommation pour chaque dimension de facturation utilisée.  Si la consommation dépasse les quantités incluses définies pour le terme sélectionné par le client, votre service émet des événements d’utilisation à Microsoft.
 sections:
@@ -84,7 +84,7 @@ sections:
   - question: >
       Pouvez-vous obtenir une liste de tous les abonnements SaaS, y compris les abonnements actifs et désabonnés ?
     answer: >
-      Oui, lorsque vous appelez l’[API Obtenir la liste des abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#subscription-apis), car cela inclut une liste de tous les abonnements SaaS. Le champ d’état dans la réponse pour chaque abonnement SaaS indique si l’abonnement est actif ou non.
+      Oui, lorsque vous appelez l’[API Obtenir la liste des abonnements](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions), car cela inclut une liste de tous les abonnements SaaS. Le champ d’état dans la réponse pour chaque abonnement SaaS indique si l’abonnement est actif ou non.
   - question: >
       Les dates de début et de fin de la période d’abonnement SaaS et l’émission de dépassement d’utilisation sont-elles connectées ?
     answer: "Les événements de dépassement peuvent être émis à tout moment pour l’abonnement SaaS existant à l’état *Abonné*. Il incombe à l’éditeur d’émettre des événements d’utilisation en fonction de la stratégie définie dans le plan de facturation. Le dépassement doit être calculé en fonction des dates définies dans le terme de l’abonnement SaaS. \n\nPar exemple, si l’éditeur définit un plan SaaS qui inclut 1 000 e-mails pour 100 $ à un tarif forfaitaire mensuel, chaque e-mail au-dessus de 1 000 est facturé 1 $ via une dimension personnalisée.\n\nSi le client achète et active l’abonnement le 6 janvier, les 1 000 e-mails inclus dans le tarif forfaitaire seront comptabilisés à partir de cette date. Ainsi, si jusqu’au 5 février (fin du premier mois de l’abonnement), seuls 900 e-mails ont été envoyés, le client ne paiera le tarif forfaitaire que pour le premier mois de cet abonnement, et aucun événement d’utilisation de dépassement ne sera émis par l’éditeur entre le 6 janvier et le 5 février. Le 6 février, l’abonnement sera automatiquement renouvelé et le décompte sera réinitialisé. Si, le 15 février, le client a atteint 1 000 e-mails envoyés, le reste des e-mails envoyés jusqu’au 5 mars sera facturé comme un dépassement (1 $ par e-mail) en fonction des événements de dépassement d’utilisation émis par l’éditeur.\n"

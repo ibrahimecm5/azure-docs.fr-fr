@@ -5,24 +5,23 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: quickstart
-author: JasonMAnderson
-ms.author: janders
+author: rothja
+ms.author: jroth
 ms.reviewer: vanto
-ms.date: 07/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: ffde0d192888aea852eb4de73e24ce678c4a677a
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/09/2021
+ms.openlocfilehash: 8538e725583aea6fe765a7afd6e0ac58f176b443
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666671"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063738"
 ---
 # <a name="quickstart-create-a-database-in-azure-sql-database-with-ledger-enabled"></a>Démarrage rapide : Créer une base de données dans Azure SQL Database avec le registre activé
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Dans ce démarrage rapide, vous allez créer une [base de données de registre](ledger-overview.md#ledger-database) dans Azure SQL Database, et configurer un [stockage de synthèse automatique avec le service Stockage Blob Azure](ledger-digest-management-and-database-verification.md#automatic-generation-and-storage-of-database-digests) en utilisant le portail Azure. Pour plus d’informations sur le registre, consultez [Registre Azure SQL Database](ledger-overview.md).
 

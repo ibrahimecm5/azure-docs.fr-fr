@@ -6,21 +6,21 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 09/04/2020
+ms.date: 11/04/2021
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: ffab1f466de9352d1ea6784cbacb7cb9672ecaa7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3cfa4113d0b2307c6683b8a103d3480ed5dfb41c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467376"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843175"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hébergement de sites web statiques dans le service Stockage Azure
 
-Vous pouvez servir du contenu statique (fichiers HTML, CSS, JavaScript et images) directement à partir d’un conteneur de stockage nommé *$web*. L’hébergement de votre contenu dans le stockage Azure vous permet d’utiliser des architectures serverless qui incluent [Azure Functions](../../azure-functions/functions-overview.md) et d’autres services Paas (Platform as a service). L’hébergement de site web statique dans le stockage Azure est une option intéressante quand vous n’avez pas besoin d’un serveur web pour restituer du contenu.
+Vous pouvez servir du contenu statique (fichiers HTML, CSS, JavaScript et images) directement à partir d’un conteneur de stockage nommé *$web*. L’hébergement de votre contenu dans le stockage Azure vous permet d’utiliser des architectures serverless qui incluent [Azure Functions](../../azure-functions/functions-overview.md) et d’autres services Paas (Platform as a service). L’hébergement de site web statique dans le stockage Azure est une option intéressante quand vous n’avez pas besoin d’un serveur web pour restituer du contenu. 
 
-[App Service Static Web Apps](https://azure.microsoft.com/services/app-service/static/) constitue une excellente alternative à l’hébergement de site web statique dans le stockage Azure et sont également appropriées quand vous n’avez pas besoin d’un serveur web pour restituer du contenu. App Service Static Web Apps vous offre un workflow d’intégration continue et de livraison continue (CI/CD) complètement managé, de la source GitHub au déploiement global.
+[!INCLUDE [static websites vs static web apps](../../../includes/storage-blob-static-website-vs-static-web-app.md)]
 
 Si vous avez besoin d’un serveur web pour restituer du contenu, vous pouvez utiliser [Azure App Service](https://azure.microsoft.com/services/app-service/).
 

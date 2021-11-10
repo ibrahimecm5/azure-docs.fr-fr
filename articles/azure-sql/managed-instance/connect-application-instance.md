@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
 ms.date: 08/20/2021
-ms.openlocfilehash: a1cb62bce41ce0003628ce4223fe06e6587317f5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d4c86b555502d662e681fcb5904426a7a891883d
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130250497"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893459"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Connecter votre application à Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -143,7 +143,7 @@ Pour résoudre les problèmes de connectivité, lisez ce qui suit :
 
 - Si vous utilisez le peering de réseaux virtuels, suivez les instructions concernant la configuration des options [Autoriser le transit par passerelle et Utiliser des passerelles distantes](#connect-from-on-premises).
 
-- Si vous utilisez le peering de réseaux virtuels pour connecter une application hébergée Azure App Service et que le réseau virtuel SQL Managed Instance a une plage d’IP publiques, assurez-vous que les paramètres de votre application hébergée autorisent le routage du trafic sortant vers des réseaux IP publics. Suivez les instructions de la section [Intégration au réseau virtuel régional](../../app-service/overview-vnet-integration.md#regional-vnet-integration).
+- Si vous utilisez le peering de réseaux virtuels pour connecter une application hébergée Azure App Service et que le réseau virtuel SQL Managed Instance a une plage d’IP publiques, assurez-vous que les paramètres de votre application hébergée autorisent le routage du trafic sortant vers des réseaux IP publics. Suivez les instructions de la section [Intégration au réseau virtuel régional](../../app-service/overview-vnet-integration.md#regional-virtual-network-integration).
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Versions exigées de pilotes et d’outils
 

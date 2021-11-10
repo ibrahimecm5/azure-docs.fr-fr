@@ -1,27 +1,26 @@
 ---
 title: Gestion des synthèses et vérification de base de données
 description: Cet article fournit des informations sur la gestion des synthèses et la vérification de base de données dans Azure SQL Database.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 8e6fbbdcb4b6db8ed7e9549b8776010cf01894e4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: df0b87543c213b77a3cf47a7e9020f7f3c0e1866
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562989"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059580"
 ---
 # <a name="digest-management-and-database-verification"></a>Gestion des synthèses et vérification de base de données
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Le registre Azure SQL Database fournit une forme d’intégrité des données appelée *forward integrity*, qui donne la preuve de la falsification des données dans vos tables de registre. Par exemple, si une transaction bancaire sur une table de registre met à jour le solde sur la valeur `x` et qu’un attaquant modifie les données par la suite, entraînant le remplacement de la valeur `x` par `y`, la vérification de base de données détectera cette activité de falsification.  
 

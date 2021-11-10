@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 84e55aa971eae4c67bc6ec2dcaa4618b55c8f737
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: f420934489c6e5e65b050ce30ded8fb922dfdfe8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134105"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061359"
 ---
 # <a name="marketplace-metered-billing-apis"></a>API de facturation à la consommation de la Place de marché
 
@@ -72,7 +72,7 @@ Un seul événement d’utilisation peut être émis pour chaque heure d’un jo
 
 Pour les plans des applications managées Azure Application, l’ID `resourceId` correspond à l’application managée `resource group Id`. Un exemple de script permettant de l’extraire est disponible dans [Utilisation du jeton d’identités managées par Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
-Pour les offres SaaS, le paramètre `resourceId` est l’ID d’abonnement SaaS. Pour plus d’informations sur les abonnements SaaS, voir [Lister les abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+Pour les offres SaaS, le paramètre `resourceId` est l’ID d’abonnement SaaS. Pour plus d’informations sur les abonnements SaaS, voir [Lister les abonnements](partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions).
 
 ### <a name="responses"></a>Réponses
 
@@ -170,7 +170,7 @@ L’API d’événement d’utilisation par lot vous permet d’émettre des év
 >[!NOTE]
 >Dans le corps de la demande, l’identificateur de ressource a des significations différentes pour les applications SaaS et pour les applications gérées par Azure qui émettent des compteurs personnalisés. L’identificateur de ressource d’une application SaaS est `resourceID`. L’identificateur de ressource pour les plans des applications managées Azure Application est `resourceUri`.
 
-Pour les offres SaaS, le paramètre `resourceId` est l’ID d’abonnement SaaS. Pour plus d’informations sur les abonnements SaaS, voir [Lister les abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+Pour les offres SaaS, le paramètre `resourceId` est l’ID d’abonnement SaaS. Pour plus d’informations sur les abonnements SaaS, voir [Lister les abonnements](partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions).
 
 *Exemple de corps de demande pour les applications SaaS :*
 

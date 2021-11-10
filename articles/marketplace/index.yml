@@ -10,12 +10,12 @@ metadata:
   author: mingshen-ms
   ms.author: mingshen
   ms.date: 06/01/2021
-  ms.openlocfilehash: dd346b0bed5ea7ecbc8be848c525d63c1ea3e96c
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 6b7a93faca9a6515f97ffbcf9aef7d22c14fcc13
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131442404"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132055034"
 landingContent:
 - title: Utilisation de la place de marché commerciale
   linkLists:
@@ -116,7 +116,7 @@ landingContent:
     - text: Prérequis de l’API
       url: cloud-partner-portal-api-prerequisites.md
     - text: API de traitement SaaS
-      url: partner-center-portal/pc-saas-fulfillment-api-v2.md
+      url: partner-center-portal/pc-saas-fulfillment-apis.md
     - text: API de service de mesure de la Place de marché
       url: marketplace-metering-service-apis-faq.yml
     - text: API de rapport (PDF)

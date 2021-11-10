@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 7267e733971b2abed258ca815a010b13938bc2a6
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: b847243543eb8667a38d253e7eaad215af29e7b2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613469"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852331"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Inscrire des extensions de liaison Azure Functions
 
@@ -51,6 +51,7 @@ Le tableau suivant répertorie les versions actuellement disponibles de l’offr
 | --- | --- | --- |
 | 1.x | `[1.*, 2.0.0)` | Consultez [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) utilisées pour générer l’offre groupée |
 | 2.x | `[2.*, 3.0.0)` | Consultez [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) utilisées pour générer l’offre groupée |
+| 3.x | `[3.3.0, 4.0.0)` | Consultez [extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/v3.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) utilisées pour générer l’offre groupée |
 
 > [!NOTE]
 > Tandis que vous pouvez spécifier une plage de versions personnalisée dans host.json, nous vous recommandons d’utiliser une valeur de version de ce tableau.
@@ -92,7 +93,7 @@ Si votre application de fonction utilise des liaisons que les outils Core ne rec
 Utilisez la commande suivante pour installer un package d’extension spécifique à une version spécifique, dans ce cas l’extension Storage :
 
 ```command
-func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 4.0.2
+func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 5.0.0
 ```
 
 Pour plus d’informations, reportez-vous à la [commande `func extensions install`](functions-core-tools-reference.md#func-extensions-install).

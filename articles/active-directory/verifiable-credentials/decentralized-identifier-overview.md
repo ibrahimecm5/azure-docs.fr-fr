@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e87105a05cde1a32a89d3e4fd404ad222245dce0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 4f210077fd5a2cc4155b9123b33f4638e63c1ee4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129996510"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026857"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Présentation des justificatifs vérifiables Azure Active Directory (préversion)
 
@@ -121,6 +121,6 @@ Dans ce scénario, les rôles sont les suivants :
 
 Maintenant que vous en savez plus sur les DID et les justificatifs vérifiables, expérimentez-les en suivant notre article de prise en main ou l’un des articles expliquant plus en détail les concepts liés aux justificatifs vérifiables.
 
-- [Prise en main des justificatifs vérifiables](get-started-verifiable-credentials.md)
+- [Prise en main des justificatifs vérifiables](verifiable-credentials-configure-tenant.md)
 - [Personnaliser vos justificatifs](credential-design.md)
 - [FAQ sur les justificatifs vérifiables](verifiable-credentials-faq.md)

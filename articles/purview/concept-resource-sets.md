@@ -7,16 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: d1d15fb4ff3bc2d820311b4f847c21236d83b6f3
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 4e15f2813a0aea04f63cc11b3273c4a91d44afb2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708748"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845871"
 ---
 # <a name="understanding-resource-sets"></a>Présentation des jeux de ressources
 
 Cet article vous aide à comprendre comment Azure Purview utilise des jeux de ressources pour mapper des ressources de données à des ressources logiques.
+
 ## <a name="background-info"></a>Informations générales
 
 Les systèmes de traitement de données à grande échelle stockent généralement une table unique sur un stockage en tant que fichiers multiples. Dans le catalogue de données Azure Purview, ce concept est représenté à l’aide de jeux de ressources. Un jeu de ressources est un objet unique dans le catalogue qui représente un grand nombre de ressources dans le stockage.
@@ -67,9 +68,6 @@ L’activation des jeux de ressources avancés permet également de créer des [
 ### <a name="turning-on-advanced-resource-sets"></a>Activation des jeux de ressources avancés
 
 Les jeux de ressources avancés sont désactivés par défaut dans toutes les nouvelles instances Azure Purview. Les jeux de ressources avancés peuvent être activés à partir des **informations de compte** dans le hub de gestion.
-
-> [!NOTE]
-> Toutes les instances Purview créées avant le 19 août 2021 disposent d’un jeu de ressources avancé activé par défaut.
 
 :::image type="content" source="media/concept-resource-sets/advanced-resource-set-toggle.png" alt-text="Activez un jeu de ressources avancé." border="true":::
 
@@ -130,6 +128,7 @@ Lors de l’analyse d’un compte de stockage, Azure Purview se sert d’un ense
 - marque de manière incorrecte une ressource comme n’étant pas un jeu de ressources.
 
 Pour personnaliser ou remplacer la manière dont Azure Purview détecte les ressources regroupées comme jeux de ressources et leur mode d’affichage dans le catalogue, vous pouvez définir des règles de modèle dans le centre de gestion. Pour obtenir des instructions détaillées ainsi que la syntaxe, consultez les [règles de modèle de jeu de ressources](how-to-resource-set-pattern-rules.md).
+
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour prendre en main Azure Purview, consultez [Démarrage rapide : Créer un compte Azure Purview](create-catalog-portal.md).

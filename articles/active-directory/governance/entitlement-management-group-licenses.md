@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf38a949d15faa896f4ac673fc53814078a087e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7d9b2f8ae5d679bf6642cd4cc2872e53b1234f11
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130231760"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989163"
 ---
 # <a name="tutorial-manage-the-lifecycle-of-your-group-based-licenses-in-azure-ad"></a>Tutoriel : Gérer le cycle de vie de vos licences basées sur des groupes dans Azure AD
  
@@ -99,11 +99,11 @@ Pour plus d’informations, consultez [Exigences des licences](entitlement-manag
  
     Dans ce scénario, vous voulez que tous les collaborateurs vérifient s’ils ont toujours besoin d’une licence pour Office chaque année.
 
-    1.  Sous **Exiger des révisions d’accès**, sélectionnez **Oui**.
-    2.  Vous pouvez laisser **Date de début** défini sur la date du jour. La date correspond au démarrage de la révision d’accès. Après avoir créé une révision d’accès, vous ne pouvez pas mettre à jour sa date de début.
-    3.  Sous **Fréquence de révision**, sélectionnez **Annuelle** parce que la révision aura lieu une fois par an. La zone **Fréquence de révision** vous permet de déterminer la fréquence d’exécution de la révision d’accès.
-    4.  Spécifiez une **Durée (en jours)** .  La zone Durée est là où vous indiquez le nombre de jours pendant lesquels chaque occurrence de la série de révisions d’accès s’exécutera.
-    5.  Sous **Réviseurs**, sélectionnez **Responsable**.
+    1. Sous **Exiger des révisions d’accès**, sélectionnez **Oui**.
+    2. Vous pouvez laisser **Date de début** défini sur la date du jour. La date correspond au démarrage de la révision d’accès. Après avoir créé une révision d’accès, vous ne pouvez pas mettre à jour sa date de début.
+    3. Sous **Fréquence de révision**, sélectionnez **Annuelle** parce que la révision aura lieu une fois par an. La zone **Fréquence de révision** vous permet de déterminer la fréquence d’exécution de la révision d’accès.
+    4. Spécifiez une **Durée (en jours)** .  La zone Durée est là où vous indiquez le nombre de jours pendant lesquels chaque occurrence de la série de révisions d’accès s’exécutera.
+    5. Sous **Réviseurs**, sélectionnez **Responsable**.
 
 ## <a name="step-6-review-and-create-your-access-package"></a>Étape 6 : Vérifier et créer votre package d’accès
 

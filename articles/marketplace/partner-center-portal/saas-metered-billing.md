@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 104d8665a1a7754475e0bcad14546775335c389f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 7021f75bb63e7cb7e7467cf7827a365d81b09bd6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131255"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059616"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Facturation à l’usage pour SaaS à l’aide du service de mesure de la consommation de la Place de marché commerciale
 
@@ -23,7 +23,7 @@ Avec le service de mesure de la consommation de la Place de marché commerciale,
 Pour qu’une offre SaaS utilise la facturation à la consommation, elle doit :
 
 - Respecter toutes les exigences d’une offre pour une [vente via l’offre de Microsoft](../plan-saas-offer.md#listing-options), comme indiqué dans [Créer une offre SaaS](../create-new-saas-offer.md) dans la Place de marché commerciale.
-- S’intégrer aux [API de traitement SaaS](./pc-saas-fulfillment-api-v2.md) pour que les clients provisionnent votre offre et s’y connectent.  
+- S’intégrer aux [API de traitement SaaS](./pc-saas-fulfillment-apis.md) pour que les clients provisionnent votre offre et s’y connectent.  
 - Être configuré pour le modèle de tarification **forfaitaire** lors de la facturation de votre service aux clients.  Les dimensions sont une extension facultative du modèle de tarification forfaitaire. 
 
 L’offre SaaS peut alors s’intégrer avec les [API du service de mesure de la consommation de la Place de marché commerciale](../marketplace-metering-service-apis.md) pour informer Microsoft des événements facturables.

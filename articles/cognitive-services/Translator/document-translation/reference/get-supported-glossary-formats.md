@@ -3,19 +3,17 @@ title: Méthode get supported glossary formats
 titleSuffix: Azure Cognitive Services
 description: La méthode get supported glossary formats retourne la liste des formats de glossaires pris en charge.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: ae21b4e510dc7e1f95303c562f58032758717d56
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 7e81f333b9291d58bd014f91a9d22b38d844466b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540699"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057249"
 ---
 # <a name="get-supported-glossary-formats"></a>Obtenir les formats de glossaire pris en charge
 

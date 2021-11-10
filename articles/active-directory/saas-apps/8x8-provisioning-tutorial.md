@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: c055b8a0bd11d6f1e1a28e053d64aaf574ca2880
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 5572fff94ff7eb86b2458b37ba54d0d67004ce12
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765164"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989258"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Tutoriel : Configurer 8x8 pour l’approvisionnement automatique d’utilisateurs
 
@@ -38,6 +38,9 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * Un abonnement 8x8 de série X de n’importe quel niveau.
 * Un compte d’utilisateur 8x8 disposant d’une autorisation d’administrateur dans la [Console d’administration](https://vo-cm.8x8.com).
 * L’[authentification unique avec Azure AD](./8x8virtualoffice-tutorial.md) a déjà été configurée.
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Étape 1. Planifier votre déploiement de l’approvisionnement
 1. En savoir plus sur le [fonctionnement du service d’approvisionnement](../app-provisioning/user-provisioning.md).

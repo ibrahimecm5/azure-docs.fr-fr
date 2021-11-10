@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.date: 06/03/2021
 ms.author: markvi
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaab0517c1bd0d3aa06cc31cf6c087896f7d52b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b998a502ba2c3edaae263e5ac1571239f84c3543
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441940"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997340"
 ---
 # <a name="quickstart-analyze-sign-ins-with-the-azure-ad-sign-ins-log"></a>Démarrage rapide : Analyser les connexions à l’aide du journal des connexions Azure AD 
 
@@ -27,7 +27,7 @@ Les informations contenues dans le journal des connexions Azure AD vous permette
 
 Pour suivre le scénario décrit dans ce démarrage rapide, vous avez besoin de ce qui suit :
 
-- **Accès à un locataire Azure AD** : si vous n’avez pas accès à un locataire Azure AD, consultez [Créez votre compte gratuit Azure dès aujourd’hui](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- **Accès à un locataire Azure AD** : si vous n’avez pas accès à un locataire Azure AD, consultez [Créez votre compte gratuit Azure dès aujourd’hui](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - **Un compte d’essai nommé Isabella Simonsen** : si vous ignorez comment créer un compte d’essai, voir [Ajouter des utilisateurs basés sur le cloud](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="perform-a-failed-sign-in"></a>Provoquer un échec de connexion
@@ -58,7 +58,7 @@ Cette section décrit les étapes à suivre pour analyser un échec de connexion
 
     a. Dans la barre d’outils, cliquez sur **Ajouter des filtres**.
     
-    ![Ajouter un filtre d’utilisateurs](./media/quickstart-analyze-sign-in/add-filters.png)   
+    ![Ajouter un filtre d’utilisateur](./media/quickstart-analyze-sign-in/add-filters.png)   
 
     b. Dans la liste **Choisir un champ**, sélectionnez **Utilisateur**, puis cliquez sur **Appliquer**.
 
@@ -99,7 +99,7 @@ Maintenant que vous savez comment rechercher une entrée par son nom dans le jou
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
-Lorsque vous n’avez plus besoin de l’utilisateur de test, supprimez-le. Si vous ignorez comment supprimer un utilisateur Azure AD, voir [Supprimer des utilisateurs d’Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+Lorsque vous n’en avez plus besoin, supprimez l’utilisateur de test. Si vous ignorez comment supprimer un utilisateur Azure AD, voir [Supprimer des utilisateurs d’Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

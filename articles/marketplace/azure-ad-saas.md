@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 4638139b6cc57e18b11382341b291a13b6c558c0
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 224fda3a9f308bfb0b6683d58bbc6de3c2822259
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540065"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059314"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD et offres SaaS pouvant faire l’objet d’une transaction dans la Place de marché commerciale
 
@@ -53,7 +53,7 @@ Ce tableau fournit des détails sur les étapes du processus de gestion des acha
 | ------------ | ------------- | ------------- |
 | 1. L’acheteur se connecte à la place de marché commerciale avec son identité Azure ID et sélectionne une offre SaaS. | Aucune action n’est requise de la part de l’éditeur. | Non applicable |
 | 2. Après l’achat, l’acheteur sélectionne **Configurer un compte** dans la Place de marché Azure ou **Configurer maintenant** dans AppSource, qui dirige l’acheteur vers la page d’accueil de l’éditeur pour cette offre. L’acheteur doit pouvoir se connecter à l’application SaaS de l’éditeur avec Azure AD SSO et uniquement donner un consentement minimal qui ne nécessite pas d’approbation de l’administrateur Azure AD. | Concevez une [page d’accueil](azure-ad-transactable-saas-landing-page.md) pour l’offre permettant d’accueillir un utilisateur avec son identité Azure AD ou compte Microsoft (MSA) et qui facilite tout approvisionnement ou configuration supplémentaire nécessaire. | Obligatoire |
-| 3. L’éditeur demande les détails de l’achat à l’API de traitement SaaS. | À l’aide d’un [jeton d’accès](./partner-center-portal/pc-saas-registration.md) généré à partir de l’ID d’application de la page d’accueil, [appelez le point de terminaison de résolution](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) pour obtenir des détails sur l’achat. | Obligatoire |
+| 3. L’éditeur demande les détails de l’achat à l’API de traitement SaaS. | À l’aide d’un [jeton d’accès](./partner-center-portal/pc-saas-registration.md) généré à partir de l’ID d’application de la page d’accueil, [appelez le point de terminaison de résolution](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) pour obtenir des détails sur l’achat. | Obligatoire |
 | 4. Via Azure AD et l’API Microsoft Graph, l’éditeur recueille les détails de l’entreprise et de l’utilisateur requis pour approvisionner l’acheteur dans l’application SaaS de l’éditeur.  | Décomposez le jeton d’utilisateur Azure AD pour rechercher le nom et l’adresse e-mail, ou [appelez l’API Microsoft Graph](/graph/use-the-api) et utilisez des autorisations déléguées pour [récupérer des informations](/graph/api/user-get) sur l’utilisateur connecté. | Obligatoire |
 ||||
 
@@ -67,7 +67,7 @@ Ce tableau décrit les étapes du processus de gestion des abonnements.
 
 | Étape du processus | Action de l’éditeur | Recommandé ou requis pour les éditeurs |
 | ------------ | ------------- | ------------- |
-| 5. L’éditeur gère l’abonnement à l’application SaaS par le biais de l’API de traitement SaaS. | Gérez les modifications d’abonnement et les autres tâches de gestion via les [API de traitement SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md).<br><br>Cette étape nécessite un jeton d’accès, comme décrit dans l’étape 3 du processus. | Obligatoire |
+| 5. L’éditeur gère l’abonnement à l’application SaaS par le biais de l’API de traitement SaaS. | Gérez les modifications d’abonnement et les autres tâches de gestion via les [API de traitement SaaS](./partner-center-portal/pc-saas-fulfillment-apis.md).<br><br>Cette étape nécessite un jeton d’accès, comme décrit dans l’étape 3 du processus. | Obligatoire |
 | 6. Si vous utilisez la facturation à l’usage, l’éditeur envoie des événements d’utilisation à l’API du service de mesure. | Si votre application SaaS intègre une facturation à l’utilisation, effectuez des notifications d’utilisation par le biais des [API du service de mesure de la Place de marché](marketplace-metering-service-apis.md).<br><br>Cette étape nécessite un jeton d’accès, comme décrit dans l’étape 3. | Requis pour la mesure |
 ||||
 

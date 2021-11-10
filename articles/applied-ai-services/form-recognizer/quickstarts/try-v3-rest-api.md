@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: lajanuar
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 097387d1a84aa02e6d81292a65404ca2e837ed98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c19e08dce4c2cfcae67555189b55d085b18eceb0
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020993"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988555"
 ---
 # <a name="quickstart-rest-api---preview"></a>Démarrage rapide : API REST | Préversion
 
@@ -122,7 +122,7 @@ https://{host}/formrecognizer/documentModels/{modelId}/analyzeResults/ **{result
 
 ### <a name="get-general-document-results"></a>Obtenir les résultats de document général
 
-Après avoir appelé l’API **[Analyser un document](https://westus.api.cognitive.microsoft.com/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview&stringIndexType=textElements)** , appelez l’API **[Obtenir un résultat d’analyse](https://westus.api.cognitive.microsoft.com/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview)** pour obtenir l’état de l’opération et les données extraites. Avant d’exécuter la commande, apportez les modifications suivantes :
+Après avoir appelé l’API **[Analyser un document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)** , appelez l’API **[Obtenir un résultat d’analyse](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetAnalyzeDocumentResultw)** pour obtenir l’état de l’opération et les données extraites. Avant d’exécuter la commande, apportez les modifications suivantes :
 
 1. Remplacez `{endpoint}` par le point de terminaison que vous avez obtenu avec votre abonnement Form Recognizer.
 1. Remplacez `{subscription key}` par la clé d’abonnement que vous avez copiée à l’étape précédente.

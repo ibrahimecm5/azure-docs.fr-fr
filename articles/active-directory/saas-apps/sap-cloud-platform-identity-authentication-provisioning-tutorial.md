@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: f751b3b705cd1cacc5ef1398fb343de60b8ede6b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ec63b60f4bb3ded457b3851d899cdbb6a051895f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596779"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990018"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Tutoriel : Configurer SAP Cloud Platform Identity Authentication pour le provisionnement automatique d’utilisateurs
 
@@ -34,6 +34,9 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * un locataire Azure AD ;
 * [Un locataire SAP Cloud Platform Identity Authentication](https://www.sap.com/products/cloud-platform.html)
 * Un compte d’utilisateur dans SAP Cloud Platform Identity Authentication disposant d’autorisations d’administrateur
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Affectation d’utilisateurs à SAP Cloud Platform Identity Authentication
 

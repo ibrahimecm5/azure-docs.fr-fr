@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: eae333dfd399e33063b2b18777c45ea2c1b89a54
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 73513e90f37a3d003351604d119612306ba66277
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096823"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062735"
 ---
 # <a name="improve-model-performance"></a>Améliorer les performances du modèle
 
@@ -32,7 +32,7 @@ Pour améliorer un modèle, vous devez :
 * Avoir passé en revue les [détails de l’évaluation du modèle](view-model-evaluation.md) pour déterminer les performances de votre modèle.
 * Vous être familiarisé avec les [métriques d’évaluation](../concepts/evaluation.md) utilisées pour l’évaluation
 
-Pour plus d’informations, consultez [cycle de vie du développement d’applications](../overview.md#application-development-lifecycle).
+Pour plus d’informations, consultez [cycle de vie du développement d’applications](../overview.md#project-development-lifecycle).
 
 ## <a name="review-test-set-predictions"></a>Passer en revue les prédictions du jeu de test
 

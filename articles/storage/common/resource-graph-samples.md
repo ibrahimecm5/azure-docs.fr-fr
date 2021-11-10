@@ -1,18 +1,18 @@
 ---
 title: Exemples de requêtes Azure Resource Graph pour Stockage Azure
 description: Exemples de requêtes Azure Resource Graph pour Stockage Azure montrant l’utilisation des types de ressources et des tables pour accéder aux ressources et aux propriétés de Stockage Azure.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 2b9bd016d6d11756ee5759f58bc443719a8be25d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fe696bf4f04eecef90fc39d65dc6c48dec0a261b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651557"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053409"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-storage"></a>Exemples de requêtes Azure Resource Graph pour Stockage Azure
 

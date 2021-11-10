@@ -3,19 +3,17 @@ title: Méthode Get supported storage sources
 titleSuffix: Azure Cognitive Services
 description: La méthode get supported storage sources retourne une liste des sources de stockage prises en charge.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: b0cd1c179de36147169239ab50785a9d93dfa5bb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4dae58196bda8978d503593241f3e74c9ef14c69
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458756"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056774"
 ---
 # <a name="get-supported-storage-sources"></a>Obtenir les sources de stockage prises en charge
 
@@ -33,7 +31,7 @@ Découvrez comment déterminer votre [nom de domaine personnalisé](../get-start
 > [!IMPORTANT]
 >
 > * **Toutes les requêtes d’API adressées au service Traduction de documentation nécessitent un point de terminaison de domaine personnalisé**.
-> * Vous ne pouvez pas utiliser le point de terminaison qui se trouve dans la page _Clés et point de terminaison_ de votre ressource du portail Azure, ni le point de terminaison du traducteur global (`api.cognitive.microsofttranslator.com`) pour soumettre des requêtes HTTP au service Traduction de document.
+> * Vous ne pouvez pas utiliser le point de terminaison qui se trouve dans la page _Clés et point de terminaison_ de votre ressource du portail Azure, ni le point de terminaison du traducteur global (`api.cognitive.microsofttranslator.com`) pour soumettre des requêtes HTTP au service Traduction de documentation.
 
 ## <a name="request-headers"></a>En-têtes de requête
 

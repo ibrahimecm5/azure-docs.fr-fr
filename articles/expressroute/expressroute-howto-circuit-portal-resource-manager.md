@@ -8,12 +8,12 @@ ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: expressroute
 ms.custom: mode-portal
-ms.openlocfilehash: c1bcbd91ae960eb8fb690b04b09445183d787e94
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 449925c1588ad05fccf2d5d5509ad621b6041956
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005439"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867130"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Démarrage rapide : Création et modification d’un circuit ExpressRoute
 
@@ -25,7 +25,7 @@ Ce guide de démarrage rapide vous montre comment créer un circuit ExpressRoute
 
 * Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Examinez les [conditions préalables](expressroute-prerequisites.md) et les [flux de travail](expressroute-workflows.md) avant de commencer la configuration.
-* Vous pouvez [visualiser une vidéo](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) avant de commencer afin de mieux comprendre les étapes.
+* Vous pouvez [visualiser une vidéo](https://channel9.msdn.com/Blogs/Azure/Azure-ExpressRoute-How-to-create-an-ExpressRoute-circuit) avant de commencer afin de mieux comprendre les étapes.
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Créer et approvisionner un circuit ExpressRoute
 

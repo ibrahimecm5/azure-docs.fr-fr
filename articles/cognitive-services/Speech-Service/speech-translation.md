@@ -12,16 +12,14 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: traduction vocale
-ms.openlocfilehash: 19332b801493359dc0cf8a8f1d5bab951b9be983
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 13d82c334504b2d396f10b1c80b99c0c264c9ea0
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502746"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988878"
 ---
 # <a name="what-is-speech-translation"></a>Qu’est-ce que la traduction vocale ?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Dans cette vue d’ensemble, vous découvrez les avantages et les fonctionnalités du service de traduction vocale, qui permet de traduire en temps réel les flux audio [multilingues de parole en parole](language-support.md#speech-translation) et de parole en texte. Avec le SDK Speech, vos applications, outils et appareils ont accès à une transcription de la source et à une traduction en sortie pour l’audio fourni. Des résultats de transcription et de traduction intermédiaires sont retournés dès que de la parole est détectée, et les résultats finaux peuvent être convertis en synthèse vocale.
 

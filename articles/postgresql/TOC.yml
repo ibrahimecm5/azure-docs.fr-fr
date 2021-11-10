@@ -457,7 +457,7 @@
             - name: Créer une application web sur un réseau virtuel
               href: flexible-server/tutorial-webapp-server-vnet.md
             - name: Déployer une application Django sur App Service
-              href: flexible-server/tutorial-django-app-service-postgres.md
+              href: ../app-service/tutorial-python-postgresql-app.md
     - name: Concepts
       items:
         - name: Serveurs
@@ -658,7 +658,7 @@
               href: concepts-hyperscale-colocation.md
         - name: Accès aux données et sécurité
           items:
-            - name: Vue d'ensemble
+            - name: Vue d’ensemble
               href: concepts-hyperscale-security-overview.md
             - name: Accès public
               href: concepts-hyperscale-firewall-rules.md

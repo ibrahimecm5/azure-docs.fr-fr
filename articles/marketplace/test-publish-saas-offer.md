@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/27/2021
-ms.openlocfilehash: 7836792245a9618e2ac8168af697c0151f8e123b
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 21bb6df47c255da5ffc463d3d7f42e61da6de1cc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080766"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063134"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Comment tester et publier une offre SaaS sur la place de marché commerciale
 
@@ -30,7 +30,7 @@ Cet article explique comment utiliser l’Espace partenaires afin de soumettre v
 
 1. Connectez-vous à l’[Espace partenaires](https://go.microsoft.com/fwlink/?linkid=2166002).
 
-1. Sur la page d’accueil, sélectionnez la vignette **Offres de la Place de marché**.
+1. Dans la page d’accueil, sélectionnez la vignette **Offres de la Place de marché**.
 
     [ ![Illustre la vignette Offres de la Place de marché sur la page d’accueil de l’Espace partenaires.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
@@ -83,7 +83,7 @@ Pour afficher un aperçu de votre offre, procédez comme suit.
 
 1. Si votre offre SaaS prend en charge la [facturation contrôlée à l’aide du service de contrôle de la place de marché commerciale](./partner-center-portal/saas-metered-billing.md), examinez et suivez les meilleures pratiques de test détaillées dans les [API de facturation contrôlée de la place de marché](marketplace-metering-service-apis.md#development-and-testing-best-practices).
 
-1. Passez en revue et suivez les instructions de test dans [API de traitement SaaS version 2 dans la place de marché commerciale de Microsoft](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing) pour vous assurer que votre offre est correctement intégrée avec les API avant de la publier en ligne.
+1. Passez en revue et suivez les instructions de test dans [API de traitement SaaS version 2 dans la place de marché commerciale de Microsoft](./partner-center-portal/pc-saas-fulfillment-webhook.md#development-and-testing) pour vous assurer que votre offre est correctement intégrée avec les API avant de la publier en ligne.
 
 1. Si l’étape de validation de l’offre a généré des avertissements, un lien **Afficher le rapport de validation** s’affiche sur la page **Vue d’ensemble de l’offre**. Veillez à consulter le rapport et à résoudre les problèmes avant de cliquer sur le bouton **Démarrer**. Dans le cas contraire, la certification risque d’échouer et de retarder la mise en ligne de votre offre.
 

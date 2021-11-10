@@ -2,13 +2,13 @@
 title: Compositions d’intelligence artificielle dans Azure Video Analyzer
 description: Cet article offre une vue d’ensemble de la prise en charge par Azure Video Analyzer de trois types de composition d’intelligence artificielle. Cette rubrique fournit également une explication de scénario pour chaque type de composition d’intelligence artificielle.
 ms.topic: conceptual
-ms.date: 08/11/2021
-ms.openlocfilehash: 709bfe642c6427e131c95d64af6de0ee410cf261
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/04/2021
+ms.openlocfilehash: 4195fd0dbcd44f0eeb273384e6d6cfad352aedb5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122531938"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847106"
 ---
 # <a name="ai-composition"></a>Composition d’intelligence artificielle
 

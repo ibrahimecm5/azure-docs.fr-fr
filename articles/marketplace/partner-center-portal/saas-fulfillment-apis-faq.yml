@@ -8,12 +8,12 @@ metadata:
   ms.date: 03/19/2021
   author: saasguide
   ms.author: souchak
-  ms.openlocfilehash: 4092ad53e67cc7ed526f66b4e5214a9bb9a1aeda
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: b16e1b8e014e28b1ec02f93a23a48aa6df57dbde
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130043298"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132056168"
 title: Questions courantes sur les API de traitement SaaS
 summary: Cet article décrit plusieurs conditions d’intégration de la Place de marché commerciale Microsoft permettant aux clients Azure de s’abonner à des offres SaaS.
 sections:
@@ -58,7 +58,7 @@ sections:
       ![Flux d’abonnement du client](media/saas-metering-service-integration-flow-a.png)
 
 
-      Pour plus d’informations sur le contrat API pour la gestion des scénarios Transaction dans le cycle de vie d’une offre SaaS, consultez [API de traitement SaaS ](pc-saas-fulfillment-api-v2.md).
+      Pour plus d’informations sur le contrat API pour la gestion des scénarios Transaction dans le cycle de vie d’une offre SaaS, consultez [API de traitement SaaS ](pc-saas-fulfillment-apis.md).
   - question: >
       Comment identifier l'offre SaaS que l'utilisateur souscrit dans Azure ?
     answer: >

@@ -3,7 +3,7 @@ title: 'Tutoriel : Créer un pipeline CI/CD pour votre code existant avec Azure
 description: Azure DevOps Starter facilite la prise en main d’Azure. En quelques étapes rapides, DevOps Projects vous permet d’utiliser votre propre code et votre dépôt GitHub pour lancer une application sur un service Azure.
 services: vsts
 documentationcenter: vs-devops-build
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.workload: web
 ms.prod: devops
@@ -11,14 +11,14 @@ ms.technology: devops-cicd
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
+author: georgewallace
 ms.custom: mvc
-ms.openlocfilehash: c03ba657ac264b72d035f28956354398421ed2f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9600dcc2c9cbd150783ed1a14afb2b785ba5b054
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566598"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056337"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Créer un pipeline CI/CD pour un référentiel GitHub à l’aide d’Azure DevOps Starter
 

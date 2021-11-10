@@ -4,7 +4,7 @@ description: Fournit une résolution au problème de données manquantes dans le
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a41d51c6cf5b723f4bbb7a94d0af87d5c3f67758
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93123062"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995689"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Résoudre les problèmes : données manquantes dans les journaux d’activité Azure Active Directory 
 
@@ -95,5 +95,5 @@ Vous avez deux options pour conserver les données pendant plus de 30 jours. Vou
 
 * [Rétention des rapports Azure AD](reference-reports-data-retention.md).
 * [Latences de la création de rapports Azure Active Directory](reference-reports-latencies.md).
-* [FAQ sur les rapports Azure Active Directory](reports-faq.md).
+* [FAQ sur les rapports Azure Active Directory](reports-faq.yml).
 

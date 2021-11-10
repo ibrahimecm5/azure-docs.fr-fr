@@ -1,27 +1,26 @@
 ---
 title: Créer et utiliser des tables de registre d’ajout uniquement
 description: Découvrez comment créer et utiliser des tables de registre d’ajout uniquement dans Azure SQL Database.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: fede72baa7df89e821e496066090658bda2df80e
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 09b9d4dceabff4b26c586b0035f4c8b8d4c2ba0a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665842"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063569"
 ---
 # <a name="create-and-use-append-only-ledger-tables"></a>Créer et utiliser des tables de registre d’ajout uniquement
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre de la Base de données Azure SQL est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Cet article explique comment créer une [table de registre d’ajout uniquement](ledger-append-only-ledger-tables.md) dans Azure SQL Database. Ensuite, vous allez insérer des valeurs dans votre table de registre d’ajout uniquement, puis tenter de mettre à jour les données. Enfin, vous visualiserez les résultats en utilisant l’affichage du registre. Nous allons utiliser l’exemple d’un système d’accès à une installation avec une clé de carte, qui est un modèle de système d’ajout uniquement. Notre exemple vous donne un aperçu pratique de la relation entre la table de registre d’ajout uniquement et la vue de registre correspondante.
 

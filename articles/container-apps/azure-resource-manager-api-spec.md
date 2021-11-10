@@ -1,19 +1,19 @@
 ---
 title: Spécification de l’API de modèle ARM des applications de conteneur
 description: Explorez les propriétés disponibles dans le modèle ARM d’applications de conteneur.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: reference
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a0bc640e046074af94462c9e429102dc43ad442f
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 5313e8935791a16bc5046b50b23c68665c486705
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578232"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026441"
 ---
 # <a name="container-apps-preview-arm-template-api-specification"></a>Spécification de l’API de modèle ARM des applications de conteneur
 

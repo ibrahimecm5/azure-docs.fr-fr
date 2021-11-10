@@ -5,15 +5,15 @@ author: prsandhu
 ms.service: azure
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.author: prsandhu
+ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: bc31ebc507eed47caab3118aa32332cb26005f7a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 48cb14166a229e6bcaf3337f0be92b7d07acb3d6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003341"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843116"
 ---
 # <a name="regions-and-availability-zones"></a>Régions et zones de disponibilité
 
@@ -53,8 +53,8 @@ Azure fournit l’empreinte mondiale la plus complète de tous les fournisseurs 
 | USA Centre | Europe Nord | | Japon Est |
 | USA Est | Norvège Est | | Centre de la Corée |
 | USA Est 2 | Sud du Royaume-Uni | | Asie Sud-Est |
-| États-Unis - partie centrale méridionale | Europe Ouest |  | Asie Est* |
-| Gouvernement américain - Virginie | Suède* | | |
+| États-Unis - partie centrale méridionale | Europe Ouest |  | Asie Est |
+| Gouvernement américain - Virginie | Suède | | |
 | USA Ouest 2 | | | |
 | USA Ouest 3 | | | |
 

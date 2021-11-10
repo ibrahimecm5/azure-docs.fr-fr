@@ -5,24 +5,23 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
+author: rothja
+ms.author: jroth
 ms.reviewer: vanto
-ms.date: 07/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: 7684cc6ecff0d4e36fec0d7df54edd8602aa145f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/09/2021
+ms.openlocfilehash: 272138471499cbd62085301df8e518ea47a7ddc3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665491"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058843"
 ---
 # <a name="verify-a-ledger-table-to-detect-tampering"></a>Vérifier une table du registre pour détecter une falsification
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Cet article explique comment vérifier l’intégrité des données dans les tables de votre registre Azure SQL Database. Si vous avez sélectionné l’option **Activer le stockage de synthèse automatique** lorsque vous avez [créé votre base de données dans SQL Database](ledger-create-a-single-database-with-ledger-enabled.md), suivez les instructions du portail Azure pour générer automatiquement le script Transact-SQL (T-SQL) nécessaire pour vérifier le registre de base de données dans l’[éditeur de requête](connect-query-portal.md). Sinon, suivez les instructions T-SQL à l’aide de [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) ou d’[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio).
 

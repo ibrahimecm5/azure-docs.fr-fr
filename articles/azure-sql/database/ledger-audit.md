@@ -1,27 +1,26 @@
 ---
 title: Événements d’audit Azure SQL Database avec des tables prenant en charge la comptabilité
 description: Vue d’ensemble des fonctionnalités d’audit du Registre Azure SQL Database
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: d032b311809449d35a017fdd053fb97447b8479c
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 18e3c5ef5d9cb0316118e38f2ffb8dccc8c06fd7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666734"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061867"
 ---
 # <a name="azure-sql-database-audit-events-with-ledger-enabled-tables"></a>Événements d’audit du Registre Azure SQL Database avec des tables prenant en charge la comptabilité
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Quand vous effectuez des activités de forensique avec des tables prenant en charge les registres, les données sont capturées dans la vue de registre et dans le registre des bases de données. D’autres ID d’action sont ajoutés aux journaux d’audit SQL. Les tableaux suivants décrivent ces nouveaux événements de journalisation d’audit. Les conditions qui déclenchent les événements sont indiquées après chaque tableau.
 

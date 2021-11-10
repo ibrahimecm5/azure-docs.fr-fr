@@ -2,17 +2,18 @@
 title: Connexion de l’indexeur à SQL Server sur les machines virtuelles Azure
 titleSuffix: Azure Cognitive Search
 description: Activer les connexions chiffrées et configurer le pare-feu pour autoriser les connexions à SQL Server sur une machine virtuelle Azure à partir d’un indexeur sur la Recherche cognitive Azure.
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
+manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: d405b28acfcac8270b0e2ec4b3493f151108e4cf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec637058810e5e195569db6a568d5c794b3df1f4
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076108"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892701"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Connexions de l’indexeur à SQL Server sur une machine virtuelle Azure
 

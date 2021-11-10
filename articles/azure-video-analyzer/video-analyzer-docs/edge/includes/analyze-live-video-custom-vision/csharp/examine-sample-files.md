@@ -2,14 +2,14 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/30/2021
+ms.date: 11/04/2021
 ms.author: juliako
-ms.openlocfilehash: b5d950aca0090067d426457cc09495fd0b8344b5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ad0a03aae3cee71ed98a790c1b75c855dbf62453
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097420"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861076"
 ---
 1. Dans Visual Studio Code, accédez à src/edge. Vous verrez le fichier .env que vous avez créé, ainsi que quelques fichiers de modèle de déploiement.
 

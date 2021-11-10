@@ -1,27 +1,26 @@
 ---
 title: Tables de registre en ajout seul dans Azure SQL Database
 description: Cet article fournit des informations sur le schéma et les vues de table de registre en ajout seul dans Azure SQL Database.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: a23190552239af387fa2af362592347c0c46b900
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 595b42bb924d67a5db3a21d44c670dbcd25c61d7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666726"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055792"
 ---
 # <a name="azure-sql-database-append-only-ledger-tables"></a>Tables de registre en ajout seul dans Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Les tables de registre en ajout seul autorisent seulement les opérations `INSERT` sur vos tables, ce qui garantit que les utilisateurs privilégiés, par exemple les administrateurs de base de données, ne peuvent pas modifier les données à l’aide d’opérations de [langage de manipulation de données](/sql/t-sql/queries/queries) traditionnelles. Les tables de registre en ajout seul sont idéales pour les systèmes qui ne mettent pas à jour ou ne suppriment pas les enregistrements, par exemple les systèmes d’informations de sécurité et gestion d’événements ou les systèmes blockchain dans lesquels les données doivent être répliquées à partir du blockchain sur une base de données. Comme aucune opération `UPDATE` ou `DELETE` n’est effectuée sur une table en ajout seul, vous n’avez pas besoin de la table d’historique correspondante, contrairement aux [tables de registre pouvant être mises à jour](ledger-updatable-ledger-tables.md).
 

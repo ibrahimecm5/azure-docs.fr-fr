@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: e93f9ddddaf892cb23560b3bcc7b5f45d4821e44
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 23970d887c1e3d2523c69ae0ace25fdc7b0094ff
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032750"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860451"
 ---
 [![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
 
@@ -32,7 +32,7 @@ Installez les prérequis suivants sur votre ordinateur de développement :
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>Exécuter un appareil
+## <a name="run-the-device-sample"></a>Exécuter l’exemple d’appareil
 Dans cette section, vous allez configurer votre environnement local, installer le kit SDK Node.js d’appareil Azure IoT et exécuter un exemple qui crée un contrôleur de température.
 
 ### <a name="configure-your-environment"></a>Configurer votre environnement

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: fbd291494554c7bbb6e7f79a932717bf81a124c6
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 8a4026334e4b0313513e57ac8ed78cd9f24f6e34
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667589"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028037"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Guide des développeurs JavaScript sur Azure Functions
 
@@ -507,6 +507,7 @@ Le tableau suivant présente les versions Node.js actuellement prises en charge 
 
 | Version de Functions | Version de nœud (Windows) | Version de nœud (Linux) |
 |---|---| --- |
+| 4.x | `~14` | `node|14` |
 | 3.x (version recommandée) | `~14` (recommandé)<br/>`~12`<br/>`~10` | `node|14` (recommandé)<br/>`node|12`<br/>`node|10` |
 | 2.x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 1.x | 6.11.2 (verrouillée par le runtime) | n/a |

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ff0e43570b9bf30b84538cfeca841a69d025b26b
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 77722b2c83eee2c4b48ccb3cd6098cacfc37088b
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090382"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988518"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Stratégies de mot de passe et restrictions de compte dans Azure Active Directory
 
@@ -130,6 +130,7 @@ Une fois le module installé, suivez les étapes ci-après pour effectuer chaque
 ### <a name="check-the-expiration-policy-for-a-password"></a>Vérifier la stratégie d’expiration d’un mot de passe
 
 1. Ouvrez une invite PowerShell et [connectez-vous à votre locataire Azure AD](/powershell/module/azuread/connect-azuread#examples) à l’aide d’un compte d’*administrateur général* ou d’*administrateur d’utilisateurs*.
+
 1. Exécutez l’une des commandes suivantes pour un utilisateur individuel ou tous les utilisateurs :
 
    * Pour voir si le mot de passe d’un seul utilisateur est défini pour ne jamais expirer, exécutez l’applet de commande suivante. Remplacez `<user ID>` par l’identifiant de l’utilisateur que vous souhaitez vérifier, par exemple *driley\@contoso.onmicrosoft.com* :
@@ -147,6 +148,7 @@ Une fois le module installé, suivez les étapes ci-après pour effectuer chaque
 ### <a name="set-a-password-to-expire"></a>Définir un mot de passe pour qu’il expire
 
 1. Ouvrez une invite PowerShell et [connectez-vous à votre locataire Azure AD](/powershell/module/azuread/connect-azuread#examples) à l’aide d’un compte d’*administrateur général* ou d’*administrateur d’utilisateurs*.
+
 1. Exécutez l’une des commandes suivantes pour un utilisateur individuel ou tous les utilisateurs :
 
    * Pour définir le mot de passe d’un utilisateur afin qu’il expire, exécutez l’applet de commande suivante. Remplacez `<user ID>` par l’identifiant de l’utilisateur que vous souhaitez vérifier, par exemple *driley\@contoso.onmicrosoft.com* :

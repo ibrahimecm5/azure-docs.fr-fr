@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee5d0ac639cbd36215df5545d684909af3acd748
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6dc297736403b6124b27f34462ffaee0bfa4cf4a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563834"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845776"
 ---
 # <a name="connect-to-a-virtual-network-in-internal-mode-using-azure-api-management"></a>Se connecter à un réseau virtuel en mode interne à l’aide de Gestion des API Azure 
 Grâce aux réseaux virtuels (VNET) d’Azure, Gestion des API Azure peut gérer des API inaccessibles sur Internet au moyen de plusieurs technologies VPN permettant d’établir la connexion. Vous pouvez déployer la Gestion des API via le mode [externe](./api-management-using-with-vnet.md) ou interne. Pour connaître les options de connectivité, les conditions requises et les considérations liées aux réseaux virtuels, consultez [Utilisation d’un réseau virtuel avec Gestion des API Azure](virtual-network-concepts.md).
@@ -152,7 +152,6 @@ Pour accéder à ces points de terminaison de service Gestion des API, vous pouv
 
 Vous pouvez alors accéder à tous les points de terminaison de service à partir de la machine virtuelle que vous avez créée.
 
-Si vous utilisez un serveur DNS personnalisé dans un réseau virtuel, vous pouvez également créer des enregistrements A DNS et accéder à ces points de terminaison à partir de l’endroit de votre choix dans votre réseau virtuel.
 
 ### <a name="access-on-custom-domain-names"></a>Accès sur des noms de domaines personnalisés
 

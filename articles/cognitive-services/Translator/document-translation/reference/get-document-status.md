@@ -3,19 +3,17 @@ title: Méthode get document status
 titleSuffix: Azure Cognitive Services
 description: La méthode get document status retourne l’état d’un document spécifique.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: 69172956d36aa4b43c88858a65771fdb183a39f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4ec9132a237ace9f43b33580f1956e38e6be634c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453612"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058993"
 ---
 # <a name="get-document-status"></a>Obtenir l’état d’un document
 

@@ -2,19 +2,19 @@
 title: Indexer des données à partir du Stockage Blob Azure
 titleSuffix: Azure Cognitive Search
 description: Configurez un indexeur de blobs Azure pour automatiser l’indexation du contenu blob pour les opérations de recherche en texte intégral et l’exploration de connaissances dans la Recherche cognitive.
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 13753918ba850dcb9e62c0d54c1f23259eb92ba4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f4f90b83a21eb85a9ccc3ae11de4582d50ab2363
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010704"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892207"
 ---
 # <a name="index-data-from-azure-blob-storage"></a>Indexer des données à partir du Stockage Blob Azure
 

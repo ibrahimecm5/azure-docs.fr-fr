@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 72490b729a244763cf5a3fa65a1e62128a5b28b2
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 46de9d29d79ee72ff19bb6bf465518176bb72d05
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765288"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988726"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Tutoriel : Configurer 4me pour l’attribution automatique d’utilisateurs
 
@@ -34,6 +34,9 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * un locataire Azure AD ;
 * [un locataire 4me](https://www.4me.com/trial/) ;
 * un compte d’utilisateur dans 4me avec des autorisations d’administration.
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="add-4me-from-the-gallery"></a>Ajouter 4me à partir de la galerie
 

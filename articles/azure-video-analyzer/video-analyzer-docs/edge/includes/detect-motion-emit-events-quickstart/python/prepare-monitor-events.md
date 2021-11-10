@@ -2,14 +2,14 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 05/03/2021
+ms.date: 11/04/2021
 ms.author: faneerde
-ms.openlocfilehash: e98039dfe4c8c44be2fc375956339956a495da4f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 15e0be0a9f70b8336386676b9c73e2deff8c3f52
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030179"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860734"
 ---
 Vous allez utiliser le module Azure Video Analyzer pour détecter les mouvements dans le flux vidéo en direct entrant et envoyer des événements à IoT Hub. Pour voir ces événements, effectuez les étapes suivantes :
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: thwimmer
-ms.openlocfilehash: e3291a34e0c7cb0aeff159e495497c89d90074dd
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c9af2f7123d37823e0acb0a2e244cc0ce40dbc68
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764148"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988404"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>Tutoriel : Configurer Code42 pour l'approvisionnement automatique d'utilisateurs
 
@@ -43,6 +43,9 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * Un compte d’utilisateur dans Azure AD avec l’[autorisation](../roles/permissions-reference.md) de configurer l’approvisionnement (par exemple, administrateur d’application, administrateur d’application Cloud, propriétaire d’application ou administrateur général).
 * Un locataire Code42 sur lequel la Gestion des identités est activée.
 * Un compte d'utilisateur Code42 doté de l'autorisation [Administrateur de cloud client](https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Roles_reference#Customer_Cloud_Admin).
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Étape 1. Planifier votre déploiement de l’approvisionnement
 1. En savoir plus sur le [fonctionnement du service d’approvisionnement](../app-provisioning/user-provisioning.md).

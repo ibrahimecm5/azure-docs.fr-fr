@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
-ms.date: 01/27/2021
-ms.openlocfilehash: ed48335b0417cacce9a1e408de06c0c2a9ec9b44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/08/2021
+ms.openlocfilehash: 85ccd066fb51331575cc17cbeabbe3eb0c0ba4ec
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751117"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997397"
 ---
 # <a name="what-is-azure-web-pubsub-service"></a>Qu’est-ce que le service Azure Web PubSub ? 
 
@@ -63,3 +63,7 @@ Il existe de nombreux modes de programmation avec Azure Web PubSub, notamment le
 - **Utilisez le sous-protocole WebSocket pour n’appliquer PubSub que côté client** : le service Azure Web PubSub-fournit des sous-protocoles WebSocket pour permettre aux clients autorisés de publier sur d’autres clients de manière pratique.
 - **Utilisez les kits de développement logiciel (SDK) pour gérer les connexions WebSocket dans des serveurs d’applications auto-hébergés** : le service Azure Web PubSub fournit des kits de développement logiciel (SDK) en C#, JavaScript, Java et Python pour gérer facilement les connexions WebSocket, y compris les messages de diffusion aux connexions, ajouter des connexions à certains groupes ou fermer les connexions, etc.
 - **Envoyer des messages du serveur aux clients par le biais d’une API REST** : Le service Azure Web PubSub fournit une API REST pour permettre aux applications de publier des messages sur des clients connectés, dans n’importe quel langage de programmation compatible avec REST.
+
+## <a name="next-steps"></a>Étapes suivantes
+
+[!INCLUDE [next step](includes/include-next-step.md)]

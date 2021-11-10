@@ -1,20 +1,20 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
-ms.author: dacoulte
+ms.date: 10/12/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: 55bfde4593282e415ad9436d9f81ef07a5570704
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5a9a8a7d007352dbf14026a29f101cc5b8d357c1
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725891"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060159"
 ---
 ### <a name="count-machines-in-scope-of-guest-configuration-policies"></a>Compter les machines dans l’étendue des stratégies de configuration Invité
 
-Affiche le nombre de machines virtuelles Azure et de serveurs connectés avec ARC dans l’étendue des affectations de [configurations d’invité Azure Policy](../../../../articles/governance/policy/concepts/guest-configuration.md).
+Affiche le nombre de machines virtuelles Azure et de serveurs connectés à Arc dans l’étendue des attributions de [configuration Invité Azure Policy](../../../../articles/governance/policy/concepts/guest-configuration.md).
 
 ```kusto
 GuestConfigurationResources

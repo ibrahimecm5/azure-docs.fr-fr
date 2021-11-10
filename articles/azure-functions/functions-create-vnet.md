@@ -3,12 +3,12 @@ title: Utiliser des points de terminaison privés pour intégrer Azure Functions
 description: Ce tutoriel pas à pas vous montre comment connecter une fonction à un réseau virtuel Azure et le verrouiller avec des points de terminaison privés.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: ee6fb79176b0188533725347c3b47369ce050706
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8eaf46cdab44fcf4ebdb69564cd05f07f8f88f1b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252974"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850030"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Tutoriel : intégrer des Azure Functions à un réseau virtuel Azure à l’aide de points de terminaison privés
 
@@ -313,8 +313,6 @@ Pour utiliser votre application de fonction avec des réseaux virtuels, vous dev
 1. Dans votre application de fonction, dans le menu sur la gauche, sélectionnez **Configuration**.
 
 1. Pour utiliser votre application de fonction avec des réseaux virtuels, mettez à jour les paramètres d’application indiqués dans le tableau suivant. Pour ajouter ou modifier un paramètre, sélectionnez **+ Nouveau paramètre d'application** ou l’icône **Modifier** dans la colonne la plus à droite du tableau des paramètre d'application. Lorsque vous avez terminé, sélectionnez **Enregistrer**.
-
-    :::image type="content" source="./media/functions-create-vnet/10-configure-app-settings.png" alt-text="Capture d’écran montrant comment configurer les paramètres de l’application de fonction pour les points de terminaison privés.":::
 
     | Paramètre      | Valeur suggérée  | Description      |
     | ------------ | ---------------- | ---------------- |

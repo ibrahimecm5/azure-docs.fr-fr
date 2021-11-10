@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 832ae975a19fa7765666acd791c7dfec05a55c3c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d2840b5e8386801411a759d1b00f026bfbacad68
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130235031"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027695"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>Migrer des bases de données avec l’extension de migration Azure SQL pour Azure Data Studio (version préliminaire)
 
@@ -110,27 +110,6 @@ Les conditions préalables associées à Azure Database Migration Service commun
 - Vous ne pouvez pas utiliser un runtime d’intégration auto-hébergé existant créé à partir d’Azure Data Factory pour les migrations de base de données avec DMS. Au départ, le runtime d’intégration auto-hébergé doit être créé à l’aide de l’extension de migration Azure SQL dans Azure Data Studio et peut être réutilisé pour des migrations de base de données supplémentaires.
 > [!IMPORTANT]
 > **Problème connu lors de la migration de plusieurs bases de données vers SQL Server sur une machine virtuelle Azure :** la migration simultanée de plusieurs bases de données vers le même SQL Server sur une machine virtuelle Azure entraîne des échecs de migration pour la plupart des bases de données. Veillez à ne migrer qu’une seule base de données vers un SQL Server sur une machine virtuelle Azure à tout moment.  
-
-### <a name="regions"></a>Régions
-Migrez des bases de données SQL Server vers votre Azure SQL Managed Instance ou SQL Server cible sur une machine virtuelle Azure vers l’une des régions suivantes pendant la version préliminaire :
-- Australie Est
-- Sud-Australie Est
-- Centre du Canada
-- Est du Canada
-- Inde centrale
-- USA Centre
-- USA Est
-- USA Est 2
-- France Centre
-- Japon Est
-- Centre-Nord des États-Unis
-- États-Unis - partie centrale méridionale
-- Asie Sud-Est
-- Inde Sud
-- Sud du Royaume-Uni
-- Europe Ouest
-- USA Ouest
-- USA Ouest 2
 
 ## <a name="pricing"></a>Tarifs
 - Azure Database Migration Service est libre d’utilisation avec l’extension de migration Azure SQL dans Azure Data Studio. Vous pouvez migrer plusieurs bases de données SQL Server à l’aide d’Azure Database Migration Service gratuitement pour l’utilisation du service ou de l’extension de migration Azure SQL.

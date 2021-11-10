@@ -1,18 +1,18 @@
 ---
 title: Stratégies de déploiement bleu-vert dans Azure Spring Cloud
 description: Cette rubrique décrit deux approches de déploiements bleu-vert dans Azure Spring Cloud.
-author: karlerickson
-ms.author: yebronsh
+author: barbkess
+ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: bce33a40933e5c40b5eab0948880d44f4b23edcd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 194529a03a493ec22d22260576a678ab07401f4c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562330"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056565"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Stratégies de déploiement bleu-vert dans Azure Spring Cloud
 

@@ -1,27 +1,26 @@
 ---
 title: Tables de registre Azure SQL Database pouvant être mises à jour
 description: Cet article fournit des informations sur les tables de registre pouvant être mises à jour, sur le schéma du registre et sur les vues du registre dans Azure SQL Database.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 4a84cb359a0840f593fd732339a4ef9f9f3588db
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 3010ba83f8d45083213f3725626f92b111fb839d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665508"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056187"
 ---
 # <a name="azure-sql-database-updatable-ledger-tables"></a>Tables de registre Azure SQL Database pouvant être mises à jour
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Les tables de registre pouvant être mises à jour sont les tables versionnées par le système sur lesquelles les utilisateurs peuvent effectuer des mises à jour et des suppressions tout en fournissant également des fonctionnalités de preuve de falsification. Lorsque des mises à jour ou des suppressions se produisent, toutes les versions antérieures d’une ligne sont conservées dans une table secondaire, appelée table d’historique. La table d’historique reflète le schéma de la table de registre pouvant être mise à jour. Lorsqu’une ligne est mise à jour, la dernière version de la ligne reste dans la table de registre, tandis que sa version antérieure est insérée dans la table d’historique par le système, de manière transparente pour l’application. 
 

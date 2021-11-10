@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.date: 10/08/2021
 ms.custom: template-tutorial, devx-track-azurepowershell
-ms.openlocfilehash: 52c5f10b0a41ec2362af09c972f29ed079ae70d7
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: a1ea898dd246977bbb7284a18349a265efd7655d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808052"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063115"
 ---
 # <a name="tutorial-manage-disks-with-azure-powershell"></a>Tutoriel : Gérer les disques avec Azure PowerShell
 
@@ -450,14 +450,6 @@ Vous pouvez détacher un disque de données d’une machine virtuelle quand vous
 1. Tout d’abord, sélectionnez la machine virtuelle à laquelle le disque est attaché avec l’applet de commande `Get-AzVM`.
 
     ```azurepowershell-interactive
-    $vm = Get-AzVM `
-       -ResourceGroupName $azResourceGroup `
-       -Name $azVMName
-    ```
-
-1. Sélectionnez le disque à supprimer avec l’applet de commande `Get-AzDisk`.
-
-     ```azurepowershell-interactive
     $vm = Get-AzVM `
        -ResourceGroupName $azResourceGroup `
        -Name $azVMName

@@ -3,14 +3,14 @@ title: Extension de pipeline - Azure Video Analyzer
 description: Azure Video Analyzer vous permet d’étendre les fonctionnalités de traitement de pipeline à l’aide d’un nœud d’extension de pipeline. Cet article décrit le nœud d’extension de pipeline.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 70c5ab2f2bc3a82889501496d23eb8a681c7ec68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7641524fb712d9564fca46ef40e8949f4dd9bad1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020581"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851576"
 ---
 # <a name="pipeline-extension"></a>Extension de pipeline
 

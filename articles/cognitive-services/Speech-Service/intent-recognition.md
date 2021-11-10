@@ -9,16 +9,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/13/2020
 keywords: reconnaissance de l’intention
-ms.openlocfilehash: bf84d9309974f645c2fb5011b82d2fb8159adca1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 221f5f0f022cba85df72979ed47b4033b2c3fdd1
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024521"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988480"
 ---
 # <a name="what-is-intent-recognition"></a>Qu’est-ce que la reconnaissance de l’intention ?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Dans cette vue d’ensemble, vous découvrez les avantages et les capacités de la reconnaissance de l’intention. Le kit de développement logiciel (SDK) des Cognitive Services Speech fournit deux méthodes pour reconnaître les intentions, lesquelles sont décrites ci-dessous. Une intention est quelque chose que l’utilisateur souhaite faire : réserver un vol, vérifier la météo ou effectuer un appel. Grâce à la reconnaissance de l’intention, vos applications, outils et appareils peuvent déterminer ce que l’utilisateur souhaite lancer ou faire en fonction des options que vous définissez dans le Module de reconnaissance de l’intention ou dans LUIS.
 

@@ -2,18 +2,18 @@
 title: Blobs modifiés et supprimés
 titleSuffix: Azure Cognitive Search
 description: Après création d’un index de recherche initial qui importe à partir du service Stockage Blob Azure, l’indexation qui suit peut récupérer uniquement les blobs modifiés ou supprimés. Cet article explique cela en détail.
-author: nitinme
-ms.author: nitinme
+author: gmndrg
+ms.author: gimondra
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 48a421f2e95e06a61ac4bee734046c043906035e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ab13e8901d507f6499a0eeba336a3f7717795ee7
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023440"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892188"
 ---
 # <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Détection des modifications et des suppressions dans l’indexation d’objets blob (Recherche cognitive Azure)
 

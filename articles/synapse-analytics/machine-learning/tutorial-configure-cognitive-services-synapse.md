@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 04d9b7ab0255212ed1b753d0bf6f31abfe1db03d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d72db64026ff3d4d4cee759b34047662248737a6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131018947"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845130"
 ---
 # <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Démarrage rapide : Configurer les prérequis pour utiliser Cognitive Services dans Azure Synapse Analytics
 
@@ -75,7 +75,7 @@ Vous pouvez créer une ressource [Speech](https://ms.portal.azure.com/#create/Mi
 ## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>Créer un coffre de clés et configurer des secrets et l’accès
 
 1. Créez un [coffre de clés](https://ms.portal.azure.com/#create/Microsoft.KeyVault) dans le portail Azure.
-2. Accédez à **Coffre de clés** > **Stratégies d’accès**, puis accordez à l’[Identité de service managée (MSI) de l’espace de travail Azure Synapse](../security/synapse-workspace-managed-identity.md) des autorisations pour lire des secrets à partir d’Azure Key Vault.
+2. Accédez à **Coffre de clés** > **Stratégies d’accès**, puis accordez à l’[Identité de service managée (MSI) de l’espace de travail Azure Synapse](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) des autorisations pour lire des secrets à partir d’Azure Key Vault.
 
    > [!NOTE]
    > Vérifiez que les changements de stratégie sont enregistrés. Il est facile d’oublier cette étape.

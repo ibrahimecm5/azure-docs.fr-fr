@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 10/08/2021
+ms.date: 11/08/2021
 ms.author: memildin
-ms.openlocfilehash: 8d9fa0e724c20d0327d6b3907fee8e954deda41f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: de36239b769434fb9d3a61c70f0f79ed922687db
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131453095"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997530"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-microsoft-defender-for-cloud"></a>Configurer l’approvisionnement automatique pour les agents et les extensions à partir de Microsoft Defender pour le cloud
 
@@ -29,7 +29,7 @@ Pour commencer à utiliser Defender pour le cloud, vous devez disposer d’un ab
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | État de sortie :          | **Caractéristique** : Le provisionnement automatique est en disponibilité générale<br>**Agent et extensions** : l’agent Log Analytics pour les machines virtuelles Azure est GA, l’agent de dépendances Microsoft est en préversion, le module complémentaire de stratégie pour Kubernetes est GA, l’agent de configuration invité est en préversion  |
 | Prix :                | Gratuit                                                                                                                                                                                                                         |
-| Destinations prises en charge : | :::image type="icon" source="./media/icons/yes-icon.png"::: Machines Azure<br>:::image type="icon" source="./media/icons/no-icon.png"::: Machines Azure Arc<br>:::image type="icon" source="./media/icons/no-icon.png"::: Nœuds Kubernetes<br>:::image type="icon" source="./media/icons/no-icon.png"::: Groupes de machines virtuelles identiques |
+| Destinations prises en charge : | :::image type="icon" source="./media/icons/yes-icon.png"::: Machines Azure<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Machines Azure Arc<br>:::image type="icon" source="./media/icons/no-icon.png"::: Nœuds Kubernetes<br>:::image type="icon" source="./media/icons/no-icon.png"::: Groupes de machines virtuelles identiques |
 | Clouds :                 | **Caractéristique** :<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Clouds commerciaux<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government, Azure China 21Vianet<br>**Agent et extensions** :<br>L’agent Log Analytics pour les machines virtuelles Azure est disponible sur tous les clouds, le module complémentaire de stratégie pour Kubernetes est disponible sur tous les clouds. l’agent de configuration invité est disponible uniquement sur les clouds commerciaux  |
 |                         |                                                                                                                                                                                                                              |
 

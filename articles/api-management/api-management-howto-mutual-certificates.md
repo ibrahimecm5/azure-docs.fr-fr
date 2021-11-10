@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9db002f50675c45a0eeb7bb7e213d0dc65b64ab8
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 00d00c8dc5419b524eb71172adfb5271905d668f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006619"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057781"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Sécuriser les services principaux à l’aide d’une authentification par certificat client dans Gestion des API Azure
 
@@ -79,7 +79,11 @@ Pour ajouter un certificat de coffre de clés à Gestion des API :
     > L’identité a besoin d’autorisations pour obtenir et lister les certificats du coffre de clés. Si vous n’avez pas encore configuré l’accès au coffre de clés, Gestion des API vous invite à configurer automatiquement l’identité avec les autorisations nécessaires.
 1. Sélectionnez **Ajouter**.
 
+
+
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="Ajouter un certificat de coffre de clés":::
+    
+1. Sélectionnez **Enregistrer**.
 
 ## <a name="upload-a-certificate"></a>Téléchargement d'un certificat
 
@@ -95,6 +99,9 @@ Pour charger un certificat client dans Gestion des API :
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="Charger le certificat client":::
 
+
+1. Sélectionnez **Enregistrer**.
+
 Une fois le certificat chargé, il s’affiche dans la fenêtre **Certificats**. Si vous avez beaucoup de certificats, notez l’empreinte du certificat souhaité pour configurer une API afin qu’elle utilise un certificat client pour l’[authentification de la passerelle](#configure-an-api-to-use-client-certificate-for-gateway-authentication).
 
 > [!NOTE]
@@ -105,8 +112,8 @@ Une fois le certificat chargé, il s’affiche dans la fenêtre **Certificats**.
 1. Dans le [portail Azure](https://portal.azure.com), accédez à votre instance APIM.
 1. Sous **API**, sélectionnez **API**.
 1. Sélectionnez une API dans la liste. 
-2. Sous l’onglet **Conception**, sélectionnez l’icône de l’éditeur dans la section **Principal**.
-3. Dans **Informations d’identification de la passerelle**, sélectionnez **Certificat client** et sélectionnez votre certificat dans la liste déroulante.
+1. Sous l’onglet **Conception**, sélectionnez l’icône de l’éditeur dans la section **Principal**.
+1. Dans **Informations d’identification de la passerelle**, sélectionnez **Certificat client** et sélectionnez votre certificat dans la liste déroulante.
 1. Sélectionnez **Enregistrer**.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="Utiliser un certificat client pour l’authentification de passerelle":::

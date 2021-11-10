@@ -4,7 +4,7 @@ description: Découvrez la durée pendant laquelle Azure stocke les différents 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b53333ff9d61e6ee5bbc98bb4756199ca07486d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dc9658cddb17bf948fe562d806916d20bd28ba31
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630069"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995366"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Pendant combien de temps les données de rapport sont-elles conservées par Azure AD ?
 
@@ -63,8 +63,8 @@ Pour les signaux de sécurité, le processus de collection démarre lorsque vous
 
 | Rapport                 | Azure AD Gratuit | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
-| Journaux d’audit             | 7 jours        | 30 jours             | 30 jours             |
-| Connexions               | 7 jours        | 30 jours             | 30 jours             |
+| Journaux d’audit             | Sept jours        | 30 jours             | 30 jours             |
+| Connexions               | Sept jours        | 30 jours             | 30 jours             |
 | Utilisation d’Azure AD MFA        | 30 jours       | 30 jours             | 30 jours             |
 
 Vous pouvez conserver les données d'activité d'audit et de connexion au-delà de la période de conservation par défaut décrite ci-dessus en les acheminant vers un compte de stockage Azure à l'aide d'Azure Monitor. Pour plus d’informations, consultez [Archiver des journaux d’activité Azure AD sur un compte de stockage Azure](quickstart-azure-monitor-route-logs-to-storage-account.md).
@@ -73,7 +73,7 @@ Vous pouvez conserver les données d'activité d'audit et de connexion au-delà 
 
 | Rapport         | Azure AD Gratuit | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
-| Utilisateurs à risque    | aucune limite      | aucune limite            | aucune limite            |
+| Utilisateurs à risque    | Aucune limite      | Aucune limite            | Aucune limite            |
 | Connexions risquées | 7 jours        | 30 jours             | 90 jours             |
 
 > [!NOTE]

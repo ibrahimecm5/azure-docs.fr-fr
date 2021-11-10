@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 6ea06820a9f66c831847808d9f6de9a6bf4803b1
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 71efd629463f53519d98458afaa449c7a7f46ffb
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073959"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062336"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Plans et tarification pour les offres de la place de marché commerciale
 
@@ -162,7 +162,7 @@ Après qu’un client a sélectionné un essai gratuit pour un plan, il ne peut 
 > [!NOTE]
 > Une fois qu’un client a commencé à payer pour un plan, il ne peut plus obtenir d’essai gratuit pour la même offre, même s’il passe à un autre plan proposant des essais gratuits.
 
-Pour obtenir des informations sur les abonnements clients qui participent actuellement à un essai gratuit `isFreeTrial`, utilisez la nouvelle propriété API, qui sera marquée comme true ou false. Pour plus d’informations, consultez [SaaS Obtenir l’API d’abonnement](./partner-center-portal/pc-saas-fulfillment-api-v2.md#get-subscription).
+Pour obtenir des informations sur les abonnements clients qui participent actuellement à un essai gratuit `isFreeTrial`, utilisez la nouvelle propriété API, qui sera marquée comme true ou false. Pour plus d’informations, consultez [SaaS Obtenir l’API d’abonnement](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-subscription).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

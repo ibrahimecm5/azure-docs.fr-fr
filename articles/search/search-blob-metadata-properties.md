@@ -2,18 +2,18 @@
 title: Propriétés des métadonnées de contenu
 titleSuffix: Azure Cognitive Search
 description: Les propriétés des métadonnées de documents peuvent fournir du contenu aux champs d’un index de recherche, ou des informations qui renseignent sur le comportement de l’indexation au moment de l’exécution. Cet article répertorie les propriétés de métadonnées prises en charge dans Recherche cognitive Azure.
+author: nitinme
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/22/2021
-ms.openlocfilehash: d77a0b53d14705d73b83d25ffe3355925355fdf1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: c6f02a50160d650f44e9793dbfa59e0dbf58ebbc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556619"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055566"
 ---
 # <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Propriétés des métadonnées de contenu utilisées dans la Recherche cognitive Azure
 

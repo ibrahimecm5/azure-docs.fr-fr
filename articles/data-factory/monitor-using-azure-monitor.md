@@ -1,20 +1,20 @@
 ---
 title: Surveiller les fabriques de données à l’aide d’Azure Monitor
 description: Apprenez à utiliser Azure Monitor pour surveiller les pipelines Azure Monitor en activant les journaux de diagnostic à partir des informations de Data Factory.
-author: jasonwhowell
-ms.author: jasonh
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.custom: contperf-fy22q1
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: a3e2fe3f005467e82ebe5fbc2e502c764a7322b3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 91f377e1e092348a9d3a4ea6be3794c6f212d6b8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033130"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853944"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Déclencher des alertes et surveiller les fabriques de données avec Azure Monitor
 

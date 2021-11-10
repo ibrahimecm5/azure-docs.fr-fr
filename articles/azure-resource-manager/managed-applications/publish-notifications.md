@@ -2,15 +2,13 @@
 title: Applications managées avec notifications
 description: Configurez des applications managées avec des points de terminaison webhook pour recevoir des notifications concernant les créations, les mises à jour, les suppressions et les erreurs sur les instances des applications managées.
 ms.topic: conceptual
-ms.author: ilahat
-author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 229abeb71a580444525a314f648ee09452585336
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ef87fc014b2870602aa05b758afaffdde046f659
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971925"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060847"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Applications managées Azure avec notifications
 

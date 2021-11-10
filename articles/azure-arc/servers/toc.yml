@@ -73,6 +73,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Déployer des extensions avec un modèle ARM
               href: manage-vm-extensions-template.md
+            - name: Mise à niveau automatique des extensions
+              href: manage-automatic-vm-extension-upgrade.md
         - name: Utiliser des identités managées sur le serveur
           href: managed-identity-authentication.md
         - name: Gérer les agents

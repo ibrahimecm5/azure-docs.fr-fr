@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: thwimmer
-ms.openlocfilehash: 311b147648c8a7eccda889769a60ea8fa15fa1ad
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1d7c7092dc0bf44093390e9cd41b9ca8f62f247e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764394"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988442"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Tutoriel : Configurer Cisco Webex pour le l’approvisionnement automatique d’utilisateurs
 
@@ -34,6 +34,9 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * Un locataire Azure AD.
 * [Un locataire Cisco Webex](https://www.webex.com/pricing/index.html).
 * Un compte d’utilisateur dans Cisco Webex avec des autorisations d’administrateur.
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Ajout de Cisco Webex à partir de la galerie
 

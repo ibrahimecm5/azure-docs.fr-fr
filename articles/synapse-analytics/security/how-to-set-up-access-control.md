@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 3e90ab30e8eb916ef70248af32b7b95ff0a48428
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d80b12e807e6c6f0999927bc373fe64c1feb1b40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131003539"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846593"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Guide pratique pour configurer le contrôle d’accès pour votre espace de travail Azure Synapse 
 
@@ -129,7 +129,7 @@ Dans le portail Azure, créez un espace de travail Azure Synapse :
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>ÉTAPE 4 : Accorder à l’espace de travail un accès MSI au conteneur de stockage par défaut
 
-Pour exécuter des pipelines et effectuer des tâches système, Azure Synapse exige que l’identité de service managée (MSI) de l’espace de travail ait accès à `container1` dans le compte ADLS Gen2 par défaut. Pour plus d’informations, consultez [Identité managée de l’espace de travail Azure Synapse](synapse-workspace-managed-identity.md).
+Pour exécuter des pipelines et effectuer des tâches système, Azure Synapse exige que l’identité de service managée (MSI) de l’espace de travail ait accès à `container1` dans le compte ADLS Gen2 par défaut. Pour plus d’informations, consultez [Identité managée de l’espace de travail Azure Synapse](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics).
 
 - Ouvrez le portail Azure
 - Recherchez le compte de stockage, `storage1`, puis `container1`.

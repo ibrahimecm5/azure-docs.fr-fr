@@ -3,19 +3,17 @@ title: Méthode cancel translation
 titleSuffix: Azure Cognitive Services
 description: La méthode cancel translation annule une opération en cours de traitement ou en file d’attente.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/20/2021
-ms.author: v-jansk
-ms.openlocfilehash: eb8411717d0229b13571284176da7ccc113cf828
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 8bf718da42dbd29c864736209cf441b03f3c9e1b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540737"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059257"
 ---
 # <a name="cancel-translation"></a>Annuler la traduction
 

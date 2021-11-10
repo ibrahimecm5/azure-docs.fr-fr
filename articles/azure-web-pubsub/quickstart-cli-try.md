@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: quickstart
-ms.date: 08/06/2021
-ms.openlocfilehash: ac81c3422036abafc5e2d034e06e81e1f35d2e02
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/08/2021
+ms.openlocfilehash: 99045ab4675527f4f0a821025bf6f870d63bb296
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445383"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131998060"
 ---
 # <a name="quickstart-connect-to-the-azure-web-pubsub-instance-from-cli"></a>Démarrage rapide : Connexion à l’instance Azure Web PubSub à partir de l’interface CLI
 
@@ -39,6 +39,6 @@ Ce guide de démarrage rapide montre comment se connecter à l’instance Azure 
 
 Ce tutoriel donne une idée de base de la procédure à suivre pour se connecter au service Web PubSub et publier des messages sur les clients connectés.
 
-Dans les applications réelles, vous pouvez utiliser des kits de développement logiciel (SDK, Software Development Kit) dans différents langages pour créer votre propre application. Nous fournissons également des extensions de fonction qui permettent de créer facilement des applications serverless.
+Dans les applications réelles, vous pouvez utiliser des kits de développement logiciel (SDK) dans différents langages pour créer votre propre application. Nous fournissons également des extensions de fonction qui vous permettent de créer facilement des applications serverless.
 
 [!INCLUDE [next step](includes/include-next-step.md)]

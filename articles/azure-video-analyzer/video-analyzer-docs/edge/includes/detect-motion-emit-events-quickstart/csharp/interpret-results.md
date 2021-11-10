@@ -2,15 +2,15 @@
 author: fvneerden
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 05/05/2021
+ms.date: 11/04/2021
 ms.author: faneerde
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9566ec1e5d9a8f689e412fbeea2b2214614188b3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17f32b1500f5218a1a6668a875c63bfd64de83b9
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029210"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860350"
 ---
 Quand vous exécutez le pipeline en direct, les résultats du nœud du processeur de détecteur de mouvements passe par le nœud récepteur des messages IoT Hub pour aller dans le hub IoT. Les messages que vous voyez dans la fenêtre **SORTIE** de Visual Studio Code contiennent une section **body** et une section **applicationProperties**. Pour plus d’informations, consultez [Créer et lire des messages IoT Hub](../../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 

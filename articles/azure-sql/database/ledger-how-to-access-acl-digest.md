@@ -1,27 +1,26 @@
 ---
 title: Accéder aux synthèses stockées dans Registre confidentiel Azure
 description: Accédez aux synthèses stockées dans le Registre confidentiel Azure avec un registre Azure SQL Database.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 7a5253879daf3aaa9551b91a91c38135d29be10e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: f011494412b6f9cf1ac186f171b62fe82d02aaaa
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524361"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061736"
 ---
 # <a name="access-the-digests-stored-in-confidential-ledger"></a>Accéder aux synthèses stockées dans le Registre confidentiel
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Cet article vous montre comment accéder à une synthèse de [registre Azure SQL Database](ledger-overview.md) stockée dans le [Registre confidentiel Azure](../../confidential-ledger/index.yml) pour bénéficier de garanties de sécurité et d’intégrité de bout en bout. Dans cet article, nous expliquerons comment vérifier l’intégrité des informations stockées.
 

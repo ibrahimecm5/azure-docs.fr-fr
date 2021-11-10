@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.author: JenCook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6c91bfeaf32dba2f40e321f1c8fbf093351d39cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d3e395ac1eb16ccf499793d51b58db998a87294c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028983"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848499"
 ---
 # <a name="confidential-computing-on-azure"></a>Informatique confidentielle dans Azure
 
@@ -22,15 +22,13 @@ Aujourd’hui, les clients chiffrent leurs données au repos et en transit, mais
 
 Les technologies telles que les extensions [Intel Software Guard Extensions](https://www.intel.com.au/content/www/au/en/architecture-and-technology/software-guard-extensions-enhanced-data-protection.html) (Intel SGX) ou la virtualisation [AMD Secure Encrypted Virtualization](https://www.amd.com/en/processors/amd-secure-encrypted-virtualization) (SEV-SNP) sont des améliorations récentes du processeur prenant en charge les implémentations informatiques confidentielles. Ces technologies sont conçues comme des extensions de virtualisation et fournissent des ensembles de fonctionnalités incluant le chiffrement et l’intégrité de la mémoire, la confidentialité et l’intégrité de l’état du processeur, et l’attestation, pour la création du modèle de menace informatique confidentielle.
 
-![Graphique des trois états de la protection des données, avec les données informatiques confidentielles utilisées en surbrillance.](media/overview-azure-products/three-states.jpg)
+:::image type="content" source="media/overview-azure-products/three-states.png" alt-text="Graphique des trois états de la protection des données, avec les données informatiques confidentielles utilisées en surbrillance.":::
 
 Lorsqu’elle est utilisée avec le chiffrement des données au repos et en transit, l’informatique confidentielle élimine la plus grande barrière du chiffrement en cours d’utilisation, en protégeant les jeux de données sensibles ou hautement réglementés et les charges de travail d’application dans une plateforme cloud publique sécurisée. L’informatique confidentielle s’étend au-delà de la protection des données génériques. Les environnements TEE sont également utilisés pour protéger la logique métier propriétaire, les fonctions analytiques, les algorithmes Machine Learning ou les applications entières.
 
 ## <a name="navigating-azure-confidential-computing"></a>Navigation dans l’informatique confidentielle Azure
 
 Les [offres de Microsoft](https://aka.ms/azurecc) pour l’informatique confidentielle s’étendent de l’infrastructure as a service (IaaS) à la plateforme as a service (PaaS), ainsi qu’aux outils de développement pour soutenir le parcours des données et de la confidentialité du code dans le cloud.
-
-![Capture d’écran de la pile informatique confidentielle Azure, montrant les outils et les services.](media/overview-azure-products/acc-stack.jpg)
 
 ## <a name="reducing-the-attack-surface"></a>Réduction de la surface d’attaque
 Le TCB (Trusted Computing Base) fait référence à l’ensemble des composants matériels, des microprogrammes et des logiciels d’un système qui fournissent un environnement sécurisé. Les composants au sein du TCB sont considérés comme « critiques ». Si un composant au sein du TCB est compromis, toute la sécurité du système peut être en péril. Plus le TCB est petit, plus la sécurité est élevée. Il y a moins de risques d’exposition à différentes vulnérabilités, programmes malveillants, attaques et personnes malveillantes. L’informatique confidentielle Azure vise à réduire le TCB pour vos charges de travail cloud en offrant des environnements TEE. 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/27/2021
 ms.author: kgremban
 monikerRange: iotedge-2018-06
-ms.openlocfilehash: edaf3659da6614689a942e736c3b1bc34215b9ff
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: ccc4efe5978b9a97e0e4d535a42545161f33c6c4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131576759"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842680"
 ---
 # <a name="create-and-provision-an-iot-edge-for-linux-on-windows-device-using-x509-certificates"></a>Créer et provisionner un appareil IoT Edge pour Linux sur Windows à l’aide de certificats X.509
 
@@ -77,7 +77,7 @@ Préparez le certificat d’identité d’appareil et la clé privée correspond
 Exécutez la commande suivante dans une session PowerShell avec élévation de privilèges sur votre appareil cible. Remplacez le texte de l’espace réservé par vos propres valeurs.
 
 ```powershell
-Provision-EflowVm -provisioningType ManualX509 -iotHubHostname "<HUB HOSTNAME>" -deviceId "<DEVICE ID>" -identityCertPath "<ABSOLUTE PATH TO IDENTITY CERT>" -identityPrivKeyPath "<ABSOLUTE PATH TO PRIVATE KEY>"
+Provision-EflowVm -provisioningType ManualX509 -iotHubHostname "HUB_HOSTNAME_HERE" -deviceId "DEVICE_ID_HERE" -identityCertPath "ABSOLUTE_PATH_TO_IDENTITY_CERT_HERE" -identityPrivKeyPath "ABSOLUTE_PATH_TO_PRIVATE_KEY_HERE"
 ```
 
 Pour plus d’informations sur la commande `Provision-EflowVM`, consultez [Fonctions PowerShell pour IoT Edge pour Linux sur Windows](reference-iot-edge-for-linux-on-windows-functions.md#provision-eflowvm).

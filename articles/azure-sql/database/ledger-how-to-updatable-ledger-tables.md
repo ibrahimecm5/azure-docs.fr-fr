@@ -1,27 +1,26 @@
 ---
 title: Créer et utiliser des tables de registre pouvant être mises à jour
 description: Découvrez comment créer et utiliser des tables de registre pouvant être mises à jour dans Azure SQL Database.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: e4027bcaba4e89e89bec2ffa45d50c94e9a07b12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 39d7373fc3106501588d98c2b2e0177e92dd6176
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524755"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060564"
 ---
 # <a name="create-and-use-updatable-ledger-tables"></a>Créer et utiliser des tables de registre pouvant être mises à jour
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Cet article explique comment créer une [table de registre pouvant être mise à jour](ledger-updatable-ledger-tables.md) dans Azure SQL Database. Ensuite, vous insérerez des valeurs dans votre table de registre pouvant être mise à jour, puis mettrez les données à jour. Enfin, vous visualiserez les résultats en utilisant la vue du registre. Nous utiliserons l’exemple d’une application bancaire qui suit le solde des comptes de ses clients. Notre exemple vous donne un aperçu pratique de la relation entre la table de registre pouvant être mise à jour et la table d’historique correspondante et la vue du registre correspondantes.
 

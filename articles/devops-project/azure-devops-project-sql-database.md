@@ -1,19 +1,19 @@
 ---
 title: 'Tutoriel : Déployer votre application ASP.NET et votre code Azure SQL Database en utilisant Azure DevOps Starter'
 description: DevOps Starter facilite la prise en main d’Azure. Avec DevOps Starter, vous pouvez déployer votre application ASP.NET et votre code Azure SQL Database en quelques étapes rapides.
-ms.author: mlearned
+ms.author: gwallace
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
-author: mlearned
-ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: georgewallace
+ms.openlocfilehash: abfd95c75ed35206d9ae5ead2e71b0a108a54a3a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548476"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058672"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Tutoriel : Déployer votre application ASP.NET et votre code Azure SQL Database en utilisant Azure DevOps Starter
 

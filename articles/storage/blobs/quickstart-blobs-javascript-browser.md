@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: bea5af6656aacd18805627f471d7227c2d1077bd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4fdcb48783a586baffe9bdeeec74c4d0a055a3e7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616837"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060980"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -73,10 +73,10 @@ Le tableau suivant décrit chaque paramètre CORS et explique les valeurs utilis
 
 |Paramètre  |Valeur  | Description |
 |---------|---------|---------|
-| **ORIGINES AUTORISÉES** | **\** _ | Accepte une liste délimitée par des virgules de domaines définis comme origines acceptables. La configuration de la valeur sur `_` autorise tous les domaines à accéder au compte de stockage. |
+| **ORIGINES AUTORISÉES** | * | Accepte une liste délimitée par des virgules de domaines définis comme origines acceptables. La configuration de la valeur sur `*` autorise tous les domaines à accéder au compte de stockage. |
 | **MÉTHODES AUTORISÉES** | **DELETE**, **GET**, **HEAD**, **MERGE**, **POST**, **OPTIONS** et **PUT** | Répertorie les verbes HTTP autorisés à s’exécuter sur le compte de stockage. Dans le cadre de ce démarrage rapide, sélectionnez toutes les options disponibles. |
-| **EN-TÊTES AUTORISÉS** | **\** _ | Définit la liste des en-têtes de requête (y compris les en-têtes avec préfixe) autorisés par le compte de stockage. La configuration de la valeur sur `_` permet l’accès à tous les en-têtes. |
-| **EN-TÊTES EXPOSÉS** | **\** _ | Répertorie les en-têtes de réponse autorisés par le compte. La configuration de la valeur sur `_` permet au compte d’envoyer n’importe quel en-tête. |
+| **EN-TÊTES AUTORISÉS** | * | Définit la liste des en-têtes de requête (y compris les en-têtes avec préfixe) autorisés par le compte de stockage. La configuration de la valeur sur `*` permet l’accès à tous les en-têtes. |
+| **EN-TÊTES EXPOSÉS** | * | Répertorie les en-têtes de réponse autorisés par le compte. La configuration de la valeur sur `*` permet au compte d’envoyer n’importe quel en-tête. |
 | **ÂGE MAXIMAL** | **86400** | La durée maximale de mise en cache de la requête OPTIONS préliminaire par le navigateur, en secondes. La valeur *86400* autorise le cache pendant une journée entière. |
 
 Après avoir renseigné les champs avec les valeurs indiquées dans ce tableau, cliquez sur le bouton **Enregistrer**.

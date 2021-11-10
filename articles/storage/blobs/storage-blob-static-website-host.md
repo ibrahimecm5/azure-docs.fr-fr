@@ -5,15 +5,15 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 1/22/2020
+ms.date: 11/04/2021
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: f222475560c282e7eb63c55a3f827f8f8e48c8ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2bc3579c1e1c3748ded0cf68d7f75ec269e9d1e0
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128549468"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853374"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -26,6 +26,8 @@ Dans ce tutoriel, vous allez apprendre à :
 > [!div class="checklist"]
 > - Configurer l’hébergement de site web statique
 > - Déployer un site web Hello World
+
+[!INCLUDE [static websites vs static web apps](../../../includes/storage-blob-static-website-vs-static-web-app.md)]
 
 ## <a name="prerequisites"></a>Prérequis
 

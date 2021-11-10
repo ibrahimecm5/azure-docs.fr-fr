@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: aedfbb879b158c525ae435f3118c34cdd08ecd7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d96e331727c1c4d306746c35565f759fcd12a4c8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077475"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860383"
 ---
-[![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
+[![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript)
 
 Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Vous utilisez l’interface Azure CLI pour créer un hub Azure IoT et un appareil. Ensuite, vous utilisez un exemple d’Azure IoT device SDK pour exécuter un contrôleur de température, le connecter en toute sécurité au hub et envoyer de la télémétrie. L’exemple d’application de contrôleur de température s’exécute sur votre ordinateur local et génère des données de capteur simulées à envoyer à IoT Hub.
 
@@ -37,7 +37,7 @@ Installez les prérequis suivants sur votre ordinateur de développement, sauf m
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>Exécuter un appareil
+## <a name="run-the-device-sample"></a>Exécuter l’exemple d’appareil
 Dans cette section, vous allez utiliser le Kit de développement logiciel (SDK) Node.js pour envoyer des messages d’un appareil à votre hub IoT. Vous allez exécuter un exemple qui implémente un contrôleur de température avec deux capteurs de thermostat.
 
 1. Ouvrez une nouvelle console telle que Windows CMD, PowerShell ou Bash. Dans la procédure suivante, vous allez utiliser cette console pour installer le kit SDK Node.js et travailler avec un exemple de code Node.js.
@@ -55,12 +55,12 @@ Dans cette section, vous allez utiliser le Kit de développement logiciel (SDK)�
 
     **Windows**
     ```console
-    cd azure-iot-sdk-node\device\samples\javascript\pnp
+    cd azure-iot-sdk-node\device\samples\javascript
     ```
 
     **Système d’exploitation Linux ou Raspberry Pi**
     ```console
-    cd azure-iot-sdk-node/device/samples/javascript/pnp
+    cd azure-iot-sdk-node/device/samples/javascript
     ```
 
 1. Installez le Kit de développement logiciel (SDK) Azure IoT Node.js et les dépendances nécessaires :
@@ -101,7 +101,7 @@ Dans cette section, vous allez utiliser le Kit de développement logiciel (SDK)�
 1. Exécutez l’exemple de code suivant :
 
     ```console
-    node pnpTemperatureController.js
+    node pnp_temperature_controller.js
     ```
     > [!NOTE]
     > Cet exemple de code utilise Azure IoT Plug-and-Play, qui vous permet d’intégrer des appareils intelligents dans vos solutions sans aucune configuration manuelle.  Par défaut, la plupart des exemples de cette documentation utilisent IoT Plug-and-Play. Pour en savoir plus sur les avantages et les cas d’utilisation d’IoT PnP, consultez [Qu’est ce qu’IoT Plug-and-Play ?](../articles/iot-develop/overview-iot-plug-and-play.md).

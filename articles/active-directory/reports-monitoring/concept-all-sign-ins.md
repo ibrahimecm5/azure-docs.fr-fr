@@ -4,7 +4,7 @@ description: Présentation des journaux de connexion dans Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9455883bea37602e572a538862eaf5de9c17bbbc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 209b9f66a9d7d8d004162e465c85311886b423fa
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669414"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997207"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Journaux de connexion dans Azure Active Directory - préversion
 
@@ -112,7 +112,7 @@ Chaque onglet de la page des connexions affiche les colonnes par défaut ci-dess
 
 
 
-### <a name="interactive-user-sign-ins&quot;></a>Connexions utilisateur interactives
+### <a name="interactive-user-sign-ins"></a>Connexions utilisateur interactives
 
 
 Les connexions utilisateur interactives sont des connexions où un utilisateur fournit un facteur d’authentification à Azure AD ou interagit directement avec Azure AD ou une application auxiliaire telle que l’application Microsoft Authenticator. Les facteurs que les utilisateurs fournissent incluent des mots de passe, des réponses à des demandes d’authentification multifacteur, des facteurs biométriques ou des codes QR qu’un utilisateur fournit à Azure AD ou à une application auxiliaire.
@@ -148,7 +148,7 @@ En plus des champs par défaut, le journal des connexions interactives affiche l
 
 Vous pouvez personnaliser le mode Liste en cliquant sur **Colonnes** dans la barre d’outils.
 
-![Colonnes de connexion utilisateur interactive](./media/concept-all-sign-ins/columns-interactive.png &quot;Colonnes de connexion utilisateur interactive")
+![Colonnes de connexion utilisateur interactive](./media/concept-all-sign-ins/columns-interactive.png "Colonnes de connexion utilisateur interactive")
 
 
 

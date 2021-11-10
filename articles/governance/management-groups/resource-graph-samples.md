@@ -1,15 +1,15 @@
 ---
 title: Exemples de requêtes Azure Resource Graph pour les groupes d’administration
 description: Exemples de requêtes Azure Resource Graph pour groupes d’administration qui montrent comment utiliser des types de ressources et des tables pour accéder aux détails des groupes d'administration.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 7138353a93673c424fdb9cfd6500d9b23a3bf902
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1f02341fdea3ffbaf88da46bdb27df90774a27f9
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542086"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056800"
 ---
 # <a name="azure-resource-graph-sample-queries-for-management-groups"></a>Exemples de requêtes Azure Resource Graph pour les groupes d’administration
 

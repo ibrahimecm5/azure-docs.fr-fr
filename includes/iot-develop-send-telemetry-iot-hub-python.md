@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d1d68f43f380f0cf85ece7a015ef44974c145e05
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8791b9d78e4d31b228ed0db34002b9b36714fbb2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077476"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861624"
 ---
 [![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
 
@@ -37,7 +37,7 @@ Installez les prérequis suivants sur votre ordinateur de développement, sauf m
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>Exécuter un appareil
+## <a name="run-the-device-sample"></a>Exécuter l’exemple d’appareil
 Dans cette section, vous allez utiliser le Kit de développement logiciel (SDK) Python pour envoyer des messages d’un appareil à votre hub IoT. Vous allez exécuter un exemple qui implémente un contrôleur de température avec deux capteurs de thermostat.
 
 1. Ouvrez une nouvelle console telle que Windows CMD, PowerShell ou Bash. Dans la procédure suivante, vous allez utiliser cette console pour installer le kit SDK Python et travailler avec l’exemple de code Python.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: thwimmer
-ms.openlocfilehash: 0cd0dcf0bece7c145bdfddbad7b069c7d7d43f19
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7132a8c5a0ce951328aa3d1d21130ed9e968db7c
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759497"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989828"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Tutoriel : Configurer SmartFile pour l'approvisionnement automatique d'utilisateurs
 
@@ -34,6 +34,10 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * Un locataire Azure AD.
 * [Un locataire SmartFile](https://www.SmartFile.com/pricing/).
 * Un compte d'utilisateur SmartFile doté d'autorisations d'administrateur.
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
+
 
 ## <a name="assigning-users-to-smartfile"></a>Attribuer des utilisateurs à SmartFile
 

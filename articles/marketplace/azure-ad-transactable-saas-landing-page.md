@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 8a0e7ab7fad8b0da025f143ab2401e5740972ec7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cd03abdf01d11fa3b6de869a7d95feafff0ca393
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078253"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060355"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Créer la page d'accueil de votre offre SaaS à vendre dans le Marketplace commercial
 
@@ -81,7 +81,7 @@ Cela permet à la solution de fonctionner dans des scénarios qui observent le p
 
 ## <a name="resolve-the-marketplace-purchase-identification-token"></a>Résoudre le jeton d’identification d’achat du marketplace
 
-Lorsque l’acheteur est envoyé à votre page d’accueil, un jeton est ajouté au paramètre URL. Ce jeton est différent de celui émis par Azure AD et du jeton d’accès utilisé pour l’authentification de service à service. Il est utilisé comme entrée pour l’appel de résolution des [ASP de réalisation SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) afin d’obtenir les détails de l’abonnement. Comme pour tous les appels aux API de traitement SaaS, votre demande de service à service sera authentifiée avec un jeton d’accès basé sur l’utilisateur de l’ID d’application Azure AD de l’application pour l’authentification de service à service.
+Lorsque l’acheteur est envoyé à votre page d’accueil, un jeton est ajouté au paramètre URL. Ce jeton est différent de celui émis par Azure AD et du jeton d’accès utilisé pour l’authentification de service à service. Il est utilisé comme entrée pour l’appel de résolution des [ASP de réalisation SaaS](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) afin d’obtenir les détails de l’abonnement. Comme pour tous les appels aux API de traitement SaaS, votre demande de service à service sera authentifiée avec un jeton d’accès basé sur l’utilisateur de l’ID d’application Azure AD de l’application pour l’authentification de service à service.
 
 > [!NOTE]
 > Dans la plupart des cas, il est préférable d’effectuer cet appel à partir d’une deuxième application à locataire unique. Consultez [Utiliser deux applications Azure AD pour améliorer la sécurité de la production](#use-two-azure-ad-apps-to-improve-security-in-production) plus haut dans cet article.
@@ -92,7 +92,7 @@ Pour authentifier votre application avec les API de traitement SaaS, vous avez b
 
 ### <a name="call-the-resolve-endpoint"></a>Appeler le point de terminaison de résolution
 
-Les API de traitement SaaS implémentent le point de terminaison [résoudre](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription), qui peut être appelé pour confirmer la validité du jeton du marketplace et pour retourner des informations sur l’abonnement.
+Les API de traitement SaaS implémentent le point de terminaison [résoudre](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription), qui peut être appelé pour confirmer la validité du jeton du marketplace et pour retourner des informations sur l’abonnement.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Lire les informations des revendications encodées dans le jeton d’ID
 

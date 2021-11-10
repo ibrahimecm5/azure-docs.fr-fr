@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 10/05/2021
-ms.openlocfilehash: 66c222c29e33fd99d37d334f34c1869135f1b580
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 01b16a8ac28f89f0bb59944bdb790a2fa6cc8e75
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544545"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028550"
 ---
 # <a name="tutorial-migrate-sql-server-to-sql-server-on-azure-virtual-machine-offline-using-azure-data-studio-with-dms-preview"></a>Tutoriel : Migrer SQL Server vers SQL Server sur les machines virtuelles Azure hors connexion avec Azure Data Studio et DMS (préversion)
 
@@ -55,7 +55,6 @@ Pour suivre ce didacticiel, vous devez effectuer les opérations suivantes :
     > [!IMPORTANT]
     > - Si vos fichiers de sauvegarde de base de données sont fournis dans un partage réseau SMB, [Créez un compte de stockage Azure](../storage/common/storage-account-create.md) qui permet au service DMS de charger les fichiers de sauvegarde de la base de données.  Veillez à créer le compte de stockage Azure dans la même région que celle où l’instance d’Azure Database Migration Service est créée.
     > - Azure Database Migration Service ne lance pas les sauvegardes. Il utilise les sauvegardes existantes (qui peuvent déjà faire partie de votre plan de récupération d'urgence) pour la migration.
-    > - Vous devez effectuer des [sauvegardes à l’aide de l' `WITH CHECKSUM` option](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server). 
     > - Chaque sauvegarde peut être enregistrée dans un fichier de sauvegarde distinct ou dans plusieurs fichiers de sauvegarde. Toutefois, l’ajout de plusieurs sauvegardes (par exemple, full et t-log) sur un seul support de sauvegarde n’est pas pris en charge. 
     > - Utilisez des sauvegardes compressées pour réduire le risque de problèmes liés à la migration de sauvegardes volumineuses.
 * Assurez-vous que le compte de service exécutant l’instance source SQL Server dispose des autorisations en lecture et en écriture sur le partage réseau SMB qui contient les fichiers de sauvegarde de base de données.

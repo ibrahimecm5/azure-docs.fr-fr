@@ -482,7 +482,7 @@
               href: backup-azure-diagnostics-mode-data-model.md
     - name: Automatisation
       items:
-        - name: Utiliser l’automatisation Azure Backup
+        - name: Vue d’ensemble
           href: automation-backup.md
         - name: Azure Policy intégré pour Sauvegarde Azure
           items:

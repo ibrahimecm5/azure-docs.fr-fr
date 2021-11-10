@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 08/24/2021
+ms.date: 11/09/2021
 ms.author: kengaderdus
 author: kengaderdus
 manager: CelesteDG
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 661801e8eb184e8368cb5156d7f7b7f71612f8f2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 665f914d19f0ab73c8ed6ab6af75ba485c1d35bf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040148"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053367"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Ajouter un connecteur d’API à un workflow d’utilisateur d’inscription
 
@@ -76,6 +76,7 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
+ "objectId": "11111111-0000-0000-0000-000000000000"
  "givenName":"John",
  "surname":"Smith",
  "jobTitle":"Supplier",
@@ -146,6 +147,7 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
+ "objectId": "11111111-0000-0000-0000-000000000000",
  "givenName":"John",
  "lastName":"Smith",
  "step": "PostFederationSignup",
@@ -199,6 +201,7 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
+ "objectId": "11111111-0000-0000-0000-000000000000",
  "givenName":"John",
  "surname":"Smith",
  "jobTitle":"Supplier",
@@ -320,7 +323,7 @@ Content-type: application/json
 | version     | String | Oui      | Version de votre API.                                                    |
 | action                                             | String            | Oui      | La valeur doit être `Continue`.                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Non       | Les valeurs retournées peuvent remplacer des valeurs collectées à partir d’un utilisateur.                    |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | La revendication n’a pas besoin de contenir `_<extensions-app-id>_`, cela est *facultatif*. Les valeurs retournées peuvent remplacer des valeurs collectées à partir d’un utilisateur. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Non       | La revendication n’a pas besoin de contenir `_<extensions-app-id>_`, cela est *facultatif*. Les valeurs retournées peuvent remplacer des valeurs collectées à partir d’un utilisateur. |
 
 ### <a name="example-of-a-blocking-response"></a>Exemple de réponse de blocage
 
@@ -620,7 +623,7 @@ Pour retourner la revendication de code promotionnel à l’application par part
 
 ### <a name="using-serverless-cloud-functions"></a>Utilisation des fonctions cloud serverless
 
-Les fonctions serverless, comme les [déclencheurs HTTP dans Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md), fournissent une façon de créer des points de terminaison d’API à utiliser avec le connecteur d’API. Vous pouvez utiliser la fonction cloud serverless pour, [par exemple](api-connector-samples.md#api-connector-rest-api-samples), effectuer une logique de validation et limiter les inscriptions à des domaines de courrier spécifiques. La fonction cloud serverless peut également appeler et invoquer d’autres API web, des magasins de données et d’autres services cloud pour des scénarios complexes.
+Les fonctions serverless, comme les [déclencheurs HTTP dans Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md), fournissent une façon de créer des points de terminaison d’API à utiliser avec le connecteur d’API. Vous pouvez utiliser la fonction cloud serverless pour, [par exemple](api-connector-samples.md#api-connector-rest-api-samples), effectuer une logique de validation et limiter les inscriptions à des domaines de courrier spécifiques. La fonction cloud serverless peut également appeler et invoquer d’autres API web, magasins de données et d’autres services cloud dans le cade de scénarios plus complexes.
 
 ### <a name="best-practices"></a>Meilleures pratiques
 Assurez-vous que :

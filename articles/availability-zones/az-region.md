@@ -5,15 +5,15 @@ author: prsandhu
 ms.service: azure
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.author: prsandhu
+ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: e8015d4362f394fe8ddf8b05a1a1187112671f9f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 58d483c56f27dd346c672f2ec2013dce934993ee
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265647"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866522"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Services Azure prenant en charge les zones de disponibilité
 
@@ -34,8 +34,8 @@ Azure fournit l’empreinte mondiale la plus complète de tous les fournisseurs 
 | USA Centre | Europe Nord | | Japon Est |
 | USA Est | Norvège Est | | Centre de la Corée |
 | USA Est 2 | Sud du Royaume-Uni | | Asie Sud-Est |
-| États-Unis - partie centrale méridionale | Europe Ouest | | Asie Est* |
-| Gouvernement américain - Virginie | Suède* | | |
+| États-Unis - partie centrale méridionale | Europe Ouest | | Asie Est |
+| Gouvernement américain - Virginie | Suède | | |
 | USA Ouest 2 | | | |
 | USA Ouest 3 | | | |
 

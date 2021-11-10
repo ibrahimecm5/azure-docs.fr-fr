@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: b6e78329c4f45baffd779202ebfa37da3c6cf7c9
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 856845022e63a96b9e5d56d1e869dec55a2511be
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105432"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892169"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Personnaliser un point de terminaison HTTP dans Azure Functions
 
@@ -39,7 +39,7 @@ Par défaut, la fonction de votre déclencheur par HTTP est configurée pour acc
 
     | Champ | Exemple de valeur | Description |
     |---|---|---|
-    | Modèle d’itinéraire | /hello | Détermine l’itinéraire utilisé pour appeler cette fonction. |
+    | Modèle d’itinéraire | hello | Détermine l’itinéraire utilisé pour appeler cette fonction. |
     | Niveau d’autorisation | Anonyme | Facultatif : rend votre fonction accessible sans clé API |
     | Méthodes HTTP sélectionnées | GET | Autorise uniquement l’utilisation des méthodes HTTP sélectionnés pour appeler cette fonction. |
 

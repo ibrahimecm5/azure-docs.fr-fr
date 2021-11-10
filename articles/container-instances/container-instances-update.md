@@ -3,12 +3,12 @@ title: Mettre à jour un groupe de conteneurs
 description: Découvrez comment mettre à jour les conteneurs en cours d’exécution dans vos groupes de conteneurs Azure Container Instances.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: cbb2e830490d2591645b8156ee830856da0f9049
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f2ec8ed3641fd9e692c89c6fdb29a7bea268b023
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786960"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853336"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Mettre à jour les conteneurs dans Azure Container Instances
 
@@ -73,6 +73,7 @@ Les modifications apportées à ces propriétés nécessitent la suppression du 
 * Ressources processeur, mémoire ou GPU
 * Stratégie de redémarrage
 * Profil réseau
+* Zone de disponibilité
 
 Lorsque vous supprimez, puis recréez un groupe de conteneurs, celui-ci n’est pas redéployé, mais recréé, comme un nouveau groupe. Tous les calques d’image sont fraîchement tirés (pull) du Registre. Il ne s’agit pas des calques mis en cache par un déploiement précédent. L’adresse IP du conteneur peut également changer si celui-ci est déployé sur un autre hôte sous-jacent.
 

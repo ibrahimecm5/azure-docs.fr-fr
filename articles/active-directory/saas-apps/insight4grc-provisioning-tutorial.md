@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: thwimmer
-ms.openlocfilehash: d8fbdff34ea84685366c04ee956473b4165a4cd2
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: fa695dd3f4b693cad64b8a72c48adc3a62f506f2
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444581"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990130"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Tutoriel : Configurer Insight4GRC pour l’approvisionnement automatique d’utilisateurs
 
@@ -38,6 +38,9 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * [Un locataire Azure AD](../develop/quickstart-create-new-tenant.md) 
 * Un compte d’utilisateur dans Azure AD avec l’[autorisation](../roles/permissions-reference.md) de configurer l’approvisionnement (par exemple, Administrateur d’application, Administrateur d’application cloud, Propriétaire d’application ou Administrateur général). 
 * Un compte d’utilisateur Insight4GRC avec des autorisations d’administrateur.
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Étape 1. Planifier votre déploiement de l’approvisionnement
 1. En savoir plus sur le [fonctionnement du service d’approvisionnement](../app-provisioning/user-provisioning.md).

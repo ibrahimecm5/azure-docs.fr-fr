@@ -3,12 +3,12 @@ title: Structure et syntaxe des fichiers Bicep
 description: Décrit la structure et les propriétés d’un fichier Bicep en utilisant une syntaxe déclarative.
 ms.topic: conceptual
 ms.date: 10/07/2021
-ms.openlocfilehash: 7fa9126326bc1bc3922379c52a937013a33abd13
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f890f625abc4a6839cd090a49aa7e641ecef9145
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216311"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892018"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Comprendre la structure et la syntaxe des fichiers Bicep
 
@@ -240,7 +240,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 }
 ```
 
-Pour [déployer plusieurs instances](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md) d’un type de ressource, ajoutez une expression `for`. L’expression peut itérer sur les membres d’un tableau.
+Pour [déployer plusieurs instances](loops.md) d’un type de ressource, ajoutez une expression `for`. L’expression peut itérer sur les membres d’un tableau.
 
 ```bicep
 resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = [for storageName in storageAccounts: {

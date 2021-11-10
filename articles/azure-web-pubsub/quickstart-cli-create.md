@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: quickstart
-ms.date: 08/06/2021
-ms.openlocfilehash: ebe8f22c5a77da0a09b69926e6a4b881b823a513
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/08/2021
+ms.openlocfilehash: 426b77d1e1a79c3a9818e028edcc79bcad5ef2ec
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444274"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131998073"
 ---
 # <a name="quickstart-create-a-web-pubsub-instance-with-the-azure-cli"></a>Démarrage rapide : créer une instance Web PubSub avec Azure CLI
 
@@ -45,6 +45,6 @@ L’[interface de ligne de commande Azure (Azure CLI)](/cli/azure) est un ensemb
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans les applications réelles, vous pouvez utiliser des kits de développement logiciel (SDK) dans différents langages pour générer votre propre application. Nous fournissons également des extensions de fonction qui permettent de générer facilement des applications serverless.
+Dans les applications réelles, vous pouvez utiliser des kits de développement logiciel (SDK) dans différents langages pour générer votre propre application. Nous fournissons également des extensions de fonction qui vous permettent de créer facilement des applications serverless.
 
 [!INCLUDE [next step](includes/include-next-step.md)]

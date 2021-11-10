@@ -6,18 +6,18 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: dd0328314cbe1f93565a421e0ff4f68f410b10dc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 409a86883cf010390b3d37c8d3af945ed3702eae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459973"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851841"
 ---
 # <a name="understanding-azure-virtual-desktop-network-connectivity"></a>Comprendre la connectivité du réseau Azure Virtual Desktop
 
 Azure Virtual Desktop offre la possibilité d’héberger des sessions clientes sur les hôtes de session qui s’exécutent sur Azure. Microsoft gère des parties des services au nom du client et fournit des points de terminaison sécurisés pour la connexion des clients et des hôtes de session. Le diagramme ci-dessous donne une vue d’ensemble des connexions réseau utilisées par Azure Virtual Desktop
 
-:::image type="content" source="media/windows-virtual-desktop-network-connections.svg" alt-text="Diagramme des connexions réseau de Azure Virtual Desktop" lightbox="media/windows-virtual-desktop-network-connections.svg":::
+:::image type="content" source="media/azure-virtual-desktop-network-connections.svg" alt-text="Diagramme des connexions réseau de Azure Virtual Desktop" lightbox="media/azure-virtual-desktop-network-connections.svg":::
 
 ## <a name="session-connectivity"></a>Connectivité des sessions
 

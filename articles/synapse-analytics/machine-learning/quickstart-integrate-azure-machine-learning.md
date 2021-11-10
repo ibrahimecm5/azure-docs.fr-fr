@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 10/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 6c7ec83fcf7ea03dcacc92137f1ef63a6cce1f2f
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 7d6b9a81f5e5e948704b4597a7283cd976b124c2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399524"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847196"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Démarrage rapide : Créer un nouveau service lié Azure Machine Learning dans Synapse
 
@@ -43,7 +43,7 @@ Dans les sections suivantes, vous trouverez des conseils sur la création d’un
 
 ## <a name="create-a-linked-service-using-the-synapse-workspace-managed-identity"></a>Créer un service lié avec l’identité managée de l’espace de travail Synapse
 
-Dans cette section, vous allez voir comment créer un service lié Azure Machine Learning dans Azure Synapse avec l’[identité managée de l’espace de travail Azure Synapse](../security/synapse-workspace-managed-identity.md).
+Dans cette section, vous allez voir comment créer un service lié Azure Machine Learning dans Azure Synapse avec l’[identité managée de l’espace de travail Azure Synapse](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics).
 
 ### <a name="give-msi-permission-to-the-azure-ml-workspace"></a>Accorder l’autorisation MSI à l’espace de travail Azure ML
 

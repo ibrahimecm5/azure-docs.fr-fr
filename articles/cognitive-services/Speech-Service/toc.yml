@@ -374,8 +374,6 @@ items:
         href: keyword-recognition-guidelines.md
       - name: Prise en charge de la région
         href: keyword-recognition-region-support.md
-  - name: Identification de la langue
-    href: language-identification.md
   - name: Immersions dans des scénarios
     items:
       - name: Scénarios de conversation

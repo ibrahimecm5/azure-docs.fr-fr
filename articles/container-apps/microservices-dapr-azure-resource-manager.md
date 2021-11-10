@@ -1,19 +1,19 @@
 ---
 title: 'Tutoriel : Déployer une application Dapr sur Azure Container Apps à l’aide d’un modèle ARM'
 description: Déployer une application Dapr sur Azure Container Apps à l’aide d’un modèle ARM
-services: app-service
+services: container-apps
 author: asw101
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/25/2021
+ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3e27ba920f47a7033871d8ccdf227341d2400816
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d38af387910551903d2781863deb3de3fcd36160
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097460"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026916"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-an-arm-template"></a>Tutoriel : Déployer une application Dapr sur Azure Container Apps à l’aide d’un modèle ARM
 
@@ -131,6 +131,22 @@ az extension add \
 ```azurecli
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl 
+```
+
+---
+
+Maintenant que l’extension est installée, inscrivez l’espace de noms `Microsoft.Web`.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```azurecli
+az provider register --namespace Microsoft.Web
 ```
 
 ---
@@ -534,7 +550,7 @@ Vous pouvez vérifier que les services fonctionnent correctement en affichant le
 
 ### <a name="view-logs"></a>Voir les journaux
 
-Les données journalisées via une application conteneur sont stockées dans la table personnalisée `ContainerAppConsoleLogs_CL` de l’espace de travail Log Analytics. Vous pouvez voir les journaux dans le portail Azure ou avec l’interface CLI.
+Les données journalisées via une application conteneur sont stockées dans la table personnalisée `ContainerAppConsoleLogs_CL` de l’espace de travail Log Analytics. Vous pouvez voir les journaux dans le portail Azure ou avec l’interface CLI. Avant que vous puissiez interroger les données journalisées, vous devrez peut-être patienter quelques minutes avant que l’analyse n’arrive pour la première fois.
 
 Utilisez la commande CLI suivante pour voir les journaux sur la ligne de commande.
 

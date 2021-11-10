@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: reconnaissance vocale, logiciel de reconnaissance vocale
-ms.openlocfilehash: 78db7165e44eb53a6d34c9095f70185874d0d8ce
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 02e9a0d78aa8d904be2c9ade4ba419ea4fefd40f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509889"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989429"
 ---
 # <a name="what-is-speech-to-text"></a>Qu’est-ce que la reconnaissance vocale ?
 
@@ -36,8 +36,6 @@ Cette documentation contient les types d’articles suivants :
 > [!NOTE]
 > La reconnaissance vocale Bing a été mise hors service le 15 octobre 2019. Si vos applications, outils ou produits utilisent les API Reconnaissance vocale Bing, nous avons créé des guides pour vous aider à effectuer leur migration vers le service Speech.
 > - [Effectuer une migration entre la Reconnaissance vocale Bing et le service Speech](how-to-migrate-from-bing-speech.md)
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="get-started"></a>Bien démarrer
 

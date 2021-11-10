@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996a3f5f48685630a6946a5708c26cfecaf3b0a0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7a2d152e18f039b88957a0dab32f5d451642d6bd
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562199"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058711"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Autorisations d’inscription d’application pour les rôles personnalisés dans Azure Active Directory
 
@@ -46,7 +46,7 @@ En attribuant cette autorisation, le créateur est ajouté en tant que premier p
 
 #### <a name="microsoftdirectoryapplicationscreate"></a>microsoft.directory/applications/create
 
-En attribuant cette autorisation, le créateur n’est pas ajouté en tant que premier propriétaire de l'enregistrement de l'application créée. L'enregistrement de l'application créée est comptabilisé dans le quota de 250 objets créés du créateur. Utilisez cette autorisation avec précaution, car rien n’empêche l’intervenant de créer des inscriptions d’applications tant que le quota au niveau du répertoire n’a pas été atteint. Si les deux autorisations sont affectées, l’autorisation est prioritaire.
+En attribuant cette autorisation, le créateur n’est pas ajouté en tant que premier propriétaire de l'enregistrement de l'application créée. L'enregistrement de l'application créée est comptabilisé dans le quota de 250 objets créés du créateur. Utilisez cette autorisation avec précaution, car rien n’empêche l’intervenant de créer des inscriptions d’applications tant que le quota au niveau du répertoire n’a pas été atteint.
 
 Si les deux autorisations sont affectées, l’autorisation /create est prioritaire. Bien que l’autorisation /createAsOwner n’ajoute pas automatiquement le créateur comme premier propriétaire, les propriétaires peuvent être spécifiés lors de la création de l’inscription de l’application lors de l’utilisation des API Graph ou des cmdlets PowerShell.
 

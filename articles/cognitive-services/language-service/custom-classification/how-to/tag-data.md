@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: bcfa81dc4cf65252179ecb6411ce67f2ba9bdce7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 390e5fabe5c23c3b258e898eab0691f88c1828c0
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097604"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057173"
 ---
 # <a name="tag-text-data-for-training-your-model"></a>Étiqueter les données texte pour entraîner votre modèle 
 
@@ -28,7 +28,7 @@ Avant de pouvoir étiqueter des données, vous avez besoin de :
 * [Un projet correctement créé](create-project.md) avec un compte Stockage Blob Azure configuré. 
 * Des données texte qui ont [été chargées](create-project.md#prepare-training-data) sur votre compte de stockage.
 
-Pour plus d’informations, consultez [cycle de vie du développement d’applications](../overview.md#application-development-lifecycle).
+Pour plus d’informations, consultez [cycle de vie du développement d’applications](../overview.md#project-development-lifecycle).
 
 <!--Tagging your data will let you [train your model](train-model.md), [evaluate it](train-model.md), and use it to [classify text](call-api.md).-->
 

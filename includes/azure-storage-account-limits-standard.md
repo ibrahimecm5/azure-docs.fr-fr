@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/04/2021
 ms.author: tamram
 ms.custom: include file, references_regions
-ms.openlocfilehash: 8a50cc2f09d9094e8a7f327f0088988ca776a2c6
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 300a216e02182e3e2fe675795ff64942d8e98ed8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713917"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132096910"
 ---
 Le tableau suivant présente les limites par défaut des comptes de stockage Azure universel v2 (GPv2), universel v1 (GPv1) et Blob. La limite d’*entrée* désigne toutes les données envoyées à un compte de stockage. La limite de *sortie* désigne toutes les données reçues d’un compte de stockage.
 
@@ -28,12 +28,12 @@ Microsoft recommande d’utiliser un compte de stockage GPv2 pour la plupart des
 | Capacité maximale par défaut du compte de stockage | 5 Pio <sup>1</sup> |
 | Nombre maximal de conteneurs de blobs, de blobs, de partages de fichiers, de tables, de files d’attente, d’entités ou de messages par compte de stockage. | Aucune limite |
 | Taux de demande maximal par défaut par compte de stockage | 20 000 demandes par seconde<sup>1</sup> |
-| Entrée maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (LRS/GRS) :<br /><ul><li>Australie Est</li><li>USA Centre</li><li>Asie Est</li><li>USA Est 2</li><li>France Centre</li><li>Japon Est</li><li>Centre de la Corée</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest</li></ul> | 60 Gbits/s<sup>1</sup> |
-| Entrée maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (ZRS) :<br /><ul><li>Australie Est</li><li>USA Centre</li><li>USA Est</li><li>USA Est 2</li><li>France Centre</li><li>Japon Est</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest 2</li></ul> | 60 Gbits/s<sup>1</sup> |
+| Entrée maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (LRS/GRS) :<br /><ul><li>Australie Est</li><li>USA Centre</li><li>Asie Est</li><li>USA Est 2</li><li>Japon Est</li><li>Centre de la Corée</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest</li></ul> | 60 Gbits/s<sup>1</sup> |
+| Entrée maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (ZRS) :<br /><ul><li>Australie Est</li><li>USA Centre</li><li>USA Est</li><li>USA Est 2</li><li>Japon Est</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest 2</li></ul> | 60 Gbits/s<sup>1</sup> |
 | Entrée maximale par défaut par compte de stockage universel v2 et Blob dans les régions qui ne sont pas listées dans la ligne précédente. | 25 Gbits/s<sup>1</sup> |
 | Entrée maximale par défaut pour les comptes de stockage universel v1 (toutes les régions) | 10 Gbits/s<sup>1</sup> |
-| Sortie maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (LRS/GRS) :<br /><ul><li>Australie Est</li><li>USA Centre</li><li>Asie Est</li><li>USA Est 2</li><li>France Centre</li><li>Japon Est</li><li>Centre de la Corée</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest</li></ul> | 120 Gbits/s<sup>1</sup> |
-| Sortie maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (ZRS) : <ul><li>Australie Est</li><li>USA Centre</li><li>USA Est</li><li>USA Est 2</li><li>France Centre</li><li>Japon Est</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest 2</li></ul> | 120 Gbits/s<sup>1</sup> |
+| Sortie maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (LRS/GRS) :<br /><ul><li>Australie Est</li><li>USA Centre</li><li>Asie Est</li><li>USA Est 2</li><li>Japon Est</li><li>Centre de la Corée</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest</li></ul> | 120 Gbits/s<sup>1</sup> |
+| Sortie maximale par défaut par compte de stockage universel v2 et Blob dans les régions suivantes (ZRS) : <ul><li>Australie Est</li><li>USA Centre</li><li>USA Est</li><li>USA Est 2</li><li>Japon Est</li><li>Europe Nord</li><li>États-Unis - partie centrale méridionale</li><li>Asie Sud-Est</li><li>Sud du Royaume-Uni</li><li>Europe Ouest</li><li>USA Ouest 2</li></ul> | 120 Gbits/s<sup>1</sup> |
 | Sortie maximale par défaut par compte de stockage universel v2 et Blob dans les régions qui ne sont pas listées dans la ligne précédente. | 50 Gbits/s<sup>1</sup> |
 | Nombre maximal de sorties pour les comptes de stockage à usage général v1 (régions des États-Unis) | 20 Gbit/s si RA-GRS/GRS est activé, 30 Gbit/s pour LRS/ZRS<sup>2</sup> |
 | Nombre maximal de sorties pour les comptes de stockage à usage général v1 (régions hors États-Unis) | 10 Gbit/s si RA-GRS/GRS est activé, 15 Gbit/s pour LRS/ZRS<sup>2</sup> |

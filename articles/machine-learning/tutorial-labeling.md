@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 10/21/2021
 ms.custom: data4ml
-ms.openlocfilehash: a6e47fb02256056f104473769f3917a215ca789c
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 148b779e56b14652bfb8b9c4eaf0e68585203cf8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555796"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061529"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutoriel : Créer un projet d’étiquetage pour la classification d’images multiclasse 
 
@@ -72,7 +72,7 @@ Les magasins de données Azure Machine Learning permettent de stocker les inform
     Méthode de sélection du compte | Sélectionnez **Entrer manuellement**.
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     Type d'authentification | Sélectionnez **Jeton SAS**.
-    Clé de compte | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
+    Clé de compte | `ZPlDx0bFHFEqwoy8/B/ZZg1YKi/+cIiPamOPUrRptWbvkO6d84n4loitnSMorv/AxrvE0s86cUr6rULWaSGA2A==`
 
 1. Sélectionnez **Créer** pour créer le magasin de données.
 

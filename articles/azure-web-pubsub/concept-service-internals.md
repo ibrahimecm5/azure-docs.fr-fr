@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: a7adef1e705d14578cdec9bec7a947cc9be0db20
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 11/08/2021
+ms.openlocfilehash: ec1a0bfcc883e9434c8c80264c574c3630e395b0
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598442"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995083"
 ---
 #  <a name="azure-web-pubsub-service-internals"></a>Éléments internes du service Azure Web PubSub
 
@@ -248,7 +248,7 @@ Lors de la validation, le paramètre `{event}` est résolu en `validate`. Par ex
 - Authentification simple `code` qui est fournie par le biais de l’URL de webhook configurée.
 - Authentification AAD. 
    - Ajoutez une clé secrète client dans les [inscriptions d’applications] de AAD et fournissez la [clé secrète client] à Azure Web PubSub via le portail/l’interface CLI.
-   - Fournissez l’[identité](/azure/app-service/overview-managed-identity?tabs=dotnet) à Azure Web PubSub via le portail/l’interface CLI.
+   - Fournissez l’[identité](../app-service/overview-managed-identity.md?tabs=dotnet) à Azure Web PubSub via le portail/l’interface CLI.
 
 <a name="connection_manager"></a>
 

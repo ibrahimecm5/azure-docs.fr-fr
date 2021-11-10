@@ -1,19 +1,19 @@
 ---
 title: Gestion du cycle de vie des applications dans Azure Container (version préliminaire)
 description: En savoir plus sur le cycle de vie complet des applications dans Azure Container (version préliminaire)
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8ee2acbfeca4c5f15817b988fb1375fad014eb2a
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: f731ceae2059c5b0e48f1f1428b60a988ee12ce0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577096"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027182"
 ---
 # <a name="application-lifecycle-management-in-azure-container-apps-preview"></a>Gestion du cycle de vie des applications dans Azure Container (version préliminaire)
 

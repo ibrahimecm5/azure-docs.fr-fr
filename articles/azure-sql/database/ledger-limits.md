@@ -1,27 +1,26 @@
 ---
 title: Limitations relatives au registre Azure SQL Database
 description: Limitations de la fonctionnalité de registre dans Azure SQL Database
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 94bb5c606527cec34afc978323eb456ff4a8753e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 684ca40f1469b826029f1b0bcc51e33ae0d9c9a5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122531577"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053687"
 ---
 # <a name="limitations-for-azure-sql-database-ledger"></a>Limitations relatives au registre Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Le registre Azure SQL Database est actuellement en préversion publique et disponible dans les régions Europe Ouest, Brésil Sud et USA Centre-Ouest.
+> Le Registre Azure SQL Database est actuellement en préversion publique.
 
 Cet article fournit une vue d’ensemble des limitations des tables de registre utilisées avec Azure SQL Database.
 

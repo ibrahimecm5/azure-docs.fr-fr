@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 0c3c4f4dbf7de3924b15d7c5394ae0e7d36b4e64
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 689c934d9d175b4e40c7f7d65b3b710bbe4a94fe
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077797"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059447"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Tutoriel : Migrer/Mettre à niveau Azure Database pour PostgreSQL – Serveur unique vers Azure Database pour PostgreSQL – Serveur unique en ligne utilisant DMS via le portail Azure
 
@@ -105,60 +105,9 @@ Pour compléter tous les objets de base de données tels que les schémas de tab
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
     ```
-
-4. Pour extraire le script de clé étrangère Drop et l’ajouter à la destination (Azure Database pour PostgreSQL), exécutez le script suivant dans PgAdmin ou psql.
-
-   > [!IMPORTANT]
-   > Les clés étrangères de votre schéma entraînent l’échec de la charge initiale et de la synchronisation continue de la migration.
-
-    ```
-    SELECT Q.table_name
-        ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name ,'"', STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ','"', foreignkey,'"'), ','), ';') as DropQuery
-            ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name,'"', STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ','"', foreignkey,'"', ' FOREIGN KEY (','"', column_name,'"', ')', ' REFERENCES ','"', foreign_table_schema,'"', '.','"', foreign_table_name,'"', '(','"', foreign_column_name,'"', ')',' ON UPDATE ',update_rule,' ON DELETE ',delete_rule), ','), ';') as AddQuery
-    FROM
-        (SELECT
-        S.table_schema,
-        S.foreignkey,
-        S.table_name,
-        STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
-        S.foreign_table_schema,
-        S.foreign_table_name,
-        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name,
-        S.update_rule,
-        S.delete_rule
-    FROM
-        (SELECT DISTINCT
-        tc.table_schema,
-        tc.constraint_name AS foreignkey,
-        tc.table_name,
-        kcu.column_name,
-        ccu.table_schema AS foreign_table_schema,
-        ccu.table_name AS foreign_table_name,
-        ccu.column_name AS foreign_column_name,
-        rc.update_rule AS update_rule,
-        rc.delete_rule AS delete_rule
-        FROM information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
-        JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
-        JOIN information_schema.referential_constraints as rc ON rc.constraint_name = tc.constraint_name AND rc.constraint_schema = tc.table_schema
-    WHERE constraint_type = 'FOREIGN KEY'
-        ) S
-        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name,S.update_rule,S.delete_rule
-        ) Q
-        GROUP BY Q.table_schema, Q.table_name;
-    ```
-
-5. Exécutez la clé étrangère Drop (deuxième colonne) dans le résultat de la requête.
-
-6. Pour désactiver les déclencheurs dans la base de données cible, exécutez le script ci-dessous.
-
-   > [!IMPORTANT]
-   > Des déclencheurs (d’insertion ou de mise à jour) dans les données appliqueront l’intégrité des données dans la cible avant les données répliquées à partir de la source. Par conséquent, il est recommandé de désactiver les déclencheurs de toutes les tables **au niveau de la cible** pendant la migration, puis de réactiver les déclencheurs une fois celle-ci terminée.
-
-    ```
-    SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
-    FROM information_schema.triggers
-    ```
+    
+   > [!NOTE]
+   > Le service de migration gère en interne l’activation et la désactivation des clés et des déclencheurs étrangers pour garantir une migration fiable des données. Par conséquent, vous n’avez pas à vous soucier d’apporter des modifications au schéma de la base de données cible.
 
 [!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 

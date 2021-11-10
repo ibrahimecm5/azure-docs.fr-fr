@@ -2,16 +2,16 @@
 title: 'Concepts : sécurité dans AKS (Azure Kubernetes Service)'
 description: Découvrez la sécurité dans AKS (Azure Kubernetes Service), notamment la communication entre les maîtres et les nœuds, les stratégies réseau et les secrets Kubernetes.
 services: container-service
-author: mlearned
+author: georgewallace
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.author: mlearned
-ms.openlocfilehash: bf589591ae1c4f9fa3dca2b16cc5382def0740e7
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.author: gwallace
+ms.openlocfilehash: 8fb1e35055bae35fa850bec638f07877e6d75cb3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532955"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058634"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Concepts de sécurité pour les applications et les clusters dans AKS (Azure Kubernetes Service)
 

@@ -13,102 +13,91 @@ metadata:
   ms.devlang: na
   ms.topic: conceptual
   ms.subservice: report-monitor
-  ms.date: 05/12/2020
+  ms.date: 11/08/2021
   ms.author: markvi
-  ms.reviewer: dhanyahk
+  ms.reviewer: besiler
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: f74612097e1ad6edc059625c89f22003d15884af
-  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+  ms.openlocfilehash: 3fc47efc8fafc23d71b87e44c910d71533b1757d
+  ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130162886"
+  ms.lasthandoff: 11/08/2021
+  ms.locfileid: "131995328"
 title: Forum aux questions (FAQ) sur les rapports Azure Active Directory
 summary: "Cet article répond aux questions fréquemment posées sur les rapports Azure Active Directory (Azure AD). Pour plus d’informations, consultez la page [Génération de rapports Azure Active Directory](overview-reports.md). \n"
 sections:
 - name: Prise en main
   questions:
   - question: >
-      J’utilise les API de point de terminaison `https://graph.windows.net/<tenant-name>/reports/` pour tirer (pull) par programmation les rapports d’audit Azure AD et les rapports d’utilisation des applications intégrées dans nos systèmes de création de rapports. Que dois-je utiliser à présent ?
+      I currently use the `https://graph.windows.net/<tenant-name>/reports/` endpoint APIs to pull Azure AD audit and integrated application usage reports into our reporting systems programmatically. What should I switch to?
     answer: >
-      Consultez les [Informations de référence sur les API](https://developer.microsoft.com/graph/) pour savoir comment [utiliser les API dans le but d’accéder aux rapports d’activité](concept-reporting-api.md). Ce point de terminaison comporte deux rapports (un d’**audit** et un autre sur les **connexions**) qui fournissent toutes les données dont vous disposiez dans l’ancien point de terminaison d’API. Ce nouveau point de terminaison comporte également un rapport sur les connexions, relatif à la licence Azure AD Premium, que vous pouvez utiliser pour obtenir des informations sur l’utilisation des applications, l’utilisation des appareils et les connexions utilisateur.
+      Look up the [API reference](https://developer.microsoft.com/graph/) to see how you can [use the APIs to access activity reports](concept-reporting-api.md). This endpoint has two reports (**Audit** and **Sign-ins**) which provide all the data you got in the old API endpoint. This new endpoint also has a sign-ins report with the Azure AD Premium license that you can use to get app usage, device usage, and user sign-in information.
   - question: >
-      J’utilise les API de point de terminaison `https://graph.windows.net/<tenant-name>/reports/` pour tirer (pull) par programmation les rapports de sécurité Azure AD (concernant certains types de détections, tels que les fuites d’informations d’identification ou les connexions à partir d’adresses IP anonymes) dans notre système de création de rapports. Que dois-je utiliser à présent ?
+      I currently use the `https://graph.windows.net/<tenant-name>/reports/` endpoint APIs to pull Azure AD security reports (specific types of detections, such as leaked credentials or sign-ins from anonymous IP addresses) into our reporting systems programmatically. What should I switch to?
     answer: >
-      Vous pouvez utiliser  [l’API Identity Protection relative aux détections de risques](../identity-protection/howto-identity-protection-graph-api.md)  pour accéder aux détections de sécurité par le biais de Microsoft Graph. Ce nouveau format offre davantage de flexibilité dans la façon dont vous pouvez interroger les données, c’est-à-dire avec un filtrage avancé, une sélection des champs, etc. De plus, il rassemble les détections de risques sous un même type pour faciliter l’intégration aux serveurs SIEM et autres outils de collecte de données. Étant donné que les données ont différents formats, vous ne pouvez pas remplacer vos anciennes requêtes par une nouvelle requête. Toutefois, [la nouvelle API utilise Microsoft Graph](/graph/api/resources/identityprotection-root), qui est désormais la plateforme standard de Microsoft pour les API telles que Microsoft 365 et Azure AD. Le travail nécessaire peut donc développer vos investissements Microsoft Graph actuels ou vous aider à démarrer la transition vers cette nouvelle plateforme standard.
+      You can use the [Identity Protection risk detections API](../identity-protection/howto-identity-protection-graph-api.md) to access security detections through Microsoft Graph. This new format gives greater flexibility in how you can query data, with advanced filtering, field selection, and more, and standardizes risk detections into one type for easier integration into SIEMs and other data collection tools. Because the data is in a different format, you can't substitute a new query for your old queries. However, [the new API uses Microsoft Graph](/graph/api/resources/identityprotection-root), which is the Microsoft standard for such APIs as Microsoft 365 or Azure AD. So the work required can either extend your current Microsoft Graph investments or help you begin your transition to this new standard platform.
   - question: >
-      Comment obtenir une licence Premium ?
+      How do I get a premium license?
     answer: >
-      Consultez [Bien démarrer avec Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) pour mettre à niveau votre édition d’Azure Active Directory.
+      See [Getting started with Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) to upgrade your Azure Active Directory edition.
   - question: >
-      Au bout de combien de temps puis-je consulter les données d’activité après avoir obtenu une licence Premium ?
+      How soon should I see activities data after getting a premium license?
     answer: >
-      Si vous avez déjà des données d’activité sous une licence gratuite, vous pouvez les voir immédiatement. Si vous n’avez pas de données, l’affichage des données dans les rapports prend jusqu’à 3 jours.
+      If you already have activities data as a free license, then you can see it immediately. If you don’t have any data, then it will take up to 3 days for the data to show up in the reports.
   - question: >
-      Puis-je voir les données du mois dernier après avoir obtenu une licence Azure AD Premium ?
+      Can I see last month's data after getting an Azure AD premium license?
     answer: >
-      Si vous êtes récemment passé à une version Premium (y compris une version d’essai), vous pouvez voir les données jusqu’à 7 jours dans un premier temps. Lorsque les données s’accumulent, vous pouvez voir les données au cours des 30 derniers jours.
+      If you have recently switched to a Premium version (including a trial version), you can see data up to 7 days initially. When data accumulates, you can see data for the past 30 days.
   - question: >
-      Faut-il être administrateur général pour voir les activités de connexion sur le portail Azure ou pour obtenir des données par le biais de l’API ?
+      Do I need to be a global administrator to see the activity sign-ins to the Azure portal or to get data through the API?
     answer: >
-      Non, vous pouvez également accéder aux données des rapports via le portail ou via l’API si vous êtes un **Lecteur Sécurité** ou un **Administrateur de sécurité** pour le locataire. Bien sûr, les **administrateurs généraux** ont également accès à ces données.
+      No, you can also access the reporting data through the portal or through the API if you are a **Security Reader** or **Security Administrator** for the tenant. Of course, **Global Administrators** will also have access to this data.
 - name: Journaux d’activité
   questions:
-  - question: "Quelle est la conservation des données pour les journaux d’activité (audit et connexions) dans le portail Azure ? \n"
+  - question: "What is the data retention for activity logs (Audit and Sign-ins) in the Azure portal? \n"
     answer: >
-      Pour en savoir plus, consultez [Stratégies de rétention de données des rapports Azure AD](reference-reports-data-retention.md).
+      For more information, see [data retention policies for Azure AD reports](reference-reports-data-retention.md).
   - question: >
-      Au bout de combien de temps puis-je voir les données d’activité une fois la tâche terminée ?
+      How long does it take until I can see the activity data after I have completed my task?
     answer: >
-      La latence des journaux d’audit est comprise entre 15 minutes et 1 heure. Pour certains enregistrements, la mise à jour des journaux d’activité de connexion peut prendre de 15 minutes à 2 heures.
+      Audit logs have a latency ranging from 15 minutes to an hour. Sign-in activity logs can take from 15 minutes to up to 2 hours for some records.
   - question: >
-      Est-ce que je peux obtenir des informations sur les journaux d’activité Microsoft 365 dans le portail Azure ?
+      Can I get Microsoft 365 activity log information through the Azure portal?
     answer: >
-      Bien que les journaux d’activité de Microsoft 365 et d’Azure AD partagent une grande partie des ressources de l’annuaire, vous devez accéder au [Centre d’administration Microsoft 365](https://admin.microsoft.com) pour obtenir une vue complète des journaux d’activité de Microsoft 365.
+      Even though Microsoft 365 activity and Azure AD activity logs share a lot of the directory resources, if you want a full view of the Microsoft 365 activity logs, you should go to the [Microsoft 365 admin center](https://admin.microsoft.com) to get Office 365 Activity log information.
   - question: >
-      Quelles API faut-il utiliser pour obtenir des informations sur les journaux d’activité Microsoft 365 ?
+      Which APIs do I use to get information about Microsoft 365 Activity logs?
     answer: >
-      Utilisez les [API Gestion de Microsoft 365](/office/office-365-management-api/office-365-management-apis-overview) pour accéder aux journaux d’activité de Microsoft 365 par le biais d’une API.
+      Use the [Microsoft 365 Management APIs](/office/office-365-management-api/office-365-management-apis-overview) to access the Microsoft 365 Activity logs through an API.
   - question: >
-      Combien d’enregistrements puis-je télécharger à partir du portail Azure ?
+      How many records I can download from Azure portal?
     answer: >
-      Vous pouvez télécharger jusqu’à 5 000 enregistrements à partir du portail Azure. Les enregistrements sont triés par *date* et, par défaut, vous obtenez les 5 000 enregistrements les plus récents.
-- name: Connexions risquées
+      You can download up to 5000 records from the Azure portal. The records are sorted by *most recent* and by default, you get the most recent 5000 records.
+- name: Journaux d’activité de connexion
   questions:
   - question: >
-      ldentity Protection m’informe d’une détection de risque, mais je ne vois pas à quelle connexion il correspond dans le rapport sur les connexions. Est-ce normal ?
+      I see .XXX in part of the IP address from a user in my sign in logs. Why is that happening?
     answer: >
-      Oui, Identity Protection évalue les risques pour tous les flux d’authentification, qu’ils soient interactifs ou non. Toutefois, seules les connexions interactives sont répertoriées.
-  - question: >
-      Comment faire pour savoir pourquoi une connexion ou un utilisateur ont été signalés comme étant « à risque » dans le portail Azure ?
-    answer: >
-      Si vous avez un abonnement **Azure AD Premium**, vous pouvez en savoir plus sur les détections de risques sous-jacentes en sélectionnant l’utilisateur dans **Utilisateurs associés à un indicateur de risque** ou en sélectionnant un enregistrement dans le rapport **Connexions risquées**. Si vous avez un abonnement **Gratuit** ou **De base**, vous pouvez afficher les utilisateurs à risque et les rapports de connexions risquées, mais vous pouvez pas consulter les détections de risques sous-jacentes.
-  - question: >
-      Comment les adresses IP sont-elles calculées dans le rapport des connexions et des connexions à risque ?
-    answer: "Les adresses IP sont émises de manière à ce qu’il n’existe aucune connexion définitive entre une adresse IP et l’endroit où se trouve physiquement l’ordinateur avec cette adresse. Le mappage des adresses IP est compliqué par des facteurs tels que les fournisseurs mobiles et les VPN qui émettent des adresses IP à partir de pools centraux souvent très éloignés de l’endroit où l’appareil client est réellement utilisé. Pour le moment, la conversion de l’adresse IP en un emplacement physique constitue la meilleure solution pour les suivis, les données de registre, les recherches inversées et d’autres informations dans les rapports Azure AD. \n"
-  - question: >
-      Que signifie la détection de risque « Connexion avec un risque supplémentaire détectée » ?
-    answer: >
-      Pour vous donner une idée de toutes les connexions à risque dans votre environnement, « Connexion avec un risque supplémentaire détectée » fonctionne comme un conteneur de connexions pour les détections propres aux abonnés d’Azure AD Identity Protection.
+      Azure AD may redact part of an IP address in the sign in logs to protect user privacy when a user may not belong to the tenant viewing the logs. This happens in two cases: first, during cross tenant sign ins, such as when a CSP technician signs into a tenant that CSP manages. Second, when our service was not able to determine the user's identity with sufficient confidence to be sure the user belongs to the tenant viewing the logs.
 - name: Accès conditionnel
   questions:
   - question: >
-      Quelles sont les nouveautés apportées par cette fonctionnalité ?
+      What's new with this feature?
     answer: >
-      Les clients peuvent maintenant résoudre les problèmes de stratégies d’accès conditionnel grâce à tous les rapports de connexion. Les clients peuvent examiner l’état de l’accès conditionnel et consulter en détail les stratégies applicables à la connexion, ainsi que les résultats de chaque stratégie.
+      Customers can now troubleshoot Conditional Access policies through all sign-ins report. Customers can review the Conditional Access status and dive into the details of the policies that applied to the sign-in and the result for each policy.
   - question: >
-      Comment faire pour démarrer ?
-    answer: "Pour commencer :\n\n* Accédez au rapport de connexion dans le [portail Azure](https://portal.azure.com).\n* Cliquez sur la connexion que vous souhaitez dépanner.\n* Accédez à l’onglet **Accès conditionnel**. Cet onglet permet de consulter toutes les stratégies ayant eu une incidence sur des connexions, ainsi que le résultat de chaque stratégie. \n    \n"
+      How do I get started?
+    answer: "To get started:\n\n* Navigate to the sign-ins report in the [Azure portal](https://portal.azure.com).\n* Click on the sign-in that you want to troubleshoot.\n* Navigate to the **Conditional Access** tab.\nHere, you can view all the policies that impacted the sign-in and the result for each policy. \n    \n"
   - question: >
-      Quelles sont toutes les valeurs acceptées par l’état de l’accès conditionnel ?
-    answer: "L’état de l’accès conditionnel peut avoir les valeurs suivantes :\n\n* **Non applicable** : Aucune stratégie d’accès conditionnel ne s’appliquait à l’utilisateur et à l’application. \n* **Réussite** : Une stratégie d’accès conditionnel s’appliquait à l’utilisateur et à l’application, et les stratégies d’accès conditionnel ont été respectées. \n* **Échec** : la connexion a satisfait à la condition d’utilisateur et d’application d’au moins une stratégie d’accès conditionnel et les contrôles d’octroi ne sont pas satisfaisants ou ne sont pas configurés pour bloquer l’accès.\n    \n"
+      What are all possible values for the Conditional Access status?
+    answer: "Conditional Access status can have the following values:\n\n* **Not Applied**: This means that there was no Conditional Access policy with the user and app in scope. \n* **Success**: This means that there was a Conditional Access policy with the user and app in scope and Conditional Access policies were successfully satisfied. \n* **Failure**: The sign-in satisfied the user and application condition of at least one Conditional Access policy and grant controls are either not satisfied or set to block access.\n    \n"
   - question: >
-      Quelles sont toutes les valeurs acceptées par les résultats de la stratégie d’accès conditionnel ?
-    answer: "Une stratégie d’accès conditionnel peut aboutir aux résultats suivants :\n\n* **Réussite** : La stratégie a été respectée.\n* **Échec** : La stratégie n’a pas été respectée.\n* **Non applicable** : Ce résultat peut découler du non-respect des conditions de la stratégie.\n* **Inactive** : La stratégie se trouve dans un état désactivé. \n    \n"
+      What are all possible values for the Conditional Access policy result?
+    answer: "A Conditional Access policy can have the following results:\n\n* **Success**: The policy was successfully satisfied.\n* **Failure**: The policy was not satisfied.\n* **Not applied**: This might be because the policy conditions did not meet.\n* **Not enabled**: This is due to the policy in disabled state. \n    \n"
   - question: >
-      Le nom de la stratégie dans le rapport de connexion ne correspond pas tout le temps au nom de la stratégie d’accès conditionnel. Pourquoi ?
+      The policy name in the all sign-in report does not match the policy name in CA. Why?
     answer: >
-      Dans tout le rapport de connexion, le nom de la stratégie d’accès conditionnel correspond au nom qu’elle avait au moment de la connexion. Il peut différer si vous l’avez mis à jour ultérieurement, c’est-à-dire après la connexion.
+      The policy name in the all sign-in report is based on the Conditional Access policy name at the time of the sign-in. This can be inconsistent with the policy name in CA if you updated the policy name later, that is, after the sign-in.
   - question: >
-      Mon authentification a été bloquée en raison d’une stratégie d’accès conditionnel, mais le rapport d’activité de connexion indique que la connexion a réussi. Pourquoi ?
-    answer: Le rapport de connexion peut ne pas afficher de résultats précis pour les scénarios Exchange ActiveSync lors de l’application d’un accès conditionnel. Cela peut arriver lorsque le résultat de connexion dans le rapport montre l’établissement d’une connexion, alors que la connexion a en réalité échoué à cause d’une stratégie d’accès conditionnel.
+      My sign-in was blocked due to a Conditional Access policy, but the sign-in activity report shows that the sign-in succeeded. Why?
+    answer: Currently the sign-in report may not show accurate results for Exchange ActiveSync scenarios when Conditional Access is applied. There can be cases when the sign-in result in the report shows a successful sign-in, but the sign-in actually failed due to a Conditional Access policy.

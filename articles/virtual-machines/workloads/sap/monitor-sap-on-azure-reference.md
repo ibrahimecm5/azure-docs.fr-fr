@@ -1,19 +1,19 @@
 ---
 title: Surveiller la référence de données SAP sur Azure
 description: Matériel de référence important nécessaire pour surveiller SaP sur Azure.
-author: Ajayan1008
+author: mamccrea
 ms.topic: reference
-ms.author: v-hborys
+ms.author: mamccrea
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.custom: subject-monitoring
 ms.date: 08/27/2021
-ms.openlocfilehash: b2e5fe3b8a6ce5afec5489bfa6c95e34641455c6
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 36d90dc91a37d3881f7fb74637b74759904bf3c7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101812"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060638"
 ---
 # <a name="monitor-sap-on-azure-preview-data-reference"></a>Surveiller la référence de données SAP sur Azure (version préliminaire)
 

@@ -12,16 +12,14 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: conversion de texte par synthèse vocale
-ms.openlocfilehash: a086ebf1d7e9da9f8394a6cdde411e5ee55a5f28
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: c3a4caa638debfa32fa6d571b473b2bf5bd0cf09
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511049"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990373"
 ---
 # <a name="what-is-neural-text-to-speech"></a>Qu’est-ce que la synthèse vocale neuronale ?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 La synthèse vocale neuronale Microsoft utilise des réseaux neuronaux profonds pour rendre les voix des ordinateurs quasiment indistinctes des enregistrements des personnes. Grâce à la prosodie naturelle quasi humaine et à la bonne articulation des mots, la synthèse vocale neuronale réduit considérablement la fatigue d’écoute quand il s’agit d’interagir avec les systèmes d’intelligence artificielle.
 
