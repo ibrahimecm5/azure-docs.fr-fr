@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 10/28/2021
 ms.author: jasteppe
-ms.openlocfilehash: f82e1f2bacd0ae863b4ddac19a16a45e52ff173a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 85fa6aff2e9c1702813c1c865d7f5e85c315c343
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445948"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156461"
 ---
 # <a name="open-source-projects"></a>Projets open source
 
@@ -22,7 +22,7 @@ consultez nos projets open source sur GitHub qui fournissent du code source et d
 
 #### <a name="fhir-integration"></a>Intégration de FHIR
 
-* [Microsoft/IoMT-fhir](https://github.com/microsoft/iomt-fhir): version open source du service administré des API Azure Healthcare pour le connecteur IOT. Peut être utilisé avec n’importe quel service FHIR&#174; (Fast Healthcare Interoperability Resources) qui prend en charge [FHIR R7&#174;](https://https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
+* [Microsoft/IoMT-fhir](https://github.com/microsoft/iomt-fhir): version open source du service administré des API Azure Healthcare pour le connecteur IOT. Peut être utilisé avec n’importe quel service FHIR&#174; (Fast Healthcare Interoperability Resources) qui prend en charge [FHIR R7&#174;](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
 
 #### <a name="device-and-fhir-destination-mappings"></a>Mappages de destination des appareils et FHIR
 

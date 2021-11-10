@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 10/19/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: d563907d3567607e537eebfc5c91be02e27fd758
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8ee5cc31e0127ead62fa91f6b1bfab66854aac83
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014760"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260401"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Afficher et télécharger les tarifs Azure de votre organisation
 
@@ -27,12 +27,15 @@ Selon les stratégies définies pour votre organisation par l’administrateur d
 
 1. En tant qu’administrateur d’entreprise, connectez-vous au [Portail Azure](https://portal.azure.com/).
 1. Recherchez *Gestion des coûts + facturation*.  
-   ![Capture d’écran montrant une recherche dans le Portail Azure.](./media/ea-pricing/portal-cm-billing-search.png)
-1. Sous le compte de facturation, sélectionnez **Utilisation + frais**.  
+   ![Capture d’écran montrant une recherche dans le portail Azure](./media/ea-pricing/portal-cm-billing-search.png).
+1. Sélectionnez un profil de facturation. Selon votre accès, vous devrez peut-être sélectionner au préalable un compte de facturation.
+1. Dans le menu de navigation, sélectionnez **Utilisation + frais**.  
    ![Capture d’écran montrant l’utilisation et les frais sous Facturation](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 1. Sélectionnez l’![icône de téléchargement](./media/ea-pricing/download-icon.png). **Télécharger** pour le mois.
-1. Sous **Grille tarifaire**, sélectionnez **Télécharger le fichier CSV**.  
+1. Dans la page Télécharger l’utilisation + les frais, sous Grille tarifaire, sélectionnez **Préparer le document**. La préparation de votre fichier peut prendre un certain temps.  
     :::image type="content" source="./media/ea-pricing/download-enterprise-agreement-price-sheet-01.png" alt-text="Capture d’écran illustrant l’option Télécharger l’utilisation et les frais." :::
+1. Lorsque le fichier est prêt pour le téléchargement, sélectionnez **Télécharger le fichier .CSV**.
+
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Télécharger les tarifs pour un compte MCA ou MPA
 

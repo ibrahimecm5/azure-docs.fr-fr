@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/15/2021
-ms.openlocfilehash: fd4f7d583df6c949fd549cfdc3020f15468f0e2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 699906e99adabdd14520eb0b391d7b1d6018ffa5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661219"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219059"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Pagination dans Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -23,7 +23,7 @@ Dans Azure Cosmos DB, les requêtes peuvent comporter plusieurs pages de résul
 
 Les résultats d’une requête sont parfois répartis sur plusieurs pages. Les résultats de chaque page sont générés par une exécution de requête distincte. Lorsque les résultats de la requête ne peuvent pas être retournés en une seule exécution, Azure Cosmos DB répartit automatiquement les résultats sur plusieurs pages.
 
-Vous pouvez spécifier le nombre maximal d’éléments retournés par une requête en définissant `MaxItemCount`. `MaxItemCount` est spécifié par demande et indique que le moteur de requête renverra ce nombre d’éléments au maximum. Vous pouvez définir `MaxItemCount` sur `-1` si vous ne voulez pas limiter le nombre de résultats par exécution de requête.
+Vous pouvez spécifier le nombre maximal d’éléments retournés par une requête en définissant `MaxItemCount`. Le `MaxItemCount` est spécifié par requête et indique au moteur de requête de renvoyer ce nombre d’éléments au maximum. Vous pouvez définir `MaxItemCount` sur `-1` si vous ne voulez pas limiter le nombre de résultats par exécution de requête.
 
 De plus, il existe d’autres raisons pour lesquelles le moteur de requête peut être amené à répartir les résultats d’une requête sur plusieurs pages. notamment :
 
@@ -47,12 +47,13 @@ Voici quelques exemples de traitement des résultats à partir de requêtes avec
 
 ## <a name="continuation-tokens"></a>Jetons de continuation
 
-Dans les kits SDK .NET et Java, vous pouvez éventuellement utiliser des jetons de continuation comme signet pour la progression de votre requête. Les exécutions de requête Azure Cosmos DB sont sans état côté serveur et peuvent reprendre à tout moment à l’aide du jeton de continuation. Les jetons de continuation ne sont pas pris en charge dans le kit SDK Node.js. Pour le kit de développement logiciel (SDK) Python, il est pris en charge pour les requêtes à partition unique, et la clé primaire doit être spécifiée dans l’objet d’options, car il n’est pas suffisant dans la requête elle-même.
+Dans les kits de développement logiciel (SDK) .NET et Java, vous pouvez éventuellement utiliser des jetons de continuation comme signet pour la progression de votre requête. Les exécutions de requête Azure Cosmos DB sont sans état côté serveur et peuvent reprendre à tout moment à l’aide du jeton de continuation. Pour les kits de développement logiciel (SDK) Python et Node.js, ils sont pris en charge pour les requêtes à partition unique, et la clé primaire doit être spécifiée dans l’objet d’options, car elle ne suffit pas dans la requête elle-même.
 
 Voici quelques exemples d’utilisation de jetons de continuation :
 
 - [Kit de développement logiciel (SDK) .NET](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L230)
 - [Kit SDK Java](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Kit de développement logiciel (SDK) Node.js](https://github.com/Azure/azure-sdk-for-js/blob/2186357a6e6a64b59915d0cf3cba845be4d115c4/sdk/cosmosdb/cosmos/samples/src/BulkUpdateWithSproc.ts#L16-L31)
 - [Kit de développement logiciel (SDK) Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Si la requête retourne un jeton de continuation, il existe des résultats de requête supplémentaires.

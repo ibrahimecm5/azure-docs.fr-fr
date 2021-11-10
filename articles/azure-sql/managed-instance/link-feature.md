@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, danil
-ms.date: 11/02/2021
-ms.openlocfilehash: 0d2a02510a70f35a9744370da8675636a7f296c5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/05/2021
+ms.openlocfilehash: 19851f1ff3bef1ab57d23013ada78bec5665b7c5
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465259"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989798"
 ---
 # <a name="link-feature-for-azure-sql-managed-instance-limited-preview"></a>Fonctionnalité de liaison pour Azure SQL Managed Instance (préversion limitée)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ Pour utiliser la fonctionnalité de liaison, voici ce dont vous avez besoin :
 - Une connectivité réseau entre le serveur SQL et l’instance managée est requise. Si votre serveur SQL s’exécute localement, utilisez une liaison VPN ou ExpressRoute. Si votre serveur SQL s’exécute sur une machine virtuelle Azure, vous pouvez soit déployer votre machine virtuelle sur le même sous-réseau que votre instance managée, soit utiliser l’appairage global de réseaux virtuels pour connecter deux sous-réseaux distincts. 
 - Azure SQL Managed Instance provisionné sur n’importe quel niveau de service.
 
-Utilisez le lien suivant pour vous inscrire à la préversion limitée de la fonctionnalité de liaison. Les clients sont intégrés au fur et à mesure, car le nombre de sièges actuellement disponibles est limité. Vous serez intégré à la première occasion. Les instances managées déployées à partir du 2/11/2021 sont prioritaires, et bien que les instances managées déployées avant cette date soient prises en charge, l’intégration peut prendre plus de temps. 
+Utilisez le lien suivant pour vous inscrire à la préversion limitée de la fonctionnalité de liaison. 
 
 > [!div class="nextstepaction"]
 > [S’inscrire à la préversion de la fonctionnalité de liaison](https://aka.ms/mi-link-signup)

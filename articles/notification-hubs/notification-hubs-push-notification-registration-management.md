@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a2e9d19c3847c5f2c7153580e463ce1e4d1d657
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: a9eb83289beaf3cafb80bda1b5c25bf6b4cb9528
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768768"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467736"
 ---
 # <a name="registration-management"></a>Gestion des inscriptions
 
@@ -39,7 +39,7 @@ Une inscription associe le handle PNS (Platform Notification Service, service de
 
 ### <a name="installations"></a>Installations
 
-Une installation est une inscription améliorée qui inclut un conteneur de propriétés associées à des opérations push. C’est la meilleure approche, et la plus récente, pour inscrire vos appareils. Toutefois, elle n’est actuellement pas prise en charge par le Kit de développement logiciel .NET côté client ([SDK Notification Hub pour les opérations de serveur principal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)).  Cela signifie que si vous vous inscrivez à partir de l'appareil client lui-même, vous devrez utiliser l’approche [API REST Notification Hubs](/rest/api/notificationhubs/create-overwrite-installation) pour prendre en charge ces installations. Si vous utilisez un service principal, vous devriez être en mesure d'utiliser [SDK Notification Hub pour les opérations de serveur principal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Une installation est une inscription améliorée qui inclut un conteneur de propriétés associées à des opérations push. Il s’agit de la dernière et meilleure approche pour inscrire vos appareils à l’aide du kit de développement logiciel (SDK) .NET côté client ([Kit de développement logiciel (SDK) du hub de notification pour les opérations du serveur principal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)).  Vous pouvez également utiliser l’approche de l’[API REST Notification Hubs](/rest/api/notificationhubs/create-overwrite-installation) pour inscrire des installations sur un appareil client. Si vous utilisez un service principal, vous devriez être en mesure d'utiliser [SDK Notification Hub pour les opérations de serveur principal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Voici certains avantages essentiels que présente l’utilisation d’installations :
 

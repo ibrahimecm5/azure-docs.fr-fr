@@ -7,13 +7,13 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.collection: linux
-ms.date: 02/18/2020
-ms.openlocfilehash: 352aea7f000082a2f978005d958b41669e191584
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 11/02/2021
+ms.openlocfilehash: 3c857f01ba5a706c8b20289221badbee3aa3dccf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122525751"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471627"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Extension de machine virtuelle Log Analytics pour Linux
 
@@ -21,10 +21,8 @@ ms.locfileid: "122525751"
 
 Les journaux Azure Monitor fournissent des fonctionnalités de supervision, d’alerte et de correction d’alertes pour les ressources cloud et locales. L’extension de machine virtuelle Log Analytics pour Linux est publiée et prise en charge par Microsoft. L’extension installe l’agent Log Analytics sur les machines virtuelles Azure et inscrit les machines virtuelles dans un espace de travail Log Analytics existant. Ce document présente les plateformes, configurations et options de déploiement prises en charge pour l’extension de machine virtuelle Log Analytics pour Linux.
 
->[!NOTE]
->Dans le cadre de la transition en cours entre Microsoft Operations Management Suite (OMS) et Azure Monitor, l’agent OMS pour Windows ou Linux sera appelé l’agent Log Analytics pour Windows et l’agent Log Analytics pour Linux.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> Les serveurs avec Azure Arc vous permettent de déployer, supprimer et mettre à jour l’extension de machine virtuelle de l’agent Log Analytics sur des machines virtuelles Linux et Windows non Azure, ce qui simplifie la gestion de votre machine hybride tout au long de son cycle de vie. Pour plus d’informations, consultez [Gestion des extensions de machine virtuelle avec des serveurs compatibles avec Azure Arc](../../azure-arc/servers/manage-vm-extensions.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -33,6 +31,7 @@ Les journaux Azure Monitor fournissent des fonctionnalités de supervision, d’
 Pour plus d’informations sur les distributions Linux prises en charge, consultez l’article [Vue d’ensemble des agents Azure Monitor](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version de l’agent et de l’extension de machine virtuelle
+
 Le tableau ci-après mappe la version de l’extension de machine virtuelle Log Analytics sur la version du bundle de l’agent Log Analytics pour chaque mise en production. Un lien vers les notes de publication pour la version du bundle de l’Agent Log Analytics est inclus. Les notes de version fournissent des détails sur les correctifs de bogues et les nouvelles fonctionnalités disponibles pour une version spécifique de l’agent.  
 
 | Version d’extension de machine virtuelle Linux Log Analytics | Version du bundle de l’Agent Log Analytics | 
@@ -69,7 +68,7 @@ L’extension de l’agent Log Analytics pour Linux nécessite que la machine vi
 
 ## <a name="extension-schema"></a>Schéma d’extensions
 
-Le JSON suivant illustre le schéma pour l’extension d’agent Log Analytics. L’extension nécessite l’ID et la clé de l’espace de travail Log Analytics cible ; Ces valeurs peuvent être [trouvées dans votre espace de travail Log Analytics](../../azure-monitor/vm/monitor-virtual-machine.md) dans le portail Azure. La clé de l’espace de travail devant être traitée comme une donnée sensible, elle est stockée dans une configuration protégée. Les données du paramètre de protection de l’extension de machine virtuelle Azure sont chiffrées et ne sont déchiffrées que sur la machine virtuelle cible. Notez que **workspaceId** et **workspaceKey** respectent la casse.
+Le JSON suivant illustre le schéma de l’extension d’agent Log Analytics. L’extension nécessite l’ID et la clé de l’espace de travail Log Analytics cible ; Ces valeurs peuvent être [trouvées dans votre espace de travail Log Analytics](../../azure-monitor/vm/monitor-virtual-machine.md) dans le portail Azure. La clé de l’espace de travail devant être traitée comme une donnée sensible, elle est stockée dans une configuration protégée. Les données du paramètre de protection de l’extension de machine virtuelle Azure sont chiffrées et ne sont déchiffrées que sur la machine virtuelle cible. Notez que **workspaceId** et **workspaceKey** respectent la casse.
 
 ```json
 {
@@ -109,13 +108,12 @@ Le JSON suivant illustre le schéma pour l’extension d’agent Log Analytics. 
 | workspaceId (par exemple) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (par exemple) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
-
 ## <a name="template-deployment"></a>Déploiement de modèle
 
 >[!NOTE]
 >Certains composants de l’extension de machine virtuelle Log Analytics sont également fournis avec l’[extension de machine virtuelle de diagnostic](./diagnostics-linux.md). En raison de cette architecture, des conflits peuvent survenir si les deux extensions sont instanciées dans le même modèle Resource Manager. Pour éviter ces conflits au moment de l’installation, utilisez la [directive `dependsOn`](../../azure-resource-manager/templates/resource-dependency.md#dependson) pour vous assurer que les extensions sont installées de manière séquentielle. Les extensions peuvent être installées dans n’importe quel ordre.
 
-Les extensions de machines virtuelles Azure peuvent être déployées avec des modèles Azure Resource Manager. Les modèles sont particulièrement adaptés lorsque vous déployez une ou plusieurs machines virtuelles nécessitant une configuration post-déploiement, comme l’intégration aux journaux Azure Monitor. Vous trouverez un exemple de modèle Resource Manager qui inclut l’extension de machine virtuelle Agent Log Analytics dans la [Galerie de démarrage rapide Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/oms-extension-ubuntu-vm). 
+Les extensions de machines virtuelles Azure peuvent être déployées avec des modèles Azure Resource Manager. Les modèles sont particulièrement adaptés lorsque vous déployez une ou plusieurs machines virtuelles nécessitant une configuration post-déploiement, comme l’intégration aux journaux Azure Monitor. Vous trouverez un exemple de modèle Resource Manager qui inclut l’extension de machine virtuelle d’agent Log Analytics dans la [Galerie de démarrage rapide Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/oms-extension-ubuntu-vm). 
 
 La configuration JSON pour une extension de machine virtuelle peut être imbriquée à l’intérieur de la ressource de machine virtuelle ou placée à la racine ou au niveau supérieur d’un modèle de Resource Manager JSON. Le positionnement de la configuration JSON affecte la valeur du nom de la ressource et son type. Pour plus d’informations, consultez [Définition du nom et du type des ressources enfants](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
@@ -171,7 +169,7 @@ Lorsque vous placez l’extension JSON à la racine du modèle, le nom de ressou
 
 ## <a name="azure-cli-deployment"></a>Déploiement de l’interface de ligne de commande Azure
 
-Vous pouvez utiliser l’interface de ligne de commande Azure pour déployer l’extension de machine virtuelle d’agent Log Analytics sur une machine virtuelle existante. Remplacez la valeur de *myWorkspaceKey* ci-dessous par votre clé d’espace de travail et la valeur de *myWorkspaceId* par votre ID d’espace de travail. Ces valeurs réside dans votre espace de travail Log Analytics dans le Portail Azure, sous *Paramètres avancés*. 
+Vous pouvez utiliser Azure CLI pour déployer l’extension de machine virtuelle d’agent Log Analytics sur une machine virtuelle existante. Remplacez la valeur de *myWorkspaceKey* ci-dessous par votre clé d’espace de travail et la valeur de *myWorkspaceId* par votre ID d’espace de travail. Ces valeurs réside dans votre espace de travail Log Analytics dans le Portail Azure, sous *Paramètres avancés*. 
 
 ```azurecli
 az vm extension set \

@@ -2,21 +2,21 @@
 title: Améliorer les performances de l’index columnstore
 description: Réduisez les besoins de mémoire ou augmentez la mémoire disponible afin d’optimiser le nombre de lignes qu’un index columnstore compresse dans chaque rowgroup.
 services: synapse-analytics
-author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: jrasnick
-ms.reviewer: igorstan
+ms.date: 10/18/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 750fc421cd644ec41384d43705b41602df24719b
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 95d3a7c44608cd44eaa95be44572b56c4231e57f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525402"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237830"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Optimiser la qualité du rowgroup pour améliorer le niveau de performance de l’index columnstore
 
@@ -42,13 +42,13 @@ Pour plus d’informations sur le chargement en masse, voir [Chargement de donn�
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Comment surveiller la qualité du rowgroup
 
-La vue de gestion dynamique sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) contient la définition de vue correspondant à SQL DB) expose des informations utiles telles que le nombre de lignes dans les rowgroups et la raison du découpage, le cas échéant. Vous pouvez créer la vue suivante pour interroger facilement cette vue de gestion dynamique et obtenir ainsi des informations sur le découpage du rowgroup.
+La vue de gestion dynamique (DMV) ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) contient la définition de vue correspondant à SQL DB) expose des informations utiles telles que le nombre de lignes dans les rowgroups et la raison du découpage, le cas échéant. Vous pouvez créer la vue suivante pour interroger facilement cette vue de gestion dynamique et obtenir ainsi des informations sur le découpage du rowgroup.
 
 ```sql
-create view dbo.vCS_rg_physical_stats
-as
-with cte
-as
+CREATE VIEW dbo.vCS_rg_physical_stats
+AS
+WITH cte
+AS
 (
 select   tb.[name]                    AS [logical_table_name]
 ,        rg.[row_group_id]            AS [row_group_id]
@@ -65,11 +65,11 @@ JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  
                                                                             AND rg.[pdw_node_id]   = nt.[pdw_node_id]
                                         AND rg.[distribution_id]    = nt.[distribution_id]
 )
-select *
-from cte;
+SELECT *
+FROM cte;
 ```
 
-trim_reason_desc indique si le rowgroup a été découpé (trim_reason_desc = NO_TRIM signifie qu’aucun découpage n’a été effectué et que la qualité du rowgroup est optimale). Les raisons suivantes indiquent un découpage prématuré du rowgroup :
+La colonne `trim_reason_desc` indique si le rowgroup a été découpé (trim_reason_desc = NO_TRIM signifie qu’aucun découpage n’a été effectué et que la qualité du rowgroup est optimale). Les raisons suivantes indiquent un découpage prématuré du rowgroup :
 
 - CHARGEMENT EN BLOC : cette raison de découpage est utilisée si le lot entrant de lignes pour la charge est inférieur à 1 million de lignes. Le moteur créera des rowgroups compressés si plus de 100 000 lignes sont insérées (par opposition à l’insertion dans le deltastore), mais affiche BULKLOAD comme raison du découpage. Dans ce scénario, vous pouvez augmenter votre charge de lot pour inclure davantage de lignes. En outre, réévaluez votre schéma de partitionnement pour vous assurer qu’il n’est pas trop granulaire car les rowgroups ne peuvent pas s’étendre sur plusieurs limites de partition.
 - MEMORY_LIMITATION : pour créer des groupes de 1 million de lignes, le moteur requiert une certaine quantité de mémoire de travail. Lorsque la mémoire disponible de la session de chargement est inférieure à la mémoire de travail requise, les rowgroups sont prématurément découpés. Les sections suivantes expliquent comment estimer la mémoire requise et comment allouer davantage de mémoire.
@@ -88,8 +88,6 @@ La mémoire maximale nécessaire à la compression d’un rowgroup est d’envir
 > Où les colonnes de chaîne courte utilisent des données de type chaîne <= 32 octets, et les colonnes de chaîne longueur utilisent des données de type chaîne > 32 octets.
 
 Les chaînes longues sont compressés avec une méthode de compression conçue pour la compression de texte. Cette méthode de compression utilise un *dictionnaire* pour stocker les modèles de texte. La taille maximale d’un dictionnaire est de 16 Mo. Il n’y qu’un seul dictionnaire pour chaque colonne de chaîne longue dans le rowgroup.
-
-Pour obtenir une présentation détaillée des besoins en mémoire de columnstore, visionnez la vidéo [Mise à l’échelle de SQL Synapse : configuration et instructions](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Réduction des besoins en mémoire
 

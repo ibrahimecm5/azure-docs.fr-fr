@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 3db7ccf1e1b668697ad37d5245d93b82ae56d8de
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f6d54941d01bf6588a330dcf822b38c46ca8eed6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433115"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846536"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -33,7 +33,7 @@ Il existe plusieurs différences entre la commande sync et la commande copy :
 
 1. Par défaut, l’indicateur récursif possède la valeur true et la synchronisation copie tous les sous-répertoires. La synchronisation copie uniquement les fichiers de niveau supérieur à l’intérieur d’un répertoire si l’indicateur récursif possède la valeur false.
 2. Lors de la synchronisation entre répertoires virtuels, ajoutez une barre oblique finale au chemin d’accès (voir exemples) s’il existe un objet blob portant le même nom que l’un des répertoires virtuels.
-3. Si l’indicateur « `deleteDestination` » est défini sur true ou prompt, la synchronisation supprime les fichiers et objets blob de destination qui ne sont pas présents au niveau de la source.
+3. Si l’indicateur « `--delete-destination` » est défini sur true ou prompt, la synchronisation supprime les fichiers et objets blob de destination qui ne sont pas présents au niveau de la source.
 
 ## <a name="related-conceptual-articles"></a>Articles conceptuels associés
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 7/7/2021
-ms.openlocfilehash: 9fbcf03159e11aa9d2951f3f951290eb6e51b511
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.date: 11/02/2021
+ms.openlocfilehash: 716c425958a457b45736835029b90567c090d4a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670135"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446977"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Niveaux de service Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,8 @@ ms.locfileid: "129670135"
 Azure SQL Database fournit également le niveau de service Hyperscale : 
 
 - Conçu pour la plupart des charges de travail métier, le niveau [Hyperscale](service-tier-hyperscale.md) offre des fonctionnalités de stockage hautement évolutif, d'échelle horizontale en lecture, de mise à l'échelle rapide et de restauration rapide de base de données.
+
+Pour obtenir une comparaison du modèle d’achat vCore avec le modèle d’achat DTU, consultez [Ressources et modèles d’achat](purchasing-models.md).
 
 ## <a name="service-tier-comparison"></a>Comparaison des niveaux de service
 
@@ -51,7 +53,8 @@ Le tableau suivant décrit les principales différences entre les niveaux de ser
 | | Instance managée SQL  | [24 Go par vCore](../managed-instance/resource-limits.md#service-tier-characteristics) | N/A | Jusqu’à 4 To - [limité par taille de stockage](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **Débit d’écriture des journaux** | SQL Database | Bases de données uniques : [4,5 Mo/s par vCore (max 50 Mo/s)](resource-limits-vcore-single-databases.md) <br> Pools élastiques : [6 Mo/s par vCore (max 62,5 Mo/s)](resource-limits-vcore-elastic-pools.md)| 100 Mo/s | Bases de données uniques : [12 Mo/s par vCore (max 96 Mo/s)](resource-limits-vcore-single-databases.md) <br> Pools élastiques : [15 Mo/s par vCore (max 120 Mo/s)](resource-limits-vcore-elastic-pools.md)|
 | | Instance managée SQL | [3 Mo/s par vCore (22 Mo/s max)](../managed-instance/resource-limits.md#service-tier-characteristics) | N/A | [4 Mo/s par vCore (48 Mo/s max)](../managed-instance/resource-limits.md#service-tier-characteristics) |
-|**Disponibilité**|Tous| 99,99 % |  [99,95 % avec un réplica secondaire, 99,99 % avec d’autres réplicas](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % avec base de données unique et redondante dans une zone](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Disponibilité**|SQL Database ([SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/))| 99,99 % | [99,95 % avec un réplica secondaire, 99,99 % avec d’autres réplicas](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % avec base de données unique et redondante dans une zone](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+| |SQL Managed Instance ([SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/))| 99,99 % |  [99,95 % avec un réplica secondaire, 99,99 % avec d’autres réplicas](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database-) | 99,99 % <br/> [99,995 % avec base de données unique et redondante dans une zone](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Sauvegardes**|Tous|RA-GRS, 1 à 35 jours (7 jours par défaut) | RA-GRS, 7 jours, récupération rapide jusqu'à une date et heure (PITR) | RA-GRS, 1 à 35 jours (7 jours par défaut) |
 |**OLTP en mémoire** | | N/A | Prise en charge partielle. Les types de tables optimisées en mémoire, les variables de table et les modules compilés en mode natif sont pris en charge. | Disponible |
 |**Réplicas en lecture seule**| | 0 intégré <br> 0 à 4 utilisant la [géoréplication](active-geo-replication-overview.md) | 0 à 4 intégrés | 1 intégré et inclus dans le prix <br> 0 à 4 utilisant la [géoréplication](active-geo-replication-overview.md) |
@@ -59,10 +62,17 @@ Le tableau suivant décrit les principales différences entre les niveaux de ser
 || Instance managée SQL | [vCore, stockage réservé et stockage de sauvegarde](https://azure.microsoft.com/pricing/details/sql-database/managed/) sont facturés. <br/>Les IOPS ne sont pas facturées.| N/A | [vCore, stockage réservé et stockage de sauvegarde](https://azure.microsoft.com/pricing/details/sql-database/managed/) sont facturés. <br/>Les IOPS ne sont pas facturées.| 
 |**Modèles de remise**| | [Instances réservées](reserved-capacity-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md) (non disponible avec les abonnements dev/test)<br/>Abonnements Dev/Test [Entreprise](https://azure.microsoft.com/offers/ms-azr-0148p/) et [Paiement à l’utilisation](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Azure Hybrid Benefit](../azure-hybrid-benefit.md) (non disponible avec les abonnements dev/test)<br/>Abonnements Dev/Test [Entreprise](https://azure.microsoft.com/offers/ms-azr-0148p/) et [Paiement à l’utilisation](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Instances réservées](reserved-capacity-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md) (non disponible avec les abonnements dev/test)<br/>Abonnements Dev/Test [Entreprise](https://azure.microsoft.com/offers/ms-azr-0148p/) et [Paiement à l’utilisation](https://azure.microsoft.com/offers/ms-azr-0023p/)|
 
-Pour plus d’informations, consultez les détails des différences entre les niveaux de service dans les pages [Azure SQL Database (vCore)](resource-limits-vcore-single-databases.md), [Base de données unique Azure SQL (DTU)](resource-limits-dtu-single-databases.md), [Base de données Azure SQL mise en pool (DTU)](resource-limits-dtu-single-databases.md) et [Azure SQL Managed Instance](../managed-instance/resource-limits.md).
-
 > [!NOTE]
-> Pour plus d'informations sur le niveau de service Hyperscale, consultez [Niveau de service Hyperscale](service-tier-hyperscale.md). Pour obtenir une comparaison du modèle d’achat vCore avec le modèle d’achat DTU, consultez [Ressources et modèles d’achat](purchasing-models.md).
+> Pour plus d’informations sur le Contrat de niveau de service (SLA), consultez [SLA pour Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) ou [SLA pour Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/).
+
+### <a name="resource-limits"></a>Limites des ressources
+
+Pour plus d’informations sur les limites de ressources, consultez :
+
+ - [Azure SQL Database (vCore)](resource-limits-vcore-single-databases.md)
+ - [Single Azure SQL Database (DTU)](resource-limits-dtu-single-databases.md)
+ - [Azure SQL Database en pool (DTU)](resource-limits-dtu-single-databases.md)
+ - [Azure SQL Managed Instance](../managed-instance/resource-limits.md)
 
 ## <a name="data-and-log-storage"></a>Stockage des données et des journaux
 

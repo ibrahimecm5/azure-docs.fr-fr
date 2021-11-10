@@ -3,12 +3,12 @@ title: Fonctions Bicep
 description: Décrit les fonctions à utiliser dans un fichier Bicep pour récupérer des valeurs, utiliser des chaînes et des valeurs numériques, ainsi que récupérer des informations relatives au déploiement.
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 429dca8bd4544e1dd8b22406811e53d0ed2ea623
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 4a4f057fe7c29b3ee9b76aa03992ff1efd70079c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070562"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226907"
 ---
 # <a name="bicep-functions"></a>Fonctions Bicep
 
@@ -167,5 +167,5 @@ Bicep fournit les fonctions suivantes pour travailler avec des chaînes. Toutes 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour obtenir une description des sections d’un fichier Bicep, consultez [Comprendre la structure et la syntaxe des fichiers Bicep](./file.md).
-* Pour itérer un nombre de fois spécifié lors de la création d’un type de ressource, consultez [Déployer plusieurs instances de ressources dans Bicep](./loop-resources.md).
+* Pour itérer un nombre spécifié de fois lors de la création d’un type de ressource, consultez [Boucles itératives dans Bicep](loops.md).
 * Pour découvrir comment déployer le fichier Bicep que vous avez créé, consultez [Déployer des ressources avec Bicep et Azure PowerShell](./deploy-powershell.md).

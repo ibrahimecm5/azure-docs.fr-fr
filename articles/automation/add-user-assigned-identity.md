@@ -1,20 +1,20 @@
 ---
-title: Utilisation d’une identité managée affectée par l’utilisateur pour un compte Azure Automation (préversion)
+title: Utilisation d’une identité managée affectée par l’utilisateur pour un compte Azure Automation
 description: Cet article explique comment configurer une identité managée affectée par l’utilisateur pour les comptes Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7b1a75aac3166b1fdd3cdd39f5f66bd380339975
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 033f25f5d5902b339a2777cffc8c526a459ca587
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061786"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435526"
 ---
-# <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Utilisation d’une identité managée affectée par l’utilisateur pour un compte Azure Automation (préversion)
+# <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account"></a>Utilisation d’une identité managée affectée par l’utilisateur pour un compte Azure Automation
 
-Cette rubrique vous montre comment ajouter une identité managée affectée par l’utilisateur pour un compte Azure Automation et comment l’utiliser pour accéder à d’autres ressources. Pour plus d’informations sur le fonctionnement des identités managées avec Azure Automation, consultez [Identités managées](automation-security-overview.md#managed-identities-preview).
+Cette rubrique vous montre comment ajouter une identité managée affectée par l’utilisateur pour un compte Azure Automation et comment l’utiliser pour accéder à d’autres ressources. Pour plus d’informations sur le fonctionnement des identités managées avec Azure Automation, consultez [Identités managées](automation-security-overview.md#managed-identities).
 
 > [!NOTE]
 > Les identités managées affectées par l’utilisateur sont uniquement prises en charge pour les tâches cloud.  
@@ -25,7 +25,7 @@ Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://az
 
 - Un compte Azure Automation. Pour obtenir des instructions, consultez [Créer un compte Azure Automation](./quickstarts/create-account-portal.md).
 
-- Une identité managée affectée par le système. Pour des instructions, consultez [À l’aide d’une identité managée affectée par le système pour votre compte Azure Automation (préversion)](enable-managed-identity-for-automation.md).
+- Une identité managée affectée par le système. Pour des instructions, consultez [À l’aide d’une identité managée affectée par le système pour votre compte Azure Automation](enable-managed-identity-for-automation.md).
 
 - Identité managée affectée par l’utilisateur. Pour obtenir des instructions, consultez [Créer une identité managée affectée par l’utilisateur](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 
@@ -303,7 +303,7 @@ Un compte Automation peut utiliser son identité managée affectée par l’util
 
 Avant de pouvoir vous servir de l’identité managée affectée par l’utilisateur dans le cadre de l’authentification, configurez l’accès de cette identité à la ressource Azure où vous prévoyez de l’utiliser. Pour effectuer cette tâche, attribuez le rôle approprié à cette identité sur la ressource Azure cible.
 
-Suivez le principe des privilèges minimum et attribuez avec précaution les seules autorisations nécessaires pour exécuter votre runbook. Par exemple, si le compte Automation est requis uniquement pour démarrer ou arrêter une machine virtuelle Azure, les autorisations attribuées au compte d’identification ou à l’identité managée doivent servir uniquement à démarrer ou arrêter la machine virtuelle. De même, si un runbook lit à partir du stockage blob, attribuez des autorisations en lecture seule.
+Suivez le principe des privilèges minimum et attribuez avec précaution les seules autorisations nécessaires pour exécuter votre runbook. Par exemple, si le compte Automation est requis uniquement pour démarrer ou arrêter une machine virtuelle Azure, les autorisations affectées au compte d’identification ou à l’identité managée doivent servir uniquement à démarrer ou arrêter la machine virtuelle. De même, si un runbook lit à partir du stockage blob, attribuez des autorisations en lecture seule.
 
 Cet exemple utilise Azure PowerShell pour montrer comment attribuer le rôle Contributeur dans l’abonnement à la ressource Azure cible. Le rôle Contributeur est utilisé à titre d’exemple et peut ne pas être requis dans votre cas. Vous pouvez également attribuer le rôle à la ressource Azure cible dans le [portail Azure](../role-based-access-control/role-assignments-portal.md).
 
@@ -336,7 +336,7 @@ Pour les points de terminaison HTTP, vérifiez les points suivants.
 - Une ressource doit être passée avec la demande, en tant que paramètre de requête pour une demande GET et en tant que données de formulaire pour une demande POST.
 - Le type de contenu de la demande de publication doit être `application/x-www-form-urlencoded`.
 
-### <a name="get-access-token-for-user-assigned-managed-identity-using-http-get"></a>Obtenir le jeton d’accès pour l’identité managée affectée par l’utilisateur à l’aide de Http Get  
+### <a name="get-access-token-for-user-assigned-managed-identity-using-http-get"></a>Obtenir le jeton d’accès pour l’identité managée affectée par l’utilisateur à l’aide de la requête HTTP Get  
 
 ```powershell
 $resource= "?resource=https://management.azure.com/"
@@ -348,7 +348,7 @@ $accessToken = Invoke-RestMethod -Uri $url -Method 'GET' -Headers�
 Write-Output $accessToken.access_token 
 ```
 
-### <a name="get-access-token-for-user-assigned-managed-identity-using-http-post"></a>Obtenir le jeton d’accès pour l’identité managée affectée par l’utilisateur à l’aide de Http Post
+### <a name="get-access-token-for-user-assigned-managed-identity-using-http-post"></a>Obtenir le jeton d’accès pour l’identité managée affectée par l’utilisateur à l’aide de la requête HTTP Post
 
 ```powershell
 $url = $env:IDENTITY_ENDPOINT
@@ -397,8 +397,8 @@ print(response.text)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Si l’exécution de vos runbooks ne se termine pas correctement, consultez [Résoudre les problèmes d’identité managée Azure Automation (préversion)](troubleshoot/managed-identity.md).
+- Si l’exécution de vos runbooks ne se termine pas correctement, consultez [Résoudre les problèmes d’identité managée Azure Automation](troubleshoot/managed-identity.md).
 
-- Si vous devez désactiver une identité managée, consultez [Désactiver votre identité managée de compte Azure Automation (préversion)](disable-managed-identity-for-automation.md).
+- Si vous devez désactiver une identité managée, consultez [Désactiver votre identité managée de compte Azure Automation](disable-managed-identity-for-automation.md).
 
 - Pour obtenir une vue d’ensemble de la sécurité du compte Azure Automation, consultez [Vue d’ensemble de l’authentification du compte Automation](automation-security-overview.md).

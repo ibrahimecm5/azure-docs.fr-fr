@@ -6,14 +6,14 @@ metadata:
   ms.author: rosouz
   ms.service: cosmos-db
   ms.topic: conceptual
-  ms.date: 11/30/2020
+  ms.date: 11/02/2021
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: a03572b75d12535dfd81e1539e2d4d27b1ffc2df
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 8dc71afd5e134e1822df027e9b5f51dc33ed3b76
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131011405"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131425838"
 title: Foire aux questions sur Azure Synapse Link pour Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -108,8 +108,7 @@ sections:
       Si certains éléments de votre conteneur enfreignent le [schéma bien défini pour l’analyse](analytical-store-introduction.md#analytical-schema), ils ne seront pas inclus dans le magasin analytique. Si vous vous trouvez face à scénario bloqué par un schéma bien défini pour l’analyse, envoyez un message à l’[équipe Azure Cosmos DB](mailto:cosmosdbsynapselink@microsoft.com) pour obtenir de l’aide.
   - question: >
       Puis-je partitionner les données du magasin analytique différemment de la banque transactionnelle ?
-    answer: >
-      Les données du magasin analytique sont partitionnées en fonction du partitionnement horizontal des partitions dans le magasin transactionnel. Actuellement, vous ne pouvez pas choisir une autre stratégie de partitionnement pour le magasin analytique.
+    answer: "Par défaut, le magasin analytique n’est pas partitionné.Si vos requêtes analytiques ont des filtres fréquemment utilisés, vous avez la possibilité d’opérer un partitionnement sur la base de ces champs pour améliorer les performances des requêtes. Pour plus d’informations, consultez les articles [Présentation du partitionnement personnalisé](custom-partitioning-analytical-store.md) et [Comment configurer un partitionnement personnalisé](configure-custom-partitioning.md).  \n"
   - question: >
       Puis-je personnaliser ou substituer la façon dont les données transactionnelles sont transformées en colonnes dans le magasin analytique ?
     answer: >
@@ -154,7 +153,7 @@ sections:
   - question: >
       Est-il possible d’utiliser des clés managées par le client avec Azure Synapse Link ?
     answer: >
-      Oui, Azure Synapse Link prend en charge la configuration des clés managées par le client à l’aide de l’identité managée de votre compte Azure Cosmos DB. Vous pouvez chiffrer les données du magasin transactionnel et du magasin analytique de manière fluide en utilisant les mêmes clés managées par le client, de manière automatique et transparente. Pour en savoir plus, consultez l’article [Configuration des clés managées par le client à l’aide des identités managées des comptes Azure Cosmos DB](how-to-setup-cmk.md#using-managed-identity).
+      Oui, Azure Synapse Link prend en charge la configuration des clés managées par le client à l’aide de l’identité managée de votre compte Azure Cosmos DB. Vous pouvez chiffrer les données du magasin transactionnel et du magasin analytique de manière fluide en utilisant les mêmes clés managées par le client, de manière automatique et transparente. Pour en savoir plus, consultez [Configuration des clés managées par le client à l’aide des identités managées des comptes Azure Cosmos DB](how-to-setup-cmk.md#using-managed-identity).
   - question: >
       Azure Synapse Link offre-t-il l’isolement réseau avec des réseaux virtuels managés par Azure Synapse ?
     answer: >

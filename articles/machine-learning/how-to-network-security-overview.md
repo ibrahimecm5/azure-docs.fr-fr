@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 9d47a19e4890ac6e81a86aeb04e6a139be555599
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b114077c9af72e9d57d80e783d26f54d0de91410
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132061189"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429752"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Sécuriser les ressources d’espace de travail Azure Machine Learning à l’aide de réseaux virtuels
@@ -113,6 +113,7 @@ Retrouvez les instructions détaillées relatives à cette procédure dans l’a
 ### <a name="limitations"></a>Limites
 
 La sécurisation de votre espace de travail et des ressources associées dans un réseau virtuel présente les limitations suivantes :
+- L’utilisation d’un espace de travail Azure Machine Learning avec point de terminaison privé n’est pas disponible dans les régions Azure China 21Vianet.
 - Toutes les ressources doivent se trouver derrière le même réseau virtuel. Toutefois, des sous-réseaux peuvent être utilisés au sein d’un même réseau virtuel.
 
 ## <a name="secure-the-training-environment"></a>Sécuriser l’environnement d’entraînement

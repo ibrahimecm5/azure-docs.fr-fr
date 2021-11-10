@@ -6,12 +6,12 @@ ms.date: 10/13/2021
 ms.topic: article
 author: nickomang
 ms.author: nickoman
-ms.openlocfilehash: d9ef2efbd4b77f70bb43830e59b7dee0ae8ad26a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 80d6eb34e1b1e0bbce6a8a1f1d2de58dbec51b4c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097597"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447420"
 ---
 # <a name="deploy-and-manage-cluster-extensions-for-azure-kubernetes-service-aks-preview"></a>Déployer et gérer des extensions de cluster pour Azure Kubernetes Service (AKS) (préversion)
 
@@ -121,12 +121,10 @@ az extension update --name k8s-extension
 >[!NOTE]
 > Les extensions de cluster fournissent une plateforme pour les différentes extensions à installer et à gérer sur un cluster AKS. Si vous rencontrez des problèmes lors de l’utilisation de l’une de ces extensions, ouvrez un ticket de support auprès du service respectif.
 
-<!--
 | Extension | Description |
 | --------- | ----------- |
--->
-
-Actuellement, aucune extension n’est disponible.
+| [Dapr][dapr-overview] | Dapr est un runtime portable piloté par les événements qui permet à tout développeur de créer facilement des applications résilientes, sans état et avec état, qui s’exécutent sur le cloud et en périphérie. |
+| [Azure ML][azure-ml-overview] | Utilisez des clusters Azure Container Service pour l’apprentissage, l’inférence et la gestion des modèles d’apprentissage automatique dans Azure Machine Learning. |
 
 ## <a name="supported-regions-and-kubernetes-versions"></a>Régions et versions de Kubernetes prises en charge
 
@@ -227,23 +225,14 @@ az k8s-extension update --name azureml --extension-type Microsoft.AzureML.Kubern
 
 ### <a name="delete-extension-instance"></a>Supprimer une instance d’extension
 
+>[!NOTE]
+> La ressource Azure représentant cette extension est immédiatement supprimée. La version Helm sur le cluster associé à cette extension n’est supprimée que quand les agents s’exécutant sur le cluster Kubernetes disposent d’une connectivité réseau et peuvent à nouveau accéder aux services Azure pour extraire l’état souhaité.
+
 Supprimez une instance d’extension sur un cluster avec la commande `k8s-extension delete` transmettant des valeurs pour les paramètres obligatoires.
 
 ```azurecli
 az k8s-extension delete --name azureml --cluster-name <clusterName> --resource-group <resourceGroupName> --cluster-type managedClusters
 ```
-
->[!NOTE]
-> La ressource Azure représentant cette extension est immédiatement supprimée. La version Helm sur le cluster associé à cette extension n’est supprimée que quand les agents s’exécutant sur le cluster Kubernetes disposent d’une connectivité réseau et peuvent à nouveau accéder aux services Azure pour extraire l’état souhaité.
-
-<!-- when extensions are available, add this section
-## Next steps
-
-Learn more about the cluster extensions currently available for AKS:
-
-> [!div class="nextstepaction"]
-
--->
 
 <!-- LINKS -->
 <!-- INTERNAL -->
@@ -251,8 +240,8 @@ Learn more about the cluster extensions currently available for AKS:
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
-[azure-ml-overview]:  <!-- need link -->
-[dapr-overview]: <!-- Not yet live -->
+[azure-ml-overview]: ../machine-learning/how-to-attach-arc-kubernetes.md
+[dapr-overview]: ./dapr.md
 [k8s-extension-reference]: /cli/azure/k8s-extension
 
 <!-- EXTERNAL -->

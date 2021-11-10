@@ -8,12 +8,12 @@ ms.subservice: purview-data-policies
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: cbd6214687e23b90d0c289dd5a34d9410b7f092a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ea5285c5fd29bfe34f97c87b2ac0c9bd7a5502a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096186"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425232"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Approvisionnement du jeu de données par le propriétaire des données pour le service Stockage Azure
 
@@ -25,18 +25,23 @@ La création de stratégie Purview prend en charge les fonctionnalités suivante
 > [!IMPORTANT]
 > Ces fonctionnalités sont actuellement en préversion. Cette préversion est fournie sans contrat de niveau de service et ne doit pas être utilisée pour des charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+
+
 ## <a name="prerequisites"></a>Prérequis
+
+### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Acceptez de participer à la préversion de la stratégie d’utilisation des données d’Azure Purview
+Cette fonctionnalité étant actuellement en préversion, vous devez [accepter de participer à la préversion des stratégies d’utilisation des données d’Azure Purview](https://aka.ms/opt-in-data-use-policy).
 
 ### <a name="provision-new-accounts-in-an-isolated-test-subscription"></a>Approvisionner de nouveaux comptes dans un abonnement de test isolé
 Suivez les étapes ci-dessous pour créer un compte Azure Purview et un compte Stockage Azure dans un abonnement de test isolé. Activez ensuite la fonctionnalité de stratégie d’accès dans ces comptes.
 
-## <a name="supported-regions"></a>Régions prises en charge
+### <a name="supported-regions"></a>Régions prises en charge
 
 > [!IMPORTANT]
 > 1. La fonctionnalité de stratégie d’accès n’est disponible que sur de nouveaux comptes Azure Purview et Stockage Azure.
 > 2. Cette fonctionnalité ne peut être utilisée que dans les régions répertoriées ci-dessous, où la fonctionnalité de stratégie d’accès est déployée.
 
-### <a name="azure-purview"></a>Azure Purview 
+#### <a name="azure-purview"></a>Azure Purview 
 
 -   Europe Nord
 -   Europe Ouest
@@ -51,7 +56,7 @@ Suivez les étapes ci-dessous pour créer un compte Azure Purview et un compte S
 -   France Centre
 
 
-### <a name="azure-storage"></a>Stockage Azure
+#### <a name="azure-storage"></a>Stockage Azure
 
 -   France Centre
 -   Centre du Canada
@@ -186,7 +191,6 @@ Les étapes de publication d’une stratégie sont les suivantes
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour comprendre les concepts liés aux stratégies d’accès, consultez les articles suivants :
+Consultez cet article pour comprendre les concepts liés à Azure Purview :
 
-* [Concepts pour les stratégies d’accès Azure Purview](concept-data-policies.md)
-* [Concepts relatifs à la découverte des données et à l’accès à celles-ci en libre service dans Azure Purview](concept-self-service.md)
+* [Vue d’ensemble d’Azure Purview](overview.md)

@@ -2,14 +2,14 @@
 title: Tableau de prise en charge de Sauvegarde Azure pour la sauvegarde de SQL Server dans les machines virtuelles Azure
 description: Propose un résumé des limitations et des paramètres de prise en charge de la sauvegarde de SQL Server dans les machines virtuelles Azure avec le service Sauvegarde Azure.
 ms.topic: conceptual
-ms.date: 08/20/2021
+ms.date: 10/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78dace2a60ff566af3485e6be0b7d9efc42d8654
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c0b46a1c75c47b85985946646bf3216c9ab719f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123103876"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219259"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Tableau de prise en charge de la sauvegarde de SQL Server dans les machines virtuelles Azure
 
@@ -33,6 +33,7 @@ Vous pouvez utiliser le service Sauvegarde Azure pour sauvegarder des bases de d
 |Nombre de bases de données pouvant être protégées sur un serveur (et dans un coffre)    |   2000      |
 |Taille de la base de données prise en charge (au-delà, des problèmes de performances peuvent survenir)   |   6 To*      |
 |Nombre de fichiers pris en charge dans une base de données    |   1 000      |
+|Nombre de sauvegardes complètes prises en charge par jour    |    Une sauvegarde planifiée. <br><br> Trois sauvegardes à la demande. <br><br> Nous vous recommandons de ne pas déclencher plus de trois sauvegardes par jour. Toutefois, pour permettre à l’utilisateur de réaliser de nouvelles tentatives en cas d’échec, la limite matérielle pour les sauvegardes à la demande est définie à neuf tentatives. |
 
 _* La taille limite de la base de données dépend du taux de transfert de données pris en charge et de la configuration de la limite de durée de sauvegarde. Il ne s'agit pas de la limite absolue. [En savoir plus](#backup-throughput-performance) sur les performances de débit de sauvegarde._
 

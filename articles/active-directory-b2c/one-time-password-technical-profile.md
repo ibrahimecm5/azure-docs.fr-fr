@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4815eec021e4ebecda065667dca4568ded703ac5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: c54f5636ee7af8142bf5fcd401a2160a69cf550c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131044871"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436894"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Définir un profil technique de mot de passe à usage unique dans une stratégie personnalisée Azure AD B2C
 
@@ -76,7 +77,7 @@ Les paramètres suivants peuvent être utilisés pour configurer le mode de gén
 | CodeExpirationInSeconds | Non | Délai d’expiration du code, en secondes. Minimum : `60` ; maximum : `1200` ; par défaut : `600`. Chaque fois qu'un code est fourni (même code à l'aide de `ReuseSameCode`, ou nouveau code), le délai d'expiration du code est prolongée. Ce délai est également utilisé pour définir le délai d’expiration des nouvelles tentatives (une fois le nombre maximum de nouvelles tentatives atteint, l’utilisateur ne peut plus essayer d’obtenir de nouveaux codes jusqu’à l’expiration de ce délai). |
 | CodeLength | Non | Longueur du code. La valeur par défaut est `6`. |
 | CharacterSet | Non | Jeu de caractères pour le code, formaté pour être utilisé dans une expression régulière. Par exemple : `a-z0-9A-Z`. La valeur par défaut est `0-9`. Le jeu de caractères doit comprendre un minimum de 10 caractères différents dans le jeu spécifié. |
-| NumRetryAttempts | Non | Nombre de tentatives de vérification avant que le code soit considéré comme non valide. La valeur par défaut est `5`. |
+| NumRetryAttempts | Non | Nombre de tentatives de vérification avant que le code soit considéré comme non valide. La valeur par défaut est `5`. Par exemple, si vous affectez à NumRetryAttempts la valeur 2, vous ne serez autorisé à effectuer que 2 tentatives au total (première tentative + nouvelle tentative). Pour la troisième tentative, le nombre maximal de tentatives est considéré comment atteint, que le code soit correct ou non.|
 | NumCodeGenerationAttempts | Non | Nombre maximal de tentatives de génération de code par identificateur. Si elle n’est pas spécifiée, la valeur par défaut est 10. |
 | Opération | Oui | Opération à effectuer. Valeur possible : `GenerateCode`. |
 | ReuseSameCode | Non | Spécifie si le même code doit être fourni au lieu de générer un nouveau code lorsque le code donné n'a pas expiré et reste valide. La valeur par défaut est `false`.  |
