@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24e6b8943d87cf7735cc1baae7027557e3da2ad2
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 35f8b3482eff16197f9851ab849d9bdd370ad314
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505476"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850809"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-linux-using-x509-certificates"></a>Créer et provisionner des appareils IoT Edge à grande échelle sur Linux à l’aide de certificats X.509
 
@@ -106,12 +106,12 @@ Préparez les informations suivantes :
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "<SCOPE_ID>"
+     scope_id: "SCOPE_ID_HERE"
      attestation:
        method: "x509"
-   #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
-       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   #   registration_id: "OPTIONAL_REGISTRATION_ID_LEAVE_COMMENTED_OUT_TO_REGISTER_WITH_CN_OF_IDENTITY_CERT"
+       identity_cert: "REQUIRED_URI_TO_DEVICE_IDENTITY_CERTIFICATE_HERE"
+       identity_pk: "REQUIRED_URI_TO_DEVICE_IDENTITY_PRIVATE_KEY_HERE"
    #  always_reprovision_on_startup: true
    #  dynamic_reprovisioning: false
    ```
@@ -160,15 +160,15 @@ Préparez les informations suivantes :
    [provisioning]
    source = "dps"
    global_endpoint = "https://global.azure-devices-provisioning.net"
-   id_scope = "<SCOPE_ID>"
+   id_scope = "SCOPE_ID_HERE"
    
    [provisioning.attestation]
    method = "x509"
-   registration_id = "<REGISTRATION ID>"
+   registration_id = "REGISTRATION_ID_HERE"
 
-   identity_cert = "<DEVICE IDENTITY CERTIFICATE>"
+   identity_cert = "DEVICE_IDENTITY_CERTIFICATE_HERE"
 
-   identity_pk = "<DEVICE IDENTITY PRIVATE KEY>"
+   identity_pk = "DEVICE_IDENTITY_PRIVATE_KEY_HERE"
    ```
 
 1. Mettez à jour la valeur de `id_scope` avec l'ID d'étendue que vous avez copié à partir de votre instance de DPS.
@@ -258,4 +258,4 @@ sudo iotedge list
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Le processus d’inscription auprès du service d’approvisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous approvisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).
+Le processus d’inscription auprès du service de provisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous provisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).
