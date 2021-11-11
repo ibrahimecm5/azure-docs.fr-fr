@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 4fdcf88200b3c2a6b5371633c10d9246cfbf4c31
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a2a63e62598b291388375e0eb520d390dbdc4278
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730241"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562824"
 ---
 # <a name="limitations-of-azure-arc-enabled-postgresql-hyperscale"></a>Limitations de PostgreSQL Hyperscale avec Azure Arc
 
@@ -23,26 +23,19 @@ Cet article décrit les limitations de PostgreSQL Hyperscale avec Azure Arc.
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="backup-and-restore"></a>Sauvegarde et restauration
+Les fonctionnalités de sauvegarde/restauration ont été temporairement supprimées le temps de finaliser les conceptions et les expériences.
 
-- La restauration dans le temps (telle que la restauration à une date et une heure spécifiques) sur le même groupe de serveurs n’est pas prise en charge. Quand vous procédez à une restauration dans le temps, vous devez restaurer sur un autre groupe de serveurs que vous avez préalablement déployé. Après la restauration sur le nouveau groupe de serveurs, vous pouvez supprimer le groupe de serveurs d’origine.
-- La restauration de la totalité du contenu d’une sauvegarde (par opposition à une restauration jusqu’à un point spécifique dans le temps) sur le même groupe de serveurs est prise en charge pour PostgreSQL version 12. Elle n’est pas prise en charge pour PostgreSQL version 11 en raison d’une limitation du moteur PostgreSQL avec des chronologies. La restauration de l’intégralité du contenu d’une sauvegarde pour un groupe de serveurs PostgreSQL de version 11 ne peut être effectuée que sur un autre groupe de serveurs.
-
+## <a name="high-availability"></a>Haute disponibilité
+La configuration de la haute disponibilité et la vérification du basculement en cas de défaillance de l’infrastructure ne sont pas encore disponible.
 
 ## <a name="databases"></a>Bases de données
+L’hébergement de plusieurs bases de données dans un groupe de serveurs n’est pas pris en charge si vous avez effectué un scale-out du déploiement sur plusieurs nœuds Worker.
 
-L’hébergement de plusieurs bases de données dans un groupe de serveurs n’est pas pris en charge.
+## <a name="roles-and-responsibilities"></a>Les rôles et responsabilités
 
-
-## <a name="security"></a>Sécurité
-
-La gestion des utilisateurs et des rôles n’est pas prise en charge. Pour le moment, continuez à utiliser l’utilisateur standard postgres.
-
-## <a name="roles-and-responsibilities"></a>Rôles et responsabilités
-
-Les rôles et les responsabilités entre Microsoft et ses clients diffèrent entre les services PaaS Azure (Platform as a Service) et Azure Hybrid (comme PostgreSQL Hyperscale avec Azure Arc). 
+Les rôles et les responsabilités entre Microsoft et ses clients diffèrent entre les services gérés par Azure (Platform as a Service ou PaaS) et Azure Hybrid (comme PostgreSQL Hyperscale avec Azure Arc). 
 
 ### <a name="frequently-asked-questions"></a>Forum aux questions
-
 Le tableau ci-dessous récapitule les réponses aux questions fréquemment posées sur les rôles et responsabilités de support.
 
 | Question                      | Azure Platform As A Service (PaaS) | Services Azure Arc hybrides |
@@ -59,7 +52,7 @@ __Pourquoi Microsoft ne fournit pas de contrats SLA sur les services Azure Arc h
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- **Faites un essai.** Démarrez rapidement avec [Démarrage rapide d’Azure Arc](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) sur Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) ou sur une machine virtuelle Azure. 
+- **Faites un essai.** Démarrez rapidement avec [Démarrage rapide d’Azure Arc](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) sur Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) ou sur une machine virtuelle Azure. 
 
 - **Créez votre propre cluster.** Pour créer sur votre propre cluster Kubernetes, procédez comme suit : 
    1. [Installer les outils clients](install-client-tools.md)

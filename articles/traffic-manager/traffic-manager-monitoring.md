@@ -1,21 +1,21 @@
 ---
-title: Surveillance des points de terminaison Azure Traffic Manager | Microsoft Docs
+title: Surveillance des points de terminaison d’Azure Traffic Manager
 description: Cet article explique comment Traffic Manager utilise la surveillance des points de terminaison et le basculement automatique des points de terminaison pour aider les clients Azure à déployer des applications haute disponibilité
 services: traffic-manager
-author: duongau
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/22/2021
-ms.author: duau
-ms.openlocfilehash: ce4ff8cfa4bee895e17cd7ad22c54ff777d210ff
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/02/2021
+ms.author: allensu
+ms.openlocfilehash: 52edf0cbae53540152a9991980499698b3292287
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435179"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467204"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Surveillance des points de terminaison Traffic Manager
 
@@ -134,8 +134,11 @@ La chronologie de la figure suivante est une description détaillée du processu
 9. **Le service est remis en ligne**. Le service devient disponible. Le point de terminaison conserve sont état Détérioré dans Traffic Manager jusqu’à ce que le système de surveillance effectue la vérification d’intégrité suivante.
 10. **Le trafic vers le service est rétabli**. Traffic Manager envoie une requête GET et reçoit une réponse d’état 200 OK. Le service a retrouvé son intégrité. Les serveurs de noms Traffic Manager sont mis à jour et commencent à distribuer le nom DNS du service dans les réponses DNS. Le trafic retourne au point de terminaison tandis que les réponses DNS mises en cache et renvoyées vers d’autres points de terminaison expirent et que les connexions existantes à d’autres points de terminaison se terminent.
 
+    > [!IMPORTANT]
+    > Traffic Manager déploie plusieurs sondes à partir de plusieurs emplacements pour chaque point de terminaison. Plusieurs sondes augmentent la résilience pour la surveillance des points de terminaison. Traffic Manager agrège l’intégrité moyenne des sondes au lieu de s’appuyer sur une instance de sonde singulière. La redondance du système de détection est inhérente à sa conception. Les valeurs de point de terminaison doivent être examinées globalement, non par sonde. Le nombre affiché pour l’intégrité de sonde est une moyenne. L’état ne doit être une préoccupation que si moins de 50 % (0,5) des sondes affichent un état **up**.
+
     > [!NOTE]
-    > Étant donné que Traffic Manager fonctionne au niveau du DNS, il ne peut pas modifier les connexions existantes à un point de terminaison. Lorsqu’il dirige le trafic entre les points de terminaison (en modifiant les paramètres de profil, ou lors d’un basculement ou d’une restauration automatique), Traffic Manager dirige les nouvelles connexions vers les points de terminaison disponibles. Toutefois, les autres points de terminaison peuvent continuer à recevoir le trafic via les connexions existantes, jusqu’à ce que ces sessions s’arrêtent. Pour libérer le trafic à partir des connexions existantes, les applications doivent limiter la durée de session utilisée avec chaque point de terminaison.
+    > Étant donné que Traffic Manager fonctionne au niveau du DNS, il ne peut pas modifier les connexions existantes à un point de terminaison. Lorsqu’il dirige le trafic entre les points de terminaison (en modifiant les paramètres de profil, ou lors d’un basculement ou d’une restauration automatique), Traffic Manager dirige les nouvelles connexions vers les points de terminaison disponibles. D’autres points de terminaison peuvent continuer à recevoir du trafic via des connexions existantes, jusqu’à ce que ces sessions soient arrêtées. Pour libérer le trafic à partir des connexions existantes, les applications doivent limiter la durée de session utilisée avec chaque point de terminaison.
 
 ## <a name="traffic-routing-methods"></a>Méthodes de routage du trafic
 

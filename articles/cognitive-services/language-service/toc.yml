@@ -158,12 +158,10 @@ items:
             href: conversational-language-understanding/prebuilt-component-reference.md
           - name: Limites du service
             href: conversational-language-understanding/service-limits.md
-          - name: API de prédiction
+          - name: API REST
             items:
-              - name: API REST
-                items:
-                  - name: v3.2-preview.2
-                    href: 'https://go.microsoft.com/fwlink/?linkid=2173145'
+              - name: Création
+                href: 'https://aka.ms/clu-authoring-apis'
   - name: Liaison d’entités
     items:
       - name: Vue d’ensemble
@@ -287,9 +285,9 @@ items:
         href: key-phrase-extraction/language-support.md
       - name: Utilisation responsable de l’IA
         items:
-          - name: Note de transparence pour la détection de phrases clés
-            href: /legal/cognitive-services/language-service/transparency-note-key-phrase-detection?context=/azure/cognitive-services/language-service/context/context
-            displayName: 'Transparency note for key phrase detection, key phrase detection transparency, Responsible AI, Responsible use of AI'
+          - name: Note de transparence pour l’extraction de phrases clés
+            href: /legal/cognitive-services/language-service/transparency-note-key-phrase-extraction?context=/azure/cognitive-services/language-service/context/context
+            displayName: 'Transparency note for key phrase extraction, key phrase extraction transparency, Responsible AI, Responsible use of AI'
           - name: Intégration et utilisation responsable
             href: /legal/cognitive-services/language-service/guidance-integration-responsible-use?context=/azure/cognitive-services/language-service/context/context
             displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'

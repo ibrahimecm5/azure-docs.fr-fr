@@ -2,18 +2,18 @@
 title: Personnaliser les configurations de mise en réseau pour une machine virtuelle de basculement | Microsoft Docs
 description: Fournit une vue d’ensemble de la personnalisation des configurations de mise en réseau pour une machine virtuelle de basculement dans le cadre de la réplication des machines virtuelles Azure avec Azure Site Recovery.
 services: site-recovery
-author: sideeksh
-manager: rochakm
+author: rishjai-msft
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: sideeksh
-ms.openlocfilehash: 29896c026b65859448f923bc542ea7198e8f848b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/01/2021
+ms.author: rishjai
+ms.openlocfilehash: 79a33226da71071d8985daf723dde7314116ce37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083457"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475126"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Personnaliser les configurations réseau de la machine virtuelle Azure cible
 
@@ -28,7 +28,8 @@ Découvrez comment Site Recovery permet la récupération d’urgence pour [ce s
 Vous pouvez fournir la configuration des ressources clés suivantes pour la machine virtuelle de basculement lors de la réplication des machines virtuelles Azure :
 
 - [Équilibreur de charge interne](../load-balancer/load-balancer-overview.md)
-- [Adresse IP publique](../virtual-network/ip-services/public-ip-addresses.md)
+- [Adresse IP publique](../virtual-network/public-ip-addresses.md)
+- [Adresse IP secondaire](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md)
 - [Groupe de sécurité réseau](../virtual-network/manage-network-security-group.md) pour le sous-réseau et pour la carte réseau
 
 ## <a name="prerequisites"></a>Prérequis
@@ -40,14 +41,14 @@ Vous pouvez fournir la configuration des ressources clés suivantes pour la mach
 
 1. Accédez à **Éléments répliqués**. 
 2. Sélectionnez la machine virtuelle Azure de votre choix.
-3. Sélectionnez **Calcul et réseau**, puis **Modifier**. Vous remarquerez que les paramètres de configuration de la carte réseau incluent les ressources correspondantes à la source. 
+3. Sélectionnez **Réseau**, puis **Modifier**. Vous remarquerez que les paramètres de configuration de la carte réseau incluent les ressources correspondantes à la source. 
 
-     ![Personnaliser les configurations de mise en réseau du basculement](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+    :::image type="content" source="./media/azure-to-azure-customize-networking/edit-networking-properties.png" alt-text="Personnaliser les configurations de mise en réseau du basculement" lightbox="./media/azure-to-azure-customize-networking/edit-networking-properties-expanded.png":::
 
 4. Sélectionnez un réseau virtuel de test de basculement.
-5. Pour le réseau de basculement, sélectionnez **Modifier** à côté de la carte réseau que vous souhaitez configurer. Dans le panneau suivant qui s’affiche, sélectionnez les ressources précréées correspondantes dans les emplacements de basculement de test et de basculement.
+5. Sélectionnez l’onglet Carte d’interface réseau que vous souhaitez configurer. Maintenant, sélectionnez les ressources précréées correspondantes dans les emplacements de basculement de test et de basculement.
 
-    ![Modifiez la configuration de la carte réseau](media/azure-to-azure-customize-networking/nic-drilldown.png) 
+    :::image type="content" source="./media/azure-to-azure-customize-networking/nic-drilldown.png" alt-text="Modifiez la configuration de la carte réseau" lightbox="./media/azure-to-azure-customize-networking/nic-drilldown-expanded.png":::
 
 6. Sélectionnez **OK**.
 

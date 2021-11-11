@@ -4,16 +4,16 @@ description: Cet article explique comment résoudre les problèmes pouvant surve
 author: billmath
 ms.author: billmath
 manager: daveba
-ms.date: 01/19/2021
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4fa397505d7bb98235a97e5818409baee9c9c9e4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530316"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451860"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Résolution des problèmes de synchronisation cloud
 
@@ -27,6 +27,7 @@ La synchronisation cloud a une incidence sur bien des éléments et compte de no
 |[Problèmes rencontrés avec l’agent](#agent-problems)|Vérifiez que l’agent a été correctement installé et qu’il communique avec Azure Active Directory (Azure AD).|
 |[Problèmes de synchronisation des objets](#object-synchronization-problems)|Utilisez les journaux de provisionnement pour résoudre les problèmes de synchronisation des objets.|
 |[Problèmes de provisionnement en quarantaine](#provisioning-quarantined-problems)|Comprendre les problèmes de mise en quarantaine du provisionnement et la façon de les corriger.|
+|[Réécriture du mot de passe](#password-writeback)|Découvrez les problèmes courants de réécriture du mot de passe et comment les corriger.|
 
 
 ## <a name="agent-problems"></a>Problèmes rencontrés avec l’agent
@@ -167,21 +168,22 @@ En sélectionnant l’état, vous pouvez voir des informations supplémentaires 
 ![Capture d’écran qui affiche des informations supplémentaires sur la quarantaine.](media/how-to-troubleshoot/quarantine-2.png)
 
 Cliquez avec le bouton droit sur le statut pour afficher des options supplémentaires :
-    
-   - Afficher les journaux de provisionnement
-   - Afficher l’agent
-   - Désactiver la mise en quarantaine
+
+- Afficher les journaux de provisionnement
+- Afficher l’agent
+- Désactiver la mise en quarantaine
 
 ![Capture d’écran des options de menu contextuel.](media/how-to-troubleshoot/quarantine-4.png)
 
-
 ### <a name="resolve-a-quarantine"></a>Résoudre une mise en quarantaine
-Il existe deux façons différentes de résoudre une quarantaine.  Il s'agit des éléments suivants :
 
-  - Désactiver la quarantaine : désactive la limite et exécute une synchronisation différentielle
-  - Redémarrer le travail de provisionnement : désactive la limite et exécute une synchronisation initiale
+Il existe deux façons différentes de résoudre une quarantaine. Il s'agit des éléments suivants :
+
+- Désactiver la quarantaine : désactive la limite et exécute une synchronisation différentielle
+- Redémarrer le travail de provisionnement : désactive la limite et exécute une synchronisation initiale
 
 #### <a name="clear-quarantine"></a>Désactivation de la mise en quarantaine
+
 Pour désactiver et exécuter une synchronisation différentielle sur le travail de provisionnement une fois celui-ci vérifié, il suffit de cliquer avec le bouton droit et de sélectionner **désactiver la mise en quarantaine**.
 
 Une notification vous informe que la mise en quarantaine est en cours de désactivation.
@@ -193,11 +195,13 @@ Ensuite, l’état de l’agent devient sain.
 ![Informations sur l’état de mise en quarantaine](media/how-to-troubleshoot/quarantine-6.png)
 
 #### <a name="restart-the-provisioning-job"></a>Redémarrage du travail de provisionnement
+
 Utilisez le portail Azure pour redémarrer le travail de provisionnement. Dans la page de configuration de l’agent, sélectionnez **Redémarrer le provisionnement**.
 
   ![Redémarrer le provisionnement](media/how-to-troubleshoot/quarantine-3.png)
 
 - Utilisez Microsoft Graph pour [redémarrer le travail de provisionnement](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). Vous bénéficiez d’un contrôle total sur ce que vous redémarrez. Vous pouvez choisir d’effacer les éléments suivants :
+
   - Les escrows, afin de redémarrer le compteur des escrows dont l’augmentation amène à la mise en quarantaine
   - La mise en quarantaine, afin de retirer l’application de la quarantaine
   - Les filigranes 
@@ -207,20 +211,39 @@ Utilisez le portail Azure pour redémarrer le travail de provisionnement. Dans l
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
 ## <a name="repairing-the-the-cloud-sync-service-account"></a>Réparation du compte de service Cloud Sync
-Si vous devez réparer le compte de service Cloud Sync, vous pouvez utiliser `Repair-AADCloudSyncToolsAccount`.  
 
+Si vous devez réparer le compte de service Cloud Sync, vous pouvez utiliser `Repair-AADCloudSyncToolsAccount`.
 
-   1.  Utilisez les étapes d’installation décrites [ici](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) pour commencer, puis passez aux étapes restantes.
-   2.  À partir d’une session Windows PowerShell avec des privilèges d’administrateur, tapez ou copiez et collez les éléments suivants : 
-    ```
-    Connect-AADCloudSyncTools
-    ```  
-   3. Entrez les informations d’identification de votre administrateur général Azure AD
-   4. Tapez ou collez le code suivant : 
-    ```
-    Repair-AADCloudSyncToolsAccount
-    ```  
+   1. Utilisez les étapes d’installation décrites [ici](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) pour commencer, puis passez aux étapes restantes.
+
+   2. À partir d’une session PowerShell avec des privilèges d’administrateur, tapez ou copiez et collez les éléments suivants :
+
+      ```powershell
+      Connect-AADCloudSyncTools
+      ```
+
+   3. Entrez vos informations d’identification d’administrateur général Azure AD.
+
+   4. Tapez ou collez le code suivant :
+
+      ```powershell
+      Repair-AADCloudSyncToolsAccount
+      ```
+
    5. Une fois cette opération terminée, le compte devrait indiquer que le compte a été correctement réparé.
+
+## <a name="password-writeback"></a>Réécriture du mot de passe
+Lors de l’activation et de l’utilisation de la réécriture du mot de passe avec une synchronisation cloud, il est important de garder les informations suivantes à l’esprit.
+
+- Si vous devez mettre à jour les [autorisations gMSA](how-to-gmsa-cmdlets.md#using-set-aadcloudsyncpermissions), la réplication de celles-ci sur tous les objets de l’annuaire peut durer jusqu’à une heure voire davantage. Si vous n’attribuez pas ces autorisations, la réécriture peut sembler être configurée correctement, mais les utilisateurs peuvent rencontrer des erreurs quand ils mettent à jour leurs mots de passe locaux à partir du cloud. Les autorisations doivent être appliquées à « cet objet et tous ceux descendants » pour que l’option **Ne pas faire expirer le mot de passe** apparaisse. 
+- Si les mots de passe de certains comptes d’utilisateur ne sont pas réécrits dans l’annuaire local, vérifiez que l’héritage n’est pas désactivé pour le compte dans l’environnement local AD DS. Les autorisations d’écriture pour les mots de passe doivent être appliquées aux objets descendants pour que la fonctionnalité fonctionne correctement. 
+- Les stratégies de mot de passe dans l’environnement AD DS local peuvent empêcher le traitement correct des réinitialisations de mot de passe. Si vous testez cette fonctionnalité et souhaitez réinitialiser les mots de passe des utilisateurs plusieurs fois par jour, la stratégie de groupe pour Durée de vie minimale du mot de passe doit être définie sur 0. Ce paramètre se trouve sous **Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies de compte** dans **gpmc.msc**. 
+     - Si vous mettez à jour la stratégie de groupe, attendez la réplication de la stratégie mise à jour ou utilisez la commande gpupdate /force. 
+     - Pour que les mots de passe soient changés immédiatement, l’âge minimum du mot de passe doit être défini sur 0. Toutefois, si les utilisateurs adhèrent aux stratégies locales et que le paramètre Durée de vie minimale du mot de passe est défini sur une valeur supérieure à zéro, la réécriture du mot de passe ne fonctionne pas une fois les stratégies locales évaluées. 
+
+
+
+
 
 ## <a name="next-steps"></a>Étapes suivantes 
 

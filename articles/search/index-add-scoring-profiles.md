@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 986bc72d135cbbfceeb4b7e60556673a8dd8edbc
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 757290560f921ee87cf9454037a4f8f199283f29
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275845"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449485"
 ---
 # <a name="add-scoring-profiles-to-a-search-index"></a>Ajouter des profils de scoring à un index de recherche
 
@@ -206,7 +206,7 @@ Utilisez des fonctions lorsque les pondérations relatives simples sont insuffis
 
 | Fonction | Description |
 |-|-|
-| « freshness » | Surévalue par les valeurs d’un champ DateHeure (Edm.DataTimeOffset). Cette fonction a un attribut `boostingDuration` qui vous permet de spécifier une valeur représentant un intervalle de temps pendant lequel la surévaluation se produit. | 
+| « freshness » | Augmente par valeurs d’un champ DateHeure (Edm.DataTimeOffset). Cette fonction a un attribut `boostingDuration` qui vous permet de spécifier une valeur représentant un intervalle de temps pendant lequel la surévaluation se produit. | 
 | « magnitude » | Surévalue selon le niveau élevé ou bas d’une valeur numérique. Parmi les scénarios qui appellent cette fonction figurent la valorisation de la marge bénéficiaire, du prix le plus élevé, du prix le plus bas ou du nombre de téléchargements. Cette fonction ne peut être utilisée qu’avec les champs Edm.Double et Edm.Int. Pour la fonction magnitude, vous pouvez inverser la plage (de la valeur la plus élevée à la valeur la plus basse) si vous souhaitez obtenir le modèle inverse (par exemple, pour surévaluer les articles les moins chers davantage que les articles les plus chers). Pour une gamme de prix allant de 100 USD à 1 USD, vous pouvez définir « boostingRangeStart » à 100 et « boostingRangeEnd » à 1 pour surévaluer les articles les moins chers. | 
 | « distance »  | Surévalue en fonction de la proximité ou de l’emplacement géographique. Cette fonction ne peut être utilisée qu’avec les champs Edm.GeographyPoint. | 
 | « tag »  | Surévalue selon les étiquettes communes aux documents de recherche et aux chaînes de requête. Les balises sont fournies dans un `tagsParameter`. Cette fonction ne peut être utilisée qu’avec les champs Edm.String et Collection(Edm.String). | 

@@ -7,12 +7,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: cynthn
-ms.openlocfilehash: db59c95c215bdf51746a252c29b44f13dfaf7e22
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 349289abd3b03f231df96cc6fefb88f5035fc0fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161922"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432887"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Étapes détaillées : Créer et gérer des clés SSH pour l’authentification sur une machine virtuelle Linux dans Azure
 
@@ -22,7 +22,7 @@ Avec une paire de clés SSH (Secure Shell), vous pouvez créer une machine virtu
 
 Pour connaître les commandes rapides, consultez [Comment créer une paire de clés publique et privée SSH pour les machines virtuelles Linux dans Azure](mac-create-ssh-keys.md).
 
-Pour créer des clés SSH et les utiliser pour se connecter à un ordinateur **Windows**, consultez [Comment utiliser des clés SSH avec Windows sur Azure](ssh-from-windows.md). Vous pouvez également utiliser le [portail Azure](../ssh-keys-portal.md) pour créer et gérer des clés SSH pour la création de machines virtuelles dans le portail.
+Pour créer des clés SSH et les utiliser pour se connecter à une machine virtuelle Linux à partir d’un ordinateur **Windows**, consultez [Comment utiliser des clés SSH avec Windows sur Azure](ssh-from-windows.md). Vous pouvez également utiliser le [portail Azure](../ssh-keys-portal.md) pour créer et gérer des clés SSH pour la création de machines virtuelles dans le portail.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

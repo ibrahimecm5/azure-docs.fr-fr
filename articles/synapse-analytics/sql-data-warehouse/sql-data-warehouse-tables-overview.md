@@ -1,22 +1,22 @@
 ---
 title: Concevoir des tables
-description: Présentation de la conception de tables à l’aide d’un pool SQL dédié dans Azure Synapse Analytics.
+description: Présentation de la conception de tables à l’aide d’un pool SQL dédié.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/15/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c55edbd24553189c11070999ddc5d3b3516f2d97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea3081720adc74576d171dbba40a0f09d858749a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737929"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507091"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Concevoir des tables à l’aide d’un pool SQL dédié dans Azure Synapse Analytics
 
@@ -36,15 +36,15 @@ Un [schéma en étoile](https://en.wikipedia.org/wiki/Star_schema) organise les 
 
 Les schémas sont un bon moyen de regrouper les tables utilisées de manière similaire.  Si vous migrez plusieurs bases de données d’une solution locale vers un pool SQL dédié, nous vous recommandons de migrer toutes les tables de faits, de dimension et d’intégration dans un seul schéma dans un pool SQL dédié.
 
-Par exemple, stockez toutes les tables du pool SQL dédié [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) dans un seul schéma appelé wwi. Le code suivant crée un [schéma défini par l’utilisateur](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) appelé wwi.
+Par exemple, vous pouvez stocker toutes les tables de l’exemple de pool SQL dédié [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) à l’intérieur d’un schéma nommé `wwi`. Le code suivant crée un [schéma défini par l’utilisateur](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) nommé `wwi`.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-Pour voir l’organisation des tables dans le pool SQL dédié, vous pouvez utiliser les préfixes fact, dim et int dans les noms de table. Le tableau suivant répertorie quelques noms de schéma et de table pour WideWorldImportersDW.  
+Pour voir l’organisation des tables dans le pool SQL dédié, vous pouvez utiliser les préfixes fact, dim et int dans les noms de table. Le tableau suivant répertorie quelques noms de schéma et de table pour `WideWorldImportersDW`.  
 
-| Table WideWorldImportersDW  | Type de la table | Pool SQL dédié |
+| **Table WideWorldImportersDW**  | *Type de la table* | **Pool SQL dédié** |
 |:-----|:-----|:------|:-----|
 | City | Dimension | wwi.DimCity |
 | JSON | Fact | wwi.FactOrder |
@@ -65,11 +65,11 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 Une table temporaire existe uniquement pendant la durée de la session. Vous pouvez utiliser une table temporaire pour empêcher d’autres utilisateurs de voir les résultats temporaires, mais également pour réduire les besoins de nettoyage.  
 
-Les tables temporaires utilisent un stockage local pour offrir des performances rapides.  Pour plus d’informations, consultez [Tables temporaires](sql-data-warehouse-tables-temporary.md).
+Les tables temporaires utilisent un stockage local pour offrir des performances rapides. Pour plus d’informations, consultez [Tables temporaires](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Table externe
 
-Une table externe pointe vers des données situées dans le stockage Blob Azure ou Azure Data Lake Store. Utilisée conjointement avec l’instruction CREATE TABLE AS SELECT, la sélection à partir d’une table externe permet d’importer des données dans le pool SQL dédié.
+Une table externe pointe vers des données situées dans le stockage Blob Azure ou Azure Data Lake Store. Utilisée avec l’instruction CREATE TABLE AS SELECT, la sélection à partir d’une table externe a pour effet d’importer des données dans un pool SQL dédié.
 
 Les tables externes sont donc utiles pour charger des données. Pour obtenir un didacticiel sur le chargement, consultez [Utiliser PolyBase pour charger des données du Stockage Blob Azure](./load-data-from-azure-blob-storage-using-copy.md).
 
@@ -103,7 +103,7 @@ Pour plus d’informations, consultez le [Guide de conception pour les tables di
 
 La catégorie de la table détermine souvent le choix de l’option de distribution de la table.
 
-| Catégorie de table | Option de distribution recommandée |
+| **Catégorie de table** | **Option de distribution recommandée** |
 |:---------------|:--------------------|
 | Fact           | Utilisez la distribution par hachage avec un index columnstore cluster. Les performances sont meilleures quand deux tables de hachage sont jointes sur la même colonne de distribution. |
 | Dimension      | Utilisez la réplication pour les tables de petite taille. Si les tables sont trop volumineuses pour être stockées sur chaque nœud de calcul, utilisez la distribution par hachage. |
@@ -144,7 +144,7 @@ La contrainte PRIMARY KEY est prise en charge seulement si NONCLUSTERED et NOT E
 
 Vous pouvez créer une table à partir d’une nouvelle table vide. Vous pouvez aussi créer une table et la remplir avec les résultats d’une instruction select. Le tableau suivant répertorie les instructions T-SQL disponibles pour la création d’une table.
 
-| Instruction T-SQL | Description |
+| **Instruction T-SQL**| **Description** |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Crée une table vide en définissant toutes les colonnes et options de la table. |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Crée une table externe. La définition de la table est stockée dans le pool SQL dédié. Les données de la table sont stockées dans le Stockage Blob Azure ou Azure Data Lake Store. |

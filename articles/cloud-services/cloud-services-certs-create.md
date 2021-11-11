@@ -8,12 +8,12 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e2c5ecdd43d90fbfe6e6b792b1d0a6e990bb3736
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: e96d3219668475760556c209b3d7a4d59da1b275
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824901"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423353"
 ---
 # <a name="certificates-overview-for-azure-cloud-services-classic"></a>Vue d’ensemble des certificats pour Azure Cloud Services (classique)
 
@@ -48,6 +48,8 @@ Les certificats de gestion vous permettent de vous authentifier dans le modèle 
 
 ### <a name="limitations"></a>Limites
 Le nombre de certificats de gestion est limité à 100 par abonnement. Il existe également une limite de 100 certificats de gestion pour l’ensemble des abonnements figurant sous un identificateur d’utilisateur d’administrateur de service spécifique. Si l’identificateur d’utilisateur de l’administrateur de compte a déjà été utilisé pour ajouter 100 certificats de gestion et que d’autres certificats sont nécessaires, vous pouvez ajouter un coadministrateur pour disposer des certificats supplémentaires. 
+
+En outre, les certificats de gestion ne peuvent pas être utilisés avec les abonnements CSP, car les abonnements CSP prennent uniquement en charge le modèle de déploiement Azure Resource Manager et les certificats de gestion utilisent le modèle de déploiement classique. Pour plus d’informations sur les options disponibles pour les abonnements CSP, consultez les références [Azure Resource Manager vs modèle de déploiement classique](/azure/azure-resource-manager/management/deployment-models) et [Comprendre l’authentification avec le kit de développement logiciel (SDK) Azure pour .NET](/dotnet/azure/sdk/authentication).
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>Création d’un certificat auto-signé

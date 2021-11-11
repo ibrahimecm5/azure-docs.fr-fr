@@ -1,6 +1,6 @@
 ---
-title: 'Tutoriel : Créer un bot de forum aux questions pour plusieurs domaines avec Azure Bot Service'
-description: Dans ce tutoriel, vous créez un bot de forum aux questions sans code, pour les cas d’utilisation de production, avec QnA Maker et Azure Bot Service.
+title: 'Didacticiel : Créer un robot de FAQ pour plusieurs catégories avec Azure Bot Service'
+description: Ce didacticiel explique comment créer un robot de FAQ sans code pour les cas d’utilisation en production avec réponses aux questions et Azure Bot Service.
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: tutorial
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 7fdf1178cd9e737b6696374bc126312c1aa819f6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed5f8bf8009df79f2d49b3040aef7a5fe5635fab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029100"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458168"
 ---
-# <a name="add-multiple-domains-to-your-faq-bot"></a>Ajouter plusieurs domaines à votre bot de forum aux questions
+# <a name="add-multiple-categories-to-your-faq-bot"></a>Ajouter plusieurs catégories à votre robot de FAQ
 
 Dans ce tutoriel, vous allez apprendre à :
 
 > [!div class="checklist"]
-> * Créer un projet et baliser les paires de réponses aux questions dans des domaines distincts avec des métadonnées
+> * Créer un projet et étiqueter les paires question-réponse dans des catégories distinctes avec des métadonnées
 > * Créer un projet distinct pour chaque domaine
 > * Créer une ressource de langue distincte pour chaque domaine
 
@@ -105,4 +105,4 @@ Lorsque la question de l’utilisateur est reçue par le service, vous devez tra
 
 ## <a name="create-a-separate-language-resource-for-each-domain"></a>Créer une ressource de langue distincte pour chaque domaine
 
-Supposons que l’équipe marketing de Microsoft souhaite créer un bot de service clientèle qui réponde aux demandes des utilisateurs concernant les produits Surface et Xbox. Elle envisage d’affecter des équipes distinctes pour accéder aux bases de connaissances du produit Surface et du produit Xbox. Dans ce cas, il est recommandé de créer deux ressources QnA Maker, une pour la Surface et l’autre pour la Xbox. Par contre, vous pouvez définir des rôles distincts pour les utilisateurs qui accèdent à la même ressource.
+Supposons que l’équipe marketing de Microsoft souhaite créer un bot de service clientèle qui réponde aux demandes des utilisateurs concernant les produits Surface et Xbox. Elle envisage d’affecter des équipes distinctes pour accéder aux bases de connaissances du produit Surface et du produit Xbox. Dans ce cas, il est recommandé de créer deux ressources de réponses aux questions, une pour Surface et l’autre pour Xbox. Par contre, vous pouvez définir des rôles distincts pour les utilisateurs qui accèdent à la même ressource.

@@ -11,12 +11,12 @@ ms.author: rvadthyavath
 author: vadthyavath
 ms.date: 10/13/2021
 ms.custom: ''
-ms.openlocfilehash: 376ba24800b3d547a302d83eef960c58afd73054
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 725e8ae80d29a352bd2146906a782d4c8c2e6e38
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007341"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442542"
 ---
 # <a name="data-schemas-to-train-computer-vision-models-with-automated-machine-learning"></a>Schémas de données pour former des modèles de vision par ordinateur avec Machine Learning automatisé
 
@@ -44,12 +44,12 @@ Azure Machine Learning AutoML pour les images requiert la préparation des donn�
 
 | Clé       | Description  | Exemple |
 | -------- |----------|-----|
-| image_url | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | Type d’image (tous les formats d’images disponibles dans la bibliothèque [Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) sont pris en charge)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif","bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
-| height | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"200px" or 200` |
-| label | Classe/étiquette de l’image<br>`Required, String` | `"cat"` |
+| `image_url` | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | Type d’image (tous les formats d’images disponibles dans la bibliothèque [Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) sont pris en charge)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif","bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
+| `height` | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"200px" or 200` |
+| `label` | Classe/étiquette de l’image<br>`Required, String` | `"cat"` |
 
 
 Exemple de fichier JSON pour la classification d’images multiclasse :
@@ -61,6 +61,8 @@ Exemple de fichier JSON pour la classification d’images multiclasse :
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "1024px", "height": "768px"}, "label": "water_bottle"}
   ```
+
+![Exemple d’image pour une classification d’images multiclasse.](media/reference-automl-images-schema/multiclass-predictions.jpg)
 
 ### <a name="image-classification-multi-label"></a>Classification d’images multi-étiquette
 
@@ -88,12 +90,12 @@ Voici un exemple de format/schéma de données d’entrée dans chaque ligne JSO
 
 | Clé       | Description  | Exemple |
 | -------- |----------|-----|
-| image_url | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | Type d’image (tous les formats d’images disponibles dans la bibliothèque [Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) sont pris en charge)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
-| height | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"200px" or 200` |
-| label | Liste des classes/étiquettes dans l’image<br>`Required, List of Strings` | `["cat","dog"]` |
+| `image_url` | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | Type d’image (tous les formats d’images disponibles dans la bibliothèque [Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) sont pris en charge)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"400px" or 400`|
+| `height` | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"200px" or 200` |
+| `label` | Liste des classes/étiquettes dans l’image<br>`Required, List of Strings` | `["cat","dog"]` |
 
 
 Exemple de fichier JSON pour la classification d’images multi-étiquette :
@@ -106,6 +108,8 @@ Exemple de fichier JSON pour la classification d’images multi-étiquette :
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "1024px", "height": "768px"}, "label": ["carton","milk_bottle","water_bottle"]}
   ```
+
+![Exemple d’image pour une classification d’images multi-étiquette.](media/reference-automl-images-schema/multilabel-predictions.jpg)
 
 ### <a name="object-detection"></a>Détection d’objets
 
@@ -142,27 +146,27 @@ Voici un exemple de fichier JSONL pour la détection d’objets.
 ```
 
 Ici, 
-- xmin = coordonnée x de l’angle supérieur gauche du cadre englobant
-- ymin = coordonnée y de l’angle supérieur gauche du cadre englobant
-- xmax = coordonnée x de l’angle inférieur droit du cadre englobant
-- ymax = coordonnée y de l’angle inférieur droit du cadre englobant
+- `xmin` = coordonnée x de l’angle supérieur gauche du cadre englobant
+- `ymin` = coordonnée y de l’angle supérieur gauche du cadre englobant
+- `xmax` = coordonnée x de l’angle inférieur droit du cadre englobant
+- `ymax` = coordonnée y de l’angle inférieur droit du cadre englobant
 
 
 
 | Clé       | Description  | Exemple |
 | -------- |----------|-----|
-| image_url | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | Type d’image (tous les formats d’images disponibles dans la bibliothèque [Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) sont pris en charge. Toutefois, pour YOLO, seuls les formats d’images autorisés par [opencv](https://pypi.org/project/opencv-python/4.3.0.36/) sont pris en charge)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
-| height | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"665px" or 665` |
-| étiquette (clé externe) | Liste de cadres englobante, où chaque zone est un dictionnaire de \leurs coordonnées en haut à gauche et en bas à droite `label, topX, topY, bottomX, bottomY, isCrowd`<br>`Required, List of dictionaries` | `[{"label": "cat", "topX": 0.260, "topY": 0.406, "bottomX": 0.735, "bottomY": 0.701, "isCrowd": 0}]` |
-| étiquette (clé interne)| Classe/étiquette de l’objet dans le cadre englobant<br>`Required, String` | `"cat"` |
-| topX | Taux de coordonnée x du coin supérieur gauche du cadre englobant et de la largeur de l’image<br>`Required, Float in the range [0,1]` | `0.260` |
-| topY | Taux de coordonnée y du coin supérieur gauche du cadre englobant et de la hauteur de l’image<br>`Required, Float in the range [0,1]` | `0.406` |
-| bottomX | Taux de coordonnée x du coin inférieur droit du cadre englobant et de la largeur de l’image<br>`Required, Float in the range [0,1]` | `0.735` |
-| bottomY | Taux de coordonnée y du coin inférieur droit du cadre englobant et de la hauteur de l’image<br>`Required, Float in the range [0,1]` | `0.701` |
-| isCrowd | Indique si le cadre englobant est autour de la foule d’objets. Si cet indicateur spécial est défini, nous ignorons ce cadre englobant particulier lors du calcul de la métrique.<br>`Optional, Bool` | `0` |
+| `image_url` | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | Type d’image (tous les formats d’images disponibles dans la bibliothèque [Pillow](https://pillow.readthedocs.io/en/stable/releasenotes/8.0.1.html) sont pris en charge. Toutefois, pour YOLO, seuls les formats d’images autorisés par [opencv](https://pypi.org/project/opencv-python/4.3.0.36/) sont pris en charge)<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff"}`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
+| `height` | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"665px" or 665` |
+| `label` (clé externe) | Liste de cadres englobante, où chaque zone est un dictionnaire de \leurs coordonnées en haut à gauche et en bas à droite `label, topX, topY, bottomX, bottomY, isCrowd`<br>`Required, List of dictionaries` | `[{"label": "cat", "topX": 0.260, "topY": 0.406, "bottomX": 0.735, "bottomY": 0.701, "isCrowd": 0}]` |
+| `label` (clé interne)| Classe/étiquette de l’objet dans le cadre englobant<br>`Required, String` | `"cat"` |
+| `topX` | Taux de coordonnée x du coin supérieur gauche du cadre englobant et de la largeur de l’image<br>`Required, Float in the range [0,1]` | `0.260` |
+| `topY` | Taux de coordonnée y du coin supérieur gauche du cadre englobant et de la hauteur de l’image<br>`Required, Float in the range [0,1]` | `0.406` |
+| `bottomX` | Taux de coordonnée x du coin inférieur droit du cadre englobant et de la largeur de l’image<br>`Required, Float in the range [0,1]` | `0.735` |
+| `bottomY` | Taux de coordonnée y du coin inférieur droit du cadre englobant et de la hauteur de l’image<br>`Required, Float in the range [0,1]` | `0.701` |
+| `isCrowd` | Indique si le cadre englobant est autour de la foule d’objets. Si cet indicateur spécial est défini, nous ignorons ce cadre englobant particulier lors du calcul de la métrique.<br>`Optional, Bool` | `0` |
 
 
 Exemple de fichier JSON pour la détection d’objets :
@@ -174,7 +178,9 @@ Exemple de fichier JSON pour la détection d’objets :
 .
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "499px", "height": "666px"}, "label": [{"label": "carton", "topX": 0.0180, "topY": 0.297, "bottomX": 0.380, "bottomY": 0.836, "isCrowd": 0}, {"label": "milk_bottle", "topX": 0.454, "topY": 0.348, "bottomX": 0.613, "bottomY": 0.683, "isCrowd": 0}, {"label": "water_bottle", "topX": 0.667, "topY": 0.279, "bottomX": 0.841, "bottomY": 0.615, "isCrowd": 0}]}
-  ```
+```
+
+![Exemple d’image pour la détection d’objet.](media/reference-automl-images-schema/object-detect-predictions.jpg)
 
 ### <a name="instance-segmentation"></a>Segmentation d’instances
 
@@ -202,15 +208,15 @@ Voici un exemple de fichier JSON pour la segmentation d’instance.
 
 | Clé       | Description  | Exemple |
 | -------- |----------|-----|
-| image_url | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
-| image_details | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
-| format  | Type d’image<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff" }`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
-| width | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
-| height | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"665px" or 665` |
-| étiquette (clé externe) | Liste de masques, où chaque masque est un dictionnaire de `label, isCrowd, polygon coordinates` <br>`Required, List of dictionaries` | ` [{"label": "can", "isCrowd": 0, "polygon": [[0.577, 0.689,`<br> ` 0.562, 0.681,`<br> `0.559, 0.686]]}]` |
-| étiquette (clé interne)| Classe/étiquette de l’objet dans le masque<br>`Required, String` | `"cat"` |
-| isCrowd | Indique si le masque est autour de la foule d’objets<br>`Optional, Bool` | `0` |
-| polygon | Coordonnées de polygone pour l’objet<br>`Required,  List of list for multiple segments of the same instance. Float values in the range [0,1]` | ` [[0.577, 0.689, 0.567, 0.689, 0.559, 0.686]]` |
+| `image_url` | Emplacement de l’image dans le magasin de données AML<br>`Required, String` | `"AmlDatastore://data_directory/Image_01.jpg"` |
+| `image_details` | Détails d’image<br>`Optional, Dictionary` | `"image_details":{"format": "jpg", "width": "400px", "height": "258px"}` |
+| `format`  | Type d’image<br>`Optional, String from {"jpg", "jpeg", "png", "jpe", "jfif", "bmp", "tif", "tiff" }`  |  `"jpg" or "jpeg" or "png" or "jpe" or "jfif" or "bmp" or "tif" or "tiff"` |
+| `width` | Largeur de l'image<br>`Optional, String or Positive Integer`  | `"499px" or 499`|
+| `height` | Hauteur de l’image<br>`Optional, String or Positive Integer` | `"665px" or 665` |
+| `label` (clé externe) | Liste de masques, où chaque masque est un dictionnaire de `label, isCrowd, polygon coordinates` <br>`Required, List of dictionaries` | ` [{"label": "can", "isCrowd": 0, "polygon": [[0.577, 0.689,`<br> ` 0.562, 0.681,`<br> `0.559, 0.686]]}]` |
+| `label` (clé interne)| Classe/étiquette de l’objet dans le masque<br>`Required, String` | `"cat"` |
+| `isCrowd` | Indique si le masque est autour de la foule d’objets<br>`Optional, Bool` | `0` |
+| `polygon` | Coordonnées de polygone pour l’objet<br>`Required,  List of list for multiple segments of the same instance. Float values in the range [0,1]` | ` [[0.577, 0.689, 0.567, 0.689, 0.559, 0.686]]` |
 
 
 Exemple de fichier JSON pour la segmentation d’instance :
@@ -223,6 +229,8 @@ Exemple de fichier JSON pour la segmentation d’instance :
 .
 {"image_url": "AmlDatastore://image_data/Image_n.jpg", "image_details": {"format": "jpg", "width": "499px", "height": "666px"}, "label": [{"label": "water_bottle", "isCrowd": 0, "polygon": [[0.334, 0.626, 0.304, 0.621, 0.254, 0.603, 0.164, 0.605, 0.158, 0.602, 0.146, 0.602, 0.142, 0.608, 0.094, 0.612, 0.084, 0.599, 0.080, 0.585, 0.080, 0.539, 0.082, 0.536, 0.092, 0.533, 0.126, 0.530, 0.132, 0.533, 0.144, 0.533, 0.162, 0.525, 0.172, 0.525, 0.186, 0.521, 0.196, 0.521 ]]}, {"label": "milk_bottle", "isCrowd": 0, "polygon": [[0.392, 0.773, 0.380, 0.732, 0.379, 0.767, 0.367, 0.755, 0.362, 0.735, 0.362, 0.714, 0.352, 0.644, 0.352, 0.611, 0.362, 0.597, 0.40, 0.593, 0.444,  0.494, 0.588, 0.515, 0.585, 0.621, 0.588, 0.671, 0.582, 0.713, 0.572, 0.753 ]]}]}
 ```
+
+![Exemple d’image pour la segmentation d’instance.](media/reference-automl-images-schema/instance-segmentation-predictions.jpg)
 
 ## <a name="data-format-for-inference"></a>Format de données pour l’inférence
 
@@ -389,6 +397,9 @@ Dans la segmentation de l’instance, la sortie est constituée de plusieurs zon
    ]
 }
 ```
+
+> [!NOTE]
+> Les images utilisées dans cet article proviennent du jeu de données Fridge Objects, copyright© Microsoft Corporation, et sont disponibles sur [computervision-recipes/01_training_introduction.ipynb](https://github.com/microsoft/computervision-recipes/blob/master/scenarios/detection/01_training_introduction.ipynb) en vertu de la [licence MIT](https://github.com/microsoft/computervision-recipes/blob/master/LICENSE). 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

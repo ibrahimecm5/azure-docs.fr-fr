@@ -5,13 +5,13 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 11360af784f456559955152772ba099ad4d48d73
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/01/2021
+ms.openlocfilehash: 446a59d6234219425bb24e62ecfc4796cd7fec6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123423867"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429581"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Appliance Azure Migrate : Questions courantes
 
@@ -108,6 +108,12 @@ Non. Il existe un mappage un-à-un entre une [appliance Azure Migrate](migrate-a
 ## <a name="can-a-project-have-multiple-appliances"></a>Un projet peut-il avoir plusieurs appliances ?
 
 Plusieurs appliances peuvent être inscrites pour un même projet. Toutefois, une appliance ne peut être inscrite qu’auprès d’un seul projet.
+
+## <a name="how-do-i-find-the-azure-migrate-appliances-registered-to-the-project"></a>Comment trouver les appliances Azure Migrate inscrites dans le projet ?
+1. Dans le portail Azure, accédez à la [page d’accueil d’Azure Migrate](https://portal.azure.com/?feature.customportal=false&feature.showassettypes=Microsoft_Azure_Migrate_AzureMigrationHub&feature.smsMigrationTool=true&feature.cloudamizeAssessmentTool=true&feature.sasAssessmentTool=true&feature.firstPartyDiscoveredMachines=true#blade/Microsoft_Azure_Migrate/AmhResourceMenuBlade/getStarted), puis, dans le menu de gauche, sélectionnez **Serveurs, bases de données et applications web**.
+1. Sélectionnez **Modifier** dans l’angle supérieur droit pour choisir votre projet.
+1. Dans le projet Azure Migrate, dans Azure Migrate : Détection et évaluation, sélectionnez **Vue d’ensemble**.
+1. Dans **Vue d’ensemble**, dans le menu de gauche, sélectionnez **Appliances** pour afficher les appliances inscrites avec le projet et l’état de connectivité des agents sur les appliances.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>L’appliance Azure Migrate/de réplication peut-elle se connecter au même vCenter ?
 

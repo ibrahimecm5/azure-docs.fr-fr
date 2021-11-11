@@ -8,19 +8,17 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 9/21/2020
-ms.openlocfilehash: 268ab28c5f5aa500a110abf7cca650d7b7f14914
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3617546e1319617a2a333a2c358880812d8626b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562685"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468078"
 ---
-# <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Créer et gérer des règles de pare-feu Azure Database pour MySQL – Serveur flexible à l’aide d’Azure CLI
+# <a name="manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Gérer des règles de pare-feu pour un serveur flexible Azure Database pour MySQL à l’aide d’une ligne de commande Azure CLI
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 Le serveur flexible Azure Database pour MySQL prend en charge deux types de méthodes de connectivité réseau mutuellement exclusives pour se connecter à votre serveur flexible. Les deux options sont les suivantes :
 
@@ -131,8 +129,8 @@ Pour autoriser les applications en provenance d’adresses IP Azure à se connec
 az mysql flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
 ```
 
-   > [!IMPORTANT]
-   > Cette option configure le pare-feu pour autoriser l’accès public à partir de services Azure et de ressources Azure à ce serveur, y compris les connexions à partir d’abonnements d’autres clients. Lorsque vous sélectionnez cette option, vérifiez que votre connexion et vos autorisations utilisateur limitent l’accès aux seuls utilisateurs autorisés.
+> [!IMPORTANT]
+> Cette option configure le pare-feu pour autoriser l’accès public à partir de services Azure et de ressources Azure à ce serveur, y compris les connexions à partir d’abonnements d’autres clients. Lorsque vous sélectionnez cette option, vérifiez que votre connexion et vos autorisations utilisateur limitent l’accès aux seuls utilisateurs autorisés.
 
 En cas de réussite, la sortie de chaque commande de création affiche les détails de la règle de pare-feu que vous avez créée au format JSON (par défaut). En cas d’échec, la sortie affiche un texte de message d’erreur.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2021
 ms.author: thweiss
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b8812e0d61485a4fd5c7ceb7a2f57d47b90bfeca
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1423d4444c7ec53e40f77d951acb58a63538cfbf
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096381"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557791"
 ---
 # <a name="limit-the-total-throughput-provisioned-on-your-azure-cosmos-db-account"></a>Limiter le débit total approvisionné sur votre compte Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -39,6 +39,9 @@ Une fois que vous avez défini une limite au débit total de votre compte, les o
 
 > [!NOTE]
 > Pour les ressources configurées en mode de mise à l’échelle automatique, il s’agit du débit maximal configuré sur la ressource qui compte dans le débit total de votre compte.
+
+> [!IMPORTANT]
+> Une fois qu’une limite de débit total est activée sur votre compte, vous devez passer une valeur de débit explicite lors de la création de conteneurs. Vous obtiendrez une erreur si vous tentez de créer un conteneur sans débit explicite.
 
 ## <a name="set-the-total-throughput-limit-from-the-azure-portal"></a>Définir la limite du débit total à partir du portail Azure
 
@@ -91,6 +94,12 @@ Lors de la création ou de la mise à jour de votre compte Azure Cosmos DB avec 
 ```
 
 Affectez à cette propriété la valeur `-1` pour désactiver la limite.
+
+## <a name="frequently-asked-questions"></a>Forum aux questions
+
+#### <a name="are-there-situations-where-the-total-provisioned-throughput-can-exceed-the-limit"></a>Existe-t-il des situations où le débit total approvisionné peut dépasser la limite ?
+
+Azure Cosmos DB applique un débit minimal de 10 RU/s par Go de données stockées. Si vous ingérez des données alors que vous êtes déjà au débit minimum, le débit approvisionné sur vos ressources augmente automatiquement pour atteindre 10 RU/s par Go. Dans ce cas, et dans ce cas seulement, le débit total approvisionné peut dépasser la limite que vous avez définie.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

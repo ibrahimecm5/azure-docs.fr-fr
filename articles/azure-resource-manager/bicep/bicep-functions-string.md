@@ -4,13 +4,13 @@ description: Décrit les fonctions à utiliser dans un fichier Bicep pour travai
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: e8691fd357b8f8cbde87309f4881fa7424f7f44e
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/29/2021
+ms.openlocfilehash: a59be71415197242d636c577cff1c80b9f5fc639
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389074"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439877"
 ---
 # <a name="string-functions-for-bicep"></a>Fonctions de chaîne pour Bicep
 
@@ -1031,7 +1031,7 @@ Espace de noms : [sys](bicep-functions.md#namespaces-for-functions).
 |:--- |:--- |:--- |:--- |
 | chaîne_à_analyser |Oui |string |La chaîne d’origine de laquelle la sous-chaîne est extraite. |
 | index_début |Non |int |La position de caractère (commençant à zéro) de la sous-chaîne. |
-| length |Non |int |Le nombre de caractères de la sous-chaîne. Doit faire référence à un emplacement au sein de la chaîne. Doit être égal à zéro ou supérieur. |
+| length |Non |int |Le nombre de caractères de la sous-chaîne. Doit faire référence à un emplacement au sein de la chaîne. Doit être égal à zéro ou supérieur. En cas d’omission, le reste de la chaîne à partir de la position de début sera retourné.|
 
 ### <a name="return-value"></a>Valeur retournée
 
@@ -1258,7 +1258,7 @@ uniqueString(resourceGroup().id, deployment().name)
 L'exemple suivant montre comment créer un nom unique pour un compte de stockage basé sur votre groupe de ressources. Dans le groupe de ressources, le nom n’est pas unique s’il est construit de la même façon.
 
 ```bicep
-resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
+resource mystorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
@@ -1423,5 +1423,5 @@ La sortie de l’exemple précédent avec les valeurs par défaut se présente c
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Pour obtenir une description des sections d’un fichier Bicep, consultez [Comprendre la structure et la syntaxe des fichiers Bicep](./file.md).
-* Pour itérer un nombre de fois spécifié lors de la création d’un type de ressource, consultez [Déployer plusieurs instances de ressources dans Bicep](./loop-resources.md).
+* Pour itérer un nombre spécifié de fois lors de la création d’un type de ressource, consultez [Boucles itératives dans Bicep](loops.md).
 * Pour découvrir comment déployer le fichier Bicep que vous avez créé, consultez [Déployer des ressources avec Bicep et Azure PowerShell](./deploy-powershell.md).

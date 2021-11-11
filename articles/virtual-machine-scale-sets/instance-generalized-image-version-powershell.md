@@ -1,6 +1,6 @@
 ---
 title: Créer un groupe identique à partir d’une image généralisée avec Azure PowerShell
-description: Créez un groupe identique à l’aide d’une image généralisée dans Shared Image Gallery en utilisant PowerShell.
+description: Créez un groupe identique à l’aide d’une image généralisée dans Azure Compute Gallery en utilisant PowerShell.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
@@ -10,18 +10,18 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 591ad83cf9beeff7b25ffa1234441109dc169aa2
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 45ce53df289c8e3d471937a0c7291943920a83d8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691257"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474758"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Créer un groupe identique à partir d’une image généralisée en utilisant PowerShell 
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques uniformes
 
-Créez une machine virtuelle à partir d’une version d’image généralisée stockée dans une [galerie d’images partagées](../virtual-machines/shared-image-galleries.md). Si vous souhaitez créer un groupe identique à l’aide d’une image spécialisée, consultez [Créer des instances de groupe identique à partir d’une image spécialisée](instance-specialized-image-version-powershell.md).
+Créez une machine virtuelle à partir d’une version d’image généralisée stockée dans [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md). Si vous souhaitez créer un groupe identique à l’aide d’une image spécialisée, consultez [Créer des instances de groupe identique à partir d’une image spécialisée](instance-specialized-image-version-powershell.md).
 
 Une fois que vous disposez d’une image généralisée, vous pouvez créer un groupe de machines virtuelles identiques à l’aide de la cmdlet [New-AzVmss](/powershell/module/az.compute/new-azvmss). 
 
@@ -62,7 +62,7 @@ La création et la configuration des l’ensemble des ressources et des machines
 
 ## <a name="extended-parameter-set"></a>Jeu de paramètres étendu
 
-Pour un contrôle total sur toutes les ressources, notamment l’attribution d’un nom, utilisez le jeu de paramètres complet pour créer un groupe identique à l’aide d’une image de la galerie d’images partagées. 
+Pour un contrôle total sur toutes les ressources, notamment l’attribution d’un nom, utilisez le jeu de paramètres complet pour créer un groupe identique à l’aide d’une image Azure Compute Gallery. 
 
 ```azurepowershell-interactive
 # Get the image definition
@@ -178,10 +178,10 @@ La création et la configuration des l’ensemble des ressources et des machines
 ## <a name="next-steps"></a>Étapes suivantes
 [Générateur d’image Azure (préversion)](../virtual-machines/image-builder-overview.md) permet d’automatiser la création d’une version de l’image. Vous pouvez même l’utiliser pour mettre à jour et [créer une nouvelle version de l’image à partir d’une image existante](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
 
-Vous pouvez également créer la ressource de galerie d’images partagées à l’aide de modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
+Vous pouvez également créer la ressource Azure Compute Gallery en utilisant des modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
 
-- [Créer une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Créer une définition d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Créer une version d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Créer une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Créer une définition d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Créer une version d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
 Pour plus d’informations sur les galeries d’images partagées, consultez la [vue d’ensemble](../virtual-machines/shared-image-galleries.md). Si vous rencontrez des problèmes, consultez [Résoudre les problèmes des galeries d’images partagées](../virtual-machines/troubleshooting-shared-images.md).

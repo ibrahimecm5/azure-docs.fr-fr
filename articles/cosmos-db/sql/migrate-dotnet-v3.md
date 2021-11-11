@@ -6,13 +6,13 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/04/2021
-ms.openlocfilehash: 58ea7624b32b7730863fe3d29f6d9245c4199d25
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/19/2021
+ms.openlocfilehash: 1bc32941ec6ca5c7053b39a7730852568d13fb28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535307"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219037"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Migration d’une application de façon à utiliser le SDK .NET Azure Cosmos DB v3
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -197,6 +197,17 @@ Certains paramètres dans `ConnectionPolicy` ont été renommés ou remplacés 
 |`EnableEndpointRediscovery`|`LimitToEndpoint` – La valeur est désormais inversée. Si `EnableEndpointRediscovery` était défini sur `true`, `LimitToEndpoint` doit être défini sur `false`. Avant d’utiliser ce paramètre, vous devez comprendre [comment il affecte le client](troubleshoot-sdk-availability.md).|
 |`ConnectionProtocol`|Supprimé. Le protocole est lié au mode, qu’il s’agisse de la passerelle (HTTP) ou du mode direct (TCP). Le mode direct avec le protocole HTTPS n’est plus pris en charge sur le Kit de développement logiciel (SDK) v3, et il est recommandé d’utiliser le protocole TCP. |
 |`MediaRequestTimeout`|Supprimé. Les pièces jointes ne sont plus prises en charge.|
+
+### <a name="indexing-policy"></a>Stratégie d’indexation
+
+La stratégie d’indexation ne permet pas de configurer ces propriétés. Lorsque ces propriétés ne sont pas spécifiées, leurs valeurs par défaut sont les suivantes :
+
+| **Nom de la propriété**     | **Nouvelle valeur (non configurable)** |
+| ----------------------- | -------------------------------- |
+| `Kind`   | `range` |
+| `dataType`    | `String` et `Number` |
+
+Consultez [cette section](how-to-manage-indexing-policy.md#indexing-policy-examples) pour obtenir des exemples de stratégie d’indexation pour l’inclusion et l’exclusion de chemins d’accès. En raison des améliorations apportées au moteur de requête, la configuration de ces propriétés, même en utilisant une ancienne version du Kit de développement logiciel (SDK), n’a aucun impact sur les performances.
 
 ### <a name="session-token"></a>Jeton de session
 
@@ -710,4 +721,4 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * En savoir plus sur ce que le [Kit de développement logiciel (SDK) v3 vous permet de faire](sql-api-dotnet-v3sdk-samples.md)
 * Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ?
     * Si vous ne connaissez que le nombre de vCores et de serveurs présents dans votre cluster de bases de données existant, lisez [Estimation des unités de requête à l’aide de vCores ou de processeurs virtuels](../convert-vcore-to-request-unit.md) 
-    * Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez [Estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)
+    * Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez la section concernant l’[estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)

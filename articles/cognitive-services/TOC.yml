@@ -20,6 +20,8 @@
     - name: Créer une ressource à l’aide d’un modèle ARM
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+    - name: Créer une ressource avec les tarifs de niveau d’engagement
+      href: commitment-tier.md
 - name: Procédure
   items:
     - name: Prévoir et gérer les coûts

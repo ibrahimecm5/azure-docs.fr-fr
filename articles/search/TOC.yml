@@ -126,6 +126,8 @@
       href: samples-rest.md
 - name: Concepts
   items:
+    - name: Rechercher dans les index
+      href: search-what-is-an-index.md
     - name: Recherche en texte intégral
       href: search-lucene-query-architecture.md
     - name: Analyseurs
@@ -257,7 +259,7 @@
     - name: Index
       items:
         - name: Création d'un index
-          href: search-what-is-an-index.md
+          href: search-how-to-create-search-index.md
         - name: Créer un index multilingue
           href: search-language-support.md
         - name: Synonymes

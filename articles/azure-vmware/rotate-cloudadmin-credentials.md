@@ -2,13 +2,13 @@
 title: Effectuer la rotation des informations d’identification cloudadmin pour Azure VMware Solution
 description: Découvrez comment effectuer la rotation des informations d’identification de vCenter Server pour votre cloud privé Azure VMware Solution.
 ms.topic: how-to
-ms.date: 08/31/2021
-ms.openlocfilehash: 22a88feb7e7b8656666d82cdac4b4d02d546441e
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/10/2021
+ms.openlocfilehash: f8ab35888d2d298d1dcb6acd2abd6d659b782fd7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258059"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461763"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Effectuer la rotation des informations d’identification cloudadmin pour Azure VMware Solution
 
@@ -18,7 +18,7 @@ ms.locfileid: "123258059"
 Dans cet article, vous allez effectuer la rotation des informations d’identification cloudadmin (informations d’identification *CloudAdmin* vCenter Server) pour votre cloud privé Azure VMware Solution.  Bien que le mot de passe de ce compte n’expire pas, vous pouvez en générer un nouveau à tout moment.
 
 >[!CAUTION]
->Si vous utilisez vos informations d’identification d’utilisateur cloudadmin pour connecter des services à vCenter dans votre cloud privé, ces connexions cesseront de fonctionner une fois que vous aurez effectué la rotation de votre mot de passe. Ces connexions verrouilleront par ailleurs le compte cloudadmin, sauf si vous arrêtez ces services avant d’effectuer la rotation du mot de passe.
+>Si vous utilisez vos informations d’identification cloudadmin pour connecter des services à vCenter dans votre cloud privé, ces connexions cesseront de fonctionner une fois que vous aurez effectué la rotation de votre mot de passe. Ces connexions verrouilleront par ailleurs le compte cloudadmin, sauf si vous arrêtez ces services avant d’effectuer la rotation du mot de passe.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -30,13 +30,36 @@ Au lieu d’utiliser l’utilisateur cloudadmin pour connecter des services à v
 
 ## <a name="reset-your-vcenter-credentials"></a>Réinitialiser vos informations d’identification vCenter
 
-1. À partir du portail Azure, ouvrez une session Azure Cloud Shell.
+### <a name="portal"></a>[Portail](#tab/azure-portal)
+ 
+1. Dans votre cloud privé Azure VMware Solution, sélectionnez **Identité**.
+
+1. Sélectionnez **Générer un nouveau mot de passe**.
+
+   :::image type="content" source="media/rotate-cloudadmin-credentials/reset-vcenter-credentials-1.png" alt-text="Capture d’écran montrant les informations d’identification vCenter et un moyen de les copier ou de générer un nouveau mot de passe." lightbox="media/rotate-cloudadmin-credentials/reset-vcenter-credentials-1.png":::
+
+1. Activez la case à cocher de confirmation, puis sélectionnez **Générer un mot de passe**.
+
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pour commencer avec Azure CLI :
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+1. Dans votre cloud privé Azure VMware Solution, ouvrez une session Azure Cloud Shell.
 
 2. Mettez à jour vos informations d’identification vCenter *CloudAdmin*.  N’oubliez pas de remplacer **{SubscriptionID}** , **{ResourceGroup}** et **{PrivateCloudName}** par les informations de votre cloud privé. 
 
    ```azurecli-interactive
    az resource invoke-action --action rotateVcenterPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
    ```
+
+---
+
+
+
+
  
 ## <a name="update-hcx-connector"></a>Mettre à jour le connecteur HCX 
 

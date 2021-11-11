@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: aab3c66a76e22e17e5e5d6c0cd03ebca4562734d
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 6d51aa87232445e35533632d5071abd121a3fcfb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277648"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442195"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Présentation de la journalisation des flux pour les groupes de sécurité réseau
 
@@ -375,6 +375,8 @@ En outre, lorsqu’un groupe de sécurité réseau est supprimé, la ressource d
 **Flux entrants journalisés à partir d’adresses IP Internet dans des machines virtuelles sans IP publiques** : Les machines virtuelles qui n’ont pas d’IP publique attribuée via une IP publique associée à la carte d’interface réseau en tant qu’IP publique de niveau d’instance, ou qui font partie d’un pool principal équilibreur de charge de base, utilisent une [architecture de système en réseau par défaut](../load-balancer/load-balancer-outbound-connections.md) et ont une adresse IP affectée par Azure afin de faciliter la connectivité sortante. Par conséquent, vous pouvez observer des entrées de journal de flux pour les flux d’adresses IP Internet, si le flux est destiné à un port dans la plage de ports attribués à l’architecture de système en réseau. Bien qu’Azure n’autorise pas ces flux vers les machines virtuelles, la tentative est journalisée et apparaît par conception dans le journal de flux du Groupe de sécurité réseau Network Watcher. Nous recommandons que le trafic Internet entrant indésirable soit explicitement bloqué avec le Groupe de sécurité réseau.
 
 **NSG sur le sous-réseau de passerelle ExpressRoute** : il n’est pas recommandé de consigner les flux sur le sous-réseau de passerelle ExpressRoute, car le trafic peut contourner la passerelle de routage Express (par exemple : [FastPath](../expressroute/about-fastpath.md)). Par conséquent, si un NSG est lié à un sous-réseau de passerelle ExpressRoute et que les journaux de flux NSG sont activés, les flux sortants vers les machines virtuelles peuvent ne pas être capturés. Ces flux doivent être capturés au niveau du sous-réseau ou de la carte d’interface réseau de la machine virtuelle. 
+
+**Trafic sur une liaison privée** : pour journaliser le trafic lors de l’accès à des ressources PaaS via une liaison privée, activez les journaux de flux NSG sur un NSG de sous-réseau contenant la liaison privée. En raison des limitations de la plateforme, seul le trafic au niveau des machines virtuelles sources peut être capturé, tandis que celui au niveau de la ressource PaaS de destination ne peut pas l’être.
 
 **Problème avec le groupe de sécurité réseau du sous-réseau d’Application Gateway v2** : La journalisation de flux sur le groupe de sécurité réseau du sous-réseau d’Application Gateway v2 [n’est pas prise en charge](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) actuellement. Ce problème ne concerne pas Application Gateway v1.
 

@@ -2,20 +2,20 @@
 title: Guide pratique pour sécuriser une application démon dans Microsoft Azure Maps
 titleSuffix: Azure Maps
 description: Cet article explique comment héberger des applications démon, telles que des processus en arrière-plan, des minuteurs et des travaux dans un environnement approuvé et sécurisé dans Microsoft Azure Maps.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/21/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philema
+manager: eriklind
 custom.ms: subject-rbac-steps
-ms.openlocfilehash: b888dccbd7ce5cbf948b2da5494dd554b2d80649
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: e64645f7bdcbfb40cbee0fd29d1df2464a5d4f3e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541767"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450853"
 ---
 # <a name="secure-a-daemon-application"></a>Sécuriser une application démon
 
@@ -202,7 +202,7 @@ Pour acquérir le jeton d’accès :
 
 4. Sélectionnez votre application.
 
-5. Vous devez voir la page Vue d’ensemble. Copiez les valeurs ID d’application (client) et ID de l’annuaire (locataire).
+5. Vous devez voir la page Vue d’ensemble. Copiez les valeurs de l’ID d’application (client) et de l’ID de l’annuaire (locataire).
 
       :::image type="content" border="true" source="./media/how-to-manage-authentication/get-token-params.png" alt-text="Copie des paramètres du jeton":::
 
@@ -216,10 +216,10 @@ Nous allons utiliser l’application [Postman](https://www.postman.com/) pour cr
 
 4. Sélectionnez la méthode HTTP **POST**.
 
-5. Entrez l’URL suivante dans la barre d’adresse (remplacez `<Tenant ID>` par l’ID de l’annuaire (locataire), `<Client ID>` par l’ID de l’application (client) et `<Client Secret>` par votre secret client) :
+5. Entrez l’URL suivante dans la barre d’adresse (remplacez `{Tenant-ID}` par l’ID de l’annuaire (locataire), `{Client-ID}` par l’ID de l’application (client) et `{Client-Secret}` par votre secret client) :
 
     ```http
-    https://login.microsoftonline.com/<Tenant ID>/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id=<Client ID>&client_secret=<Client Secret>%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
+    https://login.microsoftonline.com/{Tenant-ID}/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id={Client-ID}&client_secret={Client-Secret}%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
     ```
 
 6. Sélectionnez **Envoyer**.

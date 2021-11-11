@@ -8,24 +8,24 @@ ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: ef783ba32cde3522f5b3cca9e0aa42bdd3fdf5f5
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c0348e159b14e400e7787da7e1c04de375f96815
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770418"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437141"
 ---
 # <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>Créer une nouvelle version d’image de machine virtuelle à partir d’une version existante à l’aide d’Azure VM Image Builder dans Linux
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Groupes identiques flexibles 
 
-Cet article explique comment récupérer une version existante d’une image dans une [Bibliothèque d’images partagées](../shared-image-galleries.md), la mettre à jour et la publier sous la forme d’une nouvelle version dans la bibliothèque.
+Cet article explique comment prendre une version existante d’une image dans une [galerie Azure Compute Gallery](../shared-image-galleries.md) (auparavant appelée Shared Image Gallery), la mettre à jour et la publier en tant que nouvelle version dans la gallerie.
 
 Pour configurer l’image, nous allons utiliser un exemple de modèle .json. Le fichier en question se trouve à l’emplacement [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json). 
 
 
 ## <a name="register-the-features"></a>Inscrire les fonctionnalités
-Pour utiliser Azure Image Builder, vous devez inscrire cette fonctionnalité.
+Pour utiliser le Générateur d’images Azure, vous devez inscrire la fonctionnalité.
 
 Vérifiez votre inscription.
 
@@ -50,7 +50,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="set-variables-and-permissions"></a>Définir des variables et des autorisations
 
-Si vous avez utilisé [Créer une image et la distribuer dans une bibliothèque d’images partagées](image-builder-gallery.md) pour créer votre bibliothèque d’images partagées, vous avez déjà créé certaines des variables dont nous avons besoin. Sinon, veuillez configurer quelques variables pout les utiliser dans cet exemple.
+Si vous avez utilisé [Créer une image et la distribuer à une galerie Azure Compute Gallery](image-builder-gallery.md) pour créer votre galerie Azure Compute Gallery, vous avez déjà créé certaines variables dont nous avons besoin. Sinon, veuillez configurer quelques variables pout les utiliser dans cet exemple.
 
 
 ```console
@@ -60,7 +60,7 @@ sigResourceGroup=ibLinuxGalleryRG
 location=westus2
 # Additional region to replicate the image version to 
 additionalregion=eastus
-# Name of the shared image gallery 
+# Name of the Azure Compute Gallery 
 sigName=myIbGallery
 # Name of the image definition to use
 imageDefName=myIbImageDef
@@ -92,7 +92,7 @@ Comme vous avez défini l’identité de l’utilisateur dans l’exemple préc�
 imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
 
-Si vous avez déjà votre propre bibliothèque d’images partagées et que vous n’avez pas suivi l’exemple précédent, affectez au Générateur d’images les autorisations nécessaires pour accéder au groupe de ressources et donc à la bibliothèque. Passez en revue les étapes de l’exemple [Créer une image et la distribuer à une Shared Image Gallery](image-builder-gallery.md).
+Si vous avez déjà votre propre galerie Azure Compute Gallery et que vous n’avez pas suivi l’exemple précédent, vous devez affecter à Image Builder les autorisations nécessaires pour accéder au groupe de ressources et donc à la galerie. Passez en revue les étapes de l’exemple [Créer une image et la distribuer à une galerie Azure Compute Gallery](image-builder-gallery.md).
 
 
 ## <a name="modify-helloimage-example"></a>Modifier l’exemple helloImage

@@ -3,12 +3,12 @@ title: Meilleures pratiques
 description: Découvrez les bonnes pratiques et des conseils utiles pour le développement de vos solutions Azure Batch.
 ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5227b738ab5d7af19ed2877a1c3d6b37ea08c556
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e910fd444fc443ef93d9cc513632ad6ab11a124e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535812"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461568"
 ---
 # <a name="azure-batch-best-practices"></a>Meilleures pratiques relatives à Azure Batch
 
@@ -61,7 +61,7 @@ Il est possible que les pools Batch rencontrent des événements de temps d’ar
 
 ### <a name="custom-image-pools"></a>Pools d’images personnalisés
 
-Quand vous créez un pool Azure Batch à l’aide de Configuration de la machine virtuelle, vous spécifiez une image de machine virtuelle qui fournit le système d’exploitation pour chaque nœud de calcul dans le pool. Vous pouvez créer le pool en utilisant une image prise en charge de la Place de Marché Azure ou en élaborant une image personnalisée avec une [image Shared Image Gallery](batch-sig-images.md). Bien que vous puissiez également utiliser une [image managée](batch-custom-images.md) pour créer un pool d’images personnalisé, nous vous recommandons de créer des images personnalisées à l’aide de Shared Image Gallery chaque fois que cela est possible. À l’aide de Shared Image Gallery, vous pouvez approvisionner des pools plus rapidement, mettre à l’échelle de grandes quantités de machines virtuelles et améliorer la fiabilité lors de la configuration des machines virtuelles.
+Quand vous créez un pool Azure Batch à l’aide de Configuration de la machine virtuelle, vous spécifiez une image de machine virtuelle qui fournit le système d’exploitation pour chaque nœud de calcul dans le pool. Vous pouvez créer le pool en utilisant une image prise en charge de la Place de Marché Azure ou en [créant une image personnalisée avec une image Azure Compute Gallery](batch-sig-images.md). Bien que vous puissiez également utiliser une [image managée](batch-custom-images.md) pour créer un pool d’images personnalisé, nous vous recommandons de créer des images personnalisées à l’aide de la galerie Azure Compute Gallery chaque fois que c’est possible. La galerie Azure Compute Gallery permet d’approvisionner des pools plus rapidement, de mettre à l’échelle de grandes quantités de machines virtuelles et d’améliorer la fiabilité lors de l’approvisionnement de machines virtuelles.
 
 ### <a name="third-party-images"></a>Images tierces
 

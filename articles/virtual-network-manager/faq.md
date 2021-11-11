@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/02/2021
 ms.author: duau
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: f25a2f21713684024dcacee18e5666dfbb33a1b2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 921c829cefae8ab4ea96066d70c5d110fc9188f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131098074"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451936"
 ---
 # <a name="azure-virtual-network-manager-faq"></a>FAQ sur Azure Virtual Network Manager
 
@@ -21,7 +21,7 @@ ms.locfileid: "131098074"
 
 ### <a name="what-regions-are-available-in-public-preview"></a>Quelles sont les régions disponibles en préversion publique ?
 
-* USA Centre-Nord
+* Centre-Nord des États-Unis
 
 * USA Ouest
 
@@ -89,15 +89,36 @@ Vous pouvez voir les paramètres Azure Virtual Network Manager d’un réseau vi
 
 Oui, vous pouvez choisir de remplacer ou de supprimer un appairage existant déjà créé.
 
+### <a name="how-can-i-explicitly-allow-sqlmi-traffic-before-having-deny-rules"></a>Comment autoriser explicitement le trafic SQLMI avant d’avoir des règles de refus ?
+
+Azure SQL Managed Instance impose des exigences réseau. Si vos règles d’administration de la sécurité peuvent bloquer la configuration réseau requise, vous pouvez utiliser les exemples de règles ci-dessous pour autoriser le trafic SQLMI avec une priorité plus élevée que les règles de refus susceptibles de bloquer le trafic de SQL Managed Instance.
+
+#### <a name="inbound-rules"></a>Règles de trafic entrant
+
+| Port | Protocol | Source | Destination | Action |
+| ---- | -------- | ------ | ----------- | ------ |
+| 9000, 9003, 1438, 1440, 1452 | TCP | SqlManagement | **VirtualNetwork** | Allow |
+| 9000, 9003 | TCP | CorpNetSaw | **VirtualNetwork** | Allow |
+| 9000, 9003 | TCP | CorpnetPublic | **VirtualNetwork** | Allow |
+| Quelconque | Quelconque | **VirtualNetwork** | **VirtualNetwork** | Allow |
+| Quelconque | Quelconque | **AzureLoadBalancer** | **VirtualNetwork** | Autoriser |
+
+#### <a name="outbound-rules"></a>Règles de trafic sortant
+
+| Port | Protocol | Source | Destination | Action |
+| ---- | -------- | ------ | ----------- | ------ |
+| 443, 12000 | TCP  | **VirtualNetwork** | AzureCloud | Allow |
+| Quelconque | Quelconque | **VirtualNetwork** | **VirtualNetwork** | Autoriser |
+
 ## <a name="limits"></a>limites
 
 ### <a name="what-are-the-service-limitation-of-azure-virtual-network-manager"></a>Quelle est la limitation de service d’Azure Virtual Network Manager ?
 
-* Un hub dans une topologie hub-and-spoke peut être appairé avec jusqu’à 500 spokes. 
+* Un hub dans une topologie en étoile (hub-and-spoke) peut être appairé avec jusqu’à 250 branches d’étoile. 
+
+* Une topologie de maillage peut avoir jusqu’à 250 réseaux virtuels.
 
 * Les sous-réseaux d’un réseau virtuel ne peuvent pas communiquer entre eux s’ils ont le même espace d’adressage dans une configuration de maillage. 
-
-* Azure Virtual Network Manager autorise uniquement 500 connexions d’appairage de réseaux virtuels sur toute la configuration Connectivité pour un réseau virtuel donné. Vous pouvez également gérer l’appairage hérité de manière autonome. 
 
 * Le nombre maximal de préfixes IP dans toutes les règles d’administration combinées est de 1 000. 
 
@@ -105,7 +126,7 @@ Oui, vous pouvez choisir de remplacer ou de supprimer un appairage existant déj
 
 * Azure Virtual Network Manager n’offre pas de prise en charge multilocataire dans la préversion publique.
 
-* Un réseau virtuel peut faire partie d’un maximum de cinq configurations de maillage. 
+* Un réseau virtuel peut faire partie d’un maximum de deux configurations de maillage. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

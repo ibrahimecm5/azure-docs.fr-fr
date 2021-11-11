@@ -155,12 +155,10 @@ items:
                     href: ./security/synapse-workspace-synapse-rbac-roles.md
                   - name: Comprendre les rôles RBAC Synapse
                     href: ./security/synapse-workspace-understand-what-role-you-need.md
-                  - name: Identité managée de l’espace de travail Synapse
-                    href: ./security/synapse-workspace-managed-identity.md
                   - name: Identité gérée système et affectée par l’utilisateur
-                    href: ../data-factory/data-factory-service-identity.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&tabs=synapse-analytics
+                    href: ../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context
                   - name: Informations d’identification pour l’identité gérée affectée par l’utilisateur
-                    href: ../data-factory/credentials.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&tabs=synapse-analytics
+                    href: ../data-factory/credentials.md?context=/azure/synapse-analytics/context/context
       - name: Guides pratiques
         items:
           - name: Gérer et surveiller
@@ -486,6 +484,8 @@ items:
                 href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context
               - name: Superviser votre charge de travail - Portail
                 href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?context=/azure/synapse-analytics/context/context
+              - name: Historique et analyse des requêtes
+                href: ./sql/query-history-storage-analysis.md
               - name: Gérer des charges de travail
                 items:
                   - name: Analyser votre charge de travail
@@ -1432,6 +1432,8 @@ items:
     items:
       - name: Prévoir et gérer les coûts
         href: plan-manage-costs.md
+      - name: Parcourir un dossier ADLS Gen2 avec des listes ACL
+        href: how-to-access-container-with-access-control-lists.md
   - name: Informations de référence
     items:
       - name: Azure CLI

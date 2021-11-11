@@ -8,22 +8,20 @@ ms.topic: how-to
 ms.date: 09/24/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: 03a493807b0f7eb0f6e1f08794a53b18b3a7dbe4
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 19bb4a91a8612feab4218a16eedb2f961b1d0adb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060514"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434006"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Activer les notebooks pour un compte Azure Cosmos DB (préversion)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > La fonctionnalité de notebook est temporairement désactivée. L’équipe d’Azure Cosmos DB travaille sur un correctif.  
->
-> Les notebooks intégrés pour Azure Cosmos DB sont actuellement disponibles dans [29 régions](#supported-regions). Pour utiliser des notebooks, [créez un compte](#create-a-new-cosmos-account) ou [activez les notebooks sur un compte existant](#enable-notebooks-in-an-existing-cosmos-account) dans l’une de ces régions 
 
-Les notebooks Jupyter intégrés dans Azure Cosmos DB vous permettent d’analyser et de visualiser vos données via le portail Azure. Cet article décrit comment activer cette fonctionnalité pour votre compte Azure Cosmos DB.
+Les notebooks Jupyter intégrés dans Azure Cosmos DB vous permettent d’analyser et de visualiser vos données via le portail Azure. Cet article décrit comment activer cette fonctionnalité pour votre compte Azure Cosmos DB. Les notebooks pour Azure Cosmos DB sont actuellement disponibles dans [29 régions](#supported-regions). Pour utiliser des notebooks, [créez un compte](#create-a-new-cosmos-account) ou [activez les notebooks sur un compte existant](#enable-notebooks-in-an-existing-cosmos-account) dans l’une de ces régions
 
 ## <a name="create-a-new-cosmos-account"></a>Créer un compte Cosmos
 À compter du 10 février 2021, les notebooks seront automatiquement activés pour les nouveaux comptes Azure Cosmos créés dans une [région prise en charge](#supported-regions). Aucune configuration supplémentaire n'est requise pour activer les notebooks. Utilisez les instructions suivantes pour créer un compte :

@@ -3,19 +3,19 @@ title: Installer des conteneurs Speech
 titleSuffix: Azure Cognitive Services
 description: Détaille les options de configuration de graphique Helm pour la reconnaissance vocale.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/05/2020
-ms.author: pafarley
-ms.openlocfilehash: 0726b01ea082df91d426a66d36f7ad5f83babba4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: b5d2eed959f216d7ec3f1b504e086b1b83efdb58
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646404"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500753"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Reconnaissance vocale (sous-graphique : charts/speechToText)
 
@@ -43,7 +43,7 @@ Pour remplacer le graphique en parapluie, ajoutez le préfixe `speechToText.` à
 
 #### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>Analyse des sentiments (sous-graphique : charts/speechToText)
 
-À compter de la version 2.2.0 du conteneur de reconnaissance vocale en texte et de la version 0.2.0 du graphique Helm, les paramètres suivants sont utilisés pour l’analyse des sentiments à l’aide de l’API Analyse de texte.
+À compter de la version 2.2.0 du conteneur de reconnaissance vocale en texte et de la version 0.2.0 du graphique Helm, les paramètres suivants sont utilisés pour l’analyse des sentiments à l’aide de l’API Service de langage.
 
 |Paramètre|Description|Valeurs|Default|
 | --- | --- | --- | --- |

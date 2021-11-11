@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9cde3940f09d3612ebe6411804fe4780e5bcfc18
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3cbbfd54861cc926fe74b748e6b9a82b4457c9f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469195"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444209"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Comment utiliser des classeurs Azure Monitor pour créer des rapports Azure Active Directory
 
@@ -31,6 +31,8 @@ Vous voulez...
 - comprendre l’impact de vos [stratégies d’accès conditionnel](../conditional-access/overview.md) sur l’expérience de connexion des utilisateurs ?
 
 - mettre un terme aux échecs de connexion pour obtenir un meilleur aperçu de l’intégration des connexions de votre organisation, et résoudre les problèmes plus rapidement ?
+
+- Comprendre les tendances des utilisateurs et des détections de risques dans votre locataire ?
 
 - savoir qui utilise l’authentification héritée pour se connecter à votre environnement ? (en [bloquant l’authentification héritée](../conditional-access/block-legacy-authentication.md), vous pouvez améliorer la protection de votre locataire.)
 
@@ -292,9 +294,25 @@ Pour vous aider à résoudre les problèmes de connexion, Azure Monitor vous fou
     ![Résumé des connexions en attente d’une action utilisateur](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
+## <a name="identity-protection-risk-analysis"></a>Analyse des risques Identity Protection
 
+Utilisez le classeur **Analyse des risques Identity Protection** dans la section **Utilisation** pour comprendre les concepts suivants :
 
+- Distribution dans des utilisateurs à risques et détections de risques par niveaux et types
+- Opportunités pour mieux résoudre les risques
+- En cas de détection des risques dans le monde
 
+Vous pouvez filtrer les tendances concernant la détection de risques en procédant comme suit :
+- Type de synchronisation de la détection
+- Niveau de risque
+
+Les détections de risques en temps réel sont celles qui peuvent être détectées au point d’authentification. Ces détections peuvent être testées par des stratégies de connexion risquées à l’aide de l’accès conditionnel pour exiger une authentification multifacteur. 
+
+Vous pouvez filtrer les tendances concernant les utilisateurs à risque en procédant comme suit :
+- Détail du risque
+- Niveau de risque
+
+Si vous avez un grand nombre d’utilisateurs risqués pour lesquels « aucune action » n’a été effectuée, envisagez d’activer une stratégie d’accès conditionnel pour exiger une modification de mot de passe sécurisée lorsqu’un utilisateur est à risque élevé.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

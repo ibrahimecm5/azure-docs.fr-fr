@@ -4,7 +4,7 @@
   items:
     - name: À propos d’Azure Container Apps
       href: overview.md
-    - name: Comparaison des options de conteneur dans Azure
+    - name: Comparer les options de conteneur dans Azure
       href: compare-options.md
 - name: Démarrages rapides
   expanded: true
@@ -15,7 +15,7 @@
   items:
     - name: Environnement
       href: environment.md
-    - name: Containers
+    - name: Conteneurs
       href: containers.md
     - name: Révisions
       href: revisions.md

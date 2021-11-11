@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a80cdacaebe4cba2dceb1b29b2f512a6148a518b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d91722247e44016695154912277a0e1e2370fed6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096359"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452126"
 ---
 # <a name="set-up-azure-virtual-desktop-for-azure-stack-hci-preview"></a>Configurer Azure Virtual Desktop pour Azure Stack HCI (version préliminaire)
 
@@ -22,7 +22,7 @@ ms.locfileid: "131096359"
 
 Avec Azure Virtual Desktop pour Azure Stack HCI (version préliminaire), vous pouvez utiliser des hôtes de session d’Azure Virtual Desktop dans votre infrastructure HCI Azure Stack locale. Pour plus d’informations, consultez [ Azure Virtual Desktop pour Azure Stack HCI (version préliminaire)](azure-stack-hci-overview.md).
 
-## <a name="requirements"></a>Configuration requise
+## <a name="requirements"></a>Spécifications
 
 Pour utiliser Azure Virtual Desktop pour Azure Stack HCI, vous avez besoin des éléments suivants :
 
@@ -40,20 +40,22 @@ Pour configurer Azure Virtual Desktop pour Azure Stack HCI :
 
 1. Créez un pool hôte sans ordinateur virtuel en suivant les instructions de [la procédure de démarrage du processus d’installation du pool hôte](create-host-pools-azure-marketplace.md#begin-the-host-pool-setup-process). À la fin de cette section, revenez à cet article et commencez à l’étape 2.
 
-2. Suivez les instructions fournies dans informations sur l'[espace de travail](create-host-pools-azure-marketplace.md#workspace-information) pour créer un espace de travail pour vous-même.
+2. Configurez le pool d’hôtes nouvellement créé en tant que pool d’hôtes de validation en procédant de la manière décrite dans [Définir votre pool d’hôtes en tant que pool d’hôtes de validation](create-validation-host-pool.md#define-your-host-pool-as-a-validation-host-pool) pour activer la propriété d’environnement de validation.
 
-3. Déployez un nouvel ordinateur virtuel sur votre infrastructure Azure Stack HCI en suivant les instructions fournies dans [Créer une machine virtuelle](/azure-stack/hci/manage/vm#create-a-new-vm). Déployez une machine virtuelle avec un système d’exploitation pris en charge et la joindre à un domaine.
+3. Suivez les instructions fournies dans informations sur l'[espace de travail](create-host-pools-azure-marketplace.md#workspace-information) pour créer un espace de travail pour vous-même.
+
+4. Déployez un nouvel ordinateur virtuel sur votre infrastructure Azure Stack HCI en suivant les instructions fournies dans [Créer une machine virtuelle](/azure-stack/hci/manage/vm#create-a-new-vm). Déployez une machine virtuelle avec un système d’exploitation pris en charge et la joindre à un domaine.
 
    >[!NOTE]
    >Installez le rôle Hôte de session Bureau à distance (RDSH) si la machine virtuelle exécute un système d’exploitation Windows Server.
 
-4. Activez Azure pour gérer la nouvelle machine virtuelle par le biais d’Azure Arc en y installant l’agent de l’ordinateur connecté. Suivez les instructions de [Connecter machines hybrides avec des serveurs Azure Arc](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) pour installer l’agent Windows sur la machine virtuelle.
+5. Activez Azure pour gérer la nouvelle machine virtuelle par le biais d’Azure Arc en y installant l’agent de l’ordinateur connecté. Suivez les instructions de [Connecter machines hybrides avec des serveurs Azure Arc](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) pour installer l’agent Windows sur la machine virtuelle.
 
-5. Ajoutez l’ordinateur virtuel au pool d’hôtes Azure Virtual Desktop que vous avez créé précédemment en installant l’[agent Azure Virtual Desktop](agent-overview.md). Après cela, suivez les instructions de la procédure [Inscrire les machines virtuelles au pool d’hôtes d’Azure Virtual Desktop](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool) pour inscrire la machine virtuelle auprès du service d’Azure Virtual Desktop.
+6. Ajoutez l’ordinateur virtuel au pool d’hôtes Azure Virtual Desktop que vous avez créé précédemment en installant l’[agent Azure Virtual Desktop](agent-overview.md). Après cela, suivez les instructions de la procédure [Inscrire les machines virtuelles au pool d’hôtes d’Azure Virtual Desktop](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool) pour inscrire la machine virtuelle auprès du service d’Azure Virtual Desktop.
 
-6. Suivez les instructions de [Créer des groupes d'applications et gérer les affectations des utilisateurs](manage-app-groups.md) pour créer un groupe d’applications à des fins de test et assigner l’accès des utilisateurs à celui-ci.
+7. Suivez les instructions de [Créer des groupes d'applications et gérer les affectations des utilisateurs](manage-app-groups.md) pour créer un groupe d’applications à des fins de test et assigner l’accès des utilisateurs à celui-ci.
 
-7. Accédez au [client Web](./user-documentation/connect-web.md) et accordez à vos utilisateurs l’accès au nouveau déploiement.
+8. Accédez au [client Web](./user-documentation/connect-web.md) et accordez à vos utilisateurs l’accès au nouveau déploiement.
 
 ## <a name="optional-configurations"></a>Configurations facultatives
 
@@ -165,6 +167,13 @@ Pour exporter le disque dur virtuel :
 
 2. Téléchargez l’image de disque dur virtuel. Le processus de téléchargement peut durer plusieurs minutes, donc soyez patient. Assurez-vous que l’image a été entièrement téléchargée avant de passer à la section suivante.
 
+>[!NOTE]
+>Si vous exécutez azcopy, vous devrez peut-être ignorer le md5check en exécutant la commande suivante :
+>
+> ```azure
+> azcopy copy “$sas" "destination_path_on_cluster" --check-md5 NoCheck
+> ```
+
 ### <a name="clean-up-the-managed-disk"></a>Nettoyez le disque managé
 
 Lorsque vous avez terminé avec votre disque dur virtuel, vous devez libérer de l’espace en supprimant le disque géré.
@@ -177,6 +186,13 @@ az disk delete --name $diskName --resource-group $diskRG --yes
 ```
 
 Cette commande peut prendre quelques minutes, donc soyez patient.
+
+>[!NOTE]
+>Si vous le souhaitez, vous pouvez également convertir le disque dur virtuel (VHD) de téléchargement en VHDX dynamique à l’aide de la commande suivante :
+>
+> ```powershell
+> Convert-VHD -Path " destination_path_on_cluster\file_name.vhd" -DestinationPath " destination_path_on_cluster\file_name.vhdx" -VHDType Dynamic
+> ```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

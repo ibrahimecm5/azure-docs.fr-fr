@@ -7,18 +7,18 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/13/2021
-ms.openlocfilehash: 0a7ca14a797ef2680527cd6992ff9a7a1d6ea115
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1e83714026ac0d2ac50a4b30d358e127b92e99b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084897"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433552"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Créer des plans pour une offre de machine virtuelle
 
 Dans la page **Vue d’ensemble du plan** (à partir du menu de navigation de gauche dans Espace partenaires), vous pouvez proposer différentes options de plan au sein d’une même offre. Une offre nécessite au moins un plan (précédemment appelé SKU), qui peut varier en termes de public de monétisation, de région Azure, de fonctionnalités ou d’images de machines virtuelles.
 
-Vous pouvez créer jusqu’à 100 plans pour chaque offre ; jusqu’à 45 d’entre eux peuvent être privés. En savoir plus sur les offres privées dans les [offres du marketplace commercial de Microsoft](private-offers.md).
+Vous pouvez créer jusqu’à 100 plans pour chaque offre, dont jusqu’à 45 peuvent être privés. En savoir plus sur les offres privées dans les [offres du marketplace commercial de Microsoft](private-offers.md).
 
 Une fois que vous avez créé vos plans, sélectionnez l’onglet **Vue d’ensemble du plan** pour afficher :
 
@@ -147,9 +147,9 @@ Les offres privées ne sont pas prises en charge avec les abonnements Azure sous
 
 Si vous comptez utiliser votre machine virtuelle uniquement de manière indirecte quand elle est référencée par un autre modèle de solution ou une application managée, cochez cette case pour publier la machine virtuelle tout en la masquant aux yeux des clients susceptibles de la rechercher ou d’y accéder directement.
 
-Tout client Azure peut déployer l’offre à l’aide de PowerShell ou de l’interface CLI.  Si vous souhaitez mettre cette offre à disposition d’un nombre limité de clients, définissez le plan sur **Privé**. 
+Tout client Azure peut déployer l’offre à l’aide de PowerShell ou de l’interface CLI.  Si vous souhaitez mettre cette offre à disposition d’un nombre limité de clients, définissez le plan sur **Privé**.
 
-Les plans masqués ne génèrent pas de liens d’aperçu. Toutefois, vous pouvez les tester [en procédant comme suit](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-). 
+Les plans masqués ne génèrent pas de liens d’aperçu. Toutefois, vous pouvez les tester [en procédant comme suit](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-).
 
 Si vous effectuez des modifications, sélectionnez **Enregistrer le brouillon** avant de passer à l’onglet suivant du menu de navigation gauche **Configuration technique**.
 
@@ -159,7 +159,7 @@ Fournissez les images et autres propriétés techniques associées à ce plan.
 
 ### <a name="reuse-technical-configuration"></a>Réutiliser la configuration technique
 
-Cette option vous permet d’utiliser les mêmes paramètres de configuration technique pour tous les plans d’une même offre et donc de tirer parti du même ensemble d’images. Si vous activez l’option de réutilisation de la configuration technique, votre plan héritera des mêmes paramètres de configuration technique que le plan de base que vous sélectionnez.  Lorsque vous modifiez le plan de base, les modifications sont répercutées sur le plan réutilisant la configuration.
+Cette option vous permet d’utiliser les mêmes paramètres de configuration technique pour tous les plans d’une même offre et donc de tirer parti du même ensemble d’images. Si vous activez l’option de _réutilisation de la configuration technique_, votre plan héritera des mêmes paramètres de configuration technique que le plan de base que vous sélectionnez.  Lorsque vous modifiez le plan de base, les modifications sont répercutées sur le plan réutilisant la configuration.
 
 Voici quelques raisons courantes de réutiliser les paramètres de configuration technique d’un autre plan :
 
@@ -169,7 +169,7 @@ Voici quelques raisons courantes de réutiliser les paramètres de configuration
 
 Tirez parti d’[Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) (IMDS) pour identifier le plan dans lequel votre solution est déployée afin de valider la licence ou l’activation des fonctionnalités appropriées.
 
-Si vous décidez ultérieurement de publier des modifications différentes entre vos plans, vous pouvez les détacher. Pour détacher le plan qui réutilise la configuration technique, désélectionnez cette option pour le plan en question. Une fois détaché, votre plan aura les mêmes paramètres de configuration technique à la place de votre dernier paramètre, et la configuration de vos plans pourra varier. Un plan qui a été publié indépendamment par le passé ne peut pas réutiliser une configuration technique par la suite. 
+Si vous décidez ultérieurement de publier des modifications différentes entre vos plans, vous pouvez les détacher. Pour détacher le plan qui réutilise la configuration technique, désélectionnez cette option pour le plan en question. Une fois détaché, votre plan aura les mêmes paramètres de configuration technique à la place de votre dernier paramètre, et la configuration de vos plans pourra varier. Un plan qui a été publié indépendamment par le passé ne peut pas réutiliser une configuration technique par la suite.
 
 ### <a name="operating-system"></a>Système d'exploitation
 

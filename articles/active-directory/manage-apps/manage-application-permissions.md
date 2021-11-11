@@ -1,7 +1,7 @@
 ---
-title: Gérer les autorisations de l’utilisateur et de l’administrateur
-description: Apprenez à examiner et gérer les autorisations relatives à une application sur Azure AD. Par exemple, révoquez toutes les autorisations octroyées à une application.
+title: Vérifier les autorisations accordées aux applications
 titleSuffix: Azure AD
+description: Découvrez comment examiner et gérer les autorisations pour une application dans Azure Active Directory.
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -9,126 +9,48 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2021
+ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f58a7e03450d8aed26bfa164803529af12cba31
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 038955a1c7b4a15b2b0ae630c95c2833f32a3eab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617509"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471171"
 ---
-# <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>Mesures relatives aux applications surprivilégiées ou suspectes dans Azure Active Directory.
+# <a name="review-permissions-granted-to-applications-in-azure-active-directory"></a>Passer en revue les autorisations accordées aux applications dans Azure Active Directory
 
-Apprenez à examiner et gérer les autorisations relatives à une application. Cet article propose différentes mesures pour sécuriser votre application en fonction du scénario. Ces mesures s’appliquent à toutes les applications qui ont été ajoutées à votre locataire Azure Active Directory (Azure AD), avec consentement utilisateur ou administrateur.
+Dans cet article, vous allez apprendre à passer en revue les autorisations accordées aux applications dans votre locataire Azure Active Directory (Azure AD). Vous devrez peut-être passer en revue les autorisations lorsque vous avez détecté une application malveillante ou si l’application a reçu plus d’autorisations que nécessaire.
 
-Pour plus d’informations sur le consentement des applications, consultez [Infrastructure de consentement d’Azure Active Directory](../develop/consent-framework.md).
+Les étapes présentées dans cet article s’appliquent à toutes les applications qui ont été ajoutées à votre locataire Azure Active Directory (Azure AD), avec consentement utilisateur ou administrateur. Pour plus d’informations sur le consentement des applications, consultez [Infrastructure de consentement d’Azure Active Directory](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
-Pour effectuer les actions suivantes, vous devez vous connecter en tant qu’administrateur général, administrateur d’application ou administrateur d’application cloud.
+Pour vérifier les autorisations accordées aux applications, vous devez :
 
-- Configurez Azure AD PowerShell. Consulter [Azure AD PowerShell](/powershell/azure/)
-
-Pour restreindre l’accès aux applications, vous devez demander l’affectation d’utilisateurs, puis affecter des utilisateurs ou des groupes à l’application.  Pour plus d'informations, voir [Méthodes d'affectation d'utilisateurs et de groupes](./assign-user-or-group-access-portal.md).
+- Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Un des rôles suivants : Administrateur général, Administrateur d’application cloud, Administrateur d’application ou propriétaire du principal de service.
 
 Vous pouvez accéder au portail Azure AD pour obtenir des scripts PowerShell contextuels permettant d'appliquer les mesures.
 
-1. Connectez-vous au [portail Azure](https://portal.azure.com) en tant qu’administrateur général, administrateur d’application ou administrateur d’application cloud.
-2. Sélectionnez **Azure Active Directory (Azure Active Directory)**  > **Enterprise applications (Applications d’entreprise)** .
-3. Sélectionnez l’application dont vous souhaitez restreindre l’accès.
-4. Sélectionnez **Autorisations**. Sur la barre de commandes, sélectionnez **Passer en revue les autorisations**.
+## <a name="review-application-permissions"></a>Passer en revue les autorisations de l’application
 
+Pour passer en revue les autorisations de l’application :
+
+1. Connectez-vous au [portail Azure](https://portal.azure.com) avec l’un des rôles listés dans la section des prérequis.
+1. Sélectionnez **Azure Active Directory**, puis **Applications d’entreprise**.
+1. Sélectionnez l’application dont vous souhaitez restreindre l’accès.
+1. Sélectionnez **Autorisations**. Sur la barre de commandes, sélectionnez **Passer en revue les autorisations**.
 ![Capture d’écran de la fenêtre Passer en revue les autorisations.](./media/manage-application-permissions/review-permissions.png)
+1. Donnez la raison pour laquelle vous souhaitez passer en revue les autorisations de l’application en sélectionnant l’une des options listées après la question : **Pourquoi voulez-vous passer en revue les autorisations pour cette application ?**
 
-## <a name="control-access-to-an-application"></a>Contrôler l’accès à une application
+Chaque option génère des scripts PowerShell qui vous permettent de contrôler l’accès utilisateur à l’application et de passer en revue les autorisations accordées à l’application. Pour plus d’informations sur la façon de contrôler l’accès utilisateur à une application, consultez [Comment supprimer l’accès d’un utilisateur à une application](methods-for-removing-user-access.md)
 
-Nous vous recommandons de restreindre l’accès à l’application en activant le paramètre **Affectation d’utilisateurs**.
+## <a name="revoke-permissions-using-powershell-commands"></a>Révoquer des autorisations à l’aide de commandes PowerShell
 
-1. Connectez-vous au [portail Azure](https://portal.azure.com) en tant qu’administrateur général, administrateur d’application ou administrateur d’application cloud.
-2. Sélectionnez **Azure Active Directory (Azure Active Directory)**  > **Enterprise applications (Applications d’entreprise)** .
-3. Sélectionnez l’application dont vous souhaitez restreindre l’accès.
-4. Sélectionnez **Propriétés**, puis définissez **Droits d’accès requis pour l’utilisateur** sur **Oui**.
-5. Sélectionnez **Utilisateur et groupes**, puis supprimez les utilisateurs indésirables qui sont affectés à l’application.
-6. Affectez des utilisateurs ou des groupes à l’application.
-
-Si vous le souhaitez, vous pouvez supprimer tous les utilisateurs affectés à l’application à l’aide de PowerShell.
-
-## <a name="revoke-all-permissions-for-an-application"></a>Révoquer toutes les autorisations relatives à une application
-
-L’utilisation du script PowerShell révoque toutes les autorisations octroyées à cette application.
-
-> [!NOTE]
-> La révocation de l’autorisation actuellement octroyée n’empêchera pas les utilisateurs de consentir à nouveau à l’application. Si vous souhaitez empêcher les utilisateurs de donner leur consentement, consultez [Configurer la manière dont les utilisateurs consentent aux applications](configure-user-consent.md).
-
-Si vous le souhaitez, vous pouvez désactiver l’application pour empêcher les utilisateurs d’y accéder et pour empêcher l’application d’accéder à vos données.
-
-1. Connectez-vous au [portail Azure](https://portal.azure.com) en tant qu’administrateur général, administrateur d’application ou administrateur d’application cloud.
-2. Sélectionnez **Azure Active Directory (Azure Active Directory)**  > **Enterprise applications (Applications d’entreprise)** .
-3. Sélectionnez l’application dont vous souhaitez restreindre l’accès.
-4. Sélectionnez **Propriétés**, puis définissez **Connexion permise pour les utilisateurs ?** sur **Non**.
-
-## <a name="investigate-a-suspicious-application"></a>Examiner une application suspecte
-
-Nous vous recommandons de restreindre l’accès à l’application en activant le paramètre **Affectation d’utilisateurs**. Examinez ensuite les autorisations que les utilisateurs et les administrateurs ont accordées à l’application.
-
-1. Connectez-vous au [portail Azure](https://portal.azure.com) en tant qu’administrateur général, administrateur d’application ou administrateur d’application cloud.
-2. Sélectionnez **Azure Active Directory (Azure Active Directory)**  > **Enterprise applications (Applications d’entreprise)** .
-3. Sélectionnez l’application dont vous souhaitez restreindre l’accès.
-4. Sélectionnez **Propriétés**, puis définissez **Droits d’accès requis pour l’utilisateur** sur **Oui**.
-5. Sélectionnez **Autorisations** et vérifiez les autorisations consenties par l’administrateur et l’utilisateur.
-
-Éventuellement, à l’aide de PowerShell, vous pouvez :
-
-- Supprimer tous les utilisateurs attribués pour les empêcher de se connecter à l’application.
-- Invalider les jetons d’actualisation des utilisateurs qui ont accès à l’application.
-- Révoquer toutes les autorisations relatives à l’application.
-
-Sinon ,vous pouvez désactiver l’application pour bloquer l’accès des utilisateurs et empêcher celle-ci d’accéder à vos données.
-
-## <a name="disable-a-malicious-application"></a>Désactiver une application malveillante
-
-Nous vous recommandons de désactiver l’application pour bloquer l’accès des utilisateurs et empêcher l’application d’accéder à vos données. Si vous supprimez l’application, les utilisateurs peuvent de nouveau consentir à celle-ci et octroyer l’accès à vos données.
-
-1. Connectez-vous au [portail Azure](https://portal.azure.com) en tant qu’administrateur général, administrateur d’application ou administrateur d’application cloud.
-2. Sélectionnez **Azure Active Directory (Azure Active Directory)**  > **Enterprise applications (Applications d’entreprise)** .
-3. Sélectionnez l’application dont vous souhaitez restreindre l’accès.
-4. Sélectionnez **Propriétés**, puis copiez l’ID d’objet.
-
-### <a name="powershell-commands"></a>Commandes PowerShell
-
-Récupérez l’ID d’objet du principal de service.
-
-   ```powershell
-   $app_name = "<Your App's display name>"
-   $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-   $sp.ObjectId
-   ```
-
-Supprimez tous les utilisateurs affectés à l’application.
-
-```powershell
-Connect-AzureAD
-
-# Get Service Principal using objectId
-$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
-
-# Get Azure AD App role assignments using objectId of the Service Principal
-$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
-
-# Remove all users and groups assigned to the application
-$assignments | ForEach-Object {
-    if ($_.PrincipalType -eq "User") {
-        Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-    } elseif ($_.PrincipalType -eq "Group") {
-        Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-    }
-}
-```
-
-Révoquez les autorisations octroyées à l’application.
+L’utilisation du script PowerShell suivant révoque toutes les autorisations octroyées à cette application.
 
 ```powershell
 Connect-AzureAD
@@ -153,7 +75,10 @@ $spApplicationPermissions | ForEach-Object {
 }
 ```
 
-Invalidez les jetons d’actualisation.
+> [!NOTE]
+> La révocation de l’autorisation actuellement octroyée n’empêchera pas les utilisateurs de consentir à nouveau à l’application. Si vous souhaitez empêcher les utilisateurs de donner leur consentement, consultez [Configurer la manière dont les utilisateurs consentent aux applications](configure-user-consent.md).
+
+## <a name="invalidate-the-refresh-tokens"></a>Invalider les jetons d’actualisation
 
 ```powershell
 Connect-AzureAD
@@ -172,6 +97,4 @@ $assignments | ForEach-Object {
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Gérer le consentement pour les applications et évaluer les demandes de consentement](manage-consent-requests.md)
-- [Configurer le consentement de l'utilisateur](configure-user-consent.md)
 - [Configurer le workflow du consentement administrateur](configure-admin-consent-workflow.md)

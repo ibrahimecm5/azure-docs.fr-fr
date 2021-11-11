@@ -3,25 +3,25 @@ title: Création d’un pool d’images personnalisées à l’aide d’une imag
 description: Créez un pool d’images personnalisées à partir d’une image managée pour provisionner les nœuds de calcul avec les logiciels et les données de votre application.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9baa65c0f1c1844ea10e3d5b4f0b48924912d233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e70d3391ca9c8d4854c4cd587ffb6e840ef4254
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023875"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476886"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Création d’un pool d’images personnalisées à l’aide d’une image managée
 
-Pour créer un pool d’images personnalisées destiné aux machines virtuelles de votre pool Batch, vous pouvez utiliser une image managée de façon à élaborer une [image Shared Image Gallery](batch-sig-images.md). L’utilisation d’une seule image gérée est également prise en charge, mais uniquement pour les versions d’API allant jusqu’à 2019-08-01.
+Pour créer un pool d’images personnalisées destiné aux machines virtuelles de votre pool Batch, vous pouvez utiliser une image managée afin de créer une [image Azure Compute Gallery](batch-sig-images.md). L’utilisation d’une seule image gérée est également prise en charge, mais uniquement pour les versions d’API allant jusqu’à 2019-08-01.
 
 > [!IMPORTANT]
-> Dans la plupart des cas, vous devez créer des images personnalisées à l’aide de Shared Image Gallery. À l’aide de Shared Image Gallery, vous pouvez approvisionner des pools plus rapidement, mettre à l’échelle de grandes quantités de machines virtuelles et améliorer la fiabilité lors de la configuration des machines virtuelles. Pour en savoir plus, consultez [Utiliser Shared Image Gallery pour créer un pool personnalisé](batch-sig-images.md).
+> Dans la plupart des cas, vous devez créer des images personnalisées à l’aide de la galerie Azure Compute Gallery. À l’aide d’Azure Compute Gallery, vous pouvez approvisionner des pools plus rapidement, mettre à l’échelle de grandes quantités de machines virtuelles et améliorer la fiabilité lors de la configuration des machines virtuelles. Pour en savoir plus, consultez [Utiliser Azure Compute Gallery pour créer un pool personnalisé](batch-sig-images.md).
 
 Cette rubrique explique comment créer un pool d’images personnalisées en utilisant seulement une image managée.
 
 ## <a name="prerequisites"></a>Prérequis
 
-- **Une ressource d’image managée**. Pour créer un pool de machines virtuelles à l’aide d’une image personnalisée, vous devez avoir ou créer une ressource d’image managée dans le même abonnement et la même région Azure que le compte Batch. L’image doit être créée à partir d’instantanés du disque de système d’exploitation de la machine virtuelle et, éventuellement, ses disques de données associés.
+- **Une ressource d’image managée**. Pour créer un pool de machines virtuelles à l’aide d’une image personnalisée, vous devez avoir ou créer une ressource d’image managée dans le même abonnement et la même région Azure que le compte Batch. L’image doit être créée à partir d’instantanés du disque de système d’exploitation de la machine virtuelle et, éventuellement, des disques de données associés.
   - Utilisez une image personnalisée unique pour chaque pool que vous créez.
   - Pour créer un pool avec l’image à l’aide des API Batch, spécifiez **l’ID de ressource** de l’image, qui est au format `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`.
   - La ressource d’image managée doit exister pour faire monter la durée de vie du pool en puissance. Elle peut être supprimée une fois que le pool est supprimé.
@@ -54,7 +54,7 @@ Si vous créez une machine virtuelle pour l'image, utilisez une image propriéta
 
 ### <a name="create-a-vm-snapshot"></a>Créer un instantané de la machine virtuelle
 
-Une capture instantanée est une copie complète en lecture seule d’un disque dur virtuel. Pour créer un instantané des disques de système d’exploitation ou de données d’une machine virtuelle, vous pouvez utiliser les outils en ligne de commande ou le portail Azure. Pour les étapes et les options permettant de créer un instantané, consultez les conseils pour les machines virtuelles [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) ou [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md).
+Une capture instantanée est une copie complète en lecture seule d’un disque dur virtuel. Pour créer un instantané des disques de données ou de système d’exploitation de machine virtuelle, vous pouvez utiliser les outils en ligne de commande ou le portail Azure. Pour les étapes et les options permettant de créer un instantané, consultez les conseils pour les [machines virtuelles](../virtual-machines/snapshot-copy-managed-disk.md).
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Créer une image à partir d’un ou plusieurs instantanés
 
@@ -141,7 +141,7 @@ Tenez également compte des points suivants :
 
   Si vous prévoyez un pool avec plus de 300 nœuds de calcul, vous devrez peut-être redimensionner le pool plusieurs fois afin d’atteindre la taille cible.
   
-À l’aide de [Shared Image Gallery](batch-sig-images.md), vous pouvez créer des pools plus grands avec vos images personnalisées ainsi qu’avec d’autres réplicas d’image partagée. À l’aide d’images partagées, le pool atteint jusqu’à 25 % plus rapidement l’état stable et la latence d’inactivité de la machine virtuelle est inférieure à 30 %.
+À l’aide d’[Azure Compute Gallery](batch-sig-images.md), vous pouvez créer des pools plus grands avec vos images personnalisées, ainsi qu’avec d’autres réplicas d’image partagée. À l’aide d’images partagées, le pool atteint jusqu’à 25 % plus rapidement l’état stable et la latence d’inactivité de la machine virtuelle est inférieure à 30 %.
 
 ## <a name="considerations-for-using-packer"></a>Considérations relatives à l'utilisation de Packer
 
@@ -155,5 +155,5 @@ Pour plus d'informations sur l'utilisation de Packer pour créer une machine vir
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Découvrez comment utiliser [Shared Image Gallery](batch-sig-images.md) pour créer un pool personnalisé.
+- Découvrez comment utiliser [Azure Compute Gallery](batch-sig-images.md) pour créer un pool personnalisé.
 - Pour obtenir une vue d’ensemble détaillée de Batch, consultez [flux de travail et ressources du service Batch](batch-service-workflow-features.md).

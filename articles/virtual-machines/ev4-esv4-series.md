@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 0bc3035b934f5b450345449b21e5aedd44642cf4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c5ad35114edaae42019e0949cc4ad8aa4b291ec6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070752"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441188"
 ---
 # <a name="ev4-and-esv4-series"></a>Séries Ev4 et Esv4
 
@@ -80,7 +80,7 @@ Les tailles de la série Esv4 s’exécutent sur Intel&reg; Xeon&reg; Platinum 
 | Standard_E32s_v4 | 32 | 256 | Stockage distant uniquement | 32 | 51 200/768  | 64 000/1 600 | 8|16000 |
 | Standard_E48s_v4 | 48 | 384 | Stockage distant uniquement | 32 | 76 800/1152 | 80 000/2 000 | 8|24 000 |
 | Standard_E64s_v4 <sup>2</sup> | 64 | 504| Stockage distant uniquement | 32 | 80 000/1 200 | 80 000/2 000 | 8|30000 |
-| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | Stockage distant uniquement | 32 | 80 000/1 200 | 80 000/2 000 | 8|30000 |
+| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | Stockage distant uniquement | 64 | 80 000/1 200 | 80 000/2 000 | 8|30000 |
 
 <sup>1</sup> Les machines virtuelles de la série Esv4 peuvent [augmenter](./disk-bursting.md) leurs performances de disque et atteindre leur maximum de bursting pendant 30 minutes à la fois.<br>
 <sup>2</sup> [Tailles avec contraintes de cœurs disponibles)](./constrained-vcpu.md).<br>

@@ -1,5 +1,5 @@
 ---
-title: Utiliser Azure Image Builder avec une galerie d’images pour machines virtuelles Windows
+title: Utiliser Azure Image Builder avec une galerie pour machines virtuelles Windows
 description: Créer des versions d'images Azure Shared Gallery à l'aide d'Azure Image Builder et d'Azure PowerShell.
 author: kof-f
 ms.author: kofiforson
@@ -10,22 +10,22 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6206401d41662724e2c44851e930373b7f90030d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 224a24de18060568ef8b5ba86f9da8354fab8ddd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436425"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462876"
 ---
-# <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Créer une image Windows et la distribuer sur une bibliothèque d’images partagées 
+# <a name="create-a-windows-image-and-distribute-it-to-an-azure-compute-gallery"></a>Créer une image Windows et la distribuer à une galerie Azure Compute Gallery 
 
 **S’applique à :** :heavy_check_mark : Machines virtuelles Windows 
 
-Cet article explique comment utiliser Azure Image Builder et Azure PowerShell pour créer une version d'image dans une instance de [Shared Image Gallery](../shared-image-galleries.md) avant de distribuer l'image dans le monde entier. Vous pouvez également effectuer cette opération à l'aide d'[Azure CLI](../linux/image-builder-gallery.md).
+Cet article explique comment utiliser Azure Image Builder et Azure PowerShell pour créer une version d'image dans une galerie [Azure Compute Gallery](../shared-image-galleries.md) (anciennement Shared Image Gallery) avant de distribuer l'image globalement. Vous pouvez également effectuer cette opération à l'aide d'[Azure CLI](../linux/image-builder-gallery.md).
 
 Nous utiliserons un modèle .json.pour configurer l’image. Le fichier .json utilisé est le suivant : [armTemplateWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Nous allons télécharger et modifier une version locale du modèle. Cet article part donc du principe qu'une session PowerShell locale est utilisée.
 
-Pour distribuer l’image à une galerie d’images partagées, le modèle utilise [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) comme valeur de la section `distribute` du modèle.
+Pour distribuer l’image à une galerie Azure Compute Gallery, le modèle utilise [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) en tant que valeur de la section `distribute` du modèle.
 
 Azure Image Builder exécute automatiquement sysprep pour généraliser l'image. Il s'agit d'une commande générique sysprep, que vous pouvez [écraser](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) si nécessaire. 
 
@@ -87,7 +87,7 @@ $imageTemplateName="helloImageTemplateWin02ps"
 # This gives you the properties of the managed image on completion.
 $runOutputName="winclientR01"
 
-# Create a resource group for Image Template and Shared Image Gallery
+# Create a resource group for Image Template and Azure Compute Gallery
 New-AzResourceGroup `
    -Name $imageResourceGroup `
    -Location $location
@@ -95,7 +95,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Créer une identité affectée par l’utilisateur et définir des autorisations sur le groupe de ressources
-Image Builder utilise l’[identité managée affectée par l’utilisateur](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) fournie pour injecter l’image dans Azure Shared Image Gallery (SIG). Dans cet exemple, vous allez créer une définition de rôle Azure qui dispose des actions granulaires pour distribuer l’image à la galerie SIG. La définition de rôle sera ensuite attribuée à l’identité managée affectée par l’utilisateur.
+Image Builder utilise l’[identité de l’utilisateur](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) fournie pour injecter l’image dans la galerie Azure Compute Gallery. Dans cet exemple, vous allez créer une définition de rôle Azure qui dispose des actions granulaires pour distribuer l’image à la galerie SIG. La définition de rôle sera ensuite attribuée à l’identité managée affectée par l’utilisateur.
 
 ```powershell
 # setup role def names, these need to be unique
@@ -140,14 +140,14 @@ https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
 ```
 
 
-## <a name="create-the-shared-image-gallery"></a>Créer la galerie Shared Image Gallery
+## <a name="create-the-azure-compute-gallery"></a>Créer la galerie Azure Compute Gallery
 
-Pour utiliser Image Builder avec une galerie d’images partagées, vous devez disposer d’une bibliothèque d’images et d’une définition d’image existantes. Image Builder ne va pas créer la Galerie d’images et la définition d’image pour vous.
+Pour utiliser Image Builder avec une galerie Azure Compute Gallery, vous devez disposer d’une galerie et d’une définition d’image existantes. Image Builder ne va pas créer la galerie et la définition d’image pour vous.
 
-Si vous n’avez pas encore de définition d’image et de galerie à utiliser, commencez par les créer. Tout d’abord, créez une galerie d’images.
+Si vous n’avez pas encore de définition d’image et de galerie à utiliser, commencez par les créer. Commencez par créer une galerie.
 
 ```powershell
-# Image gallery name
+# Gallery name
 $sigGalleryName= "myIBSIG"
 
 # Image definition name
@@ -278,7 +278,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $vmResourceGroup -Location 
 $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
-# Create a virtual machine configuration using $imageVersion.Id to specify the shared image
+# Create a virtual machine configuration using $imageVersion.Id to specify the image
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -Id $imageVersion.Id | `

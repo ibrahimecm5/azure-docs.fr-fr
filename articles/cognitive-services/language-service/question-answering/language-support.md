@@ -9,20 +9,18 @@ ms.subservice: language-service
 ms.topic: reference
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 24e5f8baa8b90dbdaf848711ce87006c0de90ee6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dbef13bdb39085c650a1fc5cedceb6c143eea4ad
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131098056"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450112"
 ---
 # <a name="language-support-for-custom-question-answering-and-knowledge-bases"></a>Prise en charge linguistique pour les réponses aux questions personnalisées et les bases de connaissances
 
-Cet article décrit les options de prise en charge linguistique pour les ressources et les bases de connaissances compatibles avec les réponses aux questions personnalisées. 
+Cet article décrit les options de prise en charge linguistique pour les ressources et les bases de connaissances compatibles avec les réponses aux questions personnalisées.
 
 Dans les réponses aux questions personnalisées, vous avez la possibilité de sélectionner la langue à chaque fois que vous ajoutez un nouveau projet à une ressource qui autorise la prise en charge de plusieurs langues, ou vous pouvez sélectionner une langue qui s’appliquera à tous les projets futurs pour une ressource.
-
-Si vous choisissez d’activer le paramètre de langue dans tous vos projets, vous ne pouvez pas le désactiver.
 
 ## <a name="supporting-multiple-languages-in-one-custom-question-answering-enabled-resource"></a>Prise en charge de plusieurs langues dans une seule ressource de réponses aux questions personnalisées
 
@@ -50,7 +48,7 @@ Si vous **sélectionnez l’option permettant de définir la langue utilisée pa
 
 ## <a name="languages-supported"></a>Langues prises en charge
 
-La liste suivante contient les langues prises en charge pour une ressource QnA Maker. 
+La liste suivante contient les langues prises en charge pour une ressource de réponse aux questions.
 
 | Langage |
 |--|
@@ -111,7 +109,7 @@ La liste suivante contient les langues prises en charge pour une ressource QnA M
 ## <a name="query-matching-and-relevance"></a>Correspondance et pertinence des requêtes
 Les réponses aux questions personnalisées dépendent des [analyseurs de langue de Recherche cognitive Azure](/rest/api/searchservice/language-support) pour fournir des résultats.
 
-Même si les fonctionnalités de Recherche cognitive Azure sont à égalité pour les langues prises en charge, QnA Maker possède un outil de classement supplémentaire qui se trouve au-dessus des résultats de recherche Azure. Dans ce modèle d’outil de classement, nous utilisons une sémantique spéciale et des fonctionnalités basées sur des mots dans les langues suivantes.
+Même si les fonctionnalités de Recherche cognitive Azure sont à égalité pour les langues prises en charge, la réponses aux questions possède un outil de classement supplémentaire qui se trouve au-dessus des résultats de recherche Azure. Dans ce modèle d’outil de classement, nous utilisons une sémantique spéciale et des fonctionnalités basées sur des mots dans les langues suivantes.
 
 |Langues avec outil de classement supplémentaire|
 |--|

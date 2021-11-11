@@ -62,8 +62,6 @@
           href: howto-find-activity-reports.md
         - name: Résoudre les erreurs de connexion pour un utilisateur
           href: howto-troubleshoot-sign-in-errors.md
-        - name: Corriger les problèmes d’utilisateurs avec indicateur de risque
-          href: howto-remediate-users-flagged-for-risk.md
         - name: Configurer les composants requis pour l’API de création de rapports
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Guide pratique pour utiliser des classeurs Azure AD
@@ -95,6 +93,8 @@
 - name: Informations de référence
   expanded: true
   items:
+    - name: Identificateurs d’informations de base dans le journal de connexion
+      href: reference-basic-info-identifiers.md
     - name: Applets de commande Azure AD PowerShell pour la création de rapports
       href: reference-powershell-reporting.md
     - name: Informations de référence sur l’API des journaux d’audit
@@ -111,3 +111,9 @@
       href: reports-faq.yml
     - name: Schéma du journal de connexion
       href: reference-azure-monitor-sign-ins-log-schema.md
+    - name: Workbooks
+      items:
+        - name: Analyseur des différences d’accès conditionnel
+          href: workbook-conditional-access-gap-analyzer.md
+        - name: Rapport des opérations sensibles
+          href: workbook-sensitive-operations-report.md

@@ -9,12 +9,12 @@ ms.subservice: mldata
 ms.topic: how-to
 ms.date: 10/21/2021
 ms.custom: data4ml, ignite-fall-2021
-ms.openlocfilehash: 1aa49d52c11f430affb6b9deea14a4160806f06c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e3097c6b00d97287526015836c44ddcaeb08177a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068389"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468704"
 ---
 # <a name="create-a-text-labeling-project-and-export-labels-preview"></a>Créer un projet d’étiquetage de texte et exporter des étiquettes (préversion)
 
@@ -39,10 +39,10 @@ L’étiquetage des données Azure Machine Learning est un emplacement central p
 > [!Important]
 > Les données textuelles doivent être disponibles dans un magasin de données d’objets blob Azure. (Si vous ne disposez pas d’un magasin de données, vous pouvez charger des fichiers pendant la création du projet.)
 
-Les données de texte peuvent être des fichiers .txt ou .csv.
+Formats de données disponibles pour les données de texte :
 
-* Pour les fichiers .txt, chaque fichier représente un seul élément à étiqueter.
-* Pour les fichiers « .csv », chaque ligne représente un élément présenté à l’étiqueteur.  Vous pouvez afficher une ou plusieurs colonnes à utiliser lors de l’étiquetage de cette ligne.
+* **.txt** : chaque fichier représente un seul élément à étiqueter.
+* **.csv** ou **.tsv** : chaque ligne représente un élément présenté à l’étiqueteur.  Vous décidez quelles colonnes l’étiqueteur peut voir pour étiqueter la ligne.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -83,7 +83,7 @@ Pour créer un jeu de données à partir de données que vous avez déjà stock�
 1. Sélectionnez **Créer un jeu de données** > **À partir du magasin de données**.
 1. Affectez un **Nom** à votre jeu de données.
 1. Choisissez le **type de jeu de données** :
-    * Sélectionnez **Tabulaire** si vous utilisez un fichier .csv où chaque ligne contient une réponse.
+    * Sélectionnez **Tabulaire** si vous utilisez un fichier .csv ou .tsv, où chaque ligne contient une réponse.
     * Sélectionnez **Fichier** si vous utilisez des fichiers .txt distincts pour chaque réponse.
 1. (Facultatif) Fournissez une description pour votre jeu de données.
 1. Sélectionnez **Suivant**.
@@ -101,16 +101,16 @@ Pour charger directement vos données :
 1. Sélectionnez **Créer un jeu de données** > **À partir de fichiers locaux**.
 1. Affectez un **Nom** à votre jeu de données.
 1. Choisissez le **type de jeu de données**.
-    * Sélectionnez **Tabulaire** si vous utilisez un fichier .csv où chaque ligne est une réponse.
+    * Sélectionnez **Tabulaire** si vous utilisez un fichier .csv ou .tsv, où chaque ligne est une réponse.
     * Sélectionnez **Fichier** si vous utilisez des fichiers .txt distincts pour chaque réponse.
 1. (Facultatif) Fournissez une description de votre jeu de données.
 1. Sélectionnez **Suivant**.
 1. (Facultatif) Sélectionnez ou créez un magasin de données. Ou conservez la sélection par défaut pour charger dans le magasin d’objets blob par défaut (« workspaceblobstore ») de votre espace de travail Machine Learning.
 1. Sélectionnez **Charger** pour choisir les fichiers ou dossiers locaux à charger.
 1. Sélectionnez **Suivant**.
-1. Si le chargement de fichiers.csv :
+1. Si vous chargez des fichiers .csv ou .tsv :
     * Confirmez les paramètres et l’aperçu, puis sélectionnez **Suivant**.
-    * Incluez toutes les colonnes de texte que vous souhaitez que l’étiqueteur affiche lors de la classification de cette ligne.
+    * Incluez toutes les colonnes de texte que vous souhaitez que l’étiqueteur affiche lors de la classification de cette ligne.  Si vous utilisez l’étiquetage assisté par ML, l’ajout de colonnes numériques peut dégrader le modèle d’assistance ML.
     * Sélectionnez **Suivant**.
 1.  Vérifiez les détails. Sélectionnez **Précédent** pour modifier les paramètres, ou **Créer** pour créer le jeu de données.
 
@@ -118,6 +118,9 @@ Pour charger directement vos données :
 ## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Configurer l’actualisation incrémentielle
 
 [!INCLUDE [refresh](../../includes/machine-learning-data-labeling-refresh.md)]
+
+> [!NOTE]
+> L’actualisation incrémentielle n’est pas disponible pour les projets qui utilisent une entrée de jeu de données tabulaire (.csv ou .tsv).
 
 ## <a name="specify-label-classes"></a>Spécifier des classes d’étiquettes
 

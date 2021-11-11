@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c39417697dd88d3faa64ce47493ab5e7c08faa0d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 57925df3babc22a6cfdff2f81d23bbbd60767cc6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481344"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461605"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Fonctionnalités de rendu Azure Batch
 
@@ -20,7 +20,7 @@ Pour une présentation des concepts Batch, tels que les pools, les travaux et le
 
 ## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Pools Batch utilisant des images de machines virtuelles personnalisées et des licences d’application standard
 
-Comme pour les autres charges de travail et types d’application, une image de machine virtuelle personnalisée peut être créée avec les applications de rendu et les plug-ins requis. L’image de machine virtuelle personnalisée est placée dans la [Galerie d’images partagées](../virtual-machines/shared-image-galleries.md) et [peut être utilisée pour créer des pools Batch](batch-sig-images.md).
+Comme pour les autres charges de travail et types d’application, une image de machine virtuelle personnalisée peut être créée avec les applications de rendu et les plug-ins requis. L’image de machine virtuelle personnalisée est placée dans la galerie [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) et [peut être utilisée pour créer des pools Batch](batch-sig-images.md).
 
 Les chaînes de ligne de commande de la tâche devront référencer les applications et les chemins d’accès utilisés lors de la création de l’image de machine virtuelle personnalisée.
 
@@ -46,8 +46,8 @@ Le portail Azure et Batch Explorer fournissent des outils GUI permettant de sél
 
 D’autres options sont disponibles si des applications supplémentaires sont nécessaires sur les machines virtuelles du pool :
 
-* Image personnalisée de Shared Image Gallery :
-  * À l’aide de cette option, vous pouvez configurer votre machine virtuelle avec les applications et versions spécifiques dont vous avez besoin. Pour plus d’informations, voir [Créer un pool avec Shared Image Gallery](batch-sig-images.md). Autodesk et Chaos Group ont modifié les logiciels Arnold et V-Ray de manière à effectuer la validation par rapport à un service de gestion des licences Azure Batch. Veillez à avoir les versions de ces applications comprenant cette prise en charge, sinon le service de licence avec paiement à l’utilisation ne fonctionnera pas. Les versions actuelles de Maya et de 3ds Max ne nécessitent pas de serveur de licences lorsqu’elles sont exécutées sans périphérique de contrôle (en mode batch ou ligne de commande). Contactez le support Azure si vous ne savez pas comment utiliser cette option.
+* Une image personnalisée provenant de la galerie Azure Compute Gallery :
+  * À l’aide de cette option, vous pouvez configurer votre machine virtuelle avec les applications et versions spécifiques dont vous avez besoin. Pour plus d’informations, consultez [Créer un pool avec Azure Compute Gallery](batch-sig-images.md). Autodesk et Chaos Group ont modifié les logiciels Arnold et V-Ray de manière à effectuer la validation par rapport à un service de gestion des licences Azure Batch. Veillez à avoir les versions de ces applications comprenant cette prise en charge, sinon le service de licence avec paiement à l’utilisation ne fonctionnera pas. Les versions actuelles de Maya et de 3ds Max ne nécessitent pas de serveur de licences lorsqu’elles sont exécutées sans périphérique de contrôle (en mode batch ou ligne de commande). Contactez le support Azure si vous ne savez pas comment utiliser cette option.
 * [Packages d’applications](./batch-application-packages.md) :
   * Empaquetez les fichiers d’application dans un ou plusieurs fichiers ZIP, chargez-les via le portail Azure et spécifiez le package dans la configuration du pool. Lorsque des machines virtuelles de pool sont créées, les fichiers ZIP sont téléchargés et les fichiers extraits.
 * Les fichiers de ressources :
@@ -98,5 +98,5 @@ Lorsque des images de machine virtuelle issues de la Place de marché Azure sont
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* En savoir plus sur [l'utilisation des applications de rendu avec Batch](batch-rendering-applications.md)
-* En savoir plus sur [les options de stockage et de déplacement des données pour les fichiers d'éléments multimédias et de sortie destinés au rendu](batch-rendering-storage-data-movement.md)
+* En savoir plus sur [l’utilisation des applications de rendu avec batch](batch-rendering-applications.md).
+* En savoir plus sur [les options de stockage et de déplacement des données pour le rendu de ressource et les fichiers de sortie](batch-rendering-storage-data-movement.md).

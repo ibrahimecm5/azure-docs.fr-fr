@@ -4,16 +4,16 @@ description: Azure Cosmos DB prend actuellement en charge une migration unidir
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 10/04/2021
+ms.date: 10/28/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: b6821435f2f6ce04f1b8ba4b3af8b8f47097c2fa
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3ac1ae98dfa920a4b4060905e99b7378fcdb3414
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545992"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476297"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Migrer un compte Azure Cosmos DB du mode de sauvegarde périodique vers le mode de sauvegarde continue
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ Voici les principales raisons de migrer en mode continu :
 > [!NOTE]
 > La fonctionnalité de migration est unidirectionnelle uniquement et il s’agit d’une action irréversible. Cela signifie qu’une fois que vous avez effectué la migration du mode périodique vers le mode continu, vous ne pouvez pas revenir au mode périodique.
 >
-> Vous pouvez migrer un compte en mode de sauvegarde continue uniquement si les conditions suivantes sont remplies :
+> Vous pouvez migrer un compte en mode de sauvegarde continue uniquement si les conditions suivantes sont remplies. Vérifiez également les [limites de restauration dans le temps](continuous-backup-restore-introduction.md#current-limitations) avant la migration de votre compte :
 >
 > * Si le compte est de type API SQL ou API pour MongoDB.
 > * Si le compte a une seule région d’écriture.
@@ -221,4 +221,4 @@ Pour en savoir plus sur le mode de sauvegarde continue, consultez les articles s
 
 Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ?
    * Si vous ne connaissez que le nombre de vCores et de serveurs présents dans votre cluster de bases de données existant, lisez [Estimation des unités de requête à l’aide de vCores ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
-   * Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez [Estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)
+   * Si vous connaissez les taux de requêtes types de votre charge de travail de base de données actuelle, lisez la section concernant l’[estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)

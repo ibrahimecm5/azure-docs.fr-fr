@@ -12,12 +12,12 @@ ms.date: 09/15/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 304b7056fda06e017be445b57a4b75aef6a17ffc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5bb6c3aef0476e3da440eb8523d0ccc09491e074
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131007410"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501397"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vérification des e-mails personnalisée avec SendGrid
 
@@ -64,10 +64,10 @@ Stockez ensuite la clé API SendGrid dans une clé de stratégie Azure AD B2C po
 
 Avec un compte SendGrid créé et une clé API SendGrid stockée dans une clé de stratégie Azure AD B2C, créez un [modèle transactionnel dynamique](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/) SendGrid.
 
-1. Sur le site SendGrid, ouvrez la page des [modèles transactionnels](https://sendgrid.com/dynamic_templates) et sélectionnez **Créer un modèle**.
-1. Entrez un nom de modèle unique comme `Verification email`, puis sélectionnez **Enregistrer**.
-1. Pour commencer à modifier votre nouveau modèle, sélectionnez **Ajouter une version**.
-1. Sélectionnez **Éditeur de code** puis **Continuer**.
+1. Sur le site SendGrid, ouvrez la page des [modèles transactionnels](https://sendgrid.com/dynamic_templates), puis sélectionnez **Créer un modèle dynamique**.
+1. Entrez un nom de modèle unique tel que `Verification email`, puis sélectionnez **Créer**.
+1. Pour commencer à modifier votre nouveau modèle, sélectionnez-le, c’est-à-dire `Verification email`, puis choisissez **Ajouter une version**.
+1. Sélectionnez **Modèle vide**, puis **Éditeur de code**.
 1. Dans l'éditeur HTML, collez le modèle HTML suivant ou utilisez le vôtre. Les paramètres `{{otp}}` et `{{email}}` seront remplacés dynamiquement par la valeur du mot de passe à usage unique et l'adresse e-mail de l'utilisateur.
 
     ```HTML
@@ -162,8 +162,9 @@ Avec un compte SendGrid créé et une clé API SendGrid stockée dans une clé d
     </html>
     ```
 
-1. Développez **Réglages** sur la partie gauche, et pour **Objet du message électronique**, entrez `{{subject}}`.
-1. Sélectionnez **Enregistrer le modèle**.
+1. Développez **Paramètres** sur la gauche, puis, pour **Nom de la version**, entrez une version de modèle. 
+1. Pour **Objet**, entrez `{{subject}}`.
+1. En haut de la page, sélectionnez **Enregistrer**.
 1. Retournez à la page **Modèles transactionnels** en sélectionnant la flèche de retour.
 1. Enregistrez l’**ID** du modèle que vous avez créé pour l'utiliser à une étape ultérieure. Par exemple : `d-989077fbba9746e89f3f6411f596fb96`. Vous spécifiez cet ID lorsque vous [ajoutez la transformation de revendications](#add-the-claims-transformation).
 
@@ -396,13 +397,6 @@ Pour plus d'informations, voir [Profil technique autodéclaré](restful-technica
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -413,13 +407,6 @@ Pour plus d'informations, voir [Profil technique autodéclaré](restful-technica
       </DisplayClaims>
     </TechnicalProfile>
     <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
-      <Metadata>
-        <!--OTP validation error messages-->
-        <Item Key="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</Item>
-        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
-        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
-      </Metadata>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
       </DisplayClaims>
@@ -554,10 +541,11 @@ L’élément Localization vous permet de prendre en charge plusieurs paramètre
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="DisplayName">Verification Code</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="UserHelpText">Verification code received in the email.</LocalizedString>
     <LocalizedString ElementType="ClaimType" ElementId="emailVerificationCode" StringId="AdminHelpText">Verification code received in the email.</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Eamil</LocalizedString>
+    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
     <!-- Email validation error messages-->
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of code generation attempts allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">The verification has failed, please try again.</LocalizedString>
@@ -565,7 +553,6 @@ L’élément Localization vous permet de prendre en charge plusieurs paramètre
 </LocalizedResources>
 ```
 
-Après avoir ajouté les chaînes localisées, supprimez les métadonnées des messages d’erreur de validation de mot de passe à usage unique des profils techniques LocalAccountSignUpWithLogonEmail et LocalAccountDiscoveryUsingEmailAddress.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -9,12 +9,12 @@ ms.subservice: automatic-os-upgrade
 ms.date: 07/29/2021
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9e814ad43d157d69fee2b70eaaccbadf23f4fa2
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f4b5c58eb8811db9042d92416c4c37fa30234149
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690514"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432944"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Mises à niveau automatiques d’images de système d’exploitation de groupes de machines virtuelles identiques Azure
 
@@ -27,7 +27,7 @@ La fonctionnalité de mise à niveau automatique du système d’exploitation pr
 - Une fois configurée, la dernière image du système d’exploitation publiée par les éditeurs de l’image est automatiquement appliquée au groupe identique, sans aucune intervention de l’utilisateur.
 - Elle effectue une mise à niveau propagée de lots d’instances chaque fois qu’une nouvelle image est publiée par l’éditeur.
 - Elle s’intègre avec les sondes d’intégrité d’application et l’[extension Intégrité de l’application](virtual-machine-scale-sets-health-extension.md).
-- Fonctionne pour toutes les tailles de machine virtuelle, et pour les images Windows et Linux, y compris les images personnalisées via la [Shared Image Gallery](../virtual-machines/shared-image-galleries.md).
+- Fonctionne pour toutes les tailles de machine virtuelle, ainsi que pour les images Windows et Linux, y compris les images personnalisées via la galerie [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md).
 - Vous pouvez désactiver les mises à niveau automatiques à tout moment (les mises à niveau du système d’exploitation peuvent également être démarrées manuellement).
 - Le disque du système d’exploitation d’une machine virtuelle est remplacé par le nouveau disque de système d’exploitation créé avec la dernière version de l’image. Les extensions configurées et les scripts de données personnalisés sont exécutés. Les disques de données persistantes sont conservés.
 - Le [séquencement d’extensions](virtual-machine-scale-sets-extension-sequencing.md) est pris en charge.
@@ -55,7 +55,7 @@ Le modèle de première disponibilité pour les mises à jour orchestrées de la
 - Toutes les machines virtuelles d’un même groupe identique ne sont pas mises à jour simultanément.  
 - Les machines virtuelles d’un groupe de machines virtuelles identiques commun sont regroupées par lots et mises à jour dans les limites du domaine de mise à jour, comme décrit ci-dessous.
 
-Le processus de mise à jour orchestrée de la plateforme est suivi pour le déploiement des mises à niveau des images de la plateforme des systèmes d’exploitation supportés chaque mois. Pour les images personnalisées via Shared Image Gallery, une mise à niveau d’image est lancée uniquement pour une région Azure particulière lorsque la nouvelle image est publiée et [répliquée](../virtual-machines/shared-image-galleries.md#replication) dans la région de ce groupe identique.
+Le processus de mise à jour orchestrée de la plateforme est suivi pour le déploiement des mises à niveau des images de la plateforme des systèmes d’exploitation supportés chaque mois. Pour les images personnalisées via la galerie Azure Compute Gallery, une mise à niveau d’image est lancée uniquement pour une région Azure particulière lorsque la nouvelle image est publiée et [répliquée](../virtual-machines/shared-image-galleries.md#replication) dans la région de ce groupe identique.
 
 ### <a name="upgrading-vms-in-a-scale-set"></a>Mise à niveau des machines virtuelles dans un groupe identique
 
@@ -73,7 +73,7 @@ L’orchestrateur de mise à niveau du système d’exploitation du groupe ident
 >La mise à niveau automatique du système d’exploitation ne met pas à niveau la référence SKU d’image de référence sur le groupe identique. Pour modifier la référence (par exemple, Ubuntu 16,04-LTS à 18,04-LTS), vous devez [mettre à jour le modèle](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) de groupe de machines virtuelles directement avec la référence SKU d’image souhaitée. L’éditeur d’images et l’offre ne peuvent pas être modifiés pour un groupe identique existant.  
 
 ## <a name="supported-os-images"></a>Images de système d’exploitation prises en charge
-Seules certaines images de plateforme de système d’exploitation sont actuellement prises en charge. Les images personnalisées [sont prises en charge](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) si le groupe identique utilise des images personnalisées via [Shared Image Gallery](../virtual-machines/shared-image-galleries.md).
+Seules certaines images de plateforme de système d’exploitation sont actuellement prises en charge. Les images personnalisées [sont prises en charge](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) si le groupe identique utilise des images personnalisées via la galerie [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md).
 
 Les références SKU de plateforme suivantes sont prises en charge (et d’autres sont régulièrement ajoutées) :
 
@@ -116,11 +116,11 @@ Assurez-vous que les paramètres de durabilité ne sont pas incompatibles avec l
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Mise à niveau automatique de l’image du système d’exploitation pour les images personnalisées
 
-La mise à niveau automatique de l’image du système d’exploitation est prise en charge pour les images personnalisées déployées via [Shared Image Gallery](../virtual-machines/shared-image-galleries.md). Les autres images personnalisées ne sont pas prises en charge pour les mises à niveau automatiques de l’image du système d’exploitation.
+La mise à niveau automatique de l’image du système d’exploitation est prise en charge pour les images personnalisées déployées via la galerie [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md). Les autres images personnalisées ne sont pas prises en charge pour les mises à niveau automatiques de l’image du système d’exploitation.
 
 ### <a name="additional-requirements-for-custom-images"></a>Exigences supplémentaires pour les images personnalisées
 - Le processus de paramétrage et de configuration de la mise à niveau automatique de l’image du système d’exploitation est le même pour tous les groupes identiques, comme indiqué dans la [section Configuration](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) de cette page.
-- Les instances de groupes identiques configurées pour les mises à niveau automatiques de l’image du système d’exploitation sont mises à niveau vers la dernière version de l’image de la Galerie d’images partagées lorsqu’une nouvelle version de l’image est publiée et [répliquée](../virtual-machines/shared-image-galleries.md#replication) dans la région de ce groupe identique. Si la nouvelle image n’est pas répliquée vers la région où le groupe est déployé, les instances du groupe identique ne seront pas mises à niveau vers la dernière version. La réplication régionale d’images vous permet de contrôler le déploiement de la nouvelle image pour vos groupes identiques.
+- Les instances de groupes identiques configurées pour les mises à niveau automatiques de l’image du système d’exploitation sont mises à niveau vers la dernière version de l’image de la galerie Azure Compute Gallery quand une nouvelle version de l’image est publiée et [répliquée](../virtual-machines/shared-image-galleries.md#replication) dans la région de ce groupe identique. Si la nouvelle image n’est pas répliquée vers la région où le groupe est déployé, les instances du groupe identique ne seront pas mises à niveau vers la dernière version. La réplication régionale d’images vous permet de contrôler le déploiement de la nouvelle image pour vos groupes identiques.
 - La nouvelle version de l’image ne doit pas être exclue de la version la plus récente pour cette image de la galerie. Les versions d’image exclues de la dernière version de l’image de la galerie ne sont pas déployées dans le groupe identique via la mise à niveau automatique de l’image du système d’exploitation.
 
 > [!NOTE]

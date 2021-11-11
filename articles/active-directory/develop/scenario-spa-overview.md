@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/12/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 9df07381d620c2176115636852c6ed912dd1fc38
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 19692739814a4db3ef2f981461254de415c9bdcc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786500"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444171"
 ---
 # <a name="scenario-single-page-application"></a>Scénario : Application monopage
 
@@ -35,7 +35,11 @@ De nombreuses applications web modernes sont créées en tant qu’applications 
 
 La plateforme d’identités Microsoft offre **deux** options pour permettre aux applications monopages d’effectuer la connexion des utilisateurs et d’obtenir des jetons pour accéder aux services back-end ou aux API web :
 
-- [Flux de code d’autorisation OAuth 2.0 (avec PKCE)](./v2-oauth2-auth-code-flow.md). Le flux de code d’autorisation permet à l’application d’échanger un code d’autorisation pour obtenir des jetons d’**ID** afin de représenter l’utilisateur authentifié et des jetons d’**accès** nécessaires pour appeler des API protégées. PKCE est la Clé de preuve pour l’Echange de Code et est conçu pour empêcher plusieurs attaques et être en mesure d’effectuer l’échange OAuth en toute sécurité à partir de clients publics. PKCE est un standard IETF documenté dans le document RFC 7636. De plus, il retourne des jetons d’**actualisation** qui fournissent à votre application un accès à long terme à des ressources au nom d’utilisateurs sans nécessiter l’intervention de ces utilisateurs. Il s’agit de l’approche **recommandée**.
+- [Flux de code d’autorisation OAuth 2.0 (avec PKCE)](./v2-oauth2-auth-code-flow.md). Le flux de code d’autorisation permet à l’application d’échanger un code d’autorisation pour obtenir des jetons d’**ID** afin de représenter l’utilisateur authentifié et des jetons d’**accès** nécessaires pour appeler des API protégées. 
+
+    La clé de vérification pour l’échange de code, ou _PKCE_, est une extension du flux de code d’autorisation pour empêcher les attaques par injection de code d’autorisation. Cette norme IETF atténue la menace d’interception d’un code d’autorisation, et active l’échange OAuth sécurisé à partir de clients publics, comme expliqué dans le document [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636). De plus, elle retourne des jetons d’**actualisation** qui fournissent à votre application un accès à long terme à des ressources au nom d’utilisateurs sans nécessiter d’interaction de ces utilisateurs. 
+
+    L’utilisation du flux de code d’autorisation avec PKCE est l’approche d’autorisation plus sécurisée et **recommandée**, non seulement dans des applications JavaScript natives et basées sur un navigateur, mais pour tout type de client OAuth.
 
 ![Authentification des applications monopages](./media/scenarios/spa-app-auth.svg)
 

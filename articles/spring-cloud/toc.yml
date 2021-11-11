@@ -1,7 +1,7 @@
 - name: Documentation sur Azure Spring Cloud
   href: index.yml
   displayName: Azure Spring Cloud
-- name: Vue d'ensemble
+- name: Vue d’ensemble
   items:
     - name: "Qu’est-ce qu’Azure Spring Cloud\_?"
       href: overview.md
@@ -10,7 +10,7 @@
   items:
     - name: Lancer votre première application
       href: quickstart.md
-    - name: Créer et exécuter des microservices
+    - name: Créer et exécuter des applications
       expanded: true
       items:
         - name: Présentation de l’exemple d’application
@@ -96,6 +96,8 @@
           href: how-to-deploy-powershell.md
     - name: Gérer
       items:
+        - name: Démarrer ou arrêter un service
+          href: how-to-start-stop-service.md
         - name: 'Démarrer, arrêter et supprimer une application'
           href: how-to-start-stop-delete.md
         - name: Utiliser un stockage persistant intégré
@@ -186,6 +188,10 @@
           href: how-to-self-diagnose-running-in-vnet.md
         - name: Guide de résolution des problèmes
           href: troubleshoot.md
+        - name: Capturer manuellement le vidage des tas/le vidage des threads/JFR
+          href: how-to-capture-dumps.md
+        - name: Résolution des problèmes basée sur l’option JVM
+          href: tutorial-dump-jvm-options.md
     - name: Migrer
       items:
         - name: Spring Cloud

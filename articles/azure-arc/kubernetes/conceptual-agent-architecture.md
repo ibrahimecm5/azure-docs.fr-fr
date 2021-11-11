@@ -6,14 +6,14 @@ ms.date: 03/03/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
-description: Cet article offre une vue d’ensemble architecturale des agents Kubernetes compatibles avec Azure Arc.
+description: Cet article offre une vue d’ensemble architecturale des agents Kubernetes compatibles avec Azure Arc
 keywords: Kubernetes, Arc, Azure, conteneurs
-ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 6bb1b035e1c64e82f89804928854ca019ad22201
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106442539"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450834"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architecture des agents Kubernetes compatibles avec Azure Arc
 
@@ -25,7 +25,7 @@ Tel quel, [Kubernetes](https://kubernetes.io/) peut déployer des charges de tra
 
 ## <a name="deploy-agents-to-your-cluster"></a>Déployer des agents sur votre cluster
 
-La plupart des centres de données locaux appliquent des règles de réseau strictes qui empêchent les communications entrantes sur le pare-feu de limite du réseau. Kubernetes avec Azure Arc respecte ces restrictions en n’exigeant pas de ports entrants sur le pare-feu et en activant uniquement des points de terminaison de sortie sélectifs pour la communication sortante. Les agents Kubernetes avec Azure Arc initient cette communication sortante. 
+La plupart des centres de données locaux appliquent des règles de réseau strictes qui empêchent les communications entrantes sur le pare-feu de limite du réseau. Kubernetes avec Azure Arc respecte ces restrictions en n’exigeant pas de ports entrants sur le pare-feu et en activant uniquement des points de terminaison de sortie sélectifs pour la communication sortante. Les agents Kubernetes compatibles avec Azure Arc initient cette communication sortante. 
 
 ![Vue d’ensemble de l’architecture](./media/architectural-overview.png)
 
@@ -53,7 +53,7 @@ La plupart des centres de données locaux appliquent des règles de réseau stri
         | `deployment.apps/clusterconnect-agent` | Agent de proxy inverse qui active la fonctionnalité de connexion de cluster pour fournir l’accès à l’`apiserver` du cluster. Il s’agit d’un composant facultatif déployé uniquement si la fonctionnalité `cluster-connect` est activée sur le cluster   |
         | `deployment.apps/guard` | Serveur webhook d’authentification et d’autorisation utilisé pour la fonctionnalité RBAC AAD. Il s’agit d’un composant facultatif déployé uniquement si la fonctionnalité `azure-rbac` est activée sur le cluster   |
 
-1. Une fois tous les pods d’agent Kubernetes avec Azure Arc dans l’état `Running`, vérifiez que votre cluster est connecté à Azure Arc. Ce qui suit doit s’afficher :
+1. Une fois tous les pods d’agent Kubernetes avec Azure Arc dans l’état `Running`, vérifiez que votre cluster est connecté à Azure Arc. Vous devriez voir :
     * Une ressource Kubernetes compatible avec Azure Arc dans [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Azure suit cette ressource en tant que projection du cluster Kubernetes managé par le client, et comme le cluster Kubernetes réel.
     * Des métadonnées de cluster (telles que la version Kubernetes, la version de l’agent et le nombre de nœuds) apparaissent sur la ressource Kubernetes compatible avec Azure Arc sous forme de métadonnées.
 
@@ -82,8 +82,8 @@ La plupart des centres de données locaux appliquent des règles de réseau stri
 | Statut | Description |
 | ------ | ----------- |
 | Connecting | Une ressource Kubernetes avec Azure Arc est créée dans Azure Resource Manager, mais le service n’a pas encore reçu de pulsation de l’agent. |
-| Connecté | Le service Kubernetes compatible Azure Arc a reçu une pulsation de l’agent au cours des 15 dernières minutes. |
-| Hors connexion | La ressource Kubernetes compatible Azure Arc était précédemment connectée, mais le service n’a pas reçu de pulsation d’agent pendant 15 minutes. |
+| Connecté | Le service Kubernetes compatible avec Azure Arc a reçu une pulsation de l’agent au cours des 15 dernières minutes. |
+| Hors connexion | La ressource Kubernetes compatible avec Azure Arc était précédemment connectée, mais le service n’a pas reçu de pulsation d’agent pendant 15 minutes. |
 | Expiré | Le certificat MSI (Managed Service Identity) présente une fenêtre d’expiration de 90 jours après son émission. Une fois ce certificat expiré, la ressource est considérée comme `Expired`, et toutes les fonctionnalités telles que la configuration, la surveillance et la stratégie cessent de fonctionner sur ce cluster. Pour plus d’informations sur la façon de gérer les ressources Kubernetes avec Azure Arc expirées, consultez l’[articles du FAQ](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources). |
 
 ## <a name="understand-connectivity-modes"></a>Comprendre les modes de connectivité
@@ -91,10 +91,10 @@ La plupart des centres de données locaux appliquent des règles de réseau stri
 | Mode de connectivité | Description |
 | ----------------- | ----------- |
 | Entièrement connecté | Les agents peuvent communiquer sans cesse avec Azure avec peu de retard de propagation des configurations GitOps, en appliquant des stratégies Azure Policy et Gatekeeper, et en recueillant des métriques et journaux de charge de travail dans Azure Monitor. |
-| Semi-connecté | Le certificat MSI extrait par le `clusteridentityoperator` est valide pendant jusqu’à 90 jours avant d’expirer. Ensuite, la ressource Kubernetes avec Azure Arc cesse de fonctionner. Pour réactiver toutes les fonctionnalités Arc sur le cluster, supprimez et recréez la ressource Kubernetes avec Azure Arc, ainsi que les agents. Pendant les 90 jours, connectez le cluster au moins une fois tous les 30 jours. |
-| Déconnecté | Actuellement, les clusters Kubernetes dans des environnements déconnectés sont incapables d’accéder à Azure et ne sont pas pris en charge par Kubernetes avec Azure Arc. Si cette fonctionnalité vous intéresse, envoyez ou votez pour une idée sur le [forum UserVoice d’Azure Arc](https://feedback.azure.com/forums/925690-azure-arc).
+| Semi-connecté | Le certificat MSI extrait par le `clusteridentityoperator` est valide pendant jusqu’à 90 jours avant d’expirer. Ensuite, la ressource Kubernetes avec Azure Arc cesse de fonctionner. Pour réactiver toutes les fonctionnalités Azure Arc sur le cluster, supprimez et recréez la ressource Kubernetes avec Azure Arc, ainsi que les agents. Pendant les 90 jours, connectez le cluster au moins une fois tous les 30 jours. |
+| Déconnecté | Actuellement, les clusters Kubernetes dans des environnements déconnectés sont incapables d’accéder à Azure et ne sont pas pris en charge par Kubernetes avec Azure Arc. Si cette fonctionnalité vous intéresse, envoyez ou votez pour une idée sur le [forum UserVoice d’Azure Arc](https://feedback.azure.com/d365community/forum/5c778dec-0625-ec11-b6e6-000d3a4f0858).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Parcourez notre guide de démarrage rapide pour [connecter un cluster Kubernetes à Azure Arc](./quickstart-connect-cluster.md).
-* Apprenez-en davantage sur la création de connexions entre votre cluster et un dépôt Git en guise de [ressource de configuration intégrant Kubernetes avec Azure Arc](./conceptual-configurations.md).
+* Apprenez-en davantage sur la création de connexions entre votre cluster et un référentiel Git en guise de [ressource de configuration intégrant Kubernetes avec Azure Arc](./conceptual-configurations.md).

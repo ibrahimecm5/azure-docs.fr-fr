@@ -2,14 +2,14 @@
 title: Notes de publication d’Azure Video Analyzer - Azure
 description: Cette rubrique fournit des notes de publication sur les versions, les améliorations, les correctifs de bogues et les problèmes connus d’Azure Video Analyzer.
 ms.topic: conceptual
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8b17c19d96699a6442bd6d606ffbc88b25088afe
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 89ab651416237e06343f950d2a9202f082555e58
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087036"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556442"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Notes de publication d’Azure Video Analyzer
 
@@ -51,6 +51,10 @@ La version d’API ARM du service Video Analyzer est :
 * Vous pouvez [exporter la partie souhaitée de votre vidéo enregistrée](cloud/export-portion-of-video-as-mp4.md) vers un fichier MP4.
 * Vous pouvez spécifier, pour toute vidéo enregistrée, une stratégie de conservation avec laquelle le service supprime régulièrement le contenu antérieur à la période spécifiée en nombre de jours.
 * Les vidéos enregistrées à l’aide du module de périphérie Video Analyzer peuvent inclure des [images d’aperçu](edge/enable-video-preview-images.md) ou des miniatures de façon régulière, pour une meilleure expérience de navigation.
+
+### <a name="known-issues"></a>Problèmes connus
+* Lors de l’utilisation d’une diffusion en continu à faible latence, un seul client peut être connecté au service à la fois
+* Lors de l’utilisation d’un module d’extension gRPC pour l’inférence avec la mémoire partagée, le module périphérique Video Analyzer et le module d’extension doivent tous deux être exécutés dans les mêmes [groupe et utilisateur](https://docs.docker.com/engine/reference/builder/#user)
 
 ## <a name="october-1-2021"></a>1er octobre 2021
 Le service Video Analyzer est désormais disponible (en version préliminaire) dans la région Australie Est. Pour obtenir les informations les plus récentes sur la disponibilité, cliquez [ici](https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all).

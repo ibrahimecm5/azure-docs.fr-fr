@@ -1,24 +1,26 @@
 ---
-title: fichier descriptif
+title: Fichier include
 description: Fichier include
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 09/17/2021
+ms.date: 10/29/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e0926dc0a211990a64812b00702e84acb0d1f140
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0f5bafd3bfa25691ee531c5e8aa60b4c70937815
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645492"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520928"
 ---
 | Ressource | Limite |
 | --- | --- |
 | Débit de données |30 Gbits/s|
 |Limites de règle|10 000 sources/destinations uniques dans les règles de réseau et d’application|
+|Taille totale des règles au sein d’un groupe de collection de règles unique| 2 Mo|
+|Nombre de groupes de collection de règles dans une stratégie de pare-feu|50|
 |Nombre maximum de règles DNAT|298 (pour les pare-feu configurés avec une adresse IP publique unique)<br><br> La limitation DNAT est due à la plateforme sous-jacente. Le nombre maximal de règles DNAT est de 298. Cependant, toutes les adresses IP publiques supplémentaires réduisent le nombre de règles DNAT disponibles. Par exemple, deux adresses IP publiques autorisent 297 règles DNAT. Si le protocole d’une règle est configuré à la fois pour TCP et pour UDP, elle compte pour deux règles.|
 |Taille minimale d’AzureFirewallSubnet |/26|
 |Plage de ports dans les règles de réseau et d’application|1 - 65535|

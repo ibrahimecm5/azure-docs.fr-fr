@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c700170e59792dc6f782ded02960962c7b21d946
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 70a9b1da38f827da393164e4ab1da9928ea6e7b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696920"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428042"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>Tâche DevOps du service Azure Image Builder (préversion)
 
@@ -78,7 +78,7 @@ Utilisez le groupe de ressources dans lequel l’artefact du modèle d’image t
  
 ### <a name="location"></a>Emplacement
 
-L’emplacement est la région dans laquelle Image Builder sera exécuté. Seul un nombre défini de [régions](../image-builder-overview.md#regions) sont prises en charge. Les images sources doivent être présentes à cet emplacement. Par exemple, si vous utilisez Shared Image Gallery, un réplica doit exister dans cette région.
+L’emplacement est la région dans laquelle Image Builder sera exécuté. Seul un nombre défini de [régions](../image-builder-overview.md#regions) sont prises en charge. Les images sources doivent être présentes à cet emplacement. Par exemple, si vous utilisez Azure Compute Gallery, un réplica doit exister dans cette région.
 
 ### <a name="managed-identity-required"></a>Identité managée (obligatoire)
 Image Builder nécessite une identité managée, qu’il utilise pour lire les images personnalisées sources, se connecter au Stockage Azure et créer des images personnalisées. Consultez [En savoir plus sur Azure Image Builder](../image-builder-overview.md#permissions) pour obtenir davantage d’informations.
@@ -94,12 +94,12 @@ Les images sources doivent être des systèmes d’exploitation Image Builder pr
     ```json
     /subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/images/<imageName>
     ```
-* Azure Shared Image Gallery : vous devez transmettre le resourceId de la version de l’image, par exemple :
+* Azure Compute Gallery : vous devez transmettre le resourceId de la version de l’image, par exemple :
     ```json
     /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/<versionNumber>
     ```
 
-    Si vous avez besoin d’obtenir la dernière version de Shared Image Gallery, vous pouvez avoir une tâche AZ PowerShell ou AZ CLI pour obtenir la version la plus récente et définir une variable DevOps. Utilisez la variable dans la tâche AZ VM Image Builder DevOps. Pour plus d'informations, consultez les [exemples](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery).
+    Si vous avez besoin d’obtenir la dernière version d’Azure Compute Gallery (anciennement Shared Image Gallery), vous pouvez avoir une tâche AZ PowerShell ou AZ CLI pour obtenir la version la plus récente et définir une variable DevOps. Utilisez la variable dans la tâche AZ VM Image Builder DevOps. Pour plus d'informations, consultez les [exemples](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/8_Getting_Latest_SIG_Version_ResID#getting-the-latest-image-version-resourceid-from-shared-image-gallery).
 
 * (Place de marché) Image de base : voici une liste déroulante d’images populaires, qui utilisent toujours la version « la plus récente » du système d’exploitation pris en charge. 
 
@@ -233,9 +233,9 @@ Lorsque la build démarre, Image Builder crée un conteneur appelé `imagebuilde
 
 * Emplacements
 
-#### <a name="azure-shared-image-gallery"></a>Azure Shared Image Gallery
+#### <a name="azure-compute-gallery"></a>Azure Compute Gallery
 
-Shared Image Gallery **doit** exister déjà.
+La galerie Azure Compute Gallery **doit** déjà exister.
 
 * ResourceID : 
     ```bash

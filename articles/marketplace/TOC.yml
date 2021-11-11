@@ -576,11 +576,19 @@
         - name: Inscrire une application SaaS
           href: partner-center-portal/pc-saas-registration.md
         - name: API de traitement SaaS v2
-          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-        - name: API de traitement SaaS v1 (dépréciées)
-          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+          items:
+            - name: Cycle de vie d’un abonnement SaaS
+              href: partner-center-portal/pc-saas-fulfillment-life-cycle.md
+            - name: API d’abonnement
+              href: partner-center-portal/pc-saas-fulfillment-subscription-api.md
+            - name: API d’opérations
+              href: partner-center-portal/pc-saas-fulfillment-operations-api.md
+        - name: Implémenter un webhook
+          href: partner-center-portal/pc-saas-fulfillment-webhook.md
         - name: API de traitement SaaS - Questions fréquentes (FAQ)
           href: partner-center-portal/saas-fulfillment-apis-faq.yml
+        - name: API de traitement SaaS v1 (dépréciées)
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
 - name: Ressources
   items:
     - name: Questions fréquentes (FAQ) sur la place de marché commerciale

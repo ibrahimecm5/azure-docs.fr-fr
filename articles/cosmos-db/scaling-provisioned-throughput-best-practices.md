@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c8a2ab0b904c60e2d1d1c44a9d596cf62d0403d6
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 49b0f5bac116ccdc6696ce23100f661791304ff5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546009"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465000"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>Meilleures pratiques pour la mise à l’échelle du débit approvisionné (unités de requête par seconde) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,10 +35,12 @@ Lorsque vous envoyez une demande d’augmentation des RU/s de votre base de donn
     - Par conséquent, l’opération peut prendre un certain temps, généralement de 4 à 6 heures.
 Chaque partition physique peut prendre en charge un maximum de 10 000 RU/s (s’applique à toutes les API) de débit et de 50 Go de stockage (s’applique à toutes les API, à l’exception de Cassandra qui dispose de 30 Go de stockage). 
 
+> [!NOTE]
+> Si vous effectuez une [opération manuelle de basculement de région](how-to-manage-database-account.md#manual-failover) ou si vous [ajoutez/supprimez une région](how-to-manage-database-account.md#addremove-regions-from-your-database-account) alors qu’une opération de montée en puissance (scale-up) asynchrone est en cours, celle-ci est suspendue. Elle reprend automatiquement une fois l’opération de basculement ou d’ajout/de suppression de région terminée. 
 - **Scale-down instantané**
     - Pour les opérations de scale-down, Azure Cosmos DB n’a pas besoin de fractionner des partitions ni d’en ajouter de nouvelles. 
     - Par conséquent, l’opération se termine immédiatement et les RU/s sont immédiatement disponibles pour utilisation. 
-    - Le résultat clé de cette opération est que les RU/s par plage de partitions seront réduites.
+    - Le principal résultat de cette opération est que les unités de requête par partition physique sont réduites.
     
 ## <a name="how-to-scale-up-rus-without-changing-partition-layout"></a>Comment augmenter l’échelle des RU/s sans modifier la disposition de partition
 

@@ -2,14 +2,14 @@
 title: Vue d’ensemble des coffres de sauvegarde
 description: Une vue d’ensemble des coffres de sauvegarde.
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 10/31/2021
 ms.custom: references_regions
-ms.openlocfilehash: afe103e7fb6c2cb59634029c5ae9a75acadf0afc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1a3909e525adadc2e5983e2792e407301a5b321d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130235883"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473639"
 ---
 # <a name="backup-vaults-overview"></a>Vue d’ensemble des coffres de sauvegarde
 
@@ -132,7 +132,7 @@ Cette section explique comment utiliser le portail Azure pour déplacer un coffr
 
 ### <a name="supported-regions"></a>Régions prises en charge
 
-Le déplacement d’un coffre entre des abonnements et des groupes de ressources est actuellement pris en charge dans les régions suivantes : USA Ouest, USA Centre Sud, Asie Est, Suisse Nord, Afrique du Sud Nord, Royaume-Uni Ouest, USA Centre Nord, Émirats arabes unis Nord, Norvège Est, Australie Sud-Est, Japon Ouest, Canada Est, Corée Centre, Australie Centre, USA Centre-Ouest, Inde Centre, Inde Ouest, Inde Sud, Émirats arabes unis Centre, Afrique du Sud Ouest, Norvège Ouest et Suisse Ouest.
+Le déplacement du coffre entre les abonnements et les groupes de ressources est pris en charge dans toutes les régions publiques.
 
 ### <a name="use-azure-portal-to-move-backup-vault-to-a-different-resource-group"></a>Utiliser le portail Azure pour déplacer un coffre de sauvegarde vers un autre groupe de ressources
 

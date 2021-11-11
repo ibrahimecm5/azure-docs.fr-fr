@@ -1,7 +1,7 @@
 ---
 title: Disponibilité des régions et résidence des données
 titleSuffix: Azure AD B2C
-description: Disponibilité des régions, résidence des données et informations sur les locataires Azure Active Directory B2C en préversion.
+description: Disponibilité des régions, résidence des données, haute disponibilité, SLA et informations sur les locataires Azure Active Directory B2C en préversion.
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 08/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 91b2c287b42d0a60a3b813b87f8e1eb2368da395
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 52fc2cc1e9658ef63b331d7d3983fdc47d13489e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040224"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424417"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C : Disponibilité des régions et résidence des données
 
@@ -33,8 +33,7 @@ La [résidence des données](#data-residency) fait référence à l’endroit o�
 
 ## <a name="region-availability"></a>Disponibilité des régions
 
-Azure Active Directory B2C est disponible dans le monde entier via le cloud public Azure. Vous pouvez voir des exemples de cette fonctionnalité à la fois sur la page [Disponibilité des produits par région](https://azure.microsoft.com/regions/services/) d’Azure et la [calculatrice de prix Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
-
+Azure Active Directory B2C est disponible dans le monde entier via le cloud public Azure. Vous pouvez voir la disponibilité de ce service à la fois sur la page [Disponibilité des produits par région](https://azure.microsoft.com/regions/services/) d’Azure et la [calculatrice de prix Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/). Le service Azure AD B2C aussi est hautement disponible. Apprenez-en davantage sur le [Contrat de niveau de service (SLA) pour Azure Active Directory B2C](https://azure.microsoft.com/support/legal/sla/active-directory-b2c/v1_1).
 ## <a name="data-residency"></a>Résidence des données
 
 Azure AD B2C stocke les données utilisateur dans la région États-Unis, Europe, Asie-Pacifique ou Australie.

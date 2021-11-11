@@ -741,6 +741,8 @@ items:
                 href: monitor-install-analytics.md
           - name: Surveiller avec les Kits de développement logiciel (SDK)
             href: monitor-programmatically.md
+          - name: Échec de pipeline et gestion des erreurs
+            href: tutorial-pipeline-failure-error-handling.md
           - name: Surveiller les pipelines avec des notifications par e-mail
             href: how-to-send-email.md
           - name: Surveiller les pipelines avec les notifications Microsoft Teams

@@ -58,12 +58,14 @@
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Appliquer une protection contre les menaces avec Azure Defender
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Définitions de stratégie de contrôle d’admission avec Azure Policy
+        - name: Mises en œuvre de stratégies en cluster avec Azure Policy
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Déployer Open Service Mesh avec Azure Arc
           href: tutorial-arc-enabled-open-service-mesh.md
         - name: Se connecter de façon sécurisée à un cluster depuis n’importe où
           href: cluster-connect.md
+        - name: Vue des ressources Kubernetes dans le portail Azure
+          href: kubernetes-resource-view.md
         - name: "Utiliser Azure\_AD RBAC pour les contrôles d’autorisation"
           href: azure-rbac.md
         - name: Créer des localisations personnalisées

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/11/2021
-ms.openlocfilehash: 010fbfc3b6a2df9c8cdca1221fb4f25a5d288d70
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/02/2021
+ms.openlocfilehash: bfc901e3fa9c3a3f266f9cddffde84c4d1461c8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532351"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425498"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>Configurer le déploiement DevOps pour Azure Logic Apps monolocataire
 
@@ -223,12 +223,17 @@ Actuellement, seule la version *préversion* est disponible pour cette extension
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 
-Pour récupérer la dernière extension, à savoir la version 0.1.1, exécutez les commandes suivantes pour supprimer l’extension existante, puis installez la dernière version à partir de la source :
+Pour récupérer la dernière extension, à savoir la version 0.1.2, exécutez les commandes suivantes pour supprimer l’extension existante, puis installez la dernière version à partir de la source :
 
 ```azurecli-interactive
 az extension remove --name logicapp
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
+
+> [!NOTE]
+> Si une nouvelle version de l’extension est disponible, les versions actuelles et ultérieures affichent un message. Bien que cette extension soit en préversion, vous pouvez utiliser la commande suivante pour effectuer une mise à niveau vers la dernière version sans la supprimer manuellement et la réinstaller :
+>
+> `az logicapp upgrade`
 
 <a name="create-resource-group"></a>
 

@@ -7,25 +7,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/15/2021
-ms.openlocfilehash: e06772af191917daed79210c28ed2efb19c30036
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 10/20/2021
+ms.openlocfilehash: 41960e60479bf553eeb92cebb9888e2ae01aae55
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134219"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503069"
 ---
 # <a name="detailed-example-of-shapes-and-projections-in-a-knowledge-store"></a>Exemple détaillé de formes et de projections dans une base de connaissances
 
 Cet article fournit un exemple détaillé qui complète les [concepts généraux](knowledge-store-projection-overview.md) et les [articles consacrés à la syntaxe](knowledge-store-projections-examples.md) en vous guidant à travers les étapes de mise en forme et de projection nécessaires pour exprimer entièrement la sortie d’un ensemble de compétences riche dans une [base de connaissances](knowledge-store-concept-intro.md).
 
-Si les spécifications de votre application nécessitent plusieurs compétences et projections, cet exemple peut vous donner une meilleure compréhension de la façon dont les formes et les projections se recoupent.
+Si les spécifications de votre application nécessitent plusieurs compétences et projections, cet exemple peut vous donner une meilleure idée de la façon dont les formes et les projections se recoupent.
 
 ## <a name="download-sample-definitions"></a>Télécharger les exemples de définitions
 
+Cet exemple utilise l’[application de bureau Postman](https://www.postman.com/downloads/) et les [API REST de recherche](/rest/api/searchservice/).
+
 Clonez ou téléchargez [azure-search-postman-samples](https://github.com/Azure-Samples/azure-search-postman-samples) sur GitHub et importez la [**Collection de projections**](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) pour parcourir cet exemple vous-même.
 
-Les exemples de documents ne sont pas spécifiquement inclus avec la collection, mais les [fichiers multimédias mixtes](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/ai-enrichment-mixed-media) de [azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) contiennent à la fois du texte et des images pour prendre en charge les projections décrites dans cet exemple.
+## <a name="set-up-sample-data"></a>Configurer les exemples de données
+
+Des exemples de documents ne sont pas spécifiquement inclus avec la collection Projections, mais les [fichiers de données de démonstration d’enrichissement par IA](https://github.com/azure-search-sample-data/tree/master/ai-enrichment-mixed-media) du [référentiel azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) contiennent du texte et des images, et fonctionneront avec les projections décrites dans cet exemple.
+
+Créez un conteneur d’objets blob dans Stockage Azure et chargez les 14 éléments.
+
+Dans Stockage Azure, copiez une chaîne de connexion afin de pouvoir la spécifier dans la collection Postman.
 
 ## <a name="example-skillset"></a>Exemple d’ensemble de compétences
 
@@ -375,7 +383,7 @@ L’exemple suivant projette des documents d’hôtel individuels, un document d
 }
 ```
 
-La source est la sortie d’une compétence Modélisateur, nommée « objectprojection ». Chaque objet blob aura une représentation JSON de chaque entrée de champ.
+La source est la sortie d’une compétence Modélisateur appelée « objectprojection ». Chaque objet blob aura une représentation JSON de chaque entrée de champ.
 
 ```json
     {

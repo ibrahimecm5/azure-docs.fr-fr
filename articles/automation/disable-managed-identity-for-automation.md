@@ -1,18 +1,18 @@
 ---
-title: Désactiver une identité managée affectée par le système pour un compte Azure Automation (préversion)
+title: Désactiver une identité managée affectée par le système pour un compte Azure Automation
 description: Cet article explique comment désactiver une identité managée affectée par le système pour un compte Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 178da223b5d5f14cc27034c39bd4cc3a05f82631
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b3bf648914635e6ea9345a234c49bfb64c757bc1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606586"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435412"
 ---
-# <a name="disable-system-assigned-managed-identity-for-azure-automation-account-preview"></a>Désactiver une identité managée affectée par le système pour un compte Azure Automation (préversion)
+# <a name="disable-system-assigned-managed-identity-for-azure-automation-account"></a>Désactiver une identité managée affectée par le système pour un compte Azure Automation
 
 Vous pouvez désactiver une identité managée affectée par le système dans Azure Automation à l’aide du portail Azure ou de l’API REST.
 
@@ -126,6 +126,6 @@ Procédez comme suit.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour plus d’informations sur l’activation d’identités managées dans Azure Automation, consultez [Activer et utiliser l’identité managée pour Automation (préversion)](enable-managed-identity-for-automation.md).
+- Pour plus d’informations sur l’activation d’identités managées dans Azure Automation, consultez [Activer et utiliser l’identité managée pour Automation](enable-managed-identity-for-automation.md).
 
 - Pour obtenir une vue d’ensemble de la sécurité du compte Automation, consultez [Vue d’ensemble de l’authentification du compte Automation](automation-security-overview.md).

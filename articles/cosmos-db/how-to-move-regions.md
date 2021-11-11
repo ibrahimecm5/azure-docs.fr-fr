@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: e8d39f6215e76c4cd9da9458f5e8a7af61622089
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: abe4c084243025cb5570d8913911a45554f067f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094831"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454520"
 ---
 # <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Déplacer un compte Azure Cosmos DB vers une autre région
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -40,6 +40,9 @@ Azure Cosmos DB prend en charge la réplication des données en mode natif, ce 
 1. Supprimer la région d’origine
 
     Pour supprimer une région d’un compte Azure Cosmos DB, consultez [Ajouter/supprimer des régions dans un compte Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account).
+
+> [!NOTE]
+> Si vous effectuez une opération de basculement ou si vous ajoutez/supprimez une nouvelle région alors qu’une [opération de mise à l’échelle du débit asynchrone](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, l’opération de mise à l’échelle du débit sera suspendue. Elle reprendra automatiquement lorsque l’opération de basculement ou d’ajout/de suppression de la région sera terminée. 
 
 ## <a name="migrate-azure-cosmos-db-account-metadata"></a>Migrer les métadonnées d’un compte Azure Cosmos DB
 

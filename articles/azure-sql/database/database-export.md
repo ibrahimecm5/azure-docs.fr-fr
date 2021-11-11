@@ -9,14 +9,14 @@ author: cawrites
 ms.custom: sqldbrb=2
 ms.author: chadam
 ms.reviewer: ''
-ms.date: 01/11/2021
+ms.date: 11/01/2021
 ms.topic: how-to
-ms.openlocfilehash: a4882c763baf00220ac610ef9c0c8c6f5f56740d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d65e4c496b3be19e710fe94b955bcc7ad01be945
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361062"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470278"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exporter vers un fichier BACPAC - Azure SQL Database et SQL Managed Instance
 
@@ -55,11 +55,9 @@ L'exportation d'un fichier BACPAC de base de données à partir d'une instance d
 
     ![Exportation de base de données](./media/database-export/database-export2.png)
 
-3. Cliquez sur **OK**.
+3. Sélectionnez **OK**.
 
-4. Pour surveiller la progression de l'opération d'exportation, ouvrez la page du serveur qui contient la base de données en cours d'exportation. Sous **Paramètres**, cliquez sur **Historique d'importation/exportation**.
-
-   ![historique d'exportation](./media/database-export/export-history.png)
+4. Pour surveiller la progression de l'opération d'exportation, ouvrez la page du serveur qui contient la base de données en cours d'exportation. Sous **Gestion des données**, sélectionnez **Importer/Exporter l’historique**.
 
 ## <a name="sqlpackage-utility"></a>Utilitaire SQLPackage
 

@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.openlocfilehash: c7a7aaa47d40c9d49065f71bc9bebc998adbfc12
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 7f937e833a909f15cdc86af35c27bf5240abcfd8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410474"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426826"
 ---
 # <a name="billing-model-of-azure-web-pubsub-service"></a>Modèle de facturation du service Azure Web PubSub
 
@@ -43,7 +43,7 @@ Le trafic sortant correspond aux messages envoyés à partir du service Azure We
 
 - Les messages diffusés par le service aux récepteurs.
 - Les messages envoyés par le service aux webhooks en amont.
-- Les journaux de diagnostic avec l’[outil de suivi dynamique](./howto-troubleshoot-diagnostic-logs.md#capture-diagnostic-logs-with-azure-web-pubsub-service-live-trace-tool). 
+- Les journaux de ressources avec l’[outil Live Trace](./howto-troubleshoot-resource-logs.md#capture-resource-logs-with-live-trace-tool). 
 
 Le trafic entrant correspond aux messages envoyés au service Azure Web PubSub. 
 

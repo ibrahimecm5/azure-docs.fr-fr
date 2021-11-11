@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 09/09/2021
 ms.custom: seodec18
-ms.openlocfilehash: d4242ae2afb79f44452c51a971a64632e0d7f098
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 207d2f12c8603b7533cef588131e4a60e0f0ad36
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769918"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427320"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Fonctionnalités de système d’exploitation sur Azure App Service
 Cet article décrit les fonctionnalités de système d’exploitation communes de base accessibles à toutes les applications Windows exécutées sur [Azure App Service](./overview.md). Ces fonctionnalités englobent notamment l’accès aux fichiers, l’accès réseau et l’accès au registre, ainsi que les journaux d’activité et événements de diagnostic. 
 
 > [!NOTE] 
-> Les [applications Linux](overview.md#app-service-on-linux) dans App Service s’exécutent dans leurs propres conteneurs. Aucun accès au système d’exploitation hôte n’est autorisé, car vous n’avez pas d’accès racine au conteneur. De même, pour les [applications qui s’exécutent dans des conteneurs Windows](quickstart-custom-container.md?pivots=container-windows), vous disposez d’un accès administratif au conteneur mais pas d’un accès au système d’exploitation hôte. 
+> Les [applications Linux](overview.md#app-service-on-linux) dans App Service s’exécutent dans leurs propres conteneurs. Vous disposez d’un accès racine au conteneur, mais aucun accès au système d’exploitation hôte n’est autorisé. De même, pour les [applications qui s’exécutent dans des conteneurs Windows](quickstart-custom-container.md?pivots=container-windows), vous disposez d’un accès administratif au conteneur mais pas d’un accès au système d’exploitation hôte. 
 >
 
 <a id="tiers"></a>
@@ -80,7 +80,7 @@ Sur le lecteur système, App Service réserve `%SystemDrive%\local` pour le stoc
 
 Deux exemples illustrent la façon dont App Service utilise le stockage local temporaire : le répertoire de fichiers temporaires ASP.NET et le répertoire de fichiers compressés IIS. Le système de compilation ASP.NET utilise le répertoire `%SystemDrive%\local\Temporary ASP.NET Files` comme emplacement de cache de compilation temporaire. IIS utilise le répertoire `%SystemDrive%\local\IIS Temporary Compressed Files` pour stocker les réponses compressées. Ces deux types d’utilisation de fichiers (et d’autres) sont de nouveau mappés dans App Service sur un stockage local temporaire par application. Ce nouveau mappage préserve les fonctionnalités.
 
-Chaque application dans App Service est exécutée sous une identité de processus de travail à faibles privilèges unique et aléatoire appelée « identité du pool d’applications », comme décrit plus en détail ici : [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Le code d’application utilise cette identité pour l’accès en lecture seule de base au lecteur du système d’exploitation. Le code d'application peut ainsi dresser la liste les structures de répertoires communes et lire les fichiers communs sur le lecteur du système d'exploitation. Bien que ce niveau d'accès puisse sembler étendu, les mêmes répertoires et fichiers sont accessibles lorsque vous approvisionnez un rôle de travail dans le service hébergé Azure et lisez le contenu du lecteur. 
+Chaque application dans App Service est exécutée sous une identité de processus de travail à faibles privilèges unique et aléatoire appelée « identité du pool d’applications », comme décrit plus en détail dans la documentation [Identités du pool d’applications](/iis/manage/configuring-security/application-pool-identities) d’IIS. Le code d’application utilise cette identité pour l’accès en lecture seule de base au lecteur du système d’exploitation. Le code d'application peut ainsi dresser la liste les structures de répertoires communes et lire les fichiers communs sur le lecteur du système d'exploitation. Bien que ce niveau d'accès puisse sembler étendu, les mêmes répertoires et fichiers sont accessibles lorsque vous approvisionnez un rôle de travail dans le service hébergé Azure et lisez le contenu du lecteur. 
 
 <a name="multipleinstances"></a>
 

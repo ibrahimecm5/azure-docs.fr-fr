@@ -278,6 +278,10 @@
           href: license-users-groups.md
         - name: Restaurer un utilisateur supprimé.
           href: active-directory-users-restore.md
+    - name: Scénarios
+      items:
+        - name: Utilisation d’Azure Active Directory pour sécuriser l’accès aux plateformes et applications SAP
+          href: scenario-azure-first-sap-identity-integration.md
 - name: Dépannage
   expanded: true
   items:

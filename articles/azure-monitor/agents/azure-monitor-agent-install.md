@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3e8430499edde638bf32cca2f9a36fb3c3583863
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: eb85d5ff6f5e5f2a71797172b4fa39c91d82c682
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178045"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426997"
 ---
 # <a name="install-the-azure-monitor-agent"></a>Installer l’agent Azure Monitor
 Cet article présente les différentes options actuellement disponibles pour installer l’[agent Azure Monitor](azure-monitor-agent-overview.md) sur les machines virtuelles Azure et les serveurs avec Azure Arc, ainsi que les options permettant de créer des [associations avec des règles de collecte de données](data-collection-rule-azure-monitor-agent.md) qui définissent les données que l’agent doit collecter.
@@ -46,7 +46,7 @@ Il est vivement recommandé d’effectuer la mise à jour vers les versions GA e
 | Juin 2021 | Disponibilité générale annoncée. <ul><li>Toutes les fonctionnalités à l’exception de la destination des métriques sont désormais en disponibilité générale</li><li>Qualité de production, sécurité et conformité</li><li>Disponibilité dans toutes les régions publiques</li><li>Améliorations des performances et de la mise à l’échelle pour l’EPS le plus élevé</li></ul> [En savoir plus](https://azure.microsoft.com/updates/azure-monitor-agent-and-data-collection-rules-now-generally-available/) | 1.0.12.0 | 1.9.1.0 |
 | Juillet 2021 | <ul><li>Prise en charge des proxies directs</li><li>Prise en charge de la passerelle Log Analytics</li></ul> [En savoir plus](https://azure.microsoft.com/updates/general-availability-azure-monitor-agent-and-data-collection-rules-now-support-direct-proxies-and-log-analytics-gateway/) | 1.1.1.0 | 1.10.5.0 |
 | Août 2021 | Résolution du problème autorisant les métriques Azure Monitor comme seule destination | 1.1.2.0 | 1.10.9.0 (ne pas utiliser 1.10.7.0) |
-| Septembre 2021 | Résolution du problème à l’origine de la perte de données lors du redémarrage de l’agent | 1.1.3.1 (ne pas utiliser 1.1.3.1) | 1.12.2.0 |
+| Septembre 2021 | <ul><li>Résolution du problème à l’origine de la perte de données lors du redémarrage de l’agent</li><li>Régression résolue dans 1.1.3.1 pour les serveurs Windows Arc</li></ul> | 1.1.3.2 (ne pas utiliser 1.1.3.1) | 1.12.2.0 |
 
 
 ## <a name="install-with-azure-portal"></a>Installer avec Portail Azure

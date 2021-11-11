@@ -4,13 +4,13 @@ description: Informations de référence sur tous les services et autres ressour
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
-ms.date: 10/15/2021
-ms.openlocfilehash: 3d61e6d91409963f0f1578a03bfdeb83b7c54960
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 043f366bfc34ca496af866b4add3a73f44b15b71
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078937"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505022"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Quels sont les éléments supervisés par Azure Monitor ?
 
@@ -34,7 +34,7 @@ Le tableau ci-dessous liste les visualisations organisées disponibles et fourni
 | [Azure Backup Insights](/azure/backup/backup-azure-monitoring-use-azuremonitor) | GA | [Oui](https://ms.portal.azure.com/#blade/Microsoft_Azure_DataProtection/BackupCenterMenuBlade/backupReportsConfigure/menuId/backupReportsConfigure) | Fournit des fonctionnalités intégrées de monitoring et de génération d’alertes dans un coffre Recovery Services. | 
 | [Azure Monitor pour Azure Cache pour Redis (préversion)](/azure/azure-monitor/insights/redis-cache-insights-overview) | GA | [Oui](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/redisCacheInsights) | Offre une vue unifiée et interactive des performances globales, des défaillances, de la capacité et de l’intégrité opérationnelle. | 
 | [Azure Cosmos DB Insights](/azure/azure-monitor/insights/cosmosdb-insights-overview) | GA | [Oui](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/cosmosDBInsights) | Fournit une vue des performances globales, des défaillances, de la capacité et de l’intégrité opérationnelle de toutes vos ressources Azure Cosmos DB dans une expérience interactive unifiée. | 
-| [Cluster Azure Data Explorer](/azure/azure-monitor/insights/data-explorer) | GA | [Oui](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/adxClusterInsights) | Azure Data Explorer Insights fournit une supervision complète de vos clusters grâce à une vue unifiée des performances, des opérations, de l’utilisation et des défaillances de vos clusters. | 
+| [Insights Azure Data Explorer](/azure/azure-monitor/insights/data-explorer) | GA | [Oui](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/adxClusterInsights) | Azure Data Explorer Insights fournit une supervision complète de vos clusters grâce à une vue unifiée des performances, des opérations, de l’utilisation et des défaillances de vos clusters. | 
 | [Azure HDInsight (préversion)](/azure/hdinsight/log-analytics-migration#insights) | PRÉVERSION | Non | Classeur Azure Monitor qui collecte des métriques importantes sur les performances à partir de votre cluster HDInsight et qui fournit des visualisations et des tableaux de bord pour les scénarios les plus courants. Offre une vue complète d’un cluster HDInsight unique, y compris l’utilisation des ressources et l’état des applications.|
  | [Azure IoT Edge Insights](/azure/iot-edge/how-to-explore-curated-visualizations/) | GA | Non | Visualisez et explorez les métriques collectées à partir de l’appareil IoT Edge directement dans le portail Azure à l’aide de modèles publics basés sur des classeurs Azure Monitor. Les workbooks organisés utilisent des métriques intégrées provenant du runtime IoT Edge. Ces vues n’ont pas besoin d’instrumentation de métriques à partir des modules de charge de travail. | 
  | [Azure Key Vault Insights (préversion)](/azure/azure-monitor/insights/key-vault-insights-overview) | GA | [Oui](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/keyvaultsInsights) | Offre une analyse complète de vos coffres de clés en fournissant une vue unifiée des requêtes, des performances, des échecs et de la latence de Key Vault. | 
@@ -74,13 +74,34 @@ Les autres services et les anciennes solutions de monitoring figurant dans le ta
 | [Solution SQL Analytics](insights/azure-sql.md) | Utilisez SQL Insights à la place. |
 | [Solution Surface Hub](insights/surface-hubs.md) |  |
 
-## <a name="list-of-azure-monitor-supported-services"></a>Liste des services pris en charge par Azure Monitor
+
+## <a name="third-party-integration"></a>Intégration tierce
+
+| Intégration | Description |
+|:---|:---|
+| [ITSM](alerts/itsmc-overview.md) | Le connecteur de gestion des services informatiques (ITSMC) vous permet de connecter Azure et un produit/service ITSM pris en charge.  |
+| [Partenaires Azure Monitor](/azure/azure-monitor/partners/) | Liste des partenaires qui s’intègrent avec Azure Monitor sous certaines formes | 
+| [Intégrations de partenaires Azure Monitor](/azure/partner-solutions/overview/)| Intégrations spécialisées entre Azure Monitor et d’autres plateformes de surveillance non-Microsoft si vous les avez déjà utilisées.  Les exemples incluent Datadog et Elastic|
+
+
+## <a name="resources-outside-of-azure"></a>Ressources situées en dehors d’Azure
+
+Azure Monitor peut collecter des données à partir de ressources situées en dehors d’Azure à l’aide des méthodes listées dans le tableau suivant.
+
+| Ressource | Méthode |
+|:---|:---|
+| Applications | Supervisez les applications web situées en dehors d’Azure à l’aide d’Application Insights. Voir [Présentation d’Application Insights](./app/app-insights-overview.md). |
+| Machines virtuelles | Utilisez les agents pour collecter des données à partir du système d’exploitation invité des machines virtuelles dans d’autres environnements cloud ou en local. Consultez [Vue d’ensemble des agents Azure Monitor](agents/agents-overview.md). |
+| Client d’API REST | Différentes API sont disponibles pour écrire des données dans les métriques et journaux Azure Monitor à partir de n’importe quel client d’API REST. Consultez [Envoyer des données de journal à Azure Monitor à l’aide de l’API Collecte de données HTTP](logs/data-collector-api.md) pour les journaux et [Envoyer les métriques personnalisées d’une ressource Azure à un magasin de métriques Azure Monitor à l’aide d’une API REST](essentials/metrics-store-custom-rest-api.md) pour les métriques. |
+
+
+## <a name="azure-supported-services"></a>Services pris en charge par Azure
  
 Le tableau suivant liste les services Azure et les données qu’ils collectent dans Azure Monitor. 
 
 - Métriques : le service collecte automatiquement les métriques dans les métriques Azure Monitor. 
-- Journaux : le service prend en charge les paramètres de diagnostic qui peuvent collecter les journaux et les métriques de la plateforme dans les journaux Azure Monitor.
-- Insight : un insight est disponible pour le service, qui procure une expérience de supervision personnalisée de ce dernier.
+- Journaux : le service prend en charge des paramètres de diagnostic qui peuvent envoyer des métriques et des journaux de plateforme à des journaux Azure Monitor à des fins d’analyse dans Log Analytics.
+- Insight : un insight est disponible, qui procure une expérience de surveillance personnalisée pour le service.
 
 | Service | Espace de noms du fournisseur de ressources | Contient des métriques | Contient des journaux | Insight | Notes
 |---------|---------------------------------------|----------------|-----------|----------|--------|
@@ -117,8 +138,8 @@ Le tableau suivant liste les services Azure et les données qu’ils collectent 
  | [Cray ClusterStor dans Azure](https://azure.microsoft.com/blog/supercomputing-in-the-cloud-announcing-three-new-cray-in-azure-offers/) | Microsoft.ClusterStor/nodes | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftclusterstornodes) | Non |   | |
  | [Azure Cognitive Services](/azure/cognitive-services/)   | Microsoft.CognitiveServices/accounts | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcognitiveservicesaccounts) | [**Oui**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcognitiveservicesaccounts) |   | |
  | [Azure Communication Services](/azure/communication-services/) | Microsoft.Communication/CommunicationServices | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcommunicationcommunicationservices) | [**Oui**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcommunicationcommunicationservices) |   | |
- | [Machines virtuelles Azure](/azure/virtual-machines/)<br />[Jeux de mise à l’échelle de machine virtuelle](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/cloudServices | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservices) | Non | [Insights de machine virtuelle](/azure/azure-monitor/insights/vminsights-overview) | Agent nécessaire pour superviser le système d’exploitation invité et les workflows.|
- | [Machines virtuelles Azure](/azure/virtual-machines/)<br />[Jeux de mise à l’échelle de machine virtuelle](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/cloudServices/roles | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservicesroles) | Non | [Insights de machine virtuelle](/azure/azure-monitor/insights/vminsights-overview) | Agent nécessaire pour superviser le système d’exploitation invité et les workflows.|
+ | [Azure Cloud Services](/azure/cloud-services-extended-support/)   | Microsoft.Compute/cloudServices | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservices) | Non |  | Agent nécessaire pour superviser le système d’exploitation invité et les workflows.|
+ | [Azure Cloud Services](/azure/cloud-services-extended-support/) | Microsoft.Compute/cloudServices/roles | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservicesroles) | Non | | Agent nécessaire pour superviser le système d’exploitation invité et les workflows.|
  | [Machines virtuelles Azure](/azure/virtual-machines/)<br />[Jeux de mise à l’échelle de machine virtuelle](/azure/virtual-machine-scale-sets/)   | Ordinateur/disques Microsoft | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputedisks) | Non | [Insights de machine virtuelle](/azure/azure-monitor/insights/vminsights-overview) | |
  | [Machines virtuelles Azure](/azure/virtual-machines/)<br />[Jeux de mise à l’échelle de machine virtuelle](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachines | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachines) | Non | [Insights de machine virtuelle](/azure/azure-monitor/insights/vminsights-overview) | Agent nécessaire pour superviser le système d’exploitation invité et les workflows.|
  | [Machines virtuelles Azure](/azure/virtual-machines/)<br />[Jeux de mise à l’échelle de machine virtuelle](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachineScaleSets | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachinescalesets) | Non | [Insights de machine virtuelle](/azure/azure-monitor/insights/vminsights-overview) | Agent nécessaire pour superviser le système d’exploitation invité et les workflows.|
@@ -255,24 +276,6 @@ Le tableau suivant liste les services Azure et les données qu’ils collectent 
  | [Azure App Service](/azure/app-service/)<br />[Azure Functions](/azure/azure-functions/)   | Microsoft.Web/sites/slots | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebsitesslots) | [**Oui**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebsitesslots) | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
  | [Azure App Service](/azure/app-service/)<br />[Azure Functions](/azure/azure-functions/)   | Microsoft.Web/staticSites | [**Oui**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebstaticsites) | Non | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
 
-
-
-## <a name="third-party-integration"></a>Intégration tierce
-
-| Solution | Description |
-|:---|:---|
-| [ITSM](alerts/itsmc-overview.md) | Le connecteur de gestion des services informatiques (ITSMC) vous permet de connecter Azure et un produit/service ITSM pris en charge.  |
-
-
-## <a name="resources-outside-of-azure"></a>Ressources situées en dehors d’Azure
-
-Azure Monitor peut collecter des données à partir de ressources situées en dehors d’Azure à l’aide des méthodes listées dans le tableau suivant.
-
-| Ressource | Méthode |
-|:---|:---|
-| Applications | Supervisez les applications web situées en dehors d’Azure à l’aide d’Application Insights. Voir [Présentation d’Application Insights](./app/app-insights-overview.md). |
-| Machines virtuelles | Utilisez les agents pour collecter des données à partir du système d’exploitation invité des machines virtuelles dans d’autres environnements cloud ou en local. Consultez [Vue d’ensemble des agents Azure Monitor](agents/agents-overview.md). |
-| Client d’API REST | Différentes API sont disponibles pour écrire des données dans les métriques et journaux Azure Monitor à partir de n’importe quel client d’API REST. Consultez [Envoyer des données de journal à Azure Monitor à l’aide de l’API Collecte de données HTTP](logs/data-collector-api.md) pour les journaux et [Envoyer les métriques personnalisées d’une ressource Azure à un magasin de métriques Azure Monitor à l’aide d’une API REST](essentials/metrics-store-custom-rest-api.md) pour les métriques. |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

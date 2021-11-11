@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 10fe758bf11f0452ef07d30329d7d48914fbb4bf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 06728431db78d14be1a67f1dde753a0992b5dbba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562728"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471114"
 ---
 # <a name="deployment-best-practices"></a>Meilleures pratiques de déploiement
 
@@ -43,7 +43,7 @@ Dans la mesure du possible, utilisez des [emplacements de déploiement](deploy-s
 
 ### <a name="continuously-deploy-code"></a>Déployer du code en continu
 
-Si votre projet a désigné des branches pour le test, l’assurance qualité et la mise en lots, chacune de ces branches doit être déployée en continu vers un emplacement de préproduction. (C’est ce que l’on appelle la [conception Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) Cela permet à vos parties prenantes d’évaluer et de tester facilement la branche déployée. 
+Si votre projet a désigné des branches pour le test, l’assurance qualité et la mise en lots, chacune de ces branches doit être déployée en continu vers un emplacement de préproduction. (Appelé [conception Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) Cela permet à vos parties prenantes d’évaluer et de tester facilement la branche déployée. 
 
 Le déploiement continu ne doit jamais être activé pour votre emplacement de production. Au lieu de cela, votre branche de production (souvent principal) doit être déployée sur un emplacement de non-production. Lorsque vous êtes prêt à mettre en production la branche de base, échangez-la dans l’emplacement de production. Un échange en production, au lieu d’un déploiement en production, vous permet d’éviter les temps d’arrêt et de restaurer les modifications en les échangeant à nouveau. 
 
@@ -127,7 +127,7 @@ Dans votre script, connectez-vous en utilisant `az login --service-principal` et
 
 ### <a name="java"></a>Java
 
-Utilisez l’API [zipdeploy/](deploy-zip.md) de Kudu pour déployer des applications JAR, et [wardeploy/](deploy-zip.md#deploy-war-file) pour des applications WAR. Si vous utilisez Jenkins, vous pouvez utiliser ces API directement lors de votre phase de déploiement. Pour plus d’informations, consultez [cet article](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
+Utilisez l’API [zipdeploy/](deploy-zip.md) de Kudu pour déployer des applications JAR, et [wardeploy/](deploy-zip.md#deploy-warjarear-packages) pour des applications WAR. Si vous utilisez Jenkins, vous pouvez utiliser ces API directement lors de votre phase de déploiement. Pour plus d’informations, consultez [cet article](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
 ### <a name="node"></a>Nœud
 

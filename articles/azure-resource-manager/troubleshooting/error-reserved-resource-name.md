@@ -2,13 +2,13 @@
 title: Erreurs de nom de ressource réservé
 description: Explique comment résoudre les erreurs quand vous fournissez un nom de ressource qui inclut un mot réservé.
 ms.topic: troubleshooting
-ms.date: 11/08/2017
-ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 28376ed34e2007c3f6cfb7f57f08199e5a1ade8a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097657"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458833"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>Résoudre les erreurs de nom de ressource réservé
 
@@ -30,6 +30,13 @@ Le nom d’une ressource qui a un point de terminaison public ne peut pas conten
 Les mots suivants sont réservés :
 
 * ACCESS
+* APP_CODE
+* APP_THEMES
+* APP_DATA
+* APP_GLOBALRESOURCES
+* APP_LOCALRESOURCES
+* APP_WEBREFERENCES
+* APP_BROWSERS
 * AZURE
 * BING
 * BIZSPARK
@@ -61,10 +68,8 @@ Les mots suivants sont réservés :
 
 Les mots suivants ne peuvent pas être utilisés en tant que mot entier ou sous-chaîne dans le nom :
 
-* Connexion
 * MICROSOFT
 * WINDOWS
-* XBOX
 
 ## <a name="solution"></a>Solution
 

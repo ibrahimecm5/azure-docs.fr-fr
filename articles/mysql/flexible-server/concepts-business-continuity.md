@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: e0309a0a939d310df3265a9b05e8953644bc1abb
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: f78143483ccefe5147eb2ba5d0ee3f3353ab4aac
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065976"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445689"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Vue d’ensemble de la continuité d’activité avec Azure Database pour MySQL - Serveur flexible (préversion)
+# <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server"></a>Vue d’ensemble de la continuité d’activité avec le serveur flexible Azure Database pour MySQL
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 Le serveur flexible Azure Database pour MySQL offre des fonctionnalités de continuité d’activité qui protègent vos bases de données en cas d’interruption planifiée et non planifiée. Des fonctionnalités, telles que les sauvegardes automatisées et la haute disponibilité offrent plusieurs niveaux de protection contre les pannes, avec différents temps de récupération et risques de perte de données. Lorsque vous concevez des applications avec l’idée de les protéger contre les défaillances, vous devez tenir compte de l’objectif de délai de récupération (RTO) et de l’objectif de point de récupération (RPO) pour chaque application. L’objectif de délai de récupération est la tolérance aux temps d’arrêt, tandis que l’objectif de point de récupération est la tolérance à la perte de données après une disruption du service de base de données.
 
@@ -31,9 +28,6 @@ Le tableau ci-dessous illustre les fonctionnalités qu’offre le serveur flexib
 | **Sauvegarde géoredondante** | Les sauvegardes du Serveur flexible peuvent être configurées comme géoredondantes au moment de la création. L’activation de la géoredondance permet de répliquer les fichiers de données de sauvegarde du serveur dans la région principale jumelée pour fournir une résilience régionale. Le stockage des sauvegardes géoredondantes offre une durabilité des objets d’au moins 99,99999999999999 % (16 « neuf ») sur une année donnée. Pour plus d’informations, consultez [Concepts – Sauvegarde et restauration](./concepts-backup-restore.md).| Disponible dans toutes les [régions jumelées Azure](../../best-practices-availability-paired-regions.md) |
 | **Haute disponibilité redondante interzone** | Le serveur flexible peut être déployé en mode haute disponibilité, ce qui a pour effet de déployer le serveur principal et le serveur de secours dans deux zones de disponibilité différentes au sein d’une même région. C’est une protection contre les défaillances au niveau de la zone qui permet également de réduire les temps d’arrêt des applications pendant les interruptions planifiées et non planifiées. Les données du serveur principal sont répliquées de façon synchrone sur le réplica de secours. Lors d’un événement de temps d’arrêt, le serveur de base de données est automatiquement basculé vers le réplica de secours. Pour plus d’informations, consultez [Concepts – Haute disponibilité](./concepts-high-availability.md). | Prise en charge dans les niveaux de calcul à usage général et à mémoire optimisée. Disponible uniquement dans les régions où plusieurs zones sont disponibles.|
 | **Partages de fichiers Premium** | Les fichiers de base de données sont stockés dans des partages de fichiers Azure Premium très robustes et fiables qui assurent la redondance des données au moyen de trois copies du réplica, stockées dans une zone de disponibilité à l’aide de fonctionnalités automatiques de récupération de données. Pour plus d’informations, consultez les [Partages de fichiers Premium](../../storage/files/storage-how-to-create-file-share.md). | Données stockées dans une zone de disponibilité |
-
-> [!IMPORTANT]
-> Aucun temps d’activité ni aucun contrat de niveau de service RTO et RPO ne sont proposés pendant la préversion. Détails fournis dans cette page uniquement à titre d’information et à des fins de planification.
 
 ## <a name="planned-downtime-mitigation"></a>Réduction des temps d’arrêt planifiés
 
@@ -62,7 +56,6 @@ Voici quelques scénarios d’échec non planifiés et le processus de récupér
 | **Erreurs logiques/de l’utilisateur** | La récupération d’erreurs de l’utilisateur, telles qu’une suppression accidentelle de tables ou une mise à jour incorrecte de données, implique l’exécution d’une [récupération jusqu’à une date et heure](concepts-backup-restore.md) (PITR), en restaurant et récupérant les données jusqu’au moment où l’erreur s’est produite.<br> <br>  Si vous ne souhaitez restaurer qu’un sous-ensemble de bases de données ou de tables spécifiques plutôt que toutes les bases de données du serveur de base de données, vous pouvez restaurer celui-ci dans une nouvelle instance, exporter les tables via l’utilitaire [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), puis vous servir de l’utilitaire [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) pour restaurer ces tables dans votre base de données. | Ces erreurs d’utilisateur ne sont pas protégées par la haute disponibilité en raison du fait que toutes les opérations des utilisateurs sont également répliquées sur le serveur de secours. |
 | **Défaillance de zone de disponibilité** | Bien qu’il s’agisse d’un événement rare, si vous souhaitez procéder à une récupération après une défaillance au niveau d’une zone, vous pouvez lancer la récupération à un instant dans le passé à l’aide de la sauvegarde et tout en choisissant un point de restauration personnalisé pour accéder aux données les plus récentes. Un nouveau serveur flexible sera déployé dans une autre zone. Le temps que prend la restauration dépend de la sauvegarde précédente et du nombre des journaux des transactions à récupérer. | Le serveur flexible effectue le basculement automatique vers le site de secours. Pour plus d’informations, consultez la page [Concepts de haute disponibilité](./concepts-high-availability.md). |
 | **Panne de région** | Bien qu’il s’agisse d’un événement rare, si vous souhaitez récupérer après une défaillance au niveau de la région, vous pouvez effectuer une récupération de base de données en créant un serveur à l’aide de la dernière sauvegarde géoredondante disponible dans le même abonnement pour accéder aux données les plus récentes. Un nouveau serveur flexible est déployé dans la région sélectionnée. Le temps que prend la restauration dépend de la sauvegarde précédente et du nombre des journaux des transactions à récupérer. | Bien qu’il s’agisse d’un événement rare, si vous souhaitez récupérer après une défaillance au niveau de la région, vous pouvez effectuer une récupération de base de données en créant un serveur à l’aide de la dernière sauvegarde géoredondante disponible dans le même abonnement pour accéder aux données les plus récentes. Le serveur flexible cible d’un serveur à haute disponibilité existant est déployé en tant que serveur sans haute disponibilité sur la région jumelée Azure. Le temps que prend la restauration dépend de la sauvegarde précédente et du nombre des journaux des transactions à récupérer. |
-
 
 > [!IMPORTANT]
 > Il n’est **pas** possible de restaurer des serveurs supprimés. Si vous supprimez le serveur, toutes les bases de données qui appartiennent au serveur sont également supprimées, sans pouvoir être restaurées. Utilisez le [verrouillage des ressources Azure](../../azure-resource-manager/management/lock-resources.md) pour éviter la suppression accidentelle de votre serveur.

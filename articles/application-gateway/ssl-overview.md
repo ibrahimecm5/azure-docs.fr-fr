@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: 8a757b1825cb1c1e2f471a965077ea5801000dc4
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: be89c299d5b45f54a5d147bf3841384526f54360
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761441"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556670"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Présentation de la terminaison TLS et du chiffrement TLS de bout en bout avec Application Gateway
 
@@ -27,7 +27,7 @@ Application Gateway prend en charge l’arrêt TLS au niveau de la passerelle, 
 - **Routage intelligent** – En déchiffrant le trafic, la passerelle d’application a accès au contenu de la requête, comme les en-têtes, l’URI, etc. et peut utiliser ces données pour acheminer les requêtes.
 - **Gestion des certificats** - Il suffit d’acheter et d’installer les certificats sur la passerelle d’application et non sur tous les serveurs principaux. Cela permet d’économiser du temps et de l’argent.
 
-Pour configurer l’arrêt TLS, un certificat TLS/SSL doit être ajouté à l’écouteur pour permettre à la passerelle d’application de dériver une clé symétrique conformément aux spécifications du protocole TLS/SSL. La clé symétrique est ensuite utilisée pour chiffrer et déchiffrer le trafic envoyé à la passerelle. Le certificat TLS/SSL doit être partagé au format Personal Information Exchange (PFX). Ce format de fichier permet d’exporter la clé privée requise par la passerelle d’application pour effectuer le chiffrement et le déchiffrement du trafic.
+Pour configurer une terminaison TLS, un certificat TLS/SSL doit être ajouté à l’écouteur. Cela permet à l’Application Gateway de déchiffrer le trafic entrant et de chiffrer le trafic de réponse au client. Le certificat fourni à l’Application Gateway doit être au format PFX (Personal Information Exchange) qui contient les clés privées et publiques.
 
 > [!IMPORTANT] 
 > Le certificat sur l’écouteur exige le chargement de la totalité de la chaîne de certificats (le certificat racine de l’autorité de certification, les intermédiaires et le certificat feuille) pour établir la chaîne d’approbation. 
@@ -150,6 +150,7 @@ Scénario | v1 | v2 |
 | --- | --- | --- |
 | En-tête SNI (nom_serveur) durant la poignée de main TLS en tant que nom de domaine complet (FQDN) | Défini comme nom de domaine complet (FQDN) à partir du pool principal. En vertu de la norme [RFC 6066](https://tools.ietf.org/html/rfc6066), la présence d’adresses IPv4 et IPv6 littérales n’est pas autorisée dans un nom d’hôte SNI. <br> **Remarque :** Le nom de domaine complet (FQDN) dans le pool principal doit être résolu par DNS en adresse IP (publique ou privée) du serveur principal. | L’en-tête SNI (nom_serveur) est défini en tant que nom d’hôte à partir des paramètres HTTP. Autrement, si *option PickHostnameFromBackendAddress* est sélectionnée ou si aucun nom d’hôte n’est mentionné, il est défini comme nom de domaine complet (FQDN) dans la configuration du pool principal.
 | Si l’adresse du pool principal est une adresse IP ou si aucun nom d’hôte n’est défini dans les paramètres HTTP | L’en-tête SNI n’est pas défini conformément à la norme [RFC 6066](https://tools.ietf.org/html/rfc6066) si l’entrée du pool principal n’est pas un nom de domaine complet (FQDN). | L’en-tête SNI est défini en tant que nom d’hôte à partir du nom de domaine complet (FQDN) d’entrée du client, et le nom commun du certificat principal doit correspondre à ce nom d’hôte.
+| Le nom d’hôte n’est pas fourni dans les Paramètres HTTP, mais un nom de domaine complet (FQDN) est spécifié en tant que Cible d’un membre du pool principal | L’en-tête SNI est défini en tant que nom d’hôte à partir du nom de domaine complet (FQDN) d’entrée du client, et le nom commun du certificat principal doit correspondre à ce nom d’hôte. | L’en-tête SNI est défini en tant que nom d’hôte à partir du nom de domaine complet (FQDN) d’entrée du client, et le nom commun du certificat principal doit correspondre à ce nom d’hôte.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

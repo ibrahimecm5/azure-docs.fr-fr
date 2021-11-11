@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 10/11/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8f9a02149cb7229a201f8dfb9c11381b19d8e8ec
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9dddb8118cc0bd328e19d73f05d2dd0eb01ebd4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023326"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452753"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Rechercher votre connecteur de données Azure Sentinel
 
@@ -653,14 +653,9 @@ Configurez eNcore pour diffuser en continu des données via TCP vers l’agent L
 
 
 
-## <a name="domain-name-server"></a>Serveur de noms de domaine
+## <a name="dns-preview"></a>DNS (préversion)
 
-| Attribut du connecteur | Description |
-| --- | --- |
-| **Méthode d’ingestion des données** | **Intégration de service à service Azure: <br>[connexions basées sur l’agent Log Analytics](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
-| **Table(s) Log Analytics** | DnsEvents<br>DnsInventory |
-| **Pris en charge par** | Microsoft |
-| | |
+**Consultez [Serveur DNS Windows (préversion)](#windows-dns-server-preview).**
 
 ## <a name="dynamics-365"></a>Dynamics 365
 
@@ -1396,14 +1391,17 @@ Si une durée de délai d’expiration plus longue est requise, envisagez une mi
 
 | Attribut du connecteur | Description |
 | --- | --- |
-| **Méthode d’ingestion des données** | **Intégration de service à service Azure : <br>[Se connecter aux serveurs Windows pour collecter des événements de sécurité](connect-windows-security-events.md)** (Article du premier connecteur) |
+| **Méthode d’ingestion des données** | **Intégration de service à service Azure: <br>[connexions basées sur l’agent Log Analytics](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Table(s) Log Analytics** | SecurityEvents |
 | **Pris en charge par** | Microsoft |
 | | |
 
+
 Pour plus d’informations, consultez [Configuration du classeur de protocoles non sécurisés](./get-visibility.md#use-built-in-workbooks).
 
 Voir aussi : [**Événements de sécurité Windows via agent Azure Monitor**](#windows-security-events-via-ama) connecteur basé sur l’agent Azure Monitor (AMA)
+
+[Configurez le **connecteur Événements de sécurité / Événements de sécurité Windows** pour la **détection de connexion RDP anormale**](#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection).
 
 ## <a name="sentinelone-preview"></a>SentinelOne (préversion)
 
@@ -1631,25 +1629,75 @@ Suivez les instructions pour obtenir les informations d'identification.
 | | |
 
 
+## <a name="windows-dns-server-preview"></a>Serveur DNS Windows (préversion)
+
+| Attribut du connecteur | Description |
+| --- | --- |
+| **Méthode d’ingestion des données** | **Intégration de service à service Azure: <br>[connexions basées sur l’agent Log Analytics](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
+| **Table(s) Log Analytics** | DnsEvents<br>DnsInventory |
+| **Pris en charge par** | Microsoft |
+| | |
+
+## <a name="windows-forwarded-events-preview"></a>Événements transférés par Windows (préversion)
+
+| Attribut du connecteur | Description |
+| --- | --- |
+| **Méthode d’ingestion des données** | **Intégration de service à service Azure : <br>[connexions basées sur l’agent Azure Monitor](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)**<br><br>[instructions supplémentaires pour le déploiement du connecteur Événements transférés par Windows](#additional-instructions-for-deploying-the-windows-forwarded-events-connector) |
+| **Composants requis** | La Collection d’événements Windows (WEC) doit être activée et en cours d’exécution.<br>Installez l’agent Azure Monitor sur la machine WEC. |
+| **Préfixe des requêtes xPath** | « ForwardedEvents!* » |
+| **Table(s) Log Analytics** | WindowsEvents |
+| **Pris en charge par** | Microsoft |
+| | |
+
+### <a name="additional-instructions-for-deploying-the-windows-forwarded-events-connector"></a>Instructions supplémentaires pour le déploiement du connecteur Événements transférés par Windows
+
+Nous vous recommandons d’installer les analyseurs [ASIM (Azure Sentinel Information Model)](normalization.md) pour garantir une prise en charge complète de la normalisation des données. Vous pouvez déployer ces analyseurs à partir du [Référentiel GitHub Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers/ASim%20WindowsEvent) à l’aide du bouton **Déployer sur Azure**.
+
 ## <a name="windows-firewall"></a>Pare-feu Windows
 
 | Attribut du connecteur | Description |
 | --- | --- |
-| **Méthode d’ingestion des données** | **Intégration de service à service Azure: <br>[connexions basées sur l’agent Log Analytics](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
+| **Méthode d’ingestion des données** | **Intégration de service à service Azure: <br>[connexions basées sur l’agent Log Analytics](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Table(s) Log Analytics** | WindowsFirewall |
 | **Pris en charge par** | Microsoft |
 | | |
 
-## <a name="windows-security-events-via-ama"></a>Événements de sécurité Windows via agent Azure Monitor
+## <a name="windows-security-events-via-ama"></a>Événements de sécurité Windows via AMA
 
 | Attribut du connecteur | Description |
 | --- | --- |
-| **Méthode d’ingestion des données** | **Intégration de service à service Azure : <br>[Se connecter aux serveurs Windows pour collecter des événements de sécurité](connect-windows-security-events.md?tabs=AMA)** (Article du premier connecteur) |
+| **Méthode d’ingestion des données** | **Intégration de service à service Azure : <br>[connexions basées sur l’agent Azure Monitor](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)** |
+| **Préfixe des requêtes xPath** | « Sécurité* » |
 | **Table(s) Log Analytics** | SecurityEvents |
 | **Pris en charge par** | Microsoft |
 | | |
 
+
 Voir aussi : connecteur [**Événements de sécurité via l’ancien agent**](#security-events-via-legacy-agent-windows).
+
+### <a name="configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection"></a>Configurer le connecteur d’événements de sécurité / d’événements de sécurité Windows pour la détection de connexion RDP anormale
+
+> [!IMPORTANT]
+> La détection de connexion Remote Desktop Protocol (RDP) anormale est actuellement en préversion publique.
+> Cette fonctionnalité est fournie sans contrat de niveau de service et est déconseillée pour les charges de travail de production.
+> Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Sentinel peut appliquer du Machine Learning (ML) aux données Événements de sécurité pour identifier une activité de connexion RDP anormale. Il s’agit entre autres des scénarios suivants :
+
+- **IP inhabituelle** : l’adresse IP a rarement ou n’a jamais été observée au cours des 30 derniers jours
+
+- **Emplacement géographique inhabituel** : l’adresse IP, la ville, le pays et l’ASN ont rarement ou n’ont jamais été observés au cours des 30 derniers jours
+
+- **Nouvel utilisateur** : un nouvel utilisateur se connecte à partir d’une adresse IP et d’un emplacement géographique, dont les deux ou l’un des deux n’étaient pas censés être vus sur la base des données des 30 jours précédents.
+
+**Instructions de configuration**
+
+1. Vous devez collecter les données de connexion RDP (ID d’événement 4624) par le biais du connecteur de données des **événements de sécurité** ou des **événements de sécurité Windows**. Assurez-vous que vous avez sélectionné un [jeu d’événements](windows-security-event-id-reference.md) en plus de « Aucun », ou que vous avez créé une règle de collecte de données qui comprend cet ID d’événement, afin de transmettre en continu dans Azure Sentinel.
+
+1. Dans le portail Azure Sentinel, cliquez sur **Analytics**, puis sur l’onglet **Modèles de règles**. Choisissez la règle **Détection de connexion RDP anormale (préversion)** et déplacez le curseur **État** sur **Activé**.
+
+    > [!NOTE]
+    > Comme l’algorithme de Machine Learning nécessite 30 jours de données pour établir un profil de base du comportement de l’utilisateur, vous devez autoriser la collecte de 30 jours de données d’événements de sécurité Windows avant que tout incident puisse être détecté.
 
 ## <a name="workplace-from-facebook-preview"></a>Workplace from Facebook (pré)
 

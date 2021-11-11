@@ -3,18 +3,17 @@ title: Gérer et rechercher des données blob Azure dans l’index d’objet blo
 description: Découvrez comment utiliser des balises d’index de blobs pour catégoriser, gérer et interroger afin de découvrir des objets blob.
 author: normesta
 ms.author: normesta
-ms.date: 08/25/2021
+ms.date: 11/01/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: fa2284e03c8d69bacb40a2fe99d3c3cb10a73828
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: dfa77490b95f67e7c75e658211602fe5a27c1c57
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154638"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441416"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>Gérer et rechercher des données blob Azure dans l’index d’objet blob
 
@@ -263,21 +262,32 @@ Des autorisations supplémentaires, distinctes des données blob sous-jacentes, 
 
 Les appelants utilisant une [signature d’accès partagé (SAP)](../common/storage-sas-overview.md) peuvent se voir accorder des autorisations délimitées pour effectuer des opérations sur les balises d’index de blob.
 
-#### <a name="blob-sas"></a>Signature d’accès partagé d’objet blob
+#### <a name="service-sas-for-a-blob"></a>Créer une SAP pour un objet blob
 
-Les autorisations suivantes peuvent être accordées dans une SAP de blob pour permettre l’accès aux balises d’index de blob. Les autorisations de lecture et d’écriture de blob seules ne sont pas suffisantes pour permettre la lecture ou l’écriture de ses balises d’index.
+Les autorisations suivantes peuvent être accordées dans une signature d’accès partagé de service pour un objet blob afin de permettre l’accès aux étiquettes d’index d’objet blob. Les autorisations de lecture (`r`) et d’écriture (`w`) de blob seules ne sont pas suffisantes pour permettre la lecture ou l’écriture de ses balises d’index.
 
 | Autorisation | Symbole d'URI | Opérations autorisées                |
 |------------|------------|-----------------------------------|
 | Étiquettes d’index |     t      | Obtenir et définir des balises d’index pour un blob |
 
-#### <a name="container-sas"></a>SAP de conteneur
+#### <a name="service-sas-for-a-container"></a>SAP de service pour un conteneur
 
-Les autorisations suivantes peuvent être accordées dans une SAP de conteneur pour permettre le filtrage sur les balises de blob. L’autorisation `Blob List` n’est pas suffisante pour permettre le filtrage des blobs par leurs balises d’index.
+Les autorisations suivantes peuvent être accordées dans une signature d’accès partagé de service pour un conteneur afin de permettre le filtrage sur les étiquettes d’objet blob. L’autorisation de liste d’objets blob (`i`) n’est pas suffisante pour permettre le filtrage des objets blob par leurs étiquettes d’index.
 
 | Autorisation | Symbole d'URI | Opérations autorisées         |
 |------------|------------|----------------------------|
 | Étiquettes d’index |     f      | Rechercher des blobs avec des balises d’index |
+
+#### <a name="account-sas"></a>SAP de compte
+
+Les autorisations suivantes peuvent être accordées dans une signature d’accès partagé de compte pour autoriser l’accès aux étiquettes d’index d’objet blob et au filtrage sur les étiquettes blob. 
+
+| Autorisation | Symbole d'URI | Opérations autorisées                |
+|------------|------------|-----------------------------------|
+| Étiquettes d’index |     t      | Obtenir et définir des balises d’index pour un blob |
+| Étiquettes d’index |     f      | Rechercher des blobs avec des balises d’index |
+
+Les autorisations de lecture (`r`) et d’écriture (`w`) de blob seules ne sont pas suffisantes pour autoriser la lecture ou l’écriture de ses étiquettes d’index, et l’autorisation de liste (`i`) ne suffit pas pour permettre le filtrage des objets blob par leurs étiquettes d’index.
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>Choisir entre les métadonnées et les étiquettes d’index d’objet blob
 

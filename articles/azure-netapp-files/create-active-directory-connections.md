@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/09/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: ba34d9d1d85ae5845247133289001ffe58174213
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: e05850686fca42a8d21bc477e39171ff792db307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407643"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473829"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Créer et gérer des connexions Active Directory pour Azure NetApp Files
 
@@ -92,6 +92,17 @@ Plusieurs fonctionnalités d’Azure NetApp Files requièrent une connexion Acti
     La seule configuration de [Liaison de canal LDAP](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) n’a aucun effet sur le service Azure NetApp Files. Toutefois, si vous utilisez à la fois la liaison de canal LDAP et le LDAP sécurisé (par exemple, LDAPS ou `start_tls`), la création du volume SMB échouera.
 
 * Pour les DNS non intégrés avec Active Directory, vous devez ajouter un enregistrement DNS A/PTR pour permettre à Azure NetApp Files de fonctionner à l’aide d’un « nom convivial ». 
+
+* Le tableau suivant décrit les paramètres de durée de vie (TTL) du cache LDAP. Vous devez attendre que le cache soit actualisé avant d’essayer d’accéder à un fichier ou à un répertoire par le biais d’un client. Dans le cas contraire, un message d’accès refusé s’affiche sur le client. 
+
+    |     État d’erreur    |     Résolution    |
+    |-|-|
+    | Cache |  Délai d’expiration par défaut |
+    | Liste d’appartenance au groupe  | 24-hour TTL  |
+    | Groupes Unix  | TTL de 24 heures, TTL négative de 1 minute  |
+    | Utilisateurs Unix  | TTL de 24 heures, TTL négative de 1 minute  |
+
+    Les caches ont un délai d’expiration spécifique appelé *durée de vie*. Après le délai d’expiration, les entrées vieillissent, de sorte que les entrées obsolètes ne persistent pas. La valeur de *TTL négative* correspond au moment où une recherche ayant échoué réside pour éviter des problèmes de performances dus à des requêtes LDAP portant sur des objets qui n’existent peut-être pas.   
 
 ## <a name="decide-which-domain-services-to-use"></a>Déterminer quels services de domaine utiliser 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 764f6585aab43ba1f6db29a234cc2bc554b78c58
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d290549baf39f11c495c1f028a6eea2aba75d701
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236672"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576660"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Utiliser un équilibreur de charge Standard public dans Azure Kubernetes Service (AKS)
 
@@ -296,6 +296,8 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+Cet exemple met à jour la règle pour autoriser le trafic externe entrant uniquement à partir de la plage `MY_EXTERNAL_IP_RANGE`. Si vous remplacez `MY_EXTERNAL_IP_RANGE` par l’adresse IP du sous-réseau interne, le trafic est limité à des adresses IP internes du cluster. Si le trafic est limité à des adresses IP internes du cluster, les clients en dehors de votre cluster Kubernetes ne peuvent pas accéder à l’équilibreur de charge.
+
 > [!NOTE]
 > Le trafic entrant et externe passe de l’équilibreur de charge au réseau virtuel pour votre cluster AKS. Le réseau virtuel dispose d’un groupe de sécurité réseau (NSG) qui autorise tout le trafic entrant provenant de l’équilibreur de charge. Ce groupe de sécurité réseau utilise une [balise de service][service-tags] de type *LoadBalancer* pour autoriser le trafic provenant de l’équilibreur de charge.
 
@@ -330,7 +332,7 @@ Voici une liste des annotations prises en charge pour les services Kubernetes av
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Nom du groupe de ressources            | Spécifiez le groupe de ressources des adresses IP publiques de l’équilibreur de charge ne figurant pas dans le même groupe de ressources que l’infrastructure de cluster (groupe de ressources de nœud).
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | Liste des balises de service autorisées          | Spécifiez une liste de [balises de service][service-tags] autorisées et séparées par une virgule.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Le délai d'expiration TCP en minutes          | Spécifiez la valeur en minutes, des délais d’expiration de la connexion TCP sur l’équilibreur de charge. La valeur par défaut et minimale est 4. La valeur maximale est 30. Doit être un entier.
-|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Désactiver `enableTcpReset` pour SLB
+|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Désactivez `enableTcpReset` pour SLB. Déconseillé dans Kubernetes 1.18 et supprimé dans 1.20. 
 
 
 ## <a name="troubleshooting-snat"></a>Résolution des problèmes SNAT
@@ -355,9 +357,6 @@ Tirez toujours parti de la réutilisation des connexions et du regroupement de c
 Utilisez des pools de connexions pour déterminer votre volume de connexions.
 - N’abandonnez jamais un flux TCP en mode silencieux et ne vous fiez pas aux minuteries TCP pour nettoyer un flux. Si vous ne laissez pas le protocole TCP fermer explicitement la connexion, l’état reste alloué aux systèmes intermédiaires et aux points de terminaison, et les ports SNAT ne sont alors pas disponibles pour les autres connexions. Ce modèle peut déclencher des échecs d’application et l’épuisement des ports SNAT.
 - Ne changez pas les valeurs de minuteur lié à la fermeture TCP au niveau du système d’exploitation sans en connaître précisément l’impact. Même si la pile TCP est récupérée, les performances de votre application risquent d’être affectées si les points de terminaison d’une connexion ont des attentes incompatibles. Quand vous voulez changer les minuteurs, c’est généralement qu’il y a un problème de conception sous-jacent. Tenez compte des recommandations suivantes.
-
-
-L’exemple ci-dessus met à jour la règle de manière à autoriser uniquement le trafic externe entrant provenant de la plage *MY_EXTERNAL_IP_RANGE*. Si vous remplacez *MY_EXTERNAL_IP_RANGE* par l’adresse IP du sous-réseau interne, le trafic se limite aux adresses IP internes du cluster uniquement. Cela empêche les clients situés en dehors de votre cluster Kubernetes d’accéder à l’équilibreur de charge.
 
 ## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Passage d’un équilibreur de charge avec une référence SKU de base à une référence SKU standard
 

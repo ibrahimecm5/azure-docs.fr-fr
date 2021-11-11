@@ -2,14 +2,14 @@
 title: Configurer des environnements de développement et de déploiement Bicep
 description: Comment configurer les environnements de développement et de déploiement de Bicep
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/20/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: db0fe243dea09a431adc47f064d87c5e9a2ee7a8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 7f590c0d0954ca4e3ccc3f4d894f55892b01a6ae
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363645"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443506"
 ---
 # <a name="install-bicep-tools"></a>Installer les outils Bicep
 
@@ -31,6 +31,45 @@ Pour créer des fichiers Bicep, vous avez besoin d’un bon éditeur Bicep. No
 Pour vérifier que vous avez installé l’extension, ouvrez n’importe quel fichier ayant l’extension `.bicep`. Le mode de langage indiqué en bas à droite doit passer à **Bicep**.
 
 :::image type="content" source="./media/install/language-mode.png" alt-text="Mode de langage Bicep":::
+
+### <a name="troubleshoot"></a>Résoudre les problèmes
+
+Lors de l’installation de l’extension Bicep pour Visual Studio Code, vous pouvez rencontrer les messages d’erreur suivants :
+
+```error
+Failed to install .NET runtime v5.0
+```
+
+```error
+Failed to download .NET 5.0.x ....... Error!
+```
+
+Pour résoudre le problème, vous pouvez installer manuellement .NET à partir du [site web .NET](https://aka.ms/dotnet-core-download), puis configurer Visual Studio Code pour réutiliser une installation existante de .NET avec les paramètres suivants :
+
+**Windows**
+
+```json
+"dotnetAcquisitionExtension.existingDotnetPath": [
+  {
+    "extensionId": "ms-azuretools.vscode-bicep",
+    "path": "C:\\Program Files\\dotnet\\dotnet.exe"
+  }
+]
+
+```
+
+**macOS**
+
+```json
+"dotnetAcquisitionExtension.existingDotnetPath": [
+  {
+    "extensionId": "ms-azuretools.vscode-bicep",
+    "path": "/usr/local/share/dotnet/dotnet"
+  }
+]
+```
+
+Consultez [Paramètres de l’utilisateur et de l’espace de travail](https://code.visualstudio.com/docs/getstarted/settings) pour configurer les paramètres de Visual Studio Code.
 
 ## <a name="deployment-environment"></a>Environnement de déploiement
 
@@ -121,7 +160,7 @@ bicep --help
 
 ### <a name="macos"></a>macOS
 
-#### <a name="via-homebrew"></a>via homebrew
+#### <a name="via-homebrew"></a>Via Homebrew
 
 ```sh
 # Add the tap for bicep
@@ -131,7 +170,7 @@ brew tap azure/bicep
 brew install bicep
 ```
 
-#### <a name="via-bash"></a>Avec BASH
+#### <a name="via-bash"></a>Via BASH
 
 ```sh
 # Fetch the latest Bicep CLI binary

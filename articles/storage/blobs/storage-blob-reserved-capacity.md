@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 14f8cc665ef1d7335116a2e5b68ea3f58424063a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 9d7740a1b5840674720bfc8e180b54334256e488
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274441"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441435"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimiser les coûts de stockage d’objets blob avec une capacité réservée
 
@@ -114,7 +114,7 @@ Il n’y a pas de limite au nombre d’échanges que vous pouvez faire. De plus,
 
 ### <a name="refund-a-reservation"></a>Rembourser une réservation
 
-Vous pouvez annuler une réservation de stockage Azure à tout moment. Lorsque vous annulez, vous recevrez un remboursement calculé au prorata en fonction de la durée restante de la réservation, moins des frais de résiliation anticipé de 12 %. Le remboursement maximal par année est de 50 000 $.
+Vous pouvez annuler une réservation de stockage Azure à tout moment. Lorsque vous annulez, vous recevrez un remboursement calculé au prorata en fonction de la durée restante de la réservation. Le remboursement maximal par année est de 50 000 $.
 
 L’annulation d’une réservation met immédiatement fin à la réservation et retourne les mois restants à Microsoft. Le solde restant calculé au prorata, moins les frais, est crédité sur votre moyen de paiement d’origine.
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 4b27e60776c459ed74bcf33c79a819f90722a0d0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 777ee0bcbf139c9edc9e4715133faec3318f692b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238998"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434500"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -31,22 +31,16 @@ Translator v3 fournit une API web moderne basée sur JSON. Elle simplifie l’ut
 
 ## <a name="base-urls"></a>URL de base
 
-Microsoft Translator est desservi par des centres de données situés dans plusieurs emplacements. Ils sont actuellement présents dans 10 [zones géographiques Azure](https://azure.microsoft.com/global-infrastructure/regions) :
+Les requêtes adressées à Translator sont dans la plupart des cas gérées par le centre de données le plus proche de l’emplacement d’origine de la requête. En cas de défaillance du centre de production lors de l’utilisation du point de terminaison global, la requête peut être acheminée en dehors de la zone géographique.
 
-* **Amérique :** USA Est, USA Centre Sud, USA Centre-Ouest, USA Ouest 2
-* **Asie-Pacifique :** Corée Sud, Japon Est, Asie Sud-Est et Australie Est
-* **Europe :** Europe Ouest et Europe Nord
+Pour forcer le traitement de la requête dans une zone géographique spécifique, utilisez le point de terminaison géographique souhaité. Toutes les requêtes sont traitées dans les centres de données de la zone géographique. 
 
-Les requêtes adressées à Microsoft Translator sont dans la plupart des cas gérées par le centre de données le plus proche de l’emplacement d’origine de la requête. En cas de défaillance d’un centre de données, la requête peut être routée à l’extérieur de la zone géographique.
-
-Pour forcer la gestion de la requête par une zone géographique spécifique, remplacez le point de terminaison Global dans la requête d’API par le point de terminaison géographique souhaité :
-
-|Geography|URL de base (point de terminaison géographique)|
-|:--|:--|
-|Global (région non précisée)|    api.cognitive.microsofttranslator.com|
-|États-Unis|    api-nam.cognitive.microsofttranslator.com|
-|Europe|    api-eur.cognitive.microsofttranslator.com|
-|Asie-Pacifique|    api-apc.cognitive.microsofttranslator.com|
+|Geography|URL de base (point de terminaison géographique)|Centres de données|
+|:--|:--|:--|
+|Global (région non précisée)|    api.cognitive.microsofttranslator.com|Centre de données disponible le plus proche|
+|Asie-Pacifique|    api-apc.cognitive.microsofttranslator.com|Corée Sud, Japon Est, Asie Sud-Est et Australie Est|
+|Europe|    api-eur.cognitive.microsofttranslator.com|Europe Nord, Europe Ouest|
+|États-Unis|    api-nam.cognitive.microsofttranslator.com|USA Est, USA Centre Sud, USA Centre-Ouest, USA Ouest 2|
 
 <sup>1</sup> Les clients disposant d’une ressource située dans la région Suisse Nord ou Suisse Ouest peuvent s’assurer que leurs requêtes d’API de texte sont traitées en Suisse. Pour garantir que les requêtes sont gérées en Suisse, créez la ressource Translator dans la « Région de ressource » « Suisse Nord » ou « Suisse Ouest », puis utilisez le point de terminaison personnalisé de la ressource dans vos requêtes d’API. Par exemple : si vous créez une ressource Translator dans le portail Azure avec « Suisse Nord » comme « Région de ressource » et que le nom de votre ressource est « my-ch-n », votre point de terminaison personnalisé est « https://my-ch-n.cognitiveservices.azure.com ». Et voici un exemple de demande de traduction :
 ```curl

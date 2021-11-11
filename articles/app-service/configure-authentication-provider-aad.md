@@ -3,14 +3,14 @@ title: Configurer l’authentification Azure AD
 description: Découvrez comment configurer l’authentification Azure Active Directory pour en faire le fournisseur d’identité de votre application App Service ou Azure Functions.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 10/26/2021
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 039a32d1f1ec1327ee032c17af36dc910f363eed
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: cc5761afe295bd9ef71c86cf6ffdafb8c0e847ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045972"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435830"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Configurer votre application App Service ou Azure Functions pour utiliser une connexion Azure AD
 
@@ -68,7 +68,7 @@ Pour inscrire l’application, effectuez les étapes suivantes :
 1. Sous **URI de redirection**, sélectionnez **Web**, puis entrez `<app-url>/.auth/login/aad/callback`. Par exemple : `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Sélectionnez **Inscription**.
 1. Une fois l’inscription d’application créée, copiez l’**ID de l’application (client)** et l’**ID de l’annuaire (locataire)** pour plus tard.
-1. Sélectionnez **Authentification**. Sous **Octroi implicite**, activez **Jetons d’ID** pour autoriser les connexions utilisateur OpenID Connect à partir d’App Service.
+1. Sélectionnez **Authentification**. Sous **Octroi implicite et flux hybrides**, activez **Jetons d’ID** pour autoriser les connexions utilisateur OpenID Connect à partir d’App Service.  Sélectionnez **Enregistrer**.
 1. (Facultatif) Sélectionnez **Personnalisation**. Dans **URL de la page d’accueil**, entrez l’URL de votre application App Service, puis sélectionnez **Enregistrer**.
 1. Sélectionnez **Exposer une API** , puis cliquez sur **Définir** en regard de « URI d’ID d’application ». Cette valeur identifie de façon unique l’application lorsqu’elle est utilisée en tant que ressource, ce qui permet de demander des jetons qui accordent l’accès. Il est utilisé comme préfixe pour les étendues que vous créez.
 
@@ -77,10 +77,11 @@ Pour inscrire l’application, effectuez les étapes suivantes :
     Une fois que vous avez entré la valeur, cliquez sur **Enregistrer**.
 
 1. sélectionner **Ajouter une étendue**.
+   1. Dans **Ajouter une étendue**, l’**URI d’ID d’application** est la valeur que vous avez définie à l’étape précédente.  Sélectionnez **Enregistrer et continuer**.
    1. Dans **Nom de l’étendue**, entrez *user_impersonation*.
    1. Dans les zones de texte, entrez le nom et la description de l’étendue de consentement que vous voulez que les utilisateurs voient dans la page de consentement. Par exemple, entrez *Accéder à &lt;nom-application&gt;* .
    1. Sélectionnez **Ajouter une étendue**.
-1. (Facultatif) Pour créer une clé secrète client, sélectionnez **Certificats et secrets** > **Nouvelle clé secrète client** > **Ajouter**. Copiez la valeur de la clé secrète client qui s'affiche sur la page. Elle ne s’affichera plus.
+1. (Facultatif) Pour créer une clé secrète client, sélectionnez **Certificats et secrets** > **Clés secrètes client** > **Nouvelle clé secrète client**.  Entrez une description et une expiration, puis sélectionnez **Ajouter**. Copiez la valeur de la clé secrète client qui s'affiche sur la page. Elle ne s’affichera plus.
 1. (Facultatif) Pour ajouter plusieurs **URL de réponse**, sélectionnez **Authentification**.
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Activez Azure Active Directory dans votre Azure App Service
@@ -93,7 +94,7 @@ Pour inscrire l’application, effectuez les étapes suivantes :
     |Champ|Description|
     |-|-|
     |ID d’application (client)| Utilisez l'**ID d’application (client)** de l’inscription de l’application. |
-    |Clé secrète client (facultative)| Utilisez la clé secrète client que vous avez générée lors de l’inscription de l’application. Avec une clé secrète client, le flux hybride est utilisé et App Service retourne les jetons d’accès et d’actualisation. Lorsque la clé secrète client n’est pas définie, le flux implicite est utilisé et seul un jeton d’ID est retourné. Ces jetons sont envoyés par le fournisseur et stockés dans le magasin de jetons EasyAuth.|
+    |Clé secrète client| Utilisez la clé secrète client que vous avez générée lors de l’inscription de l’application. Avec une clé secrète client, le flux hybride est utilisé et App Service retourne les jetons d’accès et d’actualisation. Lorsque la clé secrète client n’est pas définie, le flux implicite est utilisé et seul un jeton d’ID est retourné. Ces jetons sont envoyés par le fournisseur et stockés dans le magasin de jetons EasyAuth.|
     |URL de l’émetteur| Utilisez `<authentication-endpoint>/<tenant-id>/v2.0`, puis remplacez *\<authentication-endpoint>* par le [point de terminaison d’authentification de votre environnement cloud](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (par exemple, « https://login.microsoftonline.com  » pour Azure global), puis *\<tenant-id>* par l’**ID du répertoire (locataire)** dans lequel l’inscription de l’application a été créée. Cette valeur sert à rediriger les utilisateurs vers le bon locataire Azure AD, mais aussi à télécharger les métadonnées appropriées pour déterminer les clés de signature de jetons et la valeur de revendication de l’émetteur de jeton qui conviennent, par exemple. Pour les applications qui utilisent Azure AD v1 et pour les applications Azure Functions, omettez `/v2.0` dans l’URL.|
     |Audiences de jeton autorisées| S’il s’agit d’une application cloud ou serveur et que vous souhaitez autoriser les jetons d’authentification d’une application web, ajoutez l’**URI d’ID d’application** de l’application web ici. **L’ID client** configuré est *toujours* implicitement considéré comme une audience autorisée.|
 

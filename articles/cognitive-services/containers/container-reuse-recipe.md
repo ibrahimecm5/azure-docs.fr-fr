@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: 2226e4e7c5df60a4a601408da04a1f2e67c4dc4f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e11de4634d7488f75649535b56bd5129d7c1d65a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067773"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473392"
 ---
 # <a name="create-containers-for-reuse"></a>Créer des conteneurs à réutiliser
 
@@ -55,7 +55,7 @@ Cet exemple :
 
 ### <a name="reuse-recipe-store-billing-settings-with-container"></a>Recette réutilisable : stocker les paramètres de facturation avec le conteneur
 
-Cet exemple montre comment créer un conteneur de sentiments Analyse de texte à partir d’un Dockerfile.
+Cet exemple montre comment créer un conteneur de sentiments dans le Service de langage à partir d’un Dockerfile.
 
 ```Dockerfile
 FROM mcr.microsoft.com/azure-cognitive-services/sentiment:latest

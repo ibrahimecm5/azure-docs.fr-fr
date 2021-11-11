@@ -2,13 +2,13 @@
 title: Fonctions de modèle – Chaîne
 description: Décrit les fonctions à utiliser dans un modèle Azure Resource Manager (modèle ARM) pour travailler avec des chaînes.
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: bfb80a03012f5a1a9194789a82efd5cccd1eb18d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/29/2021
+ms.openlocfilehash: 44661751e3bd1f32a9b06ed6b7b6993716162cb1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806997"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455033"
 ---
 # <a name="string-functions-for-arm-templates"></a>Fonctions de chaîne pour les modèles Resource Manager
 
@@ -821,7 +821,7 @@ Retourne une sous-chaîne qui commence à la position de caractère spécifiée 
 |:--- |:--- |:--- |:--- |
 | chaîne_à_analyser |Oui |string |La chaîne d’origine de laquelle la sous-chaîne est extraite. |
 | index_début |Non |int |La position de caractère (commençant à zéro) de la sous-chaîne. |
-| length |Non |int |Le nombre de caractères de la sous-chaîne. Doit faire référence à un emplacement au sein de la chaîne. Doit être égal à zéro ou supérieur. |
+| length |Non |int |Le nombre de caractères de la sous-chaîne. Doit faire référence à un emplacement au sein de la chaîne. Doit être égal à zéro ou supérieur. En cas d’omission, le reste de la chaîne à partir de la position de début sera retourné.|
 
 ### <a name="return-value"></a>Valeur retournée
 

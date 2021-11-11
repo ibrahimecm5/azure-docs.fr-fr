@@ -3,12 +3,12 @@ title: Se connecter à une machine virtuelle dans Azure Lab Services | Microsoft
 description: Découvrez comment utiliser le Bureau à distance pour les machines virtuelles Linux dans un labo dans Azure Lab Services.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 6c8cd04f1ca3a070db73d2fc0eda4b6d4091f6ae
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 8cbb4b9366aa8de5827f010f0759fe4235cf1343
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179960"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263379"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Se connecter aux machines virtuelles Linux dans un labo de classe d’Azure Lab Services
 Cet article explique comment les étudiants peuvent se connecter à une machine virtuelle Linux d’un labo en utilisant :
@@ -45,7 +45,7 @@ L’instructeur peut choisir de configurer des machines virtuelles afin que les 
 >  Si vous devez utiliser [GNOME](https://www.gnome.org/) ou [MATE](https://mate-desktop.org/), coordonnez les efforts avec votre instructeur pour vous assurer que votre machine virtuelle de labo peut être correctement configurée.  Un conflit réseau connu peut se produire avec l’agent Linux Azure, celui-ci étant nécessaire au bon fonctionnement des machines virtuelles dans Azure Lab Services.  Nous vous recommandons d’utiliser à la place un autre environnement de bureau graphique, par exemple [XFCE](https://www.xfce.org/).
 
 ### <a name="connect-to-the-student-vm-using-microsoft-remote-desktop-rdp"></a>Se connecter à la machine virtuelle de l’étudiant à l’aide du bureau à distance Microsoft (RDP)
-Les étudiants peuvent utiliser le Bureau à distance Microsoft (RDP) pour se connecter à leurs machines virtuelles Linux une fois que leur instructeur a configuré leur labo avec RDP et des packages d’interface graphique utilisateur pour un environnement de bureau graphique Linux (par exemple, XFCE, MATE, etc.). Voici la procédure à suivre pour se connecter : 
+Les étudiants peuvent utiliser le Bureau à distance Microsoft (RDP) pour se connecter à leurs machines virtuelles Linux une fois que leur instructeur a configuré leur labo avec RDP et des packages d’interface graphique utilisateur pour un environnement de bureau graphique Linux, tel que XFCE. Voici la procédure à suivre pour se connecter : 
 
 1. Sur la mosaïque de votre machine virtuelle, assurez-vous que la machine virtuelle est en cours d’exécution, puis cliquez sur **Se connecter**. Deux options de connexion à la machine virtuelle vous sont proposées : **SSH** et **RDP**.
 
@@ -68,7 +68,7 @@ Si votre instructeur a configuré le bureau graphique GNOME avec le client RDP, 
     ![Modifier les paramètres Expérience de RDP](./media/how-to-enable-remote-desktop-linux/rdp-experience-settings.png)
 
 ### <a name="connect-to-the-student-vm-using-x2go"></a>Se connecter à la machine virtuelle de l’étudiant à l’aide de X2Go
-Les étudiants peuvent utiliser X2Go pour se connecter à leurs machines virtuelles Linux une fois que leur instructeur a configuré leur labo avec X2Go et des packages d’interface graphique utilisateur pour un environnement de bureau graphique Linux (par exemple, XFCE, MATE, etc.).
+Les étudiants peuvent utiliser X2Go pour se connecter à leurs machines virtuelles Linux une fois que leur instructeur a configuré leur labo avec X2Go et des packages d’interface graphique utilisateur pour un environnement de bureau graphique Linux, tel que XFCE.
 
 L’instructeur doit indiquer aux étudiants l’environnement de bureau graphique Linux qu’il a installé.  Ces informations sont nécessaires dans les étapes suivantes pour la connexion à l’aide du client X2Go.
 

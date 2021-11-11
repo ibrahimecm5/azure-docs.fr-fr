@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 08/23/2021
-ms.openlocfilehash: 95e95e3c6eaa3a2e1738dd3a9dea9afd5e56e008
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/21/2021
+ms.openlocfilehash: 384b1b11e272cab8386a5a4f3344c36e99959254
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131088119"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561931"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrer vers Azure Machine Learning 
 
@@ -53,7 +53,7 @@ Pour effectuer la migration vers Azure Machine Learning, nous vous recommandons 
 
     [!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
-3. Vérifiez que vos modules Studio (classique) essentiels sont pris en charge dans le concepteur d’Azure Machine Learning. Pour plus d’informations, consultez le tableau [Correspondance des modules de Studio (classique) et du concepteur](#studio-classic-and-designer-module-mapping) ci-dessous.
+3. Vérifiez que vos modules Studio (classique) essentiels sont pris en charge dans le concepteur d’Azure Machine Learning. Pour plus d’informations, consultez le tableau [Correspondance des composants de Studio (classique) et du concepteur](#studio-classic-and-designer-component-mapping) ci-dessous.
 
 4. [Créez un espace de travail Azure Machine Learning](how-to-manage-workspace.md?tabs=azure-portal).
 
@@ -90,16 +90,16 @@ Après avoir défini une stratégie, migrez votre premier modèle.
 1. Développez des scénarios et migrez des charges de travail supplémentaires vers Azure Machine Learning.
 
 
-## <a name="studio-classic-and-designer-module-mapping"></a>Correspondance des modules de Studio (classique) et du concepteur
+## <a name="studio-classic-and-designer-component-mapping"></a>Correspondance des composants de Studio (classique) et du concepteur
 
 Consultez le tableau suivant pour voir les modules à utiliser lors de la reconstruction d’expériences Studio (classique) dans le concepteur.
 
 
 > [!IMPORTANT]
-> Le concepteur implémente des modules par le biais de packages Python open source plutôt que de packages C# tels que Studio (classique). En raison de cette différence, la sortie des modules du concepteur peut varier légèrement de leurs équivalents dans Studio (classique).
+> Le concepteur implémente des modules par le biais de packages Python open source plutôt que de packages C# tels que Studio (classique). En raison de cette différence, la sortie des composants du concepteur peut varier légèrement de leurs équivalents dans Studio (classique).
 
 
-|Catégorie|Module Studio (classique)|Module du concepteur de remplacement|
+|Catégorie|Module Studio (classique)|Composant du concepteur de remplacement|
 |--------------|----------------|--------------------------------------|
 |Entrée et sortie de données|- Entrer des données manuellement </br> - Exporter des données </br> - Importer des données </br> - Charger un modèle formé </br> - Décompresser des jeux de données compressés|- Entrer des données manuellement </br> - Exporter des données </br> - Importer des données|
 |Conversion de formats de données|- Convertir au format CSV </br> - Convertir en jeu de données </br> - Convertir au format ARFF </br> - Convertir au format SVMLight </br> - Convertir au format TSV|- Convertir au format CSV </br> - Convertir en jeu de données|
@@ -125,9 +125,9 @@ Consultez le tableau suivant pour voir les modules à utiliser lors de la recons
 | Service Web | - Entrée </br> - Sortie | - Entrée </br>  Sortie|
 | Vision par ordinateur| | - Appliquer une transformation d’image </br> - Convertir en répertoire d’images </br> - Lancer une transformation d’image </br> - Fractionner un répertoire d’images  </br> - Classification d’images DenseNet   </br>- Classification d’images ResNet |
 
-Pour plus d’informations sur l’utilisation des différents modules du concepteur, consultez la [référence relative aux modules du concepteur](algorithm-module-reference/module-reference.md).
+Pour plus d’informations sur l’utilisation des différents composants du concepteur, consultez la [référence relative aux composants du concepteur](./component-reference/component-reference.md).
 
-### <a name="what-if-a-designer-module-is-missing"></a>Que se passe-t-il s’il manque un module du concepteur ?
+### <a name="what-if-a-designer-component-is-missing"></a>Que se passe-t-il si un composant de concepteur est manquant ?
 
 Le concepteur d’Azure Machine Learning contient les modules les plus populaires de Studio (classique). Il comprend également de nouveaux modules qui tirent parti des dernières techniques de Machine Learning. 
 

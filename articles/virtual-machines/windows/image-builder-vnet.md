@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb089d643953848e1441bc3b1d6707e7e5f9d6fa
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: df258f347fb615c3ee95932f0ed17c1a24b1955c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690673"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436989"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Utiliser Azure Image Builder pour les machines virtuelles Windows autorisant l’accès à un réseau virtuel Azure existant
 
@@ -231,7 +231,7 @@ La build de l’image dans cet exemple prend environ 50 minutes (plusieurs redé
 ```
 
 ### <a name="query-the-distribution-properties"></a>Interroger les propriétés de la distribution
-Si vous effectuez la distribution vers un emplacement de disque dur virtuel, si vous avez besoin de propriétés d’emplacement de l’image managée ou de l’état des réplications de Shared Image Gallery, vous devez interroger le « runOutput », chaque fois que vous avez une cible de distribution et vous disposerez d’un runOutput unique pour décrire les propriétés du type de distribution.
+Si vous effectuez la distribution vers un emplacement de disque dur virtuel, si vous avez besoin de propriétés d’emplacement de l’image managée ou de l’état des réplications de Azure Compute Gallery (anciennement Shared Image Gallery), vous devez interroger le « runOutput », chaque fois que vous avez une cible de distribution et vous disposerez d’un runOutput unique pour décrire les propriétés du type de distribution.
 
 ```powerShell
 $managementEp = $currentAzureContext.Environment.ResourceManagerUrl
@@ -281,4 +281,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En savoir plus sur les [galeries d’images partagées Azure](../shared-image-galleries.md).
+Apprenez-en davantage sur les [galeries de calcul Azure](../shared-image-galleries.md).

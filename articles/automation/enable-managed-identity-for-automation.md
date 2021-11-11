@@ -1,21 +1,21 @@
 ---
-title: À l’aide d’une identité managée affectée par le système pour votre compte Azure Automation (préversion)
+title: Utilisation d’une identité managée affectée par le système pour un compte Azure Automation
 description: Cet article explique comment configurer une identité managée pour les comptes Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb883fafd7c738ca99fe2282edb67d1849b9b1af
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 685126603c302a02d56aff51873cd34340947494
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858155"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470753"
 ---
-# <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>À l’aide d’une identité managée affectée par le système pour votre compte Azure Automation (préversion)
+# <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account"></a>Utilisation d’une identité managée affectée par le système pour un compte Azure Automation
 
-Cette rubrique vous montre comment activer une identité managée affectée par le système pour un compte Azure Automation et comment l’utiliser pour accéder à d’autres ressources. Pour plus d’informations sur le fonctionnement des identités managées avec Azure Automation, consultez [Identités managées](automation-security-overview.md#managed-identities-preview).
+Cette rubrique vous montre comment activer une identité managée affectée par le système pour un compte Azure Automation et comment l’utiliser pour accéder à d’autres ressources. Pour plus d’informations sur le fonctionnement des identités managées avec Azure Automation, consultez [Identités managées](automation-security-overview.md#managed-identities).
 
 Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) avant de commencer.
 
@@ -64,7 +64,7 @@ $automationAccount = "automationAccountName"
 ```
 
 > [!IMPORTANT]
-> La nouvelle identité au niveau du compte Automation remplacera toutes les identités attribuées par le système au niveau de la machine virtuelle précédentes, et décrites dans [Utiliser l’authentification du runbook avec les identités managées](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities). Si vous exécutez des tâches hybrides sur des machines virtuelles Azure qui utilisent l’identité affectée par le système d’une machine virtuelle pour accéder aux ressources du runbook, l’identité du compte Automation sera utilisée pour les tâches hybrides. Cela signifie que l’exécution de votre tâche existante peut être affectée si vous avez utilisé la fonctionnalité de clés gérées par le client (CMK) de votre compte Automation.<br/><br/>Si vous souhaitez continuer à utiliser l’identité managée de la machine virtuelle, vous ne devez pas activer l’identité au niveau du compte Automation. Si vous l’avez déjà activée, vous pouvez désactiver l’identité managée affectée par le système du compte Automation. Consultez [Désactiver votre identité managée de compte Azure Automation](./disable-managed-identity-for-automation.md).
+> La nouvelle identité au niveau du compte Automation remplace toutes les identités attribuées par le système au niveau de la machine virtuelle précédentes, et décrites dans [Utiliser l’authentification du runbook avec les identités managées](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities). Si vous exécutez des tâches hybrides sur des machines virtuelles Azure qui utilisent l’identité affectée par le système d’une machine virtuelle pour accéder aux ressources du runbook, l’identité du compte Automation sera utilisée pour les tâches hybrides. Cela signifie que l’exécution de votre tâche existante peut être affectée si vous avez utilisé la fonctionnalité de clés gérées par le client (CMK) de votre compte Automation.<br/><br/>Si vous souhaitez continuer à utiliser l’identité managée de la machine virtuelle, vous ne devez pas activer l’identité au niveau du compte Automation. Si vous l’avez déjà activée, vous pouvez désactiver l’identité managée affectée par le système du compte Automation. Consultez [Désactiver votre identité managée de compte Azure Automation](./disable-managed-identity-for-automation.md).
 
 ### <a name="enable-using-the-azure-portal"></a>Activer à l’aide du portail Azure
 
@@ -101,13 +101,13 @@ Le résultat doit être semblable à ce qui suit :
 
 :::image type="content" source="media/enable-managed-identity-for-automation/set-azautomationaccount-output.png" alt-text="Sortie de la commande Set-azautomationaccount.":::
 
-Pour obtenir une sortie supplémentaire, exécutez : `$output.identity | ConvertTo-Json`.
+Pour obtenir une sortie supplémentaire, modifiez l’exemple pour spécifier : `$output.identity | ConvertTo-Json`.
 
 ### <a name="enable-using-a-rest-api"></a>Activer à l’aide d’une API REST
 
 Vous trouverez ci-dessous une syntaxe et des exemples d’étapes.
 
-#### <a name="syntax"></a>Syntax
+#### <a name="syntax"></a>Syntaxe
 
 La syntaxe du corps ci-dessous active une identité managée affectée par le système à un compte Automation existant à l’aide de la méthode HTTP **PATCH**. Toutefois, cette syntaxe supprimera toutes les identités managées affectées par l’utilisateur existantes associées au compte Automation.
 
@@ -257,9 +257,9 @@ Un compte Automation peut utiliser son identité managée affectée par le syst�
 
 Avant de pouvoir vous servir de l’identité managée affectée par le système dans le cadre de l’authentification, configurez l’accès de cette identité à la ressource Azure où vous prévoyez de l’utiliser. Pour effectuer cette tâche, attribuez le rôle approprié à cette identité sur la ressource Azure cible.
 
-Suivez le principe des privilèges minimum et attribuez avec précaution les seules autorisations nécessaires pour exécuter votre runbook. Par exemple, si le compte Automation est requis uniquement pour démarrer ou arrêter une machine virtuelle Azure, les autorisations affectées au compte d’identification ou à l’identité managée doivent servir uniquement à démarrer ou arrêter la machine virtuelle. De même, si un runbook lit à partir du stockage d’objets blob, attribuez des autorisations en lecture seule. Cet exemple utilise Azure PowerShell pour montrer comment assigner le contributeur
+Suivez le principe des privilèges minimum et attribuez avec précaution les seules autorisations nécessaires pour exécuter votre runbook. Par exemple, si le compte Automation est requis uniquement pour démarrer ou arrêter une machine virtuelle Azure, les autorisations affectées au compte d’identification ou à l’identité managée doivent servir uniquement à démarrer ou arrêter la machine virtuelle. De même, si un runbook lit à partir du stockage blob, attribuez des autorisations en lecture seule.
 
-Cet exemple utilise Azure PowerShell pour montrer comment attribuer le rôle Contributeur dans l’abonnement à la ressource Azure cible. Le rôle Contributeur est utilisé à titre d’exemple et peut ne pas être requis dans votre cas.
+L’exemple suivant utilise Azure PowerShell pour montrer comment attribuer le rôle Contributeur dans l’abonnement à la ressource Azure cible. Le rôle Contributeur est utilisé à titre d’exemple et peut ne pas être requis dans votre cas.
 
 ```powershell
 New-AzRoleAssignment `
@@ -295,7 +295,7 @@ Pour les points de terminaison HTTP, vérifiez les points suivants.
 - L’en-tête X-IDENTITY-HEADER doit être défini sur la valeur de la variable d’environnement IDENTITY_HEADER pour les runbooks workers hybrides.
 - Le type de contenu de la demande Post doit être « application/x-www-form-urlencoded ».
 
-### <a name="get-access-token-for-system-assigned-identity-using-http-get"></a>Obtenir le Jeton d’accès pour l’identité affectée par le système à l’aide de HTTP Get
+### <a name="get-access-token-for-system-assigned-managed-identity-using-http-get"></a>Obtenir le jeton d’accès pour l’identité managée affectée par le système à l’aide de HTTP Get
 
 ```powershell
 $resource= "?resource=https://management.azure.com/" 
@@ -307,7 +307,7 @@ $accessToken = Invoke-RestMethod -Uri $url -Method 'GET' -Headers $Headers
 Write-Output $accessToken.access_token
 ```
 
-### <a name="get-access-token-for-system-assigned-identity-using-http-post"></a>Obtenir le Jeton d’accès pour l’identité affectée par le système à l’aide de HTTP Post
+### <a name="get-access-token-for-system-assigned-identity-using-http-post"></a>Obtenir le jeton d’accès pour l’identité affectée par le système à l’aide de HTTP Post
 
 ```powershell
 $url = $env:IDENTITY_ENDPOINT  
@@ -388,10 +388,22 @@ $command.ExecuteNonQuery()
 $conn.Close()
 ```
 
+## <a name="migrate-from-existing-run-as-accounts-to-managed-identity"></a>Migrer à partir de comptes d’identification existants vers une identité managée
+
+Azure Automation fournit une authentification pour la gestion des ressources Azure Resource Manager ou des ressources déployées sur le modèle de déploiement classique avec un compte d’identification. Pour passer d’un compte d’identification à une identité managée pour l’authentification du runbook, suivez les étapes ci-dessous.
+
+1. Activez une identité managée [affectée par le système](enable-managed-identity-for-automation.md), [affectée par l’utilisateur](add-user-assigned-identity.md), ou les deux types d’identités managées.
+1. Accordez à l’identité managée les mêmes privilèges que les ressources Azure correspondant à ce que le compte d’identification a été affecté.
+1. Mettez à jour vos runbooks pour l’authentification à l’aide de l’identité managée.
+1. Modifiez des runbooks pour utiliser l’identité managée. Pour la prise en charge des identités, utilisez l’applet de commande `Connect-AzAccount` de l’applet de commande Az. Consultez [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) dans les informations de référence sur PowerShell.
+
+   - Si vous utilisez des modules AzureRM, mettez à jour `AzureRM.Profile` vers la dernière version et remplacez à l’aide de l’applet de commande `Add-AzureRMAccount` avec `Connect-AzureRMAccount –Identity`.
+   - Si vous utilisez des modules Az, effectuez une mise à jour vers la dernière version en suivant les étapes décrites dans l’article [Mettre à jour les modules Azure PowerShell](automation-update-azure-modules.md#update-az-modules).
+
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Si l’exécution de vos runbooks ne se termine pas correctement, consultez [Résoudre les problèmes d’identité managée Azure Automation (préversion)](troubleshoot/managed-identity.md).
+- Si l’exécution de vos runbooks ne se termine pas correctement, consultez [Résoudre les problèmes d’identité managée Azure Automation](troubleshoot/managed-identity.md).
 
-- Si vous devez désactiver une identité managée, consultez [Désactiver votre identité managée de compte Azure Automation (préversion)](disable-managed-identity-for-automation.md).
+- Si vous devez désactiver une identité managée, consultez [Désactiver votre identité managée de compte Azure Automation](disable-managed-identity-for-automation.md).
 
 - Pour obtenir une vue d’ensemble de la sécurité du compte Azure Automation, consultez [Vue d’ensemble de l’authentification du compte Automation](automation-security-overview.md).

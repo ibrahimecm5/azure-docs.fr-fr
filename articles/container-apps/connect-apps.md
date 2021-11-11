@@ -1,19 +1,19 @@
 ---
 title: Connecter des applications dans la version préliminaire d’Azure Container
 description: Apprenez à déployer plusieurs applications qui communiquent ensemble dans Azure Container.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 10fe890ecd4bb2bc89cea71d1a70f7df9eb38e1e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 75ccb6730d9fdad76f7b7f6f78d3695e86a349f0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096385"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027391"
 ---
 # <a name="connect-applications-in-azure-container-apps-preview"></a>Connecter des applications dans la version préliminaire d’Azure Container
 
@@ -21,9 +21,14 @@ Les applications Azure Container exposent chaque application conteneur par le bi
 
 Une fois que vous connaissez le nom de domaine d’une application conteneur, vous pouvez appeler l’emplacement dans le code de votre application pour connecter plusieurs applications de conteneur.
 
+> [!NOTE]
+> Lorsque vous appelez un autre conteneur dans le même environnement à l’aide du nom de domaine complet (FQDN), le trafic réseau ne quitte jamais l’environnement.
+
+Vous trouverez un exemple de solution illustrant la façon dont vous pouvez effectuer un appel entre conteneurs en utilisant l’emplacement de nom de domaine complet (FQDN) ou Dapr dans les [Exemples Azure](https://github.com/Azure-Samples/container-apps-connect-multiple-apps)
+
 ## <a name="location"></a>Location
 
-L’emplacement d’une application conteneur est composé de valeurs associées à son environnement, son nom et sa région. Disponible via le domaine de niveau supérieur `azurecontainerapps.io`, le nom de domaine complet utilise :
+L’emplacement d’une application conteneur est composé de valeurs associées à son environnement, son nom et sa région. Disponible via le domaine de niveau supérieur `azurecontainerapps.io`, le nom de domaine complet (FQDN) utilise les éléments suivants :
 
 - nom de l’application de conteneur
 - identificateur unique de l’environnement

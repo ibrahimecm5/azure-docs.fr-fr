@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/13/2021
-ms.openlocfilehash: 082b943aef3f82898b80d23d33a90d3f5ec3ebc6
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 11/02/2021
+ms.openlocfilehash: 76036b42693b17480f4e5ede8d93d981bf40d739
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122535413"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429657"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Planifier une application managée Azure pour une offre d’application Azure
 
@@ -121,6 +121,10 @@ Vous pouvez configurer un plan d’application managée pour qu’il utilise le 
 ## <a name="notification-endpoint-url"></a>URL de point de terminaison de notification
 
 En option, vous pouvez également spécifier un point de terminaison Webhook HTTPS pour recevoir des notifications de toutes les opérations CRUD effectuées sur les instances d’application managée d’un plan.
+
+Azure ajoute `/resource` à la fin de votre URI de webhook avant de l’appeler. Par conséquent, votre URL de webhook doit se terminer par `/resource`, même si elle ne doit pas être incluse dans l’URI entré dans la zone **URL du point de terminaison de notification** dans l’Espace partenaires. Par exemple, l’entrée de `https://contoso.com` en tant qu’URI de point de terminaison de notification entraîne un appel à `https://contoso.com/resource`.
+
+Lors de l’écoute des événements de vos notifications d’application gérée, veillez à écouter `https://<url>/resource` et pas uniquement l’URL définie. Pour obtenir un exemple de notification, consultez [Schéma de notification](/azure/azure-resource-manager/managed-applications/publish-notifications#notification-schema).
 
 ## <a name="customize-allowed-customer-actions-optional"></a>Personnaliser les actions des clients autorisées (facultatif)
 

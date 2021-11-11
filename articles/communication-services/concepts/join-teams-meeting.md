@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 88025243a379b18b5b24cb3c47caee4713b47585
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 6b6444ef42e0ada42f374ed5d1e69aefd332a983
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131540"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438870"
 ---
 # <a name="join-a-teams-meeting"></a>Participer à une réunion Teams
 
@@ -38,7 +38,7 @@ Les applications personnalisées créées avec Azure Communication Services pour
 
 Comme avec l’accès anonyme aux réunions Teams, votre application doit disposer du lien de la réunion pour y accéder, qui peut être récupéré via l’API Graph ou à partir du calendrier dans Microsoft Teams. Le nom des utilisateurs BYOI affiché dans Teams est configurable par l’intermédiaire du Kit de développement logiciel (SDK) Appel de Communication Services, et ces utilisateurs sont étiquetés comme « externes » pour indiquer aux utilisateurs de Teams qu’ils n’ont pas été authentifiés à l’aide d’Azure Active Directory.
 
-Lors d’une réunion, les utilisateurs de Communication Services pourront utiliser les principales fonctionnalités audio, vidéo, de partage d’écran et de conversation via les Kits de développement logiciel (SDK) d’Azure Communication Services. Lorsqu’un utilisateur de Communication Services quitte la réunion ou que la réunion se termine, il ne peut plus envoyer ni recevoir de nouveaux messages de conversation, mais il a accès aux messages envoyés et reçus pendant la réunion. Les utilisateurs anonymes de Communication Services ne peuvent pas ajouter d’autres participants à la réunion ni ne peuvent démarrer l’enregistrement ou la transcription de la réunion.
+Lors d’une réunion, les utilisateurs de Communication Services pourront utiliser les principales fonctionnalités audio, vidéo, de partage d’écran et de conversation via les Kits de développement logiciel (SDK) d’Azure Communication Services. Lorsqu’un utilisateur de Communication Services quitte la réunion ou que la réunion se termine, il ne peut plus envoyer ni recevoir de nouveaux messages de conversation, mais il a accès aux messages envoyés et reçus pendant la réunion. Les utilisateurs anonymes de Communication Services ne peuvent pas ajouter/retirer d’autres participants à la réunion ni ne peuvent démarrer l’enregistrement ou la transcription de la réunion.
 
 Vous trouverez des informations supplémentaires sur les flux requis pour la participation à des réunions Teams sur la [page architecture du client et du serveur](client-and-server-architecture.md). L'[exemple d'appel de groupe Hero](../samples/calling-hero-sample.md) fournit un code d'exemple pour rejoindre une réunion Teams à partir d'une application Web.
 
@@ -51,6 +51,7 @@ Microsoft vous indique par le biais de l’API Azure Communication Services que 
 
 - Un utilisateur BYOI peut se joindre à une réunion Teams planifiée pour un canal Teams et utiliser l’audio et la vidéo, mais il ne pourra pas envoyer ni recevoir de messages de conversation, car il n’est pas membre du canal.
 - Lorsque vous utilisez Microsoft Graph pour [dresser la liste des participants à une réunion Teams](/graph/api/call-list-participants), les détails concernant les utilisateurs de Communication Services ne sont actuellement pas inclus.
+- Les présentations PowerPoint ne sont pas rendues pour les utilisateurs Communication Services.
 - Les réunions Teams prennent en charge jusqu’à 1 000 participants, mais le Kit de développement logiciel (SDK) Appel d’Azure Communication Services ne prend actuellement en charge que 350 participants.
 - Avec [Cloud Video Interop pour Microsoft Teams](/microsoftteams/cloud-video-interop), certains appareils ont rencontré des problèmes lorsqu’un utilisateur de Communication Services partage son écran.
 - Les fonctionnalités telles que Lever la main, le mode ensemble et les salles de pause ne sont disponibles que pour les utilisateurs de Teams.
@@ -60,6 +61,6 @@ Microsoft vous indique par le biais de l’API Azure Communication Services que 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-> [!div class="nextstepaction"]
-> [Joindre une application d’appel BYOI à une réunion Teams](../quickstarts/voice-video-calling/get-started-teams-interop.md)
-> [Joindre une application de conversation BYOI à une réunion Teams](../quickstarts/chat/meeting-interop.md)
+- [Guide pratique : Participer à une réunion Teams](../how-tos/calling-sdk/teams-interoperability.md)
+- [Démarrage rapide : joindre une application appelante BYOI à une réunion Teams](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+- [Démarrage rapide : joindre une application de conversation BYOI à une réunion Teams](../quickstarts/chat/meeting-interop.md)

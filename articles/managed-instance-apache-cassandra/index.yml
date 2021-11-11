@@ -10,12 +10,12 @@ metadata:
   author: TheovanKraay
   ms.author: thvankra
   ms.date: 11/02/2021
-  ms.openlocfilehash: a81b79347a48ad0cfd7c7aa5876cc385b995b3f0
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 4529009e1e35b2367d43c96410557cf3aa8c7598
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131061311"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131844465"
 landingContent:
 - title: À propos d’Azure Managed Instance pour Apache Cassandra
   linkLists:
@@ -47,6 +47,8 @@ landingContent:
       url: deploy-cluster-databricks.md
   - linkListType: concept
     links:
+    - text: Présentation de la sécurité
+      url: security.md
     - text: Forum aux questions
       url: faq.md
 - title: Configurer et gérer les ressources de cluster
@@ -59,5 +61,11 @@ landingContent:
     links:
     - text: Gérer les ressources avec Azure CLI
       url: manage-resources-cli.md
+    - text: Superviser les ressources de cluster
+      url: monitor-clusters.md
+    - text: Configurer les clés gérées par le client
+      url: customer-managed-keys.md
     - text: Visualiser les métriques dans Prometheus avec Grafana
       url: visualize-prometheus-grafana.md
+    - text: Configuration de la mise en réseau
+      url: network-rules.md

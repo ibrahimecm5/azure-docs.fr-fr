@@ -1,6 +1,6 @@
 ---
 title: Fichier Include
-description: Fichier include
+description: Fichier Include
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: f7454d26c57795383cc6bc8464e2259b1b29ed38
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113356943"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506319"
 ---
-### <a name="on-demand-bursting-preview"></a>Bursting à la demande (préversion)
+### <a name="on-demand-bursting"></a>Bursting à la demande
 
 Les disques SSD Premium utilisant le modèle de bursting à la demande peuvent pousser leurs capacités au-delà des cibles prévues à l’origine, aussi souvent que leur charge de travail l’exige et dans la limite de la capacité de bursting maximale. Par exemple, pour un disque P30 de 1 Tio, l’IOPS configurée est de 5 000 IOPS. Lorsque le bursting de disque est activé sur ce disque, vos charges de travail peuvent générer des E/S sur ce disque dans la limite des performances de bursting maximales, soit 30 000 IOPS et 1 000 Mbits/s.
 
@@ -72,9 +72,13 @@ Le bursting au niveau des machines virtuelles est activé dans toutes les régio
 - [Série Dsv4](../articles/virtual-machines/dv4-dsv4-series.md)
 - [Dasv4-series](../articles/virtual-machines/dav4-dasv4-series.md)
 - [Série Ddsv4](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Série Dasv5](../articles/virtual-machines/dasv5-dadsv5-series.md)
+- [Série Dadsv5](../articles/virtual-machines/dasv5-dadsv5-series.md)
 - [Série Esv4](../articles/virtual-machines/ev4-esv4-series.md)
 - [Easv4-series](../articles/virtual-machines/eav4-easv4-series.md)
 - [Série Edsv4](../articles/virtual-machines/edv4-edsv4-series.md)
+- [Série Easv5](../articles/virtual-machines/easv5-eadsv5-series.md)
+- [Série Eadsv5](../articles/virtual-machines/easv5-eadsv5-series.md)
 - [Série B](../articles/virtual-machines/sizes-b-series-burstable.md)
 - [Série Fsv2](../articles/virtual-machines/fsv2-series.md)
 - [Dsv3-series](../articles/virtual-machines/dv3-dsv3-series.md)

@@ -2,13 +2,16 @@
 title: Gérer et superviser des bases de données SQL Server sur une machine virtuelle Azure
 description: Cet article décrit comment gérer et surveiller des bases de données SQL Server s’exécutant sur une machine virtuelle Azure.
 ms.topic: conceptual
-ms.date: 07/27/2021
-ms.openlocfilehash: c536b29f731ee646f987dc9ce2d178cb93426c91
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 6da639ea369b0676a34af12a8e37c13b018c57d7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272007"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435002"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Gérer et surveiller des bases de données SQL Server sauvegardées
 
@@ -18,9 +21,9 @@ Si vous n’avez pas encore configuré de sauvegardes pour vos bases de données
 
 ## <a name="monitor-backup-jobs-in-the-portal"></a>Surveiller les travaux de sauvegarde sur le portail
 
-Sauvegarde Azure affiche toutes les opérations planifiées et à la demande sous **Travaux de sauvegarde** dans le portail, à l’exception des sauvegardes de fichiers journaux planifiées qui peuvent s’avérer particulièrement fréquentes. Les travaux que vous voyez sur ce portail incluent les opérations de découverte, d’inscription, de configuration, de sauvegarde et de restauration de base de données.
+Le service Sauvegarde Azure affiche toutes les opérations planifiées et à la demande sous **Travaux de sauvegarde** dans le **centre de sauvegarde** du portail Azure, à l’exception des sauvegardes de fichiers journaux planifiées qui peuvent être très fréquentes. Les travaux que vous voyez sur ce portail incluent les opérations de découverte, d’inscription, de configuration, de sauvegarde et de restauration de base de données.
 
-![Portail Travaux de sauvegarde](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
+:::image type="content" source="./media/backup-azure-sql-database/backup-operations-in-backup-center-jobs-inline.png" alt-text="Capture d’écran montrant les travaux de sauvegarde dans Travaux de sauvegarde." lightbox="./media/backup-azure-sql-database/backup-operations-in-backup-center-jobs-expanded.png":::
 
 Pour plus d’informations sur les scénarios de surveillance, voir [Surveillance dans le portail Azure](backup-azure-monitoring-built-in-monitor.md) et [Surveillance à l’aide d’Azure Monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
@@ -55,19 +58,21 @@ Si vous choisissez de conserver les points de récupération, gardez à l’espr
 
 Pour arrêter la protection de la base de données :
 
-1. Dans le tableau de bord du coffre, sélectionnez **Éléments de la sauvegarde**.
+1. Accédez au **Centre de sauvegarde**, puis, dans le menu, cliquez sur **Instances de sauvegarde**.
 
-2. Sous **Type de gestion des sauvegardes**, sélectionnez **SQL dans une machine virtuelle Azure**.
+2. Sélectionnez **SQL dans une machine virtuelle Azure** comme type de source de données.
 
-    ![Sélectionner SQL in Azure VM](./media/backup-azure-sql-database/sql-restore-backup-items.png)
+   :::image type="content" source="./media/backup-azure-sql-database/backup-center-instance-inline.png" alt-text="Capture d’écran montrant comment sélectionner SQL dans Machine virtuelle Azure." lightbox="./media/backup-azure-sql-database/backup-center-instance-expanded.png":::
 
 3. Sélectionnez la base de données dont vous souhaitez arrêter la protection.
 
-    ![Sélectionner la protection de la base de données a arrêter](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-select-instance-inline.png" alt-text="Capture d’écran montrant comment sélectionner la base de données pour arrêter la protection." lightbox="./media/backup-azure-sql-database/sql-select-instance-expanded.png":::
 
 4. Dans le menu de la base de données, sélectionnez **Arrêter la sauvegarde**.
 
-    ![Sélectionner Arrêter la sauvegarde](./media/backup-azure-sql-database/stop-db-button.png)
+   Vous pouvez également cliquer avec le bouton droit sur une ligne particulière dans l’affichage Instances de sauvegarde et sélectionner **Arrêter la sauvegarde**.
+
+   :::image type="content" source="./media/backup-azure-sql-database/sql-stop-backup-inline.png" alt-text="Capture d’écran montrant la sélection de l’option Arrêter la sauvegarde." lightbox="./media/backup-azure-sql-database/sql-stop-backup-expanded.png":::
 
 5. Dans le menu **Arrêter la sauvegarde**, indiquez si vous souhaitez conserver ou supprimer les données. Vous pouvez également indiquer une raison ou formuler un commentaire.
 

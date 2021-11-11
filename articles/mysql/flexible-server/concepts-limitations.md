@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: c8460d6df9710e5a8752a0edd50c6b83276725ad
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 85718f5c9f3705d5530a2528c07a5a5c40a971c5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128668582"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468382"
 ---
-# <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Limitations dans Azure Database pour MySQL – Serveur flexible (préversion)
+# <a name="limitations-in-azure-database-for-mysql---flexible-server"></a>Limitations dans le serveur flexible Azure Database pour MySQL
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL – Serveur flexible est actuellement en préversion publique.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Cet article décrit les limitations existant dans le service Serveur flexible Azure Database pour MySQL. Les [limitations générales](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) du moteur de base de données MySQL sont également applicables. Si vous souhaitez en savoir plus sur les limites appliquées aux ressources (calcul, mémoire, stockage), consultez l’article sur [le calcul et le stockage](concepts-compute-storage.md).
 
@@ -45,12 +42,14 @@ MySQL prend en charge de nombreux moteurs de stockage. Voici la liste des moteur
 
 ## <a name="privileges--data-manipulation-support"></a>Prise en charge des privilèges et de la manipulation des données
 
-Le service MySQL n’autorise pas l’accès direct au système de fichiers sous-jacent. Certaines commandes de manipulation de données ne sont pas prises en charge. 
+De nombreux paramètres de serveur peuvent dégrader de façon inattendue les performances du serveur, ou nier les propriétés ACID du serveur MySQL. Afin de préserver l’intégrité du service et le contrat SLA au niveau du produit, ce service n’expose pas plusieurs rôles.
+
+Le service MySQL n’autorise pas l’accès direct au système de fichiers sous-jacent. Certaines commandes de manipulation de données ne sont pas prises en charge.
 
 ### <a name="unsupported"></a>Non pris en charge
 
 Les éléments suivants ne sont pas pris en charge :
-- Rôle d’administrateur de base de données : Restreint. Sinon, vous pouvez utiliser le rôle d’utilisateur Administrateur (généré lors de la création d’un serveur) qui vous permet d’exécuter la plupart des instructions DDL et DML. 
+- Rôle d’administrateur de base de données : Restreint. Sinon, vous pouvez utiliser le rôle d’utilisateur Administrateur (généré lors de la création d’un serveur) qui vous permet d’exécuter la plupart des instructions DDL et DML.
 - Privilège de superutilisateur : de la même façon, le [privilège de superutilisateur](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) est limité.
 - DEFINER : requiert des privilèges de superutilisateur pour créer et est limité. Si vous importez des données à l'aide d'une sauvegarde, supprimez les commandes `CREATE DEFINER` manuellement ou à l'aide de la commande `--skip-definer` lors de l'exécution de mysqldump.
 - Bases de données système : La [base de données système mysql](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) est en lecture seule ; elle est utilisée pour prendre en charge diverses fonctionnalités PaaS. Vous ne pouvez pas apporter de modifications à la base de données système `mysql`.
@@ -69,7 +68,6 @@ Les éléments suivants ne sont pas pris en charge :
 - Une fois le serveur créé, il n’est pas possible de changer la méthode de connexion. Si le serveur est créé avec *Accès privé (intégration au réseau virtuel)* , il ne peut pas être remplacé par *Accès public (adresses IP autorisées)* après la création, et vice versa.
 
 ### <a name="stopstart-operation"></a>Opération d’arrêt/démarrage
-- Pas de prise en charge avec les configurations à haute disponibilité redondante interzone (serveur principal et serveur de secours).
 - Pas de prise en charge avec les configurations de réplica en lecture (source et réplicas).
 
 ### <a name="scale-operations"></a>Opérations de mise à l’échelle
@@ -85,7 +83,7 @@ Les éléments suivants ne sont pas pris en charge :
 - Avec la restauration à un instant dans le passé, les nouveaux serveurs sont créés avec les mêmes configurations de calcul et de stockage que le serveur source sur lequel il est basé. Vous pouvez effectuer un scale-down du calcul du serveur nouvellement restauré après sa création.
 - La restauration d’un serveur supprimé n’est pas prise en charge.
 
-## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>Fonctionnalités disponibles sur un serveur unique, mais pas encore prises en charge dans le serveur flexible 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>Fonctionnalités disponibles sur un serveur unique, mais pas encore prises en charge dans le serveur flexible
 Toutes les fonctionnalités disponibles pour le serveur unique Azure Database pour MySQL sont encore disponibles dans le serveur flexible. Pour obtenir la liste complète des fonctionnalités pour un serveur unique et un serveur flexible, reportez-vous à [Choix de l’option de serveur MySQL appropriée dans la documentation Azure.](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure)
 
 ## <a name="next-steps"></a>Étapes suivantes

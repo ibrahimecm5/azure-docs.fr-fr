@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b7c4b0f75dd94a5aa61b75b99bbb553c98090aac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afc8bd93704008860882150b53e1624072871778
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524205"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441803"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Configurer le mappage réseau et l’adressage IP pour les réseaux virtuels
 
@@ -52,7 +52,7 @@ Si vous n’avez pas préparé le mappage réseau avant de configurer la récup�
 
 >[!NOTE]
 >* La modification du mappage réseau n’affecte que les valeurs par défaut des nouvelles réplications de machines virtuelles. Cela n’affecte pas les sélections de réseaux virtuels cibles pour les réplications existantes.
->* Si vous souhaitez modifier le réseau cible d’une réplication existante, accédez aux paramètres Calcul et réseau de l’élément répliqué.
+>* Si vous souhaitez modifier le réseau cible d’une réplication existante, accédez aux paramètres **Réseau** de l’élément répliqué.
 
 ## <a name="specify-a-subnet"></a>Spécifier un sous-réseau
 
@@ -60,7 +60,7 @@ Le sous-réseau de la machine virtuelle cible est sélectionné en fonction du n
 
 - S’il existe sur le réseau cible un sous-réseau portant le même nom que le sous-réseau de la machine virtuelle source, il sera défini pour la machine virtuelle cible.
 - S’il n’y a aucun sous-réseau du même nom sur le réseau cible, le premier sous-réseau dans l’ordre alphabétique est défini comme sous-réseau cible.
-- Vous pouvez modifier le sous-réseau cible dans les paramètres **Calcul et réseau** de la machine virtuelle.
+- Vous pouvez modifier le sous-réseau cible dans les paramètres **Réseau** de la machine virtuelle.
 
     ![Fenêtre Propriétés de calcul et réseau](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
@@ -72,6 +72,7 @@ L’adresse IP pour chaque carte réseau sur une machine virtuelle cible est con
 - **DHCP** : si la carte réseau de la machine virtuelle source utilise le protocole DHCP, la carte réseau de la machine virtuelle cible est également configurée pour utiliser DHCP.
 - **Adresse IP statique** : si la carte réseau de la machine virtuelle source utilise un adressage IP statique, la carte réseau de la machine virtuelle cible utilise également une adresse IP statique.
 
+Il en va de même pour les configurations d’adresses IP secondaires.
 
 ## <a name="ip-address-assignment-during-failover"></a>Affectation d’adresses IP lors du basculement
 
@@ -91,7 +92,7 @@ Le réseau cible n’est pas le réseau virtuel pour le basculement | - L’adre
 
 - Le réseau virtuel de basculement est le réseau cible que vous sélectionnez lorsque vous configurez la récupération d’urgence.
 - Nous vous recommandons de toujours utiliser un réseau de non production pour le test de basculement.
-- Vous pouvez modifier l’adresse IP cible dans les paramètres **Calcul et réseau** de la machine virtuelle.
+- Vous pouvez modifier l’adresse IP cible dans les paramètres **Réseau** de la machine virtuelle.
 
 
 ## <a name="next-steps"></a>Étapes suivantes

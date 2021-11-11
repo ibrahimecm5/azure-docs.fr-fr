@@ -186,6 +186,8 @@
           href: availability-zones.md
         - name: Utiliser des pools de nœuds
           items:
+            - name: Instantané des pools de nœuds
+              href: node-pool-snapshot.md
             - name: Utiliser des pools multinœuds
               href: use-multiple-node-pools.md
             - name: Utiliser des pools de nœuds Spot
@@ -319,9 +321,9 @@
           href: azure-disk-customer-managed-keys.md
         - name: Activer le chiffrement basé sur l’hôte
           href: enable-host-encryption.md
-        - name: Pilote CSI du magasin de secrets
+        - name: Secrets Store CSI Driver
           items:
-            - name: Configuration du pilote CSI du magasin des secrets
+            - name: Configuration de Secrets Store CSI Driver
               href: csi-secrets-store-driver.md
             - name: Fournir un accès à Azure Key Vault
               href: csi-secrets-store-identity-access.md

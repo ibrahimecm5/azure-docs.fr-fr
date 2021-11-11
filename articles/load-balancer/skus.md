@@ -11,22 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 5000ac68cc0e00cdbe9d0ebd430f8cd88fe49e98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 204de2d0b3ed6e75d8b599e094a58e0b2e1826b0
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057701"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576108"
 ---
 # <a name="azure-load-balancer-skus"></a>Références SKU Azure Load Balancer
 
 Azure Load Balancer comporte deux références SKU.
 
 ## <a name="sku-comparison"></a><a name="skus"></a> Comparaison des références SKU
+Azure Load Balancer est disponible en 3 références (SKU) : De base, Standard et Passerelle. Chaque référence (SKU) répond aux besoins d’un scénario spécifique et présente des différences de mise à l’échelle, de fonctionnalités et de tarification. 
 
-L’équilibreur de charge prend en charge les références SKU Standard et De base. Ces références SKU présentent des différences en termes d’échelle de scénario, de fonctionnalités et de tarification. N’importe quel scénario possible avec l’équilibreur de charge De base peut être créé avec l’équilibreur de charge Standard.
-
-Pour comparer les références SKU et comprendre leurs différences, consultez le tableau ci-dessous. Pour plus d’informations, consultez [Vue d’ensemble du niveau Standard d’Azure Load Balancer](./load-balancer-overview.md).
+Pour comparer et comprendre les différences entre les références (SKU) De base et Standard, consultez le tableau suivant. Pour plus d’informations, consultez [Vue d’ensemble du niveau Standard d’Azure Load Balancer](./load-balancer-overview.md). Pour plus d’informations sur la référence (SKU) de passerelle pour les appliances virtuelles réseau tierces actuellement en préversion, consultez [Vue d’ensemble de l’équilibreur de charge de passerelle](gateway-overview.md)
 
 >[!NOTE]
 > Microsoft recommande l’équilibreur de charge Standard.
@@ -34,6 +33,7 @@ Les machines virtuelles autonomes, les groupes à haute disponibilité et les gr
 
 | | Standard Load Balancer | Basic Load Balancer |
 | --- | --- | --- |
+| **Scénario** |  Equipé pour le trafic de couche réseau d’équilibrage de charge lorsque des performances élevées et une latence très faible sont nécessaires. Achemine le trafic dans et entre les régions et les zones de disponibilité pour une résilience élevée. | Equipé pour des applications à petite échelle qui n’ont pas besoin d’une haute disponibilité ou d’une redondance. Non compatible avec les zones de disponibilité. |
 | **Type de backend** | Basé sur IP, basé sur une carte réseau | Basée sur une carte réseau |
 | **[Taille du pool de back-ends](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Prend en charge jusqu’à 1 000 instances. | Prend en charge jusqu’à 300 instances. |
 | **Points de terminaison du pool de back-ends** | Toutes les machines virtuelles ou tous les groupes de machines virtuelles identiques d’un seul réseau virtuel. | Machines virtuelles dans un groupe à haute disponibilité ou un groupe de machines virtuelles identiques unique. |

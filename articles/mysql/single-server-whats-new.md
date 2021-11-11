@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: b324c6b536ae5038ed9eb1d31025d6e88cf21011
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f28b30be15ea4808490851b6fd29c642438a43f8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525162"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472653"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Nouveautés d’Azure Database pour MySQL – Serveur unique
 
@@ -21,6 +21,12 @@ ms.locfileid: "122525162"
 Azure Database for MySQL est un service de base de données relationnelle dans Microsoft Cloud. Le service est basé sur le moteur de base de données [MySQL Community Edition](https://www.mysql.com/products/community/) (disponible sous licence GPLv2) et prend en charge les versions 5.6, 5.7 et 8.0. [Azure Database pour MySQL - Serveur unique](./overview.md#azure-database-for-mysql---single-server) est un mode de déploiement qui fournit un service de base de données complètement managé avec des exigences minimales pour les personnalisations de base de données. La plateforme de serveur unique est conçue pour prendre en charge la plupart des fonctions de gestion de base de données, comme les correctifs, les sauvegardes, la haute disponibilité et la sécurité, avec un minimum de configuration et de contrôle de la part de l’utilisateur.
 
 Cet article résume les nouvelles versions et fonctionnalités d’Azure Database pour MySQL - Serveur unique à compter de janvier 2021. Les éléments s’affichent dans l’ordre chronologique inverse, avec les mises à jour les plus récentes en premier.
+
+## <a name="october-2021"></a>Octobre 2021
+
+- **Problèmes connus**
+
+Le client MySQL 8.0.27 est incompatible avec Azure Database pour MySQL – Serveur unique. Toutes les connexions du client MySQL 8.0.27 créées via mysql.exe ou Workbench échouent. Pour contourner ce problème, envisagez d’utiliser une version antérieure du client (antérieure à MySQL 8.0.27) ou de créer une instance d’[Azure Database pour MySQL – Serveur flexible](https://docs.microsoft.com/azure/mysql/flexible-server/overview) à la place.
 
 ## <a name="june-2021"></a>Juin 2021
   
@@ -85,7 +91,7 @@ En outre, tenez compte des points de contact suivants le cas échéant :
 
 - Pour contacter le support technique Azure, [émettez un ticket à partir du Portail Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Pour résoudre un problème relatif à votre compte, enregistrez une [demande de support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) sur le portail Azure.
-- Pour donner votre avis ou demander de nouvelles fonctionnalités, créez une entrée via [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+- Pour donner votre avis ou demander de nouvelles fonctionnalités, créez une entrée via [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

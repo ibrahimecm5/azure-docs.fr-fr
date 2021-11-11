@@ -6,22 +6,22 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/09/2021
-ms.openlocfilehash: c86cf4ac8bdc5855248d2ec114f7ba2f050d8346
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cdb10c265ddae4aaf83450c1951ef6cb5c2219df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457446"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443848"
 ---
 # <a name="onboard-a-machine-to-automanage-with-an-azure-resource-manager-arm-template"></a>Intégration d’une machine à Automanage avec un modèle Azure Resource Manager (ARM)
 
 
 ## <a name="overview"></a>Vue d’ensemble
-Suivez les étapes ci-dessous pour intégrer une machine pour la gestion automatique des meilleures pratiques avec Automanage. Le modèle ARM ci-dessous crée un objet `configurationProfileAssignment`, qui est la ressource Azure qui représente une machine intégrée à Automanage.
+Suivez les étapes ci-dessous afin d’intégrer une machine aux meilleures pratiques d’Automanage avec un modèle ARM.
 
 ## <a name="prerequisites"></a>Prérequis
-* Vous devez avoir créé un compte Automanage existant et lui avoir attribué les autorisations appropriées. Consultez [ce document](./automanage-account.md) pour plus d’informations sur le compte Automanage et la procédure à suivre pour en créer un et attribuer des autorisations.
-* Si vous disposez déjà d’un compte Automanage avec des autorisations affectées, vous devez également disposer du rôle **Contributeur** sur le groupe de ressources contenant les machines que vous souhaitez intégrer à Automanage.
+* Vous devez disposer des [autorisations RBAC](./automanage-virtual-machines.md#required-rbac-permissions) nécessaires
+* Vous devez être dans une région prise en charge et l’image de machine virtuelle prise en charge est mise en surbrillance dans ces [prérequis](./automanage-virtual-machines.md#prerequisites)
 
 
 ## <a name="arm-template-overview"></a>Présentation des modèles ARM
@@ -34,21 +34,17 @@ Le modèle ARM suivant intégrera votre machine spécifiée sur les meilleures p
         "machineName": {
             "type": "String"
         },
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "configurationProfileAssignment": {
+        "configurationProfile": {
             "type": "String"
         }
     },
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/providers/configurationProfileAssignments",
-            "apiVersion": "2020-06-30-preview",
-            "name": "[concat(parameters('machineName'), '/Microsoft.Automanage/', 'default')]",
+            "apiVersion": "2021-04-30-preview",
+            "name": "[concat(parameters('machineName'), '/Microsoft.Automanage/default')]",
             "properties": {
-                "configurationProfile": "[parameters('configurationProfileAssignment')]",
-                "accountId": "[concat(resourceGroup().id, '/providers/Microsoft.Automanage/accounts/', parameters('automanageAccountName'))]"
+                "configurationProfile": "[parameters('configurationProfile')]",
             }
         }
     ]
@@ -56,11 +52,11 @@ Le modèle ARM suivant intégrera votre machine spécifiée sur les meilleures p
 ```
 
 ## <a name="arm-template-deployment"></a>Déploiement de modèle ARM
-Le modèle ARM ci-dessus crée une attribution de profil de configuration pour votre machine spécifiée, à l’aide d’un compte Automanage spécifié. Si vous n’avez pas créé de compte Automanage, consultez [ce document](./automanage-account.md).
+Le modèle ARM ci-dessus crée une attribution de profil de configuration pour votre machine spécifiée. 
 
-Les valeurs `configurationProfileAssignment` possibles sont les suivantes :
-* "Production"
-* "DevTest"
+Les valeurs `configurationProfile` possibles sont les suivantes :
+* "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+* "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesDevTest"
 
 Suivez ces étapes pour déployer le modèle ARM :
 1. Enregistrez le modèle ARM ci-dessus en tant que `azuredeploy.json`

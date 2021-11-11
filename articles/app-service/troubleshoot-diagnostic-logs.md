@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: ac47322f33ac8f2efd08e5b04e639f09959dee28
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 7e477f3d8df098f53abc4b1ad5f963f019b79ead
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352019"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470886"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Activer la journalisation des diagnostics pour les applications dans Azure App Service
 ## <a name="overview"></a>Vue d’ensemble
@@ -19,7 +19,7 @@ Azure fournit des diagnostics intégrés pour aider au débogage d’une [applic
 Cet article utilise le [portail Azure](https://portal.azure.com) et Azure CLI pour l’exploitation des journaux de diagnostic. Pour plus d’informations sur l’utilisation de journaux de diagnostic avec Visual Studio, consultez [Résolution des problèmes Azure dans Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
 > [!NOTE]
-> En plus des instructions de journalisation figurant dans cet article, il existe une nouvelle fonctionnalité de journalisation intégrée avec Azure Monitor. Pour plus d’informations sur cette fonctionnalité, consultez la section [Envoyer des journaux à Azure Monitor (préversion)](#send-logs-to-azure-monitor-preview). 
+> En plus des instructions de journalisation figurant dans cet article, il existe une nouvelle fonctionnalité de journalisation intégrée avec Azure Monitor. Pour plus d’informations sur cette fonctionnalité, consultez la section [Envoyer des journaux à Azure Monitor](#send-logs-to-azure-monitor). 
 >
 >
 
@@ -182,12 +182,12 @@ Pour les applications Windows, le fichier ZIP contient le contenu du répertoire
 | **Journaux de serveur web** | */LogFiles/http/RawLogs/* | Contient les fichiers texte au [format de fichier journal étendu W3C](/windows/desktop/Http/w3c-logging). Ces informations peuvent être lues à l’aide d’un éditeur de texte ou d’un utilitaire tel que [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22).<br/>App Service ne prend pas en charge les champs `s-computername`, `s-ip` ni `cs-version`. |
 | **Journaux de déploiement** | */LogFiles/Git/* et */deployments/* | Contient les journaux générés par les processus de déploiement internes, ainsi que les journaux des déploiements Git. |
 
-## <a name="send-logs-to-azure-monitor-preview"></a>Envoyer des journaux à Azure Monitor (préversion)
+## <a name="send-logs-to-azure-monitor"></a>Envoyer des journaux à Azure Monitor
 
-Grâce à la nouvelle [intégration d’Azure Monitor](https://aka.ms/appsvcblog-azmon), vous pouvez [créer des paramètres de diagnostic (préversion)](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) pour envoyer des journaux aux comptes de stockage, à Event Hubs et à Log Analytics. 
+Grâce à la nouvelle [intégration d’Azure Monitor](https://aka.ms/appsvcblog-azmon), vous pouvez [créer des paramètres de diagnostic](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) pour envoyer des journaux aux comptes de stockage, à Event Hubs et à Log Analytics. 
 
 > [!div class="mx-imgBorder"]
-> ![Paramètres de diagnostic (préversion)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+> ![paramètres de diagnostic](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
 
 ### <a name="supported-log-types"></a>Types de journaux pris en charge
 
@@ -203,11 +203,13 @@ Le tableau suivant renseigne sur les types et la descriptions des journaux pris 
 | AppServiceAppLogs | ASP.NET & Tomcat <sup>1</sup> | ASP.NET & Tomcat <sup>1</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Journaux d’activité d’application |
 | AppServiceIPSecAuditLogs  | Oui | Oui | Oui | Oui | Demandes à partir de règles IP |
 | AppServicePlatformLogs  | À confirmer | Oui | Oui | Oui | journaux des opérations du conteneur |
-| AppServiceAntivirusScanAuditLogs | Oui | Oui | Oui | Oui | [Journaux de l’analyse antivirus](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) avec Microsoft Defender ; **disponibles seulement pour le niveau Premium** | 
+| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Oui | Oui | Oui | Oui | [Journaux de l’analyse antivirus](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) avec Microsoft Defender ; **disponibles seulement pour le niveau Premium** | 
 
 <sup>1</sup> Pour les applications Tomcat, ajoutez `TOMCAT_USE_STARTUP_BAT` aux paramètres de l’application et définissez-le sur `false` ou `0`. Vous devez disposer de la *dernière* version de Tomcat et utiliser *java.util.logging*.
 
 <sup>2</sup> Pour les applications Java SE, ajoutez `WEBSITE_AZMON_PREVIEW_ENABLED` aux paramètres de l’application et définissez-le sur `true` ou `1`.
+
+<sup>3</sup> Le type de journal AppServiceAntivirusScanAuditLogs est toujours en version préliminaire
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Étapes suivantes
 * [Interrogation de journaux d’activité grâce à Azure Monitor](../azure-monitor/logs/log-query-overview.md)

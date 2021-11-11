@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ef288e776daaf7aa266d13068647bea1c5a4c27
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4117926fe8de79a295fa3c0a52c1ca54816496ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691886"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427985"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Résoudre les problèmes liés au service Azure VM Image Builder
 
@@ -91,8 +91,8 @@ Dans la plupart des cas, l’échec du déploiement de la ressource est due à d
 #### <a name="solution"></a>Solution
 
 Selon votre scénario, Azure VM Image Builder peut avoir besoin d’autorisations pour :
-- Image source ou groupe de ressources Shared Image Gallery
-- Image de distribution ou ressource Shared Image Gallery
+- Image source ou groupe de ressources Azure Compute Gallery (anciennement Shared Image Gallery)
+- Image de distribution ou ressource de Azure Compute Gallery
 - Compte de stockage, conteneur ou blob auquel le personnalisateur de fichiers accède 
 
 Pour plus d’informations sur la configuration des autorisations, consultez [Configurer les autorisations de service Azure Image Builder à l’aide d’Azure CLI](image-builder-permissions-cli.md) ou [Configurer les autorisations du service Azure Image Builder à l’aide de PowerShell](image-builder-permissions-powershell.md).
@@ -113,8 +113,8 @@ Autorisations manquantes.
 #### <a name="solution"></a>Solution
 
 Selon votre scénario, Azure VM Image Builder peut avoir besoin d’autorisations pour :
-* Image source ou groupe de ressources Shared Image Gallery
-* Image de distribution ou ressource Shared Image Gallery
+* Image source ou groupe de ressources Azure Compute Gallery
+* Image de distribution ou ressource de Azure Compute Gallery
 * Compte de stockage, conteneur ou blob auquel le personnalisateur de fichiers accède 
 
 Pour plus d’informations sur la configuration des autorisations, consultez [Configurer les autorisations de service Azure Image Builder à l’aide d’Azure CLI](image-builder-permissions-cli.md) ou [Configurer les autorisations du service Azure Image Builder à l’aide de PowerShell](image-builder-permissions-powershell.md).
@@ -176,7 +176,7 @@ Vous pouvez afficher le customization.log dans le compte de stockage du groupe d
 
 ### <a name="understanding-the-customization-log"></a>Fonctionnement du journal de personnalisation
 
-Le journal est détaillé. Il couvre la build d’image, notamment les problèmes liés à la distribution d’image tels que la réplication de Shared Image Gallery. Ces erreurs sont signalées dans le message d’erreur relatif à l’état du modèle d’image.
+Le journal est détaillé. Il couvre la build d’image, notamment les problèmes liés à la distribution d’image tels que la réplication d’Azure Compute Gallery. Ces erreurs sont signalées dans le message d’erreur relatif à l’état du modèle d’image.
 
 Le fichier customization.log comprend les étapes suivantes :
 
@@ -325,17 +325,17 @@ Le personnalisateur de fichiers télécharge un fichier volumineux.
 
 Le personnalisateur de fichiers est uniquement adapté au téléchargement de fichiers de petite taille (moins de 20 Mo). Pour les téléchargements de fichiers plus volumineux, utilisez un script ou une commande inlined. Par exemple, vous pouvez utiliser `wget` ou `curl`sous Linux. Sous Windows, vous pouvez utiliser `Invoke-WebRequest`.
 
-### <a name="error-waiting-on-shared-image-gallery"></a>Erreur lors de l’attente de Shared Image Gallery
+### <a name="error-waiting-on-azure-compute-gallery"></a>Erreur lors de l’attente d’Azure Compute Gallery
 
 #### <a name="error"></a>Error
 
 ```text
-Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in distributing 1 images out of total 1: {[Error 0] [Distribute 0] Error publishing MDI to shared image gallery:/subscriptions/<subId>/resourceGroups/xxxxxx/providers/Microsoft.Compute/galleries/xxxxx/images/xxxxxx, Location:eastus. Error: Error returned from SIG client while publishing MDI to shared image gallery for dstImageLocation: eastus, dstSubscription: <subId>, dstResourceGroupName: XXXXXX, dstGalleryName: XXXXXX, dstGalleryImageName: XXXXXX. Error: Error waiting on shared image gallery future for resource group: XXXXXX, gallery name: XXXXXX, gallery image name: XXXXXX.Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded}
+Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in distributing 1 images out of total 1: {[Error 0] [Distribute 0] Error publishing MDI to Azure Compute Gallery:/subscriptions/<subId>/resourceGroups/xxxxxx/providers/Microsoft.Compute/galleries/xxxxx/images/xxxxxx, Location:eastus. Error: Error returned from SIG client while publishing MDI to Azure Compute Gallery for dstImageLocation: eastus, dstSubscription: <subId>, dstResourceGroupName: XXXXXX, dstGalleryName: XXXXXX, dstGalleryImageName: XXXXXX. Error: Error waiting on Azure Compute Gallery future for resource group: XXXXXX, gallery name: XXXXXX, gallery image name: XXXXXX.Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded}
 ```
 
 #### <a name="cause"></a>Cause
 
-Image Builder a expiré lors de l’ajout et de la réplication de l’image dans Shared Image Gallery (SIG). Si l’image est injectée dans SIG, il peut être supposé que la génération de l’image a réussi. Toutefois, le processus global a échoué, car le générateur d’images attendait Shared Image Gallery pour terminer la réplication. Même si la génération a échoué, la réplication se poursuit. Vous pouvez récupérer les propriétés de la version de l’image en vérifiant la distribution *runOutput*.
+Image Builder a expiré lors de l’ajout et de la réplication de l’image dans la galerie Azure Compute Gallery. Si l’image est injectée dans SIG, il peut être supposé que la génération de l’image a réussi. Toutefois, le processus global a échoué, car le générateur d’images attendait Azure Compute Gallery pour terminer la réplication. Même si la génération a échoué, la réplication se poursuit. Vous pouvez récupérer les propriétés de la version de l’image en vérifiant la distribution *runOutput*.
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -624,7 +624,7 @@ Pour plus d’informations sur les capacités et limitations d’Azure DevOps, c
  
 #### <a name="solution"></a>Solution
 
-Vous pouvez héberger vos propres agents DevOps ou chercher à réduire la durée de votre build. Par exemple, si vous distribuez vers Shared Image Gallery, effectuez une réplication vers une région si vous souhaitez répliquer de façon asynchrone. 
+Vous pouvez héberger vos propres agents DevOps ou chercher à réduire la durée de votre build. Par exemple, si vous opérez une distribution vers la galerie Azure Compute Gallery, effectuez une réplication vers une seule région. si vous souhaitez répliquer de façon asynchrone. 
 
 ### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Ouverture de session Windows lente : « Veuillez patienter pendant l’installation des modules Windows »
 

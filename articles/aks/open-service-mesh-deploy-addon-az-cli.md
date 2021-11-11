@@ -6,58 +6,21 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: f5680d21abe1f4dffb163b6e0b16fd836e6a3fc2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cf89b21c3aceee55e121d918f21db4bcf7c51d42
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700939"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440485"
 ---
 # <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Déployer le module complémentaire AKS Open Service Mesh avec Azure CLI
 
 Cet article explique comment déployer le module complémentaire OSM sur AKS.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
 ## <a name="prerequisites"></a>Prérequis
 
 - Azure CLI, version 2.20.0 ou ultérieure
-- L’extension `aks-preview` version 0.5.5 ou ultérieure
-- OSM version 0.9.1 ou ultérieure
-
-## <a name="install-the-aks-preview-extension"></a>Installer l’extension aks-preview
-
-Vous aurez besoin de la version 0.5.24 ou d’une version ultérieure de l’extension Azure CLI _aks-preview_. Installez l’extension d’Azure CLI _aks-preview_ à l’aide de la commande [az extension add][az-extension-add]. Ou installez toutes les mises à jour disponibles à l’aide de la commande [az extension update][az-extension-update].
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-## <a name="register-the-aks-openservicemesh-preview-feature"></a>Inscrire la fonctionnalité d’évaluation `AKS-OpenServiceMesh`
-
-Pour créer un cluster AKS capable d’utiliser le module complémentaire Open Service Mesh, vous devez activer l’indicateur de fonctionnalité `AKS-OpenServiceMesh` sur votre abonnement.
-
-Inscrivez l’indicateur de fonctionnalité `AKS-OpenServiceMesh` à l’aide de la commande [az feature register][az-feature-register], comme indiqué dans l’exemple suivant :
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "AKS-OpenServiceMesh"
-```
-
-Quelques minutes sont nécessaires pour que l’état s’affiche _Registered_ (Inscrit). Vérifiez l’état de l’inscription à l’aide de la commande [az feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-OpenServiceMesh')].{Name:name,State:properties.state}"
-```
-
-Lorsque vous êtes prêt, actualisez l’inscription du fournisseur de ressources _Microsoft.ContainerService_ à l’aide de la commande [az provider register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+- OSM version 0.11.1 ou ultérieure
 
 ## <a name="install-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-a-new-aks-cluster"></a>Installer le module complémentaire Open Service Mesh (OSM) Azure Kubernetes Service (AKS) pour un nouveau cluster AKS
 
@@ -98,6 +61,9 @@ Pour un scénario de cluster AKS existant, vous allez activer le module complém
 
 Pour activer le module complémentaire AKS OSM, vous devez exécuter la commande `az aks enable-addons --addons` en transmettant le paramètre `open-service-mesh`.
 
+> [!NOTE]
+> Pour que le déploiement du module complémentaire OSM aboutisse, une seule instance de maillage OSM doit être déployée sur votre cluster. Si vous avez d’autres instances de maillage OSM sur votre cluster, désinstallez-les avant d’exécuter la commande `enable-addons`.
+
 ```azurecli-interactive
 az aks enable-addons --addons open-service-mesh -g <my-osm-aks-cluster-rg> -n <my-osm-aks-cluster-name>
 ```
@@ -136,6 +102,14 @@ Les commandes `kubectl` suivantes signalent l’état d’osm-controller.
 kubectl get deployments -n kube-system --selector app=osm-controller
 kubectl get pods -n kube-system --selector app=osm-controller
 kubectl get services -n kube-system --selector app=osm-controller
+```
+
+### <a name="check-osm-add-on-version"></a>Vérifier la version du module complémentaire OSM
+
+La version du module complémentaire OSM installée doit être v0.11.1 ou une version ultérieure. Pour vérifier cela, vous pouvez exécuter la commande suivante pour vérifier la version de l’image du contrôleur OSM, qui est encodé dans l’étiquette de l’image : 
+
+```azurecli-interactive
+kubectl get deployment -n kube-system osm-controller -o=jsonpath='{$.spec.template.spec.containers[:1].image}'
 ```
 
 ## <a name="accessing-the-aks-osm-add-on-configuration"></a>Accès à la configuration du module complémentaire AKS OSM
@@ -192,13 +166,21 @@ spec:
     useHTTPSIngress: false
 ```
 
-Notez que **enablePermissiveTrafficPolicyMode** est configuré sur **true**. Le mode de stratégie de trafic permissif dans OSM est un mode dans lequel l’application de la stratégie de trafic [SMI](https://smi-spec.io/) est ignorée. Dans ce mode, OSM découvre automatiquement les services qui font partie du maillage de services et programme des règles de stratégie de trafic sur chaque side-car de proxy Envoy pour pouvoir communiquer avec ces services.
+Notez que le paramètre **enablePermissiveTrafficPolicyMode** est configuré sur **true**. Le mode de stratégie de trafic permissif dans OSM est un mode dans lequel l’application de la stratégie de trafic [SMI](https://smi-spec.io/) est ignorée. Dans ce mode, OSM découvre automatiquement les services qui font partie du maillage de services et programme des règles de stratégie de trafic sur chaque side-car de proxy Envoy pour pouvoir communiquer avec ces services.
 
 > [!WARNING]
 > Avant de continuer, vérifiez que votre mode de stratégie de trafic permissif est défini sur true. Si ce n’est pas le cas, définissez-le sur **true** à l’aide de la commande ci-dessous.
 
 ```OSM Permissive Mode to True
 kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"enablePermissiveTrafficPolicyMode":true}}}' --type=merge
+```
+
+## <a name="disable-open-service-mesh-osm-add-on-for-your-aks-cluster"></a>Désactiver le module complémentaire Open Service Mesh (OSM) pour votre cluster AKS
+
+Pour désactiver le module complémentaire OSM, exécutez la commande suivante :
+
+```azurecli-interactive
+az aks disable-addons -n <AKS-cluster-name> -g <AKS-resource-group-name> -a open-service-mesh
 ```
 
 <!-- Links -->

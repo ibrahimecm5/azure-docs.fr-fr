@@ -1,18 +1,18 @@
 ---
 title: Gérer les modèles DTDL
 titleSuffix: Azure Digital Twins
-description: Comprendre comment créer, modifier et supprimer un modèle dans Azure Digital Twins.
+description: Découvrez comment gérer des modèles DTDL dans Azure Digital Twins, y compris comment les créer, les modifier et les supprimer.
 author: baanders
 ms.author: baanders
-ms.date: 8/30/2021
+ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2e5c137ceb08bd89dc70026639c6191b1c61f42d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 7ae5a3293b7b9ba4712c3762b18b6d9c66eab926
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223244"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507167"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Gérer les modèles Azure Digital Twins
 
@@ -97,10 +97,10 @@ Cette section décrit les points à prendre en considération pour mettre à jou
 Avant de procéder à des mises à jour de vos modèles, nous vous recommandons d’avoir une réflexion globale au sujet de votre solution et de l’impact des modifications que vous souhaitez apporter aux modèles. Dans une solution Azure Digital Twins, les modèles sont souvent interconnectés. Il est donc important de garder à l’esprit l’éventualité de modifications en cascade : quand vous mettez à jour un modèle, vous devrez peut-être également mettre à jour plusieurs autres modèles. Non seulement la mise à jour des modèles a un impact sur les jumeaux qui utilisent les modèles modifiés, mais elle peut aussi impacter le code d’entrée et de traitement, les applications clientes et les rapports automatisés.
 
 Voici quelques recommandations utiles pour gérer vos transitions de modèles sans problème :
-* Au lieu de modifier vos modèles de façon individuelle, adoptez une approche de mise à jour de l’ensemble de vos modèles quand cela est approprié pour garantir que les modèles et leurs relations sont toujours à jour les uns par rapport aux autres.
+* Au lieu de considérer les modèles comme des entités distinctes, songez à développer votre ensemble de modèles quand cela est approprié pour que les modèles et leurs relations soient toujours à jour les uns par rapport aux autres.
 * Traitez les modèles comme du code source et gérez-les dans le contrôle de code source. Travaillez sur vos modèles et leurs modifications avec la même rigueur et attention que pour tout autre code de votre solution.
 
-Lorsque vous êtes prêt à mettre à jour vos modèles, référez-vous à cette section, qui décrit les différentes stratégies de mise à jour possibles.
+Lorsque vous êtes prêt à poursuivre ce processus de mise à jour de vos modèles, référez-vous au reste de cette section, qui décrit les stratégies de mise à jour que vous pouvez implémenter.
 
 ### <a name="strategies-for-updating-models"></a>Stratégies de mise à jour des modèles
 
@@ -112,7 +112,7 @@ Deux stratégies sont possibles pour remplacer un modèle :
 * [Stratégie 1 : Charger une nouvelle version du modèle](#strategy-1-upload-new-model-version). Cette stratégie consiste à charger le modèle, en changeant le numéro de version, puis à mettre à jour les jumeaux pour qu’ils utilisent ce nouveau modèle. Les deux versions du modèle, l’ancienne et la nouvelle, coexistent dans votre instance jusqu’à ce que vous en supprimiez une.
     - **Utilisez cette stratégie quand** vous souhaitez uniquement mettre à jour certains des jumeaux qui utilisent le modèle, ou quand vous voulez vous assurer que les jumeaux restent toujours conformes à leurs modèles et accessibles en écriture durant la transition du modèle.
 * [Stratégie 2 : Supprimer l’ancien modèle et recharger le nouveau](#strategy-2-delete-old-model-and-reupload). Cette stratégie consiste à supprimer le modèle d’origine et à charger à la place le nouveau modèle, en utilisant les mêmes nom et ID (valeur DTMI). L’ancien modèle est alors entièrement remplacé par le nouveau. 
-    - **Utilisez cette stratégie quand** vous souhaitez mettre à jour tous les jumeaux qui utilisent ce modèle en même temps, ainsi que tout le code dépendant des modèles. Si la mise à jour d’un modèle comporte un changement cassant, les jumeaux ne seront pas conformes à leurs modèles pendant une brève période, le temps de la transition des jumeaux de l’ancien modèle vers le nouveau. La conséquence est que les jumeaux ne pourront pas être mis à jour tant que le nouveau modèle n’aura pas été chargé et que les jumeaux ne seront pas conformes à ce modèle.
+    - **Utilisez cette stratégie quand** vous souhaitez mettre à jour simultanément tous les jumeaux qui utilisent ce modèle, en plus de tout le code réagissant aux modèles. Si la mise à jour d’un modèle comporte un changement cassant, les jumeaux ne seront pas conformes à leurs modèles pendant une brève période, le temps de la transition des jumeaux de l’ancien modèle vers le nouveau. La conséquence est que les jumeaux ne pourront pas être mis à jour tant que le nouveau modèle n’aura pas été chargé et que les jumeaux ne seront pas conformes à ce modèle.
 
 >[!NOTE]
 > Il est déconseillé de faire des changements cassants dans vos modèles en dehors de la phase de développement.
@@ -244,7 +244,7 @@ En règle générale, les modèles peuvent être supprimés à tout moment.
 
 L’exception concerne les modèles dont dépendent d’autres modèles, qu’il s’agisse d’une relation `extends` ou en tant que composant. Par exemple, si un modèle ConferenceRoom étend un modèle Room, et qu’il possède un modèle ACUnit en tant que composant, vous ne pouvez pas supprimer Room ou ACUnit avant que ConferenceRoom ne supprime leurs références respectives. 
 
-Pour ce faire, vous pouvez mettre à jour le modèle dépendant pour supprimer les dépendances ou bien supprimer complètement le modèle dépendant.
+Pour ce faire, vous pouvez mettre à jour le modèle dépendant pour supprimer les dépendances, ou supprimer complètement le modèle dépendant.
 
 #### <a name="during-deletion-deletion-process"></a>Durant la suppression : Processus de suppression
 

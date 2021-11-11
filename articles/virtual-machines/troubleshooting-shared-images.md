@@ -1,23 +1,23 @@
 ---
 title: Résoudre les problèmes liés aux images partagées dans Azure
-description: Découvrez comment résoudre les problèmes des galeries d’images partagées.
+description: Découvrez comment résoudre les problèmes des galeries d’images partagées dans les galeries Azure Compute Gallery.
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 7/1/2021
-ms.openlocfilehash: 10e8b54145d5948eff55265b3b0bc0b413d2cd66
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a838879249bad2edfb8d5105e34cd7697a1f59e2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129054430"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437084"
 ---
-# <a name="troubleshoot-shared-image-galleries-in-azure"></a>Résoudre les problèmes liés aux galeries d’images partagées dans Azure
+# <a name="troubleshoot-images-in-an-azure-compute-gallery"></a>Résoudre les problèmes liés aux images dans une galerie Azure Compute Gallery
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles :heavy_check_mark: Groupes identiques uniformes
 
-Si vous rencontrez des problèmes en exécutant des opérations sur les galeries d’images partagées, les définitions d’image et les versions d’image, réexécutez la commande ayant échoué en mode débogage. Vous activez le mode débogage à l’aide du commutateur `--debug` dans l’interface CLI et du commutateur `-Debug` dans PowerShell. Après avoir localisé l’erreur, suivez cet article pour la corriger.
+Si vous rencontrez des problèmes lors de l’exécution d’opérations sur les ressources Azure Compute Gallery (anciennement Shared Image Gallery), telles que les galeries, les définitions d’images et les versions d’images, réexécutez la commande défaillante en mode débogage. Vous activez le mode débogage à l’aide du commutateur `--debug` dans l’interface CLI et du commutateur `-Debug` dans PowerShell. Après avoir localisé l’erreur, suivez cet article pour la corriger.
 
 
 ## <a name="creating-or-modifying-a-gallery"></a>Création ou modification d’une galerie ##
@@ -202,11 +202,11 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 **Solution de contournement** : choisissez une source avec le même système d’exploitation (Linux/Windows) que la définition d’image, ou créez/choisissez une nouvelle définition d’image ayant la même génération de système d’exploitation que la version d’image.
 
 **Message** : *La machine virtuelle source \<resourceID\> ne peut pas contenir de disque de système d’exploitation éphémère.*  
-**Cause** : la source dans \<resourceID\> contient un disque de système d’exploitation éphémère. Le service Shared Image Gallery ne prend pas en charge actuellement les disques de systèmes d’exploitation éphémères.  
+**Cause** : la source dans \<resourceID\> contient un disque de système d’exploitation éphémère. Le service Azure Compute Gallery ne prend pas en charge actuellement les disques de systèmes d’exploitation éphémères.  
 **Solution de contournement** : choisissez une autre source basée sur une machine virtuelle qui n’utilise pas de disque de système d’exploitation éphémère.
 
 **Message** : *La machine virtuelle source \<resourceID\> ne peut pas contenir de disque ['\<diskID\>'] stocké dans un type de compte SSD Ultra.*  
-**Cause** : le disque \<diskID\> est un disque SSD Ultra. Le service Shared Image Gallery ne prend pas en charge actuellement les disques SSD Ultra.  
+**Cause** : le disque \<diskID\> est un disque SSD Ultra. Le service Azure Compute Gallery ne prend pas en charge actuellement les disques SSD Ultra.  
 **Solution de contournement** : utilisez une source contenant uniquement des disques managés SSD Premium, des SSD Standard et/ou HDD Standard.
 
 **Message** : *La machine virtuelle source \<resourceID\> doit être créée à partir de disques managés.*  
@@ -222,7 +222,7 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 **Solution de contournement** : créez ou utilisez un jeu de chiffrement dans le même abonnement et la même région que la version d’image.
 
 **Message** : *La source chiffrée : « \<resourceID\> » se trouve dans un ID d’abonnement différent de celui de l’abonnement actuel de la version d’image de galerie « \<subscriptionID\_1\> ». Réessayez avec une ou plusieurs sources non chiffrées, ou utilisez l’abonnement de la source, « \<subcriptionID\_2\> », pour créer la version d’image de galerie.*  
-**Cause** : le service Shared Image Gallery ne prend pas en charge actuellement la création de versions d’images dans un autre abonnement d’une autre image source si l’image source est chiffrée.  
+**Cause** : le service Azure Compute Gallery ne prend pas en charge actuellement la création de versions d’images dans un autre abonnement d’une autre image source si l’image source est chiffrée.  
 **Solution de contournement** : utilisez une source non chiffrée, ou créez la version d’image dans le même abonnement que la source.
 
 **Message** : *Le jeu de chiffrement de disque \<diskEncryptionSetID\> est introuvable.*  
@@ -282,7 +282,7 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 **Solution de contournement** : utilisez les numéros d’unité logique et les disques de données de la version d’image existante.
 
 **Message** : *Le jeu de chiffrement de disque \<diskEncryptionSetID\> doit se trouver dans le même abonnement \<subscriptionID\> que la ressource de galerie.*  
-**Cause** : le service Shared Image Gallery ne prend pas en charge actuellement l’utilisation d’un jeu de chiffrement de disque dans un autre abonnement.  
+**Cause** : le service Azure Compute Gallery ne prend pas en charge actuellement l’utilisation d’un jeu de chiffrement de disque dans un autre abonnement.  
 **Solution de contournement** : créez la version d’image et le jeu de chiffrement de disque dans le même abonnement.
 
 **Message** : *La réplication a échoué dans cette région car la taille de la ressource source « GalleryImageVersion » de 2048 dépasse la taille maximale de 1024 prise en charge.*  
@@ -294,7 +294,7 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 **Solution de contournement** : attendez que l’événement de suppression se termine, puis recréez la version de l’image.
 
 **Message** : *Le chiffrement n’est pas pris en charge pour la ressource source « \<sourceID> ». Utilisez un autre type de ressource source prenant en charge le chiffrement, ou supprimez les propriétés de chiffrement.*  
-**Cause** : la Shared Image Gallery ne prend actuellement en charge que le chiffrement des machines virtuelles, des disques, des instantanés et des images managées. L’une des sources fournies pour la version de l’image ne figure pas dans la liste précédente des sources prenant en charge le chiffrement.  
+**Cause** : le service Azure Compute Gallery ne prend actuellement en charge que le chiffrement des machines virtuelles, des disques, des instantanés et des images managées. L’une des sources fournies pour la version de l’image ne figure pas dans la liste précédente des sources prenant en charge le chiffrement.  
 **Solution de contournement** : supprimez le chiffrement de disque défini dans la version de l’image, et contactez l’équipe de support.
 
 ## <a name="creating-or-updating-a-vm-or-scale-sets-from-an-image-version"></a>Création ou la mise à jour d’une machine virtuelle ou de groupes identiques à partir d’une version d’image ##
@@ -312,7 +312,7 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 **Solution de contournement** : Assurez-vous qu’il existe au moins une version d’image dans la région pour laquelle « Exclure de la plus récente » est défini sur False. 
 
 **Message** : *Le client a l’autorisation d’effectuer l’action « Microsoft.Compute/galleries/images/versions/read » sur l’étendue \<resourceID\>, mais le locataire actuel, \<tenantID\>, n’est pas autorisé à accéder à l’abonnement lié \<subscriptionID\>.*  
-**Cause** : la machine virtuelle ou le groupe identique ont été créés à l’aide d’une image SIG dans un autre locataire. Vous avez tenté d’apporter une modification à la machine virtuelle ou au groupe identique, mais vous n’avez pas accès à l’abonnement possédant l’image.  
+**Cause** : la machine virtuelle ou le groupe identique ont été créés à l’aide d’une image de galerie dans un autre locataire. Vous avez tenté d’apporter une modification à la machine virtuelle ou au groupe identique, mais vous n’avez pas accès à l’abonnement possédant l’image.  
 **Solution de contournement** : contactez le propriétaire de l’abonnement de la version d’image pour accorder un accès en lecture à la version d’image.
 
 **Message** : *L’image de galerie \<resourceID\> n’est pas disponible dans la région \<region\>. Contactez le propriétaire de l’image à répliquer dans cette région, ou modifiez la région demandée.*  
@@ -331,7 +331,7 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 **Cause** : l’image source actuelle pour le groupe identique est généralisée, mais elle est mise à jour avec une image source spécialisée. L’image source actuelle et la nouvelle image source pour un groupe identique doivent avoir le même état.  
 **Solution de contournement** : pour mettre à jour le groupe identique, utilisez une version d’image généralisée.
 
-**Message** : *Le jeu de chiffrement de disque \<diskEncryptionSetID\> dans la galerie d'images partagées \<versionID\> appartient à l'abonnement \<subscriptionID\_1\> et ne peut pas être utilisé avec la ressource «  » dans l'abonnement \<subscriptionID\_2\>*  
+**Message** : *Le jeu de chiffrement de disque \<diskEncryptionSetID\> dans la galerie Azure Compute Gallery \<versionID\> appartient à l’abonnement \<subscriptionID\_1\> et ne peut pas être utilisé avec la ressource « » dans l’abonnement \<subscriptionID\_2\>*  
 **Cause** : le jeu de chiffrement de disque utilisé pour chiffrer la version d’image réside dans un abonnement différent de l’abonnement hébergeant la version d’image.  
 **Solution de contournement** : utilisez le même abonnement pour la version d’image et le jeu de chiffrement du disque.
 
@@ -346,12 +346,12 @@ Si vous rencontrez des problèmes en exécutant des opérations sur les galeries
 ## <a name="creating-a-disk-from-an-image-version"></a>Création d’un disque à partir d’une version d’image ##
 
 **Message** : *La valeur du paramètre imageReference n’est pas valide.*  
-**Cause** : vous avez tenté d’exporter à partir d’une version d’image SIG vers un disque, mais vous avez utilisé une position de numéro d'unité logique qui n’existe pas sur l’image.    
+**Cause** : vous avez tenté d’exporter à partir d’une version d’image de galerie vers un disque, mais vous avez utilisé une position de numéro d’unité logique qui n’existe pas sur l’image.    
 **Solution de contournement** : vérifiez la version d’image pour connaître les positions de lun utilisées.
 
 ## <a name="sharing-resources"></a>Partage des ressources
 
-Le partage des ressources de galerie d’images, de définition d’image et de version d’image entre abonnements est activé à l’aide du [contrôle d’accès en fonction du rôle Azure (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md). 
+Le partage des ressources de galerie, de définition d’image et de version d’image entre abonnements est activé à l’aide du [contrôle d’accès en fonction du rôle Azure (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md). 
 
 ## <a name="replication-speed"></a>Vitesse de réplication
 
@@ -359,9 +359,9 @@ Utilisez l’indicateur **--expand ReplicationStatus** pour vérifier si la rép
 
 ## <a name="azure-limits-and-quotas"></a>Limites et quotas Azure 
 
-[Les limites et quotas Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) s’appliquent à toutes les ressources de galerie d’images partagées, définition d’image et version d’image. Vérifiez que vous êtes dans les limites de vos abonnements. 
+[Les limites et quotas Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) s’appliquent à toutes les ressources de galerie, de définition d’image et de version d’image Azure Compute Gallery. Vérifiez que vous êtes dans les limites de vos abonnements. 
 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En savoir plus sur les [ galeries d’images partagées](./shared-image-galleries.md)
+Apprenez-en davantage sur les [galeries Azure Compute Gallery](./shared-image-galleries.md).

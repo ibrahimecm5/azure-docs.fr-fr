@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: e16734ac0ff53f778fad368913d89bcea3869ee3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ab30b82a9bac9d06e2d5228b2004c36d465d392
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097722"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458206"
 ---
 #  <a name="network-isolation-and-private-endpoints"></a>Isolement réseau et points de terminaison privés
 
@@ -45,16 +45,16 @@ Les points de terminaison privés sont fournis par [Azure Private Link](../../..
 5. Ouvrez l’onglet *Mise en réseau* du service QnA Maker managé, puis sous *Autoriser l’accès depuis*, sélectionnez l’option *Points de terminaison privés et réseaux sélectionnés* et cliquez sur *Enregistrer*.
  
 > [!div class="mx-imgBorder"]
-> ![Mise en réseau du service Analyse de texte](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-custom-qna.png)
+> ![Mise en réseau d’Analyse de texte](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-custom-qna.png)
 
 Cela permet d’établir une connexion de point de terminaison privée entre la ressource de langue et l’instance de service Azure Recherche cognitive. Vous pouvez vérifier la connexion au point de terminaison privé sous l’onglet *Mise en réseau* de l’instance du service Recherche cognitive Azure. Une fois l’intégralité de l’opération terminée, vous pouvez utiliser votre ressource de langue avec la réponse aux questions activée.
 
 ![Service de mise en réseau géré](../../../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-networking-3.png)
 
 ## <a name="support-details"></a>Détails de la prise en charge
- * Une fois que vous avez activé l’accès privé à votre service Analyse de texte, nous ne prenons plus en charge les modifications apportées au service Azure Recherche cognitive. Si vous modifiez le service Recherche cognitive Azure via l’onglet « Fonctionnalités » après avoir activé l’accès privé, le service Analyse de texte devient inutilisable.
+ * Une fois que vous avez activé l’accès privé à vos ressources de langue, nous ne prenons plus en charge les modifications apportées au service Recherche cognitive Azure. Si vous modifiez le service Recherche cognitive Azure via l’onglet « Fonctionnalités » après avoir activé l’accès privé, la ressource de langue devient inutilisable.
 
- * Après avoir établi une connexion au point de terminaison privé, si vous basculez la mise en réseau du service Recherche cognitive Azure sur « Publique », vous ne pouvez plus utiliser le service Analyse de texte. La mise en réseau du service Recherche Azure doit être « Privée » pour que la connexion au point de terminaison privé fonctionne.
+ * Après avoir établi une connexion au point de terminaison privé, si vous basculez la mise en réseau du service Recherche cognitive Azure sur « Publique », vous ne pouvez plus utiliser la ressource de langue. La mise en réseau du service Recherche Azure doit être « Privée » pour que la connexion au point de terminaison privé fonctionne.
 
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Restreindre l’accès à une ressource Recherche cognitive
 

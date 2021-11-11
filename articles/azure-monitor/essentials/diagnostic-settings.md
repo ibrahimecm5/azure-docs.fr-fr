@@ -1,17 +1,17 @@
 ---
 title: Créer des paramètres de diagnostic pour envoyer des journaux et des métriques de plateforme à différentes destinations
 description: Envoyez les journaux et métriques de plateforme Azure Monitor vers les journaux d’activité Azure Monitor, le stockage Azure ou Azure Event Hubs à l’aide d’un paramètre de diagnostic.
-author: bwren
-ms.author: bwren
+author: rboucher
+ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/09/2021
-ms.openlocfilehash: 50eb92441c248884930e556551a92acb9e43661b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/02/2021
+ms.openlocfilehash: 39cb496d02ca77a65e4adff7aabf591b54e07ea4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130176403"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459004"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Créer des paramètres de diagnostic pour envoyer des journaux et des métriques de plateforme à différentes destinations
 Les [journaux de plateforme](./platform-logs-overview.md) dans Azure, y compris le journal d’activité Azure et les journaux de ressources, fournissent des informations de diagnostic et d’audit détaillées pour les ressources Azure et la plateforme Azure dont elles dépendent. Les [métriques de plateforme](./data-platform-metrics.md) sont collectées par défaut et généralement stockées dans la base de données de métriques Azure Monitor. Cet article fournit des détails sur la création et la configuration de paramètres de diagnostic pour envoyer les journaux de plateforme et les métriques de plateforme vers différentes destinations.
@@ -47,6 +47,7 @@ Il est possible d’envoyer des journaux et métriques de plateforme aux destina
 | [Espace de travail Log Analytics](../logs/design-logs-deployment.md) | L’envoi de journaux et de métriques vers un espace de travail Log Analytics vous permet de les analyser avec d’autres données de supervision collectées par Azure Monitor à l’aide de requêtes de journal puissantes, ainsi que d’exploiter d’autres fonctionnalités d’Azure Monitor, telles que les alertes et les visualisations. |
 | [Event Hubs](../../event-hubs/index.yml) | L’envoi de journaux et de métriques à Event Hubs vous permet de transmettre en continu des données à des systèmes externes tels que des solutions SIEM tierces et d’autres solutions d’analytique des journaux d’activité.  |
 | [Compte Azure Storage](../../storage/blobs/index.yml) | L’archivage des journaux et des métriques dans un compte de stockage Azure est utile à des fins d’audit, d’analyse statique ou de sauvegarde. Par rapport aux journaux d’activité Azure Monitor et à l’espace de travail Log Analytics, le stockage Azure est moins onéreux et les journaux peuvent y être conservés indéfiniment.  |
+| [Intégrations partenaires d’Azure Monitor](/azure/partner-solutions/overview/)| Intégrations spécialisées entre Azure Monitor et d’autres plateformes de surveillance non-Microsoft. |
 
 
 ### <a name="destination-requirements"></a>Exigences de destination
@@ -123,12 +124,12 @@ Vous pouvez configurer des paramètres de diagnostic sur le portail Azure à par
         ![Envoyer à Stockage](media/diagnostic-settings/storage-settings-new.png)
 
         > [!TIP]
-        > Envisagez de définir la stratégie de rétention sur 0 et de supprimer manuellement vos données du stockage à l’aide d’une tâche planifiée afin d’éviter toute confusion à l’avenir.
+        > Envisagez de définir la stratégie de rétention sur 0, et utilisez la [Stratégie de cycle de vie de S](/azure/storage/blobs/lifecycle-management-policy-configure) ou supprimez vos données du stockage à l’aide d’une tâche planifiée. Ces stratégies sont susceptibles de fournir un comportement plus cohérent. 
         >
-        > Tout d’abord, si vous utilisez le stockage pour l’archivage, vous souhaitez généralement que vos données soient préservées plus de 365 jours. Ensuite, si vous choisissez une stratégie de rétention supérieure à 0, la date d’expiration est jointe aux journaux au moment du stockage. Vous ne pouvez pas modifier la date de ces journaux une fois qu’ils sont stockés.
-        >
-        > Par exemple, si vous définissez la stratégie de rétention pour *WorkflowRuntime* sur 180 jours, puis que vous la définissez 24 heures plus tard sur 365 jours, les journaux stockés pendant ces 24 heures sont automatiquement supprimés après 180 jours, tandis que tous les journaux suivants de ce type seront automatiquement supprimés après 365 jours. La modification ultérieure de la stratégie de rétention ne permet pas de conserver les journaux des premières 24 heures pendant 365 jours.
-
+        > Tout d’abord, si vous utilisez le stockage pour l’archivage, vous souhaitez généralement que vos données soient préservées plus de 365 jours. Ensuite, si vous choisissez une stratégie de rétention supérieure à 0, la date d’expiration est jointe aux journaux au moment du stockage. Vous ne pouvez pas modifier la date de ces journaux une fois qu’ils sont stockés. Par exemple, si vous définissez la stratégie de rétention pour *WorkflowRuntime* sur 180 jours, puis que vous la définissez 24 heures plus tard sur 365 jours, les journaux stockés pendant ces 24 heures sont automatiquement supprimés après 180 jours, tandis que tous les journaux suivants de ce type seront automatiquement supprimés après 365 jours. La modification ultérieure de la stratégie de rétention ne permet pas de conserver les journaux des premières 24 heures pendant 365 jours.
+    
+     1. **Intégration de partenaires** : vous devez d’abord installer une intégration de partenaires dans votre abonnement. Pour plus d’informations, consultez [Intégrations de partenaires d’Azure Monitor](/azure/partner-solutions/overview/). 
+    
 6. Cliquez sur **Enregistrer**.
 
 Après quelques instants, le nouveau paramètre apparaît dans la liste des paramètres de cette ressource, et les journaux sont envoyés aux destinations spécifiées au fur et à mesure de la génération de nouvelles données d’événement. Un délai de 15 minutes peut s’écouler entre le moment où un événement est émis et celui où il [s’affiche dans un espace de travail Log Analytics](../logs/data-ingestion-time.md).

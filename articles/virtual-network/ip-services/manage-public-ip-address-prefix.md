@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 9d70a60a115f1ddcb2b2253a78aeec1563ec8e8a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 824d89126252a0690b93a2129f47d8e02b728694
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368511"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560109"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Créer, changer ou supprimer un préfixe d’adresse IP publique
 
@@ -61,6 +61,9 @@ Vous pouvez également utiliser les commandes CLI ou PowerShell ci-dessous avec 
 |---|---|
 |Interface de ligne de commande|[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
+
+>[!NOTE]
+>Lors de la demande d’une adresse IP publique à partir d’un préfixe d’adresse IP publique, l’allocation n’est pas déterministe ou séquentielle. Si une demande d’adresse IP publique spécifique à partir d’un préfixe d’adresse IP publique est requise, les commandes PowerShell ou CLI le permettent.  Pour PowerShell, utilisez le paramètre `IpAddress` (suivi de l’adresse IP souhaitée). Pour CLI, utilisez le paramètre `ip-address` (suivi de l’adresse IP souhaitée).
 
 >[!NOTE]
 >Seules les adresses IP publiques créées avec la référence (SKU) standard peuvent être attribuées à partir de la plage du préfixe. Pour en savoir plus sur les références (SKU) d’adresses IP publiques, consultez [Adresse IP publique](public-ip-addresses.md#public-ip-addresses).

@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 7040b9b813d57d1ad10b2406e8167ac2ec0cd690
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7def4d2afac4a1f52db89defb226857b7f8b41fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166392"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468344"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Réplicas en lecture dans Azure Database pour MySQL - Serveur flexible
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> La fonctionnalité Réplicas en lecture dans Azure Database pour MySQL – Serveur flexible est disponible en préversion.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 MySQL est l’un des moteurs de base de données couramment utilisés pour exécuter des applications web et mobiles à l’échelle d’Internet. La plupart de nos clients s’en servent pour leurs services de formation en ligne, services de diffusion vidéo, solutions de paiement numérique, plateformes de commerce électronique, services de jeux, portails d’actualité, administrations publiques et sites web de santé. Ces services sont requis à des fins de mise à l’échelle à mesure que le trafic sur l’application web ou mobile augmente.
 
@@ -116,19 +113,19 @@ Une fois que votre application est en mesure de traiter les lectures et les écr
 
 ## <a name="global-transaction-identifier-gtid"></a>Identificateur de transaction global (GTID)
 
-L’identificateur de transaction global (GTID) est un identificateur unique créé pour chaque transaction validée sur un serveur source. Par défaut, il est désactivé dans Azure Database pour MySQL - Serveur flexible. Le GTID est pris en charge sur les versions 5.7 et 8.0. Pour en savoir plus sur le GTID et son utilisation lors de la réplication, consultez la documentation relative à la [réplication avec GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) de MySQL.
+L’identificateur de transaction global (GTID) est un identificateur unique créé pour chaque transaction validée sur un serveur source. Par défaut, il est désactivé dans le serveur flexible Azure Database pour MySQL. Le GTID est pris en charge sur les versions 5.7 et 8.0. Pour en savoir plus sur le GTID et son utilisation lors de la réplication, consultez la documentation relative à la [réplication avec GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) de MySQL.
 
-Les paramètres serveur suivants sont disponibles pour la configuration du GTID : 
+Les paramètres serveur suivants sont disponibles pour la configuration du GTID :
 
 |**Paramètre serveur**|**Description**|**Valeur par défaut**|**Valeurs**|
 |--|--|--|--|
 |`gtid_mode`|Indique si des GTID sont utilisés pour identifier les transactions. Les modifications entre modes ne peuvent être effectuées qu'une étape à la fois, dans l'ordre croissant (par exemple, `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF*`|`OFF` : Les nouvelles transactions et les transactions de réplication doivent être anonymes. <br> `OFF_PERMISSIVE` : Les nouvelles transactions sont anonymes. Les transactions répliquées peuvent être des transactions anonymes ou des transactions GTID. <br> `ON_PERMISSIVE` : Les nouvelles transactions sont des transactions GTID. Les transactions répliquées peuvent être des transactions anonymes ou des transactions GTID. <br> `ON` : Les nouvelles transactions et les transactions répliquées doivent être des transactions GTID.|
-|`enforce_gtid_consistency`|Applique la cohérence GTID en autorisant uniquement l'exécution des instructions qui peuvent être consignées de manière sécurisée sur le plan transactionnel. Cette valeur doit être définie sur `ON` avant d'activer la réplication GTID. |`OFF*`|`OFF` : Toutes les transactions sont autorisées à enfreindre la cohérence GTID.  <br> `ON` : Aucune transaction n'est autorisée à enfreindre la cohérence GTID. <br> `WARN` : Toutes les transactions sont autorisées à enfreindre la cohérence GTID, mais un avertissement est généré. | 
+|`enforce_gtid_consistency`|Applique la cohérence GTID en autorisant uniquement l'exécution des instructions qui peuvent être consignées de manière sécurisée sur le plan transactionnel. Cette valeur doit être définie sur `ON` avant d'activer la réplication GTID. |`OFF*`|`OFF` : Toutes les transactions sont autorisées à enfreindre la cohérence GTID.  <br> `ON` : Aucune transaction n'est autorisée à enfreindre la cohérence GTID. <br> `WARN` : Toutes les transactions sont autorisées à enfreindre la cohérence GTID, mais un avertissement est généré. |
 
 **Pour Azure Database pour MySQL - Serveurs flexibles avec la fonctionnalité de haute disponibilité activée, la valeur par défaut est définie sur `ON`*
 > [!NOTE]
 >
-> * Une fois le GTID activé, vous ne pouvez pas le désactiver. Si vous avez besoin de désactiver le GTID, contactez le support technique. 
+> * Une fois le GTID activé, vous ne pouvez pas le désactiver. Si vous avez besoin de désactiver le GTID, contactez le support technique.
 >
 > * La modification de la valeur d’un GTID ne peut être effectuée qu’une étape à la fois dans l’ordre croissant des modes. Par exemple, si gtid_mode est défini sur OFF_PERMISSIVE, il est possible de le changer en ON_PERMISSIVE mais pas en ON.
 >
@@ -154,7 +151,7 @@ Si le GTID est activé sur un serveur source (`gtid_mode` = ON), il sera égalem
 | Réplicas arrêtés | Si vous arrêtez la réplication entre un serveur source et un réplica en lecture, le réplica arrêté devient un serveur autonome qui accepte aussi bien les lectures que les écritures. Le serveur autonome ne peut pas être retransformé en réplica. |
 | Serveurs sources et autonomes supprimés | Lorsqu’un serveur source est supprimé, la réplication est arrêtée sur tous les réplicas en lecture. Ces réplicas deviennent automatiquement des serveurs autonomes pouvant accepter des lectures et des écritures. Le serveur source lui-même est supprimé. |
 | Comptes d'utilisateurs | Les utilisateurs sur le serveur source sont répliqués sur les réplicas en lecture. Vous ne pouvez vous connecter à un réplica en lecture qu’avec des comptes d’utilisateur disponibles sur le serveur source. |
-| Paramètres de serveur | Pour empêcher les données de se désynchroniser et pour éviter leur perte ou leur endommagement potentiels, certains paramètres de serveur sont verrouillés et ne peuvent pas être mis à jour lors de l’utilisation des réplicas en lecture. <br> Les paramètres de serveur suivants sont verrouillés sur les serveurs sources et réplicas :<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Le paramètre [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) est verrouillé sur les serveurs réplicas. <br> Pour mettre à jour l’un des paramètres ci-dessus sur le serveur source, supprimez les serveurs réplicas, mettez à jour la valeur du paramètre sur la source, puis recréez les réplicas. 
+| Paramètres de serveur | Pour empêcher les données de se désynchroniser et pour éviter leur perte ou leur endommagement potentiels, certains paramètres de serveur sont verrouillés et ne peuvent pas être mis à jour lors de l’utilisation des réplicas en lecture. <br> Les paramètres de serveur suivants sont verrouillés sur les serveurs sources et réplicas :<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Le paramètre [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) est verrouillé sur les serveurs réplicas. <br> Pour mettre à jour l’un des paramètres ci-dessus sur le serveur source, supprimez les serveurs réplicas, mettez à jour la valeur du paramètre sur la source, puis recréez les réplicas.
 <br> Quand vous configurez des paramètres au niveau de la session comme « foreign_keys_checks » sur le réplica en lecture, vérifiez que les valeurs de paramètre définies sur le réplica en lecture sont cohérentes avec celles du serveur source.|
 | Autre | - La création d’un réplica d’un réplica n’est pas prise en charge. <br> - Les tables en mémoire peuvent entraîner la désynchronisation des réplicas. Il s’agit d’une limitation de la technologie de réplication MySQL. Pour plus d’informations, lisez la [documentation de référence MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html). <br>- Vérifiez que les tables du serveur source possèdent des clés primaires. L’absence de clés primaires peut entraîner une latence de réplication entre la source et les réplicas.<br>- Passer en revue la liste complète des limitations relatives à la réplication MySQL dans la [documentation MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
 

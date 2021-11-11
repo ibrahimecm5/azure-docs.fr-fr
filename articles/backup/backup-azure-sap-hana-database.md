@@ -2,13 +2,16 @@
 title: Sauvegarder une base de données SAP HANA sur Azure avec Sauvegarde Azure
 description: Dans cet article, découvrez comment sauvegarder des bases de données SAP HANA sur des machines virtuelles Azure avec le service Sauvegarde Azure.
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: 472a83ddac9b88179f583868ba4e19136b147154
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 5c92daa02a98e87f440bc76c114f5b6839eadd08
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236038"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439635"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sauvegarder des bases de données SAP HANA dans des machines virtuelles Azure
 
@@ -102,19 +105,28 @@ Dans le coffre Recovery Services, vous pouvez activer la restauration inter-rég
 
 ## <a name="discover-the-databases"></a>Détecter les bases de données
 
-1. Dans le coffre, dans **Démarrer**, sélectionnez **Sauvegarde**. Dans la zone **Où s’exécute votre charge de travail ?** , sélectionnez **SAP HANA dans les machines virtuelles Azure**.
-2. Sélectionnez **Démarrer la découverte**. Cette opération lance la détection des machines virtuelles Linux non protégées dans la région du coffre.
+1. Sur le portail Azure, accédez à **Centre de sauvegarde**, puis cliquez sur **+Sauvegarde**.
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/backup-center-configure-inline.png" alt-text="Capture d’écran montrant comment démarrer la recherche de bases de données SAP HANA." lightbox="./media/backup-azure-sap-hana-database/backup-center-configure-expanded.png":::
+
+1. Sélectionnez **SAP HANA sur machine virtuelle Azure** comme type de source de données, sélectionnez un coffre Recovery Services à utiliser pour la sauvegarde, puis cliquez sur **Continuer**.
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-vault.png" alt-text="Capture d’écran montrant comment sélectionner une base de données SAP HANA dans une machine virtuelle Azure.":::
+
+1. Sélectionnez **Démarrer la découverte**. Cette opération lance la détection des machines virtuelles Linux non protégées dans la région du coffre.
 
    * Après la détection, les machines virtuelles non protégées apparaissent dans le portail en étant répertoriées par nom et groupe de ressources.
    * Si une machine virtuelle n’est pas répertoriée alors qu’elle devrait l’être, vérifiez si elle a déjà été sauvegardée dans un coffre.
    * Plusieurs machines virtuelles peuvent avoir le même nom, mais appartenir à différents groupes de ressources.
 
-3. Dans **Sélectionner les machines virtuelles**, sélectionnez le lien pour télécharger le script qui donne les autorisations au service Sauvegarde Azure d’accéder aux machines virtuelles SAP HANA pour la découverte des bases de données.
-4. Exécutez le script sur chacune des machines virtuelles hébergeant les bases de données SAP HANA que vous souhaitez sauvegarder.
-5. Après avoir exécuté le script sur les machines virtuelles, dans **Sélectionner les machines virtuelles**, sélectionnez les machines souhaitées. Sélectionnez ensuite **Découvrir les bases de données**.
-6. Le service Sauvegarde Azure détecte toutes les bases de données SAP HANA résidant sur la machine virtuelle. Lors de la détection, le service Sauvegarde Azure inscrit la machine virtuelle auprès du coffre et y installe une extension. Aucun agent n’est installé sur la base de données.
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-discover-databases.png" alt-text="Capture d’écran montrant la sélection de l’option Démarrer la détection.":::
 
-    ![Détection des bases de données SAP HANA](./media/backup-azure-sap-hana-database/hana-discover.png)
+1. Dans **Sélectionner les machines virtuelles**, sélectionnez le lien pour télécharger le script qui donne les autorisations au service Sauvegarde Azure d’accéder aux machines virtuelles SAP HANA pour la découverte des bases de données.
+1. Exécutez le script sur chacune des machines virtuelles hébergeant les bases de données SAP HANA que vous souhaitez sauvegarder.
+1. Après avoir exécuté le script sur les machines virtuelles, dans **Sélectionner les machines virtuelles**, sélectionnez les machines souhaitées. Sélectionnez ensuite **Découvrir les bases de données**.
+1. Le service Sauvegarde Azure détecte toutes les bases de données SAP HANA résidant sur la machine virtuelle. Lors de la détection, le service Sauvegarde Azure inscrit la machine virtuelle auprès du coffre et y installe une extension. Aucun agent n’est installé sur la base de données.
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-virtual-machines-inline.png" alt-text="Capture d’écran montrant les bases de données SAP HANA découvertes." lightbox="./media/backup-azure-sap-hana-database/hana-select-virtual-machines-expanded.png":::
 
 ## <a name="configure-backup"></a>Configurer une sauvegarde  
 
@@ -122,13 +134,16 @@ Maintenant, activez la sauvegarde.
 
 1. À l’étape 2, sélectionnez **Configurer la sauvegarde**.
 
-    ![Configurez une sauvegarde](./media/backup-azure-sap-hana-database/configure-backup.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-configure-backups.png" alt-text="Capture d’écran montrant la configuration de la sauvegarde.":::
+
 2. Dans **Sélectionner les éléments à sauvegarder**, sélectionnez toutes les bases de données que vous souhaitez protéger, puis choisissez **OK**.
 
-    ![Sélectionner les éléments à sauvegarder](./media/backup-azure-sap-hana-database/select-items.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-databases-inline.png" alt-text="Capture d’écran montrant la sélection des bases de données à sauvegarder." lightbox="./media/backup-azure-sap-hana-database/hana-select-databases-expanded.png":::
+
 3. Dans **Stratégie de sauvegarde** > **Choisir une stratégie de sauvegarde**, créez une stratégie de sauvegarde pour les bases de données en suivant les instructions ci-dessous.
 
-    ![Choisir une stratégie de sauvegarde](./media/backup-azure-sap-hana-database/backup-policy.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-policy-summary.png" alt-text="Capture d’écran montrant le choix de la stratégie de sauvegarde.":::
+
 4. Après avoir créé la stratégie, dans le menu **Sauvegarde**, sélectionnez **Activer la sauvegarde**.
 
     ![Activer la sauvegarde](./media/backup-azure-sap-hana-database/enable-backup.png)
@@ -142,7 +157,7 @@ Une stratégie de sauvegarde définit le moment auquel les sauvegardes sont effe
 * Plusieurs coffres peuvent utiliser la même stratégie de sauvegarde, mais vous devez appliquer la stratégie de sauvegarde à chaque coffre.
 
 >[!NOTE]
->Sauvegarde Azure ne s’ajuste pas automatiquement au changement d’heure lorsque vous sauvegardez une base de données SAP HANA s’exécutant sur une machine virtuelle Azure.
+>Sauvegarde Azure ne s’ajuste pas automatiquement au changement d’heure lorsque vous sauvegardez une base de données SAP HANA qui s’exécute dans une machine virtuelle Azure.
 >
 >Modifiez la stratégie manuellement en fonction des besoins.
 

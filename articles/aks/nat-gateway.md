@@ -1,0 +1,94 @@
+---
+title: NAT Gateway managé (préversion)
+description: Découvrez comment créer un cluster AKS avec l’intégration NAT managée
+services: container-service
+ms.topic: article
+ms.date: 10/26/2021
+ms.author: juda
+ms.openlocfilehash: fa93f4d0f72e2c8060a934f177db2dd53b96c7c5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131479083"
+---
+# <a name="managed-nat-gateway-preview"></a>NAT Gateway managé (préversion)
+
+Même si les clients AKS sont en mesure d’acheminer le trafic de sortie via un équilibreur de charge Azure Load Balancer, il existe des limites quant à la quantité de flux de trafic sortants possible. 
+
+La passerelle Azure NAT Gateway autorise jusqu’à 64 000 flux de trafic UDP et TCP sortants par adresse IP, avec un maximum de 16 adresses IP.
+
+Cet article vous montre comment créer un cluster AKS avec une passerelle NAT Gateway managée pour le trafic sortant.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+## <a name="before-you-begin"></a>Avant de commencer
+
+Pour utiliser la passerelle NAT managée, vous devez disposer des éléments suivants :
+
+* La version la plus récente d’Azure CLI
+* L’extension `aks-preview` version 0.5.31 ou ultérieure
+* Kubernetes version 1.20.x ou ultérieure
+
+
+### <a name="register-the-aks-natgatewaypreview-feature-flag"></a>Inscrire l’indicateur de fonctionnalité `AKS-NATGatewayPreview`
+
+Pour utiliser la fonctionnalité de NAT Gateway, vous devez activer l’indicateur de fonctionnalité `AKS-NATGatewayPreview` sur votre abonnement. 
+
+```azurecli
+az feature register --namespace "Microsoft.ContainerService" --name "AKS-NATGatewayPreview"
+```
+Vous pouvez vérifier l’état de l’enregistrement à l’aide de la commande [az feature list][az-feature-list] :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-NATGatewayPreview')].{Name:name,State:properties.state}"
+```
+
+Lorsque vous êtes prêt, actualisez l’inscription du fournisseur de ressources *Microsoft.ContainerService* à l’aide de la commande [az provider register][az-provider-register] :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+
+## <a name="create-an-aks-cluster-with-a-managed-nat-gateway"></a>Créer un cluster AKS avec une passerelle NAT Gateway managée
+Pour créer un cluster AKS avec une nouvelle passerelle NAT Gateway managée, utilisez `--outbound-type managedNATGateway`, ainsi que `--nat-gateway-managed-outbound-ip-count` et `--nat-gateway-idle-timeout`, lors de l’exécution de `az aks create`. L’exemple suivant crée un groupe de ressources *myresourcegroup*, puis crée un cluster *natcluster* AKS dans *myresourcegroup* avec une passerelle NAT Gateway managée, deux adresses IP sortantes et un délai d’inactivité de 30 secondes.
+
+
+```azurecli-interactive
+az group create --name myresourcegroup --location southcentralus
+```
+
+```azurecli-interactive
+az aks create --resource-group myresourcegroup 
+    --name natcluster  \
+    --node-count 3 \
+    --outbound-type managedNATGateway \ 
+    --nat-gateway-managed-outbound-ip-count 2 \
+    --nat-gateway-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> Si aucune valeur n’est spécifiée pour l’adresse IP sortante, la valeur par défaut est 1.
+
+### <a name="update-the-number-of-outbound-ip-addresses"></a>Mettre à jour le nombre d’adresses IP sortantes
+Pour mettre à jour l’adresse IP sortante ou le délai d’inactivité, utilisez `--nat-gateway-managed-outbound-ip-count` ou `--nat-gateway-idle-timeout` lors de l’exécution de `az aks update`. Par exemple :
+
+```azurecli-interactive
+az aks update \ 
+    --resource-group myresourcegroup \
+    --name natcluster\
+    --nat-gateway-managed-outbound-ip-count 5
+```
+
+
+## <a name="next-steps"></a>Étapes suivantes
+- Pour plus d’informations sur la passerelle NAT Gateway, consultez la documentation relative à [Azure NAT Gateway][nat-docs].
+
+<!-- LINKS - internal -->
+
+
+<!-- LINKS - external-->
+[nat-docs]: ../virtual-network/nat-gateway/nat-overview.md
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

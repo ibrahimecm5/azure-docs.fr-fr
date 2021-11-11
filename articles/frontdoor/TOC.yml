@@ -4,6 +4,8 @@
   items:
     - name: "Qu’est-ce qu’Azure Front Door\_?"
       href: front-door-overview.md
+    - name: Choix du bon équilibreur de charge
+      href: /architecture/guide/technology-choices/load-balancing-overview.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
 - name: Démarrages rapides
   expanded: true
   items:
@@ -18,14 +20,6 @@
       href: quickstart-create-front-door-template.md
 - name: Tutoriels
   items:
-    - name: Ajouter un domaine personnalisé à votre Front Door
-      href: front-door-custom-domain.md
-    - name: Activer le protocole HTTPS pour un domaine personnalisé
-      href: front-door-custom-domain-https.md
-    - name: Configurer une stratégie de filtrage géographique pour votre porte d’entrée
-      href: front-door-tutorial-geo-filtering.md
-    - name: Configurer un moteur de règles
-      href: front-door-tutorial-rules-engine.md
     - name: Ajouter des en-têtes de sécurité avec le moteur de règles
       href: front-door-security-headers.md
     - name: Pare-feu d’applications web et Front Door
@@ -38,60 +32,90 @@
   items:
     - name: Référence SKU Standard/Premium
       href: standard-premium/overview.md
-    - name: Sécurité
+    - name: Mise en cache
+      href: front-door-caching.md
+    - name: Routage
       items:
-        - name: Base de référence de la sécurité
-          href: /security/benchmark/azure/baselines/front-door-security-baseline?toc=/azure/frontdoor/TOC.json
+        - name: Routage d’architecture
+          href: front-door-routing-architecture.md
+        - name: Mise en correspondance avec un itinéraire
+          href: front-door-route-matching.md
     - name: Pools de serveurs principaux et de serveur principal
       href: front-door-backend-pool.md
-    - name: Mise en cache avec Front Door
-      href: front-door-caching.md
-    - name: Protection DDoS
-      href: front-door-ddos.md
-    - name: Questions fréquentes (FAQ) sur Front Door
-      href: front-door-faq.yml
-    - name: Filtrage géographique
-      href: front-door-geo-filtering.md
+    - name: Méthode d’équilibrage de charge
+      href: front-door-routing-methods.md
     - name: Sondes d’intégrité
       href: front-door-health-probes.md
-    - name: Exploitation du routage pour une requête par Front Door
-      href: front-door-route-matching.md
-    - name: Chiffrement TSL de bout en bout
-      href: concept-end-to-end-tls.md
-    - name: Assistance HTTP/2
-      href: front-door-http2.md
-    - name: Prise en charge de protocole d’en-têtes HTTP
-      href: front-door-http-headers-protocol.md
-    - name: Équilibrage de charge avec la suite de livraison d’application Azure
-      href: front-door-lb-with-azure-app-delivery-suite.md
-    - name: Surveillance
-      href: front-door-diagnostics.md
-    - name: Routage d’architecture
-      href: front-door-routing-architecture.md
-    - name: Méthodes de routage du trafic
-      href: front-door-routing-methods.md
+    - name: Domaine générique
+      href: front-door-wildcard-domain.md
+    - name: Moteur de règles
+      items:
+        - name: Architecture du moteur de règles
+          href: front-door-rules-engine.md
+        - name: Conditions de correspondance des règles
+          href: front-door-rules-engine-match-conditions.md
+        - name: Actions des règles
+          href: front-door-rules-engine-actions.md
     - name: Réécrire URL
       href: front-door-url-rewrite.md
     - name: Redirection d’URL
       href: front-door-url-redirect.md
-    - name: Domaine générique
-      href: front-door-wildcard-domain.md
-    - name: Moteur de règles
-      href: front-door-rules-engine.md
-    - name: Conditions de correspondance du moteur de règles
-      href: front-door-rules-engine-match-conditions.md
-    - name: Actions du moteur de règles
-      href: front-door-rules-engine-actions.md
+    - name: Sécurité
+      items:
+        - name: Base de référence de la sécurité
+          href: /security/benchmark/azure/baselines/front-door-security-baseline?toc=/azure/frontdoor/TOC.json
+        - name: Protection DDoS
+          href: front-door-ddos.md
+        - name: Chiffrement TSL de bout en bout
+          href: concept-end-to-end-tls.md
+        - name: Pare-feu d’applications web
+          items:
+            - name: Réglage
+              href: ../web-application-firewall/afds/waf-front-door-tuning.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: Règles managées
+              href: ../web-application-firewall/afds/waf-front-door-drs.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: Règles personnalisées
+              href: ../web-application-firewall/afds/waf-front-door-custom-rules.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: Listes d’exclusions
+              href: ../web-application-firewall/afds/waf-front-door-exclusion.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: Paramètres de stratégie
+              href: ../web-application-firewall/afds/waf-front-door-policy-settings.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+            - name: Filtrage géographique
+              href: front-door-geo-filtering.md
+    - name: Protocol
+      items:
+        - name: HTTP/2
+          href: front-door-http2.md
+    - name: Équilibrage de charge avec la livraison d’applications Azure
+      href: front-door-lb-with-azure-app-delivery-suite.md
+    - name: Questions fréquentes (FAQ)
+      href: front-door-faq.yml
 - name: Guides pratiques
   items:
-    - name: Rediriger le trafic
+    - name: Configurer
       items:
-        - name: Configurer une porte d’entrée avec une redirection HTTP vers HTTPS
-          href: front-door-how-to-redirect-https.md
-    - name: Intégration de domaines personnalisés
-      items:
-        - name: Intégrer un domaine racine ou apex
+        - name: Ajouter un domaine personnalisé
+          href: front-door-custom-domain.md
+        - name: Configurer le protocole HTTPS pour un domaine personnalisé
+          href: front-door-custom-domain-https.md
+        - name: Ajouter un domaine racine ou apex
           href: front-door-how-to-onboard-apex-domain.md
+        - name: Configurer un moteur de règles
+          href: front-door-tutorial-rules-engine.md
+        - name: Configurer la redirection HTTP vers HTTPS
+          href: front-door-how-to-redirect-https.md
+    - name: Sécuriser avec Web Application Firewall
+      items:
+        - name: Configurer une stratégie de sécurité
+          href: ../web-application-firewall/afds/waf-front-door-create-portal.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+        - name: Configurer le géofiltrage
+          href: front-door-tutorial-geo-filtering.md
+        - name: Configurer les limites de débit
+          href: ../web-application-firewall/afds/waf-front-door-rate-limit-powershell.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+        - name: Configurer une restriction IP
+          href: ../web-application-firewall/afds/waf-front-door-configure-ip-restriction.md?toc=%2fazure%2ffrontdoor%2ftoc.json
+    - name: Surveillance
+      href: front-door-diagnostics.md
     - name: Dépanner
       items:
         - name: Résoudre les problèmes de routage
@@ -100,6 +124,8 @@
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: Informations de référence
   items:
+    - name: Prise en charge de protocole d’en-têtes HTTP
+      href: front-door-http-headers-protocol.md
     - name: Emplacements périphériques Azure Front Door
       items:
         - name: Emplacements périphériques par région

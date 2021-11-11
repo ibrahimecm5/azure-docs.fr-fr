@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 6b1f1468b85695facac7143389f863599d9f9d3e
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 3403cebab79b49f3a22353bec0a03b68b5a24f0f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161953"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432830"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Orchestration flexible pour des groupes de machines virtuelles identiques dans Azure
 
@@ -64,7 +64,7 @@ Les groupes identiques de machines virtuelles Azure fournissent les fonctionnali
     - La mise à l’échelle automatique réduit également le nombre d’instances de machine virtuelle inutiles exécutant votre application lorsque la demande est faible, tandis que les clients continuent de recevoir un niveau de performance acceptable lorsque la demande se développe et des instances de machines virtuelles supplémentaires sont ajoutées automatiquement. Cette capacité permet de réduire les coûts et de créer efficacement des ressources Azure en fonction des besoins.
 
 - **Fonctionne à grande échelle**
-    - Les groupes identiques prennent en charge jusqu’à 1 000 instances de machines virtuelles pour les images de la Place de marché standard et les images personnalisées via Shared Image Gallery. Si vous créez un groupe identique à l’aide d’une image managée, la limite est de 600 instances de machines virtuelles.
+    - Les groupes identiques prennent en charge jusqu’à 1 000 instances de machines virtuelles pour les images du marketplace standard et les images personnalisées via Azure Compute Gallery (anciennement Shared Image Gallery). Si vous créez un groupe identique à l’aide d’une image managée, la limite est de 600 instances de machines virtuelles.
     - Pour des performances optimales avec des charges de travail de production, utilisez [Azure Disques managés](../virtual-machines/managed-disks-overview.md).
 
 
@@ -98,6 +98,10 @@ Le mode d’orchestration flexible peut être utilisé avec les références SKU
 az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
 ```
 
+> [!IMPORTANT]
+> Le comportement de la mise en réseau varie selon la façon dont vous choisissez de créer des machines virtuelles au sein de votre groupe identique. Pour plus d’informations, consultez la [connectivité réseau évolutive](../virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity).
+
+
 ## <a name="features"></a>Fonctionnalités
 Le tableau suivant liste les fonctionnalités du mode d’orchestration Flexible et fournit des liens vers la documentation associée.
 
@@ -120,7 +124,7 @@ Le tableau suivant liste les fonctionnalités du mode d’orchestration Flexible
 | Identité managée  | Identité affectée par l’utilisateur uniquement  |
 | Ajout d’une machine virtuelle existante à un groupe/suppression du groupe  | Non  |
 | Service Fabric  | Non  |
-| Pool de nœuds Azure Kubernetes Service (AKS)/AKE/k8s  | No  |
+| Azure Kubernetes Service (AKS) / AKE  | Non  |
 | UserData  | Partielle. UserData peut être spécifié pour chaque machine virtuelle |
 
 
@@ -138,9 +142,8 @@ Le tableau suivant liste les fonctionnalités du mode d’orchestration Flexible
 | Supervision de l’intégrité de l’application | Extension Intégrité de l’application |
 | Réparation d’instance (groupes de machines virtuelles identiques) | Oui, lisez la [documentation sur la réparation d’instance](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs.md) |
 | Protection des instances | Non, utilisez des [verrous de ressource Azure](../azure-resource-manager/management/lock-resources.md) |
-| Stratégie de scale-in | No |
-| VMSS - Obtenir une vue d’instance | No |
-| Effectuer la maintenance | Déclencher la maintenance sur chaque instance à l’aide de l’API de machine virtuelle |
+| Stratégie de scale-in | Non |
+| VMSS - Obtenir une vue d’instance | Non |
 | Opérations de traitement par lots de machines virtuelles (Tout démarrer, Tout arrêter, supprimer un sous-ensemble, etc.) | Non (peut déclencher des opérations sur chaque instance à l’aide de l’API de machine virtuelle) |
 
 ### <a name="high-availability"></a>Haute disponibilité 
@@ -154,7 +157,7 @@ Le tableau suivant liste les fonctionnalités du mode d’orchestration Flexible
 | Domaine d’erreur – Diffusion fixe | 2 ou 3 domaines d’erreur (en fonction du nombre maximal de domaines d’erreur par région), 1 pour les déploiements zonaux |
 | Attribuer une machine virtuelle à un domaine d’erreur spécifique | Oui |
 | Mettre à jour les domaines | Déprécié (maintenance de plateforme effectuée domaine d’erreur par domaine d’erreur) |
-| Effectuer la maintenance | Déclencher la maintenance sur chaque instance à l’aide de l’API de machine virtuelle | Oui | N/A |
+| Effectuer la maintenance | Déclencher la maintenance sur chaque instance à l’aide de l’API de machine virtuelle |
 
 ### <a name="networking"></a>Mise en réseau 
 

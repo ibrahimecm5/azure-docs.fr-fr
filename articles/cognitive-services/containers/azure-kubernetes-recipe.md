@@ -1,6 +1,6 @@
 ---
 title: Exécuter le conteneur Détection de langue dans Kubernetes Service
-titleSuffix: Text Analytics -  Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Déployez le conteneur Détection de langue avec un exemple opérationnel sur Azure Kubernetes Service et testez-le dans un navigateur web.
 services: cognitive-services
 author: aahill
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7415070639f4f6dbcee62c33871f4fbdbc64edac
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a60f92f98a23cacfd36e42619008f91285902f9d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011721"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476772"
 ---
-# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Déployer le conteneur Détection de langue Analyse de texte sur Azure Kubernetes Service
+# <a name="deploy-a-language-detection-container-to-azure-kubernetes-service"></a>Déployer un conteneur de détection de langage sur Azure Kubernetes Service
 
 Découvrez comment déployer le conteneur Détection de langue. Cette procédure vous montre comment créer les conteneurs Docker locaux, envoyer (push) les conteneurs à votre propre registre de conteneurs privés, exécuter le conteneur dans un cluster Kubernetes et le tester dans un navigateur web.
 
@@ -32,7 +32,7 @@ Cette procédure nécessite plusieurs outils qui doivent être installés et ex�
 * [Moteur docker](https://www.docker.com/products/docker-engine) ; vérifiez que l’interface CLI Docker fonctionne dans une fenêtre de console.
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * Une ressource Azure avec le niveau de tarification approprié. Certains niveaux tarifaires ne fonctionnent pas avec ce conteneur :
-  * La ressource **Analytique de texte** uniquement avec les niveaux tarifaires F0 ou Standard.
+  * Ressource de **langage** avec des niveaux tarifaires F0 ou standard uniquement.
   * La ressource **Cognitive Services** avec un niveau tarifaire S0.
 
 ## <a name="running-the-sample"></a>Exécution de l’exemple
@@ -310,21 +310,21 @@ Cette section utilise l’interface CLI **kubectl** pour dialoguer avec Azure Ku
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. Modifiez les lignes qui concernent le déploiement du front-end de langue dans `language.yml`, en vous basant sur le tableau suivant pour ajouter vos propres noms d’images du registre de conteneurs, votre secret de client et vos paramètres d’analytique de texte.
+1. Modifiez les lignes qui concernent le déploiement du serveur frontal de langage dans `language.yml`, en vous basant sur le tableau suivant pour ajouter vos propres noms d’images du registre de conteneurs, votre secret de client et les paramètres du service de langage.
 
     Paramètres de déploiement du front-end de langue|Objectif|
     |--|--|
     |Ligne 32<br> Propriété `image`|Emplacement de l’image pour l’image de front-end dans votre registre de conteneurs<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
     |Ligne 44<br> Propriété `name`|Secret du registre de conteneurs pour l’image, dénommé `<client-secret>` dans une section précédente.|
 
-1. Changez les lignes qui concernent le déploiement de langue dans `language.yml`, en vous basant sur le tableau suivant pour ajouter vos propres noms d’images du registre de conteneurs, votre secret de client et vos paramètres d’analytique de texte.
+1. Modifiez les lignes qui concernent le déploiement du langage dans `language.yml`, en vous basant sur le tableau suivant pour ajouter vos propres noms d’images du registre de conteneurs, votre secret de client et les paramètres du service de langage.
 
     |Paramètres de déploiement de langue|Objectif|
     |--|--|
     |Ligne 78<br> Propriété `image`|Emplacement de l’image pour l’image de langue dans votre registre de conteneurs<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |Ligne 95<br> Propriété `name`|Secret du registre de conteneurs pour l’image, dénommé `<client-secret>` dans une section précédente.|
-    |Ligne 91<br> Propriété `apiKey`|Clé de votre ressource d’analytique de texte|
-    |Ligne 92<br> Propriété `billing`|Le point de terminaison de facturation pour votre ressource d’analytique de texte.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Ligne 91<br> Propriété `apiKey`|Clé de votre ressource de service de langage|
+    |Ligne 92<br> Propriété `billing`|Le point de terminaison de facturation pour votre ressource de service de langage.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Comme l’élément **apiKey** et **point de terminaison de facturation** sont définis dans le cadre de la définition de l’orchestration de Kubernetes, le conteneur de site web n’a pas besoin de connaître ces informations ni de les passer dans la demande. Le conteneur de site web référence le conteneur Détection de langue via son nom de conteneur `language` de l’orchestrateur.
 

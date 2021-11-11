@@ -4,13 +4,13 @@ description: Décrit comment définir des variables dans Bicep
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 040e40d20fe81bb72493f087c9d0583a911b1ee7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/19/2021
+ms.openlocfilehash: 13cb7847019e6b8a4e6e00c6be8d5949a03b3072
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733339"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219561"
 ---
 # <a name="variables-in-bicep"></a>Variables dans Bicep
 
@@ -20,7 +20,13 @@ Resource Manager résout les variables avant de démarrer les opérations de dé
 
 ## <a name="define-variable"></a>Définir une variable
 
-Lorsque vous définissez une variable, vous ne spécifiez pas de [type de données](data-types.md) associé. Vous indiquez plutôt une valeur ou une expression de modèle. Le type de variable est déduit de la valeur résolue. Dans l’exemple suivant, la valeur d’une variable est définie sur une chaîne.
+La syntaxe permettant de définir une variable est la suivante :
+
+```bicep
+var <variable-name> = <variable-value>
+```
+
+Notez que vous ne spécifiez pas de [type de données](data-types.md) pour la variable. Le type est déduit de la valeur. Dans l’exemple suivant, la valeur d’une variable est définie sur une chaîne.
 
 ```bicep
 var stringVar = 'example value'
@@ -29,50 +35,92 @@ var stringVar = 'example value'
 Vous pouvez utiliser la valeur d’un paramètre ou d’une autre variable lors de la construction de la variable.
 
 ```bicep
-param inputValue string = 'deployment Parameter'
+param inputValue string = 'deployment parameter'
 
-var stringVar = 'myVariable'
-
+var stringVar = 'preset variable'
 var concatToVar =  '${stringVar}AddToVar'
 var concatToParam = '${inputValue}AddToParam'
+
+output addToVar string = concatToVar
+output addToParam string = concatToParam
 ```
 
-Vous pouvez utiliser les [fonctions Bicep](bicep-functions.md) pour construire la valeur de la variable. Les fonctions [reference](bicep-functions-resource.md#reference) et [list](bicep-functions-resource.md#list) sont valides lors de la déclaration d’une variable.
+L’exemple précédent renvoie :
 
-Dans l’exemple suivant, une valeur de chaîne est créée pour un nom de compte de stockage. Il utilise plusieurs fonctions de Bicep pour obtenir une valeur de paramètre, et la concatène en une chaîne unique.
+```json
+{
+  "addToParam": {
+    "type": "String",
+    "value": "deployment parameterAddToParam"
+  },
+  "addToVar": {
+    "type": "String",
+    "value": "preset variableAddToVar"
+  }
+}
+```
+
+Vous pouvez utiliser les [fonctions Bicep](bicep-functions.md) pour construire la valeur de la variable. L’exemple suivant utilise des fonctions Bicep pour créer une valeur de chaîne pour un nom de compte de stockage.
 
 ```bicep
+param storageNamePrefix string = 'stg'
 var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
+output uniqueStorageName string = storageName
 ```
 
-L’exemple suivant ne déploie aucune ressource. Il montre comment déclarer des variables de types différents.
+L’exemple suivant retourne une valeur telle que la suivante :
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
+```json
+"uniqueStorageName": {
+  "type": "String",
+  "value": "stghzuunrvapn6sw"
+}
+```
 
-Vous pouvez utiliser des boucles pour déclarer une variable de tableau qui a un nombre dynamique d’éléments. Pour plus d’informations, consultez [Itération de variable dans Bicep](loop-variables.md).
+Vous pouvez utiliser des boucles itératives lors de la définition d’une variable. L’exemple suivant crée un tableau d’objets avec trois propriétés.
+
+```bicep
+param itemCount int = 3
+
+var objectArray = [for i in range(0, itemCount): {
+  name: 'myDataDisk${(i + 1)}'
+  diskSizeGB: '1'
+  diskIndex: i
+}]
+
+output arrayResult array = objectArray
+```
+
+La sortie retourne un tableau avec les valeurs suivantes :
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  }
+]
+```
+
+Pour plus d’informations sur les types de boucles que vous pouvez utiliser avec des variables, consultez [Boucles itératives dans Bicep](loops.md).
 
 ## <a name="use-variable"></a>Utiliser une variable
 
 L’exemple suivant montre comment utiliser la variable pour une propriété de ressource. Vous faites référence à la valeur de la variable en indiquant le nom de la variable : `storageName`.
 
-```bicep
-param rgLocation string = resourceGroup().location
-param storageNamePrefix string = 'STG'
-
-var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
-
-resource demoAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: storageName
-  location: rgLocation
-  kind: 'Storage'
-  sku: {
-    name: 'Standard_LRS'
-    tier: 'Standard'
-  }
-}
-
-output stgOutput string = storageName
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variableswithfunction.bicep" highlight="4,7,15" :::
 
 Étant donné que les noms de compte de stockage doivent utiliser des minuscules, la variable `storageName` utilise la fonction `toLower` pour mettre la valeur `storageNamePrefix` en minuscules. La fonction `uniqueString` crée une valeur unique à partir de l’ID du groupe de ressources. Les valeurs sont concaténées en une chaîne.
 
@@ -85,4 +133,4 @@ Vous pouvez définir des variables qui contiennent des valeurs associées pour l
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Pour plus d’informations sur les propriétés disponibles pour les variables, consultez [Présentation de la structure et de la syntaxe des fichiers Bicep](file.md).
-- Pour en savoir plus sur l’utilisation de boucles avec la déclaration de variable, consultez [Itération de variable dans Bicep](loop-variables.md).
+- Pour en savoir plus sur l’utilisation de la syntaxe de boucle, consultez [Boucles itératives dans Bicep](loops.md).

@@ -1,6 +1,6 @@
 ---
 title: La géoréplication active
-description: Utilisez la géoréplication active pour créer des bases de données secondaires de bases de données individuelles accessibles en lecture dans Azure SQL Database dans des régions de centres de données identiques ou différentes.
+description: Utilisez la géoréplication active pour créer des bases de données secondaires de bases de données individuelles accessibles en lecture dans Azure SQL Database dans des régions identiques ou différentes.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
@@ -8,18 +8,20 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 04/28/2021
-ms.openlocfilehash: 7b4f29ad732622529f391f6b50295138ad953634
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 10/25/2021
+ms.openlocfilehash: ca958a3e7a43864caa673cd31736b1e661e7f608
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161184"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465361"
 ---
-# <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Création et utilisation de la géoréplication active - Azure SQL Database
+# <a name="active-geo-replication"></a>La géoréplication active
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-La géoréplication active est une fonctionnalité Azure SQL Database qui vous permet de créer des bases de données secondaires lisibles à partir de bases de données individuelles sur un serveur dans un centre de données identique ou différent (région).
+La géoréplication active est une fonctionnalité qui vous permet de créer une base de données secondaire lisible en permanence pour une base de données primaire. La base de données secondaire accessible en lecture peut être dans la même région Azure que la base de données primaire, ou, plus communément, dans une autre région. Ce type de base de données secondaire accessible en lecture est également appelé géo-secondaires ou géo-réplicas.
+
+La géoréplication active est conçue comme une solution de continuité d’activité qui vous permet d’effectuer une reprise d’activité rapide au niveau des bases de données individuelles en cas de panne régionale ou à plus grande échelle. Une fois la géoréplication configurée, vous pouvez lancer un basculement géographique vers une zone géographique secondaire dans une autre région Azure. Le géo-basculement est initié par programme par l’application ou manuellement par l’utilisateur.
 
 > [!NOTE]
 > La fonctionnalité de géoréplication active pour Azure SQL Hyperscale [est désormais disponible en préversion publique](https://aka.ms/hsgeodr). Les limitations actuelles incluent : un seul géosecondaire dans la même région ou dans une autre région, basculement forcé et planifié non pris en charge pour le moment, restauration de base de données à partir d'un géosecondaire non prise en charge, utilisation d'un géosecondaire en tant que base de données source pour la copie de base de données ou en tant que principal pour un autre géosecondaire non prise en charge
@@ -35,21 +37,15 @@ La géoréplication active est une fonctionnalité Azure SQL Database qui vous p
 > [!NOTE]
 > Pour migrer des bases de données SQL depuis Azure Allemagne en utilisant la géoréplication active, consultez [Migrer une base de données SQL en utilisant la géoréplication active](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication).
 
-La géoréplication active est conçue comme une solution de continuité d’activité qui permet à l’application d’effectuer une reprise d’activité rapide au niveau des bases de données individuelles en cas de panne régionale ou à plus grande échelle. Si la géoréplication est activée, l’application peut lancer le basculement vers une base de données secondaire dans une autre région Azure. Jusqu’à quatre bases de données secondaires sont prises en charge dans des régions identiques ou différentes, et les bases de données secondaires peuvent également servir pour les requêtes d’accès en lecture seule. Le basculement doit être lancé manuellement par l’application ou l’utilisateur. Après le basculement, la nouvelle base de données primaire présente un point de terminaison de connexion différent.
-
-> [!NOTE]
-> La géoréplication active réplique les modifications en diffusant en continu le journal des transactions de la base de données. Elle n’est pas liée à la [réplication transactionnelle](/sql/relational-databases/replication/transactional/transactional-replication), qui réplique les modifications en exécutant des commandes DML (INSERT, UPDATE, DELETE).
+Si votre application requiert un point de terminaison de connexion stable et une prise en charge du géo-basculement automatique en plus de la géoréplication, utilisez les [groupes de basculement automatique](auto-failover-group-overview.md).
 
 Le diagramme suivant illustre la configuration standard d’une application cloud géoredondante avec la géoréplication active.
 
-![Géoréplication active](./media/active-geo-replication-overview/geo-replication.png )
+![Géoréplication active](./media/active-geo-replication-overview/geo-replication.png)
 
-> [!IMPORTANT]
-> SQL Database prend également en charge les groupes de basculement automatique. Pour plus d’informations, voir la section sur l’utilisation des [Groupes de basculement automatique](auto-failover-group-overview.md).
+Si, pour une raison quelconque, votre base de données primaire échoue, vous pouvez lancer un basculement géographique vers l’une de vos bases de données secondaires. Quand une base de données secondaire est promue au rôle principal, tous les autres réplicas secondaires sont automatiquement liés à la nouvelle base de données primaire.
 
-Si, pour une raison quelconque, votre base de données primaire échoue ou doit simplement être mise hors connexion, vous pouvez initier un basculement vers l’une de vos bases de données secondaires. Lorsque le basculement est activé pour l’une des bases de données secondaires, toutes les autres bases de données secondaires sont automatiquement liées à la nouvelle base de données primaire.
-
-Vous pouvez gérer la réplication et le basculement d’une base de données individuelle ou d’un ensemble de bases de données sur un serveur ou dans un pool élastique à l’aide de la géo-réplication active. Pour ce faire, vous pouvez utiliser les éléments suivants :
+Vous pouvez gérer la géoréplication et initier un basculement géographique à l’aide des éléments suivants :
 
 - [Portail Azure](active-geo-replication-configure-portal.md)
 - [PowerShell : base de données unique](scripts/setup-geodr-and-failover-database-powershell.md)
@@ -57,226 +53,217 @@ Vous pouvez gérer la réplication et le basculement d’une base de données in
 - [Transact-SQL : base de données unique ou pool élastique](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [API REST : base de données unique](/rest/api/sql/replicationlinks)
 
-La géoréplication active tire parti de la technologie de [groupe de disponibilité Always On](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) du moteur de base de données pour répliquer de manière asynchrone les transactions validées sur la base de données primaire vers une base de données secondaire à l’aide de l’isolement de capture instantanée. Les groupes de basculement automatique fournissent la sémantique de groupe en plus de la géo-réplication active. Cependant, le même mécanisme de réplication asynchrone est utilisé. À un moment donné, la base de données secondaire peut être légèrement en retard sur la base de données primaire, mais les données secondaire ne peuvent jamais contenir de transactions partielles. Grâce à la redondance entre régions, les applications peuvent récupérer rapidement d’une perte permanente de tout ou partie d’un centre de données résultant de catastrophes naturelles, de graves erreurs humaines ou d’actes de malveillance. Vous trouverez les données d’objectif de point de récupération dans [Vue d’ensemble de la continuité des activités](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+La géoréplication active tire parti de la technologie de [groupe de disponibilité Always on](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) pour répliquer de façon asynchrone le journal des transactions généré sur le réplica principal sur tous les géo-réplicas. À un moment donné, une base de données secondaire peut être légèrement en retard sur la base de données primaire, mais les données secondaires restent cohérentes au niveau transactionnel. En d’autres termes, les modifications effectuées par les transactions non validées ne sont pas visibles. 
 
 > [!NOTE]
-> En cas de défaillance du réseau entre deux régions, nous tentons de rétablir les connexions toutes les 10 secondes.
+> La géoréplication active réplique les modifications en diffusant le journal des transactions de la base de données du réplica principal vers les réplicas secondaires. Elle n’est pas liée à la [réplication transactionnelle](/sql/relational-databases/replication/transactional/transactional-replication), qui réplique les modifications en exécutant des commandes DML (INSERT, UPDATE, DELETE) sur les abonnés.
 
-> [!IMPORTANT]
-> Pour garantir qu’une modification critique de la base de données primaire est répliquée sur la base de données secondaire avant le basculement, vous pouvez forcer la synchronisation pour vous assurer que les modifications critiques (par exemple, les mises à jour de mot de passe) sont répliquées. La synchronisation forcée a un impact sur les performances, car elle bloque le thread appelant jusqu’à ce que toutes les transactions validées soient répliquées. Pour plus d’informations, consultez [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Pour superviser le décalage de réplication entre la base de données primaire et la base de données géosecondaire, voir [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+La redondance entre régions, fournie par la géoréplication, permet aux applications de récupérer rapidement d’une perte permanente d’une région Azure entière, ou d’une partie d’une région, résultant de catastrophes naturelles, de graves erreurs humaines ou d’actes de malveillance. Le RPO de géoréplication se trouve dans la [Vue d’ensemble de la continuité des activités](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
-La figure suivante présente un exemple de géo-réplication active configurée avec une base de données primaire située dans la région USA Centre Nord, ainsi qu’une base de données secondaire située dans la région USA Centre Sud.
+La figure suivante présente un exemple de géoréplication active configurée avec une base de données primaire située dans la région USA Centre Nord, ainsi qu’une base de données géosecondaire située dans la région USA Centre Sud.
 
 ![Relation de géo-réplication](./media/active-geo-replication-overview/geo-replication-relationship.png)
 
-Comme les bases de données secondaires sont accessibles en lecture, elles peuvent être utilisées pour décharger des charges de travail en lecture seule, telles que des travaux de génération de rapports. Si vous utilisez la géo-réplication active, il est possible de créer la base de données secondaire dans la même région que la base de données primaire, mais cela n’augmente pas la résistance de l’application aux défaillances graves. Si vous utilisez des groupes de basculement automatique, votre base de données secondaire est toujours créée dans une autre région.
+En plus de la récupération d’urgence, la géoréplication active peut être utilisée dans les scénarios suivants :
 
-En plus de la récupération d’urgence, la géo-réplication active peut être utilisée dans les scénarios suivants :
-
-- **Migration de base de données** : vous pouvez vous servir de la géoréplication active pour migrer une base de données d’un serveur vers un autre serveur en ligne avec un temps d’arrêt minimal.
+- **Migration de base de données** : vous pouvez vous servir de la géoréplication active pour migrer une base de données d’un serveur vers un autre serveur avec un temps d’arrêt minimal.
 - **Mises à niveau de l’application** : vous pouvez créer une base de données secondaire supplémentaire faisant office de copie de restauration automatique lors des mises à niveau de l’application.
 
-Pour assurer vraiment la continuité des activités, l’ajout d’une redondance de base de données entre les centres de données n’est qu’une partie de la solution. La récupération d’une application (service) de bout en bout après une défaillance catastrophique implique la récupération de tous les composants constituant le service et tous les services dépendants. En voici quelques exemples : logiciel client (il peut s’agir par exemple d’un navigateur avec un code JavaScript personnalisé), serveurs web frontaux, ressources de stockage et DNS. Il est essentiel que tous les composants résistent aux mêmes défaillances et redeviennent disponibles dans l’objectif de délai de récupération (RTO) de votre application. Par conséquent, vous devez identifier tous les services dépendants et comprendre les garanties et les fonctionnalités qu’ils fournissent. Ensuite, vous devez prendre les mesures appropriées pour vous assurer que votre service fonctionne pendant le basculement des services dont il dépend. Pour plus d’informations sur la conception de solutions pour la récupération d’urgence, consultez la page [Designing Cloud Solutions for Disaster Recovery Using active geo-replication](designing-cloud-solutions-for-disaster-recovery.md) (Conception de solutions cloud pour la récupération d’urgence à l’aide de la géo-réplication active).
+Pour arriver à une continuité d’activité totale, l’ajout d’une redondance régionale de base de données n’est qu’une partie de la solution. La récupération d’une application (service) de bout en bout après une défaillance catastrophique implique la récupération de tous les composants constituant le service et tous les services dépendants. En voici quelques exemples : logiciel client (il peut s’agir par exemple d’un navigateur avec un code JavaScript personnalisé), serveurs web frontaux, ressources de stockage et DNS. Il est essentiel que tous les composants résistent aux mêmes défaillances et redeviennent disponibles dans l’objectif de délai de récupération (RTO) de votre application. Par conséquent, vous devez identifier tous les services dépendants et comprendre les garanties et les fonctionnalités qu’ils fournissent. Ensuite, vous devez prendre les mesures appropriées pour vous assurer que votre service fonctionne pendant le basculement des services dont il dépend. Pour plus d’informations sur la conception de solutions pour la récupération d’urgence, consultez la page [Designing Cloud Solutions for Disaster Recovery Using active geo-replication](designing-cloud-solutions-for-disaster-recovery.md) (Conception de solutions cloud pour la récupération d’urgence à l’aide de la géo-réplication active).
 
 ## <a name="active-geo-replication-terminology-and-capabilities"></a>Terminologie et fonctionnalités associées à la géoréplication active
 
 - **Réplication asynchrone automatique**
 
-  Vous pouvez créer une base de données secondaire seulement par ajout à une base de données existante. La base de données secondaire peut être créée sur n’importe quel serveur. Une fois créée, la base de données secondaire est remplie avec les données copiées à partir de la base de données primaire. Ce processus est appelé amorçage. Une fois la base de données secondaire créée et amorcée, les mises à jour de la base de données primaire sont automatiquement répliquées de manière asynchrone sur la base de données secondaire. La réplication asynchrone signifie que les transactions sont validées sur la base de données primaire avant leur réplication sur la base de données secondaire.
+  Vous pouvez uniquement créer une zone géographique secondaire pour une base de données existante. La zone géosecondaire peut être créée sur n’importe quel serveur logique, autre que le serveur avec la base de données primaire. Une fois créé, le géo-réplica est rempli avec les données de la base de données primaire. Ce processus est appelé amorçage. Une fois la base de données géosecondaire créée et amorcée, les mises à jour de la base de données primaire sont automatiquement répliquées de manière asynchrone sur le géo-réplica. La réplication asynchrone signifie que les transactions sont validées sur la base de données primaire avant leur réplication.
 
-- **Réplicas secondaires accessibles en lecture**
+- **Accès en lecture aux réplicas géosecondaires**
 
-  Une application peut accéder à une base de données secondaire pour des opérations en lecture seule avec des principaux de sécurité identiques ou différents de ceux utilisés pour accéder à la base de données primaire. Les bases de données secondaires fonctionnent en mode d’isolement d’instantané pour garantir que la réplication des mises à jour de la base de données primaire n’est pas retardée par des requêtes exécutées sur la base de données secondaire.
+  Une application peut accéder à un géo-réplica pour exécuter des requêtes en lecture seule avec des principaux de sécurité identiques ou différents de ceux utilisés pour accéder à la base de données primaire. Pour plus d’informations, consultez [Utiliser des réplicas en lecture seule pour décharger des charges de travail de requêtes en lecture seule](read-scale-out.md).
 
-> [!NOTE]
-> La relecture du journal est différée sur la base de données secondaire s’il existe des mises à jour de schéma sur le Principal. Cette dernière nécessite un verrouillage de schéma sur la base de données secondaire.
+   > [!IMPORTANT]
+   > Vous pouvez utiliser la géoréplication pour créer des réplicas secondaires dans la même région que la base de données primaire. Vous pouvez utiliser ces réplicas secondaires pour répondre aux scénarios d’échelle horizontale en lecture dans la même région. Toutefois, un réplica secondaire dans la même région ne fournit pas de résilience supplémentaire aux défaillances catastrophiques ou aux pannes à grande échelle, et n’est donc pas une cible de basculement appropriée à des fins de récupération d’urgence. De même,il ne garantit en rien l’isolation de la zone de disponibilité. Utilisez le niveau de service Critique pour l’entreprise ou Premium avec une [configuration de zone redondante](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) ou le niveau de service Usage général avec une [configuration de zone redondante](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) pour isoler la zone de disponibilité.
+   >
 
-> [!IMPORTANT]
-> Vous pouvez utiliser la géoréplication pour créer une base de données secondaire dans la même région que la base de données primaire. Vous pouvez utiliser cette base de données secondaire pour équilibrer les charges de travail en lecture seule dans la même région. Toutefois, une base de données secondaire dans la même région n'offre pas davantage de résilience aux défaillances et ne constitue donc pas une cible de basculement adapté à des fins de récupération d’urgence. De même, elle ne garantit en rien l’isolation de la zone de disponibilité. Utilisez le niveau de service Critique pour l’entreprise ou Premium avec une [configuration de zone redondante](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) ou la [configuration de zone redondante](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) de niveau de service Usage général pour isoler la zone de disponibilité.
->
+- **Basculement géographique planifié**
 
-- **Basculement planifié**
+  Le géo-basculement planifié bascule les rôles des bases de données primaire et géo-secondaires après avoir effectué la synchronisation complète des données. Un basculement planifié n’entraîne pas de perte de données. La durée du basculement géographique planifié dépend de la taille du journal des transactions sur la base de données primaire qui doit être synchronisée avec la base géo-secondaire. Le géo-basculement planifié est conçu pour les scénarios suivants :
 
-  Le basculement planifié bascule les rôles des bases de données primaires et secondaires une fois la synchronisation complète terminée. Il s’agit d’une opération en ligne qui n’entraîne pas de perte de données. L’heure de l’opération dépend de la taille du journal des transactions sur le serveur principal qui doit être synchronisé. Le basculement planifié est conçu pour les scénarios suivants : (a) pour simuler la récupération d’urgence en production lorsque la perte de données n’est pas acceptable ; (b) pour déplacer la base de données vers une autre région ; et (c) pour renvoyer la base de données vers la région primaire après la résolution de la panne (restauration automatique).
+  - Simuler des récupérations d’urgence (DR) en production lorsque la perte de données n’est pas acceptable ; 
+  - Déplacer les bases de données vers une autre région ; 
+  - Renvoyer les bases de données vers la région primaire une fois la panne éliminée (restauration automatique).
 
-- **Basculement non planifié**
+- **Basculement géographique non planifié**
 
-  Un basculement non planifié ou forcé fait immédiatement basculer la base de données secondaire vers le rôle primaire sans synchronisation avec la base de données primaire. Toutes les transactions validées sur le serveur principal qui ne sont pas répliquées sur la base de données secondaire seront perdues. Cette opération est conçue comme une méthode de récupération pendant les pannes lorsque le serveur principal n’est pas accessible, mais que la disponibilité de la base de données doit être restaurée rapidement. Lorsque la base de données primaire d’origine est de nouveau en ligne, elle se reconnecte et devient une nouvelle base de données secondaire. Toutes les transactions non synchronisées avant le basculement sont conservées dans le fichier de sauvegarde, mais ne sont pas synchronisées avec le nouveau réplica principal, pour éviter les conflits. Ces transactions devront être fusionnées manuellement avec la version la plus récente de la base de données primaire.
+  Un géo-basculement non planifié ou forcé fait immédiatement basculer la base de données géosecondaire vers le rôle primaire sans synchronisation avec la base de données primaire. Toutes les transactions validées sur la base de données primaire qui ne sont pas répliquées sur la base de données secondaire sont perdues. Cette opération est conçue comme une méthode de récupération pendant les pannes lorsque le serveur principal n’est pas accessible, mais que la disponibilité de la base de données doit être restaurée rapidement. Lorsque le réplica principal d’origine est de nouveau en ligne, il est automatiquement reconnecté, réamorcé à l’aide des données principales actuelles et devient un nouveau réplica géosecondaire.
 
-- **Bases de données secondaires accessibles en lecture**
+  > [!IMPORTANT]
+  > Après un géo-basculement planifié ou non planifié, le point de terminaison de connexion de la base de données principale est modifié, car le nouveau réplica principal est maintenant situé sur un autre serveur logique.
 
-  Jusqu’à 4 bases de données secondaires peuvent être créées pour chaque base primaire. S’il n’existe qu’une seule base de données secondaire, en cas d’échec de celle-ci, l’application est exposée à un risque plus élevé jusqu’à la création d’une nouvelle base de données secondaire. S’il existe plusieurs bases de données secondaires, l’application reste protégée même en cas d’échec de l’une des bases de données secondaires. Les bases de données secondaires supplémentaires peuvent également être utilisées pour effectuer un scale-out des charges de travail en lecture seule
+- **Bases de données géosecondaires accessibles en lecture**
 
-  > [!NOTE]
-  > Si vous utilisez la géoréplication active pour créer une application mondialement distribuée et que vous avez besoin de fournir un accès en lecture seule aux données dans plus de quatre régions, vous pouvez créer la base de données secondaire d’une base de données secondaire (processus connu sous le nom de chaînage). De cette manière, vous pouvez assurer une mise à l’échelle quasiment illimitée pour la réplication de base de données. En outre, le chaînage réduit la charge de réplication qui pèse sur la base de données primaire. Le compromis est l’augmentation du décalage de réplication sur les bases de données secondaires situées aux extrémités.
+  Jusqu’à quatre zones géographiques secondaires peuvent être créées pour une base de données primaire. S’il n’existe qu’une seule base de données secondaire, en cas d’échec de celle-ci, l’application est exposée à un risque plus élevé jusqu’à la création d’une nouvelle base de données secondaire. S’il existe plusieurs bases de données secondaires, l’application reste protégée même en cas d’échec de l’une des bases de données secondaires. Des bases de données secondaires supplémentaires peuvent également être utilisées pour effectuer un scale-out des charges de travail en lecture seule.
+
+  > [!TIP]
+  > Si vous utilisez la géoréplication active pour créer une application mondialement distribuée et que vous avez besoin de fournir un accès en lecture seule aux données dans plus de quatre régions, vous pouvez créer une base de données secondaire pour une base de données secondaire (processus connu sous le nom de chaînage), afin de créer des géo-réplicas supplémentaires. Le décalage de réplication sur les géo-réplicas chaînés peut être plus élevé que sur les géo-réplicas connectés directement au serveur principal. La configuration des topologies de géoréplication chaînée est prise en charge uniquement par programme, et non à partir du Portail Azure.
 
 - **Géoréplication des bases de données dans un pool élastique**
 
-  Chaque base de données secondaire peut participer séparément à un pool élastique ou ne faire partie d’aucun pool élastique. Le choix du pool pour chaque base de données secondaire est distinct et ne dépend pas de la configuration des autres bases de données secondaires (primaires comme secondaires). Chaque pool élastique est contenu dans une seule région. Par conséquent plusieurs bases de données secondaires de la même topologie ne peuvent jamais partager un pool élastique.
+  Chaque base de données géosecondaire peut être une base de données autonome ou une base de données dans un pool élastique. Le choix du pool élastique pour chaque base de données géosecondaire est séparé et ne dépend pas de la configuration de tous les autres réplicas dans la topologie (primaire ou secondaire). Chaque pool élastique est contenu dans un serveur logique unique. Étant donné que les noms de bases de données sur un serveur logique doivent être uniques, plusieurs géo-réplicas de la même base de données primaire ne peuvent jamais partager un pool élastique.
 
-- **Basculement et restauration automatique contrôlés par l’utilisateur**
+- **Géo-basculement et restauration automatique contrôlés par l’utilisateur**
 
-  Une base de données secondaire peut être basculée explicitement à tout moment vers le rôle primaire par l’application ou l’utilisateur. Pendant une panne réelle, l’option « non planifiée » doit être utilisée pour promouvoir immédiatement une base de données secondaire en base de données primaire. Lorsque la base de données primaire en échec récupère et redevient disponible, le système marque automatiquement la base de données primaire récupérée comme base de données secondaire, et la met à jour par rapport à la nouvelle base de données primaire. En raison de la nature asynchrone de la réplication, une petite quantité de données peut être perdue lors de basculements non planifiés si une base de données primaire échoue avant la réplication des modifications les plus récentes sur la base de données secondaire. Quand une base de données primaire avec plusieurs bases de données secondaires bascule, le système reconfigure automatiquement les relations de réplication et lie les bases de données secondaires restantes à la base de données nouvellement promue comme primaire sans aucune intervention de l’utilisateur. Une fois la panne à l’origine du basculement résolue, il peut être judicieux de rétablir l’application dans la région primaire. Pour ce faire, la commande de basculement doit être appelée avec l’option « planifiée ».
+  Une base de données géosecondaire qui a terminé l’amorçage initial peut être explicitement basculée vers le rôle principal à tout moment par l’application ou par l’utilisateur. Pendant une panne où le réplica principal est inaccessible, seul un géo-basculement non planifié peut être utilisé. Qui promeut immédiatement une géo-secondaire en tant que nouvelle base de données primaire. Lorsque la panne est atténuée, le système définit automatiquement le serveur principal récupéré comme géo-secondaire et le met à jour avec le nouveau réplica principal. En raison de la nature asynchrone de la géoréplication, les transactions récentes peuvent être perdues lors de géo-basculements non planifiés si le réplica principal échoue avant que ces transactions ne soient répliquées sur un serveur géosecondaire. Quand une base de données primaire avec plusieurs géo-réplicas bascule, le système reconfigure automatiquement les relations de réplication et lie les bases de données géosecondaires restantes à la base de données nouvellement promue comme primaire sans aucune intervention de l’utilisateur. Une fois la panne à l’origine du géo-basculement résolue, il peut être judicieux de rétablir la base de données primaire dans sa région d’origine. Pour ce faire, appelez un géo-basculement planifié.
 
-## <a name="preparing-secondary-database-for-failover"></a>Préparation de la base de données secondaire pour le basculement
+## <a name="prepare-for-geo-failover"></a><a name="preparing-secondary-database-for-failover"></a> Préparer le géo-basculement
 
-Pour vous assurer que votre application peut accéder immédiatement au nouveau réplica principal après le basculement, assurez-vous que les exigences d’authentification de votre serveur et de la base de données secondaires sont correctement configurées. Pour plus d’informations, consultez [Gestion de la sécurité de la base de données SQL Azure après la récupération d’urgence](active-geo-replication-security-configure.md). Pour garantir la conformité après le basculement, vérifiez que la stratégie de rétention de sauvegarde de la base de données secondaire correspond à celle du serveur principal. Ces paramètres ne font pas partie de la base de données et ne sont pas répliqués. Par défaut, le réplica secondaire est configuré avec une période de rétention de récupération jusqu`à une date et heure par défaut de sept jours. Pour plus d’informations, consultez [Sauvegardes automatisées d’une base de données SQL](automated-backups-overview.md).
+Pour vous assurer que votre application peut accéder immédiatement au nouveau réplica principal après le géo-basculement, assurez-vous que l’authentification et l’accès réseau de votre serveur secondaire sont correctement configurés. Pour plus d’informations, consultez [Gestion de la sécurité de la base de données SQL Azure après la récupération d’urgence](active-geo-replication-security-configure.md). Vérifiez également que la stratégie de rétention de sauvegarde sur la base de données secondaire correspond à celle du réplica principal. Ce paramètre ne fait pas partie de la base de données et n’est pas répliqué à partir du serveur principal. Par défaut, le géo-réplica est configuré avec une période de rétention de récupération jusqu’à une date et heure par défaut de sept jours. Pour plus d’informations, consultez [Sauvegardes automatisées d’une base de données SQL](automated-backups-overview.md).
 
 > [!IMPORTANT]
-> Si votre base de données est membre d'un groupe de basculement, vous ne pouvez pas lancer son basculement à l'aide de la commande de basculement de la géoréplication. Utilisez la commande de basculement du groupe. Pour basculer une base de données individuelle, vous devez d'abord la supprimer du groupe de basculement. Pour plus d'informations, consultez [Groupes de basculement](auto-failover-group-overview.md).
+> Si votre base de données est membre d'un groupe de basculement, vous ne pouvez pas lancer son basculement à l'aide de la commande de basculement de la géoréplication. Utilisez la commande de basculement du groupe. Pour basculer une base de données individuelle, vous devez d'abord la supprimer du groupe de basculement. Pour plus d’informations, consultez [Groupes de basculement automatique](auto-failover-group-overview.md).
 
-## <a name="configuring-secondary-database"></a>Configuration d'une base de données secondaire
+## <a name="configure-geo-secondary"></a><a name="configuring-secondary-database"></a> Configurer la base de données géosecondaire
 
-Les bases de données primaire et secondaire doivent offrir le même niveau de service. Il est également vivement recommandé de créer la base de données secondaire avec les mêmes redondance de stockage de sauvegarde taille de calcul (DTU ou vCores) que la base de données primaire. En cas de charge de travail d’écriture importante de la base de données primaire, une base de données secondaire dotée d’une taille de calcul inférieure peut ne pas suivre. Cela entraîne le décalage de la phase de restauration par progression sur la base de données secondaire et l’indisponibilité potentielle de la base de données secondaire. Pour atténuer ces risques, la géoréplication active limite si nécessaire le taux de journalisation des transactions de la base de données primaire pour permettre à ses bases de données secondaires de rattraper le retard.
+Les bases de données primaire et géosecondaire doivent offrir le même niveau de service. Il est également vivement recommandé de configurer la base de données géosecondaire avec les mêmes redondance de stockage de sauvegarde et taille de calcul (DTU ou vCores) que la base de données primaire. En cas de charge de travail d’écriture importante de la base de données primaire, une base de données géosecondaire dotée d’une taille de calcul inférieure peut ne pas suivre. Cela entraînera un décalage de réplication sur le géo-réplica et peut entraîner une indisponibilité de la base de données géosecondaire. Pour atténuer ces risques, la géoréplication active réduit si nécessaire le taux de journalisation des transactions de la base de données primaire pour permettre à ses bases de données secondaires de rattraper le retard.
 
-Après un basculement, une configuration de base de données secondaire déséquilibrée peut aussi altérer le niveau de performance de l’application en raison de la capacité de calcul insuffisante de la nouvelle base de données primaire. Dans ce cas, il est nécessaire d’effectuer un scale-up de l’objectif du service de base de données au niveau nécessaire, ce qui peut nécessiter beaucoup de temps et de ressources de calcul. Un basculement à [haute disponibilité](high-availability-sla.md) est également nécessaire à la fin du processus de scale-up.
+Après un basculement, une configuration de base de données géosecondaire déséquilibrée peut aussi altérer le niveau de performance de l’application en raison de la capacité de calcul insuffisante de la nouvelle base de données primaire. Dans ce cas, il est nécessaire d’effectuer un scale-up de la base de données, afin qu’elle puisse bénéficier des ressources suffisantes, ce qui peut nécessiter beaucoup de temps. Un basculement à [haute disponibilité](high-availability-sla.md) est également nécessaire à la fin du processus de scale-up, pouvant interrompre les charges de travail de l’application.
 
-Si vous décidez de créer une base de données secondaire avec une taille de calcul inférieure, vous pouvez utiliser le graphique de pourcentage d’E/S du journal dans le portail Azure pour estimer la taille de calcul minimale de la base de données secondaire qui est nécessaire pour supporter la charge de réplication. Par exemple, si votre base de données primaire est P6 (1000 DTU) et que son pourcentage d’écriture dans le journal est de 50 %, la base de données secondaire doit être au moins P4 (500 DTU). Pour récupérer les données d’E/S historiques du journal, utilisez la vue [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database). Pour récupérer les données d’écriture récentes dans le journal avec une granularité plus élevée qui reflète mieux les pics à court terme du taux de journalisation, utilisez la vue [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database).
+Si vous décidez de créer le géo-réplica avec une taille de calcul inférieure, vous devez surveiller le taux d’E/S de journal sur le serveur principal dans le temps. Cela vous permet d’estimer la taille de calcul minimale du géo-réplica requis pour supporter la charge de réplication. Par exemple, si votre base de données primaire est P6 (1 000 DTU) et si son taux d’E/S du journal est maintenu à 50 %, la base de données géosecondaire doit être au moins P4 (500 DTU). Pour récupérer les données d’E/S historiques du journal, utilisez la vue [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database). Pour récupérer les données d’E/S récentes dans le journal avec une granularité plus élevée qui reflète mieux les pics à court terme, utilisez la vue [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database).
 
-La limitation du taux de journalisation des transactions sur la base de données primaire en raison d’une réduction de la taille de calcul sur une base de données secondaire est signalée à l’aide du type d’attente HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO, visible dans les vues de base de données [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) et [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
+> [!TIP]
+> La limitation du nombre d’E/S de journalisation des transactions sur la base de données primaire en raison d’une réduction de la taille de calcul sur une base de données géosecondaire est signalée à l’aide du type d’attente HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO, visible dans les vues de base de données [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) et [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
+>
+> Le nombre d’E/S de journalisation des transactions sur la base de données primaire peut être limité pour des raisons autres qu’une taille de calcul inférieure sur une base de données géosecondaire. Ce genre de limitation peut se produire même si la base de données géo-secondaire a une taille de calcul identique ou supérieure à celle de la base de données primaire. Pour plus d’informations, notamment sur les types d’attente pour les différents genres de limitation de nombre d’E/S de journalisation, consultez [Gouvernance relative au taux de journalisation des transactions](resource-limits-logical-server.md#transaction-log-rate-governance).
 
-Par défaut, la redondance de stockage de sauvegarde de la base de données secondaire est identique à celle de la base de données primaire. Vous pouvez configurer la base de données secondaire avec une redondance de stockage de sauvegarde différente. Les sauvegardes sont toujours effectuées sur la base de données primaire. Si la base de données secondaire est configurée avec une redondance de stockage de sauvegarde différente, après le basculement effectué lors de la promotion de la base de données secondaire en base de données primaire, les sauvegardes sont facturées en fonction de la redondance de stockage sélectionnée sur la nouvelle base de données primaires (ancienne secondaire). 
-
-> [!NOTE]
-> Le taux de journalisation des transactions sur la base de données primaire peut être limité pour des raisons non liées à une taille de calcul inférieure sur une base de données secondaire. Ce genre de limitation peut se produire même si la base de données secondaire a une taille de calcul identique ou supérieure à celle de la base de données primaire. Pour plus d’informations, notamment sur les types d’attente pour les différents genres de limitation du taux de journalisation, consultez [Gouvernance relative au taux de journalisation des transactions](resource-limits-logical-server.md#transaction-log-rate-governance).
-
-> [!NOTE]
-> La redondance configurable du stockage de sauvegarde Azure SQL Database est actuellement disponible uniquement en préversion publique dans la région Brésil Sud et mise à la disposition générale dans la région Azure Asie Sud-Est. Lorsque la base de données source est créée avec une redondance de stockage de sauvegarde redondante localement ou redondante interzone, la création d’une base de données secondaire dans une autre région Azure n’est pas prise en charge. 
-
-Pour plus d’informations sur les tailles de calcul SQL Database, consultez [Présentation des niveaux de service SQL Database](purchasing-models.md).
+Par défaut, la redondance de stockage de sauvegarde de la base de données géosecondaire est identique à celle de la base de données primaire. Vous pouvez configurer la base de données géosecondaire avec une redondance de stockage de sauvegarde différente. Les sauvegardes sont toujours effectuées sur la base de données primaire. Si la base de données secondaire est configurée avec une redondance de stockage de sauvegarde différente, après le géo-basculement effectué lors de la promotion de la base de données secondaire en base de données primaire, les nouvelles sauvegardes sont stockées et facturées en fonction du type de stockage (RA-GRS, ZRS, LRS) sélectionné sur la nouvelle base de données primaire (ancienne secondaire). 
 
 ## <a name="cross-subscription-geo-replication"></a>Géoréplication entre abonnements
 
-> [!NOTE]
-> La création d'un géo-réplica sur un serveur logique dans un autre locataire Azure n'est pas prise en charge lorsque seule l'authentification [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) pour Azure SQL est activée sur le serveur logique primaire ou secondaire.
-> [!NOTE]
-> Les opérations de géoréplication entre abonnements, y compris la configuration et le basculement, sont uniquement prises en charge via les commandes SQL.
+Pour créer un réplica géosecondaire dans un abonnement différent de celui de la base de données principale (qu’il soit sous le même locataire Azure Active Directory ou non), suivez les étapes de cette section.
 
-Pour configurer la géoréplication active entre deux bases de données appartenant à des abonnements différents (que ce soit sous le même locataire ou non), vous devez suivre la procédure spéciale décrite dans cette section.  La procédure repose sur des commandes SQL et requiert ce qui suit :
+1. Ajoutez l’adresse IP de l’ordinateur client exécutant les commandes T-SQL ci-dessous aux pare-feu de serveur **des serveurs principal et secondaire**. Vous pouvez confirmer cette adresse IP en exécutant la requête suivante tout en étant connecté au serveur principal à partir du même ordinateur client.
+  
+   ```sql
+   select client_net_address from sys.dm_exec_connections where session_id = @@SPID;
+   ``` 
 
-- Création d'un ID de connexion privilégié sur les deux serveurs
-- Ajout de l'adresse IP à la liste verte du client qui procède à la modification sur les deux serveurs (comme l'adresse IP de l'hôte qui exécute SQL Server Management Studio).
+   Pour plus d’informations, consultez [Configurer le pare-feu](firewall-configure.md).
 
-Le client qui procède aux modifications doit disposer d'un accès réseau au serveur principal. Bien que la même adresse IP client doive être ajoutée à la liste verte sur le serveur secondaire, la connectivité réseau au serveur secondaire n'est pas strictement nécessaire.
-
-### <a name="on-the-master-of-the-primary-server"></a>Sur le maître du serveur principal
-
-1. Ajoutez l'adresse IP à la liste verte du client qui procède aux modifications (pour plus d'informations, consultez [Configurer le pare-feu](firewall-configure.md)).
-1. Créez un ID de connexion dédié à la configuration de la géoréplication active (et, si nécessaire, modifiez les informations d'identification) :
+2. Dans la base de données master sur le serveur **principal**, créez une connexion d’authentification SQL dédiée à la configuration de la géoréplication active. Ajustez le nom de connexion et le mot de passe si nécessaire.
 
    ```sql
-   create login geodrsetup with password = 'ComplexPassword01'
+   create login geodrsetup with password = 'ComplexPassword01';
    ```
 
-1. Créez un utilisateur et attribuez-lui le rôle dbmanager :
-
-   ```sql
-   create user geodrsetup for login geodrsetup
-   alter role dbmanager add member geodrsetup
-   ```
-
-1. Prenez note du SID associé au nouvel ID de connexion en utilisant la requête suivante :
-
-   ```sql
-   select sid from sys.sql_logins where name = 'geodrsetup'
-   ```
-
-### <a name="on-the-source-database-on-the-primary-server"></a>Sur la base de données source du serveur principal
-
-1. Créez un utilisateur pour le même ID de connexion :
-
-   ```sql
-   create user geodrsetup for login geodrsetup
-   ```
-
-1. Attribuez le rôle db_owner à l'utilisateur :
-
-   ```sql
-   alter role db_owner add member geodrsetup
-   ```
-
-### <a name="on-the-master-of-the-secondary-server"></a>Sur le maître du serveur secondaire
-
-1. Ajoutez l’adresse IP du client à la liste autorisée sous les règles de pare-feu pour le serveur secondaire. Vérifiez que l’adresse IP du client ajoutée sur le serveur principal est exactement la même que celle qui a été ajoutée au serveur secondaire. Il s’agit d’une étape obligatoire à effectuer avant d’exécuter la commande ALTER DATABASE ADD SECONDARY pour lancer la géo-réplication.
-
-1. Créez le même ID de connexion que sur le serveur principal, en utilisant les mêmes nom d'utilisateur/mot de passe et le même SID :
-
-   ```sql
-   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
-   ```
-
-1. Créez un utilisateur et attribuez-lui le rôle dbmanager :
+3. Dans la même base de données, créez un utilisateur pour la connexion, puis ajoutez-le au rôle `dbmanager` :
 
    ```sql
    create user geodrsetup for login geodrsetup;
-   alter role dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup;
    ```
 
-### <a name="on-the-master-of-the-primary-server"></a>Sur le maître du serveur principal
-
-1. Connectez-vous au maître du serveur principal à l'aide du nouvel ID de connexion.
-1. Créez un réplica secondaire de la base de données source sur le serveur secondaire (si nécessaire, modifiez le nom de la base de données et le nom du serveur) :
+4. Prenez note de la valeur SID de la nouvelle connexion. Obtenez la valeur SID à l’aide de la requête suivante.
 
    ```sql
-   alter database dbrep add secondary on server <servername>
+   select sid from sys.sql_logins where name = 'geodrsetup';
    ```
 
-Au terme de la configuration initiale, les utilisateurs, les ID de connexion et les règles de pare-feu créés peuvent être supprimés.
+5. Connectez-vous à la base de données **primaire** (et non à la base de données master) et créez un utilisateur pour la même connexion.
 
-## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Synchronisation des informations d’identification et des règles de pare-feu
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   ```
 
-Nous recommandons d’utiliser des [règles de pare-feu IP au niveau de la base de données](firewall-configure.md) pour les bases de données géorépliquées, de façon à ce que ces règles puissent être répliquées avec la base de données, garantissant ainsi que toutes les bases de données secondaires ont les mêmes règles de pare-feu IP que la base de données primaire. Cette approche évite aux clients de devoir configurer et tenir à jour manuellement les règles de pare-feu sur les serveurs hébergeant les bases de données primaire et secondaires. De même, le recours à des [utilisateurs de base de données contenus](logins-create-manage.md) pour l’accès aux données garantit que les bases de données primaires et secondaires ont toujours les mêmes informations d’identification d’utilisateur afin qu’un basculement n’entraîne aucune interruption due à une discordance d’ID de connexion et de mots de passe. Avec l’ajout [d’Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md), les clients peuvent gérer l’accès utilisateur aux bases de données primaires et secondaires. Cela élimine également la nécessité de gérer les informations d’identification dans l’ensemble des bases de données.
+6. Dans la même base de données, ajoutez l’utilisateur au rôle `db_owner`.
 
-## <a name="upgrading-or-downgrading-primary-database"></a>Mise à niveau ou rétrogradation de la base de données primaire
+   ```sql
+   alter role db_owner add member geodrsetup;
+   ```
 
-Vous pouvez augmenter ou diminuer la taille de calcul d’une base de données primaire (au sein du même niveau de service, mais pas entre les niveaux Usage général et Critique pour l’entreprise) sans déconnecter les bases de données secondaires. Lors d’une mise à niveau, nous vous recommandons de mettre à niveau la base de données secondaire dans un premier temps, avant de mettre à niveau la base de données primaire. Lors d’une rétrogradation, inversez l’ordre : rétrogradez tout d’abord la base de données primaire, puis dans un second temps la base de données secondaire. Lorsque vous passez la base de données à un niveau de service supérieur ou inférieur, cette recommandation est appliquée.
+7. Dans la base de données master sur le serveur **secondaire**, créez la même connexion que sur le serveur principal, en utilisant le même nom, le même mot de passe et le même SID. Remplacez la valeur de SID hexadécimale dans l’exemple de commande ci-dessous par celle obtenue à l’étape 4.
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E;
+   ```
+
+8. Dans la même base de données, créez un utilisateur pour la connexion, puis ajoutez-le au rôle `dbmanager`.
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup;
+   ```
+
+9. Connectez-vous à la base de données master sur le serveur **principal** à l’aide de la nouvelle connexion`geodrsetup` et lancez la création géosecondaire sur le serveur secondaire. Ajustez le nom de la base de données et le nom du serveur secondaire au besoin. Une fois la commande exécutée, vous pouvez surveiller la création géosecondaire en interrogeant la vue [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) dans la base de données **primaire**, et la vue [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) dans la base de données master sur le serveur **principal**. Le temps nécessaire à la création d’un géo-réplica secondaire dépend de la taille de la base de données primaire.
+
+   ```sql
+   alter database [dbrep] add secondary on server [servername];
+   ```
+
+10. Une fois la base de données géo-secondaire créée, les utilisateurs, les connexions et les règles de pare-feu créés par cette procédure peuvent être supprimés.
 
 > [!NOTE]
-> Si vous avez créé une base de données secondaire dans le cadre de la configuration des groupes de basculement, il n’est pas conseillé de passer la base de données secondaire à un niveau de service inférieur. En effet, votre couche Données pourrait manquer de capacité pour traiter votre charge de travail normale après l’activation du basculement.
+> Les opérations de géoréplication entre abonnements, y compris la configuration et le basculement, sont uniquement prises en charge via les commandes T-SQL.
+> 
+> L’ajout d’une base de données géosecondaire à l’aide de commandes T-SQL n’est pas pris en charge lorsque les serveurs primaire et/ou secondaires ont un [point de terminaison privé](private-endpoint-overview.md) configuré et que [l’accès au réseau public est refusé](connectivity-settings.md#deny-public-network-access). Si le point de terminaison privé est configuré mais que l’accès au réseau public est autorisé, l’ajout d’une base de données géosecondaire lors de la connexion au serveur principal à partir d’une adresse IP publique est pris en charge. Une fois la base de données géosecondaire ajoutée, un accès public peut être refusé.
+> 
+> La création d’un géo-réplica sur un serveur logique dans un autre locataire Azure n’est pas prise en charge lorsque seule l’authentification [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) pour Azure SQL est activée sur le serveur logique primaire ou secondaire.
+
+## <a name="keep-credentials-and-firewall-rules-in-sync"></a><a name="keeping-credentials-and-firewall-rules-in-sync"></a> Synchronisation des informations d’identification et des règles de pare-feu
+
+Lorsque vous utilisez un accès réseau public pour la connexion à la base de données, nous vous recommandons d’utiliser des [règles de pare-feu IP au niveau de la base de données](firewall-configure.md) pour les bases de données géo-répliquées. Ces règles sont répliquées avec la base de données, ce qui garantit que toutes les bases de données géosecondaires ont les mêmes règles de pare-feu IP que la base de données primaire. Cette approche évite aux clients de devoir configurer et tenir à jour manuellement les règles de pare-feu sur les serveurs hébergeant les bases de données primaire et secondaires. De même, l’utilisation des [utilisateurs de base de données autonome](logins-create-manage.md) pour l’accès aux données garantit que les bases de données primaires et secondaires ont toujours les mêmes informations d’identification d’authentification. Ainsi, après un géo-basculement, il n’y a aucune interruption due à des incompatibilités d’informations d’identification.
+
+## <a name="scale-primary-database"></a><a name="upgrading-or-downgrading-primary-database"></a> Mettre à l’échelle une base de données primaire
+
+Vous pouvez effectuer un scale-up/down sur une base de données primaire avec une taille de calcul différente (au sein du même niveau de service) sans déconnecter les bases de données géosecondaires. Lors du scale-up, nous vous recommandons de commencer par la base de données géosecondaire, puis de terminer avec la base de données primaire. Lors du scale-down, inversez l’ordre : commencez par la base de données primaire, puis terminez par la base de données secondaire.
+
+> [!NOTE]
+> Si vous avez créé une base de données géosecondaire dans le cadre de la configuration du groupe de basculement, il n’est pas recommandé d’effectuer un scale-down dessus. En effet, votre couche Données pourrait manquer de capacité pour traiter votre charge de travail normale après un géo-basculement.
 
 > [!IMPORTANT]
-> Pour permettre la mise à l'échelle vers le niveau supérieur d'une base de données primaire dans un groupe de basculement, la base de données secondaire doit avoir été préalablement mise à l'échelle vers le niveau supérieur. Si vous tentez de mettre à l’échelle la base de données primaire préalablement à la base de données secondaire, l'erreur suivante peut s'afficher :
+> Pour permettre la mise à l’échelle vers le niveau de service supérieur (édition) d’une base de données primaire dans un groupe de basculement, la base de données secondaire doit avoir été préalablement mise à l’échelle vers le niveau supérieur. Par exemple, si vous souhaitez mettre à l’échelle la base de données principale de Usage général vers Critique pour l’entreprise, vous devez d’abord mettre à l’échelle la base de données géosecondaire vers Critique pour l’entreprise. Si vous essayez de mettre à l’échelle la base de données primaire ou géosecondaire d’une manière qui enfreint cette règle, vous recevez l’erreur suivante :
 >
-> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+> `The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
 
-## <a name="preventing-the-loss-of-critical-data"></a>Prévention de la perte de données critiques
+## <a name="prevent-loss-of-critical-data"></a><a name="preventing-the-loss-of-critical-data"></a> Empêcher la perte de données critiques
 
-En raison de la latence élevée des réseaux étendus, la copie continue utilise un mécanisme de réplication asynchrone. La perte de certaines données reste donc inévitable en cas de défaillance. Or, pour certaines applications, une perte de données est inacceptable. Pour protéger ces mises à jour critiques, un développeur d’applications peut appeler la procédure système [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) immédiatement après la validation de la transaction. L’appel de **sp_wait_for_database_copy_sync** bloque le thread appelant jusqu’à ce que la dernière transaction validée ait été transmise à la base de données secondaire. Toutefois, il n’attend pas que les transactions transmises soient relues et validées sur la base de données secondaire. **sp_wait_for_database_copy_sync** est limité à une relation de copie continue spécifique. Tout utilisateur disposant de droits de connexion à la base de données primaire peut appeler cette procédure.
+En raison de la latence élevée des réseaux étendus, la géoréplication utilise un mécanisme de réplication asynchrone. La réplication asynchrone rend la possibilité de perte de données inévitable en cas de défaillance de la base de données primaire. Pour protéger les transactions critiques d’une perte de données, le développeur d’applications peut appeler la procédure stockée [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) immédiatement après la validation de la transaction. L’appel de `sp_wait_for_database_copy_sync` bloque le thread appelant jusqu’à ce que la dernière transaction validée ait été transmise et renforcée dans le journal des transactions de la base de données secondaire. Toutefois, il n’attend pas que les transactions transmises soient relues (réeffectuées) sur la base de données secondaire. `sp_wait_for_database_copy_sync` est limité à un lien de géoréplication spécifique. Tout utilisateur disposant de droits de connexion à la base de données primaire peut appeler cette procédure.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** empêche la perte de données après un basculement, mais il ne garantit pas la synchronisation complète pour l’accès en lecture. Le délai causé par un appel de procédure **sp_wait_for_database_copy_sync** peut être significatif et dépend de la taille du journal des transactions au moment de l’appel.
+> `sp_wait_for_database_copy_sync` empêche la perte de données après un géo-basculement pour des transactions spécifiques, mais ne garantit pas une synchronisation complète pour l’accès en lecture. Le délai causé par un appel de procédure `sp_wait_for_database_copy_sync` peut être significatif et dépend de la taille du journal des transactions pas encore transmis à la base de données primaire au moment de l’appel.
 
-## <a name="monitoring-geo-replication-lag"></a>Surveiller le décalage de la géoréplication
+## <a name="monitor-geo-replication-lag"></a><a name="monitoring-geo-replication-lag"></a> Supervision du décalage de la géoréplication
 
-Pour surveiller le décalage par rapport au RPO, utilisez la colonne *replication_lag_sec* de [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) sur la base de données primaire. Elle affiche le décalage en secondes entre les transactions validées sur la base de données primaire et les transactions persistantes sur la base de données secondaire. Par exemple, une valeur de décalage d'une seconde indique qu'en cas d'interruption de la base de données primaire, à ce moment précis, et de basculement, les transactions les plus récentes ne seront pas sauvegardées à hauteur d'une seconde.
+Pour surveiller le décalage par rapport au RPO, utilisez la colonne *replication_lag_sec* de [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) sur la base de données primaire. Elle affiche le décalage en secondes entre les transactions validées sur la base de données primaire et les transactions renforcées dans le journal des transactions sur la base de données secondaire. Par exemple, si le retard est d’une seconde, cela signifie que si la base de données primaire est affectée par une panne à ce moment et qu’un géo-basculement est initié, les transactions validées au cours de la dernière seconde seront perdues.
 
-Pour mesurer le décalage ayant trait aux modifications de la base de données primaire appliquées à la base de données secondaire, c'est-à-dire pour lire à partir de la base de données secondaire, comparez la valeur *last_commit* sur la base de données secondaire avec la même valeur sur la base de données primaire.
+Pour mesurer le décalage ayant trait aux modifications de la base de données primaire renforcées sur la base de données géosecondaire, comparez la valeur *last_commit* sur la base de données secondaire avec la même valeur sur la base de données primaire.
 
-> [!NOTE]
-> Sur la base de données primaire, *replication_lag_sec* peut présenter une valeur NULL, ce qui signifie que la base de données primaire ne connaît pas précisément l'état de la base de données secondaire.   Cela se produit généralement après le redémarrage du processus et relève d'une situation temporaire. Envisagez d’alerter l’application si *replication_lag_sec* présente une valeur NULL pendant une période prolongée. En effet, la base de données secondaire peut ne pas être en mesure de communiquer avec la base de données primaire en raison d'un échec de connectivité permanent. D'autres cas de figure peuvent aussi être à l'origine d'une importante différence de valeur *last_commit* entre les bases de données primaire et secondaire. Par exemple, si une validation intervient sur la base de données primaire après une longue période sans modifications, la différence augmente considérablement avant de redevenir rapidement nulle. Envisagez un état d'erreur lorsque la différence entre ces deux valeurs demeure importante pendant une période prolongée.
+> [!TIP]
+> Sur la base de données primaire, si *replication_lag_sec* présente une valeur NULL, cela signifie que la base de données primaire ne connaît pas précisément l’état de retard de la base de données géosecondaire. Cela se produit généralement après le redémarrage du processus et relève d'une situation temporaire. Envisagez d’envoyer une alerte si *replication_lag_sec* présente une valeur NULL pendant une période prolongée. Cela peut indiquer que la base de données géosecondaire ne peut pas communiquer avec la base de données primaire en raison d’une défaillance de connectivité.
+> 
+> D’autres cas de figure peuvent aussi être à l’origine d’une importante différence de valeur *last_commit* entre les bases de données primaire et secondaire. Par exemple, si une validation intervient sur la base de données primaire après une longue période sans modifications, la différence augmente considérablement avant de redevenir rapidement nulle. Envisagez d’envoyer une alerte si la différence entre ces deux valeurs demeure importante pendant une période prolongée.
 
-## <a name="programmatically-managing-active-geo-replication"></a>Gestion de la géo-réplication active par programmation
+## <a name="programmatically-manage-active-geo-replication"></a><a name="programmatically-managing-active-geo-replication"></a> Gestion de la géoréplication active par programmation
 
-Comme indiqué plus haut, la géoréplication active peut aussi être gérée par programme à l’aide d’Azure PowerShell et de l’API REST. Les tableaux ci-dessous décrivent l’ensemble des commandes disponibles. La géoréplication active comprend un ensemble d’API Azure Resource Manager pour la gestion, notamment [l’API REST Azure SQL Database](/rest/api/sql/) et les [applets de commande Azure PowerShell](/powershell/azure/). Ces API nécessitent l’utilisation de groupes de ressources et la prise en charge du contrôle d’accès en fonction du rôle (RBAC). Pour plus d’informations sur l’implémentation de rôles d’accès, consultez la page sur le [contrôle d’accès en fonction du rôle Azure (RBAC Azure)](../../role-based-access-control/overview.md).
+Comme indiqué plus haut, la géoréplication active peut aussi être gérée par programmation à l’aide de T-SQL, d’Azure PowerShell et de l’API REST. Les tableaux ci-dessous décrivent l’ensemble des commandes disponibles. La géoréplication active comprend un ensemble d’API Azure Resource Manager pour la gestion, notamment [l’API REST Azure SQL Database](/rest/api/sql/) et les [applets de commande Azure PowerShell](/powershell/azure/). Ces API prennent en charge le contrôle d’accès en fonction du rôle Azure (Azure RBAC). Pour plus d’informations sur l’implémentation de rôles d’accès, consultez la page sur le [contrôle d’accès en fonction du rôle Azure (RBAC Azure)](../../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL : Gérer le basculement des bases de données uniques et mises en pool
+### <a name="t-sql-manage-geo-failover-of-single-and-pooled-databases"></a><a name="t-sql-manage-failover-of-single-and-pooled-databases"></a> T-SQL : Gérer le géo-basculement des bases de données uniques et mises en pool
 
 > [!IMPORTANT]
-> Ces commandes Transact-SQL s’appliquent uniquement à la géoréplication active et ne s’appliquent pas aux groupes de basculement. Par conséquent, elles ne s’appliquent pas non plus aux instances de SQL Managed Instance, car elles prennent uniquement en charge les groupes de basculement.
+> Ces commandes T-SQL s’appliquent uniquement à la géoréplication active et ne s’appliquent pas aux groupes de basculement. Par conséquent, elles ne s’appliquent pas non plus à SQL Managed Instance, qui prend uniquement en charge les groupes de basculement.
 
 | Commande | Description |
 | --- | --- |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Utilise l’argument ADD SECONDARY ON SERVER afin de créer une base de données secondaire pour une base de données existante puis lance la réplication des données |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Utilise l’argument FAILOVER ou FORCE_FAILOVER_ALLOW_DATA_LOSS pour basculer d’une base de données secondaire à une base de données principale afin de lancer le basculement |
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Utilise l’argument REMOVE SECONDARY ON SERVER pour mettre fin à une réplication de données entre une base de données SQL et la base de données secondaire spécifiée. |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Utilise l’argument **ADD SECONDARY ON SERVER** afin de créer une base de données secondaire pour une base de données existante puis lance la réplication des données |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Utilise l’argument **FAILOVER** ou **FORCE_FAILOVER_ALLOW_DATA_LOSS** pour basculer d’une base de données secondaire à une base de données principale afin de lancer le basculement |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Utilise l’argument **REMOVE SECONDARY ON SERVER** pour mettre fin à une réplication de données entre une base de données SQL et la base de données secondaire spécifiée. |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourne des informations concernant tous les liens de réplication existants pour chaque base de données sur un serveur. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Obtient l’heure de la dernière réplication, le dernier décalage de la réplication et d’autres informations sur le lien de réplication pour une base de données spécifique. |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Affiche l’état de toutes les opérations de base de données, y compris l’état des liens de réplication. |
-| [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |oblige l’application à attendre que toutes les transactions validées sont répliquées et acceptées par la base de données secondaire active. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Affiche l’état de toutes les opérations de base de données, y compris les modifications apportées aux liens de réplication. |
+| [sys.sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |Entraîne l’attente de l’application jusqu’à ce que toutes les transactions validées soient renforcées dans le journal des transactions d’un géo-réplica. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell : Gérer le basculement des bases de données uniques et mises en pool
+### <a name="powershell-manage-geo-failover-of-single-and-pooled-databases"></a><a name="powershell-manage-failover-of-single-and-pooled-databases"></a> PowerShell : Gérer le géo-basculement des bases de données uniques et mises en pool
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -288,13 +275,13 @@ Comme indiqué plus haut, la géoréplication active peut aussi être gérée pa
 | [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary) |Crée une base de données secondaire pour une base de données existante puis lance la réplication des données. |
 | [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary) |Bascule d’une base de données secondaire à une base de données principale afin de lancer le basculement. |
 | [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) |Met fin à une réplication de données entre une base de données SQL et la base de données secondaire spécifiée. |
-| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Obtient les liens de géo-réplication entre une instance Azure SQL Database et un groupe de ressources ou un serveur SQL logique. |
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Obtient les liens de géoréplication pour une base de données. |
 |  | |
 
-> [!IMPORTANT]
+> [!TIP]
 > Pour plus d’exemples de scripts, consultez [Configurer et basculer une base de données unique à l’aide de la géoréplication active](scripts/setup-geodr-and-failover-database-powershell.md) et [Configurer et basculer une base de données mise en pool à l’aide de la géoréplication active](scripts/setup-geodr-and-failover-elastic-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>API REST : Gérer le basculement des bases de données uniques et mises en pool
+### <a name="rest-api-manage-geo-failover-of-single-and-pooled-databases"></a><a name="rest-api-manage-failover-of-single-and-pooled-databases"></a> API REST : Gérer le géo-basculement des bases de données uniques et mises en pool
 
 | API | Description |
 | --- | --- |
@@ -307,16 +294,13 @@ Comme indiqué plus haut, la géoréplication active peut aussi être gérée pa
 | [Supprimer un lien de réplication](/rest/api/sql/replicationlinks/delete) | Supprime un lien de réplication de base de données. Opération impossible pendant le basculement. |
 |  | |
 
-
-
-
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Pour obtenir des exemples de scripts, consultez :
-  - [Configurer et basculer une base de données unique à l’aide de la géoréplication active](scripts/setup-geodr-and-failover-database-powershell.md)
-  - [Configurer et basculer une base de données mise en pool à l’aide de la géoréplication active](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
+  - [Configurer et basculer une seule base de données à l’aide de la géoréplication active](scripts/setup-geodr-and-failover-database-powershell.md).
+  - [Configurer et basculer une base de données mise en pool à l’aide de la géoréplication active](scripts/setup-geodr-and-failover-elastic-pool-powershell.md).
 - SQL Database prend également en charge les groupes de basculement automatique. Pour plus d’informations, voir la section sur l’utilisation des [Groupes de basculement automatique](auto-failover-group-overview.md).
-- Pour une vue d’ensemble de la continuité des activités et des scénarios, consultez [Vue d’ensemble de la continuité des activités](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- Pour une vue d’ensemble de la continuité des activités et des scénarios, consultez [Vue d’ensemble de la continuité des activités](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - Pour en savoir plus sur les sauvegardes automatisées d’une base de données Azure SQL, consultez [Sauvegardes automatisées d’une base de données SQL](automated-backups-overview.md).
 - Pour en savoir plus sur l’utilisation des sauvegardes automatisées pour la récupération, consultez [Restaurer une base de données à partir des sauvegardes initiées par le service](recovery-using-backups.md).
 - Pour en savoir plus sur les exigences d’authentification pour de nouveaux serveurs et bases de données primaires, consultez [Gestion de la sécurité de la base de données SQL Azure après la récupération d’urgence](active-geo-replication-security-configure.md).

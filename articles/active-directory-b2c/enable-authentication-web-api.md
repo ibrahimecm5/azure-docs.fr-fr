@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/25/2021
+ms.date: 10/26/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 8bb890fb92352be9a0771cb0b80d2f1565dc664c
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 38a60dee9d4a5b7c0516b8e3278e848e0be26c2e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065689"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424436"
 ---
 # <a name="enable-authentication-in-your-own-web-api-by-using-azure-ad-b2c"></a>Activation de l’authentification dans une API web avec Azure AD B2C
 
@@ -377,7 +377,7 @@ La fonction d’authentification vérifie également que l’API web est appelé
 
 ## <a name="step-5-configure-the-web-server"></a>Étape 5 : Configurer le serveur web
 
-Dans un environnement de développement, définissez l’API web de sorte qu’elle écoute sur le numéro de port des requêtes HTTP ou HTTPS entrantes. Dans cet exemple, utilisez le port HTTP 6000 et le port HTTPS 6001. L’URI de base de l’API web est `http://localhost:6000` pour HTTP et `https://localhost:6001` pour HTTPS. Il est également possible de [configurer des points de terminaison HTTP et HTTPS pour l’application Node](https://github.com/expressjs/express/wiki/Migrating-from-2.x-to-3.x#application-function).
+Dans un environnement de développement, définissez l’API web de sorte qu’elle écoute sur le numéro de port des requêtes HTTP ou HTTPS entrantes. Dans cet exemple, utilisez le port HTTP 6000 et le port HTTPS 6001. L’URI de base de l’API web est `http://localhost:6000` pour HTTP et `https://localhost:6001` pour HTTPS.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/csharpclient)
 
@@ -398,7 +398,7 @@ Ajoutez l’extrait de code JSON suivant au fichier *appsettings.json*.
 
 # <a name="nodejs"></a>[Node.JS](#tab/nodejsgeneric)
 
-Ajoutez le code JavaScript suivant au fichier *app.js*. 
+Ajoutez le code JavaScript suivant au fichier *app.js*. Il est également possible de [configurer des points de terminaison HTTP et HTTPS pour l’application Node](https://github.com/expressjs/express/wiki/Migrating-from-2.x-to-3.x#application-function). 
 
 ```javascript
 // Starts listening on port 6000

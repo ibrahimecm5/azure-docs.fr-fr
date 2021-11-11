@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5584f052dc9dcb72f03b923c1a4c666e212b5385
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b4da00cb112ac84a049910cb23a71841461cfa06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697356"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459916"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Créer un groupe identique de machines virtuelles qui utilise les zones de disponibilité
 
@@ -38,7 +38,7 @@ Avec « max spreading » (répartition max), le groupe identique répartit vos m
 
 ### <a name="placement-groups"></a>Groupes de placement
 
-Lorsque vous déployez un groupe identique, vous avez également la possibilité de déployer avec un seul [groupe de placement](./virtual-machine-scale-sets-placement-groups.md) par zone de disponibilité, ou plusieurs groupes par zone. Pour les groupes identiques régionaux (non-zonaux), le choix consiste à avoir un groupe de placement unique dans la région ou plusieurs groupes dans la région. Pour la plupart des charges de travail, nous recommandons d’utiliser plusieurs groupes de placement, qui permettent une plus grande mise à l’échelle. Dans la version d’API *2017-12-01*, pour les groupes identiques de zone unique et inter-zones l’option par défaut est plusieurs groupes de placement, mais pour les groupes identiques régionaux (non-zonaux) l’option par défaut est un seul groupe de placement.
+Lorsque vous déployez un groupe identique, vous avez également la possibilité de déployer avec un seul [groupe de placement](./virtual-machine-scale-sets-placement-groups.md) par zone de disponibilité, ou plusieurs groupes par zone. Pour les groupes identiques régionaux (non-zonaux), le choix consiste à avoir un groupe de placement unique dans la région ou plusieurs groupes dans la région. Si la propriété de groupe identique appelée `singlePlacementGroup` est définie sur false, le groupe identique peut se composer de plusieurs groupes de placement et présente une plage de 0 à 1 000 machines virtuelles. Lorsque la valeur par défaut est définie sur true, le groupe identique est composé d’un seul groupe de placement et présente une plage de 0 à 100 machines virtuelles. Pour la plupart des charges de travail, nous recommandons d’utiliser plusieurs groupes de placement, qui permettent une plus grande mise à l’échelle. Dans la version d’API *2017-12-01*, pour les groupes identiques de zone unique et inter-zones l’option par défaut est plusieurs groupes de placement, mais pour les groupes identiques régionaux (non-zonaux) l’option par défaut est un seul groupe de placement.
 
 > [!NOTE]
 > Si vous utilisez « max spreading » (répartition max), vous devez utiliser plusieurs groupes de placement.
@@ -55,6 +55,9 @@ Il est possible que les machines virtuelles du groupe identique soient correctem
 Avec « best effort zone balance » (meilleur équilibre des zones), le groupe identique tente de diminuer et d’augmenter la taille des instances tout en maintenant l’équilibre. Toutefois, si pour une raison quelconque cela n’est pas possible (par exemple, si une zone tombe en panne, le groupe identique ne peut pas créer de nouvelle machine virtuelle dans cette zone), le groupe identique autorise un déséquilibre temporaire pour effectuer correctement un scale-in ou un scale-out. Lors des tentatives suivantes d’augmentation de la taille des instances, le groupe identique ajoute des machines virtuelles aux zones qui ont besoin de davantage de machines virtuelles pour équilibrer le groupe identique. De même, lors des tentatives suivantes de diminution de la taille des instances, le groupe identique retire des machines virtuelles aux zones qui ont besoin de moins de machines virtuelles pour équilibrer le groupe identique. Avec « strict zone balance » (équilibre des zones strict), toute tentative du groupe identique pour diminuer et augmenter la taille des instances échoue si cela crée un déséquilibre.
 
 Pour utiliser « best effort zone balance » (meilleur équilibre des zones), définissez *zoneBalance* sur *false*. Il s’agit du paramètre par défaut dans la version d’API *2017-12-01*. Pour utiliser « strict zone balance » (équilibre des zones strict), définissez la valeur *zoneBalance* sur *true*.
+
+>[!NOTE]
+> La propriété `zoneBalance` ne peut être définie que si la propriété Zones du groupe identique contient plusieurs zones. S’il n’y aucune zone ou qu’une seule zone spécifiée, la propriété zoneBalance ne doit pas être définie.
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Groupes identiques dans une zone unique et redondants interzone
 

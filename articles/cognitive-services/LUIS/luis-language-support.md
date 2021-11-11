@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
-ms.openlocfilehash: ed819b22caab25fea8ae002d482cf2df5d0bf60c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/22/2021
+ms.openlocfilehash: 8f5965b81e403e58e6c58e0ca3d567375e211d37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733060"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426167"
 ---
 # <a name="language-and-region-support-for-luis"></a>Prise en charge de la région et de la langue pour LUIS
 
@@ -28,7 +28,7 @@ Si vous avez besoin d’une application client LUIS multilingue, comme un chatb
 
 LUIS comprend les énoncés dans les langues suivantes :
 
-| Langage |Paramètres régionaux  |  Domaine prédéfini | Entité prédéfinie | Recommandations de liste d’expression | \**[Analyse de texte](../text-analytics/language-support.md)<br>(Sentiment et<br>mots clés)|
+| Langage |Paramètres régionaux  |  Domaine prédéfini | Entité prédéfinie | Recommandations de liste d’expression | **[Analyse des sentiments](../language-service/sentiment-opinion-mining/overview.md) et [Extraction de phrases clés](../language-service/key-phrase-extraction/overview.md)|
 |--|--|:--:|:--:|:--:|:--:|
 | Arabe (préversion ; arabe standard moderne) |`ar-AR`|-|-|-|-|
 | *[Chinois](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -37,17 +37,17 @@ LUIS comprend les énoncés dans les langues suivantes :
 | Français (Canada) |`fr-CA` |-|-|-|✔|
 | Français (France) |`fr-FR` |✔| ✔ |✔ |✔|
 | Allemand |`de-DE` |✔| ✔ |✔ |✔|
-| Goudjrati | `gu-IN`|-|-|-|-|
-| Hindi | `hi-IN`|-|✔|-|-|
+| Gujarati (préversion) | `gu-IN`|-|-|-|-|
+| Hindi (préversion) | `hi-IN`|-|✔|-|-|
 | Italien |`it-IT` |✔| ✔ |✔|✔|
 | *[Japonais](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Expression clé uniquement|
 | Coréen |`ko-KR` |✔|-|-|Expression clé uniquement|
-| Marathi | `mr-IN`|-|-|-|-|
+| Marathi (préversion) | `mr-IN`|-|-|-|-|
 | Portugais (Brésil) |`pt-BR` |✔| ✔ |✔ |pas toutes les sous-cultures|
 | Espagnol (Mexique)|`es-MX` |-|✔|✔|✔|
 | Espagnol (Espagne) |`es-ES` |✔| ✔ |✔|✔|
-| Tamoul | `ta-IN`|-|-|-|-|
-| Télougou | `te-IN`|-|-|-|-|
+| Tamoul (préversion) | `ta-IN`|-|-|-|-|
+| Télougou (préversion) | `te-IN`|-|-|-|-|
 | Turc | `tr-TR` |✔|✔|-|Sentiment uniquement|
 
 
@@ -63,7 +63,7 @@ La prise en charge linguistique varie pour les [entités prédéfinies](luis-ref
      - でございます ne signifie pas la même chose que です.
      - です ne signifie pas la même chose que だ.
 
-[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
+[!INCLUDE [Language service support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Langues prises en charge par l’API Microsoft Speech
 Consultez les [langues prises en charge](../speech-service/speech-to-text.md) par Speech pour connaître les langues du mode de dictée de Speech.

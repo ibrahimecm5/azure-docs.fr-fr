@@ -1,20 +1,20 @@
 ---
-title: Résoudre les problèmes d’identité managée Azure Automation (préversion)
+title: Résoudre les problèmes d’identité managée Azure Automation
 description: Cet article explique comment dépanner et résoudre les problèmes liés à l’utilisation d’une identité managée avec un compte Automation.
 services: automation
 ms.subservice: ''
-ms.date: 06/28/2021
+ms.date: 10/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 89d3785ef527eebc822eefbbae2c887dd40108ee
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: f26c10468322992a5b3fbc302739ff827e841bba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687494"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443658"
 ---
-# <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>Résoudre les problèmes d’identité managée Azure Automation (préversion)
+# <a name="troubleshoot-azure-automation-managed-identity-issues"></a>Résoudre les problèmes d’identité managée Azure Automation
 
-Cet article traite des solutions aux problèmes que vous pourriez rencontrer en utilisant une identité managée avec votre compte Automation. Pour obtenir des informations générales sur l’utilisation d’une identité managée avec des comptes Automation, consultez [Vue d’ensemble de l’authentification de compte Azure Automation](../automation-security-overview.md#managed-identities-preview).
+Cet article traite des solutions aux problèmes que vous pourriez rencontrer en utilisant une identité managée avec votre compte Automation. Pour obtenir des informations générales sur l’utilisation d’une identité managée avec des comptes Automation, consultez [Vue d’ensemble de l’authentification de compte Azure Automation](../automation-security-overview.md#managed-identities).
 
 ## <a name="scenario-fail-to-get-msi-token-for-account"></a>Scénario : Échec d’obtention du jeton MSI pour le compte
 
@@ -73,7 +73,7 @@ Si le problème est que vous n’avez pas activé l’identité avant de tenter 
 
 ### <a name="resolution"></a>Résolution
 
-Vous devez activer une identité pour votre compte Automation avant de pouvoir utiliser le service d’identité managée. Voir [Activer une identité managée pour votre compte Azure Automation (préversion)](../enable-managed-identity-for-automation.md).
+Vous devez activer une identité pour votre compte Automation avant de pouvoir utiliser le service d’identité managée. Voir [Activer une identité managée pour votre compte Azure Automation](../enable-managed-identity-for-automation.md)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

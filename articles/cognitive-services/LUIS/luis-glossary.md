@@ -4,13 +4,13 @@ description: Le glossaire explique les termes que vous pourriez rencontrer en ut
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/17/2021
-ms.openlocfilehash: 5d4b5f5264ad38ca3610840e6fd9a72c6bc5e0aa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 10/28/2021
+ms.openlocfilehash: 25bdf291d7d836523655b131f485721e3a29593b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950974"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434576"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Glossaire Language Understanding des termes et concepts courants
 Ce glossaire décrit les termes que vous pourriez rencontrer lors de l’utilisation de LUIS (Language Understanding Intelligent Service).
@@ -270,7 +270,7 @@ Le quota LUIS correspond à la limitation du niveau d’abonnement Azure. Il peu
 Votre schéma inclut vos intentions et entités, ainsi que les sous-entités. Le schéma est initialement planifié, puis itéré dans le temps. Le schéma n’inclut pas les paramètres d’application, les caractéristiques ou les exemples de énoncés.
 
 ## <a name="sentiment-analysis"></a>Analyse des sentiments
-L’analyse des sentiments attribue des valeurs positives ou négatives aux énoncés fournis par [l’Analyse de texte](../text-analytics/overview.md).
+L’analyse des sentiments attribue des valeurs positives ou négatives aux énoncés fournis par le [Service de langage](../language-service/sentiment-opinion-mining/overview.md).
 
 ## <a name="speech-priming"></a>Préparation vocale
 

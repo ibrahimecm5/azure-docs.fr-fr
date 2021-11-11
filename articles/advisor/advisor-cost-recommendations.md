@@ -2,17 +2,25 @@
 title: Réduire les coûts de service grâce à Azure Advisor
 description: Le conseiller Azure permet d’optimiser le coût de vos déploiements Azure.
 ms.topic: article
-ms.date: 09/27/2020
-ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/29/2021
+ms.openlocfilehash: 32f5ca4f54eb5267abb9fe68655aa43226408610
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503372"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443886"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Réduire les coûts de service à l’aide d’Azure Advisor
 
 Azure Advisor vous aide à optimiser et à réduire votre dépense Azure globale en identifiant les ressources inactives et sous-utilisées.  Vous pouvez obtenir des recommandations en matière de coûts dans l’onglet **Coût** du tableau de bord Advisor.
+
+## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Accès aux recommandations de coût dans le conseiller Azure
+
+1. Connectez-vous au [portail Azure](https://portal.azure.com).
+
+1. Recherchez et sélectionnez [**Advisor**](https://aka.ms/azureadvisordashboard) à partir de n’importe quelle page.
+
+1. Dans le tableau de bord **Advisor**, sélectionnez l’onglet **Coût**.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimiser le coût de la machine virtuelle en redimensionnant ou en arrêtant les instances sous-utilisées 
 
@@ -99,13 +107,8 @@ Il est préférable d’utiliser le disque de système d’exploitation éphém�
 ## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>Réduire la période de mise en cache (stratégie) des tables Azure Data Explorer pour l’optimisation du coût des clusters (préversion)
 Advisor identifie les ressources pour lesquelles la réduction de la période de mise en cache des tables permet de libérer les nœuds de cluster Azure Data Explorer qui utilisent peu le processeur et qui disposent de peu de mémoire, mais dont la taille de cache est élevée.
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Accès aux recommandations de coût dans le conseiller Azure
-
-1. Connectez-vous au [portail Azure](https://portal.azure.com).
-
-1. Recherchez et sélectionnez [**Advisor**](https://aka.ms/azureadvisordashboard) à partir de n’importe quelle page.
-
-1. Dans le tableau de bord **Advisor**, sélectionnez l’onglet **Coût**.
+## <a name="configure-manual-throughput-instead-of-autoscale-on-your-azure-cosmos-db-database-or-container"></a>Configurer le débit manuel à la place de la mise à l’échelle automatique sur votre base de données ou conteneur Azure Cosmos DB
+Sur la base de votre utilisation des 7 derniers jours, vous pouvez faire des économies en utilisant le débit manuel plutôt que la mise à l’échelle automatique. Le débit manuel est plus économique quand l’utilisation moyenne de votre débit maximal (RU/s) est supérieure à 66 % ou inférieure ou égale à 10 %. Le montant de réduction des coûts représente les économies potentielles réalisables avec le débit manuel recommandé, en fonction de l’utilisation des 7 derniers jours. Vos économies réelles peuvent varier en fonction du débit manuel que vous définissez et du degré de similitude entre votre utilisation moyenne du débit et la période analysée. Les économies estimées ne tiennent pas compte des remises qui peuvent s’appliquer à votre compte.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

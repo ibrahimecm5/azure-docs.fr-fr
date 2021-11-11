@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: ed47d310f418936b84c505fcf254947a67f0eb6d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bae55a4a5b2a2b6ec5ae8ce7c63fb52b96fbd9f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824393"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464183"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>Résolution des problèmes de routage courants
 
@@ -50,6 +50,22 @@ La cause de ce problème peut être liée à l’une des trois possibilités sui
 * Si le délai d’expiration ne résout pas le problème, utilisez un outil, tel que Fiddler ou l’outil de développement de votre navigateur, pour vérifier si le client envoie des demandes de plages d’octets avec des en-têtes Accept-Encoding, ce qui conduit à l’origine qui répond avec des longueurs de contenu différentes. Si c’est le cas, vous pouvez soit désactiver la compression sur l’origine/Azure Front Door, soit créer une règle de jeu de règles pour supprimer `accept-encoding` de la requête pour les demandes de plages d’octets.
 
     :::image type="content" source=".\media\troubleshoot-route-issues\remove-encoding-rule.png" alt-text="Capture d’écran de la règle d’acceptation d’encodage dans le moteur de règles.":::
+
+## <a name="https-traffic-to-backend-fails"></a>Échec du trafic HTTPS vers le serveur principal
+
+### <a name="symptom"></a>Symptôme
+
+Échec du trafic HTTPS vers le serveur principal.
+
+### <a name="cause"></a>Cause
+
+* Le certificat avec le ou les noms d’objet ne correspond pas au nom d’hôte du serveur principal pendant l’établissement d'une liaison TLS.
+* Le certificat d’hébergement du serveur principal ne provient pas d’une autorité de certification valide.
+
+### <a name="troubleshooting-steps"></a>Étapes de dépannage
+
+* Bien que ce ne soit pas recommandé du point de vue de la conformité, vous pouvez contourner cette erreur en désactivant la vérification du nom d’objet du certificat pour votre porte d’entrée. Cette option est présente sous Paramètres dans le portail Azure et sous BackendPoolsSettings dans l’API.
+* Seuls des certificats provenant d’[autorités de certification valides](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) peuvent être utilisés sur le serveur principal avec Front Door. Les certificats provenant d’autorités de certification internes ou les certificats auto-signés ne sont pas autorisés. Le certificat doit avoir une chaîne de certificats complète avec des certificats feuille et intermédiaires, et l’autorité de certification racine doit faire partie de la [liste des autorités de certification de confiance Microsoft](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT).
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>Les requêtes envoyées au domaine personnalisé retournent un code d’état 400
 

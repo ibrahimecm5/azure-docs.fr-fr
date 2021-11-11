@@ -6,23 +6,20 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 43f544cb2782fc80dd574a1d8c425283c51a0ed3
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 59bb5a6a2a544eb72d1438c38ad3040c2ac43476
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256471"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468363"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Paramètres de serveur dans Azure Database pour MySQL – Serveur flexible
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Cet article fournit des considérations et des instructions pour la configuration des paramètres de serveur dans Azure Database pour MySQL – Serveur flexible.
 
-## <a name="what-are-server-variables"></a>Que sont les variables de serveur ? 
+## <a name="what-are-server-variables"></a>Que sont les variables de serveur ?
 
 Le moteur MySQL fournit de nombreux [paramètres et variables de serveur](https://dev.mysql.com/doc/refman/5.7/en/server-option-variable-reference.html) différents qui peuvent être utilisés pour configurer et régler le comportement du moteur. Certains paramètres peuvent être définis dynamiquement pendant le runtime, tandis que d’autres sont « statiques », ce qui nécessite un redémarrage du serveur pour les appliquer.
 
@@ -37,15 +34,15 @@ La liste des paramètres de serveur pris en charge s’allonge en permanence. Ut
 Reportez-vous aux sections suivantes pour en savoir plus sur les limites des différents paramètres de serveur couramment mis à jour. Les limites sont déterminées par le niveau de calcul et la taille (vCores) du serveur.
 
 > [!NOTE]
-> Si vous envisagez de modifier un paramètre de serveur qui n’est pas modifiable, mais que vous aimeriez voir comme modifiable pour votre environnement, ouvrez un élément [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) ou votez si les commentaires existent déjà. Cela peut nous aider à établir des priorités.
+> Si vous envisagez de modifier un paramètre de serveur qui n’est pas modifiable, mais que vous aimeriez voir comme modifiable pour votre environnement, ouvrez un élément [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0) ou votez si les commentaires existent déjà. Cela peut nous aider à établir des priorités.
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-Dans Azure Database pour MySQL – Serveur flexible, les journaux binaires sont toujours activés (autrement dit,`log_bin` est défini sur ON). log_bin_trust_function_creators est défini sur ON par défaut dans les serveurs flexibles. 
+Dans Azure Database pour MySQL – Serveur flexible, les journaux binaires sont toujours activés (autrement dit,`log_bin` est défini sur ON). log_bin_trust_function_creators est défini sur ON par défaut dans les serveurs flexibles.
 
 Le format de journalisation binaire est toujours **ROW** et toutes les connexions au serveur utilisent **TOUJOURS** la journalisation binaire basée sur les lignes. Avec la journalisation binaire basée sur les lignes, les problèmes de sécurité n’existent pas et la journalisation binaire ne peut pas s’arrêter, ce qui vous permet, en toute sécurité, d’autoriser que [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) reste défini sur **TRUE**.
 
-Quand [`log_bin_trust_function_creators`] est défini sur OFF, si vous tentez de créer des déclencheurs, vous obtenez une erreur similaire à *Vous n’avez pas le SUPER privilège`log_bin_trust_function_creators` et la journalisation binaire est activée (vous pouvez utiliser la variable*  moins sécurisée). 
+Quand [`log_bin_trust_function_creators`] est défini sur OFF, si vous tentez de créer des déclencheurs, vous obtenez une erreur similaire à *Vous n’avez pas le SUPER privilège`log_bin_trust_function_creators` et la journalisation binaire est activée (vous pouvez utiliser la variable*  moins sécurisée).
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -77,9 +74,18 @@ MySQL stocke la table InnoDB dans différents espaces de stockage en fonction de
 
 Azure Database pour MySQL – Serveur flexible prend en charge jusqu’à **4  o** dans un seul fichier de données. Si la taille de votre base de données est supérieure à 4 To, vous devez créer la table dans l’espace disque logique [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table). Si vous avez une table d’une taille supérieure à 4 To, vous devez utiliser la table de partition.
 
+### <a name="innodb_log_file_size"></a>innodb_log_file_size
+
+[innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) est la taille en octets de chaque [fichier journal](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_log_file) dans un [groupe de journaux](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_log_group). La taille combinée des fichiers journaux [(innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) * [innodb_log_files_in_group](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_files_in_group)) ne peut pas dépasser une valeur maximale légèrement inférieure à 512 Go). Une plus grande taille de fichier journal est préférable pour les performances, mais elle a pour incidence que le temps de récupération après un incident sera élevé. Vous devez équilibrer le temps de récupération dans les rares cas d’une récupération après incident plutôt que de maximiser le débit pendant les opérations de pointe. Cela peut également entraîner des temps de redémarrage plus longs. Vous pouvez configurer innodb_log_size sur l’une des valeurs suivantes : 256 Mo, 512 Mo, 1 Go ou 2 Go pour une base de données Azure pour un serveur flexible MySQL. Le paramètre est statique et nécessite un redémarrage.
+
+> [!NOTE]
+> Si vous avez modifié la valeur par défaut du paramètre innodb_log_file_size, vérifiez si la valeur de « show global status like 'innodb_buffer_pool_pages_dirty' » reste à 0 pendant 30 secondes pour éviter un délai de redémarrage.
+
+
+
 ### <a name="max_connections"></a>max_connections
 
-La valeur de max_connection est déterminée par la taille de la mémoire du serveur. 
+La valeur de max_connection est déterminée par la taille de la mémoire du serveur.
 
 |**Niveau tarifaire**|**vCore(s)**|**Taille de la mémoire (Gio)**|**Valeur par défaut**|**Valeur minimale**|**Valeur maximale**|
 |---|---|---|---|---|---|
@@ -114,7 +120,7 @@ La création de connexions clientes à MySQL prend du temps et, une fois établi
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-Si vous recevez une erreur semblable à « Taille de ligne trop grande (> 8126) », vous pouvez désactiver le paramètre **innodb_strict_mode**. Le paramètre de serveur **innodb_strict_mode** ne peut pas être modifié à l’échelle mondiale au niveau du serveur, car, si la taille des données de ligne est supérieure à 8 ko, les données seront tronquées sans erreur, ce qui peut entraîner une perte potentielle de données. Nous vous recommandons de modifier le schéma pour qu’il corresponde à la limite de taille de page. 
+Si vous recevez une erreur semblable à « Taille de ligne trop grande (> 8126) », vous pouvez désactiver le paramètre **innodb_strict_mode**. Le paramètre de serveur **innodb_strict_mode** ne peut pas être modifié à l’échelle mondiale au niveau du serveur, car, si la taille des données de ligne est supérieure à 8 ko, les données seront tronquées sans erreur, ce qui peut entraîner une perte potentielle de données. Nous vous recommandons de modifier le schéma pour qu’il corresponde à la limite de taille de page.
 
 Ce paramètre peut être défini au niveau de la session à l’aide de `init_connect`. Pour définir **innodb_strict_mode** au niveau de la session, reportez-vous à [Définition des paramètres non listés](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters).
 

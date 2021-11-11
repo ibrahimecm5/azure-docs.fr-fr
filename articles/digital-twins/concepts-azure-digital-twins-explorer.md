@@ -1,22 +1,24 @@
 ---
 title: Azure Digital Twins Explorer
 titleSuffix: Azure Digital Twins
-description: Découvrez les fonctionnalités et le rôle d’Azure Digital Twins Explorer
+description: Découvrez les fonctionnalités et l’objectif d’Azure Digital Twins Explorer et quand il peut être utile pour visualiser des modèles numériques, des jumeaux et des graphiques.
 author: baanders
 ms.author: baanders
-ms.date: 8/24/2021
+ms.date: 10/29/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8006a98f91434243a94d24f6f7154e5856321744
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: bbcc693123f84d5cf789f53c8961f648ce2e90bf
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227081"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504243"
 ---
 # <a name="azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer (préversion)
 
-**Azure Digital Twins Explorer** est un outil de développement qui vous aide à visualiser et à interagir avec les données de votre instance Azure Digital Twins, notamment vos [modèles](concepts-models.md) et votre [graphe de jumeaux](concepts-twins-graph.md). 
+Cet article contient des informations sur **Azure Digital Twins Explorer**, notamment ses cas d’usage et une vue d’ensemble de ses fonctionnalités. Pour obtenir des instructions détaillées sur l’utilisation de chaque fonctionnalité, consultez [Utiliser Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md).
+
+Azure Digital Twins Explorer est un outil de développement qui vous aide à visualiser et à interagir avec les données de votre instance Azure Digital Twins, notamment vos [modèles](concepts-models.md) et votre [graphe de jumeaux](concepts-twins-graph.md). 
 
 >[!NOTE]
 >Cet outil est actuellement en **préversion publique**.
@@ -26,8 +28,6 @@ Voici une vue de la fenêtre de l’Explorateur, présentant des modèles et des
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Capture d’écran d’Azure Digital Twins Explorer montrant des exemples de modèles et de jumeaux" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
 L’interface visuelle est un bon outil pour explorer et comprendre la forme de votre ensemble graphique et modèle. Elle vous permet également de faire des modifications précises, sur place vers des jumeaux et des relations individuels.
-
-Cet article contient des informations supplémentaires sur Azure Digital Twins Explorer, notamment ses cas d’usage et une vue d’ensemble de ses fonctionnalités. Pour obtenir des instructions détaillées sur l’utilisation de chaque fonctionnalité, consultez [Utiliser Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md).
 
 ## <a name="when-to-use"></a>Quand l’utiliser
 
@@ -46,10 +46,11 @@ L’objectif principal de l’Explorateur est de vous aider à visualiser et à 
 Azure Digital Twins Explorer est organisé en panneaux, chacun offrant un ensemble de fonctionnalités différent pour l’exploration et la gestion de vos modèles, jumeaux et relations.
 
 Les sections de l’Explorateur sont les suivantes :
-* **Models** : ajoutez, supprimez et affichez les détails de vos modèles à partir d’un affichage de liste.
-* **Model Graph** : visualisez vos modèles et leurs interconnexions sous la forme d’un graphe de modèle personnalisable.
-* **Twin Graph** : visualisez vos jumeaux et relations sous la forme d’un graphe de jumeaux personnalisable. Créez et supprimez des jumeaux et des relations, et affichez ou modifiez leurs propriétés.
 * **Query Explorer** : exécutez des requêtes sur le graphe de jumeaux, et observez les résultats visuels dans le panneau **Twin Graph**.
+* **Modèles** : affichez une liste de vos modèles et effectuez des actions de modèle, telles que l’ajout, la suppression et l’affichage des détails du modèle.
+* **Jumeaux** : affichez une liste de vos jumeaux et de leurs relations associées.
+* **Twin Graph** : visualisez vos jumeaux et relations sous la forme d’un graphe de jumeaux personnalisable. Créez et supprimez des jumeaux et des relations, et affichez ou modifiez leurs propriétés.
+* **Model Graph** : visualisez vos modèles et leurs interconnexions sous la forme d’un graphe de modèle personnalisable.
 
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png" alt-text="Capture d’écran d’Azure Digital Twins Explorer mettant en évidence chacun des panneaux décrits ci-dessus." lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png":::
 

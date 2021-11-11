@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: d6cf0b9ba4fe856a153abf004a81c250c59b2aa1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6046468281878f8ae6b9ac9f802bb16fd378c616
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618587"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434139"
 ---
 # <a name="manage-an-azure-cosmos-account-using-the-azure-portal"></a>Gérer un compte Azure Cosmos en utilisant le portail Azure
 
@@ -30,7 +30,7 @@ Cet article explique comment gérer différentes tâches sur un compte Azure Cos
 ## <a name="addremove-regions-from-your-database-account"></a>Ajouter/supprimer des régions à partir de votre compte de base de données
 
 > [!TIP]
-> Quand une nouvelle région est ajoutée, toutes les données doivent être entièrement répliquées et validées dans la nouvelle région pour que celle-ci soit marquée comme disponible. Le temps nécessaire à cette opération dépend de la quantité de données stockées dans le compte.
+> Quand une nouvelle région est ajoutée, toutes les données doivent être entièrement répliquées et validées dans la nouvelle région pour que celle-ci soit marquée comme disponible. Le temps nécessaire à cette opération dépend de la quantité de données stockées dans le compte. Si une [opération de mise à l’échelle du débit asynchrone](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, l’opération de mise à l’échelle du débit est suspendue et reprend automatiquement une fois l’opération d’ajout ou de suppression de région terminée. 
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 
@@ -95,6 +95,9 @@ Une fois qu’un compte Cosmos est configuré pour le basculement automatique, l
 
 > [!IMPORTANT]
 > Le compte Azure Cosmos doit être configuré pour le basculement manuel pour que l’opération fonctionne.
+
+> [!NOTE]
+> Si vous effectuez une opération de basculement manuel alors qu’une [opération de mise à l’échelle du débit asynchrone](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, l’opération de mise à l’échelle du débit est suspendue. Elle reprend automatiquement une fois l’opération de basculement terminée.
 
 1. Accédez à votre compte Azure Cosmos, puis ouvrez le menu **Répliquer les données globalement**.
 
