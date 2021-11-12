@@ -1,7 +1,7 @@
 items:
   - name: Connecteur IoT
     href: index.yml
-  - name: Vue d'ensemble
+  - name: Vue d’ensemble
     expanded: true
     items:
       - name: À propos du connecteur IoT
@@ -36,8 +36,8 @@ items:
         href: iot-connector-custom-functions.md
       - name: Utiliser les mappages de destination FHIR
         href: how-to-use-fhir-mapping-iot.md
-      - name: Exporter les métriques du connecteur IoT via les paramètres de diagnostic
-        href: iot-metrics-diagnostics-export.md
+      - name: Afficher les métriques
+        href: iot-display-metrics.md
   - name: Ressources
     expanded: true
     items:

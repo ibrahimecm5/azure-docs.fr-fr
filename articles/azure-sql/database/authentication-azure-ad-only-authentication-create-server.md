@@ -8,20 +8,18 @@ ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/04/2021
-ms.openlocfilehash: 959175611f42c8c75da465044c7962c585d3728f
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 11/02/2021
+ms.openlocfilehash: 1a1c93a47d85b13c1f2a8267539da4c72f166756
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458665"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423752"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Créer un serveur avec l’authentification Azure AD uniquement activée dans Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> La fonctionnalité **d’authentification avec Azure AD uniquement** présentée dans cet article est en version **préliminaire publique**. Pour plus d’informations sur cette fonctionnalité, consultez [authentification Azure ad uniquement avec Azure SQL](authentication-azure-ad-only-authentication.md). L’authentification Azure AD uniquement n’est actuellement pas disponible pour Azure Synapse Analytics.
 
 Ce guide pratique décrit les étapes de création d’un [serveur logique](logical-servers.md) pour Azure SQL Database ou d’une instance [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) avec l’[authentification Azure AD uniquement](authentication-azure-ad-only-authentication.md) activée pendant le provisionnement. La fonctionnalité d’authentification Azure AD uniquement empêche les utilisateurs de se connecter au serveur ou à l’instance gérée à l’aide de l’authentification SQL, et autorise uniquement la connexion à l’aide de l’authentification Azure AD.
 
@@ -298,7 +296,27 @@ Vous pouvez également utiliser le modèle suivant. Utilisez un [déploiement pe
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
-La gestion ou le déploiement d’une instance managée avec l’authentification Azure AD uniquement à l’aide du portail Azure ne sont pas pris en charge actuellement. Vous pouvez déployer une instance managée avec l’authentification Azure AD uniquement à l’aide de l’API REST, d’Azure CLI, de PowerShell ou d’un modèle ARM.
+1. Accédez à la page [Sélectionner l’option de déploiement SQL](https://portal.azure.com/#create/Microsoft.AzureSQL) dans le portail Azure.
+
+1. Si vous n’êtes pas déjà connecté au portail Azure, connectez-vous lorsque vous y êtes invité.
+
+1. Sous **Instances SQL managées**, laissez **Type de ressource** défini sur **Instance unique**, puis sélectionnez **Créer**.
+
+1. Renseignez les informations obligatoires requises sous l’onglet **Informations de base** pour **Détails du projet** et **Détails de l’instance gérée**. Il s’agit d’informations de base qui sont obligatoires pour provisionner une instance managée SQL.
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-managed-instance-create-basic.png" alt-text="Capture d’écran du Portail Azure montrant l’onglet de base Créer une instance gérée":::
+
+   Pour plus d’informations sur les options de configuration, consultez [Démarrage rapide : Créer une instance gérée Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md).
+
+1. Sous **Authentification**, sélectionnez **Utiliser uniquement l’authentification Azure Active Directory (Azure AD)** comme **méthode d’authentification**.
+
+1. Sélectionnez **Définir l’administrateur**, ce qui affiche un menu pour sélectionner un principal Azure AD comme administrateur Azure AD d’instance gérée. Lorsque vous avez terminé, utilisez le bouton **Sélectionner** pour définir votre administrateur.
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-managed-instance-create-basic-choose-authentication.png" alt-text="Capture d’écran du Portail Azure montrant l’onglet de base Créer une instance gérée et la sélection de l’authentification Azure AD uniquement":::
+
+1. Vous pouvez laisser le reste des paramètres par défaut. Pour plus d’informations sur la **Mise en réseau**, la **Sécurité** ou d’autres onglets et paramètres, suivez le guide de [Démarrage rapide : Créer une instance gérée Azure SQL](../managed-instance/instance-create-quickstart.md).
+
+1. Une fois que vous avez fini de configurer vos paramètres, sélectionnez **Vérifier + créer** pour continuer. Sélectionnez **Créer** pour commencer le provisionnement de l’instance managée.
 
 # <a name="the-azure-cli"></a>[L’interface de ligne de commande Microsoft Azure](#tab/azure-cli)
 
@@ -710,7 +728,6 @@ Une fois le déploiement terminé pour votre instance gérée, vous pouvez remar
 
 ## <a name="limitations"></a>Limites
 
-- La création d’une instance managée à l’aide du portail Azure avec l’authentification Azure AD uniquement activée pendant l’approvisionnement n’est pas prise en charge pour le moment.
 - Pour réinitialiser le mot de passe de l’administrateur du serveur, l’authentification Azure AD uniquement doit être désactivée.
 - Si l’authentification Azure AD uniquement est désactivée, vous devez créer un serveur avec un mot de passe et un administrateur de serveur lors de l’utilisation de toutes les API.
 

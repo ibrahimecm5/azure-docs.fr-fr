@@ -6,16 +6,16 @@ ms.subservice: language-service
 ms.topic: tutorial
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: c49eb76f79ef48a5074a70b8bc6930f263486d85
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3478ab7b9a9d1920bcc5dc61b108b80514f60aba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096964"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439060"
 ---
 # <a name="tutorial-create-a-faq-bot"></a>Tutoriel : Créer un bot de FAQ
 
-Tutoriel : Créer un bot de FAQ avec les réponses aux questions et [Azure Bot Service](https://azure.microsoft.com/services/bot-service/) sans code.
+Créer un bot de questions fréquentes avec les réponses à des questions personnalisées et Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) sans code.
 
 Dans ce tutoriel, vous allez apprendre à :
 

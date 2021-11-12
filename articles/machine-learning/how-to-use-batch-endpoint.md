@@ -11,12 +11,12 @@ ms.author: tracych
 ms.reviewer: laobri
 ms.date: 10/21/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 481227a747fca327f107049734a69008aa3c3bcf
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 966b8abf60e0569a683932824045253ac32c724e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063776"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560482"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>Utiliser des points de terminaison de traitement de lots (préversion) pour le scoring par lots
 
@@ -64,7 +64,7 @@ Définissez le nom de votre point de terminaison. Remplacez `YOUR_ENDPOINT_NAME`
 
 Pour UNIX, exécutez la commande suivante :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="set_variables" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="set_variables" :::
 
 pour Windows, exécutez la commande suivante :
 
@@ -79,7 +79,7 @@ set ENDPOINT_NAME="<YOUR_ENDPOINT_NAME>"
 
 Le point de terminaison de lot s’exécute uniquement sur des ressources de cloud computing, pas localement. La ressource cloud computing est un cluster de machines virtuelles réutilisable. Exécutez le code suivant pour créer un cluster de calcul Azure Machine Learning. Les exemples suivants de cet article utilisent le calcul créé ici, nommé `batch-cluster`. Ajustez-les en fonction des besoins et référencez votre calcul à l’aide de `azureml:<your-compute-name>`.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_compute" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_compute" :::
 
 > [!NOTE]
 > Vous n’êtes pas facturé pour le calcul à ce stade, car le cluster reste à 0 nœud jusqu’à ce qu’un point de terminaison de lot soit appelé et qu’un travail de scoring par lots soit envoyé. Apprenez-en davantage sur [la gestion et l’optimisation des coûts pour AmlCompute](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute).
@@ -93,7 +93,7 @@ Un point de terminaison de lot est un point de terminaison HTTPS que les clients
 
 Le fichier YAML suivant définit un point de terminaison de lot, que vous pouvez inclure dans la commande CLI pour la création d’un [point de terminaison de lot](#create-a-batch-endpoint). Dans le référentiel, ce fichier se trouve à l’emplacement `/cli/endpoints/batch/batch-endpoint.yml`.
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/batch-endpoint.yml":::
 
 Le tableau suivant décrit les propriétés de clé du point de terminaison YAML. Pour le schéma YAML du point de terminaison de lot complet, consultez la page [Schéma YAML du point de terminaison de lot CLI (v2)](./reference-yaml-endpoint-batch.md).
 
@@ -114,7 +114,7 @@ Pour plus d’informations sur la façon de référencer une entité Azure ML, c
 
 L’exemple de référentiel contient tous les fichiers requis. Le fichier YAML suivant définit un déploiement par lots avec toutes les entrées et tous les paramètres facultatifs requis. Vous pouvez inclure ce fichier dans votre commande CLI pour [créer votre déploiement par lots](#create-a-batch-deployment). Dans le référentiel, ce fichier se trouve à l’emplacement `/cli/endpoints/batch/nonmlflow-deployment.yml`. 
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/nonmlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/nonmlflow-deployment.yml":::
 
 Le tableau suivant décrit les propriétés de clé du déploiement YAML. Pour le schéma YAML complet du déploiement par lots, consultez la page [Schéma YAML de déploiement par lots CLI (v2)](./reference-yaml-deployment-batch.md).
 
@@ -157,7 +157,7 @@ L’exemple utilise `/cli/endpoints/batch/mnist/code/digit_identification.py`. L
 
 La façon la plus simple de créer un point de terminaison de lot consiste à exécuter le code suivant en fournissant uniquement un `--name`.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_batch_endpoint" :::
 
 Vous pouvez également créer un point de terminaison de lot à l’aide d’un fichier YAML. Ajoutez le paramètre `--file` dans la commande ci-dessus et spécifiez le chemin d’accès du fichier YAML.
 
@@ -165,7 +165,7 @@ Vous pouvez également créer un point de terminaison de lot à l’aide d’un 
 
 Exécutez le code suivant pour créer un déploiement par lots nommé `nonmlflowdp` sous le point de terminaison de lot et le définir comme déploiement par défaut. 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_deployment_set_default" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_batch_deployment_set_default" :::
 
 > [!TIP]
 > Le paramètre `--set-default` définit le déploiement nouvellement créé comme déploiement par défaut du point de terminaison. C’est un moyen pratique de créer un nouveau déploiement de point de terminaison par défaut, en particulier pour la première création d’un déploiement. En guise de meilleure pratique pour les scénarios de production, vous pouvez créer un nouveau déploiement sans le définir comme valeur par défaut, puis le vérifier et mettre à jour le déploiement par défaut ultérieurement. Pour plus d’informations, consultez la section [Déployer un nouveau modèle](#deploy-a-new-model).
@@ -176,11 +176,11 @@ Utilisez `show` pour vérifier les détails du point de terminaison et du déplo
 
 Pour vérifier un déploiement par lots, exécutez le code suivant :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_deployment_detail" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_batch_deployment_detail" :::
 
 Pour vérifier un point de terminaison de lot, exécutez le code suivant. Lorsque le déploiement nouvellement créé est défini en tant que déploiement par défaut, vous devez voir `nonmlflowdp` dans `defaults.deployment_name` dans la réponse.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 ### <a name="invoke-the-batch-endpoint-to-start-a-batch-scoring-job"></a>Appeler le point de terminaison de lot pour démarrer un travail de scoring par lot
 
@@ -198,7 +198,7 @@ Vous avez le choix entre trois options pour spécifier les entrées de données 
 
     L’exemple utilise des données accessibles publiquement dans un dossier de `https://pipelinedata.blob.core.windows.net/sampledata/mnist`, qui contient des milliers de chiffres écrits manuellement. Le nom du travail de scoring par lots sera retourné à partir de la réponse de l’appel. Exécutez le code suivant pour appeler le point de terminaison de lot à l’aide de ces données. `--query name` est ajouté pour retourner uniquement le nom du travail à partir de la réponse d’appel, et il sera utilisé ultérieurement pour [Surveiller la progression de l’exécution du travail de scoring par lots](#monitor-batch-scoring-job-execution-progress) et [Vérifier les résultats du scoring par lots](#check-batch-scoring-results). Supprimez `--query name -o tsv` si vous souhaitez afficher la réponse complète de l’appel. Pour plus d’informations sur le paramètre `--query`, consultez [Interroger la sortie de commande Azure CLI](/cli/azure/query-azure-cli).
 
-    :::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job" :::
+    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="start_batch_scoring_job" :::
 
 * __Option 2 : Jeu de données inscrit__
 
@@ -234,7 +234,7 @@ Certains paramètres peuvent être remplacés lorsqu’ils sont appelés pour ti
 
 Pour spécifier l’emplacement de sortie et remplacer les paramètres lors de l’appel, exécutez le code suivant. L’exemple stocke les sorties dans un dossier portant le même nom que le point de terminaison dans le stockage d’objets Blob par défaut de l’espace de travail, et utilise également un nom de fichier aléatoire pour garantir l’unicité de l’emplacement de sortie. Le code devrait fonctionner dans Unix. Remplacez par votre propre nom de fichier et de dossier unique.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_configure_output_settings" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="start_batch_scoring_job_configure_output_settings" :::
 
 ### <a name="monitor-batch-scoring-job-execution-progress"></a>Surveiller la progression de l’exécution du travail de scoring par lots
 
@@ -242,7 +242,7 @@ Les travaux de scoring par lots prennent généralement un certain temps pour tr
 
 Vous pouvez utiliser `job show` dans l’interface CLI pour afficher le travail. Exécutez le code suivant pour vérifier l’état du travail à partir de l’appel de point de terminaison précédent. Pour en savoir plus sur les commandes de travail, exécutez `az ml job -h`.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_job_status" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_job_status" :::
 
 ### <a name="check-batch-scoring-results"></a>Vérifier les résultats du scoring par lots
 
@@ -250,7 +250,7 @@ Suivez les étapes ci-dessous pour afficher les résultats du scoring dans l’E
 
 1. Exécutez le code suivant pour ouvrir le travail de scoring par lots dans Azure Machine Learning Studio. Le lien Studio du travail est également inclus dans la réponse de `invoke`, en tant que valeur de `interactionEndpoints.Studio.endpoint`.
 
-    :::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="show_job_in_studio" :::
+    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="show_job_in_studio" :::
 
 1. Dans le graphique de l’exécution, sélectionnez l’étape `batchscoring`.
 1. Sélectionnez l’onglet __Sorties + journaux__, puis sélectionnez **Afficher les sorties de données**.
@@ -270,7 +270,7 @@ Une fois que vous avez un point de terminaison de lot, vous pouvez continuer à 
 
 Pour créer un déploiement par lots sous le point de terminaison de lot existant sans le définir comme déploiement par défaut, exécutez le code suivant :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_new_deployment_not_default" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_new_deployment_not_default" :::
 
 Notez que `--set-default` n'est pas utilisé. Si vous réexécutez le point de terminaison de lot `show`, vous ne devriez voir aucun changement de `defaults.deployment_name`. 
 
@@ -278,7 +278,7 @@ L’exemple utilise un modèle (`/cli/endpoints/batch/autolog_nyc_taxi`) formé 
 
 Voici le fichier YAML utilisé par l’exemple pour déployer un modèle MLflow, qui contient uniquement les propriétés requises minimales. Le fichier source dans le référentiel est `/cli/endpoints/batch/mlflow-deployment.yml`.
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/mlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/mlflow-deployment.yml":::
 
 > [!NOTE]
 > La génération automatique de `scoring_script` et `environment` prend uniquement en charge la version du modèle de fonction Python et la signature de modèle basée sur les colonnes.
@@ -287,7 +287,7 @@ Voici le fichier YAML utilisé par l’exemple pour déployer un modèle MLflow,
 
 Pour tester le nouveau déploiement non défini par défaut, exécutez le code suivant. L’exemple utilise un modèle différent qui accepte un fichier CSV disponible publiquement à partir de `https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv`.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="test_new_deployment" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="test_new_deployment" :::
 
 Notez que `--deployment-name` est utilisé pour spécifier le nouveau nom du déploiement. Ce paramètre vous permet d’effectuer `invoke` sur un déploiement autre que celui par défaut, et il ne met pas à jour le déploiement par défaut du point de terminaison de lot.
 
@@ -295,7 +295,7 @@ Notez que `--deployment-name` est utilisé pour spécifier le nouveau nom du dé
 
 Pour mettre à jour le déploiement par lots par défaut du point de terminaison, exécutez le code suivant :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="update_default_deployment" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="update_default_deployment" :::
 
 Maintenant, si vous revenez au point de terminaison de lot `show`, vous devriez voir que `defaults.deployment_name` a la valeur `mlflowdp`. Vous pouvez exécuter `invoke` directement sur le point de terminaison de lot sans le paramètre `--deployment-name`.
 
@@ -307,11 +307,11 @@ Si vous souhaitez mettre à jour le déploiement (par exemple, mettre à jour le
 
 Si vous ne prévoyez pas d’utiliser l’ancien déploiement par lots, vous devez le supprimer en exécutant le code suivant. Utilisez `--yes` pour confirmer la suppression.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="delete_deployment" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="delete_deployment" :::
 
 Exécutez le code suivant pour supprimer le point de terminaison de lot et tous les déploiements sous-jacents. Les travaux de scoring par lots ne seront pas supprimés.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

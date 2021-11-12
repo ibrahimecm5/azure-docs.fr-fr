@@ -4,14 +4,14 @@ description: Présentation de la façon de configurer plusieurs instances du ser
 author: vicancy
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 11/08/2021
 ms.author: lianwei
-ms.openlocfilehash: f8d5ee649a3e4e8061f264fb1e2e4280659ff7c3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 368c354f36cd6a289daacf1766c73021c1f08a3f
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007357"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997965"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-web-pubsub-service"></a>Résilience et récupération d’urgence dans le service Azure Web PubSub
 
@@ -27,17 +27,24 @@ Une configuration typique pour un scénario interrégion consiste à avoir deux 
 
 Dans chaque paire, le serveur d’applications et le service Web PubSub sont situés dans la même région, et le service Web PubSub place le gestionnaire d’événements en amont du serveur d’applications dans la même région.
 
-Pour mieux illustrer l’architecture, nous appelons le service Web PubSub service « principal » sur le serveur d’applications de la même paire. Dans les autres paires, nous appelons les services Web PubSub les services « secondaires » sur le serveur d’applications.
+Pour mieux illustrer l’architecture, nous appelons le service Web PubSub service **principal** sur le serveur d’applications de la même paire. Dans les autres paires, nous appelons les services Web PubSub les services **secondaires** sur le serveur d’applications.
 
-Le serveur d’applications utilise l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/health-api/get-service-status) pour détecter si ses services « principal » et « secondaires » sont sains ou non. Par exemple, pour un service Web PubSub appelé `demo`, le point de terminaison `https://demo.webpubsub.azure.com/api/health` renvoie le code 200 lorsque le service est sain. Le serveur d’applications peut appeler périodiquement les points de terminaison ou il peut les appeler à la demande pour vérifier si les points de terminaison sont sains. En général, les clients WebSocket **négocient** d’abord avec leur serveur d’applications pour obtenir l’URL de connexion au service Web PubSub, et l’application utilise cette étape de **négociation** pour faire basculer les clients vers d’autres services « secondaires » sains. Voici les étapes détaillées :
+Le serveur d’applications peut utilise l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/health-api/get-service-status) pour détecter si ses services **principal** et **secondaires** sont sains ou non. Par exemple, pour un service Web PubSub appelé `demo`, le point de terminaison `https://demo.webpubsub.azure.com/api/health` renvoie le code 200 lorsque le service est sain. Le serveur d’applications peut appeler périodiquement les points de terminaison ou il peut les appeler à la demande pour vérifier si les points de terminaison sont sains. En général, les clients WebSocket **négocient** d’abord avec leur serveur d’applications pour obtenir l’URL de connexion au service Web PubSub, et l’application utilise cette étape de **négociation** pour faire basculer les clients vers d’autres services **secondaires** sains. Voici les étapes détaillées :
 
 1. Lorsqu’un client **négocie** avec le serveur d’applications, ce dernier ne DOIT renvoyer que les points de terminaison principaux du service Web PubSub, de sorte que, dans un cas normal, les clients ne se connectent qu’aux points de terminaison principaux.
-
-2. Lorsque l’instance principale est hors service, la **négociation** DOIT renvoyer un point de terminaison secondaire sain afin que le client puisse toujours établir des connexions, et le client se connecte au point de terminaison secondaire.
-
-3. Lorsque le serveur d’applications souhaite « diffuser » des messages à plusieurs clients, assurez-vous qu’il « diffuse » les messages à tous les points de terminaison « sains », y compris les points de terminaison « principaux » et « secondaires ».
+1. Lorsque l’instance principale est hors service, la **négociation** DOIT renvoyer un point de terminaison secondaire sain afin que le client puisse toujours établir des connexions, et le client se connecte au point de terminaison secondaire.
+1. Lorsque l’instance principale est établie, **negotiate** DOIT retourner le point de terminaison principal sain pour que les clients puissent désormais se connecter au point de terminaison principal
+1. Quand le serveur d’applications **diffuse** des messages, il DOIT **diffuser** des messages à tous les points de terminaison **sains**, aussi bien le **principal** que les **secondaires**.
+1. Le serveur d’applications peut fermer les connexions aux points de terminaison **secondaires** pour forcer les clients à se reconnecter au point de terminaison principal sain.
 
 Avec cette topologie, un message provenant d’un serveur peut être livré à tous les clients, car tous les serveurs d’applications et toutes les instances du service Web PubSub sont interconnectés.
+
+Nous n’avons pas encore intégré la stratégie dans le kit de développement logiciel (SDK). Pour l’instant, l’application doit implémenter cette stratégie elle-même. 
+
+En résumé, voici ce que le côté de l’application doit implémenter :
+1. Contrôle d’intégrité. L’application peut vérifier si le service est sain à l’aide de l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/health-api/get-service-status) régulièrement en arrière-plan ou à la demande pour chaque appel **negotiate**.
+1. Logique de négociation. L’application retourne un point de terminaison **principal** sain par défaut. Lorsque le point de terminaison **principal** est inactif, l’application retourne un point de terminaison **secondaire** sain.
+1. Logique de diffusion. Lors de l’envoi de messages à plusieurs clients, l’application doit s’assurer qu’elle diffuse les messages à tous les points de terminaison **sains**.
 
 Le diagramme ci-dessous illustre cette topologie :
 
@@ -79,7 +86,7 @@ Le service Web PubSub peut prendre en charge ces deux modèles, la principale di
 Si les serveurs d’applications présentent une configuration active/passive, le service Web PubSub présente également une configuration active/passive (car le serveur d’applications principal renvoie uniquement son instance de service Web PubSub principale).
 Si les serveurs d’applications présentent une configuration active/active, le service Web PubSub présente également une configuration active/active (car tous les serveurs d’applications renvoient leurs propres instances Web PubSub principales, afin que tous puissent obtenir le trafic).
 
-Notez que, quel que soit le modèle que vous choisissez d’utiliser, vous devez connecter chaque instance du service Web PubSub à un serveur d’applications en tant que rôle « principal ».
+Notez que, quel que soit le modèle que vous choisissez d’utiliser, vous devez connecter chaque instance du service Web PubSub à un serveur d’applications en tant que rôle **principal**.
 
 De plus, en raison de la nature de la connexion WebSocket (connexion longue), les clients sont confrontés à des interruptions de connexion en cas d’incident et de basculement.
 Vous devez gérer de telles situations côté client pour les rendre transparentes pour vos clients finaux. Par exemple, rétablissez une connexion qui a été fermée.

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: eec477aa664579bd1c22381eb0db587aebe42c3f
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 71e611855023becf474337b309f510244507bc96
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566884"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848455"
 ---
 # <a name="create-and-run-machine-learning-pipelines-using-components-with-the-azure-machine-learning-cli-preview"></a>Créer et exécuter des pipelines Machine Learning à l’aide de composants avec l’interface CLI d’Azure Machine Learning (préversion)
 
@@ -86,7 +86,7 @@ Vous devriez recevoir un dictionnaire JSON contenant des informations sur le tra
 
 Ouvrez `ComponentA.yaml` pour voir comment le premier composant est défini : 
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/componentA.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/componentA.yml":::
 
 Dans la préversion actuelle, seuls les composants de type `command` sont pris en charge. `name` est l’identificateur unique et est utilisé dans Studio pour décrire le composant, et `display_name` est utilisé pour fournir un nom convivial. La paire clé-valeur `version` vous permet de faire évoluer vos composants de pipeline tout en conservant la reproductibilité avec les versions antérieures. 
 
@@ -105,7 +105,7 @@ Pour plus d’informations sur les composants et leurs spécifications, consulte
 
 Dans le répertoire de l’exemple, le fichier `pipeline.yaml` ressemble au code suivant :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/pipeline.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/pipeline.yml":::
 
 Si vous ouvrez l’URL du travail dans Studio (la valeur de `services.Studio.endpoint` à partir de la commande `job create` lors de la création d’un travail ou `job show` après la création du travail), vous verrez une représentation graphique de votre pipeline :
 
@@ -172,11 +172,11 @@ Chacune de ces phases peut avoir plusieurs composants. Par exemple, la phase de 
 
 `job.yml` commence par la paire clé-valeur `type: pipeline` obligatoire. Ensuite, il définit les entrées et les sorties comme suit :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="8-25":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="5-22":::
 
 Comme décrit précédemment, ces entrées spécifient les données d’entrée pour le pipeline, dans le cas présent, le jeu de données dans `./data`, et les sorties intermédiaires et finales du pipeline, qui sont stockées dans des chemins d’accès distincts. Les noms figurant dans ces entrées d’entrée et de sortie deviennent des valeurs dans les entrées `inputs` et `outputs` des travaux individuelles : 
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="29-75":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="26-72":::
 
 Notez comment `jobs.train_job.outputs.model_output` est utilisé comme entrée pour le travail de prédiction et le travail de scoring, comme indiqué dans le diagramme suivant : 
 
@@ -186,7 +186,7 @@ Notez comment `jobs.train_job.outputs.model_output` est utilisé comme entrée p
 
 Par défaut, seuls les composants dont les entrées ont été modifiées sont réexécutés. Vous pouvez modifier ce comportement en affectant à la clé `is_deterministic` de la spécification de composant YAML la valeur `False`. Un besoin courant pour cela est un composant qui charge des données qui ont pu être mises à jour à partir d’un emplacement fixe ou d’une URL. 
 
-## <a name="faq"></a>Questions fréquentes (FAQ)
+## <a name="faq"></a>Forum aux questions
 
 ### <a name="how-do-i-change-the-location-of-the-outputs-generated-by-the-pipeline"></a>Comment modifier l’emplacement des sorties générées par le pipeline ?
 Vous pouvez utiliser la section `settings` du travail de pipeline pour spécifier un magasin de données de travail différent pour tous les travaux dans le pipeline (voir la ligne 25-26 dans [cet exemple](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)). La spécification d’un autre magasin de données pour un travail spécifique ou une sortie spécifique n’est pas prise en charge pour le moment. La spécification de chemins d’accès où les sorties sont inscrites sur le magasin de données n’est pas non plus prise en charge actuellement.

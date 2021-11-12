@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 912aa02fadef0f950f5d89535bfe38133b61137b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7018ad879e5877c131af041685722d30b2906b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097768"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520122"
 ---
 ## <a name="prerequisites"></a>Prérequis
 
@@ -57,8 +57,29 @@ L’exemple de jeu de données fourni contient environ 200 résumés de film qu
 
 ## <a name="create-a-custom-classification-project"></a>Créer un projet de classification personnalisée
 
-[!INCLUDE [Language Studio project creation](../create-project.md)]
+1. Connectez-vous à [Language Studio](https://aka.ms/languageStudio). Une fenêtre apparaît pour vous permettre de sélectionner votre abonnement et votre ressource Language. Sélectionnez la ressource que vous avez créée à l’étape ci-dessus.
 
+2. Dans la section **Classifier du texte** de Language Studio, sélectionnez **classification de texte personnalisée** dans la liste des services disponibles.
+
+3. Sélectionnez **Créer un projet** dans le menu supérieur de la page des projets. La création d’un projet vous permet d’étiqueter les données, d’entraîner, d’évaluer, d’améliorer et de déployer vos modèles. 
+
+    :::image type="content" source="../../media/create-project.png" alt-text="Capture d’écran de la page de création de projet." lightbox="../../media/create-project.png":::
+<!--
+4. If you have created your resource using the steps above, the **Connect storage** step will be completed already. You only need to do this step once for each resource you use and it is irreversible. If you connect a storage account to your resource, you cannot disconnect it later.
+
+    :::image type="content" source="../../../custom-named-entity-recognition/media/connect-storage.png" alt-text="A screenshot showing the storage connection screen." lightbox="../../../custom-named-entity-recognition/media/connect-storage.png":::
+-->
+4. Si vous avez créé votre ressource à l’aide des étapes ci-dessus, l’étape **Connecter le stockage** a déjà été effectuée. Dans le cas contraire, vous devez assigner des [rôles pour votre compte de stockage](../../how-to/create-project.md#roles-for-your-storage-account) avant de le connecter à votre ressource
+
+5. Entrez les informations relatives à votre projet, notamment son nom, sa description et le langage des fichiers qu’il contient. Vous ne pourrez pas changer le nom de votre projet par la suite.
+    >[!TIP]
+    > Votre jeu de données n’a pas besoin d’être entièrement dans la même langue. Vous pouvez avoir plusieurs fichiers, chacun comportant différentes langues prises en charge. Si votre jeu de données contient des fichiers de différentes langues ou si vous prévoyez d’autres langues au moment de l’exécution, sélectionnez **enable multi-lingual dataset** (activer le jeu de données multilingue) quand vous entrez les informations de base de votre projet.
+
+6. Sélectionnez votre type de projet. Pour ce démarrage rapide, nous allons créer un projet de classification multi-étiquette dans lequel vous pouvez assigner plusieurs classes au même fichier. Cliquez ensuite sur **Suivant**. En savoir plus sur les [types de projets](../../glossary.md#project-types)
+
+7. Sélectionnez le conteneur dans lequel vous avez chargé vos données. Pour ce guide de démarrage rapide, nous allons utiliser le fichier d’étiquettes existant disponible dans le conteneur. Cliquez ensuite sur **Suivant**.
+
+8. Passez en revue les données entrées, puis sélectionnez **Créer un projet**.
     
 ## <a name="train-your-model"></a>Entraîner votre modèle
 

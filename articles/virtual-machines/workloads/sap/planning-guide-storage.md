@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25cdaf3bd916b587adeeaf200d0c55b0c4001ad2
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: eb1e315d0fce2b43ed15c2808ddaf37c605c79dd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074548"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432792"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Types de stockage Azure pour une charge de travail SAP
 Azure possède de nombreux types de stockage qui diffèrent notablement en termes de capacités, de débit, de latence et de prix. Certains des types de stockage ne sont pas, ou peu, utilisables pour les scénarios SAP. En revanche, plusieurs types de stockage Azure sont bien adaptés ou optimisés pour des scénarios de charge de travail SAP spécifiques. Pour SAP HANA en particulier, certains types de stockage Azure ont été certifiés pour être utilisés avec SAP HANA. Dans ce document, nous passons en revue les différents types de stockage et décrivons leur capacité et leur facilité d'utilisation avec les charges de travail et les composants SAP.
@@ -79,16 +79,16 @@ Avant d’aborder les détails, nous présentons le résumé et les recommandati
 
 | Scénario d’usage | HDD Standard | SSD Standard | Stockage Premium | Disque Ultra | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| Disque de système d’exploitation | non approprié |  restreint adapté (non prod) | recommandé | impossible | impossible |
-| Répertoire de transport global | non pris en charge | non pris en charge | recommandé | recommandé | recommandé |
-| /sapmnt | non approprié | restreint adapté (non prod) | recommandé | recommandé | recommandé |
-| Volume de données SGBD SAP HANA pour les familles de machines virtuelles M/Mv2 | non pris en charge | non pris en charge | recommandé | recommandé | recommandé<sup>2</sup> |
-| Volume du journal SGBD SAP HANA pour les familles de machines virtuelles M/Mv2 | non pris en charge | non pris en charge | recommandé<sup>1</sup> | recommandé | recommandé<sup>2</sup> | 
-| Volume de données SGBD SAP HANA pour les familles de machines virtuelles Esv3/Edsv4 | non pris en charge | non pris en charge | recommandé | recommandé | recommandé<sup>2</sup> |
-| Volume du journal SGBD SAP HANA pour les familles de machines virtuelles Esv3/Edsv4 | non pris en charge | non pris en charge | non pris en charge | recommandé | recommandé<sup>2</sup> | 
-| Volume de données SGBD non HANA | non pris en charge | restreint adapté (non prod) | recommandé | recommandé | Uniquement pour des versions spécifiques d’Oracle sur Oracle Linux et Db2 sur Linux |
-| Volume du journal de SGBD non HANA des familles de machines virtuelles M/Mv2 | non pris en charge | restreint adapté (non prod) | recommandé<sup>1</sup> | recommandé | Uniquement pour des versions spécifiques d’Oracle sur Oracle Linux et Db2 sur Linux |
-| Volume du journal de SGBD non HANA n’appartenant aux familles de machines virtuelles M/Mv2 | non pris en charge | restreint adapté (non prod) | convient pour une charge de travail faible à moyenne | recommandé | Uniquement pour des versions spécifiques d’Oracle sur Oracle Linux et Db2 sur Linux |
+| Disque de système d’exploitation | Non approprié |  Restreint adapté (non prod) | Recommandé | Impossible | Impossible |
+| Répertoire de transport global | Non prise en charge | Non prise en charge | Recommandé | Recommandé | Recommandé |
+| /sapmnt | Non approprié | Restreint adapté (non prod) | Recommandé | Recommandé | Recommandé |
+| Volume de données SGBD SAP HANA pour les familles de machines virtuelles M/Mv2 | Non prise en charge | Non prise en charge | Recommandé | Recommandé | Recommandé<sup>2</sup> |
+| Volume du journal SGBD SAP HANA pour les familles de machines virtuelles M/Mv2 | Non prise en charge | Non prise en charge | Recommandé<sup>1</sup> | Recommandé | Recommandé<sup>2</sup> | 
+| Volume de données SGBD SAP HANA pour les familles de machines virtuelles Esv3/Edsv4 | Non prise en charge | Non prise en charge | Recommandé | Recommandé | Recommandé<sup>2</sup> |
+| Volume du journal SGBD SAP HANA pour les familles de machines virtuelles Esv3/Edsv4 | Non prise en charge | Non prise en charge | Non prise en charge | Recommandé | Recommandé<sup>2</sup> | 
+| Volume de données SGBD non HANA | Non prise en charge | Restreint adapté (non prod) | Recommandé | Recommandé | Uniquement pour des versions Oracle spécifiques sur Oracle Linux, Db2 et SAP ASE sur SLES/RHEL Linux |
+| Volume du journal de SGBD non HANA des familles de machines virtuelles M/Mv2 | Non prise en charge | Restreint adapté (non prod) | Recommandé<sup>1</sup> | Recommandé | Uniquement pour des versions Oracle spécifiques sur Oracle Linux, Db2 et SAP ASE sur SLES/RHEL Linux |
+| Volume du journal de SGBD non HANA n’appartenant aux familles de machines virtuelles M/Mv2 | Non prise en charge | restreint adapté (non prod) | Convient pour une charge de travail faible à moyenne | Recommandé | Uniquement pour des versions Oracle spécifiques sur Oracle Linux, Db2 et SAP ASE sur SLES/RHEL Linux |
 
 
 <sup>1</sup> Avec utilisation de l’[Accélérateur d’écriture Azure](../../how-to-enable-write-accelerator.md) pour les familles de machines virtuelles M/Mv2 et les volumes journal/restauration par progression <sup>2</sup> ANF requiert la présence de volumes /hana/data et /hana/log 
@@ -97,15 +97,15 @@ Caractéristiques que vous pouvez attendre des types de stockage différents :
 
 | Scénario d’usage | HDD Standard | SSD Standard | Stockage Premium | Disque Ultra | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| SLA de débit/IOPS | non | non | Oui | Oui | Oui |
-| Lectures de latence | high | moyen à élevé | low | sous-milliseconde | sous-milliseconde |
-| Écritures de latence | high | moyen à élevé  | faible (sous-milliseconde<sup>1</sup>) | sous-milliseconde | sous-milliseconde |
-| HANA pris en charge | non | non | Oui<sup>1</sup> | Oui | Oui |
-| Captures instantanées de disque possibles | Oui | Oui | Oui | non | Oui |
-| Allocation de disques sur différents clusters de stockage lors de l’utilisation de groupes à haute disponibilité | via des disques managés | via des disques managés | via des disques managés | type de disque non pris en charge avec les machines virtuelles déployées via des groupes à haute disponibilité | non<sup>3</sup> |
-| Aligné avec les Zones de disponibilité | Oui | Oui | Oui | Oui | nécessite l’engagement de Microsoft |
-| Redondance de zone | pas pour les disques managés | pas pour les disques managés | pas pour les disques managés | non | non |
-| Redondance géographique | pas pour les disques managés | pas pour les disques managés | non | non | non |
+| SLA de débit/IOPS | Non | Non | Oui | Oui | Oui |
+| Lectures de latence | Élevé | Moyen à élevé | Faible | sous-milliseconde | sous-milliseconde |
+| Écritures de latence | Élevé | Moyen à élevé  | Faible (sous-milliseconde<sup>1</sup>) | sous-milliseconde | sous-milliseconde |
+| HANA pris en charge | Non | Non | Oui<sup>1</sup> | Oui | Oui |
+| Captures instantanées de disque possibles | Oui | Oui | Oui | Non | Oui |
+| Allocation de disques sur différents clusters de stockage lors de l’utilisation de groupes à haute disponibilité | Via des disques managés | Via des disques managés | Via des disques managés | Type de disque non pris en charge avec les machines virtuelles déployées via des groupes à haute disponibilité | Non<sup>3</sup> |
+| Aligné avec les Zones de disponibilité | Oui | Oui | Oui | Oui | Nécessite l’engagement de Microsoft |
+| Redondance de zone | Pas pour les disques managés | Pas pour les disques managés | Pas pour les disques managés | Non | Non |
+| Redondance géographique | Pas pour les disques managés | Pas pour les disques managés | Non | Non | Non |
 
 
 <sup>1</sup> Avec utilisation de l’[Accélérateur d’écriture Azure](../../how-to-enable-write-accelerator.md) pour les familles de machines virtuelles M/Mv2 et les volumes journal/restauration par progression
@@ -142,23 +142,23 @@ La matrice de capacité pour la charge de travail SAP ressemble à ceci :
 
 | Fonctionnalité| Commentaire| Remarques/liens | 
 | --- | --- | --- | 
-| Disque dur virtuel de base du système d’exploitation | approprié | tous les systèmes |
-| Disque de données | approprié | tous les systèmes - [spécialement pour SAP HANA](../../how-to-enable-write-accelerator.md) |
-| Répertoire de transport global SAP | YES | [Pris en charge](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP sapmnt | approprié | tous les systèmes |
-| Stockage de sauvegarde | approprié | pour le stockage à court terme des sauvegardes |
-| Partages/disque partagé | non disponible | Nécessite des fichiers Azure Premium ou des fournisseurs tiers |
+| Disque dur virtuel de base du système d’exploitation | Approprié | Tous les systèmes |
+| Disque de données | Approprié | Tous les systèmes - [spécialement pour SAP HANA](../../how-to-enable-write-accelerator.md) |
+| Répertoire de transport global SAP | Oui | [Pris en charge](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP sapmnt | Approprié | Tous les systèmes |
+| Stockage de sauvegarde | Approprié | Pour le stockage à court terme des sauvegardes |
+| Partages/disque partagé | Non disponible | Nécessite des fichiers Azure Premium ou des fournisseurs tiers |
 | Résilience | LRS | Aucun GRS ou ZRS n’est disponible pour les disques |
-| Latence | faible à moyen | - |
-| Contrat de niveau de service IOPS | YES | - |
+| Latence | Faible à moyen | - |
+| Contrat de niveau de service IOPS | Oui | - |
 | IOPS linéaires à la capacité | semi-linéaire entre crochets  | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | Maximum d’E/S par seconde par disque | 20 000 [dépendant de la taille du disque](https://azure.microsoft.com/pricing/details/managed-disks/) | Tenez également compte des [limites de machine virtuelle](../../sizes.md) |
-| SLA de débit | YES | - |
-| Débit linéaire par rapport à la capacité | semi-linéaire entre crochets | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Certifié HANA | YES | [spécialement pour SAP HANA](../../how-to-enable-write-accelerator.md) |
-| Captures instantanées de disque possibles | YES | - |
-| Captures instantanées de machines virtuelles Sauvegarde Azure possibles | YES | à l’exception des disques mis en cache d’[Accélérateur d’écriture](../../how-to-enable-write-accelerator.md)  |
-| Coûts | MEDIUM | - |
+| SLA de débit | Oui | - |
+| Débit linéaire par rapport à la capacité | Semi-linéaire entre crochets | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
+| Certifié HANA | Oui | [spécialement pour SAP HANA](../../how-to-enable-write-accelerator.md) |
+| Captures instantanées de disque possibles | Oui | - |
+| Captures instantanées de machines virtuelles Sauvegarde Azure possibles | Oui | À l’exception des disques mis en cache d’[Accélérateur d’écriture](../../how-to-enable-write-accelerator.md)  |
+| Coûts | Moyenne| - |
 
 Le stockage premium Azure ne remplit pas les KPI de latence du stockage SAP HANA avec les types de cache courants proposés avec le stockage premium Azure. Afin de remplir les KPI de latence de stockage pour les écritures de log SAP HANA, vous devez utiliser la mise en cache d’Accélérateur d'écriture Azure comme décrit dans l'article [Activer l’Accélérateur d’écriture](../../how-to-enable-write-accelerator.md). Accélérateur d’écriture Azure tire parti de tous les autres systèmes SGBD pour l’écriture du journal des transactions et la restauration des écritures de journal. Par conséquent, il est recommandé de l’utiliser dans tous les déploiements de SGBD SAP. Pour SAP HANA, l'utilisation d’Accélérateur d’écriture Azure est obligatoire conjointement avec le Stockage Premium Azure.
 
@@ -200,20 +200,20 @@ La matrice de capacité pour la charge de travail SAP ressemble à ceci :
 
 | Fonctionnalité| Commentaire| Remarques/liens | 
 | --- | --- | --- | 
-| Disque dur virtuel de base du système d’exploitation | ne fonctionne pas | - |
-| Disque de données | approprié | tous les systèmes  |
-| Répertoire de transport global SAP | YES | [Pris en charge](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP sapmnt | approprié | tous les systèmes |
-| Stockage de sauvegarde | approprié | pour le stockage à court terme des sauvegardes |
-| Partages/disque partagé | non disponible | A besoin d’un tiers |
+| Disque dur virtuel de base du système d’exploitation | Ne fonctionne pas | - |
+| Disque de données | Approprié | Tous les systèmes  |
+| Répertoire de transport global SAP | Oui | [Pris en charge](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP sapmnt | Approprié | Tous les systèmes |
+| Stockage de sauvegarde | Approprié | Pour le stockage à court terme des sauvegardes |
+| Partages/disque partagé | Non disponible | A besoin d’un tiers |
 | Résilience | LRS | Aucun GRS ou ZRS n’est disponible pour les disques |
-| Latence | très faible | - |
-| Contrat de niveau de service IOPS | YES | - |
-| IOPS linéaires à la capacité | semi-linéaire entre crochets  | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
+| Latence | Très faible | - |
+| Contrat de niveau de service IOPS | Oui | - |
+| IOPS linéaires à la capacité | Semi-linéaire entre crochets  | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | Maximum d’E/S par seconde par disque | 1 200 à 160 000 | dépend de la capacité du disque |
-| SLA de débit | YES | - |
-| Débit linéaire par rapport à la capacité | semi-linéaire entre crochets | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Certifié HANA | YES | - |
+| SLA de débit | Oui | - |
+| Débit linéaire par rapport à la capacité | Semi-linéaire entre crochets | [Tarification des disques managés](https://azure.microsoft.com/pricing/details/managed-disks/) |
+| Certifié HANA | Oui | - |
 | Captures instantanées de disque possibles | Non | - |
 | Captures instantanées de machines virtuelles Sauvegarde Azure possibles | Non | - |
 | Coûts | Supérieur au stockage Premium | - |
@@ -243,9 +243,10 @@ Le stockage ANF est actuellement pris en charge pour plusieurs scénarios de cha
 - Déploiements SAP HANA utilisant des partages NFS v4.1 pour des volumes /hana/data et /hana/log et/ou des volumes NFS v4.1 ou NFS v3 pour des volumes /hana/shared comme documenté dans l’article [Configurations de stockage des machines virtuelles Azure SAP HANA](./hana-vm-operations-storage.md)
 - IBM Db2 dans le système d’exploitation invité Suse ou Red Hat Linux
 - Déploiements Oracle dans un système d’exploitation invité Oracle Linux à l’aide de [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) pour les volumes de données Oracle et de journalisation de progression. Pour plus d’informations, consultez l’article [Déploiement de SGBD Oracle sur les machines virtuelles Azure pour la charge de travail SAP](./dbms_guide_oracle.md)
+- SAP ASE dans le système d’exploitation invité Suse ou Red Hat Linux
 
 > [!NOTE]
-> Aucune autre charge de travail SGBD n’est prise en charge pour les partages NFS ou SMB basés sur Azure NetApp Files. Les mises à jour et les modifications seront fournies en cas de changement.
+> Pour l’instant, aucune charge de travail SGBD n’est prise en charge sur SMB basé sur Azure NetApp Files.
 
 Comme c'est déjà le cas pour le stockage premium Azure, une taille de débit fixe ou linéaire par Go peut poser problème lorsque vous devez respecter un nombre minimal de débits. Comme c'est le cas pour SAP HANA. Avec ANF, ce problème peut s’accentuer davantage qu'avec le disque premium Azure. Dans le cas d’un disque Azure Premium, vous pouvez utiliser plusieurs disques plus petits avec un débit relativement élevé par Gio et les entrelacer pour obtenir une rentabilité et un débit plus élevé avec une capacité inférieure. Ce type d’entrelacement ne fonctionne pas pour les partages NFS ou SMB hébergés sur ANF. Cette restriction a entraîné le déploiement de surcapacités :
 
@@ -257,20 +258,20 @@ La matrice de capacité pour la charge de travail SAP ressemble à ceci :
 
 | Fonctionnalité| Commentaire| Remarques/liens | 
 | --- | --- | --- | 
-| Disque dur virtuel de base du système d’exploitation | ne fonctionne pas | - |
-| Disque de données | approprié | SAP HANA uniquement  |
-| Répertoire de transport global SAP | YES | SMB et NFS |
-| SAP sapmnt | approprié | tous les systèmes SMB (Windows uniquement) ou NFS (Linux uniquement) |
-| Stockage de sauvegarde | approprié | - |
-| Partages/disque partagé | YES | SMB 3.0, NFS v3 et NFS v4.1 |
+| Disque dur virtuel de base du système d’exploitation | Ne fonctionne pas | - |
+| Disque de données | Approprié | SAP HANA, Oracle sur Oracle Linux, DB2 et SAP ASE sur SLES/RHEL  |
+| Répertoire de transport global SAP | Oui | SMB et NFS |
+| SAP sapmnt | Approprié | Tous les systèmes SMB (Windows uniquement) ou NFS (Linux uniquement) |
+| Stockage de sauvegarde | Approprié | - |
+| Partages/disque partagé | Oui | SMB 3.0, NFS v3 et NFS v4.1 |
 | Résilience | LRS | Aucun GRS ou ZRS n’est disponible pour les disques |
-| Latence | très faible | - |
-| Contrat de niveau de service IOPS | YES | - |
+| Latence | Très faible | - |
+| Contrat de niveau de service IOPS | Oui | - |
 | IOPS linéaires à la capacité | strictement linéaire  | Dépend du [niveau de service](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
-| SLA de débit | YES | - |
-| Débit linéaire par rapport à la capacité | semi-linéaire entre crochets | Dépend du [niveau de service](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
-| Certifié HANA | YES | - |
-| Captures instantanées de disque possibles | YES | - |
+| SLA de débit | Oui | - |
+| Débit linéaire par rapport à la capacité | Semi-linéaire entre crochets | Dépend du [niveau de service](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
+| Certifié HANA | Oui | - |
+| Captures instantanées de disque possibles | Oui | - |
 | Captures instantanées de machines virtuelles Sauvegarde Azure possibles | Non | - |
 | Coûts | Supérieur au stockage Premium | - |
 
@@ -290,20 +291,20 @@ Par rapport aux disques HDD Standard Azure, les disques SSD Standard Azure offre
 
 | Fonctionnalité| Commentaire| Remarques/liens | 
 | --- | --- | --- | 
-| Disque dur virtuel de base du système d’exploitation | restreint adapté | systèmes hors production |
-| Disque de données | restreint adapté | certains systèmes hors production avec des demandes d’IOPS faible et de latence |
+| Disque dur virtuel de base du système d’exploitation | Restreint adapté | Systèmes hors production |
+| Disque de données | Restreint adapté | Certains systèmes hors production avec des demandes d’IOPS faible et de latence |
 | Répertoire de transport global SAP | Non | [Non pris en charge](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP sapmnt | restreint adapté | systèmes hors production |
-| Stockage de sauvegarde | approprié | - |
-| Partages/disque partagé | non disponible | A besoin d’un tiers |
+| SAP sapmnt | Restreint adapté | Systèmes hors production |
+| Stockage de sauvegarde | Approprié | - |
+| Partages/disque partagé | Non disponible | A besoin d’un tiers |
 | Résilience | LRS, GRS | Aucun ZRS disponible pour les disques |
-| Latence | high | trop élevé pour le répertoire de transport global SAP ou les systèmes de production |
+| Latence | high | Trop élevé pour le répertoire de transport global SAP ou les systèmes de production |
 | Contrat de niveau de service IOPS | Non | - |
 | Maximum d’E/S par seconde par disque | 500 | Indépendamment de la taille du disque |
 | SLA de débit | Non | - |
 | Certifié HANA | Non | - |
-| Captures instantanées de disque possibles | YES | - |
-| Captures instantanées de machines virtuelles Sauvegarde Azure possibles | YES | - |
+| Captures instantanées de disque possibles | Oui | - |
+| Captures instantanées de machines virtuelles Sauvegarde Azure possibles | Oui | - |
 | Coûts | LOW | - |
 
 
@@ -317,21 +318,21 @@ Le stockage HDD Standard Azure était le seul type de stockage lorsque l'infrast
 
 | Fonctionnalité| Commentaire| Remarques/liens | 
 | --- | --- | --- | 
-| Disque dur virtuel de base du système d’exploitation | non approprié | - |
-| Disque de données | non approprié | - |
+| Disque dur virtuel de base du système d’exploitation | Non approprié | - |
+| Disque de données | Non approprié | - |
 | Répertoire de transport global SAP | Non | [Non pris en charge](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | Non | Non pris en charge |
-| Stockage de sauvegarde | approprié | - |
-| Partages/disque partagé | non disponible | Nécessite Azure Files ou un fournisseur tiers |
+| Stockage de sauvegarde | Approprié | - |
+| Partages/disque partagé | Non disponible | Nécessite Azure Files ou un fournisseur tiers |
 | Résilience | LRS, GRS | Aucun ZRS disponible pour les disques |
-| Latence | high | trop élevé pour l’utilisation du SGBD, le répertoire de transport global SAP ou sapmnt/saploc |
+| Latence | high | Trop élevé pour l’utilisation du SGBD, le répertoire de transport global SAP ou sapmnt/saploc |
 | Contrat de niveau de service IOPS | Non | - |
 | Maximum d’E/S par seconde par disque | 500 | Indépendamment de la taille du disque |
 | SLA de débit | Non | - |
 | Certifié HANA | Non | - |
-| Captures instantanées de disque possibles | YES | - |
-| Captures instantanées de machines virtuelles Sauvegarde Azure possibles | YES | - |
-| Coûts | LOW | - |
+| Captures instantanées de disque possibles | Oui | - |
+| Captures instantanées de machines virtuelles Sauvegarde Azure possibles | Oui | - |
+| Coûts | Faible | - |
 
 
 

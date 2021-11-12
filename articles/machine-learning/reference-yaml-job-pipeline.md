@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 73d5c79ac3e425039820101102ac91b3e3362d8e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 93c8f11fbfab8386e1083985399d8138e2b2b7d6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566779"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057078"
 ---
 # <a name="cli-v2-pipeline-job-yaml-schema"></a>Schéma YAML du travail de pipeline CLI (v2)
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | Le schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
 | `type` | const | **Obligatoire.** Le type de travail. | `pipeline` | |
 | `name` | string | Nom du travail. Doit être unique pour tous les travaux de l’espace de travail. En cas d’omission, Azure ML génère automatiquement un GUID pour le nom. | | |
 | `display_name` | string | Nom complet du travail dans l’interface utilisateur de Studio. Peut être non unique dans l’espace de travail. En cas d’omission, Azure ML génère automatiquement un identificateur de nom convivial explicite pour le nom d’affichage. | | |
@@ -76,23 +76,23 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-hello-pipeline"></a>YAML : pipeline Hello
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline.yml":::
 
 ## <a name="yaml-inputoutput-dependency"></a>YAML : dépendance d’entrée/de sortie
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-io.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-io.yml":::
 
 ## <a name="yaml-common-pipeline-job-settings"></a>YAML : paramètres courants du travail de pipeline
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-settings.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-settings.yml":::
 
 ## <a name="yaml-top-level-input-and-overriding-common-pipeline-job-settings"></a>YAML : entrée de niveau supérieur et remplacement des paramètres de travail de pipeline courants
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-abc.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-abc.yml":::
 
 ## <a name="yaml-model-training-pipeline"></a>YAML : pipeline d’apprentissage du modèle
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines/cifar-10/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines/cifar-10/job.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 
