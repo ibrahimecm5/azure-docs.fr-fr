@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: d5111425c6377cf16d3fbd4afceb7fcacc1e539a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3b0d9a946408091f32b950e0daa349ee0f887380
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077417"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281794"
 ---
 # <a name="iot-connector-troubleshooting-guide"></a>Guide de résolution des problèmes du connecteur IoT
 

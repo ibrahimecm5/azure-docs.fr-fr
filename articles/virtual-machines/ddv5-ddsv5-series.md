@@ -2,19 +2,19 @@
 title: 'Séries Ddv5 et Ddsv5 : Machines virtuelles Azure'
 description: Spécifications pour les machines virtuelles des séries Ddv5 et Ddsv5.
 author: styli365
-ms.author: joelpell
+ms.author: sttsinar
 ms.reviewer: joelpell
 ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 33ae24df3a378fb005d6fbc7c3f0b19011f0b6d5
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8a6c9a9af90cd7e881d6cb0aceaf07bffbbdfe37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850581"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131479427"
 ---
 # <a name="ddv5-and-ddsv5-series"></a>Séries Ddv5 et Ddsv5
 
@@ -59,7 +59,7 @@ Les machines virtuelles de la série Ddsv5 s’exécutent sur le processeur Inte
 
 Les machines virtuelles de la série Ddsv5 prennent en charge les types de disques SSD Standard, HDD Standard et SSD Premium. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-[Stockage Premium](premium-storage-performance.md) : Pris en charge<br>
+[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge<br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge<br>
