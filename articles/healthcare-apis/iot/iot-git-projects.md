@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 10/28/2021
 ms.author: jasteppe
-ms.openlocfilehash: 85fa6aff2e9c1702813c1c865d7f5e85c315c343
-ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
+ms.openlocfilehash: 76bf145ea76ea44d65e2c5dc3873cb51707840a5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2021
-ms.locfileid: "132156461"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309844"
 ---
 # <a name="open-source-projects"></a>Projets open source
 
@@ -46,7 +46,7 @@ Google Fit sur FHIR
 
 Synchronisation des données d’intégrité
 
-* [Microsoft/Health-Data-Sync](https://github.com/microsoft/health-data-sync): bibliothèque SWIFT qui simplifie et automatise l’exportation de données HealthKit vers un magasin externe.
+* [Microsoft/Health-Data-Sync](https://github.com/microsoft/health-data-sync): une bibliothèque de&#174; SWIFT qui simplifie et automatise l’exportation de données HealthKit dans un magasin externe.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Découvrez comment déployer IoT Connector dans le Portail Azure

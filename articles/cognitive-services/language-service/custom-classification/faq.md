@@ -11,50 +11,94 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: a6a4473e6d7dfa55fc75934f3fbdfd44c89ab1c4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9320fee8eb7ad44b33246f28091dfb0b4bd72bb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096827"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434386"
 ---
 # <a name="frequently-asked-questions"></a>Forum Aux Questions
 
 Trouvez des réponses aux questions les plus fréquentes sur les concepts et les scénarios liés à la classification de texte personnalisée dans Azure Cognitive Service for Language.
 
-## <a name="how-many-tagged-files-are-needed"></a>Combien de fichiers étiquetés sont nécessaires ?
+## <a name="how-do-i-get-started-with-the-service"></a>Comment faire pour prendre en main le service ?
 
-En général, des [données étiquetées](how-to/tag-data.md) diverses et représentatives permettent d’obtenir de meilleurs résultats, à condition que l’étiquetage soit effectué de manière précise, cohérente et complète. Il n’existe aucun nombre défini de classes étiquetées qui permettront à tous les modèles d’offrir de bonnes performances. Les performances dépendent fortement de votre schéma et de son ambiguïté. Les classes ambiguës nécessitent davantage d’étiquettes. Les performances dépendent également de la qualité de votre étiquetage. Le nombre recommandé d’instances étiquetées par entité est 50. 
+Consultez le [Démarrage rapide](./quickstart.md) pour créer rapidement votre premier projet, ou le [Guide pratique pour créer des projets](how-to/create-project.md) pour plus de détails.
 
 ## <a name="what-are-the-service-limits"></a>Quelles sont les limites du service ?
 
 Pour plus d’informations, consultez l’article sur les [limites du service](service-limits.md).
 
-## <a name="what-to-do-if-my-model-scores-poorly"></a>Que faire si les scores de mon modèle sont faibles ?
+## <a name="which-languages-are-supported-in-this-feature"></a>Quelles sont les langues prises en charge dans cette fonctionnalité ?
 
-L’évaluation du modèle peut ne pas toujours être complète, surtout si une classe spécifique est manquante ou sous-représentée dans votre jeu de test. Ajoutez des données étiquetées supplémentaires à votre modèle pour améliorer les performances et avoir un jeu de test plus représentatif.
+Consultez l’article sur la [prise en charge des langues](./language-support.md).
+
+## <a name="how-many-tagged-files-are-needed"></a>Combien de fichiers étiquetés sont nécessaires ?
+
+En général, des [données étiquetées](how-to/tag-data.md) diverses et représentatives permettent d’obtenir de meilleurs résultats, à condition que l’étiquetage soit effectué de manière précise, cohérente et complète. Il n’existe aucun nombre défini de classes étiquetées qui permettront à tous les modèles d’offrir de bonnes performances. Les performances dépendent fortement de votre schéma et de l’ambiguïté de celui-ci. Les classes ambiguës nécessitent davantage d’étiquettes. Les performances dépendent également de la qualité de votre étiquetage. Le nombre recommandé d’instances étiquetées par classe est de 50. 
+
+## <a name="training-is-taking-a-long-time-is-this-expected"></a>L’entraînement prend beaucoup de temps, est-ce normal ?
+
+Le processus d’apprentissage peut prendre un certain temps. Le temps d’apprentissage approximatif attendu pour des fichiers d’une longueur combinée de 12,8 millions de caractères est de 6 heures.
+
+## <a name="how-do-i-build-my-custom-model-programmatically"></a>Comment faire pour générer mon modèle personnalisé par programmation ?
+
+Vous pouvez utiliser les [API REST](https://aka.ms/ct-authoring-swagger) pour générer vos modèles personnalisés. Suivez ce [démarrage rapide](quickstart.md?pivots=rest-api) pour commencer à créer un projet et un modèle à l’aide d’API, afin obtenir des exemples d’appel de l’API de création. 
+
+
+## <a name="what-is-the-recommended-cicd-process"></a>Quel est le processus de CI/CD recommandé ?
+
+Vous pouvez effectuer l’apprentissage de plusieurs modèles sur le même jeu de données au sein du même projet. Une fois que vous avez correctement effectué l’apprentissage de votre modèle, vous pouvez [afficher son évaluation](how-to/view-model-evaluation.md). Vous pouvez [déployer et tester](quickstart.md#deploy-your-model) votre modèle dans [Language Studio](https://aka.ms/languageStudio). Vous pouvez ajouter ou supprimer des étiquettes de données, puis effectuer l’apprentissage d’un **nouveau** modèle et le tester. Pour connaître le nombre maximal de modèles formés avec le même projet, consultez les [limites de service](service-limits.md). Quand vous effectuez l’apprentissage d’un nouveau modèle, votre jeu de données est [fractionné](how-to/train-model.md#data-splits) de façon aléatoire en jeux d’apprentissage et de test. Il n’y a donc aucune garantie que l’évaluation du modèle est effectuée sur le même jeu de test, de sorte que les résultats ne sont pas comparables. Nous vous recommandons de développer votre propre jeu de test et de l’utiliser pour évaluer les deux modèles afin de pouvoir mesurer l’amélioration.
+
+## <a name="does-a-low-or-high-model-score-guarantee-bad-or-good-performance-in-production"></a>Un score de modèle faible ou élevé garantit-il de mauvaises ou bonnes performances en production ?
+
+L’évaluation du modèle n’est pas toujours complète. Cela dépend de ce qui suit : 
+* Si le **jeu de test** est trop petit, les scores, bons ou mauvais, ne sont pas représentatifs des performances réelles du modèle. De même, si une classe spécifique est manquante ou sous-représentée dans votre jeu de test, cela affecte les performances du modèle.
+* **Diversité des données** Si vos données ne couvrent que peu de scénarios/exemples de texte que vous attendez en production, votre modèle n’est pas exposé à tous les scénarios possibles et peut s’exécuter de façon médiocre sur les scénarios sur lesquels il n’a pas été formé.
+* **Représentation des données** Si le jeu de données utilisé pour effectuer l’apprentissage du modèle n’est pas représentatif des données qui seraient introduites dans le modèle en production, cela affectera considérablement les performances du modèle.
+
+Pour plus d’informations, consultez l’article [Sélection de données et conception de schéma](how-to/design-schema.md).
 
 ## <a name="how-do-i-improve-model-performance"></a>Comment faire pour améliorer les performances du modèle ?
 
-Affichez la [matrice de confusion](how-to/view-model-evaluation.md) pour identifier l’ambiguïté de schéma. Ensuite, [examinez votre jeu de test](how-to/improve-model.md) pour voir les classes prédites et étiquetées côte à côte afin d’obtenir une meilleure idée des performances de votre modèle et de déterminer si des modifications sont nécessaires dans le schéma ou les étiquettes.  
+* Affichez la [matrice de confusion](how-to/view-model-evaluation.md) du modèle. Si vous remarquez qu’une classe spécifique est souvent classée de manière incorrecte, envisagez d’ajouter des instances étiquetées supplémentaires pour cette classe. Si vous remarquez que deux classes sont souvent classées l’une comme l’autre, cela signifie que le schéma est ambigu. Pour obtenir de meilleures performances, songez à les fusionner dans une seule classe.
+
+*  [Examiner la distribution des données](how-to/improve-model.md#examine-data-distribution-from-language-studio) Si une classe comprend beaucoup plus d’instances étiquetées que les autres, il se peut que votre modèle soit biaisé vers cette classe. Ajoutez des données aux autres classes ou supprimez la plupart des exemples de la classe dominante. 
+
+* Apprenez-en davantage sur la sélection de données et la conception de schéma [ici](how-to/design-schema.md).
+
+* [Examinez votre jeu de test](how-to/improve-model.md) pour voir les classes prédites et étiquetées côte à côte afin d’obtenir une meilleure idée des performances de votre modèle et de déterminer si des modifications sont nécessaires dans le schéma ou les étiquettes.
+
+## <a name="when-i-retrain-my-model-i-get-different-results-why-is-this"></a>Lorsque je ré-effectue l’apprentissage de mon modèle, j’obtiens des résultats différents. Pourquoi ?
+
+* Lorsque vous effectuez l’apprentissage d’un nouveau modèle, votre jeu de données est [fractionné](how-to/train-model.md#data-splits) de façon aléatoire en jeux d’apprentissage et de test. Il n’est donc pas garanti que l’évaluation du modèle reflétée a trait au même jeu de test, et les résultats ne sont pas comparables.
+
+* Si vous ré-effectuez l’apprentissage du même modèle, votre jeu de test sera le même, mais vous constaterez peut-être une légère modification des prédictions effectuées par le modèle. Cela est dû au fait que le modèle formé n’est pas suffisamment robuste, ce qui constitue un facteur indiquant la façon dont les données sont représentatives et distinctes, ainsi que la qualité de vos données étiquetées. 
+
+## <a name="how-do-i-get-predictions-in-different-languages"></a>Comment obtenir des prédictions dans différentes langues ?
+
+Tout d’abord, vous devez activer l’option multilingue lors de la [création de votre projet](how-to/create-project.md). Vous pouvez également l’activer ultérieurement à partir de la page des paramètres du projet. Après avoir effectué l’apprentissage de votre modèle, puis l’avoir déployé, vous pouvez commencer à l’interroger dans [plusieurs langues](language-support.md#multiple-language-support). Les résultats peuvent varier d’une langue à l’autre. Pour améliorer la précision d’une langue quelconque, ajoutez des instances étiquetées à votre projet afin d’élargir la syntaxe du modèle dans cette langue.
 
 ## <a name="i-trained-my-model-but-i-cant-test-it"></a>J’ai entraîné mon modèle, mais je ne peux pas le tester
 
 Vous devez [déployer votre modèle](quickstart.md#deploy-your-model) avant de pouvoir le tester. 
 
-## <a name="how-do-i-use-the-analyze-api"></a>Comment faire pour utiliser l’API d’analyse ?
+## <a name="how-do-i-use-my-trained-model-to-make-predictions"></a>Comment faire pour utiliser mon modèle formé afin d’effectuer des prédictions ?
 
-Après avoir déployé votre modèle, vous [appelez l’API du runtime](how-to/call-api.md). Pour plus d’informations, consultez [Référence sur l’API Analyse](https://aka.ms/ct-runtime-swagger).
+Après avoir déployé votre modèle, vous [appelez l’API de prédiction](how-to/call-api.md). Pour plus d’informations, consultez la [Référence de l’API de prédiction](https://aka.ms/ct-runtime-swagger).
 
 ## <a name="data-privacy-and-security"></a>Sécurité et confidentialité des données
 
-Vos données sont stockées uniquement dans votre compte Stockage Azure. La classification personnalisée n’a qu’un accès en lecture au cours de l’entraînement et de l’évaluation. 
+La classification de texte personnalisée est un processeur de données en lien avec le Règlement général sur la protection des données (RGPD). Conformément au RGPD, les utilisateurs de classification personnalisée disposent d’un contrôle total sur l’affichage, l’exportation ou la suppression de tout contenu utilisateur via le [Language Studio](https://aka.ms/languageStudio) ou par programme à l’aide d’[API REST](https://aka.ms/ct-authoring-swagger).
 
-<!-- ## How to clone my project?
+Vos données sont stockées uniquement dans votre compte Stockage Azure. La classification personnalisée n’a accès à leur lecture qu’au cours de l’apprentissage.
 
-To clone your project you need to [export]() project assests and then [import]() them into a new project. -->
+## <a name="how-to-clone-my-project"></a>Comment faire pour cloner mon projet ?
+
+Pour cloner votre projet, vous devez utiliser l’API d’exportation pour exporter les ressources du projet, puis les importer dans un nouveau projet. Pour les deux opérations, consultez la référence de l’[API REST](https://aka.ms/ct-authoring-swagger).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * [Vue d’ensemble de la classification de texte personnalisée](overview.md)
-* [démarrage rapide](quickstart.md)
+* [Démarrage rapide](quickstart.md)

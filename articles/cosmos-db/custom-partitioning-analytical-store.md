@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 72bd4c8a2001cc8e6f314f12862d7ed563ac770b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7534149aacc76bebdcf591471d08b120b885e625
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096956"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426123"
 ---
 # <a name="custom-partitioning-in-azure-synapse-link-for-azure-cosmos-db-preview"></a>Partitionnement personnalisé dans Azure Synapse Link pour Azure Cosmos DB (version préliminaire)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Le partitionnement personnalisé vous permet de partitionner les données du magasin analytique sur les champs couramment utilisés comme filtres dans les requêtes analytiques, ce qui améliore les performances des requêtes.
+Le partitionnement personnalisé vous permet de partitionner des données de magasin analytique sur des champs couramment utilisés comme filtres dans des requêtes analytiques, ce qui améliore les performances des requêtes.
 
 Dans cet article, vous allez apprendre à partitionner vos données dans le magasin analytique Azure Cosmos DB à l’aide de clés qui sont essentielles pour vos charges de travail analytiques. Elle explique également comment tirer parti des performances de requête améliorées avec le nettoyage de partition. Vous allez également découvrir comment le magasin partitionné permet d’améliorer les performances des requêtes lorsque vos charges de travail comportent un nombre important de mises à jour ou de suppressions.
 
@@ -25,32 +25,31 @@ Dans cet article, vous allez apprendre à partitionner vos données dans le maga
 > La fonctionnalité de partitionnement personnalisé est actuellement en version préliminaire publique. Cette préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!NOTE]
-> Les comptes Azure Cosmos DB doivent avoir un lien Azure Synapse Link activé pour tirer parti du partitionnement personnalisé. Le partitionnement personnalisé est actuellement pris en charge pour Azure Synapse Spark 2.0 uniquement.
+> Les comptes Azure Cosmos DB doivent avoir [Azure Synapse Link](synapse-link.md) activé pour tirer parti du partitionnement personnalisé. Le partitionnement personnalisé est actuellement pris en charge pour Azure Synapse Spark 2.0 uniquement.
 
 ## <a name="how-does-it-work"></a>Comment fonctionne-t-il ?
 
-Avec le partitionnement personnalisé, vous pouvez choisir un champ unique ou une combinaison de champs de votre jeu de données en tant que clé de partition du magasin analytique.
+Le partitionnement du magasin analytique est indépendant du partitionnement dans le magasin transactionnel. Par défaut, le magasin analytique n’est pas partitionné. Si vous souhaitez interroger fréquemment le magasin analytique sur la base de champs tels que Date, Heure, Catégorie, etc., vous pouvez tirer parti du partitionnement personnalisé pour créer un magasin partitionné distinct basé sur ces clés. Vous pouvez choisir un champ unique ou une combinaison de champs de votre jeu de données en tant que clé de partition du magasin analytique.
 
-Le partitionnement du magasin analytique est indépendant du partitionnement dans le magasin transactionnel. Par défaut, le magasin analytique n’est pas partitionné. Si vous souhaitez interroger fréquemment le magasin analytique en fonction de champs tels que Date, Heure, Catégorie, etc., nous vous recommandons de créer un magasin partitionné en fonction de ces clés.
-
-Pour déclencher le partitionnement, vous pouvez exécuter régulièrement un travail de partitionnement à partir d’un bloc-notes Azure Synapse Spark à l’aide d’Azure Synapse Link. Vous pouvez planifier son exécution comme tâche en arrière-plan au moment où vous le souhaitez.
+Vous pouvez déclencher le partitionnement à partir d’un bloc-notes Spark Azure Synapse en utilisant Azure Synapse Link. Vous pouvez planifier son exécution en tant que travail en arrière-plan une ou deux fois par jour, mais pouvez l’exécuter plus souvent si nécessaire. 
 
 > [!NOTE]
 > Le magasin partitionné pointe vers le compte de stockage principal ADLS Gen2 qui est lié à l’espace de travail Azure Synapse.
 
 :::image type="content" source="./media/custom-partitioning-analytical-store/partitioned-store-architecture.png" alt-text="Architecture du magasin partitionné dans Azure Synapse Link pour Azure Cosmos DB" lightbox="./media/custom-partitioning-analytical-store/partitioned-store-architecture.png" border="false":::
 
-Le magasin partitionné contient des données analytiques Azure Cosmos DB jusqu’au dernier timestamp d’exécution de votre travail de partitionnement. Lorsque vous interrogez vos données analytiques à l’aide des filtres de clé de partition dans Synapse Spark, Synapse Link fusionne automatiquement les données les plus récentes du magasin analytique avec les données du magasin partitionné. Ainsi, vous obtenez les résultats les plus récents. Bien qu’il fusionne les données avant d’effectuer des requêtes, le delta n’est pas réécrit dans le magasin partitionné. Au fur et à mesure que le delta entre les données du magasin analytique et du magasin partitionné s’étend, les temps de requête sur les données partitionnées peuvent varier. Le déclenchement plus fréquent du travail de partitionnement réduira ce delta. Chaque fois que vous exécutez le travail de partitionnement, seules les modifications incrémentielles dans le magasin analytique sont traitées, et non le jeu de données complet.
+Le magasin partitionné contient des données analytiques Azure Cosmos DB jusqu’au dernier timestamp d’exécution de votre travail de partitionnement. Lorsque vous interrogez vos données analytiques à l’aide des filtres de clé de partition dans Synapse Spark, Synapse Link fusionne automatiquement les données du magasin partitionné avec les données les plus récentes du magasin analytique. Vous obtenez ainsi les résultats les plus récents pour vos requêtes. Bien qu’il fusionne les données avant d’effectuer des requêtes, le delta n’est pas réécrit dans le magasin partitionné. Au fur et à mesure que le delta entre les données du magasin analytique et du magasin partitionné s’étend, les temps de requête sur les données partitionnées peuvent varier. Le déclenchement plus fréquent du travail de partitionnement réduira ce delta. Chaque fois que vous exécutez le travail de partitionnement, seules les modifications incrémentielles dans le magasin analytique sont traitées, et non le jeu de données complet.
 
 ## <a name="when-to-use"></a>Quand l’utiliser ?
 
 L’utilisation d’un magasin partitionné est facultative lors de l’interrogation de données analytiques dans Azure Cosmos DB. Vous pouvez interroger directement les mêmes données à l’aide de Synapse Link avec le magasin analytique existant. Vous pouvez activer le magasin partitionné si vous avez les exigences suivantes :
+* Filtres de requêtes analytiques courants pouvant être utilisés comme colonnes de partition
+* Colonnes de partition à faible cardinalité
+* Une colonne de partition distribue les données de manière égale entre les partitions
+* Volume élevé d’opérations de mise à jour ou de suppression
+* Ingestion de données lente 
 
-* Vous souhaitez fréquemment interroger les données analytiques filtrées sur certains champs.
-
-* Vous avez un volume élevé d’opérations de mise à jour/suppression ou les données sont ingérées lentement. Le magasin partitionné offre de meilleures performances de requête dans ces cas de figure, que vous interrogiez ou non à l’aide de clés de partition.
-
-À l’exception des charges de travail ci-dessus, si vous interrogez des données actives à l’aide de filtres de requête qui sont différents des clés de partition, nous vous recommandons de les interroger directement à partir du magasin analytique, en particulier si les tâches de partitionnement ne sont pas exécutées fréquemment.
+À l’exception des charges de travail répondant aux exigences ci-dessus, si vous interrogez des données actives à l’aide de filtres de requête différents des clés de partition, nous vous recommandons d’interroger directement le magasin analytique. C’est particulièrement vrai si les travaux de partitionnement ne sont pas planifiés pour s’exécuter fréquemment.
 
 ## <a name="benefits"></a>Avantages
 
@@ -60,9 +59,7 @@ L’utilisation d’un magasin partitionné est facultative lors de l’interrog
 
 ### <a name="flexibility-to-partition-your-analytical-data"></a>Flexibilité pour partitionner vos données analytiques
 
-Vous pouvez avoir plusieurs stratégies de partitionnement pour un conteneur de magasin analytique donné où les données du magasin analytique peuvent être partitionnées à l’aide de clés de partition distinctes. Par exemple, le conteneur « store_sales » peut être partitionné à l’aide de « sold_date » en tant que clé et peut également être partitionné en utilisant « Item » comme clé. Dans ce cas, vous devez avoir deux tâches de partitionnement distinctes, qui partitionnent essentiellement les données en deux magasins partitionnés distincts. Cette stratégie de partitionnement est bénéfique si certaines des requêtes utilisent « sold_date » comme filtre de requête et que d’autres requêtes utilisent « Item » comme filtre de requête.
-
-Les données des différentes clés de partition feront partie du même magasin partitionné et vous pouvez interroger en fonction de la clé de partition pour choisir les données correspondantes.
+Vous pouvez avoir plusieurs stratégies de partitionnement pour un conteneur de magasin analytique donné. Vous pouvez utiliser des clés de partition composites ou séparées en fonction de vos besoins en matière de requêtes. Pour obtenir de l’aide à ce sujet, consultez les stratégies de partition. 
 
 ### <a name="query-performance-improvements"></a>Améliorations des performances des requêtes
 
@@ -82,13 +79,56 @@ Si vous avez configuré des [points de terminaison privés managés](analytical-
 
 De même, si vous avez configuré des [clés managées par le client sur le magasin analytique](how-to-setup-cmk.md#is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store), vous devez les activer directement sur le compte de stockage principal de l’espace de travail Synapse, qui est également le magasin partitionné.
 
-## <a name="limitations"></a>Limitations
+## <a name="partitioning-strategies"></a>Stratégies de partitionnement
+Vous pouvez utiliser une ou plusieurs clés de partition pour vos données analytiques. Si vous utilisez plusieurs clés de partition, vous trouverez ci-dessous des recommandations sur la façon de partitionner les données : 
+   - **Utilisation de clés composites :**
+
+     Supposons que vous souhaitez effectuer fréquemment des requêtes basées sur clé1 et clé2. 
+      
+     Par exemple, « Requête pour tous les enregistrements où DateLecture = ’2021-10-08’ et Emplacement = ’Sydney’ ». 
+       
+     Dans ce cas, l’utilisation de clés composites est plus efficace pour rechercher tous les enregistrements correspondant à DateLecture, et ceux correspondant à Emplacement parmi ceux correspondant à DateLecture. 
+       
+     Exemples d’options de configuration :      
+     ```python
+     .option("spark.cosmos.asns.partition.keys", "ReadDate String, Location String") \
+     .option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+     ```
+      
+     Maintenant, sur le magasin partitionné ci-dessus, si vous voulez seulement faire une requête basée sur le filtre « Emplacement » :      
+     * Vous pouvez interroger directement le magasin analytique. Le magasin partitionné analyse tous les enregistrements par DateLecture, puis par Emplacement. 
+     Ainsi, en fonction de votre charge de travail et de la cardinalité de vos données analytiques, vous pouvez obtenir de meilleurs résultats en interrogeant directement le magasin analytique. 
+     * Vous pouvez également exécuter un autre travail de partition pour partitionner également en fonction de « Emplacement » sur le même magasin partitionné.
+                           
+  *  **Utilisation de plusieurs clés séparément :**
+     
+     Supposons que vous souhaitez interroger fréquemment, tantôt sur la base de « DateLecture », tantôt sur la base de « Emplacement ». 
+     
+     Par exemple, 
+     - Recherchez tous les enregistrements où DateLecture = ’2021-10-08’
+     - Recherchez tous les enregistrements où Emplacement = ’Sydney’
+     
+     Exécutez deux travaux de partition avec des clés de partition telles que celles définies ci-dessous pour ce scénario :      
+     
+     Travail 1 :
+     ```python
+     .option("spark.cosmos.asns.partition.keys", "ReadDate String") \
+     .option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+     ```                  
+     Travail 2 : 
+     ```python
+     .option("spark.cosmos.asns.partition.keys", "Location String") \
+     .option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+     ```        
+     Notez qu’il n’est pas efficace d’interroger fréquemment sur la base des filtres « DateLecture » et « Emplacement », sur le partitionnement ci-dessus. Dans ce cas, des clés composites produiront de meilleures performances de requête. 
+      
+## <a name="limitations"></a>Limites
 
 * Le partitionnement personnalisé n’est disponible que pour Azure Synapse Spark. Le partitionnement personnalisé n’est actuellement pas pris en charge pour les pools de SQL sans serveur.
 
-* Le magasin actuellement partitionné ne peut pointer que vers le compte de stockage principal associé à l’espace de travail Synapse. Nous ne prenons pas en charge la sélection de comptes de stockage personnalisés à ce stade.
+* Le magasin actuellement partitionné ne peut pointer que vers le compte de stockage principal associé à l’espace de travail Synapse. La sélection de comptes de stockage personnalisés n’est pas prise en charge à ce stade.
 
-* Bien que l’API pour MongoDB prenne en charge le magasin analytique et Synapse Link, elle ne prend actuellement pas en charge le partitionnement personnalisé.
+* LE partitionnement personnalisé n’est disponible que pour l’API SQL dans Cosmos DB. Les API pour Mongo DB, Gremlin et Cassandra ne sont pas prises en charge pour l’instant. 
 
 ## <a name="pricing"></a>Tarifs
 
@@ -121,11 +161,12 @@ Oui, la clé de partition pour le conteneur donné peut être modifiée et la no
 
 ### <a name="can-different-partition-keys-point-to-the-same-basepath"></a>Des clés de partition différentes peuvent-elles pointer vers le même BasePath ?
 
-Oui, étant donné que la définition de la clé de partition fait partie du chemin d’accès du magasin partitionné, les différentes clés de partition auront des chemins d’accès différents à partir du même BasePath.
+Oui, vous pouvez spécifier plusieurs clés de partition sur le même magasin partitionné, comme ci-dessous : 
 
-Le format du chemin de base peut être spécifié sous la forme suivante : /mnt/partitionedstorename/\<Cosmos_DB_account_name\>/\<Cosmos_DB_database_rid\>/\<Cosmos_DB_container_rid\>/partition=partitionkey/
-
-For example : /mnt/CosmosDBPartitionedStore/store_sales/…/partition=sold_date/... /mnt/CosmosDBPartitionedStore/store_sales/…/partition=Date/...
+```python
+.option("spark.cosmos.asns.partition.keys", "ReadDate String, Location String") \
+.option("spark.cosmos.asns.basePath", "/mnt/CosmosDBPartitionedStore/") \
+```
 
 ## <a name="next-steps"></a>Étapes suivantes
 
