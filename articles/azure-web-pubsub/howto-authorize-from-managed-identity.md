@@ -3,15 +3,15 @@ title: Autoriser les requêtes aux ressources Web PubSub avec Azure AD à partir
 description: Cet article fournit des informations sur l’autorisation des requêtes adressées aux ressources Web PubSub avec Azure AD à partir d’identités managées
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 8df789836bd0067868d4f9e6d90e640473a96f33
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7f0b5cff34b74953970672d0d48c4f027f4811b0
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479024"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997739"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-managed-identities"></a>Autoriser les requêtes aux ressources Web PubSub avec Azure AD à partir d’identités managées
 Le service Azure Web PubSub prend en charge l’autorisation des requêtes Azure Active Directory (Azure AD) à partir des [identités managées pour les ressources Azure](../active-directory/managed-identities-azure-resources/overview.md). 

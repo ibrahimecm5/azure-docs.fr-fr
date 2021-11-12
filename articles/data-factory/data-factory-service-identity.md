@@ -6,15 +6,15 @@ author: nabhishek
 ms.service: data-factory
 ms.subservice: security
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 10/22/2021
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: b775c3873e28fbd6f59b8686800ccf733fb34ae6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 8e1eaad6d25623c9cb1697137fdb69340cb6aeca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131457902"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846118"
 ---
 # <a name="managed-identity-for-azure-data-factory-and-azure-synapse"></a>Identité managée pour Azure Data Factory et Azure Synapse 
 
@@ -24,7 +24,7 @@ Cet article vous aide à comprendre l’identité managée (anciennement Managed
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Les identités managées éliminent la nécessité de gérer les informations d’identification. Les identités managées fournissent une identité pour l’instance de service lors de la connexion à des ressources qui prennent en charge l’authentification Azure Active Directory (Azure AD). Par exemple, le service peut utiliser une identité managée pour accéder à des ressources comme [Azure Key Vault](../key-vault/general/overview.md), où les administrateurs de données peuvent stocker des informations d’identification ou accéder à des comptes de stockage de manière sécurisée. Le service utilise l’identité managée pour obtenir des jetons Azure AD.
 

@@ -1,18 +1,18 @@
 ---
 title: Publier des révisions avec GitHub Actions dans la préversion d’Azure Container Apps
 description: En savoir plus sur la création automatique de nouvelles révisions à l’aide de GitHub Actions dans la préversion d’Azure Container Apps
-services: container-apps
+services: app-service
 author: craigshoemaker
-ms.service: container-apps
+ms.service: app-service
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
-ms.openlocfilehash: c06ce3b75ac9b33d0dd82b74ba068a6a0039bbee
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: d83c6904f721d429488bca50359c3b32877ad50b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027372"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131479118"
 ---
 # <a name="publish-revisions-with-github-actions-in-azure-container-apps-preview"></a>Publier des révisions avec GitHub Actions dans la préversion d’Azure Container Apps
 
@@ -127,7 +127,7 @@ Quand vous interagissez avec cet exemple, remplacez les espaces réservés entre
 
 Cette commande retourne une charge utile JSON avec les paramètres de configuration d’intégration de GitHub Actions.
 
-## <a name="delete"></a>Supprimer
+## <a name="delete"></a>DELETE
 
 La commande `containerapp github-action remove` supprime les actions GitHub de l’application de conteneur.
 

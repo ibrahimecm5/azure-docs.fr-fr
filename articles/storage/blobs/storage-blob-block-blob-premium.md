@@ -8,12 +8,12 @@ ms.date: 10/14/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 2ed6da37d1e0e2cd61a6954903f7233f851c75bc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8f394bb69197e9268fb986f7a8b971206aa74fc4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047998"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444835"
 ---
 # <a name="premium-block-blob-storage-accounts"></a>Compte de stockage d’objets blob de blocs Premium
 
@@ -23,15 +23,11 @@ Les comptes de stockage d'objets blob de blocs Premium du niveau de performance 
 
 Les comptes de stockage d’objets blob de blocs Premium sont parfaits pour les charges de travail qui nécessitent des temps de réponse rapides et cohérents et/ou un nombre élevé d’opérations d’entrée-sortie par seconde (IOP). Voici quelques exemples de charges de travail :
 
-- **Charges de travail interactives**. Les applications hautement interactives et en temps réel doivent écrire des données rapidement. Les applications de commerce électronique et de cartographie requièrent souvent des mises à jour instantanées et des commentaires des utilisateurs. Par exemple, dans une application d’e-commerce, les éléments les moins fréquemment consultés ne sont probablement pas mis en cache. Toutefois, ils doivent être affichés instantanément au client sur demande. 
-
-  La modification interactive ou les applications de jeux en ligne multi-joueurs maintiennent une expérience de qualité en fournissant des mises à jour en temps réel. Dans le secteur des services financiers, une fraction de seconde peut être la différence entre la création ou la perte d’une grande somme d’argent.  
+- **Charges de travail interactives**. Les applications hautement interactives et en temps réel doivent écrire des données rapidement. Les applications de commerce électronique et de cartographie requièrent souvent des mises à jour instantanées et des commentaires des utilisateurs. Par exemple, dans une application d’e-commerce, les éléments les moins fréquemment consultés ne sont probablement pas mis en cache. Toutefois, ils doivent être affichés instantanément au client sur demande. La modification interactive ou les applications de jeux en ligne multi-joueurs maintiennent une expérience de qualité en fournissant des mises à jour en temps réel.  
 
 - **Analytique du streaming/de l’IoT**. Dans un scénario IoT, un grand nombre d’opérations d’écriture plus petites peuvent être envoyées (push) chaque seconde dans le cloud. De grandes quantités de données peuvent être saisies, agrégées à des fins d’analyse, puis supprimées presque immédiatement. Les capacités d’ingestion élevées du stockage d’objets blob de blocs Premium le rendent efficace pour ce type de charge de travail.
 
 - **Intelligence artificielle/apprentissage automatique (IA/ML)** . IA/ML traite de la consommation et du traitement de différents types de données, tels que les visuels, la parole et le texte. Ce type de charge de travail de calcul haute performance gère des volumes importants de données nécessitant une réponse rapide et des temps d’ingestion efficaces pour l’analyse des données.
-
-- **Transformation des données**. Les processus qui nécessitent une modification et une conversion constantes de données requièrent des mises à jour instantanées. Pour une représentation exacte des données, les contrôles serveurs consommateurs de ces données doivent voir ces changements se refléter immédiatement.
 
 ## <a name="cost-effectiveness"></a>Rentabilité
   
@@ -65,7 +61,7 @@ Par exemple, en supposant que votre compte se trouve dans la région USA Est 2,
 Cette section contient des exemples concrets de la façon dont certains de nos partenaires stockage Azure utilisent le stockage d’objets blob de blocs Premium. Certains d’entre aux activent également Azure Data Lake Storage Gen2 qui introduit une structure de fichiers hiérarchique pouvant améliorer les performances des transactions dans certains scénarios. 
 
 > [!TIP]
-> Si votre compte de stockage va être utilisé pour l’analytique, nous vous recommandons vivement d’utiliser Azure Data Lake Storage Gen2 avec un compte de stockage d’objets blob de blocs Premium. 
+> Si vous avez un cas d’usage d’analyse, nous vous recommandons vivement d’utiliser Azure Data Lake Storage Gen2 avec un compte de stockage d’objets blob de blocs Premium. 
 
 Cette section contient les exemples suivants :
 
@@ -97,7 +93,7 @@ Les utilisateurs peuvent être beaucoup plus productifs avec les logiciels de vi
  
 Nous avons vu des entreprises dans le secteur de la cartographie utiliser des éditeurs de cartographie pour détecter les problèmes liés aux cartes. Ces éditeurs utilisent des données générées à partir de données client du système GPS (Global Positioning System). Pour créer des chevauchements de carte, le logiciel d’édition affiche de petites sections d’une carte en effectuant rapidement des recherches clés. 
 
-Dans un cas, avant d’utiliser le stockage d’objets blob de blocs Premium, un partenaire a utilisé HDInsight avec HBase avec un stockage standard Usage général v2. Toutefois, il est devenu coûteux de conserver les clusters de grande taille en cours d’exécution. Ce partenaire a décidé de quitter cette architecture et a utilisé le stockage d’objets blob de blocs Premium pour les recherches clés rapides. Pour créer des chevauchements, il a utilisé des API REST afin d’afficher des vignettes correspondant à des coordonnées GPS. Le compte de stockage d’objets blob de blocs Premium a fourni une solution économique, et les latences étaient beaucoup plus prévisibles.
+Dans un cas, avant d’utiliser le stockage d’objets blob de blocs Premium, un partenaire a utilisé des clusters HBase avec un stockage standard Usage général v2. Toutefois, il est devenu coûteux de conserver les clusters de grande taille en cours d’exécution. Ce partenaire a décidé de quitter cette architecture et a utilisé le stockage d’objets blob de blocs Premium pour les recherches clés rapides. Pour créer des chevauchements, il a utilisé des API REST afin d’afficher des vignettes correspondant à des coordonnées GPS. Le compte de stockage d’objets blob de blocs Premium a fourni une solution économique, et les latences étaient beaucoup plus prévisibles.
 
 ### <a name="e-commerce-businesses"></a>Entreprises de commerce électronique
 
@@ -109,9 +105,7 @@ Dans presque tous les secteurs d’activité, il est nécessaire que les entrepr
 
 Les scientifiques des données, les analystes et les développeurs peuvent obtenir des informations plus rapides en exécutant des requêtes sur des données stockées dans un compte de stockage d’objets blob de blocs Premium. Les dirigeants peuvent charger leurs tableaux de bord bien plus rapidement lorsque les données qui s’affichent dans ces tableaux de bord proviennent d’un compte de stockage d’objets blob de blocs Premium au lieu d’un compte v2 standard à usage général. 
 
-Dans un cas, Presto et Spark ont été utilisés pour produire des Insights à partir de tables Hive. Les analystes doivent analyser rapidement les données de télémétrie provenant de millions d’appareils pour mieux comprendre comment leurs produits sont utilisés et pour prendre des décisions en matière de mise en production. Ils font évoluer le stockage et le calcul indépendamment pour permettre l’accès aux données à l’échelle de pétaoctet et pointent vers leurs données. 
-
-Le stockage de données dans des bases de données SQL est onéreux. Pour réduire les coûts et augmenter la surface d’exposition interrogeable, ils utilisent un compte de stockage d’objets blob de blocs Premium compatible avec Azure Data Lake Storage Gen2 et effectuent le calcul dans Presto et Spark. De cette façon, même les données rarement consultées disposent de toute la puissance du calcul comme les données fréquemment sollicitées. 
+Dans un scénario, les analystes devaient analyser rapidement les données de télémétrie provenant de millions d’appareils pour mieux comprendre comment leurs produits sont utilisés et pour prendre des décisions en matière de mise en production. Le stockage de données dans des bases de données SQL est onéreux. Pour réduire les coûts et augmenter la surface d’exposition interrogeable, ils utilisent un compte de stockage d’objets blob de blocs Premium compatible avec Azure Data Lake Storage Gen2 et effectuent le calcul dans Presto et Spark pour produire des insights à partir des tables Hive. De cette façon, même les données rarement consultées disposent de toute la puissance du calcul comme les données fréquemment sollicitées.
 
 Pour combler l'écart entre les performances inférieures à la seconde de SQL et les opérations d'entrée-sortie par seconde (IOP) de Presto vers un stockage externe, la cohérence et la vitesse sont essentielles, en particulier lorsqu'il s'agit de petits fichiers ORC (optimized row columnar). Un compte de stockage blob de blocs Premium, lorsqu'il est utilisé avec Data Lake Storage Gen2, a démontré à plusieurs reprises un triplement des performances par rapport à un compte v2 standard à usage général dans ce scénario. Les requêtes sont exécutées suffisamment rapidement comme si l’exécution s’effectuait localement sur l’ordinateur de calcul. 
 
@@ -119,11 +113,11 @@ Dans un autre cas, un partenaire stocke et interroge les journaux qui sont gén�
 
 ### <a name="data-processing-pipelines"></a>Pipelines de traitement des données
 
-Dans presque tous les secteurs d’activité, il est nécessaire que les entreprises traitent les données. Les données brutes de plusieurs sources doivent être nettoyées et traitées afin qu’elles soient utiles pour la consommation en aval dans des tableaux de bord de données qui aident les utilisateurs à prendre des décisions. 
+Dans presque tous les secteurs d’activité, il est nécessaire que les entreprises traitent les données. Les données brutes de plusieurs sources doivent être nettoyées et traitées afin qu’elles soient utiles pour la consommation en aval dans des outils comme des tableaux de bord de données qui aident les utilisateurs à prendre des décisions. 
 
 Si la vitesse de traitement n’est pas toujours la préoccupation principale du traitement des données, certains secteurs de l’informatique en ont besoin. Par exemple, les sociétés du secteur des services financiers ont souvent besoin de traiter les données de manière fiable et le plus rapidement possible. Pour détecter les fraudes, ces sociétés doivent traiter les entrées de diverses sources, identifier les risques pour leurs clients et prendre rapidement des mesures. 
 
-Dans certains cas, nous avons vu plusieurs comptes de stockage utilisés pour stocker des données à partir de différentes sources. Ensuite, certaines de ces données sont déplacées vers un compte de stockage d’objets blob de blocs Premium compatible avec Data Lake Storage, où une application de traitement des données lit fréquemment les données qui viennent d’arriver. Les appels de liste de répertoires dans ce compte étaient beaucoup plus rapides et beaucoup plus cohérents que dans un compte v2 standard, à usage général. Cette rapidité a permis de mettre les données nouvellement arrivées à la disposition des systèmes de traitement en aval aussi rapidement que possible. Cela leur a permis de détecter, puis d’agir rapidement sur les risques potentiels de sécurité.
+Dans certains cas, nous avons vu que les partenaires utilisent plusieurs comptes de stockage standard pour stocker les données de diverses sources. Certaines de ces données sont alors déplacées vers un compte de stockage d’objets blob de blocs Premium compatible avec Data Lake Storage, où une application de traitement des données lit fréquemment les données qui viennent d’arriver. Les appels de liste de répertoires dans ce compte étaient beaucoup plus rapides et beaucoup plus cohérents que dans un compte v2 standard, à usage général. La vitesse et la cohérence offertes par le compte ont permis de garantir que les nouvelles données étaient toujours mises à la disposition des systèmes de traitement en aval le plus rapidement possible. Cela leur a permis de détecter, puis d’agir rapidement sur les risques potentiels de sécurité.
      
 ### <a name="internet-of-things-iot"></a>Internet des objets (IoT)
 
@@ -152,7 +146,7 @@ Les données sont chargées dans plusieurs comptes de stockage d’objets blob d
 Tout d’abord, vérifiez que vos fonctionnalités de Stockage Blob favorites sont compatibles avec les comptes de stockage d’objets blob de blocs Premium, puis créez le compte. 
 
 >[!NOTE]
-> Vous ne pouvez pas convertir un compte de stockage standard Usage général v2 existant en compte de stockage d’objets blob de blocs Premium. Pour migrer vers un compte de stockage d’objet blob de blocs Premium, vous devez créer un compte d’objets blob de blocs et migrer les données vers le nouveau compte. 
+> Vous ne pouvez pas convertir un compte de stockage standard Usage général v2 existant en compte de stockage d’objets blob de blocs Premium. Pour migrer vers un compte de stockage d’objet blob de blocs Premium, vous devez créer un compte d’objets blob de blocs et migrer les données vers le nouveau compte. 
 
 ### <a name="check-for-blob-storage-feature-compatibility"></a>Vérifier la compatibilité des fonctionnalités de Stockage Blob
 

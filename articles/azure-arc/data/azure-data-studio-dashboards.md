@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 94e7b6b351d13a85a516b4a4bc6c54c31754bc12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cea97bab303ce2d009cecc67ed30ec89b0992118
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532308"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554333"
 ---
 # <a name="azure-data-studio-dashboards"></a>Tableaux de bord Azure Data Studio
 
@@ -28,52 +28,18 @@ ms.locfileid: "122532308"
 - Télécharger [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - L’extension Azure arc est installée
 
-### <a name="determine-the-data-controller-server-api-endpoint-url"></a>Déterminer l’URL du point de terminaison de l’API du serveur de contrôleur de données
 
-Vous devez d’abord connecter Azure Data Studio à votre URL de point de terminaison de l’API du service de contrôleur de données.
-
-Pour obtenir ce point de terminaison, vous pouvez exécuter la commande suivante :
-
-```console
-kubectl get svc/controller-svc-external -n <namespace name>
-
-#Example:
-kubectl get svc/controller-svc-external -n arc
-```
-
-Vous devez obtenir une sortie similaire à celle-ci :
-
-```console
-NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                       AGE
-controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
-```
-
-Si vous utilisez un type LoadBalancer, vous allez copier l’adresse IP externe et le numéro de port. Si vous utilisez NodePort, vous allez utiliser l’adresse IP de votre serveur d’API Kubernetes et le numéro de port qui se trouve sous la colonne PORT(S).
-
-Vous voulez maintenant construire une URL vers votre point de terminaison en combinant ces informations comme suit :
-
-```console
-https://<ip address>:<port>
-
-Example:
-https://52.154.152.24:30080
-```
-
-Prenez note de votre adresse IP, car vous allez l’utiliser à l’étape suivante.
 
 ### <a name="connect"></a>Se connecter
 
 1. Ouvrir Azure Data Studio
+2. Sélectionnez l’onglet **Connexions** sur la gauche.
+3. Dans la partie inférieure, développez le panneau nommé **Contrôleurs Azure Arc**
+4. Cliquez sur le bouton **Connecter un contrôleur**. Un panneau s’ouvre sur le côté droit
+5. Par défaut, Azure Data Studio tentera de lire à partir du fichier kube.config dans votre répertoire par défaut et de répertorier les contextes de cluster Kubernetes disponibles et de présélectionner le contexte de cluster actuel. S’il s’agit du cluster approprié auquel se connecter, entrez l’espace de noms dans lequel le contrôleur de données Azure Arc est déployé dans l’entrée pour l’**Espace de noms**. Si vous devez récupérer l’espace de noms dans lequel le contrôleur de données Azure Arc est déployé, vous pouvez exécuter ```kubectl get datacontrollers -A``` sur votre cluster Kubernetes. 
+6. Ajoutez éventuellement un nom complet pour le contrôleur de données Azure Arc dans l’entrée pour le **Nom**
+7. Sélectionnez **Se connecter**.
 
-1. Sélectionnez l’onglet **Connexions** sur la gauche.
-
-Dans la partie inférieure, développez le panneau nommé **Contrôleurs Azure Arc**.
-
-Cliquez sur l’icône + pour ajouter une nouvelle connexion de contrôleur de données.
-
-En haut de l’écran, dans la palette de commandes, entrez l’URL que vous avez construite à l’étape 1, puis appuyez sur Entrée.
-Entrez le nom d’utilisateur pour le contrôleur de données.  C’était la valeur du nom d’utilisateur que vous avez passée lors du déploiement du contrôleur de données.  Cliquez sur Entrée.
-Entrez le mot de passe pour le contrôleur de données.  C’était la valeur du mot de passe que vous avez passée lors du déploiement du contrôleur de données. Cliquez sur Entrée.
 
 Maintenant que vous êtes connecté à un contrôleur de données, vous pouvez visualiser les tableaux de bord pour le contrôleur de données, et toutes les instances SQL managées ou les ressources du groupe de serveurs PostgreSQL Hyperscale dont vous disposez.
 

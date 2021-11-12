@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 08edb99de13e0102597c7a078adbcb4225e28d15
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: eda593fcbb1f7116d7f6a7a1c29af375ca354d6b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085958"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337222"
 ---
 # <a name="export-iot-connector-metrics-through-diagnostic-settings"></a>Exporter les métriques du connecteur IoT via les paramètres de diagnostic
 

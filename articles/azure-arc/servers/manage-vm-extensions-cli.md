@@ -1,22 +1,22 @@
 ---
 title: Activer l’extension de machine virtuelle à l’aide d’Azure CLI
 description: Cet article explique comment déployer des extensions de machine virtuelle sur des serveurs avec Azure Arc exécutés dans des environnements cloud hybrides à l’aide de l’interface Azure CLI.
-ms.date: 10/15/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41924f20679de16205af3c7cb962d6005e757e2d
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b7294285cd6e4fa7c2bbfac859c3fec8dfa3a474
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069631"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440409"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Activer l’extension de machine virtuelle Azure à l’aide d’Azure CLI
 
-Cet article explique comment déployer et désinstaller des extensions de machine virtuelle, prises en charge par des serveurs avec Azure Arc, sur une machine hybride Linux ou Windows à l’aide de l’interface Azure CLI.
+Cet article explique comment déployer, mettre à jour, mettre à niveau et désinstaller des extensions de machine virtuelle, prises en charge par des serveurs avec Azure Arc, sur une machine hybride Linux ou Windows à l’aide de l’interface Azure CLI.
 
 > [!NOTE]
-> Les serveurs avec Azure Arc ne prennent pas en charge le déploiement ni la gestion des extensions de machine virtuelle sur les machines virtuelles Azure. Pour les machines virtuelles Azure, consultez l’article [Vue d’ensemble de l’extension de machine virtuelle](../../virtual-machines/extensions/overview.md) suivant.
+> Les serveurs avec Azure Arc ne prennent pas en charge le déploiement et la gestion des extensions de machine virtuelle sur les machines virtuelles Azure. Pour les machines virtuelles Azure, consultez l’article [Vue d’ensemble de l’extension de machine virtuelle](../../virtual-machines/extensions/overview.md) suivant.
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -83,7 +83,31 @@ L’exemple suivant illustre la sortie JSON partielle obtenue avec la commande `
     "namePropertiesInstanceViewName": "DependencyAgentWindows",
 ```
 
-## <a name="remove-an-installed-extension"></a>Supprimer une extension installée
+## <a name="update-extension-configuration"></a>Mettre à jour la configuration de l’extension
+
+Certaines extensions de machine virtuelle requièrent des paramètres de configuration pour pouvoir être installées sur le serveur Arc, comme l’extension de script personnalisé et l’extension de machine virtuelle de l’agent Log Analytics. Pour mettre à niveau la configuration d’une extension, utilisez [az connectedmachine extension update](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_update).
+
+L’exemple suivant montre comment configurer l’extension de script personnalisé :
+
+```azurecli
+az connectedmachine extension update --name "CustomScriptExtension" --type "CustomScriptExtension" --publisher "Microsoft.HybridCompute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -lt 100 }\\\"\"}" --type-handler-version "1.10" --machine-name "myMachine" --resource-group "myResourceGroup"
+```
+
+## <a name="upgrade-extensions"></a>Mettre à niveau les extensions
+
+Quand une nouvelle version d’une extension de machine virtuelle prise en charge est publiée, vous pouvez mettre à niveau vers cette dernière version. Pour mettre à niveau une extension de machine virtuelle, utilisez [az connectedmachine upgrade-extension](/cli/azure/connectedmachine) avec les paramètres `--machine-name`, `--resource-group` et `--extension-targets`.
+
+Pour le paramètre `--extension-targets`, vous devez spécifier l’extension et la dernière version disponible. Pour déterminer la version la plus récente disponible, vous pouvez obtenir ces informations à partir de la page **Extensions** pour le serveur Arc sélectionné dans le portail Azure ou en exécutant la commande [az vm extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list).
+
+Pour mettre à niveau l’extension de l’agent Log Analytics pour Windows si une version plus récente est disponible, exécutez la commande suivante :
+
+```azurecli
+az connectedmachine upgrade-extension --machine-name "myMachineName" --resource-group "myResourceGroup --extension-targets  --extension-targets "{\"MicrosoftMonitoringAgent\":{\"targetVersion\":\"1.0.18053.0\"}}"" 
+```
+
+Vous pouvez vérifier la version des extensions de machine virtuelle installées à tout moment en exécutant la commande [az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list). La valeur de la propriété `typeHandlerVersion` représente la version de l’extension.
+
+## <a name="remove-extensions"></a>Supprimer des extensions
 
 Pour supprimer une extension de machine virtuelle installée sur votre serveur avec Azure Arc, utilisez [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) avec les paramètres `--extension-name`, `--machine-name` et `--resource-group`.
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 7d8bde85114829ab00256810ff96dbf3840c2884
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 36c7e05e2cce3e93fcd35521582190f2d7cef2b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096377"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469158"
 ---
 # <a name="azure-stack-edge-2110-release-notes"></a>Notes de publication d’Azure Stack Edge 2110
 
@@ -48,6 +48,11 @@ Le tableau suivant répertorie les problèmes signalés dans les mises en produc
 |**3.**|IoT Edge |Les modules déployés via IoT Edge ne peuvent pas utiliser le réseau hôte. | 
 |**4.**|Kubernetes + mise à jour |Les versions logicielles antérieures, telles que les versions 2008, présentent un problème de mise à jour de condition de concurrence qui provoque l’échec de la mise à jour avec ClusterConnectionException. |
 |**5.**|Tableau de bord Kubernetes | Le point de terminaison *HTTPS* pour le tableau de bord Kubernetes avec le certificat SSL n’est pas pris en charge. | 
+|**6.**|Machines virtuelles |Une vérification de duplication d’IP statique est ajoutée pour la carte réseau de gestion des machines virtuelles pendant le déploiement de la fonction réseau virtualisée. Un message d’erreur explicite est retourné. | 
+|**7.**|Machines virtuelles |La vérification de la réservation d’IP a été supprimée pour les quatre premières adresses IP de l’espace d’adressage.  | 
+|**8.**|Calcul de périphérie multi-accès |Problème d’expiration du jeton Azure Resource Manager local fixe lors du déploiement de la fonction réseau virtualisée. Dans les versions antérieures, quand le téléchargement du disque dur virtuel prenait beaucoup de temps, le déploiement de la fonction réseau virtualisée échouait, car le jeton Azure Resource Manager expirait.  | 
+|**9.**|Calcul de périphérie multi-accès |Un délai d’expiration a été ajouté pour les appels Azure Resource Manager lors du déploiement de la fonction réseau virtualisée. Dans les versions antérieures, le déploiement de la fonction réseau virtualisée prenait beaucoup de temps en cas d’échec des appels Azure Resource Manager.   | 
+|**10.**|Calcul de périphérie multi-accès |Le calcul de périphérie multi-accès nettoie les déploiements de modèle Azure Resource Manager une fois le téléchargement du disque dur virtuel terminé. Dans les versions antérieures, l’utilisateur obtenait l’erreur de quota de déploiement dépassé après plusieurs déploiements de fonctions réseau virtualisées. Le quota par défaut était de 800 déploiements par groupe de ressources.  | 
 
 
 

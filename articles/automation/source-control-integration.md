@@ -1,17 +1,17 @@
 ---
 title: Utiliser une intégration du contrôle de code source dans Azure Automation
-description: Cet article explique comment synchroniser le contrôle de code source d’Azure Automation avec d’autres référentiels.
+description: Cet article vous explique comment synchroniser le contrôle de code source d’Azure Automation avec d’autres référentiels.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/10/2021
+ms.date: 11/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d94da9792d40a389e3981163e565d85d82a9cdc9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c809021f781e9aa8376b9383328a38bd1c784510
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831237"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477114"
 ---
 # <a name="use-source-control-integration"></a>Utiliser l’intégration du contrôle de code source
 
@@ -30,8 +30,8 @@ Azure Automation prend en charge trois types de contrôles de code source :
 ## <a name="prerequisites"></a>Prérequis
 
 * Un dépôt de contrôle de code source (GitHub ou Azure Repos)
-* Un [compte d’identification](automation-security-overview.md#run-as-accounts)
-* Le [module `AzureRM.Profile`](/powershell/module/azurerm.profile/) doit être importé dans votre compte Automation. Notez que le module Az équivalent (`Az.Accounts`) ne fonctionne pas avec le contrôle de code source Automation.
+* Une [identité managée](automation-security-overview.md#managed-identities) attribuée par le système est requise. Si vous n’avez pas configuré d’identité managée affectée par le système avec votre compte Automation, consultez la page [Activer une identité managée](enable-managed-identity-for-automation.md#enable-a-system-assigned-managed-identity-for-an-azure-automation-account) pour la créer.
+* Affectez l’identité managée affectée par le système au rôle [Contributeur](automation-role-based-access-control.md#contributor) dans le compte Automation.
 
 > [!NOTE]
 > Les travaux de synchronisation du contrôle de code source sont exécutés sous le compte Automation de l’utilisateur et sont facturés au même tarif que les autres tâches Automation.
@@ -39,6 +39,24 @@ Azure Automation prend en charge trois types de contrôles de code source :
 ## <a name="configure-source-control"></a>Configuration du contrôle de code source
 
 Cette section explique comment configurer le contrôle de code source pour votre compte Automation. Vous pouvez utiliser le portail Azure ou PowerShell.
+
+> [!NOTE]
+> Azure Automation prend en charge uniquement l’identité managée affectée par le système avec l’intégration du contrôle de code source. Si vous avez un compte d’identification et une identité managée affectés par le système qui sont activés, l’identité managée a la préférence. Si vous souhaitez utiliser un compte d’identification à la place, vous pouvez [créer une variable Automation](./shared-resources/variables.md) de type BOOLEAN nommée `AUTOMATION_SC_USE_RUNAS` avec la valeur `true`.
+
+### <a name="assign-system-assigned-identity-to-contributor-role"></a>Affecter une identité affectée par le système au rôle Contributeur
+
+Cet exemple utilise Azure PowerShell pour montrer comment attribuer le rôle Contributeur dans l’abonnement à la ressource du compte Azure Automation.
+
+1. Ouvrez une console PowerShell avec des privilèges élevés.
+1. Connectez-vous à Azure en exécutant la commande `Connect-AzAccount`.
+1. Pour affecter l’identité managée au rôle **Contributeur**, exécutez la commande suivante.
+
+    ```powershell
+    New-AzRoleAssignment `
+        -ObjectId <automation-Identity-object-id> `
+        -Scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}" `
+        -RoleDefinitionName "Contributor"
+    ```
 
 ### <a name="configure-source-control-in-azure-portal"></a>Configurer le contrôle de code source dans le portail Azure
 
@@ -88,7 +106,6 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 
 > [!NOTE]
 > Azure Repos (Git) utilise une URL qui accède à  **dev.azure.com** au lieu de **visualstudio.com**, utilisé dans des formats antérieurs. L’ancien format d’URL `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` n’est plus utilisé, mais il demeure pris en charge. Le nouveau format est préféré.
-
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"

@@ -2,13 +2,13 @@
 title: App Service sur Azure Arc
 description: Introduction à l’intégration d’App Service avec Azure arc pour opérateurs Azure.
 ms.topic: article
-ms.date: 08/17/2021
-ms.openlocfilehash: cec1e7bb9dac43e33e85b6036910220a1fa287c2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.openlocfilehash: 74cf4063d92aa5d563df881f2210e2ca5d08543e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711657"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440352"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>App Service, Functions et Logic Apps sur Azure Arc (préversion)
 
@@ -32,6 +32,7 @@ Les limitations de préversion publique suivantes s’appliquent aux environneme
 |---------------------------------------------------------|---------------------------------------------------------------------------------------|
 | Régions Azure prises en charge                                 | USA Est, Europe Ouest                                                                  |
 | Exigence de mise en réseau du cluster                          | Doit prendre en charge le type de service `LoadBalancer` et fournir une adresse IP statique adressable publiquement |
+| Exigences de stockage du cluster                             | Une classe de stockage attachée au cluster doit être disponible pour être utilisée par l’extension pour prendre en charge le déploiement et la génération d’applications basées sur du code, le cas échéant                      |
 | Fonctionnalité : mise en réseau                                     | [Non disponible (dépend de la mise en réseau du cluster)](#are-networking-features-supported)      |
 | Fonctionnalité : identités managées                             | [Non disponible](#are-managed-identities-supported)                                    |
 | Fonctionnalité : références de coffre de clés                           | Non disponible (dépend d’identités managées)                                         |
@@ -123,6 +124,31 @@ Lors de la création d’une ressource d’environnement Kubernetes, certains ab
 ### <a name="can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster"></a>Puis-je déployer l’extension des Services d’application sur un cluster basé sur ARM64 ?
 
 Les clusters basés sur ARM64 ne sont pas pris en charge pour l’instant.  
+
+## <a name="extension-release-notes"></a>Notes de publication de l’extension
+
+### <a name="application-services-extension-v-090-may-2021"></a>Extension des services d’application v0.9.0 (mai 2021)
+
+- Préversion publique initiale de l’extension des services d’application.
+- Prise en charge du code et des déploiements basés sur des conteneurs d’applications web, de fonction et logiques.
+- Prise en charge du runtime d’application web : .NET 3.1 et 5.0 ; Node JS 12 et 14 ; Python 3.6, 3.7 et 3.8 ; PHP 7.3 et 7.4; Ruby 2.5, 2.5.5, 2.6 et 2.6.2 ; Java SE 8u232, 8u242, 8u252, 11.05, 11.06 et 11.07 ; Tomcat 8.5, 8.5.41, 8.5.53, 8.5.57, 9.0, 9.0.20, 9.0.33 et 9.0.37.
+
+### <a name="application-services-extension-v-0100-november-2021"></a>Extension des services d’application v0.10.0 (novembre 2021)
+
+Si votre extension se trouvait dans la version stable et que auto-upgrade-minor-version est défini sur activé, l’extension est automatiquement mise à niveau.  Pour mettre à niveau manuellement l’extension vers la dernière version, vous pouvez exécuter la commande ci-dessous
+
+- Suppression de la spécification d’une adresse IP statique préaffectée requise pour l’affectation au point de terminaison Envoy
+- Mettre à niveau Keda vers la v2.4.0
+- Mettre à niveau l’envoi vers la v1.19.0
+- Mettre à niveau le runtime Azure Function vers la v3.3.1
+- Définir le nombre de réplicas par défaut du contrôleur d’application et le contrôleur Envoy sur 2 pour augmenter la stabilité
+
+Si votre extension se trouvait dans la version stable et que auto-upgrade-minor-version est défini sur true, l’extension est automatiquement mise à niveau.  Pour mettre à niveau manuellement l’extension vers la dernière version, vous pouvez exécuter la commande ci-dessous :
+
+```azurecli-interactive
+    az k8s-extension update --cluster-type connectedClusters -c <clustername> -g <resource group> -n <extension name> --release-train stable --version 0.10.0
+```
+
 
 ## <a name="next-steps"></a>Étapes suivantes
 

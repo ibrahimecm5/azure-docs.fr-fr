@@ -10,12 +10,12 @@ author: tracychms
 ms.author: tracych
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 6f09684bcd3441014d0cfabae91c4a7ea455a67d
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 53e83f76e61038bc1fb95bfba653b18f63febede
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566786"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054502"
 ---
 # <a name="cli-v2-batch-deployment-yaml-schema"></a>Schéma YAML de déploiement par lots CLI (v2)
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | Le schéma YAML. Si vous utilisez l’extension VS Code Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
 | `name` | string | **Obligatoire.** Nom du déploiement. | | |
 | `description` | string | Description du déploiement. | | |
 | `tags` | object | Dictionnaire d’étiquettes pour le déploiement. | | |
@@ -60,11 +60,11 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-basic-mlflow"></a>YAML : de base (MLflow)
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/mlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/mlflow-deployment.yml":::
 
 ## <a name="yaml-custom-model-and-scoring-code"></a>YAML : modèle personnalisé et code de scoring
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/nonmlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/nonmlflow-deployment.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 
