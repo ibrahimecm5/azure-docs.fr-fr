@@ -6,21 +6,21 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 10/12/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: fe478235897b855d079241192108f5d5ebd70fe0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f12c5efe25f48ae16e4f59159936627a27b47212
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129992976"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283464"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Tutoriel : Recevoir des données d’appareil via Azure IoT Hub
 
 > [!IMPORTANT]
 > Les API Azure Healthcare sont actuellement en version préliminaire. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale.
 
-Le connecteur IoT vous offre la possibilité de recevoir des données à partir d’appareils IoMT (Internet of Medical Things) dans le service FHIR&#174; (Fast Healthcare Interoperability Resources). Le connecteur IoT peut également fonctionner avec des appareils provisionnés et managés par Azure IoT Hub. Ce tutoriel présente la procédure à suivre pour connecter et router des données d’appareil depuis Azure IoT Hub vers le connecteur IoT.
+Le connecteur IoT offre la possibilité de collecter et d’ingérer des données d’intégrité à partir de divers périphériques médicaux ou liés à l’intégrité IoT dans le service FHIR® (Fast Healthcare Interoperability Resources). le connecteur IoT est interopérable et réactif avec les appareils créés et gérés via Azure IoT Hub pour des flux de travail et une facilité d’utilisation améliorés. Ce tutoriel présente la procédure à suivre pour connecter et router des données d’appareil depuis Azure IoT Hub vers le connecteur IoT.
 
 ## <a name="prerequisites"></a>Prérequis
 

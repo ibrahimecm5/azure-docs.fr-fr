@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 80328e4ec6ea06937a30c94a0e0f854e03eb81da
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 11a89e1333ddcf3afd3594c3bd2ce46eda6513f1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851936"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131577535"
 ---
 ## <a name="register-your-device"></a>Inscrire votre appareil
 
@@ -65,7 +65,7 @@ Dans l’écran de sortie, vous voyez le résultat de la commande. Les informati
 Utilisez la commande [az iot hub device-identity create](/cli/azure/iot/hub/device-identity) pour créer une identité d’appareil dans votre hub IoT. Par exemple :
 
    ```azurecli
-   az iot hub device-identity create --device-id device_id_here --hub-name hub_name_here --edge-enabled
+   az iot hub device-identity create --device-id [device_id] --hub-name [hub_name] --edge-enabled
    ```
 
 Cette commande inclut trois paramètres :
@@ -117,7 +117,7 @@ Vous pouvez également sélectionner **Obtenir les informations de l’appareil*
 Utilisez la commande [az iot hub device-identity list](/cli/azure/iot/hub/device-identity) pour voir tous les appareils dans votre hub IoT. Par exemple :
 
    ```azurecli
-   az iot hub device-identity list --hub-name hub_name_here
+   az iot hub device-identity list --hub-name [hub_name]
    ```
 
 Tout appareil inscrit en tant qu’appareil IoT Edge a la propriété **capabilities.iotEdge** définie sur **true**.

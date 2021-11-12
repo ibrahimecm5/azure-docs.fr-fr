@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
-ms.date: 09/27/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 59bf4007cad596b4d14c17a729c9da4e4cfb3957
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b8d9b3beaf965cc8c5c745d243da429c0de10e4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065263"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561021"
 ---
 # <a name="set-up-automl-training-with-python"></a>Configurer l’apprentissage AutoML avec Python
 
@@ -211,7 +211,7 @@ Pour découvrir les définitions spécifiques de ces métriques, consultez [Comp
 
 #### <a name="metrics-for-classification-scenarios"></a>Métriques pour les scénarios de classification 
 
-Il se peut que les mesures hors seuil telles que `accuracy`, `average_precision_score_weighted`, `norm_macro_recall` et `precision_score_weighted` ne permettent pas d’obtenir une bonne optimisation pour des jeux de données de petite taille ou présentant une asymétrie (déséquilibre) de classe conséquente, ou lorsque la valeur de métrique attendue est très proche de 0.0 ou 1.0. Dans ces cas, `AUC_weighted` peut être un meilleur choix pour la métrique principale. Une fois l’opération de ML automatisé terminée, vous pouvez choisir le modèle gagnant en fonction de la métrique la plus adaptée à vos besoins métier.
+Des métriques dépendant du seuil telles que `accuracy`, `recall_score_weighted`, `norm_macro_recall` et `precision_score_weighted` ne permettent pas d’obtenir une bonne optimisation pour des jeux de données de petite taille ou présentant une asymétrie (déséquilibre) de classe conséquente, ou lorsque la valeur de métrique attendue est très proche de 0.0 ou 1.0. Dans ces cas, `AUC_weighted` peut être un meilleur choix pour la métrique principale. Une fois l’opération de ML automatisé terminée, vous pouvez choisir le modèle gagnant en fonction de la métrique la plus adaptée à vos besoins métier.
 
 | Métrique | Exemple(s) de cas d’usage |
 | ------ | ------- |
@@ -222,10 +222,16 @@ Il se peut que les mesures hors seuil telles que `accuracy`, `average_precision_
 | `precision_score_weighted` |  |
 
 #### <a name="metrics-for-regression-scenarios"></a>Métriques pour les scénarios de régression
- 
-Il se peut que des métriques telles que `r2_score` et `spearman_correlation` représentent mieux la qualité du modèle lorsque l’échelle de valeur à prédire couvre de nombreux ordres de grandeur. Par exemple, une estimation de salaire, où de nombreuses personnes perçoivent un salaire compris entre 20 000 et 100 000 dollars, mais où l’échelle va très haut avec certains salaires s’inscrivant dans la plage des 100 millions de dollars. 
 
-Dans ce cas, `normalized_mean_absolute_error` et `normalized_root_mean_squared_error` traitent une erreur de prédiction de 20 000 dollars de la même façon pour un salarié percevant un salaire de 30 000 dollars que pour un salarié percevant 20 millions de dollars. Or, en réalité, prévoir seulement 20 000 dollars de réduction sur un salaire de 20 millions de dollars est insignifiant (petite différence relative de 0,1 %), tandis que 20 000 dollars de réduction sur un salaire de 30 000 dollars est tout à fait conséquent (grande différence relative de 67 %). `normalized_mean_absolute_error` et `normalized_root_mean_squared_error` sont utiles quand les valeurs à prédire sont d’échelle similaire.
+`r2_score`, `normalized_mean_absolute_error` et `normalized_root_mean_squared_error` essaient tous de réduire les erreurs de prédiction. `r2_score` et `normalized_root_mean_squared_error` réduisent les erreurs quadratiques moyennes, tandis que `normalized_mean_absolute_error` réduit la valeur absolue moyenne des erreurs. La valeur absolue traite les erreurs de toutes les amplitudes, et les erreurs au carré ont une pénalité beaucoup plus importante pour les erreurs avec des valeurs absolues plus grandes. Selon que les erreurs de plus grande taille doivent être punies ou non, vous pouvez choisir d’optimiser l’erreur au carré ou l’erreur absolue.
+
+La principale différence entre `r2_score` et `normalized_root_mean_squared_error` est la façon dont elles sont normalisées et leurs significations. `normalized_root_mean_squared_error` est l’erreur quadratique moyenne normalisée par plage et peut être interprétée comme l’amplitude moyenne des erreurs pour la prédiction. `r2_score` est une erreur carrée moyenne normalisée par une estimation de la variance des données. Il s’agit de la proportion de variation qui peut être capturée par le modèle. 
+
+> [! Remarque] `r2_score` et `normalized_root_mean_squared_error` se comportent également de la même façon que les métriques principales. Si un jeu de validation fixe est appliqué, ces deux métriques optimisent la même cible, l’erreur quadratique moyenne, et sont optimisées par le même modèle. Lorsque seul un jeu d’apprentissage est disponible et que la validation croisée est appliquée, elles sont légèrement différentes, du fait que la normalisation de `normalized_root_mean_squared_error` est fixe en tant que plage de l’ensemble d’apprentissage, alors que la normalisation de `r2_score` serait différente pour chaque pli, car il s’agit de l’écart pour chaque pli.
+
+Si le classement, plutôt que la valeur exacte, vous intéresse, `spearman_correlation` peut être un meilleur choix, car il mesure la corrélation de classement entre les valeurs réelles et les prédictions.
+
+Toutefois, actuellement, aucune métrique principale pour la régression ne porte sur la différence relative. `r2_score`, `normalized_mean_absolute_error` et `normalized_root_mean_squared_error` traitent chacun une erreur de prédiction de 20 000 $ de la même façon pour un employé avec un salaire de 30 000 $ que pour un employé gagnant 20 millions $, si ces deux points de données appartiennent au même jeu de données pour la régression ou la même série chronologique spécifiée par l’identificateur de série chronologique. Or, en réalité, prévoir seulement 20 000 dollars de réduction sur un salaire de 20 millions de dollars est insignifiant (petite différence relative de 0,1 %), tandis que 20 000 dollars de réduction sur un salaire de 30 000 dollars est tout à fait conséquent (grande différence relative de 67 %). Pour résoudre le problème de différence relative, vous pouvez effectuer l’apprentissage d’un modèle avec les métriques principales disponibles, puis sélectionner le modèle avec la meilleure valeur de `mean_absolute_percentage_error` ou `root_mean_squared_log_error`.
 
 | Métrique | Exemple(s) de cas d’usage |
 | ------ | ------- |

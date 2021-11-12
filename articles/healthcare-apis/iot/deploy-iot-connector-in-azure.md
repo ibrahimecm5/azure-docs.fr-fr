@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 10/19/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 4b4a91f8c8e1e5207973e621e87c17f9bbadb807
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f4eaee6afb134513da55b7f39e2d1f6df6c547b7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259526"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345327"
 ---
 # <a name="deploy-iot-connector-in-the-azure-portal"></a>Déployer IoT Connector dans le Portail Azure
 
@@ -30,7 +30,6 @@ Il est important que les conditions préalables suivantes soient remplies avant 
 * [Espace de noms Event Hubs et hub d’événements déployés dans le Portail Azure](../../event-hubs/event-hubs-create.md)
 * [Espace de travail déployé dans les API de santé Azure](../healthcare-apis-quickstart.md)  
 * [Service FHIR déployé dans les API de santé Azure](../fhir/fhir-portal-quickstart.md) 
-
 
 ## <a name="deploy-iot-connector"></a>Déployer le connecteur IoT 
 

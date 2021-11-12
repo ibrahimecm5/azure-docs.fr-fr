@@ -9,22 +9,19 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5de4c52015a8282591edeee6de9fd27aae042324
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 32441732385ebd16c2edaa9b77a75382051b6ee1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770661"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502879"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Patch à chaud pour les nouvelles machines virtuelles (préversion)
 
 > [!IMPORTANT]
-> La gestion Automanage pour les Services du serveur Windows est actuellement en Version préliminaire publique. Une procédure de consentement est requise pour utiliser la fonctionnalité de Patch à chaud (Hotpatch) décrite ci-dessous.
+> Le patch à chaud est actuellement en préversion publique. Une procédure de consentement est requise pour utiliser la fonctionnalité de Patch à chaud (Hotpatch) décrite ci-dessous.
 > Cette préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge.
 > Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-> [!NOTE]
-> Hotpatch peut être évalué sur _Windows Server 2022 Datacenter : Azure Edition (Core) Preview_.  Hotpatch sur _Windows Server 2019 Datacenter : Azure Edition Preview_ n’est plus disponible pour évaluation.
 
 La Mise à jour corrective à chaud est une nouvelle façon d’installer les mises à jour sur les nouvelles machines virtuelles de l’_Edition du serveur Windows Azure_ ne nécessitant pas de redémarrage après l’installation. Cet article contient des informations relatives à Hotpatch pour les machines virtuelles de l’_Edition du serveur Windows Azure_ présentant les avantages suivants :
 * Impact plus faible sur la charge de travail avec moins de redémarrages
@@ -49,18 +46,19 @@ Hotpatch est disponible dans toutes les régions Azure du monde, en préversion.
 ## <a name="how-to-get-started"></a>Pour commencer
 
 > [!NOTE]
-> Pendant la phase de préversion, vous pouvez démarrer en utilisant [ce lien](https://aka.ms/AutomanageWindowsServerPreview) dans le portail Azure.
+> Pendant la phase de préversion, vous pouvez démarrer en utilisant [ce lien](https://aka.ms/ws2022ae-portal-preview) dans le portail Azure.
 
 Pour commencer à utiliser Hotpatch sur une nouvelle machine virtuelle, suivez les étapes ci-dessous :
 1.  Activer l’accès à la préversion
     * Une seule activation de l’accès à la préversion est nécessaire par abonnement.
-    * L’accès à la préversion peut être activé via une API, PowerShell ou l’interface CLI, comme indiqué dans la section suivante.
-1.  Créer une machine virtuelle à partir du portail Azure
-    * Pendant la phase de préversion, vous devez démarrer en utilisant [ce lien](https://aka.ms/AutomanageWindowsServerPreview).
-1.  Fournir les détails de la machine virtuelle
-    * Assurez-vous que l’image du _Serveur Windows Edition Azure_ prise en charge que vous souhaitez utiliser est sélectionnée dans la liste déroulante Image.  Les images prises en charge sont répertoriées en haut de cet article.
-    * À l’étape de l’onglet Management (Gestion), faites défiler la liste jusqu’à la section « Guest OS updates » (Mises à jour du système d’exploitation invité). Vous verrez que la mise à jour corrective à chaud est activée et que l’installation des patchs correspond par défaut aux mises à jour correctives orchestrées par Azure.
-    * La fonctionnalité Automanage des bonnes pratiques pour les machines virtuelles est activée par défaut
+    * L’accès à la préversion peut être activé via une API, PowerShell ou l’interface CLI, comme décrit dans la section « Activation de l’accès en préversion » ci-après.
+1.  Commencer à créer une machine virtuelle à partir du portail Azure
+    * Pendant la phase de préversion, vous devez démarrer en utilisant [ce lien](https://aka.ms/ws2022ae-portal-preview).
+1.  Fournir des détails lors de la création de la machine virtuelle
+    * Assurez-vous qu’une image _Windows Server Azure Edition_ prise en charge est sélectionnée dans la liste déroulante Image.  Suivez [ce guide](automanage-windows-server-services-overview.md#getting-started-with-windows-server-azure-edition) pour déterminer les images prises en charge.
+    * Sous l’onglet Gestion dans la section « Mises à jour du système d’exploitation invité », cochez la case « Activer les patchs à chaud » pour évaluer le patch à chaud en préversion.  Les options d’orchestration du patch sont définies sur « Orchestré par Azure ». 
+    * Sous l’onglet Gestion dans la section « Azure Automanage », sélectionnez « Dev/Test » ou « Production » pour « Environnement Azure Automanage » afin d’évaluer les meilleures pratiques des machines Automanage pendant la préversion.
+    
 1. Créer votre machine virtuelle
 
 ## <a name="enabling-preview-access"></a>Activation de l’accès en préversion
@@ -234,5 +232,6 @@ Il existe des points importants à prendre en compte pour l’exécution d’une
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Découvrez plus en détail Azure Update Management [ici](../automation/update-management/overview.md).
-* Découvrez plus en détail la mise à jour corrective automatique de la machine virtuelle invitée [ici](../virtual-machines/automatic-vm-guest-patching.md)
+* Découvrez [Azure Update Management](../automation/update-management/overview.md)
+* Apprenez-en davantage sur la [Mise à jour corrective automatique d’invité de machine virtuelle](../virtual-machines/automatic-vm-guest-patching.md)
+* Apprenez-en davantage sur [Automanage pour Windows Server](automanage-windows-server-services-overview.md)

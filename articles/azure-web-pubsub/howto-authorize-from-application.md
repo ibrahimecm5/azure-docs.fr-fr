@@ -3,15 +3,15 @@ title: Autoriser la requête aux ressources Web PubSub avec Azure AD à partir d
 description: Cet article fournit des informations sur l’autorisation des demandes adressées aux ressources Web PubSub avec Azure AD à partir d’applications Azure
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 7bca3e4840cf78b497f5907e780a267221dd1b8b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9c6b0c520fbde3f028e933d7eec05d390cb209e8
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479062"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997644"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-azure-applications"></a>Autoriser la requête aux ressources Web PubSub avec Azure AD à partir d’applications Azure
 
@@ -104,7 +104,7 @@ Cet exemple montre comment attribuer un rôle `Web PubSub Service Owner` à un p
 
 > [!IMPORTANT]
 > Les attributions de rôles Azure peuvent prendre jusqu’à 30 minutes pour se propager.
-Pour en savoir plus sur l’attribution et la gestion des attributions de rôles Azure, consultez les articles suivants :
+Pour en savoir plus sur l’attribution et la gestion des attributions de rôles Azure, consultez les articles suivants :
 - [Attribuer des rôles Azure à l’aide du portail Azure](../role-based-access-control/role-assignments-portal.md)
 - [Attribuer des rôles Azure à l’aide de l’API REST](../role-based-access-control/role-assignments-rest.md)
 - [Attribuer des rôles Azure à l’aide d’Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)

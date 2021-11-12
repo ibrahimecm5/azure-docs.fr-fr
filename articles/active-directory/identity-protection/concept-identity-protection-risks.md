@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/23/2021
+ms.date: 10/28/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f59d127342eabf3b951972a8d9d2bd82e0a6fa0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a6dddc2825c580507177fd60479f2f496ba742c7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622072"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447946"
 ---
 # <a name="what-is-risk"></a>Quel est le risque ?
 
@@ -34,6 +34,9 @@ Identity Protection offre aux organisations un accès à des ressources puissant
 Le risque peut être détecté au niveau de l’**utilisateur** ou de la **Connexion** et il existe deux types de détection ou de calcul : **en temps réel** et **hors connexion**.
 
 Les détections en temps réel peuvent ne pas apparaître dans les rapports pendant cinq à dix minutes. Les détections hors connexion peuvent ne pas apparaître dans les rapports pendant 48 heures.
+
+> [!NOTE] 
+> Notre système peut détecter que l’événement à risque qui a contribué à la note de risque de l’utilisateur est un faux positif ou que le risque de l’utilisateur a été corrigé par l’application d’une stratégie, par exemple en effectuant une demande d’authentification multifacteur (MFA) ou une modification sécurisée du mot de passe. Par conséquent, notre système ignorera l’état de risque et le détail de risque « L’intelligence artificielle a confirmé que la connexion est sécurisée » apparaîtra et ne contribuera plus au risque de l’utilisateur. 
 
 ### <a name="user-linked-detections"></a>Détections liées aux utilisateurs
 
@@ -58,7 +61,7 @@ Ces risques peuvent être calculés en temps réel ou hors connexion à l’aide
 | Voyage inhabituel | Hors connexion | Ce type de détection d’événement à risque identifie deux connexions depuis des emplacements géographiquement distants, dont au moins un est inhabituel pour l’utilisateur compte tenu de son comportement passé. Entre autres facteurs, cet algorithme Machine Learning prend en compte le délai écoulé entre les deux connexions et le temps nécessaire pour se déplacer du premier emplacement au second, ce qui indique qu’un autre utilisateur utilise les mêmes informations d’identification. <br><br> L’algorithme ignore les « faux positifs » évidents contribuant aux conditions de voyage impossible, tels que les VPN et les emplacements régulièrement utilisés par d’autres membres de l’organisation. Le système présente une période d’apprentissage initiale la plus proche de 14 jours ou de 10 connexions lui servant à assimiler le comportement de connexion des nouveaux utilisateurs. |
 | Jeton anormal | Hors connexion | Cette détection indique qu’il existe des caractéristiques anormales dans le jeton, telles qu’une durée de vie de jeton inhabituelle ou un jeton émis à partir d’un emplacement inconnu. Cette détection couvre les jetons de session et les jetons d’actualisation. |
 | Anomalie de l’émetteur du jeton | Hors connexion |Cette détection des risques indique que l’émetteur de jeton SAML pour le jeton SAML associé est potentiellement compromis. Les revendications incluses dans le jeton sont inhabituelles ou correspondent aux modèles d’attaquants connus. |
-| Adresse IP liée à un programme malveillant | Hors connexion | Ce type de détection d’événement à risque indique les connexions depuis des adresses IP infectées par des logiciels malveillants, qui sont connus pour communiquer activement avec un serveur bot, Cette détection est effectuée en mettant en corrélation des adresses IP d’appareils d’utilisateurs avec des adresses ayant été en contact avec un serveur robot actif. |
+| Adresse IP liée à un programme malveillant | Hors connexion | Ce type de détection d’événement à risque indique les connexions depuis des adresses IP infectées par des logiciels malveillants, qui sont connus pour communiquer activement avec un serveur bot, Cette détection est effectuée en mettant en corrélation des adresses IP d’appareils d’utilisateurs avec des adresses ayant été en contact avec un serveur robot actif. <br><br> **[Cette détection est déconseillée](../fundamentals/whats-new.md#planned-deprecation---malware-linked-ip-address-detection-in-identity-protection)** . Azure Identity protection ne génère plus de nouvelles détections d’« Adresse IP liée à un programme malveillant ». Les clients qui ont actuellement des détections d’« Adresse IP liée à un programme malveillant » dans leur locataire pourront toujours les afficher, les corriger ou les ignorer jusqu’à ce que la durée de 90 jours de rétention des détections soit atteinte.|
 | Navigateur suspect | Hors connexion | La détection de navigateur suspect indique un comportement anormal basé sur des activités de connexion suspectes sur plusieurs locataires de différents pays dans le même navigateur. |
 | Propriétés de connexion inhabituelles | Temps réel | Ce type de détection d’événement à risque prend en compte l’historique des connexions antérieures (IP, latitude / longitude et NSA) pour rechercher des connexions anormales. Le système stocke les informations sur les emplacements précédents d’un utilisateur et considère ces emplacements comme « connus ». La détection d’événement à risque est déclenchée quand la connexion a lieu depuis un emplacement qui ne figure pas déjà dans la liste des emplacements connus. Les utilisateurs nouvellement créés seront en « mode d’apprentissage » pendant une période de temps durant laquelle les détections d’événements à risque des propriétés de connexion inconnues seront désactivées pendant que nos algorithmes apprennent le comportement de l’utilisateur. La durée du mode d’apprentissage est dynamique et varie selon le temps qu’il faut à l’algorithme pour collecter suffisamment d’informations sur les modèles de connexion de l’utilisateur. La durée minimale est de 5 jours. Un utilisateur peut revenir en mode d’apprentissage après une longue période d’inactivité. Le système ignore également les connexions depuis les appareils connus et les emplacements géographiquement proches d’un emplacement connu. <br><br> Nous exécutons également cette détection pour l’authentification de base (ou les protocoles existants). Étant donné que ces protocoles ne proposent pas les propriétés modernes, telles que l’ID client, les données de télémétrie pour réduire le nombre de faux positifs sont limitées. Nous recommandons à nos clients de passer à l’authentification moderne. <br><br> Des propriétés de connexion inhabituelles peuvent être détectées sur des connexions interactives et non interactives. Lorsque cette détection est détectée sur des connexions non interactives, elle mérite des contrôles accrus en raison du risque d’attaques par relecture de jetons.  |
 | L’administrateur a confirmé que cet utilisateur est compromis | Hors connexion | Cette détection indique qu’un administrateur a sélectionné « Confirmer que l’utilisateur est compromis » dans l’interface utilisateur Utilisateurs à risque ou à l’aide de l’API riskyUsers. Pour voir quel administrateur a confirmé que cet utilisateur est compromis, consultez l’historique des risques de l’utilisateur (par le biais de l’interface utilisateur ou de l’API). |
@@ -88,6 +91,10 @@ Bien que Microsoft ne communique pas en détail sur la manière dont le risque e
 ### <a name="password-hash-synchronization"></a>Synchronisation de hachage du mot de passe
 
 Les détections de risque comme les informations d’identification divulguées nécessitent la présence de hachages de mot de passe. Pour plus d’informations sur la synchronisation de hachage du mot de passe, consultez l’article [Implémenter la synchronisation de hachage de mot de passe avec la synchronisation Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md).
+
+### <a name="why-are-there-risk-detections-generated-for-disabled-user-accounts"></a>Pourquoi ces détections de risques sont-elles générées pour les comptes d’utilisateurs désactivés ?
+          
+Vous pouvez réactiver des comptes d’utilisateurs désactivés. Si les informations d’identification d’un compte désactivé sont compromises et que le compte est réactivé, des acteurs malveillants pourraient utiliser ces informations d’identification pour y accéder. C’est pourquoi, Azure Identity Protection génère des détections de risques pour des activités suspectes sur les comptes d’utilisateurs désactivés afin d’alerter les clients en cas de compromission de compte potentielle. Si un compte n’est plus utilisé et ne sera pas réactivé, les clients doivent envisager de le supprimer afin d’éviter toute compromission. Aucune détection de risque n’est générée pour les comptes supprimés.
 
 ### <a name="leaked-credentials"></a>Informations d’identification divulguées
 

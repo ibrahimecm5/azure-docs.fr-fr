@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 53b64b804b07f60741be1a72e671e8ade4710e15
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: ae71e4423011d5a69945b6bcce8ed73e0f093fc1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132055091"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566789"
 ---
 # <a name="cli-v2-command-component-yaml-schema"></a>Schéma YAML du composant de commande CLI (v2)
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Le schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
 | `type` | const | Le type de composant. | `command` | `command` |
 | `name` | string | **Obligatoire.** Nom du composant. | | |
 | `version` | string | Numéro de version du composant. En cas d’omission, Azure ML génère automatiquement une version. | | |
@@ -99,7 +99,7 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="hello-world-command-component"></a>Composant de commande Hello World
 
-:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/2a_basic_component/component.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/2a_basic_component/component.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

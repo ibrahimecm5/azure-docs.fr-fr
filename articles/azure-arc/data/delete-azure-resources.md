@@ -7,29 +7,39 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 5a2b51573e4b639c80fd36b69cef667b9ea6eff5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad92c16b70fd2d9f2e137558db1e70c387815a8f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562963"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564135"
 ---
 # <a name="delete-resources-from-azure"></a>Supprimer des ressources d’Azure
 
-Cet article décrit comment supprimer des ressources d’Azure.
+Cet article explique comment supprimer des ressources de service de données avec Azure Arc à partir d’Azure.
 
 > [!WARNING]
 > Lorsque vous supprimez des ressources comme décrit dans cet article, ces actions sont irréversibles.
 
 ## <a name="before"></a>Avant
 
-Avant de supprimer une ressource telle l’instance gérée qu’Azure Arc SQL ou le contrôleur de données Azure Arc, vous devez exporter et charger les informations d’utilisation dans Azure pour obtenir un calcul de facturation précis en suivant les instructions décrites dans [Télécharger les données de facturation dans Azure](view-billing-data-in-azure.md#upload-billing-data-to-azure).
+Avant de supprimer une ressource telle qu’une instance gérée SQL Azure Arc ou un contrôleur de données Azure Arc, vous devez exporter et charger les informations d’utilisation dans Azure pour obtenir un calcul de facturation précis en suivant les instructions décrites dans [Charger des données de facturation sur Azure – Mode connexion indirecte](view-billing-data-in-azure.md#upload-billing-data-to-azure---indirectly-connected-mode).
 
 ## <a name="direct-connectivity-mode"></a>Mode de connectivité directe
 
 Lorsqu’un cluster est connecté à Azure en mode de connectivité directe, utilisez la Portail Azure pour gérer les ressources. Utilisez le portail pour toutes les opérations de création, lecture, mise à jour & suppression (CRUD) pour les groupes de contrôleur de données, Managed Instance et PostgreSQL.
+
+À partir du portail Azure :
+1. Accédez au groupe de ressources et supprimez le contrôleur de données Azure Arc.
+2. Sélectionnez le cluster Kubernetes avec Azure Arc, puis accédez à la page Vue d’ensemble.
+    - Sélectionnez **Extensions** sous Paramètres.
+    - Dans la page Extensions, sélectionnez l’extension de services de données Azure Arc (de type microsoft.arcdataservices), puis cliquez sur **Désinstaller**.
+3. Vous pouvez supprimer l’emplacement personnalisé sur lequel le contrôleur de données Azure Arc est déployé.
+4. Vous pouvez également supprimer l’espace de noms sur votre cluster Kubernetes si aucune autre ressource n’est créée dans l’espace de noms.
+
+
 
 Consultez [Gérer des ressources Azure à l’aide du Portail Azure](../../azure-resource-manager/management/manage-resources-portal.md).
 

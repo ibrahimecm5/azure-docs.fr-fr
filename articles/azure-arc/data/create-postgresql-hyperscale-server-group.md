@@ -7,18 +7,18 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: c9987e82fe64dd30584f3ceb8dbacfc857d27ab8
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: c004ce9854d3a4397fed9064f90c345df5c04189
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779384"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561249"
 ---
-# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Créer un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
+# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group-from-cli"></a>Créer un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc à partir de l’interface CLI
 
-Ce document décrit les étapes de création d’un groupe de serveurs PostgreSQL Hyperscale sur Azure Arc.
+Ce document décrit les étapes de création d’un groupe de serveurs PostgreSQL Hyperscale sur Azure Arc et de connexion à ce dernier.
 
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
@@ -44,7 +44,7 @@ oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace 
 
 **Server-Group-Name est le nom du groupe de serveurs que vous allez créer à l’étape suivante.**
 
-Pour plus d’informations sur SCC dans OpenShift, consultez la documentation [OpenShift](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html). Vous pouvez maintenant implémenter l’étape suivante.
+Pour plus d’informations sur les contraintes de contexte de sécurité dans OpenShift, consultez la documentation [OpenShift](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html). Passez à l'étape suivante.
 
 
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Créer un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
@@ -61,76 +61,40 @@ Les principaux paramètres à prendre en compte sont les suivants :
 
 - **Version du moteur PostgreSQL** que vous souhaitez déployer : par défaut, il s’agit de la version 12. Pour déployer la version 12, vous pouvez omettre ce paramètre ou passer l’un des paramètres suivants : `--engine-version 12` ou `-ev 12`. Pour déployer la version 11, indiquez `--engine-version 11` ou `-ev 11`.
 
-- **Nombre de nœuds Worker** que vous souhaitez déployer pour effectuer un scale-out et potentiellement obtenir de meilleures performances. Avant de continuer, lisez les [concepts relatifs à Postgres Hyperscale](concepts-distributed-postgres-hyperscale.md). Pour indiquer le nombre de nœuds Worker à déployer, utilisez le paramètre `--workers` ou `-w` suivi d’un entier. Le tableau ci-dessous indique la plage des valeurs prises en charge et le type de déploiement Postgres obtenu avec ces valeurs. Par exemple, si vous souhaitez déployer un groupe de serveurs avec 2 nœuds Worker, indiquez `--workers 2` ou `-w 2`. Cette opération crée trois pods, un pour le nœud coordinateur/l’instance et deux pour les nœuds Worker/instances (un pour chacun des Workers).
+- **Nombre de nœuds Worker** que vous souhaitez déployer pour effectuer un scale-out et potentiellement obtenir de meilleures performances. Avant de continuer, lisez les [concepts relatifs à Postgres Hyperscale](concepts-distributed-postgres-hyperscale.md). Pour indiquer le nombre de nœuds Worker à déployer, utilisez le paramètre `--workers` ou `-w` suivi d’un entier. Le tableau ci-dessous indique la plage des valeurs prises en charge et le type de déploiement Postgres obtenu avec ces valeurs. Par exemple, si vous souhaitez déployer un groupe de serveurs avec deux nœuds Worker, indiquez `--workers 2` ou `-w 2`. Cette opération crée trois pods, un pour le nœud coordinateur/l’instance et deux pour les nœuds Worker/instances (un pour chacun des Workers).
 
 
 
-|Vous devez avoir   |Forme du groupe de serveurs que vous allez déployer   |paramètre-w à utiliser   |Notes   |
+|Vous devez avoir   |Forme du groupe de serveurs que vous allez déployer   |Paramètre `-w` à utiliser   |Notes   |
 |---|---|---|---|
-|Une forme de Postgres avec scale-out pour répondre aux besoins de scalabilité de vos applications.   |3 instances Postgres ou plus, 1 est coordinateur, n sont des Workers avec n>=2.   |Utilisez-w n, avec n>= 2.   |L’extension Citus qui fournit la capacité Hyperscale est chargée.   |
-|Une forme de base de Postgres Hyperscale permettant la validation fonctionnelle de votre application à un coût minimal. Non valide pour la validation des performances et de la scalabilité. Pour cela, vous devez utiliser le type de déploiement décrit ci-dessus.   |1 instance Postgres qui est à la fois coordinateur et Worker.   |Utilisez -w 0 et chargez l’extension Citus. Utilisez les paramètres suivants si vous opérez le déploiement à partir de la ligne de commande :-w 0--extensions Citus.   |L’extension Citus qui fournit la capacité Hyperscale est chargée.   |
-|Une instance simple de Postgres prête pour un scale-out quand vous en avez besoin.   |1 instance Postgres. La sémantique du coordinateur et du Worker n’est pas encore déterminée. Pour effectuer un scale-out après le déploiement, modifiez la configuration, augmentez le nombre de nœuds Worker et distribuez les données.   |Utilisez -w 0 ou ne spécifiez pas -w.   |L’extension Citus qui fournit la capacité Hyperscale est présente dans votre déploiement, mais elle n’est pas encore chargée.   |
+|Une forme de Postgres avec scale-out pour répondre aux besoins de scalabilité de vos applications.   |Trois instances Postgres ou plus, une sert de coordinateur, n sont des Workers avec n>=2.   |Utilisez `-w n`, avec n>=2.   |L’extension Citus qui fournit la capacité Hyperscale est chargée.   |
+|Une forme de base de Postgres Hyperscale permettant la validation fonctionnelle de votre application à un coût minimal. Non valide pour la validation des performances et de la scalabilité. Pour cela, vous devez utiliser le type de déploiement décrit ci-dessus.   |Une instance Postgres qui est à la fois coordinateur et Worker.   |Utilisez `-w 0` et chargez l’extension Citus. Utilisez les paramètres suivants si vous opérez le déploiement à partir de la ligne de commande : `-w 0` --extensions Citus.   |L’extension Citus qui fournit la capacité Hyperscale est chargée.   |
+|Une instance simple de Postgres prête pour un scale-out quand vous en avez besoin.   |Une instance Postgres. La sémantique du coordinateur et du Worker n’est pas encore déterminée. Pour effectuer un scale-out après le déploiement, modifiez la configuration, augmentez le nombre de nœuds Worker et distribuez les données.   |Utilisez `-w 0` ou ne spécifiez pas `-w`.   |L’extension Citus qui fournit la capacité Hyperscale est présente dans votre déploiement, mais elle n’est pas encore chargée.   |
 |   |   |   |   |
 
-Si vous l’utilisation de -w 1 fonctionne, nous vous déconseillons de l’utiliser. Ce déploiement vous apporte peu de valeur. Cette configuration vous permet d’obtenir 2 instances de Postgres : 1 coordinateur et 1 Worker. Avec cette configuration, vous n’effectuez pas le scale-out des données, car vous déployez un seul Worker. Par conséquent, le niveau de performances et de scalabilité n’augmente pas. La prise en charge de ce déploiement sera supprimée dans une version ultérieure.
+Si l’utilisation de `-w 1` fonctionne, nous vous déconseillons de l’utiliser. Ce déploiement vous apporte peu de valeur. Avec lui, vous obtiendrez deux instances de Postgres : un coordinateur et un Worker. Avec cette configuration, vous n’effectuez pas le scale-out des données, car vous déployez un seul Worker. Par conséquent, le niveau de performances et de scalabilité n’augmente pas. La prise en charge de ce déploiement sera supprimée dans une version ultérieure.
 
-- **Les classes de stockage** que vous souhaitez que votre groupe de serveurs utilise. Il est important de définir la classe de stockage juste au moment où vous déployez un groupe de serveurs, car cette opération ne peut pas être modifiée après le déploiement. Si vous deviez modifier la classe de stockage après le déploiement, vous auriez besoin d’extraire les données, de supprimer votre groupe de serveurs, de créer un nouveau groupe de serveurs et d’importer les données. Vous pouvez spécifier les classes de stockage à utiliser pour les données, les journaux et les sauvegardes. Par défaut, si vous n’indiquez pas de classes de stockage, les classes de stockage du contrôleur de données sont utilisées.
+- **Les classes de stockage** que vous souhaitez que votre groupe de serveurs utilise. Il est important de définir la classe de stockage juste au moment où vous déployez un groupe de serveurs, car ce paramètre ne peut pas être modifié après le déploiement. Vous pouvez spécifier les classes de stockage à utiliser pour les données, les journaux et les sauvegardes. Par défaut, si vous n’indiquez pas de classes de stockage, les classes de stockage du contrôleur de données sont utilisées.
     - Pour définir la classe de stockage pour les données, indiquez le paramètre `--storage-class-data` ou `-scd` suivi du nom de la classe de stockage.
     - Pour définir la classe de stockage pour les données, indiquez le paramètre `--storage-class-logs` ou `-scl` suivi du nom de la classe de stockage.
-    - Pour définir la classe de stockage pour les sauvegardes : dans cette préversion de PostgreSQL Hyperscale avec Azure Arc, il existe deux façons de définir des classes de stockage en fonction des types d’opérations de sauvegarde/restauration que vous souhaitez effectuer. Nous nous efforçons actuellement de simplifier cette expérience. Vous indiquez soit une classe de stockage, soit un montage de revendication de volume. Un montage de revendication de volume est une paire constituée d’une revendication de volume persistant existante (dans le même espace de noms) et du type de volume (et des métadonnées facultatives selon le type de volume), séparés par le signe deux-points. Le volume persistant est monté dans chaque pod pour le groupe de serveurs PostgreSQL.
-        - Si vous souhaitez planifier uniquement des restaurations complètes de bases de données, définissez le paramètre `--storage-class-backups` ou `-scb` suivi du nom de la classe de stockage.
-        - Si vous envisagez d’effectuer à la fois des restaurations complètes de bases de données et des restaurations dans le temps, définissez le paramètre `--volume-claim-mounts` ou `--volume-claim-mounts` suivi du nom d’une revendication de volume et d’un type de volume.
+    - La prise en charge de la définition des classes de stockage pour les sauvegardes a été supprimée temporairement, car nous avons supprimé temporairement les fonctionnalités de sauvegarde/restauration pendant que nous finalisons les conceptions et les expériences.
 
-Notez que lorsque vous exécutez la commande create, vous êtes invité à entrer le mot de passe de l’utilisateur administratif `postgres` par défaut. Le nom de cet utilisateur ne peut pas être modifié dans cette préversion. Vous pouvez ignorer l’invite interactive en définissant la variable d’environnement de session `AZDATA_PASSWORD` avant d’exécuter la commande create.
+   > [!IMPORTANT]
+   > Si vous avez besoin de modifier la classe de stockage après le déploiement, vous devrez extraire les données, supprimer votre groupe de serveurs, créer un nouveau groupe de serveurs et importer les données. 
+
+Lorsque vous exécutez la commande create, vous êtes invité à entrer le mot de passe de l’utilisateur administratif `postgres` par défaut. Le nom de cet utilisateur ne peut pas être modifié dans cette préversion. Vous pouvez ignorer l’invite interactive en définissant la variable d’environnement de session `AZDATA_PASSWORD` avant d’exécuter la commande create.
 
 ### <a name="examples"></a>Exemples
 
-**Pour déployer un groupe de serveurs de Postgres version 12 nommé postgres01 avec 2 nœuds Worker qui utilise les mêmes classes de stockage que le contrôleur de données, exécutez la commande suivante :**
+**Pour déployer un groupe de serveurs de Postgres version 12 nommé postgres01 avec deux nœuds Worker qui utilise les mêmes classes de stockage que le contrôleur de données, exécutez la commande suivante** :
+
 ```azurecli
 az postgres arc-server create -n postgres01 --workers 2 --k8s-namespace <namespace> --use-k8s
 ```
 
-**Pour déployer un groupe de serveurs de Postgres version 12 nommé postgres01 avec 2 nœuds Worker qui utilise les mêmes classes de stockage que le contrôleur de données pour les données et les journaux, mais la classe de stockage spécifique pour effectuer à la fois les restaurations complètes et les restaurations dans le temps, procédez comme suit :**
-
- Cet exemple suppose que votre groupe de serveurs est hébergé dans un cluster Azure Kubernetes Service (AKS). Cet exemple utilise azurefile-premium comme nom de classe de stockage. Vous pouvez ajuster l’exemple ci-dessous en fonction des caractéristiques de votre environnement. Notez que **accessModes ReadWriteMany est requis** pour cette configuration.  
-
-Tout d’abord, créez un fichier YAML qui contient la description ci-dessous du PVC (Persistent Volume Claim) de sauvegarde et nommez-le CreateBackupPVC.yml par exemple :
-```console
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: backup-pvc
-  namespace: arc
-spec:
-  accessModes:
-    - ReadWriteMany
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 100Gi
-  storageClassName: azurefile-premium
-```
-
-Créez ensuite un PVC à l’aide de la définition stockée dans le fichier YAML :
-
-```console
-kubectl create -f e:\CreateBackupPVC.yml -n arc
-``` 
-
-Ensuite, créez le groupe de serveurs :
-
-```azurecli
-az postgres arc-server create -n postgres01 --workers 2 --volume-claim-mounts backup-pvc:backup --k8s-namespace <namespace> --use-k8s
-```
-
-> [!IMPORTANT]
-> - Lisez les [limitations actuelles relatives à la sauvegarde/restauration](limitations-postgresql-hyperscale.md#backup-and-restore).
-
-
 > [!NOTE]  
 > - Si vous avez déployé le contrôleur de données à l’aide des variables d’environnement de session `AZDATA_USERNAME` et `AZDATA_PASSWORD` dans la même session de terminal, les valeurs d’`AZDATA_PASSWORD` seront également utilisées pour déployer le groupe de serveurs PostgreSQL Hyperscale. Si vous préférez utiliser un autre mot de passe, vous pouvez (1) mettre à jour la valeur d’`AZDATA_PASSWORD` ou (2) supprimer la variable d’environnement `AZDATA_PASSWORD` ou (3) supprimer sa valeur pour être invité à entrer un mot de passe de manière interactive lorsque vous créez un groupe de serveurs.
 > - La création d’un groupe de serveurs PostgreSQL Hyperscale n’inscrira pas immédiatement les ressources dans Azure. Dans le cadre du processus de chargement de l’[inventaire des ressources](upload-metrics-and-logs-to-azure-monitor.md) ou des [données d’utilisation](view-billing-data-in-azure.md) à Azure, les ressources seront créées dans Azure et vous pourrez voir vos ressources dans le Portail Azure.
-
 
 
 ## <a name="list-the-postgresql-hyperscale-server-groups-deployed-in-your-arc-data-controller"></a>Répertorier les groupes de serveurs PostgreSQL Hyperscale déployés dans votre contrôleur de données Arc
@@ -143,9 +107,12 @@ az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 
 
 ```output
-Name        State     Workers
-----------  --------  ---------
-postgres01  Ready     2
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 2
+  }
 ```
 
 ## <a name="get-the-endpoints-to-connect-to-your-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Obtenir les points de terminaison pour vous connecter à votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
@@ -157,20 +124,28 @@ az postgres arc-server endpoint list -n <server group name> --k8s-namespace <nam
 ```
 Par exemple :
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+{
+  "instances": [
+    {
+      "endpoints": [
+        {
+          "description": "PostgreSQL Instance",
+          "endpoint": "postgresql://postgres:<replace with password>@123.456.78.912:5432"
+        },
+        {
+          "description": "Log Search Dashboard",
+        },
+        {
+          "description": "Metrics Dashboard",
+          "endpoint": "https://98.765.432.11:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01"
+        }
+      ],
+      "engine": "PostgreSql",
+      "name": "postgres01"
+    }
+  ],
+  "namespace": "arc"
+}
 ```
 
 Vous pouvez utiliser le point de terminaison d’instance PostgreSQL pour vous connecter au groupe de serveurs PostgreSQL Hyperscale à partir de votre outil favori : [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [pgcli](https://www.pgcli.com/) psql, pgAdmin, etc. Dans ce cas, vous vous connectez au nœud coordinateur/à l’instance qui prend en charge le routage de la requête vers les nœuds de travail/instances appropriés si vous avez créé des tables distribuées. Pour plus d’informations, consultez les [concepts en lien avec PostgreSQL Hyperscale avec Azure Arc](concepts-distributed-postgres-hyperscale.md).
@@ -180,24 +155,23 @@ Vous pouvez utiliser le point de terminaison d’instance PostgreSQL pour vous c
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>Remarque spéciale sur les déploiements de machines virtuelles Azure
 
 Lorsque vous utilisez une machine virtuelle Azure, l’adresse IP du point de terminaison n’affiche pas l’adresse IP _publique_. Utilisez la commande suivante pour localiser l’adresse IP publique :
-
 ```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
-
 Vous pouvez ensuite combiner l’adresse IP publique avec le port pour établir votre connexion.
 
-Vous devrez peut-être également exposer le port du groupe de serveurs PostgreSQL Hyperscale à l’aide de la passerelle de sécurité réseau (NSG). Pour autoriser le trafic via la passerelle de sécurité réseau (NSG), vous devez ajouter une règle que vous pouvez effectuer à l’aide de la commande suivante :
-
-Pour définir une règle, vous devez connaître le nom de votre groupe de sécurité réseau. Vous déterminez le groupe de sécurité réseau à l’aide de la commande ci-dessous :
+Vous devrez peut-être également exposer le port du groupe de serveurs PostgreSQL Hyperscale à l’aide de la passerelle de sécurité réseau (NSG). Pour autoriser le trafic via le groupe de sécurité réseau, définissez une règle. Pour définir une règle, vous devez connaître le nom de votre groupe de sécurité réseau. Vous déterminez le groupe de sécurité réseau à l’aide de la commande ci-dessous :
 
 ```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-Une fois que vous avez le nom du groupe de sécurité réseau, vous pouvez ajouter une règle de pare-feu à l’aide de la commande suivante. Les exemples de valeurs ci-dessous créent une règle NSG pour le port 30655 et autorisent la connexion à partir de **n’importe quelle adresse IP source** .  Il ne s’agit pas d'une meilleure pratique de sécurité.  Vous pouvez mieux verrouiller les choses en spécifiant une valeur-source-adresse-préfixes spécifique à votre adresse IP du client ou une plage d’adresses IP qui couvre les adresses IP de votre équipe ou de votre organisation.
+Une fois que vous avez le nom du groupe de sécurité réseau, vous pouvez ajouter une règle de pare-feu à l’aide de la commande suivante. Les exemples de valeurs ci-dessous créent une règle NSG pour le port 30655 et autorisent la connexion à partir de **n’importe quelle adresse IP source** . 
 
-Remplacez la valeur du paramètre --destination-port-ranges ci-dessous par le numéro de port que vous avez obtenu à partir de la commande « az postgres arc-server list » ci-dessus.
+> [!WARNING]
+> Nous vous déconseillons de définir une règle pour autoriser la connexion à partir de n’importe quelle adresse IP source. Vous pouvez mieux verrouiller les choses en spécifiant une valeur `-source-address-prefixes` spécifique à votre adresse IP du client ou une plage d’adresses IP qui couvre les adresses IP de votre équipe ou de votre organisation.
+
+Remplacez la valeur du paramètre `--destination-port-ranges` ci-dessous par le numéro de port que vous avez obtenu à partir de la commande `az postgres arc-server list` ci-dessus.
 
 ```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
@@ -228,7 +202,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Connectez-vous à votre instance de PostgreSQL Hyperscale avec Azure Arc : lisez [Obtenir des points de terminaison de connexion et des chaînes de connexion](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
+- Connectez-vous à votre instance PostgreSQL Hyperscale avec Azure Arc : lisez [Obtenir des points de terminaison de connexion et des chaînes de connexion](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
 - Lisez les concepts et les guides pratiques d’Azure Database pour PostgreSQL Hyperscale pour distribuer vos données sur plusieurs nœuds PostgreSQL Hyperscale et tirer parti d’une amélioration potentielle des performances :
     * [Nœuds et tables](../../postgresql/concepts-hyperscale-nodes.md)
     * [Déterminer le type d’application](../../postgresql/concepts-hyperscale-app-type.md)

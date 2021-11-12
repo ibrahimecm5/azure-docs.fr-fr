@@ -5,12 +5,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 3bfe1e7f18f50723eed9d456eac8a773f06a34bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115402133ad33b9fa20eb3298db3e342ea2afbbd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552563"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461681"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Notes de publication de Video Analyzer for Media
 
@@ -22,6 +22,22 @@ Cet article vise à vous informer sur les derniers développements d’Azure Vid
 * Problèmes connus
 * Résolution des bogues
 * Fonctionnalités dépréciées
+
+## <a name="november-2021"></a>Novembre 2021
+ 
+### <a name="public-preview-of-azure-video-analyzer-for-media-account-management-based-on-arm"></a>Préversion publique de la gestion de compte Azure Video Analyzer for Media sur ARM
+
+Azure Video Analyzer for Media introduit une préversion publique de la gestion de compte basée sur Azure Resource Manager (ARM). Vous pouvez tirer parti des API basées sur ARM pour créer, modifier et supprimer un compte dans le portail Azure.
+
+Pour plus d’informations, consultez [Créer un compte Video Analyzer for Media](https://techcommunity.microsoft.com/t5/azure-ai/azure-video-analyzer-for-media-is-now-available-as-an-azure/ba-p/2912422).
+
+## <a name="october-2021"></a>Octobre 2021
+
+### <a name="embed-widgets-in-your-app-using-azure-video-analyzer-for-media-package"></a>Incorporer des widgets dans votre application à l’aide du package Azure Video Analyzer for Media
+
+Utilisez le nouveau package npm Azure Video Analyzer for Media (AVAM) `@azure/video-analyzer-for-media-widgets` pour ajouter des widgets `insights` à votre application et personnaliser celle-ci en fonction de vos besoins.
+
+Le nouveau package AVAM vous permet d’incorporer nos widgets et votre application, ainsi que de gérer la communication entre eux en toute facilité au lieu d’ajouter un élément `iframe` pour incorporer le widget Insights. Pour plus d’informations, consultez [Incorporer et personnaliser des widgets Video Analyzer for Media dans votre application](https://techcommunity.microsoft.com/t5/azure-media-services/embed-and-customize-azure-video-analyzer-for-media-widgets-in/ba-p/2847063). 
 
 ## <a name="august-2021"></a>Août 2021
 
@@ -112,7 +128,7 @@ Le pack nouvellement ajouté est disponible lors de l’indexation ou de la réi
 
 ### <a name="new-developer-portal"></a>Nouvelle version du Developer Portal 
 
-Video Analyzer for Media dispose d’une nouvelle version du [Developer Portal](https://api-portal.videoindexer.ai/). Essayez les nouvelles API Video Analyzer for Media et trouvez toutes les ressources pertinentes au même endroit : [dépôt GitHub](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Communauté technique de Video Analyzer for Media](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) avec les billets de blog associés, [Foires aux questions (FAQ) sur Video Analyzer for Media](faq.yml), [User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016) pour envoyer vos commentaires et suggérer des fonctionnalités, et [lien « CodePen »](https://codepen.io/videoindexer) accompagné d’exemples de code de widgets. 
+Video Analyzer for Media dispose d’une nouvelle version du [Developer Portal](https://api-portal.videoindexer.ai/). Essayez les nouvelles API Video Analyzer for Media et trouvez toutes les ressources pertinentes au même endroit : [dépôt GitHub](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Communauté technique de Video Analyzer for Media](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) avec les billets de blog associés, [Foires aux questions (FAQ) sur Video Analyzer for Media](faq.yml), [User Voice](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858) pour envoyer vos commentaires et suggérer des fonctionnalités, et [lien « CodePen »](https://codepen.io/videoindexer) accompagné d’exemples de code de widgets. 
  
 ### <a name="advanced-customization-capabilities-for-insight-widget"></a>Fonctionnalités avancées de personnalisation pour le widget d’insight 
 

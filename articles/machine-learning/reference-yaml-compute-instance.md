@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ff13936785dc48fc8fb0c4b26a55651f0e7f827c
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2b4f8ddb82e758899c0de70bf722f1184f2f7aff
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566792"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056527"
 ---
 # <a name="cli-v2-compute-instance-yaml-schema"></a>Schéma YAML de l’instance de calcul CLI (v2)
 
@@ -27,10 +27,10 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------- |
-| `$schema` | string | Le schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
-| `type` | string | **Obligatoire.** Le type de calcul. | `computeinstance` | |
-| `name` | string | **Obligatoire.** Le nom du calcul. | | |
-| `description` | string | La description du calcul. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
+| `type` | string | **Obligatoire.** Type de calcul. | `computeinstance` | |
+| `name` | string | **Obligatoire.** Nom du calcul. | | |
+| `description` | string | Description du calcul. | | |
 | `size` | string | La taille de machine virtuelle à utiliser pour l’instance de calcul. Pour plus d’informations, consultez [Séries et tailles de machines virtuelles prises en charge](concept-compute-target.md#supported-vm-series-and-sizes). Notez que toutes les tailles ne sont pas disponibles dans toutes les régions. | Pour obtenir la liste des tailles prises en charge dans une région donnée, utilisez la commande `az ml compute list-sizes`.  | `Standard_DS3_v2` |
 | `create_on_behalf_of` | object | Paramètres pour la création de l’instance de calcul pour le compte d’un autre utilisateur. Vérifiez que l’utilisateur affecté dispose des autorisations RBAC appropriées. |  |  |
 | `create_on_behalf_of.user_tenant_id` | string | ID de locataire AAD de l’utilisateur affecté. |  |  |
@@ -48,11 +48,11 @@ La commande `az ml compute` peut être utilisée pour gérer les instances de ca
 
 ## <a name="yaml-minimal"></a>YAML : minimal
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/instance-minimal.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/instance-minimal.yml":::
 
 ## <a name="yaml-basic"></a>YAML : de base
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/instance-basic.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/instance-basic.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

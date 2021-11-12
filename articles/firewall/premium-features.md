@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 10/29/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: c6cc19bd688dd2c38210fae8d77a036f2ba5be7e
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 22cfeda4b1fc1afb032e8a6b2e689117211e5f1e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754308"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438521"
 ---
 # <a name="azure-firewall-premium-features"></a>Fonctionnalités du Pare-feu Azure Premium
 
@@ -87,6 +87,26 @@ Vous pouvez afficher le trafic ayant été filtré par le champ **Catégories we
 ### <a name="category-exceptions"></a>Exceptions de catégorie
 
 Vous pouvez créer des exceptions à vos règles de catégorie web. Créez une collection de règles d’autorisation ou de refus distinct avec une priorité plus élevée au sein du groupe de collections de règles. Par exemple, vous pouvez configurer une collection de règles qui autorise `www.linkedin.com` avec la priorité 100, avec une collection de règles qui refuse **Réseaux sociaux** avec la priorité 200. Cette opération crée l’exception pour la catégorie web **Réseaux sociaux** prédéfinie.
+
+### <a name="web-category-search"></a>Recherche de catégorie web
+
+Vous pouvez identifier la catégorie d’un FQDN ou d’une URL donnés à l’aide de la fonctionnalité de **contrôle de catégorie web**. Pour ce faire, sélectionnez l’onglet **Catégories web** sous **Paramètres de stratégie de pare-feu**. Cela s’avère particulièrement utile lors de la définition de vos règles d’application pour le trafic de destination.
+
+:::image type="content" source="media/premium-features/firewall-category-search.png" alt-text="Boîte de dialogue de recherche de catégorie de pare-feu":::
+
+### <a name="category-change"></a>Changement de catégorie
+
+Sous l’onglet **Catégories web** des **Paramètres de stratégie de pare-feu**, vous pouvez demander un changement de catégorisation si vous : 
+
+- pensez qu’un nom de domaine complet (FQDN) ou une URL doit être dans une catégorie différente 
+
+   or 
+
+- avez une catégorie suggérée pour un FQDN ou une URL sans catégorie 
+
+ Après avoir envoyé un rapport de changement de catégorie, vous recevez un jeton dans les notifications, indiquant que nous avons reçu la demande pour traitement. Vous pouvez vérifier si la demande est en cours, refusée ou approuvée en entrant le jeton dans la barre de recherche.  Pour ce faire, veillez à enregistrer votre ID de jeton.
+
+:::image type="content" source="media/premium-features/firewall-category-change.png" alt-text="Boîte de dialogue rapport de catégorie de pare-feu":::
 
  ## <a name="supported-regions"></a>Régions prises en charge
 

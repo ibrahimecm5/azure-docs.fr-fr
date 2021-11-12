@@ -2,14 +2,17 @@
 title: Surveiller les charges de travail protégées de Sauvegarde Azure
 description: Dans cet article, découvrez les fonctionnalités de surveillance et de notification des charges de travail de Sauvegarde Azure à l’aide du Portail Azure.
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 11/02/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f3d353f7d42baf1f9cc968cb37baac1077a35085
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: afc23090ce15621542ec6035c67d36b85a3414c1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231669"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439768"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Surveillance des charges de travail de Sauvegarde Azure
 
@@ -19,20 +22,20 @@ Le service Sauvegarde Azure fournit plusieurs solutions de sauvegarde basées su
 
 ## <a name="backup-items-in-recovery-services-vault"></a>Éléments de sauvegarde dans le coffre Recovery Services
 
-Vous pouvez surveiller tous vos éléments de sauvegarde via un coffre Recovery Services. La navigation jusqu’à la section **Éléments de sauvegarde** dans le coffre ouvre une vue qui fournit le nombre d’éléments de sauvegarde de chaque type de charge de travail associé au coffre. En cliquant sur une ligne, vous obtenez une vue détaillée qui répertorie tous les éléments de sauvegarde du type de charge de travail donné, avec des informations sur le dernier état de sauvegarde pour chaque élément, le dernier point de restauration disponible, etc.
+Vous pouvez surveiller tous vos éléments de sauvegarde via un coffre Recovery Services. L’accès à la section **Instances de sauvegarde** dans le **Centre de sauvegarde** a pour effet d’afficher une liste détaillée de tous les éléments de sauvegarde du type de charge de travail donné, avec des informations sur le dernier état de sauvegarde pour chaque élément, le dernier point de restauration disponible, etc.
 
-![Capture d’écran de l’affichage des éléments de sauvegarde du coffre RS](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-instances-inline.png" alt-text="Capture d’écran affichant les éléments de sauvegarde du coffre Recovery Services." lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-instances-expanded.png":::
 
-> [!NOTE]
-> Pour les éléments sauvegardés dans Azure à l’aide de DPM, la liste affiche toutes les sources de données protégées (à la fois sur disque et en ligne) à l’aide du serveur DPM. Si la protection est arrêtée pour la source de données avec conservation des données de sauvegarde, la source de données sera toujours répertoriée dans le portail. Vous pouvez accéder aux détails de la source de données pour voir si les points de récupération sont présents sur le disque, en ligne ou les deux. En outre, les sources de données pour lesquelles la protection en ligne est arrêtée, mais les données sont conservées, la facturation des points de récupération en ligne continue jusqu’à ce que les données soient entièrement supprimées.
+>[!NOTE]
+>Pour les éléments sauvegardés dans Azure à l’aide de DPM, la liste affiche toutes les sources de données protégées (à la fois sur disque et en ligne) à l’aide du serveur DPM. Si la protection est arrêtée pour la source de données avec conservation des données de sauvegarde, la source de données sera toujours répertoriée dans le portail. Vous pouvez accéder aux détails de la source de données pour voir si les points de récupération sont présents sur le disque, en ligne ou les deux. En outre, les sources de données pour lesquelles la protection en ligne est arrêtée, mais les données sont conservées, la facturation des points de récupération en ligne continue jusqu’à ce que les données soient entièrement supprimées.
 >
 > La version de DPM doit être DPM 1807 (5.1.378.0) ou DPM 2019 (version 10.19.58.0 ou ultérieure) pour que les éléments de sauvegarde soient visibles dans le portail du coffre Recovery Services.
 
-## <a name="backup-jobs-in-recovery-services-vault"></a>Travaux de sauvegarde dans le coffre Recovery Services
+## <a name="backup-jobs-in-backup-center"></a>Travaux de sauvegarde dans le Centre de sauvegarde
 
-Le service Sauvegarde Azure offre des fonctionnalités de surveillance et d’alerte intégrées pour les charges de travail protégées par Sauvegarde Azure. Dans les paramètres du coffre Recovery Services, la section **Surveillance** fournit des travaux intégrés et des alertes.
+Le service Sauvegarde Azure offre des fonctionnalités de surveillance et d’alerte intégrées pour les charges de travail protégées par Sauvegarde Azure. L’accès au volet **Travaux de sauvegarde** dans le **Centre de sauvegarde** vous permet de voir les travaux de sauvegarde et de restauration récents dans vos coffres.
 
-![Capture d’écran de la surveillance intégrée du coffre RS](media/backup-azure-monitoring-laworkspace/rs-vault-inbuilt-monitoring-menu.png)
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-jobs-inline.png" alt-text="Capture d’écran montrant la surveillance intégrée du coffre Recovery Services." lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-jobs-expanded.png":::
 
 Les travaux sont générés lorsque des opérations telles que la configuration de la sauvegarde, la sauvegarde, la restauration, la suppression de la sauvegarde, etc. sont effectuées.
 

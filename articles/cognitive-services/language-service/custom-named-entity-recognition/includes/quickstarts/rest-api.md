@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d0fea4e7368252271c5382e16cbfd38eb7306c8a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed3824491e043ea99637604e76d83612d1ad6764
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097689"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521478"
 ---
 ## <a name="prerequisites"></a>Prérequis
 
@@ -80,6 +80,16 @@ Utilisez l’URL suivante pour créer un projet et importer votre fichier d’é
 |Espace réservé  |Valeur  | Exemple |
 |---------|---------|---------|
 |`{YOUR-ENDPOINT}`     | Point de terminaison pour l’authentification de votre demande d’API.   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
+
+### <a name="parameters"></a>Paramètres
+
+Passez le paramètre suivant avec votre demande. 
+
+|Clé|Explication|Valeur|
+|--|--|--|
+|`api-version`| Version d’API utilisée.| `2021-11-01-preview` |
+
+Pour passer le paramètre, ajoutez `?api-version=2021-11-01-preview` à la fin de l’URL de votre demande.
 
 ### <a name="headers"></a>headers
 
@@ -187,6 +197,16 @@ Utilisez l’URL suivante quand vous créez votre demande d’API. Remplacez les
 |`{YOUR-ENDPOINT}`     | Point de terminaison pour l’authentification de votre demande d’API.   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 |`{PROJECT-NAME}`     | Nom de votre projet. Cette valeur respecte la casse.  | `myProject` |
 
+### <a name="parameters"></a>Paramètres
+
+Passez le paramètre suivant avec votre demande.
+
+|Clé|Explication|Valeur|
+|--|--|--|
+|`api-version`| Version d’API utilisée.| `2021-11-01-preview` |
+
+Pour passer le paramètre, ajoutez `?api-version=2021-11-01-preview` à la fin de l’URL de votre demande.
+
 ### <a name="headers"></a>headers
 
 Utilisez l’en-tête suivant pour authentifier votre demande. 
@@ -214,7 +234,7 @@ Utilisez le code JSON suivant dans votre demande. Le modèle est nommé `MyModel
 Une fois que vous avez envoyé votre demande d’API, vous recevez une réponse `202` indiquant la réussite. Dans les en-têtes de réponse, extrayez la valeur `location`. Elle est au format suivant : 
 
 ```rest
-{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}
+{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}?api-version=xxxx-xx-xx-xxxxxxx
 ``` 
 
 `JOB-ID` est utilisé pour identifier votre demande, car cette opération est asynchrone. Vous utilisez cette URL à l’étape suivante pour obtenir l’état de l’entraînement. 
@@ -222,7 +242,6 @@ Une fois que vous avez envoyé votre demande d’API, vous recevez une réponse 
 ## <a name="get-training-status"></a>Obtenir l’état de l’entraînement
 
 Utilisez la demande **GET** suivante pour interroger l’état du processus d’entraînement de votre modèle. Vous pouvez utiliser l’URL que vous avez reçue à l’étape précédente ou remplacer les valeurs d’espace réservé ci-dessous par vos propres valeurs. 
-
 
 ```rest
 {YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/train/jobs/{JOB-ID}
@@ -234,6 +253,16 @@ Utilisez la demande **GET** suivante pour interroger l’état du processus d’
 |`{PROJECT-NAME}`     | Nom de votre projet. Cette valeur respecte la casse.  | `myProject` |
 |`{JOB-ID}`     | ID de localisation de l’état d’entraînement de votre modèle. Il s’agit de la valeur d’en-tête `location` que vous avez reçue à l’étape précédente.  | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx` |
 
+### <a name="parameters"></a>Paramètres
+
+Passez le paramètre suivant avec votre demande. 
+
+|Clé|Explication|Valeur|
+|--|--|--|
+|`api-version`| Version d’API utilisée.| `2021-11-01-preview` |
+
+Pour passer le paramètre, ajoutez `?api-version=2021-11-01-preview` à la fin de l’URL de votre demande.
+
 ### <a name="headers"></a>headers
 
 Utilisez l’en-tête suivant pour authentifier votre demande. 
@@ -241,7 +270,6 @@ Utilisez l’en-tête suivant pour authentifier votre demande.
 |Clé|Valeur|
 |--|--|
 |`Ocp-Apim-Subscription-Key`| Clé de votre ressource. Utilisée pour authentifiée vos demandes d’API.|
-
 
 ### <a name="response-body"></a>Corps de la réponse
 
@@ -280,7 +308,6 @@ Une fois que vous avez envoyé la demande, vous obtenez la réponse suivante.
 ```
 ## <a name="deploy-your-model"></a>Déployer votre modèle
 
-
 Créez une demande **PUT** en utilisant l’URL, les en-têtes et le corps JSON suivants pour commencer le déploiement d’un modèle NER personnalisé.
 
 ```rest
@@ -292,6 +319,16 @@ Créez une demande **PUT** en utilisant l’URL, les en-têtes et le corps JSON 
 |`{YOUR-ENDPOINT}`     | Point de terminaison pour l’authentification de votre demande d’API.   | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 |`{PROJECT-NAME}`     | Nom de votre projet. Cette valeur respecte la casse.  | `myProject` |
 |`{DEPLOYMENT-NAME}`     | Nom de votre déploiement. Cette valeur respecte la casse.  | `prod` |
+
+### <a name="parameters"></a>Paramètres
+
+Passez le paramètre suivant avec votre demande. 
+
+|Clé|Explication|Valeur|
+|--|--|--|
+|`api-version`| Version d’API utilisée.| `2021-11-01-preview` |
+
+Pour passer le paramètre, ajoutez `?api-version=2021-11-01-preview` à la fin de l’URL de votre demande.
 
 ### <a name="headers"></a>headers
 
@@ -315,7 +352,7 @@ Utilisez le code JSON suivant dans votre demande. Le modèle est nommé `MyModel
 Une fois que vous avez envoyé votre demande d’API, vous recevez une réponse `202` indiquant la réussite. Dans les en-têtes de réponse, extrayez la valeur `location`. Elle est au format suivant : 
 
 ```rest
-{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/deployments/{DEPLOYMENT-NAME}/jobs/{JOB-ID}
+{YOUR-ENDPOINT}/language/analyze-text/projects/{YOUR-PROJECT-NAME}/deployments/{DEPLOYMENT-NAME}/jobs/{JOB-ID}?api-version=xxxx-xx-xx-xxxxxxx
 ``` 
 
 `JOB-ID` est utilisé pour identifier votre demande, car cette opération est asynchrone. Vous utilisez cette URL à l’étape suivante pour obtenir l’état de publication.
@@ -334,6 +371,16 @@ Utilisez la demande **GET** suivante pour interroger l’état du processus de p
 |`{PROJECT-NAME}`     | Nom de votre projet. Cette valeur respecte la casse.  | `myProject` |
 |`{DEPLOYMENT-NAME}`     | Nom de votre déploiement. Cette valeur respecte la casse.  | `prod` |
 |`{JOB-ID}`     | ID de localisation de l’état d’entraînement de votre modèle. Il s’agit de la valeur d’en-tête `location` que vous avez reçue à l’étape précédente.  | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx` |
+
+### <a name="parameters"></a>Paramètres
+
+Passez le paramètre suivant avec votre demande. 
+
+|Clé|Explication|Valeur|
+|--|--|--|
+|`api-version`| Version d’API utilisée.| `2021-11-01-preview` |
+
+Pour passer le paramètre, ajoutez `?api-version=2021-11-01-preview` à la fin de l’URL de votre demande.
 
 ### <a name="headers"></a>headers
 

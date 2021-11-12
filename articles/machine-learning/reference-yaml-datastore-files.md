@@ -10,12 +10,12 @@ author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 1f06483d917631be8e1e4d97d8a37f922a6d11dc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 63d1d2f6be0febea3404431b812e59aea356ac94
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555874"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062716"
 ---
 # <a name="cli-v2-azure-files-datastore-yaml-schema"></a>Schéma YAML de magasin de données Azure Files avec l’interface CLI (v2)
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------- |
-| `$schema` | string | Le schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
 | `type` | string | **Obligatoire.** Type de magasin de données. | `azure_file` | |
 | `name` | string | **Obligatoire.** Nom du magasin de données. | | |
 | `description` | string | Description du magasin de données. | | |
@@ -50,11 +50,11 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-account-key"></a>YAML : clé de compte
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/file.yml":::
 
 ## <a name="yaml-sas-token"></a>YAML : jeton SAS
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/file-sas.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/file-sas.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

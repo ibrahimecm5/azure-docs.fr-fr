@@ -7,48 +7,50 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 0d091e9c90217ff9df6fba45d308296a80970053
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 51235a67d6f00410ee2b3db753e892cf05992baa
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401092"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563261"
 ---
 #  <a name="perform-a-point-in-time-restore"></a>Effectuer une limite de restauration dans le temps
 
-Utilisez la limite de restauration dans le temps (PITR) pour créer une base de données en tant que copie d’une autre base de données datant d’un moment donné dans le passé. Cet article explique comment réaliser une limite de restauration dans le temps d’une base de données dans SQL Managed Instance avec Azure Arc.
+Utilisez la limite de restauration dans le temps (PITR) pour créer une base de données en tant que copie d’une autre base de données datant d’un moment donné dans le passé dans la limite de la période de rétention. Cet article explique comment réaliser une limite de restauration dans le temps d’une base de données dans SQL Managed Instance avec Azure Arc.
 
 La limite de restauration dans le temps peut restaurer une base de données :
 
 - à partir d’une base de données existante ;
-- vers une nouvelle base de données sur la même instance gérée SQL avec Azure Arc.
+- Vers une nouvelle base de données sur la même instance gérée SQL avec Azure Arc
 
 Vous pouvez restaurer une base de données à une limite dans le temps dans le cadre d’un paramètre de rétention préconfiguré.
+vous pouvez vérifier le paramètre de rétention d’une instance gérée par Azure Arc SQL, comme suit :
 
-La limite de restauration dans le temps est un paramètre de niveau instance avec deux propriétés : l’objectif de point de récupération (RPO) et la période de rétention. Le RPO détermine la fréquence des sauvegardes de fichier journal. Le RPO est la durée pendant laquelle il faut s’attendre à une perte de données. Le RPO est exprimé en minutes. La période de rétention détermine la durée (en nombre de jours) pendant laquelle les sauvegardes de base de données doivent être stockées par les services de données avec Azure Arc. La période de rétention s’applique aux fichiers de sauvegarde des sauvegardes complète, différentielle et de fichier journal.  
+Pour le mode de connexion **directe** :
+```
+az sql mi-arc show --name <SQL instance name> --resource-group <resource-group>
+#Example
+az sql mi-arc show --name sqlmi --resource-group myresourcegroup
+```
+Pour le mode de connexion **indirecte** :
+```
+az sql mi-arc show --name <SQL instance name> --k8s-namespace <SQL MI namespace> --use-k8s
+#Example
+az sql mi-arc show --name sqlmi --k8s-namespace arc --use-k8s
+```
 
 Actuellement, la limite de restauration dans le temps peut restaurer une base de données :
 
 - à partir d’une base de données existante sur une instance ;
 - vers une nouvelle base de données sur la même instance.
 
-## <a name="limitations"></a>Limites
+## <a name="automatic-backups"></a>Sauvegardes automatiques
 
-La limite de restauration dans le temps vers SQL Managed Instance avec Azure Arc présente les limitations suivantes :
+L’instance gérée SQL avec Azure Arc a activé la fonctionnalité de sauvegardes automatiques intégrées. Chaque fois que vous créez ou restaurez une nouvelle base de données, l’instance gérée SQL avec Azure Arc lance immédiatement une sauvegarde complète et planifie automatiquement les sauvegardes différentielles et du journal des transactions. L’instance gérée SQL stocke ces sauvegardes dans la classe de stockage spécifiée pendant le déploiement. 
 
-- La limite de restauration dans le temps de l’ensemble d’une instance gérée SQL avec Azure Arc n’est pas possible. 
-- Une instance gérée SQL avec Azure Arc qui est déployée avec une haute disponibilité (préversion) ne prend pas actuellement en charge la limite de restauration dans le temps.
-- Vous pouvez uniquement effectuer la restauration vers la même instance gérée SQL avec Azure Arc.
-- La limite de restauration dans le temps peut uniquement être effectuée à l’aide d’un fichier YAML.
-- Les fichiers de sauvegarde plus anciens qui ont dépassé la période de rétention préconfigurée doivent être nettoyés manuellement.
-- Le changement de nom d’une base de données démarre une nouvelle chaîne de sauvegarde dans un nouveau dossier.
-- La suppression et la création de différentes bases de données portant le même nom ne sont pas gérées correctement pour le moment.
-
-## <a name="description"></a>Description
-
-Une limite de restauration dans le temps restaure une base de données à une limite spécifique dans le temps. Pour restaurer une base de données à une limite spécifique dans le temps, les services de données avec Azure Arc appliquent les fichiers de sauvegarde dans un ordre spécifique. Par exemple :
+La restauration à un instant dans le passé permet de restaurer une base de données à un point spécifique dans le temps, au cours de la période de rétention. Pour restaurer une base de données à une limite spécifique dans le temps, les services de données avec Azure Arc appliquent les fichiers de sauvegarde dans un ordre spécifique. Par exemple :
 
 1. Sauvegarde complète
 2. Sauvegarde différentielle 
@@ -56,122 +58,125 @@ Une limite de restauration dans le temps restaure une base de données à une li
 
 :::image type="content" source="media/point-in-time-restore/point-in-time-restore.png" alt-text="Restauration dans le temps":::
 
-L’instance gérée SQL avec Azure Arc est dotée d’une capacité intégrée permettant d’effectuer une limite de restauration dans le temps. Chaque fois qu’une nouvelle base de données est créée ou restaurée sur une instance gérée SQL avec Azure Arc, des sauvegardes sont automatiquement effectuées. 
+Actuellement, les sauvegardes complètes sont effectuées une fois par semaine, les sauvegardes différentielles sont effectuées toutes les 12 heures et les sauvegardes du journal des transactions toutes les 5 minutes.
 
-Deux paramètres influencent la capacité de limite de restauration dans le temps :
+## <a name="retention-period"></a>Période de rétention
 
-- Objectif de point de récupération 
-- Période de rétention
-
-## <a name="create-a-database-from-a-point-in-time"></a>Créer une base de données à partir d’une limite dans le temps
-
-Voici les étapes à suivre pour restaurer une base de données sur la même instance gérée SQL avec Azure Arc à l’aide de `kubectl` :
-
-1. Créez une tâche pour l’opération de restauration. Créez un fichier .yaml avec les paramètres de restauration.
-
-   Par exemple :
-
-   ```json
-   apiVersion: tasks.sql.arcdata.microsoft.com/v1beta1
-      kind: SqlManagedInstanceRestoreTask
-   metadata:
-     name: sql01-restore-20210909
-   namespace: arc
-   spec:
-     source:
-       name: sql01
-       database: db01
-     restorePoint: "2021-09-09T02:00:00Z"
-     destination:
-       name: sql01
-       database: db02
-   ```
-
-   Modifiez le fichier YAML ci-dessus :
-
-   - `metadata` > `name` : Nom de la ressource personnalisée de la tâche
-   - `metadata` > `namespace` : Espace de noms de l’instance gérée SQL avec Azure Arc
-   - `source` > `name` : Nom de l’instance gérée SQL avec Azure Arc
-   - `source` > `database` : Nom de la base de données **source** sur l’instance gérée SQL avec Azure Arc à restaurer
-   - `restorePoint` : Limite dans le temps à restaurer, date et heure au format « UTC »
-   - `destination` > `name` : Nom de l’instance gérée SQL avec Azure Arc
-   - `destination` > `database` : Nom de la base de données **de destination** sur l’instance gérée SQL avec Azure Arc
+La période de rétention par défaut pour une nouvelle instance gérée SQL avec Azure Arc est de sept jours et peut être ajustée avec des valeurs de 0 ou de 1-35 jours. La période de rétention peut être définie lors du déploiement de l’instance gérée SQL en spécifiant la propriété `--retention-days`. Les fichiers de sauvegarde antérieurs à la période de rétention configurée sont automatiquement supprimés.
 
 
-   > [!NOTE] 
-   > Le nom des instances gérées SQL avec Azure Arc source et de destination doit être le même.
+## <a name="create-a-database-from-a-point-in-time-using-az"></a>Créer une base de données à partir d’une limite dans le temps avec az
 
-2. Créez une tâche pour lancer l’opération de limite de restauration dans le temps.
+```azurecli
+az sql midb-arc restore --managed-instance <SQL managed instance> --name <source DB name> --dest-name <Name for new db> --k8s-namespace <namespace of managed instance> --time "YYYY-MM-DDTHH:MM:SSZ" --use-k8s
+#Example
+az sql midb-arc restore --managed-instance sqlmi1 --name Testdb1 --dest-name mynewdb --k8s-namespace arc --time "2021-10-29T01:42:14.00Z" --use-k8s
+```
 
-   ```console
-   kubectl apply -f sql-restore-task.yaml
-   ```
+Vous pouvez également utiliser l’option `--dry-run` pour valider votre opération de restauration sans réellement restaurer la base de données. 
 
-3. Vérifiez l’état de la restauration.
+```azurecli
+az sql midb-arc restore --managed-instance <SQL managed instance> --name <source DB name> --dest-name <Name for new db> --k8s-namespace <namespace of managed instance> --time "YYYY-MM-DDTHH:MM:SSZ" --use-k8s --dry-run
+#Example
+az sql midb-arc restore --managed-instance sqlmi1 --name Testdb1 --dest-name mynewdb --k8s-namespace arc --time "2021-10-29T01:42:14.00Z" --use-k8s --dry-run
+```
 
-   Exécutez la commande suivante pour vérifier l’état de l’opération de restauration.
 
-   ```console
-   kubectl get sqlmirestoretask -n <namespace>
-   ```
+## <a name="create-a-database-from-a-point-in-time-using-azure-data-studio"></a>Créer une base de données à partir d’une limite dans le temps avec Azure Data Studio
 
-   Remplacez `<namespace>` par l’espace de noms qui héberge l’instance SQL.
+Vous pouvez également restaurer une base de données à un point dans le temps à partir d’Azure Data Studio comme suit :
+1. Lancer Azure Data Studio
+2. Vérifiez que vous disposez des extensions Arc nécessaires, comme décrit dans [Outils](install-client-tools.md).
+3. Se connecter au contrôleur de données Azure Arc
+4. Développez le nœud de contrôleur de données, cliquez avec le bouton droit sur l’instance gérée SQL avec Azure Arc, puis sélectionnez « Gérer ». Azure Data Studio lance le tableau de bord de l’instance gérée SQL.
+5. Cliquez sur l’onglet **Sauvegardes** dans le tableau de bord
+6. Vous devriez voir une liste de bases de données sur l’instance gérée SQL, ainsi que leurs fenêtres de temps de restauration les plus anciennes et récentes, ainsi qu’une icône pour lancer la **restauration**
+7. Cliquez sur l’icône de la base de données à partir de laquelle vous souhaitez effectuer la restauration. Azure Data Studio lance un panneau sur le côté droit
+8. Fournissez l’entrée requise dans le panneau, puis cliquez sur **Restaurer**
 
-Une fois que l’état de la tâche de restauration indique **Terminé**, la nouvelle base de données doit être disponible. 
+### <a name="monitor-progress"></a>Surveiller la progression
 
-## <a name="troubleshoot-failed-restore-operations"></a>Résoudre les échecs d’opérations de restauration
-
-Si l’état de la tâche de restauration indique **Échec**, exécutez la commande suivante pour rechercher la cause racine dans les événements.
+Lorsqu’une restauration est lancée, une tâche est créée dans le cluster Kubernetes qui exécute les opérations de restauration de sauvegardes complètes, différentielles et de journal. La progression de cette activité peut être analysée à partir de votre cluster Kubernetes, comme suit :
 
 ```console
-kubectl describe sqlmirestoretask <taskname> -n <namespace>
+kubectl get sqlmirestoretask -n <namespace>
+#Example
+kubectl get sqlmirestoretask -n arc
 ```
 
-Par exemple :
-```console
-kubectl describe sqlmirestoretask sql01-restore-20210909 -n arc
-```
-
-## <a name="enabledisable-automated-backups"></a>Activer/désactiver les sauvegardes automatiques
-
-Le service de limite de restauration dans le temps (PITR) est activé par défaut avec les paramètres suivants :
-
-- Objectif de point de récupération (RPO) = 300 secondes. Les valeurs acceptées sont 0 ou comprises entre 300 et 600 (en secondes).
-
-Le RPO configure le service pour qu’il effectue des sauvegardes de fichier journal de toutes les bases de données sur l’instance gérée SQL avec Azure Arc toutes les 300 secondes ou 5 minutes par défaut. Cette valeur peut être remplacée par la valeur 0 pour désactiver les sauvegardes en cours ou par une valeur supérieure en secondes, selon l’exigence de RPO requise pour les bases de données sur l’instance SQL. 
-
-Vous pouvez désactiver les sauvegardes automatiques pour une instance spécifique de SQL Managed Instance avec Azure Arc ou modifier les paramètres par défaut. Le service PITR lui-même ne peut pas être désactivé.
-
-Vous pouvez modifier le RPO en changeant la valeur de la propriété `recoveryPointObjectiveInSeconds` comme suit :
+Vous pouvez obtenir plus de détails sur le travail en exécutant `kubectl describe` sur la tâche. Par exemple :
 
 ```console
-kubectl edit sqlmi <sqlinstancename>  -n <namespace> -o yaml
+kubectl describe sqlmirestoretask <nameoftask> -n <namespace>
 ```
 
-Cette commande ouvre la spec de ressource personnalisée pour SQL Managed Instance avec Azure Arc dans votre éditeur par défaut. Rechercher le paramètre `backup` sous `spec` :
+## <a name="configure-retention-period"></a>Configurer la période de rétention
 
-```json
-backup:
-  recoveryPointObjectiveInSeconds: 300
+La période de rétention d’une instance gérée SQL avec Azure Arc peut être reconfigurée à partir de sa valeur d’origine, comme suit :
+
+> [!WARNING] 
+> Si vous réduisez la période de rétention actuelle, vous perdez la possibilité de restaurer à des points dans le temps antérieurs à la nouvelle période de rétention. Les sauvegardes qui ne sont plus nécessaires pour fournir la fonctionnalité PITR dans la nouvelle période de rétention sont supprimées. Si vous augmentez la période de rétention actuelle, vous n’avez pas immédiatement la possibilité de restaurer à des points dans le temps antérieurs dans la nouvelle période de rétention. Vous obtenez cette possibilité dans le temps, car le système commence à conserver les sauvegardes plus longtemps.
+
+### <a name="change-retention-period-for-direct-connected-sql-managed-instance"></a>Modifier la période de rétention pour l’instance gérée SQL à **connexion directe**
+
+```azurecli
+az sql mi-arc edit  --name <SQLMI name> --custom-location dn-octbb-cl --resource-group dn-testdc --location eastus --retention-days 10
+#Example
+az sql mi-arc edit  --name sqlmi --custom-location dn-octbb-cl --resource-group dn-testdc --location eastus --retention-days 10
 ```
 
-Modifiez la valeur de `recoveryPointObjectiveInSeconds` dans l’éditeur et enregistrez les modifications pour que le nouveau paramètre prenne effet. 
+### <a name="change-retention-period-for-indirect-connected-sql-managed-instance"></a>Modifier la période de rétention pour l’instance gérée SQL à **connexion indirecte**
 
-> [!NOTE]
-> La modification du paramètre RPO entraîne le redémarrage du pod contenant l’instance gérée SQL avec Azure Arc. 
+```azurecli
+az sql mi-arc edit  --name <SQLMI name> --k8s-namespace <namespace>  --use-k8s --retention-days <retentiondays>
+#Example
+az sql mi-arc edit  --name sqlmi --k8s-namespace arc  --use-k8s --retention-days 10
+```
+
+## <a name="disable-automatic-backups"></a>Désactiver les sauvegardes automatiques
+
+Vous pouvez désactiver les sauvegardes automatiques pour une instance spécifique de SQL Managed Instance avec Azure Arc en définissant la propriété `--retention-days` sur 0, comme suit.
+
+> [!WARNING]
+> Si vous désactivez les sauvegardes automatiques pour une instance gérée SQL avec Azure Arc, toutes les sauvegardes automatiques configurées seront supprimées et vous perdrez la possibilité d’effectuer une restauration à un point dans le temps. Vous pouvez modifier la propriété `retention-days` pour relancer les sauvegardes automatiques si nécessaire.
+
+### <a name="disable-automatic-backups-for-direct-connected-sql-managed-instance"></a>Désactiver les sauvegardes automatiques pour une instance gérée SQL à connexion **directe**
+
+```azurecli
+az sql mi-arc edit  --name <SQLMI name> --custom-location dn-octbb-cl --resource-group dn-testdc --location eastus --retention-days 0
+#Example
+az sql mi-arc edit  --name sqlmi --custom-location dn-octbb-cl --resource-group dn-testdc --location eastus --retention-days 0
+```
+
+### <a name="disable-automatic-backups-for-indirect-connected-sql-managed-instance"></a>Désactiver les sauvegardes automatiques pour une instance gérée SQL à connexion **indirecte**
+
+```azurecli
+az sql mi-arc edit  --name <SQLMI name> --k8s-namespace <namespace>  --use-k8s --retention-days 0
+#Example
+az sql mi-arc edit  --name sqlmi --k8s-namespace arc  --use-k8s --retention-days 0
+```
 
 ## <a name="monitor-backups"></a>Surveiller les sauvegardes
 
 Les sauvegardes sont stockées sous le dossier `/var/opt/mssql/backups/archived/<dbname>/<datetime>`, où `<dbname>` est le nom de la base de données et `<datetime>` serait un timestamp au format UTC, pour le début de chaque sauvegarde complète. Chaque fois qu’une sauvegarde complète est lancée, un nouveau dossier est créé contenant la sauvegarde complète et toutes les sauvegardes différentielles et de fichier journal ultérieures. La sauvegarde complète la plus récente et ses sauvegardes différentielles et de fichier journal ultérieures sont stockées dans le dossier `/var/opt/mssql/backups/current/<dbname><datetime>`.
 
-### <a name="clean-up"></a>Nettoyer 
+## <a name="limitations"></a>Limites
 
-Si vous avez besoin de supprimer des sauvegardes plus anciennes, soit pour créer de l’espace, soit parce que vous n’en avez plus besoin, n’importe lequel des dossiers du dossier `/var/opt/mssql/backups/archived/` peut être supprimé. La suppression de dossiers au milieu d’une chronologie peut avoir un impact sur la possibilité d’effectuer une limite de restauration dans le temps pendant cette fenêtre. Supprimez d’abord les dossiers les plus anciens afin de permettre une restauration continue dans le temps. 
+La limite de restauration dans le temps vers SQL Managed Instance avec Azure Arc présente les limites suivantes :
+
+- La limite de restauration dans le temps de l’ensemble d’une instance gérée SQL avec Azure Arc n’est pas possible. 
+- Une instance gérée SQL avec Azure Arc qui est déployée avec une haute disponibilité (préversion) ne prend pas actuellement en charge la limite de restauration dans le temps.
+- Vous pouvez uniquement effectuer la restauration vers la même instance gérée SQL avec Azure Arc.
+- La suppression et la création de différentes bases de données portant le même nom ne sont pas gérées correctement pour le moment.
+- Si vous fournissez une date future lors de l’exécution de l’opération de restauration à l’aide de ```--dry-run```, une erreur se produit
+
+
+
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-[En savoir plus sur les fonctionnalités et les capacités d’Azure Arc enabled SQL Managed Instance](managed-instance-features.md)
+[En savoir plus sur les Fonctionnalités et les Capacités de l’instance managée SQL compatible avec Azure Arc ](managed-instance-features.md)
 
 [Commencer en créant un contrôleur de données](create-data-controller.md)
 
-[Vous avez déjà créé un contrôleur de données ? Créez une instance Azure Arc enabled SQL Managed Instance](create-sql-managed-instance.md)
+[Avez-vous déjà créé un Contrôleur de données ? Créez une Instance managée SQL compatible avec Azure Arc](create-sql-managed-instance.md)
