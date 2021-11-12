@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 644857c552b6e54d94746746f1c2ba9a230baeb6
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 2636638bcab5577bee2f4c07bae3653cc4151248
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181677"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421687"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Mise à l’échelle automatique (préversion) pour les pools d’hôtes Azure Virtual Desktop
 
@@ -27,7 +27,8 @@ La fonctionnalité de mise à l’échelle automatique (préversion) vous permet
 - Limites de session par hôte de session
 
 >[!NOTE]
->Windows Virtual Desktop (classique) ne prend pas en charge la fonctionnalité de mise à l’échelle automatique. Il ne prend pas non plus en charge la mise à l’échelle des disques éphémères.
+> - Azure Virtual Desktop (classique) ne prend pas en charge la fonctionnalité de mise à l’échelle automatique. 
+> - Autsoscale ne prend pas en charge la mise à l’échelle des disques éphémères.
 
 Pour de meilleurs résultats, nous vous recommandons d’utiliser la mise à l’échelle automatique avec les machines virtuelles que vous avez déployées avec des modèles Azure Resource Manager Azure Virtual Desktop ou des outils internes de Microsoft.
 
@@ -36,7 +37,7 @@ Pour de meilleurs résultats, nous vous recommandons d’utiliser la mise à l�
 >
 > - Vous pouvez utiliser la mise à l’échelle automatique seulement dans le cloud public Azure.
 > - Vous pouvez configurer la mise à l’échelle automatique seulement avec le portail Azure.
-> - Vous pouvez déployer le plan de mise à l’échelle seulement dans les régions USA et Europe.
+> - Vous pouvez déployer le plan de mise à l’échelle seulement dans les régions européennes et aux États-Unis.
 
 ## <a name="requirements"></a>Spécifications
 
@@ -50,9 +51,9 @@ Avant de créer votre premier plan de mise à l’échelle, veillez à suivre ce
 
 Pour commencer à créer un plan de mise à l’échelle, vous devez d’abord créer un rôle RBAC personnalisé dans votre abonnement. Ce rôle va permettre à Windows Virtual Desktop de gérer la puissance de toutes les machines virtuelles de votre abonnement. Il permet également au service d’appliquer des actions sur les pools d’hôtes et sur les machines virtuelles quand il n’y a aucune session utilisateur active.
 
-Pour créer le rôle personnalisé, suivez les instructions de [Rôles personnalisés d’Azure](../role-based-access-control/custom-roles.md) en utilisant ce modèle JSON :
-
+Pour créer le rôle personnalisé, suivez les instructions fournies dans [Rôles personnalisés d’Azure](../role-based-access-control/custom-roles.md) en utilisant le modèle JSON suivant. Ce modèle comprend déjà les autorisations dont vous avez besoin. Pour obtenir des instructions plus détaillées, consultez [Assigner des rôles personnalisés avec le Portail Azure](#assign-custom-roles-with-the-azure-portal).
 ```json
+ {
  "properties": {
  "roleName": "Autoscale",
  "description": "Friendly description.",
@@ -62,19 +63,20 @@ Pour créer le rôle personnalisé, suivez les instructions de [Rôles personnal
   "permissions": [
    {
    "actions": [
-                      "Microsoft.Insights/eventtypes/values/read",
-           "Microsoft.Compute/virtualMachines/deallocate/action",
-                      "Microsoft.Compute/virtualMachines/restart/action",
-                      "Microsoft.Compute/virtualMachines/powerOff/action",
-                      "Microsoft.Compute/virtualMachines/start/action",
-                      "Microsoft.Compute/virtualMachines/read",
-                      "Microsoft.DesktopVirtualization/hostpools/read",
-                      "Microsoft.DesktopVirtualization/hostpools/write",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-                      "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",                   "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
-"Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
+                 "Microsoft.Insights/eventtypes/values/read",
+                 "Microsoft.Compute/virtualMachines/deallocate/action",
+                 "Microsoft.Compute/virtualMachines/restart/action",
+                 "Microsoft.Compute/virtualMachines/powerOff/action",
+                 "Microsoft.Compute/virtualMachines/start/action",
+                 "Microsoft.Compute/virtualMachines/read",
+                 "Microsoft.DesktopVirtualization/hostpools/read",
+                 "Microsoft.DesktopVirtualization/hostpools/write",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
 ],
   "notActions": [],
   "dataActions": [],
@@ -85,11 +87,9 @@ Pour créer le rôle personnalisé, suivez les instructions de [Rôles personnal
 }
 ```
 
-## <a name="assign-custom-roles"></a>Attribuer des rôles personnalisés
+## <a name="assign-custom-roles-with-the-azure-portal"></a>Attribuer des rôles personnalisés avec le Portail Azure
 
-Ensuite, vous devez utiliser le portail Azure pour attribuer à votre abonnement le rôle personnalisé que vous avez créé.
-
-Pour attribuer le rôle personnalisé :
+Pour créer et attribuer le rôle personnalisé à votre abonnement avec le Portail Azure :
 
 1. Ouvrez le portail Azure et accédez à **Abonnements**.
 
@@ -103,18 +103,20 @@ Pour attribuer le rôle personnalisé :
 4. Sous l’onglet **Autorisations**, ajoutez les autorisations suivantes à l’abonnement auquel vous attribuez le rôle :
 
     ```azcopy
-    "Microsoft.Compute/virtualMachines/deallocate/action", 
-    "Microsoft.Compute/virtualMachines/restart/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action", 
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/read",
-    "Microsoft.DesktopVirtualization/hostpools/read",
-    "Microsoft.DesktopVirtualization/hostpools/write",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action",
-    "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read",
+        "Microsoft.Insights/eventtypes/values/read"
+                 "Microsoft.Compute/virtualMachines/deallocate/action"
+                 "Microsoft.Compute/virtualMachines/restart/action"
+                 "Microsoft.Compute/virtualMachines/powerOff/action"
+                 "Microsoft.Compute/virtualMachines/start/action"
+                 "Microsoft.Compute/virtualMachines/read"
+                 "Microsoft.DesktopVirtualization/hostpools/read"
+                 "Microsoft.DesktopVirtualization/hostpools/write"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/read"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/write"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action"
+                 "Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read"
     ```
 
 5. Lorsque vous avez terminé, sélectionnez **OK**.
@@ -125,29 +127,14 @@ Pour attribuer le rôle personnalisé afin d’accorder l’accès :
 
 1. Sous l’**onglet Contrôle d’accès (IAM)** , sélectionnez **Ajouter des attributions de rôle**.
 
-2. Sélectionnez le site que vous venez de créer.
+2. Sélectionnez le rôle que vous venez de créer et passez à l’écran suivant.
 
-3. Dans la barre de recherche, entrez et sélectionnez **Windows Virtual Desktop**, comme illustré dans la capture d’écran suivante.
+3. Cliquez sur **+ Sélectionner des membres**. Dans la barre de recherche, entrez et sélectionnez **Windows Virtual Desktop**, comme illustré dans la capture d’écran suivante. Si vous disposez d’un déploiement Azure Virtual Desktop (classique) et d’un environnement Azure Virtual Desktop avec des objets Azure Resource Manager, vous verrez deux applications portant le même nom. Sélectionnez-les tous les deux.
 
     > [!div class="mx-imgBorder"]
     > ![Capture d’écran du menu Ajouter une attribution de rôle. Le champ de sélection est mis en évidence en rouge, avec l’utilisateur entrant « Windows Virtual Desktop » dans le champ de recherche.](media/search-for-role.png)
 
-Quand vous ajoutez le rôle personnalisé dans le portail Azure, vérifiez que vous avez aussi sélectionné les autorisations suivantes :
-
-   - Microsoft.Compute/virtualMachines/deallocate/action
-   - Microsoft.Compute/virtualMachines/restart/action
-   - Microsoft.Compute/virtualMachines/powerOff/action
-   - Microsoft.Compute/virtualMachines/start/action 
-   - Microsoft.Compute/virtualMachines/read
-   - Microsoft.DesktopVirtualization/hostpools/read
-   - Microsoft.DesktopVirtualization/hostpools/write
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/read
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/write
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/delete
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/action
-   - Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/read
-
-Ce sont les mêmes autorisations que celles que vous avez entrées à l’étape 4.
+4. Sélectionnez **Vérifier + attribuer** pour terminer l’attribution.
 
 ## <a name="how-creating-a-scaling-plan-works"></a>Fonctionnement de la création d’un plan de mise à l’échelle
 
@@ -194,7 +181,7 @@ Pour créer un plan de mise à l’échelle :
 
 6. Si vous le souhaitez, vous pouvez également ajouter un nom « convivial » qui sera affiché pour vos utilisateurs et une description pour votre plan.
 
-7. Pour **Région**, sélectionnez une région pour votre plan de mise à l’échelle. Les métadonnées pour l’objet seront stockées dans la zone géographique associée à la région. Actuellement, la mise à l’échelle automatique ne prend en charge seulement les régions USA Centre et USA Est 2. Pour en savoir plus sur les régions, consultez [Emplacements des données](data-locations.md).
+7. Pour **Région**, sélectionnez une région pour votre plan de mise à l’échelle. Les métadonnées pour l’objet seront stockées dans la zone géographique associée à la région. Pour en savoir plus sur les régions, consultez [Emplacements des données](data-locations.md).
 
 8. Pour **Fuseau horaire**, sélectionnez le fuseau horaire à utiliser avec votre plan.
 
@@ -210,7 +197,7 @@ Pour créer ou modifier une planification :
 
 1. Sous l’onglet **Planifications**, sélectionnez **Ajouter une planification**.
 
-2. Entrez un nom pour votre planification dans le champ **Nom**.
+2. Entrez un nom pour votre planification dans le champ **Nom de la planification**.
 
 3. Dans le champ **Répéter**, sélectionnez les jours où votre planification va se répéter.
 
@@ -223,13 +210,13 @@ Pour créer ou modifier une planification :
         >[!NOTE]
         >La préférence d’équilibrage de charge que vous sélectionnez ici va remplacer celle que vous avez sélectionnée pour les paramètres de votre pool d’hôtes d’origine.
 
-    - Pour les **Heures de pointe**, entrez une heure de début pour la période où le taux d’utilisation est le plus élevé au cours de la journée. Veillez à ce que l’heure soit dans le même fuseau horaire que celui que vous avez spécifié pour votre plan de mise à l’échelle. Cette heure correspond également à l’heure de fin de votre phase d’augmentation.
-
     - Pour **Pourcentage minimal de machines virtuelles de l’hôte de session**, entrez la quantité de ressources de l’hôte de session que vous souhaitez utiliser pendant les heures d’augmentation et les heures de pointe. Par exemple, si vous choisissez **10 %** et que votre pool d’hôtes a 10 hôtes de session, la mise à l’échelle automatique va conserver un hôte de session disponible pour les connexions utilisateur à tout moment pendant les heures d’augmentation et les heures de pointe.
     
     - Pour **Seuil de capacité**, entrez le pourcentage d’utilisation du pool d’hôtes qui va déclencher le début des phases d’augmentation et de pointe. Par exemple, si vous choisissez **60 %** pour un pool d’hôtes qui peut gérer 100 sessions, la mise à l’échelle automatique va activer des hôtes supplémentaires seulement une fois que le pool d’hôtes dépasse 60 sessions.
 
 5. Sous l’onglet **Heures de pointe**, renseignez les champs suivants :
+
+    - Pour le champ **Heures de début**, entrez une heure de début pour la période où le taux d’utilisation est le plus élevé au cours de la journée. Veillez à ce que l’heure soit dans le même fuseau horaire que celui que vous avez spécifié pour votre plan de mise à l’échelle. Cette heure correspond également à l’heure de fin de votre phase d’augmentation.
 
     - Pour **Équilibrage de charge**, vous pouvez sélectionner l’équilibrage de charge en largeur d’abord ou l’équilibrage de charge en profondeur d’abord. L’équilibrage de charge en largeur d’abord répartit les nouvelles sessions utilisateur entre toutes les sessions disponibles dans le pool d’hôtes. L’équilibrage de charge en profondeur d’abord répartit les nouvelles sessions utilisateur sur un hôte de session disponible qui a le plus grand nombre de connexions sans avoir encore atteint sa limite maximale de sessions. Pour plus d’informations sur les types d’équilibrage de charge, consultez [Configurer la méthode d’équilibrage de charge d’Azure Virtual Desktop](configure-host-pool-load-balancing.md).
 

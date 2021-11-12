@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b639c4193a246ccf7f57520089132f0f49d16ebb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 25eb702d61b98d9c418e20763e95a948cc2cbf05
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062431"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566791"
 ---
 # <a name="cli-v2-attached-virtual-machine-yaml-schema"></a>Schéma YAML de la machine virtuelle attachée à CLI (v2)
 
@@ -34,7 +34,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 | `resource_id` | string | **Obligatoire.** ID de ressource complet de la machine virtuelle Azure à attacher à l’espace de travail en tant que cible de calcul. | | |
 | `ssh_settings` | object | Paramètres SSH pour la connexion à la machine virtuelle. | | |
 | `ssh_settings.admin_username` | string | Nom du compte d’utilisateur administrateur qui peut être utilisé pour établir une connexion SSH à la machine virtuelle. | | |
-| `ssh_settings.admin_password` | string | Mot de passe du compte d’utilisateur administrateur. **`admin_password` ou `ssh_private_key_file` est obligatoire**. | | |
+| `ssh_settings.admin_password` | string | Mot de passe du compte d’utilisateur administrateur. **`admin_password` ou `ssh_private_key_file` est obligatoire.** | | |
 | `ssh_settings.ssh_private_key_file` | string | Chemin d’accès local au fichier de clé privée SSH du compte d’utilisateur administrateur. **`admin_password` ou `ssh_private_key_file` est obligatoire.** | | |
 | `ssh_settings.ssh_port` | entier | Port SSH sur la machine virtuelle. | | `22` |
 
@@ -48,7 +48,7 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-basic"></a>YAML : de base
 
-:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/vm-attach.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/vm-attach.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

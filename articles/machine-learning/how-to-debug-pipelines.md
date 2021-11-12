@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 author: lobrien
 ms.author: laobri
-ms.date: 10/22/2020
+ms.date: 10/21/2021
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: f6fc3ad230c4da9f44c536ec61d8c840374c3ed6
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 0d25bcabc1c3108ed1899110a61da22551262bf8
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429031"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559121"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Résolution des problèmes de pipeline Machine Learning
 
@@ -238,10 +238,10 @@ Pour dépanner et déboguer des points de terminaison en temps réel dans le con
 
 ### <a name="get-logs-from-the-authoring-page"></a>Obtenir des journaux à partir de la page de création
 
-Quand vous publiez une exécution de pipeline en restant dans la page de création, vous voyez les fichiers journaux générés pour chaque module à mesure que chaque module termine son exécution.
+Quand vous publiez une exécution de pipeline en restant dans la page de création, vous voyez les fichiers journaux générés pour chaque composant à mesure que chaque composant termine son exécution.
 
-1. Sélectionnez un module dont l’exécution est terminée dans le canevas de création.
-1. Dans le volet droit du module, accédez à l’onglet **Sorties + journaux**.
+1. Sélectionnez un composant dont l’exécution est terminée dans le canevas de création.
+1. Dans le volet droit du composant, accédez à l’onglet **Sorties + journaux**.
 1. Développez le volet droit, puis sélectionnez le fichier **70_driver_log.txt** pour afficher le fichier dans le navigateur. Vous pouvez également télécharger les journaux localement.
 
     ![Volet de sortie développé dans le concepteur](./media/how-to-debug-pipelines/designer-logs.png)
@@ -254,8 +254,8 @@ Vous pouvez également trouver les fichiers journaux d’exécutions spécifique
 
     ![Page d’exécutions de pipeline](./media/how-to-debug-pipelines/designer-pipelines.png)
 
-1. Sélectionnez un module dans le volet d’aperçu.
-1. Dans le volet droit du module, accédez à l’onglet **Sorties + journaux**.
+1. Sélectionnez un composant dans le volet de visualisation.
+1. Dans le volet droit du composant, accédez à l’onglet **Sorties + journaux**.
 1. Développez le volet droit pour afficher le fichier **70_driver_log.txt** dans le navigateur, ou sélectionnez le fichier pour télécharger les journaux localement.
 
 > [!IMPORTANT]

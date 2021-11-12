@@ -1,26 +1,26 @@
 ---
-title: Résolution des problèmes de déploiement de points de terminaison en ligne managés (préversion)
+title: Résolution des problèmes de déploiement de points de terminaison en ligne (préversion)
 titleSuffix: Azure Machine Learning
-description: Découvrez comment résoudre certaines erreurs de déploiement et de scoring courantes avec des points de terminaison en ligne managés.
+description: Découvrez comment résoudre certaines erreurs de déploiement et de scoring courantes avec des points de terminaison en ligne.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 author: petrodeg
 ms.author: petrodeg
 ms.reviewer: laobri
-ms.date: 05/13/2021
+ms.date: 11/03/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: e4c4b611b4316f0e9a950c9f13144e37c9c1762b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 06c8c9c128528b3e50c49e9c29a0849c9640d7eb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425750"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560679"
 ---
-# <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>Résolution des problèmes de déploiement et de scoring de points de terminaison en ligne managés (préversion)
+# <a name="troubleshooting-online-endpoints-deployment-and-scoring-preview"></a>Résolution des problèmes de déploiement et de scoring de points de terminaison en ligne (préversion)
 
-Découvrez comment résoudre les problèmes courants de déploiement et de scoring de points de terminaison en ligne managés Azure Machine Learning (préversion).
+Découvrez comment résoudre les problèmes courants de déploiement et de scoring de points de terminaison en ligne Azure Machine Learning (préversion).
 
 La structure de ce document est axée sur l’approche à adopter pour la résolution des problèmes :
 
@@ -42,11 +42,15 @@ La section [Codes d’état HTTP](#http-status-codes) explique comment les erreu
 
 Le déploiement local consiste à déployer un modèle dans un environnement Docker local. Le déploiement local est utile pour le test et le débogage avant le déploiement dans le cloud.
 
+> [!TIP]
+> Utilisez Visual Studio Code pour tester et déboguer vos points de terminaison localement. Pour plus d’informations, consultez [Déboguer les points de terminaison en ligne localement dans Visual Studio Code](how-to-debug-managed-online-endpoints-visual-studio-code.md).
+
 Le déploiement local prend en charge la création, la mise à jour et la suppression d’un point de terminaison local. Il vous permet également d’appeler et d’obtenir des journaux à partir du point de terminaison. Pour utiliser le déploiement local, ajoutez `--local` à la commande CLI appropriée :
 
 ```azurecli
-az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
+az ml online-deployment create --endpoint-name <endpoint-name> -n <deployment-name> -f <spec_file.yaml> --local
 ```
+
 Le déploiement local inclut les étapes suivantes :
 
 - Docker génère une nouvelle image conteneur ou tire (pull) une image existante du cache Docker local. Si une image existante correspond à la partie environnement du fichier de spécification, elle est utilisée.
@@ -61,13 +65,13 @@ Vous ne pouvez pas accéder directement à la machine virtuelle sur laquelle le 
 Pour voir la sortie de journal du conteneur, utilisez la commande CLI suivante :
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> -d <deployment-name> -l 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ou
 
 ```azurecli
-    az ml endpoint get-logs --name <endpoint-name> --deployment <deployment-name> --lines 100
+    az ml online-deployment get-logs --endpoint-name <endpoint-name> --name <deployment-name> --lines 100
 ```
 
 Ajoutez `--resource-group` et `--workspace-name` aux commandes ci-dessus si vous n’avez pas déjà défini ces paramètres avec `az configure`.
@@ -75,7 +79,7 @@ Ajoutez `--resource-group` et `--workspace-name` aux commandes ci-dessus si vous
 Pour obtenir des informations sur la définition de ces paramètres, et si des valeurs sont déjà définies, exécutez :
 
 ```azurecli
-az ml endpoint get-logs -h
+az ml online-deployment get-logs -h
 ```
 
 Par défaut, les journaux sont tirés du serveur d’inférence. Les journaux incluent le journal de console du serveur d’inférence, qui contient les instructions print/log de votre code « score.py ».
@@ -129,7 +133,7 @@ Par exemple, si l’image est `testacr.azurecr.io/azureml/azureml_92a029f831ce58
 Pour obtenir des informations plus détaillées sur cette erreur, exécutez :
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --tail 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_1300-unable-to-download-user-modelcode-artifacts"></a>ERR_1300 : Impossible de télécharger les artefacts de modèle/code utilisateur
@@ -160,7 +164,7 @@ Après avoir provisionné la ressource de calcul, durant la création du déploi
 Pour obtenir des informations plus détaillées sur cette erreur, exécutez :
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --lines 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350 : Impossible de télécharger le modèle utilisateur, espace insuffisant sur le disque
@@ -176,7 +180,7 @@ Cette erreur indique que ce conteneur n’a pas pu démarrer, ce qui signifie qu
 Pour obtenir la raison exacte d’une erreur, exécutez : 
 
 ```azurecli
-az ml endpoint get-logs
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_2101-kubernetes-unschedulable"></a>ERR_2101 : Kubernetes non planifiable
@@ -203,9 +207,13 @@ Pour exécuter le code `score.py` fourni dans le cadre du déploiement, Azure cr
 
 Nous faisons de notre mieux pour fournir un service stable et fiable. Cependant, il arrive que les choses ne se passent pas comme prévu. Si vous recevez cette erreur, cela signifie qu’il y a un problème de notre côté et que nous devons le corriger. Envoyez un [ticket de support client](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) avec toutes les informations associées et nous résoudrons le problème.  
 
+## <a name="autoscaling-issues"></a>Problèmes de mise à l’échelle automatique
+
+Si vous rencontrez des problèmes de mise à l’échelle automatique, consultez \[Résolution des problèmes liés à la mise à l’échelle automatique Azure](../azure-monitor/autoscale/autoscale-troubleshoot.md).
+
 ## <a name="http-status-codes"></a>Codes d’état HTTP
 
-Quand vous accédez à des points de terminaison en ligne managés avec des requêtes REST, les codes d’état retournés correspondent aux [codes d’état HTTP](https://aka.ms/http-status-codes) standard. Vous trouverez ci-dessous des informations détaillées sur la façon dont les erreurs d’appel et de prédiction de points de terminaison managés sont mappées aux codes d’état HTTP.
+Quand vous accédez à des points de terminaison en ligne avec des requêtes REST, les codes d’état retournés correspondent aux [codes d’état HTTP](https://aka.ms/http-status-codes) standard. Vous trouverez ci-dessous des informations détaillées sur la façon dont les erreurs d’appel et de prédiction de points de terminaison sont mappées aux codes d’état HTTP.
 
 | Code d’état| Motif |  Raison pour laquelle ce code peut être retourné |
 | --- | --- | --- |
@@ -214,10 +222,10 @@ Quand vous accédez à des points de terminaison en ligne managés avec des requ
 | 404 | Introuvable | Votre URL est incorrecte. |
 | 408 | Délai d’expiration de la demande | L’exécution du modèle a dépassé le délai d’expiration spécifié dans `request_timeout_ms` sous `request_settings` dans la configuration du déploiement de votre modèle.|
 | 413 | Charge utile trop importante | La charge utile de votre requête est supérieure à 1,5 mégaoctet. |
-| 424 | Erreur de modèle ; code d’origine=`<original code>` | Si votre conteneur de modèle retourne une réponse autre que 200, Azure retourne un code 424. |
+| 424 | Erreur de modèle | Si votre conteneur de modèle retourne une réponse autre que 200, Azure retourne un code 424. Vérifiez les en-têtes de réponse `ms-azureml-model-error-statuscode` et `ms-azureml-model-error-reason` pour plus d’informations. |
 | 424 | Charge utile de la réponse trop importante | Si votre conteneur retourne une charge utile supérieure à 1,5 mégaoctet, Azure retourne un code 424. |
 | 429 | Limitation du débit | Vous avez tenté d’envoyer plus de 100 requêtes par seconde à votre point de terminaison. |
-| 429 | Requêtes en attente trop nombreuses | Votre modèle obtient plus de requêtes qu’il ne peut en gérer. Nous autorisons 2 *`max_concurrent_requests_per_instance`* `instance_count` requêtes simultanées. Les requêtes supplémentaires sont rejetées. Vous pouvez vérifier ces paramètres dans la configuration du déploiement de votre modèle sous `request_settings` et `scale_settings`. Si vous utilisez le scaling automatique, votre modèle obtient les requêtes trop rapidement par rapport à la vitesse de scale-up du système. Avec le scaling automatique, vous pouvez essayer de renvoyer les requêtes avec le [backoff exponentiel](https://aka.ms/exponential-backoff). Ceci peut donner au système le temps de s’ajuster. |
+| 429 | Requêtes en attente trop nombreuses | Votre modèle obtient plus de requêtes qu’il ne peut en gérer. Nous autorisons 2 * `max_concurrent_requests_per_instance` * `instance_count` requêtes simultanées. Les requêtes supplémentaires sont rejetées. Vous pouvez vérifier ces paramètres dans la configuration du déploiement de votre modèle sous `request_settings` et `scale_settings`. Si vous utilisez le scaling automatique, votre modèle obtient les requêtes trop rapidement par rapport à la vitesse de scale-up du système. Avec le scaling automatique, vous pouvez essayer de renvoyer les requêtes avec le [backoff exponentiel](https://aka.ms/exponential-backoff). Ceci peut donner au système le temps de s’ajuster. |
 | 500 | Erreur interne du serveur | Échec de l’infrastructure provisionnée Azure ML. |
 
 ## <a name="next-steps"></a>Étapes suivantes

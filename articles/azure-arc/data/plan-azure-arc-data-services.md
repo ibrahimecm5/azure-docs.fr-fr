@@ -6,14 +6,14 @@ ms.service: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: ffb57d83493aee607fa89720d978a00b25e44e24
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 15688b89b319b884707e9e6d8faa9a13de3233e0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426846"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563337"
 ---
 # <a name="plan-an-azure-arc-enabled-data-services-deployment"></a>Planifier un déploiement des services de données Azure Arc
 
@@ -33,7 +33,7 @@ Consultez les articles suivants :
 
 Vérifiez que :
 
-- L’[extension CLI arcdata](install-arcdata-extension.md) est installée.
+- L’[`arcdata`extension CLI](install-arcdata-extension.md) est installée.
 - Les autres [outils clients](install-client-tools.md) sont installés.
 - Vous avez accès au cluster Kubernetes.
 - Votre fichier *kubeconfig* est configuré. Il doit pointer vers le cluster Kubernetes sur lequel vous souhaitez effectuer le déploiement. Pour vérifier le contexte actuel du cluster, exécutez la commande suivante :
@@ -82,24 +82,30 @@ Lorsque vous créez des services de données Azure Arc, indépendamment du servi
 - **Nom du groupe de ressources Azure** : nom du groupe de ressources dans lequel vous souhaitez que soit créée la ressource de contrôleur de données dans Azure. Toutes les instances managées par Azure SQL et les groupes de serveurs hyperscale Azure Database pour PostgreSQL sont également créés dans et facturés pour ce groupe de ressources.
 - **Emplacement Azure** : emplacement Azure où les métadonnées de la ressource de contrôleur de données seront stockées. Pour obtenir la liste des régions disponibles, consultez la page [Disponibilité des produits par région](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) pour l’infrastructure globale Azure. Les métadonnées et les informations de facturation relatives aux ressources Azure gérées par le contrôleur de données que vous déployez sont stockées uniquement à l’emplacement dans Azure que vous spécifiez comme paramètre d’emplacement. Si vous effectuez le déploiement en mode de connectivité directe, le paramètre d’emplacement du contrôleur de données est le même que celui de votre ressource d’emplacement personnalisé ciblé.
 - **Informations sur le principal du service** : 
-   - Si vous effectuez un déploiement en mode de connectivité directe lors de la création du contrôleur de données Azure Arc, vous avez besoin des informations du principal du service. Pour plus d’informations, consultez la section « Attribuer des rôles au principal du service » de [Charger les données d’utilisation, les métriques et les journaux sur Azure](upload-metrics-and-logs-to-azure-monitor.md). 
-   - Pour le mode de connectivité indirecte, le principal du service est toujours nécessaire pour l’exportation et le chargement manuels, mais après la création du contrôleur de données Azure Arc.
-- **Infrastructure** : à des fins de facturation, vous devez indiquer l’infrastructure sur laquelle vous exécutez les services de données avec Azure Arc. Les options sont *alibaba*, *aws*, *azure*, *gcp*, *onpremises* ou *other*.
+   - Si vous effectuez un déploiement en mode de connectivité **indirecte**, vous aurez besoin d’informations de principal du service pour télécharger les données d’utilisation et de métriques. Pour plus d’informations, consultez la section « Attribuer des rôles au principal du service » de [Charger les données d’utilisation, les métriques et les journaux sur Azure](upload-metrics-and-logs-to-azure-monitor.md). 
+
+- **Infrastructure** : à des fins de facturation, vous devez indiquer l’infrastructure sur laquelle vous exécutez les services de données avec Azure Arc. Les options sont :
+- `alibaba`
+- `aws`
+- `azure`
+- `gcp`
+- `onpremises`
+- `other`
 
 ## <a name="additional-concepts-for-direct-connectivity-mode"></a>Concepts supplémentaires pour le mode de connectivité directe
 
-Comme nous l’avons expliqué dans [Modes et spécifications de la connectivité](./connectivity.md), vous pouvez déployer le contrôleur de données Azure Arc en mode de connectivité directe ou indirecte. Le déploiement des services de données Azure Arc en mode de connectivité directe demande une bonne compréhension de certains concepts et considérations supplémentaires :
+Comme expliqué dans [Modes et spécifications de la connectivité](./connectivity.md), vous pouvez déployer le contrôleur de données Azure Arc en mode de connectivité **directe** ou **indirecte**. Le déploiement des services de données Azure Arc en mode de connectivité directe nécessite des concepts et considérations supplémentaires :
 
-* Tout d’abord, le cluster Kubernetes dans lequel les services de données avec Azure Arc seront déployés doit être un [cluster Kubernetes avec Azure Arc](../kubernetes/overview.md). Le déploiement du cluster Kubernetes sur Azure Arc fournit une connectivité Azure avec des fonctionnalités telles que le chargement automatique des informations d’utilisation, des journaux et des métriques. En connectant votre cluster Kubernetes à Azure, vous pouvez également déployer et gérer les services de données Azure Arc sur votre cluster directement à partir du portail Azure. Pour découvrir comment, consultez [Connecter votre cluster à Azure](../kubernetes/quickstart-connect-cluster.md).
+* Tout d’abord, le cluster Kubernetes dans lequel les services de données avec Azure Arc seront déployés doit être un [cluster Kubernetes avec Azure Arc](../kubernetes/overview.md). En connectant votre cluster Kubernetes à Azure, vous pouvez déployer et gérer les services de données Azure Arc sur votre cluster directement à partir du Portail Azure, télécharger automatiquement votre utilisation, vos journaux et vos mesures dans Azure et bénéficier de plusieurs autres avantages Azure. Pour découvrir comment, consultez [Connecter votre cluster à Azure](../kubernetes/quickstart-connect-cluster.md).
 
-* Une fois que le cluster Kubernetes est déployé sur Azure Arc, le déploiement des services de données compatibles Azure Arc sur un cluster Kubernetes compatible Azure Arc implique les opérations suivantes :
-   1. Créez l’extension des services de données Arc. Pour en savoir plus, consultez [Extensions de cluster sur Kubernetes avec Azure Arc](../kubernetes/conceptual-extensions.md).
+* Une fois que le cluster Kubernetes est compatible avec Azure Arc, déployez les services de données Azure Arc en procédant comme suit :
+   1. Créez l’extension des services de données Azure Arc. Pour en savoir plus, consultez [Extensions de cluster sur Kubernetes avec Azure Arc](../kubernetes/conceptual-extensions.md).
    1. Créer un emplacement personnalisé. Pour en savoir plus, consultez [Emplacements personnalisés sur Kubernetes avec Azure Arc](../kubernetes/conceptual-custom-locations.md).
    1. Créez le contrôleur de données Azure Arc.
 
    Vous pouvez effectuer ces trois étapes en une seule à l’aide de l’Assistant Création de contrôleur de données Azure Arc dans le portail Azure.
 
-Une fois le contrôleur de données Azure Arc installé, vous pouvez accéder à des services de données tels qu’une SQL Managed Instance compatible Azure Arc ou Hyperscale PostgreSQL.
+Une fois le contrôleur de données Azure Arc installé, vous pouvez créer et accéder à des services de données tels qu’une instance managée SQL ou une instance PostgreSQL Hyperscale compatibles avec Azure Arc.
 
 
 ## <a name="next-steps"></a>Étapes suivantes

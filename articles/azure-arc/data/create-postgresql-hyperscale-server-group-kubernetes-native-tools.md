@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 620e304ffa7fae9b12a26c3ba15f57e33aaeed6c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 20214832a79dcf22bd14f6c6594f37a7036669fe
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664501"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558855"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Créer un groupe de serveurs PostgreSQL Hyperscale à l’aide des outils Kubernetes
 
@@ -30,13 +30,13 @@ Pour créer un groupe de serveurs PostgreSQL Hyperscale à l’aide des outils K
 
 ## <a name="overview"></a>Vue d’ensemble
 
-Pour créer un groupe de serveurs PostgreSQL Hyperscale, vous devez créer un secret Kubernetes pour stocker votre connexion d’administrateur postgres et votre mot de passe de manière sécurisée, ainsi qu’une ressource personnalisée de groupe de serveurs PostgreSQL Hyperscale basée sur les définitions de ressources personnalisées postgresql-12 ou postgresql-11.
+Pour créer un groupe de serveurs PostgreSQL Hyperscale, vous devez créer un secret Kubernetes pour stocker votre connexion d’administrateur postgres et votre mot de passe de manière sécurisée, ainsi qu’une ressource personnalisée de groupe de serveurs PostgreSQL Hyperscale basée sur les définitions de ressources personnalisées _postgresqls_.
 
 ## <a name="create-a-yaml-file"></a>Créer un fichier YAML
 
 Vous pouvez utiliser le [modèle de fichier yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) comme point de départ pour créer votre propre fichier yaml de groupe de serveurs PostgreSQL Hyperscale personnalisé.  Téléchargez ce fichier sur votre ordinateur local et ouvrez-le dans un éditeur de texte.  Il est utile d’utiliser un éditeur de texte tel que [VS Code](https://code.visualstudio.com/download) qui prend en charge la mise en surbrillance de la syntaxe et le linting pour les fichiers YAML.
 
-Voici un exemple de fichier YAML :
+**Example de fichier yaml** :
 
 ```yaml
 apiVersion: v1
@@ -111,7 +111,7 @@ echo -n '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Personnalisation du nom
 
-Le modèle a la valeur « pg1 » pour l’attribut de nom.  Vous pouvez modifier cela, mais il doit s’agir de caractères qui respectent les normes DNS en matière d’attribution de noms.  Vous devez également modifier le nom du secret pour qu’il corresponde.  Par exemple, si vous modifiez le nom du groupe de serveurs PostgreSQL Hyperscale en « pg2 », vous devez modifier le nom du secret de « pg1-login-secret » en « pg2-login-secret »
+Le modèle a la valeur `pg1` pour l’attribut de nom.  Vous pouvez le modifier, mais il doit contenir des caractères qui respectent les normes DNS en matière d’attribution de noms. Si vous modifiez le nom, modifiez le nom du secret pour qu’il corresponde.  Par exemple, si vous modifiez le nom du groupe de serveurs PostgreSQL Hyperscale en `pg2`, vous devez modifier le nom du secret de `pg1-login-secret` à `pg2-login-secret`
 
 ### <a name="customizing-the-engine-version"></a>Personnalisation de la version de moteur
 
@@ -128,7 +128,7 @@ Conditions requises pour les requêtes et les limites de ressources :
 - La valeur limite des cœurs est **obligatoire** à des fins de facturation.
 - Les autres requêtes et limites de ressources sont facultatives.
 - La limite et la requête de cœurs doivent être une valeur entière positive, le cas échéant.
-- Un cœur au minimum est obligatoire pour la requête de cœurs, le cas échéant.
+- Un cœur au minimum est nécessaire pour la requête de cœurs, le cas échéant.
 - Le format de la valeur de mémoire respecte la notation Kubernetes.  
 
 ### <a name="customizing-service-type"></a>Personnalisation du type de service
@@ -137,7 +137,7 @@ Le type de service peut être modifié en NodePort si vous le souhaitez.  Un num
 
 ### <a name="customizing-storage"></a>Personnalisation du stockage
 
-Vous pouvez personnaliser les classes de stockage en fonction de votre environnement.  Si vous n’êtes pas sûr des classes de stockage disponibles, vous pouvez exécuter la commande `kubectl get storageclass` pour les afficher.  Le modèle a une valeur par défaut « default ».  Cela signifie qu’il existe une classe de stockage _nommée_ « default », et non pas qu’une classe de stockage _est_ utilisée par défaut.  Vous pouvez également modifier la taille de votre stockage.  Vous pouvez en apprendre plus sur [la configuration du stockage](./storage-configuration.md).
+Vous pouvez personnaliser les classes de stockage en fonction de votre environnement.  Si vous n’êtes pas sûr des classes de stockage disponibles, vous pouvez exécuter la commande `kubectl get storageclass` pour les afficher.  Le modèle a une valeur par défaut de `default`.  Cela signifie qu’il existe une classe de stockage _nommée_ `default`, et non pas qu’une classe de stockage _est_ utilisée par défaut.  Vous pouvez également modifier la taille de votre stockage.  Vous pouvez en apprendre plus sur [la configuration du stockage](./storage-configuration.md).
 
 ## <a name="creating-the-postgresql-hyperscale-server-group"></a>Création du groupe de serveurs PostgreSQL Hyperscale
 
@@ -156,7 +156,7 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 La création du groupe de serveurs PostgreSQL Hyperscale prendra quelques minutes. Vous pouvez surveiller la progression dans une autre fenêtre du terminal à l’aide des commandes suivantes :
 
 > [!NOTE]
->  Les exemples de commandes ci-dessous partent du principe que vous avez créé un groupe de serveurs PostgreSQL Hyperscale nommé « pg1 » et un espace de noms Kubernetes nommé « arc ».  Si vous avez utilisé un autre espace de noms/nom de groupe de serveurs PostgreSQL Hyperscale, vous pouvez remplacer « arc » et « pg1 » par vos noms.
+>  Les exemples de commandes ci-dessous partent du principe que vous avez créé un groupe de serveurs PostgreSQL Hyperscale nommé `pg1` et un espace de noms Kubernetes nommé `arc`.  Si vous avez utilisé un autre espace de noms/nom de groupe de serveurs PostgreSQL Hyperscale, vous pouvez remplacer `arc` et `pg1` par vos noms.
 
 ```console
 kubectl get postgresqls/pg1 --namespace arc
@@ -166,7 +166,7 @@ kubectl get postgresqls/pg1 --namespace arc
 kubectl get pods --namespace arc
 ```
 
-Vous pouvez également vérifier l’état de la création de n’importe quel pod en exécutant une commande comme celle qui figure ci-dessous.  C’est particulièrement utile pour résoudre les problèmes.
+Vous pouvez également vérifier l’état de la création de n’importe quel pod en exécutant la commande `kubectl describe`.  La commande `describe`est particulièrement pratique pour résoudre les éventuels problèmes. Par exemple :
 
 ```console
 kubectl describe pod/<pod name> --namespace arc
