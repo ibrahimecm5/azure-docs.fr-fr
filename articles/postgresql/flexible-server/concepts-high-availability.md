@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: c8108540f77d323c46cc88caa628764b40c59e74
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/26/2021
+ms.openlocfilehash: 80b0d18eec8bbc37eda407d07873786f4155f4be
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597984"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422612"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Concepts de haute disponibilité dans Azure Database pour PostgreSQL – Serveur flexible
 
@@ -92,7 +92,9 @@ Le serveur flexible fournit deux méthodes pour vous permettre d’effectuer un 
 
 Vous pouvez utiliser cette fonctionnalité pour simuler un scénario de panne non planifiée tout en exécutant votre charge de travail de production et pour observer le temps d’arrêt de votre application. Dans de rares cas, si votre serveur principal ne répond plus pour une raison quelconque, vous pouvez utiliser cette fonctionnalité. 
 
-Ces déclencheurs de la fonctionnalité arrête le serveur principal et lance le flux de travail de basculement dans lequel l’opération de promotion du serveur de secours est effectuée. Une fois que le serveur de secours a terminé le processus de récupération jusqu’aux dernières données validées, il est promu en tant que serveur principal. Les enregistrements DNS sont mis à jour et votre application peut se connecter au serveur principal promu. Votre application peut continuer à écrire sur le serveur principal, un nouveau serveur de secours étant établi en arrière-plan. Voici les étapes effectuées :
+Ces déclencheurs de la fonctionnalité arrête le serveur principal et lance le flux de travail de basculement dans lequel l’opération de promotion du serveur de secours est effectuée. Une fois que le serveur de secours a terminé le processus de récupération jusqu’aux dernières données validées, il est promu en tant que serveur principal. Les enregistrements DNS sont mis à jour et votre application peut se connecter au serveur principal promu. Votre application peut continuer à écrire sur le serveur principal, tandis qu’un nouveau serveur de secours est établi en arrière-plan, sans que cela ait un impact sur la durée de bon fonctionnement. 
+
+Voici les étapes à suivre lors du basculement forcé :
 
   | **Étape** | **Description** | **Temps d’arrêt de l’application attendu ?** |
   | ------- | ------ | ----- |
@@ -109,6 +111,9 @@ Ces déclencheurs de la fonctionnalité arrête le serveur principal et lance le
   | 11 | Le processus de basculement forcé est terminé. | Non |
 
 Le temps d’arrêt de l’application doit normalement commencer après l’étape #1 et persister jusqu’à ce que l’étape #6 soit terminée. Les autres étapes se produisent en arrière-plan sans impact sur les écritures et les validations de l’application.
+
+>[!Important]
+>Le processus de basculement de bout en bout comprend (a) le basculement vers le serveur de secours après défaillance du serveur principal et (b) l’établissement d’un nouveau serveur de secours dans un état stable. Étant donné que votre application subit un temps d’arrêt uniquement jusqu’à la fin du basculement vers le serveur de secours, **veuillez mesurer le temps d’arrêt du point de vue de votre application/client** au lieu du processus de basculement global de bout en bout. 
 
 ### <a name="planned-failover"></a>Basculement planifié
 
@@ -178,7 +183,8 @@ Pour les serveurs flexibles configurés avec une haute disponibilité, les donn�
 
 * Un réplica de secours ne peut pas être utilisé pour des requêtes en lecture.
 
-* En fonction de la charge de travail et de l’activité sur le serveur principal, le processus de basculement peut prendre plus de 120 secondes en raison de la récupération nécessaire au niveau du réplica de secours avant que celui-ci puisse être promu.
+* En fonction de la charge de travail et de l’activité sur le serveur principal, le processus de basculement peut prendre plus de 120 secondes en raison de la récupération nécessaire au niveau du réplica de secours avant que celui-ci puisse être promu. 
+* Le serveur de secours récupère généralement les fichiers WAL à un débit de 40 Mo/s. Si votre charge de travail dépasse cette limite, il se peut que la récupération soit plus longue pendant le basculement ou après avoir établi un nouveau serveur de secours. 
 
 * Le redémarrage du serveur de base de données primaire redémarre également le réplica de secours. 
 

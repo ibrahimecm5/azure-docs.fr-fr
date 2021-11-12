@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2, ignite-fall-2021
-ms.openlocfilehash: c086523feb73ee6571776b825420c4375ae48da9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c535c31b41f1e95c7a7d49b3e7a310aeafcbe8bb
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131088138"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058370"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-an-online-endpoint-preview"></a>Déployer et noter un modèle Machine Learning en utilisant un point de terminaison en ligne (préversion)
 
@@ -47,6 +47,9 @@ Pour plus d’informations, consultez [Que sont les points de terminaison Azure 
 
 * (Facultatif) Pour déployer localement, vous devez [installer Moteur Docker](https://docs.docker.com/engine/install/) sur votre ordinateur local. Nous *recommandons fortement* cette option pour déboguer les problèmes plus facilement.
 
+> [!IMPORTANT]
+> Les exemples cités dans ce document partent du principe que vous utilisez un interpréteur de commandes Bash. Par exemple, à partir d’un système Linux ou d’un [Sous-système Windows pour Linux](/windows/wsl/about). 
+
 ## <a name="prepare-your-system"></a>Préparer votre système
 
 Pour suivre cet article, commencez par cloner le référentiel d’exemples (azureml-examples). Ensuite, exécutez le code suivant pour accéder au répertoire d’exemples :
@@ -61,31 +64,19 @@ Pour définir le nom de votre point de terminaison, choisissez l’une des comma
 
 Pour UNIX, exécutez la commande suivante :
 
-```azurecli
-export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
-```
-
-pour Windows, exécutez la commande suivante :
-
-```azurecli
-set ENDPOINT_NAME=YOUR_ENDPOINT_NAME
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="set_endpoint_name":::
 
 > [!NOTE]
-> Les noms de points de terminaison doivent être uniques au sein d’une région Azure. Par exemple, dans la région Azure westus2, il ne peut y avoir qu’un seul point de terminaison avec le nom `my-endpoint`. 
+> Nous avons récemment modifié l’interface CLI : auparavant, nous avions à la fois `endpoint` et `deployment` sous `az ml endpoint`, mais nous les avons séparés en `az ml online-endpoint` et `az ml online-deployment`.  Cela facilitera l’utilisation des points de terminaison dans les scripts CI/CD.
 
-## <a name="define-the-endpoint-configuration"></a>Définir la configuration des points de terminaison
+> [!NOTE]
+> Les noms de points de terminaison doivent être uniques au sein d’une région Azure. Par exemple, dans la région Azure `westus2`, il ne peut y avoir qu’un seul point de terminaison avec le nom `my-endpoint`. 
 
-Les entrées spécifiques pour déployer un modèle sur un point de terminaison en ligne sont les suivantes :
+## <a name="review-the-endpoint-and-deployment-configurations"></a>Réviser les configurations de point de terminaison et de déploiement
 
-- Fichiers de modèle (ou le nom et la version d’un modèle déjà inscrit dans votre espace de travail). Dans l’exemple, nous avons un modèle scikit-learn qui effectue une régression.
-- Code requis pour évaluer le modèle. Dans ce cas, nous disposons d’un fichier *score.py*.
-- Environnement dans lequel votre modèle s’exécute. Comme vous le verrez, l’environnement peut être une image Docker avec les dépendances Conda, ou il peut s’agir d’un fichier Dockerfile.
-- Paramètres pour spécifier le type d’instance et la capacité de mise à l’échelle.
+L’extrait de code suivant montre le fichier *endpoints/online/managed/sample/endpoint.yml* : 
 
-L’extrait de code suivant montre le fichier *endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml*, lequel capture toutes les entrées requises : 
-
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/endpoint.yml":::
 
 > [!NOTE]
 > Pour obtenir une description complète des YAML, consultez [Informations de référence YAML sur les points de terminaison en ligne managés (préversion)](reference-yaml-endpoint-managed-online.md).
@@ -97,21 +88,30 @@ La référence pour le format YAML du point de terminaison est décrite dans le 
 | `$schema`    | (Facultatif) Schéma YAML. Pour visualiser toutes les options disponibles dans le fichier YAML, vous pouvez visualiser le schéma dans l’exemple précédent dans un navigateur.|
 | `name`       | Nom du point de terminaison. Il doit être unique au sein de la région Azure.|
 | `traffic` | Pourcentage du trafic depuis le point de terminaison à détourner vers chaque déploiement. La somme des valeurs de trafic doit être 100. |
-| `auth_mode` | Utilisez `key` pour l’authentification basée sur une clé ou `aml_token` pour l’authentification basée sur un jeton Azure Machine Learning. `key` n’expire pas mais `aml_token` expire. (Récupérez le jeton le plus récent avec la commande `az ml endpoint get-credentials`.) |
-| `deployments` | Liste des déploiements à créer dans le point de terminaison. Dans ce cas, nous n’avons qu’un seul déploiement, nommé `blue`. Pour plus d’informations sur les déploiements multiples, consultez [Lancement sécurisé pour les points de terminaison en ligne (préversion)](how-to-safely-rollout-managed-endpoints.md).|
+| `auth_mode` | Utilisez `key` pour l’authentification basée sur les clés. Utilisez `aml_token` pour l’authentification Azure Machine Learning basée sur les jetons. `key` n’expire pas mais `aml_token` expire. (Récupérez le jeton le plus récent avec la commande `az ml online-endpoint get-credentials`.) |
 
-Le tableau suivant décrit les attributs de `deployments` :
+L’exemple contient tous les fichiers nécessaires pour déployer un modèle sur un point de terminaison en ligne. Pour déployer un modèle, vous devez disposer des éléments suivants :
+
+- Fichiers de modèle (ou le nom et la version d’un modèle déjà inscrit dans votre espace de travail). Dans l’exemple, nous avons un modèle scikit-learn qui effectue une régression.
+- Code requis pour évaluer le modèle. Dans ce cas, nous disposons d’un fichier *score.py*.
+- Environnement dans lequel votre modèle s’exécute. Comme vous le verrez, l’environnement peut être une image Docker avec les dépendances Conda, ou il peut s’agir d’un fichier Dockerfile.
+- Paramètres pour spécifier le type d’instance et la capacité de mise à l’échelle.
+
+L’extrait de code suivant montre le fichier *endpoints/online/managed/sample/blue-deployment.yml*, avec toutes les entrées requises : 
+
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml":::
+
+Le tableau décrit les attributs d’un `deployment` :
 
 | Clé | Description |
 | --- | --- |
 | `name`  | Le nom du déploiement. |
-| `model` | Dans cet exemple, nous spécifions les propriétés de modèle inline : `name`, `version` et `local_path`. Les fichiers de modèle sont téléchargés et enregistrés automatiquement. Un inconvénient de la spécification inline est que vous devez incrémenter la version manuellement si vous souhaitez mettre à jour les fichiers de modèle. Pour connaître les meilleures pratiques associées, consultez les conseils dans la section suivante. |
+| `model` | Dans cet exemple, nous spécifions les propriétés de modèle inline : `local_path`. Les fichiers de modèle sont automatiquement téléchargés et enregistrés avec un nom généré automatiquement. Pour connaître les meilleures pratiques associées, consultez les conseils dans la section suivante. |
 | `code_configuration.code.local_path` | Répertoire qui contient tout le code source Python pour le scoring du modèle. Vous pouvez utiliser des répertoires et des packages imbriqués. |
 | `code_configuration.scoring_script` | Fichier Python dans le répertoire de notation `code_configuration.code.local_path`. Ce code Python doit avoir une fonction `init()` et une fonction `run()`. La fonction `init()` sera appelée une fois le modèle créé ou mis à jour (vous pouvez l’utiliser pour mettre en cache le modèle en mémoire, par exemple). La fonction `run()` est appelée à chaque appel du point de terminaison pour effectuer la notation et la prédiction réelles. |
-| `environment` | Contient les détails de l’environnement pour héberger le modèle et le code. Dans cet exemple, nous avons des définitions inline qui incluent `name`, `version` et `path`. Nous utiliserons `environment.docker.image` pour l’image. Les dépendances `conda_file` seront installées au-dessus de l’image. Pour en savoir plus, consultez les conseils dans la section suivante. |
+| `environment` | Contient les détails de l’environnement pour héberger le modèle et le code. Dans cet exemple, nous avons des définitions inline qui incluent le `path`. Nous utiliserons `environment.docker.image` pour l’image. Les dépendances `conda_file` seront installées au-dessus de l’image. Pour en savoir plus, consultez les conseils dans la section suivante. |
 | `instance_type` | Référence SKU de machine virtuelle pour héberger vos instances de déploiement. Pour plus d’informations, consultez [Références SKU de machine virtuelle prises en charge par des points de terminaison en ligne managés](reference-managed-online-endpoints-vm-sku-list.md). |
-| `scale_settings.scale_type` | Actuellement, cette valeur doit être `manual`. Pour effectuer un scale-up ou un scale-down après la création du point de terminaison et du déploiement, mettez à jour `instance_count` dans le code YAML et exécutez la commande `az ml endpoint update -n $ENDPOINT_NAME --file <yaml filepath>`.|
-| `scale_settings.instance_count` | Nombre d’instances dans le déploiement. Basez la valeur sur la charge de travail que vous attendez. Pour une haute disponibilité, nous vous recommandons de définir `scale_settings.instance_count` sur au moins `3`. |
+| `instance_count` | Nombre d’instances dans le déploiement. Basez la valeur sur la charge de travail que vous attendez. Pour une haute disponibilité, nous vous recommandons de définir `scale_settings.instance_count` sur au moins `3`. |
 
 Pour plus d’informations sur le schéma YAML, consultez le document [Référence YAML sur les points de terminaison en ligne](reference-yaml-endpoint-managed-online.md).
 
@@ -124,7 +124,7 @@ Pour plus d’informations sur le schéma YAML, consultez le document [Référe
 
 ### <a name="register-your-model-and-environment-separately"></a>Enregistrement séparé de votre modèle et de votre environnement
 
-Dans cet exemple, nous spécifions les propriétés du modèle et de l’environnement inline : `name`, `version` et `local_path` (à partir duquel charger les fichiers). L’interface CLI charge automatiquement les fichiers et inscrit le modèle et l’environnement. En guise de bonne pratique pour la production, vous devez inscrire le modèle et l’environnement et spécifier séparément le nom et la version inscrits dans le code YAML. Utilisez le formulaire `model: azureml:my-model:1` ou `environment: azureml:my-env:1`.
+Dans cet exemple, nous spécifions le `local_path` (l’emplacement à partir duquel charger les fichiers) inline. L’interface CLI charge automatiquement les fichiers et inscrit le modèle et l’environnement. En guise de bonne pratique pour la production, vous devez inscrire le modèle et l’environnement et spécifier séparément le nom et la version inscrits dans le code YAML. Utilisez le formulaire `model: azureml:my-model:1` ou `environment: azureml:my-env:1`.
 
 Pour effectuer l’inscription, vous pouvez extraire les définitions YAML de `model` et `environment` dans des fichiers YAML distincts et utiliser les commandes `az ml model create` et `az ml environment create`. Pour en savoir plus sur ces commandes, exécutez `az ml model create -h` et `az ml environment create -h`.
 
@@ -147,7 +147,7 @@ Comme spécifié plus tôt, le `code_configuration.scoring_script` doit avoir un
 
 ## <a name="deploy-and-debug-locally-by-using-local-endpoints"></a>Déployer et déboguer localement à l’aide de points de terminaison locaux
 
-Pour gagner du temps lors du débogage, il est *fortement recommandé* d’effectuer une série de tests localement sur votre point de terminaison.
+Pour gagner du temps lors du débogage, il est *fortement recommandé* d’effectuer une série de tests localement sur votre point de terminaison. Pour plus d’informations, consultez [Déboguer les points de terminaison en ligne gérés localement dans Visual Studio Code](how-to-debug-managed-online-endpoints-visual-studio-code.md).
 
 > [!NOTE]
 > * Pour déployer localement, vous devez avoir installé le [moteur Docker](https://docs.docker.com/engine/install/).
@@ -156,46 +156,57 @@ Pour gagner du temps lors du débogage, il est *fortement recommandé* d’effec
 > [!IMPORTANT]
 > L’objectif d’un déploiement de points de terminaison local consiste à valider et déboguer votre code et votre configuration avant le déploiement sur Azure. Un déploiement local présente les limitations suivantes :
 > - Les points de terminaison locaux *ne prennent pas* en charge les règles de trafic, l’authentification, les paramètres de mise à l’échelle ni les paramètres de sonde. 
-> - Les points de terminaison locaux ne prennent en charge qu’un seul déploiement par point de terminaison. Autrement dit, dans un déploiement local, vous ne pouvez pas utiliser une référence à un modèle ou à un environnement inscrit dans votre espace de travail Azure Machine Learning. 
+> - Les points de terminaison locaux ne prennent en charge qu’un seul déploiement par point de terminaison. 
 
 ### <a name="deploy-the-model-locally"></a>Déployer le modèle localement
 
-Pour déployer le modèle localement :
+Commencez par créer le point de terminaison. Si vous le souhaitez, pour un point de terminaison local, vous pouvez ignorer cette étape et créer directement le déploiement (étape suivante), qui créera ensuite les métadonnées requises. Cela est utile à des fins de développement et de test.
 
-```azurecli
-az ml endpoint create --local -n $ENDPOINT_NAME -f endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="create_endpoint":::
 
-> [!NOTE]
-> Si vous utilisez un système d’exploitation Windows, utilisez `%ENDPOINT_NAME%` à la place de `$ENDPOINT_NAME` ici et dans les commandes suivantes
+À présent, créez un déploiement nommé `blue` sous le point de terminaison.
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="create_deployment":::
 
 L’indicateur `--local` oriente l’interface CLI pour déployer le point de terminaison dans l’environnement Docker.
 
+> [!TIP]
+> Utilisez Visual Studio Code pour tester et déboguer vos points de terminaison localement. Pour plus d’informations, consultez [Déboguer les points de terminaison en ligne gérés localement dans Visual Studio Code](how-to-debug-managed-online-endpoints-visual-studio-code.md).
+
 ### <a name="verify-the-local-deployment-succeeded"></a>Vérifier si le déploiement local a réussi
 
-Vérifiez les journaux pour voir si le modèle a été déployé sans erreur :
+Vérifiez l’état pour voir si le modèle a été déployé sans erreur :
 
-```azurecli
-az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="get_status":::
+
+Le résultat doit ressembler au JSON suivant. Notez que `provisioning_state` est `Succeeded`.
+
+```json
+{
+  "auth_mode": "key",
+  "location": "local",
+  "name": "docs-endpoint",
+  "properties": {},
+  "provisioning_state": "Succeeded",
+  "scoring_uri": "http://localhost:49158/score",
+  "tags": {},
+  "traffic": {}
+}
 ```
 
 ### <a name="invoke-the-local-endpoint-to-score-data-by-using-your-model"></a>Appeler le point de terminaison local pour effectuer la notation des données avec votre modèle
 
 Appelez le point de terminaison pour effectuer la notation du modèle à l’aide de la commande pratique `invoke` et en transmettant les paramètres de requête stockés dans un fichier JSON :
 
-```azurecli
-az ml endpoint invoke --local -n $ENDPOINT_NAME --request-file endpoints/online/model-1/sample-request.json
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="test_endpoint":::
 
-Si vous souhaitez utiliser un client REST (par exemple, une boucle), vous devez disposer de l’URI de notation. Pour récupérer l’URI de notation, exécutez `az ml endpoint show --local -n $ENDPOINT_NAME`. Dans les données retournées, recherchez l’attribut `scoring_uri`. 
+Si vous souhaitez utiliser un client REST (par exemple, une boucle), vous devez disposer de l’URI de notation. Pour récupérer l’URI de notation, exécutez `az ml online-endpoint show --local -n $ENDPOINT_NAME`. Dans les données retournées, recherchez l’attribut `scoring_uri`. Des exemples de commandes curl sont disponibles plus loin dans ce document.
 
 ### <a name="review-the-logs-for-output-from-the-invoke-operation"></a>Rechercher dans les journaux la sortie de l’opération d’appel
 
 Dans l’exemple fichier *score.py*, la méthode `run()` journalise une sortie dans la console. Vous pouvez afficher cette sortie en réutilisant la commande `get-logs` :
 
-```azurecli
-az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="get_logs":::
 
 ##  <a name="deploy-your-managed-online-endpoint-to-azure"></a>Déployer votre point de terminaison en ligne managé dans Azure
 
@@ -203,11 +214,18 @@ Puis, déployez votre point de terminaison en ligne managé dans Azure.
 
 ### <a name="deploy-to-azure"></a>Déployer sur Azure
 
-Pour déployer la configuration YAML dans le cloud, exécutez le code suivant :
+Pour créer le point de terminaison dans le cloud, exécutez le code suivant :
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="create_endpoint" :::
+
+Pour créer le déploiement nommé `blue` sous le point de terminaison, exécutez le code suivant :
+
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="create_deployment" :::
 
 Ce déploiement peut prendre jusqu’à 15 minutes selon que l’environnement ou l’image sous-jacent(e) est généré(e) pour la première fois ou non. Les déploiements suivants qui utilisent le même environnement termineront le traitement plus rapidement.
+
+> [!Important]
+> L’indicateur --all-traffic dans `az ml online-deployment create` ci-dessus alloue 100 % du trafic au point de terminaison pour le déploiement nouvellement créé. Bien que cela soit utile à des fins de développement et de test, pour la production, vous souhaiterez peut-être ouvrir le trafic vers le nouveau déploiement via une commande explicite. Par exemple : `az ml online-endpoint update -n $ENDPOINT_NAME --traffic "blue=100"` 
 
 > [!TIP]
 > * Si vous préférez ne pas bloquer votre console CLI, vous pouvez ajouter l’indicateur `--no-wait` à la commande. Toutefois, cela arrêtera l’affichage interactif de l’état du déploiement.
@@ -223,7 +241,7 @@ La commande `show` contient des informations dans `provisioning_status` pour le 
 Vous pouvez répertorier tous les points de terminaison dans l’espace de travail sous la forme d’un tableau à l’aide de la commande `list` :
 
 ```azurecli
-az ml endpoint list --output table
+az ml online-endpoint list --output table
 ```
 
 ### <a name="check-the-status-of-the-cloud-deployment"></a>Vérifier l’état de déploiement du Cloud
@@ -240,26 +258,24 @@ Vous pouvez utiliser la commande `invoke` ou un client REST de votre choix pour 
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
 
+L’exemple suivant montre comment récupérer la clé utilisée pour l’authentification auprès du point de terminaison :
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl_get_key":::
+
+Ensuite, utilisez la boucle pour noter les données.
+
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl" :::
+
+Notez que nous utilisons les commandes `show` et `get-credentials` pour récupérer les informations d’authentification. Notez également que nous utilisons l’indicateur `--query` pour filtrer les attributs sur les attributs nécessaires uniquement. Pour en apprendre davantage sur `--query` consultez [Interroger la sortie de commande Azure CLI](/cli/azure/query-azure-cli).
+
 Pour visualiser les journaux d’appel, exécutez `get-logs` de nouveau.
-
-Pour utiliser un client REST, vous devez disposer de la valeur de `scoring_uri` et de la clé ou du jeton d’authentification. La valeur `scoring_uri` est disponible dans la sortie de la commande `show` :
- 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_scoring_uri" :::
-
-Nous utilisons l’indicateur `--query` pour filtrer les attributs sur les attributs nécessaires uniquement. Pour en apprendre davantage sur `--query` consultez [Interroger la sortie de commande Azure CLI](/cli/azure/query-azure-cli).
-
-Récupérez les informations d’identification nécessaires à l’aide de la commande `get-credentials` :
-
-```azurecli
-az ml endpoint get-credentials -n $ENDPOINT_NAME
-```
 
 ### <a name="optional-update-the-deployment"></a>(Facultatif) Mettre à jour le déploiement
 
-Si vous souhaitez mettre à jour le code, le modèle, l’environnement ou vos paramètres de mise à l’échelle, mettez à jour le fichier YAML et exécutez la commande `az ml endpoint update`. 
+Si vous souhaitez mettre à jour le code, le modèle, l’environnement ou vos paramètres de mise à l’échelle, mettez à jour le fichier YAML et exécutez la commande `az ml online-endpoint update`. 
 
-> [!IMPORTANT]
-> Vous ne pouvez modifier qu’*un seul* aspect (trafic, paramètres de mise à l’échelle, code, modèle ou environnement) dans une commande `update` unique. 
+> [!Note]
+> Si vous mettez à jour le nombre d’instances, ainsi que d’autres paramètres de modèle (code, modèle ou environnement) dans une même commande `update` : la première opération de mise à l’échelle est effectuée, puis les autres mises à jour sont appliquées. Dans l’environnement de production, il est conseillé d’effectuer ces opérations séparément.
 
 Pour comprendre comment `update` fonctionne :
 
@@ -269,28 +285,25 @@ Pour comprendre comment `update` fonctionne :
 1. Exécutez cette commande :
 
     ```azurecli
-    az ml endpoint update -n $ENDPOINT_NAME -f endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml
+    az ml online-deployment update -n blue --endpoint $ENDPOINT_NAME -f endpoints/online/managed/sample/blue-deployment.yml
     ```
 
-    > [!IMPORTANT]
-    > La mise à jour à l’aide de YAML est déclarative. Autrement dit, les modifications apportées dans le fichier YAML seront reflétées dans les ressources du Gestionnaire de ressource Azure sous-jacentes (points de terminaison et déploiements). Une approche déclarative facilite les [GitOps](https://www.atlassian.com/git/tutorials/gitops) : *Toutes* les modifications apportées aux points de terminaison et déploiements passent (même `instance_count`) par le fichier YAML. En conséquence, si vous supprimez un déploiement du fichier YAML et exécutez `az ml endpoint update` en utilisant le fichier, le déploiement sera supprimé. Vous pouvez effectuer des mises à jour sans utiliser le YAML à l’aide de l’indicateur `--set`.
+    > [!Note]
+    > La mise à jour à l’aide de YAML est déclarative. Autrement dit, les modifications apportées dans le fichier YAML seront reflétées dans les ressources du Gestionnaire de ressource Azure sous-jacentes (points de terminaison et déploiements). Une approche déclarative facilite les [GitOps](https://www.atlassian.com/git/tutorials/gitops) : *Toutes* les modifications apportées aux points de terminaison et déploiements passent (même `instance_count`) par le fichier YAML. Vous pouvez effectuer des mises à jour sans utiliser le YAML à l’aide de l’indicateur `--set`.
     
 1. Comme vous avez modifié la fonction `init()` (`init()`qui s’exécute lors de la création ou de la mise à jour du point de terminaison), le message `Updated successfully` figurera dans les journaux. Récupérez les journaux en exécutant :
 
-    ```azurecli
-    az ml endpoint get-logs -n $ENDPOINT_NAME --deployment blue
-    ```
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
 
-Dans les rares cas où vous souhaitez supprimer et recréer votre déploiement en raison d’un problème insoluble, utilisez :
-
-```azurecli
-az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
-```
-
-La commande `update` fonctionne également avec les points de terminaison locaux. Utilisez la même commande `az ml endpoint update` avec l’indicateur `--local`.
+La commande `update` fonctionne également avec les déploiements locaux. Utilisez la même commande `az ml online-deployment update` avec l’indicateur `--local`.
 
 > [!TIP]
-> Avec la commande `az ml endpoint update`, vous pouvez utiliser le paramètre [`--set` disponible dans l’interface CLI Azure](/cli/azure/use-cli-effectively#generic-update-arguments) pour remplacer des attributs dans votre code YAML *ou* pour définir des attributs spécifiques sans transmettre le fichier YAML. L’utilisation de `--set` pour les attributs uniques est particulièrement importante dans les scénarios de développement et de test. Par exemple, pour effectuer un scale-up de la valeur `instance_count` pour le premier déploiement, vous pouvez utiliser l’indicateur `--set deployments[0].scale_settings.instance_count=2`. Toutefois, étant donné que le code YAML n’est pas mis à jour, cette technique ne facilite pas les [GitOps](https://www.atlassian.com/git/tutorials/gitops).
+> Avec la commande `update`, vous pouvez utiliser le paramètre [`--set` disponible dans l’interface CLI Azure](/cli/azure/use-cli-effectively#generic-update-arguments) pour remplacer des attributs dans votre code YAML *ou* pour définir des attributs spécifiques sans transmettre le fichier YAML. L’utilisation de `--set` pour les attributs uniques est particulièrement importante dans les scénarios de développement et de test. Par exemple, pour effectuer un scale-up de la valeur `instance_count` pour le premier déploiement, vous pouvez utiliser l’indicateur `--set instance_count=2`. Toutefois, étant donné que le code YAML n’est pas mis à jour, cette technique ne facilite pas les [GitOps](https://www.atlassian.com/git/tutorials/gitops).
+> [!Note]
+> L’exemple ci-dessus illustre la mise à jour propagée InPlace : autrement dit, le même déploiement est mis à jour avec la nouvelle configuration, avec 20 % de nœuds à la fois. Si le déploiement comporte 10 nœuds, 2 nœuds à la fois seront mis à jour. Pour l’utilisation en production, vous souhaiterez peut-être envisager un [déploiement bleu-vert](how-to-safely-rollout-managed-endpoints.md), qui offre une alternative plus sûre.
+### <a name="optional-configure-autoscaling"></a>(Facultatif) Configurer la mise à l’échelle automatique
+
+La mise à l’échelle automatique exécute automatiquement la quantité appropriée de ressources pour gérer la charge sur votre application. Les points de terminaison gérés en ligne prennent en charge la mise à l’échelle automatique via l’intégration à la fonctionnalité de mise à l’échelle automatique d’Azure Monitor. Pour configurer la mise à l’échelle automatique, consultez [Mise à l’échelle automatique des points de terminaison en ligne](how-to-autoscale-endpoints.md).
 
 ### <a name="optional-monitor-sla-by-using-azure-monitor"></a>(Facultatif) Surveiller le contrat SLA à l’aide d’Azure Monitor
 
@@ -332,7 +345,8 @@ Pour en savoir plus, consultez les articles suivants :
 - [Déployer des modèles avec REST (préversion)](how-to-deploy-with-rest.md)
 - [Créer et utiliser des points de terminaison en ligne managés (préversion) dans le studio](how-to-use-managed-online-endpoint-studio.md)
 - [Déploiement sûr pour les points de terminaison en ligne (préversion)](how-to-safely-rollout-managed-endpoints.md)
+- [Comment mettre à l’échelle automatiquement des points de terminaison en ligne gérés](how-to-autoscale-endpoints.md)
 - [Utiliser des points de terminaison de traitement de lots (préversion) pour le scoring par lots](how-to-use-batch-endpoint.md)
 - [Afficher les coûts d’un point de terminaison en ligne managé Azure Machine Learning (préversion)](how-to-view-online-endpoints-costs.md)
-- [Tutoriel : Accéder aux ressources Azure avec un point de terminaison en ligne managé et une identité managée par le système (préversion)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
-- [Résolution des problèmes de déploiement de points de terminaison en ligne managés](./how-to-troubleshoot-online-endpoints.md)
+- [Accéder aux ressources Azure avec un point de terminaison en ligne managé et une identité managée (préversion)](how-to-access-resources-from-endpoints-managed-identities.md)
+- [Résolution des problèmes de déploiement de points de terminaison en ligne managés](how-to-troubleshoot-online-endpoints.md)

@@ -1,24 +1,24 @@
 ---
 title: À propos des connecteurs d’API dans Azure AD B2C
-description: Utilisez les connecteurs d’API Azure Active Directory (Azure AD) pour personnaliser et étendre vos flux d’utilisateurs à l’aide d’API REST.
+description: Utilisez des connecteurs d’API Azure Active Directory (Azure AD) pour personnaliser et étendre vos flux d’utilisateurs à l’aide d’API REST ou de webhooks sortants vers des sources de données d’identité externes.
 services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 07/05/2021
-ms.author: mimart
-author: msmimart
-manager: celestedg
+ms.date: 11/02/2021
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cade077501e499893686fcc856129deb61e8778e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b5d3c49019d1953dd0deb5d498291d92af4aba1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524064"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436932"
 ---
-# <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>Utiliser des connecteurs d’API pour personnaliser et étendre les flux d’utilisateurs d’inscription
+# <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows-with-external-identity-data-sources"></a>Utiliser des connecteurs d’API pour personnaliser et étendre des flux d’inscription d’utilisateurs avec des sources de données d’identité externes 
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "122524064"
 En tant que développeur ou administrateur informatique, vous pouvez utiliser des connecteurs d’API pour intégrer vos flux d’utilisateurs d’inscription à des API REST pour personnaliser l’inscription et l’intégrer à des systèmes externes. Par exemple, avec les connecteurs d’API, vous pouvez :
 
 - **Valider des données d’entrée utilisateur**. Validez par rapport à des données utilisateur incorrectes ou non valides. Par exemple, vous pouvez valider les données fournies par l’utilisateur par rapport à des données existantes dans une banque de données externe ou une liste de valeurs autorisées. En cas d’invalidité, vous pouvez demander à un utilisateur de fournir des données valides ou empêcher l’utilisateur de continuer le processus d’inscription.
-- **Vérifier l’identité de l’utilisateur**. Utilisez un service de vérification d’identité pour ajouter un niveau supplémentaire de sécurité aux décisions de création de comptes.
+- **Vérifier l’identité de l’utilisateur**. Utilisez un service de vérification d’identité ou des sources de données d’identité externes pour ajouter un niveau supplémentaire de sécurité aux décisions de création de compte.
 - **Intégrer à un flux de travail d’approbation personnalisé**. Connectez-vous à un système d’approbation personnalisé pour gérer et limiter la création de comptes.
 - **Augmentez les jetons avec des attributs de sources externes**. Augmentez le nombre de jetons, avec des attributs relatifs à l’utilisateur, issus de sources externes à Azure AD B2C telles que les systèmes Cloud, les magasins d’utilisateurs personnalisés, les systèmes d’autorisation personnalisés, les services d’identité hérités, et bien plus.
 - **Remplacer des attributs utilisateur**. Reformatez ou attribuez une valeur à un attribut collecté auprès de l’utilisateur. Par exemple, si un utilisateur entre le prénom entier en lettres minuscules ou majuscules, vous pouvez modifier sa mise en forme en utilisant une majuscule uniquement pour la première lettre. 
@@ -78,9 +78,9 @@ La plateforme Identity Experience Framework sur laquelle repose Azure Active Dir
 
 Azure AD B2C vous permet d’ajouter votre propre logique métier à un parcours utilisateur en appelant votre propre service RESTful. La plateforme Identity Experience Framework peut envoyer et recevoir des données de votre service RESTful pour échanger des revendications. Vous pouvez par exemple :
 
-- **Valider des données d’entrée utilisateur**. Par exemple, vous pouvez vérifier que l’adresse e-mail fournie par l’utilisateur existe dans la base de données de votre client et, si ce n’est pas le cas, présenter une erreur.
-- **Traiter des revendications**. Si un utilisateur entre son prénom entièrement en minuscules ou majuscules, votre API REST peut modifier la mise en forme en utilisant une majuscule uniquement pour la première lettre avant de le renvoyer à Azure AD B2C.
-- **Enrichir les données utilisateur en les intégrant davantage avec des applications métier d’entreprise**. votre service RESTful peut recevoir l’adresse e-mail de l’utilisateur, interroger la base de données de clients et retourner le numéro de fidélité de l’utilisateur à Azure AD B2C. Les revendications retournées peuvent alors être stockées dans le compte Azure AD de l’utilisateur, évaluées dans les étapes d’orchestration suivantes ou incluses dans le jeton d’accès.
+- **Utiliser une source de données d’identité externe pour valider les données d’entrée utilisateur**. Par exemple, vous pouvez vérifier que l’adresse e-mail fournie par l’utilisateur existe dans la base de données de votre client et, si ce n’est pas le cas, présenter une erreur. Vous pouvez également considérer les connecteurs d’API comme un moyen de prendre en charge des webhooks sortants, car l’appel est effectué quand un événement se produit, par exemple une inscription.
+- **Traiter des revendications**. Si un utilisateur entre son prénom entièrement en minuscules ou majuscules, votre API REST peut modifier la mise en forme en utilisant une majuscule uniquement pour la première lettre avant de le renvoyer à Azure AD B2C. Toutefois, lors de l’utilisation d’une stratégie personnalisée, [ClaimsTransformations](claimstransformations.md) est préférable à l’appel d’une API RESTful. 
+- **Enrichir les données utilisateur de façon dynamique en les intégrant davantage avec des applications métier d’entreprise**. votre service RESTful peut recevoir l’adresse e-mail de l’utilisateur, interroger la base de données de clients et retourner le numéro de fidélité de l’utilisateur à Azure AD B2C. Les revendications retournées peuvent alors être stockées dans le compte Azure AD de l’utilisateur, évaluées dans les étapes d’orchestration suivantes ou incluses dans le jeton d’accès.
 - **Exécuter une logique métier personnalisée**. Vous pouvez envoyer des notifications Push, mettre à jour des bases de données d’entreprise, exécuter un processus de migration utilisateur, gérer les autorisations, auditer des bases de données et effectuer d’autres flux de travail.
 
 ![Diagramme d’un échange de revendications de service RESTful](media/api-connectors-overview/restful-service-claims-exchange.png)

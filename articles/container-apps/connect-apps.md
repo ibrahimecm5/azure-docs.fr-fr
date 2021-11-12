@@ -1,19 +1,19 @@
 ---
 title: Connecter des applications dans la version préliminaire d’Azure Container
 description: Apprenez à déployer plusieurs applications qui communiquent ensemble dans Azure Container.
-services: container-apps
+services: app-service
 author: craigshoemaker
-ms.service: container-apps
+ms.service: app-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 75ccb6730d9fdad76f7b7f6f78d3695e86a349f0
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: b39e13aa8cf5953349af14c80317b67f05047919
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027391"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576336"
 ---
 # <a name="connect-applications-in-azure-container-apps-preview"></a>Connecter des applications dans la version préliminaire d’Azure Container
 

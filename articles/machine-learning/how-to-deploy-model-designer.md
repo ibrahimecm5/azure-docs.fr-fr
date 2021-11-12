@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.reviewer: peterlu
-ms.date: 10/08/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, studio, designer
-ms.openlocfilehash: d2553ddde013c43b9ce4d23d2cc0b4541150e6f3
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 4722a32435ad3b1a8f7fdcf0cd46c077b52a5f08
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740472"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557601"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Utiliser Studio pour déployer des modèles entraînés dans le concepteur
 
@@ -39,24 +38,24 @@ Les modèles entraînés dans le concepteur peuvent également être déployés 
 
 * [Un espace de travail Azure Machine Learning](how-to-manage-workspace.md)
 
-* Un pipeline de formation complet contenant l’un des modules suivants :
-    - [Module de formation de modèle](./algorithm-module-reference/train-model.md)
-    - [Module Entraîner le modèle de détection d’anomalie](./algorithm-module-reference/train-anomaly-detection-model.md)
-    - [Module Entraîner un modèle de clustering](./algorithm-module-reference/train-clustering-model.md)
-    - [Module Entraîner un modèle PyTorch](./algorithm-module-reference/train-pytorch-model.md)
-    - [Module Entraîner le générateur de recommandations SVD](./algorithm-module-reference/train-svd-recommender.md)
-    - [Module Entraîner un modèle Vowpal Wabbit](./algorithm-module-reference/train-vowpal-wabbit-model.md)
-    - [Module Modèle Train Wide & Deep](./algorithm-module-reference/train-wide-and-deep-recommender.md)
+* Un pipeline de formation complet contenant l’un des composants suivants :
+    - [Composant Effectuer l’apprentissage du modèle](./algorithm-module-reference/train-model.md)
+    - [Composant Effectuer l’apprentissage du modèle de détection d’anomalie](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [Composant Effectuer l’apprentissage du modèle de clustering](./algorithm-module-reference/train-clustering-model.md)
+    - [Composant Effectuer l’apprentissage du modèle PyTorch](./algorithm-module-reference/train-pytorch-model.md)
+    - [Composant Effectuer l’apprentissage du générateur de recommandations SVD](./algorithm-module-reference/train-svd-recommender.md)
+    - [Composant Effectuer l’apprentissage du modèle Vowpal Wabbit](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [Composant Effectuer l’apprentissage du modèle Train Wide & Deep](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>Inscrire le modèle
 
 Une fois le pipeline d’entraînement terminé, inscrivez le modèle entraîné auprès de votre espace de travail Azure Machine Learning pour accéder au modèle dans d’autres projets.
 
-1. Sélectionnez le module [Entraîner le modèle](./algorithm-module-reference/train-model.md).
+1. Sélectionnez le [composant Effectuer l’apprentissage du modèle](./algorithm-module-reference/train-model.md).
 1. Sélectionnez l’onglet **Sorties + journaux** dans le volet de droite.
 1. Sélectionnez l’icône **Inscrire le modèle** ![Capture d’écran de l’icône d’engrenage](./media/how-to-deploy-model-designer/register-model-icon.png).
 
-    ![Capture d’écran du volet droit du module Entraîner le modèle](./media/how-to-deploy-model-designer/train-model-right-pane.png)
+    ![Capture d’écran du volet droit du composant Effectuer l’apprentissage du modèle](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
 1. Entrez le nom de votre modèle, puis sélectionnez **Enregistrer**.
 
@@ -68,13 +67,13 @@ Lorsque vous avez inscrit votre modèle, vous pouvez le retrouver dans la page d
 
 Pour déployer un modèle dans Azure Machine Learning Studio, vous avez besoin des fichiers suivants :
 
-- **Fichier de script d’entrée** : charge le modèle entraîné, traite les données d’entrée des requêtes, effectue des inférences en temps réel et retourne le résultat. Le concepteur génère automatiquement un fichier de script d’entrée `score.py` lors de l’exécution du module **Entraîner le modèle**.
+- **Fichier de script d’entrée** : charge le modèle entraîné, traite les données d’entrée des requêtes, effectue des inférences en temps réel et retourne le résultat. Le concepteur génère automatiquement un fichier de script d’entrée `score.py` lors de l’exécution du composant **Effectuer l’apprentissage du modèle**.
 
-- **Fichier de dépendances Conda** : spécifie les packages PIP et Conda dont dépend votre service web. Le concepteur crée automatiquement un fichier `conda_env.yaml` lors de l’exécution du module **Entraîner le modèle**.
+- **Fichier de dépendances Conda** : spécifie les packages PIP et Conda dont dépend votre service web. Le concepteur crée automatiquement un fichier `conda_env.yaml` lors de l’exécution du composant **Effectuer l’apprentissage du modèle**.
 
-Vous pouvez télécharger ces deux fichiers dans le volet droit du module **Entraîner le modèle** :
+Vous pouvez télécharger ces deux fichiers dans le volet droit du composant **Effectuer l’apprentissage du modèle** :
 
-1. Sélectionnez le module **Entraîner le modèle**.
+1. Sélectionnez le composant **Effectuer l’apprentissage du modèle**.
 1. Sous l’onglet **Sorties + journaux**, sélectionnez le dossier `trained_model_outputs`.
 1. Téléchargez le fichier `conda_env.yaml` et le fichier `score.py`.
 
@@ -91,7 +90,7 @@ Vous pouvez également télécharger les fichiers à partir de la page de ressou
     ![Capture d’écran des fichiers téléchargés pour le déploiement dans la page de détails du modèle](./media/how-to-deploy-model-designer/download-artifacts-in-models-page.png)
 
 > [!NOTE]
-> Le fichier `score.py` fournit quasiment les mêmes fonctionnalités que les modules **Noter le modèle**. Toutefois, certains modules tels que [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md), [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md) et [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) ont des paramètres pour différents modes de notation. Vous pouvez également modifier ces paramètres dans le script d’entrée.
+> Le fichier `score.py` fournit quasiment les mêmes fonctionnalités que les composants **Noter le modèle**. Toutefois, certains composants tels que [Noter le générateur de recommandations SVD](./algorithm-module-reference/score-svd-recommender.md), [Noter le générateur de recommandations Wide and Deep](./algorithm-module-reference/score-wide-and-deep-recommender.md) et [Noter le modèle Vowpal Wabbit](./algorithm-module-reference/score-vowpal-wabbit-model.md) ont des paramètres pour différents modes de scoring. Vous pouvez également modifier ces paramètres dans le script d’entrée.
 >
 >Pour plus d’informations sur la définition des paramètres du fichier `score.py`, consultez la section [Configurer le script d’entrée](#configure-the-entry-script).
 
@@ -181,7 +180,7 @@ image_transform = [
 ]
 transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
 
-# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model component
 sample_file_path = '_samples.json'
 with open(sample_file_path, 'r') as f:
     sample_data = json.load(f)
@@ -204,7 +203,7 @@ with open(data_file_path, 'w') as f:
 
 ## <a name="configure-the-entry-script"></a>Configurer le script d’entrée
 
-Certains modules du concepteur tels que [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md), [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md) et [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) ont des paramètres pour différents modes de notation. 
+Certains composants du concepteur tels que [Noter le générateur de recommandations SVD](./algorithm-module-reference/score-svd-recommender.md), [Noter le générateur de recommandations Wide and Deep](./algorithm-module-reference/score-wide-and-deep-recommender.md) et [Noter le modèle Vowpal Wabbit](./algorithm-module-reference/score-vowpal-wabbit-model.md) ont des paramètres pour différents modes de scoring. 
 
 Dans cette section, découvrez comment mettre à jour ces paramètres dans le fichier de script d’entrée.
 
@@ -244,7 +243,7 @@ def run(data):
 
     data_frame_directory = create_dfd_from_dict(input_entry, schema_data)
 
-    # The parameter names can be inferred from Score Wide and Deep Recommender module parameters:
+    # The parameter names can be inferred from Score Wide and Deep Recommender component parameters:
     # convert the letters to lower cases and replace whitespaces to underscores.
     score_params = dict(
         trained_wide_and_deep_recommendation_model=model,

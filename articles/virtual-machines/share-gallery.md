@@ -3,24 +3,24 @@ title: Partager une galerie à l’aide du contrôle d’accès en fonction du r
 description: Découvrez comment partager une galerie à l’aide du contrôle d’accès en fonction du rôle.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: template-how-to
-ms.openlocfilehash: 01c98ba8d619573c241e5a8fdfa2f774b4aed22d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 373ea9917fb4386ee9b977f64b003eb24a2803fc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452625"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462990"
 ---
-# <a name="use-rbac-to-share-image-gallery-resources"></a>Utiliser le RBAC pour partager des ressources de la galerie d’images
+# <a name="use-rbac-to-share-gallery-resources"></a>Utiliser le RBAC pour partager des ressources de galerie
 
-Tout comme la galerie d’images partagées, la définition d’image et la version d’image sont des ressources, qui peuvent être partagées à l’aide des contrôles d’accès en fonction du rôle (RBAC) Azure natifs intégrés. Azure RBAC permet de partager ces ressources avec d’autres utilisateurs, principaux de service et groupes. Vous pouvez même partager l’accès avec des personnes en dehors du locataire au sein duquel ils ont été créés. Un utilisateur disposant d’un accès à la version d’image partagée peut déployer une machine virtuelle ou un groupe de machines virtuelles identiques.  
+La galerie Azure Compute Gallery, les définitions et les versions sont des ressources qui peuvent être partagées à l’aide des contrôles RBAC Azure intégrés. Azure RBAC permet de partager ces ressources avec d’autres utilisateurs, principaux de service et groupes. Vous pouvez même partager l’accès avec des personnes en dehors du locataire au sein duquel ils ont été créés. Un utilisateur ayant accès à la version de l’image ou de l’application peut déployer une machine virtuelle ou un groupe de machines virtuelles identiques.  
 
-Nous vous recommandons de partager les images au niveau de la galerie, afin de proposer une expérience optimale. Nous vous déconseillons de partager des versions d’images individuelles. Pour plus d’informations sur Azure RBAC, consultez [Attribution de rôles Azure](../role-based-access-control/role-assignments-portal.md).
+Pour une expérience optimale, nous vous recommandons de partager au niveau de la galerie. Nous vous déconseillons de partager des versions d’images ou d’applications individuelles. Pour plus d’informations sur Azure RBAC, consultez [Attribution de rôles Azure](../role-based-access-control/role-assignments-portal.md).
 
 Si l’utilisateur se trouve en dehors de votre organisation, il recevra un message d’invitation à rejoindre l’organisation. L’utilisateur doit accepter l’invitation, puis il pourra voir la galerie et toutes les définitions et versions d’image versions dans sa liste de ressources.
 
@@ -28,9 +28,9 @@ Si l’utilisateur se trouve en dehors de votre organisation, il recevra un mess
 
 ### <a name="portal"></a>[Portail](#tab/portal)
 
-Si l’utilisateur se trouve en dehors de votre organisation, il recevra un message d’invitation à rejoindre l’organisation. L’utilisateur doit accepter l’invitation, puis il pourra voir la galerie et toutes les définitions et versions d’image versions dans sa liste de ressources.
+Si l’utilisateur se trouve en dehors de votre organisation, il recevra un message d’invitation à rejoindre l’organisation. L’utilisateur doit accepter l’invitation. Il pourra ensuite voir la galerie ainsi que l’ensemble des définitions et versions dans sa liste de ressources.
 
-1. Sur la page de votre galerie d’images, sélectionnez **contrôle d’accès (IAM)** dans le menu de gauche. 
+1. Sur la page de votre galerie d’images, dans le menu de gauche, sélectionnez **Contrôle d’accès (IAM)** . 
 1. Sous **Ajouter une attribution de rôle**, sélectionnez **Ajouter**. Le volet **Ajouter une attribution de rôle** s’ouvre. 
 1. Sous **Rôle**, sélectionnez **Lecteur**.
 1. Sous **Attribuer l’accès à**, laissez la valeur par défaut **Utilisateur, groupe ou principal du service Azure AD**.
@@ -49,7 +49,7 @@ az sig show \
    --query id
 ```
 
-Utilisez l’ID d’objet en tant qu’étendue, ainsi qu’une adresse e-mail et [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) pour donner aux utilisateurs un accès à la galerie d’images partagées. Remplacez `<email-address>` et `<gallery iD>` par vos propres informations.
+Utilisez l’ID d’objet en tant qu’étendue, ainsi qu’une adresse e-mail et la commande [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) pour donner aux utilisateurs l’accès à la galerie Azure Compute Gallery. Remplacez `<email-address>` et `<gallery iD>` par vos propres informations.
 
 ```azurecli-interactive
 az role assignment create \
@@ -84,10 +84,8 @@ New-AzRoleAssignment `
 
 Créez une [définition d’image et une version d’image](image-version.md).
 
-[Générateur d’image Azure (préversion)](./image-builder-overview.md) permet d’automatiser la création d’une version de l’image. Vous pouvez même l’utiliser pour mettre à jour et [créer une nouvelle version de l’image à partir d’une image existante](./windows/image-builder-gallery-update-image-version.md). 
+Vous pouvez également créer des ressources Azure Compute Gallery en utilisant des modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
 
-Vous pouvez également créer la ressource de galerie d’images partagées à l’aide de modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
-
-- [Créer une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Créer une définition d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Créer une version d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Créer une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Créer une définition d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Créer une version d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-version-create/)

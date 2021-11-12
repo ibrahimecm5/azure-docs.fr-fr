@@ -10,36 +10,34 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 9b701589f7ee28cd3da8d4c028750459c53bb793
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 805ba2fc9a24536a940e4baf02e2934d26c10d75
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216917"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474019"
 ---
 # <a name="request-service-rest-api-preview"></a>API REST du service de demande (préversion)
 
-L'API REST du service de demande des justificatifs vérifiables Azure Active Directory vous permet d’émettre et de vérifier des justificatifs vérifiables à l’aide du service des justificatifs vérifiables Azure AD. Cet article vous montre comment commencer à utiliser l’API REST du service de demande.
+Les informations d’identification vérifiables Azure Active Directory (Azure AD) incluent l’API REST du service de demande. Cette API vous permet d’émettre et de vérifier des informations d’identification. Cet article vous montre comment commencer à utiliser l’API REST du service de demande.
 
 > [!IMPORTANT]
-> L’API REST du service de demande est actuellement en version préliminaire publique (bêta).
-> Cette version préliminaire est fournie sans contrat de niveau de service, et vous pouvez rencontrer de temps à temps des changements ainsi qu’une dépréciation de l’API pendant la version préliminaire. L’API n’est pas recommandée pour les charges de travail de production pendant la version préliminaire. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+> L’API REST du service de demande est actuellement en préversion. Cette version préliminaire est fournie sans contrat de niveau de service, et vous pouvez rencontrer de temps à temps des changements ainsi qu’une dépréciation de l’API pendant la préversion. La préversion de l’API n’est pas recommandée pour les charges de travail de production. Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="api-access-token"></a>Jeton d’accès API
 
-Pour que votre application puisse accéder à l’API REST du service de demande, vous devez inclure un jeton d’accès valide avec les autorisations requises. Les jetons d’accès émis par la plateforme d’identité Microsoft contiennent des informations (étendues) que l’API REST du service de demande utilise pour valider l’appelant. S’assurer que l’appelant dispose des autorisations nécessaires pour effectuer l’opération qu’il demande.
+Pour que votre application puisse accéder à l’API REST du service de demande, vous devez inclure un jeton d’accès valide avec les autorisations requises. Les jetons d’accès émis par la plateforme d’identité Microsoft contiennent des informations (étendues) que l’API REST du service de demande utilise pour valider l’appelant. Un jeton d’accès assure que l’appelant dispose des autorisations nécessaires pour effectuer l’opération qu’il demande.
 
-Pour obtenir un jeton d’accès, votre application doit être enregistrée sur la plateforme d’identité Microsoft et être autorisée par un administrateur à accéder à l’API du service de demande. Si vous n’avez pas inscrit l’application *verifiable-credentials-app*, suivez les étapes expliquant [comment inscrire l’application](verifiable-credentials-configure-tenant.md#step-3-register-an-application-in-azure-ad) puis [générer un secret d’application](verifiable-credentials-configure-issuer.md#configure-the-verifiable-credentials-app).
+Pour obtenir un jeton d’accès, votre application doit être enregistrée sur la plateforme d’identité Microsoft et être autorisée par un administrateur à accéder à l’API REST du service de demande. Si vous n’avez pas inscrit l’application *verifiable-credentials-app*, consultez [comment inscrire l’application](verifiable-credentials-configure-tenant.md#register-an-application-in-azure-ad) puis [générer un secret d’application](verifiable-credentials-configure-issuer.md#configure-the-verifiable-credentials-app).
 
 ### <a name="get-an-access-token"></a>Obtention d’un jeton d’accès
 
-Utilisez le [workflow d’octroi d’informations d’identification du client OAuth 2.0](../../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) pour obtenir le jeton d’accès à l’aide du de la plateforme d’identités Microsoft. Nous vous recommandons d’utiliser une bibliothèque OAuth approuvée. Dans ce tutoriel, nous utilisons la bibliothèque d’authentification Microsoft [MSAL](../../active-directory/develop/msal-overview.md). MSAL est une bibliothèque fournie par Microsoft, qui simplifie l’ajout de l’authentification et de l’autorisation à votre application capable d’appeler une API Web sécurisée.
+Utilisez le [workflow d’octroi d’informations d’identification du client OAuth 2.0](../../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) pour obtenir le jeton d’accès à l’aide du de la plateforme d’identités Microsoft. Utilisez une bibliothèque approuvée à cet effet. Dans ce tutoriel, nous utilisons la bibliothèque d’authentification Microsoft [MSAL](../../active-directory/develop/msal-overview.md). MSAL simplifie l’ajout de l’authentification et de l’autorisation à une application qui peut appeler une API web sécurisée.
 
 # <a name="http"></a>[HTTP](#tab/http)
 
 ```http
-Pleaes refer to to the Microsoft Authentication Library (MSAL) documentation for more information on how to acquire tokens via HTTP.
+Refer to to the Microsoft Authentication Library (MSAL) documentation for more information on how to acquire tokens via HTTP.
 ```
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -93,15 +91,14 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 ---
 
-Dans le code ci-dessus, fournissez les paramètres suivants.
+Dans le code précédent, fournissez les paramètres suivants :
 
 | Paramètre | Condition | Description |
 | --- | --- | --- |
-| Authority | Obligatoire | Le locataire de l’annuaire sur lequel les plans d’application opèrent. Par exemple, `https://login.microsoftonline.com/{your-tenant}`, remplacez `your-tenant` par votre [ID de locataire ou nom](../fundamentals/active-directory-how-to-find-tenant.md). |
+| Authority | Obligatoire | Le locataire de l’annuaire sur lequel les plans d’application opèrent. Par exemple : `https://login.microsoftonline.com/{your-tenant}`. (Remplacez `your-tenant` par votre [ID ou nom de locataire](../fundamentals/active-directory-how-to-find-tenant.md).) |
 | ID client | Obligatoire | Copiez l’ID d’application affecté à votre application. Ces informations sont disponibles dans le portail Azure où vous avez inscrit votre application. |
 | Clé secrète client | Obligatoire | La clé secrète client que vous avez générée pour votre application.|
 | Étendues | Obligatoire | Cette propriété doit être définie sur `bbb94529-53a3-4be5-a069-7eaf2712b826/.default`. |
-
 
 Pour plus d’informations sur la façon d’obtenir un jeton d’accès à l’aide de l’identité d’une application de console, consultez l’un des articles suivants : [C#](../develop/quickstart-v2-netcore-daemon.md), [Python](../develop/quickstart-v2-python-daemon.md), [Node.js](../develop/quickstart-v2-nodejs-console.md) ou [Java](../develop/quickstart-v2-java-daemon.md).
 
@@ -180,7 +177,7 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 Pour émettre ou vérifier des justificatifs vérifiables, procédez comme suit :
 
-1. Construisez une requête HTTP POST vers l'API REST du service de demande. Remplacez `{tenantID}` par votre **ID de locataire** ou votre nom de locataire.
+1. Construisez une requête HTTP POST vers l'API REST du service de demande. Remplacez `{tenantID}` par votre ID de locataire ou votre nom de locataire.
 
     ```http
     POST https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -200,7 +197,7 @@ Pour émettre ou vérifier des justificatifs vérifiables, procédez comme suit�
 
 ## <a name="issuance-request-example"></a>Exemple de demande d’émission
 
-L’exemple suivant illustre une demande d’émission de justificatif vérifiable. Pour plus d’informations sur la charge utile, consultez [Spécification de l’émission de l'API REST du service de demande](issuance-request-api.md)
+L’exemple suivant illustre une demande d’émission de justificatif vérifiable. Pour plus d’informations sur la charge utile, consultez [Spécification de l’émission de l’API REST du service de demande](issuance-request-api.md).
 
 ```http
 POST https://beta.did.msidentity.com/v1.0/contoso.onmicrosoft.com/verifiablecredentials/request
@@ -235,11 +232,14 @@ Authorization: Bearer  <token>
 }
 ```  
 
-Pour obtenir le code complet, consultez l’un des exemples de code suivants : [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs) et [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js).
+Pour obtenir le code complet, consultez l’un des exemples de code suivants :
+
+- [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs)
+- [Node.JS](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js)
 
 ## <a name="presentation-request-example"></a>Exemple de demande de présentation
 
-L’exemple suivant illustre une demande de présentation de justificatif vérifiable. Pour plus d’informations sur la charge utile, consultez [Spécification de la présentation de l'API REST de Request Service](presentation-request-api.md)
+L’exemple suivant illustre une demande de présentation de justificatif vérifiable. Pour plus d’informations sur la charge utile, consultez [Spécification de la présentation de l’API REST de Request Service](presentation-request-api.md).
 
 ```http
 POST https://beta.did.msidentity.com/v1.0/contoso.onmicrosoft.com/verifiablecredentials/request
@@ -277,11 +277,11 @@ Authorization: Bearer  <token>
 Pour obtenir le code complet, consultez l’un des exemples de code suivants :
 
 - [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/1-asp-net-core-api-idtokenhint/VerifierController.cs) 
-- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/verifier.js).
+- [Node.JS](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/verifier.js)
 
 ## <a name="callback-events"></a>Événements de rappel
 
-La charge utile de la demande contient le point de terminaison de rappel d’[émission](issuance-request-api.md#callback-events) et de [présentation](presentation-request-api.md#callback-events). Le point de terminaison fait partie de votre application Web et doit être publiquement disponible. Le service de justificatifs vérifiables Microsoft Azure AD appelle votre point de terminaison pour informer votre application de certains événements. Par exemple, lorsqu’un utilisateur scanne le code QR, utilise le lien ciblé avec son application d’authentification, ou termine le processus de présentation.
+La charge utile de la demande contient le point de terminaison de rappel d’[émission](issuance-request-api.md#callback-events) et de [présentation](presentation-request-api.md#callback-events). Le point de terminaison fait partie de votre application web et doit être publiquement disponible. Le service de justificatifs vérifiables Microsoft Azure AD appelle votre point de terminaison pour informer votre application de certains événements. Par exemple, lorsqu’un utilisateur scanne le code QR, utilise le lien ciblé avec son application d’authentification, ou termine le processus de présentation.
 
 Le diagramme suivant décrit l’appel que votre application fait à l’API REST du service de demande, et les rappels à votre application.
 
@@ -291,7 +291,7 @@ Configurez votre point de terminaison pour écouter les requêtes HTTP POST entr
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Non applicable. Choisissez l’un des langages de programmation ci-dessus.
+Non applicable. Choisissez l’un des autres langages de programmation.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -359,7 +359,7 @@ Pour obtenir le code complet, consultez le code d’[émission](https://github.c
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Consultez les articles suivants :
+En savoir plus sur ces spécifications :
 
 - [Spécification d’une API d’émission](issuance-request-api.md)
 - [Spécification d’une API de présentation](presentation-request-api.md)

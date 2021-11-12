@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: SimranArora904
 ms.author: siarora
-ms.date: 06/14/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 6da58d3f37af146c2cb1371cd8b18f134c24d0a2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 224ee0d4cc789349151bdc75ab164cc123119105
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067429"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564857"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Gérer et augmenter les quotas pour les ressources avec Azure Machine Learning
 
@@ -105,7 +105,9 @@ Le tableau suivant présente des limites supplémentaires dans la plateforme. Po
 ### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Points de terminaison en ligne managés Azure Machine Learning (préversion)
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-Les points de terminaison en ligne managés Azure Machine Learning présentent les limites suivantes :
+Les points de terminaison Azure Machine Learning en ligne gérés ont les limites décrites dans le tableau suivant. 
+
+Pour déterminer l’utilisation actuelle d’un point de terminaison, [affichez les métriques](how-to-monitor-online-endpoints.md#view-metrics). Pour demander une exception à l’équipe produit Azure Machine Learning, ouvrez un ticket de support technique.
 
 | **Ressource** | **Limite** |
 | --- | --- |
@@ -115,11 +117,15 @@ Les points de terminaison en ligne managés Azure Machine Learning présentent l
 | Nombre de déploiements par abonnement | 200 |
 | Nombre de déploiements par point de terminaison | 20 |
 | Nombre d’instances par déploiement | 20 |
-| Taille maximale de la charge utile au niveau du point de terminaison | 1,5 Mo |
-| Délai d’expiration maximal des demandes au niveau du point de terminaison  | 60 secondes |
-| Nombre total de requêtes par seconde (RPS) au niveau du point de terminaison pour tous les déploiements | 100 |
+| Délai d’expiration maximal des demandes au niveau du point de terminaison  | 90 secondes |
+| Nombre total de requêtes par seconde au niveau du point de terminaison pour tous les déploiements  | 500 <sup>2</sup> |
+| Nombre total de connexions par seconde au niveau du point de terminaison pour tous les déploiements  | 100 <sup>2</sup> |
+| Nombre total de connexions actives au niveau du point de terminaison pour tous les déploiements  | 100 <sup>2</sup> |
+| Bande passante totale au niveau du point de terminaison pour tous les déploiements  | 5 Mbits/s <sup>2</sup> |
 
 <sup>1</sup> Les tirets simples, comme dans `my-endpoint-name`, sont acceptés dans les noms des points de terminaison et des déploiements.
+
+<sup>2</sup> Si vous demandez une augmentation de la limite, veillez à calculer les augmentations de limite associées dont vous pouvez avoir besoin. Par exemple, si vous demandez une augmentation de la limite de demandes par seconde, vous pouvez également calculer les connexions requises et les limites de bande passante et inclure ces augmentations de limite dans la même demande.
 
 ### <a name="azure-machine-learning-pipelines"></a>Pipelines Azure Machine Learning
 Les [pipelines Azure Machine Learning](concept-ml-pipelines.md) ont les limites suivantes.

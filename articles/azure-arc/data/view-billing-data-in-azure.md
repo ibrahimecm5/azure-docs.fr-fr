@@ -7,104 +7,44 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 2c4e25aebf46ea13b69b8ca24d1336c4ba5521ad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b54d77c5abb5e8043368ad1e8bce3d3865e68fd7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525323"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558759"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Télécharger des données de facturation dans Azure et les afficher dans le portail Azure
 
-> [!IMPORTANT] 
->  L’utilisation de services de données avec Azure Arc pendant la période de la préversion est gratuite. Bien que le système de facturation fonctionne de bout en bout, le compteur de facturation est défini sur $0.  Si vous suivez ce scénario, vous verrez des entrées dans votre facturation pour un service nommé **services de données hybrides** et pour des ressources d’un type appelé **Microsoft.AzureArcData/`<resource type>`** . Vous pourrez voir un enregistrement pour chaque service de données Azure Arc que vous créez, mais chaque enregistrement sera facturé à $0.
+
 
 
 ## <a name="connectivity-modes---implications-for-billing-data"></a>Modes de connectivité – Implications pour les données de facturation
 
-À l’avenir, il y aura deux modes dans lesquels vous pourrez exécuter vos services de données avec Azure Arc :
+Il existe deux modes dans lesquels vous pouvez déployer vos services de données Azure Arc :
 
 - **Connecté indirectement** – Il n’existe pas de connexion directe à Azure. Les données sont envoyées à Azure uniquement via un processus d’exportation/chargement.
-- **Connecté directement** – Dans ce mode, il y aura une dépendance du service Kubernetes avec Azure Arc pour fournir une connexion directe entre Azure et le cluster Kubernetes sur lequel s’exécutent les services de données avec Azure Arc. Cela vous permet d’obtenir davantage de capacités ainsi que d’utiliser le portail Azure et Azure CLI pour gérer vos services de données avec Azure Arc de la même manière que vous gérez vos services de données dans Azure PaaS.  Ce mode de connectivité n’est pas encore disponible en préversion, mais le sera bientôt.
+- **Connecté directement** – Dans ce mode, il y aura une dépendance du service Kubernetes avec Azure Arc pour fournir une connexion directe entre Azure et le cluster Kubernetes sur lequel les services de données avec Azure Arc sont déployés. Cela vous permet d’obtenir davantage de capacités d’Azure ainsi que d’utiliser le portail Azure pour gérer vos services de données avec Azure Arc de la même manière que vous gérez vos services de données dans Azure PaaS.  
 
 Si vous le souhaitez, vous pouvez en savoir plus sur la différence entre les [modes de connectivité](./connectivity.md).
 
 Dans le mode connecté indirectement, les données de facturation sont régulièrement exportées du contrôleur de données Azure Arc vers un fichier sécurisé, puis chargées dans Azure et traitées.  Dans le mode connecté directement à venir, les données de facturation seront automatiquement envoyées à Azure environ 1 fois par heure pour fournir une vue en quasi-temps réel des coûts de vos services. Le processus d’exportation et de chargement des données dans le mode connecté indirectement peut également être automatisé à l’aide de scripts, ou nous pouvons créer un service qui le fera pour vous.
 
-## <a name="upload-billing-data-to-azure"></a>Charger des données de facturation dans Azure
+## <a name="upload-billing-data-to-azure---indirectly-connected-mode"></a>Charger des données de facturation sur Azure - Mode connexion indirecte
+
+> [!NOTE]
+> Le chargement des données d’utilisation (facturation) s’effectue automatiquement en mode connexion directe. Les instructions suivantes ne sont valables que pour le mode connexion indirecte. 
 
 Pour charger des données de facturation dans Azure, les actions suivantes doivent avoir lieu au préalable :
 
 1. Créez un service de données avec Azure Arc si vous n’en avez pas encore. Par exemple, créez l’un des éléments suivants :
    - [Créer une instance gérée Azure SQL sur Azure Arc](create-sql-managed-instance.md)
    - [Créer un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc](create-postgresql-hyperscale-server-group.md)
-1. [Charger l’inventaire des ressources, les données d’utilisation, les métriques et les journaux sur Azure Monitor](upload-metrics-and-logs-to-azure-monitor.md) si vous ne l’avez pas encore fait.
-1. Attendez au moins 2 heures à partir de la création du service de données afin que le processus de collecte de la télémétrie de facturation puisse collecter des données de facturation.
+2. Attendez au moins 2 heures à partir de la création du service de données afin que le processus de collecte de la télémétrie de facturation puisse collecter des données de facturation.
+3. Suivez les étapes décrites dans [Charger l’inventaire des ressources, les données d’utilisation, les métriques et les journaux sur Azure Monitor](upload-metrics-and-logs-to-azure-monitor.md) pour obtenir le programme d’installation avec les conditions préalables requises pour le chargement des données d’utilisation/de facturation/de journal, puis passez à [Charger des données d’utilisation sur Azure](upload-usage-data.md) pour charger les données de facturation. 
 
-Exécutez la commande suivante pour exporter les données de facturation :
-
-```azurecli
-az arcdata dc export -t usage -p usage.json --k8s-namespace <namespace> --use-k8s
-```
-
-Actuellement, le fichier n’étant pas chiffré, vous pouvez en voir le contenu. N’hésitez pas à l’ouvrir dans un éditeur de texte pour voir à quoi ressemble le contenu.
-
-Vous remarquerez qu’il existe deux ensembles de données : `resources` et `data`. L’ensemble de données `resources` est celui du contrôleur de données, des groupes de serveurs PostgreSQL Hyperscale et des instances managées SQL. Les enregistrements `resources` dans les données capturent les événements pertinents dans l’historique d’une ressource, lors de sa création, lors de sa mise à jour et lors de sa suppression. Les enregistrements `data` capturent le nombre de cœurs disponibles qu’une instance donnée peut utiliser à chaque heure.
-
-Exemple d’entrée `resource` :
-
-```console
-    {
-        "customObjectName": "<resource type>-2020-29-5-23-13-17-164711",
-        "uid": "4bc3dc6b-9148-4c7a-b7dc-01afc1ef5373",
-        "instanceName": "sqlInstance001",
-        "instanceNamespace": "arc",
-        "instanceType": "<resource>",
-        "location": "eastus",
-        "resourceGroupName": "production-resources",
-        "subscriptionId": "482c901a-129a-4f5d-86e3-cc6b294590b2",
-        "isDeleted": false,
-        "externalEndpoint": "32.191.39.83:1433",
-        "vCores": "2",
-        "createTimestamp": "05/29/2020 23:13:17",
-        "updateTimestamp": "05/29/2020 23:13:17"
-    }
-```
-
-Exemple d’entrée `data` :
-
-```console
-        {
-          "requestType": "usageUpload",
-          "clusterId": "4b0917dd-e003-480e-ae74-1a8bb5e36b5d",
-          "name": "DataControllerTestName",
-          "subscriptionId": "482c901a-129a-4f5d-86e3-cc6b294590b2",
-          "resourceGroup": "production-resources",
-          "location": "eastus",
-          "uploadRequest": {
-            "exportType": "usages",
-            "dataTimestamp": "2020-06-17T22:32:24Z",
-            "data": "[{\"name\":\"sqlInstance001\",
-                       \"namespace\":\"arc\",
-                       \"type\":\"<resource type>\",
-                       \"eventSequence\":1, 
-                       \"eventId\":\"50DF90E8-FC2C-4BBF-B245-CB20DC97FF24\",
-                       \"startTime\":\"2020-06-17T19:11:47.7533333\",
-                       \"endTime\":\"2020-06-17T19:59:00\",
-                       \"quantity\":1,
-                       \"id\":\"4BC3DC6B-9148-4C7A-B7DC-01AFC1EF5373\"}]",
-           "signature":"MIIE7gYJKoZIhvcNAQ...2xXqkK"
-          }
-        }
-```
-
-Exécutez la commande suivante pour charger le fichier usage.json dans Azure :
-
-```azurecli
-az arcdata dc upload -p usage.json
-```
 
 ## <a name="view-billing-data-in-azure-portal"></a>Afficher les données de facturation dans le portail Azure
 

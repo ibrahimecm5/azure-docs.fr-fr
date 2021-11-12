@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 3fa49fdab111c60c9f73dad5703c39dbc33e1472
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b17b613c07430ce7d4a86e251a86a96d250f0255
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554206"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469288"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Retourner votre appareil Azure Stack Edge
 
@@ -49,6 +49,53 @@ Vous pouvez réinitialiser votre appareil via l’interface utilisateur web loca
 ## <a name="initiate-device-return"></a>Commencer la configuration de l’appareil
 
 Pour commencer le processus de retour, effectuez les étapes suivantes.
+
+---
+
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (préversion)](#tab/azure-edge-hardware-center) 
+
+Si vous avez utilisé Azure Edge Hardware Center pour commander votre appareil, procédez comme suit pour retourner l’appareil :
+
+1. Dans le portail Azure, accédez à la ressource de commande d’Azure Edge Hardware Center. Dans la **Vue d’ensemble**, accédez à la barre de commandes supérieure dans le volet droit, puis sélectionnez **Retourner**. L’option de retour n’est activée qu’une fois que vous avez reçu un appareil.
+
+    ![Retourner l’appareil 1](media/azure-stack-edge-return-device/hardware-center-return-device-1.png)  
+
+1. Dans le panneau **Retourner le matériel**, fournissez les informations suivantes :
+
+    ![Retourner l’appareil 2](media/azure-stack-edge-return-device/hardware-center-return-device-2.png) 
+
+    1. Dans la liste déroulante, sélectionnez un **Motif de retour**.
+
+    1. Indiquez le numéro de série de l’appareil. Pour récupérer le numéro de série de l’appareil, accédez à l’interface utilisateur web locale de l’appareil, puis accédez à **Vue d’ensemble**.  
+    
+       ![Numéro de série de l’appareil 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+
+    1. (Facultatif) Entrez le numéro d’**étiquette de service**. Le numéro d’étiquette de service est un identificateur avec au moins cinq caractères, propre à votre appareil. L’étiquette de service se trouve dans l’angle inférieur droit de l’appareil (quand vous êtes face à celui-ci). Retirez l’étiquette d’informations (panneau d’étiquette coulissant). Ce panneau contient des informations système telles que l’étiquette de service, la carte d’interface réseau, l’adresse MAC, etc. 
+    
+       ![Numéro d’étiquette de service 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+
+    1. Pour demander une boîte d’expédition de retour, cochez la case **Boîte d’expédition requise pour retourner l’unité matérielle**. Vous pouvez la demander. Répondez **Oui** à la question **Need an empty box to return** (Besoin d’une boîte vide pour le retour).
+    
+    1. Passez en revue les **conditions de confidentialité** et activez la case à cocher en regard de la note, disant que vous avez lu et acceptez les conditions de confidentialité.
+
+    1. Vérifiez les **Détails du prélèvement**. Par défaut, ces paramètres sont définis sur votre adresse de livraison. Vous pouvez ajouter une nouvelle adresse ou en sélectionner une différente parmi les adresses enregistrées pour la récupération du retour.
+
+        ![Retourner l’appareil 3](media/azure-stack-edge-return-device/hardware-center-return-device-3.png) 
+
+    1. Sélectionnez **Initier le retour**.
+
+1. Une fois la demande de retour envoyée, la ressource de la commande commence à refléter l’état de votre retour. L’état passe de **Retour lancé** à **Récupéré**, puis **Retour terminé**. Utilisez le portail pour vérifier l’état de retour de votre ressource à tout moment.
+
+    ![Retourner l’appareil 5](media/azure-stack-edge-return-device/hardware-center-return-device-4.png) 
+
+1. Une fois la demande initiée, l’équipe des opérations Azure Stack Edge vous contacte pour vous aider à planifier la collecte de l’appareil.
+
+L’étape suivante consiste à emballer l’appareil.
+
+
+### <a name="portal-classic"></a>[Portail (classique)](#tab/azure-portal)
+
+Si vous avez utilisé le portail classique pour commander votre appareil, procédez comme suit pour retourner l’appareil :
 
 1. Accédez à la ressource de votre Azure Stack Edge dans le portail Azure. Dans la **Vue d’ensemble**, accédez à la barre de commandes dans le volet droit, puis sélectionnez **Retourner l’appareil**. 
 
@@ -87,6 +134,8 @@ Pour commencer le processus de retour, effectuez les étapes suivantes.
 
 7. Une fois que l’équipe des opérations Azure Stack Edge reçoit l’e-mail, elle vous envoie une étiquette de livraison de retour. Lorsque vous recevez cette étiquette, vous pouvez planifier la collecte de l’appareil avec le transporteur. 
 
+---
+
 ## <a name="pack-the-device"></a>Empaqueter l’appareil
 
 Pour compresser l’appareil, procédez comme suit.
@@ -94,14 +143,17 @@ Pour compresser l’appareil, procédez comme suit.
 1. Arrêtez l’appareil. Sur l’interface utilisateur web locale, accédez à **Maintenance > Paramètres d'alimentation**.
 2. Sélectionnez **Arrêter**. Lorsque la boîte de dialogue de confirmation apparaît, cliquez sur **Oui** pour continuer. Pour plus d’informations, consultez [Gérer l’alimentation](../databox-online/azure-stack-edge-manage-access-power-connectivity-mode.md#manage-power).
 3. Débranchez les câbles d’alimentation et retirez tous les câbles réseau de l’appareil.
-4. Préparez soigneusement le package d’expédition conformément aux instructions ci-dessous :
+4. Préparez soigneusement la boîte d’expédition conformément aux instructions ci-dessous et comme indiqué dans le diagramme suivant :
+
+    ![Emballage des appareils](media/azure-stack-edge-return-device/device-packaging-1.svg) 
+
     1. Utilisez la boîte d’envoi que vous avez demandée à partir d’Azure ou la boîte d’envoi d’origine avec son emballage en mousse. 
     1. Placez la pièce en mousse inférieure dans la zone.
     1. Posez l’appareil sur la mousse en veillant à ce qu’il soit placé dans la mousse.
     1. Placez la pièce de mousse supérieure dans l’emballage.
     1. Placez les cordons d’alimentation dans la barre des accessoires et les rails sur la pièce en mousse supérieure.
     1. Scellez la boîte et apposez l’étiquette d’expédition que vous avez reçue d’Azure sur l’emballage.
-    
+   
     > [!IMPORTANT]
     > Si les recommandations appropriées pour préparer la livraison de retour ne sont pas respectées, l’appareil peut être endommagé et des frais d’appareil endommagés peuvent s’appliquer. Passez en revue les [Conditions d’entretien du produit](https://www.microsoft.com/licensing/product-licensing/products) et le [Forum aux questions sur l’appareil perdu ou endommagé](https://azure.microsoft.com/pricing/details/databox/edge/).
  
@@ -119,11 +171,24 @@ Pour planifier une collecte, procédez comme suit.
 
     Au lieu de planifier l’enlèvement, vous pouvez également déposer le disque Azure Stack Edge au point de dépôt le plus proche.
 
-## <a name="delete-the-resource"></a>Supprimer la ressource
+## <a name="complete-return"></a>Retour complet
+
+Dans cette section, vous pouvez vérifier à quel moment le retour est terminé, puis choisir de supprimer la commande. 
+
+---
+
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (préversion)](#tab/azure-edge-hardware-center)
+
+Lorsque l’appareil est reçu par le centre de données Azure, inspectez-le pour rechercher des dommages ou des signes de falsification.
+
+- Si l’appareil arrive intact et en bon état, le compteur de facturation s’arrête pour cette ressource. L’équipe des opérations Azure Stack Edge vous contactera pour confirmer que l’appareil a été renvoyé. L’état de l’élément de commande reflète également l’achèvement du retour.  Vous pouvez maintenant choisir de supprimer la ressource de commande dans le portail Azure.
+- Si l’appareil arrive sérieusement endommagé, des frais peuvent s’appliquer. Pour plus de détails, consultez le [FAQ relatif aux appareils perdus ou endommagés](https://azure.microsoft.com/pricing/details/databox/edge/) et les [conditions d’utilisation du produit](https://www.microsoft.com/licensing/product-licensing/products). 
+
+### <a name="portal-classic"></a>[Portail (classique)](#tab/azure-portal) 
 
 Lorsque l’appareil est reçu par le centre de données Azure, il est inspecté pour rechercher des dommages ou des signes de falsification.
 
-- Si l’appareil arrive intact et en bon état, le compteur de facturation s’arrête pour cette ressource. L’équipe des opérations Azure Stack Edge vous contactera pour confirmer que l’appareil a été renvoyé. Vous pouvez alors supprimer la ressource associée à l’appareil dans le Portail Azure.
+- Si l’appareil arrive intact et en bon état, le compteur de facturation s’arrête pour cette ressource. L’équipe des opérations Azure Stack Edge vous contactera pour confirmer que l’appareil a été renvoyé. Vous pouvez alors choisir de supprimer la ressource associée à l’appareil dans le portail Azure.
 - Si l’appareil arrive sérieusement endommagé, des frais peuvent s’appliquer. Pour plus de détails, consultez le [FAQ relatif aux appareils perdus ou endommagés](https://azure.microsoft.com/pricing/details/databox/edge/) et les [conditions d’utilisation du produit](https://www.microsoft.com/licensing/product-licensing/products).  
 
 
@@ -147,6 +212,7 @@ Effectuez les étapes suivantes pour supprimer l’appareil et la ressource dans
 
 Vous êtes informé lorsque l’appareil et la ressource associée ont bien été supprimés.
 
+---
 
 ## <a name="next-steps"></a>Étapes suivantes
 

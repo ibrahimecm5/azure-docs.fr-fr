@@ -3,12 +3,12 @@ title: Livraison sécurisée de webhooks à l’aide d’Azure AD dans Azure Eve
 description: Décrit comment livrer des événements aux points de terminaison HTTPS protégés par Azure Active Directory à l’aide d’Azure Event Grid
 ms.topic: how-to
 ms.date: 09/29/2021
-ms.openlocfilehash: 18db7a5244cb498ff54999646082d3d5628468e1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 2e5c816d0902fe34ecdff9b967422814e345599a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066881"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131511089"
 ---
 # <a name="deliver-events-to-azure-active-directory-protected-endpoints"></a>Délivrer des événements sur des points de terminaison protégés par Azure Active Directory
 Cet article explique comment utiliser Azure Active Directory (Azure AD) pour sécuriser la connexion entre votre **abonnement aux événements** et votre **point de terminaison webhook**. Pour obtenir une vue d’ensemble des applications et des principaux de service Azure AD, consultez [Présentation de la plateforme d’identités Microsoft (v2.0)](../active-directory/develop/v2-overview.md).
@@ -116,48 +116,55 @@ Sur la base du diagramme ci-dessus, procédez comme suit pour configurer le loca
 
 ## <a name="deliver-events-to-a-webhook-in-a-different-azure-ad-tenant"></a>Remettre des événements à un webhook dans un autre locataire Azure AD 
 
-Pour activer un abonnement webhook sécurisé sur plusieurs locataires, vous devrez effectuer cette tâche à l’aide d’une application Azure AD. Ce processus n’est actuellement pas disponible en utilisant l’utilisateur Azure AD à partir du portail.
+Pour sécuriser la connexion entre votre abonnement aux événements et votre point de terminaison webhook qui se trouvent dans des locataires Azure AD différents, vous devez utiliser une application Azure AD comme indiqué dans cette section. Actuellement, il n’est pas possible de sécuriser cette connexion à l’aide d’un utilisateur Azure AD dans le portail Azure. 
 
 ![Événements multi-locataire avec Azure AD et webhooks](./media/secure-webhook-delivery/multitenant-diagram.png)
 
 Sur la base du diagramme ci-dessus, procédez comme suit pour configurer les locataires.
 
-1. Créez une application Azure AD pour le rédacteur de l’abonnement Event Grid configuré pour fonctionner avec n’importe quel annuaire Azure AD (monolocataire) dans le **locataire A**.
+### <a name="tenant-a"></a>Locataire A
+
+Procédez comme suit dans le **Locataire A** : 
+
+1. Créez une application Azure AD pour le rédacteur de l’abonnement Event Grid configuré pour fonctionner avec n’importe quel annuaire Azure AD (monolocataire).
 
 2. Créez un secret pour l’application Azure AD créée précédemment dans le **locataire A**, puis enregistrez la valeur (vous en aurez besoin plus tard).
 
-3. Dans le **locataire A**, accédez au contrôle d’accès (IAM) dans la rubrique Event Grid et ajoutez l’attribution de rôle de l’application Azure AD du rédacteur de l’abonnement Event Grid en tant que contributeur Event Grid. Cette étape nous permettra d’accéder à la ressource Event Grid lorsque nous nous connectons à Azure avec l’application Azure AD à l’aide d’Azure CLI.
+3. Accédez à la page **Contrôle d’accès (IAM)** de la rubrique Event Grid. Ajoutez l’application Azure AD de l’enregistreur d’abonnement Event Grid au rôle de **Contributeur Event Grid**. Cette étape permet à l’application d’accéder à la ressource Event Grid lorsque vous vous connectez à Azure avec l’application Azure AD à l’aide d’Azure CLI.
 
-4. Créez une application Azure AD pour le webhook configuré pour fonctionner avec l’annuaire Microsoft (monolocataire) dans le **locataire B**.
+### <a name="tenant-b"></a>Locataire B
 
-5. Ouvrez [Azure Shell](https://portal.azure.com/#cloudshell/) dans le **locataire B**, puis sélectionnez l’environnement PowerShell.
+Procédez comme suit dans le **Locataire B** :
 
+1. Créez une application Azure AD pour le webhook configuré pour fonctionner avec l’annuaire Microsoft (monolocataire).
+5. Ouvrez [Azure Shell](https://portal.azure.com/#cloudshell/), puis sélectionnez l’environnement PowerShell.
 6. Modifiez la valeur **$webhookAadTenantId** pour vous connecter au **locataire B**.
-
     - Variables:
         - **$webhookAadTenantId** : ID de locataire Azure pour le **locataire B**
 
-    ```Shell
-    PS /home/user>$webhookAadTenantId = "[REPLACE_WITH_YOUR_TENANT_ID]"
-    PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
-    ```
-
+        ```Shell
+        PS /home/user>$webhookAadTenantId = "[REPLACE_WITH_YOUR_TENANT_ID]"
+        PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
+        ```
 7. Ouvrez le [script suivant](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md) et mettez à jour les valeurs de **$webhookAppObjectId** et **$eventSubscriptionWriterAppId** avec vos identificateurs, puis poursuivez l’exécution du script.
 
     - Variables:
         - **$webhookAppObjectId** : ID d’application Azure AD créé pour le webhook
         - **$eventSubscriptionWriterAppId** : ID d’application Azure AD pour le rédacteur de l’abonnement Event Grid
 
-    > [!NOTE]
-    > Vous n’avez pas besoin de modifier la valeur de **```$eventGridAppId```** , pour ce script. Nous définissons **AzureEventGridSecureWebhookSubscriber** comme valeur de **```$eventGridRoleName```** . N’oubliez pas que, pour exécuter ce script, vous devez être membre du [rôle Administrateur d’application Azure AD](../active-directory/roles/permissions-reference.md#all-roles).
+            > [!NOTE]
+            > Vous n’avez pas besoin de modifier la valeur de **```$eventGridAppId```** , pour ce script. Nous définissons **AzureEventGridSecureWebhookSubscriber** comme valeur de **```$eventGridRoleName```** . N’oubliez pas que, pour exécuter ce script, vous devez être membre du [rôle Administrateur d’application Azure AD](../active-directory/roles/permissions-reference.md#all-roles).
 
-8. Ouvrez [Azure Shell](https://portal.azure.com/#cloudshell/) dans le **locataire A**, puis connectez-vous en tant qu’application Azure AD du rédacteur de l’abonnement Event Grid en exécutant la commande.
+### <a name="tenant-a"></a>Locataire A
+
+Revenez dans le **Locataire A** et procédez comme suit : 
+
+1. Ouvrez [Azure Shell](https://portal.azure.com/#cloudshell/), puis connectez-vous en tant qu’application Azure AD du rédacteur de l’abonnement Event Grid en exécutant la commande.
 
     ```Shell
     PS /home/user>az login --service-principal -u [REPLACE_WITH_APP_ID] -p [REPLACE_WITH_SECRET_VALUE] --tenant [REPLACE_WITH_TENANT_ID]
     ```
-
-9. Créez votre abonnement en exécutant la commande.
+2. Créez votre abonnement en exécutant la commande.
 
     ```Shell
     PS /home/user>az eventgrid system-topic event-subscription create --name [REPLACE_WITH_SUBSCRIPTION_NAME] -g [REPLACE_WITH_RESOURCE_GROUP] --system-topic-name [REPLACE_WITH_SYSTEM_TOPIC] --endpoint [REPLACE_WITH_WEBHOOK_ENDPOINT] --event-delivery-schema [REPLACE_WITH_WEBHOOK_EVENT_SCHEMA] --azure-active-directory-tenant-id [REPLACE_WITH_TENANT_B_ID] --azure-active-directory-application-id-or-uri [REPLACE_WITH_APPLICATION_ID_FROM_SCRIPT] --endpoint-type webhook
@@ -165,11 +172,10 @@ Sur la base du diagramme ci-dessus, procédez comme suit pour configurer les loc
 
     > [!NOTE]
     > Dans ce scénario, nous utilisons une rubrique système Event Grid. Consultez [cette page](/cli/azure/eventgrid) si vous souhaitez créer un abonnement pour des rubriques personnalisées ou des domaines Event Grid à l’aide d’Azure CLI.
-
-10. Si tout a été correctement configuré, vous pourrez créer l’abonnement webhook dans votre rubrique Event Grid.
+3. Si tout a été correctement configuré, vous pourrez créer l’abonnement webhook dans votre rubrique Event Grid.
 
     > [!NOTE]
-    > À ce stade, Event Grid transmet maintenant le jeton du porteur Azure AD au client webhook dans chaque message. Vous devrez valider le jeton d’autorisation dans votre webhook.
+    > À ce stade, Event Grid transmet le jeton du porteur Azure AD au client webhook dans chaque message. Vous devez valider le jeton d’autorisation dans votre webhook.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

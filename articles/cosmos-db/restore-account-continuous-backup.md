@@ -4,16 +4,16 @@ description: Découvrez comment identifier l’heure de restauration et restaure
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2021
+ms.date: 11/03/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f8622b37055cf8585e9c43f2e822756ac06d1de
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3161971323ebda6b55ec0fb423089d3115cd9c01
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352187"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562121"
 ---
 # <a name="restore-an-azure-cosmos-db-account-that-uses-continuous-backup-mode"></a>Restaurer un compte Azure Cosmos DB qui utilise le mode de sauvegarde continue
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -93,6 +93,18 @@ Après avoir lancé une opération de restauration, sélectionnez l’icône **N
 
 :::image type="content" source="./media/restore-account-continuous-backup/track-restore-operation-status.png" alt-text="L’état du compte restauré passe d’En cours de création à En ligne lorsque l’opération est terminée." border="true" lightbox="./media/restore-account-continuous-backup/track-restore-operation-status.png":::
 
+### <a name="get-the-restore-details-from-the-restored-account"></a>Récupérer les détails de la restauration à partir du compte restauré
+
+Une fois l’opération de restauration terminée, vous souhaiterez peut-être connaître les détails du compte source à partir duquel vous avez restauré, ou l’heure de la restauration.
+
+Procédez comme suit pour récupérer les détails de la restauration à partir du portail Azure :
+
+1. Connectez-vous au [portail Azure](https://portal.azure.com/) et accédez au compte restauré.
+
+1. Accédez au volet **Exporter le modèle**. Il ouvre un modèle JSON correspondant au compte restauré.
+
+1. L’objet **resources** > **properties** > **restoreParameters** contient les détails de la restauration. **restoreTimestampInUtc** vous donne l’heure à laquelle le compte a été restauré et **databasesToRestore** affiche la base de données et le conteneur spécifiques à partir desquels le compte a été restauré.
+
 ## <a name="restore-an-account-using-azure-powershell"></a><a id="restore-account-powershell"></a>Restaurer un compte à l’aide d’Azure PowerShell
 
 Avant de restaurer le compte, installez la [dernière version d’Azure PowerShell](/powershell/azure/install-az-ps?view=azps-6.2.1&preserve-view=true) ou une version supérieure à 6.2.0. Connectez-vous ensuite à votre compte Azure et sélectionnez l’abonnement requis avec les commandes suivantes :
@@ -150,6 +162,14 @@ Restore-AzCosmosDBAccount `
   -DatabasesToRestore $datatabaseToRestore1, $datatabaseToRestore2 `
   -Location "West US"
 
+```
+
+### <a name="get-the-restore-details-from-the-restored-account"></a>Récupérer les détails de la restauration à partir du compte restauré
+
+Importez le module `Az.CosmosDB` et exécutez la commande suivante pour récupérer les détails de la restauration. Le restoreTimestamp se trouve sous l’objet restoreParameters :
+
+```azurepowershell
+Get-AzCosmosDBAccount -ResourceGroupName MyResourceGroup -Name MyCosmosDBDatabaseAccount 
 ```
 
 ### <a name="enumerate-restorable-resources-for-sql-api"></a><a id="enumerate-sql-api"></a>Énumérer les ressources restaurables pour l’API SQL
@@ -314,6 +334,14 @@ La façon la plus simple de déclencher une restauration consiste à lancer la c
     --databases-to-restore name=MyDB2 collections=Collection3 Collection4
 
    ```
+
+### <a name="get-the-restore-details-from-the-restored-account"></a>Récupérer les détails de la restauration à partir du compte restauré
+
+Exécutez la commande suivante pour récupérer les détails de la restauration. Le restoreTimestamp se trouve sous l’objet restoreParameters :
+
+```azurecli-interactive
+az cosmosdb show --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup
+```
 
 ### <a name="enumerate-restorable-resources-for-sql-api"></a><a id="enumerate-sql-api"></a>Énumérer les ressources restaurables pour l’API SQL
 

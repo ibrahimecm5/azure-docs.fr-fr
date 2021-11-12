@@ -3,9 +3,7 @@ title: Tailles des machines virtuelles Azure – Mémoire | Microsoft Docs
 description: Répertorie les différentes tailles de mémoire optimisée disponibles pour les machines virtuelles dans Azure. Répertorie des informations sur le nombre de processeurs virtuels, de disques de données et de cartes réseau, ainsi que sur le débit de stockage et la bande passante réseau pour les tailles disponibles dans cette série.
 services: virtual-machines
 documentationcenter: ''
-author: mimckitt
-manager: gwallace
-editor: ''
+author: brbell
 tags: azure-resource-manager,azure-service-management
 keywords: Isolation de machine virtuelle, machine virtuelle isolée, isolation, isolée
 ms.assetid: ''
@@ -14,14 +12,14 @@ ms.subservice: vm-sizes-memory
 ms.devlang: na
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
-ms.author: mimckitt
-ms.openlocfilehash: bde62a7b25f5c367b5fadb5881ab889a95dc2354
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.date: 10/20/2021
+ms.author: brbell
+ms.openlocfilehash: 50a187435b1a47fe2559ce5ce2d36905570b8419
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688936"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456591"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Tailles de machine virtuelle à mémoire optimisée
 
@@ -43,6 +41,12 @@ Les tailles de machine virtuelle à mémoire optimisée offrent un ration mémoi
 - Les [séries Ev4 et Esv4](ev4-esv4-series.md) s’exécutent sur les processeurs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) de seconde génération dans une configuration hyper-thread. Elles sont idéales pour diverses applications d’entreprise gourmandes en mémoire et offrent jusqu’à 504 Gio de RAM. Caractéristiques : [technologie Intel&reg; Turbo Boost 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [technologie Intel&reg; Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) et [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Les séries Ev4 et Esv4 n’incluent pas de disque temporaire local. Pour plus d’informations, consultez [Tailles de machines virtuelles Azure sans disque temporaire local](azure-vms-no-temp-disk.yml).
 
 - Les [séries Edv4 et Edsv4](edv4-edsv4-series.md) s’exécutent sur les processeurs Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) de seconde génération. Elle sont idéales pour les très grandes bases de données ou d’autres applications qui bénéficient d’un nombre élevé de processeurs virtuels et de grandes quantités de mémoire. En outre, ces tailles de machines virtuelles incluent un stockage SSD local rapide et plus important pour les applications qui bénéficient ainsi d’un stockage local à faible latence et à haut débit. Caractéristiques : vitesse d’horloge Turbo continue de 3,4 GHz, [technologie Intel&reg; Turbo Boost 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [technologie Intel&reg; Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) et [Intel&reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
+
+- Les [séries Easv5 et Eadsv5](easv5-eadsv5-series.md) utilisent le processeur EPYC<sup>TM</sup> 7763V de 3e génération d’AMD dans une configuration multithread avec jusqu’à 256 Mo de cache L3, donnant plus options aux clients pour l’exécution de la plupart des charges de travail à mémoire optimisée. Ces machines virtuelles offrent une combinaison de processeurs virtuels et de mémoire pour répondre aux exigences associées à la plupart des applications professionnelles gourmandes en mémoire, telles que les serveurs de base de données relationnelle et les charges de travail d’analytique en mémoire. 
+
+- Les [séries Edv5 et Edsv5](edv5-edsv5-series.md) s’exécutent sur les processeurs Intel&reg; Xeon&reg; Platinum 8272CL (Ice Lake) dans une configuration hyper-thread. Idéales pour les applications d’entreprise gourmandes en mémoire, elles proposent jusqu’à 512 Gio de RAM, la technologie [Intel&reg; Turbo Boost 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), la technologie [Intel&reg; Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) et la technologie [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512).](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) Elles prennent également en charge la technologie [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Ces nouvelles tailles de machines virtuelles disposeront d’un stockage local 50 % plus volumineux ainsi que de meilleures IOPS de disque local en lecture et en écriture par rapport aux tailles [Ev3/Esv3](./ev3-esv3-series.md) avec des [machines virtuelles Gen2](./generation-2.md). Elles sont dotées d’une vitesse d’horloge de Turbo cœur de 3,4 GHz.
+
+- Les [séries Ev5 et Esv5](ev5-esv5-series.md) s’exécutent sur les processeurs Intel&reg; Xeon&reg; Platinum 8272CL (Ice Lake) dans une configuration hyper-thread. Elles sont idéales pour diverses applications d’entreprise utilisant beaucoup de mémoire et offrent jusqu’à 512 Gio de RAM. Elles sont dotées d’une vitesse d’horloge de Turbo cœur de 3,4 GHz.
 
 - La [série M](m-series.md) propose un nombre élevé de processeurs virtuels (jusqu’à 128 processeurs virtuels) et une grande quantité de mémoire (jusqu’à 3,8 Tio). Elle est également idéale pour les très grandes bases de données ou d’autres applications qui bénéficient d’un nombre élevé de processeurs virtuels et de grandes quantités de mémoire.
 

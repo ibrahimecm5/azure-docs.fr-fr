@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 08/03/2021
+ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 3a38717cec9aed40e3aff96376a9d956eb82a53d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 07132095c3f64aa4df3f6ec728894a625bac2b74
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792217"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561704"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Qu'est-ce que le concepteur Azure Machine Learning ? 
 
@@ -39,11 +39,11 @@ Le concepteur utilise votre [espace de travail](concept-workspace.md) Azure Mach
 
 Utilisez un canevas visuel pour créer un workflow Machine Learning de bout en bout. Entraînez, testez et déployez des modèles, le tout dans le concepteur :
 
-1. Glisser-déplacer les [jeux de données](#datasets) et les [modules](#module) sur le canevas.
-1. Connecter les modules pour former un [brouillon de pipeline](#pipeline-draft).
-1. Envoyer une [exécution de pipeline](#pipeline-run) à l’aide des ressources de calcul de votre espace de travail Azure Machine Learning.
-1. Convertir vos **pipelines de formation** en **pipelines d’inférence**.
-1. [Publier](#publish) vos pipelines sur un **point de terminaison de pipeline** REST pour envoyer un nouveau pipeline qui s’exécute avec des paramètres et des jeux de données différents.
++ Glisser-déplacer les [jeux de données](#datasets) et les [composants](#component) sur le canevas.
++ Connecter les composants pour former un [brouillon de pipeline](#pipeline-draft).
++ Envoyer une [exécution de pipeline](#pipeline-run) à l’aide des ressources de calcul de votre espace de travail Azure Machine Learning.
++ Convertir vos **pipelines de formation** en **pipelines d’inférence**.
++ [Publier](#publish) vos pipelines sur un **point de terminaison de pipeline** REST pour envoyer un nouveau pipeline qui s’exécute avec des paramètres et des jeux de données différents.
     + Publier un **pipeline de formation** pour réutiliser un pipeline unique afin d’effectuer l’apprentissage de plusieurs modèles tout en modifiant les paramètres et les jeux de données.
     + Publier un **pipeline d’inférence par lot** pour effectuer des prédictions sur de nouvelles données à l’aide d’un modèle préalablement formé.
 1. [Déployer](#deploy) un **pipeline d’inférence en temps réel** vers un point de terminaison en temps réel pour effectuer des prédictions sur de nouvelles données en temps réel.
@@ -52,18 +52,18 @@ Utilisez un canevas visuel pour créer un workflow Machine Learning de bout en b
 
 ## <a name="pipeline"></a>Pipeline
 
-Un [pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) se compose de jeux de données et de modules algorithmiques qui sont connectés. Les pipelines ont de nombreuses utilisations : vous pouvez créer un pipeline qui effectue l’apprentissage d’un modèle unique ou un pipeline qui effectue l’apprentissage de plusieurs modèles. Vous pouvez créer un pipeline qui réalise des prédictions en temps réel ou par lot ou un pipeline qui nettoie uniquement les données. Les pipelines vous permettent de réutiliser votre travail et d’organiser vos projets.
+Un [pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) se compose de jeux de données et de composants d’analyse qui sont connectés. Les pipelines ont de nombreuses utilisations : vous pouvez créer un pipeline qui effectue l’apprentissage d’un modèle unique ou un pipeline qui effectue l’apprentissage de plusieurs modèles. Vous pouvez créer un pipeline qui réalise des prédictions en temps réel ou par lot ou un pipeline qui nettoie uniquement les données. Les pipelines vous permettent de réutiliser votre travail et d’organiser vos projets.
 
 ### <a name="pipeline-draft"></a>Brouillon de pipeline
 
-Lorsque vous modifiez un pipeline dans le concepteur, votre progression est enregistrée en tant que **brouillon de pipeline**. Vous pouvez modifier un brouillon de pipeline à tout moment en ajoutant ou en supprimant des modules, en configurant des cibles de calcul, en créant des paramètres et ainsi de suite.
+Lorsque vous modifiez un pipeline dans le concepteur, votre progression est enregistrée en tant que **brouillon de pipeline**. Vous pouvez modifier un brouillon de pipeline à tout moment en ajoutant ou en supprimant des composants, en configurant des cibles de calcul, en créant des paramètres et ainsi de suite.
 
 Un pipeline valide a les caractéristiques suivantes :
 
-* Les jeux de données peuvent uniquement se connecter à des modules.
-* Les modules peuvent uniquement se connecter à des jeux de données ou à d’autres modules.
-* Tous les ports d’entrée des modules doivent comporter une connexion au flux de données.
-* Tous les paramètres obligatoires de chaque module doivent être configurés.
+* Les jeux de données peuvent uniquement se connecter à des composants.
+* Les composants peuvent uniquement se connecter à des jeux de données ou à d’autres composants.
+* Tous les ports d’entrée des composants doivent comporter une connexion au flux de données.
+* Tous les paramètres obligatoires de chaque composant doivent être configurés.
 
 Lorsque vous êtes prêt à exécuter votre brouillon de pipeline, vous soumettez une exécution de pipeline.
 
@@ -77,16 +77,16 @@ Les exécutions de pipeline sont regroupées en [expériences](concept-azure-mac
 
 Un jeu de données Machine Learning facilite l’accès aux données et l’utilisation de ces dernières. Plusieurs [exemples de jeux de données](samples-designer.md#datasets) sont inclus dans le concepteur à des fins de test. Vous pouvez [inscrire](how-to-create-register-datasets.md) plusieurs jeux de données en fonction de vos besoins.
 
-## <a name="module"></a>Module
+## <a name="component"></a>Composant
 
-Un module est un algorithme que vous appliquez à vos données. Le concepteur comporte plusieurs modules, allant de fonctions d’entrée des données à des processus d’entraînement, de scoring et de validation.
+Un composant est un algorithme que vous appliquez à vos données. Le concepteur comporte plusieurs composants, allant de fonctions d’entrée des données à des processus d’entraînement, de scoring et de validation.
 
-Un module peut comporter un ensemble de paramètres utilisables pour configurer les algorithmes internes du module. Quand vous sélectionnez un module dans le canevas, ses paramètres sont affichés dans le volet Propriétés à droite du canevas. Vous pouvez modifier les paramètres figurant dans ce volet pour affiner votre pipeline. Vous pouvez définir les ressources de calcul pour des modules individuels dans le concepteur. 
+Un composant peut comporter un ensemble de paramètres utilisables pour configurer les algorithmes internes du composant. Quand vous sélectionnez un composant dans le canevas, ses paramètres sont affichés dans le volet Propriétés à droite du canevas. Vous pouvez modifier les paramètres figurant dans ce volet pour affiner votre modèle. Vous pouvez définir les ressources de calcul pour des composants individuels dans le concepteur. 
 
-:::image type="content" source="./media/concept-designer/properties.png" alt-text="Propriétés du module":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Propriétés de composant":::
 
 
-Pour obtenir de l’aide sur la navigation dans la bibliothèque des algorithmes d’apprentissage automatique disponibles, consultez [Vue d’ensemble des informations de référence relatives aux algorithmes et aux modules](algorithm-module-reference/module-reference.md). Pour obtenir de l’aide sur le choix d’un algorithme, consultez [Aide-mémoire de l’algorithme Machine Learning](algorithm-cheat-sheet.md).
+Pour obtenir de l’aide sur la navigation dans la bibliothèque des algorithmes d’apprentissage automatique disponibles, consultez [Vue d’ensemble des informations de référence relatives aux algorithmes et aux composants](component-reference/component-reference.md). Pour obtenir de l’aide sur le choix d’un algorithme, consultez [Aide-mémoire de l’algorithme Machine Learning](algorithm-cheat-sheet.md).
 
 ## <a name="compute-resources"></a><a name="compute"></a> Ressources de calcul
 
@@ -115,7 +115,7 @@ Vous pouvez également publier un pipeline sur un **point de terminaison de pipe
 
 Les pipelines publiés sont flexibles ; ils peuvent être utilisés pour effectuer ou réeffectuer l’entraînement de modèles, [effectuer des inférences par lot](how-to-run-batch-predictions-designer.md), traiter de nouvelles données et bien plus encore. Vous pouvez publier plusieurs pipelines sur un point de terminaison de pipeline unique et spécifier la version de pipeline à exécuter.
 
-Un pipeline publié s’exécute sur les ressources de calcul que vous définissez dans le brouillon de pipeline pour chaque module.
+Un pipeline publié s’exécute sur les ressources de calcul que vous définissez dans le brouillon de pipeline pour chaque composant.
 
 Le concepteur crée le même objet [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline) que le Kit de développement logiciel (SDK).
 

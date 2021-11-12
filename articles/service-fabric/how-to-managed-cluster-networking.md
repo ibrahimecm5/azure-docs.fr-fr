@@ -3,12 +3,12 @@ title: Configurer les paramètres réseau pour les clusters Service Fabric manag
 description: Découvrez comment configurer votre cluster géré par Service Fabric pour les règles de groupe de sécurité réseau, l’accès aux port RDP, les règles d’équilibrage de charge, etc.
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: 0299118a7715a566cccc0dd1fb7bc83aa9c5e06c
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 3482f414029c79ceea9c0ee8bcc258ed2fc495e1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545657"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558874"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Configurer les paramètres réseau pour les clusters Service Fabric managés
 
@@ -331,7 +331,11 @@ Les clusters gérés n’activent pas le protocole IPv6 par défaut. Cette fonct
 Cette fonctionnalité permet aux clients d’utiliser un réseau virtuel existant en spécifiant un sous-réseau dédié dans lequel le cluster géré déploiera ses ressources. Cela peut être utile si vous disposez déjà d’un réseau virtuel et d’un sous-réseau configurés avec des stratégies de sécurité et un routage du trafic associés que vous souhaitez utiliser. Après avoir opéré le déploiement sur un réseau virtuel existant, il est facile d’utiliser ou d’intégrer d’autres fonctionnalités de mise en réseau telles qu’Azure ExpressRoute, une passerelle VPN Azure, un groupe de sécurité réseau et un appairage de réseaux virtuels. En outre, vous pouvez [apporter votre propre Azure Load Balancer](#byolb), si nécessaire.
 
 > [!NOTE]
+> Lorsque vous utilisez BYOVNET, les ressources de cluster gérées sont déployées dans un sous-réseau. 
+
+> [!NOTE]
 > Vous ne pouvez pas modifier ce paramètre après la création du cluster et le cluster géré attribue un groupe de sécurité réseau au sous-réseau fourni. Ne modifiez pas l’attribution du groupe de sécurité réseau, car cela pourrait interrompre le trafic.
+
 
 **Pour apporter votre propre réseau virtuel :**
 
@@ -443,6 +447,9 @@ Les clusters gérés créent un Azure Load Balancer et un nom de domaine complet
 * Maintenir les stratégies et contrôles existants que vous avez peut-être mis en place
 
 > [!NOTE]
+> Lorsque vous utilisez BYOVNET, les ressources de cluster gérées sont déployées dans un sous-réseau avec un NSG, indépendamment des équilibreurs de charge configurés supplémentaires.
+
+> [!NOTE]
 > Après le déploiement d’un cluster pour un type de nœud, vous ne pouvez pas passer de par défaut à personnalisé, mais vous pouvez modifier la configuration de l’équilibreur de charge personnalisé.
 
 **Exigences concernant les fonctionnalités**
@@ -488,7 +495,7 @@ Pour configurer l’apport de votre propre équilibreur de charge :
 
 2. Ajoutez une attribution de rôle à l’application fournisseur de ressources Service Fabric. L’ajout d’une attribution de rôle est une action ponctuelle. Pour ajouter le rôle, exécutez les commandes PowerShell suivantes ou configurez un modèle Azure Resource Manager (ARM) comme indiqué ci-dessous.
 
-   Dans les étapes suivantes, nous allons commencer avec un équilibreur de charge existant nommé Existing-LoadBalancer1, dans le groupe de ressources Existing-RG. Le sous-réseau est nommé default.
+   Dans les étapes suivantes, nous allons commencer avec un équilibreur de charge existant nommé Existing-LoadBalancer1, dans le groupe de ressources Existing-RG.
 
    Obtenez les informations de propriété `Id` requises à partir de l’Azure Load Balancer existant. Nous allons 
 
@@ -510,7 +517,7 @@ Pour configurer l’apport de votre propre équilibreur de charge :
    New-AzRoleAssignment -PrincipalId 00000000-0000-0000-0000-000000000000 -RoleDefinitionName "Network Contributor" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<LoadBalancerName>"
    ```
 
-   Vous pouvez également ajouter l’attribution de rôle à l’aide d’un modèle Azure Resource Manager (ARM) configuré avec les valeurs appropriées pour `principalId`, `roleDefinitionId`, `vnetName` et `subnetName` :
+   Vous pouvez également ajouter l’attribution de rôle à l’aide d’un modèle Azure Resource Manager (ARM) configuré avec les valeurs appropriées pour `principalId` obtenues à l’étape 1, `loadBalancerRoleAssignmentID` et `roleDefinitionId` :
 
    ```JSON
       "type": "Microsoft.Authorization/roleAssignments",

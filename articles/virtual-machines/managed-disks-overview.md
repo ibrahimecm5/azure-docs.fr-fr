@@ -4,16 +4,16 @@ description: Vue d’ensemble des disques managés Azure, qui gèrent les compte
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/29/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 801e9ed20c86c59d9c72043ff192a3500bae9a5f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f3a58291dcd0f6da13fb4c20f806f6450376f2be
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696132"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555696"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Introduction aux disques managés Azure
 
@@ -112,10 +112,7 @@ La capture instantanée d’un disque managé est une copie en lecture seule et 
 
 Les instantanés sont facturés en fonction de la taille utilisée. Par exemple, si vous créez une capture instantanée d’un disque managé avec une capacité approvisionnée de 64 Gio et une taille des données utilisées réelle de 10 Gio, cet instantané est facturé uniquement pour la taille des données utilisées de 10 Gio. Vous pouvez voir la taille utilisée de vos captures instantanées en examinant le [rapport d’utilisation d’Azure](../cost-management-billing/understand/review-individual-bill.md). Par exemple, si la taille de données utilisée d’un instantané est 10 Gio, le rapport d’utilisation **quotidien** affiche 10 Gio/(31 jours) = 0,3226 Gio comme quantité consommée.
 
-Pour en savoir plus sur la création d’instantanés pour les disques managés, consultez les ressources suivantes :
-
-- [Créer un instantané d’un disque managé dans Windows](windows/snapshot-copy-managed-disk.md)
-- [Créer un instantané d’un disque managé dans Linux](linux/snapshot-copy-managed-disk.md)
+Pour en savoir plus sur la création d’instantanés pour les disques managés, consultez l’article [Créer un instantané d’un disque managé](windows/snapshot-copy-managed-disk.md).
 
 ### <a name="images"></a>Images
 
@@ -136,15 +133,19 @@ Une capture instantanée n’a connaissance d’aucun autre disque que celui qu�
 
 ## <a name="disk-allocation-and-performance"></a>Allocation des disques et performances
 
-Le diagramme suivant illustre l’allocation de bande passante et d’IOPS en temps réel pour les disques, à l’aide d’un système de provisionnement à trois niveaux :
+Le diagramme suivant illustre l’allocation en temps réel de bande passante et d’E/S par seconde pour les disques, avec trois chemins différents que les E/S peuvent prendre : 
 
-![Système de provisionnement à trois niveaux présentant l’allocation de bande passante et d’IOPS](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+![Diagramme d’un système de provisionnement à trois niveaux présentant l’allocation de bande passante et d’IOPS.](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
 
-Le provisionnement de premier niveau définit le nombre d’IOPS par disque et l’affectation de bande passante.  Au deuxième niveau, l’hôte du serveur de calcul implémente le provisionnement SSD, en l’appliquant uniquement aux données stockées sur le disque SSD du serveur, ce qui inclut les disques avec mise en cache (ReadWrite et ReadOnly), ainsi que les disques locaux et temporaires. Pour finir, le provisionnement du réseau de machines virtuelles a lieu au troisième niveau pour les E/S que l’hôte de calcul envoie au back-end Stockage Azure. Avec ce schéma, les performances d’une machine virtuelle dépendent de différents facteurs, de la manière dont la machine virtuelle utilise le disque SSD local jusqu’au nombre de disques attachés, en passant par le type de mise en cache et les performances de ces disques.
+Le premier chemin d’E/S est le chemin d’accès au disque managé non mis en cache. Ce chemin d’accès est pris si vous utilisez un disque managé et que vous définissez la mise en cache de l’hôte sur Aucune. Une E/S utilisant ce chemin d’accès s’exécutera en fonction de l’approvisionnement au niveau du disque, puis de l’approvisionnement au niveau du réseau de machines virtuelles pour les E/S par seconde et le débit.   
+
+Le deuxième chemin d’E/S est le chemin d’accès au disque managé mis en cache. Les E/S de disque managé mises en cache utilisent un SSD proche de la machine virtuelle, qui a ses propres E/S par seconde et débit approvisionnés, et est indiqué par Approvisionnement de niveau SSD dans le diagramme. Lorsqu’un disque managé mis en cache lance une lecture, la requête vérifie d’abord si les données se trouvent dans le disque SSD du serveur. Si les données ne sont pas présentes, cela a créé un échec de mise en cache et l’E/S s’exécute ensuite sur la base de la configuration de niveau SSD, de l’approvisionnement au niveau du disque, puis de l’approvisionnement au niveau du réseau de machines virtuelles pour les E/S par seconde et le débit. Lorsque le disque SSD du serveur lance des lectures sur des E/S mises en cache qui sont présentes sur le disque SSD du serveur, cela crée une correspondance dans le cache et les E/S s’exécutent ensuite en fonction de l’approvisionnement de niveau SSD. Les écritures lancées par un disque managé mis en cache suivent toujours le chemin d’accès avec échec de mise en cache et doivent passer par l’approvisionnement au niveau du réseau et du disque dur virtuel.  
+
+Enfin, le troisième chemin d’accès porte sur le disque local/temporaire. Cette fonction est disponible uniquement sur les machines virtuelles qui prennent en charge les disques locaux/temporaires. Une E/S utilisant ce chemin d’accès s’exécutera en fonction de l’approvisionnement de niveau SSD pour les E/S par seconde et le débit.   
 
 À titre d’exemple de ces limitations, une machine virtuelle Standard_DS1v1 ne peut pas atteindre le potentiel de 5 000 IOPS d’un disque P30, qu’elle soit mise en cache ou non, en raison des limites au niveau des disques SSD et du réseau :
 
-![Exemple d’allocation Standard_DS1v1](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+![Diagramme d’un système d’approvisionnement à trois niveaux avec l’exemple d’allocation Standard_DS1v1.](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
 Azure utilise pour le trafic de disque un canal réseau qui est prioritaire par rapport à tout autre trafic réseau de faible priorité. Cela aide les disques à conserver leurs performances attendues en cas de contention de réseau. De même, Stockage Azure gère les conflits de ressources et autres problèmes en arrière-plan avec l’équilibrage de charge automatique. Stockage Azure alloue les ressources nécessaires quand vous créez un disque, et applique un équilibrage proactif et réactif des ressources pour gérer le niveau de trafic. Cela permet de s’assurer que les disques peuvent supporter leurs cibles d’IOPS et de débit attendues. Vous pouvez utiliser les métriques au niveau de la machine virtuelle et du disque pour suivre les alertes de performances et de configuration en fonction des besoins.
 

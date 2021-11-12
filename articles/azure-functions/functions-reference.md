@@ -4,12 +4,12 @@ description: Découvrez les concepts et techniques Azure Functions dont vous ave
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: b29ae41d85d243e64fea777dcb0cf9ee5ccff581
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: db0fc469d7f4429d8a99c5869940dfc50b63e845
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130137357"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477057"
 ---
 # <a name="azure-functions-developer-guide"></a>Guide du développeur Azure Functions
 Dans Azure Functions, des fonctions spécifiques partagent quelques concepts techniques et composants de base, quels que soient le langage et la liaison que vous utilisez. Avant de passer à l'apprentissage des détails propres à un langage ou une liaison donnés, veillez à lire cette présentation qui s'applique à l’ensemble d’entre eux.
@@ -103,22 +103,22 @@ Le fournisseur de configuration par défaut utilise des variables d’environnem
 
 Quand le nom de la connexion correspond à une seule valeur exacte, le runtime identifie la valeur en tant que _chaîne de connexion_, qui comprend généralement un secret. Les détails d’une chaîne de connexion sont définis par le service auquel vous souhaitez vous connecter.
 
-Toutefois, un nom de connexion peut également faire référence à une collection de plusieurs éléments de configuration. Les variables d’environnement peuvent être traitées comme une collection à l’aide d’un préfixe partagé qui se termine par deux traits de soulignement `__`. Il est ensuite possible de référencer le groupe en définissant le nom de la connexion sur ce préfixe.
+Toutefois, un nom de connexion peut également faire référence à un ensemble de plusieurs éléments de configuration, utiles pour la configuration des [connexions basées sur l’identité](#configure-an-identity-based-connection). Les variables d’environnement peuvent être traitées comme une collection à l’aide d’un préfixe partagé qui se termine par deux traits de soulignement `__`. Il est ensuite possible de référencer le groupe en définissant le nom de la connexion sur ce préfixe.
 
 Par exemple, la propriété `connection` d’une définition de déclencheur Blob Azure peut être « Storage1 ». Tant qu’aucune valeur de chaîne unique n’est configurée par une variable d’environnement nommée « Storage1 », une variable d’environnement nommée `Storage1__blobServiceUri` peut être utilisée pour informer la propriété `blobServiceUri` de la connexion. Les propriétés de connexion sont différentes pour chaque service. Reportez-vous à la documentation du composant qui utilise la connexion.
 
 ### <a name="configure-an-identity-based-connection"></a>Configurer une connexion basée sur une identité
 
-Dans Azure Functions, certaines connexions peuvent être configurées pour utiliser une identité plutôt qu’un secret. La prise en charge dépend de l’extension qui utilise la connexion. Dans certains cas, une chaîne de connexion peut toujours être nécessaire dans Functions, même si le service auquel vous vous connectez prend en charge les connexions basées sur une identité.
+Dans Azure Functions, certaines connexions peuvent être configurées pour utiliser une identité plutôt qu’un secret. La prise en charge dépend de l’extension qui utilise la connexion. Dans certains cas, une chaîne de connexion peut toujours être nécessaire dans Functions, même si le service auquel vous vous connectez prend en charge les connexions basées sur une identité. Pour obtenir un tutoriel sur la configuration de vos applications de fonction avec des identités managées, consultez le [tutoriel Création d’une application de fonction avec des connexions basées sur l’identité](./functions-identity-based-connections-tutorial.md).
 
 Les connexions basées sur une identité sont prises en charge par les composants suivants :
 
 | Source de connexion                                       | Plans pris en charge | En savoir plus                                                                                                         |
 |---------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
-| Déclencheurs et liaisons d’objets blob Azure - Préversion              | Tous             | [Extension version 5.0.0-beta1 ou ultérieure](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
-| Déclencheurs et liaisons de File d’attente Azure - Préversion             | Tous             | [Extension version 5.0.0-beta1 ou ultérieure](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
-| Déclencheurs et liaisons Azure Event Hubs - Préversion        | Tous             | [Extension version 5.0.0-beta1 ou ultérieure](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
-| Déclencheurs et liaisons Azure Service Bus - Préversion       | Tous             | [Extension version 5.0.0-beta2 ou ultérieure](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
+| Déclencheurs et liaisons d’objets blob Azure               | Tous             | [L’extension version 5.0.0 ou ultérieure](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
+| Déclencheurs et liaisons de File d’attente Azure            | Tous             | [L’extension version 5.0.0 ou ultérieure](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
+| Déclencheurs et liaisons Azure Event Hubs     | Tous             | [L’extension version 5.0.0 ou ultérieure](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
+| Déclencheurs et liaisons Azure Service Bus       | Tous             | [L’extension version 5.0.0 ou ultérieure](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
 | Déclencheurs et liaisons Azure Cosmos DB - Préversion         | Premium élastique | [Extension version 4.0.0-preview1 ou ultérieure](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) |
 | Stockage exigé par l’hôte (« AzureWebJobsStorage ») - Préversion | Tous             | [Connexion au stockage hôte avec une identité](#connecting-to-host-storage-with-an-identity-preview)                        |
 
@@ -145,11 +145,11 @@ Choisissez un onglet ci-dessous afin d’en savoir plus sur les autorisations po
 
 [!INCLUDE [functions-service-bus-permissions](../../includes/functions-service-bus-permissions.md)]
 
-# <a name="azure-cosmos-db-extension"></a>[Extension Azure Cosmos DB](#tab/cosmos)
+# <a name="azure-cosmos-db-extension-preview"></a>[Extension Azure Cosmos DB (préversion)](#tab/cosmos)
 
 [!INCLUDE [functions-cosmos-permissions](../../includes/functions-cosmos-permissions.md)]
 
-# <a name="functions-host-storage"></a>[Stockage hôte Functions](#tab/azurewebjobsstorage)
+# <a name="functions-host-storage-preview"></a>[Stockage hôte Functions (préversion)](#tab/azurewebjobsstorage)
 
 [!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 
@@ -167,6 +167,9 @@ Une connexion basée sur une identité pour un service Azure accepte les propri�
 Des options supplémentaires peuvent être prises en charge pour un type de connexion donné. Reportez-vous à la documentation du composant qui effectue la connexion.
 
 ##### <a name="local-development-with-identity-based-connections"></a>Développement local avec connexions basées sur une identité
+
+> [!NOTE]
+> Le développement local avec des connexions basées sur l’identité nécessite des versions mises à jour d’[Azure Functions Core Tools](./functions-run-local.md). Vous pouvez vérifier la version installée en exécutant `func -v`. Pour Functions v3, utilisez la version `3.0.3904` ou une version ultérieure. Pour Functions v4, utilisez la version `4.0.3904` ou une version ultérieure. 
 
 Lors d’une exécution locale, la configuration ci-dessus indique au runtime d’utiliser votre identité de développeur locale. La connexion tente d’obtenir un jeton à partir des emplacements suivants, dans l’ordre :
 
@@ -207,8 +210,8 @@ Voici un exemple de propriétés `local.settings.json` obligatoires pour une con
 Par défaut, Azure Functions utilise la connexion « AzureWebJobsStorage » pour les comportements de base comme la coordination de l’exécution unique de déclencheurs de minuteur et du stockage de clés d’application par défaut. Cela peut également être configuré pour tirer parti d’une identité.
 
 > [!CAUTION]
-> Dans Functions, d’autres composants reposent sur « AzureWebJobsStorage » pour les comportements par défaut. Vous ne devez pas la déplacer vers une connexion basée sur une identité si vous utilisez des versions antérieures des extensions qui ne prennent pas en charge ce type de connexion, ce qui inclut les déclencheurs et les liaisons pour les objets blob Azure et les hubs d’événement.
-> 
+> Dans Functions, d’autres composants reposent sur « AzureWebJobsStorage » pour les comportements par défaut. Vous ne devez pas la déplacer vers une connexion basée sur une identité si vous utilisez des versions antérieures des extensions qui ne prennent pas en charge ce type de connexion, ce qui inclut les déclencheurs et les liaisons pour les objets blob Azure et les hubs d’événement. De même, `AzureWebJobsStorage` est utilisé pour les artefacts de déploiement lors de l’utilisation de la génération côté serveur dans Linux, et si vous l’activez, vous devrez effectuer le déploiement via [un package de déploiement externe](/run-functions-from-deployment-package).
+>
 > De plus, certaines applications réutilisent « AzureWebJobsStorage » pour d’autres connexions de stockage dans leurs déclencheurs, liaisons et/ou code de fonction. Vérifiez que toutes les utilisations de « AzureWebJobsStorage » peuvent utiliser le format de connexion basée sur une identité avant de modifier cette connexion à partir d’une chaîne de connexion.
 
 Pour utiliser une connexion basée sur une identité pour « AzureWebJobsStorage », configurez les paramètres d’application suivants :

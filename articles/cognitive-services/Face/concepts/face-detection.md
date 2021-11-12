@@ -1,21 +1,21 @@
 ---
 title: Concepts de détection et d’attributs de visage
 titleSuffix: Azure Cognitive Services
-description: La détection des visages est l’action visant à localiser des visages humains dans une image et à retourner, si vous le souhaitez, différents types de données liées aux visages.
+description: Apprenez-en davantage sur la détection des visages. La détection des visages est l’action visant à localiser des visages humains dans une image et à retourner, si vous le souhaitez, différents types de données liées aux visages.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 8e14e1fd97bbf3e0fe83c1b7e0eeae1cf446e74d
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 262de9199d1572130147895e972355daf4ecafbc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811225"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450388"
 ---
 # <a name="face-detection-and-attributes"></a>Détection et attributs de visage
 
@@ -58,6 +58,9 @@ Les attributs sont un ensemble de fonctionnalités qui peuvent éventuellement �
 * **noise**. Le bruit visuel détecté dans l’image du visage. Cet attribut retourne une valeur comprise entre 0 et 1, ainsi qu’une évaluation informelle low (faible), medium (moyenne) ou high (élevée).
 * **occlusion**. Indique si des objets obstruent des parties du visage. Cet attribut retourne une valeur booléenne pour eyeOccluded (obstruction des yeux), foreheadOccluded (obstruction du front) et mouthOccluded (obstruction de la bouche).
 * **smile**. L’expression de sourire du visage donné. Cette valeur est comprise entre 0 pour aucun sourire et 1 pour un sourire clair.
+* **QualityForRecognition** Qualité d’image globale indiquant si l’image utilisée dans la détection est d’une qualité suffisante pour tenter une reconnaissance faciale. La valeur est une évaluation informelle de faible, moyenne ou élevée. Seules des images de qualité « élevée » sont recommandées pour l’inscription de personnes, et une qualité supérieure à « moyenne » est recommandée pour les scénarios d’identification.
+    >[!NOTE]
+    > La disponibilité de chaque attribut dépend du modèle de détection spécifié. L’attribut QualityForRecognition dépend également du modèle de reconnaissance, car il n’est actuellement disponible que lors de l’utilisation d’une combinaison de modèle de détection detection_01 ou detection_03, et du modèle de reconnaissance recognition_03 ou recognition_04.
 
 > [!IMPORTANT]
 > Les attributs de visage sont prévus via l’utilisation d’algorithmes statistiques. Ils peuvent ne pas toujours être exacts. Soyez prudent lorsque vous prenez des décisions basées sur les données d’attribut.
@@ -66,18 +69,27 @@ Les attributs sont un ensemble de fonctionnalités qui peuvent éventuellement �
 
 Utilisez les conseils suivants pour vous assurer que vos images d’entrée fournissent les résultats de détection les plus précis :
 
-* Les formats d’image d’entrée pris en charge incluent JPEG, PNG, GIF pour la première image et BMP.
+* Les formats d’image d’entrée pris en charge sont JPEG, PNG, GIF (la première image) et BMP. 
 * La taille du fichier image ne doit pas dépasser 6 Mo.
 * La taille de visage minimale détectable est de 36 x 36 pixels dans une image dont la taille n’est pas supérieure à 1920 x 1080 pixels. Les images dont la taille est supérieure à 1920 x 1080 pixels ont une taille de visage minimale proportionnellement supérieure. La réduction de la taille du visage peut entraîner la non-détection de certains visages, même si leur taille est supérieure à la taille de visage minimale détectable.
 * La taille de visage maximale détectable est de 4096 x 4096 pixels.
 * Les visages dont la taille n’est pas comprise entre 36 x 36 et 4096 x 4096 pixels ne sont pas détectés.
-* Certains visages peuvent ne pas être détectés en raison de défis techniques. Un angle extrême du visage (posture de la tête) ou l’obstruction du visage (des objets tels que des lunettes de soleil ou les mains obstruent une partie du visage) peuvent affecter la détection. Les visages frontaux et quasi-frontaux fournissent les meilleurs résultats.
+* Certains visages peuvent ne pas être reconnus en raison de défis techniques, tels que :
+  * Des images avec un éclairage extrême, par exemple, un contre-jour marqué.
+  * Des obstacles cachant un œil ou les deux yeux.
+  * Des différences de type de cheveux ou de pilosité faciale.
+  * Des changements d’apparence du visage dus à l’âge.
+  * Une très grande expressivité du visage.
 
-Données d’entrée avec les informations d’orientation :
-* Certaines images d’entrée au format JPEG peuvent contenir des informations d’orientation dans les métadonnées EXIF (Exchangeable Image File Format). Si l’orientation EXIF est disponible, les images sont automatiquement pivotées dans l’orientation appropriée avant d’être envoyées pour une détection de visages. Le rectangle de visage, les points de repère et la posture de tête de chaque visage détecté sont estimés en fonction de l’image pivotée.
-* Pour afficher correctement le rectangle de visage et les points de repère, vous devez vérifier que l’image est correctement pivotée. La plupart des outils de visualisation d’image effectuent par défaut une rotation automatique de l’image en fonction de son orientation EXIF. Pour d’autres outils, vous devrez peut-être appliquer la rotation à l’aide de votre propre code. Les exemples suivants montrent un rectangle de visage sur une image pivotée (à gauche) et une image non pivotée (à droite).
+### <a name="input-data-with-orientation-information"></a>Données d’entrée avec les informations d’orientation :
 
-![Deux images de visage avec/sans rotation](../Images/image-rotation.png)
+Certaines images d’entrée au format JPEG peuvent contenir des informations d’orientation dans les métadonnées EXIF (Exchangeable Image File Format). Si l’orientation EXIF est disponible, les images sont automatiquement pivotées dans l’orientation appropriée avant d’être envoyées pour une détection de visages. Le rectangle de visage, les points de repère et la posture de tête de chaque visage détecté sont estimés en fonction de l’image pivotée.
+
+Pour afficher correctement le rectangle de visage et les points de repère, vous devez vérifier que l’image est correctement pivotée. La plupart des outils de visualisation d’image effectuent par défaut une rotation automatique de l’image en fonction de son orientation EXIF. Pour d’autres outils, vous devrez peut-être appliquer la rotation à l’aide de votre propre code. Les exemples suivants montrent un rectangle de visage sur une image pivotée (à gauche) et une image non pivotée (à droite).
+
+![Deux images de visage avec et sans rotation](../Images/image-rotation.png)
+
+### <a name="video-input"></a>Entrée vidéo
 
 Si vous détectez les visages à partir d’un flux vidéo, vous pouvez éventuellement améliorer les performances en ajustant certains paramètres de votre caméra vidéo :
 

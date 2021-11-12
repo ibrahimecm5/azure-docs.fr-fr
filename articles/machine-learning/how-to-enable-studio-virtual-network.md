@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 07/13/2021
+ms.date: 11/01/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: 6a10384757552108aefc3dd828bf0fd7ddce2f82
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c978e214e9a3c7e7bef5afc60f11263c1e9efe12
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427492"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562482"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Utiliser le studio Azure Machine Learning dans un réseau virtuel Azure
 
@@ -76,6 +76,13 @@ Il existe un problème connu où le magasin de fichiers par défaut ne crée pas
 Pour éviter ce problème, vous avez deux options : 1) Utilisez le magasin de fichiers par défaut qui est automatiquement créé pour vous lors de la création de votre espace de travail. 2) Pour importer votre propre magasin de fichiers, assurez-vous que le magasin de fichiers est en dehors du réseau virtuel pendant la création de l’espace de travail. Une fois l’espace de travail créé, ajoutez le compte de stockage au réseau virtuel.
 
 Pour résoudre ce problème, supprimez le compte de magasin de fichiers du réseau virtuel, puis rajoutez-le au réseau virtuel.
+
+### <a name="designer-sample-pipeline"></a>Exemple de pipeline de concepteur
+
+Il existe un problème connu à cause duquel l’utilisateur ne peut pas exécuter l’exemple de pipeline dans la page d’accueil du concepteur. L’exemple de jeu de données utilisé dans l’exemple de pipeline est le jeu de données Azure Global, et il ne peut pas satisfaire à tous les environnements de réseau virtuel.
+
+Pour résoudre ce problème, vous pouvez utiliser un espace de travail public pour exécuter un exemple de pipeline afin de savoir comment utiliser le concepteur, puis remplacer l’exemple de jeu de données par votre propre jeu de données dans l’espace de travail au sein du réseau virtuel.
+
 ## <a name="datastore-azure-storage-account"></a>Magasin de données : compte Stockage Azure
 
 Procédez comme suit pour activer l’accès aux données stockées dans le Stockage Blob et le Stockage Fichier Azure :
@@ -140,13 +147,13 @@ Pour accéder aux données stockées dans une base de données Azure SQL Databas
 
 Après avoir créé un utilisateur autonome SQL, vous devez lui accorder des autorisations à l’aide de la [commande T-SQL GRANT](/sql/t-sql/statements/grant-object-permissions-transact-sql).
 
-## <a name="intermediate-module-output"></a>Sortie de module intermédiaire
+## <a name="intermediate-component-output"></a>Sortie du composant intermédiaire
 
-Lorsque vous utilisez la sortie de module intermédiaire du concepteur Azure Machine Learning, vous pouvez spécifier l’emplacement de sortie de n’importe quel module dans le concepteur. Vous pouvez ainsi stocker les jeux de données intermédiaires dans un emplacement distinct à des fins de sécurité, de journalisation ou d’audit. Pour spécifier la sortie, procédez comme suit :
+Lorsque vous utilisez la sortie de composant intermédiaire du concepteur Azure Machine Learning, vous pouvez spécifier l’emplacement de sortie de n’importe quel composant dans le concepteur. Vous pouvez ainsi stocker les jeux de données intermédiaires dans un emplacement distinct à des fins de sécurité, de journalisation ou d’audit. Pour spécifier la sortie, procédez comme suit :
 
-1. Sélectionnez le module dont vous souhaitez spécifier la sortie.
-1. Dans le volet Paramètres du module qui s’affiche à droite, sélectionnez **Paramètres de sortie**.
-1. Spécifiez le magasin de données que vous souhaitez utiliser pour chaque sortie de module.
+1. Sélectionnez le composant dont vous souhaitez spécifier la sortie.
+1. Dans le volet Paramètres du composant qui s’affiche à droite, sélectionnez **Paramètres de sortie**.
+1. Spécifiez le magasin de données que vous souhaitez utiliser pour chaque sortie de composant.
 
 Assurez-vous que vous avez accès aux comptes de stockage intermédiaires de votre réseau virtuel. Dans le cas contraire, le pipeline échoue.
 
