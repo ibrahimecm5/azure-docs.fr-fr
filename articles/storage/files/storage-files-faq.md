@@ -7,12 +7,12 @@ ms.date: 09/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: f3ce223174bc92fefd9f31c53709665749eca112
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 717cafbfc3623e52b9d9a0d70e6a22c9e562616b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627897"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471836"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Questions fréquentes (FAQ) sur Azure Files
 [Azure Files](storage-files-introduction.md) offre des partages de fichiers pleinement managés dans le cloud qui sont accessibles via le [protocole SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) standard et le [protocole NFS (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) (préversion). Vous pouvez monter des partages de fichiers Azure simultanément sur des déploiements cloud ou locaux de Windows, Linux et macOS. Vous pouvez également mettre en cache des partages de fichiers Azure sur des ordinateurs Windows Server à l’aide d’Azure File Sync pour bénéficier d’un accès rapide proche de l’endroit où les données sont utilisées.
@@ -21,7 +21,7 @@ Cet article répond à des questions courantes sur les fonctionnalités d’Azur
 
 1. La section Commentaires de cet article
 2. [Page de questions Microsoft Q&R sur le Stockage Azure](/answers/topics/azure-file-storage.html).
-3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 
+3. [Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) 
 4. Support Microsoft Pour créer une demande de support, dans le portail Azure, sous l’onglet **Aide**, sélectionnez le bouton **Aide et support**, puis **Nouvelle demande de support**.
 
 ## <a name="general"></a>Général
@@ -84,7 +84,7 @@ Cet article répond à des questions courantes sur les fonctionnalités d’Azur
 
 * <a id="give-us-feedback"></a>
   **Je souhaite vraiment qu’une fonctionnalité soit ajoutée à Azure Files. Pouvez vous ajouter ?**  
-    L’équipe Azure Files est à l’écoute de tous vos commentaires sur notre service. Veuillez voter pour les demandes de fonctionnalités sur le [forum UserVoice consacré à Azure Files](https://feedback.azure.com/forums/217298-storage/category/180670-files). Nous sommes impatients de mettre à votre disposition de nombreuses nouvelles fonctionnalités.
+    L’équipe Azure Files est à l’écoute de tous vos commentaires sur notre service. Veuillez voter pour les demandes de fonctionnalités sur le [forum UserVoice consacré à Azure Files](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84). Nous sommes impatients de mettre à votre disposition de nombreuses nouvelles fonctionnalités.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 
@@ -175,7 +175,7 @@ La synchronisation initiale est généralement limitée par le taux de chargemen
 
 * <a id="afs-os-support"></a>
   **Puis-je utiliser Azure File Sync avec Windows Server 2008 R2, Linux ou mon périphérique de stockage NAS (Network-Attached Storage) ?**  
-    À l’heure actuelle, Azure File Sync prend uniquement en charge Windows Server 2019, Windows Server 2016 et Windows Server 2012 R2. À ce stade, nous n’avons pas d’autres plans à partager, mais nous sommes ouverts à l’idée de prendre en charge des plateformes supplémentaires en fonction de la demande des clients. Indiquez-nous les plateformes que vous souhaiteriez voir prises en charge sur le [forum UserVoice consacré à Azure Files](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+    À l’heure actuelle, Azure File Sync prend uniquement en charge Windows Server 2019, Windows Server 2016 et Windows Server 2012 R2. À ce stade, nous n’avons pas d’autres plans à partager, mais nous sommes ouverts à l’idée de prendre en charge des plateformes supplémentaires en fonction de la demande des clients. Indiquez-nous les plateformes que vous souhaiteriez voir prises en charge sur le [forum UserVoice consacré à Azure Files](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84).
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Pourquoi les fichiers hiérarchisés existent-ils en dehors de l’espace de noms du point de terminaison du serveur ?**  
@@ -345,7 +345,7 @@ La synchronisation initiale est généralement limitée par le taux de chargemen
     
        net use <drive-letter/share-path> /delete
 
-## <a name="network-file-system"></a>Système de gestion de fichiers en réseau
+## <a name="network-file-system-nfs-v41"></a>NFS (Network File System) v4.1
 
 * <a id="when-to-use-nfs"></a>
 **Quand dois-je utiliser Azure Files NFS ?**
@@ -416,7 +416,7 @@ La synchronisation initiale est généralement limitée par le taux de chargemen
 **Puis-je créer des instantanés de partage de fichiers individuels ?**  
     Les instantanés de partage sont créés au niveau du partage de fichiers. Vous pouvez restaurer des fichiers individuels à partir de l’instantané de partage de fichiers, mais vous ne pouvez pas créer d’instantanés de partage au niveau du fichier. Toutefois, si vous avez capturé un instantané de partage au niveau du partage et que vous souhaitez répertorier les instantanés de partage où un fichier spécifique a changé, vous pouvez effectuer cette opération sous **Versions précédentes** sur un partage monté sur Windows. 
     
-    N’hésitez pas à nous indiquer si vous avez besoin d’une fonctionnalité de capture d’instantanés de fichiers sur [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+    N’hésitez pas à nous indiquer si vous avez besoin d’une fonctionnalité de capture d’instantanés de fichiers sur [Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84).
 
 * <a id="encrypted-snapshots"></a>
 **Puis-je créer des instantanés d’un partage de fichiers chiffré ?**  

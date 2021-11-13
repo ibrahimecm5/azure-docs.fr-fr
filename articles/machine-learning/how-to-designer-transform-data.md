@@ -5,17 +5,17 @@ description: Découvrez comment importer et transformer des données dans le con
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mldata
-author: peterclu
-ms.author: peterlu
-ms.date: 06/28/2020
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 3d658421d392032e4425a3f87f8f59f9baab2ce4
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 42f70e55bf8c2e8b8d6186d26f5a3a1ba08f6a63
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427606"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557449"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformer des données dans le concepteur Azure Machine Learning
 
@@ -44,60 +44,60 @@ Procédez comme suit pour importer l’exemple de jeu de données.
 
 1. Connectez-vous à <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>, puis sélectionnez l’espace de travail à utiliser.
 
-1. Accédez au concepteur. Sélectionnez **Easy-to-use-prebuild modules** (modules prêts à l’emploi) pour créer un pipeline.
+1. Accédez au concepteur. Sélectionnez **Composants prédéfinis faciles à utiliser** pour créer un pipeline.
 
 1. Sélectionnez une cible de calcul par défaut pour exécuter le pipeline.
 
-1. Sur la gauche du canevas de pipeline se trouve une palette de jeux de données et de modules. Sélectionnez **Jeux de données**. Affichez ensuite la section **Exemples**.
+1. À gauche du canevas du pipeline se trouve une palette de jeux de données et de composants. Sélectionnez **Jeux de données**. Affichez ensuite la section **Exemples**.
 
 1. Glisser-déposez le jeu de données de **Adult Census Income Binary classification** sur le canevas.
 
-1. Cliquez avec le bouton droit sur le module du jeu de données **Adult Census Income**, puis sélectionnez **Visualiser** > **Sortie du jeu de données**.
+1. Cliquez avec le bouton droit sur le composant du jeu de données **Adult Census Income**, puis sélectionnez **Visualiser** > **Sortie du jeu de données**.
 
 1. Utilisez la fenêtre d’aperçu des données pour explorer le jeu de données. Notez en particulier les valeurs de la colonne « native-country ».
 
 ### <a name="split-the-data"></a>Fractionner les données
 
-Dans cette section, vous utilisez le module [Split Data](algorithm-module-reference/split-data.md) (Fractionner les données) pour identifier et fractionner les lignes contenant « United-States » dans la colonne « native-country ». 
+Dans cette section, vous allez utiliser le [composant Split Data](algorithm-module-reference/split-data.md) (Fractionner les données) pour identifier et fractionner les lignes contenant « United-States » dans la colonne « native-country ». 
 
-1. Dans la palette de modules à gauche du canevas, développez la section **Data Transformation** (Transformation des données) et recherchez le module **Split Data** (Fractionner les données).
+1. Dans la palette de composants à gauche du canevas, développez la section **Data Transformation** (Transformation des données) et recherchez le composant **Split Data**.
 
-1. Faites glisser le module **Split Data** (Fractionner les données) sur le canevas, puis déposez le module sous le module du jeu de données.
+1. Faites glisser le composant **Split Data** sur le canevas, puis déposez le composant sous le composant du jeu de données.
 
-1. Connectez le module du jeu de données au module **Split Data** (Fractionner les données).
+1. Connectez le composant du jeu de données au composant **Split Data**.
 
-1. Sélectionnez le module **Fractionner les données**.
+1. Sélectionnez le composant **Split Data**.
 
-1. Dans le volet d’informations du module à droite du canevas, définissez **Splitting mode** (Mode de fractionnement) sur **Regular Expression** (Expression régulière).
+1. Dans le volet d’informations du composant à droite du canevas, définissez **Splitting mode** (Mode de fractionnement) sur **Regular Expression** (Expression régulière).
 
 1. Entrez l’**expression régulière** : `\"native-country" United-States`.
 
-    Le mode **Regular expression** (Expression régulière) teste une seule colonne pour une valeur. Pour plus d’informations sur le module Split Data, consultez la [page de référence du module d’algorithme](algorithm-module-reference/split-data.md) associée.
+    Le mode **Regular expression** (Expression régulière) teste une seule colonne pour une valeur. Pour plus d’informations sur le composant Split Data, consultez la [page de référence du composant d’algorithme](algorithm-module-reference/split-data.md) associée.
 
 Votre pipeline doit se présenter comme suit :
 
-:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Capture d’écran montrant comment configurer le pipeline et le module Split Data (Fractionner les données)":::
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png" alt-text="Capture d’écran montrant comment configurer le pipeline et le composant Split Data":::
 
 
 ## <a name="save-the-datasets"></a>Enregistrer les jeux de données
 
-Maintenant que votre pipeline est configuré pour fractionner les données, vous devez spécifier où conserver les jeux de données. Pour cet exemple, utilisez le module **Export Data** (Exporter des données) pour enregistrer votre jeu de données dans un magasin de données. Pour plus d’informations sur les magasins de données, consultez [Se connecter aux services de stockage Azure](how-to-access-data.md).
+Maintenant que votre pipeline est configuré pour fractionner les données, vous devez spécifier où conserver les jeux de données. Pour cet exemple, utilisez le composant **Export Data** (Exporter des données) pour enregistrer votre jeu de données dans un magasin de données. Pour plus d’informations sur les magasins de données, consultez [Se connecter aux services de stockage Azure](how-to-access-data.md).
 
-1. Dans la palette de modules à gauche du canevas, développez la section **Data Input and Output** (Entrée et sortie de données), puis recherchez le module **Export Data** (Exporter des données).
+1. Dans la palette de composants à gauche du canevas, développez la section **Data Input and Output** (Entrée et sortie de données), puis recherchez le composant **Export Data**.
 
-1. Glissez-déposez deux modules **Export Data** (Exporter des données) situés sous le module **Split Data** (Fractionner les données).
+1. Faites glisser-déposer deux composants **Export Data** sous le composant **Split Data**.
 
-1. Connectez chaque port de sortie du module **Split Data** (Fractionner les données) à une module **Export Data** (Exporter des données) distinct.
+1. Connectez chaque port de sortie du composant **Split Data** à un composant **Export Data** différent.
 
     Votre pipeline doit maintenant se présenter comme ceci :
 
-    ![Capture d’écran montrant comment connecter les modules Export Data](media/how-to-designer-transform-data/export-data-pipeline.png).
+    ![Capture d’écran montrant comment connecter les composants Export Data](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. Sélectionnez le module **Export Data** (Exporter des données) connecté au port le plus à *gauche* du module **Split Data** (Fractionner les données).
+1. Sélectionnez le composant **Export Data** connecté au port le plus à *gauche* du composant **Split Data**.
 
-    L’ordre des ports de sortie a de l’importance pour le module **Split Data** (Fractionner les données). Le premier port de sortie contient les lignes où l’expression régulière a la valeur true. Dans ce cas, le premier port contient des lignes pour les revenus aux USA et le deuxième pour les revenus hors USA.
+    L’ordre des ports de sortie a de l’importance pour le composant **Split Data**. Le premier port de sortie contient les lignes où l’expression régulière a la valeur true. Dans ce cas, le premier port contient des lignes pour les revenus aux USA et le deuxième pour les revenus hors USA.
 
-1. Dans le volet d’informations de module à droite du canevas, définissez les options suivantes :
+1. Dans le volet d’informations du composant à droite du canevas, définissez les options suivantes :
     
     **Datastore type** (Type de magasin de données) : Stockage Blob Azure
 
@@ -112,9 +112,9 @@ Maintenant que votre pipeline est configuré pour fractionner les données, vous
 
     Si vous n’avez pas de magasin de banques, vous pouvez en créer un maintenant. À titre d’exemple, cet article enregistre les jeux de données dans le compte de stockage d’objets blob par défaut associé à l’espace de travail. Il enregistre les jeux de données dans le conteneur `azureml` dans un nouveau dossier nommé `data`.
 
-1.  Sélectionnez le module **Export Data** (Exporter des données) connecté au port le plus à *droite* du module **Split Data** (Fractionner les données).
+1.  Sélectionnez le composant **Export Data** connecté au port le plus à *droite* du composant **Split Data**.
 
-1. Dans le volet d’informations de module à droite du canevas, définissez les options suivantes :
+1. Dans le volet d’informations du composant à droite du canevas, définissez les options suivantes :
     
     **Datastore type** (Type de magasin de données) : Stockage Blob Azure
 
@@ -124,13 +124,13 @@ Maintenant que votre pipeline est configuré pour fractionner les données, vous
 
     **File format** (Format de fichier ) : csv
 
-1. Vérifiez que le module **Export Data** (Exporter des données) connecté au port de gauche de **Split Data** (Fractionner les données) contient le **Path** (Chemin d’accès) `/data/us-income`.
+1. Vérifiez que le composant **Export Data** connecté au port de gauche de **Split Data** contient le **Path** (Chemin) `/data/us-income`.
 
-1. Vérifiez que le module **Export Data** (Exporter des données) connecté au port de droite contient le **Path** (Chemin d’accès) `/data/non-us-income`.
+1. Vérifiez que le composant **Export Data** connecté au port de droite contient le **Path** `/data/non-us-income`.
 
     Votre pipeline et vos paramètres doivent ressembler à ceci :
     
-    ![Capture d’écran montrant comment configurer les modules Export Data (Exporter des données)](media/how-to-designer-transform-data/us-income-export-data.png).
+    ![Capture d’écran montrant comment configurer les composants Export Data](media/how-to-designer-transform-data/us-income-export-data.png).
 
 ### <a name="submit-the-run"></a>Soumettre l’exécution
 
@@ -148,11 +148,11 @@ Maintenant que votre pipeline est configuré pour fractionner et exporter les do
 
 ## <a name="view-results"></a>Afficher les résultats
 
-Une fois l’exécution du pipeline terminée, vous pouvez afficher vos résultats en accédant à votre stockage d’objets blob dans le portail Azure. Vous pouvez également afficher les résultats intermédiaires du module **Split Data** (Fractionner les données) pour vérifier que vos données ont été correctement fractionnées.
+Une fois l’exécution du pipeline terminée, vous pouvez afficher vos résultats en accédant à votre stockage d’objets blob dans le portail Azure. Vous pouvez également afficher les résultats intermédiaires du composant **Split Data** pour vérifier que vos données ont été correctement fractionnées.
 
-1. Sélectionnez le module **Fractionner les données**.
+1. Sélectionnez le composant **Split Data**.
 
-1. Dans le volet de détails des modules à droite du canevas, sélectionnez **Sorties + journaux**. 
+1. Dans le volet d’informations des composants à droite du canevas, sélectionnez **Sorties + journaux**. 
 
 1. Sélectionnez l’icône Visualiser ![icône Visualiser](media/how-to-designer-transform-data/visualize-icon.png) en regard de **Results dataset1** (Résultats JeuDonnées1). 
 

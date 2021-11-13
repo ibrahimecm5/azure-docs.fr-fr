@@ -8,13 +8,13 @@ ms.subservice: mlops
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 09/16/2021
-ms.openlocfilehash: 88d7d9976e5b0eeecd656f5aaf68fa603425c3a9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: eb1f4fb0e3f833bdcc9631f72c6ffe127005a0e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424404"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556480"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Débogage interactif avec Visual Studio Code
 
@@ -343,6 +343,9 @@ Enregistrez la valeur `ip_address`. Elles seront utilisées dans la section suiv
 ## <a name="debug-and-troubleshoot-deployments"></a>Déboguer et résoudre les problèmes de déploiement
 
 Dans certains cas, vous devrez peut-être déboguer interactivement le code Python contenu dans votre modèle de déploiement. Par exemple, si le script d’entrée échoue pour une raison ne pouvant pas être déterminée par une journalisation supplémentaire. À l’aide de VS Code et de debugpy, vous pouvez attacher au code qui s’exécute dans le conteneur Docker.
+
+> [!TIP]
+> Gagnez du temps et détectez les bogues plus tôt en déboguant localement les déploiements et points de terminaison en ligne managés. Pour plus d’informations, consultez [Déboguer les points de terminaison en ligne managés localement dans Visual Studio Code (préversion)](how-to-debug-managed-online-endpoints-visual-studio-code.md).
 
 > [!IMPORTANT]
 > Cette méthode de débogage ne fonctionne pas lorsque `Model.deploy()` et `LocalWebservice.deploy_configuration` sont utilisés pour déployer un modèle localement. Au lieu de cela, vous devez créer une image à l’aide de la méthode [Model.package()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-).

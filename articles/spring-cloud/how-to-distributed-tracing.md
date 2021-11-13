@@ -8,14 +8,16 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bacf4f808a7e963c11e8790636dabe1f3f4e4a47
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 702b2fcd2c5cb88adf7c610287dbb9be7089268b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129044186"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258313"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Utiliser le suivi distribué avec Azure Spring Cloud (déconseillé)
+> [!NOTE]
+> Le suivi distribué est déprécié. Pour plus d’informations, consultez [Agent In-process Java d’Application Insights dans Azure Spring Cloud](./how-to-application-insights.md).
 
 Avec les outils de suivi distribué d’Azure Spring Cloud, vous pouvez facilement déboguer et superviser les problèmes complexes. Azure Spring Cloud intègre Azure [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) au service [Application Insights](../azure-monitor/app/app-insights-overview.md) d’Azure. Cette intégration fournit une fonctionnalité puissante de suivi distribué qui est disponible dans le portail Azure.
 
@@ -105,7 +107,7 @@ Dans cet article, vous apprendrez comment :
 
 ## <a name="prerequisites"></a>Prérequis
 
-Pour suivre ces procédures, vous avez besoin d’un service Azure Spring Cloud déjà provisionné et en cours d’exécution. Effectuez le démarrage rapide [Déployer votre première application Azure Spring Cloud](./quickstart.md) pour approvisionner et exécuter un service Azure Spring Cloud.
+Pour suivre ces procédures, vous avez besoin d’un service Azure Spring Cloud déjà provisionné et en cours d’exécution. Suivez le guide de démarrage rapide [Déployer votre première application Spring Boot dans Azure Spring Cloud](./quickstart.md) pour provisionner et exécuter un service Azure Spring Cloud.
 
 ## <a name="add-dependencies"></a>Ajout de dépendances
 

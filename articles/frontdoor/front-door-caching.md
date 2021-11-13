@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2021
 ms.author: duau
-ms.openlocfilehash: 1fb1aafed996fa79177157f6c20e6727ee532e7d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5dcc4c893be44c9ebb05139118e7936bbdf5b41d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563112"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223554"
 ---
 # <a name="caching-with-azure-front-door"></a>Mise en cache avec Azure Front Door
 Le document suivant explique comment spécifier les comportements d’une porte d’entrée à l’aide de règles de routage ayant la mise en cache activée. Front Door est un réseau de distribution de contenu (CDN) moderne qui, outre l’accélération de site dynamique et l’équilibrage de charge, prend en charge les comportements de mise en cache comme n’importe quel autre CDN.
@@ -136,7 +136,7 @@ Le comportement et la durée de la mise en cache peuvent être configurés à la
 
 > [!NOTE]
 > * La *durée de mise en cache* définie dans la règle d’acheminement du concepteur Front Door correspond à la **durée minimale de mise en cache**. Ce remplacement ne fonctionnera pas si l’en-tête de contrôle du cache de l’origin a une durée de vie supérieure à la valeur de remplacement.
-> * Les contenus mis en cache peuvent être supprimés d’Azure Front Door avant leur expiration s’ils ne sont pas demandés aussi fréquemment, afin de faire de la place pour des contenus plus fréquemment demandés.
+> * Azure Front Door n’offre aucune garantie quant à la durée minimale pendant laquelle l’objet sera stocké dans le cache. Le contenu mis en cache peut être supprimé du cache de périphérie avant son expiration s’il n’est pas demandé aussi fréquemment, afin de faire de la place pour le contenu plus fréquemment demandé.
 >
 
 ## <a name="next-steps"></a>Étapes suivantes

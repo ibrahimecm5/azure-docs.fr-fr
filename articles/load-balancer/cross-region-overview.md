@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: cf094664fab07e9a75c890899dff9cd0118d12fc
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d8b8cebfe18b52de7b904989907d587a4519c8e3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614400"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254624"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Équilibreur de charge inter-région (préversion)
 
@@ -28,7 +28,7 @@ Azure Standard Load Balancer prend en charge l'équilibrage de charge inter-rég
 * [Basculement global instantané](#regional-redundancy) vers le prochain déploiement régional optimal.
 * Distribution de la charge des différentes régions vers la région Azure la plus proche avec [la très faible latence](#ultra-low-latency).
 * Possibilité de [scale-up/scale-down](#ability-to-scale-updown-behind-a-single-endpoint) derrière un point de terminaison unique.
-* [Adresse IP statique](#static-ip)
+* Adresse IP globale anycast statique
 * [Conservation de l'adresse IP du client](#client-ip-preservation)
 * [Tirer parti de la solution d'équilibrage de charge existante](#build-cross-region-solution-on-existing-azure-load-balancer) sans aucun besoin d'apprentissage
 
@@ -79,8 +79,8 @@ Lorsque vous exposez le point de terminaison global d’un équilibreur de charg
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
-### <a name="static-ip"></a>Adresse IP statique
-L'équilibreur de charge inter-région est fourni avec une adresse IP publique statique, ce qui garantit que l'adresse IP restera la même. Pour en savoir plus sur les adresses IP statiques, cliquez [ici](../virtual-network/public-ip-addresses.md#ip-address-assignment).
+### <a name="static-anycast-global-ip-address"></a>Adresse IP globale anycast statique
+L'équilibreur de charge inter-région est fourni avec une adresse IP publique statique, ce qui garantit que l'adresse IP restera la même. Pour en savoir plus sur les adresses IP statiques, cliquez [ici](../virtual-network/ip-services/public-ip-addresses.md#ip-address-assignment).
 
 ### <a name="client-ip-preservation"></a>Conservation de l'adresse IP du client
 L'équilibreur de charge inter-région est un équilibreur de charge réseau « Pass-through » de type Couche 4. Ce « Pass-through » conserve l'adresse IP d'origine du paquet.  L'adresse IP d'origine est accessible au code exécuté sur la machine virtuelle. Cette conservation vous permet d'appliquer une logique spécifique à une adresse IP.

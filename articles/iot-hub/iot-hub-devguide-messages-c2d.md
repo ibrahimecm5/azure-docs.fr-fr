@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 3901f624f5df8770a235c6cd184aca4a3409c26b
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f712f3f9928816e237504f504ec8ef28ec45d0e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547130"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263557"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Envoyer des messages cloud-à-appareil à partir d’IoT Hub
 
@@ -144,9 +144,9 @@ Chaque hub IoT expose les options de configuration suivantes pour la messagerie 
 
 Vous pouvez définir les options de configuration de l’une des manières suivantes :
 
-* **Portail Azure** : Sous **Paramètres** dans votre hub IoT, sélectionnez **Points de terminaison intégrés**, puis développez **Messagerie Cloud-à-appareil**. (La définition des propriétés **feedback.maxDeliveryCount** et **feedback.lockDurationAsIso8601** n’est actuellement pas prise en charge dans le Portail Azure.)
+* **Portail Azure** : Sous **Paramètres du hub** dans votre hub IoT, sélectionnez **Points de terminaison intégrés**, puis accédez à **Messagerie Cloud-à-appareil**. (La définition des propriétés **feedback.maxDeliveryCount** et **feedback.lockDurationAsIso8601** n’est actuellement pas prise en charge dans le Portail Azure.)
 
-    ![Définir les options de configuration pour la messagerie cloud-à-appareil dans le portail](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+:::image type="content" source="./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png" alt-text="Définir les options de configuration pour la messagerie cloud-à-appareil dans le portail" border="true":::
 
 * **Azure CLI** : utilisez la commande [az iot hub update](/cli/azure/iot/hub#az_iot_hub_update) :
 

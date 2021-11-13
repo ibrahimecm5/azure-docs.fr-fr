@@ -3,18 +3,18 @@ title: Activer la mise en réseau accélérée pour la récupération d’urgenc
 description: Explique comment utiliser la mise en réseau accélérée avec Azure Site Recovery pour la récupération d’urgence de machines virtuelles Azure
 services: site-recovery
 documentationcenter: ''
-author: Harsha-CS
-manager: rochakm
+author: rishjai-msft
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: harshacs
-ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: rishjai
+ms.openlocfilehash: d3495625da0b039a5e75bf3973600b16f802b263
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96000247"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463479"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Mise en réseau accélérée avec la récupération d’urgence de machines virtuelles Azure
 
@@ -72,12 +72,12 @@ Pour plus d’informations sur les instances de machine virtuelle, consultez la 
 
 Lorsque vous [activez la réplication](azure-to-azure-tutorial-enable-replication.md) pour des machines virtuelles Azure, Site Recovery détecte automatiquement si la mise en réseau accélérée est activée pour les interfaces réseau de machine virtuelle. Si la mise en réseau accélérée est déjà activée, Site Recovery configurera automatiquement la mise en réseau accélérée sur les interfaces réseau de la machine virtuelle répliquée.
 
-L’état de la mise en réseau accélérée peut être vérifié dans la section **Interfaces réseau** des paramètres **Calcul et réseau** pour la machine virtuelle répliquée.
+Vous pouvez vérifier l’état de l’accélération réseau sous l’onglet de la carte d’interface réseau correspondante dans les paramètres **Réseau** de la machine virtuelle répliquée.
 
 ![Paramètre de la mise en réseau accélérée](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
 Si vous avez activé la mise en réseau accélérée sur la machine virtuelle source après avoir activé la réplication, vous pouvez activer la mise en réseau accélérée pour les interfaces réseau de la machine virtuelle répliquée avec le processus suivant :
-1. Ouvrez les paramètres **Calcul et réseau** pour la machine virtuelle répliquée
+1. Ouvrez les paramètres **Réseau** de la machine virtuelle répliquée
 2. Cliquez sur le nom de l’interface réseau sous la section **Interface réseau**
 3. Sélectionnez **Activé** dans la liste déroulante pour la mise en réseau accélérée sous la colonne **Cible**
 

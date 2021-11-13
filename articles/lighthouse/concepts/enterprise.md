@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse dans les scénarios d’entreprise
 description: Les fonctionnalités d’Azure Lighthouse peuvent être utilisées pour simplifier la gestion inter-locataire au sein d’une entreprise qui utilise plusieurs locataires Azure AD.
-ms.date: 09/08/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f83e5d84eee0c3ed7f159778630e3598274e4916
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d0accd765049c671d8d61a76d7c6449260b0140
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768778"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249644"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse dans les scénarios d’entreprise
 
@@ -49,6 +49,12 @@ Les abonnements (ou groupes de ressources au sein d’un abonnement) peuvent êt
 Étant donné que les utilisateurs en entreprise pourront généralement accéder directement aux locataires de l’entreprise et qu’il n’est pas nécessaire de commercialiser ou de promouvoir une offre de gestion, il est habituellement plus rapide et plus simple d’effectuer le déploiement des modèles Azure Resource Manager. Même si les [conseils d’intégration](../how-to/onboard-customer.md) font référence aux fournisseurs de services et aux clients , les entreprises peuvent utiliser les mêmes processus pour intégrer leurs locataires.
 
 Si vous préférez, les locataires d’une entreprise peuvent être intégrés en [publiant une offre de services managés sur la Place de marché Azure](../how-to/publish-managed-services-offers.md). Pour être sûr que l’offre n’est disponible que pour les locataires appropriés, vérifiez que vos plans sont marqués comme privés. Avec un plan privé, vous fournissez les ID d’abonnement de chaque locataire que vous envisagez d’intégrer, et personne d’autre ne pourra obtenir votre offre.
+
+## <a name="azure-ad-b2c"></a>Azure AD B2C
+
+[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) fournit une identité entreprise-client en tant que service. Quand vous déléguez un groupe de ressources via Azure Lighthouse, vous pouvez utiliser Azure Monitor pour router les journaux de connexion et d’audit d’Azure Active Directory B2C (Azure AD B2C) vers différentes solutions de monitoring. Vous pouvez ensuite conserver les journaux pour les utiliser sur le long terme, ou les intégrer à des outils SIEM (Security Information and Event Management) tiers pour obtenir davantage d’insights sur votre environnement.
+
+Pour plus d’informations, consultez [Superviser Azure AD B2C avec Azure Monitor](../../active-directory-b2c/azure-monitor.md).
 
 ## <a name="terminology-notes"></a>Remarques relatives à la terminologie
 

@@ -1,5 +1,5 @@
 ---
-title: Collecter les journaux et les métriques de vos applications Apache Spark avec un compte de stockage Azure (préversion)
+title: Collecter les journaux et les métriques de vos applications Apache Spark avec un compte de stockage Azure
 description: Cet article explique comment utiliser l’extension d’émission de diagnostic de Synapse Spark pour collecter des journaux, des journaux d’événements et des métriques.
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: c29cdbd9879397b3e171160f93ccd0ac712467db
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 52d9c903cbd4aafe8799151663a37b09ed5676c2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544534"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241038"
 ---
-# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-accountpreview"></a>Collecter les journaux et les métriques de vos applications Apache Spark avec un compte de stockage Azure (préversion)
+# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-account"></a>Collecter les journaux et les métriques de vos applications Apache Spark avec un compte de stockage Azure
 
 L’extension d’émission de diagnostic Synapse Apache Spark est une bibliothèque qui permet à une application Apache Spark d’envoyer des journaux, des journaux des événements et des métriques vers une ou plusieurs destinations, y compris Azure Log Analytics, le stockage Azure et Azure Event Hubs. 
 
-Dans ce tutoriel, vous allez voir comment utiliser l’extension d’émission de diagnostic Synapse Apache Spark qui permet d’envoyer vers Azure Event Hubs des journaux, des journaux des événements et des métriques concernant les applications Apache Spark.
+Dans ce tutoriel, vous apprenez à utiliser l’extension d’émission de diagnostic Synapse Apache Spark pour envoyer à votre compte de stockage les journaux, journaux d’événements et métriques de vos applications Apache Spark.
 
 ## <a name="collect-logs-and-metrics-to-storage-account"></a>Collecter les journaux et les métriques pour les envoyer vers un compte de stockage
 
@@ -42,7 +42,7 @@ spark.synapse.diagnostic.emitter.MyDestination1.secret <storage-access-key>
 ```
 
 Dans le fichier de configuration, configurez les paramètres suivants : `<my-blob-storage>`, `<container-name>`, `<folder-name>`, `<storage-access-key>`.
-Pour plus d’informations sur les paramètres, consultez [Configurations du Stockage Azure](#available-configurations).
+Pour une description des paramètres, consultez [Configurations du Stockage Azure](#available-configurations)
 
 ### <a name="step-3-upload-the-apache-spark-configuration-file-to-spark-pool"></a>Étape 3 : Charger le fichier de configuration Apache Spark dans un pool Spark
 
@@ -55,7 +55,7 @@ Pour plus d’informations sur les paramètres, consultez [Configurations du Sto
 
 Une fois que vous avez envoyé un travail au pool Apache Spark configuré, les fichiers de journaux et de métriques doivent être visibles dans le compte de stockage de destination.
 Les journaux seront placés dans les chemins correspondants de chaque application par `<workspaceName>.<sparkPoolName>.<livySessionId>`.
-Tous les fichiers journaux seront au format de lignes JSON (également appelé JSON délimité par des sauts de ligne ou « ndjson »), ce qui est très pratique pour le traitement des données.
+Tous les fichiers journaux ont un format de lignes JSON (également appelé JSON délimité par des sauts de ligne ou ndjson), ce qui est pratique pour le traitement des données.
 
 ## <a name="available-configurations"></a>Configurations disponibles
 
@@ -111,6 +111,6 @@ Les espaces de travail Azure Synapse Analytics prennent en charge l’activation
    > [!div class="mx-imgBorder"]
    > ![Créer un point de terminaison privé managé 2](./media/azure-synapse-diagnostic-emitters-azure-storage/create-private-endpoint-2.png)
 3. Attendez quelques minutes que le provisionnement du point de terminaison privé soit terminé.
-4. Accédez à votre compte de stockage dans le portail Azure. Dans la page **Réseau** > **Connexions du point de terminaison privé**, sélectionnez la connexion qui vient d’être provisionnée puis sélectionnez **Approuver**.
+4. Accédez à votre compte de stockage dans le portail Azure et, dans la page **Réseau** > **Connexions de point de terminaison privé**, sélectionnez la connexion provisionnée, puis **Approuver**.
 
 

@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea1112f614e9c08bde1ff0427af706aae4c14896
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3c094a40cd0150fe4134bf1352dfbe418346d63b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131063121"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577704"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Versions de Kubernetes prises en charge dans Azure Kubernetes Service (AKS)
 
@@ -217,7 +217,8 @@ Le plan de contrôle doit se trouver dans une fenêtre de versions pour tous les
 
 **Puis-je ignorer plusieurs versions d’AKS durant la mise à niveau d’un cluster ?**
 
-Quand vous mettez à niveau un cluster AKS pris en charge, les versions mineures de Kubernetes ne peuvent pas être ignorées. Par exemple, les mises à niveau entre :
+Quand vous mettez à niveau un cluster AKS pris en charge, les versions mineures de Kubernetes ne peuvent pas être ignorées. La [stratégie d’asymétrie de version](https://kubernetes.io/releases/version-skew-policy/) des plans de contrôle Kubernetes ne prend pas en charge l’omission de la version mineure. Par exemple, les mises à niveau entre :
+
   * *1.12.x* -> *1.13.x* : autorisées.
   * *1.13.x* -> *1.14.x* : autorisées.
   * *1.12.x* -> *1.14.x* : non autorisées.
@@ -226,7 +227,7 @@ Pour mettre à niveau de *1.12.x* -> *1.14.x* :
 1. Mettre à niveau de *1.12.x* -> *1.13.x*.
 1. Mettre à niveau de *1.13.x* -> *1.14.x*.
 
-L’omission de plusieurs versions ne peut être effectuée que lors de la mise à niveau d’une version non prise en charge vers une version prise en charge. Par exemple, vous pouvez mettre à niveau à partir d’une version *1.10.x* non prise en charge vers une version *1.15.x* prise en charge.
+Vous pouvez ignorer plusieurs versions seulement quand vous mettez à niveau une version non prise en charge vers la version minimale prise en charge. Par exemple, vous pouvez mettre à niveau une version *1.10.x* non prise en charge vers une version *1.15.x* prise en charge si *1.15* est la version mineure minimale prise en charge.
 
 **Puis-je créer un nouveau cluster 1.xx.x pendant la période de prise en charge de 30 jours ?**
 

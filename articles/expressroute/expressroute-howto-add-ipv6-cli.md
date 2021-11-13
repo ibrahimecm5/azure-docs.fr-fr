@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: duau
-ms.openlocfilehash: 1c0b751d6a5107dcf9b7d04423b0b96e0036615d
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 9341d61229ed5b28eed838271fd0108c1a45d8b5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730410"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228948"
 ---
-# <a name="add-ipv6-support-for-private-peering-using-azure-cli-preview"></a>Ajouter la prise en charge d’IPv6 pour le Peering privé à l’aide d’Azure CLI (préversion)
+# <a name="add-ipv6-support-for-private-peering-using-azure-cli"></a>Ajouter la prise en charge d’IPv6 pour le Peering privé à l’aide d’Azure CLI
 
 Cet article explique comment ajouter la prise en charge d’IPv6 pour se connecter via ExpressRoute à vos ressources dans Azure à l’aide d’Azure CLI.
 

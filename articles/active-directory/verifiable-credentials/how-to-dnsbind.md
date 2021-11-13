@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c0449ce5682460e683772b5f33442efa0b979998
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 50954d4fef64ffabddf3ec8898ef81a030a77f95
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049118"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577343"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did-preview"></a>Lier votre domaine à votre identificateur décentralisé (DID) (préversion)
 
@@ -43,7 +43,7 @@ La liaison d’un DID à un domaine résout le problème d’approbation initial
 
 ## <a name="how-do-we-link-dids-and-domains"></a>Comment lier des identificateurs décentralisés et des domaines ?
 
-Nous établissons un lien entre un domaine et un DID en implémentant une norme ouverte écrite par la Decentralized Identity Foundation appelée [Well-Known DID configuration](https://identity.foundation/.well-known/resources/did-configuration/) (configuration d’un identificateur décentralisé connu). Le service des justificatifs vérifiables dans Azure Active Directory (Azure AD) permet à votre organisation de créer le lien entre le DID et le domaine en incluant les informations de domaine que vous avez fournies dans votre DID, et en générant le fichier de configuration connu :
+Nous établissons un lien entre un domaine et un DID en implémentant une norme ouverte écrite par la Decentralized Identity Foundation appelée [Well-Known DID configuration](https://identity.foundation/.well-known/resources/did-configuration/) (configuration d’un identificateur décentralisé connu). Le service des informations d’identification vérifiables dans Azure Active Directory (Azure AD) permet à votre organisation de faire le lien entre le DID et le domaine en incluant les informations de domaine que vous avez fournies dans votre DID, et en générant le fichier de configuration bien connu :
 
 1. Azure AD utilise les informations de domaine que vous fournissez lors de la configuration de l’organisation pour écrire un point de terminaison de service dans le document DID. Toutes les parties qui interagissent avec votre DID peuvent voir le domaine auquel celui-ci déclare être associé.  
 

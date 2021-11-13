@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: d6f3368619395934dd358536e39f227bc66dfbfd
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: ae8311da88ec2598417dd248e12fb044bc9dbf38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110497396"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223212"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Stratégie de prise en charge d’Azure Red Hat OpenShift
 
@@ -30,7 +30,6 @@ Certaines configurations pour les clusters Azure Red Hat OpenShift 4 peuvent aff
 * Ne supprimez pas ou ne modifiez pas la journalisation du service Azure Red Hat OpenShift (pods MDSD).
 * Ne supprimez pas ou ne modifiez pas le secret d’extraction de cluster « arosvc.azurecr.io ».
 * Toutes les machines virtuelles du cluster doivent disposer d’un accès Internet sortant direct, du moins aux points de terminaison Azure Resource Manager (ARM), et de la journalisation des services (Geneva).  Aucune forme de proxy HTTPS n’est prise en charge.
-* Ne modifiez pas la configuration DNS du réseau virtuel du cluster. Vous devez utiliser le programme de résolution Azure DNS par défaut.
 * Ne remplacez pas les objets MachineConfig du cluster (par exemple, la configuration kubelet) de quelque manière que ce soit.
 * Ne définissez pas d’options unsupportedConfigOverrides. La définition de ces options empêche les mises à niveau de versions mineures.
 * Le service Azure Red Hat OpenShift accède à votre cluster par le biais du service de liaison privée.  Ne supprimez pas et ne modifiez pas l’accès au service.
@@ -79,3 +78,19 @@ Azure Red Hat OpenShift 4 prend en charge les instances de nœuds de travail sur
 |Dsv3|Standard_D8s_v3|8|32|
 |Dsv3|Standard_D16s_v3|16|64|
 |Dsv3|Standard_D32s_v3|32|128|
+
+### <a name="day-2-worker-node"></a>Nœud Worker du jour 2
+La configuration de machinesets permet de prendre en charge les types d’instances suivants dans une opération de jour 2. Pour plus d’informations sur la création d’un machineset, consultez [Création d’un machineset dans Azure](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html).
+
+
+|Série|Taille|Processeurs virtuels|Mémoire : Gio|
+|-|-|-|-|
+|L4s|Standard_L4s|4|32|
+|L8s|Standard_L8s|8|64|
+|L16s|Standard_L16s|16|128|
+|L32s|Standard_L32s|32|256|
+|L8s_v2|Standard_L8s_v2|8|64|
+|L16s_v2|Standard_L16s_v2|16|128|
+|L32s_v2|Standard_L32s_v2|32|256|
+|L48s_v2|Standard_L48s_v2|32|384|
+|L64s_v2|Standard_L48s_v2|64|512|

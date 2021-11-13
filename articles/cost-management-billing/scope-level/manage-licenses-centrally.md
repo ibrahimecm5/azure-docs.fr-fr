@@ -1,6 +1,6 @@
 ---
-title: Application par Azure des licences SQL attribuées à une utilisation horaire
-description: Cet article explique en détail la façon dont Azure applique les licences SQL attribuées à une utilisation horaire avec Azure Hybrid Benefit.
+title: Application par Azure des licences SQL attribuées de manière centralisée à une utilisation horaire
+description: Cet article explique en détail la façon dont Azure applique les licences SQL attribuées de manière centralisée à une utilisation horaire avec Azure Hybrid Benefit.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 69517a84fa28a6c1d9cde0cb51df82a296bd653a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 53f8538e6e34c91023bc55e7d47e5f28e9fb3e21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710157"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243844"
 ---
-# <a name="how-azure-applies-assigned-sql-licenses-to-hourly-usage"></a>Application par Azure des licences SQL attribuées à une utilisation horaire
+# <a name="how-azure-applies-centrally-assigned-sql-licenses-to-hourly-usage"></a>Application par Azure des licences SQL attribuées de manière centralisée à une utilisation horaire
 
-Cet article fournit une explication détaillée du fonctionnement d’Azure Hybrid Benefit au niveau de l’étendue pour vous aider à gérer vos licences SQL Server. Le processus commence par un administrateur qui attribue des licences à l’étendue d’un abonnement ou d’un compte de facturation.
+Cet article fournit des détails sur le fonctionnement de la gestion centralisée d’Azure Hybrid Benefit pour SQL Server. Le processus commence par un administrateur qui attribue des licences à l’étendue d’un abonnement ou d’un compte de facturation.
 
 Chaque ressource signale son utilisation une fois par heure à l’aide des compteurs appropriés de plein tarif ou de paiement à l’utilisation. En interne dans Azure, le moteur Application de l’utilisation évalue les licences de base normalisées disponibles et les applique pour cette heure. Pour une heure donnée de consommation de ressources vCore, les compteurs de paiement à l’utilisation sont remplacés par le compteur Azure Hybrid Benefit correspondant avec un prix nul (0 USD) s’il y a suffisamment de licences de base normalisées inutilisés dans l’étendue sélectionnée.
 
@@ -45,5 +45,5 @@ Le diagramme suivant montre la manière dont s’appliquent les licences SQL Ser
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Consultez [Questions fréquentes sur la gestion de niveau étendue d’Azure Hybrid Benefit](faq-azure-hybrid-benefit-scope.yml).
+- Passez en revue les [questions fréquentes (FAQ) sur Azure Hybrid Benefit managé de manière centralisée](faq-azure-hybrid-benefit-scope.yml).
 - Découvrez comment [effectuer la transition à partir d’une expérience Azure Hybrid Benefit existante](transition-existing.md).

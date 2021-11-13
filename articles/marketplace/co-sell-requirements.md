@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: c39b86c6417d2cae8d303f7cae0aa523e223edaa
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/21/2021
+ms.openlocfilehash: 09403aa97df2fe0ab451eee3194b1d6e3b239ab2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866939"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249435"
 ---
 # <a name="co-sell-requirements"></a>Exigences en matière de co-vente
 
@@ -78,7 +78,7 @@ Une fois le statut Prêt pour la co-vente atteint, trois exigences supplémentai
 
 Condition 1 - accomplir ce qui suit :
 
-- Au _niveau de l'organisation_, avoir généré au moins 100 000 USD de Revenu consommé Azure au cours des 12 derniers mois. Cet objectif peut être atteint à l’aide d’une combinaison de solutions Azure. Si l’offre est facturable sur la Place de marché commerciale, vous pouvez satisfaire à cette exigence en atteignant un seuil de revenu facturé de 100 000 USD.
+- Au _niveau de l'organisation_, avoir généré au moins 100 000 USD de Revenu consommé Azure au cours des 12 derniers mois. Cet objectif peut être atteint à l’aide d’une combinaison de solutions Azure. Si l’offre est facturable sur la marketplace commerciale, vous pouvez satisfaire à cette exigence en atteignant un seuil de revenu facturé de 100 000 USD au cours des 12 derniers mois.
 
 Condition 2 - passer la validation technique Microsoft pour une solution basée sur Azure :
 - La validation technique doit confirmer que plus de 50 % de l’infrastructure de votre offre utilise du code IP (propriété intellectuelle) reproductible sur Azure. Notez que les solutions Machines virtuelles Azure et Azure Application facturables sur la Place de marché commerciale satisfont à cette exigence par défaut.

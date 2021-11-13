@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4b21aa5d63f371749081d7bc71577c7d0f5a2d49
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3542ddd7a3276d0ba5b7aaac591f4d4ff936cd86
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787676"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238960"
 ---
 # <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Format de texte délimité dans Azure Data Factory et Azure Synapse Analytics
 
@@ -22,7 +22,21 @@ ms.locfileid: "124787676"
 
 Suivez cet article si vous souhaitez **analyser des fichiers de texte délimité ou écrire des données au format de texte délimité**. 
 
-Le format texte délimité est pris en charge pour les connecteurs suivants : [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) et [SFTP](connector-sftp.md).
+Le format de texte délimité est pris en charge pour les connecteurs suivants : 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Stockage compatible Amazon S3](connector-amazon-s3-compatible-storage.md)
+- [Blob Azure](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [Système de fichiers](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>Propriétés du jeu de données
 
@@ -143,7 +157,7 @@ Prise en charge des **paramètres d’écriture du texte délimité** sous `form
 
 ## <a name="mapping-data-flow-properties"></a>Propriétés du mappage de flux de données
 
-Dans les flux de données de mappage, vous pouvez lire et écrire des données au format de texte délimité dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+Dans les flux de données de mappage, vous pouvez lire et écrire des données au format de texte délimité dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Et vous pouvez lire le format de texte délimité dans [Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties).
 
 ### <a name="source-properties"></a>Propriétés de source
 
@@ -199,7 +213,7 @@ L’image ci-dessous est un exemple de configuration de récepteur de texte dél
 
 :::image type="content" source="media/data-flow/delimited-text-sink.png" alt-text="Récepteur DelimitedText":::
 
-Le script de flux de données associé est le suivant :
+Le script de flux de données associé est :
 
 ```
 CSVSource sink(allowSchemaDrift: true,
@@ -208,6 +222,21 @@ CSVSource sink(allowSchemaDrift: true,
     skipDuplicateMapInputs: true,
     skipDuplicateMapOutputs: true) ~> CSVSink
 ```
+
+## <a name="related-connectors-and-formats"></a>Formats et connecteurs associés
+
+Voici quelques connecteurs et formats courants liés au format de texte délimité :
+
+- Stockage Blob Azure (connector-azure-blob-storage.md)
+- Format binaire (format-binary.md)
+- Dataverse (connector-dynamics-crm-office-365.md)
+- Format Delta (format-delta.md)
+- Format Excel (format-excel.md)
+- Système de fichiers (connector-file-system.md)
+- FTP (connector-ftp.md)
+- HTTP (connector-http.md)
+- Format JSON (format-json.md)
+- Format parquet (format-parquet.md)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

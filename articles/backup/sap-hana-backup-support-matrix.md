@@ -2,14 +2,14 @@
 title: Tableau de prise en charge de sauvegarde SAP HANA
 description: Dans cet article,découvrez les scénarios pris en charge et les limitations lorsque vous utilisez Sauvegarde Azure pour sauvegarder des bases de données SAP HANA sur des machines virtuelles Azure.
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: 09dab8a35c5ed06ec9680b2cb57ca6ac0d27109f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b9d642d0c70b06677aedcce99c1f21ac4b3a7d34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427936"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244537"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matrice de prise en charge pour la sauvegarde des bases de données SAP HANA sur des machines virtuelles Azure
 
@@ -33,6 +33,7 @@ Le service Sauvegarde Azure prend en charge la sauvegarde des bases de données 
 | **Types de sauvegarde**           | Sauvegardes complètes, différentielles, incrémentielles et de fichier journal                          |  Instantanés                                       |
 | **Types de restaurations**          | Reportez-vous à la note SAP HANA [1642148](https://launchpad.support.sap.com/#/notes/1642148) pour connaître les types de restauration pris en charge |                                                              |
 | **Limites de sauvegarde**          | Jusqu’à 8 To de taille de sauvegarde complète par instance de SAP HANA (limite conditionnelle)         |                                                              |
+| **Nombre de sauvegardes complètes par jour**     |   Une sauvegarde planifiée.  <br><br>   Trois sauvegardes à la demande. <br><br> Nous vous recommandons de ne pas déclencher plus de trois sauvegardes par jour. Toutefois, pour permettre à l’utilisateur de réaliser de nouvelles tentatives en cas d’échec, la limite matérielle pour les sauvegardes à la demande est définie à neuf tentatives.  |
 | **Configurations spéciales** |                                                              | SAP HANA + Dynamic Tiering <br>  Clonage via LaMa        |
 
 ------

@@ -4,12 +4,12 @@ description: Découvrez comment désactiver et activer des fonctions dans Azure 
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 24ee2ce703287e62f1271c14f639048bb88da404
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2df38182dd8b199ca13d7e5a9b7484aee004f52
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663684"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265378"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Guide pratique pour désactiver des fonctions dans Azure Functions
 
@@ -177,7 +177,7 @@ Gardez à l’esprit les considérations suivantes lorsque vous désactivez des 
 
 + Lorsque vous désactivez une fonction déclenchée par HTTP à l’aide des méthodes décrites dans cet article, le point de terminaison peut toujours être accessible en cas d’exécution sur votre ordinateur local.  
 
-+ À ce stade, les noms de fonctions qui contiennent un trait d’Union (`-`) ne peuvent pas être désactivés lors de l’exécution sur Linux dans un plan (App service) dédié. Si vous avez besoin de désactiver vos fonctions lors de l’exécution sur Linux dans un plan dédié, n’utilisez pas de traits d’union dans les noms de vos fonctions.
++ À ce stade, les noms de fonctions qui contiennent un trait d’Union (`-`) ne peuvent pas être désactivés lors de l’exécution sur un plan Linux. Si vous avez besoin de désactiver vos fonctions lors de l’exécution sur un plan Linux, n’utilisez pas de traits d’union dans les noms de vos fonctions.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -5,12 +5,12 @@ metadata:
   ms.topic: how-to
   ms.service: lab-services
   ms.date: 06/26/2020
-  ms.openlocfilehash: 50aed3f3b515a2387efcefbfdf19fb9b1f51d905
-  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+  ms.openlocfilehash: 2558c36e145dd0a2d1ae526bf3cadf5ad06136a2
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130181252"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130232695"
 title: Labos dans Azure Lab Services – Forum aux questions (FAQ)
 summary: Retrouvez la réponse aux questions les plus courantes sur les labos dans Azure Lab Services.
 sections:
@@ -20,7 +20,8 @@ sections:
     answer: >
       Le quota que vous définissez pour un lab s’applique à chaque étudiant pour toute la durée du lab. Le [temps d’exécution planifié des machines virtuelles](how-to-create-schedules.md) ne compte pas dans le quota alloué à un utilisateur. Le quota s’applique au temps pendant lequel un étudiant utilise les machines virtuelles en dehors des heures planifiées.  Pour plus d’informations sur les quotas, consultez [Définir des quotas pour les utilisateurs](how-to-configure-student-usage.md#set-quotas-for-users).
   - question: "Si le formateur active la machine virtuelle d’un étudiant, cela affecte-t-il le quota de celui-ci ? \n"
-    answer: "Non. Non. Quand le formateur active la machine virtuelle d’un étudiant, cela n’affecte pas le quota alloué à celui-ci. \n"
+    answer: >
+      Non. Non. Quand le formateur active la machine virtuelle d’un étudiant, cela n’affecte pas le quota alloué à celui-ci.
 - name: Planifications
   questions:
   - question: "Toutes les machines virtuelles du lab démarrent-elles automatiquement quand un calendrier est défini ? \n"
@@ -50,8 +51,35 @@ sections:
   - question: >
       Combien peut-il y avoir d’utilisateurs dans un laboratoire de classe ?
     answer: "Vous pouvez ajouter jusqu’à 400 utilisateurs à un laboratoire de classe.\n\n## <a name=\"blog-post\"></a>Billet de blog\n\nAbonnez-vous au [blog Azure Lab Services](https://aka.ms/azlabs-blog).\n\n## <a name=\"update-notifications\"></a>Notifications de mise à jour\n\nAbonnez-vous aux [mises à jour de Lab Services](https://azure.microsoft.com/updates/?product=lab-services) pour rester informé des nouvelles fonctionnalités de Lab Services.          \n"
-- name: Général
+- name: Linux
   questions:
   - question: >
+      Quand je sélectionne les paramètres d’arrêt automatique de mon lab, pourquoi cette page est vide ou pourquoi je ne vois pas le paramètre qui permet de déconnecter automatiquement les utilisateurs quand les machines virtuelles sont inactives ?
+    answer: >
+      En général, les labs Linux prennent uniquement en charge l’arrêt automatique quand les utilisateurs se déconnectent, et quand les machines virtuelles sont démarrées et les utilisateurs ne se connectent pas.  Toutefois, la prise en charge de ces paramètres varie aussi en fonction des [distributions et versions spécifiques de Linux](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions).  Les paramètres d’arrêt ne sont pas pris en charge par l’image [Data Science Virtual Machine-Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
+
+      Pour plus d’informations sur les paramètres d’arrêt, consultez les articles suivants :
+        - [Comment activer les paramètres d’arrêt](./how-to-enable-shutdown-disconnect.md)
+        - [Paramètres d’arrêt automatique pour le contrôle du coût](./cost-management-guide.md#automatic-shutdown-settings-for-cost-control)
+  - question: >
+      Comment utiliser le serveur Ubuntu 18.04 LTS et installer les bureaux graphiques GNOME ou MATE ?
+    answer: >
+      Il existe un [conflit réseau connu entre les bureaux graphiques GNOME\MATE](./how-to-enable-remote-desktop-linux.md) et l’agent VM Linux Azure quand vous utilisez Ubuntu 18.04 LTS.  Par conséquent, nous vous suggérons ce qui suit :
+        - Au lieu de GNOME\MATE, utilisez le bureau graphique XFCE qui n’a pas ce problème.  Par exemple, l’[image Data science VM est configurée par défaut pour utiliser XFCE](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go).
+        - Au lieu d’Ubuntu 18.04 LTS, utilisez Ubuntu 20.04 ou 21.04 LTS qui n’ont pas ce conflit réseau avec l’agent quand GNOME\MATE est installé.
+        - Sinon, pour utiliser 18.04 LTS et GNOME\MATE, vous devez appliquer une solution de contournement pour corriger le conflit réseau avec l’agent.
+      Consultez notre [fichier ReadMe et nos scripts](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/GNOME_MATE/ReadMe.md) qui configurent le serveur Ubuntu 18.04\20.04\21.04 avec GNOME\MATE.  Quand vous utilisez ces scripts pour configurer 18.04 avec GNOME\MATE, ils appliquent la solution de contournement pour le conflit réseau.
+- name: Généralités
+  questions:
+  - question: >
+      Comment éviter les contraintes de capacité et les limites de capacité de calcul Azure sur mon abonnement ?
+    answer: >
+      Quand vous commencez à utiliser Azure Lab Services pour la première fois, vous devez envoyer une demande d’augmentation de la limite de capacité de calcul Azure qui existe sur votre abonnement.  Quand vous utilisez votre lab et que le nombre de cœurs VM dont vous avez besoin augmente, vous devez peut-être répéter ce processus pour augmenter encore votre limite de quota.
+
+      Dans le cadre de votre planification initiale chaque fois que vous déployez de nouveaux labs, vous devez également vérifier qu’il existe une capacité de cœurs VM adéquate dans la région où vous envisagez le déploiement.  Cela est particulièrement important pour les processeurs graphiques.
+
+      Pour plus d’informations sur la planification des limites de capacité et de capacité de calcul Azure, consultez l’article suivant :
+        - [Limites de capacité dans Azure Lab Services](./capacity-limits.md)
+  - question: >
       Que dois-je faire si je n’ai pas trouvé de réponse à ma question ici ?
-    answer: "Si votre question n’est pas répertoriée ici, faites-le-nous savoir pour que nous puissions vous aider à trouver une réponse.\n\n- Postez une question à la fin de ce Forum aux questions. \n- Pour atteindre un public plus large, posez une question sur le [forum de la communauté technique Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). \n- Concernant les demandes de fonctionnalité, transmettez vos questions et idées à [Azure Lab Services - User Voice](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).\n"
+    answer: "Si votre question n’est pas répertoriée ici, faites-le-nous savoir pour que nous puissions vous aider à trouver une réponse.\n\n- Postez une question à la fin de ce Forum aux questions. \n- Pour atteindre un public plus large, posez une question sur le [forum de la communauté technique Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)."

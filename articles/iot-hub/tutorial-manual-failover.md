@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 898cc8dcb634ed9beab26c0a0d5de9a9fdda068c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d38566db882bdc2094961cb83c9bd117a328589
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732873"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258890"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Tutoriel : Effectuer un basculement manuel pour un hub IoT
 
@@ -48,11 +48,11 @@ Pour plus d’informations sur le basculement manuel et le basculement initié p
 > [!NOTE]
 > Il existe une limite de deux basculements et deux restaurations par jour pour un hub IoT.
 
-1. Cliquez sur **Groupes de ressources**, puis sélectionnez votre groupe de ressources. Ce tutoriel utilise **ManlFailRG**. Dans la liste des ressources, cliquez sur votre IoT Hub. 
+1. Cliquez sur **Groupes de ressources**, puis sélectionnez votre groupe de ressources. Dans la liste des ressources, cliquez sur votre IoT Hub.
 
-1. Sous **Paramètres** dans le volet IoT Hub, cliquez sur **Basculement**.
+1. Sous **Paramètres du hub** dans le volet Hub IoT, cliquez sur **Basculement**.
 
-   ![Capture d’écran montrant le volet de propriétés de IoT Hub](./media/tutorial-manual-failover/trigger-failover-01.png)
+:::image type="content" source="./media/tutorial-manual-failover/trigger-failover-01.png" alt-text="Capture d’écran montrant le volet de propriétés de IoT Hub":::
 
 1. Dans le volet Basculement manuel sont affichés l’**Emplacement actuel** et l’**Emplacement de basculement**. L’emplacement actuel indique toujours l’emplacement où le hub est actuellement actif. L’emplacement de basculement est la [région Azure géographiquement associée](../best-practices-availability-paired-regions.md) standard qui est associé à l’emplacement actuel. Vous ne pouvez pas modifier les valeurs de l’emplacement. Pour ce tutoriel, l’emplacement actuel est `West US 2` et l’emplacement de basculement est `West Central US`.
 

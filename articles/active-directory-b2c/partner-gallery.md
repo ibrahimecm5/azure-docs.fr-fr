@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: a80b5b6340ddf0660961874281cbc6207ffea859
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: bf58338bfc16e2e0cea11183ad4fdf3e72961bb3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063568"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224914"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Partenaires ISV pour Azure Active Directory B2C
 
@@ -47,6 +47,7 @@ Microsoft travaille en partenariat avec les fournisseurs de logiciels indépenda
 |:-------------------------|:--------------|
 | ![Capture d’écran d’un logo BlokSec](./media/partner-gallery/bloksec-logo.png) | [BlokSec](./partner-bloksec.md) est une solution d’authentification sans mot de passe et MFA sans jeton, qui fournit des services en temps réel basés sur le consentement et qui protège les clients contre les cyberattaques axées sur l’identité, telles que l’usurpation de mot de passe, l’hameçonnage et les attaques de l’intercepteur. |
 | ![Capture d’écran d’un logo Hypr](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) est un fournisseur d’authentification sans mot de passe qui remplace les mots de passe par des chiffrements à clé publique, éliminant les fraudes, le hameçonnage et la réutilisation des informations d’identification. |
+| ![Capture d’écran d’un logo idemia](./media/partner-gallery/idemia-logo.png) | [IDEMIA](./partner-idemia.md) est un fournisseur d’authentification sans mot de passe, qui fournit des services basés sur le consentement en temps réel avec une authentification biométrique comme faceID et une empreinte digitale, éliminant la fraude et la réutilisation des informations d’identification. |
 | ![Capture d’écran d’un logo Itsme](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) est une solution d’identification numérique conforme aux normes eiDAS (Electronic Identification, Authentication and Trust Services) qui permet aux utilisateurs de se connecter en toute sécurité sans avoir à utiliser de lecteurs de cartes, de mots de passe, de méthode d’authentification à deux facteurs ni de codes PIN multiples. |
 |![Capture d’écran d’un logo Keyless.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) est un fournisseur d’authentification sans mot de passe qui propose une authentification sous la forme d’une analyse biométrique faciale et élimine ainsi la fraude, le hameçonnage et la réutilisation des informations d’identification.
 | ![Capture d’écran d’un logo Nevis](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) permet une authentification sans mot de passe et offre une expérience utilisateur final axée sur l’interface mobile, entièrement personnalisée avec l’application Nevis Access pour une authentification forte du client et pour garantir le respect des obligations relatives aux transactions de la directive 2 sur les services de paiement (PSD2). |

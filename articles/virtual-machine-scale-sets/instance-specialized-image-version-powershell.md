@@ -1,6 +1,6 @@
 ---
 title: Créer un groupe identique à partir d’une image spécialisée
-description: Créez un groupe identique à l’aide d’une image spécialisée dans une galerie d’images partagées.
+description: Créez un groupe identique en utilisant une image spécialisée dans une galerie Azure Compute Gallery.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
@@ -10,18 +10,18 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a12e378b91f2b303e80b739be3b8e9efea4262ec
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e881c400eeaea9202e5ef32cee7900d8065f8051
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691075"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459954"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>Créer un groupe identique à partir d’une image spécialisée à l’aide de PowerShell 
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques uniformes
 
-Créez une machine virtuelle à partir d’une version d’image spécialisée stockée dans une [galerie d’images partagées](../virtual-machines/shared-image-galleries.md) à l’aide de PowerShell. Si vous souhaitez créer un groupe identique à l’aide d’une version d’image généralisée, consultez [Créer des instances de groupe identique à partir d’une version d’image généralisée](instance-generalized-image-version-powershell.md).
+Créez une machine virtuelle à partir d’une version d’image spécialisée stockée dans une [galerie Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) en utilisant PowerShell. Si vous souhaitez créer un groupe identique à l’aide d’une version d’image généralisée, consultez [Créer des instances de groupe identique à partir d’une version d’image généralisée](instance-generalized-image-version-powershell.md).
 
 Une fois que vous disposez d’une image spécialisée dans votre galerie, vous pouvez créer un groupe de machines virtuelles identiques à l’aide de la cmdlet [New-AzVmss](/powershell/module/az.compute/new-azvmss). 
 
@@ -139,10 +139,10 @@ La création et la configuration des l’ensemble des ressources et des machines
 ## <a name="next-steps"></a>Étapes suivantes
 [Générateur d’image Azure (préversion)](../virtual-machines/image-builder-overview.md) permet d’automatiser la création d’une version de l’image. Vous pouvez même l’utiliser pour mettre à jour et [créer une nouvelle version de l’image à partir d’une image existante](../virtual-machines/linux/image-builder-gallery-update-image-version.md).  
 
-Vous pouvez également créer la ressource de galerie d’images partagées à l’aide de modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
+Vous pouvez également créer la ressource Azure Compute Gallery en utilisant des modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
 
-- [Créer une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Créer une définition d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Créer une version d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Créer une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Créer une définition d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Créer une version d’image dans une galerie Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
 Pour plus d’informations sur les galeries d’images partagées, consultez la [vue d’ensemble](../virtual-machines/shared-image-galleries.md). Si vous rencontrez des problèmes, consultez [Résoudre les problèmes des galeries d’images partagées](../virtual-machines/troubleshooting-shared-images.md).

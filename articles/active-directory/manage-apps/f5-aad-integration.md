@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 622834d3e91303f55fd4adaf2187800b2b2ce765
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0faa0d97c1e1bb73e2a97aa3715efee58a589cd8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164356"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432621"
 ---
 # <a name="integrate-f5-big-ip-with-azure-active-directory"></a>Intégrer F5 BIG-IP à Azure Active Directory
 
@@ -32,7 +32,7 @@ Le fait qu'Azure AD pré-authentifie l'accès aux services publiés de BIG-IP p
 
 - Authentification sans mot de passe via [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a), [des clés Fast Identity Online (FIDO)](../authentication/howto-authentication-passwordless-security-key.md) et l’[authentification par certificat](../authentication/active-directory-certificate-based-authentication-get-started.md)
 
-- [Accès conditionnel](../conditional-access/overview.md) préemptif et [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md)
+- [Accès conditionnel](../conditional-access/overview.md) préemptif et [Azure AD Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md)
 
 - [Identity Protection](../identity-protection/overview-identity-protection.md) : contrôle adaptatif via le profilage des risques des utilisateurs et des sessions
 
@@ -146,6 +146,8 @@ Les tutoriels suivants fournissent des instructions détaillées sur la mise en 
 - [Sécurisation de F5 BIG-IP SSL-VPN avec Azure AD SHA](f5-aad-password-less-vpn.md)
 
 - [Configurer Azure AD B2C avec F5 BIG-IP](../../active-directory-b2c/partner-f5.md)
+
+- [Intégrer Azure Active Directory à F5 BIG-IP pour l’authentification unique basée sur les formulaires](f5-big-ip-forms-advanced.md)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

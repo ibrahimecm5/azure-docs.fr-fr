@@ -5,21 +5,21 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: quickstart
-ms.date: 10/21/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7c6865d574204f22c8b81afe04dd10561674876b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7111391f1a066e386384f6623fa6a3d593592123
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097464"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508756"
 ---
 # <a name="quickstart-deploy-your-first-container-app"></a>Démarrage rapide : Déployer votre première application de conteneur
 
 La préversion d’Azure Container Apps vous permet d’exécuter des microservices et des applications conteneurisées sur une plateforme serverless. Avec Container Apps, vous bénéficiez des avantages de l’exécution de conteneurs tout en évitant les soucis de configuration manuelle de l’infrastructure cloud et des orchestrateurs de conteneurs complexes.
 
-Dans ce guide de démarrage rapide, créez un environnement Container Apps sécurisé et déployez votre première application de conteneur.
+Dans ce guide de démarrage rapide, vous créez un environnement Container Apps sécurisé et déployez votre première application conteneur.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -61,7 +61,23 @@ az extension add `
 
 ---
 
-Définissez les variables d’environnement suivantes :
+Maintenant que l’extension est installée, inscrivez l’espace de noms `Microsoft.Web`.
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```azurecli
+az provider register --namespace Microsoft.Web
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+az provider register --namespace Microsoft.Web
+```
+
+---
+
+Ensuite, définissez les variables d’environnement suivantes :
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
@@ -198,7 +214,8 @@ az containerapp create \
   --environment $CONTAINERAPPS_ENVIRONMENT \
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
   --target-port 80 \
-  --ingress 'external'
+  --ingress 'external' \
+  --query configuration.ingress.fqdn
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -210,14 +227,15 @@ az containerapp create `
   --environment $CONTAINERAPPS_ENVIRONMENT `
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest `
   --target-port 80 `
-  --ingress 'external'
+  --ingress 'external' `
+  --query configuration.ingress.fqdn
 ```
 
 ---
 
-En définissant `--ingress` sur `external`, vous rendez l’application de conteneur disponible pour les demandes publiques.
+En définissant `--ingress` sur `external`, vous rendez l’application conteneur disponible pour les demandes publiques.
 
-La commande `create` retourne le nom de domaine complet de l’application de conteneur. Copiez cet emplacement dans un navigateur web et vous verrez le message suivant.
+Ici, la commande `create` retourne le nom de domaine complet de l’application conteneur. Copiez cet emplacement dans un navigateur web et vous verrez le message suivant.
 
 :::image type="content" source="media/get-started/azure-container-apps-quickstart.png" alt-text="Votre premier déploiement Azure Container Apps.":::
 

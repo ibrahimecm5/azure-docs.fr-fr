@@ -1,5 +1,5 @@
 ---
-title: Collecter les journaux et les métriques de vos applications Apache Spark avec Azure Event Hubs (préversion)
+title: Collecter les journaux et les métriques de vos applications Apache Spark avec Azure Event Hubs
 description: Dans ce tutoriel, vous allez voir comment utiliser l’extension d’émission de diagnostic Synapse Apache Spark qui permet d’envoyer vers Azure Event Hubs des journaux, des journaux des événements et des métriques concernant les applications Apache Spark.
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: c3b8fbda0eaaa932f784540cc55d0a4e583927f0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: da6a02c12c9e24d4091c632fbf73a0cc97255afa
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544523"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223098"
 ---
-# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs-preview"></a>Collecter les journaux et les métriques de vos applications Apache Spark avec Azure Event Hubs (préversion)
+# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs"></a>Collecter les journaux et les métriques de vos applications Apache Spark avec Azure Event Hubs 
 
 L’extension d’émission de diagnostic Synapse Apache Spark est une bibliothèque qui permet à une application Apache Spark d’envoyer des journaux, des journaux des événements et des métriques vers une ou plusieurs destinations, y compris Azure Log Analytics, le stockage Azure et Azure Event Hubs. 
 
-Dans ce tutoriel, vous allez voir comment utiliser l’extension d’émission de diagnostic Synapse Apache Spark qui permet d’envoyer vers Azure Event Hubs des journaux, des journaux des événements et des métriques concernant les applications Apache Spark.
+Dans ce tutoriel, vous apprenez à utiliser l’extension d’émission de diagnostic Synapse Apache Spark pour envoyer à vos hubs d’événements Azure les journaux, journaux d’événements et métriques des applications Apache Spark.
 
 ## <a name="collect-logs-and-metrics-to-azure-event-hubs"></a>Collecter des journaux et des métriques pour les envoyer vers Azure Event Hubs
 
@@ -29,7 +29,7 @@ Dans ce tutoriel, vous allez voir comment utiliser l’extension d’émission d
 Pour collecter les journaux de diagnostic et les métriques afin de les envoyer dans Azure Event Hubs, vous pouvez utiliser l’instance Azure Event Hubs existante.
 Si vous n’en avez pas, vous pouvez [créer un hub d’événements](../../event-hubs/event-hubs-create.md).
 
-### <a name="step-2-create-a-apache-spark-configuration-file"></a>Étape 2 : Créer un fichier de configuration pour Apache Spark
+### <a name="step-2-create-an-apache-spark-configuration-file"></a>Étape 2 : Créer un fichier de configuration pour Apache Spark
 
 Créez un fichier `diagnostic-emitter-azure-event-hub-conf.txt` puis copiez-y le contenu suivant. Vous pouvez également télécharger un [exemple de modèle](https://go.microsoft.com/fwlink/?linkid=2169375) pour la configuration du pool Apache Spark.
 
@@ -41,7 +41,7 @@ spark.synapse.diagnostic.emitter.MyDestination1.secret <connection-string>
 ```
 
 Dans le fichier de configuration, configurez les paramètres suivants : `<connection-string>`.
-Pour plus d’informations sur les paramètres, consultez [Configurations Azure Event Hubs](#available-configurations).
+Pour une description des paramètres, consultez [Configurations Azure EventHub](#available-configurations)
 
 ### <a name="step-3-upload-the-apache-spark-configuration-file-to-apache-spark-pool"></a>Étape 3 : Charger le fichier de configuration Apache Spark dans un pool Apache Spark
 

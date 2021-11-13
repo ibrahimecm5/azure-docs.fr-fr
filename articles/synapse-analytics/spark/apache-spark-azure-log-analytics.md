@@ -1,5 +1,5 @@
 ---
-title: Superviser des applications Apache Spark avec Azure Log Analytics (préversion)
+title: Monitorer des applications Apache Spark avec Azure Log Analytics
 description: Découvrez comment activer le connecteur Synapse Studio pour collecter et envoyer les métriques et les journaux de l’application Apache Spark à votre espace de travail Log Analytics.
 services: synapse-analytics
 author: jejiang
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: a455eb81a804c9eff9dcd84142eccbdfc3ac376c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dcf09885dab6ba41d545e4105a86c99535786c62
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804178"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223136"
 ---
-# <a name="monitor-apache-spark-applications-with-azure-log-analytics-preview"></a>Superviser des applications Apache Spark avec Azure Log Analytics (préversion)
+# <a name="monitor-apache-spark-applications-with-azure-log-analytics"></a>Monitorer des applications Apache Spark avec Azure Log Analytics
 
 Dans ce tutoriel, vous allez apprendre à activer le connecteur Synapse Studio intégré à Log Analytics. Vous pourrez ensuite collecter et envoyer des métriques et des journaux de l’application Apache Spark à votre [espace de travail log Analytics](../../azure-monitor/logs/quick-create-workspace.md). Enfin, vous aurez la possibilité d’utiliser un classeur Azure Monitor pour visualiser ces métriques et journaux.
 
@@ -32,7 +32,7 @@ Pour créer cet espace de travail, consultez l’une des ressources suivantes :
 - [Création d’un espace de travail avec Azure CLI](../../azure-monitor/logs/resource-manager-workspace.md)
 - [Création et configuration d’un espace de travail dans Azure Monitor avec PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
-### <a name="step-2-prepare-a-apache-spark-configuration-file"></a>Étape 2 : Préparer un fichier de configuration Apache Spark
+### <a name="step-2-prepare-an-apache-spark-configuration-file"></a>Étape 2 : Préparer un fichier de configuration Apache Spark
 
 Utilisez l’une des options suivantes pour préparer le fichier.
 
@@ -130,7 +130,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 [uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
 
-### <a name="step-3-upload-your-apache-spark-configuration-to-a-apache-spark-pool"></a>Étape 3 : Charger votre fichier de configuration Apache Spark sur un pool Apache Spark
+### <a name="step-3-upload-your-apache-spark-configuration-to-an-apache-spark-pool"></a>Étape 3 : Charger votre configuration Apache Spark dans un pool Apache Spark
 Vous pouvez charger le fichier de configuration sur votre pool Apache Spark Azure Synapse Analytics. Dans Synapse Studio, suivez la procédure ci-dessous :
 
    1. Sélectionner **Gérer** > **Pools Apache Spark**.
@@ -146,18 +146,18 @@ Vous pouvez charger le fichier de configuration sur votre pool Apache Spark Azur
 >
 > Toutes les applications Apache Spark soumises au pool Apache Spark utilisent le paramètre de configuration pour envoyer les métriques et les journaux d’application Apache Spark à votre espace de travail spécifié.
 
-## <a name="submit-a-apache-spark-application-and-view-the-logs-and-metrics&quot;></a>Soumettre une application Apache Spark et visualiser les journaux et les métriques
+## <a name="submit-an-apache-spark-application-and-view-the-logs-and-metrics"></a>Envoyer une application Apache Spark, et voir les journaux et les métriques
 
-Voici comment faire :
+Voici comment procéder :
 
-1. Soumettez une application Apache Spark au pool Apache Spark configuré à l’étape précédente. Pour cela, vous avez plusieurs possibilités :
+1. Envoyez une application Apache Spark au pool Apache Spark configuré à l’étape précédente. Pour cela, vous avez plusieurs possibilités :
     - Exécutez un notebook dans Synapse Studio. 
-    - Dans Synapse Studio, soumettez un travail par lots Apache Spark via une définition de travail Apache Spark.
+    - Dans Synapse Studio, envoyez un programme de traitement par lots Apache Spark avec une définition de travail Apache Spark.
     - Exécutez un pipeline contenant une activité Apache Spark.
 
 1. Accédez à l’espace de travail Log Analytics spécifié, puis visualisez les métriques et les journaux de l’application Apache Spark quand celle-ci commence à s’exécuter.
 
-## <a name=&quot;write-custom-application-logs&quot;></a>Écrire des journaux d’application personnalisés
+## <a name="write-custom-application-logs"></a>Écrire des journaux d’application personnalisés
 
 Vous pouvez utiliser la bibliothèque Apache Log4j pour écrire des journaux personnalisés.
 
@@ -165,7 +165,7 @@ Exemple pour Scala :
 
 ```scala
 %%spark
-val logger = org.apache.log4j.LogManager.getLogger(&quot;com.contoso.LoggerExample")
+val logger = org.apache.log4j.LogManager.getLogger("com.contoso.LoggerExample")
 logger.info("info message")
 logger.warn("warn message")
 logger.error("error message")
@@ -246,20 +246,20 @@ Les utilisateurs peuvent lancer des requêtes pour évaluer les métriques et le
 
 Après cela, l’espace de travail Synapse est créé avec la [protection contre l’exfiltration de données](../security/workspace-data-exfiltration-protection.md) activée.
 
-Quand vous voulez activer cette fonctionnalité, vous devez créer des demandes de connexion de point de terminaison privé managé à des [étendues de liaison privée Azure Monitor](../../azure-monitor/logs/private-link-security.md) (AMPLS, Azure Monitor Private Link Scopes) dans les locataires Azure AD approuvés de l’espace de travail.
+Quand vous voulez activer cette fonctionnalité, vous devez créer des demandes de connexion de point de terminaison privé managé à des [étendues de liaison privée Azure Monitor (AMPLS)](../../azure-monitor/logs/private-link-security.md) dans les locataires Azure AD approuvés de l’espace de travail.
 
 Vous pouvez suivre les étapes ci-dessous pour créer une connexion de point de terminaison privé managé à des étendues de liaison privée Azure Monitor :
 
-1. S’il n’existe pas d’AMPLS, suivez les instructions de [Configuration de connexions de liaison privée Azure Monitor](../../azure-monitor/logs/private-link-security.md) pour en créer une.
+1. S’il n’existe pas d’AMPLS, vous pouvez suivre [Configuration de connexions de liaison privée Azure Monitor](../../azure-monitor/logs/private-link-security.md) pour en créer une.
 2. Accédez à votre AMPLS dans le portail Azure, dans la page **Ressources Azure Monitor**, cliquez sur **Ajouter** pour ajouter une connexion à votre espace de travail Azure Log Analytics.
 3. Accédez à **Synapse Studio > Gérer > Points de terminaison privés managés**, cliquez sur le bouton **Nouveau**, sélectionnez **Étendues de liaison privée Azure Monitor**, puis **Continuer**.
    > [!div class="mx-imgBorder"]
    > ![Créer un point de terminaison privé managé AMPLS 1](./media/apache-spark-azure-log-analytics/create-ampls-private-endpoint-1.png)
-4. Choisissez votre étendue de liaison privée Azure Monitor que vous venez de créer, puis cliquez sur le bouton **Créer**.
+4. Choisissez l’étendue de liaison privée Azure Monitor que vous avez créée et cliquez sur le bouton **Créer**.
    > [!div class="mx-imgBorder"]
    > ![Créer un point de terminaison privé managé AMPLS 2](./media/apache-spark-azure-log-analytics/create-ampls-private-endpoint-2.png)
 5. Attendez quelques minutes que le provisionnement du point de terminaison privé soit terminé.
-6. Accédez à nouveau à votre AMPLS dans le portail Azure. Dans la page **Connexions de point de terminaison privé**, sélectionnez la connexion qui vient d’être provisionnée, puis sélectionnez **Approuver**.
+6. Accédez à nouveau à votre AMPLS dans le portail Azure et, dans la page **Connexions de point de terminaison privé**, sélectionnez la connexion provisionnée, puis **Approuver**.
 
 > [!NOTE] 
 >  - L’objet AMPLS a un certain nombre de limites à prendre en compte quand vous planifiez la configuration de votre liaison privée. Consultez [Limites d’AMPLS](../../azure-monitor/logs/private-link-security.md) pour une présentation plus approfondie de ces limites. 

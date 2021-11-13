@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 89890c243fa3fba659c8da3aaf5627ded7d27fb1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 96fdec13ce028f3cac5f42c7092ca9b189923b9f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065575"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577780"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Déploiement de machines virtuelles Azure pour SAP NetWeaver
 
@@ -835,7 +835,9 @@ Définissez les paramètres suivants :
    sudo service waagent restart
    ```
 
-Les paramètres de proxy dans \\etc\\waagent.conf s’appliquent également aux extensions de machine virtuelle requises. Si vous voulez utiliser les référentiels Azure, assurez-vous que le trafic vers ces référentiels ne passe pas par l’intranet local. Si vous avez créé des itinéraires définis par les utilisateurs pour activer le tunneling forcé, veillez à ajouter un itinéraire qui achemine le trafic vers les référentiels directement vers Internet, et non par le biais de votre connexion VPN de site à site.
+Si vous voulez utiliser les référentiels Azure, assurez-vous que le trafic vers ces référentiels ne passe pas par l’intranet local. Si vous avez créé des itinéraires définis par les utilisateurs pour activer le tunneling forcé, veillez à ajouter un itinéraire qui achemine le trafic vers les référentiels directement vers Internet, et non par le biais de votre connexion VPN de site à site.
+
+L’extension de machine virtuelle pour SAP doit également être en mesure d’accéder à Internet. Veillez à installer la nouvelle extension de machine virtuelle pour SAP et suivez les étapes décrites dans [Configurer l’extension de machine virtuelle Azure pour les solutions SAP avec Azure CLI](vm-extension-for-sap-new.md#fa4428b9-bed6-459a-9dfb-74cc27454481) dans le Guide d’installation de l’extension de machine virtuelle pour SAP afin de configurer le proxy.
 
 * **SLES**
 

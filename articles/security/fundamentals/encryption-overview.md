@@ -7,14 +7,14 @@ ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acfa59c13f0f9429135ea7f2218ca8fec121c8a3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879712"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428308"
 ---
 # <a name="azure-encryption-overview"></a>Vue d’ensemble du chiffrement Azure
 
@@ -22,7 +22,7 @@ Cet article fournit une vue d’ensemble de l’utilisation du chiffrement dans 
 
 ## <a name="encryption-of-data-at-rest"></a>Chiffrement des données au repos
 
-Les données au repos incluent des informations qui se trouvent dans un stockage persistant sur un support physique, sous n’importe quel format numérique. Il peut s’agir de fichiers sur un support magnétique ou optique, de données archivées et de sauvegardes de données. Microsoft Azure offre une variété de solutions de stockage de données en fonction des besoins, y compris le stockage sur fichier, disque, objet blob et table. Microsoft fournit également le chiffrement pour protéger [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md) et Azure Data Lake.
+Les données au repos incluent des informations qui se trouvent dans un stockage persistant sur un support physique, sous n’importe quel format numérique. Il peut s’agir de fichiers sur un support magnétique ou optique, de données archivées et de sauvegardes de données. Microsoft Azure offre une variété de solutions de stockage de données en fonction des besoins, y compris le stockage sur fichier, disque, objet blob et table. Microsoft fournit également le chiffrement pour protéger [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) et Azure Data Lake.
 
 Le chiffrement des données au repos est disponible pour les modèles de cloud SaaS (Software-as-a-Service), PaaS (Platform-as-a-Service) et IaaS (Infrastructure-as-a-Service). Cet article résume et fournit des ressources pour vous aider à utiliser les options de chiffrement Azure.
 
@@ -99,7 +99,7 @@ Le CLE dispose de fonctions intégrées que vous pouvez utiliser pour chiffrer l
 
 ### <a name="cosmos-db-database-encryption"></a>Chiffrement de base de données Azure Cosmos DB
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) est une base de données multi-modèles distribuée par Microsoft au niveau mondial. Les données utilisateur stockées dans le stockage non volatile (disques SSD) Cosmos DB sont chiffrées par défaut. Il n’existe aucun contrôle pour activer ou désactiver le chiffrement. Le chiffrement au repos est implémenté à l’aide d’un certain nombre de technologies de sécurité, notamment des systèmes de stockage de clés sécurisés, des réseaux chiffrés et des API de chiffrement. Les clés de chiffrement sont gérées par Microsoft et font l’objet d’une rotation par le biais de directives internes de Microsoft.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) est une base de données multi-modèles distribuée par Microsoft au niveau mondial. Les données utilisateur stockées dans le stockage non volatile (disques SSD) Cosmos DB sont chiffrées par défaut. Il n’existe aucun contrôle pour activer ou désactiver le chiffrement. Le chiffrement au repos est implémenté à l’aide d’un certain nombre de technologies de sécurité, notamment des systèmes de stockage de clés sécurisés, des réseaux chiffrés et des API de chiffrement. Les clés de chiffrement sont gérées par Microsoft et font l’objet d’une rotation par le biais de directives internes de Microsoft. Vous pouvez éventuellement choisir d’ajouter une deuxième couche de chiffrement avec les clés que vous gérez à l’aide de la fonctionnalité des [clés gérées par le client ou CMK](../../cosmos-db/how-to-setup-cmk.md).
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Chiffrement au repos dans Data Lake
 

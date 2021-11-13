@@ -10,13 +10,13 @@ ms.topic: how-to
 author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: 316f1c6558cf033ac315f413f4e081b4f920343b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: a27957a289f3ab94e0c55462715a668b9f85e215
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110705539"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239505"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Bien démarrer avec les outils de base de données élastique
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -135,7 +135,6 @@ Pour plus d’informations sur les outils de base de données élastique, consul
   * [Outils de base de données élastique pour Azure SQL - Intégration Entity Framework](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Partitionner l’élasticité sur le centre de scripts](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog : [Annonce de la mise à l’échelle élastique](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Channel 9 : [Vidéo de présentation de la mise à l’échelle élastique](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Forum de discussion : [Page de questions Microsoft Q&A sur Azure SQL Database](/answers/topics/azure-sql-database.html)
 * Pour mesurer les performances : [Compteurs de performances pour le Gestionnaire de cartes de partitions](elastic-database-client-library.md)
 

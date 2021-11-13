@@ -2,20 +2,20 @@
 title: Présentation de vos frais de service externe Azure
 description: En savoir plus sur la facturation des frais des services externes, anciennement appelés Marketplace, dans Azure.
 author: bandersmsft
-ms.reviewer: judupont
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/20/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee3e5b7b172bc6441e0148c3cbfa4bab02e6949b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3ac9a13342d6e3fb46c9a1c709a22b67b6eeb9a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586463"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252019"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Comprendre vos frais de service externes Azure
 Les services externes sont publiés par des éditeurs de logiciels tiers sur la Place de marché Azure. Par exemple, SendGrid est un service externe que vous pouvez acheter dans Azure, mais qui n’est pas publié par Microsoft. Certains produits Microsoft sont aussi vendus sur la Place de marché Azure.
@@ -49,6 +49,8 @@ You can view a list of the external services that are on each subscription withi
 ## <a name="external-spending-for-ea-customers"></a>Dépenses externes pour les clients EA
 
 Les clients de contrat Entreprise (EA) peuvent voir les dépenses du service externe et télécharger des rapports dans le portail EA. Consultez la page sur [Azure Marketplace pour les clients EA](https://ea.azure.com/helpdocs/azureMarketplace) pour commencer.
+
+Les clients EA directs peuvent voir les dépenses du service externe dans le [portail Azure](https://portal.azure.com). Accédez au menu Utilisation + frais pour afficher et télécharger les frais de la Place de marché Azure.
 
 ## <a name="view-and-download-invoices-for-external-services"></a>Voir et télécharger les factures pour les services externes
 

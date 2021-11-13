@@ -1,15 +1,15 @@
 ---
 title: Présentation de l’agent Connected Machine
 description: Cet article fournit une présentation détaillée de l’agent des serveurs avec Azure Arc disponible, qui prend en charge la surveillance de machines virtuelles hébergées dans des environnements hybrides.
-ms.date: 10/12/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71446d57d5f73e81c859a0d8453a2017f4c5fd12
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c2fa68aedd837df2f7c573da8adaece3e4d16477
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984361"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462099"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Présentation de l’agent des serveurs avec Azure Arc
 
@@ -78,7 +78,13 @@ L’agent Azure Connected Machine pour Windows et Linux peut être mis à niveau
 
 ### <a name="supported-environments"></a>Environnements pris en charge
 
-Les serveurs avec Azure Arc prennent en charge l’installation de l’agent Connected Machine sur tout serveur physique et sur toute machine virtuelle hébergée *en dehors* d’Azure. Cela comprend les machines virtuelles s’exécutant sur des plateformes comme VMware, Azure Stack HCI et d’autres environnements cloud. Les serveurs avec Azure Arc ne prennent pas en charge l’installation de l’agent sur les machines virtuelles qui s’exécutent dans Azure, ni sur les machines virtuelles qui s’exécutent sur Azure Stack Hub ou Azure Stack Edge, car elles sont déjà modélisées en tant que machines virtuelles Azure.
+Les serveurs avec Azure Arc prennent en charge l’installation de l’agent Connected Machine sur tous les serveurs physiques et machines virtuelles hébergés *en dehors* d’Azure. Cela comprend la prise en charge des machines virtuelles s’exécutant sur des plateformes comme :
+
+* VMware
+* Azure Stack HCI
+* Autres environnements cloud
+
+Les serveurs avec Azure Arc *ne prennent pas en charge* l’installation de l’agent sur les machines virtuelles qui s’exécutent dans Azure, ni sur les machines virtuelles qui s’exécutent sur Azure Stack Hub ou Azure Stack Edge, car elles sont déjà modélisées comme des machines virtuelles Azure.
 
 ### <a name="supported-operating-systems"></a>Systèmes d’exploitation pris en charge
 

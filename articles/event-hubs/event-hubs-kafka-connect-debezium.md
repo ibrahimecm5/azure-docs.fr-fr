@@ -4,13 +4,13 @@ description: Cet article fournit des informations sur l’utilisation de Debeziu
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 01/06/2021
-ms.openlocfilehash: f2395aff1d9174e5a7c99c231b1af8d2997d1926
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 10/18/2021
+ms.openlocfilehash: 033f02c2dec0d03e185401d3f4bbe2eadc053758
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748046"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242233"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>Intégrer la prise en charge d’Apache Kafka Connect sur Azure Event Hubs avec Debezium pour la capture des changements de données
 
@@ -19,13 +19,13 @@ ms.locfileid: "111748046"
 > [!WARNING]
 > L’utilisation de l’infrastructure Apache Kafka Connect, de la plateforme Debezium et de ses connecteurs **n’est pas admissible au support produit par le biais de Microsoft Azure**.
 >
-> Apache Kafka Connect suppose que sa configuration dynamique est conservée dans des rubriques compactées, avec une rétention illimitée. Azure Event Hubs [n’implémente pas le compactage comme fonctionnalité de répartiteur](event-hubs-federation-overview.md#log-projections) et impose toujours une limite de rétention temporelle sur les événements conservés, partant du principe qu’Azure Event Hubs est un moteur de diffusion d’événements en temps réel et non un magasin de configuration ou de données à long terme.
+> Apache Kafka Connect suppose que sa configuration dynamique est conservée dans des rubriques compactées, avec une rétention illimitée. Event Hubs [n’implémente pas le compactage comme fonctionnalité de répartiteur](event-hubs-federation-overview.md#log-projections) et impose toujours une limite de rétention temporelle sur les événements conservés, partant du principe qu’Event Hubs est un moteur de diffusion d’événements en temps réel et non un magasin de configuration ou de données à long terme.
 >
 > Bien que le projet Apache Kafka puisse accepter la combinaison de ces rôles, Azure considère que ces informations sont mieux gérées dans une base de données ou un magasin de configuration approprié.
 >
-> De nombreux scénarios Apache Kafka Connect seront fonctionnels, mais ces différences conceptuelles entre les modèles de rétention d’Apache Kafka et d’Azure Event Hubs peuvent empêcher certaines configurations de fonctionner comme prévu. 
+> De nombreux scénarios Apache Kafka Connect seront fonctionnels, mais ces différences conceptuelles entre les modèles de rétention d’Apache Kafka et d’Event Hubs peuvent empêcher certaines configurations de fonctionner comme prévu. 
 
-Ce didacticiel vous guide tout au long de la configuration d’un système basé sur la capture des changements de données sur Azure à l’aide d' [Azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (pour Kafka), d’[Azure DB pour PostgreSQL](../postgresql/overview.md) et de Debezium. Il utilise le [connecteur Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) pour diffuser en continu les modifications de base de données de PostgreSQL vers les rubriques Kafka dans Azure Event Hubs
+Ce didacticiel vous guide tout au long de la configuration d’un système basé sur la capture des changements de données sur Azure à l’aide d’[Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (pour Kafka), d’[Azure DB pour PostgreSQL](../postgresql/overview.md) et de Debezium. Il utilise le [connecteur Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) pour diffuser en continu les modifications de base de données de PostgreSQL vers les rubriques Kafka dans Event Hubs.
 
 > [!NOTE]
 > Cet article contient des références au terme *liste verte*, un terme que Microsoft n’utilise plus. Lorsque le terme sera supprimé du logiciel, nous le supprimerons de cet article.
@@ -40,7 +40,7 @@ Dans ce tutoriel, vous effectuez les étapes suivantes :
 > * (Facultatif) Utiliser des événements de changement de données avec un connecteur `FileStreamSink`
 
 ## <a name="pre-requisites"></a>Conditions préalables
-Pour effectuer cette procédure, vous aurez besoin des éléments suivants :
+Pour effectuer cette procédure pas à pas, vous aurez besoin des éléments suivants :
 
 - Abonnement Azure. Si vous n’en avez pas, [créez un compte gratuit](https://azure.microsoft.com/free/).
 - Linux/MacOS
@@ -50,7 +50,7 @@ Pour effectuer cette procédure, vous aurez besoin des éléments suivants :
 ## <a name="create-an-event-hubs-namespace"></a>Créer un espace de noms Event Hubs
 Un espace de noms Event Hubs est requis pour échanger avec tout service Event Hubs. Pour obtenir des instructions sur la création d'un espace de noms et d'un Event Hub, consultez [Créer un Event Hub](event-hubs-create.md). Obtenez la chaîne de connexion Event Hubs et le nom de domaine complet (FQDN) pour une utilisation ultérieure. Pour obtenir des instructions, consultez [Obtenir une chaîne de connexion Event Hubs](event-hubs-get-connection-string.md). 
 
-## <a name="setup-and-configure-azure-database-for-postgresql"></a>Installer et configurer Azure Database pour PostgreSQL
+## <a name="set-up-and-configure-azure-database-for-postgresql"></a>Installer et configurer Azure Database pour PostgreSQL
 [Azure Database pour PostgreSQL](../postgresql/overview.md) est un service de base de données relationnelle basé sur la version de la communauté du moteur de base de données PostgreSQL open source, et il est disponible en deux options de déploiement : Serveur unique et Hyperscale (Citus). [Procédez comme suit](../postgresql/quickstart-create-server-database-portal.md) pour créer un serveur Azure Database pour PostgreSQL à l’aide du Portail Azure. 
 
 ## <a name="setup-and-run-kafka-connect"></a>Configurer et exécuter Kafka Connect
@@ -69,6 +69,9 @@ Suivez les dernières instructions de la [documentation Debezium](https://debezi
 
 ### <a name="configure-kafka-connect-for-event-hubs"></a>Configurer Kafka Connect pour Event Hubs
 Une reconfiguration minimale est nécessaire pour rediriger le débit Kafka Connect de Kafka vers Event Hubs.  L’exemple `connect-distributed.properties` suivant montre comment configurer Connect pour s’authentifier et communiquer avec le point de terminaison Kafka sur Event Hubs :
+
+> [!IMPORTANT]
+> Debezium crée automatiquement une rubrique par table et une série de rubriques de métadonnées. La **rubrique** Kafka correspond à une instance d’Event Hubs (hub d’événements). Pour connaître les mappages entre Apache Kafka et Azure Event Hubs, consultez [Mappage des concepts Kafka et Event Hubs](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping). Il existe différentes **limites** sur le nombre de hubs d’événements dans un espace de noms Event Hubs en fonction du niveau (De base, Standard, Premium ou Dedicated). Pour connaître ces limites, consultez [Quotas](compare-tiers.md#quotas).
 
 ```properties
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 # e.g. namespace.servicebus.windows.net:9093
@@ -216,7 +219,7 @@ export TOPIC=my-server.public.todos
 kafkacat -b $BROKER -t $TOPIC -o beginning
 ```
 
-Vous devez voir les charges utiles JSON représentant les événements de changement des données générés dans PostgreSQL en réponse aux lignes que vous venez d’ajouter à la table `todos`. Voici un extrait de la charge utile :
+Vous devez voir les charges utiles JSON représentant les événements de changement des données générés dans PostgreSQL en réponse aux lignes que vous avez ajoutées à la table `todos`. Voici un extrait de la charge utile :
 
 
 ```json
@@ -248,7 +251,7 @@ Vous devez voir les charges utiles JSON représentant les événements de change
     }
 ```
 
-L’événement se compose de `payload` , ainsi que de son `schema` (omis par souci de concision). Dans la section `payload`, notez comment l’opération de création (`"op": "c"`) est représentée : `"before": null` signifie qu’il s’agit d’une nouvelle ligne insérée (`INSERT`), `after` fournit des valeurs pour les colonnes de la ligne, `source` fournit les métadonnées de l’instance PostgreSQL à partir desquelles cet événement a été récupéré, etc.
+L’événement se compose de `payload` , ainsi que de son `schema` (omis par souci de concision). Dans la section `payload`, notez comment l’opération de création (`"op": "c"`) est représentée : `"before": null` signifie qu’il s’agit d’une nouvelle ligne insérée (`INSERT`), `after` fournit des valeurs pour les colonnes de la ligne, `source` fournit les métadonnées de l’instance PostgreSQL à partir desquelles cet événement a été récupéré et ainsi de suite.
 
 Vous pouvez également essayer les mêmes opérations de mise à jour ou de suppression, et examiner les événements de changement des données. Par exemple, pour mettre à jour l’état de la tâche pour `configure and install connector` (en supposant que son `id` est `3`) :
 
@@ -257,7 +260,7 @@ UPDATE todos SET todo_status = 'complete' WHERE id = 3;
 ```
 
 ## <a name="optional-install-filestreamsink-connector"></a>(Facultatif) Installer le connecteur FileStreamSink
-Maintenant que toutes les modifications apportées à la table `todos` sont capturées dans la rubrique Event Hubs, nous allons utiliser le connecteur FileStreamSink (disponible par défaut dans Kafka Connect) pour utiliser ces événements.
+Maintenant que toutes les modifications apportées à la table `todos` sont capturées dans la rubrique Event Hubs, vous allez utiliser le connecteur FileStreamSink (disponible par défaut dans Kafka Connect) pour utiliser ces événements.
 
 Créez un fichier de configuration (`file-sink-connector.json`) pour le connecteur : remplacez l’attribut `file` par votre système de fichiers.
 
@@ -289,7 +292,7 @@ tail -f /Users/foo/todos-cdc.txt
 
 
 ## <a name="cleanup"></a>Nettoyage
-Kafka Connect crée des rubriques Event Hub pour stocker les configurations, les décalages et l’état qui persistent même après l’arrêt du cluster Connect. À moins que cette persistance ne soit souhaitée, il est recommandé de supprimer ces rubriques. Vous pouvez également supprimer l’Event Hub `my-server.public.todos` qui a été créé au cours de cette procédure pas à pas.
+Kafka Connect crée des rubriques Event Hub pour stocker les configurations, les décalages et l’état qui persistent même après l’arrêt du cluster Connect. À moins que cette persistance ne soit souhaitée, il est recommandé de supprimer ces rubriques. Vous pouvez également supprimer le hub d’événements `my-server.public.todos` qui a été créé au cours de cette procédure pas à pas.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

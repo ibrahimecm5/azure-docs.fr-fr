@@ -11,19 +11,19 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: d5644ecbc6b76ab2fc1ec44239fc14c52ab5fa73
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bac6068c02ea4f253176a65061d11604104c2bd5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097691"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439041"
 ---
 # <a name="what-is-custom-named-entity-recognition-ner-preview"></a>Qu’est-ce que la reconnaissance d’entité nommée (NER) personnalisée (préversion) ?
 
-Une NER personnalisée est proposée dans le cadre des fonctionnalités personnalisées d’[Azure Cognitive Services pour Language](../overview.md). Elle repose sur la technologie [Microsoft Turing](https://msturing.org/about). Cette fonctionnalité permet à ses utilisateurs de créer des modèles IA personnalisés pour extraire des entités spécifiques à un domaine à partir d’un contenu textuel non structuré, par exemple des contrats ou des documents financiers. En créant un projet de NER personnalisée, les développeurs peuvent non seulement étiqueter les données d’un modèle mais également l’entraîner, l’évaluer et améliorer ses performances de manière itérative avant de le rendre disponible pour qu’il soit consommé. 
+La NER personnalisée est l’une des fonctionnalités proposées par [Azure Cognitive Services for Langage](../overview.md). Il s’agit d’un service d’API informatique qui applique l’intelligence du Machine Learning pour vous permettre de construire des modèles personnalisés pour les tâches de NER dans du texte.
 
-Pour simplifier la création et la personnalisation du modèle, le service propose un portail web personnalisé accessible via [Language Studio](https://aka.ms/languageStudio). Pour bien démarrer avec le service sans rencontrer de difficultés, suivez les étapes décrites dans ce [guide de démarrage rapide](quickstart.md). 
-
+La NER personnalisée est proposée dans le cadre des fonctionnalités personnalisées d’[Azure Cognitive Services for Language](../overview.md). Cette fonctionnalité permet à ses utilisateurs de créer des modèles IA personnalisés pour extraire des entités spécifiques à un domaine à partir d’un contenu textuel non structuré, par exemple des contrats ou des documents financiers. En créant un projet de NER personnalisée, les développeurs peuvent non seulement étiqueter les données d’un modèle mais également l’entraîner, l’évaluer et améliorer ses performances de manière itérative avant de le rendre disponible pour qu’il soit consommé. La qualité des données étiquetées impacte considérablement les performances du modèle. Pour simplifier la création et la personnalisation de votre modèle, le service offre un portail web personnalisé accessible dans [Langage Studio](https://aka.ms/languageStudio). Vous pouvez facilement commencer à utiliser le service en suivant les étapes de ce [guide de démarrage rapide](quickstart.md). 
+ 
 Cette documentation contient les types d’articles suivants :
 
 * Les [Démarrages rapides](quickstart.md) sont des instructions de prise en main qui vous guident dans la formulation de vos requêtes au service.
@@ -34,7 +34,7 @@ Cette documentation contient les types d’articles suivants :
 
 ### <a name="information-extraction"></a>Extraction d’informations
 
-De nombreuses organisations financières et juridiques extraient et normalisent quotidiennement les données de milliers de textes complexes non structurés, par exemple des relevés bancaires, des contrats juridiques ou des formulaires bancaires. À la place d’un traitement manuel de ces formulaires, une NER personnalisée permet d’automatiser le processus.
+De nombreuses organisations financières et juridiques extraient et normalisent quotidiennement les données de milliers de textes complexes non structurés, par exemple des relevés bancaires, des contrats juridiques ou des formulaires bancaires. À la place d’un traitement manuel de ces formulaires, une NER personnalisée permet d’automatiser le processus et d’économiser des coûts, du temps et des efforts, etc.
 
 ### <a name="knowledge-mining-to-enhanceenrich-semantic-search"></a>Exploration des connaissances pour améliorer/enrichir la recherche sémantique
 
@@ -42,7 +42,7 @@ La recherche est fondamentale pour toute application exposant du contenu aux uti
 
 ### <a name="audit-and-compliance"></a>Audit et conformité
 
-Au lieu de traiter manuellement de longs fichiers texte pour auditer et appliquer les directives organisationnelles, il est possible d’utiliser une NER personnalisée pour créer des solutions automatisées et appliquer les règles métier nécessaires. 
+Au lieu d’examiner manuellement des fichiers texte très longs pour effectuer des audits et appliquer des stratégies, les services informatiques des entreprises financières ou juridiques peuvent utiliser la NER personnalisée pour élaborer des solutions automatisées. Ces solutions permettent d’appliquer les stratégies de conformité et de configurer les règles d’entreprise nécessaires en fonction des pipelines d’extraction de connaissances qui traitent des contenus structurés et non structurés.
 
 ## <a name="application-development-lifecycle"></a>Cycle de vie du développement d’applications
 

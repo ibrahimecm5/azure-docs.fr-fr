@@ -2,18 +2,18 @@
 title: Place de marché Azure
 description: Décrit comment les clients EA peuvent utiliser la Place de marché Azure
 author: bandersmsft
-ms.reviewer: baolcsva
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: d7514f4f3b1280bd65eaf8913e4f97f21b92fa28
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f22dd59be380a7535d8bdc724d48152eeec4041f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616438"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244188"
 ---
 # <a name="azure-marketplace"></a>Place de marché Azure
 
@@ -21,7 +21,7 @@ Cet article explique comment les clients et partenaires EA peuvent afficher les 
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Place de marché Azure pour les clients EA
 
-Pour les clients titulaires d’un Contrat Entreprise Direct, les frais de la Place de marché Azure sont visibles sur le portail Azure Enterprise. Les achats et consommations de la Place de marché Azure sont facturés hors Paiement anticipé Azure, tous les trimestres ou tous les mois, et à terme échu.
+Pour les clients directs, les frais de la Place de marché Azure sont visibles dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts). Les achats et consommations de la Place de marché Azure sont facturés hors Paiement anticipé Azure, tous les trimestres ou tous les mois, et à terme échu. Consultez [Gérer la Place de marché Azure dans le portail Azure](direct-ea-administration.md#enable-azure-marketplace-purchases).
 
 Les clients indirects peuvent consulter leurs abonnements Place de marché Azure sur la page **Gérer les abonnements** du portail Azure Enterprise, mais la tarification est masquée. Les clients doivent contacter leur fournisseur de services de concession de licences (LSP) pour obtenir des informations sur les frais de la Place de marché Azure.
 
@@ -52,12 +52,21 @@ Les administrateurs d’entreprise peuvent désactiver ou activer des achats de 
 
 Bien que les clients puissent convertir leurs abonnements Azure directs en Azure EA en les associant à leur inscription dans le portail Azure Enterprise, cette action ne convertit pas automatiquement les abonnements enfants.
 
-Pour activer les achats de la Place de marché Azure :
+Pour activer les achats sur la Place de marché Azure dans le portail Azure Enterprise :
 
 1. Connectez-vous au portail Azure Enterprise en tant qu’administrateur d’entreprise.
 1. Accédez à **Gérer**.
 1. Sous **Détails de l’inscription**, sélectionnez l’icône du crayon en regard de la ligne **Place de marché Azure**.
 1. Basculez sur **Activé/désactivé** ou sur **BYOL SKUs Only** (Références SKU BYOL uniquement) en fonction des besoins.
+1. Sélectionnez **Enregistrer**.
+
+Le client direct peut activer les achats sur la Place de marché Azure dans le portail Azure :
+
+1. Connectez-vous au portail Azure.
+1. Accédez à **Cost Management + facturation**.
+1. Dans le menu de gauche, sélectionnez Étendues de facturation, puis sélectionnez une étendue de compte de facturation.
+1. Dans le menu de gauche, sélectionnez **Stratégies**.
+1. Sous Place de marché Azure, définissez la stratégie sur **Activer**.
 1. Sélectionnez **Enregistrer**.
 
 > [!NOTE]

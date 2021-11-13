@@ -3,19 +3,19 @@ title: Enregistrer des échantillons vocaux personnalisés - Service Speech
 titleSuffix: Azure Cognitive Services
 description: Créez une voix personnalisée de qualité production en préparant un script complet, en recrutant des voix professionnelles et en effectuant un enregistrement professionnel.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: pafarley
-ms.openlocfilehash: 965791510a58391476e0f0ef1e276d06a83a690b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: 2a0c504fdcc39b4aff0981350e747dfd42ce3389
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540664"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504718"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Enregistrer des échantillons vocaux pour créer une voix personnalisée
 
@@ -107,7 +107,9 @@ Voici quelques recommandations générales que vous pouvez suivre pour créer un
    Voici quelques-unes des meilleures pratiques, par exemple :
     - Pour les lignes avec des abréviations, au lieu de « càd », utilisez « c’est-à-dire ».
     - Pour les lignes comportant des chiffres, au lieu de « 911 », utilisez « neuf un un ».
-    - Pour les lignes avec des acronymes, au lieu de « ABC », utilisez « A B C ». Vérifiez également que votre voix professionnelle prononce ces mots de la façon attendue. Assurez la cohérence de votre script et des enregistrements au cours du processus d’apprentissage.  
+    - Pour les lignes avec des acronymes, au lieu de « ABC », vous avez « A B C ».
+   
+   Veillez à ce que votre voix professionnelle prononce ces mots de la façon attendue. Assurez la cohérence de votre script et des enregistrements au cours du processus d’apprentissage.  
 
    > [!NOTE]
    > Les scripts préparés pour votre voix professionnelle doivent respecter les conventions de lecture natives, telles que 50 % et $45, tandis que les scripts utilisés pour l’apprentissage doivent être normalisés pour s’assurer que les scripts correspondent au contenu audio, par exemple *cinquante pour cent* et *quarante-cinq dollars*. Vérifiez les scripts utilisés pour l’apprentissage sur base des enregistrements de votre voix professionnelle pour vous assurer qu’ils correspondent.

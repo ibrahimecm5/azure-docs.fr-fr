@@ -3,21 +3,25 @@ title: Créer des runbooks graphiques dans Azure Automation
 description: Cet article explique comment créer un runbook graphique sans utiliser de code.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af5a1a8353435d9f54b28bce46897f55f8b560a7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ce84a91fcb91be0326571a95cfa92fdfa3b33ef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124812652"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220261"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Créer des runbooks graphiques dans Azure Automation
 
 Dans Azure Automation, tous les runbooks sont des workflows Windows PowerShell. Les runbooks graphiques et les runbooks de workflow PowerShell graphique génèrent du code PowerShell qui est exécuté par les Workers Automation, mais que vous ne pouvez pas afficher ou modifier. Vous pouvez convertir un runbook graphique en runbook de workflow PowerShell graphique (et vice versa). Toutefois, vous ne pouvez pas convertir ces runbooks en runbook textuel. Par ailleurs, l’éditeur graphique d’Automation ne peut pas importer un runbook textuel.
 
 La création de graphiques vous permet de créer des runbooks pour Azure Automation sans les complexités du code Windows PowerShell ou du code de workflow PowerShell sous-jacent. Vous pouvez ajouter des activités au canevas à partir d’une bibliothèque de cmdlets et de runbooks, puis les lier et les configurer pour former un workflow. Si vous avez déjà travaillé avec System Center Orchestrator ou Service Management Automation (SMA), la création de graphiques vous semblera certainement familière. Cet article propose une introduction aux concepts dont vous avez besoin pour prendre en main la création d’un runbook graphique.
+
+> [!NOTE]
+> Vous ne pouvez pas ajouter de signature numérique à un runbook graphique. Cette fonctionnalité n’est pas prise en charge dans Azure Automation.
+>
 
 ## <a name="overview-of-graphical-editor"></a>Vue d'ensemble de l'éditeur graphique
 

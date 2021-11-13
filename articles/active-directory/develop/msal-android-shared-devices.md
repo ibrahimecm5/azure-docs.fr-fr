@@ -13,12 +13,12 @@ ms.date: 09/30/2021
 ms.author: marsma
 ms.reviewer: brandwe
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 3a1539f80556afa9a3dbeb73edcd4d38380db33a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fa55cf74ce8dc1de2782d748e770d7770057ab33
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357663"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227694"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Mode d’appareil partagé pour les appareils Android
 
@@ -93,6 +93,12 @@ Si vous écrivez une application destinée à être utilisée uniquement par des
 
 Si votre application s’exécute en mode multicomptes et qu’un administrateur met l’appareil en mode d’appareil partagé, tous les comptes de l’appareil sont effacés de l’application et cette dernière passe en mode monocompte.
 
+## <a name="microsoft-applications-that-support-shared-device-mode"></a>Applications Microsoft qui prennent en charge le mode d’appareil partagé
+
+Ces applications Microsoft prennent en charge le mode d’appareil partagé d’Azure AD :
+
+* [Microsoft Teams](/microsoftteams/platform/)
+* Application [Microsoft Managed Home Screen](/mem/intune/apps/app-configuration-managed-home-screen-app) pour Android Enterprise
 ## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Déconnexion des appareils partagés et cycle de vie global des applications
 
 Quand un utilisateur se déconnecte, vous devez prendre des mesures pour protéger la confidentialité et les données de l’utilisateur. Par exemple, si vous générez une application de dossiers médicaux, vous voulez garantir que les dossiers des patients précédemment affichés sont effacés quand l’utilisateur se déconnecte. Votre application doit être préparée à la protection des données personnelles et procéder à une vérification chaque fois qu’elle passe au premier plan.

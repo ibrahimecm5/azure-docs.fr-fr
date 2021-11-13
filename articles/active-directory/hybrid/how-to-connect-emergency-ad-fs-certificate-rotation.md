@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7153b33b0019600f58ea678079b553a9ad6c6672
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3b03dc507a76254f8568989af27f76aa75ad4e20
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823030"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222435"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>Rotation d’urgence des certificats AD FS
 Si vous devez faire pivoter immédiatement les certificats AD FS, vous pouvez suivre les étapes décrites ci-dessous dans cette section.
@@ -41,7 +41,7 @@ Par défaut, AD FS est configuré pour générer automatiquement des certificats
 
 Vous pouvez exécuter la commande Windows PowerShell suivante : `PS C:\>Get-AdfsProperties | FL AutoCert*, Certificate*`.
 
-La propriété AutoCertificateRollover indique si AD FS est configuré pour renouveler automatiquement les certificats de signature de jetons et de déchiffrement de jeton.  Si AutoCertificateRollover a la valeur TRUE, suivez les instructions indiquées ci-dessous dans [Génération d’un nouveau certificat auto-signé si AutoCertificateRollover a la valeur TRUE].  Si AutoCertificateRollover a la valeur FALSE, suivez les instructions indiquées ci-dessous dans [Génération d’un nouveau certificat manuellement si AutoCertificateRollover a la valeur FALSE]
+La propriété AutoCertificateRollover indique si AD FS est configuré pour renouveler automatiquement les certificats de signature de jetons et de déchiffrement de jeton.  Si AutoCertificateRollover a la valeur TRUE, suivez les instructions indiquées ci-dessous dans [Génération d’un nouveau certificat auto-signé si AutoCertificateRollover a la valeur TRUE](#generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true).  Si AutoCertificateRollover a la valeur FALSE, suivez les instructions indiquées ci-dessous dans [Génération d’un nouveau certificat manuellement si AutoCertificateRollover a la valeur FALSE](#generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false).
 
 
 ## <a name="generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true"></a>Génération d’un nouveau certificat auto-signé si AutoCertificateRollover a la valeur TRUE

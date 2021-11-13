@@ -1,6 +1,6 @@
 ---
-title: Coexistence de SQL Server HADR et d’Azure Hybrid Benefit de niveau étendue
-description: Cet article explique la coexistence de l’avantage SQL Server HADR Software Assurance et d’Azure Hybrid Benefit de niveau étendue.
+title: Coexistence de SQL Server HADR et Azure Hybrid Benefit managé de manière centralisée
+description: Cet article explique la manière dont coexistent l’avantage Software Assurance de SQL Server HADR et Azure Hybrid Benefit managé de manière centralisée.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 97c338134430156fefa5d874d44e27c8dc34a496
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f475fa19c06eb2ecc8ed863db06f5a647308ee00
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547424"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229424"
 ---
-# <a name="sql-server-hadr-and-scope-level-azure-hybrid-benefit-coexistence"></a>Coexistence de SQL Server HADR et d’Azure Hybrid Benefit de niveau étendue
+# <a name="sql-server-hadr-and-centrally-managed-azure-hybrid-benefit-coexistence"></a>Coexistence de SQL Server HADR et Azure Hybrid Benefit managé de manière centralisée
 
 L’un des avantages de Software Assurance (SA) est qu’il permet aux clients Azure d’installer et d’exécuter des instances de SQL Server passives pour la récupération d’urgence en prévision d’un événement de basculement. La gestion de niveau étendue d’Azure Hybrid Benefit prend en charge l’avantage SQL Server HADR en s’assurant que les réplicas de récupération d’urgence qualifiés ne consomment pas de licences SQL Server attribuées. Par conséquent, vous ne devez pas gérer les réplicas séparément. 
 
@@ -37,6 +37,6 @@ Les prix indiqués dans l'image suivante sont donnés à titre d'exemple uniquem
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Consultez [Questions fréquentes sur la gestion de niveau étendue d’Azure Hybrid Benefit](faq-azure-hybrid-benefit-scope.yml).
-- Découvrez la façon dont les remises sont appliquées dans [Qu’est-ce que la gestion de niveau étendue d’Azure Hybrid Benefit ?](sql-server-hadr-licenses.md)
-- Découvrez comment [effectuer la transition à partir d'une expérience Azure Hybrid Benefit existante](transition-existing.md).
+- Passez en revue les [questions fréquentes (FAQ) sur Azure Hybrid Benefit managé de manière centralisée](faq-azure-hybrid-benefit-scope.yml).
+- Découvrez la façon dont les remises sont appliquées dans [Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?](sql-server-hadr-licenses.md)
+- Découvrez comment [effectuer la transition à partir d’une expérience Azure Hybrid Benefit existante](transition-existing.md).

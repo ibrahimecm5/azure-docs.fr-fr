@@ -12,13 +12,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 06/25/2019
-ms.openlocfilehash: 55490fdafb1e494492e4768ddacc9f8c451acebe
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 10/18/2021
+ms.openlocfilehash: ac16a952c4697c99d224153fdb3dfb2684c66dc9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163189"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260642"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database--azure-sql-managed-instance"></a>Vue d’ensemble de la continuité de l’activité avec Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Du point de vue de la base de données, il existe quatre scénarios d’interrup
 
 Pour atténuer les défaillances matérielles et logicielles locales, SQL Database inclut une [architecture haute disponibilité](high-availability-sla.md) qui garantit une récupération automatique de ces défaillances jusqu’à une disponibilité SLA de 99,995 %.  
 
-Pour protéger votre entreprise contre la perte de données, SQL Database et SQL Managed Instance créent automatiquement des sauvegardes de bases de données complètes (toutes les semaines), des sauvegardes de bases de données différentielles (toutes les 12 heures) et des sauvegardes de fichiers journaux (toutes les 5 à 10 minutes). Les sauvegardes sont stockées dans le stockage RA-GRS pendant au moins 7 jours pour tous les niveaux de service. Tous les niveaux de service, à l’exception du support De base, prennent en charge une période de rétention des sauvegardes configurable pour la restauration dans le temps jusqu’à 35 jours.
+Pour protéger votre entreprise contre la perte de données, SQL Database et SQL Managed Instance créent automatiquement des sauvegardes de bases de données complètes (toutes les semaines), des sauvegardes de bases de données différentielles (toutes les 12 heures) et des sauvegardes de fichiers journaux (toutes les 5 à 10 minutes). Les sauvegardes sont stockées dans le stockage RA-GRS pendant au moins sept jours pour tous les niveaux de service. Tous les niveaux de service, à l’exception du support De base, prennent en charge une période de rétention des sauvegardes configurable pour la restauration dans le temps jusqu’à 35 jours.
 
 SQL Database et SQL Managed Instance fournissent également plusieurs fonctionnalités de continuité de l’activité que vous pouvez utiliser pour atténuer différents scénarios non planifiés.
 
@@ -84,9 +84,9 @@ Bien que le fait soit rare, un centre de données Azure peut subir une panne. En
 
 Au moment d’élaborer votre plan de continuité d’activité, vous devez comprendre le délai maximal acceptable nécessaire à la récupération complète de l’application après l’événement d’interruption. Ce délai s’appelle l’objectif de délai de récupération (RTO, recovery time objective). Vous devez également comprendre sur quelle période maximale l’application peut accepter de perdre les mises à jour de données récentes (intervalle de temps) lors de la récupération suite à un événement d’interruption. La perte de données potentielle est appelée un objectif de point de récupération (RPO).
 
-Différentes méthodes de récupération offrent différents niveaux de RPO et RTO. Vous pouvez choisir une méthode de récupération spécifique ou utiliser une combinaison de méthodes pour effectuer une récupération complète de l’application. Le tableau suivant compare les RPO et RTO de chaque option de récupération. Les groupes de basculement automatique simplifient le déploiement et l’utilisation de la géo-réplication et ajoutent les fonctionnalités supplémentaires décrites dans le tableau suivant.
+Différentes méthodes de récupération offrent différents niveaux de RPO et RTO. Vous pouvez choisir une méthode de récupération spécifique ou utiliser une combinaison de méthodes pour effectuer une récupération complète de l’application. Le tableau suivant compare les RPO et RTO de chaque option de récupération. Les groupes de basculement automatique simplifient le déploiement et l’utilisation de la géoréplication, et ajoutent les fonctionnalités supplémentaires décrites dans le tableau suivant :
 
-| Méthode de récupération | RTO | RPO |
+| **Méthode de récupération** | **RTO** | **RPO** |
 | --- | --- | --- |
 | Géo-restauration à partir de sauvegardes répliquées géographiquement | 12 h | 1 h |
 | Groupes de basculement automatique | 1 h | 5 s |
@@ -104,9 +104,6 @@ Utilisez des groupes de basculement automatique si votre application répond à 
 - Affiche un taux élevé de données modifiées et la perte d’une heure de données n’est pas acceptable.
 - Le coût supplémentaire lié à l'utilisation de la géoréplication est plus faible que la responsabilité financière potentielle et la perte d'activité associée.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
->
-
 Vous pouvez choisir d’utiliser une combinaison de sauvegardes de bases de données et de géoréplication active en fonction des besoins de votre application. Pour plus d’informations sur la conception pour des bases de données autonomes et des pools élastiques à l’aide de ces fonctionnalités de continuité d’activité, consultez les articles [Conception d’applications pour la récupération d’urgence cloud](designing-cloud-solutions-for-disaster-recovery.md) et [Stratégies de récupération d’urgence de pool élastique](disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 Les sections suivantes fournissent une vue d’ensemble des étapes de la récupération à l’aide de sauvegardes de bases de données ou de la géo-réplication active. Pour des instructions détaillées, y compris les exigences de planification, les étapes de post-récupération et des informations sur la simulation d’une panne pour effectuer un exercice de reprise d’activité après sinistre, consultez [Récupérer une base de données dans SQL Azure en cas de panne](disaster-recovery-guidance.md).
@@ -115,7 +112,7 @@ Les sections suivantes fournissent une vue d’ensemble des étapes de la récup
 
 Quelle que soit la fonctionnalité de continuité d’activité que vous utilisez, vous devez :
 
-- Identifier et préparer le serveur cible, y compris les règles de pare-feu IP au niveau du serveur, les connexions et les autorisations au niveau de la base de données MASTER.
+- Identifier et préparer le serveur cible, y compris les règles de pare-feu IP au niveau du serveur, les connexions et les autorisations au niveau de la base de données `master`.
 - Déterminer comment rediriger les clients et les applications clientes vers le nouveau serveur
 - Documenter les autres dépendances, notamment les paramètres d’audit et les alertes
 

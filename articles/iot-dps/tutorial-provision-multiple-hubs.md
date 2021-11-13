@@ -1,19 +1,19 @@
 ---
 title: Tutoriel - Provisionner des appareils sur des hubs à charge équilibrée à l’aide du service Azure IoT Hub Device Provisioning
-description: Ce tutoriel montre comment le service Device Provisioning permet le provisionnement automatique d’appareils sur des hubs IoT à charge équilibrée dans le portail Azure
-author: wesmc7777
-ms.author: wesmc
-ms.date: 11/12/2019
+description: Ce tutoriel montre comment le service Device Provisioning permet de provisionner automatiquement des appareils sur des hubs IoT à charge équilibrée dans le portail Azure.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 10/18/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 090d11866f3d3605a3703fd7ca39f820bbeb7187
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: e7e9517daaf8258eb02147f97993e474ffcfc0a8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273247"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226145"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutoriel : Provisionner des appareils sur des hubs IoT à charge équilibrée
 
@@ -37,19 +37,24 @@ Suivez les étapes du didacticiel [Approvisionner un appareil sur un hub](tutori
 
 ## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Ajouter une entrée de liste d’inscriptions au deuxième appareil
 
-La liste d’inscriptions indique au service Device Provisioning la méthode d’attestation (méthode de confirmation d’une identité d’appareil) qu’il utilise avec l’appareil. L’étape suivante consiste à ajouter une entrée de liste d’inscriptions pour le deuxième appareil. 
+La liste d’inscriptions indique au service Device Provisioning la méthode d’attestation (méthode de confirmation d’une identité d’appareil) qu’il utilise avec l’appareil. L’étape suivante consiste à ajouter une entrée de liste d’inscriptions pour le deuxième appareil.
 
-1. Dans la page de votre service Device Provisioning, cliquez sur **Gérer les inscriptions**. La page **Ajouter une entrée de liste d’inscriptions** s’affiche. 
+1. Dans la page de votre service Device Provisioning, cliquez sur **Gérer les inscriptions**. La page **Ajouter une entrée de liste d’inscriptions** s’affiche.
 2. En haut de la page, cliquez sur **Ajouter**.
-2. Renseignez les champs et cliquez sur **Enregistrer**.
+3. Renseignez les champs et cliquez sur **Enregistrer**.
 
 ## <a name="set-the-device-provisioning-service-allocation-policy"></a>Définir la stratégie d’allocation du service Device Provisioning
 
 La stratégie d’allocation est un paramètre du service Device Provisioning qui détermine la façon dont les appareils sont assignés à un hub IoT. Trois stratégies d’allocation sont prises en charge : 
 
 1. **Latence la plus faible** : les appareils sont configurés pour un hub IoT en fonction du hub ayant la plus faible latence sur l’appareil.
-2. **Distribution uniformément pondérée** (par défaut) : les hubs IoT liés sont susceptibles d’avoir des appareils approvisionnés dans des proportions égales. Il s'agit du paramètre par défaut. Si vous approvisionnez des appareils sur un seul hub IoT, vous pouvez conserver ce paramètre. 
+2. **Distribution uniformément pondérée** (par défaut) : les hubs IoT liés sont susceptibles d’avoir des appareils approvisionnés dans des proportions égales. Il s'agit du paramètre par défaut. Si vous approvisionnez des appareils sur un seul hub IoT, vous pouvez conserver ce paramètre. Si vous envisagez d’utiliser un hub IoT, mais prévoyez d’augmenter le nombre de hubs à mesure que le nombre d’appareils augmente, notez que pendant l’attribution à un hub IoT, la stratégie ne prend pas en compte les appareils précédemment inscrits. Tous les hubs liés ont une probabilité égale d’obtenir une inscription d’appareil en fonction de leur poids. Toutefois, si un hub IoT a atteint sa limite de capacité d’appareils, il ne reçoit plus d’inscriptions d’appareil. Vous pouvez cependant ajuster le poids d’allocation de chaque hub IoT lié.
+
 3. **Configuration statique par le biais de la liste d’inscriptions** : la spécification du hub IoT souhaité dans la liste d’inscriptions est prioritaire sur la stratégie d’allocation au niveau du service Device Provisioning.
+
+### <a name="how-the-allocation-policy-assigns-devices-to-iot-hubs"></a>Comment la stratégie d’allocation attribue des appareils aux hubs IoT
+
+Vous pouvez avoir envie d’utiliser un seul hub IoT, jusqu’à ce qu’un nombre spécifique d’appareils soit atteint. Dans ce scénario, quand vous ajoutez un nouveau hub IoT, tout nouvel appareil peut être provisionné sur n’importe lequel des hubs IoT. Pour équilibrer tous les appareils, inscrits et désinscrits, vous devez tous les reprovisionner.
 
 Effectuez les étapes suivantes pour définir la stratégie d’allocation :
 

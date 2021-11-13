@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 37b876b177b7879c57255619d3f5e7e113a2a284
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 59e3d0f8e71de6333b3978dd9d40b51206a8a2a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278064"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462345"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Superviser des instances App Service à l’aide du contrôle d’intégrité
 
@@ -24,7 +24,7 @@ Cet article utilise le contrôle d’intégrité dans le portail Azure pour supe
 
 - Quand un chemin est donné sur votre application, le contrôle d’intégrité effectue un test ping de ce chemin sur toutes les instances de votre application App Service par intervalles de 1 minute.
 - Si une instance ne répond pas par un code d’état compris entre 200 et 299 (compris) à l’issue de deux requêtes ou plus, ou ne parvient pas à répondre à la commande ping, le système détermine qu’elle n’est pas saine et la supprime.
-- Après cette suppression, le contrôle d’intégrité continue d’effectuer un test ping sur l’instance qui n’est pas saine. Si celle-ci continue à ne pas répondre correctement, App Service redémarre la machine virtuelle sous-jacente dans un effort de rétablir l’instance à un état sain.
+- Après cette suppression, le contrôle d’intégrité continue d’effectuer un test ping sur l’instance qui n’est pas saine. Si l’instance commence à répondre avec un code d’état sain (200-299), elle est retournée à l’équilibreur de charge.
 - Si une instance n’est pas saine pendant une heure, elle sera remplacée par une nouvelle instance.
 - De plus, dans le cadre d’un scale-up ou d’un scale-out, App Service effectue un test ping sur le chemin de contrôle d’intégrité pour vérifier que de nouvelles instances sont prêtes.
 
@@ -81,7 +81,7 @@ La demande de contrôle d’intégrité étant envoyée en interne à votre site
 
 ### <a name="are-the-health-check-requests-sent-over-http-or-https"></a>Les demandes de contrôle d’intégrité sont-elles envoyées via HTTP ou HTTPS ?
 
-Si [seul le protocole HTTPS](configure-ssl-bindings.md#enforce-https) est activé sur le site, les demandes de contrôle d’intégrité seront envoyées par le biais du protocole HTTPS. Dans le cas contraire, elles seront envoyées via HTTP.
+Sur Windows App Service, les demandes de vérification d’intégrité sont envoyées via HTTPS quand [HTTPS uniquement](configure-ssl-bindings.md#enforce-https) est activé sur le site. Dans le cas contraire, elles seront envoyées via HTTP. Sur Linux App Service, les demandes de vérification d’intégrité sont uniquement envoyées sur HTTP et ne peuvent pas être envoyées sur HTTP **S** à l’heure actuelle.
 
 ### <a name="what-if-i-have-multiple-apps-on-the-same-app-service-plan"></a>Que se passe-t-il si j’ai plusieurs applications sur le même Plan App Service ?
 

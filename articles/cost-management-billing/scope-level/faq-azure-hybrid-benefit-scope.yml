@@ -1,0 +1,111 @@
+### YamlMime:FAQ
+metadata:
+  title: Questions fréquentes (FAQ) sur Azure Hybrid Benefit managé de manière centralisée
+  titleSuffix: Cost Management + Billing
+  description: Obtenez des réponses aux questions fréquemment posées.
+  author: bandersmsft
+  ms.reviewer: chrisrin
+  ms.service: cost-management-billing
+  ms.subservice: ahb
+  ms.topic: conceptual
+  ms.date: 09/30/2021
+  ms.author: banders
+  ms.openlocfilehash: 2e14b1e3ba341dc5b7992f128c07f8102df9f0f6
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130555767"
+title: Questions fréquentes (FAQ) sur Azure Hybrid Benefit managé de manière centralisée
+summary: ''
+sections:
+- name: Questions générales
+  questions:
+  - question: Quelles sont les ressources Azure SQL prises en charge ?
+    answer: >
+      L’expérience de gestion centralisée d’Azure Hybrid Benefit fait partie de Cost Management + Billing. Elle applique automatiquement les licences SQL Server éligibles sous Azure Hybrid Benefit aux ressources Azure suivantes. Le nombre total de licences de base normalisées (NCL) créées par l’affectation de licences SQL pour une étendue spécifique est appliqué. Pour plus d’informations sur les licences de base normalisées, consultez [Application par Azure des licences SQL attribuées à une utilisation horaire](manage-licenses-centrally.md).
+
+
+      - Bases de données SQL
+
+      - Pools élastiques SQL
+
+      - Instances managées SQL
+
+      - Machines virtuelles SQL
+
+
+      > [!NOTE]
+
+      > La nouvelle expérience de gestion centralisée d’Azure Hybrid Benefit ne prend actuellement pas en charge les services Azure suivants. Pour ces services, vous avez encore besoin d’utiliser l’option Azure Hybrid Benefit au niveau des ressources.
+
+
+      - Azure Data Factory – SQL Server Integration Services (SSIS)
+
+      - Azure Dedicated Host
+  - question: À quels types de contrat s’applique Azure Hybrid Benefit ?
+    answer: >
+      La nouvelle expérience Azure Hybrid Benefit au niveau de l’étendue est automatiquement disponible pour les contrats suivants :
+
+        - Microsoft Azure Enterprise – MS-AZR-0017P
+        - Azure Government Enterprise – MS-AZR-USGOV-0017P
+        - Microsoft Azure Plan – MS-AZR-0017G
+
+      Les autres types de contrats ne sont pas encore pris en charge. Pour plus d’informations, consultez [Prérequis](create-sql-license-assignments.md#prerequisites).
+  - question: Quelles sont les licences SQL éligibles à Azure Hybrid Benefit ?
+    answer: >
+      Les licences SQL Server Entreprise et Standard avec Software Assurance ou des licences d’abonnement de base. Pour plus d’informations, consultez [Azure Hybrid Benefit pour SQL Server](../../azure-sql/azure-hybrid-benefit.md).
+  - question: Comment puis-je déterminer le nombre de licences SQL Server éligibles à affecter à Azure ?
+    answer: >
+      En règle générale, votre département qui gère les actifs logiciels ou l’approvisionnement a besoin de s’impliquer dans la détermination du nombre de licences à attribuer, car ce nombre dépend du nombre de licences SQL Server éligibles disponibles. Vous pouvez avoir besoin d’acheter davantage de licences. Cette décision implique quelques étapes :
+
+
+      1. Passez en revue les informations disponibles dans le portail Azure sur le nombre de licences SQL Server appliquées aux ressources Azure SQL avec des sélections Azure Hybrid Benefit au niveau des ressources.
+
+      2. Vérifiez auprès de votre département qui gère les actifs logiciels ou l’approvisionnement quel est le nombre de licences disponibles à attribuer à Azure. Les licences disponibles ne sont pas utilisées localement ou bien elles sont utilisées avec une charge de travail en cours de migration active depuis l’environnement local vers Azure. Les licences peuvent être utilisées aux deux endroits pendant une période allant jusqu’à 180 jours lors de la migration. Passez en revue les [exemples de scénarios de transition](transition-existing.md#transition-scenario-examples).
+
+      3. S’il existe un nombre juste suffisant de licences disponibles pour couvrir votre utilisation de licences Azure Hybrid Benefit existante, vous pouvez décider d’attribuer ce nombre à des fins de continuité. S’il existe d’autres licences disponibles, vous pouvez décider d’attribuer davantage de licences pour couvrir toute l’utilisation Azure SQL voire même une augmentation de l’utilisation prévue. En optimisant les licences attribuées pour couvrir votre utilisation, qu’elle soit stable ou croissante, vous pouvez faire économiser de l’argent à votre organisation. Enfin, s’il n’y a pas suffisamment de licences disponibles pour couvrir votre utilisation existante de licences Azure Hybrid Benefit, vous avez deux possibilités :
+
+          - Affectez moins de licences, ce qui risque d’augmenter votre facture Azure.
+          - Demandez à votre organisation de libérer ou d’acquérir plus de licences afin de pouvoir attribuer la quantité appropriée.
+  - question: Puis-je utiliser la nouvelle expérience avec l’installation autonome de SQL Server dans des machines virtuelles Azure ?
+    answer: "La nouvelle approche de la gestion centralisée d’Azure Hybrid Benefit au niveau de l’étendue prend en charge SQL Server dans les machines virtuelles Azure. Néanmoins, il est primordial d’activer l’inscription automatique des images SQL Server installées automatiquement auprès de l’extension IaaS *avant* d’attribuer des licences SQL. La nouvelle expérience comprend une fonctionnalité qui vous informe de l’utilisation actuelle d’Azure Hybrid Benefit et de l’utilisation des licences SQL non remisées. En attribuant le nombre de licences SQL Server selon le niveau d’utilisation actuelle, vous êtes assuré de ne pas encourir de frais inattendus dans le cadre du paiement à l’utilisation. Étant donné que les machines virtuelles SQL désinscrites ne sont pas reconnues en tant que ressources SQL, leur inscription auprès de l’extension IaaS *après* avoir commencé à attribuer des licences au niveau de l’étendue peut entraîner une attribution de licences insuffisante pour couvrir les machines virtuelles SQL récemment reconnues. Dans ce cas, ces *nouvelles* machines virtuelles SQL issues de l’enregistrement peuvent entraîner des frais inattendus dans le cadre du paiement à l’utilisation. \n\nPour plus d’informations sur la façon d’activer l’inscription IaaS automatique, consultez [Inscrire des machines virtuelles SQL dans Azure avec l’extension Agent IaaS SQL](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md).\n\nPour obtenir plus d’informations sur le nombre total de machines virtuelles SQL Server désinscrites dans chaque abonnement, vous pouvez utiliser le [script PowerShell de l’utilisation des licences SQL](https://github.com/anosov1960/sql-server-samples/tree/master/samples/manage/azure-hybrid-benefit).\n"
+  - question: Comment ma facture Azure va-t-elle changer quand je passerai à une attribution centralisée des licences au niveau de l’étendue ?
+    answer: >
+      La partie SQL Server de votre facture dépend de l’utilisation des ressources Azure SQL (vCores) et de l’utilisation d’Azure Hybrid Benefit (licences couvrant les vCores). Si votre utilisation des ressources Azure SQL est stable et ne change pas, et si vous attribuez de manière centralisée le même nombre de licences à l’étendue que lorsque vous utilisiez l’avantage par ressource, votre facture ne changera pas. Si une partie de l’utilisation relève du paiement à l’utilisation et que vous attribuez d’autres licences, votre facture sera moins élevée, car vous bénéficierez d’une remise plus importante, en supposant que votre utilisation reste stable.
+
+
+      Azure applique la remise logicielle toutes les heures aux ressources SQL Server dans l’étendue sélectionnée. Si les affectations de licences SQL Server sont suffisantes pour couvrir toutes les ressources SQL Server dans cette étendue, alors les frais de licence sont nuls pendant cette heure. Si la couverture est insuffisante pour toutes les ressources SQL comprises dans l’étendue sélectionnée, certaines ressources sont facturées pour SQL Server au tarif du paiement à l’utilisation. La facture mensuelle indique le coût logiciel cumulé de SQL Server pour chaque ressource comprise dans l’étendue. Si une ressource spécifique a régulièrement fait l’objet d’une remise pendant la période de facturation entière, le coût logiciel total de SQL Server est nul. Si de nouveaux déploiements entraînent un dépassement de la taille globale des ressources SQL Server que les licences attribuées peuvent couvrir, vous pourrez voir une augmentation du coût mensuel du paiement à l’utilisation.
+
+
+      Pour plus d’informations sur la façon dont l’expérience des licences au niveau de l’étendue applique Azure Hybrid Benefit aux ressources SQL Server, consultez [Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?](overview-azure-hybrid-benefit-scope.md)
+  - question: Comment l’activation de l’expérience de gestion centralisée des avantages affecte-t-elle les développeurs et les administrateurs de bases de données qui créent et gèrent des ressources ?
+    answer: >
+      Quand vous commencez à gérer Azure Hybrid Benefit de manière centralisée au niveau de l’étendue, nous vous recommandons de contacter les personnes qui gèrent les ressources dans les étendues associées. La possibilité d’utiliser Azure Hybrid Benefit pour ces ressources ne sera plus disponible. Dans le portail Azure, l’option correspondante sera désactivée. L’API va continuer à inclure l’option, mais elle sera inutilisable, car la gestion au niveau de l’étendue est prioritaire. Les remises associées à Azure Hybrid Benefit sont gérées par l’administrateur de facturation au sein de la nouvelle expérience de gestion au niveau de l’étendue.
+  - question: À quoi est-ce que je m’engage en passant à Azure Hybrid Benefit managé de manière centralisée ? Puis-je refuser ?
+    answer: >
+      Quand vous utilisez la nouvelle expérience dans le portail Azure, vous affectez simplement des licences SQL Server éligibles à Azure, et ce légitimement. Votre engagement consiste à utiliser cette capacité en toute conformité. Par exemple, attribuez uniquement des licences à Azure qui ne sont pas déjà utilisées ailleurs.
+
+
+      Si vous essayez cette nouvelle approche de gestion centralisée de l’avantage au niveau de l’étendue et qu’elle ne vous convient pas, vous pouvez choisir de la refuser en supprimant les affectations de licence associées. Quand vous supprimez toutes vos affectations de licence pour une étendue donnée, vous refusez entièrement la capacité définie pour cette étendue. Cela signifie que les sélections Azure Hybrid Benefit basées sur les ressources sont à nouveau disponibles pour les utilisateurs qui déploient et gèrent des ressources SQL. Si Azure Hybrid Benefit a été activé pour une ressource avant de passer à l’expérience des licences managées au niveau de l’étendue, l’état de la ressource est préservé. Si vous décidez de refuser l’expérience des licences managées au niveau de l’étendue, les remises d’origine prennent effet immédiatement.
+
+
+      > [!IMPORTANT]
+
+      > Si vous avez ajouté des ressources Azure SQL au sein d’une étendue pendant que vous utilisiez la nouvelle expérience de gestion centralisée, puis décidez ensuite d’y renoncer, votre organisation a besoin de sélectionner Azure Hybrid Benefit pour chaque ressource individuelle afin que l’avantage soit appliqué.
+  - question: Comment puis-je suivre l’utilisation des licences SQL Server affectées à une étendue ?
+    answer: >
+      Vous pouvez effectuer le suivi de votre utilisation des licences SQL Server affectées dans **Cost Management** > **Réservations + Hybrid Benefit**. Pour plus d’informations, consultez [Suivre l’utilisation des licences attribuées](create-sql-license-assignments.md#track-assigned-license-use).
+  - question: Puis-je utiliser mes licences d’accès client et Windows Server existantes avec la nouvelle expérience Azure Hybrid Benefit managée de manière centralisée ?
+    answer: >
+      L’expérience des licences managées au niveau de l’étendue est optimisée pour les licences SQL Server de base avec Software Assurance et les licences d’abonnement de base. Elle ne prend actuellement pas en charge Windows server ni la version Server + Licences d’accès client de SQL Server. Pour ces dernières, vous pouvez continuer à utiliser la [mobilité de licence à travers la Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility).  De plus, n’hésitez pas à contacter votre équipe de compte Microsoft pour obtenir de l’aide.
+  - question: Comment puis-je activer et gérer Azure Hybrid Benefit pour mes licences Windows Server ?
+    answer: >
+      Vous pouvez activer Azure Hybrid Benefit pour chaque ressource individuelle, par exemple une machine virtuelle Azure. La gestion des licences Windows Server au niveau d’une étendue n’est actuellement pas prise en charge.
+additionalContent: >
+  ## <a name="next-steps"></a>Étapes suivantes
+
+
+  Découvrez-en plus sur Azure Hybrid Benefit :
+
+  -  [Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?](overview-azure-hybrid-benefit-scope.md)

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mathoma
-ms.date: 04/19/2020
-ms.openlocfilehash: 4597380c0bae96c67c38d36d162fdf740ba119a2
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 10/18/2021
+ms.openlocfilehash: ed70bb517478fb931ac402a7b528118b3d76d148
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590249"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239394"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Prise en main des fonctionnalités JSON dans Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL Database et Azure SQL Managed Instance vous permettent d’analyser et
 
 Si vous disposez d’un service web qui prélève des données de la couche de base de données et fournit une réponse au format JSON, ou d’infrastructures ou bibliothèques JavaScript côté client qui acceptent des données au format JSON, vous pouvez convertir le contenu de votre base de données au format JSON directement dans une requête SQL. Vous n’avez plus besoin d’écrire de code d’application pour convertir les résultats d’Azure SQL Database ou d’Azure SQL Managed Instance au format JSON, ni d’inclure de bibliothèque de sérialisation JSON pour convertir des résultats de requête tabulaire, puis sérialiser des objets au format JSON. Au lieu de cela, vous pouvez utiliser la clause FOR JSON pour convertir les résultats de requête SQL au format JSON et les utiliser directement dans votre application.
 
-Dans l’exemple suivant, les lignes de la table Sales.Customer sont converties au format JSON à l’aide de la clause FOR JSON :
+Dans l’exemple suivant, les lignes de la table `Sales.Customer` sont converties au format JSON à l’aide de la clause FOR JSON :
 
 ```sql
 select CustomerName, PhoneNumber, FaxNumber
@@ -191,9 +191,3 @@ END
 ```
 
 La collection de commandes mise en forme de tableau JSON et fournie en tant que paramètre à la procédure stockée peut être analysée et insérée dans la table Orders.
-
-## <a name="next-steps"></a>Étapes suivantes
-
-Pour savoir comment intégrer JSON dans votre application, consultez les ressources suivantes :
-
-Pour en savoir plus sur les différents scénarios d’intégration de JSON dans votre application, regardez les démonstrations de cette [vidéo Channel 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) ou recherchez un scénario correspondant à votre cas d’utilisation dans les [billets de blog de JSON](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases).

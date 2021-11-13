@@ -10,12 +10,12 @@ metadata:
   ms.author: mbaldwin
   ms.date: 11/01/2019
   ms.custom: seodec18
-  ms.openlocfilehash: ed0948b665846c6114ce0bf69872f384d7703c5e
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: add854c34ccce78dcd8af98a1f62ea089fad197a
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063604"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130262942"
 title: FAQ sur Azure Disk Encryption pour machines virtuelles Windows
 summary: >
   Cet article offre des réponses aux questions fréquentes (FAQ) sur Azure Disk Encryption pour les machines virtuelles Windows. Pour plus d’informations sur ce service, consultez [Vue d’ensemble d’Azure Disk Encryption](disk-encryption-overview.md).
@@ -63,9 +63,13 @@ sections:
       Comment effectuer la rotation des secrets ou des clés de chiffrement ?
     answer: "Pour effectuer la rotation des secrets, appelez simplement la même commande que celle utilisée initialement pour activer le chiffrement de disque, en spécifiant un autre coffre de clés. Pour effectuer la rotation de la clé de chiffrement principale, appelez la même commande que celle utilisée initialement pour activer le chiffrement de disque, en spécifiant le nouveau chiffrement principal. \n\n>[!WARNING]\n> - Si vous avez déjà utilisé [Azure Disk Encryption avec une application Azure AD](disk-encryption-windows-aad.md) avec des informations d’identification Azure AD pour chiffrer cette machine virtuelle, vous devrez continuer à utiliser cette option. Vous ne pouvez pas utiliser Azure Disk Encryption sur cette machine virtuelle chiffrée car ce scénario n’est pas pris en charge. Autrement dit, l’utilisation d’une application autre qu’AAD pour cette machine virtuelle n’est pas encore prise en charge.\n"
   - question: >
-      Comment ajouter ou supprimer une clé de chiffrement principale si je n’en utilisais pas à l’origine ?
+      Comment ajouter ou supprimer une clé de chiffrement à clé si je n’en ai pas utilisé à l’origine ?
     answer: >
       Pour ajouter une clé de chiffrement principale, appelez la commande enable à nouveau en y passant le paramètre de clé de chiffrement principale. Pour supprimer une clé de chiffrement principale, appelez la commande enable à nouveau sans le paramètre de clé de chiffrement principale.
+  - question: >
+      Quelle taille utiliser pour ma clé de chiffrement à clé (KEK) ?
+    answer: >
+      Windows Server 2022 ajoute une version plus récente de BitLocker et, comme décrit dans la page des prérequis, nous vous recommandons de démarrer avec une taille de clé de 3072 ou 4096 bits. Pour une version antérieure de Windows, vous pouvez également utiliser 2048 bits.
   - question: >
       Azure Disk Encryption vous permet-il d’apporter votre propre clé « BYOK » ?
     answer: >

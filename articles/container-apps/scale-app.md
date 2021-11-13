@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d33c3d6687179e734f82f0b109bb0fb9b45be205
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b02d4d06b855229f41a0bae0b04d1729a29e4e49
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096711"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579005"
 ---
 # <a name="set-scaling-rules-in-azure-container-apps"></a>Définir des règles de mise à l’échelle dans Azure Container Apps
 
@@ -166,7 +166,7 @@ L’exemple suivant montre comment créer une règle de mise à l’échelle de 
 
 ## <a name="memory"></a>Mémoire
 
-La mise à l’échelle du processeur permet à votre application d’effectuer un scale-in ou un scale-out en fonction de la quantité de processeur utilisée. La mise à l’échelle du processeur n’autorise pas de mise à l’échelle nulle de votre application conteneur. Pour plus d’informations sur ce déclencheur de mise à l’échelle, consultez [KEDA Memory scaler](https://keda.sh/docs/scalers/memory/).
+La mise à l’échelle de la mémoire permet à votre application d’effectuer un scale-in ou un scale-out en fonction de la quantité de mémoire utilisée. La mise à l’échelle de la mémoire n’autorise pas de mise à l’échelle nulle de votre application conteneur. Pour plus d’informations sur ce déclencheur de mise à l’échelle, consultez [KEDA Memory scaler](https://keda.sh/docs/scalers/memory/).
 
 L’exemple suivant montre comment créer une règle de mise à l’échelle de mémoire.
 

@@ -1,22 +1,22 @@
 ---
-title: Comment surveiller des applications Azure Spring Cloud avec Dynatrace Java OneAgent
-description: Utilisation de Dynatrace Java OneAgent pour surveiller les applications Azure Spring Cloud
+title: Guide pratique pour le monitoring d’applications Spring Boot avec Dynatrace Java OneAgent
+description: Guide pratique pour l’utilisation de Dynatrace Java OneAgent dans le cadre du monitoring d’applications Spring Boot s’exécutant dans Azure Spring Cloud
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/31/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: ea4ce0946239dd6355174674f443a1f29c2b9d06
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 20625461d27108c201f44458eff3f96d77f81132
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438873"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225526"
 ---
-# <a name="how-to-monitor-azure-spring-cloud-applications-with-dynatrace-java-oneagent"></a>Comment surveiller des applications Azure Spring Cloud avec Dynatrace Java OneAgent
+# <a name="how-to-monitor-spring-boot-apps-with-dynatrace-java-oneagent"></a>Guide pratique pour le monitoring d’applications Spring Boot avec Dynatrace Java OneAgent
 
-Cet article explique comment utiliser Dynatrace OneAgent pour surveiller les applications Azure Spring Cloud.
+Cet article explique comment utiliser Dynatrace OneAgent pour le monitoring d’applications Spring Boot s’exécutant dans Azure Spring Cloud.
 
 Avec Dynatrace OneAgent, vous pouvez :
 
@@ -94,11 +94,11 @@ Pour ajouter les paires clé/valeur à l’aide du portail Azure, procédez comm
 
    :::image type="content" source="media/dynatrace-oneagent/configuration-application.png" alt-text="Capture d’écran de l’onglet « variables d’environnement » de la section de configuration de l’application." lightbox="media/dynatrace-oneagent/configuration-application.png":::
 
-## <a name="automation"></a>Automatisation
+## <a name="automate-provisioning"></a>Automatiser le provisionnement
 
 À l’aide de Terraform ou d’un modèle de Azure Resource Manager (modèle ARM), vous pouvez également exécuter un pipeline d’automatisation de l’approvisionnement. Ce pipeline peut fournir une expérience pratique complète pour instrumenter et surveiller les nouvelles applications que vous créez et déployez.
 
-### <a name="terraform"></a>Terraform
+### <a name="automate-provisioning-using-terraform"></a>Automatiser le provisionnement à l’aide de Terraform
 
 Pour configurer les variables d’environnement dans un modèle Terraform, ajoutez le code suivant au modèle, en remplaçant les espaces réservés *\<...>* par vos propres valeurs. Pour plus d’informations, consultez [Gérer un déploiement Azure Spring Cloud actif](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_active_deployment).
 
@@ -111,7 +111,7 @@ environment_variables = {
 }
 ```
 
-### <a name="arm-template"></a>Modèle ARM
+### <a name="automate-provisioning-using-an-arm-template"></a>Automatiser le provisionnement à l’aide d’un modèle ARM
 
 Pour configurer les variables d’environnement dans un modèle ARM, ajoutez le code suivant au modèle, en remplaçant les espaces réservés *\<...>* par vos propres valeurs. Pour plus d’informations, consultez [Microsoft.AppPlatform Spring/apps/déploiements](/azure/templates/microsoft.appplatform/spring/apps/deployments?tabs=json).
 
@@ -167,7 +167,7 @@ Vous pouvez trouver le **Suivi arrière** à partir de **Bases de données/Déta
 
 :::image type="content" source="media/dynatrace-oneagent/spring-cloud-dynatrace-database-backtrace.png" alt-text="Capture d’écran du rapport de suivi arrière." lightbox="media/dynatrace-oneagent/spring-cloud-dynatrace-database-backtrace.png":::
 
-## <a name="dynatrace-oneagent-logging"></a>Enregistrement Dynatrace OneAgent
+## <a name="view-dynatrace-oneagent-logs"></a>Voir les journaux de Dynatrace OneAgent
 
 Par défaut, Azure Spring Cloud imprime les journaux de niveau d’*information* de Dynatrace OneAgent vers `STDOUT`. Les journaux sont mélangés avec les journaux des applications. Vous pouvez récupérer la version d’agent explicite à partir des journaux des applications.
 

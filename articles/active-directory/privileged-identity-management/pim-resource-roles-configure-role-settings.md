@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ff40238d5b3b666ec6a64fef5b7cc4fc91ee677
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: d2b3707fd3b9b56131d24274555761f616991600
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669413"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508737"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Configurer les paramètres des rôles de ressource Azure dans Privileged Identity Management
 
@@ -100,7 +100,7 @@ Privileged Identity Management permet également l'implémentation facultative d
 
 ### <a name="on-active-assignment"></a>Lors de l’attribution active
 
-Avec cette option, les administrateurs doivent effectuer une authentification multifacteur avant de créer une attribution de rôle active (par opposition à éligible). La Gestion de l’identité privilégiée ne peut pas appliquer l’authentification multifacteur lorsque l’utilisateur utilise son attribution de rôle, car il est déjà actif dans le rôle depuis l’attribution.
+Avec cette option, les administrateurs doivent effectuer une authentification multifacteur avant de créer une attribution de rôle active (par opposition à éligible). Privileged Identity Management ne peut pas appliquer l’authentification multifacteur lorsque l’utilisateur active son attribution de rôle parce que l’utilisateur est déjà actif dans le rôle depuis son attribution.
 
 Pour exiger une authentification multifacteur lors de la création d’une attribution de rôle active, vous pouvez appliquer l’authentification multifacteur sur l’affectation active en activant la case à cocher **Exiger une Authentification multifacteur sur l’attribution active**.
 
@@ -114,7 +114,7 @@ Pour plus d’informations, consultez [Authentification multifacteur et Privileg
 
 ## <a name="activation-maximum-duration"></a>Durée maximum d’activation
 
-Utilisez le curseur **Durée maximum d’activation** pour définir la durée maximale, en heures, pendant laquelle un rôle reste actif avant d’expirer. Cette valeur peut être comprise entre 1 et 24 heures.
+Utilisez le curseur **Durée maximum d’activation** pour définir la durée maximale, en heures, pendant laquelle une attribution de rôle reste active avant d’expirer. Cette valeur peut être comprise entre 1 et 24 heures.
 
 ## <a name="require-justification"></a>Demander une justification
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: beed3dac1a2ca5bc6d2a87ba2a9044333e798fa9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e571d29dc9bade1069f6c67257bf04552ff894ef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778514"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241607"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Créer et gérer des règles de pare-feu Azure Database pour PostgreSQL – Serveur flexible à l’aide d’Azure CLI
 
@@ -97,19 +97,19 @@ Consultez la documentation de référence sur Azure CLI <!--FIXME --> pour obten
 
 ### <a name="create-a-firewall-rule"></a>Créer une règle de pare-feu
 Utilisez la commande `az postgres flexible-server firewall-rule create` pour créer une règle de pare-feu sur le serveur.
-Pour accorder l’accès à une plage d’adresses IP, indiquez l’adresse IP de début et l’adresse IP de fin, comme dans cet exemple.
+Pour accorder l’accès à une plage d’adresses IP, indiquez l’adresse IP de début et l’adresse IP de fin, comme dans cet exemple. Cette commande attend également un nom de groupe de ressources Azure où se trouve le serveur en tant que paramètre. 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
+az postgres flexible-server firewall-rule create --name mydemoserver --resource-group testGroup --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
 Pour accorder l’accès à une adresse IP, il vous suffit de fournir une adresse IP, comme dans cet exemple.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 1.1.1.1
+az postgres flexible-server firewall-rule create --name mydemoserver  --resource-group testGroup  --start-ip-address 1.1.1.1
 ```
 
 Pour autoriser les applications en provenance d’adresses IP Azure à se connecter à votre serveur flexible, spécifiez l’adresse IP 0.0.0.0 comme adresse IP de début, comme dans cet exemple.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
+az postgres flexible-server firewall-rule create --name mydemoserver --resource-group testGroup --start-ip-address 0.0.0.0
 ```
 
 > [!IMPORTANT]
@@ -120,17 +120,17 @@ En cas de réussite, la sortie de chaque commande de création affiche les déta
 ### <a name="list-firewall-rules"></a>Répertorier les règles de pare-feu 
 Utilisez la commande `az postgres flexible-server firewall-rule list` pour lister les règles de pare-feu de serveur existantes sur le serveur. Notez que l’attribut de nom de serveur est spécifié dans le commutateur **---name**. 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule list --name mydemoserver
+az postgres flexible-server firewall-rule list --name mydemoserver --resource-group testGroup
 ```
 La sortie répertorie les règles éventuelles au format JSON (par défaut). Vous pouvez utiliser le commutateur --output table** pour générer les résultats dans un format tabulaire plus lisible.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule list --name mydemoserver --output table
+az postgres flexible-server firewall-rule list --name mydemoserver --resource-group testGroup --output table
 ```
 
 ### <a name="update-a-firewall-rule"></a>Mettre à jour une règle de pare-feu
 Utilisez la commande `az postgres flexible-server firewall-rule update` pour mettre à jour une règle de pare-feu sur le serveur. Indiquez le nom de la règle de pare-feu existante en entrée, ainsi que les attributs d’adresse IP de début et de fin à mettre à jour.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
+az postgres flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
 En cas de réussite, la sortie de la commande affiche les détails de la règle de pare-feu que vous avez mise à jour au format JSON (par défaut). En cas d’échec, la sortie affiche un texte de message d’erreur.
 
@@ -139,14 +139,14 @@ En cas de réussite, la sortie de la commande affiche les détails de la règle 
 ### <a name="show-firewall-rule-details"></a>Afficher les détails d’une règle de pare-feu
 Utilisez la commande `az postgres flexible-server firewall-rule show` pour afficher les détails de la règle de pare-feu existante à partir du serveur. Indiquez le nom de la règle de pare-feu existante comme entrée.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1
+az postgres flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup
 ```
 En cas de réussite, la sortie de la commande affiche les détails de la règle de pare-feu que vous avez spécifiée au format JSON (par défaut). En cas d’échec, la sortie affiche un texte de message d’erreur.
 
 ### <a name="delete-a-firewall-rule"></a>Supprimer une règle de pare-feu
 Utilisez la commande `az postgres flexible-server firewall-rule delete` pour supprimer une règle de pare-feu existante du serveur. Indiquez le nom de la règle de pare-feu existante.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1
+az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup
 ```
 En cas de réussite, aucun résultat ne s’affiche. En cas d’échec, le texte du message d’erreur s’affiche.
 

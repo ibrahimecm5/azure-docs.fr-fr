@@ -44,9 +44,9 @@
         - name: Architecture du moteur de règles
           href: concept-rule-set.md
         - name: Conditions de correspondance des règles
-          href: concept-rule-set-match-conditions.md
+          href: ../rules-match-conditions.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
         - name: Actions des règles
-          href: concept-rule-set-actions.md
+          href: ../rules-actions.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
     - name: Redirection d’URL et réécriture d’URL
       href: concept-rule-set-url-redirect-and-rewrite.md
     - name: Sécurité
@@ -146,9 +146,9 @@
     - name: Emplacements périphériques Azure Front Door
       items:
         - name: Emplacements périphériques par région
-          href: edge-locations.md
+          href: ../edge-locations-by-region.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
         - name: Emplacements périphériques par abréviation
-          href: edge-locations-by-abbreviation.md
+          href: ../edge-locations-by-abbreviation.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.cdn
     - name: API REST

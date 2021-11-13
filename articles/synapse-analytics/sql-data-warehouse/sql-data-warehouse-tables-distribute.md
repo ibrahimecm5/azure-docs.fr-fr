@@ -1,22 +1,22 @@
 ---
 title: Guide de conception de tables distribuées
-description: Recommandations pour la conception de tables distribuées par hachage et par tourniquet (round robin) à l’aide d’un pool SQL dédié dans Azure Synapse Analytics.
+description: Recommandations pour la conception de tables distribuées par hachage et par tourniquet (round robin) en utilisant des pools SQL dédiés.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1f85a8d539c8f841bafaae9d877446c5e6ecb416
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f1cae70e186d6fb1467dcb5f31ea5c9ee15df6eb
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122535032"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500618"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Conseils pour la conception de tables distribuées à l’aide d’un pool SQL dédié dans Azure Synapse Analytics
 
@@ -42,11 +42,11 @@ Dans le cadre de la conception d’une table, essayez d’en savoir autant que p
 
 Une table distribuée par hachage distribue les lignes de la table sur les nœuds de calcul à l’aide d’une fonction de hachage déterministe pour affecter chaque ligne à une [distribution](massively-parallel-processing-mpp-architecture.md#distributions).
 
-![Table distribuée](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Table distribuée")  
+:::image type="content" source="./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png" alt-text="Table distribuée" lightbox="./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png":::
 
 Comme les valeurs identiques sont toujours hachées sur la même distribution, SQL Analytics dispose d'une connaissance intégrée de l'emplacement des lignes. Dans un pool SQL dédié, ces informations sont utilisées pour réduire le déplacement des données pendant les requêtes, ce qui améliore les performances de ces dernières.
 
-Les tables distribuées par hachage fonctionnent correctement pour des tables de faits volumineuses dans un schéma en étoile. Elles peuvent contenir un très grand nombre de lignes et réaliser néanmoins des performances élevées. Il existe bien entendu certaines considérations relatives à la conception qui vous aident à obtenir les performances que le système distribué doit fournir. Le choix d’une colonne de distribution appropriée est l’une de ces considérations qui est décrite dans cet article.
+Les tables distribuées par hachage fonctionnent correctement pour des tables de faits volumineuses dans un schéma en étoile. Elles peuvent contenir un très grand nombre de lignes et réaliser néanmoins des performances élevées. Certaines considérations sur la conception peuvent vous aider à obtenir les performances que le système distribué doit fournir. Le choix d’une colonne de distribution appropriée est l’une de ces considérations qui est décrite dans cet article.
 
 Envisagez d’utiliser une table distribuée par hachage quand :
 
@@ -70,7 +70,7 @@ Vous pouvez envisager une distribution par tourniquet des données de votre tabl
 
 Le tutoriel [Chargement des données des taxis new-yorkais](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse) donne un exemple de chargement de données dans une table de mise en lots distribuée par tourniquet (round robin).
 
-## <a name="choosing-a-distribution-column"></a>Choix d’une colonne de distribution
+## <a name="choose-a-distribution-column"></a>Choisir une colonne de distribution
 
 Une table distribuée par hachage possède une colonne de distribution qui est la clé de hachage. Par exemple, le code suivant crée une table distribuée par hachage avec ProductKey comme colonne de distribution.
 
@@ -88,8 +88,7 @@ CREATE TABLE [dbo].[FactInternetSales]
 WITH
 (   CLUSTERED COLUMNSTORE INDEX
 ,  DISTRIBUTION = HASH([ProductKey])
-)
-;
+);
 ```
 
 Les données stockées dans la colonne de distribution peuvent être mises à jour. Ces mises à jour peuvent entraîner une lecture aléatoire des données.
@@ -119,7 +118,7 @@ Pour réduire le déplacement des données, sélectionnez une colonne de distrib
 
 - Est utilisée dans les clauses `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` et `HAVING`. Quand deux tables de faits volumineuses ont des jointures fréquentes, la distribution des deux tables sur l’une des colonnes de jointure permet d’améliorer les performances des requêtes.  Quand une table n’est pas utilisée dans les jointures, envisagez de la distribuer sur une colonne qui figure fréquemment dans la clause `GROUP BY`.
 - N’est *pas* utilisée dans les clauses `WHERE`. Cela peut affiner la requête pour qu’elle ne soit pas exécutée sur toutes les distributions.
-- N’est *pas* une colonne de date. Les clauses WHERE filtrent souvent par date.  Dans ce cas, l’ensemble du traitement peut être exécuté sur seulement quelques distributions.
+- N’est *pas* une colonne de date. Les clauses `WHERE` filtrent souvent par date.  Dans ce cas, l’ensemble du traitement peut être exécuté sur seulement quelques distributions.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Que faire quand aucune des colonnes ne constitue une colonne de distribution appropriée
 
@@ -142,7 +141,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 
 Pour identifier les tables avec une asymétrie des données supérieure à 10 % :
 
-1. Créez la vue dbo.vTableSizes qui figure dans l’article [Vue d’ensemble des tables](sql-data-warehouse-tables-overview.md#table-size-queries).  
+1. Créez la vue `dbo.vTableSizes` qui figure dans l’article [Vue d’ensemble des tables](sql-data-warehouse-tables-overview.md#table-size-queries).  
 2. Exécutez la requête suivante :
 
 ```sql

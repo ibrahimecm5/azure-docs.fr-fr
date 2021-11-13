@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60a01c9e3a3e8643ad7d993db34d299fdc5ef145
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 5c7e7cc2434c9c55043ae6e504d868a103da35db
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532997"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226240"
 ---
 # <a name="collect-and-transport-metrics-preview"></a>Collecter et transporter des métriques (préversion)
 
@@ -219,7 +219,7 @@ Sélecteurs basés sur une étiquette (`{quantile=0.5,otherLabel=~Re[ge]*|x}`).
   * `=` correspondance avec les étiquettes qui sont exactement identiques à la chaîne entrée (sensible à la casse).
   * `!=` correspondance avec les étiquettes qui ne sont pas exactement identiques à la chaîne entrée.
   * `=~` correspondance avec les étiquettes contenant une expression régulière. exemple : `label=~CPU|Mem|[0-9]*`
-  * `!=` correspondance avec les étiquettes ne contenant pas une expression régulière fournie.
+  * `!~` correspondance avec les étiquettes ne contenant pas une expression régulière fournie.
   * L’expression régulière est entièrement ancrée (les signes ^ et $ sont automatiquement ajoutés au début et à la fin de chaque expression régulière)
   * Ce composant est facultatif dans un sélecteur de métriques.
 
@@ -230,13 +230,13 @@ Sélecteur de point de terminaison (`[http://VeryNoisyModule:9001/metrics]`).
 
 Une métrique doit correspondre à toutes les parties d’un sélecteur donné pour être sélectionnée. Il doit correspondre au nom *et* avoir toutes les mêmes étiquettes avec les valeurs correspondantes *et* provenir du point de terminaison donné. Par exemple, `mem{quantile=0.5,otherLabel=foobar}[http://VeryNoisyModule:9001/metrics]` ne correspondrait pas au sélecteur `mem{quantile=0.5,otherLabel=~foo|bar}[http://VeryNoisyModule:9001/metrics]`. Vous devez utiliser plusieurs sélecteurs pour créer un comportement d’opérateur « ou » plutôt qu’un comportement d’opérateur « et ».
 
-Par exemple, pour autoriser la métrique `mem` d’un module `module1`, quelle que soit l’étiquette, mais n’autoriser la même métrique de `module2` qu’avec l’étiquette `agg=p99`, vous pouvez ajouter le sélecteur à `AllowedMetrics` :
+Par exemple, pour autoriser la métrique personnalisée `mem` d’un module `module1`, mais n’autoriser la même métrique de `module2` qu’avec l’étiquette `agg=p99`, vous pouvez ajouter le sélecteur à `AllowedMetrics` :
 
 ```query
 mem{}[http://module1:9001/metrics] mem{agg="p99"}[http://module2:9001/metrics]
 ```
 
-Ou, pour autoriser les métriques `mem` et `cpu`, quelles que soient les étiquettes ou le point de terminaison, ajoutez ce qui sui à `AllowedMetrics` :
+Ou bien, pour autoriser les métriques personnalisées `mem` et `cpu` pour toutes les étiquettes ou le point de terminaison, ajoutez ce qui suit à `AllowedMetrics` :
 
 ```query
 mem cpu

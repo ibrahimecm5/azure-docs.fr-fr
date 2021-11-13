@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: c4f0139377d24f5a7ad18f53f50c16d6bfd19191
-  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+  ms.openlocfilehash: 8b10d0f11f889407569d415c10d6a1898468d96c
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129536543"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130218051"
 title: Forum Aux Questions (FAQ) sur Event Hubs
 summary: ''
 sections:
@@ -21,7 +21,7 @@ sections:
     answer: "Un espace de noms est un conteneur d’étendue pour les rubriques Event Hub/Kafka. Il vous donne une valeur unique de [nom de domaine complet](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Un espace de noms constitue un conteneur d’application qui peut héberger plusieurs rubriques Event Hub/Kafka. \n"
   - question: >
       À quel moment puis-je créer un espace de noms plutôt que d’en utiliser un ?
-    answer: "Les allocations de capacité ([unités de débit (TU)](/azure/event-hubs/event-hubs-faq#throughput-units) ou [unités de traitement (PU)](./event-hubs-scalability.md#processing-units)) sont facturées au niveau de l’espace de noms. Un espace de noms est également associé à une région.\n\nPeut-être préférerez-vous créer un espace de noms plutôt que d’en utiliser un dans l’un des scénarios suivants : \n\n- Vous avez besoin d’un Event Hub associé à une nouvelle région.\n- Vous avez besoin d’un Event Hub associé à un autre abonnement.\n- Vous avez besoin d’un Event Hub avec une allocation de capacité distincte (autrement dit, la capacité nécessaire pour l’espace de noms avec l’Event Hub ajouté dépasse le seuil de 40 TU et vous ne souhaitez pas utiliser le cluster dédié).  \n"
+    answer: "Les unités de débit (TU) ou [unités de traitement (PU)](./event-hubs-scalability.md#processing-units) des allocations de capacité sont facturées au niveau de l’espace de noms. Un espace de noms est également associé à une région.\n\nPeut-être préférerez-vous créer un espace de noms plutôt que d’en utiliser un dans l’un des scénarios suivants : \n\n- Vous avez besoin d’un Event Hub associé à une nouvelle région.\n- Vous avez besoin d’un Event Hub associé à un autre abonnement.\n- Vous avez besoin d’un Event Hub avec une allocation de capacité distincte (autrement dit, la capacité nécessaire pour l’espace de noms avec l’Event Hub ajouté dépasse le seuil de 40 TU et vous ne souhaitez pas utiliser le cluster dédié).  \n"
   - question: >
       Quelle est la différence entre les niveaux De Base et Standard pour les hubs d’événements ?
     answer: >
@@ -49,7 +49,7 @@ sections:
       Oui, à condition que la totalité des concentrateurs d’événements se trouve dans le même espace de noms.
   - question: >
       Quelle est la période de rétention maximale pour les événements ?
-    answer: "Le niveau Standard des hubs d’événements prend actuellement en charge une période de rétention maximale de sept jours. Les hubs d’événements ne sont pas destinés à servir de magasins de données permanents. Les périodes de conservation de plus de 24 heures conviennent aux scénarios dans lesquels il est utile de pouvoir reproduire un flux d’événements sur les mêmes systèmes. Par exemple, pour entraîner ou tester un nouveau modèle Machine Learning sur des données existantes. Si vous avez besoin que la rétention des messages dure plus de sept jours, activez [Event Hubs Capture](event-hubs-capture-overview.md) dans votre hub d’événements pour en tirer (pull) les données et les importer dans le compte de stockage ou le compte Azure Data Lake Service de votre choix. L’activation de Capture est facturée en fonction des unités de débit achetées.\n\nVous pouvez configurer la période de conservation pour les données capturées sur votre compte de stockage. La fonctionnalité de **gestion du cycle de vie** du Stockage Azure fournit une stratégie complète basée sur des règles pour les comptes de stockage Blob et v2 universel. Utilisez la stratégie pour effectuer la transition de vos données vers les niveaux d’accès appropriés ou pour faire en sorte qu’elles expirent à la fin de leur cycle de vie. Pour plus d’informations, consultez [Gérer le cycle de vie du Stockage Blob Azure](../storage/blobs/storage-lifecycle-management-concepts.md). \n"
+    answer: "Le niveau Standard des hubs d’événements prend actuellement en charge une période de rétention maximale de sept jours. Les hubs d’événements ne sont pas destinés à servir de magasins de données permanents. Les périodes de conservation de plus de 24 heures conviennent aux scénarios dans lesquels il est utile de pouvoir reproduire un flux d’événements sur les mêmes systèmes. Par exemple, pour entraîner ou tester un nouveau modèle Machine Learning sur des données existantes. Si vous avez besoin que la rétention des messages dure plus de sept jours, activez [Event Hubs Capture](event-hubs-capture-overview.md) dans votre hub d’événements pour en tirer (pull) les données et les importer dans le compte de stockage ou le compte Azure Data Lake Service de votre choix. L’activation de Capture est facturée en fonction des unités de débit achetées.\n\nVous pouvez configurer la période de conservation pour les données capturées sur votre compte de stockage. La fonctionnalité de **gestion du cycle de vie** du Stockage Azure fournit une stratégie complète basée sur des règles pour les comptes de stockage Blob et v2 universel. Utilisez la stratégie pour effectuer la transition de vos données vers les niveaux d’accès appropriés ou pour faire en sorte qu’elles expirent à la fin de leur cycle de vie. Pour plus d’informations, consultez [Gérer le cycle de vie du Stockage Blob Azure](../storage/blobs/lifecycle-management-overview.md). \n"
   - question: >
       Comment puis-je surveiller mes Event Hubs ?
     answer: >

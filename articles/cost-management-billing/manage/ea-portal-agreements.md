@@ -3,17 +3,17 @@ title: Contrats et avenants Azure EA
 description: Cet article explique dans quelle mesure les contrats et avenants Azure EA affectent votre utilisation du portail Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: 200b71b84bd4c09e40b7c19426b9f1e1d09bf943
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778217"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247418"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Contrats et avenants Azure EA
 
@@ -33,7 +33,7 @@ Une inscription a l’une des valeurs d’état suivantes. Chaque valeur déterm
 
 **En attente** : l’administrateur de l’inscription doit se connecter au portail Azure EA. Une fois ce dernier connecté, l’inscription passe à l’état **Actif**.
 
-**Actif** : l’inscription est accessible et utilisable. Vous pouvez créer des comptes et des abonnements dans le portail Azure EA. L’inscription reste active jusqu’à la date de fin du contrat Entreprise.
+**Actif** : l’inscription est accessible et utilisable. Vous pouvez créer des comptes et des abonnements dans le portail Azure EA. Les clients directs peuvent créer des services, des comptes et des abonnements dans le [portail Azure](https://portal.azure.com). L’inscription reste active jusqu’à la date de fin du contrat Entreprise. 
 
 **Durée prolongée indéterminée** Cet état est activé quand la date de fin du contrat Entreprise est atteinte. Avant que l’inscription EA n’atteigne la date de fin du contrat Entreprise, l’administrateur de l’inscription doit prendre l’une des décisions suivantes :
 
@@ -168,6 +168,8 @@ Les administrateurs d’entreprise peuvent attribuer des propriétaires de compt
 1. Cliquez sur l’icône « Télécharger » dans le coin supérieur droit.
 1. Recherchez les numéros de références SKU de plan correspondants avec un filtre sur la colonne « Quantité incluse », puis sélectionnez des valeurs supérieures à « 0 ».
 
+Le client direct peut afficher les tarifs dans le portail Azure. Consultez [Afficher la grille tarifaire dans le portail Azure](ea-pricing.md#download-pricing-for-an-enterprise-agreement).
+
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Propriétaires de comptes existants/nouveaux pour créer de nouveaux abonnements
 
 **Étape 1 : Se connecter au compte**
@@ -190,6 +192,8 @@ Mettez à jour le nom de l’abonnement et l’administrateur de service, puis c
 Cela peut prendre jusqu’à 24 heures pour que les nouveaux abonnements apparaissent dans la liste des abonnements.
 
 Seuls les propriétaires de comptes peuvent consulter et gérer les abonnements.
+
+Le client direct peut créer et modifier un abonnement dans le portail Azure. Consultez [Gérer un abonnement dans le portail Azure](direct-ea-administration.md#create-a-subscription).
 
 ### <a name="troubleshooting"></a>Dépannage
 

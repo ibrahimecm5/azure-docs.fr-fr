@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e9306d9931a34a192d0fb77caf1ab6147f2020a5
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 124e1f104bf7607b63eac916754c86b7b28cd8a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071926"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470430"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Liaisons Azure Service Bus pour Azure Functions
 
@@ -43,26 +43,25 @@ Pour utiliser le déclencheur et les liaisons, vous devez référencer le packag
 
 #### <a name="service-bus-extension-5x-and-higher"></a>Extension Service Bus 5.x et versions ultérieures
 
-Une nouvelle version de l’extension de liaisons Service Bus est disponible en préversion. Elle introduit la possibilité de [se connecter à l’aide d’une identité plutôt que d’un secret](./functions-reference.md#configure-an-identity-based-connection). Pour les applications .NET, elle change également les types avec lesquels vous pouvez établir une liaison, en remplaçant les types de `Microsoft.ServiceBus.Messaging` et `Microsoft.Azure.ServiceBus` par des types plus récents de [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus).
+Une nouvelle version de l’extension de liaisons Service Bus est désormais disponible. Elle introduit la possibilité de [se connecter à l’aide d’une identité plutôt que d’un secret](./functions-reference.md#configure-an-identity-based-connection). Pour obtenir un tutoriel sur la configuration de vos applications de fonction avec des identités managées, consultez le [tutoriel sur la création d’une application de fonction avec des connexions basées sur l’identité](./functions-identity-based-connections-tutorial.md). Pour les applications .NET, la nouvelle version de l’extension change également les types vers lesquels vous pouvez effectuer une liaison, en remplaçant les types `Microsoft.ServiceBus.Messaging` et `Microsoft.Azure.ServiceBus` par des types plus récents [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus).
 
-Cette version de l’extension est disponible sous la forme d’un [package NuGet en préversion] ou peut être ajoutée à partir de la version 3 du bundle d’extensions en préversion en ajoutant le code suivant dans votre fichier `host.json` :
+Cette version de l’extension est disponible en installant le [package NuGet] version 5.x, ou elle peut être ajoutée à partir du groupe d’extensions v3 en ajoutant le code suivant dans votre fichier `host.json` :
 
 ```json
 {
   "version": "2.0",
   "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-    "version": "[3.*, 4.0.0)"
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.3.0, 4.0.0)"
   }
 }
 ```
 
 Pour en savoir plus, consultez [Mettre à jour vos extensions].
 
-[package NuGet en préversion]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6
 [core tools]: ./functions-run-local.md
 [Bundle d’extensions]: ./functions-bindings-register.md#extension-bundles
-[Package NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
+[Package NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus
 [Mettre à jour vos extensions]: ./functions-bindings-register.md
 [Extension Azure Tools]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 

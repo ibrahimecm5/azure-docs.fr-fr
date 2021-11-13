@@ -3,13 +3,16 @@ title: Fonctionnalités de sécurité qui protègent des sauvegardes hybrides
 description: Découvrez comment utiliser les fonctionnalités de sécurité dans la Sauvegarde Azure pour renforcer la sécurité des sauvegardes
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 04/26/2021
-ms.openlocfilehash: 10a3420003197fc76f9baefbfd4c58c40a6dacfc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: eebf21c5b967d08d3f38eef74239dbff0e3d4e7d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073659"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443418"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Fonctionnalités de sécurité pour la protection des sauvegardes hybrides ayant recours à la Sauvegarde Azure
 
@@ -20,15 +23,18 @@ Les préoccupations en matière de risques de sécurité, comme les logiciels ma
 - **Récupération**. Les données de sauvegarde supprimées sont conservées pendant 14 jours supplémentaires à compter de la date de suppression. Cela garantit la possibilité de les récupérer dans un délai donné afin d’éviter toute perte, même en cas d’attaque. En outre, les points de récupération minimum sont conservés en plus grand nombre pour offrir une protection contre les données corrompues.
 
 > [!NOTE]
-> Les fonctionnalités de sécurité ne doivent pas être activées si vous utilisez une sauvegarde de machine virtuelle IaaS (Infrastructure en tant que service). Ces fonctionnalités ne sont pas encore disponibles pour la sauvegarde de machine virtuelle IaaS, donc leur activation n’aura aucun impact. Vous ne devez activer les fonctionnalités de sécurité que si vous utilisez : <br/>
->
-> - **Agent Azure Backup**. Version minimale de l’agent 2.0.9052. Une fois que vous avez activé ces fonctionnalités, vous devez effectuer une mise à niveau vers cette version de l’agent pour effectuer des opérations critiques. <br/>
-> - **Serveur de sauvegarde Azure**. Version minimale de l’agent Azure Backup 2.0.9052 avec la mise à jour 1 du serveur de sauvegarde Azure. <br/>
-> - **System Center Data Protection Manager**. Version minimale de l’agent Azure Backup version 2.0.9052 avec Data Protection Manager 2012 R2 UR12 ou Data Protection Manager 2016 UR2. <br/>
+> Ces fonctionnalités ne sont disponibles que pour le coffre Recovery Services. Tous les coffres Recovery Services nouvellement créés ont ces fonctionnalités activées par défaut. Pour les coffres Recovery Services existants, les utilisateurs activent ces fonctionnalités en suivant les étapes mentionnées dans la section ci-dessous. Une fois les fonctionnalités activées, elles s’appliquent à l’ensemble des ordinateurs agents Recovery Services, instances de serveur de sauvegarde Azure, et serveurs Data Protection Manager inscrits avec le coffre.
 
-> [!NOTE]
-> Ces fonctionnalités ne sont disponibles que pour le coffre Recovery Services. Tous les coffres Recovery Services nouvellement créés ont ces fonctionnalités activées par défaut. Pour les coffres Recovery Services existants, les utilisateurs activent ces fonctionnalités en suivant les étapes mentionnées dans la section ci-dessous. Une fois les fonctionnalités activées, elles s’appliquent à l’ensemble des ordinateurs agents Recovery Services, instances de serveur de sauvegarde Azure, et serveurs Data Protection Manager inscrits avec le coffre. L’activation de ce paramètre ne s’effectue qu’une seule fois et il est impossible de désactiver ces fonctionnalités après leur activation.
->
+## <a name="minimum-version-requirements"></a>Version minimale requise
+
+Activez les fonctionnalités de sécurité uniquement si vous utilisez :
+
+- **Agent Sauvegarde Azure** : version minimale de l’agent _2.0.9052_. Une fois que vous avez activé ces fonctionnalités, mettez à niveau la version de l’agent pour effectuer des opérations critiques.
+- **Serveur de sauvegarde Azure** : version minimale de l’agent Sauvegarde Azure _2.0.9052_ avec la _mise à jour 1 du serveur de sauvegarde Azure_.
+- **System Center Data Protection Manager** : version minimale de l’agent Sauvegarde Azure _2.0.9052_ avec _Data Protection Manager 2012 R2 UR12_/ _Data Protection Manager 2016 UR2_.
+
+>[!Note]
+>Veillez à ne pas activer les fonctionnalités de sécurité si vous utilisez la sauvegarde de machine virtuelle IaaS (infrastructure as a service). Actuellement, ces fonctionnalités ne sont pas disponibles pour la sauvegarde de machine virtuelle IaaS et, par conséquent, leur activation n’a pas d’impact.
 
 ## <a name="enable-security-features"></a>Activer les fonctionnalités de sécurité
 

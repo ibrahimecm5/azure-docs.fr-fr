@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.custom: devx-track-python, devx-track-azurepowershell, synapse
-ms.openlocfilehash: c21d06a97acd433445ee73e90833684c5cc36dac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a712fcbd256f80f1402bf29c96bb6e17c7409072
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124815005"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223932"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Créer un déclencheur qui exécute un pipeline selon une planification
 
@@ -27,7 +27,7 @@ Lorsque vous créez un déclencheur de planification, vous spécifiez une planif
 
 Les sections suivantes indiquent les étapes pour créer un déclencheur de planification de différentes façons. 
 
-## <a name="ui-experience"></a>Expérience de l’interface utilisateur
+## <a name="azure-data-factory-and-synapse-portal-experience"></a>Expérience du portail Azure Data Factory et Synapse
 
 Vous pouvez créer un **déclencheur de planification** afin de planifier l’exécution périodique d’un pipeline (toutes les heures, tous les jours, etc.). 
 
@@ -110,6 +110,14 @@ Vous pouvez créer un **déclencheur de planification** afin de planifier l’ex
 
 Cette section montre comment utiliser Azure PowerShell pour créer, démarrer et surveiller un déclencheur de planification. Pour voir cet exemple en fonctionnement, commencez par suivre le [Guide de démarrage rapide : Créer une fabrique de données à l’aide d’Azure PowerShell](quickstart-create-data-factory-powershell.md). Ensuite, ajoutez le code suivant à la méthode main : il crée et lance un déclencheur de planification qui s’exécute toutes les 15 minutes. Le déclencheur est associé à un pipeline nommé **Adfv2QuickStartPipeline**, créé dans le cadre du guide de démarrage rapide.
 
+### <a name="prerequisites"></a>Prérequis
+
+- **Abonnement Azure**. Si vous ne disposez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/) avant de commencer. 
+
+- **Azure PowerShell**. Suivez les instructions de l'article [Installer Azure PowerShell sur Windows avec PowerShellGet](/powershell/azure/install-az-ps). 
+
+### <a name="sample-code"></a>Exemple de code
+
 1. Créez un fichier JSON nommé **MyTrigger.json** dans le dossier C:\ADFv2QuickStartPSH\ avec le contenu suivant :
 
     > [!IMPORTANT]
@@ -158,31 +166,31 @@ Cette section montre comment utiliser Azure PowerShell pour créer, démarrer et
     - Le déclencheur est associé au pipeline **Adfv2QuickStartPipeline**. Pour associer plusieurs pipelines à un déclencheur, ajoutez d’autres sections **pipelineReference**.
     - Le pipeline du guide de démarrage rapide prend deux valeurs de **paramètres** : **inputPath** et **outputPath**. Et vous passez des valeurs pour ces paramètres à partir du déclencheur.
 
-1. Créez un déclencheur avec l’applet de commande **Set-AzDataFactoryV2Trigger** :
+1. Créez un déclencheur avec l’applet de commande [Set-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/set-azdatafactoryv2trigger) :
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-1. Vérifiez que l’état du déclencheur est **Stopped** avec l’applet de commande **Get-AzDataFactoryV2Trigger** :
+1. Vérifiez que l’état du déclencheur est **Stopped** avec l’applet de commande [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) :
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-1. Démarrez le déclencheur avec la cmdlet **Start-AzDataFactoryV2Trigger** :
+1. Démarrez le déclencheur avec la cmdlet [Start-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/start-azdatafactoryv2trigger) :
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-1. Vérifiez que l’état du déclencheur est **Started** avec l’applet de commande **Get-AzDataFactoryV2Trigger** :
+1. Vérifiez que l’état du déclencheur est **Started** avec l’applet de commande [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) :
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-1.  Récupérez les exécutions du déclencheur dans Azure PowerShell avec l’applet de commande **Get-AzDataFactoryV2TriggerRun**. Pour obtenir les d’informations relatives aux exécutions du déclencheur, exécutez la commande suivante régulièrement. Mettez à jour les valeurs **TriggerRunStartedAfter** et **TriggerRunStartedBefore** pour qu’elles correspondent aux valeurs spécifiées dans la définition du déclencheur :
+1.  Récupérez les exécutions du déclencheur dans Azure PowerShell avec l’applet de commande [Get-AzDataFactoryV2TriggerRun](/powershell/module/az.datafactory/get-azdatafactoryv2triggerrun). Pour obtenir les d’informations relatives aux exécutions du déclencheur, exécutez la commande suivante régulièrement. Mettez à jour les valeurs **TriggerRunStartedAfter** et **TriggerRunStartedBefore** pour qu’elles correspondent aux valeurs spécifiées dans la définition du déclencheur :
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -190,6 +198,97 @@ Cette section montre comment utiliser Azure PowerShell pour créer, démarrer et
     
     > [!NOTE]
     > L’heure de déclenchement des déclencheurs de planification est spécifiée dans l’horodatage UTC. _TriggerRunStartedAfter_ et _TriggerRunStartedBefore_ attendent également l’horodatage UTC
+
+    Pour surveiller les exécutions du déclencheur et du pipeline dans le portail Azure, consultez [Surveiller des exécutions de pipelines](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+
+## <a name="azure-cli"></a>Azure CLI
+
+Cette section montre comment utiliser Azure CLI pour créer, démarrer et superviser un déclencheur de planification. Pour voir cet exemple en fonctionnement, commencez par lire le [Guide de démarrage rapide : Créer une fabrique de données Azure avec Azure CLI](./quickstart-create-data-factory-azure-cli.md). Ensuite, effectuez les étapes ci-dessous pour créer et démarrer un déclencheur de planification qui s’exécute toutes les 15 minutes. Le déclencheur est associé à un pipeline nommé **Adfv2QuickStartPipeline**, créé dans le cadre du guide de démarrage rapide.
+
+### <a name="prerequisites"></a>Prérequis
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+### <a name="sample-code"></a>Exemple de code
+
+1. Dans votre répertoire de travail, créez un fichier JSON nommé **MyTrigger.json** avec les propriétés du déclencheur. Pour cet exemple, utilisez le contenu suivant :
+
+    > [!IMPORTANT]
+    > Avant d’enregistrer le fichier JSON, affectez l’heure UTC actuelle comme valeur de l’élément **startTime**. Définissez la valeur de l’élément **endTime** sur une (1) heure après l’heure UTC actuelle.
+
+    ```json
+    {
+        "name": "MyTrigger",
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 15,
+                "startTime": "2017-12-08T00:00:00Z",
+                "endTime": "2017-12-08T01:00:00Z",
+                "timeZone": "UTC"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "Adfv2QuickStartPipeline"
+                },
+                "parameters": {
+                    "inputPath": "adftutorial/input",
+                    "outputPath": "adftutorial/output"
+                }
+            }
+        ]
+    }
+    ```
+
+    Dans l’extrait de code JSON :
+    - L’élément **type** du déclencheur est défini sur « ScheduleTrigger ».
+    - L’élément **frequency** est défini sur « Minute » et l’élément **interval** sur 15. Par conséquent, le déclencheur exécute le pipeline toutes les 15 minutes entre l’heure de début et l’heure de fin.
+    - L’élément **timeZone** spécifie le fuseau horaire dans lequel le déclencheur est créé. Ce paramètre affecte à la fois **startTime** et **endTime**.
+    - L’élément **endTime** est une (1) heure après la valeur de l’élément **startTime**. Le déclencheur exécute alors le pipeline 15 minutes, 30 minutes et 45 minutes après l’heure de début. N’oubliez pas de définir l’heure de début sur l’heure UTC actuelle et l’heure de fin sur une (1) heure après l’heure de début. 
+
+        > [!IMPORTANT]
+        > Pour le fuseau horaire UTC, les éléments startTime et endTime doivent suivre le format « aaaa-MM-jjTHH:mm:ss **Z** », tandis que pour les autres fuseaux horaires, ils suivent le format « aaaa-MM-jjTHH:mm:ss ». 
+        > 
+        > Conformément à la norme ISO 8601, le suffixe _Z_ sur l’horodatage marque la date et l’heure du fuseau horaire UTC et rend la présence du champ timeZone inutile. En revanche, l’absence du suffixe _Z_ pour le fuseau horaire UTC génère une erreur à l’_activation_ du déclencheur.
+
+    - Le déclencheur est associé au pipeline **Adfv2QuickStartPipeline**. Pour associer plusieurs pipelines à un déclencheur, ajoutez d’autres sections **pipelineReference**.
+    - Le pipeline du guide de démarrage rapide prend deux valeurs de **paramètres** : **inputPath** et **outputPath**. Et vous passez des valeurs pour ces paramètres à partir du déclencheur.
+
+1. Créez un déclencheur en utilisant la commande [az datafactory trigger create](/cli/azure/datafactory/trigger#az_datafactory_trigger_create) :
+
+    ```azurecli
+    az datafactory trigger create --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory"  --name "MyTrigger" --properties @MyTrigger.json  
+    ```
+
+1. Vérifiez que l’état du déclencheur est **Stopped** en utilisant la commande [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show) :
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --name "MyTrigger" 
+    ```
+
+1. Démarrez le déclencheur en utilisant la commande [az datafactory trigger start](/cli/azure/datafactory/trigger#az_datafactory_trigger_start) :
+
+    ```azurecli
+    az datafactory trigger start --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --name "MyTrigger" 
+    ```
+
+1. Vérifiez que l’état du déclencheur est **Started** en utilisant la commande [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show) :
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --name "MyTrigger" 
+    ```
+
+1. Obtenez les exécutions du déclencheur dans Azure CLI en utilisant la commande [az datafactory trigger-run query-by-factory](/cli/azure/datafactory/trigger-run#az_datafactory_trigger_run_query_by_factory). Pour obtenir plus d’informations sur les exécutions du déclencheur, exécutez la commande suivante régulièrement. Mettez à jour les valeurs **last-updated-after** et **last-updated-before** pour qu’elles correspondent aux valeurs spécifiées dans la définition du déclencheur :
+
+    ```azurecli
+    az datafactory trigger-run query-by-factory --resource-group "ADFQuickStartRG" --factory-name "ADFTutorialFactory" --filters operand="TriggerName" operator="Equals" values="MyTrigger" --last-updated-after "2017-12-08T00:00:00" --last-updated-before "2017-12-08T01:00:00"
+    ```
+
+    > [!NOTE]
+    > L’heure de déclenchement des déclencheurs de planification est spécifiée dans l’horodatage UTC. _last-updated-after_ et _last-updated-before_ attendent aussi un horodatage UTC.
 
     Pour surveiller les exécutions du déclencheur et du pipeline dans le portail Azure, consultez [Surveiller des exécutions de pipelines](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
@@ -391,7 +490,7 @@ Le tableau suivant présente une vue d’ensemble globale des principaux éléme
 
 ### <a name="schema-defaults-limits-and-examples"></a>Valeurs par défaut, limites et exemples du schéma
 
-| Propriété JSON | Type | Obligatoire | Valeur par défaut | Valeurs valides |  Exemple |
+| Propriété JSON | Type | Obligatoire | Valeur par défaut | Valeurs valides | Exemple |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | Oui | None | Dates-Heures ISO-8601 | pour le fuseau horaire UTC `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> pour les autres fuseaux horaires `"2013-01-09T09:30:00-08:00"` |
 | **timeZone** | String | Oui | None | [Valeurs de fuseau horaire](#time-zone-option)  | `"UTC"` |
@@ -415,7 +514,7 @@ Voici quelques fuseaux horaires pris en charge pour les déclencheurs de planifi
 | Inde (IST) | +5:30 | `India Standard Time` | Non | `'yyyy-MM-ddTHH:mm:ss'` |
 | Heure standard de Chine | +8 | `China Standard Time` | Non | `'yyyy-MM-ddTHH:mm:ss'` |
 
-Cette liste est incomplète. Pour obtenir la liste complète des options de fuseau horaire, explorez la [page de création du déclencheur](#ui-experience) dans le portail.
+Cette liste est incomplète. Pour obtenir la liste complète des options de fuseau horaire, explorez la [page de création du déclencheur](#azure-data-factory-and-synapse-portal-experience) dans le portail.
 
 ### <a name="starttime-property"></a>propriété startTime
 Le tableau suivant vous montre comment la propriété **startTime** contrôle une exécution du déclencheur :

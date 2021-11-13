@@ -3,18 +3,18 @@ title: Attribuer une autorisation d’accès aux données Azure Cost Management
 description: Cet article vous explique comment affecter une autorisation aux données de Cost Management pour différentes étendues d’accès.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
+ms.reviewer: sapnakeshari
 ms.custom: secdec18
-ms.openlocfilehash: dddb6292530687e75e4b5e697f4fc754d98040fb
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d467fd2ac2ecb01d4a933573603360f5382d5efb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706248"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457978"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Affecter une autorisation d’accès aux données Cost Management
 
@@ -47,6 +47,7 @@ Pour afficher les données de coût relatives aux abonnements Azure EA, un utili
 
 <sup>2</sup> Le compte d’inscription est souvent désigné sous le terme de propriétaire du compte.
 
+Les administrateurs d’entreprise directs peuvent attribuer le compte de facturation, le service et l’étendue de compte d’inscription dans le [portail Azure](https://portal.azure.com/). Pour plus d’informations, consultez [Administration du portail Azure pour les contrats Enterprise directs](../manage/direct-ea-administration.md).
 
 ## <a name="other-azure-account-scopes"></a>Autres étendues de compte Azure
 
@@ -119,6 +120,8 @@ L’accès à l’étendue de service nécessite un accès d’administrateur de
 7. Sélectionnez les services auxquels vous souhaitez accorder une autorisation d’administration.
 8. Sélectionnez **Ajouter** pour créer le compte.  
     ![entrer les informations requises dans la zone d’ajout d’un administrateur de service](./media/assign-access-acm-data/add-depart-admin.png)
+    
+Les administrateurs d’entreprise directs peuvent attribuer un accès d’administrateur de service dans le portail Azure. Pour plus d’informations, consultez [Ajouter un administrateur de service dans le portail Azure](../manage/direct-ea-administration.md#add-a-department-administrator).
 
 ## <a name="assign-enrollment-account-scope-access"></a>Affecter une autorisation d’accès à l’étendue du compte d’inscription
 
@@ -136,10 +139,11 @@ L’accès à l’étendue du compte d’inscription nécessite un accès de pro
 
 Après les étapes ci-dessus, le compte d’utilisateur devient un compte d’inscription, capable de créer des abonnements, sur Enterprise Portal. L’utilisateur peut accéder aux données de coût et d’utilisation des abonnements qu’il crée.
 
+Les administrateurs d’entreprise directs peuvent attribuer un accès de propriétaire de compte dans le portail Azure. Pour plus d’informations, consultez [Ajouter un propriétaire de compte dans le portail Azure](../manage/direct-ea-administration.md#add-an-account-and-account-owner).
+
 ## <a name="assign-management-group-scope-access"></a>Affecter une autorisation d’accès à l’étendue du groupe d’administration
 
 L’accès permettant de voir l’étendue du groupe d’administration nécessite au minimum une autorisation de lecteur Cost Management (ou lecteur). Vous pouvez configurer les autorisations d’accès à un groupe d’administration sur le Portail Azure. L’autorisation d’administrateur des accès utilisateur (ou propriétaire) du groupe d’administration est nécessaire au minimum pour donner accès à d’autres utilisateurs. Par ailleurs, pour des comptes Azure EA, vous devez également avoir activé le paramètre d’**affichage des frais pour le propriétaire du compte** dans le portail EA.
-
 
 - Attribuez le rôle lecteur de Cost Management (ou lecteur) à un utilisateur dans l’étendue du groupe d’administration.  
      Pour connaître les étapes détaillées, consultez [Attribuer des rôles Azure à l’aide du portail Azure](../../role-based-access-control/role-assignments-portal.md).

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 8e4bc76203ee84d71f4a9f201dac6e63d4728c34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729845"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238057"
 ---
 # <a name="troubleshoot"></a>Dépanner
 
@@ -37,9 +37,9 @@ Si vous travaillez sur un ordinateur portable avec deux GPU, il est possible que
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>La récupération de l’état de la session/conversion échoue
 
-Une fréquence trop élevée d’envoi de commandes d’API REST entraîne une limitation du serveur, et finit par retourner un échec. Le code d’état http dans le cas de limitation est 429 (« trop de demandes »). En règle générale, il doit y avoir un délai de **5 à 10 secondes entre les appels successifs**.
+Une fréquence trop élevée d’envoi de commandes d’API REST entraîne une limitation du serveur, et finit par retourner un échec. Le code d’état HTTP dans le cas de limitation est 429 (« trop de demandes »). En règle générale, il doit y avoir un délai de **5 à 10 secondes entre les appels successifs**.
 
-Notez que cette limite affecte non seulement les appels d’API REST effectués directement, mais aussi leurs équivalents C#/C++, tels que `Session.GetPropertiesAsync`, `Session.RenewAsync` ou `Frontend.GetAssetConversionStatusAsync`.
+Notez que cette limite affecte non seulement les appels d’API REST effectués directement, mais aussi leurs équivalents C#/C++, tels que `Session.GetPropertiesAsync`, `Session.RenewAsync` ou `Frontend.GetAssetConversionStatusAsync`. Certaines fonctions retournent également des informations quand une nouvelle tentative peut être effectuée sans problème. Par exemple, `RenderingSessionPropertiesResult.MinimumRetryDelay` spécifie le nombre de secondes à attendre avant de tenter une autre vérification. Si une valeur retournée comme celle-ci est disponible, nous vous recommandons de l’utiliser. Vous pourrez ainsi effectuer autant de vérifications que possible sans aucune limitation.
 
 Si vous rencontrez une limitation côté serveur, modifiez le code pour effectuer les appels moins fréquemment. Le serveur réinitialisant l’état de limitation à chaque minutes, vous pouvez sans problème réexécuter le code au bout d’une minute.
 
@@ -253,7 +253,7 @@ Les surfaces coplanaires peuvent avoir plusieurs causes :
 
 ## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Artefacts graphiques utilisant le rendu stéréo à plusieurs passes dans les applications C++ natives
 
-Dans certains cas, les applications C++ natives qui utilisent un mode de rendu stéréo à plusieurs passes pour le contenu local (rendu gauche et droite dans des passes séparées) après l’appel de [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) peuvent déclencher un bogue du pilote. Le bogue entraîne des problèmes de pixellisation non déterministes, provoquant la disparition aléatoire de triangles individuels ou de parties de triangles du contenu local. Pour des raisons de performances, il est de toute manière recommandé de rendre le contenu local avec une technique de rendu stéréo en une seule passe plus moderne, par exemple utilisant **SV_RenderTargetArrayIndex**.
+Dans certains cas, les applications C++ natives qui utilisent un mode de rendu stéréo à plusieurs passes pour le contenu local (rendu gauche et droite dans des passes séparées) après l’appel de [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image-openxr) peuvent déclencher un bogue du pilote. Le bogue entraîne des problèmes de pixellisation non déterministes, provoquant la disparition aléatoire de triangles individuels ou de parties de triangles du contenu local. Pour des raisons de performances, il est de toute manière recommandé de rendre le contenu local avec une technique de rendu stéréo en une seule passe plus moderne, par exemple utilisant **SV_RenderTargetArrayIndex**.
 
 ## <a name="conversion-file-download-errors"></a>Erreurs de téléchargement du fichier de conversion
 

@@ -7,24 +7,20 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 2472a3495b872a17b073a86a6d99c6ddbf218343
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 619c65cb2f86c946d0e85573a967a23d718b38c9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755345"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501435"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-mysql---flexible-server-for-free"></a>Utilisez un compte gratuit Azure pour essayer gratuitement la Base de données Azure pour MySQL - Serveur Flexible
 
-Azure Database pour MySQL - Serveur flexible (préversion) est un service géré qui vous permet d'exécuter, de gérer et de mettre à l'échelle des bases de données MySQL hautement disponibles dans le cloud.  Avec un compte gratuit Azure, vous pouvez utiliser un Serveur Flexible **gratuitement pendant 12 mois** avec **des limites mensuelles** jusqu’à :
+Azure Database pour MySQL - Serveur flexible est un service managé qui vous permet d’exécuter, de gérer et de mettre à l’échelle des bases de données MySQL hautement disponibles dans le cloud.  Avec un compte gratuit Azure, vous pouvez utiliser un Serveur Flexible **gratuitement pendant 12 mois** avec **des limites mensuelles** jusqu’à :
 - **750 heures** d’instance **Burstable B1MS**, suffisamment d’heures pour exécuter une instance de base de données en continu chaque mois.
 - **stockage de 32 Go et stockage de sauvegarde de 32 Go**. 
 
 Cet article vous montre comment créer et utiliser un serveur flexible gratuitement à l’aide d’un [compte gratuit Azure](https://azure.microsoft.com/free/). 
-
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 
 ## <a name="prerequisites"></a>Prérequis
@@ -54,7 +50,7 @@ Dans cet article, vous allez utiliser le portail Azure pour créer un serveur fl
 
 1. Sélectionnez **Create** (Créer).
 
-1. Sur la page **Sélectionner une option de déploiement de Base de données Azure pour MySQL**, sélectionnez **Serveur flexible (Préversion)** . 
+1. Dans la page **Sélectionner une option de déploiement de Azure Database pour MySQL**, sélectionnez **Serveur flexible**. 
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/select-deployment-option.png" alt-text="Capture d’écran montrant l’Option de déploiement de serveur flexible à choisir.":::
 
@@ -112,7 +108,7 @@ Dans cet article, vous allez utiliser le portail Azure pour créer un serveur fl
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-and-create.png" alt-text="Capture d’écran montrant le panneau Vérifier + créer.":::
 
     >[!IMPORTANT]
-    >Lors de la création de l’instance Serveur flexible à partir de votre compte gratuit Azure, vous voyez toujours un **coût estimé par mois** dans le panneau **Calcul + Stockage : Récapitulatif des coûts** et l’onglet **Vérifier + créer** . Toutefois, tant que vous utilisez votre compte gratuit Azure et que votre utilisation gratuite des services est comprise dans les limites mensuelles (pour afficher des informations sur l’utilisation, voir la section [**Surveiller et suivre l’utilisation des services gratuits**](#monitor-and-track-free-services-usage) ci-dessous), vous n’êtes pas facturé pour le service. Nous travaillons actuellement à l’amélioration de l’expérience **Résumé des coûts** pour les services gratuits. 
+    >Lors de la création de l’instance Serveur flexible à partir de votre compte gratuit Azure, vous voyez toujours un **coût estimé par mois** dans le panneau **Calcul + Stockage : Récapitulatif des coûts** et l’onglet **Vérifier + créer**. Toutefois, tant que vous utilisez votre compte gratuit Azure et que votre utilisation gratuite des services est comprise dans les limites mensuelles (pour afficher des informations sur l’utilisation, voir la section [**Surveiller et suivre l’utilisation des services gratuits**](#monitor-and-track-free-services-usage) ci-dessous), vous n’êtes pas facturé pour le service. Nous travaillons actuellement à l’amélioration de l’expérience **Résumé des coûts** pour les services gratuits. 
     
 1. Sélectionnez **Créer** pour approvisionner le serveur. 
  

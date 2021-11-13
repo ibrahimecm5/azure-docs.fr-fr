@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2021
 ms.author: oldoll
-ms.openlocfilehash: 8e70919b229ff1c29590a370a201f8b8a0ebc62b
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: ce34b313661106e903a92aaf1a3b2f65213a1634
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067523"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577257"
 ---
 # <a name="new-version-of-azure-vm-extension-for-sap-solutions"></a>Nouvelle version de l’extension de machine virtuelle Azure pour les solutions SAP 
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -41,7 +41,7 @@ ms.locfileid: "130067523"
 ## <a name="prerequisites"></a>Prérequis
 
 > [!NOTE]
-> Instruction générale de support : la prise en charge de l’extension Azure pour SAP est assurée par le biais des canaux de support SAP.
+> Instruction générale de support : La prise en charge de l’extension Azure pour SAP est assurée par le biais des canaux de support SAP.
 > Si vous avez besoin d’aide sur l’extension de machine virtuelle Azure pour solutions SAP, veuillez ouvrir un dossier de support auprès du support SAP
   
 > [!NOTE]
@@ -90,6 +90,8 @@ La nouvelle extension de machine virtuelle pour SAP utilise une identité manag�
 1. Exécutez l’applet de commande PowerShell suivant.
     Pour afficher la liste des environnements disponibles, exécutez la cmdlet `Get-AzEnvironment` . Si vous voulez utiliser la version globale d’Azure, votre environnement est **AzureCloud**. Pour Azure China 21Vianet, sélectionnez **AzureChinaCloud**.
 
+    L’extension de machine virtuelle pour SAP prend en charge la configuration d’un proxy que l’extension doit utiliser pour se connecter à des ressources externes, par exemple l’API Azure Resource Manager. Utilisez le paramètre -ProxyURI pour définir le proxy.
+
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
     Connect-AzAccount -Environment $env
@@ -122,6 +124,8 @@ La nouvelle extension de machine virtuelle pour SAP utilise une identité manag�
   
 1. Activez la nouvelle extension :
   
+   L’extension de machine virtuelle pour SAP prend en charge la configuration d’un proxy que l’extension doit utiliser pour se connecter à des ressources externes, par exemple l’API Azure Resource Manager. Utilisez le paramètre --proxy-uri pour définir le proxy.
+
    ```azurecli
    az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension
    ```

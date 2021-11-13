@@ -8,12 +8,12 @@ ms.date: 10/06/2021
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: dcef0eccc6ca314c51b436025fb10c25dbbe04fa
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 9a5f1590e73388429f613a1c6b078f5c315397d6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129658231"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238941"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-forbidden-exceptions"></a>Diagnostiquer et résoudre les problèmes liés à des exceptions interdites Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -21,19 +21,32 @@ ms.locfileid: "129658231"
 Le code d’état HTTP 403 indique que la demande n’est pas autorisée à se terminer.
 
 ## <a name="firewall-blocking-requests"></a>Requêtes de blocage de pare-feu
-Dans ce scénario, il est courant de voir des erreurs similaires à celles ci-dessous :
 
-```
-Request originated from client IP {...} through public internet. This is blocked by your Cosmos DB account firewall settings.
-```
+Les requêtes de plan de données peuvent être envoyées à Cosmos DB via les trois chemins suivants.
 
-```
-Request is blocked. Please check your authorization token and Cosmos DB account firewall settings
-```
+- Internet public (IPv4)
+- Point de terminaison de service
+- Point de terminaison privé
+
+Quand une requête de plan de données est bloquée avec 403 Interdit, le message d’erreur spécifie par lequel des trois chemins ci-dessus la requête est parvenue à Cosmos DB.
+
+- `Request originated from client IP {...} through public internet.`
+- `Request originated from client VNET through service endpoint.`
+- `Request originated from client VNET through private endpoint.`
 
 ### <a name="solution"></a>Solution
-Vérifiez que les [paramètres de votre pare-feu](../how-to-configure-firewall.md) sont corrects, puis incluez les adresses IP ou les réseaux à partir desquels vous essayez de vous connecter.
-Si vous les avez récemment mis à jour, gardez à l’esprit que les modifications peuvent prendre **jusqu’à 15 minutes pour être appliquées**.
+
+Déterminez à partir de quel chemin la requête est **censée** parvenir à Cosmos DB.
+   - Si le message d’erreur indique que la requête n’est pas parvenue à Cosmos DB via le chemin attendu, le problème est probablement lié à la configuration côté client. Vérifiez votre configuration côté client conformément à la documentation.
+      - Internet public : [Configurer un pare-feu IP dans Azure Cosmos DB](../how-to-configure-firewall.md).
+      - Point de terminaison de service : [Configurer l’accès à Azure Cosmos DB à partir de réseaux virtuels (VNet)](../how-to-configure-vnet-service-endpoint.md). Par exemple, si vous prévoyez d’utiliser un point de terminaison de service mais que la requête a été envoyée à Cosmos DB via l’Internet public, il est possible que le sous-réseau sur lequel le client s’exécutait n’ait pas activé le point de terminaison de service vers Cosmos DB.
+      - Point de terminaison privé : [Configurer Azure Private Link pour un compte Azure Cosmos](../how-to-configure-private-endpoints.md). Par exemple, si vous prévoyez d’utiliser un point de terminaison privé mais que la requête a été envoyée à Cosmos DB via l’Internet public, le système DNS de la machine virtuelle n’a peut-être pas été configuré pour résoudre le point de terminaison de compte vers l’adresse IP privée, et il est donc passé à la place par l’adresse IP publique du compte.
+   - Si la requête est parvenue à Cosmos DB via le chemin attendu, la requête a été bloquée car l’identité du réseau source n’a pas été configurée pour être autorisée pour le compte. Vérifiez les paramètres du compte en fonction du chemin par lequel la requête est parvenue à Cosmos DB.
+      - Internet public : vérifiez les configurations d’[accès réseau public](../how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) et de filtre de plage d’adresses IP du compte.
+      - Point de terminaison de service : vérifiez les configurations d’[accès réseau public](../how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) et de filtre de réseau virtuel du compte.
+      - Point de terminaison privé : vérifiez la configuration du point de terminaison privé du compte et la configuration DNS privée du client. Cela peut être dû à l’accès à un compte à partir d’un point de terminaison privé configuré pour un autre compte.
+
+Si vous avez récemment mis à jour les configurations de pare-feu du compte, gardez à l’esprit que l’**application des modifications peut nécessiter jusqu’à 15 minutes**.
 
 ## <a name="partition-key-exceeding-storage"></a>Clé de partition dépassant le stockage
 Dans ce scénario, il est courant de voir des erreurs similaires à celles ci-dessous :

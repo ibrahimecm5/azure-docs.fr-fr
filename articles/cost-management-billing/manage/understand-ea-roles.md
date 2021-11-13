@@ -2,19 +2,19 @@
 title: Comprendre les rôles d’administrateur pour Accord Entreprise dans Azure
 description: Découvrez les rôles d’administrateur d’entreprise dans Azure. Vous pouvez affecter cinq rôles d’administration distincts.
 author: bandersmsft
-ms.reviewer: adwise
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 07/06/2021
+ms.date: 10/22/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 82e5b16ef4f7892a52ea0ec3d332104cbf99bb68
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 08f13b90190e3d05f87947cb7be58cbda8566c8a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765489"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232884"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Administration des rôles de l’Accord Entreprise Azure
 
@@ -69,6 +69,8 @@ Les rôles d’utilisateur d’administration suivants font partie de l’inscri
 - Contact de notification
 
 Les rôles fonctionnent dans deux portails différents pour effectuer des tâches. Vous utilisez le [portail Azure Enterprise](https://ea.azure.com) pour gérer la facturation et les coûts, et le [portail Azure](https://portal.azure.com) pour gérer les services Azure.
+
+Les clients EA directs peuvent effectuer toutes les tâches d’administration dans le portail Azure. Vous pouvez utiliser le [portail Azure](https://portal.azure.com) pour gérer la facturation, les coûts et les services Azure.
 
 Les rôles utilisateur sont associés à un compte d’utilisateur. Pour valider l’authenticité de l’utilisateur, chaque utilisateur doit avoir un compte professionnel, scolaire ou Microsoft valide. Assurez-vous que chaque compte est associé à une adresse e-mail activement supervisée. Les notifications de compte sont envoyées à l’adresse e-mail.
 
@@ -168,7 +170,8 @@ Les sections suivantes décrivent les limitations et les capacités de chaque r�
 
 ## <a name="add-a-new-enterprise-administrator"></a>Ajouter un nouvel administrateur d’entreprise
 
-Les administrateurs d’entreprise disposent de la majorité des privilèges lors de la gestion d’une inscription Azure EA. L’administrateur Azure EA initial a été créé lors de la configuration du Contrat Entreprise. Toutefois, vous pouvez ajouter ou supprimer de nouveaux administrateurs à tout moment. Les nouveaux administrateurs peuvent être ajoutés uniquement par des administrateurs existants. Pour plus d’informations sur l’ajout d’administrateurs d'entreprise supplémentaires, consultez [Créer un autre administrateur d’entreprise](ea-portal-administration.md#create-another-enterprise-administrator). Pour plus d’informations sur les rôles et les tâches d’un profil de facturation, consultez [Tâches et rôles du profil de facturation](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Les administrateurs d’entreprise disposent de la majorité des privilèges lors de la gestion d’une inscription Azure EA. L’administrateur Azure EA initial a été créé lors de la configuration du Contrat Entreprise. Toutefois, vous pouvez ajouter ou supprimer de nouveaux administrateurs à tout moment. Les nouveaux administrateurs peuvent être ajoutés uniquement par des administrateurs existants. Pour plus d’informations sur l’ajout d’administrateurs d’entreprise supplémentaires, consultez [Créer un autre administrateur d’entreprise](ea-portal-administration.md#create-another-enterprise-administrator). Les clients EA directs peuvent utiliser le portail Azure pour ajouter des administrateurs EA. Consultez [Créer un autre administrateur d’entreprise sur le portail Azure](direct-ea-administration.md#add-another-enterprise-administrator). Pour plus d’informations sur les rôles et les tâches d’un profil de facturation, consultez [Tâches et rôles du profil de facturation](understand-mca-roles.md#billing-profile-roles-and-tasks).
+
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>Mettre à jour l’état propriétaire du compte de En attente à Actif
 
@@ -178,7 +181,7 @@ Lorsque de nouveaux propriétaires de compte sont ajoutés pour la première foi
 
 Une fois qu’un administrateur Azure EA a créé un service, l’administrateur d’entreprise Azure peut ajouter des administrateurs de service et associer chacun d’eux à un service. Un administrateur de service peut créer des comptes. Ces comptes sont nécessaires pour créer des abonnements Azure EA.
 
-Pour plus d’informations sur l’ajout d’un administrateur de service, consultez [Créer un administrateur de service Azure EA](ea-portal-administration.md#add-a-department-administrator).
+Les administrateurs EA directs peuvent ajouter des administrateurs de service dans le portail Azure. Pour plus d’informations, consultez [Créer un administrateur de service EA Azure](direct-ea-administration.md#add-a-department-administrator).
 
 ## <a name="usage-and-costs-access-by-role"></a>Accès à l’utilisation et aux coûts par rôle
 

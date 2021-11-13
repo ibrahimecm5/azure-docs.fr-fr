@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure, kinect, spécifications, matériel, DK, fonctionnalités, profondeur, couleur, RVB, capteur de mouvement, contrôleur, synchronisation
-ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e4936e5c7b795745b7f1b131efbf99a562d8ed0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102039952"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254681"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synchroniser plusieurs appareils Azure Kinect DK
 
@@ -85,7 +85,7 @@ Dans la boucle de capture d’images, évitez de définir plusieurs fois le mêm
 
 Quand plusieurs caméras de profondeur acquièrent des images dont les champs de vision se chevauchent, chacune d’elles doit acquérir l’image associée à son propre laser. Pour éviter que les lasers interfèrent entre eux, les captures des caméras doivent être décalées entre elles d’au minimum 160 μs.
 
-Pour chaque capture de caméra de profondeur, le laser s’active neuf fois et est actif pendant seulement 125&mu;s à chaque fois. Le laser reste ensuite inactif pendant 14 505&mu;s ou 23 905&mu;s, selon le mode de fonctionnement. Ce comportement signifie que le point de départ pour le calcul du décalage est de 125&mu;s.
+Pour chaque capture de caméra de profondeur, le laser s’active neuf fois et est actif pendant seulement 125&mu;s à chaque fois. Le laser reste ensuite inactif pendant 1 450&mu;s ou 2 390&mu;s, selon le mode de fonctionnement. Ce comportement signifie que le point de départ pour le calcul du décalage est de 125&mu;s.
 
 De plus, les différences entre l’horloge de la caméra et celle du microprogramme de l’appareil augmentent le décalage minimal pour le porter à 160&mu;s. Pour calculer un décalage plus précis pour votre configuration, notez le mode de profondeur que vous utilisez et consultez le [tableau de synchronisation brute du capteur de profondeur](hardware-specification.md#depth-sensor-raw-timing). Les données de ce tableau vous permettent de calculer le décalage minimal (temps d’exposition de chaque caméra) à l’aide de l’équation suivante :
 
@@ -96,7 +96,7 @@ En utilisant un décalage de 160&mu;s, vous pouvez configurer jusqu’à neuf ca
 Dans votre logiciel, utilisez ```depth_delay_off_color_usec``` ou ```subordinate_delay_off_master_usec``` pour vous assurer que chaque laser IR s’exécute dans sa fenêtre de 160&mu;s ou ait un champ de vision différent.
 
 > [!NOTE]  
-> La largeur d’impulsion réelle est de 125 µs, mais nous indiquons 160 µs pour fournir une certaine marge de manœuvre. En utilisant NFOV UNBINNED comme exemple, chaque impulsion de 125 µs est suivie d’une inactivité de 1 450 µs. Le cumul de ces valeurs, (9 x 125) + (8 x 1450), fournit le temps d’exposition de 12,8 ms. La façon la plus proche d’entrelacer l’exposition de 2 appareils consiste à placer la première impulsion de la deuxième caméra dans la première période d’inactivité de la première caméra. Le délai entre la première caméra et la deuxième peut être réduit jusqu’à 125 µs (la largeur d’une impulsion), mais nous vous recommandons de ménager une certaine marge de manœuvre en utilisant 160 µs. Avec 160 µs, vous pouvez entrelacer les périodes d’exposition d’un maximum de 10 caméras.
+> La largeur d’impulsion réelle est de 125&mu;s, mais nous indiquons 160 µs pour fournir une certaine marge de manœuvre. En utilisant NFOV UNBINNED comme exemple, chaque impulsion de 125&mu;s est suivie d’une inactivité de 1 450&mu;s. Le cumul de ces valeurs, (9 x 125) + (8 x 1450), fournit le temps d’exposition de 12,8 ms. La façon la plus proche d’entrelacer l’exposition de 2 appareils consiste à placer la première impulsion de la deuxième caméra dans la première période d’inactivité de la première caméra. Le délai entre la première caméra et la deuxième peut être réduit jusqu’à 125&mu;s (la largeur d’une impulsion), mais nous vous recommandons de ménager une certaine marge de manœuvre en utilisant 160&mu;s. Avec 160&mu;s, vous pouvez entrelacer les périodes d’exposition d’un maximum de 10 caméras.
 
 ## <a name="prepare-your-devices-and-other-hardware"></a>Préparer vos appareils et autres composants matériels
 

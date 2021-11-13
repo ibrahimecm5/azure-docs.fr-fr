@@ -4,12 +4,12 @@ description: Découvrez comment configurer un certain nombre de fonctionnalités
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 7fe266c3c7b75762133fca4645e0675845c28972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f92dc402323e8285f9a2c23ba9e4a229d72718a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943978"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254770"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Configurer une appliance virtuelle réseau dans Azure HDInsight
 
@@ -18,7 +18,7 @@ ms.locfileid: "98943978"
 
 La balise FQDN du service Pare-feu Azure est automatiquement configurée pour autoriser le trafic dans la plupart des FQDN importants courants. L’utilisation d’une autre appliance virtuelle réseau vous oblige à configurer un certain nombre de fonctionnalités supplémentaires. Gardez les facteurs suivants à l’esprit pendant la configuration de votre appliance virtuelle réseau :
 
-* Les services pouvant prendre en charge les points de terminaison de service peuvent être configurés avec des points de terminaison de service, ce qui entraîne le contournement du NVA, généralement pour des considérations relatives aux coûts ou aux performances.
+* Les services pouvant prendre en charge les points de terminaison de service peuvent être configurés avec des points de terminaison de service, ce qui entraîne le contournement du NVA, généralement pour des considérations de coût ou de performance.
 * Si ResourceProviderConnection est défini sur *outbound* (sortant), vous pouvez utiliser des points de terminaison privés pour le stockage et des serveurs SQL pour les metastores, et il n’est pas nécessaire de les ajouter aux NVA (Appliances virtuelles réseau).
 * Les dépendances d’adresses IP sont destinées au trafic non HTTP/S (à la fois le trafic TCP et UDP).
 * Les points de terminaison HTTP/HTTPS avec des noms FQDN peuvent être approuvés dans votre dispositif NVA.
@@ -44,7 +44,7 @@ Vous pouvez éventuellement activer un ou plusieurs points de terminaison de ser
 
 ### <a name="fqdn-httphttps-dependencies"></a>Dépendances HTTP/HTTPS FQDN
 
-Vous pouvez obtenir la liste des dépendances de FQDN (principalement Stockage Azure et Azure Service Bus) pour configurer votre appliance virtuelle réseau (NVA) [dans ce référentiel](https://github.com/Azure-Samples/hdinsight-fqdn-lists/). La liste régionale est disponible [ici](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/master/Regional). Ces dépendances sont utilisées par le fournisseur de ressources (RP) HDInsight pour créer et surveiller/gérer les clusters avec succès. Celles-ci incluent des journaux de télémétrie/diagnostic, des métadonnées d’approvisionnement, des configurations liées au cluster, des scripts, etc. Cette liste de dépendances de FQDN peut changer avec la publication des mises à jour futures de HDInsight.
+Vous pouvez obtenir la liste des noms de domaine complets dépendants (Stockage Azure et Azure Service Bus principalement) pour configurer votre appliance virtuelle réseau [dans ce dépôt](https://github.com/Azure-Samples/hdinsight-fqdn-lists/). La liste régionale est disponible [ici](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/main/Public). Ces dépendances sont utilisées par le fournisseur de ressources (RP) HDInsight pour créer et surveiller/gérer les clusters avec succès. Celles-ci incluent des journaux de télémétrie/diagnostic, des métadonnées de provisionnement, des configurations liées au cluster, des scripts, etc. Cette liste de dépendances de noms de domaine complets peut changer avec la publication des mises à jour futures de HDInsight.
 
 La liste ci-dessous ne fournit que quelques noms de domaine complets (FQDN) qui peuvent être nécessaires pour les mises à jour correctives du système d’exploitation et de la sécurité, ou les validations de certificats *après* la création du cluster et pendant la durée de vie des opérations du cluster :
 

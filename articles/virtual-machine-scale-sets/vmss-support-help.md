@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 56735c016b5496826b774d2f242ff03117a3a923
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 69d09cb0d2cbdef559670c34dcfb486edb41d0b5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754794"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249226"
 ---
 # <a name="support-and-troubleshooting-for-azure-virtual-machine-scale-sets"></a>Support et résolution de problèmes pour les groupes de machines virtuelles identiques Azure
 
@@ -25,7 +25,7 @@ Voici quelques suggestions pour obtenir de l’aide lors du développement de vo
 
 Divers articles expliquent comment déterminer, diagnostiquer et résoudre les problèmes que vous pouvez rencontrer lors de l’utilisation de [machines virtuelles Azure](../virtual-machines/index.yml) et de [groupes de machines virtuelles identiques](overview.md).
 
--  [Documentation sur la résolution des problèmes des machines virtuelles Azure](/troubleshoot/azure/virtual-machines/welcome-virtual-machines) 
+-  [Documentation sur la résolution des problèmes des groupes de machines virtuelles identiques Azure](/troubleshoot/azure/virtual-machine-scale-sets/welcome-virtual-machine-scale-sets) 
 - [Questions fréquemment posées sur les groupes de machines virtuelles identiques Azure](virtual-machine-scale-sets-faq.yml)
 
 

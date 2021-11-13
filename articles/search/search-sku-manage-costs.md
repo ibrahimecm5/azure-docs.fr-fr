@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 1e46601858ece67efa2bca9543083da8a0e2cc79
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 21b12da25ae2baf7e31ad12af7b5c346b64bc3ac
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563382"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577229"
 ---
 # <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Estimer et gérer les coûts d’un service Recherche cognitive Azure
 
@@ -51,7 +51,7 @@ Une solution reposant sur Recherche cognitive Azure peut occasionner des coûts 
 + Services complémentaires nécessaires pour des fonctionnalités spécifiques ou des fonctionnalités premium :
 
   + Enrichissement par IA à l’aide de compétences facturables (nécessite [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)). L’extraction d’images est également facturable.
-  + Base de connaissances (nécessite [Stockage Azure](https://azure.microsoft.com/pricing/details/storage/))
+  + Base de connaissances (nécessite le service [Stockage Azure](https://azure.microsoft.com/pricing/details/storage/)). Les opérations de stockage effectuées par l’indexeur sont facturables.
   + Enrichissement incrémentiel (nécessite [Stockage Azure](https://azure.microsoft.com/pricing/details/storage/), s’applique à l’enrichissement par IA)
   + Clés gérées par le client et chiffrement double (nécessite [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
   + Points de terminaison privés pour un modèle sans accès à Internet (nécessite [Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/))
@@ -93,7 +93,7 @@ Pour l’[enrichissement par IA](cognitive-search-concept-intro.md) à l’aide 
 | [Recherche d’entité personnalisée](cognitive-search-skill-custom-entity-lookup.md) | Mesuré par la Recherche cognitive Azure. Pour plus d’informations, consultez la [page des tarifs](https://azure.microsoft.com/pricing/details/search/#pricing). |
 
 > [!TIP]
-> L’[enrichissement incrémentiel (préversion)](cognitive-search-incremental-indexing-conceptual.md) réduit le coût du traitement des ensembles de compétences en mettant en cache et en réutilisant les enrichissements non affectés par les changements apportés à un ensemble de compétences. La mise en cache a besoin du Stockage Azure (consultez les [tarifs](/pricing/details/storage/blobs/)). Toutefois, le coût cumulé de l’exécution des ensembles de compétences est moindre si les enrichissements existants peuvent être réutilisés.
+> L’[enrichissement incrémentiel (préversion)](cognitive-search-incremental-indexing-conceptual.md) réduit le coût du traitement des ensembles de compétences en mettant en cache et en réutilisant les enrichissements non affectés par les changements apportés à un ensemble de compétences. La mise en cache a besoin du Stockage Azure (consultez les [tarifs](https://azure.microsoft.com/pricing/details/storage/blobs/)). Toutefois, le coût cumulé de l’exécution des ensembles de compétences est moindre si les enrichissements existants peuvent être réutilisés.
 
 ## <a name="tips-for-managing-costs"></a>Conseils pour la gestion des coûts
 

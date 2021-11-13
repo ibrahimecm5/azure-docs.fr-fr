@@ -1,14 +1,14 @@
 ---
 title: Expériences de la gestion multilocataire
 description: Azure Lighthouse autorise et améliore les expériences interlocataires dans de nombreux services Azure.
-ms.date: 09/30/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 90ff0396a467f3137d6501ac34cf707577e43bdf
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 115f71148ddd2d18cd99be883bdef77b1c27ad1b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714792"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249682"
 ---
 # <a name="cross-tenant-management-experiences"></a>Expériences de la gestion multilocataire
 
@@ -103,6 +103,7 @@ La plupart des tâches et des services peuvent être exécutés sur des ressourc
 - Créer des alertes dans les locataires du client qui déclenchent une automatisation, par exemple des runbooks Azure Automation ou des fonctions Azure Functions, dans le locataire gérant par le biais de webhooks
 - Créer des [paramètres de diagnostic](../..//azure-monitor/essentials/diagnostic-settings.md) dans les espaces de travail créés dans les locataires clients, afin d’envoyer les journaux de ressources aux espaces de travail du locataire gérant
 - Pour les charges de travail SAP, [surveiller les métriques des solutions SAP avec une vue agrégée sur les locataires clients](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
+- Pour Azure AD B2C, [router les journaux de connexion et d’audit](../../active-directory-b2c/azure-monitor.md) vers des solutions de monitoring différentes
 
 [Azure Networking](../../networking/fundamentals/networking-overview.md) :
 

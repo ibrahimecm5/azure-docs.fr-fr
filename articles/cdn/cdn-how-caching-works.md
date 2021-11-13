@@ -3,7 +3,7 @@ title: Fonctionnement de la mise en cache | Microsoft Docs
 description: La mise en cache est le processus de stockage local des données afin que les requêtes futures relatives à ces dernières soient plus rapidement accessibles.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
-ms.author: allensu
-ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.date: 10/19/2021
+ms.author: duau
+ms.openlocfilehash: d3ffe6cbfb55651664be4bf845099561916aeee1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505006"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450644"
 ---
 # <a name="how-caching-works"></a>Comment la mise en cache fonctionne
 
@@ -133,6 +133,10 @@ Le tableau suivant décrit le comportement de mise en cache par défaut des prod
 **Honorer l’origine** : indique s’il faut honorer les en-têtes de la directive du cache pris en charge s’il y en a dans la réponse HTTP du serveur d’origine.
 
 **Durée de cache du CDN** : indique le temps pendant lequel une ressource est mise en cache sur Azure CDN. Toutefois, si **Honorer l’origine** est Oui et que la réponse HTTP du serveur d’origine inclut l’en-tête de la directive de cache `Expires` ou `Cache-Control: max-age`, Azure CDN utilise la valeur de la durée spécifiée par l’en-tête à la place. 
+
+> [!NOTE]
+> Azure CDN n’offre aucune garantie quant à la durée minimale pendant laquelle l’objet sera stocké dans le cache. Le contenu mis en cache peut être supprimé du cache CDN avant son expiration s’il n’est pas demandé aussi fréquemment, afin de faire de la place pour le contenu plus fréquemment demandé.
+> 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

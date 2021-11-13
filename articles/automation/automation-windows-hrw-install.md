@@ -3,21 +3,21 @@ title: Déployer un Runbook Worker hybride Windows basé sur un agent dans Autom
 description: Cet article décrit comment déployer un Runbook Worker hybride basé sur agent qui vous permet d’exécuter des runbooks sur des ordinateurs Windows de votre centre de données local ou de votre environnement cloud.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/27/2021
+ms.date: 10/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 900ccf0434ee9d6dde9b0312a1bace180fe1470f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: d2588864b2a6bdba913c9a7fb0bbc7af62e8c4c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706546"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248561"
 ---
 # <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Déployer un Runbook Worker hybride Windows basé sur un agent dans Automation
 
 Vous pouvez utiliser la fonctionnalité Runbook Worker hybride utilisateur d’Azure Automation pour exécuter des runbooks directement sur une machine Azure ou non Azure, y compris les serveurs inscrits auprès de [serveurs avec Azure Arc](../azure-arc/servers/overview.md). Sur l’ordinateur ou le serveur qui héberge le rôle, vous pouvez exécuter les runbooks directement et avec les ressources disponibles dans l’environnement pour gérer ces ressources locales.
 
-Azure Automation stocke et gère les runbooks, puis les remet à une ou plusieurs machines choisies. Cet article explique comment déployer un Runbook Worker hybride utilisateur sur une machine Windows, comment supprimer le Worker et comment supprimer un groupe de Runbook Workers hybrides. Pour les Runbook Worker hybrides, consultez également [Déployer un Runbook Worker hybride d’utilisateur Windows ou Linux basé sur une extension dans Automation](./extension-based-hybrid-runbook-worker-install.md)
+Azure Automation stocke et gère les runbooks, puis les remet à une ou plusieurs machines choisies. Cet article explique comment déployer un Runbook Worker hybride utilisateur sur une machine Windows, comment supprimer le Worker et comment supprimer un groupe de Runbook Workers hybrides. Pour les Runbooks Worker hybrides utilisateur, consultez également [Déployer un Runbook Worker hybride utilisateur Windows ou Linux basé sur une extension dans Automation](./extension-based-hybrid-runbook-worker-install.md)
 
 Une fois le Runbook Worker déployé, consultez [Exécuter des runbooks sur un Runbook Worker hybride](automation-hrw-run-runbooks.md) pour apprendre à configurer vos Runbooks en vue d’automatiser les processus de votre centre de données local ou autre environnement cloud.
 
@@ -27,7 +27,7 @@ Avant de commencer, vérifiez que vous disposez des éléments suivants.
 
 ### <a name="a-log-analytics-workspace"></a>Un espace de travail Log Analytics
 
-Le rôle Runbook Worker hybride dépend d’un espace de travail Azure Monitor Log Analytics pour l’installation et la configuration du rôle. Vous pouvez le créer en utilisant [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json) ou le [portail Azure](../azure-monitor/logs/quick-create-workspace.md).
+Le rôle Runbook Worker hybride dépend d’un espace de travail Azure Monitor Log Analytics pour l’installation et la configuration du rôle. Vous pouvez le créer en utilisant [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json) ou le [portail Azure](../azure-monitor/logs/quick-create-workspace.md).
 
 Si vous n’avez pas d’espace de travail Azure Monitor Log Analytics, consultez le [guide de conception des journaux Azure Monitor](../azure-monitor/logs/design-logs-deployment.md) avant de créer l’espace de travail.
 

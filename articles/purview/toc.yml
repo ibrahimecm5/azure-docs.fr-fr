@@ -76,8 +76,6 @@ items:
             href: concept-asset-normalization.md
       - name: Insights sur les données
         href: concept-insights.md
-      - name: Comptes Azure Purview mis à niveau
-        href: concept-account-upgrade.md
   - name: Guides pratiques
     items:
       - name: Gérer des regroupements

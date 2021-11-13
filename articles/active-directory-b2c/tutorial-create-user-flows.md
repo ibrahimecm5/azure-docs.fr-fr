@@ -11,12 +11,12 @@ ms.date: 10/18/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63af3b70ebfde53078d71955a95e55e03a6c591b
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5cdf2cfb9b530721a8de31501c2f763f0c61bd21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162481"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240886"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>Tutoriel : créer des flux d’utilisateurs et des stratégies personnalisées dans Azure Active Directory B2C
 
@@ -145,7 +145,7 @@ Si vous voulez autoriser les utilisateurs à modifier leur profil dans votre app
 > Cet article explique comment configurer manuellement votre locataire. Vous pouvez automatiser l’ensemble du processus à partir de cet article. L’automatisation permettra de déployer le [pack de démarrage SocialAndLocalAccountsWithMFA](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) Azure AD B2C, qui fournira les parcours Inscription et connexion, Réinitialisation de mot de passe et Modification de profil. Pour automatiser la procédure pas à pas ci-dessous, accédez à [l’application d’installation IEF](https://aka.ms/iefsetup) et suivez les instructions.
 
 
-## <a name="add-signing-and-encryption-keys"></a>Ajouter des clés de signature et de chiffrement
+## <a name="add-signing-and-encryption-keys-for-identity-experience-framework-applications"></a>Ajouter des clés de signature et de chiffrement pour les applications Identity Experience Framework
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
@@ -276,33 +276,6 @@ Ajoutez les ID d’applications au fichier d’extensions *TrustFrameworkExtensi
 1. Remplacez les deux instances de `ProxyIdentityExperienceFrameworkAppId` par l’ID de l’application ProxyIdentityExperienceFramework que vous avez créée précédemment.
 1. Enregistrez le fichier .
 
-## <a name="upload-the-policies"></a>Charger les stratégies
-
-1. Sélectionnez l’élément de menu **Identity Experience Framework** dans votre locataire B2C du portail Azure.
-1. Sélectionnez **Charger une stratégie personnalisée**.
-1. Dans cet ordre, téléchargez les fichiers de stratégie :
-    1. *TrustFrameworkBase.xml*
-    2. *TrustFrameworkLocalization.xml*
-    3. *TrustFrameworkExtensions.xml*
-    4. *SignUpOrSignin.xml*
-    5. *ProfileEdit.xml*
-    6. *PasswordReset.xml*
-
-Lorsque vous chargez les fichiers, Azure ajoute le préfixe `B2C_1A_` à chacun d’eux.
-
-> [!TIP]
-> Si votre éditeur XML prend en charge la validation, validez la conformité des fichiers au schéma XML `TrustFrameworkPolicy_0.3.0.0.xsd`, qui se trouve dans le dossier racine du pack de démarrage. La validation du schéma XML identifie les erreurs avant le chargement.
-
-## <a name="test-the-custom-policy"></a>Tester la stratégie personnalisée
-
-1. Sous **Stratégies personnalisées**, sélectionnez **B2C_1A_signup_signin**.
-1. Pour **sélectionner une application** dans la page de présentation de la stratégie personnalisée, sélectionnez l’application web nommée *webapp1* que vous avez inscrite précédemment.
-1. Assurez-vous que l’**URL de réponse** soit `https://jwt.ms`.
-1. Sélectionnez **Exécuter maintenant**.
-1. Inscrivez-vous au moyen d’une adresse e-mail. N’utilisez pas encore l’option **Facebook**. 
-1. Sélectionnez **Exécuter maintenant** à nouveau.
-1. Connectez-vous avec le même compte pour vérifier que votre configuration est correcte.
-
 ## <a name="add-facebook-as-an-identity-provider"></a>Ajouter Facebook en tant que fournisseur d’identité
 
 Le pack de démarrage **SocialAndLocalAccounts** comprend la connexion au réseau social Facebook. Facebook n’est *pas* requis pour l’utilisation de stratégies personnalisées, mais nous l’utilisons ici pour illustrer comment vous pouvez activer la connexion fédérée aux réseaux sociaux dans une stratégie personnalisée.
@@ -328,7 +301,7 @@ Ajoutez le [secret d’application](identity-provider-facebook.md) de votre appl
 1. Sélectionnez **Create** (Créer).
 
 ### <a name="update-trustframeworkextensionsxml-in-custom-policy-starter-pack"></a>Mettre à jour TrustFrameworkExtensions.xml dans le pack de démarrage de la stratégie personnalisée
-1. Dans le fichier `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** , remplacez la valeur de `client_id` par l’ID d’application Facebook :
+Dans le fichier `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** , remplacez la valeur de `client_id` par l’ID d’application Facebook et enregistrez les changements.
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">
@@ -337,11 +310,34 @@ Ajoutez le [secret d’application](identity-provider-facebook.md) de votre appl
        <Item Key="client_id">00000000000000</Item>
    ```
 
-1. Chargez le fichier *TrustFrameworkExtensions.xml* sur votre locataire.
+
+## <a name="upload-the-policies"></a>Charger les stratégies
+
+1. Sélectionnez l’élément de menu **Identity Experience Framework** dans votre locataire B2C du portail Azure.
+1. Sélectionnez **Charger une stratégie personnalisée**.
+1. Dans cet ordre, téléchargez les fichiers de stratégie :
+    1. *TrustFrameworkBase.xml*
+    2. *TrustFrameworkLocalization.xml*
+    3. *TrustFrameworkExtensions.xml*
+    4. *SignUpOrSignin.xml*
+    5. *ProfileEdit.xml*
+    6. *PasswordReset.xml*
+
+Lorsque vous chargez les fichiers, Azure ajoute le préfixe `B2C_1A_` à chacun d’eux.
+
+> [!TIP]
+> Si votre éditeur XML prend en charge la validation, validez la conformité des fichiers au schéma XML `TrustFrameworkPolicy_0.3.0.0.xsd`, qui se trouve dans le dossier racine du pack de démarrage. La validation du schéma XML identifie les erreurs avant le chargement.
+
+## <a name="test-the-custom-policy"></a>Tester la stratégie personnalisée
+
 1. Sous **Stratégies personnalisées**, sélectionnez **B2C_1A_signup_signin**.
-1. Sélectionnez **Exécuter maintenant** et sélectionnez Facebook pour vous connecter avec Facebook et tester la stratégie personnalisée.
-
-
+1. Pour **sélectionner une application** dans la page de présentation de la stratégie personnalisée, sélectionnez l’application web nommée *webapp1* que vous avez inscrite précédemment.
+1. Assurez-vous que l’**URL de réponse** soit `https://jwt.ms`.
+1. Sélectionnez **Exécuter maintenant**.
+1. Inscrivez-vous au moyen d’une adresse e-mail.
+1. Sélectionnez **Exécuter maintenant** à nouveau.
+1. Connectez-vous avec le même compte pour vérifier que votre configuration est correcte.
+1. Sélectionnez **Exécuter maintenant** une nouvelle fois, puis sélectionnez Facebook pour vous connecter avec Facebook et tester la stratégie personnalisée.
 ::: zone-end
 
 ## <a name="next-steps"></a>Étapes suivantes

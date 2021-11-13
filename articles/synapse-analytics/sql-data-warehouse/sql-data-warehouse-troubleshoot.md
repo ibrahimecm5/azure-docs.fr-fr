@@ -2,42 +2,42 @@
 title: Résoudre les problèmes de pool SQL dédié (anciennement SQL DW)
 description: Résolution des problèmes de pool SQL dédié (anciennement SQL DW) dans Azure Synapse Analytics.
 services: synapse-analytics
-author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 11/13/2020
-ms.author: jrasnick
-ms.reviewer: jrasnick
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: f03b71f956f075a730939f657f42c94bebec5b02
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4829489cbb3229cdbe4c3d95c0eb44cc2047c585
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146578"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504053"
 ---
-# <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Résoudre les problèmes de pool SQL dédié (anciennement SQL DW) dans Azure Synapse Analytics
+# <a name="troubleshoot-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Résoudre les problèmes des pools SQL dédiés (anciennement SQL DW) dans Azure Synapse Analytics
 
 Cet article répertorie les problèmes courants liés au pool SQL dédié (anciennement SQL DW) dans Azure Synapse Analytics.
 
-## <a name="connecting"></a>Connecting
+## <a name="connect"></a>Se connecter
 
 | Problème                                                        | Résolution                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Échec de connexion pour l’utilisateur 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, erreur : 18456) | Cette erreur se produit quand un utilisateur Azure AD tente de se connecter à la base de données MASTER alors qu’elle ne contient pas d’utilisateur.  Pour corriger ce problème, spécifiez le pool SQL dédié (anciennement SQL DW) auquel vous souhaitez vous connecter ou ajoutez l'utilisateur à la base de données MASTER.  Consultez l’article [Présentation de la sécurité](sql-data-warehouse-overview-manage-security.md) pour plus de détails. |
-| Le serveur principal « MyUserName » n’est pas en mesure d’accéder à la base de données « master » dans le contexte de sécurité actuel. La base de données utilisateur par défaut ne peut pas être ouverte. Échec de la connexion. Échec de la connexion pour l'utilisateur 'MyUserName'. (Microsoft SQL Server, erreur : 916) | Cette erreur se produit quand un utilisateur Azure AD tente de se connecter à la base de données MASTER alors qu’elle ne contient pas d’utilisateur.  Pour corriger ce problème, spécifiez le pool SQL dédié (anciennement SQL DW) auquel vous souhaitez vous connecter ou ajoutez l'utilisateur à la base de données MASTER.  Consultez l’article [Présentation de la sécurité](sql-data-warehouse-overview-manage-security.md) pour plus de détails. |
-| Erreur CTAIP                                                  | Cette erreur peut se produire lorsqu’un identifiant de connexion a été créé sur la base de données MASTER SQL Database, mais pas sur la base de données SQL Database spécifique.  Si vous rencontrez cette erreur, consultez l’article [Vue d’ensemble de la sécurité](sql-data-warehouse-overview-manage-security.md) .  Cet article explique comment créer un identifiant de connexion et un utilisateur sur la base de données MASTER, puis comment créer un utilisateur dans la base de données SQL. |
+| Échec de connexion pour l’utilisateur 'NT AUTHORITY\ANONYMOUS LOGON'. (Microsoft SQL Server, erreur : 18456) | Cette erreur se produit quand un utilisateur Azure AD tente de se connecter à la base de données `master`, alors que cet utilisateur n’est pas dans `master`.  Pour corriger ce problème, spécifiez lors de la connexion le pool SQL dédié (anciennement SQL DW) auquel vous souhaitez vous connecter ou ajoutez l’utilisateur à la base de données `master`.  Consultez l’article [Présentation de la sécurité](sql-data-warehouse-overview-manage-security.md) pour plus de détails. |
+| Le serveur principal « MyUserName » n’est pas en mesure d’accéder à la base de données `master` dans le contexte de sécurité actuel. La base de données utilisateur par défaut ne peut pas être ouverte. Échec de la connexion. Échec de la connexion pour l'utilisateur 'MyUserName'. (Microsoft SQL Server, erreur : 916) | Cette erreur se produit quand un utilisateur Azure AD tente de se connecter à la base de données `master`, alors que cet utilisateur n’est pas dans `master`.  Pour corriger ce problème, spécifiez lors de la connexion le pool SQL dédié (anciennement SQL DW) auquel vous souhaitez vous connecter ou ajoutez l’utilisateur à la base de données `master`.  Consultez l’article [Présentation de la sécurité](sql-data-warehouse-overview-manage-security.md) pour plus de détails. |
+| Erreur CTAIP                                                  | Cette erreur peut se produire quand un identifiant de connexion a été créé sur la base de données `master` SQL Database, mais pas dans la base de données SQL spécifique.  Si vous rencontrez cette erreur, consultez l’article [Vue d’ensemble de la sécurité](sql-data-warehouse-overview-manage-security.md) .  Cet article explique comment créer un identifiant de connexion et un utilisateur dans la base de données `master`, puis comment créer un utilisateur dans une base de données SQL. |
 | Bloqué par le pare-feu                                          | Un pool SQL dédié (anciennement SQL DW) est protégé par des pare-feu pour que seules les adresses IP connues aient accès à une base de données. Les pare-feu sont sécurisés par défaut, ce qui signifie que vous devez activer explicitement une adresse IP ou une plage d’adresses avant de vous connecter.  Pour configurer votre pare-feu pour l’accès, suivez les étapes décrites dans la section [Configuration de l’accès au pare-feu du serveur pour l’adresse IP de votre client](create-data-warehouse-portal.md) dans les [Instructions d’approvisionnement](create-data-warehouse-portal.md). |
-| Connexion impossible avec l’outil ou le pilote                           | Avec le pool SQL dédié (anciennement SQL DW), il est recommandé d'utiliser [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [SSDT pour Visual Studio](sql-data-warehouse-install-visual-studio.md) ou [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) pour interroger les données. Pour plus d’informations sur les pilotes et la connexion à Azure Synapse, consultez les articles [Pilotes pour Azure Synapse](sql-data-warehouse-connection-strings.md) et [Connexion à Azure Synapse](sql-data-warehouse-connect-overview.md). |
+| Connexion impossible avec l’outil ou le pilote                           | Avec le pool SQL dédié (anciennement SQL DW), il est recommandé d’utiliser [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [SSDT pour Visual Studio](sql-data-warehouse-install-visual-studio.md) ou [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) pour interroger vos données. Pour plus d’informations sur les pilotes et la connexion à Azure Synapse, consultez les articles [Pilotes pour Azure Synapse](sql-data-warehouse-connection-strings.md) et [Connexion à Azure Synapse](sql-data-warehouse-connect-overview.md). |
 
 ## <a name="tools"></a>Outils
 
 | Problème                                                        | Résolution                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Des utilisateurs Azure AD sont manquants dans l’explorateur d’objets Visual Studio           | Il s'agit d'un problème connu.  Comme solution de contournement, vous pouvez afficher les utilisateurs dans [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Pour plus d'informations sur l'utilisation d'Azure Active Directory avec le pool SQL dédié (anciennement SQL DW), consultez [Authentification à Azure Synapse](sql-data-warehouse-authentication.md). |
-| Les scripts manuels, l’utilisation de l’Assistant Création de scripts ou la connexion via SSMS sont lents, ne répondent pas ou produisent des erreurs | Vérifiez que les utilisateurs ont été créés dans la base de données master. Dans les options de script, vérifiez aussi que l’édition du moteur est définie en tant que « Édition Microsoft Azure Synapse Analytics » et que le type de moteur est « Microsoft Azure SQL Database ». |
+| Les scripts manuels, l’utilisation de l’Assistant Création de scripts ou la connexion via SSMS sont lents, ne répondent pas ou produisent des erreurs | Vérifiez que les utilisateurs ont été créés dans la base de données `master`. Dans les options de script, vérifiez aussi que l’édition du moteur est définie en tant que « Édition Microsoft Azure Synapse Analytics » et que le type de moteur est « Microsoft Azure SQL Database ». |
 | La génération de scripts échoue dans SSMS                               | La génération d'un script pour le pool SQL dédié (anciennement SQL DW) échoue si l'option « Générer un script pour les objets dépendants » est définie sur « True ». Pour résoudre ce problème, les utilisateurs doivent accéder manuellement à **Outils -> Options -> Explorateur d’objets SQL Server -> Générer un script pour les options dépendants et affecter la valeur false à cette option**. |
 
 ## <a name="data-ingestion-and-preparation"></a>Ingestion et préparation des données
@@ -57,7 +57,7 @@ Cet article répertorie les problèmes courants liés au pool SQL dédié (ancie
 | Concurrence faible / requêtes en file d’attente                             | Comprendre la [gestion des charges de travail](resource-classes-for-workload-management.md) est important pour comprendre comment équilibrer l’allocation de mémoire avec l’accès concurrentiel. |
 | Comment mettre en œuvre les meilleures pratiques                              | Pour apprendre à améliorer le niveau de performance des requêtes, commencez par consulter l'article [Meilleures pratiques en matière de pool SQL dédié (anciennement SQL DW)](../sql/best-practices-dedicated-sql-pool.md). |
 | Comment améliorer les performances avec la mise à l’échelle                      | Pour améliorer le niveau de performance, il suffit parfois d'ajouter de la puissance de calcul aux requêtes en procédant à une [mise à l'échelle du pool SQL dédié (anciennement SQL DW)](sql-data-warehouse-manage-compute-overview.md). |
-| Performances de requêtes médiocres en raison de la qualité médiocre de l’index     | Parfois, les requêtes peuvent ralentir en raison de la [qualité médiocre des index columnstore](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality).  Consultez cet article pour plus d’informations et pour découvrir comment [Reconstruire des index pour améliorer la qualité de segment](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality). |
+| Performances de requêtes médiocres en raison de la qualité médiocre de l’index     | Parfois, les requêtes peuvent ralentir en raison de la [qualité médiocre des index columnstore](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality).  Consultez cet article pour plus d’informations et pour découvrir comment [Reconstruire des index pour améliorer la qualité de segment](sql-data-warehouse-tables-index.md#rebuild-indexes-to-improve-segment-quality). |
 
 ## <a name="system-management"></a>Gestion de systèmes
 
@@ -76,16 +76,16 @@ Cet article répertorie les problèmes courants liés au pool SQL dédié (ancie
 | Types de données de base de données SQL non pris en charge   | Voir [Types de données non pris en charge](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
 | Limitations des procédures stockées          | Consultez [Limitations des procédures stockées](sql-data-warehouse-develop-stored-procedures.md#limitations) pour comprendre certaines limitations des procédures stockées. |
 | Les fonctions définies par l’utilisateur ne prennent pas en charge les instructions SELECT | Il s’agit d’une limitation actuelle de nos fonctions définies par l’utilisateur.  Consultez [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour connaître la syntaxe que nous prenons en charge. |
-| sp_rename (préversion) pour les colonnes ne fonctionne pas sur les schémas en dehors de *dbo* | Il s’agit d’une limitation actuelle de Synapse [sp_rename (préversion) pour les colonnes](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Les colonnes des objets qui ne font pas partie du schéma *dbo* peuvent être renommées à l’aide d’une fonctionnalité CTAS dans une nouvelle table. |
+| `sp_rename` (préversion) pour les colonnes ne fonctionne pas sur les schémas en dehors de `dbo` | Il s’agit d’une limitation actuelle de Synapse [sp_rename (préversion) pour les colonnes](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Les colonnes des objets qui ne font pas partie du schéma `dbo` peuvent être renommées via une instruction CTAS dans une nouvelle table. |
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour obtenir une aide supplémentaire lors de la recherche d’une solution à votre problème, voici d’autres ressources auxquelles vous pouvez recourir.
 
-* [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-* [Demandes de fonctionnalités](https://feedback.azure.com/forums/307516-sql-data-warehouse)
-* [Vidéos](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
-* [Création d’un ticket de support](sql-data-warehouse-get-started-create-support-ticket.md)
-* [Page de questions Microsoft Q&A](/answers/topics/azure-synapse-analytics.html)
-* [Forum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)
-* [Twitter](https://twitter.com/hashtag/SQLDW)
+ - [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+ - [Demandes de fonctionnalités](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+ - [Vidéos](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+ - [Création d’un ticket de support](sql-data-warehouse-get-started-create-support-ticket.md)
+ - [Page de questions Microsoft Q&A](/answers/topics/azure-synapse-analytics.html)
+ - [Forum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)
+ - [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -3,22 +3,22 @@ title: Configurer un flux utilisateur d’inscription et de connexion
 titleSuffix: Azure AD B2C
 description: Découvrez comment configurer un flux d’inscription et de connexion dans Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/24/2021
-ms.author: mimart
+ms.date: 10/21/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9774eef558b02bef4ef9ec9ecacd6e5a132fd244
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8b1607609bafabc210572717fd84bfcb25da8022
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570307"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231986"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Configurer un flux d’inscription et de connexion dans Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Le flux d’utilisateur Inscription et connexion gère les expériences d’insc
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
 1. Sélectionnez l’icône **Répertoires + Abonnements** dans la barre d’outils du portail.
-1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire Azure AD B2C dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
+1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
 1. Dans le portail Azure, recherchez et sélectionnez **Azure AD B2C**.
 1. Sous **Stratégies**, sélectionnez **Flux d’utilisateurs**, puis sélectionnez **Nouveau flux d’utilisateur**.
 
@@ -81,6 +81,10 @@ Le flux d’utilisateur Inscription et connexion gère les expériences d’insc
 
 1. Sélectionnez **Créer** pour ajouter le flux utilisateur. Un préfixe *B2C_1* est automatiquement ajouté au nom.
 1. Suivez les étapes pour [gérer le flux pour « Vous avez oublié votre mot de passe ? »](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) dans la stratégie d’inscription ou de connexion.
+
+
+### <a name="re-order-the-sign-up-form"></a>Réorganiser le formulaire d’inscription
+Découvrir [comment réorganiser les champs d’entrée du flux utilisateur pour les comptes locaux](customize-ui.md#re-order-input-fields-in-the-sign-up-form)
 
 ### <a name="test-the-user-flow"></a>Tester le flux utilisateur
 

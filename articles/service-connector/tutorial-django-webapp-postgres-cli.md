@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2021
 zone_pivot_groups: postgres-server-options
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a14dc7e27c49d9f4e253e3a3a51c0526a56cadf9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 24c6d2cee0748d342c0d8d797d4a07692f6da9db
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096873"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444911"
 ---
 # <a name="tutorial-using-service-connector-preview-to-build-a-django-app-with-postgres-on-azure-app-service"></a>Tutoriel : Utilisation de Service Connector (préversion) pour créer une application Django avec Postgres dans Azure App Service
 
@@ -331,6 +331,7 @@ Le groupe de ressources, le nom de l’application et le nom de la base de donn�
 - La commande crée les paramètres nommés « AZURE_POSTGRESQL_HOST », « AZURE_POSTGRESQL_NAME », « AZURE_POSTGRESQL_USER », « AZURE_POSTGRESQL_PASS » comme attendu par le code de l’application.
 - Si vous avez oublié vos informations d’identification administrateur, la commande vous guidera pour les réinitialiser.
 
+
 ::: zone-end
 
 ::: zone pivot="postgres-flexible-server"
@@ -344,6 +345,9 @@ Le groupe de ressources, le nom de l’application et le nom de la base de donn�
 - Si vous avez oublié vos informations d’identification administrateur, la commande vous guidera pour les réinitialiser.
 
 ::: zone-end
+
+> [!NOTE]
+> Si vous voyez le message d’erreur « L’abonnement n’est pas inscrit pour utiliser Microsoft.ServiceLinker », exécutez `az provider register -n Microsoft.ServiceLinker` pour inscrire le fournisseur de ressources Service Connector et réexécutez la commande de connexion. 
 
 Dans votre code Python, vous accédez à ces paramètres comme à des variables d’environnement avec des instructions telles que `os.environ.get('AZURE_POSTGRESQL_HOST')`. Pour en savoir plus, consultez [Accéder aux variables d’environnement](../app-service/configure-language-python.md#access-environment-variables).
 

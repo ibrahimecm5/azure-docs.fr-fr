@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/15/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aabb53a573ee8a3ccc5d98ab8316fee560dbf625
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f31a210894f6c4581c9deea54e18c5dac4d44b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603901"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462920"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Déploiement SGBD de machines virtuelles SAP ASE Azure pour charge de travail SAP
 
@@ -87,14 +87,14 @@ Exemple de configuration d’un petit serveur de base de données SAP ASE avec u
 | Version SAP ASE | 16.0.03.07 ou ultérieure | 16.0.03.07 ou ultérieure | --- |
 | Nombre d’unités de données | 4 | 4 | ---|
 | Nombre d’unités de journaux | 1 | 1 | --- |
-| Nombre d’unités temporaires | 1 | 1 | plus pour la charge de travail SAP BW |
+| Nombre d’unités temporaires | 1 | 1 | Plus pour la charge de travail SAP BW |
 | Système d’exploitation | Windows Server 2019 | SUSE 12 SP4/15 SP1 ou RHEL 7.6 | --- |
 | Agrégation de disques | Espaces de stockage | LVM2 | --- |
 | Système de fichiers | NTFS | XFS |
-| Taille de bloc de format | nécessite des tests de charge de travail | nécessite des tests de charge de travail | --- |
+| Taille de bloc de format | Nécessite des tests de charge de travail | Nécessite des tests de charge de travail | --- |
 | Nombre et type de disques de données | Stockage Premium : 2 x P10 (RAID0) | Stockage Premium : 2 x P10 (RAID0)| Cache = Lecture seule |
 | Nombre et type de disques de données | Stockage Premium : 1 x P20  | Stockage Premium : 1 x P20 | Cache = AUCUN |
-| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | en supposant une instance unique |
+| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | En supposant une instance unique |
 | Nombre d’unités de sauvegarde | 4 | 4| --- |
 | Nombre et type de disques de sauvegarde | 1 | 1 | --- |
 
@@ -108,14 +108,14 @@ Exemple de configuration d’un serveur moyen de base de données SAP ASE avec u
 | Version SAP ASE | 16.0.03.07 ou ultérieure | 16.0.03.07 ou ultérieure | --- |
 | Nombre d’unités de données | 8 | 8 | ---|
 | Nombre d’unités de journaux | 1 | 1 | --- |
-| Nombre d’unités temporaires | 1 | 1 | plus pour la charge de travail SAP BW |
+| Nombre d’unités temporaires | 1 | 1 | Plus pour la charge de travail SAP BW |
 | Système d’exploitation | Windows Server 2019 | SUSE 12 SP4/15 SP1 ou RHEL 7.6 | --- |
 | Agrégation de disques | Espaces de stockage | LVM2 | --- |
 | Système de fichiers | NTFS | XFS |
-| Taille de bloc de format | nécessite des tests de charge de travail | nécessite des tests de charge de travail | --- |
+| Taille de bloc de format | Nécessite des tests de charge de travail | Nécessite des tests de charge de travail | --- |
 | Nombre et type de disques de données | Stockage Premium : 4 x P20 (RAID0) | Stockage Premium : 4 x P20 (RAID0)| Cache = Lecture seule |
 | Nombre et type de disques de données | Stockage Premium : 1 x P20  | Stockage Premium : 1 x P20 | Cache = AUCUN |
-| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | en supposant une instance unique |
+| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | En supposant une instance unique |
 | Nombre d’unités de sauvegarde | 4 | 4| --- |
 | Nombre et type de disques de sauvegarde | 1 | 1 | --- |
 
@@ -128,14 +128,14 @@ Exemple de configuration d’un petit serveur de base de données SAP ASE avec u
 | Version SAP ASE | 16.0.03.07 ou ultérieure | 16.0.03.07 ou ultérieure | --- |
 | Nombre d’unités de données | 16 | 16 | ---|
 | Nombre d’unités de journaux | 1 | 1 | --- |
-| Nombre d’unités temporaires | 1 | 1 | plus pour la charge de travail SAP BW |
+| Nombre d’unités temporaires | 1 | 1 | Plus pour la charge de travail SAP BW |
 | Système d’exploitation | Windows Server 2019 | SUSE 12 SP4/15 SP1 ou RHEL 7.6 | --- |
 | Agrégation de disques | Espaces de stockage | LVM2 | --- |
 | Système de fichiers | NTFS | XFS |
-| Taille de bloc de format | nécessite des tests de charge de travail | nécessite des tests de charge de travail | --- |
+| Taille de bloc de format | Nécessite des tests de charge de travail | Nécessite des tests de charge de travail | --- |
 | Nombre et type de disques de données | Stockage Premium : 4 x P30 (RAID0) | Stockage Premium : 4 x P30 (RAID0)| Cache = Lecture seule |
 | Nombre et type de disques de données | Stockage Premium : 1 x P20  | Stockage Premium : 1 x P20 | Cache = AUCUN |
-| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | en supposant une instance unique |
+| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | En supposant une instance unique |
 | Nombre d’unités de sauvegarde | 4 | 4| --- |
 | Nombre et type de disques de sauvegarde | 1 | 1 | --- |
 
@@ -149,16 +149,23 @@ Exemple de configuration d’un petit serveur de base de données SAP ASE avec u
 | Version SAP ASE | 16.0.03.07 ou ultérieure | 16.0.03.07 ou ultérieure | --- |
 | Nombre d’unités de données | 32 | 32 | ---|
 | Nombre d’unités de journaux | 1 | 1 | --- |
-| Nombre d’unités temporaires | 1 | 1 | plus pour la charge de travail SAP BW |
+| Nombre d’unités temporaires | 1 | 1 | Plus pour la charge de travail SAP BW |
 | Système d’exploitation | Windows Server 2019 | SUSE 12 SP4/15 SP1 ou RHEL 7.6 | --- |
 | Agrégation de disques | Espaces de stockage | LVM2 | --- |
 | Système de fichiers | NTFS | XFS |
-| Taille de bloc de format | nécessite des tests de charge de travail | nécessite des tests de charge de travail | --- |
+| Taille de bloc de format | Nécessite des tests de charge de travail | Nécessite des tests de charge de travail | --- |
 | Nombre et type de disques de données | Stockage Premium : 4+ x P30 (RAID0) | Stockage Premium : 4+ x P30 (RAID0)| Cache = Lecture seule, envisagez d’utiliser un disque Ultra Azure |
 | Nombre et type de disques de journaux | Stockage Premium : 1 x P20  | Stockage Premium : 1 x P20 | Cache = AUCUN, envisagez d’utiliser un disque Ultra Azure |
-| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | en supposant une instance unique |
+| Paramètre ASE MaxMemory | 90 % de RAM physique | 90 % de RAM physique | En supposant une instance unique |
 | Nombre d’unités de sauvegarde | 16 | 16 | --- |
 | Nombre et type de disques de sauvegarde | 4 | 4 | Utilisez LVM2/les espaces de stockage |
+
+
+Les volumes NFS v4.1 hébergés sur Azure NetApp Files sont une autre solution pour le stockage de base de données SAP ASE. La structure principale d’une telle configuration doit ressembler à
+
+![Configuration de stockage pour SAP ASE avec ANF](./media/dbms-guide-sap-ase/anf-layout.png)
+
+Dans l’exemple ci-dessus, le SID de la base de données était A11. Les tailles et les niveaux de performances des volumes basés sur Azure NetApp Files dépendent du volume de base de données, ainsi que des IOPS et du débit dont vous avez besoin. Pour sapdata et saplog, nous vous recommandons de commencer par le niveau de performance Ultra pour pouvoir fournir une bande passante suffisante. Pour de nombreux déploiements hors production, le niveau de performance Premium peut suffire. Pour plus d’informations sur le dimensionnement et les limitations spécifiques d’Azure NetApp Files pour l’utilisation d’une base de données, lisez le chapitre [Dimensionnement de la base de données HANA sur Azure NetApp Files dans des volumes NFS v4.1 sur Azure NetApp Files pour SAP HANA](./hana-vm-operations-netapp.md).
 
 
 ### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Considérations relatives à la sauvegarde et à la restauration pour SAP ASE sur Azure

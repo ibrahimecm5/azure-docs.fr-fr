@@ -70,10 +70,10 @@ items:
         href: choose-pricing-tier.md
       - name: Creator pour les plans intérieurs
         items:
-          - name: Limite géographique du service Creator
-            href: creator-geographic-scope.md
           - name: Concepts de plans intérieurs
             href: creator-indoor-maps.md
+          - name: Limite géographique du service Creator
+            href: creator-geographic-scope.md
           - name: Erreurs et avertissements liés à la conversion de dessin
             href: drawing-conversion-error-codes.md
       - name: Chiffrement des données au repos

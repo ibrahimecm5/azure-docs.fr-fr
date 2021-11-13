@@ -48,6 +48,8 @@ items:
             href: how-to-integrate-postgres.md
           - name: Azure Database pour MySQL
             href: how-to-integrate-mysql.md
+          - name: Azure Cosmos DB
+            href: how-to-integrate-cosmos-db.md
           - name: Stockage Blob Azure
             href: how-to-integrate-storage-blob.md
           - name: Stockage File d’attente Azure

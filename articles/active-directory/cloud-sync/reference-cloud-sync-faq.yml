@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: reference
-  ms.date: 09/10/2021
+  ms.date: 10/18/2021
   ms.subservice: hybrid
   ms.author: billmath
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 45a4273ccdfa76eb158ca8fd2ce51161fc3993b1
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 6fec249a2bbd45c478fec4b35abcdc780ee9bdab
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124771343"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130240791"
 title: FAQ relative à la synchronisation cloud Azure Active Directory Connect
 summary: >
   Découvrez les questions fréquemment posées sur la synchronisation cloud Azure Active Directory (Azure AD) Connect.
@@ -93,4 +93,7 @@ sections:
   - question: >
       La synchronisation cloud Azure AD Connect prend-elle en charge les grands groupes ?
     answer: "Oui. Aujourd’hui, nous prenons en charge jusqu’à 50 000 membres de groupes synchronisés à l’aide du filtrage d’étendue d’unité d’organisation. \n"
+  - question: >
+      La charge d’agent de provisionnement cloud est-elle équilibrée si plusieurs agents sont installés ?
+    answer: "Non. Un seul agent est toujours actif. \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes \n\n- [Présentation du provisionnement](what-is-provisioning.md)\n- [Qu’est-ce que la synchronisation cloud Azure AD Connect ?](what-is-cloud-sync.md)\n        \n"

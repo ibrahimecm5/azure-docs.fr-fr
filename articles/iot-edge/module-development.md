@@ -7,12 +7,12 @@ ms.date: 09/03/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5a04acfdec42319b998b2854be9690bab360558c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: affbabcb036e789975fdeb51f032e8c90861fac0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550530"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234583"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Développer vos propres modules IoT Edge
 
@@ -169,9 +169,6 @@ Pour plus d’informations sur le développement avec des conteneurs Windows, re
 :::moniker-end
 <!-- end 1.2 -->
 
-<!--1.2-->
-:::moniker range="iotedge-2020-11"
-
 ## <a name="module-security"></a>Sécurité du module
 
 Vous devez développer vos modules en tenant compte de la sécurité. Pour en savoir plus sur la sécurisation de vos modules, consultez [sécurité Docker](https://docs.docker.com/engine/security/).
@@ -180,7 +177,7 @@ Pour améliorer la sécurité des modules, IoT Edge désactive certaines fonctio
 
 ### <a name="allow-elevated-docker-permissions"></a>Autoriser les autorisations Docker élevées
 
-Dans le fichier config.toml sur un appareil IoT Edge, il existe un paramètre appelé `allow_elevated_docker_permissions` . Quand la valeur est **true**, cet indicateur autorise l'`--privileged` indicateur ainsi que toutes les fonctionnalités supplémentaires que vous définissez dans le `CapAdd` champ HostConfig Docker dans les [options de création du conteneur](how-to-use-create-options.md).
+Dans le fichier config sur un appareil IoT Edge, il existe un paramètre appelé `allow_elevated_docker_permissions`. Quand la valeur est **true**, cet indicateur autorise l'`--privileged` indicateur ainsi que toutes les fonctionnalités supplémentaires que vous définissez dans le `CapAdd` champ HostConfig Docker dans les [options de création du conteneur](how-to-use-create-options.md).
 
 >[!NOTE]
 >Actuellement, cet indicateur a la valeur **true** par défaut, ce qui permet aux déploiements d’accorder des autorisations privilégiées aux modules. Nous vous recommandons de définir cet indicateur sur false pour améliorer la sécurité de l’appareil. À l’avenir, cet indicateur sera défini sur **false** par défaut.
@@ -190,9 +187,6 @@ Dans le fichier config.toml sur un appareil IoT Edge, il existe un paramètre ap
 Les fonctionnalités Docker **CAP_CHOWN** et **CAP_SETUID** sont désactivées par défaut. Ces fonctionnalités peuvent être utilisées pour écrire dans des fichiers sécurisés sur le périphérique hôte et éventuellement obtenir un accès racine.
 
 Si vous avez besoin de ces fonctionnalités, vous pouvez les réactiver manuellement à l’aide de CapADD dans les options de création du conteneur.
-
-:::moniker-end
-<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Étapes suivantes
 

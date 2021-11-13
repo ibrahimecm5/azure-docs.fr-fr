@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: beb5930e98a5c5498349dc3aa773423ee5d281bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7cc4b086a4ec9d89187345a66d6ae3e39c999ca0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792468"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232174"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Se connecter avec Managed Identity auprès d’Azure Database pour PostgreSQL
 
-Cet article explique comment utiliser une identité affectée par l’utilisateur à une machine virtuelle Azure pour accéder à un serveur Azure Database pour PostgreSQL. Les identités MSI sont gérées automatiquement par Azure et vous permettent de vous authentifier auprès des services prenant en charge l’authentification Azure AD sans avoir à insérer des informations d’identification dans votre code. 
+Vous pouvez utiliser des identités managées affectées par le système et par l’utilisateur pour l’authentification auprès d’Azure Database pour PostgreSQL. Cet article explique comment utiliser une identité managée affectée par le système à une machine virtuelle Azure pour accéder à un serveur Azure Database pour PostgreSQL. Les identités managées sont gérées automatiquement par Azure et vous permettent de vous authentifier auprès des services prenant en charge l’authentification Azure AD sans avoir à insérer des informations d’identification dans votre code.
 
 Vous allez apprendre à effectuer les actions suivantes :
 - Accorder à votre machine virtuelle l’accès à un serveur Azure Database pour PostgreSQL
-- Créer un utilisateur dans la base de données représentant l’identité affectée par l’utilisateur de la machine virtuelle
+- Créer un utilisateur dans la base de données représentant l’identité affectée par le système de la machine virtuelle
 - Obtenir un jeton d’accès à l’aide de l’identité de la machine virtuelle et l’utiliser pour interroger un serveur Azure Database pour PostgreSQL
 - Implémenter la récupération de jetons dans un exemple d’application C#
 
@@ -32,46 +32,31 @@ Vous allez apprendre à effectuer les actions suivantes :
 - Vous avez besoin d’un serveur de base de données Azure Database pour PostgreSQL sur lequel [Azure AD Authentication](howto-configure-sign-in-aad-authentication.md) est configurée
 - Pour suivre cet exemple C#, vous devez d’abord suivre le guide pratique [Se connecter avec C#](connect-csharp.md)
 
-## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Création d’une identité managée affectée par l’utilisateur pour votre machine virtuelle
+## <a name="creating-a-system-assigned-managed-identity-for-your-vm"></a>Création d’une identité managée affectée par le système pour votre machine virtuelle
 
-Créez une identité dans votre abonnement avec la commande [az identity create](/cli/azure/identity#az_identity_create). Vous pouvez utiliser le même groupe de ressources que celui dans lequel votre machine virtuelle s’exécute ou un groupe différent.
+Utilisez [az vm identity assign](/cli/azure/vm/identity/) avec la commande `identity assign` pour activer l’identité affectée par le système sur une machine virtuelle existante :
 
 ```azurecli-interactive
-az identity create --resource-group myResourceGroup --name myManagedIdentity
+az vm identity assign -g myResourceGroup -n myVm
 ```
 
-Pour configurer l’identité aux étapes suivantes, utilisez la commande [az identity show](/cli/azure/identity#az_identity_show) afin de stocker l’ID de ressource et l’ID client de l’identité dans des variables.
+Récupérez l’ID d’application de l’identité managée affectée par le système. Vous en aurez besoin dans les étapes suivantes :
 
 ```azurecli
-# Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query id --output tsv)
-
-# Get client ID of the user-assigned identity
-clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
-```
-
-Nous pouvons maintenant attribuer l’identité affectée par l’utilisateur à la machine virtuelle à l’aide de la commande [az vm identity assign](/cli/azure/vm/identity#az_vm_identity_assign) :
-
-```azurecli
-az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID
-```
-
-Pour terminer la configuration, affichez la valeur de l’ID client, dont vous aurez besoin dans les prochaines étapes :
-
-```bash
-echo $clientID
+# Get the client ID (application ID) of the system-assigned managed identity
+az ad sp list --display-name obs-locdev-wus2 --query [*].appId --out tsv
 ```
 
 ## <a name="creating-a-postgresql-user-for-your-managed-identity"></a>Création d’un utilisateur PostgreSQL pour votre identité managée
 
-À présent, connectez-vous en tant qu’utilisateur administrateur Azure AD à votre base de données PostgreSQL, puis exécutez les instructions SQL suivantes :
+Connectez-vous à présent en tant qu’utilisateur administrateur Azure AD à votre base de données PostgreSQL, puis exécutez les instructions SQL suivantes en remplaçant `CLIENT_ID` par l’ID client que vous avez récupéré pour votre identité managée affectée par le système :
 
 ```sql
 SET aad_validate_oids_in_tenant = off;
 CREATE ROLE myuser WITH LOGIN PASSWORD 'CLIENT_ID' IN ROLE azure_ad_user;
 ```
 
-L’identité managée dispose désormais d’un accès lors de l’authentification avec le nom d’utilisateur `myuser` (remplacez par le nom de votre choix).
+L’identité managée dispose désormais d’un accès lors de l’authentification avec le nom d’utilisateur `myuser` (remplacez-le par le nom de votre choix).
 
 ## <a name="retrieving-the-access-token-from-azure-instance-metadata-service"></a>Récupération du jeton d’accès à partir d’Azure Instance Metadata Service
 
@@ -101,7 +86,7 @@ Vous êtes maintenant connecté à la base de données que vous avez configurée
 
 Cette section montre comment obtenir un jeton d’accès à l’aide de l’identité managée affectée par l’utilisateur de la machine virtuelle et comment l’utiliser pour appeler Azure Database pour PostgreSQL. Azure Database pour PostgreSQL prenant en charge Azure AD Authentication en mode natif, il peut accepter directement des jetons d’accès obtenus à l’aide d’identités managées pour les ressources Azure. Lors de la création d’une connexion à PostgreSQL, vous transmettez le jeton d’accès dans le champ du mot de passe.
 
-Voici un exemple de code .NET pour l’ouverture d’une connexion à PostgreSQL à l’aide d’un jeton d’accès. Pour permettre l’accès au point de terminaison de l’identité managée affectée par l’utilisateur de la machine virtuelle, ce code doit s’exécuter sur la machine virtuelle. Pour pouvoir utiliser la méthode de jeton d’accès,le logiciel .NET Framework 4.6 ou version ultérieure ou .NET Core 2.2 ou version ultérieure est requis. Remplacez les valeurs de HOST, USER, DATABASE et CLIENT_ID.
+Voici un exemple de code .NET pour l’ouverture d’une connexion à PostgreSQL à l’aide d’un jeton d’accès. Ce code doit s’exécuter sur la machine virtuelle pour utiliser l’identité managée affectée par le système et obtenir un jeton d’accès auprès d’Azure AD. Remplacez les valeurs de HOST, USER, DATABASE et CLIENT_ID.
 
 ```csharp
 using System;
@@ -112,6 +97,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Npgsql;
+using Azure.Identity;
 
 namespace Driver
 {
@@ -122,31 +108,25 @@ namespace Driver
         private static string Host = "HOST";
         private static string User = "USER";
         private static string Database = "DATABASE";
-        private static string ClientId = "CLIENT_ID";
+        //private static string ClientId = "CLIENT_ID";
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //
             // Get an access token for PostgreSQL.
             //
-            Console.Out.WriteLine("Getting access token from Azure Instance Metadata service...");
+            Console.Out.WriteLine("Getting access token from Azure AD...");
 
             // Azure AD resource ID for Azure Database for PostgreSQL is https://ossrdbms-aad.database.windows.net/
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fossrdbms-aad.database.windows.net&client_id=" + ClientId);
-            request.Headers["Metadata"] = "true";
-            request.Method = "GET";
             string accessToken = null;
 
             try
             {
                 // Call managed identities for Azure resources endpoint.
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                var sqlServerTokenProvider = new DefaultAzureCredential();
+                accessToken = (await sqlServerTokenProvider.GetTokenAsync(
+                    new Azure.Core.TokenRequestContext(scopes: new string[] { "https://ossrdbms-aad.database.windows.net/.default" }) { })).Token;
 
-                // Pipe response Stream to a StreamReader and extract access token.
-                StreamReader streamResponse = new StreamReader(response.GetResponseStream());
-                string stringResponse = streamResponse.ReadToEnd();
-                var list = JsonSerializer.Deserialize<Dictionary<string, string>>(stringResponse);
-                accessToken = list["access_token"];
             }
             catch (Exception e)
             {
@@ -159,7 +139,7 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};SSLMode=Prefer",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4}; SSLMode=Prefer",
                     Host,
                     User,
                     Database,
@@ -189,12 +169,12 @@ namespace Driver
 Quand elle est exécutée, cette commande donne une sortie semblable à celle-ci :
 
 ```
-Getting access token from Azure Instance Metadata service...
+Getting access token from Azure AD...
 Opening connection using access token...
 
 Connected!
 
-Postgres version: PostgreSQL 11.6, compiled by Visual C++ build 1800, 64-bit
+Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 ```
 
 ## <a name="next-steps"></a>Étapes suivantes

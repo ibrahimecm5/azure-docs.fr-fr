@@ -10,20 +10,20 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 09/25/2018
-ms.openlocfilehash: bd1884785f5c6e84abd4aae5af29805ec4c004cb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/18/2021
+ms.openlocfilehash: d3cf9b884dd1d2610aabe0aa0869ab8ad528da01
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524812"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216224"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Gérer les données historiques dans ses tables temporelles avec la stratégie de rétention
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Par rapport aux tables normales, les tables temporelles peuvent augmenter la taille des bases de données, notamment si vous conservez les données historiques pendant plus longtemps. Par conséquent, une stratégie de rétention des données d’historique est un aspect important de la planification et de la gestion du cycle de vie de chaque table temporelle. Les tables temporelles dans Azure SQL Database et Azure SQL Managed Instance sont fournies avec un mécanisme de conservation des données destiné à vous aider à accomplir cette tâche.
 
-La rétention d’historique temporelle peut être configurée au niveau de la table individuelle, ce qui permet aux utilisateurs de créer des stratégies de vieillissement flexibles. L’application de la rétention temporelle est simple : un seul paramètre doit être défini durant la création de la table ou le changement de schéma.
+La conservation de l’historique temporel peut être configurée au niveau de la table, ce qui permet aux utilisateurs de créer des stratégies de vieillissement flexibles. L’application de la rétention temporelle est simple : un seul paramètre doit être défini durant la création de la table ou le changement de schéma.
 
 Une fois que vous avez défini la stratégie de rétention, Azure SQL Database et Azure SQL Managed Instance commencent à vérifier régulièrement s’il existe des lignes de l’historique éligibles pour le nettoyage automatique des données. L’identification des lignes correspondantes et leur suppression de la table d’historique se produisent de façon transparente, dans la tâche en arrière-plan planifiée et exécutée par le système. La condition d’âge des lignes de la table d’historique est vérifiée en fonction de la colonne représentant la fin de la période SYSTEM_TIME. Par exemple, si la période de rétention est définie à six mois, les lignes de table éligibles pour un nettoyage répondent à la condition suivante :
 
@@ -182,7 +182,5 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour apprendre à utiliser les tables temporelles dans vos applications, consultez [Prise en main des tables temporelles](../temporal-tables.md).
-
-Visitez Channel 9 pour entendre le [témoignage d’un client sur l’implémentation temporelle](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) et regardez une [démonstration temporelle en direct](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 
 Pour plus d’informations sur les tables temporelles, consultez la rubrique [Tables temporelles](/sql/relational-databases/tables/temporal-tables).

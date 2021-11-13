@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0fa173769e50b8d3d06199e166d2507281abc12e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734959"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240164"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Gestion et maintenance de l’agent Log Analytics sous Windows et Linux
 
@@ -22,7 +22,7 @@ L’agent Log Analytics pour Windows et Linux peut être mis à niveau vers la d
 
 | Environnement | Méthode d’installation | Méthode de mise à niveau |
 |--------|----------|-------------|
-| Azure VM | Extension de machine virtuelle d’agent Log Analytics pour Windows/Linux | L’agent est automatiquement mis à niveau par défaut, sauf si vous avez configuré votre modèle Azure Resource Manager pour la désactiver en définissant la valeur de la propriété *autoUpgradeMinorVersion* sur **false**. |
+| Azure VM | Extension de machine virtuelle d’agent Log Analytics pour Windows/Linux | L’agent est automatiquement mis à niveau par défaut [après le changement de modèle de machine virtuelle](../../virtual-machines/extensions/features-linux.md#how-do-agents-and-extensions-get-updated), sauf si vous avez configuré votre modèle Azure Resource Manager de façon à l’ignorer en définissant la valeur de la propriété *autoUpgradeMinorVersion* sur **false**. |
 | Images de machines virtuelles Azure personnalisées | Installation manuelle de l’agent Log Analytics pour Windows ou Linux | La mise à jour des machines virtuelles vers la dernière version de l’agent doit être effectuée à partir de la ligne de commande avec exécution du package d’installation de Windows ou de Linux auto-extractible et du package de script d’installation.|
 | Machines virtuelles non Azure | Installation manuelle de l’agent Log Analytics pour Windows ou Linux | La mise à jour des machines virtuelles vers la dernière version de l’agent doit être effectuée à partir de la ligne de commande avec exécution du package d’installation de Windows ou de Linux auto-extractible et du package de script d’installation. |
 

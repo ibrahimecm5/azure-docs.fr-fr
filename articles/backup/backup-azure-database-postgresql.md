@@ -2,13 +2,16 @@
 title: Sauvegarder Azure Database pour PostgreSQL
 description: Découvrir la sauvegarde Azure Database pour PostgreSQL avec conservation à long terme (préversion)
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: a012ef97db27b97039fa7aac7b108ca86afb9314
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 4121326bf36c71c3f98894bd8413dc1ae5f57a06
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219618"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458922"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Sauvegarde Azure Database pour PostgreSQL avec conservation à long terme (préversion)
 
@@ -31,6 +34,9 @@ Vous pouvez configurer une sauvegarde sur plusieurs bases de données sur plusie
    :::image type="content" source="./media/backup-azure-database-postgresql/create-or-add-backup-policy-inline.png" alt-text="Capture d’écran montrant l’option permettant d’ajouter une stratégie de sauvegarde." lightbox="./media/backup-azure-database-postgresql/create-or-add-backup-policy-expanded.png":::
 
 1. **Sélectionnez les bases de données Azure Postgres à sauvegarder** : Choisissez l’un des serveurs Azure PostgreSQL parmi les abonnements s’ils se trouvent dans la même région que celle du coffre. Développez la flèche pour voir la liste des bases de données au sein d’un serveur.
+
+   >[!Note]
+   >Vous ne pouvez pas (et n’avez pas besoin de) sauvegarder les bases de données *azure_maintenance* et *azure_sys*. En outre, vous ne pouvez pas sauvegarder une base de données déjà sauvegardée dans un coffre de sauvegarde.
 
    :::image type="content" source="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-inline.png" alt-text="Capture d’écran montrant l’option permettant de sélectionner une base de données Azure PostgreSQL." lightbox="./media/backup-azure-database-postgresql/select-azure-postgresql-databases-to-back-up-expanded.png":::
 
@@ -115,7 +121,7 @@ Vous pouvez créer une stratégie de sauvegarde en cours de route pendant le flu
    - Les durées de conservation vont de 7 jours à 10 ans dans le **Magasin de données des sauvegardes**.
    - Les durées de conservation vont de 6 mois à 10 ans dans le **Magasin de données des archives**.
 
-   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="Capture d’écran montrant l’étape 5. Choisir À l’expiration pour déplacer la sauvegarde vers le magasin de données des archives quand elle expire." lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
+   :::image type="content" source="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-inline.png" alt-text="Capture d’écran montrant le choix de À l’expiration pour déplacer la sauvegarde vers le magasin de données des archives quand elle expire." lightbox="./media/backup-azure-database-postgresql/choose-option-to-move-backup-to-archive-data-store-expanded.png":::
 
 >[!Note]
 >Les règles de conservation sont évaluées selon un ordre de priorité prédéterminé. La priorité est la plus élevée pour la règle annuelle, suivie de la règle mensuelle, puis de la règle hebdomadaire. Les paramètres de conservation par défaut sont appliqués quand aucune autre règle n’est éligible. Par exemple, le même point de récupération peut être la première sauvegarde réussie effectuée chaque semaine ainsi que la première sauvegarde réussie effectuée chaque mois. Cependant, comme la priorité de la règle mensuelle est supérieure à celle de la règle hebdomadaire, la rétention correspondant à la première sauvegarde réussie effectuée chaque mois s’applique.

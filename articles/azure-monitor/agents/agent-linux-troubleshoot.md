@@ -4,25 +4,17 @@ description: Décrit les symptômes, les causes et les solutions aux problèmes 
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/21/2019
-ms.openlocfilehash: e3e65bd40bfceb6a48d4ce917c274f6532aa30e7
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 10/21/2021
+ms.openlocfilehash: fce62f3bbe5a3eca29f89cb47c98df6485d1d123
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122525614"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216558"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Guide pratique pour résoudre les problèmes liés à l’agent Log Analytics pour Linux
 
 Cet article fournit une assistance sur les erreurs que vous pourriez rencontrer avec l’agent Log Analytics pour Linux dans Azure Monitor et suggère des solutions possibles pour les résoudre.
-
-Si aucune de ces étapes ne fonctionne, les canaux de support suivants sont également disponibles :
-
-* Les clients bénéficiant d’un support Premier peuvent ouvrir une demande de support auprès du [Support Premier](https://premier.microsoft.com/).
-* Les clients titulaires d’un contrat de support Azure peuvent ouvrir une demande de support [sur le portail Azure](https://azure.microsoft.com/support/options/).
-* Diagnostiquez les problèmes liés à OMI avec le [Guide de dépannage pour OMI](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
-* Déposez un [problème GitHub](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Visitez la page de commentaires de Log Analytics pour consulter les idées et bogues soumis sur [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) ou en partager de nouveaux.
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Outil de résolution des problèmes Log Analytics
 
@@ -36,9 +28,10 @@ L’outil de dépannage peut être exécuté en collant la commande suivante dan
 
 L’outil de résolution des problèmes est inclus automatiquement lors de l’installation de l’agent Log Analytics. Toutefois, si l’installation échoue de quelque façon que ce soit, vous pouvez également l’installer manuellement en suivant les étapes ci-dessous.
 
-1. Copiez le pack de l’utilitaire de résolution des problèmes sur votre ordinateur : `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
-2. Décompressez le pack : `tar -xzvf omsagent_tst.tar.gz`
-3. Exécutez l’installation manuelle : `sudo ./install_tst`
+1. Vérifiez que le [GDB (GNU Project Debugger)](https://www.gnu.org/software/gdb/) est installé sur l’ordinateur, car l’utilitaire de résolution des problèmes en dépend.
+2. Copiez le pack de l’utilitaire de résolution des problèmes sur votre ordinateur : `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+3. Décompressez le pack : `tar -xzvf omsagent_tst.tar.gz`
+4. Exécutez l’installation manuelle : `sudo ./install_tst`
 
 ### <a name="scenarios-covered"></a>Scénarios couverts
 
@@ -494,3 +487,17 @@ Effectuez les étapes suivantes pour résoudre le problème.
     ```
 
 3. Mettez à niveau les packages en exécutant `sudo sh ./omsagent-*.universal.x64.sh --upgrade`.
+
+## <a name="issue-installation-is-failing-saying-python2-cannot-support-ctypes-even-though-python3-is-being-used"></a>Problème : L’installation échoue et indique que Python2 ne peut pas prendre en charge les ctypes, même si Python3 est utilisé
+
+### <a name="probable-causes"></a>Causes probables
+
+Il existe un problème connu où, si la langue de la machine virtuelle n’est pas l’anglais, un contrôle échoue lors de la vérification de la version de Python utilisée. En conséquence, l’agent part toujours du principe que Python2 est utilisé, et un échec se produit si Python2 et absent.
+
+### <a name="resolution"></a>Résolution
+
+Modifiez la langue de l’environnement de la machine virtuelle sur l’anglais :
+
+```
+export LANG=en_US.UTF-8
+```

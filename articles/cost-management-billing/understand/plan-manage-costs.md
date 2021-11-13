@@ -2,20 +2,20 @@
 title: Planifier la gestion des coûts Azure
 description: Découvrez comment planifier la gestion des coûts Azure et utiliser les fonctionnalités de suivi et de gestion des coûts pour votre compte Azure.
 author: bandersmsft
-ms.reviewer: amberb
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 10/20/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d1a76078db3acd79d1f59ce43852d538edac7964
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 63542b241d26964d1f24fbe6744b4cbd6bccd6c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710888"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215723"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Planifier la gestion des coûts Azure
 
@@ -152,6 +152,7 @@ Les vues des coûts d’entreprise sont actuellement en préversion publique. É
     - Vous êtes administrateur de service et l’administrateur de votre inscription a désactivé le paramètre **Affichage des frais pour l’administrateur de service**.  Contactez l’administrateur en charge de votre inscription pour obtenir l’accès.
     - Vous avez acheté Azure par le biais d’un partenaire et ce dernier n’a pas publié d’informations tarifaires.  
 - Si vous mettez à jour des paramètres liés à l’accès aux coûts dans le portail d’entreprise, vous devrez attendre quelques minutes avant que les modifications ne s’affichent dans le portail Azure.
+- Les clients EA directs peuvent mettre à jour les paramètres liés aux coûts dans le [portail Azure](https://portal.azure.com/). Accédez au menu Stratégies pour modifier les paramètres.
 - La limite de dépense et les conseils de facturation ne s’appliquent pas aux abonnements EA.
 
 ### <a name="check-your-subscription-and-access"></a>Vérifiez votre abonnement et votre accès

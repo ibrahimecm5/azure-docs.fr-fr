@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: c8d12e533da11f1cf1db2be800b8f1ac3ed02d90
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: fb7f606b0427a5b3f5293fd82bfd9a0544bc945f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669166"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226335"
 ---
-# <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Ajouter la prise en charge IPv6 pour le Peering privé à l’aide du Portail Azure (préversion)
+# <a name="add-ipv6-support-for-private-peering-using-the-azure-portal"></a>Ajouter la prise en charge IPv6 pour le Peering privé à l’aide du Portail Azure
 
 Cet article explique comment ajouter la prise en charge IPv6 pour se connecter via ExpressRoute à vos ressources dans Azure à l’aide du Portail Azure.
 

@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 11/02/2021
 keywords: qna maker, chatbot avec peu de code, invites multitours
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 861f888371971a90378639a2ec5cc288c8d7a23f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8249fa4f276b7474740e2c8d882abc4e69c9487d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029031"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476487"
 ---
 # <a name="what-is-question-answering"></a>Qu’est-ce que Réponse aux questions ?
 
 Réponse aux questions fournit un traitement en langage naturel (NLP, Natural Language Processing) qui vous permet de créer une couche conversationnelle naturelle sur vos données. Il est utilisé pour trouver la réponse la plus appropriée à une entrée à partir de votre base de connaissances personnalisée (base d’informations).
 
-Réponse aux questions est couramment utilisé pour créer des applications clientes conversationnelles, notamment des applications de réseaux sociaux, des chatbots et des applications de bureau à reconnaissance vocale.
+Réponse aux questions est couramment utilisé pour créer des applications clientes conversationnelles, notamment des applications de réseaux sociaux, des chatbots et des applications de bureau à reconnaissance vocale. Plusieurs nouvelles fonctionnalités ont été ajoutées, notamment une pertinence accrue grâce à un ranker de Deep Learning, des réponses précises et une prise en charge régionale de bout en bout.
 
 Cette documentation contient les types d’articles suivants :
 
@@ -29,14 +29,14 @@ Cette documentation contient les types d’articles suivants :
 
 ## <a name="when-to-use-question-answering"></a>Quand utiliser Réponse aux questions ?
 
-* **Quand vous avez des informations statiques** : utilisez Réponse aux questions quand vous avez des informations statiques dans votre base de connaissances de réponses. Cette base de connaissances, créée avec des documents tels que [des PDF et des contenus accessibles par des URL](../../qnamaker/Concepts/data-sources-and-content.md), est personnalisée en fonction de vos besoins.
+* **Quand vous avez des informations statiques** : utilisez Réponse aux questions quand vous avez des informations statiques dans votre base de connaissances de réponses. Cette base de connaissances est personnalisée en fonction de vos besoins, que vous avez créés avec des documents tels que des PDF et des URL.
 * **Quand vous souhaitez fournir la même réponse à une requête, une question ou une commande** : quand différents utilisateurs soumettent la même question, la même réponse est retournée.
-* **Quand vous souhaitez filtrer des informations statiques en fonction de méta-informations** : ajoutez des balises de [métadonnées](../../qnamaker/how-to/metadata-generateanswer-usage.md) pour fournir des options de filtrage supplémentaires relatives aux utilisateurs et informations de votre application cliente. Les [échanges](./how-to/chit-chat.md), types ou formats de contenu, objets de contenu et actualisations de contenu représentent des informations de métadonnées courantes. <!--TODO: Fix Link-->
-* **Quand vous souhaitez gérer une conversation de bot incluant des informations statiques** : votre base de connaissances répond à une commande ou au texte conversationnel d’un utilisateur. Si la réponse fait partie d’un flux de conversation prédéterminé, représenté dans votre base de connaissances avec un [contexte multitour](../../qnamaker/how-to/multiturn-conversation.md), le bot peut facilement fournir ce flux.
+* **Quand vous souhaitez filtrer des informations statiques en fonction de méta-informations** : ajoutez des balises de [métadonnées](./tutorials/multiple-domains.md) pour fournir des options de filtrage supplémentaires relatives aux utilisateurs et informations de votre application cliente. Les [échanges](./how-to/chit-chat.md), types ou formats de contenu, objets de contenu et actualisations de contenu représentent des informations de métadonnées courantes. <!--TODO: Fix Link-->
+* **Quand vous souhaitez gérer une conversation de bot incluant des informations statiques** : votre base de connaissances répond à une commande ou au texte conversationnel d’un utilisateur. Si la réponse fait partie d’un flux de conversation prédéterminé, représenté dans votre base de connaissances avec un [contexte multitour](./tutorials/guided-conversations.md), le bot peut facilement fournir ce flux.
 
 ## <a name="what-is-a-knowledge-base"></a>Qu’est-ce qu’une base de connaissances ?
 
-Réponse aux questions [importe votre contenu](../../qnamaker/Concepts/plan.md) dans une base de connaissances comprenant des paires question/réponse. Le processus d’importation extrait des informations sur la relation entre les différentes parties de votre contenu structuré et semi-structuré pour définir des relations entre les paires question/réponse. Vous pouvez modifier ces paires question/réponse ou en ajouter de nouvelles.
+Réponse aux questions [importe votre contenu](./how-to/manage-knowledge-base.md) dans une base de connaissances comprenant des paires question/réponse. Le processus d’importation extrait des informations sur la relation entre les différentes parties de votre contenu structuré et semi-structuré pour définir des relations entre les paires question/réponse. Vous pouvez modifier ces paires question/réponse ou en ajouter de nouvelles.
 
 Le contenu de la paire question/réponse comprend les éléments suivants :
 * Toutes les autres formes de la question

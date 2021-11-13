@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 03/08/2021
-ms.openlocfilehash: 0a00ad012f38a142332a62846e78c2ae87460464
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/21/2021
+ms.openlocfilehash: fd0bb1394ce2ce8b8cf8d58ece5834f08e538eaa
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128659492"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556195"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>Reconstruire une expérience Studio (classique) dans Azure Machine Learning
 
@@ -42,16 +42,16 @@ Dans Azure Machine Learning, le graphique visuel est appelé un **brouillon de p
 1. Accédez à Azure Machine Learning studio ([ml.azure.com](https://ml.azure.com)).
 1. Dans le volet de navigation de gauche, sélectionnez **Concepteur** > **Modules prédéfinis faciles à utiliser**. ![Capture d’écran montrant comment créer un brouillon de pipeline.](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
-1. Régénérez manuellement votre expérience avec des modules du concepteur.
+1. Regénérez manuellement votre expérience avec des composants du concepteur.
     
-    Consultez le [tableau de correspondance des modules](migrate-overview.md#studio-classic-and-designer-module-mapping) pour rechercher les modules de remplacement. Plusieurs des modules les plus populaires de Studio (classique) ont des versions identiques dans le concepteur.
+    Consultez le [tableau de correspondance des modules](migrate-overview.md#studio-classic-and-designer-component-mapping) pour rechercher les modules de remplacement. Plusieurs des modules les plus populaires de Studio (classique) ont des versions identiques dans le concepteur.
 
     > [!Important]
     > Si votre expérience utilise le module Exécuter un script R, vous devez effectuer des étapes supplémentaires pour migrer votre expérience. Pour plus d’informations, consultez [Migrer des modules de script R](migrate-execute-r-script.md).
 
 1. Ajustez les paramètres.
     
-    Sélectionnez chaque module et ajustez les paramètres dans le panneau des paramètres du module à droite. Utilisez les paramètres pour recréer les fonctionnalités de votre expérience Studio (classique). Pour plus d’informations sur chaque module, consultez la [référence relative aux modules](./algorithm-module-reference/module-reference.md).
+    Sélectionnez chaque module et ajustez les paramètres dans le panneau des paramètres du module à droite. Utilisez les paramètres pour recréer les fonctionnalités de votre expérience Studio (classique). Pour plus d’informations sur chaque module, consultez la [référence relative aux modules](./component-reference/component-reference.md).
 
 ## <a name="submit-a-run-and-check-results"></a>Envoyer une exécution et vérifier les résultats
 
@@ -86,7 +86,7 @@ Une fois l’exécution terminée, vous pouvez vérifier les résultats de chaqu
     - **Afficher le journal** : Affiche les journaux du pilote et du système. Utilisez le **70_driver_log** pour voir les informations relatives à votre script envoyé par l’utilisateur, telles que les erreurs et les exceptions.
 
 > [!IMPORTANT]
-> Les modules du concepteur utilisent des packages Python open source, tandis qu’il s’agit de packages C# dans Studio (classique). Par conséquence, la sortie du module peut varier légèrement entre le concepteur et Studio (classique). 
+> Les composants du concepteur utilisent des packages Python open source, alors qu’il s’agit de packages C# dans Studio (classique). Par conséquence, la sortie du module peut varier légèrement entre le concepteur et Studio (classique). 
 
 
 ## <a name="next-steps"></a>Étapes suivantes

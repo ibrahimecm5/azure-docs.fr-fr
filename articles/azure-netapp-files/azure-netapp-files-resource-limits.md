@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 4a97b89957a4f451aaa9c7305535f87980234db2
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 9404d6052093880ff25ded0492e4a3fb87202f09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094288"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252494"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limites des ressources pour Azure NetApp Files
 
@@ -31,7 +31,7 @@ Le tableau suivant décrit les limites des ressources pour Azure NetApp Files :
 
 |  Ressource  |  Limite par défaut  |  Ajustable via une demande de support  |
 |----------------|---------------------|--------------------------------------|
-|  [Quota de capacité régional par abonnement](#regional-capacity-quota)   |  25 Tio  |  Oui  |
+|  [Quota de capacité régional par abonnement](regional-capacity-quota.md)   |  25 Tio  |  Oui  |
 |  Nombre de comptes NetApp par région Azure par abonnement  |  10    |  Oui   |
 |  Nombre de pools de capacités par compte NetApp   |    25     |   Oui   |
 |  Nombre de volumes par abonnement   |    500     |   Oui   |
@@ -56,7 +56,7 @@ Le tableau suivant décrit les limites des ressources pour Azure NetApp Files :
 |  Nombre maximal de volumes pouvant être sauvegardés par abonnement   |  5  |  Y  |
 |  Nombre maximal de sauvegardes manuelles par volume et par jour |  5  |  Y  |
 
-Pour plus d’informations, consultez [Questions fréquentes (FAQ) sur la gestion de la capacité](azure-netapp-files-faqs.md#capacity-management-faqs).
+Pour plus d’informations, consultez [Questions fréquentes (FAQ) sur la gestion de la capacité](faq-capacity-management.md).
 
 ## <a name="determine-if-a-directory-is-approaching-the-limit-size"></a>Déterminer si un répertoire approche de la taille limite<a name="directory-limit"></a>  
 
@@ -98,21 +98,6 @@ Si vous avez déjà alloué au moins 4 Tio de quota pour un volume, vous pouvez 
 
 Vous pouvez augmenter la limite maxfiles à 500 millions si votre quota de volume est d’au moins 20 Tio. <!-- ANF-11854 --> 
 
-## <a name="regional-capacity-quota"></a>Quota de capacité régional
-
-vous pouvez cliquer sur **Quota** sous Paramètres de Azure NetApp Files pour afficher les tailles de quota actuelles et par défaut pour la région. 
-
-Par exemple : 
-
-![Capture d’écran montrant comment afficher des informations de quota.](../media/azure-netapp-files/quota-display.png) 
-
-Vous pouvez [envoyer une demande de support](#request-limit-increase) pour une augmentation du quota de capacité régionale sans frais supplémentaires. La demande de support que vous envoyez sera envoyée à l’équipe de gestion de la capacité Azure pour traitement. Vous recevrez une réponse généralement dans un délai de 2 jours ouvrables. L’équipe de gestion de la capacité Azure peut vous contacter pour la gestion des requêtes volumineuses.  
-
-Une augmentation du quota de capacité régional n’entraîne pas d’augmentation de la facturation. La facturation est toujours basée sur les pools de capacité approvisionnés.
-Par exemple, si vous disposez actuellement de 25 Tio de capacité approvisionnée, vous pouvez demander une augmentation de quota à 35 Tio.  Dans les deux jours ouvrables, votre augmentation du quota sera appliquée à la région demandée. Une fois l’augmentation du quota appliquée, vous payez toujours uniquement la capacité approvisionnée actuelle (25 Tio). Mais lorsque vous approvisionnez en fait les 10 Tio supplémentaires, vous êtes facturé pour 35 Tio.
-
-Les [limites de ressources](#resource-limits) actuelles pour Azure NetApp Files ne sont pas modifiées. Vous serez toujours en mesure d’approvisionner un pool de capacité de 500-Tio. Mais avant cela, le quota de capacité régionale doit être augmenté à 500 Tio.
-
 ## <a name="request-limit-increase"></a>Augmentation de la limite de demandes
 
 Vous pouvez créer une demande de support Azure pour augmenter les limites ajustables à partir du tableau [Limites de ressource](#resource-limits). 
@@ -143,3 +128,4 @@ Vous pouvez créer une demande de support Azure pour augmenter les limites ajust
 
 - [Comprendre la hiérarchie de stockage d’Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 - [Modèle de coût pour Azure NetApp Files](azure-netapp-files-cost-model.md)
+- [Quota de capacité régionale pour Azure NetApp Files](regional-capacity-quota.md)

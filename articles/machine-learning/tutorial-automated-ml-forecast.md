@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 12/21/2020
+ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: dcf05fe6acdb7f8f60520759b0a1b3e3e99fed3e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: cc8ac6d5abe5843c76698e0bf36cdeb8932246e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428005"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559577"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutoriel : Prévoir la demande avec le Machine Learning automatisé
 
@@ -111,9 +111,11 @@ Une fois vos données chargées et configurées, configurez votre cible de calcu
 
     1. Sélectionnez **cnt** comme colonne cible, ce que vous souhaitez prédire. Cette colonne indique le nombre total de locations de vélos en libre-service.
 
-    1. Sélectionnez **Create a new compute** (Créer un nouveau calcul), puis configurez la cible de calcul. Le ML automatisé prend uniquement en charge la capacité de calcul Azure Machine Learning. 
+    1. Sélectionnez **Cluster de calcul** comme type de calcul. 
 
-        1. Remplissez le formulaire **Machine virtuelle** pour configurer votre calcul.
+    1. Sélectionnez **+Nouveau** pour configurer votre cible de calcul. Le ML automatisé prend uniquement en charge la capacité de calcul Azure Machine Learning. 
+
+        1. Remplissez le formulaire **Sélectionner une machine virtuelle** pour configurer votre calcul.
 
             Champ | Description | Valeur pour le tutoriel
             ----|---|---
@@ -127,7 +129,7 @@ Une fois vos données chargées et configurées, configurez votre cible de calcu
             ----|---|---
             Nom du calcul |  Nom unique qui identifie votre contexte de calcul. | bike-compute
             Nombre minimal/maximal de nœuds| Pour profiler des données, vous devez spécifier un ou plusieurs nœuds.|Nœuds min. : 1<br>Nœuds max. : 6
-            Secondes d’inactivité avant le scale-down | Durée d’inactivité avant que le cluster ne fasse l’objet d’un scale-down au nombre de nœuds minimal.|120 (par défaut)
+            Secondes d’inactivité avant le scale-down | Durée d’inactivité avant que le cluster ne fasse l’objet d’un scale-down au nombre de nœuds minimal.|1800 (par défaut)
             Paramètres avancés | Paramètres pour configurer et autoriser un réseau virtuel pour votre expérience.| None 
   
         1. Sélectionnez **Créer** pour accéder à la cible de calcul. 

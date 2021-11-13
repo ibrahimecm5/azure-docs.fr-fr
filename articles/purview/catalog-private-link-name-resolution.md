@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.openlocfilehash: 95d14afebd6567e18aed6e4585c930a3d46ccb42
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: e97ed074cd9c0fee7a2fc3b3c7795d205292da28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137684"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254151"
 ---
 # <a name="configure-and-verify-dns-name-resolution-for-azure-purview-private-endpoints"></a>Configurer et vérifier la résolution de noms DNS pour les points de terminaison privés Azure Purview
 
 > [!IMPORTANT]
-> Si vous avez créé un point de terminaison privé de _portail_ pour votre compte Purview **avant le 27 septembre 2021 à 15h30 UTC**, vous devez effectuer les actions requises détaillées dans [Reconfigurer DNS pour les points de terminaison privés du portail](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints). **Ces actions doivent être effectuées avant le 11 octobre 2021. Dans le cas contraire, les points de terminaison privés du portail existants cesseront de fonctionner**.
+> Si vous avez créé un point de terminaison privé de _portail_ pour votre compte Purview **avant le 27 septembre 2021 à 15h30 UTC**, vous devez effectuer les actions requises détaillées dans [Reconfigurer DNS pour les points de terminaison privés du portail](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints). **Ces actions doivent être effectuées avant le 12 novembre 2021. Sinon, les points de terminaison privés existants du portail cesseront de fonctionner**.
 
 ## <a name="conceptual-overview"></a>Vue d'ensemble conceptuelle
 Une résolution de noms précise est une condition essentielle lors de la configuration de points de terminaison privés pour vos comptes Azure Purview. 

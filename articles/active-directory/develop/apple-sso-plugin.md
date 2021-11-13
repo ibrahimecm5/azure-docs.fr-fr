@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 7fbe4e45e48d3416f530b6845faf702959f92463
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: aaddev
+ms.openlocfilehash: 1e12b2d9512bd7c62a2657e13e74790af6556cd4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067334"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507756"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Plug-in Microsoft Enterprise Single Sign-On pour appareils Apple (préversion)
 
@@ -221,7 +221,7 @@ Utilisez les ID de bundles pour configurer l’authentification unique pour les 
 
 #### <a name="allow-users-to-sign-in-from-unknown-applications-and-the-safari-browser"></a>Autoriser les utilisateurs à se connecter à partir d’applications inconnues et du navigateur Safari
 
-Par défaut, le plug-in Microsoft Enterprise SSO ne fournit l’authentification unique aux applications autorisées que lorsqu’un utilisateur s’est connecté à partir d’une application qui utilise une bibliothèque de plateforme d’identités Microsoft telle que MSAL ou la Bibliothèque d’authentification Active Directory (ADAL). Le plug-in Microsoft Enterprise SSO peut également acquérir des informations d’identification partagées lorsqu’il est appelé par une autre application qui utilise une bibliothèque de plateforme d’identités Microsoft, dans le cadre d’une nouvelle acquisition de jetons.
+Par défaut, le plug-in Microsoft Enterprise SSO ne fournit l’authentification unique aux applications autorisées que lorsqu’un utilisateur s’est connecté à partir d’une application qui utilise une bibliothèque de plateforme d’identités Microsoft comme MSAL. Le plug-in Microsoft Enterprise SSO peut également acquérir des informations d’identification partagées lorsqu’il est appelé par une autre application qui utilise une bibliothèque de plateforme d’identités Microsoft, dans le cadre d’une nouvelle acquisition de jetons.
 
 Lorsque vous activez l’indicateur `browser_sso_interaction_enabled`, les applications qui n’utilisent pas de bibliothèque de plateforme d’identités Microsoft peuvent effectuer l’amorçage initial et obtenir des informations d’identification partagées. Le navigateur Safari peut également effectuer l’amorçage initial et obtenir des informations d’identification partagées. 
 

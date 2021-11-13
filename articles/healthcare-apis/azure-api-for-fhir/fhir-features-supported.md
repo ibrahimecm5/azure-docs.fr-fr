@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 6/16/2021
+ms.date: 11/11/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5db569349134bd63b0341cc7afb024cfad83b884
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: b6c170a7b2f46adeb4b287424601455bb078aba7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046142"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397297"
 ---
 # <a name="features"></a>Fonctionnalités
 
@@ -27,6 +27,8 @@ Versions antérieures également prises en charge : `3.0.2`
 
 ## <a name="rest-api"></a>API REST
 
+Vous trouverez ci-dessous un résumé des fonctionnalités RESTful prises en charge. Pour plus d’informations sur l’implémentation de ces fonctionnalités, consultez fonctionnalités de l' [API REST FHIR](fhir-rest-api-capabilities.md).
+
 | API    | API Azure pour FHIR | Service FHIR dans les API de santé | Commentaire |
 |--------|--------------------|---------------------------------|---------|
 | lire   | Oui                | Oui                             |         |
@@ -36,8 +38,6 @@ Versions antérieures également prises en charge : `3.0.2`
 | update (conditional)           | Oui       | Oui       |
 | patch                          | Oui       | Oui       | Prise en charge du [correctif JSON](https://www.hl7.org/fhir/http.html#patch) uniquement. Nous avons inclus une solution de contournement pour utiliser le correctif JSON dans une offre groupée dans [ce PR](https://github.com/microsoft/fhir-server/pull/2143).|
 | correctif (conditionnel)            | Oui       | Oui       |
-| supprimer                         | Oui       | Oui       | Pour plus d’informations, consultez la section supprimer ci-dessous. |
-| delete (conditional)           | Oui       | Oui       | Pour plus d’informations, consultez la section supprimer ci-dessous. |
 | history                        | Oui       | Oui       |
 | create                         | Oui       | Oui       | Prend en charge POST et PUT |
 | create (conditional)           | Oui       | Oui       | Problème [no 1382](https://github.com/microsoft/fhir-server/issues/1382) |
@@ -52,40 +52,17 @@ Versions antérieures également prises en charge : `3.0.2`
 > [!Note] 
 > dans l’API Azure pour FHIR et le serveur FHIR open source sauvegardé par Cosmos, la recherche chaînée et la recherche chaînée par chaîne est une implémentation MVP. pour effectuer une recherche chaînée sur Cosmos DB, l’implémentation parcourt l’expression de recherche et émet des sous-requêtes pour résoudre les ressources correspondantes. Cette opération est effectuée pour chaque niveau de l’expression. Si une requête retourne plus de 1000 résultats, une erreur est générée.
 
-### <a name="delete-and-conditional-delete"></a>Delete et suppression conditionnelle
-
-La suppression définie par la spécification FHIR nécessite qu’après la suppression, les lectures suivantes non spécifiques à la version d’une ressource retournent un code d’état HTTP 410 et que la ressource ne soit plus trouvée via la recherche. L’API Azure pour FHIR et le service FHIR vous permettent également de supprimer entièrement (y compris l’historique) la ressource. Pour supprimer entièrement la ressource, vous pouvez passer une valeur de paramètre `hardDelete` définie sur true (`DELETE {server}/{resource}/{id}?hardDelete=true`). Si vous ne transmettez pas ce paramètre ou que vous lui donnez la valeur false, les versions historiques de la ressource restent disponibles.
-
-En plus de supprimer, l’API Azure pour FHIR et le service FHIR prennent en charge la suppression conditionnelle, qui vous permet de passer un critère de recherche pour supprimer une ressource. Par défaut, la suppression conditionnelle vous permet de supprimer un élément à la fois. Vous pouvez également spécifier le `_count` paramètre pour supprimer jusqu’à 100 éléments à la fois. Voici quelques exemples d’utilisation de la suppression conditionnelle.
-
-Pour supprimer un seul élément à l’aide de la suppression conditionnelle, vous devez spécifier des critères de recherche qui renvoient un seul élément.
-``` JSON
-DELETE https://{{hostname}}/Patient?identifier=1032704
-```
-
-Vous pouvez effectuer la même recherche, mais inclure hardDelete = true pour supprimer également tout l’historique.
-```JSON 
-DELETE https://{{hostname}}/Patient?identifier=1032704&hardDelete=true
-```
-
-Si vous souhaitez supprimer plusieurs ressources, vous pouvez inclure `_count=100` , qui supprimera jusqu’à 100 ressources correspondant aux critères de recherche. 
-``` JSON
-DELETE https://{{hostname}}/Patient?identifier=1032704&_count=100
-```
-
 ## <a name="extended-operations"></a>Opérations étendues
 
 Toutes les opérations prises en charge qui étendent l’API REST.
 
 | Type de paramètre de recherche | API Azure pour FHIR | Service FHIR dans les API de santé| Commentaire |
 |------------------------|-----------|-----------|---------|
-| $export (système entier) | Oui       | Oui       |         |
-| Patient/$export        | Oui       | Oui       |         |
-| Group/$export          | Oui       | Oui       |         |
-| $convert-data          | Oui       | Oui       |         |
-| $validate              | Oui       | Oui       |         |
-| $member-correspondance          | Oui       | Oui       |         |
-| $patient-tout    | Oui       | Oui       |         |
+| [$Export](../../healthcare-apis/data-transformation/export-data.md) (système entier) | Oui       | Oui       | Prend en charge les systèmes, les groupes et les patients.   |
+| [$convert-data](convert-data.md)          | Oui       | Oui       |         |
+| [$validate](validation-against-profiles.md)              | Oui       | Oui       |         |
+| [$member-correspondance](tutorial-member-match.md)          | Oui       | Oui       |         |
+| [$patient-tout](patient-everything.md)    | Oui       | Oui       |         |
 | historique des $purge         | Oui       | Oui       |         |
 
 ## <a name="persistence"></a>Persistance
@@ -116,7 +93,7 @@ Actuellement, les actions autorisées pour un rôle donné sont appliquées *à 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez obtenu des informations sur les fonctionnalités FHIR prises en charge dans l’API Azure pour FHIR. Déployez ensuite l’API Azure pour FHIR.
+Dans cet article, vous avez obtenu des informations sur les fonctionnalités FHIR prises en charge dans l’API Azure pour FHIR. Pour plus d’informations sur le déploiement de l’API Azure pour FHIR, consultez
  
 >[!div class="nextstepaction"]
 >[Déployer l’API Azure pour FHIR](fhir-paas-portal-quickstart.md)

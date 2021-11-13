@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bba7516637bedf6e81747cbb27f926964c63f53
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3723896da2cd14762fd3fe81fa50caaa4b74b0b8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556506"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250708"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Canaux de télémétrie dans Application Insights
 
@@ -94,7 +94,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> La configuration du canal avec `TelemetryConfiguration.Active` n’est pas recommandée pour les applications ASP.NET Core.
+> La configuration du canal avec `TelemetryConfiguration.Active` n’est pas prise en charge pour les applications ASP.NET Core.
 
 ### <a name="configuration-in-code-for-netnet-core-console-applications"></a>Configuration dans le code pour les applications console .NET/.NET Core
 
@@ -147,7 +147,9 @@ En bref, la réponse est qu’aucun des canaux intégrés n’offre une garantie
 
 1. Dans Windows, les emplacements par défaut sur le disque où sont stockées les données de télémétrie sont les dossiers %LOCALAPPDATA% ou %TEMP%. Ces emplacements se trouvent généralement sur la machine locale. Si l’application est migrée physiquement d’un emplacement à un autre, les données de télémétrie stockées à l’emplacement d’origine sont perdues.
 
-1. Dans Web Apps sur Windows, l’emplacement de stockage sur disque par défaut est D:\local\LocalAppData. Cet emplacement n’est pas persistant. Il est supprimé après le redémarrage de l’application, sa mise à l’échelle ou autre opération de ce type, et toutes les données de télémétrie stockées à cet emplacement sont perdues. Vous pouvez remplacer la valeur par défaut et spécifier un emplacement de stockage persistant, comme D:\home. Notez toutefois que ces emplacements persistants sont gérés par le stockage distant et qu’ils peuvent donc être lents.
+1. Dans Azure Web Apps sur Windows, l’emplacement de stockage sur disque par défaut est D:\local\LocalAppData. Cet emplacement n’est pas persistant. Il est supprimé après le redémarrage de l’application, sa mise à l’échelle ou autre opération de ce type, et toutes les données de télémétrie stockées à cet emplacement sont perdues. Vous pouvez remplacer la valeur par défaut et spécifier un emplacement de stockage persistant, comme D:\home. Notez toutefois que ces emplacements persistants sont gérés par le stockage distant et qu’ils peuvent donc être lents.
+
+Bien que cela soit moins probable, il est également possible que le canal puisse générer des doublons d’éléments de télémétrie. Cela se produit lorsque `ServerTelemetryChannel` effectue de nouvelles tentatives en raison d’une défaillance du réseau ou de l’expiration d’un délai, lorsque la télémétrie a été remise au back-end, mais que la réponse a été perdue en raison de problèmes réseau ou de l’expiration d’un délai d’attente.
 
 ### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>Le canal ServerTelemetryChannel fonctionne-t-il sur d’autres systèmes que Windows ?
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e99d08e638569c68043bb67f090bc7ce41982ca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664900"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215031"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Se connecter à Azure Database for MariaDB avec la redirection
 
@@ -21,6 +21,9 @@ Cette rubrique explique comment connecter une application à votre serveur Azure
 Connectez-vous au [portail Azure](https://portal.azure.com). Créez un serveur Azure Database for MariaDB avec un moteur version 10.2 ou 10.3. 
 
 Pour plus d’informations, consultez la rubrique sur la création d’un serveur Azure Database for MariaDB à l’aide du [portail Azure](quickstart-create-mariadb-server-database-using-azure-portal.md) ou d’[Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md).
+
+> [!IMPORTANT]
+> La redirection n’est actuellement pas prise en charge avec [Private Link pour Azure Database for MariaDB](concepts-data-access-security-private-link.md).
 
 ## <a name="enable-redirection"></a>Activer la redirection
 

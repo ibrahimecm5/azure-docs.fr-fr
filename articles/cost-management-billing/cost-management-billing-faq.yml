@@ -8,14 +8,14 @@ metadata:
   ms.service: cost-management-billing
   ms.subservice: common
   ms.topic: conceptual
-  ms.date: 10/13/2021
+  ms.date: 10/22/2021
   ms.author: banders
-  ms.openlocfilehash: cc2ee1984af35b357f1c67c03fecacbf17444d22
-  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.openlocfilehash: c38966a630d61279ab34328bf7a76204fb0079ee
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/14/2021
-  ms.locfileid: "129993052"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130229443"
 title: Questions fréquentes (FAQ) sur Cost Management + Billing
 summary: ''
 sections:
@@ -161,7 +161,7 @@ sections:
       Consultez [Voir les frais associés aux machines virtuelles Spot](./costs/cost-analysis-common-uses.md#view-your-spot-vm-charges).
   - question: Comment obtenir un rapport des détails d’une réservation ?
     answer: >
-      Lisez la documentation de l’API pour [générer un rapport des détails d’une réservation](/rest/api/cost-management/generatereservationdetailsreport).
+      Lisez la documentation de l’API pour [générer un rapport des détails d’une réservation](/azure/cost-management-billing/reservations/reservation-utilization).
 - name: Questions sur Azure Contrat Entreprise (EA) et le portail EA
   questions:
   - question: Comment attribuer des autorisations SPN à mon inscription ?
@@ -176,6 +176,9 @@ sections:
   - question: Comment ajouter un nouvel administrateur EA à mon inscription ?
     answer: >
       Un nouvel administrateur d’entreprise peut être ajouté par des administrateurs d’entreprise existants. Si vous êtes l’administrateur EA, connectez-vous au portail EA > cliquez sur **Gérer** > sur **+ Ajouter un administrateur** dans le coin supérieur droit pour ajouter un nouvel administrateur EA. Vérifiez que vous disposez de son adresse e-mail et de la méthode de connexion préférée, via l’authentification professionnelle/scolaire ou Microsoft Live ID par exemple, pour que les utilisateurs soient ajoutés.
+
+
+      Si vous êtes l’administrateur EA d’un accord de mise en œuvre direct, connectez-vous au portail Azure > sélectionnez **Étendue de facturation** > accédez à **Contrôle d’accès (IAM)**> sélectionnez **+ Ajouter** en haut à gauche pour ajouter un nouvel administrateur EA. Veillez à avoir son adresse e-mail et une méthode de connexion par défaut disponible, par exemple, une authentification professionnelle/scolaire ou Microsoft Live ID.
 
 
       Si vous n’êtes pas l’administrateur EA, contactez les administrateurs EA de votre entreprise pour leur demander de vous ajouter à l’inscription. Une fois qu’ils vous ont ajouté à l’inscription, vous recevez un e-mail d’activation.
@@ -220,6 +223,9 @@ sections:
   - question: L’état affiché de mon inscription est En attente. Comment activer mon inscription ?
     answer: >
       Les inscriptions sont à l’état En attente si l’administrateur EA initial ne s’est pas connecté à l’inscription auparavant. Si vous êtes l’administrateur EA, connectez-vous au portail Azure EA. Sur la page d’accueil avec tous vos numéros d’inscription, vous ne verrez peut-être pas votre inscription en attente. Décochez la case « actif » en haut à droite de votre portail EA. Cette action affiche l’inscription en attente. Cliquez sur l’inscription pour accéder aux informations puis, une fois que vous avez atteint la page Gérer de l’inscription, l’état est mis à jour de En attente à Actif.
+
+
+      Si vous êtes un client Entreprise direct, connectez-vous au portail Azure. Dans la page Étendue de facturation, sélectionnez votre compte de facturation. Quand vous êtes dans la page de présentation de l’inscription, l’état **En attente** est mis à jour sur **Actif**. Accédez au menu **Propriétés** pour voir l’état de mise à jour.
   - question: Pourquoi mon compte est-il bloqué à l’état En attente ?
     answer: >
       Quand de nouveaux propriétaires de comptes sont ajoutés pour la première fois à l’inscription, « En attente » s’affiche toujours sous l’état. Lors de la réception de l’e-mail de bienvenue et d’activation, l’AO peut se connecter pour activer son compte. La connexion met à jour l’état du compte de « en attente » à « actif ».
@@ -256,7 +262,7 @@ sections:
       - Supprimez l’abonné Visual Studio du site d’administration dans VLSC et réaffectez l’abonnement à un compte, cette fois avec des informations d’identification différentes. Inscrivez-vous ensuite à nouveau aux avantages individuels de Visual Studio Azure.
   - question: Quel type d’abonnement devrais-je créer ?
     answer: >
-      Le portail Azure Enterprise offre deux types d’abonnements pour les clients d’entreprise :
+      Les clients Azure Enterprise ont deux types d’offres d’abonnement :
 
 
       - Microsoft Azure Enterprise, qui est idéal pour :
@@ -324,6 +330,9 @@ sections:
 
 
       Vous pouvez également accéder aux données d’utilisation par le biais de l’API de création de rapports. Pour obtenir des informations détaillées et des exemples de code, consultez [API REST Azure Enterprise](manage/ea-portal-rest-apis.md).
+
+
+      Les clients Entreprise direct peuvent voir l’utilisation et les dépenses des différents services dans le portail Azure. Accédez au menu **Service** pour voir les frais.
   - question: Puis-je définir un quota de dépenses et recevoir des alertes lorsque je m’approche de ma limite ?
     answer: >
       Vous pouvez définir un quota de dépense au niveau du service. Le système vous informera automatiquement lorsque vos limites de dépense atteindront 50 %, 75 %, 90 % et 100 % du quota que vous avez défini.
@@ -361,6 +370,9 @@ sections:
       1. Sur le portail Azure Enterprise, sélectionnez **Gérer** > **Compte**.
 
       1. Pointez sur **Compte** tout à droite pour voir les options **Transférer la propriété** (icône représentant une personne) et **Transférer l’abonnement** (icône de liste). Ces options sont visibles uniquement pour les comptes actifs.
+
+
+      Les clients Entreprise direct peuvent transférer la propriété de leur abonnement à un autre compte dans le portail Azure. Accédez au menu **Compte** ou **Abonnement** pour transférer la propriété.
   - question: Un propriétaire de compte Azure peut-il être répertorié sous plusieurs services ?
     answer: >
       Non, un propriétaire de compte ne peut être associé qu’à un seul service. La stratégie permet de garantir une supervision et une répartition précises des coûts et des dépenses associés au service auquel il est associé dans le cadre de l’inscription EA dans le portail Azure EA.
@@ -393,6 +405,9 @@ sections:
       1. Sélectionnez le crayon bleu en regard de l’affichage des frais pour l’AO (propriétaire du compte).
 
       1. Sélectionnez **Activé** et enregistrez.
+
+
+      Pour les clients avec **accord de mise en œuvre direct**, les administrateurs d’entreprise peuvent fournir aux propriétaires de compte et aux administrateurs de service un accès aux informations de coût et de prix dans le portail Azure. Accédez au menu **Stratégies** pour changer les paramètres.
 
 
       > [!NOTE]

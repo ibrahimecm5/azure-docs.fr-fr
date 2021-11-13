@@ -9,15 +9,77 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e0be3ef40e60f43d3b76c58b8141a0e29ce2742f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b4b291006795728348aa694e56c3e84a88d8e65c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067676"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469955"
 ---
 # <a name="speech-service-release-notes"></a>Notes de publication du service Speech
 
+## <a name="speech-sdk-1190-2021-nov-release"></a>SDK Speech 1.19.0 : version de novembre 2021  
+
+ 
+
+**Remarque** : le démarrage avec le SDK Speech se trouve [ici](speech-sdk.md#get-the-speech-sdk). Le kit SDK Speech sur Windows dépend du partage de Redistributable Microsoft Visual C++ pour Visual Studio. Téléchargez-le [ici](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).  
+  
+
+#### <a name="highlights"></a>Points forts 
+
+- Le service Reconnaissance de l’orateur est désormais en disponibilité générale. Les API du SDK Speech sont disponibles en C++, C#, Java et JavaScript. Avec la reconnaissance de l’orateur, vous pouvez vérifier et identifier avec précision les intervenants d’après leurs caractéristiques vocales uniques. Pour plus d’informations, consultez la [documentation](speaker-recognition-overview.md). 
+
+- Nous avons supprimé la prise en charge d’Ubuntu 16.04 conjointement avec Azure DevOps et Github. Ubuntu 16.04 a atteint sa fin de vie en avril 2021. Merci de migrer les flux de travail Ubuntu 16.04 vers Ubuntu 18.04 ou version ultérieure.   
+
+- La liaison OpenSSL dans les binaires Linux est désormais dynamique. La taille des binaires Linux a été réduite d’environ 50 %. 
+
+- Ajout de la prise en charge des puces silicium Mac M1 ARM. 
+
+ 
+
+#### <a name="new-features"></a>Nouvelles fonctionnalités 
+
+- **C++/C#/Java** : ajout de nouvelles API pour activer la prise en charge du traitement audio pour les entrées vocales avec Microsoft Audio Stack. Documentation [ici](audio-processing-overview.md).
+
+- **C++**  : nouvelles API pour la reconnaissance d’intention afin de faciliter les critères spéciaux plus avancés. Cela comprend des entités Liste et Entier prédéfini, ainsi que la prise en charge du regroupement des intentions et des entités en tant que modèles (la documentation, les mises à jour et les exemples sont en cours de développement et seront publiés dans un avenir proche). 
+
+- **Mac** : prise en charge des puces silicium ARM64 (M1) pour packages NuGet, Cocoapod, Python et Java afin de résoudre le [problème GitHub 1244](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1244).
+
+- **iOS/Mac** : les binaires iOS et MacOS sont maintenant empaquetés dans xcframework afin de résoudre le [problème GitHub 919](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/919).
+
+- **iOS/Mac** : prise en charge de Mac Catalyst afin de résoudre le [problème GitHub 1171](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1171). 
+
+- **Linux** : nouveau package tar ajouté pour CentOS7 [À propos du SDK Speech](speech-sdk.md).
+
+- **JavaScript** : les API VoiceProfile et SpeakerRecognizer sont désormais async/awaitable. 
+
+- **JavaScript** : ajout de la prise en charge pour les régions Azure du gouvernement des États-Unis. 
+
+- **Windows** : ajout de la prise en charge de la lecture sur la plateforme Windows universelle (UWP). 
+
+  
+
+#### <a name="bug-fixes"></a>Résolution des bogues 
+
+- **Android** : mise à jour de sécurité OpenSSL (mise à jour vers la version 1.1.1 l) pour les packages Android. 
+
+- **Python** : résolution d’un bogue qui provoquait l’échec de la sélection du périphérique haut-parleur sur Python. 
+
+- **Core** : reconnexion automatique en cas d’échec d’une tentative de connexion. 
+
+- **iOS** : la compression audio est désactivée sur les packages iOS en raison d’une instabilité et de problèmes de génération bitcode lors de l’utilisation de Gstreamer. Pour plus de détails, consultez le [problème GitHub 1209](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1209).
+
+ 
+
+#### <a name="samples-github"></a>Exemples [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+
+- **Mac/iOS** : mise à jour des exemples et des guides de démarrage rapide pour utiliser le package xcframework. 
+
+- **.NET** : mise à jour des exemples pour utiliser la version 3.1 de .NET core. 
+
+- **JavaScript** : ajout d’un exemple pour les assistants vocaux. 
+
+ 
 ## <a name="text-to-speech-2021-october-release"></a>Synthèse vocale - Version d’octobre 2021
 **Nouvelles langues et voix ajoutées pour la synthèse vocale neuronale**
 - **Introduction de 49 nouvelles langues et variantes** - 98 nouvelles voix dans 49 nouveaux paramètres régionaux sont ajoutées à la liste des langues de synthèse vocale neuronale : Adri dans `af-ZA` Afrikaans (Afrique du Sud), Willem dans la culture `af-ZA` Afrikaans (Afrique du Sud), Mekdes dans la culture `am-ET` Amharique (Éthiopie), Ameha dans la culture `am-ET` Amharique (Éthiopie), Fatima dans la culture `ar-AE` Arabe (Émirats arabes unis), Hamdan dans la culture `ar-AE` Arabe (Émirats arabes unis), Laila dans la culture `ar-BH` Arabe (Bahreïn), Ali dans la culture `ar-BH` Arabe (Bahreïn), Amina dans la culture `ar-DZ` Arabe (Algérie), Ismael dans la culture `ar-DZ` Arabe (Algérie), Rana dans la culture `ar-IQ` Arabe (Irak), Bassel dans la culture `ar-IQ` Arabe (Irak), Sana dans la culture `ar-JO` Arabe (Jordanie), Taim dans la culture `ar-JO` Arabe (Jordanie), Noura dans la culture `ar-KW` Arabe (Koweït), Fahed dans la culture `ar-KW` Arabe (Koweït), Iman dans la culture `ar-LY` Arabe (Libye), Omar dans la culture `ar-LY` Arabe (Libye), Mouna dans la culture `ar-MA` Arabe (Maroc), Jamal dans la culture `ar-MA` Arabe (Maroc), Amal dans la culture `ar-QA` Arabe (Qatar), Moaz dans la culture `ar-QA` Arabe (Qatar), Amany dans la culture `ar-SY` Arabe (Syrie), Laith dans la culture `ar-SY` Arabe (Syrie), Reem dans la culture `ar-TN` Arabe (Tunisie), Hedi dans la culture `ar-TN` Arabe (Tunisie), Maryam dans la culture `ar-YE` Arabe (Yémen), Saleh dans la culture `ar-YE` Arabe (Yémen), Nabanita dans la culture `bn-BD` Bengali (Bangladesh), Pradeep dans la culture `bn-BD` Bengali (Bangladesh), Asilia dans la culture `en-KE` Anglais (Kenya), Chilemba dans la culture `en-KE` Anglais (Kenya), Ezinne dans la culture `en-NG` Anglais (Nigeria), Abeo dans la culture `en-NG` Anglais (Nigeria), Imani dans la culture `en-TZ` Anglais (Tanzanie), Elimu dans la culture `en-TZ` Anglais (Tanzanie), Sofia dans la culture `es-BO` Espagnol (Bolivie), Marcelo dans la culture `es-BO` Espagnol (Bolivie), Catalina dans la culture `es-CL` Espagnol (Chili), Lorenzo dans la culture `es-CL` Espagnol (Chili), Maria dans la culture `es-CR` Espagnol (Costa Rica), Juan dans la culture `es-CR` Espagnol (Costa Rica), Belkys dans la culture `es-CU` Espagnol (Cuba), Manuel dans la culture `es-CU` Espagnol (Cuba), Ramona dans la culture `es-DO` Espagnol (République dominicaine), Emilio dans la culture `es-DO` Espagnol (République dominicaine), Andrea dans la culture `es-EC` Espagnol (Équateur), Luis dans la culture `es-EC` Espagnol (Équateur), Teresa dans la culture `es-GQ` Espagnol (Guinée équatoriale), Javier dans la culture `es-GQ` Espagnol (Guinée équatoriale), Marta dans la culture `es-GT` Espagnol (Guatemala), Andres dans la culture `es-GT` Espagnol (Guatemala), Karla dans la culture `es-HN` Espagnol (Honduras), Carlos dans la culture `es-HN` Espagnol (Honduras), Yolanda dans la culture `es-NI` Espagnol (Nicaragua), Federico dans la culture `es-NI` Espagnol (Nicaragua), Margarita dans la culture `es-PA` Espagnol (Panama), Roberto dans la culture `es-PA` Espagnol (Panama), Camila dans la culture `es-PE` Espagnol (Pérou), Alex dans la culture `es-PE` Espagnol (Pérou), Karina dans la culture `es-PR` Espagnol (Porto Rico), Victor dans la culture `es-PR` Espagnol (Porto Rico), Tania dans la culture `es-PY` Espagnol (Paraguay), Mario dans la culture `es-PY` Espagnol (Paraguay), Lorena dans la culture `es-SV` Espagnol (Salvador), Rodrigo dans la culture `es-SV` Espagnol (Salvador), Valentina dans la culture `es-UY` Espagnol (Uruguay), Mateo dans la culture `es-UY` Espagnol (Uruguay), Paola dans la culture `es-VE` Espagnol (Venezuela), Sebastian dans la culture `es-VE` Espagnol (Venezuela), Dilara dans la culture `fa-IR` Persan (Iran), Farid dans la culture `fa-IR` Persan (Iran), Blessica dans la culture `fil-PH` Filipino (Philippines), Angelo dans la culture `fil-PH` Filipino (Philippines), Sabela dans la culture `gl-ES` Galicien (Espagne), Roi dans la culture `gl-ES` Galicien (Espagne), Siti dans la culture `jv-ID` Javanais (Indonésie), Dimas dans la culture `jv-ID` Javanais (Indonésie), Sreymom dans la culture `km-KH` Khmer (Cambodge), Piseth dans la culture `km-KH` Khmer (Cambodge), Nilar dans la culture `my-MM` Birman (Myanmar), Thiha dans la culture `my-MM` Birman (Myanmar), Ubax dans la culture `so-SO` Somali (Somalie), Muuse dans la culture `so-SO` Somali (Somalie), Tuti dans la culture `su-ID` Soundanais (Indonésie), Jajang dans la culture `su-ID` Soundanais (Indonésie), Rehema dans la culture `sw-TZ` Swahili (Tanzanie), Daudi dans la culture `sw-TZ` Swahili (Tanzanie), Saranya dans la culture `ta-LK` Tamil (Sri Lanka), Kumar dans la culture `ta-LK` Tamil (Sri Lanka), Venba dans la culture `ta-SG` Tamoul (Singapour), Anbu dans la culture `ta-SG` Tamoul (Singapour), Gul dans la culture `ur-IN` Ourdou (Inde), Salman dans la culture `ur-IN` Ourdou (Inde), Madina dans la culture `uz-UZ` Ouzbek (Ouzbékistan), Sardor dans la culture `uz-UZ` Ouzbek (Ouzbékistan), Thando dans la culture `zu-ZA` Zoulou (Afrique du Sud), Themba dans la culture `zu-ZA` Zoulou (Afrique du Sud).

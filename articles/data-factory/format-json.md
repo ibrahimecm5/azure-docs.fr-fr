@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: dbee4a0c4aa82d34df6b5ea6e3e7274868be5d62
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 970778c36b426fd30af632ca56443c9fb240c389
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743846"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223723"
 ---
 # <a name="json-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Format JSON dans Azure Data Factory et Azure Synapse Analytics
 
@@ -22,7 +22,21 @@ ms.locfileid: "124743846"
 
 Suivez cet article si vous souhaitez **analyser des fichiers JSON ou écrire des données au format JSON**. 
 
-Le format JSON est pris en charge pour les connecteurs suivants : [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) et [SFTP](connector-sftp.md).
+Le format JSON est pris en charge pour les connecteurs suivants : 
+
+- [Amazon S3](connector-amazon-simple-storage-service.md)
+- [Stockage compatible Amazon S3](connector-amazon-s3-compatible-storage.md)
+- [Blob Azure](connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+- [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+- [Azure Files](connector-azure-file-storage.md)
+- [Système de fichiers](connector-file-system.md)
+- [FTP](connector-ftp.md)
+- [Google Cloud Storage](connector-google-cloud-storage.md)
+- [HDFS](connector-hdfs.md)
+- [HTTP](connector-http.md)
+- [Oracle Cloud Storage](connector-oracle-cloud-storage.md)
+- [SFTP](connector-sftp.md)
 
 ## <a name="dataset-properties"></a>Propriétés du jeu de données
 
@@ -198,7 +212,7 @@ Lors de la copie de données à partir de fichiers JSON, l’activité de copie 
 
 ## <a name="mapping-data-flow-properties"></a>Propriétés du mappage de flux de données
 
-Dans les flux de données de mappage, vous pouvez lire et écrire des données au format JSON dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+Dans les [flux de données de mappage](concepts-data-flow-overview.md), vous pouvez lire et écrire des données au format JSON dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Et vous pouvez lire le format JSON dans [Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties).
 
 ### <a name="source-properties"></a>Propriétés sources
 
@@ -416,6 +430,15 @@ Si cette expression était entrée pour une colonne nommée « complexColumn �
     ]
 )
 ```
+
+## <a name="related-connectors-and-formats"></a>Formats et connecteurs associés
+
+Voici quelques connecteurs et formats courants liés au format JSON :
+
+- Stockage Blob Azure (connector-azure-blob-storage.md)
+- Format de texte délimité (format-delimited-text.md)
+- Connecteur OData (connector-odata.md)
+- Format parquet (format-parquet.md)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

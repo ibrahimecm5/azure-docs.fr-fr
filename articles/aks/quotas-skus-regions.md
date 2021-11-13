@@ -5,12 +5,12 @@ description: Découvrez les quotas par défaut, les tailles des références SKU
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 6e965bd958b23598f7b11dcf9a12dafb33f26680
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 257598f1a1ea8bbc578fe44c40b8e2dafef36837
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437889"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266046"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Quotas, restrictions de taille de machine virtuelle et disponibilité des régions dans Azure Kubernetes Service (AKS)
 
@@ -37,21 +37,9 @@ La liste des tailles de machines virtuelles prises en charge dans AKS évolue av
 
 ## <a name="restricted-vm-sizes"></a>Tailles de machines virtuelles limitées
 
-Chaque nœud d’un cluster AKS contient une quantité fixe de ressources de calcul telles que des processeurs virtuels et de la mémoire. Si un nœud AKS contient des ressources de calcul insuffisantes, l’exécution des pods peut être incorrecte. Pour vous assurer de pouvoir planifier les pods *kube-system*, ainsi que vos applications de façon fiable, **n’utilisez pas les références SKU de machine virtuelle suivantes dans AKS** :
+Les tailles VM avec moins de 2 processeurs ne peuvent pas être utilisées avec AKS.
 
-- Standard_A0
-- Standard_A1
-- Standard_A1_v2
-- Standard_B1ls
-- Standard_B1s
-- Standard_B1ms
-- Standard_F1
-- Standard_F1s
-- Standard_A2
-- D1 standard
-- Standard_D1_v2
-- Standard_DS1
-- Standard_DS1_v2
+Chaque nœud d’un cluster AKS contient une quantité fixe de ressources de calcul telles que des processeurs virtuels et de la mémoire. Si un nœud AKS contient des ressources de calcul insuffisantes, l’exécution des pods peut être incorrecte. Pour garantir les pods *kube-system* nécessaires et faire en sorte que vos applications puissent être planifiées de façon fiable, AKS a besoin que les nœuds utilisent des tailles VM ayant plus de 2 processeurs.
 
 Pour plus d’informations sur les types de machines virtuelles et leurs ressources de calcul, consultez [Tailles des machines virtuelles dans Azure][vm-skus].
 

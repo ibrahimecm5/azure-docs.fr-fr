@@ -2,21 +2,21 @@
 title: Améliorer les performances d’un index columnstore pour un pool SQL dédié
 description: Réduisez les besoins en mémoire ou augmentez la mémoire disponible afin d’optimiser le nombre de lignes dans chaque rowgroup dans un pool SQL dédié.
 services: synapse-analytics
-author: julieMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/22/2019
-ms.author: jrasnick
-ms.reviewer: igorstan
+ms.date: 10/18/2021
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 1336359bdd0768ba1d1554554d266cacfb483a43
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: c461128daf0c6ca9fcaa09ba9b87ecc884405f0b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566509"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249302"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Optimisation de la qualité du rowgroup pour les index columnstore dans un pool SQL dédié 
 
@@ -83,9 +83,7 @@ trim_reason_desc indique si le rowgroup a été découpé (trim_reason_desc = NO
 
 ## <a name="how-to-estimate-memory-requirements"></a>Estimation des besoins en mémoire
 
-<!--
-To view an estimate of the memory requirements to compress a rowgroup of maximum size into a columnstore index, download and run the view [dbo.vCS_mon_mem_grant](). This view shows the size of the memory grant that a rowgroup requires for compression in to the columnstore.
--->
+Pour voir une estimation des besoins en mémoire pour compresser un rowgroup de la taille maximale dans un index columnstore, vous pouvez envisager de créer l’exemple de vue [dbo.vCS_mon_mem_grant](..\sql\data-load-columnstore-compression.md). Cette requête affiche la taille de l’allocation de mémoire dont un rowgroup a besoin pour la compression dans le columnstore.
 
 La mémoire maximale requise pour compresser un rowgroup est d’environ
 
@@ -98,8 +96,6 @@ La mémoire maximale requise pour compresser un rowgroup est d’environ
 > Les colonnes de chaîne courte utilisent des données de type chaîne <= 32 octets, et les colonnes de chaîne longueur utilisent des données de type chaîne > 32 octets.
 
 Les chaînes longues sont compressés avec une méthode de compression conçue pour la compression de texte. Cette méthode de compression utilise un *dictionnaire* pour stocker les modèles de texte. La taille maximale d’un dictionnaire est de 16 Mo. Il n’y qu’un seul dictionnaire pour chaque colonne de chaîne longue dans le rowgroup.
-
-Pour obtenir une présentation détaillée des besoins en mémoire de columnstore, visionnez la vidéo [Mise à l’échelle du pool SQL dédié : configuration et instructions](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Réduction des besoins en mémoire
 

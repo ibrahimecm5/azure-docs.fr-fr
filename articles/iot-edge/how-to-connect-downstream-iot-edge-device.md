@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 08e68fc4a5aa2de2c2b0e0bbd326620fadc11022
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c0bbc7bb40c292675374a3198fe0514b720adfca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455832"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226107"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Connexion d’un appareil IoT Edge en aval à une passerelle Azure IoT Edge
 
@@ -118,7 +118,7 @@ Pour activer la détection de passerelle, il est nécessaire que chacun des appa
 
 La condition pour permettre les connexions sécurisées est que chacun des appareils IoT Edge d’un scénario de passerelle soit configuré avec un unique certificat d’autorité de certification d’appareil et une copie du certificat d’autorité de certification racine partagé par tous les appareils de la hiérarchie de passerelle.
 
-IoT Edge doit être déjà installé sur l’appareil. Si ce n’est pas le cas, suivez les étapes pour [Inscrire un appareil IoT Edge dans IoT Hub](how-to-register-device.md), puis [Installer le runtime Azure IoT Edge](how-to-install-iot-edge.md).
+IoT Edge doit être déjà installé sur l’appareil. Si ce n’est pas le cas, suivez les étapes pour [provisionner manuellement un seul appareil IoT Edge sur Linux](how-to-provision-single-device-linux-symmetric.md).
 
 La procédure de cette section fait référence au **certificat d’autorité de certification racine** ainsi qu’au **certificat d’autorité de certification d’appareil et à la clé privée** qui ont été abordés plus haut dans cet article. Si vous avez créé ces certificats sur un autre appareil, rendez-les disponibles sur celui-ci. Vous pouvez transférer les fichiers physiquement (par exemple, avec un lecteur USB), avec un service comme [Azure Key Vault](../key-vault/general/overview.md) ou avec une fonction comme la [Copie de fichiers sécurisée](https://www.ssh.com/ssh/scp/).
 

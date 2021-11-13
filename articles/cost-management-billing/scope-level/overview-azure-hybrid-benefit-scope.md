@@ -1,6 +1,6 @@
 ---
-title: Qu’est-ce que la gestion de niveau étendue d’Azure Hybrid Benefit ?
-description: Azure Hybrid Benefit est un avantage qui vous permet d’apporter vos licences locales SQL Server et Windows Server basées sur les cœurs avec la Software Assurance (ou abonnement) active sur Azure.
+title: Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?
+description: Azure Hybrid Benefit est un avantage qui vous permet d’apporter vos licences locales SQL Server et Windows Server basées sur les cœurs avec Software Assurance (ou abonnement) active sur Azure.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,18 +9,18 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 795c8c3509a25abc8244150f129eb9dfbf997557
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 8fb630db1d14fe7af1008979eb5b72ee62287d6a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547439"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235693"
 ---
-# <a name="what-is-scope-level-management-of-azure-hybrid-benefit"></a>Qu’est-ce que la gestion de niveau étendue d’Azure Hybrid Benefit ?
+# <a name="what-is-centrally-managed-azure-hybrid-benefit"></a>Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?
 
 Azure Hybrid Benefit est un avantage en termes de licences qui vous permet de réduire considérablement les coûts d’exécution de vos charges de travail dans le cloud. Il fonctionne en vous permettant d’utiliser sur Azure vos licences locales Windows Server et SQL Server avec Software Assurance. Pour plus d’informations, consultez [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-Vous pouvez gérer Azure Hybrid Benefit pour SQL Server sur l’étendue d’un abonnement Azure complet ou d’un compte de facturation global. Voici son fonctionnement général :
+Vous pouvez gérer de manière centralisée votre Azure Hybrid Benefit pour SQL Server sur l’étendue d’un abonnement Azure entier ou d’un compte de facturation global. Voici son fonctionnement général :
 
 1. Commencez par vérifier que toutes vos machines virtuelles SQL Server sont visibles par vous et par Azure en activant l’inscription automatique des images SQL Server installées automatiquement avec l’extension IaaS. Pour plus d’informations, consultez [Inscrire plusieurs machines virtuelles SQL dans Azure avec l’extension SQL IaaS Agent](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md).
 1. Sous **Gestion des coûts + facturation** dans le portail Azure, vous (en tant qu’administrateur de facturation) choisissez l’étendue et le nombre de licences éligibles que vous souhaitez attribuer pour couvrir les ressources dans l’étendue.  
@@ -32,7 +32,7 @@ Vous pouvez gérer Azure Hybrid Benefit pour SQL Server sur l’étendue d’un 
 
 L’option initiale de gestion de niveau ressource pour activer Azure Hybrid Benefit reste disponible pour SQL Server et est actuellement la seule option possible pour Windows Server. Cela nécessite qu’un rôle DevOps sélectionne l’avantage pour chaque ressource (comme une machine virtuelle SQL Database ou Windows Server) qu’il crée ou gère. Une remise est alors appliquée au coût horaire de la ressource. Pour plus d'informations, voir [Avantage d’Azure Hybrid pour Windows Server](../../azure-sql/azure-hybrid-benefit.md).
 
-L’activation d’Azure Hybrid Benefit pour SQL Server au niveau de l’étendue de l’abonnement ou du compte est actuellement en préversion. Cette option est disponible uniquement pour les clients Entreprise. Nous prévoyons d’étendre cette possibilité aux clients qui utilisent Windows Server et d’autres produits.
+L’activation de la gestion centralisée d’Azure Hybrid Benefit pour SQL Server sur l’étendue de l’abonnement ou du compte est actuellement en préversion. Cette option est disponible uniquement pour les clients Entreprise. Nous prévoyons d’étendre cette possibilité aux clients qui utilisent Windows Server et d’autres produits.
 
 ## <a name="qualifying-sql-server-licenses"></a>Éligibilité des licences SQL Server
 
@@ -40,7 +40,7 @@ Les licences cœur SQL Server Entreprise et Standard avec la Software Assurance 
 
 ## <a name="qualifying-azure-resources"></a>Éligibilité des ressources Azure
 
-La gestion de niveau étendue d’Azure Hybrid Benefit couvre les principales ressources Azure SQL suivantes :
+La gestion centralisée d’Azure Hybrid Benefit sur une étendue couvre les ressources Azure SQL courantes suivantes :
 
 - BASES DE DONNÉES SQL
 - Instances managées SQL
@@ -52,7 +52,7 @@ La gestion de niveau ressource d’Azure Hybrid Benefit peut également couvrir 
 - Hôtes dédiés Azure
 - Azure Data Factory SQL Server Integration Services (SSIS)
 
-## <a name="scope-level-management-advantages"></a>Avantages de la gestion de niveau étendue
+## <a name="centralized-scope-level-management-advantages"></a>Avantages de la gestion centralisée sur une étendue
 
 Vous bénéficiez des avantages suivants :
 
@@ -104,5 +104,5 @@ Nous recommandons de gérer Azure Hybrid Benefit de niveau étendue en répétan
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Effectuez le tutoriel [Gérer et optimiser Azure Hybrid Benefit pour SQL Server](tutorial-azure-hybrid-benefits-sql.md).
-- Découvrez comment [faire la transition vers la gestion de niveau étendue d’Azure Hybrid Benefit](transition-existing.md).
-- Consultez [Questions fréquentes sur la gestion de niveau étendue d’Azure Hybrid Benefit](faq-azure-hybrid-benefit-scope.yml).
+- Découvrez comment [migrer vers Azure Hybrid Benefit géré de manière centralisée](transition-existing.md).
+- Passez en revue le [FAQ sur Azure Hybrid Benefit géré de manière centralisée](faq-azure-hybrid-benefit-scope.yml).

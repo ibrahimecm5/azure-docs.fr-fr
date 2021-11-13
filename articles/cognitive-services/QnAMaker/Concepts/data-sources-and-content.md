@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: e205d403a8d482d5af3278ed42dde60e5808a00a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 829d55cd156f2396014b2b5b55c380e347c7878d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280798"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458263"
 ---
 # <a name="importing-from-data-sources"></a>Importation depuis des sources de données
 
@@ -69,7 +69,7 @@ Si vous ne savez pas comment représenter votre paire QnA dans le fichier `.tsv`
 Vous pouvez également créer une base de connaissances fondée sur du contenu non structuré importé par le biais d’un fichier. Actuellement, cette fonctionnalité est disponible uniquement via le téléchargement de documents pour les documents qui se trouvent dans l’un des formats de fichier pris en charge.
 
 > [!IMPORTANT]
-> La prise en charge du contenu non structuré via le téléchargement de fichiers est disponible uniquement dans Réponses aux questions personnalisées (préversion)
+> La prise en charge du contenu non structuré via le chargement de fichiers est disponible uniquement dans [Réponses aux questions personnalisées](../../language-service/question-answering/overview.md).
 
 ## <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>Types de contenu de documents que vous pouvez ajouter à une base de connaissances
 Les types de contenu incluent bon nombre de documents structurés standard tels que PDF, DOC et TXT.

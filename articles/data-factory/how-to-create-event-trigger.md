@@ -10,12 +10,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: e2621a6eea481866bb5351623065e7d113e8e9bd
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: da1348f0e31fbe0c3e2528692d40675d799e43da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138667"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469689"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Créer un déclencheur qui exécute un pipeline en réponse à un événement de stockage
 
@@ -31,6 +31,9 @@ Pour afficher une présentation de dix minutes et la démonstration de cette fon
 
 > [!NOTE]
 > L’intégration décrite dans cet article dépend [d’Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Vérifiez que votre abonnement est inscrit auprès du fournisseur de ressources Event Grid. Pour plus d’informations, consultez [Types et fournisseurs de ressources](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Vous devez pouvoir effectuer l’action *Microsoft.EventGrid/eventSubscriptions/* *. Cette action fait partie du rôle intégré Contributeur EventGrid EventSubscription.
+
+> [!NOTE]
+> Si le compte de stockage d’objets blob réside derrière un [point de terminaison privé](../storage/common/storage-private-endpoints.md) et bloque l’accès au réseau public, vous avez besoin de configurer des règles de réseau pour autoriser les communications entre le stockage d’objets blob et Azure Event Grid. Vous pouvez accorder l’accès au stockage à des services Azure approuvés, comme Event Grid, conformément à la [documentation de Stockage](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services), ou bien configurer des points de terminaison privés pour Event Grid qui correspondent à l’espace d’adressage du réseau virtuel, conformément à la [documentation d’Event Grid](../event-grid/configure-private-endpoints.md).
 
 ## <a name="create-a-trigger-with-ui"></a>Créer un déclencheur avec l’interface utilisateur
 
@@ -119,7 +122,7 @@ Cette section fournit des exemples de paramètres de déclencheur d’événemen
 
 Les pipelines Azure Data Factory et Synapse utilisent le contrôle d’accès en fonction du rôle (Azure RBAC) pour garantir que l’accès non autorisé pour écouter, s’abonner à des mises à jour et déclencher des pipelines liés à des événements blob, est strictement interdit.
 
-* Pour créer un déclencheur d’événements de stockage existant ou le mettre à jour, le compte Azure connecté au service doit avoir un accès approprié au compte de stockage concerné. Dans le cas contraire, l’opération échouera avec le message _Accès refusé_.
+* Pour créer un déclencheur d’événements de stockage ou mettre à jour un existant, le compte Azure connecté au service doit avoir un accès approprié au compte de stockage concerné. Dans le cas contraire, l’opération échouera avec le message _Accès refusé_.
 * Azure Data Factory et Azure Synapse n’ont besoin d’aucune autorisation spéciale sur votre Event Grid et vous n’avez _pas_ besoin d’attribuer une autorisation RBAC spéciale au principal de service Data Factory ou Azure Synapse pour l’opération.
 
 L’un des paramètres RBAC suivants fonctionne pour le déclencheur d’événements de stockage :

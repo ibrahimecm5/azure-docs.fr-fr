@@ -1,24 +1,24 @@
 ---
 title: Modèle de métadonnées partagées
-description: 'Azure Synapse Analytics permet aux différents moteurs de calcul d’espace de travail de partager des bases de données et des tables entre ses pools : pools Apache Spark serverless, pool SQL serverless et pools SQL dédiés.'
+description: Azure Synapse Analytics permet aux différents moteurs de calcul d’espace de travail de partager des bases de données et des tables entre ses pools Apache Spark serverless et son pool SQL serverless.
 services: synapse-analytics
-author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: metadata
-ms.date: 05/01/2020
-ms.author: mrys
-ms.reviewer: jrasnick
-ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/05/2021
+author: ma77b
+ms.author: maburd
+ms.reviewer: wiassaf
+ms.openlocfilehash: 4f9feff8a88e5f8058af808b22ca07191193e41d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460346"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987116"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Métadonnées partagées Azure Synapse Analytics
 
-Azure Synapse Analytics permet aux différents moteurs de calcul d’espace de travail de partager des bases de données et des tables entre ses pools Apache Spark serverless et le pool SQL serverless.
+Azure Synapse Analytics permet aux différents moteurs de calcul d’espace de travail de partager des bases de données et des tables entre les pools Apache Spark et le pool SQL serverless.
 
 Le partage prend en charge ce que l’on appelle le modèle d’entrepôt de données moderne, et procure aux moteurs SQL d’espace de travail un accès aux bases de données et aux tables créées avec Spark. Il permet également aux moteurs SQL de créer leurs propres objets qui ne sont pas partagés avec les autres moteurs.
 
@@ -30,7 +30,7 @@ Le modèle de métadonnées partagées prend en charge le modèle d’entrepôt 
 
 2. Les bases de données créées avec Spark et toutes leurs tables sont visibles dans n’importe quelle instance du pool Spark d’espace de travail Azure Synapse et peuvent être utilisées à partir de n’importe quel travail Spark. Cette fonctionnalité est soumise aux [autorisations](#security-model-at-a-glance), dans la mesure où tous les pools Spark d’un espace de travail partagent le même magasin de métadonnées de catalogue sous-jacent.
 
-3. Les bases de données créées avec Spark et leurs tables de type Parquet deviennent visibles dans le pool SQL serverless de l’espace de travail. Les [bases de données](database.md) sont créées automatiquement dans les métadonnées du pool SQL serverless, et les [tables externes et gérées](table.md) créées par un travail Spark sont rendues accessibles en tant que tables externes dans les métadonnées du pool SQL serverless dans le schéma `dbo` de la base de données correspondante. 
+3. Les bases de données créées avec Spark et leurs tables Parquet ou CSV deviennent visibles dans le pool SQL serverless de l’espace de travail. Les [bases de données](database.md) sont créées automatiquement dans les métadonnées du pool SQL serverless, et les [tables externes et gérées](table.md) créées par un travail Spark sont rendues accessibles en tant que tables externes dans les métadonnées du pool SQL serverless dans le schéma `dbo` de la base de données correspondante. 
 
 <!--[INSERT PICTURE]-->
 
@@ -40,7 +40,7 @@ La synchronisation des objets se produit de façon asynchrone. Il y a un délai 
 
 ## <a name="shared-metadata-objects"></a>Objets métadonnées partagés
 
-Spark vous permet de créer des bases de données, des tables externes, des tables gérées et des vues. Comme un moteur Spark est nécessaire aux vues Spark pour traiter l’instruction SQL Spark de définition, qui ne peuvent pas être traitées par un moteur SQL, seules les bases de données et les tables externes et gérées qu’elles contiennent et qui suivent le format de stockage Parquet sont partagées avec le moteur SQL de l’espace de travail. Les vues Spark sont partagées uniquement par les instances de pool Spark.
+Spark vous permet de créer des bases de données, des tables externes, des tables gérées et des vues. Comme les vues Spark ont besoin d’un moteur Spark pour traiter l’instruction Spark SQL de définition, qui ne peuvent pas être traitées par un moteur SQL, seules les bases de données et les tables externes et managées qu’elles contiennent et qui suivent le format de stockage Parquet ou CSV sont partagées avec le moteur SQL de l’espace de travail. Les vues Spark sont partagées uniquement par les instances de pool Spark.
 
 ## <a name="security-model-at-a-glance"></a>Modèle de sécurité en un clin d’œil
 

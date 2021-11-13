@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 328bfff2366efb416cbd41452a821256f675d0e2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4bb4cf91aed5ae4784511416d3f30dd9d6a20986
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078690"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579252"
 ---
 # <a name="teams-interoperability-calling-and-chat"></a>Interopérabilité Teams : appels et conversations
 
@@ -40,26 +40,26 @@ Avec le SDK d’appel, un utilisateur ou un point de terminaison Communication S
  
 [Gérer les appels - Guide pratique d’Azure Communication Services | Microsoft Docs](../../how-tos/calling-sdk/manage-calls.md?pivots=platform-web)
 
-Appel d’un autre utilisateur ACS :
+Appel d’un autre point de terminaison Communication Services à l’aide de [communicationUserId](/javascript/api/@azure/communication-common/communicationuseridentifier?view=azure-node-latest#communicationUserId) :
 ```js
-const acsCallee = { communicationUserId: <'ACS_USER_ID>' }
+const acsCallee = { communicationUserId: '<ACS User ID>' }
 const call = callAgent.startCall([acsCallee]);
 ```
 
-Appel d’un utilisateur Teams :
+Appel d’un utilisateur Teams à l’aide de [microsoftTeamsUserId](/javascript/api/@azure/communication-common/microsoftteamsuseridentifier?view=azure-node-latest#microsoftTeamsUserId) :
 ```js
-const teamsCallee = { microsoftTeamsUserId: '<Teams User AAD Object ID>' }
+const teamsCallee = { microsoftTeamsUserId: '8:orgid:<Teams User AAD Object ID>' }
 const call = callAgent.startCall([teamsCallee]);
 ```
  
 **Limitations et problèmes connus**
 - Les utilisateurs Teams doivent être en mode « TeamsOnly ». Les utilisateurs Skype Entreprise ne peuvent pas recevoir d’appels un à un d’utilisateurs Communication Services.
 - L’escalade vers un appel de groupe n’est pas prise en charge.
-- Les utilisateurs Communication Services ne s’affichent pas correctement dans l’historique des appels
 - L’enregistrement des appels Communication Services n’est pas disponible pour les appels un à un.
 - Les fonctionnalités avancées de routage des appels, comme le transfert d’appels, la répartition des appels entrants, la sonnerie simultanée et la messagerie vocale, ne sont pas prises en charge.
 - Les utilisateurs Teams ne peuvent pas définir les utilisateurs Communication Services comme cibles de transfert.
-- La branche LyncIpPhone n’est pas prise en charge.
+- Un certain nombre de fonctionnalités du client Teams ne fonctionnent pas comme prévu lors des appels 1:1 avec les utilisateurs de Communication Services.
+- Les [appareils pour Teams](/MicrosoftTeams/devices/teams-ip-phones) et [téléphones IP Skype](/skypeforbusiness/certification/devices-ip-phones) tiers ne sont pas pris en charge.
 
 ## <a name="chat"></a>Conversation
 Avec le SDK de conversation, les utilisateurs ou les points de terminaison Communication Services peuvent démarrer une conversation un à plusieurs avec des utilisateurs Teams, identifiés par leur ID d’objet Azure Active Directory (AAD). Vous pouvez facilement modifier une application existante qui crée des conversations avec d’autres utilisateurs Communication Services pour qu’elle crée des conversations avec les utilisateurs Teams à la place :

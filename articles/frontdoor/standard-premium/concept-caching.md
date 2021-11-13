@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a8adfef720d446c3ae2a45d27cee72a8135edb70
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 687a18ff1f66f5bd14a76b620c4fda04e6b7a6f0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595044"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234974"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Mise en cache avec Azure Front Door Standard/Premium (préversion)
 
@@ -71,19 +71,19 @@ Les en-têtes de demande suivants ne sont pas transférés à une origine quand 
 * Content-Length
 * Transfer-Encoding
 
-## <a name="cache-behavior-and-duration"></a>Comportement et durée du cache
+## <a name="cache-behavior-and-duration"></a>Comportement et durée de mise en cache
 
-La durée du cache peut être configurée à la fois dans le concepteur Front Door et dans Rules Engine. La configuration de la mise en cache du moteur de règles aura toujours priorité sur la configuration des règles de routage du concepteur Front Door.
+Le comportement et la durée de la mise en cache peuvent être configurés à la fois dans la règle d’acheminement du concepteur Front Door et dans le moteur de règles. La configuration de la mise en cache du moteur de règles aura toujours la priorité sur la configuration de la règle d’acheminement du concepteur Front Door.
 
-* Lorsque la *mise en cache* est **désactivée**, Front Door ne met pas en cache le contenu de la réponse, quelles que soient les directives de réponse d'origine.
+* Lorsque la *mise en cache* est **désactivée**, Front Door ne met pas en cache le contenu de la réponse, quelles que soient les directives de réponse de l’origin.
 
-* Lorsque la *mise en cache* est **activée**, le comportement du cache est différent selon les valeurs de la *durée d’utilisation par défaut du cache*.
-    * Lorsque l' *option utiliser la durée par défaut du cache* est définie sur **Oui**, la porte d’entrée respecte toujours la directive d’en-tête de réponse d’origine. Si la directive Origin est manquante, la porte d’entrée met en cache le contenu en tout lieu de 1 à 3 jours.
-    * Lorsque l' *option utiliser la durée par défaut du cache* est définie sur **non**, la porte est toujours remplacée par la *durée du cache* (champs obligatoires), ce qui signifie qu’elle met en cache le contenu pour la durée du cache en ignorant les valeurs des directives de réponse d’origine. 
+* Lorsque la *mise en cache* est **activée**, le comportement de mise en cache est différent selon les valeurs de l’option *Utiliser la durée de mise en cache par défaut*.
+    * Lorsque l’option *Utiliser la durée de mise en cache par défaut* est définie sur **Oui**, Front Door respecte toujours la directive d’en-tête de réponse de l’origin. Si la directive de l’origin est absente, Front Door mettra le contenu en cache entre un et trois jours.
+    * Lorsque l’option *Utiliser la durée de mise en cache par défaut* est définie sur **Non**, Front Door utilise toujours la *durée de mise en cache* (champs obligatoires), ce qui signifie qu’il met en cache le contenu pendant la durée de mise en cache en ignorant les valeurs des directives de réponse de l’origin. 
 
 > [!NOTE]
-> * La *durée du cache* définie dans le concepteur Front Door correspond à la **durée minimale du cache**. Cette dérogation ne fonctionnera pas si l'en-tête de contrôle du cache provenant de l'origine a un TTL supérieur à la valeur de dérogation.
-> * Les contenus mis en cache peuvent être évincés de la porte d'entrée Azure avant leur expiration s'ils ne sont pas demandés aussi fréquemment, afin de faire de la place pour des contenus plus fréquemment demandés.Le contenu mis en cache peut être supprimé de la porte d’entrée Azure avant d’expirer si le contenu n’est pas demandé fréquemment pour faire de la place pour le contenu le plus fréquemment demandé.
+> * La *durée de mise en cache* définie dans la règle d’acheminement du concepteur Front Door correspond à la **durée minimale de mise en cache**. Ce remplacement ne fonctionnera pas si l’en-tête de contrôle du cache de l’origin a une durée de vie supérieure à la valeur de remplacement.
+> * Azure Front Door n’offre aucune garantie quant à la durée minimale pendant laquelle l’objet sera stocké dans le cache. Le contenu mis en cache peut être supprimé du cache de périphérie avant son expiration s’il n’est pas demandé aussi fréquemment, afin de faire de la place pour le contenu plus fréquemment demandé.
 >
 
 ## <a name="next-steps"></a>Étapes suivantes

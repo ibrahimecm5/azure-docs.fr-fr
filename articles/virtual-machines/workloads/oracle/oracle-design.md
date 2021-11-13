@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: oracle
 ms.collection: linux
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 10/15/2021
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: f6f7312590b98474d5edab02ea8e73725aded229
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 3a5b7d99c0995ae0e91056520945c0ed1a78d136
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690076"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223041"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Concevoir et implémenter une base de données Oracle dans Azure
 
@@ -200,12 +200,13 @@ Contrairement à un système de fichiers ou une application, pour une base de do
 
 **Recommandations**
 
-Pour optimiser le débit, il est recommandé de commencer par **ReadOnly** (lecture seule) pour la mise en cache de l’hôte, lorsque cela est possible. Pour le stockage Premium, vous devez désactiver les barrières lorsque vous montez le système de fichiers conformément aux options **Lecture seule**. Mettez à jour le fichier/etc/fstab avec l’UUID sur les disques.
+Pour optimiser le débit, il est recommandé de commencer par **ReadOnly** (lecture seule) pour la mise en cache de l’hôte, lorsque cela est possible. Pour le stockage Premium, vous devez désactiver les barrières lorsque vous montez le système de fichiers conformément aux options **Lecture seule**. Mettez à jour le fichier `/etc/fstab` avec l’UUID pour les disques.
 
 ![Capture d’écran de la page disque managé qui affiche les options ReadOnly et None.](./media/oracle-design/premium_disk02.png)
 
-- Pour les disques de système d’exploitation, choisissez la mise en cache **Read/Write**, et utilisez des disques SSD Premium pour les machines virtuelles de charges de travail Oracle.  Assurez-vous également que le volume utilisé pour l’échange figure également sur un disque SSD Premium.
-- Pour TOUS les fichiers de fichiers, utilisez **ReadOnly** pour la mise en cache. La mise en cache ReadOnly est disponible uniquement pour les disques Premium gérés, P30 et versions ultérieures.  La limite de volume utilisable avec la mise en cache ReadOnly est de 4 095 Gio.  Toute allocation supérieure désactive la mise en cache de l’hôte par défaut.
+- Pour les **disques du système d’exploitation**, utilisez **SSD Premium avec mise en cache de l’hôte en Lecture/Écriture**.
+- Pour les **disques de données** qui contiennent des fichiers de données Oracle, des tempFiles, des controlfiles, des fichiers de suivi des modifications de bloc, des types de données BFILE, des fichiers pour les tables externes et des journaux flashback, utilisez un **SSD Premium avec une mise en cache de l’hôte en lecture seule**.
+- Pour les **disques de données contenant des fichiers journaux de restauration par progression en ligne d’Oracle**, utilisez un **SSD Premium ou UltraDisk sans mise en cache de l’hôte (Aucun)** . Les fichiers journaux de restauration par progression archivés et les backupsets RMAN d’Oracle peuvent également se trouver avec les fichiers journaux de restauration par progression en ligne. Notez que la mise en cache de l’hôte est limitée à 4095 Gio : n’allouez pas de SSD Premium supérieur à P50 avec la mise en cache de l’hôte. Si vous avez besoin de plus de 4 Tio de stockage, entrelacez plusieurs disques SSD Premium en RAID-0 en utilisant Linux LVM2 ou Oracle ASM.
 
 Si les charges de travail varient considérablement durant la journée et que la charge de travail d’E/S peut prendre en charge ces variations, un disque SSD Premium P1-P20 en mode rafale peut fournir les performances requises pendant les chargements par lots de nuit ou les demandes d’E/S limitées.  
 

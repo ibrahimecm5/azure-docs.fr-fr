@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/03/2021
+ms.date: 10/22/2021
 ms.author: victorh
-ms.openlocfilehash: 62659116599a60d5a9407fea4d2b1f06594ef475
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d421986ebeb308efb0e076b1a80f537d49082ec5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824449"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242346"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Superviser les journaux d’activité et les métriques du Pare-feu Azure
 
@@ -55,11 +55,15 @@ La journalisation d’activité est automatiquement activée pour chaque ressour
 
 Pour activer la journalisation des diagnostics avec PowerShell, procédez comme suit :
 
-1. Notez l’ID de ressource de votre espace de travail Log Analytics, où les données de journalisation sont stockées. Cette valeur se présente sous la forme suivante : `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`.
+1. Notez l’ID de ressource de votre espace de travail Log Analytics, où les données de journalisation sont stockées. Cette valeur se présente sous la forme suivante :
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`
 
    Vous pouvez utiliser n’importe quel espace de travail dans votre abonnement. Vous pouvez utiliser le portail Azure pour rechercher ces informations. Les informations se trouvent dans la page **Propriétés** de la ressource.
 
-2. Notez l’ID de ressource pour le pare-feu. Cette valeur se présente sous la forme suivante : `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`.
+2. Notez l’ID de ressource pour le pare-feu. Cette valeur se présente sous la forme suivante :
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`
 
    Vous pouvez utiliser le portail pour rechercher ces informations.
 
@@ -81,11 +85,15 @@ La journalisation d’activité est automatiquement activée pour chaque ressour
 
 Pour activer la journalisation des diagnostics avec Azure CLI, procédez comme suit :
 
-1. Notez l’ID de ressource de votre espace de travail Log Analytics, où les données de journalisation sont stockées. Cette valeur se présente sous la forme suivante : `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`.
+1. Notez l’ID de ressource de votre espace de travail Log Analytics, où les données de journalisation sont stockées. Cette valeur se présente sous la forme suivante :
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`
 
    Vous pouvez utiliser n’importe quel espace de travail dans votre abonnement. Vous pouvez utiliser le portail Azure pour rechercher ces informations. Les informations se trouvent dans la page **Propriétés** de la ressource.
 
-2. Notez l’ID de ressource pour le pare-feu. Cette valeur se présente sous la forme suivante : `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`.
+2. Notez l’ID de ressource pour le pare-feu. Cette valeur se présente sous la forme suivante :
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`
 
    Vous pouvez utiliser le portail pour rechercher ces informations.
 

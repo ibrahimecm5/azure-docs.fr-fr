@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: a4e5342e73ea374cf54b7bce2e81f17bb2a2bb80
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: b613a917793f522a081a3460d28edf84a9c03d09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129753515"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255521"
 ---
 # <a name="azure-ea-pricing"></a>Prix Azure EA
 
@@ -33,7 +33,9 @@ Microsoft peut supprimer le prix actuel du Contrat Entreprise pour les services 
 
 ### <a name="current-effective-pricing"></a>Tarification effective actuelle
 
-Les clients et partenaires de canaux peuvent consulter la tarification actuelle d’une inscription en se connectant au [portail Azure Enterprise](https://ea.azure.com/) et en affichant la page de la grille tarifaire de cette inscription. Si vous achetez Azure indirectement par le biais d’un de nos partenaires de canaux, vous devez obtenir vos mises à jour tarifaires auprès de votre partenaire de canal s’il n’a pas activé l’affichage de la tarification de majoration pour votre inscription.
+Les clients et partenaires de canaux peuvent consulter la tarification actuelle d’une inscription en se connectant au [portail Azure Enterprise](https://ea.azure.com/) et en affichant la page de la grille tarifaire de cette inscription. Les clients EA directs peuvent désormais afficher et télécharger les **tarifs** dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts). Consultez [Afficher la grille tarifaire](ea-pricing.md#download-pricing-for-an-enterprise-agreement).
+
+Si vous achetez Azure indirectement par le biais d’un de nos partenaires de canaux, vous devez obtenir vos mises à jour tarifaires auprès de votre partenaire de canal s’il n’a pas activé l’affichage de la tarification de majoration pour votre inscription.
 
 ### <a name="introduction-of-new-azure-services"></a>Présentation des nouveaux services Azure
 

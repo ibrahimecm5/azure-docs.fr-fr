@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
-ms.date: 03/23/2021
-ms.openlocfilehash: 8ea21993103e5c461a8cea84f7739160338605a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/18/2021
+ms.openlocfilehash: 564b82854769d0cff730c82f3cd4b99a67b08a41
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532639"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247954"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Réglage manuel dans Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,10 +48,6 @@ Les mécanismes de réglage automatique sont matures et ont été éprouvés sur
 
 Le réglage automatique Azure SQL Database partage sa logique de base avec la fonctionnalité de réglage automatique de SQL Server dans le moteur de base de données. Pour obtenir des informations techniques supplémentaires sur le mécanisme d’intelligence intégré, consultez [Réglage automatique dans SQL Server](/sql/relational-databases/automatic-tuning/automatic-tuning).
 
-Pour obtenir une vue d’ensemble du fonctionnement du réglage automatique et des scénarios d’utilisation classiques, regardez la vidéo incorporée :
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-automatic-tuning/player]
-
 ## <a name="enable-automatic-tuning"></a>Activer le réglage automatique
 
 - Vous pouvez [activer le réglage automatique d'Azure SQL Database à partir du portail Azure](automatic-tuning-enable.md) ou en utilisant l'instruction T-SQL [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
@@ -73,7 +69,7 @@ Le réglage automatique Azure SQL Database utilise les recommandations de Databa
 
 Vous pouvez appliquer manuellement les recommandations de réglage à l’aide du portail Azure ou laisser le réglage automatique les appliquer pour vous en toute autonomie. L’avantage de laisser le système appliquer de manière autonome les recommandations de réglage pour vous est qu’il valide automatiquement qu’il existe un accroissement des performances de la charge de travail. En revanche, si une régression est détectée, il annule automatiquement les recommandations de réglage. Notez qu’en cas de requêtes affectées par des recommandations de réglage qui ne sont pas exécutées fréquemment, la phase de validation peut, par nature, prendre jusqu’à 72 heures.
 
-Si vous appliquez les recommandations de réglage via T-SQL, les mécanismes de validation automatique des performances et d’annulation ne sont pas disponibles. Les recommandations appliquées de cette manière restent actives et s’affichent dans la liste des recommandations de paramétrage pour 24-48 heures. avant que le système ne les retire automatiquement. Si vous souhaitez supprimer une recommandation avant cela, vous pouvez l’abandonner dans le portail Azure.
+Si vous appliquez les recommandations de réglage via T-SQL, les mécanismes de validation automatique des performances et d’annulation ne sont pas disponibles. Les recommandations appliquées de cette manière resteront actives et figureront dans la liste des recommandations de réglage pendant 24 à 48 heures avant que le système ne les retire automatiquement. Si vous souhaitez supprimer une recommandation avant cela, vous pouvez l’abandonner dans le portail Azure.
 
 Vous pouvez activer ou désactiver les options de réglage automatique par base de données, ou vous pouvez les configurer au niveau du serveur et les appliquer sur chaque base de données qui hérite des paramètres du serveur. Les serveurs peuvent hériter des valeurs Azure par défaut pour les paramètres de réglage automatique. Actuellement, les valeurs Azure par défaut sont FORCE_LAST_GOOD_PLAN activé, CREATE_INDEX activé et DROP_INDEX désactivé.
 

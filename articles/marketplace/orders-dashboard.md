@@ -8,12 +8,12 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 09/27/2021
-ms.openlocfilehash: 95d0ced24ee4f7426cac96ff2e550f2be88d8d02
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 85352f2cb1b2a0fe042b36fbe795435250385f65
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083356"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246339"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Tableau de bord Commandes dans l’analytique de la place de marché commerciale
 
@@ -43,7 +43,7 @@ Le [tableau de bord Commandes](https://go.microsoft.com/fwlink/?linkid=2165914) 
 #### <a name="workspaces-view"></a>[Vue des espaces de travail](#tab/workspaces-view)
 
 1. Connectez-vous à l’[Espace partenaires](https://partner.microsoft.com/dashboard/home).
-1. Sur la page Accueil, sélectionnez la vignette **Insights**.
+1. Dans la page d’accueil, sélectionnez la vignette **Insights**.
 
     [ ![Illustre la vignette Insights sur la page d’accueil de l’Espace partenaires.](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
 
@@ -148,7 +148,7 @@ Le tableau Détails des commandes présente la liste numérotée des 1 000 pre
 | MonthStartDate | Date de début du mois | Date de début du mois représente le mois d’achat. Le format est aaaa-mm-jj. | MonthStartDate |
 | Type d’offre | Type d’offre | Type de l’offre de la place de marché commerciale. | OfferType |
 | Type de licence Azure | Type de licence Azure | Type de contrat de licence utilisé par les clients pour acheter Azure. Également appelé canal. Les valeurs possibles sont les suivantes :<ul><li>[Fournisseur de solutions cloud](cloud-solution-providers.md)</li><li>Enterprise</li><li>entreprise, via un revendeur</li><li>paiement à l’utilisation</li><li>GTM</li></ul> | AzureLicenseType |
-| Type de licence de la Place de marché | Type de licence de la Place de marché | Mode de facturation de l’offre de la place de marché commerciale. Les différentes valeurs sont les suivantes :<ul><li>facturé via Azure</li><li>BYOL (apportez votre propre licence)</li><li>Gratuit</li><li>Microsoft en tant que revendeur</li></ul> | MarketplaceLicenseType |
+| Type de licence de la Place de marché | Type de licence de la Place de marché | Mode de facturation de l’offre de la place de marché commerciale. Les différentes valeurs sont les suivantes :<ul><li>[Fournisseur de solutions Cloud](cloud-solution-providers.md) (CSP)</li><li>Entreprise (EA)</li><li>Entreprise, par le biais d’un revendeur</li><li>paiement à l’utilisation</li><li>[Mise sur le marché](co-sell-overview.md) (GTM, Go-to-Market)</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | Plan associé à l’offre | SKU |
 | Pays du client | Pays/Région du client | Nom de pays/région fourni par le client. Ce nom peut être différent du nom du pays ou de la région fourni dans l’abonnement Azure d’un client. | CustomerCountry |
 | Référence SKU en préversion | Référence SKU en préversion | La valeur indique si vous avez étiqueté la référence SKU en tant que « préversion ». La valeur est « Oui » si la référence SKU a été étiquetée en conséquence, et seuls les abonnements Azure que vous avez autorisés peuvent déployer et utiliser cette image. La valeur est « Non » si la référence SKU n’a pas été identifiée en tant que « préversion ». | IsPreviewSKU |

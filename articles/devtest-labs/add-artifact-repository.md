@@ -2,14 +2,14 @@
 title: Ajouter un dépôt d’artefacts à votre labo
 description: Découvrez comment spécifier votre propre dépôt d’artefacts pour votre laboratoire dans Azure DevTest Labs afin de stocker des outils non disponibles dans le dépôt d’artefacts public.
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83a1cbb6c25c76d23977219d8e3b46491bbb363b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 16c555e73639ee9c34ac353b43e828c1a6afbbe4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644445"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229291"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Ajouter un référentiel d’artefacts à votre laboratoire dans Azure DevTest Labs.
 Azure DevTest Labs vous permet de spécifier l’ajout d’un artefact à une machine virtuelle pendant ou après la création de cette dernière. Cet artefact peut être un outil ou une application que vous souhaitez installer sur la machine virtuelle. Les artefacts sont définis dans un fichier JSON chargé à partir d’un référentiel Git Azure DevOps ou GitHub.
@@ -46,9 +46,9 @@ Pour ajouter un dépôt à votre laboratoire, obtenez d’abord des informations
 7. Dans l’onglet **Sécurité > Jetons d’accès personnels**, sélectionnez **+ Nouveau jeton**.
 8. Sur la page **Créer un jeton d’accès personnel** :
    1. Entrez un **nom** pour le jeton.
-   2. Dans la liste **Organisation**, sélectionnez **Toutes les organisations accessibles**.
+   2. Dans la liste **Organisation**, sélectionnez l’organisation à laquelle appartient le dépôt.
    3. Dans la liste **Expiration (UTC)** , sélectionnez **90 jours** ou une période d’expiration personnalisée.
-   4. Sélectionnez l’option **Accès complet** pour les étendues.
+   4. Sélectionnez l’option **Définition personnalisée** pour les étendues et sélectionnez uniquement **Code – Lecture**.
    5. Sélectionnez **Create** (Créer).
 9. Le nouveau jeton apparaît dans la liste **Jetons d’accès personnels**. Sélectionnez **Copier le jeton** puis enregistrez la valeur du jeton pour utilisation ultérieure.
 10. Passez à la section Connecter votre laboratoire au référentiel.
@@ -80,7 +80,7 @@ Modèles Azure Resource Management (Azure Resource Manager) sont des fichiers JS
 Cette section inclut les étapes permettant d’ajouter un référentiel d’artefacts à un laboratoire via un modèle Azure Resource Manager.  Ce modèle crée le laboratoire, s’il n’existe pas déjà.
 
 ### <a name="template"></a>Modèle
-L’exemple de modèle utilisé dans cet article rassemble les informations suivantes par le biais de paramètres. La plupart des paramètres ont des valeurs par défaut intelligentes, mais certaines valeurs doivent être spécifiées. Vous devez spécifier le nom de laboratoire, l’URI du référentiel d’artefacts et le jeton de sécurité du référentiel.
+L’exemple de modèle utilisé dans cet article rassemble les informations suivantes par le biais de paramètres. La plupart des paramètres ont des valeurs par défaut intelligentes, mais certaines valeurs doivent être spécifiées. Spécifiez le nom du lab, l’URI du dépôt d’artefacts et le jeton de sécurité du dépôt.
 
 - Nom du laboratoire.
 - Nom d’affichage du référentiel d’artefacts dans l’interface utilisateur d’Azure DevTest Labs. La valeur par défaut est `Team Repository`.
@@ -187,7 +187,7 @@ Une fois la cmdlet AzResourceGroupDeployment de nouveau exécutée avec succès,
 Cette section fournit un exemple de script PowerShell, qui peut être utilisé pour ajouter un référentiel d’artefacts à un laboratoire. Si vous n’avez pas Azure PowerShell, accédez à la section [How to install and configure Azure PowerShell](/powershell/azure/) (Comment installer et configurer Azure PowerShell) pour obtenir des instructions détaillées afin de l’installer.
 
 ### <a name="full-script"></a>Script complet
-Voici le script complet, y compris les commentaires et messages détaillés :
+Voici le script complet, y compris les commentaires et messages détaillés :
 
 **New-DevTestLabArtifactRepository.ps1** :
 
@@ -342,15 +342,15 @@ L’exemple de script PowerShell de cet article prend les paramètres suivants :
 | Paramètre | Description |
 | --------- | ----------- |
 | LabName | Nom du lab. |
-| ArtifactRepositoryName | Nom du nouveau référentiel d’artefacts. Le script crée un nom aléatoire pour le référentiel, s’il n’est pas spécifié. |
+| ArtifactRepositoryName | Nom du nouveau référentiel d’artefacts. Le script crée un nom aléatoire pour le dépôt, s’il n’est pas spécifié. |
 | ArtifactRepositoryDisplayName | Nom d’affichage du référentiel d’artefacts. Il s’agit du nom qui s’affiche dans le Portail Microsoft Azure (https://portal.azure.com) lors de l’affichage de tous les référentiels d’artefacts d’un laboratoire. |
 | RepositoryUri | URI vers le référentiel. Exemples : `https://github.com/<myteam>/<nameofrepo>.git` ou `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.|
-| RepositoryBranch | Branche dans laquelle vous pouvez trouver les fichiers d’artefacts. La valeur par défaut est « master ». |
+| RepositoryBranch | Branche dans laquelle vous pouvez trouver les fichiers d’artefacts. La valeur par défaut est `master`. |
 | FolderPath | Dossier sous lequel vous pouvez trouver les artefacts. La valeur par défaut est « /Artifacts ». |
 | PersonalAccessToken | Jeton de sécurité pour accéder au référentiel GitHub ou VSOGit. Consultez la section relative aux composants requis pour savoir comment obtenir un jeton accès personnel. |
-| SourceType | Indique si l’artefact est un référentiel VSOGit ou GitHub. |
+| SourceType | Indique si l’artefact est un dépôt VSOGit ou GitHub. |
 
-Le référentiel lui-même a besoin d’un nom interne pour l’identification, qui est différent du nom d’affichage affiché sur le Portail Azure. Vous n’affichez pas le nom interne à l’aide du Portail Microsoft Azure, mais vous le voyez lorsque vous utilisez les API REST Azure ou Azure PowerShell. Le script fournit un nom, s’il n’est pas spécifié par l’utilisateur de notre script.
+Le dépôt lui-même a besoin d’un nom interne pour l’identification, qui est différent du nom d’affichage affiché dans le portail Azure. Vous ne voyez pas le nom interne à l’aide du portail Azure, mais vous le voyez lorsque vous utilisez les API REST Azure ou Azure PowerShell. Le script fournit un nom, s’il n’est pas spécifié par l’utilisateur de notre script.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -364,7 +364,7 @@ if ($ArtifactRepositoryName -eq $null){
 | Commande PowerShell | Notes |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Cette commande est utilisée pour obtenir des informations sur le laboratoire, telles que son emplacement. |
-| [New-AzResource](/powershell/module/az.resources/new-azresource) | Il n’existe aucune commande spécifique pour l’ajout de référentiels d’artefact. La cmdlet [New-AzResource](/powershell/module/az.resources/new-azresource) effectue cette tâche. Cette cmdlet requiert la valeur **ResourceId** ou la paire de valeurs **ResourceName** et **ResourceType** pour connaître le type de ressource à créer. Cet exemple de script utilise le nom de la ressource et de la paire de types de ressource. <br/><br/>Notez que vous créez la source du référentiel d’artefacts au même emplacement et sous le même groupe de ressources que le laboratoire.|
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Il n’existe aucune commande spécifique pour l’ajout de dépôts d’artefact. La cmdlet [New-AzResource](/powershell/module/az.resources/new-azresource) effectue cette tâche. Cette cmdlet requiert la valeur **ResourceId** ou la paire de valeurs **ResourceName** et **ResourceType** pour connaître le type de ressource à créer. Cet exemple de script utilise le nom de la ressource et de la paire de types de ressource. <br/><br/>Notez que vous créez la source du dépôt d’artefacts au même emplacement et sous le même groupe de ressources que le lab.|
 
 Ce script ajoute une nouvelle ressource à l’abonnement actuel. Utilisez [Get-AzContext](/powershell/module/az.accounts/get-azcontext) pour afficher cette information. Utilisez [Set-AzContext](/powershell/module/az.accounts/set-azcontext) pour définir le l’abonnement et le locataire actuels.
 

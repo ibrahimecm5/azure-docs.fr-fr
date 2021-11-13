@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 2ace40157681b250b56fcd595486260f07ec80c3
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 0bd470650ca3a2d6a8fd2d672d2eac0e5790dc89
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400702"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241000"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Configurer l’accélération GPU pour Azure Virtual Desktop
 
@@ -82,6 +82,9 @@ Le Bureau à distance code tous les graphiques rendus par les applications et le
 3. Déconnectez-vous de la session Bureau à distance.
 
 ## <a name="configure-fullscreen-video-encoding"></a>Configurer l’encodage vidéo plein écran
+
+>[!NOTE]
+>L’encodage vidéo plein écran peut être activé même si aucun GPU n’est présent.
 
 Si vous utilisez souvent des applications qui produisent un contenu à fréquence d’images élevée, tel que la modélisation 3D, les applications CAO/FAO et vidéo, vous pouvez choisir d’activer un encodage vidéo plein écran pour une session à distance. Le profil vidéo en plein écran fournit une fréquence d’images supérieure et une meilleure expérience utilisateur pour ces applications au détriment de la bande passante réseau et des ressources de l’hôte de session et du client. Il est recommandé d’utiliser l’encodage de trames avec accélération GPU pour un encodage vidéo plein écran. Configurez la stratégie de groupe pour l’hôte de session afin d’activer le codage d’image en plein écran. Continuez les étapes ci-dessus :
 

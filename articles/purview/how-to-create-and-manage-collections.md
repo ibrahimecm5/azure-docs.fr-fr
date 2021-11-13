@@ -6,14 +6,14 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 10/22/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0a684cec230766119345b8fd8acd3df53cc3f25a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e96a3e1e523c466cc3dc851725b648cba78dc8e8
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213011"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502112"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Créer et gérer des regroupements dans Azure Purview
 
@@ -103,6 +103,20 @@ Pour créer une collection, vous devez être administrateur de collections. En c
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/refresh-single-collection.png" alt-text="Capture d’écran de la fenêtre de collection Purview Studio, avec le bouton actualiser sous la fenêtre de collection mis en évidence." border="true":::
 
+### <a name="delete-a-collection"></a>Supprimer une collection
+
+Pour supprimer une collection, vous devez être administrateur de collections. En cas de doute suivez le guide ci-dessus pour vérifier les autorisations. Aucune collection enfant, ressource, source de données ou analyse ne doit être associée à la collection que vous souhaitez supprimer. 
+
+1. Sélectionnez **Supprimer** dans la page de détails de la collection.
+   
+   :::image type="content" source="./media/how-to-create-and-manage-collections/delete-collections.png" alt-text="Capture d’écran de la fenêtre Purview Studio permettant de supprimer une collection" border="true":::
+
+2. Sélectionnez **Confirmer** à l’invite **Voulez-vous vraiment supprimer cette collection ?**
+
+   :::image type="content" source="./media/how-to-create-and-manage-collections/delete-collection-confirmation.png" alt-text="Capture d’écran de la fenêtre Purview Studio montrant le message de confirmation affiché avant la suppression d’une collection" border="true":::
+
+3. Confirmez la suppression de la collection de votre Data Map Purview.
+
 ## <a name="add-roles-and-restrict-access-through-collections"></a>Ajouter des rôles et restreindre l’accès par le biais de collections
 
 Étant donné que les autorisations sont gérées par le biais de collections dans Purview, il est important de comprendre les rôles et les autorisations qu’ils peuvent fournir à vos utilisateurs. Un utilisateur a accordé des autorisations sur une collection qui aura accès aux sources et aux ressources associées à ce regroupement, et héritera des autorisations sur les sous-groupes. L’héritage [peut être limité](#restrict-inheritance), mais il est autorisé par défaut.
@@ -140,7 +154,7 @@ Tous les rôles attribués s’appliquent aux sources, aux ressources et aux aut
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/remove-role-assignment.png" alt-text="Capture d’écran de la fenêtre de collecte Purview Studio, avec l’onglet des attributions de rôle sélectionné, et le bouton x à côté d’un des noms mis en évidence." border="true":::
 
-1. Sélectionnez **Confirmer** si vous êtes sûr de supprimer l’utilisateur.
+1. Sélectionnez **Confirmer** si vous êtes sûr de vouloir supprimer l’utilisateur.
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/confirm-remove.png" alt-text="Capture d’écran d’une fenêtre contextuelle de confirmation, avec le bouton confirmer mis en évidence." border="true":::
 
@@ -151,7 +165,7 @@ Les autorisations de collection sont automatiquement héritées de la collection
 Une fois que vous avez restreint l’héritage, vous devez ajouter des utilisateurs directement à la collection restreinte pour leur accorder l’accès.
 
 1. Accédez au regroupement dans lequel vous souhaitez restreindre l’héritage et sélectionnez l’onglet **Attributions de rôle**.
-1. Sélectionnez **Restrict inherited permissions** (Restreindre les autorisations héritées) et sélectionnez **Restreindre l’accès** dans la boîte de dialogue contextuelle pour supprimer les autorisations héritées de cette collection et de tous les sous-groupes. Notez que les autorisations d’administrateur de collection ne seront pas affectées.
+1. Sélectionnez **Restrict inherited permissions** (Restreindre les autorisations héritées) et sélectionnez **Restreindre l’accès** dans la boîte de dialogue contextuelle pour supprimer les autorisations héritées de cette collection et de tous les sous-groupes. Notez que les autorisations de l’administrateur de collections ne sont pas affectées.
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/restrict-access-inheritance.png" alt-text="Capture d’écran de la fenêtre de collection Purview Studio, avec l’onglet d’attributions de rôles sélectionné et le bouton à glissière de restriction des autorisations héritées mis en évidence." border="true":::
 

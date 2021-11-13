@@ -1,22 +1,22 @@
 ---
 title: Jumeaux numériques et graphe de jumeaux
 titleSuffix: Azure Digital Twins
-description: Comprendre le concept de jumeau numérique et comment leurs relations aboutissent à un graphique.
+description: Découvrez-en plus sur les jumeaux numériques et la façon dont leurs relations forment un graphe.
 author: baanders
 ms.author: baanders
-ms.date: 8/26/2021
+ms.date: 10/20/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 42cce83683df789aeaabe53ca170f17319ec3603
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 33ad5a0eb684526184affba2d254bf20f66de930
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224845"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500238"
 ---
-# <a name="understand-digital-twins-and-their-twin-graph"></a>Comprendre les jumeaux numériques et leur graphique de jumeaux
+# <a name="digital-twins-and-their-twin-graph"></a>Jumeaux numériques et graphe de jumeaux
 
-Dans une solution Azure Digital Twins, les entités de votre environnement sont représentées par des **jumeaux numériques**. Un jumeau numérique est une instance de l’un de vos [modèles](concepts-models.md) personnalisés. Il peut être connecté à d’autres jumeaux numériques par le biais de **relations** pour former un **graphique de jumeaux** : ce graphique jumeau représente l’ensemble de votre environnement.
+Cet article décrit les **jumeaux numériques** dans le contexte d’Azure Digital Twins, ainsi que la manière dont les relations qu’ils entretiennent peuvent former un **graphe de jumeaux**. Dans une solution Azure Digital Twins, les entités de votre environnement sont représentées par des **jumeaux numériques**. Un jumeau numérique est une instance de l’un de vos [modèles](concepts-models.md) personnalisés. Il peut être connecté à d’autres jumeaux numériques par le biais de **relations** pour former un **graphique de jumeaux** : ce graphique jumeau représente l’ensemble de votre environnement.
 
 > [!TIP]
 > « Azure Digital Twins » fait référence à ce service Azure dans son ensemble. « Jumeaux numériques » ou tout simplement « jumeau(s) » fait référence à des nœuds individuels au sein de votre instance du service.

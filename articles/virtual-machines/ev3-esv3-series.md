@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: 251d9d2afd541159ae48d5e769b24e0f925fd65d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e42078618ad15850420b8c9c57c66e3419d586d2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776592"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466919"
 ---
 # <a name="ev3-and-esv3-series"></a>Séries Ev3 et Esv3
 
@@ -69,7 +69,7 @@ Machines virtuelles de série Esv3 dotées de la technologie Hyper-Threading d�
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
 <br>
 
-| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire et mis en cache max. : IOPS/Mbits/s (taille du cache en Gio) | Débit de stockage temporaire et débit de rafale mis en cache : IOPS/Mbits/s<sup>3</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s |  Débit du disque non mis en cache en rafale : IOPS/Mbits/s<sup>3</sup>| Nombre de cartes réseau/bande passante réseau attendue (Mbits/s) max. |
+| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire et mis en cache max. : IOPS/Mbits/s (taille du cache en Gio) | Débit de stockage temporaire et débit de rafale mis en cache : IOPS/Mbits/s<sup>3</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s |  Débit du disque non mis en cache en rafale : IOPS/Mbits/s<sup>3</sup>| Nombre maximal de cartes réseau/Bande passante réseau attendue (Mbits/s) |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_E2s_v3<sup>4</sup>                | 2  | 16  | 32  | 4  | 4 000/32 (50)       | 4 000/100    | 3 200/48    | 4 000/100 | 2/1 000 |
 | Standard_E4s_v3 <sup>1</sup>   | 4  | 32  | 64  | 8  | 8 000/64 (100)      | 8 000/200    | 6 400/96    | 8 000/200 | 2/2 000 |

@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 08/17/2021
 ms.author: allensu
-ms.openlocfilehash: 27c4340071e80cdcac806b80c28873e0955cd586
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d8ca819e7a63c7a0c4d507709c8495b604d19002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122535243"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257667"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Réseaux virtuels et machines virtuelles dans Azure
 
@@ -54,7 +54,7 @@ Ce tableau répertorie les méthodes que vous pouvez utiliser pour créer une in
 
 ## <a name="ip-addresses"></a>Adresses IP
 
-Vous pouvez attribuer ces types [d’adresses IP](../virtual-network/public-ip-addresses.md) à une interface réseau dans Azure :
+Vous pouvez attribuer ces types [d’adresses IP](./ip-services/public-ip-addresses.md) à une interface réseau dans Azure :
 
 - **Adresses IP publiques** : utilisées pour la communication entrante et sortante (sans traduction d’adresses réseau [NAT]) avec Internet et d’autres ressources Azure non connectées à un réseau virtuel. L’attribution d’une adresse IP publique à une carte d’interface réseau est facultative. Les adresses IP publiques ont un coût nominal et il existe une limite maximum d’adresses IP publiques pouvant être utilisées par abonnement.
 - **Adresses IP privées** : utilisées pour la communication au sein d’un réseau virtuel, avec votre réseau local et Internet (sans NAT). Au moins une adresse IP privée doit être affectée à une machine virtuelle. Pour en savoir plus sur la traduction d’adresses réseau dans Azure, consultez [Understanding outbound connections in Azure](../load-balancer/load-balancer-outbound-connections.md) (Comprendre les connexions sortantes dans Azure).
@@ -79,9 +79,9 @@ Ce tableau répertorie les méthodes que vous pouvez utiliser pour créer une ad
 
 | Méthode | Description |
 | ------ | ----------- |
-| [Azure portal](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Par défaut, les adresses IP publiques sont dynamiques. L’adresse IP peut changer lorsque la machine virtuelle est arrêtée ou supprimée. Pour vous assurer que la machine virtuelle utilise toujours la même adresse IP publique, créez une adresse IP publique statique. Par défaut, le portail attribue une adresse IP privée dynamique à une carte d’interface réseau lors de la création d’une machine virtuelle. Vous pouvez modifier cette adresse IP statique après la création de la machine virtuelle.|
-| [Azure PowerShell](../virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | Vous utilisez [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) avec le paramètre **`-AllocationMethod`** défini sur la valeur Dynamique ou Statique. |
-| [Azure CLI](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | Vous utilisez [az network public-ip create](/cli/azure/network/public-ip) avec le paramètre **`--allocation-method`** défini sur la valeur Dynamique ou Statique. |
+| [Azure portal](./ip-services/virtual-network-deploy-static-pip-arm-portal.md) | Par défaut, les adresses IP publiques sont dynamiques. L’adresse IP peut changer lorsque la machine virtuelle est arrêtée ou supprimée. Pour vous assurer que la machine virtuelle utilise toujours la même adresse IP publique, créez une adresse IP publique statique. Par défaut, le portail attribue une adresse IP privée dynamique à une carte d’interface réseau lors de la création d’une machine virtuelle. Vous pouvez modifier cette adresse IP statique après la création de la machine virtuelle.|
+| [Azure PowerShell](./ip-services/virtual-network-deploy-static-pip-arm-ps.md) | Vous utilisez [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) avec le paramètre **`-AllocationMethod`** défini sur la valeur Dynamique ou Statique. |
+| [Azure CLI](./ip-services/virtual-network-deploy-static-pip-arm-cli.md) | Vous utilisez [az network public-ip create](/cli/azure/network/public-ip) avec le paramètre **`--allocation-method`** défini sur la valeur Dynamique ou Statique. |
 | [Modèle](../virtual-network/template-samples.md) | Pour plus d’informations sur le déploiement d’une adresse IP publique à l’aide d’un modèle, consultez [Interface réseau dans un Réseau virtuel avec une Adresse IP publique](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/nic-publicip-dns-vnet). |
 
 Après avoir créé une adresse IP publique, vous pouvez l’associer à une machine virtuelle en l’attribuant à une carte d’interface réseau.
@@ -104,7 +104,7 @@ Ce tableau répertorie les méthodes que vous pouvez utiliser pour créer un ré
 | ------ | ----------- |
 | [Azure portal](../virtual-network/quick-create-portal.md) | Si vous autorisez Azure à créer un réseau virtuel lors de la création d’une machine virtuelle, le nom attribué sera une combinaison du nom du groupe de ressources qui contient le réseau virtuel et de **`-vnet`** . L’espace d’adressage est 10.0.0.0/24, le nom du sous-réseau nécessaire est **default**, et la plage d’adresses de sous-réseau est 10.0.0.0/24. |
 | [Azure PowerShell](../virtual-network/quick-create-powershell.md) | Vous utilisez [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) et [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) pour créer un sous-réseau et un réseau virtuel. Vous pouvez également utiliser [Add-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) pour ajouter un sous-réseau à un réseau virtuel existant. |
-| [Azure CLI](../virtual-network/quick-create-cli.md) | Le sous-réseau et le réseau virtuel sont créés en même temps. Fournissez un paramètre **`--subnet-name`** à[az network vnet create](/cli/azure/network/vnet) avec le nom du sous-réseau. |
+| [Azure CLI](../virtual-network/quick-create-cli.md) | Le sous-réseau et le réseau virtuel sont créés en même temps. Fournissez un paramètre **`--subnet-name`** à [az network vnet create](/cli/azure/network/vnet) avec le nom du sous-réseau. |
 | [Modèle](../virtual-network/template-samples.md) | Pour plus d’informations sur l’utilisation d’un modèle pour créer un réseau virtuel et des sous-réseaux, consultez [Réseau virtuel avec deux sous-réseaux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/vnet-two-subnets). |
 
 ## <a name="network-security-groups"></a>Groupes de sécurité réseau
@@ -174,10 +174,6 @@ Ce tableau répertorie les méthodes que vous pouvez utiliser pour créer un éq
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | Utilisez la commande [az network lb create](/cli/azure/network/lb) pour créer la configuration d’équilibrage de charge initiale. Pour définir l’adresse IP privée, utilisez [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) avec le paramètre **`--private-ip-address`** . Utilisez [az network lb address-pool create](/cli/azure/network/lb/address-pool) pour ajouter la configuration du pool d’adresses principal. Utilisez [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) pour ajouter des règles de traduction d’adresses réseau. Utilisez [az network lb rule create](/cli/azure/network/lb/rule) pour ajouter les règles d’équilibrage de charge. Utilisez [az network lb probe create](/cli/azure/network/lb/probe) pour ajouter les sondes.|
 | [Modèle](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Utilisez [2 machines virtuelles dans un équilibreur de charge](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/2-vms-internal-load-balancer) comme guide pour le déploiement d’un équilibrage de charge à l’aide d’un modèle. |
 
-## <a name="virtual-machine-scale-sets"></a>Groupes identiques de machines virtuelles 
-
-Pour plus d’informations sur l’équilibreur de charge et les groupes de machines virtuelles identiques, consultez [Mise en réseau pour des groupes de machines virtuelles identiques Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
-
 ## <a name="virtual-machines"></a>Machines virtuelles
 
 Les machines virtuelles peuvent être créées dans le même réseau virtuel et se connecter les unes aux autres à l’aide d’adresses IP privées. Les machines virtuelles peuvent se connecter si elles se trouvent dans des sous-réseaux différents. Elles se connectent sans avoir besoin de configurer de passerelle ou d’utiliser d’adresses IP publiques. Pour placer des machines virtuelles dans un réseau virtuel, vous devez créer le réseau virtuel. Lorsque vous créez chaque machine virtuelle, vous l’affectez au réseau virtuel et au sous-réseau. Les machines virtuelles acquièrent leurs paramètres réseau lors du déploiement ou du démarrage.
@@ -204,6 +200,8 @@ NAT est compatible avec les ressources d’adresses IP publiques ou les ressour
 
 Tout le trafic sortant du sous-réseau est traité par NAT automatiquement sans aucune configuration par le client. Les routes définies par l’utilisateur ne sont pas nécessaires. NAT est prioritaire sur les autres scénarios de trafic sortant et remplace la destination Internet par défaut d’un sous-réseau.
 
+Les machines virtuelles créées par des groupes de machines virtuelles identiques en mode d’orchestration flexible n’ont pas d’accès sortant par défaut. Le NAT de réseau virtuel est la méthode d’accès sortant recommandée pour les groupes de machines virtuelles identiques en mode d’orchestration flexible.
+
 Pour plus d’informations sur la ressource de passerelle NAT et le NAT de réseau virtuel, consultez [Qu’est-ce que le service NAT de réseau virtuel Azure ?](./nat-gateway/nat-overview.md)
 
 Ce tableau répertorie les méthodes que vous pouvez utiliser pour créer une ressource de passerelle NAT.
@@ -217,7 +215,7 @@ Ce tableau répertorie les méthodes que vous pouvez utiliser pour créer une re
 
 ## <a name="azure-bastion"></a>Azure Bastion 
 
-Azure Bastion est déployé pour fournir une connectivité de gestion sécurisée aux machines virtuelles dans un réseau virtuel. Azure Bastion vous permet d’établir une connexion RDP et SSH sécurisée et transparente aux machines virtuelles de votre réseau virtuel. Azure Bastion active les connexions sans exposer une adresse IP publique sur la machine virtuelle. Les connexions sont établies directement à partir du Portail Azure, sans qu’un client/agent ou un logiciel supplémentaire ne soit nécessaire. Azure Bastion prend en charge les adresses IP publiques de référence SKU Standard.
+Azure Bastion est déployé pour fournir une connectivité de gestion sécurisée aux machines virtuelles dans un réseau virtuel. Le service Azure Bastion vous permet d’établir une connexion RDP et SSH sécurisée et fluide aux machines virtuelles de votre réseau virtuel. Azure Bastion active les connexions sans exposer d’adresse IP publique sur la machine virtuelle. Les connexions sont établies directement à partir du portail Azure, sans qu’un client/agent ou logiciel supplémentaire ne soit nécessaire. Azure Bastion prend en charge les adresses IP publiques de référence SKU Standard.
 
 Pour plus d’informations sur Azure Bastion, consultez [Présentation d’Azure Bastion](../bastion/bastion-overview.md).
 

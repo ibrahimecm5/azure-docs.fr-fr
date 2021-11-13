@@ -1,7 +1,7 @@
 ---
 title: Nouveautés d’Azure Active Directory B2C (Business-to-Customer)
 description: Documentation et nouvelle et mise à jour pour Azure Active Directory B2C (Business-to-Customer)
-ms.date: 10/05/2021
+ms.date: 11/02/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,49 @@ ms.workload: identity
 ms.author: kengaderdus
 author: kengaderdus
 manager: CelesteDG
-ms.openlocfilehash: ba3e1ea54c6637e6882bdba1f62a9c41a1f17605
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: e916bdffcfff61d3cc09aca3cc055a69c1e56273
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043583"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462838"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C : Nouveautés
 
 Bienvenue dans les nouveautés de la documentation Azure Active Directory B2C. Cet article répertorie les nouveaux documents qui ont été ajoutés et ceux qui ont subi des mises à jour significatives au cours des trois derniers mois. Pour découvrir les nouveautés du service B2C, consultez [Nouveautés d’Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+
+## <a name="october-2021"></a>Octobre 2021
+
+### <a name="new-articles"></a>Nouveaux articles
+
+- [Tutoriel : Configurer IDEMIA avec Azure Active Directory B2C pour une partie de confiance afin de consommer des informations d’identification d’identité mobiles émises par IDEMIA ou par un état des États-Unis (préversion)](partner-idemia.md)
+- [Tutoriel : Étendre Azure Active Directory B2C pour protéger les applications locales à l’aide de F5 BIG-IP](partner-f5.md)
+- [Rôles et contrôle d’accès aux ressources](roles-resource-access-control.md)
+- [Fonctionnalités Azure AD prises en charge](supported-azure-ad-features.md)
+
+### <a name="updated-articles"></a>Articles mis à jour
+
+- [Tutoriel : créer des flux d’utilisateurs et des stratégies personnalisées dans Azure Active Directory B2C](tutorial-create-user-flows.md)
+- [Personnaliser l’interface utilisateur dans Azure Active Directory B2C](customize-ui.md)
+- [Tutoriel : Étendre Azure Active Directory B2C pour protéger les applications locales à l’aide de F5 BIG-IP](partner-f5.md)
+- [Configurer l’inscription et la connexion avec OpenID Connect générique à l’aide d’Azure Active Directory B2C](identity-provider-generic-openid-connect.md)
+- [RelyingParty](relyingparty.md)
+- [Personnaliser l’interface utilisateur avec des modèles HTML dans Azure Active Directory B2C](customize-ui-with-html.md)
+- [Collecter les journaux Azure Active Directory B2C avec Application Insights](troubleshoot-with-application-insights.md)
+- [Résoudre les problèmes Azure Active Directory B2C liés aux stratégies personnalisées et aux flux d’utilisateurs](troubleshoot.md)
+- [Définir des attributs personnalisés dans Azure Active Directory B2C](user-flow-custom-attributes.md)
+- [Didacticiel : configurer l’analytique de sécurité pour les données Azure Active Directory B2C avec Azure Sentinel](azure-sentinel.md)
+- [Qu’est-ce qu’Azure Active Directory B2C ?](overview.md)
+- [Démarrage rapide : Configurer la connexion pour une application monopage à l’aide d’Azure Active Directory B2C](quickstart-single-page-app.md)
+- [Démarrage rapide : Configurer la connexion pour une application ASP.NET à l’aide d’Azure Active Directory B2C](quickstart-web-app-dotnet.md)
+- [Solutions et formations pour Azure Active Directory B2C](solution-articles.md)
+- [Vue d’ensemble technique et fonctionnelle d’Azure Active Directory B2C](technical-overview.md)
+- [Inscrire une application SAML dans Azure AD B2C](saml-service-provider.md)
+- [Configurer le comportement de session dans Azure Active Directory B2C](session-behavior.md)
+
+
+
 
 ## <a name="september-2021"></a>Septembre 2021
 
@@ -188,7 +221,7 @@ Bienvenue dans les nouveautés de la documentation Azure Active Directory B2C. C
 - [Vue d’ensemble de la stratégie personnalisée Azure AD B2C](custom-policy-overview.md)
 - [Vue d’ensemble des flux d’utilisateurs et des stratégies personnalisées](user-flow-overview.md)
 - [Configurer l’inscription et la connexion par téléphone pour les flux d’utilisateurs](phone-authentication-user-flows.md)
-- [Activer l'authentification multifacteur dans Azure Active Directory B2C](multi-factor-authentication.md)
+- [Activer l’authentification multifacteur dans Azure Active Directory B2C](multi-factor-authentication.md)
 - [Versions de flux utilisateur dans Azure Active Directory B2C](user-flow-versions.md)
 
 

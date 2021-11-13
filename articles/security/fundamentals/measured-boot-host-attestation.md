@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 06/24/2021
-ms.openlocfilehash: 6dac3b8230a0bad9c6492b236eac5dddc1839471
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: af2927e4aa9dc9044546537adbde3af97cba4be1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895775"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249378"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Démarrage mesuré et attestation de l’hôte
 Cet article explique la façon dont Microsoft garantit l’intégrité et la sécurité des hôtes par le biais du démarrage mesuré et de l’attestation de l’hôte.
 
 ## <a name="measured-boot"></a>Démarrage mesuré
 
-Le [module de plateforme sécurisée](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) est un composant d’audit sécurisé par chiffrement et inviolable avec un microprogramme fourni par un tiers de confiance. Le journal de configuration du démarrage contient des mesures chaînées par hachage enregistrées dans ses registres de configuration de plateforme (PCR) lorsque l’hôte a subi la dernière séquence de démarrage. Ce processus d’enregistrement est représenté dans la figure suivante. L’ajout incrémentiel d’une mesure précédemment hachée au hachage de la mesure suivante et l’exécution de l’algorithme de hachage sur l’union permet de réaliser le chaînage de hachage.
+Le [module de plateforme sécurisée](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) est un composant d’audit sécurisé par chiffrement et inviolable avec un microprogramme fourni par un tiers de confiance. Le journal de configuration du démarrage contient des mesures chaînées par hachage enregistrées dans ses registres de configuration de plateforme (PCR) au moment du dernier démarrage de l’hôte. Ce processus d’enregistrement est représenté dans la figure suivante. L’ajout incrémentiel d’une mesure précédemment hachée au hachage de la mesure suivante et l’exécution de l’algorithme de hachage sur l’union permet de réaliser le chaînage de hachage.
 
 ![Diagramme montrant le chaînage de hachage du service d’attestation d’hôte.](./media/measured-boot-host-attestation/hash-chaining.png)
 

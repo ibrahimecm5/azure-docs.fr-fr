@@ -619,6 +619,8 @@ items:
             href: speech-sdk.md
           - name: Configurer le SDK Speech
             href: quickstarts/setup-platform.md
+          - name: Résoudre les problèmes avec le Kit de développement logiciel (SDK) Speech
+            href: troubleshooting.md
           - name: Notes de publication du Kit de développement logiciel (SDK) Speech
             href: releasenotes.md
           - name: Informations de référence

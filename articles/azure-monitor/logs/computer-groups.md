@@ -4,13 +4,13 @@ description: Les groupes d’ordinateurs d’Azure Monitor permettent de formule
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2019
-ms.openlocfilehash: d8702b498e08561175aa7ee975c7b6b46fdf1687
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 10/20/2021
+ms.openlocfilehash: dd724da3d200f26122ae780c740aa6fe4c84b08c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031087"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244959"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Groupes d’ordinateurs dans les requêtes de journal Azure Monitor
 Les groupes d’ordinateurs d’Azure Monitor permettent de formuler des [requêtes de journal](./log-query-overview.md) portant sur un ensemble spécifique d’ordinateurs.  Vous peuplez chaque groupe d’ordinateurs soit à l’aide d’une requête que vous définissez, soit en important des groupes à partir de différentes sources.  Quand le groupe est inclus dans une requête de journal, les résultats sont limités aux enregistrements correspondant aux ordinateurs du groupe.
@@ -60,32 +60,20 @@ Si Azure Monitor est configuré de façon à importer les appartenances de group
 > [!NOTE]
 > Les groupes Active Directory importés contiennent uniquement les ordinateurs Windows.
 
-Pour configurer Azure Monitor de façon à importer des groupes de sécurité Active Directory, accédez à **Paramètres avancés** dans votre espace de travail Log Analytics sur le Portail Azure.  Sélectionnez **Groupes d’ordinateurs**, **Active Directory**, puis **Importer les appartenances à des groupes Active Directory depuis les ordinateurs**.  Aucune configuration supplémentaire n’est requise.
-
-![Groupes d’ordinateurs d’Active Directory](media/computer-groups/configure-activedirectory.png)
-
-Une fois des groupes importés, le menu répertorie le nombre d’ordinateurs détectés avec une appartenance à un groupe et le nombre de groupes importés.  Vous pouvez cliquer sur l’un de ces liens pour retourner les enregistrements **ComputerGroup** avec ces informations.
+Pour configurer Azure Monitor de façon à importer des groupes de sécurité Active Directory, accédez à l’élément de menu **Groupe d’ordinateurs** dans votre espace de travail Log Analytics dans le portail Azure.  Sélectionnez l’onglet **Active Directory** puis **Importer les appartenances à des groupes Active Directory depuis les ordinateurs**.  Une fois des groupes importés, le menu répertorie le nombre d’ordinateurs détectés avec une appartenance à un groupe et le nombre de groupes importés.  Vous pouvez cliquer sur l’un de ces liens pour retourner les enregistrements **ComputerGroup** avec ces informations.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
 Si Azure Monitor est configuré de façon à importer les appartenances de groupe WSUS, il analyse l’appartenance de groupe de ciblage de tous les ordinateurs avec l’agent Log Analytics.  Si vous utilisez un ciblage côté client, l’appartenance de groupe de tous les ordinateurs connectés à Azure Monitor et faisant partie d’un groupe de ciblage WSUS est importée dans Azure Monitor. Si vous utilisez un ciblage côté serveur, l’agent Log Analytics doit être installé sur le serveur WSUS pour que les informations d’appartenance de groupe soient importées dans Azure Monitor.  Cet appartenance est mise à jour toutes les 4 heures. 
 
-Pour configurer Azure Monitor de façon à importer des groupes WSUS, accédez à **Paramètres avancés** dans votre espace de travail Log Analytics sur le Portail Azure.  Sélectionnez **Groupes d’ordinateurs**, **WSUS**, puis **Importer les appartenances à un groupe WSUS**.  Aucune configuration supplémentaire n’est requise.
-
-![Groupes d’ordinateurs à partir de WSUS](media/computer-groups/configure-wsus.png)
-
-Une fois des groupes importés, le menu répertorie le nombre d’ordinateurs détectés avec une appartenance à un groupe et le nombre de groupes importés.  Vous pouvez cliquer sur l’un de ces liens pour retourner les enregistrements **ComputerGroup** avec ces informations.
+Pour configurer Azure Monitor de façon à importer des groupes WSUS, accédez à l’élément de menu **Groupe d’ordinateurs** dans votre espace de travail Log Analytics dans le portail Azure.  Sélectionnez l’onglet **Windows Server Update Service**, puis **Importer les appartenances à un groupe WSUS**.  Une fois des groupes importés, le menu répertorie le nombre d’ordinateurs détectés avec une appartenance à un groupe et le nombre de groupes importés.  Vous pouvez cliquer sur l’un de ces liens pour retourner les enregistrements **ComputerGroup** avec ces informations.
 
 ### <a name="configuration-manager"></a>Gestionnaire de configuration
-Si Azure Monitor est configuré de façon à importer les adhésions aux regroupements Configuration Manager, il crée un groupe d’ordinateurs pour chaque regroupement.  Les informations d’appartenance au regroupement sont récupérées toutes les 3 heures pour tenir les groupes d’ordinateurs à jour. 
+Si Azure Monitor est configuré de façon à importer les adhésions aux regroupements Configuration Manager, il crée un groupe d’ordinateurs pour chaque regroupement.  Les informations d’appartenance au regroupement sont récupérées toutes les 3 heures pour tenir les groupes d’ordinateurs à jour. Pour pouvoir importer des regroupements Configuration Manager, vous devez [connecter Configuration Manager à Azure Monitor](collect-sccm.md).  
 
-Pour pouvoir importer des regroupements Configuration Manager, vous devez [connecter Configuration Manager à Azure Monitor](collect-sccm.md).  
-
-![Groupes d’ordinateurs à partir de SCCM](media/computer-groups/configure-sccm.png)
-
-Une fois les regroupements importés, le menu répertorie le nombre d’ordinateurs détectés avec une appartenance à un groupe et le nombre de groupes importés.  Vous pouvez cliquer sur l’un de ces liens pour retourner les enregistrements **ComputerGroup** avec ces informations.
+Pour configurer Azure Monitor de façon à importer des groupes WSUS, accédez à l’élément de menu **Groupe d’ordinateurs** dans votre espace de travail Log Analytics dans le portail Azure.  Sélectionnez l’onglet **System Center Configuration Manager**, puis **Importer les appartenances aux regroupements Configuration Manager**. Une fois les regroupements importés, le menu répertorie le nombre d’ordinateurs détectés avec une appartenance à un groupe et le nombre de groupes importés.  Vous pouvez cliquer sur l’un de ces liens pour retourner les enregistrements **ComputerGroup** avec ces informations.
 
 ## <a name="managing-computer-groups"></a>Gestion de groupes d’ordinateurs
-Pour afficher les groupes d’ordinateurs créés à partir d’une requête de journal d’activité ou de l’API Recherche dans les journaux, accédez à **Paramètres avancés** dans votre espace de travail Log Analytics sur le Portail Azure.  Sélectionnez **Groupes d’ordinateurs**, puis **Groupes enregistrés**.  
+Pour afficher les groupes d’ordinateurs créés à partir d’une requête de journal d’activité ou de l’API Recherche dans les journaux, accédez à l’élément de menu **Groupes d'ordinateurs** dans votre espace de travail Log Analytics dans le portail Azure.  Sélectionnez l’onglet **Groupes enregistrés** pour afficher la liste des groupes.  
 
 Cliquez sur le signe **x** dans la colonne **Supprimer** pour supprimer le groupe d’ordinateurs.  Cliquez sur l’icône **Afficher les membres** correspondant à un groupe pour exécuter la recherche de journal du groupe qui retourne les membres de celui-ci.  Pour modifier un groupe d’ordinateurs, vous devez le supprimer et le recréer avec les paramètres modifiés.
 

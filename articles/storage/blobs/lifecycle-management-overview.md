@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 245bcbfd59644946ac6f039e35fe02147054cc8c
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 69cb9048ef723744da93478b01ba7122152e1db9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273228"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460302"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>Optimiser les coûts en gérant automatiquement le cycle de vie des données
 
@@ -400,5 +400,5 @@ Quand un objet blob est déplacé d’un niveau d’accès vers un autre, l’he
 ## <a name="next-steps"></a>Étapes suivantes
 
 - [Configurer une stratégie de gestion de cycle de vie](lifecycle-management-policy-configure.md)
-- [Niveaux d’accès chaud, froid et archive pour les données blob](access-tiers-overview.md)
+- [Niveaux d’accès chaud, froid et archive pour les données d’objet blob](access-tiers-overview.md)
 - [Gérer et rechercher des données dans Stockage Blob Azure avec un index de blobs](storage-manage-find-blobs.md)

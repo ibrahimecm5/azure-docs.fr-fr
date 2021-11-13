@@ -10,16 +10,16 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: avgupta
-ms.openlocfilehash: f133c3184186ef46f7d4579a64d22733b773df7f
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 4edbeadd2615fc8d58761bc5b15a93ae626a6613
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415193"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265590"
 ---
 # <a name="reload-secrets-and-certificates-from-key-vault-automatically"></a>Recharger automatiquement les secrets et les certificats de Key Vault
 
-App Configuration et Key Vault sont des services complémentaires utilisés côte à côte dans de nombreuses applications. App Configuration vous permet d’utiliser les services conjointement en créant des clés dans votre magasin App Configuration pour référencer les secrets et les certificats stockés dans Key Vault. Comme Key Vault stocke la paire de clés publique et privée d’un certificat en tant que secret, votre application peut récupérer n’importe quel certificat en tant que secret à partir de Key Vault.
+App Configuration et Key Vault sont des services complémentaires utilisés côte à côte dans de nombreuses applications. App Configuration vous permet d’utiliser les services conjointement en créant des clés dans votre magasin App Configuration qui référencent les secrets et les certificats stockés dans Key Vault. Comme Key Vault stocke la paire de clés publique et privée d’un certificat en tant que secret, votre application peut récupérer n’importe quel certificat en tant que secret à partir de Key Vault.
 
 Une bonne pratique de sécurité consiste à effectuer régulièrement une rotation des [secrets](../key-vault/secrets/tutorial-rotation.md) et des [certificats](../key-vault/certificates/tutorial-rotate-certificates.md). Une fois qu’ils ont fait l’objet d’une rotation dans Key Vault, vous souhaitez que votre application récupère les valeurs de secret et de certificat les plus récentes. Il existe deux façons de procéder sans redémarrer votre application :
 - Mettez à jour une paire clé-valeur Sentinel pour déclencher l’actualisation de la totalité de votre configuration et recharger ainsi tous les secrets et certificats Key Vault. Pour plus d’informations, consultez [Utiliser la configuration dynamique dans une application ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md).

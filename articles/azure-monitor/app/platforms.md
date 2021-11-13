@@ -2,14 +2,14 @@
 title: 'Application Insights : langages, plateformes et intégrations | Microsoft Docs'
 description: Langages, plateformes et intégrations disponibles pour Application Insights
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/29/2021
 ms.reviewer: olegan
-ms.openlocfilehash: d388914badbd9ac8870a9d5e23370cd5b0319eea
-ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+ms.openlocfilehash: 44c08d1008691826299d1fa41507df26064f6274
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113616394"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462023"
 ---
 # <a name="supported-languages"></a>Langues prises en charge
 
@@ -21,24 +21,32 @@ ms.locfileid: "113616394"
 
 ## <a name="supported-platforms-and-frameworks"></a>Plateformes et infrastructures prises en charge
 
-### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Instrumentation pour les applications déjà déployées (sans codes, basées sur un agent)
+### <a name="azure-service-integration-portal-enablement-arm-deployments"></a>Intégration de service Azure (activation du portail, déploiements ARM)
 * [Machines virtuelles et groupes de machines virtuelles identiques Azure](./azure-vm-vmss-apps.md)
 * [Azure App Service](./azure-web-apps.md)
-* [ASP.NET – pour les applications web hébergées avec IIS](./status-monitor-v2-overview.md)
-* [Azure Cloud Services](./cloudservices.md) incluant les rôles web et de travail
 * [Azure Functions](../../azure-functions/functions-monitoring.md)
-### <a name="instrumentation-through-code-sdks"></a>Instrumentation par le biais du code (SDK)
+* [Azure Cloud Services](./cloudservices.md) incluant les rôles web et de travail
+
+### <a name="auto-instrumentation-enable-without-code-changes"></a>Instrumentation automatique (activer sans modification du code)
+* [ASP.NET – pour les applications web hébergées avec IIS](./status-monitor-v2-overview.md)
+* [Java](./java-in-process-agent.md)
+
+### <a name="manual-instrumentation--sdk-some-code-changes-required"></a>Instrumentation manuelle/SDK (certaines modifications du code sont nécessaires)
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
+* [Node.JS](./nodejs.md)
+* [Python](./opencensus-python.md)
+* [JavaScript - Web](./javascript.md)
+  * [React](./javascript-react-plugin.md)
+  * [React Native](./javascript-react-native-plugin.md)
+  * [Angular](./javascript-angular-plugin.md)
+* [Rôles de travail, services et applications de bureau Windows](./windows-desktop.md)
+* [Application Windows universelle](../app/mobile-center-quickstart.md) (App Center)
 * [Android](../app/mobile-center-quickstart.md) (App Center)
 * [iOS](../app/mobile-center-quickstart.md) (App Center)
-* [Java EE](./java-in-process-agent.md)
-* [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [Python](./opencensus-python.md)
-* [Application Windows universelle](../app/mobile-center-quickstart.md) (App Center)
-* [Rôles de travail, services et applications de bureau Windows](./windows-desktop.md)
-* [React](./javascript-react-plugin.md)
-* [React Native](./javascript-react-native-plugin.md)
+
+> [!NOTE]
+> L’instrumentation basée sur OpenTelemetry est disponible dans l’état PRÉVERSION pour [C#, Node.js et Python](opentelemetry-enable.md). Veuillez consulter les limitations indiquées au début de la documentation officielle de chaque langage. Les utilisateurs qui ont besoin d’une expérience complète doivent utiliser les kits SDK Application Insights existants.
 
 ## <a name="logging-frameworks"></a>Frameworks de journalisation
 * [ILogger](./ilogger.md)
@@ -52,5 +60,4 @@ ms.locfileid: "113616394"
 * [Stream Analytics](./export-power-bi.md)
 
 ## <a name="unsupported-sdks"></a>Kits de développement logiciel (SDK) non pris en charge
-Nous sommes conscients qu’il existe plusieurs autres SDK pris en charge par la communauté. Toutefois, Azure Monitor assure uniquement la prise en charge lors de l’utilisation des kits de développement logiciel pris en charge figurant sur cette page. Nous évaluons constamment les opportunités de développer notre prise en charge d’autres langues. Suivez notre page d’[annonces GitHub](https://github.com/microsoft/ApplicationInsights-Announcements/issues) pour recevoir les dernières informations concernant les kits de développement (SDK). 
-
+Il existe plusieurs autres SDK Application Insights pris en charge par la communauté. Toutefois, Azure Monitor assure uniquement la prise en charge lors de l’utilisation des options d’instrumentation prises en charge figurant sur cette page. Nous évaluons constamment les opportunités d’étendre notre prise en charge d’autres langages. Suivez [Mises à jour Azure pour Application Insights](https://azure.microsoft.com/updates/?query=application%20insights) pour être tenu au courant des dernières actualités concernant le SDK.

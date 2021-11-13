@@ -3,12 +3,12 @@ title: Exécuter Azure Functions à partir d’un package
 description: Exécutez vos fonctions avec le runtime Azure Functions, en montant un fichier de package de déploiement qui contient les fichiers projet de votre application de fonction.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 0be037d5a9270d60c16f8fc128030705be8b81ef
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: c2c0797f256cfd302f4b8a5a80300ef4469355e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136883"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256986"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Exécuter des fonctions Azure à partir d’un fichier de package
 
@@ -62,6 +62,36 @@ L’exemple suivant montre une application de fonction configurée pour s’exé
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
+
+## <a name="example-workflow-for-manually-uploading-a-package-hosted-in-azure-storage"></a>Exemple de flux de travail pour le chargement manuel d’un package hébergé dans Stockage Azure
+
+Pour déployer un package compressé lorsque vous utilisez l’option URL, vous devez créer un package de déploiement .zip compressé et le charger vers la destination. Cet exemple utilise un conteneur Stockage Blob. 
+
+1. Créez un package .zip pour votre projet à l’aide de l’utilitaire de votre choix.
+
+1. Dans le [portail Azure](https://portal.azure.com), recherchez le nom de votre compte de stockage, ou parcourez les comptes de stockage à sa recherche.
+ 
+1. Dans le compte de stockage, sélectionnez **Conteneurs** sous **Stockage des données**.
+
+1. Sélectionnez **+ Conteneur** pour créer un conteneur Stockage Blob dans votre compte.
+
+1. Dans la page **Nouveau conteneur**, fournissez un **Nom** (par exemple « déploiements »), vérifiez que le **Niveau d’accès public** est **Privé**, puis sélectionnez **Créer**.
+
+1. Sélectionnez le conteneur que vous avez créé, sélectionnez **Charger**, accédez à l’emplacement du fichier .zip que vous avez créé avec votre projet, puis sélectionnez **Charger**.
+
+1. Une fois le chargement terminé, choisissez votre fichier blob chargé, puis copiez l’URL. Vous devrez peut-être générer une URL SAS si vous n’[utilisez pas d’identité](#fetch-a-package-from-azure-blob-storage-using-a-managed-identity).
+
+1. Recherchez votre application de fonction ou parcourez la page **Function App** à sa recherche. 
+
+1. Dans votre application de fonction, sélectionnez **Configurations** sous **Paramètres**.
+
+1. Sous l’onglet **Paramètres d’application**, sélectionnez **Nouveau paramètre d’application**.
+
+1. Entrez la valeur `WEBSITE_RUN_FROM_PACKAGE` comme **Nom**, puis collez l’URL de votre package dans Stockage Blob comme **Valeur**.
+
+1. Sélectionnez **OK**. Ensuite, sélectionnez **Enregistrer** > **Continuer** pour enregistrer le paramètre et redémarrer l’application.
+
+Vous pouvez maintenant exécuter votre fonction dans Azure pour vérifier que le déploiement a réussi à l’aide du fichier .zip du package de déploiement.
 
 ## <a name="troubleshooting"></a>Dépannage
 

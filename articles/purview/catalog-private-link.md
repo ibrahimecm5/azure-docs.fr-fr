@@ -6,18 +6,18 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: ec97cba6afd1a335791b51ed905af2f713ce6a19
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 10/19/2021
+ms.openlocfilehash: dba76c0b2d25c8bc962dd847e0d2ffdaa5bdd3eb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179743"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234224"
 ---
 # <a name="use-private-endpoints-for-your-azure-purview-account"></a>Utiliser des points de terminaison privés pour votre compte Azure Purview
 
 > [!IMPORTANT]
-> Si vous avez créé un point de terminaison privé de _portail_ pour votre compte Purview **avant le 27 septembre 2021 à 15h30 UTC**, vous devez effectuer les actions requises détaillées dans [Reconfigurer DNS pour les points de terminaison privés du portail](#reconfigure-dns-for-portal-private-endpoints). **Ces actions doivent être effectuées avant le 11 octobre 2021. Dans le cas contraire, les points de terminaison privés du portail existants cesseront de fonctionner**.
+> Si vous avez créé un point de terminaison privé de _portail_ pour votre compte Purview **avant le 27 septembre 2021 à 15h30 UTC**, vous devez effectuer les actions requises détaillées dans [Reconfigurer DNS pour les points de terminaison privés du portail](#reconfigure-dns-for-portal-private-endpoints). **Ces actions doivent être effectuées avant le 12 novembre 2021. Sinon, les points de terminaison privés existants du portail cesseront de fonctionner**.
 
 
 Cet article décrit comment configurer des points de terminaison privés pour Azure Purview.
@@ -33,7 +33,7 @@ Vous pouvez déployer des points de terminaison privés _d’ingestion_ si vous 
 
 :::image type="content" source="media/catalog-private-link/purview-private-link-overview.png" alt-text="Capture d’écran montrant Azure Purview avec des points de terminaison privés."::: 
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 Avant de déployer des points de terminaison privés pour le compte Azure Purview, vérifiez que vous respectez les prérequis suivants :
 
@@ -77,25 +77,25 @@ Si vous avez créé un point de terminaison privé de _portail_ pour votre compt
 
 1. Dans le portail Azure, localisez votre compte Purview. Dans le menu gauche, cliquez sur **Mise en réseau**, sélectionnez **Connexions de points de terminaison privés**. Cliquez sur chaque point de terminaison privé dans la liste et suivez les étapes ci-dessous.
 
-    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-1.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview":::.
+    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-1.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview"lightbox="media/catalog-private-link/purview-pe-dns-updates-1.png":::.
 
 2. Si la sous-ressource cible est _portail_, passez en revue la **configuration DNS** ; sinon, revenez à l’étape précédente et sélectionnez le point de terminaison privé suivant jusqu’à ce que vous ayez examiné tous les points de terminaison privés et validé tous les points de terminaison privés associés au portail.
 
-    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-2.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview du portail":::.
+    :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-2.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview du portail"lightbox="media/catalog-private-link/purview-pe-dns-updates-2.png":::.
 
 3. Dans la fenêtre **Configuration DNS**, vérifiez les paramètres actuels :
    
     - S’il existe des enregistrements dans la section **Enregistrements DNS personnalisés**, suivez les étapes décrites dans [Scénarios de correction 1](#scenario-1) et [Scénario de correction 2](#scenario-2).
     
-        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-3.png" alt-text="Capture d’écran montrant la configuration DNS personnalisée du point de terminaison privé Purview du portail.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-3.png" alt-text="Capture d’écran montrant la configuration DNS personnalisée du point de terminaison privé Purview du portail."lightbox="media/catalog-private-link/purview-pe-dns-updates-3.png":::
 
     - Si la section **Nom de la configuration** contient des enregistrements et si la zone DNS est `privatelink.purviewstudio.azure.com`, aucune action n’est nécessaire pour ce point de terminaison privé. Revenez à l’**étape 1** et passez en revue les points de terminaison privés restants du portail.
   
-        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-4.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview du portail avec la nouvelle zone DNS":::.
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-4.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview du portail avec la nouvelle zone DNS"lightbox="media/catalog-private-link/purview-pe-dns-updates-4.png":::.
     
     - Si la section **Nom de la configuration** contient des enregistrements et si la zone DNS est `privatelink.purview.azure.com`, suivez les étapes de [Scénario de correction 3](#scenario-3).
 
-        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-5.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview du portail avec l’ancienne zone DNS":::.
+        :::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-5.png" alt-text="Capture d’écran montrant le point de terminaison privé Purview du portail avec l’ancienne zone DNS"lightbox="media/catalog-private-link/purview-pe-dns-updates-5.png":::.
 
 ### <a name="remediation-scenarios"></a>Scénarios de correction
 
@@ -103,7 +103,7 @@ Si vous avez créé un point de terminaison privé de _portail_ pour votre compt
 
 Si vous **avez ajouté des enregistrements A DNS nécessaires directement à votre DNS ou au fichier d’hôte de vos machines**, **aucune action n’est nécessaire**.
     
-:::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-host.png" alt-text="Capture d’écran montrant le fichier d’hôte avec des enregistrements A.":::
+:::image type="content" source="media/catalog-private-link/purview-pe-dns-updates-host.png" alt-text="Capture d’écran montrant le fichier d’hôte avec des enregistrements A."lightbox="media/catalog-private-link/purview-pe-dns-updates-host.png":::
 
 #### <a name="scenario-2"></a>Scénario 2
 
@@ -123,7 +123,7 @@ Si vous avez configuré **l’intégration de la zone DNS privée Azure pour vot
        
     1. Accédez au [Portail Azure](https://portal.azure.com), puis cliquez sur votre compte Azure Purview, et sous **Paramètres**, sélectionnez **Mise en réseau**, puis sélectionnez **Connexions de point de terminaison privé**.
 
-        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal.png" alt-text="Capture d’écran montrant comment créer un point de terminaison privé de portail.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal.png" alt-text="Capture d’écran montrant comment créer un point de terminaison privé de portail."lightbox="media/catalog-private-link/purview-pe-reconfigure-portal.png":::
 
     2. Sélectionnez **+ Point de terminaison privé** pour créer un point de terminaison privé.
 
@@ -135,7 +135,7 @@ Si vous avez configuré **l’intégration de la zone DNS privée Azure pour vot
 
     6. Sous l’onglet **Configuration**, sélectionnez le réseau virtuel et, si vous le souhaitez, sélectionnez la zone de DNS privé Azure pour créer une zone Azure DNS.
             
-        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png" alt-text="Capture d’écran montrant comment créer un point de terminaison privé de portail et des paramètres DNS.":::
+        :::image type="content" source="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png" alt-text="Capture d’écran montrant comment créer un point de terminaison privé de portail et des paramètres DNS."lightbox="media/catalog-private-link/purview-pe-reconfigure-portal-dns.png":::
 
     7. Accédez à la page de résumé, puis sélectionnez **Créer** pour créer le point de terminaison privé du portail.
 
@@ -162,7 +162,7 @@ Pour consulter les questions fréquentes relatives aux déploiements de points d
 ## <a name="troubleshooting-guide"></a>Guide de résolution des problèmes 
 Pour résoudre les problèmes de configuration de point de terminaison privé pour les comptes Purview, consultez [Résolution des problèmes de configuration de point de terminaison privé pour les comptes Purview](./catalog-private-link-troubleshoot.md).
 
-## <a name="known-limitations"></a>Limitations connues
+## <a name="known-limitations"></a>Limites connues
 Pour afficher la liste des limitations actuelles liées aux points de terminaison privés Azure Purview, consultez [Limitations connues des points de terminaison privés Azure Purview](./catalog-private-link-troubleshoot.md#known-limitations).
 
 ## <a name="next-steps"></a>Étapes suivantes

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 10/20/2021
 ms.author: alkohli
-ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57a5ccb94f94fdc12083f49394235123b0e26d96
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80437777"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251867"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Qu’est-ce qu’Azure Data Box Heavy ?
 
@@ -102,26 +102,23 @@ Tout au long de ce processus, vous êtes averti par e-mail de toutes les modific
 
 Data Box Heavy peut transférer des données en fonction de la région dans laquelle le service est déployé, du pays/de la région dans lequel l'appareil est livré et du compte de stockage Azure cible vers lequel vous transférez les données.
 
-- **Disponibilité du service** : pour cette version, Data Box Heavy est disponible dans les régions suivantes :
-    - Toutes les régions de cloud public aux États-Unis : USA Centre-Ouest, USA Ouest 2, USA Ouest, USA Centre Sud, USA Centre, USA Centre Nord, USA Est et USA Est 2.
-    - Union européenne : Europe Ouest et Europe Nord.
-    - Royaume-Uni : Royaume-Uni Sud et Royaume-Uni Ouest.
-    - France : France Centre et France Sud.
+- **Disponibilité du service** : Data Box Heavy est disponible aux États-Unis et en Europe.
+
 
 - **Comptes de stockage de destination** : les comptes de stockage qui stockent les données sont disponibles dans toutes les régions Azure où le service est disponible.
 
 Pour obtenir les informations les plus récentes sur la disponibilité régionale de Data Box Heavy, accédez à [Produits Azure par région](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-## <a name="sign-up"></a>Inscription
+<!--## Sign up
 
-Procédez comme suit pour vous inscrire à Data Box Heavy :
+Take the following steps to sign up for Data Box Heavy:
 
-1. [Connectez-vous au portail Azure](https://portal.azure.com).
-2. Cliquez sur **+ Créer une ressource** pour créer une ressource. Recherchez **Azure Data Box**. Sélectionnez le service **Azure Data Box**.
-3. Cliquez sur **Créer**.
-4. Sélectionnez l’abonnement que vous voulez utiliser pour Data Box Heavy. Sélectionnez la région dans laquelle vous souhaitez déployer la ressource Data Box Heavy. Dans l’option **Data Box Heavy**, cliquez sur **S’inscrire**.
-5. Répondez aux questions concernant le pays/la région de résidence des données, le laps de temps, le service Azure cible pour le transfert des données, la bande passante réseau et la fréquence de transfert des données. Consultez le texte Confidentialité et conditions d'utilisation et sélectionnez la case à cocher autorisant Microsoft à utiliser votre adresse de messagerie pour vous contacter.
+1. [Sign into the Azure portal](https://portal.azure.com).
+2. Click **+ Create a resource** to create a new resource. Search for **Azure Data Box**. Select **Azure Data Box** service.
+3. Click **Create**.
+4. Pick the subscription that you want to use for Data Box Heavy. Select the region where you want to deploy the Data Box Heavy resource. In the **Data Box Heavy** option, click **Sign up**.
+5. Answer the questions regarding data residence country/region, time-frame, target Azure service for data transfer, network bandwidth, and data transfer frequency. Review Privacy and terms and select the checkbox against Microsoft can use your email address to contact you.
 
-Une fois inscrit, vous pouvez commander un appareil Data Box Heavy.
+Once you're signed up, you can order a Data Box Heavy.-->
 
     

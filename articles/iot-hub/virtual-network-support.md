@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 10/20/2021
 ms.author: jlian
-ms.openlocfilehash: 726e482f64f7d9c1513f5ce362c232e225b9ee27
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: bd5a88bb8fc47e5f4815aea57544d6093281999b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712853"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258840"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Prise en charge par IoT Hub des réseaux virtuels avec Private Link et Managed Identity
 
@@ -50,9 +50,9 @@ Avant de commencer, assurez-vous que les conditions préalables suivantes sont r
 
 Un point de terminaison privé fonctionne pour des API d’appareil IoT Hub (comme des messages appareil-à-cloud), ainsi que des API de service (comme la création et la mise à jour d’appareils).
 
-1. Sur le Portail Azure, sélectionnez **Mise en réseau**, **Connexion des points de terminaison privés**, puis cliquez sur **+ Point de terminaison privé**.
+1. Dans le portail Azure, sélectionnez **Mise en réseau**, **Accès privé**, puis cliquez sur l’option **+ Créer un point de terminaison privé**.
 
-    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Capture d’écran montrant où ajouter un point de terminaison privé pour IoT Hub":::
+    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Capture d’écran montrant où ajouter un point de terminaison privé pour IoT Hub" border="true":::
 
 1. Indiquez l’abonnement, le groupe de ressources, le nom et la région dans laquelle sera créé le nouveau point de terminaison privé. Idéalement, il doit s’agir de la même région que celle de votre hub.
 

@@ -3,17 +3,17 @@ title: Instances réservées de machine virtuelle Azure EA
 description: Cet article résume la façon dont les réservations Azure pour les instances réservées de machine virtuelle peuvent vous aider à faire des économies dans le cadre de l’inscription de votre entreprise.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2021
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: 0378e05d8d606d04b90ca20aa3e0399132e9f0ef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: feac3cf4e2418fc7d85ab3cdebbba1d08b112e95
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095839"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250062"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Instances réservées de machine virtuelle Azure EA
 
@@ -28,6 +28,8 @@ Vous pouvez échanger une réservation pour une autre réservation du même type
 Nous initions un remboursement partiel lorsque des clients EA retournent des réservations achetées en utilisant un dépassement et non un Paiement anticipé Azure (anciennement « Engagement financier »).
 
 Le remboursement s’affiche dans le portail EA sous la forme d’un ajustement négatif pour le mois précédent et d’un ajustement positif pour le mois en cours. Il s’affiche de la même manière qu’un échange de réservations. La note de crédit fait référence au numéro de facture d’origine. Par conséquent, pour rapprocher l’achat initial de la note de crédit, reportez-vous au numéro de facture d’origine.
+
+Les clients EA directs peuvent afficher les détails du remboursement dans le portail Azure. Accédez au menu **Transactions de réservation** pour voir le remboursement de réservation.
 
 ## <a name="reservation-costs-and-usage"></a>Coûts et utilisation d’une réservation
 

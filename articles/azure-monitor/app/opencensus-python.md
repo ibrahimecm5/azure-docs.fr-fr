@@ -2,17 +2,17 @@
 title: Superviser les applications Python avec Azure Monitor | Microsoft Docs
 description: Fournit des instructions permettant de connecter OpenCensus Python à Azure Monitor
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/12/2021
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 14aef56cc84b505afcc58f7f3662ed133bf829c5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 12c455eb2cd3114b043e19ddd37ca3497143914b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162703"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244978"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Configurer Azure Monitor pour votre application Python
 
@@ -23,6 +23,9 @@ La solution prise en charge par Microsoft pour le suivi et l’exportation des d
 Les autres kits de développement logiciel (SDK) de télémétrie pour Python ne sont pas pris en charge et ne sont pas recommandés par Microsoft comme solution de télémétrie.
 
 Vous avez peut-être remarqué que OpenCensus converge vers [OpenTelemetry](https://opentelemetry.io/). Toutefois, nous continuons à recommander OpenCensus pendant que OpenTelemetry progresse.
+
+> [!NOTE]
+> Une [offre Python basée sur OpenTelemetry](opentelemetry-enable.md?tabs=python) est disponible en préversion. [Plus d’informations](opentelemetry-overview.md)
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -146,7 +149,7 @@ Voici les exportateurs fournis par OpenCensus, mappés aux types de données de 
     ```
 
 > [!NOTE]
-> Dans le cadre de l’utilisation de l’instrumentation Application Insights, nous collectons et envoyons des données de diagnostic à Microsoft. Ces données nous permettent d’exécuter et d’améliorer Application Insights. Vous avez la possibilité de désactiver la collecte des données non essentielles. [En savoir plus](./statsbeat.md)
+> Dans le cadre de l’utilisation de l’instrumentation Application Insights, nous collectons et envoyons des données de diagnostic à Microsoft. Ces données nous permettent d’exécuter et d’améliorer Application Insights. Vous avez la possibilité de désactiver la collecte de données non essentielles. [En savoir plus](./statsbeat.md)
 
 #### <a name="configure-logging-for-django-applications"></a>Configurer la journalisation pour les applications Django
 

@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a48fa9df38b9892c740713b1463010c1f601506d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d7bf32faabd6b0a9d2037ad5599a5b2cceb70053
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000021"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556252"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Configurer l’apprentissage AutoML sans code avec l’interface utilisateur de Studio 
 
@@ -94,7 +94,9 @@ Dans le cas contraire, vous verrez une liste de vos expériences récentes de ML
 
 1. Sélectionnez une colonne cible ; il s’agit de la colonne sur laquelle vous voulez effectuer des prédictions.
 
-1. Sélectionnez un calcul pour le profilage de données et le travail de formation. Vos calculs existants sont disponibles dans la liste déroulante. Pour créer un calcul, suivez les instructions de l’étape 7.
+1. Sélectionnez un type de calcul pour le travail de profilage d’entraînement des données. Vous pouvez sélectionner un [cluster de calcul](concept-compute-target.md#azure-machine-learning-compute-managed) ou une [instance de calcul](concept-compute-instance.md). 
+    
+1. Sélectionnez un calcul dans la liste déroulante contenant vos calculs existants.  Pour créer un calcul, suivez les instructions de l’étape 8.
 
 1. Sélectionnez **Créer un nouveau calcul** afin de configurer votre contexte de calcul pour cette expérience.
 

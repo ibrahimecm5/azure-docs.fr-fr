@@ -9,54 +9,54 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5bd0809de5aa7e7e585662ee0c98feaf9be2e79
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96932088"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245092"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Démarrage rapide : Créer une application .NET Framework avec Azure App Configuration
 
-Dans ce guide de démarrage rapide, vous intégrez Azure App Configuration dans une application console .NET Framework pour centraliser le stockage et la gestion des paramètres d’application en dehors de votre code.
+Il existe deux façons d’incorporer Azure App Configuration dans une application .NET Framework.
+- Le générateur de configuration pour App Configuration permet de charger des données à partir d’App Configuration dans les paramètres de l’application. Votre application accède à la configuration comme elle le fait toujours via `ConfigurationManager`. Vous n’avez pas besoin d’apporter de changements au code autres que les mises à jour des fichiers *app.config* ou *web.config*. Ce guide de démarrage rapide vous guidera tout au long de cette option.
+- Comme conçu par le .NET Framework, les paramètres de l’application ne peuvent être actualisés que lors du redémarrage de l’application. Le fournisseur .NET d’App Configuration est une bibliothèque .NET Standard. Il prend en charge la mise en cache et l’actualisation dynamiques de la configuration sans redémarrage de l’application. Si la configuration dynamique est essentielle pour vous et que vous êtes disposé à apporter des changements au code, consultez les tutoriels sur la façon dont vous pouvez implémenter des mises à jour de configuration dynamiques dans une [application console .NET Framework](./enable-dynamic-configuration-dotnet.md) ou une [application web ASP.NET](./enable-dynamic-configuration-aspnet-netfx.md).
+
+Dans ce guide de démarrage rapide, une application console .NET Framework est utilisée comme exemple, mais la même technique s’applique à une application ASP.NET Web Forms/MVC.
 
 ## <a name="prerequisites"></a>Prérequis
 
 - Abonnement Azure : [créez-en un gratuitement](https://azure.microsoft.com/free/dotnet)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [Visual Studio](https://visualstudio.microsoft.com/vs)
+- [.NET Framework 4.7.2 ou version ultérieure](https://dotnet.microsoft.com/download/dotnet-framework)
 
 ## <a name="create-an-app-configuration-store"></a>Créer un magasin App Configuration
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. Sélectionnez **Explorateur de configurations** > **Créer** > **Clé-valeur** pour ajouter les paires clé-valeur suivantes :
+7. Sélectionnez **Explorateur de configurations** >  **+ Créer** > **Clé-valeur** pour ajouter la paire clé-valeur suivante :
 
-    | Clé | Valeur |
-    |---|---|
-    | TestApp:Settings:Message | Data from Azure App Configuration |
+    | Clé                        | Valeur                               |
+    |----------------------------|-------------------------------------|
+    | *TestApp:Settings:Message* | *Data from Azure App Configuration* |
 
-    Laissez **Étiquette** et **Type de contenu** vides pour l’instant.
+    Laissez **Étiquette** et **Type de contenu** vides.
 
-8. Sélectionnez **Appliquer**.
+## <a name="create-a-net-framework-console-app"></a>Créer une application console .NET Framework
 
-## <a name="create-a-net-console-app"></a>Créer une application console .NET
+1. Démarrez Visual Studio et sélectionnez **Créer un projet**.
 
-1. Démarrez Visual Studio, puis sélectionnez **Fichier** > **Nouveau** > **Projet**.
+1. Dans **Créer un projet**, filtrez sur le type de projet **Console** et sélectionnez **Application console (.NET Framework)** avec C# dans la liste de modèles de projet. Appuyez sur **Suivant**.
 
-1. Dans **Create un nouveau projet**, filtrez sur le type de projet **Console** et cliquez sur **Application console (.NET Framework)** . Sélectionnez **Suivant**.
-
-1. Dans **Configurer votre nouveau projet** , entrez un nom de projet. Sous **Framework**, sélectionnez **.NET Framework 4.7.1** ou version ultérieure. Sélectionnez **Create** (Créer).
+1. Dans **Configurer votre nouveau projet** , entrez un nom de projet. Sous **Framework**, sélectionnez **.NET Framework 4.7.2** ou une version ultérieure. Appuyez sur **Créer**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Se connecter à un magasin App Configuration
 
 1. Cliquez avec le bouton droit sur votre projet, puis sélectionnez **Gérer les packages NuGet**. Sous l’onglet **Parcourir**, recherchez et ajoutez les packages NuGet suivants à votre projet.
 
-    ```
-    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 or later
-    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 or later
-    System.Configuration.ConfigurationManager version 4.6.0 or later
-    ```
+    - *Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration* version 1.0.0 ou ultérieure
+    - *Microsoft.Configuration.ConfigurationBuilders.Environment* version 2.0.0 ou ultérieure
+    - *System.Configuration.ConfigurationManager* version 4.6.0 ou ultérieure
 
 1. Mettez à jour le fichier *App.config* de votre projet comme suit :
 
@@ -92,11 +92,23 @@ Dans ce guide de démarrage rapide, vous intégrez Azure App Configuration dans 
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Générer et exécuter l’application localement
+## <a name="build-and-run-the-app"></a>Générer et exécuter l’application
 
-1. Mettez à jour le fichier **App.config** en remplaçant `${ConnectionString}` par la chaîne de connexion réelle à votre instance Application Configuration. Vous trouverez cette chaîne sous l’onglet **Clés d’accès** de la ressource Application Configuration dans le portail Azure.
+1. Définissez une variable d’environnement nommée **ConnectionString** sur la chaîne de connexion de la clé en lecture seule obtenue lors de la création du magasin App Configuration. 
 
-1. Appuyez sur Ctrl + F5 pour générer et exécuter l’application console.
+    Si vous utilisez l’invite de commandes Windows, exécutez la commande suivante :
+    ```console
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
+
+    Si vous utilisez Windows PowerShell, exécutez la commande suivante :
+    ```powershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
+
+1. Redémarrez Visual Studio pour que la modification soit prise en compte. 
+
+1. Appuyez sur Ctrl + F5 pour générer et exécuter l’application console. Vous devez voir le message généré par les sorties App Configuration dans la console.
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
@@ -104,7 +116,10 @@ Dans ce guide de démarrage rapide, vous intégrez Azure App Configuration dans 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En suivant ce guide de démarrage rapide, vous avez créé un magasin App Configuration et vous l’avez utilisé avec une application console .NET Framework. La valeur `AppSettings` de `ConfigurationManager` ne change pas après le démarrage de l’application. Toutefois, la bibliothèque du fournisseur de configuration .NET Standard App Configuration peut également être utilisée dans une application .NET Framework. Pour savoir comment permettre à votre application .NET Framework d’actualiser dynamiquement les paramètres de configuration, passez au tutoriel suivant.
+En suivant ce guide de démarrage rapide, vous avez créé un magasin App Configuration et vous l’avez utilisé avec une application console .NET Framework. Pour savoir comment permettre à votre application .NET Framework d’actualiser dynamiquement les paramètres de configuration, passez aux tutoriels suivants.
 
 > [!div class="nextstepaction"]
-> [Activer la configuration dynamique](./enable-dynamic-configuration-dotnet.md)
+> [Activer la configuration dynamique dans une application .NET Framework](./enable-dynamic-configuration-dotnet.md)
+
+> [!div class="nextstepaction"]
+> [Activer la configuration dynamique dans une application web ASP.NET](./enable-dynamic-configuration-aspnet-netfx.md)

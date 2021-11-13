@@ -2,13 +2,13 @@
 title: Envoyer des rapports de sauvegarde Azure par e-mail
 description: Créer des tâches automatisées pour recevoir régulièrement des rapports par e-mail
 ms.topic: conceptual
-ms.date: 03/01/2021
-ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/19/2021
+ms.openlocfilehash: dd5e31663262463449df4377329edc6604ffb691
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561336"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235978"
 ---
 # <a name="email-azure-backup-reports"></a>Envoyer des rapports de sauvegarde Azure par e-mail
 
@@ -52,7 +52,7 @@ Pour accorder l’autorisation, suivez les étapes ci-dessous :
 
 ## <a name="contents-of-the-email"></a>Contenu de l’e-mail
 
-* Tous les graphiques et graphes qui s’affichent dans le portail sont disponibles sous la forme de contenu inséré dans l’e-mail.
+* Tous les graphiques et graphes qui s’affichent dans le portail sont disponibles sous la forme de contenu inséré dans l’e-mail. [Apprenez-en davantage](configure-reports.md) sur les informations affichées dans les rapports de sauvegarde.
 * Les grilles qui s’affichent dans le portail sont disponibles sous la forme de pièces jointes au format *.csv dans l’e-mail.
 * Les données de l’e-mail utilisent tous les filtres de rapport qui sont sélectionnés par l’utilisateur dans le rapport au moment de la création de l’e-mail.
 * Les filtres au niveau de l’onglet comme **Nom de l’instance de sauvegarde**, **Nom de la stratégie**, etc. ne sont pas appliqués. La seule exception à cela est la grille **Optimisations des conservations** sous l’onglet **Optimiser**, où les filtres de conservation **Quotidienne**, **Hebdomadaire**, **Mensuelle** et **Annuelle** des points de conservation sont appliqués.

@@ -4,12 +4,12 @@ description: Indique comment appliquer des étiquettes afin d'organiser des ress
 ms.topic: conceptual
 ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf8b4ceb70eec2ac6dbb79b8193276997f8e06f1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2ecb43876582e21fbee97e4d51732b16727b6c92
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664520"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248212"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Utiliser des étiquettes pour organiser vos ressources Azure et votre hiérarchie de gestion
 
@@ -848,6 +848,7 @@ Les limites suivantes s’appliquent aux balises :
 
    > [!NOTE]
    > * Les zones Azure DNS et Traffic Manager ne prennent pas en charge l’utilisation d’espaces dans l’étiquette, ou une étiquette commençant par un nombre.
+   > * Les noms des étiquettes Azure DNS ne prennent pas en charge les caractères spéciaux et Unicode. La valeur peut contenir tous les caractères.
    >
    > * Azure Front Door ne prend pas en charge l’utilisation de `#` ou `:` dans le nom de la balise.
    >

@@ -7,18 +7,18 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 8406f9b551d80959db983a3837b441dc9f965782
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8711727d007eca452c67f7bb79913f3ab29efa77
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005268"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500143"
 ---
-# <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Nouveautés Azure Database pour MySQL - Serveur flexible (préversion)
+# <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Nouveautés dans Azure Database pour MySQL - Serveur flexible
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[Azure Database pour MySQL - Serveur flexible](./overview.md#azure-database-for-mysql---flexible-server-preview) est un mode de déploiement qui est conçu pour offrir un contrôle et une flexibilité plus granulaires des fonctions de gestion de base de données et des paramètres de configuration que le mode de déploiement Serveur unique. Le service prend actuellement en charge les versions de la communauté de MySQL 5.7 et 8.0.
+[Azure Database pour MySQL - Serveur flexible](./overview.md) est un mode de déploiement qui est conçu pour offrir un contrôle et une flexibilité plus granulaires des fonctions de gestion de base de données et des paramètres de configuration que le mode de déploiement Serveur unique. Le service prend actuellement en charge les versions de la communauté de MySQL 5.7 et 8.0.
 
 Cet article résume les nouvelles versions et fonctionnalités d’Azure Database pour MySQL - Serveur flexible à compter de janvier 2021. Les éléments s’affichent dans l’ordre chronologique inverse, avec les mises à jour les plus récentes en premier.
 
@@ -54,8 +54,20 @@ Cet article résume les nouvelles versions et fonctionnalités d’Azure Databas
     
     La prise en charge de Terraform pour le Serveur flexible MySQL est désormais disponible avec la [dernière version v2.81.0 d’AzureRM](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md). Le document de référence détaillé pour le provisionnement et la gestion d’un Serveur flexible MySQL avec Terraform est disponible [ici](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server). Les bogues ou les problèmes connus peuvent être consultés ou signalés [ici](https://github.com/hashicorp/terraform-provider-azurerm/issues).
 
+- **Le paramètre statique innodb_log_file_size est maintenant configurable**
+
+    - [innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) peut désormais être configuré avec l’une des valeurs suivantes : 256 Mo, 512 Mo, 1 Go ou 2 Go. Comme il s’agit d’un paramètre statique, un redémarrage du serveur est nécessaire. Si vous avez modifié la valeur par défaut du paramètre innodb_log_file_size, vérifiez si la valeur de « show global status like 'innodb_buffer_pool_pages_dirty' » reste à 0 pendant 30 secondes pour éviter un délai de redémarrage. Pour en savoir plus, consultez [Paramètres de serveur dans Azure Database pour MySQL](./concepts-server-parameters.md).
+
+- **Disponibilité dans deux régions Azure supplémentaires**
+
+   Azure Database pour MySQL - Serveur flexible est maintenant disponible dans les régions Azure suivantes :
+
+   - USA Ouest 3
+   - USA Centre Nord [Découvrez-en plus](overview.md#azure-regions).
+
 - **Problèmes connus**
-    - Lorsqu’une région primaire Azure est hors service, il n’est pas possible de créer des serveurs géoredondants dans la région géocouplée, car le stockage ne peut pas être provisionné dans la région primaire Azure. Il faut attendre que la région principale soit en service pour provisionner des serveurs géoredondants dans la région associée géographiquement. 
+    - Lorsqu’une région primaire Azure est hors service, il n’est pas possible de créer des serveurs géoredondants dans la région géocouplée, car le stockage ne peut pas être provisionné dans la région primaire Azure. Il faut attendre que la région principale soit en service pour provisionner des serveurs géoredondants dans la région associée géographiquement.
+    
 
 ## <a name="september-2021"></a>Septembre 2021
 
@@ -214,7 +226,7 @@ Cette version d’Azure Database pour MySQL - Serveur flexible inclut les mises 
 
 - **Correctifs pour les échecs de provisionnement pour les créations de serveur dans un réseau virtuel avec accès privé**
 
-  Tous les échecs de provisionnement dus à la création d’un serveur dans un réseau virtuel sont résolus. Avec cette version, les utilisateurs peuvent créer des serveurs flexibles avec un accès privé à chaque fois.  
+  Tous les échecs de provisionnement dus à la création d’un serveur dans un réseau virtuel sont résolus. Avec cette version, les utilisateurs peuvent créer des serveurs flexibles avec un accès privé à chaque fois.
 
 ## <a name="march-2021"></a>Mars 2021
 

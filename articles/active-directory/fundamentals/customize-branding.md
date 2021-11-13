@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cd3cbfd92f3448bd8b494b579a641bfb580ecd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b014cc8fb1c6ca2e318125aeaefed34950175eb
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131052443"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578008"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Personnaliser la page de connexion Azure Active Directory de votre organisation
 Utilisez le logo et la palette de couleurs personnalisée de votre organisation pour offrir une apparence cohérente à vos pages de connexion Azure Active Directory (Azure AD). Vos pages de connexion s’affichent quand les utilisateurs se connectent aux applications web de votre organisation, comme Microsoft 365, qui utilisent Azure AD comme fournisseur d’identité.
@@ -34,7 +34,7 @@ Votre personnalisation ne s’affiche pas immédiatement quand vos utilisateurs 
 > [!NOTE]
 > **Tous les éléments de personnalisation sont facultatifs et gardent leurs valeurs par défaut tant qu’elles ne sont pas modifiées.** Par exemple, si vous spécifiez un logo de bannière sans image d’arrière-plan, la page de connexion affiche votre logo avec l’image d’arrière-plan par défaut du site de destination (par exemple Microsoft 365).<br><br>De plus, la personnalisation de la page de connexion ne s’étend pas aux comptes Microsoft personnels. Si les utilisateurs ou des invités professionnels se connectent avec un compte Microsoft personnel, leur page de connexion ne reflète pas la personnalisation de votre organisation.
 
-### <a name="to-customize-your-branding"></a>Pour personnaliser votre marque
+### <a name="to-configure-your-branding-for-the-first-time"></a>Pour configurer votre personnalisation pour la première fois
 1. Connectez-vous au [portail Azure](https://portal.azure.com/) à l’aide d’un compte d’administrateur général pour le répertoire.
 
 2. Sélectionnez **Azure Active Directory**, puis sélectionnez **Marque de société** et **Configurer**.
@@ -102,7 +102,7 @@ Votre personnalisation ne s’affiche pas immédiatement quand vos utilisateurs 
 
 3. Une fois que vous avez terminé votre personnalisation, sélectionnez **Enregistrer**.
 
-    Si ce processus crée votre première configuration de personnalisation, il devient le processus par défaut pour votre locataire. Si vous avez d’autres configurations, vous pouvez choisir votre configuration par défaut.
+    Ce processus crée votre première configuration de personnalisation et devient le processus par défaut pour votre locataire. La configuration de personnalisation par défaut sert de solution de secours pour toutes les configurations de personnalisation propres à une langue. La configuration ne peut pas être supprimée une fois que vous l’avez créée.
     
     >[!IMPORTANT]
     >Si vous souhaitez ajouter d’autres configurations de personnalisation d’entreprise pour votre locataire, vous devez sélectionnez **Nouvelle langue** dans la page **Contoso - Marque de société**. Cette opération ouvre la page **Configurer la marque de société**, où vous pouvez suivre les mêmes étapes que ci-dessus.

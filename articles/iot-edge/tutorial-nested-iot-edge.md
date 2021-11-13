@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: dc878b0f1a843d8212cd6541338510f8eff4b56c
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5c204a07a0457852d2faefacdd77740f147b9d88
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714930"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225988"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>Tutoriel : Créer une hiérarchie d’appareils IoT Edge
 
@@ -78,7 +78,7 @@ Pour créer une hiérarchie d’appareils IoT Edge, vous aurez besoin des élém
 
    La machine virtuelle utilise des clés SSH pour authentifier les utilisateurs. Si vous n’êtes pas familiarisé avec la création et l’utilisation de clés SSH, vous pouvez suivre les [instructions relatives aux paires de clés publiques-privées SSH pour les machines virtuelles Linux dans Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-   IoT Edge version 1.2 est préinstallé avec ce modèle ARM, ce qui évite d’avoir à installer manuellement les ressources sur les machines virtuelles. Si vous installez IoT Edge sur vos propres appareils, consultez [Installer Azure IoT Edge pour Linux (version 1.2)](how-to-install-iot-edge.md) ou [Mettre à jour IoT Edge vers la version 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
+   IoT Edge version 1.2 est préinstallé avec ce modèle ARM, ce qui évite d’avoir à installer manuellement les ressources sur les machines virtuelles. Si vous installez IoT Edge sur vos propres appareils, consultez [Installer Azure IoT Edge pour Linux (version 1.2)](how-to-provision-single-device-linux-symmetric.md) ou [Mettre à jour IoT Edge vers la version 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
    La création réussie d’une machine virtuelle à l’aide de ce modèle ARM permet de générer le handle `SSH` et le nom de domaine complet (`FQDN`) de votre machine virtuelle. Dans la mesure où vous allez utiliser le handle SSH et le FQDN (nom de domaine complet) ou l’adresse IP de chaque machine virtuelle pour le processus de configuration dans les étapes à venir, gardez une trace de ces informations. Un exemple de sortie est illustré ci-dessous.
 
@@ -151,7 +151,7 @@ Pour utiliser l’outil `iotedge-config` afin de créer et configurer votre hié
 
    Dans la section **edgedevices**, pour un scénario de production, vous pouvez modifier l’arborescence hiérarchique afin de refléter la structure souhaitée. Pour les besoins de ce tutoriel, acceptez l’arborescence par défaut. Pour chaque appareil, il existe un champ `device_id` dans lequel vous pouvez nommer vos appareils. Il existe également le champ `deployment`, qui spécifie le chemin du fichier JSON de déploiement pour cet appareil.
 
-   Vous pouvez également inscrire manuellement les appareils IoT Edge dans votre hub IoT via le portail Azure ou Azure Cloud Shell. Pour savoir comment procéder, consultez [le guide sur l’inscription d’un appareil IoT Edge](how-to-register-device.md).
+   Vous pouvez également inscrire manuellement les appareils IoT Edge dans votre hub IoT à partir du portail Azure, d’Azure Cloud Shell ou de Visual Studio Code. Pour en savoir plus, consultez [le début du guide de bout en bout sur le provisionnement manuel d’un appareil IoT Edge Linux](how-to-provision-single-device-linux-symmetric.md#register-your-device).
 
    Vous pouvez également définir les relations parent-enfant manuellement. Pour en savoir plus, consultez la section [créer une hiérarchie de passerelle](how-to-connect-downstream-iot-edge-device.md#create-a-gateway-hierarchy) du guide pratique.
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/01/2021
+ms.date: 10/21/2021
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: e3664e9a42a502509e74c43643d47f18e153ff6e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 6c080e89dab3193f373b0a1e194cb18661132bbd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429962"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559615"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>Tutoriel : Entraînement d’un modèle de classification avec AutoML sans code dans Azure Machine Learning studio
 
@@ -127,8 +127,10 @@ Une fois que vous avez chargé et configuré vos données, vous pouvez configure
 
     1. Sélectionnez **y** comme colonne cible, ce que vous souhaitez prédire. Cette colonne indique si le client a souscrit à un compte de dépôt à terme.
     
-    1. Sélectionnez **+Create a new compute** (Créer un nouveau calcul), puis configurez la cible de calcul. Une cible de calcul est un environnement de ressources local ou informatique utilisé pour exécuter votre script d’entraînement ou pour héberger votre déploiement de service. Pour cette expérience, nous utilisons un calcul informatique. 
-        1. Remplissez le formulaire **Machine virtuelle** pour configurer votre calcul.
+    1. Sélectionnez **Cluster de calcul** comme type de calcul. 
+    
+    1.  Sélectionnez **+Nouveau** pour configurer votre cible de calcul. Une cible de calcul est un environnement de ressources local ou informatique utilisé pour exécuter votre script d’entraînement ou pour héberger votre déploiement de service. Pour cette expérience, nous utilisons un calcul informatique. 
+        1. Remplissez le formulaire **Sélectionner une machine virtuelle** pour configurer votre calcul.
 
             Champ | Description | Valeur pour le tutoriel
             ----|---|---

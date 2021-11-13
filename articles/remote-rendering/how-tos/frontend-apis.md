@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7149d7ac2625eb60a1d0d22253b93b68a99475de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f0519b60d3b02c8312e15861441060ca89ab002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99592090"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234129"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Utiliser les API Azure Frontend pour l’authentification
 
@@ -20,6 +20,7 @@ Cette section décrit comment utiliser l’API pour l’authentification et la g
 > [!CAUTION]
 > Les fonctions décrites dans ce chapitre émettent des appels REST sur le serveur en interne. Comme pour tous les appels REST, une fréquence trop élevée d’envoi de ces commandes entraîne une limitation du serveur, et finit par retourner un échec. Dans ce cas, la valeur du membre `SessionGeneralContext.HttpResponseCode` est 429 (« trop de demandes »). En règle générale, il doit y avoir un délai de **5 à 10 secondes entre les appels successifs**.
 
+Certaines fonctions retournent également des informations quand une nouvelle tentative peut être effectuée sans problème. Par exemple, `RenderingSessionPropertiesResult.MinimumRetryDelay` spécifie le nombre de secondes à attendre avant de tenter une autre vérification. Si une valeur retournée comme celle-ci est disponible, nous vous recommandons de l’utiliser. Vous pourrez ainsi effectuer autant de vérifications que possible sans aucune limitation.
 
 ## <a name="sessionconfiguration"></a>SessionConfiguration
 

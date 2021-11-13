@@ -3,22 +3,22 @@ title: Personnaliser l’interface utilisateur
 titleSuffix: Azure AD B2C
 description: Découvrez comment personnaliser l’interface utilisateur de vos applications qui utilisent Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code, b2c-support
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 583c9fb66708cee46cbd0b7c7f341c1a6a9b7a55
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 70331a45936f2608f8eb9a4aadfd182056e11a77
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575310"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222712"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Personnaliser l’interface utilisateur dans Azure Active Directory B2C
 
@@ -227,7 +227,7 @@ Une fois que vous avez configuré la marque de la société, activez-la dans vos
 
 Si vous souhaitez personnaliser toutes les pages du flux utilisateur, définissez la version de mise en page pour chaque mise en page dans le flux utilisateur.
 
-![Sélection de mise en page dans Azure AD B2C sur le portail Azure](media/customize-ui/portal-02-page-layout-select.png)
+:::image type="content" source="media/customize-ui/portal-02-page-layout-select.png" alt-text="Sélection de mise en page dans Azure AD B2C sur le portail Azure.":::
 
 ::: zone-end
 
@@ -279,6 +279,25 @@ L'exemple suivant illustre les définitions de contenu avec le contrat de page c
   </ContentDefinition>
 </ContentDefinitions>
 ```
+
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+## <a name="re-order-input-fields-in-the-sign-up-form"></a>Réorganiser les champs d’entrée dans le formulaire d’inscription
+Pour réorganiser les champs d’entrée dans la page d’inscription pour le formulaire des comptes locaux, suivez ces étapes :
+1. Connectez-vous au [portail Azure](https://portal.azure.com).
+1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
+1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
+1. Dans le portail Azure, recherchez et sélectionnez **Azure AD B2C**.
+1. Dans le menu de gauche, sélectionnez **Flux utilisateur**.
+1. Sélectionnez un flux utilisateur (pour les comptes locaux uniquement) pour lequel vous souhaitez réorganiser les champs d’entrée.
+1. Dans le menu de gauche, sélectionnez **Mises en page**.
+1. Dans le tableau, sélectionnez la ligne **Page d’inscription des comptes locaux**.
+1. Sous **Attributs utilisateur**, sélectionnez le champ d’entrée que vous souhaitez réorganiser, puis faites-le glisser (vers le haut ou le bas) et déposez-le, ou utilisez les commandes **Monter** ou **Descendre** pour atteindre l’ordre souhaité. 
+1. En haut de la page, sélectionnez **Enregistrer**.
+
+  :::image type="content" source="media/customize-ui/portal-02-page-layout-fields.png" alt-text="Liste déroulante de sélection de modèle dans la page de flux utilisateur du portail Azure.":::
 
 ::: zone-end
 

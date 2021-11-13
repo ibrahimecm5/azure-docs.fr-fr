@@ -4,13 +4,15 @@ metadata:
   description: Réponse aux questions fréquentes sur
   ms.topic: article
   ms.service: backup
-  ms.date: 06/10/2021
-  ms.openlocfilehash: cf4539afef4df4f09da7eacdf3c195cb08a70e44
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 11/02/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: afa49f9f586540611e41983407f9381de971614b
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122254247"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131507148"
 title: Sauvegarde Azure - Forum Aux Questions
 summary: Cet article répond aux questions courantes sur le service Sauvegarde Azure.
 sections:
@@ -33,7 +35,7 @@ sections:
   - question: >
       Combien de stratégies puis-je créer par coffre ?
     answer: >
-      Vous ne pouvez avoir que jusqu’à 200 stratégies par coffre. Toutefois, l’ajout de nouvelles stratégies de sauvegarde et la modification des stratégies actuelles par le biais de modèles Azure Resource Manager (ARM) ou de clients Azure Automation (par exemple PowerShell et l’interface CLI) sont limités à 50 sur une période de 24 heures.
+      Vous ne pouvez avoir que jusqu’à 200 stratégies par coffre. Toutefois, l’ajout de nouvelles stratégies de sauvegarde et la modification de stratégies actuelles par le biais de modèles Azure Resource Manager (ARM) ou de clients Azure Automation (par exemple, PowerShell et l’interface CLI) sont limités à 50 sur une période de 24 heures.
   - question: >
       Si mon organisation possède un coffre, comment isoler les données de différents serveurs lors de la restauration des données ?
     answer: >
@@ -194,6 +196,10 @@ sections:
       Pourquoi la taille des données transférées dans le coffre Recovery Services est-elle plus réduite que celle des données sélectionnées pour la sauvegarde ?
     answer: >
       Les données sauvegardées à partir de l’agent Azure Backup, de DPM et du serveur de sauvegarde Azure sont compressées et chiffrées avant d’être transférées. Une fois la compression et le chiffrement appliqués, les données dans le coffre sont inférieures de 30 à 40 %.
+  - question: >
+      Puis-je voir le délai d’expiration des points de récupération ?
+    answer: >
+      Non, vous ne pouvez pas voir le délai d’expiration des sauvegardes planifiées. Toutefois, vous pouvez voir le délai d’expiration des sauvegardes à la demande par le biais de travaux de sauvegarde.
   - question: >
       Puis-je supprimer des fichiers individuels à partir d’un point de récupération dans le coffre ?
     answer: >

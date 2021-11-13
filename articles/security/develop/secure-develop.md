@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cf76427df2c1802ed49dc5ff848059d88ba9658e
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2f81cd3e37b6fefea1a76a8a4bb50c756ff1fca4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558545"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463522"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Développer des applications sécurisées sur Azure
 
@@ -31,8 +31,7 @@ Les phases de Microsoft Security Development Lifecycle suivantes sont traitées 
 
 ## <a name="implementation"></a>Implémentation
 
-L’objectif de la phase d’implémentation est d’établir les meilleures pratiques en matière de prévention anticipée et de détecter et supprimer les problèmes de sécurité du code.
-Supposons que votre application soit utilisée d’une manière que vous ne souhaitiez pas. Cela permet de se prémunir contre une mauvaise utilisation accidentelle ou intentionnelle de votre application.
+L’objectif de la phase d’implémentation est d’établir les meilleures pratiques en matière de prévention anticipée et de détecter et supprimer les problèmes de sécurité du code. Supposons que votre application soit utilisée d’une manière que vous ne souhaitiez pas. Cela permet de se prémunir contre une mauvaise utilisation accidentelle ou intentionnelle de votre application.
 
 ### <a name="perform-code-reviews"></a>Effectuer des révisions de code
 
@@ -55,10 +54,10 @@ La mise en liste rouge et en mise en liste verte sont deux approches générales
   - La mise en liste rouge tente de vérifier qu’une entrée utilisateur donnée ne contient pas de contenu « réputé malveillant ».
 
   - La mise en liste verte tente de vérifier qu’une entrée utilisateur donnée correspond à un ensemble d’entrées « réputées bonnes ». La mise en liste verte basée sur des caractères est une forme de mise en liste verte où une application vérifie que la saisie de l’utilisateur ne contient que des caractères « réputés bons » ou correspond à un format connu.
+
     Par exemple, cela peut impliquer la vérification qu’un nom d’utilisateur contient uniquement des caractères alphanumériques ou qu’il contient exactement deux chiffres.
 
-La mise en liste verte est la meilleure approche en matière de création de logiciels sécurisés.
-La mise en liste rouge est sujette à erreur, car il est impossible d’établir une liste exhaustive des entrées potentiellement incorrectes.
+La mise en liste verte est la meilleure approche en matière de création de logiciels sécurisés. La mise en liste rouge est sujette à erreur, car il est impossible d’établir une liste exhaustive des entrées potentiellement incorrectes.
 
 Faites ce travail sur le serveur, et non côté client (ou sur le serveur et côté client).
 
@@ -107,7 +106,7 @@ Le logiciel [Microsoft Antimalware](../fundamentals/antimalware.md) inclut des f
 
 ### <a name="dont-cache-sensitive-content"></a>Ne pas mettre en cache de contenu sensible
 
-Ne mettez pas en cache de contenu sensible sur le navigateur. Les navigateurs peuvent stocker des informations à des fins de mise en cache et d’historique. Les fichiers mis en cache sont stockés dans un dossier, comme le dossier Fichiers Internet temporaires d’Internet Explorer. Lorsque ces pages sont de nouveau consultées, le navigateur les affiche à partir du cache. Si l’utilisateur peut voir des informations sensibles (par exemple, adresse, numéro de carte de crédit, numéro de sécurité sociale ou nom d’utilisateur), ces informations sont peut-être stockées dans le cache du navigateur et elles peuvent par conséquent être récupérées lors de l’examen du cache du navigateur ou en appuyant simplement sur le bouton **Précédent** du navigateur.
+Ne mettez pas en cache de contenu sensible sur le navigateur. Les navigateurs peuvent stocker des informations à des fins de mise en cache et d’historique. Les fichiers mis en cache sont stockés dans un dossier, comme le dossier Fichiers Internet temporaires d’Internet Explorer. Lorsque ces pages sont de nouveau consultées, le navigateur les affiche à partir du cache. Si l’utilisateur voit s’afficher des informations sensibles (adresse, numéro de carte de crédit, numéro de sécurité sociale ou nom d’utilisateur, par exemple), cela signifie qu’elles sont peut-être stockées dans le cache du navigateur. Dans ce cas, il est possible de récupérer ces informations en consultant le cache du navigateur ou en appuyant simplement sur le bouton **Précédent** du navigateur.
 
 ## <a name="verification"></a>Vérification
 

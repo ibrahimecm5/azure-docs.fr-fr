@@ -3,13 +3,13 @@ title: Création d’une demande de support Azure
 description: Les clients qui ont besoin d’aide peuvent utiliser le portail Azure pour trouver des solutions en libre-service et pour créer et gérer des demandes de support.
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 09/30/2021
-ms.openlocfilehash: 4598cc16173100749ad3f1bdefd3165020554465
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/20/2021
+ms.openlocfilehash: 8c1a9e841c291bc6a7a6139b7aff4217975a0bcd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358272"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264995"
 ---
 # <a name="create-an-azure-support-request"></a>Créer une demande de support Azure
 
@@ -78,7 +78,7 @@ Nous recueillons ensuite des détails supplémentaires sur le problème. En four
 
 1. Renseignez les **détails du problème** pour nous fournir plus d’informations sur votre problème. Si possible, indiquez-nous quand le problème a commencé et les étapes permettant de le reproduire. Vous pouvez charger un fichier, tel qu’un fichier journal ou le résultat d’un diagnostic. Pour plus d’informations sur les chargements de fichiers, consultez [Instructions de chargement de fichier](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-1. Dans la section **Partager les informations de diagnostic**, sélectionnez **Oui** ou **Non**. La sélection de **Oui** permet au support Azure de collecter des [informations de diagnostic](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) à partir de vos ressources Azure. Si vous préférez ne pas partager ces informations, sélectionnez **Non**. Pour plus d’informations sur les types de fichiers que nous pouvons collecter, consultez la section [Journaux d’informations de diagnostic avancés](#advanced-diagnostic-information-logs).
+1. Dans la section **Informations de diagnostic avancées**, sélectionnez **Oui** ou **Non**. La sélection de **Oui** permet au support Azure de collecter des [informations de diagnostic avancées](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) à partir de vos ressources Azure. Si vous préférez ne pas partager ces informations, sélectionnez **Non**. Pour plus d’informations sur les types de fichiers que nous pouvons collecter, consultez la section [Journaux d’informations de diagnostic avancés](#advanced-diagnostic-information-logs).
 
   Dans certains cas, il y aura des options supplémentaires à choisir. Par exemple, pour certains types de problèmes de machine virtuelle, vous pouvez choisir d’[autoriser ou non l’accès à la mémoire d’une machine virtuelle](#memory-dump-collection).
 

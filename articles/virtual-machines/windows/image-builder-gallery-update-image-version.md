@@ -9,22 +9,24 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.collection: windows
-ms.openlocfilehash: 08cc123df4d0b4af0d5a0e94d5ef0e4826b0681c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 2f3c4c302d0b31bbd97eedcd8e83f2cb50a8af2e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594802"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462895"
 ---
 # <a name="create-a-new-windows-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Créer une nouvelle version d’image de machine virtuelle Windows à partir d’une version existante à l’aide d’Azure Image Builder
 
-Cet article explique comment récupérer une version existante d’une image dans une [Bibliothèque d’images partagées](../shared-image-galleries.md), la mettre à jour et la publier sous la forme d’une nouvelle version dans la bibliothèque.
+**S’applique à :** :heavy_check_mark : Machines virtuelles Windows
+
+Cet article explique comment prendre une version existante d’une image dans une [galerie Azure Compute Gallery](../shared-image-galleries.md) (auparavant appelée Shared Image Gallery), la mettre à jour et la publier en tant que nouvelle version dans la gallerie.
 
 Pour configurer l’image, nous allons utiliser un exemple de modèle .json. Le fichier .json que nous utilisons ici est : [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json). 
 
 
 ## <a name="register-the-features"></a>Inscrire les fonctionnalités
-Pour utiliser Azure Image Builder, vous devez inscrire cette fonctionnalité.
+Pour utiliser le Générateur d’images Azure, vous devez inscrire la fonctionnalité.
 
 Vérifiez votre inscription.
 
@@ -49,7 +51,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="set-variables-and-permissions"></a>Définir des variables et des autorisations
 
-Si vous avez utilisé [Créer une image et la distribuer dans une galerie d’images partagées](image-builder-gallery.md) pour créer votre galerie d’images partagées, vous avez déjà créé les variables dont nous avons besoin. Sinon, veuillez configurer quelques variables pout les utiliser dans cet exemple.
+Si vous avez utilisé [Créer une image et la distribuer à une galerie Azure Compute Gallery](image-builder-gallery.md) pour créer votre galerie Azure Compute Gallery, vous avez déjà créé les variables dont nous avons besoin. Sinon, veuillez configurer quelques variables pout les utiliser dans cet exemple.
 
 Azure VM Image Builder ne prend en charge la création d’images personnalisées que dans le même groupe de ressources que l’image managée source. Remplacez le nom du groupe de ressources de cet exemple par celui de votre image managée source.
 
@@ -60,7 +62,7 @@ sigResourceGroup=myIBWinRG
 location=westus
 # Additional region to replicate the image to - we are using East US in this example
 additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
+# name of the Azure Compute Gallery - in this example we are using myGallery
 sigName=my22stSIG
 # name of the image definition to be created - in this example we are using myImageDef
 imageDefName=winSvrimages
@@ -71,10 +73,10 @@ username="user name for the VM"
 vmpassword="password for the VM"
 ```
 
-Créez une variable pour votre ID d’abonnement. Vous pouvez l’obtenir avec `az account show | grep id`.
+Créez une variable pour votre ID d’abonnement.
 
 ```azurecli-interactive
-subscriptionID=<Subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 
 Récupérez la version de l’image à mettre à jour.
@@ -84,7 +86,7 @@ sigDefImgVersionId=$(az sig image-version list \
    -g $sigResourceGroup \
    --gallery-name $sigName \
    --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
+   --subscription $subscriptionID --query [].'id' -o tsv)
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Créer une identité affectée par l’utilisateur et définir des autorisations sur le groupe de ressources
@@ -95,7 +97,7 @@ Comme vous avez défini l’identité de l’utilisateur dans l’exemple préc�
 imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
 
-Si vous avez déjà votre propre bibliothèque d’images partagées et que vous n’avez pas suivi l’exemple précédent, affectez au Générateur d’images les autorisations nécessaires pour accéder au groupe de ressources et donc à la bibliothèque. Passez en revue les étapes de l’exemple [Créer une image et la distribuer à une Shared Image Gallery](image-builder-gallery.md).
+Si vous avez déjà votre propre galerie Azure Compute Gallery et que vous n’avez pas suivi l’exemple précédent, vous devez affecter à Image Builder les autorisations nécessaires pour accéder au groupe de ressources et donc à la galerie. Passez en revue les étapes de l’exemple [Créer une image et la distribuer à une galerie Azure Compute Gallery](image-builder-gallery.md).
 
 
 ## <a name="modify-helloimage-example"></a>Modifier l’exemple helloImage

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 66f0f310faa32e65dea657d7b15ceae7e4f84ba0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c1a84fb149ebfaa39fc6704602782c0f872476e2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831342"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238809"
 ---
 # <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Format de fichier Excel dans Azure Data Factory et Azure Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -104,7 +104,7 @@ Les propriétés prises en charge dans la section ***\*source\**** de l’activi
 
 ## <a name="mapping-data-flow-properties"></a>Propriétés du mappage de flux de données
 
-Dans les flux de données de mappage, vous pouvez lire le format Excel dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Vous pouvez pointer vers des fichiers Excel à l’aide d’un jeu de données Excel ou d’un [jeu de données Inline](data-flow-source.md#inline-datasets).
+Dans les flux de données de mappage, vous pouvez lire des données au format Excel dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) et [Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties). Vous pouvez pointer vers des fichiers Excel à l’aide d’un jeu de données Excel ou d’un [jeu de données Inline](data-flow-source.md#inline-datasets).
 
 ### <a name="source-properties"></a>Propriétés de source
 
@@ -138,7 +138,7 @@ Si vous utilisez un jeu de données Inline, les options de source suivantes s’
 
 :::image type="content" source="media/data-flow/excel-source-inline-dataset.png" alt-text="Jeu de données Inline de la source Excel":::
 
-Le script de flux de données associé est le suivant :
+Le script de flux de données associé est :
 
 ```
 source(allowSchemaDrift: true,

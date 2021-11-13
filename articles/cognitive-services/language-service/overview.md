@@ -11,20 +11,24 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 51ba253024b1419913e136b4a11c3a3d3551743f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b4a23b3c59050b99db2938b33091d359f3c34ea
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096548"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502936"
 ---
-# <a name="what-is-azure-cognitive-service-for-language"></a>Qu’est-ce qu’Azure Cognitive Service for Language ? 
+# <a name="what-is-azure-cognitive-service-for-language"></a>Qu’est-ce qu’Azure Cognitive Service for Language ?
 
 Azure Cognitive Service for Language est un service cloud qui fournit des fonctionnalités de traitement en langage naturel (NLP) pour comprendre et analyser du texte. Utilisez ce service pour créer plus facilement des applications intelligentes à l’aide de Language Studio sur le web, d’API REST et de bibliothèques de client.  
 
 Ce service Language réunit Analyse de texte, QnA Maker et LUIS tout en fournissant plusieurs nouvelles fonctionnalités. Ces fonctionnalités peuvent être :
 * Préconfigurées, ce qui signifie que les modèles IA qu’utilise la fonctionnalité ne sont pas personnalisables. Vous envoyez juste vos données et utilisez la sortie de la fonctionnalité dans vos applications.
-* Personnalisables, ce qui signifie que vous allez entraîner un modèle IA à l’aide de nos outils pour adapter vos données spécifiquement. 
+* Personnalisables, ce qui signifie que vous allez entraîner un modèle IA à l’aide de nos outils pour adapter vos données spécifiquement.
+
+## <a name="migrate-from-text-analytics-qna-maker-or-language-understanding"></a>Migrer à partir d’Analyse de texte, de QnA Maker ou de Language Understanding ?
+
+Azure Cognitive Services for Language unifie trois services linguistiques individuels de Cognitive Services : Analyse de texte, QnA Maker et Language Understanding (LUIS). Si vous utilisiez ces trois services, vous pouvez facilement migrer vers la nouvelle solution Azure Cognitive Services for Language. Pour obtenir des instructions, consultez [Migration vers Azure Cognitive Services for Language](concepts/migrate.md).  
 
 ## <a name="available-features"></a>Fonctionnalités disponibles
 
@@ -37,7 +41,7 @@ Azure Cognitive Service for Language offre les fonctionnalités suivantes :
 > | [Détection d’informations d’identification personnelle](personally-identifiable-information/overview.md)     | Cette fonctionnalité préconfigurée identifie les entités dans le texte en fonction de plusieurs catégories prédéfinies d’informations sensibles, telles que les informations de compte.        | • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](named-entity-recognition/quickstart.md) |
 > | [Extraction de phrases clés](key-phrase-extraction/overview.md)     | Cette fonctionnalité préconfigurée évalue le texte non structuré et, pour chaque document de saisie, retourne une liste de phrases clés et de points clés du texte. | • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](key-phrase-extraction/quickstart.md) <br> • [Conteneur Docker](key-phrase-extraction/how-to/use-containers.md)  |
 > |[Liaison d’entités](entity-linking/overview.md)    | Cette fonctionnalité préconfigurée désambiguïse l’identité d’une entité trouvée dans le texte et fournit des liens vers l’entité sur Wikipédia.        | • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](entity-linking/quickstart.md) |
-> | [Analyse de texte pour la santé (préversion)](text-analytics-for-health/overview.md)    | Cette fonctionnalité préconfigurée extrait des informations de textes médicaux non structurés, tels que les notes cliniques et les notes de médecins.  | • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](text-analytics-for-health/quickstart.md) <br> • [Conteneur Docker](text-analytics-for-health/how-to/use-containers.md) |
+> | [Analyse de texte pour la santé](text-analytics-for-health/overview.md)    | Cette fonctionnalité préconfigurée extrait des informations de textes médicaux non structurés, tels que les notes cliniques et les notes de médecins.  | • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](text-analytics-for-health/quickstart.md) <br> • [Conteneur Docker](text-analytics-for-health/how-to/use-containers.md) |
 > | [NER personnalisée](custom-named-entity-recognition/overview.md)    | Créez un modèle IA pour extraire des catégories d’entité personnalisées en utilisant du texte non structuré que vous fournissez. |  • [Language Studio](custom-named-entity-recognition/quickstart.md?pivots=language-studio) <br> • [API REST](custom-named-entity-recognition/quickstart.md?pivots=rest-api) |
 > | [Analyser les sentiments et les opinions](sentiment-opinion-mining/overview.md)     | Cette fonctionnalité préconfigurée fournit des étiquettes de sentiment (comme « *négatif* », « *neutre* » et « *positif* ») pour les phrases et les documents. Cette fonctionnalité peut également fournir des informations précises sur les opinions associées à des mots qui apparaissent dans le texte, tels que les attributs de produits ou de services. |  • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](sentiment-opinion-mining/quickstart.md) <br> • [Conteneur Docker](sentiment-opinion-mining/how-to/use-containers.md)
 > |[Détection de la langue](language-detection/overview.md)    | Cette fonctionnalité préconfigurée évalue le texte et détermine la langue dans laquelle il a été écrit. Elle retourne un identificateur de langue et un score qui indique la force de l’analyse.        | • [Language Studio](language-studio.md) <br> • [API REST et bibliothèque de client](language-detection/quickstart.md) <br> • [Conteneur Docker](language-detection/how-to/use-containers.md) |

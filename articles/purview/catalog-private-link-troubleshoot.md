@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: cb41c6bd06541f414b5cd8f353e59f6094182d13
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 3a41e3e131c4537e21e3844dbf0db360e2b77b28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063353"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214716"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Résolution des problèmes de configuration des points de terminaison privés pour vos comptes Purview
 
 > [!IMPORTANT]
-> Si vous avez créé un point de terminaison privé de _portail_ pour votre compte Purview **avant le 27 septembre 2021 à 15h30 UTC**, vous devez effectuer les actions requises détaillées dans [Reconfigurer DNS pour les points de terminaison privés du portail](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints). **Ces actions doivent être effectuées avant le 11 octobre 2021. Dans le cas contraire, les points de terminaison privés du portail existants cesseront de fonctionner**.
+> Si vous avez créé un point de terminaison privé de _portail_ pour votre compte Purview **avant le 27 septembre 2021 à 15h30 UTC**, vous devez effectuer les actions requises détaillées dans [Reconfigurer DNS pour les points de terminaison privés du portail](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints). **Ces actions doivent être effectuées avant le 12 novembre 2021. Sinon, les points de terminaison privés existants du portail cesseront de fonctionner**.
 
 Ce guide résume les limitations connues liées à l’utilisation de points de terminaison privés pour Azure Purview et fournit une liste des étapes et des solutions permettant de résoudre certains des problèmes les plus courants. 
 
@@ -29,7 +29,7 @@ Ce guide résume les limitations connues liées à l’utilisation de points de 
 - Au moyen du Portail Azure, vous pouvez créer des points de terminaison privés d’ingestion via le Portail Azure Purview décrit dans les étapes précédentes. Vous ne pouvez pas le faire à partir du Centre Private Link.
 - Création d’enregistrements DNS A pour les points de terminaison privés d’ingestion dans des zones Azure DNS existantes, alors que les zones Azure DNS privé se trouvent dans un abonnement différent de celui où les points de terminaison privés ne sont pas pris en charge via l’expérience du Portail Azure Purview. Les enregistrements A peuvent être ajoutés manuellement dans les zones DNS de destination dans l’autre abonnement. 
 - L’ordinateur du runtime d’intégration auto-hébergé doit être déployé dans le même réseau virtuel que celui où le point de terminaison privé d’ingestion Azure Purview est déployé.
-- Actuellement, nous ne prenons pas en charge l’analyse d’un locataire Power BI disposant d’un point de terminaison privé configuré avec un accès public bloqué.
+- Pour le moment, nous ne prenons pas en charge l’analyse d’un locataire Power BI disposant d’un point de terminaison privé configuré avec un accès public bloqué.
 - Pour connaître les limitations liées au service Private Link, consultez [Limites Azure Private Link](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="recommended-troubleshooting-steps"></a>Procédure de résolution des problèmes recommandée  
@@ -49,7 +49,7 @@ Ce guide résume les limitations connues liées à l’utilisation de points de 
 3. Si le point de terminaison privé du portail est déployé et que l’accès réseau public est défini de sorte à être refusé dans votre compte Azure Purview, veillez à lancer [Azure Purview Studio](https://web.purview.azure.com/resource/) à partir du réseau interne.
   <br>
     - Pour vérifier la résolution de noms correcte, vous pouvez utiliser un outil de ligne de commande **NSlookup.exe** pour interroger `web.purview.azure.com`. Le résultat doit retourner une adresse IP privée qui appartient au point de terminaison privé du portail. 
-    - Pour vérifier la connectivité réseau, vous pouvez utiliser n’importe quel outil de test réseau pour tester la connectivité sortante vers le point de terminaison `web.purview.azure.com` sur le port **443**. La connexion doit être réussie.    
+    - Pour vérifier la connectivité réseau, vous pouvez utiliser n’importe quel outil de test réseau pour tester la connectivité sortante vers le point de terminaison `web.purview.azure.com` sur le port **443**. La connexion doit être réussie.    
 
 3. Si des zones Azure DNS privé sont utilisées, assurez-vous que les zones Azure DNS requises sont déployées et qu’il existe un enregistrement DNS (A) pour chaque point de terminaison privé.
 
@@ -86,7 +86,7 @@ Ce guide résume les limitations connues liées à l’utilisation de points de 
     TcpTestSucceeded : True
     ```
     
-5. Si vous avez créé votre compte Azure Purview après le 18 août 2021, veillez à télécharger et à installer la dernière version du runtime d’intégration auto-hébergé à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
+5. Si vous avez créé votre compte Azure Purview après le 18 août 2021, veillez à télécharger et à installer la dernière version du runtime d’intégration auto-hébergé à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
    
 6. À partir de la machine virtuelle du runtime d’intégration auto-hébergé, testez la connectivité réseau et la résolution de noms sur le point de terminaison Purview.
 
@@ -164,7 +164,7 @@ Vous pouvez recevoir le message d’erreur suivant lors de l’exécution d’un
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>Cause 
-Il peut s’agir d’une indication de l’exécution d’une version antérieure du runtime d’intégration auto-hébergé. Si vous avez créé votre compte Azure Purview après le 18 août 2021, vous devez utiliser la version 5.9.7885.3 du runtime d’intégration auto-hébergé.
+Il peut s’agir d’une indication de l’exécution d’une version antérieure du runtime d’intégration auto-hébergé. Si vous avez créé votre compte Azure Purview après le 18 août 2021, vous devez utiliser la version 5.9.7885.3 du runtime d’intégration auto-hébergé.
 
 ### <a name="resolution"></a>Résolution 
 Mettez à nouveau le runtime d’intégration auto-hébergé à la version 5.9.7885.3.

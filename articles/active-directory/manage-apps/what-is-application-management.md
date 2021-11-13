@@ -1,6 +1,6 @@
 ---
-title: Qu’est-ce que la gestion des applications dans Azure Active Directory
-description: Vue d’ensemble de l’utilisation de Azure Active Directory (AD) comme système de gestion des identités et des accès (IAM) pour vos applications cloud et locales.
+title: Qu’est-ce que la gestion des applications ?
+description: Vue d’ensemble de la gestion du cycle de vie d’une application dans Azure Active Directory.
 titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
@@ -9,84 +9,132 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 01/22/2021
+ms.date: 10/22/2021
 ms.author: davidmu
 ms.reviewer: sureshja, napuri
-ms.openlocfilehash: cb5cb0e5d1e2f86abac70826edc8fa3ebbc04ad6
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 3b1e814def005283fb08ab7eeb3c23a8a38e3ee2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613526"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257389"
 ---
-# <a name="what-is-application-management"></a>Qu’est-ce que la gestion des applications ?
+# <a name="what-is-application-management-in-azure-active-directory"></a>Qu’est-ce que la gestion des applications dans Azure Active Directory ?
 
-Azure AD est un système de gestion des identités et des accès (IAM). Il offre un emplacement unique pour stocker des informations sur les identités numériques. Vous pouvez configurer vos applications logicielles de façon à ce qu’elles utilisent Azure AD comme emplacement de stockage des informations utilisateur.
+La gestion des applications dans Azure Active Directory (Azure AD) est le processus de création, de configuration, de gestion et de supervision des applications dans le cloud. Quand une [application](../develop/app-objects-and-service-principals.md) est inscrite dans un locataire Azure AD, les utilisateurs qui lui ont été affectés peuvent y accéder sans problème. De nombreux types d’applications peuvent être inscrits dans Azure AD. Pour plus d’informations, consultez [Types d’application pour la plateforme d’identités Microsoft](../develop/v2-app-types.md).
 
-Azure AD doit être configuré pour être intégré à une application. En d’autres termes, il doit savoir quelles applications l’utilisent pour les identités. Indiquer à Azure AD ce que sont ces applications et comment il doit les gérer constitue la « gestion des applications ».
+Dans cet article, vous allez apprendre les aspects importants de la gestion du cycle de vie d’une application :
 
-Vous gérez les applications dans la page **Applications d’entreprise** situé dans la section Gérer du portail Azure Active Directory.
+- **Développer, ajouter ou se connecter** – Vous pouvez utiliser des chemins différents selon que vous développez votre propre application, à l’aide d’une application préintégrée, ou que vous vous connectez à une application locale.
+- **Gérer l’accès** – L’accès peut être géré avec l’authentification unique (SSO), en affectant des ressources, en définissant la manière dont l’accès est accordé et consenti, et en utilisant le provisionnement automatique.
+- **Configurer les propriétés** – Configurez les conditions requises pour se connecter à l’application et la façon dont l’application est représentée dans les portails utilisateur.
+- **Sécuriser l’application** – Gérez la configuration des autorisations, l’authentification multifacteur (MFA), l’accès conditionnel, les jetons et les certificats.
+- **Gouverner et superviser** – Gérez l’activité d’interaction et de révision à l’aide de la gestion des droits d’utilisation et des ressources de rapport et de supervision.
+- **Nettoyer** – Lorsque votre application n’est plus nécessaire, nettoyez votre locataire en supprimant l’application et son accès.
 
-![Option Applications d’entreprise sous la section Gérer du portail Azure AD.](media/what-is-application-management/enterprise-applications-in-nav.png)
+## <a name="develop-add-or-connect"></a>Développer, ajouter ou se connecter
 
-## <a name="what-is-an-identity-and-access-management-iam-system"></a>Qu’est-ce qu’un système de gestion des identités et des accès (IAM) ?
+Vous pouvez gérer les applications dans Azure AD de plusieurs manières. La manière la plus simple de commencer à gérer une application consiste à utiliser une application préintégrée à partir de la galerie Azure AD. Développer votre propre application et l’inscrire à Azure AD est une possibilité, ou vous pouvez continuer à utiliser une application locale.
 
-Une application est un élément logiciel qui est utilisé dans un but précis. La plupart des applications requièrent que les utilisateurs se connectent.
+L’image suivante montre comment ces applications interagissent avec Azure AD.
 
-Un système d’identités centralisé fournit un emplacement unique pour stocker les informations utilisateur qui peuvent ensuite être utilisées par toutes les applications. Ces systèmes sont connus sous le nom de « systèmes de gestion des identités et des accès (IAM) ». Azure Active Directory est le système IAM pour le cloud Microsoft.
+:::image type="content" source="media/what-is-application-management/app-management-overview.png" alt-text="Diagramme montrant comment vos propres applications développées, applications préintégrées et applications locales peuvent être utilisées comme applications d’entreprise.":::
 
->[!TIP]
->Un système IAM fournit un emplacement unique pour effectuer le suivi d’identités d’utilisateurs. Azure AD est le système IAM pour le cloud Microsoft.
+### <a name="pre-integrated-applications"></a>Applications pré-intégrées
 
-## <a name="why-manage-applications-with-a-cloud-solution"></a>Pourquoi gérer des applications avec une solution cloud ?
+De nombreuses applications sont déjà préintégrées (montrées comme « applications cloud » dans l’image ci-dessus) et peuvent être configurées avec un minimum d’effort. Chaque application de la galerie Azure AD contient un article qui vous présente les étapes nécessaires à la [configuration de l’application](../saas-apps/tutorial-list.md). Pour obtenir un exemple simple de la façon dont une application peut être ajoutée à votre locataire Azure AD à partir de la galerie, consultez [Démarrage rapide : Ajouter une application d’entreprise](add-application-portal.md).
 
-Souvent, les organisations comptent des centaines d’applications qui sont indispensables aux utilisateurs pour effectuer leur travail. Les utilisateurs accèdent à ces applications à partir de nombreux appareils et emplacements. De nouvelles applications sont ajoutées, développées et retirées en permanence. Avec autant d’applications et de points d’accès, il est important de choisir une solution de gestion des identités qui fonctionne avec tous.
+### <a name="your-own-applications"></a>Vos propres applications
 
->[!TIP]
->La galerie d’applications Azure AD contient de nombreuses applications courantes déjà préconfigurées pour fonctionner avec Azure AD en tant que fournisseur d’identité.
+Si vous développez votre propre application métier, vous pouvez l’inscrire à Azure AD pour tirer parti des fonctionnalités de sécurité que fournit le locataire. Vous pouvez inscrire votre application dans **Inscriptions d’applications**, ou vous pouvez l’inscrire à l’aide du lien **Créer votre propre application** lors de l’ajout d’une nouvelle application dans **Applications d’entreprise**. Déterminez comment l’[authentification](../develop/authentication-vs-authorization.md) est implémentée dans votre application pour l’intégrer à Azure AD. 
 
-## <a name="how-does-azure-ad-work-with-apps"></a>Comment Azure AD fonctionne-t-il avec les applications ?
+Si vous souhaitez que votre application soit disponible dans la galerie, vous pouvez [envoyer une demande pour l’y ajouter](../develop/v2-howto-app-gallery-listing.md).
 
-Azure AD est en quelque sorte un intermédiaire qui assure la gestion des identités pour les applications cloud et locales.
 
-![Diagramme montrant des applications fédérées via Azure AD](media/what-is-application-management/app-management-overview.png)
+### <a name="on-premises-applications"></a>Applications locales
 
->[!TIP]
->Réduisez les coûts d’administration en choisissant d’[automatiser le provisionnement des utilisateurs](../app-provisioning/user-provisioning.md). De cette façon, les utilisateurs sont automatiquement ajoutés à Azure AD quand vous les ajoutez au système RH de votre entreprise.
+Si vous souhaitez continuer à utiliser une application locale tout en tirant parti de ce qu’offre Azure AD, connectez-la à Azure AD avec un [Proxy d’application Azure AD](../app-proxy/application-proxy.md). Le Proxy d’application peut être implémenté lorsque vous souhaitez publier des applications locales en externe. Les utilisateurs distants qui ont besoin d’accéder aux applications internes peuvent alors y accéder de manière sécurisée.
 
-## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Quels types d’applications puis-je intégrer à Azure AD ?
+## <a name="manage-access"></a>Gérer l’accès
 
-Vous pouvez utiliser Azure AD comme système d’identités pour quasiment n’importe quelle application. De nombreuses applications sont déjà préconfigurées et peuvent être installées sans effort. Ces applications préconfigurées sont publiées dans la [galerie d’applications Azure AD](/azure/active-directory/saas-apps/).
+Pour [gérer l’accès](what-is-access-management.md) d’une application, vous devez répondre aux questions suivantes :
 
-Vous pouvez configurer manuellement la plupart des applications pour l’authentification unique si elles ne se trouvent pas déjà dans la galerie. Azure AD propose plusieurs options d’authentification unique. L’authentification unique SAML et l’authentification unique OIDC figurent parmi les plus populaires. Pour en savoir plus sur l’intégration d’applications pour l’authentification unique, examinez les [options d’authentification unique](sso-options.md).
+- Comment l’accès est-il accordé et consenti pour l’application ?
+- L’application prend-elle en charge l’authentification unique ?
+- Quels utilisateurs, groupes et propriétaires doivent être affectés à l’application ? 
+- Existe-t-il d’autres fournisseurs d’identité qui prennent en charge l’application ?
+- Sera-t-il utile d’automatiser le provisionnement des identités et des rôles utilisateur ?
 
-Votre organisation utilise-t-elle des applications locales ? Vous pouvez les intégrer à l’aide du proxy d’application. Pour en savoir plus, consultez [Accès à distance aux applications locales par le bais du service Proxy d’application Azure AD](../app-proxy/application-proxy.md).
+### <a name="access-and-consent"></a>Accès et consentement
 
->[!TIP]
->Quand vous créez vos propres applications métier, vous pouvez les intégrer à Azure AD pour bénéficier de l’authentification unique. Pour en savoir plus sur le développement d’applications pour Azure AD, consultez [Plateforme d’identités Microsoft](..//develop/v2-overview.md).
+Vous pouvez [gérer les paramètres de consentement utilisateur](configure-user-consent.md) pour choisir si les utilisateurs peuvent autoriser une application ou un service à accéder aux profils utilisateur et aux données de l’organisation. Lorsque l’accès est accordé aux applications, les utilisateurs peuvent se connecter aux applications intégrées à Azure AD, et l’application peut accéder aux données de votre organisation pour fournir des expériences riches pilotées par les données.
 
-## <a name="manage-risk-with-conditional-access-policies"></a>Gérer les risques avec les stratégies d’accès conditionnel
+Souvent, les utilisateurs ne peuvent pas donner leur consentement pour les autorisations que demande l’application. Configurez le [workflow du consentement administrateur](configure-admin-consent-workflow.md) pour permettre aux utilisateurs de fournir une justification et demander à un administrateur de vérifier et d’approuver une application.
 
-Le couplage de l’authentification unique (SSO) Azure AD avec l’[accès conditionnel](../conditional-access/concept-conditional-access-cloud-apps.md) offre des niveaux élevés de sécurité pour l’accès aux applications. Avec les stratégies d’accès conditionnel, vous pouvez effectuer un contrôle précis des applications sur la base de conditions que vous définissez.
+En tant qu’administrateur, vous pouvez [accorder un consentement administrateur au niveau locataire](grant-admin-consent.md) à une application. Le consentement administrateur au niveau locataire est nécessaire lorsqu’une application demande des autorisations que les utilisateurs standard ne sont pas autorisés à accorder, et permet aux organisations d’implémenter leurs propres processus de révision. Vérifiez toujours attentivement les autorisations demandées par l’application avant d’accorder un consentement. Lorsqu’une application a reçu le consentement administrateur au niveau locataire, tous les utilisateurs peuvent se connecter à l’application, sauf si elle a été configurée pour exiger une affectation d’utilisateur.
 
-## <a name="improve-productivity-with-single-sign-on"></a>Améliorer la productivité avec l’authentification unique
+### <a name="single-sign-on"></a>Authentification unique
 
-L’authentification unique (SSO) offre une expérience utilisateur unifiée entre Microsoft 365 et toutes les autres applications que vous utilisez. Dites adieu à l’obligation d’entrer constamment votre nom d’utilisateur et votre mot de passe !
+Envisagez d’implémenter l’authentification unique dans votre application. Vous pouvez configurer manuellement la plupart des applications pour l’authentification unique. Les options les plus connues dans Azure AD sont l’[authentification unique basée sur SAML et l’authentification unique basée sur OpenID Connect](../develop/active-directory-v2-protocols.md). Avant de commencer, veillez à bien comprendre les conditions requises de l’authentification unique et comment [planifier un déploiement](plan-sso-deployment.md). Pour obtenir un exemple simple de la configuration de l’authentification unique basée sur SAML pour une application d’entreprise dans votre locataire Azure AD, consultez [Démarrage rapide : Activer l’authentification unique pour une application d’entreprise](add-application-portal-setup-sso.md).
 
-Pour en savoir plus sur l’authentification unique, consultez [Qu’est-ce que l’authentification unique ?](what-is-single-sign-on.md)
+### <a name="user-group-and-owner-assignment"></a>Affectation d’utilisateurs, de groupes et de propriétaires
 
-## <a name="address-governance-and-compliance"></a>Assurer la gouvernance et la conformité
+Par défaut, tous les utilisateurs peuvent accéder à vos applications d’entreprise sans y être affectés. Toutefois, si vous souhaitez affecter l’application à un ensemble d’utilisateurs, votre application nécessite une affectation d’utilisateur. Pour obtenir un exemple simple de création et d’affectation d’un compte d’utilisateur à une application, consultez [Démarrage rapide : Créer et affecter un compte d’utilisateur](add-application-portal-assign-users.md). 
 
-Supervisez les applications en vous aidant de rapports qui utilisent des outils SIEM (Security Incident and Event Monitoring). Vous pouvez accéder aux rapports à partir du portail ou des API. Auditez par programmation toute personne qui a accès à vos applications, puis supprimez l’accès aux utilisateurs inactifs par l’intermédiaire des révisions d’accès.
+Si cette possibilité est incluse dans votre abonnement, [affectez des groupes à une application](assign-user-or-group-access-portal.md) afin de pouvoir déléguer la gestion des accès en cours au propriétaire du groupe. 
 
-## <a name="manage-costs"></a>Gérer les coûts
+L’[affectation de propriétaires](assign-app-owners.md) est un moyen simple d’accorder la possibilité de gérer tous les aspects de la configuration Azure AD pour une application. En tant que propriétaire, un utilisateur peut gérer la configuration spécifique à l’organisation de l’application.
 
-En migrant vers Azure AD, vous pouvez réduire les coûts et supprimer la contrainte que représente la gestion de votre infrastructure locale. Azure AD fournit également un accès en libre-service aux applications, ce qui fait gagner du temps aux administrateurs et aux utilisateurs. L’authentification unique élimine les mots de passe propres à l’application. L’authentification unique permet de réduire les coûts liés à la réinitialisation des mots de passe des applications et à la perte de productivité lors de la récupération des mots de passe.
+### <a name="automate-provisioning"></a>Automatiser le provisionnement
 
-Pour les applications de gestion des ressources humaines, ou d’autres applications très largement utilisées, le provisionnement d’application facilite les choses. Le provisionnement d’application automatise le processus d’ajout et de suppression d’utilisateurs. Pour en savoir plus, consultez [Qu’est-ce que le provisionnement d’application ?](../app-provisioning/user-provisioning.md)
+Le [provisionnement d’application](../app-provisioning/user-provisioning.md) désigne la création automatique d’identités et de rôles utilisateur dans les applications auxquelles les utilisateurs ont besoin d’accéder. En plus de créer des identités utilisateur, l’approvisionnement automatique comprend la maintenance et la suppression d’identités utilisateur en cas de modification de l’état ou des rôles.
+
+### <a name="identity-providers"></a>Fournisseurs d’identité
+
+Avez-vous un fournisseur d’identité avec lequel vous voulez qu’Azure AD interagisse ? La [Découverte de domaine d’accueil](home-realm-discovery-policy.md) fournit une configuration qui permet à Azure AD d’identifier le fournisseur d’identité avec lequel l’utilisateur doit s’authentifier lorsqu’il se connecte.
+
+### <a name="user-portals"></a>Portails utilisateur
+
+Azure AD offre des moyens personnalisables de déployer des applications pour les utilisateurs de votre organisation. Par exemple, le [portail Mes applications ou le lanceur d’applications Microsoft 365](end-user-experiences.md). Mes applications fournit aux utilisateurs un endroit pour commencer à travailler et pour trouver toutes les applications auxquelles ils ont accès. En tant qu’administrateur d’une application, vous devez [planifier la manière dont les utilisateurs de votre organisation utiliseront Mes applications](my-apps-deployment-plan.md).
+
+## <a name="configure-properties"></a>Configurer les propriétés
+
+Lorsque vous ajoutez une application à votre locataire Azure AD, vous avez la possibilité de [configurer des propriétés](add-application-portal-configure.md) qui affectent le mode de connexion des utilisateurs. Vous pouvez activer ou désactiver la possibilité de se connecter et l’affectation d’utilisateurs peut être demandée. Vous pouvez également déterminer la visibilité de l’application, le logo qui représente l’application, ainsi que tout ce qui peut la concerner.
+
+## <a name="secure-the-application"></a>Sécuriser l’application
+
+Plusieurs méthodes sont disponibles pour vous aider à sécuriser vos applications d’entreprise. Par exemple, vous pouvez [restreindre l’accès du locataire](tenant-restrictions.md), [gérer la visibilité, les données et l’analytique](cloud-app-security.md), et éventuellement fournir un [accès hybride](secure-hybrid-access.md). Le maintien de la sécurité de vos applications d’entreprise implique aussi la gestion de la configuration des autorisations, de l’authentification multifacteur, de l’accès conditionnel, des jetons et des certificats.
+
+### <a name="permissions"></a>Autorisations
+
+Il est important de les réviser régulièrement et, si nécessaire, de [gérer les autorisations accordées à une application ou à un service](manage-application-permissions.md). Veillez à autoriser uniquement l’accès approprié à vos applications en évaluant régulièrement si des activités suspectes existent.
+
+Les [classifications d’autorisations](configure-permission-classifications.md) vous permettent d’identifier l’effet des différentes autorisations en fonction des stratégies et des évaluations des risques de votre organisation. Par exemple, vous pouvez utiliser des classifications d’autorisations dans des stratégies de consentement afin d’identifier les autorisations que les utilisateurs peuvent accorder.
+
+### <a name="multifactor-authentication-and-conditional-access"></a>Authentification multifacteur et accès conditionnel
+
+Azure AD MFA permet de protéger l’accès aux données et aux applications en fournissant une autre couche de sécurité via une deuxième forme d’authentification. De nombreuses méthodes peuvent être utilisées pour une authentification à deux facteurs. Avant de commencer, [planifiez le déploiement de MFA pour votre application](../authentication/howto-mfa-getstarted.md) dans votre organisation.
+
+Les organisations peuvent activer MFA avec l’[accès conditionnel](../conditional-access/overview.md) pour que la solution réponde à leurs besoins spécifiques. Les stratégies d’accès conditionnel permettent aux administrateurs d’affecter des contrôles à des [applications, des actions ou un contexte d’authentification](../conditional-access/concept-conditional-access-cloud-apps.md) spécifiques.
+
+### <a name="tokens-and-certificates"></a>Jetons et certificats
+
+Les différents types de jetons de sécurité sont utilisés dans un workflow d’authentification dans Azure AD selon le protocole utilisé. Par exemple, les [jetons SAML](../develop/reference-saml-tokens.md) sont utilisés pour le protocole SAML, tandis que les [jetons d’ID](../develop/id-tokens.md) et les [jetons d’accès](../develop/access-tokens.md) sont utilisés pour le protocole OpenID Connect. Les jetons sont signés avec le certificat unique qui est généré dans Azure AD et par des algorithmes standard spécifiques. 
+
+Vous pouvez fournir davantage de sécurité en [chiffrant le jeton](howto-saml-token-encryption.md). Vous pouvez également gérer les informations d’un jeton, notamment les [rôles autorisés](../develop/howto-add-app-roles-in-azure-ad-apps.md) pour l’application.
+
+Azure AD utilise l’[algorithme SHA-256](certificate-signing-options.md) par défaut pour signer la réponse SAML. Utilisez SHA-256, sauf si l’application requiert SHA-1. Établissez un processus de [gestion de la durée de vie du certificat](manage-certificates-for-federated-single-sign-on.md). La durée de vie maximale d’un certificat de signature est de trois ans. Pour éviter ou réduire au minimum l’interruption due à l’expiration d’un certificat, utilisez des rôles et des listes de distribution d’e-mails pour vous assurer que les notifications de modifications liées aux certificats sont étroitement supervisées. 
+
+## <a name="govern-and-monitor"></a>Gouverner et superviser
+
+La [gestion des droits d’utilisation](../governance/entitlement-management-scenarios.md) dans Azure AD vous permet de gérer l’interaction entre les applications et les administrateurs, les propriétaires de catalogues, les gestionnaires de packages d’accès, les approbateurs et les demandeurs.
+
+Votre solution de reporting et de supervision Azure AD dépend de vos exigences juridiques, sécuritaires et opérationnelles, ainsi que de votre environnement et de vos processus existants. Plusieurs journaux sont conservés dans Azure AD et vous devez [planifier un déploiement de reporting et de supervision](../reports-monitoring/plan-monitoring-and-reporting.md) pour garantir la meilleure expérience possible pour votre application.
+
+## <a name="clean-up"></a>Nettoyer
+
+Vous pouvez nettoyer l’accès aux applications. Par exemple, [supprimer l’accès d’un utilisateur](methods-for-removing-user-access.md). Vous pouvez aussi [désactiver la manière dont un utilisateur se connecte](disable-user-sign-in-portal.md). Enfin, vous pouvez supprimer l’application si l’organisation n’en a plus besoin. Pour obtenir un exemple simple de suppression d’une application d’entreprise de votre locataire Azure AD, consultez [Démarrage rapide : Supprimer une application d’entreprise](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Série de guides de démarrage rapide sur la gestion des applications](view-applications-portal.md)
-- [Bien démarrer avec l’intégration d’applications](plan-an-application-integration.md)
-- [Découvrir comment automatiser l’attribution d’utilisateurs](../app-provisioning/user-provisioning.md)
+- Commencez par ajouter votre première application d’entreprise avec [Démarrage rapide : Ajouter une application d’entreprise](add-application-portal.md).

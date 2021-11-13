@@ -3,12 +3,12 @@ title: Configurer une source d’identité externe pour vCenter
 description: Découvrez comment configurer Active Directory via LDAP ou LDAP sécurisé pour vCenter en tant que source d’identité externe.
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: 77644c2d52a5eed87ab4dca83632b69834dd4c58
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 37478b65572fba2815121b0712d1a0f2e43376dc
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537109"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506293"
 ---
 # <a name="configure-external-identity-source-for-vcenter"></a>Configurer une source d’identité externe pour vCenter
 
@@ -85,7 +85,7 @@ Vous exécuterez l'`New-AvsLDAPSIdentitySource`applet de commande pour ajouter u
    | **Nom**  | Nom convivial de la source d’identité externe, par exemple, **avslap.local**.  |
    | **DomainName**  | Nom de domaine complet du domaine.   |
    | **DomainAlias**  | Pour les sources d’identité Active Directory, le nom NetBIOS du domaine. Ajoutez le nom NetBIOS du domaine AD en tant qu’alias de la source d’identité si vous utilisez des authentifications SSPI.     |
-   | **PrimaryUrl**  | URL principale de la source d’identité externe, par exemple, **ldap://yourserver:389**.  |
+   | **PrimaryUrl**  | URL principale de la source d’identité externe, par exemple **ldap://yourserver:636**.  |
    | **SecondaryURL**  | URL de restauration secondaire en cas d’échec principal.  |
    | **BaseDNUsers**  |  Où rechercher des utilisateurs valides, par exemple, **CN=users,DC=yourserver,DC=internal**.  Le ND de base est nécessaire pour utiliser l’authentification LDAP.  |
    | **BaseDNGroups**  | Où rechercher des groupes, par exemple, **CN=users,DC=yourserver,DC=internal**. Le ND de base est nécessaire pour utiliser l’authentification LDAP.  |

@@ -1,24 +1,26 @@
 ---
 title: Qu’est-ce qu’une ontologie ?
 titleSuffix: Azure Digital Twins
-description: En savoir plus sur les ontologies d’un secteur en langage DTDL à des fins de modélisation dans un domaine particulier
+description: Découvrez-en plus sur les ontologies de jumeaux numériques, la façon dont elles sont utilisées dans Azure Digital Twins et la façon dont ces ontologies DTDL peuvent servir à des fins de modélisation dans le contexte de certaines industries.
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f4beb002a1bfd8a885157099228747213e754253
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 56ce0815bdcb59e64f6a61cce4d4fb6172abea20
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772356"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501625"
 ---
 # <a name="what-is-an-ontology"></a>Qu’est-ce qu’une ontologie ? 
 
+Cet article décrit le concept des ontologies et la façon dont elles peuvent être utilisées dans le contexte d’Azure Digital Twins.
+
 Le vocabulaire d’une solution Azure Digital Twins est défini à l’aide de [modèles](concepts-models.md), lesquels décrivent les types d’entité présents dans votre environnement.
 
-Parfois, quand votre solution est liée à un secteur particulier, il est plus facile et plus efficace de démarrer avec un ensemble de modèles qui existent déjà pour ce secteur, au lieu de créer votre propre ensemble de modèles à partir de zéro. Ces ensembles de modèles préexistants sont appelés **ontologies**. 
+Parfois, quand votre solution est liée à un secteur particulier, il est plus facile et plus efficace de démarrer avec un ensemble de modèles qui existent déjà pour ce secteur, au lieu de créer votre propre ensemble de modèles à partir de zéro. Ces ensembles de modèles préexistants sont appelés **ontologies**.
 
 En général, une ontologie est un ensemble de modèles pour un domaine donné, par exemple une structure de bâtiment, un système IoT, une ville intelligente, un réseau électrique, un contenu web, etc. Des ontologies sont souvent utilisées en tant que schémas pour des graphes de jumeaux, car elles permettent ce qui suit :
 * Harmonisation des composants logiciels, de la documentation, des bibliothèques de requêtes, etc.
@@ -56,7 +58,7 @@ Quelle que soit la stratégie choisie pour l’intégration d’une ontologie av
 1. [Validez](how-to-parse-models.md) vos modèles pour vérifier qu’ils fonctionnent avec des documents DTDL.
 1. Une fois que vos modèles sont prêts, chargez-les vers Azure Digital Twins en utilisant les [API](how-to-manage-model.md#upload-models) ou un exemple d’application tel que le [chargeur de modèles Azure Digital Twins](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels).
 
-Après avoir lu cette série d’articles, vous devrez pouvoir utiliser vos modèles dans votre instance d’Azure Digital Twins. 
+La lecture de cette série d’articles vous permet de découvrir progressivement comment utiliser vos modèles dans votre instance d’Azure Digital Twins. 
 
 >[!TIP]
 > Vous pouvez visualiser les modèles dans votre ontologie à l’aide d’[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) ou du [visualiseur de modèles Azure Digital Twins](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer).

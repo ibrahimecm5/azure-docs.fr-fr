@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 10/21/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dd43c01cac8b0c0c24a3a17385c90d9630da35c5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95753a40c60e6b191b768fa3ac9cae3c5e9cb466
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019637"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433267"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nouveautés d’Azure Sentinel
 
@@ -37,6 +37,21 @@ Si vous recherchez des éléments datant de plus de six mois, vous les trouverez
 >
 
 ## <a name="november-2021"></a>Novembre 2021
+
+### <a name="windows-forwarded-events-connector-now-available-public-preview"></a>Connecteur Windows Forwarded Events à présent disponible (en préversion publique)
+
+Vous pouvez maintenant diffuser en continu des journaux d’événements à partir de serveurs Windows Server connectés à votre espace de travail Azure Sentinel à l’aide de Windows Event Collection/Windows Event Forwarding (WEC/WEF), grâce à ce nouveau connecteur de données. Le connecteur utilise le nouvel agent Azure Monitor Agent (AMA), qui offre un certain nombre d’avantages par rapport à l’ancien agent Log Analytics (également appelé MMA) :
+- **Scalabilité** : si vous avez activé Windows Event Collection (WEC), vous pouvez installer l’Agent Azure Monitor Agent (AMA) sur l’ordinateur WEC pour collecter les journaux de plusieurs serveurs avec un point de connexion unique.
+
+- **Vitesse** : l’agent AMA peut envoyer des données à un taux de transfert EPS 5K, ce qui permet d’accélérer l’actualisation des données.
+
+- **Efficacité** : AMA vous permet de concevoir des règles de collecte de données complexes pour filtrer les journaux à leur source, en choisissant les événements exacts à diffuser dans votre espace de travail. Les règles de collecte de données permettent de réduire le trafic réseau et les coûts d’ingestion en excluant les événements indésirables.
+
+- **Couverture** : WEC/WEF permet la collecte de journaux d’événements Windows à partir de serveurs hérités (locaux et physiques) et également de machines à utilisation élevée ou sensibles, telles que des contrôleurs de domaine, où l’installation d’un agent n’est pas souhaitée. 
+
+Nous vous recommandons d’utiliser ce connecteur avec les analyseurs [ASIM (Azure Sentinel Information Model)](normalization.md) installés pour garantir une prise en charge complète de la normalisation des données.
+
+Apprenez-en plus sur le [connecteur Windows Forwarded Events](data-connectors-reference.md#windows-forwarded-events-preview).
 
 ### <a name="near-real-time-nrt-threat-detection-rules-now-available-public-preview"></a>Des règles de détection des menaces en temps quasi-réel (NRT) sont désormais disponibles (version préliminaire publique)
 
@@ -202,6 +217,20 @@ Par exemple :
 :::image type="content" source="media/whats-new/notebooks-synapse.png" alt-text="Capture d’écran de la nouvelle fonctionnalité Azure Synapse sur la page Notebooks." lightbox="media/whats-new/notebooks-synapse.png":::
 
 Pour plus d’informations, consultez [Utiliser des notebooks Jupyter pour faire la chasse aux menaces de sécurité](notebooks.md).
+
+
+### <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel"></a>Déployer et surveiller des honeytokens Azure Key Vault avec Azure Sentinel
+
+La nouvelle solution **Azure Sentinel Deception** vous aide à surveiller les activités malveillantes dans vos coffres de clés en vous aidant à déployer des clés et des secrets de leurre, appelés « *honeytokens* », sur des coffres de clés Azure sélectionnés.
+
+Une fois le déploiement effectué, tout accès ou opération avec les clés et les secrets honeytoken génère des incidents que vous pouvez examiner dans Azure Sentinel.
+
+Étant donné qu’il n’y a aucune raison d’utiliser réellement les clés et les secrets honeytoken, toute activité similaire dans votre espace de travail peut être malveillante et doit être examinée.
+
+La solution **Azure Sentinel Deception** inclut un classeur pour vous aider à déployer les honeytokens, à grande échelle ou un à la fois, des watchlists pour suivre les règles de création de honeytokens et des règles d’analyse pour générer des incidents en fonction des besoins.
+
+Pour plus d’informations, consultez [Déployer et surveiller des honeytokens Azure Key Vault avec Azure Sentinel (préversion publique)](monitor-key-vault-honeytokens.md).
+
 
 ## <a name="october-2021"></a>Octobre 2021
 
@@ -386,7 +415,7 @@ Azure Sentinel fournit désormais la règle intégrée **Analyse de correspondan
 La règle **Analyse de correspondance Microsoft Threat Intelligence** met en correspondance des indicateurs de domaine avec les sources de journaux suivantes :
 
 - [CEF](connect-common-event-format.md)
-- [DNS](./data-connectors-reference.md#domain-name-server)
+- [DNS](./data-connectors-reference.md#windows-dns-server-preview)
 - [Syslog](connect-syslog.md)
 
 Pour plus d’informations, consultez [Détecter des menaces à l’aide de l’analyse de correspondance (préversion publique)](work-with-threat-indicators.md#detect-threats-using-matching-analytics-public-preview).

@@ -1,20 +1,22 @@
 ---
 title: Ingérer la télémétrie depuis IoT Hub
 titleSuffix: Azure Digital Twins
-description: Découvrez comment ingérer les messages de télémétrie des appareils provenant d’IoT Hub.
+description: Découvrez comment ingérer des messages de télémétrie d’appareil issus d’Azure IoT Hub dans les jumeaux numériques d’une instance d’Azure Digital Twins.
 author: baanders
 ms.author: baanders
-ms.date: 9/9/2021
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8fd5b6a046c53a34e41340250c8d6ac38fdf5706
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b10a87312fd7b27c22bbfa56a928a0357d4698e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128667347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500923"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingérer des données de télémétrie IoT Hub dans Azure Digital Twins
+
+Ce guide décrit le processus d’écriture d’une fonction capable d’ingérer des données de télémétrie issues d’IoT Hub et de les envoyer à une instance d’Azure Digital Twins.
 
 Azure Digital Twins se base sur les données des appareils IoT et d’autres sources. Pour les données d’appareil, il est courant d’utiliser la source [IoT Hub](../iot-hub/about-iot-hub.md) dans Azure Digital Twins.
 
@@ -76,7 +78,7 @@ Lorsque le jumeau est créé, la sortie CLI de la commande doit ressembler à c
 
 Dans cette section, vous allez créer une fonction Azure pour accéder à Azure Digital Twins et mettre à jour des jumeaux en fonction des événements de télémétrie IoT qu’elle reçoit. Suivez les étapes ci-dessous pour créer et publier la fonction.
 
-1. Tout d’abord, créez un projet d’application de fonction dans Visual Studio. Pour obtenir des instructions sur la façon de procéder, consultez [Développer des Azure Functions à l’aide de Visual Studio](../azure-functions/functions-develop-vs.md#create-an-azure-functions-project).
+1. Tout d’abord, créez un projet d’application de fonction dans Visual Studio. Pour obtenir des instructions sur la façon de procéder, consultez [Développer des fonctions Azure Functions à l’aide de Visual Studio](../azure-functions/functions-develop-vs.md#create-an-azure-functions-project).
 
 2. Ajoutez les packages suivants à votre projet :
     * [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
@@ -89,7 +91,7 @@ Dans cette section, vous allez créer une fonction Azure pour accéder à Azure 
 
     Enregistrez le code de votre fonction.
 
-4. Publiez le projet avec la fonction *IoTHubtoTwins.cs* dans une application de fonction dans Azure. Pour obtenir des instructions sur la façon de procéder, consultez [Développer des Azure Functions à l’aide de Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
+4. Publiez le projet avec la fonction *IoTHubtoTwins.cs* dans une application de fonction dans Azure. Pour obtenir des instructions sur la façon de procéder, consultez [Développer des fonctions Azure Functions à l’aide de Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 [!INCLUDE [digital-twins-verify-function-publish.md](../../includes/digital-twins-verify-function-publish.md)]
 
@@ -103,7 +105,7 @@ Ensuite, **attribuez un rôle d’accès** à la fonction et **configurez les pa
 
 ## <a name="connect-your-function-to-iot-hub"></a>Connecter votre fonction à IoT Hub
 
-Dans cette section, vous allez configurer votre fonction comme destination d’événement pour les données de l’appareil IoT Hub. Cela permet de s’assurer que les données du thermostat dans IoT Hub seront envoyées à la fonction Azure pour traitement.
+Dans cette section, vous allez configurer votre fonction comme destination d’événement pour les données de l’appareil IoT Hub. Configurer ainsi votre fonction permet de veiller à ce que les données du thermostat dans IoT Hub soient envoyées à la fonction Azure à des fins de traitement.
 
 Dans le [Portail Azure](https://portal.azure.com/), accédez à l’instance IoT Hub que vous avez créée dans la section [Prérequis](#prerequisites). Sous **Événements**, créez un abonnement pour votre fonction.
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 66d32a61a3c8f3b88562bdff0c541ec5d88e65d8
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 4814f7efa762be94dfa5950ab2a5d8ab65ee27a7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830974"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038495"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutoriel : Utiliser Personalizer dans Azure Notebook
 
@@ -46,7 +46,7 @@ Le code de ce tutoriel est disponible dans le [dépôt GitHub d’exemples Perso
 
 ## <a name="how-the-simulation-works"></a>Fonctionnement de la simulation
 
-Au début, seules 20 à 30 % des suggestions de Personalizer sont correctes. Cette réussite est indiquée par la récompense renvoyée à l’API de récompense (Reward) de Personalizer, avec un score de 1. Après un certain nombre d’appels de classement et de récompense, le système s’améliore.
+Au début, seules 20 à 30 % des suggestions de Personalizer sont correctes. Cette réussite est indiquée par la récompense renvoyée à l’API Reward de Personalizer, avec un score de 1. Après un certain nombre d’appels de classement et de récompense, le système s’améliore.
 
 Après les requêtes initiales, exécutez une évaluation hors connexion. Cela permet à Personalizer d’examiner les données et de suggérer une meilleure stratégie d’apprentissage. Appliquez la nouvelle stratégie d’apprentissage et réexécutez le notebook avec 20 % du nombre de requêtes précédentes. La boucle sera plus performante avec la nouvelle stratégie d’apprentissage.
 

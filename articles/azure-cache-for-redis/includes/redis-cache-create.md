@@ -1,5 +1,5 @@
 ---
-title: fichier descriptif
+title: Fichier include
 description: Fichier include
 services: redis-cache
 author: curib
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 63c9c98f7b85c18cde58d65a8d1fd94eff2b1985
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74b23eb8560a830e7e07a86fe745b94619eeeaf0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560112"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440320"
 ---
 1. Pour créer un cache, connectez-vous au [portail Azure](https://portal.azure.com), puis sélectionnez **Créer une ressource**.
 
@@ -39,11 +39,11 @@ ms.locfileid: "128560112"
 
 1. Sélectionnez le bouton **Suivant : Avancé** ou sélectionnez le bouton **Suivant : Avancé** en bas de la page.
 
-1. Sous l’onglet **Avancé** d’une instance de cache de base ou standard, sélectionnez Activer/désactiver si vous souhaitez activer un port non-TLS. Vous pouvez également sélectionner la version de Redis que vous souhaitez utiliser, soit la 4, soit la 6 (préversion).
+1. Sous l’onglet **Avancé** d’une instance de cache de base ou standard, sélectionnez Activer/désactiver si vous souhaitez activer un port non-TLS. Vous pouvez également sélectionner la version de Redis que vous souhaitez utiliser, soit la 4, soit la 6.
 
-    :::image type="content" source="media/redis-cache-create/redis-version.png" alt-text="Version de Redis 4 ou 6.":::
+    :::image type="content" source="media/redis-cache-create/cache-redis-version.png" alt-text="Version de Redis 4 ou 6.":::
 
-1. Sous l’onglet **Avancé** d’une instance de cache premium, configurez les paramètres pour le port non-TLS, le clustering et la persistance des données. Vous pouvez également sélectionner la version de Redis que vous souhaitez utiliser, soit la 4, soit la 6 (préversion).
+1. Sous l’onglet **Avancé** d’une instance de cache premium, configurez les paramètres pour le port non-TLS, le clustering et la persistance des données. Vous pouvez également sélectionner la version de Redis que vous souhaitez utiliser, soit la 4, soit la 6.
 
 1. Sélectionnez l’onglet **Suivant : Avancé** ou sélectionnez le bouton **Suivant : Étiquettes** au bas de la page.
 
@@ -54,3 +54,5 @@ ms.locfileid: "128560112"
 1. Une fois que le message vert Validation réussie s’affiche, sélectionnez **Créer**.
 
 La création du cache prend un certain temps. Vous pouvez surveiller la progression dans la page **Vue d’ensemble** du Azure Cache pour Redis. Lorsque **État** indique **En cours d’exécution**, le cache est prêt pour utilisation.
+
+<!-- Comment to dirty file. -->

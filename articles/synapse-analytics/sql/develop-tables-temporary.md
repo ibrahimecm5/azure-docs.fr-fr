@@ -2,20 +2,20 @@
 title: Utiliser des tables temporaires dans Synapse SQL
 description: Conseils de base pour l'utilisation de tables temporaires dans SQL Synapse.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.openlocfilehash: 8513df83196b3521a749515c6bb22caad7d255b7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
+ms.openlocfilehash: 3244152e4d7eb7cac78dcab07995719bdd07e863
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816033"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508548"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Tables temporaires dans SQL Synapse
 
@@ -25,7 +25,7 @@ Tant les ressources du pool SQL dédié que celles du pool SQL serverless peuven
 
 ## <a name="temporary-tables"></a>tables temporaires ;
 
-Les tables temporaires sont utiles lors du traitement des données, notamment lors d’une transformation lorsque les résultats intermédiaires sont temporaires. Dans SQL Synapse, les tables temporaires existent au niveau de la session.  Elles ne sont visibles que dans la session dans laquelle elles ont été créées. Ainsi, elles sont automatiquement supprimées à la fermeture de cette session. 
+Les tables temporaires sont utiles lors du traitement des données, notamment lors d’une transformation lorsque les résultats intermédiaires sont temporaires. Dans SQL Synapse, les tables temporaires existent au niveau de la session.  Elles ne sont visibles que dans la session dans laquelle elles ont été créées. Ainsi, elles sont automatiquement supprimées quand cette session se termine. 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>Tables temporaires dans le pool SQL dédié
 
@@ -95,8 +95,7 @@ GROUP BY
 
 > [!NOTE]
 > `CTAS` est une commande puissante et présente l’avantage d’être efficace dans son utilisation de l’espace de journal des transactions. 
-> 
-> 
+
 
 ### <a name="drop-temporary-tables"></a>Déposer des tables temporaires
 
@@ -230,7 +229,7 @@ Le pool SQL dédié présente plusieurs limitations d’implémentation pour les
 
 Dans un pool SQL serverless, les tables temporaires sont prises en charge, mais leur utilisation est limitée. Elles ne peuvent pas être utilisées dans le cadre de requêtes ciblant des fichiers. 
 
-Par exemple, vous ne pouvez pas joindre une table temporaire avec des données de fichiers dans le stockage. Le nombre de tables temporaires est limité à 100 et leur taille totale à 100 Mo.
+Par exemple, vous ne pouvez pas joindre une table temporaire avec des données de fichiers dans le stockage. Le nombre de tables temporaires est limité à 100 et leur taille totale est limitée à 100 Mo.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

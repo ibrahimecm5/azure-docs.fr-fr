@@ -2,18 +2,18 @@
 title: Optimiser les coûts de Azure Databricks avec un pré-achat
 description: Découvrez comment pré-payer Azure Databricks avec une capacité réservée pour économiser de l’argent.
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: 8047c57c929deeffcb69943ce17fa5fe81d31af1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72bb3403a49431d1dbc1cbd9d15ac37348818118
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645053"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243825"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optimiser les coûts de Azure Databricks avec un pré-achat
 
@@ -42,8 +42,8 @@ Avant de procéder à l’achat, calculez la quantité totale de DBU utilisée p
 Vous pouvez acheter des plans Databricks dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Pour acheter une capacité de réserve, vous devez avoir le rôle de propriétaire pour au moins un abonnement d’entreprise.
 
 - Vous devez avoir un rôle de propriétaire pour au moins un Contrat Entreprise (références de l’offre : MS-AZR-0017P or MS-AZR-0148P) ou Microsoft Customer Agreement (MCA) ou un abonnement individuel avec paiement à l’utilisation (numéros de l’offre : MS-AZR-0003P ou MS-AZR-0023P).
-- Pour les abonnements EA, l’option Ajouter des instances réservées doit être activée dans le portail EA. Ou, si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement.
-- Pour les abonnements Entreprise, **Add Reserved Instances** (Ajouter des instances réservées) doit être activé dans le [portal EA](https://ea.azure.com/). Si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement.
+- Pour les abonnements Entreprise, **Add Reserved Instances** (Ajouter des instances réservées) doit être activé dans le [portal EA](https://ea.azure.com/). Si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement pour pouvoir l’activer. Les clients EA directs peuvent désormais mettre à jour le paramètre d’**instance réservée** dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes). Accédez au menu Stratégies pour modifier les paramètres.
+
 
 **Pour acheter :**
 

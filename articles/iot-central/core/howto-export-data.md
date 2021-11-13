@@ -8,12 +8,12 @@ ms.date: 10/20/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3161fefd2b164ad9fbe61fd4f1f322b831985589
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a084e6bad7530c4d506728b17227de13f1f86a1
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070393"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579288"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exporter des données IoT vers des destinations cloud à l'aide des fonctionnalités d'exportation de données
 
@@ -24,7 +24,8 @@ Par exemple, vous pouvez :
 - exporter en continu des données de télémétrie, de modifications de propriétés, de connectivité des appareils, de cycle de vie d’appareil et de cycle de vie de modèle d’appareil au format JSON en quasi-temps réel ;
 - filtrer les flux de données pour exporter des données qui remplissent des conditions personnalisées ;
 - enrichir les flux de données avec des valeurs personnalisées et des valeurs de propriété à partir de l'appareil ;
-- envoyer les données vers des destinations telles qu'Azure Event Hubs, Azure Service Bus, Stockage Blob Azure et des points de terminaison de webhook.
+- Transformer les flux de données pour modifier leur forme et leur contenu.
+- Envoyer les données vers des destinations comme Azure Event Hubs, Azure Data Explorer, Azure Service Bus, Stockage Blob Azure et des points de terminaison de webhook.
 
 > [!Tip]
 > Quand vous activez l’exportation de données, vous obtenez seulement les données à partir de ce moment. Pour le moment, vous ne pouvez pas récupérer les données d’une période pendant laquelle l’exportation de données était désactivée. Pour conserver un historique des données plus étendu, activez l’exportation de données au plus tôt.
@@ -43,6 +44,7 @@ Votre destination d’exportation doit exister avant la configuration de l’exp
 - File d’attente Azure Service Bus
 - Rubrique Azure Service Bus
 - Stockage Blob Azure
+- Explorateur de données Azure
 - webhook
 
 ### <a name="connection-options"></a>Options de connexion
@@ -213,6 +215,62 @@ Pour renforcer la sécurité de votre conteneur de blobs et autoriser uniquement
 
 ---
 
+### <a name="create-an-azure-data-explorer-destination"></a>Créer une destination Azure Data Explorer
+
+Si vous ne disposez pas d’un cluster et d’une base de données [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) existants où exporter, effectuez les étapes suivantes :
+
+1. Créez un cluster et une base de données Azure Data Explorer. Pour plus d’informations, consultez le [Guide de démarrage rapide d’Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal). Prenez note du nom de la base de données que vous créez, car vous avez besoin de cette valeur dans les étapes suivantes.
+
+1. Créez un principal de service que vous pouvez utiliser pour connecter votre application IoT Central à Azure Data Explorer. Utilisez Azure Cloud Shell pour exécuter la commande suivante :
+
+    ```azurecli
+    az ad sp create-for-rbac --skip-assignment --name "My SP for IoT Central"
+    ```
+
+    Prenez note des valeurs de `appId`, `password` et `tenant`, car vous en aurez besoin dans les étapes suivantes.
+
+1. Pour ajouter le principal de service à la base de données, accédez au portail Azure Data Explorer et exécutez la requête suivante sur votre base de données. Remplacez les espaces réservés par les valeurs que vous avez notées précédemment :
+
+    ```kusto
+    .add database <YourDatabaseName> admins ('aadapp=<YourAppId>;<YourTenant>');
+    ```
+
+1. Créez une table dans votre base de données avec un schéma approprié pour les données que vous exportez. L’exemple de requête suivant crée une table appelée `smartvitalspatch`. Pour plus d’informations, consultez [Transformer des données à l’intérieur de votre application IoT Central pour les exporter](howto-transform-data-internally.md) :
+
+    ```kusto
+    .create table smartvitalspatch (
+      EnqueuedTime:datetime,
+      Message:string,
+      Application:string,
+      Device:string,
+      Simulated:boolean,
+      Template:string,
+      Module:string,
+      Component:string,
+      Capability:string,
+      Value:dynamic
+    )
+    ```
+
+1. (Facultatif) Pour accélérer l’ingestion des données dans votre base de données Azure Data Explorer :
+
+    1. Accédez à la page **Configurations** de votre cluster Azure Data Explorer. Activez ensuite l’option **Ingestion de streaming**.
+    1. Exécutez la requête suivante pour modifier la stratégie de table afin d’activer l’ingestion en streaming :
+
+        ```kusto
+        .alter table smartvitalspatch policy streamingingestion enable
+        ```
+
+1. Ajoutez une destination Azure Data Explorer dans IoT Central en utilisant l’URL de votre cluster Azure Data Explorer, le nom de la base de données et le nom de la table. Le tableau suivant indique les valeurs du principal de service à utiliser pour l’autorisation :
+
+    | Valeur du principal de service | Configuration de la destination |
+    | ----------------------- | ------------------------- |
+    | appId                   | ClientID                  |
+    | tenant                  | ID client                 |
+    | mot de passe                | Clé secrète client             |
+
+    :::image type="content" source="media/howto-export-data/export-destination.png" alt-text="Capture d’écran de la destination d’exportation Azure Data Explorer.":::
+
 ### <a name="create-a-webhook-endpoint"></a>Créer un point de terminaison webhook
 
 Vous pouvez exporter des données vers un point de terminaison de webhook HTTP disponible publiquement. Vous pouvez créer un point de terminaison de webhook test à l'aide de [RequestBin](https://requestbin.net/). RequestBin limite la requête lorsque le nombre maximal de requêtes est atteint :
@@ -295,6 +353,12 @@ Pour parcourir les fichiers exportés sur le portail Azure, accédez à un fichi
 Les données sont exportées en quasi-temps réel. Les données se trouvent dans le corps du message, au format JSON encodé au format UTF-8.
 
 Le conteneur d'annotations ou de propriétés système du message contient les champs `iotcentral-device-id`, `iotcentral-application-id`, `iotcentral-message-source` et `iotcentral-message-type` qui ont les mêmes valeurs que les champs correspondants dans le corps du message.
+
+### <a name="azure-data-explorer-destination"></a>Destination Azure Data Explorer
+
+Les données sont exportées en quasi temps réel vers une table de base de données spécifiée dans le cluster Azure Data Explorer. Les données se trouvent dans le corps du message, au format JSON encodé au format UTF-8. Vous pouvez ajouter une [Transformation](howto-transform-data-internally.md) dans IoT Central pour exporter des données qui correspondent au schéma de table.
+
+Pour interroger les données exportées dans le portail Azure Data Explorer, accédez à la base de données et sélectionnez **Requête**.
 
 ### <a name="webhook-destination"></a>Destination du webhook
 
@@ -464,7 +528,7 @@ Chaque message ou enregistrement représente les modifications apportées aux pr
 - `templateId`: ID du modèle d'appareil associé à l'appareil.
 - `properties` : Tableau des propriétés qui ont été modifiées, y compris les noms des propriétés et les valeurs qui ont été modifiés. Les informations sur le composant et le module sont incluses si la propriété est modélisée dans un composant ou un module IoT Edge.
 - `enrichments`: enrichissements configurés lors de l'exportation.
-- 
+
 Pour Event Hubs et Service Bus, IoT Central exporte de nouvelles données de messages à la file d’attente ou à la rubrique de votre Event Hub ou Service Bus en quasi-temps réel. Dans les propriétés utilisateur (également appelées propriétés d'application) de chaque message, les propriétés `iotcentral-device-id`, `iotcentral-application-id`, `iotcentral-message-source` et `iotcentral-message-type` sont automatiquement incluses.
 
 Pour le stockage Blob, les messages sont regroupés par lot et exportés une fois par minute.
@@ -560,6 +624,7 @@ L’exemple suivant présente un message de cycle de vie d’appareil exporté r
   }
 }
 ```
+
 ## <a name="device-template-lifecycle-changes-format"></a>Format des changements de cycle de vie d’appareil
 
 Chaque message ou enregistrement représente une modification apportée à un modèle d’appareil publié. Les informations incluses dans le message exporté sont les suivantes :
@@ -607,4 +672,4 @@ Le tableau suivant présente les différences entre la fonctionnalité d'[export
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Maintenant que vous savez utiliser la nouvelle fonctionnalité d'exportation de données, nous vous suggérons d'apprendre à [Utiliser la fonctionnalité analytique d'IoT Central](./howto-create-analytics.md).
+Maintenant que vous savez comment configurer l’exportation de données, l’étape suivante suggérée est de découvrir comment [transformer les données à l’intérieur de votre application IoT Central pour les exporter](howto-transform-data-internally.md).

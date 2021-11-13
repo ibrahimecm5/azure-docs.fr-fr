@@ -2,22 +2,22 @@
 title: tables temporaires ;
 description: Conseils de base pour l’utilisation de tables temporaires dans le pool SQL dédié mettant en évidence les principes des tables temporaires au niveau de la session.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/01/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.openlocfilehash: 9898bc94aa79b374174f80592dc250e660f7f8c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
+ms.openlocfilehash: b63b6f017771325dd752905502bd8feb6479f5c4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562595"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500713"
 ---
-# <a name="temporary-tables-in-dedicated-sql-pool"></a>Tables temporaires dans le pool SQL dédié
+# <a name="temporary-tables-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tables temporaires dans un pool SQL dédié dans Azure Synapse Analytics
 
 Cet article contient des conseils de base pour l’utilisation des tables temporaires et met en évidence les principes des tables temporaires au niveau de la session. 
 
@@ -27,7 +27,7 @@ L’utilisation des informations de cet article peut vous aider à modulariser v
 
 Les tables temporaires sont utiles lors du traitement des données, notamment lors d’une transformation lorsque les résultats intermédiaires sont temporaires. Dans le pool SQL dédié, les tables temporaires existent au niveau de la session.  
 
-Elles sont uniquement visibles pour la session dans laquelle elles ont été créées et sont automatiquement supprimées lorsque cette session se déconnecte.  
+Elles sont visibles seulement pour la session dans laquelle elles ont été créées et sont automatiquement supprimées quand cette session se ferme.  
 
 Les tables temporaires offrent un gain de performances, car leurs résultats sont écrits en local et non dans un stockage distant.
 
@@ -99,10 +99,8 @@ GROUP BY
 
 > [!NOTE]
 > `CTAS` est une commande puissante et présente l’avantage d’être efficace dans son utilisation de l’espace de journal des transactions. 
-> 
-> 
 
-## <a name="dropping-temporary-tables"></a>Suppression de tables temporaires
+## <a name="drop-temporary-tables"></a>Déposer des tables temporaires
 Lorsqu’une nouvelle session est créée, aucune table temporaire ne doit exister.  
 
 Si vous appelez la même procédure stockée qui crée une table temporaire avec le même nom, pour vous assurer de la réussite de vos instructions `CREATE TABLE`, une simple vérification d’existence préalable avec `DROP` peut être utilisée comme dans l’exemple suivant :
@@ -122,7 +120,7 @@ Dans le développement de procédure stockée, il est courant de voir les comman
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>Modularisation du code
+## <a name="modularize-code"></a>Modulariser le code
 Étant donné que les tables temporaires peuvent être visibles à n’importe quel point d’une session utilisateur, cette fonctionnalité peut vous aider à modulariser le code de votre application.  
 
 Par exemple, la procédure stockée suivante génère le langage DDL pour mettre à jour toutes les statistiques dans la base de données par nom de statistique.
@@ -199,9 +197,9 @@ FROM    #stats_ddl
 GO
 ```
 
-À ce stade, la seule action qui s’est produite est la création d’une procédure stockée qui génère une table temporaire, #stats_ddl, avec des instructions DDL.  
+À ce stade, la seule action qui s’est produite est la création d’une procédure stockée qui génère une table temporaire, `#stats_ddl`, avec des instructions DDL.  
 
-Cette procédure stockée abandonne une table #stats_ddl existante pour s’assurer qu’elle n’échoue pas en cas d’exécutions multiples dans une session.  
+Cette procédure stockée supprime une table `#stats_ddl` existante pour ne pas provoquer un échec si elle est exécutée plusieurs fois dans une session.  
 
 Toutefois, étant donné l’absence de `DROP TABLE` à la fin de la procédure stockée, lorsque la procédure stockée se termine, elle quitte la table créée afin de pouvoir être lue en dehors de la procédure stockée.  
 

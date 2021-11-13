@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 03/19/2019
-ms.openlocfilehash: d534736e72bb97caa96b1001d379aefd7e3c7c6b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: ebad0e9da1595d06dc2966d9b0c83dad9680556e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698812"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226789"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimiser les performances en utilisant les technologies en mémoire d’Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -48,18 +48,10 @@ Les index columnstore et la technologie OLTP en mémoire sont inclus dans le pro
 
 Les technologies en mémoire vous aident également à réduire les coûts grâce à un traitement plus efficace des requêtes et des transactions. En général, il n’est pas nécessaire de mettre à jour le niveau de tarification de la base de données pour obtenir des gains de performances. Dans certains cas, vous pourriez même être en mesure de réduire le niveau de tarification, tout en bénéficiant d’une amélioration des performances grâce aux technologies en mémoire.
 
-Voici deux exemples illustrant comment la technologie OLTP en mémoire a permis d’améliorer les performances :
-
-- À l’aide de l’OLTP en mémoire, [Quorum Business Solutions a pu doubler leur charge de travail tout en améliorant les DTU de 70 %](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
-- La vidéo suivante montre une amélioration significative de la consommation de ressources avec un exemple de charge de travail : [Vidéo sur l'OLTP en mémoire](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) Pour plus d’informations, consultez le billet de blog : [OLTP en mémoire](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+À l’aide de l’OLTP en mémoire, [Quorum Business Solutions a pu doubler leur charge de travail tout en améliorant les DTU de 70 %](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu). Pour plus d’informations, consultez le billet de blog sur l’[OLTP en mémoire](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/).
 
 > [!NOTE]  
 > Les technologies en mémoire sont disponibles aux niveaux Premium et Critique pour l’entreprise.
-
-La vidéo suivante explique les gains de performance potentiels que peuvent apporter les technologies en mémoire. N’oubliez pas que le gain de performance que vous remarquez dépend de nombreux facteurs, notamment de la nature de la charge de travail et des données, du modèle d’accès de la base de données, etc.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
->
 
 Cet article décrit des aspects de l'OLTP en mémoire et des index columnstore qui sont spécifiques à Azure SQL Database et Azure SQL Managed Instance, et inclut également des exemples :
 
@@ -88,12 +80,7 @@ La technologie OLTP en mémoire fournit des opérations d’accès aux données 
 > [!Note]
 > La technologie OLTP en mémoire est conçue pour les structures de données qui peuvent résider entièrement en mémoire. Comme les données en mémoire ne peuvent pas être déchargées sur le disque, utilisez une base de données avec suffisamment de mémoire. Consultez [Limite de la taille des données et du stockage pour OLTP en mémoire](#data-size-and-storage-cap-for-in-memory-oltp) pour plus d’informations.
 
-Notions fondamentales sur OLTP en mémoire : [Démarrage rapide 1 : Technologies OLTP en mémoire pour des performances T-SQL plus rapides](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp) (un autre article pour vous aider à commencer)
-
-Vidéos détaillées sur les technologies :
-
-- [OLTP en mémoire](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (avec une démonstration des avantages en termes de performances et les étapes à suivre pour reproduire ces résultats vous-même)
-- [Vidéos sur OLTP en mémoire : Qu’est-ce-que c’est, et quand/comment l’utiliser](/archive/blogs/sqlserverstorageengine/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it)
+- Introduction rapide sur l’OLTP en mémoire : [Démarrage rapide 1 : Technologies OLTP en mémoire pour des performances T-SQL plus rapides](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp).
 
 Vous pouvez comprendre par programmation si une base de données spécifique prend en charge l’OLTP en mémoire. Vous pouvez exécuter la requête Transact-SQL suivante :
 
@@ -198,7 +185,7 @@ Si vous disposez d’un index columnstore **en cluster**, la totalité de la tab
 
 ### <a name="deeper-information"></a>Informations supplémentaires
 
-- [Découvrez comment le Quorum double la charge de travail de la base de données clé tout en réduisant les DTU de 70 %, grâce à l’OLTP en mémoire dans la SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Découvrez comment le Quorum double la charge de travail de la base de données clé tout en réduisant les DTU de 70 %, grâce à l’OLTP en mémoire dans SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [Billet de blog sur l'OLTP en mémoire](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 - [En savoir plus sur In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [En savoir plus sur les index columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview)

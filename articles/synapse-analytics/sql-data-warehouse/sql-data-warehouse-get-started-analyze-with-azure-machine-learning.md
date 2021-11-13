@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: bb4f39f14dad9426f48cc86597f74333c830bba5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 830c8e72517da4591b82edee8cf50dc2375f1c86
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524601"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556822"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analyse des données avec Azure Machine Learning
 
@@ -78,7 +78,7 @@ Ensuite, suivez les étapes ci-dessous pour configurer le concepteur :
 
 1. Cliquez sur l’onglet **Concepteur** dans le volet gauche de la section **Auteur**.
 
-1. Sélectionnez **Easy-to-use-prebuild modules** (modules prêts à l’emploi) pour créer un pipeline.
+1. Sélectionnez **Modules prédéfinis faciles à utiliser** pour créer un pipeline.
 
 1. Dans le volet Paramètres à droite, spécifiez le nom du pipeline.
 
@@ -90,7 +90,7 @@ Ensuite, suivez les étapes ci-dessous pour configurer le concepteur :
 
 1. Faites glisser le jeu données que vous avez créé précédemment dans le canevas.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Capture d’écran du module de jeu de données sur le canevas.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Capture d’écran du composant Jeu de données sur le canevas.":::
 
 ## <a name="clean-the-data"></a>Nettoyer les données
 
@@ -98,11 +98,11 @@ Pour nettoyer les données, supprimez certaines colonnes qui sont inutiles pour 
 
 1. Sélectionnez le sous-onglet **Modules**  dans le volet gauche.
 
-1. Faites glisser le module **Sélectionner des colonnes dans le jeu de données** sous **Transformation des données < Manipulation** dans le canevas. Connectez ce module au module **Jeu de données**.
+1. Faites glisser le composant **Sélectionner des colonnes dans le jeu de données** sous **Transformation des données < Manipulation** dans le canevas. Connectez ce composant au composant **Jeu de données**.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Capture d’écran du module de sélection de colonne sur le canevas." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Capture d’écran du composant Sélection de colonne sur le canevas." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
 
-1. Double-cliquez sur le module pour ouvrir le volet Propriétés. Cliquez sur Modifier la colonne pour spécifier les colonnes que vous souhaitez supprimer.
+1. Cliquez sur le composant pour ouvrir le volet Propriétés. Cliquez sur Modifier la colonne pour spécifier les colonnes que vous souhaitez supprimer.
 
 1. Excluez deux colonnes : CustomerAlternateKey et GeographyKey. Cliquez sur **Enregistrer**.
 
@@ -112,43 +112,43 @@ Pour nettoyer les données, supprimez certaines colonnes qui sont inutiles pour 
 
 Les données sont fractionnées en 80-20 : 80 % pour l’apprentissage d’un modèle Machine Learning et 20 % pour tester le modèle. Des algorithmes « À deux classes » pour ce problème de classification binaire sont utilisés.
 
-1. Faites glisser le module **Fractionner les données** dans la zone de canevas.
+1. Faites glisser le composant **Diviser les données** dans le canevas.
 
 1. Sur le volet Propriétés, entrez 0,8 comme **Fraction de lignes dans le premier jeu de données**.
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Capture d’écran affichant le ratio de 0,8.":::
 
-1. Faites glisser le module **Arbre de décision optimisé à deux classes** dans la zone de dessin.
+1. Faites glisser le composant **Arbre de décision optimisé à deux classes** dans le canevas.
 
-1. Faites glisser le module **Effectuer l'apprentissage du modèle** dans la zone de canevas. Spécifiez des entrées en le connectant aux modules **Arbre de décision optimisé à deux classes** (algorithme ML) et **Fractionnement des données** (données sur lesquelles entraîner l’algorithme).
+1. Faites glisser le module **Entraîner le modèle** dans le canevas. Spécifiez des entrées en le connectant aux composants **Arbre de décision optimisé à deux classes** (l’algorithme ML) et **Division des données** (les données sur lesquelles entraîner l’algorithme).
 
 1. Pour le module Effectuer l'apprentissage du module, dans l’option de **Colonne d’étiquette** dans le volet Propriétés, sélectionnez Modifier la colonne. Sélectionnez la colonne **BikeBuyer** comme colonne à prédire et sélectionnez **Enregistrer**.
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="Capture d’écran montrant la colonne d’étiquette, BikeBuyer, sélectionnée.":::
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Capture d’écran montrant le module Effectuer l'apprentissage du modèle connecté aux modules Arbre de décision optimisé à deux classes et Fractionner les données.":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Capture d’écran montrant le composant Entraîner le modèle connecté aux composants Arbre de décision optimisé à deux classes et Diviser les données.":::
 
 ## <a name="score-the-model"></a>Noter le modèle
 
 À présent, testez la manière dont le modèle s’exécute sur les données de test. Deux algorithmes différents seront comparés pour déterminer celui qui est le plus performant. Pour ce faire, procédez comme suit :
 
-1. Faites glisser le module **Noter un modèle** dans le canevas et connectez-le aux modules **Entraîner le modèle** et **Fractionner les données**.
+1. Faites glisser le composant **Attribuer des scores au modèle** dans le canevas et connectez-le aux composants **Entraîner le modèle** et **Diviser les données**.
 
 1. Faites glisser **Machines de points Bayes à deux classes** dans la canevas de l’expérience. Vous allez comparer comment cet algorithme fonctionne par rapport à l’arbre de décision optimisé à deux classes.
 
-1. Copiez et collez les modules de **Former le modèle** et le modèle **Noter le modèle** dans le canevas.
+1. Copiez et collez les composants **Entraîner le modèle** et **Attribuer des scores au modèle** dans le canevas.
 
-1. Faites glisser le module **Évaluer le modèle** module dans la zone de dessin pour comparer les deux algorithmes.
+1. Faites glisser le composant **Évaluer le modèle** dans le canevas pour comparer les deux algorithmes.
 
 1. Cliquez sur **Envoyer** pour configurer l’exécution du pipeline.
 
-    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Capture d'écran de tous les modules restants sur le canevas." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Capture d’écran de tous les composants restants sur le canevas." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
-1. Une fois l’exécution terminée, cliquez avec le bouton droit sur le module **Évaluer le modèle**, puis cliquez sur **Visualiser les résultats de l’évaluation**.
+1. Une fois l’exécution terminée, cliquez avec le bouton droit sur le composant **Évaluer le modèle**, puis cliquez sur **Visualiser les résultats de l’évaluation**.
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Capture écran des résultats.":::
 
-Les mesures fournies sont la courbe ROC, le diagramme de rappel de précision et la courbe d’élévation. En examinant ces mesures, nous pouvons voir que le premier modèle fonctionne mieux que le second. Pour examiner ce que le premier modèle a prédit, cliquez avec le bouton droit sur le module Évaluer le modèle, puis cliquez sur Visualiser le jeu de données évalué pour voir les résultats prédits.
+Les mesures fournies sont la courbe ROC, le diagramme de rappel de précision et la courbe d’élévation. En examinant ces mesures, nous pouvons voir que le premier modèle fonctionne mieux que le second. Pour examiner ce que le premier modèle a prédit, cliquez avec le bouton droit sur le composant Attribuer des scores au modèle, puis cliquez sur Visualiser le jeu de données avec scores pour voir les résultats prédits.
 
 Vous verrez deux colonnes supplémentaires ajoutées à votre jeu de données de test.
 

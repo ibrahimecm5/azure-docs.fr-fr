@@ -4,15 +4,16 @@ description: Apprenez-en davantage sur le concept de base de données de lac et 
 author: gsaurer
 ms.author: gesaur
 ms.service: synapse-analytics
+ms.subservice: database-editor
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: b0c288fe2f7b6ac9bf6c0a2a636131a1d89ffe5d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5b030bc1551bc8d21101b127c123507f08abf62c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097079"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510430"
 ---
 # <a name="lake-database"></a>Base de données de lac
 
@@ -27,7 +28,7 @@ Le nouveau concepteur de base de données vous donne la possibilité de créer u
 
 ## <a name="data-storage"></a>Stockage des données 
 
-Les bases de données de lac utilisent un lac de données sur le compte Stockage Azure pour stocker les données de la base de données. Les données peuvent être stockées dans le fichier Parquet au format CSV, et différents paramètres peuvent être utilisés pour optimiser le stockage. Chaque base de données de lac utilise un service lié pour définir l’emplacement du dossier de données racine. Pour chaque entité, des dossiers distincts sont créés par défaut à l’intérieur de ce dossier de base de données sur le lac de données. Par défaut, toutes les tables à l’intérieur d’une base de données de lac utilisent le même format, mais les formats et l’emplacement des données peuvent être modifiés par entité si cela est demandé. 
+Les bases de données de lac utilisent un lac de données sur le compte Stockage Azure pour stocker les données de la base de données. Les données peuvent être stockées au format Parquet ou CSV, et différents paramètres peuvent être utilisés pour optimiser le stockage. Chaque base de données de lac utilise un service lié pour définir l’emplacement du dossier de données racine. Pour chaque entité, des dossiers distincts sont créés par défaut à l’intérieur de ce dossier de base de données sur le lac de données. Par défaut, toutes les tables à l’intérieur d’une base de données de lac utilisent le même format, mais les formats et l’emplacement des données peuvent être modifiés par entité si cela est demandé. 
 
 
 ## <a name="database-compute"></a>Calcul de base de données

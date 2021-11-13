@@ -31,11 +31,23 @@
 - name: Guides pratiques
   items:
     - name: Créer et exécuter une expérience - Erreurs service-direct
-      href: chaos-studio-tutorial-service-direct.md
+      items:
+        - name: Portail
+          href: chaos-studio-tutorial-service-direct-portal.md
+        - name: Interface de ligne de commande
+          href: chaos-studio-tutorial-service-direct-cli.md
     - name: Créer et exécuter une expérience - Erreurs basées sur l’agent
-      href: chaos-studio-tutorial-agent-based.md
+      items:
+        - name: Portail
+          href: chaos-studio-tutorial-agent-based-portal.md
+        - name: Interface de ligne de commande
+          href: chaos-studio-tutorial-agent-based-cli.md
     - name: Créer et exécuter une expérience - Erreurs Chaos Mesh sur AKS
-      href: chaos-studio-tutorial-aks.md
+      items:
+        - name: Portail
+          href: chaos-studio-tutorial-aks-portal.md
+        - name: Interface de ligne de commande
+          href: chaos-studio-tutorial-aks-cli.md
     - name: Résolution des problèmes courants
       href: troubleshooting.md
 - name: Informations de référence
@@ -50,6 +62,8 @@
       href: chaos-studio-service-limits.md
     - name: Documentation des API REST
       href: 'https://docs.microsoft.com/rest/api/chaosstudio'
+    - name: Kit de développement logiciel (SDK) Python
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-chaos/?view=azure-python-preview'
 - name: Ressources
   items:
     - name: Feuille de route Azure

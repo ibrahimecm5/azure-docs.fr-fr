@@ -4,12 +4,12 @@ description: Analyse de la performance d’application pour les services d’app
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: d31f8e59b297c16995482826414d07ab8cf5774f
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 4bb5df82dcfd045100b4fe41c70538504cf2566b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233217"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508228"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Surveillance des applications pour le Service App Azure et ASP.NET Core 
 
@@ -20,18 +20,14 @@ L’activation de la surveillance de vos applications Web ASP.NET Core exécuté
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 > [!IMPORTANT]
-> Les versions suivantes d’ASP.NET Core sont prises en charge pour l’auto-instrumentation sur Windows : ASP.NET Core 3.1 et 5.0. Les versions 2.0, 2.1, 2.2 et 3.0 ont été retirées et ne sont plus prises en charge. Effectuez une mise à niveau vers une [version prise en charge](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) de .NET Core pour que l’instrumentation automatique fonctionne.
-
-Le ciblage de l’infrastructure complète à partir d’ASP.NET Core n’est **pas pris en charge** dans Windows. Optez plutôt pour une[instrumentation manuelle](./asp-net-core.md) via un code.
-
-Dans Windows, seul le [déploiement dépendant de l’infrastructure](/dotnet/core/deploying/#publish-framework-dependent) est pris en charge et [le déploiement autonome](/dotnet/core/deploying/#publish-self-contained) n’est pas pris en charge.
+> Les versions suivantes d’ASP.NET Core sont prises en charge pour l’auto-instrumentation sur Windows : ASP.NET Core 3.1, 5.0 et 6.0. Les versions 2.0, 2.1, 2.2 et 3.0 ont été retirées et ne sont plus prises en charge. Effectuez une mise à niveau vers une [version prise en charge](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) de .NET Core pour que l’instrumentation automatique fonctionne.
 
 Pour commencer à configurer Application Insights avec votre ressource App Service, consultez la section [Activer la supervision](#enable-monitoring ) ci-dessous. 
 
 # <a name="linux"></a>[Linux](#tab/Linux)
 
 > [!IMPORTANT]
-> Seul ASP.NET Core 6.0 (préversion) est pris en charge pour l’auto-instrumentation sur Linux.
+> Seul ASP.NET Core 6.0 est pris en charge pour l’auto-instrumentation sur Linux.
 
 > [!NOTE]
 > L’activation du portail App Services d’auto-instrumentation de Linux est en préversion publique. Les préversions sont fournies sans contrat de niveau de service. Certaines fonctionnalités peuvent être limitées ou non prises en charge.
@@ -120,6 +116,9 @@ Pour connaître la version de votre extension, accédez à l’adresse `https://
 Si vous réalisez la mise à niveau à partir d’une version antérieure à 2.5.1, vérifiez que les DLL ApplicationInsigths sont supprimées du dossier bin de l’application. Pour plus d’informations, [consultez les étapes de résolution des problèmes](#troubleshooting).
 
 ## <a name="troubleshooting"></a>Dépannage
+
+> [!NOTE]
+> Quand vous créez une application Web avec les runtime `ASP.NET Core` dans les Services App Azure, elle déploie une seule page HTML statique en tant que site Web de démarrage. Il n’est **pas** recommandé de résoudre un problème lié au modèle par défaut. Déployez une application avant de résoudre un problème.
 
 Vous trouverez ci-après les étapes à suivre pas à pas pour résoudre les problèmes rencontrés avec la surveillance basée sur un agent/une extension pour les applications ASP.NET Core exécutées sur les Services App Azure.
 

@@ -3,12 +3,12 @@ title: Changements du comportement dans PowerShell Desired State Configuration p
 description: Cet article fournit une présentation de la plateforme utilisée pour modifier la configuration de machines via Azure Policy.
 ms.date: 05/31/2021
 ms.topic: how-to
-ms.openlocfilehash: b501305513e99963ec9d00a49e6e7aa1c74b3683
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6118ec0ce0bb8b0296153d32dbad559a6b53ebb8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045329"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261859"
 ---
 # <a name="changes-to-behavior-in-powershell-desired-state-configuration-for-guest-configuration"></a>Changements du comportement dans PowerShell Desired State Configuration pour la configuration d’invité
 
@@ -16,7 +16,7 @@ Avant de commencer, nous vous conseillons de lire la présentation de la [config
 
 [Un guide vidéo de ce document est disponible](https://youtu.be/nYd55FiKpgs).
 
-La configuration d’invité utilise [Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) version 3 pour auditer et configurer des machines. La configuration DSC définit l’état dans lequel la machine doit se trouver. Il existe de nombreuses différences notables dans la façon dont DSC est implémenté dans la configuration d’invité.
+La configuration d’invité utilise [Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) version 3 pour auditer et configurer des machines. La configuration DSC définit l’état dans lequel la machine doit se trouver. Il y a de nombreuses différences notables dans la façon dont DSC est implémenté dans la configuration d’invité.
 
 ## <a name="guest-configuration-uses-powershell-7-cross-platform"></a>La configuration d’invité utilise PowerShell 7 multiplateforme
 
@@ -29,6 +29,30 @@ La configuration invité fonctionne dans PowerShell 7.1.3 pour Windows et Power
 ## <a name="multiple-configurations"></a>Configurations multiples
 
 La configuration d’invité prend en charge l’attribution de plusieurs configurations à la même machine. Aucune action particulière n’est requise dans le système d’exploitation de l’extension de configuration d’invité. Il n’est pas nécessaire de configurer des [configurations partielles](/powershell/scripting/dsc/pull-server/partialConfigs).
+
+## <a name="dependencies-are-managed-per-configuration"></a>Les dépendances sont gérées par configuration
+
+Quand une configuration est [ajoutée à un package au moyen des outils disponibles](../how-to/guest-configuration-create.md), les dépendances requises pour la configuration sont incluses dans un fichier .zip.
+Les machines extraient le contenu dans un dossier unique pour chaque configuration.
+L’agent fourni par l’extension de configuration d’invité crée une session PowerShell dédiée pour chaque configuration, en utilisant `$Env:PSModulePath` pour autoriser le chargement automatique des modules uniquement dans le chemin où le package a été extrait.
+
+Ce changement présente de multiples avantages.
+
+- Il est possible d’utiliser des versions de modules différentes pour chaque configuration sur une même machine.
+- Quand une configuration est supprimée sur une machine, le dossier entier dans lequel elle avait été extraite est supprimé en toute sécurité par l’agent sans qu’il soit nécessaire de gérer les dépendances partagées entre les configurations.
+- Il n’est pas nécessaire de gérer plusieurs versions d’un module dans un service central.
+  
+## <a name="artifacts-are-managed-as-packages"></a>Les artefacts sont gérés sous forme de packages
+
+La fonctionnalité Azure Automation State Configuration comprend la gestion des artefacts pour les modules et les scripts de configuration. Une fois que les deux sont publiés dans le service, le script peut être compilé au format MOF. De la même façon, le serveur Pull Windows nécessitait également une gestion des configurations et des modules au niveau de l’instance du service web. Au contraire, l’extension DSC offre un modèle simplifié où tous les artefacts sont regroupés dans un package qui est stocké à un emplacement accessible à partir de la machine cible via une requête HTTPS (Stockage Blob Azure est l’option la plus courante).
+
+La configuration d’invité utilise uniquement le modèle simplifié où tous les artefacts sont regroupés dans un package accessible à partir de la machine cible via HTTPS.
+Il n’est pas nécessaire de publier des modules ou des scripts, ni de les compiler dans le service. L’un des changements est que le package doit toujours inclure un MOF compilé. Il n’est pas possible d’inclure un fichier de script dans le package et de le compiler sur la machine cible.
+
+## <a name="maximum-size-of-custom-configuration-package"></a>Taille maximale du package de configuration personnalisée
+
+Dans la configuration d’état d’Azure Automation, les configurations DSC étaient [limitées en taille](../../../automation/automation-dsc-compile.md#compile-your-dsc-configuration-in-windows-powershell).
+La configuration d’invité prend en charge une taille de package totale de 100 Mo (avant compression). Il n’existe aucune limite spécifique quant à la taille du fichier MOF au sein du package.
 
 ## <a name="configuration-mode-is-set-in-the-package-artifact"></a>Le mode de configuration est défini dans l’artefact de package
 
@@ -46,7 +70,11 @@ Les paramètres définis par le tableau de propriétés `configurationParameter`
 
 Les paramètres d’Azure Policy qui transmettent des valeurs à des attributions de configuration d’invité doivent être de type _chaîne_. Il n’est pas possible de passer des tableaux en paramètre, même si la ressource DSC les prend en charge.
 
-## <a name="sequence-of-events"></a>Séquence d’événements
+## <a name="trigger-set-from-outside-machine"></a>Déclencheur défini à partir d’une machine extérieure
+
+Un problème rencontré dans les versions précédentes de DSC était de corriger la dérive à grande échelle en utilisant peu de code personnalisé, et la dépendance de connexions à distance WinRM. Une configuration d’invité résout ce problème. Les utilisateurs d’une configuration d’invité contrôlent la correction de la dérive via une [correction à la demande](./guest-configuration-policy-effects.md#remediation-on-demand-applyandmonitor).
+
+## <a name="sequence-includes-get-method"></a>La séquence contient une méthode Get
 
 Quand une configuration d’invité audite ou configure une machine, la même séquence d’événements est utilisée pour Windows et Linux. Le changement de comportement notable est que le service appelle la méthode `Get` pour retourner des détails sur l’état de la machine.
 
@@ -55,15 +83,6 @@ Quand une configuration d’invité audite ou configure une machine, la même s�
 1. Si le package est défini sur `AuditandSet`, la valeur booléenne détermine s’il faut corriger la machine en appliquant la configuration à l’aide de la méthode `Set`.
    Si la méthode `Test` retourne False, la commande `Set` est exécutée. Si la méthode `Test` retourne True, la commande `Set` n’est pas exécutée.
 1. Enfin, le fournisseur exécute `Get` pour retourner l’état actuel de chaque paramètre, afin que des détails soient disponibles à la fois sur la raison pour laquelle un machine n’est pas conforme et pour confirmer que l’état actuel est conforme.
-
-## <a name="trigger-set-from-outside-machine"></a>Déclencheur défini à partir d’une machine extérieure
-
-Un problème rencontré dans les versions précédentes de DSC était de corriger la dérive à grande échelle sans beaucoup de code personnalisé, et la dépendance de connexions à distance WinRM. Une configuration d’invité résout ce problème. Les utilisateurs d’une configuration d’invité contrôlent la correction de la dérive via une [correction à la demande](./guest-configuration-policy-effects.md#remediation-on-demand-applyandmonitor).
-
-## <a name="maximum-size-of-custom-configuration-package"></a>Taille maximale du package de configuration personnalisée
-
-Dans la configuration d’état d’Azure Automation, les configurations DSC étaient [limitées en taille](../../../automation/automation-dsc-compile.md#compile-your-dsc-configuration-in-windows-powershell).
-La configuration d’invité prend en charge une taille totale de package de 100 Mo (avant compression). Il n’existe aucune limite spécifique quant à la taille du fichier MOF au sein du package.
 
 ## <a name="special-requirements-for-get"></a>Exigences particulières pour la méthode Get
 
@@ -95,7 +114,7 @@ return @{
 }
 ```
 
-Lorsque vous utilisez des outils de ligne de commande pour obtenir des informations qui seront renvoyées dans Get, vous pouvez constater que l’outil renvoie une sortie à laquelle vous ne vous attendiez pas. Même si vous capturez la sortie dans PowerShell, la sortie peut également être écrite dans une erreur standard. Pour éviter ce problème, pensez à rediriger la sortie vers la valeur Null.
+Lorsque vous utilisez des outils de ligne de commande pour obtenir des informations qui seront renvoyées dans Get, vous pouvez constater que l’outil renvoie une sortie à laquelle vous ne vous attendiez pas. Même si vous capturez la sortie dans PowerShell, la sortie a également pu être écrite dans une erreur standard. Pour éviter ce problème, pensez à rediriger la sortie vers la valeur Null.
 
 ### <a name="the-reasons-property-embedded-class"></a>Classe incorporée de la propriété Reasons
 
@@ -165,20 +184,20 @@ Le nom de la configuration personnalisée doit être cohérent partout. Le nom d
 
 ## <a name="common-dsc-features-not-available-during-guest-configuration-public-preview"></a>Fonctionnalités DSC courantes non disponibles pendant la préversion publique de la configuration d’invité
 
-Pendant la préversion publique, la configuration d’invité ne prend pas en charge la [spécification de dépendances entre machines](/powershell/scripting/dsc/configurations/crossnodedependencies) à l’aide de ressources « WaitFor* ». Il n’est pas possible pour une machine de surveiller une autre machine en attendant qu’elle atteigne un état déterminé avant de progresser.
+Dans la préversion publique, la configuration d’invité ne prend pas en charge la [spécification de dépendances entre machines](/powershell/scripting/dsc/configurations/crossnodedependencies) avec les ressources « WaitFor* ». Il n’est pas possible pour une machine de surveiller une autre machine en attendant qu’elle atteigne un état déterminé avant de progresser.
 
 La [gestion du redémarrage](/powershell/scripting/dsc/configurations/reboot-a-node) n’est pas disponible dans la préversion publique de la configuration d’invité. Notamment, l’état `$global:DSCMachineStatus` n’est pas disponible. Les configurations ne peuvent pas redémarrer un nœud au cours ou à la fin d’une configuration.
 
 ## <a name="known-compatibility-issues-with-supported-modules"></a>Problèmes de compatibilité connus avec les modules pris en charge
 
-Le module `PsDscResources` dans PowerShell Gallery et le module `PSDesiredStateConfiguration` fourni avec Windows sont pris en charge par Microsoft, et constituent un ensemble couramment utilisé de ressources pour DSC. En attendant que le module `PSDscResources` soit mis à jour pour DSCv3, vous devez être conscient des problèmes de compatibilité connus suivants.
+Le module `PsDscResources` dans PowerShell Gallery et le module `PSDesiredStateConfiguration` fourni avec Windows sont pris en charge par Microsoft, et constituent un ensemble de ressources couramment utilisé pour DSC. En attendant que le module `PSDscResources` soit mis à jour pour DSCv3, vous devez être conscient des problèmes de compatibilité connus suivants.
 
 - N’utilisez pas les ressources du module `PSDesiredStateConfiguration` fourni avec Windows. Au lieu de cela, passez aux `PSDscResources`.
 - N’utilisez pas les ressources `WindowsFeature` et `WindowsFeatureSet` dans `PsDscResources`. Au lieu de cela, passez aux ressources `WindowsOptionalFeature` et `WindowsOptionalFeatureSet`.
   
 Les ressources « nx » pour Linux qui étaient incluses dans le référentiel [DSC for Linux](https://github.com/microsoft/PowerShell-DSC-for-Linux/tree/master/Providers) ont été écrites dans une combinaison des langages C et Python. Comme la voie à suivre pour DSC for Linux consiste à utiliser PowerShell, les ressources « nx » existantes ne sont pas compatibles avec DSCv3. Jusqu’à ce qu’un nouveau module contenant les ressources prises en charge pour Linux soit disponible, il est nécessaire de créer des ressources personnalisées.
 
-## <a name="coexistance-with-dsc-version-3-and-previous-versions"></a>Coexistence avec DSC version 3 et versions antérieures
+## <a name="coexistence-with-dsc-version-3-and-previous-versions"></a>Coexistence avec DSC version 3 et versions antérieures
 
 DSC version 3 dans la configuration d’invité peut coexister avec des versions plus anciennes installées dans [Windows](/powershell/scripting/dsc/getting-started/wingettingstarted) et [Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
 Les implémentations sont séparées. Toutefois, étant donné qu’il n’y a pas de détection des conflits entre les versions de DSC, ne tentez pas de gérer les mêmes paramètres.

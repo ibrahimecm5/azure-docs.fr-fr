@@ -2,19 +2,19 @@
 title: Réduire les coûts d’Azure App Service avec une capacité réservée
 description: Découvrez comment réduire les coûts des instances réservées Azure App Service Premium v3 et Isolé v2 et des frais de timbre Isolé.
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 10/04/2021
+ms.date: 10/27/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: f3c45799d88601bb8ef9a2d652bb07d7d54aceb9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 2566b72723b4f7254e2509a331ed554f93ad4bc3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456610"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457883"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Réaliser des économies avec les instances réservées Azure App Service
 
@@ -32,7 +32,7 @@ Avant d’acheter une réservation, vous devez déterminer la taille de l’inst
 
 Vous pouvez utiliser les suggestions de réservation pour déterminer les réservations à acheter.
 
-- Des suggestions d’achat et une quantité recommandée s’affichent quand vous achetez une instance réservée Premium v3 sur le portail Azure.
+- Les suggestions d’achat et les quantités recommandées s’affichent lorsque vous achetez une instance réservée Premium v3 dans le portail Azure.
 - Azure Advisor fournit des suggestions d’achat pour les divers abonnements.
 - Vous pouvez utiliser les API pour obtenir des suggestions d’achat tant pour l’étendue partagée que pour l’étendue d’un abonnement unique. Pour plus d’informations, voir [API de suggestion d’achat d’instance réservée pour les entreprises](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Pour les clients Accord Entreprise (EA) et Microsoft Customer Agreement (MCA), des suggestions d’achat pour des étendues d’abonnement simples et partagées sont disponibles dans le [pack de contenu Power BI Azure Consumption Insights](/power-bi/service-connect-to-azure-consumption-insights).
@@ -48,7 +48,7 @@ Votre fichier d’utilisation indique vos frais par période de facturation et l
 Vous pouvez acheter une instance réservée Premium v3 dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Payez la réservation [à l’avance ou par paiements mensuels](prepare-buy-reservation.md). Ces conditions s’appliquent à l’achat d’une instance réservée Premium v3 :
 
 - Vous devez avoir le rôle Propriétaire pour au moins un abonnement EA ou un abonnement assorti d’un paiement à l’utilisation.
-- Pour les abonnements EA, l’option **Ajouter des instances réservées** doit être activée sur le [portail EA](https://ea.azure.com/). Ou, si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement.
+- Pour les abonnements EA, l’option **Ajouter des instances réservées** doit être activée sur le [portail EA](https://ea.azure.com/). Ou, si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement. Les clients EA directs peuvent désormais mettre à jour les paramètres des **instances réservées** dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts). Accédez au menu Stratégies pour modifier les paramètres.
 - Pour le programme CSP (Cloud Solution Provider), seuls les agents administrateurs ou les agents commerciaux peuvent acheter les réservations.
 
 Pour acheter une instance :
@@ -74,7 +74,7 @@ Si vous avez un Accord Entreprise, vous pouvez utiliser l’option **Ajouter** p
 Vous pouvez acheter une instance Réservé v2 dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Payez la réservation [à l’avance ou par paiements mensuels](prepare-buy-reservation.md). Ces conditions s’appliquent à l’achat d’une instance réservée Isolé v2 :
 
 - Vous devez avoir le rôle Propriétaire pour au moins un abonnement EA ou un abonnement assorti d’un paiement à l’utilisation.
-- Pour les abonnements EA, l’option **Ajouter des instances réservées** doit être activée sur le [portail EA](https://ea.azure.com/). Ou, si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement.
+- Pour les abonnements EA, l’option **Ajouter des instances réservées** doit être activée sur le [portail EA](https://ea.azure.com/). Ou, si ce paramètre est désactivé, vous devez être administrateur EA de l’abonnement. Les clients EA directs peuvent désormais mettre à jour les paramètres des **instances réservées** dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts). Accédez au menu Stratégies pour modifier les paramètres.
 - Pour le programme CSP (Cloud Solution Provider), seuls les agents administrateurs ou les agents commerciaux peuvent acheter les réservations.
 
 Pour acheter une instance :

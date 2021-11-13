@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 10/11/2021
+ms.date: 10/19/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49285dcb9df86cdb09b65710ad1b192d74169ed6
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 87b8fb2eb7f6301762fcba9931dfd9da6c54b679
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997475"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253673"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Étendre ou renouveler des attributions de rôle de ressources Azure dans Privileged Identity Management
 
@@ -44,11 +44,14 @@ Les étapes suivantes décrivent la procédure de demande, de résolution et d�
 
 ### <a name="self-extend-expiring-assignments"></a>Étendre automatiquement les attributions arrivant à expiration
 
-Les utilisateurs ou groupes affectés à un rôle peuvent étendre des attributions de rôles arrivant à expiration directement sous l’onglet **Éligible** ou **Actif** de la page **Mes rôles** d’une ressource et dans la page **Mes rôles** de niveau supérieur du portail Privileged Identity Management. Les utilisateurs ou groupes peuvent demander l’extension de rôles éligibles et actifs (affectés) qui expirent dans les 14 jours.
+Les utilisateurs affectés à un rôle peuvent prolonger des attributions de rôles arrivant à expiration directement sous l’onglet **Éligible** ou **Actif** de la page **Mes rôles** d’une ressource et depuis la page de premier niveau **Mes rôles** du portail Privileged Identity Management. Dans le portail, les utilisateurs peuvent demander de prolonger des rôles éligibles ou actifs (attribués) qui expirent au cours des 14 prochains jours.
 
 ![Ressources Azure : page Mes rôles répertoriant les rôles éligibles avec une colonne d’action](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 
-Lorsque la date/heure de fin de l’attribution se situe 14 jours plus tard ou moins, le bouton **Étendre** devient un lien actif dans l’interface utilisateur. Dans l’exemple ci-dessous, supposons que la date actuelle est le 27 mars. Pour un groupe affecté à un rôle, le lien **Étendre** n’est jamais disponible afin qu’un utilisateur unique avec une affectation héritée ne puisse pas étendre l’affectation du groupe.
+Lorsque la date/heure de fin de l’attribution est dans les 14 jours, le lien vers **Étendre** devient actif dans le portail Azure. Dans l’exemple ci-dessous, supposons que la date actuelle est le 27 mars.
+
+>[!Note]
+>Pour un groupe affecté à un rôle, le lien **Étendre** n’est jamais disponible afin qu’un utilisateur avec une affectation héritée ne puisse pas étendre l’affectation du groupe.
 
 ![Colonne d’action avec des liens d’activation et d’extension](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
 

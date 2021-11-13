@@ -4,12 +4,12 @@ description: Apprenez à sécuriser votre cluster à l’aide d’une plage d’
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: c64d2e683ade2413e9c548ea548b2e1a6e0efef6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 96c9e21c210a9aab4bc0b69d8e50b4a015c78993
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542959"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227413"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sécuriser l’accès au serveur d’API à l’aide de plages d’adresses IP autorisées dans Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ La version 2.0.76 d’Azure CLI (ou ultérieure) doit être installée et confi
 
 La fonctionnalité des plages d’adresses IP autorisées par le serveur d’API présente les limitations suivantes :
 - Sur les clusters créés après que les plages d’adresses IP autorisées par le serveur d’API ont été supprimées de la préversion en octobre 2019, les plages d’adresses IP autorisées par le serveur d’API sont uniquement prises en charge sur l’équilibreur de charge du SKU *Standard*. Les clusters existants avec l’équilibreur de charge SKU *De base* et les plages d’adresses IP autorisées du serveur d’API sont configurés pour continuer à fonctionner normalement, mais ils ne peuvent pas être migrés vers un équilibreur de charge SKU *Standard*. Ces clusters existants continueront de fonctionner si leur version de Kubernetes ou leur plan de contrôle sont mis à niveau. Les plages d’adresses IP autorisées par le serveur d’API ne sont pas prises en charge pour les clusters privés.
-- Cette fonctionnalité n’est pas compatible avec les clusters qui utilisent une [IP publique par nœud](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools).
+- Quand vous utilisez cette fonctionnalité avec des clusters qui utilisent une [IP publique par nœud](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools), ces pools de nœuds doivent utiliser des préfixes d’IP publique, lesquels doivent être ajoutés dans les plages autorisées.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Vue d’ensemble des plages d’adresses IP pour le serveur d’API
 

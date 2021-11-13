@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: duau
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 05c43d5e21c637fef321dc39cd341befedfba81e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 81603472d4a5a254fe86f2a6866d8a7edcbbef88
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028834"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459631"
 ---
 # <a name="what-is-azure-virtual-network-manager-preview"></a>Qu’est-ce qu’Azure Virtual Network Manager (préversion) ?
 
@@ -28,7 +28,7 @@ Azure Virtual Network Manager est un service de gestion qui vous permet de regro
 
 :::image type="content" source="./media/overview/management-group.png" alt-text="Diagramme du groupe d’administration dans Virtual Network Manager.":::
 
-Pendant le processus de création, vous définissez l’étendue de gestion de votre instance Azure Virtual Network Manager. L’étendue peut être définie au niveau de l’abonnement ou du [groupe d’administration](../governance/management-groups/overview.md). Après avoir défini l’étendue, vous pouvez activer des fonctionnalités comme la *Connectivité* et le rôle *SecurityAdmin* pour l’instance Virtual Network Manager.
+Pendant le processus de création, vous définissez l’étendue de gestion de votre instance Azure Virtual Network Manager. Pour définir une étendue, vous devez créer un [groupe d’administration](../governance/management-groups/overview.md). Après avoir défini l’étendue, vous pouvez activer des fonctionnalités comme la *Connectivité* et le rôle *SecurityAdmin* pour l’instance Virtual Network Manager.
 
 Après avoir déployé l’instance Virtual Network Manager, vous créez un *groupe réseau* à l’aide d’instructions conditionnelles pour sélectionner des réseaux virtuels par nom, étiquette ou ID (appartenance dynamique). Vous pouvez également sélectionner des réseaux virtuels spécifiques (appartenance statique). Les règles de groupe réseau définies apparaissent dans Azure Policy sous la forme d’une définition d’initiative personnalisée et d’une attribution correspondante qui illustrent les règles que vous avez définies pour l’appartenance au réseau virtuel. Pour plus d’informations sur les initiatives Azure Policy, consultez [Structure des initiatives Azure Policy](../governance/policy/concepts/initiative-definition-structure.md). Ces stratégies sont disponibles en mode Lecture seule. Pour plus d’informations sur la création, la mise à jour et la suppression de ces stratégies, consultez [Groupes réseau et Azure Policy](concept-network-groups.md#network-group-and-azure-policy). Vous créez ensuite des configurations de connectivité et/ou de sécurité à appliquer à ces groupes réseau en fonction de vos besoins en matière de topologie et de sécurité. 
 

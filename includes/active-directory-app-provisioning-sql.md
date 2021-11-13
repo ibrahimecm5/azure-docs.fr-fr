@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: fe61b971dbe1a3a82a085228ff8723f3cf47df20
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 71ee3e826eb1219a838a8e075e9f1a55e5f1ec8f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129638443"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444501"
 ---
-Ce document décrit les étapes à effectuer pour attribuer et désattribuer automatiquement des utilisateurs d’Azure Active Directory (Azure AD) dans une base de données SQL.  Il explique comment configurer et utiliser le connecteur SQL générique avec l’hôte de connecteur ECMA Azure AD. 
+Ce document décrit les étapes à effectuer pour attribuer et désattribuer automatiquement des utilisateurs d’Azure Active Directory (Azure AD) dans une base de données SQL.  
  
 Pour découvrir les informations importantes sur ce que fait ce service, comment il fonctionne et consulter le forum aux questions, reportez-vous à l’article [Automatiser l’attribution et l’annulation de l’attribution des utilisateurs dans les applications SaaS avec Azure Active Directory](../articles/active-directory/app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites-for-the-azure-ad-ecma-connector-host"></a>Conditions préalables requises pour l’Hôte de connecteur ECMA Azure AD
+## <a name="prerequisites-for-provisioning-to-a-sql-database"></a>Prérequis pour provisionner une base de données SQL
 
 >[!IMPORTANT]
 > Actuellement, la préversion du provisionnement local n’est disponible que sur invitation. Pour demander l’accès à la fonctionnalité, utilisez le [formulaire de demande d’accès](https://aka.ms/onpremprovisioningpublicpreviewaccess). Nous allons ouvrir la préversion à un plus grand nombre de clients et de connecteurs au cours des prochains mois, car nous préparons la disponibilité générale.
@@ -19,7 +19,6 @@ Pour découvrir les informations importantes sur ce que fait ce service, comment
 ### <a name="on-premises-prerequisites"></a>Conditions préalables locales
 
  - Système cible, tel qu’une base de données SQL, dans lequel les utilisateurs peuvent être créés, mis à jour et supprimés.
- - Connecteur ECMA 2.0 ou une version ultérieure pour ce système cible, qui prend en charge l’exportation, la récupération de schéma et éventuellement les opérations d’importation delta ou d’importation complètes. Si vous ne disposez pas de connecteur ECMA pendant la configuration, vous pouvez valider le flux de bout en bout si vous disposez d’une instance SQL Server dans votre environnement et que vous utilisez le connecteur SQL générique.
  - Ordinateur Windows Server 2016 ou version ultérieure disposant d’une adresse TCP/IP accessible via Internet, d’une connectivité au système cible et d’une connectivité sortante vers login.microsoftonline.com. Par exemple, une machine virtuelle Windows Server 2016 hébergée dans Azure IaaS ou derrière un proxy. Le serveur doit disposer d’au moins 3 Go de RAM.
  - Ordinateur avec .NET Framework 4.7.1.
 
@@ -83,7 +82,9 @@ Le connecteur SQL générique est un fichier DSN permettant de se connecter au s
  4. Sélectionnez l’application **On-premises ECMA app** qui a été ajoutée.
  5. Sous **Démarrage**, dans la zone **3. Provisionner des comptes d’utilisateur**, sélectionnez **Bien démarrer**.
  6. En haut, sélectionnez **Modifier le provisionnement**.
- 7. Sous **Connectivité locale**, téléchargez le programme d’installation de l’agent.
+ 7. Sous **Connectivité locale**, téléchargez le programme d’installation de l’agent.     
+     >[!NOTE]
+     >Utilisez différents agents de provisionnement pour provisionner les applications locales, et la synchronisation cloud Azure AD Connect ou les applications RH. Les trois scénarios ne doivent pas être gérés sur le même agent. 
  8. Exécutez le programme d’installation d’approvisionnement Azure AD Connect **AADConnectProvisioningAgentSetup.msi**.
  9. Sur l’écran **Package Agent d’approvisionnement Microsoft Azure AD Connect**, acceptez les termes du contrat de licence et sélectionnez **Installer**.
      ![Écran Package Agent d’approvisionnement Microsoft Azure AD Connect.](media/active-directory-app-provisioning-sql/install-1.png)</br>
@@ -210,7 +211,7 @@ Le connecteur SQL générique est un fichier DSN permettant de se connecter au s
      ![Capture d’écran montrant la page Deprovisioning.](.\media\active-directory-app-provisioning-sql\conn-14.png)</br>
 
 
-## <a name="ensure-ecma2host-service-is-running"></a>Vérifier que le service ECMA2Host est en cours d’exécution
+## <a name="ensure-the-ecma2host-service-is-running"></a>Vérifier que le service ECMA2Host est en cours d’exécution
  1. Sur le serveur sur lequel s’exécute l’hôte du connecteur ECMA Azure AD, sélectionnez **Démarrer**.
  2. Entrez **run** et tapez **services.msc** dans la zone.
  3. Dans la liste **Services**, vérifiez que **Microsoft ECMA2Host** est présent et en cours d’exécution. Si ce n’est pas le cas, sélectionnez **Démarrer**.
@@ -222,11 +223,11 @@ Le connecteur SQL générique est un fichier DSN permettant de se connecter au s
  1. Connectez-vous au portail Azure.
  2. Accédez à **Applications d’entreprise**, puis à l’application **On-premises ECMA app**.
  3. Accédez à **Modifier le provisionnement**.
- 4. Après 10 minutes, dans la section **Admin credentials**, entrez l’URL suivante. Remplacez la partie `connectorName` par le nom du connecteur sur l’hôte ECMA. Vous pouvez également remplacer `localhost` par le nom d’hôte.
+ 4. Après 10 minutes, dans la section **Admin credentials**, entrez l’URL suivante. Remplacez la partie `{connectorName}` par le nom du connecteur sur l’hôte ECMA. Vous pouvez également remplacer `localhost` par le nom d’hôte.
 
  |Propriété|Valeur|
  |-----|-----|
- |URL de locataire|https://localhost:8585/ecma2host_connectorName/scim|
+ |URL de locataire|https://localhost:8585/ecma2host_{connectorName}/scim|
  
  5. Entrez la valeur **Secret Token** que vous avez définie lors de la création du connecteur.
  6. Sélectionnez **Test Connection** et patientez une minute.

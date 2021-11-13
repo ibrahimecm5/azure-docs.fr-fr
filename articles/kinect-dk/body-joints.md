@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, portage, corps, suivi, jointure, hiérarchie, os, connexion
-ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2616573d0474addb14abe5f6e932181b097bed46
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85276512"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223446"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Jointures de suivi du corps Azure Kinect
 
@@ -25,12 +25,14 @@ La position et l’orientation de la jointure sont des estimations relatives à 
 
 ## <a name="joint-coordinates"></a>Coordonnées de jointures
 
-La position et l’orientation de chaque jointure forment le système de coordonnées spécifique de cette jointure. Tous les systèmes de coordonnées de jointure sont des systèmes absolus par rapport au système de coordonnées 3D de la caméra de profondeur.
+La position et l’orientation de chaque jointure forment le système de coordonnées de jointures de droite. Tous les systèmes de coordonnées de jointures sont des systèmes absolus dans le système de coordonnées 3D de la caméra de profondeur.
 
 > [!NOTE]
-> Les coordonnées de jointure figurent dans l’orientation d’axe. L’orientation d’axe est largement utilisée avec les avatars commerciaux, les moteurs de jeux et les logiciels de rendu. L’utilisation de l’orientation d’axe simplifie les mouvements en miroir, par exemple, la levée des deux bras à 20 degrés.
+> Le choix d’une orientation d’axe retourné pour les jointures correspondantes entre les deux côtés du corps vise à simplifier le mouvement miroir, par exemple relever les deux bras de plus de 20 degrés, ce qui est courant pour les avatars commerciaux, les moteurs de jeux et les logiciels de rendu.
 
 ![Coordonnées de jointures](./media/concepts/joint-coordinates.png)
+
+Légende : | axe X = rouge | axe Y = vert | axe Z = bleu |
 
 ## <a name="joint-hierarchy"></a>Hiérarchie des jointures
 

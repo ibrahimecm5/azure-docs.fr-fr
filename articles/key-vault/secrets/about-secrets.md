@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5583596e399456461b2fc157a193b83b596180ee
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 4ea9643f14bb020978e05eb8b0a714365c2770b4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387389"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559273"
 ---
 # <a name="about-azure-key-vault-secrets"></a>À propos des secrets Azure Key Vault
 
@@ -28,7 +28,7 @@ Key Vault prend également en charge un champ contentType pour les secrets. Les 
 
 ## <a name="encryption"></a>Chiffrement
 
-Tous les secrets de votre Key Vault sont stockés sous forme chiffrée. Ce chiffrement est transparent et ne nécessite aucune action de la part de l’utilisateur. Le service Azure Key Vault chiffre vos secrets lorsque vous les ajoutez et les déchiffre automatiquement quand vous les lisez. La clé de chiffrement est propre à chaque coffre de clés.
+Tous les secrets de votre Key Vault sont stockés sous forme chiffrée. Key Vault chiffre les secrets au repos avec une hiérarchie de clés de chiffrement, dont toutes les clés sont protégées par des modules compatibles FIPS 140-2. Dans toutes les régions autres que la Chine, la racine de cette hiérarchie de clés est protégée par un module validé pour FIPS 140-2 niveau 2 ou supérieur. En Chine, la racine de cette hiérarchie est protégée par un module validé pour FIPS 140-2 niveau 1. Ce chiffrement est transparent et ne nécessite aucune action de la part de l’utilisateur. Le service Azure Key Vault chiffre vos secrets lorsque vous les ajoutez et les déchiffre automatiquement quand vous les lisez. La clé de chiffrement est propre à chaque coffre de clés.
 
 ## <a name="secret-attributes"></a>Attributs de secret
 

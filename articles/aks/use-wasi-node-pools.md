@@ -4,12 +4,12 @@ description: Découvrez comment créer un pool de nœuds WASI (WebAssembly Syste
 services: container-service
 ms.topic: article
 ms.date: 10/12/2021
-ms.openlocfilehash: a15818cc352402cc6b4ba0f302228e183ab1d822
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 91649a6c7893970eee5685554385eed1493c0094
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007343"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265960"
 ---
 # <a name="create-webassembly-system-interface-wasi-node-pools-in-azure-kubernetes-service-aks-to-run-your-webassembly-wasm-workload-preview"></a>Créer un pool de nœuds WASI (WebAssembly System Interface) dans Azure Kubernetes Service (AKS) pour exécuter votre charge de travail WebAssembly (WASM) (préversion)
 
@@ -69,7 +69,7 @@ az extension update --name aks-preview
 * Les pools de nœuds WASM/WASI ne peuvent pas être utilisés pour le pool de nœuds système.
 * Le type de système d’exploitation (*os-type*) doit être Linux pour les pools de nœuds WASM/WASI.
 * Krustlet ne fonctionne pas avec Azure CNI pour le moment. Pour plus d’informations, consultez le [problème GitHub du support CNI pour Kruslet][krustlet-cni-support].
-* Krustlet ne fournit pas de configuration de mise en réseau pour les webassemblies. Le manifeste WebAssebmly doit fournir la configuration de mise en réseau, telle que l’adresse IP.
+* Krustlet ne fournit pas de configuration de mise en réseau pour les webassemblies. Le manifeste WebAssembly doit fournir la configuration réseau, par exemple, l’adresse IP.
 
 ## <a name="add-a-wasmwasi-node-pool-to-an-existing-aks-cluster"></a>Ajouter un pool de nœuds WASM/WASI à un cluster AKS existant
 

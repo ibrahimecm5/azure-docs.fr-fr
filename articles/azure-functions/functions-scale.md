@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2c760e4b1ca923496d11002f2e30b72672f32df
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9deb2e40c081b776a8dfa5fc5fb96efcfc4c219f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778397"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252936"
 ---
 # <a name="azure-functions-hosting-options"></a>Options d’hébergement Azure Functions
 
@@ -48,16 +48,16 @@ Les autres tableaux de cet article comparent les plans sur des fonctionnalités 
 
 ## <a name="operating-systemruntime"></a>Système d'exploitation/runtime
 
-Le tableau suivant indique le système d’exploitation et le langage d’exécution pris en charge pour les plans d’hébergement.
+Le tableau suivant indique la prise en charge des systèmes d’exploitation et des langages pour les plans d’hébergement.
 
 | | Linux<sup>1</sup><br/>Code uniquement | Windows<sup>2</sup><br/>Code uniquement | Linux<sup>1,3</sup><br/>Conteneur Docker |
 | --- | --- | --- | --- |
-| **[Plan de consommation](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Aucune prise en charge  |
-| **[Plan Premium](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[Plan dédié](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes (direct)](functions-kubernetes-keda.md)** | n/a | n/a |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[Azure Arc (préversion)](../app-service/overview-arc-integration.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | n/a |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Plan de consommation](consumption-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript | Aucune prise en charge  |
+| **[Plan Premium](functions-premium-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript  | 
+| **[Plan dédié](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[ASE](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript | 
+| **[Kubernetes (direct)](functions-kubernetes-keda.md)** | n/a | n/a |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[Azure Arc (préversion)](../app-service/overview-arc-integration.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | n/a |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
 
 <sup>1</sup> Linux est le seul système d’exploitation pris en charge pour votre pile d’exécution Python. <br/>
 <sup>2</sup> Windows est le seul système d’exploitation pris en charge pour votre pile d’exécution PowerShell.<br/>

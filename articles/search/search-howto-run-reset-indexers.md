@@ -1,35 +1,35 @@
 ---
 title: Exécuter ou réinitialiser des indexeurs
 titleSuffix: Azure Cognitive Search
-description: Réinitialisez un indexeur, des compétences ou des documents individuels pour actualiser tout ou partie d’un index ou d’une base de connaissances.
+description: Exécutez entièrement les indexeurs ou réinitialisez un indexeur, des compétences ou des documents individuels pour actualiser tout ou partie d’un index de recherche ou d’une base de connaissances.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/09/2021
-ms.openlocfilehash: 9ba66a8eb76c2c0bdcc2dd086d3abcfc47bcba65
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/02/2021
+ms.openlocfilehash: e29c511a59d8b446b497a8fd4ff393c9a9c683e9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678134"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449295"
 ---
-# <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Comment exécuter ou réinitialiser des indexeurs, des compétences ou des documents
+# <a name="run-or-reset-indexers-skills-or-documents"></a>Exécuter ou réinitialiser des indexeurs, des compétences ou des documents
 
-L’exécution de l’indexeur peut se produire lors de la création de l’[indexeur](search-indexer-overview.md), lors de l’exécution d’un indexeur à la demande ou lors de la programmation d’un indexeur. Après l’exécution initiale, un indexeur effectue le suivi des documents de recherche qui ont été indexés à l’aide d’une « limite supérieure » interne. Le marqueur n’est jamais exposé dans l’API, mais en interne, l’indexeur sait où l’indexation s’est arrêtée afin de pouvoir reprendre là où elle s’est arrêtée lors de la prochaine exécution.
+Les indexeurs peuvent être appelés de trois façons : à la demande, selon une planification ou lors de la [création de l’indexeur](/rest/api/searchservice/create-indexer). Après l’exécution initiale, un indexeur effectue le suivi des documents de recherche qui ont été indexés à l’aide d’une « limite supérieure » interne. Le marqueur n’est jamais exposé dans l’API, mais en interne, l’indexeur sait où l’indexation s’est arrêtée afin de pouvoir reprendre là où elle s’est arrêtée lors de la prochaine exécution.
 
 Vous pouvez effacer la limite supérieure en réinitialisant l’indexeur si vous souhaitez recommencer le traitement à partir de zéro. Les API de réinitialisation sont disponibles à des niveaux décroissants dans la hiérarchie d’objets :
 
 + Le corpus de recherche entier (utilisez [Réinitialiser les indexeurs](#reset-indexers))
 + Un document ou une liste de documents spécifique (utilisez [Réinitialiser les documents [préversion]](#reset-docs))
-+ Une compétence ou un enrichissement spécifique dans un document (utilisez [Réinitialiser les compétences [préversion]](#reset-skills))
++ Une compétence ou un enrichissement spécifiques (utilisez [Réinitialiser les compétences – Préversion](#reset-skills))
 
 Les API de réinitialisation sont utilisées pour actualiser le contenu mis en cache (applicable dans les scénarios d’[enrichissement par IA](cognitive-search-concept-intro.md)) ou pour effacer la limite supérieure et reconstruire l’index.
 
 La réinitialisation, suivie d’une exécution, permet de retraiter les documents existants et les nouveaux documents, mais ne supprime pas les documents de recherche orphelins de l’index de recherche qui ont été créés lors des exécutions précédentes. Pour plus d’informations sur la suppression, consultez [Ajouter, mettre à jour ou supprimer des documents](/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="run-indexers"></a>Exécuter des indexeurs
+## <a name="how-to-run-indexers"></a>Comment exécuter des indexeurs
 
 [Créer un indexeur](/rest/api/searchservice/create-indexer) crée et exécute l’indexeur, sauf si vous le créez dans un état désactivé ("disabled": true). La première exécution prend un peu plus de temps, car elle couvre également la création de l’objet.
 
@@ -41,15 +41,17 @@ Vous pouvez exécuter un indexeur à l’aide de l’une des approches suivantes
 + [Exécuter l’indexeur (REST)](/rest/api/searchservice/run-indexer)
 + [Méthode RunIndexers](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) dans le Kit de développement logiciel (SDK) Azure .NET (ou à l’aide de la méthode RunIndexers équivalente dans un autre SDK)
 
+## <a name="indexer-execution"></a>Exécution de l’indexeur
+
 L’exécution de l’indexeur est soumise aux limites suivantes :
 
-+ Le nombre maximum de travaux d’indexation est de 1 par réplica. Pas de travaux simultanés.
++ Le nombre maximal de travaux de l’indexeur est de 1 par réplica.
 
   Si l’exécution de l’indexeur est déjà à pleine capacité, vous recevrez cette notification : « Échec de l’exécution de l’indexeur "\<indexer-name\>" », avec l’erreur : « Une autre invocation de l’indexeur est actuellement en cours ; les invocations simultanées ne sont pas autorisées. »
 
-+ Le temps d’exécution maximal est de 2 heures si vous utilisez un ensemble de compétences, et de 24 heures sans. 
++ Le temps d’exécution maximal est de 2 heures si vous utilisez des compétences, ou 24 heures sans. 
 
-  Vous pouvez prolonger le traitement en programmant l’indexeur. Le niveau Gratuit a des limites de temps d’exécution inférieures. Pour obtenir la liste complète, consultez [Limites de l’indexeur](search-limits-quotas-capacity.md#indexer-limits).
+  Si vous [indexez un jeu de données volumineux](search-howto-large-index.md), vous pouvez allonger le traitement en planifiant l’indexeur. Le niveau Gratuit a des limites de temps d’exécution inférieures. Pour obtenir la liste complète, consultez [Limites de l’indexeur](search-limits-quotas-capacity.md#indexer-limits).
 
 <a name="reset-indexers"></a>
 
@@ -72,12 +74,9 @@ L’indicateur de réinitialisation est effacé une fois l’exécution terminé
 
 ## <a name="reset-skills-preview"></a>Réinitialiser les compétences (préversion)
 
-> [!IMPORTANT] 
-> [Réinitialiser les compétences](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) est en préversion publique et soumise à des [conditions d’utilisation supplémentaires](/rest/api/searchservice/preview-api/reset-skills). L’[API REST en préversion](/rest/api/searchservice/index-preview) prend en charge cete fonctionnalité.
-
 Pour les indexeurs qui ont des ensembles de compétences, vous pouvez réinitialiser des compétences spécifiques pour forcer le traitement de cette compétence et de toute compétence en aval qui dépend de sa sortie. Les [enrichissements mis en cache](search-howto-incremental-index.md) sont également actualisés. La réinitialisation des compétences invalide les résultats des compétences mis en cache, ce qui est utile quand une nouvelle version d’une compétence est déployée et que vous souhaitez que l’indexeur réexécute cette compétence pour tous les documents. 
 
-[Réinitialiser les compétences](/rest/api/searchservice/preview-api/reset-skills) est disponible par le biais de l’API REST **`api-version=2020-06-30-Preview`** .
+[Réinitialiser les compétences](/rest/api/searchservice/preview-api/reset-skills) est disponible par le biais de REST **`api-version=2020-06-30-Preview`** ou version ultérieure.
 
 ```http
 POST https://[service name].search.windows.net/skillsets/[skillset name]/resetskills?api-version=2020-06-30-Preview
@@ -98,9 +97,6 @@ Si aucune compétence n’est spécifiée, la totalité de l’ensemble de comp�
 
 ## <a name="reset-docs-preview"></a>Réinitialiser les documents (préversion)
 
-> [!IMPORTANT] 
-> [Réinitialiser les documents](/rest/api/searchservice/preview-api/reset-documents) est en préversion publique, disponible uniquement via l’API REST de préversion. Les fonctionnalités d’évaluation sont proposées telles quelles, dans le cadre de [Conditions d’utilisation supplémentaires](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 L’[API Réinitialiser les documents](/rest/api/searchservice/preview-api/reset-documents) accepte une liste de clés de document afin que vous puissiez actualiser des documents spécifiques. S’ils sont spécifiés, les paramètres de réinitialisation deviennent le seul déterminant de ce qui est traité, quelles que soient les autres modifications apportées aux données sous-jacentes. Par exemple, si 20 blobs ont été ajoutés ou mis à jour depuis la dernière exécution de l’indexeur, mais que vous ne réinitialisez qu’un seul document, seul celui-ci sera traité.
 
 Pour chaque document, tous les champs de ce document de recherche sont actualisés avec les valeurs de la source de données. Vous ne pouvez pas choisir les champs à actualiser. 
@@ -109,8 +105,8 @@ Si le document est enrichi par le biais d’un ensemble de compétences et conti
 
 Lorsque vous testez cette API pour la première fois, les API suivantes vous aideront à valider et à tester les comportements :
 
-+ [Obtenir l’état de l’indexeur](/rest/api/searchservice/get-indexer-status) avec la version d’API `2020-06-30-Preview` pour vérifier l’état de réinitialisation et l’état d’exécution. Vous pouvez trouver des informations sur la demande de réinitialisation à la fin de la réponse d’état.
-+ [Réinitialiser les documents](/rest/api/searchservice/preview-api/reset-documents) avec la version d’API `2020-06-30-Preview` pour spécifier les documents à traiter.
++ [Obtenir l’état de l’indexeur](/rest/api/searchservice/get-indexer-status) avec la version d’API **`api-version=2020-06-30-Preview`** ou ultérieure pour vérifier l’état de réinitialisation et l’état d’exécution. Vous pouvez trouver des informations sur la demande de réinitialisation à la fin de la réponse d’état.
++ [Réinitialiser les documents](/rest/api/searchservice/preview-api/reset-documents) avec la version d’API **`api-version=2020-06-30-Preview`** ou ultérieure pour spécifier les documents à traiter.
 + [Exécuter l’indexeur](/rest/api/searchservice/run-indexer) pour exécuter l’indexeur (toute version d’API).
 + [Recherchez des documents](/rest/api/searchservice/search-documents) pour rechercher les valeurs mises à jour, ainsi que pour renvoyer les clés de document si vous n’êtes pas sûr de la valeur. Utilisez `"select": "<field names>"` si vous souhaitez limiter les champs qui apparaissent dans la réponse.
 
@@ -145,7 +141,7 @@ POST https://[service name].search.windows.net/indexers/[indexer name]/resetdocs
 
 ## <a name="check-reset-status"></a>Vérifier l’état de réinitialisation
 
-Pour vérifier l’état d’une réinitialisation et voir quelles clés de document sont mises en file d’attente pour traitement, utilisez [Obtenir l’état de l’indexeur](/rest/api/searchservice/get-indexer-status) avec **`api-version=06-30-2020-Preview`** . L’API de préversion retourne la section **`currentState`** , que vous pouvez trouver à la fin de la réponse Obtenir l’état de l’indexeur.
+Pour vérifier l’état d’une réinitialisation et voir quelles clés de document sont mises en file d’attente pour traitement, utilisez [Obtenir l’état de l’indexeur](/rest/api/searchservice/get-indexer-status) avec **`api-version=06-30-2020-Preview`** ou version ultérieure. L’API de préversion retourne la section **`currentState`** , que vous pouvez trouver à la fin de la réponse Obtenir l’état de l’indexeur.
 
 Le « mode » sera **`indexingAllDocs`** pour Réinitialiser les compétences (dans la mesure où tous les documents sont potentiellement concernés, pour les champs qui sont remplis par l’enrichissement par IA).
 

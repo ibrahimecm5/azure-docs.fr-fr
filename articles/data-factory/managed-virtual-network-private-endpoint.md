@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
 ms.date: 09/28/2021
-ms.openlocfilehash: f9c07abdfe512c2564fdfe1595f16db8a6372a8b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c4baf3ee8fdb26bd361dfafbaa29953f6d1d13f8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469544"
 ---
 # <a name="azure-data-factory-managed-virtual-network"></a>Réseau virtuel managé Azure Data Factory
 
@@ -38,7 +38,7 @@ Avantages de l’utilisation du réseau virtuel managé :
 >Actuellement, le réseau virtuel managé n’est pris en charge que dans la même région qu’Azure Data Factory.
 
 > [!Note]
->Le runtime d’intégration Azure public existant ne peut pas basculer vers le runtime d’intégration Azure dans un réseau virtuel managé Azure Data Factory, et inversement.
+>Le runtime d’intégration Azure global existant ne peut pas basculer vers le runtime d’intégration Azure dans un réseau virtuel managé Azure Data Factory, et inversement.
  
 
 :::image type="content" source="./media/managed-vnet/managed-vnet-architecture-diagram.png" alt-text="Architecture de réseau virtuel managé ADF":::
@@ -77,7 +77,7 @@ Les options de création interactive sont utilisées pour des fonctionnalités t
 :::image type="content" source="./media/managed-vnet/interactive-authoring.png" alt-text="Création interactive":::
 
 ## <a name="activity-execution-time-using-managed-virtual-network"></a>Durée de l’activité en utilisant un réseau virtuel managé
-En raison de sa conception, le runtime d’intégration Azure dans un réseau virtuel managé passe plus de temps en file d’attente qu’un runtime d’intégration Azure public. En effet, comme nous ne réservons pas de nœud de calcul par fabrique de données, il y a un temps de préchauffage (ou mise en route) avant le démarrage de chaque activité, qui se produit principalement au niveau de la jointure de réseau virtuel plutôt que du runtime d’intégration Azure. Pour les activités autres que de copie, dont les activités de pipeline et les activités externes, une durée de vie (TTL) de 60 minutes est appliquée lorsque vous les déclenchez pour la première fois. Dans cette durée de vie, le temps en file d’attente est plus court, car le nœud est déjà préchauffé. 
+En raison de sa conception, le runtime d’intégration Azure dans un réseau virtuel managé passe plus de temps en file d’attente qu’un runtime d’intégration Azure global. En effet, comme nous ne réservons pas de nœud de calcul par fabrique de données, il y a un temps de préchauffage (ou mise en route) avant le démarrage de chaque activité, qui se produit principalement au niveau de la jointure de réseau virtuel plutôt que du runtime d’intégration Azure. Pour les activités autres que de copie, dont les activités de pipeline et les activités externes, une durée de vie (TTL) de 60 minutes est appliquée lorsque vous les déclenchez pour la première fois. Dans cette durée de vie, le temps en file d’attente est plus court, car le nœud est déjà préchauffé. 
 > [!NOTE]
 > L’activité de copie ne prend pas encore en compte la durée de vie.
 
@@ -129,8 +129,9 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ```
 
 ## <a name="limitations-and-known-issues"></a>Limitations et problèmes connus
+
 ### <a name="supported-data-sources"></a>Sources de données prises en charge
-Les sources de données ci-dessous prennent en charge les points de terminaison privés natifs, et peuvent être connectées via une liaison privée à partir d’un réseau virtuel managé ADF.
+Les sources de données suivantes prennent en charge les points de terminaison privés natifs, et peuvent être connectées via une liaison privée à partir d’un réseau virtuel managé ADF.
 - Stockage Blob Azure (ne comprend pas de compte de stockage V1)
 - Recherche cognitive Azure
 - API SQL Azure Cosmos DB
@@ -157,40 +158,8 @@ Les sources de données ci-dessous prennent en charge les points de terminaison 
 Pour accéder à des sources de données locales à partir d’un réseau virtuel managé en utilisant un point de terminaison privé, consultez le tutoriel [Guide pratique pour accéder à un serveur SQL Server local à partir d’un VNET managé Data Factory en utilisant un point de terminaison privé](tutorial-managed-virtual-network-on-premise-sql-server.md).
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Le réseau virtuel managé Azure Data Factory est disponible dans les régions Azure suivantes :
-- Australie Est
-- Australie Sud-Est
-- Brésil Sud
-- Centre du Canada
-- Est du Canada
-- Inde centrale
-- USA Centre
-- Chine Est2
-- Chine Nord2
-- Asie Est
-- USA Est
-- USA Est 2
-- France Centre
-- Allemagne Centre-Ouest
-- Japon Est
-- OuJapon Est
-- Centre de la Corée
-- Centre-Nord des États-Unis
-- Europe Nord
-- Norvège Est
-- Afrique du Sud Nord
-- États-Unis - partie centrale méridionale
-- Asie Sud-Est
-- Suisse Nord
-- Émirats arabes unis Nord
-- Gouvernement des États-Unis – Arizona
-- Gouvernement des États-Unis – Texas
-- Gouvernement américain - Virginie
-- Sud du Royaume-Uni
-- Ouest du Royaume-Uni
-- Centre-USA Ouest
-- Europe Ouest
-- USA Ouest
-- USA Ouest 2
+En règle générale, le réseau virtuel managé est disponible pour toutes les régions Azure Data Factory, sauf :
+- Inde Sud
 
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Communications sortantes via un point de terminaison public à partir du réseau virtuel managé ADF

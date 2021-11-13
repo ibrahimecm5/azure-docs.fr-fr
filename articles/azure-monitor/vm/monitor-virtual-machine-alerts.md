@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: b272d4cb11ab948043f6c47b5be12fc0488d070f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b06d7c573514e0fe0471e13df3476bf5b13f20e3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122527903"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252684"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-alerts"></a>Surveillez les machines virtuelles avec Azure Monitor : Alertes
 
@@ -48,7 +48,7 @@ Les [alertes de journal](../alerts/alerts-metric.md) peuvent effectuer deux mesu
 ### <a name="target-resource-and-impacted-resource"></a>Ressource cible et ressource affectée
 
 > [!NOTE]
-> Les règles d’alerte de journal centrées sur les ressources, actuellement en préversion publique, simplifient les alertes de requête de journal pour les machines virtuelles et remplacent les fonctionnalités actuellement fournies par les requêtes de mesure de métrique. Vous pouvez utiliser la machine en tant que cible de la règle, qui mieux l’identifier comme ressource affectée. Vous pouvez également appliquer une seule règle d’alerte à tous les ordinateurs d’un groupe de ressources ou d’une description spécifique. Quand les alertes de requête de journal du centre de ressources sont mises à la disposition générale, les instructions de ce scénario sont mises à jour.
+> Les règles d’alerte de journal centrées sur les ressources, actuellement en préversion publique, simplifient les alertes de requête de journal pour les machines virtuelles et remplacent les fonctionnalités actuellement fournies par les requêtes de mesure de métrique. Vous pouvez utiliser la machine en tant que cible de la règle, qui mieux l’identifier comme ressource affectée. Vous pouvez également appliquer une seule règle d’alerte à tous les ordinateurs d’un groupe de ressources ou d’un abonnement spécifique. Quand les alertes de requête de journal du centre de ressources sont mises à la disposition générale, les instructions de ce scénario sont mises à jour.
 > 
 Chaque alerte dans Azure Monitor a une **propriété de ressource affectée**, qui est définie par la cible de la règle. Pour les règles d’alerte métrique, la ressource affectée est l’ordinateur, ce qui vous permet de l’identifier facilement dans l’affichage des alertes standard. Les alertes de requête de journal sont associées à la ressource d’espace de travail plutôt qu’à l’ordinateur, même si vous utilisez une alerte de mesure de métrique qui crée une alerte pour chaque ordinateur. Vous devez afficher les détails de l’alerte pour afficher l’ordinateur qui a été affecté.
 
@@ -133,7 +133,7 @@ InsightsMetrics
  InsightsMetrics
  | where Origin == "vm.azm.ms"
  | where _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" and (_ResourceId contains "/providers/Microsoft.Compute/virtualMachines/" or _ResourceId contains "/providers/Microsoft.Compute/virtualMachineScaleSets/") 
- | where Namespace == "Processor" and Name == "UtilizationPercentage"<br>\| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
+ | where Namespace == "Processor" and Name == "UtilizationPercentage" | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
 **Utilisation du processeur pour toutes les ressources de calcul dans un groupe de ressources** 
@@ -142,7 +142,7 @@ InsightsMetrics
 InsightsMetrics
 | where Origin == "vm.azm.ms"
 | where _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/" or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachineScaleSets/"
-| where Namespace == "Processor" and Name == "UtilizationPercentage"<br>\| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId 
+| where Namespace == "Processor" and Name == "UtilizationPercentage" | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId 
 ```
 
 ### <a name="memory-alerts"></a>Alertes de mémoire
@@ -171,7 +171,7 @@ InsightsMetrics
 InsightsMetrics
 | where Origin == "vm.azm.ms"
 | where Namespace == "Memory" and Name == "AvailableMB"
-| extend TotalMemory = toreal(todynamic(Tags)["vm.azm.ms/memorySizeMB"])<br>\| extend AvailableMemoryPercentage = (toreal(Val) / TotalMemory) * 100.0
+| extend TotalMemory = toreal(todynamic(Tags)["vm.azm.ms/memorySizeMB"]) | extend AvailableMemoryPercentage = (toreal(Val) / TotalMemory) * 100.0
 | summarize AggregatedValue = avg(AvailableMemoryPercentage) by bin(TimeGenerated, 15m), Computer  
 ``` 
 

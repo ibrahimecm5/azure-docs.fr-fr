@@ -1,35 +1,30 @@
 ---
-title: Créer et gérer des emplacements personnalisés sur Kubernetes avec Azure Arc
-services: azure-arc
+title: Créer et gérer des emplacements personnalisés sur Kubernetes avec Azure Arc
 ms.service: azure-arc
-ms.date: 05/25/2021
+ms.date: 10/19/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
-description: Utiliser des emplacements personnalisés pour déployer des services PaaS Azure sur des clusters Kubernetes avec Azure Arc
-ms.openlocfilehash: a4586f6f527bd98f0f347e51c787f2bcda7c6d8d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+description: Utiliser des emplacements personnalisés pour déployer des services Azure PaaS sur des clusters Kubernetes avec Azure Arc
+ms.openlocfilehash: f241ec384fc9ed7ee96d7415074e009cea486811
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768300"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257023"
 ---
-# <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Créer et gérer des emplacements personnalisés sur Kubernetes avec Azure Arc
+# <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Créer et gérer des emplacements personnalisés sur Kubernetes avec Azure Arc
 
-En tant qu’extensions d’emplacement Azure, les *Emplacements personnalisés* permettent aux administrateurs de locataire d’utiliser leurs clusters Kubernetes avec Azure Arc comme emplacements cibles pour le déploiement d’instances de services Azure. Les exemples de ressources Azure incluent SQL Managed Instance avec Azure Arc et PostgreSQL Hyperscale avec Azure Arc.
-
-À l’instar des emplacements Azure, les utilisateurs finaux au sein du locataire disposant d’un accès aux emplacements personnalisés peuvent y déployer des ressources à l’aide de la capacité de calcul privée de leur entreprise.
+ Les *emplacements personnalisés* permettent aux administrateurs de locataire ou de cluster de configurer leurs clusters Kubernetes avec Azure Arc comme emplacements cibles pour le déploiement d’instances de services Azure, par ex.,  des ressources comme SQL Managed Instance avec Azure Arc et PostgreSQL Hyperscale avec Azure Arc. Sur les clusters Kubernetes avec Azure Arc, l’emplacement personnalisé représente une abstraction d’un espace de noms au sein du cluster Kubernetes avec Azure Arc. Les administrateurs de locataire ou de cluster peuvent attribuer des autorisations de contrôle d’accès en fonction du rôle (RBAC) aux développeurs d’applications ou aux administrateurs de base de données pour déployer des ressources de type instances managées SQL avec Azure Arc, instances PostgreSQL Hyperscale avec Azure Arc ou applications web Azure sur l’emplacement personnalisé. 
+ 
+Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l’article [Emplacements personnalisés – Kubernetes avec Azure Arc](conceptual-custom-locations.md). 
 
 Dans cet article, vous apprendrez comment :
 > [!div class="checklist"]
-> * Activer les emplacements personnalisés sur votre cluster Kubernetes avec Azure Arc.
-> * Déployer l’extension de cluster de service Azure de l’instance de service Azure sur votre cluster.
-> * Créez un emplacement personnalisé sur votre cluster Kubernetes avec Azure Arc.
+> * Activer les emplacements personnalisés sur votre cluster Kubernetes avec Azure Arc.
+> * Créer un emplacement personnalisé.
 
-Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l’article [Emplacements personnalisés – Kubernetes avec Azure Arc](conceptual-custom-locations.md).
-
-[!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -53,6 +48,8 @@ Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l
     az extension update --name k8s-extension
     az extension update --name customlocation
     ```
+    >[!NOTE]
+    >Nous vous recommandons d’utiliser la dernière version des extensions CLI pour obtenir les fonctionnalités les plus récentes.  
 
 - Vérifiez que l’inscription du fournisseur est terminée pour `Microsoft.ExtendedLocation`.
     1. Entrez les commandes suivantes :
@@ -69,7 +66,7 @@ Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l
 
         Une fois l’inscription terminée, l’état `RegistrationState` aura la valeur de `Registered`.
 
-- Vérifiez que vous disposez d’un [cluster connecté Kubernetes avec Azure Arc](quickstart-connect-cluster.md).
+- Vérifiez que vous avez un [cluster connecté Kubernetes avec Azure Arc](quickstart-connect-cluster.md).
     - [Mettez à niveau vos agents](agent-upgrade.md#manually-upgrade-agents) vers la version 1.1.0 ou une version ultérieure.
 
 ## <a name="enable-custom-locations-on-cluster"></a>Activer les emplacements personnalisés sur le cluster
@@ -100,35 +97,138 @@ Si vous êtes connecté à Azure CLI à l’aide d’un principal de service, e
 
 ## <a name="create-custom-location"></a>Créer un emplacement personnalisé
 
-1. Déployer l’extension de cluster de service Azure de l’instance de service Azure souhaitée sur votre cluster :
+1. Déployez l’extension de cluster de service Azure de l’instance de service Azure que vous voulez installer sur votre cluster :
 
-    * [Data Services avec Azure Arc](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
+    * [Data Services avec Azure Arc](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
 
         > [!NOTE]
-        > Un proxy sortant sans authentification et un proxy sortant avec authentification de base sont pris en charge par l’extension de cluster Services de données avec Arc. Un proxy sortant qui attend des certificats approuvés n’est pas pris en charge actuellement.
+        > Un proxy sortant sans authentification et un proxy sortant avec authentification de base sont pris en charge par l’extension de cluster Data Services avec Azure Arc. Un proxy sortant qui attend des certificats approuvés n’est pas pris en charge actuellement.
 
 
     * [Azure App Service sur Azure Arc](../../app-service/manage-create-arc-environment.md#install-the-app-service-extension)
 
     * [Event Grid sur Kubernetes](../../event-grid/kubernetes/install-k8s-extension.md)
 
-1. Récupérez l’identificateur Azure Resource Manager du cluster Kubernetes avec Azure Arc, référencé dans les étapes ultérieures comme `connectedClusterId` :
+2. Obtenez l’identificateur Azure Resource Manager du cluster Kubernetes avec Azure Arc, référencé dans les prochaines étapes avec `connectedClusterId` :
 
     ```azurecli
     az connectedk8s show -n <clusterName> -g <resourceGroupName>  --query id -o tsv
     ```
 
-1. Récupérez l’identificateur Azure Resource Manager de l’extension de cluster déployée en plus du cluster Kubernetes avec Azure Arc, référencé dans les étapes ultérieures comme `extensionId` :
+3. Obtenez l’identificateur Azure Resource Manager de l’extension de cluster déployée en plus du cluster Kubernetes avec Azure Arc, référencé dans les prochaines étapes avec `extensionId` :
 
     ```azurecli
     az k8s-extension show --name <extensionInstanceName> --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName>  --query id -o tsv
     ```
 
-1. Créez un emplacement personnalisé en référençant le cluster Kubernetes avec Azure Arc et l’extension :
+4. Créez un emplacement personnalisé en référençant le cluster Kubernetes avec Azure Arc et l’extension :
 
     ```azurecli
-    az customlocation create -n <customLocationName> -g <resourceGroupName> --namespace arc --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionId>
+    az customlocation create -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
     ```
+
+**Paramètres obligatoires**
+
+| Nom du paramètre | Description |
+|----------------|------------|
+| `--name, --n` | Nom de l’emplacement personnalisé. |
+| `--resource-group, --g` | Groupe de ressources de l’emplacement personnalisé  | 
+| `--namespace` | Espace de noms dans le cluster lié à l’emplacement personnalisé en cours de création |
+| `--host-resource-id` | Identificateur Azure Resource Manager du cluster Kubernetes avec Azure Arc (cluster connecté) |
+| `--cluster-extension-ids` | Identificateurs Azure Resource Manager des instances d’extension de cluster installées sur le cluster connecté. Fournir une liste des ID d’extension de cluster séparés par des espaces  |
+
+**Paramètres facultatifs**
+
+| Nom du paramètre | Description |
+|--------------|------------|
+| `--assign-identity` | La valeur par défaut est `None`. Crée une [identité managée affectée par le système](../../active-directory/managed-identities-azure-resources/overview.md) si le paramètre est défini sur « SystemAssigned » |
+| `--location, --l` | Emplacement personnalisé de la ressource Azure Resource Manager dans Azure. Par défaut, ce paramètre est défini sur l’emplacement (ou la région Azure) du cluster connecté |
+| `--tags` | Liste d’étiquettes séparées par des espaces : key[=value] [key[=value] ...]. Utiliser '' pour effacer les étiquettes existantes |
+| `--kubeconfig` | Kubeconfig d’administration du cluster. Doit être transmis sous forme de fichier si le cluster est un cluster non-AAD |
+
+
+## <a name="show-details-of-a-custom-location"></a>Afficher les détails d’un emplacement personnalisé
+
+Afficher les détails d’un emplacement personnalisé
+
+```azurecli
+    az customlocation show -n <customLocationName> -g <resourceGroupName> 
+```
+
+**Paramètres obligatoires**
+
+| Nom du paramètre | Description |
+|----------------|------------|
+| `--name, --n` | Nom de l’emplacement personnalisé. |
+| `--resource-group, --g` | Groupe de ressources de l’emplacement personnalisé  | 
+
+## <a name="list-custom-locations"></a>Lister les emplacements personnalisés
+
+Liste tous les emplacements personnalisés dans un groupe de ressources
+
+```azurecli
+    az customlocation show -g <resourceGroupName> 
+```
+
+**Paramètres obligatoires**
+
+| Nom du paramètre | Description |
+|----------------|------------|
+| `--resource-group, --g` | Groupe de ressources de l’emplacement personnalisé  | 
+
+
+## <a name="update-a-custom-location"></a>Mettre à jour un emplacement personnalisé
+
+Utilisez la commande `update` pour ajouter de nouvelles étiquettes, associer de nouveaux ID d’extension de cluster à l’emplacement personnalisé tout en conservant les étiquettes existantes et les extensions de cluster associées. `--cluster-extension-ids`, `--tags`, `assign-identity` peuvent être mis à jour. 
+
+```azurecli
+    az customlocation update -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+```
+**Paramètres obligatoires**
+
+| Nom du paramètre | Description |
+|----------------|------------|
+| `--name, --n` | Nom de l’emplacement personnalisé. |
+| `--resource-group, --g` | Groupe de ressources de l’emplacement personnalisé  | 
+| `--namespace` | Espace de noms dans le cluster lié à l’emplacement personnalisé en cours de création |
+| `--host-resource-id` | Identificateur Azure Resource Manager du cluster Kubernetes avec Azure Arc (cluster connecté) |
+
+**Paramètres facultatifs**
+
+| Nom du paramètre | Description |
+|--------------|------------|
+| `--assign-identity` | Peut être mis à jour vers `None` ou `"SystemAssigned` pour attribuer une [identité managée affectée par le système](../../active-directory/managed-identities-azure-resources/overview.md) à l’emplacement personnalisé |
+| `--cluster-extension-ids` | Associez les nouvelles extensions de cluster à cet emplacement personnalisé en fournissant les identificateurs Azure Resource Manager des instances d’extension de cluster installées sur le cluster connecté. Fournir une liste des ID d’extension de cluster séparés par des espaces |
+| `--tags` | Ajoutez de nouvelles étiquettes en plus des existantes. Liste d’étiquettes séparées par des espaces : key[=value] [key[=value] ...]. |
+
+## <a name="patch-a-custom-location"></a>Patcher un emplacement personnalisé
+
+Utilisez la commande `patch` pour remplacer les étiquettes existantes par des nouvelles, ou des ID d’extension de cluster existants par des nouveaux. `--cluster-extension-ids`, `assign-identity`, `--tags` peuvent être patchés. 
+
+```azurecli
+    az customlocation patch -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+```
+
+**Paramètres obligatoires**
+
+| Nom du paramètre | Description |
+|----------------|------------|
+| `--name, --n` | Nom de l’emplacement personnalisé. |
+| `--resource-group, --g` | Groupe de ressources de l’emplacement personnalisé  | 
+
+**Paramètres facultatifs**
+
+| Nom du paramètre | Description |
+|--------------|------------|
+| `--assign-identity` | Peut être mis à jour vers `None` ou `"SystemAssigned` pour attribuer une [identité managée affectée par le système](../../active-directory/managed-identities-azure-resources/overview.md) à l’emplacement personnalisé |
+| `--cluster-extension-ids` | Associez les nouvelles extensions de cluster à cet emplacement personnalisé en fournissant les identificateurs Azure Resource Manager des instances d’extension de cluster installées sur le cluster connecté. Fournir une liste des ID d’extension de cluster séparés par des espaces |
+| `--tags` | Ajoutez de nouvelles étiquettes en plus des existantes. Liste d’étiquettes séparées par des espaces : key[=value] [key[=value] ...]. |
+
+## <a name="delete-a-custom-location"></a>Supprimer un emplacement personnalisé
+
+ ```azurecli
+    az customlocation delete -n <customLocationName> -g <resourceGroupName> --namespace <name of namespace> --host-resource-id <connectedClusterId> --cluster-extension-ids <extensionIds> 
+   ```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -2,14 +2,14 @@
 title: Tableau de prise en charge pour la sauvegarde de machines virtuelles Azure
 description: Fournit un récapitulatif des limitations et des paramètres de prise en charge de la sauvegarde de machines virtuelles Azure avec le service Sauvegarde Azure.
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 10/19/2021
 ms.custom: references_regions
-ms.openlocfilehash: 17cd2ca7d4b42e79d1b5012fa36e09a509fa28fe
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 50350c5fdb2904c0f562d79d1f9779d324da9108
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129090967"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454995"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Tableau de prise en charge pour la sauvegarde de machines virtuelles Azure
 
@@ -57,7 +57,7 @@ Le tableau suivant récapitule les systèmes d’exploitation pris en charge lor
 
 **Scénario** | **Système d’exploitation pris en charge**
 --- | ---
-Sauvegarder avec l’extension de l’agent de machine virtuelle Azure | - Client Windows 10 (64 bits uniquement) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2012 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM et SP1 Standard)  <br/><br/> - Windows Server 2008 (64 bits uniquement)
+Sauvegarder avec l’extension de l’agent de machine virtuelle Azure | - Client Windows 10 (64 bits uniquement) <br/><br/>- Windows Server 2022 (Datacenter/Datacenter Core/Standard)   <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2012 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM et SP1 Standard)  <br/><br/> - Windows Server 2008 (64 bits uniquement)
 Sauvegarder avec l’agent MARS | Systèmes d’exploitation [pris en charge](backup-support-matrix-mars-agent.md#supported-operating-systems).
 Sauvegarder avec DPM/MABS | Systèmes d’exploitation pris en charge pour la sauvegarde avec [MABS](backup-mabs-protection-matrix.md) et [DPM](/system-center/dpm/dpm-protection-matrix).
 
@@ -174,7 +174,7 @@ Taille de disque de données | La taille d’un disque individuel peut atteindre
 Type de stockage | HDD Standard, SSD Standard, SSD Premium.
 Disques managés | Pris en charge.
 Disques chiffrés | Pris en charge.<br/><br/> Les machines virtuelles Azure activées pour Azure Disk Encryption peuvent être sauvegardées (avec ou sans l’application Azure AD).<br/><br/> Les machines virtuelles chiffrées ne peuvent pas être récupérées au niveau fichier/dossier. Vous devez récupérer la totalité de la machine virtuelle.<br/><br/> Vous pouvez activer le chiffrement sur des machines virtuelles qui sont déjà protégées par Sauvegarde Azure.
-Disques avec l’accélérateur d’écriture activé | Actuellement, la sauvegarde de machine virtuelle Azure avec accélérateur d’écriture est en préversion dans toutes les régions publiques Azure. <br><br> (Le quota est dépassé et aucune autre modification de la liste approuvée n’est possible jusqu’à la disponibilité générale.) <br><br> Les instantanés n’incluent pas les instantanées de disque avec accélérateur d’écriture pour les abonnements non pris en charge, car le disque avec accélérateur d’écriture sera exclu. <br><br>**Important** <br> Les machines virtuelles avec des disques avec accélérateur d’écriture ont besoin d’une connectivité Internet pour une sauvegarde réussie (même si ces disques sont exclus de la sauvegarde).
+Disques avec l’accélérateur d’écriture activé | Actuellement, la sauvegarde de machine virtuelle Azure avec accélérateur d’écriture est en préversion dans toutes les régions publiques Azure. <br><br> Pour inscrire votre abonnement pour un disque avec accélérateur d’écriture, écrivez-nous à l’adresse [askazurebackupteam@microsoft.com](mailto:askazurebackupteam@microsoft.com). <br><br> Les instantanés n’incluent pas les instantanées de disque avec accélérateur d’écriture pour les abonnements non pris en charge, car le disque avec accélérateur d’écriture sera exclu. <br><br>**Important** <br> Les machines virtuelles avec des disques avec accélérateur d’écriture ont besoin d’une connectivité Internet pour une sauvegarde réussie (même si ces disques sont exclus de la sauvegarde).
 Sauvegarder et restaurer des machines virtuelles/disques dédupliqués | Sauvegarde Azure ne prend pas en charge la déduplication. Pour plus d’informations, consultez cet [article](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  - Sauvegarde Azure n’effectue pas de déduplication entre les machines virtuelles du coffre Recovery Services <br/> <br/>  - S’il existe des machines virtuelles en état de déduplication pendant la restauration, les fichiers ne peuvent pas être restaurés, car le coffre ne comprend pas le format. Toutefois, vous pouvez effectuer la restauration complète de la machine virtuelle.
 Ajouter un disque à une machine virtuelle protégée | Pris en charge.
 Redimensionner un disque sur une machine virtuelle protégée | Pris en charge.
@@ -240,7 +240,7 @@ Le service Sauvegarde prend en charge la compression du trafic de sauvegarde, co
 **Machine** | **Compresser dans MABS/DPM (TCP)** | **Compresser dans le coffre (HTTPS)**
 --- | --- | ---
 Machines Windows locales sans DPM/MAB | N/D | ![Oui][green]
-Machines virtuelles Azure | N/D | N/D
+Machines virtuelles Azure | NA | N/D
 Machines virtuelles locales/Azure avec DPM | ![Oui][green] | ![Oui][green]
 Machines virtuelles locales/Azure avec MABS | ![Oui][green] | ![Oui][green]
 

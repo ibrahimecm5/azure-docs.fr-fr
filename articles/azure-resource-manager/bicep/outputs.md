@@ -2,27 +2,37 @@
 title: Sorties dans Bicep
 description: Décrit comment définir des variables dans Bicep
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 4cdf21eddcf14f5563c0c638f962585ad021e8ed
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 10/19/2021
+ms.openlocfilehash: c9b8e0bb4bfb4533b66170c60c8da7b1073a0853
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428755"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236073"
 ---
 # <a name="outputs-in-bicep"></a>Sorties dans Bicep
 
 Cet article explique comment définir des valeurs de sortie dans un fichier Bicep. Vous utilisez des sorties quand vous devez retourner des valeurs à partir des ressources déployées.
 
-Le format de chaque valeur de sortie doit résoudre l’un des [types de données](data-types.md).
-
 ## <a name="define-output-values"></a>Définir des valeurs de sortie
 
-L’exemple suivant montre comment utiliser le mot clé `output` pour renvoyer une propriété à partir d’une ressource déployée. Dans l’exemple, `publicIP` est l’identificateur (nom symbolique) d’une adresse IP publique déployée dans le fichier Bicep. La valeur de sortie obtient le nom de domaine complet pour l’adresse IP publique.
+La syntaxe permettant de définir une valeur de sortie est la suivante :
+
+```bicep
+output <name> <data-type> = <value>
+```
+
+Chaque valeur de sortie doit être résolue en l’un des [types de données](data-types.md).
+
+L’exemple suivant montre comment renvoyer une propriété à partir d’une ressource déployée. Dans l’exemple, `publicIP` est le nom symbolique d’une adresse IP publique déployée dans le fichier Bicep. La valeur de sortie obtient le nom de domaine complet pour l’adresse IP publique.
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
 ```
+
+L’exemple suivant montre comment retourner des sorties de types différents.
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
 
 Si vous avez besoin de générer une propriété dont le nom comporte un trait d’union, utilisez des crochets autour du nom au lieu de la notation par points. Par exemple, utilisez `['property-name']` au lieu de `.property-name`.
 
@@ -34,10 +44,19 @@ var user = {
 output stringOutput string = user['user-name']
 ```
 
-L’exemple suivant montre comment retourner des sorties de types différents.
+Lorsque la valeur à retourner dépend d’une condition dans le déploiement, utilisez l’opérateur `?`. Pour plus d’informations, consultez [Sortie conditionnelle](#conditional-output).
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
+```bicep
+output <name> <data-type> = <condition> ? <true-value> : <false-value>
+```
 
+Pour retourner plusieurs instances d’une valeur de sortie, utilisez l’expression `for`. Pour plus d’informations, consultez [Nombre dynamique de sorties](#dynamic-number-of-outputs).
+
+```bicep
+output <name> <data-type> = [for <item> in <collection>: {
+  ...
+}]
+```
 
 ## <a name="conditional-output"></a>Sortie conditionnelle
 
@@ -74,28 +93,29 @@ Dans Bicep, ajoutez une expression `for` qui définit les conditions de la sorti
 
 ```bicep
 param nsgLocation string = resourceGroup().location
-param nsgNames array = [
-  'nsg1'
-  'nsg2'
-  'nsg3'
+param orgNames array = [
+  'Contoso'
+  'Fabrikam'
+  'Coho'
 ]
 
-resource nsg 'Microsoft.Network/networkSecurityGroups@2020-06-01' = [for name in nsgNames: {
-  name: name
+resource nsg 'Microsoft.Network/networkSecurityGroups@2020-06-01' = [for name in orgNames: {
+  name: 'nsg-${name}'
   location: nsgLocation
 }]
 
-output nsgs array = [for (name, i) in nsgNames: {
-  name: nsg[i].name
+output deployedNSGs array = [for (name, i) in orgNames: {
+  orgName: name
+  nsgName: nsg[i].name
   resourceId: nsg[i].id
 }]
 ```
 
-Vous pouvez également effectuer une itération sur une plage d’entiers. Pour plus d’informations, voir [Itération de sorties dans Bicep](loop-outputs.md).
+Pour plus d’informations sur les boucles, consultez [Boucles itératives dans Bicep](loops.md).
 
-## <a name="modules"></a>Modules
+## <a name="outputs-from-modules"></a>Sorties des modules
 
-Vous pouvez déployer des modèles associés en utilisant des modules. Pour récupérer une valeur de sortie à partir d’un module, utilisez la syntaxe suivante :
+Pour récupérer une valeur de sortie à partir d’un module, utilisez la syntaxe suivante :
 
 ```bicep
 <module-name>.outputs.<property-name>

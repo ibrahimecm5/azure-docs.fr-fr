@@ -1,7 +1,7 @@
 ---
 title: Exécuter une fonction Azure en réponse à un événement de réactivation d’objet blob
 titleSuffix: Azure Storage
-description: Découvrez comment développer une fonction Azure avec .NET, puis configurer Azure Event Grid pour exécuter la fonction en réponse à un événement déclenché lorsqu’un objet blob est réactivé à partir du niveau archive.
+description: Découvrez comment développer une fonction Azure avec .NET, puis configurer Azure Event Grid pour exécuter la fonction en réponse à un événement déclenché quand un objet blob est réhydraté à partir du niveau Archive.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,22 +10,22 @@ ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 2385bfead10efc82e0a1f3c8f0f02f1cd8d9f2f4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: beaf5e72c74e066a0fc517d12100cb1703928b71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019264"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441511"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>Exécuter une fonction Azure en réponse à un événement de réactivation d’objet blob
 
-Pour lire un objet blob qui se trouve dans le niveau Archive, vous devez d’abord réalimenter l’objet blob au niveau chaud ou froid. Le processus de réactivation peut prendre plusieurs heures à se terminer. Au lieu d’interroger à plusieurs reprises l’état de l’opération de réactivation, vous pouvez configurer [Azure Event Grid](../../event-grid/overview.md) pour déclencher un événement lorsque l’opération de réactivation de blob est complète et gérer cet événement dans votre application.
+Pour lire un objet blob qui se trouve dans le niveau Archive, vous devez d’abord réhydrater l’objet blob pour le faire passer au niveau Chaud ou Froid. Le processus de réactivation peut prendre plusieurs heures à se terminer. Au lieu d’interroger à plusieurs reprises l’état de l’opération de réactivation, vous pouvez configurer [Azure Event Grid](../../event-grid/overview.md) pour déclencher un événement lorsque l’opération de réactivation de blob est complète et gérer cet événement dans votre application.
 
 Lorsqu’un événement se produit, Event Grid envoie l’événement à un gestionnaire d’événements via un point de terminaison. Un certain nombre de services Azure peuvent servir de gestionnaires d’événements, y compris [Azure Fonctions](../../azure-functions/functions-overview.md). Une fonction Azure est un bloc de code qui peut s’exécuter en réponse à un événement. Cette procédure vous guide tout au long du processus de développement d’une fonction Azure, puis de configuration d’Event Grid pour exécuter la fonction en réponse à un événement qui se produit lorsqu’un objet blob est réactivé.
 
 Cet article vous montre comment créer et tester une fonction Azure avec .NET à partir de Visual Studio. Vous pouvez créer des fonctions Azure à partir d’un large éventail d’environnements de développement locaux et de langages de programmation différents. Pour plus d’informations sur les langages pris en charge pour les fonctions Azure, voir [Langages pris en charge dans Azure Fonctions](../../azure-functions/supported-languages.md). Pour plus d’informations sur les options de développement pour les fonctions Azure, voir [Coder et tester Azure Functions localement](../../azure-functions/functions-develop-local.md).
 
-Pour plus d’informations sur la réactivation des blobs à partir du niveau Archive, voir [Vue d’ensemble de la réactivation des objets blob à partir du niveau Archive](archive-rehydrate-overview.md).
+Pour plus d’informations sur la réhydratation des objets blobs à partir du niveau Archive, consultez [Vue d’ensemble de réhydratation des objets blob à partir du niveau Archive](archive-rehydrate-overview.md).
 
 ## <a name="prerequisites"></a>Configuration requise
 
@@ -253,17 +253,17 @@ Chaque fois que vous apportez des modifications au code de votre fonction Azure,
 
 Vous disposez maintenant d’une application de fonction qui contient une fonction Azure qui peut s’exécuter en réponse à un événement. L’étape suivante consiste à créer un abonnement à un événement à partir de votre compte de stockage. L’abonnement aux événements configure le compte de stockage pour publier un événement via Event Grid en réponse à une opération sur un objet blob dans votre compte de stockage. Event Grid envoie ensuite l’événement au point de terminaison du gestionnaire d’événements que vous avez spécifié. Dans ce cas, le gestionnaire d’événements est la fonction Azure que vous avez créée dans la section précédente.
 
-Lorsque vous créez l’abonnement aux événements, vous pouvez filtrer les événements qui sont envoyés au gestionnaire d’événements. Les événements à capturer lors de la réactivation d’un objet blob de niveau Archive sont **Microsoft.Storage.BlobTierChanged**, correspondant à une opération [Définir le niveau d’objet blob](/rest/api/storageservices/set-blob-tier), et **Microsoft.Storage.BlobCreated**, correspondant à une opération [Copier un objet blob](/rest/api/storageservices/copy-blob). Selon votre scénario, vous souhaiterez peut-être gérer un seul de ces événements.
+Lorsque vous créez l’abonnement aux événements, vous pouvez filtrer les événements qui sont envoyés au gestionnaire d’événements. Les événements à capturer lors de la réhydratation d’un blob de niveau Archive sont **Microsoft.Storage.BlobTierChanged**, correspondant à une opération [Définir le niveau du blob](/rest/api/storageservices/set-blob-tier), et **Microsoft.Storage.BlobCreated**, correspondant à une opération [Copier l’objet blob](/rest/api/storageservices/copy-blob). Selon votre scénario, vous souhaiterez peut-être gérer un seul de ces événements.
 
 Pour créer l’abonnement à l’événement, procédez comme suit :
 
-1. Dans le portail Azure, accédez au compte de stockage qui contient les objets blob à réactiver à partir du niveau Archive.
+1. Dans le portail Azure, accédez au compte de stockage qui contient les blobs à réhydrater à partir du niveau Archive.
 1. Sélectionnez le paramètre **Événements** dans le volet de navigation de gauche.
 1. Sur la page **Événements**, sélectionnez **Plus d’options**.
 1. Sélectionnez **Créer un abonnement à un événement**.
 1. Sur la page **Créer un abonnement à un événement** , dans la section **Détails de l’abonnement à un événement**, fournissez un nom pour l’abonnement à l’événement.
 1. Dans la section **Détails sur la rubrique**, fournissez un nom pour la rubrique système. La rubrique système représente un ou plusieurs événements publiés par le Stockage Azure. Pour plus d’informations sur les rubriques système, voir [Rubriques système dans Azure Event Grid](../../event-grid/system-topics.md).
-1. Dans la section **Types d’événement**, sélectionnez les événements **Objet blob créé** et **Niveau d’objet blob**. Selon la façon dont vous choisissez de réactiver un objet blob à partir du niveau Archive, l’un de ces deux événements se déclenche.
+1. Dans la section **Types d’événement**, sélectionnez les événements **Objet blob créé** et **Niveau d’objet blob**. Selon la façon dont vous choisissez de réhydrater un objet blob à partir du niveau Archive, un de ces deux événements est déclenché.
 
     :::image type="content" source="media/archive-rehydrate-handle-event/select-event-types-portal.png" alt-text="Capture d’écran montrant comment sélectionner les types d’événements pour les événements de réactivation des objets blob dans le portail Azure":::
 
@@ -290,20 +290,20 @@ Pour savoir comment tester la fonction en réactivant un objet blob, consultez l
 - [Réactiver un objet blob à l’aide d’une opération de copie](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-with-a-copy-operation)
 - [Réactiver un objet blob en modifiant son niveau](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)
 
-Une fois la réactivation terminée, l’objet blob de journal est écrit dans le même conteneur que l’objet blob que vous avez réactivé. Par exemple, une fois que vous avez réactivé un objet blob à l’aide d’une opération de copie, vous pouvez voir dans le portail Azure que l’objet blob source d’origine reste dans le niveau Archive, l’objet blob de destination entièrement réactivé apparaît dans la couche ciblée en ligne, et l’objet blob de journal créé par la fonction Azure s’affiche également dans la liste.
+Une fois la réactivation terminée, l’objet blob de journal est écrit dans le même conteneur que l’objet blob que vous avez réactivé. Par exemple, une fois que vous avez réhydraté un objet blob avec une opération de copie, vous pouvez voir dans le portail Azure que l’objet blob source d’origine reste dans le niveau Archive, que l’objet blob de destination entièrement réhydraté apparaît dans la couche ciblée en ligne, et que l’objet blob de journal créé par la fonction Azure apparaît également dans la liste.
 
-:::image type="content" source="media/archive-rehydrate-handle-event/copy-blob-archive-tier-rehydrated-with-log-blob.png" alt-text="Capture d’écran montrant l’objet blob d’origine dans le niveau Archive, l’objet blob réactivé dans le niveau chaud et l’objet blob de journal écrit par le gestionnaire d’événements":::
+:::image type="content" source="media/archive-rehydrate-handle-event/copy-blob-archive-tier-rehydrated-with-log-blob.png" alt-text="Capture d’écran montrant l’objet blob d’origine dans le niveau Archive, l’objet blob réhydraté dans le niveau Chaud et l’objet blob de journal écrit par le gestionnaire d’événements":::
 
-Gardez à l’esprit que la réactivation d’un objet blob peut prendre jusqu’à 15 heures, en fonction du paramètre de priorité de réactivation. Si vous définissez la priorité de réactivation sur **Élevée**, la réactivation peut s’effectuer en moins d’une heure pour les objets blob inférieurs à 10 Go de taille. Toutefois, une réactivation à priorité élevée entraîne un coût plus élevé. Pour plus d’informations, voir [Vue d’ensemble de la réactivation d’objets blob à partir du niveau Archive](archive-rehydrate-overview.md).
+Gardez à l’esprit que la réactivation d’un objet blob peut prendre jusqu’à 15 heures, en fonction du paramètre de priorité de réactivation. Si vous définissez la priorité de réactivation sur **Élevée**, la réactivation peut s’effectuer en moins d’une heure pour les objets blob inférieurs à 10 Go de taille. Toutefois, une réactivation à priorité élevée entraîne un coût plus élevé. Pour plus d’informations, consultez [Vue d’ensemble de la réhydratation d’objets blob à partir du niveau Archive](archive-rehydrate-overview.md).
 
 > [!TIP]
-> Bien que l’objectif de cet objectif est de gérer ces événements dans le contexte de la réactivation de l’objet blob, à des fins de test, il peut également être utile d’observer ces événements en réponse au téléchargement d’un objet blob ou de changer de niveau d’objet blob en ligne (*par ex.* de chaud à froid), parce que l’événement se déclenche immédiatement.
+> Bien que l’objectif de ce guide pratique soit de gérer ces événements dans le contexte de la réhydratation des objets blob, à des fins de test, il peut également être utile d’observer ces événements en réponse au chargement d’un objet blob ou au changement de niveau d’un objet blob en ligne (*par exemple*  de Chaud à Froid), car l’événement se déclenche immédiatement.
 
 Pour plus d’informations sur le filtrage des événements dans Event Grid, consultez [Guide pratique pour filtrer des événements pour Azure Event Grid](../../event-grid/how-to-filter-events.md).
 
 ## <a name="see-also"></a>Voir aussi
 
-- [Niveaux d’accès chaud, froid et archive pour les données d’objet blob](access-tiers-overview.md)
-- [Vue d’ensemble de la réactivation des objets blob à partir du niveau Archive](archive-rehydrate-overview.md)
+- [Niveaux d’accès Chaud, Froid et Archive pour les données d’objet blob](access-tiers-overview.md)
+- [Vue d’ensemble de la réhydratation des objets blob à partir du niveau archive](archive-rehydrate-overview.md)
 - [Réalimenter un objet blob archivé dans un niveau en ligne](archive-rehydrate-to-online-tier.md)
 - [Réaction aux événements de stockage Blob](storage-blob-event-overview.md)

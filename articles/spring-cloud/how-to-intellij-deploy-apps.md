@@ -1,20 +1,20 @@
 ---
-title: 'Tutoriel : Utiliser IntelliJ pour déployer des applications Azure Spring Cloud'
+title: 'Tutoriel : Déployer des applications Spring Boot à l’aide d’IntelliJ'
 description: Utilisez IntelliJ pour déployer des applications sur Azure Spring Cloud.
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 11/03/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: c3f1ead5d0c7e9ab7011a1179badc41b40912c83
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: af1932ddaba8416a25b6095d8b6a7cccb16f6796
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015380"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576020"
 ---
-# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Utiliser IntelliJ pour déployer des applications Azure Spring Cloud
+# <a name="deploy-spring-boot-applications-using-intellij"></a>Déployer des applications Spring Boot à l’aide d’IntelliJ
 
 **Cet article s’applique à :** ✔️ Java
 
@@ -42,7 +42,7 @@ Vous pouvez ajouter Azure Toolkit for IntelliJ IDEA 3.51.0 à partir de l’int
 
 ## <a name="tutorial-procedures"></a>Procédures du tutoriel
 
-Les procédures suivantes permettent de déployer une application Hello World à l’aide d’IntelliJ IDEA.
+Les procédures suivantes déploient une application Hello World à l’aide d’IntelliJ IDEA.
 
 * Ouvrir le projet gs-spring-boot
 * Déployer sur Azure Spring Cloud
@@ -81,11 +81,11 @@ Pour déployer sur Azure, vous devez vous connecter avec votre compte Azure et c
 
 1. Le plug-in exécutera la commande `mvn package` sur le projet, puis créera la nouvelle application et déploiera le fichier jar généré par la commande `package`.
 
-1. Si l’URL de l’application n’est pas affichée dans la fenêtre de sortie, récupérez-la à partir du portail Azure. Accédez à l’instance Azure Spring Cloud à partir de votre groupe de ressources.  Sélectionnez ensuite **Applications**.  L’application en cours d’exécution sera listée.
+1. Si l’URL de l’application n’est pas affichée dans la fenêtre de sortie, récupérez-la à partir du portail Azure. Accédez à l’instance Azure Spring Cloud à partir de votre groupe de ressources.  Sélectionnez ensuite **Applications**.  L’application en cours d’exécution sera listée. Sélectionnez l’application, puis copiez l’**URL** ou le **Point de terminaison de test**.
 
     ![Obtenir l’URL de test](media/spring-cloud-intellij-howto/get-test-url.png)
 
-1. Accédez à l’URL dans un navigateur.
+1. Accédez à l’URL ou au point de terminaison de test dans le navigateur.
 
     ![Naviguer dans le navigateur 2](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
 

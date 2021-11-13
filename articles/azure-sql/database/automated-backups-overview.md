@@ -11,12 +11,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
 ms.date: 08/28/2021
-ms.openlocfilehash: 2a6213a0359daf58d0ef34986d1bf3edbd4e1c9a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 8eb49e4d17de5c546278f78e50454db02ee2cfbd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424409"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458871"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>Sauvegardes automatisées - Azure SQL Database et Azurer SQL Managed Instance
 
@@ -61,7 +61,7 @@ Vous pouvez utiliser ces sauvegardes aux fins suivantes :
 - **Géo-restaurer** - [Restaurer une base de données dans une autre région géographique](recovery-using-backups.md#geo-restore). La géorestauration vous permet de procéder à la récupération après un sinistre géographique lorsque vous ne pouvez pas accéder à votre base de données ou aux sauvegardes dans la région principale. Cela crée une base de données sur un serveur ou une instance gérée existant(e), dans n’importe quelle région Azure.
    > [!IMPORTANT]
    > La géorestauration est disponible uniquement pour les bases de données SQL ou les instances gérées configurées avec un stockage de sauvegarde géoredondant.
-- **Restaurer une base de données à partir d’une sauvegarde à long terme** - [Restaurer une base de données à partir d’une sauvegarde spécifique à long terme](long-term-retention-overview.md) d’une base de données unique ou mise en pool, si la base de données a été configurée avec une stratégie de conservation à long terme (LTR). La conservation à long terme (LTR) vous permet de restaurer une ancienne version de la base de données à l’aide du [portail Microsoft Azurel](long-term-backup-retention-configure.md#using-the-azure-portal) ou de [Microsoft Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) pour répondre à une requête de conformité ou exécuter une ancienne version de l’application. Pour plus d’informations, consultez [Rétention à long terme](long-term-retention-overview.md).
+- **Restaurer une base de données à partir d’une sauvegarde à long terme** - [Restaurer une base de données à partir d’une sauvegarde spécifique à long terme](long-term-retention-overview.md) d’une base de données unique ou mise en pool, si la base de données a été configurée avec une stratégie de conservation à long terme (LTR). La conservation à long terme (LTR) vous permet de [restaurer une ancienne version de la base de données](long-term-backup-retention-configure.md) à l’aide du portail Azure, d’Azure CLI ou d’Azure PowerShell pour répondre à une requête de conformité ou exécuter une ancienne version de l’application. Pour plus d’informations, consultez [Rétention à long terme](long-term-retention-overview.md).
 
 > [!NOTE]
 > Dans Stockage Azure, le terme *réplication* fait référence à la copie d’objets blob d’un emplacement à un autre. Dans SQL, la *réplication de base de données* fait référence aux diverses technologies utilisées pour conserver plusieurs bases de données secondaires synchronisées avec une base de données principale.
@@ -77,7 +77,7 @@ Ce tableau synthétise les capacités et fonctionnalités de la [récupération 
 | **Objectif de délai de récupération (RTO)** | La restauration prend généralement moins de 12 heures, mais elle peut prendre plus de temps selon la taille et l’activité. Consultez [Temps de récupération](recovery-using-backups.md#recovery-time). | La restauration prend généralement moins de 12 heures, mais elle peut prendre plus de temps selon la taille et l’activité. Consultez [Temps de récupération](recovery-using-backups.md#recovery-time). | La restauration prend généralement moins de 12 heures, mais elle peut prendre plus de temps selon la taille et l’activité. Consultez [Temps de récupération](recovery-using-backups.md#recovery-time). | 
 | **Rétention** | 7 jours par défaut, jusqu’à 35 jours |  Activée par défaut, identique à la source.\*\* | Non activée par défaut, conservation jusqu’à 10 ans. |     
 | **Azure Storage**  | Géoredondant par défaut. Possibilité de configuration d’un stockage localement redondant ou redondant interzone. | Disponible quand la redondance du stockage de sauvegarde avec récupération jusqu’à une date et heure est définie comme géoredondante. Non disponible quand le magasin de sauvegarde avec récupération jusqu’à une date et heure est un stockage localement redondant ou redondant interzone. | Géoredondant par défaut. Possibilité de configuration d’un stockage localement redondant ou redondant interzone. | 
-| **Utilisation pour créer une base de données dans la même région** | Pris en charge | Prise en charge | Pris en charge |
+| **Utilisation pour créer une base de données dans la même région** | Pris en charge | Pris en charge | Pris en charge |
 | **Utilisation pour créer une base de données dans une autre région** | Non pris en charge | Prise en charge dans toutes les régions Azure | Prise en charge dans toutes les régions Azure |
 | **Utilisation pour créer une base de données dans un autre abonnement** |  Non pris en charge  |  Non prise en charge\*\*\* | Non prise en charge\*\*\*  | 
 | **Restauration par le biais du portail Azure**|Oui|Oui|Oui|
@@ -95,13 +95,13 @@ Ce tableau synthétise les capacités et fonctionnalités de la [récupération 
 
 Pour effectuer une restauration, consultez [Restaurer une base de données à partir de sauvegardes](recovery-using-backups.md). Vous pouvez essayer les opérations de configuration et de restauration de sauvegarde à l’aide des exemples suivants :
 
-| Opération | Portail Azure | Azure PowerShell |
-|---|---|---|
-| **Modifier la rétention des sauvegardes** | [Base de données SQL](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-the-azure-portal) | [Base de données SQL](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL Managed Instance](#change-the-short-term-retention-policy-using-powershell) |
-| **Modifier la rétention des sauvegardes à long terme** | [Base de données SQL](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-the-azure-portal) | [Base de données SQL](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-powershell)  |
-| **Restaurer une base de données à partir d’un point dans le temps** | [Base de données SQL](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [Base de données SQL](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Restaurer une base de données supprimée** | [Base de données SQL](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [Base de données SQL](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Restaurer une base de données à partir d’un stockage Blob Azure** | SQL Database - N/A <br/>SQL Managed Instance - N/A  | SQL Database - N/A <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
+| Opération | Portail Azure | Azure CLI | Azure PowerShell |
+|---|---|---|---|
+| **Modifier la rétention des sauvegardes** | [Base de données SQL](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-the-azure-portal) | [Base de données SQL](#change-the-short-term-retention-policy-using-azure-cli) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-azure-cli) | [Base de données SQL](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL Managed Instance](#change-the-short-term-retention-policy-using-powershell) |
+| **Modifier la rétention des sauvegardes à long terme** | [Base de données SQL](long-term-backup-retention-configure.md#create-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) | [Base de données SQL](long-term-backup-retention-configure.md) <br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) | [Base de données SQL](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Restaurer une base de données à partir d’un point dans le temps** | [Base de données SQL](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [Base de données SQL](/cli/azure/sql/db#az_sql_db_restore) <br/> [SQL Managed Instance](/cli/azure/sql/midb#az_sql_midb_restore) | [Base de données SQL](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Restaurer une base de données supprimée** | [Base de données SQL](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [Base de données SQL](long-term-backup-retention-configure.md#restore-from-ltr-backups) <br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#restore-from-ltr-backups) | [Base de données SQL](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Restaurer une base de données à partir d’un stockage Blob Azure** |  |  | <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
 
 ## <a name="backup-scheduling"></a>Planification de la sauvegarde
 
@@ -151,7 +151,7 @@ La Base de données SQL Azure et l’Instance managée SQL Azure fournissent tou
 
 ### <a name="short-term-retention"></a>Durée de rétention à court terme
 
-Pour toutes les bases de données nouvelles, restaurées et copiées, Azure SQL Database et Azure SQL Managed Instance conservent des sauvegardes suffisantes pour autoriser la récupération jusqu’à une date et heure au cours des sept derniers jours par défaut. Des sauvegardes complètes, différentielles et de journal régulières sont effectuées pour garantir que les bases de données peuvent être restaurées à n’importe quel point dans le temps au cours de la période de rétention définie pour la base de données ou l’instance managée. En outre, pour les bases de données Azure SQL, les sauvegardes différentielles peuvent être configurées sur une fréquence de 12 heures (par défaut) ou sur 24 heures. 
+Pour toutes les bases de données nouvelles, restaurées et copiées, Azure SQL Database et Azure SQL Managed Instance conservent des sauvegardes suffisantes pour autoriser la récupération jusqu’à une date et heure au cours des sept derniers jours par défaut. Des sauvegardes complètes, différentielles et de journal régulières sont effectuées pour garantir que les bases de données peuvent être restaurées à n’importe quel point dans le temps au cours de la période de rétention définie pour la base de données ou l’instance managée. En outre, pour les bases de données Azure SQL, les sauvegardes différentielles peuvent être configurées sur une fréquence de 12 heures ou 24 heures. 
 
 > [!NOTE]
 > Une fréquence de sauvegarde différentielle de 24 heures peut augmenter le temps nécessaire pour restaurer la base de données. 
@@ -284,6 +284,55 @@ Pour modifier la période de rétention des sauvegardes PITR ou la fréquence de
 
 ---
 
+### <a name="change-the-short-term-retention-policy-using-azure-cli"></a>Modifier la stratégie de conservation à court terme à l’aide d’Azure CLI
+
+Préparez votre environnement pour l’interface Azure CLI.
+
+[!INCLUDE[azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+#### <a name="sql-database"></a>[Base de données SQL](#tab/single-database)
+
+Modifiez la durée de conservation des sauvegardes PITR (limite de restauration dans le temps) et la fréquence des sauvegardes différentielles pour les bases de données Azure SQL actives à l’aide de l’exemple suivant.
+
+```azurecli
+# Set new PITR differential backup frequency on an active individual database
+# Valid backup retention must be between 1 and 35 days
+# Valid differential backup frequency must be ether 12 or 24
+az sql db str-policy set \
+    --resource-group myresourcegroup \
+    --server myserver \
+    --name mydb \
+    --retention-days 28 \
+    --diffbackup-hours 24
+```
+
+#### <a name="sql-database"></a>[Base de données SQL](#tab/managed-instance)
+
+Utilisez l’exemple suivant pour changer la conservation des sauvegardes PITR d’une base de données **unique active** dans une instance managée SQL.
+
+```azurecli
+# Set new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+az sql midb short-term-retention-policy set \
+    --resource-group myresourcegroup \
+    --managed-instance myinstance \
+    --name mymanageddb \
+    --retention-days 1 \
+```
+
+Utilisez l’exemple suivant pour changer la conservation des sauvegardes PITR pour **toutes les bases de données actives** dans une instance managée SQL.
+
+```azurecli
+# Set new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+az sql midb short-term-retention-policy set \
+    --resource-group myresourcegroup \
+    --managed-instance myinstance \
+    --retention-days 1 \
+```
+
+---
+
 ### <a name="change-the-short-term-retention-policy-using-powershell"></a>Modifier la stratégie de rétention à court terme à l’aide de PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -301,7 +350,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 ```
 
 ```powershell
-# SET new PITR differental backup frequency on an active individual database
+# SET new PITR differential backup frequency on an active individual database
 # Valid differential backup frequency must be ether 12 or 24. 
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28 -DiffBackupIntervalInHours 24
 ```
@@ -447,6 +496,38 @@ Recherchez l’option permettant de sélectionner la redondance du stockage de s
 
 ---
 
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-cli"></a>Configurer la redondance du stockage de sauvegarde à l’aide d’Azure CLI
+
+#### <a name="sql-database"></a>[Base de données SQL](#tab/single-database)
+
+Pour configurer la redondance du stockage de sauvegarde lors de la création d’une base de données, vous pouvez spécifier le paramètre `backup-storage-redundancy`. Les valeurs possibles sont Geo, Zone et Local. Par défaut, toutes les bases de données SQL utilisent le stockage géoredondant pour les sauvegardes. La géorestauration est désactivée si une base de données est créée ou mise à jour avec un stockage de sauvegarde localement redondant ou redondant interzone.
+
+```azurecli
+az sql db create \
+    --resource-group myresourcegroup \
+    --server myserver \
+    --name mydb \
+    --tier GeneralPurpose \
+    --backup-storage-redundancy Local
+```
+
+Vous pouvez également mettre à jour une base de données existante avec le paramètre `backup-storage-redundancy`.
+
+```azurecli
+az sql db update \
+    --resource-group myresourcegroup \
+    --server myserver \
+    --name mydb \
+    --backup-storage-redundancy Local
+```
+Pour plus d’informations, consultez la page sur les commandes [az sql db create](/cli/azure/sql/db#az_sql_db_create) et [az sql db update](/cli/azure/sql/db#az_sql_db_update).
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+
+La configuration de la redondance du stockage de sauvegarde n’est pas disponible pour une instance managée SQL lors de l’utilisation d’Azure CLI. Pour plus d’informations, consultez les options [Portail Azure](#configure-backup-storage-redundancy-by-using-the-azure-portal) ou [PowerShell](#configure-backup-storage-redundancy-by-using-powershell).
+
+---
+
 ### <a name="configure-backup-storage-redundancy-by-using-powershell"></a>Configurer la redondance du stockage de sauvegarde à l’aide de PowerShell
 
 #### <a name="sql-database"></a>[Base de données SQL](#tab/single-database)
@@ -512,7 +593,7 @@ Découvrez comment attribuer des stratégies à l’aide du [portail Azure](../.
 
 - Les sauvegardes de base de données sont une partie essentielle de toute stratégie de continuité d’activité ou de récupération d’urgence, dans la mesure où elles protègent vos données des corruptions et des suppressions accidentelles. Pour en savoir plus sur les autres solutions de continuité des activités SQL Database, consultez [Vue d’ensemble de la continuité des activités](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - Pour plus d’informations sur la façon de configurer, gérer et restaurer depuis la conservation à long terme de sauvegardes automatisées dans Stockage Blob Azure avec le portail Azure, consultez [Gestion de la rétention des sauvegardes à long terme à l’aide du Portail Azure](long-term-backup-retention-configure.md).
-- Pour plus d’informations sur la façon de configurer, gérer et restaurer des données à partir d’une conservation à long terme de sauvegardes automatisées dans Stockage Blob Azure avec PowerShell, voir [Gestion de la rétention des sauvegardes à long terme à l’aide de PowerShell](long-term-backup-retention-configure.md#using-powershell). 
+- Pour plus d’informations sur la façon de configurer, gérer et restaurer des données à partir d’une conservation à long terme de sauvegardes automatisées dans Stockage Blob Azure avec PowerShell, voir [Gestion de la rétention des sauvegardes à long terme à l’aide de PowerShell](long-term-backup-retention-configure.md). 
 - Apprenez-en davantage sur la [restauration d’une base de données à un point dans le temps à l’aide du portail Azure](recovery-using-backups.md).
 - Apprenez-en davantage sur la [restauration d’une base de données à un point dans le temps à l’aide de PowerShell](scripts/restore-database-powershell.md).
 - Pour tout savoir sur la consommation du stockage de sauvegarde sur Azure SQL Managed Instance, consultez [Explication de la consommation du stockage de sauvegarde sur Managed Instance](https://aka.ms/mi-backup-explained).

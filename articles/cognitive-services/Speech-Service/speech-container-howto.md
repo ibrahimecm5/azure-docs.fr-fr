@@ -3,21 +3,21 @@ title: Installer et exécuter des conteneurs Docker pour les API du service Spee
 titleSuffix: Azure Cognitive Services
 description: Utilisez les conteneurs Docker pour le service Speech pour effectuer localement la reconnaissance vocale, la transcription, la génération, etc.
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2021
-ms.author: aahi
+ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: local, Docker, conteneur
-ms.openlocfilehash: a930b5234f13d7e53bc50b6dc3f7b3d959df2e0e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 3297231244cd5323c0218dcce02ac20453456685
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131024584"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867168"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installer et exécuter des conteneurs Docker pour les API du service Speech 
 
@@ -30,11 +30,11 @@ Les conteneurs Speech permettent aux clients de créer une architecture d’appl
 
 | Conteneur | Fonctionnalités | Latest | État de la version |
 |--|--|--|--|
-| Reconnaissance vocale | Analyse les sentiments et transcrit de façon continue de la parole en temps réel ou des enregistrements audio par lots, avec des résultats intermédiaires.  | 2.15.0 | Mise à la disposition générale |
-| Reconnaissance vocale personnalisée | À l’aide d’un modèle personnalisé issu du [portail Custom Speech](https://speech.microsoft.com/customspeech), transcrit en continu de la parole en temps réel ou des enregistrements audio en texte, avec des résultats intermédiaires. | 2.15.0 | Mise à la disposition générale |
+| Reconnaissance vocale | Analyse les sentiments et transcrit de façon continue de la parole en temps réel ou des enregistrements audio par lots, avec des résultats intermédiaires.  | 2.16.0 | Mise à la disposition générale |
+| Reconnaissance vocale personnalisée | À l’aide d’un modèle personnalisé issu du [portail Custom Speech](https://speech.microsoft.com/customspeech), transcrit en continu de la parole en temps réel ou des enregistrements audio en texte, avec des résultats intermédiaires. | 2.16.0 | Mise à la disposition générale |
 | Synthèse vocale | Convertit le texte en paroles naturelles par le biais d’une entrée de texte brut ou du langage de balisage SSML (Speech Synthesis Markup Language). | 1.15.0 | Mise à la disposition générale |
 | Identification de la langue parlée | Permet de détecter la langue parlée en fichiers audio. | 1.3.0 | preview |
-| Synthèse vocale neuronale | Convertit du texte en parole naturelle grâce à la technologie de réseau neuronal profond qui permet d’obtenir une parole synthétisée plus naturelle. | 1.9.0 | Mise à la disposition générale |
+| Synthèse vocale neuronale | Convertit du texte en parole naturelle grâce à la technologie de réseau neuronal profond qui permet d’obtenir une parole synthétisée plus naturelle. | 1.10.0 | Mise à la disposition générale |
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -311,18 +311,18 @@ diarize_speech_config.set_service_property(
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analyser les sentiments sur la sortie de la reconnaissance vocale 
-À partir de la version v2.6.0 du conteneur de reconnaissance vocale, vous devez utiliser le point de terminaison de l’API Analyse de texte 3.0 au lieu de la préversion. Par exemple
+À partir de la version v2.6.0 du conteneur de reconnaissance vocale, vous devez utiliser le point de terminaison de l’API 3.0 du service de langage au lieu de la préversion. Par exemple
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
 * `https://localhost:5000/text/analytics/v3.0/sentiment`
 
 > [!NOTE]
-> L’API Analyse de texte `v3.0` n’est pas à compatibilité descendante avec Analyse de texte `v3.0-preview.1`. Pour bénéficier de la prise en charge des dernières fonctionnalités de sentiment, utilisez la version `v2.6.0` de l’image conteneur Reconnaissance vocale et Analyse de texte `v3.0`.
+> L’API `v3.0` du service de langage n’offre pas de compatibilité descendante avec `v3.0-preview.1`. Pour bénéficier de la prise en charge des dernières fonctionnalités de sentiment, utilisez la version `v2.6.0` de l’image conteneur Reconnaissance vocale et la version `v3.0` du service de langage.
 
-À compter de la version  2.2.0 du conteneur de reconnaissance vocale, vous pouvez appeler l’[API Analyse de sentiments v3](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) sur la sortie. Pour appeler l’analyse des sentiments, vous avez besoin d’un point de terminaison de ressource de l’API Analyse de texte. Par exemple : 
+À compter de la version  2.2.0 du conteneur de reconnaissance vocale, vous pouvez appeler l’[API Analyse de sentiments v3](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) sur la sortie. Pour appeler l’analyse des sentiments, vous avez besoin d’un point de terminaison de ressource de l’API du service de langage. Par exemple : 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
-Si vous accédez à un point de terminaison Analyse de texte dans le cloud, vous devez disposer d’une clé. Si vous exécutez l’Analyse de texte localement, il est possible que vous n’ayez pas à la fournir.
+Si vous accédez à un point de terminaison du service de langage dans le cloud, vous devez disposer d’une clé. Si vous exécutez des fonctionnalités du service de langage localement, vous n’aurez peut-être pas besoin de fournir cette valeur.
 
 La clé et le point de terminaison sont passés au conteneur Speech comme arguments, comme dans l’exemple suivant.
 
@@ -339,7 +339,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 Cette commande :
 
 * Effectue les mêmes étapes que la commande ci-dessus.
-* Stocke un point de terminaison et une clé d’API Analyse de texte pour l’envoi de demandes d’analyse de sentiments. 
+* Stocke un point de terminaison et une clé d’API du service de langage pour l’envoi de requêtes d’analyse de sentiments. 
 
 #### <a name="phraselist-v2-on-the-speech-to-text-output"></a>Liste d’expressions v2 sur la sortie de reconnaissance vocale 
 
@@ -541,13 +541,13 @@ Pour plus d’informations sur l’utilisation des protocoles WSS et HTTPS, cons
 
 #### <a name="analyze-sentiment"></a>Analyser les sentiments
 
-Si vous avez fourni vos informations d’identification d’API Analyse de texte [au conteneur](#analyze-sentiment-on-the-speech-to-text-output), vous pouvez utiliser le SDK Speech pour envoyer des demandes de reconnaissance vocale avec l’analyse des sentiments. Vous pouvez configurer les réponses de l’API pour qu’elles utilisent un format *simple* ou *détaillé*.
+Si vous avez fourni vos informations d’identification d’API de service de langage [au conteneur](#analyze-sentiment-on-the-speech-to-text-output), vous pouvez utiliser le SDK Speech pour envoyer des requêtes de reconnaissance vocale avec l’analyse des sentiments. Vous pouvez configurer les réponses de l’API pour qu’elles utilisent un format *simple* ou *détaillé*.
 > [!NOTE]
 > La version v1.13 du kit de développement logiciel (SDK) Python du service de reconnaissance vocale a identifié un problème avec l’analyse des sentiments. Utilisez la version v1.12.x ou une version antérieure si vous utilisez l’analyse des sentiments dans le Kit de développement logiciel (SDK) Python du service de reconnaissance vocale.
 
 # <a name="simple-format"></a>[Format simple](#tab/simple-format)
 
-Pour configurer le client Speech de sorte qu’il utilise un format simple, ajoutez `"Sentiment"` comme valeur pour `Simple.Extensions`. Si vous voulez choisir une version de modèle d’Analyse de texte spécifique, remplacez `'latest'` dans la configuration de la propriété `speechcontext-phraseDetection.sentimentAnalysis.modelversion`.
+Pour configurer le client Speech de sorte qu’il utilise un format simple, ajoutez `"Sentiment"` comme valeur pour `Simple.Extensions`. Si vous voulez choisir une version de modèle de service de langage spécifique, remplacez `'latest'` dans la configuration de la propriété `speechcontext-phraseDetection.sentimentAnalysis.modelversion`.
 
 ```python
 speech_config.set_service_property(
@@ -581,7 +581,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[Format détaillé](#tab/detailed-format)
 
-Pour configurer le client Speech de sorte qu’il utilise un format détaillé, ajoutez `"Sentiment"` comme valeur pour `Detailed.Extensions`, `Detailed.Options`, ou les deux. Si vous voulez choisir une version de modèle d’Analyse de texte spécifique, remplacez `'latest'` dans la configuration de la propriété `speechcontext-phraseDetection.sentimentAnalysis.modelversion`.
+Pour configurer le client Speech de sorte qu’il utilise un format détaillé, ajoutez `"Sentiment"` comme valeur pour `Detailed.Extensions`, `Detailed.Options`, ou les deux. Si vous voulez choisir une version de modèle d’analyse des sentiments spécifique, remplacez `'latest'` dans la configuration de la propriété `speechcontext-phraseDetection.sentimentAnalysis.modelversion`.
 
 ```python
 speech_config.set_service_property(

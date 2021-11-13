@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 10/11/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 69c44e8fe4ff1eeb77ce2efc1cf9ac11158d82ee
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 80a9701fb4d7ac3f93d7ba9c35cba2cc34dc7416
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811358"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258541"
 ---
 # <a name="get-started-with-azure-service-bus-queues-net"></a>Bien démarrer avec les files d’attente Azure Service Bus (.NET)
 Dans ce guide de démarrage rapide, vous allez effectuer les étapes suivantes :
@@ -450,7 +450,7 @@ Dans cette section, vous allez ajouter du code pour récupérer des messages à 
 1. Vérifiez à nouveau le portail. Attendez quelques minutes et actualisez la page si vous ne voyez pas `0` pour **Nombre de messages actifs**. 
 
     - Les valeurs **Nombre de messages actifs** et **Taille actuelle** sont à présent égales à **0**.
-    - Dans le graphique **Messages** de la section inférieure **Métriques**, vous pouvez voir huit messages entrants et huit messages sortants pour la file d’attente. 
+    - Dans le graphique **Messages** de la section **Métriques** en bas, vous pouvez voir trois messages entrants et trois messages sortants pour la file d’attente. 
     
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Messages actifs et taille après réception" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 

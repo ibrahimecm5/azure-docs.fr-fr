@@ -4,23 +4,23 @@ description: Suivez les engagements avec les clients Azure en liant les ID parte
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 09/08/2021
+ms.date: 11/04/2021
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f554c8e29cbff3b78a3390cb3f6ef155a7a61b6f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b5951b46448d7bfa1ac5010bd17a0a5e7d98b89f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744184"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577799"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Lier un ID partenaire à vos comptes Azure
 
 Les partenaires de Microsoft fournissent des services qui aident les clients à atteindre leurs objectifs commerciaux et stratégiques, à l’aide de produits Microsoft. Lorsqu’il agit au nom du client pour la gestion, la configuration et le support des services Azure, le partenaire doit accéder à l’environnement du client. En utilisant le lien d’administrateur partenaire (PAL), les partenaires peuvent associer leur ID Microsoft Partner Network aux informations d’identification utilisées pour la fourniture de service.
 
-PAL permet à Microsoft d’identifier et de gratifier les partenaires qui favorisent la réussite des clients Azure. Microsoft peut attribuer une influence et un revenu consommé Azure à votre organisation en fonction des autorisations du compte (rôle Azure) et de l’étendue (abonnement, groupe de ressources, ressource).
+PAL permet à Microsoft d’identifier et de gratifier les partenaires qui favorisent la réussite des clients Azure. Microsoft peut attribuer une influence et un revenu consommé Azure à votre organisation en fonction des autorisations du compte (rôle Azure) et de l’étendue (abonnement, groupe de ressources, ressource). Si un groupe dispose d’un accès Azure RBAC, la liste d’accès à la publication est reconnue pour tous les utilisateurs du groupe.
 
 ## <a name="get-access-from-your-customer"></a>Accéder à votre client
 

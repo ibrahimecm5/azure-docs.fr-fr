@@ -2,17 +2,17 @@
 title: Conditions de correspondance du moteur de règles Standard pour Azure CDN | Microsoft Docs
 description: Documentation de référence sur les conditions de correspondance du moteur de règles Standard pour Azure Content Delivery Network (Azure CDN).
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: allensu
-ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: bd0c6b0578fc301c38e96b654a281eb025c54dc5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81259922"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469917"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Conditions de correspondance du moteur de règles Standard pour Azure CDN
 
@@ -113,6 +113,7 @@ Sans correspondance IP | Adresse IP (séparée par des espaces)
 - La syntaxe d’un bloc d’adresses IP est l’adresse IP de base suivie d’une barre oblique et de la taille de préfixe. Par exemple :
   - **Exemple IPv4** : *5.5.5.64/26* correspond aux requêtes qui proviennent des adresses 5.5.5.64 à 5.5.5.127.
   - **Exemple IPv6** : *1:2:3:/48* correspond aux requêtes qui proviennent des adresses 1:2:3:0:0:0:0:0 à 1:2:3:ffff:ffff:ffff:ffff:ffff.
+- L’adresse distante représente l’adresse IP d’origine du client, c’est-à-dire soit à partir de la connexion réseau, soit de l’en-tête de requête X-Forwarded-For si l’utilisateur se trouve derrière un proxy.
 
 ### <a name="request-body"></a>Corps de la demande
 

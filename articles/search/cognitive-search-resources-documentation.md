@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 26338164ca073ff5d9b331d36a5a9d935a3f3468
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: acf4d6fa3057dca4d1b7ccf0c08ee8c8ca5ef31a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129707606"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555523"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Ressources de documentation pour l’enrichissement de l’IA dans la recherche cognitive Azure
 
@@ -43,7 +43,7 @@ Vous trouverez ci-dessous une liste consolidée de la documentation sur l’enri
 
 + [Démarrage rapide : Créer une base de connaissances dans le portail Azure](knowledge-store-create-portal.md)
 + [Créer une base de connaissances à l’aide de REST et Postman](knowledge-store-create-rest.md)
-+ [Visualiser une base de connaissances avec l’Explorateur Stockage](knowledge-store-view-storage-explorer.md)
++ [Voir une base de connaissances avec le navigateur de stockage](knowledge-store-view-storage-explorer.md)
 + [Connecter une base de connaissances à Power BI](knowledge-store-connect-power-bi.md)
 + [Définir des projections dans une base de connaissances](knowledge-store-projections-examples.md)
 

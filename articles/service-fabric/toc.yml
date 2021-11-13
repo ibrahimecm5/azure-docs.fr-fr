@@ -415,7 +415,7 @@
         - name: Configurer la répartition des zones de disponibilité d’un cluster managé
           href: how-to-managed-cluster-availability-zones.md
         - name: Activer le chiffrement de disque pour des nœuds de cluster managés
-          href: how-to-enable-managed-cluster-disk-encryption.md
+          href: how-to-managed-cluster-enable-disk-encryption.md
         - name: Sélectionner des types de disques managés pour des nœuds de clusters managés
           href: how-to-managed-cluster-managed-disk.md
         - name: Configurer les options de mise à niveau de cluster managé

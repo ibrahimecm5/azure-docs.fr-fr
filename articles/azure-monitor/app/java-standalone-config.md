@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c5de4ed71de7f6cb6534620cbfd1bc62226123e5
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 31a7ed92f6fbdfc60753b91709738209acc38fc2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132794"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465475"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Options de configuration – Azure Monitor Application Insights pour Java
 
@@ -39,14 +39,14 @@ Vous trouverez plus de détails, ainsi que des options de configuration supplém
 
 ## <a name="configuration-file-path"></a>Chemin d'accès au fichier de configuration
 
-Par défaut, Application Insights Java 3.x s’attend à ce que le fichier config soit nommé `applicationinsights.json` et se trouve dans le même répertoire que `applicationinsights-agent-3.2.0.jar`.
+Par défaut, Application Insights Java 3.x s’attend à ce que le fichier config soit nommé `applicationinsights.json` et se trouve dans le même répertoire que `applicationinsights-agent-3.2.2.jar`.
 
 Vous pouvez spécifier votre propre chemin d’accès au fichier de configuration à l’aide d'un des éléments suivants :
 
 * variable d’environnement `APPLICATIONINSIGHTS_CONFIGURATION_FILE`, ou
 * propriété système Java `applicationinsights.configuration.file`
 
-Si vous spécifiez un chemin d’accès relatif, il sera résolu par rapport au répertoire où se trouve `applicationinsights-agent-3.2.0.jar`.
+Si vous spécifiez un chemin d’accès relatif, il sera résolu par rapport au répertoire où se trouve `applicationinsights-agent-3.2.2.jar`.
 
 ## <a name="connection-string"></a>Chaîne de connexion
 
@@ -348,11 +348,16 @@ Vous pouvez également supprimer ces instrumentations à l’aide de ces variabl
       },
       "springIntegration": {
         "enabled": true
-      }
+      },
+      "akka": { 
+        "enabled": true
+      },
     }
   }
 }
 ```
+> [!NOTE]
+> L’instrumentation Akka est disponible à partir de la version 3.2.2
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -458,7 +463,7 @@ Par défaut, Application Insights Java 3.x se connecte au niveau `INFO` au fich
 
 `level` peut être `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` ou `TRACE`.
 
-`path` peut être un chemin d’accès absolu ou relatif. Les chemins d’accès relatifs sont résolus par rapport au répertoire où se trouve le fichier `applicationinsights-agent-3.2.0.jar`.
+`path` peut être un chemin d’accès absolu ou relatif. Les chemins d’accès relatifs sont résolus par rapport au répertoire où se trouve le fichier `applicationinsights-agent-3.2.2.jar`.
 
 `maxSizeMb` est la taille maximale du fichier journal avant son remplacement.
 

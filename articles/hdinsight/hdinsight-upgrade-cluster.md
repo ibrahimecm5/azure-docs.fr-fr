@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 4aa25368e156ce793e969f866490352e253559fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fa655092de1c3e103381ccd58bf840b70a3809e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871722"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249758"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Effectuer la migration d’un cluster HDInsight vers une version plus récente
 
@@ -50,6 +50,21 @@ Les documents suivants fournissent des conseils sur la migration de certaines ch
 ## <a name="backup-and-restore"></a>Sauvegarde et restauration
 
 Pour plus d’informations sur la sauvegarde et la restauration d’une base de données, consultez [Récupérer une base de données dans Azure SQL Database à l’aide des sauvegardes de base de données automatisées](../azure-sql/database/recovery-using-backups.md).
+
+## <a name="upgrade-scenarios"></a>Scénarios de mise à niveau
+
+Comme mentionné plus haut, Microsoft recommande de migrer régulièrement les clusters HDInsight vers la dernière version afin de bénéficier des nouvelles fonctionnalités et des derniers correctifs. Consultez les différentes raisons listées ci-dessous pour lesquelles nous pourrions vous demander de supprimer et redéployer un cluster :
+
+* La version du cluster est [mise hors service](hdinsight-retired-versions.md) ou est passée en [support De base](hdinsight-36-component-versioning.md) et vous rencontrez un problème de cluster qui serait résolu avec une version plus récente.
+* La cause racine d’un problème de cluster a été identifiée comme étant en lien avec une machine virtuelle sous-dimensionnée. [Consultez la configuration de nœuds recommandée par Microsoft](hdinsight-supported-node-configuration.md#all-supported-regions-except-brazil-south-and-japan-west).
+* Un client ouvre un cas de support et l’équipe technique de Microsoft détermine que le problème a déjà été résolu dans une version du cluster plus récente.
+* Une base de données du metastore par défaut (Ambari, Hive, Oozie, Ranger) a atteint sa limite d’utilisation. Dans ce cas, Microsoft vous demande de recréer le cluster avec une base de données d’un [ metastore personnalisé](hdinsight-use-external-metadata-stores.md#custom-metastore).
+* La cause racine d’un problème de cluster est liée à une **opération non prise en charge**. Voici quelques opérations courantes non prises en charge :
+     * **Déplacement ou ajout d’un service dans Ambari**. Quand vous affichez des informations sur les services de cluster dans Ambari, l’une des actions disponibles dans le menu Service Actions (Actions de service) est **Move [Service Name]** (Déplacer [Nom du service]). Une autre action est **Add [Service Name]** (Ajouter [Nom du service]). Ces deux options ne sont pas prises en charge.
+     * **Altération du package Python**. Les clusters HDInsight sont basés sur les environnements Python intégrés, Python 2.7 et Python 3.5. L’installation directe de packages personnalisés dans ces environnements intégrés par défaut peut entraîner des modifications inattendues de la version de la bibliothèque et arrêter le cluster. Découvrez comment [effectuer une installation sécurisée des packages Python externes personnalisés](./spark/apache-spark-python-package-installation.md#safely-install-external-python-packages) pour vos applications Spark.
+     * **Logiciels tiers**. Les clients ont la possibilité d’installer des logiciels tiers sur leurs clusters HDInsight. Toutefois, nous recommandons de recréer le cluster en cas d’arrêt des fonctionnalités existantes.
+     * **Plusieurs charges de travail sur le même cluster**. Dans HDInsight 4.0, Hive Warehouse Connector nécessite des clusters distincts pour les charges de travail Spark et Interactive Query. [Suivez les étapes ci-dessous pour configurer les deux clusters dans Azure HDInsight](interactive-query/apache-hive-warehouse-connector.md). De même, l’intégration de [Spark avec HBASE](hdinsight-using-spark-query-hbase.md) nécessite deux clusters différents.
+     * **Changement du mot de passe de la base de données Ambari personnalisée**. Le mot de passe de la base de données Ambari est défini au moment de la création du cluster et il n’existe pas de mécanisme pour le changer. Quand un client déploie le cluster avec une [base de données Ambari personnalisée](hdinsight-custom-ambari-db.md), il peut changer le mot de passe de cette base de données sur SQL DB ; en revanche, il n’a aucune possibilité de changer ce mot de passe pour un cluster HDInsight déjà en cours d’exécution.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

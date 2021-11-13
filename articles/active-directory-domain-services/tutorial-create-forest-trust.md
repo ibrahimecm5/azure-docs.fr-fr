@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 10/19/2021
 ms.author: justinha
-ms.openlocfilehash: 027217ab5963f084fca7678c9e51f7188d39a191
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: c103205453a680a9f67c0150cdbfd60cc062ca69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707892"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266160"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Tutoriel : Créer une approbation de forêt sortante pour un domaine local dans Azure Active Directory Domain Services
 
@@ -74,9 +74,20 @@ Avant de configurer une approbation de forêt dans Azure AD DS, assurez-vous que
 Pour résoudre correctement le domaine managé à partir de l’environnement local, vous serez peut-être amené à ajouter des redirecteurs aux serveurs DNS existants. Si vous n’avez pas configuré l’environnement local de manière à ce qu’il communique avec le domaine managé, effectuez les étapes suivantes à partir d’une station de travail de gestion pour le domaine AD DS local :
 
 1. Sélectionnez **Démarrer** > **Outils d’administration** > **DNS**.
-1. Cliquez avec le bouton droit sur un serveur DNS comme *myAD01*, puis sélectionnez **Propriétés**.
-1. Sélectionnez **Redirecteurs**, puis **Modifier** pour ajouter des redirecteurs supplémentaires.
-1. Ajoutez les adresses IP du domaine managé, par exemple *10.0.2.4* et *10.0.2.5*.
+1. Sélectionnez votre zone DNS, par exemple *aaddscontoso.com*.
+1. Sélectionnez **Redirecteurs conditionnels**, puis cliquez avec le bouton droit et sélectionnez **Nouveau redirecteur conditionnel...**
+1. Entrez votre autre **Domaine DNS**, par exemple *contoso.com*, puis entrez les adresses IP des serveurs DNS pour cet espace de noms, comme illustré dans l’exemple suivant :
+
+    ![Capture d’écran montrant comment ajouter et configurer un redirecteur conditionnel pour le serveur DNS.](./media/manage-dns/create-conditional-forwarder.png)
+
+1. Cochez la case pour **Stocker ce redirecteur conditionnel dans Active Directory, et le répliquer comme suit**, puis sélectionnez l’option *Tous les serveurs DNS de ce domaine*, comme illustré dans l’exemple suivant :
+
+    ![Capture d’écran de la sélection de tous les serveurs DNS dans ce domaine.](./media/manage-dns/store-in-domain.png)
+
+    > [!IMPORTANT]
+    > Si le redirecteur conditionnel est stocké dans la *forêt* et non dans le *domaine*, il échoue.
+
+1. Pour créer le redirecteur conditionnel, sélectionnez **OK**.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Créer une approbation de forêt entrante dans le domaine local
 

@@ -2,13 +2,13 @@
 title: Utiliser des extensions avec des pools Batch
 description: Les extensions sont de petites applications qui facilitent la configuration et l’installation post-approvisionnement sur des nœuds de calcul Batch.
 ms.topic: how-to
-ms.date: 08/06/2021
-ms.openlocfilehash: b9c34dd5d191253352181158ece29218657f8d75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/03/2021
+ms.openlocfilehash: bac3c6c53552ac99aef6210cbe184da754580ca0
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524021"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508681"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Utiliser des extensions avec des pools Batch
 
@@ -22,12 +22,19 @@ Vous pouvez vérifier l’état en direct des extensions que vous utilisez et r�
 - Le type d’extension CustomScript est réservé au service Azure Batch et ne peut pas être remplacé.
 - Certaines extensions ont besoin, pour fonctionner correctement, d’une identité managée au niveau du pool qui soit accessible dans le contexte d’un nœud de calcul. Le cas échéant, consultez [Configuration des identités managées dans des pools Batch](managed-identity-pools.md).
 
-### <a name="supported-extensions"></a>Extensions prises en charge
+## <a name="supported-extensions"></a>Extensions prises en charge
 
 Les extensions qui peuvent actuellement être installées lors de la création d’un pool Batch sont les suivantes :
 
-- Extension Azure Key Vault pour [Linux](../virtual-machines/extensions/key-vault-linux.md) et [Windows](../virtual-machines/extensions/key-vault-windows.md)
-- Log Analytics et extension de supervision pour [Linux](../virtual-machines/extensions/oms-linux.md) et [Windows](../virtual-machines/extensions/oms-windows.md)
+- [Extension Azure Key Vault pour Linux](../virtual-machines/extensions/key-vault-linux.md)
+- [Extension Azure Key Vault pour Windows](../virtual-machines/extensions/key-vault-windows.md)
+- [Extension de monitoring et d’analytique des journaux Azure Monitor pour Linux](../virtual-machines/extensions/oms-linux.md)
+- [Extension de monitoring et d’analytique des journaux Azure Monitor pour Windows](../virtual-machines/extensions/oms-windows.md)
+- [Extension Desired State Configuration (DSC) Azure](../virtual-machines/extensions/dsc-overview.md)
+- [Extension Diagnostics Azure pour machines virtuelles Windows](../virtual-machines/windows/extensions-diagnostics.md)
+- [Extension du pilote GPU HPC pour Windows sur AMD](../virtual-machines/extensions/hpccompute-amd-gpu-windows.md)
+- [Extension du pilote GPU HPC pour Windows sur NVIDIA](../virtual-machines/extensions/hpccompute-gpu-windows.md)
+- [Extension Microsoft Antimalware pour Windows](../virtual-machines/extensions/iaas-antimalware-windows.md)
 
 Vous pouvez demander la prise en charge de serveurs de publication et/ou de types d’extension supplémentaires en ouvrant une demande de support.
 

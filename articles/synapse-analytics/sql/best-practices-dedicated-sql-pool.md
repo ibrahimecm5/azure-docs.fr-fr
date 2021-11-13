@@ -7,19 +7,19 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 03/17/2021
+ms.date: 11/02/2021
 ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: c0c436a2e36edbd6feb433074efc2d746ee38f18
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.reviewer: wiassaf
+ms.openlocfilehash: a6ebaa9f6afe9afe007c5ffb2eb0a164d3f2ac75
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091822"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500542"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Meilleures pratiques pour les pools SQL dédiés dans Azure Synapse Analytics
 
-Cet article énumère une série de meilleures pratiques destinées à optimiser les performances des pools SQL dédiés dans Azure Synapse Analytics.  Si vous utilisez un pool SQL serverless, consultez [Meilleures pratiques pour les pools SQL serverless](best-practices-serverless-sql-pool.md) pour obtenir des instructions spécifiques. Vous trouverez ci-dessous des instructions de base et des zones importantes sur lesquelles vous devez vous concentrer au fur et à mesure que vous créez votre solution. Chaque section présente un concept et vous dirige ensuite vers des articles plus détaillés qui expliquent davantage le concept.
+Cet article énumère une série de meilleures pratiques destinées à optimiser les performances des pools SQL dédiés dans Azure Synapse Analytics. Si vous utilisez un pool SQL serverless, consultez [Bonnes pratiques pour les pools SQL serverless](best-practices-serverless-sql-pool.md) afin d’obtenir une aide spécifique. Vous trouverez ci-dessous des conseils généraux et les différents points auxquels vous devez être attentifs quand vous créez votre solution. Chaque section présente un concept et vous dirige ensuite vers des articles plus détaillés qui expliquent davantage le concept.
 
 ## <a name="dedicated-sql-pools-loading"></a>Chargement des pools SQL dédiés
 
@@ -56,11 +56,11 @@ Une façon de résoudre ce problème consiste à développer un processus qui é
 Le pool SQL dédié prend en charge le chargement et l’exportation de données via plusieurs outils dont Azure Data Factory, PolyBase et BCP.  Pour les petits volumes de données où les performances ne sont pas essentielles, n’importe quel outil peut suffire à vos besoins.  
 
 > [!NOTE]
-> Polybase est le meilleur choix si vous chargez ou exportez des volumes importants de données, ou si vous avez besoin de performances plus rapides.
+> PolyBase est le meilleur choix si vous chargez ou que vous exportez des volumes importants de données, ou si vous avez besoin de meilleures performances.
 
 Les charges PolyBase peuvent être exécutées à l’aide de CTAS ou d’INSERT INTO. La fonctionnalité CTAS permet de minimiser la journalisation des transactions et est la méthode la plus rapide pour charger vos données. Azure Data Factory prend également en charge les charges PolyBase et peut atteindre des performances similaires à celles de CTAS. PolyBase prend en charge une variété de formats de fichiers, dont les fichiers Gzip.
 
-Pour maximiser le débit lors de l’utilisation de fichiers texte Gzip, divisez les fichiers en 60 fichiers ou plus pour optimiser le parallélisme de votre charge. Pour un débit total plus rapide, envisagez le chargement simultané des données. Vous trouverez des informations supplémentaires sur les sujets relatifs à cette section dans les articles suivants :
+Pour maximiser le débit lors de l’utilisation de fichiers texte Gzip, divisez les fichiers en 60 fichiers ou plus pour optimiser le parallélisme de votre charge. Pour un débit total plus rapide, envisagez le chargement simultané des données. Vous trouverez des informations supplémentaires sur cette section dans les articles suivants :
 
 - [Chargement des données](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)
 - [Guide d’utilisation de PolyBase](data-loading-best-practices.md)
@@ -72,9 +72,9 @@ Pour maximiser le débit lors de l’utilisation de fichiers texte Gzip, divisez
 
 ## <a name="load-then-query-external-tables"></a>Charger, puis interroger les tables externes
 
-Polybase n’est une solution optimale pour les requêtes. Les tables Polybase pour pools SQL dédiés ne prennent en charge que les fichiers blob Azure et le stockage Azure Data Lake. Ces fichiers ne sont adossés à aucune ressource de calcul. Par conséquent, les pools SQL dédiés ne peuvent pas délester ce travail et doivent lire le fichier entier en le chargeant dans tempdb afin de pouvoir lire les données.
+PolyBase n’est pas une solution optimale pour les requêtes. Les tables PolyBase pour les pools SQL dédiés prennent en charge seulement les fichiers blob Azure et le stockage Azure Data Lake. Ces fichiers ne sont adossés à aucune ressource de calcul. Par conséquent, les pools SQL dédiés ne peuvent pas se décharger de ce travail et doivent lire le fichier entier en le chargeant dans `tempdb` afin de pouvoir lire les données.
 
-Si vous disposez de plusieurs requêtes pour interroger ces données, il est préférable de charger ces dernières une fois et que les requêtes utilisent la table locale. D’autres conseils sur Polybase sont inclus dans le [Guide d’utilisation de PolyBase](data-loading-best-practices.md).
+Si vous disposez de plusieurs requêtes pour interroger ces données, il est préférable de charger ces dernières une fois et que les requêtes utilisent la table locale. D’autres conseils sur PolyBase figurent dans l’article [Guide d’utilisation de PolyBase](data-loading-best-practices.md).
 
 ## <a name="hash-distribute-large-tables"></a>Hacher et distribuer de grandes tables
 
@@ -141,7 +141,7 @@ Lorsque vous posez temporairement des données sur des pools SQL dédiés, des t
 
 Le chargement des données dans une table temporaire sera également beaucoup plus rapide que le chargement d’une table dans un stockage permanent.  Les tables temporaires commencent par « # » et ne sont accessibles qu’à la session qui les a créées. Elles ne peuvent donc fonctionner que dans des scénarios limités. Les tables de segments de mémoire sont définies dans la clause WITH d’une instruction CREATE TABLE.  Si vous utilisez une table temporaire, n’oubliez pas de créer des statistiques dans la table temporaire également.
 
-Pour des conseils supplémentaires, consultez les articles [Tables temporaires](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) et [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true).
+Pour plus d’informations, consultez les articles [Tables temporaires](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) et [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimiser les tables columnstore en clusters
 
@@ -163,7 +163,7 @@ Si votre table ne contient pas 6 milliards lignes, vous avez deux options princ
 Lorsque vous interrogez une table columnstore, les requêtes s’exécutent plus vite si vous sélectionnez uniquement les colonnes dont vous avez besoin.  Vous trouverez des informations supplémentaires sur les index table et columnstore dans les articles suivants :
 - [Index de table](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)
 - [Guide des index columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)
-- [Reconstruction des index columnstore](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality) 
+- [Reconstruction des index columnstore](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuild-indexes-to-improve-segment-quality) 
 - [Réglage des performances avec un index columnstore en cluster ordonné](../sql-data-warehouse/performance-tuning-ordered-cci.md)
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Utiliser une classe de ressource plus grande pour améliorer les performances des requêtes

@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a1e5f8ee6bb3641fce243233a654d15363e254
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a0eaee3c6e265063270d5cb3b2ea43d3c22fbb0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012621"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553073"
 ---
 # <a name="continuous-access-evaluation"></a>Évaluation de l’accès continu
 
@@ -172,6 +172,9 @@ Vous trouverez plus d’informations sur l’évaluation continue de l’accès 
 ### <a name="strict-enforcement"></a>Application stricte 
 
 Avec le dernier paramètre d’évaluation continue de l’accès sous Accès conditionnel, l’application stricte est une nouvelle fonctionnalité qui permet une sécurité renforcée basée sur deux facteurs : la variation d’adresse IP et la capacité du client. Cette fonctionnalité peut être activée lors de la personnalisation des options d’évaluation continue de l’accès pour une stratégie donnée. Lorsque vous activez l’application stricte, l’évaluation continue de l’accès révoque l’accès en cas de détection d’instance de [variation d’adresse IP](#ip-address-variation) ou en cas d’absence de [capacité de client](#client-capabilities) d’évaluation continue de l’accès.
+
+> [!NOTE] 
+> Vous devez uniquement activer une application stricte après vous être assuré que toutes les applications clientes prennent en charge la capacité de client et que vous avez inclus toutes vos adresses IP vues par Azure AD et les fournisseurs de ressources, comme Exchange online et Azure Resource Manager, dans votre stratégie de localisation sous Accès conditionnel. Dans le cas contraire, vous risquez d’être bloqué.
 
 ## <a name="limitations"></a>Limites
 

@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1f8f8d81af6fb06bba9c48f5ae7d1fbb7f5d2e59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ed6d0e397a8b0b6b8a3ad69e5dd91b4c60709e35
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562420"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231835"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Configurer une app App Service dans le portail Azure
 
@@ -19,7 +19,7 @@ Cet article explique comment configurer les paramètres courants d’une applica
 
 ## <a name="configure-app-settings"></a>Configuration des paramètres d’application
 
-Dans App Service, les paramètres d’application sont des variables transmises comme des variables d’environnement au code de l’application. Pour les applications Linux et les conteneurs personnalisés, App Service envoie les paramètres d’application au conteneur via l’indicateur `--env` pour définir la variable d'environnement dans le conteneur. Dans les deux cas, ils sont injectés dans votre environnement d’application au démarrage de l’application. Quand vous ajoutez, supprimez ou modifiez des paramètres d’application, App Service déclenche un redémarrage de l’application.
+Dans App Service, les paramètres d’application sont des variables transmises comme des variables d’environnement au code de l’application. Pour les applications Linux et les conteneurs personnalisés, App Service envoie les paramètres d’application au conteneur via l’indicateur `--env` pour définir la variable d'environnement dans le conteneur. Dans les deux cas, ils sont injectés dans votre environnement d’application au démarrage de l’application. Quand vous ajoutez, supprimez ou modifiez des paramètres d’application, App Service déclenche un redémarrage de l’application. Les noms de paramètre d’application ne peuvent pas contenir de points (`.`). Si un paramètre d’application contient un point, le point est remplacé par un trait de soulignement dans le conteneur.
 
 Dans le [portail Azure], recherchez et sélectionnez **App Services**, puis sélectionnez votre application. 
 

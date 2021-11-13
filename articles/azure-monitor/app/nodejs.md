@@ -2,14 +2,14 @@
 title: Surveiller les services Node.js avec Azure Application Insights | Microsoft Docs
 description: Analysez les performances et diagnostiquez les problèmes dans les services Node.js avec Application Insights.
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 3148dccc9bf6e99d528e34fe54643c871d4a28b5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 40477ecc4e5b76ee351b74c9d1056f2b7ef91c38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162862"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245016"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Surveiller vos services et applications Node.js avec Application Insights
 
@@ -20,6 +20,9 @@ Pour recevoir, stocker et explorer vos données d’analyse, incluez le kit de d
 Le kit de développement logiciel (SDK) Node.js peut automatiquement analyser les demandes HTTP entrantes et sortantes, les exceptions et certaines mesures du système. À partir de la version 0.20, le kit de développement logiciel (SDK) peut surveiller des [packages tiers](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules) communs comme MongoDB, MySQL et Redis. Tous les événements liés à une demande HTTP entrante sont mis en corrélation pour une résolution des problèmes plus rapide.
 
 Vous pouvez utiliser l’API TelemetryClient pour instrumenter et surveiller manuellement des aspects supplémentaires de votre application et de votre système. L’API TelemetryClient est décrite plus en détail plus loin dans cet article.
+
+> [!NOTE]
+> Une [offre Node.js basée sur OpenTelemetry](opentelemetry-enable.md?tabs=nodejs) est disponible en préversion. [En savoir plus](opentelemetry-overview.md)
 
 ## <a name="get-started"></a>Bien démarrer
 

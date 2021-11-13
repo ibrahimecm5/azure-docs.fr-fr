@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 2aa4dcc0aa4ecdd3b620aef874a0b5b9ceef4c96
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: c85659a6c9e89145494d4683da37bd2f13cbd379
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963543"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234862"
 ---
 # <a name="gpu-acceleration-for-azure-iot-edge-for-linux-on-windows-preview"></a>Accélération GPU pour Azure IoT Edge pour Linux sur Windows (préversion)
 
@@ -62,7 +62,7 @@ Une fois que vous êtes inscrit, suivez les instructions fournies sous l’ongle
 Pour les **GPU T4**, Microsoft recommande d’installer un pilote d’atténuation des appareils que vous pouvez obtenir auprès du fournisseur de votre processeur graphique (GPU). Bien que facultative, l’installation d’un pilote d’atténuation peut améliorer la sécurité de votre déploiement. Pour plus d’informations, consultez [Déployer des appareils graphiques à l’aide de la technologie DDA (Discrete Device Assignment)](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda#optional---install-the-partitioning-driver).
 
 > [!WARNING]
-> L’activation du relais d’appareils matériels peut augmenter les risques liés à la sécurité. Nous vous recommandons d’installer un pilote d’atténuation des appareils que vous pouvez obtenir auprès du fournisseur de votre processeur graphique (GPU).
+> L’activation du relais d’appareils matériels peut augmenter les risques liés à la sécurité. Microsoft vous recommande de recourir à un pilote d’atténuation des appareils du fournisseur de votre GPU, le cas échéant. Pour plus d’informations, consultez [Déploiement d’appareils graphiques avec la technologie DDA (Discrete Device Assignment)](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda).
 
 ### <a name="geforcequadro-gpus"></a>GPU GeForce/Quadro
 
@@ -70,7 +70,7 @@ Pour les **GPU GeForce/Quadro**, téléchargez et installez le [pilote compatibl
 
 ## <a name="using-gpu-acceleration-for-your-linux-on-windows-deployment"></a>Utilisation de l’accélération GPU pour votre déploiement Linux sur Windows
 
-Vous êtes maintenant prêt à déployer et à exécuter des modules Linux avec accélération GPU dans votre environnement de Windows par le biais d’Azure IoT Edge pour Linux sur Windows. Pour plus d’informations sur le processus de déploiement, consultez [Installer Azure IoT Edge pour Linux sur Windows](how-to-install-iot-edge-on-windows.md).
+Vous êtes maintenant prêt à déployer et à exécuter des modules Linux avec accélération GPU dans votre environnement de Windows par le biais d’Azure IoT Edge pour Linux sur Windows. Pour plus d’informations sur le processus de déploiement, consultez le [guide pour provisionner un appareil IoT Edge pour Linux sur Windows à l’aide de clés symétriques](how-to-provision-single-device-linux-on-windows-symmetric.md) ou [à l’aide de certificats X.509](how-to-provision-single-device-linux-on-windows-x509.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

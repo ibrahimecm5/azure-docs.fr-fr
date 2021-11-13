@@ -3,14 +3,14 @@ title: Bien démarrer avec les pipelines en direct d’Azure Video Analyzer - Po
 description: Ce guide de démarrage rapide vous montre les différentes étapes nécessaires pour capturer et enregistrer des vidéos à partir d’une caméra RTSP en utilisant des pipelines en direct dans le service Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 10/16/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f032eea5c54ac4c0d0200d9063b7f499838f2465
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed1c4e979d9b593cc701c294c95eda96b27db415
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096753"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554409"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-live-pipelines-in-the-azure-portal"></a>Démarrage rapide : Bien démarrer avec les pipelines en direct de Video Analyzer dans le portail Azure
 
@@ -50,13 +50,13 @@ Cette section vous montre comment déployer un simulateur de caméra RTSP sur un
 > Notez que ce point de terminaison de simulateur de caméra RTSP est exposé sur Internet et donc accessible à toute personne connaissant l’URL RTSP.
 
 **Étapes du déploiement :**
-1. Déployez une machine virtuelle Linux Azure de série standard_D2s_v3 exécutant le système d’exploitation « Ubuntu Server 18.04 ». [Cliquez ici](../../../virtual-machines/linux/quick-create-portal.md) pour voir les étapes de création de la machine virtuelle, vous n’avez pas besoin d’installer le serveur web décrit dans l’article associé. Autorisez également le port SSH dans l’Assistant Déploiement pour pouvoir vous connecter à la machine virtuelle avec une connexion SSH.
+1. Déployez une machine virtuelle Linux Azure de série standard_D2s_v3 exécutant le système d’exploitation « Ubuntu Server 18.04 ». [Consultez cette page](../../../virtual-machines/linux/quick-create-portal.md) pour voir les étapes de création de la machine virtuelle. Vous n’avez pas besoin d’installer le serveur web mentionné dans l’article en lien. Autorisez également le port SSH dans l’Assistant Déploiement pour pouvoir vous connecter à la machine virtuelle avec une connexion SSH.
 1. Activez les connexions entrantes pour le protocole RTSP. Dans le portail Azure, ouvrez le volet de gestion de la machine virtuelle Linux que vous avez créée ci-dessus.
 
     1. Cliquez sur Réseau : le panneau s’ouvre sur les règles de port d’entrée pour le groupe de sécurité réseau (NSG) qui a été créé afin de prendre en charge les connexions SSH entrantes.
     1. Cliquez sur Ajouter une règle de port d’entrée pour en ajouter une
     1. Dans le volet qui s’ouvre, définissez les plages de port de destination sur 554. Choisissez un nom pour la règle, par exemple, « RTSP ». Conservez toutes les autres valeurs par défaut. Consultez [ce document](../../../virtual-machines/windows/nsg-quickstart-portal.md) pour plus d’informations.
-1. Installez Docker sur la machine virtuelle en utilisant les instructions [ici](https://docs.docker.com/engine/install/ubuntu/), suivez uniquement les étapes jusqu’à la vérification de l’installation de Docker en exécutant l’image « hello-world ».
+1. Installez Docker sur la machine virtuelle en utilisant les instructions mentionnées [ici](https://docs.docker.com/engine/install/ubuntu/). Suivez uniquement les étapes jusqu’à la vérification de l’installation de Docker en exécutant l’image « hello-world ».
 1. Connectez-vous à votre machine virtuelle, par exemple, en utilisant SSH. Dans la fenêtre de terminal, créez un dossier local, par exemple, « localmedia », pour héberger les fichiers multimédias. Ce dossier VM local est utilisé pour le mappage au conteneur RTSP du serveur multimédia.
 1. Copiez un fichier MKV utilisé pour simuler le flux de la caméra de la façon suivante :
 
@@ -64,14 +64,14 @@ Cette section vous montre comment déployer un simulateur de caméra RTSP sur un
     cd localmedia
     wget https://lvamedia.blob.core.windows.net/public/camera-1800s.mkv
     ```
-1. À partir du répertoire racine, démarrez le serveur RTSP sur la machine virtuelle en utilisant l’image conteneur préconfigurée de la façon suivante
+1. Démarrez le serveur RTSP sur la machine virtuelle en utilisant l’image conteneur prédéfinie en procédant comme suit
 
     ```    
-    sudo docker run -d -p 554:554 -v ${PWD}/localmedia:/live/mediaServer/media mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2
+    sudo docker run -d -p 554:554 -v ${PWD}:/live/mediaServer/media mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2
     ```
 1. Une fois le serveur RTSP en cours d’exécution, les clients peuvent s’y connecter via une URL RTSP :
 
-    - Accédez à la page « Vue d’ensemble » de votre machine virtuelle dans le portail Azure et notez la valeur de l’« adresse IP publique »
+    - Accédez à la page « Vue d’ensemble » de votre machine virtuelle dans le portail Azure et notez la valeur « Adresse IP publique »
     
         - L’URL RTSP est rtsp://{adresse IP publique}:554/media/camera-1800s.mkv et peut être testée avec un lecteur de bureau, par exemple, VLC
 
@@ -103,13 +103,13 @@ Une fois le compte Video Analyzer créé, vous pouvez accéder aux étapes suiva
 
     - L’Assistant **Créer une topologie de pipeline** s’affiche sur le portail
     - Sélectionnez **Essayer des exemples de topologie**-> sélectionnez la topologie **Capture en direct, enregistrement et flux à partir d’une caméra RTSP**-> sélectionnez « Continuer » dans la boîte de dialogue **Charger l’exemple de topologie**.
-    - L’Assistant permettant de modifier la topologie de pipeline en direct « source RTSP vers récepteur vidéo » s’affiche.
+    - L’Assistant permettant de créer la topologie de pipeline en direct s’affiche, montrant le nœud source RTSP connecté à un nœud récepteur vidéo.
     - Entrez les champs nécessaires pour créer la topologie : 
     
         - **Nom de la topologie** : entrez le nom de la topologie 
         - **Description** (facultatif) : brève description de la topologie 
         - **Type** (prérempli avec « En direct »)
-        - Pour le nœud **Source RTSP** : définissez la propriété **Transport** sur la valeur TCP
+        - Sélectionnez le nœud **Source RTSP**, puis définissez la valeur de la propriété **Transport** sur TCP
         - Sélectionnez **Enregistrer** avec la configuration par défaut pour le reste des propriétés
 1. L’étape suivante consiste à créer un pipeline en direct en utilisant la topologie créée à l’étape précédente. 
 
@@ -123,7 +123,7 @@ Une fois le compte Video Analyzer créé, vous pouvez accéder aux étapes suiva
         - **videoNameParameter** : nom unique de la ressource vidéo cible à enregistrer. Remarque : Utilisez une ressource vidéo unique pour chaque caméra (ou fichier MKV)
     - Sélectionnez **Créer**. Vous voyez un pipeline créé dans la grille de pipelines sur le portail.
     - Sélectionnez le pipeline en direct créé dans la grille, sélectionnez l’option **Activer** disponible à droite du volet pour activer le pipeline en direct. Cette action démarre votre pipeline en direct ainsi que l’enregistrement de la vidéo
-1. À présent, vous pouvez voir la ressource vidéo sous le compte Video Analyzer-> volet **Vidéos** dans le portail. Son état indique **Est en cours d’utilisation**, car le pipeline est actif et en train d’enregistrer.
+1. À présent, vous pouvez voir la ressource vidéo sous le compte Video Analyzer-> volet **Vidéos** dans le portail. Son état indique **Enregistrement**, car le pipeline est actif et en train d’enregistrer le flux vidéo en direct.
 1. Au bout de quelques secondes, sélectionnez la vidéo pour voir le [flux à faible latence](../playback-recordings-how-to.md).
 
     > [!div class="mx-imgBorder"]
@@ -131,9 +131,9 @@ Une fois le compte Video Analyzer créé, vous pouvez accéder aux étapes suiva
 
     > [!NOTE]
     > Si vous utilisez un simulateur de caméra RTSP, vous ne pouvez pas déterminer avec justesse la latence de bout en bout. Par ailleurs, dès que le simulateur de caméra RTSP atteint la fin du fichier MKV, il s’arrête. Le pipeline en direct tente alors de se reconnecter et, au bout d’un certain temps, le simulateur redémarre le flux à partir du début du fichier. Si vous laissez ce pipeline en direct s’exécuter pendant de nombreuses heures, vous voyez des trous dans l’enregistrement vidéo chaque fois que le simulateur s’arrête et redémarre.
-* Si nécessaire, consultez le journal d’activité pour vérifier rapidement vos opérations de déploiement. Accédez [ici](./monitor-log-cloud.md) pour voir les journaux d’événements et de supervision.
-* Pour désactiver l’enregistrement du pipeline, accédez à votre compte Video Analyzer. Dans le volet gauche, sélectionnez **En direct**-> **Pipelines**-> sélectionnez le pipeline à désactiver, puis **Désactiver** dans la grille de pipelines pour arrêter l’enregistrement. 
-* Vous pouvez également supprimer le pipeline et la topologie s’ils ne sont pas nécessaires.
+1. Si nécessaire, consultez le journal d’activité pour vérifier rapidement vos opérations de déploiement. Accédez [ici](./monitor-log-cloud.md) pour voir les journaux d’événements et de supervision.
+1. Pour désactiver l’enregistrement du pipeline, accédez à votre compte Video Analyzer. Dans le volet gauche, sélectionnez **En direct**-> **Pipelines**-> sélectionnez le pipeline à désactiver, puis **Désactiver** dans la grille de pipelines pour arrêter l’enregistrement. 
+1. Vous pouvez également supprimer le pipeline et la topologie s’ils ne sont pas nécessaires.
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 

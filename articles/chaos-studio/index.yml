@@ -9,12 +9,12 @@ metadata:
   author: johnkemnetz
   ms.author: johnkem
   ms.date: 08/24/2021
-  ms.openlocfilehash: 8ae0b6d778d71b05b45cdc23d27be26bd6b0cfa9
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 5d4f68ac59b001886636f9a2ddb4214e17ffebe9
+  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131088293"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132372527"
 landingContent:
 - title: À propos d’Azure Chaos Studio
   linkLists:
@@ -29,11 +29,11 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Créer une expérience de chaos qui utilise une erreur service-direct pour basculer une instance Azure Cosmos DB
-      url: chaos-studio-tutorial-service-direct.md
+      url: chaos-studio-tutorial-service-direct-portal.md
     - text: Créer une expérience qui utilise une erreur basée sur un agent avec Azure Chaos Studio
-      url: chaos-studio-tutorial-agent-based.md
+      url: chaos-studio-tutorial-agent-based-portal.md
     - text: Créer une expérience qui utilise une erreur Chaos Mesh AKS avec Azure Chaos Studio
-      url: chaos-studio-tutorial-aks.md
+      url: chaos-studio-tutorial-aks-portal.md
 - title: Informations de référence
   linkLists:
   - linkListType: reference
@@ -44,3 +44,5 @@ landingContent:
       url: chaos-studio-fault-providers.md
     - text: Documentation des API REST
       url: https://docs.microsoft.com/rest/api/chaosstudio
+    - text: Kit de développement logiciel (SDK) Python
+      url: https://docs.microsoft.com/python/api/azure-mgmt-chaos/?view=azure-python-preview

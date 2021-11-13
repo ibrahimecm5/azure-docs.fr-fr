@@ -2,18 +2,18 @@
 title: Acheter une réservation Azure
 description: Découvrez les points importants à prendre en compte avant l’achat d’une réservation Azure.
 author: bandersmsft
-ms.reviewer: primattal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/21/2021
 ms.author: banders
-ms.openlocfilehash: bbd57ed54171785ab8f2aedea93fa8c56cc0319c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f7c9551b3edee5c4e491cd4218e7b7973f01f287
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653365"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244150"
 ---
 # <a name="buy-a-reservation"></a>Acheter une réservation
 
@@ -23,7 +23,9 @@ Les réservations Azure vous permettent d’économiser en vous engageant sur de
 
 Pour acheter une réservation, vous devez détenir le rôle de propriétaire ou d’acheteur de réservation sur un abonnement Azure de type Entreprise (MS-AZR-0017P ou MS-AZR-0148P), Paiement à l’utilisation (MS-AZR-0003P ou MS-AZR-0023P) ou Contrat client Microsoft. Les fournisseurs de solutions cloud peuvent utiliser le portail Azure ou l’ [Espace partenaires](/partner-center/azure-reservations) pour acheter des réservations Azure.
 
-Les clients Contrat Entreprise (EA) peuvent limiter les achats aux administrateurs EA en désactivant l'option **Ajouter des instances réservées** dans le portail EA. Les administrateurs EA doivent disposer d’un accès propriétaire ou acheteur de réservation sur au moins un abonnement EA pour pouvoir acheter une réservation. Cette option est particulièrement utile pour les entreprises souhaitant qu’une équipe centralisée achète des réservations.
+Les clients Contrat Entreprise (EA) peuvent limiter les achats aux administrateurs EA en désactivant l'option **Ajouter des instances réservées** dans le portail EA. Les clients EA directs peuvent désormais désactiver le paramètre d’instance réservée dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts). Accédez au menu Stratégies pour modifier les paramètres.
+
+Les administrateurs EA doivent disposer d’un accès propriétaire ou acheteur de réservation sur au moins un abonnement EA pour pouvoir acheter une réservation. Cette option est particulièrement utile pour les entreprises souhaitant qu’une équipe centralisée achète des réservations.
 
 Une remise de réservation s’applique uniquement aux ressources associées aux abonnements qui ont été achetés dans le cadre de plans Entreprise, CSP, Contrat Client Microsoft et individuels avec paiement à l’utilisation.
 

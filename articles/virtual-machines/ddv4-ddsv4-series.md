@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: e36b45f5ac202936e26f238f2082cf811195b235
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: ba964b6bc48eaa1a5c0452709d63cf968a14c888
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459707"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Séries Ddv4 et Ddsv4
 
@@ -40,17 +40,20 @@ Les nouvelles tailles de machines virtuelles Ddv4 incluent un stockage SSD local
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
 <br> 
 
-| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | <sup>**</sup> Débit de stockage temporaire maximal IOPS/MBits/s | Nombre max de cartes réseau|Bande passante réseau attendue (Mbits/s) |
+| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire maximal : IOPS/MBits/s<sup>*</sup> | Nombre max de cartes réseau|Bande passante réseau attendue (Mbits/s) |
 |---|---|---|---|---|---|---|---|
-| Standard_D2d_v4<sup>1</sup> | 2 | 8 | 75 | 4 | 19000/120 | 2|1 000 |
-| Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
-| Standard_D8d_v4 | 8 | 32 | 300 | 16 | 77000/485 | 4|4000 |
-| Standard_D16d_v4 | 16 | 64 | 600 | 32 | 154000/968 | 8|8000 |
-| Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308000/1936 | 8|16000 |
-| Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8|24 000 |
-| Standard_D64d_v4 | 64 | 256 | 2 400 | 32 | 615000/3872 | 8|30000 |
+| Standard_D2d_v4<sup>1</sup> | 2  | 8   | 75   | 4  | 9 000/125    | 2 | 1 000  |
+| Standard_D4d_v4             | 4  | 16  | 150  | 8  | 19 000/250   | 2 | 2000  |
+| Standard_D8d_v4             | 8  | 32  | 300  | 16 | 38 000/500   | 4 | 4000  |
+| Standard_D16d_v4            | 16 | 64  | 600  | 32 | 75 000/1 000   | 8 | 8000  |
+| Standard_D32d_v4            | 32 | 128 | 1200 | 32 | 150 000/2 000 | 8 | 16000 |
+| Standard_D48d_v4            | 48 | 192 | 1800 | 32 | 225 000/3 000 | 8 | 24 000 |
+| Standard_D64d_v4            | 64 | 256 | 2 400 | 32 | 300 000/4 000 | 8 | 30000 |
 
-<sup>**</sup> Ces valeurs IOPS peuvent être atteintes avec des [machines virtuelles de deuxième génération](generation-2.md)<br>
+
+
+
+<sup>*</sup> Ces valeurs IOPS peuvent être atteintes avec des [machines virtuelles de deuxième génération](generation-2.md)<br>
 <sup>1</sup>La mise en réseau accélérée ne peut être appliquée qu’à une seule carte réseau. 
 
 ## <a name="ddsv4-series"></a>Série Ddsv4
@@ -63,7 +66,7 @@ Les nouvelles tailles de machines virtuelles Ddsv4 incluent un stockage SSD loca
  >Les tarifs et les compteurs de facturation de ces tailles sont identiques à ceux de la série Ddv4.
 
 [ACU](acu.md) : 195-210<br>
-[Stockage Premium](premium-storage-performance.md) : Pris en charge<br>
+[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge<br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge<br>
@@ -72,17 +75,17 @@ Les nouvelles tailles de machines virtuelles Ddsv4 incluent un stockage SSD loca
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
 <br> 
 
-| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | <sup>**</sup> Débit de stockage temporaire maximal : IOPS/ Mbits/s (taille du cache en Gio) | Débit du disque non mis en cache max. : IOPS/Mbits/s |  Débit du disque maximal de rafale non mis en cache : IOPS/Mo/s<sup>1</sup> | Nombre max de cartes réseau|Bande passante réseau attendue (Mbits/s) |
+| Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit de stockage temporaire maximal : IOPS/MBits/s<sup>*</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s |  Débit du disque maximal de rafale non mis en cache : IOPS/Mo/s<sup>1</sup> | Nombre max de cartes réseau|Bande passante réseau attendue (Mbits/s) |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_D2ds_v4<sup>2</sup> | 2 | 8 | 75 | 4 | 19000/120(50) | 3 200/48 | 4 000/200 | 2|1 000 |
-| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242(100) | 6 400/96 | 8 000/200 | 2|2000 |
-| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77000/485(200) | 12 800/192 | 16 000/400 | 4|4000 |
-| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154000/968(400) | 25 600/384 | 32 000/800 | 8|8000 |
-| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308000/1936(800) | 51 200/768 | 64 000/1 600 | 8|16000 |
-| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904(1200) | 76 800/1152 | 80 000/2 000 | 8|24 000 |
-| Standard_D64ds_v4 | 64 | 256 | 2 400 | 32 | 615000/3872(1600) | 80 000/1 200 | 80 000/2 000 | 8|30000 |
+| Standard_D2ds_v4<sup>2</sup> | 2  | 8   | 75   | 4  | 9 000/125    | 3 200/48    | 4 000/200   | 2 | 1 000  |
+| Standard_D4ds_v4             | 4  | 16  | 150  | 8  | 19 000/250   | 6 400/96    | 8 000/200   | 2 | 2000  |
+| Standard_D8ds_v4             | 8  | 32  | 300  | 16 | 38 000/500   | 12 800/192  | 16 000/400  | 4 | 4000  |
+| Standard_D16ds_v4            | 16 | 64  | 600  | 32 | 85 000/1 000   | 25 600/384  | 32 000/800  | 8 | 8000  |
+| Standard_D32ds_v4            | 32 | 128 | 1200 | 32 | 150 000/2 000 | 51 200/768  | 64 000/1 600 | 8 | 16000 |
+| Standard_D48ds_v4            | 48 | 192 | 1800 | 32 | 225 000/3 000 | 76 800/1152 | 80 000/2 000 | 8 | 24 000 |
+| Standard_D64ds_v4            | 64 | 256 | 2 400 | 32 | 300 000/4 000 | 80 000/1 200 | 80 000/2 000 | 8 | 30000 |
 
-<sup>**</sup> Ces valeurs IOPS peuvent être atteintes avec des [machines virtuelles de deuxième génération](generation-2.md)<br>
+<sup>*</sup> Ces valeurs IOPS peuvent être atteintes avec des [machines virtuelles de deuxième génération](generation-2.md)<br>
 <sup>1</sup> Les machines virtuelles de la série Ddsv4 peuvent disposer d’un [bursting](./disk-bursting.md) des performances de leurs disques et atteindre le niveau maximal de bursting pendant 30 minutes d’affilée.<br>
 <sup>2</sup> Les performances réseau accélérées ne peuvent être appliquées qu’à une seule carte réseau. 
 

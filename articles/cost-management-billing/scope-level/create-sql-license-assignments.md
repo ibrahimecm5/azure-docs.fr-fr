@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisri
-ms.openlocfilehash: 48b68260e07d6e69e41daeacae631a9415f48a65
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: e97c4a51366dbfd2c9016de4684129a91df0cbe9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547374"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218936"
 ---
 # <a name="create-sql-server-license-assignments-for-azure-hybrid-benefit"></a>Créer des attributions de licence SQL Server pour Azure Hybrid Benefit
 
-La nouvelle expérience Azure Hybrid Benefit dans le portail Azure prend en charge les attributions de licence SQL Server au niveau du compte ou d’un abonnement particulier. Lorsque l’attribution est créée au niveau du compte, les remises Azure Hybrid Benefit sont automatiquement appliquées aux ressources SQL dans tous les abonnements du compte jusqu’au nombre de licences spécifié dans l’attribution.
+La nouvelle expérience Azure Hybrid Benefit centralisée dans le portail Azure prend en charge les attributions de licence SQL Server au niveau du compte ou d’un abonnement particulier. Lorsque l’attribution est créée au niveau du compte, les remises Azure Hybrid Benefit sont automatiquement appliquées aux ressources SQL dans tous les abonnements du compte jusqu’au nombre de licences spécifié dans l’attribution.
 
 Pour chaque attribution de licence, une étendue est sélectionnée, puis des licences sont affectées à l’étendue. Chaque étendue peut avoir plusieurs entrées de licence.
 
@@ -42,7 +42,7 @@ Les rôles prérequis varient en fonction du type de contrat.
 | Clients dirigés par des fournisseurs de solutions Cloud ou des partenaires | Non disponible | None |
 
 > [!NOTE]
-> L’expérience de licence au niveau de l’étendue n’est pas disponible pour les abonnements Sponsorisé, Crédit MSDN ou MPN. L’utilisation du logiciel SQL est gratuite pour les abonnements Dev/Test (types d’offres MS-AZR-0148P ou MS-AZR-0023P).
+> L’attribution centralisée de licences à des étendues n’est pas disponible pour les abonnements de type Sponsorisé, Crédit MSDN ou MPN. L’utilisation du logiciel SQL est gratuite pour les abonnements Dev/Test (types d’offres MS-AZR-0148P ou MS-AZR-0023P).
 
 ## <a name="create-a-sql-license-assignment"></a>Créer une attribution de licence SQL
 
@@ -101,7 +101,7 @@ Une fois que vous avez créé des attributions de licence SQL, votre expérience
 - L’option d’avantage hybride n’apparaît pas comme dans la configuration de votre ressource SQL.
 - Les applications ou les scripts qui configurent l’avantage hybride de manière programmatique continuent de fonctionner, mais le paramètre n’a aucun effet.
 - Les remises sur les logiciels SQL sont appliquées aux ressources SQL dans l’étendue. L’étendue est basée sur le nombre de licences dans les attributions de licence qui sont créées pour l’abonnement du compte où la ressource a été créée.
-- Une ressource spécifique configurée pour un avantage hybride peut ne pas bénéficier de la remise si d’autres ressources consomment toutes les licences. Toutefois, la remise maximale est appliquée à l’étendue, en fonction du nombre de licences. Pour plus d’informations sur l’application des remises, consultez [Qu’est-ce que la gestion de niveau étendue d’Azure Hybrid Benefit ?](overview-azure-hybrid-benefit-scope.md)
+- Une ressource spécifique configurée pour un avantage hybride peut ne pas bénéficier de la remise si d’autres ressources consomment toutes les licences. Toutefois, la remise maximale est appliquée à l’étendue, en fonction du nombre de licences. Pour plus d’informations sur l’application des remises, consultez [Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?](overview-azure-hybrid-benefit-scope.md)
 
 ## <a name="cancel-a-license-assignment"></a>Annuler une attribution de licence
 
@@ -117,5 +117,5 @@ Examinez votre situation en matière de licences avant d’annuler vos attributi
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Consultez [Questions fréquentes sur la gestion de niveau étendue d’Azure Hybrid Benefit](faq-azure-hybrid-benefit-scope.yml).
-- Découvrez la façon dont les remises sont appliquées dans [Qu’est-ce que la gestion de niveau étendue d’Azure Hybrid Benefit ?](overview-azure-hybrid-benefit-scope.md)
+- Passez en revue les [questions fréquentes (FAQ) sur Azure Hybrid Benefit managé de manière centralisée](faq-azure-hybrid-benefit-scope.yml).
+- Découvrez la façon dont les remises sont appliquées dans [Qu’est-ce qu’Azure Hybrid Benefit managé de manière centralisée ?](overview-azure-hybrid-benefit-scope.md)

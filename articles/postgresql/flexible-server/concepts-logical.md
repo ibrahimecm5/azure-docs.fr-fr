@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: 5298b572c24d174842da1c9e29b01a1d98f47a39
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 13326622dae32c0ebd8fa86035967d51ab734c2a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387351"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241589"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Réplication logique et décodage logique dans le serveur flexible Azure Database pour PostgreSQL
 
@@ -20,24 +20,24 @@ ms.locfileid: "129387351"
 Azure Database pour PostgreSQL - Serveur flexible prend en charge les méthodologies d’extraction et de réplication logiques des données suivantes :
 1. **Réplication logique**
    1. Utilisation de la [réplication logique native](https://www.postgresql.org/docs/12/logical-replication.html) de PostgreSQL pour répliquer des objets de données. La réplication logique permet un contrôle affiné de la réplication des données, notamment la réplication des données au niveau de la table.
-   2. Utilisation de l’extension [pglogical](https://github.com/2ndQuadrant/pglogical) qui fournit une réplication logique en continu et des capacités supplémentaires telles que la copie du schéma initial de la base de données, la prise en charge de TRUNCATE, la possibilité de répliquer le langage de définition de données (DDL), etc. 
+   2. Utilisation de l’extension [pglogical](https://github.com/2ndQuadrant/pglogical) qui fournit une réplication logique en streaming et des capacités supplémentaires telles que la copie du schéma initial de la base de données, la prise en charge de TRUNCATE, la possibilité de répliquer des DDL, etc. 
 2. **Décodage logique** implémenté par le [décodage](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html) du contenu du journal WAL (write-ahead log). 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>Comparaison de la réplication logique et du décodage logique
-La réplication logique et le décodage logique ont plusieurs similitudes. Les deux
+La réplication logique et le décodage logique ont plusieurs similitudes. Les deux :
 * vous permettent de répliquer des données à partir de Postgres ;
 * utilisent le [journal WAL (write-ahead log)](https://www.postgresql.org/docs/current/wal.html) comme source des modifications ;
 * utilisent des [emplacements de réplication logique](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html#LOGICALDECODING-REPLICATION-SLOTS) pour envoyer des données. Un emplacement représente un flux de modifications ;
-* utilisent la propriété [IDENTITÉ DE RÉPLICA](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-CREATETABLE-REPLICA-IDENTITY) d’une table pour déterminer les modifications qui peuvent être envoyées ;
+* utilisent la propriété [REPLICA IDENTITY](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-CREATETABLE-REPLICA-IDENTITY) d’une table pour déterminer les modifications qui peuvent être envoyées ;
 * ne répliquent pas les modifications de DDL.
 
 
-Les deux technologies présentent les différences suivantes : Réplication logique 
+Les différences entre les deux technologies sont les suivantes. La réplication logique : 
 * vous permet de spécifier une table ou un ensemble de tables à répliquer ;
 * réplique des données entre des instances PostgreSQL.
 
-Décodage logique 
-* extrait des modifications dans toutes les tables d’une base de données ; 
+Le décodage logique :
+* extrait des modifications dans toutes les tables d’une base de données ;
 * ne peut pas envoyer directement des données entre des instances PostgreSQL.
 
 >[!NOTE]
@@ -104,7 +104,7 @@ Consultez la documentation PostgreSQL pour en savoir plus sur la [réplication l
 
 ### <a name="pglogical-extension"></a>Extension pglogical
 
-Voici un exemple de configuration de pglogical au niveau du serveur de base de données du fournisseur et de l’abonné. Pour plus d’informations, reportez-vous à la [documentation de l’extension pglogical](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs). Assurez-vous également que vous avez effectué les tâches préalables ci-dessus.
+Voici un exemple de configuration de pglogical au niveau du serveur de base de données du fournisseur et de l’abonné. Pour plus d’informations, reportez-vous à la [documentation de l’extension pglogical](https://github.com/2ndQuadrant/pglogical#usage). Assurez-vous également que vous avez effectué les tâches préalables ci-dessus.
 
 
 1. Installez l’extension pglogical sur les serveurs de bases de données du fournisseur et de l’abonné.
@@ -112,7 +112,7 @@ Voici un exemple de configuration de pglogical au niveau du serveur de base de d
    \C myDB
    CREATE EXTENSION pglogical;
    ```
-2. Si l’utilisateur de réplication est différent de l’utilisateur d’administration du serveur (qui a créé le serveur), assurez-vous que vous attribuez des privilèges `azure_pg_admin` et `replication` à l’utilisateur. Vous pouvez également accorder le rôle Administrateur à l’utilisateur de réplication. Pour plus d’informations, consultez la [documentation de pglogical](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs/#limitations-and-restrictions).
+2. Si l’utilisateur de réplication est différent de l’utilisateur d’administration du serveur (qui a créé le serveur), assurez-vous que vous attribuez des privilèges `azure_pg_admin` et `replication` à l’utilisateur. Vous pouvez également accorder le rôle Administrateur à l’utilisateur de réplication. Pour plus d’informations, consultez la [documentation de pglogical](https://github.com/2ndQuadrant/pglogical#limitations-and-restrictions).
    ```SQL
    GRANT azure_pg_admin, replication to myUser;
    ```
@@ -243,10 +243,9 @@ SELECT * FROM pg_replication_slots;
 ## <a name="limitations"></a>Limites
 * Les limites de la **réplication logique** s’appliquent comme indiqué [ici](https://www.postgresql.org/docs/12/logical-replication-restrictions.html).
 * **Réplicas en lecture** : Les réplicas en lecture d’Azure Database pour PostgreSQL ne sont pas pris en charge par les serveurs flexibles.
-* **Emplacements et basculement à haute disponibilité** -Les emplacements de réplication logique sur le serveur principal ne sont pas disponibles sur le serveur de secours de votre serveur secondaire AZ. Cela s’applique si votre serveur utilise l’option haute disponibilité redondante interzone. En cas de basculement vers le serveur de secours, les emplacements de réplication logique ne sont pas disponibles sur le serveur de secours.
+* **Emplacements et basculement à haute disponibilité** -Les emplacements de réplication logique sur le serveur principal ne sont pas disponibles sur le serveur de secours de votre serveur secondaire AZ. Cette situation s’applique si votre serveur utilise l’option haute disponibilité redondante interzone. En cas de basculement vers le serveur de secours, les emplacements de réplication logique ne sont pas disponibles sur le serveur de secours.
 
 ## <a name="next-steps"></a>Étapes suivantes
 * En savoir plus sur les [options de mise en réseau](concepts-networking.md)
 * En savoir plus sur les [extensions](concepts-extensions.md) disponibles dans le serveur flexible
 * En savoir plus sur la [haute disponibilité](concepts-high-availability.md)
-

@@ -5,12 +5,12 @@ ms.author: palatter
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 3d2859d4103ed98638468da11b2063d639892035
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: bc61f84c8ad131fec503ac81b84d70af881dfb02
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181777"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288433"
 ---
 ## <a name="prerequisites"></a>Prérequis
 
@@ -27,29 +27,30 @@ Dans Xcode, créez un projet iOS et sélectionnez le modèle **App**. Nous util
 
 ![Capture d’écran montrant la sélection du modèle Nouveau projet dans Xcode.](../../media/xcode-new-project-template-select.png)
 
-Nommez le projet `UILibraryQuickStart`.
+Nommez le projet `UILibraryQuickStart`, puis sélectionnez `Storyboard` dans la liste déroulante `Interface`.
 
 ![Capture d’écran montrant les détails du nouveau projet dans Xcode.](../../media/xcode-new-project-details.png)
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installer le package et les dépendances avec CocoaPods
 
-1. Créez un Podfile pour votre application :
+1. Créez un Podfile dans le répertoire racine de votre projet en exécutant `pod init`.
+1. 
+1. Ajoutez le code suivant à votre Podfile :
 
 ```
-source 'https://github.com/Azure/AzurePrivatePodspecs'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/Azure/AzurePrivatePodspecs.git'
 
 platform :ios, '13.0'
 
 target 'UILibraryQuickStart' do
     use_frameworks!
-    pod 'azure-communication-ui', '1.0.0-alpha.1'
-    pod 'AzureCommunicationCalling', '2.0.1-beta.1'
-    pod 'MicrosoftFluentUI', '0.3.3'
+    pod 'AzureCommunicationUI', '1.0.0-alpha.1'
 end
 ```
 
-2. Exécutez `pod install`.
-3. Ouvrez le fichier `.xcworkspace` généré avec Xcode.
+3. Exécutez `pod install --repo-update`. (Ce processus peut prendre 10 à 15 minutes.)
+4. Ouvrez le fichier `.xcworkspace` généré avec Xcode.
 
 ### <a name="request-access-to-the-microphone-camera-etc"></a>Demander l’accès au microphone, l’appareil photo, etc.
 
@@ -71,7 +72,7 @@ Définissez l’option `Enable Bitcode` sur `No` dans les paramètres `Build Set
 
 ## <a name="initialize-composite"></a>Initialiser le composite
 
-Accédez à « ViewController ». Ici, nous allons placer le code suivant afin d’initialiser nos composants composites pour l’appel. Remplacez `<GROUP_CALL_ID>` par votre ID de groupe pour l’appel, `<DISPLAY_NAME>` par votre nom et `<USER_ACCESS_TOKEN>` par votre jeton.
+Accédez à « ViewController ». Ici, nous allons placer le code suivant afin d’initialiser nos composants composites pour l’appel. Remplacez `<GROUP_CALL_ID>` par l’ID de votre groupe d’appels ou `UUID()` pour en générer un. Remplacez également `<DISPLAY_NAME>` par votre nom, et `<USER_ACCESS_TOKEN>` par votre jeton.
 
 ```swift
 import UIKit
@@ -106,8 +107,8 @@ class ViewController: UIViewController {
         let communicationTokenCredential = try! CommunicationTokenCredential(token: "<USER_ACCESS_TOKEN>")
 
         let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
-                                       displayName: displayName,
-                                       groupId: uuid)
+                                       displayName: "<DISPLAY_NAME>",
+                                       groupId: "<GROUP_CALL_ID>")
         callComposite?.launch(with: options)
     }
 }
@@ -123,22 +124,24 @@ Vous pouvez générer et exécuter votre application sur un simulateur iOS en s�
 
 ![Apparence finale de l’application du guide de démarrage rapide](../../media/quick-start-calling-composite-running-ios.gif)
 
+## <a name="sample-application-code-can-be-found-here"></a>Un exemple de code d’application est disponible [ici](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/ui-library-quickstart)
+
 ## <a name="object-model"></a>Modèle objet
 
 Les classes et les interfaces suivantes gèrent certaines des principales fonctionnalités de la bibliothèque cliente d’interface utilisateur Azure Communication Services :
 
 | Name                                                                        | Description                                                                                  |
 | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| CallComposite | Le composite affiche une expérience d’appel avec une galerie de participants et des contrôles. |
-| CallCompositeOptions | Inclut des options telles que la configuration du thème et le gestionnaire d’événements. |
-| CallCompositeEventsHandler | Vous permet de recevoir des événements en provenance du composite. |
-| GroupCallOptions | Options permettant de rejoindre un appel de groupe, par exemple groupId. |
-| TeamsMeetingOptions | Options permettant de rejoindre une réunion Teams, par exemple le lien de réunion. |
-| ThemeConfiguration | Vous permet de personnaliser le thème. |
+| [CallComposite](#create-call-composite) | Le composite affiche une expérience d’appel avec une galerie de participants et des contrôles. |
+| [CallCompositeOptions](#create-call-composite) | Inclut des options telles que la configuration du thème et le gestionnaire d’événements. |
+| [CallCompositeEventsHandler](#subscribe-to-events-from-callcomposite) | Vous permet de recevoir des événements en provenance du composite. |
+| [GroupCallOptions](#group-call) | Options permettant de rejoindre un appel de groupe, par exemple groupId. |
+| [TeamsMeetingOptions](#teams-meeting) | Options permettant de rejoindre une réunion Teams, par exemple le lien de réunion. |
+| [ThemeConfiguration](#apply-theme-configuration) | Vous permet de personnaliser le thème. |
 
 ## <a name="ui-library-functionality"></a>Fonctionnalités de la bibliothèque d’IU
 
-### <a name="create-call-composite-options-and-call-composite"></a>Créer des options de composite d’appel et appeler un composite
+### <a name="create-call-composite"></a>Créer un composite d’appel
 
 Initialisez une instance de `CallCompositeOptions` et une instance de `CallComposite` dans la fonction `startCallComposite`.
 
@@ -197,7 +200,7 @@ Appelez `launch` sur l’instance de `CallComposite` dans la fonction `startCall
 callComposite?.launch(with: options)
 ```
 
-### <a name="implement-the-closure-for-events-handler"></a>Implémenter la fermeture pour le gestionnaire d’événements
+### <a name="subscribe-to-events-from-callcomposite"></a>S’abonner aux événements à partir de `CallComposite`
 
 Vous pouvez implémenter les fermetures à partir de `CallCompositeEventsHandler` pour agir sur les événements et passer l’implémentation à `CallCompositeOptions`. Un événement indiquant le moment où le composite a fini son exécution par une erreur en est un bon exemple.
 
@@ -211,7 +214,7 @@ let handler = CallCompositeEventsHandler(didFail: { error in
 let callCompositeOptions = CallCompositeOptions(callCompositeEventsHandler: handler)
 ```
 
-### <a name="customizing-the-theme"></a>Personnalisation du thème
+### <a name="apply-theme-configuration"></a>Appliquer la configuration du thème
 
 Vous pouvez personnaliser le thème en créant une configuration de thème personnalisée qui implémente le protocole ThemeConfiguration. Vous incluez ensuite une instance de cette nouvelle classe dans CallCompositeOptions.
 

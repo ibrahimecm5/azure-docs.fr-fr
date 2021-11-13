@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 11/01/2021
 tags: connectors
-ms.openlocfilehash: 46e0373b7c95b559dd6037d20f00324cd89209d7
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a400c8e5ac118250afedd27f2f8e79b678546727
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045878"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438642"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Se connecter aux systèmes SAP à partir d’Azure Logic Apps
 
@@ -324,7 +324,7 @@ Enfin, créez de nouvelles connexions qui utilisent SNC dans toutes vos applicat
 
    1. Pour **Nom du partenaire SNC**, entrez le nom SNC du backend. Par exemple : `p:CN=DV3, OU=LA, O=MS, C=US`.
 
-   1. Pour **Certificat SNC**, entrez le certificat public de votre client SNC au format codé en base64. N’incluez pas l’en-tête ou le pied de page PEM.
+   1. Pour **Certificat SNC**, entrez le certificat public de votre client SNC au format codé en base64. N’incluez pas l’en-tête ou le pied de page PEM. N’entrez pas le certificat privé ici, car le PSE peut contenir plusieurs certificats privés, et ce paramètre **Certificat SNC** identifie les certificats qui doivent être utilisés pour cette connexion. Pour plus d’informations, reportez-vous à la note ci-après.
 
    1. Si besoin, entrez les paramètres SNC pour **SNC My Name**, **SNC Quality of Protection**.
 
@@ -350,8 +350,35 @@ Enfin, créez de nouvelles connexions qui utilisent SNC dans toutes vos applicat
 
    Le connecteur détecte la modification de PSE et met à jour sa propre copie lors de la demande de connexion suivante.
 
+   Pour convertir un fichier PSE binaire au format encodé en base64, procédez comme suit :
+   
+   1. Utilisez un script PowerShell, par exemple :
+
+      ```powershell
+      Param ([Parameter(Mandatory=$true)][string]$psePath, [string]$base64OutputPath)
+      $base64String = [convert]::ToBase64String((Get-Content -path $psePath -Encoding byte))
+      if ($base64OutputPath -eq $null)
+      {
+          Write-Output $base64String
+      }
+      else
+      {
+          Set-Content -Path $base64OutputPath -Value $base64String
+          Write-Output "Output written to $base64OutputPath"
+      } 
+      ```
+
+   1. Enregistrez le script en tant que fichier `pseConvert.ps1`, puis appelez le script, par exemple :
+
+      ```output
+      .\pseConvert.ps1 -psePath "C:\Temp\SECUDIR\request.pse" -base64OutputPath "connectionInput.txt"
+      Output written to connectionInput.txt 
+      ```
+
+      Si le paramètre du chemin de sortie n’est pas fourni, la sortie du script affichée dans la console contiendra des sauts de ligne. Supprimez les sauts de ligne dans la chaîne encodée en base64 pour le paramètre d’entrée de connexion.
+
    > [!NOTE]
-   > Si vous utilisez plus d’un certificat client SNC pour votre environnement ISE, vous devez fournir le même PSE pour toutes les connexions. Vous pouvez définir le paramètre de certificat public client sur le certificat spécifique à chaque connexion utilisée dans votre environnement ISE.
+   > Si vous utilisez plus d’un certificat client SNC pour votre environnement ISE, vous devez fournir le même PSE pour toutes les connexions. Le PSE doit contenir le certificat privé client pour chacune des connexions. Vous devez définir le paramètre du certificat public client pour qu’il corresponde au certificat privé spécifique de chaque connexion utilisée dans votre environnement ISE.
 
 1. Sélectionnez **Créer** pour créer votre connexion. Si les paramètres sont corrects, la connexion est créée. En cas de problème avec les paramètres, la boîte de dialogue de création de connexion affiche un message d’erreur.
 
@@ -1800,7 +1827,13 @@ Si vous rencontrez un problème d’envoi d’IDocs en double à SAP à partir d
 
 1. Pour **ID de transaction**, entrez à nouveau le nom de votre variable. Par exemple : `IDOCtransferID`.
 
-1. Si vous le souhaitez, validez la déduplication dans votre environnement de test. Répétez l’action **\[IDOC] Envoyer un document à SAP** avec le même GUID **ID de transaction** que celui utilisé à l’étape précédente.
+1. Si vous le souhaitez, validez la déduplication dans votre environnement de test.
+
+    1. Répétez l’action **\[IDOC] Envoyer un document à SAP** avec le même GUID **ID de transaction** que celui utilisé à l’étape précédente.
+    
+    1. Pour valider le numéro IDoc attribué après chaque appel à l’action **\[IDOC] Envoyer un document à SAP**, utilisez l’action **\[IDOC] Obtenir une liste d’IDOC pour la transaction** en spécifiant le même **ID de transaction** et la direction **Receive** (Réception).
+    
+       Si le même IDoc est envoyé, un seul numéro IDoc est retourné pour les deux appels, IDoc ayant été dédupliqué.
 
    Lorsque vous envoyez le même IDoc à deux reprises, vous pouvez vérifier que SAP est capable d’identifier la duplication de l’appel tRFC et de résoudre les deux appels dans un seul message IDoc entrant.
 

@@ -7,12 +7,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6f2732f03b990d10b3ae15e472bf7600114c3a33
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc89cbfd01ef827be277d332ecd770b3fa6d7016
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524237"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249796"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Fournir à des modules l’accès au stockage local d’un appareil
 
@@ -75,14 +75,25 @@ Remplacez `<HostStoragePath>` et `<ModuleStoragePath>` par le chemin de stockage
 
 Par exemple, sur un système Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` signifie que le répertoire **/etc/iotedge/storage** sur votre système hôte est mappé au répertoire **/iotedge/stockage/** sur le conteneur. Sur un système Windows, pour prendre un autre exemple, `"Binds":["C:\\temp:C:\\contemp"]` signifie que le répertoire **C:\\temp** sur votre système hôte est mappé au répertoire **C:\\contemp** sur le conteneur.
 
-Par ailleurs, sur les appareils Linux, assurez-vous que le profil utilisateur pour votre module dispose des autorisations de lecture, d’écriture et d’exécution nécessaires sur le répertoire système de l’ordinateur hôte. Pour revenir à l’exemple précédent permettant au hub IoT Edge de stocker des messages dans le stockage local de votre appareil, vous devez accorder des autorisations à son profil utilisateur, UID 1000. (L’agent IoT Edge fonctionne comme root, donc il n’a pas besoin d’autorisations supplémentaires.) Il existe plusieurs façons de gérer les autorisations de répertoire sur les systèmes Linux , notamment l’utilisation de `chown` pour modifier le propriétaire du répertoire, puis `chmod` pour modifier les autorisations, comme :
+Vous trouverez plus de détails sur les options de création dans la [documentation de docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="host-system-permissions"></a>Autorisations du système hôte
+
+Sur les appareils Linux, assurez-vous que le profil utilisateur pour votre module a les autorisations de lecture, d’écriture et d’exécution nécessaires sur le répertoire du système hôte. Pour revenir à l’exemple précédent permettant au hub IoT Edge de stocker des messages dans le stockage local de votre appareil, vous devez accorder des autorisations à son profil utilisateur, UID 1000. Il existe plusieurs façons de gérer les autorisations de répertoire sur les systèmes Linux , notamment l’utilisation de `chown` pour modifier le propriétaire du répertoire, puis `chmod` pour modifier les autorisations, comme :
 
 ```bash
 sudo chown 1000 <HostStoragePath>
 sudo chmod 700 <HostStoragePath>
 ```
 
-Vous trouverez plus de détails sur les options de création dans la [documentation de docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Sur les appareils Windows, vous devrez également configurer des autorisations sur le répertoire du système hôte. Vous pouvez utiliser PowerShell pour définir les autorisations :
+
+```powershell
+$acl = get-acl <HostStoragePath>
+$ace = new-object system.security.AccessControl.FileSystemAccessRule('Authenticated Users','FullControl','Allow')
+$acl.AddAccessRule($ace)
+$acl | Set-Acl
+```
 
 ## <a name="encrypted-data-in-module-storage"></a>Données chiffrées dans le stockage de module
 

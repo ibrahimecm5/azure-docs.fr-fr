@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44a8c8ab6420db717533e83af9e01a89fad47bad
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 856cefa33948f530ee859ee1eeadfaf2cdf73de6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205027"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471779"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Appliquer la licence Windows pour machines virtuelles hôtes de session
 
@@ -65,4 +65,4 @@ $vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object Reso
 
 ## <a name="requirements-for-deploying-windows-server-remote-desktop-services"></a>Configuration requise pour le déploiement des services Bureau à distance de Windows Server
 
-Si vous déployez Windows Server 2019, 2016 ou 2012 R2 en tant qu’hôtes de bureau Azure Virtual Desktop dans votre déploiement, un serveur de licences des services Bureau à distance doit être accessible à partir de ces machines virtuelles. Le serveur de licences de services Bureau à distance peut être présent localement ou dans Azure. Pour plus d’informations, consultez [Activer le serveur de licences des services Bureau à distance](/windows-server/remote/remote-desktop-services/rds-activate-license-server).
+Si vous déployez Windows Server en tant qu’hôte Azure Virtual Desktop dans votre déploiement, un serveur de licences des services Bureau à distance doit être accessible depuis ces machines virtuelles. Le serveur de licences de services Bureau à distance peut être présent localement ou dans Azure. Pour plus d’informations, consultez [Activer le serveur de licences des services Bureau à distance](/windows-server/remote/remote-desktop-services/rds-activate-license-server).

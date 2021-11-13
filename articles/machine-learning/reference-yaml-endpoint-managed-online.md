@@ -1,84 +1,64 @@
 ---
-title: Informations de référence YAML sur les points de terminaison en ligne managés (préversion)
+title: Informations de référence YAML sur les points de terminaison en ligne (préversion)
 titleSuffix: Azure Machine Learning
-description: Apprenez-en davantage sur les fichiers YAML utilisés pour déployer des modèles en tant que points de terminaison en ligne managés
+description: Découvrir les fichiers YAML utilisés pour déployer des modèles en tant que points de terminaison en ligne
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
-ms.date: 08/03/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: de4a9c78501fd74fa65a453b593701891e04d345
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5b7637f16885e2eed5281273f1acad866e38e39e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024255"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555853"
 ---
-# <a name="cli-v2-managed-online-endpoint-yaml-schema"></a>Schéma YAML du point de terminaison en ligne managé avec l’interface CLI (v2)
+# <a name="cli-v2-online-endpoint-yaml-schema"></a>Schéma YAML d’un point de terminaison en ligne avec l’interface CLI (v2)
+
+Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json.
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 > [!NOTE]
 > Un exemple YAML complet pour les points de terminaison en ligne managés est disponible à des fins de [référence](https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.template.yaml)
 
-## <a name="schema"></a>schéma
+## <a name="yaml-syntax"></a>Syntaxe YAML
 
-Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json. Par souci de commodité, le schéma est fourni ci-dessous aux formats JSON et YAML.
-
-# <a name="json"></a>[JSON](#tab/json)
-
-:::code language="json" source="~/azureml-examples-main/cli/.schemas/jsons/latest/managedOnlineEndpoint.schema.json":::
-
-# <a name="yaml"></a>[YAML](#tab/yaml)
-
-:::code language="yaml" source="~/azureml-examples-main/cli/.schemas/yamls/latest/managedOnlineEndpoint.schema.yml":::
-
----
+| Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
+| --- | ---- | ----------- | -------------- | ------------- |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `name` | string | **Obligatoire.** Nom du point de terminaison, Doit être unique au niveau de la région Azure. <br><br> Les règles de nommage sont définies [ici](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview).| | |
+| `description` | string | Description du point de terminaison. | | |
+| `tags` | object | Dictionnaire d’étiquettes pour le point de terminaison. | | |
+| `auth_mode` | string | Méthode d’authentification pour le point de terminaison. L’authentification basée sur une clé et l’authentification basée sur un jeton Azure ML sont prises en charge. L’authentification basée sur une clé n’expire pas, contrairement à l’authentification basée sur un jeton Azure ML. | `key`, `aml_token` | `key` |
+| `allow_public_access` | boolean | Indique s’il faut autoriser l’accès public quand Private Link est activé. | | `true` |
+| `identity` | object | Configuration de l’identité managée afin d’accéder aux ressources Azure pour le provisionnement et l’inférence des points de terminaison. | | |
+| `identity.type` | string | Type d’identité managée. Si le type est `user_assigned`, la propriété `identity.user_assigned_identities` doit également être spécifiée. | `system_assigned`, `user_assigned` | |
+| `identity.user_assigned_identities` | tableau | Liste des ID de ressource complets des identités affectées par l’utilisateur. | | |
 
 ## <a name="remarks"></a>Remarques
 
-| Clé | Description |
-| --- | --- |
-| $schema    | \[__Facultatif__\] Schéma YAML. Vous pouvez afficher le schéma de l’exemple ci-dessus dans un navigateur pour voir toutes les options disponibles dans le fichier YAML.|
-| name       | Nom du point de terminaison, Doit être unique au niveau de la région Azure.|
-| traffic | Pourcentage du trafic depuis le point de terminaison à détourner vers chaque déploiement. La somme des valeurs de trafic doit être égale à 100. |
-| auth_mode | Utilisez `key` pour l’authentification basée sur une clé et `aml_token` pour l’authentification basée sur un jeton Azure Machine Learning. `key` n’expire pas mais `aml_token` expire. Récupérez le jeton le plus récent avec la commande `az ml endpoint list-keys`). |
-| identité | Sert à configurer des identités managées affectées par le système et affectées par l’utilisateur. |
-| app_insights_enabled | `True` pour activer l’intégration avec Azure AppInsights associé à votre espace de travail Azure Machine Learning. `False` par défaut.
-| tags | Dictionnaire d’étiquettes Azure à associer au point de terminaison. |
-| description | Description du point de terminaison. |
-| target | Si cette clé n’est pas définie, le point de terminaison est déployé en tant que point de terminaison en ligne managé. Pour utiliser AKS, définissez la valeur de cette clé sur le nom de la cible de calcul inscrite, par exemple `target:azureml:my-aks`. 
-| deployments | Contient la liste des déploiements à créer dans le point de terminaison. Dans ce cas, nous n’avons qu’un seul déploiement, nommé `blue`. |
+La commande `az ml online-endpoint` peut être utilisée pour gérer les points de terminaison en ligne Azure Machine Learning.
 
-### <a name="attributes-of-the-deployments-key"></a>Attributs de la clé `deployments`
- 
-| Clé | Description |
-| --- | --- |
-| name  | Le nom du déploiement. |
-| model | Nom de la version de modèle inscrite au format `model: azureml:my-model:1`. Vous pouvez également spécifier des propriétés de modèle inline : `name`, `version` et `local_path`. Les fichiers de modèle sont chargés et inscrits automatiquement. Un inconvénient de la spécification inline est que vous devez incrémenter la version manuellement si vous souhaitez mettre à jour les fichiers de modèle.|
-| code_configuration.code.local_path | Répertoire qui contient tout le code source Python pour le scoring du modèle. Les répertoires/packages imbriqués sont pris en charge. |
-| code_configuration.scoring_script | Fichier Python dans le répertoire de scoring ci-dessus. Ce code Python doit avoir une fonction `init()` et une fonction `run()`. La fonction `init()` sera appelée une fois le modèle créé ou mis à jour (vous pouvez l’utiliser pour mettre en cache le modèle en mémoire, et ainsi de suite). La fonction `run()` est appelée à chaque appel du point de terminaison pour effectuer le scoring réel/la prédiction réelle. |
-| Environnement | Contient les détails de l’environnement Azure Machine Learning pour héberger le modèle et le code. En guise de bonne pratique pour la production, vous devez inscrire le modèle et l’environnement séparément et spécifier le nom et la version inscrits dans le code YAML. Par exemple : `environment: azureml:my-env:1`. |
-| instance_type | Référence SKU de machine virtuelle pour héberger vos instances de déploiement. Pour plus d’informations, consultez [Références SKU de machine virtuelle prises en charge par des points de terminaison en ligne managés](reference-managed-online-endpoints-vm-sku-list.md).|
-| scale_settings.scale_type | Actuellement, cette valeur doit être `manual`. Pour effectuer un scale-up ou un scale-down après la création du point de terminaison et du déploiement, mettez à jour `instance_count` dans le code YAML et exécutez la commande `az ml endpoint update -n $ENDPOINT_NAME --file <yaml filepath>`. |
-| scale_settings.instance_count | Nombre d’instances dans le déploiement. Basez la valeur sur la charge de travail que vous attendez. Pour une haute disponibilité, Microsoft vous recommande de la définir sur au moins `3`. |
-| scale_settings.min_instances | Nombre minimal d’instances devant toujours être présentes. |
-| scale_settings.max_instances | Nombre maximal d’instances possibles pour la mise à l’échelle du déploiement. Le quota sera réservé à max_instances. |
-| request_settings.request_timeout_ms | Délai d’expiration de scoring en millisecondes. La valeur par défaut est 5000 pour les points de terminaison en ligne managés. |
-| request_settings.max_concurrent_requests_per_instance | Nombre maximal de requêtes simultanées par nœud autorisées par déploiement. La valeur par défaut est de 1. __Ne modifiez pas la valeur de ce paramètre (la valeur par défaut est 1), sauf indication contraire du support technique Microsoft ou d’un membre de l’équipe Azure Machine Learning.__ |
-| request_settings.max_queue_wait_ms | Durée maximale pendant laquelle une requête reste dans la file d’attente (en millisecondes). La valeur par défaut est 500. |
-| liveness_probe | La probe liveness supervise régulièrement l’intégrité du conteneur. |
-| liveness_probe.period | Fréquence (en secondes) d’exécution de probe liveness. La valeur par défaut est de 10 secondes. La valeur minimale est 1. |
-| liveness_probe.initial_delay | Nombre de secondes après le démarrage du conteneur avant le lancement des probes liveness. La valeur par défaut est 10. |
-| liveness_probe.timeout | Nombre de secondes après lequel la probe liveness expire. La valeur par défaut est de deux secondes. La valeur minimale est 1. |
-| liveness_probe.failure_threshold | Le système essaiera failure_threshold fois avant d’abandonner. La valeur par défaut est 30. La valeur minimale est 1. |
-| liveness_probe.success_threshold | Nombre minimal de réussites consécutives pour que la probe liveness soit considérée comme réussie après avoir échoué. La valeur par défaut est de 1. La valeur minimale est 1. |
-| readiness_probe | La probe readiness valide si le conteneur est prêt à traiter le trafic. Les propriétés et les valeurs par défaut sont identiques à celles de la probe liveness. |
-| tags | Dictionnaire d’étiquettes Azure que vous souhaitez associer au déploiement. |
-| description | Description du déploiement. |
+## <a name="examples"></a>Exemples
+
+Des exemples sont disponibles dans le [dépôt d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/batch). Vous en trouverez plusieurs ci-dessous.
+
+## <a name="yaml-basic"></a>YAML : de base
+
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/endpoint.yml":::
+
+## <a name="yaml-system-assigned-identity"></a>YAML : identité affectée par le système
+
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
+
+## <a name="yaml-user-assigned-identity"></a>YAML : identité affectée par l’utilisateur
+
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

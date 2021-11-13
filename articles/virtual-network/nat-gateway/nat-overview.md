@@ -7,123 +7,64 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: nat
 ms.topic: conceptual
-ms.date: 06/29/2021
+ms.date: 10/20/2021
 ms.author: allensu
-ms.openlocfilehash: dfd00b0eb924c13cc68dbf0d6d1b1833c3ad7893
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 5e2b9baeef03163e74ad83c97d8e8148d7f6cfaf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236612"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228315"
 ---
 # <a name="what-is-virtual-network-nat"></a>Qu’est-ce que le service NAT de Réseau virtuel ?
 
-Le service NAT (traduction d’adresses réseau) de Réseau virtuel simplifie la connectivité Internet sortante uniquement pour les réseaux virtuels. Quand il est configuré sur un sous-réseau, toute la connectivité sortante utilise vos adresses IP publiques statiques spécifiées.  Une connectivité sortante est possible sans équilibreur de charge ni adresses IP publiques directement attachées aux machines virtuelles. NAT est complètement managé et hautement résilient.
-
-> [!VIDEO https://www.youtube.com/embed/2Ng_uM0ZaB4]
+Le NAT de réseau virtuel est un service de traduction d’adresses réseau entièrement managé et hautement résilient. Le NAT de réseau virtuel simplifie la connectivité Internet sortante pour les réseaux virtuels. Quand il est configuré sur un sous-réseau, toute la connectivité sortante utilise les adresses IP publiques statiques du NAT de réseau virtuel. 
 
 :::image type="content" source="./media/nat-overview/flow-map.png" alt-text="La figure montre un NAT recevant du trafic à partir de sous-réseaux internes et le dirigeant vers une adresse IP publique (PIP) et un préfixe IP.":::
 
 *Figure : Service NAT de Réseau virtuel*
-## <a name="static-ip-addresses-for-outbound-only"></a>Adresses IP statiques pour le trafic sortant uniquement
 
-Une connectivité sortante peut être définie pour chaque sous-réseau avec NAT.  Plusieurs sous-réseaux au sein du même réseau virtuel peuvent avoir différents services NAT. Un sous-réseau est configuré en spécifiant la ressource de passerelle NAT à utiliser. Tous les flux sortants UDP et TCP en provenance de toute instance de machine virtuelle utilisent la traduction d’adresses réseau (NAT). 
+## <a name="vnet-nat-benefits"></a>Avantages du NAT de réseau virtuel
 
-NAT est compatible avec les ressources d’adresses IP publiques ou les ressources de préfixes d’adresses IP publiques de la référence SKU standard, ou avec une combinaison des deux.  Vous pouvez utiliser directement un préfixe d’adresse IP publique ou distribuer les adresses IP publiques du préfixe entre plusieurs ressources de passerelle NAT. NAT nettoie tout le trafic vers la plage d’adresses IP du préfixe.  Tout filtrage des adresses IP de vos déploiements est à présent très simple.
+### <a name="security"></a>Sécurité
+Avec NAT, les machines virtuelles individuelles (ou d’autres ressources de calcul) n’ont pas besoin d’adresses IP publiques et peuvent rester entièrement privées. Ces ressources sans adresse IP publique peuvent néanmoins toujours atteindre des sources externes en dehors du réseau virtuel. Vous pouvez également associer un préfixe d’adresse IP publique pour garantir qu’un ensemble d’adresses IP contiguës sera utilisé pour le trafic sortant. Les règles de pare-feu de destination peuvent ensuite être configurées en fonction de cette liste d’adresses IP prévisibles.
 
-Tout le trafic sortant du sous-réseau est traité par NAT automatiquement sans aucune configuration par le client.  Les routes définies par l’utilisateur ne sont pas nécessaires. NAT est prioritaire sur les autres scénarios de trafic sortant et remplace la destination Internet par défaut d’un sous-réseau.
+### <a name="resiliency"></a>Résilience 
+NAT est un service entièrement managé et distribué. Elle ne dépend d’aucune instance de calcul individuelle, comme des machines virtuelles ou un appareil de passerelle physique. Elle tire parti des réseaux à définition logicielle, ce qui la rend hautement résiliente. 
 
-## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>SNAT à la demande avec plusieurs adresses IP à mettre à l’échelle
+### <a name="scalability"></a>Extensibilité
+NAT peut être associé à un sous-réseau et être utilisée par toutes les ressources de calcul de ce sous-réseau. En outre, tous les sous-réseaux d’un réseau virtuel peuvent tirer parti de la même ressource. Quand elle est associée à un préfixe d’adresse IP publique, elle est automatiquement mise à l’échelle en fonction du nombre d’adresses IP nécessaires pour le trafic sortant.
 
-NAT utilise la « traduction d’adresses réseau de port » (PNAT ou PAT) et est recommandé pour la plupart des charges de travail. Les charges de travail dynamiques ou divergentes peuvent être facilement adaptées à l’allocation de flux de trafic sortant à la demande. Sont ainsi évités une planification préalable, une préallocation et un surprovisionnement des ressources sortantes. Les ressources de port SNAT sont partagées et disponibles sur tous les sous-réseaux à l’aide d’une ressource de passerelle NAT spécifique. Elles sont fournies en cas de besoin.
+### <a name="performance"></a>Performances
+NAT n’aura pas d’impact sur la bande passante réseau de vos ressources de calcul, car il s’agit d’un service réseau à définition logicielle. En savoir plus sur les [performances des passerelles NAT](nat-gateway-resource.md#performance).
 
-Une adresse IP publique attachée à NAT fournit jusqu’à 64 000 flux simultanés pour respectivement UDP et TCP. 
 
-Une ressource de passerelle NAT peut utiliser ceci :
+## <a name="vnet-nat-basics"></a>Concepts de base du NAT de réseau virtuel
 
-* Adresse IP publique
-* Préfixe d’adresse IP publique
-
-Les deux types peuvent être associés à une passerelle NAT.
-
-Utilisez une seule adresse IP et effectuez un scale-up pour atteindre un maximum de 16 adresses IP publiques.
-
-Les sous-réseaux d'un réseau virtuel sont associés à une passerelle NAT pour activer les connexions sortantes.  Une passerelle NAT utilisera toutes les adresses IP associées à la ressource pour les connexions.
-
-La passerelle NAT permet de créer des flux du réseau virtuel vers Internet. Le trafic de retour provenant d’Internet est uniquement autorisé en réponse à un flux actif.
-
-Contrairement au service SNAT de flux sortant d'équilibreur de charge, la passerelle NAT ne présente aucune restriction quant à l'adresse IP privée d'une instance de machine virtuelle pouvant établir des connexions sortantes.  Les adresses IP principales et secondaires peuvent créer des connexions sortantes avec NAT.
-
-## <a name="coexistence-of-inbound-and-outbound"></a>Coexistence des trafics entrant et sortant
-
-NAT est compatible avec les ressources SKU standard suivantes :
-
-- Équilibrage de charge
-- Adresse IP publique
-- Préfixe d’adresse IP publique
-
-Utilisées avec NAT, ces ressources fournissent une connectivité Internet entrante à vos sous-réseaux. NAT fournit toute la connectivité Internet sortante à partir de vos sous-réseaux.
-
-NAT et les fonctionnalités de la référence SKU standard compatibles connaissent la direction dans laquelle le flux a démarré. Des scénarios de trafic entrant et sortant peuvent coexister. Ces scénarios reçoivent les traductions d’adresses réseau appropriées, car ces fonctionnalités connaissent la direction du flux. 
-
-:::image type="content" source="./media/nat-overview/flow-direction4.png" alt-text="La figure montre une passerelle NAT qui prend en charge le trafic sortant vers Internet à partir d'un réseau virtuel.":::
-
-*Figure : Direction du flux NAT de Réseau virtuel*
-## <a name="fully-managed-highly-resilient"></a>Complètement managé et hautement résilient
+NAT peut être créé dans une zone de disponibilité spécifique et dispose d’une redondance intégrée dans la zone spécifiée. NAT est non zonal par défaut. Quand vous créez des scénarios de [zones de disponibilité](../../availability-zones/az-overview.md), NAT peut être isolé dans une zone spécifique. C’est ce qu’on appelle un déploiement zonal.
 
 NAT a déjà fait l’objet d’un scale-out complet dès le départ. Aucune opération de montée en puissance ni de scale-out n’est nécessaire.  Azure gère le fonctionnement de NAT pour vous.  NAT a toujours plusieurs domaines d’erreur et peut supporter plusieurs défaillances sans interruption de service.
-## <a name="tcp-reset-for-unrecognized-flows"></a>Réinitialisation TCP pour les flux non reconnus
 
-Le côté privé de NAT envoie des paquets de réinitialisation TCP pour les tentatives de communication sur une connexion TCP qui n’existe pas. Par exemple, des connexions ont atteint le délai d’inactivité. Le paquet reçu suivant retourne une réinitialisation TCP à l’adresse IP privée pour signaler et forcer la fermeture de la connexion.
+* Une connectivité sortante peut être définie pour chaque sous-réseau avec NAT.  Plusieurs sous-réseaux au sein du même réseau virtuel peuvent avoir différents services NAT. Un sous-réseau est configuré en spécifiant la ressource de passerelle NAT à utiliser.  Tout le trafic sortant du sous-réseau est traité par NAT automatiquement sans aucune configuration par le client.  Les routes définies par l’utilisateur ne sont pas nécessaires. NAT est prioritaire sur les autres scénarios de trafic sortant et remplace la destination Internet par défaut d’un sous-réseau.
+* Il prend en charge seulement les protocoles TCP et UDP. ICMP n’est pas pris en charge.
+* Une ressource de passerelle NAT peut utiliser ceci :
 
-Le côté public de NAT ne génère pas de paquets de réinitialisation TCP ni tout autre trafic.  Seul le trafic produit par le réseau virtuel du client est émis.
-
-## <a name="configurable-tcp-idle-timeout"></a>Délai d’inactivité TCP configurable
-
-Un délai d’inactivité TCP par défaut de 4 minutes est utilisé et peut être augmenté à 120 minutes maximum. Toute activité sur un flux peut également réinitialiser le délai d’inactivité, y compris les conservations de connexion active TCP.
-
-## <a name="regional-or-zone-isolation-with-availability-zones"></a>Isolement régional ou zonal avec des zones de disponibilité
-
-Par défaut, le service NAT est régional. Quand vous créez des scénarios de [zones de disponibilité](../../availability-zones/az-overview.md), NAT peut être isolé dans une zone spécifique (déploiement zonal).
-
-:::image type="content" source="./media/nat-overview/az-directions.png" alt-text="La figure montre trois piles zonales, chacune contenant une passerelle NAT et un sous-réseau.":::
-
-*Figure : Service NAT de Réseau virtuel avec des zones de disponibilité*
-## <a name="multi-dimensional-metrics-for-observability"></a>Métriques multidimensionnelles pour l’observabilité
-
-Vous pouvez superviser le fonctionnement de votre NAT par le biais de métriques multidimensionnelles exposées dans Azure Monitor. Ces métriques peuvent servir à observer l’utilisation et à résoudre les problèmes.  Les ressources de passerelle NAT exposent les métriques suivantes :
-
-- Octets
-- Paquets
-- Paquets ignorés
-- Nombre total de connexions SNAT
-- Transitions d’état de connexion SNAT par intervalle.
-
-Pour en savoir plus, consultez [Métriques des passerelles NAT](./nat-metrics.md).
-## <a name="sla"></a>Contrat SLA
-
-En disponibilité générale, le chemin de données NAT est au moins disponible à 99,9 %.
-
-## <a name="pricing"></a>Tarifs
-
-Pour plus d'informations sur les tarifs, consultez [Tarification des réseaux virtuels](https://azure.microsoft.com/pricing/details/virtual-network).
-
-## <a name="availability"></a>Disponibilité
-
-Le service NAT de réseau virtuel et la ressource de passerelle NAT sont disponibles dans toutes les [régions](https://azure.microsoft.com/global-infrastructure/regions/) des clouds Azure.
-
-## <a name="suggestions"></a>Suggestions
-
-Nous aimerions savoir comment nous pouvons améliorer le service. Proposez-nous de nouvelles fonctionnalités et votez pour celles que vous préférez en nous contactant sur [UserVoice for NAT](https://aka.ms/natuservoice).
-## <a name="limitations"></a>Limites
-
-* NAT est compatible avec des ressources d’adresses IP publiques, de préfixes d’adresses IP publiques et d’équilibreur de charge de la référence SKU standard. Les ressources de base (par exemple, un équilibreur de charge de base) et tous les produits qui en dérivent ne sont pas compatibles avec NAT.  Les ressources de base doivent être placées sur un sous-réseau non configuré avec NAT.
-* La famille d’adresses IPv4 est prise en charge.  NAT n’interagit pas avec la famille d’adresses IPv6.  NAT ne peut pas être déployé sur un sous-réseau avec un préfixe IPv6.
+  * Adresse IP publique
+  * Préfixe d’adresse IP publique
+* NAT est compatible avec les ressources d’adresses IP publiques ou les ressources de préfixes d’adresses IP publiques de la référence SKU Standard, ou avec une combinaison des deux. Vous pouvez utiliser directement un préfixe d’adresse IP publique ou distribuer les adresses IP publiques du préfixe entre plusieurs ressources de passerelle NAT. NAT nettoie tout le trafic vers la plage d’adresses IP du préfixe. Les ressources de base, comme Équilibreur de charge de base ou Adresse IP publique de base ne sont pas compatibles avec NAT.  Les ressources de base doivent être placées sur un sous-réseau qui n’est pas associé à une passerelle NAT.
+* NAT ne peut pas être associé à une adresse IP publique IPv6 ou à un préfixe IP public IPv6. Il peut cependant être associé à un sous-réseau à double pile.
+* NAT autorise la création de flux depuis le réseau virtuel vers les services en dehors de votre réseau virtuel. Le trafic de retour provenant d’Internet est uniquement autorisé en réponse à un flux actif. Les services en dehors de votre réseau virtuel ne peuvent pas établir de connexion aux instances.
 * NAT ne peut pas s’étendre sur plusieurs réseaux virtuels.
 * NAT ne peut pas être déployé dans un [sous-réseau de passerelle](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsub)
+* Le côté privé de NAT (instances de machine virtuelle ou autres ressources de calcul) envoie des paquets de réinitialisation TCP pour les tentatives de communication sur une connexion TCP qui n’existe pas. Par exemple, des connexions ont atteint le délai d’inactivité. Le paquet reçu suivant retourne une réinitialisation TCP à l’adresse IP privée pour signaler et forcer la fermeture de la connexion. Le côté public de NAT ne génère pas de paquets de réinitialisation TCP ni tout autre trafic.  Seul le trafic produit par le réseau virtuel du client est émis.
+* Un délai d’inactivité TCP par défaut de 4 minutes est utilisé et peut être augmenté à 120 minutes maximum. Toute activité sur un flux peut également réinitialiser le délai d’inactivité, y compris les conservations de connexion active TCP.
+
+## <a name="pricing-and-sla"></a>Tarifs et contrat SLA
+
+Pour plus d'informations sur les tarifs, consultez [Tarification des réseaux virtuels](https://azure.microsoft.com/pricing/details/virtual-network). Le chemin des données NAT a une disponibilité d’au moins 99,9 %.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Découvrez [comment obtenir une meilleure connectivité sortante à l’aide d’une passerelle NAT Azure](https://www.youtube.com/watch?v=2Ng_uM0ZaB4).
 * Apprenez-en davantage sur la [ressource de passerelle NAT](./nat-gateway-resource.md).
-* [Utilisez UserVoice pour nous faire part des prochains développements dont vous aimeriez bénéficier concernant le service NAT de réseau virtuel](https://aka.ms/natuservoice).
+* Pour en savoir plus, consultez [Métriques des passerelles NAT](./nat-metrics.md).

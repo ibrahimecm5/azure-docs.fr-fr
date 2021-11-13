@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/18/2021
 ms.author: jianleishen
-ms.openlocfilehash: 45c96b1e0777dd42bd1a7175a057e5a48f691ff4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d8b3d862c358ee3521980fdbfae2689c17707b1e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779670"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223704"
 ---
 # <a name="avro-format-in-azure-data-factory-and-synapse-analytics"></a>Format Avro dans Azure Data Factory et Azure Synapse Analytics
 
@@ -94,7 +94,7 @@ Les propriétés prises en charge dans la section ***\*récepteur\**** de l’ac
 
 ## <a name="mapping-data-flow-properties"></a>Propriétés du mappage de flux de données
 
-Dans les flux de données de mappage, vous pouvez lire et écrire des données au format avro dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+Dans les flux de données de mappage, vous pouvez lire et écrire des données au format avro dans les magasins de données suivants : [Stockage Blob Azure](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) et [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties). Et vous pouvez lire le format avro dans [Amazon S3](connector-amazon-simple-storage-service.md#mapping-data-flow-properties).
 
 ### <a name="source-properties"></a>Propriétés de source
 

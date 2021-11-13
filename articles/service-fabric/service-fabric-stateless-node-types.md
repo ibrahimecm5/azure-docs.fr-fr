@@ -3,17 +3,17 @@ title: Déployer des types de nœuds sans état uniquement dans un cluster Servi
 description: Découvrez comment créer et déployer des types de nœuds sans état dans un cluster Azure Service Fabric.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 10/19/2021
 ms.author: pepogors
-ms.openlocfilehash: 8e6c3e27f38342028efd102efa32f3df90b2f88a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9c9f94cf3d9a9eb0ea18356afdcbba7046509762
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950084"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460410"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Déployer un cluster Azure Service Fabric avec des types de nœuds sans état
-Les types de nœuds Service Fabric sont fournis en supposant qu’à un moment donné, des services avec état peuvent être placés sur les nœuds. Les types de nœuds sans état assouplissent cette hypothèse pour un type de nœud, ce qui permet au type de nœud d’utiliser d’autres fonctionnalités, telles que l’accélération des opérations de scale-out, la prise en charge des mises à niveau automatiques du système d’exploitation sur la durabilité Bronze et le scale-out de plus de 100 nœuds dans un même groupe de machines virtuelles identiques.
+Les types de nœuds Service Fabric sont fournis en supposant qu’à un moment donné, des services avec état peuvent être placés sur les nœuds. Les types de nœud sans état changent cette hypothèse pour un type de nœud, ce qui permet au type de nœud d’utiliser d’autres fonctionnalités telles que l’accélération des opérations de scale-out, la prise en charge des mises à niveau automatiques de l’OS sur la durabilité Bronze ainsi que le scale-out de plus de 100 nœuds dans un seul groupe de machines virtuelles identiques.
 
 * Les types de nœuds principaux ne peuvent pas être configurés pour être sans état
 * Les types de nœuds sans état ne sont pris en charge qu’avec des niveaux de durabilité Bronze
@@ -73,7 +73,7 @@ Pour activer les types de nœuds sans état, vous devez configurer la ressource 
 
 * La propriété **singlePlacementGroup** de la valeur doit être définie sur **false** si vous devez effectuer une mise à l’échelle sur plus de 100 machines virtuelles.
 * Le groupe identique **upgradeMode** doit être défini sur **Continu**.
-* Le mode de mise à niveau Continue nécessite la configuration de l’extension Intégrité de l’application ou des sondes d’intégrité. Configurez la sonde d’intégrité avec la configuration par défaut pour les types de nœuds sans état comme indiqué ci-dessous. Une fois les applications déployées sur le type de nœud, les ports d’extension de sonde d’intégrité/d’intégrité peuvent être modifiés pour surveiller l’intégrité de l’application.
+* Le mode de mise à niveau Continue nécessite la configuration de l’extension Intégrité de l’application ou des sondes d’intégrité. Pour plus d’informations sur la configuration des sondes d’intégrité ou de l’extension d’intégrité de l’application, consultez ce [document](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#how-does-automatic-os-image-upgrade-work). Configurez la sonde d’intégrité avec la configuration par défaut pour les types de nœud sans état, comme suggéré ci-dessous. Une fois les applications déployées sur le type de nœud, vous pouvez changer les ports des sondes d’intégrité/de l’extension d’intégrité pour effectuer un monitoring de l’intégrité réelle de l’application.
 
 >[!NOTE]
 > Lors de l’utilisation de la mise à l’échelle automatique avec types de nœuds sans état, l’état du nœud n’est pas automatiquement nettoyé après l’opération de scale-down. Il est recommandé d’utiliser l’[assistance de mise à l’échelle automatique Service Fabric](https://github.com/Azure/service-fabric-autoscale-helper) pour le nettoyage du NodeState pendant la mise à l’échelle automatique.
@@ -143,9 +143,6 @@ Pour configurer un type de nœud sans état entre plusieurs zones de disponibili
 * Définissez **singlePlacementGroup** : **false** si plusieurs groupes de placement doivent être activés.
 * Définissez  **upgradeMode** : **Propagée** et ajoute une extension Intégrité de l’application/des sondes d’intégrité comme indiqué ci-dessus.
 * Définissez **platformFaultDomainCount** : **5** pour le groupe de machines virtuelles identiques.
-
->[!NOTE]
-> Quel que soit le VMSSZonalUpgradeMode configuré dans le cluster, les mises à jour du groupe de machines virtuelles identiques se produisent toujours séquentiellement, une zone de disponibilité à la fois, pour le type de nœud sans état qui s’étend sur plusieurs zones, car il utilise le mode de mise à niveau propagée.
 
 Pour obtenir des informations de référence, consultez le [modèle](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) de configuration des types de nœud sans état avec plusieurs zones de disponibilité
 

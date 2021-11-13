@@ -1,5 +1,5 @@
 ---
-title: Résoudre les problèmes de réplication inter-région pour Azure NetApp Files | Microsoft Docs
+title: Résoudre les erreurs de réplication inter-région pour Azure NetApp Files | Microsoft Docs
 description: Décrit les messages d’erreur et les résolutions qui peuvent vous aider à résoudre les problèmes de réplication inter-région pour Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bae0ed7fc15843c50af9dca860367d2074af33ec
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590923"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256270"
 ---
-# <a name="troubleshoot-cross-region-replication"></a>Résoudre les problèmes de réplication interrégion
+# <a name="troubleshoot-cross-region-replication-errors"></a>Résoudre les problèmes de réplication interrégionale
 
 Cet article décrit les messages d’erreur et les résolutions qui peuvent vous aider à résoudre les problèmes de réplication inter-région pour Azure NetApp Files. 
 

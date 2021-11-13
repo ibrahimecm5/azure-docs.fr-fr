@@ -1,20 +1,19 @@
 ---
 title: Raccourcis clavier du portail Azure
 description: Le portail Azure prend en charge les raccourcis clavier généraux pour vous aider à effectuer des actions, naviguer et atteindre des emplacements dans le portail Azure.
-ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 11/02/2021
 ms.custom: accessibility
-ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fcdf55f63e823b437107246cf83ede1decb0364
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745908"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461833"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Raccourcis clavier du portail Azure
 
-Cet article répertorie les raccourcis clavier qui fonctionnent sur le portail Azure. Les services individuels peuvent bénéficier de leurs propres raccourcis clavier.
+Cet article liste les raccourcis clavier qui fonctionnent dans le portail Azure. Les services individuels peuvent bénéficier de leurs propres raccourcis clavier.
 
 ## <a name="actions"></a>Actions
 
@@ -43,11 +42,13 @@ Cet article répertorie les raccourcis clavier qui fonctionnent sur le portail A
 |Accéder aux **Groupes de ressources**|G + R |
 |Ouvrir l’élément de la barre latérale gauche à cette position |G + numéro|
 
-## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Raccourcis clavier pour des pages spécifiques du portail Azure
+## <a name="examples-of-keyboard-shortcuts-for-specific-areas"></a>Exemples de raccourcis clavier pour des zones spécifiques
 
 - [Explorateur Azure Resource Graph](../governance/resource-graph/reference/keyboard-shortcuts.md)
+- [Kusto Explorer](/azure/data-explorer/kusto/tools/kusto-explorer-shortcuts)
+- [Azure Maps - Module de dessin](../azure-maps/drawing-tools-interactions-keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 - [Activer le contraste élevé ou modifier le thème](set-preferences.md#choose-a-theme-or-enable-high-contrast)
-- [Navigateurs et appareils pris en charge](azure-portal-supported-browsers-devices.md)
+- [En savoir plus sur les navigateurs et appareils pris en charge](azure-portal-supported-browsers-devices.md)

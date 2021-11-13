@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Documentation Microsoft Defender pour le cloud
+summary: Microsoft Defender pour cloud fournit une gestion unifiée de la sécurité et une protection avancée contre les menaces dans les charges de travail cloud hybrides.
+metadata:
+  title: Documentation Microsoft Defender pour le cloud
+  description: Découvrez comment bien démarrer avec Defender pour le cloud et apprenez à sécuriser vos charges de travail, à limiter les risques, à détecter les attaques et à y répondre avec nos guides de démarrage rapides et nos tutoriels.
+  services: security-center
+  ms.service: security-center
+  ms.topic: landing-page
+  ms.collection: collection
+  author: memildin
+  ms.author: memildin
+  ms.date: 10/21/2021
+  ms.openlocfilehash: 5ab94b1a0cf16df2475d073e62ee7877b97c28e2
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: fr-FR
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132349640"
+landingContent:
+- title: À propos de Defender pour le cloud
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Quelles sont les principales fonctionnalités de Defender pour le cloud ?
+      url: defender-for-cloud-introduction.md
+    - text: Quelles sont les versions de Windows Server et de Linux prises en charge ?
+      url: security-center-os-coverage.md
+    - text: Comment prendre en main Defender pour le cloud ?
+      url: get-started.md
+- title: Rester à jour
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Notes de publication pour Defender pour le cloud
+      url: release-notes.md
+    - text: Appliquer des bases de référence de sécurité Azure sur des ordinateurs
+      url: apply-security-baseline.md
+    - text: Utiliser les rapports de classeurs intégrés
+      url: custom-dashboards-azure-workbooks.md
+    - text: Protéger les clusters Kubernetes hybrides et multiclouds
+      url: defender-for-kubernetes-azure-arc.md
+    - text: Microsoft Defender pour les bases de données relationnelles open source
+      url: defender-for-databases-introduction.md
+- title: Bien démarrer
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Activer Defender pour le cloud sur vos abonnements
+      url: get-started.md
+    - text: Activer les fonctionnalités de sécurité renforcée
+      url: enable-enhanced-security.md
+    - text: Configurer le provisionnement automatique
+      url: enable-data-collection.md
+    - text: Configurer les notifications par e-mail
+      url: configure-email-notifications.md
+    - text: Connecter des machines non-Azure
+      url: quickstart-onboard-machines.md
+- title: Améliorer votre score de sécurité
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Présentation du degré de sécurisation
+      url: secure-score-security-controls.md
+    - text: Appliquer les recommandations en matière de sécurité
+      url: implement-security-recommendations.md
+    - text: Exempter une ressource d’une recommandation
+      url: exempt-resource.md
+    - text: Suivre vos scores au fur et à mesure
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-workbook
+- title: Prévenir les menaces
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Gérer l’accès juste-à-temps
+      url: just-in-time-access-usage.md
+    - text: Configurer des contrôles d’application adaptatifs
+      url: adaptive-application-controls.md
+    - text: Implémenter le renforcement du réseau adaptatif
+      url: adaptive-network-hardening.md
+    - text: Utiliser les protections de charge de travail
+      url: workload-protections-dashboard.md

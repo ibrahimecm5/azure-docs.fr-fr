@@ -4,18 +4,19 @@ description: Découvrez comment télécharger ou voir vos frais et utilisation q
 keywords: facturation de l’utilisation, frais d’utilisation, téléchargement des informations d’utilisation, afficher l’utilisation, facture azure, utilisation d’azure
 author: bandersmsft
 ms.author: banders
+ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.date: 09/15/2021
-ms.openlocfilehash: 7b5a9f195d2ba8b682dd4458358cb9d85b7f16d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: e7f4a5f12ec9e1be5c7129d12ed519bc4c781d61
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644521"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255400"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Afficher et télécharger vos informations d’utilisation et vos frais Azure
 
@@ -48,6 +49,10 @@ Pour voir et télécharger les données d’utilisation en tant que client Contr
 1. Sélectionnez **Utilisation + frais**.
 1. Pour le mois que vous souhaitez télécharger, sélectionnez **Télécharger**.  
     ![Capture d’écran montrant la page Factures de Cost Management + Billing pour les clients E A.](./media/download-azure-daily-usage/download-usage-ea.png)
+1. Dans la page Télécharger l’utilisation + les frais, sous Détails d’utilisation, sélectionnez le type de frais à télécharger dans la liste. En fonction de votre sélection, le fichier CSV fournit tous les frais (utilisation et achats), y compris les achats RI (réservation). Ou les frais amortis (utilisation et achats), y compris les achats de réservation. 
+    :::image type="content" source="./media/download-azure-daily-usage/select-usage-detail-charge-type.png" alt-text="Capture d’écran montrant la sélection du type de frais Détails d’utilisation à télécharger." :::
+1. Sélectionnez **Préparer le document**.
+1.  Azure peut prendre un certain temps pour préparer votre téléchargement, en fonction de votre utilisation mensuelle. Quand le rapport est prêt à être téléchargé, sélectionnez **Télécharger le fichier CSV**.
 
 ## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Télécharger les informations d’utilisation pour votre Contrat client Microsoft
 
@@ -89,16 +94,15 @@ Commencez par préparer votre environnement pour Azure CLI :
 Une fois connecté, utilisez la commande [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) pour interroger les informations sur l’utilisation du mois en cours pour votre abonnement :
 
 ```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
+az costmanagement query --timeframe MonthToDate --type Usage --dataset-aggregation '{\"totalCost\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}}' --dataset-grouping name="ResourceGroup" type="Dimension"
    --scope "subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
 Vous pouvez également affiner la requête à l’aide du paramètre **--dataset-filter** ou d’autres paramètres :
 
 ```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
-   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+'{\"totalCost\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}}' --dataset-grouping name="ResourceGroup" type="Dimension"
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
 ```
 
 Le paramètre **--dataset-filter** prend une chaîne JSON ou `@json-file`.

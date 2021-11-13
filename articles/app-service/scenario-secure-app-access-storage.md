@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/16/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: be170a07340fdea84b9b4af03bd329fcdf91483d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5eb3998821a8022a82c127a69279809e93d31056
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065548"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477342"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutoriel : Accéder au stockage Azure à partir d’une application web
 
@@ -206,8 +206,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ---
 
-## <a name="access-blob-storage-net"></a>Accès au stockage d’objets blob (.NET)
-
+## <a name="access-blob-storage"></a>Accéder au Stockage Blob
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
 La classe [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) est utilisée pour obtenir les informations d’identification d’un jeton pour votre code afin d’autoriser les requêtes d’accès à Stockage Azure. Créez une instance de la classe [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), qui utilise l’identité managée pour extraire des jetons et les attacher au client de service. L’exemple de code suivant obtient les informations d’identification du jeton authentifiées, et les utilise pour créer un objet de client de service, qui charge un nouvel objet blob.
 
 Pour voir ce code dans un exemple d’application, consultez l’[exemple sur GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity).
@@ -216,7 +216,7 @@ Pour voir ce code dans un exemple d’application, consultez l’[exemple sur Gi
 
 Installez le [package NuGet de stockage d’objets blob](https://www.nuget.org/packages/Azure.Storage.Blobs/) pour utiliser le stockage d’objets blob et le [package NuGet de la bibliothèque cliente Azure Identity pour .NET](https://www.nuget.org/packages/Azure.Identity/) afin de vous authentifier avec des informations d’identification Azure AD. Installez les bibliothèques clientes à l’aide de l’interface de ligne de commande .NET Core ou de la console du gestionnaire de package dans Visual Studio.
 
-# <a name="command-line"></a>[Ligne de commande](#tab/command-line)
+#### <a name="net-core-command-line"></a>Ligne de commande .NET Core
 
 Ouvrez une ligne de commande et basculez vers le répertoire qui contient votre fichier projet.
 
@@ -228,8 +228,7 @@ dotnet add package Azure.Storage.Blobs
 dotnet add package Azure.Identity
 ```
 
-# <a name="package-manager"></a>[Gestionnaire de package](#tab/package-manager)
-
+#### <a name="package-manager-console"></a>Console du Gestionnaire de package
 Ouvrez le projet ou la solution dans Visual Studio, puis ouvrez la console à l’aide de la commande **Outils** > **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
 
 Exécutez les commandes d’installation.
@@ -238,8 +237,6 @@ Install-Package Azure.Storage.Blobs
 
 Install-Package Azure.Identity
 ```
-
----
 
 ### <a name="example"></a>Exemple
 
@@ -285,6 +282,40 @@ static public async Task UploadBlob(string accountName, string containerName, st
     }
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+La classe `DefaultAzureCredential` du package [@azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/identity/identity/README.md) est utilisée pour obtenir les informations d’identification d’un jeton pour votre code afin d’autoriser les demandes au Stockage Azure. La classe `BlobServiceClient` du package [@azure/storage-blob](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/storage/storage-blob) est utilisée pour charger un nouvel objet blob dans le stockage. Créez une instance de la classe `DefaultAzureCredential`, qui utilise l’identité managée pour extraire des jetons et les attacher au client du service BLOB. L’exemple de code suivant obtient les informations d’identification du jeton authentifiées, et les utilise pour créer un objet de client de service, qui charge un nouvel objet blob.
+
+Pour voir ce code dans un exemple d’application, consultez le fichier *StorageHelper.js* dans l’[exemple sur GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/1-WebApp-storage-managed-identity).
+
+### <a name="example"></a>Exemple
+
+```nodejs
+const { DefaultAzureCredential } = require("@azure/identity");
+const { BlobServiceClient } = require("@azure/storage-blob");
+const defaultAzureCredential = new DefaultAzureCredential();
+
+// Some code omitted for brevity.
+
+async function uploadBlob(accountName, containerName, blobName, blobContents) {
+    const blobServiceClient = new BlobServiceClient(
+        `https://${accountName}.blob.core.windows.net`,
+        defaultAzureCredential
+    );
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+
+    try {
+        await containerClient.createIfNotExists();
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+        const uploadBlobResponse = await blockBlobClient.upload(blobContents, blobContents.length);
+        console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+    } catch (error) {
+        console.log(error);
+    }
+}
+```
+---
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 

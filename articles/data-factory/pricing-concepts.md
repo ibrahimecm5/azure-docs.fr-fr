@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 38d6f8d8b96526c8ba190559a639985bedf96cff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 944a49b0c58d1c6e197d385fd6bd029aa29631c5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798557"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251943"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Comprendre les tarifs Data Factory à travers des exemples
 
@@ -51,10 +51,10 @@ Pour réaliser ce scénario, créez un pipeline avec les éléments suivants :
 **Prix total du scénario : 0,16811 $**
 
 - Opérations Data Factory = **0,0001 $**
-  - Lecture/écriture = 10 \* 0,00001 = 0,0001 $ [1 lecture/écriture = 0,50 / 50 000 = 0,00001]
-  - Monitoring = 2 \* 0,000005 = 0,00001 $ [1 monitoring = 0,25 $/ 50 000 = 0,000005]
+  - Lecture/écriture = 10\*0,00001 = 0,0001 $ [1 lecture/écriture = 0,50/50000 $ = 0,00001]
+  - Monitoring  = 2\*0,000005 = 0,00001 $ [1 monitoring = 0,25/50000 $ = 0,000005]
 - Exécution &amp; orchestration de pipeline = **0,168 $**
-  - Exécutions d’activité = 0,001 \* 2 = 0,002 $ [1 exécution = 1 $ / 1 000 = 0,001]
+  - Exécutions d’activité = 0,001\*2 = 0,002 $ [1 exécution = 1/1000 $ = 0,001]
   - Activités de déplacement des données = 0,166 $ (au prorata de 10 minutes de durée d’exécution, à 0,25 $/h par Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Copier des données et les transformer toutes les heures avec Azure Databricks
@@ -83,10 +83,10 @@ Pour réaliser ce scénario, créez un pipeline avec les éléments suivants :
 **Prix total du scénario : 0,16916 $**
 
 - Opérations Data Factory = **0,00012 $**
-  - Lecture/écriture = 11 \* 0,00001 = 0,00011 $ [1 lecture/écriture = 0,50 / 50 000 = 0,00001]
-  - Monitoring = 3 \* 0,000005 = 0,00001 $ [1 monitoring = 0,25 $/ 50 000 = 0,000005]
+  - Lecture/écriture = 11\*0,00001 = 0,00011 $ [1 lecture/écriture = 0,50/50000 $ = 0,00001]
+  - Monitoring = 3\*0,000005 = 0,00001 $ [1 monitoring = 0,25/50 000 $ = 0,000005]
 - Exécution &amp; orchestration de pipeline = **0,16904 $**
-  - Exécutions d’activité = 0,001 \* 3 = 0,003 $ [1 exécution = 1 $ / 1 000 = 0,001]
+  - Exécutions d’activité = 0,001\*3 = 0,003 $ [1 exécution = 1/1000 $ = 0,001]
   - Activités de déplacement des données = 0,166 $ (au prorata de 10 minutes de durée d’exécution, à 0,25 $/h par Azure Integration Runtime)
   - Activité du pipeline externe = 0,000041 $ (au prorata de 10 minutes de durée d’exécution, à 0,00025 $/h par Azure Integration Runtime)
 
@@ -118,10 +118,10 @@ Pour réaliser ce scénario, créez un pipeline avec les éléments suivants :
 **Prix total du scénario : 0,17020 $**
 
 - Opérations Data Factory = **0,00013 $**
-  - Lecture/écriture = 11 \* 0,00001 = 0,00011 $ [1 lecture/écriture = 0,50 / 50 000 = 0,00001]
-  - Monitoring = 4 \* 0,000005 = 0,00002 $ [1 monitoring = 0,25 $/ 50 000 = 0,000005]
+  - Lecture/écriture = 11\*0,00001 = 0,00011 $ [1 lecture/écriture = 0,50/50000 $ = 0,00001]
+  - Monitoring  = 4\*0,000005 = 0,00002 $ [1 monitoring = 0,25/50000 $ = 0,000005]
 - Exécution &amp; orchestration de pipeline = **0,17007 $**
-  - Exécutions d’activité = 0,001 \* 4 = 0,004 $ [1 exécution = 1 $ / 1 000 = 0,001]
+  - Exécutions d’activité = 0,001\*4 = 0,004 $ [1 exécution = 1/1000 $ = 0,001]
   - Activités de déplacement des données = 0,166 $ (au prorata de 10 minutes de durée d’exécution, à 0,25 $/h par Azure Integration Runtime)
   - Activité du pipeline = 0,00003 (au prorata d’1 minute de durée d’exécution, à 0,002 $/h par Azure Integration Runtime)
   - Activité du pipeline externe = 0,000041 $ (au prorata de 10 minutes de durée d’exécution, à 0,00025 $/h par Azure Integration Runtime)
@@ -173,10 +173,10 @@ Pour réaliser ce scénario, créez un pipeline avec les éléments suivants :
 **Prix total du scénario : 1,4631 $**
 
 - Opérations Data Factory = **0,0001 $**
-  - Lecture/écriture = 10 \* 0,00001 = 0,0001 $ [1 lecture/écriture = 0,50 / 50 000 = 0,00001]
-  - Monitoring = 2 \* 0,000005 = 0,00001 $ [1 monitoring = 0,25 $/ 50 000 = 0,000005]
+  - Lecture/écriture = 10\*0,00001 = 0,0001 $ [1 lecture/écriture = 0,50/50000 $ = 0,00001]
+  - Monitoring  = 2\*0,000005 = 0,00001 $ [1 monitoring = 0,25/50000 $ = 0,000005]
 - Exécution et orchestration du pipeline = **1,463 $**
-  - Exécutions d’activité = 0,001 \* 2 = 0,002 $ [1 exécution = 1 $ / 1 000 = 0,001]
+  - Exécutions d’activité = 0,001\*2 = 0,002 $ [1 exécution = 1/1000 $ = 0,001]
   - Activités de flux de données = 1,461 $ au prorata d’une durée de 20 minutes (durée d’exécution de 10 minutes + durée de vie de 10 minutes). 0,274 $/h sur Azure Integration Runtime avec 16 cœurs de calcul général
 
 ## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Intégration de données dans un VNET managé Azure Data Factory
@@ -204,10 +204,10 @@ Pour réaliser ce scénario, vous devez créer deux pipelines avec les élément
 **Prix total du scénario : 1,45523 USD**
 
 - Opérations Data Factory = 0,00023 USD
-  - Lecture/écriture = 20*00001 = 0,0002 USD [1 R/W = 0,50 USD/50000 = 0,00001]
-  - Monitoring = 6*000005 = 0,00003 USD [1 Monitoring = 0,25 USD/50000 = 0,000005]
+  - Lecture/écriture = 20*0,00001 = 0,0002 $ [1 lecture/écriture = 0,50/50000 $ = 0,00001]
+  - Monitoring = 6*0,000005 = 0,00003 $ [1 monitoring = 0,25/50000 $ = 0,000005]
 - Exécution et orchestration du pipeline = 1,455 USD
-  - Exécutions d’activité = 0,001*6 = 0,006 [1 exécution = 1 USD/1000 = 0,001]
+  - Exécutions d’activité = 0,001*6 = 0,006 $ [1 exécution = 1/1000 $ = 0,001]
   - Activités de déplacement des données = 0,333 USD (au prorata de 10 minutes de durée d’exécution, à 0,25 $/h par Azure Integration Runtime)
   - Activité du pipeline = 1,116 USD (au prorata de 7 minutes de durée d’exécution plus TTL de 60 minutes. à 1 USD/h par Azure Integration Runtime)
 

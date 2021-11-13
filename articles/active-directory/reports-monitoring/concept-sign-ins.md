@@ -4,7 +4,7 @@ description: Présentation des journaux des connexions dans Azure Active Directo
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/16/2021
+ms.date: 10/25/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5940205b9a1a17a6d6d51d96a6ab792ac744d3f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ad322032237d8e65fd82fea74bf359fcd65c3840
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051626"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997226"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Journaux des connexions dans Azure Active Directory
 
@@ -280,6 +280,7 @@ Sur la page **Utilisateurs**, vous obtenez une vue d’ensemble complète de tou
 L’onglet **Informations sur l’authentification** situé dans le rapport des connexions fournit les informations suivantes pour chaque tentative d’authentification :
 
 - Une liste des stratégies d’authentification appliquées (par exemple, l’accès conditionnel, l’authentification multifacteur par utilisateur, les valeurs par défaut de sécurité)
+- Liste des stratégies de durée de vie de session appliquées (par exemple, fréquence de connexion, mémoriser MFA, durée de vie des jetons configurable)
 - La séquence des méthodes d’authentification utilisées pour la connexion
 - Si la tentative d’authentification a réussi ou non
 - Les raisons de la réussite ou de l’échec de la tentative d’authentification
@@ -287,6 +288,7 @@ L’onglet **Informations sur l’authentification** situé dans le rapport des 
 Ces informations permettent aux administrateurs de dépanner chaque étape de la connexion d’un utilisateur et de suivre :
 
 - Le volume des connexions protégées par l’authentification multifacteur 
+- Raison de l’invite d’authentification en fonction des stratégies de durée de vie de session
 - L’utilisation et le taux de réussite de chaque méthode d’authentification 
 - L’utilisation de méthodes d’authentification sans mot de passe (par exemple, la connexion par téléphone sans mot de passe, FIDO2 et Windows Hello Entreprise) 
 - La fréquence à laquelle les exigences d’authentification sont satisfaites par des revendications de jeton (où les utilisateurs ne sont pas invités de manière interactive à entrer un mot de passe, à entrer un mot de passe à usage unique par SMS, etc.)
@@ -330,7 +332,7 @@ L’option **Connexions** vous fournit une vue d’ensemble complète de tous le
 
 ## <a name="microsoft-365-activity-logs"></a>Journaux d’activité Microsoft 365
 
-Vous pouvez consulter les journaux d’activité Microsoft 365 dans le [centre d’administration Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). N’oubliez pas que les journaux d’activité de Microsoft 365 et d’Azure AD partagent un nombre important de ressources de répertoire. Seul le centre d’administration Microsoft 365 fournit une vue complète des journaux d’activité d’Microsoft 365. 
+Vous pouvez consulter les journaux d’activité Microsoft 365 dans le [centre d’administration Microsoft 365](/office365/admin/admin-overview/about-the-admin-center). N’oubliez pas que les journaux d’activité de Microsoft 365 et d’Azure AD partagent un nombre important de ressources d’annuaire. Seul le centre d’administration Microsoft 365 fournit une vue complète des journaux d’activité d’Microsoft 365. 
 
 Vous pouvez également accéder par programme aux journaux d’activité de Microsoft 365 en utilisant les [API de gestion Microsoft 365](/office/office-365-management-api/office-365-management-apis-overview).
 

@@ -3,12 +3,12 @@ title: Versions d’Azure Service Fabric
 description: En savoir plus sur les versions de cluster dans Azure Service Fabric et les versions de plateforme activement prises en charge
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: 930de308562fc0a5d73b3b5ee0799324aa3bda3d
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 2d662ec817ed1fffed56836feb7a8e73f279408b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659162"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460372"
 ---
 # <a name="service-fabric-supported-versions"></a>Versions de Service Fabric prises en charge
 Les tableaux de cet article décrivent les versions Service Fabric et des plateformes qui sont activement prises en charge.
@@ -17,10 +17,12 @@ Les tableaux de cet article décrivent les versions Service Fabric et des platef
 
 | Runtime Service Fabric |Peut être mis à niveau directement à partir de|Peut passer à une version antérieure vers*|Version du kit de développement logiciel (SDK)/du package NuGet compatible|Runtimes .NET pris en charge** |Version du SE |Fin de la prise en charge |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.1 CU3<br>8.1.335.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | Version actuelle |
-| 8.1 CU2<br>8.1.329.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | Version actuelle |
-| 8.1 CU1<br>8.1.321.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | Version actuelle |
-| 8.1 RTO<br>8.1.316.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | Version actuelle |
+| 8.2 RTO<br>8.2.1235.9590 | 8.0 CU3<br>8.0.536.9590 | 8.0 | Inférieure ou égale à la version 5.2 | .NET 5.0 (GA), >= .NET Core 3.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | Version actuelle |
+| 8.1 CU3.1<br>8.1.337.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 3.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 CU3<br>8.1.335.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 3.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 CU2<br>8.1.329.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 3.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 CU1<br>8.1.321.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 RTO<br>8.1.316.9590 | 7.2 CU7<br>7.2.477.9590 | 8.0 | Inférieure ou égale à la version 5.1 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 30 juin 2022 |
 | 8.0 CU3<br>8.0.536.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | Inférieure ou égale à la version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 28 février 2022 |
 | 8.0 CU2<br>8.0.521.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | Inférieure ou égale à la version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 28 février 2022 |
 | 8.0 CU1<br>8.0.516.9590 | 7.1 CU10<br>7.1.510.9590 | 7.2 | Inférieure ou égale à la version 5.0 | .NET 5.0 (GA), >= .NET Core 2.1, <br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 28 février 2022 |
@@ -30,7 +32,7 @@ Les tableaux de cet article décrivent les versions Service Fabric et des platef
 | 7.2 RTO-CU5<br>7.2.413.9590-7.2.452.9590 | 7.0 CU4<br>7.0.470.9590 | 7.1 |Inférieure ou égale à la version 4.2 | >= .NET Core 2.1,<br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date)| 30 novembre 2021 |
 | 7.1<br>7.1.510.9590 |7.0 CU3<br>7.0.466.9590 |N/A | Inférieure ou égale à la version 4.1 | >= .NET Core 2.1,<br>Tous >= .NET Framework 4.5 | [Voir les versions du système d’exploitation prises en charge](#supported-windows-versions-and-support-end-date) | 31 juillet 2021 |
 
-\* Le support de la version ne doit pas être arrivé à expiration.
+\* Le support de la version ne doit pas être arrivé à expiration.<br/>
 ** Service Fabric ne fournit pas de runtime .NET Core. L’auteur du service est chargé de s’assurer qu’il est <a href="/dotnet/core/deploying/">disponible</a>.
 
 ## <a name="supported-windows-versions-and-support-end-date"></a>Versions de Windows prises en charge et date de fin du support
@@ -41,7 +43,7 @@ Le support de Service Fabric sur un système d’exploitation spécifique se ter
 
 | Version du système d'exploitation | Date de fin du support Service Fabric | Lien Lifecycle du système d’exploitation |
 |---|---|---|
-|Windows Server 2019|09/01/2029|<a href="/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft Lifecycle</a>|
+|Windows Server 2019|09/01/2029|<a href="/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft Lifecycle</a>|
 |Windows Server 2016 |12/01/2027|<a href="/lifecycle/products/windows-server-2016">Windows Server 2016 - Microsoft Lifecycle</a>|
 |Windows Server 2012 R2 |10/10/2023|<a href="/lifecycle/products/windows-server-2012-r2">Windows Server 2012 R2 - Microsoft Lifecycle</a>|
 |Version 20H2 |10/05/2022|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft Lifecycle</a>|
@@ -65,10 +67,12 @@ Le support de Service Fabric sur un système d’exploitation spécifique se ter
 
 | Runtime Service Fabric | Peut être mis à niveau directement à partir de |Peut passer à une version antérieure vers*|Version du kit de développement logiciel (SDK)/du package NuGet compatible | Runtimes .NET pris en charge** | Version du système d'exploitation | Fin de la prise en charge |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.1 CU3<br>8.1.334.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | Version actuelle |
-| 8.1 CU2<br>8.1.328.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | Version actuelle |
-| 8.1 CU1<br>8.1.323.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | Version actuelle |
-| 8.1 RTO<br>8.1.320.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | Version actuelle |
+| 8.2 RTO<br>8.2.1124.1 | 8.0 CU3<br>8.0.527.1 | 8.0 | Inférieure ou égale à la version 5.2 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | Version actuelle |
+| 8.1 CU3.1<br>8.1.340.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 CU3<br>8.1.334.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 CU2<br>8.1.328.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 CU1<br>8.1.323.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 30 juin 2022 |
+| 8.1 RTO<br>8.1.320.1 | 7.2 CU7<br>7.2.476.1 | 8.0 | Inférieure ou égale à la version 5.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 30 juin 2022 |
 | 8.0 CU3<br>8.0.527.1 | 7.1 CU8<br>7.1.508.1 | 7.2 | Inférieure ou égale à la version 5.0 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 28 février 2022 |
 | 8.0 CU1<br>8.0.515.1 | 7.1 CU8<br>7.1.508.1 | 7.2 | Inférieure ou égale à la version 5.0 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 28 février 2022 |
 | 8.0 RTO<br>8.0.513.1 | 7.1 CU8<br>7.1.508.1 | 7.2 | Inférieure ou égale à la version 5.0 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 28 février 2022 |
@@ -76,7 +80,7 @@ Le support de Service Fabric sur un système d’exploitation spécifique se ter
 | 7.2 RTO-CU6<br>7.2.431.1-7.2.456.1 | 7.0 CU4<br>7.0.469.1 | 7.1 | Inférieure ou égale à la version 4.2 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 30 novembre 2021 |
 | 7.1<br>7.1.508.1| 7.0 CU3<br>7.0.465.1 | N/A | Inférieure ou égale à la version 4.1 | >= .NET Core 2.1 | [Voir les versions du système d’exploitation prises en charge](#supported-linux-versions-and-support-end-date) | 31 juillet 2021 |
 
-\* Le support de la version ne doit pas être arrivé à expiration.
+\* Le support de la version ne doit pas être arrivé à expiration.<br/>
 ** Service Fabric ne fournit pas de runtime .NET Core et l’auteur du service est chargé de s’assurer qu’il est <a href="/dotnet/core/deploying/">disponible</a>
 
 ## <a name="supported-linux-versions-and-support-end-date"></a>Versions de Linux prises en charge et date de fin du support
@@ -93,6 +97,8 @@ Le tableau suivant répertorie les noms de version de Service Fabric et leurs nu
 
 | Nom de version | Numéro de version de Windows | Numéro de version de Linux |
 | --- | --- | --- |
+| 8.2 RTO | 8.2.1235.9590 | 8.2.1124.1 |
+| 8.1 CU3.1 | 8.1.337.9590 | 8.1.340.1 |
 | 8.1 CU3 | 8.1.335.9590 | 8.1.334.1 |
 | 8.1 CU2 | 8.1.329.9590 | 8.1.328.1 |
 | 8.1 CU1 | 8.1.321.9590 | 8.1.323.1 |

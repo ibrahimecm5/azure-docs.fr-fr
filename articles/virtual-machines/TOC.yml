@@ -1,6 +1,6 @@
 - name: Documentation Machines virtuelles
   href: index.yml
-- name: Vue d'ensemble
+- name: Vue d’ensemble
   items:
     - name: À propos des machines virtuelles Linux
       href: ./linux/overview.md
@@ -183,7 +183,7 @@
               href: dasv5-dadsv5-series.md
         - name: Optimisé pour le calcul
           items:
-            - name: Vue d'ensemble
+            - name: Vue d’ensemble
               displayName: 'compute optimized, sizes, size, vm size, compute'
               href: sizes-compute.md
             - name: Série Fsv2
@@ -1491,7 +1491,7 @@
     - name: Vue d’ensemble
       displayName: Security Overview
       href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
-    - name: Azure Security Center
+    - name: Microsoft Defender pour le cloud
       href: ../security-center/security-center-introduction.md
     - name: Bases de référence de sécurité
       items:

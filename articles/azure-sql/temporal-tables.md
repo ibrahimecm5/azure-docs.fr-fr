@@ -10,13 +10,13 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 06/26/2019
-ms.openlocfilehash: 43a2ca496ee9cb03ee76c293e3a980573a50753c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: 945afcb2a4158ee4c80bd9d36a9697d6692d0d19
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691340"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250421"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Prise en main des tables temporelles dans Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Le modèle de base de données pour ce scénario est très simple : la mesure de
 
 ![schéma](./media/temporal-tables/AzureTemporal1.png)
 
-Heureusement, vous n’avez pas besoin d’intervenir sur votre application pour gérer les informations de cette activité. Avec les tables temporelles, ce processus est automatise, ce qui vous offre une grande souplesse pour concevoir le site web et davantage de temps pour vous concentrer sur l’analyse des données. La seule chose que vous avez à faire est de garantir que la table **WebSiteInfo** est configurée en tant que table [temporelle avec versions gérées par le système](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table). Les étapes à suivre pour utiliser les tables temporelles dans ce scénario sont décrites ci-dessous.
+Heureusement, vous n’avez pas besoin d’intervenir sur votre application pour gérer les informations de cette activité. Avec les tables temporelles, ce processus est automatise, ce qui vous offre une grande souplesse pour concevoir le site web et davantage de temps pour vous concentrer sur l’analyse des données. La seule chose que vous avez à faire est de garantir que la table `WebSiteInfo` est configurée en tant que table [temporelle avec versions gérées par le système](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table). Les étapes à suivre pour utiliser les tables temporelles dans ce scénario sont décrites ci-dessous.
 
 ## <a name="step-1-configure-tables-as-temporal"></a>Étape 1 : Configurer les tables comme tables temporelles
 
@@ -42,11 +42,11 @@ Selon que vous commencez le développement d’une nouvelle application ou que v
 
 ### <a name="create-new-table"></a>Créer une table
 
-Utilisez l’élément de menu contextuel Nouvelle table avec version système dans l’Explorateur d’objets SSMS pour ouvrir l’éditeur de requête avec un script de modèle de table temporelle, puis utilisez « Spécifier les valeurs des paramètres du modèle » (Ctrl+Maj+M) pour remplir le modèle :
+Utilisez l’élément de menu contextuel « Nouvelle table avec version système » dans l’Explorateur d’objets SSMS pour ouvrir l’éditeur de requête avec un script de modèle de table temporelle, puis utilisez « Spécifier les valeurs des paramètres du modèle » (Ctrl+Maj+M) pour remplir le modèle :
 
 ![SSMSNewTable](./media/temporal-tables/AzureTemporal2.png)
 
-Dans SSDT, choisissez le modèle « Table temporelle (Système par version) » quand vous ajoutez de nouveaux éléments au projet de base de données. Cette opération ouvre le concepteur de tables et vous permet de spécifier facilement la disposition de la table :
+Dans SSDT, choisissez le modèle « Table temporelle (Système par version) » quand vous ajoutez de nouveaux éléments au projet de base de données. Cette opération ouvre le concepteur de tables et vous permet de spécifier facilement la disposition de la table :
 
 ![SSDTNewTable](./media/temporal-tables/AzureTemporal3.png)
 
@@ -117,7 +117,7 @@ UPDATE WebsiteUserInfo  SET [PagesVisited] = 5
 WHERE [UserID] = 1;
 ```
 
-Notez que la requête de mise à jour n’a pas besoin de connaître l’heure exacte à laquelle s’est produit l’opération réelle ni comment les données historiques sont conservées pour une future analyse. Ces deux aspects sont gérés automatiquement par Azure SQL Database et Azure SQL Managed Instance. Le diagramme suivant illustre la façon dont les données d’historique sont générées à chaque mise à jour.
+Notez que la requête de mise à jour n’a pas besoin de connaître l’heure exacte à laquelle s’est produite l’opération réelle, ni comment les données historiques sont conservées pour une future analyse. Ces deux aspects sont gérés automatiquement par Azure SQL Database et Azure SQL Managed Instance. Le diagramme suivant illustre la façon dont les données d’historique sont générées à chaque mise à jour.
 
 ![TemporalArchitecture](./media/temporal-tables/AzureTemporal5.png)
 
@@ -201,4 +201,3 @@ Avec les tables temporelles avec versions gérées par le système, la table d�
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Pour plus d’informations sur les tables temporelles, consultez [Tables temporelles](/sql/relational-databases/tables/temporal-tables).
-- Consultez Channel 9 pour écouter le [témoignage d’un client sur l’implémentation temporelle](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) et regardez une [démonstration temporelle en direct](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

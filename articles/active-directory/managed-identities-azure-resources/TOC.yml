@@ -118,6 +118,8 @@
       items:
         - name: PowerShell
           href: how-to-assign-app-role-managed-identity-powershell.md
+        - name: Interface de ligne de commande
+          href: how-to-assign-app-role-managed-identity-cli.md
     - name: Voir l’activité des identités managées
       href: how-to-view-managed-identity-activity.md
 - name: Informations de référence

@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fdf632c298eeee10bac000f9695fc5e568043acd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2378daa38d1fba86bbb9194b7993cee9a862ad4c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607783"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461966"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Clé gérée par le client dans Azure Monitor 
 
@@ -27,7 +27,7 @@ Azure Monitor veille à ce que toutes les données et requêtes enregistrées so
 
 La clé gérée par le client est fournie sur des [clusters dédiés](./logs-dedicated-clusters.md) offrant un niveau de protection et un contrôle plus élevés. Les données ingérées dans les clusters dédiés sont chiffrées deux fois : une fois au niveau du service à l’aide de clés gérées par Microsoft ou de clés gérées par le client, et une fois au niveau de l’infrastructure à l’aide de deux algorithmes de chiffrement et de deux clés différents. Le [double chiffrement](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) permet d’éviter un scénario impliquant une possible compromission d’un algorithme ou d’une clé de chiffrement. Dans ce cas, la couche de chiffrement supplémentaire continue de protéger vos données. Le cluster dédié vous permet également de protéger vos données à l’aide du contrôle [Lockbox](#customer-lockbox-preview).
 
-Les données ingérées au cours des 14 derniers jours sont également conservées dans le cache à chaud (SSD) afin d’optimiser l’utilisation du moteur de requête. Ces données restent chiffrées avec des clés Microsoft, quelle que soit la configuration de clé gérée par le client, mais votre contrôle sur les données SSD est sujet à une [révocation de clé](#key-revocation). Nous travaillons au chiffrement des données SSD avec une clé gérée par le client pour le second semestre 2021.
+Les données ingérées au cours des 14 derniers jours et les données récemment utilisées dans les requêtes sont également conservées dans le cache à chaud (SSD) pour l’efficacité des requêtes, et chiffrées avec les clés Microsoft, quelle que soit la configuration des clés gérées par le client. Votre contrôle d’accès aux données SSD s’applique et adhère à la [révocation de clé](#key-revocation).
 
 Le [modèle de tarification](./logs-dedicated-clusters.md#cluster-pricing-model) des Clusters dédiés Log Analytics requiert un niveau d’engagement à partir de 500 Go/jour et peut avoir des valeurs de 500, 1 000, 2 000 ou 5 000 Go/jour.
 
@@ -73,37 +73,6 @@ Les règles suivantes s’appliquent :
 
 La configuration de clé gérée par le client n’est pas actuellement prise en charge dans le portail Azure et l’approvisionnement peut être effectué par le biais de requêtes [PowerShell](/powershell/module/az.operationalinsights/), [CLI](/cli/azure/monitor/log-analytics) ou [REST](/rest/api/loganalytics/).
 
-### <a name="asynchronous-operations-and-status-check"></a>Opérations asynchrones et vérification de l’état
-
-Certaines étapes de configuration s’exécutent de façon asynchrone, car elles ne peuvent pas être effectuées rapidement. L’élément `status` de la réponse peut être un des éléments suivants : « InProgress », « Updating », « Deleting », « Succeeded » ou « Failed » avec code d’erreur.
-
-# <a name="azure-portal"></a>[Azure portal](#tab/portal)
-
-N/A
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-N/A
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-N/A
-
-# <a name="rest"></a>[REST](#tab/rest)
-
-Lors de l’utilisation de REST, la réponse retourne initialement un code d’état HTTP 202 (Accepté) et un en-tête avec la propriété *Azure-AsyncOperation* :
-```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
-```
-
-Vous pouvez vérifier l’état de l’opération asynchrone, envoyez une requête GET au point de terminaison dans l’en-tête *Azure-AsyncOperation* :
-```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
-Authorization: Bearer <token>
-```
-
----
-
 ## <a name="storing-encryption-key-kek"></a>Stockage de la clé de chiffrement (KEK)
 
 Créez ou utilisez une instance Azure Key Vault existante dans la région prévue pour le cluster, puis générez ou importez une clé à utiliser pour le chiffrement des journaux. Le coffre de clés Azure doit être configuré comme récupérable pour protéger votre clé et l’accès à vos données Azure Monitor. Vous pouvez vérifier cette configuration dans les propriétés de votre coffre de clés : les fonctionnalités de *suppression réversible* et de *protection contre la suppression définitive* doivent être activées.
@@ -117,7 +86,7 @@ Ces paramètres peuvent être mis à jour dans Key Vault par le biais de l’int
 
 ## <a name="create-cluster"></a>Créer un cluster
 
-Les clusters prennent en charge l’identité managée affectée par le système et la propriété d’identité `type` doit avoir la valeur de `SystemAssigned`. L’identité est générée automatiquement avec la création du cluster et peut être utilisée ultérieurement pour accorder l’accès au stockage à votre Coffre de clés pour les opérations d’enveloppement et de désenveloppement. 
+Les clusters utilisent l’identité managée pour le chiffrement des données avec votre coffre de clés. Affectez la valeur `SystemAssigned` à la propriété d’identité `type` lors de la création de votre cluster pour autoriser l’accès à votre coffre de clés pour les opérations d’encapsulation et de désencapsulation. 
   
   Paramètres d’identité dans le cluster pour l’identité managée affectée par le système
   ```json
@@ -164,16 +133,24 @@ N/A
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
+az account set --subscription "cluster-subscription-id"
 
-az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
+az monitor log-analytics cluster update --no-wait --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
+
+# Wait for job completion when `--no-wait` was used
+$clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
+az resource wait --created --ids $clusterResourceId --include-response-body true
+
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Select-AzSubscription "cluster-subscription-id"
 
-Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version" -AsJob
+
+# Check when the job is done when `-AsJob` was used
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -199,9 +176,7 @@ Content-type: application/json
 
 **Réponse**
 
-La propagation de la clé prend quelques instants. Vous pouvez vérifier l’état de la mise à jour de deux manières :
-1. Copiez la valeur de l’URL Azure-AsyncOperation à partir de la réponse et suivez les instructions de[contrôle de l’état des opérations asynchrones](#asynchronous-operations-and-status-check).
-2. Envoyez une requête GET sur le cluster, puis examinez les propriétés *KeyVaultProperties*. Les détails de la clé récemment mise à jour doivent être retournés dans la réponse.
+La propagation de la clé prend quelques instants. Vous pouvez vérifier l’état de la mise à jour en envoyant une requête GET sur le cluster et en examinant les propriétés *KeyVaultProperties*. Les détails de la clé récemment mise à jour doivent être retournés dans la réponse.
 
 Une réponse à la requête GET doit ressembler à ceci lorsque la mise à jour de la clé est terminée : 202 (Accepté) et en-tête
 ```json
@@ -257,9 +232,7 @@ Suivez la procédure illustrée dans l’article sur les [Clusters dédiés](./l
 > - La méthode recommandée pour révoquer l’accès à vos données consiste à désactiver votre clé ou à supprimer la stratégie d’accès dans votre coffre de clés.
 > - La définition de `identity` `type` du cluster sur `None` révoque également l’accès à vos données, mais cette approche n’est pas recommandée, car vous ne pouvez pas l’annuler sans contacter le support.
 
-Le stockage de cluster respecte toujours les modifications des autorisations de clé en maximum une heure. Il devient alors indisponible. Toutes les nouvelles données ingérées dans les espaces de travail liés à votre cluster sont définitivement supprimées. Les données deviennent donc inaccessibles et les requêtes adressées à ces espaces de travail échouent. Les données précédemment ingérées restent dans le stockage tant que votre cluster et vos espaces de travail ne sont pas supprimés. Les données inaccessibles sont régies par la stratégie de conservation des données et sont vidées à la fin de la durée de conservation. Les données ingérées au cours des 14 derniers jours sont également conservées dans le cache à chaud (SSD) pour optimiser l’utilisation du moteur de requête. Elles sont supprimées lors d’une opération de révocation de clé et deviennent inaccessibles.
-
-Le stockage du cluster vérifie régulièrement votre coffre de clés pour tenter de désenvelopper la clé de chiffrement et, une fois qu’il y a accès, l’ingestion et l’interrogation des données reprennent dans un délai de 30 minutes.
+Le stockage de cluster respecte toujours les modifications des autorisations de clé en maximum une heure. Il devient alors indisponible. Toutes les nouvelles données ingérées dans les espaces de travail liés à votre cluster sont définitivement supprimées. Les données deviennent donc inaccessibles sur ces espaces de travail et les requêtes échouent. Les données précédemment ingérées restent dans le stockage tant que votre cluster et vos espaces de travail ne sont pas supprimés. Les données inaccessibles sont régies par la stratégie de conservation des données et sont vidées à la fin de la durée de conservation. Les données ingérées au cours des 14 derniers jours et les données récemment utilisées dans les requêtes sont également conservées dans un cache à chaud (SSD) pour l’efficacité des requêtes. Les données sur SSD sont supprimées lors d’une opération de révocation de clé et deviennent inaccessibles. Le stockage du cluster tente de désencapsuler régulièrement le chiffrement avec votre coffre de clés, et une fois que vous avez rétabli la révocation la désencapsulation réussit, les données de disque SSD sont rechargées à partir du stockage, et l’ingestion des données et la requête sont relancées dans les 30 minutes.
 
 ## <a name="key-rotation"></a>Rotation des clés
 
@@ -301,7 +274,7 @@ N/A
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
@@ -351,7 +324,7 @@ N/A
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 
-Set-AzContext -SubscriptionId "workspace-subscription-id"
+az account set --subscription "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
@@ -460,9 +433,7 @@ Une clé gérée par le client est fournie sur un cluster dédié et ces opérat
 
 - Si vous mettez à jour votre version de clé dans Key Vault et ne mettez pas à jour les détails de l’identificateur de clé dans le cluster, le cluster Log Analytics continue d’utiliser votre clé précédente et vos données deviennent inaccessibles. Mettez à jour les nouveaux détails de l’identificateur de clé dans le cluster pour reprendre l’ingestion des données et avoir la possibilité d’interroger les données.
 
-- Certaines opérations sont longues et peuvent prendre du temps. Il s’agit des opérations de création du cluster, de mise à jour de la clé du cluster et de la suppression du cluster. Vous pouvez vérifier l’état de l’opération de deux manières :
-  1. Lorsque vous utilisez REST, copiez la valeur de l’URL Azure-AsyncOperation à partir de la réponse et suivez les instructions de[vérification de l’état des opérations asynchrones](#asynchronous-operations-and-status-check).
-  2. Envoyez une requête GET au cluster ou à l’espace de travail du cluster et observez la réponse. Par exemple, l’espace de travail dissocié n’a pas de *clusterResourceId* sous *features*.
+- Certaines opérations sont longues et peuvent prendre du temps. Il s’agit des opérations de création du cluster, de mise à jour de la clé du cluster et de la suppression du cluster. Vous pouvez vérifier l’état de l’opération en envoyant une requête GET au cluster ou à l’espace de travail et en observant la réponse. Par exemple, l’espace de travail dissocié n’a pas de *clusterResourceId* sous *features*.
 
 - Messages d’erreur
   

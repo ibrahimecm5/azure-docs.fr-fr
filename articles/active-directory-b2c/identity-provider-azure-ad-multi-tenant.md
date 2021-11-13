@@ -3,22 +3,22 @@ title: Configurer la connexion pour les annuaires Azure AD multilocataires par d
 titleSuffix: Azure AD B2C
 description: Ajoutez un fournisseur d’identité Azure AD multilocataire en utilisant des stratégies personnalisées dans Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 10/21/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f41736ac221ee7d7cdce5ac776e70f96aa16536e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 553608a5574edaf904e9c9ac0986a3d0f8af9278
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575092"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227958"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Configurer une connexion pour un service Azure Active Directory mutualisé à l’aide de stratégies personnalisées dans Azure Active Directory B2C
 
@@ -37,6 +37,9 @@ Cet article explique comment autoriser la connexion d’utilisateurs à l’aide
 ## <a name="prerequisites"></a>Prérequis
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+> [!NOTE]
+> Dans cet article, nous partons du principe que le pack de démarrage **SocialAndLocalAccounts** est utilisé dans les étapes précédentes mentionnées dans les prérequis.  
 
 ## <a name="register-an-azure-ad-app"></a>Inscrire une application Azure AD
 
@@ -74,7 +77,7 @@ Si vous souhaitez obtenir les revendications `family_name` et `given_name` d’A
 1. Sélectionnez **Ajouter une revendication facultative**.
 1. Dans **Type de jeton**, sélectionnez **ID**.
 1. Sélectionnez les revendications facultatives à ajouter, `family_name` et `given_name`.
-1. Cliquez sur **Add**.
+1. Sélectionnez **Ajouter**. Si l’option **Activer l’autorisation d’e-mail Microsoft Graph (nécessaire pour que les revendications apparaissent dans le jeton)** s’affiche, activez-la et sélectionnez une nouvelle fois **Ajouter**.
 
 ## <a name="optional-verify-your-app-authenticity"></a>[Facultatif] Vérifier l’authenticité de votre application
 
@@ -101,7 +104,7 @@ Pour permettre aux utilisateurs de se connecter à l’aide d’un compte Azure 
 
 Vous pouvez définir Azure AD comme fournisseur de revendications en ajoutant Azure AD à l’élément **ClaimsProvider** dans le fichier d’extension de votre stratégie.
 
-1. Ouvrez le fichier *TrustFrameworkExtensions.xml*.
+1. Ouvrez le fichier *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml***.
 1. Recherchez l’élément **ClaimsProviders**. S’il n’existe pas, ajoutez-le sous l’élément racine.
 1. Ajoutez un nouveau **ClaimsProvider** comme suit :
 
@@ -168,7 +171,7 @@ Pour obtenir les valeurs correspondantes, examinez les métadonnées de découve
 
 Effectuez ces étapes pour chaque locataire Azure AD qui doit être utilisé pour se connecter :
 
-1. Ouvrez votre navigateur et accédez à l’URL des métadonnées OpenID Connect pour le locataire. Recherchez l’objet **issuer** et enregistrez sa valeur. Elle doit ressembler à `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/`.
+1. Ouvrez votre navigateur et accédez à l’URL des métadonnées OpenID Connect pour le locataire. Recherchez l’objet **issuer** et enregistrez sa valeur. Elle doit ressembler à `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/.well-known/openid-configuration`.
 1. Copiez et collez la valeur dans la clé **ValidTokenIssuerPrefixes**. Séparez plusieurs émetteurs par une virgule. Un exemple avec deux émetteurs apparaît dans l’exemple XML `ClaimsProvider` précédent.
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]

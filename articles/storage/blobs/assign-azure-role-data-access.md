@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 11/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b30bb21369e75b76c5aba299d38b2ccfc3259803
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6d2d2f530d64e3c459e0363079bebc9f99d44cf3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651595"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578816"
 ---
 # <a name="assign-an-azure-role-for-access-to-blob-data"></a>Attribuer un rôle Azure pour l’accès aux données d’objet blob
 
-Azure Active Directory (Azure AD) autorise les droits d’accès aux ressources sécurisées par le biais du [contrôle d’accès en fonction du rôle Azure (Azure RBAC)](../../role-based-access-control/overview.md). Le stockage Azure définit un ensemble de rôles intégrés Azure qui englobent les ensembles communs d’autorisations permettant d’accéder aux données blob.
+Azure Active Directory (AAD) autorise les droits d’accès aux ressources sécurisées via le [contrôle d’accès en fonction du rôle Azure (Azure RBAC)](../../role-based-access-control/overview.md). Le stockage Azure définit un ensemble de rôles intégrés Azure qui englobent les ensembles communs d’autorisations permettant d’accéder aux données blob.
 
 Lorsqu’un rôle Azure est attribué à un principal de sécurité Azure AD, Azure octroie l’accès à ces ressources pour ce principal de sécurité. Un principal de sécurité Azure AD peut correspondre à un utilisateur, à un groupe, à un principal de service d’application ou à une [identité managée pour les ressources Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -57,13 +57,49 @@ Vous pouvez également attribuer un rôle Azure Resource Manager offrant des aut
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pour attribuer un rôle Azure à un principal de sécurité avec PowerShell, utilisez la commande [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Le format de la commande peut varier selon l’étendue de l’affectation. Pour exécuter la commande, vous devez disposer d’un rôle qui comprend des autorisations **Microsoft.Authorization/roleAssignments/write** qui vous sont assignées au niveau de l’étendue correspondante ou ci-dessus.
+Pour attribuer un rôle Azure à un principal de sécurité avec PowerShell, utilisez la commande [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Pour exécuter la commande, vous devez disposer d’un rôle qui comprend des autorisations **Microsoft.Authorization/roleAssignments/write** qui vous sont assignées au niveau de l’étendue correspondante ou ci-dessus. 
 
-Pour affecter un rôle limité à un conteneur, spécifiez une chaîne contenant l’étendue du conteneur pour le paramètre `--scope`. L’étendue d’un conteneur a la forme :
+Le format de la commande peut varier selon l’étendue de l’affectation, mais `-ObjectId` et `-RoleDefinitionName` sont des paramètres obligatoires. Bien que ce ne soit pas obligatoire, il est fortement recommandé de passer une valeur pour le paramètre `-Scope` pour appliquer le principe des privilèges minimum. En limitant les rôles et les étendues, vous limitez les ressources menacées en cas de compromission du principal de sécurité.
+
+Le paramètre `-ObjectId` est l’ID d’objet Azure Active Directory (AAD) de l’utilisateur, du groupe ou du principal du service auquel le rôle sera attribué. Pour récupérer l’identificateur, vous pouvez utiliser la commande [Get-AzADUser](/powershell/module/az.resources/get-azaduser) pour filtrer les utilisateurs Azure Active Directory, comme indiqué dans l’exemple suivant.
+
+```azurepowershell
+Get-AzADUser -DisplayName '<Display Name>'
+(Get-AzADUser -StartsWith '<substring>').Id
+```
+
+La première réponse retourne le principal de sécurité et la seconde retourne l’ID d’objet du principal de sécurité.
+
+```Response
+UserPrincipalName : markpdaniels@contoso.com
+ObjectType        : User
+DisplayName       : Mark P. Daniels
+Id                : ab12cd34-ef56-ab12-cd34-ef56ab12cd34
+Type              : 
+
+ab12cd34-ef56-ab12-cd34-ef56ab12cd34
+```
+
+La valeur du paramètre `-RoleDefinitionName` est le nom du rôle RBAC qui doit être attribué au principal. Pour accéder aux données blob dans le portail Azure avec des informations d’identification Azure AD, un utilisateur doit disposer des attributions de rôle suivantes :
+
+- Un rôle d’accès aux données, comme **Contributeur aux données Blob du stockage** ou **Lecteur des données Blob du stockage**
+- Le rôle **Lecteur** d’Azure Resource Manager
+
+Pour attribuer un rôle étendu à un conteneur d’objets blob ou à un compte de stockage, vous devez spécifier une chaîne contenant l’étendue de la ressource pour le paramètre `-Scope`. Cette action est conforme au principe du privilège minimum, un concept de sécurité des informations dans lequel un utilisateur dispose du niveau d’accès minimal nécessaire pour effectuer son travail. Cette pratique réduit le risque potentiel de dommages accidentels ou intentionnels que des privilèges non nécessaires peuvent induire.
+
+L’étendue d’un conteneur a la forme :
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
+
+L’étendue d’un compte de stockage a la forme :
+
+```
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
+```
+
+Pour attribuer un rôle limité à un compte de stockage, spécifiez une chaîne contenant l’étendue du conteneur pour le paramètre `--scope`.
 
 L’exemple suivant affecte le rôle **Contributeur aux données Blob du stockage** à un utilisateur, limité à un conteneur nommé *sample-container*. Veillez à remplacer les valeurs de l’exemple et les valeurs d’espace réservé entre les crochets par vos propres valeurs :
 
@@ -73,7 +109,29 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
 ```
 
-Pour plus d’informations sur l’attribution de rôles avec PowerShell au niveau de l’abonnement, du groupe de ressources ou de l’étendue du compte de stockage, consultez [Affecter des rôles Azure à l’aide d’Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+L’exemple suivant attribue le rôle **Lecteur des données Blob du stockage** à un utilisateur en spécifiant l’ID d’objet. L’attribution de rôle est délimitée à un compte de stockage nommé **storage-account**. Veillez à remplacer les valeurs de l’exemple et les valeurs d’espace réservé entre les crochets par vos propres valeurs : 
+
+```powershell
+New-AzRoleAssignment -ObjectID "ab12cd34-ef56-ab12-cd34-ef56ab12cd34" `
+    -RoleDefinitionName "Storage Blob Data Reader" `
+    -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/storage-account"
+```
+
+Le résultat doit ressembler à ce qui suit :
+
+```Response
+RoleAssignmentId   : /subscriptions/<subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.Storage/storageAccounts/<Storage Account>/providers/Microsoft.Authorization/roleAssignments/<Role Assignment ID>
+Scope              : /subscriptions/<subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.Storage/storageAccounts/<Storage Account>
+DisplayName        : Mark Patrick
+SignInName         : markpdaniels@contoso.com
+RoleDefinitionName : Storage Blob Data Reader
+RoleDefinitionId   : <Role Definition ID>
+ObjectId           : <Object ID>
+ObjectType         : User
+CanDelegate        : False
+```
+
+Pour plus d’informations sur l’attribution de rôles avec PowerShell au niveau de l’étendue d’un abonnement ou d’un groupe de ressources, consultez [Attribuer des rôles Azure en utilisant Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

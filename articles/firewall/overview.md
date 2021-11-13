@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
 ms.date: 09/01/2021
 ms.author: victorh
-ms.openlocfilehash: 7e7f05516dd380ec6d0c8f44f887981de77942a3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bd773dd1a865f50d441ca09760a9ee3130ed3898
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439323"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226316"
 ---
 # <a name="what-is-azure-firewall"></a>Qu’est-ce qu’un pare-feu Azure ?
 
@@ -69,6 +69,7 @@ Les problèmes connus du service Pare-feu Azure sont les suivants :
 |DNAT n’est pas pris en charge avec l’option Tunneling forcé activée|Les pare-feu déployés, dont l’option Tunneling forcé est activée, ne peuvent pas prendre en charge l’accès entrant depuis Internet compte tenu du routage asymétrique.|Ils ont ce comportement par défaut en raison du routage asymétrique. Le chemin de retour des connexions entrantes passe par le pare-feu local, qui n’a pas vu la connexion établie.
 |Le FTP passif sortant est susceptible de ne pas fonctionner pour les pare-feu ayant plusieurs adresses IP publiques ; cela dépend de la configuration de votre serveur FTP.|Le mode FTP passif établit des connexions différentes pour les canaux de contrôle et ceux de données. Lorsqu’un pare-feu disposant de plusieurs adresses IP publiques envoie des données sortantes, il sélectionne de manière aléatoire une de ses adresses IP publiques comme adresse IP source. FTP peut échouer lorsque les canaux de données et de contrôle utilisent des adresses IP sources différentes ; cela dépend de la configuration de votre serveur FTP.|Une configuration SNAT explicite est prévue. En attendant, vous pouvez configurer votre serveur FTP pour accepter des canaux de données et de contrôle à partir d’adresses IP sources différentes (consultez [cet exemple pour IIS](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). En guise d’alternative, utilisez une seule adresse IP dans ce cas de figure.|
 |Le FTP passif entrant est susceptible de ne pas fonctionner ; cela dépend de la configuration de votre serveur FTP. |Le mode FTP passif établit des connexions différentes pour les canaux de contrôle et ceux de données. Les connexions entrantes sur le Pare-feu Azure font l’objet d’une traduction SNAT en une des adresses IP privées du pare-feu afin de garantir un routage symétrique. FTP peut échouer lorsque les canaux de données et de contrôle utilisent des adresses IP sources différentes ; cela dépend de la configuration de votre serveur FTP.|La conservation de l’adresse IP source d’origine est en cours d’examen. En attendant, vous pouvez configurer votre serveur FTP pour accepter des canaux de données et de contrôle à partir d’adresses IP sources différentes.|
+|Le FTP actif ne fonctionne pas quand le client FTP doit accéder à un serveur FTP sur Internet.|Le FTP actif utilise une commande PORT du client FTP qui indique au serveur FTP l’IP et le port à utiliser pour le canal de données. Cette commande PORT utilise l’IP privée du client, que vous ne pouvez pas changer. Le trafic côté client qui traverse le Pare-feu Azure est un trafic NAT pour les communications basées sur Internet, de sorte que la commande PORT est considérée comme non valide par le serveur FTP.|Il s’agit d’une limitation générale du FTP actif quand il est utilisé avec NAT côté client.|
 |Il manque une dimension de protocole à la métrique NetworkRuleHit|La métrique ApplicationRuleHit autorise le protocole basé sur le filtrage, mais cette fonctionnalité est absente de la métrique NetworkRuleHit correspondante.|Un correctif est en cours d’étude.|
 |Les règles NAT avec des ports entre 64000 et 65535 ne sont pas prises en charge|Le Pare-feu Azure autorise tous les ports de la plage 1-65535 dans les règles de réseau et d’application. Toutefois, les règles NAT prennent uniquement en charge les ports de la plage 1-63999.|Il s’agit d’une limitation actuelle.
 |Les mises à jour de configuration peuvent prendre cinq minutes en moyenne|Une mise à jour de configuration du Pare-feu Azure peut prendre trois à cinq minutes en moyenne ; les mises à jour parallèles ne sont pas prises en charge.|Un correctif est en cours d’étude.|

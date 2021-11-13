@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Optimiser Azure Hybrid Benefit de niveau étendue pour SQL Server'
+title: 'Tutoriel : Optimiser Azure Hybrid Benefit géré de manière centralisée pour SQL Server'
 description: Ce tutoriel vous explique pas à pas comment attribuer de manière proactive des licences SQL Server sur Azure pour gérer et optimiser Azure Hybrid Benefit.
 author: bandersmsft
 ms.author: banders
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: fa928181b20a5975f4c6e42079695aede223ddac
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 6031bd83a5a32ffc5e76a4a967e305324f8d7ee8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547479"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218860"
 ---
-# <a name="tutorial-optimize-scope-level-azure-hybrid-benefit-for-sql-server"></a>Tutoriel : Optimiser Azure Hybrid Benefit de niveau étendue pour SQL Server
+# <a name="tutorial-optimize-centrally-managed-azure-hybrid-benefit-for-sql-server"></a>Tutoriel : Optimiser Azure Hybrid Benefit géré de manière centralisée pour SQL Server
 
-Ce tutoriel vous explique pas à pas comment attribuer de manière proactive des licences SQL Server sur Azure pour gérer et optimiser [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). L’optimisation de votre avantage vous permettra de réduire les coûts d’exécution d’Azure SQL.
+Ce tutoriel vous montre comment attribuer de manière proactive des licences SQL Server dans Azure afin de gérer et optimiser [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) de manière centralisée. L’optimisation de votre avantage vous permettra de réduire les coûts d’exécution d’Azure SQL.
 
 Dans ce tutoriel, vous apprenez à effectuer les opérations suivantes :
 
@@ -32,10 +32,10 @@ Dans ce tutoriel, vous apprenez à effectuer les opérations suivantes :
 
 Avant de commencer, veillez à :
 
-Avoir lu et compris l’article [Qu’est-ce que la gestion de niveau étendue d’Azure Hybrid Benefit ?](overview-azure-hybrid-benefit-scope.md) Cet article décrit les types de licences SQL Server qui sont éligibles à l’avantage Azure Hybrid Benefit. Il explique aussi comment activer l’avantage Azure Hybrid Benefit et l’appliquer à l’étendue choisie au niveau de l’abonnement ou du compte de facturation global.
+Avoir lu et compris l’article [Qu’est-ce que Azure Hybrid Benefit géré de manière centralisée ?](overview-azure-hybrid-benefit-scope.md). Cet article décrit les types de licences SQL Server qui sont éligibles à l’avantage Azure Hybrid Benefit. Il explique aussi comment activer l’avantage Azure Hybrid Benefit et l’appliquer à l’étendue choisie au niveau de l’abonnement ou du compte de facturation global.
 
 > [!NOTE]
-> Pour l’instant, Azure Hybrid Benefit de niveau étendue est disponible en préversion publique et son utilisation est limitée aux clients Entreprise.
+> Actuellement, la gestion d’Azure Hybrid Benefit sur une étendue est en préversion publique et limitée aux clients Entreprise.
 
 Avant de commencer à utiliser la nouvelle expérience, vérifiez que vos machines virtuelles installées automatiquement qui exécutent SQL Server dans Azure sont inscrites. Vous vous assurez ainsi que les ressources Azure exécutant SQL Server sont visibles par vous et par Azure. Pour plus d’informations sur l’inscription des machines virtuelles SQL dans Azure, consultez [Inscrire une machine virtuelle SQL Server auprès de l’extension SQL IaaS Agent](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) et [Inscrire plusieurs machines virtuelles SQL dans Azure avec l’extension SQL IaaS Agent](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md).
 
@@ -94,7 +94,7 @@ La section précédente traite de la supervision régulière. Nous vous conseill
 
 Dans l’exemple suivant, imaginez que vous êtes l’administrateur de facturation pour la compagnie d’assurance Contoso. Vous gérez l’avantage Azure Hybrid Benefit pour SQL Server de Contoso.
 
-Le service achats vous informe que vous avez la possibilité de gérer Azure Hybrid Benefit pour SQL Server au niveau d’un compte global. Il a lui-même reçu cette information de l’équipe des comptes Microsoft. Cette opportunité vous intéresse, car vous avez récemment rencontré des difficultés avec la gestion d’Azure Hybrid Benefit. Ces difficultés étaient en partie dues au fait que les développeurs ont activé l’avantage (ou ne l’ont pas activé) sur les ressources de manière arbitraire en partageant des scripts entre eux.
+Le service d’achats vous informe que vous pouvez gérer Azure Hybrid Benefit de manière centralisée pour SQL Server au niveau d’un compte global. Il a lui-même reçu cette information de l’équipe des comptes Microsoft. Cette opportunité vous intéresse, car vous avez récemment rencontré des difficultés avec la gestion d’Azure Hybrid Benefit. Ces difficultés étaient en partie dues au fait que les développeurs ont activé l’avantage (ou ne l’ont pas activé) sur les ressources de manière arbitraire en partageant des scripts entre eux.
 
 Vous accédez à la nouvelle expérience Azure Hybrid Benefit dans la zone Cost Management + Facturation du portail Azure.
 
@@ -124,5 +124,5 @@ Enfin, vous adoptez un calendrier de revue annuelle des licences. Ce processus d
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Découvrez comment [faire la transition vers la gestion de niveau étendue d’Azure Hybrid Benefit](transition-existing.md).
-- Consultez [Questions fréquentes sur la gestion de niveau étendue d’Azure Hybrid Benefit](faq-azure-hybrid-benefit-scope.yml).
+- Découvrez comment [migrer vers Azure Hybrid Benefit géré de manière centralisée](transition-existing.md).
+- Passez en revue le [FAQ sur Azure Hybrid Benefit géré de manière centralisée](faq-azure-hybrid-benefit-scope.yml).

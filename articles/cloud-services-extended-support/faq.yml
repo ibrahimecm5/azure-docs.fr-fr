@@ -9,12 +9,12 @@ metadata:
   ms.reviewer: mimckitt
   ms.date: 10/13/2020
   ms.custom: references_regions
-  ms.openlocfilehash: bb2ee07d3d5c603df11d5b17b6afea496f4b31c8
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: bf35360b41fe136ec0ea3af8c846e398465d1a81
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123424093"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130235769"
 title: Questions fréquentes (FAQ) sur Azure Cloud Services (support étendu)
 summary: Cet article traite des questions fréquemment posées relatives à Azure Cloud Services (support étendu).
 sections:
@@ -51,6 +51,10 @@ sections:
   - question: >
       En quoi les rôles Worker et web changent-ils ?
     answer: "Il n’y a pas de changement dans la conception, l’architecture ou les composants des rôles Worker et web. \n"
+  - question: >
+      La mise à l’échelle de l’instance de rôle continue d’échouer. Comment corriger ce problème ?
+    answer: >
+      Lorsque plusieurs appels de mise à l’échelle se produisent sur le même service cloud (pour des rôles différents) au même moment approximatif, en raison d’une condition de concurrence, les composants de plateforme Microsoft ne sont plus synchronisés, ce qui entraîne des échecs. Microsoft travaille activement à la résolution de ce problème. La solution de contournement provisoire suggérée ne consiste pas à mettre automatiquement à l’échelle tous les rôles simultanément.
   - question: >
       En quoi les instances de rôle changent-elles ?
     answer: "Il n’y a pas de changement dans la conception, l’architecture ou les composants des instances de rôle. \n"
@@ -151,4 +155,10 @@ sections:
       Lorsque vous spécifiez des secrets/certificats à installer sur un service cloud, la ressource de coffre de clés doit-elle se trouver dans la même région ?
     answer: >
       Oui. La raison pour laquelle nous appliquons des limites de région est d’empêcher les utilisateurs de créer des architectures qui ont des dépendances entre régions. L’isolation régionale est un principe de conception clé des applications basées sur le Cloud. Toutefois, vous pouvez utiliser l’extension Key Vault pour obtenir une prise en charge inter-abonnement et inter-région pour vos certificats. Reportez-vous à la documentation [ici](./enable-key-vault-virtual-machine.md)
+- name: Problèmes connus
+  questions:
+  - question: >
+      La mise à l’échelle de l’instance de rôle continue d’échouer. Comment corriger ce problème ?
+    answer: >
+      Lorsque plusieurs appels de mise à l’échelle se produisent sur le même service cloud (pour des rôles différents) au même moment approximatif, en raison d’une condition de concurrence, les composants de plateforme Microsoft ne sont plus synchronisés, ce qui entraîne des échecs. Microsoft travaille activement à la résolution de ce problème. La solution de contournement provisoire suggérée ne consiste pas à mettre automatiquement à l’échelle tous les rôles simultanément.
 additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\nPour commencer à utiliser Azure Cloud Services (support étendu), consultez [Déployer un service cloud (support étendu) à l’aide de PowerShell](deploy-powershell.md)."

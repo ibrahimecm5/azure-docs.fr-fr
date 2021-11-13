@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/22/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 545f7377e79e7f83182e85aa0f05f62e353051d9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7fb94b8e714c62a92b0fe9411af97f69e0a50423
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628550"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229557"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Tâches d’administrateur de compte dans le portail Azure
 
@@ -184,6 +184,58 @@ Si vous disposez d’un abonnement Azure en licence Open, vous pouvez ajouter de
     - Spécifiez le nombre de crédits que vous souhaitez ajouter.
 
 1. Cliquez sur **Appliquer**
+
+## <a name="usage-details-files-comparison"></a>Comparaison des fichiers de détails d’utilisation
+
+Utilisez les informations suivantes pour rechercher le mappage entre les champs disponibles dans les versions v1 et v2 des fichiers à partir du portail des comptes et de la dernière version du fichier de détails d’utilisation dans le portail Azure.
+
+| V1 | V2 | Portail Azure |
+| --- | --- | --- |
+| Informations supplémentaires | Informations supplémentaires | AdditionalInfo |
+| Devise | Devise | BillingCurrency |
+| Période de facturation | Période de facturation | BillingPeriodEndDate |
+| Période de facturation | Période de facturation | BillingPeriodStartDate |
+| Service | Service consommé | ConsumedService |
+| Valeur | Valeur | Coût |
+| Date d'utilisation | Date d'utilisation | Date |
+| Nom | Catégorie du compteur | MeterCategory |
+| ResourceGuid | ID du compteur | ID du compteur |
+| Région | Région du compteur | MeterRegion |
+| Ressource | Nom du compteur | MeterName  |
+| Type | Sous-catégorie du compteur | MeterSubcategory |
+| Consommé | Consumed Quantity | Quantité |
+| Composant | Groupe de ressources | ResourceGroup |
+|   | ID de l’instance | ResourceId |
+| Sous-région | Emplacement de la ressource | ResourceLocation |
+| Informations sur le service 1 | Informations sur le service 1 | ServiceInfo1 |
+| Informations sur le service 2 | Informations sur le service 2 | ServiceInfo2 |
+| Identifiant d’abonnement | Identifiant d’abonnement | SubscriptionId |
+| Nom de l’abonnement | Nom de l’abonnement | SubscriptionName |
+|   | Balises | Balises |
+| Unité | Unité | UnitOfMeasure |
+| | Tarif | UnitPrice |
+
+Pour plus d’informations sur les champs disponibles dans le dernier fichier de détails d’utilisation, consultez [Comprendre les termes du fichier sur l’utilisation et les frais Azure](../understand/understand-usage.md).
+
+Les champs suivants proviennent des versions v1 et v2 des fichiers issus du portail des comptes. Ils ne sont plus disponibles dans le dernier fichier de détails d’utilisation.
+
+| V1 | V2 |
+| --- | --- |
+| ID de commande | ID de commande |
+| Description | Description |
+| Date de facturation (date anniversaire) | Date de facturation (date anniversaire) |
+| Nom de l’offre | Nom de l’offre |
+| Nom du service | Nom du service |
+| État de l’abonnement | État de l’abonnement |
+| État supplémentaire de l’abonnement | État supplémentaire de l’abonnement |
+| État de l’approvisionnement | État de l’approvisionnement |
+| SKU | SKU |
+| Inclus | Quantité incluse |
+| Facturable | Quantité de dépassement |
+| Au sein de l'engagement | Au sein de l'engagement |
+| Taux d'engagement | Taux d'engagement |
+| Dépassement | Dépassement |
+| Composant |  |
 
 ## <a name="troubleshooting"></a>Dépannage
 Les cartes virtuelles ou prépayées ne sont pas prises en charge. Si vous obtenez des erreurs lors de l’ajout ou de la mise à jour d’une carte de crédit valide, essayez d’ouvrir votre navigateur en mode privé.

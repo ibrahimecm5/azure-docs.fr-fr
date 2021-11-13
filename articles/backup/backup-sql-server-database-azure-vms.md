@@ -2,13 +2,16 @@
 title: Sauvegarder plusieurs machines virtuelles SQL Server à partir du coffre
 description: Dans cet article, découvrez comment sauvegarder des bases de données SQL Server sur des machines virtuelles Azure avec Sauvegarde Azure à partir du coffre Recovery Services.
 ms.topic: conceptual
-ms.date: 08/20/2021
-ms.openlocfilehash: 834737c9773b9efead12ef8033852d25ae706062
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 970c352bcb7f04d04cddaaa24769eb4a26896605
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099091"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431794"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Sauvegarder plusieurs machines virtuelles SQL Server à partir du coffre Recovery Services
 
@@ -121,19 +124,13 @@ Lorsque vous sauvegardez une base de données SQL Server sur une machine virtuel
 
 Comment détecter les bases de données en cours d’exécution sur une machine virtuelle :
 
-1. Dans le [portail Azure](https://portal.azure.com), ouvrez le coffre Recovery Services que vous utilisez pour sauvegarder la base de données.
+1. Sur le [portail Azure](https://portal.azure.com), accédez à **Centre de sauvegarde**, puis cliquez sur **+Sauvegarde**.
 
-2. Dans le tableau de bord du **coffre Recovery Services**, cliquez sur **Sauvegarde**.
+1. Sélectionnez **SQL dans une machine virtuelle Azure** comme type de source de données, sélectionnez le coffre Recovery Services que vous avez créé, puis cliquez sur **Continuer**.
 
-   ![Cliquer sur Sauvegarder pour ouvrir le menu Objectif de sauvegarde](./media/backup-azure-sql-database/open-backup-menu.png)
+   :::image type="content" source="./media/backup-azure-sql-database/configure-sql-backup.png" alt-text="Capture d’écran montrant comment sélectionner Sauvegarde pour afficher les bases de données en cours d’exécution sur une machine virtuelle.":::
 
-3. Dans **Objectif de sauvegarde**, définissez **Où s’exécute votre charge de travail ?** sur **Azure**.
-
-4. Dans **Que souhaitez-vous sauvegarder ?** , sélectionnez **SQL Server dans une machine virtuelle Azure**.
-
-    ![Sélectionnez SQL Server dans une machine virtuelle Azure pour la sauvegarde](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
-
-5. Dans **Objectif de sauvegarde** > **Découvrir les bases de données dans les machines virtuelles**, sélectionnez **Démarrer la détection** pour rechercher des machines virtuelles non protégées dans l’abonnement. La durée de cette recherche varie selon le nombre de machines virtuelles non protégées de l’abonnement.
+1. Dans **Objectif de sauvegarde** > **Découvrir les bases de données dans les machines virtuelles**, sélectionnez **Démarrer la détection** pour rechercher des machines virtuelles non protégées dans l’abonnement. La durée de cette recherche varie selon le nombre de machines virtuelles non protégées de l’abonnement.
 
    * Après la détection, les machines virtuelles non protégées doivent apparaître dans la liste, répertoriées par nom et groupe de ressources.
    * Si une machine virtuelle n’est pas répertoriée contrairement à ce que vous attendez, vérifiez si elle n’est pas déjà sauvegardée dans un coffre.
@@ -141,13 +138,13 @@ Comment détecter les bases de données en cours d’exécution sur une machine 
 
      ![La sauvegarde est en attente au cours de la recherche pour des bases de données dans des machines virtuelles](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
-6. Dans la liste des machines virtuelles, sélectionnez la machine virtuelle exécutant la base de données SQL Server > **Découvrir les bases de données**.
+1. Dans la liste des machines virtuelles, sélectionnez la machine virtuelle exécutant la base de données SQL Server > **Découvrir les bases de données**.
 
-7. Suivez la découverte des bases de données dans **Notifications**. La durée nécessaire à cette action dépend du nombre de bases de données sur la machine virtuelle. Lorsque les bases de données sélectionnées ont été détectées, un message de réussite s’affiche.
+1. Suivez la découverte des bases de données dans **Notifications**. La durée nécessaire à cette action dépend du nombre de bases de données sur la machine virtuelle. Lorsque les bases de données sélectionnées ont été détectées, un message de réussite s’affiche.
 
     ![Message Déploiement réussi](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. La sauvegarde Azure détecte toutes les bases de données SQL Server résidant sur la machine virtuelle. Lors de la découverte, les éléments suivants se produisent en arrière-plan :
+1. La sauvegarde Azure détecte toutes les bases de données SQL Server résidant sur la machine virtuelle. Lors de la découverte, les éléments suivants se produisent en arrière-plan :
 
     * Sauvegarde Azure inscrit la machine virtuelle auprès du coffre pour la sauvegarde de la charge de travail. Les bases de données présentes sur la machine virtuelle inscrite ne peuvent être sauvegardées que sur ce coffre.
     * Sauvegarde Azure installe l’extension AzureBackupWindowsWorkload sur la machine virtuelle. Aucun agent n’est installé sur une base de données SQL.
@@ -208,21 +205,22 @@ Une stratégie de sauvegarde définit le moment auquel les sauvegardes sont effe
 
 Pour créer une stratégie de sauvegarde :
 
-1. Dans le coffre, sélectionnez **Stratégies de sauvegarde** > **Ajouter**.
-1. Dans **Ajouter**, sélectionnez **SQL Server dans une machine virtuelle Azure** pour définir le type de stratégie.
+1. Accédez au **Centre de sauvegarde**, puis cliquez sur **+Stratégie**.
 
-   ![Choisissez un type de stratégie pour la nouvelle stratégie de sauvegarde](./media/backup-azure-sql-database/policy-type-details.png)
+1. Sélectionnez **SQL Server dans une machine virtuelle Azure** comme type de source de source, sélectionnez le coffre sous lequel la stratégie doit être créée, puis cliquez sur **Continuer**.
+
+   :::image type="content" source="./media/backup-azure-sql-database/create-sql-policy.png" alt-text="Capture d’écran montrant comment choisir un type de stratégie pour la nouvelle stratégie de sauvegarde.":::
 
 1. Dans **Nom de la stratégie**, entrez le nom de la nouvelle stratégie.
 
-    ![Saisir un nom de stratégie](./media/backup-azure-sql-database/policy-name.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-policy-summary.png" alt-text="Capture d’écran montrant comment entrer un nom de stratégie.":::
 
 1. Sélectionnez le lien **Modifier** correspondant à **Sauvegarde complète** pour modifier les paramètres par défaut.
 
    * Sélectionner une **fréquence de sauvegarde**. Choisissez **Quotidienne** ou **Hebdomadaire**.
    * Si vous sélectionnez **quotidienne**, sélectionnez l’heure et le fuseau horaire de début du travail de sauvegarde. Si vous choisissez des sauvegardes complètes quotidiennes, vous ne pouvez pas créer de sauvegardes différentielles.
 
-     ![Champs de la nouvelle stratégie de sauvegarde](./media/backup-azure-sql-database/full-backup-policy.png)  
+   :::image type="content" source="./media/backup-azure-sql-database/sql-backup-schedule-inline.png" alt-text="Capture d’écran montrant les nouveaux champs de stratégie de sauvegarde." lightbox="./media/backup-azure-sql-database/sql-backup-schedule-expanded.png":::
 
 1. Dans **DURÉE DE RÉTENTION**, toutes les options sont sélectionnées par défaut. Désactivez les limites des plages de rétention dont vous ne souhaitez pas, puis définissez les intervalles à utiliser.
 
@@ -231,7 +229,7 @@ Pour créer une stratégie de sauvegarde :
     * La sauvegarde d’un jour spécifique est marquée et conservée conformément à la durée et au paramètre de rétention hebdomadaire.
     * Les durées de rétention mensuelle et annuelle ont le même comportement.
 
-       ![Paramètres d’intervalle de la durée de rétention](./media/backup-azure-sql-database/retention-range-interval.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-retention-range-inline.png" alt-text="Capture d’écran montrant les paramètres d’intervalle de durée de rétention." lightbox="./media/backup-azure-sql-database/sql-retention-range-expanded.png":::
 
 1. Sélectionnez **OK** pour accepter le paramètre pour les sauvegardes complètes.
 1. Sélectionnez le lien **Modifier** correspondant à **Sauvegarde différentielle** pour modifier les paramètres par défaut.
@@ -239,9 +237,10 @@ Pour créer une stratégie de sauvegarde :
     * Dans la stratégie **Sauvegarde différentielle**, sélectionnez **Activer** pour ouvrir les contrôles de fréquence et de rétention.
     * Vous pouvez déclencher une sauvegarde différentielle une fois par jour uniquement. Une sauvegarde différentielle ne peut pas être déclenchée le même jour en tant que sauvegarde complète.
     * Les sauvegardes différentielles peuvent être conservées jusqu’à 180 jours.
+    * La période de rétention des sauvegardes différentielle ne peut pas être supérieure à celle des sauvegardes complètes (car les sauvegardes différentielles dépendent des sauvegardes complètes pour la récupération).
     * La sauvegarde différentielle n’est pas prise en charge pour la base de données MASTER.
 
-      ![Stratégie de sauvegarde différentielle](./media/backup-azure-sql-database/differential-backup-policy.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-differential-backup-inline.png" alt-text="Capture d’écran montrant la stratégie de sauvegarde différentielle." lightbox="./media/backup-azure-sql-database/sql-differential-backup-expanded.png":::
 
 1. Sélectionnez le lien **Modifier** correspondant à **Sauvegarde de fichier journal** pour modifier les paramètres par défaut.
 
@@ -250,7 +249,7 @@ Pour créer une stratégie de sauvegarde :
     * Si la base de données est en [mode de récupération simple](/sql/relational-databases/backup-restore/recovery-models-sql-server), la planification des sauvegardes de fichiers journaux de cette base de données est suspendue et aucune sauvegarde de journal n’est déclenchée.
     * Si le mode de récupération de la base de données passe **de Complète** à **Simple**, les sauvegardes de fichiers journaux sont suspendues dans les 24 heures suivant le changement de mode de récupération. De même, si le mode de récupération sur **Simple** évolue, les sauvegardes de fichiers journaux peuvent être prises en charge pour la base de données. Les planifications de sauvegardes de journaux sont activées dans les 24 heures suivant la modification du mode de récupération.
 
-      ![Stratégie de sauvegarde de fichier journal](./media/backup-azure-sql-database/log-backup-policy.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-log-backup-inline.png" alt-text="Capture d’écran montrant la stratégie de sauvegarde de fichier journal." lightbox="./media/backup-azure-sql-database/sql-log-backup-expanded.png":::
 
 1. Dans le menu **Stratégie de sauvegarde**, choisissez s’il convient d’activer l’option **Compression de la sauvegarde SQL**, qui est désactivée par défaut. Si elle est activée, SQL Server envoie un flux de sauvegarde compressé à VDI. Sauvegarde Azure remplace les valeurs par défaut au niveau de l’instance par la clause COMPRESSION / NO_COMPRESSION en fonction de la valeur de ce contrôle.
 

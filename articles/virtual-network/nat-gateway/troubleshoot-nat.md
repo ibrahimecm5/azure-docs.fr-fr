@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 51bc4233393be6d914578581597e8cce9d0373b0
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 610d24576386b311bf5e4ef5a98c1c22a705aff0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113439090"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466406"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Résoudre les problèmes de connectivité du service NAT de réseau virtuel Azure
 
@@ -177,11 +177,9 @@ _**Solution :**_
 
 ### <a name="ipv6-coexistence"></a>Coexistence IPv6
 
-Le service [NAT de réseau virtuel](nat-overview.md) prend en charge les protocoles TCP et UDP IPv4. Le déploiement sur un [sous-réseau avec préfixe IPv6 n’est pas pris en charge](nat-overview.md#limitations).
+Le service [NAT du réseau virtuel](nat-overview.md) prend en charge les protocoles TCP et UDP IPv4. NAT ne peut pas être associé à une adresse IP publique IPv6 ou à un préfixe IP public IPv6. Cependant, NAT peut être déployé sur un sous-réseau à double pile.
 
-_**Solution :**_ Déployer une passerelle NAT sur un sous-réseau sans préfixe IPv6.
-
-Si vous êtes intéressé par d’autres fonctionnalités, vous pouvez l’indiquer sur le site [UserVoice](https://aka.ms/natuservoice) (service NAT de réseau virtuel).
+_**Solution :**_ Déployez une passerelle NAT sur un sous-réseau à double pile.
 
 ### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>La connexion ne provient pas de la ou des adresses IP de passerelle NAT
 
@@ -200,4 +198,3 @@ Si vous rencontrez toujours des problèmes, ouvrez un dossier de support pour le
 * Apprenez-en davantage sur le service [Nat de Réseau virtuel](nat-overview.md).
 * Découvrir la [ressource de passerelle NAT](nat-gateway-resource.md)
 * Découvrez les [métriques et les alertes pour les ressources de passerelle NAT](nat-metrics.md).
-* [Utilisez UserVoice pour nous faire part des prochains développements dont vous aimeriez bénéficier concernant le service NAT de réseau virtuel](https://aka.ms/natuservoice).

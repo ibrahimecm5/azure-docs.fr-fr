@@ -1,80 +1,44 @@
 ---
-title: Utiliser le pilote CSI du magasin de secrets pour les secrets Azure Kubernetes Service
-description: Découvrez comment utiliser le pilote CSI du magasin de secrets pour intégrer des magasins de secrets à Azure Kubernetes Service (AKS).
+title: Utiliser le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets pour les secrets Azure Kubernetes Service
+description: Découvrez comment utiliser le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets afin d’intégrer des magasins de secrets à Azure Kubernetes Service (AKS).
 author: nickomang
 ms.author: nickoman
 ms.service: container-service
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 10/13/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: caab5417760c75e46b78241edd65d5c0124d5917
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: d6bb3be48769c19afc525330d6b33810b04066a3
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234088"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507353"
 ---
-# <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>Utiliser le pilote CSI du magasin de secrets pour Kubernetes dans un cluster Azure Kubernetes Service (AKS) (préversion)
+# <a name="use-the-azure-key-vault-provider-for-secrets-store-csi-driver-in-an-azure-kubernetes-service-aks-cluster"></a>Utiliser le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets dans un cluster Azure Kubernetes Service (AKS)
 
-Le pilote CSI du magasin de secrets pour Kubernetes permet l’intégration d’Azure Key Vault en tant que magasin de secrets avec un cluster Kubernetes via un [volume CSI][kube-csi].
+Le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets permet d’intégrer Azure Key Vault comme magasin de secrets à un cluster Kubernetes via un [volume CSI][kube-csi].
 
 ## <a name="prerequisites"></a>Prérequis
 
 - Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) avant de commencer.
 
-- Avant de commencer, installez la dernière version [d’Azure CLI](/cli/azure/install-azure-cli-windows) et de l’extension *aks-preview*.
+- Avant de commencer, vérifiez que votre version d’Azure CLI est >= `2.30.0` ou [installez la dernière version](/cli/azure/install-azure-cli).
 
 ### <a name="supported-kubernetes-versions"></a>Versions Kubernetes prises en charge
 
-La version minimale recommandée de Kubernetes pour cette fonctionnalité est la version 1.18. 
+La version Kubernetes minimale recommandée est basée sur la [fenêtre mobile de prise en charge des versions Kubernetes][kubernetes-version-support]. Veillez à exécuter la version N-2 ou une version plus récente.
 
 ## <a name="features"></a>Fonctionnalités
 
 - Monter des secrets, des clés et/ou des certificats dans un pod à l’aide d’un volume CSI
-- Prend en charge les volumes CSI inline (Kubernetes version v1.15+)
+- Prend en charge les volumes CSI inline
 - Prend en charge le montage de plusieurs objets de stockage de secrets comme un seul volume
 - Prend en charge la portabilité de pod avec SecretProviderClass CRD
 - Prend en charge les conteneurs Windows
-- Synchronisation avec les secrets Kubernetes (pilote CSI de magasin de secrets v0.0.10+)
-- Prend en charge la rotation automatique du contenu monté et des secrets Kubernetes synchronisés (pilote CSI de magasin de secrets v0.0.15+)
+- Synchronise les secrets Kubernetes
+- Prend en charge la permutation automatique du contenu monté et des secrets Kubernetes synchronisés
 
-## <a name="register-the-aks-azurekeyvaultsecretsprovider-preview-feature"></a>Inscrire la fonctionnalité d’évaluation `AKS-AzureKeyVaultSecretsProvider`
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-Pour créer un cluster AKS capable d’utiliser le pilote CSI de magasin de secrets, vous devez activer l’indicateur de fonctionnalité `AKS-AzureKeyVaultSecretsProvider` sur votre abonnement.
-
-Inscrivez l’indicateur de fonctionnalité `AKS-AzureKeyVaultSecretsProvider` à l’aide de la commande [az feature register][az-feature-register], comme indiqué dans l’exemple suivant :
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "AKS-AzureKeyVaultSecretsProvider"
-```
-
-Quelques minutes sont nécessaires pour que l’état s’affiche *Registered* (Inscrit). Vérifiez l’état de l’inscription à l’aide de la commande [az feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzureKeyVaultSecretsProvider')].{Name:name,State:properties.state}"
-```
-
-Lorsque vous êtes prêt, actualisez l’inscription du fournisseur de ressources *Microsoft.ContainerService* à l’aide de la commande [az provider register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-## <a name="install-the-aks-preview-cli-extension"></a>Installer l’extension CLI aks-preview
-
-Vous devez également disposer de la version 0.5.9 ou d’une version ultérieure de l’extension Azure CLI *aks-preview*. Installez l’extension d’Azure CLI *aks-preview* à l’aide de la commande [az extension add][az-extension-add]. Si vous avez déjà installé l’extension, passez à la dernière version disponible avec la commande [az extension update][az-extension-update].
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-## <a name="create-an-aks-cluster-with-secrets-store-csi-driver-support"></a>Créer un cluster AKS avec prise en charge du pilote CSI de magasin de secrets
+## <a name="create-an-aks-cluster-with-azure-key-vault-provider-for-secrets-store-csi-driver-support"></a>Créer un cluster AKS avec le fournisseur Azure Key Vault pour la prise en charge du pilote CSI du magasin de secrets
 
 Commencez par créer un groupe de ressources Azure :
 
@@ -82,13 +46,13 @@ Commencez par créer un groupe de ressources Azure :
 az group create -n myResourceGroup -l eastus2
 ```
 
-Pour créer un cluster AKS avec la capacité de pilote CSI de magasin de secrets, utilisez la commande [az aks create][az-aks-create] avec l’extension `azure-keyvault-secrets-provider`.
+Pour créer un cluster AKS avec la fonctionnalité du fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets, utilisez la commande [az aks create][az-aks-create] avec l’extension `azure-keyvault-secrets-provider`.
 
 ```azurecli-interactive
 az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-managed-identity
 ```
 
-Une identité managée affectée par l'utilisateur est créée par l’extension en vue d’accéder aux ressources Azure, nommé `azurekeyvaultsecretsprovider-*`. Nous pouvons utiliser cette identité pour se connecter au Azure Key Vault où nos secrets seront stockés. Prenez note de l’`clientId` de l’identité dans la sortie :
+Une identité managée affectée par l'utilisateur est créée par l’extension en vue d’accéder aux ressources Azure, nommé `azurekeyvaultsecretsprovider-*`. Pour cet exemple, nous utilisons cette identité pour la connexion au coffre de clés Azure où sont stockés nos secrets, mais d’autres [mécanismes d’accès des identités][identity-access-methods] peuvent être utilisés. Prenez note de l’`clientId` de l’identité dans la sortie :
 
 ```json
 ...,
@@ -102,9 +66,9 @@ Une identité managée affectée par l'utilisateur est créée par l’extension
     }
 ```
 
-## <a name="upgrade-an-existing-aks-cluster-with-secrets-store-csi-driver-support"></a>Mettre à niveau un cluster AKS existant avec la prise en charge du pilote CSI de magasin de secrets
+## <a name="upgrade-an-existing-aks-cluster-with-azure-key-vault-provider-for-secrets-store-csi-driver-support"></a>Mettre à niveau un cluster AKS existant avec la prise en charge du fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets
 
-Pour mettre à niveau un cluster AKS existant avec la capacité de pilote CSI de magasin de secrets, utilisez la commande [az aks enable-addons][az-aks-enable-addons] avec le module complémentaire `azure-keyvault-secrets-provider` :
+Pour mettre à niveau un cluster AKS existant avec la fonctionnalité du fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets, utilisez la commande [az aks enable-addons][az-aks-enable-addons] avec l’extension `azure-keyvault-secrets-provider` :
 
 ```azurecli-interactive
 az aks enable-addons --addons azure-keyvault-secrets-provider --name myAKSCluster --resource-group myResourceGroup
@@ -112,44 +76,23 @@ az aks enable-addons --addons azure-keyvault-secrets-provider --name myAKSCluste
 
 Comme indiqué ci-dessus, l’extension crée une identité managée affectée par l'utilisateur qui peut être utilisée pour s’authentifier auprès d’Azure Key Vault.
 
-## <a name="verify-secrets-store-csi-driver-installation"></a>Vérifier l’installation du pilote CSI de magasin de secrets
+## <a name="verify-azure-key-vault-provider-for-secrets-store-csi-driver-installation"></a>Vérifier l’installation du fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets
 
-Le pilote CSI du magasin de secrets et le fournisseur Azure Key Vault sur vos nœuds seront installés. Vérifiez la bonne exécution en répertoriant tous les pods portant les étiquettes « secrets-store-csi-driver » et « secrets-store-provider-azure » dans l’espace de noms kube-system, et assurez-vous que votre sortie ressemble à ce qui suit :
+La procédure ci-dessus installe le pilote CSI du magasin de secrets et le fournisseur Azure Key Vault sur vos nœuds. Vérifiez la bonne exécution en listant tous les pods avec les étiquettes `secrets-store-csi-driver` et `secrets-store-provider-azure` dans l’espace de noms kube-system, et vérifiez que la sortie ressemble à la suivante :
 
 ```bash
 kubectl get pods -n kube-system -l 'app in (secrets-store-csi-driver, secrets-store-provider-azure)'
 
-NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE
-kube-system   aks-secrets-store-csi-driver-4vpkj       3/3     Running   2          4m25s
-kube-system   aks-secrets-store-csi-driver-ctjq6       3/3     Running   2          4m21s
-kube-system   aks-secrets-store-csi-driver-tlvlq       3/3     Running   2          4m24s
-kube-system   aks-secrets-store-provider-azure-5p4nb   1/1     Running   0          4m21s
-kube-system   aks-secrets-store-provider-azure-6pqmv   1/1     Running   0          4m24s
-kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0          4m25s
+NAME                                     READY   STATUS    RESTARTS   AGE
+aks-secrets-store-csi-driver-4vpkj       3/3     Running   2          4m25s
+aks-secrets-store-csi-driver-ctjq6       3/3     Running   2          4m21s
+aks-secrets-store-csi-driver-tlvlq       3/3     Running   2          4m24s
+aks-secrets-store-provider-azure-5p4nb   1/1     Running   0          4m21s
+aks-secrets-store-provider-azure-6pqmv   1/1     Running   0          4m24s
+aks-secrets-store-provider-azure-f5qlm   1/1     Running   0          4m25s
 ```
 
-## <a name="enabling-and-disabling-autorotation"></a>Activation et désactivation de la rotation automatique
-
-> [!NOTE]
-> Lorsqu’il est activé, le pilote CSI du magasin de secrets met à jour le montage de pods et le secret Kubernetes défini dans secretObjects de SecretProviderClass en interrogeant les modifications toutes les deux minutes.
-
-Pour activer la rotation automatique des secrets, utilisez l’indicateur `enable-secret-rotation` lors de la création de votre cluster :
-
-```azurecli-interactive
-az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-secret-rotation
-```
-
-Ou mettez à jour un cluster existant avec le module complémentaire activé :
-
-```azurecli-interactive
-az aks update -g myResourceGroup -n myAKSCluster2 --enable-secret-rotation
-```
-
-Pour désactiver, utilisez l’indicateur `disable-secret-rotation` :
-
-```azurecli-interactive
-az aks update -g myResourceGroup -n myAKSCluster2 --disable-secret-rotation
-```
+Vérifiez qu’un pod de pilote CSI du magasin de secrets et un pod du fournisseur Azure Key Vault s’exécutent sur chaque nœud des pools de nœuds de votre cluster.
 
 ## <a name="create-or-use-an-existing-azure-key-vault"></a>Créer ou utiliser un Azure Key Vault existant
 
@@ -174,82 +117,11 @@ Prenez note des propriétés suivantes pour une utilisation dans la section suiv
 
 ## <a name="provide-identity-to-access-azure-key-vault"></a>Fournir l’identité pour accéder Azure Key Vault
 
-Utilisez les valeurs des étapes précédentes pour définir des autorisations, en autorisant l’identité managée créée par l’extension à accéder aux objets KeyVault :
+Le pilote CSI du magasin de secrets permet aux mécanismes suivants d’accéder à une instance Azure Key Vault :
+- [Identité de pod Azure Active Directory][aad-pod-identity]
+- Identité managée affectée par le système ou l’utilisateur
 
-```azurecli
-az keyvault set-policy -n <keyvault-name> --<object-type>-permissions get --spn <client-id>
-```
-
-## <a name="create-and-apply-your-own-secretproviderclass-object"></a>Créer et appliquer votre propre objet SecretProviderClass
-
-Pour utiliser et configurer le pilote CSI de magasin de secrets pour votre cluster AKS, créez une ressource personnalisée SecretProviderClass. Vérifiez que le tableau `objects` correspond aux objets que vous avez stockés dans l’instance Azure Key Vault :
-
-```yml
-apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
-kind: SecretProviderClass
-metadata:
-  name: <keyvault-name>
-spec:
-  provider: azure
-  parameters:
-    keyvaultName: "<keyvault-name>"       # The name of the Azure Key Vault
-    useVMManagedIdentity: "true"         
-    userAssignedIdentityID: "<client-id>" # The clientId of the addon-created managed identity
-    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud 
-    objects:  |
-      array:
-        - |
-          objectName: <secret-name>       # In this example, 'ExampleSecret' 
-          objectAlias: <secret-alias>     # [OPTIONAL] specify the filename of the object when written to disk - defaults to objectName if not provided
-          objectType: secret              # Object types: secret, key or cert
-          objectVersion: ""               # [OPTIONAL] object versions, default to latest if empty
-    tenantId: "<tenant-id>"               # the tenant ID containing the Azure Key Vault instance
-```
-
-Pour plus d’informations, consultez [Créer votre propre objet SecretProviderClass][sample-secret-provider-class]. Veillez à utiliser les valeurs que vous avez notées ci-dessus.
-
-### <a name="apply-the-secretproviderclass-to-your-cluster"></a>Appliquer la SecretProviderClass à votre cluster
-
-Ensuite, déployez la SecretProviderClass que vous avez créé. Par exemple :
-
-```bash
-kubectl apply -f ./new-secretproviderclass.yaml
-```
-
-## <a name="update-and-apply-your-clusters-deployment-yaml"></a>Mise à jour et application du YAML de déploiement de votre cluster
-
-Pour vous assurer que votre cluster utilise la nouvelle ressource personnalisée, mettez à jour le YAML de déploiement. Par exemple :
-
-```yml
-kind: Pod
-apiVersion: v1
-metadata:
-  name: busybox-secrets-store-inline
-spec:
-  containers:
-  - name: busybox
-    image: k8s.gcr.io/e2e-test-images/busybox:1.29
-    command:
-      - "/bin/sleep"
-      - "10000"
-    volumeMounts:
-    - name: secrets-store-inline
-      mountPath: "/mnt/secrets-store"
-      readOnly: true
-  volumes:
-    - name: secrets-store-inline
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: "<keyvault-name>"
-```
-
-Appliquez le déploiement mis à jour au cluster :
-
-```bash
-kubectl apply -f ./my-deployment.yaml
-```
+Suivez les étapes afin de [fournir une identité pour accéder à Azure Key Vault][csi-secrets-store-identity-access.md] pour le mécanisme choisi.
 
 ## <a name="validate-the-secrets"></a>Valider les secrets
 
@@ -263,17 +135,174 @@ kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/
 kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/ExampleSecret
 ```
 
-## <a name="disable-secrets-store-csi-driver-on-an-existing-aks-cluster"></a>Désactiver le pilote CSI de magasin de secrets sur un cluster AKS existant
+## <a name="obtaining-certificates-and-keys"></a>Obtention de certificats et de clés
 
-Pour désactiver la capacité de pilote CSI de magasin de secrets dans un cluster existant, utilisez la commande [az aks disable-addons][az-aks-disable-addons] avec l’indicateur `azure-keyvault-secrets-provider` :
+La conception d’Azure Key Vault fait une nette distinction entre les clés, les secrets et les certificats. Les fonctionnalités des certificats du service Key Vault ont été conçues pour utiliser ses fonctionnalités de clé et de secret. Lorsqu’un certificat Key Vault est créé, une clé et un secret adressables sont également créés avec le même nom. La clé permet d’exécuter des opérations sur les clés, et le secret permet de récupérer la valeur du certificat sous forme de secret. Un certificat Key Vault contient également des métadonnées de certificat x509 publiques. Azure Key Vault stocke à la fois les parties publiques et privées de votre certificat dans un secret. Chaque composant individuel peut être obtenu en spécifiant `objectType` dans votre SecretProviderClass. Le tableau suivant indique l’objet mappé aux différentes ressources associées à votre certificat :
+
+|Object|Valeur de retour|Retourne la totalité de la chaîne de certificats|
+|---|---|---|
+|`key`|Clé publique au format PEM|N/A|
+|`cert`|Certificat au format PEM|Non|
+|`secret`|Clé privée et certificat au format PEM|Oui|
+
+## <a name="disable-azure-key-vault-provider-for-secrets-store-csi-driver-on-an-existing-aks-cluster"></a>Désactiver le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets sur un cluster AKS existant
+
+> [!NOTE]
+> Avant de désactiver l’extension, vérifiez qu’aucune `SecretProviderClass` n’est en cours d’utilisation. Si vous tentez de désactiver l’extension alors qu’une `SecretProviderClass` existe, une erreur se produit.
+
+Pour désactiver la fonctionnalité du fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets dans un cluster existant, utilisez la commande [az aks disable-addons][az-aks-disable-addons] avec l’indicateur `azure-keyvault-secrets-provider` :
 
 ```azurecli-interactive
 az aks disable-addons --addons azure-keyvault-secrets-provider -g myResourceGroup -n myAKSCluster
 ```
 
+> [!NOTE]
+> Si l’extension est désactivée, les charges de travail existantes n’ont aucun problème et ne voient pas les mises à jour dans les secrets montés. Si le pod redémarre ou qu’un pod est créé dans le cadre d’un événement de scale-up, le pod ne parvient pas à démarrer, car le pilote n’est plus en cours d’exécution.
+
+## <a name="additional-configuration-options"></a>Options de configuration supplémentaires
+
+### <a name="enabling-and-disabling-autorotation"></a>Activation et désactivation de la rotation automatique
+
+> [!NOTE]
+> Quand la permutation automatique est activée, le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets met à jour le montage du pod et le secret Kubernetes défini dans secretObjects sous SecretProviderClass en recherchant régulièrement les changements selon l’intervalle d’interrogation de permutation défini. L’intervalle d’interrogation de permutation par défaut est de 2 min.
+
+Pour activer la rotation automatique des secrets, utilisez l’indicateur `enable-secret-rotation` lors de la création de votre cluster :
+
+```azurecli-interactive
+az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-secret-rotation
+```
+
+Ou mettez à jour un cluster existant avec le module complémentaire activé :
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --enable-secret-rotation
+```
+
+Pour spécifier un intervalle de permutation personnalisé, utilisez l’indicateur `rotation-poll-interval` :
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --enable-secret-rotation --rotation-poll-interval 5m
+```
+
+Pour désactiver, utilisez l’indicateur `disable-secret-rotation` :
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --disable-secret-rotation
+```
+
+### <a name="sync-mounted-content-with-a-kubernetes-secret"></a>Synchroniser le contenu monté avec un secret Kubernetes
+
+Dans certains cas, vous voulez créer un secret Kubernetes pour mettre en miroir le contenu monté.
+
+Quand vous créez une SecretProviderClass, utilisez le champ `secretObjects` pour définir l’état souhaité des secrets Kubernetes :
+
+> [!NOTE]
+> Cet exemple n’est pas complet. Vous devez le modifier pour prendre en charge le mécanisme d’accès des identités Azure Key Vault que vous avez choisi.
+
+> [!NOTE]
+> Les secrets sont synchronisés une fois seulement quand vous démarrez un pod qui monte les secrets. Vous ne pouvez pas vous appuyer uniquement sur la synchronisation avec la fonctionnalité des secrets Kubernetes. Quand tous les pods consommant le secret sont supprimés, le secret Kubernetes est également supprimé.
+
+
+> [!NOTE]
+> Vérifiez que `objectName` dans `secretObjects` correspond au nom de fichier du contenu monté. Si `objectAlias` est utilisé à la place, il doit correspondre à l’alias de l’objet.
+
+```yml
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: azure-sync
+spec:
+  provider: azure                             
+  secretObjects:                              # [OPTIONAL] SecretObject defines the desired state of synced K8s secret objects
+  - data:
+    - key: username                           # data field to populate
+      objectName: foo1                        # name of the mounted content to sync. this could be the object name or the object alias
+    secretName: foosecret                     # name of the Kubernetes Secret object
+    type: Opaque                              # type of the Kubernetes Secret object e.g. Opaque, kubernetes.io/tls
+```
+
+#### <a name="set-environment-variables-to-reference-kubernetes-secrets"></a>Définir des variables d’environnement pour référencer des secrets Kubernetes
+
+Une fois le secret Kubernetes créé, vous pouvez définir une variable d’environnement dans votre pod qui référence le secret Kubernetes :
+
+> [!NOTE]
+> Cet exemple n’est pas complet. Vous devez le modifier pour prendre en charge le mécanisme d’accès des identités Azure Key Vault que vous avez choisi.
+
+```yml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: busybox-secrets-store-inline
+spec:
+  containers:
+    - name: busybox
+      image: k8s.gcr.io/e2e-test-images/busybox:1.29-1
+      command:
+        - "/bin/sleep"
+        - "10000"
+      volumeMounts:
+      - name: secrets-store01-inline
+        mountPath: "/mnt/secrets-store"
+        readOnly: true
+      env:
+      - name: SECRET_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: foosecret
+            key: username
+  volumes:
+    - name: secrets-store01-inline
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "azure-sync"
+```
+
+## <a name="metrics"></a>Mesures
+
+### <a name="azure-key-vault-provider"></a>Fournisseur Azure Key Vault
+
+Les métriques sont fournies via Prometheus à partir du port 8898, mais ce port n’est pas exposé par défaut en dehors du pod. Accédez aux métriques sur localhost en utilisant `kubectl port-forward` :
+
+```bash
+kubectl port-forward -n kube-system ds/aks-secrets-store-provider-azure 8898:8898 &
+curl localhost:8898/metrics
+```
+
+Le tableau suivant liste les métriques fournies par le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets :
+
+|Metric|Description|Étiquettes|
+|----|----|----|
+|keyvault_request|Répartition du temps nécessaire à l’obtention dans le coffre de clés|`os_type=<runtime os>`, `provider=azure`, `object_name=<keyvault object name>`, `object_type=<keyvault object type>`, `error=<error if failed>`|
+|grpc_request|Répartition du temps nécessaires aux demandes gRPC|`os_type=<runtime os>`, `provider=azure`, `grpc_method=<rpc full method>`, `grpc_code=<grpc status code>`, `grpc_message=<grpc status message>`|
+
+### <a name="secrets-store-csi-driver"></a>Pilote CSI du magasin de secrets
+
+Les métriques sont fournies à partir du port 8095, mais ce port n’est pas exposé par défaut en dehors du pod. Accédez aux métriques sur localhost en utilisant `kubectl port-forward` :
+
+```bash
+kubectl port-forward -n kube-system ds/aks-secrets-store-csi-driver 8095:8095 &
+curl localhost:8095/metrics
+```
+
+Le tableau suivant liste les métriques fournies par le pilote CSI du magasin de secrets :
+
+|Metric|Description|Étiquettes|
+|----|----|----|
+|total_node_publish|Nombre total de demandes de montage de volume réussies|`os_type=<runtime os>`, `provider=<provider name>`|
+|total_node_unpublish|Nombre total de demandes de démontage de volume réussies|`os_type=<runtime os>`|
+|total_node_publish_error|Nombre total d’erreurs avec les demandes de montage de volume|`os_type=<runtime os>`, `provider=<provider name>`, `error_type=<error code>`|
+|total_node_unpublish_error|Nombre total d’erreurs avec les demandes de démontage de volume|`os_type=<runtime os>`|
+|total_sync_k8s_secret|Nombre total de secrets k8s synchronisés|`os_type=<runtime os`, `provider=<provider name>`|
+|sync_k8s_secret_duration_sec|Répartition du temps nécessaire pour synchroniser le secret k8s|`os_type=<runtime os>`|
+|total_rotation_reconcile|Nombre total de rapprochements de permutation|`os_type=<runtime os>`, `rotated=<true or false>`|
+|total_rotation_reconcile_error|Nombre total de rapprochements de permutation avec une erreur|`os_type=<runtime os>`, `rotated=<true or false>`, `error_type=<error code>`|
+|total_rotation_reconcile_error|Répartition du temps nécessaire pour permuter le contenu de secrets-store pour les pods|`os_type=<runtime os>`|
+
 ## <a name="next-steps"></a>Étapes suivantes
 <!-- Add a context sentence for the following links -->
-Après avoir appris à utiliser le pilote de magasin de secrets CSI avec un cluster AKS, consultez les ressources suivantes :
+Maintenant que vous avez appris à utiliser le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets avec un cluster AKS, consultez les ressources suivantes :
 
 - [Activer les pilotes CSI pour les disques Azure et Azure Files sur AKS][csi-storage-drivers]
 
@@ -292,6 +321,9 @@ Après avoir appris à utiliser le pilote de magasin de secrets CSI avec un clus
 [create-key-vault]: ../key-vault/general/quick-create-cli.md
 [set-secret-key-vault]: ../key-vault/secrets/quick-create-portal.md
 [aks-managed-identity]: ./use-managed-identity.md
+[identity-access-methods]: ./csi-secrets-store-identity-access.md
+[aad-pod-identity]: ./use-azure-ad-pod-identity.md
+[kubernetes-version-support]: ./supported-kubernetes-versions.md?tabs=azure-cli#kubernetes-version-support-policy
 
 <!-- External -->
 [kube-csi]: https://kubernetes-csi.github.io/docs/

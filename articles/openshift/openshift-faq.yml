@@ -7,12 +7,12 @@ metadata:
   ms.service: azure-redhat-openshift
   ms.topic: conceptual
   ms.date: 07/31/2020
-  ms.openlocfilehash: e7f38ea054214d4133f9b63a849b5be070e20dca
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: dbde5144fe44a9b92b06cbb8f226d04b4fe74489
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094856"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130225564"
 title: FAQ sur Azure Red Hat OpenShift
 summary: Cet article répond aux questions fréquemment posées (FAQ) sur Microsoft Azure Red Hat OpenShift.
 sections:
@@ -35,7 +35,7 @@ sections:
       Le nombre réel de pods pris en charge dépend de la mémoire, de l’UC et des exigences de stockage d’une application.
 
 
-      Azure Red Hat OpenShift 4.x a une limite de 250 pods par nœud et une limite de 100 nœuds de calcul. Cela limite le nombre maximal de pods pris en charge dans un cluster à 250&times;100 = 25 000.
+      Azure Red Hat OpenShift 4.x a une limite de 250 pods par nœud et de 60 nœuds de calcul. Cela limite le nombre maximal de pods pris en charge dans un cluster à 250&times;60 = 15 000.
 
 
       Azure Red Hat OpenShift 3.11 a une limite de 50 pods par nœud et une limite de 20 nœuds de calcul. Cela limite le nombre maximal de pods pris en charge dans un cluster à 50&times;20 = 1 000.

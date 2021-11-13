@@ -6,19 +6,17 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 8388df72352669eb81a22df392ca077f91d13cfb
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 69aeb2e450a78ce6c3bdc7378d9d53edf3706720
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754650"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475689"
 ---
-# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Options de calcul et de stockage dans Azure Database pour MySQL - Serveur flexible (Préversion)
+# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server"></a>Options de calcul et de stockage dans Azure Database pour MySQL - Serveur flexible
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 Vous pouvez créer un serveur flaxible Azure Database pour MySQL dans un des trois niveaux de calcul : Expansible, Usage général et À mémoire optimisée. Les niveaux de calcul sont différenciés par les références de machine virtuelle sous-jacentes utilisées : série B, série D et série E. Le choix du niveau de calcul et de la taille détermine la mémoire et les vCores disponibles sur le serveur. La même technologie de stockage est utilisée sur tous les niveaux de calcul. Toutes les ressources sont approvisionnées au niveau du serveur MySQL. Un serveur peut avoir une ou plusieurs bases de données.
 
@@ -111,9 +109,7 @@ N’oubliez pas qu’il est impossible d’effectuer un scale-down du stockage u
 
 Azure Database pour MySQL – Serveur flexible prend en charge l’approvisionnement d’IOPS supplémentaires. Cette fonctionnalité vous permet d’approvisionner des IOPS supplémentaires au-delà de la limite IOPS gratuite. À l’aide de cette fonctionnalité, vous pouvez augmenter ou diminuer à tout moment le nombre d’IOPS approvisionnées en fonction des exigences de votre charge de travail. 
 
-Le nombre minimal d’IOPS est de 360 pour toutes les tailles de calcul, et le nombre maximal d’IOPS est déterminé par la taille de calcul sélectionnée. Dans la préversion, le nombre maximal d’IOPS pris en charge est de 20 000.
-
-Pour en savoir plus sur le nombre maximal d’IOPS par taille de calcul, voir ci-dessous : 
+Le nombre minimal d’IOPS est de 360 pour toutes les tailles de calcul, et le nombre maximal d’IOPS est déterminé par la taille de calcul sélectionnée. Pour en savoir plus sur le nombre maximal d’IOPS par taille de calcul, voir ci-dessous : 
 
 | Taille de calcul         | Nombre maximal d’E/S par seconde        | 
 |----------------------|---------------------|
@@ -143,9 +139,9 @@ Le nombre maximal d’IOPS dépend du nombre maximal d’IOPS disponibles par ta
 > [!Important]
 > **Le nombre d’IOPS supplémentaire** est égal à MINIMUM (« Débit du disque non mis en cache max. : IOPS/Mbit/s » de la taille de calcul, 300 + stockage approvisionné en Gio * 3)<br>
 > **Le nombre minimal d’IOPS** est de 360 pour toutes les tailles de calcul.<br>
-> **Le nombre maximal d’IOPS** est déterminé par la taille de calcul sélectionnée. Dans la préversion, le nombre maximal d’IOPS pris en charge est de 20 000.
+> **Le nombre maximal d’IOPS** est déterminé par la taille de calcul sélectionnée. 
 
-Vous pouvez surveiller votre consommation d’E/S dans le portail Azure (avec Azure Monitor) à l’aide de la métrique [IO percent](./concepts-monitoring.md). Si vous avez besoin de plus d’IOPS, le nombre maximal d’IOPS basé sur le calcul est nécessaire pour mettre à l’échelle le calcul de votre serveur.
+Vous pouvez surveiller votre consommation d’E/S dans le portail Azure (avec Azure Monitor) à l’aide de la métrique [IO percent](./concepts-monitoring.md). Si vous avez besoin de plus d’IOPS que le nombre maximal d’IOPS basé sur la capacité de calcul, vous devez mettre à l’échelle la capacité de calcul de votre serveur.
 
 ## <a name="backup"></a>Sauvegarde
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/08/2021
+ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: fa34a8e5e801080f354e13b632917a1a05eabf43
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8e52c61db68aaf85af70b6bfb373bd7b331bd29
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832627"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555416"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Modes et exigences de connectivité
 
@@ -48,15 +48,15 @@ Certains services attachés à Azure sont disponibles uniquement lorsqu’ils pe
 |**Fonctionnalité**|**Connecté indirectement**|**Connecté directement**|
 |---|---|---|
 |**Haute disponibilité automatique**|Prise en charge|Prise en charge|
-|**Approvisionnement en libre-service**|Prise en charge<br/>La création peut être effectuée via Azure Data Studio, l’interface CLI appropriée ou les outils natifs Kubernetes (helm, kubectl, oc, etc.), ou encore à l’aide du provisionnement Kubernetes GitOps avec Azure Arc.|Prise en charge<br/>Outre les options de création en mode connecté indirectement, vous pouvez créer via le portail Azure, des API Azure Resource Manager, Azure CLI ou des modèles Resource Manager. **Disponibilité en attente du mode connecté directement**
-|**Extensibilité élastique**|Prise en charge|Prise en charge<br/>**Disponibilité en attente du mode connecté directement**|
-|**Billing**|Prise en charge<br/>Les données de facturation sont régulièrement exportées et envoyées à Azure.|Prise en charge<br/>Les données de facturation sont envoyées automatiquement et en permanence à Azure, et elles sont reflétées en temps quasi réel. **Disponibilité en attente du mode connecté directement**|
+|**Approvisionnement en libre-service**|Prise en charge<br/>La création peut être effectuée via Azure Data Studio, l’interface CLI appropriée ou les outils natifs Kubernetes (helm, kubectl, oc, etc.), ou encore à l’aide du provisionnement Kubernetes GitOps avec Azure Arc.|Prise en charge<br/>Outre les options de création en mode connecté indirectement, vous pouvez créer via le portail Azure, des API Azure Resource Manager, Azure CLI ou des modèles Resource Manager. 
+|**Extensibilité élastique**|Prise en charge|Prise en charge<br/>|
+|**Billing**|Prise en charge<br/>Les données de facturation sont régulièrement exportées et envoyées à Azure.|Prise en charge<br/>Les données de facturation sont envoyées automatiquement et en permanence à Azure, et elles sont reflétées en temps quasi réel. |
 |**Gestion des stocks**|Prise en charge<br/>Les données d’inventaire sont régulièrement exportées et envoyées à Azure.<br/><br/>Utilisez des outils clients comme Azure Data Studio, Azure Data CLI ou `kubectl` pour afficher et gérer l’inventaire localement.|Prise en charge<br/>Les données d’inventaire sont envoyées automatiquement et en permanence à Azure, et elles sont reflétées en temps quasi réel. Vous pouvez ainsi gérer l’inventaire directement à partir du portail Azure.|
-|**Mises à niveau et mises à jour correctives automatiques**|Prise en charge<br/>Le contrôleur de données doit avoir un accès direct à Microsoft Container Registry (MCR) ou les images de conteneur doivent être extraites de la valeur de la clé et transmises à un registre de conteneurs privé local auquel le contrôleur de données a accès.|Prise en charge<br/>**Disponibilité en attente du mode connecté directement**|
-|**Sauvegarde et restauration automatiques**|Prise en charge<br/>Sauvegarde et restauration locales automatiques.|Prise en charge<br/>En plus de la sauvegarde et de la restauration locales automatisées, vous pouvez _éventuellement_ envoyer des sauvegardes à Sauvegarde Azure pour une conservation des données hors site à long terme. **Disponibilité en attente en mode de connexion directe**|
-|**Monitoring**|Prise en charge<br/>Analyse locale à l’aide des tableaux de bord Grafana et Kibana.|Prise en charge<br/>Outre les tableaux de bord de surveillance locaux, vous pouvez _éventuellement_ envoyer des données et des journaux de surveillance à Azure Monitor pour une surveillance à l’échelle de plusieurs sites dans un même emplacement. **Disponibilité en attente du mode connecté directement**|
+|**Mises à niveau et mises à jour correctives automatiques**|Prise en charge<br/>Le contrôleur de données doit avoir un accès direct à Microsoft Container Registry (MCR) ou les images de conteneur doivent être extraites de la valeur de la clé et transmises à un registre de conteneurs privé local auquel le contrôleur de données a accès.|Prise en charge<br/>**Disponibilité en attente en connexion directe.**|
+|**Sauvegarde et restauration automatiques**|Prise en charge<br/>Sauvegarde et restauration locales automatiques.|Prise en charge<br/>En plus de la sauvegarde et de la restauration locales automatisées, vous pouvez _éventuellement_ envoyer des sauvegardes à Sauvegarde Azure pour une conservation des données hors site à long terme. **Disponibilité en attente en mode de connexion directe.**|
+|**Monitoring**|Prise en charge<br/>Analyse locale à l’aide des tableaux de bord Grafana et Kibana.|Prise en charge<br/>Outre les tableaux de bord de surveillance locaux, vous pouvez _éventuellement_ envoyer des données et des journaux de surveillance à Azure Monitor pour une surveillance à l’échelle de plusieurs sites dans un même emplacement. |
 |**Authentification**|Utilisez le nom d’utilisateur/mot de passe local pour l’authentification du contrôleur de données et du tableau de bord. Utilisez les connexions SQL et Postgres ou Active Directory (AD n’est pas pris en charge pour le moment, mais sera bientôt en préversion) pour la connectivité aux instances de base de données.  Utilisez les fournisseurs d’authentification K8s pour l’authentification auprès de l’API Kubernetes.|En plus ou à la place des méthodes d’authentification pour le mode connecté indirectement, vous pouvez _éventuellement_ utiliser Azure Active Directory. **Disponibilité en attente en mode de connexion directe**|
-|**Contrôle d’accès en fonction du rôle (RBAC)**|Utilisez le contrôle d’accès en fonction du rôle Kubernetes sur l’API Kubernetes. Utilisez le contrôle d’accès en fonction du rôle SQL et Postgres pour les instances de base de données.|Vous pouvez utiliser Azure Active Directory et Azure RBAC.|
+|**Contrôle d’accès en fonction du rôle (RBAC)**|Utilisez le contrôle d’accès en fonction du rôle Kubernetes sur l’API Kubernetes. Utilisez le contrôle d’accès en fonction du rôle SQL et Postgres pour les instances de base de données.|Vous pouvez utiliser Azure Active Directory et Azure RBAC. **Disponibilité en attente en mode de connexion directe**|
 |**Azure Defender**|Non pris en charge|Sortie planifiée|
 
 ## <a name="connectivity-requirements"></a>Connectivité requise
@@ -81,7 +81,7 @@ Certains services attachés à Azure sont disponibles uniquement lorsqu’ils pe
 
 ## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>Détails sur les adresses Internet, les ports, le chiffrement et la prise en charge du serveur proxy
 
-Actuellement, seul le mode de connexion indirecte est généralement disponible. Dans ce mode, seules trois connexions sont requises pour les services disponibles sur Internet. Ces connexions sont les suivantes :
+Trois connexions sont nécessaires pour les services disponibles sur Internet. Ces connexions sont les suivantes :
 
 - [Microsoft Container Registry (MCR)](#microsoft-container-registry-mcr)
 - [API Azure Resource Manager](#azure-resource-manager-apis)

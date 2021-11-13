@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: dfb4cf341c6014854e219c17d387076f5beab595
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8010de7d6aa0af0d096a0c7ed23740f23734cda2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010723"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554390"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Enrichissement de l’IA dans Recherche cognitive Azure
 
@@ -121,7 +121,7 @@ Les index et les bases de connaissances sont totalement indépendants les uns de
 
 Une fois le traitement terminé, vous disposez d’un [index de recherche](search-what-is-an-index.md) constitué de documents enrichis, avec recherche possible du texte dans Recherche cognitive Azure. [**L’interrogation de l’index**](search-query-overview.md) est la façon dont les développeurs et les utilisateurs accèdent au contenu enrichi généré par le pipeline. L’index est semblable à tous ceux que vous pouvez créer pour Recherche cognitive Azure : vous pouvez compléter l’analyse de texte avec des analyseurs personnalisés, appeler des requêtes de recherche partielle, ajouter des filtres ou expérimenter des profils de scoring pour ajuster la pertinence de la recherche.
 
-Vous pouvez également disposer d’une [base de connaissances](knowledge-store-concept-intro.md). La base de connaissances contient des données qui peuvent être utilisées dans des scénarios d’exploration des connaissances tels que l’analyse ou l’apprentissage automatique. Vous pouvez utiliser [Explorateur Stockage](knowledge-store-view-storage-explorer.md), [Power BI](knowledge-store-connect-power-bi.md) ou toute autre application qui se connecte à Stockage Azure.
+Vous pouvez également disposer d’une [base de connaissances](knowledge-store-concept-intro.md). La base de connaissances contient des données qui peuvent être utilisées dans des scénarios d’exploration des connaissances tels que l’analyse ou l’apprentissage automatique. Vous pouvez utiliser [Explorateur Stockage](knowledge-store-view-storage-explorer.md), [Power BI](knowledge-store-connect-power-bi.md) ou toute autre application qui se connecte à Stockage Azure.
 
 ## <a name="checklist-a-typical-workflow"></a>Liste de vérification : workflow classique
 

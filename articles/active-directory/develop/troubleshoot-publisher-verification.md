@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 10/21/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 46f8df4b48dcd887bf5500ba5189374c2331047c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: cfbc4c469ca25247c6fb74246133a8dc972a68a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408008"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262771"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Résoudre les problèmes de vérification de l’éditeur
 Si vous ne parvenez pas à finaliser le processus ou si vous êtes confronté à un comportement inattendu lors de la [vérification de l’éditeur](publisher-verification-overview.md), procédez comme suit si voyez s’afficher des erreurs ou constatez un comportement inattendu : 
@@ -29,7 +29,7 @@ Si vous ne parvenez pas à finaliser le processus ou si vous êtes confronté à
 
 1. Consultez la liste des [problèmes courants](#common-issues).
 
-1. Reproduisez la requête à l'aide de l'[Afficheur Graph](#making-microsoft-graph-api-calls) pour recueillir des informations supplémentaires et éliminer tout problème lié à l'interface utilisateur.
+1. Reproduisez la requête à l’aide de l’[Afficheur Graph](#making-microsoft-graph-api-calls) pour recueillir des informations supplémentaires et éliminer tout problème lié à l’interface utilisateur.
 
 ## <a name="common-issues"></a>Problèmes courants
 Vous trouverez ci-dessous quelques problèmes courants qui peuvent survenir au cours du processus. 
@@ -229,15 +229,15 @@ Cette fonctionnalité n'est pas prise en charge pour les comptes clients Microso
 
 Erreur due au fait que l’authentification multifacteur n’a pas été effectuée avant la tentative d’ajout d’un éditeur vérifié à l’application. Pour plus d’informations, voyez les [problèmes courants](#common-issues). Remarque : L’authentification multifacteur doit être exécutée dans la même session lors de la tentative d’ajout d’un éditeur vérifié. Si l’authentification multifacteur est activée, mais que son exécution n’est pas obligatoire dans la session, la demande échoue. 
 
-Le message d’erreur affiché sera le suivant : « En raison d’un changement de configuration effectué par votre administrateur ou parce que vous avez changé d’endroit, vous devez utiliser l’authentification multifacteur pour continuer. »
+Le message d’erreur affiché sera la suivant : « En raison d’un changement de configuration effectué par votre administrateur ou parce que vous avez changé d’endroit, vous devez utiliser l’authentification multifacteur pour continuer. »
 
 ### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
 
-Le message d’erreur affiché est le suivant : « Un éditeur vérifié ne peut pas être ajouté à cette application. Pour obtenir de l’aide, contactez votre administrateur. »
+L’un de ces messages d’erreur s’affiche : « Impossible d’ajouter un éditeur vérifié à cette application. Contactez votre administrateur pour obtenir de l’aide » ou « Vous ne pouvez pas ajouter un éditeur vérifié à cette application. Contactez votre administrateur pour obtenir de l’aide. »
 
 Tout d’abord, vérifiez que vous respectez les [conditions requises de la vérification de l’éditeur](publisher-verification-overview.md#requirements).
 
-Quand une demande d’ajout d’un éditeur vérifié est effectuée, un certain nombre de signaux sont utilisés pour évaluer les risques de sécurité. Si la demande est jugée risquée, une erreur est retournée. Pour des raisons de sécurité, Microsoft ne divulgue pas les critères spécifiques utilisés pour déterminer si une demande est risquée ou non.
+Quand une demande d’ajout d’un éditeur vérifié est effectuée, de nombreux signaux sont utilisés pour effectuer une évaluation du risque de sécurité. Si la demande est jugée risquée, une erreur est retournée. Pour des raisons de sécurité, Microsoft ne divulgue pas les critères spécifiques utilisés pour déterminer si une demande est risquée ou non. Si vous avez reçu cette erreur et pensez que l’évaluation « risquée » est incorrecte, essayez d’attendre et de renvoyer la demande de vérification. Certains clients ont signalé une réussite après plusieurs tentatives.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

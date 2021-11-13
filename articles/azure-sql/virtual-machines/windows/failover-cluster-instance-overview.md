@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: rsetlem
-ms.openlocfilehash: 317c02a71f555328dfd4d646eb294541df11a0b7
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: d86b7b59e05aa923efd3e4d9228d8ac422fc863d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161525"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219529"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instances de cluster de basculement avec SQL Server sur des machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,6 +75,8 @@ Le reste de cette section répertorie les avantages et les limitations de chaque
 - Prend en charge Filestream.
 - Les disques SSD Premium prennent en charge les groupes à haute disponibilité. 
 
+> [!NOTE]
+> Même si les disques partagés Azure prennent également en charge les [tailles de disque SSD Standard](../../../virtual-machines/disks-shared.md#disk-sizes), nous vous déconseillons d’utiliser des disques SSD Standard pour les charges de travail SQL Server en raison des limitations de performances.
 
 **Limitations** : 
 - Il est recommandé de placer les machines virtuelles dans le même groupe à haute disponibilité et le même groupe de placement de proximité.

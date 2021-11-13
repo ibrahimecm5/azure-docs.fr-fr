@@ -6,15 +6,15 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/22/2021
 ms.author: banders
-ms.custom: seodec18
-ms.openlocfilehash: c2a89f4905cda375b9e7565631a0ffd28e6dfa16
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: sapnakeshari
+ms.openlocfilehash: 02507604c1194d726014453bde6cd03c2c21aa31
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561456"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255423"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Résoudre les problèmes liés aux vues des coûts d’entreprise
 
@@ -31,9 +31,12 @@ L’une des raisons suivantes peut en être la cause :
 2. Si vous êtes client EA Direct, les possibilités sont les suivantes :
     * Vous êtes propriétaire du compte et l’administrateur en charge de votre inscription a désactivé le paramètre **AO view charges** (Afficher les frais pour le propriétaire du compte).  
     * Vous êtes administrateur de service et l’administrateur de votre inscription a désactivé le paramètre **DA view charges** (Afficher les frais pour l’administrateur de service).
-    * Contactez l’administrateur en charge de votre inscription pour obtenir l’accès. L’administrateur en charge de l’inscription peut mettre à jour les paramètres dans [Enterprise Portal](https://ea.azure.com/manage/enrollment).
+    * Contactez l’administrateur en charge de votre inscription pour obtenir l’accès. L’administrateur d’inscription peut désormais mettre à jour les paramètres dans le [portail Azure](https://portal.azure.com/). Accédez au menu **Stratégies** pour modifier les paramètres. 
+    * L’administrateur en charge de l’inscription peut mettre à jour les paramètres dans [Enterprise Portal](https://ea.azure.com/manage/enrollment).
 
       ![Capture d’écran montrant les paramètres d’Enterprise Portal pour l’affichage des frais.](./media/enterprise-mgmt-grp-troubleshoot-cost-view/ea-portal-settings.png)
+    
+ 
 
 ## <a name="asset-is-unavailable"></a>Une ressource est indisponible
 

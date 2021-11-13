@@ -1,14 +1,14 @@
 ---
 title: Gestion des extensions de machine virtuelle avec des serveurs activés par Azure Arc
 description: Les serveurs activés par Azure Arc peuvent gérer le déploiement d’extensions de machine virtuelle qui permettent d’effectuer des tâches d’automatisation et de configuration post-déploiement sur des machines virtuelles non Azure.
-ms.date: 09/30/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83fb74673b5da94cc656b512886ce1ee5d772ac1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: e652b7c520345ad56a28a718448ac520af8237e3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064396"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447357"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Gestion des extensions de machine virtuelle avec des serveurs activés par Azure Arc
 
@@ -25,7 +25,7 @@ Les serveurs avec Azure Arc vous permettent de déployer, retirer et mettre à j
 > Les serveurs avec Azure Arc ne prennent pas en charge le déploiement et la gestion des extensions de machine virtuelle sur les machines virtuelles Azure. Pour les machines virtuelles Azure, consultez l’article [Vue d’ensemble de l’extension de machine virtuelle](../../virtual-machines/extensions/overview.md) suivant.
 
 > [!NOTE]
-> Actuellement, vous pouvez uniquement mettre à jour les extensions à partir de la Portail Azure. L’exécution de cette opération à partir de Azure CLI, Azure PowerShell ou à l’aide d’un modèle de Azure Resource Manager n’est pas prise en charge pour l’instant.
+> Actuellement, vous pouvez uniquement mettre à jour les extensions en utilisant le portail Azure ou Azure CLI. L’exécution de cette opération dans Azure PowerShell ou à partir d’un modèle Azure Resource Manager n’est pas prise en charge pour l’instant.
 
 ## <a name="key-benefits"></a>Principaux avantages
 
@@ -92,7 +92,9 @@ Veillez à consulter la documentation relative à chacune des extensions de mach
 
 ### <a name="log-analytics-vm-extension"></a>Extension de machine virtuelle Log Analytics
 
-L’extension de machine virtuelle de l’agent Log Analytics pour Linux nécessite l’installation de Python 2.x sur la machine cible.
+L’extension de machine virtuelle de l’agent Log Analytics pour Linux nécessite l’installation de Python 2.x sur la machine cible. 
+
+Avant d’installer l’extension, nous vous suggérons de consulter les [options de déploiement de l’agent Log Analytics](concept-log-analytics-extension-deployment.md) pour comprendre les différentes méthodes disponibles et celles qui répondent à vos besoins.
 
 ### <a name="azure-key-vault-vm-extension"></a>Extension de machine virtuelle Azure Key Vault
 

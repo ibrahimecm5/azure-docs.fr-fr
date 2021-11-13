@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: ef420f52650ca037d8030fbd2e73d8e37d2153f7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a7a056a04963a8dd48a791c3851674b9abf54841
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023573"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501359"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Fonctionnalités d’évaluation dans Recherche cognitive Azure
 
@@ -23,6 +23,7 @@ Les fonctionnalités d’évaluation qui passent en disponibilité générale so
 
 |Fonctionnalité&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | Description | Disponibilité  |
 |---------|------------------|-------------|---------------|
+|  [**Indexeur Azure Files**](search-file-storage-integration.md) | Source de données d’indexeur | Ajoute la prise en charge de l’API REST afin de permettre la création d’indexeurs pour [Azure Files](https://azure.microsoft.com/services/storage/files/) | Préversion publique, [Recherche API REST 2021-04-30 - Préversion](/rest/api/searchservice/index-preview) |
 | [**Recherche API REST 2021-04-30 - Préversion**](/rest/api/searchservice/index-preview) | Sécurité | Modifie la [Création ou la Mise à jour de la source de données](/rest/api/searchservice/preview-api/create-or-update-data-source) pour prendre en charge les identités managées sous le Répertoire actif Azure, pour les indexeurs qui se connectent à des sources de données externes. | Préversion publique, [Recherche API REST 2021-04-30 - Préversion](/rest/api/searchservice/index-preview) |
 | [**Prise en charge d’Azure RBAC**](search-security-rbac.md) | Sécurité | Utilisez de nouveaux rôles intégrés pour contrôler l’accès aux index et à l’indexation, en éliminant ou en réduisant la dépendance sur les clés API. | Préversion publique ([sur demande](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#step-1-preview-sign-up)). Une fois votre abonnement intégré, utilisez le Portail Azure ou l’API REST de gestion version 2021-04-01 - préversion pour configurer un service de recherche pour l’authentification du plan de données. |
 | [**API REST Gestion 2021-04-01 - Préversion**](/rest/api/searchmanagement/) | Sécurité | Modifie la [Création ou la Mise à jour du service](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) pour prendre en charge les nouvelles [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions). | Préversion publique, [API REST Gestion ](/rest/api/searchmanagement/), API version 2021-04-01 - Préversion .|

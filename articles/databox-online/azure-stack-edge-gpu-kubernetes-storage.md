@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 10/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d848d663121474085935c68e62b8aa38f195ba8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5ef771c007d41e2e81dad7773c17bb1f9d3bb6a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442177"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469233"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Gestion du stockage Kubernetes sur votre appareil Azure Stack Edge Pro avec GPU
 
@@ -104,6 +104,8 @@ spec:
   volumeName: <nfs-or-smb-share-name-here> 
   storageClassName: ""
 ```
+
+Pour obtenir la valeur du champ `volumeName`, sélectionnez le point de montage local pour les modules de calcul Edge lorsque vous sélectionnez le partage SMB ou NFS après la création. Il s’agit du même nom que celui du partage. 
 
 Pour plus d’informations, consultez [Déployer une application avec état par le biais du provisionnement statique sur votre appareil Azure Stack Edge Pro via kubectl](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 

@@ -1,22 +1,22 @@
 ---
 title: 'Tutoriel : Connecter une solution de bout en bout'
 titleSuffix: Azure Digital Twins
-description: Tutoriel montrant comment créer une solution Azure Digital Twins de bout en bout basée sur des données d’appareil.
+description: Suivez ce tutoriel pour savoir comment créer une solution Azure Digital Twins de bout en bout pilotée par les données d’appareil.
 author: baanders
 ms.author: baanders
-ms.date: 8/23/2021
+ms.date: 10/19/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9d19a74dc7bacc996fe328679d9c3e12766bfadf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9233f33818e9961cc5daf8cf35b14457172ecae3
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626187"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504832"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutoriel : Créer une solution de bout en bout
 
-Pour configurer une solution de bout en bout complète basée sur les données réelles de votre environnement, vous pouvez connecter votre instance Azure Digital Twins à d’autres services Azure pour la gestion des appareils et des données.
+Ce tutoriel Azure Digital Twins décrit comment créer une solution de bout en bout qui illustre les fonctionnalités du service. Pour configurer une solution de bout en bout complète basée sur les données réelles de votre environnement, vous pouvez connecter votre instance Azure Digital Twins à d’autres services Azure pour la gestion des appareils et des données.
 
 Ce tutoriel présente les procédures suivantes :
 > [!div class="checklist"]
@@ -393,7 +393,7 @@ Dans la page *Créer un abonnement aux événements*, sélectionnez **Créer**.
 
 ## <a name="run-the-simulation-and-see-the-results"></a>Exécuter la simulation et afficher les résultats
 
-À présent, les événements doivent pouvoir passer de l’appareil simulé vers Azure Digital Twins et, par le biais du graphe Azure Digital Twins, mettre à jour les jumeaux selon les besoins. Dans cette section, vous allez réexécuter le simulateur d’appareil pour lancer le flux d’événements complet que vous avez configuré, puis interroger Azure Digital Twins pour voir les résultats réels
+À présent, les événements doivent pouvoir passer de l’appareil simulé vers Azure Digital Twins et, à travers le graphe Azure Digital Twins, mettre à jour les jumeaux selon les besoins. Dans cette section, vous allez réexécuter le simulateur d’appareil pour lancer le flux d’événements complet que vous avez configuré, puis interroger Azure Digital Twins pour voir les résultats réels
 
 Accédez à la fenêtre Visual Studio dans laquelle le projet _**DeviceSimulator**_ est ouvert, puis exécutez le projet.
 

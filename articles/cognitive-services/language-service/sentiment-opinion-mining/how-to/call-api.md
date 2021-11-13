@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-sentiment-opinion-mining, ignite-fall-2021
-ms.openlocfilehash: 17ac102653433585105e5a5d3dbe2216e9001cb3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 32e67ba4c8462b48158a72273e297924867b73b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097640"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434272"
 ---
 # <a name="how-to-use-sentiment-analysis-and-opinion-mining"></a>Guide pratique pour utiliser l’analyse des sentiments et l’exploration des opinions 
 
@@ -57,9 +57,30 @@ Si vous utilisez l’API REST, pour avoir l’exploration des opinions dans vos 
 
 Par défaut, l’analyse des sentiments utilise le dernier modèle IA disponible sur votre texte. Vous pouvez également configurer vos demandes d’API pour utiliser une version de modèle spécifique. Le modèle que vous spécifiez sera utilisé pour effectuer des opérations d’analyse des sentiments.
 
-| Versions prises en charge | version la plus récente |
-|--|--|
-| `2019-10-01`, `2020-04-01`, `2021-10-01` | `2021-10-01`   |
+| Versions prises en charge | dernière version Généralement disponible | dernière préversion |
+|--|--|--|
+| `2019-10-01`, `2020-04-01`, `2021-10-01-preview` | `2020-04-01`   | `2021-10-01-preview`   |
+
+### <a name="using-a-preview-model-version"></a>Utilisation d’une préversion du modèle
+
+Pour utiliser une préversion de modèle dans vos appels d’API, vous devez spécifier la version du modèle à l’aide du paramètre de version de modèle. Par exemple, si vous envoyez une requête en utilisant Python :
+
+```python
+result = text_analytics_client.analyze_sentiment(documents, show_opinion_mining=True, model_version="2021-10-01-preview")
+```
+
+ou si vous utilisiez l’API REST :
+
+```rest
+https://your-resource-name.cognitiveservices.azure.com/text/analytics/v3.1/sentiment?opinionMining=true&model-version=2021-10-01-preview
+```
+
+Pour plus d’informations, consultez la documentation de référence.
+* [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Sentiment)
+* [.NET](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics.analyzesentimentaction?view=azure-dotnet#properties)
+* [Python](https://docs.microsoft.com/python/api/azure-ai-textanalytics/azure.ai.textanalytics.textanalyticsclient?view=azure-python#analyze-sentiment-documents----kwargs-)
+* [Java](https://docs.microsoft.com/java/api/com.azure.ai.textanalytics.models.analyzesentimentoptions.setmodelversion?view=azure-java-stable#com_azure_ai_textanalytics_models_AnalyzeSentimentOptions_setModelVersion_java_lang_String_)
+* [JavaScript](https://docs.microsoft.com/javascript/api/@azure/ai-text-analytics/analyzesentimentoptions?view=azure-node-latest)
 
 ### <a name="input-languages"></a>Langues de saisie
 

@@ -1,61 +1,60 @@
 ---
-title: Configurer un pare-feu IP pour votre service Recherche cognitive Azure
+title: Configurer un pare-feu IP
 titleSuffix: Azure Cognitive Search
-description: Configurez les stratégies de contrôle IP pour restreindre l’accès à votre service Recherche cognitive Azure.
+description: Configurez des stratégies de contrôle IP pour restreindre l’accès à votre service Recherche cognitive Azure à des adresses IP spécifiques.
 manager: nitinme
-author: markheff
-ms.author: maheff
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: de34c2921c7829cb6d7e7354a1ebcff44271efd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: e403a71525a8400f47dee01c14ac192c13ab3826
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545545"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223180"
 ---
-# <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Configurer le pare-feu IP pour Recherche cognitive Azure
+# <a name="configure-an-ip-firewall-for-azure-cognitive-search"></a>Configurer un pare-feu IP pour le service Recherche cognitive Azure
 
-Recherche cognitive Azure prend en charge les règles IP pour la prise en charge du pare-feu entrant. Ce modèle fournit une couche supplémentaire de sécurité pour votre service de recherche, similaire aux règles IP que vous trouverez dans un groupe de sécurité de réseau virtuel Azure. Avec ces règles IP, vous pouvez configurer votre service de recherche pour qu’il soit accessible uniquement à partir d’un ensemble d’ordinateurs et/ou de services cloud approuvés. L’accès aux données stockées dans votre service de recherche à partir de ces ensembles d’ordinateurs et de services approuvés nécessite toujours que l’appelant présente un jeton d’autorisation valide.
+Recherche cognitive Azure prend en charge les règles IP pour l’accès entrant via un pare-feu, de manière similaire aux règles IP que vous trouvez dans un groupe de sécurité réseau d’un réseau virtuel Azure. En tirant profit des règles IP, vous pouvez restreindre l’accès au service de recherche à un ensemble approuvé de machines et de services cloud. L’accès aux données stockées dans votre service de recherche à partir des ensembles approuvés de machines et de services impose toujours à l’appelant de présenter un jeton d’autorisation valide.
 
-Vous pouvez définir des règles IP dans le portail Azure, comme décrit dans cet article. Vous pouvez également utiliser l’[API REST de gestion version 2020-03-13](/rest/api/searchmanagement/), [Azure PowerShell](/powershell/module/az.search) ou [Azure CLI](/cli/azure/search).
+Vous pouvez définir des règles IP dans le portail Azure, comme indiqué dans cet article, pour les services de recherche provisionnés au niveau De base et supérieur. Vous pouvez également utiliser l’[API REST de gestion version 2020-03-13](/rest/api/searchmanagement/), [Azure PowerShell](/powershell/module/az.search) ou [Azure CLI](/cli/azure/search).
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Configurer un pare-feu IP à l’aide du Portail Azure
+<a id="configure-ip-policy"></a> 
 
-Pour définir la stratégie de contrôle d’accès IP dans le Portail Azure, accédez à la page de votre service Recherche cognitive Azure et sélectionnez **Mise en réseau** dans le menu de navigation. La connectivité réseau des points de terminaison doit être **publique**. Si votre connectivité est définie sur **Privée**, vous pouvez accéder à votre service de recherche uniquement via un point de terminaison privé.
+## <a name="set-ip-ranges-in-azure-portal"></a>Définir des plages d’adresses IP dans le portail Azure
 
-![Capture d’écran montrant comment configurer le pare-feu IP dans le Portail Azure](./media/service-configure-firewall/azure-portal-firewall.png)
+Pour définir la stratégie de contrôle d’accès IP dans le portail Azure, accédez à la page du service Recherche cognitive Azure, puis sélectionnez **Réseau** dans le volet de navigation de gauche. La connectivité réseau des points de terminaison doit être définie à **Accès public**. Si votre connectivité est définie à **Accès privé** ou **Accès privé partagé**, vous pouvez uniquement accéder à votre service de recherche via un point de terminaison privé.
+
+:::image type="content" source="media/service-configure-firewall/azure-portal-firewall.png" alt-text="Capture d’écran montrant comment configurer le pare-feu IP dans le Portail Azure" border="true":::
 
 Le Portail Azure permet de spécifier des adresses IP et des plages d’adresses IP au format CIDR. Un exemple de notation CIDR est 8.8.8.0/24, qui représente les adresses IP comprises entre 8.8.8.0 et 8.8.8.255.
 
-> [!NOTE]
-> Une fois que vous avez activé la stratégie de contrôle d’accès IP pour votre service Recherche cognitive Azure, toutes les demandes adressées au plan de données à partir d’ordinateurs ne figurant pas dans la liste des plages d’adresses IP autorisées sont rejetées. Lorsque des règles IP sont configurées, certaines fonctionnalités du Portail Azure sont désactivées. Vous pouvez voir et gérer les informations au niveau du service, mais l'accès du portail aux données d'index et aux divers composants de ce service, comme les définitions d'index, d'indexeur et d'ensemble de compétences, est limité pour des raisons de sécurité. Comme alternative au portail, vous pouvez utiliser l’[extension VS Code](https://aka.ms/vscode-search) pour interagir avec les différents composants du service.
+Une fois que vous avez activé la stratégie de contrôle d’accès IP pour votre service Recherche cognitive Azure, toutes les demandes adressées au plan de données à partir d’ordinateurs ne figurant pas dans la liste des plages d’adresses IP autorisées sont rejetées. 
 
-### <a name="requests-from-your-current-ip"></a>Demandes à partir de votre adresse IP actuelle
+## <a name="allow-access-from-azure-portal"></a>Autoriser l’accès à partir du portail Azure
 
-Pour simplifier le développement, le portail Azure vous aide à identifier et à ajouter l’adresse IP de votre ordinateur client à la liste autorisée, Les applications qui s’exécutent sur votre ordinateur peuvent ensuite accéder à votre service Recherche cognitive Azure.
+Par défaut, quand des règles IP sont configurées, certaines fonctionnalités du portail Azure sont désactivées. Vous pouvez voir et gérer les informations au niveau du service. Toutefois, l’accès au portail par les index, les indexeurs et les autres ressources de niveau supérieur est restreint.
 
-Le portail détecte automatiquement l’adresse IP de votre client. Il peut s’agir de l’adresse IP du client de votre ordinateur ou de la passerelle réseau. N’oubliez pas de supprimer cette adresse IP avant de mettre vos charges de travail en production.
+Pour conserver l’administration du service via le portail, sélectionnez l’option « Autoriser l’accès » sous **Exceptions**. Vous pouvez également utiliser l’[extension VS Code](https://aka.ms/vscode-search) pour gérer le contenu.
 
-Pour ajouter votre adresse IP actuelle à la liste des adresses IP, cochez **Ajouter l’adresse IP de votre client**. Ensuite, sélectionnez **Enregistrer**.
+## <a name="allow-access-from-your-client"></a>Autoriser l’accès à partir de votre client
 
-![Capture d’écran montrant comment configurer les paramètres de pare-feu IP pour autoriser l’adresse IP actuelle](./media/service-configure-firewall/enable-current-ip.png)
+Les applications clientes qui envoient (push) les requêtes d’indexation et d’interrogation au service de recherche doivent être représentées dans une plage d’adresses IP. Sur Azure, vous pouvez généralement déterminer l’adresse IP en effectuant un test ping sur le FQDN d’un service (par exemple `ping <your-search-service-name>.search.windows.net` retourne l’adresse IP d’un service de recherche). 
 
-## <a name="troubleshoot-issues-with-an-ip-access-control-policy"></a><a id="troubleshoot-ip-firewall"></a>Résoudre les problèmes de stratégie de contrôle d’accès IP
+La fourniture d’adresses IP aux clients permet de garantir que la requête n’est pas rejetée purement et simplement. Toutefois, pour permettre un accès réussi au contenu et aux opérations, une autorisation est également nécessaire. Utilisez l’une des méthodologies suivantes pour authentifier votre requête :
 
-Vous pouvez résoudre les problèmes de stratégie de contrôle d’accès IP en utilisant les options suivantes :
++ [Authentification par clé](search-security-api-keys.md), où une clé API d’administrateur ou d’interrogation est fournie dans la requête
++ [Autorisation basée sur les rôles](search-security-rbac.md), où l’appelant est membre d’un rôle de sécurité d’un service de recherche, et où l’[application inscrite présente un jeton OAuth](search-howto-aad.md) d’Azure Active Directory.
 
-### <a name="azure-portal"></a>Portail Azure
+### <a name="rejected-requests"></a>Requêtes rejetées
 
-L’activation d’une stratégie de contrôle d’accès IP pour votre service Recherche cognitive Azure bloque toutes les demandes des ordinateurs en dehors de la liste des plages d’adresses IP autorisées, y compris le Portail Azure.  Vous pouvez voir et gérer les informations au niveau du service, mais l'accès du portail aux données d'index et aux divers composants de ce service, comme les définitions d'index, d'indexeur et d'ensemble de compétences, est limité pour des raisons de sécurité. 
-
-### <a name="sdks"></a>Kits SDK
-
-Quand vous accédez au service Recherche cognitive Azure à l’aide du Kit de développement logiciel (SDK) à partir d’ordinateurs ne figurant pas dans la liste autorisée, une réponse **403 interdit** générique est retournée sans aucun détail supplémentaire. Vérifiez la liste des adresses IP autorisées pour votre compte et assurez-vous que la configuration appropriée a été mise à jour pour votre service de recherche.
+Quand les requêtes proviennent d’adresses IP qui ne figurent pas dans la liste verte, une réponse générique **403 Interdit** est retournée sans détails supplémentaires.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour plus d’informations sur l’accès à votre service de recherche via Azure Private Link, consultez l’article suivant :
+Si votre application cliente est une application web statique sur Azure, découvrez comment déterminer sa plage d’adresses IP pour l’inclure dans une règle de pare-feu IP d’un service de recherche.
 
-* [Créer un point de terminaison privé pour une connexion sécurisée à Recherche cognitive Azure](service-create-private-endpoint.md)
+> [!div class="nextstepaction"]
+> [Adresses IP entrantes et sortantes dans Azure App Service](../app-service/overview-inbound-outbound-ips.md)

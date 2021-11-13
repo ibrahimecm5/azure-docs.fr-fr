@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 1463c4e879b364f8242d55aa58b424a8cc6f9cf9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 659e625aa98a92c2730e76bd847dfdddc3c955bf
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706798"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577324"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Base de connaissances dans Recherche cognitive Azure
 
@@ -25,7 +25,7 @@ Si vous avez utilisé des compétences cognitives dans le passé, vous savez dé
 
 Physiquement, une base de connaissances représente un [Stockage Azure](../storage/common/storage-account-overview.md), soit le Stockage Table Azure, soit le Stockage Blob Azure, ou les deux. Tout outil ou processus pouvant se connecter au Stockage Azure peut utiliser le contenu d’un magasin de connaissances.
 
-Vue depuis l’Explorateur Stockage, une base de connaissances est juste une collection de tables, d’objets ou de fichiers. L’exemple suivant montre une base de connaissances composée de trois tables avec des champs provenant de la source de données ou créés via des enrichissements (consultez « score de sentiments » et « translated_text »).
+Vue à travers le navigateur de stockage, une base de connaissances ressemble à n’importe quelle collection de tables, d’objets ou de fichiers. L’exemple suivant montre une base de connaissances composée de trois tables avec des champs provenant de la source de données ou créés via des enrichissements (consultez « score de sentiments » et « translated_text »).
 
 :::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="Lecture et écriture des compétences à partir de l’arborescence d’enrichissement" border="true":::
 
@@ -45,14 +45,14 @@ La vidéo suivante explique ces deux avantages, et bien plus encore.
 
 Une base de connaissances est définie à l’intérieur d’une définition de compétences et possède deux composants : 
 
-+ une chaîne de connexion cers le Stockage Azure
++ Une chaîne de connexion au service Stockage Azure
 
 + des [**Projections**](knowledge-store-projection-overview.md) qui déterminent si la base de connaissances comprend des tables, des objets ou des fichiers. 
 
 L’élément de projections est un tableau. Vous pouvez créer plusieurs ensembles de combinaisons table-objet-fichier au sein d’une base de connaissances.
 
 ```json
-"knowledgeStore":{
+"knowledgeStore": {
    "storageConnectionString":"<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>",
    "projections":[
       {
@@ -66,6 +66,10 @@ L’élément de projections est un tableau. Vous pouvez créer plusieurs ensemb
 Le type de projection que vous spécifiez dans cette structure détermine le type de stockage utilisé par la base de connaissances.
 
 + `tables` permet de projeter du contenu enrichi dans le service Stockage Table. Définissez une projection de table lorsque vous avez besoin de structures de rapports tabulaires pour des entrées dans des outils analytiques, ou les exporter en tant que trames de données dans d’autres magasins de données. Vous pouvez spécifier plusieurs `tables` dans le même groupe de projections pour obtenir un sous-ensemble ou une coupe transversale des documents enrichis. Dans le même groupe de projection, les relations entre tables sont conservées afin que vous puissiez les utiliser toutes.
+
+  Le contenu projeté n’est pas agrégé ou normalisé. La capture d’écran suivante montre un tableau, trié par phrases clés, avec le document parent indiqué dans la colonne adjacente. Contrairement à l’ingestion des données durant l’indexation, il n’existe aucune analyse linguistique ou agrégation de contenu. Les formes plurielles et les différences de casse sont considérées comme des instances uniques.
+
+  :::image type="content" source="media/kstore-keyphrases-per-document.png" alt-text="Capture d’écran de phrases clés et de documents dans un tableau" border="true":::
 
 + `objects` permet de projeter un document JSON dans le service Stockage Blob. La représentation physique d’un `object` est une structure JSON hiérarchique représentant un document enrichi.
 
@@ -118,7 +122,7 @@ Pour les développeurs .NET, utilisez la [classe KnowledgeStore](/dotnet/api/azu
 
 Une fois les enrichissements disponibles dans le stockage, n'importe quel outil ou technologie capable de se connecter à Stockage Blob ou Stockage Table peut être utilisé pour explorer, analyser ou utiliser le contenu. La liste suivante est un début :
 
-+ L'[Explorateur Stockage](knowledge-store-view-storage-explorer.md) permet d'afficher la structure et le contenu des documents enrichis. Considérez-le comme votre outil de référence pour afficher le contenu de la base de connaissances.
++ [Navigateur de stockage](knowledge-store-view-storage-explorer.md) pour voir la structure et le contenu du document enrichi. Considérez-le comme votre outil de référence pour afficher le contenu de la base de connaissances.
 
 + [Power BI](knowledge-store-connect-power-bi.md) pour la création de rapports et l’analyse. 
 

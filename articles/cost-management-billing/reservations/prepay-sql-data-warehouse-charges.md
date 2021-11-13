@@ -2,18 +2,18 @@
 title: Économiser sur les frais d’Azure Synapse Analytics (entreposage de données uniquement) avec une capacité de réserve Azure
 description: Découvrez comment réduire les coûts d’Azure Synapse Analytics avec une capacité de réserve pour économiser de l’argent.
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: 7e5987aee066e8c9e439b2789b1242e1bc541c35
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6b2fb94f625cb5eb6384961faa977da2b9822bf6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714097"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223970"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>Réduire les coûts d’Azure Synapse Analytics (entreposage de données uniquement) avec une capacité de réserve
 
@@ -30,7 +30,8 @@ Pour plus d’informations sur les tarifs, consultez l’[offre de capacité de 
 Vous pouvez acheter une capacité de réserve Azure Synapse Analytics sur le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Payez la réservation [à l’avance ou par paiements mensuels](./prepare-buy-reservation.md). Pour acheter une capacité réservée :
 
 - Vous devez avoir le rôle propriétaire pour au moins un abonnement Entreprise ou avec paiement à l’utilisation.
-- Pour les abonnements Entreprise, l’option **Ajouter des instances réservées** doit être activée sur le [portail EA](https://ea.azure.com/). Si le paramètre est désactivé, vous devez être un administrateur EA.
+- Pour les abonnements Entreprise, l’option **Ajouter des instances réservées** doit être activée sur le [portail EA](https://ea.azure.com/). Si le paramètre est désactivé, vous devez être administrateur EA pour pouvoir l’activer. Les clients EA directs peuvent désormais mettre à jour les paramètres d’**instance réservée** dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes). Accédez au menu Stratégies pour modifier les paramètres.
+
 - Pour le programme Fournisseur de solutions cloud (CSP), seuls des agents d’administration ou des agents commerciaux peuvent acheter une capacité de réserve Azure Synapse Analytics.
 
 Pour en savoir plus sur la facturation des achats de réservation pour les clients professionnels et les clients payant à l’utilisation, voir les articles [Comprendre l’utilisation d’une réservation Azure pour votre inscription Entreprise](understand-reserved-instance-usage-ea.md) et [Comprendre l’utilisation d’une réservation Azure pour votre abonnement avec paiement à l’utilisation](understand-reserved-instance-usage.md).

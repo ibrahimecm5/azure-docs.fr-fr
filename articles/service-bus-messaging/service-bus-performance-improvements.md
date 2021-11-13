@@ -3,12 +3,12 @@ title: Meilleures pratiques pour améliorer les performances à l’aide de Azur
 description: Explique comment utiliser Service Bus pour optimiser les performances lors de l’échange de messages répartis.
 ms.topic: article
 ms.date: 08/30/2021
-ms.openlocfilehash: 51b8005f9aa3b53bbcb8d78b83c4449992cf0210
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 246b9deedb9385b671bf89a27d666798c703a93a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560713"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232136"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Meilleures pratiques relatives aux améliorations de performances à l’aide de la messagerie Service Bus
 
@@ -26,7 +26,7 @@ Service Bus propose plusieurs niveaux tarifaires. Il est recommandé de choisir 
 
    * **Niveau standard** : Adapté aux environnements de développement et de test ou aux scénarios à faible débit où les applications ne sont **pas sensibles** à la limitation.
 
-   * **Niveau Premium** : Adapté aux environnements de production avec des exigences de débit variables où la latence et le débit doivent être prévisibles. En outre, les espaces de noms Premium de Service Bus peuvent être [mis à l’échelle automatiquement](automate-update-messaging-units.md) pour s’adapter aux pics de débit.
+   * **Niveau Premium** : Adapté aux environnements de production avec des exigences de débit variables où la latence et le débit doivent être prévisibles. De plus, les espaces de noms Premium de Service Bus peuvent faire l’objet d’une [mise à l’échelle automatique](automate-update-messaging-units.md) et être activés pour s’adapter aux pics de débit.
 
 > [!NOTE]
 > Si vous ne choisissez pas le niveau approprié, il existe un risque de saturation de l’espace de noms Service Bus, ce qui peut entraîner une [limitation](service-bus-throttling.md).

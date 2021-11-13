@@ -3,12 +3,12 @@ title: Considérations relatives au stockage pour Azure Functions
 description: En savoir plus sur les exigences de stockage d’Azure Functions et sur le chiffrement des données stockées.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: dfbaf2947dd3eaacd155a240541a6abae3894b35
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6dc2bad744118e57b9e958658814f5c194f633ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599978"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216615"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Considérations relatives au stockage pour Azure Functions
 
@@ -71,14 +71,16 @@ Les autres données client gérées par la plateforme ne sont stockées au sein 
 
 Azure Files est configuré par défaut pour les plans de consommation Premium et non basés sur Linux afin de faire office de système de fichiers partagé dans les scénarios à grande échelle. Le système de fichiers est utilisé par la plateforme pour certaines fonctionnalités telles que le streaming de journaux, mais il assure essentiellement la cohérence de la charge utile de la fonction déployée. Lorsqu’une application est [déployée à l’aide d’une URL de package externe](./run-functions-from-deployment-package.md), le contenu de l’application est pris en charge à partir d’un système de fichiers en lecture seule distinct et dès lors, Azure Files peut être omis. Dans ce cas, un système de fichiers accessible en écriture est mis à disposition, mais il n’est pas garanti qu’il soit partagé avec toutes les instances d’application de fonction.
 
-Si Azure Files n’est pas utilisé, vous devez prendre en compte ce qui suit :
+Lorsque Azure Files n’est pas utilisé, vous devez tenir compte de ce qui suit :
 
 * Vous devez effectuer le déploiement à partir d’une URL de package externe
-* Votre application ne peut pas s’appuyer sur un système de fichiers accessible en écriture partagé
-* Votre application ne peut pas utiliser le runtime de Functions v1
+* Votre application ne peut pas reposer sur un système de fichiers accessible en écriture partagé
+* L’application ne peut pas utiliser le runtime Functions v1
 * Les expériences de streaming de journaux dans les clients tels que le portail Azure s’apparentent aux journaux du système de fichiers. Privilégiez les journaux Application Insights.
 
 Si les éléments ci-dessus sont correctement pris en compte, vous pouvez créer l’application sans Azure Files. Créez l’application de fonction sans spécifier les paramètres `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` et `WEBSITE_CONTENTSHARE`. Pour ce faire, vous pouvez générer un modèle ARM pour un déploiement standard, supprimer ces deux paramètres, puis déployer le modèle. 
+
+Étant donné que les fonctions utilisent Azure Files durant certaines parties du processus de scale-out dynamique, la mise à l’échelle peut être limitée lors de l’exécution sans Azure Files sur les plans Consommation et Premium.
 
 ## <a name="mount-file-shares"></a>Monter des partages de fichiers
 
