@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: d0a2a7e86edb4593386befbde7a487a3452cc6cf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fad71a2c98f28e9c3ae770e61acc409bd5f341b3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124783669"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Datadog
 
@@ -60,7 +60,7 @@ Pour configurer et tester l’authentification unique Azure AD auprès de Datad
     1. **[Créer un utilisateur de test Azure AD](#create-an-azure-ad-test-user)** pour tester l’authentification unique Azure AD avec B. Simon.
     1. **[Affecter l’utilisateur de test Azure AD](#assign-the-azure-ad-test-user)** pour permettre à B. Simon d’utiliser l’authentification unique Azure AD.
 1. **[Configurer l’authentification unique Datadog](#configure-datadog-sso)** pour configurer les paramètres de l’authentification unique côté application.
-    1. **[Créer un utilisateur de test Datadog](#create-datadog-test-user)** pour avoir un équivalent de B.Simon dans Datadog lié à la représentation Azure AD associée.
+    1. Créer un utilisateur de test Datadog pour avoir un équivalent de B.Simon dans Datadog lié à la représentation Azure AD associée.
 1. **[Tester l’authentification unique](#test-sso)** pour vérifier si la configuration fonctionne.
 
 ## <a name="configure-azure-ad-sso"></a>Configurer l’authentification unique Azure AD
@@ -68,29 +68,30 @@ Pour configurer et tester l’authentification unique Azure AD auprès de Datad
 Effectuez les étapes suivantes pour activer l’authentification unique Azure AD dans le Portail Azure.
 
 1. Dans le portail Azure, accédez à la page d’intégration de l’application **Datadog**, recherchez la section **Gérer** et sélectionnez **Authentification unique**.
-1. Dans la page **Sélectionner une méthode d’authentification unique**, sélectionnez **SAML**.
+
 1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de crayon de **Configuration SAML de base** afin de modifier les paramètres.
 
-   ![Modifier la configuration SAML de base](common/edit-urls.png)
+1. Dans la section **Configuration SAML de base**, l’utilisateur n’a rien à faire, car l’application est préintégrée à Azure.
 
-1. Dans la section **Configuration SAML de base**, l’utilisateur n’a rien à faire, car l’application est déjà intégrée à Azure.
-
-1. Si vous souhaitez configurer l’application en **mode démarré par le fournisseur de services**, cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes :
+1. Cliquez sur **Définir des URL supplémentaires**, puis effectuez les étapes suivantes si vous voulez configurer l’application en mode lancé par le **fournisseur de services** :
 
     Dans la zone de texte **URL de connexion**, tapez une URL au format suivant : `https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>`
 
     > [!NOTE]
-    > Cette valeur n’est pas la valeur réelle. Mettez à jour la valeur avec l’URL de connexion réelle. Contactez l’[équipe de support technique Datadog](mailto:support@datadoghq.com) pour obtenir la valeur. Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
+    > Cette valeur n’est pas la valeur réelle. Mettez à jour la valeur avec l’URL de connexion réelle dans vos [paramètres SAML Datadog](https://app.datadoghq.com/organization-settings/login-methods/saml). Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure. L’utilisation conjointe de la connexion lancée par le fournisseur d’identité et de celle lancée par le fournisseur de services nécessite les deux versions de l’URL ACS configurées dans Azure.
 
 1. Cliquez sur **Enregistrer**.
 
+1. Dans la page **Configurer l’authentification unique avec SAML**, sous **Attributs utilisateur et revendications**, cliquez sur l’icône en forme de crayon pour modifier les paramètres.
+
+1. Cliquez sur le bouton **Ajouter une revendication de groupe**. Par défaut, dans Azure AD, le nom de la revendication de groupe est une URL. Par exemple : `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`. Si vous souhaitez remplacer cette valeur par un nom d’affichage tel que **groupes**, sélectionnez **Options avancées**, puis remplacez le nom de la revendication de groupe par **groupes**.
+
+   > [!NOTE]
+   > L’attribut source est défini sur `Group ID`. Il s’agit de l’UUID du groupe dans Azure AD. Cela signifie que l’ID de groupe est envoyé par Azure AD comme valeur d’attribut de revendication de groupe, et non comme nom de groupe. Vous devez modifier les mappages dans Datadog pour qu’ils correspondent à l’ID de groupe et non au nom de groupe. Pour plus d’informations, consultez [Mappages SAML pour Datadog](https://docs.datadoghq.com/account_management/saml/#mapping-saml-attributes-to-datadog-roles).
+
 1. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, recherchez **XML de métadonnées de fédération** et sélectionnez **Télécharger** pour télécharger le certificat et l’enregistrer sur votre ordinateur.
 
-    ![Lien Téléchargement de certificat](common/metadataxml.png)
-
 1. Dans la section **Configurer Datadog**, copiez la ou les URL appropriées en fonction de vos besoins.
-
-    ![Copier les URL de configuration](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
@@ -118,27 +119,23 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificati
 
 ## <a name="configure-datadog-sso"></a>Configurer l’authentification unique Datadog
 
-Pour configurer l’authentification unique côté **Datadog**, vous devez envoyer le fichier **XML des métadonnées de fédération** téléchargé et les URL appropriées copiées depuis le portail Azure à l’[équipe du support technique Datadog](mailto:support@datadoghq.com). Celles-ci configurent ensuite ce paramètre pour que la connexion SSO SAML soit définie correctement des deux côtés.
-
-### <a name="create-datadog-test-user"></a>Créer un utilisateur de test Datadog
-
-Dans cette section, vous créez un utilisateur appelé B.Simon dans Datadog. Travaillez en collaboration avec l’[équipe du support technique Datadog](mailto:support@datadoghq.com) pour ajouter les utilisateurs sur la plateforme Datadog.
+Pour configurer l’authentification unique côté **Datadog**, vous devez charger le fichier **XML de métadonnées de fédération** téléchargé dans les [paramètres SAML de Datadog](https://app.datadoghq.com/organization-settings/login-methods/saml).
 
 ## <a name="test-sso"></a>Tester l’authentification unique (SSO) 
 
-Dans cette section, vous allez tester votre configuration de l’authentification unique Azure AD avec les options suivantes. 
+Testez votre configuration de l’authentification unique Azure AD avec les options suivantes. 
 
 #### <a name="sp-initiated"></a>Lancée par le fournisseur de services :
 
 * Cliquez sur **Tester cette application** dans le portail Azure. Cette opération redirige vers l’URL de connexion Datadog, d’où vous pouvez lancer le processus de connexion.  
 
-* Accédez directement à l’URL de connexion Datadog pour lancer le processus de connexion.
+* Accédez directement à l’URL de connexion de Datadog pour lancer le flux de connexion.
 
 #### <a name="idp-initiated"></a>Lancée par le fournisseur d’identité :
 
 * Cliquez sur **Tester cette application** dans le portail Azure ; vous êtes alors automatiquement connecté à l’instance de Datadog pour laquelle vous avez configuré l’authentification unique. 
 
-Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’application dans n’importe quel mode. Si, quand vous cliquez sur la vignette Datadog dans Mes applications, le mode Fournisseur de services est configuré, vous êtes redirigé vers la page de connexion de l’application pour lancer le flux de connexion ; s’il s’agit du mode Fournisseur d’identité, vous êtes automatiquement connecté à l’instance Datadog pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’application dans n’importe quel mode. Si, quand vous cliquez sur la vignette Datadog dans le portail Mes applications, le mode Fournisseur de services est configuré, vous êtes redirigé vers la page de connexion de l’application pour initier le flux de connexion ; s’il s’agit du mode Fournisseur d’identité, vous êtes automatiquement connecté à l’instance de Datadog pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation du portail Mes applications](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>Autoriser tous les utilisateurs de votre locataire à s’authentifier auprès de l’application
 

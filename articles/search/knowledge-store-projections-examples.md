@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 3414e3d5b339334bf0762427c99020ff3a3170ad
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 0aa980d2268f6d055f3aa05a8e30d57712c022df
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134181"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563622"
 ---
 # <a name="define-projections-in-a-knowledge-store"></a>Définir des projections dans une base de connaissances
 
@@ -272,7 +272,7 @@ Vous pouvez traiter des projections de test en procédant comme suit :
 
 1. [Surveillez l’exécution de l’indexeur](search-howto-monitor-indexers.md) pour vérifier la progression et intercepter les erreurs.
 
-1. [Utilisez l’explorateur de stockage](knowledge-store-view-storage-explorer.md) pour vérifier la création des objets dans le stockage Azure.
+1. [Utilisez le navigateur de stockage](knowledge-store-view-storage-explorer.md) pour vérifier la création des objets dans le Stockage Azure.
 
 1. Si vous projetez des tables, [importez-les dans Power BI](knowledge-store-connect-power-bi.md) pour la manipulation et la consultation. Dans la plupart des cas, Power BI découvrira automatiquement les relations entre les tables.
 

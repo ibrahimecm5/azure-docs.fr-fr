@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 142f8a9dd1c62442c76f35f53a3cb762c6948704
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 6e3a7b7b37e02f6f351caf985fd997d7daafd70c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131521363"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861059"
 ---
 [![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Tout d’abord, vous créez une application Azure IoT Central pour héberger des appareils. Ensuite, vous utilisez un exemple Azure IoT device SDK pour créer un contrôleur de température, le connecter de manière sécurisée à IoT Central et envoyer des données de télémétrie. L’exemple d’application de contrôleur de température s’exécute sur votre ordinateur local et génère des données de capteur simulées à envoyer à IoT Central.
+Dans ce guide de démarrage rapide, vous allez découvrir un workflow simple de développement d’application Azure IoT. Tout d’abord, vous créez une application Azure IoT Central pour héberger des appareils. Ensuite, vous utilisez un exemple Azure IoT device SDK pour créer un contrôleur de température, le connecter en toute sécurité à IoT Central et envoyer la télémétrie. L’exemple d’application de contrôleur de température s’exécute sur votre ordinateur local et génère des données de capteur simulées à envoyer à IoT Central.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -107,7 +107,7 @@ Pour effectuer ce démarrage rapide sur le système d’exploitation Linux ou Ra
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>Exécution d’un appareil
+## <a name="run-the-device-sample"></a>Exécuter l’exemple d’appareil
 
 Dans cette section, vous allez configurer votre environnement local, installer le kit Azure IoT Java device SDK et exécuter un exemple qui crée un contrôleur de température.
 
@@ -175,7 +175,7 @@ Dans cette section, vous allez configurer votre environnement local, installer l
     cd device/iot-device-samples/pnp-device-sample/temperature-controller-device-sample
     ```
 
-1. Exécutez l’exemple de code suivant à partir du SDK. L’exemple crée un contrôleur de température comportant des capteurs de thermostat.
+1. Exécutez l’exemple de code suivant à partir du SDK. L’exemple crée un contrôleur de température avec des capteurs de thermostat.
 
     ```console
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"

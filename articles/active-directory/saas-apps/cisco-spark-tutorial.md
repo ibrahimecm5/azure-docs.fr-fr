@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Cisco Webex | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Cisco Webex'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Cisco Webex.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 94e025c3a76ac2a6722e0fa21b39718624d8645c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 3647f3d8736d59aaeee4f73211dbf75c690f2446
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042823"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474531"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Cisco Webex
+# <a name="tutorial-azure-ad-sso-integration-with-cisco-webex"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Cisco Webex
 
 Ce didacticiel explique comment intégrer Cisco Webex avec Azure Active Directory (Azure AD). Quand vous intégrez Cisco Webex à Azure AD, vous pouvez :
 
@@ -32,6 +32,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 
 * Un abonnement Azure AD Si vous ne disposez d’aucun abonnement, vous pouvez obtenir [un compte gratuit](https://azure.microsoft.com/free/).
 * Abonnement Cisco Webex pour lequel l’authentification unique est activée.
+*  Fichier de métadonnées du fournisseur de services de Cisco Webex.
 
 ## <a name="scenario-description"></a>Description du scénario
 

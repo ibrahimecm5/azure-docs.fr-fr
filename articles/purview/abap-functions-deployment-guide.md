@@ -6,13 +6,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: b8d67c3c5b596627fc1795cf97d807d7f582e326
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/07/2021
+ms.openlocfilehash: 7894e187efedf91e3c586dd0d8caaf35e753be3c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131442157"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028575"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>Déployer le module de fonction ABAP d’extraction des métadonnées pour la famille de ponts SAP R3
 
@@ -32,6 +32,12 @@ Ce document détaille les étapes requises pour déployer ce module.
 
 > [!Note]
 > Les instructions suivantes ont été compilées en se basant sur l’interface graphique utilisateur SAP v.7.2
+
+## <a name="prerequisites"></a>Prérequis
+
+Téléchargez le code source du module de fonction ABAP à partir de Purview Studio. Lorsque vous inscrivez une source, puis effectuez une nouvelle analyse pour [SAP ECC](register-scan-sapecc-source.md) ou [SAP S/4HANA](register-scan-saps4hana-source.md), vous pouvez trouver un lien de téléchargement en haut, comme suit. 
+
+:::image type="content" source="media/abap-functions-deployment-guide/download-abap-code.png" alt-text="Télécharger le code source du module de fonction ABAP à partir de Purview Studio" border="true":::
 
 ## <a name="deployment-of-the-module"></a>Déploiement du module
 
@@ -79,7 +85,7 @@ Une fois le module créé, spécifiez les informations suivantes :
 
 3. Accédez à l’onglet **Code source**. Il existe deux façons de déployer du code pour la fonction :
 
-   a. Dans le menu principal, chargez le fichier texte [Z\_MITI\_DOWNLOAD](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap). Pour ce faire, sélectionnez **Utilitaires**, **Autres utilitaires**, **Charger/Télécharger**, puis **Charger**.
+   a. Dans le menu principal, chargez le fichier texte que vous avez téléchargé à partir de Purview Studio, comme décrit dans la section [Prérequis](#prerequisites). Pour ce faire, sélectionnez **Utilitaires**, **Autres utilitaires**, **Charger/Télécharger**, puis **Charger**.
 
    b. Vous pouvez également ouvrir le fichier, copier son contenu et le coller dans la zone de **Code source**.
 

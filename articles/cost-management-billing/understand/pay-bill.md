@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: ef24c80e50cc45f48b583d721b35f61645b94033
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 70d104853db5634e70dfbdd7bc01c1c2b8fd9589
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483178"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476145"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Comment payer votre facture Microsoft Azure
 
@@ -23,7 +23,7 @@ Cet article s’applique aux clients disposant d’un Contrat client Microsoft (
 
 [Vérifiez votre accès à un Contrat client Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
-Il existe deux façons de payer votre facture Azure. Vous pouvez payer avec le mode de paiement par défaut de votre profil de facturation ou vous pouvez effectuer un paiement unique appelé **Payer maintenant**.
+Il existe deux façons de payer votre facture Azure. Vous pouvez payer avec le mode de paiement par défaut de votre profil de facturation ou vous pouvez effectuer un paiement unique avec **Payer maintenant**.
 
 Si vous vous êtes inscrit à Azure par le biais d’un représentant Microsoft, votre mode de paiement par défaut sera déjà défini sur *Chèque ou virement bancaire*. Le paiement automatique par carte de crédit n’est pas une option si vous êtes inscrit à Azure par le biais d’un représentant Microsoft. À la place, vous pouvez [utiliser une carte de crédit pour payer des factures individuelles](#pay-now-in-the-azure-portal).
 
@@ -40,6 +40,8 @@ Si le mode de paiement par défaut de votre profil de facturation est par carte 
 En cas de refus du paiement automatique par carte de crédit pour une raison quelconque, vous pouvez effectuer un paiement unique avec une carte de crédit dans le portail Azure à l’aide de la fonctionnalité **Payer maintenant**.
 
 Si vous souhaitez adopter le paiement par chèque ou par virement comme mode de paiement par défaut, consultez [Comment payer par facture](../manage/pay-by-invoice.md).
+
+Certains pays n’autorisent pas l’utilisation de cartes de débit, mais en général, vous pouvez les utiliser pour payer votre facture Azure. Les cartes de débit virtuelles et prépayées ne peuvent pas être utilisées pour payer votre facture Azure.
 
 ### <a name="check-or-wire-transfer"></a>Chèque ou virement
 

@@ -1,22 +1,22 @@
 ---
 title: Qu’est-ce qu’Azure Lighthouse ?
 description: Azure Lighthouse permet aux fournisseurs de services de fournir des services managés à leurs clients avec une automatisation et une efficacité accrues à grande échelle.
-ms.date: 07/13/2021
+ms.date: 11/02/2021
 ms.topic: overview
-ms.openlocfilehash: 2da14a65f146a181af39a8c06a8089fee9010467
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 8130a88042678d277fd5fe727f0593e8805bb5b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113666561"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445782"
 ---
 # <a name="what-is-azure-lighthouse"></a>Qu’est-ce qu’Azure Lighthouse ?
 
 Azure Lighthouse permet une gestion multi-locataire avec de la scalabilité, une automatisation plus poussée et une gouvernance renforcée des ressources.
 
-Grâce à Azure Lighthouse, les fournisseurs de services peuvent fournir des services gérés à l’aide d’[outils complets et robustes intégrés à la plateforme Azure](concepts/architecture.md). Les clients conservent le contrôle des personnes autorisées à accéder à leur locataire, des ressources auxquelles elles peuvent accéder et des actions qu’elles peuvent entreprendre. Cette offre peut également aider les [organisations informatiques d’entreprise](concepts/enterprise.md) à gérer les ressources sur plusieurs locataires.
+Grâce à Azure Lighthouse, les fournisseurs de services peuvent fournir des services gérés à l’aide d’[outils complets et robustes intégrés à la plateforme Azure](concepts/architecture.md). Les clients conservent le contrôle des personnes autorisées à accéder à leur locataire, des ressources auxquelles elles peuvent accéder et des actions qu’elles peuvent entreprendre. Les [entreprises](concepts/enterprise.md) qui gèrent des ressources sur plusieurs locataires peuvent également utiliser Azure Lighthouse pour simplifier les tâches de gestion.
 
-Les [expériences de gestion inter-locataire](concepts/cross-tenant-management-experience.md) vous permettent de travailler plus efficacement avec des services Azure tels qu’[Azure Policy](how-to/policy-at-scale.md), [Azure Sentinel](how-to/manage-sentinel-workspaces.md), [Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) et bien plus encore. Les utilisateurs peuvent voir quelles modifications ont été apportées et par qui [dans le journal d’activité](how-to/view-service-provider-activity.md), qui est stocké dans le locataire du client (et peut être consulté par les utilisateurs dans le locataire gérant).
+Les [expériences de gestion inter-locataire](concepts/cross-tenant-management-experience.md) vous permettent de travailler plus efficacement avec des services Azure tels qu’[Azure Policy](how-to/policy-at-scale.md), [Azure Sentinel](how-to/manage-sentinel-workspaces.md), [Azure Arc](how-to/manage-hybrid-infrastructure-arc.md) et bien plus encore. Les utilisateurs peuvent voir quelles modifications ont été apportées et par qui [dans le journal d’activité](how-to/view-service-provider-activity.md), qui est stocké dans le locataire du client et peut être consulté par les utilisateurs dans le locataire gérant.
 
 ![Schéma de présentation d’Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
@@ -24,8 +24,8 @@ Les [expériences de gestion inter-locataire](concepts/cross-tenant-management-e
 
 Azure Lighthouse aide les fournisseurs de services à créer et à fournir des services managés de manière efficace. Voici les avantages :
 
-- **Gestion à grande échelle** : les opérations d’engagement client et de gestion du cycle de vie des ressources des clients sont plus simples et plus évolutives. Les API, les outils de gestion et les workflows existants peuvent être utilisés avec les ressources déléguées, y compris des machines hébergées en dehors d’Azure, quelles que soient les régions où ils se trouvent.
-- **Visibilité et contrôle accrus pour les clients** : Les clients ont un contrôle précis des étendues qu’ils délèguent pour la gestion et des autorisations qui sont autorisées. Ils peuvent [auditer les actions des fournisseurs de services](how-to/view-service-provider-activity.md) et supprimer complètement l’accès s’ils le souhaitent.
+- **Gestion à grande échelle** : les opérations d’engagement client et de gestion du cycle de vie des ressources des clients sont plus simples et plus évolutives. Les API, outils de gestion et flux de travail existants peuvent être utilisés avec les ressources déléguées, y compris des machines hébergées en dehors d’Azure, quelles que soient les régions dans lesquelles elles se trouvent.
+- **Visibilité et contrôle accrus pour les clients** : Les clients ont un contrôle précis des étendues qu’ils délèguent pour la gestion et des autorisations qui sont autorisées. Ils peuvent [auditer les actions des fournisseurs de services](how-to/view-service-provider-activity.md) et supprimer complètement l’accès à tout moment.
 - **Outillage de plateforme complet et unifié** : Azure Lighthouse opère avec les outils et API existants, des [applications managées Azure](concepts/managed-applications.md) et des programmes de partenaires tels que le [programme Fournisseur de solutions Cloud (CSP)](concepts/cloud-solution-provider.md). Cette flexibilité prend en charge les principaux scénarios des fournisseurs de services, notamment plusieurs modèles de licence tels que Contrat Entreprise, CSP et Paiement à l’utilisation. Vous pouvez intégrer Azure Lighthouse à vos workflows et applications existants, et suivre votre impact sur les engagements client en [liant votre ID partenaire](how-to/partner-earned-credit.md).
 
 ## <a name="capabilities"></a>Fonctionnalités

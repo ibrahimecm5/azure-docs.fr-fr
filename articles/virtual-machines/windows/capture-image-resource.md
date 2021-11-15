@@ -10,12 +10,12 @@ ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.collection: windows
-ms.openlocfilehash: 3fb298dc8e01c50b562e3891f02227b416596a04
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 95f57b01f2c9e6bffd0cfc1f1d563605e320d6ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695252"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437008"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Créer une image managée d’une machine virtuelle généralisée dans Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "122695252"
 
 Une ressource d’image managée peut être créée à partir d’une machine virtuelle généralisée stockée en tant que disque managé ou non managé dans un compte de stockage. L’image peut ensuite être utilisée pour créer plusieurs machines virtuelles. Pour plus d'informations sur la facturation des images managées, reportez-vous à [Tarification de la fonctionnalité Disques managés](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-Une image managée prend en charge jusqu’à 20 déploiements simultanés. Une tentative de création simultanée de plus de 20 machines virtuelles à partir de la même image managée peut entraîner l’expiration des délais d’approvisionnement en raison des limites de performances de stockage d’un disque dur virtuel unique. Pour créer plus de 20 machines virtuelles simultanément, utilisez une [galerie d’images partagées](../shared-image-galleries.md) configurée avec 1 réplica tous les 20 déploiements de machines virtuelles simultanées.
+Une image managée prend en charge jusqu’à 20 déploiements simultanés. Une tentative de création simultanée de plus de 20 machines virtuelles à partir de la même image managée peut entraîner l’expiration des délais d’approvisionnement en raison des limites de performances de stockage d’un disque dur virtuel unique. Pour créer plus de 20 machines virtuelles simultanément, utilisez une image de [Azure Compute Gallery](../shared-image-galleries.md) (anciennement Shared Image Gallery) configurée avec 1 réplica tous les 20 déploiements simultanés de machines virtuelles.
 
 ## <a name="prerequisites"></a>Prérequis
 

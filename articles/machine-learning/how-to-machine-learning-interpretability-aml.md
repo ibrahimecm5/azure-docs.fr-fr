@@ -1,5 +1,5 @@
 ---
-title: Interpréter et expliquer les modèles ML dans Python (préversion)
+title: Utiliser Python pour interpréter et expliquer des modèles (préversion)
 titleSuffix: Azure Machine Learning
 description: Découvrez comment obtenir des explications sur la façon dont votre modèle de Machine Learning détermine l’importance des fonctionnalités et effectue des prédictions lors de l’utilisation du kit de développement logiciel (SDK) Azure Machine Learning.
 services: machine-learning
@@ -10,15 +10,15 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 10/21/2021
 ms.topic: how-to
-ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: ce73277b509a0ea98e02196998dc9b735768d5a7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.custom: devx-track-python, responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: f22bee60a86d162c57313ab33811a21408eefd74
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562425"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847448"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Utiliser le package d’interprétabilité pour expliquer les modèles ML et les prédictions dans Python (préversion)
+# <a name="use-the-python-interpretability-package-to-explain-ml-models--predictions-preview"></a>Utiliser le package d’interprétabilité Python pour expliquer des modèles et prédictions de Machine Learning (préversion)
 
 Dans ce guide pratique, vous allez apprendre à effectuer les tâches suivantes en utilisant le package d’interprétabilité du SDK Python Azure Machine Learning :
 
@@ -571,7 +571,7 @@ Onglet explication prise en charge | Caractéristiques brutes (denses) | Caract�
 :----- | :--- | :--- | :---- | :---- |
 Performances du modèle   | Pris en charge (sans prévision) | Pris en charge (sans prévision)  | Prise en charge | Prise en charge |
 Explorateur de jeu de données  | Pris en charge (sans prévision)   | Non pris en charge. Étant donné que les données éparses ne sont pas chargées et que l’interface utilisateur rencontre des problèmes de rendu des données éparses. | Prise en charge | Non pris en charge. Étant donné que les données éparses ne sont pas chargées et que l’interface utilisateur rencontre des problèmes de rendu des données éparses. | 
- Agréger l’importance d'une caractéristique | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
+ Agréger l’importance des caractéristiques | Prise en charge | Prise en charge | Prise en charge | Prise en charge |
  Importance des caractéristiques individuelles| Pris en charge (sans prévision)   | Non pris en charge. Étant donné que les données éparses ne sont pas chargées et que l’interface utilisateur rencontre des problèmes de rendu des données éparses. | Prise en charge | Non pris en charge. Étant donné que les données éparses ne sont pas chargées et que l’interface utilisateur rencontre des problèmes de rendu des données éparses. | 
 
 
@@ -584,6 +584,6 @@ Explorateur de jeu de données  | Pris en charge (sans prévision)   | Non pris 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-[En savoir plus sur l’interprétation des modèles](how-to-machine-learning-interpretability.md)
+[Techniques pour l’interprétabilité des modèles dans Azure ML](how-to-machine-learning-interpretability.md)
 
 [Consultez les exemples de notebooks sur l’interprétabilité d’Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)

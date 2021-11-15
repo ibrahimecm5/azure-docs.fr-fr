@@ -1,6 +1,6 @@
 ---
-title: 'Tutoriel : Créer un serveur flexible Azure Database pour MySQL (préversion) et une application web Azure App Service dans le même réseau virtuel'
-description: Guide de démarrage rapide pour créer un serveur flexible Azure Database pour MySQL (préversion) avec une application web dans un réseau virtuel
+title: 'Tutoriel : Créer un serveur flexible Azure Database pour MySQL et une application web Azure App Service dans le même réseau virtuel'
+description: Guide de démarrage rapide pour créer un serveur flexible Azure Database pour MySQL avec une application web dans un réseau virtuel
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
@@ -8,23 +8,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0d95def7048b3077232bb728a97c28107ec80313
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2c53a76469edbb9fdaa507fb30af1157cca2608d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128654462"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429201"
 ---
-# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Tutoriel : Créer un serveur flexible Azure Database pour MySQL (préversion) avec une application web App Services dans le même réseau virtuel
+# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Tutoriel : Créer un serveur flexible Azure Database pour MySQL avec une application web App Services dans un réseau virtuel
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-
-> [!IMPORTANT]
-> Azure Database pour MySQL – Serveur flexible est actuellement en préversion publique.
-
-
-Ce didacticiel vous montre comment créer une application web Azure App Service avec un serveur flexible MySQL (préversion) à l’intérieur d’un [réseau virtuel](../../virtual-network/virtual-networks-overview.md).
+Ce tutoriel vous montre comment créer une application web Azure App Service avec un serveur flexible MySQL à l’intérieur d’un [réseau virtuel](../../virtual-network/virtual-networks-overview.md).
 
 Ce didacticiel vous apprendra à effectuer les opérations suivantes :
 >[!div class="checklist"]
@@ -32,7 +27,7 @@ Ce didacticiel vous apprendra à effectuer les opérations suivantes :
 > * Créer un sous-réseau à déléguer à App Service
 > * Créer une application web
 > * Ajouter l'application web au réseau virtuel
-> * Vous connecter à Postgres à partir de l'application web 
+> * Vous connecter à Postgres à partir de l'application web
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -70,12 +65,12 @@ Copiez la chaîne de connexion et le nom du réseau virtuel nouvellement créé.
 > Notez le mot de passe qui sera généré automatiquement s’il n’est pas fourni. Si vous oubliez le mot de passe, vous devrez le réinitialiser à l'aide de la commande ``` az mysql flexible-server update```
 
 ## <a name="create-subnet-for-app-service-endpoint"></a>Créer un sous-réseau pour le point de terminaison App Service
-Nous avons désormais besoin d’un sous-réseau délégué au point de terminaison de l’application web App Service. Exécutez la commande suivante pour créer un sous-réseau dans le même réseau virtuel que celui sur lequel le serveur de base de données a été créé. 
+Nous avons désormais besoin d’un sous-réseau délégué au point de terminaison de l’application web App Service. Exécutez la commande suivante pour créer un sous-réseau dans le même réseau virtuel que celui sur lequel le serveur de base de données a été créé.
 
 ```azurecli
 az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
 ```
-Notez le nom du réseau virtuel et le nom du sous-réseau après cette commande, car vous en aurez besoin pour ajouter une règle d’intégration au réseau virtuel pour l’application web après sa création. 
+Notez le nom du réseau virtuel et le nom du sous-réseau après cette commande, car vous en aurez besoin pour ajouter une règle d’intégration au réseau virtuel pour l’application web après sa création.
 
 ## <a name="create-a-web-app"></a>Créer une application web
 

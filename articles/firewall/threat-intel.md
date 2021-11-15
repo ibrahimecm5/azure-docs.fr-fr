@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/12/2020
+ms.date: 11/04/2021
 ms.author: victorh
-ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a988e302d3997156dc643f8bacbe6ed6ec786a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791457"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852652"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Fonctionnalité de filtrage basé sur la Threat Intelligence du Pare-feu Azure
 
-Le filtrage basé sur Threat Intelligence peut être activé pour votre pare-feu pour donner l’alerte et rejeter le trafic depuis ou vers des adresses IP et des domaines malveillants connus. Ces adresses IP et domaines proviennent du flux Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) alimente Microsoft Threat Intelligence et est utilisé par de nombreux services, dont Azure Security Center.<br>
+Le filtrage basé sur Threat Intelligence peut être activé pour votre pare-feu pour donner l’alerte et rejeter le trafic depuis ou vers des adresses IP et des domaines malveillants connus. Les adresses IP et les domaines proviennent du flux de renseignements sur les menaces Microsoft, qui comprend plusieurs sources, dont l’équipe Cybersécurité Microsoft. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) alimente Microsoft Threat Intelligence et est utilisé par de nombreux services, dont Azure Security Center.<br>
 <br>
 
 :::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="Renseignement sur les menaces du pare-feu" border="false":::

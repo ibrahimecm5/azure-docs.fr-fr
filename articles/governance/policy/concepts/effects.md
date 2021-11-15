@@ -3,12 +3,12 @@ title: Comprendre le fonctionnement des effets
 description: Les définitions Azure Policy ont différents effets qui déterminent la manière dont la conformité est gérée et rapportée.
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: bca5d7535cbbcbf2fc7b6f54e853872c788c723d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bbcdce83fad513c85ab45f4c38c936b345828ef3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792274"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449675"
 ---
 # <a name="understand-azure-policy-effects"></a>Comprendre les effets d’Azure Policy
 
@@ -198,7 +198,7 @@ La propriété **details** des effets AuditIfNotExists possède toutes les sous-
   - Définit la portée d’où la ressource connexe évaluée est extraite.
   - Ne s’applique pas si **type** est une ressource qui serait située sous la ressource de condition **if**.
   - Pour _ResourceGroup_, le traitement se limiterait au groupe de ressources de la ressource de condition **if** ou au groupe de ressources spécifié dans **ResourceGroupName**.
-  - Pour _Subscription_, le traitement interroge l’abonnement entier pour la ressource associée.
+  - Pour _Subscription_, le traitement interroge l’abonnement entier pour la ressource associée. L’étendue d’affectation doit être définie au niveau de l’abonnement ou supérieur pour une évaluation appropriée. 
   - La valeur par défaut est _ResourceGroup_.
 - **EvaluationDelay** (facultatif)
   - Spécifie à quel moment l’existence des ressources associées doit être évaluée. Le délai est utilisé uniquement pour les évaluations qui résultent d’une requête de création ou de mise à jour de ressource.
@@ -353,7 +353,7 @@ La propriété **details** de l’effet DeployIfNotExists comprend toutes les so
   - Définit la portée d’où la ressource connexe évaluée est extraite.
   - Ne s’applique pas si **type** est une ressource qui serait située sous la ressource de condition **if**.
   - Pour _ResourceGroup_, le traitement se limiterait au groupe de ressources de la ressource de condition **if** ou au groupe de ressources spécifié dans **ResourceGroupName**.
-  - Pour _Subscription_, le traitement interroge l’abonnement entier pour la ressource associée.
+  - Pour _Subscription_, le traitement interroge l’abonnement entier pour la ressource associée. L’étendue d’affectation doit être définie au niveau de l’abonnement ou supérieur pour une évaluation appropriée. 
   - La valeur par défaut est _ResourceGroup_.
 - **EvaluationDelay** (facultatif)
   - Spécifie à quel moment l’existence des ressources associées doit être évaluée. Le délai est utilisé uniquement pour les évaluations qui résultent d’une requête de création ou de mise à jour de ressource.

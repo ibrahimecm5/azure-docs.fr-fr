@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/28/2021
+ms.date: 11/05/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb41fbaf1b1430cddb1ce5c44748edf35801405e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c8a0ab89e8437edec176e7033665b627df6cd493
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427643"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866484"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Modifier le type d’authentification du sous-domaine dans Azure Active Directory
 
@@ -39,7 +39,7 @@ Comme les sous-domaines héritent par défaut du type d’authentification du do
    New-MsolDomain -Name "child.mydomain.com" -Authentication Federated
    ```
 
-1. Utilisez [Afficheur Graph Azure AD](https://graphexplorer.azurewebsites.net) pour effectuer une requête GET sur le domaine. Étant donné que le domaine n’est pas un domaine racine, il hérite du type d’authentification du domaine racine. Votre commande et vos résultats peuvent se présenter comme suit, en utilisant votre propre ID de locataire :
+1. Utilisez l’exemple suivant pour récupérer (GET) le domaine. Étant donné que le domaine n’est pas un domaine racine, il hérite du type d’authentification du domaine racine. Votre commande et vos résultats peuvent se présenter comme suit, en utilisant votre propre ID de locataire :
 
    ```http
    GET https://graph.windows.net/{tenant_id}/domains?api-version=1.6
@@ -63,7 +63,7 @@ Comme les sous-domaines héritent par défaut du type d’authentification du do
      },
    ```
 
-### <a name="use-azure-ad-graph-explorer-api-to-make-this-a-root-domain"></a>Utiliser l’API Afficheur Graph Azure AD pour en faire un domaine racine
+### <a name="use-microsoft-graph-api-to-make-this-a-root-domain"></a>Utilisez l’API Microsoft Graph pour faire de ce domaine un domaine racine.
 
 Utilisez la commande suivante pour promouvoir le sous-domaine :
 
@@ -79,7 +79,7 @@ POST https://graph.windows.net/{tenant_id}/domains/child.mydomain.com/promote?ap
    Set-MsolDomainAuthentication -DomainName child.mydomain.com -Authentication Managed
    ```
 
-1. Vérifiez par le biais d’une requête GET dans Afficheur Graph Azure AD que le type d’authentification du sous-domaine est désormais géré :
+1. Vérifiez à l’aide d’une requête GET dans l’API Microsoft Graph que le type d’authentification du sous-domaine est désormais managé :
 
    ```http
    GET https://graph.windows.net/{{tenant_id} }/domains?api-version=1.6

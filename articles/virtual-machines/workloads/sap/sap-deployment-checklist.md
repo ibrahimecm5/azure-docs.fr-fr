@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45a18ade65a08b378652248bc0b0f62cb8f97e84
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 652347a2b63581a613088497ef8b3cb7df4ee8ec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072762"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448744"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Check-list relative à la planification et au déploiement de la charge de travail SAP sur Azure
 
@@ -196,10 +196,10 @@ Au cours de cette phase, vous déployez généralement des systèmes de dévelop
 
 1.  Avant de déplacer les systèmes de l’ancienne plateforme vers Azure, recueillez des données sur la consommation des ressources, comme l’utilisation de l’UC, le débit de stockage et les données IOPS. En particulier, collectez ces données non seulement à partir des unités de la couche SGBD, mais aussi à partir des unités de la couche Application. Mesurez également la latence du réseau et du stockage.
 2.  Enregistrez les modèles de temps d’utilisation de la disponibilité de vos systèmes. L’objectif est de déterminer si les systèmes hors production doivent être disponibles 24 heures sur 24, 7 jours sur 7 ou si certains d’entre eux peuvent être arrêtés à certains moments de la semaine ou du mois.
-3.  Procédez aux tests et déterminez si vous souhaitez créer vos images du système d’exploitation pour vos machines virtuelles dans Azure ou utiliser une image d’Azure Shared Image Gallery. Si vous utilisez une image d’Azure Shared Image Gallery, veillez à utiliser une image qui reflète le mieux le contrat de support souscrit auprès de votre fournisseur de SE. Pour certains fournisseurs de systèmes d’exploitation, Azure Shared Image Gallery vous permet d’intégrer vos images BYOL (apportez votre propre licence). Pour les autres images de SE, le support est compris dans le prix indiqué par Azure. Si vous décidez de créer vos propres images de SE, vous trouverez la documentation dans les articles suivants :
+3.  Procédez aux tests et déterminez si vous souhaitez créer vos propres images du système d’exploitation pour vos machines virtuelles dans Azure ou utiliser une image à partir d’Azure Compute Gallery (anciennement Shared Image Gallery). Si vous utilisez une image d’Azure Compute Gallery, veillez à utiliser une image qui reflète le mieux le contrat de support souscrit auprès de votre fournisseur de SE. Pour certains fournisseurs de systèmes d’exploitation, Azure Compute Gallery vous permet d’intégrer vos images BYOL (apportez votre propre licence). Pour les autres images de SE, le support est compris dans le prix indiqué par Azure. Si vous décidez de créer vos propres images de SE, vous trouverez la documentation dans les articles suivants :
     -   [Créer une image managée d’une machine virtuelle Windows généralisée dans Azure](../../windows/capture-image-resource.md)
     -   [Créer une image managée d’une machine virtuelle Linux généralisée dans Azure](../../linux/capture-image.md)
-3.  Si vous utilisez SUSE et des images Red Hat Linux de la Shared Image Gallery, vous devez utiliser les images pour SAP fournies par les fournisseurs de Linux dans cette galerie.
+3.  Si vous utilisez SUSE et des images Red Hat Linux d’Azure Compute Gallery, vous devez utiliser les images pour SAP fournies par les fournisseurs de Linux dans Azure Compute Gallery.
 4.  Assurez-vous de remplir les conditions de support requises par SAP en matière de contrats de support Microsoft. Consultez la [Note de support SAP n° 2015553](https://launchpad.support.sap.com/#/notes/2015553). Pour les Grandes instances HANA, consultez les [Conditions d’intégration](./hana-onboarding-requirements.md).
 4.  Veillez à ce que les personnes adéquates reçoivent les [notifications de maintenance planifiée](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/) afin de pouvoir choisir les temps d’arrêt les plus appropriés.
 5.  Consultez régulièrement les présentations Microsoft sur les canaux tels que [Channel 9](https://channel9.msdn.com/) pour connaître les nouvelles fonctionnalités susceptibles de s’appliquer à vos déploiements.

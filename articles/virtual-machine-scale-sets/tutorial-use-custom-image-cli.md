@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: mimckitt
-ms.openlocfilehash: dcdfee7742f2afb66965c855bf01f86dc1680690
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 64ff90e695b8027ed23da463bdf75a4778675e0a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692994"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456800"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutoriel : Créer et utiliser une image personnalisée pour des groupes de machines virtuelles identiques avec Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "122692994"
 Lorsque vous créez un groupe identique, vous spécifiez une image à utiliser lors du déploiement des instances de machine virtuelle. Pour réduire le nombre de tâches une fois que les instances de machine virtuelle sont déployées, vous pouvez utiliser une image de machine virtuelle personnalisée. Cette image de machine virtuelle personnalisée inclut les configurations ou installations des applications requises. Toutes les instances de machine virtuelle créées dans le groupe identique utilisent l’image de machine virtuelle personnalisée et sont prêtes à répondre au trafic des applications. Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
 > [!div class="checklist"]
-> * Créer une galerie Shared Image Gallery
+> * Créer une instance Azure Compute Gallery
 > * Créer une définition d’image spécialisée
 > * Créer une version d’image
 > * Créer un groupe identique à partir d’une image spécialisée
@@ -38,9 +38,9 @@ Lorsque vous créez un groupe identique, vous spécifiez une image à utiliser l
 
 ## <a name="overview"></a>Vue d’ensemble
 
-Une [galerie d’images partagées](../virtual-machines/shared-image-galleries.md) simplifie considérablement le partage d’images personnalisées dans votre organisation. Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des configurations comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. 
+Une galerie [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md) simplifie considérablement le partage d’images personnalisées dans votre organisation. Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des configurations comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. 
 
-Shared Image Gallery vous permet de partager vos images de machines virtuelles personnalisées avec d’autres utilisateurs. Choisissez les images à partager, les régions dans lesquelles vous souhaitez les rendre disponibles et les personnes avec lesquelles vous voulez les partager. 
+Azure Compute Gallery vous permet de partager vos images de machines virtuelles personnalisées avec d’autres utilisateurs. Choisissez les images à partager, les régions dans lesquelles vous souhaitez les rendre disponibles et les personnes avec lesquelles vous voulez les partager. 
 
 ## <a name="create-and-configure-a-source-vm"></a>Créer et configurer une machine virtuelle source
 
@@ -235,7 +235,7 @@ az group delete --name myResourceGroup --no-wait --yes
 Dans ce tutoriel, vous avez appris à créer et utiliser une image de machine virtuelle personnalisée pour vos groupes identiques avec Azure CLI :
 
 > [!div class="checklist"]
-> * Créer une galerie Shared Image Gallery
+> * Créer une instance Azure Compute Gallery
 > * Créer une définition d’image spécialisée
 > * Créer une version d’image
 > * Créer un groupe identique à partir d’une image spécialisée

@@ -6,21 +6,18 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 276bcd288f519a5060f859bf6b5a74c0453e7c79
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1d1ec1b6196dd543b9310a945fc9b07e26673c84
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994059"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472767"
 ---
-# <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Haute disponibilité dans le serveur flexible Azure Database pour MySQL en préversion
+# <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server"></a>Concepts de haute disponibilité dans le serveur flexible Azure Database pour MySQL
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT] 
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
-
-La préversion d’Azure Database pour MySQL : Serveur flexible vous permet de configurer la haute disponibilité (HA) avec basculement automatique. La solution haute disponibilité est conçue pour éviter toute perte de données en raison de défaillances, et que la base de données devienne un point de défaillance unique dans votre architecture logicielle. Quand la haute disponibilité est configurée, le serveur flexible provisionne et gère automatiquement un réplica de secours. Deux modèles d’architecture à haute disponibilité sont disponibles :
+Azure Database pour MySQL - Serveur flexible permet de configurer la haute disponibilité avec le basculement automatique. La solution haute disponibilité est conçue pour éviter toute perte de données en raison de défaillances, et que la base de données devienne un point de défaillance unique dans votre architecture logicielle. Quand la haute disponibilité est configurée, le serveur flexible approvisionne et gère automatiquement un réplica de secours. Deux modèles d'architecture à haute disponibilité sont disponibles :
 
 * **Haute disponibilité redondante interzone**. Cette option est recommandée pour une isolation et une redondance complètes de l’infrastructure sur plusieurs zones de disponibilité. Elle offre le niveau de disponibilité le plus élevé, mais vous oblige à configurer la redondance des applications entre zones. La haute disponibilité redondante interzone est préférable quand vous voulez obtenir le niveau de disponibilité le plus élevé en cas de défaillance de l’infrastructure dans la zone de disponibilité et où la latence dans la zone de disponibilité est acceptable. Elle ne peut être activée que lors de la création du serveur. La haute disponibilité redondante interzone est disponible dans un [sous-ensemble de régions Azure](./overview.md#azure-regions), où chaque région prend en charge plusieurs [zones de disponibilité](../../availability-zones/az-overview.md) et où des [partages de fichiers Premium redondants interzone](../..//storage/common/storage-redundancy.md#zone-redundant-storage) sont disponibles.
 

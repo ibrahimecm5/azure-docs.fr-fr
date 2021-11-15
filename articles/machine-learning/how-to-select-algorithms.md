@@ -9,13 +9,13 @@ ms.topic: how-to
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 05/07/2020
-ms.openlocfilehash: a4a8ea704ab6e304f1d4465befed96e40ea55987
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 10/21/2021
+ms.openlocfilehash: cae79937f1faa36488820d6266484fb43330e821
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884675"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560793"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Sélectionner des algorithmes Azure Machine Learning
 
@@ -31,7 +31,7 @@ Vous êtes nombreux à vous poser la question suivante : « Quel algorithme d'
 
 L'[Aide-mémoire sur les algorithmes Azure Machine Learning](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) vous permet de répondre à la première question : **Que voulez-vous faire avec vos données ?**  ? Utilisez l'Aide-mémoire sur les algorithmes Machine Learning pour rechercher la tâche que vous souhaitez effectuer, puis recherchez un [concepteur Azure Machine Learning](./concept-designer.md?WT.mc_id=docs-article-lazzeri) pour la solution d'analyse prédictive. 
 
-Le concepteur Machine Learning fournit une gamme complète d'algorithmes, tels que [Forêt d'arbres de décision multiclasse](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri), [Systèmes de recommandation](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri), [Régression de réseau neuronal](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri), [Réseau neuronal multiclasse](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) et [Clustering k-moyennes](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri). Chaque algorithme est conçu pour traiter un type particulier de problème d'apprentissage automatique. Consultez [Informations de référence sur les algorithmes et les modules du concepteur Machine Learning](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri). Vous y trouverez une liste complète ainsi que de la documentation sur le fonctionnement de chaque algorithme et sur les paramètres à configurer pour optimiser l'algorithme.
+Le concepteur Machine Learning fournit une gamme complète d'algorithmes, tels que [Forêt d'arbres de décision multiclasse](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri), [Systèmes de recommandation](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri), [Régression de réseau neuronal](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri), [Réseau neuronal multiclasse](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) et [Clustering k-moyennes](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri). Chaque algorithme est conçu pour traiter un type particulier de problème d'apprentissage automatique. Consultez [Référence sur les algorithmes et composants du concepteur Machine Learning](./component-reference/component-reference.md?WT.mc_id=docs-article-lazzeri) pour obtenir une liste complète ainsi que de la documentation sur le fonctionnement de chaque algorithme et le réglage des paramètres pour l’optimiser.
 
 > [!NOTE]
 > Pour télécharger l'aide-mémoire relatif aux algorithmes d'apprentissage automatique, accédez à [Aide-mémoire sur les algorithmes Azure Machine Learning](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri).
@@ -82,17 +82,17 @@ Faites des choix, voire des compromis, pour les exigences suivantes :
 
 ## <a name="accuracy"></a>Précision
 
-Dans le domaine de l'apprentissage automatique, la précision mesure l'efficacité d'un modèle sous forme de proportion de résultats réels sur le nombre total de cas. Dans le concepteur Machine Learning, le [module Évaluer un modèle](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri) calcule un ensemble de mesures d'évaluation normalisées. Vous pouvez utiliser ce module pour mesurer la précision d'un modèle formé.
+Dans le domaine de l'apprentissage automatique, la précision mesure l'efficacité d'un modèle sous forme de proportion de résultats réels sur le nombre total de cas. Dans le concepteur Machine Learning, le [composant Évaluer le modèle](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri) calcule un ensemble de métriques d’évaluation standard. Vous pouvez utiliser ce composant pour mesurer la précision d’un modèle formé.
 
 Il n'est pas toujours nécessaire d'obtenir la réponse la plus exacte possible. Parfois, en fonction de votre utilisation, une approximation suffit. Dans ce cas, vous réduirez probablement considérablement le temps de traitement en ayant recours à des méthodes plus approximatives. Les méthodes approximatives tendent aussi naturellement à éviter le surajustement.
 
-Trois méthodes d'utilisation du module Évaluer un modèle sont disponibles :
+Il existe trois façons d’utiliser le composant Évaluer le modèle :
 
 - Générer des scores sur vos données d'apprentissage afin d'évaluer le modèle
 - Générer des scores sur le modèle, mais comparer ces scores à ceux d’un jeu de tests réservé
 - Comparer les scores de deux modèles différents mais liés, en utilisant le même jeu de données
 
-Pour obtenir la liste complète des mesures et approches disponibles afin d'évaluer la précision des modèles Machine Learning, consultez [Module Évaluer un modèle](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri).
+Pour obtenir la liste complète des métriques et approches disponibles afin d’évaluer la précision des modèles Machine Learning, consultez [Composant Évaluer le modèle](./algorithm-module-reference/evaluate-model.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="training-time"></a>Durée d’apprentissage
 
@@ -104,9 +104,9 @@ Dans le concepteur Machine Learning, la création et l'utilisation d'un modèle 
 
 1.  Configurez un modèle en choisissant un type d'algorithme particulier et en définissant ses paramètres ou hyperparamètres. 
 
-2.  Fournissez un jeu de données doté d'une étiquette et dont les données sont compatibles avec l'algorithme. Connectez les données et le modèle au module [Former le modèle](./algorithm-module-reference/train-model.md?WT.mc_id=docs-article-lazzeri).
+2.  Fournissez un jeu de données doté d'une étiquette et dont les données sont compatibles avec l'algorithme. Connectez les données et le modèle au [composant Effectuer l’apprentissage du modèle](./algorithm-module-reference/train-model.md?WT.mc_id=docs-article-lazzeri).
 
-3.  Au terme de la formation, utilisez le modèle formé avec l'un des [modules de scoring](./algorithm-module-reference/score-model.md?WT.mc_id=docs-article-lazzeri) pour effectuer des prédictions sur de nouvelles données.
+3.  Au terme de l’apprentissage, utilisez le modèle formé avec l’un des [composants de scoring](./algorithm-module-reference/score-model.md?WT.mc_id=docs-article-lazzeri) pour effectuer des prédictions sur de nouvelles données.
 
 ## <a name="linearity"></a>Linéarité
 
@@ -132,7 +132,7 @@ Les algorithmes de régression linéaire supposent que les tendances des donnée
 
 Les paramètres sont les boutons que les scientifiques des données règlent lorsqu’ils configurent un algorithme. Ce sont des nombres qui affectent le comportement de l'algorithme, comme la tolérance aux erreurs ou le nombre d'itérations, ou les variantes du comportement de l'algorithme. La durée d'apprentissage et la précision de l'algorithme peuvent parfois dépendre du choix des paramètres appropriés. En règle générale, les algorithmes avec des paramètres à grands nombres nécessitent plus d’essais pour trouver la bonne combinaison.
 
-Le concepteur Machine Learning comprend également le [module Optimiser les hyperparamètres](./algorithm-module-reference/tune-model-hyperparameters.md?WT.mc_id=docs-article-lazzeri) : L'objectif de ce module est de déterminer les hyperparamètres optimaux pour un modèle Machine Learning. Le module génère et teste plusieurs modèles avec différentes combinaisons de paramètres. Il compare les métriques à tous les modèles pour obtenir les combinaisons de paramètres. 
+Vous pouvez également utiliser le [composant Optimiser les hyperparamètres du modèle](./algorithm-module-reference/tune-model-hyperparameters.md?WT.mc_id=docs-article-lazzeri) dans le concepteur Machine Learning : l’objectif de ce composant est de déterminer les hyperparamètres optimaux pour un modèle Machine Learning. Le composant génère et teste plusieurs modèles avec différentes combinaisons de paramètres. Il compare les métriques à tous les modèles pour obtenir les combinaisons de paramètres. 
 
 Même si c'est un excellent moyen de vous assurer que vous avez examiné l'espace de paramétrage, le temps nécessaire pour former un modèle augmente de façon exponentielle avec le nombre de paramètres. Avoir de nombreux paramètres indique généralement qu'un algorithme a une plus grande flexibilité. Cette méthode donne souvent une excellente précision, une fois que vous avez trouvé la bonne combinaison de paramètres.
 
@@ -142,12 +142,12 @@ Dans le domaine de l'apprentissage automatique, une fonctionnalité est une vari
 
 La présence d'un grand nombre de fonctionnalités peut ralentir certains algorithmes d'apprentissage et se traduire par une durée d'apprentissage ingérable. Les [machines à vecteurs de support](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) sont particulièrement bien adaptées aux scénarios comportant un grand nombre de fonctionnalités. C'est la raison pour laquelle elles sont utilisées dans de nombreuses applications, de la récupération d'informations à la classification de textes et d'images. Les machines à vecteurs de support peuvent être utilisées pour les tâches de classification et de régression.
 
-Le terme « sélection de fonctionnalités » fait référence au processus d'application de tests statistiques à des entrées, en fonction d'une sortie donnée. L’objectif est de déterminer quelles colonnes prédisent le mieux la sortie. Dans le concepteur Machine Learning, le [module Sélection de fonctionnalités par filtrage](./algorithm-module-reference/filter-based-feature-selection.md?WT.mc_id=docs-article-lazzeri) permet de choisir parmi plusieurs algorithmes de sélection de fonctionnalités. Le module inclut des méthodes de corrélation telles que les valeurs de corrélation de Pearson et de test du khi-deux.
+Le terme « sélection de fonctionnalités » fait référence au processus d'application de tests statistiques à des entrées, en fonction d'une sortie donnée. L’objectif est de déterminer quelles colonnes prédisent le mieux la sortie. Le [composant Sélection de fonctionnalités basée sur les filtres](./algorithm-module-reference/filter-based-feature-selection.md?WT.mc_id=docs-article-lazzeri) dans le concepteur Machine Learning permet de choisir parmi plusieurs algorithmes de sélection de fonctionnalités. Le composant inclut des méthodes de corrélation telles que les valeurs de corrélation de Pearson et de test du khi-deux.
 
-Vous pouvez également utiliser le [module Importance de la fonctionnalité de permutation](./algorithm-module-reference/permutation-feature-importance.md?WT.mc_id=docs-article-lazzeri) pour calculer un ensemble de scores d'importance des fonctionnalités pour votre jeu de données. Vous pouvez ensuite vous aider de ces scores pour déterminer les meilleures fonctionnalités à utiliser dans un modèle.
+Vous pouvez également utiliser le [composant Importance de la fonctionnalité de permutation](./algorithm-module-reference/permutation-feature-importance.md?WT.mc_id=docs-article-lazzeri) pour calculer un ensemble de scores d’importance de fonctionnalité pour votre jeu de données. Vous pouvez ensuite vous aider de ces scores pour déterminer les meilleures fonctionnalités à utiliser dans un modèle.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
  - [En savoir plus sur le concepteur Azure Machine Learning](./concept-designer.md?WT.mc_id=docs-article-lazzeri)
- - Un descriptif de tous les algorithmes d'apprentissage automatique disponibles dans le concepteur Azure Machine Learning est fourni dans [Informations de référence sur les algorithmes et les modules du concepteur Machine Learning](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri)
+ - Pour des descriptions de tous les algorithmes d’apprentissage automatique disponibles dans le concepteur Azure Machine Learning, consultez [Référence sur les algorithmes et composants du concepteur Machine Learning](./component-reference/component-reference.md?WT.mc_id=docs-article-lazzeri)
  - Pour en savoir plus sur la relation entre le Deep Learning, le Machine Learning et l'IA, consultez [Deep Learning et Machine Learning](./concept-deep-learning-vs-machine-learning.md?WT.mc_id=docs-article-lazzeri)

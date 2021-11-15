@@ -1075,5 +1075,7 @@ items:
         href: 'https://azure.microsoft.com/global-infrastructure/services/'
       - name: Options de support
         href: 'https://azure.microsoft.com/support/options/'
+      - name: Demander des augmentations de quota auprès du support
+        href: quota-increase.md
       - name: Limites
         href: ../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits

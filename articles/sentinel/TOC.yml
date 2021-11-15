@@ -1,33 +1,33 @@
-- name: Documentation sur Azure Sentinel
+- name: Documentation sur Microsoft Sentinel
   href: index.yml
 - name: Vue d’ensemble
   expanded: true
   items:
-    - name: À propos d’Azure Sentinel
+    - name: À propos de Microsoft Sentinel
       href: overview.md
-    - name: Nouveautés d’Azure Sentinel
+    - name: Nouveautés de Microsoft Sentinel
       href: whats-new.md
 - name: Démarrage rapide
   items:
-    - name: Intégrer à Azure Sentinel
+    - name: Intégrer à Microsoft Sentinel
       href: quickstart-onboard.md
 - name: Tutoriels
   items:
     - name: Investiguer avec UEBA
       href: investigate-with-ueba.md
-    - name: Créer des requêtes KQL pour Azure Sentinel (module Learn)
+    - name: Créer des requêtes KQL pour Microsoft Sentinel (module Learn)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
     - name: Utiliser l’automatisation pour répondre aux menaces
       href: tutorial-respond-threats-playbook.md
     - name: Prise en main des notebooks et de MSTICPy
       href: notebook-get-started.md
-    - name: "Créer un rapport Power\_BI depuis Azure Sentinel"
+    - name: "Créer un rapport Power\_BI à partir de Microsoft Sentinel"
       href: powerbi.md
     - name: Déployer et superviser des honeytokens de leurre
       href: monitor-key-vault-honeytokens.md
 - name: Concepts
   items:
-    - name: Prérequis Azure Sentinel
+    - name: Prérequis pour Microsoft Sentinel
       href: prerequisites.md
     - name: Meilleures pratiques
       items:
@@ -43,11 +43,11 @@
           href: roles.md
         - name: Coûts et facturation
           href: azure-sentinel-billing.md
-        - name: Étendre Azure Sentinel dans les espaces de travail et les locataires
+        - name: Étendre Microsoft Sentinel dans les espaces de travail et les locataires
           href: extend-sentinel-across-workspaces-tenants.md
         - name: Base de référence de la sécurité
           href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
-    - name: Contenu Azure Sentinel
+    - name: Contenu Microsoft Sentinel
       items:
         - name: À propos du contenu Sentinel
           href: sentinel-solutions.md
@@ -57,7 +57,7 @@
       items:
         - name: Méthodes de collecte des données
           href: connect-data-sources.md
-        - name: Normalisation et modèle ASIM (Azure Sentinel Information Model)
+        - name: Normalisation et modèle ASIM (Advanced SIEM Information Model)
           items:
             - name: Vue d’ensemble d’ASIM
               href: normalization.md
@@ -71,7 +71,7 @@
           href: entities-in-azure-sentinel.md
     - name: Informations sur les menaces
       items:
-        - name: Comprendre les renseignements sur les menaces dans Azure Sentinel
+        - name: Comprendre le renseignement sur les menaces dans Microsoft Sentinel
           href: understand-threat-intelligence.md
         - name: Intégrations du renseignement sur les menaces
           href: threat-intelligence-integration.md
@@ -113,9 +113,9 @@
           href: azure-sentinel-billing.md
         - name: Gérer les accès à l’espace de travail
           href: resource-context-rbac.md
-    - name: Migrer vers Azure Sentinel
+    - name: Migrer vers Microsoft Sentinel
       href: migration.md
-    - name: Gérer le contenu Azure Sentinel
+    - name: Gérer le contenu Microsoft Sentinel
       items:
         - name: Découvrir et déployer du contenu prêt à l’emploi
           href: sentinel-solutions-deploy.md
@@ -132,7 +132,7 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Azure Defender
+            - name: Microsoft Defender pour le cloud
               href: connect-azure-security-center.md
             - name: "Microsoft\_365 Defender"
               href: connect-microsoft-365-defender.md
@@ -146,7 +146,7 @@
               href: connect-common-event-format.md
             - name: Sources(brutes) Syslog
               href: connect-syslog.md
-            - name: API du collecteur de données Azure Sentinel
+            - name: API du collecteur de données Microsoft Sentinel
               href: connect-rest-api-template.md
             - name: Connexion d’API Azure Functions
               href: connect-azure-functions-template.md
@@ -236,31 +236,31 @@
           href: customize-entity-activities.md
         - name: "Collaborer dans Microsoft\_Teams"
           href: collaborate-in-microsoft-teams.md
-        - name: Authentifier les playbooks auprès d’Azure Sentinel
+        - name: Authentifier des playbooks auprès de Microsoft Sentinel
           href: authenticate-playbooks-to-sentinel.md
         - name: Utiliser des déclencheurs et des actions dans les playbooks
           href: playbook-triggers-actions.md
         - name: Personnaliser des playbooks à partir de modèles
           href: use-playbook-templates.md
-    - name: Gérer Azure Sentinel
+    - name: Gérer Microsoft Sentinel
       items:
-        - name: Azure Sentinel pour les MSSP
+        - name: Microsoft Sentinel pour les MSSP
           items:
             - name: Gérer plusieurs locataires (MSSP)
               href: multiple-tenants-service-providers.md
             - name: Utiliser les incidents dans plusieurs espaces de travail
               href: multiple-workspace-view.md
-            - name: Gérer votre propriété intellectuelle dans Azure Sentinel
+            - name: Gérer la propriété intellectuelle dans Microsoft Sentinel
               href: mssp-protect-intellectual-property.md
         - name: Configurer les clés gérées par le client
           href: customer-managed-keys.md
         - name: Gérer votre SOC avec des métriques d’incident
           href: manage-soc-with-incident-metrics.md
-        - name: Audit d’Azure Sentinel avec des journaux d’activité Azure
+        - name: Audit de Microsoft Sentinel avec des journaux d’activité Azure
           href: audit-sentinel-data.md
-        - name: Supprimer Azure Sentinel de vos espaces de travail
+        - name: Supprimer Microsoft Sentinel de vos espaces de travail
           href: offboard.md
-- name: Intégrer SAP et Azure Sentinel
+- name: Intégrer SAP et Microsoft Sentinel
   items:
     - name: Déployer une surveillance continue des menaces SAP
       href: sap-deploy-solution.md
@@ -278,21 +278,21 @@
       href: sap-deploy-troubleshoot.md
 - name: Informations de référence
   items:
-    - name: API REST Azure Sentinel
+    - name: API REST Microsoft Sentinel
       href: /rest/api/securityinsights/
     - name: Informations de référence sur la gestion
       items:
-        - name: Connecteur Logic Apps Azure Sentinel
+        - name: Connecteur Logic Apps Microsoft Sentinel
           href: /connectors/azuresentinel/
         - name: Azure CLI
           href: /cli/azure/sentinel
-        - name: Azure Sentinel PowerShell
+        - name: Microsoft Sentinel PowerShell
           href: /powershell/module/az.securityinsights/
         - name: Rôles RBAC Azure
           items:
             - name: Tous les rôles Azure
               href: ../role-based-access-control/built-in-roles.md#all
-            - name: Rôles Azure Sentinel
+            - name: Rôles Microsoft Sentinel
               href: ../role-based-access-control/built-in-roles.md#security
     - name: Références de la collecte de données
       items:
@@ -322,7 +322,7 @@
           href: windows-security-event-id-reference.md
     - name: Informations de référence sur la détection et l’analyse
       items:
-        - name: Principaux workbools Azure Sentinel
+        - name: Principaux classeurs Microsoft Sentinel
           href: top-workbooks.md
         - name: Informations de référence sur les entités
           href: entities-reference.md
@@ -348,15 +348,19 @@
               href: watchlist-with-rest-api.md
             - name: Enrichissez les entités avec des données de géolocalisation avec REST-API
               href: geolocation-data-api.md
-        - name: "Alertes MCAS non intégrées à Microsoft\_365 Defender"
+        - name: "Alertes Defender for Cloud Apps non intégrées à Microsoft\_365 Defender"
           href: ./microsoft-365-defender-sentinel-integration.md#microsoft-365-defender-incidents-and-microsoft-incident-creation-rules
+    - name: Informations de référence sur l’automatisation et les réponses
+      items:
+        - name: Catalogue de contenu SOAR
+          href: sentinel-soar-content.md
 - name: Ressources
   items:
     - name: Ressources utiles
       href: resources.md
     - name: Exemple d’architecture d’espace de travail
       href: sample-workspace-designs.md
-    - name: Blog Azure Sentinel
+    - name: Blog Microsoft Sentinel
       href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: Disponibilité régionale
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'

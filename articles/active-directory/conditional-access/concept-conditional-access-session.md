@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33f2c7393a9c7b91dcd6fd9188bd9a89f190215
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a4d902a3c5471455f6f2d6cc614544aeb4e0dc39
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131050707"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892075"
 ---
 # <a name="conditional-access-session"></a>Accès conditionnel : session
 
@@ -76,10 +76,13 @@ Pour plus d’informations, consultez l’article [Configurer la gestion de sess
 
 L’[évaluation continue de l’accès](concept-continuous-access-evaluation.md) est activée automatiquement dans le cadre des stratégies d’accès conditionnel d’une organisation. Pour les organisations qui souhaitent désactiver ou appliquer strictement l’évaluation continue de l’accès, cette configuration est désormais une option dans le contrôle de session au sein de l’accès conditionnel. Les stratégies d’évaluation continue de l’accès peuvent être étendues à tous les utilisateurs ou à des utilisateurs et groupes spécifiques. Les administrateurs peuvent effectuer les sélections suivantes lors de la création d’une stratégie ou de la modification d’une stratégie d’accès conditionnel existante.
 
-- La **désactivation** est effectuée lorsque l’option **Toutes les applications cloud** est sélectionnée, qu’aucune condition n’est sélectionnée et que **Désactiver** est sélectionné sous **Session** > **Personnaliser l’évaluation continue de l’accès** dans une stratégie d’accès conditionnel.
-- L’**application stricte** signifie que tout événement critique et toute stratégie seront appliqués en temps réel. Tous les services compatibles avec l’évaluation continue de l’accès obtiennent toujours des jetons d’évaluation continue de l’accès, indépendamment de ce que le client ou l’utilisateur peut demander ou faire. Il existe deux scénarios où l’évaluation continue de l’accès n’entre pas en jeu lorsque le mode d’application stricte est activé :
-   - Les clients non compatibles avec l’évaluation continue de l’accès ne doivent pas obtenir de jeton standard pour les services compatibles avec l’évaluation continue de l’accès.
-   - Rejeter lorsque l’adresse IP détectée par le fournisseur de ressources ne se trouve pas dans la plage autorisée.
+- La **désactivation** fonctionne uniquement lorsque l’option **Toutes les applications cloud** est sélectionnée, qu’aucune condition n’est sélectionnée et que **Désactiver** est sélectionné sous **Session** > **Personnaliser l’évaluation continue de l’accès** dans une stratégie d’accès conditionnel. Vous pouvez choisir de désactiver tous les utilisateurs ou des utilisateurs et des groupes spécifiques.
+- L’**application stricte** peut être utilisée pour renforcer les avantages de la sécurité de l’évaluation continue de l’accès. Cela permet de garantir que tout événement critique et toute stratégie seront appliqués en temps réel.  Il existe deux scénarios supplémentaires dans lesquels l’évaluation continue de l’accès s’applique quand le mode d’application stricte est activé :
+   - Les clients sans évaluation continue de l’accès ne sont pas autorisés à accéder aux services avec évaluation continue de l’accès.
+   - L’accès est rejeté lorsque l’adresse IP du client détectée par le fournisseur de ressources ne figure pas dans la plage autorisée de l’accès conditionnel.
+
+> [!NOTE] 
+> Vous devez uniquement activer une application stricte après vous être assuré que toutes les applications clientes prennent en charge la capacité de client et que vous avez inclus toutes vos adresses IP vues par Azure AD et les fournisseurs de ressources, comme Exchange online et Azure Resource Manager, dans votre stratégie de localisation sous Accès conditionnel. Dans le cas contraire, les utilisateurs de vos locataires risquent d’être bloqués.
 
 :::image type="content" source="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png" alt-text="Paramètres d’évaluation continue de l’accès dans une nouvelle stratégie d’accès conditionnel dans le portail Azure." lightbox="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png":::
 

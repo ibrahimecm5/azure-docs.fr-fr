@@ -5,12 +5,12 @@ services: service-bus-messaging
 ms.devlang: PHP
 ms.topic: how-to
 ms.date: 07/23/2021
-ms.openlocfilehash: d0909c4e2ea5ef53a1438ce05f5ddad485c80248
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5f1a3b09594a6f47d285f03ca841f763b759a3c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725133"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055923"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Utilisation des files d’attente Service Bus avec PHP
 [!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
@@ -159,7 +159,7 @@ catch(ServiceException $e){
 
 Les messages envoyés aux files d’attente Service Bus (et reçus de celles-ci) sont des instances de la classe [BrokeredMessage][BrokeredMessage]. Les objets [BrokeredMessage][BrokeredMessage] possèdent un ensemble de propriétés standard qui stockent des propriétés personnalisées propres à une application, ainsi qu’un corps de données d’application arbitraires.
 
-Les files d’attente Service Bus prennent en charge une taille de message maximale de 256 Ko dans le [niveau Standard](service-bus-premium-messaging.md) et de 1 Mo dans le [niveau Premium](service-bus-premium-messaging.md). L’en-tête, qui comprend les propriétés d’application standard et personnalisées, peut avoir une taille maximale de 64 Ko. Si une file d'attente n'est pas limitée par le nombre de messages qu'elle peut contenir, elle l'est en revanche par la taille totale des messages qu'elle contient. La taille maximale de la file d'attente est de 5 Go.
+Les files d’attente Service Bus prennent en charge une taille de message maximale de 256 Ko dans le [niveau Standard](service-bus-premium-messaging.md) et de 100 Mo dans le [niveau Premium](service-bus-premium-messaging.md). L’en-tête, qui comprend les propriétés d’application standard et personnalisées, peut avoir une taille maximale de 64 Ko. Si une file d'attente n'est pas limitée par le nombre de messages qu'elle peut contenir, elle l'est en revanche par la taille totale des messages qu'elle contient. La taille maximale de la file d'attente est de 5 Go.
 
 ## <a name="receive-messages-from-a-queue"></a>Réception des messages d'une file d'attente
 

@@ -5,16 +5,18 @@ description: Découvrez comment utiliser un conteneur personnalisé pour utilise
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
-ms.date: 06/16/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 83713736d68dcd019708ade16460cb369d50127d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: fdbe6f6232bcd4d53ce3473a80de2829f02fb6bf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251449"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056660"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>Déployer un modèle TensorFlow servi avec TF Serving en utilisant un conteneur personnalisé dans un point de terminaison en ligne managé (préversion)
 
@@ -47,7 +49,7 @@ Les déploiements de conteneurs personnalisés peuvent utiliser des serveurs web
 
 To follow along with this tutorial, download the source code below.
 
-```azurecli-interactive
+```azurecli
 git clone https://github.com/Azure/azureml-examples --depth 1
 cd azureml-examples/cli
 ```
@@ -86,17 +88,23 @@ Maintenant que vous l’avez testée localement, arrêtez l’image :
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="stop_image":::
 
-## <a name="create-a-yaml-file-for-your-endpoint"></a>Créer un fichier YAML pour votre point de terminaison
+## <a name="create-a-yaml-file-for-your-endpoint-and-deployment"></a>Créer un fichier YAML pour votre point de terminaison et votre déploiement
 
-Vous pouvez configurer votre déploiement cloud à l’aide de YAML. Jetez un coup d’œil à l’exemple de YAML pour ce point de terminaison :
+Vous pouvez configurer votre déploiement cloud à l’aide de YAML. Jetez un coup d’œil à l’échantillon YAML pour cet exemple :
+
+__tfserving-endpoint.yml__
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
+
+__tfserving-deployment.yml__
+
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
 
 Voici quelques concepts importants à noter dans ce YAML :
 
 ### <a name="readiness-route-vs-liveness-route"></a>Itinéraire readiness et itinéraire liveness
 
-Un serveur HTTP peut éventuellement définir des chemins d’accès pour _liveness_ et _readiness_. Un itinéraire liveness est utilisé pour vérifier si le serveur est en cours d’exécution. Un itinéraire readiness est utilisé pour vérifier si le serveur est prêt à effectuer un travail. Dans l’inférence d’apprentissage automatique, un serveur peut répondre 200 (OK) à une requête liveness avant de charger un modèle. Le serveur peut répondre à 200 (OK) à une requête readiness uniquement une fois que le modèle a été chargé en mémoire.
+Un serveur HTTP définit des chemins d’accès pour _liveness_ et _readiness_. Un itinéraire liveness est utilisé pour vérifier si le serveur est en cours d’exécution. Un itinéraire readiness est utilisé pour vérifier si le serveur est prêt à effectuer le travail. Dans l’inférence d’apprentissage automatique, un serveur peut répondre 200 (OK) à une requête liveness avant de charger un modèle. Le serveur peut répondre à 200 (OK) à une requête readiness uniquement une fois que le modèle a été chargé en mémoire.
 
 Consultez la [documentation de Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) pour plus d’informations sur les probes liveness et readiness.
 
@@ -106,43 +114,58 @@ Notez que ce déploiement utilise le même chemin d’accès pour liveness et re
 
 Lorsque vous déployez un modèle en tant que point de terminaison en temps réel, Azure Machine Learning _monte_ votre modèle sur votre point de terminaison. Le montage du modèle vous permet de déployer de nouvelles versions du modèle sans avoir à créer une nouvelle image Docker. Par défaut, un modèle inscrit avec le nom *foo* et la version *1* se trouve sous le chemin suivant à l’intérieur de votre conteneur déployé : `/var/azureml-app/azureml-models/foo/1`.
 
-Par exemple, si vous avez la structure de répertoire suivante sur votre ordinateur local :
+Par exemple, si vous avez une structure de répertoire `/azureml-examples/cli/endpoints/online/custom-container` sur votre ordinateur local, où le modèle est nommé `half_plus_two` :
 
-```
-azureml-examples
-  cli
-    endpoints
-      online
-        custom-container
-          half_plus_two
-          tfserving-endpoint.yml    
-```     
+:::image type="content" source="./media/how-to-deploy-custom-container/local-directory-structure.png" alt-text="Diagramme montrant une arborescence de la structure de répertoire locale.":::
 
-et que `tfserving-endpoint.yml` contient :
+et que `tfserving-deployment.yml` contient :
 
-```
+```yaml
 model:
     name: tfserving-mounted
     version: 1
     local_path: ./half_plus_two
 ```
 
-alors votre modèle se trouvera à l’emplacement suivant dans votre point de terminaison :
+votre modèle se trouvera alors sous `/var/azureml-app/azureml-models/tfserving-deployment/1` dans votre déploiement :
 
+:::image type="content" source="./media/how-to-deploy-custom-container/deployment-location.png" alt-text="Diagramme montrant une arborescence de la structure de répertoire de déploiement.":::
+
+Vous pouvez éventuellement configurer votre `model_mount_path`. Cela vous permet de modifier le chemin d’accès de l’emplacement où le modèle est monté. Par exemple, vous pouvez avoir le paramètre `model_mount_path` dans votre _tfserving-deployment.yml_ :
+
+> [!IMPORTANT]
+> Le `model_mount_path` doit être un chemin d’accès absolu valide dans Linux (le système d’exploitation de l’image conteneur).
+
+```YAML
+name: tfserving-deployment
+endpoint_name: tfserving-endpoint
+model:
+  name: tfserving-mounted
+  version: 1
+  local_path: ./half_plus_two
+model_mount_path: /var/tfserving-model-mount
+.....
 ```
-var 
-  azureml-app
-    azureml-models
-      tfserving-endpoint
-        1
-          half_plus_two
+
+Votre modèle se trouvera alors sera situé à l’emplacement `/var/tfserving-model-mount/tfserving-deployment/1` dans votre déploiement. Notez qu’il ne figure plus dans le chemin d’accès `azureml-app/azureml-models`, mais dans le chemin de montage que vous avez spécifié :
+
+:::image type="content" source="./media/how-to-deploy-custom-container/mount-path-deployment-location.png" alt-text="Diagramme montrant une arborescence de la structure de répertoire de déploiement lors de l’utilisation de mount_model_path.":::
+
+### <a name="create-your-endpoint-and-deployment"></a>Créer votre point de terminaison et votre déploiement
+
+Maintenant que vous avez compris comment le YAML a été construit, créez votre point de terminaison.
+
+```azurecli
+az ml online-endpoint create --name tfserving-endpoint -f endpoints/online/custom-container/tfserving-endpoint.yml
 ```
 
-### <a name="create-the-endpoint"></a>Créer le point de terminaison
+La création d’un déploiement peut prendre quelques minutes.
 
-Maintenant que vous avez compris comment le YAML a été construit, créez votre point de terminaison. L’exécution de cette commande peut prendre plusieurs minutes.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="create_endpoint":::
+
+```azurecli
+az ml online-deployment create --name tfserving-deployment -f endpoints/online/custom-container/tfserving-deployment.yml
+```
 
 ### <a name="invoke-the-endpoint"></a>Appeler le point de terminaison
 
@@ -154,7 +177,13 @@ Une fois votre déploiement terminé, vérifiez si vous pouvez effectuer une req
 
 Maintenant que vous avez réussi à établir un score de votre point de terminaison, vous pouvez le supprimer :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="delete_endpoint_and_model":::
+```azurecli
+az ml online-endpoint delete --name tfserving-endpoint
+```
+
+```azurecli
+az ml model delete -n tfserving-mounted --version 1
+```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

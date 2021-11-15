@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: cf89b21c3aceee55e121d918f21db4bcf7c51d42
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 93ff4f0d8565f439bc16e887b0dd31e8f14249e9
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440485"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025740"
 ---
 # <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Déployer le module complémentaire AKS Open Service Mesh avec Azure CLI
 
@@ -182,6 +182,39 @@ Pour désactiver le module complémentaire OSM, exécutez la commande suivante 
 ```azurecli-interactive
 az aks disable-addons -n <AKS-cluster-name> -g <AKS-resource-group-name> -a open-service-mesh
 ```
+Une fois le module complémentaire OSM désactivé, les ressources suivantes sont conservées sur le cluster :
+1. Ressource personnalisée meshconfig OSM
+2. Secrets du plan de contrôle OSM
+3. Configuration du webhook en mutation OSM
+4. Configuration du webhook en cours de validation OSM
+5. CRD OSM
+
+> [!IMPORTANT]
+> Vous devez supprimer ces ressources supplémentaires après avoir désactivé le module complémentaire OSM. Le fait de laisser ces ressources sur votre cluster peut provoquer des problèmes si vous réactivez le complément OSM à l’avenir.
+
+Pour supprimer ces ressources restantes :
+
+1. Supprimer la ressource de configuration meshconfig
+```azurecli-interactive
+kubectl delete --ignore-not-found meshconfig -n kube-system osm-mesh-config
+```
+
+2. Supprimer les secrets du plan de contrôle OSM
+```azurecli-interactive
+kubectl delete --ignore-not-found secret -n kube-system osm-ca-bundle mutating-webhook-cert-secret validating-webhook-cert-secret crd-converter-cert-secret
+```
+
+3. Supprimer la configuration du webhook en mutation OSM
+```azurecli-interactive
+kubectl delete mutatingwebhookconfiguration -l app.kubernetes.io/name=openservicemesh.io,app.kubernetes.io/instance=osm,app=osm-injector --ignore-not-found
+```
+
+4. Supprimer la configuration du webhook en cours de validation OSM
+```azurecli-interactive
+kubectl delete validatingwebhookconfiguration -l app.kubernetes.io/name=openservicemesh.io,app.kubernetes.io/instance=osm,app=osm-controller --ignore-not-found
+```
+
+5. Supprimez les CRD OSM : pour obtenir de l’aide sur les CRD OSM et leur suppression, reportez-vous à [cette documentation](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/uninstall/#removal-of-osm-cluster-wide-resources).
 
 <!-- Links -->
 <!-- Internal -->

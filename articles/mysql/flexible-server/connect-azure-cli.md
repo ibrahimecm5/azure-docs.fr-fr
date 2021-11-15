@@ -7,19 +7,16 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: b27fb9ec4ff24cd53906b304db1f32655380fc66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 26c25afc997ee86f0fe23f944ae5afad34269e92
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128595779"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468116"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Démarrage rapide : Se connecter et interroger avec Azure CLI, avec Azure Database pour MySQL - Serveur flexible
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 Ce guide de démarrage rapide montre comment se connecter à un serveur flexible Azure Database pour MySQL en utilisant Azure CLI avec la commande ```az mysql flexible-server connect``` et exécuter une seule requête ou un fichier sql avec la commande ```az mysql flexible-server execute```. Cette commande vous permet de tester la connectivité à votre serveur de base de données et d’exécuter des requêtes. Vous pouvez également exécuter plusieurs requêtes en utilisant le mode interactif.
 
@@ -29,10 +26,10 @@ Ce guide de démarrage rapide montre comment se connecter à un serveur flexible
 
     [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - Installez la dernière version d’[Azure CLI](/cli/azure/install-azure-cli) (2.20.0 ou ultérieure)
-- Connectez-vous en utilisant Azure CLI avec la commande ```az login``` 
+- Connectez-vous en utilisant Azure CLI avec la commande ```az login```
 - Activez la persistance des paramètres avec ```az config param-persist on```. La persistance des paramètres vous permet d’utiliser le contexte local sans devoir répéter de nombreux arguments comme le groupe de ressources ou la région, etc.
 
-## <a name="create-an-mysql-flexible-server"></a>Créer un serveur flexible MySQL
+## <a name="create-a-mysql-flexible-server"></a>Créer un serveur flexible MySQL
 
 La première chose que nous allons créer est un serveur MySQL managé. Dans [Azure Cloud Shell](https://shell.azure.com/), exécutez le script suivant et notez le **nom du serveur**, le **nom d’utilisateur** et le **mot de passe** générés à partir de cette commande.
 
@@ -50,7 +47,7 @@ az mysql flexible-server db create -d newdatabase
 ```
 
 ## <a name="view-all-the-arguments"></a>Visualiser tous les arguments
-Vous pouvez visualiser tous les arguments de cette commande avec l’argument ```--help```. 
+Vous pouvez visualiser tous les arguments de cette commande avec l’argument ```--help```.
 
 ```azurecli
 az mysql flexible-server connect --help
@@ -77,9 +74,9 @@ Successfully connected to mysqldemoserver1.
 ```
 Si la connexion a échoué, essayez ces solutions :
 - Vérifiez si le port 3306 est ouvert sur votre machine cliente.
-- Vérifiez si le nom d’utilisateur et le mot de passe de votre administrateur de serveur sont corrects.
+- Vérifiez si le nom d’utilisateur et le mot de passe de l’administrateur de votre serveur sont corrects.
 - Vérifiez si vous avez configuré une règle de pare-feu pour votre machine cliente.
-- Si vous avez configuré votre serveur avec un accès privé dans le réseau virtuel, vérifiez que votre machine cliente est dans le même réseau virtuel.
+- Si vous avez configuré votre serveur avec un accès privé dans un réseau virtuel, vérifiez que votre machine cliente se trouve dans le même réseau virtuel.
 
 ## <a name="run-multiple-queries-using-interactive-mode"></a>Exécuter plusieurs requêtes en utilisant le mode interactif
 Vous pouvez effectuer plusieurs requêtes en utilisant le mode **interactif**. Pour activer le mode interactif, exécutez la commande suivante :
@@ -164,7 +161,7 @@ Vous pouvez exécuter un fichier sql avec la commande en utilisant l’argument 
 az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
 ```
 
-**Exemple :** 
+**Exemple :**
 ```azurecli
 az mysql flexible-server execute -n mysqldemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
 ```

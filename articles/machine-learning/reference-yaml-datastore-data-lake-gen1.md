@@ -10,12 +10,12 @@ author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 3a0048e0bba1e4772345845dbe1505cc636aba5b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c804d06f7a99590fcc7fd62e8b662e8eaadac2a5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556119"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062015"
 ---
 # <a name="cli-v2-azure-data-lake-gen1-yaml-schema"></a>Schéma YAML CLI (v2) Azure Data Lake Gen1
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------- |
-| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
 | `type` | string | **Obligatoire.** Type de magasin de données. | `azure_data_lake_gen1` | |
 | `name` | string | **Obligatoire.** Nom du magasin de données. | | |
 | `description` | string | Description du magasin de données. | | |
@@ -46,15 +46,15 @@ La commande `az ml datastore` peut être utilisée pour gérer les magasins de d
 
 ## <a name="examples"></a>Exemples
 
-Des exemples sont disponibles dans le [dépôt d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/resources/datastore). Vous en trouverez plusieurs ci-dessous.
+Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/resources/datastore). Vous en trouverez plusieurs ci-dessous.
 
 ## <a name="yaml-identity-based-access"></a>YAML : accès basé sur l’identité
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/adls-gen1-credless.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/adls-gen1-credless.yml":::
 
 ## <a name="yaml-tenant-id-client-id-client-secret"></a>YAML : ID locataire, ID client, secret client
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/adls-gen1.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/adls-gen1.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

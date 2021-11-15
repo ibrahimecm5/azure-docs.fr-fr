@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/28/2021
 ms.author: rolyon
 ms.custom: ''
-ms.openlocfilehash: c68849dcb3c0c5683bfc160a0b4a1cb03ae0e13a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: e60c9f2e7cf4c2f2ed19612ff8e01260a5f8fcb7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356034"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055101"
 ---
 # <a name="understand-azure-role-definitions"></a>Comprendre les définitions de rôles Azure
 
@@ -86,7 +86,7 @@ La portion `{action}` d’une chaîne d’action spécifie le type d’actions q
 
 ### <a name="role-definition-example"></a>Exemple de définition de rôle
 
-Voici la définition de rôle [Contributeur](built-in-roles.md#contributor) comme indiqué dans Azure PowerShell et Azure CLI. Les actions avec caractère générique (`*`) sous `Actions` indiquent que le principal affecté à ce rôle peut effectuer toutes les actions. En d’autres termes, il peut tout gérer. Cela inclut les actions qui seront définies dans le futur, à mesure qu’Azure ajoutera de nouveaux types de ressources. Les actions sous `NotActions` sont soustraites de `Actions`. Dans le cas du rôle [Contributeur](built-in-roles.md#contributor), `NotActions` supprime la possibilité pour ce rôle de gérer l’accès aux ressources et gère également les affectations Azure Blueprint.
+Voici la définition de rôle [Contributeur](built-in-roles.md#contributor) comme indiqué dans Azure PowerShell et Azure CLI. Les actions avec caractère générique (`*`) sous `Actions` indiquent que le principal affecté à ce rôle peut effectuer toutes les actions. En d’autres termes, il peut tout gérer. Cela inclut les actions qui seront définies dans le futur, à mesure qu’Azure ajoutera de nouveaux types de ressources. Les actions sous `NotActions` sont soustraites de `Actions`. Dans le cas du rôle [Contributeur](built-in-roles.md#contributor), `NotActions` supprime la possibilité pour ce rôle de gérer l’accès aux ressources et gère également les affectations Azure Blueprints.
 
 Rôle contributeur tel qu’il s’affiche dans Azure PowerShell :
 

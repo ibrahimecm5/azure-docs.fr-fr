@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/17/2021
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bc5983ebafe39b7b0595106ec280cc81291163ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 244736501dbd9a996ddb89159f0a7289244e51b1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128573788"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466102"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Démarrage rapide : Application web ASP.NET Core qui connecte des utilisateurs et appelle Microsoft Graph en leur nom
 
@@ -36,7 +36,7 @@ Consultez [Fonctionnement de l’exemple](#how-the-sample-works) pour obtenir un
 > Pour inscrire votre application et ajouter manuellement les informations d’inscription de l’application à votre solution, procédez comme suit :
 >
 > 1. Connectez-vous au <a href="https://portal.azure.com/" target="_blank">portail Azure</a>.
-> 1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Annuaires + abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour basculer vers le locataire dans lequel vous voulez inscrire l’application.
+> 1. Si vous avez accès à plusieurs locataires, utilisez le filtre **Répertoires + abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: dans le menu du haut pour basculer vers le locataire dans lequel vous voulez inscrire l’application.
 > 1. Recherchez et sélectionnez **Azure Active Directory**.
 > 1. Sous **Gérer**, sélectionnez **Inscriptions d’applications** > **Nouvelle inscription**.
 > 1. Entrez un **nom** pour votre application (par exemple, `AspNetCoreWebAppCallsGraph-Quickstart`). Les utilisateurs de votre application peuvent voir ce nom, et vous pouvez le changer ultérieurement.
@@ -45,7 +45,7 @@ Consultez [Fonctionnement de l’exemple](#how-the-sample-works) pour obtenir un
 > 1. Sous **Gérer**, sélectionnez **Authentification**.
 > 1. Entrez une **Front-channel logout URL** (URL de déconnexion de canal frontal) ayant la valeur `https://localhost:44321/signout-oidc`.
 > 1. Sélectionnez **Enregistrer**.
-> 1. Sous **Gérer**, sélectionnez **Certificats et secrets** > **Nouveau secret client**.
+> 1. Sous **Gérer**, sélectionnez **Certificats et secrets** > **Clés secrètes client** > **Nouvelle clé secrète client**.
 > 1. Entrez une **description**, telle que `clientsecret1`.
 > 1. Sélectionnez **Dans 1 an** pour l’expiration du secret.
 > 1. Sélectionnez **Ajouter** et enregistrez immédiatement la **valeur** du secret, en vue de l’utiliser dans une étape ultérieure. Cette valeur de secret ne sera *plus jamais affichée* et ne sera récupérable par aucun autre moyen. Enregistrez-la dans un emplacement sécurisé, comme vous le feriez pour n’importe quel mot de passe.

@@ -9,20 +9,20 @@ ms.date: 08/27/2021
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 3645e36c89debc1e9bc032f4df5b7feaa7b6a720
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 0aae67dbe347c8299e00d741163370d9097c8114
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449762"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432849"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Créer une image managée d’une machine virtuelle ou d’un disque dur virtuel
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Groupes identiques flexibles 
 
-Pour créer plusieurs copies d’une machine virtuelle à utiliser dans Azure à des fins de développement et de test, capturez une image managée de la machine virtuelle ou du disque dur virtuel de système d’exploitation. Pour créer, stocker et partager des images à grande échelle, consultez [Galeries d’images partagées](../create-gallery.md).
+Pour créer plusieurs copies d’une machine virtuelle à utiliser dans Azure à des fins de développement et de test, capturez une image managée de la machine virtuelle ou du disque dur virtuel de système d’exploitation. Pour créer, stocker et partager des images à grande échelle, consultez [Azure Compute Gallery](../create-gallery.md).
 
-Une image managée prend en charge jusqu’à 20 déploiements simultanés. Une tentative de création simultanée de plus de 20 machines virtuelles à partir de la même image managée peut entraîner l’expiration des délais d’approvisionnement en raison des limites de performances de stockage d’un disque dur virtuel unique. Pour créer plus de 20 machines virtuelles simultanément, utilisez une image de la [galerie d’images partagées](../shared-image-galleries.md) configurée avec 1 réplica tous les 20 déploiements simultanés de machines virtuelles.
+Une image managée prend en charge jusqu’à 20 déploiements simultanés. Une tentative de création simultanée de plus de 20 machines virtuelles à partir de la même image managée peut entraîner l’expiration des délais d’approvisionnement en raison des limites de performances de stockage d’un disque dur virtuel unique. Pour créer plus de 20 machines virtuelles simultanément, utilisez une image de [Azure Compute Gallery](../shared-image-galleries.md) (anciennement Shared Image Gallery) configurée avec 1 réplica tous les 20 déploiements simultanés de machines virtuelles.
 
 Pour créer une image managée, vous devez supprimer les informations personnelles du compte. Les étapes suivantes vous permettent de déprovisionner une machine virtuelle existante, de la désallouer et de créer une image. Vous pouvez utiliser cette image pour créer des machines virtuelles dans n’importe quel groupe de ressources de votre abonnement.
 
@@ -142,4 +142,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Étapes suivantes
-Pour créer, stocker et partager des images à grande échelle, consultez [Galeries d’images partagées](../create-gallery.md).
+Pour créer, stocker et partager des images à grande échelle, consultez [Azure Compute Gallery](../create-gallery.md).

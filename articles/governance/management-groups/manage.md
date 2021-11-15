@@ -3,12 +3,12 @@ title: Comment utiliser vos groupes d’administration - Gouvernance Azure
 description: Découvrez comment afficher, tenir, mettre à jour et supprimer votre hiérarchie de groupes d’administration.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: cf52f56b59dd1a99bb48807228015d502163fcd7
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 57c4af2d7c3d5d4978d500beaa6e6c8be5d12d4f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122534932"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509411"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Gérer vos ressources avec des groupes d’administration
 
@@ -20,6 +20,9 @@ Les groupes d’administration vous permettent une gestion de qualité professio
 
 > [!IMPORTANT]
 > Le cache de groupe d’administration et les jetons utilisateur Azure Resource Manager sont conservés pendant 30 minutes avant d’être forcés à s’actualiser. L’affichage d’une action telle que le déplacement d’un groupe d’administration ou d’un abonnement peut prendre jusqu’à 30 minutes. Pour voir les mises à jour plus rapidement, vous devez mettre à jour votre jeton en actualisant le navigateur, en vous connectant puis vous déconnectant, ou en demandant un nouveau jeton.
+
+> [!IMPORTANT]
+> Les cmdlets Az PowerShell liées à AzManagementGroup indiquent que le paramètre **-GroupId** est l’alias du paramètre **-GroupName**. Nous pouvons donc les utiliser pour fournir l’ID du groupe d’administration en tant que valeur de chaîne. 
 
 ## <a name="change-the-name-of-a-management-group"></a>Modifier le nom d’un groupe d’administration
 
@@ -50,7 +53,7 @@ Vous pouvez modifier le nom du groupe d’administration en utilisant le portail
 Pour mettre à jour le nom d’affichage, utilisez **Update-AzManagementGroup**. Par exemple, pour remplacer le nom d'affichage du groupe d’administration « Contoso IT » par « Groupe Contoso », exécutez la commande suivante :
 
 ```azurepowershell-interactive
-Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
+Update-AzManagementGroup -GroupId 'ContosoIt' -DisplayName 'Contoso Group'
 ```
 
 ### <a name="change-the-name-in-azure-cli"></a>Modifier le nom dans Azure CLI
@@ -97,7 +100,7 @@ Pour supprimer un groupe d’administration, les conditions suivantes doivent ê
 Utilisez la commande **Remove-AzManagementGroup** dans PowerShell pour supprimer des groupes d’administration.
 
 ```azurepowershell-interactive
-Remove-AzManagementGroup -GroupName 'Contoso'
+Remove-AzManagementGroup -GroupId 'Contoso'
 ```
 
 ### <a name="delete-in-azure-cli"></a>Supprimer dans Azure CLI
@@ -132,16 +135,16 @@ Utilisez la commande Get-AzManagementGroup pour récupérer tous les groupes. Co
 Get-AzManagementGroup
 ```
 
-Pour consulter les détails d’un seul groupe d’administration, utilisez le paramètre -GroupName.
+Pour consulter les détails d’un seul groupe d’administration, utiliser le paramètre -GroupId
 
 ```azurepowershell-interactive
-Get-AzManagementGroup -GroupName 'Contoso'
+Get-AzManagementGroup -GroupId 'Contoso'
 ```
 
 Pour renvoyer un groupe d’administration spécifique et tous ses niveaux de hiérarchie sous-jacents, utilisez les paramètres **-Expand** and **-Recurse**.
 
 ```azurepowershell-interactive
-PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response = Get-AzManagementGroup -GroupId TestGroupParent -Expand -Recurse
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
@@ -204,7 +207,9 @@ Si vous effectuez l’action de déplacement, vous devez disposer de l’autoris
 - Abonnement/groupe d’administration enfant
   - `Microsoft.management/managementgroups/write`
   - `Microsoft.management/managementgroups/subscription/write` (uniquement pour les abonnements)
-  - `Microsoft.Authorization/roleassignment/write`
+  - `Microsoft.Authorization/roleAssignments/write`
+  - `Microsoft.Authorization/roleAssignments/delete`
+  - `Microsoft.Management/register/action`
 - Groupe d’administration parent cible
   - `Microsoft.management/managementgroups/write`
 - Groupe d’administration parent actuel
@@ -259,13 +264,13 @@ Pour connaître vos autorisations dans le portail Azure, sélectionnez le groupe
 Pour déplacer un abonnement dans PowerShell, utilisez la commande New-AzManagementGroupSubscription.
 
 ```azurepowershell-interactive
-New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+New-AzManagementGroupSubscription -GroupId 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 Pour supprimer le lien entre un abonnement et un groupe d’administration, utilisez la commande Remove-AzManagementGroupSubscription.
 
 ```azurepowershell-interactive
-Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+Remove-AzManagementGroupSubscription -GroupId 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 ### <a name="move-subscriptions-in-azure-cli"></a>Déplacer des abonnements dans Azure CLI
@@ -344,8 +349,8 @@ Pour déplacer un abonnement dans un modèle Azure Resource Manager (modèle ARM
 Utilisez la commande Update-AzManagementGroup dans PowerShell pour déplacer un groupe d’administration sous un autre groupe.
 
 ```azurepowershell-interactive
-$parentGroup = Get-AzManagementGroup -GroupName ContosoIT
-Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
+$parentGroup = Get-AzManagementGroup -GroupId ContosoIT
+Update-AzManagementGroup -GroupId 'Contoso' -ParentId $parentGroup.id
 ```
 
 ### <a name="move-management-groups-in-azure-cli"></a>Déplacer des groupes d’administration dans Azure CLI

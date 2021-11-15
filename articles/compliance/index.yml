@@ -370,7 +370,7 @@ additionalContent:
       summary: 'Pour accéder à une ressource, vous devrez peut-être vous connecter à votre service cloud'
       items:
         - title: Rapports et certificats d’audit
-          summary: "Accessible dans le portail Azure via Accueil\_> Security Center\_> Conformité réglementaire"
+          summary: "Accessible dans le portail Azure (Accueil\_> Defender pour le cloud\_> Conformité réglementaire)"
           links:
             - text: "ISO\_20000-1, 22301, 27001, 27017, 27018, 27701, 9001"
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'

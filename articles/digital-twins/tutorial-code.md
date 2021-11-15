@@ -1,18 +1,18 @@
 ---
 title: 'Tutoriel : Coder une application cliente'
 titleSuffix: Azure Digital Twins
-description: Tutoriel expliquant comment écrire le code minimal d’une application cliente à l’aide du kit SDK (C#) .NET.
+description: Suivez ce tutoriel pour apprendre à écrire le code minimal d’une application cliente Azure Digital Twins à l’aide du Kit de développement logiciel (SDK) .NET (C#).
 author: baanders
 ms.author: baanders
-ms.date: 04/28/2021
+ms.date: 10/18/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 2146d07ce28cf0d14bb1b1416a0aa5b8ebf1febe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: df99bfd1dfd07749b4906e9bd7f9f62ece68066b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612070"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501701"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutoriel : Codage avec les API Azure Digital Twins
 
@@ -27,7 +27,7 @@ Les développeurs travaillant avec Azure Digital Twins écrivent généralemen
 
 ## <a name="prerequisites"></a>Prérequis
 
-Ce tutoriel utilise la ligne de commande pour la création et la configuration du projet. Ainsi, vous pouvez utiliser n’importe quel éditeur de code pour effectuer les exercices.
+Ce tutoriel sur Azure Digital Twins utilise la ligne de commande pour la création et la configuration du projet. Ainsi, vous pouvez utiliser n’importe quel éditeur de code pour effectuer les exercices.
 
 Pour commencer, il vous faut :
 * Un éditeur de code.
@@ -130,7 +130,7 @@ Dans le répertoire où vous avez créé votre projet, créez un fichier .json n
 > [!TIP] 
 > Il existe un [exemple de validateur DTDL](/samples/azure-samples/dtdl-validator/dtdl-validator) indépendant du langage qui vous permet de vérifier les documents de modèle et la validité du DTDL. Il repose sur la bibliothèque de l’analyseur DTDL, qui est décrite en détail dans [Analyser et valider des modèles](how-to-parse-models.md).
 
-Ensuite, ajoutez du code à *Program.cs* pour charger le modèle que vous venez de créer dans votre instance Azure Digital Twins.
+Ensuite, ajoutez du code à *Program.cs* pour charger le modèle que vous avez créé dans votre instance Azure Digital Twins.
 
 Tout d’abord, ajoutez quelques instructions `using` au début du fichier :
 
@@ -162,7 +162,7 @@ Pour ajouter une instruction print indiquant tous les modèles chargés avec suc
 
 **Avant de réexécuter le programme pour tester ce nouveau code**, rappelez-vous que la dernière fois que vous avez exécuté le programme, vous avez déjà chargé votre modèle. Azure Digital Twins ne vous permet pas de charger deux fois le même modèle. Par conséquent, si vous tentez de charger à nouveau le même modèle, le programme doit lever une exception.
 
-Avec cela à l’esprit, réexécutez le programme avec cette commande dans votre fenêtre de commande :
+Avec ces informations en tête, réexécutez le programme avec cette commande dans votre fenêtre de commande :
 
 ```cmd/sh
 dotnet run
@@ -196,7 +196,7 @@ Dans votre fenêtre de commande, exécutez le programme avec `dotnet run`. Dans 
 
 Ensuite, réexécutez le programme. 
 
-Notez qu’aucune erreur n’est générée quand les jumeaux sont créés la deuxième fois, bien qu’ils existent déjà après la première exécution. Contrairement à la création de modèle, la création de jumeau est, au niveau REST, un appel *PUT* avec une sémantique *upsert*. Cela signifie que si un jumeau existe déjà, une tentative de création du même jumeau remplacera simplement le jumeau d’origine. Aucune erreur n’est levée.
+Notez qu’aucune erreur n’est générée quand les jumeaux sont créés la deuxième fois, bien qu’ils existent déjà après la première exécution. Contrairement à la création de modèle, la création de jumeau est, au niveau REST, un appel *PUT* avec une sémantique *upsert*. L’utilisation de ce type d’appel REST signifie que si un jumeau existe déjà, une tentative de création du même jumeau remplacera simplement le jumeau d’origine. Aucune erreur n’est levée.
 
 ### <a name="create-relationships"></a>Créer des relations
 

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: compliance
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6eade29bea91a9ea4bf50835a050356991cfcf0
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: 692f2ca4e57644ff321bb47cdf4238360bf4bb68
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428135"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447984"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>Qu’est-ce que la gestion du cycle de vie des identités ?
 
@@ -40,7 +40,7 @@ La procédure classique d’établissement de la gestion du cycle de vie des ide
 
 2. Connectez ces systèmes d’enregistrement à un ou plusieurs annuaires et bases de données utilisés par les applications, puis résolvez les incohérences entre les annuaires et les systèmes d’enregistrement. Par exemple, un annuaire peut contenir des données obsolètes, telles qu’un compte pour un ancien employé, qui n’est plus nécessaire. 
 
-3. Identifiez les processus qui peuvent être utilisés pour fournir des informations faisant autorité en l’absence d’un système d’enregistrement.  Par exemple, s’il existe des identités numériques mais que ce sont des visiteurs, et que l’organisation n’a pas de base de données pour les visiteurs, il peut être nécessaire de trouver une autre façon de déterminer quand l’identité numérique d’un visiteur n’est plus nécessaire.
+3. Identifiez les processus qui peuvent être utilisés pour fournir des informations faisant autorité en l’absence d’un système d’enregistrement.  Par exemple, s’il existe des identités numériques, mais qu’il s’agit de visiteurs et que l’organisation n’a pas de base de données pour les visiteurs, il peut être nécessaire de trouver une autre façon de déterminer quand l’identité numérique d’un visiteur n’est plus nécessaire.
 
 4. Configurez que les modifications du système d’enregistrement ou d’autres processus sont répliquées vers chaque annuaire ou base de données qui nécessite une mise à jour.
 

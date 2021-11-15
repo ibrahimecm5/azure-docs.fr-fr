@@ -5,14 +5,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/29/2020
+ms.date: 10/28/2021
 ms.author: aahi
-ms.openlocfilehash: c4b3e9aeaaea9e8ff3d7abc58a8e468ca8dc2c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddc720f8ac9b99418b0c5c7d6a70ababcfd034a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97820679"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426168"
 ---
-### <a name="text-analytics-support-notes"></a>\*\*Notes sur la prise en charge de l’analyse de texte
-L’analyse de texte inclut l’entité keyPhrase prédéfinie et l’analyse des sentiments. Seul le portugais est pris en charge pour les sous-cultures : `pt-PT` et `pt-BR`. Toutes les autres cultures sont prises en charge au niveau de la culture principale. En savoir plus sur les [langues prises en charge](../../text-analytics/language-support.md) par l’analyse de texte.
+### <a name="language-service-support-notes"></a>**Notes pour le support du service de langage
+Le service de langage inclut l’entité keyPhrase prédéfinie et l’analyse des sentiments. Seul le portugais est pris en charge pour les sous-cultures : `pt-PT` et `pt-BR`. Toutes les autres cultures sont prises en charge au niveau de la culture principale.

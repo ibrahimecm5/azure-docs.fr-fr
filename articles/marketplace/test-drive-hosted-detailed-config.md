@@ -6,17 +6,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 09/27/2021
-ms.openlocfilehash: 320d1b309f49b748e48a7a019c43246e8e5ce7c7
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 10/26/2021
+ms.openlocfilehash: 5fde0e1d9dc78c735ae9e889af5fbd889a588540
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080304"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851018"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Configuration détaillée pour les versions d'évaluation hébergées
 
 Cet article explique comment configurer une version d’évaluation hébergée pour Dynamics 365 for Customer Engagement et Power Apps ou Dynamics 365 for Operations.
+
+> [!TIP]
+> Pour voir la vue client du test drive dans la place de marché commerciale, consultez [Qu’est-ce que la Place de marché Azure](/marketplace/azure-marketplace-overview#take-action-on-a-listing) et [Qu’est-ce que Microsoft AppSource ?](/marketplace/appsource-overview).
 
 ## <a name="configure-for-dynamics-365-customer-engagement--power-apps"></a>Configuration pour Dynamics 365 Customer Engagement et Power Apps
 
@@ -29,7 +32,7 @@ Cet article explique comment configurer une version d’évaluation hébergée p
 3. Trouvez une offre **Dynamics 365 for Customer Engagement et Power Apps** existante ou créez-en une nouvelle.
 4. Dans la page **Configuration de l’offre**, cochez la case **Activer une version d’évaluation** et sélectionnez un **Type de version d’évaluation** (cf. puce ci-dessous), puis **Enregistrer le brouillon**.
 
-    [ ![Illustre la sélection de la case à cocher « Activer une version d'évaluation ».](./media/test-drive/enable-test-drive-check-box-workspaces.png) ](./media/test-drive/enable-test-drive-check-box-workspaces.png#lightbox)
+    [![Illustre la sélection de la case à cocher « Activer une version d'évaluation ».](./media/test-drive/enable-test-drive-check-box-workspaces.png)](./media/test-drive/enable-test-drive-check-box-workspaces.png#lightbox)
 
     - **Type of Test Drive** (Type de version d’évaluation) : choisissez **Microsoft Hosted (Dynamics 365 for Customer Engagement)** (Hébergé par Microsoft (Dynamics 365 for Customer Engagement)). Cela indique que Microsoft héberge et assure la maintenance du service qui effectue l’approvisionnement et le déprovisionnement de l’utilisateur de la version d’évaluation.
 

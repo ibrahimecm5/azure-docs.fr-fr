@@ -11,12 +11,12 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: acb8a03f4cbd719f348ae5a65974b1c326b10604
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c6a2506ec92580c949deef98c53d42b06bc37054
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131006275"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473601"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migration de bases de données existantes pour effectuer un scale-out
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,9 +156,9 @@ Une fois que vous avez terminé l’installation, vous pouvez commencer à utili
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Obtenez les scripts PowerShell à partir des [scripts d’outils de base de données élastique Azure SQL Database](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Obtenez les scripts PowerShell à partir de [scripts d’outils de base de données élastique Azure](https://github.com/Azure/elastic-db-tools/tree/master/Samples/PowerShell).
 
-Les outils se trouvent également sur GitHub : [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+La bibliothèque de client des outils de base de données élastique est disponible sur GitHub : [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
 
 Utilisez l’outil de fractionnement et de fusion pour déplacer des données, à partir d’un modèle mutualisé ou vers celui-ci, vers un modèle de client unique. Consultez [Outil de fractionnement et de fusion](elastic-scale-configure-deploy-split-and-merge.md).
 

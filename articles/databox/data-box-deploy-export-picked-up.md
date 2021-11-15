@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 10/29/2021
 ms.author: alkohli
-ms.openlocfilehash: 6c2eed9aac614b0765582d5cf373caf50323ef7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 544454e4022da67db50fb194d7aea72a6bd716bd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99537355"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449966"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Tutoriel : Retourner un appareil Azure Data Box
 
@@ -43,169 +43,59 @@ Les étapes suivantes sont déterminées par l’endroit où vous retournez l’
 
 ## <a name="ship-data-box-back"></a>Renvoyer la Data Box
 
-Vérifiez que la copie des données à partir de l’appareil a été effectuée et que l’exécution de la **Préparation de l’expédition** a réussi. La procédure varie en fonction de la région où vous expédiez l’appareil.
+Vérifiez que la copie des données à partir de l’appareil a été effectuée et que l’exécution de la **Préparation de l’expédition** a réussi.
 
-## <a name="us-canada-europe"></a>[États-Unis, Canada, Europe](#tab/in-us-canada-europe)
+La procédure varie en fonction de la région où vous expédiez l’appareil. Dans de nombreux pays ou régions, vous pouvez utiliser l’expédition managée par Microsoft ou l’expédition automanagée.
 
-Effectuez les étapes suivantes si vous retournez l’appareil aux États-Unis, au Canada ou en Europe.
+### <a name="microsoft-managed-shipping"></a>Expédition gérée par Microsoft
 
-1. Vérifiez que l’appareil est hors tension et que les câbles sont débranchés. 
-2. Enroulez le cordon d’alimentation fourni avec la Data Box et fixez-le à l’arrière de l’appareil.
-3. Vérifiez que l’étiquette d’expédition est affichée sur l’écran E-ink et planifiez l’enlèvement avec votre transporteur. Si l’étiquette est endommagée ou perdue, ou si elle ne s’affiche pas sur l’écran E-ink, contactez le support Microsoft. Si le support technique le suggère, vous pouvez accéder à **Vue d’ensemble > Télécharger une étiquette d’expédition** dans le portail Azure. Téléchargez l’étiquette d’expédition et collez-la sur l’appareil. 
-4. Planifiez une date d’enlèvement avec UPS en cas de renvoi de l’appareil. Pour planifier l’enlèvement :
+Suivez les instructions applicables à la région à partir de laquelle vous effectuez l’expédition si celle-ci est gérée par Microsoft.
 
-   - Appelez l’UPS local (numéro d’appel gratuit propre à chaque pays/région).
-   - Lors de l’appel, indiquez le numéro de suivi du retour, qui est indiqué dans l’écran E-ink ou sur l’étiquette de retour imprimée. Si vous n’indiquez pas le numéro de suivi, UPS vous facturera des frais supplémentaires à l’enlèvement.
-   - Si des problèmes surviennent pendant la planification d’un enlèvement, ou si vous êtes invité à payer des frais supplémentaires, contactez le service des opérations Azure Data Box. Envoyez un e-mail à [adbops@microsoft.com](mailto:adbops@microsoft.com).
+## <a name="us--canada"></a>[États-Unis et Canada](#tab/in-us-canada)
 
-    Au lieu de planifier l’enlèvement, vous pouvez déposer la Data Box dans le point de dépôt le plus proche.
-4. Une fois que la Data Box a été scannée et récupérée par le transporteur, l’état de la commande dans le portail affiche **Récupérée**. Un ID de suivi s’affiche également.
+[!INCLUDE [data-box-shipping-in-us-canada](../../includes/data-box-shipping-in-us-canada.md)]
+
+## <a name="eu"></a>[EU](#tab/in-eu)
+
+[!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
+
+**Si vous réexpédiez vers des centres de données situés en Allemagne ou en Suisse,** vous pouvez également [utiliser l’expédition autogérée](#self-managed-shipping).
+
+## <a name="uk"></a>[Royaume-Uni](#tab/in-uk)
+
+[!INCLUDE [data-box-shipping-in-uk](../../includes/data-box-shipping-in-uk.md)]
 
 ## <a name="australia"></a>[Australie](#tab/in-australia)
 
-Les centres de données Azure de l’Australie ont une notification de sécurité supplémentaire. Toutes les expéditions entrantes doivent avoir une notification préalable. Effectuez les étapes suivantes pour expédier en Australie.
-
-1. Conservez la boîte d’origine utilisée pour expédier l’appareil, en cas de retour.
-2. Vérifiez que la copie des données sur l’appareil a été effectuée et que la **préparation de l’expédition** a réussi.
-3. Mettez l’appareil hors tension et débranchez les câbles.
-4. Enroulez le cordon d’alimentation fourni avec l’appareil, et fixez-le à l’arrière de ce dernier.
-5. Réservez un enlèvement en ligne via le [Lien DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
+[!INCLUDE [data-box-shipping-in-australia](../../includes/data-box-shipping-in-australia.md)]
 
 ## <a name="japan"></a>[Japon](#tab/in-japan)
 
-1. Conservez la boîte d’origine utilisée pour expédier l’appareil, en cas de retour.
-2. Mettez l’appareil hors tension et débranchez les câbles.
-3. Enroulez le cordon d’alimentation fourni avec l’appareil, et fixez-le à l’arrière de ce dernier.
-4. Écrivez le nom et l’adresse de votre entreprise dans la partie du bordereau de réexpédition réservée à l’expéditeur.
-5. Envoyez un courrier à Quantium Solutions en utilisant le modèle d’e-mail suivant.
-
-    * Si le bordereau de réexpédition de Japon Post Chakubarai était manquant, consignez ce fait que dans cet e-mail. Quantium Solutions demandera à Japan Post d’apporter le bordereau de réexpédition à l’enlèvement.
-    * Si vous avez plusieurs commandes, envoyez un e-mail pour garantir un enlèvement individuel.
-
-    ```
-    To: Customerservice.JP@quantiumsolutions.com
-    Subject: Pickup request for Azure Data Box｜Job name： 
-    Body: 
-    - Japan Post Yu-Pack tracking number (reference number)：
-    - Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-    ```
-
-6. Recevoir un e-mail de confirmation de Quantium Solutions près avoir réservé un enlèvement. L’e-mail de confirmation inclut également des informations sur le bordereau de réexpédition de Chakubarai.
-
-Si nécessaire, vous pouvez contacter le support de Quantium Solutions (en langue japonaise) dont les coordonnées sont les suivantes : 
-
-* E-mail ：Customerservice.JP@quantiumsolutions.com
-* Téléphone：+81 3 57 55 01 50
+[!INCLUDE [data-box-shipping-in-japan](../../includes/data-box-shipping-in-japan.md)]
 
 ## <a name="singapore"></a>[Singapour](#tab/in-singapore)
 
-1. Conservez la boîte d’origine utilisée pour expédier l’appareil, en cas de retour.
-2. Notez le numéro de suivi (indiqué comme numéro de référence dans la page Préparation de l’expédition de l’interface utilisateur web locale de la Data Box). Il est disponible une fois l’étape de préparation de l’expédition terminée. Téléchargez l’étiquette d’expédition à partir de cette page, puis collez-la sur le carton d’emballage.
-3. Mettez l’appareil hors tension et débranchez les câbles.
-4. Enroulez le cordon d’alimentation fourni avec l’appareil, et fixez-le à l’arrière de ce dernier. 
-5. Envoyez un e-mail au service client SingPost en utilisant le modèle d’e-mail suivant avec le numéro de suivi.
-
-    ```
-    To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pickup - OrderName 
-    Body: 
-        1. Requestor name  
-        2. Requestor contact number
-        3. Requestor collection address
-        4. Preferred collection date
-    ```
-
-   > [!NOTE]
-   > Pour les demandes de réservation reçues un jour ouvré :
-   >
-   > * Avant 15 h, la collecte sera effectuée le jour ouvré suivant entre 9 h et 13 h.
-   > * Après 15 h, la collecte sera effectuée le jour ouvré suivant entre 14 h et 18 h.  
-
-## <a name="south-africa"></a>[Afrique du Sud](#tab/in-sa)
-
-1. Conservez la boîte d’origine utilisée pour expédier l’appareil, en cas de retour.
-2. Notez le numéro de référence (numéro de lettre de transport) indiqué dans l’interface utilisateur web locale de l’appareil. Ce numéro s’affiche une fois que la **préparation de l’expédition** a abouti.
-3. Téléchargez et imprimez l’étiquette d’expédition disponible dans l’interface utilisateur web locale de l’appareil et apposez-la sur le colis d’expédition.
-4. Pour réserver un enlèvement avec DHL, vous avez plusieurs options :
-
-    * Appeler le centre de contact du service clientèle avant 14h00 en composant le **+27(0)119213600**, en sélectionnant l’option 1, puis en spécifiant le numéro de lettre de transport.
-    * Envoyer un e-mail à l’adresse [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) en utilisant le modèle suivant :
-
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
-
-    * Vous pouvez également déposer le colis au point de service DHL le plus proche.
-
-5. En cas de problème, envoyez e-mail à l’adresse [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com), en détaillant le ou les problèmes rencontrés et en insérant le numéro de lettre de transport dans la ligne Objet. Vous pouvez également appeler le +27(0)119213902.
+[!INCLUDE [data-box-shipping-in-singapore](../../includes/data-box-shipping-in-singapore.md)]
 
 ## <a name="hong-kong"></a>[Hong Kong (R.A.S.)](#tab/in-hk)
 
-1. Emballez l’appareil pour réexpédition dans sa boîte d’origine.
-2. Notez le numéro de référence (numéro de suivi de retour) affiché sur l’interface utilisateur web locale de l’appareil. Ce numéro s’affiche une fois que la **préparation de l’expédition** a abouti.
-3. Téléchargez et imprimez l’étiquette d’expédition disponible dans l’interface utilisateur web locale de l’appareil et apposez-la sur le colis d’expédition.
-4. Enroulez le cordon d’alimentation fourni avec l’appareil, et fixez-le à l’arrière de ce dernier.
-5. Appelez l’assistance téléphonique de **Quantium Solutions** au **(852) 2318 1213** pendant les heures de bureau (de 9h00 à 18h00, du lundi au vendredi).  
-6. Indiquez Enlèvement Microsoft Azure, le numéro de référence et le numéro de suivi (code-barres en haut) sur l’étiquette de réexpédition pour organiser l’enlèvement.
-7. Vous recevrez une confirmation verbale pour la planification de l’enlèvement. Si le transporteur ne procède pas à l’enlèvement, appelez l’assistance téléphonique de Quantium Solutions pour trouver une autre solution.
-8. Lors de la réservation d’un enlèvement auprès de Quantium, partagez la confirmation avec [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) à l’aide du modèle suivant :
+[!INCLUDE [data-box-shipping-in-hk](../../includes/data-box-shipping-in-hk.md)]
 
-    ```output
-    To: adbo@microsoft.com
-    Subject: Microsoft Data Box Job: [order name] has completed copy
-    Body:
-    We have confirmed the pickup details with Quantium.
+## <a name="korea"></a>[Corée](#tab/in-korea)
 
-       * Requestor name:
-       * Requestor contact number:
-       * Pickup Date:  
-       * Pickup time:
-    ```
+[!INCLUDE [data-box-shipping-in-korea](../../includes/data-box-shipping-in-korea.md)]
 
-En cas de problème, envoyez un e-mail à Data Box Operations Asia à l’adresse [adbo@microsoft.com](mailto:adbo@microsoft.com), en spécifiant le nom du travail dans l’en-tête d’objet et le problème rencontré.
+## <a name="s-africa"></a>[Afrique du Sud](#tab/in-sa)
 
-## <a name="united-arab-emirates"></a>[Émirats arabes unis](#tab/in-uae)
+[!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
 
-1. Conservez la boîte d’origine utilisée pour expédier l’appareil, en cas de retour.
-2. Vérifiez que la copie des données sur l’appareil est terminée et que l’étape **Préparation de l’expédition** a été correctement effectuée.
-3. Notez le numéro de référence indiqué dans la page **Préparation de l’expédition** de l’interface utilisateur web locale .
-4. Mettez l’appareil hors tension, puis débranchez les câbles. Enroulez le cordon d’alimentation fourni avec l’appareil, et fixez-le à l’arrière de ce dernier.
-6. Emballez l’appareil à des fins de réexpédition dans sa boîte d’origine.
-7. Envoyez un e-mail à l’[équipe des opérations Azure Data Box](mailto:adbops@microsoft.com) pour recevoir un ID qui sera utilisé pour identifier le package lors de son retour au centre de données.
-8. Inscrivez cet ID sur l’étiquette d’expédition imprimée, à côté de l’adresse de retour afin qu’il soit clairement visible.  
-9. Réservez un enlèvement en ligne en accédant au site [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab) (DHL Express - Émirats arabes unis) > **Schedule a Pickup** (Planifier un enlèvement).
-   - Entrez le numéro de référence indiqué dans la page **Préparation de l’expédition** de l’interface utilisateur web locale de l’appareil dans le champ du numéro de bordereau.
-   - Les réservations sont acceptées de 9h00 à 14h00, 6 jours par semaine (sauf le vendredi et les jours fériés).
-   - Les demandes d’enlèvement doivent être effectuées au moins 90 minutes avant l’heure de fermeture de bureau du client.
-10. Si vous rencontrez des problèmes avec l’outil de réservation de DHL, vous pouvez contacter DHL en utilisant l’une des méthodes suivantes :
-    - Appelez le 04-2924545.
-    - Envoyez un e-mail à l’adresse [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) contenant des détails sur le ou les problèmes rencontrés, et indiquez le numéro de numéro de bordereau dans la ligne Objet.
-    - Appelez le support du service client au 600 567567.
+## <a name="uae"></a>[Émirats Arabes Unis](#tab/in-uae)
 
-## <a name="self-managed"></a>[Autogérée](#tab/in-selfmanaged)
+[!INCLUDE [data-box-shipping-in-uae](../../includes/data-box-shipping-in-uae.md)]
 
-Si vous utilisez Data Box au Japon, à Singapour, en Corée, en Inde, en Afrique du Sud, au Royaume-Uni, en Europe de l’Ouest ou en Australie, et que vous avez sélectionné l’option d’expédition autogérée pendant la création de la commande, suivez ces instructions.
+### <a name="self-managed-shipping"></a>Expédition autogérée
 
-1. Notez le code d’autorisation indiqué dans la page Préparation de l’expédition de l’interface utilisateur web locale de la Data Box une fois cette étape terminée.
-2. Mettez l’appareil hors tension et débranchez les câbles. Enroulez le cordon d’alimentation fourni avec l’appareil, et fixez-le à l’arrière de ce dernier.
-3. Envoyez un e-mail à l’équipe des opérations Azure Data Box en utilisant le modèle ci-dessous lorsque vous êtes prêt à renvoyer l’appareil.
-    
-    ```
-    To: adbops@microsoft.com 
-    Subject: Request for Azure Data Box drop-off for order: ‘orderName’ 
-    Body: 
-        1. Order name  
-        2. Authorization code available after Prepare to Ship has completed [Yes/No]  
-        3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
-    ```
+[!INCLUDE [data-box-shipping-self-managed](../../includes/data-box-shipping-self-managed.md)]
 
 ---
 

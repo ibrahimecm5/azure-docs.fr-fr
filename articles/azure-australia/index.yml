@@ -3,18 +3,18 @@ title: Documentation Azure Australie
 summary: Microsoft Azure Australie est une plateforme Cloud certifiée par l’ACSC (Australian Cyber Security Centre) et répertoriée dans la liste des services Cloud certifiés (CCSL).
 metadata:
   title: Documentation Azure Australie
-  description: Microsoft Azure Australie est une plateforme Cloud certifiée par l’ACSC (Australian Cyber Security Centre) et répertoriée dans la liste des services Cloud certifiés (CCSL).
+  description: Microsoft Azure Australie est une plateforme cloud certifiée par l’ACSC (Australian Cyber Security Center) et répertoriée dans la liste des services cloud certifiés (CCSL).
   ms.service: azure-australia
   ms.topic: landing-page
   author: emilyre
   ms.author: v-emread
   ms.date: 03/11/2020
-  ms.openlocfilehash: 126cccc48f14b6e1ab260b8ec2648f0678754728
-  ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+  ms.openlocfilehash: 1710a89cbe419ea0d44614acf0e15bbe5abc8814
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 03/13/2020
-  ms.locfileid: "116985479"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132340202"
 landingContent:
 - title: À propos d’Azure Australie
   linkLists:

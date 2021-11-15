@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e17d6026f9b655c6a08bc7e91939482d734a911d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 087af92ce70ccb8db37073b6aadb8cf9b83bc57c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070942"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454282"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Utiliser Azure Digital Twins Explorer (préversion)
 
@@ -103,11 +103,39 @@ Pour afficher les valeurs des propriétés d’un jumeau ou d’une relation, s�
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et le panneau Propriétés du jumeau est développé, montrant les propriétés du jumeau." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-Le volet Propriétés du jumeau affiche des messages d’erreur si le jumeau ou certaines de ses propriétés ne correspondent plus à son modèle. Si le modèle du jumeau est introuvable ou si une propriété ne fait pas partie de la définition du modèle que le jumeau utilise, vous pouvez voir des messages d’erreur de ce type :
+##### <a name="data-type-icons"></a>Icônes de type de données
+
+Les propriétés affichées dans les panneaux **Propriétés du jumeau** et **Propriétés de la relation** sont affichées avec une icône, indiquant le type du champ du modèle DTDL. Vous pouvez pointer sur une icône pour afficher le type associé.
+
+Le tableau ci-dessous présente les types de données possibles et leurs icônes correspondantes. La table contient également des liens de chaque type de données vers sa description de schéma dans la [spécification DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#schemas).
+
+| Icône | Type de données |
+| --- | --- |
+| ![icône de booléen](./media/how-to-use-azure-digital-twins-explorer/data-icons/boolean.svg) | [boolean](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![icône de composant](./media/how-to-use-azure-digital-twins-explorer/data-icons/component.svg) | [component](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#component) |
+| ![icône de date](./media/how-to-use-azure-digital-twins-explorer/data-icons/date.svg) | [date](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![icône de dateHeure](./media/how-to-use-azure-digital-twins-explorer/data-icons/datetime.svg) | [dateTime](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![icône de durée](./media/how-to-use-azure-digital-twins-explorer/data-icons/duration.svg) | [duration](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![icône d’énumération](./media/how-to-use-azure-digital-twins-explorer/data-icons/enum.svg) | [enum](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#enum) |
+| ![icône de carte](./media/how-to-use-azure-digital-twins-explorer/data-icons/map.svg) | [map](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#map) |
+| ![icône de numérique](./media/how-to-use-azure-digital-twins-explorer/data-icons/numeric.svg) | Types numériques, dont [double, float, integer et long](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![Icône d’objet](./media/how-to-use-azure-digital-twins-explorer/data-icons/object.svg) | [object](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#object) |
+| ![icône de chaîne](./media/how-to-use-azure-digital-twins-explorer/data-icons/string.svg) | [string](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+| ![icône d’heure](./media/how-to-use-azure-digital-twins-explorer/data-icons/time.svg) | [time](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#primitive-schemas) |
+
+##### <a name="errors"></a>Errors
+
+Le volet Propriétés du jumeau affiche des messages d’erreur si le jumeau ou certaines de ses propriétés ne correspondent plus à son modèle. 
+
+Il existe deux scénarios d’erreur possibles qui donnent chacun leur propre message d’erreur :
+* **L’un des nombreux modèles que le jumeau utilise est manquant**. Par conséquent, toutes les propriétés associées à ce modèle sont marquées comme « manquantes » dans le panneau Propriétés du jumeau. Cela peut se produire si le modèle a été supprimé depuis la création du jumeau.
+* **Certaines propriétés sur le jumeau ne font pas partie du modèle du jumeau.** Seules ces propriétés sont signalées comme « manquantes » dans le panneau Propriétés du jumeau. Ceci peut se produire si le modèle pour le jumeau a été remplacé ou modifié depuis la définition des propriétés, et si les propriétés n’existent plus dans la version la plus récente du modèle.
+
+Les deux messages d’erreur sont affichés dans la capture d’écran ci-dessous :
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-errors.png" alt-text="Capture d’écran du panneau des propriétés du jumeau Azure Digital Twins Explorer, montrant deux messages d’erreur. Une erreur indique que des modèles sont manquants, et l’autre indique qu’un modèle est manquant pour les propriétés. " lightbox="media/how-to-use-azure-digital-twins-explorer/properties-errors.png":::
+        :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/properties-errors.png" alt-text="Capture d’écran du panneau des propriétés du jumeau Azure Digital Twins Explorer, montrant deux messages d’erreur. Une erreur indique que des modèles sont manquants, et l’autre qu’un modèle est manquant pour les propriétés. " lightbox="media/how-to-use-azure-digital-twins-explorer/properties-errors.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -161,7 +189,7 @@ Vous pouvez filtrer les jumeaux et les relations qui apparaissent dans le graphe
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-filter-text.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. L’icône de filtre de texte est sélectionnée et montre l’onglet Filtrer où vous pouvez entrer un terme à rechercher." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-filter-text.png":::
 
-Vous pouvez aussi mettre en surbrillance les jumeaux et le graphe qui apparaissent dans le graphe en fonction du texte en sélectionnant cette icône **Mettre en surbrillance** :
+Vous pouvez aussi mettre en surbrillance les jumeaux et les relations qui apparaissent dans le graphe en fonction du texte en sélectionnant cette icône **Mettre en surbrillance** :
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-text.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. L’icône de filtre de texte est sélectionnée et montre l’onglet Mettre en surbrillance où vous pouvez entrer un terme à rechercher." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-text.png":::
 
@@ -173,7 +201,7 @@ Cette section décrit comment effectuer les activités de gestion suivantes :
 * [Afficher la liste plate des jumeaux et des relations](#view-flat-list-of-twins-and-relationships)
 * [Créer des jumeaux](#create-twins), avec ou sans propriétés initiales
 * [Créer des relations](#create-relationships) entre des jumeaux
-* [Modifier des jumeaux et des relations](#edit-twins-and-relationships)
+* [Modifier les propriétés du jumeau et de la relation](#edit-twin-and-relationship-properties)
 * [Supprimer des jumeaux et des relations](#delete-twins-and-relationships)
 
 Pour plus d’informations sur l’expérience de visualisation pour les jumeaux et les relations, consultez [Explorer les jumeaux et le graphique des jumeaux](#explore-the-twin-graph).
@@ -198,7 +226,7 @@ Pour créer un jumeau à partir d’un modèle, recherchez ce modèle dans la li
     :::column-end:::
 :::row-end:::
 
-Pour ajouter des valeurs de propriété à votre jumeau, consultez [Modifier des jumeaux et des relations](#edit-twins-and-relationships).
+Pour ajouter des valeurs de propriété à votre jumeau, consultez [Modifier les propriétés du jumeau et de la relation](#edit-twin-and-relationship-properties).
 
 ### <a name="create-relationships"></a>Créer des relations
 
@@ -210,15 +238,18 @@ Une fois les deux jumeaux sélectionnés, cliquez avec le bouton droit sur le ju
 
 Ceci fait apparaître la boîte de dialogue **Créer une relation**, qui montre le jumeau source et le jumeau cible de la relation, suivie d’un menu déroulant **Relation** qui contient les types de relation que peut avoir le jumeau source (définis dans son modèle DTDL). Sélectionnez une option pour le type de relation, puis **enregistrez** la nouvelle relation.
 
-### <a name="edit-twins-and-relationships"></a>Modifier des jumeaux et des relations
+### <a name="edit-twin-and-relationship-properties"></a>Modifier les propriétés du jumeau et de la relation
 
 Pour afficher les valeurs des propriétés d’un jumeau ou d’une relation, sélectionnez l’élément dans le **Graphe des jumeaux** et utilisez le bouton **Passer à l’inspecteur de propriétés** pour développer le panneau **Propriétés du jumeau** ou le panneau **Propriétés de la relation**.
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le jumeau FactoryA est sélectionné et le panneau Propriétés du jumeau est développé, montrant les propriétés du jumeau." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties.png":::
 
-Vous pouvez utiliser ce panneau pour modifier directement les propriétés accessibles en écriture. Mettez à jour leurs valeurs inline, puis cliquez sur le bouton **Enregistrer les modifications** en haut du panneau pour enregistrer. Quand la mise à jour est enregistrée, l’écran affiche une fenêtre modale montrant l’opération de correction JSON qui a été appliquée par l’[API de mise à jour](/rest/api/azure-digitaltwins/).
+Vous pouvez utiliser ce panneau pour modifier directement les propriétés accessibles en écriture. Mettez à jour leurs valeurs incluses, puis sélectionnez le bouton **Enregistrer les modifications** en haut du panneau pour enregistrer. Quand la mise à jour est enregistrée, l’écran affiche une fenêtre modale montrant l’opération de correction JSON qui a été appliquée par l’[API de mise à jour](/rest/api/azure-digitaltwins/).
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le centre de l’écran contient une boîte de dialogue modale Informations de correction montrant le code du correctif JSON." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-highlight-graph-properties-save.png":::
+
+>[!TIP]
+> Les propriétés affichées dans les panneaux **Propriétés du jumeau** et **Propriétés de la relation** sont affichées avec une icône, indiquant le type du champ du modèle DTDL. Pour plus d’informations sur les icônes de type, consultez [Icônes de type de données](#data-type-icons).
 
 ### <a name="delete-twins-and-relationships"></a>Supprimer des jumeaux et des relations
 
@@ -457,7 +488,7 @@ Azure Digital Twins ouvre un panneau **Importer** qui montre un aperçu du graph
 
 Si l’importation réussit, une fenêtre modale va afficher le nombre de modèles, de jumeaux et de relations qui ont été chargés.
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le centre de l’écran contient une fenêtre modale Importation réussie montrant 4 jumeaux importées et 2 relations importées." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png" alt-text="Capture d’écran du panneau Graphe des jumeaux d’Azure Digital Twins Explorer. Le centre de l’écran contient une fenêtre modale Importation réussie montrant quatre jumeaux importés et deux relations importées." lightbox="media/how-to-use-azure-digital-twins-explorer/twin-graph-panel-import-successful.png":::
 
 ### <a name="export-graph-and-models"></a>Exporter un graphe et des modèles
 
@@ -507,7 +538,7 @@ Le texte de la requête doit être encodé URL.
 >
 > Vous pouvez aussi utiliser un encodeur d’URL indépendant pour convertir le texte de la requête.
 
-Voici un exemple de paramètre pour une requête **SELECT * FROM digitaltwins** :
+Voici un exemple du paramètre pour une requête à `SELECT * FROM digitaltwins` :
 
 `...&query=SELECT%20*%20FROM%20digitaltwins`
 

@@ -3,12 +3,12 @@ title: En savoir plus sur les appareils découverts par tous les capteurs d’en
 description: Utilisez l’inventaire des appareils dans la console de gestion locale pour obtenir une vue complète des informations d’appareil obtenues à partir des capteurs connectés. Utilisez les outils d’importation, d’exportation et de filtrage pour gérer ces informations.
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: 8016efe809d03cbc00bdb94b67f99caa7f98ac4c
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 3a92d1950bd1fab5ea6e94a433aad1d74802fb23
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137818"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027258"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Examiner toutes les détections de capteur d’entreprise dans l’inventaire des appareils
 
@@ -43,6 +43,17 @@ Le tableau suivant décrit les colonnes de table dans l’inventaire des apparei
 | **Dernière activité** | Dernière activité effectuée par l’appareil. |
 | **Discovered** | Lorsque cet appareil a été détecté pour la première fois sur le réseau. |
 | **Mode PLC (préversion)** | Le mode de fonctionnement PLC comprend l’état Clé (physique) et l’état Exécution (logique). Les états **Clés** possibles incluent Exécuter, Programme, Distant, Arrêter, Non valide, Programmation, Désactivé. Les états **Exécution** possibles sont Exécuter, Programmer, Arrêter, Suspendu, Exception, Arrêté, Intercepté, Inactif, Hors connexion. Si les deux états sont identiques, seul l’état OE est présenté. |
+
+## <a name="what-is-an-inventory-device"></a>Qu’est-ce qu’un appareil d’inventaire ?
+
+L’inventaire d’appareil Defender pour IoT affiche un large éventail d’attributs d’appareils qui sont détectés par les capteurs qui contrôlent les réseaux organisationnels et les points de terminaison gérés. Defender pour IoT identifie et classe les appareils comme un seul appareil réseau unique dans l’inventaire pour :
+
+1. Appareils IT, OT et IoT autonomes (avec 1 ou plusieurs cartes d’interface réseau)
+1. Appareils composés de plusieurs composants de carte d’insertion (notamment tous les racks/emplacements/modules)
+1. Appareils agissant comme une infrastructure réseau comme commutateur/routeur (avec plusieurs cartes d’interface réseau). 
+
+Les adresses IP Internet publiques, les groupes de multidiffusion et les groupes de diffusion ne sont pas considérés comme des appareils d’inventaire.
+Les appareils qui ont été inactifs depuis plus de 60 jours sont classés en tant qu’appareils d’inventaire inactifs.
 
 ## <a name="integrate-data-into-the-enterprise-device-inventory"></a>Intégrer des données dans l’inventaire des appareils de l’entreprise
 

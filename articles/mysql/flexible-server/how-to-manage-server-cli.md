@@ -6,21 +6,17 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 0788ab52bbd70d63cf32d501fc54e10910509e15
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a2836e2c319810b48a20742cebaa816b6c20ffe1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128587781"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438072"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Gérer un serveur flexible Azure Database pour MySQL (préversion) à l’aide de l’interface de ligne de commande Azure
+# <a name="manage-an-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Gérer un serveur flexible Azure Database pour MySQL à l'aide d'Azure CLI
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL – Serveur flexible est actuellement en préversion publique.
-
-Cet article vous explique comment gérer votre serveur flexible (préversion) déployé sur Azure. Les tâches de gestion incluent notamment la mise à l’échelle du calcul et du stockage, la réinitialisation de mot de passe et l’affichage des informations relatives au serveur.
+Cet article vous explique comment gérer votre serveur flexible déployé sur Azure. Les tâches de gestion incluent notamment la mise à l’échelle du calcul et du stockage, la réinitialisation de mot de passe et l’affichage des informations relatives au serveur.
 
 ## <a name="prerequisites"></a>Prérequis
 

@@ -236,6 +236,8 @@
           href: azure-stack-hci-overview.md
         - name: FAQ sur Azure Stack HCI (version préliminaire)
           href: azure-stack-hci-faq.yml
+    - name: Étiqueter les ressources Azure Virtual Desktop
+      href: tag-virtual-desktop-resources.md
 - name: Dépanner
   items:
     - name: 'Vue d’ensemble du dépannage, commentaires et support'

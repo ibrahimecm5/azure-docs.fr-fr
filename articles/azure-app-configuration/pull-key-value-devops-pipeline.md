@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 55a17a70db3f23b169da90c746cd41f24273262e
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 2bee0e603d3cde38e56146900d682cc5e2b40bdc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666558"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056470"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Extraire des paramètres d’App Configuration à l’aide d’Azure Pipelines
 
@@ -23,7 +23,8 @@ La tâche [Azure App Configuration](https://marketplace.visualstudio.com/items?i
 - Abonnement Azure : [créez-en un gratuitement](https://azure.microsoft.com/free/)
 - Magasin App Configuration : créez-en un gratuitement dans le [portail Azure](https://portal.azure.com).
 - Projet Azure DevOps : [créez-en un gratuitement](https://go.microsoft.com/fwlink/?LinkId=2014881)
-- Tâche Azure App Configuration : téléchargez-la gratuitement à partir de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.).  
+- Tâche Azure App Configuration : téléchargez-la gratuitement à partir de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.). 
+- [Nœud 10](https://nodejs.org/en/blog/release/v10.21.0/) : pour les utilisateurs qui exécutent la tâche sur des agents auto-hébergés. 
 
 ## <a name="create-a-service-connection"></a>Créer une connexion de service
 

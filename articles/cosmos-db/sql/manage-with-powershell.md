@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: b6d1a8ddcbf7982c4b8c2a44bbd23c8bb78676df
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 39f7b829cb3ccff2bae002d47ab320bad1a80b62
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214171"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476278"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Gérer les ressources de l’API Azure Cosmos DB Core (SQL) à l’aide de PowerShell
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -121,7 +121,7 @@ Cette commande vous permet de mettre à jour les propriétés de votre compte de
 > [!NOTE]
 > Cette commande vous permet d’ajouter ou de supprimer des régions, mais ne vous permet pas de modifier des priorités de basculement ni de déclencher un basculement manuel. Consultez [Modifier la priorité de basculement](#modify-failover-priority) et [Déclencher un basculement manuel](#trigger-manual-failover).
 > [!TIP]
-> Lorsqu'une nouvelle région est ajoutée, toutes les données doivent y être entièrement répliquées et validées avant qu'elle ne soit marquée comme disponible. Le temps nécessaire à cette opération dépend de la quantité de données stockées dans le compte.
+> Lorsqu'une nouvelle région est ajoutée, toutes les données doivent y être entièrement répliquées et validées avant qu'elle ne soit marquée comme disponible. Le temps nécessaire à cette opération dépend de la quantité de données stockées dans le compte. Si une [opération de mise à l’échelle du débit asynchrone](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, elle est suspendue et reprend automatiquement une fois l’opération d’ajout ou de suppression de région terminée. 
 
 ```azurepowershell-interactive
 # Create account with two regions
@@ -323,6 +323,9 @@ Pour l’exemple ci-dessous, supposons que le compte a actuellement la priorité
 
 > [!CAUTION]
 > Le changement de `locationName` pour `failoverPriority=0` déclenche un basculement manuel pour un compte Azure Cosmos. Tout autre changement de priorité ne déclenche pas de basculement.
+
+> [!NOTE]
+> Si vous effectuez une opération de basculement manuel alors qu’une [opération de mise à l’échelle du débit asynchrone](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, cette dernière est suspendue. Elle reprend automatiquement une fois l’opération de basculement terminée.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"

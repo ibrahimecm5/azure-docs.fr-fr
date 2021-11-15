@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: d31634809786ca4e62b156b6659289012e27a560
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 111898a8b0719129f7e35d538585dee25cb2ccab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387007"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437407"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Bien démarrer avec Azure Synapse Analytics
 
@@ -25,11 +25,12 @@ Suivez les étapes *dans l’ordre* indiqué ci-dessous et vous examinerez la pl
 
 * [ÉTAPE 1 – Créer et configurer un espace de travail Synapse](get-started-create-workspace.md)
 * [ÉTAPE 2 – Analyser en utilisant un pool SQL serverless](get-started-analyze-sql-on-demand.md)
-* [ÉTAPE 3 – Analyser avec Apache Spark](get-started-analyze-spark.md)
-* [ÉTAPE 4 – Analyser en utilisant un pool SQL dédié](get-started-analyze-sql-pool.md)
-* [ÉTAPE 5 – Analyser des données dans un compte de stockage](get-started-analyze-storage.md)
-* [ÉTAPE 6 – Orchestrer avec des pipelines](get-started-pipelines.md)
-* [ÉTAPE 7 – Visualiser des données avec Power BI](get-started-visualize-power-bi.md)
-* [ÉTAPE 8 - Superviser les activités](get-started-monitor.md)
-* [ÉTAPE 9 - Explorer le Centre de connaissances](get-started-knowledge-center.md)
-* [ÉTAPE 10 - Ajouter un administrateur](get-started-add-admin.md)
+* [ÉTAPE 3 – Analyser en utilisant un pool Data Explorer](get-started-analyze-data-explorer.md)
+* [ÉTAPE 4 – Analyser avec Apache Spark](get-started-analyze-spark.md)
+* [ÉTAPE 5 – Analyser en utilisant un pool SQL dédié](get-started-analyze-sql-pool.md)
+* [ÉTAPE 6 – Analyser des données dans un compte de stockage](get-started-analyze-storage.md)
+* [ÉTAPE 7 – Orchestrer avec des pipelines](get-started-pipelines.md)
+* [ÉTAPE 8 – Visualiser des données avec Power BI](get-started-visualize-power-bi.md)
+* [ÉTAPE 9 – Superviser les activités](get-started-monitor.md)
+* [ÉTAPE 10 – Explorer le Centre des connaissances](get-started-knowledge-center.md)
+* [ÉTAPE 11 – Ajouter un administrateur](get-started-add-admin.md)

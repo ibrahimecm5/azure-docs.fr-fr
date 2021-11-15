@@ -1,6 +1,6 @@
 ---
 title: Spécifier des informations sur le plan d’achat de la Place de marché à l’aide d’Azure PowerShell
-description: Découvrez comment spécifier les détails du plan d’achat de la Place de marché Azure lors de la création d’images dans une galerie d’images partagées.
+description: Découvrez comment spécifier les détails du plan d’achat de la Place de marché Azure lors de la création d’images dans Azure Compute Gallery (anciennement appelée Shared Image Gallery).
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 52f4152a8f3ec1d2f812de74ed0bd238fb323330
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d50aa76f80205df1d34215a020691c51ca58d4b0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451832"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474607"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Fournir des informations sur le plan d’achat de la Place de marché Azure lors de la création d’images
 
@@ -37,7 +37,7 @@ $vm.Plan
 
 ## <a name="create-the-image-definition"></a>Créer la définition d’image
 
-Obtenez la galerie d’images que vous souhaitez utiliser pour stocker l’image. Vous pouvez commencer par lister toutes les galeries.
+Obtenez la galerie que vous souhaitez utiliser pour stocker l’image. Vous pouvez commencer par lister toutes les galeries.
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table

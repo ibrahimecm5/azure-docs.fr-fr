@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: df323dd973f65f6e4d332ec7a8a0d408c26ecc4e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 954fbb8edef1e35993acb9ec7590018719c4627d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076317"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848075"
 ---
 # <a name="connect-to-and-manage-azure-data-explorer-in-azure-purview"></a>Se connecter au service Azure Data Explorer et le gérer dans Azure Purview
 
@@ -24,7 +24,9 @@ Cet article explique comment inscrire Azure Data Explorer, et comment s’authen
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan)| [Oui](#scan)| Non | Non |
+| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan)| [Oui](#scan)| Non | Non** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 ## <a name="prerequisites"></a>Prérequis
 

@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: c3564a7c66002241a6b678d7314c4abe92cd3d24
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3be8101834eaa9f023c12b61d37c3b572d7a6ac6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609628"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434120"
 ---
 # <a name="sms-sdk-overview"></a>Vue d’ensemble du kit SDK SMS
 
@@ -38,7 +38,7 @@ La liste suivante présente l’ensemble des fonctionnalités actuellement dispo
 |                   | Prise en charge de l’idempotence                                                               | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Étiquettes personnalisées pour les messages.                                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 | Événements            | Utiliser Event Grid pour configurer des webhooks afin de recevoir des messages entrants et des rapports de remise | ✔️   | ✔️    | ✔️    | ✔️      |
-| Numéro de téléphone      | Numéros gratuits                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
+| Numéro de téléphone      | Numéros gratuits, numéros courts (*bientôt disponible*)                                        | ✔️   | ✔️    | ✔️    | ✔️      |
 | Appels RTPC      | Ajouter des fonctionnalités d’appel RTPC à votre numéro vert SMS                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Étapes suivantes

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5da530ff759bca62d8da679d493fe3c8d7360e32
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f25ab8e1eb144675567316194c9b4ca3a547f111
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028875"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475233"
 ---
 # <a name="tutorial-deploy-spring-cloud-application-connected-to-azure-database-for-mysql-with-service-connector"></a>Tutoriel : Déployer une application Spring Cloud connectée à Azure Database pour MySQL avec Service Connector
 
@@ -112,6 +112,9 @@ Une fois que votre serveur est créé, il présente les paramètres suivants :
     ```azurecli
     az spring-cloud connection create mysql
     ```
+
+    > [!NOTE]
+    > Si vous voyez le message d’erreur « L’abonnement n’est pas inscrit pour utiliser Microsoft.ServiceLinker », exécutez `az provider register -n Microsoft.ServiceLinker` pour inscrire le fournisseur de ressources Service Connector et réexécutez la commande de connexion. 
 
 1. Cloner l’exemple de code
 

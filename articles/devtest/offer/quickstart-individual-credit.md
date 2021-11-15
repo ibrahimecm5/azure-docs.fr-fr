@@ -1,18 +1,18 @@
 ---
-title: Comment prendre en main votre abonnement individuel de crédit VSS Azure Dev/Test
-description: Présente deux options pour qu’un individu accède à un abonnement de crédit Azure.
+title: Commencer à utiliser un crédit de Dev/Test Azure individuel
+description: En tant qu’abonné Visual Studio, découvrez comment accéder à un abonnement Crédit Azure.
 author: jamestramel
 ms.author: jametra
 ms.date: 10/20/2021
 ms.topic: how-to
 ms.prod: visual-studio-windows
 ms.custom: devtestoffer
-ms.openlocfilehash: 2901d8a7ec602878fb02d4c501efa26465619dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 99dd3bb1f259fff02a46ee9ceb1930dee1327b06
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097449"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059958"
 ---
 # <a name="how-to-get-started-with-your-individual-azure-credit-subscription"></a>Prise en main de votre abonnement individuel de crédit Azure  
 

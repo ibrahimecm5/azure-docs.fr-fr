@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 3844e71a1c3c9e823586a428b9ae98a3b804d502
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 73bad87352176e4272a68248bf7f052dccc0165a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034547"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446407"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Recommandations automatisées pour Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -66,6 +66,8 @@ Dans cette catégorie, le conseiller détecte l’utilisation de RU/s et déterm
 | Capacité réservée | Détecte votre utilisation de RU/s et recommande des instances réservées aux utilisateurs qui peuvent en bénéficier. |
 | Conteneurs inactifs | Détecte les conteneurs qui n’ont pas été utilisés depuis plus de 30 jours et recommande de réduire le débit pour ces conteneurs ou de les supprimer.|
 | Nouveaux abonnements avec un débit élevé | Détecte les nouveaux abonnements dont les comptes présentent une consommation de RU/s par jour exceptionnellement élevée par jour et leur adresse une notification. Cette notification vise précisément à attirer l’attention des nouveaux clients sur le mode de fonctionnement d’Azure Cosmos DB, qui repose sur un modèle basé sur le débit provisionné et non sur un modèle basé sur la consommation. |
+| Activer la mise à l’échelle automatique | Détermine si les bases de données et les conteneurs qui utilisent actuellement un débit manuel pourraient réaliser des économies en activant la mise à l’échelle automatique. |
+| Utiliser le débit manuel au lieu de la mise à l’échelle automatique | Détermine si les bases de données et les conteneurs qui utilisent actuellement la mise à l’échelle automatique pourraient réaliser des économies en passant au débit manuel. |
 
 ## <a name="migration-recommendations"></a>Recommandations en matière de migration
 
@@ -87,6 +89,6 @@ Dans cette catégorie, le conseiller détecte l’exécution de requêtes et ide
 
 * [Réglage des performances des requêtes dans Azure Cosmos DB](sql-api-query-metrics.md)
 * [Résoudre les problèmes de requêtes](troubleshoot-query-performance.md) quand Azure Cosmos DB est utilisé
-* Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ? Vous pouvez utiliser les informations sur votre cluster de bases de données existantes pour la planification de la capacité.
-    * Si vous ne connaissez que le nombre de vCore et de serveurs présents dans votre cluster de bases de données existant, lisez l’article sur l’[estimation des unités de requête à l’aide de vCore ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
+* Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ? Vous pouvez utiliser les informations sur votre cluster de bases de données existant pour la planification de la capacité.
+    * Si vous ne connaissez que le nombre de vCores et de serveurs présents dans votre cluster de bases de données existant, lisez [Estimation des unités de requête à l’aide de vCores ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
     * Si vous connaissez les taux de requêtes types de votre charge de travail de base de données actuelle, lisez la section concernant l’[estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)

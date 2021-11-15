@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 1/14/2021
-ms.openlocfilehash: 18cc914db7634637ec2ea541afbcefc105e5d38c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 11/04/2021
+ms.openlocfilehash: 215cd52bf5f0272884364f2070985459937ccdc8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590339"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853013"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Résoudre les problèmes de performances liés à Azure SQL Database et Azure SQL Managed Instance avec Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Intelligent Insights détecte automatiquement les problèmes de performances en 
 | :------------------- | ------------------- | ------------------- |
 | [Atteinte des limites de ressources](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | La consommation des ressources disponibles (DTU), les threads de travail de base de données ou les sessions de connexion de base de données disponibles sur l’abonnement surveillé ont atteint leurs limites de ressources. Cela affecte les performances. | La consommation des ressources de l’UC atteint les limites de ressources. Ce phénomène affecte les performances de la base de données. |
 | [Augmentation de la charge de travail](intelligent-insights-troubleshoot-performance.md#workload-increase) | Une augmentation de la charge de travail ou une accumulation continue de la charge de travail sur la base de données a été détectée. Cela affecte les performances. | Une augmentation de la charge de travail a été détectée. Ce phénomène affecte les performances de la base de données. |
-| [Sollicitation de la mémoire](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Les rôles de travail qui ont demandé des allocations de mémoire doivent attendre celles-ci pendant des périodes statistiquement importantes, faute de quoi les demandes d'allocations de mémoire des rôles de travail ne cessent de s'accumuler. Cela affecte les performances. | Les threads de travail qui ont demandé des allocations de mémoire attendent pendant un intervalle de temps statistiquement important. Ce phénomène affecte les performances de la base de données. |
+| [Sollicitation de la mémoire](intelligent-insights-troubleshoot-performance.md#memory-pressure) | Les rôles de travail qui ont demandé des allocations de mémoire doivent attendre celles-ci pendant des périodes statistiquement importantes, faute de quoi les demandes d’allocations de mémoire des rôles de travail ne cessent de s’accumuler. Cela affecte les performances. | Les threads de travail qui ont demandé des allocations de mémoire attendent pendant un intervalle de temps statistiquement important. Ce phénomène affecte les performances de la base de données. |
 | [Verrouillage](intelligent-insights-troubleshoot-performance.md#locking) | Un verrouillage excessif de la base de données a été détecté, ce qui affecte les performances. | Un verrouillage excessif de la base de données a été détecté, ce qui affecte les performances de la base de données. |
 | [Augmentation de MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | L’option relative au degré maximal de parallélisme (MAXDOP) a été modifiée, ce qui affecte l’efficacité de l’exécution des requêtes. Cela affecte les performances. | L’option relative au degré maximal de parallélisme (MAXDOP) a été modifiée, ce qui affecte l’efficacité de l’exécution des requêtes. Cela affecte les performances. |
 | [Contention de verrous de page](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Plusieurs threads tentent simultanément d’accéder aux mêmes pages de tampon de données en mémoire, ce qui augmente les temps d’attente et entraîne la contention de verrous de page. Cela affecte les performances. | Plusieurs threads tentent simultanément d’accéder aux mêmes pages de tampon de données en mémoire, ce qui augmente les temps d’attente et entraîne la contention de verrous de page. Ce phénomène affecte les performances de la base de données. |
@@ -110,7 +110,7 @@ Vous pouvez optimiser ou supprimer les requêtes liées aux régisseurs dont l�
 
 Vous pouvez également réduire la charge de travail en l’optimisant ou en la distribuant entre plusieurs bases de données. De même, rien ne vous empêche de distribuer simplement votre charge de travail entre plusieurs bases de données. Si ces solutions ne sont pas viables, augmentez éventuellement le niveau tarifaire de votre base de données pour accroître la quantité de ressources mémoire disponibles pour la base de données.
 
-Pour des suggestions de dépannage supplémentaires, consultez le billet de blog [Memory grants meditation: The mysterious SQL Server memory consumer with many names](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994).
+Pour des suggestions de dépannage supplémentaires, consultez le billet de blog [Memory grants meditation: The mysterious SQL Server memory consumer with many names](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994). Pour plus d’informations sur les erreurs de mémoire insuffisante dans Azure SQL Database, consultez [Résoudre les erreurs de mémoire insuffisante avec Azure SQL Database](troubleshoot-memory-errors-issues.md).
 
 ## <a name="locking"></a>Verrouillage
 
@@ -226,7 +226,7 @@ Pour plus d’informations sur l’optimisation des performances des requêtes, 
 
 ### <a name="what-is-happening"></a>Ce qui se passe
 
-Ce modèle de performances détectables indique un problème au niveau des performances de base de données, car il existe un goulot d’étranglement pour les threads qui tentent d’accéder aux ressources tempDB. (Cette situation n’est pas liée aux E/S.) Le scénario classique de ce problème de performances implique des centaines de requêtes simultanées qui créent, utilisent, puis suppriment de petites tables tempDB. Le système a détecté que le nombre de requêtes simultanées qui utilisent les mêmes tables tempDB a augmenté et qu’il présente une pertinence statistique suffisante pour affecter les performances de la base de données par rapport à la base de référence des performances des sept jours précédents.
+Ce modèle de performances détectables indique un problème au niveau des performances de base de données, car il existe un goulot d’étranglement pour les threads qui tentent d’accéder aux ressources tempDB. (Cette situation n’est pas liée aux E/S.) Le scénario classique de ce problème de performances implique des centaines de requêtes simultanées qui créent, utilisent, puis suppriment toutes des petites tables TempDB. Le système a détecté que le nombre de requêtes simultanées qui utilisent les mêmes tables tempDB a augmenté et qu’il présente une pertinence statistique suffisante pour affecter les performances de la base de données par rapport à la base de référence des performances des sept jours précédents.
 
 ### <a name="troubleshooting"></a>Dépannage
 

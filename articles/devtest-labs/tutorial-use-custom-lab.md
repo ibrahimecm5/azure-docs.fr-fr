@@ -1,79 +1,106 @@
 ---
 title: Accéder à un laboratoire
-description: Dans ce didacticiel, vous accédez au laboratoire créé à l’aide d’Azure DevTest Labs, revendiquez des machines virtuelles, vous les utilisez, puis vous cessez de les revendiquer.
+description: Dans ce tutoriel, vous accédez à un laboratoire dans Azure DevTest Labs. Vous utilisez une machine virtuelle, la refusez, puis la revendiquez.
 ms.topic: tutorial
-ms.date: 06/26/2020
+ms.date: 11/03/2021
 ms.author: spelluru
-ms.openlocfilehash: d9338bc746158802c86b9631323f3523d01714ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d5ace346c8f4b853e862b2e12b8b2adee55bab8c
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561312"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578537"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Didacticiel : accéder à un laboratoire dans Azure DevTest Labs
-Dans ce didacticiel, vous utilisez le laboratoire créé dans le [didacticiel : créer un laboratoire dans Azure DevTest Labs](tutorial-create-custom-lab.md).
+
+Dans ce tutoriel, vous utilisez le laboratoire créé dans le [tutoriel : Créer un laboratoire dans Azure DevTest Labs](tutorial-create-custom-lab.md).
 
 Dans ce tutoriel, vous allez effectuer les actions suivantes :
 
 > [!div class="checklist"]
-> * Revendiquer une machine virtuelle dans le laboratoire
-> * Connexion à la machine virtuelle
-> * Cesser de revendiquer la machine virtuelle
+> * Se connecter à la machine virtuelle de laboratoire
+> * Refuser la machine virtuelle de laboratoire
+> * Revendiquer la machine virtuelle de laboratoire
 
-Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/) avant de commencer.
+Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) avant de commencer.
 
-## <a name="access-the-lab"></a>Accéder à l’atelier
+## <a name="prerequisites"></a>Prérequis
+
+Un [laboratoire dans DevTest Labs avec une machine virtuelle Azure](tutorial-create-custom-lab.md).
+
+## <a name="connect-to-the-lab-vm"></a>Se connecter à la machine virtuelle de laboratoire
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
-2. Sélectionnez **Toutes les ressources** dans le menu de gauche. 
-3. Sélectionnez **DevTest Labs** comme type de ressource. 
-4. Sélectionnez le laboratoire. 
 
-    ![Sélectionner le laboratoire](./media/tutorial-use-custom-lab/search-for-select-custom-lab.png)
+1. Accédez à votre lab dans **DevTest Labs**.
 
-## <a name="claim-a-vm"></a>Revendiquer une machine virtuelle
+1. Sous **Mes machines virtuelles**, sélectionnez votre machine virtuelle.
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/my-virtual-machines.png" alt-text="Capture d’écran de la machine virtuelle sous Mes machines virtuelles.":::
+
+1. Dans le menu du haut, sélectionnez **Connexion**. Sélectionnez ensuite le fichier `.rdp` à télécharger sur votre ordinateur.
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/vm-connect.png" alt-text="Capture d’écran du bouton Connexion à la machine virtuelle.":::
+
+1. Dans la boîte de dialogue **Connexion Bureau à distance**, sélectionnez **Connexion**.
+
+1. Dans la boîte de dialogue **Entrer vos informations d’identification**, entrez le mot de passe, puis sélectionnez **OK**.
+
+1. Si vous recevez une boîte de dialogue indiquant que **l’identité de l’ordinateur distant ne peut pas être vérifiée**, cochez la case **Ne plus afficher pour les connexions à cet ordinateur**. Sélectionnez ensuite **Oui**.
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/remote-computer-verification.png" alt-text="Capture d’écran de la vérification de l’ordinateur distant.":::
+
+Pour connaître les étapes de connexion à une machine virtuelle Linux, consultez [Se connecter à une machine virtuelle Linux](../virtual-machines/linux/use-remote-desktop.md). 
+
+## <a name="unclaim-the-lab-vm"></a>Refuser la machine virtuelle de laboratoire
+
+Une fois que vous avez fini d’utiliser la machine virtuelle, refusez-la en procédant comme suit : 
+
+1. Sélectionnez votre machine virtuelle dans DevTest Labs en utilisant les mêmes étapes précédentes.
+
+1. Dans la page de la **machine virtuelle**, dans le menu supérieur, sélectionnez **Refuser**. 
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/virtual-machine-unclaim.png" alt-text="Capture d’écran de l’option Refuser.":::
+
+1. La machine virtuelle est arrêtée avant que la revendication ne cesse. Vous pouvez surveiller l’état de cette opération dans **Notifications**.
+
+1. Fermez la page de la **machine virtuelle** pour revenir à la page **Vue d’ensemble du laboratoire DevTest**.
+
+1. Sous **Mon lab**, sélectionnez **Machines virtuelles pouvant être revendiquées**. La machine virtuelle est désormais disponible pour être revendiquée.
+
+    :::image type="content" source="./media/tutorial-use-custom-lab/claimable-virtual-machines.png" alt-text="Capture d’écran des options sous les machines virtuelles revendicables.":::
+
+## <a name="claim-a-lab-vm"></a>Revendiquer une machine virtuelle de laboratoire
+
+Vous pouvez revendiquer à nouveau la machine virtuelle si vous avez besoin de l’utiliser.
 
 1. Dans la liste des **machines virtuelles pouvant être réclamées**, sélectionnez **...** (points de suspension), puis sélectionnez **Revendiquer la machine**.
 
-    ![Revendiquer une machine virtuelle](./media/tutorial-use-custom-lab/claim-virtual-machine.png)
+    :::image type="content" source="./media/tutorial-use-custom-lab/claimable-virtual-machines-claimed.png" alt-text="Capture d’écran de l’option Revendiquer.":::
+
 1. Vérifiez que la présence de la machine virtuelle dans la liste **Mes machines virtuelles**.
 
-    ![Ma machine virtuelle](./media/tutorial-use-custom-lab/my-virtual-machines.png)
+    :::image type="content" source="./media/tutorial-use-custom-lab/my-virtual-machines-2.png" alt-text="Capture d’écran montrant la machine virtuelle renvoyée à Mes machines virtuelles.":::
 
-## <a name="connect-to-the-vm"></a>Connexion à la machine virtuelle
+## <a name="clean-up-resources"></a>Nettoyer les ressources
 
-1. Sélectionnez votre machine virtuelle dans la liste. Vous voyez la **page de la machine virtuelle** pour votre machine virtuelle. Sélectionnez **Se connecter** sur la barre d’outils.
+Supprimez des ressources pour éviter les frais liés à l’exécution du lab et de la machine virtuelle sur Azure. Si vous comptez exécuter le tutoriel suivant pour accéder à la machine virtuelle dans le lab, vous pouvez nettoyer les ressources à la fin de ce tutoriel. Dans le cas contraire, procédez ainsi : 
 
-    ![Connexion à la machine virtuelle](./media/tutorial-use-custom-lab/connect-button.png)
-2. Enregistrez le fichier **RDP** téléchargé sur votre disque dur, et utilisez-le pour vous connecter à la machine virtuelle. Spécifiez le nom d’utilisateur et le mot de passe que vous avez indiqués en créant la machine virtuelle à la section précédente. 
+1. Revenez à la page d’accueil du lab que vous avez créé.
 
-    Pour vous connecter à une machine virtuelle Linux, l’accès par protocole SSH et/ou RDP doit être activé pour la machine virtuelle. Pour les étapes à suivre pour vous connecter à une machine virtuelle Linux via un protocole RDP, consultez [Installer et configurer le Bureau à distance pour se connecter à une machine virtuelle Linux dans Azure](../virtual-machines/linux/use-remote-desktop.md). 
+1. Dans le menu du haut, sélectionnez **Supprimer**.
 
-    > [!NOTE]
-    > Il existe d’autres façons d’accéder à la page de votre machine virtuelle. En voici quelques-unes : 
-    > 
-    > 1. Recherchez toutes les machines virtuelles de votre abonnement. Sélectionnez votre machine virtuelle dans la liste pour accéder à la page **Machine virtuelle**.
-    > 2. Accédez à la page **Groupe de ressources** pour le groupe de ressources. Ensuite, sélectionnez votre machine virtuelle dans la liste des ressources du groupe de ressources pour accéder à la page **Machine virtuelle**. 
-    >
-    > N’utilisez pas le bouton **Se connecter** de la barre d’outils de la page **Machine virtuelle** à laquelle vous accédez à l’aide de ces options. Au lieu de cela, accédez à la page **Machine virtuelle** à partir de la page **DevTest Labs**, comme indiqué dans cet article, puis utilisez le bouton **Se connecter** dans la barre d’outils.
+   :::image type="content" source="./media/tutorial-use-custom-lab/portal-lab-delete.png" alt-text="Capture d’écran du bouton Supprimer du lab.":::
 
+1. Dans la page **Voulez-vous vraiment le supprimer**, entrez le nom du lab dans la zone de texte et sélectionnez **Supprimer**.
 
-## <a name="unclaim-the-vm"></a>Cesser de revendiquer la machine virtuelle
-Une fois que vous avez fini d’utiliser la machine virtuelle, cessez de la revendiquer en suivant ces étapes : 
+1. Pendant la suppression, vous pouvez sélectionner **Notifications** en haut de votre écran pour voir la progression. La suppression du lab prend un certain temps. Passez à l’étape suivante une fois le lab supprimé.
 
-1. Sur la page de la machine virtuelle, sélectionnez **Cesser de revendiquer** sur la barre d’outils. 
-
-    ![Cesser de revendiquer une machine virtuelle](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. La machine virtuelle est arrêtée avant que la revendication ne cesse. Vous pouvez voir l’état de cette opération dans les notifications.  
-3. Revenez à la page DevTest Lab en cliquant sur le nom de votre laboratoire, en haut dans le menu de navigation. 
-    
-    ![Revenir au laboratoire](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
-1. Vérifiez que vous voyez la machine virtuelle dans la liste des **machines virtuelles revendicables** en bas.
-
+1. Si vous avez créé le lab dans un groupe de ressources existant, toutes les ressources de lab ont été supprimées. Si vous avez créé un groupe de ressources pour ce tutoriel, il est maintenant vide et peut être supprimé. Vous ne pouvez pas supprimer le groupe de ressources plus tôt quand le lab y est toujours.
     
 ## <a name="next-steps"></a>Étapes suivantes
-Ce didacticiel vous a montré comment accéder à et utiliser un laboratoire créé à l’aide d’Azure DevTest Labs. Pour plus d’informations sur l’accès et l’utilisation de machines virtuelles dans un laboratoire personnalisé, consultez 
+
+Dans ce tutoriel, vous avez appris à accéder à un laboratoire dans Azure DevTest Labs et à l’utiliser. Pour plus d’informations sur l’accès à des machines virtuelles dans un laboratoire et sur leur utilisation, consultez :
 
 > [!div class="nextstepaction"]
 > [Procédure : utiliser des machines virtuelles dans un laboratoire](devtest-lab-add-vm.md)

@@ -2,31 +2,29 @@
 title: Conseils de conception pour les tables répliquées
 description: Suggestions sur la conception de tables répliquées dans un pool Synapse SQL
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/19/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f4c9326d4893209379bf459ed9fa7b9feff253aa
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 2dd2b937029d240ac28904cc346d2211cab99ac1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109837850"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506350"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Conseils de conception pour l'utilisation de tables répliquées dans un pool Synapse SQL
 
 Cet article fournit des suggestions sur la conception de tables répliquées dans votre schéma de pool Synapse SQL. Utilisez ces recommandations pour améliorer les performances des requêtes en réduisant le déplacement de données et la complexité des requêtes.
 
-> [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
-
 ## <a name="prerequisites"></a>Prérequis
 
-Cet article suppose que les concepts de distribution et de déplacement de données dans un pool SQL vous sont familiers.    Pour plus d’informations, consultez l’article sur [l’architecture](massively-parallel-processing-mpp-architecture.md).
+Cet article suppose que les concepts de distribution et de déplacement de données dans un pool SQL vous sont familiers.   Pour plus d’informations, consultez l’article sur [l’architecture](massively-parallel-processing-mpp-architecture.md).
 
 Dans le cadre de la conception d’une table, essayez d’en savoir autant que possible sur vos données et la façon dont elles sont interrogées.    Considérez par exemple les questions suivantes :
 
@@ -36,13 +34,13 @@ Dans le cadre de la conception d’une table, essayez d’en savoir autant que p
 
 ## <a name="what-is-a-replicated-table"></a>Qu’est-ce qu’une table répliquée ?
 
-Une table répliquée possède une copie complète de la table accessible sur chaque nœud de calcul. La réplication d’une table évite le transfert de données entre des nœuds de calcul avant une jointure ou une agrégation. Étant donné que la table possède plusieurs copies, le fonctionnement des tables répliquées est optimal lorsque la taille de la table est inférieure à 2 Go compressés.  2 Go n’est pas une limite inconditionnelle.  Si les données sont statiques et ne changent pas, vous pouvez répliquer des tables plus volumineuses.
+Une table répliquée possède une copie complète de la table accessible sur chaque nœud de calcul. La réplication d’une table évite le transfert de données entre des nœuds de calcul avant une jointure ou une agrégation. Étant donné que la table possède plusieurs copies, le fonctionnement des tables répliquées est optimal lorsque la taille de la table est inférieure à 2 Go compressés. 2 Go n’est pas une limite inconditionnelle.  Si les données sont statiques et ne changent pas, vous pouvez répliquer des tables plus volumineuses.
 
 Le diagramme suivant illustre une table répliquée accessible sur chaque nœud de calcul. Dans un pool SQL, la table répliquée est entièrement copiée dans une base de données de distribution sur chaque nœud de calcul.
 
-![Table répliquée](./media/design-guidance-for-replicated-tables/replicated-table.png "Table répliquée")  
+:::image type="content" source="./media/design-guidance-for-replicated-tables/replicated-table.png" alt-text="Table répliquée" lightbox="./media/design-guidance-for-replicated-tables/replicated-table.png":::
 
-Les tables répliquées fonctionnent bien dans des tables de dimension dans un schéma en étoile. Les tables de dimension sont généralement jointes à des tables de faits, qui sont réparties différemment des tables de dimension.  Les dimensions sont généralement une taille qui permet de stocker et de gérer plusieurs copies. Les dimensions stockent des données descriptives qui se modifient lentement, comme le nom et l’adresse du client, ainsi que les détails sur le produit. La lenteur de la nature changeante des données entraîne moins de maintenance pour la table répliquée.
+Les tables répliquées fonctionnent bien dans des tables de dimension dans un schéma en étoile. Les tables de dimension sont généralement jointes à des tables de faits, qui sont distribuées différemment de la table de dimension.  Les dimensions sont généralement une taille qui permet de stocker et de gérer plusieurs copies. Les dimensions stockent des données descriptives qui se modifient lentement, comme le nom et l’adresse du client, ainsi que les détails sur le produit. La lenteur de la nature changeante des données entraîne moins de maintenance pour la table répliquée.
 
 Envisagez d’utiliser une table répliquée dans les cas suivants :
 
@@ -67,18 +65,16 @@ Les requêtes sollicitant beaucoup le processeur fonctionnent de manière optima
 Par exemple, cette requête comporte un prédicat complexe.  Elle s’exécute plus rapidement lorsque les données se trouvent dans une table distribuée au lieu d’une table répliquée. Dans cet exemple, les données peuvent être distribuées par tourniquet.
 
 ```sql
-
 SELECT EnglishProductName
 FROM DimProduct
-WHERE EnglishDescription LIKE '%frame%comfortable%'
-
+WHERE EnglishDescription LIKE '%frame%comfortable%';
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Convertir les tables de distribution par tourniquet (round-robin) en tables répliquées
 
 Si vous avez déjà des tables de distribution par tourniquet, nous vous recommandons de les convertir en tables répliquées si elles sont conformes aux critères décrits dans cet article. Les tables répliquées ont de meilleures performances que les tables de distribution par tourniquet, car elles éliminent le déplacement des données.  Une table de distribution par tourniquet requiert toujours le déplacement des données pour les jointures.
 
-Cet exemple utilise [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour modifier la table DimSalesTerritory en une table répliquée. Cet exemple fonctionne que la table DimSalesTerritory soit distribuée par hachage ou par tourniquet.
+Cet exemple utilise [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour modifier la table `DimSalesTerritory` en une table répliquée. Cet exemple fonctionne que la table `DimSalesTerritory` soit distribuée par hachage ou par tourniquet (round robin).
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
@@ -101,7 +97,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Une table répliquée ne nécessite pas le déplacement des données pour les jointures, car la table entière est déjà présente sur chaque nœud de calcul. Si les tables de dimension sont des tables distribuées par tourniquet, une jointure copie entièrement la table de dimension sur chaque nœud de calcul. Pour déplacer les données, le plan de requête contient une opération appelée BroadcastMoveOperation. Ce type d’opération de déplacement des données ralentit les performances des requêtes. Il n’est pas utilisé par les tables répliquées. Pour afficher les étapes relatives au plan de requête, utilisez la vue catalogue système [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 
-Par exemple, dans la requête suivante sur le schéma AdventureWorks, la table `FactInternetSales` est distribuée par hachage. Les tables `DimDate` et `DimSalesTerritory` sont des tables de dimension plus petites. Cette requête retourne le total des ventes en Amérique du Nord pour l’année fiscale 2004 :
+Par exemple, dans la requête suivante sur le schéma `AdventureWorks`, la table `FactInternetSales` est distribuée par hachage. Les tables `DimDate` et `DimSalesTerritory` sont des tables de dimension plus petites. Cette requête retourne le total des ventes en Amérique du Nord pour l’année fiscale 2004 :
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -124,7 +120,7 @@ Nous avons recréé les tables `DimDate` et `DimSalesTerritory` en tant que tabl
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Considérations relatives aux performances pour la modification des tables répliquées
 
-Le pool SQL implémente une table répliquée en conservant une version principale de la table. Il copie la version principale dans la première base de données de distribution sur chaque nœud de calcul. En cas de modification, la version de référence est d’abord mise à jour, puis les tables sur chaque nœud de calcul sont reconstruites. Une reconstruction d’une table répliquée implique la copie de la table sur chaque nœud de calcul et la construction des index.  Par exemple, une table répliquée sur un DW2000c a 5 copies des données.  Une copie principale et une copie complète sur chaque nœud de calcul.  Toutes les données sont stockées dans des bases de données de distribution. Le pool SQL utilise ce modèle pour prendre en charge des instructions de modification de données plus rapides et des opérations de mise à l'échelle flexibles.
+Le pool SQL implémente une table répliquée en conservant une version principale de la table. Il copie la version principale dans la première base de données de distribution sur chaque nœud de calcul. En cas de modification, la version de référence est d’abord mise à jour, puis les tables sur chaque nœud de calcul sont reconstruites. Une reconstruction d’une table répliquée implique la copie de la table sur chaque nœud de calcul et la construction des index.  Par exemple, une table répliquée sur un DW2000c a cinq copies des données.  Une copie principale et une copie complète sur chaque nœud de calcul.  Toutes les données sont stockées dans des bases de données de distribution. Le pool SQL utilise ce modèle pour prendre en charge des instructions de modification de données plus rapides et des opérations de mise à l'échelle flexibles.
 
 Les reconstructions asynchrones sont déclenchées par la première requête du tableau répliqué après :
 

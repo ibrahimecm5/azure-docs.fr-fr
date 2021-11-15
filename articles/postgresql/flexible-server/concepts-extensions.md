@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: fb84bc87483b7a0451d6fd63d922ad9c6c2dfb3c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bc176567721b3c023afcb82e920b33fca7ca0a53
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467565"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061227"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Extensions PostgreSQL dans Azure Database pour PostgreSQL - Serveur flexible
 
@@ -98,6 +98,7 @@ Les extensions suivantes sont disponibles dans les serveurs Azure Database pour 
 > |[earthdistance](https://www.postgresql.org/docs/12/earthdistance.html)                | 1.1             | Calcule les distances orthodromiques à la surface de la Terre|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/12/fuzzystrmatch.html)                | 1.1             | Détermine les ressemblances et la distance entre les chaînes|
 > |[hstore](https://www.postgresql.org/docs/12/hstore.html)                       | 1.6             | Type de données permettant de stocker des paires clé/valeur|
+> |[hypopg](https://github.com/HypoPG/hypopg)                                   |  1,2             | prise en charge de l’ajout d’extension pour des index hypothétiques |
 > |[intagg](https://www.postgresql.org/docs/12/intagg.html)                     | 1.1             | agrégateur et énumérateur d’entier. (Obsolète)|
 > |[intarray](https://www.postgresql.org/docs/12/intarray.html)                     | 1.2             | Fonctions, opérateurs et prise en charge d’index pour les tableaux d’entiers 1D|
 > |[isn](https://www.postgresql.org/docs/12/isn.html)                          | 1.2             | Types de données pour les standards internationaux de numérotation de produits|
@@ -151,6 +152,7 @@ Les extensions suivantes sont disponibles dans les serveurs Azure Database pour 
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | Calcule les distances orthodromiques à la surface de la Terre|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | Détermine les ressemblances et la distance entre les chaînes|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | Type de données permettant de stocker des paires clé/valeur|
+> |[hypopg](https://github.com/HypoPG/hypopg)                                   |  1.1.2            | prise en charge de l’ajout d’extension pour des index hypothétiques |
 > |[intagg](https://www.postgresql.org/docs/11/intagg.html)                     | 1.1             | agrégateur et énumérateur d’entier. (Obsolète)|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | Fonctions, opérateurs et prise en charge d’index pour les tableaux d’entiers 1D|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | Types de données pour les standards internationaux de numérotation de produits|
@@ -214,6 +216,8 @@ Pour déplanifier toutes les tâches de pg_cron
 ```
 SELECT cron.unschedule(jobid) FROM cron.job;
 ```
+> [!NOTE]
+> L’extension pg_cron est préchargée dans chaque Azure Database pour PostgreSQL – Serveur flexible à l’intérieur d’une base de données Postgres pour vous permettre de planifier l’exécution de travaux dans d’autres bases de données au sein de votre instance de base de données PostgreSQL sans compromettre la sécurité.
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 

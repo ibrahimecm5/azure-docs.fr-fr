@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a31cad4f2828a505eb89782bf28b01049a46cfc
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f923cafa9e43d965674050e43c2f2c6a14917dea
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998007"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266133"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Guide pratique de l’utilisation d’identités managées pour ressources Azure sur une machine virtuelle Azure afin d’acquérir un jeton d’accès 
 
@@ -367,6 +367,9 @@ Cette section documente les réponses possibles aux erreurs. Un état « 200 OK 
 |           | unsupported_response_type | Le serveur d’autorisation ne prend pas en charge l’obtention d’un jeton d’accès par cette méthode. |  |
 |           | invalid_scope | L’étendue demandée est incorrecte, inconnue ou non valide. |  |
 | Erreur interne 500 du serveur | unknown | Impossible de récupérer le jeton depuis Active Directory. Pour plus d’informations, consultez les journaux d’activité dans *\<file path\>* | Vérifiez que les identités managées pour ressources Azure ont été activées sur la machine virtuelle. Si vous avez besoin d’aide pour configurer une machine virtuelle, voir [Configurer des identités managées pour ressources Azure sur une machine virtuelle en utilisant le portail Azure](qs-configure-portal-windows-vm.md).<br><br>Vérifiez également que votre URI de requête HTTP GET est correctement mise en forme, en particulier l’URI de la ressource spécifiée dans la chaîne de requête. Un « Exemple de requête » est disponible à la section REST précédente. Pour obtenir la liste des services et leur ID de ressource respectif, consultez [Services Azure prenant en charge l'authentification Azure AD](./services-support-managed-identities.md).
+
+> [!IMPORTANT]
+> - IMDS n’est pas destiné à être utilisé derrière un proxy, ce qui n’est pas pris en charge. Pour obtenir des exemples de contournement des proxies, reportez-vous aux [exemples de métadonnées d’instance Azure](https://github.com/microsoft/azureimds).  
 
 ## <a name="retry-guidance"></a>Conseils sur les nouvelles tentatives 
 

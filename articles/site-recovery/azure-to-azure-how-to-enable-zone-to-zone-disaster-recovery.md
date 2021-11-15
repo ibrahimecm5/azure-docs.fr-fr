@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 7d6d2c3d4a4e1f085d19ff4ffe407ed78f79c325
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 263548b8f19c7cad8a27ec605bf9191478a65408
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708602"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867206"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Activer la récupération d’urgence des machines virtuelles Azure entre les zones de disponibilité
 
@@ -20,7 +20,7 @@ Cet article explique comment répliquer, basculer et restaurer automatiquement d
 
 >[!NOTE]
 >
->- La prise en charge de la reprise d’activité de zone à zone est actuellement limitée aux régions suivantes : Asie Sud-Est, Japon Est, Corée Centre, Australie Est, Inde Centre, Royaume-Uni Sud, Europe Ouest, Europe Nord, Norvège Est, France Centre, Canada Centre, USA Centre, USA Centre-Sud, USA Est, USA Est 2, USA Ouest 2, Brésil Sud et USA Ouest 3.  
+>- La prise en charge de la reprise d’activité de zone à zone est actuellement limitée aux régions suivantes : Asie Sud-Est, Asie Est, Japon Est, Corée Centre, Australie Est, Inde Centre, Royaume-Uni Sud, Europe Ouest, Europe Nord, Norvège Est, France Centre, Suède Centre (accès géré), Canada Centre, USA Centre, USA Centre-Sud, USA Est, USA Est 2, USA Ouest 2, Brésil Sud et USA Ouest 3.  
 >- Site Recovery ne déplace pas et ne stocke pas les données client hors de la région dans laquelle il est déployé lorsque le client utilise la récupération d’urgence de zone à zone. S’ils le souhaitent, les clients peuvent sélectionner un coffre Recovery Services dans une autre région. Le coffre Recovery Services contient des métadonnées, mais pas de données client réelles.
 
 Le service Site Recovery contribue à votre stratégie de continuité d’activité et reprise d’activité en veillant à ce que vos applications métier restent opérationnelles lors d’interruptions planifiées ou non. Il s’agit de l’option de récupération d’urgence recommandée pour maintenir vos applications opérationnelles en cas de pannes régionales.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e9504220ac6aa001314c8ebf78bdb11a6cd011a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 243b8a068c5301c5545c2afe8567ae1fbf71284c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071588"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426712"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>Démarrage rapide : Configurer Azure Bastion à partir des paramètres de la machine virtuelle
 
@@ -63,7 +63,7 @@ Lors de la création de cette configuration, vous pouvez utiliser les exemples d
 | --- | --- |
 | Nom | VNet1-bastion |
 | + Nom du sous-réseau | AzureBastionSubnet |
-| Adresses AzureBastionSubnet | Un sous-réseau dans votre espace d’adressage de réseau virtuel avec un masque de sous-réseau /27 ou supérieur.<br> Par exemple, 10.1.1.0/26.  |
+| Adresses AzureBastionSubnet | Un sous-réseau dans votre espace d’adressage de réseau virtuel avec un masque de sous-réseau /26 ou supérieur.<br> Par exemple, 10.1.1.0/26.  |
 | Niveau/référence SKU | standard |
 | Adresse IP publique |  Création |
 | Nom de l’adresse IP publique | VNet1-ip  |
@@ -89,7 +89,7 @@ Il existe différentes manières de configurer un hôte bastion. Dans les étape
 
    :::image type="content" source="./media/quickstart-host-portal/create-step-1.png" alt-text="Capture d’écran des paramètres préremplis à l’étape 1." lightbox="./media/quickstart-host-portal/create-step-1.png":::
 
-1. Sur la page **Se connecter à l’aide d’Azure Bastion**, **Étape 2**, configurez les valeurs du sous-réseau. L’espace d’adressage AzureBastionSubnet est prérempli avec un espace d’adressage suggéré. AzureBastionSubnet doit avoir un espace d’adressage de /27 ou plus (/26, /25, etc.). Nous vous recommandons d’utiliser un /26 afin que la mise à l’échelle de l’hôte ne soit pas limitée. Lorsque vous avez terminé de configurer ce paramètre, cliquez sur **Créer un sous-réseau** pour créer AzureBastionSubnet.
+1. Sur la page **Se connecter à l’aide d’Azure Bastion**, **Étape 2**, configurez les valeurs du sous-réseau. L’espace d’adressage AzureBastionSubnet est prérempli avec un espace d’adressage suggéré. AzureBastionSubnet doit avoir un espace d’adressage de /26 ou plus (/25, /24, etc.). Nous vous recommandons d’utiliser un /26 afin que la mise à l’échelle de l’hôte ne soit pas limitée. Lorsque vous avez terminé de configurer ce paramètre, cliquez sur **Créer un sous-réseau** pour créer AzureBastionSubnet.
 
      :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Capture d’écran de la création du sous-réseau Bastion.":::
 

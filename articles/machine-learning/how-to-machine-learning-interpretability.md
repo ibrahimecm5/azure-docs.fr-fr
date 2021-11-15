@@ -1,27 +1,28 @@
 ---
-title: Interprétabilité des modèles dans le service Azure Machine Learning (version préliminaire)
+title: Interprétabilité des modèles (préversion)
 titleSuffix: Azure Machine Learning
 description: Apprenez à comprendre et à expliquer la façon dont votre modèle Machine Learning effectue des prédictions lors de la formation et de l’inférence à l’aide du Kit de développement logiciel (SDK) Python Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
-ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 10/21/2021
-ms.openlocfilehash: 37eb558e755860fc2130965fa5faacfe0d4fe804
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.custom: responsible-ml, mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: baf146725c01736fde36420779e495ce3906f891
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564819"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852595"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interprétabilité des modèles dans le service Azure Machine Learning (version préliminaire)
 
+Cet article décrit des méthodes que vous pouvez utiliser en lien avec l’interprétabilité des modèles dans Azure Machine Learning. 
 
-## <a name="model-interpretability-overview"></a>Vue d'ensemble de l'interprétabilité des modèles
+## <a name="why-does-model-interpretability-matter"></a>Pourquoi l’interprétabilité des modèles est-elle importante ?
 
 L'interprétabilité des modèles est essentielle tant pour les scientifiques des données que pour les auditeurs et les décisionnaires d'entreprise afin de garantir la conformité avec les stratégies de l'entreprise, les normes du secteur et les réglementations gouvernementales :
 
@@ -54,7 +55,7 @@ Grâce aux classes et aux méthodes dans le Kit de développement logiciel (SDK)
 
 Dans Machine Learning, les **fonctionnalités** sont les champs de données utilisés pour prédire un point de données cible. Par exemple, pour prédire le risque de crédit, les champs de données d’âge, de taille du compte et d’âge de compte peuvent servir. Dans ce cas, l’âge, la taille du compte et l’âge du compte sont des **fonctionnalités**. L’importance d’une fonctionnalité vous indique dans quelle mesure chaque champ de données a contribué aux prédictions du modèle. Par exemple, l’âge peut être fortement utilisé dans la prédiction tandis que la taille et l’âge du compte n’affectent pas les valeurs de prédiction de manière significative. Ce processus permet aux scientifiques des données d’expliquer les prédictions obtenues, de sorte que les parties prenantes ont une visibilité sur les caractéristiques les plus importantes dans le modèle.
 
-## <a name="supported-interpretability-techniques"></a>Techniques d’interprétabilité prises en charge
+## <a name="supported-model-interpretability-techniques"></a>Techniques d’interprétabilité des modèles prises en charge
 
  `azureml-interpret` utilise les techniques d’interprétabilité développées dans la [Interpret-Community](https://github.com/interpretml/interpret-community/), package Python open source permettant l’apprentissage de modèles interprétables et d’expliquer des systèmes IA de boîte noire. [Interpret-Community](https://github.com/interpretml/interpret-community/) fait office d’hôte pour les explicatifs pris en charge de ce SDK et prend actuellement en charge les techniques d’interprétabilité suivantes :
 

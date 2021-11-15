@@ -14,16 +14,23 @@ ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee84f80110975f6a12a6371ae204ca85401a2adf
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 9b12c1c69f160a51fbcf5650a3ebe30045584106
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986508"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471247"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Valider une règle d’appartenance à un groupe dynamique (préversion) dans Azure Active Directory
 
 Azure Active Directory (Azure AD) offre désormais un moyen de valider les règles de groupe dynamiques (en préversion publique). Sous l’onglet **Valider les règles**, vous pouvez valider votre règle dynamique par rapport à des exemples de membres du groupe pour vérifier que la règle fonctionne comme prévu. Lors de la création ou de la mise à jour des règles de groupe dynamiques, les administrateurs veulent savoir si un utilisateur ou un appareil sera membre du groupe. Ceci permet d’évaluer si l’utilisateur ou l’appareil répond aux critères de la règle et facilite la résolution des problèmes quand l’appartenance n’est pas attendue.
+
+## <a name="prerequisites"></a>Prérequis
+Pour utiliser la fonctionnalité évaluer l’appartenance à une règle de groupe dynamique, l’administrateur doit avoir l’une des règles suivantes affectées directement : administrateur général, administrateur de groupes ou administrateur Intune.
+
+> [!TIP]
+> L’attribution de l’un des rôles requis via l’appartenance à un groupe indirect n’est pas encore prise en charge.
+>
 
 ## <a name="step-by-step-walk-through"></a>Procédure pas à pas
 

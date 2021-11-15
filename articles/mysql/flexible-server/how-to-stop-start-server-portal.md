@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 93837c33d905ad3db1b5906e096165db938c0ae9
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: e17b788c3852d104d82b456e03c93420f3ea9f3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122641164"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467833"
 ---
-# <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Arrêter/Démarrer un serveur flexible Azure Database pour MySQL (préversion)
+# <a name="stopstart-an-azure-database-for-mysql---flexible-server"></a>Arrêter/démarrer un serveur flexible Azure Database pour MySQL
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 Cet article indique la procédure pas-à-pas à suivre pour arrêter et démarrer le serveur flexible.
 
@@ -33,12 +30,12 @@ Pour utiliser ce guide pratique, il vous faut :
 1.  Dans le [portail Azure](https://portal.azure.com/), choisissez le serveur flexible à arrêter.
 
 2.  Dans la page **Vue d’ensemble**, cliquez sur le bouton **Arrêter** dans la barre d’outils.
-    
-    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="Arrêtez le serveur flexible."::: 
+
+    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="Arrêtez le serveur flexible.":::
 
 3.  Cliquez sur **Oui** pour confirmer l’arrêt de votre serveur.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Confirmez l’arrêt du serveur flexible."::: 
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Confirmez l’arrêt du serveur flexible.":::
 
 > [!NOTE]
 > Une fois que le serveur est arrêté, les autres opérations de gestion ne sont pas disponibles pour le serveur flexible.
@@ -49,7 +46,7 @@ Pour utiliser ce guide pratique, il vous faut :
 
 2.  Dans la page **Vue d’ensemble**, cliquez sur le bouton **Démarrer** dans la barre d’outils.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Démarrez le serveur flexible.":::  
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Démarrez le serveur flexible.":::
 
 > [!NOTE]
 > Une fois que le serveur a démarré, toutes les opérations de gestion sont disponibles pour le serveur flexible.

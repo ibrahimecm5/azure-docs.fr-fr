@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/01/2021
-ms.openlocfilehash: 5239812bdd916b19571059aa2641eb738ef5ba09
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 46602d13441fd972f3d292d0bfd48b9fd2919231
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249454"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467983"
 ---
-# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-with-azure-cli"></a>Restauration à un instant dans le passé d’un serveur flexible Azure Database pour MySQL avec l’interface Azure CLI
+# <a name="point-in-time-restore-of-a-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Restauration à un instant dans le passé d’un serveur flexible Azure Database pour MySQL avec l’interface Azure CLI
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
 
 Cet article indique la procédure pas-à-pas à suivre pour effectuer des restaurations à un instant dans le passé sur un serveur flexible à l’aide de sauvegardes.
 

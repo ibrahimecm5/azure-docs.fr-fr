@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/01/2021
-ms.openlocfilehash: f939d397db80e303ec2ed36d4112df0d38d090aa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2ba2c135a0b07df6c6a4802c241b064b2ef94335
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464040"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851481"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Guide pratique pour se connecter à Azure Data Factory et Azure Purview
 
@@ -36,15 +36,13 @@ Plusieurs fabriques de données Azure peuvent se connecter à un même catalogue
 
 >[!Note]
 >Pour afficher les connexions Data Factory, vous devez avoir l’un des rôles suivants. L’héritage des rôles à partir du groupe d’administration n’est pas pris en charge.
->- Pour un compte Purview créé **le 18 août 2021 ou après** : rôles d’**administrateurs de collection** sur la collection racine.
->- Pour un compte Purview créé **avant le 18 août 2021** : rôles de **Propriétaire** intégré à Azure, de **Contributeur**, de **Lecteur** ou d’**Administrateur de l’accès utilisateur**.
+>Rôle **Administrateur de collection** sur la collection racine.
 
 ## <a name="create-new-data-factory-connection"></a>Créer une connexion Data Factory
 
 >[!Note]
 >Pour ajouter ou supprimer des connexions Data Factory, vous devez avoir l’un des rôles suivants. L’héritage des rôles à partir du groupe d’administration n’est pas pris en charge.
->- Pour un compte Purview créé **le 18 août 2021 ou après** : rôles d’**administrateurs de collection** sur la collection racine.
->- Pour un compte Purview créé **avant le 18 août 2021** : rôles de **Propriétaire** ou d’**Administrateur de l’accès utilisateur**.
+>Rôle **Administrateur de collection** sur la collection racine.
 >
 > De plus, les utilisateurs doivent être le « contributeur » ou le « propriétaire » de la fabrique de données.
 
@@ -71,9 +69,7 @@ Procédez comme suit pour connecter une fabrique de données existante à votre 
 
 L’identité managée de la fabrique de données est utilisée pour authentifier les opérations push de traçabilité de la fabrique de données vers Purview. Lors de la connexion d’une fabrique de données à Purview sur l’interface utilisateur, l’attribution de rôle est automatiquement ajoutée.
 
-- Pour un compte Purview créé **le 18 août 2021 ou après**, accordez le rôle **Curateur de données** à l’identité managée de la fabrique de données sur votre **collection racine** Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview](../purview/catalog-permissions.md) et comment [Ajouter des rôles et restreindre l’accès par le biais de regroupements](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
-
-- Pour un compte Purview créé **avant le 18 août 2021**, accordez à l’identité managée de la fabrique de données le rôle Azure [**Curateur de données Purview**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) (hérité) intégré à votre compte Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview - Autorisations héritées](../purview/catalog-permissions.md#legacy-permission-guide).
+Accordez à l’identité managée de la fabrique de données le rôle **Curateur de données** sur la **collection racine** Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview](../purview/catalog-permissions.md) et comment [Ajouter des rôles et restreindre l’accès par le biais de regroupements](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
 ### <a name="remove-data-factory-connections"></a>Supprimer des connexions Data Factory
 

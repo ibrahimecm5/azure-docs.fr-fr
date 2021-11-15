@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: c2b383a64699d6e4b497d8653e69f401886db21a
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 10e802c21fb4d1f3ba0f693dd663ab22330be696
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123116351"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443373"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Gérer les ressources de l’API Azure Cosmos DB Core (SQL) à l’aide d’Azure CLI
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ Créez un compte Azure Cosmos avec deux régions, ajoutez une région et supprim
 > [!NOTE]
 > Cette commande vous permet d’ajouter ou de supprimer des régions, mais ne vous permet pas de modifier des priorités de basculement ni de déclencher un basculement manuel. Consultez [Définir la priorité de basculement](#set-failover-priority) et [Déclencher un basculement manuel](#trigger-manual-failover).
 > [!TIP]
-> Quand une nouvelle région est ajoutée, toutes les données doivent être entièrement répliquées et validées dans la nouvelle région avant qu’elle ne soit marquée comme disponible. Le temps nécessaire à cette opération dépend de la quantité de données stockées dans le compte.
+> Quand une nouvelle région est ajoutée, toutes les données doivent être entièrement répliquées et validées dans la nouvelle région avant qu’elle ne soit marquée comme disponible. Le temps nécessaire à cette opération dépend de la quantité de données stockées dans le compte. Si une [opération de mise à l’échelle du débit asynchrone](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, l’opération de mise à l’échelle du débit est suspendue et reprend automatiquement une fois l’opération d’ajout ou de suppression de région terminée. 
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -143,6 +143,9 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 
 > [!CAUTION]
 > La modification de la région avec Priority = 0 déclenchera un basculement manuel pour un compte Azure Cosmos. Tout autre changement de priorité ne déclenche pas de basculement.
+
+> [!NOTE]
+> Si vous effectuez une opération de basculement manuel alors qu’une [opération de mise à l’échelle du débit asynchrone](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) est en cours, l’opération de mise à l’échelle du débit est suspendue. Elle reprend automatiquement une fois l’opération de basculement terminée.
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account

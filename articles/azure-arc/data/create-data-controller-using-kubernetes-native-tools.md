@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 0650691e9786ac88184c8354052ea96329e8f933
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2380a10d9a4a054a5d83b2c1096797e41bba7d0f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639714"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563603"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Créer un contrôleur de données Azure Arc à l’aide des outils Kubernetes
 
@@ -53,11 +53,13 @@ kubectl delete clusterrole arcdataservices-extension
 kubectl delete clusterrole arc:cr-arc-metricsdc-reader
 kubectl delete clusterrole arc:cr-arc-dc-watch
 kubectl delete clusterrole cr-arc-webhook-job
-
-# Substitute the name of the namespace the data controller was deployed in into {namespace}.  If unsure, get the name of the mutatingwebhookconfiguration using 'kubectl get clusterrolebinding'
+kubectl delete clusterrole {namespace}:cr-upgrade-worker
 kubectl delete clusterrolebinding {namespace}:crb-arc-metricsdc-reader
 kubectl delete clusterrolebinding {namespace}:crb-arc-dc-watch
 kubectl delete clusterrolebinding crb-arc-webhook-job
+kubectl delete clusterrolebinding {namespace}:crb-upgrade-worker
+
+# Substitute the name of the namespace the data controller was deployed in into {namespace}.  If unsure, get the name of the mutatingwebhookconfiguration using 'kubectl get clusterrolebinding'
 
 # API services
 # Up to May 2021 release
@@ -153,13 +155,13 @@ L’exemple ci-dessous suppose que vous avez créé un nom de secret d’extract
       - name: arc-private-registry #Create this image pull secret if you are using a private container registry
       containers:
       - name: bootstrapper
-        image: mcr.microsoft.com/arcdata/arc-bootstrapper:v1.0.0_2021-07-30 #Change this registry location if you are using a private container registry.
+        image: mcr.microsoft.com/arcdata/arc-bootstrapper:v1.1.0_2021-11-02 #Change this registry location if you are using a private container registry.
         imagePullPolicy: Always
 ```
 
-## <a name="create-a-secret-for-the-kibanagrafana-dashboards"></a>Créer un secret pour les tableaux de bord Kibana/Grafana
+## <a name="create-secrets-for-the-metrics-and-logs-dashboards"></a>Créer des secrets pour les tableaux de bord des métriques et des journaux
 
-Le nom d’utilisateur et le mot de passe sont utilisés pour authentifier l’accès aux tableaux de bord Kibana et Grafana en tant qu’administrateur.  Choisissez un mot de passe sécurisé et partagez-le uniquement avec ceux qui doivent disposer de ces privilèges.
+Vous pouvez spécifier un nom d’utilisateur et un mot de passe utilisés pour l’authentification auprès des tableaux de bord des métriques et des journaux en tant qu’administrateur. Choisissez un mot de passe sécurisé et partagez-le uniquement avec ceux qui doivent disposer de ces privilèges.
 
 Une clé secrète Kubernetes est stockée sous la forme d’une chaîne encodée en base64, une pour le nom d’utilisateur et l’autre pour le mot de passe.
 
@@ -184,7 +186,7 @@ echo -n '<your string to encode here>' | base64
 # echo -n 'example' | base64
 ```
 
-Une fois que vous avez encodé le nom d’utilisateur et le mot de passe, vous pouvez créer un fichier basé sur le [fichier modèle ](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) et remplacer les valeurs de nom d’utilisateur et de mot de passe par les vôtres.
+Une fois que vous avez encodé les noms d’utilisateur et les mots de passe, vous pouvez créer un fichier basé sur le [fichier modèle ](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) et remplacer les noms d’utilisateur et les mots de passe par les vôtres.
 
 Exécutez ensuite la commande ci-dessous pour créer la clé secrète :
 
@@ -264,7 +266,7 @@ spec:
     serviceAccount: sa-arc-controller
   docker:
     imagePullPolicy: Always
-    imageTag: v1.0.0_2021-07-30
+    imageTag: v1.1.0_2021-11-02
     registry: mcr.microsoft.com
     repository: arcdata
   infrastructure: other #Must be a value in the array [alibaba, aws, azure, gcp, onpremises, other]

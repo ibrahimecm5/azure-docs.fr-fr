@@ -1,6 +1,6 @@
 ---
 title: Connexion par clé de sécurité sans mot de passe à des ressources locales – Azure Active Directory
-description: Découvrez comment activer la connexion par clé de sécurité sans mot de passe à des ressources locales en utilisant Azure Active Directory
+description: Découvrez comment activer la connexion par clé de sécurité sans mot de passe à des ressources locales à l’aide d’Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,224 +11,267 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 618283c64268f279b0a63ffb35779ea6e8ef55d0
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ce8869a15a1c94ab2f3227780de8eb37bbf52b6f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043545"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505419"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Activer la connexion par clé de sécurité sans mot de passe à des ressources locales avec Azure Active Directory 
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-by-using-azure-ad"></a>Activer la connexion par clé de sécurité sans mot de passe à des ressources locales à l’aide d’Azure AD 
 
-Ce document se concentre sur l’activation de l’authentification sans mot de passe à des ressources locales pour des environnements composés d’appareils Windows 10 de types **Joint à Azure AD** et **Joint à une version hybride d’Azure AD**. Cette fonctionnalité fournit une authentification unique (SSO) transparente auprès de ressources locales en utilisant des clés de sécurité compatibles Microsoft.
+Ce document explique comment activer l’authentification sans mot de passe auprès de ressources locales pour des environnements disposant d’appareils Windows 10 des types *Joint à Azure Active Directory (Azure AD)* et *Joint à Azure AD hybride*. Cette fonctionnalité d’authentification sans mot de passe fournit une authentification unique (SSO) directe auprès de ressources locales lorsque vous utilisez des clés de sécurité compatibles avec Microsoft.
 
-## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Authentification unique auprès de ressources locales à l’aide de clés FIDO2
+## <a name="use-sso-to-sign-in-to-on-premises-resources-by-using-fido2-keys"></a>Utiliser l’authentification unique pour se connecter à des ressources locales à l’aide de clés FIDO2
 
-Azure Active Directory (AD) peut émettre des Kerberos Ticket Granting Tickets (TGTs) pour un ou plusieurs de vos domaines Active Directory. Cette fonctionnalité permet aux utilisateurs de se connecter à Windows avec des informations d’identification modernes telles que des clés de sécurité FIDO2 pour accéder à des ressources Active Directory traditionnelles. Les tickets de service Kerberos et l’autorisation continuent d’être contrôlés par vos contrôleurs de domaine Active Directory locaux.
+Azure AD peut émettre des Ticket Granting Tickets (TGT) Kerberos pour un ou plusieurs de vos domaines Active Directory. Cette fonctionnalité permet aux utilisateurs de se connecter à Windows avec des informations d’identification modernes telles que des clés de sécurité FIDO2 pour accéder à des ressources Active Directory traditionnelles. Les tickets de service Kerberos et l’autorisation continuent d’être contrôlés par vos contrôleurs de domaine Active Directory locaux.
 
-Un objet serveur Kerberos Azure AD est créé dans votre Active Directory local, puis publié en toute sécurité sur Azure Active Directory. L’objet n’est associé à aucun serveur physique. Il s’agit simplement d’une ressource qu’Azure Active Directory peut utiliser afin de générer des TGT Kerberos pour votre domaine Active Directory.
+Un objet serveur Kerberos Azure AD est créé dans votre instance Active Directory locale, puis publié en toute sécurité sur Azure Active Directory. L’objet n’est associé à aucun serveur physique. Il s’agit simplement d’une ressource qu’Azure Active Directory peut utiliser afin de générer des TGT Kerberos pour votre domaine Active Directory.
 
-![Obtention d’un ticket TGT (Ticket Granting Ticket) auprès d’Azure AD et d’AD DS](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
+:::image type="Image" source="./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png" alt-text="Diagramme montrant comment obtenir un TGT à partir d’Azure AD et d’Active Directory Domain Services." lightbox="./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png":::
 
-1. L’utilisateur se connecte à son appareil Windows 10 avec une clé de sécurité FIDO2 et s’authentifie auprès d’Azure AD.
-1. Azure AD recherche dans l’annuaire une clé de serveur Kerberos correspondant au domaine AD local de l’utilisateur.
-   1. Azure AD génère un TGT Kerberos pour le domaine AD local de l’utilisateur. Le TGT contient uniquement le SID de l’utilisateur. Aucune donnée d’autorisation n’y est incluse.
-1. Le TGT est renvoyé au client avec son jeton d’actualisation principal (PRT, Primary Refresh Token) Azure AD.
+1. L’utilisateur se connecte à un appareil Windows 10 avec une clé de sécurité FIDO2 et s’authentifie auprès d’Azure AD.
+1. Azure AD recherche dans l’annuaire une clé de serveur Kerberos correspondant au domaine Active Directory local de l’utilisateur.
+
+   Azure AD génère un TGT Kerberos pour le domaine Active Directory local de l’utilisateur. Le TGT comprend uniquement le SID de l’utilisateur, et aucune donnée d’autorisation.
+
+1. Le TGT est renvoyé au client avec le jeton d’actualisation principal (PRT, Primary Refresh Token) Azure AD de l’utilisateur.
 1. L’ordinateur du client contacte un contrôleur de domaine Active Directory local et échange le TGT partiel contre un TGT entièrement formé.
 1. L’ordinateur du client disposant à présent d’un PRT Azure AD et d’un TGT Active Directory complet, il peut accéder aux ressources cloud et locales.
 
-## <a name="requirements"></a>Spécifications
+## <a name="prerequisites"></a>Prérequis
 
-Les organisations doivent suivre les étapes permettant d’[activer la connexion par clé de sécurité sans mot de passe à des appareils Windows 10](howto-authentication-passwordless-security-key.md) avant de suivre les étapes décrites dans cet article.
+Avant de commencer à suivre les procédures décrites dans cet article, votre organisation doit suivre les instructions de la rubrique [Activer la connexion par clé de sécurité sans mot de passe à des appareils Windows 10](howto-authentication-passwordless-security-key.md).
 
-Les organisations doivent également présenter la configuration logicielle suivante.
+Vous devez également respecter la configuration système suivante :
 
-- Les appareils doivent exécuter Windows 10 version 2004 ou ultérieure.
-- Vous devez disposer de la version 1.4.32.0 ou ultérieure d’[Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect).
-  - Pour plus d’informations sur les options d’authentification hybride Azure AD disponibles, consultez [Choisir la méthode d’authentification adaptée à votre solution d’identité hybride Azure Active Directory](../hybrid/choose-ad-authn.md) et [Sélectionner le type d’installation à utiliser pour Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
-- Les correctifs logiciels suivants doivent être installés sur vos contrôleurs de domaine Windows Server :
-    - Pour [Windows Server 2016](https://support.microsoft.com/help/4534307/windows-10-update-kb4534307)
-    - Pour [Windows Server 2019](https://support.microsoft.com/help/4534321/windows-10-update-kb4534321)
+- Les appareils doivent exécuter Windows 10 version 2004 ou ultérieure.
+
+- Vous devez exécuter [Azure AD Connect version 1.4.32.0 ou ultérieure](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect).
+  - Pour plus d’informations sur les options d’authentification hybride Azure AD disponibles, consultez les articles suivants :
+    - [Choisir la méthode d’authentification adaptée à votre solution d’identité hybride Azure AD](../hybrid/choose-ad-authn.md)
+    - [Sélectionner le type d’installation à utiliser pour Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md)
+
+- Des correctifs logiciels doivent être installés sur vos contrôleurs de domaine Windows Server pour les serveurs suivants :
+    - [Windows Server 2016](https://support.microsoft.com/help/4534307/windows-10-update-kb4534307)
+    - [Windows Server 2019](https://support.microsoft.com/help/4534321/windows-10-update-kb4534321)
 
 ### <a name="supported-scenarios"></a>Scénarios pris en charge
 
-Le scénario prend en charge l’authentification unique (SSO) dans les deux scénarios suivants :
+Le scénario de cet article prend en charge l’authentification unique dans les deux cas suivants :
 
-- Pour les ressources cloud telles que Microsoft 365 et d’autres applications compatibles SAML.
-- Pour les ressources locales et l’Authentification Windows intégrée sur les sites web. Les ressources peuvent inclure des sites web et des sites SharePoint qui requièrent une authentification IIS et/ou des ressources qui utilisent l’authentification NTLM.
+- Ressources Cloud telles que Microsoft 365 et d’autres applications compatibles avec SAML(Security Assertion Markup Language).
+- Ressources locales et authentification intégrée Windows auprès des sites web. Les ressources peuvent inclure des sites web et des sites SharePoint qui requièrent une authentification IIS, et/ou des ressources qui utilisent l’authentification NTLM.
 
 ### <a name="unsupported-scenarios"></a>Scénarios non pris en charge
 
 Les scénarios suivants ne sont pas pris en charge :
 
-- Déploiement de Windows Server joint à un domaine Active Directory Domain Services (AD DS) [appareils locaux uniquement].
-- Scénarios RDP, VDI et Citrix utilisant une clé de sécurité.
-- S/MIME utilisant une clé de sécurité.
-- Identification utilisant une clé de sécurité.
-- Connexion à un serveur à l’aide d’une clé de sécurité.
+- Déploiement de Windows Server joint à Active Directory Domain Services (AD DS) (appareils locaux uniquement).
+- Scénarios RDP (Remote Desktop Protocol), VDI (Virtual Desktop Infrastructure) et Citrix en utilisant une clé de sécurité.
+- S/MIME en utilisant une clé de sécurité.
+- *Exécuter en tant que* en utilisant une clé de sécurité.
+- Connexion à un serveur en utilisant une clé de sécurité.
 
-## <a name="create-kerberos-server-object"></a>Créer un objet serveur Kerberos
+## <a name="install-the-azure-ad-kerberos-powershell-module"></a>Installer le module Azure AD Kerberos PowerShell
 
-Les administrateurs utilisent les outils PowerShell de leur serveur Azure AD Connect pour créer un objet serveur Kerberos Azure AD dans leur répertoire local. Exécutez les étapes suivantes dans chaque domaine et forêt de votre organisation contenant des utilisateurs Azure AD :
+Le [module Azure AD Kerberos PowerShell](https://www.powershellgallery.com/packages/AzureADHybridAuthenticationManagement) fournit des fonctionnalités de gestion FIDO2 pour les administrateurs.
 
-1. Mettez à niveau vers la dernière version d’Azure AD Connect. Les instructions partent du principe que vous avez déjà configuré Azure AD Connect pour prendre en charge votre environnement hybride.
-1. Sur le serveur Azure AD Connect, ouvrez une invite PowerShell avec élévation de privilèges, puis accédez à `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`.
+1. Ouvrez une invite PowerShell à l’aide de l’option Exécuter en tant qu’administrateur.
+1. Installez le module Azure AD Kerberos PowerShell :
+
+   ```powershell
+   # First, ensure TLS 1.2 for PowerShell gallery access.
+   [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+
+   # Install the Azure AD Kerberos PowerShell Module.
+   Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
+   ```
+
+> [!NOTE]
+> - Le module Azure AD Kerberos PowerShell utilise le [module PowerShell AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview) pour fournir des fonctionnalités de gestion Azure Active Directory avancées. Si le module [AzureAD PowerShell](https://www.powershellgallery.com/packages/AzureAD) est déjà installé sur votre ordinateur local, l’installation décrite ici risque d’échouer en raison d’un conflit. Pour éviter tout conflit au cours de l’installation, veillez à inclure l’indicateur d’option « -AllowClobber ».
+> - Vous pouvez installer le module Azure AD Kerberos PowerShell sur tout ordinateur à partir duquel vous pouvez accéder à votre contrôleur de domaine Active Directory local, sans dépendre de la solution de Azure AD Connect.
+> - Le module Azure AD PowerShell Kerberos est distribué via [PowerShell Gallery](https://www.powershellgallery.com/). PowerShell Gallery est le référentiel central pour le contenu PowerShell. Vous pouvez y trouver des modules PowerShell utiles contenant des commandes PowerShell et des ressources de Desired State Configuration (DSC).
+
+## <a name="create-a-kerberos-server-object"></a>Créer un objet serveur Kerberos
+
+Les administrateurs utilisent le module Azure AD Kerberos PowerShell pour créer un objet serveur Azure AD Kerberos dans leur répertoire local.
+
+Exécutez les étapes suivantes dans chaque domaine et forêt de votre organisation contenant des utilisateurs Azure AD :
+
+1. Ouvrez une invite PowerShell à l’aide de l’option Exécuter en tant qu’administrateur.
 1. Exécutez les commandes PowerShell suivantes pour créer un objet serveur Kerberos Azure AD dans votre domaine Active Directory local et votre locataire Azure Active Directory.
 
-> [!NOTE]
-> Remplacez `contoso.corp.com` dans l’exemple suivant par le nom de votre domaine Active Directory local.
+   > [!NOTE]
+   > Remplacez `contoso.corp.com` dans l’exemple suivant par le nom de votre domaine Active Directory local.
 
-```powerShell
-Import-Module ".\AzureAdKerberos.psd1"
+   ```powershell
+   # Specify the on-premises Active Directory domain. A new Azure AD
+   # Kerberos Server object will be created in this Active Directory domain.
+   $domain = "contoso.corp.com"
 
-# Specify the on-premises Active Directory domain. A new Azure AD
-# Kerberos Server object will be created in this Active Directory domain.
-$domain = "contoso.corp.com"
+   # Enter an Azure Active Directory global administrator username and password.
+   $cloudCred = Get-Credential
 
-# Enter an Azure Active Directory global administrator username and password.
-$cloudCred = Get-Credential
+   # Enter a domain administrator username and password.
+   $domainCred = Get-Credential
 
-# Enter a domain administrator username and password.
-$domainCred = Get-Credential
+   # Create the new Azure AD Kerberos Server object in Active Directory
+   # and then publish it to Azure Active Directory.
+   Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
+   ```
 
-# Create the new Azure AD Kerberos Server object in Active Directory
-# and then publish it to Azure Active Directory.
-Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
-```
+   > [!NOTE]
+   > Si vous utilisez une machine jointe à un domaine avec un compte disposant de privilèges d’administrateur de domaine, vous pouvez ignorer le paramètre « -DomainCredential ». Si le paramètre « -DomainCredential » n’est pas fourni, les informations d’identification de connexion Windows actuelles sont utilisées pour accéder à votre contrôleur de domaine Active Directory local.
 
-> [!NOTE]
-> Si votre organisation protège la connexion par mot de passe et applique des méthodes d’authentification modernes telles que MFA, FIDO2 ou Carte à puce, vous devez utiliser le paramètre « -UserPrincipalName » avec le nom d’utilisateur principal d’un administrateur général.
->    - Remplacez `contoso.corp.com` dans l’exemple suivant par le nom de votre domaine Active Directory local.
->    - Remplacez `administrator@contoso.onmicrosoft.com` dans l’exemple suivant par le nom d’utilisateur principal d’un administrateur général.
+   ```powershell
+   # Specify the on-premises Active Directory domain. A new Azure AD
+   # Kerberos Server object will be created in this Active Directory domain.
+   $domain = "contoso.corp.com"
 
-```powerShell
-Import-Module ".\AzureAdKerberos.psd1"
+   # Enter an Azure Active Directory global administrator username and password.
+   $cloudCred = Get-Credential
 
-# Specify the on-premises Active Directory domain. A new Azure AD
-# Kerberos Server object will be created in this Active Directory domain.
-$domain = "contoso.corp.com"
+   # Create the new Azure AD Kerberos Server object in Active Directory
+   # and then publish it to Azure Active Directory.
+   # Use the current windows login credential to access the on-prem AD.
+   Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred
+   ```
 
-# Enter a User Principal Name of Azure Active Directory global administrator
-$userPrincipalName = "administrator@contoso.onmicrosoft.com"
+   > [!NOTE]
+   > Si votre organisation protège la connexion par mot de passe et applique des méthodes d’authentification modernes telles que l’authentification multifacteur, FIDO2 ou une technologie de carte à puce, vous devez utiliser le paramètre `-UserPrincipalName` avec le nom d’utilisateur principal d’un administrateur général.
+   > - Remplacez `contoso.corp.com` dans l’exemple suivant par le nom de votre domaine Active Directory local.
+   > - Remplacez `administrator@contoso.onmicrosoft.com` dans l’exemple suivant par le nom d’utilisateur principal (UPM) d’un administrateur général.
 
-# Enter a domain administrator username and password.
-$domainCred = Get-Credential
+   ```powershell
+   # Specify the on-premises Active Directory domain. A new Azure AD
+   # Kerberos Server object will be created in this Active Directory domain.
+   $domain = "contoso.corp.com"
 
-# Create the new Azure AD Kerberos Server object in Active Directory
-# and then publish it to Azure Active Directory.
-Set-AzureADKerberosServer -Domain $domain -UserPrincipalName $userPrincipalName -DomainCredential $domainCred
-```
+   # Enter a UPN of an Azure Active Directory global administrator
+   $userPrincipalName = "administrator@contoso.onmicrosoft.com"
 
-### <a name="viewing-and-verifying-the-azure-ad-kerberos-server"></a>Affichage et vérification du serveur Kerberos Azure AD
+   # Enter a domain administrator username and password.
+   $domainCred = Get-Credential
 
-Vous pouvez afficher et vérifier le serveur Kerberos Azure AD que vous venez de créer à l’aide de la commande suivante :
+   # Create the new Azure AD Kerberos Server object in Active Directory
+   # and then publish it to Azure Active Directory.
+   # Open an interactive sign-in prompt with given username to access the Azure AD.
+   Set-AzureADKerberosServer -Domain $domain -UserPrincipalName $userPrincipalName -DomainCredential $domainCred
+   ```
 
-```powerShell
+### <a name="view-and-verify-the-azure-ad-kerberos-server"></a>Afficher et vérifier le serveur Azure AD Kerberos
+
+Vous pouvez afficher et vérifier le serveur Azure AD Kerberos que vous venez de créer à l’aide de la commande suivante :
+
+```powershell
 Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
 Cette commande génère les propriétés du serveur Kerberos Azure AD. Vous pouvez examiner les propriétés pour vérifier que tout est en ordre.
 
 > [!NOTE]
-
-La commande exécutée sur un autre domaine en fournissant les informations d’identification se connecte via NTLM, puis échoue. Solution de contournement si les utilisateurs font partie du groupe de sécurité « Utilisateurs protégés » dans Active Directory : connectez-vous avec un autre utilisateur de domaine dans la zone ADConnect et ne spécifiez pas -domainCredential. Cela entraînerait la consommation du ticket Kerberos de l’utilisateur actuellement connecté. Vous pouvez confirmer cela en exécutant whoami /groups afin de vérifier que l’utilisateur a le privilège requis dans Active Directory pour exécuter la commande ci-dessus.
+> L’exécution de la commande sur un autre domaine en fournissant les informations d’identification établit une connexion via NTLM, puis échoue. Si les utilisateurs se trouvent dans le groupe de sécurité Utilisateurs protégés dans Active Directory, procédez comme suit pour résoudre le problème : connectez-vous en tant qu’utilisateur d’un autre domaine dans **ADConnect** et n’entrez pas de « -domainCredential ». Le ticket Kereberos de l’utilisateur actuellement connecté est utilisé. Vous pouvez confirmer en exécutant `whoami /groups` pour valider le fait que l’utilisateur dispose des autorisations requises dans Active Directory pour exécuter la commande précédente.
  
 | Propriété | Description |
 | --- | --- |
-| id | ID unique de l’objet contrôleur de domaine AD DS. Cet ID est parfois appelé « emplacement » ou « ID de branche ». |
+| id | ID unique de l’objet contrôleur de domaine AD DS. Cet ID est parfois appelé *emplacement* ou *ID de branche*. |
 | DomainDnsName | Nom de domaine DNS du domaine Active Directory. |
 | ComputerAccount | Objet compte d’ordinateur de l’objet serveur Kerberos Azure AD (le contrôleur de domaine). |
 | UserAccount | Objet compte d’utilisateur désactivé contenant la clé de chiffrement du TGT du serveur Kerberos Azure AD. Le nom de domaine de ce compte est `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>`. |
-| KeyVersion | Version de clé de la clé de chiffrement du TGT du serveur Kerberos Azure AD. La version est attribuée lors de la création de la clé. La version est ensuite incrémentée à chaque rotation de la clé. Les incréments sont basés sur des métadonnées de réplication et sont probablement supérieurs à un. Par exemple, la *KeyVersion* initiale pourrait être *192272*. À la première rotation de la clé, la version peut passer à *212621*. L’élément important à vérifier est que la *KeyVersion* de l’objet local et la *CloudKeyVersion* de l’objet cloud sont identiques. |
+| KeyVersion | Version de clé de la clé de chiffrement du TGT du serveur Kerberos Azure AD. La version est attribuée lors de la création de la clé. La version est ensuite incrémentée à chaque rotation de la clé. Les incréments sont basés sur les métadonnées de réplication et probablement supérieurs à un. Par exemple, la *KeyVersion* initiale pourrait être *192272*. À la première rotation de la clé, la version peut passer à *212621*. L’élément important à vérifier est que la *KeyVersion* de l’objet local et la *CloudKeyVersion* de l’objet cloud sont identiques. |
 | KeyUpdatedOn | Date et heure auxquelles la clé de chiffrement du TGT du serveur Kerberos Azure AD a été mise à jour ou créée. |
 | KeyUpdatedFrom | Contrôleur de domaine où la clé de chiffrement du TGT du serveur Kerberos Azure AD a été mise à jour pour la dernière fois. |
-| CloudId | ID de l’objet Azure AD. Doit correspondre à l’ID au-dessus. |
-| CloudDomainDnsName | *DomainDnsName* de l’objet Azure AD. Doit correspondre à la valeur *DomainDnsName* ci-dessus. |
-| CloudKeyVersion | *KeyVersion* de l’objet Azure AD. Doit correspondre à la valeur *KeyVersion* ci-dessus. |
-| CloudKeyUpdatedOn | *KeyUpdatedOn* de l’objet Azure AD. Doit correspondre à la valeur *KeyUpdatedOn* ci-dessus. |
+| CloudId | ID de l’objet Azure AD. Doit correspondre à l’ID de la première ligne de la table. |
+| CloudDomainDnsName | *DomainDnsName* de l’objet Azure AD. Doit correspondre à *DomainDnsName* à partir de la deuxième ligne de la table. |
+| CloudKeyVersion | *KeyVersion* de l’objet Azure AD. Doit correspondre à *KeyVersion* à partir de la cinquième ligne de la table. |
+| CloudKeyUpdatedOn | *KeyUpdatedOn* de l’objet Azure AD. Doit correspondre à *KeyUpdatedOn* à partir de la sixième ligne de la table. |
+| | |
 
-### <a name="rotating-the-azure-ad-kerberos-server-key"></a>Rotation de la clé de serveur Kerberos Azure AD
+### <a name="rotate-the-azure-ad-kerberos-server-key"></a>Opérer la rotation la clé du serveur Azure AD Kerberos
 
-Les clés krbtgt de chiffrement du serveur Kerberos Azure AD doivent faire l’objet d’une rotation régulière. Il est recommandé de suivre la même planification que celle utilisée pour la rotation de toutes les autres clés krbtgt du contrôleur de domaine Active Directory.
+Les clés *krbtgt* de chiffrement du serveur Azure AD Kerberos doivent faire l’objet d’une rotation régulière. Il est recommandé de suivre la planification utilisée pour la rotation de toutes les autres clés *krbtgt* du contrôleur de domaine Active Directory.
 
 > [!WARNING]
-> D’autres outils peuvent effectuer une rotation des clés krbtgt. Toutefois, vous devez utiliser les outils mentionnés dans ce document pour opérer la rotation des clés krbtgt de votre serveur Kerberos Azure AD. Cela garantit que les clés sont mises à jour tant dans l’AD local que dans Azure AD.
+> D’autres outils peuvent opérer la rotation des clés *krbtgt*. Toutefois, vous devez utiliser les outils mentionnés dans ce document pour opérer la rotation des clés *krbtgt* de votre serveur Azure AD Kerberos. Cela garantit que les clés sont à jour à la fois dans l’Active Directory local et dans Azure AD.
 
-```powerShell
+```powershell
 Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred -RotateServerKey
 ```
 
-### <a name="removing-the-azure-ad-kerberos-server"></a>Suppression du serveur Kerberos Azure AD
+### <a name="remove-the-azure-ad-kerberos-server"></a>Supprimer le serveur Azure AD Kerberos
 
-Si vous souhaitez annuler le scénario et supprimer le serveur Kerberos Azure AD tant de l’Active Directory local que d’Azure Active Directory, exécutez la commande suivante :
+Si vous souhaitez annuler le scénario et supprimer le serveur Azure AD Kerberos tant de l’Active Directory local que d’Azure AD, exécutez la commande suivante :
 
-```powerShell
+```powershell
 Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
-### <a name="multi-forest-and-multi-domain-scenarios"></a>Scénarios à plusieurs forêts et plusieurs domaines
+### <a name="multiforest-and-multidomain-scenarios"></a>Scénarios multiforêt et multidomaine
 
-L’objet serveur Kerberos Azure AD est représenté dans Azure AD en tant qu’objet *KerberosDomain*. Chaque domaine Active Directory local est représenté en tant qu’objet *KerberosDomain* unique dans Azure AD.
+L’objet serveur Azure AD Kerberos est représenté dans Azure AD en tant qu’objet *KerberosDomain*. Chaque domaine Active Directory local est représenté en tant qu’objet *KerberosDomain* unique dans Azure AD.
 
-Imaginons, par exemple, que votre organisation possède une forêt Active Directory avec deux domaines, `contoso.com` et `fabrikam.com`. Si vous choisissez d’autoriser Azure AD à émettre des TGT Kerberos pour l’ensemble de la forêt, il y aura deux objets *KerberosDomain* dans Azure AD. Un objet *KerberosDomain* pour `contoso.com`, et un autre pour `fabrikam.com`. Si vous avez plusieurs forêts Active Directory, il existe un objet *KerberosDomain* pour chaque domaine dans chaque forêt.
+Imaginons que votre organisation dispose d’une forêt Active Directory avec deux domaines, `contoso.com` et `fabrikam.com`. Si vous choisissez d’autoriser Azure AD à émettre des TGT Kerberos pour l’ensemble de la forêt, il y aura deux objets *KerberosDomain* dans Azure AD, à savoir un objet *KerberosDomain* pour `contoso.com` et l’autre pour `fabrikam.com`. Si vous avez plusieurs forêts Active Directory, il existe un objet *KerberosDomain* pour chaque domaine dans chaque forêt.
 
-Vous devez exécuter les étapes permettant de [créer un objet serveur Kerberos](#create-kerberos-server-object) dans chaque domaine et forêt de votre organisation contenant des utilisateurs Azure AD.
+Suivez les instructions fournies dans [Créer un objet serveur Kerberos](#create-a-kerberos-server-object) dans chaque domaine et forêt de votre organisation contenant des utilisateurs Azure AD.
 
 ## <a name="known-behavior"></a>Comportement connu
 
-La connexion avec FIDO est bloquée si votre mot de passe a expiré. Le comportement attendu de l’utilisateur et qu’il réinitialise son mot de passe avant de se connecter à l’aide de FIDO.
+Si votre mot de passe a expiré, la connexion à l’aide de FIDO est bloquée. L’objectif est que les utilisateurs réinitialisent leur mot de passe avant de se connecter à l’aide de FIDO.
 
 ## <a name="troubleshooting-and-feedback"></a>Résolution des problèmes de commentaires
 
-Si vous souhaitez partager des commentaires ou si vous rencontrez des problèmes avec cette fonctionnalité, partagez vos remarques via l’application Hub de commentaires Windows en procédant comme suit :
+Si vous rencontrez des problèmes ou si vous souhaitez partager des commentaires sur cette fonctionnalité de connexion par clé de sécurité sans mot de passe, partagez via l’application Hub de commentaires Windows en procédant comme suit :
 
-1. Lancez le **concentrateur de commentaires** et assurez-vous que vous êtes connecté.
-1. Classez vos commentaires dans les catégories suivantes avant de les envoyer :
+1. Lancez le **Hub de commentaires** et assurez-vous que vous êtes connecté.
+1. Soumettez des commentaires en sélectionnant les catégories suivantes :
    - Catégorie : Sécurité et confidentialité
    - Sous-catégorie : FIDO
 1. Pour capturer des journaux, utilisez l’option **Recréer mon problème**.
 
-## <a name="frequently-asked-questions"></a>Forum aux questions
+## <a name="passwordless-security-key-sign-in-faq"></a>FAQ sur la connexion par clé de sécurité sans mot de passe
 
-### <a name="does-this-work-in-my-on-premises-environment"></a>Cela fonctionne-t-il dans mon environnement local ?
+Voici quelques réponses aux questions fréquemment posées sur la connexion sans mot de passe :
 
-Cette fonctionnalité ne fonctionne pas pour un environnement Active Directory Domain Services (AD DS) entièrement local.
+### <a name="does-passwordless-security-key-sign-in-work-in-my-on-premises-environment"></a>La connexion par clé de sécurité sans mot de passe fonctionne-t-elle dans mon environnement local ?
 
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Mon organisation requiert une authentification à deux facteurs pour accéder aux ressources. Que puis-je faire pour prendre en charge cette exigence ?
+La fonctionnalité ne fonctionne pas dans un environnement AD DS purement local.
 
-Les clés de sécurité sont disponibles dans différents facteurs de forme. Contactez le fabricant de l’appareil pour savoir comment le paramétrer afin d’utiliser un code PIN ou un accès biométrique comme deuxième facteur.
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Mon organisation exige une authentification à deux facteurs pour accéder aux ressources. Que puis-je faire pour prendre en charge cette exigence ?
 
-### <a name="can-admins-set-up-security-keys"></a>Les administrateurs peuvent-ils configurer des clés de sécurité ?
+Les clés de sécurité sont disponibles dans différents facteurs de forme. Contactez le fabricant officiel de l’appareil pour discuter de la façon dont ses appareils peuvent être activés à l’aide d’un code confidentiel ou d’une caractéristique biométrique comme deuxième facteur.
 
-Nous nous efforçons actuellement d’assurer la disponibilité générale de cette fonctionnalité.
+### <a name="can-administrators-set-up-security-keys"></a>Les administrateurs peuvent-ils configurer des clés de sécurité ?
+
+Nous travaillons sur cette fonctionnalité pour la publication en disponibilité générale de cette fonctionnalité.
 
 ### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Où puis-je trouver des clés de sécurité conformes ?
 
-[Clés de sécurité FIDO2](concept-authentication-passwordless.md#fido2-security-keys)
+Pour plus d’informations sur les clés de sécurité conformes, consultez [Clés de sécurité FIDO2](concept-authentication-passwordless.md#fido2-security-keys).
 
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Que dois-je faire si je perds ma clé de sécurité ?
+### <a name="what-can-i-do-if-i-lose-my-security-key"></a>Que puis-je faire si je perds ma clé de sécurité ?
 
-Vous pouvez supprimer des clés de sécurité à partir du Portail Microsoft Azure, en accédant à la page **Informations relatives à la sécurité** et en supprimant les clés.
+Pour récupérer une clé de sécurité, connectez-vous au portail Azure, puis accédez à la page **Informations de sécurité** .
 
-### <a name="im-not-able-to-use-fido-immediately-after-i-create-a-hybrid-azure-ad-joined-machine"></a>Je ne parviens pas à utiliser FIDO immédiatement après avoir créé une machine jointe à Azure AD Hybride.
+### <a name="what-can-i-do-if-im-unable-to-use-the-fido-security-key-immediately-after-i-create-a-hybrid-azure-ad-joined-machine"></a>Que puis-je faire si je ne parviens pas à utiliser la clé de sécurité FIDO immédiatement après avoir créé une machine jointe à Azure AD hybride  ?
 
-Si vous effectuez une nouvelle installation de machine jointe à Azure AD Hybride, après le processus de jonction de domaine et de redémarrage, vous devez vous connecter avec un mot de passe et attendre la synchronisation de la stratégie avant de pouvoir utiliser FIDO pour vous connecter.
+Si vous effectuez une nouvelle installation de machine jointe à Azure AD hybride, après le processus de jonction de domaine et de redémarrage, vous devez vous connecter avec un mot de passe et attendre la synchronisation de la stratégie avant de pouvoir utiliser la clé de sécurité FIDO pour vous connecter.
 
-- Vérifiez votre état actuel en saisissant `dsregcmd /status` dans une fenêtre de commande, puis en contrôlant que *AzureAdJoined* et *DomainJoined* indiquent *YES*.
-- Ce délai est une limitation connue des appareils joints à un domaine et qui n’est pas spécifique à FIDO.
+- Vérifiez votre état actuel en exécutant `dsregcmd /status` dans une fenêtre d’invite de commandes, puis assurez-vous que les états **AzureAdJoined** et **DomainJoined** affichent *OUI*.
+- Ce délai de synchronisation est une limitation connue des appareils joints à un domaine et n’est pas spécifique de FIDO.
 
-### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Je ne parviens pas à effectuer l’authentification unique auprès de ma ressource réseau NTLM après m’être connecté avec FIDO, et je reçois une invite à entrer des informations d’identification.
+### <a name="what-if-im-unable-to-get-single-sign-on-to-my-ntlm-network-resource-after-i-sign-in-with-fido-and-get-a-credential-prompt"></a>Que se passe-t-il si je ne parviens pas à effectuer l’authentification unique auprès de ma ressource réseau NTLM après m’être connecté avec FIDO et avoir obtenu une invite d’informations d’identification ?
 
-Assurez-vous qu’un nombre suffisant de contrôleurs de domaine sont corrigés pour répondre dans les temps afin de servir votre demande de ressource. Pour vérifier si vous pouvez voir un contrôleur de domaine exécutant la fonctionnalité, consultez la sortie de la commande `nltest /dsgetdc:contoso /keylist /kdc`.
+Assurez-vous qu’un nombre suffisant de contrôleurs de domaine sont corrigés pour répondre dans les temps afin de servir votre demande de ressource. Pour déterminer si un contrôleur de domaine exécute la fonctionnalité, exécutez `nltest /dsgetdc:contoso /keylist /kdc`, puis examinez la sortie.
 
 > [!NOTE]
-> Le commutateur `/keylist` dans la commande `nltest` est disponible dans le client Windows 10 v2004 et versions ultérieures.
+> Le commutateur `/keylist` dans la commande `nltest` est disponible dans le client Windows 10 v2004 et versions ultérieures.
 
 
-### <a name="is-fido2-security-keys-works-on-windows-login-with-rodc-present-in-the-hybrid-enviornment"></a>Les clés de sécurité FIDO2 fonctionnent-elles sur les connexions Windows lorsqu’un contrôleur de domaine en lecture seule est présent dans l’environnement hybride ?
+### <a name="do-fido2-security-keys-work-in-a-windows-login-with-rodc-present-in-the-hybrid-environment"></a>Les clés de sécurité FIDO2 fonctionnent-elles dans une connexion Windows quand un contrôleur de domaine en lecture seule est présent dans l’environnement hybride ?
 
-La connexion Windows par FIDO2 recherche un contrôleur de domaine accessible en écriture pour échanger le TGT de l’utilisateur. Tant que vous avez au moins un contrôleur de domaine accessible en écriture par site, cela fonctionne correctement. 
+Une connexion Windows par FIDO2 recherche un contrôleur de domaine accessible en écriture pour échanger le TGT de l’utilisateur. Tant que vous disposez d’au moins un contrôleur de domaine accessible en écriture par site, la connexion fonctionne correctement. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-[En savoir plus l’approche sans mot de passe](concept-authentication-passwordless.md)
+[En savoir plus sur l’authentification sans mot de passe](concept-authentication-passwordless.md)

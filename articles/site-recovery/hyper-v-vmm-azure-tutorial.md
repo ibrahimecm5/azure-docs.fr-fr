@@ -4,12 +4,12 @@ description: Découvrez comment configurer la reprise d’activité des machines
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc4e9066cb67617b52e9fa00a42ce95e31e0fe39
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89442818"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456967"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Configurer la récupération d’urgence dans Azure de machines virtuelles Hyper-V locales hébergées dans des clouds VMM
 
@@ -91,6 +91,30 @@ Dans l’Assistant Installation de l’Agent Microsoft Azure Recovery Services, 
 1. **Installation**. Quand l’installation est terminée, sélectionnez **Fermer** pour quitter l’Assistant.
 
    ![Installer l'agent](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+
+### <a name="install-the-recovery-services-agent-on-windows-core-hyper-v-hosts"></a>Installer l’agent Recovery Services sur des hôtes Windows Core Hyper-V
+
+Installez l’agent sur chaque hôte Windows Core Hyper-V contenant les machines virtuelles à répliquer.
+
+1. Sur l’hôte Windows Core Hyper-V, créez un répertoire en exécutant la commande suivante :
+
+   ```powershell
+   New-Item -Path C:\ASR -ItemType Directory
+   ```
+
+2. Téléchargez le programme d’installation de l’agent Microsoft Azure Recovery Services :
+
+   ```powershell
+   Invoke-WebRequest -Uri <put the URI here> -OutFile .\ASR\MARSsoftware.exe
+   ```
+   
+3. Exécutez le programme d’installation :
+
+   ```powershell
+   .\MARSsoftware.exe
+   ```
+
+4. Une fois l’installation de l’agent Microsoft Azure Recovery Services terminée, vous pouvez fermer la console de l’Assistant.
 
 ## <a name="set-up-the-target-environment"></a>Configurer l’environnement cible
 

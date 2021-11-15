@@ -3,12 +3,12 @@ title: Informations de référence sur les variables d’environnement et les pa
 description: Décrit les variables d’environnement couramment utilisées et celles qui peuvent être modifiées à l’aide des paramètres de l’application.
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: d945b34eb4803da8d94f4cdcfc8a998212e24afa
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e315a51e7d160bcc2d8864cfa954924f0fe4c094
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224353"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025749"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Variables d’environnement et paramètres d’application dans Azure App Service
 
@@ -298,7 +298,7 @@ Pour plus d’informations sur les emplacements de déploiement, consultez [Conf
 |`WEBSITE_SLOT_NAME`| Lecture seule. Nom de l’emplacement de déploiement actuel. Le nom de l’emplacement de production est `Production`. ||
 |`WEBSITE_OVERRIDE_STICKY_EXTENSION_VERSIONS`| Par défaut, les versions des extensions de site sont spécifiques à chaque emplacement. Cela permet d’éviter un comportement inattendu de l’application en raison de la modification des versions d’extension après un échange. Si vous voulez que les versions des extensions soient également échangées, définissez la valeur `1` sur *tous les emplacements*. ||
 |`WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS`| Désigne certains paramètres comme [temporaires ou non échangeables par défaut](deploy-staging-slots.md#which-settings-are-swapped). La valeur par défaut est `true`. Définissez ce paramètre sur `false` ou `0` pour *tous les emplacements de déploiement* pour les rendre interchangeables. Il n’existe pas de contrôle précis pour les types de paramètres spécifiques. ||
-|`WEBSITE_SWAP_WARMUP_PING_PATH`| Chemin d’accès pour effectuer un test ping afin de précharger l’emplacement cible dans un échange, commençant par une barre oblique. La valeur par défaut est `/`, ce qui effectue un test ping sur le chemin racine. | `/statuscheck` |
+|`WEBSITE_SWAP_WARMUP_PING_PATH`| Chemin d’accès pour effectuer un test ping afin de précharger l’emplacement cible dans un échange, commençant par une barre oblique. La valeur par défaut est `/`, ce qui effectue un test ping via HTTP sur le chemin racine. | `/statuscheck` |
 |`WEBSITE_SWAP_WARMUP_PING_STATUSES`| Codes de réponse HTTP valides pour l’opération d’initialisation pendant un échange. Si le code d’état retourné ne figure pas dans la liste, les opérations d’initialisation et d’échange sont arrêtées. Par défaut, tous les codes de réponse sont valides. | `200,202` |
 | `WEBSITE_SLOT_NUMBER_OF_TIMEOUTS_BEFORE_RESTART` | Lors d’un échange d’emplacement, nombre maximum de délais d’attente après lesquels nous forçons le redémarrage du site sur une instance de machine virtuelle spécifique. Par défaut, il s’agit de `3`. ||
 | `WEBSITE_SLOT_MAX_NUMBER_OF_TIMEOUTS` | Lors d’un échange d’emplacement, nombre maximum de demandes de délai d’attente pour une URL unique à effectuer avant d’abandonner. Par défaut, il s’agit de `5`. ||
@@ -435,7 +435,7 @@ Les variables d’environnement suivantes sont liées aux [connexions hybrides](
 |-|-|
 | `WEBSITE_RELAYS` | Lecture seule. Données nécessaires à la configuration de la connexion hybride, notamment les points de terminaison et les données du bus de service. |
 | `WEBSITE_REWRITE_TABLE` | Lecture seule. Utilisé lors de l’exécution pour effectuer les recherches et réécrire les connexions de manière appropriée. | 
-| `WEBSITE_VNET_ROUTE_ALL` | Par défaut, si vous utilisez l’[intégration au réseau virtuel régional](./overview-vnet-integration.md#regional-vnet-integration), votre application achemine uniquement le trafic RFC1918 vers votre réseau virtuel. Définissez la valeur `1` pour acheminer tout le trafic sortant vers votre réseau virtuel et être soumis aux mêmes groupes de sécurité réseau et itinéraires définis par l’utilisateur. Ce paramètre vous permet d’accéder à des points de terminaison non RFC1918 via votre réseau virtuel, de sécuriser tout le trafic sortant quittant votre application et de forcer le tunneling de tout le trafic sortant vers une appliance réseau de votre choix. |
+| `WEBSITE_VNET_ROUTE_ALL` | Par défaut, si vous utilisez l’[intégration au réseau virtuel régional](./overview-vnet-integration.md#regional-virtual-network-integration), votre application achemine uniquement le trafic RFC1918 vers votre réseau virtuel. Définissez la valeur `1` pour acheminer tout le trafic sortant vers votre réseau virtuel et être soumis aux mêmes groupes de sécurité réseau et itinéraires définis par l’utilisateur. Ce paramètre vous permet d’accéder à des points de terminaison non RFC1918 via votre réseau virtuel, de sécuriser tout le trafic sortant quittant votre application et de forcer le tunneling de tout le trafic sortant vers une appliance réseau de votre choix. |
 | `WEBSITE_PRIVATE_IP` | Lecture seule. Adresse IP associée à l’application lorsqu’elle est [intégrée à un réseau virtuel](./overview-vnet-integration.md). Pour l’intégration au réseau virtuel régional, la valeur est une adresse IP de la plage d’adresses du sous-réseau délégué et, pour l’intégration au réseau virtuel avec passerelle obligatoire, la valeur est une adresse IP de la plage d’adresses du pool d’adresses point à site configuré sur la passerelle de réseau virtuel. Cette adresse IP est utilisée par l’application pour se connecter aux ressources via le réseau virtuel. Elle peut également changer dans la plage d’adresses décrite. |
 | `WEBSITE_PRIVATE_PORTS` | Lecture seule. Dans l’intégration au réseau virtuel, indique les ports que l’application peut utiliser pour communiquer avec d’autres nœuds. |
 

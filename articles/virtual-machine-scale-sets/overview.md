@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
-ms.openlocfilehash: c4ad34729b81d6ca13bb2ff52c30dc77cd1614b9
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0e3cab3835abc8ca3fed652830437dfa7c425e74
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167381"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466957"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Que sont les groupes de machines virtuelles identiques ?
 
@@ -41,7 +41,7 @@ Les groupes identiques de machines virtuelles Azure fournissent les fonctionnali
     - La mise à l’échelle automatique réduit également le nombre d’instances de machine virtuelle inutiles exécutant votre application lorsque la demande est faible, tandis que les clients continuent de recevoir un niveau de performance acceptable lorsque la demande se développe et des instances de machines virtuelles supplémentaires sont ajoutées automatiquement. Cette capacité permet de réduire les coûts et de créer efficacement des ressources Azure en fonction des besoins.
 
 - **Fonctionne à grande échelle**
-    - Les groupes identiques prennent en charge jusqu’à 1 000 instances de machines virtuelles pour les images de la Place de marché standard et les images personnalisées via Shared Image Gallery. Si vous créez un groupe identique à l’aide d’une image managée, la limite est de 600 instances de machines virtuelles.
+    - Les groupes identiques prennent en charge jusqu’à 1 000 instances de machines virtuelles pour les images de marketplace standard et les images personnalisées via Azure Compute Gallery. Si vous créez un groupe identique à l’aide d’une image managée, la limite est de 600 instances de machines virtuelles.
     - Pour des performances optimales avec des charges de travail de production, utilisez [Azure Disques managés](../virtual-machines/managed-disks-overview.md).
 
 

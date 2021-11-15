@@ -8,12 +8,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: f59948204af76ce5e2d940c2910601b848bb4605
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a1cf4366ffd86491cc3e3e09358e364d878cb87
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122642086"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989334"
 ---
 # <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>Notification de mise à jour automatique et d’expiration du runtime d’intégration auto-hébergé
 
@@ -38,9 +38,11 @@ Vous pouvez utiliser cette [commande PowerShell](/powershell/module/az.datafacto
 > Si vous avez plusieurs nœuds de runtime d’intégration auto-hébergés, aucun temps d’arrêt n’est à déplorer lors de la mise à jour automatique. La mise à jour automatique intervient d’abord dans un nœud, tandis que les autres travaillent sur les tâches. Lorsque le premier nœud termine la mise à jour, il prend en charge les tâches restantes pour permettre la mise à jour des autres nœuds. Si vous n’avez qu’un seul runtime d’intégration auto-hébergé, cela entraîne un temps d’arrêt lors de la mise à jour automatique.
 
 ## <a name="auto-update-version-vs-latest-version"></a>Version de mise à jour automatique et version la plus récente
-Pour garantir la stabilité du runtime d’intégration auto-hébergé, même si nous publions deux versions, nous n’envoyons (push) qu’une version par mois. Par conséquent, vous constaterez parfois que la version mise à jour automatiquement correspond à la version précédente de la version la plus récente. Si vous souhaitez obtenir la version la plus récente, vous pouvez accéder au [centre de téléchargement](https://www.microsoft.com/download/details.aspx?id=39717).
+Pour garantir la stabilité du runtime d’intégration auto-hébergé, même si nous publions deux versions, nous n’envoyons (push) qu’une version par mois. Par conséquent, vous constaterez parfois que la version mise à jour automatiquement correspond à la version précédente de la version la plus récente. Si vous souhaitez obtenir la version la plus récente, vous pouvez accéder au [centre de téléchargement](https://www.microsoft.com/download/details.aspx?id=39717). En outre, la mise à jour automatique vers une version est managée. Vous ne pouvez pas la modifier. Si vous souhaitez effectuer une mise à niveau vers la dernière version, vous devez le faire manuellement. 
 
 Dans le portail ADF, la page **Mise à jour automatique** du runtime d’intégration auto-hébergé affiche la version la plus récente si la version actuelle est ancienne. Lorsque votre runtime d’intégration auto-hébergé est en ligne, cette version est une version de mise à jour automatique et met automatiquement à jour votre runtime d’intégration auto-hébergé à l’heure planifiée. Toutefois, si votre runtime d’intégration auto-hébergé est hors connexion, la page affiche uniquement la version la plus récente.
+
+Si vous avez plusieurs nœuds et si, pour diverses raisons, certains ne sont pas mis à jour automatiquement. Ensuite, ces nœuds restaurent la version qui était la même sur tous les nœuds avant la mise à jour automatique. 
 
 ## <a name="self-hosted-integration-runtime-expire-notification"></a>Notification d’expiration du runtime d’intégration auto-hébergé
 Si vous souhaitez contrôler manuellement la version du runtime d’intégration auto-hébergé, vous pouvez désactiver le paramètre de mise à jour automatique et l’installer manuellement. Chaque version du runtime d’intégration auto-hébergé expire dans un délai d’un an. Le message d’expiration s’affiche dans le portail ADF et le client du runtime d’intégration auto-hébergé **90 jours** avant l’expiration.

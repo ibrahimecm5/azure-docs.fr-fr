@@ -4,12 +4,12 @@ description: Fournit un résumé des limitations et des paramètres de prise en 
 ms.topic: conceptual
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: eee136952f2830e8d204a2d5346c97101be2a7da
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 11ed401ef3a1591bd3dc38ad7b4964033adfa3ac
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363429"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059371"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matrice de prise en charge pour Sauvegarde Azure
 
@@ -39,7 +39,7 @@ Le tableau suivant décrit les fonctionnalités des coffres Recovery Services :
 **Déplacer les coffres** | Vous pouvez [déplacer les coffres](./backup-azure-move-recovery-services-vault.md) entre des abonnements ou entre des groupes de ressources dans le même abonnement. En revanche, le déplacement de coffres entre régions n’est pas pris en charge.
 **Déplacer des données entre des coffres** | Le déplacement de données sauvegardées entre des coffres n’est pas pris en charge.
 **Modifier le type de stockage de coffre** | Vous pouvez modifier le type de réplication de stockage (stockage géoredondant ou stockage localement redondant) pour un coffre avant le stockage des sauvegardes. Une fois que les sauvegardes commencent dans le coffre, le type de réplication ne peut pas être modifié.
-**Stockage redondant interzone (ZRS)** | Prise en charge en préversion : Royaume-Uni Sud, Asie Sud-Est, Australie Est, Europe Nord, USA Centre, USA Est 2, Brésil Sud et Japon Est.
+**Stockage redondant interzone (ZRS)** | Pris en charge en préversion dans les régions Royaume-Uni Sud, Asie Sud-Est, Australie Est, Europe Nord, USA Centre, USA Est 2, Brésil Sud, USA Centre Sud, Corée Centre, Norvège Est, France Centre, Europe Ouest, Asie Est, Suède Centre et Japon Est.
 **Points de terminaison privés** | Consultez [cette section](./private-endpoints.md#before-you-start) afin de connaître la configuration requise pour créer des points de terminaison privés pour un coffre Recovery Services.  
 
 ## <a name="on-premises-backup-support"></a>Prise en charge des sauvegardes locales

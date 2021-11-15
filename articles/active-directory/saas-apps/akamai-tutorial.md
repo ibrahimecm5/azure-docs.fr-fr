@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique Azure Active Directory à Akamai | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Akamai'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Akamai.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 38b0ea6b65c3fcb01e8a49cd3a416533bcab5688
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 46763926a03fc4cb58803bfb2c716f09ece1b71b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803358"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456388"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Akamai
+# <a name="tutorial-azure-ad-sso-integration-with-akamai"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Akamai
 
 Dans ce tutoriel, vous allez apprendre à intégrer Akamai à Azure Active Directory (Azure AD). Quand vous intégrez Akamai à Azure AD, vous pouvez :
 
@@ -519,7 +519,7 @@ Attribuez le fournisseur d’identité.
 
 1. Pour le compte EAADelegation, cliquez sur l’onglet Delegation.
 
-    ![Capture d’écran d’une invite de commandes d’administrateur montrant la commande permettant de configurer le SPN.](./media/header-akamai-tutorial/spn.png)
+    ![Capture d’écran d’une invite de commandes d’administrateur montrant la commande permettant de configurer le SPN.](./media/header-akamai-tutorial/delegation.png)
 
     * Spécifiez l’utilisation de tout protocole d’authentification.
     * Cliquez sur Add et ajoutez le compte du pool d’applications pour le site web Kerberos. Il doit être résolu automatiquement au SPN correct s’il est configuré correctement.

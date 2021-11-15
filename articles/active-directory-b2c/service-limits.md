@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 06/02/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3b9fa2ad92756ef06510298bb2b29ac486ca9e57
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: 8e3ceab429f92340a080a6a42afd095375ce51b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035207"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266084"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Restrictions et limites du service Azure Active Directory B2C
 
@@ -46,8 +47,8 @@ Le tableau suivant répertorie les limites de configuration administrative dans 
 |Limite de chaîne par attribut      |250 caractères          |
 |Nombre de locataires B2C par abonnement      |20         |
 |Niveaux d’[héritage](custom-policy-overview.md#inheritance-model) dans les stratégies personnalisées     |10         |
-|Nombre de stratégies par locataire Azure AD B2C      |200          |
-|Taille maximale du fichier de stratégie      |400 ko          |
+|Nombre de stratégies par locataire Azure AD B2C (flux utilisateur + stratégies personnalisées)     |200          |
+|Taille maximale du fichier de stratégie      |1 024 Ko          |
 
 <sup>1</sup> Voir également [Restrictions et limites du service Azure AD](../active-directory/enterprise-users/directory-service-limits-restrictions.md).
 

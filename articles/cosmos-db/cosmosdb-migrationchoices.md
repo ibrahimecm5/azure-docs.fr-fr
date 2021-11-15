@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 98458a624a9c0d713e518e3fda442b8e45209d25
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 11/03/2021
+ms.openlocfilehash: 412b047896496124b042de82d9841afba9112934
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123036504"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562748"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Options de migration de vos données locales ou cloud vers Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -75,7 +75,7 @@ Vous trouverez ci-dessous un résumé des modes de migration de votre solution a
 |En ligne|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|API Azure Cosmos DB pour MongoDB |&bull; Utilise la bibliothèque d’exécuteurs en bloc Azure Cosmos DB. <br/>&bull; Adapté aux jeux de données volumineux et chargé de la réplication des modifications dynamiques. <br/>&bull; Fonctionne uniquement avec d’autres sources MongoDB.|
 |Hors connexion|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB| API Azure Cosmos DB pour MongoDB| &bull; Utilise la bibliothèque d’exécuteurs en bloc Azure Cosmos DB. <br/>&bull; Adapté aux jeux de données volumineux et chargé de la réplication des modifications dynamiques. <br/>&bull; Fonctionne uniquement avec d’autres sources MongoDB.|
 |Hors connexion|[Azure Data Factory](../data-factory/connector-azure-cosmos-db-mongodb-api.md).| &bull;Fichiers JSON/CSV<br/>&bull;API SQL Azure Cosmos DB<br/>&bull;API Azure Cosmos DB pour MongoDB <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Stockage Table<br/>&bull;Stockage Blob Azure <br/><br/> Pour d’autres sources prises en charge, consultez l’article [Azure Data Factory](../data-factory/connector-overview.md). | &bull;API SQL Azure Cosmos DB<br/>&bull;API Azure Cosmos DB pour MongoDB <br/>&bull; Fichiers JSON <br/><br/> Pour d’autres cibles prises en charge, consultez l’article [Azure Data Factory](../data-factory/connector-overview.md).| &bull; Facile à configurer et prend en charge plusieurs sources. <br/>&bull; Utilise la bibliothèque d’exécuteurs en bloc Azure Cosmos DB. <br/>&bull; Adapté aux jeux de données volumineux. <br/>&bull; L’absence de points de contrôle signifie que tout problème au cours de la migration impose le redémarrage de l’ensemble du processus de migration.<br/>&bull; L’absence de file d’attente de lettres mortes signifie que quelques fichiers erronés peuvent arrêter l’ensemble du processus de migration. <br/>&bull; Nécessite du code personnalisé pour augmenter le débit de lecture pour certaines sources de données.|
-|Hors connexion|[Outils Mongo existants (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | API Azure Cosmos DB pour MongoDB| &bull; Facile à configurer et à intégrer. <br/>&bull; Nécessite une gestion personnalisée des limitations.|
+|Hors connexion|Outils Mongo existants ([mongodump](mongodb/tutorial-mongotools-cosmos-db.md#mongodumpmongorestore), [mongorestore](mongodb/tutorial-mongotools-cosmos-db.md#mongodumpmongorestore), [Studio3T](mongodb/connect-using-mongochef.md))|MongoDB | API Azure Cosmos DB pour MongoDB| &bull; Facile à configurer et à intégrer. <br/>&bull; Nécessite une gestion personnalisée des limitations.|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>API Cassandra Azure Cosmos DB
 
@@ -105,7 +105,7 @@ Pour les API autres que l’API SQL, l’API Mongo et l’API Cassandra, différ
 ## <a name="next-steps"></a>Étapes suivantes
 
 * Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ?
-    * Si vous ne connaissez que le nombre de vCore et de serveurs présents dans votre cluster de bases de données existant, lisez l’article sur l’[estimation des unités de requête à l’aide de vCore ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
+    * Si vous ne connaissez que le nombre de vCores et de serveurs présents dans votre cluster de bases de données existant, lisez [Estimation des unités de requête à l’aide de vCores ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
     * Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez la section concernant l’[estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)
 * Pour en savoir plus, essayez les exemples d'applications utilisant la bibliothèque d'Exécuteurs en bloc en [.NET](bulk-executor-dot-net.md) et [Java](bulk-executor-java.md). 
 * La bibliothèque d'Exécuteurs en bloc est intégrée au connecteur Spark Cosmos DB. Pour plus d'informations, consultez [Connecteur Spark Azure Cosmos DB](./create-sql-api-spark.md).  

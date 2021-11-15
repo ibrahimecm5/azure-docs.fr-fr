@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/12/2021
 ms.author: yuajia
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ee721a56da41c4a5ff9184c6bc716784f858507d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 20a3015886962d9c48844d0aeb53a994dd5037c3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112467632"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423467"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Tutoriel : Ajouter un domaine personnalisé à votre point de terminaison
 
@@ -66,7 +66,9 @@ Utilisez plusieurs enregistrements CNAME pour différents sous-domaines du même
 Vous pouvez mapper un domaine personnalisé ayant différents sous-domaines au même point de terminaison CDN.
 
 > [!NOTE]
-> Ce tutoriel utilise le type d’enregistrement CNAME. Si vous utilisez les types d’enregistrements A ou AAAA, suivez les mêmes étapes ci-dessous et remplacez CNAME par le type d’enregistrement de votre choix.
+> - Ce tutoriel utilise le type d’enregistrement CNAME à plusieurs fins :
+>   - Le *routage du trafic* peut être effectué avec un enregistrement CNAME ainsi que des types d’enregistrement A ou AAAA dans Azure DNS. Pour l’appliquer, suivez les étapes ci-dessous et remplacez l’enregistrement CNAME par le type d’enregistrement de votre choix.  
+>   - Un enregistrement CNAME est **requis** pour la *validation de la propriété* du domaine personnalisé et doit être disponible lors de l’ajout du domaine personnalisé à un point de terminaison CDN.  Vous trouverez plus de détails ci-dessous.
 
 ---
 # <a name="azure-dns"></a>[**Azure DNS**](#tab/azure-dns)

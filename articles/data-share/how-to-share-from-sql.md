@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 09/10/2021
-ms.openlocfilehash: 7dcf326ea0834bdf644e2b717517f67d41d330e0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 83da2d9c1c242e49aac28067d1c315e1e382f2ef
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743284"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063643"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Partager et recevoir des données d’Azure SQL Database et d’Azure Synapse Analytics
 
@@ -260,7 +260,7 @@ Connectez-vous au [portail Azure](https://portal.azure.com/).
 
    Pour ouvrir l’invitation directement à partir du portail Azure, recherchez **Invitations Azure Data Share** dans le portail Azure. Vous accédez à la liste des invitations Data Share.
 
-   Si vous êtes utilisateur invité d’un locataire, il vous est demandé de vérifier votre adresse e-mail pour le locataire avant d’afficher l’invitation Data Share pour la première fois. Une fois la vérification effectuée, elle est valide pendant 12 mois.
+   Si vous êtes utilisateur invité d’un locataire, il vous est demandé de vérifier votre adresse e-mail pour le locataire avant d’afficher l’invitation Data Share pour la première fois. Une fois la vérification effectuée, l’invitation est valide pendant 12 mois.
 
    ![Liste des invitations](./media/invitations.png "Liste des invitations") 
 
@@ -364,9 +364,13 @@ Pour les tables SQL sources avec masquage dynamique des données, les données s
 ## <a name="sql-snapshot-performance"></a>Performances des instantanés SQL
 Les performances des instantanés SQL sont affectées par un certain nombre de facteurs. Il est toujours recommandé d’effectuer vos propres tests de performances. Voici quelques exemples de facteurs qui ont un impact sur les performances.
 
+* Opérations d’entrée/sortie par seconde (IOPS) du magasin de données source ou de destination, et bande passante.
 * Configuration matérielle (par exemple, vCores, mémoire, DWU) des magasins de données SQL sources et cibles. 
-* Accès simultané aux magasins de données sources et cibles. Si vous partagez plusieurs tables et vues à partir du même magasin de données SQL, ou si vous recevez plusieurs tables et vues dans le même magasin de données SQL, les performances seront affectées.   
-* Emplacement des magasins de données sources et cibles. 
+* Accès simultané aux magasins de données sources et cibles. Si vous partagez plusieurs tables et vues à partir du même magasin de données SQL, ou si vous recevez plusieurs tables et vues dans le même magasin de données SQL, les performances seront affectées.
+* Bande passante réseau entre les magasins de données source et de destination, et emplacement des magasins de données source et cible.
+* Taille des tables et des affichages partagés. Le partage de capture instantanée SQL effectue une copie complète de la table entière. Si la taille de la table augmente au fil du temps, la capture instantanée prend plus de temps. 
+
+Pour des tables volumineuses dont vous souhaitez des mises à jour incrémentielles, vous pouvez exporter les mises à jour vers un compte de stockage et tirer parti de la fonctionnalité de partage incrémentiel de compte de stockage pour accélérer les performances.
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>Résoudre les échecs d’instantanés SQL
 La cause la plus courante de l’échec d’un instantané est que le partage de données n’a pas d’autorisation sur le magasin de données source ou cible. Afin d’accorder l’autorisation de partage de données à la source ou à la cible Azure SQL Database ou Azure Synapse Analytics (anciennement Azure SQL DW), vous devez exécuter le script SQL fourni lors de la connexion à la base de données SQL à l’aide de l’authentification Azure Active Directory. Pour résoudre les autres échecs d’instantanés SQL, reportez-vous à [Résoudre les problèmes d’instantanés](data-share-troubleshoot.md#snapshots).

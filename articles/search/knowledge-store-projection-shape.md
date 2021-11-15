@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 26f70e4750d29231b3f139ecd617b43071e369bb
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: f0558d7e3cffd744ec4effa1d4f81f359e909e97
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066088"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503168"
 ---
 # <a name="shaping-data-for-projection-into-a-knowledge-store"></a>Mise en forme des données pour la projection dans un magasin de connaissances
 
@@ -20,7 +20,7 @@ Dans Recherche cognitive Azure, la « mise en forme des données » décrit une 
 
 À mesure que les compétences s’exécutent, les sorties sont écrites dans une arborescence d’enrichissements dans une hiérarchie de nœuds, et bien que vous souhaitiez afficher et consommer l’arborescence d’enrichissements dans son intégralité, il est plus probable que vous souhaitiez plus de granularité en créant des sous-ensembles de nœuds pour différents scénarios, en plaçant par exemple les nœuds associés à du texte traduit ou à des entités extraites dans des tables spécifiques.
 
-En soi, l’arborescence d’enrichissements n’inclut pas de logique qui indiquerait comment son contenu est représenté dans un magasin de connaissances. Les formes de données comblent cette lacune en fournissant le schéma de ce qui est placé dans chaque table, objet et projection de fichier. Vous pouvez considérer une forme de données comme une définition ou une vue personnalisée des données enrichies. Vous pouvez créer autant de formes que nécessaire, puis les affecter à des projections dans une définition de magasin de connaissances. 
+En soi, l’arborescence d’enrichissements n’inclut pas de logique qui indiquerait comment son contenu est représenté dans un magasin de connaissances. Les formes de données comblent cette lacune en fournissant le schéma de ce qui est placé dans chaque table, objet et projection de fichier. Vous pouvez considérer une forme de données comme une définition ou une vue personnalisée des données enrichies. Vous pouvez créer autant de formes que nécessaire, puis les affecter à des [projections](knowledge-store-projection-overview.md) dans une définition de magasin de connaissances. 
 
 ## <a name="approaches-for-creating-shapes"></a>Approches permettant la création de formes
 

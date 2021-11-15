@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 07/20/2021
+ms.date: 10/21/2021
 adobe-target: true
-ms.openlocfilehash: ebe02e264a9f3faea2812253eeced6d56319627d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f14a468130dbadfc9ae6a5668a9e1c71b880e818
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562915"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564914"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Aide-mémoire de l’algorithme Machine Learning pour le concepteur Azure Machine Learning
 
@@ -39,7 +39,7 @@ Les suggestions proposées dans cet aide-mémoire d'algorithme sont des règles 
 
 Chaque algorithme Machine Learning a son propre style ou biais inductif. Plusieurs algorithmes peuvent être appropriés pour un problème spécifique et un algorithme peut être un meilleur choix que d’autres. Mais il n’est pas toujours possible de savoir au préalable lequel convient le mieux. Dans ce cas, plusieurs algorithmes sont affichés dans l’aide-mémoire. Une stratégie appropriée consiste à essayer un algorithme et, si les résultats ne sont pas satisfaisants, à essayer les autres. 
 
-Pour en savoir plus sur les algorithmes dans le concepteur Azure Machine Learning, accédez aux [Informations de référence sur les algorithmes et les modules](algorithm-module-reference/module-reference.md).
+Pour en savoir plus sur les algorithmes dans le concepteur Azure Machine Learning, accédez aux [Informations de référence sur les algorithmes et les composants](component-reference/component-reference.md).
 
 ## <a name="kinds-of-machine-learning"></a>Types de Machine Learning
 

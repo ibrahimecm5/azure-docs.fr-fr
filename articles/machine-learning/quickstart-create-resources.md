@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 06/10/2021
+ms.date: 10/21/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: c20c5f96820ae4cbf8aa361b29483fac260ec5ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 749400cc3f5c798b16dc08485f0cbff14cb276e7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824185"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556944"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>Démarrage rapide : créer les ressources d’espace de travail nécessaires pour commencer à utiliser Azure Machine Learning
 
@@ -80,8 +80,8 @@ Passez en revue les différentes parties du studio dans la barre de navigation d
 * La section **Auteur** du studio contient plusieurs méthodes pour commencer à créer des modèles Machine Learning.  Vous pouvez :
 
     * La section **Notebooks** vous permet de créer des notebooks Jupyter, de copier des exemples de notebooks ou d’exécuter des notebooks et des scripts Python.
-    * Le **ML automatisé** vous permet de créer un modèle Machine Learning sans avoir à écrire de code.
-    * **Concepteur** vous permet de créer des modèles par glisser-déposer à l’aide de modules prédéfinis.
+    * **ML automatisé** vous permet de créer un modèle Machine Learning sans avoir à écrire du code.
+    * **Concepteur** vous permet de créer des modèles par glisser-déplacer à l’aide de composants prédéfinis.
 
 * La section **Composants** du studio vous aide à suivre les composants que vous créez au fur et à mesure de l’exécution de vos travaux.  Si vous avez un nouvel espace de travail, ces sections ne contiennent rien.
 

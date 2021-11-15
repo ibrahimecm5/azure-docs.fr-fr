@@ -1,22 +1,22 @@
 ---
 title: Activer l’extension de machine virtuelle à l’aide d’Azure PowerShell
 description: Cet article explique comment déployer des extensions de machine virtuelle sur des serveurs Azure Arc exécutés dans des environnements cloud hybrides avec Azure PowerShell.
-ms.date: 10/15/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c759510c3ab81b15b65315015a16507dadf2658a
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 03fb598989c7f308b3e481824e17d423f6d31824
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074567"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470620"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Activer les extensions de machine virtuelle Azure à l’aide d’Azure PowerShell
 
-Cet article explique comment déployer et désinstaller des extensions de machine virtuelle Azure, prises en charge par les serveurs Azure Arc, sur une machine hybride Linux ou Windows via Azure PowerShell.
+Cet article explique comment déployer, mettre à jour et désinstaller des extensions de machine virtuelle Azure, prises en charge par les serveurs avec Azure Arc, sur une machine hybride Linux ou Windows avec Azure PowerShell.
 
 > [!NOTE]
-> Les serveurs avec Azure Arc ne prennent pas en charge le déploiement ni la gestion des extensions de machine virtuelle sur les machines virtuelles Azure. Pour les machines virtuelles Azure, consultez l’article [Vue d’ensemble de l’extension de machine virtuelle](../../virtual-machines/extensions/overview.md) suivant.
+> Les serveurs avec Azure Arc ne prennent pas en charge le déploiement et la gestion des extensions de machine virtuelle sur les machines virtuelles Azure. Pour les machines virtuelles Azure, consultez l’article [Vue d’ensemble de l’extension de machine virtuelle](../../virtual-machines/extensions/overview.md) suivant.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -105,7 +105,13 @@ Name    Location  PropertiesType        ProvisioningState
 custom  westus2   CustomScriptExtension Succeeded
 ```
 
-## <a name="remove-an-installed-extension"></a>Supprimer une extension installée
+## <a name="update-extensions"></a>Mettre à jour les extensions
+
+Pour reconfigurer une extension installée, vous pouvez utiliser la cmdlet [Update-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/update-azconnectedmachineextension) avec les paramètres `-Name`, `-MachineName`, `-ResourceGroupName` et `-Settings`.
+
+Pour connaître les différents moyens d’apporter les modifications souhaitées à l’extension, consultez l’article de référence de la cmdlet.
+
+## <a name="remove-extensions"></a>Suppression d’extensions
 
 Pour supprimer une extension de machine virtuelle installée sur votre serveur Azure Arc, utilisez [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) avec les paramètres `-Name`, `-MachineName` et `-ResourceGroupName`.
 

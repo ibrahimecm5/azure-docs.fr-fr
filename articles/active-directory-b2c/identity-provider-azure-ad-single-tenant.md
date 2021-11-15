@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81067c8c1b24897d88f3d8da4d21329b030cbd03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a63c89174103613c722d463e32085600019e9ea0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036444"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026004"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Configurer la connexion pour une organisation Azure Active Directory spécifique dans Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ Si vous souhaitez obtenir les revendications `family_name` et `given_name` à pa
 1. Sélectionnez **Ajouter une revendication facultative**.
 1. Dans **Type de jeton**, sélectionnez **ID**.
 1. Sélectionnez les revendications facultatives à ajouter, `family_name` et `given_name`.
-1. Cliquez sur **Add**.
+1. Sélectionnez **Ajouter**. Si l’option **Activer l’autorisation d’e-mail Microsoft Graph (nécessaire pour que les revendications apparaissent dans le jeton)** s’affiche, activez-la et sélectionnez une nouvelle fois **Ajouter**.
 
 ## <a name="optional-verify-your-app-authenticity"></a>[Facultatif] Vérifier l’authenticité de votre application
 
@@ -101,8 +101,7 @@ La [vérification de l’éditeur](../active-directory/develop/publisher-verific
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    Par exemple : `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Par exemple : `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
+ Par exemple : `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`. Si vous utilisez un domaine personnalisé, remplacez `contoso.com` par votre domaine personnalisé dans `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
 
 1. Dans **ID client**, entrez l’ID d’application que vous avez enregistré précédemment.
 1. Dans **Clé secrète client**, entrez la clé secrète client que vous avez enregistrée précédemment.
@@ -125,7 +124,8 @@ La [vérification de l’éditeur](../active-directory/develop/publisher-verific
 
 1. Dans votre locataire Azure AD B2C, sélectionnez **Flux d’utilisateur**.
 1. Cliquez sur le flux d’utilisateur auquel vous souhaitez ajouter le fournisseur d’identité Azure AD.
-1. Sous **Fournisseurs d’identité sociale**, sélectionnez **Contoso Azure AD**.
+1. Sous **Paramètres**, sélectionnez **Fournisseurs d’identité**.
+1. Sous **Fournisseurs d’identité personnalisés**, sélectionnez **Contoso Azure AD**.
 1. Sélectionnez **Enregistrer**.
 1. Pour tester votre stratégie, sélectionnez **Exécuter le flux d’utilisateur**.
 1. Pour **Application**, sélectionnez une application web que vous avez [précédemment inscrite](tutorial-register-applications.md). L’**URL de réponse** doit être `https://jwt.ms`. 

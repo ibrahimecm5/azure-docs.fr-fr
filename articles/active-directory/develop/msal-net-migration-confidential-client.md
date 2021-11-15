@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 2148aa8deaa698c10918ee7a6b667c7d90286448
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 4e362812224f8e538d7a36dfa5378e23f6438d6e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355085"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462819"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>Migrer des applications clientes confidentielles de ADAL.NET vers MSAL.NET
 
@@ -149,6 +149,8 @@ public partial class AuthWrapper
 
   var authResult = await app.AcquireTokenForClient(
               new [] { $"{resourceId}/.default" })
+              // .WithTenantId(specificTenant)
+              // See https://aka.ms/msal.net/withTenantId
               .ExecuteAsync()
               .ConfigureAwait(false);
 
@@ -165,13 +167,13 @@ Pour tirer parti du cache en mémoire, l’instance de `IConfidentialClientAppli
 
 Vous devez sérialiser `AppTokenCache` si vous choisissez de ne pas utiliser le cache de jeton d’application en mémoire par défaut. De même, si vous souhaitez implémenter un cache de jeton distribué, vous devez sérialiser `AppTokenCache`. Pour plus d’informations, consultez [Cache de jeton pour une application web ou une API web (application cliente confidentielle)](msal-net-token-cache-serialization.md?tabs=aspnet) et l’exemple [active-directory-dotnet-v1-to-v2/ConfidentialClientTokenCache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache).
 
-[En savoir plus sur le scénario démon](scenario-daemon-overview.md) et la façon dont il est implémenté avec MSAL.net ou Microsoft.Identity.Web dans les nouvelles applications.
+[Apprenez-en davantage sur le scénario de démon](scenario-daemon-overview.md) et la façon dont il est implémenté avec MSAL.NET ou Microsoft.Identity.Web dans de nouvelles applications.
 
 ## <a name="web-api-calling-downstream-web-apis"></a>[API web appelant les API web en aval](#tab/obo)
 
 ### <a name="migrate-a-web-api-that-calls-downstream-web-apis"></a>Migrer une API web qui appelle des API web en aval
 
-Les API web qui appellent des API web en aval utilisent le flux [on-behalf-of (OBO)](v2-oauth2-on-behalf-of-flow.md) OAuth 2.0. Le code de l’API web utilise le jeton récupéré à partir de l’en-tête HTTP autorisé et le valide. Ce jeton est échangé contre un jeton pour appeler l’API Web en aval. Ce jeton est utilisé en tant qu’instance `UserAssertion` à la fois dans ADAL.NET et MSAL.NET.
+Les API web qui appellent des API web en aval utilisent le flux [on-behalf-of (OBO)](v2-oauth2-on-behalf-of-flow.md) OAuth 2.0. L’API web utilise le jeton d’accès extrait de l’en-tête HTTP **Authorize** et le valide. Ce jeton est ensuite échangé contre un jeton pour appeler l’API web en aval. Ce jeton est utilisé en tant qu’instance `UserAssertion` à la fois dans ADAL.NET et MSAL.NET.
 
 #### <a name="find-out-if-your-code-uses-obo"></a>Déterminer si votre code utilise OBO
 
@@ -272,6 +274,8 @@ public partial class AuthWrapper
   var authResult = await app.AcquireTokenOnBehalfOf(
               new string[] { $"{resourceId}/.default" },
               userAssertion)
+              // .WithTenantId(specificTenant) 
+              // See https://aka.ms/msal.net/withTenantId
               .ExecuteAsync()
               .ConfigureAwait(false);
   
@@ -300,9 +304,9 @@ Si votre application utilise ASP.NET Core, nous vous recommandons vivement d’e
 
 Les applications web se connecter qui connectent les utilisateurs et appellent des API web pour le compte d’utilisateurs utilisent le [flux de code d’autorisation](v2-oauth2-auth-code-flow.md) OAuth 2.0. En général :
 
-1. L’application web se connecte à un utilisateur en exécutant une première branche du workflow du code d’autorisation. Pour ce faire, il passe au point de terminaison authorize dans Azure Active Directory (Azure AD). L’utilisateur se connecte et effectue des authentifications multifacteur si nécessaire. En guise de résultat de cette opération, l’application reçoit le code d’autorisation. Jusqu’à présent, ADAL et MSAL ne sont pas impliqués.
-2. L’application exécute la deuxième branche du flux du code d’autorisation. Elle utilise le code d’autorisation pour obtenir un jeton d’accès, un jeton d’ID et un jeton d’actualisation. Votre application doit fournir la valeur `redirectUri`, qui est l’URI à partir duquel Azure AD fournira les jetons de sécurité. Une fois que l’application a reçu cet URI, elle appelle généralement `AcquireTokenByAuthorizationCode` pour ADAL ou MSAL afin d’échanger le code et d’obtenir un jeton qui sera stocké dans le cache de jeton.
-3. L’application utilise ADAL ou MSAL pour appeler `AcquireTokenSilent` afin de pouvoir obtenir des jetons et d’appeler les API web nécessaires. Cela s’effectue à partir des contrôleurs d’application web.
+1. L’application web se connecte à un utilisateur en exécutant une première branche du workflow du code d’autorisation. Pour ce faire, elle accède au point de terminaison d’autorisation de la plateforme d’identités Microsoft. L’utilisateur se connecte et effectue des authentifications multifacteur si nécessaire. En guise de résultat de cette opération, l’application reçoit le code d’autorisation. La bibliothèque d’authentification n’est pas utilisée à ce stade.
+1. L’application exécute la deuxième branche du flux du code d’autorisation. Elle utilise le code d’autorisation pour obtenir un jeton d’accès, un jeton d’ID et un jeton d’actualisation. Votre application doit fournir la valeur `redirectUri` qui est l’URI où le point de terminaison de la plateforme d’identités Microsoft fournira les jetons de sécurité. Une fois que l’application a reçu cet URI, elle appelle généralement `AcquireTokenByAuthorizationCode` pour ADAL ou MSAL afin d’échanger le code et d’obtenir un jeton qui sera stocké dans le cache de jeton.
+1. L’application utilise ADAL ou MSAL pour appeler `AcquireTokenSilent` afin de pouvoir obtenir des jetons et d’appeler les API web nécessaires. Cela s’effectue à partir des contrôleurs d’application web.
 
 #### <a name="find-out-if-your-code-uses-the-auth-code-flow"></a>Déterminer si votre code utilise le circuit de code d’authentification
 
@@ -442,7 +446,8 @@ public partial class AuthWrapper
    authResult = await app.AcquireTokenSilent(
                scopes,
                account)
-                .WithAuthority(authority)
+                // .WithTenantId(specificTenantId) 
+                // See https://aka.ms/msal.net/withTenantId
                 .ExecuteAsync().ConfigureAwait(false);
   }
   catch (MsalUiRequiredException)
@@ -496,6 +501,8 @@ Les avantages clés de MSAL.NET pour votre application sont les suivants :
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
+### <a name="msalserviceexception"></a>MsalServiceException
+
 Les informations de résolution des problèmes suivantes établissent deux hypothèses : 
 
 - Votre code ADAL.NET fonctionnait.
@@ -511,10 +518,19 @@ Si vous recevez une exception avec l’un des messages suivants :
 
 Vous pouvez résoudre l’exception en procédant comme suit :
 
-1. Vérifiez que vous utilisez la version la plus récente de MSAL.NET.
+1. Vérifiez que vous utilisez la version la plus récente de [MSAL.NET](https://www.nuget.org/packages/Microsoft.Identity.Client/).
 1. Vérifiez que l’hôte d’autorité que vous avez défini lors de la création de l’application cliente confidentielle et de l’hôte d’autorité que vous avez utilisé avec ADAL sont similaires. En particulier, s’agit-il du même [cloud](msal-national-cloud.md) (Azure Government, Azure China 21Vianet ou Azure Allemagne) ?
+
+### <a name="msalclientexception"></a>MsalClientException
+
+Dans des applications mutualisées, vous pouvez avoir des scénarios où vous spécifiez une autorité commune lors de la génération de l’application, puis souhaitez cibler un locataire spécifique (par exemple, le locataire de l’utilisateur) lors de l’appel d’une API web. S’agissant de MSAL.NET 4.37.0, lorsque vous spécifiez `.WithAzureRegion` lors de la création de l’application, vous ne pouvez plus spécifier l’Autorité à l’aide de `.WithAuthority` lors des demandes de jeton. Si vous le faites, vous obtiendrez l’erreur suivante lors de la mise à jour à partir de versions précédentes de MSAL.NET :
+
+  `MsalClientException - "You configured WithAuthority at the request level, and also WithAzureRegion. This is not supported when the environment changes from application to request. Use WithTenantId at the request level instead."`
+
+Pour résoudre ce problème, remplacez `.WithAuthority` sur l’expression AcquireTokenXXX par `.WithTenantId`. Spécifiez le locataire à l’aide d’un GUID ou d’un nom de domaine.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En savoir plus sur les [différences entre les applications ADAL.NET et MSAL.NET](msal-net-differences-adal-net.md).
-En savoir plus sur la [sérialisation du cache de jetons dans MSAL.NET](msal-net-token-cache-serialization.md)
+Pour en savoir plus :
+- [Différences entre les applications ADAL.NET et MSAL.NET](msal-net-differences-adal-net.md)
+- [Sérialisation de cache de jetons dans MSAL.NET](msal-net-token-cache-serialization.md)

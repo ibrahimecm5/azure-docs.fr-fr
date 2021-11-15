@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 16127f59ce1f4a258bf76d97b072ec8cc5f6c6c5
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3af3a216b8c9d2e19021582181aea188de9dd0cc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643216"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472861"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Démarrage rapide : Utilisez .NET (C#) pour vous connecter et interroger des données dans Azure Database pour MySQL
 
@@ -27,6 +27,7 @@ Voici les prérequis pour ce guide de démarrage rapide :
 - Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free).
 - Créer un serveur unique Azure Database pour MySQL à l’aide du [portail Azure](./quickstart-create-mysql-server-database-using-azure-portal.md) <br/> ou d’[Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md), si vous n’en avez pas.
 - Selon que vous utilisez un accès public ou privé, effectuez **UNE** des actions ci-dessous pour activer la connectivité.
+- Installez le [Kit de développement logiciel (SDK) .NET](https://dotnet.microsoft.com/download) correspondant à votre plateforme (Windows, Ubuntu Linux ou macOS).
 
 |Action| Méthode de connexion|Guide pratique|
 |:--------- |:--------- |:--------- |

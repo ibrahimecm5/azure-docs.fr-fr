@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 06/21/2021
 ms.author: cynthn
 ms.custom: portal
-ms.openlocfilehash: b9218f6eebedd8f94c06a664518fc718f0eb7d19
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: bfab2d65de8b15ac72fe3c3b536b76ef14f046b4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992114"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437293"
 ---
 # <a name="create-an-image-of-a-vm-in-the-portal"></a>Créer une image de machine virtuelle dans le portail
 
 Vous pouvez créer une image à partir d’une machine virtuelle, puis l’utiliser pour créer plusieurs machines virtuelles.
 
-Pour les images stockées dans une galerie d’images partagées, vous pouvez utiliser des machines virtuelles sur lesquelles des comptes ont déjà été créés (machines virtuelles spécialisées), ou vous pouvez généraliser la machine virtuelle avant de créer l’image afin de supprimer les comptes de machine et les autres informations spécifiques aux machines. Pour généraliser une machine virtuelle, consultez [Généraliser une machine virtuelle Windows](generalize.md). Pour plus d’informations, consultez [Images généralisées et spécialisées](shared-image-galleries.md#generalized-and-specialized-images).
+Pour les images stockées dans Azure Compute Gallery (anciennement appelé Shared Image Gallery), vous pouvez utiliser des machines virtuelles sur lesquelles des comptes ont déjà été créés (machines virtuelles spécialisées), ou vous pouvez généraliser la machine virtuelle avant de créer l’image afin de supprimer les comptes de machine et les autres informations spécifiques aux machines. Pour généraliser une machine virtuelle, consultez [Généraliser une machine virtuelle Windows](generalize.md). Pour plus d’informations, consultez [Images généralisées et spécialisées](shared-image-galleries.md#generalized-and-specialized-images).
 
 
 ## <a name="capture-a-vm-in-the-portal"></a>Capturer une machine virtuelle dans le portail 
@@ -63,4 +63,4 @@ Pour les images stockées dans une galerie d’images partagées, vous pouvez ut
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Vue d’ensemble des galeries d’images partagées](shared-image-galleries.md)  
+- [Vue d’ensemble des galeries Azure Compute](shared-image-galleries.md) 

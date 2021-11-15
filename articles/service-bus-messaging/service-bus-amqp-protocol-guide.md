@@ -3,12 +3,12 @@ title: Guide du protocole AMQP 1.0 dans Azure Service Bus et Event Hubs | Micros
 description: Guide du protocole pour les expressions et description d’AMQP 1.0 dans Azure Service Bus et Event Hubs
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: d786b3d0e9afbf7ab4e895c6788209644d9f921f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1a299843b402d03543adbf9a9efdf86800abd564
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092752"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063757"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Guide du protocole AMQP 1.0 dans Azure Service Bus et Event Hubs
 
@@ -67,7 +67,7 @@ Les sessions disposent d’un modèle de contrôle de flux utilisant une fenêtr
 
 Ce modèle utilisant une fenêtre est à peu près semblable au concept de contrôle de flux utilisant une fenêtre, mais au niveau de la session à l’intérieur du socket. Le concept du protocole visant à autoriser plusieurs sessions simultanées consiste à ce que le trafic à priorité élevée soit prioritaire sur un trafic normal ralenti, comme sur une voie expresse.
 
-Azure Service Bus utilise actuellement une session pour chaque connexion. La taille maximale de trame de Service Bus est de 262 144 octets (256 Ko) pour la version Standard de Service Bus. Elle est de 1 048 576 (1 Mo) pour Service Bus Premium et Event Hubs. Service Bus n’impose pas de fenêtre de limitation spécifique au niveau de la session, mais réinitialise la fenêtre régulièrement dans le cadre du contrôle de flux au niveau du lien (voir [la section suivante](#links)).
+Azure Service Bus utilise actuellement une session pour chaque connexion. La taille maximale de trame de Service Bus est de 262 144 octets (256 Ko) pour la version Standard de Service Bus. Elle est de 1048576 (100 Mo) pour Service Bus Premium et Event Hubs. Service Bus n’impose pas de fenêtre de limitation spécifique au niveau de la session, mais réinitialise la fenêtre régulièrement dans le cadre du contrôle de flux au niveau du lien (voir [la section suivante](#links)).
 
 Les connexions, les canaux et les sessions sont éphémères. En cas de coupure de la connexion sous-jacente, les connexions, le tunnel TLS, le contexte d’autorisation SASL et les sessions doivent être rétablis.
 

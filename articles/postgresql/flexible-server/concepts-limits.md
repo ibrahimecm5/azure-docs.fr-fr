@@ -5,16 +5,15 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/17/2021
-ms.openlocfilehash: 58e5f6f5646eb2dd75215a17349b053426b7c837
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.date: 10/26/2021
+ms.openlocfilehash: c28e3b84251c645ff690098950066b3bb653f3df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133326"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467527"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Limites dans Azure Database pour PostgreSQL - Serveur flexible
-
 
 
 Les sections suivantes décrivent les limites fonctionnelles et les limites de capacités du service de base de données. Si vous souhaitez en savoir plus sur les niveaux de ressources (calcul, mémoire, stockage), consultez l’article sur [le calcul et le stockage](concepts-compute-storage.md).
@@ -82,10 +81,7 @@ Une connexion PostgreSQL, même inactive, peut utiliser environ 10 Mo de mémoi
 
 ### <a name="high-availability-ha"></a>Haute disponibilité (HA)
 
-- La haute disponibilité avec redondance interzone n’est pas prise en charge actuellement pour les serveurs expansibles.
-- L’adresse IP du serveur de base de données change lorsque votre serveur bascule vers le serveur de secours HA. Veillez à utiliser l’enregistrement DNS à la place de l’adresse IP du serveur.
-- Si la réplication logique est configurée avec un serveur flexible configuré pour la haute disponibilité, en cas de basculement vers le serveur de secours, les emplacements de réplication logique ne sont pas copiés sur le serveur de secours. 
-- Pour plus d’informations sur la haute disponibilité redondante interzone, y compris les limitations, consultez la page [Concepts – Documentation haute disponibilité](concepts-high-availability.md).
+- Consultez la page [Documentation sur les limitations de haute disponibilité redondantes dans une zone](concepts-high-availability.md#zone-redundant-high-availability---limitations).
 
 ### <a name="availability-zones"></a>Zones de disponibilité
 

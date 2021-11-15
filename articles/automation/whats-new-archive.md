@@ -3,14 +3,14 @@ title: Archives pour les nouveautés d’Azure Automation
 description: Les notes de publication des nouveautés de la section Vue d’ensemble de ce jeu de contenus contiennent six mois d’activité. Ensuite, les éléments sont supprimés de l’article principal et placés dans cet article.
 services: automation
 ms.topic: overview
-ms.date: 08/27/2021
+ms.date: 10/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 459bfea7504bb9d9078dadabf7443e995d5c90bc
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: bd481c65dadbf127682087e4c0cf6ca018b17098
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117332"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473943"
 ---
 # <a name="archive-for-whats-new-in-azure-automation"></a>Archives pour les nouveautés d’Azure Automation
 
@@ -24,6 +24,90 @@ L’article principal [Nouveautés d’Azure Automation](whats-new.md) contient 
 
 ---
 
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="new-azure-automation-built-in-policy-definitions"></a>Nouvelles définitions de stratégie intégrées Azure Automation
+
+**Type :** Nouvelle fonctionnalité
+
+Azure Automation a ajouté 5 nouvelles définitions de stratégie intégrées :
+
+- Les comptes Automation doivent désactiver l’accès au réseau public
+- Les comptes Azure Automation doivent utiliser des clés gérées par le client pour chiffrer les données au repos
+- Configurer des comptes Azure Automation pour désactiver l'accès réseau public
+- Configurer des connexions de point de terminaison privé sur des comptes Azure Automation
+- Les connexions de point de terminaison privé sur les comptes Automation doivent être activées
+
+Pour plus d’informations, consultez [Informations de référence sur Azure Policy](./policy-reference.md).
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>Disponibilité générale déclarée de la prise en charge d’Automation et de State Configuration dans la région Inde Sud
+
+**Type :** Nouvelle fonctionnalité
+
+Utilisez la fonctionnalité Process Automation et State Configuration dans la région Inde Sud. Lisez cette [annonce](https://azure.microsoft.com/updates/azure-automation-in-south-india-region/) pour plus d’informations.
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uk-west"></a>Disponibilité générale déclarée de la prise en charge d’Automation et de State Configuration dans la région Royaume-Uni Ouest
+
+**Type :** Nouvelle fonctionnalité
+
+Utilisez la fonctionnalité Process Automation et State Configuration dans la région Royaume-Uni Ouest. Pour plus d'informations, lisez cette [annonce](https://azure.microsoft.com/updates/azure-automation-in-uk-west-region/).
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uae-central"></a>Disponibilité générale déclarée de la prise en charge d’Automation et de State Configuration dans la région Émirats arabes unis Centre
+
+**Type :** Nouvelle fonctionnalité
+
+Utilisez la fonctionnalités Process Automation et State Configuration dans la région Émirats arabes unis Centre. Lisez cette [annonce](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/) pour plus d’informations.
+
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2-norway-west-and-france-south"></a>Prise en charge d’Automation et de State Configuration disponible dans les régions Australie Centre 2, Norvège Ouest et France Sud
+
+**Type :** Nouvelle fonctionnalité
+
+Pour plus d’informations, consultez la page consacrée à la [résidence des données](https://azure.microsoft.com/global-infrastructure/data-residency/) en sélectionnant la zone géographique pour chaque région.
+
+### <a name="new-scripts-added-for-installing-hybrid-worker-on-windows-and-linux"></a>Nouveaux scripts ajoutés pour l’installation du Worker hybride sur Windows et Linux
+
+**Type :** Nouvelle fonctionnalité
+
+Deux nouveaux scripts ont été ajoutés au [dépôt GitHub](https://github.com/azureautomation) Azure Automation, qui résolvent l’un des principaux scénarios d’Azure Automation de configuration d’un Runbook Worker hybride sur une machine Windows ou Linux. Le script crée une machine virtuelle ou en utilise une existante, le cas échéant il crée un espace de travail Log Analytics, installe l’agent Log Analytics pour Windows ou pour Linux et inscrit la machine sur l’espace de travail Log Analytics. Le script Windows est nommé **Create Automation Windows HybridWorker**, et le script Linux **Create Automation Linux HybridWorker**.
+
+### <a name="invoke-runbook-through-an-azure-resource-manager-template-webhook"></a>Appeler un runbook par le biais d’un webhook de modèle Azure Resource Manager
+
+**Type :** Nouvelle fonctionnalité
+
+Pour plus d’informations, consultez [Utiliser un webhook à partir d’un modèle ARM](./automation-webhooks.md#create-runbook-and-webhook-with-arm-template).
+
+### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management prend désormais en charge CentOS 8.x, Red Hat Enterprise Linux Server 8.x et SUSE Linux Enterprise Server 15
+
+**Type :** Nouvelle fonctionnalité
+
+Pour plus d’informations, consultez la [liste complète](./update-management/operating-system-requirements.md) des systèmes d’exploitation Linux pris en charge.
+
+### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>Prise en charge de la résidence des données dans la région, pour Brésil Sud et Asie Sud-Est
+
+**Type :** Nouvelle fonctionnalité
+
+Dans toutes les régions, à l’exception de Brésil Sud et d’Asie Sud-Est, les données Azure Automation sont stockées dans une région différente (région jumelée Azure) pour assurer la continuité d’activité et reprise d’activité (BCDR). Pour les régions Brésil Sud et Asie Sud-Est seulement, nous stockons maintenant les données Azure Automation dans la même région, afin de répondre aux exigences de résidence des données pour ces régions. Pour plus d’informations, consultez [Géoréplication dans Azure Automation](./automation-managing-data.md#geo-replication-in-azure-automation).
+
+## <a name="february-2021"></a>Février 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>Disponibilité générale déclarée de la prise en charge d’Automation et de State Configuration dans la région Japon Ouest
+
+**Type :** Nouvelle fonctionnalité
+
+Disponibilité du compte Automation et de State Configuration dans la région Japon Ouest. Pour plus d'informations, lisez cette [annonce](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/).
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>Introduction de la conformité du service Azure Policy personnalisé pour appliquer l’exécution de runbook sur un Worker hybride
+
+**Type :** nouvelle fonctionnalité
+
+Vous pouvez utiliser la nouvelle règle de conformité Azure Policy pour autoriser la création de travaux, de webhooks et de planifications de travaux à exécuter seulement sur des groupes de Workers hybrides.
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>Disponibilité d’Update Management dans les régions USA Est, France Centre et Europe Nord
+
+**Type :** Nouvelle fonctionnalité
+
+La fonctionnalité Update Management d’Automation est disponible dans les régions USA Est, France Centre et Europe Nord. Pour voir les mises à jour de la documentation en lien avec ce changement, consultez [Mappage de régions prises en charge](how-to/region-mappings.md).
+
 ## <a name="january-2021"></a>Janvier 2021
 
 ### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>Disponibilité générale déclarée de la prise en charge d’Automation et de State Configuration dans la région Suisse Ouest
@@ -36,9 +120,9 @@ Disponibilité du compte Automation et de State Configuration dans la région Su
 
 **Type :** Nouvelle fonctionnalité
 
-Le script est disponible en téléchargement à partir de notre [dépôt GitHub](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py). 
+Le script est disponible en téléchargement à partir de notre [dépôt GitHub](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py).
  
-### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>Prise en charge du rôle Runbook Worker hybride pour CentOS 8.x/RHEL 8.x/SLES 15
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>Prise en charge du rôle Runbook Worker hybride pour CentOS 8.x/RHEL 8.x/SLES 15
 
 **Type.** Nouvelle fonctionnalité
 
@@ -48,7 +132,7 @@ La fonctionnalité Runbook Worker hybride prend en charge les distributions Cent
 
 **Type :** Nouvelle fonctionnalité
 
-Le compte Automation, Suivi des modifications et inventaire, et Update Management sont disponibles dans les régions Australie Est, Asie Est, USA Ouest et USA Centre. 
+Le compte Automation, Suivi des modifications et inventaire, et Update Management sont disponibles dans les régions Australie Est, Asie Est, USA Ouest et USA Centre.
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>Introduction de la préversion publique des runbooks Python 3 dans le cloud US Government
 

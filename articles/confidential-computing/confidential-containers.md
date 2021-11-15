@@ -4,16 +4,16 @@ description: Découvrez-en plus sur la prise en charge des conteneurs non modif
 services: container-service
 author: agowdamsft
 ms.topic: article
-ms.date: 11/01/2011
+ms.date: 11/04/2021
 ms.author: amgowda
 ms.service: container-service
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d7c94570a7b83fba70a8e95d17f5c6eb215740bb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 69045817c081ebe4eccf6044829b074d23ecd83c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067498"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853538"
 ---
 # <a name="confidential-containers-on-azure"></a>Conteneurs confidentiels sur Azure
 
@@ -23,7 +23,7 @@ Un environnement d’exécution de confiance (TEE, Trusted Execution Environment
 
 Les conteneurs confidentiels prennent en charge les applications personnalisées développées avec n’importe quel langage de programmation. Vous pouvez également exécuter des applications de conteneur Docker du commerce.
 
-![Diagramme de la limite de protection des conteneurs confidentiels dans Kubernetes.](./media/confidential-containers/sgx-confidential-container.jpg)
+:::image type="content" source="./media/confidential-containers/sgx-confidential-container.png" alt-text="Diagramme de la limite de protection des conteneurs confidentiels dans Kubernetes, montrant l’absence d’accès pour les administrateurs.":::
 
 ## <a name="enablers-with-intel-sgx-on-azure-kubernetes-serviceaks"></a>Activateurs avec Intel SGX sur Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Les conteneurs confidentiels prennent en charge les applications personnalisées
 
 Azure Kubernetes Service (AKS) prend entièrement en charge les conteneurs confidentiels. Vous pouvez exécuter des conteneurs existants de manière confidentielle sur AKS.
 
-![Diagramme de la conversion d’un conteneur confidentiel, avec de nouvelles étapes pour l’activation d’Intel SGX et d’AKS](./media/confidential-containers/confidential-containers-deploy-steps.jpg)
+:::image type="content" source="./media/confidential-containers/confidential-containers-deploy-steps.png" alt-text="Diagramme de la conversion d’un conteneur confidentiel, avec de nouvelles étapes pour l’activation d’Intel SGX et d’AKS.":::
 
 ## <a name="partner-enablers"></a>Activateurs de partenaires
 

@@ -6,15 +6,14 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 02/10/2021
+ms.date: 10/31/2021
 ms.author: jodowns
-ms.custom: fasttrack-new
-ms.openlocfilehash: 6b055cb6771dc76557c61220a52120a5fbbd7940
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: a89860216563480de4803cc6e4a7e9f24853190f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811385"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471095"
 ---
 # <a name="versions-in-azure-api-management"></a>Versions dans Gestion des API Azure
 
@@ -69,6 +68,8 @@ Gestion des API Azure gère une ressource appelée *jeu de versions*, qui repré
 Chaque version d’une API est gérée comme sa propre ressource d’API, qui est ensuite associée à un jeu de versions. Un jeu de versions peut contenir des API avec différentes opérations ou stratégies. Vous pouvez apporter des modifications significatives entre les versions d’un jeu.
 
 Le portail Azure crée des jeux de versions pour vous. Vous pouvez modifier le nom et la description d’un jeu de versions dans le portail Azure.
+
+Un ensemble de versions est automatiquement supprimé lorsque la version finale est supprimée.
 
 Vous pouvez afficher et gérer les jeux de versions directement à l’aide d’[Azure CLI](/cli/azure/apim/api/versionset), d’[Azure PowerShell](/powershell/module/az.apimanagement/#api-management), des [modèles Resource Manager](/azure/templates/microsoft.apimanagement/service/apiversionsets) ou de l’[API Azure Resource Manager](/rest/api/apimanagement/2020-12-01/api-version-set).
 

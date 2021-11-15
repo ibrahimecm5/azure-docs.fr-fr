@@ -7,17 +7,17 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/02/2021
-ms.openlocfilehash: f80a4a5961c0506f423da4d4f1578b8cf8999b51
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/28/2021
+ms.openlocfilehash: 6e9c09cb5407747c325b696570cd3eabdeeb4ed7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755241"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563717"
 ---
 # <a name="quickstart-create-a-knowledge-store-in-the-azure-portal"></a>Démarrage rapide : Créer une base de connaissances dans le portail Azure
 
-La [base de connaissances](knowledge-store-concept-intro.md) est une fonctionnalité du service Recherche cognitive Azure, qui envoie la sortie d’un [pipeline d’enrichissement par IA](cognitive-search-concept-intro.md) au Stockage Azure. Les enrichissements créés par le pipeline (tels que le texte traduit, le texte OCR, les entités reconnues et d’autres enrichissements) sont projetés dans des tables ou des objets blob, où les applications ou charges de travail qui se connectent au Stockage Azure peuvent y accéder.
+[Base de connaissances](knowledge-store-concept-intro.md) est une fonctionnalité de Recherche cognitive Azure qui accepte la sortie d’un [pipeline d’enrichissement par IA](cognitive-search-concept-intro.md) et la rend disponible dans Stockage Azure pour les applications et les charges de travail en aval. Les enrichissements créés par le pipeline (tels que le texte traduit, le texte OCR, les images étiquetées et les entités reconnues) sont projetés dans des tables ou des blobs, où les applications ou charges de travail qui se connectent à Stockage Azure peuvent y accéder.
 
 Dans ce guide de démarrage rapide, vous allez configurer vos données, puis exécuter l’Assistant **Importation de données** pour créer un pipeline d’enrichissement qui génère aussi une base de connaissances. La base de connaissances contient le contenu texte d’origine extrait de la source (évaluations d’un hôtel par les clients), plus le contenu généré par l’IA, qui comprend une étiquette de sentiment, l’extraction d’expressions clés et la traduction textuelle des commentaires des clients non francophones.
 
@@ -30,35 +30,15 @@ Ce guide de démarrage rapide utilise les services suivants :
 
 + Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/).
 
-+ Service Recherche cognitive Azure. [Créez un service](search-create-service-portal.md) ou [recherchez un service existant](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) dans votre compte. Vous pouvez utiliser un service gratuit pour ce guide de démarrage rapide. 
++ Recherche cognitive Azure. [Créez un service](search-create-service-portal.md) ou [recherchez un service existant](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) dans votre compte. Vous pouvez utiliser un service gratuit pour ce guide de démarrage rapide. 
 
-+ Un compte de stockage Azure avec un [Stockage Blob](../storage/blobs/index.yml).
++ Stockage Azure. [Créez un compte](../storage/common/storage-account-create.md) ou [recherchez un compte existant](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). Le type de compte doit être **StorageV2 (v2 universel)** .
 
-Ce guide de démarrage rapide utilise également [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) pour l’intelligence artificielle. Parce que la charge de travail est vraiment petite, Cognitive Services est utilisé en arrière-plan pour traiter gratuitement jusqu’à 20 transactions. Cela signifie que vous pouvez effectuer cet exercice sans avoir à créer une ressource Cognitive Services supplémentaire.
++ Exemples de données. Ce démarrage rapide utilise des données d’évaluation d’hôtels enregistrées dans un fichier CSV (issues de Kaggle.com). Il rassemble 19 commentaires de clients relatifs à un seul hôtel.
 
-## <a name="set-up-your-data"></a>Configurer vos données
+  [Téléchargez le fichier HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D), puis [chargez-le dans un conteneur de blobs](../storage/blobs/storage-quickstart-blobs-portal.md) dans Stockage Azure.
 
-Dans les étapes suivantes, configurez un conteneur d’objets blob dans Stockage Azure pour stocker des fichiers de contenu hétérogènes.
-
-1. [Téléchargez le fichier HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Ce fichier CSV contient des données d’avis d’hôtel (issues de Kaggle.com). Il rassemble 19 commentaires de clients relatifs à un seul hôtel. 
-
-1. [Créez un compte de stockage Azure](../storage/common/storage-account-create.md?tabs=azure-portal) ou [recherchez un compte existant](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). Vous allez utiliser le Stockage Azure à la fois pour le contenu brut à importer et pour la base de connaissances qui est le résultat final.
-
-   Choisissez le type de compte **StorageV2 (usage général v2)** .
-
-1. Dans la ressource Stockage Azure, utilisez **Explorateur Stockage** pour créer un conteneur d’objets blob nommé **hotel-reviews**.
-
-1. Sélectionnez **Charger** en haut de la page pour charger le fichier **HotelReviews-Free.csv** que vous avez téléchargé à l’étape précédente.
-
-   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="Capture d’écran d’Explorateur Stockage avec le fichier chargé et le volet de navigation gauche" border="true":::
-
-1. Vous avez presque terminé avec cette ressource, mais avant de quitter ces pages, sélectionnez **Clés d’accès** dans le volet de navigation gauche pour obtenir une chaîne de connexion afin de pouvoir récupérer ces données en utilisant l’indexeur.
-
-1. Dans **Clés d’accès**, sélectionnez **Afficher les clés** en haut de la page pour afficher les chaînes de connexion, puis copiez la chaîne de connexion pour key1 ou key2.
-
-   Une chaîne de connexion a le format suivant : `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
-
-Vous êtes maintenant prêt à passer à l’**Assistant Importation de données**.
+Ce démarrage rapide utilise également [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) pour l’enrichissement par IA. Parce que la charge de travail est vraiment petite, Cognitive Services est utilisé en arrière-plan pour traiter gratuitement jusqu’à 20 transactions. Cela signifie que vous pouvez effectuer cet exercice sans avoir à créer une ressource Cognitive Services supplémentaire.
 
 ## <a name="start-the-wizard"></a>Démarrer l’Assistant
 
@@ -74,13 +54,15 @@ Comme les données sont constituées de plusieurs lignes dans un fichier CSV, d�
 
 1. Dans **Se connecter à vos données**, choisissez **Stockage Blob Azure**, puis sélectionnez le compte et le conteneur que vous avez créés. 
 
-1. Pour **Nom**, entrez `hotel-reviews-ds`.
+1. Pour le **nom**, entrez « hotel-reviews-ds ».
 
 1. Pour **Mode d’analyse**, sélectionnez **Texte délimité**, puis cochez la case **La première ligne contient l’en-tête**. Vérifiez que le **Caractère délimiteur** est une virgule (,).
 
-1. Dans **Chaîne de connexion**, collez la chaîne de connexion que vous avez copiée depuis le Stockage Azure.
+1. Dans **Chaîne de connexion**, collez une chaîne de connexion à votre compte Stockage Azure. 
 
-1. Dans **Conteneurs**, entrez le nom du conteneur d’objets blob contenant les données (`hotel-reviews`).
+   Une chaîne de connexion a le format suivant : `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+
+1. Dans **Conteneurs**, entrez le nom du conteneur de blobs contenant les données (« hotel-reviews »).
 
     Votre page doit ressembler à la capture d’écran suivante.
 
@@ -96,7 +78,7 @@ Dans cette étape de l’Assistant, ajoutez des compétences pour l’enrichisse
 
 1. Développez **Ajouter des enrichissements**.
 
-1. Pour **Nom de l’ensemble de compétences**, entrez `hotel-reviews-ss`.
+1. Pour **Nom de l’ensemble de compétences**, entrez « hotel-reviews-ss ».
 
 1. Pour **Champ de données source**, sélectionnez **reviews_text**.
 
@@ -115,15 +97,17 @@ Dans cette étape de l’Assistant, ajoutez des compétences pour l’enrichisse
 
 1. Faites défiler vers le bas et développez **Enregistrer les enrichissements dans une base de connaissances**.
 
-1. Sélectionnez les **projections de table Azure** suivantes. L’Assistant propose toujours la projection **Documents**. D’autres projections seront proposées en fonction des compétences que vous sélectionnez (comme **Expressions clés**) ou de la granularité d’enrichissement (**Pages**) :
+1. Sélectionnez **Choisir une connexion existante**, puis sélectionnez un compte Stockage Azure. La page Conteneurs s’affiche pour vous permettre de créer un conteneur pour les projections. Nous vous recommandons d’adopter une convention d’affectation de noms avec un préfixe, telle que « kstore-hotel-reviews », afin de faire la distinction entre le contenu source et le contenu de la base de connaissances.
+
+1. En revenant à l’Assistant d’importation de données, sélectionnez les **projections de table Azure** suivantes. L’Assistant propose toujours la projection **Documents**. D’autres projections seront proposées en fonction des compétences que vous sélectionnez (comme **Expressions clés**) ou de la granularité d’enrichissement (**Pages**) :
 
     + **Documents**
     + **Pages**
     + **Phrases clés**
 
-   :::image type="content" source="media/knowledge-store-create-portal/hotel-reviews-ks.png" alt-text="Capture d’écran de la définition de la base de connaissances" border="true":::
+   La capture d’écran suivante montre les sélections de projections de table dans l’Assistant.
 
-1. Entrez la **Chaîne de connexion du compte de stockage**, que vous avez enregistrée à une étape précédente.
+   :::image type="content" source="media/knowledge-store-create-portal/hotel-reviews-ks.png" alt-text="Capture d’écran de la définition de la base de connaissances" border="true":::
 
 1. Passez à la page suivante.
 
@@ -131,7 +115,7 @@ Dans cette étape de l’Assistant, ajoutez des compétences pour l’enrichisse
 
 Dans cette étape de l’Assistant, configurez un index pour d’éventuelles requêtes de recherche en texte intégral. L’Assistant va échantillonner votre source de données pour en déduire des champs et des types de données. Il vous suffit de sélectionner les attributs correspondant au comportement souhaité. Par exemple, l’attribut **Récupérable** permet au service de recherche de retourner une valeur de champ, alors que l’attribut **Possibilité de recherche** active la recherche en texte intégral sur le champ.
 
-1. Pour **Nom de l’index**, entrez `hotel-reviews-idx`.
+1. Pour **Nom d’index**, entrez « hotel-reviews-idx ».
 
 1. Pour les attributs, acceptez les sélections par défaut : **Récupérable** et **Possibilité de recherche** pour les champs que le pipeline crée.
 
@@ -145,31 +129,31 @@ Dans cette étape de l’Assistant, configurez un index pour d’éventuelles re
 
 Dans cette étape de l’Assistant, configurez un indexeur qui doit rassembler la source de données, l’ensemble de compétences et l’index que vous avez définis dans les étapes précédentes de l’Assistant.
 
-1. Pour **Nom**, entrez `hotel-reviews-idxr`.
+1. Pour **Nom**, entrez « hotel-reviews-idxr ».
 
 1. Pour **Planification**, conservez la valeur par défaut **Une fois**.
 
 1. Cliquez sur **Envoyer** pour exécuter l’indexeur. Les opérations d’extraction de données, d’indexation et d’application des compétences cognitives se produisent toutes à cette étape.
 
-## <a name="check-status"></a>Vérification du statut
+### <a name="step-5-check-status"></a>Étape 5 : Vérifier l’état
 
-Dans la page **Vue d’ensemble**, ouvrez l’onglet **Indexeurs** au milieu de la page, puis sélectionnez **hotels-reviews-ixr**. Au bout d’une ou deux minutes, l’état doit passer de « En cours » à « Réussite », sans aucune erreur ni avertissement.
+Dans la page **Vue d’ensemble**, ouvrez l’onglet **Indexeurs** au milieu de la page, puis sélectionnez **hotels-reviews-idxr**. Au bout d’une ou deux minutes, l’état doit passer de « En cours » à « Réussite », sans aucune erreur ni avertissement.
 
-## <a name="check-tables-in-storage-explorer"></a>Vérifier les tables dans l’Explorateur Stockage
+## <a name="check-tables-in-storage-browser"></a>Vérifier les tables dans Navigateur de stockage
 
-Dans le portail Azure, passez à votre compte de stockage Azure et utilisez l’**Explorateur Stockage** pour visualiser les nouvelles tables. Vous devez voir trois tables, une pour chaque projection proposée dans la section « Enregistrer les enrichissements » de la page « Ajouter des enrichissements ».
+Dans le portail Azure, basculez sur votre compte de stockage Azure et utilisez **Navigateur de stockage** pour visualiser les nouvelles tables. Vous devez voir trois tables, une pour chaque projection proposée dans la section « Enregistrer les enrichissements » de la page « Ajouter des enrichissements ».
 
-+ `hotelReviewssDocument` contient tous les nœuds de premier niveau de l’arborescence d’enrichissement d’un document, qui ne sont pas des collections.
++ « hotelReviewssDocuments » contient tous les nœuds de premier niveau de l’arborescence d’enrichissement d’un document, qui ne sont pas des collections. 
 
-+ `hotelReviewssPages` contient des champs enrichis créés sur chaque page ayant été séparée du document. Les enrichissements au niveau de la page sont constitués d’une étiquette de sentiment et de texte traduit. Une table de pages (ou une table de phrases si vous spécifiez ce niveau de granularité particulier) est créée lorsque vous choisissez la granularité « pages » dans la définition des compétences. Les compétences qui s’exécutent au niveau des pages ou de la phrase auront une sortie projetée dans cette table.
++ « hotelReviewssKeyPhrases » contient une longue liste des expressions clés extraites de toutes les évaluations. La sortie des compétences qui génèrent en sortie des collections (tableaux), comme les expressions clés et les entités, est envoyée vers une table autonome.
 
-+ `hotelReviewssKeyPhrases` contient une longue liste des expressions clés extraites de toutes les évaluations. La sortie des compétences qui génèrent en sortie des collections (tableaux), comme les expressions clés et les entités, est envoyée vers une table autonome.
++ « hotelReviewssPages » contient des champs enrichis créés sur chaque page ayant été séparée du document. Dans cet ensemble de compétences et cette source de données, les enrichissements au niveau des pages sont constitués d’étiquettes de sentiment et de texte traduit. Une table de pages (ou une table de phrases si vous spécifiez ce niveau particulier de granularité) est créée lorsque vous choisissez la granularité « pages » dans la définition de l’ensemble de compétences. 
 
 Toutes ces tables contiennent des colonnes d’ID pour prendre en charge les relations entre tables dans d’autres outils et applications. Quand vous ouvrez une table, faites défiler au-delà de ces champs pour voir les champs de contenu ajoutés par le pipeline.
 
-Dans ce guide de démarrage rapide, votre table doit être similaire à la capture d’écran suivante :
+Dans ce démarrage rapide, la table pour « hotelReviewssPages » doit ressembler à la capture d’écran suivante :
 
-   :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="Capture d’écran des tables générées dans l’Explorateur Stockage" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="Capture d’écran des tables générées dans Navigateur de stockage" border="true":::
 
 ## <a name="clean-up"></a>Nettoyage
 

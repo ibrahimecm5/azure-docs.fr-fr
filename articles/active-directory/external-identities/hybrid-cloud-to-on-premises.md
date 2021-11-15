@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 422a273f0bc5fbeccf61f3af1ddb4edc9b95e36b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7ebaa3c9b6a931a01eb65a28cd48cf29e74c13b3
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232474"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892397"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Accorder aux utilisateurs B2B dans Azure AD l’accès à vos applications locales
 
@@ -48,8 +48,8 @@ Pour fournir aux utilisateurs B2B l’accès aux applications locales sécurisé
 
    Dans le scénario de l’utilisateur B2B, il existe deux méthodes que vous pouvez utiliser pour créer les objets utilisateur invité requis pour l’autorisation dans le répertoire local :
 
-   - Microsoft Identity Manager (MIM) et l’agent de gestion MIM pour Microsoft Graph. 
-   - [Script PowerShell](#create-b2b-guest-user-objects-through-a-script-preview). L’utilisation du script est une solution plus simple qui ne nécessite pas MIM. 
+   - Microsoft Identity Manager (MIM) et l’agent de gestion MIM pour Microsoft Graph.
+   - Un script PowerShell, qui est une solution plus simple qui ne nécessite pas MIM.
 
 Le diagramme suivant fournit une vue d’ensemble globale du Proxy d’application Azure AD et de la génération de l’objet utilisateur B2B dans le répertoire local qui permettent d’accorder l’accès aux utilisateurs B2B à vos applications IWA et KCD locales. La procédure pas à pas est décrite en détail sous le diagramme.
 
@@ -74,20 +74,12 @@ Vous pouvez gérer les objets utilisateur B2B locaux par le biais de stratégies
 
 Pour en savoir plus sur l’utilisation de MIM 2016 Service Pack 1 et de l’agent de gestion MIM pour Microsoft Graph afin de créer les objets utilisateur invité dans le répertoire local, consultez [Collaboration interentreprises (B2B) Azure AD avec Microsoft Identity Manager (MIM) 2016 SP1 et le Proxy d’application Azure](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Créer des objets utilisateur invité B2B via script (préversion)
-
-Il existe un script d’exemple PowerShell que vous pouvez utiliser comme point de départ pour créer des objets utilisateur invité dans votre Active Directory local.
-
-Vous pouvez télécharger le script et le fichier Lisez-moi à partir du site [Connecteurs pour Microsoft Identity Manager 2016 et Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495). Dans le package de téléchargement, choisissez le fichier **Script and Readme to pull Azure AD B2B users on-prem.zip**.
-
-Avant d’utiliser le script, passez en revue les conditions préalables et les considérations importantes dans le fichier Lisezmoi associé. Notez par ailleurs que le script mis à disposition est uniquement un exemple. Votre équipe de développement ou un partenaire doit le personnaliser et l’examiner avant de l’exécuter.
-
 ## <a name="license-considerations"></a>Remarques sur la licence
 
 Assurez-vous que vous disposez des licences d’accès client (CAL) appropriées pour les utilisateurs invités externes qui accèdent aux applications locales. Pour plus d’informations, consultez la section « Connecteurs externes » de [Licences d’accès client et licences de gestion](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx). Pour vos besoins particuliers de licences, consultez votre représentant ou votre revendeur local Microsoft.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Azure Active Directory B2B Collaboration pour les organisations hybrides](hybrid-organizations.md)
+- Voir également [Azure Active Directory B2B Collaboration pour les organisations hybrides](hybrid-organizations.md)
 
 - Pour obtenir une vue d’ensemble d’Azure AD Connect, consultez [Intégrer des répertoires locaux à Azure Active Directory](../hybrid/whatis-hybrid-identity.md).

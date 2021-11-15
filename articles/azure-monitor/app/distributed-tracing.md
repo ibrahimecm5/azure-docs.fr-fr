@@ -7,12 +7,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f32c0803bb5815599c81ca6c89335fa6e1ffac
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579521"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455166"
 ---
 # <a name="what-is-distributed-tracing"></a>Présentation du traçage distribué
 
@@ -44,6 +44,17 @@ Les agents et/ou kits de développement logiciel (SDK) Application Insights pour
 Lorsque le SDK Application Insights adéquat est installé et configuré, les collecteurs automatiques des dépendances des SDK recueillent les informations de traçage automatiquement pour les infrastructures, les bibliothèques et les technologies populaires. La liste complète des technologies prises en charge est disponible dans [la documentation de la collecte automatique de la dépendance](./auto-collect-dependencies.md).
 
  De plus, toute technologie peut être pistée manuellement par un appel [TrackDependency](./api-custom-events-metrics.md) sur [TelemetryClient](./api-custom-events-metrics.md).
+
+## <a name="enable-via-opentelemetry"></a>Activer via OpenTelemetry
+
+Application Insights prend désormais en charge le traçage distribué via [OpenTelemetry](https://opentelemetry.io/). OpenTelemetry fournit une instrumentation indépendante du fournisseur pour envoyer des traces, des métriques et des journaux à Application Insights. Initialement, la communauté OpenTelemetry s’est occupée du suivi distribué. Des métriques et journaux sont toujours en cours. Un scénario complet d’observabilité comprend les trois piliers, mais, actuellement, nos [offres Azure Monitor de préversion d’exportateurs basés sur OpenTelemetry pour .NET, Python et JavaScript](opentelemetry-enable.md) ne comprennent que le suivi distribué. Toutefois, notre offre Azure Monitor basée sur Java OpenTelemetry est GA et entièrement prise en charge. 
+
+Les pages suivantes contiennent une aide, langage par langage, pour activer et configurer les offres de Microsoft basées sur OpenTelemetry. Il est important de noter que nous partageons les fonctionnalités disponibles et les limites de chaque offre afin que vous puissiez déterminer si OpenTelemetry convient à votre projet.
+
+* [.NET](opentelemetry-enable.md?tabs=net)
+* [Java](java-in-process-agent.md)
+* [Node.JS](opentelemetry-enable.md?tabs=nodejs)
+* [Python](opentelemetry-enable.md?tabs=python)
 
 ## <a name="enable-via-opencensus"></a>Activation via OpenCensus
 

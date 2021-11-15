@@ -6,12 +6,12 @@ author: nickomang
 ms.topic: article
 ms.date: 09/09/2021
 ms.author: nickoman
-ms.openlocfilehash: 871a2f97ab8b95cca46fea91f5613cb489cb19a3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 93bcd85c1a0804a6b3335add09d609eac41db98a
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066916"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866750"
 ---
 # <a name="http-proxy-support-in-azure-kubernetes-service-preview"></a>Prise en charge du proxy HTTP dans Azure Kubernetes Service (préversion)
 
@@ -26,6 +26,7 @@ Certaines solutions plus complexes peuvent nécessiter une chaîne d’approbati
 ## <a name="limitations-and-other-details"></a>Limitations et autres détails
 
 Les scénarios suivants ne sont **pas** pris en charge :
+- Module complémentaire de surveillance
 - Configurations de proxy différentes par pool de nœuds
 - Mise à jour des paramètres de proxy après la création du cluster
 - Authentification par nom d’utilisateur/mot de passe

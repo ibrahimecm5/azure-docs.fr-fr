@@ -1,5 +1,5 @@
 ---
-title: 'Didacticiel : Intégration d’Azure Active Directory à Symantec Web Security Service (WSS) | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Symantec Web Security Service (WSS)'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Symantec Web Security Service (WSS).
 services: active-directory
 author: jeevansd
@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/24/2021
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 7eb68e8e460c12336e6f10eb65701a542fcc1b3a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 90abed6597f123b291a5af281f109f07df990be5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751896"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471209"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Didacticiel : Intégration d’Azure Active Directory à Symantec Web Security Service (WSS)
+# <a name="tutorial-azure-ad-sso-integration-with-symantec-web-security-service-wss"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Symantec Web Security Service (WSS)
 
 Dans ce didacticiel, vous allez apprendre à intégrer votre compte Symantec Web Security Service (WSS) à votre compte Azure Active Directory (Azure AD) afin que WSS puisse authentifier un utilisateur final approvisionné dans Azure AD à l’aide de l’authentification SAML et appliquer les règles de stratégie au niveau de l’utilisateur ou du groupe.
 
 L’intégration de Symantec Web Security Service (WSS) à Azure AD vous fait bénéficier des avantages suivants :
 
-- Gérer tous les groupes et utilisateurs finaux utilisés par votre compte WSS à partir de votre portail Azure AD.
+* Gérer tous les groupes et utilisateurs finaux utilisés par votre compte WSS à partir de votre portail Azure AD.
 
-- Autoriser les utilisateurs finaux à s’authentifier sur WSS à l’aide de leurs informations d’identification Azure AD.
+* Autoriser les utilisateurs finaux à s’authentifier sur WSS à l’aide de leurs informations d’identification Azure AD.
 
-- Activer l’application des règles de stratégie au niveau de l’utilisateur et du groupe définies dans votre compte WSS.
+* Activer l’application des règles de stratégie au niveau de l’utilisateur et du groupe définies dans votre compte WSS.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -36,6 +36,9 @@ Pour commencer, vous devez disposer de ce qui suit :
 
 * Un abonnement Azure AD Si vous ne disposez d’aucun abonnement, vous pouvez obtenir [un compte gratuit](https://azure.microsoft.com/free/).
 * Un abonnement à Symantec Web Security Service (WSS) pour lequel l’authentification unique est activée
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
 
 ## <a name="scenario-description"></a>Description du scénario
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 1c134fa24914ffc1cc2d51389cf6840986a74c58
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e1469c2d7cbc1be4aac2ec73a1f04138ef9d7fb1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128661559"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429281"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Démarrage rapide : Utiliser le portail Azure pour créer un serveur flexible Azure Database pour MySQL
 
@@ -21,12 +21,7 @@ ms.locfileid: "128661559"
 
 Le serveur flexible Azure Database pour MySQL est un service managé qui vous permet d’exécuter, de gérer et de mettre à l’échelle des serveurs MySQL hautement disponibles dans le cloud. Ce guide de démarrage rapide explique comment créer un serveur flexible à l’aide du portail Azure.
 
-> [!IMPORTANT]
-> Le serveur flexible Azure Database pour MySQL est actuellement en préversion publique.
-
-
-[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
-
+Si vous n’avez pas d’abonnement Azure, créez un [compte Azure gratuit](https://azure.microsoft.com/free/) avant de commencer.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Connectez-vous au portail Azure.
 Accédez au [portail Azure](https://portal.azure.com/). Entrez vos informations d’identification pour vous connecter au portail. Il s’ouvre par défaut sur le tableau de bord des services.
@@ -38,19 +33,19 @@ Vous créez un serveur flexible avec un ensemble défini de [ressources de calcu
 Pour créer un serveur flexible, procédez comme suit :
 
 1. Dans le portail, cherchez et sélectionnez **Serveurs Azure Database pour MySQL** :
-    
+
     > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Capture d’écran montrant une recherche de serveurs Azure Database pour MySQL.":::
 
-2. Sélectionnez **Create** (Créer). 
+2. Sélectionnez **Create** (Créer).
 
 3. Dans la page **Sélectionner une option de déploiement Azure Database pour MySQL**, sélectionnez **Serveur flexible** comme option de déploiement :
-     
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Capture d’écran montrant l’option Serveur flexible.":::    
 
-4. Sous l’onglet **Informations de base**, entrez les informations suivantes : 
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Capture d’écran montrant l’option Serveur flexible.":::
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Capture d’écran montrant l’onglet De base de la page Serveur flexible."::: 
-                                    
+4. Sous l’onglet **Informations de base**, entrez les informations suivantes :
+
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Capture d’écran montrant l’onglet De base de la page Serveur flexible.":::
+
     |**Paramètre**|**Valeur suggérée**|**Description**|
     |---|---|---|
     Abonnement|Votre nom d’abonnement|Abonnement Azure que vous souhaitez utiliser pour votre serveur. Si vous avez plusieurs abonnements, choisissez celui dans lequel vous souhaitez que la ressource soit facturée.|
@@ -66,25 +61,22 @@ Pour créer un serveur flexible, procédez comme suit :
     Mot de passe |Votre mot de passe| Un nouveau mot de passe pour le compte Administrateur du serveur. Il doit contenir entre 8 et 128 caractères. Il doit également contenir des caractères de trois des catégories suivantes : lettres majuscules, lettres minuscules, chiffres (0 à 9) et caractères non alphanumériques (!, $, #, %, etc.).|
     Calcul + stockage | **Burstable**, **Standard_B1ms**, **10 Gio**, **100 iops**, **7 jours** | Les configurations de calcul, de stockage, d'IOPS et de sauvegarde de votre nouveau serveur. Sélectionnez **Configurer le serveur**. **Burstable**, **Standard_B1ms**, **10 Gio**, **100 iops**, et **7 jours** sont les valeurs par défaut des paramètres **Niveau de calcul**, **Taille de calcul**, **Taille du stockage**, **IOPS** et **Période de conservation** des sauvegardes. Vous pouvez laisser ces valeurs en l’état ou les ajuster. Pour accélérer le chargement des données pendant la migration, il est recommandé de définir le nombre d'IOPS par seconde sur la taille maximale prise en charge par la taille de calcul et de le remettre ultérieurement à l'échelle pour réduire les coûts. Pour enregistrer cette sélection de calcul et de stockage, sélectionnez **Enregistrer** afin de poursuivre la configuration. La capture d’écran ci-dessous montre les options de calcul et de stockage.|
 
- 
-    > :::image type="content" source="./media/quickstart-create-server-portal/high-availability.png" alt-text="Capture d’écran montrant des options haute disponibilité.":::
-
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Capture d’écran montrant les options de calcul et de stockage.":::
 
 5. Configurez les options de mise en réseau.
 
-    Sous l’onglet **Mise en réseau**, vous pouvez choisir la façon dont votre serveur est accessible. Un serveur flexible Azure Database pour MySQL vous fournit deux possibilités de vous connecter à votre serveur : 
+    Sous l’onglet **Mise en réseau**, vous pouvez choisir la façon dont votre serveur est accessible. Un serveur flexible Azure Database pour MySQL vous fournit deux possibilités de vous connecter à votre serveur :
    - Accès public (adresses IP autorisées)
-   - Accès privé (intégration au réseau virtuel) 
-   
-   Lorsque vous utilisez l’accès public, l’accès à votre serveur est limité aux adresses IP autorisées que vous ajoutez à une règle de pare-feu. Cette méthode empêche les applications et les outils externes de se connecter à ce serveur et à toute base de données sur ce serveur, sauf si vous créez une règle pour ouvrir le pare-feu pour une adresse IP ou une plage d’adresses IP spécifique. Lorsque vous utilisez l’accès privé (intégration au réseau virtuel), l’accès à votre serveur est limité à votre réseau virtuel. [Pour en savoir plus sur les méthodes de connectivité, consultez l’article consacré aux concepts.](./concepts-networking.md)
-    
-     Dans ce guide de démarrage rapide, vous découvrirez comment activer l’accès public pour vous connecter au serveur. Sous l’**onglet Mise en réseau**, pour **Méthode de connectivité**, sélectionnez **Accès public**. Pour configurer les **Règles de pare-feu**, sélectionnez **Ajouter l’adresse IP actuelle du client**. 
+   - Accès privé (intégration au réseau virtuel)
+
+    Lorsque vous utilisez l’accès public, l’accès à votre serveur est limité aux adresses IP autorisées que vous ajoutez à une règle de pare-feu. Cette méthode empêche les applications et les outils externes de se connecter au serveur et à toute base de données sur ce serveur, sauf si vous créez une règle pour ouvrir le pare-feu pour une adresse IP ou une plage d’adresses IP spécifique. Lorsque vous utilisez l’accès privé (intégration au réseau virtuel), l’accès à votre serveur est limité à votre réseau virtuel. [Pour en savoir plus sur les méthodes de connectivité, consultez l’article consacré aux concepts.](./concepts-networking.md)
+
+     Dans ce guide de démarrage rapide, vous découvrirez comment activer l’accès public pour vous connecter au serveur. Sous l’**onglet Mise en réseau**, pour **Méthode de connectivité**, sélectionnez **Accès public**. Pour configurer les **Règles de pare-feu**, sélectionnez **Ajouter l’adresse IP actuelle du client**.
 
     > [!NOTE]
     > Vous ne pouvez pas modifier la méthode de connectivité après avoir créé le serveur. Par exemple, si vous sélectionnez **Accès public (adresses IP autorisées)** quand vous créez le serveur, vous ne pouvez pas passer à **Accès privé (intégration au réseau virtuel)** une fois le serveur créé. Nous vous recommandons vivement de créer votre serveur avec un accès privé pour contribuer à sécuriser l’accès à votre serveur via l’intégration au réseau virtuel. [Pour en savoir plus sur l’accès privé, consultez l’article consacré aux concepts.](./concepts-networking.md)
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Capture d’écran montrant l’onglet Mise en réseau.":::  
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Capture d’écran montrant l’onglet Mise en réseau.":::
 
 6. Sélectionnez **Vérifier + créer** pour passer en revue la configuration de votre serveur flexible.
 
@@ -95,7 +87,7 @@ Pour créer un serveur flexible, procédez comme suit :
 Par défaut, ces bases de données sont créées sous votre serveur : information_schema, mysql, performance_schema et sys.
 
 > [!NOTE]
-> Afin d’éviter des problèmes de connectivité, vérifiez que votre réseau autorise le trafic sortant via le port 3306 qu’utilise le serveur flexible Azure Database pour MySQL.  
+> Afin d’éviter des problèmes de connectivité, vérifiez que votre réseau autorise le trafic sortant via le port 3306 qu’utilise le serveur flexible Azure Database pour MySQL.
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>Se connecter au serveur à l’aide de mysql.exe
 
@@ -122,7 +114,7 @@ Pour pouvoir utiliser Azure Cloud Shell pour vous connecter à votre serveur fle
 > [!NOTE]
 > Cocher la case **Autoriser l’accès public à partir de n’importe quel service Azure dans Azure à ce serveur** doit être utilisé seulement à des fins de développement ou de test. Elle configure le pare-feu pour autoriser les connexions à partir d’adresses IP allouées à n’importe quel service ou ressource Azure, y compris les connexions depuis les abonnements d’autres clients.
 
-Cliquez sur **Essayer** pour lancer Azure Cloud Shell, puis utilisez les commandes suivantes pour vous connecter à votre serveur flexible. Utilisez le nom du serveur, le nom d’utilisateur et le mot de passe dans la commande. 
+Cliquez sur **Essayer** pour lancer Azure Cloud Shell, puis utilisez les commandes suivantes pour vous connecter à votre serveur flexible. Utilisez le nom du serveur, le nom d’utilisateur et le mot de passe dans la commande.
 
 ```azurecli-interactive
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem

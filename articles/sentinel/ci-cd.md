@@ -1,6 +1,6 @@
 ---
-title: Gérer du contenu personnalisé pour Azure Sentinel dans votre propre référentiel | Microsoft Docs
-description: Cet article explique comment créer des connexions avec un référentiel GitHub ou Azure DevOps dans lequel vous pouvez enregistrer votre contenu personnalisé.
+title: Déployer du contenu personnalisé à partir de votre référentiel | Microsoft Docs
+description: Cet article explique comment créer des connexions avec un référentiel GitHub ou Azure DevOps dans lequel vous pouvez enregistrer votre contenu personnalisé et le déployer sur Azure Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 10/20/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7d1a20fd1d74c3b5057201cac38a9353737f98dd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b31e2e67058e6762e590f99e49eb1e4658b6c2e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096483"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990074"
 ---
 # <a name="deploy-custom-content-from-your-repository-public-preview"></a>Déployer du contenu personnalisé à partir de votre référentiel (préversion publique)
 
@@ -125,7 +125,9 @@ Chaque connexion peut prendre en charge plusieurs types de contenus personnalis�
 
 Une fois la connexion créée, un nouveau flux de travail ou pipeline est généré dans votre référentiel, et le contenu stocké dans votre référentiel est déployé dans votre espace de travail Azure Sentinel.
 
-La durée du déploiement peut varier en fonction de la quantité de contenu que vous déployez. Affichez l’état du déploiement :
+La durée du déploiement peut varier en fonction de la quantité de contenu que vous déployez. 
+
+### <a name="view-the-deployment-status"></a>Affichez l’état du déploiement :
 
 - **Dans GitHub**: sous l’onglet **Actions** du référentiel. Sélectionnez le fichier **.yaml** de flux de travail présenté pour accéder aux journaux de déploiement détaillés et à tous les messages d’erreur spécifiques, le cas échéant.
 - **Dans Azure DevOps** : sous l’onglet **Pipelines** du référentiel.

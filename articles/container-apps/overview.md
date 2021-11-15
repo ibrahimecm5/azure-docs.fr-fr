@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: overview
-ms.date: 10/19/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7b7f0cfb02b5aa2b7b37efc306213915a855a7bf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a7ae5038dfcb419ff658f0ea8780e343189c3a61
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131098012"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503977"
 ---
 # <a name="azure-container-apps-preview-overview"></a>Vue d’ensemble d’Azure Container Apps (préversion)
 
@@ -37,25 +37,25 @@ Azure Container Apps permet d’exécuter du code d’application empaqueté dan
 
 Avec Azure Container Apps, vous pouvez :
 
-- [Exécuter plusieurs révisions de conteneur](application-lifecycle-management.md) et gérer le cycle de vie des applications conteneur.
+- [**Exécuter plusieurs révisions de conteneur**](application-lifecycle-management.md) et gérer le cycle de vie des applications conteneur.
 
-- [Mettre à l’échelle automatiquement](scale-app.md) vos applications avec un déclencheur de mise à l’échelle pris en charge par Keda. La plupart des applications peuvent être mises à l’échelle à zéro<sup>1</sup>.
+- [**Mettre à l’échelle automatiquement**](scale-app.md) vos applications avec un déclencheur de mise à l’échelle pris en charge par KEDA. La plupart des applications peuvent être mises à l’échelle à zéro<sup>1</sup>.
 
-- [Activer l’entrée HTTPS](ingress.md) sans avoir à gérer une autre infrastructure Azure.
+- [**Activer l’entrée HTTPS**](ingress.md) sans avoir à gérer une autre infrastructure Azure.
 
-- [Répartir le trafic](revisions.md) entre plusieurs versions d’une application pour les déploiements bleus/verts et les scénarios de test A/B.
+- [**Répartir le trafic**](revisions.md) entre plusieurs versions d’une application pour les déploiements bleus/verts et les scénarios de test A/B.
 
-- [Utiliser l’entrée interne et la découverte de service](connect-apps.md) pour les points de terminaison seulement internes sécurisés avec la découverte de service basée sur DNS intégrée.
+- [**Utiliser l’entrée interne et la découverte de service**](connect-apps.md) pour sécuriser les points de terminaison internes uniquement avec la détection de service intégrée basée sur le DNS.
 
-- [Créer des microservices avec Dapr](microservices.md) et accéder à son ensemble fourni d’API.
+- [**Créer des microservices avec Dapr**](microservices.md) et accéder à son ensemble fourni d’API.
 
-- [Exécuter des conteneurs de n’importe quel registre](containers.md), public ou privé, notamment Docker Hub et Azure Container Registry (ACR).
+- [**Exécuter des conteneurs de n’importe quel registre**](containers.md), public ou privé, notamment Docker Hub et Azure Container Registry (ACR).
 
-- [Utiliser l’extension Azure CLI ou les modèles ARM](get-started.md) pour gérer vos applications.
+- [**Utiliser l’extension Azure CLI ou les modèles ARM**](get-started.md) pour gérer vos applications.
 
-- [Gérer de façon sécurisée les secrets](secure-app.md) directement dans votre application.
+- [**Gérer de façon sécurisée les secrets**](secure-app.md) directement dans votre application.
 
-- [Consulter les journaux d’application](monitor.md) avec Azure Log Analytics.
+- [**Consulter les journaux des applications**](monitor.md) avec Azure Log Analytics.
 
 <sup>1</sup> Les applications qui [sont mises à l’échelle lors d’une charge de processeur ou de mémoire](scale-app.md) ne peuvent pas être mises à l’échelle à zéro.
 

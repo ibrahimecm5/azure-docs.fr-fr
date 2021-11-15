@@ -11,12 +11,12 @@ author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 10/21/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 9d722d5344316582536b3301270ee47f3ec9d3dc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 3c308761c0becae3a3f0d7eb3a33fc1bc76f5918
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554960"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867054"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Se connecter à des services de stockage sur Azure
 
@@ -29,7 +29,7 @@ Pour comprendre où les magasins de données interviennent dans flux de travail 
 Pour une expérience utilisant peu de code, consultez le guide pratique de l’utilisation d’[Azure Machine Learning studio pour créer et inscrire des magasins de données](how-to-connect-data-ui.md#create-datastores).
 
 >[!TIP]
-> Cet article suppose que vous souhaitez vous connecter à votre service de stockage à l’aide d’informations d’authentification, comme un principal de service ou un jeton de signature d’accès partagé (SAS). Gardez à l’esprit que si les informations d’identification sont enregistrées auprès des magasins de données, tous les utilisateurs détenant le rôle de *Lecteur* d’espace de travail peuvent récupérer ces informations d’identification. [Apprenez-en davantage sur le rôle de *Lecteur* d’espace de travail.](how-to-assign-roles.md#default-roles) <br><br>Si cela pose problème, découvrez comment [Se connecter aux services de stockage avec un accès basé sur l’identité](how-to-identity-based-data-access.md). <br><br>Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment. 
+> Cet article suppose que vous souhaitez vous connecter à votre service de stockage à l’aide d’informations d’authentification, comme un principal de service ou un jeton de signature d’accès partagé (SAS). Gardez à l’esprit que si les informations d’identification sont enregistrées auprès des magasins de données, tous les utilisateurs détenant le rôle de *Lecteur* d’espace de travail peuvent récupérer ces informations d’identification. [Apprenez-en davantage sur le rôle de *Lecteur* d’espace de travail.](how-to-assign-roles.md#default-roles) <br><br>Si cela pose problème, découvrez comment [Se connecter aux services de stockage avec un accès basé sur l’identité](how-to-identity-based-data-access.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -92,7 +92,7 @@ Nous vous recommandons de créer un magasin de données pour un [conteneur Blob 
 Pour s’assurer que vous vous connectez en toute sécurité à votre service de stockage Azure, Azure Machine Learning exige que vous ayez l’autorisation d’accéder au conteneur de stockage de données correspondant. Cet accès dépend des informations d’authentification utilisées pour inscrire le magasin de données. 
 
 > [!NOTE]
-> Cette instruction s’applique également aux [magasins de données créés avec l’accès aux données basé sur l’identité (préversion)](how-to-identity-based-data-access.md). 
+> Cette instruction s’applique également aux [magasins de données créés avec l’accès aux données basé sur l’identité](how-to-identity-based-data-access.md). 
 
 ### <a name="virtual-network"></a>Réseau virtuel 
 

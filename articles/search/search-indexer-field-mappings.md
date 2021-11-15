@@ -7,44 +7,49 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: e1af69db6f70d5a6a977c6e3fa715e84cbc2673b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/19/2021
+ms.openlocfilehash: 9fdff284d3b183ef9a0589d9dee4c568249b854b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524555"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238001"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mappages de champs et transformations à l’aide d’indexeurs Recherche cognitive Azure
 
 ![Étapes de l'indexeur](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "étapes de l'indexeur")
 
-Lorsque vous utilisez des indexeurs Recherche cognitive Azure, il se peut que les données d’entrée ne correspondent pas tout à fait au schéma de votre index cible. Dans ce cas, vous pouvez utiliser des **mappages de champs** pour remodeler vos données pendant le processus d’indexation.
+Lorsque vous utilisez des indexeurs de Recherche cognitive Azure, les indexeurs mappent automatiquement les champs d’une source de données aux champs d’un index cible, en supposant que les noms et les types de champs sont compatibles. Dans certains cas, les données d’entrée ne correspondent pas exactement au schéma de votre index cible. Une solution consiste à utiliser des *mappages de champs* pour définir spécifiquement le chemin de données pendant le processus d’indexation.
 
-Quelques situations où les mappages de champs sont utiles :
+Des mappages de champs peuvent être utilisés pour les scénarios suivants :
 
-* Votre source de données a un champ appelé `_id`, mais la Recherche cognitive Azure n’autorise pas les noms de champs commençant par un trait de soulignement. Un mappage de champ vous permet de renommer un champ.
-* Vous souhaitez remplir plusieurs champs de l’index à partir des données de la même source de données. Par exemple, vous souhaiterez peut-être appliquer différents analyseurs à ces champs.
-* Vous voulez remplir un champ d’index avec des données provenant de plusieurs sources de données, lesquelles utilisent des noms de champs différents.
-* Vous avez besoin d’encoder ou de décoder vos données en Base64. Les mappages de champs prennent en charge plusieurs **fonctions de mappage**, y compris les fonctions d’encodage et de décodage en Base64.
++ Noms de champs non concordants. Supposons que votre source de données comprend un champ nommé `_id`. Étant donné que Recherche cognitive Azure n’autorise pas les noms de champs commençant par un trait de soulignement, un mappage de champ vous permet de renommer efficacement un champ.
+
++ De un champ à plusieurs champs. Vous pouvez remplir plusieurs champs de l’index à partir des données de la même source. Par exemple, vous pouvez appliquer différents analyseurs à chaque champ.
+
++ De plusieurs champs à un champ. Vous voulez remplir un champ d’index avec des données provenant de plusieurs sources de données, lesquelles utilisent des noms de champs différents.
+
++ Encodage ou décodage de données Base64. Les mappages de champs prennent en charge plusieurs [**fonctions de mappage**](#mappingFunctions), y compris les fonctions d’encodage et de décodage en Base64.
+
++ Fractionnement de chaînes ou refonte d’un tableau JSON dans une collection de chaînes. Les fonctions de mappage de champs offrent cette capacité.
 
 Les mappages de champs dans les indexeurs sont un moyen simple de mapper des champs de données à des champs d’index, avec une certaine possibilité de conversion de données simples. Les données plus complexes devront peut-être être prétraitées pour être converties dans un format propice à l’indexation. L’une des options que vous pouvez envisager est [Azure Data Factory](../data-factory/index.yml).
 
 > [!NOTE]
-> Les mappages de champs s’appliquent aux index de recherche uniquement. Pour les indexeurs qui créent des [magasins de connaissances](knowledge-store-concept-intro.md), les mappages de champs sont ignorés.
+> Les mappages de champs s’appliquent aux index de recherche uniquement. Pour les indexeurs qui créent également des [bases de connaissances](knowledge-store-concept-intro.md), les formes et les projections de données déterminent les associations de champs, et tous les mappages de champs et mappages de champs de sortie dans l’indexeur sont ignorés.
 
 ## <a name="set-up-field-mappings"></a>Configurer des mappages de champs
 
 Un mappage de champs se compose de trois parties :
 
-1. Un `sourceFieldName`, qui représente un champ de votre source de données. Cette propriété est requise.
-2. Un `targetFieldName`facultatif, qui représente un champ de votre index de recherche. Si omis, le nom de la source de données est utilisé.
-3. Une `mappingFunction`facultative, qui peut transformer vos données à l'aide d'une des fonctions prédéfinies. Celle-ci peut être appliquée sur les mappages de champs d’entrée et de sortie. La liste complète des fonctions est présentée [ci-dessous](#mappingFunctions).
++ « sourceFieldName », qui représente un champ de votre source de données. Cette propriété est requise.
++ « TargetFieldName », facultative, qui représente un champ dans votre index de recherche. En cas d’omission, la valeur de « sourceFieldName » est utilisée pour la cible.
++ « MappingFunction », facultative, qui peut transformer vos données à l’aide de l’une des [fonctions prédéfinies](#mappingFunctions). Celle-ci peut être appliquée sur les mappages de champs d’entrée et de sortie.
 
-Les mappages de champs sont ajoutés au tableau `fieldMappings` dans la définition de l’indexeur.
+Les mappages de champs sont ajoutés au tableau « fieldMappings » de la définition de l’indexeur.
 
 > [!NOTE]
-> Si aucun mappage de champs n’est ajouté, les indexeurs supposent que les champs de source de données doivent être mappés à des champs d’index portant le même nom. L’ajout d’un mappage de champs supprime ces mappages de champs par défaut pour les champs source et cible. Certains indexeurs, comme l’[indexeur de stockage d’objets blob](search-howto-indexing-azure-blob-storage.md), ajoutent des mappages de champs par défaut pour le champ de clé d’index.
+> Si aucun mappage de champs n’est présent, les indexeurs supposent que les champs de source de données doivent être mappés à des champs d’index du même nom. L’ajout d’un mappage de champs remplace ces mappages de champs par défaut pour les champs source et cible. Certains indexeurs, comme l’[indexeur de stockage d’objets blob](search-howto-indexing-azure-blob-storage.md), ajoutent des mappages de champs par défaut pour le champ de clé d’index.
 
 ## <a name="map-fields-using-rest"></a>Mapper des champs à l’aide de REST
 
@@ -79,28 +84,26 @@ Un champ source peut être référencé dans plusieurs mappages de champs. L’e
 
 ## <a name="map-fields-using-net"></a>Mapper des champs à l’aide de .NET
 
-Vous définissez des mappages de champs dans le Kit de développement logiciel (SDK) .NET à l’aide de la classe [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping), qui possède les propriétés `SourceFieldName` et `TargetFieldName`, ainsi qu’une référence `MappingFunction` en option.
+Vous pouvez définir des mappages de champs dans le Kit de développement logiciel (SDK) .NET à l’aide de la classe [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) qui possède les propriétés « SourceFieldName » et « TargetFieldName », ainsi qu’une référence facultative « MappingFunction ».
 
-Vous pouvez spécifier des mappages de champs lors de la construction de l’indexeur, ou ultérieurement, en définissant directement la propriété `Indexer.FieldMappings`.
+Vous pouvez spécifier des mappages de champs lors de la construction de l’indexeur, ou ultérieurement en définissant directement [SearchIndexer.FieldMappings](/dotnet/api/azure.search.documents.indexes.models.searchindexer.fieldmappings).
 
 L’exemple C# suivant définit les mappages de champs lors de la construction d’un indexeur.
 
 ```csharp
-  List<FieldMapping> map = new List<FieldMapping> {
-    // removes a leading underscore from a field name
-    new FieldMapping("_custId", "custId"),
-    // URL-encodes a field for use as the index key
-    new FieldMapping("docPath", "docId", FieldMappingFunction.Base64Encode() )
-  };
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "SQL data indexer",
+    Schedule = schedule,
+    Parameters = parameters,
+    FieldMappings =
+    {
+        new FieldMapping("_id") {TargetFieldName = "HotelId", FieldMappingFunction.Base64Encode()},
+        new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+    }
+};
 
-  Indexer sqlIndexer = new Indexer(
-    name: "azure-sql-indexer",
-    dataSourceName: sqlDataSource.Name,
-    targetIndexName: index.Name,
-    fieldMappings: map,
-    schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
 
 <a name="mappingFunctions"></a>
@@ -109,12 +112,12 @@ L’exemple C# suivant définit les mappages de champs lors de la construction d
 
 Une fonction de mappage de champ transforme le contenu d’un champ avant son stockage dans l’index. Les fonctions de mappage actuellement prises en charge sont les suivantes :
 
-* [base64Encode](#base64EncodeFunction)
-* [base64Decode](#base64DecodeFunction)
-* [extractTokenAtPosition](#extractTokenAtPositionFunction)
-* [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
-* [urlEncode](#urlEncodeFunction)
-* [urlDecode](#urlDecodeFunction)
++ [base64Encode](#base64EncodeFunction)
++ [base64Decode](#base64DecodeFunction)
++ [extractTokenAtPosition](#extractTokenAtPositionFunction)
++ [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
++ [urlEncode](#urlEncodeFunction)
++ [urlDecode](#urlDecodeFunction)
 
 <a name="base64EncodeFunction"></a>
 
@@ -124,12 +127,11 @@ Exécute l’encodage Base64 *sécurisé pour les URL* de la chaîne d'entrée. 
 
 #### <a name="example---document-key-lookup"></a>Exemple de recherche d’une clé de document
 
-Seuls les caractères sécurisés pour les URL peuvent apparaître dans une clé de document Recherche cognitive Azure (car les clients doivent pouvoir traiter le document à l’aide de l’[API de recherche](/rest/api/searchservice/lookup-document)). Si le champ source de votre clé contient des caractères non sécurisés pour les URL, vous pouvez utiliser la fonction `base64Encode` pour les convertir au moment de l’indexation. Cependant, une clé de document (avant et après la conversion) ne doit pas excéder 1 024 caractères.
+Seuls les caractères sécurisés pour les URL peuvent apparaître dans une clé de document Recherche cognitive Azure, de façon à ce que vous puissiez traiter le document à l’aide de l’[API de recherche](/rest/api/searchservice/lookup-document). Si le champ source de votre clé contient des caractères non sécurisés pour les URL, vous pouvez utiliser la fonction `base64Encode` pour les convertir au moment de l’indexation. Cependant, une clé de document (avant et après la conversion) ne doit pas excéder 1 024 caractères.
 
-Une fois que vous avez récupéré la clé encodée au moment de la recherche, vous pouvez utiliser la fonction `base64Decode` pour obtenir la valeur de clé d’origine, et l’utiliser pour récupérer le document source.
+Une fois que vous avez récupéré la clé encodée au moment de la recherche, utilisez la fonction `base64Decode` pour obtenir la valeur de clé d’origine, et l’utiliser pour récupérer le document source.
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "SourceKey",
@@ -146,7 +148,6 @@ Une fois que vous avez récupéré la clé encodée au moment de la recherche, v
 L’[indexeur de stockage d’objets blob](search-howto-indexing-azure-blob-storage.md) ajoute automatiquement un mappage de champs à partir de `metadata_storage_path`, l’URI de l’objet blob, au champ de clé d’index si aucun mappage de champs n’est spécifié. Cette valeur est encodée en Base64 afin d’être utilisée en toute sécurité comme clé de document Recherche cognitive Azure. L’exemple suivant montre comment mapper simultanément une *version* de `metadata_storage_path` en codage Base64 sécurisée pour les URL à un champ `index_key` et conserver la valeur d’origine dans un champ `metadata_storage_path` :
 
 ```JSON
-
 "fieldMappings": [
   {
     "sourceFieldName": "metadata_storage_path",
@@ -177,7 +178,6 @@ Effectue le décodage en Base64 de la chaîne d'entrée. L’entrée est consid�
 Votre source de données peut contenir des chaînes encodées en Base64, telles que des chaînes de métadonnées de blob ou des URL web, que vous voulez rendre disponibles pour des recherches sous la forme de texte brut. Vous pouvez utiliser la fonction `base64Decode` pour transformer les données encodées en chaînes normales lors du remplissage de votre index de recherche.
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "Base64EncodedMetadata",
@@ -202,7 +202,7 @@ La Recherche cognitive Azure prend en charge l’encodage en base64 normal et s�
 Si les paramètres `useHttpServerUtilityUrlTokenEncode` ou `useHttpServerUtilityUrlTokenDecode` d’encodage et de décodage, respectivement, sont définis sur `true`, `base64Encode` se comporte comme [HttpServerUtility.UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) et `base64Decode` se comporte comme [HttpServerUtility.UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode).
 
 > [!WARNING]
-> Si `base64Encode` est utilisé pour générer des valeurs de clé, `useHttpServerUtilityUrlTokenEncode` doit être défini sur true. Seul l’encodage en base64 sécurisé pour les URL peut être utilisé pour les valeurs de clés. Consultez [Règles de nommage (Recherche cognitive Azure)](/rest/api/searchservice/naming-rules) pour obtenir l’ensemble des restrictions appliquées aux caractères des valeurs de clé.
+> Si `base64Encode` est utilisé pour générer des valeurs de clé, `useHttpServerUtilityUrlTokenEncode` doit être défini sur true. Seul l’encodage en base64 sécurisé pour les URL peut être utilisé pour les valeurs de clés. Pour obtenir l’ensemble des restrictions appliquées aux caractères des valeurs de clé, consultez [Règles de nommage](/rest/api/searchservice/naming-rules).
 
 Les bibliothèques .NET dans la Recherche cognitive Azure utilisent l’intégralité de .NET Framework qui fournit un encodage intégré. Les options `useHttpServerUtilityUrlTokenEncode` et `useHttpServerUtilityUrlTokenDecode` tirent parti de cette fonctionnalité intégrée. Si vous utilisez .NET Core ou une autre infrastructure, nous vous recommandons de définir ces options sur `false` et d’appeler directement les fonctions d’encodage et de décodage de votre infrastructure.
 
@@ -223,8 +223,8 @@ Divise un champ de chaîne en utilisant le séparateur spécifié et récupère 
 
 Cette fonction utilise les paramètres suivants :
 
-* `delimiter`: une chaîne à utiliser comme séparateur lors du fractionnement de la chaîne d'entrée.
-* `position`: une position entière à base zéro du jeton à choisir une fois la chaîne d'entrée fractionnée.
++ `delimiter`: une chaîne à utiliser comme séparateur lors du fractionnement de la chaîne d'entrée.
++ `position`: une position entière à base zéro du jeton à choisir une fois la chaîne d'entrée fractionnée.
 
 Par exemple, si l’entrée est `Jane Doe`, que le `delimiter` est `" "` (espace) et que la `position` est 0, le résultat est `Jane` ; si la `position` est 1, le résultat est `Doe`. Si la position fait référence à un jeton qui n’existe pas, une erreur est retournée.
 
@@ -233,7 +233,6 @@ Par exemple, si l’entrée est `Jane Doe`, que le `delimiter` est `" "` (espace
 Votre source de données contient un champ `PersonName` et vous souhaitez l’indexer en tant que deux champs `FirstName` et `LastName` distincts. Vous pouvez utiliser cette fonction pour fractionner l'entrée en utilisant l'espace comme séparateur.
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "PersonName",
@@ -260,7 +259,6 @@ Par exemple, si la chaîne d’entrée est `["red", "white", "blue"]`, le champ 
 Microsoft Azure SQL Database n’inclut aucun type de données intégré qui se mappe naturellement aux champs `Collection(Edm.String)` dans Recherche cognitive Azure. Pour remplir les champs de la collection de chaînes, vous pouvez prétraiter votre source de données en tant que tableau de chaînes JSON, puis utiliser la fonction de mappage `jsonArrayToStringCollection`.
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "tags", 
@@ -283,7 +281,6 @@ Par exemple, si la chaîne d’entrée est `<hello>`, le champ cible de type`(Ed
 Une fois que vous avez récupéré la clé encodée au moment de la recherche, vous pouvez utiliser la fonction `urlDecode` pour obtenir la valeur de clé d’origine, et l’utiliser pour récupérer le document source.
 
 ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "SourceKey",
@@ -296,16 +293,15 @@ Une fois que vous avez récupéré la clé encodée au moment de la recherche, v
 
  <a name="urlDecodeFunction"></a>
 
- ### <a name="urldecode-function"></a>fonction urlDecode
+### <a name="urldecode-function"></a>fonction urlDecode
 
  Cette fonction convertit une chaîne encodée en URL en chaîne décodée à l’aide du format d’encodage UTF-8.
 
- ### <a name="example---decode-blob-metadata"></a>Exemple : décodage de métadonnées de blob
+### <a name="example---decode-blob-metadata"></a>Exemple : décodage de métadonnées de blob
 
  Certains clients de stockage Azure encodent automatiquement les métadonnées Blob si elles contiennent des caractères non-ASCII. Toutefois, si vous souhaitez effectuer des recherches dans ces métadonnées (en texte brut), vous pouvez utiliser la fonction `urlDecode` pour réactiver les données encodées dans des chaînes normales lors du remplissage de votre index de recherche.
 
  ```JSON
-
 "fieldMappings" : [
   {
     "sourceFieldName" : "UrlEncodedMetadata",
@@ -318,11 +314,11 @@ Une fois que vous avez récupéré la clé encodée au moment de la recherche, v
  
  <a name="fixedLengthEncodeFunction"></a>
  
- ### <a name="fixedlengthencode-function"></a>Fonction fixedLengthEncode
+### <a name="fixedlengthencode-function"></a>Fonction fixedLengthEncode
  
  Cette fonction convertit une chaîne de n’importe quelle longueur en chaîne à longueur fixe.
  
- ### <a name="example---map-document-keys-that-are-too-long"></a>Exemple - mapper des clés de document trop longues
+### <a name="example---map-document-keys-that-are-too-long"></a>Exemple - mapper des clés de document trop longues
  
 Lorsque vous rencontrez une erreur indiquant que la clé du document excède 1 024 caractères, cette fonction peut être appliquée pour réduire la longueur de la clé.
 

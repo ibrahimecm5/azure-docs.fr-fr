@@ -12,16 +12,18 @@ ms.date: 09/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7c350c04071dd5f01804aaea57dd7390dc00bad5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 4c5802d9cd1fc9a7a41d38bc70e9d384882a1ea1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130236710"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424322"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Configurer un flux de réinitialisation forcée du mot de passe dans Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="overview"></a>Vue d’ensemble
 
@@ -33,11 +35,19 @@ Quand un administrateur réinitialise le mot de passe d’un utilisateur via le 
 
 Le flux de réinitialisation du mot de passe s’applique aux comptes locaux dans Azure AD B2C qui utilisent une [adresse e-mail](sign-in-options.md#email-sign-in) ou un [nom d’utilisateur](sign-in-options.md#username-sign-in) avec un mot de passe pour la connexion.
 
-::: zone pivot="b2c-user-flow"
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Cette fonctionnalité est actuellement disponible uniquement pour les flux d’utilisateurs. Pour les étapes de configuration, choisissez le **Flux utilisateur** ci-dessus. Pour les stratégies personnalisées, utilisez [l’exemple GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon) de réinitialisation de mot de passe à la première ouverture de session avec les prérequis ci-dessous.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Prérequis
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="configure-your-user-flow"></a>Configuration du flux d’utilisateur
 
@@ -116,12 +126,6 @@ Une fois qu’une stratégie d’expiration du mot de passe a été définie, vo
 ### <a name="password-expiry-duration"></a>Délai d'expiration du mot de passe
 
 La valeur par défaut de la durée d’expiration du mot de passe est de **90** jours. Elle est configurable avec la cmdlet [Set-MsolPasswordPolicy](/powershell/module/msonline/set-msolpasswordpolicy) dans le Module Azure Active Directory pour Windows PowerShell. Cette commande met à jour le locataire de sorte que tous les mots de passe des utilisateurs expirent au bout du nombre de jours configuré.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-Cette fonctionnalité est actuellement disponible uniquement pour les flux d’utilisateurs. Pour les étapes de configuration, choisissez le **Flux utilisateur** ci-dessus. Pour les stratégies personnalisées, utilisez [l’exemple GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset-first-logon) de réinitialisation de mot de passe à la première ouverture de session.
 
 ::: zone-end
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.author: sharrai
 ms.date: 08/19/2021
-ms.openlocfilehash: 356d81e93997922b0ae9b2e82bf7670449f168af
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 1bf251d6aa45aaf0306d3e595a674280214dc64a
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258814"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867301"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>À propos du service Mobilité pour serveurs physiques et machines virtuelles VMware
 
@@ -192,7 +192,7 @@ Syntaxe | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<C
 ## <a name="azure-virtual-machine-agent"></a>Agent de machine virtuelle Azure
 
 - **Machines virtuelles Windows** : à partir de la version 9.7.0.0 du service Mobilité, l’[agent de machine virtuelle Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) est installé par le programme d’installation du service Mobilité. Ainsi, lorsque la machine bascule vers Azure, la machine virtuelle Azure remplit les conditions préalables à l’installation de l'agent pour utiliser une extension de machine virtuelle.
-- **Machines virtuelles Linux** : l’agent [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) doit être installé manuellement sur la machine virtuelle Azure après le basculement.
+- **Machines virtuelles Linux** : [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) est installé automatiquement sur la machine virtuelle Azure après le basculement.
 
 ## <a name="locate-installer-files"></a>Localiser les fichiers d’installation
 

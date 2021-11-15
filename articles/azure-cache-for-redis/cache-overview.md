@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 63aae0f54d07fea45f4cecc5a4699cd1448c0a4f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 3404575f7eef3dc1c4f4784d255e0df6d569fd0f
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537778"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893687"
 ---
 # <a name="about-azure-cache-for-redis"></a>À propos du cache Azure pour Redis
 
@@ -35,7 +35,7 @@ Azure Cache pour Redis améliore les performances des applications grâce à la 
 
 ## <a name="redis-versions"></a>Versions Redis
 
-Azure Cache pour Redis prend en charge OSS Redis version 4.x et, en préversion, 6.0. Nous avons décidé d’ignorer Redis 5.0 pour vous apporter la version la plus récente. Auparavant, Azure Cache pour Redis ne gérait qu’une seule version de Redis. À l’avenir, il fournira une mise à niveau de version majeure plus récente et au moins une version stable plus ancienne. Vous pouvez [choisir la version](cache-how-to-version.md) qui convient le mieux à votre application.
+Azure Cache pour Redis prend en charge OSS Redis version 4.0.x et 6.0.x. Nous avons décidé d’ignorer Redis 5.0 pour vous apporter la version la plus récente. Auparavant, Azure Cache pour Redis ne gérait qu’une seule version de Redis. À l’avenir, il fournira une mise à niveau de version majeure plus récente et au moins une version stable plus ancienne. Vous pouvez [choisir la version](cache-how-to-version.md) qui convient le mieux à votre application.
 
 
 ## <a name="service-tiers"></a>Niveaux de service
@@ -64,7 +64,7 @@ La page [Tarifs d’Azure Cache pour Redis](https://azure.microsoft.com/pricing/
 | [Persistance des données](cache-how-to-premium-persistence.md) |-|-|✔|PRÉVERSION|PRÉVERSION|
 | [Redondance de zone](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
 | [Géoréplication](cache-how-to-geo-replication.md) |-|-|✔|PRÉVERSION|PRÉVERSION|
-| [Modules Redis](#choosing-the-right-tier) |-|-|-|✔|✔|
+| [Modules Redis](#choosing-the-right-tier) |-|-|-|✔|-|
 | [Import/Export](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|
 | [Redémarrage](cache-administration.md#reboot) |✔|✔|✔|-|-|
 | [Mises à jour planifiées](cache-administration.md#schedule-updates) |✔|✔|✔|-|-|

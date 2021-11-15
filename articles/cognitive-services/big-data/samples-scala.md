@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: sample
-ms.date: 07/06/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 154317217ce22196ddde1e4a3c04c39d5eafc0ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363270"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469803"
 ---
 # <a name="quick-examples"></a>Exemples rapides
 
@@ -21,10 +21,10 @@ Les extraits de code suivants sont prêts à être exécutés et vous permettent
 
 Les exemples utilisent les services Cognitive Services suivants :
 
-- Analyse de texte : obtenir le sentiment (ou l’humeur) d’un ensemble de phrases.
+- Service Langage : obtenir le sentiment (ou l’humeur) d’un ensemble de phrases.
 - Vision par ordinateur : obtenir les étiquettes (descriptions en un mot) associées à un ensemble d’images.
 - Recherche d’images Bing : rechercher sur le web des images associées à une demande en langage naturel.
-- Reconnaissance vocale : transcrire les fichiers audio pour extraire des transcriptions texte.
+- Reconnaissance vocale : transcrire des fichiers audio pour extraire des transcriptions texte.
 - Détecteur d’anomalies : détecter les anomalies dans des données de séries chronologiques.
 
 ## <a name="prerequisites"></a>Prérequis
@@ -47,9 +47,9 @@ val serviceKey = "ADD-YOUR-SUBSCRIPTION-KEY"
 val location = "eastus"
 ```
 
-## <a name="text-analytics"></a>Analyse de texte
+## <a name="language-service"></a>Service Language
 
-Le service [Analyse de texte](../text-analytics/index.yml) fournit plusieurs algorithmes permettant d’extraire des insights intelligents à partir d’un texte. Par exemple, nous pouvons trouver le sentiment d’un texte d’entrée donné. Le service retourne un score compris entre `0.0` et `1.0`, où un score faible indique un sentiment négatif et où un score élevé indique un sentiment positif.  L’exemple ci-dessous utilise trois phrases simples et retourne le score de sentiment pour chacune d’elles.
+Le [service Langage](../language-service/index.yml) fournit plusieurs algorithmes permettant d’extraire des insights intelligents à partir d’un texte. Par exemple, nous pouvons trouver le sentiment d’un texte d’entrée donné. Le service retourne un score compris entre `0.0` et `1.0`, où un score faible indique un sentiment négatif et où un score élevé indique un sentiment positif.  L’exemple ci-dessous utilise trois phrases simples et retourne le score de sentiment pour chacune d’elles.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Recherche d’images Bing
 
-La [Recherche d’images Bing](../bing-image-search/overview.md) explore le web pour récupérer des images associées à une requête en langage naturel d’un utilisateur. Dans cet exemple, nous utilisons une requête de texte qui recherche des images avec des guillemets. Elle retourne une liste d’URL d’images qui contiennent des photos liées à notre requête.
+La [Recherche d’images Bing](../bing-image-search/overview.md) explore le web pour récupérer des images associées à une requête en langage naturel d’un utilisateur. Dans cet exemple, nous utilisons une demande texte qui recherche des images avec des guillemets. Elle retourne une liste d’URL d’images qui contiennent des photos liées à notre demande.
 
 
 ```scala
@@ -189,7 +189,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 | url | DisplayText |
 |:------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav | Custom Speech propose des outils qui vous permettent d’inspecter visuellement la qualité de la reconnaissance d’un modèle en comparant les données audio au résultat de la reconnaissance correspondante provenant du portail Custom Speech. Vous pouvez lire un contenu audio chargé pour déterminer si le résultat proposé de la reconnaissance est correct. Cet outil vous permet d’inspecter rapidement la qualité du modèle de base de référence de reconnaissance vocale de Microsoft ou d’un modèle personnalisé entraîné sans qu’il soit nécessaire de transcrire des données audio. |
+| https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav | Custom Speech propose des outils qui vous permettent d’inspecter visuellement la qualité de la reconnaissance d’un modèle en comparant les données audio au résultat de la reconnaissance correspondante provenant du portail Custom Speech. Vous pouvez lire un contenu audio chargé pour déterminer si le résultat proposé de la reconnaissance est correct. Cet outil vous permet d’inspecter rapidement la qualité du modèle de référence de reconnaissance vocale de Microsoft ou d’un modèle personnalisé entraîné sans qu’il soit nécessaire de transcrire des données audio. |
 | https://mmlspark.blob.core.windows.net/datasets/Speech/audio3.mp3 | Ajoutez un contrôle visuel des pensées d’un monsieur.    |
 | https://mmlspark.blob.core.windows.net/datasets/Speech/audio3.mp3 | Je m’entends. |
 | https://mmlspark.blob.core.windows.net/datasets/Speech/audio3.mp3 | J’aime avoir la garantie par la radio que je peux également l’entendre. |

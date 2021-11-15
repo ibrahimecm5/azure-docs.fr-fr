@@ -5,12 +5,12 @@ ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
-ms.openlocfilehash: 6689f54035467b7ee380e292abad98db180b5516
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2382a45b73f3961053e870c15b99f3ef5746f966
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083647"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056679"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>Utiliser des files d’attente Azure Service Bus avec Java pour envoyer et recevoir des messages (ancien package)
 
@@ -110,7 +110,7 @@ public void run() throws Exception {
 Les messages échangés avec les files d’attente Service Bus sont des instances de la classe [Message](/java/api/com.microsoft.azure.servicebus.message). Les objets Message possèdent un ensemble de propriétés standard (telles que Label et TimeToLive), un dictionnaire servant à conserver les propriétés personnalisées d’une application, ainsi qu’un corps de données d’application arbitraires. Une application peut définir le corps du message en transmettant un objet sérialisable au constructeur de l’objet Message. Le sérialiseur approprié est alors utilisé pour sérialiser l’objet. Vous pouvez également fournir un objet **java.IO.InputStream**.
 
 
-Les files d’attente Service Bus prennent en charge une taille de message maximale de 256 Ko dans le [niveau Standard](service-bus-premium-messaging.md) et de 1 Mo dans le [niveau Premium](service-bus-premium-messaging.md). L’en-tête, qui comprend les propriétés d’application standard et personnalisées, peut avoir une taille maximale de 64 Ko. Si une file d'attente n'est pas limitée par le nombre de messages qu'elle peut contenir, elle l'est en revanche par la taille totale des messages qu'elle contient. Cette taille de file d'attente est définie au moment de la création. La limite maximale est de 5 Go.
+Les files d’attente Service Bus prennent en charge une taille de message maximale de 256 Ko dans le [niveau Standard](service-bus-premium-messaging.md) et de 100 Mo dans le [niveau Premium](service-bus-premium-messaging.md). L’en-tête, qui comprend les propriétés d’application standard et personnalisées, peut avoir une taille maximale de 64 Ko. Si une file d'attente n'est pas limitée par le nombre de messages qu'elle peut contenir, elle l'est en revanche par la taille totale des messages qu'elle contient. Cette taille de file d'attente est définie au moment de la création. La limite maximale est de 5 Go.
 
 ## <a name="receive-messages-from-a-queue"></a>Réception des messages d'une file d'attente
 Le moyen principal pour recevoir des messages d’une file d’attente consiste à utiliser un objet **ServiceBusContract**. Les messages reçus peuvent fonctionner dans deux modes différents : **ReceiveAndDelete** et **PeekLock**.

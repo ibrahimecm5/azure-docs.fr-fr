@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d7eb6bae2a6000f2f117dbe8f38976a13504825
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 18ed79768f1a803c4565426de67f6cde35a0a1fe
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014801"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577989"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Recherche sémantique dans la Recherche cognitive Azure
 
@@ -92,7 +92,7 @@ La recherche sémantique est disponible via [l’enregistrement d’inscription]
 | Recherche sémantique (classement, légendes, surlignages, réponses) | Niveau Standard (S1, S2, S3) | USA Centre Nord, USA Ouest, USA Ouest 2, USA Est 2, Europe Nord, Europe Ouest | Obligatoire | [Page de tarification de la Recherche cognitive](https://azure.microsoft.com/pricing/details/search/)  |
 | Vérification orthographique | De base<sup>1</sup> et niveaux supérieurs  | Tous | None | Aucun (gratuit) |
 
-<sup>1</sup> En raison des mécanismes d’approvisionnement et de la durée de vie des services de recherche partagés (gratuits), un petit nombre de services dispose d’un contrôle orthographique sur le niveau gratuit. Toutefois, la disponibilité de la vérification orthographique sur les services de niveau gratuit n’est pas garantie et ne peut pas être ajoutée si elle n’existe pas déjà.
+<sup>1</sup> En raison des mécanismes de provisionnement et de la durée de vie des services de recherche partagés (gratuits), un petit nombre de services dispose d’un contrôle orthographique sur le niveau gratuit. Toutefois, la disponibilité de la vérification orthographique sur les services de niveau gratuit n’est pas garantie et ne devrait pas être attendue.
 
 Des frais de recherche sémantique sont prélevés lorsque les demandes de requête incluent « queryType=semantic » et que la chaîne de recherche n’est pas vide (par exemple, « search=hôtels acceptant les animaux à new york »). Si votre chaîne de recherche est vide (« search=* »), vous ne serez pas facturé, même si queryType est défini sur « semantic ».
 

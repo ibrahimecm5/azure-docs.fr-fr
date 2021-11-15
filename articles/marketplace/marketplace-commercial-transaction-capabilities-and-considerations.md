@@ -4,19 +4,22 @@ description: Cet article décrit les considérations sur les prix, la facturatio
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 10/26/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 344b3aeba1c10e3a66d01458800d771ca31dd3a7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e7166399dac6d28a5b7e0ed4cf5f4e5cd20e97c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056431"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059031"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Fonctionnalités de transaction de la place de marché commerciale
 
 Cet article décrit les considérations sur les prix, la facturation et le paiement pour les offres de *transaction* vendues sur la place de marché commerciale. Pour plus d’informations sur la publication d’offres ne pouvant faire l’objet de transactions (gratuites ou BYOL), consultez[Présentation des options de référencement](determine-your-listing-type.md).
+
+> [!TIP]
+> Pour voir l’achat du client sur la place de marché commerciale, consultez la page [Achat sur la Place de marché Azure](/marketplace/azure-purchasing-invoicing). Pour les offres SaaS, consultez [Acheter des applications SaaS sur Microsoft AppSource](/marketplace/purchase-software-appsource).
 
 ## <a name="transactions-by-listing-option"></a>Transactions par option de liste
 
@@ -195,7 +198,7 @@ La possibilité d’effectuer des transactions par le biais de Microsoft est dis
 
 - **Machine virtuelle Azure** : sélectionner entre les modèles de facturation gratuits, BYOL ou basés sur l’utilisation. Sur la facture Azure du client, Microsoft présente les frais de licence logicielle de l’éditeur séparément des frais d’infrastructure Azure sous-jacents. Les frais d’utilisation de l’infrastructure Azure sont occasionnés par l’utilisation du logiciel de l’éditeur.
 
-- **Application SaaS** : il doit s’agir d’une solution multilocataire, qui utilise [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) pour l’authentification et s’intègre aux [API d’approvisionnement SaaS](partner-center-portal/pc-saas-fulfillment-api-v2.md). L’utilisation de l’infrastructure Azure est gérée et vous est facturée directement (en tant qu’éditeur). Vous devez donc considérer ces frais et les frais de licence logicielle comme un seul poste de coût. Pour plus d’informations, consultez [Comment planifier une offre SaaS pour la place de marché commerciale](plan-saas-offer.md#plans).
+- **Application SaaS** : il doit s’agir d’une solution multilocataire, qui utilise [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) pour l’authentification et s’intègre aux [API d’approvisionnement SaaS](partner-center-portal/pc-saas-fulfillment-apis.md). L’utilisation de l’infrastructure Azure est gérée et vous est facturée directement (en tant qu’éditeur). Vous devez donc considérer ces frais et les frais de licence logicielle comme un seul poste de coût. Pour plus d’informations, consultez [Comment planifier une offre SaaS pour la place de marché commerciale](plan-saas-offer.md#plans).
 
 ## <a name="private-plans"></a>Plans privés
 

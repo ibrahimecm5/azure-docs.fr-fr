@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678ff6595f99d634a84b338f9b4b52de09a1d67a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 79c4e91d129a3fb71f9cabb1b8e5dc775e9e4bbd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131059068"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477418"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Configurer des identités managées sur un groupe de machines virtuelles identiques en utilisant des appels d’API REST
 
@@ -28,7 +28,7 @@ ms.locfileid: "131059068"
 
 Les identités managées pour ressources Azure fournissent aux services Azure une identité système managée automatiquement dans Azure Active Directory. Vous pouvez utiliser cette identité pour vous authentifier sur n’importe quel service prenant en charge l’authentification Azure AD, sans avoir d’informations d’identification dans votre code. 
 
-Dans cet article, en utilisant CURL pour effectuer des appels au point de terminaison REST d’Azure Resource Manager, vous allez apprendre à configurer les identités managées suivantes pour les opérations de ressources Azure sur un groupe de machines virtuelles identiques :
+Dans cet article, en utilisant CURL pour adresser des appels au point de terminaison REST d’Azure Resource Manager, vous allez apprendre à configurer les identités managées suivantes pour les opérations de ressources Azure sur un groupe de machines virtuelles identiques :
 
 - Activer et désactiver l’identité managée affectée par le système sur un groupe de machines virtuelles identiques Azure
 - Ajouter et supprimer une identité managée affectée par l’utilisateur sur un groupe de machines virtuelles identiques Azure
@@ -41,7 +41,7 @@ Si vous n’avez pas encore de compte Azure, [inscrivez-vous à un essai gratuit
 
 - Pour effectuer les opérations de gestion dans cet article, votre compte doit disposer des attributions des rôles Azure suivants :
 
-  - [Contributeur de machines virtuelles](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pour créer un groupe de machines virtuelles identiques, puis activer et supprimer l’identité managée affectée par le système ou l’utilisateur d’un groupe de machines virtuelles identiques.
+  - [Contributeur de machine virtuelle](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pour créer un groupe de machines virtuelles identiques, puis activer ou supprimer l’identité managée affectée par le système et/ou par l’utilisateur à partir d’un groupe de machines virtuelles identiques.
 
   - [Contributeur d’identité managée](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) pour créer une identité managée affectée par l’utilisateur.
 

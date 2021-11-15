@@ -6,12 +6,12 @@ ms.author: wanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/30/2021
-ms.openlocfilehash: 5a1cf026759a8112901624d9db89d7c344930cb8
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6fecb2f492a71781706e19a407a87cb1af7dc006
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297425"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470259"
 ---
 # <a name="how-to-use-live-trace-tool-for-azure-signalr-service"></a>Comment utiliser l’outil de trace dynamique pour le service Azure SignalR
 
@@ -53,11 +53,21 @@ Les traces dynamiques en temps réel capturées par l’outil de trace dynamique
 | Exception | Exception d’exécution du service Azure Web PubSub |
 | Hub | Nom du hub défini par l’utilisateur |
 | ID de connexion | Identité de la connexion |
-| ID de connexion | Type de la connexion. Les valeurs autorisées sont `Server` (connexions entre le serveur et le service) et `Client` (connexions entre le client et le service)|
+| Type de la connexion | Type de la connexion. Les valeurs autorisées sont `Server` (connexions entre le serveur et le service) et `Client` (connexions entre le client et le service)|
 | ID d'utilisateur | Identité de l’utilisateur |
 | IP | Adresse IP du client |
 | Server Sticky | Mode de routage du client. Les valeurs autorisées sont `Disabled`, `Preferred` et `Required`. Pour plus d’informations, consultez [ServerStickyMode](https://github.com/Azure/azure-signalr/blob/master/docs/run-asp-net-core.md#serverstickymode). |
-| Transport | Transport que le client peut utiliser pour envoyer des requêtes HTTP. Les valeurs autorisées sont `WebSockets`, `ServerSentEvents` et `LongPolling`. Pour plus d’informations, consultez [HttpTransportType](/dotnet/api/microsoft.aspnetcore.http.connections.httptransporttype). |
+| Transport | Transport que le client peut utiliser pour envoyer des requêtes HTTP. Les valeurs autorisées sont `WebSockets`, `ServerSentEvents` et `LongPolling`. Pour plus d’informations, consultez [HttpTransportType](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.connections.httptransporttype). |
+| ID de suivi des messages | Identificateur unique d’un message |
+| Modèle de routage | Modèle de routage de l’API |
+| Méthode HTTP | Méthode HTTP (POST/GET/PUT/DELETE) |
+| URL | Localisateur de ressource uniforme |
+| ID de trace | Identificateur unique pour représenter une requête |
+| Code d’état | Code de réponse HTTP |
+| Duration | Durée entre la réception de la requête et son traitement |
+| En-têtes | Informations supplémentaires passées par le client et le serveur à l’aide d’une requête ou d’une réponse HTTP |
+| ID d’invocation | Identificateur unique pour représenter une invocation (disponible uniquement pour ASP.NET SignalR) |
+| Type de message | Type du message (BroadcastDataMessage/JoinGroupMessage/LeaveGroupMessage/...) |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

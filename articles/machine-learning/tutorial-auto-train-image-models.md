@@ -11,12 +11,12 @@ ms.author: swatig
 ms.reviewer: nibaccam
 ms.date: 10/06/2021
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: a8b299a57b5ba3d31d34447ceacded9933c61b55
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e6906988b47ecdb1ba5e1ca7947666e6371ddd8e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007623"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468572"
 ---
 # <a name="tutorial-train-an-object-detection-model-preview-with-automl-and-python"></a>Tutoriel : Entraîner un modèle de détection d’objet (préversion) avec AutoML et Python
 
@@ -495,3 +495,6 @@ Dans ce tutoriel sur le machine learning automatisé, vous avez effectué les t�
 * [Apprenez-en davantage sur la vision par ordinateur en ML automatisé (préversion)](concept-automated-ml.md#computer-vision-preview).
 * [Découvrez comment configurer AutoML pour entraîner des modèles de vision par ordinateur avec Python (préversion)](how-to-auto-train-image-models.md).
 * Passez en revue les exemples de code détaillé et les cas d’usage disponibles dans le [dépôt GitHub d’exemples de blocs-notes pour le Machine Learning automatisé](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml). Vérifiez les dossiers avec le préfixe « image- » pour obtenir des exemples propres à la création de modèles de vision par ordinateur.
+
+> [!NOTE]
+> L’utilisation du jeu de données des objets réfrigérants est disponible sous la [licence MIT](https://github.com/microsoft/computervision-recipes/blob/master/LICENSE).

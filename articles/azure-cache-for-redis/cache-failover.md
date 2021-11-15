@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/18/2019
-ms.openlocfilehash: 3ede36ef718fbe4ef535e9999edf55a0381cfd2e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 11/3/2021
+ms.openlocfilehash: 67b3ad49033a2fb4708b93c65e0d9f7110726cee
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538563"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850961"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Basculement et mise à jour corrective pour Azure Cache pour Redis
 
@@ -29,7 +29,7 @@ Commençons par un aperçu du basculement pour Azure Cache pour Redis.
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>Un rapide résumé de l’architecture du cache
 
-Un cache se compose de plusieurs machines virtuelles avec des adresses IP privées distinctes. Chaque machine virtuelle, également appelée nœud, est connectée à un équilibreur de charge partagé avec une seule adresse IP virtuelle. Chaque nœud exécute le processus serveur Redis et est accessible en utilisant le nom d’hôte et les ports Redis. Chaque nœud est considéré comme un nœud principal ou réplica. Lorsqu’une application cliente se connecte à un cache, son trafic passe par cet équilibreur de charge et est automatiquement routé au nœud principal.
+Un cache se compose de plusieurs machines virtuelles avec des adresses IP privées et distinctes. Chaque machine virtuelle, également appelée nœud, est connectée à un équilibreur de charge partagé avec une seule adresse IP virtuelle. Chaque nœud exécute le processus serveur Redis et est accessible en utilisant le nom d’hôte et les ports Redis. Chaque nœud est considéré comme un nœud principal ou réplica. Lorsqu’une application cliente se connecte à un cache, son trafic passe par cet équilibreur de charge et est automatiquement routé au nœud principal.
 
 Dans un cache De base, le nœud unique est toujours un nœud principal. Un cache Standard ou Premium comprend deux nœuds : l’un est choisi comme nœud principal et l’autre est le réplica. Étant donné que les caches Standard et Premium ont plusieurs nœuds, un nœud peut être indisponible pendant que l’autre continue à traiter les requêtes. Les caches en cluster sont constitués de plusieurs partitions, chacune ayant un nœud principal et un nœud réplica distincts. Une partition peut être en panne pendant que les autres restent disponibles.
 
@@ -78,13 +78,13 @@ Des applications clientes pourraient recevoir des erreurs de leur Azure Cache po
 
 De nombreuses bibliothèques clientes peuvent lever différents types d’erreurs en cas d’interruption des connexions, à savoir :
 
-- exceptions de délai d’attente
-- exceptions de connexion
-- exceptions de socket
+- Exceptions de délai d’attente
+- Exceptions de connexion
+- Exceptions de socket
 
 Le nombre et le type d’exceptions dépendent de l’emplacement de la demande dans le chemin du code quand le cache ferme ses connexions. Par exemple, une opération qui envoie une requête mais qui ne reçoit pas de réponse quand le basculement se produit peut obtenir une exception de délai d’expiration. Les nouvelles requêtes sur l’objet de connexion fermé reçoivent des exceptions de connexion jusqu’à ce que la connexion soit rétablie.
 
-La plupart des bibliothèques clientes tentent de se reconnecter au cache si elles sont configurées pour ce faire. Toutefois, des bogues imprévus peuvent parfois placer les objets de bibliothèque dans un état irrécupérable. Si les erreurs persistent plus longtemps qu’une durée préconfigurée, l’objet de connexion doit être recréé. Dans Microsoft.NET et d’autres langages orientés objet, il est possible de recréer la connexion sans redémarrer l’application à l’aide d’un [modèle Lazy\<T\>](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern).
+La plupart des bibliothèques clientes tentent de se reconnecter au cache si elles sont configurées pour ce faire. Toutefois, des bogues imprévus peuvent parfois placer les objets de bibliothèque dans un état irrécupérable. Si les erreurs persistent plus longtemps qu’une durée préconfigurée, l’objet de connexion doit être recréé. Dans Microsoft.NET et d’autres langages orientés objet, il est possible de recréer la connexion sans redémarrer l’application à l’aide d’un [modèle ForceReconnect](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis).
 
 ### <a name="can-i-be-notified-in-advance-of-planned-maintenance"></a>Puis-je être notifié à l’avance d’une maintenance planifiée ?
 

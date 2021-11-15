@@ -1,21 +1,19 @@
 ---
-title: Déployer des charts Helm à l’aide de GitOps sur un cluster Kubernetes avec Arc
+title: Déployer des charts Helm à l’aide de GitOps sur un cluster Kubernetes avec Azure Arc
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: article
-author: mlearned
-ms.author: mlearned
 description: Utiliser GitOps avec Helm pour une configuration de cluster avec Azure Arc
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bc0dc3f0583c346ae909bbb877a6e8a9a9d66a72
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449541"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053290"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Déployer des charts Helm à l’aide de GitOps sur un cluster Kubernetes avec Arc
+# <a name="deploy-helm-charts-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Déployer des charts Helm à l’aide de GitOps sur un cluster Kubernetes avec Azure Arc
 
 Helm est un outil d’empaquetage open source qui vous aide à installer et à gérer le cycle de vie d’applications Kubernetes. À l'instar de gestionnaires de package Linux tels qu'APT et Yum, Helm sert à gérer les charts Kubernetes, qui sont des packages de ressources Kubernetes préconfigurées.
 
@@ -26,14 +24,14 @@ Cet article vous montre comment configurer et utiliser Helm à l’aide de Kuber
 - Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Cluster Kubernetes avec Azure Arc connecté.
     - Si vous n’avez pas encore connecté de cluster, consultez notre [guide de démarrage rapide sur la connexion d’un cluster Kubernetes avec Azure Arc](quickstart-connect-cluster.md).
-- Compréhension suffisante des avantages et de l’architecture de cette fonctionnalité. Pour plus d’informations, consultez l’article [Configurations et GitOps - Kubernetes avec Azure Arc](conceptual-configurations.md).
-- Installez l’extension `k8s-configuration` d’Azure CLI, version >= 1.0.0 :
+- Compréhension suffisante des avantages et de l’architecture de cette fonctionnalité. Pour plus d’informations, consultez l’article [Configurations et GitOps – Kubernetes avec Azure Arc](conceptual-configurations.md).
+- Installez l'extension `k8s-configuration` d'Azure CLI, version >= 1.0.0 :
   
   ```azurecli
   az extension add --name k8s-configuration
   ```
 
-## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Présentation de l’utilisation de GitOps et Helm avec Kubernetes avec Azure Arc
+## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Présentation de l’utilisation de GitOps et Helm à l’aide de Kubernetes avec Azure Arc
 
  L’opérateur Helm fournit une extension à Flux qui automatise les versions Chart Helm. Une version du chart Helm est décrite par le biais d’une ressource personnalisée Kubernetes nommée HelmRelease. Flux synchronise ces ressources de Git au cluster, tandis que l’opérateur Helm vérifie que les charts Helm sont publiés comme spécifié dans les ressources.
 

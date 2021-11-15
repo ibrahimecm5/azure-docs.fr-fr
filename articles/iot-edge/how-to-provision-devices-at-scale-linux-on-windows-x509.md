@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 42cdee3f9b4354e2396f14e17f5f146c27ff29c5
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 59c29f3ce91f5ee1e1e5ee65710cc34ce1572907
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506127"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845992"
 ---
 # <a name="create-and-provision-iot-edge-for-linux-on-windows-devices-at-scale-using-x509-certificates"></a>Créer et provisionner IoT Edge pour Linux sur des appareils Windows à grande échelle avec des certificats X.509
 
 [!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
-Cet article fournit des instructions complètes pour le provisionnement automatique d’un ou de plusieurs appareils [IoT Edge pour Linux sur Windows](iot-edge-for-linux-on-windows.md) à l’aide de certificats X.509. Les appareils Azure IoT Edge peuvent être provisionnés automatiquement à l’aide du [service Azure IoT Hub Device Provisioning](../iot-dps/index.yml) (DPS). Si vous ne connaissez pas le processus de provisionnement automatique, consultez la [présentation du provisionnement](../iot-dps/about-iot-dps.md#provisioning-process) avant de poursuivre.
+Cet article fournit des instructions complètes pour le provisionnement automatique d’un ou de plusieurs appareils [IoT Edge pour Linux sur Windows](iot-edge-for-linux-on-windows.md) à l’aide de certificats X.509. Les appareils Azure IoT Edge peuvent être provisionnés automatiquement à l’aide du [service Azure IoT Hub Device Provisioning](../iot-dps/index.yml) (DPS). Si vous ne connaissez pas le processus d’approvisionnement automatique, consultez la [présentation de l’approvisionnement](../iot-dps/about-iot-dps.md#provisioning-process) avant de poursuivre.
 
 Voici les tâches à effectuer :
 
@@ -108,17 +108,17 @@ Pour Windows Admin Center, procédez comme suit :
 
 ---
 
-## <a name="verify-successful-configuration"></a>Vérifier que la configuration a réussi
+## <a name="verify-successful-installation"></a>Vérifier la réussite de l’installation
 
 Vérifiez que IoT Edge pour Linux sur Windows a été correctement installé et configuré sur votre appareil IoT Edge.
 
 # <a name="individual-enrollment"></a>[Inscription individuelle](#tab/individual-enrollment)
 
-Vous pouvez vérifier que l’inscription individuelle que vous avez créée dans le service de provisionnement des appareils a été utilisée. Accédez à l’instance du service de provisionnement des appareils dans le portail Azure. Ouvrez les détails de l’inscription pour l’inscription individuelle que vous avez créée. Notez que l’état de l’inscription est **Affecté** et que l’ID de l’appareil figure dans la liste.
+Vous pouvez vérifier que l’inscription individuelle que vous avez créée dans le service d’approvisionnement des appareils a été utilisée. Accédez à l’instance du service d’approvisionnement des appareils dans le portail Azure. Ouvrez les détails de l’inscription pour l’inscription individuelle que vous avez créée. Notez que l’état de l’inscription est **Affecté** et que l’ID de l’appareil figure dans la liste.
 
 # <a name="group-enrollment"></a>[Inscription de groupe](#tab/group-enrollment)
 
-Vous pouvez vérifier que l’inscription de groupe que vous avez créée dans le service de provisionnement des appareils a été utilisée. Accédez à l’instance du service de provisionnement des appareils dans le portail Azure. Ouvrez les détails de l’inscription de groupe que vous avez créée. Accédez à l’onglet **Enregistrements d’inscription** pour afficher tous les appareils enregistrés dans ce groupe.
+Vous pouvez vérifier que l’inscription de groupe que vous avez créée dans le service d’approvisionnement des appareils a été utilisée. Accédez à l’instance du service d’approvisionnement des appareils dans le portail Azure. Ouvrez les détails de l’inscription de groupe que vous avez créée. Accédez à l’onglet **Enregistrements d’inscription** pour afficher tous les appareils enregistrés dans ce groupe.
 
 ---
 
@@ -169,7 +169,7 @@ Lorsque vous créez un appareil IoT Edge, il affichera le code d’état `417 --
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Le processus d’inscription dans le service de provisionnement des appareils vous permet de définir les ID d’appareil et les étiquettes de jumeau d’appareil en même temps que vous provisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).
+Le processus d’inscription auprès du service de provisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous provisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).
 
 Vous pouvez également :
 

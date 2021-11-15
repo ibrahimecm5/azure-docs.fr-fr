@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d4ac6af77344717a9f38a96a28217de35d28d3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324652"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454767"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Tutoriel : Ajouter des formats d’énoncé de modèle courants pour améliorer les prédictions
 
@@ -539,4 +539,4 @@ Dans ce didacticiel, vous avez ajouté des modèles pour permettre à LUIS de pr
 
 
 > [!div class="nextstepaction"]
-> [En savoir plus sur l’utilisation de rôles avec un modèle](luis-tutorial-pattern.md)
+> [En savoir plus sur la syntaxe de modèle](./reference-pattern-syntax.md)

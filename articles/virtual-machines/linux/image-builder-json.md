@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec39fb3ec368d315d6d9fa4a17d2cb763e49bce6
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 8f2581033d0ffefa6d5014478e7eee68f786f49e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137586"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057515"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Créer un modèle de générateur d’images Azure 
 
@@ -89,7 +89,7 @@ L’emplacement est la région dans laquelle l’image personnalisée sera cré�
 Le service Azure VM Image Builder ne stocke pas/ne traite pas les données client en dehors des régions qui imposent des exigences strictes en matière de résidence des données dans une seule région lorsqu'un client demande une build dans cette région. En cas d'interruption de service pour les régions qui présentent des exigences en matière de résidence des données, vous devrez créer des modèles dans une région et une zone géographique différentes.
 
 ### <a name="zone-redundancy"></a>Redondance de zone
-La distribution prend en charge la redondance de zone, les disques durs virtuels sont distribués dans un compte de stockage redondant dans une zone par défaut et la version de Shared Image Gallery prend en charge un [type de stockage ZRS](../disks-redundancy.md#zone-redundant-storage-for-managed-disks), s’il est spécifié.
+La distribution prend en charge la redondance de zone, les disques durs virtuels sont distribués dans un compte de stockage redondant dans une zone par défaut et la version Azure Compute Gallery (anciennement Shared Image Gallery) prend en charge un [type de stockage ZRS](../disks-redundancy.md#zone-redundant-storage-for-managed-disks), s’il est spécifié.
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
@@ -159,12 +159,12 @@ Pour plus d’informations sur le déploiement de cette fonctionnalité, consult
 
 ## <a name="properties-source"></a>Propriétés : source
 
-La section `source` fournit des informations sur l’image source qui sera utilisée par le générateur d’images. Le générateur Image Builder prend en charge uniquement en mode natif la création d’images Hyper-V de génération 1 (Gen1) dans Azure Shared Image Gallery (SIG) ou Managed Image. Si vous souhaitez créer des images de génération 2 (Gen2), vous devez utiliser une image source Gen2 et la distribuer sur le disque dur virtuel. Après quoi, vous devez créer une image managée à partir du disque dur virtuel et l’injecter dans le SIG en tant qu’image Gen2.
+La section `source` fournit des informations sur l’image source qui sera utilisée par le générateur d’images. Le générateur Image Builder prend en charge uniquement en mode natif la création d’images Hyper-V de génération 1 (Gen1) dans Azure Compute Gallery (SIG) ou Managed Image. Si vous souhaitez créer des images de génération 2 (Gen2), vous devez utiliser une image source Gen2 et la distribuer sur le disque dur virtuel. Après quoi, vous devez créer une image managée à partir du disque dur virtuel et l’injecter dans le SIG en tant qu’image Gen2.
 
 L’API nécessite un « SourceType » qui définit la source pour la génération d’image. Il en existe actuellement trois types :
 - PlatformImage : indique que l’image source est une image de la Place de marché.
 - ManagedImag : utilisez cette option au démarrage à partir d’une image managée classique.
-- SharedImageVersion : cette option s’applique lorsque vous utilisez une version d’image dans une galerie d’images partagées comme source.
+- SharedImageVersion : Cette option s’applique lorsque vous utilisez une version d’image dans une galerie Azure Compute Gallery comme source.
 
 
 > [!NOTE]
@@ -180,7 +180,7 @@ Azure Image Builder prend en charge les images Windows Server et client, ainsi q
             "offer": "UbuntuServer",
             "sku": "18.04-LTS",
             "version": "latest"
-        },
+        },  
 ```
 
 
@@ -190,7 +190,7 @@ Ces propriétés sont les mêmes que celles utilisées pour créer des machines 
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-Vous pouvez utiliser ’latest’ dans la version ; la version est évaluée lors de la génération de l’image, et non lors de l’envoi du modèle. Si vous utilisez cette fonctionnalité avec la destination Galerie d’images partagées, vous pouvez éviter de soumettre à nouveau le modèle, puis réexécuter la génération de l’image par intervalles afin que vos images soient recréées à partir des images les plus récentes.
+Vous pouvez utiliser ’latest’ dans la version ; la version est évaluée lors de la génération de l’image, et non lors de l’envoi du modèle. Si vous utilisez cette fonctionnalité avec la destination Azure Compute Gallery, vous pouvez éviter de soumettre à nouveau le modèle, puis réexécuter la génération de l’image par intervalles afin que vos images soient recréées à partir des images les plus récentes.
 
 #### <a name="support-for-market-place-plan-information"></a>Prise en charge des informations sur les plans de la Place de marché
 Vous pouvez également spécifier des informations de plan, par exemple :
@@ -225,7 +225,7 @@ Définit l’image source comme une image managée existante d’un disque dur v
 
 
 ### <a name="sharedimageversion-source"></a>Source SharedImageVersion
-Définit l’image source comme une version d’image existante dans une galerie d’images partagées.
+Définit l’image source comme une version d’image existante dans une galerie Azure Compute Gallery.
 
 > [!NOTE]
 > L’image managée source doit provenir d’un système d’exploitation pris en charge et se trouver dans la même région que votre modèle Azure VM Image Builder. Si ce n’est pas le cas, veuillez répliquer la version de l’image dans la région du modèle Image Builder.
@@ -527,7 +527,7 @@ Le générateur d’images lira ces commandes, celles-ci sont écrites dans les 
 Le générateur d’images Azure prend en charge trois cibles de distribution : 
 
 - **managedImage** - Image managée.
-- **sharedImage** - Galerie d’images partagées.
+- **sharedImage** - Azure Compute Gallery.
 - **VHD** - Disque dur virtuel dans un compte de stockage.
 
 Vous pouvez distribuer une image sur les deux types de cibles dans la même configuration.
@@ -535,7 +535,7 @@ Vous pouvez distribuer une image sur les deux types de cibles dans la même conf
 > [!NOTE]
 > La commande sysprep AIB par défaut n’inclut pas « /mode:vm », mais cela peut être nécessaire lors de la création d’images pour lesquelles le rôle HyperV est installé. Si vous devez ajouter cet argument de commande, vous devez écraser la commande sysprep.
 
-Comme vous pouvez avoir plusieurs cibles sur lesquelles distribuer, le générateur d’images gère un état pour chaque cible de distribution accessible en interrogeant `runOutputName`.  `runOutputName` est un objet que vous pouvez interroger après la distribution pour plus d’informations sur cette distribution. Par exemple, vous pouvez interroger l’emplacement du disque dur virtuel, ou des régions dans lesquelles la version de l’image a été répliquée ou la version de l’image SIG créée. Il s’agit d’une propriété de chaque cible de distribution. `runOutputName` doit être unique pour chaque cible de distribution. Voici un exemple qui interroge une distribution de la Shared Image Gallery :
+Comme vous pouvez avoir plusieurs cibles sur lesquelles distribuer, le générateur d’images gère un état pour chaque cible de distribution accessible en interrogeant `runOutputName`.  `runOutputName` est un objet que vous pouvez interroger après la distribution pour plus d’informations sur cette distribution. Par exemple, vous pouvez interroger l’emplacement du disque dur virtuel, ou des régions dans lesquelles la version de l’image a été répliquée ou la version de l’image SIG créée. Il s’agit d’une propriété de chaque cible de distribution. `runOutputName` doit être unique pour chaque cible de distribution. Voici un exemple qui interroge une distribution Azure Compute Gallery :
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -598,15 +598,15 @@ Propriétés de distribution :
 > Si vous souhaitez distribuer l’image dans une autre région, le temps de déploiement est prolongé. 
 
 ### <a name="distribute-sharedimage"></a>Distribuer : sharedImage 
-La galerie d’images partagées Azure est un nouveau service de gestion des images qui permet de gérer la réplication de la région d’image, le contrôle de version et le partage d’images personnalisées. Le générateur d’images Azure prend en charge la distribution avec ce service, vous pouvez donc distribuer des images dans des régions prises en charge par les galeries d’images partagées. 
+La galerie Azure Compute Gallery est un nouveau service de gestion des images qui permet de gérer la réplication de la région d’image, le contrôle de version et le partage d’images personnalisées. Le générateur d’images Azure prend en charge la distribution avec ce service, vous pouvez donc distribuer des images dans des régions prises en charge par les galeries Azure Compute Gallery. 
  
-Une galerie d’images partagées est constituée des éléments suivants : 
+une galerie Azure Compute Gallery est constituée des éléments suivants : 
  
-- Galerie : conteneur pour plusieurs images partagées. Une galerie est déployée dans une région.
+- Galerie : Conteneur pour plusieurs images. Une galerie est déployée dans une région.
 - Définitions d’image : regroupement logique d’images. 
 - Versions d’image : il s’agit d’un type d’image utilisé pour le déploiement d’une machine virtuelle ou d’un groupe identique. Des versions d’image peuvent être répliquées vers d’autres régions où des machines virtuelles doivent être déployées.
  
-Avant de pouvoir distribuer dans la galerie d’images, vous devez créer une galerie et une définition d’image, consultez [Images partagées](../create-gallery.md). 
+Avant de pouvoir distribuer dans la galerie, vous devez créer une galerie et une définition d’image, consultez [Créer une galerie](../create-gallery.md). 
 
 ```json
 {
@@ -624,17 +624,17 @@ Avant de pouvoir distribuer dans la galerie d’images, vous devez créer une ga
 }
 ``` 
 
-Propriétés de distribution de galeries d’images partagées :
+Distribuer des propriétés pour des galeries :
 
 - **type** - sharedImage  
-- **galleryImageId** – ID de la galerie d’images partagées, qui peut être spécifiée dans deux formats :
+- **galleryImageId** – ID de la galerie Azure Compute Gallery, qui peut être spécifiée dans deux formats :
     * Contrôle de version automatique – Image Builder génère automatiquement un numéro de version monotone, ce qui est utile pour continuer à reconstruire des images à partir du même modèle. Le format est `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>`.
     * Contrôle de version explicite – Vous pouvez transmettre le numéro de version qu’Image Builder devra utiliser. Le format est `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`.
 
 - **runOutputName** - Nom unique d’identification de la distribution.  
 - **artifactTags** - Facultatif, balises de paire de valeur de clé spécifiées par l’utilisateur.
 - **replicationRegions** - Tableau de régions pour la réplication. Une des régions doit être la région où la galerie est déployée. L’ajout de régions entraîne une augmentation du temps de build, car le build ne se termine pas tant que la réplication n’est pas achevée.
-- **excludeFromLatest** (facultatif) – Cette propriété permet d’indiquer que la version de l’image créée ne doit pas être utilisée comme dernière version dans la définition SIG. La valeur par défaut est « false ».
+- **excludeFromLatest** (facultatif) : Cette propriété permet d’indiquer que la version de l’image créée ne doit pas être utilisée comme dernière version dans la définition de la galerie. La valeur par défaut est « false ».
 - **storageAccountType** (facultatif) – AIB permet de spécifier les types de stockage suivants pour la version de l’image à créer :
     * « Standard_LRS »
     * « Standard_ZRS »
@@ -651,7 +651,7 @@ Vous pouvez générer sur un disque dur virtuel. Vous pouvez ensuite copier le d
 { 
     "type": "VHD",
     "runOutputName": "<VHD name>",
-    "tags": {
+    "artifactTags": {
         "<name>": "<value>",
         "<name>": "<value>"
     }

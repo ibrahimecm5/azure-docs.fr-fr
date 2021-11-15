@@ -8,12 +8,12 @@ ms.date: 11/2/2021
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3069ffa1fc7e32d2ac683ecbc90f14f39625ddf4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 37ebd3307c49a14763779dfa9453aea880e792a2
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424814"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867073"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Résoudre les problèmes de synchronisation de fichiers Azure
 Utilisez Azure File Sync pour centraliser les partages de fichiers de votre organisation dans Azure Files tout en conservant la flexibilité, le niveau de performance et la compatibilité d’un serveur de fichiers local. Azure File Sync transforme Windows Server en un cache rapide de votre partage de fichiers Azure. Vous pouvez utiliser tout protocole disponible dans Windows Server pour accéder à vos données localement, notamment SMB, NFS et FTPS. Vous pouvez avoir autant de caches que nécessaire dans le monde entier.
@@ -21,6 +21,7 @@ Utilisez Azure File Sync pour centraliser les partages de fichiers de votre orga
 Cet article est destiné à vous aider à dépanner et à résoudre les problèmes que vous pouvez rencontrer avec le déploiement d’Azure File Sync. Nous vous y expliquons également comment collecter des journaux d’activité du système qui sont utiles pour analyser les problèmes rencontrés de manière plus approfondie. Si vous ne trouvez pas de réponse à votre question ici, vous pouvez nous joindre par le biais des méthodes suivantes (par ordre de priorité) :
 
 - [Page de questions Microsoft Q&A sur Azure Files](/answers/products/azure?product=storage).
+- [Commentaires de la communauté Azure](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84).
 - Support Microsoft Pour créer une demande de support, dans le portail Azure, sous l’onglet **Aide**, sélectionnez le bouton **Aide et support**, puis **Nouvelle demande de support**.
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Je rencontre un problème avec Azure File Sync sur mon serveur (synchronisation, hiérarchisation cloud, etc.). Dois-je supprimer et recréer mon point de terminaison de serveur ?

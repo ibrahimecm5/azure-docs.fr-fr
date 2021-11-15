@@ -7,17 +7,17 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/02/2021
-ms.openlocfilehash: a19fd4aad4ee8e5bac7dc7cde2a5be4609a346fc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/03/2021
+ms.openlocfilehash: ad30dc4f59816f286f6ffe40909b76410e963c16
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796568"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555753"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Créer une base de connaissances à l’aide de REST et Postman
 
-La base de connaissances est une fonctionnalité du service Recherche cognitive Azure, qui envoie le résultat d’un ensemble de compétences provenant d’un [pipeline d’enrichissement par IA](cognitive-search-concept-intro.md) au Stockage Azure pour exploration des connaissances, analyse des données ou traitement en aval. Une fois la base de connaissances remplie, vous pouvez utiliser des outils comme [Explorateur Stockage](knowledge-store-view-storage-explorer.md) ou [Power BI](knowledge-store-connect-power-bi.md) pour explorer le contenu.
+La base de connaissances est une fonctionnalité du service Recherche cognitive Azure, qui envoie le résultat d’un ensemble de compétences provenant d’un [pipeline d’enrichissement par IA](cognitive-search-concept-intro.md) au Stockage Azure pour exploration des connaissances, analyse des données ou traitement en aval. Une fois la base de connaissances remplie, vous pouvez utiliser des outils comme [Navigateur de stockage](knowledge-store-view-storage-explorer.md) ou [Power BI](knowledge-store-connect-power-bi.md) pour explorer le contenu.
 
 Dans cet article, vous allez utiliser l’API REST pour ingérer, enrichir et explorer un ensemble d’évaluations de séjours hôteliers par des clients dans une base de connaissances dans le Stockage Azure. Le résultat final est une base de connaissances qui contient le contenu texte d’origine extrait de la source, plus le contenu généré par l’IA, qui comprend un score de sentiment, l’extraction des expressions clés, la détection de la langue et la traduction texte des commentaires des clients non anglophones.
 
@@ -38,11 +38,11 @@ En raison de la taille réduite de la charge de travail, Cognitive Services est 
 
    Choisissez le type de compte **StorageV2 (usage général v2)** .
 
-1. Dans la ressource Stockage Azure, utilisez **Explorateur Stockage** pour créer un conteneur d’objets blob nommé **hotel-reviews**.
+1. Dans la ressource Stockage Azure, utilisez **Navigateur de stockage** pour créer un conteneur de blobs nommé **hotel-reviews**.
 
 1. Sélectionnez **Charger** en haut de la page pour charger le fichier **HotelReviews-Free.csv** que vous avez téléchargé à l’étape précédente.
 
-   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="Capture d’écran d’Explorateur Stockage avec le fichier chargé et le volet de navigation gauche" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="Capture d’écran de Navigateur de stockage avec le fichier chargé et le volet de navigation gauche" border="true":::
 
 1. Vous avez presque terminé avec cette ressource, mais avant de quitter ces pages, sélectionnez **Clés d’accès** dans le volet de navigation gauche pour obtenir une chaîne de connexion afin de pouvoir récupérer ces données en utilisant l’indexeur.
 
@@ -372,13 +372,13 @@ Une fois que vous avez envoyé chaque demande, le service de recherche doit rép
 
 Dans le portail Azure, accédez à la page **Vue d’ensemble** du service Recherche cognitive Azure. Sélectionnez l’onglet **Indexeurs**, puis **hotels-reviews-ixr**. Au bout d’une ou deux minutes, l’état doit passer de « En cours » à « Réussite », sans aucune erreur ni avertissement.
 
-## <a name="check-tables-in-storage-explorer"></a>Vérifier les tables dans l’Explorateur Stockage
+## <a name="check-tables-in-storage-browser"></a>Vérifier les tables dans Navigateur de stockage
 
-Dans le portail Azure, passez à votre compte de stockage Azure et utilisez l’**Explorateur Stockage** pour visualiser les nouvelles tables. Vous devez voir six tables, une pour chaque projection définie dans l’ensemble de compétences.
+Dans le portail Azure, basculez sur votre compte de stockage Azure et utilisez **Navigateur de stockage** pour visualiser les nouvelles tables. Vous devez voir six tables, une pour chaque projection définie dans l’ensemble de compétences.
 
 Chaque table est générée avec les ID nécessaires à la liaison croisée des tables dans les requêtes. Quand vous ouvrez une table, faites défiler au-delà de ces champs pour voir les champs de contenu ajoutés par le pipeline.
 
-   :::image type="content" source="media/knowledge-store-create-rest/knowledge-store-tables.png" alt-text="Capture d’écran des tables de la base de connaissances dans l’Explorateur Stockage" border="true":::
+   :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="Capture d’écran des tables de la base de connaissances dans Navigateur de stockage" border="true":::
 
 Dans cette procédure pas à pas, la base de connaissances se compose de différentes tables montrant différentes façons de mettre en forme et de structurer une table. Les tables un à trois utilisent la sortie d’une compétence Modélisateur pour déterminer les colonnes et les lignes. Les tables quatre à six sont créées à partir d’instructions de mise en forme incluse, incorporées dans la projection elle-même. Vous pouvez utiliser l’une ou l’autre approche pour obtenir le même résultat.
 
@@ -404,9 +404,9 @@ Si vous utilisez un service gratuit, n’oubliez pas que vous êtes limité à t
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Maintenant que vous avez enrichi vos données en utilisant Cognitive Services et que vous avez projeté les résultats dans une base de connaissances, vous pouvez utiliser l’Explorateur Stockage ou d’autres applications pour explorer votre jeu de données enrichi.
+Maintenant que vous avez enrichi vos données en utilisant Cognitive Services et que vous avez projeté les résultats dans une base de connaissances, vous pouvez utiliser Navigateur de stockage ou d’autres applications pour explorer votre jeu de données enrichi.
 
-Pour savoir comment explorer cette base de connaissances à l’aide de l’Explorateur Stockage, consultez cette procédure pas à pas :
+Pour savoir comment explorer cette base de connaissances à l’aide de Navigateur de stockage, consultez cette procédure pas à pas :
 
 > [!div class="nextstepaction"]
-> [Voir avec l’Explorateur Stockage](knowledge-store-view-storage-explorer.md)
+> [Afficher avec Navigateur de stockage](knowledge-store-view-storage-explorer.md)

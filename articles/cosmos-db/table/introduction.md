@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 08/25/2021
+ms.date: 11/03/2021
 ms.author: sngun
-ms.openlocfilehash: 1cb2b9057a1be20896523eba5e1111046a2901ed
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: aa065a4c5cd8100ee9e6cb235555f9aefc910643
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798937"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504775"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Présentation d’Azure Cosmos DB : API de table
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -31,7 +31,7 @@ Des [kits SDK de tables Azure](https://devblogs.microsoft.com/azure-sdk/announci
 > Le [mode de capacité serverless](../serverless.md) est maintenant disponible sur l’API Table d’Azure Cosmos DB.
 
 > [!IMPORTANT]
-> La bibliothèque de tables .NET Cosmos DB [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) est en mode maintenance et sera bientôt dépréciée. Effectuez une mise à niveau vers le nouveau kit SDK de tables .NET Azure [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) pour continuer à bénéficier des dernières fonctionnalités prises en charge par l’API Table.
+> Le Kit de développement logiciel (SDK) Tables Azure .NET [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) offre les dernières fonctionnalités prises en charge par l’API Table. La bibliothèque de client Tables Azure peut cibler de manière fluide les points de terminaison de service du stockage Tables Azure ou de table Azure Cosmos DB sans modification du code.
 
 ## <a name="table-offerings"></a>Offres de table
 

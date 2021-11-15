@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5f73bbb960cd5bdce4a55a2c090ad509c1a9106
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035685"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997815"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archiver des données de l’espace de travail Log Analytics dans le Stockage Azure à l’aide d’une application logique
 Cet article décrit une méthode permettant d’utiliser [Azure Logic Apps](../../logic-apps/index.yml) pour interroger des données à partir d’un espace de travail Log Analytics dans Azure Monitor et les envoyer au Stockage Azure. Utilisez ce processus lorsque vous devez exporter vos données de journal Azure Monitor pour des scénarios d’audit et de conformité, ou pour permettre à un autre service de récupérer ces données.  
@@ -19,7 +19,7 @@ Cet article décrit une méthode permettant d’utiliser [Azure Logic Apps](../.
 ## <a name="other-export-methods"></a>Autres méthodes d’exportation
 La méthode décrite dans cet article décrit une exportation planifiée à partir d’une requête de journal à l’aide d’une application logique. Voici d’autres options d’exportation de données pour des scénarios particuliers :
 
-- Pour exporter toutes les données de votre espace de travail Log Analytics vers un hub d’événements ou un compte de stockage Azure, utilisez la fonctionnalité d’exportation de données de l’espace de travail Log Analytics des journaux Azure Monitor. Consultez [Exportation des données de l’espace de travail Log Analytics dans Azure Monitor (préversion)](logs-data-export.md).
+- Pour exporter des données de votre espace de travail Log Analytics vers un hub d’événements ou un compte de stockage Azure, utilisez la fonctionnalité d’exportation de données de l’espace de travail Log Analytics des journaux Azure Monitor. Consultez [Exportation des données de l’espace de travail Log Analytics dans Azure Monitor (préversion)](logs-data-export.md).
 - Exportation ponctuelle à l’aide d’une application logique. Consultez [Connecteur Azure Monitor Logs pour Logic Apps et Power Automate](logicapp-flow-connector.md).
 - Exportation ponctuelle vers l’ordinateur local à l’aide d’un script PowerShell. Consultez [Invoke-AzOperationalInsightsQueryExport]](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 

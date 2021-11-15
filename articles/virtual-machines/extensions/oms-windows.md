@@ -7,18 +7,21 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.collection: windows
-ms.date: 06/26/2020
+ms.date: 11/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0a7dc06feed0593c616c62dbb8b10fc58cb063b8
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: b34ecc7b2ef83f6f9e3f609163f193825f7cce8b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280132"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452107"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Extension de machine virtuelle Log Analytics pour Windows
 
 Les journaux Azure Monitor fournissent des fonctionnalités permettant de superviser les ressources cloud et locales. L’extension de machine virtuelle de l’agent Log Analytics pour Windows est publiée et prise en charge par Microsoft. L’extension installe l’agent Log Analytics sur les machines virtuelles Azure et inscrit les machines virtuelles dans un espace de travail Log Analytics existant. Ce document présente les plateformes, configurations et options de déploiement prises en charge pour l’extension de machine virtuelle Log Analytics pour Windows.
+
+> [!NOTE]
+> Les serveurs avec Azure Arc vous permettent de déployer, supprimer et mettre à jour l’extension de machine virtuelle de l’agent Log Analytics sur des machines virtuelles Linux et Windows non Azure, ce qui simplifie la gestion de votre machine hybride tout au long de son cycle de vie. Pour plus d’informations, consultez [Gestion des extensions de machine virtuelle avec des serveurs compatibles avec Azure Arc](../../azure-arc/servers/manage-vm-extensions.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -27,6 +30,7 @@ Les journaux Azure Monitor fournissent des fonctionnalités permettant de superv
 Pour plus d’informations sur les systèmes d’exploitation Windows pris en charge, consultez l’article [Vue d’ensemble des agents Azure Monitor](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version de l’agent et de l’extension de machine virtuelle
+
 Le tableau ci-après mappe la version de l’extension de machine virtuelle Log Analytics Windows à la version du bundle de l’agent Log Analytics pour chaque publication. 
 
 | Version du bundle de l’agent Log Analytics pour Windows | Version d’extension de machine virtuelle Windows Log Analytics | Date de sortie | Notes de publication |
@@ -34,7 +38,7 @@ Le tableau ci-après mappe la version de l’extension de machine virtuelle Log 
 | 10.20.18053| 1.0.18053.0 | Octobre 2020   | <ul><li>Nouvel utilitaire de résolution des problèmes de l’agent</li><li>Mises à jour de la façon dont l’agent gère les modifications apportées aux certificats dans les services Azure</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | Août 2020   | <ul><li>Résout un problème sur Azure Arc</li></ul> |
 | 10.20.18038 | 1.0.18038 | Avril 2020   | <ul><li>Active la connectivité sur un lien privé à l’aide d’étendues Azure Monitor Private Link</li><li>Ajoute la limitation de l’ingestion afin d’éviter un afflux accidentel soudain en ingestion dans un espace de travail</li><li>Ajoute la prise en charge de régions Azure Government supplémentaires</li><li>Résout un bogue dans lequel intégrité.exe s’est bloqué</li></ul> |
-| 10.20.18029 | 1.0.18029 | Mars 2020   | <ul><li>Ajoute la prise en du code de signature SHA-2</li><li>Améliore l’installation et la gestion des extensions de machine virtuelle</li><li>Résout un bogue dans Azure Arc pour l’intégration de serveurs</li><li>Ajoute un outil de dépannage intégré pour le service clientèle</li><li>Ajoute la prise en charge de régions Azure Government supplémentaires</li> |
+| 10.20.18029 | 1.0.18029 | Mars 2020   | <ul><li>Ajoute la prise en du code de signature SHA-2</li><li>Améliore l’installation et la gestion des extensions de machine virtuelle</li><li>Résout un bogue avec l’intégration des serveurs compatible avec Azure Arc</li><li>Ajoute un outil de dépannage intégré pour le service clientèle</li><li>Ajoute la prise en charge de régions Azure Government supplémentaires</li> |
 | 10.20.18018 | 1.0.18018 | 2 octobre 2019 | <ul><li> Correctifs de bogues mineurs et meilleure stabilité </li></ul> |
 | 10.20.18011 | 1.0.18011 | Juillet 2019 | <ul><li> Correctifs de bogues mineurs et meilleure stabilité </li><li> Augmentation de MaxExpressionDepth à 10 000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Juin 2019 | <ul><li> Correctifs de bogues mineurs et meilleure stabilité </li><li> Ajout de la possibilité de désactiver les informations d’identification par défaut lors d’une connexion proxy (prise en charge de WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
@@ -46,12 +50,12 @@ Le tableau ci-après mappe la version de l’extension de machine virtuelle Log 
 | 8.0.11072 | 1.0.11072 | Septembre 2017 | |
 | 8.0.11049 | 1.0.11049 | Février 2017 | |
 
-
 ### <a name="azure-security-center"></a>Azure Security Center
 
 Azure Security Center provisionne automatiquement l’agent Log Analytics et le connecte à l’espace de travail Log Analytics par défaut de l’abonnement Azure. Si vous utilisez Azure Security Center, ne suivez pas la procédure de ce document. Si vous le faites, vous écrasez l’espace de travail configuré et interrompez la connexion à Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Connectivité Internet
+
 L’extension de l’agent Log Analytics pour Windows nécessite que la machine virtuelle cible soit connectée à Internet. 
 
 ## <a name="extension-schema"></a>Schéma d’extensions
@@ -81,6 +85,7 @@ Le JSON suivant illustre le schéma de l’extension d’agent Log Analytics. L�
     }
 }
 ```
+
 ### <a name="property-values"></a>Valeurs de propriétés
 
 | Nom | Valeur/Exemple |
@@ -107,7 +112,6 @@ Les extensions de machines virtuelles Azure peuvent être déployées avec des m
 Le code JSON pour une extension de machine virtuelle peut être imbriqué à l’intérieur de la ressource de machine virtuelle ou placé à la racine ou au niveau supérieur d’un modèle de Resource Manager JSON. Le positionnement du JSON affecte la valeur du nom de la ressource et son type. Pour plus d’informations, consultez [Définition du nom et du type des ressources enfants](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 L’exemple suivant suppose que l’extension Log Analytics est imbriquée dans la ressource de machine virtuelle. Lors de l’imbrication de la ressource d’extension, le JSON est placé dans l’objet `"resources": []` de la machine virtuelle.
-
 
 ```json
 {

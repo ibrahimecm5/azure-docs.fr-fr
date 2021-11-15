@@ -12,39 +12,26 @@
       href: whats-new.md
     - name: Migrer depuis Operations Manager
       href: azure-monitor-operations-manager.md
-- name: Démarrages rapides
-  items:
-    - name: Superviser une ressource azure
-      href: essentials/quick-monitor-azure-resource.md
-    - name: Envoyer le journal d’activité à un espace de travail
-      items:
-        - name: Portail Azure
-          href: essentials/quick-collect-activity-log-portal.md
-        - name: Modèle ARM
-          displayName: Resource Manager
-          href: essentials/quick-collect-activity-log-arm.md
-    - name: Surveillance des applications
-      items:
-        - name: Application ASP.NET Core
-          href: app/dotnet-quickstart.md
-        - name: Application Node.js
-          href: app/nodejs-quick-start.md
-        - name: Application mobile
-          href: app/mobile-center-quickstart.md
-        - name: Application web
-          href: app/website-monitoring.md
 - name: Tutoriels
   items:
-    - name: Créer un graphique de métriques
-      href: essentials/tutorial-metrics-explorer.md
-    - name: Collecter les journaux d’une ressource Azure
+    - name: Superviser une ressource azure
+      href: essentials/monitor-azure-resource.md
+    - name: Analyser les données de métriques
+      href: essentials/tutorial-metrics.md
+    - name: Créer une alerte de métrique
+      href: alerts/tutorial-metric-alert.md
+    - name: Collecter et afficher des journaux de ressources
       href: essentials/tutorial-resource-logs.md
-    - name: Écrire des requêtes de journal
-      href: logs/get-started-queries.md
-    - name: Créer un tableau de bord à partir d’une requête de journal
-      href: visualize/tutorial-logs-dashboards.md
-    - name: Mise à l’échelle automatique sur les performances et le calendrier
-      href: autoscale/tutorial-autoscale-performance-schedule.md
+    - name: Créer une alerte de requête de journal
+      href: alerts/tutorial-log-alert.md
+    - name: Machines virtuelles
+      items:
+        - name: Activer la supervision
+          href: vm/tutorial-monitor-vm-enable.md
+        - name: Alerte en cas d’ordinateur défaillant
+          href: vm/tutorial-monitor-vm-alert.md
+        - name: Collecter les journaux et les métriques des invités
+          href: vm/tutorial-monitor-vm-guest.md
     - name: Application Insights
       items:
         - name: Rechercher des exceptions runtime sur les applications
@@ -57,6 +44,8 @@
           href: app/tutorial-users.md
         - name: Tableau de bord avec des données d’application
           href: app/tutorial-app-dashboards.md
+        - name: Monitorer une application mobile
+          href: app/mobile-center-quickstart.md
 - name: Exemples
   items:
     - name: Modèles Resource Manager
@@ -284,6 +273,9 @@
             - name: Vue d’ensemble
               displayname: 'log query, log queries, query, queries'
               href: logs/log-query-overview.md
+            - name: Bien démarrer
+              displayname: 'log query, log queries, query, queries'
+              href: logs/get-started-queries.md
             - name: Informations de référence sur KQL
               href: /azure/data-explorer/kusto/query/
             - name: Exemples de requêtes

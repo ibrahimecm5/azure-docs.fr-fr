@@ -3,22 +3,22 @@ title: Personnaliser l’interface utilisateur avec des modèles HTML
 titleSuffix: Azure AD B2C
 description: Découvrez comment personnaliser l’interface utilisateur avec des modèles HTML pour vos applications qui utilisent Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/14/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f0ffa8a4a25df07cf212eb3352d3515d8c5267c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f662b1a1a47dba27457c4c5754d600bb920c7b2f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575554"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222663"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Personnaliser l’interface utilisateur avec des modèles HTML dans Azure Active Directory B2C
 
@@ -208,30 +208,34 @@ Créez un contenu de page personnalisé dont le titre intègre le nom de la marq
 
 Dans cet article, nous utilisons le stockage Blob Azure pour héberger notre contenu. Vous pouvez choisir d’héberger votre contenu sur un serveur web, mais vous devez [activer CORS sur votre serveur web](https://enable-cors.org/server.html).
 
+> [!NOTE]
+> Dans un locataire Azure AD B2C, vous ne pouvez pas approvisionner le stockage d’objets Blob. Vous devez créer cette ressource dans votre locataire Azure AD.
+
 Pour héberger votre contenu HTML dans Stockage Blob, effectuez les étapes suivantes :
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
-1. Dans le menu **Hub**, sélectionnez **Nouveau** > **Stockage** > **Compte de stockage**.
+1. Veillez à bien utiliser le répertoire qui contient votre locataire Azure AD et qui dispose d’un abonnement : 
+    1. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
+    1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire Azure AD dans la liste Nom de répertoire, puis sélectionnez **Basculer**.
+1. Dans le Portail Azure, recherchez et sélectionnez **Comptes de stockage**
+1. Sélectionnez **+ Créer**.
 1. Sélectionnez un **abonnement** pour votre compte de stockage.
 1. Créez un **Groupe de ressources** ou sélectionnez-en un.
-1. Entrez un **nom** unique pour votre compte de stockage.
-1. Sélectionnez un **emplacement géographique** pour votre compte de stockage.
-1. Le champ **Modèle de déploiement** peut conserver la valeur **Gestionnaire de ressources**.
+1. Entrez un **Nom de compte de stockage** pour votre compte de stockage.
+1. Sélectionnez la **Région** géographique de votre compte de stockage.
 1. Le champ **Performances** peut conserver la valeur **Standard**.
-1. Modifiez **Type de compte** sur **Stockage Blob**.
-1. Le champ **Réplication** peut conserver la valeur **RA-GRS**.
-1. Le champ **Niveau d’accès** peut conserver la valeur **À chaud**.
-1. Sélectionnez **Vérifier + créer** pour créer le compte de stockage.
-    Une fois le déploiement terminé, la page **Compte de stockage** s’ouvre automatiquement.
-
+1. La **redondance** peut rester **un stockage géoredondant (GRS)**
+1. Sélectionnez **Examiner + créer** et patientez quelques secondes pour que Azure AD exécute une validation. 
+1. Sélectionnez **Créer** pour créer le compte de stockage. Une fois le déploiement terminé, la page Compte de stockage s’ouvre automatiquement, ou sélectionnez **Accéder à la ressource**.
 #### <a name="21-create-a-container"></a>2.1 Créer un conteneur
 
 Pour créer un conteneur public dans Stockage Blob, effectuez les étapes suivantes :
 
-1. Sous **Service Blob** dans le menu de gauche, sélectionnez **Objets Blob**.
-1. Sélectionnez **+ Conteneur**.
+1. Sous **Stockage des données** dans le menu de gauche, sélectionnez **Conteneurs**.
+1. Sélectionnez **+ Conteneur**.
 1. Pour **Nom**, entrez *root*. Il peut s’agir du nom de votre choix, par exemple *contoso*, mais nous utilisons *root* dans cet exemple par souci de simplicité.
-1. Pour **Niveau d’accès public**, sélectionnez **Objet blob**, puis **OK**.
+1. Pour **Niveau d’accès public**, sélectionnez **Objet blob**.
+1. Sélectionnez **Créer** pour créer le conteneur.
 1. Sélectionnez **root** pour ouvrir le nouveau conteneur.
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 Charger vos fichiers de contenu de page personnalisé
@@ -249,13 +253,14 @@ Pour créer un conteneur public dans Stockage Blob, effectuez les étapes suivan
 
 Configurez Stockage Blob pour le Partage des ressources cross-origin en effectuant les étapes suivantes :
 
-1. Dans le menu, sélectionnez **CORS**.
+1. Accédez à votre compte de stockage. 
+1. Dans le menu de gauche, sous **Paramètres**, sélectionnez **Partage des ressources (CORS)** .
 1. Pour **Origines autorisées**, entrez `https://your-tenant-name.b2clogin.com`. Remplacez `your-tenant-name` par le nom de votre locataire Azure AD B2C. Par exemple : `https://fabrikam.b2clogin.com`. Utilisez des minuscules quand vous entrez le nom de votre locataire.
 1. Pour **Méthodes autorisées**, sélectionnez `GET` et `OPTIONS`.
 1. Pour **En-têtes autorisés**, saisissez un astérisque (*).
 1. Pour **En-têtes exposés**, saisissez un astérisque (*).
 1. Pour **Âge maximal**, tapez 200.
-1. Sélectionnez **Enregistrer**.
+1. En haut de la page, sélectionnez **Enregistrer**.
 
 #### <a name="31-test-cors"></a>3.1 Tester CORS
 
@@ -268,21 +273,26 @@ Vérifiez que vous êtes prêt en effectuant les étapes suivantes :
     Le résultat devrait être `XHR status: 200`. 
     Si vous recevez une erreur, assurez-vous que vos paramètres CORS sont corrects. Vous serez peut-être amené à vider le cache de votre navigateur ou à ouvrir une fenêtre de navigation privée, en appuyant sur Ctrl+Maj+P.
 
+En savoir plus sur [la création et la gestion des comptes de stockage Azure](../storage/common/storage-account-create.md).
+
 ::: zone pivot="b2c-user-flow"
 
 ### <a name="4-update-the-user-flow"></a>4. Mettre à jour le flux d'utilisateurs
 
-1. Choisissez **Tous les services** dans le coin supérieur gauche du portail Azure, puis recherchez et sélectionnez **Azure AD B2C**.
-1. Sélectionnez **Flux d’utilisateurs**, puis le flux utilisateur *B2C_1_signupsignin1*.
-1. Sélectionnez **Mises en page**, puis sous **Page unifiée d'inscription ou de connexion**, cliquez sur **Oui** pour **Utiliser un contenu de page personnalisé**.
+1. Veillez à bien utiliser le répertoire qui contient votre locataire Azure AD B2C : 
+    1. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
+    1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire Azure AD B2C dans la liste de noms de répertoires, puis sélectionnez **Basculer**.
+1. Dans le portail Azure, recherchez et sélectionnez **Azure AD B2C**.
+1. Dans le menu de gauche, sélectionnez **Flux d’utilisateurs**, puis le flux utilisateur *B2C_1_signupsignin1*.
+1. Sélectionnez **Mises en page**, puis sous **Page unifiée d'inscription ou de connexion**, sélectionnez **Oui** pour **Utiliser un contenu de page personnalisé**.
 1. Dans **URI la page personnalisée**, entrez l'URI du fichier *custom-ui.html* notée précédemment.
 1. En haut de la page, sélectionnez **Enregistrer**.
 
 ### <a name="5-test-the-user-flow"></a>5. Tester le flux utilisateur
 
 1. Dans votre locataire Azure AD B2C, sélectionnez **Flux d'utilisateurs** et choisissez le flux d'utilisateurs *B2C_1_signupsignin1*.
-1. En haut de la page, cliquez sur **Exécuter le flux d’utilisateur**.
-1. Cliquez sur le bouton **Exécuter le flux d’utilisateur**.
+1. En haut de la page, sélectionnez **Exécuter le flux d’utilisateur**.
+1. Dans le volet de droite, sélectionnez le bouton **Exécuter le flux d’utilisateur**.
 
 Vous devez voir une page semblable à l’exemple suivant avec les éléments centrés conformément au fichier CSS que vous avez créé :
 

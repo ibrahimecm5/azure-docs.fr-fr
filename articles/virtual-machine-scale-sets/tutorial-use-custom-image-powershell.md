@@ -9,12 +9,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1da552c76b1a76a4bc131b15e25021264c2d869f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1c0ba3a58906275d136a437f3b18d32e3fe70a24
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692877"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456781"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Tutoriel : Créer et utiliser une image personnalisée pour des groupes de machines virtuelles identiques avec Azure PowerShell
 
@@ -23,7 +23,7 @@ ms.locfileid: "122692877"
 Lorsque vous créez un groupe identique, vous spécifiez une image à utiliser lors du déploiement des instances de machine virtuelle. Pour réduire le nombre de tâches une fois que les instances de machine virtuelle sont déployées, vous pouvez utiliser une image de machine virtuelle personnalisée. Cette image de machine virtuelle personnalisée inclut les configurations ou installations des applications requises. Toutes les instances de machine virtuelle créées dans le groupe identique utilisent l’image de machine virtuelle personnalisée et sont prêtes à répondre au trafic des applications. Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
 > [!div class="checklist"]
-> * Créer une galerie Shared Image Gallery
+> * Créer une instance Azure Compute Gallery
 > * Créer une définition d’image
 > * Créer une version d’image
 > * Créer un groupe identique à partir d’une image 
@@ -76,7 +76,7 @@ $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
-   -Description 'Shared Image Gallery for my organization'  
+   -Description 'Azure Compute Gallery for my organization' 
 ```
 
 
@@ -264,7 +264,7 @@ Azure propose également un service, basé sur Packer, nommé [Azure VM Image Bu
 Dans ce didacticiel, vous avez appris à créer et utiliser une image de machine virtuelle personnalisée pour vos groupes identiques au moyen d’Azure PowerShell :
 
 > [!div class="checklist"]
-> * Créer une galerie Shared Image Gallery
+> * Créer une instance Azure Compute Gallery
 > * Créer une définition d’image
 > * Créer une version d’image
 > * Créer un groupe identique à partir d’une image 

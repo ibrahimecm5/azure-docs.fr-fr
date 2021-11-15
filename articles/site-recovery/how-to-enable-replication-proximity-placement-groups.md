@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: abcb233665d6c6074ff50d1bb53e553ed9eb99ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c721014e2f0a61e46ad599bccdc26388aa706a3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524860"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444949"
 ---
 # <a name="replicate-virtual-machines-running-in-a-proximity-placement-group-to-another-region"></a>Répliquer des machines virtuelles exécutées dans un groupe de placement de proximité dans une autre région
 
@@ -66,7 +66,7 @@ Pour sélectionner un groupe de placement de proximité dans la région DR tout
 Vous pouvez facilement mettre à jour la sélection d’un groupe de placement de proximité dans la région de récupération d’urgence une fois la réplication activée pour la machine virtuelle :
 
 1. Accédez à la machine virtuelle. Dans le panneau de gauche, sous **Opérations**, sélectionnez **Récupération d’urgence**.
-2. Accédez au volet **Calcul et réseau**, puis sélectionnez **Modifier**.
+2. Accédez au volet **Calcul**, puis sélectionnez **Modifier**.
 3. Vous pouvez voir les options permettant de modifier plusieurs paramètres cibles, y compris le groupe de placement de proximité cible. Choisissez le groupe de placement de proximité dans lequel vous souhaitez que la machine virtuelle bascule, puis sélectionnez **Enregistrer**.
 
 ### <a name="vmware-to-azure"></a>VMware vers Azure

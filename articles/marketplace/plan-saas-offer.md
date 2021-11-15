@@ -7,17 +7,20 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/17/2021
-ms.openlocfilehash: 6f429bd55c3fbf93f88c91168021eed9f1d6505a
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.date: 10/26/2021
+ms.openlocfilehash: bcfeb7b4baa0b9eae419bb8535869053d63ba57d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730182"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055809"
 ---
 # <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>Planifier une offre SaaS pour la place de marché commerciale
 
 Cet article explique les différentes options et exigences relatives à la publication d’offres SaaS sur le marketplace commercial de Microsoft. Les offres SaaS vous permettent de livrer et concéder sous licence des solutions logicielles à vos clients par le biais d’abonnements en ligne. En tant qu’éditeur SaaS, vous gérez et payez l’infrastructure requise pour prendre en charge l’utilisation de votre offre par vos clients. Cet article vous aidera à préparer votre offre en vue de sa publication sur la place de marché commerciale avec l’Espace partenaires.
+
+> [!TIP]
+> Pour voir l’affichage client de l’achat d’une offre SaaS dans le portail Azure, consultez [Acheter une offre SaaS dans le portail Azure](/marketplace/purchase-saas-offer-in-azure-portal) et [Acheter des applications SaaS sur Microsoft AppSource](/marketplace/purchase-software-appsource).
 
 ## <a name="listing-options"></a>Options de référencement
 
@@ -56,7 +59,7 @@ Les options de référencement _Obtenir maintenant (gratuit)_ ,  _Essai gratuit_
 
 Ces exigences techniques supplémentaires s’appliquent uniquement à l’option de référencement _Vendre via Microsoft_ (pouvant faire l’objet d’une transaction) :
 
-- Vous devez utiliser les [API de traitement SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md) pour l’intégration avec la Place de marché Azure et Microsoft AppSource. Vous devez exposer un service qui peut interagir avec l’abonnement SaaS pour créer, mettre à jour et supprimer un compte d’utilisateur et un plan de service. Les modifications critiques de l’API doivent être effectuées dans les 24 heures. Des modifications non critiques de l’API sont publiées régulièrement. Des diagrammes et des explications détaillées décrivant l’utilisation des champs collectés sont disponibles dans la documentation des [API](./partner-center-portal/pc-saas-fulfillment-api-v2.md).
+- Vous devez utiliser les [API de traitement SaaS](./partner-center-portal/pc-saas-fulfillment-apis.md) pour l’intégration avec la Place de marché Azure et Microsoft AppSource. Vous devez exposer un service qui peut interagir avec l’abonnement SaaS pour créer, mettre à jour et supprimer un compte d’utilisateur et un plan de service. Les modifications critiques de l’API doivent être effectuées dans les 24 heures. Des modifications non critiques de l’API sont publiées régulièrement. Des diagrammes et des explications détaillées décrivant l’utilisation des champs collectés sont disponibles dans la documentation des [API](./partner-center-portal/pc-saas-fulfillment-apis.md).
 - Vous devez créer au moins un plan pour votre offre. Votre plan est facturé en fonction du modèle de tarification que vous sélectionnez avant la publication : _forfaitaire_ ou _par utilisateur_. Vous trouverez des détails supplémentaires sur les [plans](#plans) plus loin dans cet article.
 - Le client peut annuler votre offre à tout moment.
 
@@ -66,13 +69,13 @@ Si vous créez une offre pouvant faire l’objet d’une transaction, vous devez
 
 - **URL de la page d’arrivée** : URL du site SaaS (par exemple, `https://contoso.com/signup`) vers lequel les utilisateurs sont dirigés après avoir acquis votre offre sur la place de marché commerciale, déclenchant le processus de configuration à partir du nouvel abonnement SaaS créé. Cette URL reçoit un jeton utilisable pour appeler les API de traitement afin d’obtenir les détails de l’approvisionnement pour votre page d’inscription interactive.
 
-  Cette URL sera appelée avec le paramètre de jeton d’identification d’achat de la place de marché, qui identifie de façon unique l’achat de SaaS du client spécifique. Vous devez échanger ce jeton contre les détails de l’abonnement SaaS correspondant à l’aide de l’[API de résolution](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Ces détails et ceux que vous souhaitez collecter dans le cadre d’une page web interactive peuvent être utilisés pour lancer l’expérience d’intégration du client, qui doit se terminer par un appel d’activation sur l’API pour le démarrage de la période d’abonnement. Sur cette page, l’utilisateur doit s’inscrire via une authentification en un clic à l’aide d’Azure Active Directory (Azure AD).
+  Cette URL sera appelée avec le paramètre de jeton d’identification d’achat de la place de marché, qui identifie de façon unique l’achat de SaaS du client spécifique. Vous devez échanger ce jeton contre les détails de l’abonnement SaaS correspondant à l’aide de l’[API de résolution](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription). Ces détails et ceux que vous souhaitez collecter dans le cadre d’une page web interactive peuvent être utilisés pour lancer l’expérience d’intégration du client, qui doit se terminer par un appel d’activation sur l’API pour le démarrage de la période d’abonnement. Sur cette page, l’utilisateur doit s’inscrire via une authentification en un clic à l’aide d’Azure Active Directory (Azure AD).
 
   Cette URL avec le paramètre de jeton d’identification d’achat de la place de marché est également appelée lorsque le client lance une expérience SaaS gérée à partir du portail Azure ou du centre d’administration Microsoft 365. Vous devez gérer les deux flux : lorsque le jeton est fourni pour la première fois après un achat par un nouveau client, et quand il est à nouveau fourni pour un client existant qui gère sa solution SaaS.
 
     La page d’arrivée que vous configurez ici doit être opérationnelle en permanence. C’est la seule façon pour vous d’être averti des nouveaux achats de vos offres SaaS effectués sur la place de marché commerciale, ou des demandes de configuration pour un abonnement actif à une offre.
 
-- **Webhook de connexion** : pour tous les événements asynchrones que Microsoft doit vous envoyer (par exemple, lors de l’annulation d’un abonnement SaaS), nous vous demandons de [fournir une URL de webhook de connexion](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service). Nous appellerons cette URL pour vous informer de l’événement.
+- **Webhook de connexion** : pour tous les événements asynchrones que Microsoft doit vous envoyer (par exemple, lors de l’annulation d’un abonnement SaaS), nous vous demandons de [fournir une URL de webhook de connexion](./partner-center-portal/pc-saas-fulfillment-webhook.md). Nous appellerons cette URL pour vous informer de l’événement.
 
   Le webhook que vous fournissez doit être opérationnel 24 heures sur 24, 7 jours sur 7. C’est la seule façon pour vous d’être informé des mises à jour concernant les abonnements SaaS de vos clients achetés via le marketplace commercial.
 

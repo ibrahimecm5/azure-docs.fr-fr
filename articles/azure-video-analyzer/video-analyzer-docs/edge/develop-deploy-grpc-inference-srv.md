@@ -3,14 +3,14 @@ title: Développer et déployer un serveur d’inférence gRPC - Azure Video Ana
 description: Cet article fournit des conseils d’aide sur le développement et le déploiement d’un serveur d’inférence gRPC à utiliser avec Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6b252ef52b1501d5428aa85cb697ea04a8c3cafc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3b5d2dbb4e686cfe03a8deefbcbbc6d08647f3de
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096576"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564059"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>Développer et déployer un serveur d’inférence gRPC
 
@@ -40,7 +40,7 @@ Pour créer un serveur d’inférence gRPC et l’implémenter en tant qu’exte
 
 Effectuez les étapes nécessaires pour déployer le module Video Analyzer, et le faire fonctionner sur un appareil IoT Edge.
 
-### <a name="high-level-implementation-steps"></a>Étapes d’implémentation générales
+### <a name="high-level-implementation-steps"></a>Étapes d’implémentation de haut niveau
 
 1. Choisissez l’un des nombreux langages pris en charge par gRPC : C#, C++, Dart, Go, Java, Node, Objective-C, PHP, Python, Ruby.
 1. Implémentez un serveur gRPC qui va communiquer avec Video Analyzer à l’aide des [fichiers proto3](https://github.com/Azure/video-analyzer/tree/main/contracts/grpc).
@@ -67,7 +67,10 @@ En cas de colocalisation sur le même nœud, `shared memory` peut être utilisé
 
 1. Ouvrez le descripteur de la mémoire partagée Linux.
 1. À la réception d’une trame, accédez au décalage d’adresse dans la mémoire partagée.
-1. Confirmez la fin du traitement de l’image pour que la mémoire utilisée puisse être récupérée par Video Analyzer.
+1. Accusez réception de l’achèvement du traitement des images afin que sa mémoire puisse être récupérée par Video Analyzer.
+
+> [!NOTE]
+> Lors de l’utilisation d’un module d’extension gRPC pour l’inférence avec la mémoire partagée, le module périphérique Video Analyzer et le module d’extension doivent tous deux être exécutés dans le même [groupe et utilisateur](https://docs.docker.com/engine/reference/builder/#user)
 
 ## <a name="create-a-grpc-inference-server"></a>Créer un serveur d’inférence gRPC
 

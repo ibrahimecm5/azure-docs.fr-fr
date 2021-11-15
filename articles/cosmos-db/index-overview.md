@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 8228c3cedf58b389b93a516c4a372a38b33c0e4d
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 4bb901d0c6c917b2efbaef486e97010a8ac27458
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123028537"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450169"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Vue d’ensemble de l’indexation dans Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -178,7 +178,7 @@ Tant qu’un prédicat de filtre utilise un type d’index, le moteur de requêt
 
 * La requête ci-dessus filtre d’abord les entrées où firstName = « Andrew » à l’aide de l’index. Elle transmet ensuite toutes les entrées firstName = « Andrew » via un pipeline pour évaluer le prédicat de filtre CONTAINS.
 
-* Vous pouvez accélérer les requêtes et éviter les analyses de conteneur complètes lorsque vous utilisez des fonctions qui n’utilisent pas l’index (par exemple, CONTAINS) en ajoutant des prédicats de filtre supplémentaires qui utilisent l’index. L’ordre des clauses de filtre n’est pas important. Le moteur de requête détermine les prédicats les plus sélectifs et exécute la requête en conséquence.
+* Vous pouvez accélérer les requêtes et éviter les analyses de conteneur complètes lorsque vous utilisez des fonctions qui n’utilisent pas l’index (par exemple, CONTAINS) en ajoutant des prédicats de filtre supplémentaires qui utilisent l’index. L’ordre des clauses de filtre n’est pas important. Le moteur de requête déterminera les prédicats les plus sélectifs et exécutera la requête en conséquence.
 
 Pour savoir comment configurer des index composites, consultez les [exemples de stratégie d’indexation composite](how-to-manage-indexing-policy.md#composite-index)
 
@@ -244,7 +244,7 @@ Exemples d’éléments :
 
 Azure Cosmos DB utilise un index inversé. Cet index fonctionne en faisant correspondre chacun des chemins JSON avec l’ensemble des éléments qui contiennent cette valeur. Le mappage des ID d’élément est représenté sur différentes pages d’index du conteneur. Voici un exemple de diagramme d’un index inversé pour un conteneur comprenant les deux exemples d’éléments :
 
-| Path                    | Valeur   | Liste des ID d’élément   |
+| Chemin d’accès                    | Valeur   | Liste des ID d’élément   |
 | ----------------------- | ------- | ---------- |
 | /locations/0/country    | Allemagne | 1          |
 | /locations/0/country    | Irlande | 2          |
@@ -394,4 +394,4 @@ Découvrez plus en détail l’indexation dans les articles suivants :
 - [Guide pratique pour gérer la stratégie d’indexation](how-to-manage-indexing-policy.md)
 - Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ? Vous pouvez utiliser les informations sur votre cluster de bases de données existant pour la planification de la capacité.
     - Si vous ne connaissez que le nombre de vCores et de serveurs présents dans votre cluster de bases de données existant, lisez [Estimation des unités de requête à l’aide de vCores ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
-    - Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez [Estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)
+    - Si vous connaissez les taux de requêtes types de votre charge de travail de base de données actuelle, lisez la section concernant l’[estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)

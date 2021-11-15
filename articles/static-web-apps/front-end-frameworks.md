@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 3bbcf14012f7e237538e20d8219d278c4322607d
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 95f7c35cc33c1d174cd228bd053dbfea6c850135
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131575785"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841693"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Configurer des infrastructures et bibliothèques frontales avec Azure Static Web Apps
 
@@ -33,6 +33,7 @@ Les éléments suivants expliquent la présence des colonnes du tableau :
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | n/a <sup>2</sup> |
 | [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --configuration production` |
 | [Angular Universal](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
+| [Astro](https://astro.build) | `dist` | n/a |
 | [Aurelia](https://aurelia.io/) | `dist` | n/a |
 | [Backbone.js](https://backbonejs.org/) | `/` | n/a |
 | [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | n/a |

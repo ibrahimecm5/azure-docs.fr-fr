@@ -3,16 +3,16 @@ title: Débogueur de capture instantanée Azure Application Insights pour les ap
 description: Des captures instantanées de débogage sont collectées automatiquement lorsque des exceptions sont levées dans des applications .NET de production
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 10/23/2019
+ms.date: 10/12/2021
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: c377f6b1ff84f04506badf581dc7c12d64e68e0d
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: e189967068fc55b61622b54539c1dc478f9ae370
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839380"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265186"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Captures instantanées de débogage sur exceptions levées dans des applications .NET
 Quand une exception se produit, vous pouvez collecter automatiquement une capture instantanée de débogage à partir de votre application web dynamique. La capture instantanée indique l’état du code source et des variables au moment où l’exception a été levée. Le Débogueur de capture instantanée d’[Azure Application Insights](./app-insights-overview.md) analyse la télémétrie des exceptions à partir de votre application web. Il collecte des captures instantanées sur les principales exceptions levées afin que vous disposiez des informations dont vous avez besoin pour diagnostiquer des problèmes de production. Incluez le [package NuGet de collecte des captures instantanées](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) dans votre application, et configurez éventuellement les paramètres de collecte dans [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Les captures instantanées apparaissent sur les [exceptions](./asp-net-exceptions.md) dans le portail Application Insights.
@@ -27,7 +27,7 @@ La collecte de captures instantanées est disponible pour :
 * les applications .NET Core et ASP.NET Core qui exécutent .NET Core 2.1 (LTS) ou 3.1 (LTS) sur Windows.
 * les applications .NET 5.0 sur Windows.
 
-Nous vous déconseillons d’utiliser .NET Core 2.0, 2.2 ou 3.0, car ces versions ne sont plus prises en charge.
+Nous vous déconseillons d’utiliser .NET Core 2.0, 2.2 ou 3.0, car ces versions ne sont plus prises en charge.
 
 Les environnements suivants sont pris en charge :
 
@@ -124,8 +124,7 @@ La version 15.2 de Visual Studio 2017 (ou ultérieure) publie les symboles des 
 Pour Calcul Azure et d’autres types, vérifiez que les fichiers de symboles se trouvent dans le même dossier que le fichier .dll de l’application principale (généralement `wwwroot/bin`), ou sont disponibles dans le chemin d’accès actuel.
 
 > [!NOTE]
-> Pour plus d’informations sur les différentes options de symbole disponibles, voir la [documentation de Visual Studio](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output
-). Pour optimiser les résultats, nous vous recommandons d’utiliser les options « Full », « Portable » ou « Embedded ».
+> Pour plus d’informations sur les différentes options de symbole disponibles, consultez la [documentation de Visual Studio](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output). Pour optimiser les résultats, nous vous recommandons d’utiliser les options « Full », « Portable » ou « Embedded ».
 
 ### <a name="optimized-builds"></a>Optimisation des versions
 Dans certains cas, des variables locales sont invisibles dans les builds de mise en production en raison d’optimisations appliquées par le compilateur JIT.

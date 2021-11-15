@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 10/28/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: af09d5044c578b876ef3464caf1ec1bc1b96ab71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043731"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446502"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutoriel : Créer une application Flask avec Azure Cognitive Services
 
@@ -29,8 +29,8 @@ Voici ce qui est couvert par ce tutoriel :
 > * Configurer votre environnement de développement et installer les dépendances
 > * Créer une application Flask
 > * Utiliser Translator pour traduire du texte
-> * Utiliser Analyse de texte pour analyser les sentiments positifs/négatifs de textes et de traductions en entrée
-> * Utiliser les services Speech pour convertir du texte traduit en synthèse vocale
+> * Utiliser le service Langage pour analyser les sentiments positifs/négatifs de textes et de traductions en entrée
+> * Utiliser le service Speech pour convertir du texte traduit en synthèse vocale
 > * Exécuter votre application Flask localement
 
 > [!TIP]
@@ -54,14 +54,14 @@ Passons en revue les logiciels et les clés d’abonnement dont vous avez besoin
 * Un IDE ou un éditeur de texte, comme [Visual Studio Code](https://code.visualstudio.com/) ou [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) ou [Firefox](https://www.mozilla.org/firefox)
 * Une clé d’abonnement à **Translator** (vous pouvez probablement utiliser l’emplacement **global**).
-* Une clé d’abonnement **Analyse de texte** dans la région **USA Ouest**.
+* Une clé d’abonnement au **service Langage** dans la région **USA Ouest**.
 * Une clé d’abonnement **Services Speech** dans la région **USA Ouest**.
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Créer un compte et s’abonner à des ressources
 
 Comme mentionné précédemment, vous aurez besoin de trois clés d’abonnement pour ce tutoriel. Cela signifie que vous devez créer une ressource dans votre compte Azure pour :
 * Convertisseur
-* Analyse de texte
+* Service Language
 * Services Speech
 
 Utilisez [Créer un compte Cognitive Services dans le portail Azure](../cognitive-services-apis-create-account.md) pour obtenir des instructions pas sur la création de ressources.
@@ -475,18 +475,18 @@ Appuyez sur **Ctrl+C** pour arrêter l’application, puis passez à la section 
 
 ## <a name="analyze-sentiment"></a>Analyser les sentiments
 
-L’[API Analyse de texte](../text-analytics/overview.md) peut être utilisée pour effectuer l’analyse des sentiments, extraire des expressions clés du texte ou détecter la langue source. Dans cette application, nous allons utiliser l’analyse des sentiments pour déterminer si le texte fourni est positif, neutre ou négatif. L’API retourne un score numérique compris entre 0 et 1. Un score proche de 1 indique un sentiment positif, et un score proche de 0 un sentiment négatif.
+L’[API du service Langage](../language-service/overview.md) peut être utilisée pour effectuer l’analyse des sentiments, extraire des expressions clés du texte ou détecter la langue source. Dans cette application, nous allons utiliser l’analyse des sentiments pour déterminer si le texte fourni est positif, neutre ou négatif. L’API retourne un score numérique compris entre 0 et 1. Un score proche de 1 indique un sentiment positif, et un score proche de 0 un sentiment négatif.
 
 Dans cette section, vous allez effectuer quelques opérations :
 
-* Écrire du code Python pour appeler l’API Analyse de texte pour effectuer une analyse des sentiments et retourner une réponse
+* Écrire du code Python pour appeler l’API du service Langage afin d’effectuer une analyse des sentiments et renvoyer une réponse
 * Créer une route Flask pour appeler votre code Python
 * Mettre à jour le code HTML avec une zone pour les scores des sentiments et un bouton pour effectuer l’analyse
 * Écrire du code JavaScript qui permet aux utilisateurs d’interagir avec votre application Flask à partir du HTML
 
-### <a name="call-the-text-analytics-api"></a>Appeler l’API Text Analytics
+### <a name="call-the-language-service-api"></a>Appeler l’API du service Langage
 
-Écrivons une fonction pour appeler l’API Analyse de texte. Cette fonction prend quatre arguments : `input_text`,`input_language`,`output_text` et `output_language`. Cette fonction est appelée chaque fois qu’un utilisateur appuie sur le bouton Run sentiment analysis (Exécuter l’analyse des sentiments) dans votre application. Les données fournies par l’utilisateur dans la zone de texte et le sélecteur de langue, ainsi que la langue détectée et le résultat de la traduction, sont fournis avec chaque requête. L’objet en réponse comprend des scores de sentiment pour la source et pour la traduction. Dans les sections suivantes, vous allez écrire du code JavaScript pour analyser la réponse et l’utiliser dans votre application. Pour l’instant, concentrons-nous sur l’appel de l’API Analyse de texte.
+Nous allons écrire une fonction pour appeler l’API du service Langage. Cette fonction prend quatre arguments : `input_text`,`input_language`,`output_text` et `output_language`. Cette fonction est appelée chaque fois qu’un utilisateur appuie sur le bouton Run sentiment analysis (Exécuter l’analyse des sentiments) dans votre application. Les données fournies par l’utilisateur dans la zone de texte et le sélecteur de langue, ainsi que la langue détectée et le résultat de la traduction, sont fournis avec chaque requête. L’objet en réponse comprend des scores de sentiment pour la source et pour la traduction. Dans les sections suivantes, vous allez écrire du code JavaScript pour analyser la réponse et l’utiliser dans votre application. Pour l’instant, concentrons-nous sur l’appel de l’API du service Langage.
 
 1. Créons un fichier appelé `sentiment.py` à la racine de votre répertoire de travail.
 2. Ajoutez ensuite ce code à `sentiment.py`.
@@ -525,7 +525,7 @@ Dans cette section, vous allez effectuer quelques opérations :
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Ajoutez votre clé d’abonnement Analyse de texte et enregistrez.
+3. Ajoutez votre clé d’abonnement au service Langage et enregistrez.
 
 ### <a name="add-a-route-to-apppy"></a>Ajouter une route à `app.py`
 
@@ -948,5 +948,5 @@ Le code source de ce projet est disponible sur [GitHub](https://github.com/Micro
 ## <a name="next-steps"></a>Étapes suivantes
 
 * [Informations de référence Translator](./reference/v3-0-reference.md)
-* [Informations de référence sur l’API Analyse de texte](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
+* [Référence de l’API du service Langage](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1)
 * [Référence sur l’API conversion de texte par synthèse vocale](../speech-service/rest-text-to-speech.md)

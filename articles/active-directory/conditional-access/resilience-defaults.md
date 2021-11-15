@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a8e61f296d430713812007b93f1b34cea8588a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 5e2bebe9769d38502a37134326228d41979cad5a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432678"
 ---
-# <a name="conditional-access-resilience-defaults"></a>Accès conditionnel : Valeurs de résilience par défaut
+# <a name="conditional-access-resilience-defaults-preview"></a>Accès conditionnel : Valeurs de résilience par défaut (préversion)
 
 En cas de panne du service d’authentification principal, le service d’authentification de sauvegarde Azure Active Directory (Azure AD) peut émettre automatiquement des jetons d’accès aux applications pour les sessions existantes. Cette fonctionnalité peut augmenter considérablement la résilience d’Azure AD, car les réauthentifications pour les sessions existantes représentent plus de 90 % des authentifications sur Azure AD. Le service d’authentification de sauvegarde ne prend pas en charge les nouvelles sessions ou les authentifications par les utilisateurs invités.
 
@@ -38,9 +38,9 @@ Pendant une panne, le service d’authentification de secours réémet automatiq
 
 | Description de la session | Accès accordé |
 | --- | --- |
-| Nouvelle session | No |
-| Session existante : Aucune stratégie d’accès conditionnel n’est configurée | Yes |
-| Session existante : Des stratégies d’accès conditionnel configurées et les contrôles requis, comme l’authentification multifacteur, ont été effectués précédemment | Yes |
+| Nouvelle session | Non |
+| Session existante : Aucune stratégie d’accès conditionnel n’est configurée | Oui |
+| Session existante : Des stratégies d’accès conditionnel configurées et les contrôles requis, comme l’authentification multifacteur, ont été effectués précédemment | Oui |
 | Session existante : Des stratégies d’accès conditionnel configurées et les contrôles requis, comme l’authentification multifacteur, n’ont pas été effectués précédemment | Déterminé par les valeurs de résilience par défaut |
 
 Lorsqu’une session existante expire pendant une panne d’Azure AD, la demande d’un nouveau jeton d’accès est acheminée vers le service d’authentification de secours et toutes les stratégies d’accès conditionnel sont réévaluées. S’il n’existe aucune stratégie d’accès conditionnel ou si tous les contrôles requis, tels que l’authentification multifacteur, ont déjà été effectués au début de la session, le service d’authentification de secours émet un nouveau jeton d’accès pour prolonger la session. 

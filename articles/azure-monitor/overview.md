@@ -4,13 +4,13 @@ description: Vue d’ensemble des services et fonctionnalités Microsoft qui con
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/17/2019
-ms.openlocfilehash: 639386e1a64ff40375fac5baafc10b6a3a1cb84d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/01/2021
+ms.openlocfilehash: 35ffbe3a329aae483b4da841ba4dfe34c1a07f9a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130227052"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435127"
 ---
 # <a name="azure-monitor-overview"></a>Vue d’ensemble d’Azure Monitor
 
@@ -51,12 +51,11 @@ Azure Monitor utilise une version du [langage de requête Kusto](/azure/kusto/qu
 ![Diagramme montrant le flux des données des journaux dans Log Analytics à des fins d’analyse](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Quelles sont les données collectées par Azure Monitor ?
-
 Azure Monitor peut recueillir des données de [diverses sources](monitor-reference.md), telles que votre application, tous les systèmes d’exploitation et services sur lesquels elle s’appuie, et jusqu’à la plateforme elle-même. Azure Monitor collecte des données à partir de chacun des niveaux suivants :
 
 - **Données de surveillance de l’application** : données concernant les performances et la fonctionnalité du code que vous avez écrit, quelle que soit la plateforme.
 - **Données de surveillance du système d’exploitation invité** : données concernant le système d’exploitation sur lequel votre application est exécutée. Il peut s’agir d’Azure, d’un autre cloud ou d’un système local. 
-- **Données de surveillance des ressources Azure** : données concernant le fonctionnement d’une ressource Azure.
+- **Données de surveillance des ressources Azure** : données concernant le fonctionnement d’une ressource Azure. Pour obtenir la liste complète des ressources qui ont des métriques ou des journaux, consultez [Que peut-on surveiller avec Azure Monitor ?](monitor-reference.md#azure-supported-services)
 - **Données de surveillance d’abonnement Azure** : données concernant le fonctionnement et la gestion d’un abonnement Azure, mais aussi données concernant l’intégrité et le fonctionnement d’Azure. 
 - **Données de surveillance de locataire Azure** : données concernant le fonctionnement des services Azure au niveau du locataire, tels qu’Azure Active Directory.
 
@@ -67,11 +66,12 @@ Dès que vous créez un abonnement Azure et commencez à ajouter des ressources 
 Activez la supervision de votre application avec [Application Insights](app/app-insights-overview.md) afin de collecter des informations détaillées sur les vues de pages, les requêtes d’application et les exceptions. Vérifiez la disponibilité de votre application en configurant un [test de disponibilité](app/monitor-web-app-availability.md) pour simuler le trafic utilisateur.
 
 ### <a name="custom-sources"></a>Sources personnalisées
-
 Azure Monitor peut collecter des données de journal à partir de n’importe quel client REST à l’aide de [l’API de collecteur de données](logs/data-collector-api.md). Cela vous permet de créer des scénarios de supervision personnalisés et d’étendre la supervision à des ressources qui n’exposent pas de données de télémétrie via d’autres sources.
 
-## <a name="insights"></a>Insights
-La supervision des données est utile uniquement si elle permet d’augmenter votre visibilité sur le fonctionnement de votre environnement informatique. Les [insights](monitor-reference.md#insights-and-core-solutions) offrent une expérience de supervision personnalisée pour des services Azure spécifiques. Ils nécessitent une configuration minimale et augmentent votre visibilité sur le fonctionnement des ressources critiques.
+## <a name="insights-and-curated-visualizations"></a>Insights et visualisations organisées
+La supervision des données est utile uniquement si elle permet d’augmenter votre visibilité sur le fonctionnement de votre environnement informatique. Certains fournisseurs de ressources Azure disposent d’une « visualisation organisée » qui vous offre une expérience de surveillance personnalisée pour ce service particulier ou cet ensemble de services. Elles nécessitent généralement une configuration minimale. Les visualisations organisées évolutives de plus grande envergure sont appelées « insights » et portent ce nom dans la documentation et Portail Azure.  
+
+Pour plus d’informations, consultez [Liste des insights et des visualisations organisées à l’aide d’Azure Monitor](monitor-reference.md#insights-and-curated-visualizations). Certains des insights les plus importants sont également décrits ci-dessous.
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](app/app-insights-overview.md) surveille la disponibilité, les performances et l’utilisation de votre application web, qu’elle soit hébergée dans le cloud ou localement. Cette solution s’appuie sur la puissante plateforme d’analyse de données dans Azure Monitor pour vous fournir des insights détaillés sur le fonctionnement de votre application. Elle vous permet de diagnostiquer les erreurs sans attendre qu’un utilisateur les signale. Application Insights inclut des points de connexion à divers outils de développement et s’intègre à Visual Studio pour prendre en charge vos processus DevOps.
@@ -90,9 +90,9 @@ La supervision des données est utile uniquement si elle permet d’augmenter vo
 ![Insights de machine virtuelle](media/overview/vm-insights.png)
 
 
+
 ## <a name="responding-to-critical-situations"></a>Réagir à des situations critiques
 En plus de vous permettre d’analyser les données de supervision de manière interactive, une solution de supervision efficace doit pouvoir répondre de manière proactive à des conditions critiques identifiées dans les données qu’elle collecte. Il peut par exemple s’agir d’envoyer un SMS ou un courrier à un administrateur en charge de l’examen d’un problème. Ou de lancer un processus automatisé qui essaie de corriger une condition d’erreur.
-
 
 ### <a name="alerts"></a>Alertes
 Les [alertes dans Azure Monitor](alerts/alerts-overview.md) vous avertissent de manière proactive en cas de condition critique, et sont susceptibles d’essayer de prendre des mesures correctives. Les règles d’alerte basées sur les métriques fournissent des alertes en quasi-temps réel basées sur des valeurs numériques. Les règles basées sur les journaux autorisent une logique complexe entre les données de plusieurs sources.

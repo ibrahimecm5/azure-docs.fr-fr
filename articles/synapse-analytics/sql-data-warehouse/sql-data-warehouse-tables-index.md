@@ -6,21 +6,21 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/16/2021
-author: XiaoyuMSFT
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 58f3eed8b16ff3ed02c6dfac6dc7d72ebb4ca374
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 498c9c6f5f010490f97eb6a7cb0073a8f9c58d28
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599976"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503806"
 ---
-# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indexer les tables d’un pool SQL dédié dans Azure Synapse Analytics
+# <a name="indexes-on-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Index sur des tables de pool SQL dédié dans Azure Synapse Analytics
 
-Recommandations et exemples relatifs à l’indexation de tables dans un pool SQL dédié.
+Recommandations et exemples d’indexation de tables dans un pool SQL dédié dans Azure Synapse Analytics.
 
 ## <a name="index-types"></a>Types d’index
 
@@ -32,7 +32,7 @@ Pour créer une table dotée d’un index, consultez la documentation [CREATE TA
 
 Par défaut, un pool SQL dédié crée un index columnstore cluster lorsqu’aucune option d’index n’est spécifiée sur une table. Les tables columnstore en cluster offrent le plus haut niveau de compression de données ainsi que les meilleures performances de requête globales.  Les tables columnstore en cluster sont généralement plus performantes que les index en cluster ou les tables de segments de mémoire, et constituent généralement le meilleur choix pour les grandes tables.  Pour ces raisons, les index columnstore en cluster sont le meilleur endroit pour démarrer lorsque vous ne savez pas comment indexer votre table.  
 
-Pour créer une table columnstore en cluster, spécifiez simplement CLUSTERED COLUMNSTORE INDEX dans la clause WITH, ou omettez la clause WITH :
+Pour créer une table columnstore en cluster, spécifiez simplement `CLUSTERED COLUMNSTORE INDEX` dans la clause WITH, ou omettez la clause WITH :
 
 ```SQL
 CREATE TABLE myTable
@@ -92,9 +92,9 @@ CREATE INDEX zipCodeIndex ON myTable (zipCode);
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>Optimisation des index columnstore en cluster
 
-Les tables columnstore en cluster sont organisées en données dans les segments.  Une qualité de segment élevée est essentielle pour atteindre des performances des requêtes optimales sur une table columnstore.  La qualité du segment peut être mesurée par le nombre de lignes dans un groupe de lignes compressé.  La qualité de segment est optimale lorsqu’il existe au moins 100 000 lignes par groupe de lignes compressé, et ses performances vont croissant, car le nombre de lignes par groupe est proche de 1 048 576 lignes, soit le nombre maximum de lignes qu’un groupe de lignes peut contenir.
+Les tables columnstore en cluster sont organisées en données dans les segments.  Une qualité de segment élevée est essentielle pour atteindre des performances des requêtes optimales sur une table columnstore.  La qualité du segment peut être mesurée par le nombre de lignes dans un groupe de lignes compressé.  La qualité du segment est optimale quand il y a au moins 100 000 lignes par groupe de lignes compressé, et les performances augmentent à mesure que le nombre de lignes par groupe de lignes approche de 1 048 576, qui est le nombre maximal de lignes qu’un groupe de lignes peut contenir.
 
-La vue ci-dessous peut être créée et utilisée sur votre système afin de calculer les lignes moyennes par groupe de lignes et d’identifier tous les index columnstore en cluster non optimaux.  La dernière colonne sur cette vue génère une instruction SQL qui peut être utilisée pour reconstruire vos index.
+Vous pouvez créer et utiliser l’affichage ci-dessous sur votre système afin de calculer le nombre moyen de lignes par groupe de lignes et d’identifier tous les index columnstore cluster non optimaux.  La dernière colonne sur cette vue génère une instruction SQL qui peut être utilisée pour reconstruire vos index.
 
 ```sql
 CREATE VIEW dbo.vColumnstoreDensity
@@ -139,17 +139,16 @@ JOIN    sys.[tables] t                              ON  mp.[object_id]          
 JOIN    sys.[schemas] s                             ON t.[schema_id]            = s.[schema_id]
 GROUP BY
         s.[name]
-,       t.[name]
-;
+,       t.[name];
 ```
 
-Maintenant que vous avez créé la vue, exécutez cette requête pour identifier les tables avec des groupes de lignes comportant moins de 100 000 lignes. Bien sûr, vous souhaiterez peut-être augmenter le seuil de 100 000 si vous recherchez une qualité de segment supérieure.
+Maintenant que vous avez créé l’affichage, exécutez cette requête pour identifier les tables contenant des groupes de moins de 100 000 lignes. Vous pouvez augmenter le seuil de 100 000 si vous recherchez une qualité de segment optimale.
 
 ```sql
 SELECT    *
 FROM    [dbo].[vColumnstoreDensity]
 WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
-        OR INVISIBLE_rowgroup_rows_AVG < 100000
+        OR INVISIBLE_rowgroup_rows_AVG < 100000;
 ```
 
 Une fois que vous avez exécuté la requête, vous pouvez commencer à examiner les données et analyser vos résultats. Cette table explique ce que vous devez rechercher dans votre analyse de groupe de lignes.
@@ -167,7 +166,7 @@ Une fois que vous avez exécuté la requête, vous pouvez commencer à examiner 
 | [COMPRESSED_rowgroup_rows_MAX] |Identique à ce qui précède |
 | [OPEN_rowgroup_count] |Les groupes de lignes ouverts sont normaux. On peut raisonnablement s’attendre à un groupe de lignes ouvert par distribution de tables (60). Les nombres excessifs suggèrent un chargement des données sur plusieurs partitions de données. Vérifiez la stratégie de partitionnement pour vous assurer qu’elle est saine |
 | [OPEN_rowgroup_rows] |Chaque groupe de lignes peut contenir 1 048 576 lignes maximum. Utilisez cette valeur pour connaître l’état de remplissage actuel des groupes de lignes ouverts |
-| [OPEN_rowgroup_rows_MIN] |Les groupes ouverts indiquent que les données sont chargées de manière progressive dans la table ou que la charge précédente a débordé sur les lignes restantes de ce groupe de lignes. Utilisez les colonnes MIN, MAX et AVG pour afficher la quantité de données stockées dans les groupes de ligne ouverts. Pour les petites tables, il peut s’agir de 100 % des données. Dans ce cas, l’instruction ALTER INDEX REBUILD force les données dans le columnstore. |
+| [OPEN_rowgroup_rows_MIN] |Les groupes ouverts indiquent que les données sont chargées de manière progressive dans la table ou que la charge précédente a débordé sur les lignes restantes de ce groupe de lignes. Utilisez les colonnes MIN, MAX et AVG pour afficher la quantité de données stockées dans les groupes de ligne ouverts. Pour les tables de petite taille, il peut s’agir de 100 % des données. Dans ce cas, l’instruction ALTER INDEX REBUILD force les données dans le columnstore. |
 | [OPEN_rowgroup_rows_MAX] |Identique à ce qui précède |
 | [OPEN_rowgroup_rows_AVG] |Identique à ce qui précède |
 | [CLOSED_rowgroup_rows] |Examinez les lignes des groupes de lignes fermés pour effectuer un contrôle de validité. |
@@ -179,7 +178,7 @@ Une fois que vous avez exécuté la requête, vous pouvez commencer à examiner 
 
 ## <a name="impact-of-index-maintenance"></a>Impact de la maintenance des index
 
-La colonne `Rebuild_Index_SQL` dans l’affichage `vColumnstoreDensity` contient une instruction `ALTER INDEX REBUILD` qui peut être utilisée pour reconstruire vos index. Lors de la reconstruction de vos index, veillez à allouer suffisamment de mémoire à la session qui reconstruit votre index. Pour ce faire, augmentez la [classe de ressources](resource-classes-for-workload-management.md) d’un utilisateur qui dispose des autorisations pour reconstruire l’index sur cette table conformément aux valeurs minimum recommandées. Pour obtenir un exemple, consultez [Reconstruction d’index pour améliorer la qualité des segments](#rebuilding-indexes-to-improve-segment-quality) plus loin dans cet article.
+La colonne `Rebuild_Index_SQL` dans l’affichage `vColumnstoreDensity` contient une instruction `ALTER INDEX REBUILD` qui peut être utilisée pour reconstruire vos index. Lors de la reconstruction de vos index, veillez à allouer suffisamment de mémoire à la session qui reconstruit votre index. Pour ce faire, augmentez la [classe de ressources](resource-classes-for-workload-management.md) d’un utilisateur qui dispose des autorisations pour reconstruire l’index sur cette table conformément aux valeurs minimum recommandées. Pour obtenir un exemple, consultez [Reconstruction d’index pour améliorer la qualité des segments](#rebuild-indexes-to-improve-segment-quality) plus loin dans cet article.
 
 Pour une table avec un index columnstore en cluster ordonné, `ALTER INDEX REBUILD` trie à nouveau les données à l’aide de tempdb. Supervisez tempdb pendant les opérations de reconstruction. Si vous avez besoin de davantage d’espace tempdb, vous pouvez effectuer un scale-up du pool de bases de données. Réeffectuez un scale down une fois la reconstruction d’index terminée.
 
@@ -210,7 +209,7 @@ Un volume élevé d’opérations DML qui mettent à jour et suppriment des lign
 - L’insertion d’une ligne ajoute cette dernière à une table de groupe de lignes interne appelée groupe de lignes delta. La ligne insérée n’est pas convertie en columnstore jusqu’à ce que le groupe de lignes delta soit rempli et marqué comme étant fermé. Les groupes de lignes sont fermés lorsqu’ils atteignent leur capacité maximale de 1 048 576 lignes.
 - La mise à jour d’une ligne au format columnstore est traitée en tant que suppression logique, puis en tant qu’insertion. La ligne insérée peut être stockée dans le deltastore.
 
-Les opérations de mise à jour par lot et d’insertion qui dépassent le seuil de 102 400 lignes par distribution alignée sur la partition vont directement au format columnstore. Toutefois, pour que cela se produise et en supposant que la répartition soit uniforme, vous devriez modifier plus de 6,144 millions de lignes en une seule opération. Si le nombre de lignes d’une distribution alignée sur la partition donnée est inférieur à 102 400, les lignes sont transférées vers le deltastore et y restent jusqu’à ce que l’une des trois conditions suivantes ait été remplie : un nombre suffisant de lignes a été inséré ; un nombre suffisant de lignes a été modifié pour fermer le groupe de lignes ; l’index a été reconstruit.
+Les opérations de mise à jour par lot et d’insertion qui dépassent le seuil de 102 400 lignes par distribution alignée sur la partition vont directement au format columnstore. Toutefois, pour que cela se produise et en supposant que la répartition soit uniforme, vous devriez modifier plus de 6,144 millions de lignes en une seule opération. Si le nombre de lignes d’une distribution alignée sur la partition donnée est inférieur à 102 400, les lignes sont transférées vers le delta store et y restent jusqu’à ce qu’un nombre suffisant de lignes ait été inséré ou modifié pour fermer le groupe de lignes, ou jusqu’à ce que l’index ait été reconstruit.
 
 ### <a name="small-or-trickle-load-operations"></a>Opérations de chargement progressives ou légères
 
@@ -224,11 +223,11 @@ Autre élément à prendre en compte : l’impact du partitionnement sur vos tab
 
 Une fois que les tables ont été chargées avec des données, suivez les étapes ci-dessous pour identifier et reconstruire des tables avec des index columnstore en cluster non optimaux.
 
-## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Reconstruire des index pour améliorer la qualité de segment
+## <a name="rebuild-indexes-to-improve-segment-quality"></a>Reconstruire des index pour améliorer la qualité de segment
 
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Étape 1 : Identifier ou créer un utilisateur qui utilise la classe de ressources appropriée
 
-Un moyen rapide d’améliorer immédiatement la qualité de segment consiste à reconstruire l’index.  La requête SQL renvoyée par la vue ci-dessus renvoie une instruction ALTER INDEX REBUILD, qui peut être utilisée pour reconstruire vos index. Lors de la reconstruction de vos index, veillez à allouer suffisamment de mémoire à la session qui reconstruit votre index. Pour ce faire, augmentez la classe de ressources d’un utilisateur qui dispose des autorisations pour reconstruire l’index sur cette table conformément aux valeurs minimum recommandées.
+Un moyen rapide d’améliorer immédiatement la qualité de segment consiste à reconstruire l’index.  La requête SQL renvoyée par l’affichage ci-dessus contient une instruction ALTER INDEX REBUILD qui peut être utilisée pour reconstruire vos index. Lors de la reconstruction de vos index, veillez à allouer suffisamment de mémoire à la session qui reconstruit votre index. Pour ce faire, augmentez la classe de ressources d’un utilisateur qui dispose des autorisations pour reconstruire l’index sur cette table conformément aux valeurs minimum recommandées.
 
 Voici un exemple montrant comment allouer davantage de mémoire à un utilisateur en augmentant sa classe de ressources. Pour utiliser des classes de ressources, consultez l’article [Classes de ressources pour la gestion des charges de travail](resource-classes-for-workload-management.md).
 
@@ -238,7 +237,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser';
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Étape 2 : Reconstruire les index columnstore en cluster avec un utilisateur de la classe de ressources la plus élevée
 
-Connectez-vous en tant qu’utilisateur à l’étape 1 (LoadUser), qui utilise maintenant une classe de ressources supérieure, puis exécutez les instructions ALTER INDEX. N’oubliez pas que cet utilisateur possède l’autorisation ALTER sur les tables où l’index est reconstruit. Ces exemples illustrent comment reconstruire l’index columnstore entier ou comment reconstruire une partition unique. Sur des tables volumineuses, il est plus pratique de reconstruire les index une seule partition à la fois.
+Connectez-vous en tant qu’utilisateur à l’étape 1 (`LoadUser`), qui utilise maintenant une classe de ressources supérieure, puis exécutez les instructions ALTER INDEX. N’oubliez pas que cet utilisateur possède l’autorisation ALTER sur les tables où l’index est reconstruit. Ces exemples illustrent comment reconstruire l’index columnstore entier ou comment reconstruire une partition unique. Sur des tables volumineuses, il est plus pratique de reconstruire les index une seule partition à la fois.
 
 Au lieu de reconstruire l’index, vous pouvez également copier la table dans une nouvelle table avec [CTAS](sql-data-warehouse-develop-ctas.md). Quelle méthode est la meilleure ? Pour les gros volumes de données, CTAS est généralement plus rapide qu’[ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Pour les volumes de données plus restreints, ALTER INDEX est plus facile à utiliser et ne vous oblige pas à permuter la table.
 
@@ -268,7 +267,7 @@ La reconstruction d’un index dans un pool SQL dédié est une opération hors 
 
 Réexécutez la requête qui a identifié la table présentant une qualité de segment médiocre, et vérifiez que la qualité de segment a été améliorée.  Si la qualité de segment n’a pas été améliorée, cela peut signifier que les lignes de votre table sont très larges.  Utilisez une classe de ressources supérieure ou une base de données DWU lors de la reconstruction de vos index.
 
-## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Reconstruire des index avec CTAS et le basculement de partitions
+## <a name="rebuild-indexes-with-ctas-and-partition-switching"></a>Reconstruire des index avec CTAS et un basculement de partitions
 
 Cet exemple utilise l’instruction [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) et le basculement de partition pour reconstruire une partition de table.
 

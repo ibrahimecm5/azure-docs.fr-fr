@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 65b39c7cae553663cc4b482ff98a4be3c2e03876
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545036"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026042"
 ---
 # <a name="virtual-wan-faq"></a>FAQ sur Virtual WAN
 
@@ -209,7 +209,7 @@ Non. Virtual WAN ne nécessite pas ExpressRoute à partir de chaque site. Vos si
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Existe-t-il une limite de débit réseau ou de connexions lors de l’utilisation d’Azure Virtual WAN ?
 
-Le débit réseau s’exprime par service dans un hub Virtual WAN. Vous pouvez avoir autant de réseaux WAN virtuels que vous le souhaitez, mais chaque WAN virtuel autorise 1 hub par région. Dans chaque hub, le débit agrégé VPN peut atteindre jusqu’à 20 Gbit/s, le débit agrégé ExpressRoute jusqu’à 20 Gbit/s et le débit agrégé VPN utilisateur/VPN de point à site jusqu’à 20 Gbit/s. Le routeur dans le hub virtuel prend en charge jusqu’à 50 Gbits/s pour les flux de trafic de réseau virtuel à réseau virtuel, et supporte une charge de travail totale de 2 000 machines virtuelles parmi tous les réseaux virtuels connectés à un même hub virtuel.
+Le débit réseau s’exprime par service dans un hub Virtual WAN. Vous pouvez avoir autant de réseaux WAN virtuels que vous le souhaitez, mais chaque WAN virtuel autorise 1 hub par région. Dans chaque hub, le débit agrégé VPN peut atteindre jusqu’à 20 Gbit/s, le débit agrégé ExpressRoute jusqu’à 20 Gbit/s et le débit agrégé VPN utilisateur/VPN de point à site jusqu’à 20 Gbit/s. Le routeur dans le hub virtuel prend en charge jusqu’à 50 Gbits/s pour les flux de trafic de réseau virtuel à réseau virtuel, et supporte une charge de travail totale de 2 000 machines virtuelles parmi tous les réseaux virtuels connectés à un même hub virtuel. Vous pouvez augmenter cette [limite](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits) en ouvrant une demande de support technique en ligne. Pour déterminer les conséquences financières, consultez le coût d’une *unité d’infrastructure de routage* dans la page des [tarifs d’Azure Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/). 
 
 Lorsque des sites VPN se connectent à un hub, ils le font à l’aide de connexions. Virtual WAN prend en charge jusqu’à 1 000 connexions ou 2 000 tunnels IPsec par hub virtuel. Lorsque les utilisateurs distants se connectent au hub virtuel, ils se connectent à la passerelle VPN P2S, qui prend en charge jusqu’à 10 000 utilisateurs en fonction de l’unité d’échelle (bande passante) choisie pour la passerelle VPN P2S dans le hub virtuel.
 

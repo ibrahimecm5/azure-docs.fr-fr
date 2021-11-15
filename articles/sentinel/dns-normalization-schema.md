@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f2aae24d6a3e4fff70443107d769f0e23c82bfbc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bf53669dc4c6ca445ea43535a709804d387e855d
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046980"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989581"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Informations de référence de schéma de normalisation DNS Azure Sentinel (préversion publique)
 
@@ -207,7 +207,7 @@ Les champs ci-dessous sont spécifiques aux événements DNS. Cela dit, beaucoup
 | **IpAddr** | Alias | | Alias pour SrcIpAddr |
 | <a name=query></a>**DnsQuery** | Obligatoire | FQDN | Le domaine qui doit être résolu. <br><br>**Remarque** : Certaines sources envoient cette requête dans des formats différents. Par exemple, dans le protocole DNS lui-même, la requête comprend un point ( **.** ) à la fin, qui doit être supprimé.<br><br>Bien que le protocole DNS autorise plusieurs requêtes dans une seule requête, ce scénario est rare, voire même inexistant. Si la requête comporte plusieurs requêtes, stockez la première dans ce champ, puis conservez éventuellement le reste dans le champ [AdditionalFields](#additionalfields).<br><br>Exemple : `www.malicious.com` |
 | **Domaine** | Alias | | Prendre l’alias [Requête](#query). |
-| **DnsQueryType** | Facultatif | Integer | Ce champ peut contenir des [codes de type d’enregistrement de ressource DNS](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)). <br><br>Exemple : `28`|
+| **DnsQueryType** | Facultatif | Integer | Ce champ peut contenir des [codes de type d’enregistrement de ressource DNS](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml). <br><br>Exemple : `28`|
 | **DnsQueryTypeName** | Recommandé | Énuméré | Ce champ peut contenir des noms de [type d’enregistrement de ressource DNS](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml). <br><br>**Remarque** : IANA ne définit pas la casse des valeurs, donc Analytics doit normaliser la casse en fonction des besoins. Si la source fournit uniquement un code de type de requête numérique et non un nom de type de requête, l’analyseur doit inclure une table de recherche pour enrichir cette valeur.<br><br>Exemple : `AAAA`|
 | <a name=responsename></a>**DnsResponseName** | Facultatif | Chaîne | Contenu de la réponse, tel qu’il est inclus dans l’enregistrement.<br> <br> Les données de réponse DNS sont incohérentes entre les appareils de création de rapports, sont complexes à analyser et ont moins de valeur pour l’analyse indépendante de la source. Par conséquent, le modèle d’information ne nécessite pas d’analyse ni de normalisation, et Azure Sentinel utilise une fonction auxiliaire pour fournir des informations de réponse. Pour plus d’informations, consultez [Gestion des réponses DNS](#handling-dns-response).|
 | <a name=responsecodename></a>**DnsResponseCodeName** |  Obligatoire | Énuméré | Le [code de réponse DNS](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml). <br><br>**Remarque** : IANA ne définit pas la casse des valeurs, donc l’analyse doit normaliser la casse. Si la source fournit uniquement un code de réponse et non un nom de code de réponse, l’analyseur doit inclure une table de recherche pour enrichir cette valeur. <br><br> Si cet enregistrement représente une requête et non une réponse, affectez la valeur **NA**. <br><br>Exemple : `NXDOMAIN` |

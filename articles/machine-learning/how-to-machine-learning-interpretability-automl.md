@@ -1,26 +1,26 @@
 ---
-title: Explicabilité dans ML automatisé (version préliminaire)
+title: Explicabilité du modèle dans le Machine Learning automatisé (préversion)
 titleSuffix: Azure Machine Learning
 description: Découvrez comment obtenir des explications sur la façon dont votre modèle de Machine Learning automatisé détermine l’importance d’une caractéristique et effectue des prédictions lors de l’utilisation du Kit de développement logiciel (SDK) Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
-ms.custom: automl, responsible-ml
+ms.custom: automl, responsible-ml, mktng-kw-nov2021
 ms.author: mithigpe
 author: minthigpen
 ms.date: 10/21/2021
-ms.openlocfilehash: 6538ebfbb7aae0a8e2b97c4b41a124568db858c7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f739da0dde7f2ef9935466ebbd4e4d4498355263
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562310"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852614"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interprétabilité : explications des modèles en machine learning automatisé (version préliminaire)
+# <a name="interpretability-model-explainability-in-automated-ml-preview"></a>Interprétabilité : Explicabilité du modèle dans le Machine Learning automatisé (préversion)
 
 
-Cet article explique comment obtenir des explications pour le machine learning automatisé (AutoML) dans Azure Machine Learning à l’aide du SDK Python. Le machine learning automatisé vous aide à comprendre l’importance des caractéristiques des modèles qui sont générés. 
+Cet article explique comment obtenir des explications pour les modèles de Machine Learning automatisé (AutoML) dans Azure Machine Learning à l’aide du Kit de développement logiciel (SDK) Python. Le machine learning automatisé vous aide à comprendre l’importance des caractéristiques des modèles qui sont générés. 
 
 Toutes les versions du Kit de développement logiciel (SDK) après la version 1.0.85 définissent `model_explainability=True` par défaut. Dans le Kit de développement logiciel (SDK) version 1.0.85 et ses versions antérieures, les utilisateurs doivent définir `model_explainability=True` dans l’objet `AutoMLConfig` afin d’utiliser l’interprétabilité du modèle. 
 
@@ -323,4 +323,4 @@ Pour plus d’informations sur les visualisations et les tracés spécifiques du
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour plus d’informations sur la façon dont vous pouvez activer les explications des modèles et l’importance d’une caractéristique dans des domaines du Kit de développement logiciel (SDK) Azure Machine Learning autres que le Machine Learning automatisé, consultez l’[article concept sur l’interprétabilité](how-to-machine-learning-interpretability.md).
+Pour plus d’informations sur la façon dont vous pouvez activer les explications de modèle et l’importance des fonctionnalités dans des zones autres que le Machine Learning automatisé, découvrez d’[autres techniques pour l’interprétabilité des modèles](how-to-machine-learning-interpretability.md).

@@ -215,6 +215,9 @@ items:
           - name: Vue d’ensemble des modèles de base de données
             href: database-designer/overview-database-templates.md
             displayName: overview
+          - name: Vue d’ensemble des données de mappage
+            href: database-designer/overview-map-data.md
+            displayName: map data
       - name: Démarrages rapides
         items:
           - name: Créer une base de données de lac

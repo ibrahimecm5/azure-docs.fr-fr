@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 10/05/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: fa804ee911d8b810de391916f7ae92ff46efe0b1
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8512df7ba32e7fabee5d666ca119197da7d82d6b
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613279"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028398"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Utiliser Azure Functions Core Tools
 
@@ -39,13 +39,13 @@ Il existe quatre versions d’Azure Functions Core Tools. La version que vous ut
 
 Choisissez un onglet version ci-dessous pour en savoir plus sur chaque version spécifique et pour obtenir des instructions d’installation détaillées :
 
+# <a name="version-4x"></a>[Version 4.x](#tab/v4)
+
+Prend en charge la [version 4.x](functions-versions.md) du runtime Functions. Ces versions prennent en charge Windows, macOS et Linux, et utilisent des gestionnaires de package spécifiques à la plateforme ou npm pour l’installation. Il s’agit de la version recommandée du runtime Functions et des outils principaux.
+
 # <a name="version-3x"></a>[Version 3.x](#tab/v3)
 
-Prend en charge la [version 3.x](functions-versions.md) du runtime Azure Functions. Ces versions prennent en charge Windows, macOS et Linux, et utilisent des gestionnaires de package spécifiques à la plateforme ou npm pour l’installation. Il s’agit de la version recommandée du runtime Functions et des outils principaux.
-
-# <a name="version-4x-preview"></a>[Version 4. x (préversion)](#tab/v4)
-
-Prend en charge la [version 4. x](functions-versions.md) du runtime Functions, qui est en préversion. Ces versions prennent en charge Windows, macOS et Linux, et utilisent des gestionnaires de package spécifiques à la plateforme ou npm pour l’installation. À moins que vous n’ayez besoin d’exécuter des fonctions C# sur .NET 6.0, envisagez d’utiliser la version 3. x du runtime Functions et des outils principaux.
+Prend en charge la [version 3.x](functions-versions.md) du runtime Azure Functions. Ces versions prennent en charge Windows, macOS et Linux, et utilisent des gestionnaires de package spécifiques à la plateforme ou npm pour l’installation. 
 
 # <a name="version-2x"></a>[Version 2.x](#tab/v2)
 

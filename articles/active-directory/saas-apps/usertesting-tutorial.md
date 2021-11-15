@@ -1,0 +1,153 @@
+---
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à UserTesting'
+description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et UserTesting.
+services: active-directory
+author: jeevansd
+manager: CelesteDG
+ms.reviewer: CelesteDG
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.topic: tutorial
+ms.date: 11/01/2021
+ms.author: jeedes
+ms.openlocfilehash: bec299b71393b8359d580d6fe3e30a1884073205
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131479161"
+---
+# <a name="tutorial-azure-ad-sso-integration-with-usertesting"></a>Tutoriel : Intégration de l’authentification unique Azure AD à UserTesting
+
+Dans ce tutoriel, vous allez apprendre à intégrer UserTesting à Azure Active Directory (Azure AD). Lorsque vous intégrez UserTesting à Azure AD, vous pouvez :
+
+* Contrôler dans Azure AD qui a accès à UserTesting.
+* Permettre à vos utilisateurs de se connecter automatiquement à UserTesting avec leur compte Azure AD.
+* Gérer vos comptes à un emplacement central : le Portail Azure.
+
+## <a name="prerequisites"></a>Prérequis
+
+Pour commencer, vous devez disposer de ce qui suit :
+
+* Un abonnement Azure AD Si vous ne disposez d’aucun abonnement, vous pouvez obtenir [un compte gratuit](https://azure.microsoft.com/free/).
+* Un abonnement UserTesting pour lequel l’authentification unique est activée.
+
+## <a name="scenario-description"></a>Description du scénario
+
+Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
+
+* UserTesting prend en charge l’authentification unique lancée par le **fournisseur de services et le fournisseur d’identité**.
+
+> [!NOTE]
+> L’identificateur de cette application étant une valeur de chaîne fixe, une seule instance peut être configurée dans un locataire.
+
+## <a name="add-usertesting-from-the-gallery"></a>Ajouter UserTesting à partir de la galerie
+
+Pour configurer l’intégration d’UserTesting à Azure AD, vous devez ajouter UserTesting à partir de la galerie à votre liste d’applications SaaS gérées.
+
+1. Connectez-vous au portail Azure avec un compte professionnel ou scolaire ou avec un compte personnel Microsoft.
+1. Dans le panneau de navigation gauche, sélectionnez le service **Azure Active Directory**.
+1. Accédez à **Applications d’entreprise**, puis sélectionnez **Toutes les applications**.
+1. Pour ajouter une nouvelle application, sélectionnez **Nouvelle application**.
+1. Dans la section **Ajouter à partir de la galerie**, saisissez **UserTesting** dans la zone de recherche.
+1. Sélectionnez **UserTesting** dans le volet de résultats, puis ajoutez l’application. Patientez quelques secondes pendant que l’application est ajoutée à votre locataire.
+
+## <a name="configure-and-test-azure-ad-sso-for-usertesting"></a>Configurer et tester l’authentification unique Azure AD pour UserTesting
+
+Configurez et testez l’authentification unique Azure AD avec UserTesting à l’aide d’un utilisateur de test appelé **B.Simon**. Pour que l’authentification unique fonctionne, vous devez établir un lien entre un utilisateur Azure AD et l’utilisateur UserTesting associé.
+
+Pour configurer et tester l’authentification unique Azure AD avec UserTesting, effectuez les étapes suivantes :
+
+1. **[Configurer l’authentification unique Azure AD](#configure-azure-ad-sso)** pour permettre à vos utilisateurs d’utiliser cette fonctionnalité.
+    1. **[Créer un utilisateur de test Azure AD](#create-an-azure-ad-test-user)** pour tester l’authentification unique Azure AD avec B. Simon.
+    1. **[Affecter l’utilisateur de test Azure AD](#assign-the-azure-ad-test-user)** pour permettre à B. Simon d’utiliser l’authentification unique Azure AD.
+1. **[Configurer l’authentification unique UserTesting](#configure-usertesting-sso)** pour configurer les paramètres de l’authentification unique côté application.
+    1. **[Créer un utilisateur de test UserTesting](#create-usertesting-test-user)** pour avoir un équivalent de B.Simon dans UserTesting lié à la représentation Azure AD associée.
+1. **[Tester l’authentification unique](#test-sso)** pour vérifier si la configuration fonctionne.
+
+## <a name="configure-azure-ad-sso"></a>Configurer l’authentification unique Azure AD
+
+Effectuez les étapes suivantes pour activer l’authentification unique Azure AD dans le Portail Azure.
+
+1. Dans le portail Azure, accédez à la page d’intégration de l’application **UserTesting**, recherchez la section **Gérer** et sélectionnez **Authentification unique**.
+1. Dans la page **Sélectionner une méthode d’authentification unique**, sélectionnez **SAML**.
+1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de crayon de **Configuration SAML de base** afin de modifier les paramètres.
+
+   ![Modifier la configuration SAML de base](common/edit-urls.png)
+
+1. Dans la section **Configuration SAML de base**, l’utilisateur n’a rien à faire, car l’application est déjà intégrée à Azure.
+
+1. Dans la section **Configuration SAML de base**, si vous souhaitez configurer l’application avec le mode à l’initiative du **fournisseur de services**, procédez comme suit :
+
+    a. Dans la zone de texte **Identificateur**, tapez l’URL : `https://www.okta.com/saml2/service-provider/sposbpqioaxlalylvzsc`
+
+    b. Dans la zone de texte **URL de réponse**, tapez l’URL : `https://auth.usertesting.com/sso/saml2/0oa1mi3sggbs692Nc0h8`
+
+    c. Dans la zone de texte **URL d’authentification**, saisissez l’URL : `https://app.usertesting.com/users/sso_sign_in`
+
+    d. Dans la zone de texte **État de relais**, saisissez cette URL : `https://app.usertesting.com/sessions/from_idp`.
+
+1. Votre application UserTesting s’attend à recevoir les assertions SAML dans un format spécifique, ce qui vous oblige à ajouter des mappages d’attributs personnalisés à votre configuration d’attributs de jeton SAML. La capture d’écran suivante montre un exemple : La valeur par défaut pour **Identificateur d’utilisateur unique** est **user.userprincipalname**, mais UserTesting s’attend à ce qu’elle soit mappée à l’adresse e-mail de l’utilisateur. Pour cela, vous pouvez utiliser l’attribut **user.mail** dans la liste ou utiliser la valeur d’attribut appropriée en fonction de la configuration de votre organisation.
+
+    ![image](common/default-attributes.png)
+
+1. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, recherchez **XML de métadonnées de fédération** et sélectionnez **Télécharger** pour télécharger le certificat et l’enregistrer sur votre ordinateur.
+
+    ![Lien Téléchargement de certificat](common/metadataxml.png)
+
+1. Dans la section **Configurer UserTesting**, copiez la ou les URL appropriées en fonction de vos besoins.
+
+    ![Copier les URL de configuration](common/copy-configuration-urls.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
+
+Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
+
+1. Dans le volet gauche du Portail Azure, sélectionnez **Azure Active Directory**, **Utilisateurs**, puis **Tous les utilisateurs**.
+1. Sélectionnez **Nouvel utilisateur** dans la partie supérieure de l’écran.
+1. Dans les propriétés **Utilisateur**, effectuez les étapes suivantes :
+   1. Dans le champ **Nom**, entrez `B.Simon`.  
+   1. Dans le champ **Nom de l’utilisateur**, entrez username@companydomain.extension. Par exemple : `B.Simon@contoso.com`.
+   1. Cochez la case **Afficher le mot de passe** d’UserTesting, puis notez la valeur affichée dans le **mot de passe** UserTesting.
+   1. Cliquez sur **Créer**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
+
+Dans cette section, vous allez autoriser B.Simon à utiliser l’authentification unique Azure en lui accordant l’accès à UserTesting.
+
+1. Dans le portail Azure, sélectionnez **Applications d’entreprise**, puis **Toutes les applications**.
+1. Dans la liste des applications, sélectionnez **UserTesting**.
+1. Dans la page de vue d’ensemble de l’application, recherchez la section **Gérer** et sélectionnez **Utilisateurs et groupes**.
+1. Sélectionnez **Ajouter un utilisateur**, puis **Utilisateurs et groupes** dans la boîte de dialogue **Ajouter une attribution**.
+1. Dans la boîte de dialogue **Utilisateurs et groupes**, sélectionnez **B. Simon** dans la liste Utilisateurs, puis cliquez sur le bouton **Sélectionner** au bas de l’écran.
+1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
+1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
+
+## <a name="configure-usertesting-sso"></a>Configurer l’authentification unique UserTesting
+
+Pour configurer l’authentification unique côté **UserTesting**, vous devez envoyer le fichier **XML de métadonnées de fédération** téléchargé et les URL appropriées, copiées à partir de Portail Azure, à l’[équipe du support technique d’UserTesting](mailto:support@usertesting.com). Celles-ci configurent ensuite ce paramètre pour que la connexion SSO SAML soit définie correctement des deux côtés. [Découvrez comment](https://help.usertesting.com/hc/en-us/articles/360001764852-Single-Sign-On-SSO-Setup-Instructions).
+
+### <a name="create-usertesting-test-user"></a>Créer un utilisateur de test UserTesting
+
+Dans cette section, vous allez créer un utilisateur nommé Britta Simon dans UserTesting. Collaborez avec l’[équipe du support technique d’UserTesting](mailto:support@usertesting.com) pour ajouter les utilisateurs dans la plateforme UserTesting. Les utilisateurs doivent être créés et activés avant que vous utilisiez l’authentification unique.
+
+## <a name="test-sso"></a>Tester l’authentification unique (SSO) 
+
+Dans cette section, vous allez tester votre configuration de l’authentification unique Azure AD avec les options suivantes. 
+
+#### <a name="sp-initiated"></a>Lancée par le fournisseur de services :
+
+* Cliquez sur **Tester cette application** dans le portail Azure. Lorsque vous cliquez sur la vignette UserTesting dans Mes applications, vous êtes redirigé vers l’URL de connexion d’UserTesting.  
+
+* Accédez directement à l’URL de connexion d’UserTesting pour lancer le flux de connexion.
+
+#### <a name="idp-initiated"></a>Lancée par le fournisseur d’identité :
+
+* Cliquez sur **Tester cette application** dans le portail Azure. Vous êtes alors automatiquement connecté automatiquement à l’instance de UserTesting pour laquelle vous avez configuré l’authentification unique. 
+
+Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’application dans n’importe quel mode. Si, quand vous cliquez sur la vignette UserTesting dans Mes applications, le mode Fournisseur de services est configuré, vous êtes redirigé vers la page de connexion de l’application pour initier le flux de connexion ; s’il s’agit du mode Fournisseur d’identité, vous êtes automatiquement connecté à l’instance d’UserTesting pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Après avoir configuré UserTesting, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).

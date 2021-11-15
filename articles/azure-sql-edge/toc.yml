@@ -104,7 +104,7 @@
           href: /sql/linux/sql-server-linux-security-get-started?toc=%2fazure%2fazure-sql-edge%2ftoc.json
         - name: Chiffrement des connexions
           href: /sql/linux/sql-server-linux-encrypted-connections?toc=%2fazure%2fazure-sql-edge%2ftoc.json
-        - name: Azure Security Center pour IoT
+        - name: Microsoft Defender pour IoT
           href: ../defender-for-iot/overview.md?bc=%2fazure%2fazure-sql-edge%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fazure-sql-edge%2ftoc.json
 - name: Procédures
   items:

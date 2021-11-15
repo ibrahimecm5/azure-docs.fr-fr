@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: f7d62b6fa3523accbeba9a083c74330ff344e2ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cbfd1432945bdf45fc1461440b835783e0b2079
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786367"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456154"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Tutoriel : Créer une application Blazor Server qui utilise la plateforme d’identité Microsoft pour l’authentification
 
@@ -44,7 +44,7 @@ Sous **Gérer**, sélectionnez **Authentification** > **Octroi implicite et flux
 
 Enfin, étant donné que l’application appelle une API protégée (dans ce cas, Microsoft Graph), elle a besoin d’une clé secrète client afin de vérifier son identité lorsqu’elle demande un jeton d’accès pour appeler cette API.
 
-1. Toujours dans le cadre de l’inscription de l’application, sous **Gérer**, sélectionnez **Certificats & secrets**.
+1. Toujours dans le cadre de l’inscription de l’application, sous **Gérer**, sélectionnez **Certificats et secrets** puis **Clés secrètes client**.
 2. Créez une **clé secrète client** qui n’expire jamais.
 3. Prenez note de la **Valeur** de la clé secrète, car vous allez l’utiliser à l’étape suivante. Vous ne pouvez plus y accéder une fois que vous avez quitté ce volet. Toutefois, vous pouvez la recréer si nécessaire.
 

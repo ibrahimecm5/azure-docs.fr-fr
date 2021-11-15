@@ -4,21 +4,24 @@ description: Découvrez-en plus sur les versions d’évaluation. Les versions d
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 10/26/2021
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: c4d5ccaead616fa53cc10733ad82f0f20b7e1cab
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 04eab06f0ce8aefa675b89613611c0ec9a93f9b6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007388"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847353"
 ---
 # <a name="test-drive-technical-configuration"></a>Configuration technique de la version d’évaluation
 
 L’option Version d’évaluation de la place de marché commerciale Microsoft vous permet de configurer une visite guidée et interactive des principales fonctionnalités de votre produit. Avec une version d’évaluation, les nouveaux clients peuvent tester votre offre avant de valider l’achat. Pour plus d’informations, consultez la rubrique [Qu’est-ce qu’une version d’évaluation ?](what-is-test-drive.md)
 
 Si vous ne souhaitez plus fournir une version d’évaluation pour votre offre, retournez à la page **Configuration de l’offre** et décochez **Activer la version d’évaluation**. Tous les types d’offre ne disposent pas d’une version d'évaluation.
+
+> [!TIP]
+> Pour voir la vue client du test drive dans la place de marché commerciale, consultez [Qu’est-ce que la Place de marché Azure](/marketplace/azure-marketplace-overview#take-action-on-a-listing) et [Qu’est-ce que Microsoft AppSource ?](/marketplace/appsource-overview).
 
 ## <a name="azure-resource-manager-test-drive"></a>Version d’évaluation d’Azure Resource Manager
 

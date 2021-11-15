@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 10/28/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0055cae979e1ab116d71a387f3f9d7e61afb9d32
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: ef091072d7d5847ca1e8daa206de1734dccf4ff2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754479"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469898"
 ---
 # <a name="translator-language-support"></a>Prise en charge linguistique de Translator
 
@@ -185,7 +185,8 @@ L'[opération Translittérer](reference/v3-0-transliterate.md) de la fonctionnal
 Ajoutez des fonctionnalités supplémentaires à vos applications et workflows en utilisant d'autres services Cognitive Services avec Translator. Les listes de langues des services supplémentaires sont répertoriées ci-dessous.
 * [Vision par ordinateur](../computer-vision/language-support.md) 
 * [Speech](../speech-service/language-support.md) 
-* [Analyse de texte](../text-analytics/language-support.md) 
+* [Service Language](../language-service/index.yml) 
+    * Sélectionnez la fonctionnalité que vous souhaitez utiliser, puis **Prise en charge des langues** dans le menu de navigation de gauche.
 
 Affichez tous les services [Cognitive Services](../index.yml). 
 

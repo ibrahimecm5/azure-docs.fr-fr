@@ -3,17 +3,41 @@ title: Échec du démarrage d’Apache HBase Master dans Azure HDInsight
 description: Échec du démarrage d’Apache HBase Master (HMaster) dans Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/14/2019
-ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 11/07/2021
+ms.openlocfilehash: 7870aa48a75de6a5443298d909f0fe7d59311a78
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98936897"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061622"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Échec du démarrage d’Apache HBase Master (HMaster) dans Azure HDInsight
 
 Cet article décrit les éventuelles solutions à appliquer pour résoudre les problèmes rencontrés lors d’interactions avec des clusters Azure HDInsight.
+
+## <a name="scenario-master-startup-cannot-progress-in-holding-pattern-until-region-comes-online"></a>Scénario : Le démarrage du Master ne peut pas progresser, car il est en d’attente tant que la région n’est pas en ligne.
+
+### <a name="issue"></a>Problème
+
+HMaster ne parvient pas à démarrer en raison de l’avertissement suivant :
+```output
+hbase:namespace,,<timestamp_region_create>.<encoded_region_name>.is NOT online; state={<encoded_region_name> state=OPEN, ts=<some_timestamp>, server=<server_name>}; ServerCrashProcedures=true. Master startup cannot progress, in holding-pattern until region onlined. 
+```
+
+Par exemple, les valeurs des paramètres peuvent varier dans le message réel :
+```output
+hbase:namespace,,1546588612000.0000010bc582e331e3080d5913a97000. is NOT online; state={0000010bc582e331e3080d5913a97000 state=OPEN, ts=1633935993000, server=<wn fqdn>,16000,1622012792000}; ServerCrashProcedures=false. Master startup cannot progress, in holding-pattern until region onlined.
+```
+
+### <a name="cause"></a>Cause
+
+HMaster recherche le répertoire WAL sur les serveurs de la région avant de remettre en ligne les régions **OUVERTES**. Dans ce cas, si cet annuaire n’était pas présent, il n’a pas démarré
+
+### <a name="resolution"></a>Résolution
+
+1. Créez cet annuaire factice à l’aide de la commande suivante : `sudo -u hbase hdfs dfs -mkdir /hbase-wals/WALs/<wn fqdn>,16000,1622012792000`.
+
+2. Redémarrez le service HMaster à partir de l’interface utilisateur Ambari.
 
 ## <a name="scenario-atomic-renaming-failure"></a>Scénario : défaillance renommage atomique
 
@@ -134,16 +158,10 @@ Paramètres HDFS et HBase mal configurés pour un compte de stockage secondaire.
 
 ### <a name="resolution"></a>Résolution
 
-Définissez hbase.rootdir: wasb://@.blob.core.windows.net/hbase et redémarrez les services sur Ambari.
+`set hbase.rootdir: wasb://@.blob.core.windows.net/hbase` et redémarrez les services sur Ambari.
 
 ---
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Si votre problème ne figure pas dans cet article ou si vous ne parvenez pas à le résoudre, utilisez un des canaux suivants pour obtenir de l’aide :
-
-* Obtenez des réponses de la part d’experts Azure en faisant appel au [Support de la communauté Azure](https://azure.microsoft.com/support/community/).
-
-* Connectez-vous à [@AzureSupport](https://twitter.com/azuresupport), le compte Microsoft Azure officiel pour améliorer l’expérience client. Connexion de la communauté Azure aux ressources appropriées : réponses, support technique et experts.
-
-* Si vous avez besoin d’une aide supplémentaire, vous pouvez envoyer une requête de support à partir du [Portail Microsoft Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Sélectionnez **Support** dans la barre de menus, ou ouvrez le hub **Aide + Support**. Pour plus d’informations, consultez [Création d’une demande de support Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). L’accès au support relatif à la gestion et à la facturation des abonnements est inclus avec votre abonnement Microsoft Azure. En outre, le support technique est fourni avec l’un des [plans de support Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [notes](../includes/hdinsight-troubleshooting-next-steps.md)]

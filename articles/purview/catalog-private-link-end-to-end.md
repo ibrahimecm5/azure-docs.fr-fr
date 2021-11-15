@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 4f15d39da8f97897498f07892eb90d37a1bd8574
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2d0a74b5674bba6850cbe38f1811c1204acb5e69
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209282"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848208"
 ---
 # <a name="connect-to-your-azure-purview-and-scan-data-sources-privately-and-securely"></a>Se connecter à Azure Purview et analyser des sources de données de manière privée et sécurisée
 
@@ -26,7 +26,7 @@ Azure Purview peut analyser des sources de données dans un environnement Azure 
 
  - Le point de terminaison privé d’objet blob est lié à un compte de stockage géré Azure Purview.
  - Le point de terminaison privé de file d’attente est lié à un compte de stockage managé Azure Purview.
- - le point de terminaison privé de l’espace de noms est lié à l’espace de noms Event Hub managé Azure Purview.
+ - Le point de terminaison privé de l’espace de noms est lié à l’espace de noms Event Hub managé Azure Purview.
 
   :::image type="content" source="media/catalog-private-link/purview-private-link-architecture.png" alt-text="Le diagramme qui affiche l’architecture d’Azure Purview et Private Link.":::
 
@@ -180,7 +180,7 @@ Suivez les étapes dans [Création et gestion d’un runtime d’intégration au
    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="Capture d’écran montrant l’exécution d’une analyse Azure à l’aide du runtime d’intégration auto-hébergé.":::
 
 > [!IMPORTANT]
-> Si vous avez créé votre compte Azure Purview après le 18 août 2021, veillez à télécharger et à installer la dernière version du runtime d’intégration auto-hébergé à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
+> Veillez à télécharger et à installer la dernière version du runtime d’intégration auto-hébergé à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="firewalls-to-restrict-public-access"></a>Pare-feu pour restreindre l’accès public
 

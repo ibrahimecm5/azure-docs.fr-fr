@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: d1d6ee6b7baf930dbe38ca143cdfd1cc61b4758a
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 15edab4bc16067b866912e1fca899e844ff6e7e0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430057"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554925"
 ---
 # <a name="tutorial-designer---train-a-no-code-regression-model"></a>Tutoriel : Concepteur – effectuer l’apprentissage d’un modèle de régression sans code
 
@@ -62,7 +62,7 @@ Vous devez avoir un espace de travail Azure Machine Learning pour utiliser le co
 
     ![Capture d’écran de l’espace de travail visuel montrant comment accéder au concepteur](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
-1. Sélectionnez **Modules prédéfinis faciles à utiliser**.
+1. Sélectionnez **Composants prédéfinis faciles à utiliser**.
 
 1. En haut du canevas, sélectionnez le nom de pipeline par défaut **Pipeline-Created-on**. Renommez-le *Automobile price prediction*. Le nom n’a pas besoin d’être unique.
 
@@ -70,7 +70,7 @@ Vous devez avoir un espace de travail Azure Machine Learning pour utiliser le co
 
 Un pipeline s’exécute sur une cible de calcul, qui est une ressource de calcul attachée à votre espace de travail. Une fois que vous avez créé une cible de calcul, vous pouvez la réutiliser pour d’autres exécutions ultérieures.
 
-Vous pouvez définir une **cible de calcul par défaut** pour le pipeline entier si vous souhaitez que tous les modules utilisent la même cible de calcul par défaut. Toutefois, vous pouvez définir des cibles de calcul différentes selon les modules.
+Vous pouvez définir une **cible de calcul par défaut** pour le pipeline entier si vous souhaitez que tous les composants utilisent la même cible de calcul par défaut. Toutefois, vous pouvez définir des cibles de calcul différentes selon les modules.
 
 1. À côté du nom du pipeline, sélectionnez l’**icône d’engrenage** ![Capture d’écran de l’icône d’engrenage](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) en haut du canevas pour ouvrir le volet **Paramètres**.
 
@@ -94,7 +94,7 @@ Vous pouvez définir une **cible de calcul par défaut** pour le pipeline entier
 
 Un certain nombre d’exemples de jeux de données que vous pouvez expérimenter sont inclus dans le concepteur. Pour les besoins de ce tutoriel, vous allez utiliser **Automobile price data (Raw)** (Données sur le prix des véhicules automobiles [brutes]). 
 
-1. Sur la gauche du canevas de pipeline se trouve une palette de jeux de données et de modules. Sélectionnez **Exemples de jeux de données** pour voir les exemples de jeux de données disponibles.
+1. À gauche du canevas du pipeline se trouve une palette de jeux de données et de composants. Sélectionnez **Exemples de jeux de données** pour voir les exemples de jeux de données disponibles.
 
 1. Sélectionnez le jeu de données **Automobile price data (raw)** (Données sur le prix des automobiles (brut)), puis faites-le glisser vers le canevas.
 
@@ -118,21 +118,21 @@ Les jeux de données nécessitent généralement un prétraitement avant l’ana
 
 Quand vous entraînez un modèle, vous devez traiter le problème des données manquantes. Dans ce jeu de données, la colonne **normalized-losses** (pertes normalisées) a de nombreuses valeurs manquantes : vous allez donc l’exclure du modèle.
 
-1. Dans la palette des modules à gauche du canevas, développez la section **Data Transformation** (Transformation des données) et recherchez le module **Select Columns in Dataset** (Sélectionner les colonnes dans le jeu de données).
+1. Dans la palette des composants à gauche du canevas, développez la section **Transformation des données** et recherchez le composant **Sélectionner des colonnes dans le jeu de données**.
 
-1. Faites glisser le module **Select Columns in Dataset** vers le canevas. Déposez-le sous le module de jeu de données.
+1. Faites glisser le composant **Sélectionner des colonnes dans le jeu de données** sur le canevas. Déposez le composant sous le composant du jeu de données.
 
-1. Connectez le jeu de données **Automobile price data (Raw)** (Données sur le prix des automobiles (brut)) au module **Select Columns in Dataset**. Faites-le glisser depuis le port de sortie du jeu de données, qui est le petit cercle situé en bas du jeu de données sur le canevas, jusqu’au port d’entrée de **Select Columns in Dataset**, qui est le petit cercle en haut du module.
+1. Connectez le jeu de données **Données sur le prix des véhicules automobiles (brutes)** au composant **Sélectionner des colonnes dans le jeu de données**. Faites-le glisser depuis le port de sortie du jeu de données, qui est le petit cercle situé en bas du jeu de données sur le canevas, jusqu’au port d’entrée de **Sélectionner des colonnes dans le jeu de données**, qui est le petit cercle en haut du composant.
 
     > [!TIP]
-    > Vous créez un flux de données à travers votre pipeline quand vous connectez le port de sortie d’un module au port d’entrée d’un autre module.
+    > Vous créez un flux de données dans votre pipeline lorsque vous connectez le port de sortie d’un composant au port d’entrée d’un autre.
     >
 
-    ![Connecter des modules](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
+    ![Connecter des composants](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. Sélectionnez le module **Select Columns in Dataset**.
+1. Sélectionnez le composant **Sélectionner des colonnes dans le jeu de données**.
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez **Edit column** (Modifier une colonne).
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez **Modifier la colonne**.
 
 1. Développez la liste déroulante **Column names** (Noms des colonnes) à côté de **Include** (Inclure), puis sélectionnez **All columns** (Toutes les colonnes).
 
@@ -146,34 +146,34 @@ Quand vous entraînez un modèle, vous devez traiter le problème des données m
 
     ![Exclure une colonne](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
 
-1. Sélectionnez le module **Select Columns in Dataset**. 
+1. Sélectionnez le composant **Sélectionner des colonnes dans le jeu de données**. 
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez la zone de texte **Comment** (Commentaire) et entrez *Exclure les pertes normalisées*.
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez la zone de texte **Commentaire** et entrez *Exclure les pertes normalisées*.
 
     Les commentaires sont affichés sur le graphe pour vous aider à organiser votre pipeline.
 
 ### <a name="clean-missing-data"></a>Nettoyage des données manquantes
 
-Il manque encore des valeurs dans votre jeu de données après la suppression de la colonne **normalized-losses**. Vous pouvez supprimer les données manquantes restantes à l’aide du module **Clean Missing Data** (Nettoyer les données manquantes).
+Il manque encore des valeurs dans votre jeu de données après la suppression de la colonne **normalized-losses**. Vous pouvez supprimer les données manquantes restantes à l’aide du composant **Nettoyage des données manquantes**.
 
 > [!TIP]
-> Le nettoyage des valeurs manquantes dans les données d’entrée est un prérequis pour l’utilisation de la plupart des modules dans le concepteur.
+> Le nettoyage des valeurs manquantes dans les données d’entrée est une condition préalable à l’utilisation de la plupart des composants du concepteur.
 
-1. Dans la palette des modules à gauche du canevas, développez la section **Data Transformation** (Transformation des données) et recherchez le module **Clean Missing Data**.
+1. Dans la palette des composants à gauche du canevas, développez la section **Transformation des données** et recherchez le composant **Nettoyage des données manquantes**.
 
-1. Faites glisser le module **Clean Missing Data** vers le canevas du pipeline. Connectez-le au module **Select Columns in Dataset**. 
+1. Faites glisser le composant **Nettoyage des données manquantes** jusqu’au canevas du pipeline. Connectez-le au composant **Sélectionner des colonnes dans le jeu de données**. 
 
-1. Sélectionnez le module **Clean Missing Data**.
+1. Sélectionnez le composant **Clean Missing Data**.
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez **Edit Column** (Modifier une colonne).
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez **Modifier la colonne**.
 
 1. Dans la fenêtre **Columns to be cleaned** (Colonnes à nettoyer) qui s’affiche, développez le menu déroulant en regard d’**Include** (inclure). Sélectionnez **All columns** (Toutes les colonnes).
 
 1. Sélectionnez **Enregistrer**.
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez **Remove entire row** (Supprimer la ligne entière) sous **Cleaning mode** (Mode de nettoyage).
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez **Supprimer la ligne entière** sous **Mode de nettoyage**.
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez la zone de texte **Comment** (Commentaire) et entrez *Supprimer les lignes avec des valeurs manquantes*. 
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez la zone de texte **Commentaire** et entrez *Supprimer les lignes de valeurs manquantes*. 
 
     Votre pipeline doit maintenant se présenter comme ceci :
 
@@ -181,7 +181,7 @@ Il manque encore des valeurs dans votre jeu de données après la suppression de
 
 ## <a name="train-a-machine-learning-model"></a>Entraîner un modèle Machine Learning
 
-Une fois les modules en place pour traiter les données, vous pouvez configurer les modules d’entraînement.
+Une fois les composants en place pour traiter les données, vous pouvez configurer les composants d’entraînement.
 
 Comme vous voulez prédire un prix, à savoir un nombre, vous pouvez utiliser un algorithme de régression. Pour cet exemple, vous utilisez un modèle de régression linéaire.
 
@@ -189,47 +189,47 @@ Comme vous voulez prédire un prix, à savoir un nombre, vous pouvez utiliser un
 
 Le fractionnement des données est une tâche courante de Machine Learning. Vous allez diviser vos données en deux jeux de données distincts. Un jeu de données entraîne le modèle et l’autre teste les performances du modèle.
 
-1. Dans la palette de modules, développez la section **Data Transformation** et recherchez le module **Split Data** (Fractionner les données).
+1. Dans la palette de composants, développez la section **Transformation des données** et recherchez le composant **Fractionner les données**.
 
-1. Faites glisser le module **Split Data** vers le canevas du pipeline.
+1. Faites glisser le composant **Fractionner les données** jusqu’au canevas du pipeline.
 
-1. Connectez le port de gauche du module **Clean Missing Data** au module **Split Data**.
+1. Connectez le port gauche du composant **Nettoyage des données manquantes** au composant **Fractionner les données**.
 
     > [!IMPORTANT]
     > Vérifiez que le port de sortie de gauche de **Clean Missing Data** est connecté à **Split Data**. Le port de gauche contient les données nettoyées. Le port de droite contient les données abandonnées.
 
-1. Sélectionnez le module **Fractionner les données**.
+1. Sélectionnez le composant **Split Data**.
 
-1. Dans le volet d’informations du module à droite du canevas, définissez l’option **Fraction of rows in the first output dataset** (Fraction de lignes dans le premier jeu de données de sortie) à la valeur 0,7.
+1. Dans le volet d’informations du composant à droite du canevas, définissez l’option **Fraction de lignes dans le premier jeu de données de sortie** sur la valeur 0,7.
 
     Cette option permet de diviser les données afin d’en utiliser 70 % pour entraîner le modèle et 30 % pour tester ce dernier. Le jeu de données comprenant 70 % des données est accessible par le biais du port de sortie de gauche. Les données restantes sont disponibles par le biais du port de sortie de droite.
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez la zone de texte **Comment** (Commentaire) et entrez *Diviser le jeu de données en un jeu d’entraînement (0,7) et un jeu de test (0,3)* .
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez la zone de texte **Commentaire** et entrez *Diviser le jeu de données en un jeu d’entraînement (0,7) et un jeu de test (0,3)* .
 
 ### <a name="train-the-model"></a>Effectuer l’apprentissage du modèle
 
 Entraînez le modèle en lui fournissant un jeu de données incluant le prix. L’algorithme construit un modèle qui explique la relation entre les caractéristiques et le prix dans les données d’entraînement.
 
-1. Dans la palette des modules, développez **Machine Learning Algorithms** (Algorithmes Machine Learning).
+1. Dans la palette des composants, développez **Algorithmes Machine Learning**.
     
-    Cette option affiche plusieurs catégories de module qui vous permettent d’initialiser les algorithmes d’apprentissage.
+    Cette option affiche plusieurs catégories de composants qui vous permettent d’initialiser les algorithmes d’apprentissage.
 
 1. Sélectionnez **Regression** > **Linear Regression** (Régression > Régression linéaire), puis faites glisser le module vers le canevas du pipeline.
 
-1. Dans la palette des modules, développez la section **Module training** (Entraînement de module), puis faites glisser le module **Train Model** (Entraîner le modèle) vers le canevas.
+1. Dans la palette des composants, développez la section **Entraînement de module**, puis faites glisser le composant **Effectuer l’apprentissage du modèle** jusqu’au canevas.
 
-1. Connectez la sortie du module **Linear Regression** (Régression linéaire) à l’entrée gauche du module **Train model** (Entraîner le modèle).
+1. Connectez la sortie du composant **Régression linéaire** à l’entrée gauche du composant **Effectuer l’apprentissage du modèle**.
 
-1. Connectez la sortie des données d’entraînement (port de gauche) du module **Fractionner les données** à l’entrée droite du module **Entraîner le modèle**.
+1. Connectez la sortie des données d’entraînement (port gauche) du composant **Fractionner les données** à l’entrée droite du composant **Effectuer l’apprentissage du modèle**.
     
     > [!IMPORTANT]
     > Vérifiez que le port de sortie de gauche de **Split Data** est connecté à **Train Model**. Le port de gauche contient le jeu d’entraînement. Le port de droite contient le jeu de test.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Capture d’écran montrant la configuration correcte du module Entraîner le modèle. Le module Régression linéaire se connecte au port gauche du module Entraîner le modèle et le module Fractionner les données se connecte au port droit du module Entraîner le modèle.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Capture d’écran montrant la configuration correcte du composant Effectuer l’apprentissage du modèle. Le composant Régression linéaire se connecte au port gauche du composant Effectuer l’apprentissage du modèle et le composant Fractionner les données se connecte au port droit du composant Effectuer l’apprentissage du modèle.":::
 
-1. Sélectionnez le module **Entraîner le modèle**.
+1. Sélectionnez le composant **Effectuer l’apprentissage du modèle**.
 
-1. Dans le volet d’informations du module à droite du canevas, sélectionnez **Edit column** (Modifier une colonne).
+1. Dans le volet d’informations du composant à droite du canevas, sélectionnez le sélecteur de **Modifier la colonne**.
 
 1. Dans la boîte de dialogue **Label column** (Étiqueter une colonne), développez le menu déroulant, puis sélectionnez **Column names** (Noms de colonnes). 
 
@@ -240,23 +240,23 @@ Entraînez le modèle en lui fournissant un jeu de données incluant le prix. L�
 
     Votre pipeline doit se présenter comme suit :
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Capture d’écran montrant la configuration correcte du pipeline après l’ajout du module Entraîner le modèle.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Capture d’écran montrant la configuration correcte du pipeline après l’ajout du composant Effectuer l’apprentissage du modèle.":::
 
-### <a name="add-the-score-model-module"></a>Ajoutez le module Score Model (Noter le modèle)
+### <a name="add-the-score-model-component"></a>Ajoutez le composant Noter le modèle.
 
 Une fois que vous avez entraîné votre modèle à l’aide de 70 % des données, vous pouvez l’utiliser pour attribuer un score aux 30 % de données restants, et vérifier ainsi son bon fonctionnement.
 
-1. Entrez *score model* (score du modèle) dans la zone de recherche pour trouver le module **Score Model**. Faites glisser le module vers le canevas du pipeline. 
+1. Entrez *noter le modèle* dans la zone de recherche pour trouver le composant **Noter le modèle**. Faites glisser le composant jusqu’au canevas du pipeline. 
 
-1. Connectez la sortie du module **Entraîner le modèle** au port d’entrée de gauche du module **Scorer le modèle**. Connectez la sortie des données de test (port de droite) du module **Fractionner les données** au port d’entrée de droite du module **Scorer le modèle**.
+1. Connectez la sortie du composant **Effectuer l’apprentissage du modèle** au port d’entrée gauche du composant **Noter le modèle**. Connectez la sortie des données de test (port droit) du composant **Fractionner les données** au port d’entrée droit du composant **Noter le modèle**.
 
-### <a name="add-the-evaluate-model-module"></a>Ajouter le module Évaluer le modèle
+### <a name="add-the-evaluate-model-component"></a>Ajouter le composant Évaluer le modèle
 
-Utilisez le module **Evaluate Model** (Évaluer le modèle) pour évaluer le score attribué par votre modèle au jeu de données de test.
+Utilisez le composant **Évaluer le modèle** pour évaluer le score attribué par votre modèle au jeu de données de test.
 
-1. Entrez *evaluate* (évaluer) dans la zone de recherche pour trouver le module **Evaluate Model** (Évaluer le modèle). Faites glisser le module vers le canevas du pipeline. 
+1. Entrez *évaluer* dans la zone de recherche pour trouver le composant **Évaluer le modèle**. Faites glisser le composant jusqu’au canevas du pipeline. 
 
-1. Connectez la sortie du module **Scorer le modèle** à l’entrée de gauche du module **Évaluer le modèle**. 
+1. Connectez la sortie du composant **Noter le modèle** à l’entrée gauche du composant **Évaluer le modèle**. 
 
     Le pipeline final doit maintenant se présenter comme ceci :
 
@@ -279,13 +279,13 @@ Quand vous avez terminé la configuration de votre pipeline, vous pouvez lancer 
     
     Vous pouvez voir l’état et les détails de l’exécution en haut à droite du canevas.
     
-    Si c’est la première fois, l’exécution de votre pipeline peut prendre jusqu’à 20 minutes. Les paramètres de calcul par défaut ont une taille de nœud minimale de 0, ce qui signifie que le concepteur doit allouer des ressources après une période d’inactivité. Les exécutions de pipeline répétées prennent moins de temps dans la mesure où les ressources de calcul sont déjà allouées. Par ailleurs, le concepteur utilise les résultats mis en cache pour chaque module afin d’améliorer l’efficacité.
+    Si c’est la première fois, l’exécution de votre pipeline peut prendre jusqu’à 20 minutes. Les paramètres de calcul par défaut ont une taille de nœud minimale de 0, ce qui signifie que le concepteur doit allouer des ressources après une période d’inactivité. Les exécutions de pipeline répétées prennent moins de temps dans la mesure où les ressources de calcul sont déjà allouées. Par ailleurs, le concepteur utilise les résultats mis en cache pour chaque composant afin d’améliorer l’efficacité.
 
 ### <a name="view-scored-labels"></a>Afficher les étiquettes de score
 
 Une fois l’exécution terminée, vous pouvez voir les résultats de l’exécution du pipeline. Tout d’abord, examinez les prédictions générées par le modèle de régression.
 
-1. Cliquez avec le bouton droit sur le module **Score Model** et sélectionnez **Visualiser** > **Jeu de données scoré** pour afficher sa sortie.
+1. Cliquez avec le bouton droit sur le composant **Noter le modèle** et sélectionnez **Visualiser** > **Jeu de données noté** pour afficher sa sortie.
 
     Vous pouvez voir ici les prix prédits et les prix réels des données à partir des données de test.
 
@@ -295,7 +295,7 @@ Une fois l’exécution terminée, vous pouvez voir les résultats de l’exécu
 
 Utilisez **Evaluate Model** pour voir ce que donne le modèle entraîné sur le jeu de données de test.
 
-1. Cliquez avec le bouton droit sur le module **Evaluate Model** et sélectionnez **Visualiser** > **Résultats de l’évaluation** pour afficher sa sortie.
+1. Cliquez avec le bouton droit sur le composant **Évaluer le modèle** et sélectionnez **Visualiser** > **Résultats de l’évaluation** pour afficher sa sortie.
 
 Les statistiques suivantes s’affichent pour votre modèle :
 

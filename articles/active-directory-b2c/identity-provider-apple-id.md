@@ -8,19 +8,19 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e47335810ec8f9845ab159af832d7ea3d362323
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c3d3fa84e615a60092d0f42acd401be0421bc3f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130228016"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448630"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Configurer l’inscription et la connexion avec un ID Apple à l’aide d’Azure Active Directory B2C (préversion)
+# <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c"></a>Configurer l’inscription et la connexion avec un ID Apple à l’aide d’Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -81,7 +81,7 @@ Pour permettre la connexion des utilisateurs avec un ID Apple dans Azure Active 
 1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
 1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
 1. Sous **Services Azure**, sélectionnez **Azure AD B2C**. Vous pouvez également utiliser la zone de recherche pour rechercher et sélectionner **Azure AD B2C**.
-1. Cliquez sur **Fournisseurs d’identité**, puis sélectionnez **Apple (préversion)** .
+1. Sélectionnez **Fournisseurs d’identité**, puis **Apple**.
 1. Pour le **nom**, entrez **Se connecter avec Apple**. 
 1. Entrez **l’ID de développeur Apple (ID d’équipe)** .
 1. Entrez **l’ID de service Apple (ID client)** .
@@ -92,8 +92,7 @@ Pour permettre la connexion des utilisateurs avec un ID Apple dans Azure Active 
 
 > [!IMPORTANT] 
 > - En cas de connexion avec Apple, l’administrateur doit renouveler sa clé secrète client tous les 6 mois. 
-> - Pendant la préversion publique de cette fonctionnalité, vous devez renouveler manuellement la clé secrète client Apple si elle expire. Un avertissement s’affiche à l’avance sur la page Configurer l’IDP social des fournisseurs d’identité Apple, mais nous vous recommandons de définir votre propre rappel. 
-> - Si vous devez renouveler le secret, ouvrez Azure AD B2C dans le portail Azure, accédez à **Fournisseurs d’identité** > **Apple** et sélectionnez **Renouveler le secret**.
+> - La clé secrète client Apple sera automatiquement renouvelée lorsqu’elle expirera. Si vous devez renouveler la clé secrète manuellement, ouvrez Azure AD B2C dans le portail Azure, accédez à **Fournisseurs d’identité** > **Apple** et sélectionnez **Renouveler le secret**.
 > - Suivez les instructions pour [proposer le bouton Se connecter avec Apple](#customize-your-user-interface).
 
 ## <a name="add-the-apple-identity-provider-to-a-user-flow"></a>Ajouter le fournisseur d’identité Apple à un flux d’utilisateur
@@ -102,7 +101,7 @@ Pour permettre aux utilisateurs de se connecter à l’aide d’un ID Apple, vou
 
 1. Dans votre locataire Azure AD B2C, sélectionnez **Flux d’utilisateur**.
 1. Sélectionnez un flux d’utilisateur auquel vous souhaitez ajouter le fournisseur d’identité Apple. 
-1. Sous **Fournisseurs d’identité sociale**, sélectionnez **Apple (préversion)** .
+1. Sous **Fournisseurs d’identité sociale**, sélectionnez **Apple**.
 1. Sélectionnez **Enregistrer**.
 1. Pour tester votre stratégie, sélectionnez **Exécuter le flux d’utilisateur**.
 1. Pour **Application**, sélectionnez l’application web *testapp1* que vous avez précédemment inscrite. L’**URL de réponse** doit être `https://jwt.ms`.

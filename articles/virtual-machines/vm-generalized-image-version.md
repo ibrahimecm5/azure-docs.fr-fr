@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7468218fbbb08a2e7157d8fc10d6433d6d784d2e
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: a9b1dc77eb8eaae9e634cb362beed527a74a84be
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452626"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474512"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version"></a>Créer une machine virtuelle à partir d’une version d’image généralisée
 
-Créez une machine virtuelle à partir d’une [version d’image généralisée](./shared-image-galleries.md#generalized-and-specialized-images) stockée dans une galerie d’images partagées. Si vous souhaitez créer une machine virtuelle en utilisant une image spécialisée, consultez [Créer une machine virtuelle à partir d’une image spécialisée](vm-specialized-image-version.md). 
+Créez une machine virtuelle à partir d’une [version d’image généralisée](./shared-image-galleries.md#generalized-and-specialized-images) stockée dans une galerie Azure Compute Gallery (anciennement Shared Image Gallery). Si vous souhaitez créer une machine virtuelle en utilisant une image spécialisée, consultez [Créer une machine virtuelle à partir d’une image spécialisée](vm-specialized-image-version.md). 
 
 
 ### <a name="portal"></a>[Portail](#tab/portal)

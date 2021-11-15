@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: thwimmer
-ms.openlocfilehash: 5a4c3d697926f5b64548ec631761fb7c4e22277f
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 7a31240c6074be759033324a1abb447d98cc2355
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122207351"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444019"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Tutoriel : Configurer Fortes Change Cloud pour l’approvisionnement automatique d’utilisateurs
 
@@ -140,6 +140,10 @@ Une fois que vous avez configuré l’approvisionnement, utilisez les ressources
 * Utilisez les [journaux d’approvisionnement](../reports-monitoring/concept-provisioning-logs.md) pour déterminer quels utilisateurs ont été configurés avec succès ou échoué.
 * Consultez la [barre de progression](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) pour afficher l’état du cycle d’approvisionnement et quand il se termine
 * Si la configuration de l’approvisionnement semble se trouver dans un état non sain, l’application passe en quarantaine. Pour en savoir plus sur les états de quarantaine, cliquez [ici](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Journal des modifications
+
+* 28/10/2021 : **Détection de schéma** activée.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

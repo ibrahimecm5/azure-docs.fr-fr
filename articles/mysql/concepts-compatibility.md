@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 269656068d01e2db1e222ec58e5f9b40f34f0d53
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/4/2021
+ms.openlocfilehash: 44b4c8e48c7e0edf4501915d3f801abc94b2f0ab
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532680"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893611"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Pilotes MySQL et outils de gestion compatibles avec Azure Database pour MySQL
 
@@ -20,10 +20,13 @@ ms.locfileid: "122532680"
 Cet article décrit les pilotes et outils de gestion compatibles avec Azure Database pour MySQL – Serveur unique.
 
 > [!NOTE]
-> Cet article s’applique uniquement à Azure Database pour MySQL – Serveur unique afin de garantir que les pilotes sont compatibles avec l’[architecture de connectivité](concepts-connectivity-architecture.md) du service Serveur unique. [Azure Database pour MySQL – Serveur flexible](./flexible-server/overview.md) est compatible avec tous les pilotes et outils pris en charge et compatibles avec l’édition de la communauté MySQL. 
+> Cet article s’applique uniquement à Azure Database pour MySQL – Serveur unique afin de garantir que les pilotes sont compatibles avec l’[architecture de connectivité](concepts-connectivity-architecture.md) du service Serveur unique. [Azure Database pour MySQL – Serveur flexible](./flexible-server/overview.md) est compatible avec tous les pilotes et outils pris en charge et compatibles avec l’édition de la communauté MySQL.
 
 ## <a name="mysql-drivers"></a>Pilotes MySQL
 En termes de base de données MySQL, Azure Database pour MySQL utilise la version community edition la plus populaire au monde. Ainsi, elle est compatible avec un large éventail de langages de programmation et de pilotes. L’objectif est de prendre en charge les trois versions les plus récentes de pilotes MySQL, et de poursuivre les efforts avec les auteurs de la Communauté open source, afin d’améliorer en permanence les fonctionnalités et la facilité d’utilisation des pilotes MySQL. Une liste de pilotes testés et détectés compatibles avec Azure Database pour MySQL 5.6 et 5.7 est fournie dans le tableau suivant :
+
+> [!WARNING]
+> Le client MySQL 8.0.27 est incompatible avec Azure Database pour MySQL – Serveur unique. Toutes les connexions du client MySQL 8.0.27 créées via mysql.exe ou Workbench échouent. Pour contourner ce problème, envisagez d’utiliser une version antérieure du client (antérieure à MySQL 8.0.27) ou de créer une instance d’[Azure Database pour MySQL – Serveur flexible](https://docs.microsoft.com/azure/mysql/flexible-server/overview) à la place.
 
 | **Langage de programmation** | **Driver** | **Liens** | **Versions compatibles** | **Versions incompatibles** | **Remarques** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |

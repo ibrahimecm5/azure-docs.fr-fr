@@ -8,19 +8,19 @@ manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 04/17/2019
+ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dd2ceaa97a456d72227d6180596aeccc9e00a614
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e083bc3d5f313be6bd32a75f413f858ef68e0993
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453895"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469993"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Exemple : Explorer une application de traitement d’image avec C#
 
-Explorez une application Windows de base qui utilise l’API Vision par ordinateur pour effectuer une reconnaissance optique des caractères (OCR), créer des miniatures avec un rognage intelligent, mais aussi détecter, classer, baliser et décrire des caractéristiques visuelles, y compris les visages, dans une image. L’exemple ci-dessous vous permet d’envoyer une URL d’image ou un fichier stocké localement. Vous pouvez utiliser cet exemple open source comme modèle afin de générer votre propre application pour Windows avec l’API Vision par ordinateur et Windows Presentation Foundation (WPF), qui fait partie du .NET Framework.
+Explorez une application Windows de base qui utilise l’API Vision par ordinateur pour effectuer une reconnaissance optique de caractères (OCR), créer des miniatures avec un rognage intelligent et détecter, catégoriser, étiqueter et décrire des caractéristiques visuelles, y compris les visages, dans une image. L’exemple ci-dessous vous permet d’envoyer une URL d’image ou un fichier stocké localement. Vous pouvez utiliser cet exemple open source comme modèle afin de générer votre propre application pour Windows avec l’API Vision par ordinateur et Windows Presentation Foundation (WPF), qui fait partie du .NET Framework.
 
 > [!div class="checklist"]
 > * Obtenir l’exemple d’application à partir de GitHub
@@ -49,7 +49,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 ```
 
 > [!IMPORTANT]
-> Ne téléchargez pas ce référentiel au format ZIP. Git n’inclut pas les sous-modules lors du téléchargement des référentiels au format ZIP.
+> Ne téléchargez pas ce référentiel au format _.zip_. Git n’inclut pas les sous-modules lors du téléchargement des référentiels au format _.zip_.
 
 ### <a name="get-optional-sample-images"></a>Obtenir des exemples d’image (facultatif)
 

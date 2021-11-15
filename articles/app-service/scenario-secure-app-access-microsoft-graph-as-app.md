@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurepowershell
-ms.openlocfilehash: 5bb52799836b1975de9d936e04fb53987effb300
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 777355c3bff17c2d9a156eb6b330f15e2551943d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832623"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471000"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Tutoriel : Accéder à Microsoft Graph à partir d’une application sécurisée en tant qu’application
 
@@ -119,7 +119,9 @@ Dans **Vue d’ensemble**, sélectionnez **Autorisations** ; vous verrez alors 
 
 :::image type="content" alt-text="Capture d’écran montrant le volet Autorisations." source="./media/scenario-secure-app-access-microsoft-graph/enterprise-apps-permissions.png":::
 
-## <a name="call-microsoft-graph-net"></a>Appeler Microsoft Graph (.NET)
+## <a name="call-microsoft-graph"></a>Appeler Microsoft Graph
+
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
 
 La classe [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) est utilisée pour obtenir les informations d’identification d’un jeton pour votre code afin d’autoriser les demandes d’accès à Microsoft Graph. Créez une instance de la classe [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), qui utilise l’identité managée pour extraire des jetons et les attacher au client de service. L’exemple de code suivant obtient les informations d’identification du jeton authentifiées, et les utilise pour créer un objet de client de service, qui obtient les utilisateurs du groupe.
 
@@ -129,7 +131,7 @@ Pour voir ce code dans un exemple d’application, consultez l’[exemple sur Gi
 
 Installez le [package NuGet Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) dans votre projet à l’aide de l’interface de ligne de commande .NET Core ou de la console du gestionnaire de package dans Visual Studio.
 
-# <a name="command-line"></a>[Ligne de commande](#tab/command-line)
+#### <a name="net-core-command-line"></a>Ligne de commande .NET Core
 
 Ouvrez une ligne de commande et basculez vers le répertoire qui contient votre fichier projet.
 
@@ -139,7 +141,7 @@ Exécutez les commandes d’installation.
 dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
-# <a name="package-manager"></a>[Gestionnaire de package](#tab/package-manager)
+#### <a name="package-manager-console"></a>Console du Gestionnaire de package
 
 Ouvrez le projet/la solution dans Visual Studio, puis ouvrez la console à l’aide de la commande **Outils** > **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
 
@@ -147,8 +149,6 @@ Exécutez les commandes d’installation.
 ```powershell
 Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
-
----
 
 ### <a name="example"></a>Exemple
 
@@ -207,6 +207,55 @@ public async Task OnGetAsync()
     Users = msGraphUsers;
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+
+La classe `DefaultAzureCredential` du package [@azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/identity/identity/README.md) est utilisée pour obtenir les informations d’identification d’un jeton pour votre code afin d’autoriser les requêtes auprès de Stockage Azure. Créez une instance de la classe `DefaultAzureCredential`, qui utilise l’identité managée pour extraire des jetons et les attacher au client du service. L’exemple de code suivant obtient les informations d’identification du jeton authentifiées, et les utilise pour créer un objet de client de service, qui obtient les utilisateurs du groupe.
+
+Pour voir ce code dans un exemple d’application, consultez l’[exemple sur GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
+
+### <a name="example"></a>Exemple
+
+```nodejs
+const graphHelper = require('../utils/graphHelper');
+const { DefaultAzureCredential } = require("@azure/identity");
+
+exports.getUsersPage = async(req, res, next) => {
+
+    const defaultAzureCredential = new DefaultAzureCredential();
+    
+    try {
+        const tokenResponse = await defaultAzureCredential.getToken("https://graph.microsoft.com/.default");
+
+        const graphClient = graphHelper.getAuthenticatedClient(tokenResponse.token);
+
+        const users = await graphClient
+            .api('/users')
+            .get();
+
+        res.render('users', { user: req.session.user, users: users });   
+    } catch (error) {
+        next(error);
+    }
+}
+```
+
+Pour interroger Microsoft Graph, l’exemple utilise le [Kit de développement logiciel (SDK) JavaScript Microsoft Graph](https://github.com/microsoftgraph/msgraph-sdk-javascript). Le code correspondant se trouve dans [utils/graphHelper.js](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/blob/main/3-WebApp-graphapi-managed-identity/controllers/graphController.js) de l’exemple complet :
+
+```nodejs
+getAuthenticatedClient = (accessToken) => {
+    // Initialize Graph client
+    const client = graph.Client.init({
+        // Use the provided access token to authenticate requests
+        authProvider: (done) => {
+            done(null, accessToken);
+        }
+    });
+
+    return client;
+}
+```
+---
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 

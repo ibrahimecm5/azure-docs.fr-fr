@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c77e7072755dfb04005c2028358823d669deee
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ff1ef66fd8dc4e9d8d52b048da197274bdee89d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124825385"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Didacticiel : Intégration d’Azure Active Directory à Trakstar
 
@@ -77,15 +77,18 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
    ![Modifier la configuration SAML de base](common/edit-urls.png)
 
-4. Dans la section **Configuration SAML de base**, effectuez les étapes suivantes :
+4. Dans la section **Configuration SAML de base**, entrez les valeurs suivantes dans les champs d’entrée correspondants :
 
-    a. Dans la zone de texte **URL de connexion**, copiez la valeur trouvée dans **ACS (contrôle serveur consommateur) URL** dans Trakstar (Paramètres > Authentification et authentification unique) au format : `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
-
-    b. Dans la zone de texte **Identificateur (ID d’entité)** , conservez la valeur par défaut : `https://app.trakstar.com`
-
+    | Nom du champ | Valeur | Notes | 
+    | ---------------------- | ----- | ---- |
+    | **URL de réponse (URL Assertion Consumer Service)** | `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>` | Remplacez `<YOUR_NAMESPACE>` par une valeur réelle, qui est visible dans le champ **URL ACS (Consumer)** de Trakstar Perform. Voir la remarque qui figure après ce tableau. |
+    | **URL d’authentification** | `https://app.trakstar.com/auth/saml/?namespace=<YOUR_NAMESPACE>` | Cette URL est _similaire_ à la précédente, mais elle ne comporte pas la partie `/callback`. |
+    | **Identificateur (ID d'entité)** | `https://app.trakstar.com` | |
+    
     > [!NOTE]
-    > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’URL de connexion réelle. Connectez-vous à Trakstar en tant qu’administrateur pour obtenir ces valeurs.
-    > Si vous ne voyez pas l’onglet « Authentication & SSO » dans les paramètres, c’est que vous ne disposez pas de la fonctionnalité. Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
+    > Ces valeurs sont uniquement des exemples. Vous devez utiliser les valeurs spécifiques à votre espace de noms dans Trakstar Perform, que vous trouverez en vous connectant à l’application et en accédant à **Settings** (Paramètres) > **Authentication & SSO** (Authentification et authentification unique) > **SAML 2.0** > **Configure** (Configurer).
+    > 
+    > Si vous ne voyez pas l’onglet **Authentication & SSO** (Authentification et authentification unique) dans **Settings** (Paramètres), vous ne disposez peut-être pas de cette fonctionnalité et vous devez contacter le service clientèle de Trakstar. Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
 
 5. Dans la page **Configurer l’authentification unique avec SAML**, dans la section **Certificat de signature SAML**, cliquez sur **Télécharger** pour télécharger le **Certificat (Base64)** en fonction des options définies par rapport à vos besoins, puis enregistrez-le sur votre ordinateur.
 

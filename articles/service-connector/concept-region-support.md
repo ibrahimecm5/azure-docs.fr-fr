@@ -6,13 +6,13 @@ ms.author: xshi
 ms.service: serviceconnector
 ms.topic: conceptual
 ms.date: 10/29/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 33eefc9a36fcd6e230d95e962da344d7ad738d7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: ignite-fall-2021, references_regions
+ms.openlocfilehash: 75678da43f400eb3ee56f956dcd307207b501e91
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096301"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853051"
 ---
 # <a name="service-connector-region-support"></a>Prise en charge des régions avec Service Connector
 
@@ -20,11 +20,21 @@ Quand vous créez une connexion de service avec Service Connector, la ressource 
 
 ## <a name="supported-regions-with-regional-endpoint"></a>Régions prises en charge avec point de terminaison régional
 
-Vous trouverez la dernière liste de prise en charge des régions dans [Produits Azure par région](https://azure.microsoft.com/global-infrastructure/services/?products=service-connector). Si votre instance de service de calcul se trouve dans l’une des régions prises en charge par Service Connector, vous pouvez utiliser Service Connector pour créer et gérer les connexions de service.
+Si votre instance de service de calcul se trouve dans l’une des régions prises en charge par Service Connector ci-dessous, vous pouvez utiliser Service Connector pour créer et gérer les connexions de service.
+
+- Centre-USA Ouest
+- Europe Ouest
+- Europe Nord
+- USA Est
+- USA Ouest 2
 
 ## <a name="supported-regions-with-geographical-endpoint"></a>Régions prises en charge avec point de terminaison géographique
 
 Votre instance de service de calcul peut être créée dans la région dans laquelle Service Connector a une prise en charge de région géographique. Cela signifie que votre connexion de service est créée dans une région différente de celle de votre instance de calcul. Une bannière à ce sujet apparaît quand vous créez une connexion de service. La différence de régions peut impacter la conformité, la résidence des données et la latence des données.
+
+- USA Est 2
+- USA Ouest 3
+- États-Unis - partie centrale méridionale
 
 ## <a name="not-supported-regions-in-public-preview"></a>Régions non prises en charge dans la préversion publique
 

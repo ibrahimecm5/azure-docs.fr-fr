@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration d’Azure Active Directory à Chargebee | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Chargebee'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Chargebee.
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/08/2019
+ms.date: 10/25/2021
 ms.author: jeedes
-ms.openlocfilehash: c994f1bdadc76371b7896350514f3f3adcd7f43b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c72da21933f1f03dd30c6ef8a5dc68368923145e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734431"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448095"
 ---
-# <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Tutoriel : Intégrer Chargebee à Azure Active Directory
+# <a name="tutorial-azure-ad-sso-integration-with-chargebee"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Chargebee
 
 Dans ce didacticiel, vous allez apprendre à intégrer Chargebee à Azure Active Directory (Azure AD). Quand vous intégrez Chargebee à Azure AD, vous pouvez :
 
 * Contrôler qui a accès à Chargebee dans Azure AD.
 * Permettre à vos utilisateurs de se connecter automatiquement à Chargebee avec leur compte Azure AD.
 * Gérer vos comptes à un emplacement central : le Portail Azure.
-
-Pour en savoir plus sur l’intégration des applications SaaS à Azure AD, consultez [Qu’est-ce que l’accès aux applications et l’authentification unique avec Azure Active Directory ?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -39,24 +37,24 @@ Pour commencer, vous devez disposer de ce qui suit :
 
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
-* Chargebee prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**
+* Chargebee prend en charge l’authentification unique lancée par le **fournisseur de services et le fournisseur d’identité**.
 
-## <a name="adding-chargebee-from-the-gallery"></a>Ajout de Chargebee à partir de la Galerie
+## <a name="add-chargebee-from-the-gallery"></a>Ajouter Chargebee à partir de la galerie
 
 Pour configurer l'intégration de Chargebee avec Azure AD, vous devez ajouter Chargebee, disponible depuis la galerie, à votre liste d'applications SaaS gérées.
 
-1. Connectez-vous au [portail Azure](https://portal.azure.com) avec un compte professionnel ou scolaire ou avec un compte personnel Microsoft.
+1. Connectez-vous au portail Azure avec un compte professionnel ou scolaire ou avec un compte personnel Microsoft.
 1. Dans le panneau de navigation gauche, sélectionnez le service **Azure Active Directory**.
 1. Accédez à **Applications d’entreprise**, puis sélectionnez **Toutes les applications**.
 1. Pour ajouter une nouvelle application, sélectionnez **Nouvelle application**.
 1. Dans la section **Ajouter à partir de la galerie**, tapez **Chargebee** dans la zone de recherche.
 1. Sélectionnez **Chargebee** dans le volet de résultats, puis ajoutez l’application. Patientez quelques secondes pendant que l’application est ajoutée à votre locataire.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-chargebee"></a>Configurer et tester l’authentification unique Azure AD pour Chargebee
+## <a name="configure-and-test-azure-ad-sso-for-chargebee"></a>Configurer et tester l’authentification unique Azure AD pour Chargebee
 
 Configurez et testez l’authentification unique Azure AD avec Chargebee à l’aide d’un utilisateur de test appelé **B.Simon**. Pour que l’authentification unique fonctionne, vous devez établir un lien entre un utilisateur Azure AD et l’utilisateur associé dans Chargebee.
 
-Pour configurer et tester l’authentification unique Azure AD avec Chargebee, suivez les indications des sections ci-après :
+Pour configurer et tester l’authentification unique Azure AD avec Chargebee, effectuez les étapes suivantes :
 
 1. **[Configurer l’authentification unique Azure AD](#configure-azure-ad-sso)** pour permettre à vos utilisateurs d’utiliser cette fonctionnalité.
     1. **[Créer un utilisateur de test Azure AD](#create-an-azure-ad-test-user)** pour tester l’authentification unique Azure AD avec B. Simon.
@@ -69,13 +67,13 @@ Pour configurer et tester l’authentification unique Azure AD avec Chargebee, 
 
 Effectuez les étapes suivantes pour activer l’authentification unique Azure AD dans le Portail Azure.
 
-1. Dans le [portail Azure](https://portal.azure.com/), accédez à la page d’intégration de l’application **Chargebee**, recherchez la section **Gérer** et sélectionnez **Authentification unique**.
+1. Dans le portail Azure, accédez à la page d’intégration de l’application **Chargebee**, recherchez la section **Gérer**, puis sélectionnez **Authentification unique**.
 1. Dans la page **Sélectionner une méthode d’authentification unique**, sélectionnez **SAML**.
-1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de modification/stylet pour **Configuration SAML de base** afin de modifier les paramètres.
+1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de crayon pour **Configuration SAML de base** afin de modifier les paramètres.
 
    ![Modifier la configuration SAML de base](common/edit-urls.png)
 
-1. Dans la section **Configuration SAML de base**, si vous souhaitez configurer l’application en mode Initié par le **fournisseur d’identité**, entrez les valeurs pour les champs suivants :
+1. Dans la section **Configuration SAML de base**, si vous souhaitez configurer l’application en mode lancé par le **fournisseur d’identité**, effectuez les étapes suivantes :
 
     a. Dans la zone de texte **Identificateur**, tapez une URL au format suivant : `https://<domainname>.chargebee.com`
 
@@ -115,13 +113,7 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificat
 1. Dans le portail Azure, sélectionnez **Applications d’entreprise**, puis **Toutes les applications**.
 1. Dans la liste des applications, sélectionnez **Chargebee**.
 1. Dans la page de vue d’ensemble de l’application, recherchez la section **Gérer** et sélectionnez **Utilisateurs et groupes**.
-
-   ![Lien « Utilisateurs et groupes »](common/users-groups-blade.png)
-
 1. Sélectionnez **Ajouter un utilisateur**, puis **Utilisateurs et groupes** dans la boîte de dialogue **Ajouter une attribution**.
-
-    ![Lien Ajouter un utilisateur](common/add-assign-user.png)
-
 1. Dans la boîte de dialogue **Utilisateurs et groupes**, sélectionnez **B. Simon** dans la liste Utilisateurs, puis cliquez sur le bouton **Sélectionner** au bas de l’écran.
 1. Si vous attendez une valeur de rôle dans l’assertion SAML, dans la boîte de dialogue **Sélectionner un rôle**, sélectionnez le rôle approprié pour l’utilisateur dans la liste, puis cliquez sur le bouton **Sélectionner** en bas de l’écran.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
@@ -132,11 +124,11 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificat
 
 4. Sur le côté gauche du menu, cliquez sur **Paramètres** > **Sécurité** > **Gérer**.
 
-    ![Capture d’écran montrant le site d’entreprise Chargebee avec Settings, Security et Manage sélectionnés.](./media/chargebee-tutorial/config01.png)
+    ![Capture d’écran montrant le site d’entreprise Chargebee avec Settings, Security et Manage sélectionnés.](./media/chargebee-tutorial/security.png)
 
 5. Sur la fenêtre contextuelle **Authentification unique**, effectuez les étapes suivantes :
 
-    ![Capture d’écran montrant la boîte de dialogue Single Sign-On avec SAML sélectionné et l’option de confirmation.](./media/chargebee-tutorial/config02.png)
+    ![Capture d’écran montrant la boîte de dialogue Single Sign-On avec SAML sélectionné et l’option de confirmation.](./media/chargebee-tutorial/settings.png)
 
     a. Sélectionnez **SAML**.
 
@@ -156,22 +148,28 @@ Pour pouvoir se connecter à Chargebee, les utilisateurs d’Azure AD doivent ê
 
 2. Sur le côté gauche du menu, cliquez sur **Clients**, puis accédez à **Créer un client**.
 
-    ![Capture d’écran montrant le site Chargebee avec Customers et Create a New Customer sélectionnés.](./media/chargebee-tutorial/config03.png)
+    ![Capture d’écran montrant le site Chargebee avec Customers et Create a New Customer sélectionnés.](./media/chargebee-tutorial/menu.png)
 
 3. Sur la page **Nouveau client**, renseignez les champs respectifs indiqués ci-dessous et cliquez sur **Créer un client** pour créer un utilisateur.
 
-    ![Capture d’écran montrant la page New Customer où vous pouvez entrer des informations sur le client.](./media/chargebee-tutorial/config04.png)
+    ![Capture d’écran montrant la page New Customer où vous pouvez entrer des informations sur le client.](./media/chargebee-tutorial/customers.png)
 
 ## <a name="test-sso"></a>Tester l’authentification unique (SSO) 
 
-Dans cette section, vous allez tester la configuration de l’authentification unique Azure AD à l’aide du volet d’accès.
+Dans cette section, vous allez tester votre configuration de l’authentification unique Azure AD avec les options suivantes. 
 
-Lorsque vous cliquez sur la mosaïque Chargebee dans le volet d’accès, vous devez être connecté automatiquement à l’application Chargebee pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur le panneau d’accès, consultez [Présentation du panneau d’accès](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+#### <a name="sp-initiated"></a>Lancée par le fournisseur de services :
 
-## <a name="additional-resources"></a>Ressources supplémentaires
+* Cliquez sur **Tester cette application** dans le portail Azure. Vous êtes alors redirigé vers l’URL de connexion de Chargebee, à partir de laquelle vous pouvez lancer le flux de connexion.  
 
-- [Liste de tutoriels sur l’intégration d’applications SaaS avec Azure Active Directory](./tutorial-list.md)
+* Accédez directement à l’URL de connexion de Chargebee pour lancer le flux de connexion.
 
-- [Qu’est-ce que l’accès aux applications et l’authentification unique avec Azure Active Directory ?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>Lancée par le fournisseur d’identité :
 
-- [Qu’est-ce que l’accès conditionnel dans Azure Active Directory ?](../conditional-access/overview.md)
+* Cliquez sur **Tester cette application** dans le portail Azure. Vous êtes alors automatiquement connecté automatiquement à l’instance de Chargebee pour laquelle vous avez configuré l’authentification unique. 
+
+Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’application dans n’importe quel mode. Si, quand vous cliquez sur la vignette Chargebee dans Mes applications, le mode Fournisseur de services est configuré, vous êtes redirigé vers la page de connexion de l’application pour initier le flux de connexion ; s’il s’agit du mode Fournisseur d’identité, vous êtes automatiquement connecté à l’instance de Chargebee pour laquelle vous avez configuré l’authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Après avoir configuré Chargebee, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).

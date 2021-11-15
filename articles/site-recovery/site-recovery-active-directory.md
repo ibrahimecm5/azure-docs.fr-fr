@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: f7df260f0ef02df5d706bc78ed4938cb1868eead
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 01956fa1dc12d992d05f004d21572b9fc045d5f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065081"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437673"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Configurer la reprise d’activité pour Active Directory et DNS
 
@@ -47,7 +47,7 @@ Le contrôleur de domaine répliqué à l’aide Site de Recovery est utilisé p
 
 ### <a name="configure-vm-network-settings"></a>Configurer les paramètres des réseaux de machines virtuelles
 
-Pour la machine virtuelle hébergeant le contrôleur de domaine ou le DNS, dans Site Recovery, configurez les paramètres réseau sous les paramètres **Calcul et réseau** de l’ordinateur virtuel répliqué. Cela garantit que la machine virtuelle est attachée au réseau approprié après le basculement.
+Pour la machine virtuelle hébergeant le contrôleur de domaine ou le DNS, dans Site Recovery, configurez les paramètres réseau sous les paramètres **Réseau** de l’ordinateur virtuel répliqué. Cela garantit que la machine virtuelle est attachée au réseau approprié après le basculement.
 
 ## <a name="protect-active-directory"></a>Protéger Active Directory
 
@@ -77,12 +77,12 @@ La plupart des applications nécessitent la présence d’un contrôleur de doma
 
 1. Utilisez Site Recovery pour [répliquer](vmware-azure-tutorial.md) la machine virtuelle hébergeant le contrôleur de domaine ou DNS.
 1. Créez un réseau isolé. Par défaut, tout réseau virtuel que vous créez dans Azure est isolé d’autres réseaux. Nous vous recommandons d’utiliser pour ce réseau la plage d’adresses IP que vous utilisez dans votre réseau de production. N’activez pas la connectivité de site à site sur ce réseau.
-1. Fournissez une adresse IP DNS dans le réseau isolé. Utilisez l’adresse IP que vous prévoyez pour la machine virtuelle du DNS. Si vous répliquez sur Azure, fournissez l’adresse IP de la machine virtuelle utilisée lors du basculement. Pour entrer l’adresse IP, dans la machine virtuelle répliquée, dans les paramètres **Calcul et réseau**, sélectionnez les paramètres **Adresse IP cible**.
+1. Fournissez une adresse IP DNS dans le réseau isolé. Utilisez l’adresse IP que vous prévoyez pour la machine virtuelle du DNS. Si vous répliquez sur Azure, fournissez l’adresse IP de la machine virtuelle utilisée lors du basculement. Pour entrer l’adresse IP, dans la machine virtuelle répliquée, dans les paramètres **Réseau**, sélectionnez les paramètres **Adresse IP cible**.
 
    :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Réseau de test Azure":::
 
    > [!TIP]
-   > Site Recovery tente de créer les machines virtuelles de test dans un sous-réseau du même nom, et en utilisant l’adresse IP fournie dans les paramètres **Calcul et réseau** de la machine virtuelle. Si aucun sous-réseau du même nom n’est disponible dans le réseau virtuel Azure fourni pour le test de basculement, la machine virtuelle de test est créée dans le sous-réseau en première position dans l’ordre alphabétique.
+   > Site Recovery tente de créer les machines virtuelles de test dans un sous-réseau du même nom, et en utilisant l’adresse IP fournie dans les paramètres **Réseau** de la machine virtuelle. Si aucun sous-réseau du même nom n’est disponible dans le réseau virtuel Azure fourni pour le test de basculement, la machine virtuelle de test est créée dans le sous-réseau en première position dans l’ordre alphabétique.
    >
    > Si l’adresse IP cible fait partie du sous-réseau sélectionné, Site Recovery tente de créer la machine virtuelle pour le test de basculement à l’aide de l’adresse IP cible. Si l’adresse IP cible ne fait pas partie du sous-réseau sélectionné, la machine virtuelle pour le test de basculement est créée à l’aide de l’adresse IP disponible suivante dans le sous-réseau sélectionné.
 

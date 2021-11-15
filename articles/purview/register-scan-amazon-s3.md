@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 754f3671734125a47f633876e31e39f72dcbaa7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 86f0296ced4846dce7ec4be0d5b503d343d060bc
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076677"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848113"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Connecteur d’analyse multicloud Amazon S3 pour Azure Purview
 
@@ -22,6 +22,14 @@ Le connecteur d’analyse multicloud pour Azure Purview vous permet d’explore
 Cet article décrit comment utiliser Azure Purview pour analyser vos données non structurées actuellement stockées dans des compartiments Amazon S3 standard et découvrir les types d’informations sensibles qui existent dans vos données. Ce guide explique également comment identifier les compartiments Amazon S3 où les données sont actuellement stockées pour faciliter la protection des informations et la conformité des données.
 
 Pour ce service, Purview vous permet de fournir un compte Microsoft avec un accès sécurisé à AWS, où doit s’exécuter le connecteur d’analyse multicloud pour Azure Purview. Le connecteur d’analyse multicloud pour Azure Purview utilise cet accès à vos compartiments Amazon S3 pour lire vos données, puis rapporte à Azure les résultats de l’analyse, qui comprennent seulement les métadonnées et la classification. Utilisez les rapports de classification et d’étiquetage Purview pour analyser et examiner vos résultats d’analyse de données.
+
+## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
+
+|**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
+|---|---|---|---|---|---|---|
+| Oui | Oui | Oui | Oui | Oui | Non | Limité** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 > [!IMPORTANT]
 > Le connecteur d’analyse multicloud pour Azure Purview est un module complémentaire distinct d’Azure Purview. Les conditions générales du connecteur d’analyse multicloud pour Azure Purview sont contenues dans l’accord en vertu duquel vous avez obtenu les services Microsoft Azure. Pour plus d’informations, consultez la page Informations Juridiques Microsoft Azure à l’adresse https://azure.microsoft.com/support/legal/.

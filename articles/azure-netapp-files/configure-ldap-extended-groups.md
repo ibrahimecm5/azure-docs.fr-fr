@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 90a87c85bace64c7c1cfc4a171c5fcbdb8d263c9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 79bd8ca1855391365bfc33c7a259d1a984ce139c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256359"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447053"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Configurer ADDS LDAP avec des groupes étendus pour l’accès au volume NFS
 

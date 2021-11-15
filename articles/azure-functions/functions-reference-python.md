@@ -4,12 +4,12 @@ description: Développer des fonctions avec Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 940ad3d08069ee51a9d138585b6e7dca0af49996
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: b4342a70e5fa7c5a0a7a2fd51dcfe97476f34995
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129658906"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027201"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Guide des développeurs Python sur Azure Functions
 
@@ -307,6 +307,8 @@ def main(req, context):
         'ctx_invocation_id': context.invocation_id,
         'ctx_trace_context_Traceparent': context.trace_context.Traceparent,
         'ctx_trace_context_Tracestate': context.trace_context.Tracestate,
+        'ctx_retry_context_RetryCount': context.retry_context.retry_count,
+        'ctx_retry_context_MaxRetryCount': context.retry_context.max_retry_count,
     })
 ```
 
@@ -372,6 +374,10 @@ La classe [**Contexte**](/python/api/azure-functions/azure.functions.context) co
 
 `invocation_id` : ID de l’appel de fonction en cours.
 
+`trace_context` Contexte pour le suivi distribué. Pour plus d’informations, consultez [`Trace Context`](https://www.w3.org/TR/trace-context/).
+
+`retry_context` Contexte pour les nouvelles tentatives d’appel de la fonction. Pour plus d’informations, consultez [`retry-policies`](./functions-bindings-errors.md#retry-policies-preview).
+
 ## <a name="global-variables"></a>Variables globales
 
 L’état de votre application n’est pas systématiquement conservé en vue des exécutions ultérieures. Toutefois, le runtime Azure Functions réutilise souvent le même processus pour plusieurs exécutions de la même application. Pour mettre en cache les résultats d’un calcul coûteux, vous devez le déclarer en tant que variable globale.
@@ -421,7 +427,8 @@ Azure Functions prend en charge les versions de Python suivantes :
 
 | Version de Functions | Versions<sup>*</sup> de Python |
 | ----- | ----- |
-| 3.x | 3.9 (préversion) <br/> 3.8<br/>3.7<br/>3.6 |
+| 4.x | 3.9<br/> 3.8<br/>3.7 |
+| 3.x | 3.9<br/> 3.8<br/>3.7<br/>3.6 |
 | 2.x | 3.7<br/>3.6 |
 
 <sup>*</sup>Distributions CPython officielles

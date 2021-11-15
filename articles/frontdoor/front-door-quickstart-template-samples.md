@@ -8,18 +8,20 @@ ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2021
+ms.date: 11/01/2021
 ms.author: duau
-ms.openlocfilehash: c76b78b8ed834b1cd3c86cab1bdbf5cb98141956
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: db0bf4783de324af2ab4e5a5ec6bfbaa18ad33cf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073237"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449770"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Modèles de déploiement Azure Resource Manager pour Front Door
 
 Le tableau suivant comprend des liens vers des modèles de déploiement Azure Resource Manager pour Azure Front Door.
+
+## <a name="azure-front-door"></a>Azure Front Door
 
 | Modèle | Description |
 | ---| ---|
@@ -35,6 +37,33 @@ Le tableau suivant comprend des liens vers des modèles de déploiement Azure Re
 | [Configurer Front Door pour le placement en liste verte ou rouge d’adresses IP clientes](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-clientip)| Configure une porte d’entrée pour limiter le trafic de certaines adresses IP avec un contrôle d’accès personnalisé basé sur les adresses IP clientes. |
 | [Configurer Front Door pour effectuer une action avec des paramètres HTTP spécifiques](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-http-params)| Configure une porte d’entrée pour autoriser ou bloquer un certain trafic en fonction des paramètres HTTP de la requête entrante, avec des règles personnalisées pour le contrôle d’accès en fonction de paramètres HTTP. |
 | [Configurer la limitation du débit de Front Door](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-rate-limiting)| Configure une porte d’entrée pour limiter le débit du trafic entrant pour un hôte frontend donné. |
+| | |
+
+## <a name="azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (préversion)
+
+| Exemple | Description |
+|-|-|
+| [Front Door (création rapide)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium/) | Crée un profil Front Door de base incluant un point de terminaison, un groupe d’origine, une origine et une route.  |
+| [Ensemble de règles](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rule-set/) | Crée un profil et un ensemble de règles Front Door.  |
+| [Stratégie WAF avec l’ensemble de règles managées](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-waf-managed/) | Crée un profil Front Door et une stratégie WAF avec un ensemble de règles managées.  |
+| [Stratégie WAF avec une règle personnalisée](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-waf-custom/) | Crée un profil Front Door et une stratégie WAF avec une règle personnalisée.  |
+| [Stratégie WAF avec limite de débit](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rate-limit/) | Crée un profil Front Door et un pare-feu d’applications web avec une règle personnalisée pour limiter le débit.  |
+| [Stratégie WAF avec géofiltrage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-geo-filtering/) | Crée un profil Front Door et un pare-feu d’applications web avec une règle personnalisée pour appliquer un géofiltrage.  |
+|**Origines App Service**| **Description** |
+| [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-app-service-public) | Crée une application App Service avec un point de terminaison public et un profil Front Door.  |
+| [App Service avec Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-app-service-private-link) | Crée une application App Service avec un point de terminaison privé et un profil Front Door.  |
+|**Origines Azure Functions**| **Description** |
+| [Azure Functions](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-function-public/) | Crée une application Azure Functions avec un point de terminaison public et un profil Front Door.  |
+| [Azure Functions avec Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-function-private-link) | Crée une application Azure Functions avec un point de terminaison privé et un profil Front Door.  |
+|**Origines API Management**| **Description** |
+| [Gestion des API (externe)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-api-management-external) | Crée une instance de Gestion des API avec une intégration au réseau virtuel VNet externe et un profil Front Door.  |
+|**Origines Stockage**| **Description** |
+| [Site web statique de stockage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-storage-static-website) | Crée un compte Stockage Azure et un site web statique avec un point de terminaison public et un profil Front Door.  |
+| [Objets blob de stockage avec Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-storage-blobs-private-link) | Crée un compte Stockage Azure et un conteneur d’objets blob avec un point de terminaison privé et un profil Front Door.  |
+|**Origines Application Gateway**| **Description** |
+| [Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-application-gateway-public) | Crée une passerelle applicative et un profil Front Door. |
+|**Origines Machine virtuelle**| **Description** |
+| [Machine virtuelle avec service Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-premium-vm-private-link) | Crée une machine virtuelle et un service Private Link ainsi qu’un profil Front Door. |
 | | |
 
 ## <a name="next-steps"></a>Étapes suivantes

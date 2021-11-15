@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: eb66facb8d36884205bc9cd8e562ab97f92c3dd8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 819e3f911a769f870b792ed92b699f3356139565
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745034"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457694"
 ---
 # <a name="what-is-azure-private-dns"></a>Qu’est-ce qu’Azure Private DNS ?
 
@@ -47,7 +47,7 @@ Un DNS privé Azure offre les avantages suivants :
 
 ## <a name="capabilities"></a>Fonctionnalités
 
-Azure DNS offre les fonctionnalités suivantes :
+Azure Private DNS offre les capacités suivantes :
 
 * **Inscription automatique de machines virtuelles à partir d’un réseau virtuel lié à une zone privée avec l’inscription automatique activée**. Les machines virtuelles sont inscrites dans la zone privée en tant qu’enregistrements A pointant vers leurs adresses IP privées. Lors de la suppression d’une machine virtuelle figurant dans un lien de réseau virtuel pour lequel l’inscription automatique est activée, Azure DNS supprime aussi automatiquement l’enregistrement DNS correspondant de la zone privée liée.
 
@@ -57,7 +57,7 @@ Azure DNS offre les fonctionnalités suivantes :
 
 ## <a name="other-considerations"></a>Autres considérations
 
-Azure DNS présente les limites suivantes :
+Azure Private DNS présente les limites suivantes :
 
 * Un réseau virtuel ne peut être lié qu’à une seule zone privée si l’inscription automatique des enregistrements DNS de machine virtuelle est activée. Vous pouvez toutefois lier plusieurs réseaux virtuels à une seule zone DNS.
 * Un DNS inversé ne fonctionne que pour un espace d’adressage IP privé sur le réseau virtuel lié

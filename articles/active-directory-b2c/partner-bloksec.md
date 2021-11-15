@@ -12,20 +12,18 @@ ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a983da4159f41ae6dfe261b7f42ce20c2d2fa3a4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 15d98a7b24c2312f781f5d1e60721d99cbb2e63a
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594742"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988537"
 ---
 # <a name="tutorial-configure-azure-active-directory-b2c-with-bloksec-for-passwordless-authentication"></a>Tutoriel : configurer Azure Active Directory B2C avec BlokSec pour une authentification sans mot de passe
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 ::: zone pivot="b2c-custom-policy"
-
-
 
 ::: zone-end
 
@@ -59,6 +57,7 @@ Le diagramme d’architecture suivant illustre l’implémentation.
 Demandez un locataire de démonstration avec BlokSec en remplissant [le formulaire](https://bloksec.com/request-a-demo/). Dans champ du message, indiquez que vous souhaitez intégrer à Azure AD B2C. Téléchargez et installez l’application mobile BlokSec yuID gratuite depuis l’App Store. Lorsque votre locataire de démonstration est préparé, vous recevez un e-mail. Sur votre appareil mobile sur lequel l’application BlokSec est installée, sélectionnez le lien pour inscrire votre compte administrateur auprès de votre application yuID.
 
 ::: zone pivot="b2c-user-flow"
+
 ## <a name="prerequisites"></a>Prérequis
 
 Avant de commencer, vérifiez que vous disposez des éléments suivants :
@@ -73,6 +72,7 @@ Avant de commencer, vérifiez que vous disposez des éléments suivants :
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
 ## <a name="prerequisites"></a>Prérequis
 
 Avant de commencer, vérifiez que vous disposez des éléments suivants :
@@ -116,10 +116,10 @@ Avant de commencer, vérifiez que vous disposez des éléments suivants :
 1. Connectez-vous au [portail Azure](https://portal.azure.com/#home) en tant qu’administrateur général de votre locataire Azure AD B2C.
 1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.
 1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.
-1. Choisissez **Tous les services** dans le coin supérieur gauche du portail Azure, recherchez et sélectionnez **Azure AD B2C**. 
-1. Accédez à **Tableau de bord > Azure Active Directory B2C > Fournisseurs d’identité**.
+1. Choisissez **Tous les services** dans le coin supérieur gauche du portail Azure, puis recherchez et sélectionnez **Azure AD B2C**.
+1. Accédez à **Tableau de bord** > **Azure Active Directory B2C** > **Fournisseurs d’identité**.
 1. Sélectionnez **Nouveau fournisseur OpenID Connect**.
-1. Sélectionnez **Ajouter**
+1. Sélectionnez **Ajouter**.
 
 ### <a name="part-3---configure-an-identity-provider"></a>Partie 3 : Configurer un fournisseur d’identité
 
@@ -130,7 +130,7 @@ Avant de commencer, vérifiez que vous disposez des éléments suivants :
 |Propriété  |Valeur  |
 |:---------|:---------|
 |Name     |Entrez BlokSec yuID – Sans mot de passe ou le nom de votre choix|
-|URL de métadonnées|https://api.bloksec.io/oidc/.well-known/openid-configuration|         
+|URL de métadonnées| `https://api.bloksec.io/oidc/.well-known/openid-configuration` |
 |ID client|ID d’application de l’interface utilisateur d’administration BlokSec capturé dans la **Partie 1**|
 |Clé secrète client|Secret d’application de l’interface utilisateur d’administration BlokSec capturé dans la **Partie 1**|
 |Étendue|Profil de messagerie OpenID|
@@ -181,13 +181,13 @@ Vous devriez maintenant voir BlokSec répertorié comme nouveau fournisseur d’
 
 1. Sélectionnez **Exécuter le flux d’utilisateur**.
 
-1. Dans le formulaire, entrez l’URL de réponse. Par exemple : https://jwt.ms
+1. Dans le formulaire, entrez l’URL de réponse, par exemple `https://jwt.ms`.
 
 1. Le navigateur est redirigé vers la page de connexion BlokSec. Entrez le nom du compte inscrit lors de l’inscription de l’utilisateur. L’utilisateur recevra une notification push sur son appareil mobile sur lequel l’application BlokSec yuID est installée. Lors de l’ouverture de la notification, l’utilisateur recevra une demande d’authentification.
 
-1. Une fois la demande d’authentification acceptée, le navigateur redirige l’utilisateur vers l’URL de réponse.  
+1. Une fois la demande d’authentification acceptée, le navigateur redirige l’utilisateur vers l’URL de réponse.
 
-## <a name="next-steps"></a>Étapes suivantes 
+## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d’informations, consultez les articles suivants :
 
@@ -324,7 +324,8 @@ Le code XML suivant montre les deux premières étapes d’orchestration d’un 
 
 La stratégie de partie de confiance, par exemple [SignUpSignIn.xml](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/SocialAndLocalAccounts/SignUpOrSignin.xml), spécifie le parcours utilisateur à partir duquel Azure AD B2C s’exécutera. Recherchez l’élément **DefaultUserJourney** dans la partie de confiance. Mettez à jour la valeur **ReferenceId** afin qu’elle corresponde à l’ID du parcours utilisateur auquel vous avez ajouté le fournisseur d'identité.
 
-Dans l’exemple suivant, pour le parcours utilisateur `CustomSignUpOrSignIn`, la valeur ReferenceId est définie sur `CustomSignUpOrSignIn`.  
+Dans l’exemple suivant, pour le parcours utilisateur `CustomSignUpOrSignIn`, la valeur ReferenceId est définie sur `CustomSignUpOrSignIn`.
+
 ```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="CustomSignUpSignIn" />
@@ -350,7 +351,7 @@ Sélectionnez **Charger une stratégie personnalisée**, puis chargez les deux f
 
 Si le processus de connexion réussit, votre navigateur est redirigé vers `https://jwt.ms`, qui affiche le contenu du jeton retourné par Azure AD B2C.
 
-## <a name="next-steps"></a>Étapes suivantes 
+## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d’informations, consultez les articles suivants :
 

@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 45e86a925c83f32ab4f704ea7ffc4f83ff3089ae
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 83ef818f3b9555fc152f1ca31149a8c5686430ac
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131059924"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131473753"
 title: Questions fréquemment posées sur Azure Monitor
 summary: >
   Cette FAQ Microsoft est une liste de questions fréquemment posées sur Azure Monitor. Si vous avez d’autres questions, rendez-vous sur le [forum de discussion](/answers/questions/topics/single/24223.html) et publiez vos questions. Lorsqu’une question est fréquemment posée, nous l’ajoutons à cet article pour qu’elle soit facile et rapide à trouver.
@@ -262,7 +262,7 @@ sections:
       Est-il possible de filtrer les événements à l’aide de l’ID d’événement, c’est-à-dire un filtrage des événements plus granulaire à l’aide du nouvel agent Azure Monitor ?
     answer: "Oui. Vous pouvez utiliser des **requêtes Xpath** pour filtrer les événements sur les ordinateurs Windows. [En savoir plus](agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)  \nPour les compteurs de performances, vous pouvez spécifier des compteurs spécifiques que vous souhaitez collecter et exclure ceux dont vous n’avez pas besoin.\nPour syslog sur Linux, vous pouvez choisir des installations et le niveau de journalisation pour chaque installation à collecter.\n"
   - question: >
-      Le nouvel agent Azure Monitor prend-il en charge l’envoi de données vers EventHubs et les comptes de stockage Azure ?
+      Le nouvel agent Azure Monitor prend-il en charge l’envoi de données vers EventHubs et les comptes Stockage Azure ?
     answer: >
       Pas encore, mais le nouvel agent, ainsi que les règles de collecte des données, prendront en charge l’envoi de données à la fois à Event Hubs et aux comptes de stockage Azure. Tenez-vous au courant des annonces dans Azure Updates ou rejoignez le [canal Teams](https://teams.microsoft.com/l/team/19%3af3f168b782f64561b52abe75e59e83bc%40thread.tacv2/conversations?groupId=770d6aa5-c2f7-4794-98a0-84fd6ae7f193&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47) pour bénéficier de mises à jour fréquentes, d’un support, d’actualités et bien plus encore !
   - question: >
@@ -1114,4 +1114,4 @@ sections:
       À quelle fréquence les données sont-elles collectées ?
     answer: >
       La fréquence de collecte de données est personnalisable. Consultez [Données collectées par SQL Insights](../insights/../azure-monitor/insights/sql-insights-overview.md#collected-data) pour plus d’informations sur les fréquences par défaut et consultez [Créer un profil de surveillance SQL](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile) pour obtenir des instructions sur la personnalisation des fréquences.
-additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\nSi vous ne trouvez pas de réponse à votre question ici, vous pouvez consulter les forums suivants pour plus de questions et réponses.\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nPour obtenir des commentaires généraux sur Azure Monitor visitez le [forum de commentaires](https://feedback.azure.com/forums/34192--general-feedback)."
+additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\nSi vous ne trouvez pas de réponse à votre question ici, vous pouvez consulter les forums suivants pour plus de questions et réponses.\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nPour obtenir des commentaires généraux sur Azure Monitor visitez le [forum de commentaires](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)."

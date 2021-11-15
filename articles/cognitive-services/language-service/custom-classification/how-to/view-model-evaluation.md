@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 89cb476141544c136ac38abf996cf16d3ac4d002
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6b7d56ee6eb7280b285442a2c82001b100d1cf06
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097772"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054369"
 ---
 # <a name="view-the-model-evaluation"></a>Visualiser l’évaluation du modèle
 
@@ -31,7 +31,7 @@ Avant d’entraîner votre modèle, vous avez besoin des éléments suivants :
 * [Des données étiquetées](tag-data.md)
 * Un [modèle correctement entraîné](train-model.md)
 
-Pour plus d’informations, consultez [cycle de vie du développement d’applications](../overview.md#application-development-lifecycle).
+Pour plus d’informations, consultez [cycle de vie du développement d’applications](../overview.md#project-development-lifecycle).
 
 ## <a name="model-evaluation"></a>Évaluation du modèle
 
@@ -60,13 +60,16 @@ Le processus d’évaluation utilise le modèle entraîné pour prédire les cla
 
 Sous la **matrice de confusion du jeu de test**, vous pouvez trouver la matrice de confusion pour le modèle.
 
+> [!NOTE]
+> La matrice de confusion n’est actuellement pas prise en charge pour plusieurs projets de classification d’étiquette.
+
 **Classification avec une seule étiquette**
 
 :::image type="content" source="../media/conf-matrix-single.png" alt-text="Matrice de confusion pour une classification avec une seule classe" lightbox="../media/conf-matrix-single.png":::
 
-**Classification avec plusieurs étiquettes**
+<!-- **Multiple Label Classification**
 
-:::image type="content" source="../media/conf-matrix-multi.png" alt-text="Matrice de confusion pour une classification avec plusieurs classes" lightbox="../media/conf-matrix-multi.png":::
+:::image type="content" source="../media/conf-matrix-multi.png" alt-text="Confusion matrix for multiple class classification" lightbox="../media/conf-matrix-multi.png"::: -->
 
 ## <a name="next-steps"></a>Étapes suivantes
 

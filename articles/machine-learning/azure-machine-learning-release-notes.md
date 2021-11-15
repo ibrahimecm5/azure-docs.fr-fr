@@ -1,23 +1,24 @@
 ---
-title: Nouveautés de la version
+title: Notes de publication du kit SDK Python
 titleSuffix: Azure Machine Learning
-description: Découvrez les dernières mises à jour d’Azure Machine Learning et les kits SDK Python de Machine Learning et de préparation de données.
+description: En savoir plus sur les dernières mises à jour du kit SDK Python Azure Machine Learning.
+services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 10/04/2021
-ms.openlocfilehash: 8807aa11ce8f9d4c96ae27656d9d29a4f5f7e7f1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 10/21/2021
+ms.openlocfilehash: 5c2594e38db7a57e2861241d37405a8ce03b8494
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994173"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563166"
 ---
-# <a name="azure-machine-learning-release-notes"></a>Notes de publication d’Azure Machine Learning
+# <a name="azure-machine-learning-python-sdk-release-notes"></a>Notes de publication du kit SDK Python Azure Machine Learning
 
-Dans cet article, découvrez les versions d’Azure Machine Learning.  Pour obtenir le contenu complet de la référence SDK, consultez la page de référence du [**SDK principal pour Python**](/python/api/overview/azure/ml/intro) d’Azure Machine Learning.
+Dans cet article, découvrez les versions du kit SDK Python Azure Machine Learning.  Pour obtenir le contenu complet de la référence SDK, consultez la page de référence du [**SDK principal pour Python**](/python/api/overview/azure/ml/intro) d’Azure Machine Learning.
 
 __Flux RSS__ : Recevez une notification quand cette page est mise à jour en copiant et collant l’URL suivante dans votre lecteur de flux : `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
@@ -327,7 +328,7 @@ L’extension `ml` d’Azure CLI est l’interface de nouvelle génération d�
     + URI du portail mis à jour pour inclure le locataire pour l’authentification
     + Suppression du nom d’expérience des URI d’exécution pour éviter les redirections
     + Mise à jour de l’expérience URO pour utiliser l’ID d’expérience.
-    + Correctifs de bogues pour l’attachement de calcul distant avec l’interface CLI az
+    + Correctifs de bogues pour l’attachement de calcul distant avec l’interface az CLI
     + URI du portail mis à jour pour inclure le locataire pour l’authentification.
     + Ajout de la prise en charge pour comprendre les partitions de jeu de données de fichiers de fichier basées sur la structure glob.
   + **azureml-interpret**
@@ -1912,7 +1913,7 @@ Accédez aux outils de création web suivants à partir de Studio :
 ### <a name="azure-machine-learning-designer-enhancements"></a>Améliorations du concepteur Azure Machine Learning
 
 + Anciennement appelé l’interface visuelle 
-+    11 nouveaux [modules](algorithm-module-reference/module-reference.md) notamment des utilitaires de recommandation, de classement et de formation, avec des fonctionnalités d’ingénierie, de validation croisée et de transformation des données.
++    11 nouveaux [modules](component-reference/component-reference.md) notamment des utilitaires de recommandation, de classement et de formation, avec des fonctionnalités d’ingénierie, de validation croisée et de transformation des données.
 
 ### <a name="r-sdk"></a>SDK R 
  

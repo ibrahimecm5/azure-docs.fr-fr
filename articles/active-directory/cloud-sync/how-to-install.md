@@ -11,12 +11,12 @@ ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a34bda9f5f25d31dec881bd6ea1e00442fbfafc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 294e66b8b7cef3cec9931b5369562a51b138ab28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130217162"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448668"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installer l’agent de provisionnement Azure AD Connect
 Cet article vous guide tout au long du processus d’installation de l’agent d’approvisionnement Azure Active Directory (Azure AD) Connecte, et explique comment le configurer au départ dans le portail Azure.
@@ -104,6 +104,18 @@ Pour vérifier que l’agent est en cours d’exécution :
 
 >[!IMPORTANT]
 >L’agent a été installé mais il faut le configurer et l’activer pour qu’il commence à synchroniser les utilisateurs. Pour configurer un nouvel agent, consultez [Création d’une configuration pour la synchronisation cloud Azure AD Connect](how-to-configure.md).
+
+### <a name="enable-password-writeback-in-azure-ad-connect-cloud-sync"></a>Activer la réécriture du mot de passe dans la synchronisation cloud Azure AD Connect 
+
+Pour utiliser la réécriture du mot de passe et activer le service SSPR pour détecter l’agent de synchronisation cloud, vous devez utiliser la cmdlet `Set-AADCloudSyncPasswordWritebackConfiguration` et les informations d’identification d’administrateur général du locataire : 
+
+  ```   
+   Import-Module "C:\\Program Files\\Microsoft Azure AD Connect Provisioning Agent\\Microsoft.CloudSync.Powershell.dll" 
+   Set-AADCloudSyncPasswordWritebackConfiguration -Enable $true -Credential $(Get-Credential)
+  ```
+
+Pour plus d’informations sur l’utilisation de la réécriture du mot de passe avec la synchronisation cloud Azure AD Connect, consultez :
+
 
 ## <a name="next-steps"></a>Étapes suivantes 
 

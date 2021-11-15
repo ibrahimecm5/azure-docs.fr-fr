@@ -1,25 +1,27 @@
 ---
-title: Configurer la mise à l’échelle automatique pour les applications de microservice
+title: Configurer la mise à l’échelle automatique pour les applications
 description: Cet article décrit comment configurer les paramètres de mise à l’échelle automatique pour vos applications à l’aide du portail Microsoft Azure ou de l’interface Azure CLI.
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/03/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1e0b9cb6beb48e6f9ae8c8d5d985f4dfd930d2d
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 67b5976e8df650ac8961cdb428338ca8147878d4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525485"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846631"
 ---
-# <a name="set-up-autoscale-for-microservice-applications"></a>Configurer la mise à l’échelle automatique pour les applications de microservice
+# <a name="set-up-autoscale-for-applications"></a>Configurer la mise à l’échelle automatique pour les applications
 
 **Cet article s’applique à :** ✔️ Java ✔️ C#
 
-La mise à l’échelle automatique est une fonctionnalité intégrée d’Azure Spring Cloud qui permet aux applications de microservice d’atteindre des performances maximales quand la demande évolue. Elle implique de modifier la quantité de processeurs virtuels, de mémoire et d’instances d’application. Cet article décrit comment configurer les paramètres de mise à l’échelle automatique pour vos applications à l’aide du portail Microsoft Azure ou de l’interface Azure CLI.
+Cet article décrit comment configurer les paramètres de mise à l’échelle automatique pour vos applications à l’aide du portail Microsoft Azure ou de l’interface Azure CLI.
 
+La mise à l’échelle automatique est une fonctionnalité intégrée d’Azure Spring Cloud qui permet aux applications d’atteindre des performances maximales quand la demande évolue. Azure Spring Cloud prend en charge le scale-out et le scale-in, ce qui inclut la modification du nombre d’instances d’application et de l’équilibrage de charge.
+ 
 ## <a name="prerequisites"></a>Prérequis
 
 Pour suivre ces procédures, vous avez besoin des éléments suivants :
@@ -44,7 +46,7 @@ Pour suivre ces procédures, vous avez besoin des éléments suivants :
 
 Deux options sont disponibles pour la gestion des demandes de mise à l’échelle automatique :
 
-* Mise à l’échelle manuelle : conserve un nombre d’instances fixe. Avec le niveau Standard, vous pouvez effectuer un scale-out allant jusqu’à 500 instances. Cette valeur change le nombre d’instances distinctes de l’application de microservices en cours d’exécution.
+* Mise à l’échelle manuelle : conserve un nombre d’instances fixe. Avec le niveau Standard, vous pouvez effectuer un scale-out allant jusqu’à 500 instances. Cette valeur change le nombre d’instances distinctes de l’application en cours d’exécution.
 * Mise à l’échelle automatique personnalisée : effectue la mise à l’échelle selon n’importe quelle planification en fonction de métriques.
 
 Dans le portail Azure, choisissez la façon dont vous souhaitez effectuer la mise à l’échelle.  L’illustration suivante montre l’option **Mise à l’échelle automatique personnalisée** et les paramètres de mode.

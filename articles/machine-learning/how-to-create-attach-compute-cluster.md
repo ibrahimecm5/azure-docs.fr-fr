@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 07/09/2021
-ms.openlocfilehash: d36d7e91afc4b0bade9f3da08d1324aa7f56cba9
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: e658a8ed30b15327a68ce1671c19e55253ad6b06
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594136"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026707"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Créer un cluster de calcul Azure Machine Learning
 
@@ -46,7 +46,7 @@ Dans cet article, découvrez comment :
 
 ## <a name="what-is-a-compute-cluster"></a>Qu’est-ce qu’un cluster de calcul ?
 
-Le cluster de calcul Azure Machine Learning est une infrastructure de capacité de calcul managée qui vous permet de créer facilement une capacité de calcul à un ou plusieurs nœuds. Le cluster de calcul est une ressource qui peut être partagée avec d’autres utilisateurs dans votre espace de travail. La cible de calcul monte en puissance automatiquement quand un travail est soumis, et peut être placée dans un réseau virtuel Azure. La cible de calcul s’exécute dans un environnement conteneurisé et empaquète les dépendances de votre modèle dans un [conteneur Docker](https://www.docker.com/why-docker).
+Le cluster de calcul Azure Machine Learning est une infrastructure de capacité de calcul managée qui vous permet de créer facilement une capacité de calcul à un ou plusieurs nœuds. Le cluster de calcul est une ressource qui peut être partagée avec d’autres utilisateurs dans votre espace de travail. La cible de calcul monte en puissance automatiquement quand un travail est soumis, et peut être placée dans un réseau virtuel Azure. Le cluster de calcul ne prend en charge aucun déploiement d’**IP public (préversion)** ou dans un réseau virtuel. La cible de calcul s’exécute dans un environnement conteneurisé et empaquète les dépendances de votre modèle dans un [conteneur Docker](https://www.docker.com/why-docker).
 
 Les clusters de calcul peuvent exécuter des travaux de manière sécurisée dans un [environnement de réseau virtuel](how-to-secure-training-vnet.md), sans qu’il soit nécessaire pour les entreprises d’ouvrir des ports SSH. Le travail s’exécute dans un environnement conteneurisé et empaquette les dépendances de votre modèle dans un conteneur Docker. 
 

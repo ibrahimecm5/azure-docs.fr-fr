@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 11/4/2021
 ms.author: b-juche
-ms.openlocfilehash: 3488b6807982f97cd5feef9b07a6dc7cbe180dcd
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 90867546e0866d0d899bc990a9eb5225fbaf4c1e
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407548"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027714"
 ---
 # <a name="create-a-capacity-pool-for-azure-netapp-files"></a>Créer un pool de capacité pour Azure NetApp Files
 
@@ -51,7 +51,7 @@ Vous devez avoir déjà créé un compte NetApp.
 
     * **Taille**     
      Spécifiez la taille du pool de capacité que vous achetez.        
-     La taille de pool de capacité minimale est de 4 Tio. Vous pouvez créer un pool avec une taille dont la valeur est un multiple de 4 Tio.   
+     La taille de pool de capacité minimale est de 4 Tio. Vous pouvez modifier la taille d’un pool de capacité par incréments de 1 Tio.
 
    * **Qualité de service (QoS)**    
      Spécifiez si le pool de capacités doit utiliser le type de QoS **manuel** ou **automatique**.  

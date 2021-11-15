@@ -4,32 +4,30 @@ titleSuffix: Azure Digital Twins
 description: Découvrez les principes de base du langage des requêtes Azure Digital Twins.
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 10/27/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c5779f827177907d3bf3378fde8a35157723b5f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 620411b5fc8c657f837f3c27077d4ae3dbf16f1c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631112"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509684"
 ---
-# <a name="about-the-query-language-for-azure-digital-twins"></a>À propos du langage de requête pour Azure Digital Twins
+# <a name="azure-digital-twins-query-language"></a>Langage des requêtes Azure Digital Twins
 
-N’oubliez pas que le centre d’Azure Digital Twins est le [graphe de jumeaux](concepts-twins-graph.md) construit à partir des jumeaux numériques et des relations. 
+Cet article décrit les principes fondamentaux du langage de requête et de ses fonctionnalités. N’oubliez pas que le centre d’Azure Digital Twins est le [graphe de jumeaux](concepts-twins-graph.md) construit à partir des jumeaux numériques et des relations. Ce graphique peut être interrogé pour obtenir des informations sur les jumeaux numériques et les relations qu’il contient. Ces requêtes sont écrites dans un langage de requête de type SQL personnalisé, appelé **langage des requêtes Azure Digital Twins**. Ce langage est similaire au [langage de requête IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) par ses nombreuses fonctionnalités comparables.
 
-Ce graphique peut être interrogé pour obtenir des informations sur les jumeaux numériques et les relations qu’il contient. Ces requêtes sont écrites dans un langage de requête de type SQL personnalisé, appelé **langage des requêtes Azure Digital Twins**. Ce langage est similaire au [langage de requête IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) par ses nombreuses fonctionnalités comparables.
-
-Cet article décrit les principes fondamentaux du langage de requête et de ses fonctionnalités. Pour obtenir des exemples plus détaillés de syntaxe de requête et savoir comment exécuter des requêtes, consultez [Interroger le graphique de jumeaux](how-to-query-graph.md).
+Pour obtenir des exemples plus détaillés de syntaxe de requête et savoir comment exécuter des requêtes, consultez [Interroger le graphique de jumeaux](how-to-query-graph.md).
 
 ## <a name="about-the-queries"></a>À propos des requêtes
 
 Vous pouvez utiliser le langage de requête Azure Digital Twins pour récupérer des jumeaux numériques en fonction de leurs...
-* leurs propriétés (y compris les [propriétés de balise](how-to-use-tags.md))
-* modèles
-* relationships
-  - leurs propriétés des relations
+* Propriétés (notamment [propriétés de balise](how-to-use-tags.md))
+* Modèles
+* Relations
+  - Propriétés des relations
 
 Pour soumettre une requête au service à partir d’une application cliente, vous utilisez l’[API de requête](/rest/api/digital-twins/dataplane/query) Azure Digital Twins. L’une des façons d’utiliser l’API consiste à utiliser l’un des [kits SDK pour Azure Digital Twins](concepts-apis-sdks.md#overview-data-plane-apis).
 

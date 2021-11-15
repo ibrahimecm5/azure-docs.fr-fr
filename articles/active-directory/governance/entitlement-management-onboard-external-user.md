@@ -13,18 +13,18 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1b7574e38146f9f175a124928c23dfb0187bb71
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b97e440d318e1d08137ffa14691c5179d93d60f4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257363"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440732"
 ---
 # <a name="tutorial---onboard-external-users-to-azure-ad-through-an-approval-process"></a>Tutoriel : Intégrer des utilisateurs externes à Azure AD via un processus d’approbation
 
 Vous pouvez utiliser la gestion des droits d’utilisation comme moyen d’intégrer des utilisateurs externes. Cette fonctionnalité permet aux utilisateurs externes de demander l’accès à un ensemble de ressources et à vous de configurer des approbations avant qu’ils n’obtiennent l’accès à votre annuaire. Pour les utilisateurs externes intégrés via des droits d’utilisation, vous pouvez gérer leur cycle de vie avec des packages d’accès. Lorsque leur dernier package d’accès expire, ils sont supprimés de votre annuaire.
 
-Dans ce tutoriel, vous travaillez pour WoodGrove Bank comme administrateur informatique. Vous avez été chargé de créer un package d’accès pour intégrer des partenaires d’une organisation externe avec laquelle votre groupe commercial travaille. Ils auront besoin d’accéder à un groupe Teams appelé **Collaboration externe**. L’approbation est requise par un commanditaire interne pour les organisations travaillant en collaboration. Vous avez aussi été informé que l’accès du partenaire doit expirer dans 60 jours.
+Dans ce tutoriel, vous travaillez pour WoodGrove Bank comme administrateur informatique. Vous avez été chargé de créer un package d’accès pour intégrer des partenaires d’une organisation externe avec laquelle votre groupe commercial travaille. Ils auront besoin d’accéder à un groupe Teams appelé **Collaboration externe**. L’approbation d’un commanditaire interne est nécessaire pour les organisations collaboratrices. Vous avez aussi été informé que l’accès du partenaire doit expirer dans 60 jours.
 Pour utiliser la gestion des droits d’utilisation Azure AD, vous devez disposer d’une des licences suivantes :
 
 - Azure AD Premium P2

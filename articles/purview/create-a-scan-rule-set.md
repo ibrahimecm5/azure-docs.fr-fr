@@ -1,18 +1,18 @@
 ---
 title: Créer un ensemble de règles d’analyse
 description: Créez un ensemble de règles d’analyse dans Azure Purview pour analyser rapidement les sources de données au sein de votre organisation.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 0b9175a2795ac926c7adf93dc81f84ff7b5a4472
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: fb3151b3981d0bd28120efab9bdba7fd143ae86d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207376"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510977"
 ---
 # <a name="create-a-scan-rule-set"></a>Créer un ensemble de règles d’analyse
 
@@ -60,7 +60,7 @@ Pour créer un ensemble de règles d’analyse :
 
 1. Sélectionnez **Créer** pour terminer l’ensemble de règles d’analyse.
 
-### <a name="create-a-custom-file-type"></a>Créer un type de fichier personnalisé
+## <a name="create-a-custom-file-type"></a>Créer un type de fichier personnalisé
 
 Azure Purview prend en charge l’ajout d’une extension personnalisée et la définition d’un délimiteur de colonne personnalisé dans un ensemble de règles d’analyse.
 
@@ -91,6 +91,26 @@ Pour créer un type de fichier personnalisé :
 1. Sélectionnez **Modifier** dans la vignette de nouveau type de fichier si vous souhaitez la modifier ou la supprimer.
 
 1. Sélectionnez **Continuer** pour terminer la configuration de l’ensemble de règles d’analyse.
+
+## <a name="ignore-patterns"></a>Ignorer les modèles
+
+Azure Purview prend en charge la définition d’expressions régulières (regex) pour exclure des ressources lors de l’analyse. Au cours de l’analyse, Azure Purview compare l’URL de la ressource à ces expressions régulières. Toutes les ressources correspondant à l’une des expressions régulières mentionnées sont ignorées lors de l’analyse.
+
+Le panneau **Ignorer les modèles** préremplit une expression régulière pour les fichiers de transactions Spark. Vous pouvez supprimer le modèle préexistant s’il n’est pas requis. Vous pouvez définir jusqu’à 10 modèles à ignorer.
+
+:::image type="content" source="./media/create-a-scan-rule-set/ignore-patterns-blade.png" alt-text="Capture d’écran montrant le panneau des modèles à ignorer avec quatre expressions régulières définies. La première est l’expression régulière de transaction Spark préremplie, la deuxième est \\.txt$, la troisième est \\.csv$, et enfin la quatrième est .folderB/.*.":::
+
+Dans l’exemple ci-dessus :
+
+- Les expressions régulières 2 et 3 ignorent tous les fichiers se terminant par .txt et .csv lors de l’analyse.
+- L’expression régulière 4 ignore /folderB/ et tout son contenu lors de l’analyse.
+
+Voici d’autres conseils que vous pouvez utiliser pour ignorer des modèles :
+
+- Lors du traitement de l’expression régulière, Azure Purview ajoute $ à l’expression régulière par défaut.
+- Un bon moyen de comprendre l’URL que l’agent d’analyse comparera à votre expression régulière consiste à parcourir le catalogue de données Purview, à trouver la ressource que vous souhaitez ignorer à l’avenir et à consulter son nom complet (FQN) sous l’onglet **vue d’ensemble**.
+
+   :::image type="content" source="./media/create-a-scan-rule-set/fully-qualified-name.png" alt-text="Capture d’écran montrant le nom complet sous l’onglet Vue d’ensemble d’une ressource.":::
 
 ## <a name="system-scan-rule-sets"></a>Ensembles de règles d’analyse système
 

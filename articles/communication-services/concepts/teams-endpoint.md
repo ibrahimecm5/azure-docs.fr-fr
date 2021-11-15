@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 6140ba3573452e1285236e9848e2068fd77afc07
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2038efe285f36466b0b562d4d87fbd172a44dd42
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636094"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469581"
 ---
 # <a name="build-a-custom-teams-endpoint"></a>Créer un point de terminaison personnalisé Teams
 
@@ -24,13 +24,13 @@ ms.locfileid: "128636094"
 
 Azure Communication Services permet de créer des points de terminaison personnalisés Teams afin de communiquer avec le client Microsoft Teams ou d’autres points de terminaison personnalisés Teams. Avec le point de terminaison personnalisé Teams, vous pouvez personnaliser la voix, la vidéo, la conversation et l’expérience de partage d’écran pour les utilisateurs Teams.
 
-Vous pouvez utiliser le kit de développement logiciel (SDK) Azure Communication Services Identity pour échanger des jetons utilisateur Azure Active Directory (Azure ASD) contre des jetons d’accès Teams. Les diagrammes des sections suivantes illustrent les cas d’utilisation multi-locataire, où la société fictive Fabrikam est le client de la société fictive Contoso.
+Vous pouvez utiliser le Kit de développement logiciel (SDK) Azure Communication Services Identity pour échanger des jetons d’accès Azure Active Directory (Azure AD) des utilisateurs Teams contre des jetons d’accès Communication Identity. Les diagrammes des sections suivantes illustrent les cas d’utilisation multi-locataire, où la société fictive Fabrikam est le client de la société fictive Contoso.
 
 ## <a name="calling"></a>Appel 
 
 Les fonctionnalités de voix, vidéo et partage d’écran sont fournies via les kits de développement logiciel (SDK) Azure Communication Services Calling. Le diagramme suivant présente une vue d’ensemble du processus à suivre lorsque vous intégrez vos expériences d’appel à des points de terminaison personnalisés Teams.
 
-![Diagramme du processus d’activation de la fonctionnalité d’appel pour une expérience de point de terminaison de Teams personnalisé.](./media/teams-identities/teams-identity-calling-overview.png)
+![Diagramme du processus d’activation de la fonctionnalité d’appel pour une expérience de point de terminaison de Teams personnalisé.](./media/teams-identities/teams-identity-calling-overview.svg)
 
 ## <a name="chat"></a>Conversation
 

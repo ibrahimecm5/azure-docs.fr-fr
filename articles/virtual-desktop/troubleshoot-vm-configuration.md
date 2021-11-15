@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: aa54932a6093c5c1a22285de9449b2faee06fe67
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4e3b2ab5f775b566a3d820523737200dd3dc5dd3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818547"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467071"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuration d’une machine virtuelle hôte de session
 
@@ -178,7 +178,7 @@ Lorsque l’agent Azure Virtual Desktop est installé pour la première fois sur
 
 ## <a name="troubleshooting-issues-with-the-azure-virtual-desktop-side-by-side-stack"></a>Résolution des problèmes liés à la pile côte à côte Azure Virtual Desktop
 
-La pile côte à côte Azure Virtual Desktop est automatiquement installée avec Windows Server 2019. Utilisez Microsoft Installer (MSI) pour installer la pile côte à côte sur Microsoft Windows Server 2016 ou Windows Server 2012 R2. Pour Microsoft Windows 10, la pile de côte à côte Azure Virtual Desktop est activée avec **enablesxstackrs.ps1**.
+La pile côte à côte Azure Virtual Desktop est automatiquement installée avec Windows Server 2019 et versions ultérieures. Utilisez Microsoft Installer (MSI) pour installer la pile côte à côte sur Microsoft Windows Server 2016 ou Windows Server 2012 R2. Pour Microsoft Windows 10, la pile de côte à côte Azure Virtual Desktop est activée avec **enablesxstackrs.ps1**.
 
 Il existe trois méthodes principales pour installer ou activer la pile côte à côte sur les machines virtuelles hôtes de session :
 

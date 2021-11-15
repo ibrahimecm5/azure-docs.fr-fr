@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b86e90298bc753cdea5c0fb5f255e88fcc26dc5c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1c371a155f36574f7a443506c0b9090b6b3bd544
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440753"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447072"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Guide de transition : du concepteur de vues Azure Monitor aux classeurs
 Le [concepteur de vues](view-designer.md) est une fonctionnalité d'Azure Monitor qui vous permet de créer des vues personnalisées pour vous aider à visualiser les données de votre espace de travail Log Analytics, avec des graphiques, des listes et des chronologies. Ils ont migré vers les Classeurs pour fournir un canevas flexible pour l’analyse des données et la création de rapports visuels enrichis au sein du portail Azure. Cet article vous aide à effectuer la transition du Concepteur de vues vers les Classeurs. 
@@ -49,7 +49,7 @@ Bien que ce guide propose des étapes simples pour recréer directement différe
 
 
 ## <a name="how-to-start-using-workbooks"></a>Commencer à utiliser des classeurs
-Les classeurs ouverts à partir de la fonctionnalité Classeurs sont activés dans les espaces de travail Log Analytics et apparaissent sous forme d'éléments sur la barre de navigation latérale, sous l'emplacement du concepteur de vues.
+Ouvrez des classeurs à partir de la vignette Classeurs sous votre espace de travail Log Analytics.
 
 ![Navigation dans les classeurs](media/view-designer-conversion-overview/workbooks-nav.png)
 

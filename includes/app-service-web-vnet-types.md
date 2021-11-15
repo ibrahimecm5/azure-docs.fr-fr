@@ -4,28 +4,28 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: madsd
-ms.openlocfilehash: 8d4c2968e3b21269d233f584747856804f8ff9c6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2064586fafd82cfc67e14b289797a562e3512afd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641924"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245149"
 ---
-* Les systèmes multilocataires qui prennent en charge l’ensemble des plans de tarification, excepté « Isolé ».
-* La fonctionnalité App Service Environment qui opère un déploiement dans votre réseau virtuel et prend en charge les applications à plan tarifaire Isolé.
+* Les niveaux tarifaires de calcul dédiés, y compris les niveaux Basic, Standard, Premium, PremiumV2 et PremiumV3.
+* App Service Environment qui se déploie directement dans votre réseau virtuel avec une infrastructure de prise en charge dédiée et utilise les niveaux tarifaires Isolated et IsolatedV2.
 
-La fonctionnalité d’intégration au réseau virtuel est utilisée dans les applications mutualisées. Si votre application se trouve dans [Azure App Service Environment][ASEintro], elle est déjà dans un réseau virtuel et ne nécessite pas l’utilisation de la fonctionnalité d’intégration au réseau virtuel pour accéder aux ressources du même réseau virtuel. Pour plus d’informations sur toutes les fonctionnalités de mise en réseau, consultez [Fonctionnalités de mise en réseau App Service][Networkingfeatures].
+La fonctionnalité d’intégration au réseau virtuel est utilisée dans les niveaux tarifaires de calcul dédiés App Service. Si votre application se trouve dans [App Service Environment](../articles/app-service/environment/overview.md), elle est déjà dans un réseau virtuel et ne nécessite pas l’utilisation de la fonctionnalité d’intégration au réseau virtuel pour accéder aux ressources du même réseau virtuel. Pour plus d’informations sur toutes les fonctionnalités de mise en réseau, consultez [Fonctionnalités de mise en réseau App Service](../articles/app-service/networking-features.md).
 
 L’intégration au réseau virtuel permet à votre application d’accéder aux ressources de votre réseau virtuel, sans pour autant accorder d’accès privé entrant à votre application à partir du réseau virtuel. L’accès aux sites privés fait référence au fait de rendre une application accessible uniquement à partir d’un réseau privé, par exemple à partir d’un réseau virtuel Azure. L’intégration au réseau virtuel sert uniquement à passer des appels sortants de votre application vers votre réseau virtuel. La fonctionnalité d’intégration au réseau virtuel se comporte différemment lorsqu’elle est utilisée avec un réseau virtuel situé dans la même région et dans d’autres régions. La fonctionnalité d’intégration au réseau virtuel présente deux variantes :
 
-* **Intégration au réseau virtuel régional** : Quand vous vous connectez à des réseaux virtuels Azure Resource Manager dans la même région, vous devez disposer d’un sous-réseau dédié dans le réseau virtuel avec lequel vous vous intégrez.
-* **Intégration au réseau virtuel avec passerelle obligatoire** : Lors de la connexion directe à des réseaux virtuels dans d’autres régions ou à un réseau virtuel classique dans la même région, vous avez besoin d’une passerelle de réseau virtuel Azure provisionnée dans le réseau virtuel cible.
+* **Regional VNet integration** : Quand vous vous connectez à des réseaux virtuels dans la même région, vous devez disposer d’un sous-réseau dédié dans le réseau virtuel avec lequel vous vous intégrez.
+* **Intégration au réseau virtuel avec passerelle obligatoire** : Lors de la connexion directe à des réseaux virtuels dans d’autres régions ou à un réseau virtuel classique dans la même région, vous avez besoin d’une passerelle de réseau virtuel Azure créée dans le réseau virtuel cible.
 
-Les fonctionnalités d’intégration au réseau virtuel :
+La fonctionnalité d’intégration au réseau virtuel :
 
-* Nécessitent un plan tarifaire Standard, Premium, PremiumV2, PremiumV3 ou Élastique Premium.
-* Prennent en charge les protocoles TCP et UDP.
-* Fonctionnent avec les applications Azure App Service et les applications de fonction.
+* Nécessite un plan tarifaire App Service **Standard**, **Premium**, **PremiumV2**, **PremiumV3** ou **Elastic Premium**.
+* Prend en charge les protocoles TCP et UDP.
+* Fonctionne avec les applications Azure App Service et les applications de fonction.
 
 L’intégration au réseau virtuel ne prend pas en charge certaines choses, notamment :
 
@@ -35,8 +35,4 @@ L’intégration au réseau virtuel ne prend pas en charge certaines choses, not
 
 L’intégration au réseau virtuel avec passerelle obligatoire fournit un accès aux ressources uniquement du réseau virtuel cible, ou des réseaux connectés au réseau virtuel cible avec un peering ou des réseaux privés virtuels. L’intégration au réseau virtuel avec passerelle obligatoire n’autorise pas l’accès aux ressources disponibles sur les connexions Azure ExpressRoute ni ne fonctionne avec des points de terminaison de service.
 
-Quelle que soit la version utilisée, l’intégration au réseau virtuel permet à votre application d’accéder aux ressources de votre réseau virtuel, mais n’accorde pas d’accès privé entrant à votre application à partir du réseau virtuel. L’accès à un site privé fait référence au fait de rendre votre application accessible uniquement à partir d’un réseau privé tel qu’un réseau virtuel Azure. L'intégration au réseau virtuel sert uniquement à passer des appels sortants de votre application vers votre réseau virtuel.
-
-<!--Links-->
-[ASEintro]: ../articles/app-service/environment/intro.md
-[Networkingfeatures]: ../articles/app-service/networking-features.md
+Quelle que soit la version utilisée, l’intégration au réseau virtuel permet à votre application d’accéder aux ressources de votre réseau virtuel, mais n’accorde pas d’accès privé entrant à votre application à partir du réseau virtuel. L’accès aux sites privés fait référence au fait de rendre votre application accessible uniquement à partir d’un réseau privé, par exemple à partir d’un réseau virtuel Azure. L'intégration au réseau virtuel sert uniquement à passer des appels sortants de votre application vers votre réseau virtuel.

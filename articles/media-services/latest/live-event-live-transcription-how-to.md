@@ -16,16 +16,7 @@ Cet article explique comment activer la transcription en direct lors du streamin
 
 ## <a name="live-transcription-preview-regions-and-languages"></a>Régions et langues de la transcription en direct (préversion)
 
-La transcription en direct est disponible dans les régions suivantes :
-
-- Asie Sud-Est
-- Europe Ouest
-- Europe Nord
-- USA Est
-- USA Centre
-- États-Unis - partie centrale méridionale
-- USA Ouest 2
-- Brésil Sud
+La transcription en direct est disponible dans les régions répertoriées [ici](azure-clouds-regions.md).
 
 Voici la liste des langues qui peuvent être transcrites ; utilisez le code langue dans l’API.
 

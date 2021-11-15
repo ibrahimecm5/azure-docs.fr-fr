@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique Azure Active Directory à Sonarqube | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Sonarqube'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Sonarqube.
 services: active-directory
 author: jeevansd
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: e6f366fcc1f268f3c0fa629bd1903be4f8c8d2b8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8d209990a84464aa31d4f32a66c30de9f2047804
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785797"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462477"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Sonarqube
+# <a name="tutorial-azure-ad-sso-integration-with-sonarqube"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Sonarqube
 
 Dans ce tutoriel, vous allez apprendre à intégrer Sonarqube à Azure Active Directory (Azure AD). Quand vous intégrez Sonarqube à Azure AD, vous pouvez :
 
@@ -78,7 +78,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. Dans la section **Configuration SAML de base**, effectuez les étapes suivantes :
 
-    a. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://servicessonar.<YOUR_ORGANIZATION>.com`
+    a. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : ` https://sonar.<companyspecificurl>.io/oauth2/callback/saml`
 
     b. Dans la zone de texte **URL d’authentification**, tapez l’une des URL suivantes :
 

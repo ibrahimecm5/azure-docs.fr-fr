@@ -6,13 +6,13 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/18/2019
-ms.openlocfilehash: fab4587cc6320cc020a1d92eb1c6fc2f8fa3e3af
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 11/3/2021
+ms.openlocfilehash: 09f461b5d64b52ded281e338e1307876d7e5f86b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537387"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843819"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Résoudre les problèmes de dépassement de délai d’expiration avec Azure Cache pour Redis
 
@@ -41,40 +41,24 @@ Ce message d’erreur contient des mesures qui peuvent vous aider à identifier 
 
 | Mesure de message d’erreur | Détails |
 | --- | --- |
-| inst |Au cours du dernier intervalle de temps : 0 commandes ont été émises |
-| mgr |Le gestionnaire de sockets fait un `socket.select`, ce qui signifie qu’il demande au système d’exploitation de désigner un socket qui a quelque chose à faire. Le lecteur ne lit pas activement ce qui se trouve sur le réseau, car il pense qu’il n’y a rien à faire. |
-| queue |73 opérations sont en cours. |
-| qu |6 des opérations en cours se trouvent dans la file d’attente et n’ont pas encore été envoyées au réseau sortant. |
-| qs |67 des opérations en cours ont été envoyées au serveur, mais aucune réponse n’est encore disponible. La réponse peut être `Not yet sent by the server` ou `sent by the server but not yet processed by the client.`. |
-| qc |Aucune des opérations en cours n’a encore reçu de réponse, mais celles-ci sont marquées comme terminées, car elles attendent dans la boucle d’exécution. |
-| wr |Il y a un enregistreur actif (ce qui signifie que les 6 requêtes en attente ne sont pas ignorées) bytes/activewriters |
-| commencer |Aucun lecteur n’est actif et aucun octet n’est disponible en lecture sur la carte réseau octets/lecteurs actifs |
+| `inst` |Au cours du dernier intervalle de temps : 0 commandes ont été émises |
+| `mgr` |Le gestionnaire de sockets fait un `socket.select`, ce qui signifie qu’il demande au système d’exploitation de désigner un socket qui a quelque chose à faire. Le lecteur ne lit pas activement ce qui se trouve sur le réseau, car il pense qu’il n’y a rien à faire. |
+| `queue` |73 opérations sont en cours. |
+| `qu` |6 des opérations en cours se trouvent dans la file d’attente et n’ont pas encore été envoyées au réseau sortant. |
+| `qs`|67 des opérations en cours ont été envoyées au serveur, mais aucune réponse n’est encore disponible. La réponse peut être `Not yet sent by the server` ou `sent by the server but not yet processed by the client.`. |
+| `qc` |Aucune des opérations en cours n’a encore reçu de réponse, mais celles-ci sont marquées comme terminées, car elles attendent dans la boucle d’exécution. |
+| `wr` |Il y a un enregistreur actif (ce qui signifie que les 6 requêtes en attente ne sont pas ignorées) bytes/activewriters |
+| `in` |Aucun lecteur n’est actif et aucun octet n’est disponible en lecture sur la carte réseau octets/lecteurs actifs |
 
 Dans l’exemple d’exception précédent, les sections `IOCP` et `WORKER` contiennent chacune une valeur `Busy` supérieure à la valeur `Min`. La différence signifie que vous devez ajuster vos paramètres `ThreadPool`. Vous pouvez [configurer les paramètres de votre pool de threads](cache-management-faq.yml#important-details-about-threadpool-growth) pour vous assurer qu’il effectue rapidement un scale-up en cas d’augmentation du trafic.
 
-Vous pouvez utiliser les étapes suivantes pour rechercher les causes racines possibles.
+Vous pouvez utiliser les étapes suivantes pour éliminer les causes racines possibles.
 
-1. Il est recommandé de suivre la procédure ci-dessous pour se connecter, en cas d’utilisation du client StackExchange.Redis.
+1. Nous vous recommandons de vérifier que vous utilisez le modèle ForceReconnect pour détecter et remplacer les connexions bloquées, comme décrit dans l’article [Résilience des connexions](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis).
 
-    ```csharp
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+   Pour plus d’informations sur l’utilisation de StackExchange.Redis, consultez [Utilisation du Cache Redis Azure](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache). 
 
-    });
-
-    public static ConnectionMultiplexer Connection
-    {
-        get
-        {
-            return lazyConnection.Value;
-        }
-    }
-    ```
-
-    Pour plus d’informations, consultez [Utilisation du Cache Redis Azure](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-
-1. Vérifiez que le serveur et l’application cliente se trouvent dans la même région Azure. Par exemple, vous pouvez être confronté à des expirations si votre cache se trouve dans la région USA Est, alors que le client se trouve dans la région USA Ouest et que la requête n’est pas traitée dans l’intervalle `synctimeout`. Vous pouvez également être confronté à des expirations lorsque vous procédez à un débogage sur votre ordinateur de développement local. 
+1. Vérifiez que le serveur et l’application cliente se trouvent dans la même région Azure. Par exemple, vous pouvez être confronté à des expirations si votre cache se trouve dans la région USA Est, alors que le client se trouve dans la région USA Ouest et que la requête n’est pas traitée dans l’intervalle `synctimeout`. Vous pouvez également être confronté à des expirations lorsque vous procédez à un débogage sur votre ordinateur de développement local.
 
     Il est vivement recommandé de placer le cache et le client dans la même région Azure. Si votre implémentation nécessite des appels interrégionaux, vous devez régler l’intervalle `synctimeout` sur une valeur supérieure à la valeur par défaut (5000 ms), en incluant une propriété `synctimeout` dans la chaîne de connexion. L’exemple suivant montre un extrait de chaîne de connexion pour StackExchange.Redis qui est fournie par Azure Cache pour Redis avec une valeur `synctimeout` de 8 000 ms.
 

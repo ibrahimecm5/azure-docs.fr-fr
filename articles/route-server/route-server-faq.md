@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 09/23/2021
+ms.date: 11/02/2021
 ms.author: duau
-ms.openlocfilehash: fa5ea8f191c0b2ea9c7db483eb4d7b9c5a679be0
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 47584994586e735647be4116fb49de610e5f97f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094364"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453266"
 ---
 # <a name="azure-route-server-faq"></a>Forum aux questions sur Serveur de routes Azure
 
@@ -91,6 +91,12 @@ Non, Azure route Server ne prend pas en charge l’Association NSG à RouteServe
 ***Topologie : NVA1-> RouteServer1-> (via VNet Peering)-> RouteServer2-> NVA2***
 
 Non, Azure Route Server ne transfère pas le trafic de données. Pour activer la connectivité de transit via l’appliance virtuelle réseau, configurez une connexion directe (par exemple, un tunnel IPsec) entre les appliances virtuelles réseau et utilisez les serveurs de routage pour la propagation de routes dynamiques. 
+
+### <a name="can-i-use-azure-route-server-to-direct-traffic-between-subnets-in-the-same-virtual-network-to-flow-inter-subnet-traffic-through-the-nva"></a>Puis-je utiliser le Serveur de routes Azure pour diriger le trafic entre les sous-réseaux dans le même réseau virtuel afin de transmettre le trafic entre sous-réseaux via l’appliance virtuelle réseau ?
+
+Non. Les itinéraires système pour le trafic lié au réseau virtuel, aux peerings de réseaux virtuels ou aux points de terminaison de service de réseau virtuel, sont les itinéraires sélectionnés par défaut, même si les itinéraires BGP sont plus spécifiques. Comme le Serveur de routes utilise BGP pour publier des itinéraires, ce n’est pas encore pris en charge par la conception. Vous devez continuer à utiliser UDR pour forcer le remplacement des itinéraires et vous ne pouvez pas utiliser BGP pour basculer rapidement à travers ces itinéraires. Vous devez continuer à utiliser une solution tierce pour mettre à jour les UDR via l’API dans une situation de basculement, ou utiliser un Azure Load Balancer avec le mode ports HA pour diriger le trafic.
+
+Vous pouvez toujours utiliser le Serveur de routes pour diriger le trafic entre les sous-réseaux dans différents réseaux virtuels vers le flux à l’aide de l’appliance virtuelle réseau. La seule conception possible qui peut fonctionner est un sous-réseau par réseau virtuel « Spoke » et tous les réseaux virtuels sont homologués à un réseau virtuel « Hub », mais cela est très limité et doit prendre en compte la mise à l’échelle et les limites maximales d’Azure sur les réseaux virtuels et les sous-réseaux.
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>Limites de Route Server
 

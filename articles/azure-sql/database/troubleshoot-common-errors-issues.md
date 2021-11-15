@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: mathoma,vanto
-ms.date: 08/20/2021
-ms.openlocfilehash: f9c5df5bf086e5d80c8f506aa8bb718427755d7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/04/2021
+ms.openlocfilehash: e445574d69096605f16a6a097f005e020674f6a2
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680677"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851702"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Résolution des problèmes de connectivité et autres erreurs avec Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -105,7 +105,7 @@ Pour résoudre ce problème, contactez votre administrateur de service afin d’
 En règle générale, l’administrateur de service peut utiliser les étapes suivantes pour ajouter les informations d’identification de connexion :
 
 1. Connectez-vous au serveur à l’aide de SQL Server Management Studio (SSMS).
-2. Exécutez la requête SQL suivante pour vérifier que le nom de connexion est bien désactivé dans la base de données master :
+2. Exécutez la requête SQL suivante dans la base de données `master` pour vérifier si le nom de connexion est bien désactivé :
 
    ```sql
    SELECT name, is_disabled FROM sys.sql_logins;
@@ -303,6 +303,8 @@ Pour contourner ce problème, essayez d’optimiser la requête.
 
 Pour obtenir une procédure de dépannage détaillée, consultez [Is my query running fine in the cloud?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud) (Ma requête s’exécute-t-elle correctement dans le cloud ?).
 
+Pour plus d’informations sur d’autres erreurs de mémoire insuffisante et des exemples de requêtes, consultez [Résoudre les erreurs de mémoire insuffisante avec Azure SQL Database](troubleshoot-memory-errors-issues.md).
+
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tableau des messages d’erreur de gouvernance des ressources supplémentaires
 
 | Code d'erreur | severity | Description |
@@ -314,7 +316,7 @@ Pour obtenir une procédure de dépannage détaillée, consultez [Is my query ru
 | 40550 |16 |La session a pris fin car elle a acquis trop de verrous. Essayez de lire ou de modifier moins de lignes au cours d'une transaction. Pour plus d’informations sur le traitement par lot, consultez [Comment utiliser le traitement par lot pour améliorer les performances des applications de base de données SQL](../performance-improve-use-batching.md).|
 | 40551 |16 |La session a été arrêtée en raison de l’utilisation excessive de `TEMPDB` . Essayez de modifier votre requête afin de réduire l'utilisation de l'espace de table temporaire.<br/><br/>Si vous utilisez des objets temporaires, conservez de l’espace dans la base de données `TEMPDB` en supprimant des objets temporaires une fois qu’ils ne sont plus nécessaires à la session. Pour plus d’informations sur l’utilisation de tempdb dans SQL Database, consultez [Base de données tempdb dans SQL Database](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 | 40552 |16 |La session a pris fin en raison d'une utilisation de l'espace pour le journal de transactions excessive. Essayez de modifier moins de lignes au cours d'une transaction. Pour plus d’informations sur le traitement par lot, consultez [Comment utiliser le traitement par lot pour améliorer les performances des applications de base de données SQL](../performance-improve-use-batching.md).<br/><br/>Si vous effectuez des insertions en bloc à l’aide de l’utilitaire `bcp.exe` ou de la classe `System.Data.SqlClient.SqlBulkCopy`, essayez d’utiliser les options `-b batchsize` ou `BatchSize` permettant de limiter le nombre de lignes copiées sur le serveur à chaque transaction. Si vous reconstruisez un index en utilisant l’instruction `ALTER INDEX`, essayez d’utiliser l’option `REBUILD WITH ONLINE = ON`. Pour plus d’informations sur les tailles des journaux des transactions pour le modèle d’achat vCore, consultez : <br/>&bull; &nbsp;[Limites de vCores pour les bases de données uniques](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[Limites de vCores pour les pools élastiques](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp;[Limites des ressources d’Azure SQL Managed Instance](../managed-instance/resource-limits.md).|
-| 40553 |16 |La session a pris fin en raison d'une utilisation de mémoire excessive. Essayez de modifier votre requête afin que le nombre de lignes à traiter soit moins important.<br/><br/>La diminution du nombre d’opérations `ORDER BY` et `GROUP BY` dans votre code Transact-SQL réduit les besoins en mémoire de votre requête. Pour plus d’informations sur la mise à l’échelle des bases de données, consultez [Mettre à l’échelle des ressources de base de données unique](single-database-scale.md) et [Mettre à l’échelle des ressources de pool élastique](elastic-pool-scale.md).|
+| 40553 |16 |La session a pris fin en raison d'une utilisation de mémoire excessive. Essayez de modifier votre requête afin que le nombre de lignes à traiter soit moins important.<br/><br/>La diminution du nombre d’opérations `ORDER BY` et `GROUP BY` dans votre code Transact-SQL réduit les besoins en mémoire de votre requête. Pour plus d’informations sur la mise à l’échelle des bases de données, consultez [Mettre à l’échelle des ressources de base de données unique](single-database-scale.md) et [Mettre à l’échelle des ressources de pool élastique](elastic-pool-scale.md). Pour plus d’informations sur les erreurs de mémoire insuffisante et des exemples de requêtes, consultez [Résoudre les erreurs de mémoire insuffisante avec Azure SQL Database](troubleshoot-memory-errors-issues.md).|
 
 ## <a name="elastic-pool-errors"></a>Erreurs relatives au pool élastique
 
@@ -345,7 +347,7 @@ Les erreurs suivantes sont liées à la création et à l’utilisation de pools
 
 ## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Impossible d’ouvrir la base de données « Master » demandée par la connexion. La connexion a échoué
 
-Ce problème se produit car le compte ne dispose pas de l’autorisation d’accès à la base de données MASTER. Toutefois, par défaut, SQL Server Management Studio (SSMS) tente de se connecter à la base de données MASTER.
+Ce problème se produit car le compte ne dispose pas de l’autorisation d’accès à la base de données `master`. Toutefois, par défaut, SQL Server Management Studio (SSMS) tente de se connecter à la base de données `master`.
 
 Pour résoudre ce problème, effectuez les étapes suivantes :
 

@@ -1,35 +1,35 @@
 ---
 title: Créer une définition d’image et une version d’image
-description: Découvrez comment créer une image dans une galerie d’images partagées dans Azure.
+description: Découvrez comment créer une image dans une galerie Azure Compute Gallery.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: f0ff3a0cc6bc228951fa47eb5723c520684d1dc5
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: e52457a67e2c653d1fa4e191ee568b35cb7e365f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452638"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471513"
 ---
 # <a name="create-an-image-definition-and-an-image-version"></a>Créer une définition d’image et une version d’image 
 
-Une [galerie d’images partagées](shared-image-galleries.md) simplifie considérablement le partage d’images personnalisées dans votre organisation. Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des tâches de déploiement comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. 
+Une galerie [Azure Compute Gallery](shared-image-galleries.md) (anciennement Shared Image Gallery) simplifie considérablement le partage d’images personnalisées dans votre organisation. Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des tâches de déploiement comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. 
 
-La galerie d’images partagées vous permet de partager vos images de machine virtuelle personnalisées avec d’autres personnes de votre organisation, dans ou entre les régions, à l’intérieur d’un locataire AAD. Choisissez les images à partager, les régions dans lesquelles vous souhaitez les rendre disponibles et les personnes avec lesquelles vous voulez les partager. Vous pouvez créer plusieurs galeries afin de regrouper logiquement les images partagées. 
+La galerie Azure Compute Gallery vous permet de partager vos images de machine virtuelle personnalisées avec d’autres personnes de votre organisation, dans la même région ou des régions différentes, au sein d’un locataire AAD. Choisissez les images à partager, les régions dans lesquelles vous souhaitez les rendre disponibles et les personnes avec lesquelles vous voulez les partager. Vous pouvez créer plusieurs galeries afin de regrouper logiquement les images. 
 
-La fonctionnalité Galerie d’images partagées a plusieurs types de ressources :
+La fonctionnalité Azure Compute Gallery présente plusieurs types de ressources :
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](./includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
 ## <a name="before-you-begin"></a>Avant de commencer
 
-Pour suivre cet article, vous devez disposer d’une galerie d’images partagées existante et d’une source pour votre image disponible dans Azure. Les sources d’images peuvent être :
+Pour suivre cet article, vous devez disposer d’une galerie Azure Compute Gallery existante et d’une source pour votre image disponible dans Azure. Les sources d’images peuvent être :
 - Une machine virtuelle dans votre abonnement. Vous pouvez capturer une image à partir de machines virtuelles [spécialisées et généralisées](shared-image-galleries.md#generalized-and-specialized-images). 
 - Une image managée.
 - Des disques de système d’exploitation et de données managés.
@@ -54,10 +54,10 @@ Pour créer une image à partir d’une machine virtuelle dans le portail, consu
 
 Pour créer une image à l’aide d’une source autre qu’une machine virtuelle, procédez comme suit.
 
-1. Accédez au [portail Azure](https://portal.azure.com), puis recherchez et sélectionnez **Galerie d’images partagées**.
+1. Accédez au [portail Azure](https://portal.azure.com), puis recherchez et sélectionnez **Azure Compute Gallery**.
 1. Sélectionnez la galerie à utiliser dans la liste.
-1. Sur la page de votre galerie d’images, sélectionnez **Ajouter une nouvelle définition d’image** en haut de la page. 
-1. Sur la page **Ajouter une nouvelle définition d’image à la galerie d’images partagées**, dans l’onglet **Informations de base**, sélectionnez une **région**. 
+1. Sur la page de votre nouvelle galerie d’images, sélectionnez **Ajouter** en haut de la page, puis **Définition d’image de machine virtuelle** dans le menu déroulant. 
+1. Sur la page **Ajouter une nouvelle définition d’image à Azure Compute Gallery**, dans l’onglet **Informations de base**, sélectionnez une **Région**. 
 1. Pour **Nom de la définition d’image**, tapez un nom comme *myImageDefinition*.
 1. Pour **Système d’exploitation**, sélectionnez l’option appropriée en fonction de votre source.  
 1. Pour **Génération de machine virtuelle**, sélectionnez l’option en fonction de votre source. Dans la plupart des cas, ce sera *Gen 1*. Pour plus d'informations, voir [Prise en charge des machines virtuelles de 2e génération](generation-2.md).

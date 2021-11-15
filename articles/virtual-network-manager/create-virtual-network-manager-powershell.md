@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: template-quickstart, ignite-fall-2021
-ms.openlocfilehash: a25f96fc9584c776c51798ea05d6221116b0b6a9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: effbdd0482e40535793e2c60dcdce3b4cdb518e6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028839"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466459"
 ---
 # <a name="quickstart-create-a-mesh-network-with-azure-virtual-network-manager-using-azure-powershell"></a>Démarrage rapide : Créer un réseau maillé avec Azure Virtual Network Manager en utilisant Azure PowerShell
 
@@ -30,6 +30,22 @@ Dans ce guide de démarrage rapide, vous allez déployer trois réseaux virtuels
 * Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Assurez-vous que vous disposez des tout derniers modules PowerShell, sinon vous pouvez utiliser Azure Cloud Shell dans le portail.
 * Si vous exécutez PowerShell en local, vous devez également exécuter `Connect-AzAccount` pour créer une connexion avec Azure.
+
+## <a name="register-subscription-for-public-preview"></a>Inscrire un abonnement à la préversion publique
+
+Utilisez la commande suivante pour inscrire votre abonnement Azure à la Préversion publique d’Azure Virtual Network Manager :
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName AllowAzureNetworkManager -ProviderNamespace Microsoft.Network
+```
+
+## <a name="install-azure-powershell-module"></a>Installer le module Azure PowerShell
+
+Installez la version la plus récente du module Azure PowerShell *Az.Network* à l’aide de cette commande :
+
+```azurepowershell-interactive
+Install-Module -Name Az.Network -AllowPrerelease
+```
 
 ## <a name="create-virtual-network-manager"></a>Créer une liaison de réseau virtuel
 

@@ -4,15 +4,15 @@ description: Découvrez le magasin transactionnel (basé sur des lignes) et anal
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/12/2021
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 09b5d7c1865020ba33a89e73b2ba39260f473e6a
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: fd9984d6db66413f3c53d20fa63ffb4e1a106f3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859339"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454539"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Qu’est-ce que le magasin analytique Azure Cosmos DB ?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -324,6 +324,10 @@ Une fois le magasin analytique activé, selon les besoins de conservation des do
 ## <a name="global-distribution"></a>Diffusion mondiale
 
 Si vous avez un compte Azure Cosmos DB distribué globalement, une fois que vous avez activé le magasin analytique pour un conteneur, il est disponible dans toutes les régions de ce compte.  Toutes les modifications apportées aux données opérationnelles sont répliquées globalement dans toutes les régions. Vous pouvez effectuer des recherches analytiques efficaces sur la copie régionale la plus proche de vos données dans Azure Cosmos DB.
+
+## <a name="partitioning"></a>Partitionnement
+
+Le partitionnement du magasin analytique est complètement indépendant du partitionnement dans le magasin transactionnel. Par défaut, les données dans le magasin analytique ne sont pas partitionnées. Si vos requêtes analytiques ont des filtres fréquemment utilisés, vous avez la possibilité d’opérer un partitionnement sur la base de ces champs pour améliorer les performances des requêtes. Pour plus d’informations, consultez les articles [Présentation du partitionnement personnalisé](custom-partitioning-analytical-store.md) et [Comment configurer un partitionnement personnalisé](configure-custom-partitioning.md).  
 
 ## <a name="security"></a>Sécurité
 

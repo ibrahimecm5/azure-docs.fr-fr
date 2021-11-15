@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: cba8ba5c8c5ff300fe585d75aab98fd4003a475d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 11/02/2021
+ms.openlocfilehash: cbdde26b030b5e3b89d96304ece6e6d698884c19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468515"
 ---
 # <a name="configure-a-managed-application-plan"></a>Configurer un plan d’application managée
 
@@ -155,6 +155,8 @@ Pour en savoir plus sur les modes de déploiement, consultez [Modes de déploiem
 ### <a name="provide-a-notification-endpoint-url"></a>Fournir une URL de point de terminaison de notification
 
 Dans la zone **URL de point de terminaison de notification**, fournissez un point de terminaison webhook HTTPS pour recevoir des notifications concernant toutes les opérations CRUD effectuées sur des instances d’application managée de cette version de plan.
+
+Azure ajoute `/resource` à la fin de votre URI de webhook avant de l’appeler. Ainsi, votre URL de webhook doit se terminer par `/resource`, mais n’incluez pas `/resource` dans l’URL que vous entrez dans la zone **URL de point de terminaison de notification**. Pour plus d’informations sur l’URL du webhook, consultez [Planifier une application managée](plan-azure-app-managed-app.md#notification-endpoint-url).
 
 ### <a name="customize-allowed-customer-actions-optional"></a>Personnaliser les actions des clients autorisées (facultatif)
 

@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c71ae3378c1d5d6304b506f2d5a4dbaa9b15e8e
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 1af2a466dc5906f752970cbc6b8898aeeea39475
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855023"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477494"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Prise en charge de plusieurs domaines pour la fédération avec Azure AD
 La documentation suivante fournit des conseils sur l’utilisation de plusieurs domaines de niveau supérieur et sous-domaines lors de la fédération avec des domaines Microsoft 365 ou Azure AD.
@@ -65,7 +65,7 @@ Les paramètres du domaine bmfabrikam.com ressemblent à ce qui suit :
 
 `-SupportMultipleDomain` ne modifie pas les autres points de terminaison qui sont toujours configurés pour pointer vers le service de fédération adfs.bmcontoso.com.
 
-De plus, `-SupportMultipleDomain` s’assure que le système AD FS inclut la valeur Issuer appropriée dans les jetons émis pour Azure AD. Pour définir cette valeur, la partie domaine de l’UPN des utilisateurs est prise et définie en tant que domaine dans issuerURI, c’est-à-dire https://{upn suffix}/adfs/services/trust.
+`-SupportMultipleDomain` s’assure également que le système AD FS inclut la valeur Issuer appropriée dans les jetons émis pour Azure AD. Cette valeur est définie en prenant la partie domaine de l’UPN de l’utilisateur et en l’utilisant comme domaine dans IssuerUri, c’est-à-dire `https://{upn suffix}/adfs/services/trust`.
 
 Ainsi, pendant l’authentification auprès d’Azure AD ou de Microsoft 365, l’élément IssuerUri du jeton de l’utilisateur est employé pour localiser le domaine dans Azure AD. Si aucune correspondance ne peut être trouvée, l’authentification échoue.
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088273ff23b28bd54a4a14ab9485a0e28ae42cef
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1a30e270b202989f041ea9e07dc69e67c33b8e87
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448269"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Règles d’appartenance de groupe dynamique dans Azure Active Directory
 
@@ -52,19 +52,19 @@ Pour obtenir des instructions pas à pas, consultez [Créer ou mettre à jour un
 
 ![Ajouter une règle d’appartenance au groupe dynamique](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression&quot;></a>Syntaxe de règle pour une expression unique
+### <a name="rule-syntax-for-a-single-expression"></a>Syntaxe de règle pour une expression unique
 
 Une expression unique est la forme la plus simple d’une règle d’appartenance, qui ne comprend que les trois parties précitées. Une règle avec une expression unique ressemble à ceci : `Property Operator Value`, où la syntaxe de la propriété est le nom de object.property.
 
 Voici un exemple de règle d’appartenance correctement construite avec une expression unique :
 
 ```
-user.department -eq &quot;Sales&quot;
+user.department -eq "Sales"
 ```
 
 Les parenthèses sont facultatives pour une expression unique. La longueur totale du corps de votre règle d’appartenance ne peut pas dépasser 3072 caractères.
 
-## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>Construction du corps d’une règle d’appartenance
+## <a name="constructing-the-body-of-a-membership-rule"></a>Construction du corps d’une règle d’appartenance
 
 Une règle d’appartenance qui remplit automatiquement un groupe d’utilisateurs ou d’appareils est une expression binaire qui génère un résultat vrai ou faux. Les trois parties d’une règle simple sont les suivantes :
 
@@ -74,7 +74,7 @@ Une règle d’appartenance qui remplit automatiquement un groupe d’utilisateu
 
 L’ordre des parties au sein d’une expression est importants pour éviter les erreurs de syntaxe.
 
-## <a name=&quot;supported-properties&quot;></a>Propriétés prises en charge
+## <a name="supported-properties"></a>Propriétés prises en charge
 
 Il existe trois types de propriétés utilisables pour construire une règle d’appartenance.
 
@@ -84,18 +84,18 @@ Il existe trois types de propriétés utilisables pour construire une règle d�
 
 Les propriétés utilisateur que vous pouvez utiliser pour créer une expression unique sont les suivantes.
 
-### <a name=&quot;properties-of-type-boolean&quot;></a>Propriétés de type booléen
+### <a name="properties-of-type-boolean"></a>Propriétés de type booléen
 
 | Propriétés | Valeurs autorisées | Usage |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
-### <a name=&quot;properties-of-type-string&quot;></a>Propriétés de type chaîne
+### <a name="properties-of-type-string"></a>Propriétés de type chaîne
 
 | Propriétés | Valeurs autorisées | Usage |
 | --- | --- | --- |
-| city |Toute valeur de chaîne ou *null* |(user.city -eq &quot;value") |
+| city |Toute valeur de chaîne ou *null* |(user.city -eq "value") |
 | country |Toute valeur de chaîne ou *null* |(user.country -eq "value") |
 | companyName | Toute valeur de chaîne ou *null* | (user.companyName -eq "value") |
 | department |Toute valeur de chaîne ou *null* |(user.department -eq "value") |
@@ -269,7 +269,7 @@ assignedPlans est une propriété à valeurs multiples qui répertorie tous les 
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Vous pouvez utiliser une règle telle que celle-ci afin de regrouper tous les utilisateurs pour lesquels une fonctionnalité Microsoft 365 (ou un autre service en ligne Microsoft) est activée. Vous pourriez ensuite l’appliquer au groupe avec un ensemble de stratégies.
+Vous pouvez utiliser une règle telle que celle-ci afin de regrouper tous les utilisateurs pour lesquels une capacité de Microsoft 365 (ou d’un autre service en ligne Microsoft) est activée. Vous pourriez ensuite l’appliquer au groupe avec un ensemble de stratégies.
 
 #### <a name="example-2"></a>Exemple 2
 

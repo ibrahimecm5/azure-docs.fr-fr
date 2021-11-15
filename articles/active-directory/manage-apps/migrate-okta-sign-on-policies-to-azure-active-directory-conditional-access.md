@@ -1,5 +1,5 @@
 ---
-title: Tutoriel pour migrer des stratégies de connexion Okta vers l’accès conditionnel Azure Active Directory
+title: Didacticiel pour migrer des stratégies de connexion Okta vers un accès conditionnel Azure Active Directory
 titleSuffix: Active Directory
 description: Dans ce tutoriel, vous apprenez à migrer les stratégies d’authentification Okta vers l’accès conditionnel Azure Active Directory.
 services: active-directory
@@ -11,22 +11,22 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 840d2cfd64f6384c8c503e472f7557ababd0d08e
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 5cca89b361152d3a4a5635f008f70f145d5d68a0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389188"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459428"
 ---
-# <a name="tutorial-migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access"></a>Tutoriel : Migrer des stratégies de connexion Okta vers l’accès conditionnel Azure Active Directory
+# <a name="tutorial-migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access"></a>Didacticiel : Migrer des stratégies de connexion Okta vers l’accès conditionnel Azure Active Directory
 
 Dans ce tutoriel, vous découvrirez la manière dont votre organisation peut migrer des stratégies d’authentification globales ou au niveau des applications dans Okta vers des stratégies d’accès conditionnel Azure Active Directory (Azure AD) pour sécuriser l’accès des utilisateurs dans Azure AD et les applications connectées.
 
-Ce tutoriel part du principe que vous disposez d’un locataire Office 365 fédéré à Okta pour la connexion et l’authentification multifacteur. Vous devez également disposer des agents d’approvisionnement du serveur Azure AD Connect ou du cloud Azure AD Connect configurés pour l’approvisionnement des utilisateurs sur Azure AD.
+Ce didacticiel part du principe que vous avez un locataire Office 365 fédéré à Okta pour la connexion et l’authentification multifacteur (MFA). Vous devez également disposer des agents d’approvisionnement du serveur Azure AD Connect ou du cloud Azure AD Connect configurés pour l’approvisionnement des utilisateurs sur Azure AD.
 
 ## <a name="prerequisites"></a>Prérequis
 
-Lorsque vous passez de l’authentification Okta à l’accès conditionnel Azure AD, il est important de comprendre les exigences en matière de licence. L’accès conditionnel Azure AD exige que les utilisateurs disposent d’une licence Azure AD Premium P1 attribuée avant l’inscription à Azure AD Multifactor Authentication.
+Lorsque vous passez de l’authentification Okta à un accès conditionnel, il est important de comprendre les exigences en matière de licence. Un accès conditionnel exige que les utilisateurs disposent d’une licence Azure AD Premium P1 attribuée avant l’inscription à Azure AD Multifactor Authentication.
 
 Avant d’effectuer les étapes de jonction Azure AD Hybride, vous devez disposer d’informations d’identification d’administrateur d’entreprise dans la forêt locale pour configurer l’enregistrement du point de connexion de service (SCP).
 
@@ -57,7 +57,7 @@ Dans l’exemple suivant, la stratégie d’authentification pour l’applicatio
 
 ## <a name="configure-condition-prerequisites"></a>Configurer les conditions préalables
 
-Les stratégies d’accès conditionnel Azure AD peuvent être configurées pour correspondre aux conditions d’Okta pour la plupart des scénarios sans configuration supplémentaire.
+Les stratégies d’accès conditionnel peuvent être configurées pour correspondre aux conditions d’Okta pour la plupart des scénarios sans configuration supplémentaire.
 
 Dans certains scénarios, vous pouvez avoir besoin d’une configuration supplémentaire avant de configurer les stratégies d’accès conditionnel. Les deux scénarios connus au moment de la rédaction de cet article sont les suivants :
 
@@ -65,7 +65,6 @@ Dans certains scénarios, vous pouvez avoir besoin d’une configuration supplé
 - **Confiance des appareils Okta vers l’accès conditionnel basé sur les appareils** : L’accès conditionnel offre deux options possibles lorsque vous évaluez l’appareil d’un utilisateur :
 
   - [Utiliser Jonction Azure AD Hybride](#hybrid-azure-ad-join-configuration), qui est une fonctionnalité activée au sein du serveur Azure AD Connect qui synchronise les appareils actuels de Windows, tels que Windows 10, Windows Server 2016 et Windows Server 2019, avec Azure AD.
-
   - [Inscrire l’appareil dans Endpoint Manager](#configure-device-compliance) et attribuer une stratégie de conformité.
 
 ### <a name="hybrid-azure-ad-join-configuration"></a>Configuration de la jointure hybride Azure AD
@@ -73,7 +72,7 @@ Dans certains scénarios, vous pouvez avoir besoin d’une configuration supplé
 Pour activer Jonction Azure AD Hybride sur votre serveur Azure AD Connect, exécutez l’Assistant de configuration. Vous devrez prendre des mesures après la configuration pour inscrire automatiquement les appareils.
 
 >[!NOTE]
->Jonction Azure AD Hybride n’est pas prise en charge par les agents d’approvisionnement du cloud Azure AD Connect.
+>La jointure hybride Azure AD n’est pas prise en charge avec les agents d’approvisionnement Azure AD Connect cloud.
 
 1. Pour activer Jonction Azure AD Hybride, suivez ces [instructions](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
@@ -113,15 +112,16 @@ Avant de passer à l’accès conditionnel, vérifiez les paramètres de locatai
 
    Le champ **Appliqué** doit également être vide.
 
-   ![Capture d’écran montrant que le champ Appliqué est vide dans le portail Azure AD Multifactor Authentication hérité.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enforced-empty-legacy-azure-ad-portal.png)
-
 1. Sélectionnez l’option **Paramètres de service**. Changez la sélection **Mots de passe d’application** en **Ne pas autoriser les utilisateurs à créer des mots de passe d’application pour se connecter à des applications sans navigateur**.
+
+   ![Capture d’écran montrant les paramètres de mot de passe d’application qui ne permettent pas aux utilisateurs de créer des mots de passe d’application.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/app-password-selection.png)
 
 1. Assurez-vous que les cases **Ignorer l’authentification multifacteur pour les demandes issues d’utilisateurs fédérés provenant de mon intranet** et **Permettre aux utilisateurs de mémoriser l’authentification multifacteur sur des appareils de confiance (entre 1 et 365 jours)** sont décochées, puis sélectionnez **Enregistrer**.
 
   >[!NOTE]
    >Consultez les [meilleures pratiques relatives à la configuration des paramètres d’invite de l’authentification multifacteur](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
-   ![Capture d’écran montrant les cases à cocher non sélectionnées dans le portail Azure AD Multifactor Authentication hérité.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
+
+![Capture d’écran montrant les cases à cocher non sélectionnées dans le portail Azure AD Multifactor Authentication hérité.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
 
 ## <a name="configure-conditional-access-policies"></a>Configurer des stratégies d’accès conditionnel
 
@@ -133,7 +133,7 @@ Une fois que vous avez configuré les éléments requis et établi les paramètr
 
 1. Pour imiter la stratégie d’authentification multifacteur globale d’Okta, [créez une stratégie](../conditional-access/howto-conditional-access-policy-all-users-mfa.md).
 
-1. Créez une [règle d’accès conditionnel basée sur la confiance des appareils.](../conditional-access/require-managed-devices.md).
+1. Créez une [règle d’accès conditionnel basée sur la confiance des appareils](../conditional-access/require-managed-devices.md).
 
    Comme toutes les autres stratégies de ce tutoriel, cette stratégie peut cibler une application spécifique, un groupe de test d’utilisateurs, ou les deux.
 
@@ -143,17 +143,17 @@ Une fois que vous avez configuré les éléments requis et établi les paramètr
 
 1. Après avoir configuré la stratégie basée sur l’emplacement et la stratégie de confiance des appareils, il est temps de configurer la stratégie [Bloquer l’authentification héritée](../conditional-access/howto-conditional-access-policy-block-legacy.md) équivalente.
 
-Grâce à ces trois stratégies d’accès conditionnel, l’expérience originale des stratégies d’authentification Okta a été reproduite dans Azure AD. Les étapes suivantes consistent à inscrire l’utilisateur via Azure Multifactor Authentication et à tester les stratégies.
+Grâce à ces trois stratégies d’accès conditionnel, l’expérience originale des stratégies d’authentification Okta a été reproduite dans Azure AD. Les étapes suivantes consistent à inscrire l’utilisateur via Azure AD Multifactor Authentication et à tester les stratégies.
 
 ## <a name="enroll-pilot-members-in-azure-ad-multi-factor-authentication"></a>Inscrire des membres du pilote à Azure AD Multifactor Authentication
 
-Une fois que vous avez configuré les stratégies d’accès conditionnel, les utilisateurs doivent s’inscrire aux méthodes Azure Multifactor Authentication. Les utilisateurs peuvent être amenés à s’inscrire par le biais de différentes méthodes.
+Une fois que vous avez configuré les stratégies d’accès conditionnel, les utilisateurs doivent s’inscrire aux méthodes Azure AD Multifactor Authentication. Les utilisateurs peuvent être amenés à s’inscrire par le biais de différentes méthodes.
 
 1. Pour une inscription individuelle, dirigez les utilisateurs vers le [volet de connexion Microsoft](https://aka.ms/mfasetup) pour qu’ils entrent manuellement les informations d’inscription.
 
 1. Les utilisateurs peuvent se rendre sur la [page Informations de sécurité Microsoft](https://aka.ms/mysecurityinfo) pour entrer les informations ou gérer le formulaire d’inscription à l’authentification multifacteur.
 
-Consultez [ce guide](../authentication/howto-registration-mfa-sspr-combined.md) pour bien comprendre la procédure d’inscription à l’authentification multifacteur.  
+Consultez [ce guide](../authentication/howto-registration-mfa-sspr-combined.md) pour bien comprendre la procédure d’inscription à l’authentification multifacteur.
 
 Accédez au [volet de connexion Microsoft](https://aka.ms/mfasetup). Après vous être connecté avec l’authentification multifacteur Okta, vous êtes invité à vous inscrire à l’authentification multifacteur avec Azure AD.
 
@@ -163,7 +163,7 @@ Voir la [documentation utilisateur pour l’inscription à l’authentification 
 
 ## <a name="enable-conditional-access-policies"></a>Activer des stratégies d’accès conditionnel
 
-1. Pour déployer les tests, modifiez les stratégies créées dans les exemples précédents pour **Connexion d’utilisateur de test activée**. 
+1. Pour déployer les tests, modifiez les stratégies créées dans les exemples précédents pour **Connexion d’utilisateur de test activée**.
 
    ![Capture d’écran montrant l’activation d’un utilisateur de test.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enable-test-user.png)
 
@@ -183,7 +183,7 @@ Voir la [documentation utilisateur pour l’inscription à l’authentification 
 
 Après avoir effectué un test approfondi sur les membres du pilote afin de vous assurer que l’accès conditionnel fonctionne comme prévu, les autres membres de l’organisation peuvent être ajoutés aux stratégies d’accès conditionnel une fois l’inscription terminée.
 
-Pour éviter les invites en double entre Azure Multifactor Authentication et l’authentification multifacteur Okta, refusez l’authentification multifacteur Okta en modifiant les stratégies d’authentification.
+Pour éviter les invites en double entre Azure AD Multifactor Authentication et l’authentification multifacteur Okta, refusez l’authentification multifacteur Okta en modifiant les stratégies d’authentification.
 
 La dernière étape de migration vers l’accès conditionnel peut être effectuée par étapes ou par basculement.
 

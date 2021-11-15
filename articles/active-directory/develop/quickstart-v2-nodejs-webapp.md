@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 26e0ae48c65953312757eb7ac4d6cb51ba2a44c5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0b75b49ce36ef4fb3e45b76ace5402dd5c39efe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590078"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456192"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Démarrage rapide : Ajouter la connexion à l’aide d’OpenID Connect à une application web Node.js
 
@@ -47,7 +47,7 @@ Dans ce guide de démarrage rapide, vous téléchargez et exécutez un exemple d
 1. Entrez une **Front-channel logout URL** (URL de déconnexion de canal frontal) ayant la valeur `https://localhost:3000`.
 1. Dans la section **Implicit grant and hybrid flows** (Flux d’octroi implicite et flux hybride), sélectionnez **Jetons d’ID**, car cet exemple nécessite l’activation du [flux d’octroi implicite](./v2-oauth2-implicit-grant-flow.md) pour permettre la connexion de l’utilisateur.
 1. Sélectionnez **Configurer**.
-1. Sous **Gérer**, sélectionnez **Certificats et secrets** > **Nouveau secret client**.
+1. Sous **Gérer**, sélectionnez **Certificats et secrets** > **Clés secrètes client** > **Nouvelle clé secrète client**.
 1. Entrez une description pour la clé (par exemple, secret de l'application).
 1. Sélectionnez une durée pour la clé : **Dans 1 an, Dans 2 ans** ou **N'expire jamais**.
 1. Sélectionnez **Ajouter**. La valeur de la clé s’affiche. Copiez la valeur de la clé et enregistrez-la dans un endroit sûr en vue d’une utilisation ultérieure.

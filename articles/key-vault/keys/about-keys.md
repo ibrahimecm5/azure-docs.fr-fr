@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ef1725161630e4a79b078a3c473f56e3d14a06ca
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d89cde13500757ae38ceaba66044b10225508cb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994515"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460903"
 ---
 # <a name="about-keys"></a>À propos des clés
 
@@ -81,9 +81,15 @@ Key Vault prend en charge les clés RSA et EC. Un HSM managé prend en charge le
 |Clés protégées par HSM dans un HSM managé|FIPS 140-2 niveau 3|
 |||
 
-
-
 Pour plus d’informations sur chaque type de clé, mais aussi sur les algorithmes, les opérations, les attributs et les étiquettes, consultez [Types de clés, algorithmes et opérations](about-keys-details.md).
+
+## <a name="usage-scenarios"></a>Scénarios d’utilisation
+
+| Quand l’utiliser | Exemples |
+|--------------|-------------|
+| Chiffrement des données côté serveur Azure pour les fournisseurs de ressources intégrés avec des clés gérées par le client | - [Chiffrement côté serveur à l’aide de clés gérées par le client dans Azure Key Vault](https://docs.microsoft.com/azure/security/fundamentals/encryption-models#server-side-encryption-using-customer-managed-keys-in-azure-key-vault) |
+| Chiffrement des données côté client | - [Chiffrement côté client à l’aide d’Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption?tabs=dotnet)|
+| Protocole TLS sans clé | - Utiliser les [bibliothèques de client](../general/client-libraries.md#client-libraries-per-language-and-object) principales |
 
 ## <a name="next-steps"></a>Étapes suivantes
 - [À propos de Key Vault](../general/overview.md)

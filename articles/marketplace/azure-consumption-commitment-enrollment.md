@@ -7,17 +7,20 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/27/2021
-ms.openlocfilehash: b8d72d3b2e32f22cd3fc6bbe8a89b11469b343c4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 10/26/2021
+ms.openlocfilehash: 1b41284306927a2538e983c093ee8e571a9e93eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072211"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842071"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Inscription à Azure Consumption Commitment
 
 Cet article s’adresse aux éditeurs de la place de marché commerciale et décrit le programme Microsoft Azure Consumption Commitment (MACC), un engagement contractuel pris par les clients auprès de Microsoft pour des volumes de dépenses Azure spécifiques au fil du temps. Pour plus d’informations sur les avantages offerts aux clients par le programme MACC, consultez [Avantage d’Azure Consumption Commitment](/marketplace/azure-consumption-commitment-benefit).
+
+> [!TIP]
+> Pour voir l’affichage client des avantages de l’engagement en matière de consommation dans la Place de marché Azure, consultez [Avantage d’Azure Consumption Commitment](/marketplace/azure-consumption-commitment-benefit).
 
 ## <a name="macc-program"></a>Programme MACC
 
@@ -40,7 +43,7 @@ Une offre doit remplir les conditions suivantes pour être inscrite au programme
 #### <a name="workspaces-view"></a>[Vues d’espaces de travail](#tab/workspaces-view)
 
 1. Connectez-vous à l’[Espace partenaires](https://partner.microsoft.com/dashboard/home).
-1. Sur la page d’accueil, sélectionnez la vignette **Offres de la Place de marché**.
+1. Dans la page d’accueil, sélectionnez la vignette **Offres de la Place de marché**.
 
     [ ![Illustre la vignette des offres de la Place de marché dans la page d’accueil de l’Espace partenaires.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
