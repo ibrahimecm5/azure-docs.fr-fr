@@ -1,15 +1,15 @@
 ---
 title: Résoudre les problèmes de déploiement de fichiers Bicep
 description: Découvrez comment superviser des déploiements de fichiers Bicep et résoudre les problèmes associés. Affiche les journaux d’activité et l’historique des déploiements.
-ms.date: 10/26/2021
+ms.date: 11/04/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44c98be9a0553d3e255b2272a3a8797bae61d3da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 31d212ef608b5fbabb4430b5320ae033ae2be325
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097650"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849441"
 ---
 # <a name="quickstart-troubleshoot-bicep-file-deployments"></a>Démarrage rapide : Résoudre les problèmes de déploiement de fichiers Bicep
 
@@ -17,11 +17,11 @@ Ce guide de démarrage rapide explique comment résoudre les erreurs de déploie
 
 Il existe trois types d’erreurs liées à un déploiement :
 
-- Les **erreurs de validation** se produisent avant le début d’un déploiement et sont provoquées par des erreurs de syntaxe dans votre fichier. Votre éditeur peut intercepter ces erreurs.
-- Les **erreurs de validation préalable** se produisent après le démarrage du déploiement, mais avant le déploiement de ressources. Ces erreurs sont détectées sans commencer le déploiement. Par exemple, si une valeur de paramètre est incorrecte, l’erreur est détectée lors de la validation préalable.
+- Les **erreurs de validation** se produisent avant le début d’un déploiement et sont provoquées par des erreurs de syntaxe dans votre fichier. Votre éditeur peut identifier ces erreurs.
+- Des **erreurs de validation préalable** se produisent lorsqu’une commande de déploiement est exécutée, mais que les ressources ne sont pas déployées. Ces erreurs sont détectées sans commencer le déploiement. Par exemple, si une valeur de paramètre est incorrecte, l’erreur est détectée lors de la validation préalable.
 - Les **erreurs de déploiement** se produisent pendant le processus de déploiement et ne peuvent être détectées qu’en évaluant la progression du déploiement.
 
-Tous les types d’erreurs retournent un code d’erreur que vous utilisez pour résoudre les problèmes de déploiement. Les erreurs de validation et de validation préalable n’apparaissent pas dans votre historique des déploiements.
+Tous les types d’erreurs retournent un code d’erreur que vous utilisez pour résoudre les problèmes de déploiement. Les erreurs de validation et les erreurs de vérification préalable sont affichées dans le journal d’activité, mais n’apparaissent pas dans votre historique de déploiement.nt pas dans votre historique de déploiement. Un fichier Bicep avec des erreurs de syntaxe ne se compile pas en JSON et n’est pas affiché dans le journal d’activité.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -126,7 +126,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-Azure Resource Manager détermine que le nom du compte de stockage contient des caractères qui ne sont pas autorisés. Il ne tente pas le déploiement. 
+Azure Resource Manager détermine que le nom du compte de stockage contient des caractères qui ne sont pas autorisés. Il ne tente pas le déploiement.
 
 Un message d’erreur indiquant que la validation préalable a échoué s’affiche. Vous obtenez également un message indiquant que le nom du compte de stockage doit comprendre entre 3 et 24 caractères, et être composé uniquement de lettres minuscules et de nombres. Le préfixe que vous avez fourni ne répondait pas à cet impératif. Pour plus d’informations sur ce code d’erreur, consultez [Résoudre les erreurs liées aux noms de compte de stockage](error-storage-account-name.md).
 
@@ -148,14 +148,20 @@ Vous allez redéployer le fichier et fournir une valeur autorisée pour le param
 
 ```azurecli
 az group create --name troubleshootRG --location westus
-az deployment group create --resource-group troubleshootRG --template-file troubleshoot.bicep --parameters prefixName=stg
+az deployment group create \
+  --resource-group troubleshootRG \
+  --template-file troubleshoot.bicep \
+  --parameters prefixName=stg
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup -Name troubleshootRG -Location westus
-New-AzResourceGroupDeployment -ResourceGroupName troubleshootRG -TemplateFile troubleshoot.bicep -prefixName stg
+New-AzResourceGroupDeployment `
+  -ResourceGroupName troubleshootRG `
+  -TemplateFile troubleshoot.bicep `
+  -prefixName stg
 ```
 
 ---

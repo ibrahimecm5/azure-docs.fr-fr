@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/07/2017
+ms.date: 11/08/2021
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fa40f5d77fc9aa993f510510eb6396e011bbf3fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c47b92d416bd24554c6e4cecc1aadb81c331616e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784267"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061265"
 ---
 # <a name="migrate-your-data-to-an-azure-cosmos-db-table-api-account"></a>Migrer vos données vers un compte d’API Table Azure Cosmos DB
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -87,12 +87,12 @@ Utilisez les options de cible suivantes quand vous définissez l’API Table Azu
 Voici un exemple de ligne de commande indiquant comment effectuer l’importation entre Stockage Table et l’API Table :
 
 ```bash
-dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
+dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmos.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
 ## <a name="migrate-data-by-using-azcopy"></a>Migrer des données à l’aide d’AzCopy
 
-Vous pouvez également utiliser l’utilitaire de ligne de commande AzCopy pour migrer des données de Stockage Table vers l’API Table Azure Cosmos DB. Pour utiliser AzCopy, vous devez d’abord exporter vos données comme décrit dans [Exporter des données à partir de Stockage Table](/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage). Ensuite, vous importez les données vers Azure Cosmos DB comme indiqué dans l’[API Table Azure Cosmos DB](/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage).
+Vous pouvez également utiliser l’utilitaire de ligne de commande AzCopy pour migrer des données de Stockage Table vers l’API Table Azure Cosmos DB. Pour utiliser AzCopy, vous devez d’abord exporter vos données comme décrit dans [Exporter des données à partir de Stockage Table](/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage). Ensuite, vous importez les données dans l’API Table Azure Cosmos DB avec la commande suivante. Vous pouvez également les importer dans [Stockage Table Azure](/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage).
 
 Reportez-vous à l’exemple suivant quand vous effectuez une importation dans Azure Cosmos DB. Notez que la valeur `/Dest` utilise `cosmosdb`, et non `core`.
 

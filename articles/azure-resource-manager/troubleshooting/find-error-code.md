@@ -3,14 +3,14 @@ title: Trouver les codes d’erreur
 description: Décrit comment trouver les codes d’erreur pour résoudre des problèmes de ressources Azure déployées avec des modèles Azure Resource Manager (modèles ARM) ou des fichiers Bicep.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8343dd5523c57a172dda53a8ad2d758825cccc28
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: dc33dec3f043332b4ce5b2e7fe53b9f16d41d54f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479015"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846308"
 ---
 # <a name="find-error-codes"></a>Trouver les codes d’erreur
 
@@ -18,17 +18,19 @@ En cas d’échec d’un déploiement de ressources Azure à l’aide de modèle
 
 ## <a name="error-types"></a>Types d’erreurs
 
-Il existe trois types d’erreurs que vous pouvez rencontrer :
+Il existe trois types d’erreurs liées à un déploiement :
 
-- Des **erreurs de validation** se produisent avant le début d’un déploiement et sont provoquées par des erreurs de syntaxe. Pour identifier les erreurs de validation, utilisez [Visual Studio Code](https://code.visualstudio.com) avec la dernière [extension Bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) ou l'[extension d’outils Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools).
-- Des **erreurs de validation préalable** se produisent lorsqu’un déploiement débute, mais que les ressources ne sont pas déployées. Par exemple, une valeur de paramètre incorrecte ou un nom de ressource non valide.
-- Des **Erreurs de déploiement** se produisent pendant le déploiement et la résolution des problèmes est nécessaire pour déterminer la cause.
+- Les **erreurs de validation** se produisent avant le début d’un déploiement et sont provoquées par des erreurs de syntaxe dans votre fichier. Votre éditeur peut identifier ces erreurs.
+- Des **erreurs de validation préalable** se produisent lorsqu’une commande de déploiement est exécutée, mais que les ressources ne sont pas déployées. Ces erreurs sont détectées sans commencer le déploiement. Par exemple, si une valeur de paramètre est incorrecte, l’erreur est détectée lors de la validation préalable.
+- Les **erreurs de déploiement** se produisent pendant le processus de déploiement et ne peuvent être détectées qu’en évaluant la progression du déploiement.
 
-Les codes d’erreur de validation et de validation préalable sont signalés dans le journal d’activité d’un groupe de ressources et dans le [journal d’activité](../../azure-monitor/essentials/activity-log.md) de l’abonnement. Une exception est la validation de la syntaxe Bicep qui s’affiche uniquement dans la sortie de l’éditeur ou de la commande de déploiement. Les codes d’erreur de déploiement sont affichés dans l’historique de déploiement et le journal d’activité d’un groupe de ressources.
+Tous les types d’erreurs retournent un code d’erreur que vous utilisez pour résoudre les problèmes de déploiement. Les erreurs de validation et les erreurs de vérification préalable sont affichées dans le journal d’activité, mais n’apparaissent pas dans votre historique de déploiement. Un fichier Bicep avec des erreurs de syntaxe ne se compile pas en JSON et n’est pas affiché dans le journal d’activité.
+
+Pour identifier les erreurs de syntaxe, vous pouvez utiliser [Visual Studio Code](https://code.visualstudio.com) avec la dernière [extension Bicep](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) ou l’[extension Outils Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools).
 
 ## <a name="validation-errors"></a>Erreurs de validation
 
-Les modèles sont validés pendant le processus de déploiement et les codes d’erreur s’affichent. Avant d’exécuter un déploiement, vous pouvez exécuter des tests de validation avec Azure PowerShell ou Azure CLI.
+Les modèles sont validés pendant le processus de déploiement et les codes d’erreur s’affichent. Avant d’exécuter un déploiement, vous pouvez exécuter des tests de validation avec Azure PowerShell ou Azure CLI pour identifier les erreurs de validation et les erreurs préalables.
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
@@ -44,7 +46,7 @@ Sélectionnez le message pour obtenir plus d’informations. Le modèle contient
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pour valider un modèle ARM avant le déploiement, exécutez [Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). La même erreur s’affiche lorsque vous exécutez un déploiement.
+Pour valider un modèle ARM avant le déploiement, exécutez [Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment).
 
 ```azurepowershell
 Test-AzResourceGroupDeployment `
@@ -81,7 +83,7 @@ D’autres applets de commande PowerShell sont disponibles pour valider les mod�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pour valider un modèle ARM avant le déploiement, exécutez [az deployment group validate](/cli/azure/deployment/group#az_deployment_group_validate). La même erreur s’affiche lorsque vous exécutez un déploiement.
+Pour valider un modèle ARM avant le déploiement, exécutez [az deployment group validate](/cli/azure/deployment/group#az_deployment_group_validate).
 
 ```azurecli
 az deployment group validate \

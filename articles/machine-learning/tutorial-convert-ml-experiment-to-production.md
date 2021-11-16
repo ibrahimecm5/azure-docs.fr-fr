@@ -7,18 +7,18 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.subservice: mlops
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 10/21/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e3659f44811c59033a22e1985856f934cd78bba
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: caaaf01d8b1baa5a36726996f24b244f0d9afb46
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426507"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555663"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Tutoriel : Convertir des expériences ML en code Python de production
 
-Dans ce tutoriel, vous allez apprendre à convertir des notebooks Jupyter en scripts Python pour faciliter les tests et l’automatisation en utilisant le modèle de code MLOpsPython et Azure Machine Learning. En général, ce processus sert à extraire le code d’expérimentation/entraînement d’un notebook Jupyter et de le convertir en scripts Python. Ces scripts peuvent ensuite être utilisés pour les tests et l’automatisation CI/CD dans votre environnement de production. 
+Dans ce tutoriel, vous allez apprendre à convertir des notebooks Jupyter en scripts Python pour faciliter les tests et l’automatisation en utilisant le modèle de code MLOpsPython et Azure Machine Learning. En général, ce processus sert à extraire le code d’expérimentation/de formation d’un notebook Jupyter et de le convertir en scripts Python. Ces scripts peuvent ensuite être utilisés pour les tests et l’automatisation CI/CD dans votre environnement de production. 
 
 Un projet de Machine Learning nécessite des expérimentations au cours desquelles des hypothèses sont testées avec des outils Agile comme Jupyter Notebook sur des jeux de données réels. Quand le modèle est prêt pour la production, vous devez placer le code du modèle dans un dépôt de code de production. Dans certains cas, le code du modèle doit être converti en scripts Python qui sont placés dans le dépôt de code de production. Ce tutoriel décrit l’approche recommandée pour exporter du code d’expérimentation en scripts Python.
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 03/06/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: b97837bea9654f713287b5e5263482e8067e22dd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 6b79b80f666019cb5a8a59901bf12e9277287a12
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426583"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557411"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Utiliser des paramètres de pipeline pour réentraîner des modèles dans le concepteur
 
@@ -41,24 +41,24 @@ Cet article présuppose également que vous disposez de connaissances en matièr
 
 ### <a name="sample-pipeline"></a>Exemple de pipeline
 
-Le pipeline utilisé dans cet article est une version modifiée d’un exemple de pipeline [Prédiction de revenus](samples-designer.md#classification) dans la page d’accueil du concepteur. Le pipeline se sert du module [Importer des données](algorithm-module-reference/import-data.md) plutôt que de l’exemple de jeu de données pour vous montrer comment effectuer l’apprentissage d’un modèle à l’aide de vos propres données.
+Le pipeline utilisé dans cet article est une version modifiée d’un exemple de pipeline [Prédiction de revenus](samples-designer.md#classification) dans la page d’accueil du concepteur. Le pipeline utilise le composant [Importer des données](algorithm-module-reference/import-data.md) plutôt que l’exemple de jeu de données pour vous montrer comment effectuer l’apprentissage d’un modèle avec vos propres données.
 
-![Capture d’écran montrant l’exemple de pipeline modifié avec une zone mettant en surbrillance le module Importer des données](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![Capture d’écran montrant l’exemple de pipeline modifié avec le composant Importer des données encadré](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Créer un paramètre de pipeline
 
 Les paramètres de pipeline sont utilisés pour créer des pipelines polyvalents qui peuvent par la suite être soumis de nouveau avec des valeurs de paramètre variables. Parmi les scénarios courants, on peut citer la mise à jour de jeux de données ou de certains hyperparamètres dans le cadre d’un réentraînement. Créez des paramètres de pipeline pour définir des variables de façon dynamique lors du runtime. 
 
-Les paramètres de pipeline peuvent être ajoutés à la source de données ou aux paramètres de module dans un pipeline. Lorsque le pipeline est soumis de nouveau, les valeurs de ces paramètres peuvent être spécifiées.
+Des paramètres peuvent être ajoutés aux paramètres de source de données ou de composant d’un pipeline. Lorsque le pipeline est soumis de nouveau, les valeurs de ces paramètres peuvent être spécifiées.
 
-Pour cet exemple, vous allez convertir le chemin d’accès aux données d’apprentissage d’une valeur fixe en un paramètre, afin de pouvoir ré-effectuer l’apprentissage de votre modèle sur des données différentes. Vous pouvez également ajouter d’autres paramètres de module comme paramètres de pipeline en fonction de votre cas d’usage.
+Pour cet exemple, vous allez convertir le chemin d’accès aux données d’apprentissage d’une valeur fixe en un paramètre, afin de pouvoir ré-effectuer l’apprentissage de votre modèle sur des données différentes. Vous pouvez également ajouter d’autres paramètres de composant comme paramètres de pipeline en fonction de votre cas d’usage.
 
-1. Sélectionnez le module **Importer des données**.
+1. Sélectionnez le composant **Importer des données**.
 
     > [!NOTE]
-    > Cet exemple utilise le module Importer des données pour accéder aux données d’un magasin de données inscrit. Vous cependant pouvez suivre une procédure similaire si vous utilisez d’autres modèles d’accès aux données.
+    > Cet exemple utilise le composant Importer des données pour accéder aux données d’un magasin de données inscrit. Vous cependant pouvez suivre une procédure similaire si vous utilisez d’autres modèles d’accès aux données.
 
-1. Dans le volet des détails du module à droite du canevas, sélectionnez votre source de données.
+1. Dans le volet Détails du composant, à droite du canevas, sélectionnez votre source de données.
 
 1. Entrez le chemin de vos données. Vous pouvez également sélectionner **Parcourir le chemin** pour accéder à votre arborescence de fichiers. 
 
@@ -73,11 +73,11 @@ Pour cet exemple, vous allez convertir le chemin d’accès aux données d’app
 1. Sélectionnez **Enregistrer**.
 
    > [!NOTE]
-   > Vous pouvez également détacher un paramètre de module du paramètre de pipeline dans le volet Détails du module, comme pour l’ajout de paramètres de pipeline.
+   > Vous pouvez également détacher un paramètre de composant du paramètre de pipeline dans le volet Détails du composant, comme pour l’ajout de paramètres de pipeline.
    >
    > Vous pouvez examiner et modifier vos paramètres de pipeline en sélectionnant l’icône d’engrenage **Paramètres** à côté du titre de votre brouillon de pipeline. 
    >    - Une fois détaché, le paramètre de pipeline peut être supprimé dans le volet **Paramètres**.
-   >    - Vous pouvez également ajouter un paramètre de pipeline dans le volet **Paramètres**, puis l’appliquer à un paramètre de module.
+   >    - Vous pouvez également ajouter un paramètre de pipeline dans le volet **Paramètres**, puis l’appliquer à un paramètre de composant.
 
 1. Soumettez l’exécution du pipeline.
 

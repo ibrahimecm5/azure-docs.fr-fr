@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 4b4b84de819e8b2e64238ef1d3d8d7149473c2b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 329121332449316f3582ee38c11ad843b25ab812
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753906"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054122"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory avec cloudtamer.io
 
@@ -65,6 +65,7 @@ Pour configurer et tester l'authentification SSO Azure AD auprès de cloudtamer
 1. **[Configurer l’authentification unique cloudtamer.io](#configure-cloudtamerio-sso)** pour configurer les paramètres de l’authentification unique côté application.
     1. **[Créer un utilisateur de test cloudtamer.io](#create-cloudtamerio-test-user)** pour avoir, dans cloudtamer.io, un équivalent de B.Simon lié à la représentation Azure AD de l’utilisateur.
 1. **[Tester l’authentification unique](#test-sso)** pour vérifier si la configuration fonctionne.
+1. **[Assertions de groupe](#group-assertions)** pour définir des assertions de groupe pour Azure AD et cloudtamer.io.
 
 ### <a name="begin-cloudtamerio-sso-configuration"></a>Commencer la configuration de l’authentification unique cloudtamer.io
 
@@ -179,6 +180,40 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’application dans n’importe quel mode. Si, lorsque vous cliquez sur la vignette cloudtamer.io dans Mes applications, le mode Fournisseur de services est configuré, vous êtes redirigé vers la page de connexion de l'application pour lancer le flux de connexion ; s'il s'agit du mode Fournisseur d'identité, vous êtes automatiquement connecté à l'instance de cloudtamer.io pour laquelle vous avez configuré l'authentification unique. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
+## <a name="group-assertions"></a>Assertions de groupe
+
+Pour gérer facilement les autorisations de l’utilisateur cloudtamer.io à l’aide de groupes Azure Active Directory existants, effectuez les étapes suivantes :
+
+### <a name="azure-ad-configuration"></a>Configuration Azure AD
+
+1. Dans le portail Azure, accédez à **Azure Active Directory** > **Applications d’entreprise**.
+1. Dans la liste, sélectionnez l’application d’entreprise pour cloudtamer.io.
+1. Dans **Vue d’ensemble**, dans le menu de gauche, sélectionnez **Authentification unique**.
+1. Dans **Authentification unique**, sous **Attributs utilisateur et revendications**, sélectionnez **Modifier**.
+1. Sélectionnez **Ajouter une revendication de groupe**. 
+   > [!NOTE]
+   > Vous ne pouvez avoir qu’une seule revendication de groupe. Si cette option est désactivée, vous avez peut-être déjà défini une revendication de groupe.
+1. Dans **Revendications de groupe**, sélectionnez les groupes qui doivent être retournés dans la revendication :
+   - Si tous les groupes que vous prévoyez d’utiliser dans cloudtamer.io seront toujours attribués à cette application d’entreprise, sélectionnez **Groupes attribués à l’application**.
+   - Si vous souhaitez que tous les groupes s’affichent (cette sélection peut générer un grand nombre d’assertions de groupe et peut être soumise à des limites), sélectionnez **Groupes attribués à l’application**.
+1. Pour **Attribut source**, conservez la sélection par défaut **ID de groupe**.
+1. Cochez la case **Personnaliser le nom de la revendication de groupe**.
+1. Pour **Nom**, entrez **memberOf**.
+1. Sélectionnez **Enregistrer** pour terminer la modification avec Azure AD.
+
+### <a name="cloudtamerio-configuration"></a>Configuration de cloudtamer.io
+
+1. Dans cloudtamer.io, accédez à **Users** > **Identity Management Systems**.
+1. Sélectionnez l’IDMS que vous avez créé pour Azure AD.
+1. Dans la page de la vue d’ensemble, sélectionnez l’onglet **User Group Associations**.
+1. Pour chaque mappage de groupe d’utilisateurs souhaité, effectuez ces étapes :
+   1. Sélectionnez **Add** > **Add New**.
+   1. Dans la boîte de dialogue qui s’affiche :
+      1. Pour **Nom**, entrez **memberOf**.
+      1. Pour **Regex**, entrez l’ID de l’objet (à partir d’Azure AD) du groupe que vous souhaitez faire correspondre.
+      1. Pour **User Group**, sélectionnez le groupe interne cloudtamer.io que vous souhaitez mapper au groupe dans **Regex**.
+      1. Cochez la case **Update on Login**.
+   1. Sélectionnez **Add** pour ajouter l’association de groupe.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

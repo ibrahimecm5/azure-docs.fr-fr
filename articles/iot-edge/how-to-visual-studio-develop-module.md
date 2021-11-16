@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: e7ded6eb8b3e8ee44594e75eb22b920c4e0649b6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 5f546acb48a84ddddeb822601d9284818d2211fb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037581"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423068"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Utiliser Visual Studio 2019 pour développer et déboguer des modules pour Azure IoT Edge
 
@@ -164,6 +164,9 @@ Pour initialiser l’outil, fournissez une chaîne de connexion d’appareil IoT
 
 En général, vous voulez tester et déboguer chaque module avant de l’exécuter au sein d’une solution entière avec plusieurs modules.
 
+>[!TIP]
+>Vérifiez que vous avez basculé vers le bon mode de conteneur Docker : soit Linux, soit Windows, selon le type de module IoT Edge que vous développez. Dans le menu Bureau de Docker, vous pouvez basculer entre les deux types de modes. Sélectionnez **Basculer vers les conteneurs Windows** pour utiliser des conteneurs Windows ou **Basculer vers les conteneurs Linux** pour utiliser des conteneurs Linux. 
+
 1. Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le dossier du module, puis sélectionnez **Définir comme projet de démarrage**.
 
    ![Définir le projet de démarrage](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
@@ -205,7 +208,7 @@ Une fois que nous avons fini de développer un module, nous pouvons exécuter et
 1. Ouvrez le fichier `deployment.template.json`. Vous verrez que le nouveau module a été ajouté dans la section **modules**. Un nouvel itinéraire a également été ajouté à la section **routes** pour envoyer des messages du nouveau module à IoT Hub. Si vous souhaitez envoyer des données du capteur de température simulé au nouveau module, ajoutez un autre itinéraire comme dans l’exemple suivant : 
 
     ```json
-   "sensorTo<NewModuleName>&quot;: &quot;FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/<NewModuleName>/inputs/input1\")"
+   "sensorTo<NewModuleName>": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/<NewModuleName>/inputs/input1\")"
     ```
 
 1. Cliquez avec le bouton droit sur le dossier du projet, puis, dans le menu contextuel, sélectionnez **Définir comme projet de démarrage**.

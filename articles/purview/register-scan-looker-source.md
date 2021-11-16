@@ -8,14 +8,14 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 27a21f7cb9c04cdb03138540aa10aadf0f94cb57
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3bb15a424496c04f63537a9dac4622e52a052c46
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475537"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848037"
 ---
-# <a name="connect-to-and-manage-looker-in-azure-purview"></a>Se connecter à Looker et le gérer dans Azure Purview
+# <a name="connect-to-and-manage-looker-in-azure-purview-preview"></a>Se connecter à Looker et le gérer dans Azure Purview (préversion)
 
 Cet article décrit comment inscrire Looker, et comment s’authentifier et interagir avec Looker dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 

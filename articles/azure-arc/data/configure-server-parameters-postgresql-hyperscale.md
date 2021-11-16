@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: e634bcc7d07cfba4016c8f2db323e78e9beda92a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7ca73ec55bdf88bad193bab563bcaf482d59274d
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532063"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561856"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Définir les paramètres du moteur de base de données pour PostgreSQL Hyperscale activé par Azure Arc
 
@@ -45,150 +45,248 @@ Le format général de la commande permettant de configurer les paramètres du m
 az postgres arc-server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-settings , --re}] {'<parameter name>=<parameter value>, ...'} --k8s-namespace <namespace> --use-k8s
 ```
 
-## <a name="show-current-custom-values"></a>Afficher les valeurs personnalisées actuelles
+## <a name="show-current-custom-values-if-they-have-been-set"></a>Affichage des valeurs personnalisées actuelles si elles ont été définies
 
-### <a name="with-azure-data-cli-azdata-command"></a>Avec une commande [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+**Avec une commande CLI az :**
 
 ```azurecli
 az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 
-Exemple :
+Par exemple :
 
 ```azurecli
-az postgres arc-server show -n postgres01 --k8s-namespace <namespace> --use-k8s 
+az postgres arc-server show -n postgres01 --k8s-namespace arc --use-k8s 
 ```
 
-cette commande retourne les spécifications du groupe de serveurs dans lequel vous pouvez voir les paramètres que vous avez définis. S’il n’existe pas de section engine\settings, cela signifie que tous les paramètres s’exécutent sur la base de leur valeur par défaut :
 
+**Avec une commande kubectl :**
 ```console
- "
-...
-engine": {
-      "settings": {
-        "default": {
-          "autovacuum_vacuum_threshold": "65"
-        }
-      }
-    },
-...
+   kubectl describe postgresql <server group name> -n <namespace name>
+   ```
+
+   Par exemple :
+
+   ```console
+   kubectl describe postgresql postgres01 -n arc
 ```
 
-### <a name="with-kubectl-command"></a>Avec la commande kubectl
+Ces deux commandes retournent les spécifications du groupe de serveurs, parmi lesquelles apparaissent les paramètres que vous avez définis. S’il n’existe pas de section engine\settings, cela signifie que tous les paramètres s’exécutent sur la base de leur valeur par défaut :
 
-Procédez comme suit.
+:::row:::
+    :::column:::
+        Voici un exemple de sortie dans le cas où aucune valeur personnalisée n’a été définie pour aucun des paramètres du moteur Postgres. Les spécifications ne présentent pas de section engine\settings.
+    :::column-end:::
+    :::column:::
+        ```console
+          ...
+          "spec": {
+            "dev": false,
+            "engine": {
+              "extensions": [
+                {
+                  "name": "citus"
+                }
+              ],
+              "version": 12
+            },
+            "scale": {
+              "replicas": 1,
+              "syncReplicas": "0",
+          "workers": 4
+            },
+            ...
+        ```
+        :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        Example of an output when custom values have been set for some of Postgres engine setting. The specs do show a section engine\settings.
+    :::column-end:::
+    :::column:::
+        ```console
+             ...
+                Spec:
+                  Dev:  false
+                  Engine:
+                    Extensions:
+                      Name:  citus
+                    Settings:
+                      Default:
+                        max_connections:  51
+                      Roles:
+                        Coordinator:
+                          max_connections:  53
+                        Worker:
+                          max_connections:  52
+                    Version:                12
+                  Scale:
+                    Replicas:       1
+                    Sync Replicas:  0
+                    Workers:        4
+            ...
+            ```
+    :::column-end:::
+:::row-end:::
 
-1. Récupérez le type de définition de ressource personnalisée pour votre groupe de serveurs
 
-   Exécutez :
+The default value is, refer to the PostgreSQL documentation [here](https://www.postgresql.org/docs/current/runtime-config.html).
 
-   ```azurecli
-   az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
-   ```
 
-   Exemple :
 
-   ```azurecli
-   az postgres arc-server show -n postgres01 --k8s-namespace <namespace> --use-k8s
-   ```
+## Set custom values for engine settings
 
-   cette commande retourne les spécifications du groupe de serveurs dans lequel vous pouvez voir les paramètres que vous avez définis. S’il n’existe pas de section engine\settings, cela signifie que tous les paramètres s’exécutent sur la base de leur valeur par défaut :
+### Set a single parameter
 
-   ```output
-   > {
-     >"apiVersion": "arcdata.microsoft.com/v1alpha1",
-     >"**kind**": "**postgresql-12**",
-     >"metadata": {
-       >"creationTimestamp": "2020-08-25T14:32:23Z",
-       >"generation": 1,
-       >"name": "postgres01",
-       >"namespace": "arc",  
-   ```
+**On both coordinator and worker roles:**
 
-   Dans les résultats de sortie, recherchez le champ `kind` et réservez la valeur, par exemple : `postgresql-12`.
-
-2. Décrivez la ressource personnalisée Kubernetes correspondant à votre groupe de serveurs 
-
-   Le format général de la commande est le suivant :
-
-   ```console
-   kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
-   ```
-
-   Exemple :
-
-   ```console
-   kubectl describe postgresql-12 postgres01
-   ```
-
-   Si des valeurs personnalisées sont définies pour les paramètres du moteur, celui-ci les retourne. Exemple :
-
-   ```output
-   Engine:
-   ...
-    Settings:
-      Default:
-        autovacuum_vacuum_threshold:  65
-   ```
-
-   Si vous n’avez pas défini de valeurs personnalisées pour l’un des paramètres du moteur, la section Paramètres du moteur du `resultset` est vide comme suit :
-
-   ```output
-   Engine:
-   ...
-       Settings:
-         Default:
-   ```
-
-## <a name="set-custom-values-for-engine-settings"></a>Définir des valeurs personnalisées pour les paramètres du moteur
-
-Les commandes ci-dessous définissent les paramètres du nœud coordinateur et des nœuds Worker de votre PostgresSQL Hyperscale sur les mêmes valeurs. Il n’est pas encore possible de définir des paramètres par rôle dans votre groupe de serveurs. Autrement dit, il n’est pas encore possible de configurer un paramètre donné sur une valeur spécifique sur le nœud coordinateur et sur une autre valeur sur les nœuds Worker.
-
-### <a name="set-a-single-parameter"></a>Définir un paramètre unique
-
+General syntax of the command:
 ```azurecli
-az postgres arc-server edit -n <server group name> --engine-settings  <parameter name>=<parameter value> --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n <servergroup name> --engine-settings  '<ParameterName>=<CustomParameterValue>' --k8s-namespace <namespace> --use-k8s
+```
+
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'max_connections=51' --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de travail uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --worker-settings '<ParameterName>=<CustomParameterValue>' --k8s-namespace <namespace> --use-k8s
+```
+
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --worker-settings 'max_connections=52' --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de coordination uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --coordinator-settings '<ParameterName>=<CustomParameterValue>' --k8s-namespace <namespace> --use-k8s
 ```
 
 Exemple :
-
 ```azurecli
-az postgres arc-server edit -n postgres01 --engine-settings  shared_buffers=8MB --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --coordinator-settings 'max_connections=53' --k8s-namespace arc --use-k8s
 ```
+
+
 
 ### <a name="set-multiple-parameters-with-a-single-command"></a>Définir plusieurs paramètres avec une seule commande
 
+**Sur le rôle de coordination et le rôle de travail :**  
+ 
+Syntaxe générale de la commande :
 ```azurecli
-az postgres arc-server edit -n <server group name> --engine-settings  '<parameter name>=<parameter value>, <parameter name>=<parameter value>, --k8s-namespace <namespace> --use-k8s...'
+az postgres arc-server edit -n <servergroup name> --engine-settings  '<ParameterName1>=<CustomParameterValue1>, ..., <ParameterNameN>=<CustomParameterValueN>' --k8s-namespace <namespace> --use-k8s
 ```
 
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'shared_buffers=8MB, max_connections=60' --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de travail uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --worker-settings '<ParameterName1>=<CustomParameterValue1>, ..., <ParameterNameN>=<CustomParameterValueN>' --k8s-namespace <namespace> --use-k8s
+```
+
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --worker-settings 'shared_buffers=8MB, max_connections=60' --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de coordination uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --coordinator-settings '<ParameterName1>=<CustomParameterValue1>, ..., <ParameterNameN>=<CustomParameterValueN>' --k8s-namespace <namespace> --use-k8s
+```
+
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --coordinator-settings 'shared_buffers=8MB, max_connections=60' --k8s-namespace arc --use-k8s
+```
+
+### <a name="reset-one-parameter-to-its-default-value"></a>Restauration de la valeur par défaut d’un paramètre
+
+**Sur le rôle de coordination et le rôle de travail :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --engine-settings '<ParameterName>='  --coordinator-settings '<ParameterName>=' --worker-settings '<ParameterName>=' --k8s-namespace <namespace> --use-k8s
+```
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'shared_buffers='  --coordinator-settings 'shared_buffers=' --worker-settings 'shared_buffers=' --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de coordination uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --coordinator-settings '<ParameterName>=' --k8s-namespace <namespace> --use-k8s
+```
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --coordinator-settings 'shared_buffers=' --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de travail uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --worker-settings '<ParameterName>=' --k8s-namespace <namespace> --use-k8s
+```
 Exemple :
-
 ```azurecli
-az postgres arc-server edit -n postgres01 --engine-settings  'shared_buffers=8MB, max_connections=50' --k8s-namespace <namespace> --use-k8s
-```
-
-### <a name="reset-a-parameter-to-its-default-value"></a>Rétablir la valeur par défaut d’un paramètre
-
-Pour rétablir la valeur par défaut d’un paramètre, définissez-le sans indiquer de valeur. 
-
-Exemple :
-
-```azurecli
-az postgres arc-server edit -n postgres01 --k8s-namespace <namespace> --use-k8s --engine-settings  shared_buffers=
-```
+az postgres arc-server edit -n postgres01 --worker-settings 'shared_buffers=' --k8s-namespace arc --use-k8s
+````
 
 ### <a name="reset-all-parameters-to-their-default-values"></a>Rétablir les valeurs par défaut de tous les paramètres
 
+**Sur le rôle de coordination et le rôle de travail :**
+
+Syntaxe générale de la commande :
 ```azurecli
-az postgres arc-server edit -n <server group name> --engine-settings  '' -re --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n <servergroup name> --engine-settings  `'`' --worker-settings `'`' --coordinator-settings `'`' --replace-settings --k8s-namespace <namespace> --use-k8s
 ```
 
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  `'`' --worker-settings `'`' --coordinator-settings `'`'  --replace-settings --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de coordination uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --coordinator-settings `'`'  --replace-settings --k8s-namespace <namespace> --use-k8s
+
+```
+Par exemple :
+```azurecli
+az postgres arc-server edit -n postgres01 --coordinator-settings `'`'  --replace-settings --k8s-namespace arc --use-k8s
+```
+
+**Sur le rôle de travail uniquement :**
+
+Syntaxe générale de la commande :
+```azurecli
+az postgres arc-server edit -n <servergroup name> --worker-settings `'`'  --replace-settings --k8s-namespace <namespace> --use-k8s
+```
 Exemple :
-
 ```azurecli
-az postgres arc-server edit -n postgres01 --engine-settings  '' -re --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --worker-settings `'`'  --replace-settings --k8s-namespace arc --use-k8s
 ```
+
+
 
 ## <a name="special-considerations"></a>Considérations spéciales
 

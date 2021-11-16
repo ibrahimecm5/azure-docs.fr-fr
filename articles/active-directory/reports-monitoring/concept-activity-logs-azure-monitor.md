@@ -4,7 +4,7 @@ description: Introduction aux journaux d’activité Azure Active Directory dans
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d66bd74263bd23c02cf465b1483ffe610179ee
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b1db2a820ab551130fbd9bba832c329b925a0f6a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657915"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997112"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Journaux d’activité Azure Active Directory dans Azure Monitor
 
@@ -98,7 +98,7 @@ Les événements sont regroupés dans des intervalles d’environ cinq minutes e
 
 Par exemple, on compte normalement environ 18 événements par seconde pour un locataire important de plus de 100 000 utilisateurs, un taux qui équivaut à 5 400 événements toutes les cinq minutes. Étant donné que les journaux d’audit font environ 2 Ko par événement, cela équivaut à 10.8 Mo de données. Par conséquent, 43 sont envoyés à l’Event Hub dans cet intervalle de cinq minutes. 
 
-Le tableau suivant contient les coûts estimés par mois pour un Event Hub de base aux USA Ouest en fonction du volume de données d’événement, qui peut varier d’un client à l’autre selon de nombreux facteurs tels que le comportement de connexion de l’utilisateur, etc. Utilisez la [Calculatrice de prix Event Hub](https://azure.microsoft.com/pricing/details/event-hubs/) pour obtenir une estimation plus précise du volume de données que vous prévoyez pour votre application.
+Le tableau suivant contient les coûts estimés par mois pour un Event Hub de base aux USA Ouest en fonction du volume de données d’événement, qui peut varier d’un client à l’autre selon de nombreux facteurs tels que le comportement de connexion de l’utilisateur, etc. Pour obtenir une estimation plus précise du volume de données que vous prévoyez pour votre application, utilisez la [Calculatrice de prix Event Hub](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Catégorie de journal | Nombre d’utilisateurs | Événements par seconde | Événements par intervalle de cinq minutes | Volume par intervalle | Messages par intervalle | Messages par mois | Coût par mois (estimation) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|

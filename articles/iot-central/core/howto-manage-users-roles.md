@@ -1,25 +1,24 @@
 ---
 title: Gérer les utilisateurs et rôles dans votre application Azure IoT Central | Microsoft Docs
 description: Comment gérer les rôles et utilisateurs de votre application Azure IoT Central en qualité d’administrateur
-author: lmasieri
-ms.author: lmasieri
-ms.date: 04/16/2021
+author: dominicbetts
+ms.author: dobett
+ms.date: 08/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: corywink
-ms.openlocfilehash: acb26e18fd208f73053505d6e3ab5cca0f33fd2e
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 4398ab5ed46276c397e812cb4ffbcd1e6e1296e6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963200"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997568"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Gérer les utilisateurs et rôles dans votre application Azure IoT Central
 
 Cet article explique comment vous pouvez ajouter, modifier et supprimer des utilisateurs dans votre application Azure IoT Central. L’article explique également comment gérer des rôles dans votre application.
 
-Pour accéder à la section **Administration** et l’utiliser, vous devez avoir le rôle **Administrateur** dans l’application Azure IoT Central. Si vous créez une application Azure IoT Central, le rôle **Administrateur** vous est automatiquement attribué pour cette application.
+Pour accéder à la section **Administration** et l’utiliser, vous devez avoir le rôle **Administrateur d’application** pour une application Azure IoT Central ou un rôle personnalisé incluant des autorisations d’administration. Si vous créez une application Azure IoT Central, le rôle **Administrateur d’application** vous est automatiquement attribué pour cette application.
 
 ## <a name="add-users"></a>Ajouter des utilisateurs
 
@@ -33,19 +32,23 @@ Pour en savoir plus, consultez [Aide sur le compte Microsoft](https://support.mi
 
 1. Pour ajouter un utilisateur, dans la page **Utilisateurs**, choisissez **+ Attribuer un utilisateur**.
 
+1. Si votre application utilise des [organisations](howto-create-organizations.md), choisissez une organisation à attribuer à l’utilisateur dans le menu déroulant **Organisation**.
+
 1. Choisissez un rôle pour l’utilisateur dans la liste déroulante **Rôle**. En savoir plus sur les rôles dans la section [Gérer les rôles](#manage-roles) de cet article.
 
     :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="Capture d’écran d’ajout d’un utilisateur et de sélection d’un rôle.":::
 
-  > [!NOTE]
-  > Un utilisateur qui se trouve dans un rôle personnalisé qui lui accorde l’autorisation d’ajouter d’autres utilisateurs peut uniquement ajouter des utilisateurs à un rôle avec des autorisations identiques ou moins nombreuses que son propre rôle.
+    Les rôles disponibles dépendent de l’organisation à laquelle l’utilisateur est associé. Vous pouvez attribuer des rôles **Application** à des utilisateurs associés à l’organisation racine, et des rôles **Organisation** à des utilisateurs associés à toute autre organisation figurant dans la hiérarchie.
 
-  > [!NOTE]
-  > Si un utilisateur est supprimé d’Azure Active Directory puis rajouté, il ne peut pas se connecter à l’application IoT Central. Pour réactiver l’accès, l’administrateur de l’application doit également supprimer et rajouter l’utilisateur dans l’application.
+    > [!NOTE]
+    > Un utilisateur qui se trouve dans un rôle personnalisé qui lui accorde l’autorisation d’ajouter d’autres utilisateurs peut uniquement ajouter des utilisateurs à un rôle avec des autorisations identiques ou moins nombreuses que son propre rôle.
+  
+    > [!NOTE]
+    > Si un utilisateur est supprimé d’Azure Active Directory puis rajouté, il ne peut pas se connecter à l’application IoT Central. Pour réactiver l’accès, l’administrateur de l’application doit également supprimer et rajouter l’utilisateur dans l’application.
 
-### <a name="edit-the-roles-that-are-assigned-to-users"></a>Modifier les rôles attribués aux utilisateurs
+### <a name="edit-the-roles-and-organizations-that-are-assigned-to-users"></a>Modifier les rôles et les organisations attribués aux utilisateurs
 
-Une fois attribués, les rôles ne sont plus modifiables. Pour modifier le rôle attribué à un utilisateur, supprimez cet utilisateur puis rajoutez-le avec un autre rôle.
+Il n’est pas possible de modifier des rôles et organisations après leur attribution. Pour modifier le rôle ou l’organisation attribués à un utilisateur, supprimez celui-ci, puis rajoutez-le avec un rôle ou une organisation différents.
 
 > [!NOTE]
 > Les rôles attribués sont spécifiques à l’application IoT Central et ne peuvent pas être gérés à partir du portail Azure.
@@ -60,29 +63,56 @@ Les rôles vous permettent de contrôler qui, au sein de votre organisation, peu
 
 :::image type="content" source="media/howto-manage-users-roles/manage-roles-pnp.png" alt-text="Capture d’écran de la sélection de gestion des rôle.":::
 
+### <a name="app-administrator"></a>Administrateur d’application
 
-### <a name="administrator"></a>Administrateur
+Les utilisateurs auxquels est attribué le rôle **Administrateur d’administrateur** peuvent gérer et contrôler toutes les parties de l’application, dont la facturation.
 
-Les utilisateurs du rôle **Administrateur** peuvent gérer et contrôler toutes les parties de l’application, notamment la facturation.
+L’utilisateur qui crée une application se voit automatiquement attribué le rôle **Administrateur d’application**. Le rôle **Administrateur d’application** doit toujours être attribué à au moins un utilisateur.
 
-L’utilisateur qui crée une application reçoit automatiquement le rôle **Administrateur**. Le rôle **Administrateur** doit toujours être attribué à au moins un utilisateur.
+### <a name="app-builder"></a>Générateur d’application
 
-### <a name="builder"></a>Générateur
+Les utilisateurs auxquels est attribué le rôle **Créateur** peuvent gérer toutes les parties de l’application, mais ne peuvent pas changer les onglets Administration ou Exportation continue des données.
 
-Les utilisateurs du rôle **Créateur** peuvent gérer toutes les parties de l’application, mais ne peuvent pas changer les onglets Administration ou Exportation continue des données.
+### <a name="app-operator"></a>Opérateur d’application
 
-### <a name="operator"></a>Opérateur
+Les utilisateurs auxquels est attribué le rôle **Opérateur d’application** peuvent surveiller l’intégrité et l’état des appareils. Ils ne sont pas autorisés à apporter des modifications aux modèles d’appareils ni à administrer l’application. Les opérateurs peuvent ajouter et supprimer des appareils, gérer des ensembles d’appareils et exécuter des analytiques et des travaux.
 
-Les utilisateurs du rôle **Opérateur** peuvent surveiller l’intégrité et l’état des appareils. Ils ne sont pas autorisés à apporter des modifications aux modèles d’appareils ni à administrer l’application. Les opérateurs peuvent ajouter et supprimer des appareils, gérer des ensembles d’appareils et exécuter des analytiques et des travaux.
+### <a name="org-administrator"></a>Administrateur de l’organisation
+
+IoT Central ajoute ce rôle automatiquement quand vous ajoutez une organisation à votre application. Ce rôle empêche les administrateurs d’organisation d’accéder à certaines fonctionnalités d’application, telles que la facturation, la personnalisation, les couleurs, les jetons d’API et les informations du groupe d’inscription.
+
+Les utilisateurs auxquels est attribué le rôle **Administrateur d’organisation** peuvent inviter des utilisateurs à accéder à l’application, créer des sous-organisations dans la hiérarchie de leur organisation, et gérer les appareils au sein de leur organisation.
+
+### <a name="org-operator"></a>Opérateur d’organisation
+
+IoT Central ajoute ce rôle automatiquement quand vous ajoutez une organisation à votre application. Ce rôle empêche les opérateurs d’organisation d’accéder à certaines fonctionnalités à l’échelle de l’application.
+
+Les utilisateurs auxquels est attribué le rôle **Opérateur d’organisation** peuvent effectuer des tâches telles que l’ajout d’appareils, l’exécution de commandes, l’affichage de données d’appareil, la création de tableaux de bord et la création de groupes d’appareils.
+
+### <a name="org-viewer"></a>Observateur de l’organisation
+
+IoT Central ajoute ce rôle automatiquement quand vous ajoutez une organisation à votre application.
+
+Les utilisateurs auxquels est attribué le rôle **Observateur d’organisation** peuvent afficher des éléments tels que des appareils et leurs données, des tableaux de bord d’organisation, des groupes d’appareils et des modèles d’appareil.
 
 ## <a name="create-a-custom-role"></a>Créer un rôle personnalisé
 
-Si votre solution nécessite des contrôles d’accès plus précis, vous pouvez créer des rôles avec des ensembles d’autorisations personnalisés. Pour créer un rôle personnalisé, accédez à la page **Rôle** dans la section **Administration** de votre application. Sélectionnez ensuite **+ Nouveau rôle**, puis ajoutez un nom et une description pour votre rôle. Sélectionnez les autorisations requises par votre rôle, puis choisissez **Enregistrer**.
+Si votre solution nécessite des contrôles d’accès plus précis, vous pouvez créer des rôles avec des ensembles d’autorisations personnalisés. Pour créer un rôle personnalisé, accédez à la page **Rôle** dans la section **Administration** de votre application, puis choisissez l’une des options suivantes :
 
-Vous pouvez ajouter des utilisateurs à votre rôle personnalisé de la même façon que vous ajoutez des utilisateurs à un rôle intégré.
+- Sélectionnez **+ Nouveau**, ajoutez un nom et une description pour votre rôle, puis sélectionnez **Application** ou **Organisation** en tant que type de rôle. Cette option vous permet de créer une définition de rôle à partir de rien.
+- Accédez à un rôle existant et sélectionnez **Copier**. Cette option vous permet de commencer avec une définition de rôle existante que vous pouvez personnaliser.
 
 :::image type="content" source="media/howto-manage-users-roles/create-custom-role-pnp.png" alt-text="Capture d’écran de la création d’un rôle personnalisé.":::
 
+> [!WARNING]
+> Après avoir créé un rôle, vous ne pouvez pas modifier son type.
+
+Lorsque vous invitez un utilisateur à accéder à votre application, si vous associez l’utilisateur à :
+
+- l’organisation racine, seuls les rôles **Application** sont disponibles.
+- toute autre organisation, seuls les rôles **Organisation** sont disponibles.
+
+Vous pouvez ajouter des utilisateurs à votre rôle personnalisé de la même façon que vous ajoutez des utilisateurs à un rôle intégré.
 
 ### <a name="custom-role-options"></a>Options de rôle personnalisé
 
@@ -206,6 +236,16 @@ Lorsque vous définissez un rôle personnalisé, vous choisissez le jeu d’auto
 | Ajouter | Affichage <br/> Autres dépendances : Afficher les rôles personnalisés |
 | DELETE | Affichage <br/> Autres dépendances : Afficher les rôles personnalisés |
 | Contrôle total | Afficher, Ajouter, Supprimer <br/> Autres dépendances : Afficher les rôles personnalisés |
+
+**Autorisations de gestion de l’organisation**
+
+| Nom | Les dépendances |
+| ---- | -------- |
+| Affichage | None |
+| Update | Affichage |
+| Créer | Afficher, Mettre à jour |
+| DELETE | Affichage |
+| Contrôle total | Afficher, Mettre à jour, Créer, Supprimer |
 
 > [!NOTE]
 > Un utilisateur qui se trouve dans un rôle personnalisé qui lui accorde l’autorisation d’ajouter d’autres utilisateurs peut uniquement ajouter des utilisateurs à un rôle avec des autorisations identiques ou moins nombreuses que son propre rôle.

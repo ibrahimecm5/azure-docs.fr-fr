@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 04/28/2021
 ms.author: rolyon
-ms.openlocfilehash: 48be24436e032f044e8f23238059e16b55d9cf5c
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 0fb96bedc12939c130b7fa4c7feee4c7967e0e77
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886895"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055678"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Démarrage rapide : Attribuer un rôle Azure en utilisant un modèle ARM
 
@@ -37,7 +37,7 @@ Pour attribuer des rôles et supprimer des attributions de rôles, voici ce dont
 
 ## <a name="review-the-template"></a>Vérifier le modèle
 
-Le modèle utilisé dans ce démarrage rapide est tiré des [modèles de démarrage rapide Azure](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/). Le modèle a trois paramètres et une section de ressources. Notez que la section de ressources contient les trois éléments d’une attribution de rôle : principal de sécurité, définition de rôle et étendue.
+Le modèle utilisé dans ce démarrage rapide est tiré des [modèles de démarrage rapide Azure](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/). Le modèle a deux paramètres et une section de ressources. Notez que la section de ressources contient les trois éléments d’une attribution de rôle : principal de sécurité, définition de rôle et étendue.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
@@ -66,7 +66,7 @@ La ressource définie dans le modèle est :
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json"
 
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleAssignmentName $roleAssignmentName -roleDefinitionID $roleDefinitionId -principalId $principalId
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleDefinitionID $roleDefinitionId -principalId $principalId
     ```
 
 1. Entrez un nom de groupe de ressources, comme ExampleGrouprg.
@@ -96,7 +96,6 @@ La ressource définie dans le modèle est :
     Parameters              :
                               Name                  Type                       Value
                               ====================  =========================  ==========
-                              roleAssignmentName    String                     {roleAssignmentName}
                               roleDefinitionID      String                     9980e02c-c2be-4d73-94e8-173b1dc7cf3c
                               principalId           String                     {principalId}
 

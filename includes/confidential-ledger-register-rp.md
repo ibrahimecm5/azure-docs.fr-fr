@@ -4,14 +4,14 @@ ms.service: confidential-ledger
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: msmbaldwin
-ms.openlocfilehash: 5a94cdae7cc332b8e0df5b2ebdc6ae57b67c8a68
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fa07459629d832516fda5d3141f85b23afe3fbb8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385991"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861616"
 ---
-Un fournisseur de ressources est un service qui fournit des ressources Azure. Utilisez la commande Azure CLI [az provider register](/cli/azure/provider#az_provider_register) ou la cmdlet Azure PowerShell [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) pour inscrire le fournisseur de ressources du Registre confidentiel, « microsoft.ConfidentialLedger ».
+Un fournisseur de ressources est un service qui fournit des ressources Azure. Utilisez la commande Azure CLI [az provider register](/cli/azure/provider#az_provider_register) ou l’applet de commande Azure PowerShell [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) pour inscrire le fournisseur de ressources du Registre confidentiel Azure, « microsoft.ConfidentialLedger ».
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli

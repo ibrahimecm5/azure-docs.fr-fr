@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Créer une instance d’Azure Database pour MySQL - Serveur flexible (préversion) et activer la connectivité d’accès public
+title: Script CLI - Créer une instance d’Azure Database pour MySQL - Serveur flexible et activer la connectivité d’accès public
 description: Cet exemple de script Azure CLI montre comment créer une instance d’Azure Database pour MySQL - Serveur flexible, comment configurer une règle de pare-feu au niveau du serveur (méthode de connectivité d’accès public) et comment se connecter au serveur.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: cc9710576eef20505a9ae27b74ce93897e7889b0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59df8d613e8753895fba77d3bfabefe476f49cf1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701335"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844190"
 ---
-# <a name="create-an-azure-database-for-mysql---flexible-server-preview-and-enable-public-access-connectivity-using-azure-cli"></a>Créer une instance d’Azure Database pour MySQL - Serveur flexible (préversion) et activer la connectivité d’accès public à l’aide d’Azure CLI
+# <a name="create-an-azure-database-for-mysql---flexible-server-and-enable-public-access-connectivity-using-azure-cli"></a>Créer une instance d’Azure Database pour MySQL - Serveur flexible et activer la connectivité d’accès public avec Azure CLI
 
 Cet exemple de script CLI crée une instance d’Azure Database pour MySQL - Serveur flexible, configure une règle de pare-feu au niveau du serveur ([méthode de connectivité d’accès public](../concepts-networking-public.md)) et se connecte au serveur après sa création. 
 
@@ -58,5 +58,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).

@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 02c0d31ec07c210197968e514573e372ef24dd59
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9213d5fa18e2156962deb1e9cd6e49f592192728
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219107"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055452"
 ---
 # <a name="known-issues"></a>Problèmes connus
 Cet article fournit des informations sur les limitations et problèmes connus concernant les Kits de développement logiciel (SDK) Appel pour Azure Communication Services et Automatisation des appels Azure Communication Services.
@@ -26,6 +26,27 @@ Cet article fournit des informations sur les limitations et problèmes connus co
 ### <a name="javascript-sdk"></a>Kit de développement logiciel (SDK) JavaScript
 
 Cette section fournit des informations sur les problèmes connus associés aux Kits de développement logiciel (SDK) JavaScript pour les appels audio et vidéo Azure Communication Services.
+
+#### <a name="ios-151-regression---iossafari-will-crash-and-refresh-the-page-if-acs-user-tries-to-send-video-in-a-call"></a>Régression iOS 15.1 : iOS/Safari se bloque et actualise la page si l’utilisateur ACS tente d’envoyer une vidéo dans un appel
+
+---
+**Important**
+
+iOS 15.1 a introduit un bogue qui a un impact sur la majorité des appels ACS avec vidéo effectués dans iOS/Safari.
+
+---
+
+**Description du problème** Si vous participez à des appels ACS ou à une réunion Teams à l’aide d’ACS sur iOS 15.1 sur n’importe quel navigateur sur lequel la vidéo est activée, cela entraîne le blocage du navigateur Safari.
+
+**Détails** Il s’agit d’un [bogue connu sur iOS 15.1 Safari](https://bugs.webkit.org/show_bug.cgi?id=231505) qui a été introduit avec la publication de la version iOS 15.1. Ce problème devrait être résolu avec la publication de la version iOS 15.2. Actuellement, la seule solution de contournement connue consiste à ne pas désactiver la vidéo lors de l’utilisation des services ACS sur iOS 15.1 Safari.
+
+**Versions** iOS 15.1 et toute version du kit SDK Web ACS
+
+**Atténuations** Empêchez les utilisateurs d’utiliser (d’activer) la vidéo lors de l’utilisation du navigateur iOS 15.1 Safari pour les appels vidéo ACS et les réunions vidéo de Microsoft Teams sur ACS.
+Nous évaluons les solutions de contournement et travaillons avec Apple pour déterminer les étapes suivantes
+
+La version suivante iOS 15.2 résout ce problème
+
 
 #### <a name="refreshing-a-page-doesnt-immediately-remove-the-user-from-their-call"></a>L’actualisation d’une page ne retire pas immédiatement l’utilisateur de l’appel
 

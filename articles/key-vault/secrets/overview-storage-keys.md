@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6e8ad07ac5a03e1ad4df9762dfc1fbb81d820dd2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0232775be0bc87d4e69d78d855ecc0d268ad339
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593550"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841579"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Gérer les clés de compte de stockage avec Key Vault et l’interface de ligne de commande Azure
 > [!IMPORTANT]
@@ -30,6 +30,9 @@ Lorsque vous utilisez la fonctionnalité de clé de compte de stockage managé, 
 - Seul Key Vault doit gérer vos clés de compte de stockage. Ne gérez pas les clés vous-même et évitez d’interférer avec les processus de Key Vault.
 - Un seul objet Key Vault doit gérer les clés de compte de stockage. Vous ne devez pas autoriser la gestion des clients par des objets multiples.
 - Régénérez les clés à l’aide de Key Vault uniquement. Ne régénérez pas manuellement vos clés de compte de stockage.
+
+> [!IMPORTANT]
+> La regénération de clés directement dans le compte de stockage interrompt la configuration du compte de stockage managé et peut invalider les jetons SAS en cours d’utilisation et provoquer une panne.
 
 ## <a name="service-principal-application-id"></a>ID d’application du principal de service
 

@@ -7,21 +7,21 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b3e7df998d32317763c6a0de7c0e7c1cc2f2420b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 286754a121dc2aabeeacda47dd82dd4f3a1ed83b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562533"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564515"
 ---
 # <a name="scale-out-and-in-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Effectuer un scale-out et un scale-in de votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc en ajoutant plus de nœuds Worker
 Ce document explique comment effectuer un scale-out et un scale-in d’un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc. Pour ce faire, il vous guide dans un scénario. **Si vous ne souhaitez pas exécuter le scénario mais voulez simplement en savoir plus sur la manière d’effectuer un scale-out ou un scale-in, allez directement au paragraphe [Effectuer un scale-out](#scale-out)** ou [Effectuer un scale-in]().
 
-Vous effectuez un scale-out lorsque vous ajoutez des instances Postgres (nœuds Worker Postgres Hyperscale) à votre instance PostgreSQL Hyperscale avec Azure Arc.
+Le scale-out consiste à ajouter des instances Postgres (nœuds Worker Postgres Hyperscale) au groupe de serveurs PostgreSQL Hyperscale avec Azure Arc.
 
-Vous procédez à un scale-in lorsque vous supprimez des instances Postgres (nœuds Worker Postgres Hyperscale) de votre instance PostgreSQL Hyperscale avec Azure Arc.
+En ce qui concerne le scale-in, il s’agit de supprimer des instances Postgres (nœuds Worker Postgres Hyperscale) du groupe de serveurs PostgreSQL Hyperscale avec Azure Arc.
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -53,26 +53,35 @@ az postgres arc-server endpoint list -n <server name>  --k8s-namespace <namespac
 ```
 Exemple :
 ```azurecli
-az postgres arc-server endpoint list -n postgres01  --k8s-namespace <namespace> --use-k8s
+az postgres arc-server endpoint list -n postgres01  --k8s-namespace arc --use-k8s
 ```
 
 Exemple de sortie :
 
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+{
+  "instances": [
+    {
+      "endpoints": [
+        {
+          "description": "PostgreSQL Instance",
+          "endpoint": "postgresql://postgres:<replace with password>@12.345.567.89:5432"
+        },
+        {
+          "description": "Log Search Dashboard",
+          "endpoint": "https://23.456.78.99:5601/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))"
+        },
+        {
+          "description": "Metrics Dashboard",
+          "endpoint": "https://34.567.890.12:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01"
+        }
+      ],
+      "engine": "PostgreSql",
+      "name": "postgres01"
+    }
+  ],
+  "namespace": "arc"
+}
 ```
 
 ##### <a name="connect-with-the-client-tool-of-your-choice"></a>Connectez-vous avec l’outil client de votre choix.
@@ -160,7 +169,7 @@ az postgres arc-server edit -n <server group name> -w <target number of worker n
 Dans cet exemple, nous augmentons le nombre de nœuds Worker de 2 à 4, en exécutant la commande suivante :
 
 ```azurecli
-az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace <namespace> --use-k8s 
+az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace arc --use-k8s 
 ```
 
 Lors de l’ajout de nœuds, vous verrez un état en attente pour le groupe de serveurs. Exemple :
@@ -169,9 +178,12 @@ az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 ```console
-Name        State          Workers
-----------  -------------  ---------
-postgres01  Pending 4/5    4
+{
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Updating",
+    "workers": 4
+  }
 ```
 
 Une fois les nœuds disponibles, le rééquilibreur de partition Hyperscale s’exécute automatiquement, et redistribue les données aux nouveaux nœuds. L’opération de scale-out est une opération en ligne. Pendant l’ajout des nœuds et la redistribution des données entre les nœuds, les données restent disponibles pour les requêtes.
@@ -184,27 +196,31 @@ Utilisez l’une des méthodes ci-dessous pour vérifier que le groupe de serveu
 Exécutez la commande suivante :
 
 ```azurecli
-az postgres arc-server list --k8s-namespace <namespace> --use-k8s
+az postgres arc-server list --k8s-namespace arc --use-k8s
 ```
 
 Elle retourne la liste des groupes de serveurs créés dans votre espace de noms, et indique le nombre de nœuds Worker. Exemple :
 ```console
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    4
+{
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 4
+  }
 ```
 
 #### <a name="with-kubectl"></a>Avec kubectl :
 Exécutez la commande suivante :
 ```console
-kubectl get postgresqls
+kubectl get postgresqls -n arc
 ```
 
 Elle retourne la liste des groupes de serveurs créés dans votre espace de noms, et indique le nombre de nœuds Worker. Exemple :
 ```console
-NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-postgres01   Ready   4/4          10.0.0.4:31066      4d20h
+NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
+postgres01   Ready   5/5          12.345.567.89:5432   9d
 ```
+Notez qu’il existe un pod de plus que le nombre de nœuds Worker. Ce pod supplémentaire est utilisé pour héberger l’instance Postgres possédant le rôle de coordination.
 
 #### <a name="with-a-sql-query"></a>Avec une requête SQL :
 Connectez-vous à votre groupe de serveurs avec l’outil client de votre choix, puis exécutez la requête suivante :
@@ -245,7 +261,6 @@ Le format général de la commande de scale-in est le suivant :
 ```azurecli
 az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
-
 
 L’opération de scale-in est une opération en ligne. Vos applications continuent d’accéder aux données sans interruption tandis que les nœuds sont supprimés et que les données sont redistribuées entre les nœuds restants.
 

@@ -9,18 +9,25 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 71544ef2f49282986c976e5f66195ab21ed1f6bd
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 639feb61fad0c1e274b6b74950835d67fc1af937
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505863"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851968"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-windows-using-x509-certificates"></a>Créer et provisionner des appareils IoT Edge à grande échelle sur Windows à l’aide de certificats X.509
 
 [!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Cet article fournit des instructions complètes pour l’approvisionnement automatique d’un ou plusieurs appareils IoT Edge Windows à l’aide de certificats X.509. Les appareils Azure IoT Edge peuvent être approvisionnés automatiquement à l’aide du [Service IoT Hub Device Provisioning](../iot-dps/index.yml) (DPS). Si vous ne connaissez pas le processus d’approvisionnement automatique, consultez la [présentation de l’approvisionnement](../iot-dps/about-iot-dps.md#provisioning-process) avant de poursuivre.
+
+>[!NOTE]
+>Azure IoT Edge pour conteneurs Windows ne sera pas pris en charge à partir de la version 1.2 d’Azure IoT Edge.
+>
+>Envisagez d’utiliser la nouvelle méthode pour exécuter IoT Edge sur des appareils Windows, [Azure IoT Edge pour Linux sur Windows](iot-edge-for-linux-on-windows.md).
+>
+>Si vous souhaitez utiliser Azure IoT Edge pour Linux sur Windows, vous pouvez procéder comme expliqué dans le [guide pratique correspondant](how-to-provision-devices-at-scale-linux-on-windows-x509.md).
 
 Voici les tâches à effectuer :
 
@@ -87,13 +94,13 @@ Préparez les informations suivantes :
 
 1. La commande **Initialize-IoTEdge** configure le runtime IoT Edge sur votre ordinateur. La commande opère par défaut un provisionnement manuel avec les conteneurs Windows. Vous devez donc ajouter l’indicateur `-DpsX509` pour utiliser le provisionnement automatique avec l’authentification par certificat X.509.
 
-   Remplacez les valeurs d’espace réservé `{scope_id}`, `{identity cert chain path}` et `{identity key path}` par les valeurs appropriées de votre instance du service Device Provisioning et les chemins des fichiers sur votre appareil.
+   Remplacez les valeurs d’espace réservé `scope_id`, `identity cert chain path` et `identity key path` par les valeurs appropriées de votre instance du service Device Provisioning et les chemins des fichiers sur votre appareil.
 
-   Ajoutez le paramètre `-RegistrationId {registration_id}` si vous souhaitez définir l’ID de l’appareil autrement que par le nom commun du certificat d’identité.
+   Ajoutez le paramètre `-RegistrationId paste_registration_id_here` si vous souhaitez définir l’ID de l’appareil autrement que par le nom commun du certificat d’identité.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId paste_scope_id_here -X509IdentityCertificate paste_identity_cert_chain_path_here -X509IdentityPrivateKey paste_identity_key_path_here
    ```
 
    >[!TIP]
@@ -135,4 +142,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Le processus d’inscription auprès du service d’approvisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous approvisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).
+Le processus d’inscription auprès du service de provisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous provisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).

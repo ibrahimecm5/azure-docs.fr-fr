@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: bbf38eff6ffc5d24ae566ec94167a1c0c6ff9263
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f7e192133bac66d9ec593350a43d0d005bb05933
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097813"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866674"
 ---
 # <a name="configuration-deployments-in-azure-virtual-network-manager-preview"></a>Déploiements de configuration dans Azure Virtual Network Manager (préversion)
 
@@ -29,7 +29,7 @@ Le *déploiement* est la méthode utilisée par Azure Virtual Network Manager po
 
 ## <a name="deployment-against-network-group-membership-types"></a><a name="deployment"></a>Déploiement et types d’appartenance à un groupe de réseaux
 
-Les mises à jour de déploiement sont différentes pour les membres de groupe statiques et dynamiques dans un groupe réseau. Quand vous avez des membres de groupe dynamiques, un modèle d’état d’objectif est utilisé. Azure Virtual Network Manager détermine automatiquement si les membres dynamiques répondent aux exigences de la configuration et s’ajustent sans que vous ayez à redéployer la configuration. Toutefois, si vous avez des réseaux virtuels qui ont été ajoutés en tant que membres statiques, vous devez redéployer la configuration pour appliquer les modifications. Par exemple, si vous ajoutez un nouveau réseau virtuel en tant que membre statique, vous devez redéployer la configuration pour qu’elle prenne effet.
+La modification de la définition d’un groupe de réseaux n’aura aucun impact, à moins que la configuration utilisant ce groupe de réseaux soit déployée. Ainsi, les mises à jour de déploiement sont différentes pour les membres de groupe statiques et dynamiques dans un groupe de réseaux. Quand une appartenance à un groupe dynamique est définie, par exemple, tous les réseaux virtuels dont le nom contient « production », Azure Virtual Network Manager détermine automatiquement si les membres dynamiques satisfont aux exigences de la configuration et s’ajustent sans que vous deviez redéployer la configuration. Cela est dû au fait que vous avez déjà défini la condition de l’appartenance, et que la définition n’a pas changé. Toutefois, si vous avez des réseaux virtuels qui ont été ajoutés en tant que membres statiques, vous devez redéployer la configuration pour appliquer les modifications. Par exemple, si vous ajoutez un nouveau réseau virtuel en tant que membre statique, vous devez redéployer la configuration pour qu’elle prenne effet.
 
 ## <a name="deployment-status"></a>état du déploiement
 

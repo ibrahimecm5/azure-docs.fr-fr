@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 10/29/2021
+ms.date: 11/04/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 22cfeda4b1fc1afb032e8a6b2e689117211e5f1e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: addbd908670741cd0ba8662bf73a1a6788487498
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438521"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851455"
 ---
 # <a name="azure-firewall-premium-features"></a>Fonctionnalités du Pare-feu Azure Premium
 
@@ -51,8 +51,8 @@ Le Pare-feu Azure Premium propose un système IDPS basé sur les signatures pour
 
 Les signatures/ensembles de règles du Pare-feu Azure incluent les éléments suivants :
 - Accent mis sur la prise d’empreinte numérique des logiciels malveillants, des centres de commande et de contrôle, des kits de code malveillant exploitant une faille de sécurité et des diverses activités malveillantes manquées par les méthodes de protection traditionnelles
-- Plus de 55 000 règles dans plus de 50 catégories
-    - Exemples de catégories : commande et contrôle des logiciels malveillants, attaques DoS, botnets, événements d’information, code malveillant exploitant une faille de sécurité, vulnérabilités, protocoles réseau SCADA, activité des kits de code malveillant
+- Plus de 58 000 règles dans plus de 50 catégories.
+    - Exemples de catégories : commande et contrôle des logiciels malveillants, hameçonnage, chevaux de Troie, botnets, événements d’information, code malveillant exploitant une faille de sécurité, vulnérabilités, protocoles réseau SCADA, activité des kits de code malveillant, etc.
 - Entre 20 et 40 nouvelles règles publiées quotidiennement
 - Faible classification de faux positifs grâce à un bac à sable (sandbox) de pointe et à une boucle de rétroaction du réseau de capteurs globaux.
 

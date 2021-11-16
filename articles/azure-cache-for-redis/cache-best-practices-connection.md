@@ -5,14 +5,14 @@ description: Découvrez comment rendre vos connexions Azure Cache pour Redis ré
 author: shpathak-msft
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 11/3/2021
 ms.author: shpathak
-ms.openlocfilehash: dd7bb63204ccaa38379b49cfe3946372319dfc44
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d8e5f95e78db7c46ad1c52401b938acc37af6b4f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252898"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850942"
 ---
 # <a name="connection-resilience"></a>Résilience des connexions
 
@@ -33,13 +33,16 @@ Nous vous recommandons d’utiliser les paramètres TCP suivants :
 |Paramètre  |Valeur |
 |---------|---------|
 | *net.ipv4.tcp_retries2*   | 5 |
-| *TCP_KEEPIDLE*   | 15 |
-| *TCP_KEEPINTVL*  | 5 |
-| *TCP_KEEPCNT* | 3 |
 
-Envisagez d’utiliser le modèle *ForceReconnect*. Pour une implémentation du modèle, consultez le code dans [Reconnecting with Lazy\<T\> pattern](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-lazyreconnect-cs).
+Pour plus d’informations sur ce scénario, consultez [La connexion ne se rétablit pas pendant 15 minutes lors de l’exécution sous Linux](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646). Bien que cette discussion concerne la bibliothèque StackExchange.Redis, d’autres bibliothèques clientes s’exécutant sur Linux sont également affectées. L’explication reste néanmoins utile et vous pouvez la généraliser à d’autres bibliothèques.
 
-Pour plus d’informations sur ce scénario, consultez [Connection does not re-establish for 15 minutes when running on Linux](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646). Bien que cette discussion concerne la bibliothèque StackExchange.Redis, d’autres bibliothèques clientes s’exécutant sur Linux sont également affectées. L’explication reste néanmoins utile et vous pouvez la généraliser à d’autres bibliothèques.
+## <a name="using-forcereconnect-with-stackexchangeredis"></a>Utilisation de ForceReconnect avec StackExchange.Redis
+
+Dans de rares cas, StackExchange.Redims ne parvient pas à se reconnecter après l’interruption d’une connexion. Dans ce cas, le redémarrage du client ou la création d’un nouveau `ConnectionMultiplexer` corrige le problème. Nous vous recommandons d’utiliser un modèle `ConnectionMultiplexer` singleton tout en permettant aux applications de forcer régulièrement une reconnexion. Jetez un coup d’œil à l’exemple de projet de démarrage rapide qui correspond le mieux à l’infrastructure et à la plateforme que votre application utilise. Vous pouvez voir des exemples de ce modèle de code dans nos [démarrages rapide](https://github.com/Azure-Samples/azure-cache-redis-samples).
+
+Les utilisateurs du `ConnectionMultiplexer` doivent gérer toutes les erreurs `ObjectDisposedException` susceptibles de se produire suite à la suppression de l’ancien modèle.
+
+Appelez `ForceReconnectAsync()` pour `RedisConnectionExceptions` et `RedisSocketExceptions`. Vous pouvez également appeler `ForceReconnectAsync()` pour `RedisTimeoutExceptions`, mais uniquement si vous utilisez des valeurs `ReconnectMinInterval` et `ReconnectErrorThreshold` généreuses. Dans le cas contraire, l’établissement de nouvelles connexions peut provoquer une défaillance en cascade sur un serveur qui a dépassé le délai d’attente parce qu’il est déjà surchargé.
 
 ## <a name="configure-appropriate-timeouts"></a>Configurer les délais d’attente appropriés
 

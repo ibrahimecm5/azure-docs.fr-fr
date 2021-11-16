@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 11/04/2021
+ms.date: 11/07/2021
 ms.author: memildin
-ms.openlocfilehash: 0e93c254a28aa62ce84f60daa02f91b247893a5b
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 19c1cad67d170e406e01e8c7c4816ab11722e4e4
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131577153"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990305"
 ---
 # <a name="whats-new-in-microsoft-defender-for-cloud"></a>Quelles sont les nouveautés de Microsoft Defender pour le cloud ?
 
@@ -38,6 +38,7 @@ Notre version d’Ignite comprend les éléments suivants :
 - [Évaluations étendues des contrôles de sécurité avec le benchmark de sécurité Azure v3](#expanded-security-control-assessments-with-azure-security-benchmark-v3)
 - [Synchronisation bidirectionnelle (facultative) des alertes du connecteur Microsoft Sentinel en disponibilité générale (GA)](#microsoft-sentinel-connectors-optional-bi-directional-alert-synchronization-released-for-general-availability-ga)
 - [Nouvelle recommandation pour l’envoi (push) des journaux AKS (Azure Kubernetes Service) vers Sentinel](#new-recommendation-to-push-azure-kubernetes-service-aks-logs-to-sentinel)
+- [Recommandations mappées au framework MITRE ATT&amp;CK® - publiées en disponibilité générale](#recommendations-mapped-to-the-mitre-attck-framework---released-for-general-availability-ga)
 
 Autres changements apportés en novembre :
 
@@ -121,6 +122,22 @@ La nouvelle recommandation « Les journaux de diagnostic du service Kubernetes 
 
 Nous avons également amélioré la recommandation « L’audit sur SQL Server doit être activé » avec les mêmes fonctionnalités de streaming que celles de Sentinel. 
 
+
+### <a name="recommendations-mapped-to-the-mitre-attck-framework---released-for-general-availability-ga"></a>Recommandations mappées au framework MITRE ATT&amp;CK® - publiées en disponibilité générale
+
+Nous avons amélioré les recommandations de sécurité de Defender pour le cloud afin d’illustrer leur position sur le framework MITRE ATT&amp;CK®. Cette base de connaissances mondialement accessible recense les tactiques et techniques des acteurs de menaces basées sur des observations réelles. Elle fournit davantage de contexte pour vous aider à comprendre les risques associés aux recommandations pour votre environnement.
+
+Vous trouverez ces tactiques là où vous accédez aux informations de recommandation :
+
+- Les **résultats de requête Azure Resource Graph** pour les recommandations pertinentes incluent les tactiques et techniques MITRE ATT&CK®.
+
+- Les **pages de détails des recommandations** affichent le mappage de toutes les recommandations pertinentes :
+
+    :::image type="content" source="media/review-security-recommendations/tactics-window.png" alt-text="Capture d’écran du mappage de tactiques MITRE pour une recommandation.":::
+
+- **La page de recommandations dans Defender pour le cloud** dispose d’un nouveau filtre :::image type="icon" source="media/review-security-recommendations/tactics-filter-recommendations-page.png" border="false"::: pour sélectionner des recommandations en fonction de leur tactique associée :
+
+Apprenez-en davantage dans [Consulter vos recommandations de sécurité](review-security-recommendations.md).
 
 ### <a name="microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution---released-for-general-availability-ga"></a>Ajout de la solution Gestion des menaces et des vulnérabilités Microsoft en tant que solution d’évaluation des vulnérabilités - En disponibilité générale (GA)
 
@@ -321,7 +338,7 @@ Pour étendre les protections contre les menaces fournies par Azure Defender pou
 
 Ces alertes sont générées à partir d’un nouveau modèle Machine Learning et des fonctionnalités analytiques avancées de Kubernetes, qui mesurent plusieurs attributs de déploiement et d’attribution de rôles par rapport aux activités antérieures dans le cluster ainsi que dans tous les clusters faisant l’objet d’un monitoring par Azure Defender.
 
-| Alerte (type d’alerte)                                                                 | Description                                                                                                                                                                                                                                                                                                                                                      | Tactique MITRE | severity |
+| Alerte (type d’alerte)                                                                 | Description                                                                                                                                                                                                                                                                                                                                                      | Tactique MITRE | Gravité |
 |------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | **Déploiement anormal d’un pod (préversion)**<br>(K8S_AnomalousPodDeployment)             | L’analyse du journal d’audit Kubernetes a détecté un déploiement de pod anormal compte tenu de l’activité antérieure de déploiement de pod. Cette activité est considérée comme une anomalie lorsque l’on prend en compte la façon dont les différentes fonctionnalités vues dans l’opération de déploiement sont dans les relations entre elles. Les fonctionnalités surveillées par cette analyse incluent le registre d’images de conteneur utilisé, le compte qui effectue le déploiement, le jour de la semaine, la fréquence à laquelle ce compte effectue des déploiements de pod, l’agent utilisateur utilisé dans l’opération ou d’autres fonctionnalités. Il est également possible de déterminer s’il s’agit d’un espace de noms dans lequel le déploiement du pod se produit souvent. Les principales raisons justifiant le déclenchement de cette alerte en tant qu’activité anormale sont détaillées dans les propriétés étendues de l’alerte. | Exécution | Moyenne |
 | **Autorisations de rôle excessives affectées dans le cluster Kubernetes (préversion)**<br>(K8S_ServiceAcountPermissionAnomaly) | L’analyse des journaux d’audit Kubernetes a détecté une attribution de rôle d’autorisations excessive à votre cluster. D’après l’examen des attributions de rôles, les autorisations répertoriées sont rares pour le compte de service spécifique. Cette détection prend en compte les attributions de rôles antérieures au même compte de service sur les clusters contrôlés par Azure, le volume par autorisation et l’impact de l’autorisation spécifique. Le modèle de détection d’anomalies utilisé pour cette alerte prend en compte la façon dont cette autorisation est utilisée sur tous les clusters analysés par Azure Defender. | Réaffectation de privilèges | Faible |
@@ -611,7 +628,7 @@ Les mises à jour du mois de juin incluent :
 
 Pour développer les protections contre les menaces fournies par Azure Defender pour Key Vault, nous avons ajouté l’alerte suivante :
 
-| Alerte (type d’alerte)                                                                 | Description                                                                                                                                                                                                                                                                                                                                                      | Tactique MITRE | severity |
+| Alerte (type d’alerte)                                                                 | Description                                                                                                                                                                                                                                                                                                                                                      | Tactique MITRE | Gravité |
 |------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | Accès à partir d’une adresse IP suspecte à un coffre de clés<br>(KV_SuspiciousIPAccess)  | Un coffre de clés a fait l’objet d’un accès réussi par une IP qui a été identifiée par Microsoft Threat Intelligence comme adresse IP suspecte. Cela peut indiquer que votre infrastructure a été compromise. Nous recommandons d’investiguer plus en profondeur. En savoir plus sur les [capacités de renseignement sur les menaces de Microsoft](https://go.microsoft.com/fwlink/?linkid=2128684). | Accès aux informations d’identification                            | Moyenne   |
 |||

@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 2636638bcab5577bee2f4c07bae3653cc4151248
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 88de9f363851d47fbefcdcf69060111d8fd64bbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131421687"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842375"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Mise à l’échelle automatique (préversion) pour les pools d’hôtes Azure Virtual Desktop
 
@@ -28,7 +28,9 @@ La fonctionnalité de mise à l’échelle automatique (préversion) vous permet
 
 >[!NOTE]
 > - Azure Virtual Desktop (classique) ne prend pas en charge la fonctionnalité de mise à l’échelle automatique. 
+> - La mise à l’échelle automatique ne prend pas en charge Azure Virtual Desktop pour Azure Stack HCI 
 > - Autsoscale ne prend pas en charge la mise à l’échelle des disques éphémères.
+
 
 Pour de meilleurs résultats, nous vous recommandons d’utiliser la mise à l’échelle automatique avec les machines virtuelles que vous avez déployées avec des modèles Azure Resource Manager Azure Virtual Desktop ou des outils internes de Microsoft.
 

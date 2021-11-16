@@ -2,17 +2,20 @@
 title: Gérer les sauvegardes de partage de fichiers Azure
 description: Cet article décrit les tâches courantes de gestion et de supervision des partages de fichiers Azure sauvegardés par le service Sauvegarde Azure.
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.openlocfilehash: 421162387b28777acf1c4f86288796d8066468a6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 021a24cbe5c1e2ba9f504ca99c149b135bc40fc4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216045"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844721"
 ---
 # <a name="manage-azure-file-share-backups"></a>Gérer les sauvegardes de partage de fichiers Azure
 
-Cet article décrit les tâches courantes de gestion et de supervision des partages de fichiers Azure sauvegardés par le service [Sauvegarde Azure](./backup-overview.md). Vous allez apprendre à effectuer des tâches de gestion dans le coffre Recovery Services.
+Cet article décrit les tâches courantes de gestion et de supervision des partages de fichiers Azure sauvegardés par le service [Sauvegarde Azure](./backup-overview.md). Vous allez apprendre à effectuer des tâches de gestion dans le **Centre de sauvegarde**.
 
 ## <a name="monitor-jobs"></a>Surveiller des travaux
 
@@ -20,31 +23,33 @@ Lorsque vous déclenchez une opération de sauvegarde ou de restauration, le ser
 
 Pour ouvrir la page **Travaux de sauvegarde** :
 
-1. Ouvrez le coffre Microsoft Azure Recovery Services que vous avez utilisé pour configurer la sauvegarde de vos partages de fichiers. Dans le volet **Vue d'ensemble**, accédez à la section **Supervision** et sélectionnez **Tâches de sauvegarde**.
+1. Accédez au **Centre de sauvegarde**, puis, dans la section **Surveillance**, sélectionnez **Travaux de sauvegarde**.
 
-   ![Travaux de sauvegarde dans la section analyse](./media/manage-afs-backup/backup-jobs.png)
+   :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-list-inline.png" alt-text="Capture d’écran montrant les travaux de sauvegarde dans la section Surveillance." lightbox="./media/manage-afs-backup/backup-center-jobs-list-expanded.png":::
 
-1. Après avoir sélectionné **OK**, le volet **Travaux de sauvegarde** répertorie l'état de tous les travaux. Sélectionnez le nom de la charge de travail correspondant au partage de fichiers à superviser.
+   Le volet **Travaux de sauvegarde** indique l’état de tous les travaux.
 
-   ![Nom de la charge de travail](./media/manage-afs-backup/workload-name.png)
+1. Sélectionnez **Azure Files (Stockage Azure)** comme type de source de données et sélectionnez une ligne pour afficher les détails du travail en question.
+
+   :::image type="content" source="./media/manage-afs-backup/backup-center-jobs-inline.png" alt-text="Capture d’écran montrant la liste des travaux." lightbox="./media/manage-afs-backup/backup-center-jobs-expanded.png":::
 
 ## <a name="monitor-using-azure-backup-reports"></a>Surveiller à l’aide des rapports de Sauvegarde Azure
 
-La Sauvegarde Azure offre une solution de création de rapports qui utilise les [journaux Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md) et les [classeurs Azure](../azure-monitor/visualize/workbooks-overview.md). Ces ressources vous aident à obtenir des insights enrichis dans vos sauvegardes. Vous pouvez tirer parti de ces rapports pour obtenir une visibilité sur les éléments de sauvegarde Azure Files, les travaux au niveau de l’élément et les détails des stratégies actives. La fonctionnalité Rapport par e-mail disponible dans Rapports de sauvegarde vous permet de créer des tâches automatisées pour recevoir régulièrement des rapports par e-mail. [En savoir plus](./configure-reports.md#get-started) sur la configuration et l’affichage des rapports de Sauvegarde Azure.
+La Sauvegarde Azure offre une solution de création de rapports qui utilise les [journaux Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md) et les [classeurs Azure](../azure-monitor/visualize/workbooks-overview.md). Ces ressources vous aident à obtenir des insights enrichis dans vos sauvegardes. Vous pouvez tirer parti de ces rapports pour obtenir une visibilité sur les éléments de sauvegarde Azure Files, les travaux au niveau de l’élément et les détails des stratégies actives. La fonctionnalité Rapport de messagerie disponible dans Rapports de sauvegarde vous permet de créer des tâches automatisées pour recevoir des rapports périodiques par e-mail. [Découvrez](./configure-reports.md#get-started) comment configurer et afficher des rapports de Sauvegarde Azure.
 
 ## <a name="create-a-new-policy"></a>Créer une nouvelle stratégie
 
-Vous pouvez créer une nouvelle stratégie de sauvegarde des partages de fichiers Azure à partir de la section **Stratégies de sauvegarde** du coffre Recovery Services. Toutes les stratégies créées lors de la configuration de la sauvegarde des partages de fichiers sont définies sur le **Type de stratégie** **Partage de fichiers Azure**.
+Vous pouvez créer une nouvelle stratégie pour sauvegarde des partages de fichiers Azure à partir de la section **Stratégies de sauvegarde** du **Centre de sauvegarde**. Toutes les stratégies créées lors de la configuration de la sauvegarde des partages de fichiers sont définies sur le **Type de stratégie** **Partage de fichiers Azure**.
 
 Pour créer une stratégie de sauvegarde, procédez comme suit :
 
-1. Dans le volet **Stratégies de sauvegarde** du coffre Recovery Services, sélectionnez **+ Ajouter**.
+1. Dans le volet **Stratégies de sauvegarde** du **Centre de sauvegarde**, sélectionnez **+Ajouter**.
 
-   :::image type="content" source="./media/manage-afs-backup/new-backup-policy.png" alt-text="Capture d’écran montrant l’option permettant de démarrer la création d’une stratégie de sauvegarde.":::
+   :::image type="content" source="./media/manage-afs-backup/backup-center-add-policy-inline.png" alt-text="Capture d’écran montrant l’option permettant de démarrer la création d’une stratégie de sauvegarde." lightbox="./media/manage-afs-backup/backup-center-add-policy-expanded.png":::
 
-1. Dans le volet **Ajouter**, sélectionnez **Partage de fichiers Azure** comme **Type de stratégie**.
+1. Choisissez **Azure Files (Stockage Azure)** comme type de source de source, sélectionnez le coffre dans lequel la stratégie doit être créée, puis cliquez sur **Continuer**.
 
-   :::image type="content" source="./media/manage-afs-backup/define-policy-type.png" alt-text="Capture d’écran montrant comment sélectionner le partage de fichiers Azure comme type de stratégie.":::
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-select-vault-for-policy.png" alt-text="Capture d’écran montrant la sélection d’un partage de fichiers Azure comme type de stratégie.":::
 
 1. Lorsque le volet **Stratégie de sauvegarde** du **Partage de fichiers Azure** s’ouvre, spécifiez le nom de stratégie.
 
@@ -82,13 +87,13 @@ Pour créer une stratégie de sauvegarde, procédez comme suit :
 
 Pour afficher les stratégies de sauvegarde existantes :
 
-1. Ouvrez le coffre Recovery Services que vous avez utilisé pour configurer la sauvegarde du partage de fichiers. Dans le menu du coffre Recovery Services, accédez à la section **Gestion** et sélectionnez **Stratégies de sauvegarde**. Toutes les stratégies de sauvegarde configurées dans le coffre apparaissent.
+1. Accédez au **Centre de sauvegarde**, puis, dans la section **Gérer**, sélectionnez **Stratégies de sauvegarde**.
 
-   :::image type="content" source="./media/manage-afs-backup/all-backup-policies.png" alt-text="Capture d’écran montrant toutes les stratégies de sauvegarde.":::
+   Toutes les stratégies de sauvegarde configurées dans votre coffre s’affichent.
 
-1. Pour afficher les stratégies spécifiques au **Partage de fichiers Azure**, sélectionnez **Partage de fichiers Azure** dans la liste déroulante située en haut à droite.
+   :::image type="content" source="./media/manage-afs-backup/backup-center-policies-list-inline.png" alt-text="Capture d’écran montrant toutes les stratégies de sauvegarde." lightbox="./media/manage-afs-backup/backup-center-policies-list-expanded.png":::
 
-   :::image type="content" source="./media/manage-afs-backup/azure-file-share.png" alt-text="Capture d’écran montrant le processus de sélection d’un partage de fichiers Azure.":::
+1. Pour afficher des stratégies spécifiques d’**Azure Files (Stockage Azure)** , sélectionnez **Partage de fichiers Azure** comme type de source de données.
 
 ## <a name="modify-policy"></a>Modifier la stratégie
 
@@ -96,15 +101,19 @@ Vous pouvez modifier une stratégie de sauvegarde pour modifier la fréquence de
 
 Pour modifier une stratégie :
 
-1. Ouvrez le coffre Recovery Services que vous avez utilisé pour configurer la sauvegarde du partage de fichiers. Dans le menu du coffre Recovery Services, accédez à la section **Gestion** et sélectionnez **Stratégies de sauvegarde**. Toutes les stratégies de sauvegarde configurées dans le coffre apparaissent.
+1. Accédez au **Centre de sauvegarde**, puis, dans la section **Gérer**, sélectionnez **Stratégies de sauvegarde**.
 
-   ![Toutes les stratégies de sauvegarde dans le coffre](./media/manage-afs-backup/all-backup-policies-modify.png)
+   Toutes les stratégies de sauvegarde configurées dans vos coffres s’affichent.
 
-1. Pour afficher les stratégies propres à un partage de fichiers Azure, sélectionnez **Partage de fichiers Azure** dans la liste déroulante située en haut à droite. Sélectionnez la stratégie de sauvegarde que vous souhaitez modifier.
+   :::image type="content" source="./media/manage-afs-backup/backup-center-policies-list-inline.png" alt-text="Capture d’écran montrant toutes les stratégies de sauvegarde dans le coffre." lightbox="./media/manage-afs-backup/backup-center-policies-list-expanded.png":::
 
-   ![Partage de fichiers Azure à modifier](./media/manage-afs-backup/azure-file-share-modify.png)
+1. Pour afficher des stratégies spécifiques d’un partage de fichiers Azure, sélectionnez **Azure Files (Stockage Azure)** comme type de source de données.
 
-1. Le volet **Planification** s'ouvre. Modifiez la **planification de la sauvegarde** et la **durée de conservation** en fonction de vos besoins, puis sélectionnez **Enregistrer**. Le message « Mise à jour en cours » s'affiche dans le volet. Une fois la mise à jour de la stratégie effectuée, le message « Stratégie de sauvegarde mise à jour avec succès » s'affiche.
+   Cliquez sur la stratégie que vous souhaitez mettre à jour.
+
+1. Le volet **Planification** s'ouvre. Modifiez la **planification de la sauvegarde** et la **durée de conservation** en fonction de vos besoins, puis sélectionnez **Enregistrer**.
+
+   Le message _Mise à jour en cours_ s’affiche dans le volet. Une fois la mise à jour de la stratégie effectuée, le message _Stratégie de sauvegarde mise à jour avec succès_ s’affiche.
 
    ![Enregistrer la stratégie modifiée](./media/manage-afs-backup/save-policy.png)
 
@@ -119,15 +128,11 @@ Le fait de laisser des points de récupération dans l'espace de stockage peut a
 
 Pour arrêter la protection d’un partage de fichiers Azure :
 
-1. Ouvrez le coffre Recovery Services contenant les points de récupération du partage de fichiers. Sélectionnez **Éléments sauvegardés** dans la section **Éléments protégés**. La liste des types d'éléments de sauvegarde s'affiche.
+1. Accédez au **Centre de sauvegarde**, sélectionnez **Instances de sauvegarde** dans le menu, puis sélectionnez **Azure Files (Stockage Azure)** comme type de source de données.
 
-   ![Éléments de sauvegarde](./media/manage-afs-backup/backup-items.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-backup-instances-inline.png" alt-text="Capture d’écran montrant la sélection d’Azure Files comme type de données." lightbox="./media/manage-afs-backup/azure-file-share-backup-instances-expanded.png":::
 
-1. Dans la liste **Type de gestion de sauvegarde**, sélectionnez **Stockage Azure (fichiers Azure)** . La liste **Éléments de sauvegarde (Stockage Azure [Azure Files])** s'affiche.
-
-   ![Sélectionner le stockage Azure (Azure Files)](./media/manage-afs-backup/azure-storage-azure-files.png)
-
-1. Dans la liste **Éléments de sauvegarde (Stockage Azure (Azure Files))** , sélectionnez l'élément de sauvegarde que vous ne souhaitez plus protéger.
+1. Sélectionnez l’élément de sauvegarde dont vous souhaitez arrêter la protection.
 
 1. Sélectionnez l'option **Arrêter la sauvegarde**.
 
@@ -143,15 +148,11 @@ Si vous avez sélectionné l'option **Conserver les données de sauvegarde** au 
 
 Pour reprendre la protection d’un partage de fichiers Azure :
 
-1. Ouvrez le coffre Recovery Services contenant les points de récupération du partage de fichiers. Sélectionnez **Éléments sauvegardés** dans la section **Éléments protégés**. La liste des types d'éléments de sauvegarde s'affiche.
+1. Accédez au **Centre de sauvegarde**, sélectionnez **Instances de sauvegarde** dans le menu, puis sélectionnez **Azure Files (Stockage Azure)** comme type de source de données.
 
-   ![Éléments de sauvegarde pour restauration](./media/manage-afs-backup/backup-items-resume.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share-backup-instances-inline.png" alt-text="Capture d’écran montrant la sélection d’Azure Files comme type de source de données." lightbox="./media/manage-afs-backup/azure-file-share-backup-instances-expanded.png":::
 
-1. Dans la liste **Type de gestion de sauvegarde**, sélectionnez **Stockage Azure (fichiers Azure)** . La liste **Éléments de sauvegarde (Stockage Azure [Azure Files])** s'affiche.
-
-   ![Liste des stockages Azure (Azure Files)](./media/manage-afs-backup/azure-storage-azure-files.png)
-
-1. Dans la liste **Éléments de sauvegarde (Stockage Azure (Azure Files))** , sélectionnez l'élément de sauvegarde pour lequel vous souhaitez rétablir la protection.
+1. Sélectionnez l’élément de sauvegarde dont vous souhaitez reprendre la protection.
 
 1. Sélectionnez l'option **Reprendre la sauvegarde**.
 
@@ -159,7 +160,9 @@ Pour reprendre la protection d’un partage de fichiers Azure :
 
 1. Le volet **Stratégie de sauvegarde** s'ouvre. Sélectionnez la stratégie pour laquelle vous souhaitez reprendre la sauvegarde.
 
-1. Après avoir sélectionné une stratégie de sauvegarde, sélectionnez **Enregistrer**. Le message « Mise à jour en cours » s'affiche sur le portail. Une fois la sauvegarde reprise, le message « Stratégie de sauvegarde mise à jour pour le partage de fichiers Azure protégé » s'affiche.
+1. Après avoir sélectionné une stratégie de sauvegarde, sélectionnez **Enregistrer**.
+
+   Le message _Mise à jour en cours_ s’affiche sur le portail. Une fois que la sauvegarde a repris, le message _Stratégie de sauvegarde mise à jour pour le partage de fichiers Azure protégé_ s’affiche.
 
    ![Stratégie de sauvegarde mise à jour avec succès](./media/manage-afs-backup/successfully-updated.png)
 

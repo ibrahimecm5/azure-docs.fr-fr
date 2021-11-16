@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: c2ed5a0a65bd4d10620b0c72dbb5efb2aac4152f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cba37228902600852963068ba4d46e75adf21c57
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131061522"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853887"
 ---
 # <a name="connect-to-azure-sql-database-in-azure-purview"></a>Se connecter à Azure SQL Database dans Azure Purview
 
@@ -22,7 +22,9 @@ Cet article décrit le processus d’inscription d’une source de données Azur
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register) | [Oui](#scan)|[Oui](#scan) | [Oui](#scan)|[Oui](#scan)| Non |[Traçabilité des données Data Factory](how-to-link-azure-data-factory.md)|
+| [Oui](#register) | [Oui](#scan)|[Oui](#scan) | [Oui](#scan)|[Oui](#scan)| Non | Non** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 ### <a name="known-limitations"></a>Limitations connues
 
@@ -154,7 +156,7 @@ Vous devez donner à votre compte Purview l’autorisation d’analyser la base 
 
 ##### <a name="creating-a-new-service-principal"></a>Création d’un principal de service
 
-Si vous avez besoin de [Créer un principal de service](./create-service-principal-azure.md), vous devez inscrire une application dans votre locataire Azure AD et fournir l’accès au principal de service dans vos sources de données. Votre administrateur général Azure AD ou d’autres rôles, comme l’administrateur d’application, peuvent effectuer cette opération.
+Si vous avez besoin de [Créer un principal de service](./create-service-principal-azure.md), vous devez inscrire une application dans votre locataire Azure AD et fournir l’accès au principal de service dans vos sources de données. Votre Administrateur général Azure AD ou d’autres rôles, comme l’Administrateur d’application, peuvent effectuer cette opération.
 
 ##### <a name="getting-the-service-principals-application-id"></a>Obtention de l’ID d’application du principal de service
 

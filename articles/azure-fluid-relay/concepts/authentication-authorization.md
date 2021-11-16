@@ -8,12 +8,12 @@ ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
 fluid.url: https://fluidframework.com/docs/build/auth/
-ms.openlocfilehash: fc3e55a91af1e7691d1d2677435c283914521dfe
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e2f24c5455548980318c4536b5c65f84ea6a7dfb
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661886"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893820"
 ---
 # <a name="authentication-and-authorization-in-your-app"></a>Authentification et autorisation dans votre application
 
@@ -63,6 +63,26 @@ Bien que les détails de l’authentification diffèrent entre les services Flui
   "ver": "1.0"
 }.[Signature]
 ```
+
+Le mode de l’utilisateur indique si la connexion est en mode lecture ou lecture/écriture. Vous pouvez voir cela dans le champ `connections` dans `AzureAudience`. Les autorisations d’étendue de jeton peuvent être mises à jour dans votre fonction Azure sans serveur sous la fonction `generateToken`.
+
+```ts
+const token = generateToken(
+  tenantId,
+  documentId,
+  key,
+  scopes ?? [ "Token Scope" ],
+  user
+);
+```
+
+Les étendues de jeton, ainsi que le comportement et les modes de conteneur sont les suivants :
+
+| Étendue de jeton | Comportement de mon document | Comportement du document d’audience | 
+|-------------|----------------------|----------------------------|
+| DocRead     | Lecture et écriture du document. Les modifications apportées au document ne sont reflétées dans aucun autre document d’audience. <br /> Mode : lecture | Lecture et écriture de document. Les modifications ne sont reflétées dans aucun autre document d’audience. <br /> Mode : écriture | 
+| DocWrite    | Lecture et écriture du document. Les modifications apportées sont reflétées dans tous les autres document d’audience. <br />Mode : écriture | Lecture et écriture du document. Les modifications apportées sont reflétées dans tous les autres document d’audience. <br />Mode : écriture |
+| DocRead, DocWrite | Lecture et écriture du document. Les modifications apportées sont reflétées dans tous les autres document d’audience. <br />Mode : écriture | Lecture et écriture du document. Les modifications apportées sont reflétées dans tous les autres document d’audience. <br />Mode : écriture |
 
 > [!NOTE]
 > Notez que le jeton comprend également des informations sur l’utilisateur (voir les lignes 7 à 9 ci-dessus). Vous pouvez l’utiliser pour augmenter les informations utilisateur qui sont automatiquement disponibles pour le code Fluid à l’aide de la fonctionnalité [audience](../how-tos/connect-fluid-azure-service.md#getting-audience-details). Pour plus d’informations, consultez [Ajout de données personnalisées à des jetons](../how-tos/connect-fluid-azure-service.md#adding-custom-data-to-tokens).

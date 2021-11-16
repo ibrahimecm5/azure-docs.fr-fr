@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 09/01/2021
-ms.openlocfilehash: 52447010cb43cbe088fdaa71e8ee3f0043b64dbc
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: a4ac4425a3eeba6dafcaf11eb4c73f900c8fa04d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469938"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842764"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Tutoriel : Créer une application d’analytique vidéo pour la détection d’objets et de mouvements dans Azure IoT Central (OpenVINO&trade;)
 
@@ -116,13 +116,13 @@ Ce tutoriel configure votre solution de sorte qu’elle utilise le module OpenVI
 
 [!INCLUDE [iot-central-video-analytics-part3](../../../includes/iot-central-video-analytics-part3.md)]
 
-### <a name="replace-the-manifest"></a>Remplacer le manifeste
+### <a name="edit-the-manifest"></a>Modifier le manifeste
 
-Dans la page **LVA Edge Gateway v2**, sélectionnez **+ Remplacer le manifeste**.
+Dans la page **LVA Edge Gateway v2**, sélectionnez **Edit manifest** (Modifier le manifeste).
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="Remplacer le manifeste":::
 
-Accédez au dossier *lva-configuration* et sélectionnez le fichier manifeste *deployment.openvino.amd64.json* modifié précédemment. Sélectionnez **Télécharger**. Une fois la validation terminée, sélectionnez **Remplacer**.
+Choisissez de **le remplacer par un nouveau fichier**, accédez au dossier *lva-configuration* et sélectionnez le fichier manifeste *deployment.openvino.amd64.json* précédemment modifié, puis sélectionnez **Enregistrer**.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
 

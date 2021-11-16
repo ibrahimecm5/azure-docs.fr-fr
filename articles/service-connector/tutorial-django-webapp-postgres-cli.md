@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2021
 zone_pivot_groups: postgres-server-options
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 24c6d2cee0748d342c0d8d797d4a07692f6da9db
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f2a3307cfea56d18cbbe0186cd3c927fafdd4074
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131444911"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853030"
 ---
 # <a name="tutorial-using-service-connector-preview-to-build-a-django-app-with-postgres-on-azure-app-service"></a>Tutoriel : Utilisation de Service Connector (préversion) pour créer une application Django avec Postgres dans Azure App Service
 
@@ -58,7 +58,7 @@ Ce tutoriel explique comment utiliser Azure CLI pour effectuer les tâches suiva
 
 1. Vous devez disposer d’un compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. Installez <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 ou une version ultérieure</a>.
-1. Installez l’interface <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 ou version ultérieure, avec laquelle vous exécutez des commandes dans n’importe quel interpréteur de commandes pour provisionner et configurer des ressources Azure.
+1. Installez <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.30.0 ou ultérieur, avec lequel vous exécutez des commandes dans n’importe quel shell pour provisionner et configurer des ressources Azure.
 
 Ouvrez une fenêtre de terminal et vérifiez que la version de Python est bien la version 3.6 ou une version ultérieure :
 
@@ -82,13 +82,13 @@ py -3 --version
 
 ---
 
-Vérifiez également que votre version d’Azure CLI est la version 2.18.0 ou ultérieure :
+Vérifiez que votre version d’Azure CLI est 2.30.0 ou ultérieure :
 
 ```azurecli
 az --version
 ```
 
-Si vous devez effectuer une mise à niveau, essayez la commande `az upgrade` (nécessite la version 2.11+) ou consultez <a href="/cli/azure/install-azure-cli" target="_blank">Installer Azure CLI</a>.
+Si vous devez effectuer une mise à niveau, essayez la commande `az upgrade` (nécessite la version 2.30.0+) ou consultez <a href="/cli/azure/install-azure-cli" target="_blank">Installer Azure CLI</a>.
 
 Connectez-vous ensuite à Azure par le biais de l’interface CLI :
 

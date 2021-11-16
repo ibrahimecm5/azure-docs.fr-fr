@@ -2,13 +2,16 @@
 title: Sauvegarder des partages de fichiers Azure dans le portail Azure
 description: Découvrir comment utiliser le portail Azure pour sauvegarder des partages de fichiers Azure sauvegardés dans le coffre Recovery Services
 ms.topic: conceptual
-ms.date: 10/08/2021
-ms.openlocfilehash: 8e50cee7e177375fae41ef6fb3a27f871427342c
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/03/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 46068722385e9cf89c5c85d37a72a0528479ab8a
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714405"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131849727"
 ---
 # <a name="back-up-azure-file-shares"></a>Sauvegarder des partages de fichiers Azure
 
@@ -31,48 +34,36 @@ Dans cet article, vous allez apprendre à :
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>Configurer la sauvegarde à partir du coffre Recovery Services
 
-Les étapes suivantes expliquent comment configurer la sauvegarde de plusieurs partages de fichiers à partir du volet Coffre Recovery Services :
+Pour configurer la sauvegarde de plusieurs partages de fichiers à partir du volet du coffre Recovery Services, procédez comme suit :
 
-1. Dans le [Portail Azure](https://portal.azure.com/), ouvrez le coffre Recovery Services que vous souhaitez utiliser pour configurer la sauvegarde de votre partage de fichiers.
+1. Sur le [portail Azure](https://portal.azure.com/), accédez à **Centre de sauvegarde**, puis cliquez sur **+Sauvegarde**.
 
-1. Dans le volet **Coffre Recovery Services**, sélectionnez **+Sauvegarde** dans le menu situé en haut.
+   :::image type="content" source="./media/backup-afs/backup-center-configure-inline.png" alt-text="Capture d’écran montrant la configuration de la Sauvegarde pour Azure Files." lightbox="./media/backup-afs/backup-center-configure-expanded.png":::
 
-   ![Coffre Recovery Services](./media/backup-afs/recovery-services-vault.png)
+1. Sélectionnez **Azure Files (Stockage Azure)** comme type de source de données, choisissez le coffre à l’aide duquel vous souhaitez protéger le partage de fichiers, puis cliquez sur **Continuer**.
 
-    1. Dans le volet **Objectif de sauvegarde**, définissez **Où s'exécute votre charge de travail ?** sur **Azure** en sélectionnant l’option **Azure** dans la liste déroulante.
+   :::image type="content" source="./media/backup-afs/azure-file-share-select-vault.png" alt-text="Capture d’écran montrant la sélection d’Azure Files.":::
 
-          ![Choisir Azure en tant que charge de travail](./media/backup-afs/backup-goal.png)
+1. Cliquez sur **Sélectionner** pour sélectionner le compte de stockage contenant le partage de fichiers à sauvegarder.
 
-    2. Dans **Que souhaitez-vous sauvegarder ?** , sélectionnez **Partage de fichiers Azure** à partir de la liste déroulante.
+   Le volet **Sélectionner un compte de stockage** qui s’ouvre à droite répertorie l’ensemble de comptes de stockage pris en charge qui ont été détectés. Ceux-ci sont associés à ce coffre ou présents dans la même région que le coffre, mais pas encore associés à un coffre Recovery Services.
 
-          ![Sélectionner Azure FileShare](./media/backup-afs/select-azure-file-share.png)
-
-    3. Sélectionnez **Sauvegarde** pour inscrire l’extension de partage de fichiers Azure dans le coffre.
-
-          ![Sélectionnez Sauvegarde pour associer le partage de fichiers Azure au coffre](./media/backup-afs/register-extension.png)
-
-1. Une fois que vous avez sélectionné **Sauvegarde**, le volet **Sauvegarde** s’ouvre. Pour sélectionner le compte de stockage hébergeant le partage de fichiers que vous souhaitez protéger, sélectionnez le texte du lien **Sélectionner** en dessous de la zone de texte **Compte de stockage**.
-
-   ![Choisir le lien Sélectionner](./media/backup-afs/choose-select-link.png)
-
-1. Le volet **Sélectionner un compte de stockage** qui s’ouvre à droite répertorie l’ensemble de comptes de stockage pris en charge qui ont été détectés. Ceux-ci sont associés à ce coffre ou présents dans la même région que le coffre, mais pas encore associés à un coffre Recovery Services.
+   :::image type="content" source="./media/backup-afs/azure-file-share-select-storage-account-inline.png" alt-text="Capture d’écran montrant la sélection d’un compte de stockage." lightbox="./media/backup-afs/azure-file-share-select-storage-account-expanded.png":::
 
 1. Dans la liste des comptes de stockage détectés, sélectionnez un compte, puis **OK**.
 
-   ![Sélectionner parmi les comptes de stockage détectés](./media/backup-afs/select-discovered-storage-account.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-confirm-storage-account-inline.png" alt-text="Capture d’écran montrant la sélection de l’un des comptes de stockage découverts." lightbox="./media/backup-afs/azure-file-share-confirm-storage-account-expanded.png":::
    
    >[!NOTE]
-   > Si un compte de stockage est présent dans une région différente de celle du coffre, il ne figurera pas dans la liste des comptes de stockage détectés.
+   >Si un compte de stockage est présent dans une région différente de celle du coffre, il ne figurera pas dans la liste des comptes de stockage détectés.
 
 1. L’étape suivante consiste à sélectionner les partages de fichiers que vous souhaitez sauvegarder. Sélectionnez le bouton **Ajouter** dans la section **Partages de fichiers à sauvegarder**.
 
-   ![Sélectionner le partage de fichiers à sauvegarder](./media/backup-afs/select-file-shares-to-back-up.png)
+   :::image type="content" source="./media/backup-afs/azure-select-file-share-inline.png" alt-text="Capture d’écran montrant la sélection des partages de fichiers à sauvegarder." lightbox="./media/backup-afs/azure-select-file-share-expanded.png":::
 
 1. Le volet contextuel **Sélectionner les partages de fichiers** s’ouvre à droite. Azure recherche dans le compte de stockage les partages de fichiers qui peuvent être sauvegardés. Si vous avez récemment ajouté vos partages de fichiers et ne les voyez pas dans la liste, patientez un peu jusqu’à ce qu’ils s’affichent.
 
 1. Dans la liste **Sélectionner les partages de fichiers**, sélectionnez un ou plusieurs partages de fichiers à sauvegarder. Sélectionnez **OK**.
-
-   ![Sélectionner les partages de fichiers](./media/backup-afs/select-file-shares.png)
 
 1. Pour choisir une stratégie de sauvegarde pour votre partage de fichiers, vous avez trois options :
 
@@ -83,13 +74,13 @@ Les étapes suivantes expliquent comment configurer la sauvegarde de plusieurs p
 
       1. Pour créer une stratégie de sauvegarde pour votre partage de fichiers, sélectionnez le texte du lien en dessous de la liste déroulante dans la section **Stratégie de sauvegarde**.<br>
 
-         ![Créez une stratégie.](./media/backup-afs/create-new-policy.png)
+         :::image type="content" source="./media/backup-afs/azure-file-share-edit-policy-inline.png" alt-text="Capture d’écran montrant la création d’une stratégie." lightbox="./media/backup-afs/azure-file-share-edit-policy-expanded.png":::
 
       1. Effectuez les étapes 3-7 de la section [Créer une stratégie](manage-afs-backup.md#create-a-new-policy).
 
       1. Après avoir défini tous les attributs de la stratégie, cliquez sur **OK**.
 
-         ![Fournir les valeurs de noms de stratégie et de rétention](./media/backup-afs/policy-name.png)
+         :::image type="content" source="./media/backup-afs/azure-file-share-policy-parameters-inline.png" alt-text="Capture d’écran montrant la fourniture d’un nom de stratégie et de valeurs de rétention." lightbox="./media/backup-afs/azure-file-share-policy-parameters-expanded.png":::
 
    * Choisir l’une des stratégies de sauvegarde existantes <br>
 
@@ -169,31 +160,29 @@ Les étapes suivantes expliquent comment configurer la sauvegarde de partages de
 
 Vous pouvez occasionnellement générer un instantané de sauvegarde ou un point de récupération en dehors des heures planifiées dans la stratégie de sauvegarde. Souvent que la génération d'une sauvegarde à la demande intervient immédiatement après que vous avez configuré la stratégie de sauvegarde. Selon la planification définie dans la stratégie de sauvegarde, des heures ou des jours peuvent s’écouler avant la prise d’un instantané. Pour protéger vos données en attendant que la stratégie de sauvegarde génère un instantané, effectuez une sauvegarde à la demande. La création d’une sauvegarde à la demande est souvent nécessaire avant d’apporter des modifications prévues à vos partages de fichiers.
 
-### <a name="from-the-recovery-services-vault"></a>À partir du coffre Recovery Services
+### <a name="from-backup-center"></a>À partir du Centre de sauvegarde
 
-1. Ouvrez le coffre de Recovery Services que vous avez utilisé pour sauvegarder votre partage de fichiers. Dans le volet **Vue d’ensemble**, dans la section **Éléments protégés**, sélectionnez **Éléments de sauvegarde**.
+1. Accédez au **Centre de sauvegarde**, puis, dans le menu, cliquez sur **Instances de sauvegarde**.
 
-   ![Sélectionner les éléments de sauvegarde](./media/backup-afs/backup-items.png)
+   Filtrez sur **Azure Files (Stockage Azure)** en tant que type de source de données.
 
-1. Une fois les **Éléments de sauvegarde** sélectionnés, un nouveau volet répertoriant tous les **Types de gestion des sauvegardes** apparaît en regard du volet **Vue d’ensemble**.
+   :::image type="content" source="./media/backup-afs/azure-file-share-backup-instances-inline.png" alt-text="Capture d’écran montrant la sélection d’Instances de sauvegarde." lightbox="./media/backup-afs/azure-file-share-backup-instances-expanded.png":::
 
-   ![Liste des types de gestion des sauvegardes](./media/backup-afs/backup-management-types.png)
+1. Sélectionnez l’élément pour lequel vous souhaitez exécuter un travail de sauvegarde à la demande.
 
-1. Dans la liste **Type de gestion de sauvegarde**, sélectionnez **Stockage Azure (Azure Files)** . Vous voyez s’afficher une liste de tous les partages de fichiers et des comptes de stockage correspondants sauvegardés à l’aide de ce coffre.
+1. Dans le menu **Élément de sauvegarde**, sélectionnez **Sauvegarder maintenant**. Comme il s’agit d’un travail de sauvegarde à la demande, aucune stratégie de rétention n’est associée au point de récupération.
 
-   ![Éléments de sauvegarde Stockage Azure (Azure Files)](./media/backup-afs/azure-files-backup-items.png)
-
-1. Dans la liste des partages de fichiers Azure, sélectionnez le partage de fichiers de votre choix. Les détails associés à **Élément de sauvegarde** s’affichent. Dans le menu **Élément de sauvegarde**, sélectionnez **Sauvegarder maintenant**. Comme il s’agit d’un travail de sauvegarde à la demande, aucune stratégie de rétention n’est associée au point de récupération.
-
-   ![Sélectionner Sauvegarder maintenant](./media/backup-afs/backup-now.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-backup-now-inline.png" alt-text="Capture d’écran montrant la sélection de l’option Sauvegarder maintenant." lightbox="./media/backup-afs/azure-file-share-backup-now-expanded.png":::
 
 1. Le volet **Sauvegarder maintenant** s’ouvre. Spécifiez le dernier jour que vous souhaitez conserver dans le point de récupération. La conservation maximale d'une sauvegarde à la demande est de 10 ans.
 
-   ![Choisissez la date de conservation](./media/backup-afs/retention-date.png)
+   :::image type="content" source="./media/backup-afs/azure-file-share-on-demand-backup-retention.png" alt-text="Capture d’écran montrant le choix de la date de rétention.":::
 
 1. Cliquez sur **OK** pour confirmer l’exécution du travail de sauvegarde à la demande.
 
-1. Surveillez les notifications du portail pour conserver une trace de la bonne exécution des tâches de sauvegarde. Vous pouvez surveiller la progression du travail dans le tableau de bord du coffre. Sélectionnez **Travaux de sauvegarde** > **En cours**.
+1. Surveillez les notifications du portail pour conserver une trace de la bonne exécution des tâches de sauvegarde.
+
+   Pour surveiller la progression du travail dans le tableau de bord du **Centre de sauvegarde**, sélectionnez **Centre de sauvegarde** -> **Travaux de sauvegarde** -> **En cours**.
 
 ### <a name="from-the-file-share-pane"></a>À partir du volet de partage de fichiers
 

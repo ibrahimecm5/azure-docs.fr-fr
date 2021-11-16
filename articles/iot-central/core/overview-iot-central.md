@@ -3,17 +3,17 @@ title: Qu’est-ce que Azure IoT Central | Microsoft Docs
 description: Azure IoT Central est une plateforme IoT qui simplifie la création de vos solutions IoT et contribue à réduire la charge et le coût liés à la gestion, aux opérations et au développement IoT. Cet article donne une vue d’ensemble des fonctionnalités de Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/19/2021
+ms.date: 11/05/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc, contperf-fy21q2, contperf-fy22q1
-ms.openlocfilehash: 98de0994e430ccf8bc3ab5026e9ef739c603368a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: mvc, contperf-fy21q2, contperf-fy22q1, contperf-fy22q2
+ms.openlocfilehash: 2362bfae3d06a217b24f2297ea00ac6a7e3732c5
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024274"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866693"
 ---
 # <a name="what-is-azure-iot-central"></a>Qu’est-ce que Azure IoT Central
 
@@ -23,25 +23,16 @@ L’interface utilisateur web vous permet de connecter rapidement des appareils,
 
 Cet article décrit, en ce qui concerne IoT Central :
 
-- Les rôles d'utilisateur types associés à un projet.
 - La procédure de création de votre application.
 - Comment connecter vos appareils à votre application.
 - Comment intégrer votre application avec d’autres services.
 - Guide pratique pour administrer votre application.
+- Les rôles d'utilisateur types associés à un projet.
 - Options de tarification.
-
-## <a name="user-roles"></a>Rôles d'utilisateur
-
-La documentation IoT Central fait référence à quatre rôles d'utilisateur qui interagissent avec une application IoT Central :
-
-- Un _générateur de solutions_ est responsable de la [création d’une d’application](quick-deploy-iot-central.md), de la [configuration des règles et des actions](quick-configure-rules.md), de la [définition des intégrations à d’autres services](quick-export-data.md) et de la personnalisation de l’application pour les opérateurs et les développeurs d’appareils.
-- Un _opérateur_ [gère les appareils](howto-manage-devices-individually.md) connectés à l’application.
-- Un _administrateur_ est responsable des tâches d’administration comme la gestion des [rôles et autorisations d’utilisateur](howto-administer.md) dans l’application et la [configuration des identités managées](howto-manage-iot-central-from-portal.md#configure-a-managed-identity) pour la sécurisation des connexions à d’autres services.
-- Un _développeur d’appareil_ [crée le code qui s’exécute sur un appareil](concepts-telemetry-properties-commands.md) ou un [module IoT Edge](concepts-iot-edge.md) connecté à votre application.
 
 ## <a name="create-your-iot-central-application"></a>Créer votre application IoT Central
 
-Vous pouvez déployer rapidement une nouvelle application IoT Central, puis la personnaliser selon vos propres besoins. Commencez avec un _modèle d’application_ générique ou avec l’un des modèles d’application propre à un secteur d’activité :
+[Déployez rapidement une nouvelle application IoT Central](quick-deploy-iot-central.md), puis personnalisez-la selon vos besoins. Commencez avec un _modèle d’application_ générique ou avec l’un des modèles d’application propre à un secteur d’activité :
 
 - [Retail](../retail/overview-iot-central-retail.md) (Commerce)
 - [Énergie](../energy/overview-iot-central-energy.md)
@@ -80,7 +71,7 @@ Plusieurs choix s’offrent à vous pour créer des modèles d’appareil :
 
 ### <a name="customize-the-ui"></a>Personnaliser l’interface utilisateur
 
-Vous pouvez également personnaliser l’interface utilisateur de l’application IoT Central pour les opérateurs responsables de l’utilisation quotidienne de l’application. Les personnalisations que vous pouvez effectuer sont les suivantes :
+Personnalisez l’interface utilisateur de l’application IoT Central pour les opérateurs responsables de l’utilisation quotidienne de l’application. Les personnalisations que vous pouvez effectuer sont les suivantes :
 
 - La configuration de tableaux de bord personnalisés permettant aux opérateurs de découvrir des insights et de résoudre les problèmes plus rapidement.
 - La configuration d’analytiques personnalisés pour explorer des données de série chronologiques à partir de vos appareils connectés.
@@ -88,7 +79,7 @@ Vous pouvez également personnaliser l’interface utilisateur de l’applicatio
 
 ## <a name="manage-your-devices"></a>Gestion de vos appareils
 
-En tant qu’opérateur, vous utilisez l’application IoT Central pour [gérer les appareils](howto-manage-devices-individually.md) dans votre solution IoT Central. Les opérateurs effectuent des tâches telles que :
+Utilisez l’application IoT Central pour [gérer les appareils](howto-manage-devices-individually.md) dans votre solution IoT Central. Les opérateurs effectuent des tâches telles que :
 
 - Surveiller les appareils connectés à l’application.
 - La résolution et la correction des problèmes avec des appareils.
@@ -136,6 +127,15 @@ Vous pouvez créer une application IoT Central dans le cadre d’un essai gratui
 
 - Les applications que vous créez à partir d’un plan *gratuit* sont gratuites pendant sept jours et prennent en charge jusqu’à cinq appareils. Vous pouvez les convertir de sorte qu’elles utilisent un plan tarifaire standard à tout moment avant leur expiration.
 - Les applications que vous créez dans le cadre d’un plan *standard* sont facturées par appareil ; vous pouvez choisir un plan tarifaire **Standard 0**, **Standard 1** ou **Standard 2**, les deux premiers appareils étant gratuits. Apprenez-en davantage sur les [tarifs d’IoT Central](https://aka.ms/iotcentral-pricing).
+
+## <a name="user-roles"></a>Rôles d'utilisateur
+
+La documentation IoT Central fait référence à quatre rôles d'utilisateur qui interagissent avec une application IoT Central :
+
+- Un _générateur de solutions_ est responsable de la [création d’une d’application](quick-deploy-iot-central.md), de la [configuration des règles et des actions](quick-configure-rules.md), de la [définition des intégrations à d’autres services](quick-export-data.md) et de la personnalisation de l’application pour les opérateurs et les développeurs d’appareils.
+- Un _opérateur_ [gère les appareils](howto-manage-devices-individually.md) connectés à l’application.
+- Un _administrateur_ est responsable des tâches d’administration comme la gestion des [rôles et autorisations d’utilisateur](howto-administer.md) dans l’application et la [configuration des identités managées](howto-manage-iot-central-from-portal.md#configure-a-managed-identity) pour la sécurisation des connexions à d’autres services.
+- Un _développeur d’appareil_ [crée le code qui s’exécute sur un appareil](concepts-telemetry-properties-commands.md) ou un [module IoT Edge](concepts-iot-edge.md) connecté à votre application.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

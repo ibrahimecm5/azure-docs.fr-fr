@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 99cee6b73fb37caf0ccf09170d60ea4ba3effc2a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 30c96f2d7b679b0032a2b8c406cc6c210c143a11
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714188"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062167"
 ---
 # <a name="azure-bastion-faq"></a>FAQ sur Azure Bastion
 
@@ -24,7 +24,7 @@ Non. Quand vous vous connectez à une machine virtuelle avec Azure Bastion, vous
 
 ### <a name="is-ipv6-supported"></a>IPv6 est-il pris en charge ?
 
-IPv6 n’est actuellement pas pris en charge. Azure Bastion prend en charge IPv4 uniquement.
+IPv6 n’est actuellement pas pris en charge. Azure Bastion prend en charge IPv4 uniquement. Cela signifie que vous pouvez uniquement attribuer une IP publique IPv4 à votre ressource Bastion, et que vous pouvez utiliser votre Bastion pour vous connecter à des machines virtuelles cibles IPv4. Vous pouvez également utiliser votre Bastion pour vous connecter à des machines virtuelles cibles à double pile, mais vous ne pourrez envoyer et recevoir que du trafic IPv4 via Azure Bastion. 
 
 ### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Puis-je utiliser Azure Bastion avec Azure Private DNS Zones ?
 
@@ -46,7 +46,7 @@ Non. Vous n’avez pas besoin d’installer un agent ou un logiciel sur votre na
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Quelles sont les fonctionnalités prises en charge dans une session RDP ?
 
-À l’heure actuelle, seul le copier-coller de texte est pris en charge. Les fonctionnalités telles que la copie de fichiers ne sont pas prises en charge. N’hésitez pas à nous faire part de vos commentaires sur les nouvelles fonctionnalités dans la [page des commentaires Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
+À l’heure actuelle, seul le copier-coller de texte est pris en charge. Les fonctionnalités telles que la copie de fichiers ne sont pas prises en charge. N’hésitez pas à nous faire part de vos commentaires sur les nouvelles fonctionnalités dans la [page des commentaires Azure Bastion](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=c109f019-8326-ec11-b6e6-000d3a4f0789).
 
 ### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Le durcissement Bastion fonctionne-t-il avec des machines virtuelles jointes à l’extension de machine virtuelle AADJ ?
 
@@ -71,7 +71,7 @@ Pour établir une connexion, les rôles suivants sont nécessaires :
 * Rôle de lecteur sur la machine virtuelle.
 * Rôle de lecteur sur la carte réseau avec adresse IP privée de la machine virtuelle.
 * Rôle de lecteur sur la ressource Azure Bastion.
-* Rôle de lecteur sur le réseau virtuel (inutile s’il n’y a pas de réseau virtuel appairé).
+* Rôle de lecteur sur le réseau virtuel de la machine virtuelle cible (dans le cas où le bastion se trouve dans un réseau virtuel homologue).
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Est-ce qu’Azure Bastion nécessite une licence d’accès client aux services Bureau à distance à des fins d’administration sur les machines virtuelles hébergées par Azure ?
 
@@ -96,7 +96,7 @@ Azure Bastion prend actuellement en charge les dispositions de clavier suivantes
 * sv-se-qwerty
 * tr-tr-qwerty
 
-La disposition de clavier par défaut de la machine virtuelle cible correspond à votre langue locale, qui peut être modifiée dans les paramètres de votre ordinateur local.
+Pour établir la bonne correspondance des touches pour votre langue cible, vous devez définir la langue de votre ordinateur local ou la langue de la machine virtuelle cible sur Anglais (États-Unis). Autrement dit, la langue locale de votre ordinateur doit être réglée sur l’anglais (États-Unis) tandis que la langue cible de votre machine virtuelle est réglée sur votre langue cible, ou vice versa. Vous pouvez ajouter la langue anglaise (États-Unis) à votre machine dans les paramètres de votre ordinateur.
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Azure Bastion prend-il en charge la configuration du fuseau horaire ou la redirection des fuseaux horaires pour les machines virtuelles cibles ?
 

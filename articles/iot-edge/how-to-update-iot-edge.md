@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1899da83ff4e963c6fecf371f6d888b5bb120e7a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 90a03b86e54c214fb5dd17f11ea01247b7b77e9b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070467"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057210"
 ---
 # <a name="update-iot-edge"></a>Mettre à jour IoT Edge
 
@@ -138,6 +138,19 @@ Si vous souhaitez effectuer une mise à jour vers la version la plus récente d�
 >Si vous mettez à jour un appareil de la préversion publique d’IoT Edge pour Linux sur Windows vers la version en disponibilité générale, vous devez désinstaller et réinstaller Azure IoT Edge.
 >
 >Pour savoir si vous utilisez actuellement la préversion publique, accédez à **Paramètres** > **Applications** sur votre appareil Windows. Recherchez **Azure IoT Edge** dans la liste des applications et des fonctionnalités. Si la version indiquée est 1.0.x, vous exécutez la préversion publique. Désinstallez l’application, puis [installez et provisionnez IoT Edge pour Linux sur Windows](how-to-provision-single-device-linux-on-windows-symmetric.md). Si la version indiquée est 1.1.x, vous exécutez la version en disponibilité générale et vous pouvez recevoir des mises à jour par le biais de Microsoft Update.
+
+>[!IMPORTANT]
+>Si vous mettez à jour un appareil Windows Server de référence SKU antérieure à la version 1.1.2110.03111 de IoT Edge pour Linux sur Windows vers la dernière version disponible, vous devez opérer une migration manuelle.
+>
+>La mise à jour [1.1.2110.0311](https://github.com/Azure/iotedge-eflow/releases/tag/1.1.2110.03111) a introduit une modification de la technologie de machine virtuelle (de HCS en VMMS) utilisée pour les déploiements EFLOW de Windows Server. Vous pouvez opérer la migration de machine virtuelle en procédant comme suit :
+> 1. À l’aide de Microsoft Update, téléchargez et installez la mise à jour 1.1.2110.03111 (comme n’importe quelle autre mise à jour EFLOW, vous n’avez pas besoin d’étapes manuelles tant que les mises à jour EFLOW sont activées).
+> 2. Une fois la mise à jour EFLOW terminée, ouvrez une session PowerShell avec des privilèges élevés.
+> 3. Exécutez le script de migration :
+>  ```powershell
+>   Migrate-EflowVmFromHcsToVmms
+>   ```
+>
+> Remarque : les nouvelles installations EFLOW de msi 1.1.2110.0311 sur des références SKU de Windows Server entraînant des déploiements EFLOW utilisant la technologie VMMS, aucune migration n’est nécessaire.
 
 Avec IoT Edge pour Linux sur Windows, IoT Edge s’exécute sur une machine virtuelle Linux hébergée sur un appareil Windows. Cette machine virtuelle est préinstallée avec IoT Edge, et vous ne pouvez pas mettre à jour ou modifier manuellement les composants IoT Edge. Au lieu de cela, la machine virtuelle est managée avec Microsoft Update pour maintenir automatiquement à jour les composants.
 

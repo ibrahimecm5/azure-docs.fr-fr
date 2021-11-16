@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 509709b26a51a4202736fcab7e032ec8f91419eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832604"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851132"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Tutoriel : Surveiller et gérer une application d’analytique vidéo pour la détection d’objet et de mouvement
 
@@ -52,6 +52,22 @@ Sélectionnez **Exécuter** pour ajouter la caméra :
 
 > [!NOTE]
 > Le modèle d’appareil **LVA Edge Object Detector** (détecteur d’objet périphérique d’analytique vidéo en direct) existe déjà dans l’application.
+
+Si l’appareil ne parvient pas à se connecter, vérifiez l’état des modules sur celui-ci :
+
+* Utilisez SSH pour ouvrir un interpréteur de commandes sur l’appareil.
+* Exécutez la commande suivante dans l’interpréteur de commandes :
+
+    `sudo iotedge list`
+
+Si les modules s’exécutent correctement, une sortie semblable à la suivante doit s’afficher :
+
+```
+    LvaEdgeGatewayModule                      running          Up 2 minutes     mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64
+    lvaEdge                                   running          Up 2 minutes     mcr.microsoft.com/media/live-video-analytics:2
+```
+
+Pour plus d’informations, consultez [Résoudre les problèmes de votre appareil IoT Edge](../../iot-edge/troubleshoot.md).
 
 ## <a name="add-a-motion-detection-camera-optional"></a>Ajouter une caméra de détection de mouvement (facultatif)
 

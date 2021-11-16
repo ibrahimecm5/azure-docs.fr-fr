@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 09/23/2021
-ms.openlocfilehash: a501b564fcf8d9780c6398a5abd8bae49c10811f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 11/5/2021
+ms.openlocfilehash: ce039347c2fe06f061aecc4a01cd05e92c43ae74
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163545"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893175"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Utiliser des réplicas en lecture seule pour décharger des charges de travail de requêtes en lecture seule
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Dans le cadre d’une [architecture à haute disponibilité](high-availability-s
 
 La fonctionnalité *Échelle horizontale en lecture* est également disponible au niveau de service Hyperscale lorsqu'au moins un [réplica secondaire](service-tier-hyperscale-replicas.md) est créé. Les [réplicas nommées](service-tier-hyperscale-replicas.md#named-replica-in-preview) secondaires hyperscale offrent une mise à l'échelle indépendante, l'isolation de l'accès, l'isolation de la charge de travail, l'extension massive de la lecture et d'autres avantages. Plusieurs réplicas [HA secondaires](service-tier-hyperscale-replicas.md#high-availability-replica) peuvent être utilisés pour équilibrer les charges de travail en lecture seule qui nécessitent plus de ressources qu'il n'en existe sur un réplica secondaire. 
 
-L’architecture à haute disponibilité des niveaux de service De base, Standard et Usage général n’inclut pas de réplica. La fonctionnalité *Échelle horizontale en lecture* n'est pas disponible à ces niveaux de service.
+L’architecture à haute disponibilité des niveaux de service De base, Standard et Usage général n’inclut pas de réplica. La fonctionnalité *Échelle horizontale en lecture* n'est pas disponible à ces niveaux de service. Toutefois, les [géo-réplicas](active-geo-replication-overview.md) peuvent offrir des fonctionnalités similaires dans ces niveaux de service.
 
 Le diagramme suivant illustre la fonctionnalité de Premium et critique pour l’entreprise des bases de données et des instances managées.
 
@@ -198,6 +198,13 @@ De cette façon, la création d'une géo-réplique peut fournir plusieurs répli
 
 > [!NOTE]
 > Il n'y a pas de round-robin automatique ou tout autre routage équilibré en fonction de la charge entre les répliques d'une base de données secondaire géo-répliquée, à l'exception d'une géo-réplique Hyperscale avec plus d'une réplique HA. Dans ce cas, les sessions avec une intention de lecture seule sont distribuées sur toutes les répliques HA d'une géo-réplique.
+
+## <a name="feature-support-on-read-only-replicas"></a>Prise en charge des fonctionnalités sur les réplicas en lecture seule
+
+Voici la liste des comportements de certaines fonctionnalités sur les réplicas en lecture seule :
+* L’audit est activé automatiquement sur les réplicas en lecture seule. Pour plus d’informations sur la hiérarchie des dossiers de stockage, les conventions d’affectation de noms et le format des journaux, consultez [Format des journaux d’audit de SQL Database](audit-log-format.md).
+* [Query Performance Insight](query-performance-insight-use.md) s’appuie sur les données du [Magasin des requêtes](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store), qui à l’heure actuelle n’effectue pas le suivi de l’activité sur le réplica en lecture seule. Query Performance Insight n’affiche donc pas les requêtes qui s’exécutent sur le réplica en lecture seule.
+* Le réglage automatique s’appuie sur le Magasin des requêtes (cf. [document sur le réglage automatique](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)). Il ne fonctionne que pour les charges de travail qui s’exécutent sur le réplica principal.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

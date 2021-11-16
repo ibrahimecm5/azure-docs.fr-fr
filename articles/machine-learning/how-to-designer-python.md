@@ -7,23 +7,23 @@ ms.service: machine-learning
 ms.subservice: mldata
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer, devx-track-python
-ms.openlocfilehash: f1bb8918e270d8e3d2dc1321169743febc3ce6ed
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 7c944ddd07f549a4956d334fea809d80f02db337
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424307"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564876"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Exécuter du code Python dans le concepteur Azure Machine Learning
 
-Dans cet article, vous allez apprendre à utiliser le module [Exécuter le script Python](algorithm-module-reference/execute-python-script.md) pour ajouter une logique personnalisée au concepteur Azure Machine Learning. Dans la procédure suivante, vous utilisez la bibliothèque Pandas pour effectuer une ingénierie de fonctionnalité simple.
+Cet article explique comment utiliser le composant [Exécuter un script Python](algorithm-module-reference/execute-python-script.md) pour ajouter une logique personnalisée au concepteur Azure Machine Learning. Dans la procédure suivante, vous utilisez la bibliothèque Pandas pour effectuer une ingénierie de fonctionnalité simple.
 
 Vous pouvez utiliser l’éditeur de code intégré pour ajouter rapidement une logique Python simple. Si vous souhaitez ajouter du code plus complexe ou charger des bibliothèques Python supplémentaires, vous devez utiliser la méthode du fichier zip.
 
-L’environnement d’exécution par défaut utilise la distribution Anacondas de Python. Pour obtenir la liste complète des packages préinstallés, consultez la [page de référence du module Exécuter le script Python](algorithm-module-reference/execute-python-script.md).
+L’environnement d’exécution par défaut utilise la distribution Anacondas de Python. Pour connaître la liste complète des packages préinstallés, consultez la page [Informations de référence sur le composant Exécuter un script Python](algorithm-module-reference/execute-python-script.md).
 
 ![Mappage des entrées de l’exécution d’un script Python](media/how-to-designer-python/execute-python-map.png)
 
@@ -31,11 +31,11 @@ L’environnement d’exécution par défaut utilise la distribution Anacondas d
 
 ## <a name="execute-python-written-in-the-designer"></a>Exécuter Python écrit dans le concepteur
 
-### <a name="add-the-execute-python-script-module"></a>Ajouter le module Exécuter le script Python
+### <a name="add-the-execute-python-script-component"></a>Ajout du composant Exécuter un script Python
 
-1. Recherchez le module **Exécuter le script Python** dans la palette du concepteur. Il se trouve dans la section **Langage Python**.
+1. Recherchez le composant **Exécuter un script Python** dans la palette du concepteur. Il se trouve dans la section **Langage Python**.
 
-1. Glissez-déposez le module sur le canevas du pipeline.
+1. Glissez-déposez le composant sur le canevas du pipeline.
 
 ### <a name="connect-input-datasets"></a>Connecter des jeux de données d’entrée
 
@@ -43,7 +43,7 @@ Cet article utilise l’exemple de jeu de données **Automobile price data (Raw)
 
 1. Glissez-déposez votre jeu de données sur le canevas du pipeline.
 
-1. Connectez le port de sortie du jeu de données au port d’entrée situé en haut à gauche du module **Exécuter le script Python**. Le concepteur expose l’entrée en tant que paramètre au script de point d’entrée.
+1. Connectez le port de sortie du jeu de données au port d’entrée situé en haut à gauche du composant **Exécuter un script Python**. Le concepteur expose l’entrée en tant que paramètre au script de point d’entrée.
     
     Le port d’entrée de droite est réservé aux bibliothèques Python compressées.
 
@@ -52,7 +52,7 @@ Cet article utilise l’exemple de jeu de données **Automobile price data (Raw)
 
 1. Notez le port d’entrée que vous utilisez. Le concepteur attribue le port d’entrée de gauche à la variable `dataset1` et le port d’entrée intermédiaire à la variable `dataset2`. 
 
-Les modules d’entrée sont facultatifs, car vous pouvez générer ou importer des données directement dans le module **Exécuter le script Python**.
+Les composants d’entrée sont facultatifs, car il est possible de générer et d’importer des données directement dans le composant **Exécuter un script Python**.
 
 ### <a name="write-your-python-code"></a>Écrire votre code Python
 
@@ -60,7 +60,7 @@ Le concepteur fournit un script initial de point d’entrée que vous pouvez mod
 
 Dans cet exemple, vous utilisez Pandas pour combiner deux colonnes trouvées dans le jeu de données automobile, **Price** et **Horsepower**, pour créer une nouvelle colonne, **Dollars per horsepower**. Cette colonne représente le montant que vous payez pour chaque cheval-vapeur, ce qui peut être une fonctionnalité utile pour décider si une voiture est une bonne affaire d’un point de vue monétaire. 
 
-1. Sélectionnez le module **Exécuter le script Python**.
+1. Sélectionnez le composant **Exécuter un script Python**.
 
 1. Dans le volet qui s’affiche à droite du canevas, sélectionnez la zone de texte **Script Python**.
 
@@ -77,9 +77,9 @@ Dans cet exemple, vous utilisez Pandas pour combiner deux colonnes trouvées dan
     
     ![Pipeline Exécuter Python](media/how-to-designer-python/execute-python-pipeline.png)
 
-    Le script de point d’entrée doit contenir la fonction `azureml_main`. Il existe deux paramètres de fonction qui mappent aux deux ports d’entrée pour le module **Exécuter le script Python**.
+    Le script de point d’entrée doit contenir la fonction `azureml_main`. Il existe deux paramètres de fonction correspondant aux deux ports d’entrée du composant **Exécuter un script Python**.
 
-    La valeur renvoyée doit être une trame de données Pandas. Vous pouvez retourner jusqu’à deux trames de données comme sorties de module.
+    La valeur renvoyée doit être une trame de données Pandas. Il est possible de retourner jusqu’à deux trames de données en sortie du composant.
     
 1. Envoyez le pipeline.
 

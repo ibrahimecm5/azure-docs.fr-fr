@@ -4,13 +4,13 @@ description: Décrit les pratiques à suivre lors de la création de fichiers Bi
 author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: cea4adc3ed6843e9d07670cd2959e27311c2f22a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 65f55208f0a2e09db39cedc8e5074b622b232834
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131059715"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057667"
 ---
 # <a name="best-practices-for-bicep"></a>Meilleures pratiques en matière de fichiers Bicep
 
@@ -42,8 +42,6 @@ Pour plus d'informations sur les paramètres Bicep, consultez [Paramètres dans 
 
 ## <a name="variables"></a>Variables
 
-* Utilisez le lower camel case pour les noms de variables tels que `myVariableName`.
-
 * Lorsque vous définissez une variable, le [type de données](data-types.md) n'est pas nécessaire. Les variables déduisent le type à partir de la valeur de résolution.
 
 * Vous pouvez utiliser les fonctions Bicep pour créer une variable.
@@ -52,13 +50,29 @@ Pour plus d'informations sur les paramètres Bicep, consultez [Paramètres dans 
 
 Pour plus d'informations sur les variables Bicep, consultez [Variables dans Bicep](variables.md).
 
-## <a name="naming"></a>Dénomination
+## <a name="names"></a>Noms
+
+* Utilisez une casse mixte pour des noms de variables tels que `myVariableName` ou `myResource`.
 
 * La [fonction uniqueString()](bicep-functions-string.md#uniquestring) permet de créer des noms de ressources uniques à l'échelle mondiale. Lorsque vous fournissez les mêmes paramètres, elle renvoie la même chaîne à chaque fois. La transmission de l'ID du groupe de ressources signifie que la chaîne est la même pour tous les déploiements effectués dans le même groupe de ressources, mais qu'elle est différente lorsque vous effectuez des déploiements dans des groupes de ressources ou abonnements différents.
 
 * Parfois, la fonction `uniqueString()` crée des chaînes qui commencent par un chiffre. Certaines ressources Azure, comme les comptes de stockage, n’autorisent pas les noms qui commencent par un chiffre. Cette exigence signifie qu'il est judicieux d'utiliser l'interpolation de chaîne pour créer des noms de ressources. Vous pouvez ajouter un préfixe à la chaîne unique.
 
 * Il est souvent judicieux d’utiliser des expressions de modèle pour créer des noms de ressources. De nombreux types de ressources Azure ont des règles relatives aux caractères autorisés et à la longueur des noms. Le fait d’incorporer la création des noms de ressources dans le modèle signifie que les personnes utilisant le modèle n’ont pas besoin de suivre ces règles elles-mêmes.
+
+* Évitez d’utiliser `name` dans un nom symbolique. Le nom symbolique représente la ressource, pas le nom de la ressource. Par exemple, au lieu de ceci :
+
+  ```bicep
+  resource cosmosDBAccountName 'Microsoft.DocumentDB/databaseAccounts@2021-04-15' = {
+  ```
+
+  utilisez ceci :
+
+  ```bicep
+  resource cosmosDBAccount 'Microsoft.DocumentDB/databaseAccounts@2021-04-15' = {
+  ```
+
+* Évitez de faire la distinction entre les variables et les paramètres à l’aide de suffixes.
 
 ## <a name="resource-definitions"></a>Définitions de ressources
 
@@ -70,19 +84,21 @@ Pour plus d'informations sur les variables Bicep, consultez [Variables dans Bice
 
 * Dans la mesure du possible, évitez d’utiliser les fonctions [reference](./bicep-functions-resource.md#reference) et [resourceId](./bicep-functions-resource.md#resourceid) dans votre fichier Bicep. Vous pouvez accéder à n'importe quelle ressource Bicep en utilisant le nom symbolique. Par exemple, si vous définissez un compte de stockage dont le nom symbolique est toyDesignDocumentsStorageAccount, vous pouvez accéder à son ID de ressource en utilisant l'expression `toyDesignDocumentsStorageAccount.id`. En utilisant le nom symbolique, vous créez une dépendance implicite entre les ressources.
 
+* Préférez utiliser des dépendances implicites plutôt que des dépendances explicites. Bien que la propriété de ressource `dependsOn` vous permette de déclarer une dépendance explicite entre les ressources, il est généralement possible d’utiliser les propriétés de l’autre ressource à l’aide de son nom symbolique. Cela crée une dépendance implicite entre les deux ressources, et permet à Bicep de gérer la relation proprement dite.
+
 * Si la ressource n'est pas déployée dans le fichier Bicep, vous pouvez toujours obtenir une référence symbolique à la ressource à l'aide du mot clé `existing`.
 
 ## <a name="child-resources"></a>Ressources enfants
 
 * Évitez d'imbriquer trop de couches en profondeur. Une imbrication excessive rend votre code Bicep plus difficile à lire et à utiliser.
 
-* Mieux vaut éviter de créer des noms de ressources pour les ressources enfants. Vous perdez les avantages qu'offre Bicep lorsqu'il comprend les relations entre vos ressources. Utilisez plutôt la propriété `parent` ou l'imbrication.
+* Évitez de créer des noms de ressources pour les ressources enfants. Vous perdez les avantages qu'offre Bicep lorsqu'il comprend les relations entre vos ressources. Utilisez plutôt la propriété `parent` ou l'imbrication.
 
 ## <a name="outputs"></a>Sorties
 
 * Veillez à ne pas créer de sorties pour les données sensibles. Les valeurs de sortie sont accessibles à toute personne ayant accès à l’historique de déploiement. Elles ne sont pas appropriées pour gérer les secrets.
 
-* Au lieu de transmettre les valeurs des propriétés à travers des sorties, utilisez le mot clé `existing` pour rechercher les propriétés des ressources qui existent déjà. Une meilleure pratique consiste à rechercher des clés à partir d’autres ressources de cette manière plutôt que de les transmettre via des sorties. Vous obtiendrez toujours les données les plus actuelles.
+* Au lieu de transmettre les valeurs des propriétés à travers des sorties, utilisez le mot clé `[existing`(resource-declaration.md#existing-resources) pour rechercher les propriétés des ressources qui existent déjà. Une meilleure pratique consiste à rechercher des clés à partir d’autres ressources de cette manière plutôt que de les transmettre via des sorties. Vous obtiendrez toujours les données les plus actuelles.
 
 Pour plus d'informations sur les sorties Bicep, consultez [Sorties dans Bicep](outputs.md).
 

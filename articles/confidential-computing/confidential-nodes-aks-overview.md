@@ -6,15 +6,15 @@ author: agowdamsft
 ms.service: container-service
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 2/08/2021
+ms.date: 11/04/2021
 ms.author: amgowda
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e63e8d2caba6fe9ca5fa7b4a239f2194976dd569
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2c082d901bd2b48b9d220d9b1b373335b295b377
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086512"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845345"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Nœuds d’informatique confidentielle sur Azure Kubernetes Service
 
@@ -24,7 +24,7 @@ L’[informatique confidentielle Azure](overview.md) vous permet de protéger vo
 
 Azure Kubernetes Service (AKS) prend en charge l’ajout de [nœuds d’informatique confidentielle DCsv2](confidential-computing-enclaves.md) reposant sur la technologie Intel SGX. Ces nœuds vous permettent d’exécuter des charges de travail sensibles au sein d’un environnement d’exécution de confiance (environnement TEE) basé sur le matériel. L’environnement TEE permet au code utilisateur des conteneurs d’allouer des régions de mémoire privées pour exécuter directement le code avec le processeur. Ces régions de mémoire privées qui s’exécutent directement avec le processeur sont appelées enclaves. Les enclaves aident à protéger la confidentialité des données, l’intégrité des données et l’intégrité du code contre les autres processus en cours d’exécution sur les mêmes nœuds. De plus, le modèle d’exécution Intel SGX supprime les couches intermédiaires du système d’exploitation invité, du système d’exploitation hôte et de l’hyperviseur, réduisant ainsi la surface d’exposition aux attaques. Le modèle d’*exécution isolée par conteneur basée sur le matériel* dans un nœud permet aux applications de s’exécuter directement avec le processeur, tout en conservant le bloc spécial de mémoire chiffré par conteneur. Les nœuds d’informatique confidentielle avec des conteneurs confidentiels sont un excellent ajout à votre stratégie de conteneur avec défense en profondeur et de planification d’une sécurité Confiance Zéro.
 
-![vue d’ensemble d’un nœud SGX](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
+:::image type="content" source="./media/confidential-nodes-aks-overview/sgx-aks-node.png" alt-text="Graphique du nœud de calcul confidentiel AKS avec des conteneurs confidentiels comprenant du code et des données sécurisés.":::
 
 ## <a name="aks-confidential-nodes-features"></a>Fonctionnalités des nœuds confidentiels AKS
 

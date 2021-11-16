@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: 347293a0cd8647df110c10d9a94c99a978f36041
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 19520e2eeb65ca6cce77e913534fb2c82020c49f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424651"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245661"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensions et fonctionnalités de machine virtuelle pour Linux
 
@@ -210,9 +210,9 @@ Pour sécuriser la chaîne d’exécution, déplacez la propriété **commandToE
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Comment les agents et les extensions sont-ils mis à jour ?
 
-Les agents et les extensions partagent le même mécanisme de mise à jour. Certaines mises à jour ne nécessitent pas de règles de pare-feu supplémentaires.
+Les agents et les extensions partagent le même mécanisme de mise à jour automatique.
 
-Quand une mise à jour est disponible, elle est installée sur la machine virtuelle uniquement quand un changement est apporté aux extensions, ainsi qu’en cas d’autres changements de modèle de machine virtuelle, tels que :
+Quand une mise à jour est disponible et que les mises à jour automatiques sont activées, la mise à jour est installée sur la machine virtuelle seulement si un changement a été apporté à une extension ou après d’autres modifications du modèle de machine virtuelle, par exemple :
 
 - Disques de données
 - Extensions
@@ -221,7 +221,13 @@ Quand une mise à jour est disponible, elle est installée sur la machine virtue
 - Taille de la machine virtuelle
 - Profil réseau
 
+> [!IMPORTANT]
+> La mise à jour est installée seulement après qu’une modification a été apportée au modèle de machine virtuelle.
+
 Les dates de publication de mises à jour par les éditeurs varient selon les régions. Vous pouvez donc disposer de machines virtuelles équipées de versions distinctes dans différentes régions.
+
+> [!NOTE]
+> Certaines mises à jour peuvent nécessiter des règles de pare-feu supplémentaires. Consultez [Accès réseau](#network-access).
 
 #### <a name="agent-updates"></a>Mises à jour d’agent
 
@@ -257,7 +263,9 @@ Nous vous recommandons vivement que la mise à jour automatique soit toujours ac
 
 #### <a name="extension-updates"></a>Mises à jour des extensions
 
-Quand une mise à jour d’extension est disponible, l’agent invité Linux la télécharge et met à niveau l’extension. Les mises à jour d’extension automatiques sont soit de type *Minor* (mise à jour mineure), soit de type *Hotfix* (correctif logiciel). Vous pouvez accepter ou refuser les mises à jour d’extension *Minor* quand vous provisionnez l’extension. L’exemple ci-après indique comment mettre à niveau automatiquement les versions mineures dans un modèle Resource Manager avec la commande *"autoUpgradeMinorVersion": true,* :
+Quand une mise à jour d’extension est disponible et que les mises à jour automatiques sont activées, une fois qu’une [modification du modèle de machine virtuelle](#how-do-agents-and-extensions-get-updated) se produit, l’agent Linux télécharge et met à niveau l’extension.
+
+Les mises à jour d’extension automatiques sont soit de type *Minor* (mise à jour mineure), soit de type *Hotfix* (correctif logiciel). Vous pouvez accepter ou refuser les mises à jour d’extension *mineures* quand vous provisionnez l’extension. L’exemple ci-après montre comment mettre à niveau automatiquement les versions mineures dans un modèle Resource Manager avec *"autoUpgradeMinorVersion": true,*  :
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -272,6 +280,8 @@ Quand une mise à jour d’extension est disponible, l’agent invité Linux la 
 ```
 
 Si vous souhaitez obtenir les dernières corrections de bogues des versions mineures, nous vous recommandons vivement de toujours sélectionner l’option de mise à jour automatique dans vos déploiements d’extensions. Vous ne pouvez pas refuser les mises à jour de type correctif logiciel qui comportent des correctifs de sécurité ou des corrections de bogues clés.
+
+Si vous désactivez les mises à jour automatiques des extensions ou si vous devez mettre à niveau une version majeure, utilisez [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) et spécifiez la version cible.
 
 ### <a name="how-to-identify-extension-updates"></a>Comment identifier les mises à jour d’extension
 

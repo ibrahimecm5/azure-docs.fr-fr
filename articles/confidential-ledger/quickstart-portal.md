@@ -1,22 +1,22 @@
 ---
-title: 'Démarrage rapide : Registre confidentiel Microsoft Azure avec le portail Azure'
-description: Apprenez-en davantage sur l’utilisation du Registre confidentiel Microsoft Azure dans le portail Azure.
+title: 'Démarrage rapide : Registre confidentiel Microsoft Azure à l’aide du portail Azure'
+description: En savoir plus sur l’utilisation de Registre confidentiel Microsoft Azure via le portail Azure.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/18/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 5db9227303ed6b409dfd1650fc3c3a409ac2ba90
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 265dfc023d0adf384eb483efc16a40380e395fb3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167814"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458149"
 ---
 # <a name="quickstart-create-a-confidential-ledger-using-the-azure-portal"></a>Démarrage rapide : Créer un registre confidentiel à l’aide du portail Azure
 
-Registre confidentiel Azure est un service cloud qui fournit un magasin d’intégrité élevée pour les journaux de données sensibles et les enregistrements qui exigent que les données restent intactes. Pour plus d’informations sur Registre confidentiel et pour obtenir des exemples de ce qui peut être stocké dans un registre confidentiel, consultez [À propos du Registre confidentiel Microsoft Azure](overview.md).
+Registre confidentiel Azure est un service cloud qui fournit un magasin d’intégrité élevée pour les journaux de données sensibles et les enregistrements qui exigent que les données restent intactes. Pour plus d’informations sur Registre confidentiel Azure et pour obtenir des exemples de ce qui peut être stocké dans un registre confidentiel, consultez [À propos de Registre confidentiel Microsoft Azure](overview.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -30,9 +30,9 @@ Connectez-vous au portail Azure sur https://portal.azure.com.
 
 1. Dans le menu du Portail Azure ou dans la page Accueil, sélectionnez **Créer une ressource**.
 
-1. Dans la zone de recherche, entrez « Registre confidentiel ».
+1. Dans la zone de recherche, entrez « registre confidentiel ».
 
-1. Dans la liste des résultats, choisissez **Registre confidentiel**.
+1. Dans la liste des résultats, choisissez **registre confidentiel**.
 
 1. Dans la section Registre confidentiel, choisissez **Créer**.
 
@@ -65,7 +65,7 @@ Vous aurez besoin de ces noms de propriétés pour effectuer des transactions av
  
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
-D’autres articles relatifs au Registre confidentiel se basent sur ce guide de démarrage rapide. Si vous prévoyez de poursuivre avec les articles suivants, il peut être utile de conserver ces ressources. 
+D’autres articles relatifs à Registre confidentiel Azure se basent sur ce démarrage rapide. Si vous prévoyez de poursuivre avec les articles suivants, il peut être utile de conserver ces ressources. 
 
 Si vous n’en avez plus besoin, supprimez le groupe de ressources. Ce faisant, vous supprimez le registre confidentiel et les ressources associées. Pour supprimer le groupe de ressources à l’aide du portail :
 
@@ -77,6 +77,6 @@ Si vous n’en avez plus besoin, supprimez le groupe de ressources. Ce faisant, 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce guide de démarrage rapide, vous avez créé un registre confidentiel à l’aide du portail Azure. Pour en savoir plus sur Registre confidentiel et sur la manière de l’intégrer à vos applications, poursuivez avec les articles ci-dessous.
+Dans ce démarrage rapide, vous avez créé un registre confidentiel à l’aide du portail Azure. Pour en savoir plus sur Registre confidentiel Azure et sur la manière de l’intégrer à vos applications, poursuivez votre lecture des articles ci-dessous.
 
-- [Vue d’ensemble du Registre confidentiel Microsoft Azure](overview.md)
+- [Vue d’ensemble de Registre confidentiel Microsoft Azure](overview.md)

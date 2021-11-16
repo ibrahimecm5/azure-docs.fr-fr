@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 128c9736d67f3abfde92ef594bd8bc0d2de4c6ec
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 16338971721edfb68c93821ddf08c5cc36caf0b3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505478"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845991"
 ---
 ## <a name="create-a-dps-enrollment"></a>Créer une inscription au service Device Provisioning
 
@@ -63,6 +63,8 @@ Les inscriptions individuelles prennent la partie publique du certificat d’ide
       ```
 
 1. Sélectionnez **Enregistrer**.
+
+Sous **Gérer les inscriptions**, vous pouvez voir **l’ID d’inscription** pour l’inscription que vous venez de créer. Notez-le, car il peut être utilisé quand vous provisionnez votre appareil.
 
 Maintenant qu’une inscription existe pour cet appareil, le runtime IoT Edge peut provisionner automatiquement l’appareil lors de l’installation.
 
@@ -141,6 +143,8 @@ Pour plus d’informations sur les inscriptions dans le service Device Provision
       ```
 
 1. Sélectionnez **Enregistrer**.
+
+Sous **Gérer les inscriptions**, vous pouvez voir **l’ID d’inscription** pour l’inscription que vous venez de créer. Notez-le, car il peut être utilisé quand vous provisionnez vos appareils.
 
 Maintenant qu’il existe une inscription pour ces appareils, le runtime IoT Edge peut les provisionner automatiquement lors de l’installation.
 

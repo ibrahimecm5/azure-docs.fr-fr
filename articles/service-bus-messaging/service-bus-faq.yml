@@ -3,14 +3,14 @@ metadata:
   title: Forum Aux Questions (FAQ) sur Azure Service Bus | Microsoft Docs
   description: Cet article fournit des réponses aux questions fréquemment posées (FAQ) sur Azure Service Bus.
   ms.topic: article
-  ms.service: service-bus
+  ms.service: service-bus-messaging
   ms.date: 01/20/2021
-  ms.openlocfilehash: e364e9719962263e52aa404d8656729b27c72406
-  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+  ms.openlocfilehash: 53c370c85ae0de819ac10a167d57a8bdbe5fef06
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/01/2021
-  ms.locfileid: "129359427"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132061848"
 title: Azure Service Bus - Forum Aux Questions (FAQ)
 summary: >
   Cet article évoque certaines questions fréquemment posées sur Microsoft Azure Service Bus. Vous pouvez également consulter les [Questions fréquentes (FAQ) du support Azure](https://azure.microsoft.com/support/faq/) pour obtenir des informations générales de support et de tarification Azure.
@@ -76,7 +76,7 @@ sections:
   - question: >
       Comment gérer les messages de taille > à 1 Mo ?
     answer: >
-      Les services de messagerie Service Bus (files d’attente et rubriques/abonnements) permettent à l'application d'envoyer des messages dont la taille peut aller jusqu'à 256 Ko (niveau standard) ou 1 Mo (niveau Premium). En présence de messages de taille supérieure à 1 Mo, utilisez le modèle de vérification des requêtes décrit dans [ce billet de blog](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
+      Les services de messagerie Service Bus (files d’attente et rubriques/abonnements) permettent à l’application d’envoyer des messages dont la taille peut aller jusqu’à 256 Ko (niveau Standard) ou 100 Mo (niveau Premium). En présence de messages dont la taille est supérieure à la taille autorisée, utilisez le modèle de vérification des requêtes décrit dans [ce billet de blog](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 - name: Dépannage
   questions:
   - question: "Pourquoi ne suis-je pas en mesure de créer un espace de noms après l'avoir supprimé d'un autre abonnement ? \n"

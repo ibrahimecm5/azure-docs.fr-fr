@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: d517f3a54963f08a4607e7f95cb5cffbea2486d9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5d2a08a1ed51028d63e7bc98825c972b869b50ea
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010989"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848891"
 ---
 # <a name="connect-to-and-manage-an-on-premises-sql-server-instance-in-azure-purview"></a>Se connecter à une instance de serveur SQL local et la gérer dans Azure Purview
 
@@ -23,7 +23,9 @@ Cet article explique comment inscrire des instances de serveur SQL local, et com
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non| [Traçabilité des données Data Factory](how-to-link-azure-data-factory.md) |
+| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non| Non** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 ## <a name="prerequisites"></a>Prérequis
 

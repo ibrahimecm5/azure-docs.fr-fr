@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4999669aee35b9e0d7303ae1156f10318c775562
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589164"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989752"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutoriel : Configurer RingCentral pour le provisionnement automatique d’utilisateurs
 
@@ -38,6 +38,10 @@ Le scénario décrit dans ce tutoriel part du principe que vous disposez des pr�
 * Un compte d’utilisateur dans Azure AD avec l’[autorisation](../roles/permissions-reference.md) de configurer l’approvisionnement (par exemple, Administrateur d’application, Administrateur d’application cloud, Propriétaire d’application ou Administrateur général). 
 * [Un locataire RingCentral](https://www.ringcentral.com/office/plansandpricing.html)
 * Un compte d’utilisateur dans RingCentral avec des autorisations d’administration.
+
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
+
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Étape 1. Planifier votre déploiement de l’approvisionnement
 1. En savoir plus sur le [fonctionnement du service d’approvisionnement](../app-provisioning/user-provisioning.md).
@@ -152,6 +156,8 @@ Une fois que vous avez configuré l’approvisionnement, utilisez les ressources
 
 * 10/09/2020 : suppression de la prise en charge des attributs « displayName » et « manager ».
 * 15/03/2021 : mise à jour de la méthode d’autorisation du jeton de porteur permanent vers un flux d’octroi de code OAuth.
+* 28/10/2021 : mise à jour du mappage par défaut en **mail-> emails[type eq « work »].value**.
+* 28/10/2021 : mise à jour de la limite de débit à 300/min pour la lecture, 1000/min pour l’écriture.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

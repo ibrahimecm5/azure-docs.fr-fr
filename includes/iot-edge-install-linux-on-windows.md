@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4207e171b07d203fd7a71f4c9783baef3d4f6a90
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 890ec787bfc7a4316df9d27271460a90d5047175
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506103"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842679"
 ---
 ## <a name="install-iot-edge"></a>Installer IoT Edge
 
@@ -18,7 +18,7 @@ Déployez Azure IoT Edge pour Linux sur Windows sur votre appareil cible.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Installez IoT Edge pour Linux sur Windows sur votre appareil cible.
+Installez IoT Edge pour Linux sur Windows sur votre appareil cible.
 
 > [!NOTE]
 > Le processus PowerShell suivant explique comment déployer IoT Edge pour Linux sur Windows sur l’appareil local. Pour effectuer un déploiement sur un appareil cible distant avec PowerShell, vous pouvez utiliser [PowerShell distant](/powershell/module/microsoft.powershell.core/about/about_remote) afin d’établir une connexion à un appareil distant et d’exécuter ces commandes à distance sur cet appareil.
@@ -52,7 +52,7 @@ Installez IoT Edge pour Linux sur Windows sur votre appareil cible.
    >
    >Vous pouvez personnaliser les ressources disponibles de la machine virtuelle à l’aide des paramètres facultatifs de la commande `Deploy-Eflow`.
    >
-   >Par exemple, la commande ci-dessous crée une machine virtuelle avec 4 cœurs de processeur virtuel, 4 Go de RAM et 20 Go d’espace disque :
+   >Par exemple, la commande ci-dessous crée une machine virtuelle avec 4 cœurs de processeur virtuel, 4 Go de RAM (quantité représentée en Mo) et 20 Go d’espace disque :
    >
    >   ```powershell
    >   Deploy-Eflow -cpuCount 4 -memoryInMB 4096 -vmDiskSize 20
@@ -75,7 +75,7 @@ Installez IoT Edge pour Linux sur Windows sur votre appareil cible.
 
    ![Un déploiement réussi indique « Déploiement réussi » à la fin des messages.](./media/iot-edge-install-linux-on-windows/successful-powershell-deployment.png)
 
-Une fois votre déploiement terminé, vous êtes prêt à approvisionner votre appareil.
+   Une fois le déploiement réussi, vous êtes prêt à provisionner votre appareil.
 
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
 

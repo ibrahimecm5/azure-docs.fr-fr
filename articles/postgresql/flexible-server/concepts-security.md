@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/01/2021
-ms.openlocfilehash: 8e474cd0ae6635034607a088aceee47a83c500de
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 26403d2de9fe0a4235dc1460f13adcd78e595e77
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388771"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867016"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sécurité dans Azure Database pour PostgreSQL - Serveur flexible
 
@@ -25,7 +25,7 @@ Azure Database pour PostgreSQL chiffre les données de deux façons :
 
 - **Données en transit** : Azure Database pour PostgreSQL chiffre les données en transit avec les protocoles SSL/TLS (Secure Sockets Layer/Transport Layer Security). Le chiffrement est appliqué par défaut. Pour plus d’informations, consultez [ce guide](how-to-connect-tls-ssl.md). Pour une sécurité accrue, vous pouvez choisir d’activer l’[authentification SCRAM](how-to-connect-scram.md).
 
-   Même si cela n’est pas recommandé, si nécessaire, vous pouvez désactiver TLS\SSL pour les connexions à Azure Database pour PostgreSQL - Serveur flexible en configurant le paramètre `require_secure_transport` sur OFF. Vous pouvez également définir la version TLS en configurant les paramètres de serveur `ssl_min_protocol_version` et `ssl_max_protocol_version`.
+   Même si cela n’est pas recommandé, vous pouvez au besoin désactiver TLS\SSL pour les connexions à Azure Database pour PostgreSQL - Serveur flexible en configurant le paramètre de serveur `require_secure_transport` sur OFF. Vous pouvez également définir la version de TLS en utilisant les paramètres de serveur `ssl_min_protocol_version` et `ssl_max_protocol_version`.
 
 
 - **Données au repos** : pour le chiffrement du stockage, Azure Database pour PostgreSQL utilise le module de chiffrement conforme à la norme FIPS 140-2. Les données sont chiffrées sur le disque, y compris les sauvegardes et les fichiers temporaires créés durant l’exécution des requêtes. 
@@ -78,7 +78,7 @@ oid            | 24827
 
 ```
 
-La [journalisation d’audit](../concepts-audit.md) est également disponible avec le serveur flexible pour suivre l’activité de vos bases de données. 
+La [journalisation d’audit](concepts-audit.md) est également disponible avec le serveur flexible pour suivre l’activité de vos bases de données. 
 
 > [!NOTE]
 > Azure Database pour PostgreSQL - Serveur flexible ne prend pas en charge la [protection Azure Defender](../../security-center/azure-defender.md). 

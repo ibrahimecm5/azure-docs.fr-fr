@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 729cf1ed5d17345c530bd78f9c5c75c15990ab12
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ec68964d1d0e43bf15e66750677326eca305784f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096820"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053062"
 ---
 # <a name="what-is-custom-text-classification-preview"></a>Qu’est-ce que la classification de texte personnalisée (préversion) ?
 
@@ -27,7 +27,13 @@ La classification de texte personnalisée est proposée dans le cadre des foncti
 La classification de texte personnalisée prend en charge deux types de projets : 
 
 * **Classification avec une seule étiquette** : vous pouvez attribuer une seule classe à chaque fichier de votre jeu de données. Par exemple, un script de film peut uniquement être classé comme « Action » ou « Thriller ». 
-* **Classification avec plusieurs étiquettes** : vous pouvez attribuer plusieurs classes à chaque fichier de votre jeu de données. Par exemple, un script de film peut être classé comme « Action », ou « Action » et « Thriller ». 
+* **Classification avec plusieurs étiquettes** : vous pouvez attribuer plusieurs classes à chaque fichier de votre jeu de données. Par exemple, un script de film peut être classé comme « Action », ou « Action » et « Thriller ».
+
+Cette documentation contient les types d’articles suivants :
+
+* Les [Démarrages rapides](quickstart.md) sont des instructions de prise en main qui vous guident dans la formulation de vos requêtes au service.
+* Des [concepts](concepts/evaluation.md) fournissent des explications sur les fonctionnalités du service.
+* Les [Guides pratiques](how-to/tag-data.md) contiennent des instructions sur l’utilisation du service de manière plus spécifique ou personnalisée.
 
 ## <a name="example-usage-scenarios"></a>Exemples de scénarios d’utilisation
 
@@ -39,9 +45,9 @@ Les centres de support de tous types reçoivent des milliers à des centaines de
 
 La recherche est fondamentale pour les applications qui présentent du contenu textuel aux utilisateurs. Parmi les scénarios courants, citons la recherche dans un catalogue ou dans des documents, la recherche sur un site de vente au détail ou l’exploration de connaissances pour la science des données.De nombreuses entreprises de différents secteurs cherchent à créer une expérience de recherche enrichie sur du contenu privé et hétérogène, qui comprend à la fois des documents structurés et non structurés. Dans le cadre de leur pipeline, les développeurs peuvent utiliser la classification personnalisée afin de catégoriser du texte en classes pertinentes pour leur secteur d’activité. Les classes prédites peuvent être utilisées pour enrichir l’indexation du fichier afin d’obtenir une expérience de recherche plus personnalisée. 
 
-## <a name="application-development-lifecycle"></a>Cycle de vie de développement des applications
+## <a name="project-development-lifecycle"></a>Cycle de vie du développement de projet
 
-La création d’une application de classification personnalisée implique généralement différentes étapes. 
+La création d’un projet de classification personnalisée implique généralement différentes étapes. 
 
 :::image type="content" source="media/development-lifecycle.png" alt-text="Cycle de vie de développement" lightbox="media/development-lifecycle.png":::
 
@@ -65,6 +71,6 @@ Suivez ces étapes pour tirer le meilleur parti de votre modèle :
 
 * Utilisez le [guide de démarrage rapide](quickstart.md) pour commencer à utiliser la classification de texte personnalisée.  
 
-* Pendant le cycle de vie du développement de l’application, consultez le [glossaire](glossary.md) pour en savoir plus sur les termes utilisés dans la documentation de cette fonctionnalité. 
+* Au fur et à mesure que vous parcourez le cycle de vie du développement de projet, consultez le [glossaire](glossary.md) afin d’en savoir plus sur les termes utilisés dans la documentation pour cette fonctionnalité. 
 
 * N’oubliez pas de consulter les [limites du service](service-limits.md) pour plus d’informations, comme la [disponibilité régionale](service-limits.md#regional-availability).

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 3a41e3e131c4537e21e3844dbf0db360e2b77b28
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1557b229c4db50dca2115fc9c11123c76c5adc50
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130214716"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851816"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Résolution des problèmes de configuration des points de terminaison privés pour vos comptes Purview
 
@@ -90,7 +90,7 @@ Ce guide résume les limitations connues liées à l’utilisation de points de 
    
 6. À partir de la machine virtuelle du runtime d’intégration auto-hébergé, testez la connectivité réseau et la résolution de noms sur le point de terminaison Purview.
 
-7. À partir du runtime d’intégration auto-hébergé, testez la connectivité réseau et la résolution de noms aux ressources managées Azure Purview, telles que la file d’attente d’objets BLOB et Event Hub via le port 443 et les adresses IP privées. (Remplacez le compte de stockage managé et l’espace de noms Event Hubs par le nom de ressource managée correspondant affecté à votre compte Azure Purview).
+7. À partir du runtime d’intégration auto-hébergé, testez la connectivité réseau et la résolution de noms aux ressources managées Azure Purview, telles que la file d’attente d’objets blob et Event Hub via le port 443 et les adresses IP privées. (Remplacez le compte de stockage managé et l’espace de noms Event Hubs par le nom de ressource managée correspondant affecté à votre compte Azure Purview).
 
     ```powershell
     Test-NetConnection -ComputerName `scansoutdeastasiaocvseab`.blob.core.windows.net -Port 443
@@ -123,7 +123,7 @@ Ce guide résume les limitations connues liées à l’utilisation de points de 
     ```powershell
     Test-NetConnection -ComputerName `Atlas-1225cae9-d651-4039-86a0-b43231a17a4b`.servicebus.windows.net -Port 443
     ```
-    Exemple de connexion sortante réussie vers l’espace de noms eventhub via une adresse IP privée :
+    Exemple de connexion sortante réussie vers l’espace de noms Event Hub via une adresse IP privée :
 
     ```
     ComputerName     : Atlas-1225cae9-d651-4039-86a0-b43231a17a4b.servicebus.windows.net
@@ -164,7 +164,7 @@ Vous pouvez recevoir le message d’erreur suivant lors de l’exécution d’un
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>Cause 
-Il peut s’agir d’une indication de l’exécution d’une version antérieure du runtime d’intégration auto-hébergé. Si vous avez créé votre compte Azure Purview après le 18 août 2021, vous devez utiliser la version 5.9.7885.3 du runtime d’intégration auto-hébergé.
+Il peut s’agir d’une indication de l’exécution d’une version antérieure du runtime d’intégration auto-hébergé. Vous devez utiliser la version du runtime d’intégration auto-hébergé 5.9.7885.3 ou une version ultérieure.
 
 ### <a name="resolution"></a>Résolution 
 Mettez à nouveau le runtime d’intégration auto-hébergé à la version 5.9.7885.3.

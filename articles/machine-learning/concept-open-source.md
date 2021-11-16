@@ -8,33 +8,26 @@ ms.subservice: mlops
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 10/21/2021
-ms.openlocfilehash: cf0a7f78de5a79440876630278faab8e581eeb33
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.custom: mktng-kw-nov2021
+ms.date: 11/04/2021
+ms.openlocfilehash: 9809169a8da6965c8d1fdbb741ddd4817f8d2af7
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559083"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850182"
 ---
-# <a name="open-source-integration-with-azure-machine-learning-projects"></a>Intégration open source aux projets Azure Machine Learning
+# <a name="use-open-source-machine-learning-libraries-and-platforms-with-azure-machine-learning"></a>Utiliser des bibliothèques et plateformes d’apprentissage automatique open source avec Azure Machine Learning
 
-Vous pouvez effectuer l’apprentissage, déployer et gérer le processus de Machine Learning de bout en bout dans Azure Machine Learning grâce aux bibliothèques et aux plateformes de Machine Learning open source Python.  Utilisez les outils de développement, tels que Jupyter Notebooks et Visual Studio Code, pour tirer parti de vos modèles et scripts existants dans Azure Machine Learning.  
-
-Dans cet article, découvrez plus dans le détail ces bibliothèques et plateformes open source.
+Cet article traite des les bibliothèques et plateformes d’apprentissage automatique Python open source que vous pouvez utiliser avec Azure Machine Learning. Formez, déployez et gérez le processus d’apprentissage automatique de bout en bout à l’aide de projets open source de votre choix.  Utilisez les outils de développement, tels que Jupyter Notebooks et Visual Studio Code, pour tirer parti de vos modèles et scripts existants dans Azure Machine Learning.  
 
 ## <a name="train-open-source-machine-learning-models"></a>Effectuer l’apprentissage des modèles Machine Learning open source
 
-Le processus de formation Machine Learning implique l’application d’algorithmes à vos données afin d’obtenir une tâche ou de résoudre un problème. Selon le problème, vous pouvez choisir différents algorithmes mieux adaptés à la tâche et à vos données. Pour plus d’informations sur les différentes branches de Machine Learning, consultez l’article [Deep Learning vs Machine Learning](./concept-deep-learning-vs-machine-learning.md) et [l’aide-mémoire de l’algorithme Machine Learning](algorithm-cheat-sheet.md).
-
-### <a name="preserve-data-privacy-using-differential-privacy"></a>Préserver la confidentialité des données à l’aide de la confidentialité différentielle
-
-Pour effectuer l’apprentissage d’un modèle Machine Learning, vous devez disposer de données. Parfois, ces données sont sensibles et il est important de s’assurer qu’elles sont sécurisées et privées. La confidentialité différentielle est une technique qui consiste à préserver la confidentialité des informations contenues dans un jeu de données. Pour plus d’informations, consultez l’article sur la [préservation de la confidentialité des données](concept-differential-privacy.md). 
-
-Les kits de ressources sur la confidentialité différentielle open source (comme [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core-python)) vous aident à [assurer la confidentialité des données](how-to-differential-privacy.md) dans les solutions Azure Machine Learning.
+Le processus de formation Machine Learning implique l’application d’algorithmes à vos données afin d’obtenir une tâche ou de résoudre un problème. Selon le problème, vous pouvez choisir différents algorithmes mieux adaptés à la tâche et à vos données. Pour plus d’informations sur les problématiques que vous pouvez résoudre avec l’apprentissage automatique, consultez l’article [Apprentissage profond et apprentissage automatique](./concept-deep-learning-vs-machine-learning.md) et l’aide-mémoire sur l’[algorithme d’apprentissage automatique](algorithm-cheat-sheet.md).
 
 ### <a name="classical-machine-learning-scikit-learn"></a>Machine Learning classique : scikit-learn
 
-Pour les tâches de formation impliquant des algorithmes de Machine Learning classiques, tels que la classification, le clustering et la régression, vous pouvez utiliser un exemple comme Scikit-learn. Pour savoir comment effectuer l’apprentissage d’un modèle de classification fleur, consultez [l’article sur l’apprentissage avec Scikit-learn](how-to-train-scikit-learn.md).
+Pour les tâches de formation impliquant des algorithmes de Machine Learning classiques, tels que la classification, le clustering et la régression, vous pouvez utiliser un exemple comme Scikit-learn. Pour savoir comment effectuer l’apprentissage d’un modèle de classification fleur, consultez [l’article sur l’apprentissage avec scikit-learn](how-to-train-scikit-learn.md).
 
 ### <a name="neural-networks-pytorch-tensorflow-keras"></a>Réseaux neuronaux : PyTorch, TensorFlow, Keras
 
@@ -45,6 +38,8 @@ Les infrastructures de Deep Learning open source et les guides pratiques incluen
  *  [PyTorch](https://github.com/pytorch/pytorch) : [Effectuer l'apprentissage d’un modèle de classification d’images Deep Learning à l’aide de l’apprentissage de transfert](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow) : [Reconnaître les chiffres manuscrits à l’aide de TensorFlow](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras) : [Générer un réseau neuronal pour analyser des images à l’aide de Keras](how-to-train-keras.md)
+
+### <a name="transfer-learning"></a>Transfer learning
 
 La formation d’un modèle Deep Learning à partir de zéro nécessite souvent de grandes quantités de temps, de données et de ressources de calcul. L’apprentissage de transfert peut vous permettre de raccourcir le processus de formation. L’apprentissage de transfert est une technique qui applique les connaissances acquises lors de la résolution d’un problème à un problème différent, mais connexe. Cela signifie que vous pouvez utiliser un modèle existant et le réaffecter. Pour en savoir plus sur l’apprentissage de transfert, consultez l’article [Deep Learning et Machine Learning](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning).
 
@@ -59,6 +54,14 @@ Pour savoir comment utiliser Ray RLLib avec Azure Machine Learning, consultez [C
 ### <a name="monitor-model-performance-tensorboard"></a>Surveiller les performances d'un modèle : TensorBoard
 
 La formation d’un seul ou de plusieurs modèles nécessite la visualisation et l’inspection des métriques souhaitées pour s’assurer que le modèle fonctionne comme prévu. Vous pouvez [utiliser TensorBoard dans Azure Machine Learning pour suivre et visualiser les métriques d’essai](./how-to-monitor-tensorboard.md).
+
+## <a name="responsible-ml-privacy-and-fairness"></a>Apprentissage automatique responsable : confidentialité et impartialité
+
+### <a name="preserve-data-privacy-with-differential-privacy"></a>Préserver la confidentialité des données avec la confidentialité différentielle
+
+Pour effectuer l’apprentissage d’un modèle Machine Learning, vous devez disposer de données. Parfois, ces données sont sensibles et il est important de s’assurer qu’elles sont sécurisées et privées. La confidentialité différentielle est une technique qui consiste à préserver la confidentialité des informations contenues dans un jeu de données. Pour plus d’informations, consultez l’article sur la [préservation de la confidentialité des données](concept-differential-privacy.md). 
+
+Les kits de ressources sur la confidentialité différentielle open source (comme [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core-python)) vous aident à [assurer la confidentialité des données](how-to-differential-privacy.md) dans les solutions Azure Machine Learning.
 
 ### <a name="frameworks-for-interpretable-and-fair-models"></a>Infrastructures pour les modèles interprétables et équitables
 

@@ -6,6 +6,7 @@
     - name: "Qu’est-ce que Microsoft Defender pour le cloud\_?"
       href: defender-for-cloud-introduction.md
     - name: "Quelles sont les fonctionnalités de sécurité renforcée\_?"
+      displayName: azure defender
       href: enhanced-security-features-overview.md
     - name: Nouveautés
       displayName: 'changelog, news, release notes'
@@ -96,7 +97,7 @@
     - name: Accéder et suivre votre score de sécurisation
       href: secure-score-access-and-track.md
     - name: Hiérarchiser les actions de sécurité par sensibilité des données
-      displayName: 'sensitivity, data, purview, inventory'
+      displayName: 'sensitivity, data, purview, inventory, information protection'
       href: information-protection.md
     - name: Gérer vos ressources avec un inventaire d’actifs
       href: asset-inventory.md
@@ -220,9 +221,6 @@
         - name: Analyser les images dans vos workflows CI/CD
           displayName: 'ACR, registry, images, trevi, vulnerabilities, scanner'
           href: defender-for-container-registries-cicd.md
-        - name: Désactiver des résultats de vulnérabilités d’images spécifiques
-          displayName: 'ACR, registry, images, qualys'
-          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
         - name: Protéger les clusters Kubernetes avec Azure Arc
           displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
           href: defender-for-kubernetes-azure-arc.md
@@ -263,6 +261,7 @@
     - name: Intégrer des solutions de sécurité et des sources de données
       href: partner-integration.md
     - name: Protéger les ressources réseau
+      displayName: 'map, network map'
       href: protect-network-resources.md
     - name: Appliquer et gérer MFA
       displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
@@ -320,7 +319,7 @@
     - name: Documentation sur les API REST
       href: /rest/api/securitycenter/
     - name: Base de référence de la sécurité
-      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/security-center/TOC.json
+      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/defender-for-cloud/TOC.json
     - name: FAQ sur Microsoft Defender pour le cloud
       items:
         - name: Questions générales

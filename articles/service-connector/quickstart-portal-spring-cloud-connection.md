@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f242eb1557a1b44f3698e06f33dc2a943658af15
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 320cd5af7a6f64d6f74eb55ac9abfd7f07af18ce
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028876"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843135"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-from-azure-portal"></a>Démarrage rapide : Créer une connexion de service dans Spring Cloud avec le portail Azure
 
@@ -31,18 +31,19 @@ Connectez-vous au portail Azure à l’adresse [https://portal.azure.com/](https
 Vous allez utiliser Service Connector pour créer une nouvelle connexion de service dans Spring Cloud.
 
 1. Sélectionnez le bouton **Toutes les ressources** qui est situé sur la gauche du portail Azure. Tapez **Spring Cloud** dans le filtre, puis cliquez sur le nom de l’instance Spring Cloud que vous souhaitez utiliser.
-1. Sélectionnez **Applications**, puis sélectionnez le nom de l’application dans la liste. 
-1. Sélectionnez **Déploiements**, puis sélectionnez le déploiement **par défaut** dans la liste. Sélectionnez **Service Connector (préversion)** dans la table des matières située sur la gauche. Sélectionnez ensuite **Créer**.
+1. Sélectionnez **Applications**, puis sélectionnez le nom de l’application dans la liste.
+1. Sélectionnez **Service Connector (préversion)** dans la table des matières située sur la gauche. Sélectionnez ensuite **Créer**.
 1. Sélectionnez ou saisissez les paramètres suivants.
 
     | Paramètre      | Valeur suggérée  | Description                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | L’un de vos abonnements | L’abonnement dans lequel se trouve votre service cible (le service auquel vous souhaitez vous connecter). L’abonnement par défaut est celui où se trouve l’instance App Service. |
-    | **Type de service** | Conteneur des objets blob de stockage | Type du service cible. Si vous n’avez pas de conteneur d’objets blob de stockage, vous pouvez [en créer un](../storage/blobs/storage-quickstart-blobs-portal.md) ou utiliser un autre type de service. |
+    | **Type de service** | Stockage Blob | Type du service cible. Si vous n’avez pas de stockage d’objets blob, vous pouvez [en créer un](../storage/blobs/storage-quickstart-blobs-portal.md) ou utiliser un autre type de service. |
     | **Nom de connexion** | Nom unique généré | Nom de la connexion qui existe entre votre instance App Service et le service cible  |
-    | **Compte de stockage** | Votre serveur de stockage | Service de base de données cible auquel vous souhaitez vous connecter. Si vous choisissez un autre type de service, sélectionnez l’instance de service cible correspondante. |
+    | **Compte de stockage** | Votre compte de stockage | Compte de stockage cible auquel vous souhaitez vous connecter. Si vous choisissez un autre type de service, sélectionnez l’instance de service cible correspondante. |
 
-4. Sélectionnez **Vérifier + créer** pour passer en revue les paramètres de la connexion. Ensuite, sélectionnez **Créer** pour démarrer la création de la connexion au service.
+1. Sélectionnez **Suivant : Authentification** pour sélectionner le type d’authentification. Sélectionnez ensuite **Chaîne de connexion** pour utiliser la clé d’accès afin de connecter votre compte de stockage d’objets blob.
+1. Sélectionnez ensuite **Suivant : Vérifier + créer** pour passer en revue les informations fournies. Sélectionnez ensuite **Créer** pour créer la connexion au service. Cette opération peut prendre 1 minute.
 
 ## <a name="view-service-connections-in-spring-cloud"></a>Afficher les connexions de service dans Spring Cloud
 

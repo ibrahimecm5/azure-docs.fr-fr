@@ -4,14 +4,14 @@ description: Découvrez comment déployer une application ASP.NET C# sur Azure e
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/05/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 8569826c548e768e593e024af38b8b937ee02ca2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 72ea37f483055ae3bcb97520efa7f2a4fb704037
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058727"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058860"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutoriel : Déployer une application ASP.NET sur Azure avec Azure SQL Database
 
@@ -36,7 +36,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 Pour suivre ce tutoriel :
 
-Installer <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> avec la charge de travail **Développement ASP.NET et web**.
+Installez <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2022</a> avec la charge de travail **Développement ASP.NET et web**.
 
 Si vous avez déjà installé Visual Studio, ajoutez les charges de travail dans Visual Studio en cliquant sur **Outils** > **Obtenir des outils et des fonctionnalités**.
 

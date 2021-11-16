@@ -3,17 +3,17 @@ title: Connecter votre compte AWS à Microsoft Defender pour le cloud
 description: Défendre vos ressources AWS avec Microsoft Defender pour le cloud
 author: memildin
 ms.author: memildin
-ms.date: 11/02/2021
+ms.date: 11/07/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: connect-aws-accounts
-ms.openlocfilehash: 9877ec3b69829d8210eed18577a3d0738dcef889
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 98636887b213a26baf638e6ebc2813a02f395b73
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131428554"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990260"
 ---
 #  <a name="connect-your-aws-accounts-to-microsoft-defender-for-cloud"></a>Connecter vos comptes AWS à Microsoft Defender pour le cloud
 
@@ -29,9 +29,9 @@ Pour protéger vos ressources basées sur AWS, vous pouvez connecter un compte a
 
 - **Page des paramètres d’environnement (en préversion)** (recommandé) : cette page en préversion fournit une expérience d’intégration simplifiée et nettement améliorée (y compris le provisionnement automatique). Ce mécanisme étend également les fonctionnalités de sécurité renforcée de Defender pour le cloud à vos ressources AWS.
 
-    - Les **fonctionnalités CSPM de Defender pour le cloud** s’étendent à vos ressources AWS. Ce plan sans agent évalue vos ressources AWS conformément aux recommandations de sécurité propres à AWS, et celles-ci sont ajoutées à votre degré de sécurisation. Les ressources sont également évaluées pour voir si elles sont conformes aux normes intégrées propres à AWS (AWS CIS, AWS PCI DSS et bonnes pratiques de sécurité de base AWS). La [page d’inventaire des ressources](asset-inventory.md) de Defender pour le cloud est une fonctionnalité multicloud qui vous permet de gérer vos ressources AWS avec vos ressources Azure.
-    - **Microsoft Defender pour Kubernetes** étend la détection des menaces contre les conteneurs ainsi que des défenses avancées à vos **clusters Amazon EKS Linux**.
-    - **Microsoft Defender pour les serveurs** ajoute la détection des menaces et des défenses avancées à vos instances EC2 Linux et Windows. Ce plan comprend la licence intégrée de Microsoft Defender pour point de terminaison, des bases de référence de sécurité et des évaluations de niveau système d’exploitation, l’analyse de l’évaluation des vulnérabilités, des contrôles d’application adaptatifs (AAC), le monitoring de l’intégrité des fichiers (FIM), etc.
+    - Les **fonctionnalités CSPM de Defender pour le cloud** s’étendent à vos ressources AWS. Ce plan sans agent évalue vos ressources AWS conformément aux recommandations de sécurité spécifiques à AWS. Celles-ci sont incluses dans votre niveau de sécurité. Les ressources sont également évaluées par rapport à leur conformité aux standards intégrés spécifiques à AWS (AWS CIS, AWS PCI DSS et AWS Foundational Security Best Practices). La [page d’inventaire des ressources](asset-inventory.md) de Defender pour le cloud est une fonctionnalité multicloud qui vous permet de gérer vos ressources AWS avec vos ressources Azure.
+    - **Microsoft Defender pour Kubernetes** étend sa détection des menaces contre les conteneurs et ses défenses avancées à vos **clusters Amazon EKS Linux**.
+    - **Microsoft Defender pour les serveurs** ajoute la détection des menaces et les défenses avancées à vos instances EC2 Linux et Windows. Ce plan comprend la licence intégrée de Microsoft Defender pour point de terminaison, des bases de référence de sécurité et des évaluations de niveau système d’exploitation, l’analyse de l’évaluation des vulnérabilités, des contrôles d’application adaptatifs (AAC), le monitoring de l’intégrité des fichiers (FIM), etc.
 
 Cette capture d’écran montre des comptes AWS dans le [tableau de bord de vue d’ensemble](overview-page.md) de Defender pour le cloud.
 
@@ -55,20 +55,12 @@ Cette capture d’écran montre des comptes AWS dans le [tableau de bord de vue 
 - Pour connecter un compte AWS à votre abonnement Azure, vous devez évidemment avoir un accès à un compte AWS.
 
 - **Pour activer le plan Defender pour Kubernetes**, vous avez besoin des ressources suivantes :
-    - Au moins un cluster Amazon EKS avec l’autorisation d’accéder au serveur d’API K8s EKS.
+    - Au moins un cluster Amazon EKS avec l’autorisation d’accéder au serveur d’API K8s EKS. Si vous devez créer un cluster EKS, suivez les instructions de [Bien démarrer avec Amazon EKS – eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html).
     - Une capacité de ressources suffisante pour créer une file d’attente SQS, un flux de livraison Kinesis Firehose et un compartiment S3 dans la région du cluster.
-    
-    > [!TIP]
-    > Pour créer un cluster EKS, suivez les instructions de [Bien démarrer avec Amazon EKS – eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html)
 
 - **Pour activer le plan Defender pour les serveurs**, vous avez besoin des ressources suivantes :
-    - Microsoft Defender pour les serveurs activé (voir [Démarrage rapide : Activer les fonctionnalités de sécurité renforcée](enable-enhanced-security.md)
-    - Un compte AWS actif avec des instances EC2 gérées par AWS Systems Manager (SSM) et utilisant l’agent SSM
-
-    > [!TIP]
-    > Certaines Amazon Machine Images (AMI) ont l’agent SSM préinstallé, ces AMI sont listées dans [AMIs avec SSM Agent préinstallé](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-technical-details.html#ami-preinstalled-agent). 
-
-    - Si vos instances EC2 ne disposent pas de l’agent SSM, suivez les instructions correspondantes d’Amazon :
+    - Microsoft Defender pour les serveurs activé (consultez [Démarrage rapide : Activer les fonctionnalités de sécurité renforcée](enable-enhanced-security.md).
+    - Un compte AWS actif avec des instances EC2 gérées par AWS Systems Manager (SSM) et utilisant l’agent SSM. Certaines Amazon Machine Images (AMI) ont l’agent SSM préinstallé, ces AMI sont listées dans [AMIs avec SSM Agent préinstallé](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-technical-details.html#ami-preinstalled-agent). Si vos instances EC2 ne disposent pas de l’agent SSM, suivez les instructions correspondantes d’Amazon :
         - [Installer SSM Agent pour un environnement hybride (Windows)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html)
         - [Installer SSM Agent pour un environnement hybride (Linux)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html)
 
@@ -77,7 +69,7 @@ Cette capture d’écran montre des comptes AWS dans le [tableau de bord de vue 
 
 Suivez les étapes ci-dessous pour créer votre connecteur cloud AWS. 
 
-1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres d’environnement**.
+1. Dans le menu de Defender pour le cloud, ouvrez **Paramètres de l’environnement**.
 1. Sélectionnez **Ajouter un environnement** > **Amazon Web Services**.
 
     :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-environment-settings.png" alt-text="Connexion d’un compte AWS à un abonnement Azure.":::
@@ -88,10 +80,13 @@ Suivez les étapes ci-dessous pour créer votre connecteur cloud AWS.
 
 1. L’onglet Sélectionner des plans vous permet de choisir les fonctionnalités Defender pour le cloud à activer pour ce compte AWS. 
 
-    > [!IMPORTANT]
+    > [!NOTE]
     > Chaque fonctionnalité a ses propres exigences en matière d’autorisations et peut entraîner des frais.
 
     :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-plans-selection.png" alt-text="L’onglet Sélectionner des plans vous permet de choisir les fonctionnalités Defender pour le cloud à activer pour ce compte AWS.":::
+
+    > [!IMPORTANT]
+    > Pour présenter l’état actuel de vos recommandations, le plan CSPM interroge les API de ressources AWS plusieurs fois par jour. Ces appels d’API en lecture seule ne sont pas facturés, mais ils *sont* inscrits dans CloudTrail si vous avez activé un traçage pour les événements de lecture. Comme expliqué dans [la documentation AWS](https://aws.amazon.com/cloudtrail/pricing/), aucun frais supplémentaire n’est facturé pour la conservation d’un seul traçage. Si vous exportez les données à en dehors d’AWS (par exemple vers une solution SIEM externe), cette augmentation du volume des appels peut également augmenter les coûts d’ingestion. Dans ce cas, nous vous recommandons de filtrer les appels en lecture seule de l’utilisateur ou du rôle ARN de Defender pour le cloud : arn:aws:iam::[IDCompte]:role/CspmMonitorAws (c’est le nom de rôle par défaut : vérifiez le nom du rôle configuré sur votre compte).
 
     - Afin d’étendre la couverture de Defender pour les serveurs à votre machine AWS EC2, définissez le plan **Serveurs** sur **Activé** et modifiez la configuration selon vos besoins. 
 

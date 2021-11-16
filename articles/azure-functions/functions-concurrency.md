@@ -5,19 +5,19 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 9/24/2021
 ms.author: cachai
-ms.openlocfilehash: 60d6861fbf0f9c02df78674f85633a962fea09a3
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 21702bf5bdc8eeee014305c106006a18640c001f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368493"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847657"
 ---
 # <a name="concurrency-in-azure-functions"></a>Accès concurrentiel dans Azure Functions
 
 Cet article décrit les comportements d’accès concurrentiel des déclencheurs pilotés par les événements dans Azure Functions. Il décrit également un nouveau modèle dynamique pour l’optimisation des comportements d’accès concurrentiel. 
 
 >[!NOTE]
->Le modèle de concurrence dynamique est actuellement en préversion. La prise en charge de l’accès concurrentiel dynamique est limitée à des extensions de liaison spécifiques, également en préversion.  
+>Le modèle de concurrence dynamique est actuellement en préversion. La prise en charge de l’accès concurrentiel dynamique est limitée à des extensions de liaison spécifiques.
 
 Le modèle d’hébergement pour les fonctions permet l’exécution simultanée de plusieurs appels de fonction sur une instance de calcul unique. Par exemple, considérez un cas où vous avez trois fonctions différentes dans votre application de fonction, qui est mise à l’échelle et exécutée sur plusieurs instances. Dans ce scénario, chaque fonction traite les appels sur chaque instance de machine virtuelle sur laquelle votre application de fonction s’exécute. Les appels de fonction sur une instance unique partagent les mêmes ressources de calcul de machine virtuelle, telles que la mémoire, le processeur et les connexions. Lorsque votre application est hébergée dans un plan dynamique (Consommation ou Premium), la plateforme met à l’échelle le nombre d’instances de l’application de fonction en fonction du nombre d’événements entrants. Pour plus d’informations, consultez [Mise à l’échelle pilotée par les événements](./Event-Driven-Scaling.md)). Lorsque vous hébergez vos fonctions dans un plan dédié (App Service), vous configurez manuellement vos instances ou [configurez un schéma de mise à l’échelle automatique](dedicated-plan.md#scaling).
 
@@ -38,7 +38,7 @@ Dans l’idéal, nous voulons que le système autorise les instances à traiter 
 Functions fournit désormais un modèle de concurrence dynamique qui simplifie la configuration de l’accès concurrentiel pour toutes les applications de fonction s’exécutant dans le même plan. 
 
 > [!NOTE]
-> L’accès concurrentiel dynamique est actuellement pris en charge uniquement pour le déclencheur Service Bus et vous oblige à utiliser la [version 5.0.0-beta.6 (ou une version ultérieure)](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6) de l’extension **Microsoft.Azure. Azure.WebJobs.Extensions.ServiceBus**.
+> L’accès concurrentiel dynamique n’est actuellement pris en charge que pour les déclencheurs de Blob Azure, de File d’attente Azure et de Service Bus. Il exige que vous utilisiez les versions répertoriées dans la [section relative à la prise en charge des extensions ci-dessous](#extension-support).
 
 ### <a name="benefits"></a>Avantages
 
@@ -79,7 +79,20 @@ Lorsque l’accès concurrentiel dynamique est activé, vous verrez les décisio
 
 ### <a name="extension-support"></a>Extensions prises en charge 
 
-La concurrence dynamique est activée pour une application de fonction au niveau de l’hôte, et toutes les extensions qui prennent en charge la concurrence dynamique s’exécutent dans ce mode. La concurrence dynamique nécessite une collaboration entre l’hôte et les extensions de déclencheur individuelles. Pour la préversion, seules les versions les plus récentes (préversion) des extensions suivantes prennent en charge la concurrence dynamique.
+La concurrence dynamique est activée pour une application de fonction au niveau de l’hôte, et toutes les extensions qui prennent en charge la concurrence dynamique s’exécutent dans ce mode. La concurrence dynamique nécessite une collaboration entre l’hôte et les extensions de déclencheur individuelles. Pour la préversion, seules les versions répertoriées des extensions suivantes prennent en charge la concurrence dynamique.
+
+#### <a name="azure-queues"></a>Files d'attente Azure
+
+Le déclencheur stockage de File d’attente Azure possède sa propre boucle d’interrogation des messages. Lors de l’utilisation d’une configuration statique, la concurrence est régie par les options de configuration `BatchSize`/`NewBatchThreshold`. Lorsque vous utilisez un accès concurrentiel dynamique, ces valeurs de configuration sont ignorées. L’accès concurrentiel dynamique étant intégré à la boucle de messages, le nombre de messages extraits par itération est ajusté de manière dynamique. Lorsque des limitations sont activées (l’hôte est surchargé), le traitement des messages est suspendu jusqu’à ce que les limitations soient désactivées. Lorsque les limitations sont désactivées, la concurrence augmente.
+
+Pour utiliser l’accès concurrentiel dynamique pour les Files d’attente, vous devez utiliser la [version 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) de l’extension de stockage.
+
+#### <a name="azure-blobs"></a>Objets blob Azure
+
+En interne, le déclencheur stockage Blob Azure utilise la même infrastructure que le déclencheur de File d’attente Azure. Lorsque des blobs nouveaux ou mis à jour doivent être traités, les messages sont écrits dans une file d’attente de contrôle managée de la plateforme, et la file d’attente est traitée à l’aide de la même logique que celle utilisée pour le déclencheur de File d’attente. Lorsque la concurrence dynamique est activée, la concurrence pour le traitement de cette file d’attente de contrôle est gérée de façon dynamique.
+
+Pour utiliser l’accès concurrentiel dynamique pour les Blobs, vous devez utiliser la [version 5.x](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) de l’extension de stockage.
+
 
 #### <a name="service-bus"></a>Service Bus 
 
@@ -89,7 +102,7 @@ Le déclencheur Service Bus prend actuellement en charge trois modèles d’exé
 - **Traitement de la rubrique/file d’attente à distribution unique basée sur la session** : chaque appel de votre fonction traite un message unique. En fonction du nombre de sessions actives pour votre rubrique/file d’attente, chaque instance loue une ou plusieurs sessions. Les messages de chaque session sont traités en série, afin de garantir l’ordre dans une session. Lorsque la concurrence dynamique n’est pas utilisée, la concurrence est régie par le paramètre `MaxConcurrentSessions`. Avec la concurrence dynamique activée, `MaxConcurrentSessions` est ignoré et le nombre de sessions que chaque instance traite est ajusté dynamiquement. 
 - **Traitement par lots** : chaque appel de votre fonction traite un lot de messages, régi par le paramètre `MaxMessageCount`. Étant donné que les appels de lot sont en série, la concurrence pour votre fonction déclenchée par lot est toujours 1 et la concurrence dynamique ne s’applique pas. 
 
-Pour permettre à votre déclencheur Service Bus d’utiliser la concurrence dynamique, vous devez utiliser la [version 5.0.0-beta.6 (ou une version ultérieure)](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.6) de l’extension **Microsoft.Azure.WebJobs.Extensions.ServiceBus**. 
+Pour permettre à votre déclencheur Service Bus d’utiliser la concurrence dynamique, vous devez utiliser la [version 5](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) de l’extension Service Bus. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

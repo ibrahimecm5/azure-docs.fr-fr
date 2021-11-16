@@ -3,12 +3,12 @@ title: Alertes métriques de Container Insights
 description: Cet article passe en revue les alertes métriques recommandées disponibles dans Container Insights en préversion publique.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 7036bc7a0f161044312687d6b22171df99821e6a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 49ae1fee1961bf722489309d2d605ca7697ab218
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714419"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455128"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Alertes métriques recommandées (préversion) de Container Insights
 
@@ -47,6 +47,7 @@ Pour alerter sur ce qui est important, Container Insights inclut les alertes mé
 |**(New)Pourcentage moyen d’UC du conteneur** |Calcule l’utilisation moyenne de l’UC par conteneur.|Lorsque l’utilisation moyenne de l’UC par conteneur est supérieure à 95 %.| 
 |**(New)Pourcentage moyen de mémoire de la plage de travail du conteneur** |Calcule la mémoire moyenne de la plage de travail utilisée par conteneur.|Lorsque l’utilisation moyenne de la mémoire de la plage de travail par conteneur est supérieure à 95 %. |
 |% moyen du processeur |Calcule l’utilisation moyenne de l’UC par nœud. |Lorsque l’utilisation moyenne de l’UC par nœud est supérieure à 80 % |
+| Violation de la limite de données quotidienne | En cas de violation de la limite de données| Lorsque l’ingestion totale des données dans votre espace de travail Log Analytics dépasse le [quota désigné](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume) |
 |Pourcentage moyen d’utilisation de l’UC |Calcule l’utilisation moyenne du disque pour un nœud.|Lorsque l’utilisation du disque pour un nœud est supérieure à 80 %. |
 |**(Nouveau)Pourcentage moyen d’utilisation du volume persistant** |Calcule l’utilisation moyenne du volume persistant par pod. |Lorsque l’utilisation moyenne du volume persistant par pod est supérieure à 80 %.|
 |Pourcentage moyen de mémoire de la plage de travail |Calcule la mémoire moyenne de la plage de travail pour un nœud. |Lorsque la mémoire moyenne de la plage de travail pour un nœud est supérieure à 80 %. |
@@ -88,11 +89,11 @@ Dans le cadre de cette fonctionnalité, sauf spécification contraire, les métr
 |Espace de noms de la métrique |Métrique |Description |
 |---------|----|------------|
 |Insights.container/nodes |cpuUsageMillicores |Utilisation de l’UC en millicœurs par hôte.|
-|Insights.container/nodes |cpuUsagePercentage |Pourcentage d’utilisation de l’UC par nœud.|
+|Insights.container/nodes |cpuUsagePercentage, cpuUsageAllocatablePercentage (préversion) |Pourcentage d’utilisation de l’UC par nœud et allouable respectivement.|
 |Insights.container/nodes |memoryRssBytes |Utilisation de la mémoire RSS en octets par hôte.|
-|Insights.container/nodes |memoryRssPercentage |Pourcentage d’utilisation de la mémoire RSS par hôte.|
+|Insights.container/nodes |memoryRssPercentage, memoryRssAllocatablePercentage (préversion) |Mémoire de l’utilisation de RSS en pourcentage par hôte et allouable respectivement.|
 |Insights.container/nodes |memoryWorkingSetBytes |Utilisation de la plage de travail de mémoire en octets par hôte.|
-|Insights.container/nodes |memoryWorkingSetPercentage |Pourcentage d’utilisation de la plage de travail de mémoire par hôte.|
+|Insights.container/nodes |memoryWorkingSetPercentage, memoryRssAllocatablePercentage (préversion) |Mémoire de l’utilisation de Working Set en pourcentage par hôte et allouable respectivement.|
 |Insights.container/nodes |nodesCount |Nombre de nœuds par état.|
 |Insights.container/nodes |diskUsedPercentage |Pourcentage de disque utilisé sur le nœud par appareil.|
 |Insights.container/pods |podCount |Nombre de pods par contrôleur, espace de noms, nœud et phase.|

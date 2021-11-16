@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 10/13/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: d6bb3be48769c19afc525330d6b33810b04066a3
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: cdab72e0a1633aa75a5594acf9b506d944f0eaa0
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131507353"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893004"
 ---
 # <a name="use-the-azure-key-vault-provider-for-secrets-store-csi-driver-in-an-azure-kubernetes-service-aks-cluster"></a>Utiliser le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets dans un cluster Azure Kubernetes Service (AKS)
 
@@ -121,7 +121,7 @@ Le pilote CSI du magasin de secrets permet aux mécanismes suivants d’accéder
 - [Identité de pod Azure Active Directory][aad-pod-identity]
 - Identité managée affectée par le système ou l’utilisateur
 
-Suivez les étapes afin de [fournir une identité pour accéder à Azure Key Vault][csi-secrets-store-identity-access.md] pour le mécanisme choisi.
+Suivez les étapes afin de [fournir une identité pour accéder à Azure Key Vault][identity-access-methods] pour la méthode choisie.
 
 ## <a name="validate-the-secrets"></a>Valider les secrets
 
@@ -139,7 +139,7 @@ kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/ExampleSecre
 
 La conception d’Azure Key Vault fait une nette distinction entre les clés, les secrets et les certificats. Les fonctionnalités des certificats du service Key Vault ont été conçues pour utiliser ses fonctionnalités de clé et de secret. Lorsqu’un certificat Key Vault est créé, une clé et un secret adressables sont également créés avec le même nom. La clé permet d’exécuter des opérations sur les clés, et le secret permet de récupérer la valeur du certificat sous forme de secret. Un certificat Key Vault contient également des métadonnées de certificat x509 publiques. Azure Key Vault stocke à la fois les parties publiques et privées de votre certificat dans un secret. Chaque composant individuel peut être obtenu en spécifiant `objectType` dans votre SecretProviderClass. Le tableau suivant indique l’objet mappé aux différentes ressources associées à votre certificat :
 
-|Object|Valeur de retour|Retourne la totalité de la chaîne de certificats|
+|Object|Valeur retournée|Retourne la totalité de la chaîne de certificats|
 |---|---|---|
 |`key`|Clé publique au format PEM|N/A|
 |`cert`|Certificat au format PEM|Non|
@@ -207,7 +207,7 @@ Quand vous créez une SecretProviderClass, utilisez le champ `secretObjects` pou
 > Vérifiez que `objectName` dans `secretObjects` correspond au nom de fichier du contenu monté. Si `objectAlias` est utilisé à la place, il doit correspondre à l’alias de l’objet.
 
 ```yml
-apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+apiVersion: secrets-store.csi.x-k8s.io/v1
 kind: SecretProviderClass
 metadata:
   name: azure-sync
@@ -272,7 +272,7 @@ curl localhost:8898/metrics
 
 Le tableau suivant liste les métriques fournies par le fournisseur Azure Key Vault pour le pilote CSI du magasin de secrets :
 
-|Metric|Description|Étiquettes|
+|Métrique|Description|Étiquettes|
 |----|----|----|
 |keyvault_request|Répartition du temps nécessaire à l’obtention dans le coffre de clés|`os_type=<runtime os>`, `provider=azure`, `object_name=<keyvault object name>`, `object_type=<keyvault object type>`, `error=<error if failed>`|
 |grpc_request|Répartition du temps nécessaires aux demandes gRPC|`os_type=<runtime os>`, `provider=azure`, `grpc_method=<rpc full method>`, `grpc_code=<grpc status code>`, `grpc_message=<grpc status message>`|
@@ -288,7 +288,7 @@ curl localhost:8095/metrics
 
 Le tableau suivant liste les métriques fournies par le pilote CSI du magasin de secrets :
 
-|Metric|Description|Étiquettes|
+|Métrique|Description|Étiquettes|
 |----|----|----|
 |total_node_publish|Nombre total de demandes de montage de volume réussies|`os_type=<runtime os>`, `provider=<provider name>`|
 |total_node_unpublish|Nombre total de demandes de démontage de volume réussies|`os_type=<runtime os>`|

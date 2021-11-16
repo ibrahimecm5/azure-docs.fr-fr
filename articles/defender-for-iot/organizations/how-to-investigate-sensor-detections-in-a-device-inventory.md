@@ -3,12 +3,12 @@ title: Obtenir des informations sur les appareils découverts par un capteur sp�
 description: L’inventaire des appareils affiche un large éventail d’attributs d’appareil détectés par un capteur.
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 10df10a64059e5f5673a9e4ae6f18a09e4c41838
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 423ddcb9b50be6aa758e28f20291f8d66e58e3f4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515270"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028189"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Examiner les détections de capteur dans un inventaire d’appareils
 
@@ -45,7 +45,20 @@ Les attributs suivants apparaissent dans le tableau d’inventaire des appareils
 | Dernière activité | Dernière activité effectuée par l’appareil. |
 | Discovered | Lorsque cet appareil a été détecté pour la première fois sur le réseau. |
 
-Pour afficher l’inventaire des appareils :
+## <a name="what-is-an-inventory-device"></a>Qu’est-ce qu’un appareil d’inventaire ?
+
+L’inventaire d’appareil Defender pour IoT affiche un large éventail d’attributs de ressource qui sont détectés par les capteurs qui contrôlent les réseaux d’organisations et les points de terminaison gérés.
+
+Defender pour IoT identifie et classe les appareils comme un appareil réseau unique dans l’inventaire pour :
+
+1. Appareils IT, OT et IoT autonomes (avec 1 ou plusieurs cartes d’interface réseau)
+1. Appareils composés de plusieurs composants de carte d’insertion (notamment tous les racks/emplacements/modules)
+1. Appareils agissant comme une infrastructure réseau comme commutateur/routeur (avec plusieurs cartes d’interface réseau). 
+
+Les adresses IP Internet publiques, les groupes de multidiffusion et les groupes de diffusion ne sont pas considérés comme des appareils d’inventaire.
+Les appareils qui ont été inactifs depuis plus de 60 jours sont classés en tant qu’appareils d’inventaire inactifs.
+
+**Pour afficher l’inventaire des appareils :**
 
 1. Sélectionnez **Appareils** dans le volet de gauche. Le volet **Appareils** s’ouvre à droite.
 

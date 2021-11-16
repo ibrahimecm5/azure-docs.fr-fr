@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Redémarrer/Arrêter/Démarrer une instance d’Azure Database pour MySQL - Serveur flexible (préversion)
+title: Script CLI - Redémarrer/Arrêter/Démarrer une instance d’Azure Database pour MySQL - Serveur flexible
 description: Cet exemple de script Azure CLI montre comment redémarrer/arrêter/démarrer une instance d’Azure Database pour MySQL - Serveur flexible.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 2c4d17b0bcbba1c231b06f6112ef8b43e9b4786a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 12a375eb7195af9b95db85723efe7a52b53c5356
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604648"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844095"
 ---
-# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Redémarrer/Arrêter/Démarrer un serveur flexible Azure Database pour MySQL (préversion) avec Azure CLI
+# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Redémarrer/Arrêter/Démarrer un serveur flexible Azure Database pour MySQL avec Azure CLI
 
 Cet exemple de script CLI effectue des opérations de redémarrage, de démarrage et d’arrêt sur une instance d’Azure Database pour MySQL - Serveur flexible. 
 
@@ -62,5 +62,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).

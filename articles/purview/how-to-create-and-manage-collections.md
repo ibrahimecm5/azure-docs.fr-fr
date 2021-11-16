@@ -6,21 +6,16 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 10/22/2021
+ms.date: 11/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e96a3e1e523c466cc3dc851725b648cba78dc8e8
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 0c288971fefc95bfed7d5c4b7496dda628bb1f90
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502112"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845263"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Créer et gérer des regroupements dans Azure Purview
-
-> [!NOTE]
-> À ce stade, ce guide s’applique uniquement aux instances Azure Purview créées **le 18 août 2021 ou après cette date**. Les instances créées avant le 18 août peuvent créer des collections, mais elles ne gèrent pas les autorisations par le biais de ces collections. Pour plus d’informations sur la création d’une collection pour une instance Purview créée avant le 18 août, consultez notre [**guide des collections héritées**](#legacy-collection-guide) en bas de page.
->
-> Tous les comptes hérités seront automatiquement mis à niveau dans les semaines à venir. Vous recevrez une notification par e-mail lors de la mise à niveau de votre compte Purview. Pour plus d’informations sur ce qui va changer une fois votre compte mis à niveau, consultez notre [Guide des comptes mis à niveau](concept-account-upgrade.md).
 
 Dans Azure Purview, les collections permettent d’organiser les ressources et les sources par le biais du processus de votre entreprise, mais ils constituent également l’outil utilisé pour gérer l’accès dans l’ensemble de Purview. Ce guide vous guide tout au long de la création et de la gestion de ces collections, ainsi que les étapes à suivre pour inscrire des sources et ajouter des ressources à vos collections.
 
@@ -277,27 +272,6 @@ Les ressources et les sources sont également associées à des collections. Au 
 1. Pour afficher les détails d’une ressource, sélectionnez le nom de celle-ci dans les résultats de la recherche. Vous pouvez également vérifier les ressources et les modifier en bloc.
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/view-asset-details.png" alt-text="Capture d’écran de la fenêtre Purview Studio du catalogue avec l’onglet par collection sélectionné et les cases à cocher des ressources mises en évidence."border="true":::
-
-## <a name="legacy-collection-guide"></a>Guide de collection héritée
-
-> [!NOTE]
-> Ce guide des collections héritées ne concerne que les instances Purview créées avant le 18 août 2021. Les instances créées après cette date doivent suivre le guide ci-dessus.
-
-Les collections héritées organisent uniquement les sources dans le mappage de données et ne gèrent pas les autorisations pour ces sources.
-
-### <a name="create-a-legacy-collection"></a>Créer une collection héritée
-
-1. Sélectionnez Data Map dans le volet gauche pour ouvrir le mappage de données. Cette vue vous permet de voir vos collections et les sources listées dessous.
-
-    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-view.png" alt-text="Capture d’écran de la fenêtre Purview Studio, ouverte sur la Data Map." border="true":::
-
-1. Sélectionnez **+ Nouvelle collection**.
-
-    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-create.png" alt-text="Capture d’écran de la fenêtre Purview Studio, ouverte sur la Data Map, avec l’option + Nouvelle collection mise en évidence." border="true":::
-
-1. Donnez un nom à votre collection et sélectionnez un parent ou « Aucun ». Sélectionnez **Create** (Créer). Les informations de collection sont reflétées sur le mappage de données.
-
-    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-name.png" alt-text="Capture d’écran de la fenêtre Purview Studio, montrant la fenêtre de la nouvelle collection." border="true":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

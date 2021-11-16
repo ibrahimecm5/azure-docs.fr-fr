@@ -11,13 +11,13 @@ metadata:
   author: dimitri-furman
   ms.author: dfurman
   ms.reviewer: mathoma
-  ms.date: 09/10/2021
-  ms.openlocfilehash: 738d016c3ba341e3fb8e31a7b01847573e7a4178
-  ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+  ms.date: 11/4/2021
+  ms.openlocfilehash: 440cb18b41a37358fc170655783cc2f5c61bc01b
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 09/26/2021
-  ms.locfileid: "129059546"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131843147"
 title: Questions fréquentes (FAQ) sur le niveau Hyperscale dans Azure SQL Database
 summary: >
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -339,6 +339,10 @@ sections:
       Mon débit est-il affecté quand je provisionne des réplicas de calcul supplémentaires ?
     answer: >
       Comme le stockage est partagé et qu’aucune réplication physique directe n’est effectuée entre les réplicas de calcul principaux et secondaires, le débit sur le réplica principal n’est pas affecté directement par l’ajout de réplicas secondaires. Cependant, nous pouvons limiter la charge de travail en écriture agressive continue sur le réplica principal pour que le journal s’applique sur les réplicas secondaires et les serveurs de pages à rattraper, et éviter ainsi des performances de lecture médiocres sur les réplicas secondaires.
+  - question: >
+      Hyperscale est-il bien adapté aux requêtes et aux transactions longues et gourmandes en ressources ?
+    answer: >
+      Oui. Toutefois, n’oubliez pas que les connexions peuvent parfois être interrompues par des erreurs temporaires, ce qui peut entraîner l’abandon des requêtes longues et la restauration des transactions. Des erreurs temporaires peuvent par exemple se produire lorsque le système déplace rapidement la base de données vers un autre nœud de calcul pour garantir la continuité de la disponibilité des ressources de calcul et de stockage, ou pour effectuer une maintenance planifiée. La plupart de ces événements de reconfiguration se terminent en moins de 10 secondes. Les applications qui se connectent à votre base de données doivent être conçues pour s’attendre à ces erreurs temporaires inhabituelles et les tolérer en implémentant une logique de nouvelle tentative. Vous pouvez éventuellement configurer une [fenêtre de maintenance](maintenance-window.md) qui correspond à votre planification de charge de travail, afin d’éviter les erreurs temporaires dues à une maintenance planifiée.
   - question: >
       Comment diagnostiquer et résoudre les problèmes de performances dans une base de données Hyperscale ?
     answer: >

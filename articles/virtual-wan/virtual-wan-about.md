@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: 97ecb049d4307bacf6c9a7b73d08e3d25e05f112
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 7ca51e5dfba89307be28d277e50715b04f829004
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821664"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028056"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Qu’est-ce que le WAN virtuel Azure ?
 
@@ -95,7 +95,9 @@ Le routeur peut avoir quatre états de routage : Provisionné, Provisionnement,
 * Un état **Aucun** indique que le hub virtuel n’a pas provisionné le routeur. Cela peut se produire si le réseau étendu virtuel est de type *De base* ou que le hub virtuel a été déployé avant que le service ne soit mis à disposition.
 * Un état **Échec** indique un échec pendant l’instanciation. Pour instancier ou réinitialiser le routeur, vous pouvez rechercher l’option **Réinitialiser le routeur** en accédant à la page de vue d’ensemble du hub virtuel dans le portail Azure.
 
-Chaque routeur de hub virtuel prend en charge un débit agrégé pouvant atteindre 50 Gbits/s. La connectivité entre les connexions de réseau virtuel suppose une charge de travail totale de 2000 machines virtuelles sur tous les réseaux virtuels connectés à un même hub virtuel.
+Chaque routeur de hub virtuel prend en charge un débit agrégé pouvant atteindre 50 Gbits/s. 
+
+La connectivité entre les connexions de réseau virtuel suppose, par défaut, une charge de travail totale de 2 000 machines virtuelles sur tous les réseaux virtuels connectés à un même hub virtuel. Vous pouvez augmenter cette [limite](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits) en ouvrant une demande de support technique en ligne. Pour déterminer les conséquences financières, consultez le coût d’une *unité d’infrastructure de routage* dans la page des [tarifs d’Azure Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/). 
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Connectivité de transit entre le réseau privé virtuel et ExpressRoute
 

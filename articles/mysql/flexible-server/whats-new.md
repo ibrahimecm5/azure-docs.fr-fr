@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 8711727d007eca452c67f7bb79913f3ab29efa77
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: bf12371e786d5d657c5802bf64cdae9bc44f6b4a
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500143"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989695"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Nouveautés dans Azure Database pour MySQL - Serveur flexible
 
@@ -22,7 +22,28 @@ ms.locfileid: "131500143"
 
 Cet article résume les nouvelles versions et fonctionnalités d’Azure Database pour MySQL - Serveur flexible à compter de janvier 2021. Les éléments s’affichent dans l’ordre chronologique inverse, avec les mises à jour les plus récentes en premier.
 
+## <a name="november-2021"></a>Novembre 2021
+- **Disponibilité générale du serveur flexible Azure Database pour MySQL**
+    
+  Le serveur flexible Azure Database pour MySQL est désormais en **disponibilité générale** dans plus de [30 régions Azure](overview.md) du monde entier.
+
+- **Afficher les sauvegardes complètes disponibles dans le portail Azure** Un panneau Sauvegarde et restauration dédié est désormais disponible dans le portail Azure. Il répertorie les sauvegardes disponibles pendant la période de rétention du serveur, et vous permet d’accéder à un affichage simple pour gérer les sauvegardes d’un serveur et les restaurations consécutives. Il vous permet : 
+   1) de consulter les horodateurs d’exécution des sauvegardes complètes disponibles pendant la période de rétention du serveur. 
+   2) d’effectuer des opérations de restauration à l’aide de ces sauvegardes complètes.
+  
+- **Points de restauration les plus rapides**
+  
+  L’option de point de restauration le plus rapide vous permet de restaurer une instance de serveur flexible le plus rapidement possible un jour donné au cours de la période de rétention du serveur. Cette opération de restauration restaure simplement la sauvegarde d’instantané complète sans qu’il ne soit nécessaire de restaurer ou récupérer des journaux. Avec le point de restauration le plus rapide, les clients ont accès à trois options lorsqu’ils effectuent des restaurations à un moment donné dans le Portail Azure : dernier point de restauration, point de restauration personnalisé et point de restauration le plus rapide. [En savoir plus](concepts-backup-restore.md#point-in-time-restore)
+  
+- **Panneau FAQ dans le portail Azure**
+
+  Le panneau Sauvegarde et restauration inclut également une section dédiée qui répertorie des réponses aux questions fréquentes. Celle-ci fournit des réponses à la plupart des questions concernant les sauvegardes directement dans le portail Azure. Par ailleurs, il est possible de sélectionner l’icône du FAQ représentant un point d’interrogation dans le menu supérieur pour accéder à des informations plus détaillées.
+
 ## <a name="october-2021"></a>Octobre 2021
+
+- **Les pools de threads sont désormais disponibles pour le serveur flexible Azure Database pour MySQL**
+ 
+    Ceux-ci améliorent la scalabilité du serveur flexible Azure Database pour MySQL. L’utilisation d’un pool de threads permet d’optimiser les performances, et de profiter d’un meilleur débit et d’une latence plus faible pour les charges de travail simultanées élevées. [Plus d’informations](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/achieve-up-to-a-50-performance-boost-in-azure-database-for-mysql/ba-p/2909691)
 
 - **Restauration de la sauvegarde géoredondante dans une région géocouplée pour des scénarios de récupération d’urgence**
 

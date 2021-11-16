@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Créer et gérer des réplicas en lecture dans Azure Database pour MySQL – Serveur flexible (préversion)
+title: Script CLI - Créer et gérer des réplicas en lecture dans une instance d’Azure Database pour MySQL - Serveur flexible
 description: Cet exemple de script Azure CLI montre comment créer et gérer des réplicas en lecture dans Azure Database pour MySQL – Serveur flexible.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 02eea900b9e78b0a23bead45bd077902de7417eb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1155231ca8909352aee2354023a19ea66c7ffc4d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701500"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844092"
 ---
-# <a name="create-and-manage-read-replicas-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Créer et gérer des réplicas en lecture dans Azure Database pour MySQL – Serveur flexible (préversion) avec Azure CLI
+# <a name="create-and-manage-read-replicas-in-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Créer et gérer des réplicas en lecture dans une instance d’Azure Database pour MySQL - Serveur flexible avec Azure CLI
 
 Cet exemple de script CLI montre comment créer et gérer des [réplicas en lecture](../concepts-read-replicas.md) dans Azure Database pour MySQL – Serveur flexible.
 
@@ -56,5 +56,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).

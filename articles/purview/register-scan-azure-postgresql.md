@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 723a0121c57d0601c77c2337f6ab6a57feb92fe7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1f5fa328a7a7a2f61647274eba0ba0282a820ec8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037869"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841892"
 ---
 # <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Se connecter à une base de données Azure pour PostgreSQL et la gérer dans Azure Purview
 
@@ -23,7 +23,9 @@ Cet article décrit comment inscrire une base de données Azure pour PostgreSQL,
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register) | [Oui](#scan)| [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non | [Traçabilité des données Data Factory](how-to-link-azure-data-factory.md) |
+| [Oui](#register) | [Oui](#scan)| [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non | Non** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 ## <a name="prerequisites"></a>Prérequis
 

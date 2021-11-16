@@ -7,16 +7,16 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5d704e9fc46918624014da84ccdae46dc25817ea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 91af4ca87c2363220081fe5e4912a26a764e85d1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084877"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844388"
 ---
 # <a name="what-is-azure-managed-instance-for-apache-cassandra"></a>Qu’est-ce qu’Azure Managed Instance pour Apache Cassandra ?
 
-Le service Azure Managed Instance pour Apache Cassandra offre des opérations de déploiement et de mise à l’échelle automatisées pour les centres de données Apache Cassandra open source managés. Ce service vous aide à accélérer les scénarios hybrides et à réduire la maintenance continue. Lors de sa mise en disponibilité générale, il offrira des fonctionnalités de déplacement de données et d’intégration en profondeur avec l’[API Azure Cosmos DB Cassandra](../cosmos-db/cassandra-introduction.md).
+Le service Azure Managed Instance pour Apache Cassandra offre des opérations de déploiement et de mise à l’échelle automatisées pour les centres de données Apache Cassandra open source managés. Ce service vous aide à accélérer les scénarios hybrides et à réduire la maintenance continue.
 
 :::image type="content" source="./media/introduction/icon.gif" alt-text="Azure Managed Instance pour Apache Cassandra est un service managé pour Apache Cassandra." border="false":::
 
@@ -24,10 +24,10 @@ Le service Azure Managed Instance pour Apache Cassandra offre des opérations de
 
 ### <a name="hybrid-deployments"></a>Déploiements hybrides
 
-Vous pouvez utiliser ce service pour placer facilement des instances managées de centres de données Apache Cassandra, qui sont déployées automatiquement en tant que groupes de machines virtuelles identiques dans un réseau virtuel Azure nouveau ou existant. Ces centres de données peuvent être ajoutés à votre anneau Apache Cassandra existant exécuté localement via [Azure ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) dans Azure ou un autre environnement cloud.
+Vous pouvez utiliser ce service pour placer facilement des instances managées de centres de données Apache Cassandra, qui sont déployées automatiquement en tant que groupes de machines virtuelles identiques dans un réseau virtuel Azure nouveau ou existant. Ces centres de données peuvent être ajoutés à votre anneau Apache Cassandra existant exécuté localement via [Azure ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) dans Azure ou un autre environnement cloud. Cela est possible au moyen d’une [configuration hybride](configure-hybrid-cluster.md).
 
 - **Déploiement simplifié :** une fois la connectivité hybride établie, le déploiement est facile via le protocole gossip.
-- **Métriques hébergées :** les métriques sont hébergées dans [Prometheus](https://prometheus.io/docs/introduction/overview/) pour superviser l’activité sur votre cluster.
+- **Métriques hébergées :** les métriques sont hébergées dans [Prometheus](https://prometheus.io/docs/introduction/overview/) pour superviser l’activité sur votre cluster. Le service est également intégré à [Azure Monitor pour la journalisation des métriques et des diagnostics](monitor-clusters.md).
 
 ### <a name="simplified-scaling"></a>Mise à l’échelle simplifiée
 
@@ -41,11 +41,10 @@ Le service fournit des opérations de gestion pour les tâches Apache Cassandra 
 - Provisionner un centre de données
 - Mettre à l’échelle un centre de données
 - Supprimer un centre de données
-- Démarrer une action de réparation sur un espace de clés
 - Modifier la configuration d’un centre de données
 - Configurer des sauvegardes
 
-Le modèle de tarification est flexible, à la demande, basé sur l’instance et sans frais de licence. Ce modèle de tarification vous permet de vous adapter à vos besoins spécifiques en matière de charge de travail. Vous choisissez le nombre de cœurs, la référence SKU de machine virtuelle, la taille de mémoire et la taille d’espace disque dont vous avez besoin.
+Le modèle de tarification est flexible, à la demande, basé sur l’instance et sans frais de licence. Ce modèle de tarification vous permet de vous adapter à vos besoins spécifiques en matière de charge de travail. Vous choisissez le nombre de cœurs, la référence SKU de machine virtuelle, la taille de la mémoire et le nombre de disques P30 par nœud.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
