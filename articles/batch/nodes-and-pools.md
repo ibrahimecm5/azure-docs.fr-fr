@@ -3,12 +3,12 @@ title: Nœuds et pools dans Azure Batch
 description: En savoir plus sur les nœuds de calcul et les pools et leur utilisation dans un flux de travail Azure Batch du point de vue du développeur.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d5556bd719f982995c9353003f2c9dccc1e1a48
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563893"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443392"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Nœuds et pools dans Azure Batch
 
@@ -90,7 +90,7 @@ Lorsque vous créez un pool, vous devez sélectionner la valeur **nodeAgentSkuId
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Images personnalisées pour les pools de machines virtuelles
 
-Pour savoir comment créer un pool d’images personnalisées, voir [Utiliser Shared Image Gallery pour créer un pool personnalisé](batch-sig-images.md).
+Pour savoir comment créer un pool d’images personnalisées, consultez [Utiliser Azure Compute Gallery pour créer un pool personnalisé](batch-sig-images.md).
 
 Vous pouvez également créer un pool personnalisé de machines virtuelles à l’aide d’une ressource d’[image managée](batch-custom-images.md). Pour plus d’informations sur la préparation d’images Linux personnalisées à partir de machines virtuelles Azure, consultez [Guide pratique pour créer une image d’une machine virtuelle ou d’un VHD](../virtual-machines/linux/capture-image.md). Pour plus d’informations sur la préparation d’images Windows personnalisées à partir de machines virtuelles Azure, consultez la section [Créer une image managée d’une machine virtuelle généralisée dans Azure](../virtual-machines/windows/capture-image-resource.md).
 

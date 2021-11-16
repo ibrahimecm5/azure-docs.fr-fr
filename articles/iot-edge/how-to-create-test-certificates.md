@@ -3,16 +3,16 @@ title: Créer des certificats de test-Azure IoT Edge | Microsoft Docs
 description: Créez des certificats de test et apprenez à les installer sur un appareil Azure IoT Edge pour préparer le déploiement de production.
 author: kgremban
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 460c8f4d5d59b0f43d0706587dafab60289b1984
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ac93261275ea28161661f458ff2ac9bb204e872d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610975"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430170"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Créer des certificats de démonstration pour tester les fonctionnalités de l’appareil IoT Edge
 
@@ -34,7 +34,7 @@ Procédez comme suit pour créer des certificats de démonstration afin de teste
 2. [Créez le certificat d’autorité de certification racine](#create-root-ca-certificate) que vous utilisez pour signer tous les autres certificats de votre scénario.
 3. Générez les certificats dont vous avez besoin dans le cadre du scénario à tester :
    * [Créez des certificats d’identité d’appareil IoT Edge](#create-iot-edge-device-identity-certificates) pour fournir aux appareils une authentification par certificat X.509, soit manuellement, soit avec Service IoT Hub Device Provisioning.
-   * [Créer des certificats d’autorité de certification d’appareil IoT Edge](#create-iot-edge-device-ca-certificates) pour les appareils IoT Edge dans les scénarios de passerelle.
+   * [Créer des certificats d’autorité de certification IoT Edge](#create-iot-edge-ca-certificates) pour les appareils IoT Edge dans des scénarios de passerelle.
    * [Créer des certificats d’appareil en aval](#create-downstream-device-certificates) pour l’authentification des appareils en aval pour IoT Hub dans un scénario de passerelle.
 
 ## <a name="prerequisites"></a>Prérequis
@@ -226,20 +226,24 @@ Le script crée plusieurs fichiers de certificats et de clés, y compris trois q
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
-## <a name="create-iot-edge-device-ca-certificates"></a>Créer des certificats d’autorité de certification d’appareil IoT Edge
+## <a name="create-iot-edge-ca-certificates"></a>Créer des certificats d’autorité de certification IoT Edge
 
-Chaque appareil IoT Edge allant en production a besoin d’un certificat d’autorité de certification d’appareil référencé à partir du fichier config.
-Le certificat d’autorité de certification de l’appareil est chargé de créer des certificats pour les modules en cours d’exécution sur l’appareil.
-Il est également nécessaire pour les scénarios de passerelle, car c'est grâce au certificat de l'autorité de certification de l'appareil que l'appareil IoT Edge vérifie son identité auprès des appareils en aval.
-
-<!-- 1.1 -->
+<!--1.1-->
 :::moniker range="iotedge-2018-06"
+
+Chaque appareil IoT Edge allant en production a besoin d’un certificat signé d’autorité de certification référencé à partir du fichier config. Ce certificat est connu sous le nom de **certificat d’autorité de certification d’appareil**. Le certificat d’autorité de certification de l’appareil est chargé de créer des certificats pour les modules en cours d’exécution sur l’appareil. Il est également nécessaire pour les scénarios de passerelle, car c'est grâce au certificat de l'autorité de certification de l'appareil que l'appareil IoT Edge vérifie son identité auprès des appareils en aval.
+
 Les certificats d’autorité de certification d'appareil sont placés dans la section **Certificat** du fichier config.yaml de l’appareil IoT Edge.
+
 :::moniker-end
 
-<!-- 1.2 -->
+<!--1.2-->
 :::moniker range=">=iotedge-2020-11"
-Les certificats d’autorité de certification d’appareil sont placés dans la section **Edge CA** du fichier config.toml sur l’appareil IoT Edge.
+
+Chaque appareil IoT Edge allant en production a besoin d’un certificat signé d’autorité de certification référencé à partir du fichier config. Ce certificat est connu sous le nom de **certificat d’autorité de certification Edge**. Le certificat d’autorité de certification Edge est chargé de créer des certificats pour les modules en cours d’exécution sur l’appareil. Il est également nécessaire pour les scénarios de passerelle, car c'est grâce au certificat de l'autorité de certification Edge que l'appareil IoT Edge vérifie son identité auprès des appareils en aval.
+
+Les certificats d’autorité de certification Edge sont placés dans la section **Autorité de certification Edge** du fichier config.toml sur l’appareil IoT Edge.
+
 :::moniker-end
 
 Avant de suivre les étapes de cette section, suivez les étapes décrites dans les sections [Configurer des scripts](#set-up-scripts) et [Créer un certificat d’autorité de certification racine](#create-root-ca-certificate).
@@ -248,7 +252,7 @@ Avant de suivre les étapes de cette section, suivez les étapes décrites dans 
 
 1. Accédez au répertoire de travail qui contient les scripts de génération de certificats et le certificat d’autorité de certification racine.
 
-2. Créez la clé privée et le certificat d’autorité de certification d’appareil IoT Edge avec la commande suivante. Fournissez un nom pour le certificat de l'autorité de certification.
+2. Créez la clé privée et le certificat d’autorité de certification IoT Edge avec la commande suivante. Fournissez un nom pour le certificat de l'autorité de certification.
 
    ```powershell
    New-CACertsEdgeDevice "<CA cert name>"
@@ -265,7 +269,7 @@ Le nom transmis à la commande **New-CACertsEdgeDevice** ne doit pas être ident
 
 1. Accédez au répertoire de travail qui contient les scripts de génération de certificats et le certificat d’autorité de certification racine.
 
-2. Créez la clé privée et le certificat d’autorité de certification d’appareil IoT Edge avec la commande suivante. Fournissez un nom pour le certificat de l'autorité de certification.
+2. Créez la clé privée et le certificat d’autorité de certification IoT Edge avec la commande suivante. Fournissez un nom pour le certificat de l'autorité de certification.
 
    ```bash
    ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"

@@ -2,22 +2,18 @@
 metadata:
   title: 'Azure Front Door : Questions fréquentes'
   description: Cette page fournit des réponses aux questions les plus souvent posées sur Azure Front Door.
-  services: frontdoor
-  documentationcenter: ''
   author: duongau
+  ms.author: duau
   ms.service: frontdoor
-  ms.devlang: na
   ms.topic: article
-  ms.tgt_pltfrm: na
   ms.workload: infrastructure-services
   ms.date: 09/14/2021
-  ms.author: duau
-  ms.openlocfilehash: 43a4b39295b905f1a02eedfd61a6c13fca66319e
-  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+  ms.openlocfilehash: e977459806fb6ec83f8f969d9011adc14f026744
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130167701"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131442613"
 title: Questions fréquentes (FAQ) sur Azure Front Door
 summary: >
   Cet article répond aux questions courantes sur les fonctionnalités d’Azure Front Door. Si vous ne trouvez pas de réponse à votre question ici, vous pouvez nous joindre par le biais des méthodes suivantes (par ordre de priorité) :
@@ -25,7 +21,9 @@ summary: >
 
   1. La section Commentaires de cet article
 
-  2. [Azure Front Door UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
+
+  2. [Azure Front Door UserVoice](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=d47b0f41-8326-ec11-b6e6-000d3a4f0789).
+
 
   3. **Support Microsoft :** Pour créer une demande de support, dans le portail Azure, sous l’onglet **Aide**, sélectionnez le bouton **Aide et support**, puis **Nouvelle demande de support**.
 sections:
@@ -122,57 +120,7 @@ sections:
   questions:
   - question: >
       Quelles sont les versions de TLS prises en charge par Azure Front Door ?
-    answer: >
-      Tous les profils Front Door créés après septembre 2019 utilisent TLS 1.2 comme configuration minimale par défaut.
-
-
-      Front Door prend en charge les versions TLS 1.0, 1.1 et 1.2. TLS 1.3 n’est pas encore pris en charge.
-  - question: >
-      Quels sont les certificats pris en charge sur Azure Front Door ?
-    answer: >
-      Pour permettre au protocole HTTPS de distribuer le contenu de manière sécurisée sur un domaine personnalisé Front Door, vous pouvez choisir d’utiliser un certificat managé par Azure Front Door ou votre propre certificat.
-
-      L'option managée par Front Door approvisionne un certificat TLS/SSL standard délivré par le biais de Digicert et stocké dans le coffre de clés Front Door. Si vous choisissez d'utiliser votre propre certificat, vous pouvez intégrer un certificat délivré par une autorité de certification prise en charge ; il peut s'agir d'un certificat TLS standard, d'un certificat de validation étendue ou même d'un certificat générique. Les certificats auto-signés ne sont pas pris en charge. Découvrez [comment activer le protocole HTTPS pour un domaine personnalisé](./front-door-custom-domain-https.md).
-  - question: >
-      Front Door prend-il en charge la rotation automatique des certificats ?
-    answer: >
-      Concernant l’option de certificat managé Front Door, Front Door assure la rotation automatique des certificats. Si vous utilisez un certificat géré Front Door et que vous voyez que la date d’expiration du certificat est inférieure à 60 jours, envoyez un ticket de support.
-
-      </br>Pour votre propre certificat TLS/SSL personnalisé, affectez la valeur « Latest » à la version secrète pour qu’Azure Front Door effectue automatiquement une rotation vers la dernière version secrète téléchargée sur votre Key Vault. Le déploiement de la nouvelle version du certificat/secret peut prendre jusqu’à 24 heures. Si vous configurez la version secrète sur une version spécifique, vous devez faire pointer Front Door vers la version de certificat appropriée dans votre Key Vault. Assurez-vous que le principal de service pour Front Door a toujours accès au Key Vault. Reportez-vous à [comment accorder l’accès](standard-premium/how-to-configure-https-custom-domain.md#grant-azure-front-door-access-to-your-key-vault) à votre coffre à clés. Cette opération de lancement de certificat mis à jour par Front Door n’interrompt pas la production, à condition que le nom de l’objet ou le nom alternatif du sujet (SAN) pour le certificat ne change pas.
-  - question: >
-      Quelles sont les suites de chiffrement actuellement prises en charge par Azure Front Door ?
-    answer: "Pour TLS 1.2, les suites de chiffrement suivantes sont prises en charge : \n\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n\n> [!NOTE]  \n> Pour Windows 10 et versions ultérieures, nous vous recommandons d’activer une, ou les deux, suites de chiffrement ECDHE pour une meilleure sécurité. Windows 8.1, 8 et 7 ne sont pas compatibles avec ces suites de chiffrement ECDHE. Les suites de chiffrement DHE ont été fournies pour la compatibilité avec ces systèmes d’exploitation.\n\nQuand vous utilisez des domaines personnalisés avec TLS 1.0/1.1 activé, les suites de chiffrement suivantes sont prises en charge :\n\n- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\n- TLS_RSA_WITH_AES_256_GCM_SHA384\n- TLS_RSA_WITH_AES_128_GCM_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA256\n- TLS_RSA_WITH_AES_128_CBC_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA\n- TLS_RSA_WITH_AES_128_CBC_SHA\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n"
-  - question: >
-      Puis-je configurer la stratégie TLS de manière à contrôler les versions du protocole TLS ?
-    answer: >
-      Vous pouvez configurer une version TLS minimale dans Azure Front Door dans les paramètres HTTPS de domaine personnalisé par le biais du portail Azure ou de l’[API REST Azure](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion). Actuellement, vous pouvez choisir entre 1.0 et 1.2.
-  - question: >
-      Puis-je configurer Front Door pour prendre en charge uniquement des suites de chiffrement spécifiques ?
-    answer: "Non, la configuration de Front Door pour des suites de chiffrement spécifiques n’est pas prise en charge. Toutefois, vous pouvez obtenir votre propre certificat TLS/SSL personnalisé auprès de votre autorité de certification (par exemple, VeriSign, Entrust ou DigiCert) et faire en sorte que des suites de chiffrement spécifiques soient marquées sur le certificat lorsque vous le générez. \n"
-  - question: >
-      Front Door prend-il en charge l’agrafage OCSP ?
-    answer: >
-      Oui, l’agrafage OCSP est pris en charge par défaut par Front Door et aucune configuration n’est requise.
-  - question: >
-      Azure Front Door prend-il également en charge le nouveau chiffrement du trafic vers le back-end ?
-    answer: >
-      Oui, Azure Front Door prend en charge le déchargement TLS/SSL et le protocole TLS de bout en bout, qui rechiffre le trafic vers le back-end. En fait, étant donné que les connexions au back-end s’effectuent par le biais de son adresse IP publique, nous vous recommandons de configurer votre porte d’entrée de façon à utiliser HTTPS comme protocole de transfert.
-  - question: >
-      Front Door prend-il en charge les certificats auto-signés sur le back-end pour la connexion HTTPS ?
-    answer: >
-      Non, les certificats auto-signés ne sont pas pris en charge sur Front Door et cette restriction s’applique aux deux éléments suivants :
-
-
-      - **Back-ends** : vous ne pouvez pas utiliser de certificats auto-signés quand vous transférez le trafic en tant que trafic HTTPS ou sondes d’intégrité HTTPS ou que vous remplissez le cache à partir de l’origine pour les règles d’acheminement avec mise en cache activée.
-
-      - **Front-end** : vous ne pouvez pas utiliser de certificats auto-signés lorsque vous utilisez votre propre certificat TLS/SSL personnalisé pour activer HTTPS sur votre domaine personnalisé.
-  - question: >
-      Pourquoi le trafic HTTPS vers mon back-end échoue ?
-    answer: "Concernant les connexions HTTPS vers votre back-end, qu’il s’agisse de sondes d’intégrité ou de transferts de requêtes, le trafic HTTPS peut échouer pour deux raisons :\n\n- **Incompatibilité du nom d’objet du certificat** : Pour les connexions HTTPS, Front Door s’attend à ce que votre back-end présente le certificat d’une autorité de certification valide avec un ou plusieurs noms d’objet correspondant au nom d’hôte du back-end. Par exemple, si le nom d'hôte de votre back-end est défini sur `myapp-centralus.contosonews.net` et que le certificat que votre back-end présente pendant la négociation TLS ne comporte ni `myapp-centralus.contosonews.net` ni `*myapp-centralus*.contosonews.net` dans le nom de l'objet, Front Door refuse la connexion et génère une erreur. \n    - **Solution**: Bien que ce ne soit pas recommandé du point de vue de la conformité, vous pouvez contourner cette erreur en désactivant la vérification du nom d’objet du certificat pour votre porte d’entrée. Cette option est présente sous Paramètres dans le portail Azure et sous BackendPoolsSettings dans l’API.\n- **Certificat d’hébergement back-end issu d’une autorité de certification non valide** : seuls les certificats provenant d’[autorités de certification valides](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) peuvent être utilisés sur le back-end avec Front Door. Les certificats provenant d’autorités de certification internes ou les certificats auto-signés ne sont pas autorisés. Le certificat doit avoir une chaîne de certificats complète avec des certificats feuille et intermédiaires, et l’autorité de certification racine doit faire partie de la [liste des autorités de certification de confiance Microsoft](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT). \n"
-  - question: >
-      Puis-je utiliser l’authentification client/mutuelle avec Azure Front Door ?
-    answer: >
-      Non. Bien qu’Azure Front Door prenne en charge TLS 1.2, qui a introduit l’authentification client/mutuelle dans [RFC 5246](https://tools.ietf.org/html/rfc5246), actuellement, Azure Front Door Service ne prend pas en charge l’authentification client/mutuelle.
+    answer: "Tous les profils Front Door créés après septembre 2019 utilisent TLS 1.2 comme configuration minimale par défaut.\n\nFront Door prend en charge les versions TLS 1.0, 1.1 et 1.2. TLS 1.3 n’est pas encore pris en charge. Pour plus d’informations, reportez-vous à [TLS de bout en bout avec Azure Front Door](concept-end-to-end-tls.md).\n        \n"
 - name: Facturation
   questions:
   - question: >

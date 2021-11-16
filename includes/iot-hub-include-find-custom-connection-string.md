@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 605a0441bd01ab88edb482c0ade22a6f21f4c8ba
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: fc2dd8938f627be669519b843a97b87ddf1e3203
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109508398"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288383"
 ---
 <!-- This tells how to create a custom shared access policy for your IoT hub and get the connection string for it-->
 
@@ -25,14 +25,14 @@ Pour créer une stratégie d'accès partagé qui accorde des autorisations de **
 
 1. Dans le menu supérieur au-dessus de la liste des stratégies, sélectionnez **Ajouter**.
 
-1. Sous **Ajouter une stratégie d’accès partagé**, entrez un nom descriptif pour votre stratégie, par exemple *serviceAndRegistryRead*. Sous **Autorisations**, sélectionnez **Lecture du registre** et **Connexion du service**, puis sélectionnez **Créer**.
+1. Sous **Ajouter une stratégie d’accès partagé**, entrez un nom descriptif pour votre stratégie, par exemple *serviceAndRegistryRead*. Sous **Autorisations**, sélectionnez **Lecture du registre** et **Connexion du service**, puis sélectionnez **Ajouter**.
 
-    ![Montrer comment ajouter une nouvelle stratégie d'accès partagé](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
+    :::image type="content" source="./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png" alt-text="Capture d’écran qui montre comment ajouter une nouvelle stratégie d’accès partagé" border="true":::
 
 1. Sélectionnez votre nouvelle stratégie dans la liste des stratégies.
 
-1. Sous **Clés d’accès partagé**, sélectionnez l’icône de copie pour la **chaîne de connexion -- clé primaire** et enregistrez la valeur.
+1. Sélectionnez l’icône de copie pour la **Chaîne de connexion principale** et enregistrez la valeur.
 
-    ![Montrer comment récupérer la chaîne de connexion](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
+    :::image type="content" source="./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png" alt-text="Capture d’écran qui montre comment récupérer la chaîne de connexion" border="true":::
 
 Pour plus d’informations sur les autorisations et les stratégies d’accès partagé IoT Hub, consultez [Contrôle d’accès et autorisations](../articles/iot-hub/iot-hub-dev-guide-sas.md#access-control-and-permissions).

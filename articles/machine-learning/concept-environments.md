@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/23/2021
-ms.openlocfilehash: a90846df8aa57ee970bdf50a7bb61fabeba03144
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e798893b28eaaa6aabb1d3f3623aea60df7bc2c6
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665144"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576146"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Présentation des environnements Azure Machine Learning
 
@@ -38,42 +38,41 @@ Les environnements se répartissent globalement en trois catégories : *organis
 
 Les environnements organisés sont fournis par Azure Machine Learning et sont disponibles dans votre espace de travail par défaut. Prévus pour être utilisés tels quels, ils contiennent des collections de packages et paramètres Python destinés à vous aider à prendre en main diverses infrastructures de Machine Learning. Ces environnements précréés offrent également un temps de déploiement plus rapide. Pour obtenir une liste complète, consultez [l’article sur les environnements organisés](resource-curated-environments.md).
 
-Dans un environnement géré par l’utilisateur, vous êtes responsable de la configuration de votre environnement et de l’installation de chaque package dont votre script d’apprentissage a besoin sur la cible de calcul. Conda ne vérifie pas votre environnement et n’installe rien à votre place. Si vous définissez votre propre environnement, vous devez répertorier `azureml-defaults` avec la version `>= 1.0.45` comme dépendance PIP. Ce package contient les fonctionnalités qui sont nécessaires pour héberger le modèle en tant que service web.
+Dans un environnement géré par l’utilisateur, vous êtes responsable de la configuration de votre environnement et de l’installation de chaque package dont votre script d’apprentissage a besoin sur la cible de calcul. Veillez également à inclure toutes les dépendances nécessaires pour le modèle de déploiement.
 
-Vous utilisez des environnements gérés par le système quand vous souhaitez que [Conda](https://conda.io/docs/) gère automatiquement l’environnement Python et les dépendances de script. Un nouvel environnement conda est généré en fonction de l’objet de dépendances conda. Le service Azure Machine Learning adopte ce type d’environnement par défaut, à cause de son utilité sur les cibles de calcul distantes qui ne sont pas configurables manuellement.
+Vous utilisez des environnements gérés par le système quand vous souhaitez que [Conda](https://conda.io/docs/) gère l’environnement Python pour vous. Un nouvel environnement Conda est matérialisé à partir de votre spécification Conda sur une image Docker de base.
 
 ## <a name="create-and-manage-environments"></a>Créer et gérer des environnements
 
-Vous pouvez créer des environnements en :
+Vous pouvez créer des environnements à partir de clients tels que le Kit de développement logiciel (SDK) Python AzureML, l’interface CLI d’Azure Machine Learning, la page Environnements dans Azure Machine Learning Studio, et l’[extension VS Code](how-to-manage-resources-vscode.md#create-environment). Chaque client vous permet de personnaliser l’image de base, le Dockerfile et la couche Python, si nécessaire.
 
-* Définissant de nouveaux objets `Environment`, soit en utilisant un environnement organisé, soit en définissant vos propres dépendances.
-* utilisant des objets `Environment` existants à partir de votre espace de travail. Cette approche permet de garantir la cohérence et la reproductibilité de vos dépendances.
-* Importation à partir d’une définition d’environnement Anaconda existante.
-* Utilisation de l’interface CLI Azure Machine Learning
-* [Utilisation de l’extension VS Code](how-to-manage-resources-vscode.md#create-environment)
+Pour des exemples de code spécifiques, consultez la section « Créer un environnement » de [Comment utiliser les environnements](how-to-use-environments.md#create-an-environment). 
 
-Pour des exemples de code spécifiques, consultez la section « Créer un environnement » de [Comment utiliser les environnements](how-to-use-environments.md#create-an-environment). Les environnements sont également facilement gérés via votre espace de travail. Ils doivent inclure la fonctionnalité suivante :
+Les environnements sont également facilement gérés via votre espace de travail, ce qui vous permet d’effectuer les opérations suivantes :
 
-* Les environnements sont automatiquement inscrits à votre espace de travail lorsque vous soumettez une expérience. Ils peuvent également être inscrits manuellement.
-* Vous pouvez récupérer des environnements à partir de votre espace de travail à utiliser pour l’apprentissage ou le déploiement, ou bien pour apporter des modifications à la définition de l’environnement.
-* Avec le contrôle de version, vous pouvez voir les modifications apportées à vos environnements dans le temps, ce qui garantit la reproductibilité.
-* Vous pouvez créer automatiquement des images Docker à partir de vos environnements.
+* Inscrire des environnements.
+* Extraire des environnements de votre espace de travail à des fins d’apprentissage ou de déploiement.
+* Créer une instance d’un environnement en modifiant une instance existante.
+* Afficher les modifications apportées à vos environnements au fil du temps, ce qui garantit la reproductibilité.
+* Créer automatiquement des images Docker à partir de vos environnements.
+
+Les environnements «anonymes» sont automatiquement inscrits dans votre espace de travail lorsque vous soumettez une expérience. Ils ne sont pas listés, mais peuvent être récupérés par version.
 
 Pour des exemples de code, consultez la section « Gérer les environnements » de [Comment utiliser les environnements](how-to-use-environments.md#manage-environments).
 
 ## <a name="environment-building-caching-and-reuse"></a>Création, mise en cache et réutilisation d’environnement
 
-Le service Azure Machine Learning génère des définitions d’environnement dans des images Docker et des environnements Conda. Il met également en cache les environnements afin qu’ils puissent être réutilisés lors des exécutions d’entraînement et des déploiements de points de terminaison de service ultérieurs. L’exécution d’un script d’apprentissage à distance requiert la création d’une image Docker, tandis qu’une exécution locale peut utiliser directement un environnement conda. 
+Azure Machine Learning génère des définitions d’environnement dans des images Docker et des environnements Conda. Il met également en cache les environnements afin qu’ils puissent être réutilisés lors des exécutions d’entraînement et des déploiements de points de terminaison de service ultérieurs. L’exécution d’un script d’apprentissage à distance requiert la création d’une image Docker, mais une exécution locale peut utiliser directement un environnement Conda. 
 
 ### <a name="submitting-a-run-using-an-environment"></a>Envoi d’une exécution à l’aide d’un environnement
 
 Quand vous envoyez pour la première fois une exécution à distance à l’aide d’un environnement, le service Azure Machine Learning appelle une [tâche de génération ACR](../container-registry/container-registry-tasks-overview.md) sur l’Azure Container Registry (ACR) associé à l’espace de travail. L’image Docker génrée est ensuite mise en cache sur l’ACR Espace de travail. Les environnements organisés sont sauvegardés par des images Docker mises en cache dans l’ACR global. Au début de l’exécution, l’image est récupérée par la cible de calcul de l’ACR pertinent.
 
-Pour les exécutions locales, un environnement Docker ou conda est créé en fonction de la définition de l’environnement. Les scripts sont ensuite exécutés sur le calcul cible (un environnement d’exécution local ou un moteur Docker local).
+Pour les exécutions locales, un environnement Docker ou Conda est créé en fonction de la définition de l’environnement. Les scripts sont ensuite exécutés sur le calcul cible (un environnement d’exécution local ou un moteur Docker local).
 
 ### <a name="building-environments-as-docker-images"></a>Génération d’environnements en tant qu’images Docker
 
-Si la définition de l’environnement n’existe pas encore dans l’ACR Espace de travail, une nouvelle image est générée. La génération d’image comprend deux étapes :
+Si l’image pour une définition d’environnement particulière n’existe pas encore dans l’ACR de l’espace de travail, une nouvelle image est générée. La génération d’image comprend deux étapes :
 
  1. Téléchargement d’une image de base et exécution des étapes Docker
  2. Génération d’un environnement Conda en fonction des dépendances Conda spécifiées dans la définition d’environnement
@@ -82,34 +81,51 @@ La deuxième étape est omise si vous spécifiez des [dépendances gérées par 
 
 ### <a name="image-caching-and-reuse"></a>Mise en cache et réutilisation des images
 
-Si vous utilisez la même définition d’environnement pour une autre exécution, le service Azure Machine Learning réutilise l’image mise en cache à partir de l’ACR Espace de travail. 
+Si vous utilisez la même définition d’environnement pour une autre exécution, Azure Machine Learning réutilise l’image mise en cache à partir de l’ACR de l’espace de travail pour gagner du temps.
 
-Pour afficher les détails d’une image mise en cache, utilisez la méthode [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment#get-image-details-workspace-).
+Pour afficher les détails d’une image mise en cache, consultez la page Environnements dans Azure Machine Learning Studio, ou utilisez la méthode [`Environment.get_image_details`](/python/api/azureml-core/azureml.core.environment.environment#get-image-details-workspace-).
 
-Pour déterminer s’il faut réutiliser une image mise en cache ou en créer une nouvelle, le service calcule [une valeur de hachage](https://en.wikipedia.org/wiki/Hash_table) à partir de la définition d’environnement et la compare aux hachages des environnements existants. Le hachage est basé sur :
+Pour déterminer s’il faut réutiliser une image mise en cache ou en créer une, AzureML calcule une [valeur de hachage](https://en.wikipedia.org/wiki/Hash_table) à partir de la définition d’environnement et la compare aux hachages d’environnements existants. Le hachage est basé sur la définition de l’environnement :
  
- * La valeur de la propriété d’image de base.
- * La valeur de la propriété des étapes Docker personnalisées
- * La liste des packages Python dans la définition Conda.
- * La liste des packages dans la définition Spark. 
+ * Base image
+ * Étapes Docker personnalisées
+ * Packages Python
+ * Packages Spark
 
-Le hachage ne dépend pas du nom ou de la version de l’environnement ; si vous renommez simplement votre environnement ou si vous en créez un nouveau avec les propriétés et packages exacts d’un environnement existant, la valeur de hachage reste la même. Cependant, les modifications de définition d’environnement, telles que l’ajout ou la suppression d’un package Python ou la modification de la version du package, entraînent la modification de la valeur de hachage. La modification de l’ordre des dépendances ou des canaux dans un environnement entraîne un nouvel environnement et nécessite donc une nouvelle génération d’image. Il est important de noter que toute modification apportée à un environnement organisé invalidera le hachage et générera un nouvel environnement « non organisé ».
+Le hachage n’est pas affecté par le nom ou la version de l’environnement. Si vous renommez votre environnement, ou créez un environnement avec les mêmes paramètres et packages qu’un autre, la valeur de hachage reste la même. Cependant, les changements de définition d’environnement, tels que l’ajout ou la suppression d’un package Python ou la modification de la version d’un package, entraînent la modification de la valeur de hachage. La modification de l’ordre des dépendances ou des canaux dans un environnement modifie également le hachage, et nécessite une nouvelle génération d’image. De même, toute modification d’un environnement organisé entraîne la création d’un nouvel environnement « non organisé ». 
 
-La valeur de hachage calculée est comparée à celles de l’espace de travail et de l’ACR global (ou sur la cible de calcul pour les exécutions locales). En cas de correspondance, l’image mise en cache est extraite, sinon une génération d’image est déclenchée. La durée d’extraction d’une image mise en cache comprend le temps de téléchargement, tandis que la durée d’extraction d’une image nouvellement générée comprend la durée de génération et le temps de téléchargement. 
+> [!NOTE]
+> Vous ne pouvez pas soumettre des modifications locales d’un environnement organisé sans modifier son nom. Les préfixes « AzureML- » et « Microsoft » sont réservés exclusivement aux environnements organisés, et votre soumission de travail échoue si le nom commence par l’un des deux.
 
-Le diagramme suivant montre trois définitions d’environnement. Deux d’entre elles ont un nom et une version différents, mais une image de base et des packages Python identiques. Mais elles ont le même hachage et correspondent donc à la même image mise en cache. Le troisième environnement a des packages et des versions Python différents, et correspond donc à une image mise en cache différente.
+La valeur de hachage calculée de l’environnement est comparée aux valeurs dans l’espace de travail et de l’ACR global, ou sur la cible de calcul (exécutions locales uniquement). En cas de correspondance, l’image mise en cache est extraite et utilisée. Autrement, une génération d’image est déclenchée.
 
-![Diagramme de la mise en cache d’environnement en tant qu’images Docker](./media/concept-environments/environment-caching.png)
+Le diagramme suivant montre trois définitions d’environnement. Deux d’entre elles ont des noms et versions différents, mais des images de base et des packages Python identiques, produisant les mêmes hachage et image mise en cache. Le troisième environnement a des packages et versions Python différents qui produisent un hachage et une image mise en cache différents.
+
+![Diagramme de mise en cache d’environnement et d’images Docker](./media/concept-environments/environment-caching.png)
+
+Les images mises en cache réelles dans votre ACR d’espace de travail ont des noms tels que `azureml/azureml_e9607b2514b066c851012848913ba19f` avec le hachage apparaissant à la fin.
 
 >[!IMPORTANT]
-> * Si vous créez un environnement avec une dépendance de package non épinglée, par exemple `numpy`, l’environnement utilise la version de package qui était *installée lors de sa création*. En outre, tout environnement futur qui utilise une définition correspondante utilisera la version d’origine. 
+> * Si vous créez un environnement avec une dépendance de package non épinglée (par exemple, `numpy`), l’environnement utilise la version de package qui était *disponible lors de sa création*. Tout environnement futur utilisant une définition correspondante utilisera la version d’origine. 
 >
->   Pour mettre à jour le package, spécifiez un numéro de version afin de forcer la regénération de l’image, par exemple `numpy==1.18.1`. Les nouvelles dépendances, notamment celles imbriquées, seront installées, et elles peuvent provoquer le non-fonctionnement d’un scénario précédemment opérationnel.
+>   Pour mettre à jour le package, spécifiez un numéro de version afin de forcer la régénération de l’image. Un exemple de cela serait de changer `numpy` en `numpy==1.18.1`. De nouvelles dépendances, notamment imbriquées, seront installées et pourraient nuire au bon fonctionnement d’un scénario précédemment opérationnel.
 >
-> * L’utilisation d’une image de base non épinglée comme `mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04` dans votre définition d’environnement entraîne la régénération de l’environnement chaque fois que la balise la plus récente est mise à jour. Il est supposé que vous souhaitez tenir à jour la version la plus récente pour diverses raisons, comme pour les vulnérabilités, les mises à jour système et les correctifs. 
+> * L’utilisation d’une image de base non épinglée comme `mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04` dans votre définition d’environnement entraîne la régénération de l’image chaque fois que l’étiquette `latest` est mise à jour. Cela permet à l’image de recevoir les derniers correctifs et mises à jour système.
 
 > [!WARNING]
->  La méthode [Environment.build](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) regénérera l’image mise en cache, avec comme effet secondaire possible la mise à jour des packages désépinglés et la rupture de la reproductibilité pour toutes les définitions d’environnement correspondant à cette image mise en cache.
+>  La méthode [`Environment.build`](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) régénérera l’image mise en cache, avec comme effet secondaire possible la mise à jour des packages désépinglés et la rupture de la reproductibilité pour toutes les définitions d’environnement correspondant à cette image mise en cache.
+
+### <a name="image-patching"></a>Mise à jour corrective d’image
+
+Microsoft est responsable de la mise à jour corrective des images de base pour les vulnérabilités de sécurité connues. Les mises à jour des images prises en charge sont publiées toutes les deux semaines, avec l’engagement que la version la plus récente de l’image ne contienne aucune vulnérabilité non corrigée datant de plus de 30 jours. Les images corrigées sont publiées avec une nouvelle étiquette immuable, et l’étiquette `:latest` est mise à jour vers la dernière version de l’image corrigée. 
+
+Si vous fournissez vos propres images, vous êtes chargé de les mettre à jour.
+
+Pour plus d’informations sur les images de base, consultez les liens suivants :
+
+* Dépôt GitHub d’[images de base Azure Machine Learning](https://github.com/Azure/AzureML-Containers).
+* [Effectuer l’apprentissage d’un modèle à l’aide d’une image personnalisée](how-to-train-with-custom-image.md).
+* [Déployer un modèle TensorFlow à l’aide d’un conteneur personnalisé](how-to-deploy-custom-container.md)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/08/2021
 ms.author: aahi
 ms.custom: language-service-sentiment-opinion-mining, ignite-fall-2021
-ms.openlocfilehash: 3c010c4734380faf1551bc6701bbbf01173243c7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a0cbc5bab15e80bb18ca3d4a13efa2d05fe5aeff
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096545"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027144"
 ---
 # <a name="sentiment-analysis-and-opinion-mining-language-support"></a>Prise en charge des langages d’exploration de données Analyse des sentiments et opinion 
 
 Utilisez cet article pour découvrir les langages naturels pris en charge par Analyse des sentiments et Exploration des opinions.
 
 > [!NOTE]
-> Les langages sont ajoutés à mesure que de nouvelles [versions de modèle](how-to/call-api.md#specify-the-sentiment-analysis-model) sont publiées. La version actuelle du modèle pour l’Analyse des sentiments est `2020-04-01`.
+> Les langages sont ajoutés à mesure que de nouvelles versions de modèle sont publiées. La version actuelle du modèle généralement disponible pour l’Analyse des sentiments est `2020-04-01`. Pour utiliser la dernière version du modèle en préversion (`2021-10-01-preview`), spécifiez-la dans votre appel d’API. Pour plus d’informations, consultez [Comment appeler l’API](how-to/call-api.md#specify-the-sentiment-analysis-model).
 
 ## <a name="sentiment-analysis-language-support"></a>Prise en charge des langues Analyse des sentiments
 
@@ -50,12 +50,12 @@ Utilisez cet article pour découvrir les langages naturels pris en charge par An
 | Langage              | Code langue | À partir de la version de modèle : |              Notes |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | Anglais               |     `en`      |  2020-04-01              |                    |
-| Français                |     `fr`      |         2021-10-01         |                    |
-| Allemand                |     `de`      |         2021-10-01         |                    |
-| Italien               |     `it`      |         2021-10-01         |                    |
-| Portugais (Brésil)   |    `pt-BR`    |         2021-10-01         |                    |
-| Portugais (Portugal) |    `pt-PT`    |         2021-10-01         | `pt` également accepté |
-| Espagnol               |     `es`      |         2021-10-01         |                    |
+| Français                |     `fr`      |         2021-10-01-preview         |                    |
+| Allemand                |     `de`      |         2021-10-01-preview         |                    |
+| Italien               |     `it`      |         2021-10-01-preview         |                    |
+| Portugais (Brésil)   |    `pt-BR`    |         2021-10-01-preview         |                    |
+| Portugais (Portugal) |    `pt-PT`    |         2021-10-01-preview         | `pt` également accepté |
+| Espagnol               |     `es`      |         2021-10-01-preview         |                    |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

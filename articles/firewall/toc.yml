@@ -30,7 +30,7 @@
       href: sample-powershell.md
 - name: Concepts
   items:
-    - name: Fonctionnalités du Pare-feu Azure
+    - name: Fonctionnalités du Pare-feu Azure Standard
       href: features.md
     - name: Fonctionnalités du Pare-feu Azure Premium
       href: premium-features.md
@@ -48,6 +48,8 @@
       href: logs-and-metrics.md
     - name: Informations sur les menaces
       href: threat-intel.md
+    - name: Ensembles de règles de stratégie
+      href: policy-rule-sets.md
     - name: Logique de traitement des règles
       href: rule-processing.md
     - name: Balises de service

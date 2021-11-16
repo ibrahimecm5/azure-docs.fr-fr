@@ -10,12 +10,12 @@ author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 00eff3758d3a279d5ffb6d993196def46a7c4420
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b92324d61316ba59f964cff97ebbb9869d01dafb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063531"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557981"
 ---
 # <a name="cli-v2-dataset-yaml-schema"></a>Schéma YAML du jeu de données CLI (v2)
 
@@ -52,35 +52,35 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-datastore-file"></a>YAML : fichier datastore
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file.yml":::
 
 ## <a name="yaml-datastore-folder"></a>YAML : dossier datastore
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder.yml":::
 
 ## <a name="yaml-https-file"></a>YAML : fichier https
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file-https.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file-https.yml":::
 
 ## <a name="yaml-https-folder"></a>YAML : dossier https
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder-https.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder-https.yml":::
 
 ## <a name="yaml-wasbs-file"></a>YAML : fichier wasbs
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file-wasbs.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file-wasbs.yml":::
 
 ## <a name="yaml-wasbs-folder"></a>YAML : dossier wasbs
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder-wasbs.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder-wasbs.yml":::
 
 ## <a name="yaml-local-file"></a>YAML : fichier local
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/local-file.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/local-file.yml":::
 
 ## <a name="yaml-local-folder"></a>YAML : dossier local
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/local-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/local-folder.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

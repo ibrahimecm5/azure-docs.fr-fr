@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, references_regions, ignite-fall-2021
-ms.openlocfilehash: 16a6412c95bdb203d524959ef541f8b1488c8f5a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7dfe80162ab406c6dde32ad54ff251e001f5416
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097969"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027676"
 ---
 # <a name="how-to-create-custom-ner-projects"></a>Guide pratique pour créer des projets de NER personnalisée
 
@@ -103,9 +103,9 @@ Pour utiliser la NER personnalisée, vous devez [créer un compte Stockage Azure
 
 Ensuite, vous devez affecter les [rôles appropriés](#roles-for-your-storage-account) pour le compte de stockage afin de le connecter à votre ressource Language. 
 
-## <a name="roles-for-your-azure-resource"></a>Rôles pour votre ressource Azure
+## <a name="roles-for-your-azure-language-resource"></a>Rôles pour votre ressource Azure Language
 
-Le rôle de propriétaire ou de contributeur doit vous être affecté sur votre ressource Azure.
+Le rôle de **propriétaire** ou de **contributeur** doit vous être attribué sur votre ressource Azure Language.
 
 ## <a name="enable-identity-management-for-your-resource"></a>Activer la gestion des identités pour votre ressource
 

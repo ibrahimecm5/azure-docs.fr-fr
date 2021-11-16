@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 053ff6ec2a2b690ef612d9d6d2d188dfe5f6198a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bd1e55c216a314bfc6e132979d5a4999d4f363eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460049"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850619"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planifier et gérer les coûts pour Azure Synapse Analytics
 
@@ -66,6 +66,10 @@ Une fois que vous avez supprimé des ressources Azure Synapse, les ressources su
 ### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Utilisation du crédit Paiement anticipé Azure avec Azure Synapse 
 
 Vous pouvez payer les frais Azure Synapse avec votre crédit Paiement anticipé Azure. Vous ne pouvez cependant pas utiliser le crédit Paiement anticipé Azure pour payer des frais pour des produits et services tiers, notamment ceux de la Place de marché Azure.
+
+### <a name="pre-purchase-plan-for-azure-synapse"></a>Plan de préachat pour Azure Synapse
+
+Vous pouvez réduire les coûts d’Azure Synapse Analytics en préachetant des unités de validation Azure Synapse (SCU) pour une année. Vous pouvez utiliser les SCU préachetées à tout moment pendant la durée de l’achat. Pour plus d’informations, consultez [Optimiser les coûts d’Azure Synapse Analytics avec un plan de préachat](../cost-management-billing/reservations/synapse-analytics-pre-purchase-plan.md).
 
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Vérifiez l’estimation du coût dans le portail Azure

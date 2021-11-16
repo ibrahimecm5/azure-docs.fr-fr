@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 537fe72423e7ab4052f2a4bad32784a541228296
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5623567cb35f6222d660b9e02de5d2fa125dd826
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553953"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867149"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sécuriser l’accès aux données dans Azure Machine Learning
 
@@ -67,7 +67,7 @@ Services de stockage cloud pris en charge dans Azure qui peuvent être enregistr
 + Azure Database pour MySQL
 
 >[!TIP]
-> Les fonctionnalités en disponibilité générale liées à la création de magasins de données nécessitent une authentification basée sur les informations d’identification pour l’accès aux services de stockage, par exemple un principal de service ou un jeton de signature d’accès partagé (SAS). Ces informations d’identification sont accessibles aux utilisateurs qui disposent de l’accès *Lecteur* pour l’espace de travail. <br><br>Si cela pose problème, [créez un magasin de données qui utilise l’accès aux données en fonction de l’identité sur les services de stockage (préversion) ](how-to-identity-based-data-access.md). Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment.
+> Les fonctionnalités en disponibilité générale liées à la création de magasins de données nécessitent une authentification basée sur les informations d’identification pour l’accès aux services de stockage, par exemple un principal de service ou un jeton de signature d’accès partagé (SAS). Ces informations d’identification sont accessibles aux utilisateurs qui disposent de l’accès *Lecteur* pour l’espace de travail. <br><br>Si cela pose problème, [créez un magasin de données qui utilise l’accès aux données en fonction de l’identité sur les services de stockage](how-to-identity-based-data-access.md).
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Référencer des données dans le stockage avec des jeux de données

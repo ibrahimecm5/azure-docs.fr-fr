@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 51db45ecaac8be0679832dde29685a6ba2909f75
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: a9f3ac8ce87c3cec11c7bb5cb17e1004bce9f953
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132055754"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556880"
 ---
 # <a name="cli-v2-model-yaml-schema"></a>Schéma YAML du modèle CLI (v2)
 
@@ -43,14 +43,14 @@ La commande `az ml model` peut être utilisée pour gérer les modèles Azure Ma
 
 ## <a name="examples"></a>Exemples
 
-Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/assets/model). Vous en trouverez plusieurs ci-dessous.
+Des exemples sont disponibles dans le [dépôt d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/assets/model). Vous en trouverez plusieurs ci-dessous.
 
 ## <a name="yaml-local-file"></a>YAML : fichier local
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/model/local-file.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/model/local-file.yml":::
 
 ## <a name="yaml-local-folder-in-mlflow-format"></a>YAML : dossier local au format MLflow
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/model/local-mlflow.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/model/local-mlflow.yml":::
 
 - [Installer et utiliser l’interface CLI (v2)](how-to-configure-cli.md)

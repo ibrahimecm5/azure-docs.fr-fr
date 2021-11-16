@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8e85133b8c476f2de046a8396ba171d563751bd7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 154aa9ad4374456247d119902ccfb37803215cdb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128579762"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442252"
 ---
-# <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Tutoriel : Créer une application PHP (Laravel) et Serveur flexible MySQL (préversion) dans Azure App Service
+# <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-app-in-azure-app-service"></a>Tutoriel : Créer une application PHP (Laravel) et Serveur flexible MySQL dans Azure App Service
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
@@ -27,8 +27,8 @@ ms.locfileid: "128579762"
 Dans ce tutoriel, vous allez apprendre à :
 > [!div class="checklist"]
 > * Configurer une application PHP (Laravel) avec MySQL local
-> * Créer un serveur flexible MySQL (préversion)
-> * Connecter une application PHP à un serveur flexible MySQL (préversion)
+> * Créer un serveur flexible MySQL
+> * Connecter une application PHP à un serveur flexible MySQL
 > * Déployer l’application sur Azure App Service
 > * Mise à jour du modèle de données et redéploiement de l’application
 > * Gérer l’application dans le portail Azure
@@ -141,8 +141,8 @@ Dans un navigateur, accédez à `http://localhost:8000`. Ajoutez quelques tâche
 
 Pour arrêter PHP, tapez `Ctrl + C` dans le terminal.
 
-## <a name="create-a-mysql-flexible-server-preview"></a>Créer un serveur flexible MySQL (préversion)
-Au cours de cette étape, vous allez créer une base de données MySQL dans [Azure Database pour MySQL - Serveur flexible](../index.yml), qui est en préversion publique. Ensuite, vous configurerez l’application PHP pour la connexion à cette base de données. Dans [Azure Cloud Shell](../../cloud-shell/overview.md), créez un serveur avec la commande [`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create).
+## <a name="create-a-mysql-flexible-server"></a>Créer un serveur flexible MySQL
+Dans cette étape, vous allez créer une base de données MySQL dans [Azure Database pour MySQL – Serveur flexible](../index.yml). Ensuite, vous configurerez l’application PHP pour la connexion à cette base de données. Dans [Azure Cloud Shell](../../cloud-shell/overview.md), créez un serveur avec la commande [`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create).
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>

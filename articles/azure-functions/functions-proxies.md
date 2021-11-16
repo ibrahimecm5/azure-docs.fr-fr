@@ -2,13 +2,13 @@
 title: Utiliser des proxys dans Azure Functions
 description: Présentation de l’utilisation de Azure Functions Proxies
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: 34873d3d7e0200d2c6ee58096af880f26c428732
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 11/08/2021
+ms.openlocfilehash: 415d090aff611a3c7fc7cd7fb1c511b43b0702db
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429601"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058615"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Utilisation d’Azure Functions Proxies
 
@@ -19,6 +19,8 @@ Une facturation standard s’applique à l’exécution des proxys. Pour plus d�
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
+> Les proxies sont disponibles dans Azure Functions [versions](./functions-versions.md) 1.x à 3.x.
+> 
 > Vous devez également envisager d’utiliser la [Gestion des API Azure](../api-management/api-management-key-concepts.md) pour votre application. Elle offre les mêmes fonctionnalités que les proxys Functions, ainsi que d’autres outils pour la création et la gestion des API, comme l’intégration d’OpenAPI, la limitation du débit et les stratégies avancées. 
 
 ## <a name="create-a-proxy"></a><a name="create"></a>Création d’un proxy

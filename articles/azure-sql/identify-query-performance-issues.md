@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
-ms.date: 1/14/2021
-ms.openlocfilehash: 5ae1bfde67d2fed9147ffe8a18203f3dc1d80c19
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/04/2021
+ms.openlocfilehash: d4b9249ece6117af35466b0984c9dc5ceff2a224
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431975"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843628"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Types détectables de goulots d’étranglement des performances des requêtes dans Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -197,7 +197,7 @@ Une fois que vous avez éliminé les problèmes liés à un plan non optimal et
   si la charge de travail utilise des tables temporaires ou s’il y a des dépassements de TempDB dans les plans, les requêtes ont peut-être un problème avec le débit de TempDB. Consultez l’utilisation des vues de gestion dynamique (DMV) pour [identifier les problèmes liés à TempDB](database/monitoring-with-dmvs.md#identify-tempdb-performance-issues).
 - **Problèmes liés à la mémoire**
 
-  si la charge de travail n’a pas assez de mémoire, l’espérance de vie des pages peut diminuer, ou les requêtes risquent de ne pas obtenir toute la mémoire dont elles ont besoin. Dans certains cas, l’intelligence intégrée dans l’optimiseur de requête résoudra les problèmes de mémoire. Consultez l’utilisation des vues de gestion dynamique (DMV) pour [identifier les problèmes liés à l’allocation de mémoire](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues).
+  si la charge de travail n’a pas assez de mémoire, l’espérance de vie des pages peut diminuer, ou les requêtes risquent de ne pas obtenir toute la mémoire dont elles ont besoin. Dans certains cas, l’intelligence intégrée dans l’optimiseur de requête résoudra les problèmes de mémoire. Consultez l’utilisation des vues de gestion dynamique (DMV) pour [identifier les problèmes liés à l’allocation de mémoire](database/monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues). Pour plus d’informations et pour obtenir des exemples de requêtes, consultez [Résoudre les erreurs de mémoire insuffisante avec Azure SQL Database](database/troubleshoot-memory-errors-issues.md).
 
 ### <a name="methods-to-show-top-wait-categories"></a>Méthodes permettant d’afficher les principales catégories d’attente
 

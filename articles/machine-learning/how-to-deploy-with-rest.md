@@ -11,12 +11,12 @@ ms.author: seramasu
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: 05622e6300dc19e28efaba114aded16fc1a26788
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 724c7a3108f1b0bb699c81444a76e34d795f1705
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557354"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056130"
 ---
 # <a name="deploy-models-with-rest-preview"></a>Déployer des modèles avec REST (préversion)
 
@@ -61,11 +61,11 @@ Dans les appels d’API REST suivants, nous utilisons `SUBSCRIPTION_ID`, `RESOUR
 
 Les requêtes REST administratives utilisent un [jeton d’authentification de principal de service](how-to-manage-rest.md#retrieve-a-service-principal-authentication-token). Remplacez `TOKEN` par votre propre valeur. Vous pouvez récupérer ce jeton à l’aide de la commande suivante :
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="get_access_token":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_access_token":::
 
 Le fournisseur de services utilise l’argument `api-version` pour garantir la compatibilité. L’argument `api-version` varie d’un service à l’autre. Définissez la version de l’API en tant que variable pour prendre en charge les futures versions :
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="api_version":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="api_version":::
 
 ### <a name="get-storage-account-details"></a>Obtenir les détails du compte de stockage
 

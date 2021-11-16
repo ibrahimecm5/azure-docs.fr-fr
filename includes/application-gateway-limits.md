@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 09/09/2021
 ms.author: victorh
-ms.openlocfilehash: f106ca51487e1c4c306d51161110062ad3582fcd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 76fed7a6f79dafd42c6262f4f73bd21a7c2e45a7
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129440103"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860355"
 ---
 | Ressource | Limite | Remarque |
 | --- | --- | --- |
@@ -27,7 +27,8 @@ ms.locfileid: "129440103"
 | Certificats d’authentification |100 | |
 | Certificats racines approuvés |100 | |
 | Délai minimum d’expiration de la demande |1 seconde | |
-| Délai maximum d’expiration de la demande |24 heures | |
+| Délai maximal d’expiration de la demande pour un serveur principal privé |24 heures | |
+| Délai maximal d’expiration de la demande pour un serveur principal externe |4 minutes | |
 | Nombre de sites |100<sup>1</sup> |1 par écouteur HTTP |
 | Mappages d’URL par écouteur |1 | |
 | Nombre maximal de règles basées sur le chemin par mappage d’URL|100||

@@ -1,47 +1,51 @@
 ---
-title: Partager des images de machine virtuelle avec les galeries partagées
-description: Découvrez comment utiliser les galeries d’images partagées pour partager des images de machine virtuelle Linux au sein de votre organisation.
-author: axayjo
+title: Partager des images de machine virtuelle dans une galerie de calcul
+description: Découvrez comment utiliser une galerie Azure Compute Gallery pour partager des images de machine virtuelle.
+author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
-ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 1886015d88fb292de64c9e124fbd7609c6a27abe
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 921770c9cef41cedd8bf1ee01371da9a71e06e1a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780868"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437122"
 ---
-# <a name="shared-image-galleries-overview"></a>Vue d’ensemble des galeries d’images partagées
+# <a name="store-and-share-images-in-an-azure-compute-gallery"></a>Stocker et partager des images dans une galerie Azure Compute Gallery
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles :heavy_check_mark: Groupes identiques uniformes
 
-Shared Image Gallery est un service qui vous permet de structurer et d’organiser vos images. Les galeries d’images partagées proposent les éléments suivants :
 
-- Réplication globale des images.
-- la gestion de versions et le regroupement d’images pour faciliter la gestion ;
-- des images hautement disponibles avec des comptes ZRS (Zone Redundant Storage) dans les régions qui prennent en charge les zones de disponibilité Azure Le stockage redondant interzone (ZRS) offre une meilleure résilience en cas de défaillances de zones.
+Azure Compute Gallery comprend désormais le service existant Shared Image Gallery et les nouvelles fonctionnalités et capacités [VM Applications])(vm-applications.md).  
+
+Une galerie Azure Compute Gallery vous aide à créer une structure et une organisation autour de vos ressources Azure, comme des images et des [applications])(VM-applications.md). Une galerie Azure Compute Gallery fournit :
+- Une réplication globale.
+- Un contrôle de version et un regroupement de ressources pour une gestion simplifiée.
+- Des ressources hautement disponibles avec des comptes de stockage redondant interzone (ZRS, Zone Redundant Storage) dans les régions qui prennent en charge les zones de disponibilité. Le stockage redondant interzone (ZRS) offre une meilleure résilience en cas de défaillances de zones.
 - Prise en charge du stockage Premium (Premium_LRS).
 - Le partage entre différents abonnements, voire entre locataires Active Directory (AD), à l’aide du contrôle d’accès en fonction du rôle (RBAC) Azure.
-- la mise à l’échelle de vos déploiements avec des réplicas d’image dans chaque région.
+- La mise à l’échelle de vos déploiements avec des réplicas de ressources dans chaque région.
 
-À l’aide de Shared Image Gallery, vous pouvez partager vos images avec différents utilisateurs, principaux de service ou groupes AD à l’intérieur et à l’extérieur de votre organisation. Il est possible de répliquer des images partagées dans plusieurs régions, pour une mise à l’échelle plus rapide de vos déploiements.
+Avec une galerie, vous pouvez partager vos ressources avec différents utilisateurs, principaux de service ou groupes Active Directory au sein de votre organisation. Il est possible de répliquer des ressources ans plusieurs régions, pour une mise à l’échelle plus rapide de vos déploiements.
 
+Pour plus d’informations sur le stockage d’applications dans une galerie Azure Compute Gallery, consulter [Applications de machine virtuelle](vm-applications.md)
+
+## <a name="image-management"></a>Gestion d’image
 Une image est une copie d’une machine virtuelle complète (dont tous les disques de données attachés) ou juste du disque de système d’exploitation, selon la façon dont elle est créée. Quand vous créez une machine virtuelle à partir de l’image, une copie des disques durs virtuels dans l’image est utilisée pour créer les disques de la nouvelle machine virtuelle. L’image reste dans le stockage et peut être utilisée sans limite pour créer des machines virtuelles.
 
-Si vous avez un grand nombre d’images à gérer et que vous voulez qu’elles soient disponibles dans toute votre entreprise, vous pouvez utiliser une galerie d’images partagées comme référentiel. 
+Si vous avez un grand nombre d’images à gérer et que vous voulez qu’elles soient disponibles dans toute votre entreprise, vous pouvez utiliser une galerie Azure Compute Gallery comme référentiel. 
 
-La fonctionnalité Galerie d’images partagées a plusieurs types de ressources :
+Plusieurs types de ressources sont créés lorsque vous utilisez une galerie pour stocker des images :
 
 | Ressource | Description|
 |----------|------------|
-| **Source d’image** | Il s’agit d’une ressource qui peut être utilisée pour créer une **version d’image** dans une galerie d’images. Une source d’image peut être une machine virtuelle Azure existante qui est [généralisée ou spécialisée](#generalized-and-specialized-images), une image managée, une capture instantanée, un disque dur virtuel ou une version d’image dans une autre galerie d’images. |
-| **Galerie d’images** | Tout comme la Place de marché Azure, une **galerie d’images** est un dépôt permettant de gérer et partager des images, mais vous contrôlez les utilisateurs qui y ont accès. |
-| **Définition d'image** | Les définitions d’image sont créées dans une galerie et contiennent des informations sur l’image et sur les exigences relatives à son utilisation en interne. Ces informations indiquent, par exemple, si l’image est Windows ou Linux, et comprennent les notes de publication et les exigences de mémoire maximale et minimale. Il s’agit d’une définition de type d’image. |
+| **Source d’image** | Cette ressource peut être utilisée pour créer une **version d’image** dans une galerie. Une source d’image peut être une machine virtuelle Azure existante qui est [généralisée ou spécialisée](#generalized-and-specialized-images), une image managée, une capture instantanée, un disque dur virtuel ou une version d’image dans une autre galerie. |
+| **Galerie** | Tout comme la Place de marché Azure, une **galerie** est un référentiel permettant de gérer et partager des images et d’autres ressources, mais vous contrôlez les utilisateurs qui y ont accès. |
+| **Définition d'image** | Les définitions d’image sont créées dans une galerie et contiennent des informations sur l’image et sur les exigences relatives à son utilisation pour créer des machines virtuelles. Ces informations indiquent, par exemple, si l’image est Windows ou Linux, et comprennent les notes de publication et les exigences de mémoire maximale et minimale. Il s’agit d’une définition de type d’image. |
 | **Version de l’image** | Une **version d’image** est ce qui vous permet de créer une machine virtuelle quand vous utilisez une galerie. Vous pouvez avoir plusieurs versions d’une image en fonction des besoins de votre environnement. Tout comme une image managée, quand vous utilisez une **version d’image** pour créer une machine virtuelle, la version d’image permet de créer des disques pour la machine virtuelle. Les versions d’image peuvent être utilisées plusieurs fois. |
 
 <br>
@@ -95,7 +99,7 @@ Les propriétés d’une version d’image sont les suivantes :
 
 ## <a name="generalized-and-specialized-images"></a>Images généralisées et spécialisées
 
-Il existe deux états de système d'exploitation pris en charge par Galerie d’images partagées. Généralement, les images nécessitent que la machine virtuelle utilisée pour créer l'image ait été généralisée avant de créer l'image. La généralisation est un processus qui supprime de la machine virtuelle les informations spécifiques à la machine et à l'utilisateur. Pour Windows, l’outil Sysprep est utilisé. Pour Linux, vous pouvez utiliser les paramètres [waagent](https://github.com/Azure/WALinuxAgent), `-deprovision` ou `-deprovision+user`.
+Il existe deux états de système d'exploitation pris en charge par Azure Compute Gallery. Généralement, les images nécessitent que la machine virtuelle utilisée pour créer l'image ait été généralisée avant de créer l'image. La généralisation est un processus qui supprime de la machine virtuelle les informations spécifiques à la machine et à l'utilisateur. Pour Windows, l’outil Sysprep est utilisé. Pour Linux, vous pouvez utiliser les paramètres [waagent](https://github.com/Azure/WALinuxAgent), `-deprovision` ou `-deprovision+user`.
 
 Les machines virtuelles spécialisées n'ont pas été soumises à un processus de suppression des informations et des comptes spécifiques aux machines. Par ailleurs, les machines virtuelles créées à partir d'images spécialisées ne sont associées à aucun `osProfile`. Cela signifie que les images spécialisées ont certaines limites en plus de certains avantages.
 
@@ -110,8 +114,8 @@ Toutes les régions publiques peuvent être des régions cibles, mais certaines 
 
 ## <a name="limits"></a>limites 
 
-Certaines limites par abonnement ont été définies pour le déploiement de ressources à l’aide des galeries d’images partagées :
-- 100 galeries d’images partagées par abonnement et par région
+Certaines limites par abonnement ont été définies pour le déploiement de ressources à l’aide des galeries Azure Compute Gallery :
+- 100 galeries par abonnement et par région
 - 1 000 définitions d’images par abonnement et par région
 - 10 000 versions d’image par abonnement et par région
 - 10 réplicas de version d’image par abonnement et par région
@@ -120,9 +124,9 @@ Certaines limites par abonnement ont été définies pour le déploiement de res
 Pour en savoir plus, consultez les exemples figurant dans la section [Vérifier l’utilisation des ressources par rapport aux limites](../networking/check-usage-against-limits.md), qui indiquent comment vérifier l’utilisation actuelle.
  
 ## <a name="scaling"></a>Mise à l'échelle
-La galerie d’images partagées vous permet de spécifier le nombre de réplicas qu’Azure doit conserver pour les images. De cette façon, dans les scénarios de déploiement multimachines virtuelles, les déploiements de machines virtuelles peuvent être répartis sur différents réplicas pour réduire le risque de limitation du traitement de création d’instances liée à la surcharge d’un seul réplica.
+Azure Compute Gallery vous permet de spécifier le nombre de réplicas qu’Azure doit conserver pour les images. De cette façon, dans les scénarios de déploiement multimachines virtuelles, les déploiements de machines virtuelles peuvent être répartis sur différents réplicas pour réduire le risque de limitation du traitement de création d’instances liée à la surcharge d’un seul réplica.
 
-Avec la galerie d’images partagées, vous pouvez désormais déployer jusqu’à 1 000 instances de machines virtuelles dans un groupe de machines virtuelles identiques (à partir de 600 avec des images managées). Le réplicas d’images permettent d’optimiser les performances d’un déploiement, sa fiabilité et sa cohérence.   Vous pouvez définir un nombre de réplicas différents dans chaque région cible, selon les besoins de mise à l’échelle de la région. Comme chaque réplica est une copie complète de votre image, cela vous permet de mettre à l’échelle vos déploiements de façon linéaire, en fonction de chaque réplica supplémentaire. Nous le savons bien, les images et les régions ne sont jamais les mêmes. Voici néanmoins la recommandation générale à suivre pour créer des réplicas dans une région :
+Avec Azure Compute Gallery, vous pouvez désormais déployer jusqu’à 1 000 instances de machines virtuelles dans un groupe de machines virtuelles identiques (à partir de 600 avec des images managées). Le réplicas d’images permettent d’optimiser les performances d’un déploiement, sa fiabilité et sa cohérence.   Vous pouvez définir un nombre de réplicas différents dans chaque région cible, selon les besoins de mise à l’échelle de la région. Comme chaque réplica est une copie complète de votre image, cela vous permet de mettre à l’échelle vos déploiements de façon linéaire, en fonction de chaque réplica supplémentaire. Nous le savons bien, les images et les régions ne sont jamais les mêmes. Voici néanmoins la recommandation générale à suivre pour créer des réplicas dans une région :
 
 - Pour les déploiements qui ne concernent pas des groupes de machines virtuelles identiques : pour chaque lot de 20 machines virtuelles que vous créez simultanément, nous vous recommandons de ne garder qu’un réplica. Par exemple, si vous créez 120 machines virtuelles simultanément à l’aide de la même image dans une région, nous vous conseillons de conserver au moins 6 réplicas de votre image. 
 - Pour les déploiements de groupes de machines virtuelles identiques : pour chaque lot que vous créez simultanément, nous vous recommandons de ne garder qu'un réplica.
@@ -133,26 +137,26 @@ De plus, nous recommandons toujours de surapprovisionner le nombre de réplicas,
 
 ## <a name="make-your-images-highly-available"></a>Rendre votre image hautement disponible
 
-[Azure Zone Redundant Storage (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) fournit une résilience élevée contre une défaillance de la Zone de disponibilité dans la région. Avec la disponibilité générale de la galerie d’images partagées, vous pouvez choisir de stocker vos images dans les comptes ZRS au sein de régions avec des Zones de disponibilité. 
+[Azure Zone Redundant Storage (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) fournit une résilience élevée contre une défaillance de la Zone de disponibilité dans la région. Avec la disponibilité générale d’Azure Compute Gallery, vous pouvez choisir de stocker vos images dans les comptes ZRS au sein de régions avec des Zones de disponibilité. 
 
 Vous pouvez également choisir le type de compte de chaque région cible. Le type de compte de stockage par défaut est Standard_LRS, mais vous pouvez choisir Standard_ZRS pour les régions avec des Zones de disponibilité. Pour plus d’informations sur la disponibilité régionale de ZRS, consultez [Redondance des données](../storage/common/storage-redundancy.md).
 
 ![Graphique affiche ZRS](./media/shared-image-galleries/zrs.png)
 
 ## <a name="replication"></a>Réplication
-La galerie d’images partagées vous permet aussi de répliquer vos images sur d’autres régions Azure automatiquement. Chaque version de l’image partagée peut être répliquée sur différentes régions en fonction des besoins de votre organisation. Par exemple, vous pouvez répliquer la dernière image dans plusieurs régions tout en gardant les versions plus anciennes disponibles dans une seule région. De cette façon vous économisez sur les coûts de stockage des versions d’image partagée. 
+Azure Compute Gallery vous permet aussi de répliquer vos images sur d’autres régions Azure automatiquement. Chaque version de l’image peut être répliquée sur différentes régions en fonction des besoins de votre organisation. Par exemple, vous pouvez répliquer la dernière image dans plusieurs régions tout en gardant les versions plus anciennes disponibles dans une seule région. De cette façon vous économisez sur les coûts de stockage des versions d’image. 
 
-Les régions sur lesquelles est répliquée une version d’image partagée peuvent être mises à jour après la création. La durée de réplication sur différentes régions dépend de la quantité de données copiées et du nombre de régions concernées. La réplication peut prendre plusieurs heures dans certains cas. Pendant le processus, vous pouvez voir l’état de la réplication par région. Une fois la réplication d’image effectuée dans une région, vous pouvez ensuite déployer une machine virtuelle ou un groupe identique à partir de cette version d’image dans la région.
+Les régions sur lesquelles est répliquée une version d’image peuvent être mises à jour après la création. La durée de réplication sur différentes régions dépend de la quantité de données copiées et du nombre de régions concernées. La réplication peut prendre plusieurs heures dans certains cas. Pendant le processus, vous pouvez voir l’état de la réplication par région. Une fois la réplication d’image effectuée dans une région, vous pouvez ensuite déployer une machine virtuelle ou un groupe identique à partir de cette version d’image dans la région.
 
 ![Graphique montrant comment répliquer des images](./media/shared-image-galleries/replication.png)
 
 ## <a name="access"></a>Accès
 
-Tout comme la Galerie d’images partagées, la définition d’image et la version d’image sont des ressources, qui peuvent être partagées à l’aide des contrôle d’accès en fonction du rôle (RBAC) Azure natifs intégrés. Azure RBAC permet de partager ces ressources avec d’autres utilisateurs, principaux de service et groupes. Vous pouvez même partager l’accès avec des personnes en dehors du locataire au sein duquel ils ont été créés. Un utilisateur disposant d’un accès à la version d’image partagée peut déployer une machine virtuelle ou un groupe de machines virtuelles identiques.  La matrice de partage suivante vous aide à comprendre les éléments auxquels l’utilisateur a accès :
+Tout comme Azure Compute Gallery, la définition d’image et la version d’image sont des ressources, qui peuvent être partagées à l’aide des contrôles d’accès en fonction du rôle (RBAC) Azure natifs intégrés. Azure RBAC permet de partager ces ressources avec d’autres utilisateurs, principaux de service et groupes. Vous pouvez même partager l’accès avec des personnes en dehors du locataire au sein duquel ils ont été créés. Un utilisateur disposant d’un accès à la version d’image peut déployer une machine virtuelle ou un groupe de machines virtuelles identiques.  La matrice de partage suivante vous aide à comprendre les éléments auxquels l’utilisateur a accès :
 
-| Partagé avec l’utilisateur     | Galerie d’images partagées | Définition de l’image | Version d’image |
+| Partagé avec l’utilisateur     | Azure Compute Gallery | Définition de l’image | Version d’image |
 |----------------------|----------------------|--------------|----------------------|
-| Galerie d’images partagées | Oui                  | Oui          | Oui                  |
+| Azure Compute Gallery | Oui                  | Oui          | Oui                  |
 | Définition de l’image     | Non                   | Oui          | Oui                  |
 
 Nous vous recommandons de partager les images au niveau de la galerie, afin de proposer une expérience optimale. Nous vous déconseillons de partager des versions d’images individuelles. Pour plus d’informations sur Azure RBAC, consultez [Attribution de rôles Azure](../role-based-access-control/role-assignments-portal.md).
@@ -160,7 +164,7 @@ Nous vous recommandons de partager les images au niveau de la galerie, afin de p
 Les images peuvent également être partagées à grande échelle, même entre les locataires, via l’inscription d’une application multilocataire. Pour en savoir plus sur le partage d’images entre les locataires, consultez « Partager des images de machine virtuelle de la galerie entre des locataires Azure » à l’aide d’[Azure CLI](./linux/share-images-across-tenants.md) ou de [PowerShell](./windows/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Facturation
-L’utilisation du service Galerie d’images partagées n’engendre aucuns frais supplémentaires. Vous êtes facturé pour les ressources suivantes :
+L’utilisation du service Azure Compute Gallery n’engendre aucuns frais supplémentaires. Vous êtes facturé pour les ressources suivantes :
 - Coûts du stockage de chaque réplica. Le coût de stockage est facturé en tant qu’instantané et calculé sur la base de la taille occupée par la version de l’image, du nombre de réplicas de la version de l’image et du nombre de régions dans lesquelles la version est répliquée. 
 - Coûts de sortie de réseau pour la réplication de la première version d’image de la région source vers les régions répliquées. Les réplicas suivants sont gérés au sein de la région, donc aucun coût supplémentaire n’est prévu. 
 
@@ -169,9 +173,9 @@ Par exemple, imaginez que vous ayez une image d’un disque de système d’expl
 
 ## <a name="updating-resources"></a>Mise à jour des ressources
 
-Une fois qu’elles sont créées, vous pouvez apporter des modifications aux ressources de la galerie d’images. Ceux-ci sont limités aux éléments suivants :
+Une fois qu’elles sont créées, vous pouvez apporter des modifications aux ressources de la galerie. Ceux-ci sont limités aux éléments suivants :
  
-Galerie d’images partagées :
+Azure Compute Gallery :
 - Description
 
 Définition d’image :
@@ -188,7 +192,7 @@ Version d’image :
 
 ## <a name="sdk-support"></a>Prise en charge des Kits de développement logiciel (SDK)
 
-Les SDK suivants prennent en charge la création de galeries d’images partagées :
+Les SDK suivants prennent en charge la création de galeries Azure Compute Gallery :
 
 - [.NET](/dotnet/api/overview/azure/virtualmachines/management)
 - [Java](/java/azure/)
@@ -198,41 +202,41 @@ Les SDK suivants prennent en charge la création de galeries d’images partagé
 
 ## <a name="templates"></a>Modèles
 
-Vous pouvez créer la ressource de galerie d’images partagées à l’aide de modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
+Vous pouvez créer la ressource Azure Compute Gallery en utilisant des modèles. Plusieurs modèles de démarrage rapide Azure sont disponibles : 
 
-- [Créer une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Créer une définition d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Créer une version d’image dans une galerie d’images partagées](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Créer une galerie](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Créer une définition d’image dans une galerie](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Créer une version d’image dans une galerie](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
 ## <a name="frequently-asked-questions"></a>Forum aux questions 
 
-* [Comment lister toutes les ressources de galerie d’images partagées de différents abonnements ?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
-* [Puis-je déplacer mon image existante vers la galerie d’images partagées ?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
+* [Comment lister toutes les ressources Azure Compute Gallery de différents abonnements ?](#how-can-i-list-all-the-azure-compute-gallery-resources-across-subscriptions) 
+* [Puis-je déplacer mon image existante vers une galerie Azure Compute Gallery ?](#can-i-move-my-existing-image-to-an-azure-compute-gallery)
 * [Puis-je créer une version d’image à partir d’un disque spécialisé ?](#can-i-create-an-image-version-from-a-specialized-disk)
-* [Une fois la ressource de galerie d’images partagées créée, puis-je la déplacer vers un autre abonnement ?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
-* [Puis-je répliquer mes versions d’image entre des clouds tels qu’Azure China 21Vianet, Azure Allemagne et Azure Government ?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
+* [Une fois la ressource Azure Compute Gallery créée, puis-je la déplacer vers un autre abonnement ?](#can-i-move-the-azure-compute-gallery-resource-to-a-different-subscription-after-it-has-been-created)
+* [Puis-je répliquer mes versions d’image entre des clouds tels qu’Azure China 21Vianet, Azure Allemagne ou Azure Government ?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
 * [Puis-je répliquer mes versions d’image entre abonnements ?](#can-i-replicate-my-image-versions-across-subscriptions)
 * [Puis-je partager des versions d’image entre locataires Azure AD ?](#can-i-share-image-versions-across-azure-ad-tenants)
 * [Combien de temps faut-il pour répliquer des versions d’image sur les régions cibles ?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
 * [Quelle est la différence entre la région source et la région cible ?](#what-is-the-difference-between-source-region-and-target-region)
 * [Comment spécifier la région source pendant la création de la version d’image ?](#how-do-i-specify-the-source-region-while-creating-the-image-version)
 * [Comment spécifier le nombre de réplicas de version d’image à créer dans chaque région ?](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
-* [Puis-je créer la galerie d’images partagées à un emplacement différent de celui de la définition d’image et de la version d’image ?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
-* [Quel est le coût d’utilisation de la galerie d’images partagées ?](#what-are-the-charges-for-using-the-shared-image-gallery)
-* [Quelle version d’API utiliser pour créer une galerie d’images partagées, une définition d’image et une version d’image ?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
-* [Quelle version d’API utiliser pour créer une machine virtuelle partagée ou un groupe de machines virtuelles identiques à partir de la version d’image ?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [Puis-je mettre à jour mon groupe de machines virtuelles identiques créé à l’aide d’images managées pour utiliser des images Shared Image Gallery ?](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images)
+* [Puis-je créer la galerie à un emplacement différent de celui de la définition d’image et de la version d’image ?](#can-i-create-the-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
+* [Quels sont les frais d’utilisation d’une galerie Azure Compute Gallery ?](#what-are-the-charges-for-using-an-azure-compute-gallery)
+* [Quelle version de l’API dois-je utiliser lors de la création d’images ?](#what-api-version-should-i-use-when-creating-images)
+* [Quelle version d’API utiliser pour créer une machine virtuelle ou un groupe de machines virtuelles identiques à partir de la version d’image ?](#what-api-version-should-i-use-to-create-a-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Puis-je mettre à jour mon groupe de machines virtuelles identiques créé à l’aide d’images managées pour utiliser des images Azure Compute Gallery ?](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-azure-compute-gallery-images)
 
-### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Comment lister toutes les ressources de galerie d’images partagées de différents abonnements ?
+### <a name="how-can-i-list-all-the-azure-compute-gallery-resources-across-subscriptions"></a>Comment lister toutes les ressources Azure Compute Gallery de différents abonnements ?
 
-Pour lister toutes les ressources de galerie d’images partagées de différents abonnements auxquels vous avez accès sur le portail Azure, suivez les étapes ci-dessous :
+Pour lister toutes les ressources Azure Compute Gallery de différents abonnements auxquels vous avez accès sur le portail Azure, suivez les étapes ci-dessous :
 
 1. Ouvrez le [portail Azure](https://portal.azure.com).
 1. Faites défiler la page vers le bas, puis sélectionnez **Toutes les ressources**.
 1. Sélectionnez tous les abonnements dont vous voulez lister l’ensemble des ressources.
-1. Recherchez des ressources de type **Galerie d’images partagée**.
+1. Recherchez des ressources de type **Azure Compute Gallery**.
   
-Pour lister toutes les ressources de galerie d’images partagées des différents abonnements sur lesquels vous avez des autorisations, utilisez la commande suivante dans Azure CLI :
+Pour lister toutes les ressources Azure Compute Gallery des différents abonnements sur lesquels vous avez des autorisations, utilisez la commande suivante dans Azure CLI :
 
 ```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
@@ -240,7 +244,7 @@ Pour lister toutes les ressources de galerie d’images partagées des différen
 
 Pour plus d'informations, consultez [Répertorier, mettre à jour et supprimer des ressources d'image](update-image-resources.md).
 
-### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Puis-je déplacer mon image existante vers la galerie d’images partagées ?
+### <a name="can-i-move-my-existing-image-to-an-azure-compute-gallery"></a>Puis-je déplacer mon image existante vers une galerie Azure Compute Gallery ?
  
 Oui. Il existe 3 scénarios basés sur les types d’images.
 
@@ -257,9 +261,10 @@ Oui. Il existe 3 scénarios basés sur les types d’images.
 
 Oui, vous pouvez créer une machine virtuelle à partir d'une [image spécialisée](windows/create-vm-specialized.md). 
 
-### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Une fois la ressource de galerie d’images partagées créée, puis-je la déplacer vers un autre abonnement ?
+### <a name="can-i-move-the-azure-compute-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Une fois la ressource Azure Compute Gallery créée, puis-je la déplacer vers un autre abonnement ?
 
-Non, vous ne pouvez pas déplacer la ressource de galerie d’images partagées vers un autre abonnement. Vous pouvez répliquer les versions de l'image se trouvant dans la galerie vers d'autres régions ou copier une [image d'une autre galerie](image-version.md).
+Non, vous ne pouvez pas déplacer la ressource de galerie d’images vers un autre abonnement. Vous pouvez répliquer les versions de l'image se trouvant dans la galerie vers d'autres régions ou copier une [image d'une autre galerie](image-version.md).
+
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Puis-je répliquer mes versions d’image entre des clouds tels qu’Azure China 21Vianet, Azure Allemagne et Azure Government ?
 
@@ -298,31 +303,31 @@ Si le nombre de réplicas régionaux n’est pas spécifié avec chaque emplacem
 
 Pour spécifier le nombre de réplicas communs dans l’interface CLI, utilisez l’argument **--replica-count** dans la commande `az sig image-version create`.
 
-### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Puis-je créer la galerie d’images partagées à un emplacement différent de celui de la définition d’image et de la version d’image ?
+### <a name="can-i-create-the-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Puis-je créer la galerie à un emplacement différent de celui de la définition d’image et de la version d’image ?
 
-Oui, vous pouvez. Cependant, nous vous encourageons à conserver au même endroit le groupe de ressources, la galerie d’images partagées, la définition d’image et la version d’image.
+Oui, vous pouvez. Cependant, nous vous encourageons à conserver au même endroit le groupe de ressources, la galerie, la définition d’image et la version d’image.
 
-### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>Quel est le coût d’utilisation de la galerie d’images partagées ?
+### <a name="what-are-the-charges-for-using-an-azure-compute-gallery"></a>Quels sont les frais d’utilisation d’une galerie Azure Compute Gallery ?
 
-L’utilisation du service Galerie d’images partagées n’engendre aucun coût, à l’exception des coûts de stockage des versions d’image et des coûts de sortie de réseau pour la réplication des versions d’image de la région source vers les régions cibles.
+L’utilisation du service Azure Compute Gallery n’engendre aucun coût, à l’exception des coûts de stockage des versions d’image et des coûts de sortie de réseau pour la réplication des versions d’image de la région source vers les régions cibles.
 
-### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Quelle version d’API utiliser pour créer une galerie d’images partagées, une définition d’image et une version d’image ?
+### <a name="what-api-version-should-i-use-when-creating-images"></a>Quelle version de l’API dois-je utiliser lors de la création d’images ?
 
-Pour utiliser des galeries d’images partagées, des définitions d’image et des versions d’image, nous vous recommandons d’utiliser la version d’API 2018-06-01. ZRS requiert la version 2019-03-01 ou plus.
+Pour utiliser des galeries, des définitions d’image et des versions d’image, nous vous recommandons d’utiliser la version d’API 2018-06-01. ZRS requiert la version 2019-03-01 ou plus.
 
-### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Quelle version d’API utiliser pour créer une machine virtuelle partagée ou un groupe de machines virtuelles identiques à partir de la version d’image ?
+### <a name="what-api-version-should-i-use-to-create-a-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Quelle version d’API utiliser pour créer une machine virtuelle ou un groupe de machines virtuelles identiques à partir de la version d’image ?
 
 Pour déployer une machine virtuelle ou un groupe de machines virtuelles identiques à partir d’une version d’image, nous vous recommandons d’utiliser la version d’API 2018-04-01 ou une version ultérieure.
 
-### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Puis-je mettre à jour mon groupe de machines virtuelles identiques créé à l’aide d’images managées pour utiliser des images Shared Image Gallery ?
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-azure-compute-gallery-images"></a>Puis-je mettre à jour mon groupe de machines virtuelles identiques créé à l’aide d’images managées pour utiliser des images Azure Compute Gallery ?
 
-Oui, vous pouvez mettre à jour la référence d’une image de groupe identique en passant d’une image managée à une image Shared Image Gallery, à condition que le type de système d’exploitation, la génération Hyper-V et la disposition du disque de données soient cohérents entre les images.
+Oui, vous pouvez mettre à jour la référence d’une image de groupe identique en passant d’une image managée à une image Azure Compute Gallery, à condition que le type de système d’exploitation, la génération Hyper-V et la disposition du disque de données soient cohérents entre les images.
 
-## <a name="troubleshoot-shared-image-gallery-issues"></a>Résoudre les problèmes de Shared Image Gallery
-Si vous rencontrez des problèmes lors de l’exécution d’opérations sur les ressources Shared Image Gallery, consultez la liste des erreurs courantes dans le [guide de résolution des problèmes](troubleshooting-shared-images.md).
+## <a name="troubleshoot"></a>Résoudre les problèmes
+Si vous rencontrez des problèmes lors de l’exécution d’opérations sur les ressources de la galerie, consultez la liste des erreurs courantes dans le [guide de résolution des problèmes](troubleshooting-shared-images.md).
 
 En outre, vous pouvez publier et étiqueter vos questions avec `azure-virtual-machines-images` sur [Questions et réponses](/answers/topics/azure-virtual-machines-images.html).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Découvrez comment déployer des images partagées avec [Azure CLI](create-gallery.md) et [PowerShell](create-gallery.md).
+Découvrez comment déployer des images avec [Azure Compute Gallery](create-gallery.md).

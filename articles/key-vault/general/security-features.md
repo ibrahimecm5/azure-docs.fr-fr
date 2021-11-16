@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e63867a4c46f8249db93c13914ab7a7297252f48
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ccd2e196f1e1a44a79f0d4f9f1f07e4a69f2b974
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238451"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053119"
 ---
 # <a name="azure-key-vault-security"></a>Sécurité d’Azure Key Vault
 
@@ -37,8 +37,11 @@ Le service Azure Private Link vous permet d’accéder à Azure Key Vault et aux
 
 - Le serveur frontal Key Vault (plan de données) est un serveur multilocataire. Cela signifie que les coffres de clés de différents clients peuvent partager la même IP publique. À des fins d’isolement, chaque requête HTTP est authentifiée et autorisée indépendamment des autres requêtes.
 - Vous pouvez identifier des versions antérieures de TLS pour signaler des vulnérabilités, mais, comme l’IP publique est partagée, il n’est pas possible pour l’équipe du service des coffres de clés de désactiver les anciennes versions de TLS pour les coffres de clés individuels au niveau du transport.
-- Le protocole HTTPS permet au client de participer à la négociation TLS. **Les clients peuvent appliquer la version la plus récente de TLS** et, chaque fois qu’un client le fait, l’ensemble de la connexion utilise le niveau de protection correspondant. Le fait que Key Vault prenne toujours en charge les anciennes versions de TLS ne nuit pas à la sécurité des connexions utilisant des versions plus récentes de TLS.
+- Le protocole HTTPS permet au client de participer à la négociation TLS. **Les clients peuvent appliquer la version la plus récente de TLS** et, chaque fois qu’un client le fait, l’ensemble de la connexion utilise le niveau de protection correspondant. Les applications qui communiquent avec ou s’authentifient sur Azure Active Directory peuvent ne pas fonctionner comme prévu si elles ne peuvent pas utiliser TLS 1.2 ou une version récente pour communiquer.
 - Malgré les vulnérabilités connues du protocole TLS, il n’existe aucune attaque connue qui permettrait à un agent malveillant d’extraire des informations de votre coffre de clés lorsque l’attaquant établit une connexion avec une version de TLS qui présente des vulnérabilités. L’attaquant doit toujours s’authentifier et s’autoriser et, tant que les clients légitimes se connectent toujours avec des versions récentes de TLS, il est impossible que des informations d’identification aient pu être divulguées à partir de vulnérabilités d’anciennes versions de TLS.
+
+> [!NOTE]
+> Pour Azure Key Vault, vérifiez que l’application qui accède au service Keyvault s’exécute sur une plateforme qui prend en charge TLS 1.2 ou une version récente. Si l’application dépend de .NET Framework, elle doit également être mise à jour. Vous pouvez également apporter les modifications de Registre mentionnées dans [cet article](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment) pour activer explicitement l’utilisation de TLS 1.2 au niveau du système d’exploitation et pour .NET Framework.
 
 ## <a name="key-vault-authentication-options"></a>Options d’authentification Key Vault
 

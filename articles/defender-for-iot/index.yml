@@ -1,10 +1,10 @@
 ### YamlMime:Hub
-title: Azure Defender pour IoT
-summary: "Azure Defender pour IoT offre une détection complète des menaces pour les environnements IoT/OT, avec plusieurs options de déploiement\_: entièrement local, connecté au cloud ou hybride."
+title: Microsoft Defender pour IoT
+summary: "Microsoft Defender pour IoT offre une détection complète des menaces pour les environnements IoT/OT, avec plusieurs options de déploiement\_: entièrement local, connecté au cloud ou hybride."
 brand: azure
 metadata:
-  title: Documentation Azure Defender pour IoT
-  description: 'Découvrez comment Azure Defender pour IoT, un service de sécurité cloud basé sur Azure, fournit une protection complète contre les menaces sur les appareils IoT.'
+  title: Documentation Microsoft Defender pour IoT
+  description: 'Découvrez comment Microsoft Defender pour IoT, un service de sécurité cloud basé sur Azure, fournit une protection complète contre les menaces sur les appareils IoT.'
   services: service
   ms.service: defender-for-iot
   ms.topic: landing-page
@@ -12,10 +12,10 @@ metadata:
   author: elazark
   ms.author: v-ekrieg
   manager: raynew
-  ms.date: 06/16/2021
+  ms.date: 11/09/2021
 highlightedContent:
   items:
-    - title: Présentation d’Azure Defender pour IoT pour les organisations finales
+    - title: Présentation de Microsoft Defender pour IoT pour les organisations d’utilisateurs finaux
       itemType: overview
       url: organizations/overview.md
     - title: Nouveautés pour les organisations d’utilisateurs finaux
@@ -24,7 +24,7 @@ highlightedContent:
     - title: Architecture d’une solution sans agent pour les organisations d’utilisateurs finaux
       itemType: architecture
       url: organizations/architecture.md
-    - title: Présentation d’Azure Defender pour IoT pour les fabricants d’appareils
+    - title: Présentation de Microsoft Defender pour IoT pour les fabricants d’appareils
       itemType: overview
       url: device-builders/overview.md
     - title: Nouveautés pour les fabricants d’appareils
@@ -35,7 +35,7 @@ highlightedContent:
       url: device-builders/architecture-agent-based.md
 conceptualContent:
   items:
-    - title: Azure Defender pour IoT pour les organisations finales
+    - title: Microsoft Defender pour IoT pour les organisations d’utilisateurs finaux
       links:
         - url: organizations/quickstart-system-prerequisites.md
           itemType: quickstart
@@ -48,24 +48,24 @@ conceptualContent:
           text: Concepts clés
         - url: organizations/how-to-set-up-your-network.md
           itemType: how-to-guide
-          text: À propos de la configuration du réseau d’Azure Defender pour IoT
+          text: À propos de la configuration du réseau pour Microsoft Defender pour IoT
       footerLink:
         url: organizations/index.yml
         text: En savoir plus
-    - title: Azure Defender pour IoT pour les fabricants d’appareils
+    - title: Microsoft Defender pour IoT pour les fabricants d’appareils
       links:
         - url: device-builders/quickstart-onboard-iot-hub.md
           itemType: quickstart
           text: Intégrer Defender pour IoT à une solution basée sur un agent
         - url: device-builders/quickstart-configure-your-solution.md
           itemType: quickstart
-          text: Configurer votre solution Azure Defender pour IoT
+          text: Configurer votre solution Microsoft Defender pour IoT
         - url: device-builders/concept-recommendations.md
           itemType: concept
           text: Recommandations de sécurité pour IoT Hub
         - url: device-builders/how-to-configure-agent-based-solution.md
           itemType: how-to-guide
-          text: Configurer Azure Defender pour IoT
+          text: Configurer Microsoft Defender pour IoT
       footerLink:
         url: device-builders/index.yml
         text: En savoir plus

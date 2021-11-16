@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: c1759ba3bc4f9f516485f42f03d040bec5b4c78a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 455bad570c4b86c00933ffb1fd1f27f85871e6d9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636056"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426104"
 ---
 # <a name="sms-concepts"></a>Concepts relatifs aux SMS
 
@@ -26,7 +26,7 @@ Azure Communication Services vous permet d’envoyer et de recevoir des SMS à l
 Les principales fonctionnalités des kits SDK SMS Azure Communication Services incluent :
 
 -  Une expérience de configuration **simple** pour l’ajout de la fonctionnalité SMS dans vos applications.
-- Une prise en charge des messages à **haute vitesse** via des numéros de téléphone gratuits pour les cas d’utilisation A2P (application à personne) aux États-Unis.
+- Une prise en charge des messages à **haute vitesse** via des numéros gratuits et des numéros courts (*bientôt disponible*) pour les cas d’usage A2P (application à personne) aux États-Unis.
 - Une **Messagerie en bloc** prise en charge pour permettre l’envoi de messages à plusieurs destinataires à la fois.
 - Des conversations **bidirectionnelles** pour prendre en charge des scénarios tels que le support client, les alertes et les rappels de rendez-vous.
 - Une **remise fiable** avec des rapports de remise en temps réel pour les messages envoyés à partir de votre application.

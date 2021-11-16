@@ -87,6 +87,39 @@ items:
             href: concepts/chat/sdk-features.md
           - name: Concepts relatifs à la conversation
             href: concepts/chat/concepts.md
+      - name: Supervision et analytique
+        items:
+          - name: Activer la journalisation dans Paramètres de diagnostic
+            href: concepts/analytics/enable-logging.md
+          - name: Journaux de synthèse et de diagnostic des appels
+            href: concepts/analytics/call-logs-azure-monitor.md
+          - name: Log Analytics
+            href: concepts/analytics/log-analytics.md
+          - name: Insights
+            href: concepts/analytics/insights.md
+      - name: Événements de service (EventGrid)
+        items:
+          - name: Vue d’ensemble
+            href: ../event-grid/event-schema-communication-services.md
+            maintainContext: true
+          - name: Événements de conversation
+            href: ../event-grid/communication-services-chat-events.md
+            maintainContext: true
+          - name: Événements téléphoniques et SMS
+            href: ../event-grid/communication-services-telephony-sms-events.md
+            maintainContext: true
+          - name: Événements d’appel vocal et vidéo
+            href: ../event-grid/communication-services-voice-video-events.md
+            maintainContext: true
+          - name: Événements de présence
+            href: ../event-grid/communication-services-presence-events.md
+            maintainContext: true
+      - name: Interopérabilité de Teams
+        items:
+          - name: Vue d’ensemble
+            href: concepts/teams-interop.md
+          - name: Participer à une réunion Teams
+            href: concepts/join-teams-meeting.md
       - name: Téléphonie et SMS
         items:
           - name: Vue d’ensemble du kit SDK SMS
@@ -107,6 +140,12 @@ items:
             href: concepts/telephony-sms/sms-faq.md
           - name: Stratégie de messagerie
             href: concepts/telephony-sms/messaging-policy.md
+      - name: Bibliothèque d’interface utilisateur
+        items:
+          - name: Vue d’ensemble de la bibliothèque d’interface utilisateur
+            href: concepts/ui-library/ui-library-overview.md
+          - name: Cas d’usage de la bibliothèque IU
+            href: concepts/ui-library/ui-library-use-cases.md
       - name: Appel vocal et appel vidéo
         items:
           - name: Vue d’ensemble du kit SDK Appel
@@ -129,12 +168,6 @@ items:
             href: concepts/best-practices.md
           - name: Problèmes connus
             href: concepts/known-issues.md
-      - name: Bibliothèque d’interface utilisateur
-        items:
-          - name: Vue d’ensemble de la bibliothèque d’interface utilisateur
-            href: concepts/ui-library/ui-library-overview.md
-          - name: Cas d’usage de la bibliothèque IU
-            href: concepts/ui-library/ui-library-use-cases.md
       - name: Kits SDK et API REST
         href: concepts/sdk-options.md
       - name: Architecture client et serveur
@@ -151,29 +184,6 @@ items:
         href: concepts/pricing.md
       - name: Notifications Push
         href: concepts/notifications.md
-      - name: Interopérabilité de Teams
-        items:
-          - name: Vue d’ensemble
-            href: concepts/teams-interop.md
-          - name: Participer à une réunion Teams
-            href: concepts/join-teams-meeting.md
-      - name: Événements de service (EventGrid)
-        items:
-          - name: Vue d’ensemble
-            href: ../event-grid/event-schema-communication-services.md
-            maintainContext: true
-          - name: Événements de conversation
-            href: ../event-grid/communication-services-chat-events.md
-            maintainContext: true
-          - name: Événements téléphoniques et SMS
-            href: ../event-grid/communication-services-telephony-sms-events.md
-            maintainContext: true
-          - name: Événements d’appel vocal et vidéo
-            href: ../event-grid/communication-services-voice-video-events.md
-            maintainContext: true
-          - name: Événements de présence
-            href: ../event-grid/communication-services-presence-events.md
-            maintainContext: true
       - name: Journalisation et diagnostics
         href: concepts/logging-and-diagnostics.md
       - name: Mesures

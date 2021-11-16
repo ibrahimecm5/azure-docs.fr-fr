@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 8b2b64de8dd16e36b6956c289beda986d89a5c98
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1c33c2f4bf89b76abf40d12146965114ba4918b0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524492"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564496"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-az-or-kubectl"></a>Réaliser un scale-up et un scale-down d’un groupe de serveurs Azure Database pour PostgreSQL Hyperscale à l’aide de l’interface CLI (az ou kubectl)
 
@@ -25,7 +25,9 @@ Il est parfois nécessaire de modifier les caractéristiques ou la définition d
 
 Ce guide explique comment mettre à l’échelle vCore et/ou la mémoire.
 
-La mise à l’échelle des paramètres de vCore ou de mémoire de votre groupe de serveurs signifie que vous avez la possibilité de définir une valeur minimale et/ou maximale pour chacun des paramètres de vCore et de mémoire. Si vous souhaitez configurer votre groupe de serveurs pour utiliser un nombre particulier de vCores ou une quantité spécifique de mémoire, vous devez définir la même valeur pour les paramètres minimaux et les paramètres maximaux.
+La mise à l’échelle des paramètres de vCore ou de mémoire de votre groupe de serveurs signifie que vous avez la possibilité de définir une valeur minimale et/ou maximale pour chacun des paramètres de vCore et de mémoire. Si vous souhaitez configurer votre groupe de serveurs pour utiliser un nombre particulier de vCores ou une quantité spécifique de mémoire, vous devez définir la même valeur pour les paramètres minimaux et les paramètres maximaux. Avant d’augmenter la valeur définie pour vCores et la mémoire, vous devez vous assurer que 
+- vous disposez de suffisamment de ressources disponibles dans l’infrastructure physique qui héberge votre déploiement et 
+- que les charges de travail colocalisées sur le même système ne sont pas en concurrence pour les mêmes vCores ou mémoire.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -33,7 +35,7 @@ La mise à l’échelle des paramètres de vCore ou de mémoire de votre groupe 
 
 Pour afficher la définition actuelle de votre groupe de serveurs et voir les paramètres de vCore et de mémoire actuels, exécutez l’une des commandes suivantes :
 
-### <a name="cli-with-azure-cli-az"></a>Interface de ligne de commande avec Azure CLI (az)
+### <a name="with-azure-cli-az"></a>Avec l’interface Azure CLI (az)
 
 ```azurecli
 az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
@@ -54,7 +56,9 @@ Spec:
       Name:   citus
     Version:  12
   Scale:
-    Workers:  2
+    Replicas:       1
+    Sync Replicas:  0
+    Workers:        4
   Scheduling:
     Default:
       Resources:
@@ -117,13 +121,13 @@ Pour indiquer un nombre de cœurs, vous devez simplement transmettre un nombre s
 **Configurez le rôle de coordinateur pour qu’il ne dépasse pas 2 cœurs, et le rôle de Worker pour ne pas dépasser 4 cœurs :**
 
 ```azurecli
- az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace <namespace> --use-k8s
- az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace <namespace> --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace arc --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace arc --use-k8s
 ```
 
 ou
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace arc --use-k8s
 ```
 
 > [!NOTE]
@@ -150,6 +154,17 @@ Par exemple, si vous souhaitez définir les paramètres suivants pour les rôles
 Vous devez configurer la définition de votre groupe de serveurs, afin qu’elle corresponde à la configuration ci-dessous :
 
 ```json
+...
+  spec:
+  dev: false
+  engine:
+    extensions:
+    - name: citus
+    version: 12
+  scale:
+    replicas: 1
+    syncReplicas: "0"
+    workers: 4
   scheduling:
     default:
       resources:
@@ -163,7 +178,7 @@ Vous devez configurer la définition de votre groupe de serveurs, afin qu’elle
             memory: 1Gi
           requests:
             cpu: "2"
-            memory: 512Mi
+            memory: 256Mi
       worker:
         resources:
           limits:
@@ -171,7 +186,8 @@ Vous devez configurer la définition de votre groupe de serveurs, afin qu’elle
             memory: 1Gi
           requests:
             cpu: "2"
-            memory: 512Mi
+            memory: 256Mi
+...
 ```
 
 Si vous ne connaissez pas l’éditeur `vi`, consultez la description des commandes dont vous pouvez avoir besoin [ici](https://www.computerhope.com/unix/uvi.htm) :
@@ -186,13 +202,13 @@ Si vous ne connaissez pas l’éditeur `vi`, consultez la description des comman
 Pour réinitialiser les valeurs par défaut des paramètres limites/demandes de cœur/mémoire, modifiez-les et transmettez une chaîne au lieu d’une valeur réelle. Par exemple, si vous souhaitez réinitialiser le paramètre de limite de cœurs, exécutez les commandes suivantes :
 
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
-az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace arc --use-k8s
+az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace arc --use-k8s
 ```
 
 ou 
 ```azurecli
-az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace arc --use-k8s
 ```
 
 ## <a name="next-steps"></a>Étapes suivantes

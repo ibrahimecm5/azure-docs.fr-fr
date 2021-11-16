@@ -1,23 +1,23 @@
 ---
-title: Création d’un pool d’images personnalisées avec Shared Image Gallery
+title: Utilisation de la galerie Azure Compute Gallery pour créer un pool d’images personnalisé
 description: Les pools d’images personnalisées représentent un moyen efficace de configurer les nœuds de calcul pour exécuter des charges de travail Batch.
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 19a6168c2d6d2a37458dbbe9d8917f6e679da47f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bd0029978891c3276a357180108d4dad44e3248
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827489"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473544"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Création d’un pool d’images personnalisées avec Shared Image Gallery
+# <a name="use-the-azure-compute-gallery-to-create-a-custom-image-pool"></a>Utilisation de la galerie Azure Compute Gallery pour créer un pool d’images personnalisé
 
-Quand vous créez un pool Azure Batch à l’aide de Configuration de la machine virtuelle, vous spécifiez une image de machine virtuelle qui fournit le système d’exploitation pour chaque nœud de calcul dans le pool. Vous pouvez créer un pool de machines virtuelles en utilisant une image prise en charge de la Place de Marché Azure ou en élaborant une image personnalisée avec une [image Shared Image Gallery](../virtual-machines/shared-image-galleries.md).
+Quand vous créez un pool Azure Batch à l’aide de Configuration de la machine virtuelle, vous spécifiez une image de machine virtuelle qui fournit le système d’exploitation pour chaque nœud de calcul dans le pool. Vous pouvez créer un pool de machines virtuelles en utilisant une image prise en charge de la Place de marché Azure ou en élaborant une image personnalisée avec une [image Azure Compute Gallery](../virtual-machines/shared-image-galleries.md).
 
-## <a name="benefits-of-the-shared-image-gallery"></a>Avantages de Shared Image Gallery
+## <a name="benefits-of-the-azure-compute-gallery"></a>Avantages de la galerie Azure Compute Gallery
 
-Lorsque vous utilisez Shared Image Gallery pour votre image personnalisée, vous contrôlez le type et la configuration du système d’exploitation ainsi que le type de disque de données. Votre image partagée peut inclure des applications et des données de référence qui deviennent disponibles sur tous les nœuds du pool Batch dès qu’ils sont approvisionnés.
+Lorsque vous utilisez Azure Compute Gallery pour votre image personnalisée, vous contrôlez le type et la configuration du système d’exploitation ainsi que le type de disque de données. Votre image partagée peut inclure des applications et des données de référence qui deviennent disponibles sur tous les nœuds du pool Batch dès qu’ils sont approvisionnés.
 
 Vous pouvez également avoir plusieurs versions d’une image en fonction des besoins de votre environnement. Quand vous utilisez une version d’image pour créer une machine virtuelle, la version d’image permet de créer des disques pour la machine virtuelle.
 
@@ -29,7 +29,7 @@ Le recours à une image partagée pour votre scénario peut offrir plusieurs ava
 - **Configurer le système d’exploitation.** Vous pouvez personnaliser la configuration du disque de système d’exploitation de l’image.
 - **Préinstaller des applications.** La préinstallation des applications sur le disque du système d’exploitation est plus efficace et moins sujet aux erreurs que l’installation d’applications après l’approvisionnement des nœuds de calcul à l’aide d’un début de tâche.
 - **Copier de grandes quantités de données en une seule fois.** Intégrez les données statiques à l’image partagée managée en les copiant sur les disques de données d’une image managée. Cette opération ne doit être effectuée qu’une seule fois et rend les données accessibles à chaque nœud du pool.
-- **Augmentez la taille des pools.** Avec Shared Image Gallery, vous pouvez créer des pools plus grands avec vos images personnalisées ainsi qu’avec d’autres réplicas d’image partagée.
+- **Augmentez la taille des pools.** Avec la galerie Azure Compute Gallery, vous pouvez créer des pools plus grands avec vos images personnalisées, ainsi qu’avec d’autres réplicas d’image partagée.
 - **Amélioration des performances par rapport au recours à une seule image managée comme image personnalisée.** Pour un pool d’images personnalisées Shared Image, le temps nécessaire pour atteindre l’état stable peut être réduit de 25 % et la latence d’inactivité de la machine virtuelle peut être réduite de 30 %.
 - **Gestion des versions et regroupement d’images pour une gestion simplifiée.** La définition du regroupement d’images contient des informations sur la raison pour laquelle l’image a été créée, le système d’exploitation concerné et l’utilisation de l’image. Le regroupement d’images simplifie la gestion des images. Pour plus d’informations, consultez les [Définitions d’images](../virtual-machines/shared-image-galleries.md#image-definitions).
 
@@ -40,14 +40,14 @@ Le recours à une image partagée pour votre scénario peut offrir plusieurs ava
 
 - **Un compte Azure Batch.** Pour créer un compte Batch, consultez les démarrages rapides Batch à l’aide du [portail Azure](quick-create-portal.md) ou de l’[interface de ligne de commande Azure](quick-create-cli.md).
 
-- **Une image Shared Image Gallery**. Pour créer une image partagée, vous devez disposer d'une image managée ou en créer une. L’image doit être créée à partir d’instantanés du disque de système d’exploitation de la machine virtuelle et, éventuellement, ses disques de données associés.
+- **une image Azure Compute Gallery**. Pour créer une image partagée, vous devez disposer d'une image managée ou en créer une. L’image doit être créée à partir d’instantanés du disque de système d’exploitation de la machine virtuelle et, éventuellement, ses disques de données associés.
 
 > [!NOTE]
 > Si l’image partagée n’est pas dans le même abonnement que le compte Batch, vous devez [inscrire le fournisseur de ressources Microsoft.Batch](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) pour cet abonnement. Les deux abonnements doivent se trouver dans le même locataire Azure AD.
 >
 > L’image peut se trouver dans une autre région, à condition qu’elle ait des réplicas dans la même région que votre compte Batch.
 
-Si vous utilisez une application Azure AD pour créer un pool d’images personnalisées avec une image Shared Image Gallery, l’application doit disposer d’un [rôle intégré Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) qui lui donne accès à l’image Shared Image. Vous pouvez accorder cet accès dans le Portail Azure en accédant à l’image Shared Image, en sélectionnant **Contrôle d’accès (IAM)** et en ajoutant une attribution de rôle pour l’application.
+Si vous utilisez une application Azure AD pour créer un pool d’images personnalisées avec une image Azure Compute Gallery, l’application doit disposer d’un [rôle intégré Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) qui lui donne accès à l’image Shared Image. Vous pouvez accorder cet accès dans le Portail Azure en accédant à l’image Shared Image, en sélectionnant **Contrôle d’accès (IAM)** et en ajoutant une attribution de rôle pour l’application.
 
 ## <a name="prepare-a-shared-image"></a>Préparation d’une image Shared Image
 
@@ -87,9 +87,9 @@ Une capture instantanée est une copie complète en lecture seule d’un disque 
 
 Pour créer une image managée à partir d’un instantané, utilisez les outils en ligne de commande Azure comme la commande [az image création](/cli/azure/image). Créez une image en spécifiant l'instantané d'un disque du système d'exploitation et éventuellement un ou plusieurs instantanés de disque de données.
 
-### <a name="create-a-shared-image-gallery"></a>Créer une galerie Shared Image Gallery
+### <a name="create-an-azure-compute-gallery"></a>Créer une galerie Azure Compute Gallery
 
-Après avoir créé votre image managée, vous devez créer une galerie Shared Image Gallery pour rendre votre image personnalisée disponible. Pour apprendre à créer une instance du service Shared Image Gallery pour vos images, consultez [Créer une instance Shared Image Gallery](../virtual-machines/create-gallery.md).
+Après avoir créé votre image managée, vous devez créer une galerie Azure Compute Gallery pour rendre votre image personnalisée disponible. Pour savoir comment créer une galerie Azure Compute Gallery pour vos images, consultez [Créer une galerie Azure Compute Gallery](../virtual-machines/create-gallery.md).
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Créer un pool à partir d’une image partagée à l’aide de l’interface de ligne de commande Azure
 
@@ -179,7 +179,7 @@ start_task = batchmodels.StartTask(
 start_task.run_elevated = True
 
 # Create an ImageReference which specifies the image from
-# Shared Image Gallery to install on the nodes.
+# Azure Compute Gallery to install on the nodes.
 ir = batchmodels.ImageReference(
     virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
 )
@@ -212,7 +212,7 @@ Effectuez les étapes suivantes pour créer un pool à partir d’une image part
 1. Ouvrez le [portail Azure](https://portal.azure.com).
 1. Accédez à **Comptes Batch** et sélectionnez votre compte.
 1. Sélectionnez **Pools**, puis **Ajouter** pour créer un pool.
-1. Dans la section **Type d’image**, sélectionnez **Galerie d’images partagées**.
+1. Dans la section **Type d’image**, sélectionnez **Azure Compute Gallery**.
 1. Complétez les sections restantes avec les informations relatives à votre image managée.
 1. Sélectionnez **OK**.
 
@@ -222,11 +222,11 @@ Effectuez les étapes suivantes pour créer un pool à partir d’une image part
 
 Si vous envisagez de créer un pool avec des centaines ou des milliers de machines virtuelles ou plus à l’aide d’une image partagée, suivez les instructions ci-dessous.
 
-- **Nombre de réplicas de la galerie Shared Image Gallery.**  Pour chaque pool de 300 instances maximum, nous vous recommandons de conserver au moins un réplica. Par exemple, si vous créez un pool de 3 000 machines virtuelles, vous devez conserver au moins 10 réplicas de votre image. Nous suggérons toujours de conserver plus de réplicas que le minimum exigé pour de meilleures performances.
+- **Nombres de réplicas d’Azure Compute Gallery.**  Pour chaque pool de 300 instances maximum, nous vous recommandons de conserver au moins un réplica. Par exemple, si vous créez un pool de 3 000 machines virtuelles, vous devez conserver au moins 10 réplicas de votre image. Nous suggérons toujours de conserver plus de réplicas que le minimum exigé pour de meilleures performances.
 
 - **Délai d'expiration du redimensionnement.** Si votre pool contient un nombre de nœuds fixe (pas de mise à l'échelle automatique), augmentez la propriété `resizeTimeout` du pool en fonction de la taille de celui-ci. Le délai d’attente de redimensionnement recommandé est d’au moins 15 minutes pour 1 000 machines. Par exemple, le délai d’expiration de redimensionnement recommandé pour un pool de 2 000 machines virtuelles est d’au moins 30 minutes.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Pour obtenir une vue d’ensemble détaillée de Batch, consultez [Flux de travail et ressources du service Batch](batch-service-workflow-features.md).
-- Découvrez la [Galerie d’images partagées](../virtual-machines/shared-image-galleries.md) (Shared Image Gallery).
+- En savoir plus sur [Azure Compute Gallery](../virtual-machines/shared-image-galleries.md).

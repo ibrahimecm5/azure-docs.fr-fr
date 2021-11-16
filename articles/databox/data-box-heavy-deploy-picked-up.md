@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/29/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: aad9a66c37b4d9d4ba590e339cd2188e5e194c64
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921008"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449922"
 ---
 ::: zone target = "docs"
 
@@ -71,7 +71,7 @@ Vous êtes maintenant prêt à réexpédier votre appareil.
 ## <a name="ship-data-box-heavy-back"></a>Réexpédier le Data Box Heavy
 
 1. Vérifiez que l’appareil est hors tension et que tous les câbles sont débranchés. Enroulez et fixez les 4 cordons d’alimentation sur le plateau accessible à l’arrière de l’appareil.
-2. L’appareil est livré par chargement partiel via FedEx aux États-Unis et DHL dans l’Union européenne
+2. L’appareil est expédié par FedEx aux États-Unis et par DHL dans l’Union européenne.
 
     1. Contactez le service des [Opérations Data Box](mailto:DataBoxOps@microsoft.com) pour l’informer de l’enlèvement et obtenir l’étiquette de réexpédition.
     2. Appelez le numéro local pour votre transporteur pour planifier l’enlèvement.

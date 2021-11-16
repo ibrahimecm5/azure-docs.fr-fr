@@ -3,12 +3,12 @@ title: Comparer les files d’attente de stockage Azure et les files d’attente
 description: Analyse les différences et les similitudes entre les deux types de files d'attente proposés par Azure.
 ms.topic: article
 ms.date: 06/15/2021
-ms.openlocfilehash: a93123ded873a5020e440c606fcd4f8278baa4aa
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 0c660b1d57fda2550572f028a3ce271558bde115
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112120164"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061341"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Files d’attente Azure et files d’attente Service Bus : comparaison et différences
 Cet article analyse les différences et les similitudes entre les deux types de files d’attente proposés par Microsoft Azure : Files d’attente de stockage et files d’attente Service Bus. À l’aide de ces informations, vous pouvez prendre une décision plus éclairée sur la solution qui répond le mieux à vos besoins.
@@ -128,7 +128,7 @@ Cette section compare les files d’attente de stockage et les files d’attente
 | Critères de comparaison | Files d’attente de stockage | Files d’attente Service Bus |
 | --- | --- | --- |
 | Taille de file d'attente maximale |**500 To**<br/><br/>(limitée à une [capacité de compte de stockage unique](../storage/common/storage-introduction.md#queue-storage)) |**1 Go à 80 Go**<br/><br/>(définie lors de la création d’une file d’attente et d’une [activation du partitionnement](service-bus-partitioning.md) – consultez la section « Informations supplémentaires ») |
-| Taille de message maximale |**64 Ko**<br/><br/>(48 Ko avec un codage en **Base64**)<br/><br/>Azure prend en charge les messages volumineux en combinant des files d’attente et des objets blob. Dans ce cas, vous pouvez placer jusqu’à 200 Go en file d’attente pour un seul élément. |**256 Ko** ou **1 Mo**<br/><br/>(y compris l’en-tête et le corps, taille maximale d’en-tête : 64 Ko).<br/><br/>Dépend du [niveau de service](service-bus-premium-messaging.md). |
+| Taille de message maximale |**64 Ko**<br/><br/>(48 Ko avec un codage en **Base64**)<br/><br/>Azure prend en charge les messages volumineux en combinant des files d’attente et des objets blob. Dans ce cas, vous pouvez placer jusqu’à 200 Go en file d’attente pour un seul élément. |**256 Ko** ou **100 Mo**<br/><br/>(y compris l’en-tête et le corps, taille maximale d’en-tête : 64 Ko).<br/><br/>Dépend du [niveau de service](service-bus-premium-messaging.md). |
 | Durée de vie maximale des messages |**Infinie** (version d’API 2017-07-27 ou ultérieure) |**TimeSpan.Max** |
 | Nombre maximal de files d'attente |**Illimité** |**10,000**<br/><br/>(par espace de noms de service) |
 | Nombre maximal de clients simultanés |**Illimité** |**5 000** |

@@ -1,7 +1,7 @@
 ---
 title: Spécifier la requête de vérification de l’API REST du service de demande (préversion)
 titleSuffix: Azure Active Directory Verifiable Credentials
-description: Découvrez comment démarrer une demande de présentation de justificatifs vérifiables
+description: Découvrez comment démarrer une demande de présentation dans les justificatifs vérifiables
 documentationCenter: ''
 author: barclayn
 manager: karenh444
@@ -10,17 +10,16 @@ ms.topic: reference
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 30da74a6d94f2460a980737670d65442c0ddb3ac
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c670f060e7849f844997c0feefd60229b90e5202
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984399"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474000"
 ---
 # <a name="request-service-rest-api-presentation-specification-preview"></a>Spécification de la présentation de l’API REST du service de requête (préversion)
 
-L’API REST du service de demande de justificatifs vérifiables Azure Active Directory (Azure AD) vous permet d’émettre et de vérifier des justificatifs vérifiables. Cet article spécifie l’API REST du service de demande pour une demande de présentation. La demande de présentation invite l’utilisateur à présenter des justificatifs vérifiables, puis à les vérifier.
-
+Lesjustificatifs vérifiables Azure Active Directory (Azure AD) incluent l’API REST du service de demande. Cette API vous permet d’émettre et de vérifier des informations d’identification. Cet article spécifie l’API REST du service de demande pour une demande de présentation. La demande de présentation invite l’utilisateur à présenter des justificatifs vérifiables, puis à vérifier les informations d'identification.
 
 ## <a name="http-request"></a>Demande HTTP
 
@@ -37,7 +36,7 @@ La demande de présentation de l’API REST du service de demande requiert les e
 |`Authorization`| Attachez le jeton d’accès comme jeton du porteur à l’en-tête d’autorisation dans une requête HTTP. Par exemple : `Authorization: Bearer <token>`.|
 |`Content-Type`| `Application/json`|
 
-Construisez une requête HTTP POST adressée à l’API REST du service de demande. Remplacez `{tenantID}` par votre [ID de locataire](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application) ou votre nom de locataire.
+Construisez une requête HTTP POST adressée à l’API REST du service de demande. Remplacez `{tenantID}` par votre ID de locataire ou votre nom de locataire.
 
 ```http
 https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -63,7 +62,7 @@ Authorization: Bearer  <token>
 } 
 ```  
 
-L’autorisation suivante est requise pour appeler l’API REST du service de demande. Pour plus d’informations, consultez [Accorder des autorisations pour obtenir des jetons d’accès](verifiable-credentials-configure-tenant.md#31-grant-permissions-to-get-access-tokens).
+L’autorisation suivante est requise pour appeler l’API REST du service de demande. Pour plus d’informations, consultez [Accorder des autorisations pour obtenir des jetons d’accès](verifiable-credentials-configure-tenant.md#grant-permissions-to-get-access-tokens).
 
 | Type d'autorisation | Autorisation  |
 |---------|---------|
@@ -106,15 +105,15 @@ La charge utile contient les propriétés suivantes.
 
 |Paramètre |Type  | Description |
 |---------|---------|---------|
-| `includeQRCode` |  boolean |   Détermine si un code QR est inclus dans la réponse de cette demande. Présentez le code QR et demandez à l’utilisateur de le scanner. L’analyse du code QR lance l’application d’authentification avec cette demande de présentation. Valeurs possibles : `true` (par défaut) ou `false`. Lorsque la valeur est `false`, utilisez la propriété `url` de retour pour afficher un lien profond.  |
-| `authority` | string|  L’identificateur décentralisé de votre locataire Azure AD vérificateur. Pour plus d’informations, consultez [Rassembler les détails du locataire pour configurer votre exemple d’application](verifiable-credentials-configure-verifier.md#gather-tenant-details-to-set-up-your-sample-application).|
+| `includeQRCode` |  Boolean |   Détermine si un code QR est inclus dans la réponse de cette demande. Présentez le code QR et demandez à l’utilisateur de le scanner. L’analyse du code QR lance l’application d’authentification avec cette demande de présentation. Les valeurs possibles sont `true` (par défaut) ou `false`. Lorsque vous définissez la valeur sur `false`, utilisez la propriété `url` de retour pour afficher un lien profond.  |
+| `authority` | chaîne|  L’identificateur décentralisé (DID) de votre locataire Azure AD vérificateur. Pour plus d’informations, consultez [Rassembler les détails du locataire pour configurer votre exemple d’application](verifiable-credentials-configure-verifier.md#gather-tenant-details-to-set-up-your-sample-application).|
 | `registration` | [RequestRegistration](#requestregistration-type)|  Fournit des informations sur le vérificateur. |
 | `presentation` | [RequestPresentation](#requestpresentation-type)| Fournit des informations sur la demande de présentation de justificatifs vérifiables.  |
 |`callback`|  [Callback](#callback-type)| Permet au développeur de mettre à jour l’interface utilisateur pendant le processus de présentation des justificatifs vérifiables. Quand l’utilisateur termine le processus, poursuivez le processus une fois les résultats retournés à l’application.|
 
 ### <a name="requestregistration-type"></a>Type RequestRegistration
 
-Le type RequestRegistration fournit l’inscription des informations pour l’émetteur. Le type RequestRegistration contient les propriétés suivantes :
+Le type `RequestRegistration` fournit l’inscription des informations pour l’émetteur. Le type `RequestRegistration` contient les propriétés suivantes :
 
 |Propriété |Type |Description |
 |---------|---------|---------|
@@ -126,37 +125,36 @@ La capture d’écran suivante montre la propriété `clientName` et le nom d’
 
 ### <a name="requestpresentation-type"></a>Type RequestPresentation
 
-RequestPresentation fournit des informations requises pour la présentation des justificatifs vérifiables. RequestPresentation contient les propriétés suivantes :
+Le type `RequestPresentation` fournit les informations requises pour la présentation de justificatifs vérifiables. `RequestPresentation` contient les propriétés suivantes :
 
 |Propriété |Type |Description |
 |---------|---------|---------|
-| `includeReceipt` |  boolean | Détermine si un accusé de réception doit être inclus dans la réponse de cette demande. Valeurs possibles : `true` ou `false` (par défaut). L’accusé de réception contient la charge utile d’origine envoyée de l’authentificateur au service des justificatifs vérifiables.  L’accusé de réception est utile pour la résolution des problèmes et ne doit pas être défini par défaut. Dans la demande de SIOP OpenId Connect, l’accusé de réception contient le jeton d’ID de la demande d’origine. |
+| `includeReceipt` |  Boolean | Détermine si un accusé de réception doit être inclus dans la réponse de cette demande. Les valeurs possibles sont `true` ou `false`(par défaut). L’accusé de réception contient la charge utile d’origine envoyée de l’authentificateur au service des justificatifs vérifiables. L’accusé de réception est utile pour la résolution des problèmes et ne doit pas être défini par défaut. Dans la demande `OpenId Connect SIOP`, l’accusé de réception contient le jeton d’ID de la demande d’origine. |
 | `requestedCredentials` | collection| Collection d’objets [RequestCredential](#requestcredential-type).|
 
 ### <a name="requestcredential-type"></a>Type RequestCredential
 
-Le type RequestCredential fournit des informations sur les informations d’identification demandées que l’utilisateur doit fournir. Le type RequestCredential contient les propriétés suivantes :
+`RequestCredential` fournit des informations sur les informations d’identification demandées que l’utilisateur doit fournir. `RequestCredential` contient les propriétés suivantes :
 
 |Propriété |Type |Description |
 |---------|---------|---------|
-| `type`| string| Type de justificatifs vérifiables. Le `type` doit correspondre au type défini dans le manifeste des justificatifs vérifiables de l’**émetteur**. Par exemple : `VerifiedCredentialExpert`. Pour obtenir le manifeste de l’émetteur, suivez les conseils fournis dans [Collecter les justificatifs et les détails de l’environnement pour configurer votre exemple d’application](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application). Copiez l’**URL des informations d’identification du problème** et ouvrez-la dans un navigateur web, puis vérifiez la propriété **ID**. |
+| `type`| string| Type de justificatifs vérifiables. Le `type` doit correspondre au type défini dans le manifeste des justificatifs vérifiables `issuer` (par exemple, `VerifiedCredentialExpert`). Pour obtenir le manifeste de l’émetteur, consultez [Collecter les justificatifs et les détails de l’environnement pour configurer votre exemple d’application](verifiable-credentials-configure-issuer.md). Copiez l’**URL des informations d’identification du problème**, ouvrez-la dans un navigateur web, puis vérifiez la propriété **ID**. |
 | `purpose`| string | Fournissez des informations sur l’objectif de la demande de ces justificatifs vérifiables. |
-| `acceptedIssuers`| collection de chaînes | Collection d’identificateurs décentralisés (DID) d’émetteurs qui pourraient émettre le type de justificatifs vérifiables que les sujets peuvent présenter. Pour obtenir votre DID d’émetteur, suivez les instructions fournies dans [Collecter les justificatifs et les détails de l’environnement pour configurer votre exemple d’application](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application), puis copiez la valeur du **DID**. |
-
+| `acceptedIssuers`| collection de chaînes | Collection d’identificateurs décentralisés (DID) d’émetteurs qui pourraient émettre le type de justificatifs vérifiables que les sujets peuvent présenter. Pour obtenir votre DID d’émetteur, consultez [Collecter les justificatifs et les détails de l’environnement pour configurer votre exemple d’application](verifiable-credentials-configure-issuer.md), puis copiez la valeur du **DID**. |
 
 ### <a name="callback-type"></a>Type de rappel
 
-L’API REST du service de demande génère plusieurs événements pour le point de terminaison de rappel. Ces événements vous permettent de mettre à jour l’interface utilisateur et de poursuivre le processus une fois que les résultats sont renvoyés à l’application. Le type Callback contient les propriétés suivantes :
+L’API REST du service de demande génère plusieurs événements pour le point de terminaison de rappel. Ces événements vous permettent de mettre à jour l’interface utilisateur et de poursuivre le processus une fois que les résultats sont renvoyés à l’application. Le type `Callback` contient les propriétés suivantes :
 
 |Propriété |Type |Description |
 |---------|---------|---------|
 | `url` | string| URI du point de terminaison de rappel de votre application. |
 | `state` | string| S’associe à l’état transmis dans la charge utile d’origine. |
-| `headers` | string| [Facultatif] Vous pouvez inclure une collection d’en-têtes HTTP requis par le destinataire du message POST. Les en-têtes doivent inclure uniquement la clé API ou tout en-tête requis pour l’autorisation.|
+| `headers` | string| facultatif. Vous pouvez inclure une collection d’en-têtes HTTP requis par le destinataire du message POST. Les en-têtes doivent inclure uniquement l’`api-key` ou tout en-tête requis pour l’autorisation.|
 
 ## <a name="successful-response"></a>Réponse correcte
 
-En cas de réussite, cette méthode renvoie un code de réponse HTTP 201 Created et une collection d’objets d’événement dans le corps de la réponse. Le code JSON suivant illustre une réponse réussie :
+En cas de réussite, cette méthode renvoie un code de réponse (*HTTP 201 Créé*) et une collection d’objets d’événement dans le corps de la réponse. Le code JSON suivant illustre une réponse réussie :
 
 ```json
 {  
@@ -171,16 +169,16 @@ La réponse contient les propriétés suivantes :
 
 |Propriété |Type |Description |
 |---------|---------|---------|
-| `requestId`| string | ID de corrélation généré automatiquement. Le [rappel](#callback-events) utilise la même requête. Cela vous permet de suivre la demande de présentation et ses rappels. |
+| `requestId`| chaîne | ID de corrélation généré automatiquement. Le [rappel](#callback-events) utilisant la même demande, vous pouvez garder une trace de la demande de présentation et de ses rappels. |
 | `url`|  string| URL qui lance l’application d’authentification et démarre le processus de présentation. Vous pouvez présenter cette URL à l’utilisateur s’il ne parvient pas à scanner le code QR. |
-| `expiry`| entier| Indique le moment où la réponse sera expirée. |
-| `qrCode`| string | Code QR que l’utilisateur peut analyser pour démarrer le flux de présentation. |
+| `expiry`| entier| Indique quand la réponse expire. |
+| `qrCode`| string | Code QR que l’utilisateur peut scanner pour démarrer le flux de présentation. |
 
-Lorsque votre application reçoit la réponse, l’application doit présenter le code QR à l’utilisateur. L’utilisateur analyse le code QR, ce qui ouvre l’application d’authentification qui démarre le processus de présentation.
+Lorsque votre application reçoit la réponse, l’application doit présenter le code QR à l’utilisateur. L’utilisateur scanne le code QR, qui ouvre l’application d’authentification et démarre le processus de présentation.
 
 ## <a name="error-response"></a>Réponse d’erreur
 
-Les réponses d’erreur peuvent également être renvoyées afin que l’application puisse les traiter de façon appropriée. Le code JSON suivant montre un message d’erreur non autorisé.
+Les réponses d’erreur peuvent également être renvoyées afin que l’application puisse les traiter de façon appropriée. Le code JSON suivant montre un message d’erreur non autorisée :
 
 
 ```json
@@ -198,25 +196,25 @@ La réponse contient les propriétés suivantes :
 
 |Propriété |Type |Description |
 |---------|---------|---------|
-| `requestId`| string | ID de demande généré automatiquement.|
-| `date`| Date| Heure de l’erreur. |
-| `error.code` | string| Code d’erreur de retour. |
-| `error.message`| string| Message d’erreur. |
+| `requestId`| chaîne | ID de demande généré automatiquement.|
+| `date`| Date | Heure de l’erreur. |
+| `error.code` | string | Code d’erreur de retour. |
+| `error.message`| string | Message d’erreur. |
 
 ## <a name="callback-events"></a>Événements de rappel
 
-Le point de terminaison de rappel est appelé quand un utilisateur analyse le code QR, utilise le lien profond avec son application d’authentification ou termine le processus de présentation. 
+Le point de terminaison de rappel est appelé quand un utilisateur scanne le code QR, utilise le lien profond avec son application d’authentification ou termine le processus de présentation. 
 
 |Propriété |Type |Description |
 |---------|---------|---------|
-| `requestId`| string | Mappé à la demande d’origine lorsque la charge utile a été publiée sur le service Justificatifs vérifiables.|
-| `code` |string |Code renvoyé lorsque la demande a été récupérée par l’application d’authentification. Valeurs possibles : <ul><li>`request_retrieved` : l’utilisateur a scanné le code QR ou cliqué sur le lien qui démarre le processus de présentation.</li><li>`presentation_verified` : la validation des justificatifs vérifiables s’est correctement déroulée.</li></ul>    |
-| `state` |string| L’état renvoie la valeur d’état que vous avez transmise dans la charge utile d’origine.   |
+| `requestId`| chaîne | Mappé à la demande d’origine lorsque la charge utile a été publiée sur le service Justificatifs vérifiables.|
+| `code` |string |Code renvoyé lorsque la demande a été récupérée par l’application d’authentification. Valeurs possibles : <ul><li>`request_retrieved` : L’utilisateur a scanné le code QR ou sélectionné le lien qui démarre le processus de présentation.</li><li>`presentation_verified` : La validation des justificatifs vérifiables s’est correctement déroulée.</li></ul>    |
+| `state` |chaîne| Renvoie la valeur d’état que vous avez transmise dans la charge utile d’origine.   |
 | `subject`|string | DID d’utilisateur des justificatifs vérifiables.|
 | `issuers`| tableau |Retourne un tableau de justificatifs vérifiables demandés. Pour chacun des justificatifs vérifiables, elle fournit les éléments suivants : </li><li>Type de justificatifs vérifiables.</li><li>Revendications récupérées.</li><li>Domaine de l’émetteur des justificatifs vérifiables. </li><li>État de validation du domaine de l’émetteur des justificatifs vérifiables. </li></ul> |
-| `receipt`| string | (Facultatif) L’accusé de réception contient la charge utile d’origine envoyée de l’authentificateur au service des justificatifs vérifiables.  |
+| `receipt`| string | facultatif. L’accusé de réception contient la charge utile d’origine envoyée de l’authentificateur aux justificatifs vérifiables.  |
 
-L’exemple suivant illustre une charge utile de rappel lorsque la demande de présentation est démarrée par l’application d’authentification.
+L’exemple suivant illustre une charge utile de rappel lorsque l’application de l’authentificateur démarre la demande de présentation :
 
 ```json
 {  
@@ -226,7 +224,7 @@ L’exemple suivant illustre une charge utile de rappel lorsque la demande de pr
 } 
 ```
 
-L’exemple suivant illustre une charge utile de rappel après la réussite de la présentation des justificatifs vérifiables.
+L’exemple suivant illustre une charge utile de rappel après la réussite de la présentation des justificatifs vérifiables :
 
 ```json
 {
@@ -257,4 +255,4 @@ L’exemple suivant illustre une charge utile de rappel après la réussite de l
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-En savoir plus sur [l’appel de l’API REST du service de demande](get-started-request-api.md)
+Découvrez [comment appeler de l’API REST du service de demande](get-started-request-api.md).

@@ -22,31 +22,33 @@
       items:
         - name: Erreurs de déploiement courantes
           href: common-deployment-errors.md
-        - name: AccountNameInvalid
+        - name: Nom du compte non valide
           href: error-storage-account-name.md
-        - name: DeploymentQuotaExceeded
+        - name: Dépassement du quota de déploiement
           href: deployment-quota-exceeded.md
-        - name: InvalidTemplate
+        - name: Modèle non valide
           href: error-invalid-template.md
-        - name: JobSizeExceeded
+        - name: Taille de travail dépassée
           href: error-job-size-exceeded.md
-        - name: NoRegisteredProviderFound
+        - name: Aucun fournisseur inscrit trouvé
           href: error-register-resource-provider.md
-        - name: NotFound
+        - name: Introuvable
           href: error-not-found.md
-        - name: ParentResourceNotFound
+        - name: Ressource parente introuvable
           href: error-parent-resource.md
         - name: Problèmes de provisionnement et d’allocation pour Linux
           href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux
         - name: Problèmes de provisionnement et d’allocation pour Windows
           href: /troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows
-        - name: RequestDisallowedByPolicy
+        - name: Demande non autorisée par la stratégie
           href: error-policy-requestdisallowedbypolicy.md
-        - name: ReservedResourceName
+        - name: Nom des ressources réservées
           href: error-reserved-resource-name.md
-        - name: ResourceQuotaExceeded
+        - name: Nom et type de format des ressources
+          href: error-invalid-name-segments.md
+        - name: Quota de ressources dépassé
           href: error-resource-quota.md
-        - name: SkuNotAvailable
+        - name: Référence (SKU) non disponible
           href: error-sku-not-available.md
 - name: Référence
   items:

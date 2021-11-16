@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2021
+ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ffbdb8349f9da359cd050b8fd7f058d1877966b0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9ee57c3de5b0e6166e54c79713e789f2211ffed3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004281"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445006"
 ---
 # <a name="data-encryption-models"></a>Modèles de chiffrement des données
 
@@ -193,7 +193,7 @@ Services Azure qui prennent en charge chaque modèle de chiffrement :
 | Azure Synapse Analytics          | Oui                | Oui, RSA 3072 bits  | -                  |
 | SQL Server Stretch Database      | Oui                | Oui, RSA 3072 bits  | Oui                |
 | Stockage Table                    | Oui                | Oui                | Oui                |
-| Azure Cosmos DB                  | Oui                | Oui                | -                  |
+| Azure Cosmos DB                  | Oui  ([en savoir plus](../../cosmos-db/database-security.md?tabs=sql-api))              | Oui ([en savoir plus](../../cosmos-db/how-to-setup-cmk.md))                | -                  |
 | Azure Databricks                 | Oui                | Oui                | -                  |
 | Azure Database Migration Service | Oui                | N/A\*              | -                  |
 | **Identité**                     |                    |                    |                    |

@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: mimckitt
-ms.openlocfilehash: 8bf4c2842f6ec3cecc6e6cc014bb225115a1655f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: be0cf8b120a8d74066f13ddac09460a6dc662df4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450410"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444559"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutoriel : Créer une image personnalisée d’une machine virtuelle Azure avec Azure CLI
 
@@ -24,11 +24,11 @@ ms.locfileid: "123450410"
 Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des configurations comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. Ce didacticiel explique comment créer votre propre image personnalisée d’une machine virtuelle Azure. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
-> * Créer une galerie Shared Image Gallery
+> * Créer une galerie Azure Compute Gallery (anciennement appelée Shared Image Gallery)
 > * Créer une définition d’image
 > * Créer une version d’image
 > * Créer une machine virtuelle à partir d’une image 
-> * Partager une galerie d’images
+> * Partager une galerie
 
 
 Ce tutoriel utilise l’interface CLI disponible dans [Azure Cloud Shell](../../cloud-shell/overview.md), qui est constamment mise à jour vers la dernière version. Pour ouvrir Cloud Shell, sélectionnez **Essayer** en haut d’un bloc de code.
@@ -37,11 +37,11 @@ Si vous choisissez d’installer et d’utiliser l’interface CLI localement, c
 
 ## <a name="overview"></a>Vue d’ensemble
 
-Une [galerie d’images partagées](../shared-image-galleries.md) simplifie considérablement le partage d’images personnalisées dans votre organisation. Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des configurations comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. 
+Une galerie [Azure Compute Gallery](../shared-image-galleries.md) simplifie le partage d’images personnalisées dans votre organisation. Les images personnalisées sont comme des images de la Place de marché, sauf que vous les créez vous-même. Les images personnalisées peuvent être utilisées pour amorcer des configurations comme le préchargement des applications, les configurations d’application et d’autres configurations de système d’exploitation. 
 
-Shared Image Gallery vous permet de partager vos images de machines virtuelles personnalisées avec d’autres utilisateurs. Choisissez les images à partager, les régions dans lesquelles vous souhaitez les rendre disponibles et les personnes avec lesquelles vous voulez les partager. 
+Azure Compute Gallery vous permet de partager vos images de machines virtuelles personnalisées avec d’autres utilisateurs. Choisissez les images à partager, les régions dans lesquelles vous souhaitez les rendre disponibles et les personnes avec lesquelles vous voulez les partager. 
 
-La fonctionnalité Galerie d’images partagées a plusieurs types de ressources :
+La fonctionnalité Azure Compute Gallery présente plusieurs types de ressources :
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
@@ -57,13 +57,13 @@ Azure Cloud Shell est un interpréteur de commandes interactif et gratuit que vo
 
 Pour ouvrir Cloud Shell, sélectionnez simplement **Essayer** en haut à droite d’un bloc de code. Vous pouvez également lancer Cloud Shell dans un onglet distinct du navigateur en accédant à [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Sélectionnez **Copier** pour copier les blocs de code, collez-les dans Cloud Shell, puis appuyez sur Entrée pour les exécuter.
 
-## <a name="create-an-image-gallery"></a>Créer une galerie d’images 
+## <a name="create-a-gallery"></a>Créer une galerie 
 
-Une galerie d’images est la ressource principale utilisée pour activer le partage d’image. 
+Une galerie est la principale ressource utilisée pour permettre le partage d’images. 
 
-Les caractères autorisés pour le nom de galerie sont les lettres majuscules ou minuscules, les chiffres et les points. Le nom de galerie ne peut pas contenir de tirets.   Les noms de galerie doivent être uniques dans votre abonnement. 
+Les caractères autorisés pour le nom de galerie sont les lettres majuscules ou minuscules, les chiffres et les points. Le nom de galerie ne peut pas contenir de tirets. Les noms de galerie doivent être uniques dans votre abonnement. 
 
-Créez une galerie d’images à l’aide de [az sig create](/cli/azure/sig#az_sig_create). L’exemple suivant crée un groupe de ressources nommé *myGalleryRG* dans *USA Est* et une galerie nommée *myGallery*.
+Créez une galerie à l’aide de la commande [az sig create](/cli/azure/sig#az_sig_create). L’exemple suivant crée un groupe de ressources nommé *myGalleryRG* dans *USA Est* et une galerie nommée *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -169,7 +169,7 @@ az sig show \
    --query id
 ```
 
-Utilisez l’ID d’objet en tant qu’étendue, ainsi qu’une adresse e-mail et [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) pour donner aux utilisateurs un accès à la galerie d’images partagées. Remplacez `<email-address>` et `<gallery iD>` par vos propres informations.
+Utilisez l’ID d’objet en tant qu’étendue, ainsi qu’une adresse e-mail et la commande [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) pour donner aux utilisateurs l’accès à la galerie Azure Compute Gallery. Remplacez `<email-address>` et `<gallery iD>` par vos propres informations.
 
 ```azurecli-interactive
 az role assignment create \
@@ -189,11 +189,11 @@ Azure propose également un service, basé sur Packer, nommé [Azure VM Image Bu
 Ce didacticiel vous montré comment créer une image de machine virtuelle. Vous avez appris à :
 
 > [!div class="checklist"]
-> * Créer une galerie Shared Image Gallery
+> * Créer une instance Azure Compute Gallery
 > * Créer une définition d’image
 > * Créer une version d’image
 > * Créer une machine virtuelle à partir d’une image 
-> * Partager une galerie d’images
+> * Partager une galerie
 
 Pour découvrir les machines virtuelles hautement disponibles, passez au didacticiel suivant.
 

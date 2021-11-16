@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/29/2021
-ms.openlocfilehash: 6767ef2786ca57353690dde19bbe20235a7c80f6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 10/26/2021
+ms.openlocfilehash: 4313a9a6478c38ccb6611ea7c0008bd7fa9ebcbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429714"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848246"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Contrat Standard pour le marketplace commercial de Microsoft
 
@@ -22,6 +22,9 @@ Les conditions générales d’une offre sont définies lors de la création de 
 
 >[!Note]
 >Après avoir publié une offre à l’aide du contrat Standard pour la place de marché commerciale de Microsoft, vous ne pouvez pas utiliser vos propres conditions générales. Vous proposez votre solution avec le contrat Standard *ou* avec vos propres conditions générales. Les conditions générales personnalisées sont définies au niveau de l’offre et s’appliquent à tous les plans ; écrivez vos conditions générales dans la page **Propriétés** de votre offre dans l’Espace partenaires. Si vous souhaitez modifier les conditions du contrat Standard, vous pouvez le faire par le biais des Modifications du contrat Standard.
+
+> [!TIP]
+> Pour voir l’affichage des contrats juridiques du client dans la Place de marché Azure, consultez [Contrats juridiques](/marketplace/legal-contracts).
 
 ## <a name="standard-contract-amendments"></a>Contrat Standard | Modifications
 

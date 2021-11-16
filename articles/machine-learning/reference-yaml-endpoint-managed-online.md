@@ -10,12 +10,12 @@ author: rsethur
 ms.author: seramasu
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 5b7637f16885e2eed5281273f1acad866e38e39e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2fe01750fdce0a3d5c3fcb5211485666caf95bb4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555853"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057743"
 ---
 # <a name="cli-v2-online-endpoint-yaml-schema"></a>Schéma YAML d’un point de terminaison en ligne avec l’interface CLI (v2)
 
@@ -30,7 +30,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
 | `name` | string | **Obligatoire.** Nom du point de terminaison, Doit être unique au niveau de la région Azure. <br><br> Les règles de nommage sont définies [ici](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview).| | |
 | `description` | string | Description du point de terminaison. | | |
 | `tags` | object | Dictionnaire d’étiquettes pour le point de terminaison. | | |
@@ -46,19 +46,19 @@ La commande `az ml online-endpoint` peut être utilisée pour gérer les points 
 
 ## <a name="examples"></a>Exemples
 
-Des exemples sont disponibles dans le [dépôt d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/batch). Vous en trouverez plusieurs ci-dessous.
+Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/batch). Vous en trouverez plusieurs ci-dessous.
 
 ## <a name="yaml-basic"></a>YAML : de base
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/endpoint.yml":::
 
 ## <a name="yaml-system-assigned-identity"></a>YAML : identité affectée par le système
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
 
 ## <a name="yaml-user-assigned-identity"></a>YAML : identité affectée par l’utilisateur
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

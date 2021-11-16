@@ -3,18 +3,18 @@ title: 'Tutoriel : Créer et gérer des données exportées depuis Azure Cost M
 description: Cet article explique comment créer et gérer des données Cost Management exportées afin de les utiliser dans des systèmes externes.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 11/03/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a08c6a6b00273e21c517162260f54ed3e6fc65ff
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: fdefbf1de5e61d05379dd0cfce07a30038dea4f0
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711351"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502803"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutoriel : Créer et gérer des données exportées
 
@@ -45,6 +45,7 @@ L’exportation de données est disponible pour divers types de comptes Azure, n
 Pour les comptes Stockage Azure :
 - Des autorisations d’écriture sont nécessaires pour modifier le compte de stockage configuré, indépendamment des autorisations sur l’exportation.
 - Votre compte de stockage Azure doit être configuré pour le stockage d’objets blob ou de fichiers.
+- Le compte de stockage ne doit pas avoir de pare-feu configuré.
 
 Si vous disposez d’un nouvel abonnement, vous ne pouvez pas utiliser les fonctionnalités de Cost Management tout de suite. Vous risquez de devoir attendre jusqu’à 48 heures avant de pouvoir utiliser toutes les fonctionnalités de Cost Management.
 

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a9fe604673ee53aa6772e6f382a4a3e3a53fb903
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3348bddec5700ba2a5ddf1112ad20f9319e04d79
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115006"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554884"
 ---
 # <a name="tutorial-designer---deploy-a-machine-learning-model"></a>Tutoriel : (concepteur) Déployer un modèle Machine Learning
 
@@ -38,7 +38,7 @@ Suivez la [première partie du tutoriel](tutorial-designer-automobile-price-trai
 
 ## <a name="create-a-real-time-inference-pipeline"></a>Créer un pipeline d’inférence en temps réel
 
-Pour déployer votre pipeline, vous devez d’abord convertir le pipeline d’entraînement en pipeline d’inférence en temps réel. Ce processus supprime les modules d’entraînement et ajoute les entrées et sorties de service web pour gérer les demandes.
+Pour déployer votre pipeline, vous devez d’abord convertir le pipeline d’entraînement en pipeline d’inférence en temps réel. Ce processus supprime les composants de formation et ajoute les entrées et sorties de service web pour gérer les demandes.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Créer un pipeline d’inférence en temps réel
 
@@ -52,18 +52,18 @@ Pour déployer votre pipeline, vous devez d’abord convertir le pipeline d’en
 
     Quand vous sélectionnez **Créer un pipeline d’inférence**, plusieurs choses se produisent :
     
-    * Le modèle entraîné est stocké sous la forme d’un module **Jeux de données** dans la palette de modules. Vous pouvez le trouver sous **Mes modèles**.
-    * Des modules d’entraînement, comme **Train Model** (Entraîner le modèle) et **Split Data** (Fractionner les données) sont supprimés.
+    * Le modèle formé est stocké sous la forme d’un composant **Jeux de données** dans la palette de composants. Vous pouvez le trouver sous **Mes modèles**.
+    * Des composants de formation, comme **Effectuer l’apprentissage du modèle** et **Fractionner les données** sont supprimés.
     * Le modèle entraîné enregistré est rajouté au pipeline.
-    * Les modules **Entrée du service web** et **Sortie du service web** sont ajoutés. Ces modules montrent l’emplacement où les données utilisateur sont entrées dans le pipeline ainsi que l’emplacement où ces données sont retournées.
+    * Les composants **Entrée du service web** et **Sortie du service web** sont ajoutés. Ces composants montrent l’emplacement où les données utilisateur entrent dans le pipeline ainsi que l’emplacement où ces données sont renvoyées.
 
     > [!NOTE]
-    > Par défaut, l’**entrée de service web** attend le même schéma de données que les données de sortie du module qui se connectent au même port en aval qu’elle. Dans cet exemple, le module **Entrée de service web** et les données **Automobile price data (Raw)** (données sur le prix des véhicules automobiles (brutes)) se connectent au même module en aval. Par conséquent, l’**entrée de service web** attend le même schéma de données que les données **Automobile price data (Raw)** et la colonne variable cible `price` est incluse dans le schéma.
-    > Toutefois, quand vous attribuez un score aux données, vous ne connaissez pas les valeurs des variables cibles. Dans ce cas, vous pouvez supprimer la colonne variable cible dans le pipeline d’inférence à l’aide du module **Sélectionner des colonnes dans le jeu de données**. Vérifiez que la sortie du module **Sélectionner des colonnes dans le jeu de données** supprimant la colonne variable cible est connectée au même port que la sortie du module **Entrée de service web**.
+    > Par défaut, le composant **Entrée du service web** attend le même schéma de données que les données de sortie du composant qui se connectent au même port en aval qu’elle. Dans cet exemple, le composant **Entrée du service web** et le jeu de données **Données sur le prix des véhicules automobiles (brutes)** se connectent au même composant en aval. Par conséquent, le composant **Entrée du service web** attend le même schéma de données que le jeu de données **Données sur le prix des véhicules automobiles (brutes)** et la colonne variable cible `price` est incluse dans le schéma.
+    > Toutefois, quand vous attribuez un score aux données, vous ne connaissez pas les valeurs des variables cibles. Dans ce cas, vous pouvez supprimer la colonne variable cible dans le pipeline d’inférence à l’aide du composant **Sélectionner des colonnes dans le jeu de données**. Vérifiez que la sortie du composant **Sélectionner des colonnes dans le jeu de données** supprimant la colonne variable cible est connectée au même port que la sortie du composant **Entrée du service web**.
 
 1. Sélectionnez **Envoyer**, puis utilisez la même cible de calcul et la même expérience que durant la première partie.
 
-    Si c’est la première fois, l’exécution de votre pipeline peut prendre jusqu’à 20 minutes. Les paramètres de calcul par défaut ont une taille de nœud minimale de 0, ce qui signifie que le concepteur doit allouer des ressources après une période d’inactivité. Les exécutions de pipeline répétées prennent moins de temps dans la mesure où les ressources de calcul sont déjà allouées. Par ailleurs, le concepteur utilise les résultats mis en cache pour chaque module afin d’améliorer l’efficacité.
+    Si c’est la première fois, l’exécution de votre pipeline peut prendre jusqu’à 20 minutes. Les paramètres de calcul par défaut ont une taille de nœud minimale de 0, ce qui signifie que le concepteur doit allouer des ressources après une période d’inactivité. Les exécutions de pipeline répétées prennent moins de temps dans la mesure où les ressources de calcul sont déjà allouées. Par ailleurs, le concepteur utilise les résultats mis en cache pour chaque composant afin d’améliorer l’efficacité.
 
 1. Sélectionnez **Déployer**.
 
@@ -148,19 +148,19 @@ Si vous modifiez votre pipeline d’entraînement, vous devez soumettre à nouve
 
 Notez que seuls les modèles entraînés seront mis à jour dans le pipeline d’inférence, alors que la transformation de données ne sera pas mise à jour.
 
-Pour utiliser la transformation mise à jour dans le pipeline d’inférence, vous devez inscrire la sortie de la transformation du module de transformation en tant que jeu de données.
+Pour utiliser la transformation mise à jour dans le pipeline d’inférence, vous devez inscrire la sortie de transformation du composant de transformation en tant que jeu de données.
 
 ![Capture d’écran montrant comment inscrire le jeu de données de transformation](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
 
-Ensuite, remplacez manuellement le module **TD-** dans le pipeline d’inférence par le jeu de données inscrit.
+Ensuite, remplacez manuellement le composant **TD-** dans le pipeline d’inférence par le jeu de données inscrit.
 
-![Capture d’écran montrant comment remplacer le module de transformation](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+![Capture d’écran montrant comment remplacer le composant de transformation](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
 
 Vous pouvez ensuite envoyer le pipeline d’inférence avec le modèle et la transformation mis à jour, puis déployer.
 
 ### <a name="deploy-real-time-endpoint"></a>Déployer un point de terminaison en temps réel
 
-En raison de la limitation de l’accès au magasin de données, si votre pipeline d’inférence contient un module **Importer des données**  ou **Exporter des données**, il est automatiquement supprimé lors du déploiement sur le point de terminaison en temps réel.
+En raison de la limitation de l’accès au magasin de données, si votre pipeline d’inférence contient un composant **Importer des données**  ou **Exporter des données**, il est automatiquement supprimé lors du déploiement sur le point de terminaison en temps réel.
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 

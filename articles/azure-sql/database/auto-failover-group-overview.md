@@ -11,12 +11,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 10/25/2021
-ms.openlocfilehash: 8977af3468ce861efb9a2e97048b681c2b41d76d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2d4aa937a29170ff1ebabc9b1e0bbe316b526189
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131069536"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894124"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-geo-failover-of-multiple-databases"></a>Utiliser les groupes de basculement automatique pour permettre le géobasculement transparent et coordonné de plusieurs bases de données
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -172,7 +172,7 @@ Un ou plusieurs groupes de basculement peuvent être créés entre deux serveurs
   
 ### <a name="use-the-read-write-listener-to-connect-to-primary"></a><a name="using-read-write-listener-for-oltp-workload"></a> Utiliser l’écouteur en lecture-écriture pour se connecter à la base de données primaire
 
-Pour les charges de travail en lecture-écriture, utilisez `<fog-name>.database.windows.net` comme nom de serveur dans la chaîne de connexion. Les connexions seront automatiquement dirigées vers la base de données primaire. Ce nom ne change pas après le basculement. Notez que le basculement implique la mise à jour de l’enregistrement DNS de façon à ce que les connexions clients soient redirigées vers le nouveau serveur primaire seulement après l’actualisation du cache DNS.
+Pour les charges de travail en lecture-écriture, utilisez `<fog-name>.database.windows.net` comme nom de serveur dans la chaîne de connexion. Les connexions seront automatiquement dirigées vers la base de données primaire. Ce nom ne change pas après le basculement. Notez que le basculement implique la mise à jour de l’enregistrement DNS de façon à ce que les connexions clients soient redirigées vers le nouveau serveur primaire seulement après l’actualisation du cache DNS. La durée de vie (TTL) de l’enregistrement DNS des écouteurs principal et secondaire est de 30 secondes.
 
 ### <a name="use-the-read-only-listener-to-connect-to-geo-secondary"></a><a name="using-read-only-listener-for-read-only-workload"></a> Utiliser l’écouteur en lecture seule pour se connecter à la base de données géosecondaire
 

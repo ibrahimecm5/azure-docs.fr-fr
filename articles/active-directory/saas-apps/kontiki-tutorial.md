@@ -1,5 +1,5 @@
 ---
-title: 'Didacticiel : Intégration d’Azure Active Directory avec Kontiki | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Kontiki'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Kontiki.
 services: active-directory
 author: jeevansd
@@ -9,28 +9,24 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 01e068c55d6ab2c11e0ac745c2347b52c374741d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a72156407b657147f44333afcc576b5bc931f71d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124813436"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435963"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Didacticiel : Intégration d’Azure Active Directory à Kontiki
+# <a name="tutorial-azure-ad-sso-integration-with-kontiki"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Kontiki
 
-Dans ce didacticiel, vous allez apprendre à intégrer Kontiki à Azure AD (Azure Active Directory).
+Dans ce tutoriel, vous allez apprendre à intégrer Kontiki à Azure Active Directory (Azure AD). Quand vous intégrez Kontiki à Azure AD, vous pouvez :
 
-L’intégration de Kontiki à Azure AD vous offre les avantages suivants :
+* Contrôler dans Azure AD qui a accès à Kontiki.
+* Permettre à vos utilisateurs de se connecter automatiquement à Kontiki avec leur compte Azure AD.
+* Gérer vos comptes à un emplacement central : le Portail Azure.
 
-* Vous pouvez utiliser Azure AD pour contrôler qui a accès à Kontiki.
-* Les utilisateurs peuvent être automatiquement connectés à Kontiki avec leur compte Azure AD (par le biais de l'authentification unique).
-* Vous pouvez centraliser la gestion de vos comptes à un seul emplacement : le Portail Azure.
-
-Pour plus d’informations sur l’intégration d’applications software as a service (SaaS) à Azure AD, consultez l’article [S’authentifier avec l’authentification unique auprès des applications dans Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
 Pour configurer l’intégration d’Azure AD avec Kontiki, vous avez besoin des éléments suivants :
 
@@ -43,65 +39,49 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 Kontiki prend en charge les fonctionnalités suivantes :
 
-* **Authentification unique lancée par le fournisseur de services**
-* **Attribution d’utilisateurs juste-à-temps**
+* **Authentification unique lancée par le fournisseur de services**.
+* **Attribution d’utilisateurs juste-à-temps**.
+
+> [!NOTE]
+> L’identificateur de cette application étant une valeur de chaîne fixe, une seule instance peut être configurée dans un locataire.
 
 ## <a name="add-kontiki-in-the-azure-portal"></a>Ajouter Kontiki dans le portail Azure
 
-Pour intégrer Kontiki à Azure AD, vous devez ajouter Kontiki à votre liste d’applications SaaS managées.
+Pour configurer l’intégration de Kontiki avec Azure AD, vous devez ajouter Kontiki à partir de la galerie à votre liste d’applications SaaS gérées.
 
-1. Connectez-vous au [portail Azure](https://portal.azure.com).
+1. Connectez-vous au portail Azure avec un compte professionnel ou scolaire ou avec un compte personnel Microsoft.
+1. Dans le panneau de navigation gauche, sélectionnez le service **Azure Active Directory**.
+1. Accédez à **Applications d’entreprise**, puis sélectionnez **Toutes les applications**.
+1. Pour ajouter une nouvelle application, sélectionnez **Nouvelle application**.
+1. Dans la section **Ajouter à partir de la galerie**, saisissez **Kontiki** dans la zone de recherche.
+1. Sélectionnez **Kontiki** dans le volet de résultats, puis ajoutez l’application. Patientez quelques secondes pendant que l’application est ajoutée à votre locataire.
 
-1. Dans le menu de gauche, sélectionnez **Azure Active Directory**.
+## <a name="configure-and-test-azure-ad-sso-for-kontiki"></a>Configurer et tester l’authentification unique Azure AD pour Kontiki
 
-    ![Option Azure Active Directory](common/select-azuread.png)
+Configurez et testez l’authentification unique Azure AD avec Kontiki à l’aide d’un utilisateur de test appelé **B.Simon**. Pour que l’authentification unique fonctionne, vous devez établir un lien entre un utilisateur Azure AD et l’utilisateur Kontiki associé.
 
-1. Sélectionnez **Applications d’entreprise** > **Toutes les applications**.
+Pour configurer et tester l’authentification unique Azure AD avec Kontiki, effectuez les étapes suivantes :
 
-    ![Volet Applications d’entreprise](common/enterprise-applications.png)
+1. **[Configurer l’authentification unique Azure AD](#configure-azure-ad-sso)** pour permettre à vos utilisateurs d’utiliser cette fonctionnalité.
+    1. **[Créer un utilisateur de test Azure AD](#create-an-azure-ad-test-user)** pour tester l’authentification unique Azure AD avec B. Simon.
+    1. **[Affecter l’utilisateur de test Azure AD](#assign-the-azure-ad-test-user)** pour permettre à B. Simon d’utiliser l’authentification unique Azure AD.
+1. **[Configurer l’authentification unique Kontiki](#configure-kontiki-sso)** pour configurer les paramètres de l’authentification unique côté application.
+    1. **[Créer un utilisateur de test Kontiki](#create-kontiki-test-user)** pour avoir un équivalent de B.Simon dans Kontiki lié à la représentation Azure AD associée.
+1. **[Tester l’authentification unique](#test-sso)** pour vérifier si la configuration fonctionne.
 
-1. Pour ajouter une application, sélectionnez **Nouvelle application**.
+## <a name="configure-azure-ad-sso"></a>Configurer l’authentification unique Azure AD
 
-    ![Option Nouvelle application](common/add-new-app.png)
+Effectuez les étapes suivantes pour activer l’authentification unique Azure AD dans le Portail Azure.
 
-1. Dans la zone de recherche, entrez **Kontiki**. Dans les résultats de la recherche, sélectionnez **Kontiki**, puis **Ajouter**.
+1. Dans le portail Azure, accédez à la page d’intégration de l’application **Kontiki**, recherchez la section **Gérer**, puis sélectionnez **Authentification unique**.
+1. Dans la page **Sélectionner une méthode d’authentification unique**, sélectionnez **SAML**.
+1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de crayon de **Configuration SAML de base** afin de modifier les paramètres.
 
-    ![Kontiki dans la liste des résultats](common/search-new-app.png)
+   ![Modifier la configuration SAML de base](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configurer et tester l’authentification unique Azure AD
+1. Dans la section **Configuration SAML de base**, procédez comme suit :
 
-Dans cette section, vous allez configurer et tester l’authentification unique Azure AD avec Kontiki à l’aide d’un utilisateur de test appelé **Britta Simon**. Pour que l’authentification unique fonctionne, vous devez établir une relation entre un utilisateur Azure AD et l’utilisateur Kontiki associé.
-
-Pour configurer et tester l’authentification unique Azure AD avec Kontiki, vous devez suivre les indications des sections suivantes :
-
-| Tâche | Description |
-| --- | --- |
-| **[Configurer l’authentification unique Azure AD](#configure-azure-ad-single-sign-on)** | Autorise les utilisateurs à utiliser cette fonctionnalité. |
-| **[Configurer l’authentification unique Kontiki](#configure-kontiki-single-sign-on)** | Configure les paramètres d’authentification unique dans l’application. |
-| **[Créer un utilisateur de test Azure AD](#create-an-azure-ad-test-user)** | Teste l’authentification unique Azure AD pour un utilisateur appelé Britta Simon. |
-| **[Affecter l’utilisateur de test Azure AD](#assign-the-azure-ad-test-user)** | Active Britta Simon pour lui permettre d'utiliser l’authentification unique Azure AD. |
-| **[Créer un utilisateur de test Kontiki](#create-a-kontiki-test-user)** | Crée un équivalent de Britta Simon dans Kontiki lié à la représentation Azure AD associée. |
-| **[Tester l’authentification unique](#test-single-sign-on)** | Vérifie que la configuration fonctionne. |
-
-### <a name="configure-azure-ad-single-sign-on"></a>Configurer l’authentification unique Azure AD
-
-Dans cette section, vous allez configurer l’authentification unique Azure AD avec Kontiki dans le portail Azure.
-
-1. Sur le [portail Azure](https://portal.azure.com/), dans le volet d’intégration de l’application **Kontiki**, sélectionnez **Authentification unique**.
-
-    ![Configurer l’option d’authentification unique](common/select-sso.png)
-
-1. Dans le volet **Sélectionner une méthode d’authentification unique**, sélectionnez le mode **SAML** ou **SAML/WS-Fed** pour activer l’authentification unique.
-
-    ![Mode de sélection de l’authentification unique](common/select-saml-option.png)
-
-1. Dans le volet **Configurer l’authentification unique avec SAML**, sélectionnez **Modifier** (icône de crayon) pour ouvrir le volet **Configuration SAML de base**.
-
-    ![Modifier la configuration SAML de base](common/edit-urls.png)
-
-1. Dans le volet **Configuration SAML de base**, dans la zone de texte **URL de connexion**, entrez une URL au format suivant : `https://<companyname>.mc.eval.kontiki.com`
-
-    ![Informations d’authentification unique dans Domaine et URL Kontiki](common/sp-signonurl.png)
+    Dans la zone de texte **URL de connexion**, entrez une URL au format suivant :  `https://<companyname>.mc.eval.kontiki.com`
 
     > [!NOTE]
     > Pour obtenir la valeur à utiliser, contactez l’[équipe du support technique de Kontiki](https://kollective.com/support/). Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
@@ -112,80 +92,50 @@ Dans cette section, vous allez configurer l’authentification unique Azure AD a
 
 1. Dans la section **Configurer Kontiki**, copiez les URL suivantes en fonction de vos besoins :
 
-    * URL de connexion
-    * Identificateur Azure AD
-    * URL de déconnexion
-
     ![Copier les URL de configuration](common/copy-configuration-urls.png)
-
-### <a name="configure-kontiki-single-sign-on"></a>Configurer l’authentification unique Kontiki
-
-Pour configurer l’authentification unique côté Kontiki, envoyez le fichier XML des métadonnées de fédération téléchargé et les URL appropriées copiées dans le portail Azure à l’[équipe du support technique Kontiki](https://kollective.com/support/). L’équipe du support technique Kontiki utilise les informations que vous lui envoyez pour vérifier que la connexion SAML à authentification unique est correctement configurée des deux côtés.
 
 ### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD 
 
-Dans cette section, créez un utilisateur de test nommé Britta Simon dans le portail Azure.
+Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
 
-1. Dans le portail Azure, sélectionnez **Azure Active Directory** > **Utilisateurs** > **Tous les utilisateurs**.
-
-    ![Options Utilisateurs et Tous les utilisateurs](common/users.png)
-
-1. Sélectionnez **Nouvel utilisateur**.
-
-    ![Option Nouvel utilisateur](common/new-user.png)
-
-1. Dans le volet **Utilisateur**, effectuez les étapes suivantes :
-
-    1. Dans la zone **Nom**, entrez **BrittaSimon**.
-  
-    1. Dans la zone **Nom d’utilisateur**, entrez **brittasimon\@\<your-company-domain>.\<extension>** . Par exemple, **brittasimon\@contoso.com**.
-
-    1. Cochez la case **Afficher le mot de passe**. Notez la valeur affichée dans la zone **Mot de passe**.
-
-    1. Sélectionnez **Create** (Créer).
-
-    ![Volet Utilisateur](common/user-properties.png)
+1. Dans le volet gauche du Portail Azure, sélectionnez **Azure Active Directory**, **Utilisateurs**, puis **Tous les utilisateurs**.
+1. Sélectionnez **Nouvel utilisateur** dans la partie supérieure de l’écran.
+1. Dans les propriétés **Utilisateur**, effectuez les étapes suivantes :
+   1. Dans le champ **Nom**, entrez `B.Simon`.  
+   1. Dans le champ **Nom de l’utilisateur**, entrez username@companydomain.extension. Par exemple : `B.Simon@contoso.com`.
+   1. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ **Mot de passe**.
+   1. Cliquez sur **Créer**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 
-Dans cette section, vous autorisez Britta Simon à accéder à Kontiki pour lui permettre d'utiliser l’authentification unique Azure.
+Dans cette section, vous allez autoriser B.Simon à utiliser l’authentification unique Azure en lui accordant l’accès à Kontiki.
 
-1. Dans le portail Azure, sélectionnez **Applications d’entreprise** > **Toutes les applications** > **Kontiki**.
-
-    ![Volet Applications d’entreprise](common/enterprise-applications.png)
-
+1. Dans le portail Azure, sélectionnez **Applications d’entreprise**, puis **Toutes les applications**.
 1. Dans la liste des applications, sélectionnez **Kontiki**.
+1. Dans la page de vue d’ensemble de l’application, recherchez la section **Gérer** et sélectionnez **Utilisateurs et groupes**.
+1. Sélectionnez **Ajouter un utilisateur**, puis **Utilisateurs et groupes** dans la boîte de dialogue **Ajouter une attribution**.
+1. Dans la boîte de dialogue **Utilisateurs et groupes**, sélectionnez **B. Simon** dans la liste Utilisateurs, puis cliquez sur le bouton **Sélectionner** au bas de l’écran.
+1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
+1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
-    ![Kontiki dans la liste des applications](common/all-applications.png)
+## <a name="configure-kontiki-sso"></a>Configurer l’authentification unique Kontiki
 
-1. Dans le menu, sélectionnez **Utilisateurs et groupes**.
+Pour configurer l’authentification unique côté Kontiki, envoyez le fichier XML des métadonnées de fédération téléchargé et les URL appropriées copiées dans le portail Azure à l’[équipe du support technique Kontiki](https://kollective.com/support/). L’équipe du support technique Kontiki utilise les informations que vous lui envoyez pour vérifier que la connexion SAML à authentification unique est correctement configurée des deux côtés.
 
-    ![Option Utilisateurs et groupes](common/users-groups-blade.png)
-
-1. Sélectionnez **Ajouter un utilisateur**. Ensuite, dans le volet **Ajouter une attribution**, sélectionnez **Utilisateurs et groupes**.
-
-    ![Volet Ajouter une attribution](common/add-assign-user.png)
-
-1. Dans le volet **Utilisateurs et groupes**, sélectionnez **Britta Simon** dans la liste des utilisateurs. Choisissez **Select**.
-
-1. Si vous attendez une valeur de rôle dans l’assertion SAML, dans le volet **Sélectionner un rôle**, sélectionnez le rôle approprié pour l’utilisateur dans la liste. Choisissez **Select**.
-
-1. Dans le volet **Ajouter une attribution**, sélectionnez **Attribuer**.
-
-### <a name="create-a-kontiki-test-user"></a>Créer un utilisateur de test Kontiki
+### <a name="create-kontiki-test-user"></a>Créer un utilisateur de test Kontiki
 
 Aucun élément d'action ne vous permet de configurer l’approvisionnement des utilisateurs dans Kontiki. Lorsqu’un utilisateur tente de se connecter à Kontiki à l’aide du portail Mes applications, Kontiki vérifie si cet utilisateur existe. Si aucun compte d’utilisateur n’est trouvé, Kontiki crée automatiquement le compte d’utilisateur.
 
-### <a name="test-single-sign-on"></a>Tester l’authentification unique
+## <a name="test-sso"></a>Tester l’authentification unique (SSO)
 
-Dans cette section, vous allez tester la configuration de l’authentification unique Azure AD à partir du portail Mes applications.
+Dans cette section, vous allez tester votre configuration de l’authentification unique Azure AD avec les options suivantes. 
 
-Après avoir configuré l’authentification unique, lorsque vous sélectionnez **Kontiki** dans le portail Mes applications, vous êtes automatiquement connecté à Kontiki. Pour plus d’informations sur le portail Mes applications, consultez [Accéder aux applications du portail Mes applications et les utiliser](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Cliquez sur **Tester cette application** dans le portail Azure. Vous êtes alors redirigé vers l’URL de connexion de Kontiki, à partir de laquelle vous pouvez lancer le flux de connexion. 
+
+* Accédez directement à l’URL de connexion de Kontiki pour lancer le flux de connexion.
+
+* Vous pouvez utiliser Mes applications de Microsoft. Lorsque vous cliquez sur la vignette Kontiki dans Mes applications, vous êtes redirigé vers l’URL de connexion de Kontiki. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour en savoir plus, consultez les articles suivants :
-
-- [Listes des tutoriels pour intégrer des applications SaaS à Azure Active Directory](./tutorial-list.md)
-- [S’authentifier avec l’authentification unique auprès des applications dans Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
-- [Qu’est-ce que l’accès conditionnel dans Azure Active Directory ?](../conditional-access/overview.md)
+Après avoir configuré Kontiki, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).

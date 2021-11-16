@@ -1,22 +1,22 @@
 ---
-title: Inscrire un principal du service du registre avec le Registre confidentiel Microsoft Azure
-description: Inscrire un principal du service du registre avec le Registre confidentiel Microsoft Azure
+title: Inscrire un principal de service de registre à l’aide de Registre confidentiel Microsoft Azure
+description: Inscrire un principal de service de registre à l’aide de Registre confidentiel Microsoft Azure
 services: confidential-ledger
 author: msmbaldwin
 ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: a4f751bcb262011b073207751ac590edeb41d391
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 843c2489052ed1df78c738b680740d2a7206e4a5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385984"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454501"
 ---
-# <a name="register-a-confidential-ledger-service-principal"></a>Inscrire un principal de service du registre confidentiel
+# <a name="register-a-confidential-ledger-service-principal"></a>Inscrire un principal de service Registre confidentiel
 
-Pour associer un compte de stockage à votre registre confidentiel, vous devez d’abord enregistrer le principal du service du registre confidentiel.
+Pour associer un compte de stockage à votre registre confidentiel, vous devez d’abord enregistrer le principal de service Registre confidentiel.
 
 ## <a name="create-a-service-principal"></a>Créer un principal du service
 
@@ -36,7 +36,7 @@ New-AzureADServicePrincipal -AppId 4353526e-1c33-4fcf-9e82-9683edf52848 -Display
 
 ## <a name="assign-roles"></a>Attribuer des rôles
 
-Définissez le « [Contributeur de données d’objet blob de stockage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) » IAM pour le principal du service du registre confidentiel pour le compte de stockage. Pour ce faire, vous pouvez utiliser la commande Azure CLI [az role assignment create](/cli/azure/role/assignment) ou la cmdlet Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
+Définissez le rôle « [Contributeur aux données Blob du stockage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) » de Gestion des identités et des accès pour le principal du service de Registre confidentiel pour le compte de stockage. Pour ce faire, vous pouvez utiliser la commande Azure CLI [az role assignment create](/cli/azure/role/assignment) ou la cmdlet Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive
@@ -51,4 +51,4 @@ New-AzRoleAssignment -ApplicationId 4353526e-1c33-4fcf-9e82-9683edf52848 -RoleDe
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Vue d’ensemble du Registre confidentiel Microsoft Azure](overview.md)
+- [Vue d’ensemble de Registre confidentiel Microsoft Azure](overview.md)

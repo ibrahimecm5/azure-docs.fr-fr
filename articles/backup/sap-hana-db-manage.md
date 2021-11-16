@@ -2,13 +2,16 @@
 title: Gérer les bases de données SAP HANA sauvegardées sur des machines virtuelles Azure
 description: Dans cet article, découvrez les tâches courantes de gestion et de supervision des bases de données SAP HANA qui s’exécutent sur des machines virtuelles Azure.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 2e793cddeb4e751c47ffa82786f24e65a0873faf
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 03f7609b02461a89519ba19f3f70dd14e6922a2a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231365"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431332"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Gérer et superviser des bases de données SAP HANA sauvegardées
 
@@ -18,13 +21,13 @@ Si vous n’avez pas encore configuré de sauvegardes pour vos bases de données
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Surveiller les travaux de sauvegarde manuelles sur le portail
 
-Sauvegarde Azure affiche tous les travaux déclenchés manuellement dans la section **Travaux de sauvegarde** sur le Portail Azure.
+Le service Sauvegarde Azure affiche tous les travaux déclenchés manuellement dans la section **Travaux de sauvegarde** du **Centre de sauvegarde**.
 
-![Section Travaux de sauvegarde](./media/sap-hana-db-manage/backup-jobs.png)
+:::image type="content" source="./media/sap-hana-db-manage/backup-center-jobs-list-inline.png" alt-text="Capture d’écran montrant la section Travaux de sauvegarde." lightbox="./media/sap-hana-db-manage/backup-center-jobs-list-expanded.png":::
 
 Les travaux que vous voyez sur ce portail incluent les opérations de découverte, d’inscription, de sauvegarde et de restauration de base de données. Les travaux planifiés, notamment les sauvegardes de fichiers journaux, n’apparaissent pas dans cette section. Les sauvegardes déclenchées manuellement à partir des clients natifs SAP HANA (Studio/Cockpit/DBA Cockpit) n’apparaissent pas non plus ici.
 
-![Liste des travaux de sauvegarde](./media/sap-hana-db-manage/backup-jobs-list.png)
+:::image type="content" source="./media/sap-hana-db-manage/hana-view-jobs-inline.png" alt-text="Capture d’écran montrant la liste Travaux de sauvegarde." lightbox="./media/sap-hana-db-manage/hana-view-jobs-expanded.png":::
 
 Pour en savoir plus sur la supervision, consultez [Supervision dans le Portail Azure](./backup-azure-monitoring-built-in-monitor.md) et [Supervision à l’aide d’Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
@@ -61,10 +64,10 @@ Sauvegarde Azure simplifie la gestion d’une base de données SAP HANA sauvegar
 
 Les sauvegardes s’exécutent conformément à la planification de la stratégie. Vous pouvez exécuter une sauvegarde à la demande en procédant comme suit :
 
-1. Dans le menu du coffre, sélectionnez **Éléments de sauvegarde**.
-2. Dans **Éléments de sauvegarde**, sélectionnez la machine virtuelle exécutant la base de données SAP HANA, puis **Sauvegarder maintenant**.
+1. Dans le menu du **Centre de sauvegarde**, sélectionnez **Instances de sauvegarde**.
+2. Sélectionnez **SAP HANA dans une machine virtuelle Azure** comme type de source de données, sélectionnez la machine virtuelle exécutant la base de données SAP HANA, puis cliquez sur **Sauvegarder maintenant**.
 3. Dans **Sauvegarder maintenant**, choisissez le type de sauvegarde que vous souhaitez effectuer. Sélectionnez ensuite **OK**. Cette sauvegarde sera conservée en fonction de la stratégie associée à cet élément de sauvegarde.
-4. Surveiller les notifications du portail. Vous pouvez surveiller la progression du travail dans le tableau de bord du coffre > **Travaux de sauvegarde** > **En cours d’exécution**. Selon la taille de votre base de données, la création de la sauvegarde initiale peut prendre un certain temps.
+4. Surveiller les notifications du portail. Pour surveiller la progression du travail, accédez à **Centre de sauvegarde** -> **Travaux de sauvegarde**, puis filtrez les travaux dont l’état est **En cours**. Selon la taille de votre base de données, la création de la sauvegarde initiale peut prendre un certain temps.
 
 Par défaut, la période de rétention des sauvegardes à la demande est de 45 jours.
 
@@ -72,7 +75,7 @@ Par défaut, la période de rétention des sauvegardes à la demande est de 45 
 
 #### <a name="backup"></a>Sauvegarde
 
-Les sauvegardes à la demande déclenchées à partir d’un des clients natifs HANA (pour **Backint**) s’affichent dans la liste de sauvegardes sur la page **Éléments de sauvegarde**.
+Les sauvegardes à la demande déclenchées à partir d’un des clients natifs HANA (pour **Backint**) s’affichent dans la liste de sauvegardes sur la page **Instances de sauvegarde**.
 
 ![Dernières sauvegardes exécutées](./media/sap-hana-db-manage/last-backups.png)
 
@@ -96,14 +99,14 @@ L’opération de suppression native dans HANA **n’est pas** prise en charge p
 Si vous souhaitez sauvegarder localement (à l’aide de HANA Studio/Cockpit) une base de données qui est sauvegardée par Sauvegarde Azure, procédez comme suit :
 
 1. Attendez la fin de toute sauvegarde complète ou de fichier journal de la base de données. Vérifiez l’état dans SAP HANA Studio/Cockpit.
-2. pour la base de données pertinente
+2. Pour la base de données appropriée :
     1. Annulez les paramètres backint. Pour ce faire, double-cliquez sur **systemdb** > **Configuration (Configuration)**  > **Select Database (Sélectionner la base de données)**  > **Filter (Log) (Filtrer [journal])** .
         * enable_auto_log_backup : Non
         * log_backup_using_backint : False
         * catalog_backup_using_backint:False
 3. Effectuez une sauvegarde complète à la demande de la base de données.
 4. Inversez ensuite les étapes. Pour la même base de données pertinente mentionnée ci-dessus,
-    1. réactivez les paramètres backint
+    1. Réactivez les paramètres backint :
         1. catalog_backup_using_backint:True
         1. log_backup_using_backint : True
         1. enable_auto_log_backup : Oui
@@ -113,14 +116,14 @@ Si vous souhaitez sauvegarder localement (à l’aide de HANA Studio/Cockpit) un
 Si vous souhaitez modifier ou nettoyer le catalogue de sauvegarde, procédez comme suit :
 
 1. Attendez la fin de toute sauvegarde complète ou de fichier journal de la base de données. Vérifiez l’état dans SAP HANA Studio/Cockpit.
-2. pour la base de données pertinente
+2. Pour la base de données appropriée :
     1. Annulez les paramètres backint. Pour ce faire, double-cliquez sur **systemdb** > **Configuration (Configuration)**  > **Select Database (Sélectionner la base de données)**  > **Filter (Log) (Filtrer [journal])** .
         * enable_auto_log_backup : Non
         * log_backup_using_backint : False
         * catalog_backup_using_backint:False
 3. Modifiez le catalogue et supprimez les entrées les plus anciennes.
 4. Inversez ensuite les étapes. Pour la même base de données pertinente mentionnée ci-dessus,
-    1. réactivez les paramètres backint
+    1. Réactivez les paramètres backint
         1. catalog_backup_using_backint:True
         1. log_backup_using_backint : True
         1. enable_auto_log_backup : Oui
@@ -129,15 +132,13 @@ Si vous souhaitez modifier ou nettoyer le catalogue de sauvegarde, procédez com
 
 Vous pouvez changer la stratégie sous-jacente d’un élément de sauvegarde SAP HANA.
 
-* Dans le tableau de bord du coffre, accédez à **Éléments de sauvegarde** :
+Dans le tableau de bord du **Centre de sauvegarde**, accédez à **Instances de sauvegarde** :
 
-  ![Sélectionner les éléments de sauvegarde](./media/sap-hana-db-manage/backup-items.png)
+* Choisissez **SAP Hana dans une machine virtuelle Azure** comme type de source de source de données.
 
-* Choisissez **SAP HANA dans les machines virtuelles Azure**
+  :::image type="content" source="./media/sap-hana-db-manage/hana-backup-instances-inline.png" alt-text="Capture d’écran montrant le choix de SAP HANA dans une machine virtuelle Azure." lightbox="./media/sap-hana-db-manage/hana-backup-instances-expanded.png":::
 
-  ![Choisir SAP HANA dans les machines virtuelles Azure](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
-
-* Choisissez l’élément de sauvegarde dont vous souhaitez changer la stratégie sous-jacente.
+* Choisissez l’élément de sauvegarde dont vous souhaitez modifier la stratégie sous-jacente.
 * Sélectionnez la stratégie de sauvegarde existante.
 
   ![Sélectionnez une stratégie de sauvegarde existante.](./media/sap-hana-db-manage/existing-backup-policy.png)
@@ -146,7 +147,7 @@ Vous pouvez changer la stratégie sous-jacente d’un élément de sauvegarde SA
 
   ![Choisir la stratégie dans la liste déroulante](./media/sap-hana-db-manage/choose-backup-policy.png)
 
-* Enregistrez les modifications
+* Enregistrez les modifications.
 
   ![Enregistrez les modifications](./media/sap-hana-db-manage/save-changes.png)
 
@@ -162,9 +163,9 @@ Modifiez la stratégie de façon à changer les types de sauvegarde, leur fréqu
 >[!NOTE]
 >Toute modification apportée à la période de rétention s’applique rétroactivement à tous les anciens points de récupération, en plus des nouveaux.
 
-1. Dans le tableau de bord du coffre, accédez à **Gérer > Stratégies de sauvegarde**, puis choisissez la stratégie que vous voulez modifier.
+1. Dans le tableau de bord **Centre de sauvegarde**, accédez à **Stratégies de sauvegarde**, puis choisissez la stratégie à modifier.
 
-   ![Choisir la stratégie à modifier](./media/sap-hana-db-manage/manage-backup-policies.png)
+   :::image type="content" source="./media/sap-hana-db-manage/backup-center-policies-inline.png" alt-text="Capture d’écran montrant le choix de la stratégie à modifier." lightbox="./media/sap-hana-db-manage/backup-center-policies-expanded.png":::
 
 1. Sélectionnez **Modifier**.
 
@@ -201,24 +202,22 @@ Si vous choisissez de conserver les points de récupération, gardez à l’espr
 
 Pour arrêter la protection de la base de données :
 
-* Dans le tableau de bord du coffre, sélectionnez **Éléments de la sauvegarde**.
-* Sous **Type de gestion des sauvegardes**, sélectionnez **SAP HANA dans une machine virtuelle Azure**
+1. Dans le tableau de bord du **Centre de sauvegarde**, sélectionnez **Instances de sauvegarde**.
+1. Sélectionnez **SAP Hana dans une machine virtuelle Azure** comme type de source de source de données.
 
-  ![Sélectionnez SAP HANA dans la machine virtuelle Azure](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
+   :::image type="content" source="./media/sap-hana-db-manage/hana-backup-instances-inline.png" alt-text="Capture d’écran montrant la sélection de SAP HANA dans une machine virtuelle Azure." lightbox="./media/sap-hana-db-manage/hana-backup-instances-expanded.png":::
 
-* Sélectionnez la base de données dont vous souhaitez arrêter la protection :
+1. Sélectionnez la base de données dont vous souhaitez arrêter la protection.
 
-  ![Sélectionnez la base de données pour arrêter la protection](./media/sap-hana-db-manage/select-database.png)
+1. Dans le menu de la base de données, sélectionnez **Arrêter la sauvegarde**.
 
-* Dans le menu de la base de données, sélectionnez **Arrêter la sauvegarde**.
+   :::image type="content" source="./media/sap-hana-db-manage/stop-backup.png" alt-text="Capture d’écran montrant la sélection de l’option Arrêter la sauvegarde.":::
 
-  ![Sélectionnez Arrêter la sauvegarde](./media/sap-hana-db-manage/stop-backup.png)
+1. Dans le menu **Arrêter la sauvegarde**, indiquez si vous souhaitez conserver ou supprimer les données. Vous pouvez également indiquer une raison ou formuler un commentaire.
 
-* Dans le menu **Arrêter la sauvegarde**, indiquez si vous souhaitez conserver ou supprimer les données. Vous pouvez également indiquer une raison ou formuler un commentaire.
+   :::image type="content" source="./media/sap-hana-db-manage/retain-backup-data.png" alt-text="Capture d’écran montrant le choix de conserver ou de supprimer des données.":::
 
-  ![Sélectionnez Conserver ou supprimer les données](./media/sap-hana-db-manage/retain-backup-data.png)
-
-* Sélectionnez **Arrêter la sauvegarde**.
+1. Sélectionnez **Arrêter la sauvegarde**.
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>Reprendre la protection d’une base de données SAP HANA
 

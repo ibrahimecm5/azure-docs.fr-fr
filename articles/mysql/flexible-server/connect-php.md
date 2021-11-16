@@ -7,20 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 1b207091a3c38fb2842a53a9c7c4627fd5c0b790
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3c49bb5c3e272e792d50c5f8fcadbacd9d6ebbe6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643203"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460676"
 ---
-# <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Démarrage rapide : Utiliser PHP pour se connecter et interroger des données dans Azure Database pour MySQL - Serveur flexible
+# <a name="use-php-with-azure-database-for-mysql-flexible-server"></a>Utiliser PHP avec Azure Database pour MySQL – Serveur flexible
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est actuellement en préversion publique.
-
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 Ce guide de démarrage rapide vous explique comment vous connecter à Azure Database pour MySQL - Serveur flexible en utilisant une application [PHP](https://secure.php.net/manual/intro-whatis.php). Il détaille l’utilisation d’instructions SQL pour interroger la base de données, la mettre à jour, y insérer des données ou en supprimer. Cet article part du principe que vous connaissez les bases du développement PHP et que vous ne savez pas utiliser Azure Database pour MySQL - Serveur flexible.
 
 ## <a name="prerequisites"></a>Prérequis

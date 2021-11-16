@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 32d39c956121881da0073b53fe5b4196dbc179de
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/08/2021
+ms.openlocfilehash: 7b8343c06dd0815f8c0fb44fa00f85c2c0195b13
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828489"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058522"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Utilisation de modèles de colonne dans les flux de données de mappage
 
@@ -85,7 +85,8 @@ L’exemple ci-dessus correspond à toutes les sous-colonnes de la colonne compl
 
 ## <a name="pattern-matching-expression-values"></a>Valeurs des expressions de critères spéciaux
 
-* `$$` correspond au nom ou à la valeur de chaque correspondance au moment de l'exécution Considérez `$$` comme l'équivalent de `this`.
+* `$$` correspond au nom ou à la valeur de chaque correspondance au moment de l'exécution Considérez `$$` comme l’équivalent de `this`.
+* `$0` se traduit par le nom de colonne actuel qui correspond au moment de l’exécution pour les types scalaires. Pour les types hiérarchiques, `$0` représente le chemin d’accès actuel de la hiérarchie de colonne.
 * `name` représente le nom de chaque colonne entrante
 * `type` représente le type de données de chaque colonne entrante. Vous trouverez la liste des types de données dans le système de type de transmission de données [ici.](concepts-data-flow-overview.md#data-flow-data-types)
 * `stream` représente le nom associé à chaque flux ou transformation dans votre flux

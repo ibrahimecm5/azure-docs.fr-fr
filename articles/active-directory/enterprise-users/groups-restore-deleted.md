@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5508f3131ad44d1839167c57029619f5e7413e4d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3470296b0e969cc4fd6687db30e00f9a1f5cbbf6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986223"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448003"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Restaurer un groupe Microsoft 365 supprimé dans Azure Active Directory
 
-Lorsque vous supprimez un groupe Microsoft 365 dans Azure Active Directory (Azure AD), celui-ci est conservé, mais il n’est pas visible pendant 30 jours à partir de la date de suppression. L’avantage de ce comportement est que le groupe et son contenu peuvent être restaurés au besoin. Cette fonctionnalité est limitée exclusivement aux groupes Microsoft 365 dans Azure AD. Elle n’est pas disponible pour les groupes de sécurité et les groupes de distribution. Veuillez noter que la période de restauration des groupes de 30 jours n’est pas personnalisable.
+Lorsque vous supprimez un groupe Microsoft 365 dans Azure Active Directory (Azure AD), celui-ci est conservé, mais n’est pas visible pendant 30 jours à partir de la date de suppression. L’avantage de ce comportement est que le groupe et son contenu peuvent être restaurés au besoin. Cette fonctionnalité est limitée exclusivement aux groupes Microsoft 365 dans Azure AD. Elle n’est pas disponible pour les groupes de sécurité et les groupes de distribution. Veuillez noter que la période de restauration des groupes de 30 jours n’est pas personnalisable.
 
 > [!NOTE]
 > N’utilisez pas `Remove-MsolGroup`, car il vide le groupe définitivement. Utilisez toujours `Remove-AzureADMSGroup` pour supprimer un groupe Microsoft 365.

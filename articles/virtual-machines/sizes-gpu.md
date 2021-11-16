@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6cf54dc041d844c14abb68b1fd7463cfa62f5e80
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8a39809cf787237a38d5246c32e481fb82ac2629
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695777"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474550"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Tailles de machine virtuelle à GPU optimisé
 
@@ -31,6 +31,9 @@ Les tailles de machine virtuelle au GPU optimisé sont des machines virtuelles s
 - Les tailles des séries [NV](nv-series.md) et [NVv3](nvv3-series.md) sont optimisées et conçues pour la visualisation à distance, la diffusion en continu, les jeux, l’encodage et les scénarios de VDI utilisant des infrastructures comme OpenGL ou DirectX. Ces machines virtuelles reposent sur le GPU Tesla M60 de NVIDIA.
 
 - Les tailles de machines virtuelles de la série [NVv4](nvv4-series.md) sont optimisées et conçues pour l’infrastructure VDI et la visualisation à distance. Avec des GPU partitionnés, la série NVv4 offre la taille adaptée aux charges de travail nécessitant des ressources GPU plus petites. Ces machines virtuelles sont associées au GPU AMD Radeon Instinct MI25. Les machines virtuelles NVv4 prennent actuellement en charge uniquement le système d’exploitation invité Windows.
+
+- La machine virtuelle [NDm A100 v4-series](ndm-a100-v4-series.md) est un nouvel ajout à la famille de GPU Azure, conçue pour un apprentissage Deep Learning de pointe et des de charges de travail HPC de montée en puissance parallèle et montée en charge. La série NDm A100 v4 commence avec une machine virtuelle unique et huit GPU NVIDIA Ampere A100 80GB Tensor Core.
+
 
 ## <a name="supported-operating-systems-and-drivers"></a>Systèmes d’exploitation et pilotes pris en charge
 

@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble de la prise en charge du niveau Archive
+title: 'Sauvegarde Azure : Vue d’ensemble du niveau archive'
 description: En savoir plus sur la prise en charge du niveau Archive pour le service Sauvegarde Azure.
 ms.topic: overview
 ms.date: 10/23/2021
@@ -7,14 +7,14 @@ ms.custom: references_regions
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 3c28d99c066bf71ea3970ce8a01eb68989e11123
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9712b198e8be9a7a90699cc6ce544a627bfdea63
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080894"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510353"
 ---
-# <a name="about-archive-tier-support"></a>À propos de la prise en charge du niveau Archive
+# <a name="overview-of-archive-tier-in-azure-backup"></a>Vue d’ensemble du niveau archive dans Sauvegarde Azure
 
 Les clients s’appuient sur le service Sauvegarde Azure pour stocker leurs données de sauvegarde, notamment pour une conservation à long terme (LTR), avec des exigences de conservation définies par les règles de conformité de l’organisation. Dans la plupart des cas, les données de sauvegarde plus anciennes sont rarement utilisées, et stockées uniquement à des fins de conformité.
 

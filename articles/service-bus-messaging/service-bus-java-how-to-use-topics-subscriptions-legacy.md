@@ -5,12 +5,12 @@ ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
-ms.openlocfilehash: b0f62a9e2953fd7d088a2bed1d3cfa52f6a3b26a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4cc0321c8d54e0ce354cc49406e4c35484f7f97a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083590"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058503"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Utiliser les rubriques et les abonnements Service Bus avec Java (ancien package)
 Dans cet article, vous allez écrire du code Java pour envoyer des messages à une rubrique Azure Service Bus, puis recevoir les messages des abonnements à cette rubrique. 
@@ -114,7 +114,7 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Les rubriques Service Bus prennent en charge une taille de message maximale de 256 Ko dans le [niveau Standard](service-bus-premium-messaging.md) et de 1 Mo dans le [niveau Premium](service-bus-premium-messaging.md). L’en-tête, qui comprend les propriétés d’application standard et personnalisées, peut avoir une taille maximale de 64 Ko. Si une rubrique n’est pas limitée par le nombre de messages qu’elle peut contenir, elle l’est en revanche par la taille totale des messages qu’elle contient. Cette taille de rubrique est définie au moment de la création. La limite maximale est de 5 Go.
+Les rubriques Service Bus prennent en charge une taille de message maximale de 256 Ko dans le [niveau Standard](service-bus-premium-messaging.md) et de 100 Mo dans le [niveau Premium](service-bus-premium-messaging.md). L’en-tête, qui comprend les propriétés d’application standard et personnalisées, peut avoir une taille maximale de 64 Ko. Si une rubrique n’est pas limitée par le nombre de messages qu’elle peut contenir, elle l’est en revanche par la taille totale des messages qu’elle contient. Cette taille de rubrique est définie au moment de la création. La limite maximale est de 5 Go.
 
 ## <a name="receive-messages-from-a-subscription"></a>Réception des messages d’un abonnement
 Mettez à jour la méthode **main** afin de créer trois objets **SubscriptionClient** pour trois abonnements, et appelez une méthode d’assistance qui reçoit des exemples de messages de façon asynchrone de la part de la rubrique Service Bus. L’exemple de code part du principe que vous avez créé une rubrique nommée **BasicTopic** et trois abonnements nommés **Subscription1**, **Subscription2** et **Subscription3**. Si vous avez utilisé des noms différents, mettez à jour le code avant de le tester. 

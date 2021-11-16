@@ -1,14 +1,14 @@
 ---
 title: Déployer une stratégie pouvant être corrigée
 description: Pour déployer des stratégies qui utilisent une tâche de correction via Azure Lighthouse, vous devez créer une identité managée dans le locataire client.
-ms.date: 09/30/2021
+ms.date: 11/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 5783d753fabb7246914056139fb9a081b7684b9c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8255519f1c7229aaff1eee88d93c2b2ea73ae7ce
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362274"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892226"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Déployer une stratégie pouvant être corrigée dans un abonnement délégué
 
@@ -48,7 +48,7 @@ Une fois que vous avez créé l’utilisateur avec les autorisations nécessaire
 
 Par exemple, supposons que vous vouliez activer les diagnostics sur des ressources Azure Key Vault dans le locataire du client, comme illustré dans cet [exemple](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring). Un utilisateur du client gestionnaire disposant des autorisations appropriées (comme décrit ci-dessus) déploierait un [modèle Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) pour activer ce scénario.
 
-Notez que la création de l’attribution de stratégie à utiliser avec un abonnement délégué doit être effectuée par le biais d’API, et non dans le portail Azure. Dans ce cas, l’**apiVersion** doit être définie sur **2020-10-01-Preview**, qui comprend la nouvelle propriété **delegatedManagedIdentityResourceId**. Cette propriété vous permet d’inclure une identité managée qui réside dans le locataire du client (dans un abonnement ou un groupe de ressources qui a été intégré à Azure Lighthouse).
+Notez que la création de l’attribution de stratégie à utiliser avec un abonnement délégué doit être effectuée par le biais d’API, et non dans le portail Azure. Dans ce cas, l’**apiVersion** doit être définie sur **2019-04-01-preview** ou ultérieur pour inclure la nouvelle propriété **delegatedManagedIdentityResourceId**. Cette propriété vous permet d’inclure une identité managée qui réside dans le locataire du client (dans un abonnement ou un groupe de ressources qui a été intégré à Azure Lighthouse).
 
 L’exemple suivant montre une attribution de rôle avec un **delegatedManagedIdentityResourceId**.
 

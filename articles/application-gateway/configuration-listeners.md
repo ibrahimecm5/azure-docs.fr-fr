@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0a88acaf29187c648b24f74877a260a8772f6008
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9468de9cbd88e9ad4406ac929aebc6bda938fb3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319680"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447376"
 ---
 # <a name="application-gateway-listener-configuration"></a>Configuration des écouteurs Application Gateway
 
@@ -54,7 +54,7 @@ Choisissez HTTP ou HTTPS :
 - Sélectionnez HTTPS si vous voulez [un arrêt TLS](features.md#secure-sockets-layer-ssltls-termination) ou un [chiffrement TLS de bout en bout](./ssl-overview.md). Le trafic entre le client et la passerelle d’application est chiffré. Et la connexion TLS s’arrête à la passerelle d’application. Si vous voulez un chiffrement TLS de bout en bout, vous devez choisir le protocole HTTPS et configurer le paramètre **HTTP du back-end**. Ce dernier permet de veiller à ce que le trafic soit rechiffré quand il passe de la passerelle d’application au back-end.
 
 
-Pour configurer l’arrêt TLS et le chiffrement TLS de bout en bout, vous devez ajouter un certificat à l’écouteur pour permettre à la passerelle d’application de dériver une clé symétrique. Il s’agit d’une exigence de la spécification du protocole TLS. La clé symétrique sert à chiffrer et déchiffrer le trafic envoyé à la passerelle. Le certificat de passerelle doit être au format Personal Information Exchange (PFX). Ce format vous permet d’exporter la clé privée que la passerelle utilise pour chiffrer et déchiffrer le trafic.
+Pour configurer une terminaison TLS, un certificat TLS/SSL doit être ajouté à l’écouteur. Cela permet à la passerelle Application Gateway de déchiffrer le trafic entrant et de chiffrer le trafic de réponse au client. Le certificat fourni à la passerelle Application Gateway doit être au format PFX (Personal Information Exchange) qui contient les clés privées et publiques.
 
 ## <a name="supported-certificates"></a>Certificats pris en charge
 

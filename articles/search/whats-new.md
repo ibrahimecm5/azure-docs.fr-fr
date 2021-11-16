@@ -8,16 +8,22 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: d693aed76ab2469af7d8c41ca216ba7d54880391
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a3554cee4d5538fc8291ef2a2db5c852c33b137a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048004"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503581"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nouveauté dans Recherche cognitive Azure
 
 Découvrir les nouveautés du service. Marquez cette page pour rester au fait des nouveautés du service. Consultez la [liste des fonctionnalités d’évaluation](search-api-preview.md) pour voir la liste complète des fonctionnalités qui ne sont pas encore en disponibilité générale.
+
+## <a name="november-2021"></a>Novembre 2021
+
+|Fonctionnalité&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Disponibilité  |
+|------------------------------------|--------------|---------------|
+| [Indexeur Azure Files (préversion)](./search-file-storage-integration.md) | Ajoute la prise en charge de l’API REST afin de permettre la création d’indexeurs pour [Azure Files](https://azure.microsoft.com/services/storage/files/) | Préversion publique |
 
 ## <a name="july-2021"></a>Juillet 2021
 

@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: 35d2a35475c6a22608c28f3ffdf3dc1abc3065a1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 607a1e8e12fa3840235e3158e98fb7dfb34a73fe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657402"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447813"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutoriel : Mapper un nom DNS personnalisé existant à Azure App Service
 
@@ -283,7 +283,7 @@ Pour migrer un site actif et son nom de domaine DNS vers App Service sans interr
 ## <a name="redirect-to-a-custom-directory"></a>Rediriger vers un répertoire personnalisé
 
 > [!NOTE]
-> Par défaut, App Service dirige les demandes web au répertoire racine du code de votre application. Cependant, certains frameworks web ne démarrent pas dans le répertoire racine. Par exemple, [Laravel](https://laravel.com/) démarre dans le sous-répertoire `public`. Pour continuer avec l’exemple DNS `contoso.com`, une telle application est accessible à partir de `http://contoso.com/public`, mais il est préférable de diriger `http://contoso.com` vers le répertoire `public`.
+> Par défaut, App Service dirige les demandes web au répertoire racine du code de votre application. Cependant, certains frameworks web ne démarrent pas dans le répertoire racine. Par exemple, [Laravel](https://laravel.com/) démarre dans le sous-répertoire `public`. Pour continuer avec l’exemple DNS `contoso.com`, une telle application est accessible à partir de l’adresse `http://contoso.com/public`, mais il est préférable de diriger `http://contoso.com` vers le répertoire `public`.
 
 Même si ce scénario est courant, il n’implique en fait pas de mappage DNS personnalisé, mais il a trait à la personnalisation du répertoire virtuel au sein de votre application.
 

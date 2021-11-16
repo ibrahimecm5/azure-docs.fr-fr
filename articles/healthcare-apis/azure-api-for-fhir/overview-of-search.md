@@ -5,14 +5,14 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/25/2021
+ms.date: 11/12/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0a6ca1bd251b65b93baf1a262acc0d22102b1ad1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a1bb41b9e3272297cb49f42ee3a6e20137a57d46
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084843"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491712"
 ---
 # <a name="overview-of-search-in-azure-api-for-fhir"></a>Vue d’ensemble de la recherche dans l’API Azure pour FHIR
 
@@ -36,6 +36,8 @@ Lorsque vous effectuez une recherche, vous effectuez une recherche en fonction d
 
 Chaque paramètre de recherche a un [type de données](https://www.hl7.org/fhir/search.html#ptypes)défini. La prise en charge des différents types de données est présentée ci-dessous :
 
+> [!WARNING]
+> Il existe actuellement un problème lors de l’utilisation de _sort sur l’API Azure pour FHIR avec la recherche chaînée. Pour plus d’informations, consultez [#2344](https://github.com/microsoft/fhir-server/issues/2344)d’un problème Open source. Cela sera résolu au cours d’une version en décembre 2021. 
 
 | **Type de paramètre de recherche**  | **Azure API pour FHIR** | **Service FHIR dans les API de santé Azure** | **Commentaire**|
 | -------------------------  | -------------------- | ------------------------- | ------------|
@@ -136,7 +138,7 @@ Pour faciliter la gestion des ressources retournées, vous pouvez utiliser des p
 | _revinclude                   | Oui                  | Oui                       |Les éléments inclus sont limités à 100. _revinclude sur PaaS et OSS sur Cosmos DB n’incluez pas : prise en charge des itérations [(#2137)](https://github.com/microsoft/fhir-server/issues/2137).  Il y a également un code d’état incorrect pour une demande incorrecte [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | Oui             | Oui                   |
 | _total                        | Partiel              | Partiel                   | _total = None et _total = exact                               |
-| _sort                         | Partiel              | Partiel                   | sort = _lastUpdated est pris en charge sur l’API Azure pour FHIR et le service FHIR. pour le service FHIR et les serveurs OSS SQL DB FHIR, le tri par chaînes et les champs dateTime sont pris en charge. pour l’API Azure pour FHIR et OSS Cosmos DB bases de données créées après le 20 avril 2021, le tri est pris en charge sur le prénom, le nom et la date clinique.          |
+| _sort                         | Partiel              | Partiel                   | sort = _lastUpdated est pris en charge sur l’API Azure pour FHIR et le service FHIR. pour l’API Azure pour FHIR et OSS Cosmos DB les bases de données créées après le 20 avril 2021, le tri est pris en charge pour le prénom, le nom, la date de naissance et la date clinique. Notez qu’il existe un problème en cours d’utilisation de _sort avec une recherche chaînée, qui est documentée dans le [#2344](https://github.com/microsoft/fhir-server/issues/2344)de problème Open source.          |
 | _contained                    | Non                   | Non                        |
 | _containedType                | Non                   | Non                        |
 | _score                        | Non                   | Non                        |

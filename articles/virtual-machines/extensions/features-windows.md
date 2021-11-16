@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ab6b3d00f748fb5b3935988522191c749fa4fd9
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4eda8d1891081399c26a864e0976e6eee34a6b64
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275275"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258047"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensions et fonctionnalités de machine virtuelle pour Windows
 
@@ -121,7 +121,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-Dans l’exemple ci-après, l’extension d’accès aux machines virtuelles (VMAccess) est utilisée pour redéfinir le mot de passe d’administration d’une machine virtuelle Windows sur un mot de passe temporaire. Pour plus d’informations sur l’extension d’accès aux machines virtuelles, consultez [Réinitialiser le service Bureau à distance pour une machine virtuelle Windows](/troubleshoot/azure/virtual-machines/reset-rdp). Après avoir exécuté cette extension, vous devrez réinitialiser le mot de passe lors de votre première connexion :
+Dans l’exemple ci-après, l’extension d’accès aux machines virtuelles (VMAccess) est utilisée pour redéfinir le mot de passe d’administration d’une machine virtuelle Windows sur un mot de passe temporaire. Pour plus d’informations sur l’extension d’accès aux machines virtuelles, consultez [Réinitialiser le service Bureau à distance pour une machine virtuelle Windows](/troubleshoot/azure/virtual-machines/reset-rdp). Après avoir exécuté cela, vous devez réinitialiser le mot de passe lors de votre première connexion :
 
 ```powershell
 $cred=Get-Credential
@@ -252,9 +252,9 @@ Ces certificats sécurisent la communication entre la machine virtuelle et son h
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Comment les agents et les extensions sont-ils mis à jour ?
 
-Les agents et les extensions partagent le même mécanisme de mise à jour. Certaines mises à jour ne nécessitent pas de règles de pare-feu supplémentaires.
+Les agents et les extensions partagent le même mécanisme de mise à jour automatique.
 
-Quand une mise à jour est disponible, elle est installée sur la machine virtuelle uniquement quand un changement est apporté aux extensions, ainsi qu’en cas d’autres changements de modèle de machine virtuelle, tels que :
+Quand une mise à jour est disponible et que les mises à jour automatiques sont activées, la mise à jour est installée sur la machine virtuelle seulement si un changement a été apporté à une extension ou s’il y a d’autres modifications du modèle de machine virtuelle, par exemple :
 
 - Disques de données
 - Extensions
@@ -263,7 +263,13 @@ Quand une mise à jour est disponible, elle est installée sur la machine virtue
 - Taille de la machine virtuelle
 - Profil réseau
 
+> [!IMPORTANT]
+> La mise à jour est installée seulement après qu’une modification a été apportée au modèle de machine virtuelle.
+
 Les dates de publication de mises à jour par les éditeurs varient selon les régions. Vous pouvez donc disposer de machines virtuelles équipées de versions distinctes dans différentes régions.
+
+> [!NOTE]
+> Certaines mises à jour peuvent nécessiter des règles de pare-feu supplémentaires. Consultez [Accès réseau](#network-access).
 
 #### <a name="listing-extensions-deployed-to-a-vm"></a>Liste des extensions déployées sur une machine virtuelle
 
@@ -288,7 +294,10 @@ Si vous souhaitez vérifier la version que vous exécutez, consultez la section 
 
 #### <a name="extension-updates"></a>Mises à jour des extensions
 
-Lorsqu’une mise à jour d’extension devient disponible, l’agent invité Windows la télécharge et met à niveau l’extension. Les mises à jour d’extension automatiques sont soit de type *Minor* (mise à jour mineure), soit de type *Hotfix* (correctif logiciel). Vous pouvez accepter ou refuser les mises à jour d’extension *Minor* quand vous provisionnez l’extension. L’exemple ci-après indique comment mettre à niveau automatiquement les versions mineures dans un modèle Resource Manager avec la commande *"autoUpgradeMinorVersion": true,* :
+
+Quand une mise à jour d’extension est disponible et que les mises à jour automatiques sont activées, une fois qu’une [modification du modèle de machine virtuelle](#how-do-agents-and-extensions-get-updated) se produit, l’agent invité Windows télécharge et met à niveau l’extension.
+
+Les mises à jour d’extension automatiques sont soit de type *Minor* (mise à jour mineure), soit de type *Hotfix* (correctif logiciel). Vous pouvez accepter ou refuser les mises à jour d’extension *mineures* quand vous provisionnez l’extension. L’exemple ci-après montre comment mettre à niveau automatiquement les versions mineures dans un modèle Resource Manager avec *"autoUpgradeMinorVersion": true,*  :
 
 ```json
     "properties": {
@@ -304,6 +313,8 @@ Lorsqu’une mise à jour d’extension devient disponible, l’agent invité Wi
 ```
 
 Si vous souhaitez obtenir les dernières corrections de bogues des versions mineures, nous vous recommandons vivement de toujours sélectionner l’option de mise à jour automatique dans vos déploiements d’extensions. Vous ne pouvez pas refuser les mises à jour de type correctif logiciel qui comportent des correctifs de sécurité ou des corrections de bogues clés.
+
+Si vous désactivez les mises à jour automatiques des extensions ou si vous devez mettre à niveau une version majeure, utilisez [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) et spécifiez la version cible.
 
 ### <a name="how-to-identify-extension-updates"></a>Comment identifier les mises à jour d’extension
 

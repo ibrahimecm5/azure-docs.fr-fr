@@ -11,18 +11,21 @@ ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 18720d99bc8cf0e237e25ea13f686970573d5704
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc2f5f735f20e54baa22eea7ad4d9fd00a3bc426
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678438"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850106"
 ---
 # <a name="database-collation-support-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Prise en charge des classements de bases de données pour le pool SQL dédié (anciennement SQL DW) dans Azure Synapse Analytics 
 
 Vous pouvez modifier le classement de la base de données par défaut à partir du portail Azure lorsque vous créez un pool SQL dédié (anciennement SQL DW). Grâce à cette fonctionnalité, il est encore plus facile de créer une base de données à l’aide de l’un des 3800 classements de base de données pris en charge.
 
 Les classements fournissent les règles de paramètres régionaux, de page de codes, d’ordre de tri et de respect des caractères pour les types de données basés sur des caractères. Une fois que vous avez effectué votre sélection, toutes les colonnes et expressions nécessitant des informations de classement héritent du classement choisi dans le paramètre de base de données. L’héritage par défaut peut être substitué en déclarant explicitement un classement différent pour un type de données basé sur des caractères.
+
+> [!NOTE]
+> Dans Azure Synapse Analytics, le texte de la requête (y compris les variables, les constantes, etc.) est toujours géré à l’aide du classement au niveau de la base de données, et non du classement au niveau du serveur comme dans d’autres offres de SQL Server.
 
 ## <a name="changing-collation"></a>Modification du classement
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Cisco Webex Meetings | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Cisco Webex Meetings'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Cisco Webex Meetings.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/17/2021
+ms.date: 11/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 0682673b6c18d2ac1694814b2b030297db7bf8db
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a4f111ea3d9c32014ea91757255fe9b3567028d2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826636"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436285"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Cisco Webex Meetings
+# <a name="tutorial-azure-ad-sso-integration-with-cisco-webex-meetings"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Cisco Webex Meetings
 
 Ce tutoriel explique comment intégrer Cisco Webex Meetings à Azure Active Directory (Azure AD). Quand vous intégrez Cisco Webex Meetings à Azure AD, vous pouvez :
 
@@ -33,6 +33,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 
 * Un abonnement Azure AD Si vous ne disposez d’aucun abonnement, vous pouvez obtenir [un compte gratuit](https://azure.microsoft.com/free/).
 * Abonnement Cisco Webex Meetings pour lequel l’authentification unique (SSO) est activée
+*  Fichier de métadonnées du fournisseur de services de Cisco Webex Meetings.
 
 > [!NOTE]
 > Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.

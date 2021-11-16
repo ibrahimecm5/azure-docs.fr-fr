@@ -1,19 +1,19 @@
 ---
-title: Fichier Include
+title: Fichier include
 description: Fichier include
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 10/20/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8115e79a0cf747fbf5980d717331883097012077
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 491d8cb7cc11d0a904ad70fac8d54c9c6e16670d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112412993"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287339"
 ---
 ## <a name="available-event-types"></a>Types d’événement disponibles
 
@@ -23,8 +23,8 @@ Service Bus émet les types d’événements suivants :
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Événement levé lorsque des messages actifs sont présents dans une file d’attente ou un abonnement et qu’aucun récepteur n’est à l’écoute. |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListeners | Événement levé lorsque des messages actifs sont présents dans une file d’attente de lettres mortes et qu’aucun récepteur n’est actif. |
-| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | Événement levé régulièrement lorsque des messages actifs sont présents dans une file d’attente ou un abonnement, même s’il existe des écouteurs actifs sur cette file d’attente ou cet abonnement spécifique. |
-| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | Événement levé régulièrement lorsque des messages sont présents dans une entité de lettres mortes d’une file d’attente ou d’un abonnement, même s’il existe des écouteurs actifs sur l’entité de lettres mortes de cette file d’attente ou cet abonnement spécifique. | 
+| Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | Événement levé toutes les 30 secondes lorsque des messages actifs sont présents dans une file d’attente ou un abonnement, même s’il existe des écouteurs actifs sur cette file d’attente ou cet abonnement spécifique. Il est également levé lorsque le nombre de messages actifs passe de 0 à une valeur positive pour la file d’attente ou l’abonnement. |
+| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | Événement levé toutes les 30 secondes lorsque des messages sont présents dans une entité de lettres mortes d’une file d’attente ou d’un abonnement, même s’il existe des écouteurs actifs sur l’entité de lettres mortes de cette file d’attente ou cet abonnement spécifique. Il est également levé lorsque le nombre de messages de lettres mortes passe de 0 à une valeur positive pour l’entité de lettres mortes de la file d’attente ou de l’abonnement. | 
 
 ## <a name="example-event"></a>Exemple d’événement
 

@@ -8,15 +8,15 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: conceptual
-  ms.date: 09/16/2021
+  ms.date: 10/26/2021
   ms.author: kengaderdus
   ms.subservice: B2C
-  ms.openlocfilehash: 1a40ae657ae3aa93e12c6c3a828783b84d8c9b2d
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: edef0972b98885927d8b26229fe97faab21a50ef
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130041364"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131424360"
 title: 'Azure AD B2C : Forum Aux Questions (FAQ)'
 summary: Cette page répond aux questions fréquemment posées sur Azure Active Directory B2C (Azure AD B2C). N'hésitez pas à la consulter pour vous tenir au courant des mises à jour.
 sections:
@@ -155,7 +155,7 @@ sections:
   - question: >
       Puis-je utiliser mes propres URL dans les pages d’inscription et de connexion présentées par Azure AD B2C ? Par exemple, puis-je remplacer l’URL contoso.b2clogin.com par login.contoso.com ?
     answer: >
-      Cette fonctionnalité est disponible dans une préversion publique. Pour plus d’informations, consultez [Domaines personnalisés Azure AD B2C](./custom-domain.md?pivots=b2c-user-flow).
+      Oui, vous pouvez utiliser votre propre domaine. Pour plus d’informations, consultez [Domaines personnalisés Azure AD B2C](./custom-domain.md?pivots=b2c-user-flow).
   - question: >
       Comment supprimer mon client Azure AD B2C ?
     answer: "Procédez comme suit pour supprimer votre locataire Azure AD B2C.\n\nVous pouvez utiliser notre nouvelle expérience unifiée **Inscriptions d’applications** ou notre expérience héritée **Applications (héritées)** . [En savoir plus sur la nouvelle expérience](./app-registrations-training-guide.md).\n\n#### <a name=\"app-registrations\"></a>[Inscriptions des applications](#tab/app-reg-ga/)\n\n1. Connectez-vous au [Portail Azure](https://portal.azure.com/) en tant qu’*administrateur d’abonnements*. Utilisez le compte professionnel ou scolaire ou le compte Microsoft que vous avez utilisé pour vous inscrire à Azure.\n1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.\n1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.\n1. Dans le menu de gauche, sélectionnez **Azure AD B2C**. Ou sélectionnez **Tous les services**, puis recherchez et sélectionnez **Azure AD B2C**.\n1. Supprimez tous les **flux d’utilisateurs (stratégies)** dans votre locataire Azure AD B2C.\n1. Supprimez tous les **Fournisseurs d’identité** dans votre locataire Azure AD B2C.\n1. Sélectionnez **Inscriptions d’applications**, puis sélectionnez l’onglet **Toutes les applications**.\n1. Supprimez toutes les applications que vous avez inscrites.\n1. Supprimez l’application **b2c-extensions-app**.\n1. Sous **Gérer**, sélectionnez **Utilisateurs**.\n1. Sélectionnez chaque utilisateur tour à tour (excluez l’utilisateur *Administrateur d’abonnements* sous lequel vous êtes connecté actuellement). Sélectionnez **Supprimer** en bas de la page, puis **Oui** lorsque vous y êtes invité.\n1. Sélectionnez **Azure Active Directory** dans le menu à gauche.\n1. Sous **Gérer**, sélectionnez **Propriétés**.\n1. Sous **Gestion de l’accès pour les ressources Azure**, sélectionnez **Oui**, puis **Enregistrer**.\n1. Déconnectez-vous du portail Microsoft Azure, puis reconnectez-vous pour actualiser votre accès.\n1. Sélectionnez **Azure Active Directory** dans le menu à gauche.\n1. Dans la page **Vue d’ensemble**, sélectionnez **Supprimer le locataire**. Suivez les instructions à l’écran pour achever le processus.\n\n#### <a name=\"applications-legacy\"></a>[Applications (héritées)](#tab/applications-legacy/)\n\n1. Connectez-vous au [Portail Azure](https://portal.azure.com/) en tant qu’*administrateur d’abonnements*. Utilisez le compte professionnel ou scolaire ou le compte Microsoft que vous avez utilisé pour vous inscrire à Azure.\n1. Veillez à bien utiliser l’annuaire qui contient votre locataire Azure AD B2C. Sélectionnez l’icône **Répertoires + abonnements** dans la barre d’outils du portail.\n1. Sur la page **Paramètres du portail | Répertoires + abonnements**, recherchez votre répertoire AD B2C Azure dans la liste **Nom de répertoire**, puis sélectionnez **Basculer**.\n1. Dans le menu de gauche, sélectionnez **Azure AD B2C**. Ou sélectionnez **Tous les services**, puis recherchez et sélectionnez **Azure AD B2C**.\n1. Supprimez tous les **flux d’utilisateurs (stratégies)** dans votre locataire Azure AD B2C.\n1. Supprimez toutes les **applications (héritées)** inscrites dans votre locataire Azure AD B2C.\n1. Sélectionnez **Azure Active Directory** dans le menu à gauche.\n1. Sous **Gérer**, sélectionnez **Utilisateurs**.\n1. Sélectionnez chaque utilisateur tour à tour (excluez l’utilisateur *Administrateur d’abonnements* sous lequel vous êtes connecté actuellement). Sélectionnez **Supprimer** en bas de la page, puis **OUI** lorsque vous y êtes invité.\n1. Sous **Gérer**, sélectionnez **Inscriptions des applications**.\n1. Sélectionnez **Afficher toutes les applications**.\n1. Sélectionnez l’application nommée **b2c-extensions-app**, **Supprimer**, puis **Oui** lorsque vous y êtes invité.\n1. Sous **Gérer**, sélectionnez **Paramètres utilisateur**.\n1. Le cas échéant, sous **Connexions au compte LinkedIn**, sélectionnez **Non**, puis **Enregistrer**.\n1. Sous **Gérer**, sélectionnez **Propriétés**.\n1. Sous **Gestion de l’accès pour les ressources Azure**, sélectionnez **Oui**, puis **Enregistrer**.\n1. Déconnectez-vous du portail Microsoft Azure, puis reconnectez-vous pour actualiser votre accès.\n1. Sélectionnez **Azure Active Directory** dans le menu à gauche.\n1. Dans la page **Vue d’ensemble**, sélectionnez **Supprimer le répertoire**. Suivez les instructions à l’écran pour achever le processus.\n\n* * *          \n"
@@ -163,6 +163,15 @@ sections:
       Puis-je obtenir Azure AD B2C dans le cadre d’Enterprise Mobility Suite ?
     answer: >
       Non, Azure AD B2C est un service Azure avec paiement à l’utilisation et ne fait pas partie d’Enterprise Mobility Suite.
+  - question: >
+      Quelles fonctionnalités d’Azure AD B2C ne sont pas disponibles dans Microsoft Azure Government ?
+    answer: >
+      Les fonctionnalités AD B2C suivantes sont actuellement indisponibles dans Microsoft Azure Government :
+
+
+      * Connecteurs d’API
+
+      * Accès conditionnel
   - question: >
       Comment signaler des problèmes avec Azure AD B2C ?
     answer: 'Consultez [Azure Active Directory B2C : dépôt de demandes de support](support-options.md).'

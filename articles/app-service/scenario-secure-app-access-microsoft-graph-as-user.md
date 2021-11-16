@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 09/23/2021
+ms.date: 11/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 332552d361c4c8c43b7b4bfa981050c829a79762
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b20ae4e6cec7ad3ce710c6e9670ff580b30f2638
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624517"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462307"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Tutoriel : Accéder à Microsoft Graph à partir d’une application sécurisée en tant qu’utilisateur
 
@@ -122,9 +122,12 @@ az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
 ```
 ---
 
-## <a name="call-microsoft-graph-net"></a>Appeler Microsoft Graph (.NET)
+## <a name="call-microsoft-graph"></a>Appeler Microsoft Graph
 
-Votre application web dispose désormais des autorisations nécessaires, et ajoute également l’ID client de Microsoft Graph aux paramètres de connexion. À l’aide de la [bibliothèque Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/), l’application web obtient un jeton d’accès pour l’authentification auprès de Microsoft Graph. Dans la version 1.2.0 et ultérieures, la bibliothèque Microsoft.Identity.Web s’intègre à et peut s’exécuter parallèlement au module d’authentification/d’autorisation App Service. Microsoft.Identity.Web détecte que l’application web est hébergée dans App Service et obtient le jeton d’accès à partir du module d’authentification/d’autorisation App Service. Le jeton d’accès est ensuite transmis aux requêtes authentifiées avec l’API Microsoft Graph.
+Votre application web dispose désormais des autorisations nécessaires, et ajoute également l’ID client de Microsoft Graph aux paramètres de connexion.
+
+# <a name="c"></a>[C#](#tab/programming-language-csharp)
+À l’aide de la [bibliothèque Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/), l’application web obtient un jeton d’accès pour l’authentification auprès de Microsoft Graph. Dans la version 1.2.0 et ultérieures, la bibliothèque Microsoft.Identity.Web s’intègre à et peut s’exécuter parallèlement au module d’authentification/d’autorisation App Service. Microsoft.Identity.Web détecte que l’application web est hébergée dans App Service et obtient le jeton d’accès à partir du module d’authentification/d’autorisation App Service. Le jeton d’accès est ensuite transmis aux requêtes authentifiées avec l’API Microsoft Graph.
 
 Pour voir ce code dans un exemple d’application, consultez l’[exemple sur GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf).
 
@@ -137,7 +140,7 @@ Pour voir ce code dans un exemple d’application, consultez l’[exemple sur Gi
 
 Installez les packages NuGet [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) et [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) dans votre projet à l’aide de l’interface de ligne de commande .NET Core ou de la console du gestionnaire de package dans Visual Studio.
 
-# <a name="command-line"></a>[Ligne de commande](#tab/command-line)
+#### <a name="net-core-command-line"></a>Ligne de commande .NET Core
 
 Ouvrez une ligne de commande et basculez vers le répertoire qui contient votre fichier projet.
 
@@ -149,7 +152,7 @@ dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 dotnet add package Microsoft.Identity.Web
 ```
 
-# <a name="package-manager"></a>[Gestionnaire de package](#tab/package-manager)
+#### <a name="package-manager-console"></a>Console du Gestionnaire de package
 
 Ouvrez le projet/la solution dans Visual Studio, puis ouvrez la console à l’aide de la commande **Outils** > **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
 
@@ -159,8 +162,6 @@ Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```
-
----
 
 ### <a name="startupcs"></a>Startup.cs
 
@@ -273,6 +274,54 @@ public class IndexModel : PageModel
     }
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/programming-language-nodejs)
+
+L’application web obtient le jeton d’accès de l’utilisateur à partir de l’en-tête des demandes entrantes, qui est ensuite transmis à Microsoft Graph client pour effectuer une demande authentifiée auprès du point de terminaison `/me`.
+
+Pour voir ce code dans un exemple d’application, consultez le fichier *graphController.js* dans l’[exemple sur GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf).
+
+```nodejs
+const graphHelper = require('../utils/graphHelper');
+
+// Some code omitted for brevity.
+
+exports.getProfilePage = async(req, res, next) => {
+
+    try {
+        const graphClient = graphHelper.getAuthenticatedClient(req.session.protectedResources["graphAPI"].accessToken);
+
+        const profile = await graphClient
+            .api('/me')
+            .get();
+
+        res.render('profile', { isAuthenticated: req.session.isAuthenticated, profile: profile, appServiceName: appServiceName });   
+    } catch (error) {
+        next(error);
+    }
+}
+```
+
+Pour interroger Microsoft Graph, utilisez le [Kit de développement logiciel (SDK) JavaScript Microsoft Graph](https://github.com/microsoftgraph/msgraph-sdk-javascript). Le code correspondant se trouve dans [utils/graphHelper.js](https://github.com/Azure-Samples/ms-identity-easyauth-nodejs-storage-graphapi/blob/main/2-WebApp-graphapi-on-behalf/utils/graphHelper.js) :
+
+```nodejs
+const graph = require('@microsoft/microsoft-graph-client');
+
+// Some code omitted for brevity.
+
+getAuthenticatedClient = (accessToken) => {
+    // Initialize Graph client
+    const client = graph.Client.init({
+        // Use the provided access token to authenticate requests
+        authProvider: (done) => {
+            done(null, accessToken);
+        }
+    });
+
+    return client;
+}
+```
+---
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e2df24a85b39d1a66a162a826dbc3985a3908d53
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9d5710e78b323af65a12b1f92095cdfa1f385ecb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109508401"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288056"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
 
@@ -23,16 +23,16 @@ Pour créer une stratégie d’accès partagé qui accorde des autorisations de 
 
 1. Dans le volet de gauche de votre hub, sélectionnez **Stratégies d’accès partagé**.
 
-1. Dans le menu supérieur au-dessus de la liste des stratégies, sélectionnez **Ajouter**.
+1. Dans le menu au-dessus de la liste des stratégies, sélectionnez **Ajouter une stratégie d'accès partagé**.
 
-1. Sous **Ajouter une stratégie d’accès partagé**, entrez un nom descriptif pour votre stratégie, par exemple *serviceAndRegistryReadWrite*. Sous **Autorisations**, sélectionnez **Écriture du registre** et **Connexion du service**, puis sélectionnez **Créer** (l’autorisation **Lecture du registre** est incluse automatiquement lorsque vous sélectionnez **Écriture du Registre**).
+1. Sous **Ajouter une stratégie d’accès partagé**, entrez un nom descriptif pour votre stratégie, par exemple *serviceAndRegistryReadWrite*. Sous **Autorisations**, sélectionnez **Écriture du registre** et **Connexion du service**, puis sélectionnez **Ajouter**. (l’autorisation **Lecture du registre** est incluse automatiquement lorsque vous sélectionnez **Écriture du Registre**).
 
-    ![Montrer comment ajouter une nouvelle stratégie d'accès partagé](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-add-svc-regrw-policy.png)
+    :::image type="content" source="./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-add-svc-regrw-policy.png" alt-text="Capture d’écran qui montre comment ajouter une nouvelle stratégie d’accès partagé" border="true":::
 
 1. Sélectionnez votre nouvelle stratégie dans la liste des stratégies.
 
-1. Sous **Clés d’accès partagé**, sélectionnez l’icône de copie pour la **chaîne de connexion -- clé primaire** et enregistrez la valeur.
+1. Sous **Clés d’accès partagé**, sélectionnez l’icône de copie pour la **Chaîne de connexion principale** et enregistrez la valeur.
 
-    ![Montrer comment récupérer la chaîne de connexion](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
+    :::image type="content" source="./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png" alt-text="Capture d’écran qui montre comment récupérer la chaîne de connexion" border="true":::
 
 Pour plus d’informations sur les autorisations et les stratégies d’accès partagé IoT Hub, consultez [Contrôle d’accès et autorisations](../articles/iot-hub/iot-hub-dev-guide-sas.md#access-control-and-permissions).

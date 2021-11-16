@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: cynthn
 ms.custom: portal
-ms.openlocfilehash: 7b733043a6b9a8e68aad94aaa57baf5c4d3fd2aa
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: e28ec0a10431316f7c5658ec006a7136f5388ff3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128909"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444608"
 ---
 # <a name="remove-machine-specific-information-by-generalizing-a-vm-before-creating-an-image"></a>Supprimer les informations spécifiques à la machine en généralisant une machine virtuelle avant de créer une image
 
-La généralisation d’une machine virtuelle n’est pas nécessaire pour créer une image dans une [Galerie d’images partagées](shared-image-galleries.md#generalized-and-specialized-images), sauf si vous souhaitez spécifiquement créer une image généralisée. La généralisation est requise lors de la création d’une image managée en dehors d’une galerie.
+La généralisation d’une machine virtuelle n’est pas nécessaire pour créer une image dans une galerie [Azure Compute Gallery](shared-image-galleries.md#generalized-and-specialized-images), sauf si vous souhaitez spécifiquement créer une image généralisée. La généralisation est requise lors de la création d’une image managée en dehors d’une galerie.
 
 La généralisation supprime les informations spécifiques à la machine afin que l’image puisse être utilisée pour créer plusieurs machines virtuelles. Une fois la machine virtuelle généralisée, vous devez indiquer à la plateforme que la machine virtuelle a été généralisée afin que la séquence de démarrage puisse être définie correctement. Une fois qu’une machine virtuelle est généralisée, elle ne doit pas être redémarrée.
 

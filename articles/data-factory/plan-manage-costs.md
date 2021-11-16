@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 04/28/2021
-ms.openlocfilehash: aba57e9ba46faef60f97819fa3de3e89fa94f00e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/01/2021
+ms.openlocfilehash: 51f71bcf39f0b54bf0f7fb389fbbb9797fbb2151
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122641310"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469461"
 ---
 # <a name="plan-to-manage-costs-for-azure-data-factory"></a>Planification de la gestion des coûts d’Azure Data Factory
 
@@ -73,12 +73,15 @@ Lorsque vous créez ou utilisez des ressources Azure Data Factory, les compteurs
 
 ### <a name="other-costs-that-might-accrue-with-azure-data-factory"></a>Autres coûts possibles avec Azure Data Factory
 
-Lorsque vous créez des ressources pour Azure Data Factory, des ressources pour d’autres services Azure sont également créées. Notamment :
+Lorsque vous créez des ressources pour Azure Data Factory (ADF), des ressources pour d’autres services Azure sont également créées. Notamment :
 
 - Exécution de l’activité de pipeline
 - Exécution de l’activité de pipeline externe
 - Création, modification, récupération et analyse des artefacts Data Factory
-- Durée SSIS Integration Runtime en fonction du type d’instance et de la durée
+- Durée SSIS Integration Runtime (IR) en fonction du type d’instance et de la durée
+
+> [!NOTE]
+> Vous pouvez affecter la même balise à votre ADF et à d’autres ressources Azure, en les plaçant dans la même catégorie pour afficher leur facturation consolidée. La balise ADF sera héritée par tous les IR SSIS. Si vous modifiez la balise ADF, vous devez arrêter et redémarrer tous les IR SSIS pour qu’elles héritent de la nouvelle balise, consultez la section [Reconfigurer IR SSIS](manage-azure-ssis-integration-runtime.md#to-reconfigure-an-azure-ssis-ir).
 
 ### <a name="using-azure-prepayment-with-azure-data-factory"></a>Paiement anticipé Azure avec Azure Data Factory
 

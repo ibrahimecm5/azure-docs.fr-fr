@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ba8cdc3d4c74398f088c19ea80688e308ed4c551
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: eac97f87de7edafc45f0e434188579df19d99c36
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566794"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057608"
 ---
 # <a name="cli-v2-compute-cluster-amlcompute-yaml-schema"></a>Schéma YAML du cluster de calcul (AmlCompute) CLI (v2)
 
@@ -59,23 +59,23 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-minimal"></a>YAML : minimal
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-minimal.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-minimal.yml":::
 
 ## <a name="yaml-basic"></a>YAML : de base
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-basic.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-basic.yml":::
 
 ## <a name="yaml-custom-location"></a>YAML : emplacement personnalisé
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-location.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-location.yml":::
 
 ## <a name="yaml-low-priority"></a>YAML : priorité basse
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-low-priority.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-low-priority.yml":::
 
 ## <a name="yaml-ssh-username-and-password"></a>YAML : nom d’utilisateur et mot de passe SSH
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-ssh-password.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-ssh-password.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 
