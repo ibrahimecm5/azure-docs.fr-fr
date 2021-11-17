@@ -6,21 +6,18 @@ ms.author: dimadhus
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/6/2021
-ms.openlocfilehash: 414b2f8d6e64112c737fe220003ca2c58b3e9d7b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a8d2e1e6ef3f1aa2dcb736336232b1b149eb7b89
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525166"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438194"
 ---
-# <a name="public-network-access-for-azure-database-for-mysql---flexible-server-preview"></a>Accès réseau public pour Azure Database pour MySQL - Serveur flexible (Préversion)
+# <a name="public-network-access-for-azure-database-for-mysql---flexible-server"></a>Accès réseau public pour Azure Database pour MySQL – Serveur flexible
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Cet article décrit les options de connectivité publique pour votre serveur. Vous allez découvrir en détail les concepts pour la création d’un serveur flexible Azure Database pour MySQL accessible de façon sécurisée via Internet.
-
-> [!IMPORTANT]
-> Azure Database pour MySQL - Serveur flexible est en préversion.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Accès public (adresses IP autorisées)
 
@@ -58,7 +55,7 @@ Considérez les points suivants quand l’accès au service de serveur Microsoft
 
   * Demandez à votre fournisseur de services Internet (ISP) la plage d’adresses IP affectée à vos ordinateurs clients qui accèdent au serveur Azure Database pour MySQL, puis ajoutez cette plage à une règle de pare-feu.
   * Obtenez un adressage IP statique à la place pour vos ordinateurs clients, puis ajoutez l’adresse IP statique en tant que règle de pare-feu.
-  
+
 * **La règle de pare-feu n’est pas disponible pour le format IPv6 :** Les règles de pare-feu doivent être au format IPv4. Si vous spécifiez des règles de pare-feu au format IPv6, l’erreur de validation s’affiche.
 
 ## <a name="next-steps"></a>Étapes suivantes

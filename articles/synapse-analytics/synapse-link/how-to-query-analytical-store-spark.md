@@ -6,16 +6,16 @@ author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 9ea9d5d34d69b950e3fa80c350c43f12615660ba
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 83f6c3a7e88cf42cbb2a2d36ff07ac79e7eb5894
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112553"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452202"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-2-in-azure-synapse-link"></a>Interagir avec Azure Cosmos DB à l’aide d’Apache Spark 2 dans Azure Synapse Link
 
@@ -48,6 +48,8 @@ Dans le cas du **chargement dans un DataFrame Spark**, les métadonnées extrait
 En revanche, dans le cas de la **création d'une table Spark**, les métadonnées de l'état du magasin analytique ne sont pas mises en cache dans Spark et sont rechargées chaque fois qu'une requête SparkSQL est exécutée sur la table Spark.
 
 Par conséquent, le choix entre le chargement dans un DataFrame Spark et la création d'une table Spark dépend du type d'évaluation que vous souhaitez effectuer pour votre analyse Spark : par rapport à un instantané fixe du magasin analytique ou par rapport au dernier instantané du magasin analytique.
+
+Si vos requêtes analytiques ont des filtres fréquemment utilisés, vous avez la possibilité d’opérer un partitionnement sur la base de ces champs pour améliorer les performances des requêtes. Vous pouvez exécuter régulièrement un travail de partitionnement à partir d’un notebook Spark Azure Synapse pour déclencher le partitionnement sur le magasin analytique. Ce magasin partitionné pointe vers le compte de stockage principal ADLS Gen2 qui est lié à votre espace de travail Azure Synapse. Pour plus d’informations, consultez les articles [Présentation du partitionnement personnalisé](../../cosmos-db/custom-partitioning-analytical-store.md) et [Comment configurer un partitionnement personnalisé](../../cosmos-db/configure-custom-partitioning.md).
 
 > [!NOTE]
 > Pour interroger l'API Azure Cosmos DB des comptes Mongo DB, découvrez-en plus sur la [représentation du schéma de fidélité optimale](../../cosmos-db/analytical-store-introduction.md#analytical-schema) dans le magasin analytique et sur les noms de propriété étendue à utiliser.

@@ -1,24 +1,25 @@
 ---
 title: Créer une version d’image chiffrée avec vos propres clés
-description: Créez une version d’image dans une galerie d’images partagées à l’aide de clés de chiffrement gérées par le client.
+description: Créez une version d’image dans une instance Azure Compute Gallery avec des clés de chiffrement gérées par le client.
+author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 7/1/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d80b2fb62f0c11a06daaf9198add9c7cbe19a42a
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: bcd214413eb4880219e18c4bb03e4430f31690fd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458734"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452050"
 ---
 # <a name="use-customer-managed-keys-for-encrypting-images"></a>Utiliser des clés gérées par le client pour le chiffrement d’images
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles :heavy_check_mark: Groupes identiques uniformes
 
-Les images d’une galerie d’images partagées étant stockées sous forme d’instantanés, elles sont automatiquement chiffrées côté serveur. Le chiffrement côté serveur utilise le [chiffrement AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 bits, l’un des chiffrements par blocs les plus puissants actuellement disponibles. Le chiffrement côté serveur est également conforme à la norme FIPS 140-2. Pour plus d’informations sur les modules cryptographiques des disque managés Azure, consultez [API de chiffrement : nouvelle génération](/windows/desktop/seccng/cng-portal).
+Les images d’une instance Azure Compute Gallery (anciennement Shared Image Gallery) étant stockées sous forme d’instantanés, elles sont automatiquement chiffrées côté serveur. Le chiffrement côté serveur utilise le [chiffrement AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 bits, l’un des chiffrements par blocs les plus puissants actuellement disponibles. Le chiffrement côté serveur est également conforme à la norme FIPS 140-2. Pour plus d’informations sur les modules cryptographiques des disque managés Azure, consultez [API de chiffrement : nouvelle génération](/windows/desktop/seccng/cng-portal).
 
 Vous pouvez vous appuyer sur des clés gérées par la plateforme pour le chiffrement de vos images ou utiliser vos propres clés. Vous pouvez aussi combiner les deux pour bénéficier d’un double chiffrement. Si vous choisissez de gérer le chiffrement avec vos propres clés, vous pouvez spécifier une *clé gérée par le client* à utiliser pour chiffrer et déchiffrer tous les disques de vos images. 
 
@@ -37,7 +38,7 @@ Cet article nécessite que vous disposiez déjà d’un chiffrement de disque d�
 
 ## <a name="limitations"></a>Limites
 
-Quand vous utilisez des clés gérées par le client pour chiffrer des images dans une galerie d’images partagées, ces limitations s’appliquent :   
+Quand vous utilisez des clés gérées par le client pour chiffrer des images dans une instance Azure Compute Gallery, des limitations s’appliquent : 
 
 - Les jeux de clés de chiffrement doivent se trouver dans le même abonnement que votre image.
 
@@ -98,7 +99,7 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>Créer une machine virtuelle
 
-Vous pouvez créer une machine virtuelle à partir d’une galerie d’images partagées et utiliser des clés gérées par le client pour chiffrer les disques. La syntaxe est la même que celle utilisée pour créer une machine virtuelle [généralisée](vm-generalized-image-version.md) ou [spécialisée](vm-specialized-image-version.md) à partir d’une image. Utilisez le jeu de paramètres étendu et ajoutez `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` à la configuration de la machine virtuelle.
+Vous pouvez créer une machine virtuelle à partir d’une instance Azure Compute Gallery et utiliser des clés gérées par le client pour chiffrer les disques. La syntaxe est la même que celle utilisée pour créer une machine virtuelle [généralisée](vm-generalized-image-version.md) ou [spécialisée](vm-specialized-image-version.md) à partir d’une image. Utilisez le jeu de paramètres étendu et ajoutez `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` à la configuration de la machine virtuelle.
 
 Pour les disques de données, ajoutez le paramètre `-DiskEncryptionSetId $setID` quand vous utilisez [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
 
@@ -142,7 +143,7 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>Création de la machine virtuelle
 
-Vous pouvez créer une machine virtuelle à partir d’une galerie d’images partagées et utiliser des clés gérées par le client pour chiffrer les disques. La syntaxe est la même que celle utilisée pour créer une machine virtuelle [généralisée](vm-generalized-image-version.md) ou [spécialisée](vm-specialized-image-version.md) à partir d’une image. Ajoutez simplement le paramètre `--os-disk-encryption-set` avec l’ID du jeu de chiffrement. Pour les disques de données, ajoutez `--data-disk-encryption-sets` avec une liste délimitée par des espaces des jeux de chiffrement de disque.
+Vous pouvez créer une machine virtuelle à partir d’une instance Azure Compute Gallery et utiliser des clés gérées par le client pour chiffrer les disques. La syntaxe est la même que celle utilisée pour créer une machine virtuelle [généralisée](vm-generalized-image-version.md) ou [spécialisée](vm-specialized-image-version.md) à partir d’une image. Ajoutez simplement le paramètre `--os-disk-encryption-set` avec l’ID du jeu de chiffrement. Pour les disques de données, ajoutez `--data-disk-encryption-sets` avec une liste délimitée par des espaces des jeux de chiffrement de disque.
 
 
 ## <a name="portal"></a>Portail

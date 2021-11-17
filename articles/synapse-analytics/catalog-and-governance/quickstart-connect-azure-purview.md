@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/29/2021
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894df32142cf29e59e40b1e9218f4090bbda93f0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 86e2eee3be8a25cc236a5774ab485c863c8d655b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351614"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842522"
 ---
 # <a name="quickstartconnect-a-synapse-workspace-to-an-azure-purview-account"></a>Démarrage rapide : Connectez un compte Azure Purview à un espace de travail Synapse
 
@@ -67,13 +67,9 @@ Les informations de connexion de Purview sont stockées dans la ressource de l�
 
 L’identité managée de l’espace de travail Synapse est utilisée pour authentifier les opérations d’envoi de lignage de l’espace de travail Synapse dans Purview.
 
-- Pour un compte Purview créé **le 18 août 2021 ou après**, accordez l’identité managée de l’espace de travail Synapse **Curateur de données** à votre **collection racine** Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview](../../purview/catalog-permissions.md) et comment [Ajouter des rôles et restreindre l’accès par le biais de regroupements](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
+Accordez à l’identité managée de l’espace de travail Synapse le rôle **Curateur de données** sur votre **collection racine** Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview](../../purview/catalog-permissions.md) et comment [Ajouter des rôles et restreindre l’accès par le biais de regroupements](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-    Lors de la connexion de l’espace de travail Synapse à Purview dans Synapse Studio, Synapse tente d’ajouter automatiquement une telle attribution de rôle. Si vous détenez le rôle **Administrateur de collection** sur la collection racine Purview et que vous avez accès au compte Purview à partir de votre réseau, cette opération s’effectue avec succès.
-
-- Pour un compte Purview créé **avant le 18 août 2021**, accordez à l’identité managée de l’espace de travail Synapse le rôle Azure intégré [**Curateur de données Purview (hérité)** ](../../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) à votre compte Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview - Autorisations héritées](../../purview/catalog-permissions.md#legacy-permission-guide).
-
-    Lors de la connexion de l’espace de travail Synapse à Purview dans Synapse Studio, Synapse tente d’ajouter automatiquement une telle attribution de rôle. Si vous avez le rôle intégré Azure **Propriétaire** ou **Administrateur de l’accès utilisateur** sur le compte Purview, cette opération est effectuée avec succès.
+Lors de la connexion de l’espace de travail Synapse à Purview dans Synapse Studio, Synapse tente d’ajouter automatiquement une telle attribution de rôle. Si vous détenez le rôle **Administrateur de collection** sur la collection racine Purview et que vous avez accès au compte Purview à partir de votre réseau, cette opération s’effectue avec succès.
 
 ## <a name="monitor-purview-connection"></a>Contrôle de la connexion Purview
 

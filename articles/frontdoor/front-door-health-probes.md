@@ -1,6 +1,6 @@
 ---
 title: Azure Front Door – Supervision de l’intégrité du serveur principal | Microsoft Docs
-description: Cet article explique comment Azure Front Door supervise l’intégrité de vos serveurs principaux
+description: Cet article explique comment Azure Front Door supervise l’intégrité de vos serveurs principaux.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: 6ccd231c69d69900f81ab91d39eada1f67c7886f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 101d769fce7baaac629c756b3f7fad173f736b6c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792464"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053704"
 ---
 # <a name="health-probes"></a>Sondes d’intégrité
 
@@ -80,4 +80,5 @@ Si vous avez un seul serveur principal dans votre pool principal, vous pouvez d�
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Découvrez comment [créer une porte d’entrée](quickstart-create-front-door.md).
+- Découvrez comment [créer une instance Front Door Standard/Premium](standard-premium/create-front-door-portal.md).
 - Découvrez [comment fonctionne Front Door](front-door-routing-architecture.md).

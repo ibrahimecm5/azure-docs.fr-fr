@@ -7,15 +7,15 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: article
-  ms.date: 07/21/2021
+  ms.date: 08/31/2021
   ms.author: alkohli
   ms.custom: references_regions
-  ms.openlocfilehash: 47d941b1c6e6ce7b0f383e977f227db65fa86871
-  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+  ms.openlocfilehash: b2aed039a735ff9124fe19c61992ec184879c0b7
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 07/23/2021
-  ms.locfileid: "114653424"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132059283"
 title: 'Azure Data Box : Forum Aux Questions (FAQ)'
 summary: >
   La solution hybride Microsoft Azure Data Box Disk vous permet d’envoyer des téraoctets de données vers Azure de façon rapide, économique et fiable, via un appareil de transfert. Cette FAQ contient des réponses aux questions que vous pouvez vous poser lorsque vous utilisez Data Box sur le portail Azure.
@@ -43,7 +43,7 @@ sections:
   - question: >
       Dans quelles régions puis-je stocker des données avec Data Box ?
     answer: >
-      La solution Data Box est prise en charge dans toutes les régions des États-Unis, en Europe Ouest, en Europe Nord, en France, au Royaume-Uni, au Japon, en Australie et au Canada. Pour plus d’informations, consultez [Disponibilité des régions](data-box-overview.md#region-availability).
+      Data Box est pris en charge dans toutes les régions des États-Unis, du Canada, de l’UE, du Royaume-Uni, de Suisse, d’Australie, de Singapour, de Hong Kong, du Japon, d’Inde, du Brésil, d’Afrique du Sud et des Émirats Arabes Unis. Pour plus d’informations, consultez [Disponibilité des régions](data-box-overview.md#region-availability).
   - question: >
       Comment puis-je importer des données sources à mon emplacement dans un pays vers une région Azure située dans un autre pays/une autre région ou exporter des données à partir d’une région Azure d’un pays vers un autre pays/une autre région ?
     answer: >
@@ -111,7 +111,8 @@ sections:
       Vous pouvez cloner votre commande précédente. Ainsi, vous créez une commande identique à la précédente et vous pouvez en modifier les détails sans avoir à entrer votre adresse, vos informations de contact et vos préférences de notification. Le clonage n’est autorisé que pour les commandes d’importation.
 - name: Configuration et connexion
   questions:
-  - question: "Comment faire pour déverrouiller la Data Box ? \n"
+  - question: >
+      Comment faire pour déverrouiller la Data Box ?
     answer: >
       Dans le portail Azure, affichez votre commande Data Box, puis accédez à **Informations sur l’appareil**. Copiez le mot de passe de déverrouillage. Utilisez ce mot de passe pour vous connecter à l’interface utilisateur web locale sur votre Data Box. Pour plus d'informations, consultez [Tutoriel : Déballer, brancher et connecter votre Azure Data Box](data-box-deploy-set-up.md).
   - question: >
@@ -162,6 +163,9 @@ sections:
       La configuration du canal de port est-elle prise en charge sur Data Box ? Qu’en est-il de MPIO ?
     answer: >
       Nous ne prenons pas en charge la configuration du canal de port, la configuration MPIO (Multipath I/O) ou la configuration du réseau local virtuel (VLAN) sur Data Box.
+  - question: >
+      Quand les certificats auto-signés générés automatiquement sur mon appareil expirent-ils ?
+    answer: "[!INCLUDE [return-data-box-before-certificates-expire](../../includes/data-box-certificate-expiration.md)] Pour plus d’informations, consultez [Utiliser vos propres certificats](data-box-bring-your-own-certificates.md).     \n"
 - name: Suivi de l'état
   questions:
   - question: "Comment faire pour suivre la Data Box depuis sa commande jusqu’à son renvoi ? \n"

@@ -9,12 +9,12 @@ metadata:
   ms.topic: troubleshooting
   ms.date: 02/22/2021
   ms.author: deanwe
-  ms.openlocfilehash: dca933c5b86875b50d04a67f482713830437350b
-  ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+  ms.openlocfilehash: fff4dff979c1d37f7bda9c96e445a325f96b1f96
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122608101"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131443810"
 title: Forum aux questions sur Azure Automanage pour machines virtuelles
 summary: >
   Cet article fournit des réponses à certaines des questions les plus courantes sur [Azure Automanage pour machines virtuelles](automanage-virtual-machines.md).
@@ -41,10 +41,10 @@ sections:
   - question: >
       Quelle autorisation Azure RBAC est nécessaire pour activer Automanage ?
     answer: >
-      Si vous activez Automanage sur une machine virtuelle avec un compte Automanage existant, vous devez disposer du rôle Contributeur pour le groupe de ressources où réside la machine virtuelle.
+      Si vous activez Automanage, vous devez disposer du rôle Contributeur pour le groupe de ressources dans lequel réside la machine virtuelle.
 
 
-      Si vous utilisez un nouveau compte Automanage lors de l’activation, vous devez avoir le rôle Propriétaire ou le rôle Contributeur + Administrateur de l’accès utilisateur sur l’abonnement.
+      Si vous activez Automanage pour la première fois sur un abonnement, vous devez disposer du rôle Propriétaire ou avoir le rôle Contributeur + Administrateur de l’accès utilisateur sur l’abonnement.
   - question: >
       Quelles sont les régions prises en charge ?
     answer: >
@@ -58,9 +58,13 @@ sections:
     answer: >
       Actuellement, Automanage ne prend pas en charge les machines virtuelles avec Azure Arc.
   - question: >
+      Que signifie l’état « Besoin de mise à niveau » ?
+    answer: >
+      Automanage prend en charge une nouvelle API pour l’intégration (version 2021-04-30-preview ou ultérieure). Si vous êtes sur la version précédente d’Automanage (version 2020-06-30-preview), vous devez désactiver Automanage, puis la réactiver. Vous serez automatiquement intégré à la version la plus récente.
+  - question: >
       Puis-je personnaliser les configurations sur Azure Automanage ?
     answer: >
-      Les clients peuvent personnaliser les paramètres de services spécifiques, tels que la rétention de Sauvegarde Azure, par le biais de préférences de configuration. Pour obtenir la liste complète des paramètres qui peuvent être modifiés, consultez notre documentation [ici](automanage-virtual-machines.md#customizing-an-environment-using-preferences).
+      Les clients peuvent personnaliser les paramètres de services spécifiques, tels que la rétention de Sauvegarde Azure, par le biais de profils personnalisés. Pour obtenir la liste complète des paramètres qui peuvent être modifiés, consultez notre documentation [ici](automanage-virtual-machines.md#custom-profiles).
   - question: >
       Azure Automanage fonctionne-t-il avec les machines virtuelles tant Linux que Windows ?
     answer: >
@@ -84,7 +88,11 @@ sections:
   - question: >
       Qu’est-ce qu’un compte Automanage ?
     answer: >
-      Le compte Automanage est une MSI (Managed Service Identity) qui fournit le contexte de sécurité ou l’identité sous laquelle les opérations automatisées sont effectuées.
+      Le compte Automanage n’est utilisé que pour les machines qui ont été intégrées à l’aide d’une version antérieure d’Automanage (version 2020-06-30-preview). Il s’agit d’une MSI (identité du service géré) qui fournit le contexte de sécurité ou l’identité sous laquelle les opérations automatisées sont effectuées.
+  - question: >
+      Qu’est-ce qu’une préférence de configuration ?
+    answer: >
+      La préférence de configuration n’est utilisée que pour les machines qui ont été intégrées à l’aide d’une version antérieure d’Automanage (version 2020-06-30-preview). Elle permet de personnaliser un sous-ensemble de paramètres. Dans la version la plus récente d’Automanage, elle a été transformée en Profils personnalisés.
   - question: >
       Lorsque j’active Automanage, cela a-t-il un impact sur d’autres machines que celles que j’ai sélectionnées ?
     answer: >

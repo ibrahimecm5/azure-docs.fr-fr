@@ -10,12 +10,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: 5a2bd61c2e59e5933361cc5d64462ba50a12d836
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 642448cab1fa6511d9d12eb4a3de894f3e5c1251
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737122"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056755"
 ---
 # <a name="what-are-azure-arc-enabled-data-services"></a>Que sont les services de données activés pour Azure Arc ?
 
@@ -26,7 +26,7 @@ Actuellement, les services de données avec Azure Arc suivants sont disponibles
 - Instance managée SQL
 - PostgreSQL Hyperscale (préversion)
 
-Pour obtenir une présentation de la façon dont les services de données avec Azure Arc prennent en charge votre environnement de travail hybride, consultez cette vidéo d’introduction :
+Pour obtenir une présentation de la façon dont les services de données avec Azure Arc prennent en charge votre environnement de travail hybride, consultez cette vidéo d’introduction :
 
 > [!VIDEO https://channel9.msdn.com/Shows//Inside-Azure-for-IT/Choose-the-right-data-solution-for-your-hybrid-environment/player?format=ny]
 
@@ -54,13 +54,16 @@ De nombreux services tels que l'approvisionnement en libre-service, les sauvegar
 
 ## <a name="supported-regions"></a>Régions prises en charge
 
-Le tableau suivant décrit les scénarios actuellement pris en charge pour les services de données avec Arc.
+Le tableau suivant décrit les scénarios actuellement pris en charge pour les services de données avec Azure Arc.
 
 |Régions Azure  |Mode de connexion directe  |Mode de connexion indirecte  |
 |---------|---------|---------|
 |USA Est|Disponible|Disponible
 |USA Est 2|Disponible|Disponible
+|USA Ouest|Disponible|Disponible
 |USA Ouest 2|Disponible|Disponible
+|USA Ouest 3|Disponible|Disponible
+|Centre-Nord des États-Unis | Disponible | Disponible
 |USA Centre|Non disponible|Disponible
 |États-Unis - partie centrale méridionale|Disponible|Disponible
 |Sud du Royaume-Uni|Disponible|Disponible

@@ -1,22 +1,22 @@
 ---
-title: 'Préversion : lancement fiable pour les machines virtuelles Azure'
+title: Lancement fiable pour les machines virtuelles Azure
 description: Découvrez le lancement fiable pour les machines virtuelles Azure.
 author: khyewei
 ms.author: khwei
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 10/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 9b2dfe8d4ae7bb17eee4d875178ff059080cb4e0
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 03bbb681c61f28c2b4fbed580094fd8f47017de0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728890"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466768"
 ---
-# <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Lancement fiable pour les machines virtuelles Azure (préversion)
+# <a name="trusted-launch-for-azure-virtual-machines"></a>Lancement fiable pour les machines virtuelles Azure
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles
 
@@ -24,11 +24,7 @@ Azure propose le lancement fiable pour améliorer de manière fluide la sécurit
 
 > [!IMPORTANT]
 > Le lancement fiable requiert la création de nouvelles machines virtuelles. Vous ne pouvez pas activer le lancement fiable sur les machines virtuelles existantes qui ont été créées initialement sans cette fonctionnalité.
->
-> Le lancement fiable est actuellement disponible en préversion publique.
-> Cette préversion est fournie sans contrat de niveau de service et n’est pas recommandée pour les charges de travail de production. Certaines fonctionnalités peuvent être limitées ou non prises en charge. 
->
-> Pour plus d’informations, consultez [Conditions d’Utilisation Supplémentaires relatives aux Évaluations Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 
 ## <a name="benefits"></a>Avantages 
@@ -38,9 +34,9 @@ Azure propose le lancement fiable pour améliorer de manière fluide la sécurit
 - Obtenir des insights et avoir confiance en l’intégrité de toute la chaîne de démarrage.
 - S’assurer que les charges de travail sont approuvées et vérifiables.
 
-## <a name="public-preview-limitations"></a>Limitations de la version préliminaire publique
+## <a name="limitations"></a>Limites
 
-**Prise en charge de la taille** :
+**Prise en charge de la taille de machine virtuelle** :
 - Série B
 - Séries Dav4 et Dasv4
 - série DCsv2
@@ -60,6 +56,8 @@ Azure propose le lancement fiable pour améliorer de manière fluide la sécurit
 - Debian 11
 - CentOS 8.4
 - Oracle Linux 8.3
+- CBL-Mariner
+- Windows Server 2022
 - Windows Server 2019
 - Windows Server 2016
 - Windows 11 Pro
@@ -74,14 +72,16 @@ Azure propose le lancement fiable pour améliorer de manière fluide la sécurit
 
 **Tarifs** : aucun coût supplémentaire par rapport à la tarification existante des machines virtuelles.
 
-**Les fonctionnalités suivantes ne sont pas prises en charge dans cette préversion** :
+**Les fonctionnalités suivantes ne sont pas prises en charge** :
 - Sauvegarde
 - Azure Site Recovery
-- Galerie d’images partagées
+- Galerie Azure Compute Gallery (anciennement Shared Image Gallery)
 - Disque de système d’exploitation éphémère
 - Disque partagé
+- Disque Ultra
 - Image managée
 - Azure Dedicated Host 
+- Virtualisation imbriquée
 
 ## <a name="secure-boot"></a>Démarrage sécurisé
 
@@ -108,7 +108,8 @@ Le lancement fiable est intégré à Azure Security Center pour garantir que vos
 
 - **Recommandation pour activer le démarrage sécurisé** : cette recommandation s’applique uniquement aux machines virtuelles qui prennent en charge le lancement fiable. Azure Security Center identifie les machines virtuelles qui peuvent activer la fonctionnalité de démarrage sécurisé, mais qui ont cette fonctionnalité désactivée. Le système émet une recommandation de faible gravité pour suggérer de l’activer.
 - **Recommandation pour activer vTPM** : si vTPM est activé sur votre machine virtuelle, Azure Security Center peut l’utiliser pour effectuer une attestation d’invité et identifier les modèles de menaces avancés. Si Azure Security Center identifie des machines virtuelles qui prennent en charge le lancement fiable et dont le module vTPM est désactivé, il émet une recommandation de faible gravité pour suggérer de l’activer. 
-- **Évaluation de l’intégrité de l’attestation** : si vTPM est activé sur votre machine virtuelle, une extension d’Azure Security Center peut confirmer à distance que votre machine virtuelle a démarré de manière saine. C’est ce que l’on appelle l’attestation distante. Azure Security Center émet une évaluation, indiquant l’état de l’attestation distante.
+- **Recommandation pour installer l’extension d’attestation d’invité** : si votre machine virtuelle dispose d’un démarrage sécurisé et d’un vTPM activé, mais que l’extension d’attestation d’invité n’est pas installée, Azure Security Center émet une recommandation de faible gravité pour installer l’extension d’attestation d’invité. Cette extension permet à Azure Security Center d’attester et de surveiller de manière proactive l’intégrité du démarrage de vos machines virtuelles. L’intégrité du démarrage est attestée via une attestation à distance.  
+- **Évaluation de l’intégrité de l’attestation** : si un vTPM est activé et une extension d’attestation installée sur votre machine virtuelle, Azure Security Center peut confirmer à distance que votre machine virtuelle a démarré de manière saine. C’est ce que l’on appelle l’attestation distante. Azure Security Center émet une évaluation, indiquant l’état de l’attestation distante.
 
 ## <a name="azure-defender-integration"></a>Intégration d’Azure Defender
 
@@ -118,8 +119,7 @@ Si vos machines virtuelles sont correctement configurées avec la fonctionnalit�
     L’attestation de la machine virtuelle peut échouer pour les raisons suivantes :
     - Les informations attestées, qui comprennent un journal de démarrage, diffèrent d’une ligne de base approuvée. Cela peut indiquer que des modules non approuvés ont été chargés et que le système d’exploitation peut être compromis.
     - Il n’a pas été possible de vérifier que la déclaration d’attestation provient du module vTPM de la machine virtuelle attestée. Cela peut indiquer qu’un logiciel malveillant est présent et qu’il intercepte le trafic vers vTPM.
-    - L’extension d’attestation sur la machine virtuelle ne répond pas. Cela peut indiquer une attaque par déni de service par un programme malveillant ou un administrateur du système d’exploitation.
-
+    
     > [!NOTE]
     >  Cette alerte est disponible pour les machines virtuelles sur lesquelles vTPM est activé et l’extension d’attestation installée. Le démarrage sécurisé doit être activé pour que l’attestation réussisse. L’attestation échoue si le démarrage sécurisé est désactivé. Si vous devez désactiver le démarrage sécurisé, vous pouvez supprimer cette alerte pour éviter les faux positifs.
 
@@ -154,10 +154,16 @@ Azure Security Center effectue régulièrement une attestation. Si l’attestati
 
   
 ### <a name="how-does-trusted-launch-compared-to-hyper-v-shielded-vm"></a>Quelles sont les performances du lancement fiable par rapport à la machine virtuelle dotée d’une protection maximale Hyper-V ?
+
 La machine virtuelle dotée d’une protection maximale Hyper-V est actuellement disponible uniquement sur Hyper-V. La [machine virtuelle dotée d’une protection maximale Hyper-V](/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms) est généralement déployée conjointement avec l’infrastructure protégée. Une infrastructure protégée est constituée d’un service Guardian hôte (SGH), d’un ou plusieurs hôtes protégés et d’un ensemble de machines virtuelles dotées d’une protection maximale. Les machines virtuelles dotées d’une protection maximale Hyper-V sont destinées à être utilisées dans des structures où les données et l’état de la machine virtuelle doivent être protégés des administrateurs de l’infrastructure et des logiciels non approuvés qui pourraient s’exécuter sur les hôtes Hyper-V. En revanche, le lancement fiable peut être déployé en tant que machine virtuelle autonome ou en tant que groupes de machines virtuelles identiques sur Azure sans déploiement ni gestion supplémentaires du service SGH. Toutes les fonctionnalités du lancement fiable peuvent être activées via une simple modification dans le code de déploiement ou à l’aide d’une case à cocher sur le portail Azure.  
 
 ### <a name="how-can-i-convert-existing-vms-to-trusted-launch"></a>Comment convertir des machines virtuelles existantes au lancement fiable ?
-Pour les machines virtuelles de 2e génération, le chemin de migration pour mettre en place le lancement fiable est destiné à la disponibilité générale (GA).
+
+Pour les machines virtuelles de 2e génération, le chemin de migration pour la conversion au lancement fiable est prévu pour la disponibilité générale (GA).
+
+### <a name="what-is-vm-guest-state-vmgs"></a>Qu’est-ce que l’état invité de machine virtuelle (VMGS) ?  
+
+L’état invité de machine virtuelle (VMGS) est spécifique d’une machine virtuelle de lancement fiable. Il s’agit d’un blob géré par Azure, qui contient les bases de données de signature de démarrage sécurisé UEFI (Unified Extensible Firmware Interface) et d’autres informations de sécurité. Le cycle de vie du blob VMGS est lié à celui du disque du système d’exploitation.  
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1c6937f3b532b94b3b82fcd17bb6591f4887b96
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: cb061e152e34cc83b210907cc2e43017d85e1c97
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690700"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449124"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Créer une machine virtuelle Windows avec le Générateur d’images Azure avec PowerShell
 
@@ -152,7 +152,7 @@ New-AzRoleAssignment @RoleAssignParams
 > [!NOTE]
 > Si vous recevez le message d’erreur : « _New-AzRoleDefinition : Limite de définitions de rôle dépassée. Aucune autre définition de rôle ne peut être créée._  », consultez [résoudre les problèmes DANS Azure RBAC](../../role-based-access-control/troubleshooting.md).
 
-## <a name="create-a-shared-image-gallery"></a>Créer une galerie Shared Image Gallery
+## <a name="create-an-azure-compute-gallery-formerly-known-as-shared-image-gallery"></a>Créer une galerie Azure Compute Gallery (anciennement appelée Shared Image Gallery)
 
 Créez la galerie.
 

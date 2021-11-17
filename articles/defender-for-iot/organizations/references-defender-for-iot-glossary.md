@@ -3,12 +3,12 @@ title: Defender pour le glossaire IoT pour les organisations
 description: Ce glossaire fournit une brève description des termes et concepts importants de la plateforme Defender pour IoT.
 ms.date: 05/27/2021
 ms.topic: article
-ms.openlocfilehash: 21f3404b40ac1b203531079c2e6ecf64697c8d43
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 4d3467d6e3a2a4efacd6ed5671e9f2d7614ea143
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015122"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027762"
 ---
 # <a name="defender-for-iot-glossary-for-organizations"></a>Defender pour le glossaire IoT pour les organisations
 
@@ -49,10 +49,10 @@ Ce glossaire fournit une brève description des termes et concepts importants po
 |--|--|--|
 | **Exploration de données** | Générez des rapports complets et granulaires sur vos périphériques réseau :<br /><br />- **réponse aux incidents SOC** : Rapports en temps réel pour vous aider à répondre immédiatement aux incidents. Par exemple, un rapport peut répertorier les appareils qui peuvent nécessiter une mise à jour corrective.<br /><br />- **Forensique** : Rapports basés sur les données d’historique des rapports d’investigation.<br /><br />- **intégrité du réseau informatique** : Rapports qui contribuent à améliorer la sécurité globale du réseau. Par exemple, un rapport peut répertorier des appareils avec des informations d’identification faibles.<br /><br />- **visibilité** : Rapports qui couvrent tous les éléments de requête pour afficher tous les paramètres de ligne de base de votre réseau.<br /><br />Enregistrez les rapports d’exploration de données pour que les utilisateurs en lecture seule puissent les afficher. | **[Ligne de base](#b)<br /><br />[Rapports](#r)** |
 | **plateforme Defender pour IoT** | La solution Defender pour IoT installée sur Defender pour les capteurs IoT et la console de gestion locale. | **[Capteur](#s)<br /><br />[Console de gestion locale](#o)** |
-| **Carte des appareils** | Représentation graphique des périphériques réseau détectés par Defender pour IoT. Elle montre les connexions entre les appareils et les informations sur chaque appareil. Utilisez la carte pour :<br /><br />- Récupérer et contrôler les informations critiques de l’appareil.<br /><br />- Analyser des sections du réseau.<br /><br />- Exporter les détails et les résumés des appareils. | **[Groupe de couches Purdue](#p)** |
-| **Inventaire des appareils – capteur** | L’inventaire des appareils affiche un large éventail d’attributs d’appareil détectés par Defender pour IoT. Des options sont disponibles pour :<br /><br />- Filtrer les informations affichées.<br /><br />- Exporter ces informations dans un fichier CSV.<br /><br />- Importer les détails du Registre Windows. | **[Groupe](#g)** <br /><br />**[Inventaire des appareils – console de gestion locale](#d)** |
-| **Inventaire des appareils – console de gestion locale** | Les informations d’appareil obtenues à partir des capteurs connectés peuvent être consultées à partir de la console de gestion locale dans l’inventaire des appareils. Les utilisateurs de la console de gestion locale disposent ainsi d’une vue complète de toutes les informations réseau. | **[Inventaire des appareils – Capteur](#d)<br /><br />[Inventaire des appareils – intégrateur de données](#d)** |
-| **Inventaire des appareils – intégrateur de données** | Les fonctionnalités d’intégration de données de la console de gestion locale vous permettent d’améliorer les données de l’inventaire des appareils avec des informations provenant d’autres ressources de l’entreprise. Des exemples de ces ressources sont les CMDB, DNS, pare-feu et API web. | **[Inventaire des appareils – console de gestion locale](#d)** |
+| **Appareils en stock** | Defender pour IoT identifie et classe les appareils comme un appareil réseau unique dans l’inventaire pour :
+1. Appareils IT, OT et IoT autonomes (avec 1 ou plusieurs cartes d’interface réseau)
+1. Appareils composés de plusieurs composants de carte d’insertion (notamment tous les racks/emplacements/modules)
+1. Appareils agissant comme une infrastructure réseau comme commutateur/routeur (avec plusieurs cartes d’interface réseau). Les adresses IP Internet publiques, les groupes de multidiffusion et les groupes de diffusion ne sont pas considérés comme des appareils d’inventaire. Les appareils restés inactifs depuis plus de 60 jours sont classés en tant qu’appareils en stock. | | **Carte des appareils** | Représentation graphique des appareils réseau que Defender pour IoT détecte. Elle montre les connexions entre les appareils et les informations sur chaque appareil. Utilisez la carte pour :<br /><br />- Récupérer et contrôler les informations critiques de l’appareil.<br /><br />- Analyser des sections du réseau.<br /><br />- Exporter les détails et les résumés des appareils. |  **[Groupe de couches Purdue](#p)** | | **Inventaire des appareils – Capteur** | L’inventaire des appareils affiche un vaste éventail d’attributs d’appareil que Defender pour IoT a détectés. Des options sont disponibles pour :<br /><br />- Filtrer les informations affichées.<br /><br />- Exporter ces informations dans un fichier CSV.<br /><br />- Importer les détails du Registre Windows. |  **[Groupe](#g)** <br /><br />**[Inventaire des appareils – Console de gestion locale](#d)** | | **Inventaire des appareils – console de gestion locale** | Les informations sur les appareils provenant des capteurs connectés sont consultables via la console de gestion locale dans l’inventaire des appareils. Les utilisateurs de la console de gestion locale disposent ainsi d’une vue complète de toutes les informations réseau. |  **[Inventaire des appareils – Capteur](#d)<br /><br />[Inventaire des appareils – Intégrateur de données](#d)** | | **Inventaire des appareils – Intégrateur de données** | Les fonctionnalités d’intégration de données de la console de gestion locale vous permettent d’améliorer les données de l’inventaire des appareils avec des informations provenant d’autres ressources de l’entreprise. Des exemples de ces ressources sont les CMDB, DNS, pare-feu et API web. |  **[Inventaire des appareils – Console de gestion locale](#d)**  |
 
 ## <a name="e"></a>E
 

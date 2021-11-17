@@ -1,132 +1,220 @@
 ---
 title: Intégrer à Application Gateway
 description: Découvrez comment intégrer une application de votre environnement App Service ILB à une passerelle App Gateway dans cette procédure pas à pas complète.
-author: ccompy
+author: madsd
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.topic: article
-ms.date: 07/26/2021
-ms.author: ccompy
+ms.date: 10/12/2021
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 839d817001bf4f939bdcacb7e439c7eb8e45b3a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f52f984b1e72d685dae46002e9ae4bac543c068a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562969"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447577"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Intégrer votre environnement App Service ILB à l’aide de la passerelle d’application Azure #
 
-L’[environnement Azure App Service](./intro.md) est un déploiement d’Azure App Service dans le sous-réseau du réseau virtuel Azure d’un client. Il peut être déployé avec un point de terminaison public ou privé pour accéder aux applications. Le déploiement de l’environnement App Service avec un point de terminaison privé (autrement dit, un équilibreur de charge interne) est appelé un environnement App Service ILB.  
+L’[environnement Azure App Service][AppServiceEnvironmentoverview] est un déploiement d’Azure App Service dans le sous-réseau du réseau virtuel Azure d’un client. Il peut être déployé avec un point de terminaison externe ou interne pour accéder aux applications. Le déploiement de l’environnement App Service avec un point de terminaison interne est appelé environnement App Service (ASE) avec équilibreur de charge interne (ILB).
 
 Les pare-feu d’applications web permettent de sécuriser vos applications web en inspectant le trafic web entrant pour bloquer les injections SQL, les attaques XSS, les téléchargements de programmes malveillants, les attaques DDoS, ainsi que les autres attaques. Vous pouvez obtenir un appareil WAF à partir de la Place de marché Azure ou vous pouvez utiliser [Azure Application Gateway][appgw].
 
-Azure Application Gateway est une appliance virtuelle qui fournit l’équilibrage de charge de couche 7, le déchargement TLS/SSL et la protection du pare-feu d’applications web (WAF). Elle peut écouter sur une adresse IP publique et acheminer le trafic jusqu’au point de terminaison de votre application. Les informations suivantes expliquent comment intégrer une passerelle d’application configurée avec le WAF à une application dans un environnement App Service ILB.  
+Azure Application Gateway est une appliance virtuelle qui fournit l’équilibrage de charge de couche 7, le déchargement TLS/SSL et la protection du pare-feu d’applications web (WAF). Elle peut écouter sur une adresse IP publique et acheminer le trafic jusqu’au point de terminaison de votre application. Les informations suivantes expliquent comment intégrer une passerelle applicative configurée avec le WAF à une application dans un environnement App Service ILB.  
 
-L’intégration de la passerelle d’application à l’environnement App Service ILB se fait au niveau de l’application. Quand vous configurez la passerelle d’application avec votre environnement App Service ILB, vous le faites pour des applications spécifiques dans cet environnement. Cette technique permet d’héberger des applications mutualisées sécurisées dans un environnement App Service ILB unique.  
+L’intégration de la passerelle applicative à l’environnement App Service ILB se fait au niveau de l’application. Quand vous configurez la passerelle applicative avec votre environnement App Service ILB, vous le faites pour des applications spécifiques dans cet environnement. Cette technique permet d’héberger des applications multi-locataires sécurisées dans un environnement App Service ILB unique.  
 
-![Passerelle d’application pointant vers une application dans un environnement App Service ILB][1]
+:::image type="content" source="./media/integrate-with-application-gateway/appgw-highlevel.png" alt-text="Capture d’écran du diagramme d’intégration de haut niveau":::
 
 Lors de cette procédure pas à pas, vous allez :
 
 * Créez une passerelle Azure Application Gateway.
-* Configurez la passerelle d’application pour pointer vers une application dans votre environnement App Service ILB.
-* Configurer votre application pour honorer le nom de domaine personnalisé
+* Configurez la passerelle applicative pour pointer vers une application dans votre environnement App Service ILB.
 * Modifier le nom d’hôte DNS public qui pointe vers votre passerelle d’application
 
 ## <a name="prerequisites"></a>Prérequis
 
-Pour intégrer votre passerelle d’application à votre environnement App Service ILB, les éléments suivants sont nécessaires :
+Pour intégrer votre passerelle applicative à votre environnement App Service ILB, les éléments suivants sont nécessaires :
 
-* Un environnement App Service ILB.
-* Une application exécutée dans l’environnement App Service ILB.
-* Un nom de domaine routable sur Internet à utiliser avec votre application dans l’environnement App Service ILB.
-* L’adresse ILB utilisée par votre environnement App Service ILB. Cette information est disponible dans le portail de l’environnement App Service, sous **Paramètres** > **Adresses IP** :
+* Environnement App Service ILB.
+* Zone DNS privée pour l’environnement App Service ILB.
+* Application exécutée dans l’environnement App Service ILB.
+* Nom DNS public à utiliser ultérieurement pour pointer vers votre passerelle applicative.
+* Si vous devez utiliser le chiffrement TLS/SSL sur la passerelle applicative, un certificat public valide utilisé pour la liaison à votre passerelle applicative est requis.
 
-    ![Exemple de liste d’adresses IP utilisées par l’environnement App Service ILB][9]
+### <a name="ilb-app-service-environment"></a>Environnement App Service ILB
+
+Pour plus d’informations sur la création d’un environnement App Service ILB, consultez [Créer un environnement App Service Environment dans le portail Azure][creation] et [Créer un environnement App Service Environment avec ARM][createfromtemplate].
+
+* Une fois l’environnement ASE ILB créé, le domaine par défaut est `<YourAseName>.appserviceenvironment.net`.
+
+    :::image type="content" source="./media/integrate-with-application-gateway/ilb-ase.png" alt-text="Capture d’écran de la vue d’ensemble de l’environnement ILB ASE":::
+
+* Un équilibreur de charge interne est provisionné pour l’accès entrant. Vous pouvez vérifier l’adresse entrante dans les adresses IP sous Paramètres ASE. Vous pouvez créer ultérieurement une zone DNS privée mappée à cette adresse IP.
+
+    :::image type="content" source="./media/integrate-with-application-gateway/ip-addresses.png" alt-text="Capture d’écran montrant l’obtention de l’adresse entrante à partir des paramètres d’adresses IP de l’environnement ILB ASE.":::
+
+### <a name="a-private-dns-zone"></a>Zone DNS privée
+
+Vous avez besoin d’une [zone DNS privée][privatednszone] pour la résolution de noms interne. Créez la zone à l’aide du nom de l’environnement ASE à l’aide des jeux d’enregistrements indiqués dans le tableau suivant (pour obtenir des instructions, consultez [Démarrage rapide : créer une zone Azure DNS privée avec le portail Azure][createprivatednszone]).
+
+| Nom  | Type | Valeur               |
+| ----- | ---- | ------------------- |
+| *     | Un    | Adresse entrante ASE |
+| @     | Un    | Adresse entrante ASE |
+| @     | SOA  | Nom DNS ASE        |
+| *.scm | Un    | Adresse entrante ASE |
+
+### <a name="app-service-on-ilb-ase"></a>App Service sur un environnement ILB ASE
+
+Vous devez créer un plan App Service et une application dans votre environnement ASE ILB. Lors de la création de l’application dans le portail, sélectionnez votre environnement ASE ILB comme **Région**.
+
+### <a name="a-public-dns-name-to-the-application-gateway"></a>Un nom DNS public à la passerelle applicative
+
+Pour vous connecter à la passerelle applicative à partir d’Internet, vous avez besoin d’un nom de domaine routable. Dans ce cas, j’ai utilisé un nom de domaine routable `asabuludemo.com` et je prévois de me connecter à App Service avec ce nom de domaine `app.asabuludemo.com`. Les adresses IP mappées à ce nom de domaine d’application doivent être définies sur l’adresse IP publique après la création de la passerelle applicative.
+Avec un domaine public mappé à la passerelle applicative, vous n’avez pas besoin de configurer un domaine personnalisé dans App Service. Vous pouvez ajouter un nom de domaine personnalisé avec [Domaines App Service](../manage-custom-dns-buy-domain.md#buy-an-app-service-domain). 
+
+### <a name="a-valid-public-certificate"></a>Certificat public valide
+
+Pour améliorer la sécurité, il est recommandé de lier le certificat TLS/SSL pour le chiffrement de la session. Pour lier le certificat TLS/SSL à la passerelle applicative, un certificat public valide avec les informations suivantes est nécessaire. Avec [Certificats App Service](../configure-ssl-certificate.md#start-certificate-order), vous pouvez acheter un certificat TLS/SSL et l’exporter au format .pfx.
+
+| Nom  | Valeur               | Description|
+| ----- | ------------------- |------------|
+| **Nom commun** |`<yourappname>.<yourdomainname>`, par exemple : `app.asabuludemo.com`  <br/> ou `*.<yourdomainname>`, par exemple : `*.asabuludemo.com` | Un certificat standard ou un [certificat générique](https://wikipedia.org/wiki/Wildcard_certificate) pour la passerelle applicative|
+| **Autre nom de l’objet** | `<yourappname>.scm.<yourdomainname>`, par exemple : `app.scm.asabuludemo.com`  <br/>ou `*.scm.<yourdomainname>`, par exemple : `*.scm.asabuludemo.com` |Le réseau SAN qui permet de se connecter au service Kudu App Service. Il s’agit d’un paramètre facultatif si vous ne souhaitez pas publier le service Kudu App Service sur Internet.|
+
+Le fichier de certificat doit disposer d’une clé privée enregistrée au format .pfx qui est importé ultérieurement dans la passerelle applicative.
+
+## <a name="create-an-application-gateway"></a>Créer une passerelle Application Gateway
+
+Pour la création de la passerelle applicative de base, reportez-vous à la section [Tutoriel : créer une passerelle applicative avec un pare-feu d’applications web à l’aide du portail Azure][Tutorial: Create an application gateway with a Web Application Firewall using the Azure portal].
+
+Dans ce tutoriel, nous allons utiliser le portail Azure pour créer une passerelle applicative avec l’environnement ILB App Service.
+
+Dans le portail Azure, sélectionnez **Nouveau** > **Réseau** > **Application Gateway** pour créer une passerelle applicative.
+
+1. Paramètre de base
+
+    Dans la liste déroulante **Niveau**, vous pouvez sélectionner **Standard V2** ou **WAF V2** pour activer la fonctionnalité **WAF** sur la passerelle applicative. 
+
+2. Paramètre front-end
+
+    Sélectionnez le type d’adresse IP front-end **Public**, **Privé** ou **Les deux**. Si vous définissez **Privé** ou **Les deux**, vous devez attribuer une adresse IP statique dans la plage de sous-réseau de la passerelle applicative. Dans ce cas, nous définissons l’adresse IP sur Public pour le point de terminaison public uniquement.
     
-* Un nom DNS public à utiliser ultérieurement pour pointer vers votre passerelle d’application. 
-
-Pour plus d’informations sur la création d’un environnement App Service ILB, consultez [Création et utilisation d’un environnement App Service ILB][ilbase].
-
-Cet article part du principe que vous souhaitez une passerelle d’application dans le même réseau virtuel Azure que celui où est déployé l’environnement App Service. Avant de commencer à créer la passerelle d’application, choisissez ou créez un sous-réseau qui hébergera la passerelle. 
-
-Vous devez utiliser un sous-réseau autre que GatewaySubnet. Si vous placez la passerelle d’application sur GatewaySubnet, il vous sera impossible par la suite de créer une passerelle de réseau virtuel. 
-
-Vous ne pouvez pas non plus placer la passerelle dans le sous-réseau que votre environnement App Service ILB utilise. L’environnement App Service est le seul élément qui peut être inclus dans ce sous-réseau.
-
-## <a name="configuration-steps"></a>Configuration ##
-
-1. Dans le portail Azure, accédez à **Nouveau** > **Réseau** > **Passerelle d’application**.
-
-2. Dans la zone **Bases** :
-
-   a. Sous **Nom**, entrez le nom de la passerelle d’application.
-
-   b. Sous **Niveau**, sélectionnez **WAF**.
-
-   c. Sous **Abonnement**, sélectionnez le même abonnement que celui qu’utilise le réseau virtuel de l’environnement App Service.
-
-   d. Sous **Groupe de ressources**, créez ou sélectionnez le groupe de ressources.
-
-   e. Sous **Emplacement**, sélectionnez l’emplacement du réseau virtuel de l’environnement App Service.
-
-   ![Informations de base indispensables à la création d’une passerelle d’application][2]
-
-3. Dans la zone **Paramètres** :
-
-   a. Sous **Réseau virtuel**, sélectionnez le réseau virtuel de l’environnement App Service.
-
-   b. Sous **Sous-réseau**, sélectionnez le sous-réseau dans lequel la passerelle d’application doit être déployée. N’utilisez pas GatewaySubnet, car il empêche la création de passerelles VPN.
-
-   c. Sous **Type d’adresse IP**, sélectionnez **Public**.
-
-   d. Sous **Adresse IP publique**, sélectionnez une adresse IP publique. Si vous n'en avez pas, créez-en une.
-
-   e. Sous **Protocole**, sélectionnez **HTTP** ou **HTTPS**. Si vous choisissez le protocole HTTPS, vous devez fournir un certificat PFX.
-
-   f. Sous **Pare-feu d’applications web**, vous pouvez activer le pare-feu et le définir également pour la **détection** ou la **prévention**, en fonction de vos besoins.
-
-   ![Paramètres de création d’une passerelle d’application][3]
+    * Adresse IP publique : vous devez associer une adresse IP publique pour l’accès public de la passerelle applicative. Enregistrez cette adresse IP. Vous devez ajouter un enregistrement dans votre service DNS ultérieurement.
     
-4. Dans la section **Résumé**, vérifiez les paramètres, puis cliquez sur **OK**. L’installation de votre passerelle d’application peut prendre une trentaine de minutes.  
+        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="Capture d’écran montrant l’obtention de l’adresse IP publique à partir du paramètre front-end de la passerelle applicative.":::
 
-5. Lorsque l’installation est terminée, accédez au portail de votre passerelle d’application. Sélectionnez **Pool principal**. Ajoutez l’adresse ILB de votre environnement App Service ILB.
+3. Paramètre des serveurs back-end
 
-   ![Configuration du pool principal][4]
-
-6. Une fois l’opération de configuration de votre pool principal terminée, sélectionnez **Sondes d’intégrité**. Créez une sonde d’intégrité pour le nom de domaine que vous souhaitez destiner à votre application. 
-
-   ![Configurer les sondes d’intégrité][5]
+    Entrez un nom de pool back-end et sélectionnez **App Services** ou **Adresse IP ou nom de domaine complet (FQDN)** dans **Type de cible**. Dans ce cas, nous sélectionnons **App Service**, puis le nom App Service dans la liste déroulante de la cible.
     
-7. Une fois l’opération de configuration de vos sondes d’intégrité terminée, sélectionnez **Paramètres HTTP**. Modifiez les paramètres existants, sélectionnez **Utiliser la sonde personnalisée** et choisissez la sonde que vous avez configurée.
+    :::image type="content" source="./media/integrate-with-application-gateway/add-backend-pool.png" alt-text="Capture d’écran montrant l’ajout d’un nom du pool back-end dans le paramètre back-end.":::
 
-   ![Configuration des paramètres HTTP][6]
+4. Paramètre de configuration
+
+    Dans paramètre **Configuration**, vous devez ajouter une règle d’acheminement en cliquant sur l’icône **Ajouter une règle d’acheminement**.
     
-8. Accédez à la section **Vue d’ensemble** de la passerelle d’application et copiez l’adresse IP publique utilisée par la passerelle d’application. Définissez cette adresse IP en tant qu’enregistrement A pour le nom de domaine de votre application, ou utilisez le nom DNS pour cette adresse dans un enregistrement CNAME. Il est plus facile de sélectionner l’adresse IP publique et de la copier à partir de l’interface utilisateur de l’adresse IP publique que de la copier à partir du lien présent dans la section **Vue d’ensemble** de la passerelle d’application. 
+    :::image type="content" source="./media/integrate-with-application-gateway/configuration.png" alt-text="Capture d’écran de l’ajout d’une règle d’acheminement dans le paramètre de configuration.":::
+    
+    Vous devez configurer un **écouteur** et des **cibles back-end** dans une règle d’acheminement. Vous pouvez ajouter un écouteur HTTP pour le déploiement de la preuve de concept ou ajouter un écouteur HTTPS pour l’amélioration de la sécurité.
+    
+    * Pour vous connecter à la passerelle applicative avec le protocole HTTP, vous pouvez créer un écouteur avec les paramètres suivants,
+    
+        | Paramètre      | Valeur                             | Description                                                  |
+        | -------------- | --------------------------------- | ------------------------------------------------------------ |
+        | Nom de la règle      | Par exemple : `http-routingrule`    | Nom du routage                                                 |
+        | Nom de l’écouteur  | Par exemple : `http-listener`       | Nom de l’écouteur                                                |
+        | Adresse IP du front-end    | Public                            | Pour l’accès à Internet, définir sur Public                           |
+        | Protocol       | HTTP                             | Ne pas utiliser le chiffrement TLS/SSL                                       |
+        | Port           | 80                               | Port HTTP par défaut                                           |
+        | Type d’écouteur  | Multisite                        | Autoriser à écouter plusieurs sites sur la passerelle applicative           |
+        | Type d’hôte      | Multiple/caractère générique                 | Définissez sur un nom de site web générique ou multiple si le type d’écouteur est défini sur plusieurs sites. |
+        | Nom de l’hôte      | Par exemple : `app.asabuludemo.com` | Définir sur un nom de domaine routable pour App Service              |
+        
+        :::image type="content" source="./media/integrate-with-application-gateway/http-routing-rule.png" alt-text="Capture d’écran de l’écouteur HTTP de la règle d’acheminement de la passerelle applicative.":::
+    
+    * Pour vous connecter à la passerelle applicative avec le chiffrement TLS/SSL, vous pouvez créer un écouteur avec les paramètres suivants,
+    
+        | Paramètre      | Valeur                             | Description                                                  |
+        | -------------- | --------------------------------- | ------------------------------------------------------------ |
+        | Nom de la règle      | Par exemple : `https-routingrule`    | Nom du routage                                                 |
+        | Nom de l’écouteur  | Par exemple : `https-listener`       | Nom de l’écouteur                                                |
+        | Adresse IP du front-end    | Public                            | Pour l’accès à Internet, définir sur Public                           |
+        | Protocol       | HTTPS                             | Utiliser le chiffrement TLS/SSL                                       |
+        | Port           | 443                               | Port HTTPS par défaut                                           |
+        | Paramètres HTTPS | Téléchargement d'un certificat              | Chargez un certificat qui contient le nom commun et la clé privée au format .pfx. |
+        | Type d’écouteur  | Multisite                        | Autoriser à écouter plusieurs sites sur la passerelle applicative           |
+        | Type d’hôte      | Multiple/caractère générique                 | Définissez sur un nom de site web générique ou multiple si le type d’écouteur est défini sur plusieurs sites. |
+        | Nom de l’hôte      | Par exemple : `app.asabuludemo.com` | Définir sur un nom de domaine routable pour App Service              |
+        
+        :::image type="content" source="./media/integrate-with-application-gateway/https-routing-rule.png" alt-text="Écouteur HTTPS de la règle d’acheminement de passerelle applicative.":::
+    
+    * Vous devez configurer un **Pool back-end** et un **Paramètre HTTP** dans les **Cibles back-end**. Le pool back-end a été configuré lors des étapes précédentes. Cliquez sur le lien **Ajouter nouveau** pour ajouter un paramètre HTTP.
+    
+        :::image type="content" source="./media/integrate-with-application-gateway/add-new-http-setting.png" alt-text="Capture d’écran du lien Ajouter nouveau pour ajouter un paramètre HTTP.":::
+    
+    * Paramètres HTTP répertoriés comme suit :
+    
+        | Paramètre                     | Valeur                                                        | Description                                                  |
+        | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+        | Nom du paramètre HTTP             | Par exemple : `https-setting`                                   | Nom du paramètre HTTP                                            |
+        | Protocole back-end              | HTTPS                                                        | Utiliser le chiffrement TLS/SSL                                       |
+        | Port principal                  | 443                                                          | Port HTTPS par défaut                                           |
+        | Utiliser le certificat de l’autorité de certification connue | Oui                                                          | Le nom de domaine par défaut de l’environnement ILB ASE est **.appserviceenvironment.net**, le certificat de ce domaine est émis par une autorité racine approuvée publique. Dans le paramètre Certificat racine approuvé, vous pouvez définir d’utiliser un **certificat racine approuvé d’autorité de certification connu**. |
+        | Substituer avec le nouveau nom d’hôte   | Oui                                                          | L’en-tête de nom d’hôte est remplacé lors de la connexion à l’application sur l’environnement ILB ASE |
+        | Remplacement du nom d’hôte            | Choisir un nom d’hôte à partir d’une cible de back-end | Quand vous définissez le pool back-end sur App Service, vous pouvez choisir l’hôte à partir de la cible de back-end |
+        | Créer des sondes personnalisées | Non | Utiliser la sonde d’intégrité par défaut|
+        
+        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="Capture d’écran de l’ajout des détails des paramètres HTTP.":::
 
-   ![Portail Application Gateway][7]
 
-9. Définissez le nom de domaine personnalisé pour votre application dans l’environnement App Service ILB. Accédez à votre application dans le portail et, sous **Paramètres**, sélectionnez **Domaines personnalisés**.
+## <a name="configure-an-application-gateway-integration-with-ilb-ase"></a>Configurer l’intégration de la passerelle applicative à l’environnement ILB ASE
 
-   ![Définition d’un nom de domaine personnalisé sur l’application][8]
+Pour accéder à l’environnement ILB ASE à partir de la passerelle applicative, vous devez vérifier si un réseau virtuel est lié à une zone DNS privée. Si aucun réseau virtuel n’est lié au réseau virtuel de votre passerelle applicative, ajoutez une liaison de réseau virtuel en procédant comme suit.
 
-Des informations sur la définition des noms de domaine personnalisés pour vos applications web sont disponibles dans l’article [Définition de noms de domaine personnalisés pour votre application web][custom-domain]. Notez toutefois que pour une application dans un environnement App Service ILB, il n’y a aucune validation du nom de domaine. Étant donné que vous possédez le DNS qui gère les points de terminaison de l’application, vous pouvez y placer tout ce que vous voulez. Le nom de domaine personnalisé que vous ajoutez dans ce cas ne doit pas nécessairement être dans votre système DNS, mais il a toujours besoin d’être configuré avec votre application. 
+### <a name="configure-virtual-network-links-with-a-private-dns-zone"></a>Configurer les liaisons de réseau virtuel avec une zone DNS privée
 
-Dès lors que l’opération de configuration est terminée et que vous avez autorisé un court laps de temps pour que les modifications DNS se propagent, vous pouvez accéder à votre application à l’aide du nom de domaine personnalisé que vous avez créé. 
+* Pour configurer la liaison de réseau virtuel avec une zone DNS privée, accédez au plan de configuration de la zone DNS privée. Sélectionner les **Liens de réseau virtuel** > **Ajouter** 
 
+:::image type="content" source="./media/integrate-with-application-gateway/add-vnet-link.png" alt-text="Ajoutez une liaison de réseau virtuel vers la zone DNS privée.":::
 
-<!--IMAGES-->
-[1]: ./media/integrate-with-application-gateway/appgw-highlevel.png
-[2]: ./media/integrate-with-application-gateway/appgw-createbasics.png
-[3]: ./media/integrate-with-application-gateway/appgw-createsettings.png
-[4]: ./media/integrate-with-application-gateway/appgw-backendpool.png
-[5]: ./media/integrate-with-application-gateway/appgw-healthprobe.png
-[6]: ./media/integrate-with-application-gateway/appgw-httpsettings.png
-[7]: ./media/integrate-with-application-gateway/appgw-publicip.png
-[8]: ./media/integrate-with-application-gateway/appgw-customdomainname.png
-[9]: ./media/integrate-with-application-gateway/appgw-iplist.png
+* Entrez le **Nom de la liaison** et sélectionnez respectivement l’abonnement et le réseau virtuel dans lesquels réside la passerelle applicative.
+
+:::image type="content" source="./media/integrate-with-application-gateway/vnet-link.png" alt-text="Capture d’écran des détails de l’ajout d’un nom de liaison pour le paramètre de liaisons de réseau virtuel dans la zone DNS privée.":::
+
+* Vous pouvez vérifier l’état d’intégrité du serveur back-end à partir de **l’intégrité du serveur back-end** dans le plan de la passerelle applicative.
+
+:::image type="content" source="./media/integrate-with-application-gateway/backend-health.png" alt-text="Capture d’écran de la confirmation de l’état d’intégrité à partir de l’intégrité back-end.":::
+
+### <a name="add-a-public-dns-record"></a>Ajouter un enregistrement DNS public
+
+Vous devez configurer un mappage DNS approprié pour accéder à la passerelle applicative à partir d’Internet.
+
+* L’adresse IP publique de la passerelle applicative se trouve dans **Configurations d’adresses IP frontales** dans le plan de la passerelle applicative.
+
+:::image type="content" source="./media/integrate-with-application-gateway/frontend-ip.png" alt-text="L’adresse IP front-end de la passerelle applicative est disponible dans la configuration de l’adresse IP front-end.":::
+
+* Utilisez le service Azure DNS comme exemple, vous pouvez ajouter un jeu d’enregistrements pour mapper le nom de domaine d’application à l’adresse IP publique de la passerelle applicative.
+
+:::image type="content" source="./media/integrate-with-application-gateway/dns-service.png" alt-text="Capture d’écran montrant l’ajout d’un jeu d’enregistrements pour mapper le nom de domaine d’application à l’adresse IP publique de la passerelle applicative.":::
+
+### <a name="validate-connection"></a>Valider la connexion
+
+* Sur un ordinateur qui accède à partir d’Internet, vous pouvez vérifier la résolution de noms pour le nom de domaine de l’application à l’adresse IP publique de la passerelle applicative.
+
+:::image type="content" source="./media/integrate-with-application-gateway/name-resolution.png" alt-text="validez la résolution de noms à partir d’une invite de commandes.":::
+
+* Sur un ordinateur qui accède à partir d’Internet, testez l’accès web à partir d’un navigateur.
+
+:::image type="content" source="./media/integrate-with-application-gateway/access-web.png" alt-text="Capture d’écran de l’ouverture d’un navigateur, accès au web.":::
 
 <!--LINKS-->
 [appgw]: ../../application-gateway/overview.md
 [custom-domain]: ../app-service-web-tutorial-custom-domain.md
-[ilbase]: ./create-ilb-ase.md
+[creation]: ./creation.md
+[createfromtemplate]: ./create-from-template.md
+[createprivatednszone]: ../../dns/private-dns-getstarted-portal.md
+[AppServiceEnvironmentoverview]: ./overview.md
+[privatednszone]: ../../dns/private-dns-overview.md
+[Tutorial: Create an application gateway with a Web Application Firewall using the Azure portal]: ../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md

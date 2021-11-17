@@ -1,19 +1,19 @@
 ---
 title: Mise à l’échelle dans Azure Container Apps
 description: Découvrez comment les applications effectuent un scale-out et un scale-in dans Azure Container Apps.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b02d4d06b855229f41a0bae0b04d1729a29e4e49
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 683545b892db4830e01f71faa2f77a097f9e8a9a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131579005"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061170"
 ---
 # <a name="set-scaling-rules-in-azure-container-apps"></a>Définir des règles de mise à l’échelle dans Azure Container Apps
 
@@ -31,6 +31,7 @@ Les règles de mise à l’échelle sont définies dans la section `resources.pr
 - Pour avoir toujours une instance de votre application en cours d’exécution, définissez `minReplicas` sur 1 ou plus.
 - Les réplicas inactifs qui restent en mémoire sont facturés dans la catégorie « Frais d’inactivité ».
 - Les changements effectués sur les règles de mise à l’échelle sont des changements [de niveau révision](overview.md).
+- Lorsque vous utilisez des règles de mise à l’échelle des événements non-HTTP, il est recommandé de définir `activeRevisionMode` sur `single`.
 
 > [!IMPORTANT]
 > Les quantités de réplicas sont un chiffre cible et non une garantie. Même si vous définissez `maxReplicas` sur `1`, il n’y a aucune garantie de cohérence de thread.

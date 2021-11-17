@@ -2,14 +2,13 @@
 title: Nouveautés d’Azure Defender pour IoT
 description: Cet article vous présente les nouveautés de la dernière version de Defender pour IoT.
 ms.topic: overview
-ms.date: 10/20/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: a4a39ef6d48ecd2466c6642fcaa91611d2f44da6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/07/2021
+ms.openlocfilehash: ca588aed8a461e48cf85a01e97d5f8ddd4a42e24
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073070"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988272"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Nouveautés d’Azure Defender pour IoT  
 
@@ -61,7 +60,7 @@ Si l’état de la clé est détecté comme Programme ou que l’état d’exéc
 
 #### <a name="visibility-and-risk-assessment"></a>Visibilité et évaluation des risques
 
-- Utilisez l’inventaire des appareils pour afficher l’état PLC des PLC d’organisation ainsi que des informations contextuelles sur les appareils. Utilisez la boîte de dialogue Paramètres d’inventaire des appareils pour ajouter cette colonne à l’inventaire.
+- Utilisez l’inventaire des appareils pour afficher l’état PLC des PLC d’organisation et des informations contextuelles sur les appareils. Utilisez la boîte de dialogue Paramètres d’inventaire des appareils pour ajouter cette colonne à l’inventaire.
 
     :::image type="content" source="media/release-notes/device-inventory-plc.png" alt-text="Inventaire des appareils montrant le mode d’opération PLC.":::
 
@@ -77,19 +76,31 @@ Si l’état de la clé est détecté comme Programme ou que l’état d’exéc
 
 ### <a name="pcap-api"></a>API PCAP
 
-La nouvelle API PCAP permet à l’utilisateur de récupérer des fichiers PCAP à partir du capteur via la console de gestion locale, avec ou sans accès direct au capteur lui-même. Vous utilisez pour cela la console de gestion en tant que proxy.
+La nouvelle API PCAP permet à l’utilisateur de récupérer des fichiers PCAP à partir du capteur via la console de gestion locale, avec ou sans accès direct au capteur lui-même.
 
 ### <a name="on-premises-management-console-audit"></a>Audit de la console de gestion locale
 
-Les journaux d’audit pour le déploiement de votre capteur sont désormais disponibles à partir de la console de gestion locale.
+Vous pouvez désormais exporter les journaux d’audit pour la console de gestion locale afin de faciliter les investigations sur les modifications qui ont été apportées et par qui.
 
 ### <a name="webhook-extended"></a>Webhook étendu
 
-Le webhook étendu peut être utilisé pour envoyer toutes les informations contenues dans l’alerte webhook ainsi que des données supplémentaires au point de terminaison.
+Un webhook étendu peut être utilisé pour envoyer des données supplémentaires au point de terminaison. La fonctionnalité étendue inclut toutes les informations de l’alerte de webhook et ajoute les informations suivantes au rapport :
 
-### <a name="unicode-support-for-certificate-passphrases"></a>Prise en charge Unicode pour les phrases secrètes de certificat 
+- sensorID
+- sensorName
+- zoneID
+- zoneName
+- siteID
+- siteName
+- sourceDeviceAddress
+- destinationDeviceAddress
+- remediationSteps
+- handled
+- additionalInformation
 
-Les caractères Unicode sont désormais pris en charge lors de l’utilisation de phrases secrètes de certificat de capteur. Pour plus d’informations, consultez [À propos des certificats](how-to-deploy-certificates.md#about-certificates)
+### <a name="unicode-support-for-certificate-passphrases"></a>Prise en charge Unicode pour les phrases secrètes de certificat
+
+Les caractères Unicode sont désormais pris en charge lors de l’utilisation de phrases secrètes de certificat de capteur. Pour plus d’informations, consultez [À propos des certificats](how-to-deploy-certificates.md#about-certificates).
 
 ## <a name="april-2021"></a>Avril 2021
 
@@ -126,7 +137,7 @@ De nouveaux champs sont disponibles pour les utilisateurs qui travaillent avec l
 - Adresses source et de destination
 - Étapes de correction
 - Le nom du capteur défini par l’utilisateur
-- Le nom de la zone associée au capteur 
+- Le nom de la zone associée au capteur
 - Le nom du site associé au capteur
 
 **Capteur**
@@ -171,6 +182,7 @@ Cette fonctionnalité est disponible sur la console de gestion locale avec la ve
 - [Intégration](#onboarding)
 - [Usage](#usability)
 - [Autres mises à jour](#other-updates)
+
 ### <a name="security"></a>Sécurité
 
 Des améliorations ont été apportées à la récupération des certificats et des mots de passe pour cette version.

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 04f1c00340e8d46d495a28e3f0fd973e93991b77
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fcab4ce8d1f0d4d6f2dd7d29b1de8f9c7519c9f1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028878"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851873"
 ---
 # <a name="quickstart-create-a-service-connection-in-app-service-from-azure-portal"></a>Démarrage rapide : Créer une connexion de service dans App Service avec le portail Azure
 
@@ -37,12 +37,14 @@ Vous allez utiliser Service Connector pour créer une nouvelle connexion de serv
     | Paramètre      | Valeur suggérée  | Description                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | L’un de vos abonnements | L’abonnement dans lequel se trouve votre service cible (le service auquel vous souhaitez vous connecter). L’abonnement par défaut est celui où se trouve l’instance App Service. |
-    | **Type de service** | Conteneur des objets blob de stockage | Type du service cible. Si vous n’avez pas de conteneur d’objets blob de stockage, vous pouvez [en créer un](../storage/blobs/storage-quickstart-blobs-portal.md) ou utiliser un autre type de service. |
+    | **Type de service** | Stockage Blob | Type du service cible. Si vous n’avez pas de conteneur d’objets blob de stockage, vous pouvez [en créer un](../storage/blobs/storage-quickstart-blobs-portal.md) ou utiliser un autre type de service. |
     | **Nom de connexion** | Nom unique généré | Nom de la connexion qui existe entre votre instance App Service et le service cible  |
-    | **Compte de stockage** | Votre serveur de stockage | Service de base de données cible auquel vous souhaitez vous connecter. Si vous choisissez un autre type de service, sélectionnez l’instance de service cible correspondante. |
+    | **Compte de stockage** | Votre compte de stockage | Compte de stockage cible auquel vous souhaitez vous connecter. Si vous choisissez un autre type de service, sélectionnez l’instance de service cible correspondante. |
     | **Type de client** | La même pile d’applications sur cette instance App Service | Votre pile d’applications qui fonctionne avec le service cible que vous avez sélectionné. La valeur par défaut est issue de la pile d’exécution App Service. |
 
-4. Sélectionnez **Vérifier + créer** pour passer en revue les paramètres de la connexion. Ensuite, sélectionnez **Créer** pour démarrer la création de la connexion au service.
+4. Sélectionnez **Suivant : Authentification** pour sélectionner le type d’authentification. Sélectionnez ensuite **Chaîne de connexion** pour utiliser la clé d’accès afin de connecter votre compte de stockage d’objets blob.
+
+5. Sélectionnez ensuite **Suivant : Vérifier + créer** pour passer en revue les informations fournies. Sélectionnez ensuite **Créer** pour créer la connexion au service. Cette opération peut prendre 1 minute.
 
 ## <a name="view-service-connections-in-app-service"></a>Afficher les connexions de service dans App Service
 

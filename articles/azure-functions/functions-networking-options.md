@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 99f3bb2dc2095e8c9ae89afe78b4522dcdc23a07
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c954f411d14aaa0f33bf4a3423a67ae64204f932
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265335"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892845"
 ---
 # <a name="azure-functions-networking-options"></a>Options de mise en réseau d’Azure Functions
 
@@ -70,8 +70,8 @@ Azure Functions prend en charge deux types d’intégration de réseau virtuel 
 
 Dans Azure Functions, l'intégration au réseau virtuel utilise une infrastructure partagée avec les applications Web App Service. Pour en savoir plus sur les deux types d'intégration au réseau virtuel, consultez :
 
-* [Intégration du réseau virtuel régional](../app-service/overview-vnet-integration.md#regional-vnet-integration)
-* [Intégration au réseau virtuel avec passerelle obligatoire](../app-service/overview-vnet-integration.md#gateway-required-vnet-integration)
+* [Intégration du réseau virtuel régional](../app-service/overview-vnet-integration.md#regional-virtual-network-integration)
+* [Intégration au réseau virtuel avec passerelle obligatoire](../app-service/overview-vnet-integration.md#gateway-required-virtual-network-integration)
 
 Pour savoir comment configurer l’intégration d’un réseau virtuel, consultez [Activer l’intégration d’un réseau virtuel](#enable-vnet-integration).
 

@@ -3,12 +3,12 @@ title: Activer Container Insights | Microsoft Docs
 description: Cet article explique comment activer et configurer Container Insights afin que vous puissiez comprendre les performances de votre conteneur et les problèmes liés aux performances identifiés.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: be2dcaeb088d2996df1d09e3f373e48866db3eb9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2d47ea7f2f2f0dadfd979a42b0b0e9125d4bebde
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233447"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455109"
 ---
 # <a name="enable-container-insights"></a>Activer Container Insights
 
@@ -74,6 +74,9 @@ Container Insights prend officiellement en charge les configurations suivantes 
 - Environnements : Azure Red Hat OpenShift, Kubernetes local et le moteur AKS sur Azure et Azure Stack. Pour plus d’informations, consultez [Moteur AKS sur Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - Les versions de Kubernetes et de la stratégie de prise en charge sont les mêmes que celles [prises en charge dans Azure Kubernetes Service (AKS)](../../aks/supported-kubernetes-versions.md).
 - Nous vous recommandons de connecter votre cluster à [Azure Arc](../../azure-arc/kubernetes/overview.md) et d’activer la supervision par l’intermédiaire de Container Insights via Azure Arc.
+
+> [!IMPORTANT]
+> Notez que le module complémentaire d’analyse n’est actuellement pas pris en charge pour les clusters AKS configurés avec le [Proxy HTTP (préversion)](../../aks/http-proxy.md)
 
 ## <a name="network-firewall-requirements"></a>Configuration requise du pare-feu réseau
 

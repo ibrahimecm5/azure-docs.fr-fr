@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.custom: devplatv2
 author: wenxwei
 ms.author: wenxwei
-ms.date: 06/22/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 2d69263d1c4037640eefd44a1328414f8a47ad06
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: a626c789737b8af53c18946450c9be7ee5f91176
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705392"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562007"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>Créer un travail d’apprentissage avec l’interface utilisateur de création de travail (préversion)
 
@@ -28,7 +28,7 @@ Il existe de nombreuses façons de créer un travail d’apprentissage avec Azur
 
 * Un espace de travail Azure Machine Learning. Consultez [Créer un espace de travail Microsoft Azure Machine Learning](how-to-manage-workspace.md). 
 
-* Compréhension de ce qu’est un travail dans Azure Machine Learning. Consultez [Présentation des travaux](how-to-train-cli.md#introducing-jobs).
+* Compréhension de ce qu’est un travail dans Azure Machine Learning. Consultez [Guide pratique pour effectuer l’apprentissage des modèles avec l’interface CLI (v2)](how-to-train-cli.md).
 
 ## <a name="get-started"></a>Bien démarrer
 

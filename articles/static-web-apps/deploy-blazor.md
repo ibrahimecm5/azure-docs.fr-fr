@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 04/09/2021
+ms.date: 11/08/2021
 ms.author: cshoe
-ms.openlocfilehash: 90c044593ac02f2c906fb2347d731168b25af5af
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: ac22d5ef720fb0701cb126e6fa0cb627614dd09c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813863"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027163"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Tutoriel : Créer une application web statique avec Blazor dans Azure Static Web Apps
 
@@ -27,23 +27,23 @@ Si vous n’avez pas d’abonnement Azure, [créez un compte d’essai gratuit](
 
 ## <a name="application-overview"></a>Vue d’ensemble de l’application
 
-Azure Static Web Apps vous permet de créer des applications web statiques prises en charge par un back-end serverless. Le tutoriel suivant explique comment déployer une application web C# Blazor qui renvoie des données météorologiques.
+Azure Static Web Apps vous permet de créer des applications web statiques prises en charge par un back-end serverless. Le tutoriel suivant explique comment déployer une application Blazor WebAssembly C# qui affiche les données météorologiques retournées par une API serverless.
 
 :::image type="content" source="./media/deploy-blazor/blazor-app-complete.png" alt-text="Application Blazor complète":::
 
 L'application présentée dans ce tutoriel est constituée de trois projets Visual Studio différents :
 
-- **Api** : application Azure Functions C# implémentant le point de terminaison d'API qui fournit les informations météorologiques à l'application statique. **WeatherForecastFunction** retourne un tableau d’objets `WeatherForecast`.
+- **Api** : application Azure Functions C# implémentant le point de terminaison d’API qui fournit les informations météorologiques à l’application Blazor WebAssembly. **WeatherForecastFunction** retourne un tableau d’objets `WeatherForecast`.
 
-- **Client** : projet d'assembly web Blazor frontal. Un [itinéraire de secours](#fallback-route) est implémenté pour veiller à ce que tous les itinéraires reçoivent le fichier _index.html_.
+- **Client** : projet Blazor WebAssembly front-end. Une [route de secours](#fallback-route) est implémentée pour garantir le bon fonctionnement du routage côté client.
 
 - **Partagé** : contient les classes communes référencées par les projets API et Client, ce qui permet aux données de circuler du point de terminaison d'API vers l'application web frontale. La classe [`WeatherForecast`](https://github.com/staticwebdev/blazor-starter/blob/main/Shared/WeatherForecast.cs) est partagée entre les deux applications.
 
-Ces projets sont tous nécessaires à la création d'une application d'assembly web Blazor exécutée dans le navigateur pris en charge par un back-end d'API.
+Ces projets sont tous nécessaires à la création d’une application Blazor WebAssembly exécutée dans le navigateur pris en charge par un back-end d’API Azure Functions.
 
 ## <a name="fallback-route"></a>Itinéraire de secours
 
-L'application expose des URL telles que _/counter_ et _/fetchdata_ qui correspondent à des itinéraires spécifiques de l'application. Dans la mesure où cette application est implémentée sous forme d'application monopage, chaque itinéraire reçoit le fichier _index.html_. Pour garantir que les requêtes de chemin retournent _index.html_, une [route de secours](./configuration.md#fallback-routes) est implémentée dans le fichier _staticwebapp.config.json_ situé dans le dossier _wwwroot_ du projet Client.
+L'application expose des URL telles que _/counter_ et _/fetchdata_ qui correspondent à des itinéraires spécifiques de l'application. Dans la mesure où cette application est implémentée sous forme d'application monopage, chaque itinéraire reçoit le fichier _index.html_. Pour garantir que les requêtes de chemin retournent _index.html_, une [route de secours](./configuration.md#fallback-routes) est implémentée dans le fichier _staticwebapp.config.json_ situé dans le dossier racine du projet Client.
 
 ```json
 {
@@ -57,7 +57,7 @@ Grâce à la configuration ci-dessus, les requêtes adressées à tout itinérai
 
 ## <a name="create-a-repository"></a>Créer un référentiel
 
-Cet article utilise un dépôt de modèles GitHub pour vous permettre de démarrer facilement. Le modèle comprend une application de démarrage déployée sur Azure Static Web Apps.
+Cet article utilise un dépôt de modèles GitHub pour vous permettre de démarrer facilement. Le modèle comprend une application de démarrage qui peut être déployée sur Azure Static Web Apps.
 
 1. Veillez à être connecté à GitHub et accédez à l’emplacement suivant pour créer un dépôt :
    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
@@ -93,8 +93,14 @@ Maintenant que le référentiel est créé, créez une application web statique 
     | _Dépôt_ | Sélectionnez **my-first-static-blazor-app**. |
     | _Branche_ | Sélectionnez **principal**. |
 
-1. Dans la section _Détails de build_, sélectionnez **Blazor** dans la liste déroulante _Présélections de build_ et conservez les valeurs par défaut.
+1. Dans la section _Détails de build_, sélectionnez **Blazor** dans la liste déroulante _Présélections de build_. Les valeurs suivantes sont remplies.
 
+    | Propriété | Valeur | Description |
+    | --- | --- | --- |
+    | Emplacement de l’application | **Client** | Dossier contenant l’application Blazor WebAssembly |
+    | Emplacement de l’API | **Api** | Dossier contenant l’application Azure Functions |
+    | Emplacement de sortie | **wwwroot** | Dossier dans la sortie de la build contenant l’application Blazor WebAssembly publiée |
+    
 ### <a name="review-and-create"></a>Examiner et créer
 
 1. Pour vérifier que les informations sont correctes, sélectionnez le bouton **Vérifier + créer**.
@@ -109,9 +115,9 @@ Maintenant que le référentiel est créé, créez une application web statique 
 
 ## <a name="view-the-website"></a>Voir le site web
 
-Le déploiement d’une application statique comporte deux aspects. Le premier provisionne les ressources Azure sous-jacentes qui composent votre application. Le second est un flux de travail GitHub Actions qui génère et publie votre application.
+Le déploiement d’une application statique comporte deux aspects. Le premier provisionne les ressources Azure sous-jacentes qui composent votre application. Le second est un workflow GitHub Actions qui génère et publie votre application.
 
-Avant de pouvoir accéder à votre nouveau site statique, la build de déploiement doit d’abord finir de s’exécuter.
+Avant de pouvoir accéder à votre nouvelle application web statique, la build de déploiement doit d’abord finir de s’exécuter.
 
 La fenêtre de vue d’ensemble de Static Web Apps présente des liens qui vous permettent d’interagir avec votre application web.
 

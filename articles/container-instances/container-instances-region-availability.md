@@ -4,12 +4,12 @@ description: Disponibilité des ressources de calcul et de mémoire pour le serv
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 556d018a020aca7e6df11ff635719145af5bb8de
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 13cdd53d345ed983fa4954662d3bb5905ccafbe3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252038"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843762"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Disponibilité des ressources pour Azure Container Instances dans les régions Azure
 
@@ -29,37 +29,40 @@ Les régions et les ressources maximales suivantes sont disponibles pour les gro
 > [!IMPORTANT]
 > Le nombre maximal de ressources dans une région est différent selon votre déploiement. Par exemple, une région peut avoir une taille de processeur et de mémoire maximale différente dans un déploiement de réseau virtuel Azure par rapport à un déploiement général. Cette même région peut également avoir un ensemble différent de valeurs maximales pour un déploiement avec des ressources GPU. Vérifiez votre type de déploiement avant de consulter les tableaux ci-dessous pour obtenir les valeurs maximales de votre région.
 
-| Région | Utilisation maximale du processeur | Mémoire max. (GB) | Utilisation maximale du processeur du réseau virtuel | Mémoire maximale du réseau virtuel (Go) | Stockage (Go) | Références SKU de GPU (préversion) |
-| -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
-| Australie Est | 4 | 16 | 4 | 16 | 50 | N/A |
-| Sud-Australie Est | 4 | 14 | N/A | N/A | 50 | N/A |
-| Brésil Sud | 4 | 16 | 2 | 8 | 50 | N/A |
-| Centre du Canada | 4 | 16 | 4 | 16 | 50 | N/A |
-| Est du Canada | 4 | 16 | 4 | 16 | 50 | N/A |
-| Inde centrale | 4 | 16 | 4 | 4 | 50 | V100 |
-| USA Centre | 4 | 16 | 4 | 16 | 50 | N/A |
-| Asie Est | 4 | 16 | 4 | 16 | 50 | N/A |
-| USA Est | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA Est 2 | 4 | 16 | 4 | 16 | 50 | N/A |
-| France Centre | 4 | 16 | 4 | 16 | 50 | N/A |
-| Allemagne Centre-Ouest | 4 | 16 | N/A | N/A | 50 | N/A |
-| Japon Est | 2 | 8 | 4 | 16 | 50 | N/A |
-| OuJapon Est | 4 | 16 | N/A | N/A | 50 | N/A |
-| Centre de la Corée | 4 | 16 | N/A | N/A | 50 | N/A |
-| Centre-Nord des États-Unis | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
-| Europe Nord | 4 | 16 | 4 | 16 | 50 | K80 |
-| Norvège Est | 4 | 16 | N/A | N/A | 50 | N/A |
-| États-Unis - partie centrale méridionale | 4 | 16 | 4 | 16 | 50 | V100 |
-| Asie Sud-Est | 4 | 16 | 4 | 16 | 50 | P100, V100 |
-| Inde Sud | 4 | 16 | N/A | N/A | 50 | K80 |
-| Suisse Nord | 4 | 16 | N/A | N/A | 50 | N/A |
-| Sud du Royaume-Uni | 4 | 16 | 4 | 16 | 50 | N/A |
-| Ouest du Royaume-Uni | 4 | 16 | N/A | N/A | 50 | N/A |
-| Émirats arabes unis Nord | 4 | 16 | N/A | N/A | 50 | N/A |
-| Centre-USA Ouest| 4 | 16 | 4 | 16 | 50 | N/A |
-| Europe Ouest | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA Ouest | 4 | 16 | 4 | 16 | 50 | N/A |
-| USA Ouest 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+> [!NOTE]
+> Certaines régions ne prennent pas en charge les zones de disponibilité (signalé par la mention « N/A » dans le tableau ci-dessous), et certaines régions ont des zones de disponibilité, mais ACI ne tire pas actuellement parti de la capacité (indiqué par un « N » dans le tableau ci-dessous). Pour plus d’informations, consultez [Régions Azure disposant de zones de disponibilité][az-region-support].
+
+| Région | Utilisation maximale du processeur | Mémoire max. (GB) | Utilisation maximale du processeur du réseau virtuel | Mémoire maximale du réseau virtuel (Go) | Stockage (Go) | Références SKU de GPU (préversion) | Prise en charge des zones de disponibilité |
+| -------- | :---: | :---: | :----: | :-----: | :-------: | :----: | :----: |
+| Australie Est | 4 | 16 | 4 | 16 | 50 | N/A | O |
+| Sud-Australie Est | 4 | 14 | N/A | N/A | 50 | N/A | N |
+| Brésil Sud | 4 | 16 | 2 | 8 | 50 | N/A | O |
+| Centre du Canada | 4 | 16 | 4 | 16 | 50 | N/A | N |
+| Est du Canada | 4 | 16 | 4 | 16 | 50 | N/A | N |
+| Inde centrale | 4 | 16 | 4 | 4 | 50 | V100 | N |
+| USA Centre | 4 | 16 | 4 | 16 | 50 | N/A | O |
+| Asie Est | 4 | 16 | 4 | 16 | 50 | N/A | N |
+| USA Est | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 | O |
+| USA Est 2 | 4 | 16 | 4 | 16 | 50 | N/A | O |
+| France Centre | 4 | 16 | 4 | 16 | 50 | N/A | O|
+| Allemagne Centre-Ouest | 4 | 16 | N/A | N/A | 50 | N/A | O |
+| Japon Est | 2 | 8 | 4 | 16 | 50 | N/A | O |
+| OuJapon Est | 4 | 16 | N/A | N/A | 50 | N/A | N |
+| Centre de la Corée | 4 | 16 | N/A | N/A | 50 | N/A | N |
+| Centre-Nord des États-Unis | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 | N |
+| Europe Nord | 4 | 16 | 4 | 16 | 50 | K80 | O |
+| Norvège Est | 4 | 16 | N/A | N/A | 50 | N/A | N |
+| États-Unis - partie centrale méridionale | 4 | 16 | 4 | 16 | 50 | V100 | O |
+| Asie Sud-Est | 4 | 16 | 4 | 16 | 50 | P100, V100 | O |
+| Inde Sud | 4 | 16 | N/A | N/A | 50 | K80 | N |
+| Suisse Nord | 4 | 16 | N/A | N/A | 50 | N/A | N |
+| Sud du Royaume-Uni | 4 | 16 | 4 | 16 | 50 | N/A | O|
+| Ouest du Royaume-Uni | 4 | 16 | N/A | N/A | 50 | N/A | N |
+| Émirats arabes unis Nord | 4 | 16 | N/A | N/A | 50 | N/A | N |
+| Centre-USA Ouest| 4 | 16 | 4 | 16 | 50 | N/A | N |
+| Europe Ouest | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 | O |
+| USA Ouest | 4 | 16 | 4 | 16 | 50 | N/A | N |
+| USA Ouest 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 | O |
 
 Les ressources maximales suivantes sont accessibles à un groupe de conteneurs déployé avec [Ressources GPU](container-instances-gpu.md) (préversion).
 
@@ -82,7 +85,7 @@ Les régions et les ressources maximales suivantes sont accessibles aux groupes 
 > [!IMPORTANT]
 > À ce stade, les déploiements avec des groupes de conteneurs Windows ne sont pas pris en charge dans le déploiement d’un réseau virtuel Azure.
 
-###  <a name="windows-server-2016"></a>Windows Server 2016
+### <a name="windows-server-2016"></a>Windows Server 2016
 
 > [!NOTE]
 > Les hôtes 1B et 2B ont été dépréciés pour Windows Server 2016. Pour plus d’informations sur les hôtes 1B, 2B et 3B, consultez [Compatibilité des versions d’hôte et de conteneur](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
@@ -110,35 +113,34 @@ Les régions et les ressources maximales suivantes sont accessibles aux groupes 
 | USA Ouest | 2 | 8 | 20 |
 | USA Ouest 2 | 2 | 3,5 | 20 |
 
-
 ### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
 
 > [!NOTE]
 > Les hôtes 1B et 2B ont été dépréciés pour Windows Server 2019 LTSC. Pour plus d’informations sur les hôtes 1B, 2B et 3B, consultez [Compatibilité des versions d’hôte et de conteneur](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
 
-| Région | Utilisation maximale de l’UC pour 3B | Mémoire maximale (Go) pour 3B | Stockage (Go) |
+| Région | Utilisation maximale de l’UC pour 3B | Mémoire maximale (Go) pour 3B | Stockage (Go) | Prise en charge des zones de disponibilité |
 | -------- | :----: | :-----: | :-------: |
-| Australie Est | 4 | 16 | 20 |
-| Brésil Sud | 4 | 16 | 20 |
-| Centre du Canada | 4 | 16 | 20 |
-| Inde centrale | 4 | 16 | 20 |
-| USA Centre | 4 | 16 | 20 |
-| Asie Est | 4 | 16 | 20 |
-| USA Est | 4 | 16 | 20 |
-| USA Est 2 | 2 | 3,5 | 20 |
-| France Centre | 4 | 16 | 20 |
-| Japon Est | 4 | 16 | 20 |
-| Centre de la Corée | 4 | 16 | 20 |
-| Centre-Nord des États-Unis | 4 | 16 | 20 |
-| Europe Nord | 4 | 16 | 20 |
-| États-Unis - partie centrale méridionale | 4 | 16 | 20 |
-| Asie Sud-Est | 4 | 16 | 20 |
-| Inde Sud | 4 | 16 | 20 |
-| Sud du Royaume-Uni | 4 | 16 | 20 |
-| Centre-USA Ouest | 4 | 16 | 20 |
-| Europe Ouest | 4 | 16 | 20 |
-| USA Ouest | 4 | 16 | 20 |
-| USA Ouest 2 | 4 | 16 | 20 |
+| Australie Est | 4 | 16 | 20 | O |
+| Brésil Sud | 4 | 16 | 20 | O |
+| Centre du Canada | 4 | 16 | 20 | N |
+| Inde centrale | 4 | 16 | 20 | N |
+| USA Centre | 4 | 16 | 20 | O |
+| Asie Est | 4 | 16 | 20 | N |
+| USA Est | 4 | 16 | 20 | O |
+| USA Est 2 | 2 | 3,5 | 20 | O |
+| France Centre | 4 | 16 | 20 | O |
+| Japon Est | 4 | 16 | 20 | O |
+| Centre de la Corée | 4 | 16 | 20 | N |
+| Centre-Nord des États-Unis | 4 | 16 | 20 | N |
+| Europe Nord | 4 | 16 | 20 | O |
+| États-Unis - partie centrale méridionale | 4 | 16 | 20 | O |
+| Asie Sud-Est | 4 | 16 | 20 | O |
+| Inde Sud | 4 | 16 | 20 | N |
+| Sud du Royaume-Uni | 4 | 16 | 20 | O |
+| Centre-USA Ouest | 4 | 16 | 20 | N |
+| Europe Ouest | 4 | 16 | 20 | O |
+| USA Ouest | 4 | 16 | 20 | N |
+| USA Ouest 2 | 4 | 16 | 20 | O |
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -148,3 +150,4 @@ Pour plus d’informations sur la résolution des problèmes de déploiement d�
 
 
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
+[az-region-support]: /availability-zones/az-region.md#azure-regions-with-availability-zones

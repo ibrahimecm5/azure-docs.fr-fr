@@ -2,28 +2,29 @@
 title: 'Séries Dv5 et Dsv5 : Machines virtuelles Azure'
 description: Spécifications pour les machines virtuelles des séries Dv5 et Dsv5.
 author: styli365
-ms.author: sttsinar
+ms.author: joelpell
 ms.reviewer: joelpell
 ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: e8297681a102455134bff09ef30afb91acf920fa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0bdd2c517a6bfef059ad89d7c3cbf1a825aba526
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479019"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866776"
 ---
 # <a name="dv5-and-dsv5-series"></a>Séries Dv5 et Dsv5
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles :heavy_check_mark: Groupes identiques uniformes
 
-Les séries de machines virtuelles Dv5 et Dsv5 s’exécutent sur les processeurs Intel&reg; ​​Xeon&reg; Platinum 8370C (Ice Lake) de 3e génération dans une configuration d’[hyperthreading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html), offrant une meilleure proposition de valeur pour la plupart des charges de travail universelles. Ce nouveau processeur a les caractéristiques suivantes : vitesse d’horloge Turbo avec tous les cœurs de 3,5 GHz, avec la technologie [Intel&reg; Turbo Boost](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) et [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Ces machines virtuelles offrent une combinaison de processeurs virtuels et de mémoire permettant de répondre aux exigences associées à la plupart des charges de travail d’entreprise, comme les bases de données de taille petite à moyenne, les serveurs web avec un trafic faible à moyen, les serveurs d’applications, etc. Les séries Dv5 et Dsv5 constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local. .
+Les séries de machines virtuelles Dv5 et Dsv5 s’exécutent sur les processeurs Intel&reg; ​​Xeon&reg; Platinum 8370C (Ice Lake) de 3e génération dans une configuration d’[hyperthreading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html), offrant une meilleure proposition de valeur pour la plupart des charges de travail universelles. Ce nouveau processeur a les caractéristiques suivantes : vitesse d’horloge Turbo avec tous les cœurs de 3,5 GHz, avec la technologie [Intel&reg; Turbo Boost](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) et [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Ces machines virtuelles offrent une combinaison de processeurs virtuels et de mémoire permettant de répondre aux exigences associées à la plupart des charges de travail d’entreprise, comme les bases de données de taille petite à moyenne, les serveurs web avec un trafic faible à moyen, les serveurs d’applications, etc. Les séries Dv5 et Dsv5 constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local. Pour plus d’informations sur les machines virtuelles similaires avec un disque local, consultez [Machines virtuelles séries Ddv5 et Ddsv5](ddv5-ddsv5-series.md).
 
 > [!NOTE]
 > Pour accéder à la FAQ, consultez [Tailles de machines virtuelles Azure sans disque temporaire local](azure-vms-no-temp-disk.yml).
+
 ## <a name="dv5-series"></a>Série Dv5
 
 Les machines virtuelles de la série Dv5 s’exécutent sur le processeur Intel® Xeon® Platinum 8370C (Ice Lake) de 3e génération, atteignant une vitesse d’horloge Turbo avec tous les cœurs jusqu’à 3,5 GHz.  Ces machines virtuelles offrent jusqu’à 96 processeurs virtuels et 384 Gio de RAM.  Les machines virtuelles de la série Dv5 fournissent une meilleure proposition de valeur pour la plupart des charges de travail à usage général par rapport à la génération précédente (par exemple, une évolutivité accrue et une classe d’UC mise à niveau).
@@ -59,7 +60,7 @@ Les machines virtuelles de la série Dsv5 s’exécutent sur le processeur Intel
 
 Les tailles de machine virtuelle de la série Dsv5 n’ont aucun stockage temporaire, ce qui réduit le prix de base.  Vous pouvez attacher des stockages sur disque SSD Standard, HDD Standard et SSD Premium à ces machines virtuelles. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
+[Stockage Premium](premium-storage-performance.md) : Pris en charge<br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge<br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge<br>

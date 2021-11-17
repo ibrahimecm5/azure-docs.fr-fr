@@ -1,14 +1,14 @@
 ---
 title: Gérer les espaces de travail Azure Sentinel à grande échelle
 description: Azure Lighthouse vous aide à gérer efficacement Azure Sentinel sur des ressources client déléguées.
-ms.date: 08/16/2021
+ms.date: 11/05/2021
 ms.topic: how-to
-ms.openlocfilehash: d6eba4cab51fa18164cc5f44e579be23ef8e74a5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 51dab03ae91d61979f2f84bac57fb96adad9fea7
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777808"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867035"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Gérer les espaces de travail Azure Sentinel à grande échelle
 
@@ -21,11 +21,14 @@ Cette rubrique fournit une vue d’ensemble de l’utilisation d’[Azure Sentin
 > [!TIP]
 > Bien que nous faisons référence aux fournisseurs de services et aux clients dans cette rubrique, ces instructions s’appliquent également aux [entreprises utilisant Azure Lighthouse pour gérer plusieurs locataires](../concepts/enterprise.md).
 
+> [!NOTE]
+> Vous pouvez gérer des ressources déléguées situées dans différentes [régions](../../availability-zones/az-overview.md#regions). Toutefois, la délégation d’abonnements sur un [cloud national](../../active-directory/develop/authentication-national-cloud.md) et le cloud public Azure, ou sur deux clouds nationaux distincts, n’est pas prise en charge.
+
 ## <a name="architectural-considerations"></a>Considérations sur l’architecture
 
 Pour un fournisseur MSSP (Managed Security Service Provider) souhaitant constituer une offre de sécurité en tant que service avec Azure Sentinel, un centre d’opérations de sécurité (SOC) peut être nécessaire pour surveiller, gérer et configurer de manière centralisée plusieurs espaces de travail Azure Sentinel déployés au sein de locataires clients individuels. De même, les entreprises avec plusieurs locataires Azure AD peuvent souhaiter gérer de manière centralisée plusieurs espaces de travail Azure Sentinel déployés chez l’ensemble de leurs locataires.
 
-Ce modèle centralisé de déploiement présente les avantages suivants :
+Ce modèle de déploiement présente les avantages suivants :
 
 - La propriété des données est conservée par chaque locataire géré.
 - Il prend en charge des exigences de stockage des données dans les limites géographiques.
@@ -35,12 +38,13 @@ Ce modèle centralisé de déploiement présente les avantages suivants :
 - Les données de toutes les sources de données et de tous les connecteurs de données intégrés à Azure Sentinel (comme les journaux d’activité Azure AD, les journaux Office 365 ou les alertes de Protection Microsoft contre les menaces) sont conservées dans chaque locataire client.
 - Il réduit le temps de réponse du réseau.
 - Il est facile d’ajouter ou de supprimer de nouvelles filiales ou clients.
-
-> [!NOTE]
-> Vous pouvez gérer des ressources déléguées situées dans différentes [régions](../../availability-zones/az-overview.md#regions). Toutefois, la délégation d’abonnements sur un [cloud national](../../active-directory/develop/authentication-national-cloud.md) et le cloud public Azure, ou sur deux clouds nationaux distincts, n’est pas prise en charge.
+- Possibilité d’utiliser un affichage de plusieurs espaces de travail lorsque vous travaillez via Azure Lighthouse.
+- Pour protéger votre propriété intellectuelle, vous pouvez utiliser des playbooks et classeurs afin de travailler dans les locataires sans partager de code directement avec les clients. Seules les règles d’analyse et de chasse doivent être enregistrées directement dans le locataire de chaque client.
 
 > [!IMPORTANT]
-> Si tous les espaces de travail sont créés dans des locataires clients, le fournisseur de ressources Microsoft.SecurityInsights et Microsoft.OperationalInsights doit également être [inscrits](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) sur un abonnement dans le locataire gestionnaire.
+> Si tous les espaces de travail sont créés dans des locataires clients, les fournisseurs de ressources Microsoft.SecurityInsights et Microsoft.OperationalInsights doivent également être [inscrits](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) sur un abonnement dans le locataire gestionnaire.
+
+Un autre modèle de déploiement consiste à créer un espace de travail Azure Sentinel dans le locataire gestionnaire. Dans ce modèle, Abonné active la collecte de journaux à partir de sources de données dans les locataires gérés. Toutefois, certaines sources de données ne peuvent pas être connectées aux les locataires, telles que Microsoft Defender. En raison de cette limitation, ce modèle n’est pas adapté à de nombreux scénarios de fournisseur de services.
 
 ## <a name="granular-azure-role-based-access-control-azure-rbac"></a>Contrôle d’accès en fonction du rôle Azure (Azure RBAC) granulaire
 
@@ -71,7 +75,7 @@ Si vous gérez des ressources Azure Sentinel pour plusieurs clients, vous pouvez
 
 [Les classeurs Azure Monitor dans Azure Sentinel](../../sentinel/overview.md#workbooks) vous aident à visualiser et à surveiller les données de vos sources de données connectées pour obtenir des Insights. Vous pouvez utiliser les modèles de classeurs intégrés dans Azure Sentinel ou créer des classeurs personnalisés pour vos scénarios.
 
-Vous pouvez déployer des classeurs dans votre client gérant et créer des tableaux de bord à l’échelle pour surveiller et interroger les données des locataires clients. Pour plus d’informations, consultez l’article [Surveiller plusieurs espaces de travail](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks). 
+Vous pouvez déployer des classeurs dans votre client gérant et créer des tableaux de bord à l’échelle pour surveiller et interroger les données des locataires clients. Pour plus d’informations, consultez l’article [Surveiller plusieurs espaces de travail](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks).
 
 Vous pouvez également déployer des classeurs directement dans un locataire individuel que vous gérez pour des scénarios qui lui sont spécifiques.
 
@@ -90,6 +94,12 @@ Utilisez Azure Lighthouse conjointement avec Azure Sentinel pour analyser la sé
 Vous pouvez activer le [connecteur Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas) pour diffuser en continu des alertes et des journaux Cloud Discovery dans Azure Sentinel. Cela vous permet de bénéficier d’une visibilité accrue sur vos applications et de fonctionnalités d’analytique sophistiquées pour identifier et combattre les cybermenaces et de contrôler le déplacement des données. Les journaux d’activité pour MCAS peuvent être [utilisés à l’aide du format CEF (Common Event format)](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
 
 Après avoir configuré les connecteurs de données Office 365, vous pouvez utiliser des capacités d’Azure Sentinel entre locataires, telles que l’affichage et l’analyse des données dans les classeurs, l’utilisation de requêtes pour créer des alertes personnalisées et la configuration de playbooks pour répondre aux menaces.
+
+## <a name="protect-intellectual-property"></a>Protéger la propriété intellectuelle
+
+Lorsque vous travaillez avec des clients, vous pouvez protéger la propriété intellectuelle que vous avez développée dans Azure Sentinel, par exemple, les règles d’analyse, les requêtes de chasse, les playbooks et les classeurs d’Azure Sentinel. Différentes méthodes vous permettent de vous assurer que les clients n’ont pas un accès complet au code utilisé dans ces ressources.
+
+Pour plus d’informations, consultez [Protection de la propriété intellectuelle des MSSP dans Azure Sentinel](../../sentinel/mssp-protect-intellectual-property.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

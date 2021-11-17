@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb264da92eb47dd53b6b1900fcbdafcae0d4911
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8f83c7a9ac8a910a96a49c2ee354b68a18f4a774
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049726"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892150"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutoriel : Configurer la jointure hybride Azure Active Directory pour des domaines managés
 
@@ -74,7 +74,7 @@ Pour permettre le bon fonctionnement de la jonction Azure AD Hybride, les appar
 - `https://autologon.microsoftazuread-sso.com` (si vous utilisez ou prévoyez d’utiliser l’authentification unique fluide)
 
 > [!WARNING]
-> Si votre organisation utilise des serveurs proxy qui interceptent le trafic SSL dans des scénarios de protection contre la perte de données ou de restrictions de locataire Azure AD, par exemple, veillez à exclure le trafic à destination de `https://device.login.microsoftonline.com` et `https://enterpriseregistration.windows.net` de l’inspection TLS. Faute d’exclure ces URL, l’authentification par certificat client peut être sujette à des interférences, ce qui occasionne des problèmes d’inscription d’appareil et d’accès conditionnel en fonction de l’appareil.
+> Si votre organisation utilise des serveurs proxy qui interceptent le trafic SSL pour des scénarios tels que la protection contre la perte de données ou les restrictions de locataire Azure AD, veillez à exclure le trafic à destination de ces URL de l’inspection TLS. Faute d’exclure ces URL, l’authentification par certificat client peut être sujette à des interférences, ce qui occasionne des problèmes d’inscription d’appareil et d’accès conditionnel en fonction de l’appareil.
 
 Si votre organisation nécessite un accès à Internet par le biais d’un proxy sortant, vous pouvez utiliser l’[implémentation du protocole WPAD (Web Proxy AutoDiscovery, détection automatique de proxy web)](/previous-versions/tn-archive/cc995261(v=technet.10)) pour permettre aux ordinateurs Windows 10 de s’inscrire en tant qu’appareils auprès d’Azure AD. Pour résoudre des problèmes de configuration et de gestion du protocole WPAD, consultez [Résolution des problèmes liés à la détection automatique](/previous-versions/tn-archive/cc302643(v=technet.10)). Dans les appareils Windows 10 antérieurs à la mise à jour 1709, WPAD est la seule option disponible pour configurer un proxy afin qu’il fonctionne avec une jointure Azure AD Hybride. 
 

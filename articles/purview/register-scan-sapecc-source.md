@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: ce62eebd42812c4706e5fb7848a0a7bd4f6988ed
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: edc70416671e57624b5e36d90de37f0e9cefd74c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472425"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850638"
 ---
 # <a name="connect-to-and-manage-sap-ecc-in-azure-purview"></a>Se connecter à SAP ECC et le gérer dans Azure Purview
 
@@ -23,7 +23,9 @@ Cet article explique comment inscrire SAP ECC et comment s’authentifier et int
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui](how-to-lineage-sapecc.md)|
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui**](how-to-lineage-sapecc.md)|
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -38,6 +40,10 @@ Cet article explique comment inscrire SAP ECC et comment s’authentifier et int
 * Vérifiez que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
 
 * Vérifiez que le package Redistributable Visual C++ pour Visual Studio 2012 Update 4 est installé sur la machine dotée du runtime d’intégration auto-hébergé. Si cette mise à jour n’est pas installée, [vous pouvez la télécharger ici](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Téléchargez la version 64 bits de [SAP Connector for Microsoft .NET 3.0](https://support.sap.com/en/product/connectors/msnet.html) à partir du site web de SAP et installez-la sur la machine dotée du runtime d\'intégration auto-hébergé. Lors de l'installation, veillez à sélectionner l’option **Installer les assemblys dans le GAC** dans la fenêtre des **étapes de configuration facultatives**.
+
+    :::image type="content" source="media/register-scan-saps4hana-source/requirement.png" alt-text="Prérequis" border="true":::
 
 * Le connecteur lit les métadonnées à partir de SAP à l’aide de l’API [SAP Java Connector (JCo)](https://support.sap.com/en/product/connectors/jco.html) 3.0. Assurez-vous que Java Connector est disponible sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé. Assurez-vous que vous utilisez la distribution JCo correcte pour votre environnement. Par exemple : sur une machine Microsoft Windows, assurez-vous que les fichiers sapjco3.jar et sapjco3.dll sont disponibles.
 

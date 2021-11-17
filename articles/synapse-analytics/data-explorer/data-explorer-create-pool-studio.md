@@ -10,12 +10,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c52df34a4dea88a6e43d8d6fdf2a292d05130dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 59a22c976650ea0f7aed7ca3eb2da72702aef5bf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097524"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424776"
 ---
 # <a name="quickstart-create-a-data-explorer-pool-using-synapse-studio-preview"></a>Démarrage rapide : Créer un pool Data Explorer en utilisant Synapse Studio (Préversion)
 
@@ -122,4 +122,6 @@ Suivez les étapes suivantes pour supprimer le pool Data Explorer de l'espace de
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-[Démarrage rapide : créer un pool d’Explorateur de données à l’aide de la Portail Azure](data-explorer-create-pool-portal.md)
+- [Vue d’ensemble de l’ingestion](ingest-data/data-explorer-ingest-data-overview.md)
+- [Analyser avec l’Explorateur de données](../get-started-analyze-data-explorer.md)
+- [Surveiller les pools de l’Explorateur de données](data-explorer-monitor-pools.md)

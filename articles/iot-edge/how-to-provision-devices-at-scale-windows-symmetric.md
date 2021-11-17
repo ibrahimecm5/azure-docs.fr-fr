@@ -9,18 +9,25 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0fea4aa2ac14e161e4fa2439e97e74f51eb5859d
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: a1abccf4a039a36f2969e6b32b8eca2478d07427
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131510111"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845935"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-windows-using-symmetric-keys"></a>Créer et approvisionner des appareils IoT Edge à grande échelle sur Windows à l’aide de clés symétriques
 
 [!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Cet article fournit des instructions de bout en bout pour l’approvisionnement automatique d’un ou plusieurs appareils IoT Edge Windows à l’aide de clés symétriques. Les appareils Azure IoT Edge peuvent être approvisionnés automatiquement à l’aide du [Service IoT Hub Device Provisioning](../iot-dps/index.yml) (DPS). Si vous ne connaissez pas le processus d’approvisionnement automatique, consultez la [présentation de l’approvisionnement](../iot-dps/about-iot-dps.md#provisioning-process) avant de poursuivre.
+
+>[!NOTE]
+>Azure IoT Edge pour conteneurs Windows ne sera pas pris en charge à partir de la version 1.2 d’Azure IoT Edge.
+>
+>Envisagez d’utiliser la nouvelle méthode pour exécuter IoT Edge sur des appareils Windows, [Azure IoT Edge pour Linux sur Windows](iot-edge-for-linux-on-windows.md).
+>
+>Si vous souhaitez utiliser Azure IoT Edge pour Linux sur Windows, vous pouvez effectuer les étapes décrites dans le [guide pratique équivalent](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md).
 
 Voici les tâches à effectuer :
 
@@ -60,13 +67,11 @@ Préparez les informations suivantes :
 
 1. La commande **Initialize-IoTEdge** configure le runtime IoT Edge sur votre ordinateur. La commande opère par défaut un approvisionnement manuel avec les conteneurs Windows. Vous devez donc ajouter l’indicateur `-DpsSymmetricKey` pour utiliser l’approvisionnement automatique avec l’authentification par clé symétrique.
 
-   Remplacez les valeurs d’espace réservé pour `{scope_id}`, `{registration_id}` et `{symmetric_key}` par les données que vous avez collectées précédemment.
-
-   Ajoutez le paramètre `-RegistrationId {registration_id}` si vous souhaitez définir l’ID de l’appareil autrement que par le nom commun du certificat d’identité.
+   Remplacez les valeurs d’espace réservé pour `paste_scope_id_here`, `paste_registration_id_here` et `paste_symmetric_key_here` par les données que vous avez collectées précédemment.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -DpsSymmetricKey -ScopeId paste_scope_id_here -RegistrationId paste_registration_id_here -SymmetricKey paste_symmetric key_here
    ```
 
 ## <a name="verify-successful-installation"></a>Vérifier la réussite de l’installation
@@ -105,4 +110,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Le processus d’inscription auprès du service d’approvisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous approvisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).
+Le processus d’inscription auprès du service de provisionnement des appareils vous permet de définir l’ID d’appareil et les balises du jumeau d’appareil en même temps que vous provisionnez le nouvel appareil. Vous pouvez utiliser ces valeurs pour cibler des appareils individuels ou des groupes d’appareils avec la gestion d’appareils automatique. En savoir plus sur [Déployer et surveiller des modules IoT Edge à grande échelle à l’aide du portail Azure](how-to-deploy-at-scale.md) ou [d’Azure CLI](how-to-deploy-cli-at-scale.md).

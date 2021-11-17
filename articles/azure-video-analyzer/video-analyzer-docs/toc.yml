@@ -205,19 +205,23 @@
           href: edge/production-readiness.md
 - name: Ressources
   items:
-    - name: Mises à jour des services Azure
-      href: 'https://azure.microsoft.com/updates/'
-    - name: Tarifs
-      href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
     - name: Régions disponibles
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
+    - name: Mises à jour des services Azure
+      href: 'https://azure.microsoft.com/updates/'
     - name: Questions fréquentes (FAQ)
       items:
         - name: FAQ sur les modules périphériques
           href: edge/faq.yml
         - name: FAQ sur les services
           href: cloud/faq.yml
+    - name: Tarifs
+      href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
     - name: Quotas et limitations
       href: quotas-limitations.md
     - name: Ressource Terraform
       href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/video_analyzer'
+    - name: Video Analyzer en périphérie
+      href: 'https://aka.ms/ava-marketplace'
+    - name: Service Video Analyzer
+      href: 'https://aka.ms/ava-service'

@@ -3,14 +3,14 @@ title: Activer l’enregistrement du débogage
 description: Décrit comment activer la journalisation du débogage pour résoudre des problèmes de ressources Azure déployées avec des modèles Azure Resource Manager (modèles ARM) ou des fichiers Bicep.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 11/02/2021
+ms.date: 11/05/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d68041953979b594c83059a28a78e3440ca297ac
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fcd2cbdf052f934bb797b3f1dab148d951d09167
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479180"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989646"
 ---
 # <a name="enable-debug-logging"></a>Activer l’enregistrement du débogage
 
@@ -44,7 +44,7 @@ Get-AzResourceGroupDeploymentOperation `
   -ResourceGroupName examplegroup
 ```
 
-Vous pouvez spécifier une propriété. Par exemple, la propriété `StatusMessage` génère les mêmes données que la propriété `response` d’Azure CLI.
+Vous pouvez spécifier une propriété, comme `StatusMessage` ou `StatusCode` pour filtrer la sortie.
 
 ```azurepowershell
 (Get-AzResourceGroupDeploymentOperation `
@@ -52,13 +52,11 @@ Vous pouvez spécifier une propriété. Par exemple, la propriété `StatusMessa
   -ResourceGroupName examplegroup).StatusMessage
 ```
 
-Utilisez Azure CLI pour obtenir les informations de débogage `request` et `response`. Dans les versions 4.8 et ultérieures du module Az, `Get-AzResourceGroupDeploymentOperation` n’inclut pas ces propriétés dans la sortie. Pour obtenir la liste des propriétés disponibles, consultez [sorties](/powershell/module/az.resources/get-azresourcegroupdeploymentoperation#outputs).
-
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Vous ne pouvez pas activer la journalisation du débogage avec Azure CLI, mais vous pouvez récupérer les données de journalisation du débogage.
 
-Récupérez les opérations de déploiement à l’aide de la commande suivante :
+Récupérez les opérations de déploiement à l’aide de la commande [az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment_operation_group_list) :
 
 ```azurecli
 az deployment operation group list \

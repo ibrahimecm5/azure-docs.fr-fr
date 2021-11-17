@@ -1,6 +1,6 @@
 ---
-title: Se connecter à une base de données Azure MySQL et la gérer
-description: Ce guide décrit comment se connecter à une base de données Azure MySQL dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source de base de données Azure MySQL.
+title: Se connecter à une base de données Azure pour MySQL et la gérer
+description: Ce guide décrit comment se connecter à Azure Database pour MySQL dans Azure Purview et comment utiliser les fonctionnalités de Purview pour analyser et gérer votre source Azure Database pour MySQL.
 author: evwhite
 ms.author: evwhite
 ms.service: purview
@@ -8,24 +8,26 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: bdb96c3e1de3062426b87fe702d7694890fca44f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bcde9aee9719f8dbb127b908c312cc734c559f02
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015045"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841885"
 ---
-# <a name="connect-to-and-manage-azure-mysql-databases-in-azure-purview"></a>Se connecter à des bases de données Azure MySQL et les gérer dans Azure Purview
+# <a name="connect-to-and-manage-azure-databases-for-mysql-in-azure-purview"></a>Se connecter à des bases de données Azure pour MySQL et les gérer dans Azure Purview
 
-Cet article décrit comment inscrire une base de données Azure MySQL, et comment s’authentifier et interagir avec les bases de données Azure MySQL dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
+Cet article décrit comment inscrire une base de données Azure pour MySQL, et comment s’authentifier et interagir avec des bases de données Azure pour MySQL dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register) | [Oui](#scan)| [Oui*](#scan) | [Oui](#scan) | [Oui](#scan) | Non | [Traçabilité des données Data Factory](how-to-link-azure-data-factory.md) |
+| [Oui](#register) | [Oui](#scan)| [Oui*](#scan) | [Oui](#scan) | [Oui](#scan) | Non | Non** |
 
 \*Purview s’appuie sur les métadonnées UPDATE_TIME de Azure Database pour MySQL pour les analyses incrémentielles. Dans certains cas, ce champ peut ne pas persister dans la base de données et une analyse complète est effectuée. Pour plus d’informations, consultez [Le tableau INFORMATION_SCHEMA TABLES](https://dev.mysql.com/doc/refman/5.7/en/information-schema-tables-table.html) pour MySQL.
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -37,13 +39,13 @@ Cet article décrit comment inscrire une base de données Azure MySQL, et commen
 
 ## <a name="register"></a>Inscrire
 
-Cette section décrit comment inscrire une base de données Azure MySQL dans Azure Purview à l’aide de [Purview Studio](https://web.purview.azure.com/).
+Cette section décrit comment inscrire une base de données Azure pour MySQL dans Azure Purview en utilisant [Purview Studio](https://web.purview.azure.com/).
 
 ### <a name="authentication-for-registration"></a>Authentification pour l’inscription
 
 Vous aurez besoin d’un **nom d’utilisateur** et d’un **mot de passe** pour les étapes suivantes.
 
-Suivez les instructions de [CREATE DATABASES AND USERS](../mysql/howto-create-users.md) pour créer une connexion pour votre base de données Azure MySQL.
+Suivez les instructions de [CREATE DATABASES AND USERS](../mysql/howto-create-users.md) afin de créer une connexion pour votre base de données Azure pour MySQL.
 
 1. Accédez à votre coffre de clés dans le portail Azure.
 1. Sélectionnez **Paramètres > Secrets**.
@@ -54,7 +56,7 @@ Suivez les instructions de [CREATE DATABASES AND USERS](../mysql/howto-create-us
 
 ### <a name="steps-to-register"></a>Procédure d’inscription
 
-Pour inscrire une nouvelle base de données Azure MySQL dans votre catalogue de données, effectuez les actions suivantes :
+Pour inscrire une nouvelle base de données Azure pour MySQL dans votre catalogue de données, effectuez les actions suivantes :
 
 1. Accédez à votre compte Purview.
 
@@ -62,11 +64,11 @@ Pour inscrire une nouvelle base de données Azure MySQL dans votre catalogue de 
 
 1. Sélectionnez **Inscription**.
 
-1. Sous **Inscrire des sources**, sélectionnez **Azure MySQL Database**. Sélectionnez **Continuer**.
+1. Sous **Inscrire des sources**, sélectionnez **Azure Database pour MySQL**. Sélectionnez **Continuer**.
 
 :::image type="content" source="media/register-scan-azure-mysql/01-register-azure-mysql-data-source.png" alt-text="Inscription d’une nouvelle source de données" border="true":::
 
-Dans l’écran **Inscrire des sources (Azure MySQL Database)** , procédez comme suit :
+Dans l’écran **Inscrire des sources (Azure Database pour MySQL)** , effectuez les actions suivantes :
 
 1. Entrez un **nom** pour votre source de données. Il s’agit du nom d’affichage de cette source de données dans votre catalogue.
 1. Sélectionnez **À partir de l’abonnement Azure**, puis sélectionnez l’abonnement approprié dans la zone de liste déroulante **Abonnement Azure** et le serveur approprié dans la zone de liste déroulante **Nom du serveur**.
@@ -76,7 +78,7 @@ Dans l’écran **Inscrire des sources (Azure MySQL Database)** , procédez comm
 
 ## <a name="scan"></a>Analyser
 
-Suivez les étapes ci-dessous pour analyser la base de données Azure MySQL afin d’automatiquement identifier les ressources et classer vos données. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md)
+Effectuez les étapes ci-dessous afin d’analyser Azure Database pour MySQL pour identifier les ressources et classifier vos données automatiquement. Pour plus d’informations sur l’analyse en général, consultez notre [Présentation des analyses et de l’ingestion](concept-scans-and-ingestion.md)
 
 ### <a name="create-and-run-scan"></a>Créer et exécuter une analyse
 

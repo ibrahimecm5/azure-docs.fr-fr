@@ -1,30 +1,40 @@
 ---
-title: 'Tutoriel : Attribution d’utilisateurs pour Asana - Azure AD'
-description: Découvrez comment configurer Azure Active Directory pour approvisionner et retirer automatiquement des comptes utilisateur sur Asana.
+title: 'Didacticiel : Configurer Asana pour l’approvisionnement automatique d’utilisateurs avec Azure Active Directory | Microsoft Docs'
+description: Découvrez comment provisionner et déprovisionner automatiquement des comptes d’utilisateur d’Azure AD vers Asana.
 services: active-directory
-author: ArvindHarinder1
-manager: CelesteDG
+author: twimmers
+writer: twimmers
+manager: beatrizd
+ms.assetid: 274810a2-bd74-4500-95f1-c720abf23541
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: arvinh
-ms.reviewer: celested
-ms.openlocfilehash: 4abc117ae0e983cf684f0e70a363758f9be196aa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: fca7efc24770b9a920c88082566d0e7509ffe513
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94359424"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990420"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Didacticiel : Configurer Asana pour l’approvisionnement automatique d’utilisateurs
 
-L’objectif de ce didacticiel est de présenter les étapes à suivre dans Asana et Azure Active Directory (Azure AD) pour attribuer et désattribuer automatiquement des comptes d’utilisateurs d’Azure AD vers Asana.
+Ce tutoriel décrit les étapes à suivre dans Asana et Azure Active Directory (Azure AD) pour configurer le provisionnement automatique d’utilisateurs. Une fois configuré, Azure AD provisionne et déprovisionne automatiquement des utilisateurs et des groupes pour [Asana](https://www.asana.com/) à l’aide du service Provisionnement d’Azure AD. Pour découvrir les informations importantes sur ce que fait ce service, comment il fonctionne et consulter le forum aux questions, reportez-vous à l’article [Automatiser l’attribution et l’annulation de l’attribution des utilisateurs dans les applications SaaS avec Azure Active Directory](../app-provisioning/user-provisioning.md). 
+
+
+## <a name="capabilities-supported"></a>Fonctionnalités prises en charge
+> [!div class="checklist"]
+> * Créer des utilisateurs dans Asana
+> * Supprimer des utilisateurs dans Asana quand ils ne nécessitent plus d’accès
+> * Conserver les attributs utilisateur synchronisés entre Azure AD et Asana
+> * Provisionner des groupes et des appartenances aux groupes dans Asana
+> * [Authentification unique](asana-tutorial.md) auprès d’Asana (recommandé)
 
 ## <a name="prerequisites"></a>Prérequis
 
-Le scénario décrit dans ce didacticiel part du principe que vous disposez des éléments suivants :
+Le scénario décrit dans ce tutoriel part du principe que vous disposez des prérequis suivants :
 
 * un locataire Azure AD ;
 * un locataire Asana avec un [plan Entreprise](https://www.asana.com/pricing) ou un plan supérieur ;
@@ -33,69 +43,123 @@ Le scénario décrit dans ce didacticiel part du principe que vous disposez des 
 > [!NOTE]
 > L’intégration de l’attribution Azure AD repose sur [l’API Asana](https://asana.com/developers/api-reference/users), qui est accessible à Asana.
 
-## <a name="assign-users-to-asana"></a>Affecter des utilisateurs à Asana
+## <a name="step-1-plan-your-provisioning-deployment"></a>Étape 1. Planifier votre déploiement de l’approvisionnement
+1. En savoir plus sur le [fonctionnement du service d’approvisionnement](../app-provisioning/user-provisioning.md).
+1. Déterminez qui sera dans l’[étendue pour l’approvisionnement](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Déterminez les données à [mapper entre Azure AD et Asana](../app-provisioning/customize-application-attributes.md). 
 
-Azure AD utilise un concept appelé *affectations* pour déterminer les utilisateurs devant recevoir l’accès aux applications sélectionnées. Dans le cadre du provisionnement automatique des comptes utilisateur, seuls les utilisateurs affectés à une application dans Azure AD sont synchronisés.
+## <a name="step-2-configure-asana-to-support-provisioning-with-azure-ad"></a>Étape 2. Configurer Asana pour prendre en charge le provisionnement avec Azure AD
+ > [!TIP]
+ > Pour activer l’authentification unique SAML pour Asana, suivez les instructions du Portail Azure. L’authentification unique peut être configurée indépendamment de l’attribution automatique, bien que ces deux fonctionnalités se complètent.
 
-Avant de configurer et d’activer le service d’attribution, vous devez déterminer quels utilisateurs d’Azure AD ont besoin d’accéder à votre application Asana. Vous pouvez affecter ces utilisateurs à votre application Asana en suivant ces instructions :
+### <a name="generate-secret-token-in-asana"></a>Générer un jeton secret dans Asana
 
-[Affecter un utilisateur à une application d’entreprise](../manage-apps/assign-user-or-group-access-portal.md)
+* Connectez-vous à [Asana](https://app.asana.com/) avec votre compte Administrateur.
+* Dans la barre supérieure, sélectionnez la photo de profil, puis les paramètres actuels de nom de votre organisation.
+* Accédez à l’onglet **Comptes de service**.
+* Sélectionnez **Ajouter un compte de service**.
+* Mettez à jour **Nom** et **À propos de** ainsi que la photo de profil si besoin. Copiez le jeton dans **Jeton**, puis sélectionnez-le dans Enregistrer les modifications.
 
-### <a name="important-tips-for-assigning-users-to-asana"></a>Conseils importants pour l’affectation d’utilisateurs à Asana
+## <a name="step-3-add-asana-from-the-azure-ad-application-gallery"></a>Étape 3. Ajouter Asana à partir de la galerie d’applications Azure AD
 
-Nous vous recommandons d’affecter un seul utilisateur Azure AD à Asana pour tester la configuration de l’attribution. D’autres utilisateurs pourront être affectés ultérieurement.
+Ajoutez Asana à partir de la galerie d’applications Azure AD pour commencer à gérer le provisionnement pour Asana. Si vous avez déjà configuré Asana pour l’authentification unique, vous pouvez utiliser la même application. Toutefois, il est recommandé de créer une application distincte lors du test initial de l’intégration. En savoir plus sur l’ajout d’une application à partir de la galerie [ici](../manage-apps/add-application-portal.md). 
 
-## <a name="configure-user-provisioning-to-asana"></a>Configurer l’attribution des utilisateurs sur Asana
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Étape 4. Définir qui sera dans l’étendue pour l’approvisionnement 
 
-Cette section explique pas à pas comment connecter Azure AD à l’API d’attribution des comptes d’utilisateurs Asana. Vous configurerez également le service d’attribution de façon à créer, à mettre à jour et à désactiver les comptes d’utilisateurs affectés dans Asana en fonction de l’attribution des utilisateurs dans Azure AD.
+Le service d’approvisionnement Azure AD vous permet de définir l’étendue des utilisateurs approvisionnés en fonction de l’affectation à l’application et/ou en fonction des attributs de l’utilisateur/groupe. Si vous choisissez de définir l’étendue de l’approvisionnement pour votre application en fonction de l’attribution, vous pouvez utiliser les étapes de [suivantes](../manage-apps/assign-user-or-group-access-portal.md) pour affecter des utilisateurs et des groupes à l’application. Si vous choisissez de définir l’étendue de l’approvisionnement en fonction uniquement des attributs de l’utilisateur ou du groupe, vous pouvez utiliser un filtre d’étendue comme décrit [ici](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-> [!TIP]
-> Pour activer l’authentification unique SAML pour Asana, suivez les instructions du [Portail Azure](https://portal.azure.com). L’authentification unique peut être configurée indépendamment de l’attribution automatique, bien que ces deux fonctionnalités se complètent.
+* Lorsque vous attribuez des utilisateurs et des groupes à Asana, vous devez sélectionner un rôle autre que **Accès par défaut**. Les utilisateurs disposant du rôle Accès par défaut sont exclus de l’approvisionnement et sont marqués comme non autorisés dans les journaux de configuration. Si le seul rôle disponible sur l’application est le rôle d’accès par défaut, vous pouvez [mettre à jour le manifeste d’application](../develop/howto-add-app-roles-in-azure-ad-apps.md) pour ajouter plus de rôles. 
 
-### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Configurer l’attribution automatique des comptes d’utilisateurs sur Asana dans Azure AD
+* Commencez progressivement. Testez avec un petit ensemble d’utilisateurs et de groupes avant d’effectuer un déploiement général. Lorsque l’étendue de l’approvisionnement est définie sur les utilisateurs et les groupes attribués, vous pouvez contrôler cela en affectant un ou deux utilisateurs ou groupes à l’application. Lorsque l’étendue est définie sur tous les utilisateurs et groupes, vous pouvez spécifier un [filtre d’étendue basé sur l’attribut](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-1. Sur le [portail Azure](https://portal.azure.com), accédez à la section **Azure Active Directory** > **Applications d’entreprise** > **Toutes les applications**.
 
-1. Si vous avez déjà configuré l’authentification unique sur Asana, recherchez votre instance Asana à l’aide du champ de recherche. Sinon, sélectionnez **Ajouter** et recherchez **Asana** dans la galerie d’applications. Sélectionnez **Asana** dans les résultats de la recherche, puis ajoutez-le à votre liste d’applications.
+## <a name="step-5-configure-automatic-user-provisioning-to-asana"></a>Étape 5. Configurer le provisionnement automatique d’utilisateurs vers Asana 
 
-1. Sélectionnez votre instance Asana, puis sélectionnez l’onglet **Attribution**.
+Cette section vous guide tout au long des étapes de configuration du service de provisionnement d’Azure AD pour créer, mettre à jour et désactiver des utilisateurs et des groupes dans Asana en fonction des attributions d’utilisateurs et/ou de groupes dans Azure AD.
+
+### <a name="to-configure-automatic-user-provisioning-for-asana-in-azure-ad"></a>Pour configurer le provisionnement automatique d’utilisateurs pour Asana dans Azure AD :
+
+1. Connectez-vous au [portail Azure](https://portal.azure.com). Sélectionnez **Applications d’entreprise**, puis **Toutes les applications**.
+
+    ![Panneau Applications d’entreprise](common/enterprise-applications.png)
+
+1. Dans la liste des applications, sélectionnez **Asana**.
+
+    ![Lien Asana dans la liste des applications](common/all-applications.png)
+
+1. Sélectionnez l’onglet **Approvisionnement**.
+
+    ![Onglet Approvisionnement](common/provisioning.png)
 
 1. Définissez le **Mode d’approvisionnement** sur **Automatique**.
 
-    ![Approvisionnement Asana](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
+    ![Onglet Provisionnement automatique](common/provisioning-automatic.png)
 
-1. Dans la section **Informations d’identification d’administration**, suivez ces instructions pour générer le jeton et l’entrer dans **Jeton secret** :
+1. Dans la section **Informations d’identification de l’administrateur**, entrez votre URL de locataire Asana et le jeton secret fourni par Asana. Cliquez sur **Tester la connexion** pour vérifier qu’Azure AD peut se connecter à Asana. Si la connexion échoue, contactez Asana pour vérifier la configuration de votre compte.
 
-    a. Connectez-vous à [Asana](https://app.asana.com) avec votre compte Administrateur.
+    ![par jeton](common/provisioning-testconnection-tenanturltoken.png)
 
-    b. Dans la barre supérieure, sélectionnez la photo de profil, puis les paramètres actuels de nom de votre organisation.
+1. Dans le champ **E-mail de notification**, entrez l’adresse e-mail de la personne ou du groupe qui doit recevoir les notifications d’erreur de provisionnement et sélectionnez la case à cocher **Envoyer une notification par e-mail en cas de défaillance**.
 
-    c. Accédez à l’onglet **Comptes de service**.
-
-    d. Sélectionnez **Ajouter un compte de service**.
-
-    e. Mettez à jour **Nom** et **À propos de** ainsi que la photo de profil si besoin. Copiez le jeton dans **Jeton**, puis sélectionnez-le dans **Enregistrer les modifications**.
-
-1. Sur le Portail Azure, sélectionnez **Tester la connexion** pour vérifier qu’Azure AD parvient à se connecter à votre application Asana. Si la connexion échoue, vérifiez que votre compte Asana dispose des autorisations d’administration, puis recommencez l’étape **Tester la connexion**.
-
-1. Entrez l’adresse e-mail de la personne ou du groupe qui recevra les notifications d’erreur d’attribution dans **E-mail de notification**. Cochez la case située dessous.
+    ![E-mail de notification](common/provisioning-notification-email.png)
 
 1. Sélectionnez **Enregistrer**.
 
-1. Dans la section **Mappages**, sélectionnez **Synchroniser les utilisateurs Azure Active Directory sur Asana**.
+1. Dans la section **Mappages**, sélectionnez **Synchroniser les utilisateurs Azure Active Directory avec Asana**.
 
-1. Dans la section **Mappages des attributs**, passez en revue les attributs utilisateurs à synchroniser d’Azure AD à Asana. Les attributs sélectionnés en tant que propriétés de **Correspondance** sont utilisés pour faire correspondre les comptes d’utilisateurs dans Asana pour les opérations de mise à jour. Sélectionnez **Enregistrer** pour valider les modifications. Pour plus d’informations, consultez la section [Personnaliser les mappages d’attributs de l’attribution des utilisateurs](../app-provisioning/customize-application-attributes.md).
+1. Dans la section **Mappages d’attributs**, passez en revue les attributs utilisateur qui sont synchronisés entre Azure AD et Asana. Les attributs sélectionnés en tant que propriétés de **Correspondance** sont utilisés pour faire correspondre les comptes d’utilisateurs dans Asana pour les opérations de mise à jour. Si vous choisissez de modifier l’[attribut cible correspondant](../app-provisioning/customize-application-attributes.md), vous devez vérifier que l’API Asana prend en charge le filtrage des utilisateurs en fonction de cet attribut. Cliquez sur le bouton **Enregistrer** pour valider les modifications.
 
-1. Pour activer le service d’attribution Azure AD pour Asana, définissez **État d’attribution** sur **Activé** dans la section **Paramètres**.
+   |Attribut|Type|Pris en charge pour le filtrage|Requis par Asana|
+   |---|---|---|---|
+   |userName|String|&check;|&check;|   
+   |active|Boolean|||
+   |name.formatted|String|||
+   |preferredLanguage|String|||
+   |title|String|||
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|||
 
-1. Sélectionnez **Enregistrer**.
 
-La synchronisation initiale commence pour les utilisateurs affectés à Asana dans la section **Utilisateurs**. La synchronisation initiale prend plus de temps que les synchronisations suivantes, qui se produisent toutes les 40 minutes environ tant que le service est en cours d’exécution. Utilisez la section **Détails de la synchronisation** pour surveiller la progression et suivre les liens vers les journaux d’activité de provisionnement. Les journaux d’audit décrivent toutes les actions effectuées par le service de provisionnement dans votre application Asana.
+1. Dans la section **Mappages**, sélectionnez **Synchroniser les groupes Azure Active Directory avec Asana**.
 
-Pour savoir plus en détail comment lire les journaux d’activité d’attribution Azure AD, consultez la section [Générer un état sur l’attribution automatique de comptes d’utilisateurs](../app-provisioning/check-status-user-account-provisioning.md).
+1. Dans la section **Mappage d’attributs**, passez en revue les attributs de groupe qui sont synchronisés entre Azure AD et Asana. Les attributs sélectionnés comme propriétés de **Correspondance** sont utilisés pour la mise en correspondre des groupes dans Asana dans le cadre des opérations de mise à jour. Cliquez sur le bouton **Enregistrer** pour valider les modifications.
 
-## <a name="additional-resources"></a>Ressources supplémentaires
+      |Attribut|Type|Pris en charge pour le filtrage|Requis par Asana|
+      |---|---|---|---|
+      |displayName|String|&check;|&check;      
+      |membres|Informations de référence|||
 
-* [Gérer l’attribution de comptes d’utilisateurs pour les applications d’entreprise](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+1. Pour configurer des filtres d’étendue, reportez-vous aux instructions suivantes fournies dans [Approvisionnement d’applications basé sur les attributs avec filtres d’étendue](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+1. Pour activer le service de provisionnement Azure AD pour Asana, définissez le paramètre **État d’approvisionnement** sur **Activé** dans la section **Paramètres**.
+
+    ![État d’approvisionnement activé](common/provisioning-toggle-on.png)
+
+1. Définissez les utilisateurs et les groupes que vous voulez provisionner vers Asana en choisissant les valeurs souhaitées dans **Étendue** dans la section **Paramètres**.
+
+    ![Étendue de l’approvisionnement](common/provisioning-scope.png)
+
+1. Lorsque vous êtes prêt à effectuer l’approvisionnement, cliquez sur **Enregistrer**.
+
+    ![Enregistrement de la configuration de l’approvisionnement](common/provisioning-configuration-save.png)
+
+Cette opération démarre le cycle de synchronisation initiale de tous les utilisateurs et groupes définis dans **Étendue** dans la section **Paramètres**. Le cycle de synchronisation initiale prend plus de temps que les cycles suivants, qui se produisent toutes les 40 minutes environ tant que le service de provisionnement Azure AD est en cours d’exécution. 
+
+## <a name="step-6-monitor-your-deployment"></a>Étape 6. Surveiller votre déploiement
+Une fois que vous avez configuré l’approvisionnement, utilisez les ressources suivantes pour surveiller votre déploiement :
+
+* Utilisez les [journaux d’approvisionnement](../reports-monitoring/concept-provisioning-logs.md) pour déterminer quels utilisateurs ont été configurés avec succès ou échoué.
+* Consultez la [barre de progression](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) pour afficher l’état du cycle d’approvisionnement et sa progression.
+* Si la configuration de l’approvisionnement semble se trouver dans un état non sain, l’application passe en quarantaine. Pour en savoir plus sur les états de quarantaine, cliquez [ici](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Journal des modifications
+
+* 06/11/2021 : suppression de la prise en charge de **externalId, name.givenName and name.familyName**. ajout de la prise en charge de **preferredLanguage , title and urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department**. Et activation du **Provisionnement de groupe**.
+
+## <a name="more-resources"></a>Plus de ressources
+
+* [Gestion de l’approvisionnement de comptes d’utilisateur pour les applications d’entreprise](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Qu’est-ce que l’accès aux applications et l’authentification unique avec Azure Active Directory ?](../manage-apps/what-is-single-sign-on.md)
-* [Configurer l’authentification unique](asana-tutorial.md)
+
+## <a name="next-steps"></a>Étapes suivantes
+
+* [Découvrez comment consulter les journaux d’activité et obtenir des rapports sur l’activité d’approvisionnement](../app-provisioning/check-status-user-account-provisioning.md)

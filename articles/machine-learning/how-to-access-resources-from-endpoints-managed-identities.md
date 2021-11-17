@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 8969ca4b9ca24e3cd864075d2d99492db74762bb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: ff8778dfa69552deaf26dd13438ac73fed260658
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056149"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566780"
 ---
 # <a name="access-azure-resources-from-a-managed-online-endpoint-preview-with-a-managed-identity"></a>Accéder aux ressources Azure à partir d’un point de terminaison en ligne géré avec une identité managée (préversion) 
 
@@ -67,7 +67,7 @@ L’exemple YAML suivant se trouve à l’emplacement `endpoints/online/managed/
 * Définit le nom par lequel vous souhaitez faire référence au point de terminaison, `my-sai-endpoint`.
 * Spécifie le type d’autorisation à utiliser pour accéder au point de terminaison, `auth-mode: key`.
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-sai-create-endpoint.yml":::
 
 Cet exemple YAML, `2-sai-deployment.yml`,
 
@@ -75,7 +75,7 @@ Cet exemple YAML, `2-sai-deployment.yml`,
 * Indique que le point de terminaison est associé à un déploiement nommé `blue`.
 * Configure les détails du déploiement, tels que le modèle à déployer ainsi que l’environnement et le script de scoring à utiliser.
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
@@ -85,7 +85,7 @@ L’exemple YAML suivant se trouve à l’emplacement `endpoints/online/managed/
 * Spécifie le type d’autorisation à utiliser pour accéder au point de terminaison, `auth-mode: key`.
 * Indique le type d’identité à utiliser, `type: user_assigned`
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/1-uai-create-endpoint.yml":::
 
 Cet exemple YAML, `2-sai-deployment.yml`,
 
@@ -93,7 +93,7 @@ Cet exemple YAML, `2-sai-deployment.yml`,
 * Indique que le point de terminaison est associé à un déploiement nommé `blue`.
 * Configure les détails du déploiement, tels que le modèle à déployer ainsi que l’environnement et le script de scoring à utiliser.
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
 
 ---
 
@@ -105,13 +105,13 @@ Configurez les noms de variables pour l’espace de travail, l’emplacement de 
 
 Le code suivant exporte ces valeurs en tant que variables d’environnement dans votre point de terminaison :
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
 
 Ensuite, spécifiez les noms que vous voulez donner à vos compte Stockage Blob, conteneur d’objets blob et fichier. Ces noms de variables sont définis ici et sont référencés dans les commandes `az storage account create` et `az storage container create` dans la section suivante.
 
 Le code suivant exporte ces valeurs en tant que variables d’environnement :
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
 
 Une fois ces variables exportées, créez un fichier texte localement. Quand le point de terminaison est déployé, le script de scoring accède à ce fichier texte à l’aide de l’identité managée affectée par le système qui est générée lors de la création du point de terminaison.
 
@@ -119,17 +119,17 @@ Une fois ces variables exportées, créez un fichier texte localement. Quand le 
 
 Choisissez le nom du point de terminaison, de l’espace de travail, de l’emplacement de l’espace de travail et exportez cette valeur en tant que variable d’environnement :
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_variables" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_variables" :::
 
 Ensuite, spécifiez les noms que vous voulez donner à vos compte Stockage Blob, conteneur d’objets blob et fichier. Ces noms de variables sont définis ici et sont référencés dans les commandes `az storage account create` et `az storage container create` dans la section suivante.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="configure_storage_names" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="configure_storage_names" :::
 
 Une fois ces variables exportées, créez un fichier texte localement. Quand le point de terminaison est déployé, le script de scoring accède à ce fichier texte à l’aide de l’identité managée affectée par l’utilisateur utilisée dans le point de terminaison. 
 
 Choisissez le nom de l’identité de l’utilisateur et exportez cette valeur en tant que variable d’environnement :
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_user_identity_name" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="set_user_identity_name" :::
 
 ---
 
@@ -144,7 +144,7 @@ Quand vous [créez un point de terminaison en ligne](#create-a-managed-online-en
 
 Pour créer une identité managée affectée par l’utilisateur, utilisez les éléments suivants :
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_user_identity" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_user_identity" :::
 
 ---
 
@@ -156,33 +156,33 @@ Pour cet exemple, créez un compte Stockage Blob et un conteneur d’objets blob
 
 En premier lieu, créez un compte de stockage.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
 
 Ensuite, créez le conteneur d’objets blob dans le compte de stockage.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
 
 Chargez alors votre fichier texte dans le conteneur d’objets blob.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
 En premier lieu, créez un compte de stockage.  
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_account" :::
 
 Vous pouvez également récupérer un ID de compte de stockage existant avec les éléments suivants. 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_storage_account_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_storage_account_id" :::
 
 Ensuite, créez le conteneur d’objets blob dans le compte de stockage. 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_container" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_storage_container" :::
 
 Chargez ensuite le fichier dans le conteneur. 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="upload_file_to_storage" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="upload_file_to_storage" :::
 
 ---
 
@@ -196,21 +196,21 @@ Lorsque vous créez un point de terminaison managé, une identité managée affe
 >[!IMPORTANT]
 > Les identités managées affectées par le système sont immuables et ne peuvent pas être modifiées une fois créées.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
 
 Vérifiez l’état du point de terminaison avec les éléments suivants.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
 En cas de problème, consultez [Résolution des problèmes de déploiement et de scoring de points de terminaison en ligne managés (préversion)](how-to-troubleshoot-managed-online-endpoints.md).
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
 
 Vérifiez l’état du point de terminaison avec les éléments suivants.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
 
 En cas de problème, consultez [Résolution des problèmes de déploiement et de scoring de points de terminaison en ligne managés (préversion)](how-to-troubleshoot-managed-online-endpoints.md).
 
@@ -227,41 +227,41 @@ Vous pouvez permettre au point de terminaison géré d’accéder à votre stock
 
 Récupérez l’identité managée affectée par le système qui a été créée pour votre point de terminaison.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
 
 À partir de là, vous pouvez accorder à l’identité managée affectée par le système l’autorisation d’accéder à votre stockage.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
 Récupérez l’ID client de l’identité managée affectée par l’utilisateur.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_client_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_client_id" :::
 
 Récupérez l’ID de l’identité managée affectée par l’utilisateur.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_user_identity_id" :::
 
 Obtient le registre de conteneurs associé à l’espace de travail.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_container_registry_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_container_registry_id" :::
 
 Récupérez le stockage par défaut de l’espace de travail.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_workspace_storage_id" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="get_workspace_storage_id" :::
 
 Accordez l’autorisation de compte de stockage à identité gérée affectée à l’utilisateur.  
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_user_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_user_storage_account" :::
 
 Accordez au registre de conteneurs l’autorisation d’identité managée affectée par l’utilisateur.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_container_registry" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_container_registry" :::
 
 Accordez au stockage d’espace de travail par défaut l’autorisation d’identité managée affectée par l’utilisateur.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_workspace_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="give_permission_to_workspace_storage_account" :::
 
 ---
 
@@ -269,7 +269,7 @@ Accordez au stockage d’espace de travail par défaut l’autorisation d’iden
 
 Reportez-vous au script suivant pour comprendre comment utiliser votre jeton d’identité pour accéder aux ressources Azure. Dans ce scénario, il s’agit du compte de stockage créé dans les sections précédentes. 
 
-:::code language="python" source="~/azureml-examples-main/cli/endpoints/online/model-1/onlinescoring/score_managedidentity.py":::
+:::code language="python" source="~/azureml-examples-cli-preview/cli/endpoints/online/model-1/onlinescoring/score_managedidentity.py":::
 
 ## <a name="create-a-deployment-with-your-configuration"></a>Créer un déploiement avec votre configuration
 
@@ -280,14 +280,14 @@ Créez un déploiement associé au point de terminaison managé. [En savoir plus
 
 # <a name="system-assigned-managed-identity"></a>[Identité managée affectée par le système](#tab/system-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
 
 >[!NOTE]
 > La valeur de l’argument `--name` peut écraser la clé `name` dans le fichier YAML.
 
 Vérifiez l’état du déploiement.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
 
 Pour affiner la requête ci-dessus afin de retourner uniquement des données spécifiques, consultez [Interroger la sortie de commande Azure CLI](/cli/azure/query-azure-cli).
 
@@ -296,30 +296,30 @@ Pour affiner la requête ci-dessus afin de retourner uniquement des données sp�
 
 Pour vérifier la sortie de la méthode init, consultez le journal de déploiement avec le code suivant. 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
 
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="create_endpoint" :::
 
 >[!Note]
 > La valeur de l’argument `--name` peut écraser la clé `name` dans le fichier YAML.
 
 Une fois que la commande s’exécute, vous pouvez vérifier l’état du déploiement.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_endpoint_Status" :::
 
 Pour affiner la requête ci-dessus afin de retourner uniquement des données spécifiques, consultez [Interroger la sortie de commande Azure CLI](/cli/azure/query-azure-cli).
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
 
 > [!NOTE]
 > La méthode init du script de scoring lit le fichier à partir de votre compte de stockage à l’aide du jeton d’identité managée affectée par le système.
 
 Pour vérifier la sortie de la méthode init, consultez le journal de déploiement avec le code suivant. 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="check_deployment_log" :::
 
 ---
 
@@ -329,17 +329,17 @@ Une fois votre déploiement effectué, le modèle, l’environnement et le point
 
 Une fois votre point de terminaison déployé, confirmez son fonctionnement. Les détails de l’inférence varient d’un modèle à l’autre. Pour ce guide, les paramètres de requête JSON se présentent comme suit : 
 
-:::code language="json" source="~/azureml-examples-main/cli/endpoints/online/model-1/sample-request.json" :::
+:::code language="json" source="~/azureml-examples-cli-preview/cli/endpoints/online/model-1/sample-request.json" :::
 
 Pour appeler votre point de terminaison, exécutez :
 
 # <a name="system-assigned-managed-identity"></a>[Identité managée affectée par le système](#tab/system-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="test_endpoint" :::
 
 ---
 
@@ -349,14 +349,14 @@ Si vous n’envisagez pas de continuer à utiliser le point de terminaison dépl
 
 # <a name="system-assigned-managed-identity"></a>[Identité managée affectée par le système](#tab/system-identity)
  
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
 
 # <a name="user-assigned-managed-identity"></a>[Identité managée affectée par l’utilisateur](#tab/user-identity)
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_endpoint" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_storage_account" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_user_identity" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-access-resource-uai.sh" id="delete_user_identity" :::
 
 ---
 

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 8e58a31d37e4b6aece877e8a2d920e7abc91d8f8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 07c8b711ae32311cceba0c6ebe3353974b867356
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710944"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061765"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Bien démarrer avec votre compte de facturation Azure mis à jour
 
@@ -190,6 +190,34 @@ Les sections suivantes fournissent des informations supplémentaires sur votre n
 **Les factures antérieures sont disponibles dans la nouvelle expérience** Les factures générées avant la mise à jour de votre compte restent disponibles dans le portail Azure.
 
 **Factures pour le compte mis à jour au milieu du mois** Si votre compte est mis à jour au milieu du mois, vous recevrez une facture pour les frais accumulés jusqu’au jour de la mise à jour de votre compte. Vous recevrez une autre facture pour le reste du mois. Par exemple, si votre compte a un abonnement et qu’il est mis à jour le 15 septembre, vous recevrez une facture pour les frais accumulés jusqu’au 15 septembre. Vous recevrez une autre facture pour la période comprise entre le 15 septembre et le 30 septembre. Au-delà du mois de septembre, vous recevrez une facture par mois.
+
+## <a name="troubleshooting"></a>Dépannage
+
+### <a name="you-get-an-email-to-accept-the-terms-of-the-microsoft-customer-agreement-but-the-link-in-the-email-doesnt-work"></a>Vous recevez un e-mail pour accepter les termes du Contrat client Microsoft, mais le lien dans l’e-mail ne fonctionne pas
+
+Une fois votre compte de facturation Azure mis à jour, vous recevez un e-mail de Microsoft pour accepter les termes du Contrat client Microsoft. Il se peut que le lien dans l’e-mail ne fonctionne pas pour les raisons suivantes :
+
+- Vous avez accès à l’administration de la facturation via l’un de vos autres e-mails. 
+
+    Cela se produit généralement lorsque vous recevez un e-mail vous invitant à accepter les termes du Contrat client Microsoft. Vous cliquez sur le lien et vous affichez un message d’erreur - `You don't have permission to accept the agreement. This typically happens when you sign in with an email, which doesn’t have permission to accept the agreement. Check you’ve signed in with the correct email address. If you are still seeing the error, see Why I can't accept an agreement`. Vérifiez que vous êtes connecté avec l’adresse e-mail autorisée à effectuer l’administration de la facturation.
+
+- Vous avez accès à la facture via une identité différente. 
+
+    Certains clients ont deux identités avec la même adresse e-mail : un compte professionnel et un compte Microsoft. Généralement, une seule de leurs identités dispose des autorisations nécessaires pour administrer la facturation. S’ils se connectent avec une identité non autorisée, ils ne peuvent pas accepter les termes du contrat. Vérifiez que vous utilisez l’identité correcte pour vous connecter.
+
+- Vous êtes connecté au mauvais locataire Azure Active Directory (Azure AD). 
+
+    Votre compte de facturation est associé à un locataire Azure AD. Si vous êtes connecté à un locataire incorrect, vous ne pouvez pas accepter les termes du contrat. Vérifiez que vous êtes connecté au bon locataire Azure AD. Si vous n’êtes pas connecté au bon locataire, utilisez la commande suivante pour changer de locataire dans le portail Azure :
+
+    1. Sélectionnez votre e-mail dans l’angle supérieur droit de la page.
+
+    2. Sélectionnez **Changer de répertoire**.
+
+        ![Capture d’écran montrant la sélection du changement de répertoire dans le portail](./media/mosp-new-customer-experience/select-switch-directory.png)
+
+    3. Sélectionnez l’option **Changer** correspondant à un répertoire dans la section **Tous les répertoires**.
+
+        ![Capture d’écran montrant la sélection d’un répertoire dans le portail](./media/mosp-new-customer-experience/select-directory.png)
 
 ## <a name="need-help-contact-support"></a>Vous avez besoin d’aide ? Contactez le support technique.
 

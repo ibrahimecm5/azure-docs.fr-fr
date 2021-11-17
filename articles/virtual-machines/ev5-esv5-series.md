@@ -2,25 +2,25 @@
 title: Séries Ev5 et Esv5 – Machines virtuelles Azure
 description: Spécifications pour les machines virtuelles des séries Ev5 et Esv5.
 author: styli365
-ms.author: joelpell
+ms.author: sttsinar
 ms.reviewer: joelpell
 ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: de1f9694bac6cb57c6d14e352a958e7bfc7f0516
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: a09b15cb2acff0aebe94cd550185e1ded5e055ea
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866775"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502157"
 ---
 # <a name="ev5-and-esv5-series"></a>Séries Ev5 et Esv5
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles :heavy_check_mark: Groupes identiques uniformes
 
-Les machines virtuelles séries Ev5 et Esv5 s’exécutent sur les processeurs Intel&reg; ​​Xeon&reg; Platinum 8370C (Ice Lake) de 3e génération dans une configuration [d’hyperthreading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html), offrant une meilleure proposition de valeur pour la plupart des charges de travail universelles. Ce nouveau processeur a les caractéristiques suivantes : vitesse d’horloge Turbo avec tous les cœurs de 3,5 GHz, avec la technologie [Intel&reg; Turbo Boost](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) et [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Avec jusqu’à 672 Gio de RAM, ces machines virtuelles sont idéales pour les applications d’entreprise gourmandes en mémoire, les serveurs de bases de données relationnelles et les charges de travail d’analytique en mémoire. Les séries Ev5 et Esv5 constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local. Pour plus d’informations sur les machines virtuelles similaires avec un disque local, consultez [Machines virtuelles séries Edv5 et Edsv5](edv5-edsv5-series.md).
+Les séries Ev5 et Esv5 s’exécutent sur les processeurs Intel&reg; ​​Xeon&reg; Platinum 8370C (Ice Lake) de 3e génération dans une configuration d’[hyperthreading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html), offrant une meilleure proposition de valeur pour la plupart des charges de travail universelles. Ce nouveau processeur a les caractéristiques suivantes : vitesse d’horloge Turbo avec tous les cœurs de 3,5 GHz, avec la technologie [Intel&reg; Turbo Boost](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) et [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Avec jusqu’à 672 Gio de RAM, ces machines virtuelles sont idéales pour les applications d’entreprise gourmandes en mémoire, les serveurs de bases de données relationnelles et les charges de travail d’analytique en mémoire. Les séries Ev5 et Esv5 constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local.
 
 > [!NOTE]
 > Pour accéder à la FAQ, consultez [Tailles de machines virtuelles Azure sans disque temporaire local](azure-vms-no-temp-disk.yml).
@@ -63,7 +63,7 @@ Les machines virtuelles de la série Esv5 s’exécutent sur le processeur Intel
 
 La série Esv5 prend en charge les types de disques Ssd Standard, Hdd Standard et Ssd Premium. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-[Stockage Premium](premium-storage-performance.md) : Pris en charge<br>
+[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge<br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge<br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge<br>

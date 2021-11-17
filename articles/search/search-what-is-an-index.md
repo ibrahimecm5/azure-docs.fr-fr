@@ -1,5 +1,5 @@
 ---
-title: Création d'un index
+title: Vue d’ensemble des index
 titleSuffix: Azure Cognitive Search
 description: Présente les concepts et les outils d’indexation dans Recherche cognitive Azure, notamment les définitions de schéma et la structure physique des données.
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: cdfadc895de3af0f79c30a067f3e5376bfa8873b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 11/08/2021
+ms.openlocfilehash: ab1106ef927829589934485c2022d353339d5089
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769101"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062811"
 ---
-# <a name="creating-search-indexes-in-azure-cognitive-search"></a>Création d’index de recherche dans Recherche cognitive Azure
+# <a name="search-indexes-in-azure-cognitive-search"></a>Index de recherche dans Recherche cognitive Azure
 
 Recherche cognitive Azure stocke le contenu pouvant faire l’objet d’une recherche utilisé pour le texte intégral et les requêtes filtrées dans un *index de recherche*. Un index est défini par un schéma et enregistré dans le service, l’importation des données se faisant dans un deuxième temps. 
 
-Les index contiennent des *documents de recherche*. Conceptuellement, un document correspond à une unité de données pouvant faire l’objet d’une recherche dans un index. Un détaillant peut posséder un document pour chaque produit, un organisme de presse peut posséder un document par article, et ainsi de suite. Pour comparer avec des éléments de base de données plus familiers, un *index de recherche* correspond à une *table*, et les *documents* équivalent plus ou moins aux *lignes* d’une table.
+Cet article présente les index de recherche. Vous préférez commencer ? Consultez [Créer un index de recherche](search-how-to-create-search-index.md).
 
-## <a name="whats-an-index-schema"></a>Qu’est-ce qu’un schéma d’index ?
+## <a name="whats-a-search-index"></a>Qu’est-ce qu’un index de recherche ?
+
+Dans Recherche cognitive, les index contiennent des *documents de recherche*. Conceptuellement, un document correspond à une unité de données pouvant faire l’objet d’une recherche dans un index. Par exemple, un détaillant peut posséder un document pour chaque produit, un organisme de presse peut posséder un document par article, et ainsi de suite. Pour comparer avec des éléments de base de données plus familiers, un *index de recherche* correspond à une *table*, et les *documents* équivalent plus ou moins aux *lignes* d’une table.
 
 La structure physique d’un index est déterminée par le schéma. La collection « fields » correspond généralement à la majeure partie de l’index, dans laquelle chaque champ est nommé, se voit attribuer un [type de données](/rest/api/searchservice/Supported-data-types) et est pourvu de comportements autorisés qui déterminent son utilisation.
 
@@ -59,56 +61,9 @@ La structure physique d’un index est déterminée par le schéma. La collectio
 
 Parmi les autres éléments, citons les [suggesteurs](index-add-suggesters.md), les [profils de scoring](index-add-scoring-profiles.md), les [analyseurs utilisés](search-analyzers.md) pour traiter les chaînes en jetons selon des règles linguistiques ou d’autres caractéristiques prises en charge par l’analyseur et des paramètres [CORS (Cross-Origin Remote Scripting)](#corsoptions).
 
-## <a name="choose-a-client"></a>Choisir un client
+## <a name="field-definitions"></a>Définitions de champs
 
-Il existe plusieurs façons de créer un index de recherche. Nous vous recommandons le portail Azure ou les kits SDK pour les premières étapes de développement et les tests de preuve de concept.
-
-Pendant le développement, prévoyez des régénérations fréquentes. Comme les structures physiques sont créées dans le service, il est nécessaire de [supprimer et de recréer les index](search-howto-reindex.md) pour la plupart des modifications apportées à une définition de champ existante. Vous pouvez envisager de travailler sur une partie de vos données pour regénérer plus rapidement.
-
-### <a name="permissions"></a>Autorisations
-
-Toutes les opérations liées à un index de recherche, notamment les requêtes GET et leur définition, nécessitent une [clé d’API d’administrateur](search-security-api-keys.md) sur la requête.
-
-### <a name="limits"></a>Limites
-
-Tous les [niveaux de service limitent](search-limits-quotas-capacity.md#index-limits) le nombre d’objets que vous pouvez créer. Si vous expérimentez le niveau Gratuit, vous ne pouvez avoir que trois index à la fois.
-
-### <a name="use-azure-portal-to-create-a-search-index"></a>Utiliser Portail Azure pour créer un index de recherche
-
-Le portail propose deux options pour créer un index de recherche : [**l’Assistant Importer des données**](search-import-data-portal.md) et **Ajouter un index** qui fournit des champs pour spécifier un schéma d’index. L’Assistant permet d’effectuer des opérations supplémentaires en créant également un indexeur, une source de données et en chargeant des données. Si c’est plus qu’il n’en faut, vous pouvez simplement utiliser l’option **Ajouter un index** ou une autre approche.
-
-La capture d’écran suivante montre où vous pouvez trouver **Ajouter un index** dans le portail. **Importer des données** se trouve juste à côté.
-
-  :::image type="content" source="media/search-what-is-an-index/add-index.png" alt-text="Add index command" border="true":::
-
-> [!Tip]
-> La conception d’index via le portail applique des exigences et des règles de schéma pour des types de données spécifiques, telles que l’interdiction de la recherche en texte intégral sur les champs numériques. Une fois que vous disposez d’un index exploitable, vous pouvez copier le fichier JSON à partir du portail et l’ajouter à votre solution.
-
-### <a name="use-a-rest-client"></a>Utiliser un client REST
-
-Postman et Visual Studio Code (avec une extension pour Recherche cognitive Azure) peuvent tous deux fonctionner comme client d’index de recherche. En utilisant l’un ou l’autre de ces outils, vous pouvez vous connecter à votre service de recherche et envoyer des requêtes [Create index (REST)](/rest/api/searchservice/create-index). Il existe de nombreux tutoriels et exemples qui illustrent le fonctionnement des clients REST pour la création d’objets. 
-
-Commencez par l’un de ces articles pour en savoir plus sur chaque client :
-
-+ [Créer un index de recherche à l’aide de REST et de Postman](search-get-started-rest.md)
-+ [Bien démarrer avec Visual Studio Code et Recherche cognitive Azure](search-get-started-vs-code.md)
-
-Reportez-vous aux [opérations d’index (REST)](/rest/api/searchservice/index-operations) pour obtenir de l’aide dans la formulation de requêtes d’index.
-
-### <a name="use-an-sdk"></a>Utiliser un Kit de développement logiciel (SDK)
-
-Pour Recherche cognitive, les Kits de développement logiciel (SDK) Azure implémentent des fonctionnalités généralement disponibles. Ainsi, vous pouvez utiliser n’importe lequel des Kits de développement logiciel (SDK) pour créer un index de recherche. Ils fournissent tous un **SearchIndexClient** qui contient des méthodes pour la création et la mise à jour d’index.
-
-| Azure SDK | Client | Exemples |
-|-----------|--------|----------|
-| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-search-dotnet-samples/quickstart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
-| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
-| JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Index](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |
-| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
-
-## <a name="define-fields"></a>Définir des champs
-
-Un document de recherche est défini par la collection `fields`. Vous aurez besoin de champs pour les requêtes et les clés. Vous aurez probablement également besoin de champs pour prendre en charge les filtres, les facettes et les tris. Vous pouvez également avoir besoin de champs pour des données qu’un utilisateur ne voit jamais, par exemple des champs pour les marges bénéficiaires ou les promotions marketing que vous pouvez utiliser pour modifier le rang de recherche.
+Un document de recherche est défini par la collection `fields`. Vous aurez besoin de champs pour l’identification du document (clés), le stockage de texte pouvant faire l’objet d’une recherche et la prise en charge des filtres, facettes et tris. Il se peut également que vous ayez besoin de champs pour les données qu’un utilisateur ne voit jamais. Par exemple, il peut être utile de disposer de champs pour des marges bénéficiaires ou des promotions commerciales que vous pouvez utiliser pour modifier le rang de recherche.
 
 Un champ de type Edm.String doit être désigné comme clé de document. Il est utilisé pour identifier de manière unique chaque document de recherche, et respecte la casse. Vous pouvez récupérer un document par sa clé pour remplir une page de détails.
 
@@ -140,7 +95,7 @@ Même si vous pouvez ajouter de nouveaux champs à tout moment, les définitions
 
 <a name="index-size"></a>
 
-## <a name="attributes-and-index-size-storage-implications"></a>Attributs et taille de l’index (implications en matière de stockage)
+## <a name="storage-implications-of-field-attributes"></a>Implications au niveau du stockage des attributs de champ
 
 La taille d’un index est déterminée par la taille des documents que vous chargez, plus la configuration de l’index, par exemple si vous incluez des suggesteurs, et la façon dont vous définissez des attributs sur des champs individuels. 
 
@@ -175,7 +130,9 @@ Les options suivantes peuvent être définies pour CORS :
 
 Vous pouvez acquérir de l’expérience en créant un index en utilisant presque n’importe quel exemple ou procédure pas à pas pour Recherche cognitive. Pour commencer, vous pouvez choisir l’un des démarrages rapides à partir de la table des matières.
 
-Mais vous souhaiterez également vous familiariser avec les méthodologies de chargement d’un index avec des données. Les stratégies de définition d’index et d’importation de données sont définies en tandem. Les articles suivants fournissent plus d’informations sur le chargement d’un index.
+Mais vous souhaiterez également vous familiariser avec les méthodologies de chargement d’un index avec des données. Les stratégies de définition d’index et d’importation de données sont définies en tandem. Les articles suivants fournissent plus d’informations sur la création et le chargement d’un index.
+
++ [Créer un index de recherche](search-how-to-create-search-index.md)
 
 + [Vue d’ensemble de l’importation des données](search-what-is-data-import.md)
 

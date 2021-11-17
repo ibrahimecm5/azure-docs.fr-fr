@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: memildin
-ms.openlocfilehash: 23908a7824e4e489da575fd1563b82c340d42def
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 628958b2b378b6b6d36b98c08f49c2f453f19af7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425175"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056280"
 ---
 # <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Exportation continue des données de Microsoft Defender pour le cloud
 
@@ -20,7 +20,7 @@ ms.locfileid: "131425175"
 
 Microsoft Defender pour le cloud génère des alertes de sécurité et des recommandations détaillées. Vous pouvez les afficher dans le portail ou au moyen d’outils de programmation. Si nécessaire, vous pouvez également exporter en partie ou en totalité ces informations à des fins de suivi avec d’autres outils de supervision dans votre environnement. 
 
-**L’exportation continue** vous permet de personnaliser entièrement *ce qui* sera exporté et *où* cela sera exporté. Par exemple, vous pouvez la configurer de sorte que :
+Vous pouvez personnaliser entièrement *ce qui* sera exporté et *où* avec l’**exportation continue**. Par exemple, vous pouvez la configurer de sorte que :
 
 - Toutes les alertes de gravité élevée sont envoyées à un Event Hub Azure
 - Tous les résultats de gravité moyenne ou plus élevée issus des analyses d’évaluation des vulnérabilités de vos serveurs SQL sont envoyés à un espace de travail Log Analytics spécifique
@@ -116,7 +116,7 @@ L’exportation continue peut être configurée et gérée via l’[API Automati
 
 L’API fournit des fonctionnalités supplémentaires qui ne sont pas disponibles dans le portail Azure, par exemple :
 
-* **Volume supérieur** : l’API vous permet de créer plusieurs configurations d’exportation sur un seul abonnement. La page **Exportation continue** dans l’interface utilisateur du portail Defender pour le cloud ne prend en charge qu’une seule configuration d’exportation par abonnement.
+* **Volume supérieur** : vous pouvez créer plusieurs configurations d’exportation sur un seul abonnement avec l’API. La page **Exportation continue** dans l’interface utilisateur du portail Defender pour le cloud ne prend en charge qu’une seule configuration d’exportation par abonnement.
 
 * **Fonctionnalités supplémentaires** : l’API offre des paramètres supplémentaires qui n’apparaissent pas dans l’interface utilisateur. Par exemple, vous pouvez ajouter des balises à votre ressource d’automatisation, ainsi que définir votre exportation sur la base d’un ensemble plus vaste de propriétés d’alerte et de recommandation que celles proposées dans la page **Exportation continue** de l’interface utilisateur du portail Defender pour le cloud.
 

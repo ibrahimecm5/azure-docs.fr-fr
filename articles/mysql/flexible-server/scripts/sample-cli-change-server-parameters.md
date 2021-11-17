@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Lister et modifier les paramètres de serveur d’une instance d’Azure Database pour MySQL - Serveur flexible (préversion)
+title: Script CLI - Lister et modifier les paramètres de serveur d’une instance d’Azure Database pour MySQL - Serveur flexible
 description: Cet exemple de script Azure CLI montre comment lister et modifier les paramètres de serveur d’une instance d’Azure Database pour MySQL - Serveur flexible.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: bcb811c9143e97ae070873c4b94396d6a1308d4a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4316669346f8bedec7a674da3e7114b95dd8c4ca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604633"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844256"
 ---
-# <a name="list-and-change-server-parameters-of-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Lister et modifier les paramètres de serveur d’une instance d’Azure Database pour MySQL - Serveur flexible (préversion) avec Azure CLI
+# <a name="list-and-change-server-parameters-of-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Lister et modifier les paramètres de serveur d’une instance d’Azure Database pour MySQL - Serveur flexible avec Azure CLI
 
 Cet exemple de script CLI liste tous les [paramètres de serveur](../concepts-server-parameters.md) disponibles ainsi que leurs valeurs autorisées pour Azure Database pour MySQL - Serveur flexible. En outre, il définit le paramètre *max_connections* et le paramètre global *time_zone* sur des valeurs autres que celles par défaut.
 
@@ -54,5 +54,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).

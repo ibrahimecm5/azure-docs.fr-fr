@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 711f83a33a530aef99bba75a0010bcd131aa771b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 01a82e178725cc310e5e693c738de047f09c1b7a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228962"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505590"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutoriel : Configurer une passerelle de réseau virtuel pour ExpressRoute à l’aide du portail Azure
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Vous pouvez afficher une [vidéo](https://azure.microsoft.com/documentation/vide
 1. Dans le portail, sur le côté gauche, sélectionnez **Créer une ressource**, puis entrez « Passerelle de réseau virtuel » dans la zone de recherche. Recherchez **passerelle de réseau virtuel** dans les résultats de la recherche et sélectionnez l’entrée. Dans la page **Passerelle de réseau virtuel**, sélectionnez **Créer**.
 1. Dans la page **Créer une passerelle de réseau virtuel**, entrez ou sélectionnez les paramètres suivants :
 
-    | Paramètre | Value |
+    | Paramètre | Valeur |
     | --------| ----- |
     | Abonnement | Vérifiez que l’abonnement approprié est sélectionné. |
     | Groupe de ressources | Le groupe de ressources est choisi automatiquement une fois que vous avez sélectionné le réseau virtuel. | 
@@ -82,16 +82,13 @@ Vous pouvez afficher une [vidéo](https://azure.microsoft.com/documentation/vide
     | Réseau virtuel | Sélectionnez *TestVNet*. |
     | Adresse IP publique | Sélectionnez **Créer nouveau**.|
     | Nom de l’adresse IP publique | Fournissez un nom pour l’adresse IP publique. |
-    | Référence SKU d’adresse IP publique | Fournissez une référence SKU pour l’adresse IP publique. Choisissez *Standard* pour une passerelle à double pile. |
 
     > [!IMPORTANT]
-    > Si vous envisagez d’utiliser le peering privé IPv6 sur ExpressRoute, veillez à créer votre passerelle avec une adresse IP publique de type standard, statique.
+    > Si vous envisagez d’utiliser un Peering privé IPv6 sur ExpressRoute, veillez à créer votre passerelle avec une IP publique de type standard et statique en utilisant les [instructions PowerShell](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
     > 
     > 
 
 1. Sélectionnez **Vérifier + créer**, puis **Créer** pour commencer à créer la passerelle. Les paramètres sont validés et la passerelle se déploie. La création d’une passerelle de réseau virtuel peut prendre jusqu’à 45 minutes.
-
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/gateway.png" alt-text="Champs de la page Créer une passerelle de réseau virtuel":::
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 

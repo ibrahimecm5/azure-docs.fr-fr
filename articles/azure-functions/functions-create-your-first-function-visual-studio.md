@@ -3,41 +3,32 @@ title: 'Démarrage rapide : Créer votre première fonction C# dans Azure à l�
 description: Dans ce guide de démarrage rapide, vous allez apprendre à utiliser Visual Studio pour créer une fonction C# déclenchée par HTTP et qui s’exécute sur .NET Core 3.1 et à la publier sur Azure Functions.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 09/14/2021
+ms.date: 11/03/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f, contperf-fy21q3-portal
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-zone_pivot_groups: runtime-version-programming-functions
-ms.openlocfilehash: fb969f494c350d253d688d3a5379c30513aa64fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 60e40b675ac8bc32328ea68786329b372f91d056
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671250"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028208"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>Démarrage rapide : Créer votre première fonction C# dans Azure à l’aide de Visual Studio
-
-[!INCLUDE [functions-runtime-version-dotnet](../../includes/functions-runtime-version-dotnet.md)]
 
 Azure Functions vous permet d’exécuter votre code C# dans un environnement serverless dans Azure. 
 
 Dans cet article, vous apprendrez comment :
 
 > [!div class="checklist"]
-> * Utiliser Visual Studio pour créer un projet de bibliothèque de classes C#.
+> * Utiliser Visual Studio pour créer un projet de bibliothèque de classes C# sur .NET 6.0.
 > * Créer une fonction qui répond à des requêtes HTTP. 
 > * Exécuter votre code localement pour vérifier le comportement de la fonction.
 > * Déployer votre projet de code sur Azure Functions.
  
-::: zone pivot="programming-runtime-functions-v3"
 [!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
-::: zone-end
-::: zone pivot="programming-runtime-functions-v4"
-> [!NOTE]
-> Actuellement, Azure Functions 4.0 est en préversion et Visual Studio prend en charge la création de fonctions C# qui s’exécutent uniquement sur .NET 6 à l’aide du [modèle d’exécution in-process](functions-dotnet-class-library.md).
-::: zone-end
 
 Le fait de suivre ce guide de démarrage rapide entraîne une faible dépense de quelques cents USD tout au plus dans votre compte Azure.
 
@@ -45,22 +36,12 @@ Si vous souhaitez consulter une version de cet article adaptée à Visual Studio
 
 ## <a name="prerequisites"></a>Prérequis
 
-::: zone pivot="programming-runtime-functions-v3"
-+ [Visual Studio 2019](https://azure.microsoft.com/downloads/). Assurez-vous de sélectionner la charge de travail **Développement Azure** lors de l’installation. 
-::: zone-end
-::: zone pivot="programming-runtime-functions-v4"
-+ [Visual Studio 2022 Preview 3 ou version ultérieure](https://azure.microsoft.com/downloads/). Assurez-vous de sélectionner la charge de travail **Développement Azure** lors de l’installation. 
-::: zone-end
++ [Visual Studio 2022](https://azure.microsoft.com/downloads/), qui prend en charge .NET 6.0. Assurez-vous de sélectionner la charge de travail **Développement Azure** lors de l’installation. 
 
 + [Abonnement Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing). Si ce n’est déjà fait, créez un [compte gratuit](https://azure.microsoft.com/free/dotnet/) avant de commencer.
 
 ## <a name="create-a-function-app-project"></a>Créer un projet d’application de fonction
 
-::: zone pivot="programming-runtime-functions-v3"
-[!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
-::: zone-end
-
-::: zone pivot="programming-runtime-functions-v4"
 Le modèle de projet Azure Functions dans Visual Studio crée un projet de bibliothèque de classe C# que vous pouvez publier dans une application de fonction dans Azure. Vous pouvez utiliser une application de fonction pour regrouper des fonctions en une unité logique afin de faciliter la gestion, le déploiement, la mise à l’échelle et le partage des ressources.
 
 1. Dans le menu de Visual Studio, sélectionnez **Fichier** > **Nouveau** > **Projet**.
@@ -73,9 +54,9 @@ Le modèle de projet Azure Functions dans Visual Studio crée un projet de bib
 
     | Paramètre      | Valeur  | Description                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Version de .NET** | **.NET 6** | Cette valeur crée un projet de fonction qui s’exécute dans un processus interne avec la version 4.x du runtime d’Azure Functions. La version 1.x d’Azure Functions prend en charge .NET Framework. Pour plus d’informations, consultez [Vue d’ensemble des versions du runtime Azure Functions](./functions-versions.md).   |
+    | **Version de .NET** | **.NET 6** | Cette valeur crée un projet de fonction qui s’exécute dans un processus interne avec la version 4.x du runtime d’Azure Functions. Vous pouvez également choisir **.NET 6 (isolé)** pour créer un projet qui s’exécute dans un processus Worker distinct. La version 1.x d’Azure Functions prend en charge .NET Framework. Pour plus d’informations, consultez [Vue d’ensemble des versions du runtime Azure Functions](./functions-versions.md).   |
     | **Modèle de fonction** | **Déclencheur HTTP** | Cette valeur crée une fonction déclenchée par une requête HTTP. |
-    | **Compte de stockage (AzureWebJobsStorage)**  | **Émulateur de stockage** | Étant donné qu’une application de fonction dans Azure nécessite un compte de stockage, celui-ci est attribué ou créé quand vous publiez votre projet sur Azure. Un déclencheur HTTP n’utilise pas de chaîne de connexion de compte Stockage Azure ; tous les autres types de déclencheurs nécessitent une chaîne de connexion de compte Stockage Azure valide.  |
+    | **Compte de stockage (AzureWebJobsStorage)**  | **Émulateur de stockage** | Étant donné qu’une application de fonction dans Azure nécessite un compte de stockage, celui-ci est attribué ou créé quand vous publiez votre projet sur Azure. Un déclencheur HTTP n’utilise pas de chaîne de connexion de compte Stockage Azure ; tous les autres types de déclencheurs nécessitent une chaîne de connexion de compte Stockage Azure valide. Lorsque vous sélectionnez cette option, l’émulateur Azurite est utilisé. |
     | **Niveau d’autorisation** | **Anonyme** | La fonction créée peut être déclenchée par n’importe quel client sans fournir une clé. Ce paramètre d’autorisation facilite le test de votre nouvelle fonction. Pour plus d’informations sur les clés et autorisations, consultez [Clés d’autorisation](./functions-bindings-http-webhook-trigger.md#authorization-keys) et [Liaisons HTTP et webhook](./functions-bindings-http-webhook.md). |
     
     :::image type="content" source="../../includes/media/functions-vs-tools-create/functions-project-settings-v4.png" alt-text="Paramètres de projet Azure Functions":::
@@ -83,8 +64,6 @@ Le modèle de projet Azure Functions dans Visual Studio crée un projet de bib
     Veillez à définir le **Niveau d’autorisation** sur **Anonyme**. Si vous choisissez le niveau par défaut **Fonction**, vous êtes invité à présenter la [clé de fonction](./functions-bindings-http-webhook-trigger.md#authorization-keys) dans les requêtes d’accès à votre point de terminaison de fonction.
 
 1. Sélectionnez **Créer** pour créer le projet de fonction et la fonction de déclencheur HTTP.
-
-::: zone-end
 
 Visual Studio crée un projet et une classe qui contient un code réutilisable pour le type de fonction de déclencheur HTTP. Le code réutilisable envoie une réponse HTTP qui inclut une valeur de la chaîne de requête ou du corps de requête. L’attribut `HttpTrigger` spécifie que l’exécution de la fonction est déclenchée par une requête HTTP.
 
@@ -124,13 +103,7 @@ Avant de pouvoir publier votre projet, vous devez disposer d’une application d
 
 1. Cliquez avec le bouton droit sur l’application de fonction et choisissez **Ouvrir dans le navigateur**. Cela ouvre la racine de votre application de fonction dans votre navigateur web par défaut et affiche la page qui indique que votre application de fonction est en cours d’exécution. 
 
-    ::: zone pivot="programming-runtime-functions-v3"
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="Application de fonction en cours d’exécution":::
-    ::: zone-end
-    
-    ::: zone pivot="programming-runtime-functions-v4"
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure-v4.png" alt-text="Application de fonction en cours d’exécution":::
-    ::: zone-end
 
 1. Dans la barre d’adresses du navigateur, ajoutez la chaîne `/api/HttpExample?name=Functions` à l’URL de base et exécutez la demande.
 

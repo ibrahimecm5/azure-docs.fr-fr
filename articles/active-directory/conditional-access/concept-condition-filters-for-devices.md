@@ -4,25 +4,24 @@ description: Utiliser Filtre pour appareils dans l’Accès conditionnel pour am
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/26/2021
+ms.date: 11/08/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dc7b4630d26c0f1b78df5a29a3210fd68f3d734
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 311acb544a50758ec39314666201294c3930fdbc
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012659"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026802"
 ---
 # <a name="conditional-access-filter-for-devices"></a>Accès conditionnel : Filtre pour appareils
 
 Lors de la création de stratégies d’accès conditionnel, les administrateurs ont souhaité avoir à disposition une fonction permettant de cibler ou d’exclure des appareils spécifiques dans leur environnement. La condition Filtres pour appareils offre aux administrateurs cette fonctionnalité. Vous pouvez maintenant cibler des appareils spécifiques à l’aide [des opérateurs et des propriétés pris en charge pour les filtres d’appareil](#supported-operators-and-device-properties-for-filters) et les autres conditions d’attribution disponibles dans vos stratégies d’accès conditionnel.
 
 :::image type="content" source="media/concept-condition-filters-for-devices/create-filter-for-devices-condition.png" alt-text="Création d’un filtre pour appareil dans les conditions d’une stratégie d’accès conditionnel":::
-
 
 ## <a name="common-scenarios"></a>Scénarios courants
 
@@ -88,6 +87,10 @@ Stratégie 2 : Tous les utilisateurs ayant le rôle d’annuaire Administrateur
 1. Confirmez vos paramètres et réglez **Activer la stratégie** sur **Activé**.
 1. Sélectionnez **Créer** pour créer votre stratégie.
 
+### <a name="setting-attribute-values"></a>Définition de valeurs d’attribut
+
+La définition d’attributs d’extension est possible via l’API Graph. Pour plus d’informations sur la définition d’attributs d’appareils, consultez l’article [Mettre à jour un appareil](/graph/api/device-update?view=graph-rest-1.0&tabs=http#example-2--write-extensionattributes-on-a-device).
+
 ### <a name="filter-for-devices-graph-api"></a>API Graph Filtre pour appareils
 
 L’API Filtre pour appareils est disponible dans le point de terminaison Microsoft Graph v1.0 et est accessible à l’aide de https://graph.microsoft.com/v1.0/identity/conditionalaccess/policies/. Vous pouvez configurer un filtre pour appareils lors de la création d’une stratégie d’accès conditionnel, ou vous pouvez mettre à jour une stratégie existante pour configurer la condition Filtre pour appareils. Pour mettre à jour une stratégie existante, vous pouvez effectuer un appel de correctif sur le point de terminaison Microsoft Graph v1.0 mentionné ci-dessus en ajoutant l’ID de stratégie d’une stratégie existante et en exécutant le corps de la requête suivante. L’exemple ci-dessous illustre la configuration d’une condition Filtre pour appareils excluant des appareils qui ne sont pas marqués comme des appareils SAW. La syntaxe de la règle peut être composée de plusieurs expressions. Pour plus d’informations sur la syntaxe, consultez [Règles d’appartenance de groupe dynamique dans Azure Active Directory](../enterprise-users/groups-dynamic-membership.md). 
@@ -143,6 +146,7 @@ La condition Filtre pour appareils dans l’accès conditionnel évalue la strat
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+- [Mettre à jour l’API Graph d’un appareil](/graph/api/device-update?view=graph-rest-1.0&tabs=http)
 - [Accès conditionnel : Conditions](concept-conditional-access-conditions.md)
 - [Stratégies d’accès conditionnel courantes](concept-conditional-access-policy-common.md)
 - [Sécurisation des appareils dans le contexte de l’accès privilégié](/security/compass/privileged-access-devices)

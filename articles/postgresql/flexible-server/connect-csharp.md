@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 01/16/2021
-ms.openlocfilehash: fd6df64482c5eaeec79fe5f2c9a92aaae475dfdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7eb4d405982b3a069c77d3d6bf994d3d9f6a2bdd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98605920"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429049"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Démarrage rapide : Utiliser .NET (C#) afin de se connecter à Azure Database pour PostgreSQL - Serveur flexible et d’interroger les données
 
@@ -25,7 +25,7 @@ Voici les prérequis pour ce guide de démarrage rapide :
 - Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free).
 - Créer une instance Azure Database pour PostgreSQL - Serveur flexible à l’aide du [portail Azure](./quickstart-create-server-portal.md) <br/> ou d’[Azure CLI](./quickstart-create-server-cli.md), si vous n’en avez pas.
 - Utilisez la base de données vide *postgres* qui se trouve sur le serveur ou créez une [nouvelle base de données](./quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql).
-- Installez le [.NET Framework](https://www.microsoft.com/net/download) correspondant à votre plateforme (Windows, Ubuntu Linux ou macOS).
+- Installez le [Kit de développement logiciel (SDK) .NET](https://dotnet.microsoft.com/download) correspondant à votre plateforme (Windows, Ubuntu Linux ou macOS).
 - Installez [Visual Studio](https://www.visualstudio.com/downloads/) pour générer votre projet.
 - Installez le package NuGet [Npgsql](https://www.nuget.org/packages/Npgsql/) dans Visual Studio.
 

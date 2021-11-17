@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 216c45bf097718f6a696e64c8bd9c8718fc0185e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 84510afb4a6bac20f7b0496bf99a3e2a5d2571f9
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445036"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132040298"
 ---
 Commencez à utiliser la bibliothèque de client Détecteur d’anomalies pour Python. Procédez comme suit pour installer le package de démarrage à l’aide des algorithmes fournis par le service. Le service Détecteur d’anomalies vous permet de rechercher des anomalies dans vos données de séries chronologiques en utilisant automatiquement les modèles les mieux adaptés sur celles-ci, quel que soit le secteur d’activité, le scénario ou le volume de données.
 
@@ -117,6 +117,12 @@ Créez un objet `DetectRequest` avec vos séries chronologiques, et la `TimeGran
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)
 ```
+
+Descriptions des arguments d’entrée : « series » : obligatoire dans la requête. doit être de type tableau/liste, et comporter plus de 12 points et pas plus de 8 640 points. doit être trié par horodatage dans l’ordre croissant, et ne peut pas avoir un horodatage dupliqué. « granularity » : obligatoire dans la requête. peut uniquement être l’un des éléments suivants : [« daily », « minutely », « hourly », « weekly », « monthly », « yearly », « secondly »].
+« customInterval » : doit être un entier > 0.
+« period » : doit être un entier >= 0.
+« maxAnomalyRatio » : doit être inférieur à 50 % des points de série (0 < maxAnomalyRatio < 0,5).
+« sensitivity » : doit être un entier compris entre 0 et 99.
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Détecter des anomalies dans un jeu de données entier
 

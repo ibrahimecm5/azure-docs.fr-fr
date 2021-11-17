@@ -12,18 +12,18 @@ ms.author: lajanuar
 recommendations: false
 keywords: traitement de données automatisé, traitement de documents, entrée de données automatisée, traitement des formulaires
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a3df07d7313243660270300127bb74b55fe95857
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f9c22bef6236008c772c39a9fea4f4673923b070
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021597"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843097"
 ---
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD024 -->
 # <a name="what-is-azure-form-recognizer"></a>Qu’est-ce qu’Azure Form Recognizer?
 
-Azure Form Recognizer est un service cloud [Azure Applied AI Service](../../applied-ai-services/index.yml) qui utilise les modèles Machine Learning pour extraire et analyser les champs de formulaire, le texte et les tableaux de vos documents. Form Recognizer analyse vos formulaires et documents, extrait le texte et les données, mappe les relations entre les champs en tant que paires clé-valeur et retourne une sortie JSON structurée. Vous pouvez rapidement obtenir des résultats justes et adaptés à votre contenu en particulier, sans avoir besoin d’une intervention manuelle excessive ou de compétences approfondies en science des données. Utilisez Form Recognizer pour automatiser le traitement des données dans les applications et les workflows, pour améliorer les stratégies pilotées par les données et pour enrichir les fonctionnalités de recherche de documents.
+Azure Form Recognizer est un service cloud d’[Azure Applied AI Services](../../applied-ai-services/index.yml) qui utilise des modèles Machine Learning pour extraire et analyser des champs de formulaire, du texte et des tableaux de vos documents. Form Recognizer analyse vos formulaires et documents, extrait le texte et les données, mappe les relations entre les champs en tant que paires clé-valeur et retourne une sortie JSON structurée. Vous pouvez rapidement obtenir des résultats justes et adaptés à votre contenu en particulier, sans avoir besoin d’une intervention manuelle excessive ou de compétences approfondies en science des données. Utilisez Form Recognizer pour automatiser le traitement des données dans les applications et les workflows, pour améliorer les stratégies pilotées par les données et pour enrichir les fonctionnalités de recherche de documents.
 
 Form Recognizer identifie, extrait et analyse facilement les données de document suivantes :
 

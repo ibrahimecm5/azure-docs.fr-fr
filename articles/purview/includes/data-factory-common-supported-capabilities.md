@@ -5,12 +5,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 11/01/2021
-ms.openlocfilehash: 238db4caa1bcb11e0f4c27b6e490b0859b1e536d
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 51d0252b374eb2e4a24d6e0a7ece2bff010d0caa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851480"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464039"
 ---
 ### <a name="copy-activity-support"></a>Prise en charge de l’activité de copie
 
@@ -30,7 +30,6 @@ ms.locfileid: "131851480"
 | Azure SQL Database \* | Oui | 
 | Azure SQL Managed Instance\* | Oui | 
 | Azure Synapse Analytics\* | Oui | 
-| Pool SQL dédié Azure (anciennement SQL DW) \* | Oui | 
 | Stockage de table Azure | Oui |
 | Amazon S3 | Oui | 
 | Hive\* | Oui | 
@@ -74,7 +73,6 @@ En plus de la traçabilité des données, le schéma de la ressource de données
 | Azure SQL Database \* | Oui |
 | Azure SQL Managed Instance\* | Oui | 
 | Azure Synapse Analytics\* | Oui |
-| Pool SQL dédié Azure (anciennement SQL DW) \* | Oui | 
 
 *\* Azure Purview ne prend pas en charge à l’heure actuelle les requêtes ni les procédures stockées pour la traçabilité et l’analyse. La traçabilité est limitée aux sources de table et de vue uniquement.*
 

@@ -10,12 +10,12 @@ metadata:
   ms.topic: how-to
   ms.date: 07/20/2020
   ms.author: sebansal
-  ms.openlocfilehash: 7341cad11d049217d282eb1e2c5c80aea0271ff2
-  ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+  ms.openlocfilehash: 6b7893e84dce9b5fa7bf7993dfa5f145363811f1
+  ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 06/15/2021
-  ms.locfileid: "112124721"
+  ms.lasthandoff: 11/06/2021
+  ms.locfileid: "131893098"
 title: Questions fréquentes (FAQ) sur l’importation de certificats Azure Key Vault
 summary: Cet article offre des réponses aux questions fréquemment posées sur l’importation de certificats Azure Key Vault.
 sections:
@@ -72,4 +72,7 @@ sections:
   - question: "Pourquoi le certificat App Service que j’ai importé dans Key Vault ne s’affiche-t-il pas ? \n"
     answer: >
       Si vous avez correctement importé le certificat, vous devriez être en mesure de le confirmer en accédant au volet **Secrets**.
+  - question: "Comment combiner des certificats dans un seul fichier .PEM ou .PFX pour importer le certificat entier dans Key Vault ? \n"
+    answer: >
+      Des autorités de certification peuvent offrir la possibilité de télécharger un certificat individuellement (racine, intermédiaire, feuille) ou de télécharger tous les certificats dans un seul fichier. Lors de l’importation d’un certificat dans Key Vault, cela vous permet d’importer un certificat ou la chaîne entière.
 additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\n- [Certificats Azure Key Vault](./about-certificates.md)"

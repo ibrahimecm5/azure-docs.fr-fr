@@ -3,12 +3,12 @@ title: Opérations du plan de contrôle et du plan de données
 description: Décrit la différence entre les opérations du plan de contrôle et du plan de données. Les opérations du plan de contrôle sont gérées par Azure Resource Manager. Les opérations de plan de données sont gérées par un service.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 0e1dbf525266fdcf7ca34a449cc51169dda027d5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c5e72693c751086f17958c39c96d12624e478b99
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755973"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893402"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Plan de contrôle et plan de données Azure
 
@@ -33,7 +33,7 @@ Toutes les requêtes d’opérations de plan de contrôle sont envoyées à l’
 * Pour Azure Allemagne, l’URL est `https://management.microsoftazure.de/`.
 * Pour Microsoft Azure China 21Vianet, l’URL est `https://management.chinacloudapi.cn`.
 
-Pour découvrir quelles opérations utilisent l’URL Azure Resource Manager, consultez [l’API REST Azure](/rest/api/azure/). Par exemple, [l’opération de création ou de mise à jour](/rest/api/mysql/flexibleserver(preview)/servers/update) pour MySQL est une opération de plan de contrôle, car l’URL de la demande est :
+Pour découvrir quelles opérations utilisent l’URL Azure Resource Manager, consultez [l’API REST Azure](/rest/api/azure/). Par exemple, [l’opération de création ou de mise à jour](/rest/api/mysql/singleserver/databases/create-or-update) pour MySQL est une opération de plan de contrôle, car l’URL de la demande est :
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}?api-version=2017-12-01
@@ -60,7 +60,7 @@ POST {Endpoint}/text/analytics/v2.0/languages
 
 Les opérations du plan de données ne sont pas limitées à l’API REST. Elles peuvent nécessiter des informations d’identification supplémentaires, comme la connexion à une machine virtuelle ou un serveur de base de données.
 
-Les fonctionnalités qui appliquent la gestion et la gouvernance peuvent ne pas être appliquées aux opérations du plan de données. Vous devez prendre en compte les différentes façons dont les utilisateurs interagissent avec vos solutions. Par exemple, un verrou qui empêche les utilisateurs de supprimer une base de données n’empêche pas les utilisateurs de supprimer des données via des requêtes.
+Les fonctionnalités qui appliquent la gestion et la gouvernance peuvent ne pas s’appliquer aux opérations du plan de données. Vous devez prendre en compte les différentes façons dont les utilisateurs interagissent avec vos solutions. Par exemple, un verrou qui empêche les utilisateurs de supprimer une base de données n’empêche pas les utilisateurs de supprimer des données via des requêtes.
 
 Vous pouvez utiliser certaines stratégies pour régir les opérations du plan de données. Pour plus d’informations, consultez [Modes Fournisseur de ressources (préversion) dans Azure Policy](../../governance/policy/concepts/definition-structure.md#resource-provider-modes).
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6a1e887b9cbab6c8393dacf83a0e148ba257630d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 8768d188ae56896fe1f7272ee18533e95343e69c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452620"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846555"
 ---
 # <a name="tutorial-deploy-web-application-connected-to-azure-storage-blob-with-service-connector"></a>Didacticiel : Déployer une application web connectée à Azure Storage Blob avec Service Connector
 
@@ -26,10 +26,10 @@ Découvrez comment accéder au stockage Azure pour le compte d’une application
 ## <a name="1-set-up-your-initial-environment"></a>1. Configurer votre environnement initial
 
 1. Vous devez disposer d’un compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-2. Installez l’interface <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 ou version ultérieure, avec laquelle vous exécutez des commandes dans n’importe quel interpréteur de commandes pour provisionner et configurer des ressources Azure.
+2. Installez l’interface <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> version 2.30.0 ou ultérieure, avec laquelle vous exécutez des commandes dans n’importe quel interpréteur de commandes pour provisionner et configurer des ressources Azure.
 
 
-Vérifiez également que votre version d’Azure CLI est la version 2.18.0 ou ultérieure :
+Vérifiez que vous utilisez Azure CLI version 2.30.0 ou ultérieure :
 
 ```Azure CLI
 az --version

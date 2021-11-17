@@ -121,8 +121,6 @@
           href: virtual-wan-site-to-site-portal.md
         - name: Connecter une passerelle de réseau virtuel à Virtual WAN
           href: connect-virtual-network-gateway-vwan.md
-        - name: Effectuer une capture de paquets
-          href: virtual-wan-site-to-site-packet-capture.md
         - name: Configurer une stratégie IPsec personnalisée
           href: virtual-wan-custom-ipsec-portal.md
         - name: Configurer les règles NAT
@@ -201,6 +199,8 @@
           href: monitor-virtual-wan.md
         - name: Azure Monitor Insights
           href: azure-monitor-insights.md
+        - name: Configurer les captures de paquets S2S VPN
+          href: packet-capture-site-to-site-powershell.md
 - name: Informations de référence
   items:
     - name: Azure PowerShell

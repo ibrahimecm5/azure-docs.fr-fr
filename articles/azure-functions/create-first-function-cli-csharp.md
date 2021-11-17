@@ -11,35 +11,26 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
-zone_pivot_groups: runtime-version-programming-functions
-ms.openlocfilehash: e025362dfb992c1c9471ccae602412bcd21cb98e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 75d8177b8feaeb5bf4dfa0d7a3791b65fab930d4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031464"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026675"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Démarrage rapide : Créer une fonction C# dans Azure à partir de la ligne de commande
-
-[!INCLUDE [functions-runtime-version-dotnet](../../includes/functions-runtime-version-dotnet.md)]
 
 Dans cet article, vous utilisez les outils ligne de commande pour créer une fonction C# qui répond aux requêtes HTTP. Après avoir testé le code localement, vous le déployez dans l’environnement serverless d’Azure Functions.
 
 [!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
 
-Le fait de suivre ce guide de démarrage rapide entraîne une faible dépense de quelques cents USD tout au plus dans votre compte Azure.
+Cet article crée une fonction déclenchée par HTTP qui s’exécute sur .NET 6.0. Si vous souhaitez consulter une version de cet article adaptée à Visual Studio Code, [cliquez ici](create-first-function-vs-code-csharp.md).
 
-Si vous souhaitez consulter une version de cet article adaptée à Visual Studio Code, [cliquez ici](create-first-function-vs-code-csharp.md).
+Le fait de suivre ce guide de démarrage rapide entraîne une faible dépense de quelques cents USD tout au plus dans votre compte Azure.
 
 ## <a name="configure-your-local-environment"></a>Configurer votre environnement local
 
 Avant de commencer la lecture cet article, vous devez disposer des éléments suivants :
-
-::: zone pivot="programming-runtime-functions-v3"
-[!INCLUDE [functions-cli-dotnet-prerequisites](../../includes/functions-cli-dotnet-prerequisites.md)]
-::: zone-end
-::: zone pivot="programming-runtime-functions-v4"
-# <a name="in-process"></a>[In-process](#tab/in-process)
 
 + [SDK .NET 6.0](https://dotnet.microsoft.com/download)
 
@@ -51,22 +42,6 @@ Avant de commencer la lecture cet article, vous devez disposer des éléments su
 
     + Le [module Azure Az PowerShell](/powershell/azure/install-az-ps) version 5.9.0 ou ultérieure.
 
-# <a name="isolated-process"></a>[Processus isolé](#tab/isolated-process)
-
-+ [SDK .NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
-
-+ [Kit SDK .NET Core 3.1](https://dotnet.microsoft.com/download). Exigé par le processus de génération.
-
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) version 4.x.
-
-+ Un des outils suivants pour créer des ressources Azure :
-
-    + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 ou ultérieure.
-
-    + Le [module Azure Az PowerShell](/powershell/azure/install-az-ps) version 5.9.0 ou ultérieure.
----
-::: zone-end
-
 Vous avez aussi besoin d’un compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ### <a name="prerequisite-check"></a>Vérification du prérequis
@@ -75,7 +50,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
++ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 4.x.
 
 + Exécutez `dotnet --list-sdks` pour vérifier que les versions requises sont installées.
 
@@ -85,7 +60,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
++ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 4.x.
 
 + Exécutez `dotnet --list-sdks` pour vérifier que les versions requises sont installées.
 
@@ -235,10 +210,8 @@ Pour en savoir plus, voir [Déclencheurs et liaisons HTTP Azure Functions](./fun
 
     ---
 
-    ::: zone pivot="programming-runtime-functions-v4"
     > [!NOTE]
     > Cette commande crée une application de fonction avec version 3.x du runtime Azure Functions. La commande `func azure functionapp publish` que vous exécuterez ultérieurement mettra à jour l’application vers la version 4.x.
-    ::: zone-end
 
     Dans l’exemple précédent, remplacez `<STORAGE_NAME>` par le nom du compte que vous avez utilisé à l’étape précédente, puis remplacez `<APP_NAME>` par le nom global unique qui vous convient. `<APP_NAME>` représente également le domaine DNS par défaut pour l’application de fonction.
 

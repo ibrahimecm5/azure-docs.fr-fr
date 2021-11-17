@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9a83646556838732a3b79f93771c762f00ed5afc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2ea3022b0138e290891e1ee3bc78975648aae06c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144292"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847885"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>Prise en charge du classement de bases de données pour Synapse SQL dans Azure Synapse Analytics 
 
@@ -22,6 +22,9 @@ Les classements fournissent les règles de paramètres régionaux, de page de co
 Sur le Portail Azure, il est possible de modifier le classement par défaut d’une base de données de pool SQL dédié lors de sa création. Grâce à cette fonctionnalité, il est encore plus facile de créer une base de données à l’aide de l’un des 3800 classements de base de données pris en charge.
 
 Vous pouvez spécifier le classement par défaut de la base de données de pools SQL serverless au moment de sa création à l’aide de l’instruction CREATE DATABASE.
+
+> [!NOTE]
+> Dans Azure Synapse Analytics, le texte de la requête (y compris les variables, les constantes, etc.) est toujours géré à l’aide du classement au niveau de la base de données, et non du classement au niveau du serveur comme dans d’autres offres de SQL Server.
 
 ## <a name="change-collation"></a>Modifier le classement
 Pour changer le classement par défaut de la base de données de pools SQL dédiés, vous devez mettre à jour le champ Classement dans l’expérience d’approvisionnement. Par exemple, si vous souhaitez modifier le classement par défaut en respectant la casse, vous devez renommer le classement SQL_Latin1_General_CP1_CI_AS en SQL_Latin1_General_CP1_CS_AS. 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 058ce3899e5857c136859426f0972efc9fd0b92f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 7ec263b7e6c5c5f2191f207cf40ddc43b69fa6ad
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716004"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132096951"
 ---
 Le tableau suivant répertorie les informations de quota propres à la messagerie Azure Service Bus. Pour plus d’informations sur la tarification et d’autres quotas pour Service Bus, voir la [Tarification Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) .
 
@@ -29,7 +29,7 @@ Le tableau suivant répertorie les informations de quota propres à la messageri
 | Taille maximale de tout nom d’entité de messagerie : espace de noms, abonnement ou règle d’abonnement |Entité |- |50 caractères. |
 | Taille maximale de l’ID d’un message | Entité |- | 128 |
 | Taille maximale de l’ID de session d’un message | Entité |- | 128 |
-| Taille de message d’une entité de file d’attente/rubrique/abonnement |Entité |Les messages entrants dont la taille dépasse ces quotas sont rejetés et le code appelant reçoit une exception. | 256 Ko pour le [niveau Standard](../articles/service-bus-messaging/service-bus-premium-messaging.md)<br/> 1 Mo pour le [niveau Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />La taille du message comprend la taille des propriétés (système et utilisateur) et la taille de la charge utile. La taille des propriétés système varie en fonction de votre scénario. |
+| Taille de message d’une entité de file d’attente/rubrique/abonnement |Entité |Les messages entrants dont la taille dépasse ces quotas sont rejetés et le code appelant reçoit une exception. | 256 Ko pour le [niveau Standard](../articles/service-bus-messaging/service-bus-premium-messaging.md)<br/> 100 Mo pour le [niveau Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />La taille du message comprend la taille des propriétés (système et utilisateur) et la taille de la charge utile. La taille des propriétés système varie en fonction de votre scénario. |
 | Taille de propriété de message d’une entité de file d’attente/rubrique/abonnement |Entité | L’exception `SerializationException` est générée. | <p>La taille de propriété de message maximale pour chaque propriété est de 32 Ko.</p><p>La taille cumulée de toutes les propriétés ne peut pas dépasser 64 Ko. La limite s’applique à l’intégralité de l’en-tête du message réparti, qui inclut les propriétés de l’utilisateur ainsi que les propriétés système telles que le numéro de séquence, l’étiquette et l’ID de message.</p><p>Nombre maximal de propriétés d’en-tête dans le conteneur de propriétés : **byte/int.MaxValue**.</p> |
 | Nombre d’abonnements par rubrique |Entité |Les requêtes suivantes de création d’abonnements supplémentaires à la rubrique sont rejetées. Par conséquent, en cas de configuration via le portail, un message d’erreur est affiché. Si elle est appelée à partir de l’API de gestion, une exception est reçue par le code appelant. |2 000 par rubrique pour le niveau Standard et le niveau Premium. |
 | Nombre de filtres SQL par rubrique |Entité |Les requêtes suivantes de création de filtres supplémentaires sur la rubrique sont rejetées et le code appelant reçoit une exception. |2 000 |

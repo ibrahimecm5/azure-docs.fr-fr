@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 074a2cbef5a19185f2e817f9cedd4ea509a3d966
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2e40125d65dd2b4b701d5b1049444a52e6cb7dc4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131457275"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850657"
 ---
 # <a name="connect-to-and-manage-hive-metastore-databases-in-azure-purview"></a>Connexion à des bases de données Hive Metastore et gestion dans Azure Purview
 
@@ -23,7 +23,9 @@ Cet article explique comment inscrire des bases de données Hive Metastore et co
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| Oui |
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| Oui** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 > [!Important]
 > Les plateformes prises en charge sont Apache Hadoop, Cloudera, Hortonworks et Databricks.

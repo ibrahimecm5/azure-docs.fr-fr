@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 11/5/2021
-ms.openlocfilehash: ce039347c2fe06f061aecc4a01cd05e92c43ae74
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.date: 09/23/2021
+ms.openlocfilehash: f5acdf621c04ba48664004bbb1f28ae1c0914fcb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131893175"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447034"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Utiliser des réplicas en lecture seule pour décharger des charges de travail de requêtes en lecture seule
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Dans le cadre d’une [architecture à haute disponibilité](high-availability-s
 
 La fonctionnalité *Échelle horizontale en lecture* est également disponible au niveau de service Hyperscale lorsqu'au moins un [réplica secondaire](service-tier-hyperscale-replicas.md) est créé. Les [réplicas nommées](service-tier-hyperscale-replicas.md#named-replica-in-preview) secondaires hyperscale offrent une mise à l'échelle indépendante, l'isolation de l'accès, l'isolation de la charge de travail, l'extension massive de la lecture et d'autres avantages. Plusieurs réplicas [HA secondaires](service-tier-hyperscale-replicas.md#high-availability-replica) peuvent être utilisés pour équilibrer les charges de travail en lecture seule qui nécessitent plus de ressources qu'il n'en existe sur un réplica secondaire. 
 
-L’architecture à haute disponibilité des niveaux de service De base, Standard et Usage général n’inclut pas de réplica. La fonctionnalité *Échelle horizontale en lecture* n'est pas disponible à ces niveaux de service. Toutefois, les [géo-réplicas](active-geo-replication-overview.md) peuvent offrir des fonctionnalités similaires dans ces niveaux de service.
+L’architecture à haute disponibilité des niveaux de service De base, Standard et Usage général n’inclut pas de réplica. La fonctionnalité *Échelle horizontale en lecture* n'est pas disponible à ces niveaux de service.
 
 Le diagramme suivant illustre la fonctionnalité de Premium et critique pour l’entreprise des bases de données et des instances managées.
 

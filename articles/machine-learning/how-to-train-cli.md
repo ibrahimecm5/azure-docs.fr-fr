@@ -1,22 +1,22 @@
 ---
-title: Entraîner des modèles (créer des travaux) avec l’interface CLI (v2)
+title: Entraîner des modèles avec l’interface CLI (v2)
 titleSuffix: Azure Machine Learning
 description: Découvrez comment entraîner des modèles (créer des travaux) à l’aide de l’extension Azure CLI pour Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-author: lostmygithubaccount
-ms.author: copeters
+author: amibp
+ms.author: amipatel
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 3d46d5baeb7e81e113c24e24a9a69b5cfc2a47a7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 1300a830fb3688c9ebc2b9f43b77e3b9214c731d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557373"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054312"
 ---
 # <a name="train-models-with-the-cli-v2-preview"></a>Entraîner des modèles avec l’interface CLI (v2) (préversion)
 
@@ -38,7 +38,7 @@ L’entraînement d’un modèle de machine learning est normalement un processu
 
 Pour exécuter les exemples d’entraînement, commencez par cloner le dépôt d’exemples et placez-le dans le répertoire `cli` :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="git_clone":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="git_clone":::
 
 `--depth 1` clone uniquement le dernier commit dans le dépôt, ce qui réduit le temps nécessaire à l’exécution de l’opération.
 
@@ -46,7 +46,7 @@ Pour exécuter les exemples d’entraînement, commencez par cloner le dépôt d
 
 Vous pouvez créer un cluster de calcul Azure Machine Learning à partir de la ligne de commande. Par exemple, les commandes suivantes créent un cluster nommé `cpu-cluster` et un autre nommé `gpu-cluster`.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-compute.sh" id="create_computes":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-compute.sh" id="create_computes":::
 
 Le calcul ne vous est pas facturé à ce stade, car `cpu-cluster` et `gpu-cluster` restent à 0 nœud tant qu’aucun travail n’est soumis. Apprenez-en davantage sur [la gestion et l’optimisation des coûts pour AmlCompute](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute).
 
@@ -62,7 +62,7 @@ Pour l’interface CLI d’Azure Machine Learning (v2), les travaux sont créés
 
 Le travail « hello world » comporte les trois :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world.yml":::
 
 > [!WARNING]
 > Python doit être installé dans l’environnement utilisé pour les travaux. Exécutez `apt-get update -y && apt-get install python3 -y` dans votre Dockerfile pour effectuer l’installation le cas échéant ou dérivez d’une image de base dans laquelle Python est déjà installé.
@@ -72,7 +72,7 @@ Le travail « hello world » comporte les trois :
 
 Vous pouvez l’exécuter ainsi :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world":::
 
 > [!TIP]
 > Le paramètre `--web` tente d’ouvrir votre travail dans Azure Machine Learning studio en utilisant votre navigateur web par défaut. Le paramètre `--stream` peut être utilisé pour diffuser en streaming des journaux sur la console et bloquer d’autres commandes.
@@ -81,7 +81,7 @@ Vous pouvez l’exécuter ainsi :
 
 Vous pouvez remplacer les valeurs de spécification de travaux YAML en utilisant `--set` lors de la création ou de la mise à jour d’un travail. Exemple :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_set":::
 
 ## <a name="job-names"></a>Noms de travail
 
@@ -89,35 +89,35 @@ La plupart des commandes `az ml job`, sauf `create` et `list`, demandent `--name
 
 Pour automatiser des travaux dans des scripts et des flux CI/CD, vous pouvez capturer le nom d’un travail lors de sa création. Pour cela, interrogez la sortie et ajoutez `--query name -o tsv`. Les caractéristiques varient en fonction de l’interpréteur de commandes, mais pour Bash :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_name":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_name":::
 
 Vous pouvez ensuite utiliser `$run_id` dans les commandes suivantes comme `update`, `show` ou `stream` :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_show":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_show":::
 
 ## <a name="organize-jobs"></a>Organiser les travaux
 
 Pour organiser les travaux, vous pouvez définir un nom complet, un nom d’expérience, une description et des étiquettes. Les descriptions prennent en charge la syntaxe Markdown dans le studio. Ces propriétés sont mutables après la création d’un travail. Exemple complet :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-org.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-org.yml":::
 
 Si vous exécutez ce travail, ces propriétés sont immédiatement visibles dans le studio :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_org":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_org":::
 
 Utilisez `--set` pour mettre à jour les valeurs mutables après la création du travail :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_org_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_org_set":::
 
 ## <a name="environment-variables"></a>Variables d'environnement
 
 Vous pouvez définir des variables d’environnement à utiliser dans votre travail :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-env-var.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-env-var.yml":::
 
 Vous pouvez exécuter ce travail :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_env_var":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_env_var":::
 
 > [!WARNING]
 > Utilisez `inputs` pour paramétrer des arguments dans `command`. Consultez [Entrées et sorties](#inputs-and-outputs).
@@ -136,7 +136,7 @@ Vous pouvez spécifier la clé `code.local_path` dans un travail avec comme vale
 
 Examinons un travail qui spécifie du code :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-mlflow.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-mlflow.yml":::
 
 Le script Python se trouve dans le répertoire de code source local. La commande appelle ensuite `python` pour exécuter le script. Le même modèle peut être appliqué à d’autres langages de programmation.
 
@@ -155,11 +155,11 @@ Quand ils effectuent des itérations sur des modèles, les scientifiques des don
 
 Jetons un œil au script Python appelé dans le travail ci-dessus. Ce script utilise `mlflow` pour journaliser un paramètre, une métrique et un artefact :
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/basics/src/hello-mlflow.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/basics/src/hello-mlflow.py":::
 
 Vous pouvez exécuter ce travail dans le cloud par le biais d’Azure Machine Learning, où il est suivi et auditable :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_mlflow":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_mlflow":::
 
 ### <a name="query-metrics-with-mlflow"></a>Interroger les métriques avec MLflow
 
@@ -167,7 +167,7 @@ Après l’exécution de travaux, vous pouvez interroger les résultats de ces e
 
 Premièrement, récupérez l’URI de suivi MLflow pour votre espace de travail Azure Machine Learning :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="mlflow_uri":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="mlflow_uri":::
 
 Utilisez la sortie de cette commande dans `mlflow.set_tracking_uri(<YOUR_TRACKING_URI>)` à partir d’un environnement Python avec MLflow importé. Les appels MLflow correspondent désormais aux travaux dans votre espace de travail Azure Machine Learning.
 
@@ -179,15 +179,15 @@ Les travaux ont généralement des entrées et des sorties. Les entrées peuvent
 
 Les entrées littérales sont résolues directement dans la commande. Vous pouvez modifier notre travail « hello world » pour utiliser des entrées littérales :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-input.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-input.yml":::
 
 Vous pouvez exécuter ce travail :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_input":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_input":::
 
 Vous pouvez utiliser `--set` pour remplacer les entrées :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_input_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_input_set":::
 
 Les entrées littérale des travaux peuvent être [converties en entrées d’espace de recherche](#search-space-inputs) pour les balayages hyperparamétriques lors de l’entraînement de modèles.
 
@@ -200,15 +200,15 @@ Pour un travail de balayage, vous pouvez spécifier un espace de recherche à pa
 
 Démontrons ce concept avec un script Python simple qui accepte des arguments et journalise une métrique aléatoire :
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/basics/src/hello-sweep.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/basics/src/hello-sweep.py":::
 
 Créez à présent un travail de balayage correspondant :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-sweep.yml":::
 
 Exécutez-le :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_sweep":::
 
 ### <a name="data-inputs"></a>Entrées de données
 
@@ -216,23 +216,23 @@ Les entrées de données sont résolues en chemin sur le système de fichiers lo
 
 Vous pouvez créer un script Python qui prend comme argument le chemin au fichier CSV Iris, le lit dans un dataframe, imprime les 5 premières lignes et l’enregistre dans le répertoire `outputs`.
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/basics/src/hello-iris.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/basics/src/hello-iris.py":::
 
 Des entrées d’URI de stockage Azure peuvent être spécifiées pour monter ou télécharger les données sur le système de fichiers local. Vous pouvez spécifier un seul fichier :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-file.yml":::
 
 Exécutez ensuite la commande suivante :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="iris_file":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="iris_file":::
 
 Ou un dossier entier :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-folder.yml":::
 
 Exécutez ensuite la commande suivante :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="iris_folder":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="iris_folder":::
 
 #### <a name="private-data"></a>Données privées
 
@@ -241,11 +241,11 @@ Pour des données privées dans Stockage Blob Azure ou Azure Data Lake Storage c
 > [!WARNING]
 > L’exécution de ces travaux échoue si le fichier CSV Iris n’est pas copié au même emplacement dans `workspaceblobstore`.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-file.yml":::
 
 Ou le répertoire entier :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-folder.yml":::
 
 ### <a name="default-outputs"></a>Sorties par défaut
 
@@ -253,15 +253,15 @@ Les répertoires `./outputs` et `./logs` font l’objet d’un traitement spéci
 
 Vous pouvez modifier le travail « hello world » pour qu’il génère la sortie dans un fichier du répertoire de sorties par défaut, au lieu de l’imprimer dans `stdout` :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output.yml":::
 
 Vous pouvez exécuter ce travail :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_output":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_output":::
 
 Téléchargez à présent les journaux, où `helloworld.txt` sera présent dans le répertoire `<RUN_ID>/outputs/` :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_world_output_download":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_world_output_download":::
 
 ### <a name="data-outputs"></a>Sorties de données
 
@@ -269,7 +269,7 @@ Vous pouvez spécifier des sorties de données nommées. Un répertoire est alor
 
 Vous pouvez modifier le travail « hello world » précédent pour qu’il écrive dans une sortie de données nommée :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output-data.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output-data.yml":::
 
 ## <a name="hello-pipelines"></a>Pipelines hello
 
@@ -277,69 +277,69 @@ Les travaux de pipeline peuvent exécuter plusieurs travaux en parallèle ou de 
 
 Vous pouvez diviser un travail « hello world » en deux :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline.yml":::
 
 Exécutez-le :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline":::
 
 Les travaux « hello » et « world » sont exécutés en parallèle si la cible de calcul dispose des ressources disponibles pour le faire.
 
 Pour passer des données entre les étapes d’un pipeline, définissez une sortie de données dans le travail « hello » et une entrée correspondante dans le travail « world », qui fait référence à la sortie du travail précédent :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-io.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-io.yml":::
 
 Exécutez-le :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline_io":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline_io":::
 
 Cette fois-ci, le travail « world » s’exécute une fois le travail « hello » terminé.
 
 Pour éviter la duplication de paramètres communs entre travaux dans un pipeline, vous pouvez les définir en dehors des travaux :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-settings.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-settings.yml":::
 
 Vous pouvez exécuter ceci :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline_settings":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline_settings":::
 
 Le paramètre correspondant sur un travail individuel remplace les paramètres communs pour un travail de pipeline. Les concepts présentés jusqu’à présent peuvent être combinés en un travail de pipeline en trois étapes avec les travaux « A », « B » et « C ». Le travail « C » dépend des données du travail « B », tandis que le travail « A » peut s’exécuter de façon indépendante. Le travail « A » utilise également un environnement défini individuellement et lie l’une de ses entrées à une entrée de travail de pipeline de niveau supérieur :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-pipeline-abc.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-pipeline-abc.yml":::
 
 Vous pouvez exécuter ceci :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="hello_pipeline_abc":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="hello_pipeline_abc":::
 
 ## <a name="train-a-model"></a>Effectuer l’apprentissage d’un modèle
 
 À ce stade, un modèle n’a toujours pas été entraîné. Ajoutons du code `sklearn` dans un script Python avec suivi MLflow pour entraîner un modèle sur le fichier CSV Iris :
 
-:::code language="python" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/src/main.py":::
+:::code language="python" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/src/main.py":::
 
 Le framework scikit-learn est pris en charge par MLflow pour la journalisation automatique. Un seul appel à `mlflow.autolog()` dans le script journalise donc tous les paramètres du modèle, métriques d’entraînement, artefacts du modèle et certains artefacts supplémentaires (dans ce cas, une image de matrice de confusion).
 
 Pour l’exécuter dans le cloud, spécifiez-le en tant que travail :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job.yml":::
 
 Exécutez-le :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="sklearn_iris":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="sklearn_iris":::
 
 Pour inscrire un modèle, vous pouvez télécharger les sorties et créer un modèle à partir du répertoire local :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="sklearn_download_register_model":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="sklearn_download_register_model":::
 
 ## <a name="sweep-hyperparameters"></a>Balayer les hyperparamètres
 
 Vous pouvez modifier le travail précédent pour balayer les hyperparamètres :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
 
 Exécutez-le :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="sklearn_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="sklearn_sweep":::
 
 > [!TIP]
 > Examinez l’onglet « Exécutions enfants » dans le studio pour monitorer la progression et consulter des graphiques de paramètres.
@@ -354,25 +354,25 @@ Par exemple, vous pouvez entraîner un réseau neuronal convolutif (CNN) sur le 
 
 Le jeu de données CIFAR-10 dans `torchvision` attend en entrée un répertoire contenant le répertoire `cifar-10-batches-py`. Vous pouvez télécharger la source compressée et l’extraire dans un répertoire local :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-datasets.sh" id="download_untar_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-datasets.sh" id="download_untar_cifar":::
 
 Créez ensuite un jeu de données Azure Machine Learning à partir du répertoire local. Ce jeu de données est chargé dans le magasin de données par défaut :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-datasets.sh" id="create_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-datasets.sh" id="create_cifar":::
 
 Si vous le souhaitez, supprimez le fichier et le répertoire locaux :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/setup-repo/create-datasets.sh" id="cleanup_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/setup-repo/create-datasets.sh" id="cleanup_cifar":::
 
 Les jeux de données (fichier uniquement) peuvent être référencés dans un travail avec la clé `dataset` d’une entrée de données. Le format est `azureml:<DATASET_NAME>:<DATASET_VERSION>`. Le jeu de données CIFAR-10 qui vient d’être créé s’écrit donc `azureml:cifar-10-example:1`.
 
 Une fois le jeu de données en place, vous pouvez créer un travail PyTorch distribué pour entraîner notre modèle :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
 
 Exécutez-le :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="pytorch_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="pytorch_cifar":::
 
 ## <a name="build-a-training-pipeline"></a>Créer un pipeline d’entraînement
 
@@ -386,11 +386,11 @@ Notez que « train-model » et « eval-model » dépendent de la sortie du t
 
 Vous pouvez orchestrer ces trois travaux dans un travail de pipeline :
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines/cifar-10/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines/cifar-10/job.yml":::
 
 Exécutez ensuite la commande suivante :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/train.sh" id="pipeline_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="pipeline_cifar":::
 
 Les pipelines peuvent également être écrits à l’aide de composants réutilisables. Pour plus d’informations, consultez [Créer et exécuter des pipelines Machine Learning à l’aide de composants avec l’interface CLI d’Azure Machine Learning (préversion)](how-to-create-component-pipelines-cli.md).
 

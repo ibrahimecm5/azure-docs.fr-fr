@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 5f24b2478acc0b305595b70b579d744320f0da3a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a57c4ea8d058f0f565b6dbec7fdb74b07ea7564e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261193"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471399"
 ---
 # <a name="public-ip-addresses"></a>Adresses IP publiques
 
@@ -106,7 +106,7 @@ Des adresses IP publiques statiques sont fréquemment utilisées dans les cas su
 * Vos ressources Azure communiquent avec d’autres applications ou services qui utilisent un modèle de sécurité basé sur une adresse IP.
 * Vous utilisez des certificats TLS/SSL liés à une adresse IP.
 
-Les adresses IPv4 et IPv6 publiques de base prennent en charge une attribution **dynamique**.  Si vous sélectionnez la méthode dynamique, l’adresse IP **n’est pas** attribuée à la ressource au moment de sa création.  L’adresse IP est attribuée lorsque vous associez la ressource d’adresse IP publique à une ressource. L’adresse IP est libérée lorsque vous arrêtez (ou supprimez) la ressource.   Par exemple, une ressource IP publique est libérée à partir d’une ressource nommée **Ressource A**. **Ressource A** reçoit une adresse IP différente au démarrage si la ressource IP publique est réaffectée. Une adresse IP associée est libérée si la méthode d’allocation passe de **statique** à **dynamique**. Définissez la méthode d’allocation **statique** pour vous assurer que l’adresse IP ne change pas.
+Les adresses IPv4 et IPv6 publiques de base prennent en charge une attribution **dynamique**.  Si vous sélectionnez la méthode dynamique, l’adresse IP **n’est pas** attribuée à la ressource au moment de sa création.  L’adresse IP est attribuée lorsque vous associez la ressource d’adresse IP publique à une ressource. L’adresse IP est libérée lorsque vous arrêtez (ou supprimez) la ressource.   Par exemple, une ressource IP publique est libérée à partir d’une ressource nommée **Ressource A**. **Ressource A** reçoit une adresse IP différente au démarrage si la ressource IP publique est réaffectée. Une adresse IP associée est libérée si la méthode d’allocation passe de **statique** à **dynamique**. Une adresse IP associée est inchangée si la méthode d’allocation passe de **dynamique** à **statique**. Définissez la méthode d’allocation **statique** pour vous assurer que l’adresse IP ne change pas.
 
 > [!NOTE]
 > Azure alloue des adresses IP publiques d’une plage unique à chaque région dans chaque Cloud Azure. Vous pouvez télécharger la liste des plages (préfixes) pour les clouds Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519), [Gouvernement américain](https://www.microsoft.com/download/details.aspx?id=57063), [Chine](https://www.microsoft.com/download/details.aspx?id=57062), et [Allemagne](https://www.microsoft.com/download/details.aspx?id=57064).

@@ -501,6 +501,8 @@ items:
             href: question-answering/how-to/manage-knowledge-base.md
           - name: Isolement réseau et points de terminaison privés
             href: question-answering/how-to/network-isolation.md
+          - name: API prédéfinie
+            href: question-answering/how-to/prebuilt.md
           - name: Dépannage
             href: question-answering/how-to/troubleshooting.md
       - name: Concepts
@@ -569,9 +571,9 @@ items:
       - name: Tutoriels
         items:
           - name: Analyse des sentiments sur des données de streaming à l’aide d’Azure Databricks
-            href: /databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
           - name: 'Utiliser Flask pour la traduction de texte, l’analyse de sentiments et la synthèse vocale'
-            href: /translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
       - name: Informations de référence
         items:
           - name: API REST

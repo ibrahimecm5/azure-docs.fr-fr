@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 5e0d1de26a87cb4a0ac7ddf440b2ce529e02de34
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ebaad16ff413b33f175815a1ddadb2fa1d5b63ae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441929"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841920"
 ---
 # <a name="connect-to-and-manage-teradata-in-azure-purview"></a>Connecter à Teradata et le gérer dans Azure Purview
 
@@ -23,10 +23,11 @@ Cet article explique comment inscrire Teradata, ainsi que comment s’authentifi
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui](how-to-lineage-teradata.md)|
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui**](how-to-lineage-teradata.md)|
 
-> [!Important]
-> Les versions de base de données Teradata reconnues sont 12.x à 16.x.
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
+
+Les versions de base de données Teradata prises en charge vont de 12.x à 16.x.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -68,9 +69,9 @@ Dans l’écran **Inscrire des sources (Teradata)** , effectuez les actions suiv
 
 1.  Entrez le **Nom** avec lequel la source de données sera listée dans le catalogue.
 
-1.  Entrez le nom d’**hôte** pour la connexion à une source Teradata. Il peut également s’agir d’une adresse IP ou d’une chaîne de connexion complète au serveur.
+1.  Entrez le nom d’**hôte** pour la connexion à une source Teradata. Il peut également s’agir d’une adresse IP ou d’une chaîne de connexion complète au serveur.
 
-1.  Sélectionnez une collection ou créez-en une (facultatif).
+1.  Sélectionnez une collection ou créez-en une (facultatif)
 
 1.  Terminez pour inscrire la source de données.
 
@@ -103,24 +104,24 @@ Suivez les étapes ci-dessous pour analyser Teradata afin d’identifier les res
 
         Pour en savoir plus sur les informations d’identification, reportez-vous au lien [ici](./manage-credentials.md)
 
-1. **Schéma** : répertorie le sous-ensemble de schémas à importer, exprimé sous la forme d’une liste séparée par des points-virgules. Par exemple : schema1; schema2. Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. Si la liste est vide, tous les schémas disponibles sont importés.
+    1. **Schéma** : répertorie le sous-ensemble de schémas à importer, exprimé sous la forme d’une liste séparée par des points-virgules. Par exemple : `schema1; schema2`. Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. Si la liste est vide, tous les schémas disponibles sont importés.
 
-    Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %. Par exemple : A%; %B; %C%; D
-     * commençant par A ou
-     * se terminant par B ou
-     * contenant C ou
-     * égalant D
+        Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %. Par exemple : `A%; %B; %C%; D`
+        * commençant par A ou
+        * se terminant par B ou
+        * contenant C ou
+        * égalant D
 
-    L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
+        L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
 
-1. **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide.
+    1. **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide.
 
-1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la source Teradata à analyser.
+    1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la source Teradata à analyser.
 
-    > [!Note]
-    > En règle générale, prévoyez 2 Go de mémoire pour 1 000 tables.
+        > [!Note]
+        > En règle générale, prévoyez 2 Go de mémoire pour 1 000 tables.
 
-    :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="configuration de l’analyse" border="true":::
+        :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="configuration de l’analyse" border="true":::
 
 1. Sélectionnez **Continuer**.
 

@@ -85,9 +85,9 @@
       items:
         - name: Tester des serveurs avec Arc en utilisant une machine virtuelle Azure
           href: plan-evaluate-on-azure-virtual-machine.md
-        - name: Intégrer à Azure Sentinel
+        - name: Intégrer à Microsoft Sentinel
           href: scenario-onboard-azure-sentinel.md
-        - name: Intégrer à Azure Security Center
+        - name: Intégrer à Microsoft Defender pour le cloud
           href: ../../security-center/quickstart-onboard-machines.md
     - name: Dépannage
       items:

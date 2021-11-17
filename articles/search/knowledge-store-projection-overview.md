@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: fe7353f8b4021e4cacb6037f65fcf9f22520f8ae
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 1b698ae5b03a7d622e4fccb717789be8cb330057
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129450"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561287"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>« Projections » de base de connaissances dans Recherche cognitive Azure
 
@@ -23,7 +23,7 @@ Cet article présente les concepts de projection et le flux de travail afin que 
 
 Les projections sont définies dans l’ensemble de compétences de Recherche cognitive, mais les résultats finaux sont les projections de tables, d’objets et de fichiers image dans Stockage Azure.
 
-:::image type="content" source="media/knowledge-store-concept-intro/projections-azure-storage.png" alt-text="Projections exprimées dans Stockage Azure" border="true":::
+:::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="Projections exprimées dans Stockage Azure" border="true":::
 
 ## <a name="types-of-projections-and-usage"></a>Types de projections et d’utilisation
 
@@ -142,7 +142,7 @@ Les projections ont un cycle de vie qui est lié aux données sources de votre s
 
 Après l’exécution de l’indexeur, connectez-vous aux projections et consommez les données dans d’autres applications et charges de travail.
 
-+ Utilisez l’[explorateur de stockage](knowledge-store-view-storage-explorer.md) pour vérifier la création des objets et le contenu.
++ Utilisez le [navigateur de stockage](knowledge-store-view-storage-explorer.md) pour vérifier la création des objets et le contenu.
 
 + Utilisez [Power BI pour l’exploration des données](knowledge-store-connect-power-bi.md). Cet outil fonctionne mieux lorsque les données se trouvent dans le Stockage Table Azure. Dans Power BI, vous pouvez manipuler des données dans de nouvelles tables qui sont plus faciles à interroger et à analyser.
 

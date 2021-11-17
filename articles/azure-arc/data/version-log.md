@@ -7,22 +7,51 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 08/06/2021
+ms.date: 11/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3e636fe5ff6477f78f09d940b70099b8cbf41fb9
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: ca1b31abcfb9985dadda1ece8fced0a9f70c3b04
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532960"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893915"
 ---
 # <a name="version-log"></a>Journal des versions
 
-Le tableau suivant décrit les différentes versions au fur et à mesure de leur évolution :
+Cet article identifie les versions des composants avec chaque version des services de données avec Azure Arc.
 
-|Date|Nom de la version.|Étiquette d’images conteneur|Préfixes et versions CRD|Version d’API ARM|Version d’extension Azure CLI `arcdata`|Version de l’extension du chart Helm Kubernetes avec Arc|Extension Arc Data pour Azure Data Studio|
-|---|---|---|---|---|---|---|---|
-|30 juillet 2021|SQL Managed Instance avec Arc Usage général et SQL Server avec Arc Disponibilité générale|v1.0.0_2021-07-30|`datacontrollers` : v1beta1, v1 <br/>`exporttasks.tasks` : v1beta1, v1 <br/>`monitors` : v1beta1, v1 <br/>`sqlmanagedinstances.sql` : v1beta1, v1 <br/>`postgresqls` : v1beta1 <br/>`sqlmanagedinstancerestoretasks.tasks.sql` : v1beta1 <br/>`dags.sql` : v1beta1 <br/>|2021-08-01 (stable)|1.0|1.0.16701001, train de mise en production : stable|0.9.5|
-|3 août 2021|Mise à jour de l’extension Azure Arc pour Azure Data Studio pour s’aligner sur la disponibilité générale du 30 juillet|Aucun changement|Aucun changement|Aucun changement|Aucun changement|Aucun changement|0.9.6|
+## <a name="november-2-2021"></a>2 novembre 2021
 
-Pour obtenir la CRD complète, ajoutez `.arcdata.microsoft.com` au préfixe. 
+Le tableau suivant décrit les composants de cette version.
+
+|Composant  |Valeur  |
+|--------------------------------------------------------|---------|
+|Étiquette d’images conteneur                                    | v1.1.0_2021-11-02 |
+|Noms et versions de CRD                                  | `datacontrollers.arcdata.microsoft.com`: v1beta1, v1, v2 <br/>`exporttasks.tasks.arcdata.microsoft.com`: v1beta1, v1, v2 <br/>`monitors.arcdata.microsoft.com`: v1beta1, v1, v2 <br/>`sqlmanagedinstances.sql.arcdata.microsoft.com`: v1beta1, v1, v2 <br/>`postgresqls.arcdata.microsoft.com`: v1beta1, v2beta2 <br/>`sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com` : v1beta1, v1 <br/>`dags.sql.arcdata.microsoft.com`: v1beta1, v2beta2 |
+|Version d’API ARM                                         | 2021-11-01 |
+|Version d’extension Azure CLI `arcdata`                   | 1.1.0, (Nov 3),</br>1.1.1 (Nov4) |
+|Version de l’extension du chart Helm Kubernetes avec Arc     | 1.0.17551005 – Requis si mise à niveau à partir de la disponibilité générale <br/><br/> 1.1.17561007 – Chart de la version GA+1/Nov |
+|Extension Arc Data pour Azure Data Studio                | 0.9.7 |
+
+## <a name="august-3-2021"></a>3 août 2021
+
+Cette version met à jour l’extension Azure Arc pour Azure Data Studio pour s’aligner sur la disponibilité générale du 30 juillet. Le tableau suivant décrit les composants que cette version met à jour. 
+
+|Composant  |Valeur  |
+|--------------------------------------------------------|---------|
+|Extension Arc Data pour Azure Data Studio                | 0.9.6 |
+
+Tous les autres composants sont les mêmes que ceux précédemment publiés.
+
+## <a name="july-30-2021"></a>30 juillet 2021
+
+Cette version introduit la disponibilité générale de SQL Managed Instance avec Azure Arc à usage général et de SQL Server avec Azure Arc. Le tableau suivant décrit les composants de cette version.
+
+|Composant  |Valeur  |
+|--------------------------------------------------------|---------|
+|Étiquette d’images conteneur                                    | v1.0.0_2021-07-30 |
+|Noms et versions de CRD                                  |`datacontrollers.arcdata.microsoft.com` : v1beta1, v1 <br/>`exporttasks.tasks.arcdata.microsoft.com` : v1beta1, v1 <br/>`monitors.arcdata.microsoft.com` : v1beta1, v1 <br/>`sqlmanagedinstances.sql.arcdata.microsoft.com` : v1beta1, v1 <br/>`postgresqls.arcdata.microsoft.com` : v1beta1 <br/>`sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com` : v1beta1 <br/>`dags.sql.arcdata.microsoft.com` : v1beta1 <br/> |
+|Version d’API ARM                                         | 2021-08-01 (stable) |
+|Version d’extension Azure CLI `arcdata`                   | 1.0 |
+|Version de l’extension du chart Helm Kubernetes avec Arc     | 1.0.16701001, train de mise en production : stable |
+|Extension Arc Data pour Azure Data Studio                | 0.9.5 |

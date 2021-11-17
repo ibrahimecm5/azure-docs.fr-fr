@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 6387149cc9f2392d2dccf382280ca7559593a6cc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 935fcf05624fd1849ae62109dbc22a97d4987676
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441987"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847277"
 ---
 # <a name="connect-to-and-manage-oracle-in-azure-purview"></a>Connexion à Oracle et gestion dans Azure Purview
 
@@ -23,10 +23,11 @@ Cet article décrit comment inscrire Oracle et comment s’authentifier et inter
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui](how-to-lineage-oracle.md)|
+| [Oui](#register)| [Oui](#scan)| Non | Non | Non | Non| [Oui**](how-to-lineage-oracle.md)|
 
-> [!Important]
-> Les versions de serveur Oracle prises en charge sont 6i à 19c
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
+
+Les versions de serveur Oracle prises en charge vont de 6i à 19c.
 
 Le serveur proxy n’est pas pris en charge lors de l’analyse de la source Oracle.
 
@@ -107,8 +108,8 @@ Dans l’écran **Inscrire des sources (Oracle)** , procédez comme suit :
 1. Entrez le **Nom** sous lequel la source de données apparaîtra dans le catalogue.
 
 1. Entrez le nom d’**Hôte** pour la connexion à une source Oracle. Cela peut être :
-    * Nom d’hôte utilisé par JDBC pour se connecter au serveur de base de données. Par exemple : MyDatabaseServer.com
-    * Adresse IP. Par exemple : 192.169.1.2
+    * Nom d’hôte utilisé par JDBC pour se connecter au serveur de base de données. Par exemple : `MyDatabaseServer.com`
+    * Adresse IP. Par exemple : `192.169.1.2`
     * Sa chaîne de connexion JDBC complète. Par exemple :
 
          ```
@@ -152,27 +153,27 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
         * Indiquez le nom d’utilisateur utilisé par JDBC pour se connecter au serveur de base de données dans le champ d’entrée Nom d’utilisateur.
         * Stockez le nom d’utilisateur utilisé par JDBC pour se connecter au serveur de base de données dans la clé secrète.
 
-    1. **Schéma** : répertorie le sous-ensemble de schémas à importer, exprimé sous la forme d’une liste séparée par des points-virgules. Par exemple : schema1; schema2. Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. Si la liste est vide, tous les schémas disponibles sont importés.
-        Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %.
-        Par exemple : A%; %B; %C%; D
-           - commençant par A ou
-           - se terminant par B ou
-           - contenant C ou
-           - égalant D
+    1. **Schéma** : répertorie le sous-ensemble de schémas à importer, exprimé sous la forme d’une liste séparée par des points-virgules. Par exemple : `schema1; schema2`. Tous les schémas utilisateur sont importés si cette liste est vide. Tous les schémas système (par exemple, SysAdmin) et les objets sont ignorés par défaut. Si la liste est vide, tous les schémas disponibles sont importés.
+
+        Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %. Par exemple : `A%; %B; %C%; D`
+        * commençant par A ou
+        * se terminant par B ou
+        * contenant C ou
+        * égalant D
 
         L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
 
-1. **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide.
+    1. **Emplacement du pilote** : spécifiez le chemin d’accès à l’emplacement du pilote JDBC dans votre machine virtuelle où s’exécute le runtime d’intégration auto-hébergé. Il doit s’agir du chemin vers l’emplacement du dossier JAR valide.
 
-    > [!Note]
-    > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne procédez pas à l’installation dans un compte d’utilisateur.
+        > [!Note]
+        > Le pilote doit être accessible à tous les comptes de la machine virtuelle. Ne procédez pas à l’installation dans un compte d’utilisateur.
 
-1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la source SAP S/4HANA à analyser.
+    1. **Mémoire maximale disponible** : mémoire maximale (en Go) disponible sur la machine virtuelle du client pouvant être utilisée par les processus d’analyse. Elle dépend de la taille de la source Oracle à analyser.
 
-    > [!Note]
-    > En règle générale, prévoyez 1 Go de mémoire pour 1 000 tables
+        > [!Note]
+        > En règle générale, prévoyez 1 Go de mémoire pour 1 000 tables
 
-    :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Analyser Oracle" border="true":::
+        :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Analyser Oracle" border="true":::
 
 1. Sélectionnez **Continuer**.
 

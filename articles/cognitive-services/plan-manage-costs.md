@@ -6,17 +6,17 @@ ms.author: pafarley
 ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: df7d5264fd4620f50bb4848a4c52bfdc5f5b9100
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/03/2021
+ms.openlocfilehash: 2f436f971b151fb4043ca459bb36442a2d504491
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073336"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026023"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Planifier et gérer les coûts pour Azure Cognitive Services
 
-Cet article explique comment planifier et gérer les coûts pour Azure Cognitive Services. Vous devez d’abord utiliser la calculatrice de prix Azure pour planifier les coûts Cognitive Services avant d’ajouter des ressources pour le service aux coûts estimés. Ensuite, lorsque vous ajoutez les ressources Azure, passez en revue les coûts estimés. Une fois que vous avez commencé à utiliser des ressources Cognitive Services (par exemple, Speech, Vision par ordinateur, LUIS, Analyse de texte, Translator, etc.), utilisez les fonctionnalités de Cost Management pour définir des budgets et surveiller les coûts. Vous pouvez également passer en revue les coûts prévus et déterminer les tendances des dépenses pour identifier les domaines où vous pourriez agir. Les coûts pour Cognitive Services ne représentent qu’une partie des coûts mensuels sur votre facture Azure. Cet article explique comment planifier et gérer les coûts pour Cognitive Services. Cependant, vous êtes facturé pour tous les services et ressources Azure utilisés pour votre abonnement Azure, y compris les services tiers.
+Cet article explique comment planifier et gérer les coûts pour Azure Cognitive Services. Vous devez d’abord utiliser la calculatrice de prix Azure pour planifier les coûts Cognitive Services avant d’ajouter des ressources pour le service aux coûts estimés. Ensuite, lorsque vous ajoutez les ressources Azure, passez en revue les coûts estimés. Une fois que vous avez commencé à utiliser des ressources Cognitive Services (par exemple, Speech, Vision par ordinateur, LUIS, Service de langage, Translator, etc.), utilisez les fonctionnalités de Cost Management pour définir des budgets et surveiller les coûts. Vous pouvez également passer en revue les coûts prévus et déterminer les tendances des dépenses pour identifier les domaines où vous pourriez agir. Les coûts pour Cognitive Services ne représentent qu’une partie des coûts mensuels sur votre facture Azure. Cet article explique comment planifier et gérer les coûts pour Cognitive Services. Cependant, vous êtes facturé pour tous les services et ressources Azure utilisés pour votre abonnement Azure, y compris les services tiers.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -38,11 +38,13 @@ Pour plus d’informations, consultez [Tarifs Azure Cognitive Services](https://
 
 Cognitive Services s’exécute sur l’infrastructure Azure qui [accumule les coûts](https://azure.microsoft.com/pricing/details/cognitive-services/) lorsque vous déployez la nouvelle ressource. Il est important de comprendre qu’une infrastructure plus grande peut accroître les coûts. Vous devez gérer ce coût lorsque vous apportez des modifications aux ressources déployées. 
 
-### <a name="how-youre-charged-for-cognitive-services"></a>Facturation des ressources Cognitive Services
+Lorsque vous créez ou utilisez des ressources Cognitive Services, vous pouvez être facturé en fonction des services que vous utilisez. Deux modèles de facturation sont disponibles pour Cognitive Services : paiement à l’utilisation et niveau d’engagement.
 
-Lorsque vous créez ou utilisez des ressources Cognitive Services, vous pouvez être facturé pour les compteurs suivants en fonction des services que vous utilisez :
+## <a name="pay-as-you-go"></a>Paiement à l’utilisation
 
-| Service | Compteur(s) | Informations de facturation | 
+Pour le modèle avec paiement à l'utilisation, vous êtes facturé en fonction de l'offre Cognitive Services que vous utilisez, sur la base de ses informations de facturation.
+
+| Service | Instance(s) | Informations de facturation | 
 |---------|-------|---------------------|
 | **Vision** | | |
 | [Vision par ordinateur](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) | Gratuit, Standard (S1) | Facturation basée sur le nombre de transactions. Le prix par transaction varie selon la fonctionnalité (lecture, OCR, analyse spatiale). Pour plus d’informations, consultez les [tarifs](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/). |
@@ -53,12 +55,23 @@ Lorsque vous créez ou utilisez des ressources Cognitive Services, vous pouvez �
 | **Langage** | | |
 | [Language Understanding (LUIS)](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) | Création gratuite, Prédiction gratuite, Standard | Facturation basée sur le nombre de transactions. Le prix par transaction varie selon la fonctionnalité (demandes vocales, demandes de texte). Pour plus d’informations, consultez les [tarifs](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). |
 | [QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) | Gratuit, Standard | Frais d’abonnement facturés tous les mois. Pour plus d’informations, consultez les [tarifs](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/). | 
-| [Analyse de texte](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Gratuit, Standard | Facturation basée sur le nombre d’enregistrements texte. | 
+| [Service Language](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Gratuit, Standard | Facturation basée sur le nombre d’enregistrements texte. | 
 | [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/) | Gratuit, Paiement à l’utilisation (S1), Remise sur la quantité (S2, S3, S4, C2, C3, C4, D3) | Les prix varient selon le compteur et la fonctionnalité. Pour plus d’informations, consultez les [tarifs](https://azure.microsoft.com/pricing/details/cognitive-services/translator/). <li>La traduction de texte est facturée sur la base du nombre de caractères traduits.</li><li>La traduction de documents est facturée sur la base du nombre de caractères traduits.</li><li>La traduction personnalisée est facturée sur la base du nombre de caractères source et cible de données d’entraînement.</li> |  
 | **Décision** | | |
 | [Détecteur d’anomalies](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Gratuit, Standard | Facturation basée sur le nombre de transactions. | 
 | [Content Moderator](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) | Gratuit, Standard | Facturation basée sur le nombre de transactions. |
 | [Personalizer](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/) | Gratuit, Standard (S0) | Facturation basée sur le nombre de transactions par mois. Des quotas de stockage et de transactions s’appliquent. Pour plus d’informations, consultez les [tarifs](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/). | 
+
+## <a name="commitment-tier"></a>Niveau d’engagement
+
+Outre le modèle de paiement à l'utilisation, Cognitive Services propose des niveaux d'engagement qui vous permettent de vous engager à utiliser plusieurs fonctions de service pour un montant fixe, et ainsi d’obtenir un coût total prévisible en fonction des besoins de votre charge de travail.
+
+Pour le modèle avec niveau d’engagement, vous êtes facturé selon le plan que vous choisissez. Pour plus d’informations sur les services disponibles, sur la façon de s’inscrire et sur les points à prendre en compte lors de l’achat d’un plan, consultez [Guide de démarrage rapide : acheter avec des tarifs basés sur le niveau d’engagement](commitment-tier.md).
+
+> [!NOTE]
+> Si vous utilisez la ressource au-delà du quota prévu par le plan d'engagement, vous serez facturé pour l'utilisation supplémentaire selon le montant du dépassement mentionné dans le portail Azure lorsque vous achetez un plan d'engagement. Pour plus d’informations, consultez [Tarifs Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/).
+
+
 
 
 ### <a name="costs-that-typically-accrue-with-cognitive-services"></a>Coûts qui s’accumulent généralement avec Cognitive Services

@@ -1,15 +1,15 @@
 ---
 title: Liste d’exemples de requêtes Azure Resource Graph par catégorie
 description: Liste d’exemples de requêtes pour Azure Resource Graph. Les catégories incluent Étiquettes, Azure Advisor, Key Vault, Kubernetes, Configuration d’invité, etc.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a16d52f0c780a73bebf9db3e764d76ea6394aff2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: c2026751ec34d6e5952f156684100a9e5b7c341c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536265"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060135"
 ---
 # <a name="azure-resource-graph-sample-queries-by-category"></a>Exemples de requêtes Azure Resource Graph par catégorie
 
@@ -79,6 +79,10 @@ Autrement, utilisez <kbd>Ctrl</kbd>-<kbd>F</kbd> pour utiliser la fonctionnalit�
 ## <a name="general"></a>Général
 
 [!INCLUDE [azure-resource-graph-samples-cat-general](../../../../includes/resource-graph/samples/bycat/general.md)]
+
+## <a name="iot-defender"></a>IoT Defender
+
+[!INCLUDE [azure-resource-graph-samples-cat-iot-defender](../../../../includes/resource-graph/samples/bycat/iot-defender.md)]
 
 ## <a name="management-groups"></a>Groupes d’administration
 

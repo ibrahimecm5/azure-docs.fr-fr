@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9ee623656ee83347d2edc1fe010131913a07ccb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 39b6dd297ad0fbb739272db41900e68c799e790d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023782"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853778"
 ---
 # <a name="connect-to-and-manage-a-power-bi-tenant-in-azure-purview"></a>Connecter et gérer un locataire Power BI dans Azure Purview
 
@@ -172,26 +172,38 @@ Pensez à utiliser ce guide si le locataire Azure AD dans lequel se trouve le lo
 
    1. Créez une inscription d’application dans votre locataire Azure Active Directory où se trouve Power BI. Veillez à mettre à jour le champ `password` avec un mot de passe fort et `app_display_name` avec un nom d’application inexistant dans le locataire Azure AD où le locataire Power BI est hébergé.
 
-       ```powershell   
-       $SecureStringPassword = ConvertTo-SecureString -String <'password'> -AsPlainText -Force
-       $AppName = '<app_display_name>'
-       New-AzADApplication -DisplayName $AppName -Password $SecureStringPassword
-       ```
+      ```powershell   
+      $SecureStringPassword = ConvertTo-SecureString -String <'password'> -AsPlainText -Force
+      $AppName = '<app_display_name>'
+      New-AzADApplication -DisplayName $AppName -Password $SecureStringPassword
+      ```
 
    1. Dans le tableau de bord Azure Active Directory, sélectionnez l’application nouvellement créée, puis **Inscription de l’application**. Attribuez à l’application les autorisations déléguées suivantes et accordez au locataire un consentement d’administrateur :
 
-         - Power BI Service     Tenant.Read.All
-         - Microsoft Graph      openid
+      - Power BI Service     Tenant.Read.All
+      - Microsoft Graph      openid
 
-   1. Dans le tableau de bord Azure Active Directory, sélectionnez l’application nouvellement créée, puis **Authentification**. Sous **Types de comptes pris en charge**, sélectionnez **Comptes dans un annuaire d’organisation (tout annuaire Azure AD - Multilocataire)** .
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-delegated-permissions.png" alt-text="Capture d’écran des autorisations déléguées pour le service Power BI et Microsoft Graph.":::
 
-   1. Créez l’URL de connexion spécifique du locataire pour votre principal du service en exécutant l’URL suivante dans votre navigateur web :
+   1. Dans le tableau de bord Azure Active Directory, sélectionnez l’application nouvellement créée, puis **Authentification**. Sous **Types de comptes pris en charge**, sélectionnez **Comptes dans un annuaire d’organisation (tout annuaire Azure AD - Multilocataire)** . 
 
-     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-multitenant.png" alt-text="Capture d’écran montrant la prise en charge mutualisée du type de compte.":::
 
-    Veillez à remplacer les paramètres par les informations qui conviennent : <purview_tenant_id> correspond à l’ID Azure Active Directory (GUID) où le compte Azure Purview est approvisionné.
-    <client_id_to_delegate_the_pbi_admin> correspond à l’ID d’application correspondant à votre principal de service
+   1. Sous **Flux d’octroi implicite et flux hybride**, sélectionnez **Jetons d’ID (utilisés pour les flux implicites et hybrides)** .
+    
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-id-token-hybrid-flows.png" alt-text="Capture d’écran montrant des flux hybrides de jetons d’ID.":::
 
+   1. Créez l’URL de connexion spécifique au locataire pour votre principal du service en exécutant l’URL suivante dans votre navigateur web :
+
+      ```
+      https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
+      ```
+    
+      Veillez à remplacer les paramètres par des informations correctes :
+      
+      - `<purview_tenant_id>` est l’ID de locataire Azure Active Directory (GUID) où le compte Azure Purview est approvisionné.
+      - `<client_id_to_delegate_the_pbi_admin>` est l’ID d’application correspondant à votre principal de service.
+   
    1. Connectez-vous à l’aide d’un compte non-administrateur. Cela est nécessaire pour approvisionner votre principal du service dans le locataire étranger.
 
    1. Lorsque vous y êtes invité, acceptez l’autorisation requise pour _Afficher votre profil de base_ et _Conserver l’accès aux données auxquelles vous lui avez donné accès_.
@@ -209,7 +221,12 @@ Pensez à utiliser ce guide si le locataire Azure AD dans lequel se trouve le lo
     $Password = '<pbi_admin_password>'
     ```
 
-1. Dans l’abonnement Azure Purview, localisez votre compte Purview et à l’aide des rôles RBAC Azure, attribuez _Administrateur de la source de données Purview_ au principal de service et à l’utilisateur Power BI.
+    > [!Note]
+    > Si vous créez un compte d’utilisateur dans Azure Active Directory à partir du portail, l’option Flux de client public a la valeur **Non** par défaut. Vous devez la définir sur **Oui** :
+    > <br>
+    > :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-public-client-flows.png" alt-text="Capture d’écran des flux de client public.":::
+    
+1. Dans Azure Purview Studio, affectez le rôle _Administrateur de source de données_ au principal du service et à l’utilisateur Power BI au niveau de la collection racine. 
 
 1. Pour inscrire le multilocataire Power BI en tant que nouvelle source de données dans le compte Azure Purview, mettez à jour `service_principal_key` et exécutez les cmdlets suivantes dans la session PowerShell :
 

@@ -11,21 +11,24 @@ ms.topic: conceptual
 ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3b0090c1c75c8d341ff67b15e7e0391be45c157
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 99e2fbce479b575759a442f9dc278723adb2b25f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446692"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062372"
 ---
-# <a name="use-your-model-with-the-prediction-api"></a>Utiliser votre modèle avec l’API de prédiction
+# <a name="call-the-prediction-api"></a>Appeler l’API de prédiction
 
-Après avoir effectué l’apprentissage de votre modèle, vous pouvez le tester programmatiquement en envoyant les images au point de terminaison de l’API de prédiction.
+Après avoir effectué l’apprentissage de votre modèle, vous pouvez tester des images programmatiquement en les envoyant au point de terminaison de l’API de prédiction. Dans ce guide, vous allez apprendre à appeler l’API de prédiction pour noter une image. Vous découvrirez les différentes façons dont vous pouvez configurer le comportement de cette API pour répondre à vos besoins.
+
 
 > [!NOTE]
-> Ce document démontre l’utilisation de C# pour soumettre une image à l’API Prediction. Pour en savoir plus et obtenir des exemples, consultez la [référence sur l’API Prediction](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> Ce document illustre l’utilisation de la bibliothèque cliente .NET pour C# afin d’envoyer une image à l’API de prédiction. Pour en savoir plus et obtenir des exemples, consultez la [référence sur l’API Prediction](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
-## <a name="publish-your-trained-iteration"></a>Publier votre itération formée
+## <a name="setup"></a>Programme d’installation
+
+### <a name="publish-your-trained-iteration"></a>Publier votre itération formée
 
 À partir de la [page Web Custom Vision](https://customvision.ai), sélectionnez votre projet, puis sélectionnez l’onglet __Performance__.
 
@@ -37,7 +40,7 @@ Une fois votre modèle publié avec succès, vous verrez une étiquette « Publ
 
 ![L’onglet Performances s’affiche avec un rectangle rouge autour de l’étiquette Publié et le nom de l’itération publiée.](./media/use-prediction-api/published-iteration.png)
 
-## <a name="get-the-url-and-prediction-key"></a>Obtenir l’URL et la clé de prédiction
+### <a name="get-the-url-and-prediction-key"></a>Obtenir l’URL et la clé de prédiction
 
 Une fois que votre modèle a été publié, vous pouvez récupérer les informations requises en sélectionnant __URL de prédiction__. Cela ouvrira une boîte de dialogue avec les informations sur l’utilisation de l’API de prédiction, y compris __l’URL de prédiction__ et la __Prediction-Key__.
 
@@ -45,91 +48,50 @@ Une fois que votre modèle a été publié, vous pouvez récupérer les informat
 
 ![L’onglet Performances s’affiche avec un rectangle rouge autour de la valeur de l’URL de prédiction pour l’utilisation d’un fichier image et la valeur de Prediction-Key.](./media/use-prediction-api/prediction-api-info.png)
 
+## <a name="submit-data-to-the-service"></a>Envoyer des données au service
 
-Dans ce guide, vous utiliserez une image locale, aussi copiez l’URL sous **Si vous avez un fichier image** à un emplacement temporaire. Copiez aussi la valeur __Prediction-Key__ correspondante.
+Ce guide suppose que vous avez déjà construit un objet **[CustomVisionPredictionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)** , nommé `predictionClient`, avec votre URL de point de terminaison et votre clé d’abonnement Custom Vision. Pour obtenir des instructions sur la configuration de cette fonctionnalité, suivez un des guides de [démarrage rapide](quickstarts/image-classification.md).
 
-## <a name="create-the-application"></a>Créer l’application
+Dans ce guide, vous allez utiliser une image locale. Par conséquent, téléchargez une image que vous souhaitez envoyer à votre modèle formé. Le code suivant invite l’utilisateur à spécifier un chemin d’accès local et obtient le flux d’octets du fichier sur ce chemin d’accès.
 
-1. Dans Visual Studio, créez une application console C#.
+```csharp
+Console.Write("Enter image file path: ");
+string imageFilePath = Console.ReadLine();
+byte[] byteData = GetImageAsByteArray(imageFilePath);
+```
 
-1. Utilisez le code suivant comme corps du fichier __Program.cs__.
+Incluez la méthode d’assistance suivante :
 
-    ```csharp
-    using System;
-    using System.IO;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Threading.Tasks;
-
-    namespace CVSPredictionSample
-    {
-        public static class Program
-        {
-            public static void Main()
-            {
-                Console.Write("Enter image file path: ");
-                string imageFilePath = Console.ReadLine();
-
-                MakePredictionRequest(imageFilePath).Wait();
-
-                Console.WriteLine("\n\nHit ENTER to exit...");
-                Console.ReadLine();
-            }
-
-            public static async Task MakePredictionRequest(string imageFilePath)
-            {
-                var client = new HttpClient();
-
-                // Request headers - replace this example key with your valid Prediction-Key.
-                client.DefaultRequestHeaders.Add("Prediction-Key", "<Your prediction key>");
-
-                // Prediction URL - replace this example URL with your valid Prediction URL.
-                string url = "<Your prediction URL>";
-
-                HttpResponseMessage response;
-
-                // Request body. Try this sample with a locally stored image.
-                byte[] byteData = GetImageAsByteArray(imageFilePath);
-
-                using (var content = new ByteArrayContent(byteData))
-                {
-                    content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                    response = await client.PostAsync(url, content);
-                    Console.WriteLine(await response.Content.ReadAsStringAsync());
-                }
-            }
-
-            private static byte[] GetImageAsByteArray(string imageFilePath)
-            {
-                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-        }
-    }
-    ```
-
-1. Modifiez les informations suivantes :
-   * Définissez le champ `namespace` sur le nom de votre projet.
-   * Remplacez l’espace réservé `<Your prediction key>` avec la valeur de clé que vous avez récupérée précédemment.
-   * Remplacez l’espace réservé `<Your prediction URL>` avec l’URL que vous avez récupérée précédemment.
-
-## <a name="run-the-application"></a>Exécution de l'application
-
-Lorsque vous exécutez l’application, vous êtes invité à saisir un chemin d’accès vers un fichier image dans la console. L’image est ensuite envoyée à l’API de prédiction, et les résultats de prédiction sont renvoyés sous forme de chaîne au format JSON. Voici un exemple de réponse.
-
-```json
+```csharp
+private static byte[] GetImageAsByteArray(string imageFilePath)
 {
-    "id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
-    "project":"8622c779-471c-4b6e-842c-67a11deffd7b",
-    "iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
-    "created":"2019-03-20T16:47:31.322Z",
-    "predictions":[
-        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"cat", "probability":1.0},
-        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"dog", "probability":0.1087869}
-    ]
+    FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+    BinaryReader binaryReader = new BinaryReader(fileStream);
+    return binaryReader.ReadBytes((int)fileStream.Length);
 }
 ```
+
+La méthode **[ClassifyImageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclientextensions.classifyimageasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Prediction_CustomVisionPredictionClientExtensions_ClassifyImageAsync_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Prediction_ICustomVisionPredictionClient_System_Guid_System_String_System_IO_Stream_System_String_System_Threading_CancellationToken_)** prend l’ID de projet et l’image stockée localement, et évalue l’image par rapport au modèle donné.
+
+```csharp
+// Make a prediction against the new project
+Console.WriteLine("Making a prediction:");
+var result = predictionApi.ClassifyImageAsync(project.Id, publishedModelName, byteData);
+```
+
+## <a name="determine-how-to-process-the-data"></a>Déterminer le mode de traitement des données
+
+Vous pouvez éventuellement configurer la manière dont le service effectue l’opération de notation en choisissant d’autres méthodes (consultez les méthodes de la classe **[CustomVisionPredictionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet)** ). 
+
+Vous pouvez utiliser une version non asynchrone de la méthode ci-dessus pour des raisons de simplicité, mais cela peut entraîner le blocage du programme pendant un certain temps.
+
+Les méthodes **-WithNoStore** requièrent que le service ne conserve pas l’image de prédiction une fois la prédiction terminée. Normalement, le service conserve ces images, ce qui vous donne la possibilité de les ajouter en tant que données d’apprentissage pour les prochaines itérations de votre modèle.
+
+Les méthodes **-WithHttpMessages** retournent la réponse HTTP brute de l’appel d’API.
+
+## <a name="get-results-from-the-service"></a>Obtenir les résultats du service
+
+Le service retourne les résultats sous la forme d’un objet **[ImagePrediction](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-dotnet)** . La propriété **Predictions** contient une liste d’objets **[PredictionModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet)** , chacun représentant une prédiction d’objet unique. Ils incluent le nom de l’étiquette et les coordonnées du cadre englobant où l’objet a été détecté dans l’image. Votre application peut ensuite analyser ces données pour, par exemple, afficher l’image avec des champs d’objet étiquetés sur un écran. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 921770c9cef41cedd8bf1ee01371da9a71e06e1a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fa87bdf9acca99b38f63ec6e9547d5cc5279afc5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131437122"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060904"
 ---
 # <a name="store-and-share-images-in-an-azure-compute-gallery"></a>Stocker et partager des images dans une galerie Azure Compute Gallery
 
 **S’applique à :** :heavy_check_mark: Machines virtuelles Linux :heavy_check_mark: Machines virtuelles Windows :heavy_check_mark: Groupes identiques flexibles :heavy_check_mark: Groupes identiques uniformes
 
 
-Azure Compute Gallery comprend désormais le service existant Shared Image Gallery et les nouvelles fonctionnalités et capacités [VM Applications])(vm-applications.md).  
+Azure Compute Gallery comprend désormais le service existant Shared Image Gallery et les nouvelles fonctionnalités et capacités [d’applications de machine virtuelle](vm-applications.md).  
 
 Une galerie Azure Compute Gallery vous aide à créer une structure et une organisation autour de vos ressources Azure, comme des images et des [applications])(VM-applications.md). Une galerie Azure Compute Gallery fournit :
 - Une réplication globale.
@@ -323,7 +323,7 @@ Pour déployer une machine virtuelle ou un groupe de machines virtuelles identiq
 
 Oui, vous pouvez mettre à jour la référence d’une image de groupe identique en passant d’une image managée à une image Azure Compute Gallery, à condition que le type de système d’exploitation, la génération Hyper-V et la disposition du disque de données soient cohérents entre les images.
 
-## <a name="troubleshoot"></a>Résoudre les problèmes
+## <a name="troubleshoot"></a>Dépanner
 Si vous rencontrez des problèmes lors de l’exécution d’opérations sur les ressources de la galerie, consultez la liste des erreurs courantes dans le [guide de résolution des problèmes](troubleshooting-shared-images.md).
 
 En outre, vous pouvez publier et étiqueter vos questions avec `azure-virtual-machines-images` sur [Questions et réponses](/answers/topics/azure-virtual-machines-images.html).

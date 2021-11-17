@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.author: trkeya
 author: trkeya
-ms.date: 09/09/2021
-ms.openlocfilehash: 7415e01f79c7982b2e56e1bb02fc84be13174388
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/26/2021
+ms.openlocfilehash: 3bcd8b99ea7361e0af05cd55f96741b0d5ab5db8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065149"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847429"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Version d’évaluation Azure Resource Manager
 
@@ -21,6 +21,9 @@ Utilisez ce type si vous disposez d’une offre sur la Place de marché Azure ou
 Si vous ne savez pas très bien ce qu’est un modèle ARM, lisez [Qu’est-ce qu’Azure Resource Manager ?](../azure-resource-manager/management/overview.md) et [Comprendre la structure et la syntaxe des modèles ARM](../azure-resource-manager/templates/syntax.md) pour mieux comprendre comment créer et tester vos propres modèles.
 
 Pour plus d’informations sur ce qu’est une version d’évaluation **hébergée** ou d’**application logique**, consultez [Qu’est-ce qu’une version d’évaluation ?](what-is-test-drive.md)
+
+> [!TIP]
+> Pour voir la vue client du test drive dans la place de marché commerciale, consultez [Qu’est-ce que la Place de marché Azure](/marketplace/azure-marketplace-overview#take-action-on-a-listing) et [Qu’est-ce que Microsoft AppSource ?](/marketplace/appsource-overview).
 
 ## <a name="technical-configuration"></a>Configuration technique
 

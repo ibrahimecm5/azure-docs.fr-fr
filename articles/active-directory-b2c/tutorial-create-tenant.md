@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 48577b7625b80954d856d02fcee9e0696393bc55
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0ff64806531f1d99ced2ad2b5747ae73e54114bd
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036254"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505097"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutoriel : Créer un locataire Azure Active Directory B2C
 
@@ -59,7 +59,7 @@ Vous découvrirez comment inscrire une application dans le didacticiel suivant.
 1. Ajoutez **Microsoft.AzureActiveDirectory** comme fournisseur de ressources pour l’abonnement Azure que vous utilisez ([En savoir plus](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)) :
 
     1. Dans le portail Azure, recherchez et sélectionnez **Abonnements**.
-    2. Sélectionnez votre abonnement, puis dans le menu gauche, sélectionnez **Fournisseurs de ressources**. Si vous ne voyez pas le menu de gauche, sélectionnez l’icône **Afficher le menu de <nom de votre abonnement>** dans la partie supérieure gauche de la page pour l’ouvrir.
+    2. Sélectionnez votre abonnement, puis dans le menu gauche, sélectionnez **Fournisseurs de ressources**. Si vous ne voyez pas le menu de gauche, sélectionnez l’icône **Afficher le menu de <nom de votre abonnement>** dans la partie supérieure gauche de la page pour le développer.
     3. Assurez-vous que la ligne **Microsoft.AzureActiveDirectory** affiche l’état **Inscrit**. Si ce n’est pas le cas, sélectionnez la ligne, puis sélectionnez **S’inscrire**.
 
 1. Dans le menu du Portail Azure ou dans la page **Accueil**, sélectionnez **Créer une ressource**.
@@ -85,6 +85,9 @@ Vous découvrirez comment inscrire une application dans le didacticiel suivant.
 1. Passez en revue les paramètres de votre annuaire. Sélectionnez ensuite **Créer**. Découvrez-en plus sur le [dépannage des erreurs de déploiement](../azure-resource-manager/templates/common-deployment-errors.md).
 
 Vous pouvez lier plusieurs locataires Azure AD B2C à un seul abonnement Azure pour la facturation. Pour lier un locataire, vous devez être administrateur du locataire Azure AD B2C et vous devez disposer d’au moins le rôle Contributeur dans l’abonnement Azure. Consultez [Lier un locataire Azure AD B2C à un abonnement](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
+
+> [!NOTE]
+> Lors de la création d’un annuaire Azure AD B2C, une application nommée `b2c-extensions-app` est automatiquement générée dans celui-ci. Vous ne devez ni la modifier ni la supprimer. Elle est utilisée par Azure AD B2C pour stocker les données utilisateur. Pour plus d’informations, consultez [Azure AD B2C : extensions-app](extensions-app.md).
 
 ## <a name="select-your-b2c-tenant-directory"></a>Sélectionner l’annuaire de votre locataire B2C
 

@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Restaurer une instance d’Azure Database pour MySQL - Serveur flexible (préversion)
+title: Script CLI - Restaurer une instance d’Azure Database pour MySQL - Serveur flexible
 description: Cet exemple de script Azure CLI montre comment restaurer une instance d’Azure Database pour MySQL - Serveur flexible vers un point antérieur dans le temps.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: d2e554bfa4d9851687542bbae8d66d51bf270bbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f109da4924f04cd97fbe9cd816c2da45ce5c0e2d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701536"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844147"
 ---
-# <a name="restore-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Restaurer une instance d’Azure Database pour MySQL - Serveur flexible (préversion) avec Azure CLI
+# <a name="restore-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Restaurer une instance d’Azure Database pour MySQL - Serveur flexible avec Azure CLI
 
 Azure Database pour MySQL - Serveur flexible crée automatiquement des sauvegardes de serveur et les stocke de manière sécurisée dans un stockage localement redondant au sein de la région.
 
@@ -56,5 +56,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).

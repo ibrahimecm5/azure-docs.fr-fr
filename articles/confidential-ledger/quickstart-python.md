@@ -1,24 +1,24 @@
 ---
-title: Démarrage rapide – Bibliothèque cliente Python du Registre confidentiel Microsoft Azure
-description: En savoir plus sur l’utilisation de la bibliothèque cliente de Registre confidentiel Microsoft Azure pour Python
+title: 'Démarrage rapide : Bibliothèque de client Python de Registre confidentiel Microsoft Azure'
+description: En savoir plus sur l’utilisation de la bibliothèque de client de Registre confidentiel Microsoft Azure pour Python
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 1fd69155a6131565b81ba9684e5c2c077a5420d9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 292c298f3af1b693574ecf9e053de14373d4d597
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671523"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476316"
 ---
-# <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>Démarrage rapide : Bibliothèque cliente de Registre confidentiel Microsoft Azure pour Python
+# <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>Démarrage rapide : Bibliothèque de client de Registre confidentiel Microsoft Azure pour Python
 
-Prenez en main la bibliothèque cliente du Registre confidentiel Microsoft Azure pour Python. Suivez les étapes ci-dessous pour installer le package et tester un exemple de code relatif à des tâches de base.
+Prenez en main la bibliothèque de client de Registre confidentiel Microsoft Azure pour Python. Suivez les étapes ci-dessous pour installer le package et tester un exemple de code relatif à des tâches de base.
 
-Le Registre confidentiel Microsoft Azure est un service nouveau et hautement sécurisé pour la gestion des enregistrements de données sensibles. Sur la base d’un modèle blockchain donné, le registre confidentiel offre des avantages uniques en termes d’intégrité des données, tels que l’immuabilité (en permettant uniquement l’ajout au registre) et l’inviolabilité (pour garantir que tous les enregistrements sont conservés intacts).
+Registre confidentiel Microsoft Azure est un nouveau service, hautement sécurisé, pour la gestion des enregistrements de données sensibles. Sur la base d’un modèle blockchain donné, Registre confidentiel Azure offre des avantages uniques en termes d’intégrité des données, tels que l’immuabilité (en permettant uniquement l’ajout au registre) et l’inviolabilité (pour garantir que tous les enregistrements sont conservés intacts).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,13 +48,13 @@ Installez la bibliothèque cliente d’identités Azure Active Directory :
 pip install azure-identity
 ```
 
-Installez la bibliothèque cliente du plan de contrôle du registre confidentiel.
+Installez la bibliothèque de client du plan de contrôle de Registre confidentiel.
 
 ```terminal
 pip install azure.mgmt.confidentialledger
 ```
 
-Installez la bibliothèque cliente du plan de données du registre confidentiel.
+Installez la bibliothèque de client du plan de données de Registre confidentiel.
 
 ```terminal
 pip install azure.confidentialledger 
@@ -161,7 +161,7 @@ print (f"- ID: {myledger.id}")
 
 Maintenant que nous disposons d’un registre, nous interagissons avec lui à l’aide de la bibliothèque cliente du plan de données (azure.confidentialledger). 
 
-Tout d’abord, nous allons générer et enregistrer un certificat de registre confidentiel.  
+Tout d’abord, nous allons générer et enregistrer un certificat Registre confidentiel.  
 
 ```python
 identity_client = ConfidentialLedgerIdentityServiceClient(identity_url)
@@ -297,7 +297,7 @@ print(entry.contents)
 
 ## <a name="clean-up-resources"></a>Nettoyer les ressources
 
-D’autres articles relatifs au Registre confidentiel Microsoft Azure peuvent se baser sur ce démarrage rapide. Si vous prévoyez d’utiliser d’autres démarrages rapides et didacticiels, il peut être utile de conserver ces ressources.
+D’autres articles relatifs à Registre confidentiel Azure peuvent se baser sur ce démarrage rapide. Si vous prévoyez d’utiliser d’autres démarrages rapides et didacticiels, il peut être utile de conserver ces ressources.
 
 Sinon, quand vous en avez terminé avec les ressources créées dans cet article, utilisez la commande Azure CLI [az group delete](/cli/azure/group?#az_group_delete) pour supprimer le groupe de ressources et toutes les ressources qu’il contient :
 
@@ -307,4 +307,4 @@ az group delete --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Vue d’ensemble du Registre confidentiel Microsoft Azure](overview.md)
+- [Vue d’ensemble de Registre confidentiel Microsoft Azure](overview.md)

@@ -10,12 +10,12 @@ author: tracychms
 ms.author: tracych
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: c91de82d4b0eec1256d34a28132ae3161c62690a
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: cfb475bef0cb308a8e7570a4cbad71e4e9bebb54
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132057762"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566785"
 ---
 # <a name="cli-v2-batch-endpoint-yaml-schema"></a>Schéma YAML du point de terminaison de traitement par lots de l’interface CLI (v2)
 
@@ -45,7 +45,7 @@ Des exemples sont disponibles dans le [référentiel GitHub d’exemples](https:
 
 ## <a name="yaml-basic"></a>YAML : de base
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/batch-endpoint.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

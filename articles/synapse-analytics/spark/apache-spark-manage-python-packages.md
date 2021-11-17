@@ -10,12 +10,12 @@ ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1b69aed711100eead6e7669c7d57e2f8faac25ad
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: c696105fee677e8e8dca71d5515e0dd2374960b0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122535197"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228446"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Gérer des bibliothèques Python pour Apache Spark dans Azure Synapse Analytics
 
@@ -61,7 +61,7 @@ absl-py==0.7.0
 adal==1.2.1
 alabaster==0.7.10
 ```
-##### <a name="yml-format-preview"></a>Format YML (préversion)
+##### <a name="yml-format"></a>Format YML
 Par ailleurs, vous pouvez également fournir un fichier *environment.yml* pour mettre à jour l’environnement du pool. Les packages répertoriés dans ce fichier sont téléchargés à partir des canaux Conda par défaut, Conda-Forge et PyPI. Vous pouvez spécifier d’autres canaux ou supprimer les canaux par défaut à l’aide des options de configuration.
 
 Cet exemple spécifie les canaux et les dépendances Conda/PyPI. 
@@ -116,7 +116,7 @@ Pour mettre à jour un pool Spark ou y ajouter des bibliothèques :
 > Si ce paramètre est désactivé, vous devez attendre que la session Spark en cours se termine ou l’arrêter manuellement. Une fois la session terminée, vous devez laisser le pool redémarrer.
 
 
-##### <a name="track-installation-progress-preview"></a>Vérifier la progression de l’installation (préversion)
+##### <a name="track-installation-progress"></a>Vérifier la progression de l’installation  
 Un travail Spark réservé au système démarre chaque fois qu’un pool est mis à jour avec un nouvel ensemble de bibliothèques. Ce travail Spark permet de surveiller l’état de l’installation de la bibliothèque. En cas d’échec de l’installation suite à des conflits avec la bibliothèque ou à d’autres problèmes, l’état précédent ou l’état par défaut du pool Spark est rétabli. 
 
 De plus, les utilisateurs peuvent consulter les journaux d’installation pour identifier les conflits de dépendance ou vérifier quelles bibliothèques ont été installées lors de la mise à jour du pool.
@@ -132,7 +132,7 @@ Pour afficher ces journaux :
 ## <a name="install-wheel-files"></a>Installer les fichiers wheel
 Les fichiers wheel Python sont fréquemment utilisés pour créer le package des bibliothèques Python. Dans Azure Synapse Analytics, les utilisateurs peuvent télécharger leurs fichiers wheel sur un emplacement connu, le compte Azure Data Lake Storage, ou les télécharger à l’aide de l’interface des packages d’espace de travail Azure Synapse.
 
-### <a name="workspace-packages-preview"></a>Packages d’espace de travail (préversion)
+### <a name="workspace-packages"></a>Packages d’espace de travail 
 Les packages d’espace de travail peuvent être des fichiers wheel personnalisés ou privés. Vous pouvez télécharger ces packages dans votre espace de travail et les attribuer par la suite à un pool Spark spécifique.
 
 Pour ajouter des packages d’espace de travail :
@@ -145,7 +145,7 @@ Pour ajouter des packages d’espace de travail :
 >[!WARNING]
 >- Dans Azure Synapse, un pool Apache Spark peut tirer parti des bibliothèques personnalisées qui sont téléchargées en tant que packages d’espace de travail ou dans un chemin d’Azure Data Lake Storage bien connu. Toutefois, ces deux options ne peuvent pas être utilisées simultanément dans le même pool Apache Spark. Si les packages sont fournis à l’aide des deux méthodes, seuls les fichiers de roues spécifiés dans la liste des packages d’espace de travail sont installés. 
 >
->- Une fois que les packages de l’espace de travail (préversion) sont utilisés pour installer des packages sur un pool Apache Spark donné, vous ne pouvez plus spécifier de packages à l’aide du chemin d’accès du compte de stockage sur le même pool.  
+>- Une fois que les packages de l’espace de travail sont utilisés pour installer des packages sur un pool Apache Spark donné, vous ne pouvez plus spécifier de packages en utilisant le chemin du compte de stockage sur le même pool.  
 
 ### <a name="storage-account"></a>Compte de stockage
 Les packages Wheel personnalisés peuvent être installés sur le pool Apache Spark en chargeant tous les fichiers Wheel dans le compte Azure Data Lake Storage (Gen2) qui est lié à l’espace de travail Synapse. 
@@ -164,7 +164,7 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 > Pour installer des bibliothèques personnalisées à l’aide de la méthode Azure DataLake Storage, vous devez disposer des autorisations **Contributeur aux données Blob du stockage** ou **Propriétaire des données Blob du stockage** sur le compte de stockage Gen2 principal qui est lié à l’espace de travail Azure Synapse Analytics.
 
 
-## <a name="session-scoped-packages-preview"></a>Packages avec étendue de session (préversion)
+## <a name="session-scoped-packages"></a>Packages avec étendue de session
 Outre les packages du niveau pool, vous pouvez spécifier des bibliothèques incluses dans l’étendue de la session au début d’une session de notebook.  Les bibliothèques avec étendue de session vous permettent de spécifier et d’utiliser des environnements Python personnalisés dans une session de notebook. 
 
 Lorsque vous utilisez des bibliothèques avec étendue de session, il est important de garder à l’esprit les points suivants :

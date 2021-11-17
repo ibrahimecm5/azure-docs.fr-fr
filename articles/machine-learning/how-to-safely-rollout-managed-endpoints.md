@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 813ef955a202f5645d8e4881efb3b2d083fa4d63
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 7f82c65a2aba8057ab3f7cbc6729b83ed597e12b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063586"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564800"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>Déploiement sécurisé pour les points de terminaison en ligne (préversion)
 
@@ -56,7 +56,7 @@ Dans cet article, vous allez apprendre à effectuer les opérations suivantes :
 
 * Si vous n’avez pas défini la variable d’environnement $ENDPOINT _NAME, faites-le maintenant :
 
-   :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
+   :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
 
 * (Recommandé) Clonez le dépôt d’exemples et accédez au répertoire `cli/` du dépôt : 
 
@@ -83,7 +83,7 @@ Vous devez normalement voir le point de terminaison identifié par `$ENDPOINT_NA
 
 Dans le déploiement décrit dans [Déployer et scorer un modèle Machine Learning avec un point de terminaison en ligne managé (préversion)](how-to-deploy-managed-online-endpoints.md), vous définissez `instance_count` sur la valeur `1` dans le fichier yaml de déploiement. Vous pouvez effectuer un scale-out à l’aide de la commande `update` :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
 
 > [!Note]
 > Notez que, dans la commande ci-dessus, nous utilisons `--set` pour remplacer la configuration de déploiement. Vous pouvez également mettre à jour le fichier YAML et le transmettre en tant qu’entrée à la commande `update` en tapant `--file`.
@@ -92,27 +92,27 @@ Dans le déploiement décrit dans [Déployer et scorer un modèle Machine Learni
 
 Créez un déploiement nommé `green` : 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="create_green" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="create_green" :::
 
 Étant donné que nous n’avons pas explicitement alloué de trafic à green, aucun trafic ne luis est alloué. Vous pouvez vérifier cela à l’aide de la commande :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="get_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="get_traffic" :::
 
 ### <a name="test-the-new-deployment"></a>Tester le nouveau déploiement
 
 Bien que 0 % du trafic soit alloué à `green`, vous pouvez l’appeler directement en spécifiant le nom `--deployment` :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green" :::
 
 Si vous voulez utiliser un client REST pour appeler le déploiement directement sans passer par les règles de trafic, définissez l’en-tête HTTP suivant : `azureml-model-deployment: <deployment-name>`. L’extrait de code ci-dessous utilise `curl` pour appeler le déploiement directement. L’extrait de code doit fonctionner dans des environnements Unix/WSL :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green_using_curl" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green_using_curl" :::
 
 ## <a name="test-the-new-deployment-with-a-small-percentage-of-live-traffic"></a>Tester le nouveau déploiement avec un faible pourcentage du trafic dynamique
 
 Après avoir testé votre déploiement `green`, allouez-lui un petit pourcentage de trafic :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
 
 À présent, votre déploiement `green` va recevoir 10 % des demandes. 
 
@@ -120,17 +120,17 @@ Après avoir testé votre déploiement `green`, allouez-lui un petit pourcentage
 
 Une fois que vous constatez que votre déploiement `green` est entièrement satisfaisant, basculez tout le trafic vers celui-ci.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
 
 ## <a name="remove-the-old-deployment"></a>Supprimer l’ancien déploiement
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
 
 ## <a name="delete-the-endpoint-and-deployment"></a>Supprimer le point de terminaison et le déploiement
 
 Si vous ne comptez pas utiliser le déploiement, vous devez le supprimer avec :
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
 
 
 ## <a name="next-steps"></a>Étapes suivantes

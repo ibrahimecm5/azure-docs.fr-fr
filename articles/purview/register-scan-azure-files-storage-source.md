@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: e91e435ca2d8050a0c6d9728c4d010f9e9c844c4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95abf27060748255f24b089cfc4fb9229f33bfa5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076260"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848056"
 ---
 # <a name="connect-to-and-manage-azure-files-in-azure-purview"></a>Se connecter à et gérer Azure Files dans Azure Purview
 
@@ -23,7 +23,9 @@ Cet article explique comment inscrire Azure Files et comment s’authentifier et
 
 |**Extraction des métadonnées**|  **Analyse complète**  |**Analyse incrémentielle**|**Analyse délimitée**|**Classification**|**Stratégie d'accès**|**Traçabilité**|
 |---|---|---|---|---|---|---|
-| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non | Non |
+| [Oui](#register) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non | Limité** |
+
+\** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
 
 Azure Files prend en charge les analyses complètes et incrémentielles pour capturer les métadonnées et les classifications, basées sur un système par défaut et des règles de classification personnalisées.
 

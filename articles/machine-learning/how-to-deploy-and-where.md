@@ -1,5 +1,5 @@
 ---
-title: Comment déployer des modèles Machine Learning
+title: Déployer des modèles Machine Learning
 titleSuffix: Azure Machine Learning
 description: Découvrez comment et où déployer des modèles Machine Learning. Déployez sur Azure Container Instances, Azure Kubernetes Service et FPGA.
 services: machine-learning
@@ -8,14 +8,14 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 04/21/2021
 ms.topic: how-to
-ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
+ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4, mktng-kw-nov2021
 adobe-target: true
-ms.openlocfilehash: b5514df10228a9e5638712976a0602fc33c8a990
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 78abc8d3dba3090198f8856d71f91a9087237641
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604357"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853317"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Déployer des modèles Machine Learning sur Azure 
 
@@ -24,15 +24,17 @@ Découvrez comment déployer votre modèle Machine Learning ou Deep Learning en 
 > [!TIP]
 > Les points de terminaison en ligne managés (préversion) offrent un moyen de déployer votre modèle entraîné sans avoir à créer et gérer l’infrastructure sous-jacente. Pour plus d’informations, consultez [Déployer et scorer un modèle Machine Learning avec un point de terminaison en ligne managé (préversion)](how-to-deploy-managed-online-endpoints.md).
 
+## <a name="workflow-for-deploying-a-model"></a>Flux de travail pour le déploiement d’un modèle
+
 Le workflow est le même, quel que soit l’endroit où vous déployez votre modèle :
 
-1. Inscrire le modèle
-1. Préparer un script d’entrée
-1. Préparer une configuration d’inférence
-1. Déployez le modèle localement pour vous assurer que tout fonctionne
-1. Choisir une cible de calcul
-1. Redéployer le modèle dans le cloud
-1. Tester le service web qui en résulte
+1. Inscrire le modèle.
+1. Préparer un script d’entrée.
+1. Préparer une configuration d’inférence.
+1. Déployer le modèle localement pour vous assurer que tout fonctionne.
+1. Choisir une cible de calcul.
+1. Redéployer le modèle dans le cloud.
+1. Tester le service web qui en résulte.
 
 Pour plus d’informations sur les concepts impliqués dans le workflow du déploiement Machine Learning, consultez [Déployer, gérer et superviser des modèles avec Azure Machine Learning](concept-model-management-and-deployment.md).
 
@@ -83,7 +85,7 @@ Pour plus d’informations sur l’utilisation du kit SDK pour se connecter à u
 
 ---
 
-## <a name="register-your-model"></a><a id="registermodel"></a> Inscrire votre modèle
+## <a name="register-the-model"></a><a id="registermodel"></a> Inscrire le modèle
 
 Une situation courante pour un service Machine Learning déployé est que vous avez besoin des composants suivants :
     

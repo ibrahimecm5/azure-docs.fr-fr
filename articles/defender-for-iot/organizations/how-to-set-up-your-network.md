@@ -1,28 +1,28 @@
 ---
 title: Configurer votre réseau
 description: En savoir plus sur l’architecture de la solution, la préparation du réseau, les conditions préalables et d’autres informations nécessaires pour vous assurer que votre réseau est correctement configuré pour fonctionner avec les appliances Azure Defender pour IoT.
-ms.date: 07/25/2021
+ms.date: 11/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc9e41b3bfdcbeab86aaabbdf0c97b0339b3df3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 150612e8e9d429e9fc2b8eb74f3ea7167a41495c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434085"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028360"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>À propos de la configuration du réseau d’Azure Defender pour IoT
 
 Azure Defender pour IoT assure la surveillance continue des menaces ICS et la détection des appareils. La plateforme comprend les composants suivants :
 
-**Capteurs Defender pour IoT :** Les capteurs collectent le trafic de partage de connexion Internet (ICS) à l’aide de la surveillance passive (sans agent). Passifs et non intrusifs, les capteurs n’ont aucun impact sur les performances des réseaux et appareils OT et IoT. Le capteur se connecte à un port SPAN ou à un TAP réseau et commence immédiatement à surveiller votre réseau. Les détections s’affichent dans la console du capteur. Dans cette console, vous pouvez les visualiser, les examiner et les analyser dans une carte du réseau, un inventaire des appareils et un large éventail de rapports. Les exemples incluent des rapports d’évaluation des risques, des requêtes d’exploration de données et des vecteurs d’attaque. 
+**Capteurs Defender pour IoT :** Les capteurs collectent le trafic de partage de connexion Internet (ICS) à l’aide de la surveillance passive (sans agent). Passifs et non intrusifs, les capteurs n’ont aucun impact sur les performances des réseaux et appareils OT et IoT. Le capteur se connecte à un port SPAN ou à un TAP réseau et commence immédiatement à surveiller votre réseau. Les détections s’affichent dans la console du capteur. Dans cette console, vous pouvez les visualiser, les examiner et les analyser dans une carte du réseau, un inventaire des appareils et un large éventail de rapports. Les exemples incluent des rapports d’évaluation des risques, des requêtes d’exploration de données et des vecteurs d’attaque.
 
-**Console de gestion locale Defender pour IoT** : La console de gestion locale fournit une vue consolidée de tous les périphériques réseau. Elle fournit une vue en temps réel des principaux indicateurs de risque IoT et OT et des alertes dans toutes vos installations. Étroitement intégrée à vos workflows SOC et à vos guides opérationnels, elle permet de hiérarchiser facilement les activités d’atténuation et de corréler les menaces entre les différents sites. 
+**Console de gestion locale Defender pour IoT** : La console de gestion locale fournit une vue consolidée de tous les périphériques réseau. Elle fournit une vue en temps réel des principaux indicateurs de risque IoT et OT et des alertes dans toutes vos installations. Étroitement intégrée à vos workflows SOC et à vos guides opérationnels, elle permet de hiérarchiser facilement les activités d’atténuation et de corréler les menaces entre les différents sites.
 
-**Portail Defender pour IoT :** l’application Defender pour IoT peut vous aider à acheter des appliances de solution, à installer et à mettre à jour des logiciels et à mettre à jour les packages TI. 
+**Portail Defender pour IoT :** l’application Defender pour IoT peut vous aider à acheter des appliances de solution, à installer et à mettre à jour des logiciels et à mettre à jour les packages TI.
 
 Cet article fournit des informations sur l’architecture de la solution, la préparation du réseau, les conditions préalables, et bien plus encore pour vous aider à configurer votre réseau de façon à ce qu’il fonctionne avec les appliances Defender pour IoT. Les lecteurs qui utilisent les informations de cet article doivent maîtriser le fonctionnement et la gestion des réseaux OT et IoT. Par exemple : les ingénieurs en automatisation, les directeurs d’usine, les fournisseurs de services d’infrastructure de réseau OT, les équipes de cybersécurité, les responsables de la sécurité des systèmes d’information ou les directeurs des systèmes d’information.
 
-Pour obtenir de l’aide ou un support, contactez [Support Microsoft](https://support.microsoft.com/en-us/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099).
+Pour obtenir de l’aide ou un support, contactez [Support Microsoft](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099).
 
 ## <a name="on-site-deployment-tasks"></a>Tâches de déploiement sur site
 
@@ -102,22 +102,42 @@ Après l’installation du capteur et de la console de gestion locale, un certif
 
 Vérifiez que la stratégie de sécurité de votre organisation autorise l’accès aux éléments suivants :
 
+#### <a name="user-access-to-the-sensor-and-management-console"></a>Accès utilisateur au capteur et à la console de gestion
+
 | Protocole | Transport | Entrée/Sortie | Port | Utilisé | Objectif | Source | Destination |
 |--|--|--|--|--|--|--|--|
-| HTTPS | TCP | ENTRÉE/SORTIE | 443 | Capteur et console de gestion locale/web | Accès à la console web | Client | Capteur et console de gestion locale |
-| SSH | TCP | ENTRÉE/SORTIE | 22 | Interface de ligne de commande | Accès à l’interface de ligne de commande | Client | Capteur et console de gestion locale |
-| SSL | TCP | ENTRÉE/SORTIE | 443 | Capteur et console de gestion locale | Connexion entre la plateforme CyberX et la plateforme de gestion centralisée | capteur | Console de gestion locale |
-| NTP | UDP | IN | 123 | Synchronisation date/heure | Console de gestion locale utilisée comme NTP sur le capteur | capteur | Console de gestion locale |
-| NTP | UDP | ENTRÉE/SORTIE | 123 | Synchronisation date/heure | Capteur connecté à un serveur NTP externe quand aucune console de gestion locale n’est installée | capteur | NTP |
-| SMTP | TCP | OUT | 25 | E-mail | Connexion entre la plateforme CyberX et la plateforme de gestion centralisée et le serveur de courrier | Capteur et console de gestion locale | Serveur de courrier |
-| syslog | UDP | OUT | 514 | LEEF | Journaux envoyés de la console de gestion locale au serveur Syslog | Capteur et console de gestion locale | Serveur syslog |
-| DNS |  | ENTRÉE/SORTIE | 53 | DNS | Port du serveur DNS | Capteur et console de gestion locale | Serveur DNS |
-| LDAP | TCP | ENTRÉE/SORTIE | 389 | Active Directory | Connexion entre la plateforme CyberX et la plateforme de gestion centralisée à Active Directory | Capteur et console de gestion locale | Serveur LDAP |
-| LDAPS | TCP | ENTRÉE/SORTIE | 636 | Active Directory | Connexion entre la plateforme CyberX et la plateforme de gestion centralisée à Active Directory | Capteur et console de gestion locale | Serveur LDAPS |
-| SNMP | UDP | OUT | 161 | Surveillance | Collecteurs SNMP distants | Capteur et console de gestion locale | Serveur SNMP |
-| WMI | UDP | OUT | 135 | monitoring | Surveillance des points de terminaison Windows | Capteur | Élément réseau concerné |
-| Tunneling | TCP | IN | 9000 <br /><br />– En plus du port 443 <br /><br />de l’utilisateur final à la console de gestion locale <br /><br />Port 22 du capteur à la console de gestion locale  | monitoring | Tunneling | Capteur | Console de gestion locale |
-| HTTP| TCP | OUT | 80 | Validation du certificat  | Télécharger le fichier de liste de révocation de certificats | Capteur | Serveur de liste de révocation de certificats |
+| HTTPS | TCP | Entrée/Sortie | 443 | Pour accéder au capteur et à la console web de la console de gestion locale. | Accès à la console web | Client | Capteur et console de gestion locale |
+| SSH | TCP | Entrée/Sortie | 22 | Interface de ligne de commande | Pour accéder à l’interface CLI. | Client | Capteur et console de gestion locale |
+
+#### <a name="sensor-access-to-azure-portal"></a>Accès du capteur au portail Azure
+
+| Protocole | Transport | Entrée/Sortie | Port | Utilisé | Objectif | Source | Destination |
+|--|--|--|--|--|--|--|--|
+| HTTPS / Websocket | TCP | Entrée/Sortie | 443 | Donne au capteur l’accès au portail Azure. (Facultatif) L’accès peut être octroyé via un proxy. | Accès à Portail Azure | Capteur | Portail Azure |
+
+#### <a name="sensor-access-to-the-on-premises-management-console"></a>Accès du capteur à la console de gestion locale
+
+| Protocole | Transport | Entrée/Sortie | Port | Utilisé | Objectif | Source | Destination |
+|--|--|--|--|--|--|--|--|
+| SSL | TCP | Entrée/Sortie | 443 | Donne au capteur l’accès à la console de gestion locale. | Connexion entre le capteur et la console de gestion locale | Capteur | Console de gestion locale |
+| NTP | UDP | Entrée/Sortie | 123 | Synchronisation date/heure | Connecte le NTP à la console de gestion locale. | Capteur | Console de gestion locale |
+
+#### <a name="additional-firewall-rules-for-external-services-optional"></a>Règles de pare-feu supplémentaires pour les services externes (facultatif)
+
+Ouvrez ces ports afin d’autoriser des services supplémentaires pour Defender pour IoT.
+
+| Protocole | Transport | Entrée/Sortie | Port | Utilisé | Objectif | Source | Destination |
+|--|--|--|--|--|--|--|--|
+| HTTP | TCP | Sortie | 80 | Téléchargement de la liste de révocation de certificats (CRL) pour la validation de certificat lors du chargement des certificats. | Accès au serveur CLR | Capteur et console de gestion locale | Serveur de liste de révocation de certificats |
+| LDAP | TCP | Entrée/Sortie | 389 | Active Directory | Permet la gestion par Active Directory des utilisateurs qui ont accès pour se connecter au système. | Capteur et console de gestion locale | Serveur LDAP |
+| LDAPS | TCP | Entrée/Sortie | 636 | Active Directory | Permet la gestion par Active Directory des utilisateurs qui ont accès pour se connecter au système. | Capteur et console de gestion locale | Serveur LDAPS |
+| [SNMP](how-to-set-up-snmp-mib-monitoring.md) | UDP | Sortie | 161 | Surveillance | Analyse l’intégrité du capteur. | Capteur et console de gestion locale | Serveur SNMP |
+| SMTP | TCP | Sortie | 25 | Courrier | Utilisé pour ouvrir le serveur de courrier du client afin d’envoyer des e-mails pour les alertes et les événements. | Capteur et console de gestion locale | Serveur de courrier |
+| syslog | UDP | Sortie | 514 | LEEF | Journaux envoyés de la console de gestion locale au serveur Syslog. | Capteur et console de gestion locale | Serveur syslog |
+| DNS | TCP/UDP | Entrée/Sortie | 53 | DNS | Port du serveur DNS. | Capteur et console de gestion locale | Serveur DNS |
+| [WMI](how-to-configure-windows-endpoint-monitoring.md) | TCP/UDP | Sortie | 135, 1025-65535 | Surveillance | Surveillance des points de terminaison Windows. | Capteur | Élément réseau concerné |
+| Tunneling | TCP | Dans | 9000 </br></br> En plus du port 443 </br></br> Autorise l’accès à partir du capteur ou de l’utilisateur final à la console de gestion locale. </br></br> Port 22 du capteur à la console de gestion locale. | Surveillance | Tunneling | Capteur | Console de gestion locale |
+| Proxy | TCP/UDP | Entrée/Sortie | 443 | Proxy | Pour connecter le capteur à un serveur proxy | Capteur et console de gestion locale | Serveur proxy |
 
 ### <a name="plan-rack-installation"></a>Planifier l’installation du rack
 
@@ -128,10 +148,15 @@ Pour planifier votre installation de racks :
 1. Allouez l’espace de rack de l’appliance.
 
 1. Prévoyez une alimentation en courant alternatif pour l’appliance.
+
 1. Préparez le câble LAN pour connecter la console de gestion au commutateur réseau.
-1. Préparez les câbles LAN pour connecter les ports SPAN (miroir) du commutateur et/ou les TAP réseau à l’appliance Defender pour IoT.
+
+1. Préparez les câbles LAN pour connecter les ports SPAN (miroir) du commutateur et les TAP réseau à l’appliance Defender pour IoT.
+
 1. Configurez, connectez et validez les ports SPAN dans les commutateurs mis en miroir comme décrit dans la session de révision de l’architecture.
+
 1. Connectez le port SPAN configuré à un ordinateur exécutant Wireshark et vérifiez que le port est correctement configuré.
+
 1. Ouvrez tous les ports de pare-feu appropriés.
 
 ## <a name="about-passive-network-monitoring"></a>À propos de la surveillance passive du réseau
@@ -558,7 +583,7 @@ Passez en revue cette liste avant le déploiement à l’échelle du site :
 | 13 | Installer le rack et les câbles des appliances. | ☐ |  |
 | 14 | Allouer les ressources du site pour prendre en charge le déploiement. | ☐ |  |
 | 15 | Créer des groupes Active Directory ou des utilisateurs locaux. | ☐ |  |
-| 16 | Configurer l’entraînement (auto-apprentissage). | ☐ |  |
+| 16 | Configurer une formation (auto-apprentissage). | ☐ |  |
 | 17 | Prêt ou non prêt. | ☐ |  |
 | 18 | Planifier la date de déploiement. | ☐ |  |
 
@@ -573,7 +598,7 @@ Passez en revue cette liste avant le déploiement à l’échelle du site :
 
 Une vue d’ensemble du diagramme du réseau industriel vous permet de définir l’emplacement approprié pour l’équipement Defender pour IoT.
 
-1.  **Diagramme de réseau global** : Consultez un diagramme du réseau global de l’environnement OT industriel. Par exemple :
+1. **Diagramme de réseau global** : Consultez un diagramme du réseau global de l’environnement OT industriel. Par exemple :
 
     :::image type="content" source="media/how-to-set-up-your-network/backbone-switch.png" alt-text="Diagramme de l’environnement OT industriel pour le réseau global.":::
 
@@ -582,7 +607,7 @@ Une vue d’ensemble du diagramme du réseau industriel vous permet de définir 
 
 1. **Appareils validés** : Indiquez le nombre approximatif de périphériques réseau qui seront analysés. Vous aurez besoin de ces informations lors de l’intégration de votre abonnement au portail Azure Defender pour IoT. Pendant le processus d’intégration, vous serez invité à entrer le nombre d’appareils par incréments de 1000.
 
-1. **(Facultatif) Liste des sous-réseaux** : Fournissez une liste de sous-réseaux pour les réseaux de production et une description (facultatif). 
+1. **(Facultatif) Liste des sous-réseaux** : Fournissez une liste de sous-réseaux pour les réseaux de production et une description (facultatif).
 
     |  **#**  | **Nom du sous-réseau** | **Description** |
     |--| --------------- | --------------- |
@@ -622,25 +647,25 @@ Une vue d’ensemble du diagramme du réseau industriel vous permet de définir 
     - Rockwell Automation : Ethernet ou IP
 
     - Emerson : DeltaV, Ovation
-    
-1.  **Connexion série** : Existe-t-il des appareils qui communiquent par le biais d’une connexion série sur le réseau ? Oui ou Non 
 
-    Si oui, spécifiez le protocole de communication série : ________________ 
+1. **Connexion série** : Existe-t-il des appareils qui communiquent par le biais d’une connexion série sur le réseau ? Oui ou Non
 
-    Si oui, indiquez sur le diagramme du réseau quels appareils communiquent avec les protocoles série, et où ils se trouvent : 
- 
-    *Ajoutez le diagramme de votre réseau avec l’indication de la connexion série.* 
+    Si oui, spécifiez le protocole de communication série : ________________
 
-1. **Qualité de service** : Pour la Qualité de service, le paramètre par défaut du capteur est de 1,5 Mbits/s. Spécifiez si vous souhaitez le modifier : ________________ 
+    Si oui, indiquez sur le diagramme du réseau quels appareils communiquent avec les protocoles série, et où ils se trouvent :
 
-   Unité commerciale : ________________ 
+    *Ajoutez le diagramme de votre réseau avec l’indication de la connexion série.*
 
-1.  **Capteur** : Spécifications pour l’équipement du site
+1. **Qualité de service** : Pour la Qualité de service, le paramètre par défaut du capteur est de 1,5 Mbits/s. Spécifiez si vous souhaitez le modifier : ________________
+
+   Unité commerciale : ________________
+
+1. **Capteur** : Spécifications pour l’équipement du site
 
     L’appliance de détection est connectée au port SPAN du commutateur via une carte réseau. Elle est connectée au réseau d’entreprise du client à des fins de gestion par le biais d’une autre carte réseau dédiée.
-    
-    Fournissez des informations sur l’adresse de la carte réseau du capteur qui sera connectée au réseau d’entreprise : 
-    
+
+    Fournissez des informations sur l’adresse de la carte réseau du capteur qui sera connectée au réseau d’entreprise :
+
     | Élément | Appliance 1 | Appliance 2 | Appliance 3 |
     |--|--|--|--|
     | Adresse IP de l’appliance |  |  |  |
@@ -649,7 +674,7 @@ Une vue d’ensemble du diagramme du réseau industriel vous permet de définir 
     | DNS |  |  |  |
     | Nom de l’hôte |  |  |  |
 
-1.  **iDRAC/iLO/gestion des serveurs**
+1. **iDRAC/iLO/gestion des serveurs**
 
     | Élément | Appliance 1 | Appliance 2 | Appliance 3 |
     |--|--|--|--|
@@ -658,7 +683,7 @@ Une vue d’ensemble du diagramme du réseau industriel vous permet de définir 
     | Passerelle par défaut |  |  |  |
     | DNS |  |  |  |
 
-1. **Console de gestion locale** 
+1. **Console de gestion locale**
 
     | Élément | Actif | Passif (en cas d’utilisation de la haute disponibilité) |
     |--|--|--|
@@ -683,18 +708,18 @@ Une vue d’ensemble du diagramme du réseau industriel vous permet de définir 
 1. **Certificat SSL de la console de gestion locale**
 
     Envisagez-vous d’utiliser un certificat SSL ? Oui ou Non
-    
+
     Si oui, quel service allez-vous utiliser pour le générer ? Quels attributs inclurez-vous dans le certificat (par exemple, domaine ou adresse IP) ?
 
 1. **Authentification SMTP**
 
     Envisagez-vous d’utiliser le protocole SMTP pour transférer des alertes à un serveur de messagerie ? Oui ou Non
-    
+
     Si oui, quelle est la méthode d’authentification que vous utiliserez ?  
-    
+
 1. **Active Directory ou utilisateurs locaux**
 
-    Contactez un administrateur Active Directory pour créer un groupe d’utilisateurs du site Active Directory ou créez des utilisateurs locaux. Veillez à ce que vos utilisateurs soient prêts pour le jour du déploiement. 
+    Contactez un administrateur Active Directory pour créer un groupe d’utilisateurs du site Active Directory ou créez des utilisateurs locaux. Veillez à ce que vos utilisateurs soient prêts pour le jour du déploiement.
 
 1. Types d’appareils IoT dans le réseau
 

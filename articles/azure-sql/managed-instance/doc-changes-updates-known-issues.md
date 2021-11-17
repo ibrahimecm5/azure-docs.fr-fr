@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: 97cf7977d6e867d0c3bbc106f599bc69db4d987b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 31f42cb2dd8405a08477fd6ee9048f42e80e44be
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465228"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851266"
 ---
 # <a name="known-issues-with-azure-sql-managed-instance"></a>Problèmes connus avec Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,6 +28,7 @@ Cet article répertorie les problèmes actuellement connus avec [Azure SQL Manag
 
 |Problème  |Date de la détection  |Statut  |Date de la résolution  |
 |---------|---------|---------|---------|
+|[Lors de l’utilisation de l’authentification SQL Server, les noms d’utilisateur avec « @ » ne sont pas pris en charge](#when-using-sql-server-authentication-usernames-with--are-not-supported)|Octobre 2021|||
 |[Message d’erreur trompeur sur le portail Azure suggérant de recréer le principal de service](#misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal)|Septembre 2021|||
 |[La modification du type de connexion n’affecte pas les connexions via le point de terminaison du groupe de basculement](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|Janvier 2021|Solution de contournement||
 |[La procédure sp_send_dbmail peut échouer de façon transitoire lorsque le paramètre @query est utilisé](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Janvier 2021|Solution de contournement||
@@ -315,6 +316,10 @@ using (var scope = new TransactionScope())
 
 
 ## <a name="no-resolution"></a>Aucune résolution
+
+### <a name="when-using-sql-server-authentication-usernames-with--are-not-supported"></a>Lors de l’utilisation de l’authentification SQL Server, les noms d’utilisateur avec « @ » ne sont pas pris en charge
+
+Les noms d’utilisateur contenant le symbole « @ » au milieu (par exemple, « abc@xy ») ne sont pas en mesure de se connecter à l’aide de l’authentification SQL Server.
 
 ### <a name="misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal"></a>Message d’erreur trompeur sur le portail Azure suggérant de recréer le principal de service
 

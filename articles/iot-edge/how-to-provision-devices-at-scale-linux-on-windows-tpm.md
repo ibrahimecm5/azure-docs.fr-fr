@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 1afc8bb1a8932fb808073cfdb9468c126c407b1e
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: b286dfd6fd4e494427b1094fc38039e575af1e17
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131579335"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846080"
 ---
 # <a name="create-and-provision-an-iot-edge-for-linux-on-windows-device-at-scale-by-using-a-tpm"></a>Créer et provisionner un appareil IoT Edge pour Linux sur Windows à grande échelle à l’aide d’un TPM
 
@@ -86,9 +86,9 @@ La machine virtuelle IoT Edge pour Linux sur Windows dispose d’une fonctionnal
 
 # <a name="physical-tpm"></a>[TPM physique](#tab/physical-tpm)
 
-Pour provisionner votre appareil, vous devez recueillir des informations de votre puce TPM et les fournir à votre instance du service ce provisionnement des appareils afin que le service puisse reconnaître votre appareil quand il tente de se connecter.
+Pour approvisionner votre appareil, vous avez besoin d’une **paire de clés de type EK (Endorsement Key)** pour votre puce TPM et d’un **ID d’inscription** pour votre appareil. Vous fournissez ces informations à votre instance du service d’approvisionnement des appareils pour lui permettre de reconnaître votre appareil quand il tente de se connecter.
 
-Tout d’abord, vous devez déterminer la paire de clés de type EK (Endorsement Key), propre à chaque puce TPM et fournie par le fabricant de la puce TPM associée. Vous devez ensuite fournir un ID d’inscription pour votre appareil. Vous pouvez dériver un ID d’inscription unique pour votre appareil TPM, en créant par exemple un code de hachage SHA-256 pour la paire de clés de type EK.
+La paire de clés de type EK (Endorsement Key) est unique pour chaque puce TPM. Vous pouvez l’obtenir auprès du fabricant de puces TPM associé. Vous pouvez dériver un ID d’inscription unique pour votre appareil TPM, en créant par exemple un code de hachage SHA-256 pour la paire de clés de type EK.
 
 IoT Edge pour Linux sur Windows fournit un script PowerShell pour vous aider à récupérer ces informations à partir de votre TPM. Pour utiliser le script, procédez comme suit sur votre appareil :
 
@@ -133,7 +133,7 @@ Exemples de TPM simulés :
 1. Provisionnez votre appareil à l’aide de l’**ID d’étendue** que vous avez collecté à partir de votre instance du service de provisionnement des appareils.
 
    ```powershell
-   Provision-EflowVM -provisioningType "DpsTpm" -scopeId "<scope id>"
+   Provision-EflowVM -provisioningType "DpsTpm" -scopeId "SCOPE_ID_HERE"
    ```
 
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
@@ -151,7 +151,7 @@ Exemples de TPM simulés :
 
 ---
 
-## <a name="verify-successful-configuration"></a>Vérifier que la configuration a réussi
+## <a name="verify-successful-installation"></a>Vérifier la réussite de l’installation
 
 Vérifiez que IoT Edge pour Linux sur Windows a été correctement installé et configuré sur votre appareil IoT Edge.
 

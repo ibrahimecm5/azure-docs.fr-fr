@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 04/09/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: b3ef6f684123c863fd2bdfb5a5ec953b3b20cc6f
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: d600f7ad651b58f3cf194c8f5dace8f6dc4c7695
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428062"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560337"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>Utiliser des paramètres de pipeline dans le concepteur pour créer des pipelines polyvalents
 
@@ -41,8 +41,8 @@ Cet article, vous allez découvrir comment :
 ## <a name="create-pipeline-parameter"></a>Créer un paramètre de pipeline
 
 Il existe trois façons de créer un paramètre de pipeline dans le concepteur :
-- Créer un paramètre de pipeline dans le panneau Paramètres, et le lier à un module
-- Promouvoir un paramètre de module en paramètre de pipeline
+- Créez un paramètre de pipeline dans le panneau Paramètres et liez-le à un composant.
+- Promouvoir un paramètre de composant en paramètre de pipeline.
 - Promouvoir un jeu de données en paramètre de pipeline
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Il existe trois façons de créer un paramètre de pipeline dans le concepteur 
 
 Dans cette section, vous allez créer un paramètre de pipeline dans le panneau Paramètres.
 
-Dans cet exemple, vous créez un paramètre de pipeline qui définit comment un pipeline renseigne des données manquantes à l’aide du module **Nettoyer les données manquantes**.
+Dans cet exemple, vous créez un paramètre de pipeline qui définit comment un pipeline renseigne des données manquantes à l’aide du composant **Nettoyer les données manquantes**.
 
 1. En regard du nom de votre brouillon de pipeline, sélectionnez l’**icône d’engrenage** pour ouvrir le panneau **Paramètres**.
 
@@ -65,18 +65,18 @@ Dans cet exemple, vous créez un paramètre de pipeline qui définit comment un 
    ![Capture d’écran montrant comment créer un paramètre de pipeline](media/how-to-use-pipeline-parameter/create-pipeline-parameter.png)
 
 
-Après avoir créé un paramètre de pipeline, vous devez [l’attacher au paramètre de module](#attach-module-parameter-to-pipeline-parameter) que vous souhaitez définir de manière dynamique.
+Après avoir créé un paramètre de pipeline, vous devez [l’attacher au paramètre de composant](#attach-component-parameter-to-pipeline-parameter) que vous souhaitez définir de manière dynamique.
 
-### <a name="option-2-promote-a-module-parameter"></a>Option 2 : Promouvoir un paramètre de module
+### <a name="option-2-promote-a-component-parameter"></a>Option 2 : Promouvoir un paramètre de composant
 
-La façon la plus simple de créer un paramètre de pipeline pour une valeur de module consiste à promouvoir un paramètre de module. Effectuez les étapes suivantes pour promouvoir un paramètre de module en paramètre de pipeline :
+La façon la plus simple de créer un paramètre de pipeline pour une valeur de composant consiste à promouvoir un paramètre de composant. Pour promouvoir un paramètre de composant en paramètre de pipeline, procédez comme suit :
 
-1. Sélectionnez le module auquel vous souhaitez attacher un paramètre de pipeline.
-1. Dans le volet de détails du module, placez le pointeur de la souris sur le paramètre que vous souhaitez spécifier.
+1. Sélectionnez le composant auquel vous souhaitez attacher un paramètre de pipeline.
+1. Dans le volet de détails du composant, placez le pointeur de la souris sur le paramètre que vous souhaitez spécifier.
 1. Sélectionnez les points de suspension ( **...** ) qui s’affichent.
 1. Sélectionnez **Ajouter au paramètre de pipeline**.
 
-    ![Capture d’écran montrant comment promouvoir le paramètre de module en paramètre1 du pipeline](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
+    ![Capture d’écran montrant comment promouvoir le paramètre de composant en paramètre1 du pipeline](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
 
 1. Entrez un nom de paramètre et une valeur par défaut.
 1. Sélectionnez **Enregistrer**.
@@ -95,19 +95,19 @@ Si vous souhaitez soumettre votre pipeline avec des jeux de données variables, 
 
 Vous pouvez maintenant spécifier un autre jeu de données à l’aide du paramètre de pipeline lors de la prochaine exécution du pipeline.
 
-## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Attacher et détacher le paramètre de module à un paramètre de pipeline 
+## <a name="attach-and-detach-component-parameter-to-pipeline-parameter"></a>Attacher un paramètre de composant à un paramètre de pipeline et l’en détacher 
 
-Dans cette section, vous allez découvrir comment attacher et détacher un paramètre de module à un paramètre de pipeline.
+Cette section explique comment attacher un paramètre de composant à un paramètre de pipeline et l’en détacher.
 
-### <a name="attach-module-parameter-to-pipeline-parameter"></a>Attacher le paramètre de module à un paramètre de pipeline
+### <a name="attach-component-parameter-to-pipeline-parameter"></a>Attacher un paramètre de composant à un paramètre de pipeline
 
-Vous pouvez attacher les mêmes paramètres de module de modules dupliqués au même paramètre de pipeline si vous souhaitez modifier la valeur lors du déclenchement de l’exécution du pipeline.
+Vous pouvez attacher les mêmes paramètres de composant de composants dupliqués au même paramètre de pipeline si vous souhaitez modifier la valeur lors du déclenchement de l’exécution du pipeline.
 
-L’exemple suivant comporte un module **Nettoyer les données manquantes** dupliqué. Pour chaque module **Nettoyer les données manquantes**, attachez la **Valeur de remplacement** au paramètre de pipeline **replace-missing-value** :
+L’exemple suivant comporte un composant **Nettoyer les données manquantes** dupliqué. Pour chaque composant **Nettoyer les données manquantes**, attachez la **Valeur de remplacement** au paramètre de pipeline **replace-missing-value** :
 
-1. Sélectionnez le module **Clean Missing Data**.
+1. Sélectionnez le composant **Clean Missing Data**.
 
-1. Dans le volet de détails du module, à droite du canevas, définissez le **Mode de nettoyage** sur « Valeur de substitution personnalisée ».
+1. Dans le volet de détails du composant, à droite du canevas, définissez le **Mode de nettoyage** sur « Valeur de substitution personnalisée ».
 
 1. Placez le pointeur de la souris sur le champ **Valeur de remplacement**.
 
@@ -120,11 +120,11 @@ L’exemple suivant comporte un module **Nettoyer les données manquantes** dupl
 Vous avez correctement attaché le champ **Valeur de remplacement** à votre paramètre de pipeline. 
 
 
-### <a name="detach-module-parameter-to-pipeline-parameter"></a>Détacher le paramètre de module à un paramètre de pipeline
+### <a name="detach-component-parameter-to-pipeline-parameter"></a>Détacher un paramètre de composant d’un paramètre de pipeline
 
 Une fois que vous avez attaché la **valeur de remplacement** au paramètre de pipeline, elle n’est pas exploitable.
 
-Vous pouvez détacher le paramètre de module dans le paramètre de pipeline en cliquant sur les points de suspension ( **...** ) en regard du paramètre de module, puis sélectionner **Détacher du paramètre de pipeline**.
+Vous pouvez détacher un paramètre de composant d’un paramètre de pipeline en cliquant sur les points de suspension ( **...** ) en regard du paramètre de composant, puis sélectionner **Détacher du paramètre de pipeline**.
 
  ![Capture d’écran montrant le caractère non-actionnable après l’attachement au paramètre de pipeline](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
 
@@ -134,7 +134,7 @@ Dans cette section, vous allez découvrir comment mettre à jour et supprimer de
 
 ### <a name="update-pipeline-parameters"></a>Mettre à jour des paramètres de pipeline
 
-Pour mettre à jour un paramètre de pipeline de module, effectuez les étapes suivantes :
+Pour mettre à jour un paramètre de pipeline de composant, procédez comme suit :
 
 1. En haut du canevas, sélectionnez l’icône d’engrenage.
 1. Dans la section **Paramètres du pipeline**, vous pouvez afficher et mettre à jour le nom et la valeur par défaut de tous vos paramètres de pipeline.
@@ -143,26 +143,26 @@ Pour mettre à jour un paramètre de pipeline de module, effectuez les étapes s
 
 Pour supprimer un paramètre de pipeline de jeu de données, effectuez les étapes suivantes :
 
-1. Sélectionnez le module de jeu de données.
+1. Sélectionnez le composant Jeu de données.
 1. Décochez l’option **Définir en tant que paramètre de pipeline**.
 
 
-### <a name="delete-module-pipeline-parameters"></a>Supprimer des paramètres de pipeline de module
+### <a name="delete-component-pipeline-parameters"></a>Supprimer des paramètres de pipeline de composant
 
-Pour supprimer un paramètre de pipeline de module, effectuez les étapes suivantes :
+Pour supprimer un paramètre de pipeline de composant, procédez comme suit :
 
 1. En haut du canevas, sélectionnez l’icône d’engrenage.
 
 1. Sélectionnez les points de suspension ( **...** ) en regard du paramètre de pipeline.
 
-    Cet affichage montre les modules auxquels le paramètre de pipeline est attaché.
+    Cet affichage montre les composants auxquels le paramètre de pipeline est attaché.
 
-    ![Capture d’écran montrant le paramètre de pipeline actif appliqué à un module](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
+    ![Capture d’écran montrant le paramètre de pipeline actif appliqué à un composant](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
 1. Sélectionnez **Supprimer le paramètre** pour supprimer le paramètre de pipeline.
 
     > [!NOTE]
-    > La suppression d’un paramètre de pipeline entraîne le détachement de tous les paramètres de module attachés, et la valeur des paramètres de module détaché conservera la valeur actuelle du paramètre de pipeline.     
+    > La suppression d’un paramètre de pipeline entraîne le détachement de tous les paramètres de composant attachés, et la valeur des paramètres de composant détachés conservera la valeur actuelle du paramètre de pipeline.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>Déclencher une exécution de pipeline avec des paramètres de pipeline 
 

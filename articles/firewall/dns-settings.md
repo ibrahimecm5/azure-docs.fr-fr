@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/28/2021
+ms.date: 11/08/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e3c1da0e21f13357c5c537da2530e012101423dd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 44a9da990b1f44f151ab6492cbca65d1b445ae65
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215697"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059542"
 ---
 # <a name="azure-firewall-dns-settings"></a>Paramètres DNS du Pare-feu Azure
 
@@ -75,9 +75,9 @@ Si vous activez le filtrage des noms de domaine complets dans les règles de ré
 
 Lorsque Pare-feu Azure est un proxy DNS, deux types de fonctions de mise en cache sont possibles :
 
-- **Cache positif** : la résolution DNS est réussie. Le pare-feu utilise la durée de vie (TTL, time to live) du paquet ou de l’objet. 
+- **Cache positif** : la résolution DNS est réussie. Le pare-feu met en cache ces réponses en fonction de la durée de vie (TTL) dans la réponse pendant jusqu’à une heure. 
 
-- **Cache négatif** : la résolution DNS ne produit aucune réponse ni aucune résolution. Le pare-feu met en cache ces informations pendant une heure.
+- **Cache négatif** : la résolution DNS ne produit aucune réponse ni aucune résolution. Le pare-feu met en cache ces réponses en fonction de la durée de vie (TTL) dans la réponse pendant jusqu’à 30 minutes.
 
 Le proxy DNS stocke toutes les adresses IP résolues à partir de noms de domaine complets dans des règles de réseau. Nous vous recommandons d’utiliser des noms de domaine complets qui se résolvent en une seule adresse IP.
 

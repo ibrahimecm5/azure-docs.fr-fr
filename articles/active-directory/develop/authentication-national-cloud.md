@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/21/2021
+ms.date: 11/03/2021
 ms.author: negoe
 ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d920747b3af826a3009c602e81baa9157160eeb8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc62e3a4ae32cf4b2d0a63dd15bdab24ac490d1e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551521"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564534"
 ---
 # <a name="national-clouds"></a>Clouds nationaux
 
@@ -28,9 +28,9 @@ En plus du cloud global Azure, le Répertoire actif Azure (Azure AD) est déploy
 
 - Azure Government
 - Azure China 21Vianet
-- Azure Allemagne ([clôture le 29 octobre 2021](https://www.microsoft.com/cloud-platform/germany-cloud-regions)). En savoir plus sur la [migration d’Azure Allemagne](#azure-germany-microsoft-cloud-deutschland).
+- Azure Allemagne ([fermé le 29 octobre 2021](https://www.microsoft.com/cloud-platform/germany-cloud-regions)). En savoir plus sur la [migration d’Azure Allemagne](#azure-germany-microsoft-cloud-deutschland).
 
-Chaque _instance_ Cloud, les clouds nationaux individuels et le Cloud Azure global, constituent un environnement distinct avec leurs propres points de terminaison. Les points de terminaison spécifiques au Cloud incluent le jeton d’accès OAuth 2.0 et les points de terminaison de demande de jeton d’ID OpenID Connect, ainsi que les url de gestion et de déploiement d’applications, comme le portail Azure.
+Les différents clouds nationaux et le cloud Azure global constituent des _instances_ cloud. Chaque instance cloud est distincte des autres. Elle possède son propre environnement et ses propres _points de terminaison_. Les points de terminaison spécifiques au Cloud incluent le jeton d’accès OAuth 2.0 et les points de terminaison de demande de jeton d’ID OpenID Connect, ainsi que les url de gestion et de déploiement d’applications, comme le portail Azure.
 
 Lorsque vous développez vos applications, utilisez les points de terminaison de l’instance Cloud dans laquelle vous déploierez l’application.
 
@@ -45,6 +45,18 @@ Le tableau suivant répertorie les URL de base des points de terminaison Azure A
 | Portail Azure pour le gouvernement des États-Unis          | `https://portal.azure.us`  |
 | Portail Azure Chine géré par 21Vianet | `https://portal.azure.cn`  |
 | Portail Azure (service global)           | `https://portal.azure.com` |
+
+## <a name="application-endpoints"></a>Points de terminaison d’application
+
+Vous pouvez trouver les points de terminaison d’authentification pour votre application dans le portail Azure.
+
+1. Connectez-vous au <a href="https://portal.azure.com/" target="_blank">portail Azure</a>.
+1. Sélectionnez **Azure Active Directory**.
+1. Sous **Gérer**, sélectionnez **Inscriptions d’applications**, puis sélectionnez **Points de terminaison** dans le menu supérieur.
+
+   La page **Points de terminaison** qui s’affiche présente les points de terminaison d’authentification de l’application inscrite dans votre locataire Azure AD.
+
+   Utilisez le point de terminaison qui correspond au protocole d’authentification que vous utilisez en combinaison avec l’**ID d’application (client)** pour créer la demande d’authentification spécifique à votre application.
 
 ## <a name="azure-ad-authentication-endpoints"></a>Points de terminaison d’authentification Azure AD
 
@@ -67,17 +79,15 @@ Pour les applications à client unique, remplacez « common » dans les URL ci-d
 
 ## <a name="azure-germany-microsoft-cloud-deutschland"></a>Azure Allemagne (Microsoft Cloud Deutschland)
 
-> [!WARNING]
-> Azure Allemagne (Microsoft Cloud Deutschland) sera [clôturé le 29 octobre 2021](https://www.microsoft.com/cloud-platform/germany-cloud-regions). Les services et applications que vous choisissez de _ne pas_ migrer vers une région dans Azure global avant cette date deviennent inaccessibles.
-
 Si vous n’avez pas migré votre application à partir d’Azure Allemagne, suivez [les informations du Répertoire actif Azure relatives à la migration à partir d’Azure Allemagne](/microsoft-365/enterprise/ms-cloud-germany-transition-azure-ad) pour commencer.
 
 ## <a name="microsoft-graph-api"></a>API Microsoft Graph
 
 Pour savoir comment appeler les API Microsoft Graph dans un environnement de cloud national, accédez à [Microsoft Graph in national cloud deployments (Microsoft Graph dans les déploiements sur les clouds nationaux)](/graph/deployments).
 
-> [!IMPORTANT]
-> Certains services et fonctionnalités dans des régions spécifiques du service global peuvent ne pas être disponibles dans l’ensemble des clouds nationaux. Pour connaître les services disponibles, accédez à la [Disponibilité des produits par région](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+Certains services et fonctionnalités du cloud Azure global peuvent ne pas être disponibles dans d’autres instances cloud comme les clouds nationaux.
+
+Pour connaître les services et les fonctionnalités disponibles dans une instance cloud donnée, consultez [Produits disponibles région par région](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
 
 Pour savoir comment créer une application à l’aide de la Plateforme d’identités Microsoft, suivez l'[application à page unique (SPA) à l’aide du didacticiel de flux de code auth](tutorial-v2-angular-auth-code.md). Plus précisément, cette application doit connecter un utilisateur et obtenir un jeton d’accès pour appeler l’API Microsoft Graph.
 
@@ -89,4 +99,4 @@ Documentation sur le cloud national :
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
-- Azure Allemagne ([clôture le 29 octobre 2021](../../germany/index.yml)).
+- [Azure Allemagne (fermé le 29 octobre 2021)](../../germany/index.yml)

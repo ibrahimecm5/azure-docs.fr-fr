@@ -4,19 +4,22 @@ description: Cet article est régulièrement mis à jour avec des informations n
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/07/2021
-ms.openlocfilehash: a42798f5af63d9ec43760511a749861a955518cf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/08/2021
+ms.openlocfilehash: e7ad62bde9a8b14ca31a84d2bb2907eb2a6db0af
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643077"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028759"
 ---
 # <a name="whats-new-in-language-understanding"></a>Nouveauté du service Language Understanding
 
 Découvrir les nouveautés du service. Ces éléments incluent des notes de publication, des vidéos, des billets de blog et d’autres types d’informations. Marquez cette page pour rester au fait des nouveautés du service.
 
 ## <a name="release-notes"></a>Notes de publication
+
+### <a name="november-2021"></a>Novembre 2021
+* [Article sur le contrôle d’accès en fonction du rôle (RBAC) Azure](role-based-access-control.md)
 
 ### <a name="august-2021"></a>Août 2021
 * [Région de publication](luis-reference-regions.md#publishing-to-europe) Norvège Est.

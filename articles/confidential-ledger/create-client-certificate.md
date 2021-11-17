@@ -1,22 +1,22 @@
 ---
-title: Création d’un certificat client avec le Registre confidentiel Microsoft Azure
-description: Création d’un certificat client avec le Registre confidentiel Microsoft Azure
+title: Création d’un certificat client à l’aide de Registre confidentiel Microsoft Azure
+description: Création d’un certificat client à l’aide de Registre confidentiel Microsoft Azure
 services: confidential-ledger
 author: msmbaldwin
 ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 125f56a6c96e37394e4e9e2565093c847e592108
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 216a626bfaaf86a8c2237b5d871ab7895d921127
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585930"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476392"
 ---
 # <a name="creating-a-client-certificate"></a>Création d’un certificat client
 
-Les API du registre confidentiel requièrent l’authentification basée sur les certificats clients. Seuls les certificats ajoutés à une liste d’autorisation lors de la création ou de la mise à jour du registre peuvent être utilisés pour appeler les API fonctionnelles du registre confidentiel.
+Les API de Registre confidentiel Azure requièrent l’authentification par certificat client. Seuls les certificats ajoutés à une liste d’autorisation lors de la création ou de la mise à jour du registre peuvent être utilisés pour appeler les API fonctionnelles de Registre confidentiel.
 
 Vous aurez besoin d’un certificat au format PEM. Vous pouvez créer plusieurs certificats et les ajouter ou les supprimer à l’aide de l’API de mise à jour du registre.
 
@@ -36,4 +36,4 @@ openssl req -new -key "privkey_name.pem" -x509 -nodes -days 365 -out "cert.pem" 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Vue d’ensemble du Registre confidentiel Microsoft Azure](overview.md)
+- [Vue d’ensemble de Registre confidentiel Microsoft Azure](overview.md)

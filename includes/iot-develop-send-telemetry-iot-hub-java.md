@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 093a75b77be2c24de11e97fe7d1627623fb1e2f9
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: c837cf94fcd81eef39c565b6eef7e3fad584a06f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131861518"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520402"
 ---
 [![Parcourir le code](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
@@ -112,7 +112,7 @@ Pour effectuer ce démarrage rapide sur le système d’exploitation Linux ou Ra
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-the-device-sample"></a>Exécuter l’exemple d’appareil
+## <a name="run-a-device"></a>Exécution d’un appareil
 
 Dans cette section, vous allez utiliser le Kit de développement logiciel (SDK) Java pour envoyer des messages d’un appareil à votre hub IoT. Vous allez exécuter un exemple qui implémente un contrôleur de température avec deux capteurs de thermostat.
 

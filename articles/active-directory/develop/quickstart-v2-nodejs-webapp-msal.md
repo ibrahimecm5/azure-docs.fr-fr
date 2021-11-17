@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 3421c519c4ab059cda1d413db3906b3f1ed76ca0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a593aef3ff99edb498e899b0d8db46c7b4636683
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594685"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427700"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Démarrage rapide : Connecter des utilisateurs et obtenir un jeton d’accès dans une application web Node à l’aide du flux de code d’authentification
 
@@ -46,7 +46,7 @@ Ce guide de démarrage rapide utilise la bibliothèque d’authentification Micr
 > 1. Choisissez `http://localhost:3000/redirect` comme valeur pour **URI de redirection**.
 > 1. Sélectionnez **Inscription**.
 > 1. Dans la page **Vue d’ensemble**, notez la valeur de **ID d’application (client)** pour une utilisation ultérieure.
-> 1. Sous **Gérer**, sélectionnez **Certificats et secrets** > **Nouveau secret client**.  Laissez la description vide et conservez l’expiration par défaut, puis sélectionnez **Ajouter**.
+> 1. Sous **Gérer**, sélectionnez **Certificats et secrets** > **Clés secrètes client** > **Nouvelle clé secrète client**.  Laissez la description vide et conservez l’expiration par défaut, puis sélectionnez **Ajouter**.
 > 1. Notez la valeur du **secret client** pour une utilisation ultérieure.
 
 > [!div class="sxs-lookup" renderon="portal"]

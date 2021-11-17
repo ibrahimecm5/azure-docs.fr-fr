@@ -3,12 +3,12 @@ title: Sessions de messagerie Azure Service Bus | Microsoft Docs
 description: Cet article explique comment utiliser des sessions pour permettre un traitement conjoint et ordonné de séquences illimitées de messages associés.
 ms.topic: article
 ms.date: 09/01/2021
-ms.openlocfilehash: 98430d7b9db857de6dc3dfb37e61908b236591f2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 55a5d432505d6c0aec7c2fc9b030eb9763413bee
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433437"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063286"
 ---
 # <a name="message-sessions"></a>Sessions de message
 Les sessions Azure Service Bus permettent un traitement conjoint et chronologique de séquences illimitées de messages associés. Vous pouvez utiliser des sessions dans des modèles **premier entré, premier sorti (FIFO**) et **requête-réponse**. Cet article explique comment utiliser des sessions pour implémenter ces modèles lors de l’utilisation de Service Bus. 
@@ -54,7 +54,7 @@ Lorsque les workflows sont traités dans des systèmes de cloud à grande échel
 
 La fonction d’état de session active une annotation définie par l’application d’une session de messagerie dans le répartiteur, de sorte que l’état de traitement enregistré concernant cette session devient immédiatement disponible lorsque la session est acquise par un nouveau processeur.
 
-Du point de vue de Service Bus, l’état d’une session de messagerie est un objet binaire opaque qui peut contenir une taille de données équivalant à un message, autrement dit 256 Ko pour Service Bus Standard et 1 Mo dans le cas de Service Bus Premium. L’état de traitement relatif à une session peut être stocké dans l’état de session, ou l’état de session peut pointer vers un emplacement de stockage ou un enregistrement de base de données contenant cette information.
+Du point de vue de Service Bus, l’état d’une session de messagerie est un objet binaire opaque qui peut contenir une taille de données équivalant à un message, autrement dit 256 Ko pour Service Bus Standard et 100 Mo dans le cas de Service Bus Premium. L’état de traitement relatif à une session peut être stocké dans l’état de session, ou l’état de session peut pointer vers un emplacement de stockage ou un enregistrement de base de données contenant cette information.
 
 Les méthodes de gestion de l’état de la session, SetState et GetState, se trouvent sur l’objet de destinataire de session. Une session pour laquelle aucun état de session n’a été précédemment défini renvoie une référence null pour GetState. L’état de session précédemment défini peut être effacé en transmettant la valeur Null à la méthode SetState sur le récepteur.
 

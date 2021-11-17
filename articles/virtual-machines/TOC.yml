@@ -1493,6 +1493,7 @@
       href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Microsoft Defender pour le cloud
       href: ../security-center/security-center-introduction.md
+      maintainContext: true
     - name: Bases de référence de sécurité
       items:
         - name: Linux

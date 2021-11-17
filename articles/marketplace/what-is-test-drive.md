@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 12/08/2020
-ms.openlocfilehash: 5fba64beff10f59be42776cc87cf6f37922295dd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 10/26/2021
+ms.openlocfilehash: 9769e52457a65ab3b37135cdbe7d7fdd78e1f1e6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949068"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853849"
 ---
 # <a name="what-is-a-test-drive"></a>Qu'est-ce qu’une version d'évaluation ?
 
 Une version d’évaluation est un bon moyen de présenter votre offre à vos clients potentiels en leur donnant la possibilité de l’essayer avant de l’acheter, ce qui se traduit par la génération de prospects de qualité et par une hausse du taux de conversion. Une version d’évaluation donne vie à votre produit dans un scénario d’implémentation réel. Les clients qui essaient votre produit manifestent une intention claire d'acheter une solution similaire. Utilisez cette approche à votre avantage en suivant les prospects les plus prometteurs.
 
 Vos clients bénéficient également d’une version d'évaluation. En les autorisant à essayer au préalable votre produit, vous facilitez le processus d’achat. En outre, la version d'évaluation est préprovisionnée, c’est-à-dire que les clients n’ont pas besoin de télécharger ou configurer le produit.
+
+> [!TIP]
+> Pour voir la vue client du test drive dans la place de marché commerciale, consultez [Qu’est-ce que la Place de marché Azure](/marketplace/azure-marketplace-overview#take-action-on-a-listing) et [Qu’est-ce que Microsoft AppSource ?](/marketplace/appsource-overview).
 
 ## <a name="how-does-it-work"></a>Comment cela fonctionne-t-il ?
 

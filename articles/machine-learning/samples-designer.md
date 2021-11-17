@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 10/14/2020
+ms.date: 10/21/2021
 ms.custom: designer
-ms.openlocfilehash: a99595405872ff1b341dfc9277583417564ef6b7
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: fa10f97bdbb571c9526e9e611fb0def04ab36b53
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465076"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559634"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Exemples de jeux de données et de pipelines pour le concepteur Azure Machine Learning
 
@@ -50,12 +50,12 @@ Voici comment utiliser un exemple de concepteur :
 
    1. Sélectionnez **Envoyer** en haut du canevas pour envoyer une exécution de pipeline.
 
-   Selon l’exemple de pipeline et les paramètres de calcul, les exécutions peuvent prendre du temps. Les paramètres de calcul par défaut ont une taille de nœud minimale de 0, ce qui signifie que le concepteur doit allouer des ressources après une période d’inactivité. Les exécutions de pipeline répétées prennent moins de temps dans la mesure où les ressources de calcul sont déjà allouées. Par ailleurs, le concepteur utilise les résultats mis en cache pour chaque module afin d’améliorer l’efficacité.
+   Selon l’exemple de pipeline et les paramètres de calcul, les exécutions peuvent prendre du temps. Les paramètres de calcul par défaut ont une taille de nœud minimale de 0, ce qui signifie que le concepteur doit allouer des ressources après une période d’inactivité. Les exécutions de pipeline répétées prennent moins de temps dans la mesure où les ressources de calcul sont déjà allouées. Par ailleurs, le concepteur utilise les résultats mis en cache pour chaque composant afin d’améliorer l’efficacité.
 
 
-1. Une fois l’exécution du pipeline terminée, vous pouvez passer en revue le pipeline et examiner la sortie de chaque module pour en savoir plus. Utilisez les étapes suivantes pour consulter les sorties des modules :
+1. Une fois l’exécution du pipeline terminée, vous pouvez passer en revue le pipeline et examiner la sortie de chaque composant pour en savoir plus. Utilisez les étapes suivantes pour consulter les sorties des composants :
 
-   1. Cliquez avec le bouton droit sur le module dans le canevas dont vous souhaitez afficher la sortie.
+   1. Cliquez avec le bouton droit sur le composant dans le canevas dont vous souhaitez afficher la sortie.
    1. Sélectionnez **Visualiser**.
 
 
@@ -72,27 +72,27 @@ Explorez ces exemples de régression intégrés.
 
 ## <a name="classification"></a>classification ;
 
-Explorez ces exemples de classification intégrés. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des modules dans le concepteur.
+Explorez ces exemples de classification intégrés. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des composants dans le concepteur.
 
 | Exemple de titre | Description | 
 | --- | --- |
 | [Classification binaire avec sélection des caractéristiques – Prédiction des revenus](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | Prédit des revenus comme étant élevés ou faibles à l’aide d’un arbre de décision optimisé à deux classes. Utilisez la corrélation de Pearson pour sélectionner les caractéristiques.
-| [Classification binaire avec un script Python personnalisé – Prédiction du risque de crédit](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | Classe les demandes de crédit comme présentant un risque élevé ou faible. Utilisez le module Exécuter un script Python pour pondérer vos données.
+| [Classification binaire avec un script Python personnalisé – Prédiction du risque de crédit](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | Classe les demandes de crédit comme présentant un risque élevé ou faible. Utilisez le composant Exécuter un script Python pour pondérer vos données.
 | [Classification binaire – Prédiction de la relation client](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | Prédit l’attrition clients à l’aide d’arbres de décision optimisés à deux classes. Utilisez SMOTE pour échantillonner des données biaisées.
 | [Classification de texte – Jeu de données Wikipédia SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | Classifie des types de sociétés à partir d’articles Wikipédia avec la régression logistique multiclasse. |
 | Classification multiclasse - Reconnaissance des lettres | Crée un ensemble de classifieurs binaires pour classifier les lettres écrites. |
 
 ## <a name="computer-vision"></a>Vision par ordinateur
 
-Explorez ces exemples de vision par ordinateur intégrée. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des modules dans le concepteur.
+Explorez ces exemples de vision par ordinateur intégrée. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des composants dans le concepteur.
 
 | Exemple de titre | Description | 
 | --- | --- |
-| Classification d’images à l’aide de DenseNet | Utilisez les modules Vision par ordinateur pour créer un modèle de classification d’image basé sur PyTorch DenseNet.| 
+| Classification d’images à l’aide de DenseNet | Utilisez les composants Vision par ordinateur pour créer un modèle de classification d’images basé sur PyTorch DenseNet.| 
 
 ## <a name="recommender"></a>Générateur de recommandations
 
-Explorez ces exemples de générateur de recommandations intégrés. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des modules dans le concepteur.
+Explorez ces exemples de générateur de recommandations intégrés. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des composants dans le concepteur.
 
 | Exemple de titre | Description | 
 | --- | --- |
@@ -101,7 +101,7 @@ Explorez ces exemples de générateur de recommandations intégrés. Vous pouvez
 
 ## <a name="utility"></a>Utilitaire
 
-Découvrez les exemples qui montrent les utilitaires et les caractéristiques de Machine Learning. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des modules dans le concepteur.
+Découvrez les exemples qui montrent les utilitaires et les caractéristiques de Machine Learning. Vous pouvez en apprendre davantage sur ces exemples en les ouvrant et en consultant les commentaires des composants dans le concepteur.
 
 | Exemple de titre | Description | 
 | --- | --- |
@@ -115,7 +115,7 @@ Découvrez les exemples qui montrent les utilitaires et les caractéristiques de
 
 Quand vous créez un pipeline dans le concepteur Azure Machine Learning, vous disposez par défaut d’un certain nombre d’exemples de jeux de données. Ces exemples de jeux de données sont utilisés par les exemples de pipelines dans la page d’accueil du concepteur. 
 
-Les exemples de jeux de données sont disponibles dans la catégorie **Jeux de données**-**Exemples**. Vous les trouverez dans la palette de modules à gauche du canevas du concepteur. Vous pouvez utiliser l’un de ces jeux de données dans votre propre pipeline en le faisant glisser sur le canevas.
+Les exemples de jeux de données sont disponibles dans la catégorie **Jeux de données**-**Exemples**. Vous les trouverez dans la palette de composants à gauche du canevas du concepteur. Vous pouvez utiliser l’un de ces jeux de données dans votre propre pipeline en le faisant glisser sur le canevas.
 
 | Nom du&nbsp;jeu de données&nbsp;&nbsp;&nbsp;&nbsp;| Description du jeu de données |
 |-------------|:--------------------|
@@ -142,4 +142,3 @@ Les exemples de jeux de données sont disponibles dans la catégorie **Jeux de d
 ## <a name="next-steps"></a>Étapes suivantes
 
 Découvrez les principes fondamentaux de l’analytique prédictive et du Machine Learning à l’aide du [Tutoriel : Prédire le prix de voitures avec le concepteur](tutorial-designer-automobile-price-train-score.md)
-

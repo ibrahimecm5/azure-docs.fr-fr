@@ -1,15 +1,15 @@
 ---
 title: Types de ressources Azure Resource Manager prises en charge
 description: Fournit la liste des types de ressources Azure Resource Manager prises en charge par Azure Resource Graph et l’historique des modifications.
-ms.date: 09/03/2021
+ms.date: 10/12/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 9dfdd77d400dfa91ec26df23d323f8290dc97da0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 9b3ce54d9554164b375ed1a08fdbcce8429dbb21
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536064"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054806"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Informations de référence sur le type de ressource et la table Azure Resource Graph
 
@@ -32,6 +32,9 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 
 ## <a name="desktopvirtualizationresources"></a>desktopvirtualizationresources
 
+- microsoft.chaos/experiments/statuses
+- microsoft.chaos/targets
+- microsoft.chaos/targets/capabilities
 - microsoft.desktopvirtualization/hostpools/sessionhosts
 
 ## <a name="extendedlocationresources"></a>extendedlocationresources
@@ -64,11 +67,16 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 ## <a name="iotsecurityresources"></a>IoTSecurityResources
 
 - microsoft.iotsecurity/locations/devicegroups/alerts
+  - Exemple de requête : [Obtenir toutes les nouvelles alertes des 30 derniers jours](../samples/samples-by-category.md#get-all-new-alerts-from-the-past-30-days)
 - microsoft.iotsecurity/locations/devicegroups/devices
+  - Exemple de requête : [Compter le nombre d’appareils IoT dans votre réseau, par système d’exploitation](../samples/samples-by-category.md#count-how-many-iot-devices-there-are-in-your-network-by-operation-system)
 - microsoft.iotsecurity/locations/devicegroups/recommendations
+  - Exemple de requête : [Obtenir toutes les recommandations avec un niveau de gravité élevé](../samples/samples-by-category.md#get-all-high-severity-recommendations)
 - microsoft.iotsecurity/onpremisesensors
 - microsoft.iotsecurity/sensors
+  - Exemple de requête : [Compter tous les capteurs par type](../samples/samples-by-category.md#count-all-sensors-by-type)
 - microsoft.iotsecurity/sites
+  - Exemple de requête : [Lister les sites avec une valeur d’étiquette spécifique](../samples/samples-by-category.md#list-sites-with-a-specific-tag-value)
 
 ## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
 
@@ -77,6 +85,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.kubernetesconfiguration/extensions
   - Exemple de requête : [Lister tous les clusters Kubernetes compatibles avec Azure Arc avec l’extension Azure Monitor](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-with-azure-monitor-extension)
   - Exemple de requête : [Lister tous les clusters Kubernetes compatibles avec Azure Arc sans l’extension Azure Monitor](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
+- microsoft.kubernetesconfiguration/fluxconfigurations
 - microsoft.kubernetesconfiguration/sourcecontrolconfigurations
 
 ## <a name="maintenanceresources"></a>maintenanceresources
@@ -129,14 +138,8 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.management/managementgroups
   - Exemple de requête : [Nombre d’abonnements par groupe d’administration](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
   - Exemple de requête : [Lister tous les ancêtres du groupe d’administration pour un groupe d’administration spécifié](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-management-group)
-- microsoft.resources/subscriptions (Abonnements)
-  - Exemple de requête : [Nombre d’abonnements par groupe d’administration](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
-  - Exemple de requête : [Coffre de clés avec nom d’abonnement](../samples/samples-by-category.md#key-vaults-with-subscription-name)
-  - Exemple de requête : [Lister tous les ancêtres du groupe d’administration pour un abonnement spécifié](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-subscription)
-  - Exemple de requête : [Lister tous les abonnements sous un groupe d’administration spécifié](../samples/samples-by-category.md#list-all-subscriptions-under-a-specified-management-group)
-  - Exemple de requête : [Supprimer des colonnes dans les résultats](../samples/samples-by-category.md#remove-columns-from-results)
-  - Exemple de requête : [Score sécurisé par groupe d’administration](../samples/samples-by-category.md#secure-score-per-management-group)
 - Microsoft.Resources/subscriptions/resourceGroups (Groupes de ressources)
+  - Exemple de requête : [Combiner les résultats de deux requêtes en un résultat unique](../samples/samples-by-category.md)
   - Exemple de requête : [Rechercher les comptes de stockage avec une étiquette spécifique qui ne respecte pas la casse sur le groupe de ressources](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
   - Exemple de requête : [Rechercher les comptes de stockage avec une étiquette spécifique qui respecte la casse sur le groupe de ressources](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
 
@@ -149,7 +152,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
 - conexlink.mycloudit/accounts
 - crypteron.datasecurity/apps
-- dynatrace.observability/monitors
+- Dynatrace.Observability/monitors (Dynatrace)
 - GitHub.Enterprise/accounts (GitHub AE)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
@@ -159,6 +162,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - incapsula.waf/accounts
 - LiveArena.Broadcast/services (LiveArena Broadcast)
 - Mailjet.Email/services (Service de messagerie Mailjet)
+- micorosft.web/kubeenvironments
 - Microsoft.AAD/domainServices (Azure AD Domain Services)
 - microsoft.aadiam/azureadmetrics
 - microsoft.aadiam/privateLinkForAzureAD (Liaison privée pour Azure AD)
@@ -178,6 +182,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.AppPlatform/Spring (Azure Spring Cloud)
 - microsoft.archive/collections
 - Microsoft.Attestation/attestationProviders (Fournisseurs d’attestation)
+- microsoft.authorization/elevateaccessroleassignment
 - Microsoft.Authorization/resourceManagementPrivateLinks (Liaisons privées de gestion des ressources)
 - microsoft.automanage/accounts
 - microsoft.automanage/configurationprofilepreferences
@@ -196,6 +201,8 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.AzureArcData/sqlManagedInstances (Instances managées SQL – Azure Arc)
 - Microsoft.AzureArcData/sqlServerInstances (SQL Server – Azure Arc)
 - microsoft.azurecis/autopilotenvironments
+- microsoft.azurecis/dstsserviceaccounts
+- microsoft.azurecis/dstsserviceclientidentities
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -216,6 +223,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.azurestackhci/networkinterfaces
 - microsoft.azurestackhci/virtualharddisks
 - Microsoft.AzureStackHci/virtualMachines (machine virtuelle Azure Stack HCI – Azure Arc)
+- microsoft.azurestackhci/virtualmachines/extensions
 - microsoft.azurestackhci/virtualnetworks
 - microsoft.backupsolutions/vmwareapplications
 - microsoft.baremetal/consoleconnections
@@ -242,8 +250,8 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.Cdn/Profiles/AfdEndpoints (Points de terminaison)
 - microsoft.cdn/profiles/endpoints (Points de terminaison)
 - Microsoft.CertificateRegistration/certificateOrders (Certificats App Service)
-- microsoft.chaos/chaosexperiments (Expériences par le chaos)
-- microsoft.chaos/experiments
+- microsoft.chaos/chaosexperiments (Expériences de chaos (classiques))
+- microsoft.chaos/experiments (Expériences de chaos)
 - microsoft.classicCompute/domainNames (Services cloud (classiques))
 - Microsoft.ClassicCompute/VirtualMachines (Machines virtuelles (classiques))
 - Microsoft.ClassicNetwork/networkSecurityGroups (Groupes de sécurité réseau (classiques))
@@ -270,8 +278,8 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.Compute/diskEncryptionSets (Jeux de chiffrement de disque)
 - Microsoft.Compute/disks (Disques)
 - Microsoft.Compute/galleries (Galeries d’images partagées)
-- Microsoft.Compute/galleries/applications (Applications de la Galerie)
-- Microsoft.Compute/galleries/applications/versions (versions d’applications de la Galerie)
+- Microsoft.Compute/galleries/applications (Applications de machine virtuelle)
+- Microsoft.Compute/galleries/applications/versions (versions d’applications de machine virtuelle)
 - Microsoft.Compute/galleries/images (Définitions d’image)
 - Microsoft.Compute/galleries/images/versions (Versions d’images)
 - Microsoft.Compute/hostgroups (Groupes hôtes)
@@ -309,6 +317,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft. ConnectedVehicle/platformAccounts (Plateformes de véhicules connectée)
 - microsoft.connectedvmwarevsphere/clusters
 - microsoft.connectedvmwarevsphere/datastores
+- microsoft.connectedvmwarevsphere/hosts
 - microsoft.connectedvmwarevsphere/resourcepools
 - Microsoft.connectedVMwareVSphere/vCenters (VMware vCenters)
 - Microsoft.ConnectedVMwarevSphere/VirtualMachines (VMware + machines virtuelles AVS)
@@ -356,7 +365,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.DataProtection/resourceGuards (Protecteurs de ressources (préversion))
 - microsoft.dataprotection/resourceoperationgatekeepers
 - microsoft.datareplication/replicationfabrics
-- microsoft.datareplication/replicationvaults
+- Microsoft.DataReplication/replicationVaults (coffres Site Recovery)
 - Microsoft.DataShare/accounts (Partages de données)
 - Microsoft.DBforMariaDB/servers (Serveurs Azure Database pour MariaDB)
 - Microsoft.DBforMySQL/flexibleServers (Serveurs flexibles Azure Database pour MySQL)
@@ -450,6 +459,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.hybridcompute/machines/extensions
   - Exemple de requête : [Répertorier toutes les extensions installées sur un serveur avec Azure Arc](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes (Étendues de liaison privée Azure Arc)
+- microsoft.hybridcontainerservice/provisionedclusters
 - Microsoft.HybridData/dataManagers (Gestionnaires de données StorSimple)
 - Microsoft.HybridNetwork/devices (Gestionnaire des fonctions réseau Azure – Appareils [préversion])
 - Microsoft.HybridNetwork/networkFunctions (Gestionnaire des fonctions réseau Azure – Fonctions réseau [préversion])
@@ -539,7 +549,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.MarketplaceApps/classicDevServices (Services de développement classiques)
 - microsoft.media/mediaservices (Media Services)
 - microsoft.media/mediaservices/liveevents (Événements en direct)
-- microsoft.media/mediaservices/streamingEndpoints (Points de terminaison de streaming)
+- microsoft.media/mediaservices/streamingendpoints (Points de terminaison de streaming)
 - microsoft.media/mediaservices/transforms
 - microsoft.media/videoanalyzers (Analyseurs vidéo)
 - microsoft.microservices4spring/appclusters
@@ -566,12 +576,14 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.mobilenetwork/packetcorecontrolplanes/packetcoredataplanes/attacheddatanetworks
 - Microsoft.MobileNetwork/sims (Sims)
 - microsoft.mobilenetwork/sims/simprofiles
+- microsoft.monitor/accounts
 - Microsoft.NetApp/netAppAccounts (Comptes NetApp)
 - microsoft.netapp/netappaccounts/backuppolicies
 - Microsoft.NetApp/netAppAccounts/capacityPools (Pools de capacité)
 - Microsoft.NetApp/netAppAccounts/capacityPools/Volumes (Volumes)
 - microsoft.netapp/netappaccounts/capacitypools/volumes/mounttargets
 - Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots (Instantanés)
+- microsoft.netapp/netappaccounts/capacitypools/volumes/subvolumes
 - Microsoft.NetApp/netAppAccounts/snapshotPolicies (Stratégies d’instantané)
 - Microsoft.Network/applicationGateways (Passerelles d’application)
 - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies (Stratégies Web Application Firewall (WAF))
@@ -660,7 +672,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.OperationsManagement/solutions (Solutions)
 - microsoft.operationsmanagement/views
 - Microsoft.Orbital/contactProfiles (ContactProfiles)
-- microsoft.orbital/groundstations
+- Microsoft.Orbital/GroundStations (GroundStations)
 - microsoft.orbital/orbitalendpoints
 - microsoft.orbital/orbitalgateways
 - microsoft.orbital/orbitalgateways/orbitall2connections
@@ -678,6 +690,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.powerplatform/accounts
 - microsoft.powerplatform/enterprisepolicies
 - microsoft.projectbabylon/accounts
+- microsoft.providerhubdevtest/regionalstresstests
 - Microsoft.Purview/Accounts (Comptes Purview)
 - Microsoft.Quantum/Workspaces (Espaces de travail Quantum)
 - Microsoft.RecommendationsService/accounts (Comptes de recommandations intelligentes)
@@ -696,14 +709,16 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - Microsoft.SaaS/applications (Logiciel en tant que service (classique))
 - Microsoft.SaaS/resources (SaaS)
 - Microsoft.Scheduler/jobCollections (Collections de tâches du planificateur)
-- Microsoft.Scom/managedInstances (Ressources Aquila)
+- Microsoft.Scom/managedInstances (Aquila Instances)
 - microsoft.scvmm/clouds
 - Microsoft.scvmm/virtualMachines (Machine virtuelle SCVMM – Azure Arc)
 - microsoft.scvmm/virtualmachinetemplates
 - microsoft.scvmm/virtualnetworks
 - microsoft.scvmm/vmmservers
 - Microsoft.Search/searchServices (Services de recherche)
+- microsoft.security/assignments
 - microsoft.security/automations
+- microsoft.security/customentitystoreassignments
 - microsoft.security/iotsecuritysolutions
 - microsoft.security/securityconnectors
 - Microsoft.SecurityDetonation/chambers (Chambres de détonation de sécurité)
@@ -797,6 +812,7 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - microsoft.web/certificates
 - Microsoft.Web/connectionGateways (Passerelles de données locales)
 - Microsoft.Web/connections (Connexions d’API)
+- microsoft.web/containerapps
 - Microsoft.Web/customApis (Connecteur personnalisé Logic Apps)
 - Microsoft.Web/HostingEnvironments (Environnements App Service)
 - Microsoft.Web/KubeEnvironments (Environnements App Service Kubernetes)
@@ -814,7 +830,8 @@ Pour obtenir des exemples de requêtes pour cette table, consultez [Exemples de 
 - NGINX.NGINXPLUS/nginxDeployments (Déploiement NGINX)
 - Paraleap.CloudMonix/services (CloudMonix)
 - Pokitdok.Platform/services (Plateforme PokitDok)
-- Providers.Test/statefulIbizaEngines (Évaluations d’application)
+- private.contoso/employees
+- Providers.Test/statefulIbizaEngines (Mes ressources)
 - RavenHq.Db/databases (RavenHQ)
 - Raygun.CrashReporting/apps (Raygun)
 - Sendgrid.Email/accounts (Comptes SendGrid)

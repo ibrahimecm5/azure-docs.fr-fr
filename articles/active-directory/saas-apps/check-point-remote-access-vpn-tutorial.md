@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ef52547bb8ec27bd759a238d742173f6b8fc3994
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 33bcb007c1cfd4d09c25fb4abbf9c5fcfb15b58f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591973"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Check Point Remote Secure Access VPN
 
@@ -76,11 +76,11 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. Dans la section **Configuration SAML de base**, entrez les valeurs pour les champs suivants :
 
-    a. Dans la zone de texte **Identificateur (ID d’entité)** , saisissez une URL au format suivant : `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/ID/<IDENTIFIER_UID>`
+    1. Dans la zone de texte **Identificateur (ID d’entité)** , saisissez une URL au format suivant : `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/ID/<IDENTIFIER_UID>`
 
-    b. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/Login/<IDENTIFIER_UID>`
+    1. Dans la zone de texte **URL de réponse**, tapez une URL au format suivant : `https://<GATEWAY_IP>/saml-vpn/spPortal/ACS/Login/<IDENTIFIER_UID>`
 
-    c. Dans la zone de texte **URL de connexion**, saisissez une URL au format suivant : `https://<GATEWAY_IP>/saml-vpn/`
+    1. Dans la zone de texte **URL de connexion**, saisissez une URL au format suivant : `https://<GATEWAY_IP>/saml-vpn/`
 
     > [!NOTE]
     > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’identificateur, l’URL d’authentification et l’URL de réponse réels. Pour obtenir ces valeurs, contactez l’[équipe du support technique de Check Point Remote Secure Access VPN](mailto:support@checkpoint.com). Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
@@ -180,7 +180,6 @@ Par exemple : `https://gateway1.company.com/saml-vpn`
 
 1. Cliquez sur **OK**.
 
-
 ### <a name="configure-an-identity-provider-object"></a>Configurer un objet de fournisseur d’identité
 
 1. Effectuez les étapes suivantes pour chaque passerelle de sécurité qui participe à Remote Access VPN.
@@ -220,7 +219,7 @@ Par exemple : `https://gateway1.company.com/saml-vpn`
 
     ![capture d’écran de l’ajout d’un nouvel objet.](./media/check-point-remote-access-vpn-tutorial/add-new-object.png)
 
-1. Entrez un nom et un nom d’affichage, puis ajoutez/modifiez une méthode d’authentification. Au cas où l’option de connexion serait utilisée sur les passerelles qui participent à MEP, le nom doit commencer par le préfixe « SAMLVPN_ » pour rendre l’expérience utilisateur plus fluide. 
+1. Entrez un nom et un nom d’affichage, puis ajoutez/modifiez une méthode d’authentification. Au cas où l’option de connexion serait utilisée sur les passerelles qui participent à MEP, le nom doit commencer par le préfixe « SAMLVPN_ » pour rendre l’expérience utilisateur plus fluide.
 
     ![capture d’écran de l’option de connexion.](./media/check-point-remote-access-vpn-tutorial/login-option.png)
 
@@ -237,21 +236,21 @@ Nous avons deux options :
 
 1. Configurez les paramètres nécessaires dans la base de données de gestion :
 
-    1.  Fermez SmartConsole.
+    1. Fermez SmartConsole.
 
-    2.  Connectez-vous avec l’outil GuiDBEdit au serveur d’administration (consultez [sk13009](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails&solutionid=sk13009)).
+    2. Connectez-vous avec l’outil GuiDBEdit au serveur d’administration (consultez [sk13009](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails&solutionid=sk13009)).
 
-    3.  Dans le volet supérieur gauche, accédez à **Edit > Network Objects** (Edition > Objets réseau).
+    3. Dans le volet supérieur gauche, accédez à **Edit > Network Objects** (Edition > Objets réseau).
 
-    4.  Dans le volet supérieur droit, sélectionnez l’**objet Security Gateway** (Passerelle de sécurité).
+    4. Dans le volet supérieur droit, sélectionnez l’**objet Security Gateway** (Passerelle de sécurité).
 
-    5.  Dans le volet inférieur, accédez à **realms_for_blades > vpn**.
+    5. Dans le volet inférieur, accédez à **realms_for_blades > vpn**.
 
-    6.  Si vous ne souhaitez pas utiliser d’annuaire Active Directory local (LDAP), affectez à **do_ldap_fetch** la valeur **false**, et à **do_generic_fetch** la valeur **true**. Cliquez ensuite sur **OK**. Si vous souhaitez utiliser un annuaire Active Directory local (LDAP), affectez à **do_ldap_fetch** la valeur **true**, et à **do_generic_fetch** la valeur **false**. Cliquez ensuite sur **OK**.
+    6. Si vous ne souhaitez pas utiliser d’annuaire Active Directory local (LDAP), affectez à **do_ldap_fetch** la valeur **false**, et à **do_generic_fetch** la valeur **true**. Cliquez ensuite sur **OK**. Si vous souhaitez utiliser un annuaire Active Directory local (LDAP), affectez à **do_ldap_fetch** la valeur **true**, et à **do_generic_fetch** la valeur **false**. Cliquez ensuite sur **OK**.
 
-    7.  Répétez les étapes iv-vi pour toutes les passerelles de sécurité applicables.
+    7. Répétez les étapes 4 à 6 pour toutes les passerelles de sécurité applicables.
 
-    8.  Enregistrez tous les changements. Pour ce faire, cliquez sur le menu **File** > **Save All** (Fichier > Tout enregistrer).
+    8. Enregistrez tous les changements apportés en sélectionnant **Fichier** > **Enregistrer tout**.
 
 1. Fermez l’outil GuiDBEdit.
 
@@ -267,20 +266,21 @@ Nous avons deux options :
 
 1. Installez le client VPN.
 
-1. Définissez (facultatif) le navigateur par défaut pour le fournisseur d’identité. Le client Windows utilise son navigateur intégré, et le client macOS utilise Safari pour s’authentifier sur le portail du fournisseur d’identité.
-Pour permettre au client Windows de changer ce comportement et d’utiliser Internet Explorer à la place :
+1. Définissez le mode d’exploration du fournisseur d’identité (facultatif).
 
-   1. Sur la machine cliente, ouvrez un éditeur de texte brut en tant qu’administrateur.
+    Par défaut, le client Windows utilise son navigateur intégré, et le client macOS utilise Safari pour s’authentifier sur le portail du fournisseur d’identité. Pour les clients Windows, modifiez ce comportement de façon à utiliser Internet Explorer à la place :
 
-   2. Ouvrez le fichier `trac.defaults` dans l’éditeur de texte.
+    1. Sur la machine cliente, ouvrez un éditeur de texte brut en tant qu’administrateur.
 
-      - Sur les éditions 32 bits de Windows : 
+    2. Ouvrez le fichier `trac.defaults` dans l’éditeur de texte.
 
-        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+       * Sur les éditions 32 bits de Windows : 
 
-      - Sur les éditions 64 bits de Windows : 
+         `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
 
-        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+       * Sur les éditions 64 bits de Windows : 
+
+         `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
 
     3. Remplacez la valeur `embedded` de l’attribut `idp_browser_mode` par `IE`.
 
@@ -296,34 +296,35 @@ Pour permettre au client Windows de changer ce comportement et d’utiliser Inte
 
 1. Démarrez l’authentification avec le navigateur s’exécutant en arrière-plan :
 
-   1. Sur la machine cliente, ouvrez un éditeur de texte brut en tant qu’administrateur.
+    1. Sur la machine cliente, ouvrez un éditeur de texte brut en tant qu’administrateur.
 
-   2. Ouvrez le fichier `trac.defaults` dans l’éditeur de texte.
+    2. Ouvrez le fichier `trac.defaults` dans l’éditeur de texte.
 
-      - Sur les éditions 32 bits de Windows : 
+        * Sur les éditions 32 bits de Windows : 
 
-        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+          `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
 
-      - Sur les éditions 64 bits de Windows : 
+        * Sur les éditions 64 bits de Windows : 
 
-        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+          `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
 
-      - Sur macOS :
-      
-        `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
+        * Sur macOS :
+
+          `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
 
     3. Remplacez la valeur de `idp_show_browser_primary_auth_flow` par `false`.
 
     4. Enregistrez le fichier .
 
     5. Redémarrez le service du client Check Point Endpoint Security VPN.
-       - Sur les clients Windows, ouvrez l’invite de commandes Windows en tant qu’administrateur, puis exécutez les commandes suivantes :
+
+       * Sur les clients Windows, ouvrez l’invite de commandes Windows en tant qu’administrateur, puis exécutez les commandes suivantes :
 
          `# net stop TracSrvWrapper`
-        
+
          `# net start TracSrvWrapper`
 
-       - Sur les clients macOS, exécutez :
+       * Sur les clients macOS, exécutez :
 
          `sudo launchctl stop com.checkpoint.epc.service`
 
@@ -333,7 +334,7 @@ Pour permettre au client Windows de changer ce comportement et d’utiliser Inte
 
 Dans cette section, vous allez créer une utilisatrice appelée Britta Simon dans Check Point Remote Secure Access VPN. Rapprochez-vous de l’[équipe du support technique de Check Point Remote Secure Access VPN](mailto:support@checkpoint.com) pour ajouter les utilisateurs à la plateforme Check Point Remote Secure Access VPN. Les utilisateurs doivent être créés et activés avant que vous utilisiez l’authentification unique.
 
-## <a name="test-sso"></a>Tester l’authentification unique (SSO) 
+## <a name="test-sso"></a>Tester l’authentification unique (SSO)
 
 1. Ouvrez le client VPN, puis cliquez sur **Connect to...** (Se connecter à).
 

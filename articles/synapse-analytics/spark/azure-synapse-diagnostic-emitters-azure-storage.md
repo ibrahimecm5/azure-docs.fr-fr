@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: 52d9c903cbd4aafe8799151663a37b09ed5676c2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: de21862295e0a27937b8dc7e9552ce9530ec217d
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241038"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997872"
 ---
 # <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-account"></a>Collecter les journaux et les métriques de vos applications Apache Spark avec un compte de stockage Azure
 
@@ -69,7 +69,8 @@ Tous les fichiers journaux ont un format de lignes JSON (également appelé JSO
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | facultatif. Contenu du secret (clé d’accès ou SAS). |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | Requis si `.secret` n'est pas spécifié. Nom du [coffre de clés Azure](../../key-vault/general/overview.md) dans lequel est stocké le secret (clé d’accès ou SAS). |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | Obligatoire si `.secret.keyVault` est spécifié. Nom du coffre de clés Azure dans lequel le secret (clé d’accès ou SAS) est stocké. |
-| `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | Optionnel. Noms des événements Spark séparés par des virgules. Vous pouvez spécifier les événements à collecter. Par exemple : `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | Optionnel. Nom du service lié au coffre de clés Azure. Quand il est activé dans le pipeline Synapse, ceci est nécessaire pour obtenir le secret auprès d’AKV. (Vérifiez que MSI dispose de l’autorisation de lecture sur le coffre de clés Azure). |
+| `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | facultatif. Noms des événements Spark séparés par des virgules. Vous pouvez spécifier les événements à collecter. Par exemple : `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | facultatif. Noms des enregistreurs d’événements log4j séparés par des virgules. Vous pouvez spécifier les journaux à collecter. Par exemple : `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | facultatif. Suffixes des noms de métriques Spark séparés par des virgules. Vous pouvez spécifier les métriques à collecter. Par exemple : `jvm.heap.used` |
 

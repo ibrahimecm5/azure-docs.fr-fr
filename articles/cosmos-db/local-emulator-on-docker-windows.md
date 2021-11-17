@@ -7,17 +7,17 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 04/20/2021
-ms.openlocfilehash: bda82b51661ccd615e26c7abcc8002db3bb5d24f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: a083efb897c0ce3c0628134da0ea3d29720ac0e7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111487"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054882"
 ---
 # <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>Utiliser l’émulateur sur Docker pour Windows
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Vous pouvez exécuter l’émulateur Azure Cosmos DB dans un conteneur Docker pour Windows. Pour plus d’informations, consultez [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) pour la commande docker pull et [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) pour `Dockerfile`. Actuellement, l’émulateur ne fonctionne pas sur Docker pour Oracle Linux. Pour exécuter l’émulateur sur Docker pour Windows, suivez les instructions ci-dessous :
+Vous pouvez exécuter l’émulateur Azure Cosmos DB dans un conteneur Docker pour Windows. Pour plus d’informations, notamment sur le `Dockerfile`, consultez [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker). Actuellement, l’émulateur ne fonctionne pas sur Docker pour Oracle Linux. Pour exécuter l’émulateur sur Docker pour Windows, suivez les instructions ci-dessous :
 
 1. Une fois [Docker pour Windows](https://www.docker.com/docker-windows) installé, basculez vers les conteneurs Windows en double-cliquant sur l’icône Docker dans la barre d’outils et en sélectionnant **Switch to Windows containers (Basculer vers les conteneurs Windows)** .
 

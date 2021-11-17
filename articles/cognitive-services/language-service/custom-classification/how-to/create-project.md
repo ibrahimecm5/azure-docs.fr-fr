@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, references_regions, ignite-fall-2021
-ms.openlocfilehash: 8c2286b73435fae063da0d9f39eb78d9ebef350d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7a9f0692f45f1d97824d4428e6a777e38b372d8a
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096555"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025928"
 ---
 # <a name="how-to-create-custom-text-classification-projects"></a>Comment créer des projets de classification de texte personnalisée
 
@@ -104,9 +104,9 @@ Pour utiliser la classification personnalisée, vous devez [créer un compte de 
 
 Ensuite, vous devez affecter les [rôles appropriés](#roles-for-your-storage-account) pour le compte de stockage afin de le connecter à votre ressource Language. 
 
-## <a name="roles-for-your-azure-resource"></a>Rôles pour votre ressource Azure
+## <a name="roles-for-your-azure-language-resource"></a>Rôles pour votre ressource Azure Language
 
-Le rôle de propriétaire ou de contributeur doit vous être affecté sur votre ressource Azure.
+Le rôle de **propriétaire** ou de **contributeur** doit vous être attribué sur votre ressource Azure Language.
 
 ## <a name="enable-identity-management-for-your-resource"></a>Activer la gestion des identités pour votre ressource
 

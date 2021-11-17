@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/01/2021
-ms.openlocfilehash: 35ffbe3a329aae483b4da841ba4dfe34c1a07f9a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 18019dbf4f6c3a6494b105362790dd41d4132595
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435127"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055847"
 ---
 # <a name="azure-monitor-overview"></a>Vue d’ensemble d’Azure Monitor
 
@@ -69,7 +69,7 @@ Activez la supervision de votre application avec [Application Insights](app/app-
 Azure Monitor peut collecter des données de journal à partir de n’importe quel client REST à l’aide de [l’API de collecteur de données](logs/data-collector-api.md). Cela vous permet de créer des scénarios de supervision personnalisés et d’étendre la supervision à des ressources qui n’exposent pas de données de télémétrie via d’autres sources.
 
 ## <a name="insights-and-curated-visualizations"></a>Insights et visualisations organisées
-La supervision des données est utile uniquement si elle permet d’augmenter votre visibilité sur le fonctionnement de votre environnement informatique. Certains fournisseurs de ressources Azure disposent d’une « visualisation organisée » qui vous offre une expérience de surveillance personnalisée pour ce service particulier ou cet ensemble de services. Elles nécessitent généralement une configuration minimale. Les visualisations organisées évolutives de plus grande envergure sont appelées « insights » et portent ce nom dans la documentation et Portail Azure.  
+La supervision des données est utile uniquement si elle permet d’augmenter votre visibilité sur le fonctionnement de votre environnement informatique. Certains fournisseurs de ressources Azure disposent d’une « visualisation organisée » qui vous offre une expérience de surveillance personnalisée pour ce service particulier ou cet ensemble de services. Elles nécessitent généralement une configuration minimale. Les visualisations organisées scalables de plus grande envergure sont appelées « insights » et portent ce nom dans la documentation et le portail Azure.  
 
 Pour plus d’informations, consultez [Liste des insights et des visualisations organisées à l’aide d’Azure Monitor](monitor-reference.md#insights-and-curated-visualizations). Certains des insights les plus importants sont également décrits ci-dessous.
 

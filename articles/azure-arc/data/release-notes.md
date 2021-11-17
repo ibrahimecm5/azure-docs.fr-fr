@@ -10,12 +10,12 @@ ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 45b4efa7ca5bcd6e225c61a328f0150ea1f1a935
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ac5b33de1a95b413c7eba92d2bdeaa8cc05b3a05
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562064"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059561"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>Notes de publication – Services de données activés par Azure Arc
 
@@ -67,33 +67,20 @@ Les commandes `sql` suivantes prennent désormais en charge le mode de connexion
 
 Vous pouvez continuer à utiliser les variables d’environnement `AZDATA_USERNAME` et `AZDATA_PASSWORD` comme précédemment. Si vous spécifiez uniquement les variables `AZDATA_USERNAME` et `AZDATA_PASSWORD`, le déploiement les utilise pour les tableaux de bord des métriques et des journaux.
 
-##### <a name="region-availability"></a>Disponibilité dans les régions
+##### <a name="region-availability"></a>Disponibilité des régions
 
-- Le mode de connexion directe est disponible uniquement dans les régions Azure suivantes pour cette version :
+Cette version introduit la disponibilité en mode connecté directement dans les régions Azure suivantes :
 
-   - USA Centre Nord *
-   - USA Centre
-   - USA Est
-   - USA Est 2
-   - USA Ouest *
-   - USA Ouest 2
-   - USA Ouest 3 *
-   - Sud du Royaume-Uni
-   - Europe Ouest
-   - Europe Nord
-   - Australie Est
-   - Asie Sud-Est
-   - Centre de la Corée
-   - France Centre
+- Centre-Nord des États-Unis
+- USA Ouest
+- USA Ouest 3
 
-    \* Ajouté récemment pour novembre 2011
-
+Pour obtenir la liste complète, consultez [Régions prises en charge](overview.md#supported-regions).
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance avec Azure Arc
 
 - Mettre à niveau des instances SQL Managed Instance avec Azure Arc à usage général en place
 - Les fichiers binaires de SQL sont mis à jour vers une nouvelle version
-- Azure Data Studio fournit des informations sur les prix prévus
 - Déploiement en mode connecté direct de SQL Managed Instance avec Azure Arc à l’aide de l’interface Azure CLI
 - La limite de restauration dans le temps pour SQL Managed Instance avec Azure Arc est mise à la disposition générale avec cette version. La limite de restauration dans le temps est uniquement prise en charge pour SQL Managed Instance à usage général. La limite de restauration dans le temps pour SQL Managed Instance vital pour l’entreprise est toujours disponible en préversion.
 - Nouvelle option `--dry-run` fournie pour la limite de restauration dans le temps

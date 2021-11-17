@@ -10,12 +10,12 @@ author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b0b82b36126e063c68c595736c1e0ea18260dd5f
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5589bee0b5dbbff8561af4c6ba6efc3a691e79de
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560166"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062526"
 ---
 # <a name="cli-v2-sweep-job-yaml-schema"></a>Schéma YAML du travail de balayage CLI (v2)
 
@@ -207,11 +207,11 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-hello-sweep"></a>YAML : hello sweep
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-sweep.yml":::
 
 ## <a name="yaml-basic-python-model-hyperparameter-tuning"></a>YAML : réglage d’hyperparamètre du modèle Python de base
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -3,12 +3,12 @@ title: Nouveautés de Sauvegarde Azure
 description: En savoir plus sur les nouvelles fonctionnalités de Sauvegarde Azure.
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 398833135c97d3d067e7e2b29704ffd6bad25bbd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 78d6b8cee1ad2442278497c5ca3e282b19d1beb6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020423"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997245"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nouveautés de Sauvegarde Azure
 
@@ -19,6 +19,7 @@ Pour en savoir plus sur les nouvelles versions, vous pouvez créer un signet sur
 ## <a name="updates-summary"></a>Résumé des mises à jour
 
 - Octobre 2021
+  - [Plusieurs sauvegardes par jour pour Azure Files (en préversion)](#multiple-backups-per-day-for-azure-files-in-preview)
   - [Métriques de Sauvegarde Azure et alertes de métriques (préversion)](#azure-backup-metrics-and-metrics-alerts-in-preview)
 - Juillet 2021
   - [La prise en charge du niveau Archive pour SQL Server dans une machine virtuelle Azure pour le service Sauvegarde Azure est désormais généralement disponible](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
@@ -40,14 +41,22 @@ Pour en savoir plus sur les nouvelles versions, vous pouvez créer un signet sur
   - [Sauvegardes incrémentielles pour les bases de données SAP HANA sur des machines virtuelles Azure (en préversion)](#incremental-backups-for-sap-hana-databases-in-preview)
 - Septembre 2020
   - [Centre de sauvegarde (en préversion)](#backup-center-in-preview)
-  - [Sauvegarder Azure Database pour PostgreSQL (en préversion)](#backup-azure-database-for-postgresql-in-preview)
+  - [Sauvegarder Azure Database pour PostgreSQL (en préversion)](#back-up-azure-database-for-postgresql-in-preview)
   - [Sauvegarde et restauration sélectives sur disque](#selective-disk-backup-and-restore)
   - [Restauration inter-région pour les bases de données SQL Server et SAP HANA sur des machines virtuelles Azure (en préversion)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
   - [Prise en charge de la sauvegarde des machines virtuelles comptant jusqu’à 32 disques (disponibilité générale)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Expérience de configuration de la sauvegarde simplifiée pour SQL dans les machines virtuelles Azure](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [Sauvegarde SAP HANA sur des machines virtuelles RHEL Azure (en préversion)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [Sauvegarder SAP HANA sur des machines virtuelles RHEL Azure (en préversion)](#back-up-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Stockage redondant interzone (ZRS) pour les données de sauvegarde (en préversion)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Suppression réversible pour les charges de travail SQL Server et SAP HANA dans les machines virtuelles Azure](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="multiple-backups-per-day-for-azure-files-in-preview"></a>Plusieurs sauvegardes par jour pour Azure Files (en préversion)
+
+Un RPO (objectif de point de récupération) faible est une exigence clé pour le service Azure Files qui contient les données critiques fréquemment mises à jour. Pour garantir un minimum de perte de données en cas de sinistre ou de modifications indésirables du contenu du partage de fichiers, vous pouvez effectuer des sauvegardes plus fréquemment qu’une fois par jour.
+
+Le service Sauvegarde Azure vous permet désormais de créer une ou modifier une stratégie de sauvegarde pour prendre plusieurs instantanés en une journée. Cette fonctionnalité vous permet également de définir la durée de déclenchement de vos travaux de sauvegarde. Cette fonctionnalité vous permet d’aligner la planification de votre sauvegarde sur les heures de travail où les mises à jour de contenu Azure Files sont fréquentes.
+
+Pour plus d’informations, consultez [Comment configurer plusieurs sauvegardes par jour via une stratégie de sauvegarde](/azure/backup/manage-afs-backup#create-a-new-policy).
 
 ## <a name="azure-backup-metrics-and-metrics-alerts-in-preview"></a>Métriques de Sauvegarde Azure et alertes de métriques (préversion)
 
@@ -148,7 +157,7 @@ Avec le centre de sauvegarde, vous bénéficiez d’une vue agrégée de votre i
 
 Pour plus d’informations, consultez [Vue d’ensemble du centre de sauvegarde](backup-center-overview.md).
 
-## <a name="backup-azure-database-for-postgresql-in-preview"></a>Sauvegarder Azure Database pour PostgreSQL (en préversion)
+## <a name="back-up-azure-database-for-postgresql-in-preview"></a>Sauvegarder Azure Database pour PostgreSQL (en préversion)
 
 Sauvegarde Azure et les services de base de données Azure constituent ensemble une solution de sauvegarde d’entreprise pour Azure PostgreSQL (maintenant en préversion). Vous pouvez désormais répondre à vos besoins de conformité et de protection des données avec une stratégie de sauvegarde contrôlée par le client qui permet la rétention des sauvegardes pendant maximum 10 ans. Vous disposez ainsi d’un contrôle granulaire pour gérer les opérations de sauvegarde et de restauration au niveau de la base de données individuelle. De même, vous pouvez effectuer des restaurations dans les versions PostgreSQL ou dans le stockage d’objets Blob en toute simplicité.
 
@@ -180,7 +189,7 @@ La configuration de sauvegardes pour votre SQL Server dans les machines virtuell
 
 Pour plus d’informations, consultez [Sauvegarder un SQL Server à partir du volet de la machine virtuelle](backup-sql-server-vm-from-vm-pane.md).
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>Sauvegarde SAP HANA sur des machines virtuelles RHEL Azure (en préversion)
+## <a name="back-up-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>Sauvegarder SAP HANA sur des machines virtuelles RHEL Azure (en préversion)
 
 Sauvegarde Azure est la solution de sauvegarde native pour Azure et est certifiée BackInt par SAP. Sauvegarde Azure a maintenant ajouté la prise en charge de Red Hat Enterprise Linux (RHEL), l’un des systèmes d’exploitation Linux les plus courants exécutant SAP HANA.
 

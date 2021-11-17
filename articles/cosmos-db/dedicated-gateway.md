@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 11/08/2021
 ms.author: tisande
-ms.openlocfilehash: 74a3bb89b10a48d5485df29797e891f80839047f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2c2681f1d6e9abf66375d8a6a9d0f43683474dcc
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614842"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060412"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Passerelle dédiée Azure Cosmos DB - vue d’ensemble (préversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -98,9 +98,9 @@ Comme les nœuds d’un cluster, les nœuds de passerelle dédiés dans les rég
 La passerelle dédiée présente les limitations suivantes pendant la préversion publique :
 
 - Les passerelles dédiées sont uniquement prises en charge sur les comptes d’API SQL.
-- Vous ne pouvez pas vous connecter à une passerelle dédiée dans les comptes Azure Cosmos DB via des [Pare-feu IP](how-to-configure-firewall.md) ou un [Lien privé](how-to-configure-private-endpoints.md) configurés.
-- Vous ne pouvez pas vous connecter à une passerelle dédiée dans un compte Azure Cosmos DB dans un [Réseau virtuel (Vnet)](how-to-configure-vnet-service-endpoint.md)
-- Vous ne pouvez pas vous connecter à une passerelle dédiée dans les comptes Azure Cosmos DB via des [zones de disponibilité](high-availability.md#availability-zone-support) activées.
+- Vous ne pouvez pas approvisionner une passerelle dédiée dans des comptes Azure Cosmos DB avec des [pare-feu IP](how-to-configure-firewall.md) ou [Azure Private Link](how-to-configure-private-endpoints.md) configuré.
+- Vous ne pouvez pas approvisionner une passerelle dédiée dans un compte Azure Cosmos DB dans un [Réseau virtuel (Vnet)](how-to-configure-vnet-service-endpoint.md)
+- Vous ne pouvez pas approvisionner une passerelle dédiée dans des comptes Azure Cosmos DB avec des [zones de disponibilité](high-availability.md#availability-zone-support).
 - Vous ne pouvez pas utiliser le [contrôle d’accès en fonction du rôle (RBAC)](how-to-setup-rbac.md) pour authentifier les demandes de plan de données routées via la passerelle dédiée
 
 ## <a name="supported-regions"></a>Régions prises en charge
@@ -133,4 +133,4 @@ Pour plus d’informations sur l’utilisation des passerelles dédiées, consul
 - [FAQ sur le cache intégré](integrated-cache-faq.md)
 - Vous tentez d’effectuer une planification de la capacité pour une migration vers Azure Cosmos DB ? Vous pouvez utiliser les informations sur votre cluster de bases de données existant pour la planification de la capacité.
     - Si vous ne connaissez que le nombre de vCores et de serveurs présents dans votre cluster de bases de données existant, lisez [Estimation des unités de requête à l’aide de vCores ou de processeurs virtuels](convert-vcore-to-request-unit.md) 
-    - Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez [Estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)
+    - Si vous connaissez les taux de requêtes typiques de votre charge de travail de base de données actuelle, lisez la section concernant l’[estimation des unités de requête à l’aide du planificateur de capacité Azure Cosmos DB](estimate-ru-with-capacity-planner.md)

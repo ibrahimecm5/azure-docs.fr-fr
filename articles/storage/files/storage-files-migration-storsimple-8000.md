@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 069529d2f97e18e1b5d99b4f96e5bee98d80f497
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ba5be8cad5c7189d207a8e2915e970589e414175
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131421938"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063153"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migration de StorSimple 8100 et 8600 vers Azure File Sync
 
@@ -81,8 +81,9 @@ Si vous ne trouvez pas les clés dans vos dossiers, vous pouvez générer une no
 ### <a name="known-limitations"></a>Limites connues
 
 StorSimple Data Manager et les partages de fichiers Azure présentent quelques limitations que vous devez prendre en compte avant de commencer la migration, car elles peuvent empêcher une migration :
-* Seuls les volumes NTFS de votre appliance StorSimple sont pris en charge.
-* Le service ne fonctionne pas avec les volumes chiffrés par BitLocker.
+* Seuls les volumes NTFS de votre appliance StorSimple sont pris en charge. Les volumes reFS ne sont pas pris en charge.
+* Les volumes placés sur des [disques dynamiques Windows Server](/troubleshoot/windows-server/backup-and-storage/best-practices-using-dynamic-disks) ne sont pas pris en charge (déconseillé pour les versions antérieures à Windows Server 2012).
+* Le service ne fonctionne pas avec des volumes chiffrés par BitLocker ou pour lesquels la [Déduplication des données](/windows-server/storage/data-deduplication/understand) est activée.
 * Les sauvegardes StorSimple endommagées ne peuvent pas être migrées.
 * Des options réseau spéciales, telles que les pare-feu ou la communication avec point de terminaison privé uniquement, ne peuvent pas être activées sur le compte de stockage source dans lequel les sauvegardes StorSimple sont stockées, ni sur le compte de stockage cible qui contient vos partages de fichiers Azure.
 

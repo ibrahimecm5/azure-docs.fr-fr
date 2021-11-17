@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b2f5d680fda34d181264a72a0d745a36093c472a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5d51a9495f2b05af6697147df20db01f0f14d083
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472154"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059977"
 ---
 #  <a name="connect-your-gcp-accounts-to-microsoft-defender-for-cloud"></a>Connecter vos comptes GCP à Microsoft Defender pour le cloud
 
@@ -22,7 +22,7 @@ Les charges de travail cloud couvrant généralement plusieurs plates-formes clo
 
 Microsoft Defender pour le cloud protège les charges de travail dans Azure, Amazon Web Services (AWS) et Google Cloud Platform (GCP).
 
-L’ajout d’un compte GCP à un abonnement Azure permet à Defender pour le cloud de se connecter à GCP Security Command. Defender pour le cloud peut alors protéger vos ressources dans ces deux environnements cloud et fournir les avantages suivants :
+L’ajout d’un compte GCP à un abonnement Azure connecte Defender pour le cloud à GCP Security Command. Defender pour le cloud peut alors protéger vos ressources dans ces deux environnements cloud et fournir les avantages suivants :
 
 - Détection des erreurs de configuration de sécurité
 - Une seule vue montrant les recommandations de Defender pour le cloud et les résultats de GCP Security Command Center

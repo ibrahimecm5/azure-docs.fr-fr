@@ -1,6 +1,6 @@
 ---
 title: Partager des images des galeries entre locataires
-description: En utilisant Azure CLI, découvrez comment utiliser les galeries d’images partagées pour partager des images de machine virtuelle entre des locataires Azure.
+description: Découvrez comment partager des images de machine virtuelle entre des locataires Azure à l’aide des galeries Azure Compute et de Azure CLI.
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 05/04/2019
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 78944d14a2d1555c76468b5b9915b07cf55e9d3f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 525e1f51629fe698d1c9f2c3cb9454ddd0a5d183
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223776"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448896"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Partager des images de machine virtuelle des galeries entre des locataires Azure à l’aide d’Azure CLI
 
-Les galeries Shared Image Gallery vous permettent de partager des images à l’aide du contrôle d’accès en fonction du rôle (Azure RBAC). Vous pouvez utiliser Azure RBAC pour partager des images au sein de votre locataire, voire avec d’autres personnes en dehors. Pour plus d’informations sur cette option de partage simple, voir [Partager la galerie](./shared-images-portal.md#share-the-gallery).
+Les galeries Azure Compute vous permettent de partager des images à l'aide du contrôle d'accès en fonction du rôle (Azure RBAC). Vous pouvez utiliser Azure RBAC pour partager des images au sein de votre locataire, voire avec d’autres personnes en dehors. Pour plus d’informations sur cette option de partage simple, voir [Partager la galerie](./shared-images-portal.md#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -54,4 +54,4 @@ az vm create \
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Si vous rencontrez des problèmes, consultez [Résoudre les problèmes des galeries d’images partagées](../troubleshooting-shared-images.md).
+Si vous rencontrez des problèmes, consultez [Résoudre les problèmes des galeries](../troubleshooting-shared-images.md).

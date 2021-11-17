@@ -6,20 +6,20 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.author: jencook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 17462eaeacf36c7748c2654841e8ef11614a6c73
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 408f619f34942839bedcc75c6ab66044b4f90323
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080323"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852702"
 ---
 # <a name="use-cases-and-scenarios"></a>Cas d'utilisation et scénarios
 L’informatique confidentielle s’applique à différents cas d’utilisation pour la protection des données dans les secteurs réglementés, tels que les administrations, les services financiers et les établissements de santé. Par exemple, la prévention de l’accès aux données sensibles contribue à protéger l’identité numérique des citoyens de toutes les parties concernées, y compris le fournisseur de Cloud qui les stocke. Les mêmes données sensibles peuvent contenir des données biométriques utilisées pour rechercher et supprimer des images connues de l’exploitation enfant, pour empêcher le trafic humain et pour assister des investigations d’investigation numérique.
 
-![Cas d'utilisation de l'informatique confidentielle](media/use-cases-scenarios/use_cases.jpg)
+:::image type="content" source="media/use-cases-scenarios/use-cases.png" alt-text="Capture d’écran des cas d’usage de l’informatique confidentielle Azure, notamment dans le secteur public, les services financiers et la santé.":::
 
 Cet article présente plusieurs scénarios courants pour l’informatique confidentielle Azure. Les recommandations de cet article constituent le point de départ du développement de votre application à l’aide de services et de frameworks d’informatique confidentielle.
 
@@ -57,7 +57,7 @@ Dans cet exemple de traitement multipartite, plusieurs banques partagent des don
 
 Grâce à l’informatique confidentielle, ces établissements financiers peuvent augmenter les taux de détection des fraudes, lutter contre les problèmes de blanchiment d’argent, réduire les faux positifs et poursuivre l’apprentissage à partir de jeux de données plus volumineux.
 
-![Partage de données multipartites pour les banques](media/use-cases-scenarios/mpc_banks.jpg)
+:::image type="content" source="media/use-cases-scenarios/mpc-banks.png" alt-text="Graphique du partage de données multipartites pour les banques montrant le déplacement des données rendue possible par l’informatique confidentielle.":::
 
 ### <a name="drug-development-in-healthcare"></a>Développement de médicaments dans le secteur de la santé
 

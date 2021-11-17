@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 74dfc438f1d1da5716933184fe1cc446fcb86c41
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 94b115654d50fcc7924d86afcc9b78ddab05688d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505862"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845081"
 ---
 ## <a name="install-iot-edge"></a>Installer IoT Edge
 
@@ -30,9 +30,9 @@ Pour installer le runtime IoT Edge :
 
 2. Exécutez la commande [Deploy-IoTEdge](../articles/iot-edge/reference-windows-scripts.md#deploy-iotedge) qui effectue les tâches suivantes :
 
-   * Vérifie que votre ordinateur Windows est sous une version prise en charge.
-   * Active la fonctionnalité des conteneurs.
-   * Télécharge le moteur Moby et le runtime IoT Edge.
+   * Vérifie que votre ordinateur Windows est sur une version prise en charge
+   * Active la fonctionnalité des conteneurs
+   * Télécharge le moteur moby et le runtime IoT Edge
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -44,6 +44,6 @@ Pour installer le runtime IoT Edge :
 Quand vous installez IoT Edge sur un appareil, vous pouvez utiliser des paramètres supplémentaires pour modifier le processus, à savoir :
 
 * Diriger le trafic pour qu’il transite par un serveur proxy,
-* Pointer le programme d’installation vers un répertoire local pour une installation hors connexion.
+* Pointer le programme d’installation vers un répertoire local pour une installation hors connexion
 
 Pour plus d’informations sur ces paramètres supplémentaires, consultez [Scripts PowerShell pour IoT Edge sur conteneurs Windows](../articles/iot-edge/reference-windows-scripts.md).

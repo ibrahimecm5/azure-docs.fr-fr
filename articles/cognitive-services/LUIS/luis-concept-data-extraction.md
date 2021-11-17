@@ -4,13 +4,13 @@ description: Extraire des données d’un texte d’énoncé avec des intentions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 10/28/2021
+ms.openlocfilehash: e3618ae81b43402f533df268b4a6e3a7efded997
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500139"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434671"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extraire des données d’un texte d’énoncé avec des intentions et des entités
 LUIS donne la possibilité d’obtenir des informations à partir des énoncés d’un utilisateur en langage naturel. Les informations sont extraites de façon à pouvoir être utilisées par un programme, une application ou un chatbot de manière exploitable. Dans les sections suivantes, découvrez quelles sont les données retournées à partir des intentions et des entités avec des exemples de JSON.
@@ -249,10 +249,10 @@ Certaines applications doivent être capables de rechercher les nouveaux noms, c
 [Pattern.any](reference-entity-pattern-any.md) est un espace réservé à longueur variable utilisé uniquement dans le gabarit d’énoncé d’un modèle pour marquer où l’entité commence et se termine. L’entité utilisée dans le modèle doit être trouvée pour que celui-ci soit appliqué.
 
 ## <a name="sentiment-analysis"></a>analyse de sentiments
-Si l’analyse des sentiments est configurée lors de la [publication](luis-how-to-publish-app.md#sentiment-analysis), la réponse JSON de LUIS l’intègre. Pour plus d’informations sur l’analyse des sentiments, consultez la documentation [Analyse de texte](../text-analytics/index.yml).
+Si l’analyse des sentiments est configurée lors de la [publication](luis-how-to-publish-app.md#sentiment-analysis), la réponse JSON de LUIS l’intègre. Pour plus d’informations sur l’analyse des sentiments, consultez la documentation [Service de langage](../language-service/sentiment-opinion-mining/overview.md).
 
 ## <a name="key-phrase-extraction-entity-data"></a>Données d’entité d’extraction de phrases clés
-L’[entité d’extraction de phrases clés](luis-reference-prebuilt-keyphrase.md) renvoie les phrases clés de l’énoncé, fournies par l’[Analyse de texte](../text-analytics/index.yml).
+[L’entité d’extraction de phrases clés](luis-reference-prebuilt-keyphrase.md) renvoie les phrases clés de l’énoncé, fournies par le [Service de langage](../language-service/key-phrase-extraction/overview.md).
 
 ## <a name="data-matching-multiple-entities"></a>Données correspondant à plusieurs entités
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: 23c4da30e149f10971c4cdec7b99b63e02c45808
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: fdec259dc93e52a8bc1271de8af90f4b864afd49
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164717"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842052"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Nouveautés d’Azure Data Factory
 
@@ -61,7 +61,7 @@ Cette page est mise à jour tous les mois. Donc, consultez-la régulièrement.
 <tr><td><b>Déplacement des données</b></td><td>Obtenir des pipelines d’ingestion de données pilotées par les métadonnées sur l’outil Copier des données ADF en 10 minutes (préversion publique)</td><td>Avec cet outil, vous pouvez générer des pipelines de copie de données à grande échelle avec une approche pilotée par les métadonnées sur l’outil Copier des données (préversion publique) dans un délai de 10 minutes.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">En savoir plus</a></td></tr>
 <tr><td><b>Flux de données</b></td><td>Nouvelles fonctions de mappage ajoutées dans les fonctions de transformation de flux de données</td><td>Un nouvel ensemble de fonctions de transformation de flux de données a été ajouté pour permettre aux ingénieurs de données de générer, de lire et de mettre à jour facilement des types de données de mappage et des structures de mappage complexes.<br><a href="data-flow-expression-functions.md#map-functions">En savoir plus</a></td></tr>
 <tr><td><b>Runtime d’intégration</b></td><td>5 nouvelles régions disponibles dans le réseau virtuel (VNET) managé Azure Data Factory (préversion publique)</td><td>Ces 5 nouvelles régions (Chine Est2, Chine Nord2, US Gov Arizona, US Gov Texas, US Gov Virginie) sont disponibles dans le réseau virtuel managé Azure Data Factory (préversion publique).<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">En savoir plus</a></td></tr>
-<tr><td rowspan=2><b>Productivité des développeurs</b></td><td>Page d’accueil ADF repensée avec ajout de quelques sessions</td><td>La page d’accueil Data Factory a été repensée avec de meilleures capacités de contraste et de redisposition. De plus, quelques sections ont été introduites dans la page d’accueil pour vous permettre d’améliorer la productivité de votre parcours d’intégration des données.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">En savoir plus</a></td></tr>
+<tr><td rowspan=2><b>Productivité des développeurs</b></td><td>Améliorations de la page d’accueil ADF</td><td>La page d’accueil Data Factory a été repensée avec de meilleures capacités de contraste et de redisposition. De plus, quelques sections ont été introduites dans la page d’accueil pour vous permettre d’améliorer la productivité de votre parcours d’intégration des données.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">En savoir plus</a></td></tr>
 <tr><td>Nouvelle page de destination pour Azure Data Factory Studio</td><td>Page de destination du panneau Data Factory dans le portail Azure.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">En savoir plus</a></td></tr>
 </table>
 

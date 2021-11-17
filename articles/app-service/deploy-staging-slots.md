@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 77e374e43722554a215675fd09d0317899d7992f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: feea2bdccd5f4e7ea4c18b7dd155ee0f105b6c8f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709057"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027562"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Configurer des environnements intermédiaires dans Azure App Service
 <a name="Overview"></a>
@@ -217,7 +217,7 @@ Pour plus d’informations sur la personnalisation de l’élément `application
 
 Vous pouvez également personnaliser le comportement d’initialisation en utilisant l’un des deux [paramètres d’application](configure-common.md) suivants (ou les deux) :
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: chemin permettant d’effectuer un test ping afin d’initialiser votre site. Ajoutez ce paramètre d’application en spécifiant un chemin d’accès personnalisé qui commence par une barre oblique comme valeur. par exemple `/statuscheck`. La valeur par défaut est `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH` : chemin permettant d’effectuer un test ping sur HTTP afin d’initialiser votre site. Ajoutez ce paramètre d’application en spécifiant un chemin d’accès personnalisé qui commence par une barre oblique comme valeur. par exemple `/statuscheck`. La valeur par défaut est `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Codes de réponse HTTP valides pour l’opération d'initialisation. Ajoutez ce paramètre d’application avec une liste séparée par des virgules de codes HTTP. Par exemple `200,202`. Si le code d’état retourné ne figure pas dans la liste, les opérations d’initialisation et d’échange sont arrêtées. Par défaut, tous les codes de réponse sont valides.
 - `WEBSITE_WARMUP_PATH` : chemin d’accès relatif sur le site qui doit faire l’objet d’un test ping à chaque redémarrage du site (pas seulement pendant les échanges d’emplacements). Les valeurs sont, par exemple, `/statuscheck` ou le chemin d’accès racine, `/`.
 

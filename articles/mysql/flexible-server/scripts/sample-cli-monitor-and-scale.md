@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Superviser et mettre à l’échelle une instance d’Azure Database pour MySQL - Serveur flexible (préversion)
+title: Script CLI - Monitorer et mettre à l’échelle une instance d’Azure Database pour MySQL - Serveur flexible
 description: Cet exemple de script Azure CLI montre comment superviser et mettre à l’échelle une instance d’Azure Database pour MySQL - Serveur flexible (scale-up ou scale-down) afin de s’adapter aux besoins en performance.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 3ab338f1648753b89907180be78b3a687b370ded
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 82661e10c2434541be89df6dc0e0871618a1a6b5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604638"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844183"
 ---
-# <a name="monitor-and-scale-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Superviser et mettre à l’échelle une instance d’Azure Database pour MySQL - Serveur flexible (préversion) avec Azure CLI
+# <a name="monitor-and-scale-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Monitorer et mettre à l’échelle une instance d’Azure Database pour MySQL - Serveur flexible avec Azure CLI
 
 Cet exemple de script CLI met à l’échelle le calcul, le stockage et les IOPS d’une instance Azure Database pour MySQL - Serveur flexible après l’interrogation des métriques correspondantes. Le calcul et les IOPS peuvent faire l’objet d’un scale-up ou d’un scale-down, tandis que le stockage peut uniquement faire l’objet d’un scale-up. 
 
@@ -53,5 +53,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).

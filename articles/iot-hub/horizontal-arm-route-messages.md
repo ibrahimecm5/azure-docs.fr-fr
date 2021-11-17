@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 366aa1737f0e72a1f250fc1d25ea77636955d674
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e40b714709aedbb643b2b2d65878a73618a7682f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034298"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445864"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Démarrage rapide : Déployer un hub Azure IoT et un compte de stockage en utilisant un modèle ARM
 
@@ -63,8 +63,6 @@ Cette section décrit les étapes de déploiement du modèle, de création d’u
 
 1. Vous avez besoin du **nom du hub**. Sélectionnez le hub dans la liste des ressources. Copiez le nom du hub en haut de la section IoT Hub dans le Presse-papiers Windows.
 
-   ![Copier le nom du hub](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
-
     Remplacez le nom du hub dans cette commande là où c’est indiqué, puis exécutez cette commande dans la fenêtre de commande :
 
     ```cmd
@@ -77,11 +75,11 @@ Cette section décrit les étapes de déploiement du modèle, de création d’u
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. La variable d’environnement suivante est la clé de l’appareil IoT. Ajoutez un nouvel appareil au hub en sélectionnant **Appareils IoT** dans le menu IoT Hub pour le hub.
+1. La variable d’environnement suivante est la clé de l’appareil IoT. Ajoutez un nouvel appareil au hub en sélectionnant **Appareils** dans le menu IoT Hub du hub.
 
-   ![Sélectionner Appareils IoT](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
+   :::image type="content" source="./media/horizontal-arm-route-messages/04-select-iot-devices.png" alt-text="Capture d’écran montrant les appareils dans le volet gauche." border="true":::
 
-1. Sur le côté droit de l’écran, sélectionnez **+ NOUVEAU** pour ajouter un nouvel appareil.
+1. Sur le côté droit de l’écran, sélectionnez **+ Ajouter un appareil** pour ajouter un nouvel appareil.
 
    Renseignez le nom du nouvel appareil. Ce guide de démarrage rapide utilise un nom commençant par **Contoso-Test-Device**. Enregistrez l’appareil, puis rouvrez cet écran pour récupérer la clé de l’appareil. (La clé est générée pour vous quand vous fermez le volet.) Sélectionnez la clé principale ou secondaire, puis copiez-la dans le Presse-papiers Windows. Dans la fenêtre de commande, définissez la commande à exécuter, puis appuyez sur **Entrée**. La commande doit se présenter comme celle-ci, mais avec la clé de l’appareil collée :
 

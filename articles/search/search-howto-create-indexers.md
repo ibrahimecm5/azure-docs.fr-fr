@@ -7,25 +7,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: 666582e7f774d95d61da63d4cd31a7f4893a6a6b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 11/02/2021
+ms.openlocfilehash: a9e33fb3573e3c047a577be96d7efa32f26fcce8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772815"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438015"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Création d’indexeurs dans Recherche cognitive Azure
 
-Un indexeur de recherche fournit un workflow automatisé pour transférer les documents et le contenu d’une source de données externe vers un index de recherche sur votre service de recherche. Comme initialement conçu, il extrait le texte et les métadonnées d’une source de données Azure, sérialise les documents au format JSON et transmet les documents obtenus à un moteur de recherche pour l’indexation. Depuis, il a été étendu pour prendre en charge l’[enrichissement par IA](cognitive-search-concept-intro.md) pour un traitement approfondi du contenu. 
+Un indexeur de recherche fournit un workflow automatisé pour lire le contenu d’une source de données externe et d’ingérer ce contenu vers un index de recherche sur votre service de recherche. Les indexeurs prennent en charge deux flux de travail : 
+
++ L’extraction de texte et de métadonnées pour la recherche de texte intégral
++ L’analyse d’images et de texte non différencié volumineux pour le texte et la structure, l’ajout de l'[enrichissement par IA](cognitive-search-concept-intro.md) au pipeline pour le traitement de contenu plus profond. 
 
 L’utilisation d’indexeurs réduit considérablement la quantité et la complexité du code que vous devez écrire. Cet article se concentre sur les mécanismes de création d’un indexeur en vue d’un travail plus avancé avec des indexeurs et des [ensembles de compétences](cognitive-search-working-with-skillsets.md) spécifiques aux sources.
 
-## <a name="whats-an-indexer-definition"></a>Qu’est-ce qu’une définition d’indexeur ?
+## <a name="indexer-structure"></a>Structure de l’indexeur
 
-Les indexeurs sont utilisés soit pour l’indexation textuelle qui extrait le contenu alphanumérique des champs sources vers les champs d’index, soit pour le traitement basé sur l’IA qui analyse le texte non différencié pour en déterminer la structure ou qui analyse les images pour en déterminer le texte et les informations, en ajoutant également ce contenu à un index. Les définitions d’index suivantes sont typiques de ce que vous pouvez créer pour l’un ou l’autre scénario.
+Les définitions d’index suivantes sont typiques de ce que vous pouvez créer pour les scénarios basés sur texte et d’enrichissement par IA.
 
-### <a name="indexers-for-text-content"></a>Indexeurs pour le contenu de texte
+### <a name="indexing-for-full-text-search"></a>Indexation pour la recherche de texte intégral
 
 L’objectif initial d’un indexeur était de simplifier le processus complexe de chargement d’un index en fournissant un mécanisme permettant de se connecter à une source de données et de lire le contenu textuel et numérique des champs de cette source, sérialiser ce contenu sous forme de documents JSON et transmettre ces documents au moteur de recherche pour indexation. Il s’agit toujours du principal cas d’usage et, pour cette opération, vous devez créer un indexeur avec les propriétés définies dans l’exemple suivant.
 
@@ -49,7 +52,7 @@ La propriété **`parameters`** modifie les comportements du runtime, tels que l
 
 La propriété **`field mappings`** est utilisée pour mapper explicitement les champs source-destination si ces champs diffèrent par leur nom ou leur type. D’autres propriétés (non illustrées) sont utilisées pour [spécifier une planification](search-howto-schedule-indexers.md), créer l’indexeur dans un état désactivé ou spécifier une [clé de chiffrement](search-security-manage-encryption-keys.md) pour le chiffrement supplémentaire des données au repos.
 
-### <a name="indexers-for-ai-indexing"></a>Indexeurs pour l’indexation par IA
+### <a name="indexing-for-ai-enrichment"></a>Indexation pour l’enrichissement par IA
 
 Étant donné que les indexeurs sont le mécanisme par lequel un service de recherche effectue des requêtes sortantes, les indexeurs ont été étendus pour prendre en charge les enrichissements par IA, en ajoutant des infrastructures et des objets pour implémenter ce cas d’usage.
 
@@ -77,19 +80,19 @@ Toutes les propriétés et tous les paramètres ci-dessus s’appliquent aux ind
 
 L’enrichissement par IA n’entre pas dans le cadre de cet article. Pour plus d’informations, commencez par ces articles : [Enrichissement par IA](cognitive-search-concept-intro.md), [Ensembles de compétences dans Recherche cognitive Azure](cognitive-search-working-with-skillsets.md) et [Créer un ensemble de compétences (REST)](/rest/api/searchservice/create-skillset).
 
-## <a name="choose-an-indexer-client-and-create-the-indexer"></a>Choisir un client d’indexation et créer l’indexeur
+## <a name="prerequisites"></a>Prérequis
 
-Lorsque vous êtes prêt à créer un indexeur sur un service de recherche à distance, vous avez besoin d’un client de recherche sous la forme d’un outil, tel que Portail Azure ou Postman, ou du code qui instancie un client d’indexation. Nous vous recommandons le portail Azure ou les API REST pour les premières étapes de développement et les tests de preuve de concept.
++ Utilisez une [source de données prise en charge](search-indexer-overview.md#supported-data-sources).
 
-### <a name="permissions"></a>Autorisations
-
-Toutes les opérations liées aux indexeurs, notamment les requêtes GET d’état ou de définitions, nécessitent une [clé d’API d’administrateur](search-security-api-keys.md) sur la requête.
-
-### <a name="limits"></a>Limites
++ Ont des droits d’administrateur. Toutes les opérations liées aux indexeurs, notamment les requêtes GET d’état ou de définitions, nécessitent une [clé d’API d’administrateur](search-security-api-keys.md) sur la requête.
 
 Tous les [niveaux de service limitent](search-limits-quotas-capacity.md#indexer-limits) le nombre d’objets que vous pouvez créer. Si vous faites des expériences sur le niveau Gratuit, vous ne pouvez avoir que trois objets de chaque type et deux minutes de traitement de l’indexeur (à l’exclusion du traitement de l’ensemble de compétences).
 
-### <a name="use-azure-portal-to-create-an-indexer"></a>Utiliser Portail Azure pour créer un indexeur
+## <a name="how-to-create-indexers"></a>Créer des indexeurs
+
+Lorsque vous êtes prêt à créer un indexeur sur un service de recherche à distance, vous avez besoin d’un client de recherche sous la forme d’un outil, tel que Portail Azure ou Postman, ou du code qui instancie un client d’indexation. Nous vous recommandons le portail Azure ou les API REST pour les premières étapes de développement et les tests de preuve de concept.
+
+### <a name="azure-portal"></a>[**Portail Azure**](#tab/indexer-portal)
 
 Le portail propose deux options pour créer un indexeur : [**l’Assistant Importer des données**](search-import-data-portal.md) et **Nouvel indexeur** qui fournit des champs pour spécifier une définition d’indexeur. L’Assistant est unique en ce sens qu’il crée tous les éléments requis. D’autres approches requièrent que vous ayez prédéfini une source de données et un index.
 
@@ -97,7 +100,7 @@ La capture d’écran suivante montre où vous pouvez trouver ces fonctionnalit�
 
   :::image type="content" source="media/search-howto-create-indexers/portal-indexer-client.png" alt-text="Indexeur des hôtels" border="true":::
 
-### <a name="use-a-rest-client"></a>Utiliser un client REST
+### <a name="rest"></a>[**REST**](#tab/kstore-rest)
 
 Postman et Visual Studio Code (avec une extension pour Recherche cognitive Azure) peuvent tous deux fonctionner comme client d’indexation. En utilisant l’un ou l’autre de ces outils, vous pouvez vous connecter à votre service de recherche et envoyer des requêtes [Create indexer (REST)](/rest/api/searchservice/create-indexer). Il existe de nombreux tutoriels et exemples qui illustrent le fonctionnement des clients REST pour la création d’objets. 
 
@@ -108,7 +111,7 @@ Commencez par l’un de ces articles pour en savoir plus sur chaque client :
 
 Reportez-vous aux [opérations de l’indexeur (REST)](/rest/api/searchservice/Indexer-operations) pour obtenir de l’aide dans la formulation de requêtes d’indexeur.
 
-### <a name="use-an-sdk"></a>Utiliser un Kit de développement logiciel (SDK)
+### <a name="net-sdk"></a>[**Kit de développement logiciel (SDK) .NET**](#tab/kstore-dotnet)
 
 Pour Recherche cognitive, les Kits de développement logiciel (SDK) Azure implémentent des fonctionnalités généralement disponibles. Ainsi, vous pouvez utiliser n’importe lequel des Kits de développement logiciel (SDK) pour créer des objets liés à l’indexeur. Ils fournissent tous un **SearchIndexerClient** qui contient des méthodes pour créer des indexeurs et des objets connexes, y compris des ensembles de compétences.
 
@@ -119,9 +122,11 @@ Pour Recherche cognitive, les Kits de développement logiciel (SDK) Azure implé
 | JavaScript | [SearchIndexerClient](/javascript/api/@azure/search-documents/searchindexerclient) | [Indexeurs](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |
 | Python | [SearchIndexerClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexerclient) | [sample_indexers_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_indexers_operations.py) |
 
+---
+
 ## <a name="run-the-indexer"></a>Exécuter l’indexeur
 
-Un indexeur s’exécute automatiquement lorsque vous créez l’indexeur sur le service. C’est le moment de vérité où vous découvrirez s’il existe des erreurs de connexion aux sources de données, des problèmes de mappage des champs ou des problèmes des ensembles de compétences. 
+À moins que vous ne définissez **`disabled=true`** dans la définition de l’indexeur, un indexeur s’exécute immédiatement lorsque vous créez l’indexeur sur le service. C’est le moment de vérité où vous découvrirez s’il existe des erreurs de connexion aux sources de données, des problèmes de mappage des champs ou des problèmes des ensembles de compétences. 
 
 Il existe plusieurs façons d’exécuter un indexeur :
 
@@ -130,9 +135,6 @@ Il existe plusieurs façons d’exécuter un indexeur :
 + Envoyez une requête HTTP pour [exécuter l’indexeur](/rest/api/searchservice/run-indexer) afin d’exécuter un indexeur sans aucune modification de la définition.
 
 + Exécutez un programme qui appelle des méthodes SearchIndexerClient pour créer, mettre à jour ou exécuter.
-
-> [!NOTE]
-> Pour éviter d’exécuter un indexeur dès sa création, incluez **`disabled=true`** dans la définition de l’indexeur.
 
 Vous pouvez également [planifier](search-howto-schedule-indexers.md) l’indexeur pour qu’il invoque le traitement à intervalles réguliers. 
 
@@ -157,9 +159,9 @@ Pour les charges d’indexation volumineuses, un indexeur effectue également le
 
 Si vous devez effacer la limite supérieure pour réindexer entièrement, vous pouvez utiliser l’option [Réinitialiser l’indexeur](/rest/api/searchservice/reset-indexer). Pour une réindexation plus sélective, utilisez [Réinitialiser les compétences](/rest/api/searchservice/preview-api/reset-skills) ou [Réinitialiser les documents](/rest/api/searchservice/preview-api/reset-documents). Grâce aux API de réinitialisation, vous pouvez effacer l’état interne, ainsi que vider le cache si vous avez activé l’[enrichissement incrémentiel](search-howto-incremental-index.md). Pour plus d’informations et une comparaison de chaque option de réinitialisation, consultez [Exécuter ou réinitialiser des indexeurs, des compétences et des documents](search-howto-run-reset-indexers.md).
 
-## <a name="know-your-data"></a>Connaître vos données
+## <a name="data-preparation"></a>Préparation des données
 
-Les indexeurs s’attendent à un ensemble de lignes tabulaires, où chaque ligne devient un document de recherche complet ou partiel dans l’index. Souvent, il y a une correspondance biunivoque entre une ligne et le document de recherche qui en résulte, où tous les champs de l’ensemble de lignes remplissent entièrement chaque document. Toutefois, vous pouvez utiliser des indexeurs pour générer une partie seulement d’un document, par exemple si vous utilisez plusieurs indexeurs ou approches pour créer l’index. 
+Les indexeurs s’attendent à un ensemble de lignes tabulaires, où chaque ligne devient un document de recherche complet ou partiel dans l’index. Souvent, il y a une correspondance biunivoque entre une ligne dans une base de données et le document de recherche qui en résulte, où tous les champs de l’ensemble de lignes remplissent entièrement chaque document. Toutefois, vous pouvez utiliser des indexeurs pour générer un sous-ensemble des champs d’un document et remplir les champs restants à l’aide d’un indexeur différent ou d’une méthodologie différente. 
 
 Pour aplatir les données relationnelles dans un ensemble de lignes, vous devez créer une vue SQL ou créer une requête qui retourne des enregistrements parents et enfants dans la même ligne. Par exemple, l’exemple de jeu de données d’hôtels intégré est une base de données SQL qui comporte 50 enregistrements (un pour chaque hôtel), liés aux enregistrements des chambres dans une table connexe. La requête qui aplatit les données collectives dans un ensemble de lignes intègre toutes les informations relatives aux chambres dans les documents JSON de chaque enregistrement d’hôtel. Les informations de chambre intégrées sont générées par une requête qui utilise une clause **FOR JSON AUTO**. Vous pouvez en savoir plus sur cette technique dans [Définir une requête qui retourne une collection JSON incorporée](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Il ne s’agit là que d’un exemple ; vous pouvez trouver d’autres approches qui produisent le même effet.
 
@@ -167,7 +169,7 @@ En plus des données aplaties, il est important d’extraire uniquement les donn
 
 Étant donné que les indexeurs ne corrigent pas les problèmes de données, d’autres formes de nettoyage ou de manipulation des données peuvent être nécessaires. Pour plus d’informations, reportez-vous à la documentation de votre [produit de base de données Azure](../index.yml?product=databases).
 
-## <a name="know-your-index"></a>Connaître votre index
+## <a name="index-preparation"></a>Préparation de l’index
 
 Rappelez-vous que les indexeurs transmettent les documents de recherche au moteur de recherche pour qu’il les indexe. Tout comme les indexeurs ont des propriétés qui déterminent le comportement d’exécution, un schéma d’indexation a des propriétés qui influencent profondément la façon dont les chaînes sont indexées (seules les chaînes sont analysées et transformées en jeton). En fonction des affectations de l’analyseur, les chaînes indexées peuvent être différentes de celles que vous avez transmises. Vous pouvez évaluer les effets des analyseurs à l’aide d’[Analyser le texte (REST)](/rest/api/searchservice/test-analyzer). Pour plus d’informations sur les analyseurs, consultez [Analyseurs pour le traitement de texte](search-analyzers.md).
 

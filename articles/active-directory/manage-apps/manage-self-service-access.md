@@ -13,22 +13,22 @@ ms.date: 09/23/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: phsignor
-ms.openlocfilehash: 7bc1f981287c71d967084694c144983167a4386d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 2a076fa39266a0295d2b1fda6c60f9e6a528f143
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057319"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054635"
 ---
 # <a name="enable-self-service-application-assignment-in-azure-active-directory"></a>Activer l’attribution d’applications en libre-service dans Azure Active Directory
 
 Dans cet article, vous allez apprendre à activer l’accès aux applications en libre-service à l’aide du centre d’administration Azure Active Directory.
 
-Pour permettre à vos utilisateurs de découvrir eux-mêmes des applications depuis leur page Mes applications, vous devez activer l’**accès aux applications en libre-service** pour toutes les applications pour lesquelles vous souhaitez autoriser les utilisateurs à les découvrir eux-mêmes et en demander l’accès. Cette fonctionnalité est disponible pour les applications qui ont été ajoutées à partir d’[Azure AD Gallery](./add-application-portal.md), du [Proxy d'application Azure AD](../app-proxy/application-proxy.md) ou par l’intermédiaire du [consentement utilisateur ou administrateur](../develop/application-consent-experience.md).
+Pour permettre à vos utilisateurs de découvrir eux-mêmes des applications depuis leur page [Mes applications](my-apps-deployment-plan.md), vous devez activer l’**accès aux applications en libre-service** pour les applications. Cette fonctionnalité est disponible pour les applications qui ont été ajoutées à partir d’Azure AD Gallery, du [Proxy d’application Azure AD](../app-proxy/application-proxy.md) ou par l’intermédiaire du [consentement utilisateur ou administrateur](../develop/application-consent-experience.md).
 
 À l’aide de cette fonctionnalité, vous pouvez :
 
-- Autorisez les utilisateurs à découvrir eux-mêmes des applications à partir du [portail Mes applications](https://myapps.microsoft.com/) sans déranger le groupe informatique.
+- Autorisez les utilisateurs à découvrir eux-mêmes des applications à partir du portail Mes applications sans déranger le groupe informatique.
 
 - Ajouter ces utilisateurs à un groupe préconfiguré pour vous permettre de voir qui a demandé l’accès, de retirer l’accès et de gérer les rôles qui leur ont été attribués.
 
@@ -62,23 +62,23 @@ Pour activer l’accès en libre-service à une application, procédez comme sui
 
 1. Dans le menu de navigation gauche, sélectionnez **Libre-service**.
 
-1. Pour activer l’accès en libre-service à cette application, définissez l’option **Autoriser les utilisateurs à demander l’accès à cette application ?** sur **Oui.**
+1. Pour activer l’accès en libre-service à cette application, définissez l’option **Autoriser les utilisateurs à demander l’accès à cette application ?** sur **Oui**.
 
 1. En regard de **À quel groupe les utilisateurs attribués doivent-ils être ajoutés ?** , cliquez sur **Sélectionner un groupe**. Choisissez un groupe, puis sélectionnez **Sélectionner**. Quand la demande d’un utilisateur est approuvée, il est ajouté à ce groupe. Lorsque vous affichez l’appartenance à ce groupe, vous pouvez voir qui a obtenu l’accès à l’application par le biais de l’accès en libre-service.
   
     > [!NOTE]
     > Ce paramètre ne prend pas en charge les groupes synchronisés localement.
 
-1. **Facultatif :** Pour exiger une approbation d’entreprise avant d’accorder l’accès aux utilisateurs, définissez l’option **Demander une approbation avant d’accorder l’accès à cette application ?** sur **Oui**.
+1. **Facultatif :** pour exiger une approbation d’entreprise avant d’accorder l’accès aux utilisateurs, définissez l’option **Demander une approbation avant d’accorder l’accès à cette application ?** sur **Oui**.
 
-1. **Facultatif : Pour les applications utilisant uniquement l’authentification unique par mot de passe,** pour autoriser les approbateurs d’entreprise à spécifier les mots de passe envoyés à cette application pour les utilisateurs approuvés, définissez l’option **Autoriser les approbateurs à définir les mots de passe de l’utilisateur pour cette application ?** sur **Oui**.
+1. **Facultatif :** concernant les applications utilisant uniquement l’authentification unique par mot de passe, pour autoriser les approbateurs d’entreprise à spécifier les mots de passe envoyés à cette application pour les utilisateurs approuvés, définissez l’option **Autoriser les approbateurs à définir les mots de passe de l’utilisateur pour cette application ?** sur **Oui**.
 
-1. **Facultatif :** Pour spécifier les approbateurs d’entreprise autorisés à approuver l’accès à cette application, en regard de **Qui est autorisé à approuver l’accès à cette application ?** , sélectionnez **Sélectionner des approbateurs**, puis sélectionnez jusqu’à 10 approbateurs d’entreprise. Ensuite, sélectionnez **Sélectionner**.
+1. **Facultatif :** Pour spécifier les approbateurs d’entreprise autorisés à approuver l’accès à cette application, choisissez **Sélectionner des approbateurs**, sélectionnez jusqu’à 10 approbateurs d’entreprise, puis choisissez **Sélectionner**.
 
     >[!NOTE]
     >Les groupes ne sont pas pris en charge. Vous pouvez sélectionner jusqu’à 10 approbateurs d’entreprise individuels. Si vous spécifiez plusieurs approbateurs, chaque approbateur peut approuver une demande d’accès.
 
-1. **Facultatif :** **Pour les applications qui exposent des rôles**, pour attribuer un rôle à des utilisateurs approuvés en libre-service, en regard de l’option **À quel rôle attribuer des utilisateurs dans cette application ?** , sélectionnez **Sélectionner un rôle**, puis choisissez le rôle auquel ces utilisateurs doivent être affectés. Ensuite, sélectionnez **Sélectionner**.
+1. **Facultatif :** **Pour les applications qui exposent des rôles**, pour attribuer un rôle à des utilisateurs approuvés en libre-service, choisissez **Sélectionner un rôle**, sélectionnez le rôle auquel ces utilisateurs doivent être affectés, puis choisissez **Sélectionner**.
 
 1. Sélectionnez le bouton **Enregistrer** en haut du volet pour terminer.
 

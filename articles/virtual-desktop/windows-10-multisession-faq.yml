@@ -8,12 +8,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: e6633e117fc06e9d7e337d6bece2cc2f7c36193c
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 0546f6186fbf725e14a105b0d735db0b7ecef2cc
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253325"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131841599"
 title: FAQ sur Windows 10 Entreprise multisession
 summary: Cet article répond à des questions fréquemment posées et décrit les meilleures pratiques concernant l’utilisation de Windows 10 Entreprise en mode multisession.
 sections:
@@ -92,4 +92,6 @@ sections:
       5. Sélectionnez **Désactivée**, puis **OK**.
 
       6. Sélectionnez **Appliquer**.
+  - question: Windows 10 ou 11 Entreprise multisession peut-il bénéficier de mises à jour des fonctionnalités fournies par WSUS (Windows Server Update Services) ?
+    answer: "Pour le moment, WSUS ne peut pas fournir de mises à jour des fonctionnalités pour Windows 10 ou 11 Entreprise multisession.\n         \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n   \nPour plus d’informations sur Azure Virtual Desktop et Windows 10 Entreprise Multi-session :\n        \n- Consultez notre [documentation Azure Virtual Desktop](overview.md).\n- Consultez le site de la [Tech Community Azure Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).\n- Configurez votre déploiement Azure Virtual Desktop avec les [tutoriels Azure Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).\n        \n"

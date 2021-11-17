@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 839d5f7cd096b9b820e3a137f48efa8882fd3d1c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 09dc0bd3afb2b9bfc99313ad38d5c7ad19086cb8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003115"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061037"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importation de mises à jour dans Device Update pour IoT Hub – Schéma et autres informations
-Si vous souhaitez importer une mise à jour dans Device Update pour IoT Hub, veillez à consulter d’abord les [concepts](import-concepts.md) et le [guide pratique](import-update.md). Pour des détails sur le schéma utilisé lors de la construction d’un manifeste d’importation, ainsi que des informations sur les objets associés, voir ci-dessous.
+Si vous souhaitez importer une mise à jour dans Device Update pour IoT Hub, veillez à consulter d’abord les [concepts](import-concepts.md) et le [guide pratique](import-update.md). Pour des détails sur le schéma utilisé lors de la construction d’un manifeste d’importation, ou des informations sur les objets associés, voir ci-dessous.
 
 ## <a name="import-manifest-schema"></a>Schéma de manifeste d’importation
 
@@ -26,7 +26,7 @@ Si vous souhaitez importer une mise à jour dans Device Update pour IoT Hub, vei
 | Compatibilité | Tableau d’`CompatibilityInfo` [objets](#compatibilityinfo-object) | Informations de compatibilité de l’appareil compatible avec cette mise à jour. | Maximum de 10 éléments |
 | CreatedDateTime | date/heure | Date et heure de création de la mise à jour. | Format de date et heure ISO 8601 délimité, en UTC |
 | ManifestVersion | string | Version du schéma du manifeste d’importation. Spécifiez `2.0`, qui sera compatible avec l’interface `urn:azureiot:AzureDeviceUpdateCore:1` et l’interface `urn:azureiot:AzureDeviceUpdateCore:4`. | Doit être `2.0` |
-| Fichiers | Tableau d’objets `File` | Mettre à jour les fichiers de charge utile | Maximum de 5 fichiers |
+| Fichiers | Tableau d’objets `File` | Mettre à jour les fichiers de charge utile | Maximum cinq fichiers |
 
 ## <a name="updateid-object"></a>Objet UpdateId
 
@@ -34,7 +34,7 @@ Si vous souhaitez importer une mise à jour dans Device Update pour IoT Hub, vei
 | --------- | --------- | --------- | --------- |
 | Fournisseur | string | Partie fournisseur de l’identité de mise à jour. | 1 à 64 caractères, alphanumériques, point et tiret. |
 | Nom | string | Partie nom de l’identité de mise à jour. | 1 à 64 caractères, alphanumériques, point et tiret. |
-| Version | version | Partie version de l’identité de mise à jour. | 2 à 4 parties, numéro de version séparé par des points, compris entre 0 et 2147483647. Les zéros non significatifs seront supprimés. |
+| Version | version | Partie version de l’identité de mise à jour. | 2 à 4 parties, numéro de version séparé par des points. Le nombre total de _chaque_ partie séparée par un point peut être compris entre 0 et 2147483647. Les zéros non significatifs ne sont pas pris en charge.
 
 ## <a name="file-object"></a>Objet File
 

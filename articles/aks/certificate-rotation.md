@@ -3,13 +3,13 @@ title: Effectuer une rotation des certificats dans Azure Kubernetes Service (AKS
 description: Découvrez comment assurer la rotation de vos certificats dans un cluster Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 7/13/2021
-ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.date: 11/03/2021
+ms.openlocfilehash: 7651af1bc1b3229fa206dbb507a918d611b2eafc
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122533040"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575766"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Effectuer une rotation des certificats dans Azure Kubernetes Service (AKS)
 
@@ -54,6 +54,28 @@ az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id Ru
 ```console
 az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
 ```
+
+## <a name="certificate-auto-rotation"></a>Rotation automatique des certificats
+
+Azure Kubernetes Service assurera automatiquement la rotation des certificats autres que les certificats d’autorité de certification sur le plan de contrôle et les nœuds de l’agent avant qu’ils n’expirent, sans temps d’arrêt pour le cluster.
+
+Pour qu’AKS puisse effectuer la rotation automatique des certificats autres que les certificats d’autorité de certification, le cluster doit disposer du [démarrage de TLS](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/). Le démarrage de TLS est actuellement disponible dans les régions suivantes :
+
+* eastus2euap
+* centraluseuap
+* westcentralus
+* uksouth
+* eastus
+* australiacentral
+* australiaest
+
+> [!IMPORTANT]
+>Une fois qu’une région est configurée, créez un nouveau cluster ou mettez à niveau un cluster existant à l’aide de la commande « az aks upgrade -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME » afin de définir ce cluster pour la rotation automatique des certificats. 
+
+### <a name="limititation"></a>Limites
+
+La rotation automatique des certificats ne sera pas activée sur un cluster non RBAC.
+
 
 ## <a name="rotate-your-cluster-certificates"></a>Procéder à la rotation de vos certificats de cluster
 

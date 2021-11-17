@@ -3,12 +3,12 @@ title: Langage Bicep pour le déploiement de ressources Azure
 description: Décrit le langage Bicep pour le déploiement d’infrastructure sur Azure. Il offre une expérience de création améliorée par rapport à l’utilisation de JSON pour développer des modèles.
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: ace417bb8a71a277bbcb4ef178c6aaf24b97533b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 565f849edafaa6c083a1e7d21bb67f8b3ab8453e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831942"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443487"
 ---
 # <a name="what-is-bicep"></a>Qu’est-ce que Bicep ?
 
@@ -109,6 +109,10 @@ La poursuite de cet objectif nécessite d’utiliser des API qui se trouvent en 
 Ils continueront de fonctionner comme ils l’ont toujours fait. Vous n’avez pas besoin d’apporter de modifications. Nous continuerons à prendre en charge le langage JSON du modèle ARM sous-jacent. Les fichiers Bicep se compilent en un JSON qui est envoyé à Azure pour le déploiement.
 
 Lorsque vous êtes prêt, vous pouvez [décompiler les fichiers JSON en langage Bicep](./decompile.md).
+
+**Puis-je utiliser Bicep pour effectuer le déploiement sur Azure Stack Hub ?**
+
+Oui, vous pouvez utiliser Bicep pour vos déploiements Azure Stack Hub, mais notez que Bicep peut afficher des types qui ne sont pas encore disponibles dans Azure Stack Hub. Vous pouvez afficher un ensemble d’exemples dans le [référentiel GitHub Modèles de démarrage rapide Azure Stack Hub](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/Bicep). 
 
 ## <a name="known-limitations"></a>Limitations connues
 

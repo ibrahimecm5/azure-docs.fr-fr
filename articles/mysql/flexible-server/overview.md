@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: 6b46c4f3ed15632f2e394882a69eb4b7c737a219
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 13d220dc0b168ade0bd6493025d858e01772a980
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131504908"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893952"
 ---
 # <a name="azure-database-for-mysql---flexible-server"></a>Serveurs flexibles Azure Database pour MySQL 
 
@@ -21,20 +21,23 @@ ms.locfileid: "131504908"
 
 Deux modes de déploiement sont disponibles pour Azure Database pour MySQL optimisé par MySQL Community Edition :
 
-- Serveur unique
 - Serveur flexible
+- Serveur unique
 
 Cet article contient une vue d'ensemble et une présentation des concepts de base du modèle de déploiement de serveur flexible. Pour plus d’informations sur la façon de déterminer l’option de déploiement qui convient à votre charge de travail, consultez [choix de l’option de serveur MySQL appropriée dans Azure](./../select-right-deployment-type.md).
 
 ## <a name="overview"></a>Vue d’ensemble
 
-Azure Database pour MySQL - Serveur flexible est un service de base de données entièrement géré conçu pour offrir un contrôle et une flexibilité plus granulaires des fonctions de gestion de base de données et des paramètres de configuration. En général, le service fournit des personnalisations en termes de flexibilité et configuration de serveur suivant les besoins de l’utilisateur. L’architecture de serveur flexible permet aux utilisateurs d’opter pour une haute disponibilité au sein d’une même zone de disponibilité et dans plusieurs zones de disponibilité. Les serveurs flexibles offrent également de meilleurs contrôles d’optimisation des coûts grâce à la possibilité d’arrêter/de démarrer votre serveur et vos références (SKU) Burstable, idéales pour les charges de travail qui n’ont pas besoin en permanence d’une capacité de calcul complète. Le service prend actuellement en charge les versions de la communauté de MySQL 5.7 et 8.0. Le service est aujourd’hui disponible dans un grand nombre de [régions Azure](https://azure.microsoft.com/global-infrastructure/services/).
+Azure Database pour MySQL - Serveur flexible est un service de base de données prêt pour la production entièrement géré et conçu pour offrir un contrôle et une flexibilité plus granulaires des fonctions de gestion de base de données et des paramètres de configuration. L’architecture de serveur flexible permet aux utilisateurs d’opter pour une haute disponibilité au sein d’une même zone de disponibilité et dans plusieurs zones de disponibilité. Les serveurs flexibles offrent de meilleurs contrôles d’optimisation des coûts grâce à la possibilité de d’arrêter/de démarrer le serveur et un niveau de calcul expansible, ce qui est idéal pour les charges de travail ne nécessitant pas en permanence une capacité de calcul complète. Un serveur flexible prenant également en charge des instances réservées, il vous permet d’économiser jusqu’à 63 % sur les coûts, ce qui est idéal pour des charges de travail de production dont les exigences en matière de capacité de calcul sont prévisibles. Le service prend en charge la version de la communauté de MySQL 5.7 et 8.0. Le service est aujourd'hui généralement disponible dans un grand nombre de [régions Azure](overview.md#azure-regions).
 
-Les serveurs flexibles sont adaptés de façon optimale pour ce qui suit :
+L’option de déploiement Serveur flexible offre trois niveaux de calcul : Expansible, Usage général et Mémoire optimisée. Chaque niveau offre des capacités de calcul et de mémoire différentes pour prendre en charge les charges de travail de votre base de données. Vous pouvez créer votre première application sur un niveau Expansible pour un faible coût mensuel, puis adapter l’échelle aux besoins de votre solution. L’évolutivité dynamique permet de répondre en toute transparence à l’évolution rapide des besoins en ressources de votre base de données. Vous payez uniquement pour les ressources dont vous avez besoin et seulement quand vous en avez besoin. Pour plus d’informations, consultez [Calcul et stockage](concepts-compute-storage.md).
 
-- Développement d’applications nécessitant un meilleur contrôle et des personnalisations.
-- Haute disponibilité redondante interzone.
-- Fenêtres de maintenance managées.
+Les serveurs flexibles sont idéalement adaptés pour ce qui suit :
+- Facilité de déploiement, mise à l’échelle simplifiée et faible surcharge de gestion de base de données pour les fonctions telles que les sauvegardes, la haute disponibilité, la sécurité et le monitoring
+- Développements d’applications nécessitant la version de la communauté de MySQL avec un meilleur contrôle et des personnalisations
+- Charges de travail de production avec la haute disponibilité dans la même zone, redondante interzone et les fenêtres de maintenance managées
+- Expérience de développement simplifiée 
+- Sécurité de qualité professionnelle, conformité et confidentialité
 
 Pour les dernières mises à jour apportées au serveur flexible, consultez [Nouveautés d’Azure Database pour MySQL - Serveur flexible](whats-new.md).
 
@@ -70,7 +73,7 @@ Pour plus d’informations, consultez [Maintenance planifiée](concepts-maintena
 
 ## <a name="automatic-backups"></a>Sauvegardes automatiques
 
-Le service à serveur flexible crée automatiquement des sauvegardes de serveur et les conserve sur un stockage géoredondant ou redondant localement configuré par l'utilisateur. Les sauvegardes peuvent être utilisées pour restaurer votre serveur à n'importe quel point dans le temps au cours de la période de rétention des sauvegardes. La période de rétention de sauvegarde par défaut est de sept jours. La rétention peut être configurée sur une durée maximum de 35 jours. Toutes les sauvegardes sont chiffrées à l’aide du chiffrement AES de 256 bits.
+Le service à serveur flexible crée automatiquement des sauvegardes de serveur et les conserve sur un stockage géoredondant ou redondant localement configuré par l'utilisateur. Les sauvegardes peuvent être utilisées pour restaurer votre serveur à n'importe quel point dans le temps au cours de la période de rétention des sauvegardes. La période de rétention de sauvegarde par défaut est de sept jours. La conservation peut éventuellement être configurée sur une durée de 1 à 35 jours. Toutes les sauvegardes sont chiffrées à l’aide du chiffrement AES de 256 bits.
 
 Pour plus d’informations, consultez [Concepts de sauvegarde](concepts-backup-restore.md) .
 
@@ -118,11 +121,11 @@ Pour plus d’informations, consultez [Concepts de réplication de données](con
 
 ## <a name="stopstart-server-to-optimize-cost"></a>Arrêter/démarrer le serveur pour optimiser les coûts
 
-Le service de serveur flexible vous permet d’arrêter et de démarrer le serveur à la demande pour optimiser les coûts. La facturation du niveau de calcul est immédiatement arrêtée lorsque le serveur est arrêté. Cela peut vous permettre de réaliser des économies significatives en termes de développement, de test et de charges de travail de production prévisibles liées au temps. Le serveur reste à l’état arrêté pendant sept jours, sauf si le redémarrage intervient plus tôt.
+Le service de serveur flexible vous permet d’arrêter et de démarrer le serveur à la demande pour optimiser les coûts. La facturation du niveau de calcul est immédiatement arrêtée lorsque le serveur est arrêté. Cela peut vous permettre de réaliser des économies significatives en termes de développement, de test et de charges de travail de production prévisibles liées au temps. Le serveur reste à l’état arrêté pendant trente jours, sauf si le redémarrage intervient plus tôt.
 
 Pour plus d’informations, consultez [Concepts de serveur](concept-servers.md).
 
-## <a name="enterprise-grade-security-and-privacy"></a>Sécurité de qualité professionnelle et confidentialité
+## <a name="enterprise-grade-security-compliance-and-privacy"></a>Sécurité de qualité professionnelle, conformité et confidentialité
 
 Le service à serveur flexible utilise le module de chiffrement conforme à la norme FIPS 140-2 pour chiffrer le stockage des données au repos. Toutes les données sont chiffrées, y compris les sauvegardes et les fichiers temporaires créés lors de l'exécution des requêtes. Le service utilise le chiffrement AES 256 bits inclus dans le chiffrement de stockage Azure, et les clés peuvent être gérées par le système (par défaut).
 
@@ -136,7 +139,13 @@ Pour plus d’informations, consultez [Concepts relatifs aux réseaux](concepts-
 
 ## <a name="monitoring-and-alerting"></a>Surveillance et alerte
 
-Le service à serveur flexible est équipé de fonctionnalités intégrées d'analyse des performances et d'alerte. Toutes les métriques Azure présentent une fréquence d’une minute et chaque métrique fournit 30 jours d’historique. Vous pouvez configurer des alertes basées sur les métriques. Le service expose les métriques du serveur hôte pour surveiller l’utilisation des ressources et permet de configurer les journaux des requêtes lentes. Grâce à ces outils, vous pouvez rapidement optimiser vos charges de travail et configurer votre serveur pour bénéficier de performances optimales. De plus, vous pouvez utiliser et intégrer des outils de supervision fournis par la communauté, comme [Percona Monitoring and Management avec votre serveur flexible MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545). 
+Le service à serveur flexible est équipé de fonctionnalités intégrées d'analyse des performances et d'alerte. Toutes les métriques Azure présentent une fréquence d’une minute et chaque métrique fournit 30 jours d’historique. Vous pouvez configurer des alertes basées sur les métriques. Le service expose les métriques du serveur hôte pour superviser l’utilisation des ressources et permet de configurer les journaux des requêtes lentes. Grâce à ces outils, vous pouvez rapidement optimiser vos charges de travail et configurer votre serveur pour bénéficier de performances optimales. Azure Database pour MySQL - Serveur flexible vous permet de visualiser les données des journaux des requêtes lentes et d’audit à l’aide d’Azure Monitor Workbooks. Les workbooks vous offrent un canevas flexible pour l’analyse des données et la création de rapports visuels enrichis au sein du portail Azure. Azure Database pour MySQL - Serveur flexible fournit trois modèles de classeurs prêts à l’emploi, à savoir Vue d’ensemble du serveur, [Audit](tutorial-configure-audit.md) et [Query Performance Insight](tutorial-query-performance-insights.md). Le classeur [Query Performance Insight](tutorial-query-performance-insights.md) est conçu pour vous permettre de passer moins de temps à résoudre les problèmes de performances de base de données en fournissant les informations suivantes :
+
+* N premières requêtes de longue durée et leurs tendances associées.
+* Détails des requêtes : Consultez le texte de la requête ainsi que l’historique de l’exécution indiquant le temps de requête minimal, maximal, moyen et d’écart type.
+* Utilisation des ressources (processeur, mémoire et stockage).
+
+De plus, vous pouvez utiliser et intégrer des outils de supervision fournis par la communauté, comme [Percona Monitoring and Management avec votre serveur flexible MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545). 
 
 Pour plus d'informations, voir [Concepts de réplication](concepts-monitoring.md).
 
@@ -153,7 +162,7 @@ Utilisez la réplication de données dans une sauvegarde/restauration mydumper/m
 
 Pour migrer d’Azure Database pour MySQL -Serveur unique vers Serveur flexible en cinq étapes simples, consultez [ce blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057).
 
-Pour plus d’informations, consultez [Guide de migration d’Azure Database pour MySQL](../../mysql/migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md)
+Pour plus d’informations, consultez [Sélectionner les outils appropriés en vue de la migration vers Azure Database pour MySQL](../../mysql/how-to-decide-on-right-migration-tools.md)
 
 ## <a name="azure-regions"></a>Régions Azure
 

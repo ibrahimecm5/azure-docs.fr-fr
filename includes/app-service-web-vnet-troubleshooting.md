@@ -4,16 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: 6f7e7e9261eb0ea2969dbfb752426ca16dd3b33c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 270dbad3ea8b1fc76f147f967ee40d4d18924e68
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524264"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892846"
 ---
 Cette fonctionnalité est facile à configurer, mais il est possible que vous rencontriez des problèmes. Si vous rencontrez des difficultés pour accéder au point de terminaison souhaité, certains utilitaires vous permettent de tester la connectivité à partir de la console de l’application. Vous pouvez utiliser deux consoles : la console Kudu et la console du Portail Azure. Pour accéder à la console Kudu à partir de votre application, accédez à **Outils** > **Kudu**. Vous pouvez également accéder à la console Kudo via le site [nom du site].scm.azurewebsites.net. Une fois le site chargé, accédez à l’onglet **Console de débogage**. Pour accéder à la console hébergée par le Portail Azure à partir de votre application, accédez à **Outils** > **Console**.
 
 #### <a name="tools"></a>Outils
+
 Dans les applications Windows natives, les outils **ping**, **nslookup** et **tracert** ne fonctionnent pas dans la console en raison de contraintes de sécurité (ils fonctionnent dans des [conteneurs Windows personnalisés](../articles/app-service/quickstart-custom-container.md)). Deux outils distincts ont été ajoutés pour les remplacer. Pour tester les fonctionnalités DNS, nous avons ajouté un outil nommé **nameresolver.exe**. La syntaxe est :
 
 ```console
@@ -23,7 +24,7 @@ nameresolver.exe hostname [optional: DNS Server]
 Vous pouvez utiliser nameresolver pour vérifier les noms d’hôte dont dépend votre application. De cette façon, vous pouvez tester si des éléments de votre serveur DNS sont mal configurés ou si vous n’avez pas accès à votre serveur DNS. Vous pouvez identifier le serveur DNS qu’utilise votre application dans la console en examinant les variables d’environnement WEBSITE_DNS_SERVER et WEBSITE_DNS_ALT_SERVER.
 
 > [!NOTE]
-> nameresolver.exe ne fonctionne pas actuellement dans les conteneurs Windows personnalisés.
+> L’outil nameresolver.exe ne fonctionne pas actuellement dans les conteneurs Windows personnalisés.
 >
 
 Vous pouvez utiliser l’outil suivant pour tester la connectivité TCP avec une combinaison hôte-port. Il s’agit de l’outil **tcpping**, dont la syntaxe est la suivante :
@@ -35,6 +36,7 @@ tcpping.exe hostname [optional: port]
 L’utilitaire **tcpping** vous indique si vous pouvez atteindre un hôte et un port spécifiques. Il ne peut réussir que si une application écoute au niveau de la combinaison hôte-port et si l’accès réseau de votre application à l’hôte et au port spécifiés est disponible.
 
 #### <a name="debug-access-to-virtual-network-hosted-resources"></a>Déboguer l’accès aux ressources hébergées sur un réseau virtuel
+
 Plusieurs choses peuvent empêcher votre application d’atteindre un hôte et un port spécifiques. La plupart du temps, il s’agit de l’une des trois raisons suivantes :
 
 * **Un pare-feu se trouve sur le trajet.** Si vous utilisez un pare-feu sur le trajet, vous dépassez le délai d’expiration TCP. Dans ce cas, il est de 21 secondes. Utilisez l’outil **tcpping** pour tester la connectivité. Les délais d’expiration TCP peuvent avoir de nombreuses autres origines, mais commencez par vérifier ce point.
@@ -42,16 +44,18 @@ Plusieurs choses peuvent empêcher votre application d’atteindre un hôte et u
 
 Si ces éléments ne suffisent pas à résoudre vos problèmes, commencez par vous poser les questions suivantes :
 
-**Intégration au réseau virtuel régional**
-* Votre destination est-elle une adresse non RFC1918 sans l’Itinéraire activé ?
+**Intégration du réseau virtuel régional**
+
+* Votre destination est-elle une adresse non RFC1918 sans l’**Itinéraire** activé ?
 * Y a-t-il un groupe de sécurité réseau qui bloque la sortie de votre sous-réseau d’intégration ?
 * Si elle transite par Azure ExpressRoute ou un VPN, votre passerelle locale est-elle configurée pour réacheminer le trafic vers Azure ? Si vous pouvez accéder à des points de terminaison dans votre réseau virtuel, mais pas en local, vérifiez vos routes.
 * Disposez-vous d’autorisations suffisantes pour définir la délégation sur le sous-réseau d’intégration ? Durant la configuration de l’intégration au réseau virtuel régional, votre sous-réseau d’intégration est délégué à Microsoft.Web/serverFarms. L’interface utilisateur de l’intégration au réseau virtuel délègue automatiquement le sous-réseau à Microsoft.Web/serverFarms. Si votre compte ne dispose pas d’autorisations de mise en réseau suffisantes pour définir la délégation, vous devez demander à une personne autorisée de configurer les attributs de votre sous-réseau d’intégration de manière à déléguer celui-ci. Pour déléguer manuellement le sous-réseau d’intégration, accédez à l’interface utilisateur du sous-réseau de Réseau virtuel Microsoft Azure et définissez la délégation sur Microsoft.Web/serverFarms.
 
 **Intégration au réseau virtuel avec passerelle obligatoire**
+
 * La plage d’adresses de point à site se trouve-t-elle dans les plages RFC 1918 (10.0.0.0 à 10.255.255.255, 172.16.0.0 à 172.31.255.255 ou 192.168.0.0 à 192.168.255.255) ?
 * Le portail indique-t-il que la passerelle fonctionne ? Si votre passerelle est en panne, rétablissez-la.
-* Les certificats apparaissent-ils comme étant synchronisés ou soupçonnez-vous une modification de la configuration réseau ?  Si vos certificats ne sont pas synchronisés ou si vous pensez qu’une modification apportée à la configuration de votre réseau virtuel n’a pas été synchronisée avec vos ASP, sélectionnez **Synchroniser le réseau**.
+* Les certificats apparaissent-ils comme étant synchronisés ou soupçonnez-vous une modification de la configuration réseau ? Si vos certificats ne sont pas synchronisés ou si vous pensez qu’une modification apportée à la configuration de votre réseau virtuel n’a pas été synchronisée avec vos ASP, sélectionnez **Synchroniser le réseau**.
 * Si vous utilisez un VPN, la passerelle locale est-elle configurée pour réacheminer le trafic vers Azure ? Si vous pouvez accéder à des points de terminaison dans votre réseau virtuel, mais pas en local, vérifiez vos routes.
 * Essayez-vous d’utiliser une passerelle de coexistence qui prend en charge à la fois la connectivité point à site et la connectivité ExpressRoute ? Les passerelles de coexistence ne sont pas prises en charge avec l’intégration au réseau virtuel.
 
@@ -66,17 +70,17 @@ Le débogage des problèmes de mise en réseau constitue un défi, car cette op�
 
 Vous ne savez pas quelle adresse votre application utilise réellement. Cela peut être n’importe quelle adresse de la plage d’adresses de sous-réseau d’intégration ou de point à site. De ce fait, vous devez autoriser l’accès depuis toutes les adresses de la plage.
 
-Étapes de débogage supplémentaires :
+Voici d’autres étapes de débogage :
 
 * Connectez-vous à une machine virtuelle de votre réseau virtuel et essayez d’atteindre la combinaison hôte-port de vos ressources. Pour tester l’accès à TCP, utilisez la commande PowerShell **test-netconnection**. La syntaxe est :
-
-```powershell
-test-netconnection hostname [optional: -Port]
-```
+    
+    ```powershell
+    test-netconnection hostname [optional: -Port]
+    ```
 
 * Démarrez une application sur une machine virtuelle, puis testez l’accès à ces hôte et port à partir de la console de votre application en utilisant l’outil **tcpping**.
 
-#### <a name="on-premises-resources"></a>Ressources locales ####
+#### <a name="on-premises-resources"></a>Ressources locales
 
 Si votre application ne peut pas accéder à une ressource locale, vérifiez si vous pouvez atteindre la ressource à partir de votre réseau virtuel. Utilisez la commande PowerShell **test-netconnection** pour vérifier l’accès à TCP. Si votre machine virtuelle ne peut pas accéder à votre ressource locale, votre connexion VPN ou ExpressRoute n’est peut-être pas configurée correctement.
 

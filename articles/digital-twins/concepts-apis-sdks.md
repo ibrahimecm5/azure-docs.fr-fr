@@ -1,26 +1,27 @@
 ---
 title: API et SDK Azure Digital Twins
 titleSuffix: Azure Digital Twins
-description: Comprendre les options de l’API et du kit de développement logiciel (SDK) Azure Digital Twins.
+description: Découvrez les options d’API et de Kit de développement logiciel (SDK) Azure Digital Twins, dont des informations sur les classes d’assistance SDK et des notes d’utilisation générales.
 author: baanders
 ms.author: baanders
-ms.date: 04/30/2021
+ms.date: 10/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6a69e1eeeb1861f7d2a14e1a96c959c18a090682
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1fcbeeb532e813535cc8f3adcf02b2c2e990287e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438742"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500200"
 ---
 # <a name="azure-digital-twins-apis-and-sdks"></a>API et SDK Azure Digital Twins
 
-Azure Digital Twins est fourni avec les **API de plan de contrôle** et les **API de plan de données**, qui permettent de gérer votre instance et les éléments qu’elle contient. 
+Cet article donne une vue d’ensemble des API Azure Digital Twins disponibles, ainsi que des méthodes d’interaction avec elles. Vous pouvez utiliser les API REST directement avec les Swaggers qui y sont associés (via un outil tel que [Postman](how-to-use-postman.md)), ou via un Kit de développement logiciel (SDK).
+
+Azure Digital Twins est fourni avec des **API de plan de contrôle**, des **API de plan de données** et des **kits de développement logiciel (SDK)** pour la gestion de votre instance et de ses éléments. 
 * Les API de plan de contrôle sont des API [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) qui couvrent les opérations de gestion des ressources, telles que la création et la suppression de votre instance. 
 * Les API de plan de données sont des API Azure Digital Twins qui sont utilisées pour les opérations de gestion des données, telles que la gestion des modèles, des représentations et du graphique.
-
-Cet article donne une vue d’ensemble des API disponibles, ainsi que des méthodes permettant d’interagir avec celles-ci. Vous pouvez utiliser les API REST directement avec les Swaggers qui y sont associés (via un outil tel que [Postman](how-to-use-postman.md)), ou via un Kit de développement logiciel (SDK).
+* Les kits de développement logiciel (SDK) tirent parti des API existantes pour faciliter le développement d’applications personnalisées utilisant Azure Digital Twins. Les kits de développement logiciel (SDK) de plan de contrôle sont disponibles en [.NET (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true) et [Java](/java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable&preserve-view=true), et les kits de développement logiciel (SDK) de plan de données sont disponibles en [.NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true), [Java](/java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true), [JavaScript](/javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true) et [python](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
 
 ## <a name="overview-control-plane-apis"></a>Vue d’ensemble : API de plan de contrôle
 
@@ -51,25 +52,25 @@ La version la plus récente de l’API de plan de données est _**2020-10-31**_.
 
 Pour utiliser les API de plan de données :
 * Vous pouvez appeler les API REST en...
-   - référençant le dossier Swagger le plus récent dans le [référentiel Swagger du plan de données](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Ce dossier contient également un dossier d’exemples qui en montrent l’utilisation. 
-   - vous servant de la [documentation de référence d’API](/rest/api/azure-digitaltwins/).
+   - Référençant le dossier Swagger le plus récent dans le [référentiel Swagger du plan de données](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Ce dossier contient également un dossier d’exemples qui en montrent l’utilisation. 
+   - Consultant la [documentation de référence sur l’API](/rest/api/azure-digitaltwins/).
 * Vous pouvez utiliser le **SDK .NET (C#)** . Pour utiliser le SDK .NET...
-   - Vous pouvez afficher et ajouter le package à partir de NuGet : [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
-   - vous pouvez consulter la [documentation de référence du SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
-   - vous pouvez trouver la source du SDK, y compris un dossier d’exemples, sur GitHub : [Bibliothèque de client Azure IoT Digital Twins pour .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - vous pouvez obtenir des informations détaillées et des exemples d’utilisation en passant à la section [SDK .NET (C#) (plan de données)](#net-c-sdk-data-plane) de cet article.
+   - Vous pouvez afficher et ajouter le package de NuGet : [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
+   - Vous pouvez consulter la [documentation de référence du Kit de développement logiciel (SDK)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+   - Vous pouvez trouver la source du Kit de développement logiciel (SDK), y compris un dossier d’exemples, dans GitHub : [Bibliothèque de client Azure IoT Digital Twins pour .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
+   - Vous pouvez obtenir des informations détaillées et des exemples d’utilisation en passant à la section [SDK .NET (C#) (plan de données)](#net-c-sdk-data-plane) de cet article.
 * Vous pouvez utiliser le **SDK Java**. Pour utiliser le Kit de développement logiciel (SDK) Java…
-   - vous pouvez afficher et installer le package à partir de Maven : [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar).
-   - vous pouvez consulter la [documentation de référence du Kit de développement logiciel (SDK)](/java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true).
-   - vous pouvez trouver la source du Kit de développement logiciel (SDK) dans GitHub : [Bibliothèque de client Azure IoT Digital Twins pour Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core).
+   - Vous pouvez afficher et installer le package à partir de Maven : [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar).
+   - Vous pouvez consulter la [documentation de référence du Kit de développement logiciel (SDK)](/java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true).
+   - Vous pouvez trouver la source du Kit de développement logiciel (SDK) dans GitHub : [Bibliothèque de client Azure IoT Digital Twins pour Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core).
 * Vous pouvez utiliser le **SDK JavaScript**. Pour utiliser le SDK JavaScript...
    - Vous pouvez afficher et installer le package à partir de npm : [Bibliothèque de client Core Azure Digital Twins pour JavaScript](https://www.npmjs.com/package/@azure/digital-twins-core).
-   - vous pouvez consulter la [documentation de référence du SDK](/javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true).
-   - vous pouvez trouver la source du Kit de développement logiciel (SDK) dans GitHub : [Bibliothèque de client Core Azure Digital Twins pour JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
+   - Vous pouvez consulter la [documentation de référence du Kit de développement logiciel (SDK)](/javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true).
+   - Vous pouvez trouver la source du Kit de développement logiciel (SDK) dans GitHub : [Bibliothèque de client Core Azure Digital Twins pour JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core).
 * Vous pouvez utiliser le **SDK Python**. Pour utiliser le Kit de développement logiciel (SDK) Python…
    - Vous pouvez afficher et installer le package à partir de PyPi : [Bibliothèque de client Core Azure Digital Twins pour Python](https://pypi.org/project/azure-digitaltwins-core/).
-   - vous pouvez consulter la [documentation de référence du SDK](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
-   - vous pouvez trouver la source du Kit de développement logiciel (SDK) dans GitHub : [Bibliothèque de client Core Azure Digital Twins pour Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
+   - Vous pouvez consulter la [documentation de référence du Kit de développement logiciel (SDK)](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
+   - Vous pouvez trouver la source du Kit de développement logiciel (SDK) dans GitHub : [Bibliothèque de client Core Azure Digital Twins pour Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core).
 
 Vous pouvez également utiliser des API de plan de données en interagissant avec Azure Digital Twins via l’[interface de ligne de commande](/cli/azure/dt?view=azure-cli-latest&preserve-view=true).
 

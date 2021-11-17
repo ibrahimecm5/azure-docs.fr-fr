@@ -2,18 +2,20 @@
 title: Raccourcis clavier du portail Azure
 description: Le portail Azure prend en charge les raccourcis clavier généraux pour vous aider à effectuer des actions, naviguer et atteindre des emplacements dans le portail Azure.
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: accessibility
-ms.openlocfilehash: 0fcdf55f63e823b437107246cf83ede1decb0364
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 34d099c8e0c6e0fbab3a40d08382f0275496506c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461833"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847638"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Raccourcis clavier du portail Azure
 
 Cet article liste les raccourcis clavier qui fonctionnent dans le portail Azure. Les services individuels peuvent bénéficier de leurs propres raccourcis clavier.
+
+Les lettres qui apparaissent ci-dessous représentent les touches de lettre sur votre clavier. Par exemple, pour utiliser **G+N**, maintenez enfoncée la touche **G**, puis appuyez sur **N**.
 
 ## <a name="actions"></a>Actions
 
@@ -42,7 +44,7 @@ Cet article liste les raccourcis clavier qui fonctionnent dans le portail Azure.
 |Accéder aux **Groupes de ressources**|G + R |
 |Ouvrir l’élément de la barre latérale gauche à cette position |G + numéro|
 
-## <a name="examples-of-keyboard-shortcuts-for-specific-areas"></a>Exemples de raccourcis clavier pour des zones spécifiques
+## <a name="examples-of-additional-keyboard-shortcuts-for-specific-areas"></a>Exemples d’autres raccourcis clavier pour des zones spécifiques
 
 - [Explorateur Azure Resource Graph](../governance/resource-graph/reference/keyboard-shortcuts.md)
 - [Kusto Explorer](/azure/data-explorer/kusto/tools/kusto-explorer-shortcuts)

@@ -1,7 +1,7 @@
 ---
 title: Confidentialité différentielle dans le Machine Learning (préversion)
 titleSuffix: Azure Machine Learning
-description: Découvrez la confidentialité différentielle et comment implémenter de manière différentielle des systèmes privés qui préservent la confidentialité des données.
+description: Découvrez la confidentialité différentielle et comment des systèmes privés préservent de manière différentielle la confidentialité des données.
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 10/21/2021
@@ -9,23 +9,23 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: conceptual
-ms.custom: responsible-ml
-ms.openlocfilehash: 3df3f361d6f3591fe9b209ac64a5f8a51c09d2dd
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.custom: responsible-ml, mktng-kw-nov2021
+ms.openlocfilehash: fc3606a4d893152b87fc5f5f47d987c16ce65724
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562710"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842554"
 ---
-# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Qu’est-ce que la confidentialité différentielle dans le Machine Learning (préversion)
+# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Qu’est-ce que la confidentialité différentielle en matière d’apprentissage automatique (préversion) ?
 
 Apprenez-en davantage sur la confidentialité différentielle dans le Machine Learning et son fonctionnement.
 
-Les préoccupations liées à la confidentialité et à la sécurité augmentent à mesure qu’augmente la quantité de données qu’une organisation collecte et utilise à des fins d’analyse. Les analyses requièrent des données. En règle générale, plus il y a de données utilisées pour effectuer l’apprentissage des modèles, plus ceux-ci sont précis. Lorsque des informations personnelles sont utilisées pour ces analyses, il est particulièrement important que les données restent confidentielles tout au long de leur utilisation.
+Les préoccupations liées à la confidentialité et à la sécurité augmentent à mesure qu’augmente la quantité de données qu’une organisation collecte et utilise à des fins d’analyse. Les analyses requièrent des données. En règle générale, plus il y a de données utilisées pour effectuer l’apprentissage de modèles Machine Learning, plus ceux-ci sont précis. Lorsque des informations personnelles sont utilisées pour ces analyses, il est particulièrement important que les données restent confidentielles tout au long de leur utilisation.
 
 ## <a name="how-differential-privacy-works"></a>Fonctionnement de la confidentialité différentielle
 
-La confidentialité différentielle est un ensemble de systèmes et pratiques qui permettent de préserver la sécurité et la confidentialité des données des personnes.
+La confidentialité différentielle est un ensemble de systèmes et pratiques qui permettent de préserver la sécurité et la confidentialité des données des personnes. Dans les solutions d’apprentissage automatique, une confidentialité différentielle peut être requise en lien avec la conformité réglementaire.
 
 > [!div class="mx-imgBorder"]
 > ![Processus de Machine Learning avec confidentialité différentielle](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
@@ -38,7 +38,7 @@ Dans les systèmes assortis d’une confidentialité différentielle, les donné
 
 La confidentialité différentielle vise à éviter qu’un utilisateur puisse produire un nombre indéfini de rapports pour révéler des données sensibles. Une valeur appelée **epsilon** mesure le niveau de bruit ou de confidentialité d’un rapport. La valeur epsilon est inversement proportionnelle au bruit ou à la confidentialité. Plus la valeur epsilon est basse, plus les données sont bruyantes (et confidentielles).
 
-Les valeurs epsilon ne sont pas négatives. Les valeurs inférieures à 1 offrent une possibilité de « démenti raisonnable ». Toute valeur supérieure à 1 est associée à un risque plus élevé d’exposition des données réelles. Lorsque vous implémentez des systèmes assortis d’une confidentialité différentielle, vous souhaitez produire des rapports avec des valeurs epsilon comprises entre 0 et 1.
+Les valeurs epsilon ne sont pas négatives. Les valeurs inférieures à 1 offrent une possibilité de « démenti raisonnable ». Toute valeur supérieure à 1 est associée à un risque plus élevé d’exposition des données réelles. Lorsque vous implémentez des solutions d’apprentissage automatique avec une confidentialité différentielle, vous souhaitez disposer de données avec des valeurs epsilon comprises entre 0 et 1.
 
 Une autre valeur directement corrélée à la valeur epsilon est le valeur **delta**. La valeur delta indique la probabilité qu’un rapport ne soit pas entièrement confidentiel. La valeur delta est directement proportionnelle à la valeur epsilon. Ces valeurs étant corrélées, la valeur epsilon est utilisée plus fréquemment.
 
@@ -52,7 +52,7 @@ Même si la préservation de la confidentialité doit être l’objectif, il exi
 
 ## <a name="open-source-differential-privacy-libraries"></a>Bibliothèques de confidentialité différentielle open source
 
-SmartNoise est un projet open source contenant différents composants pour la création de systèmes globaux assortis d’une confidentialité différentielle. SmartNoise est constitué des composants de niveau supérieur suivants :
+SmartNoise est un projet open source contenant des composants destinés à créer des solutions d’apprentissage automatique avec une confidentialité différentielle. SmartNoise est constitué des composants de niveau supérieur suivants :
 
 - Bibliothèque principale de SmartNoise
 - Bibliothèque du Kit de développement logiciel (SDK) SmartNoise
@@ -80,6 +80,8 @@ La bibliothèque système fournit les outils et services suivants pour travaille
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-[Comment créer un système privé de manière différentielle](how-to-differential-privacy.md) dans Azure Machine Learning.
+Apprenez-en davantage sur la confidentialité différentielle dans l’apprentissage automatique : 
 
-Pour en savoir plus sur les composants de SmartNoise, consultez les dépôts GitHub et pour le [Cœur de SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core), le [Kit de développement logiciel (SDK) SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-sdk) et les [Exemples SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-samples).
+ - [Comment créer un système privé de manière différentielle](how-to-differential-privacy.md) dans Azure Machine Learning.
+
+ - Pour en savoir plus sur les composants de SmartNoise, consultez les dépôts GitHub et pour le [Cœur de SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core), le [Kit de développement logiciel (SDK) SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-sdk) et les [Exemples SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-samples).

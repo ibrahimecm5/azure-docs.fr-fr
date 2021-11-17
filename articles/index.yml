@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 09/08/2021
+  ms.date: 11/07/2021
   featureFlags:
     - clicktale
 highlightedContent:
@@ -423,6 +423,12 @@ productDirectory:
         - compute
         - featured
       url: /azure/quantum/
+    - title: Machines virtuelles Azure Spot
+      summary: Provisionner des capacités de calcul inutilisées avec des remises importantes pour exécuter des charges de travail interruptibles
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - compute
+      url: ./virtual-machines/spot-vms.md
     - title: Azure Spring Cloud
       summary: 'Service Spring Cloud complètement managé, créé et exploité avec Pivotal'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/spring-cloud.svg'
@@ -512,6 +518,12 @@ productDirectory:
         - featured
         - compute
       url: ./virtual-machines/index.yml
+    - title: Azure Container Apps (préversion)
+      summary: Créer et déployer des applications et des microservices modernes avec des conteneurs serverless
+      imageSrc: ./media/index/container-apps.svg
+      azureCategories:
+        - containers
+      url: container-apps/index.yml
     - title: Azure Dev Spaces
       summary: Testez et développez de manière itérative votre application de microservices dans Azure AKS
       imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -728,7 +740,7 @@ productDirectory:
         - hybrid
         - networking
       url: expressroute/index.yml
-    - title: Azure Sentinel
+    - title: Microsoft Sentinel
       summary: Mettez au travail l’analytique de sécurité intelligente et SIEM cloud-native pour contribuer à la protection de votre entreprise
       imageSrc: 'https://static.docs.com/ui/media/product/azure/sentinel.svg'
       azureCategories:
@@ -759,13 +771,6 @@ productDirectory:
       azureCategories:
         - hybrid
       url: ./databox-online/index.yml
-    - title: Security Center
-      summary: Unifiez les fonctionnalités de gestion de la sécurité et activez la protection avancée contre les menaces dans l’ensemble des charges de travail cloud hybrides
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/security-center.svg'
-      azureCategories:
-        - hybrid
-        - security
-      url: security-center/index.yml
     - title: "Azure IoT\_Edge"
       summary: Étendez l’intelligence cloud et l’analytique aux appareils en périphérie
       imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-edge.svg'
@@ -1071,13 +1076,13 @@ productDirectory:
       azureCategories:
         - networking
       url: bastion/index.yml
-    - title: Azure Defender
-      summary: Protégez les charges de travail cloud hybrides
+    - title: Microsoft Defender pour le cloud
+      summary: 'Gestion de la posture de sécurité et protection avancée contre les menaces sur des charges de travail Azure, hybrides et multiclouds'
       imageSrc: ./media/index/defender.svg
       azureCategories:
         - security
-      url: security-center/azure-defender.md
-    - title: Azure Defender pour IoT
+      url: defender-for-cloud/index.yml
+    - title: Microsoft Defender pour IoT
       summary: Gestion continue des actifs et détection des menaces pour les appareils IoT/OT managés et non managés
       imageSrc: ./media/index/defender-iot.svg
       azureCategories:
@@ -1148,7 +1153,7 @@ productDirectory:
       url: virtual-network/index.yml
     - title: Gestionnaire de réseau virtuel Azure (version préliminaire)
       summary: Gestion centralisée de la connectivité de réseau virtuel et mise en œuvre des règles de sécurité entre les abonnements.
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/azure-virtual-network-manager.svg'
+      imageSrc: ./media/index/azure-virtual-network-manager.svg
       azureCategories:
         - networking
       url: virtual-network-manager/index.yml

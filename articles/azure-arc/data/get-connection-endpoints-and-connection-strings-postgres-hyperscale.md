@@ -1,25 +1,25 @@
 ---
-title: Obtenir des points de terminaison de connexion et former des chaînes de connexion pour votre groupe de serveurs Arc enabled PostgreSQL Hyperscale
+title: Récupération de points de terminaison de connexion et création de chaînes de connexion pour un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
 titleSuffix: Azure Arc-enabled data services
-description: Obtenir des points de terminaison de connexion et former des chaînes de connexion pour votre groupe de serveurs Arc enabled PostgreSQL Hyperscale
+description: Récupérez des points de terminaison de connexion et créez des chaînes de connexion pour votre groupe de serveurs PostgreSQL Hyperscale avec Azure Arc.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 964b7fcca00afb91a457203d2ed53b885a254d5e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f340cf95072015a3896291484ef1289a9d34d6ed
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524497"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564097"
 ---
-# <a name="get-connection-endpoints-and-form-the-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Obtenir des points de terminaison de connexion et former des chaînes de connexion pour votre groupe de serveurs Arc enabled PostgreSQL Hyperscale
+# <a name="get-connection-endpoints--create-the-connection-strings-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Récupération des points de terminaison de connexion et création des chaînes de connexion d’un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
 
-Cet article explique comment récupérer les points de terminaison de connexion pour votre groupe de serveurs et comment former les chaînes de connexion que vous pourrez utiliser avec vos applications et/ou vos outils.
+Cet article explique comment récupérer les points de terminaison de connexion d’un groupe de serveurs et comment former les chaînes de connexion utilisables avec des applications et des outils.
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -32,27 +32,43 @@ az postgres arc-server endpoint list -n <server group name> --k8s-namespace <nam
 ```
 Par exemple :
 ```azurecli
-az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace arc --use-k8s
 ```
 
-Elle affiche la liste des points de terminaison : le point de terminaison PostgreSQL que vous utilisez pour connecter votre application et utiliser la base de données, les points de terminaison Kibana et Grafana pour l’analytique et la surveillance des journaux. Par exemple : 
-```console
-Arc
- ===================================================================================================================
- Postgres01 Instance
- -------------------------------------------------------------------------------------------------------------------
- Description           Endpoint
+Elle retourne la liste des points de terminaison : le point de terminaison PostgreSQL, le tableau de bord Recherche dans les journaux (Kibana) et le tableau de bord Métriques (Grafana). Par exemple : 
 
- PostgreSQL Instance   postgresql://postgres:<replace with password>@12.345.567.89:5432
- Log Search Dashboard  https://89.345.712.81:30777/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))
- Metrics Dashboard     https://89.345.712.81:30777/grafana/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01
-
+```output
+{
+  "instances": [
+    {
+      "endpoints": [
+        {
+          "description": "PostgreSQL Instance",
+          "endpoint": "postgresql://postgres:<replace with password>@12.345.567.89:5432"
+        },
+        {
+          "description": "Log Search Dashboard",
+          "endpoint": "https://23.456.78.99:5601/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))"
+        },
+        {
+          "description": "Metrics Dashboard",
+          "endpoint": "https://34.567.890.12:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01"
+        }
+      ],
+      "engine": "PostgreSql",
+      "name": "postgres01"
+    }
+  ],
+  "namespace": "arc"
+}
 ```
+
 Utilisez ces points de terminaison pour :
+
 - Former vos chaînes de connexion et vous connecter avec vos outils clients ou vos applications clientes
 - Accéder aux tableaux de bord Grafana et Kibana depuis votre navigateur
 
-Par exemple, vous pouvez utiliser le point de terminaison nommé _Instance PostgreSQL_ pour vous connecter avec psql à votre groupe de serveurs. Exemple :
+Par exemple, vous pouvez utiliser le point de terminaison nommé _PostgreSQL Instance_ pour vous connecter avec psql à votre groupe de serveurs :
 ```console
 psql postgresql://postgres:MyPassworkd@12.345.567.89:5432
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))
@@ -66,24 +82,27 @@ postgres=#
 > [!NOTE]
 >
 > - Le mot de passe de l’utilisateur _postgres_ indiqué dans le point de terminaison nommé « _Instance PostgreSQL_ » est le mot de passe que vous avez choisi lors du déploiement du groupe de serveurs.
-> _ERREUR : (401)_ 
-> _Raison : Non autorisé_
-> _En-têtes de réponse HTTP : HTTPHeaderDict({'Date': 'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length': '0', 'WWW-Authenticate': '_ 
-> _Domaine de base="Login_ credentials required", Erreur de porteur="invalid_token", error_description="The token is expired"'})_ Quand ceci se produit, vous devez vous reconnecter avec azdata comme expliqué ci-dessus.
 
-## <a name="from-cli-with-kubectl"></a>Depuis l’interface CLI avec kubectl
+
+## <a name="from-cli-with-kubectl"></a>À partir de l’interface CLI avec kubectl
 ```console
 kubectl get postgresqls/<server group name> -n <namespace name>
 ```
 
+Par exemple :
+```azurecli
+kubectl get postgresqls/postgres01 -n arc
+```
+
 Ces commandes produisent une sortie similaire à celle-ci. Vous pouvez utiliser ces informations pour former vos chaînes de connexion :
 ```console
-NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-postgres01   Ready   3/3          123.456.789.4:31066      5d20h
+NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
+postgres01   Ready   3/3          12.345.567.89:5432   9d
 ``` 
 
-## <a name="form-connection-strings"></a>Formez des chaînes de connexion :
-Utilisez le tableau de modèles de chaînes de connexion ci-dessous pour votre groupe de serveurs. Vous pouvez ensuite les copier/coller et les personnaliser en fonction des besoins :
+## <a name="form-connection-strings"></a>Formation de chaînes de connexion
+
+Utilisez les exemples de chaînes de connexion ci-dessous pour votre groupe de serveurs. Copiez-collez-les, puis personnalisez-les en fonction des besoins :
 
 ### <a name="adonet"></a>ADO.NET
 
@@ -136,5 +155,3 @@ host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} 
 ## <a name="next-steps"></a>Étapes suivantes
 - Découvrez comment [effectuer un scale-out (ajout de nœuds Worker)](scale-out-in-postgresql-hyperscale-server-group.md) de votre groupe de serveurs
 - Découvrez comment [effectuer un scale-up ou un scale-down (augmentation/diminution de la mémoire/des vCores)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) de votre groupe de serveurs
-
-

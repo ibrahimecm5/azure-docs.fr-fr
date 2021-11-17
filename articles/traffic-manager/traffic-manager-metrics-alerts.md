@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: b18e0329aeb4e95e021c3326b6b428c10edc0c6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaa1ef35432a0e31376bcff8f50bc8bdffbfaf58
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586412"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054660"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Métriques et alertes Traffic Manager
 
@@ -62,6 +62,17 @@ Vous pouvez utiliser ces métriques via [le service Azure Monitor](../azure-moni
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Alertes sur les métriques Traffic Manager
 En plus du traitement et de l’affichage des métriques à partir de Traffic Manager, Azure Monitor permet aux clients de configurer et de recevoir des alertes associées à ces métriques. Vous pouvez choisir les conditions à remplir dans ces métriques pour qu’une alerte se produise, la fréquence à laquelle ces conditions doivent être surveillées et comment les alertes doivent vous être envoyées. Pour plus d’informations, consultez la [documentation sur les alertes Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
+
+La surveillance des alertes est importante pour s’assurer que le système envoie des notifications quand des sondes sont défaillantes. Une surveillance excessivement sensible peut être gênante. Traffic Manager déploie plusieurs sondes pour augmenter la résilience. Le seuil d’état de la sonde doit être inférieur à 0,5. Si la moyenne de l’état **actif** passe sous le seuil de 0,5 (ce qui signifie que moins de 50 % des sondes sont actives), une défaillance de point de terminaison doit déclencher une alerte.
+
+> [!NOTE]
+> Plusieurs sondes sont déployées pour augmenter la résilience. Si une sonde parmi les nombreuses sondes envoyées est défaillante, cela n’indique pas nécessairement que le point de terminaison est défaillant. Le point de terminaison n’est classé comme défaillant que si la majorité des sondes retournées sont défaillantes.
+
+La configuration suivante est un exemple de configuration d’alerte.
+
+:::image type="content" source="./media/traffic-manager-metrics-alerts/alert-example.png" alt-text="Capture d’écran montrant un exemple d’alerte de seuil de sonde.":::
+
+Pour plus d’informations sur les sondes, consultez [Surveillance du point de terminaison de Traffic Manager](traffic-manager-monitoring.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 - En savoir plus sur le [service Azure Monitor](../azure-monitor/essentials/metrics-supported.md)

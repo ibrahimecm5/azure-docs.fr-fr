@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 10/29/2021
-ms.openlocfilehash: a59be71415197242d636c577cff1c80b9f5fc639
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a73df839ff7dcaad992b8930c8fb2545e854951c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131439877"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028075"
 ---
 # <a name="string-functions-for-bicep"></a>Fonctions de chaîne pour Bicep
 
@@ -500,6 +500,9 @@ guid(resourceGroup().id, deployment().name)
 
 Chaîne contenant 36 caractères sous la forme d’un identificateur global unique.
 
+> [!NOTE]
+> Importance de l’ordre : les paramètres doivent être non seulement identiques, mais aussi dans le même ordre. Par exemple : `guid('hello', 'world') != guid('world', 'hello')`
+
 ### <a name="examples"></a>Exemples
 
 L’exemple suivant retourne les résultats du guid :
@@ -706,7 +709,7 @@ Espace de noms : [sys](bicep-functions.md#namespaces-for-functions).
 
 Vous pouvez uniquement utiliser cette fonction dans une expression pour la valeur par défaut d’un paramètre. Son utilisation partout ailleurs dans un fichier Bicep retourne une erreur. La fonction n’est pas autorisée dans d’autres parties du fichier Bicep, car elle retourne une valeur différente chaque fois qu’elle est appelée. Le déploiement du même fichier Bicep avec les mêmes paramètres ne produit pas forcément les mêmes résultats.
 
-La fonction newGuid diffère de la fonction [guid](#guid), car elle ne prend aucun paramètre. Quand vous appelez la fonction guid avec le même paramètre, elle retourne toujours le même identificateur. Utilisez guid quand vous devez générer invariablement le même GUID dans un environnement spécifique. Utilisez newGuid pour générer un identificateur différent chaque fois, par exemple pour le déploiement de ressources dans un environnement de test.
+La fonction newGuid diffère de la fonction [guid](#guid), car elle ne prend aucun paramètre. Quand vous appelez la fonction guid avec les mêmes paramètres, elle retourne toujours le même identificateur. Utilisez guid quand vous devez générer invariablement le même GUID dans un environnement spécifique. Utilisez newGuid pour générer un identificateur différent chaque fois, par exemple pour le déploiement de ressources dans un environnement de test.
 
 La fonction newGuid utilise la [structure Guid](/dotnet/api/system.guid) dans le .NET Framework pour générer l’identificateur global unique.
 

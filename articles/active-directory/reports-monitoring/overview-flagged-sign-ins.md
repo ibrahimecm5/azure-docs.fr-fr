@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.topic: overview
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/28/2021
+ms.date: 10/27/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c40295803d9389bfa1534880aa6cbb4bb0426d2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 518c13780cf7de9e31f3a22e7ecb0440aa0128bc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233731"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456040"
 ---
 # <a name="what-are-flagged-sign-ins-in-azure-active-directory"></a>Que sont les connexions marquées d’un indicateur dans Azure Active Directory ?
 
@@ -77,11 +77,11 @@ Pour plus d’informations sur l’utilisation de l’API Graph de connexions, c
 
 
  
-## <a name="who-can-create-flagged-sign-ins"></a>Qui peut créer des connexions marquées d’un indicateur ?
+## <a name="who-can-create-it"></a>Qui peut les créer ?
 
 Tout utilisateur qui se connecte à Azure AD via une page web peut utiliser des connexions avec indicateur pour révision. Les utilisateurs membres et invités peuvent marquer des erreurs de connexion pour révision. 
 
-## <a name="who-can-review-flagged-sign-ins"></a>Qui peut examiner les connexions marquées d’un indicateur ?
+## <a name="who-can-review-it"></a>Qui peut les réviser ?
 
 Pour examiner les événements de connexion avec indicateur, vous devez avoir des autorisations pour lire les événements des rapports de connexions dans le portail Azure AD. Pour plus d’informations, consultez [Qui peut y accéder ?](concept-sign-ins.md#who-can-access-it)
 

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: da6a02c12c9e24d4091c632fbf73a0cc97255afa
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2370e3895cc70a4303c9d91d300b47b32913ac7a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223098"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131996316"
 ---
 # <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs"></a>Collecter les journaux et les métriques de vos applications Apache Spark avec Azure Event Hubs 
 
@@ -59,7 +59,8 @@ Pour une description des paramètres, consultez [Configurations Azure EventHub](
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | Optionnel. Chaîne de connexion de l’instance Azure Event Hubs. Ce champ doit correspondre à ce modèle `Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>;EntityPath=<PathName>` |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | Requis si `.secret` n'est pas spécifié. Nom du [coffre de clés Azure](../../key-vault/general/overview.md) dans lequel est stocké le secret (chaîne de connexion).                                                                  |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | Obligatoire si `.secret.keyVault` est spécifié. Nom du coffre de clés Azure dans lequel est stocké le secret (chaîne de connexion).                                                                         |
-| `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | Optionnel. Noms des événements Spark séparés par des virgules. Vous pouvez spécifier les événements à collecter. Par exemple : `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | Optionnel. Nom du service lié au coffre de clés Azure. Quand il est activé dans le pipeline Synapse, ceci est nécessaire pour obtenir le secret auprès d’AKV. (Vérifiez que MSI dispose de l’autorisation de lecture sur le coffre de clés Azure). |
+| `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | facultatif. Noms des événements Spark séparés par des virgules. Vous pouvez spécifier les événements à collecter. Par exemple : `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | facultatif. Noms des enregistreurs d’événements log4j séparés par des virgules. Vous pouvez spécifier les journaux à collecter. Par exemple : `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | facultatif. Suffixes des noms de métriques Spark séparés par des virgules. Vous pouvez spécifier les métriques à collecter. Par exemple : `jvm.heap.used` |
 

@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 2efc0fcdb566a71c096398f45a95c355cb1dc840
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d533ae6860850830640f052f4737b61c199d952e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131421605"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851765"
 ---
 # <a name="security-admin-rules-in-azure-virtual-network-manager-preview"></a>Règles d’administration de sécurité dans Azure Virtual Network Manager (préversion)
 
@@ -25,7 +25,11 @@ Azure Virtual Network Manager fournit deux types différents de configurations q
 
 ## <a name="security-admin-rules"></a>Règles d’administration de sécurité
 
-Une règle d’administration de sécurité vous permet d’appliquer des critères de stratégie de sécurité correspondant aux conditions définies. Vous ne pouvez définir des règles d’administration de sécurité que pour des ressources au sein de l’étendue de l’instance Azure Virtual Network Manager. Ces règles de sécurité ont une priorité plus élevée que les règles de groupe de sécurité réseau (NSG) et seront évaluées avant les règles NSG. Par exemple, un administrateur peut refuser tous les ports ou protocoles à haut risque en provenance d’Internet avec des règles d’administration de sécurité, et ces règles remplacent les règles de groupe de sécurité réseau autorisées créées au niveau de la machine virtuelle ou du sous-réseau.
+Une règle d’administration de sécurité vous permet d’appliquer des critères de stratégie de sécurité correspondant aux conditions définies. Vous ne pouvez définir des règles d’administration de sécurité que pour des ressources au sein de l’étendue de l’instance Azure Virtual Network Manager. Ces règles de sécurité ont une priorité plus élevée que les règles de groupe de sécurité réseau (NSG) et seront évaluées avant les règles NSG. Notez également que les règles d’administration de la sécurité ne modifient pas vos règles de groupe de sécurité réseau (NSG). Consultez l’illustration ci-dessous.
+
+:::image type="content" source="./media/concept-security-admins/traffic-evaluation.png" alt-text="Diagramme montrant comment le trafic est évalué avec des règles d’administration de la sécurité et un groupe de sécurité réseau.":::
+
+Des règles d’administration de la sécurité peuvent être utilisées pour appliquer des règles de sécurité. Par exemple, un administrateur peut refuser tous les ports à haut risque, ou les protocoles Internet assortis de règles d’administration de la sécurité, car celles-ci seront évaluées avant toutes les règles de groupe de sécurité réseau.
 
 > [!IMPORTANT]
 > Certains services ont des stratégies d’intention de réseau pour s’assurer que le trafic réseau fonctionne conformément aux besoins de leurs services. Lorsque vous utilisez des règles d’administration de sécurité, vous pouvez rompre les stratégies d’intention de réseau créées pour ces services. Par exemple, la création d’une règle d’administration de refus peut bloquer du trafic autorisé par le service *SQL Managed Instance*, qui est défini par sa stratégie d’intention réseau. Veillez à passer en revue votre environnement avant d’appliquer une configuration d’administration de sécurité. Pour plus d’informations, consultez [Comment autoriser explicitement le trafic SQLMI avant d’avoir des règles de refus](faq.md#how-can-i-explicitly-allow-sqlmi-traffic-before-having-deny-rules).

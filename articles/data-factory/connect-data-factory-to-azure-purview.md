@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
 ms.date: 10/25/2021
-ms.openlocfilehash: 1875b32d5a5f964b3a602b60d820ca377e0ee927
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 026dc4cb24c5e7b51fc5eec918cf92d3b6b23090
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040905"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846135"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Connecter Data Factory à Azure Purview (préversion)
 
@@ -72,13 +72,9 @@ Pour savoir comment inscrire Data Factory dans Azure Purview, consultez [Guide p
 
 L’identité managée de la fabrique de données est utilisée pour authentifier les opérations push de traçabilité de la fabrique de données vers Purview. 
 
-- Pour un compte Purview créé **le 18 août 2021 ou après**, accordez le rôle **Curateur de données** à l’identité managée de la fabrique de données sur votre **collection racine** Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview](../purview/catalog-permissions.md) et comment [Ajouter des rôles et restreindre l’accès par le biais de regroupements](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
+Accordez à l’identité managée de la fabrique de données le rôle **Curateur de données** sur votre **collection racine** Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview](../purview/catalog-permissions.md) et comment [Ajouter des rôles et restreindre l’accès par le biais de regroupements](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-    Lors de la connexion de la fabrique de données à Purview sur l’interface utilisateur de création, ADF tente d’ajouter automatiquement une telle attribution de rôle. Si vous détenez le rôle **Administrateur de collection** sur la collection racine Purview et que vous avez accès au compte Purview à partir de votre réseau, cette opération s’effectue avec succès.
-
-- Pour un compte Purview créé **avant le 18 août 2021**, accordez à l’identité managée de la fabrique de données le rôle Azure [**Curateur de données Purview**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) (hérité) intégré à votre compte Purview. En savoir plus sur le [Contrôle d’accès dans Azure Purview - Autorisations héritées](../purview/catalog-permissions.md#legacy-permission-guide).
-
-    Lors de la connexion de la fabrique de données à Purview sur l’interface utilisateur de création, ADF tente d’ajouter automatiquement une telle attribution de rôle. Si vous avez le rôle intégré Azure **Propriétaire** ou **Administrateur de l’accès utilisateur** sur le compte Purview, cette opération est effectuée avec succès.
+Lors de la connexion de la fabrique de données à Purview sur l’interface utilisateur de création, ADF tente d’ajouter automatiquement une telle attribution de rôle. Si vous détenez le rôle **Administrateur de collection** sur la collection racine Purview et que vous avez accès au compte Purview à partir de votre réseau, cette opération s’effectue avec succès.
 
 ## <a name="monitor-purview-connection"></a>Contrôle de la connexion Purview
 

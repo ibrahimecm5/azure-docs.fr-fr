@@ -11,12 +11,12 @@ ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 351ef1c91ae665c170604543ac509562d2e2f0d0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2c88c8954e334b5c6ffc80a60b2bd85cd98bda7a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566881"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055528"
 ---
 # <a name="manage-azure-machine-learning-environments-with-the-cli-v2-preview"></a>Gérer les environnements Azure Machine Learning avec l’interface CLI (v2) (préversion)
 
@@ -38,7 +38,7 @@ Dans cet article, découvrez comment créer et gérer des environnements Azure M
 
 Pour exécuter les exemples d’entraînement, commencez par cloner le dépôt d’exemples et placez-le dans le répertoire `cli` :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="git_clone":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="git_clone":::
 
 Notez que `--depth 1` clone uniquement le dernier commit dans le dépôt, ce qui réduit le temps nécessaire à l’exécution de l’opération.
 
@@ -68,7 +68,7 @@ Pour définir un environnement à partir d’une image Docker, fournissez l’UR
 
 L’exemple suivant est un fichier de spécification YAML pour un environnement défini à partir d’une image Docker. Une image du référentiel PyTorch officiel sur Docker Hub est spécifiée via la propriété `image` dans le fichier YAML.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image.yml":::
 
 Pour créer l’environnement :
 
@@ -89,7 +89,7 @@ L’exemple suivant est un fichier de spécification YAML pour un environnement 
 
 Dans cet exemple, le contexte de build contient un fichier Dockerfile nommé `Dockerfile` et un fichier `requirements.txt` référencé dans le fichier Dockerfile pour l’installation des packages Python.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-context.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-context.yml":::
 
 Pour créer l’environnement :
 
@@ -107,7 +107,7 @@ Vous devez également spécifier une image Docker de base pour cet environnement
 
 L’exemple suivant est un fichier de spécification YAML pour un environnement défini à partir d’une spécification Conda. Le chemin d’accès relatif au fichier Conda à partir du fichier YAML de l’environnement Azure ML y est spécifié via la propriété `conda_file`. Vous pouvez également définir la spécification Conda inline à l’aide de la propriété `conda_file`, plutôt que de la définir dans un fichier distinct.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image-plus-conda.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image-plus-conda.yml":::
 
 Pour créer l’environnement :
 
@@ -154,7 +154,7 @@ az ml environment update --name docker-image-example --version 1 --set descripti
 > [!IMPORTANT]
 > Pour les environnements, seuls `description` et `tags` peuvent être mis à jour. Toutes les autres propriétés sont immuables. Si vous avez besoin de modifier l’une de ces propriétés, vous devez créer une nouvelle version de l’environnement.
 
-### <a name="delete"></a>DELETE
+### <a name="delete"></a>Supprimer
 
 Supprimez un environnement spécifique :
 

@@ -11,12 +11,12 @@ ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 10/21/2021
-ms.openlocfilehash: 941e99ba438d2f9819ccde34d922fb79075f73e9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2916b7c8042a96e35ad138ae5ae20c389c62e751
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553934"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866636"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Créer des jeux de données Azure Machine Learning
 
@@ -97,8 +97,7 @@ Si votre espace de travail se trouve dans un réseau virtuel, vous devez configu
 Pour que les données soient accessibles par Azure Machine Learning, les jeux de données doivent être créés à partir de chemins dans les [magasins de données Azure Machine Learning](how-to-access-data.md) ou d’URL web. 
 
 > [!TIP] 
-> Vous pouvez créer des jeux de données directement à partir d’URL de stockage avec l’accès aux données basé sur l’identité. Pour plus d’informations, consultez [Se connecter au stockage avec l’accès aux données basé sur l’identité (préversion)](how-to-identity-based-data-access.md)<br><br>
-Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment. 
+> Vous pouvez créer des jeux de données directement à partir d’URL de stockage avec l’accès aux données basé sur l’identité. Pour plus d’informations, consultez [Se connecter au stockage avec l’accès aux données basé sur l’identité](how-to-identity-based-data-access.md).
 
  
 Pour créer des jeux de données à partir d’un magasin de données avec le kit SDK Python :

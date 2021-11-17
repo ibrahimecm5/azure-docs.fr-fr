@@ -6,6 +6,8 @@
       href: devtest-lab-overview.md
 - name: Démarrage rapide
   items:
+    - name: Créer un labo - Portail
+      href: devtest-lab-create-lab.md
     - name: Créer un labo - Modèle Resource Manager
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
@@ -73,8 +75,6 @@
   items:
     - name: Configurer un laboratoire
       items:
-        - name: Création d’un laboratoire
-          href: devtest-lab-create-lab.md
         - name: Créer un labo isolé du réseau
           href: network-isolation.md
         - name: Créer ou modifier des laboratoires à l’aide de modèles Resource Manager

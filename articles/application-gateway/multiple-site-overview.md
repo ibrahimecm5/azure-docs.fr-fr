@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: b2a8c8054096a8d93a3160a3cb5af935276224b1
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 5feb112a9d1c9b7eb229c65f8bcce3845a3f23ad
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272814"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844978"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hébergement de plusieurs sites Application Gateway
 
@@ -34,7 +34,7 @@ De même, vous pouvez héberger de nombreux sous-domaines du même domaine paren
 Lorsque vous utilisez des écouteurs multisites, pour vous assurer que le trafic client est acheminé vers le bon serveur principal, il est important que les règles d’acheminement des requêtes soient dans le bon ordre.
 Par exemple, si vous avez 2 écouteurs à des noms d’hôte tels que `*.contoso.com` et `shop.contoso.com`, l’écouteur associé au nom d’hôte `shop.contoso.com` doit être traité avec celui associé au nom d’hôte `*.contoso.com`. Si l’écouteur associé à `*.contoso.com` est traité en premier, l’écouteur associé à `shop.contoso.com`, plus spécifique, ne recevra aucun trafic client.
 
-Cet ordre peut être établi en fournissant une valeur de champ « Priority » (Priorité) aux règles d’acheminement des requêtes associées aux écouteurs. Vous pouvez spécifier une valeur d’entier comprise entre 1 et 20000. 1 représente la priorité la plus haute et 20000 la plus basse. Si le trafic client entrant correspond à plusieurs écouteurs, la règle d’acheminement des requêtes ayant la priorité la plus élevée sera utilisée pour traiter la demande.
+Cet ordre peut être établi en fournissant une valeur de champ « Priority » (Priorité) aux règles d’acheminement des requêtes associées aux écouteurs. Vous pouvez spécifier une valeur d’entier comprise entre 1 et 20000. 1 représente la priorité la plus haute et 20000 la plus basse. Si le trafic client entrant correspond à plusieurs écouteurs, la règle d’acheminement des requêtes ayant la priorité la plus élevée sera utilisée pour traiter la demande. Chaque règle d’acheminement des requêtes doit avoir une valeur de priorité unique.
 
 Le champ de priorité n’affecte que l’ordre d’évaluation d’une règle d’acheminement des requêtes. Elle ne modifie pas l’ordre d’évaluation des règles basée sur le chemin d’accès au sein d’une règle d’acheminement des requêtes `PathBasedRouting`.
 

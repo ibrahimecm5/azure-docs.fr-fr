@@ -1,28 +1,43 @@
 ---
 title: Probes (diagnostics) Azure Service Fabric
-description: Explique comment modéliser un diagnostic probe liveness dans Azure Service Fabric à l’aide de fichiers manifestes d’application et de service.
+description: Comment modéliser une probe liveness et readiness dans Azure Service Fabric en utilisant des fichiers manifeste d’application et de service.
 ms.topic: conceptual
 author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f78499d6be8ee68011540abfba00a404b8c6ec5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82137584"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059711"
 ---
-# <a name="liveness-probe"></a>Probe liveness
-À partir de la version 7.1, Azure Service Fabric prend en charge un mécanisme de diagnostic probe liveness pour les applications [conteneurisées][containers-introduction-link]. Un probe liveness permet de signaler l’activité d’une application conteneurisée, qui redémarrera si elle ne répond pas rapidement.
-Cet article fournit une vue d’ensemble de la manière de définir un probe liveness à l’aide de fichiers manifeste.
+# <a name="service-fabric-probes"></a>Probes Service Fabric
+Avant de poursuivre la lecture de cet article, familiarisez-vous avec le [modèle d’application Service Fabric][application-model-link] et le [modèle d’hébergement Service Fabric][hosting-model-link]. Cet article fournit une vue d’ensemble de la manière de définir une probe liveness à l’aide de fichiers manifeste.
 
-Avant de poursuivre la lecture de cet article, familiarisez-vous avec le [modèle d’application Service Fabric][application-model-link] et le [modèle d’hébergement Service Fabric][hosting-model-link].
+## <a name="liveness-probe"></a>Probe liveness
+À partir de la version 7.1, Azure Service Fabric prend en charge un mécanisme de diagnostic de probe liveness pour applications conteneurisées et non conteneurisées. Une probe liveness permet de rendre compte de l’activité d’un package de code qui redémarre si elle ne répond pas rapidement.
 
-> [!NOTE]
-> Probe liveness est pris en charge uniquement pour les conteneurs en mode de mise en réseau NAT.
+## <a name="readiness-probe"></a>Probe readiness
+Depuis la version 8.2, une probe readiness est également prise en charge. Une probe readiness permet de déterminer si un package de code est prêt à accepter du trafic. Par exemple, si votre conteneur prend beaucoup de temps pour traiter une demande ou si la file d’attente des demandes est pleine, votre package de code ne peut plus accepter de trafic. Par conséquent, les points de terminaison pour atteindre le package de code sont supprimés. 
+
+Le comportement de la probe readiness est le suivant :
+1.  L’instance de conteneur/package de code démarre
+2.  Les points de terminaison sont publiés immédiatement
+3.  La probe readiness comment à s’exécuter
+4.  La probe readiness finit par atteindre un seuil d’échec et le point de terminaison est supprimé, ce qui la rend indisponible
+5.  L’instance finit par devenir prête
+6.  La probe readiness remarque que l’instance est prête et publie à nouveau un point de terminaison
+7.  Les demandes sont à nouveau acheminées et aboutissent car l’instance est prête à les traiter
+
+> [!NOTE] 
+> Pour la probe readiness, le package de code n’est pas redémarré. Simplement, les points de terminaison n’étant pas publiés, l’ensemble de réplicas/partitions n’est pas affecté.
+>
 
 ## <a name="semantics"></a>Sémantique
-Vous ne pouvez spécifier qu’un seul probe liveness par conteneur, et vous pouvez contrôler son comportement à l’aide des champs suivants :
+Vous ne pouvez spécifier qu’une probe liveness et une probe readiness par package de code, et vous pouvez contrôler leur comportement à l’aide des champs suivants :
+
+* `type` : permet de spécifier si le type de probe est liveness ou readiness. Les valeurs prises en charge sont **Liveness** ou **Readiness**.
 
 * `initialDelaySeconds` : délai initial, en secondes, avant le début de l’exécution du diagnostic probe après que le conteneur a démarré. La valeur prise en charge est **int**. La valeur par défaut est 0 et la valeur minimale est 0.
 
@@ -46,7 +61,7 @@ En outre, ServiceFabric déclenche les [rapports d’intégrité][health-introdu
     * le diagnostic échoue et **failureCount** < **failureThreshold**. Ce rapport d’intégrité reste jusqu’à ce que **failureCount** atteigne la valeur définie dans **failureThreshold** ou **successThreshold**.
     * En cas de réussite après un échec, l’avertissement reste, mais avec les réussites consécutives mises à jour.
 
-## <a name="specifying-a-liveness-probe"></a>Spécification d’un diagnostic probe liveness
+## <a name="specifying-a-probe"></a>Spécification d’une probe
 
 Vous pouvez spécifier un diagnostic probe liveness dans le fichier ApplicationManifest.xml sous **ServiceManifestImport**.
 
@@ -60,7 +75,7 @@ Le diagnostic peut concerner l’un des éléments suivants :
 
 Pour un diagnostic HTTP, Service Fabric envoie une requête HTTP au port et au chemin que vous spécifiez. Un code de retour supérieur ou égal à 200, et inférieur à 400, indique une réussite.
 
-Voici un exemple qui montre comment spécifier un diagnostic HTTP :
+Voici un exemple montrant comment spécifier une probe liveness HTTP :
 
 ```xml
   <ServiceManifestImport>

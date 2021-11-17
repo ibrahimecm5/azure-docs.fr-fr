@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/8/2021
-ms.openlocfilehash: 4628f6c6d368f5d62a8c7e5a2dd07adab9d0a3b5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3642323efddfab0c791273169e2c0fb0ec76f0b9
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479080"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989904"
 ---
 # <a name="easv5-and-eadsv5-series"></a>Séries Easv5 et Eadsv5
 
@@ -23,14 +23,14 @@ Les séries Easv5 et Eadsv5 utilisent le processeur EPYC<sup>TM</sup> 7763V de 3
 
 ## <a name="easv5-series"></a>Série Easv5
 
-Les machines virtuelles de la série Easv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,7 GHz. Les tailles de la série Easv5 offrent une combinaison de processeurs virtuels et de mémoire idéaux pour les applications d’entreprise gourmandes en mémoire. Les nouvelles machines virtuelles sans disque local constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local.
+Les machines virtuelles de la série Easv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,5 GHz. Les tailles de la série Easv5 offrent une combinaison de processeurs virtuels et de mémoire idéaux pour les applications d’entreprise gourmandes en mémoire. Les nouvelles machines virtuelles sans disque local constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local.
 
 > [!NOTE]
 > Pour accéder à la FAQ, consultez [Tailles de machines virtuelles Azure sans disque temporaire local](azure-vms-no-temp-disk.yml).
 
 Les machines virtuelles de la série Easv5 prennent en charge les types de disques SSD Standard, HDD Standard et SSD Premium. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
+[Stockage Premium](premium-storage-performance.md) : Pris en charge <br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge <br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge <br>
@@ -57,11 +57,11 @@ Les machines virtuelles de la série Easv5 prennent en charge les types de disqu
 
 ## <a name="eadsv5-series"></a>Série Eadsv5
 
-Les machines virtuelles de la série Eadsv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,7 GHz. Les tailles de la série Eadsv5 offrent une combinaison de processeurs virtuels, de mémoire et de stockage temporaire idéaux pour les applications d’entreprise gourmandes en mémoire. Ces nouvelles machines virtuelles disposent d’un stockage local 50 % plus volumineux, ainsi que de meilleures IOPS de disque local en lecture et en écriture par rapport aux tailles [Eav4/Easv4](eav4-easv4-series.md) avec des machines virtuelles [Gen2](generation-2.md).
+Les machines virtuelles de la série Eadsv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,5 GHz. Les tailles de la série Eadsv5 offrent une combinaison de processeurs virtuels, de mémoire et de stockage temporaire idéaux pour les applications d’entreprise gourmandes en mémoire. Ces nouvelles machines virtuelles disposent d’un stockage local 50 % plus volumineux, ainsi que de meilleures IOPS de disque local en lecture et en écriture par rapport aux tailles [Eav4/Easv4](eav4-easv4-series.md) avec des machines virtuelles [Gen2](generation-2.md).
 
 Les machines virtuelles de la série Eadsv5 prennent en charge les types de disques SSD Standard, HDD Standard et SSD Premium. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
+[Stockage Premium](premium-storage-performance.md) : Pris en charge <br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge <br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge <br>

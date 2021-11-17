@@ -4,15 +4,14 @@ description: Apprenez à créer une fonction JavaScript à partir de la ligne de
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3afe1cb5912f025b5ff33446c73e72f3e5bbcefd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 016c5fad3c6bc5e341bf917fc6c24ecba54abc86
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031496"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027221"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Démarrage rapide : Créer une fonction JavaScript dans Azure à partir de la ligne de commande
-
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
@@ -28,7 +27,7 @@ Avant de commencer la lecture cet article, vous devez disposer des éléments su
 
 + Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) version 3.x.
++ [Azure Functions Core Tools](./functions-run-local.md#v2) version 4.x
 
 + Un des outils suivants pour créer des ressources Azure :
 
@@ -36,7 +35,7 @@ Avant de commencer la lecture cet article, vous devez disposer des éléments su
 
     + Le [module Azure Az PowerShell](/powershell/azure/install-az-ps) version 5.9.0 ou ultérieure.
 
-+ [Node.js](https://nodejs.org/) version 12. La version 10 de Node.js est également prise en charge.
++ [Node.js](https://nodejs.org/) version 14. 
 
 ### <a name="prerequisite-check"></a>Vérification du prérequis
 
@@ -44,7 +43,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
++ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 4.x.
 
 + Exécutez `az --version` pour vérifier que vous disposez d’Azure CLI version 2.4 ou ultérieure.
 
@@ -52,7 +51,7 @@ Vérifiez vos prérequis, selon que vous utilisez Azure CLI ou Azure PowerShell 
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 3.x.
++ Dans une fenêtre de terminal ou de commande, exécutez `func --version` pour vérifier que vous disposez d’Azure Functions Core Tools version 4.x.
 
 + Exécutez `(Get-Module -ListAvailable Az).Version` et vérifiez la version 5.0 ou ultérieure.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique Azure Active Directory à Software AG Cloud'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à Software AG Cloud'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et Software AG Cloud.
 author: jeevansd
 manager: CelesteDG
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 900cb7892331db3e78314a5de6bfb432f40990c6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 163e2aae9355d24873cd9864c84cefe71a57ab18
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128558476"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459238"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Software AG Cloud
+# <a name="tutorial-azure-ad-sso-integration-with-software-ag-cloud"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Software AG Cloud
 
 Dans ce tutoriel, vous allez découvrir comment intégrer Software AG Cloud à Azure Active Directory (Azure AD). Quand vous intégrez Software AG Cloud à Azure AD, vous pouvez :
 
@@ -32,14 +32,17 @@ Pour commencer, vous devez disposer de ce qui suit :
 * Un abonnement Azure AD Si vous ne disposez d’aucun abonnement, vous pouvez obtenir [un compte gratuit](https://azure.microsoft.com/free/).
 * Un abonnement Software AG Cloud pour lequel l’authentification unique est activée.
 
+> [!NOTE]
+> Cette intégration peut également être utilisée à partir de l’environnement cloud US Government Azure AD. Cette application est disponible dans la Galerie d’applications cloud US Government Azure AD et peut être configurée de la même façon que dans le cloud public.
+
 ## <a name="scenario-description"></a>Description du scénario
 
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
-* Software AG Cloud prend en charge l’authentification unique lancée par le **fournisseur de services**
-* Software AG Cloud prend en charge l’attribution d’utilisateurs **juste-à-temps**
+* Software AG Cloud prend en charge l’authentification unique lancée par le **fournisseur de services**.
+* Software AG Cloud prend en charge l’attribution d’utilisateurs **juste-à-temps**.
 
-## <a name="adding-software-ag-cloud-from-the-gallery"></a>Ajout de Software AG Cloud à partir de la galerie
+## <a name="add-software-ag-cloud-from-the-gallery"></a>Ajouter Software AG Cloud à partir de la galerie
 
 Pour configurer l’intégration de Software AG Cloud à Azure AD, vous devez ajouter Software AG Cloud, disponible dans la galerie, à votre liste d’applications SaaS managées.
 
@@ -49,7 +52,6 @@ Pour configurer l’intégration de Software AG Cloud à Azure AD, vous devez 
 1. Pour ajouter une nouvelle application, sélectionnez **Nouvelle application**.
 1. Dans la section **Ajouter à partir de la galerie**, tapez **Software AG Cloud** dans la zone de recherche.
 1. Sélectionnez **Software AG Cloud** dans le volet des résultats, puis ajoutez l’application. Patientez quelques secondes pendant que l’application est ajoutée à votre locataire.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-software-ag-cloud"></a>Configurer et tester l’authentification unique Azure AD pour Software AG Cloud
 
@@ -70,19 +72,19 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. Dans le portail Azure, accédez à la page d’intégration de l’application **Software AG Cloud**, recherchez la section **Gérer**, puis sélectionnez **Authentification unique**.
 1. Dans la page **Sélectionner une méthode d’authentification unique**, sélectionnez **SAML**.
-1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de modification/stylet de **Configuration SAML de base** pour modifier les paramètres.
+1. Dans la page **Configurer l’authentification unique avec SAML**, cliquez sur l’icône de crayon de **Configuration SAML de base** afin de modifier les paramètres.
 
    ![Modifier la configuration SAML de base](common/edit-urls.png)
 
-1. Dans la section **Configuration SAML de base**, entrez les valeurs pour les champs suivants :
-
-    1. Dans la zone de texte **URL de connexion**, saisissez une URL au format suivant : 
-
-        `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+1. Dans la section **Configuration SAML de base**, effectuez les étapes suivantes :
 
     1. Dans la zone de texte **Identificateur (ID d’entité)** , saisissez une URL au format suivant :
 
-        `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+        `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    
+    1. Dans la zone de texte **URL de connexion**, saisissez une URL au format suivant : 
+
+        `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`    
 
         > [!NOTE]
         > Il ne s’agit pas de valeurs réelles. Mettez à jour ces valeurs avec l’URL de connexion et l’identificateur réels. Pour obtenir ces valeurs, contactez l’[équipe de support technique Software AG Cloud](mailto:support@softwareag.com). Vous pouvez également consulter les modèles figurant à la section **Configuration SAML de base** dans le portail Azure.
@@ -94,6 +96,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 1. Dans la section **Configurer Software AG Cloud**, copiez la ou les URL appropriées, en fonction de vos besoins.
 
     ![Copier les URL de configuration](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
 Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
@@ -132,7 +135,7 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificat
 
 1. Effectuez les étapes ci-après dans la page suivante.
 
-    ![Étapes suivantes de la configuration de Software AG Cloud](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Étapes suivantes de la configuration de Software AG Cloud](./media/software-ag-cloud-tutorial/configuration.png)
 
     a. Dans la zone de texte **Identity Provider Name** (Nom complet du fournisseur d’identité), donnez un nom comme `azure ad`.
 

@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/26/2021
-ms.openlocfilehash: e2f2b7ec00250287b71b3882b7078b249262db70
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/01/2021
+ms.openlocfilehash: 027cd7197167a3667748c2c470e17b83aa3bf03d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769861"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578722"
 ---
 # <a name="tutorial-add-authentication-and-permissions-to-your-application-when-using-azure-web-pubsub"></a>Tutoriel : Ajouter une authentification et des autorisations à votre application lors de l’utilisation d’Azure Web PubSub
 
@@ -101,7 +101,16 @@ En premier lieu, ajoutez l’authentification GitHub à la salle de conversation
     1. Renseignez le nom de l’application et l’URL de la page d’accueil (l’URL peut être ce que vous voulez), puis définissez **Authorization callback URL** (URL de rappel d’autorisation) sur `http://localhost:8080/auth/github/callback`. Cette URL correspond à l’API de rappel que vous avez exposée sur le serveur.
     1. Une fois l’application inscrite, copiez l’ID client et sélectionnez **Generate a new client secret** (Générer un nouveau secret client).
 
-    Ensuite, exécutez `node server <connection-string> <client-id> <client-secret>` et ouvrez `http://localhost:8080/auth/github`. Vous êtes redirigé vers GitHub pour vous connecter. Une fois connecté, vous êtes redirigé vers l’application de conversation.
+    Exécutez la commande ci-dessous pour tester les paramètres. N’oubliez pas de remplacer `<connection-string>`, `<client-id>` et `<client-secret>` par vos valeurs.
+
+    ```bash
+    export WebPubSubConnectionString="<connection-string>"
+    export GitHubClientId="<client-id>"
+    export GitHubClientSecret="<client-secret>"
+    node server
+    ```
+    
+    À présent, ouvrez `http://localhost:8080/auth/github`. Vous êtes redirigé vers GitHub pour vous connecter. Une fois connecté, vous êtes redirigé vers l’application de conversation.
 
 1.  Mettez à jour la salle de conversation pour utiliser l’identité obtenue à partir de GitHub, plutôt que de demander à l’utilisateur un nom d’utilisateur.
 
@@ -131,7 +140,7 @@ En premier lieu, ajoutez l’authentification GitHub à la salle de conversation
       let options = {
         userId: req.user.username
       };
-      let token = await serviceClient.getAuthenticationToken(options);
+      let token = await serviceClient.getClientAccessToken(options);
       res.json({
         url: token.url
       });
@@ -164,7 +173,7 @@ Tout d’abord, vous devez diviser les messages système et les messages utilisa
 Changez `server.js` pour envoyer les différents messages aux différents groupes :
 
 ```javascript
-let handler = new WebPubSubEventHandler(hubName, ['*'], {
+let handler = new WebPubSubEventHandler(hubName, {
   path: '/eventhandler',
   handleConnect: (req, res) => {
     res.success({
@@ -255,12 +264,12 @@ Par défaut, le client n’a pas l’autorisation d’envoi à un groupe. Mettez
 ```javascript
 app.get('/negotiate', async (req, res) => {
   ...
-  if (req.user.username === process.argv[5]) options.claims = { role: ['webpubsub.sendToGroup.system'] };
-  let token = await serviceClient.getAuthenticationToken(options);
+  if (req.user.username === process.argv[2]) options.claims = { role: ['webpubsub.sendToGroup.system'] };
+  let token = await serviceClient.getClientAccessToken(options);
 });
 ```
 
-À présent, exécutez `node server <connection-string> <client-id> <client-secret> <admin-id>`. Vous verrez que vous pouvez envoyer un message système à chaque client quand vous vous connectez en tant que `<admin-id>`.
+À présent, exécutez `node server <admin-id>`. Vous verrez que vous pouvez envoyer un message système à chaque client quand vous vous connectez en tant que `<admin-id>`.
 
 Toutefois, si vous vous connectez en tant qu’utilisateur différent, quand vous sélectionnez **message système**, rien ne se produit. Vous pouvez vous attendre à ce que le service vous signale une erreur pour vous informer que l’opération n’est pas autorisée. Pour fournir ce commentaire, vous pouvez définir `ackId` au moment où vous publiez le message. Chaque fois que `ackId` est spécifié, Web PubSub retourne un message avec un `ackId` correspondant pour indiquer si l’opération a réussi ou non.
 

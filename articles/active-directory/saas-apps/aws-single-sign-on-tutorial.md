@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Intégration de l’authentification unique Azure Active Directory à AWS Single Sign-on | Microsoft Docs'
+title: 'Tutoriel : Intégration de l’authentification unique Azure AD à AWS Single Sign-on'
 description: Découvrez comment configurer l’authentification unique entre Azure Active Directory et AWS Single Sign-on.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2021
+ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: bda8218fb9d08da410b08f8b6f3a3e3cda53ec22
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4e7d0f8edb34f7c6a91eeb8bac6f04b97440f764
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759667"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440788"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à AWS Single Sign-on
+# <a name="tutorial-azure-ad-sso-integration-with-aws-single-sign-on"></a>Tutoriel : Intégration de l’authentification unique Azure AD à AWS Single Sign-on
 
 Dans ce tutoriel, vous allez apprendre à intégrer AWS Single Sign-on à Azure Active Directory (Azure AD). Quand vous intégrez AWS Single Sign-on à Azure AD, vous pouvez :
 
@@ -80,7 +80,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
     a. Cliquez sur **Charger un fichier de métadonnées**.
 
-    b. Cliquez sur le **logo du dossier** pour sélectionner le fichier de métadonnées que vous avez téléchargé à partir de la section **Configurer l’authentification unique AWS Single Sign-on** (point 8), puis cliquez sur **Ajouter**.
+    b. Cliquez sur le **logo du dossier** pour sélectionner le fichier de métadonnées dont le téléchargement est expliqué dans la section **[Configurer l’authentification unique AWS Single Sign-on](#configure-aws-single-sign-on-sso)** , puis cliquez sur **Ajouter**.
 
     ![image2](common/browse-upload-metadata.png)
 

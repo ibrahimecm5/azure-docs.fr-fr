@@ -5,34 +5,45 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/23/2021
+ms.date: 11/08/2021
 ms.author: alzam
-ms.openlocfilehash: a55c4ac84f218b4fe657f02cac9f10a4e9dc4a68
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 8ae6519881dd0e41cde8ed0fa4d7ffc64f35bdf2
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583942"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058786"
 ---
 # <a name="monitoring-vpn-gateway"></a>Supervision de la passerelle VPN
 
 Vous pouvez surveiller les passerelles VPN Azure à l’aide d’Azure Monitor. Cet article présente les métriques disponibles via le portail. Les métriques sont légères et peuvent prendre en charge des scénarios en quasi-temps réel, ce qui les rend utiles pour les alertes et la détection rapide de problèmes.
 
 
-|**Mesure**   | **Unité** | **Granularité** | **Description** | 
-|---       | ---        | ---       | ---            | ---       |
-|**AverageBandwidth**| octets/s  | 5 minutes| Utilisation moyenne de la bande passante combinée pour toutes les connexions de site à site sur la passerelle.     |
-|**P2SBandwidth**| octets/s  | 1 minute  | Utilisation moyenne de la bande passante combinée pour toutes les connexions de point à site sur la passerelle.    |
-|**P2SConnectionCount**| Count  | 1 minute  | Nombre de connexions point à site sur la passerelle.   |
-|**TunnelAverageBandwidth** | octets/s    | 5 minutes  | Utilisation moyenne de la bande passante pour les tunnels créés sur la passerelle. |
-|**TunnelEgressBytes** | Octets | 5 minutes | Trafic sortant sur les tunnels créés sur la passerelle.   |
-|**TunnelEgressPackets** | Count | 5 minutes | Nombre de paquets sortants sur les tunnels créés sur la passerelle.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minutes | Nombre de paquets sortants ignorés sur les tunnels en raison d’une incompatibilité de sélecteur de trafic. |
-|**TunnelIngressBytes** | Octets | 5 minutes | Trafic entrant sur les tunnels créés sur la passerelle.   |
-|**TunnelIngressPackets** | Count | 5 minutes | Nombre de paquets entrants sur les tunnels créés sur la passerelle.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 minutes | Nombre de paquets entrants ignorés sur les tunnels en raison d’une incompatibilité de sélecteur de trafic. |
+| **Mesure**                                 | **Unité**     | **Granularité**     | **Description**                                                                         |
+| -------------------------------------------| ------------ | ------------------- | --------------------------------------------------------------------------------------- |
+| **État du pair BGP**                        | Count        | 5 minutes           | État de connectivité BGP moyen par homologue et par instance.                              |
+| **Itinéraires BGP publiés**                  | Count        | 5 minutes           | Nombre de routes publiées par pair et par instance.                                  |
+| **Itinéraires BGP appris**                     | Count        | 5 minutes           | Nombre de routes apprises par pair et par instance.                                     |
+| **Bande passante P2S de passerelle**                  | octets/s      | 1 minute            | Utilisation moyenne de la bande passante combinée pour toutes les connexions de point à site sur la passerelle. |
+| **Bande passante S2S de passerelle**                  | octets/s      | 5 minutes           | Utilisation moyenne de la bande passante combinée pour toutes les connexions de site à site sur la passerelle.  |
+| **Nombre de connexions P2S**                   | Count        | 1 minute            | Nombre de connexions point à site sur la passerelle.                                      |
+| **Bande passante de tunnel**                       | octets/s      | 5 minutes           | Utilisation moyenne de la bande passante pour les tunnels créés sur la passerelle.                        |
+| **Octets de sortie de tunnel**                    | Octets        | 5 minutes           | Nombre d’octets sortants d’un tunnel.                                                 |
+| **Nombre d’annulations de paquets de sortie par tunnel**        | Count        | 5 minutes           | Nombre de paquets sortants abandonnés par un tunnel.                                         |
+| **Paquets de sortie de tunnel**                  | Count        | 5 minutes           | Nombre de paquets sortants d’un tunnel.                                               |
+| **Rejet de paquets TS de sortie de tunnel pour incompatibilité**  | Count        | 5 minutes           | Nombre de paquets sortants abandonnés par des tunnels en raison d’une incompatibilité de sélecteur de trafic.      |
+| **Octets d’entrée de tunnel**                   | Octets        | 5 minutes           | Nombre d’octets entrants dans un tunnel.                                                   |
+| **Nombre d’annulations de paquets d’entrée par tunnel**       | Count        | 5 minutes           | Nombre de paquets entrants abandonnés par un tunnel.                                         |
+| **Paquets en entrée de tunnel**                 | Count        | 5 minutes           | Nombre de paquets entrants dans un tunnel.                                                 |
+| **Rejet de paquets TS d’entrée de tunnel pour incompatibilité** | Count        | 5 minutes           | Nombre de paquets entrants abandonnés par des tunnels en raison d’une incompatibilité de sélecteur de trafic.      |
+| **Nombre de tunnels MMSA**                      | Count        | 5 minutes           | Nombre d’associations de sécurité en mode principal présentes.                                      |
+| **Pic PPS dans le tunnel**                        | Count        | 5 minutes           | Nombre maximal de paquets par seconde par tunnel.                                            |
+| **Nombre de tunnels QMSA**                      | Count        | 5 minutes           | Nombre d’associations de sécurité en mode rapide présentes.                                     |
+| **Nombre total de flux d’un tunnel**                | Count        | 5 minutes           | Nombre de flux distincts créés par tunnel.                                            |
+| **Nombre d’itinéraires VPN utilisateur**                   | Count        | 5 minutes           | Nombre d’itinéraires VPN utilisateur configurés sur la passerelle VPN.                                |
+| **Nombre de préfixes d’adresse de réseau virtuel**              | Count        | 5 minutes           | Nombre de préfixes d’adresse de réseau virtuel utilisés/publiés par la passerelle.                |
 
-## <a name="the-following-steps-help-you-locate-and-view-metrics"></a>Les étapes suivantes vous aident à localiser et à afficher les métriques :
+## <a name="the-following-steps-help-you-locate-and-view-metrics"></a>Les étapes suivantes vous aident à localiser et afficher des métriques
 
 1. Dans le portail, accédez à la ressource de la passerelle de réseau virtuel.
 2. Sélectionnez **Vue d’ensemble** pour afficher les métriques d’entrée et de sortie du tunnel total.

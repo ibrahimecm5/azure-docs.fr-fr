@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 08/19/2021
-  ms.openlocfilehash: 7ccfe8d814cc06e7c637b6de3a8df6edb43f52bd
-  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+  ms.openlocfilehash: d9ca7573375e3e6bf584d1b79f8f6a8f9ba64f4d
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130069441"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132062887"
 title: Forum aux questions - Sauvegarde de machines virtuelles Azure
 summary: >
   Cet article fournit des réponses à des questions courantes sur la sauvegarde des machines virtuelles Azure avec le service [Sauvegarde Azure](./backup-overview.md).
@@ -22,7 +22,7 @@ sections:
       Lorsque vous créez une machine virtuelle, vous pouvez activer la sauvegarde pour les machines virtuelles exécutant des [systèmes d’exploitation pris en charge](backup-support-matrix-iaas.md#supported-backup-actions).
   - question: Pourquoi la sauvegarde initiale prend-elle beaucoup de temps ?
     answer: >
-      La sauvegarde initiale est toujours une sauvegarde complète et elle dépend du volume des données et du moment où la sauvegarde est traitée.
+      La sauvegarde initiale est toujours une sauvegarde complète, et sa durée dépend du volume des données et du moment où la sauvegarde est traitée.
 
 
       Pour améliorer les performances de sauvegarde, consultez [Bonnes pratiques de sauvegarde](./backup-azure-vms-introduction.md#best-practices), [Considérations relatives à la sauvegarde](./backup-azure-vms-introduction.md#backup-and-restore-considerations) et [Performances de sauvegarde](./backup-azure-vms-introduction.md#backup-performance).
@@ -95,7 +95,7 @@ sections:
   - question: Quelle est la durée de rétention minimale autorisée pour un point de sauvegarde quotidien ?
     answer: La stratégie de sauvegarde de la machine virtuelle Azure prend en charge une durée de rétention minimale allant de 7 à 9 999 jours. Toute modification apportée à une stratégie de sauvegarde de machine virtuelle existante avec une plage de rétention inférieure à sept jours nécessitera une mise à jour pour répondre à la durée de rétention minimale de sept jours.
   - question: Que se passe-t-il si je modifie la casse du nom de ma machine virtuelle ou de mon groupe de ressources de machine virtuelle ?
-    answer: Si vous modifiez la casse (en majuscules ou en minuscules) du nom de votre machine virtuelle ou groupe de ressources de machine virtuelle, la casse du nom de l’élément de sauvegarde ne change pas. Toutefois, il s’agit du comportement qui est attendu de Sauvegarde Azure. Le changement de casse n’apparaît pas dans l’élément de sauvegarde, mais il est mis à jour au niveau du serveur principal.
+    answer: Si vous modifiez la casse (en majuscules ou en minuscules) du nom de votre machine virtuelle ou groupe de ressources de machine virtuelle, la casse du nom de l’élément de sauvegarde ne change pas ; il s’agit d’un comportement attendu dans Sauvegarde Azure. Le changement de casse n’apparaît pas dans l’élément de sauvegarde, mais il est mis à jour au niveau du serveur principal.
   - question: Puis-je sauvegarder ou restaurer certains disques attachés à une machine virtuelle ?
     answer: >
       La sauvegarde Azure prend désormais en charge la sauvegarde et la restauration sélectives de disque à l’aide de la solution de sauvegarde de machine virtuelle Azure. Pour plus d’informations, consultez [Sauvegarde et restauration sélectives sur disque pour les machines virtuelles Azure](selective-disk-backup-restore.md).
@@ -117,9 +117,9 @@ sections:
   - question: La sauvegarde Azure interfère-t-elle avec les performances des applications ?
     answer: >
       La création d’un instantané de machine virtuelle prend quelques minutes et il y aura une interférence minime sur les performances des applications à ce stade. Toutefois, le transfert de données vers un coffre prend quelques heures. Nous vous recommandons donc de planifier les sauvegardes pendant les heures creuses. Consultez les [Bonnes pratiques pour la sauvegarde et la restauration](./backup-azure-vms-introduction.md#backup-and-restore-considerations).
-  - question: Le nouveau disque ajouté à la machine virtuelle sera-t-il sauvegardé automatiquement ?
+  - question: Un nouveau disque ajouté à la machine virtuelle sera-t-il sauvegardé automatiquement ?
     answer: >
-      Oui, le nouveau disque ajouté à une machine virtuelle est sauvegardé automatiquement lors de la sauvegarde suivante.
+      Oui, un nouveau disque ajouté à une machine virtuelle sera sauvegardé automatiquement lors de la sauvegarde suivante.
 - name: Restaurer
   questions:
   - question: Comment déterminer si je dois restaurer des disques uniquement ou une machine virtuelle complète ?
@@ -167,9 +167,9 @@ sections:
     answer: >
       Oui. Vous pouvez accéder à la machine virtuelle après que celle-ci a été restaurée en raison d’une rupture de sa relation avec le contrôleur de domaine. Pour plus d’informations, consultez cet [article](./backup-azure-arm-restore-vms.md#post-restore-steps).
   - question: Est-ce que je peux annuler un travail de restauration en cours ?
-    answer: Non, vous ne pouvez pas annuler le travail de restauration en cours.
-  - question: Pourquoi l’opération de restauration prend-elle du temps ?
-    answer: La durée totale de la restauration varie selon les opérations d'entrée/sortie par seconde (IOPS) et le débit du compte de stockage. La durée totale de la restauration peut être affectée si le compte de stockage cible est chargé avec d'autres opérations de lecture et d'écriture de l'application. Pour améliorer l'opération de restauration, sélectionnez un compte de stockage qui n'est pas chargé avec d'autres données d'application.
+    answer: Non, vous ne pouvez pas annuler un travail de restauration en cours.
+  - question: Pourquoi mon opération de restauration prend-elle du temps ?
+    answer: La durée totale de la restauration varie en fonction de la rapidité des opérations d’entrée/sortie par seconde (IOPS) et du débit du compte de stockage. La durée totale de la restauration peut être affectée si le compte de stockage cible est chargé avec d'autres opérations de lecture et d'écriture de l'application. Pour améliorer la rapidité de l’opération de restauration, sélectionnez un compte de stockage qui n’est pas chargé avec d’autres données d’application.
   - question: Comment pouvons-nous traiter les conflits de type de restauration « Créer une machine virtuelle » avec des stratégies de gouvernance ?
     answer: >
       Sauvegarde Azure utilise des disques « attach » à partir de points de récupération et ne prend pas en considération vos galeries ou références d’images. Par conséquent, dans la stratégie, vous pouvez vérifier que « storageProfile.osDisk.createOption est égal à Attach » ; la condition du script est alors :

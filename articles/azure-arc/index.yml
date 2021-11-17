@@ -96,7 +96,7 @@ conceptualContent:
           text: "Vue d’ensemble d’Azure\_Policy"
         - url: ../security-center/azure-defender.md
           itemType: overview
-          text: Vue d’ensemble d’Azure Defender
+          text: Vue d’ensemble de Microsoft Defender pour le cloud
         - url: ../automation/automation-intro.md
           itemType: overview
           text: Vue d’ensemble d’Azure Automation

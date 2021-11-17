@@ -8,14 +8,14 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 88eda8bbfcf10594ce0c60d2337e6f3ad63fac81
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 80f396e9b0bf53e25b188c42da6be6b8ad7f6061
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472463"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851892"
 ---
-# <a name="connect-to-and-manage-cassandra-in-azure-purview"></a>Se connecter et gérer Cassandra dans Azure Purview
+# <a name="connect-to-and-manage-cassandra-in-azure-purview-preview"></a>Se connecter à Cassandra et le gérer dans Azure Purview (préversion)
 
 Cet article explique comment inscrire Cassandra et comment s’authentifier et interagir avec Cassandra dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/8/2021
-ms.openlocfilehash: 2a4a48a66def1633aea5b85d9e51bdcf8bc1378e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c9f2c270f8794effccd8439edd57422db15b71b6
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479121"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989923"
 ---
 # <a name="dasv5-and-dadsv5-series"></a>Séries Dasv5 et Dadsv5
 
@@ -23,14 +23,14 @@ Les séries Dasv5 et Dadsv5 utilisent le processeur EPYC<sup>TM</sup> 7763V de 3
 
 ## <a name="dasv5-series"></a>Série Dasv5
 
-Les machines virtuelles de la série Dasv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,7 GHz. Les tailles de la série Dasv5 offrent une combinaison de processeur virtuel et de mémoire pour la plupart des charges de travail de production. Les nouvelles machines virtuelles sans disque local constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local.
+Les machines virtuelles de la série Dasv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,5 GHz. Les tailles de la série Dasv5 offrent une combinaison de processeur virtuel et de mémoire pour la plupart des charges de travail de production. Les nouvelles machines virtuelles sans disque local constituent une meilleure proposition de valeur pour les charges de travail ne nécessitant pas de disque temporaire local.
 
 > [!NOTE]
 > Pour accéder à la FAQ, consultez [Tailles de machines virtuelles Azure sans disque temporaire local](azure-vms-no-temp-disk.yml).
 
 Les machines virtuelles de la série Dasv5 prennent en charge les types de disques SSD Standard, HDD Standard et SSD Premium. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
+[Stockage Premium](premium-storage-performance.md) : Pris en charge <br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge <br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge <br>
@@ -55,12 +55,12 @@ Les machines virtuelles de la série Dasv5 prennent en charge les types de disqu
 
 ## <a name="dadsv5-series"></a>Série Dadsv5
 
-Les machines virtuelles de la série Dadsv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,7 GHz. Les tailles de la série Dadsv5 offrent une combinaison de processeur virtuel, de mémoire et de stockage temporaire adaptée à la plupart des charges de travail de production. Ces nouvelles machines virtuelles disposent d’un stockage local 50 % plus volumineux, ainsi que de meilleures IOPS de disque local en lecture et en écriture par rapport aux tailles [Dav4/Dasv4](dav4-dasv4-series.md) avec des machines virtuelles [Gen2](generation-2.md).
+Les machines virtuelles de la série Dadsv5 utilisent des processeurs EPYC<sup>TM</sup> 7763v de 3e génération d’AMD pour obtenir une fréquence maximale renforcée de 3,5 GHz. Les tailles de la série Dadsv5 offrent une combinaison de processeur virtuel, de mémoire et de stockage temporaire adaptée à la plupart des charges de travail de production. Ces nouvelles machines virtuelles disposent d’un stockage local 50 % plus volumineux, ainsi que de meilleures IOPS de disque local en lecture et en écriture par rapport aux tailles [Dav4/Dasv4](dav4-dasv4-series.md) avec des machines virtuelles [Gen2](generation-2.md).
 
 Les machines virtuelles de la série Dadsv5 prennent en charge les types de disques SSD Standard, HDD Standard et SSD Premium. Vous pouvez également attacher un stockage Disque Ultra en fonction de sa disponibilité régionale. Le stockage sur disque de données est facturé séparément des machines virtuelles. [Consultez les prix des disques](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 
-[Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
+[Stockage Premium](premium-storage-performance.md) : Pris en charge <br>
 [Mise en cache du Stockage Premium](premium-storage-performance.md) : Pris(e) en charge <br>
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge <br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge <br>

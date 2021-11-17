@@ -1,5 +1,5 @@
 ---
-title: Démarrage rapide - Déployer votre première application dans Azure Spring Cloud
+title: 'Démarrage rapide : Déployer votre première application sur Azure Spring Cloud'
 description: Dans ce guide de démarrage rapide, nous déployons une application sur Azure Spring Cloud.
 author: karlerickson
 ms.service: spring-cloud
@@ -8,14 +8,14 @@ ms.date: 10/18/2021
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bdd778f9bad5bbafb48aa52c8059cdeadd3a0fc5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 88230912f04316b175feb4910f0b3e6b2e907238
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241264"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853735"
 ---
-# <a name="quickstart-deploy-your-first-application-in-azure-spring-cloud"></a>Démarrage rapide : Déployer votre première application dans Azure Spring Cloud
+# <a name="quickstart-deploy-your-first-application-to-azure-spring-cloud"></a>Démarrage rapide : Déployer votre première application sur Azure Spring Cloud
 
 ::: zone pivot="programming-language-csharp"
 Ce guide de démarrage rapide décrit comment déployer une petite application pour qu’elle s’exécute sur Azure Spring Cloud.
@@ -427,7 +427,7 @@ La procédure suivante génère et déploie l’application en utilisant Azure C
     mvn clean package -DskipTests
     ```
 
-1. Créez l’application avec un point de terminaison public affecté. Si vous avez sélectionné Java version 11 pendant la génération du projet Spring Cloud, ajoutez le commutateur `--runtime-version=Java_11`.
+1. Créez l’application avec un point de terminaison public affecté. Si vous avez sélectionné Java version 11 lors de la génération du projet Spring Cloud, incluez le commutateur `--runtime-version=Java_11`.
 
     ```azurecli
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
@@ -542,7 +542,7 @@ az group delete --name <your resource group name> --yes
 Dans ce démarrage rapide, vous avez appris comment :
 
 > [!div class="checklist"]
-> * Générer un projet Azure Spring Cloud de base
+> * Générer un projet Spring Cloud de base
 > * Provisionner une instance de service
 > * Générer et déployer l’application avec un point de terminaison public
 > * Effectuer le streaming des journaux en temps réel
@@ -550,6 +550,6 @@ Dans ce démarrage rapide, vous avez appris comment :
 Pour savoir comment utiliser les autres fonctionnalités Azure Spring, passez à la série de guides de démarrage rapide qui déploie un exemple d’application dans Azure Spring Cloud :
 
 > [!div class="nextstepaction"]
-> [Créer et exécuter des microservices](./quickstart-sample-app-introduction.md)
+> [Créer et exécuter des applications](./quickstart-sample-app-introduction.md)
 
 D’autres exemples sont disponibles sur GitHub : [Exemples Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

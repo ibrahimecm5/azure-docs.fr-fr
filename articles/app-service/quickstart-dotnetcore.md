@@ -3,19 +3,19 @@ title: 'Démarrage rapie : Déployer une application web ASP.NET'
 description: Découvrez comment exécuter des applications web dans Azure App Service en déployant votre première application ASP.NET.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 10/26/2021
+ms.date: 11/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-ide
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 1f50ac2ef41186bc1799fce56ba6fd424f6fdd26
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ad55a02639fc4bf4ce67c724200f46a4544c128a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131455989"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055266"
 ---
 <!-- NOTES:
 
@@ -25,11 +25,11 @@ should be able to guide .NET devs, whether they're app is .NET Core, .NET, or .N
 
 As a .NET developer, when choosing an IDE and .NET TFM - you map to various OS requirements.
 For example, if you choose Visual Studio - you're developing the app on Windows, but you can still
-target cross-platform with .NET 5.0.
+target cross-platform with .NET 6.0.
 
 | .NET / IDE         | Visual Studio | Visual Studio for Mac | Visual Studio Code | Command line   |
 |--------------------|---------------|-----------------------|--------------------|----------------|
-| .NET 5.0           | Windows       | macOS                 | Cross-platform     | Cross-platform |
+| .NET 6.0           | Windows       | macOS                 | Cross-platform     | Cross-platform |
 | .NET Framework 4.8 | Windows       | N/A                   | Windows            | Windows        |
 
 -->
@@ -51,14 +51,23 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 
 :::zone target="docs" pivot="development-environment-vs"
 
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
+
 - Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/dotnet).
-- <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2019</a> avec la charge de travail **Développement ASP.NET et web**.
+- <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2022</a> avec la charge de travail **Développement web et ASP.NET**.
 
-    Si vous avez déjà installé Visual Studio 2019 :
+### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
-    - Installez les dernières mises à jour dans Visual Studio en sélectionnant **Aide** > **Rechercher les mises à jour**.
-    - Ajoutez la charge de travail en sélectionnant **Outils** > **Obtenir des outils et des fonctionnalités**.
+- Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/dotnet).
+- <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2022</a> avec la charge de travail **Développement web et ASP.NET** (assurez-vous que la case à cocher facultative **.NET Framework project and item templates** [Modèles de projet et d’élément .NET Framework] est sélectionnée).
 
+-----
+
+Si vous avez déjà installé Visual Studio 2022 :
+
+1. Installez les dernières mises à jour dans Visual Studio en sélectionnant **Aide** > **Rechercher les mises à jour**.
+1. Ajoutez la charge de travail en sélectionnant **Outils** > **Obtenir des outils et des fonctionnalités**.
+    
 :::zone-end
 
 :::zone target="docs" pivot="development-environment-vscode"
@@ -67,9 +76,9 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 - <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio Code</a>.
 - Extension <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack" target="_blank">Azure Tools</a>.
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Installez la dernière version du kit SDK .NET 5.0</a>.
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank"> Installez la dernière version du kit SDK .NET 6.0. </a>
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -90,16 +99,16 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 - <a href="/cli/azure/install-azure-cli" target="_blank">Interface de ligne de commande Azure</a>.
 - Kit SDK .NET (avec runtime et CLI).
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Installez la dernière version du kit SDK .NET 5.0</a>.
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank"> Installez la dernière version du kit SDK .NET 6.0. </a>
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Installez le dernier kit SDK .NET 5.0. </a> et <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> le .NET Framework 4.8 Developer Pack</a>.
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank"> Installez la dernière version du kit SDK .NET 6.0</a> et <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> .NET Framework 4.8 Developer Pack. </a>
 
 > [!NOTE]
-> Les composants [.NET CLI](/dotnet/core/tools) et .NET 5.0 sont tous deux multiplateformes, mais pas .NET Framework. Si vous développez des applications .NET Framework avec l’interface CLI .NET, envisagez d’utiliser un ordinateur Windows pour satisfaire les dépendances de build. .NET 5.0 est multiplateforme.
+> Les composants [.NET CLI](/dotnet/core/tools) et .NET 6.0 sont tous deux multiplateformes, mais pas .NET Framework. Si vous développez des applications .NET Framework avec l’interface CLI .NET, envisagez d’utiliser un ordinateur Windows pour satisfaire les dépendances de build. .NET 6.0 est multiplateforme.
 
 ---
 
@@ -113,16 +122,16 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 - <a href="/powershell/azure/install-az-ps" target="_blank">Azure PowerShell</a>.
 - Kit SDK .NET (avec runtime et CLI).
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Installez la dernière version du kit SDK .NET 5.0</a>.
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank"> Installez la dernière version du kit SDK .NET 6.0. </a>
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
-<a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Installez le dernier kit SDK .NET 5.0. </a> et <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> le .NET Framework 4.8 Developer Pack</a>.
+<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank"> Installez la dernière version du kit SDK .NET 6.0</a> et <a href="https://dotnet.microsoft.com/download/dotnet-framework/net48" target="_blank"> .NET Framework 4.8 Developer Pack. </a>
 
 > [!NOTE]
-> [Azure PowerShell](/powershell/azure/) et .NET 5.0 sont tous deux multiplateformes, mais pas .NET Framework. Si vous développez des applications .NET Framework avec l’interface CLI .NET, envisagez d’utiliser un ordinateur Windows pour satisfaire les dépendances de build.
+> [Azure PowerShell](/powershell/azure/) et .NET 6.0 sont tous deux multiplateformes, mais pas .NET Framework. Si vous développez des applications .NET Framework avec l’interface CLI .NET, envisagez d’utiliser un ordinateur Windows pour satisfaire les dépendances de build.
 
 ---
 
@@ -132,22 +141,22 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 
 :::zone target="docs" pivot="development-environment-vs"
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
 1. Ouvrez Visual Studio, puis sélectionnez **Créer un projet**.
 1. Dans **Créer un projet**, recherchez et choisissez **Application web ASP.NET Core**, puis sélectionnez **Suivant**.
 1. Dans **Configurer votre nouveau projet**, nommez l’application _MyFirstAzureWebApp_, puis sélectionnez **Suivant**.
 
-   :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio : configurez l’application web ASP.NET 5.0." border="true":::
+   :::image type="content" source="./media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio : configurez l’application web ASP.NET 6.0." lightbox="media/quickstart-dotnet/configure-webapp-net.png" border="true":::
 
-1. Sélectionnez **.NET Core 5.0 (version actuelle)** .
+1. Sélectionnez **.NET Core 6.0 (prise en charge à long terme)** .
 1. Assurez-vous que **Type d’authentification** est défini sur **Aucun**. Sélectionnez **Create** (Créer).
 
-   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-net50.png" alt-text="Visual Studio : informations supplémentaires lors de la sélection de .NET Core 5.0." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/vs-additional-info-net60.png" alt-text="Visual Studio : informations supplémentaires lors de la sélection de .NET Core 6.0." lightbox="media/quickstart-dotnet/vs-additional-info-net60.png" border="true":::
 
 1. Dans le menu Visual Studio, sélectionnez **Déboguer** > **Démarrer sans débogage** pour exécuter l’application web localement.
 
-   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio : ASP.NET Core 5.0, exécution locale." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+   :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio : ASP.NET Core 6.0, exécution locale." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -155,12 +164,12 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 1. Dans **Créer un projet**, recherchez et choisissez **Application web ASP.NET (.NET Framework)** , puis sélectionnez **Suivant**.
 1. Dans **Configurer votre nouveau projet**, nommez l’application _MyFirstAzureWebApp_, puis sélectionnez **Créer**.
 
-   :::image type="content" source="media/quickstart-dotnet/configure-webapp-netframework48.png" alt-text="Visual Studio : configurez l’application web ASP.NET Framework 4.8." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/configure-webapp-netframework48.png" alt-text="Visual Studio : configurez l’application web ASP.NET Framework 4.8." lightbox="media/quickstart-dotnet/configure-webapp-netframework48.png" border="true":::
 
 1. Sélectionnez le modèle **MVC**.
 1. Vérifiez que l’option **Authentification** est définie sur **Aucune authentification**. Sélectionnez **Create** (Créer).
 
-   :::image type="content" source="media/quickstart-dotnet/vs-mvc-no-auth-netframework48.png" alt-text="Visual Studio : sélectionnez le modèle MVC." border="true":::
+   :::image type="content" source="media/quickstart-dotnet/vs-mvc-no-auth-netframework48.png" alt-text="Visual Studio : sélectionnez le modèle MVC." lightbox="media/quickstart-dotnet/vs-mvc-no-auth-netframework48.png" border="true":::
 
 1. Dans le menu Visual Studio, sélectionnez **Déboguer** > **Démarrer sans débogage** pour exécuter l’application web localement.
 
@@ -172,47 +181,55 @@ Dans ce guide de démarrage rapide, vous allez apprendre à créer et déployer 
 
 :::zone target="docs" pivot="development-environment-vscode"
 
-Créez un dossier nommé _MyFirstAzureWebApp_, puis ouvrez-le dans Visual Studio Code. Ouvrez la fenêtre <a href="https://code.visualstudio.com/docs/editor/integrated-terminal" target="_blank">Terminal</a> et créez une application web .NET à l’aide de la commande [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options).
+1. Dans la fenêtre de terminal, créez un dossier nommé _MyFirstAzureWebApp_, puis ouvrez-le dans Visual Studio Code. 
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ```terminal
+    mkdir MyFirstAzureWebApp
+    code MyFirstAzureWebApp
+    ```
 
-```dotnetcli
-dotnet new webapp -f net5.0
-```
+1. Dans Visual Studio Code, ouvrez la fenêtre de <a href="https://code.visualstudio.com/docs/editor/integrated-terminal" target="_blank">terminal</a> en tapant `Ctrl` + `` ` ``.
 
-### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+1. Dans le terminal de Visual Studio Code, créez une application web .NET à l’aide de la commande [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options).
 
-```dotnetcli
-dotnet new webapp --target-framework-override net48
-```
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
+    
+    ```dotnetcli
+    dotnet new webapp -f net6.0
+    ```
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    ```dotnetcli
+    dotnet new webapp --target-framework-override net48
+    ```
+    
+    > [!IMPORTANT]
+    > L'indicateur `--target-framework-override` est un remplacement de texte de forme libre du moniker de framework cible (TFM) pour le projet et *ne garantit pas* que le modèle de prise en charge existe ou qu’il est compilé. Vous pouvez uniquement générer et exécuter des applications .NET Framework sur Windows.
+    
+    ---
 
-> [!IMPORTANT]
-> L'indicateur `--target-framework-override` est un remplacement de texte de forme libre du moniker de framework cible (TFM) pour le projet et *ne garantit pas* que le modèle de prise en charge existe ou qu’il est compilé. Vous pouvez uniquement générer et exécuter des applications .NET Framework sur Windows.
+1. À partir du **Terminal** de Visual Studio Code, exécutez l’application localement à l’aide de la commande [`dotnet run`](/dotnet/core/tools/dotnet-run).
 
----
+    ```dotnetcli
+    dotnet run --urls=https://localhost:5001/
+    ```
 
-À partir du **Terminal** de Visual Studio Code, exécutez l’application localement à l’aide de la commande [`dotnet run`](/dotnet/core/tools/dotnet-run).
+1. Ouvrez un navigateur web et accédez à l’application à l’adresse `https://localhost:5001`.
 
-```dotnetcli
-dotnet run
-```
-
-Ouvrez un navigateur web et accédez à l’application à l’adresse `https://localhost:5001`.
-
-
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
-
-Vous noterez que le modèle d’application web ASP.NET Core 5.0 s’affiche sur la page.
-
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code : exécutez .NET 5.0 dans le navigateur localement." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
-
-### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
-
-Vous noterez que le modèle d’application web ASP.NET Framework 4.8 s’affiche sur la page.
-
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code : exécutez .NET 4.8 dans le navigateur localement." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
-
----
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
+    
+    Vous noterez que le modèle d’application web ASP.NET Core 6.0 s’affiche dans la page.
+    
+    :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code : exécutez .NET 6.0 dans le navigateur localement." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    Vous noterez que le modèle d’application web ASP.NET Framework 4.8 s’affiche sur la page.
+    
+    :::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code : exécutez .NET 4.8 dans le navigateur localement." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
+    
+    ---
 
 :::zone-end
 
@@ -220,50 +237,50 @@ Vous noterez que le modèle d’application web ASP.NET Framework 4.8 s’affic
 :::zone target="docs" pivot="development-environment-cli,development-environment-ps"
 <!-- markdownlint-enable MD044 -->
 
-Sur votre ordinateur, ouvrez une fenêtre de terminal dans un répertoire de travail. Créez une application web .NET à l’aide de la commande [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options), puis modifiez les répertoires dans l’application nouvellement créée.
+1. Sur votre ordinateur, ouvrez une fenêtre de terminal dans un répertoire de travail. Créez une application web .NET à l’aide de la commande [`dotnet new webapp`](/dotnet/core/tools/dotnet-new#web-options), puis modifiez les répertoires dans l’application nouvellement créée.
 
-<!-- Please keep the following commands in two lines instead of one && separated line. The latter doesn't work in PowerShell -->
+    <!-- Please keep the following commands in two lines instead of one && separated line. The latter doesn't work in PowerShell -->
+    
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
+    
+    ```dotnetcli
+    dotnet new webapp -n MyFirstAzureWebApp --framework net6.0
+    cd MyFirstAzureWebApp
+    ```
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    ```dotnetcli
+    dotnet new webapp -n MyFirstAzureWebApp --target-framework-override net48
+    cd MyFirstAzureWebApp
+    ```
+    
+    > [!IMPORTANT]
+    > L'indicateur `--target-framework-override` est un remplacement de texte de forme libre du moniker de framework cible (TFM) pour le projet et *ne garantit pas* que le modèle de prise en charge existe ou qu’il est compilé. Vous pouvez uniquement créer des applications .NET Framework sur Windows.
+    
+    ---
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+1. À partir de la même session de terminal, exécutez l’application localement à l’aide de la commande [`dotnet run`](/dotnet/core/tools/dotnet-run).
 
-```dotnetcli
-dotnet new webapp -n MyFirstAzureWebApp --framework net5.0
-cd MyFirstAzureWebApp
-```
+    ```dotnetcli
+    dotnet run --urls=https://localhost:5001/
+    ```
 
-### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+1. Ouvrez un navigateur web et accédez à l’application à l’adresse `https://localhost:5001`.
 
-```dotnetcli
-dotnet new webapp -n MyFirstAzureWebApp --target-framework-override net48
-cd MyFirstAzureWebApp
-```
-
-> [!IMPORTANT]
-> L'indicateur `--target-framework-override` est un remplacement de texte de forme libre du moniker de framework cible (TFM) pour le projet et *ne garantit pas* que le modèle de prise en charge existe ou qu’il est compilé. Vous pouvez uniquement créer des applications .NET Framework sur Windows.
-
----
-
-À partir de la même session de terminal, exécutez l’application localement à l’aide de la commande [`dotnet run`](/dotnet/core/tools/dotnet-run).
-
-```dotnetcli
-dotnet run
-```
-
-Ouvrez un navigateur web et accédez à l’application à l’adresse `https://localhost:5001`.
-
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
-
-Vous noterez que le modèle d’application web ASP.NET Core 5.0 s’affiche sur la page.
-
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code : ASP.NET Core 5.0 dans le navigateur local." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
-
-### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
-
-Vous noterez que le modèle d’application web ASP.NET Framework 4.8 s’affiche sur la page.
-
-:::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code : ASP.NET Framework 4.8 dans le navigateur local." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
-
----
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
+    
+    Vous noterez que le modèle d’application web ASP.NET Core 6.0 s’affiche dans la page.
+    
+    :::image type="content" source="media/quickstart-dotnet/local-webapp-net.png" alt-text="Visual Studio Code : ASP.NET Core 6.0 dans le navigateur local." lightbox="media/quickstart-dotnet/local-webapp-net.png" border="true":::
+    
+    ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
+    
+    Vous noterez que le modèle d’application web ASP.NET Framework 4.8 s’affiche sur la page.
+    
+    :::image type="content" source="media/quickstart-dotnet/local-webapp-net48.png" alt-text="Visual Studio Code : ASP.NET Framework 4.8 dans le navigateur local." lightbox="media/quickstart-dotnet/local-webapp-net48.png" border="true":::
+    
+    ---
 
 :::zone-end
 
@@ -276,27 +293,27 @@ Lors de la configuration du service d’application, vous allez créer :
 - un nouveau [groupe de ressources](../azure-resource-manager/management/overview.md#terminology) pour contenir toutes les ressources Azure du service ;
 - un nouveau [plan d’hébergement](overview-hosting-plans.md) qui spécifie l’emplacement, la taille et les fonctionnalités de la batterie de serveurs web qui héberge votre application.
 
-Pour créer votre service d’application et publier votre application web, suivez ces étapes :
+Procédez comme suit pour créer vos ressources App Service et publier votre projet :
 
 :::zone target="docs" pivot="development-environment-vs"
 
 1. Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le projet **MyFirstAzureWebApp**, puis sélectionnez **Publier**.
 1. Dans **Publier**, sélectionnez **Azure**, puis **Suivant**.
 
-    :::image type="content" source="media/quickstart-dotnet/vs-publish-target-Azure.png" alt-text="Visual Studio : publiez l’application web et ciblez Azure." border="true":::
+    :::image type="content" source="media/quickstart-dotnet/vs-publish-target-Azure.png" alt-text="Visual Studio : publiez l’application web et ciblez Azure." lightbox="media/quickstart-dotnet/vs-publish-target-Azure.png" border="true":::
+
+1. Choisissez la **cible spécifique**, **Azure App Service (Linux)** ou **Azure App Service (Windows)** . Cliquez ensuite sur **Suivant**.
+
+    > [!IMPORTANT]
+    > Lorsque vous ciblez ASP.NET Framework 4.8, utilisez **Azure App Service (Windows)** .
 
 1. Vos options varient si vous êtes déjà connecté à Azure et si vous avez un compte Visual Studio lié à un compte Azure. Sélectionnez **Ajouter un compte** ou **Connexion** pour vous connecter à votre abonnement Azure. Si vous êtes déjà connecté, sélectionnez le compte souhaité.
 
-    :::image type="content" source="media/quickstart-dotnetcore/sign-in-Azure-vs2019.png" border="true" alt-text="Visual Studio : sélectionnez la boîte de dialogue de connexion à Azure.":::
-
-1. Choisissez la **cible spécifique**, **Azure App Service (Linux)** ou **Azure App Service (Windows)** .
-
-    > [!IMPORTANT]
-    > Lorsque vous ciblez ASP.NET Framework 4.8, vous utilisez **Azure App Service (Windows)** .
+    :::image type="content" source="media/quickstart-dotnet/sign-in-azure.png" border="true" alt-text="Visual Studio : sélectionnez la boîte de dialogue de connexion à Azure." lightbox="media/quickstart-dotnet/sign-in-azure.png" :::
 
 1. À droite de **Instances App Service**, sélectionnez **+** .
 
-    :::image type="content" source="media/quickstart-dotnetcore/publish-new-app-service.png" border="true" alt-text="Visual Studio : boîte de dialogue Nouvelle application App Service.":::
+    :::image type="content" source="media/quickstart-dotnet/publish-new-app-service.png" border="true" alt-text="Visual Studio : boîte de dialogue Nouvelle application App Service." lightbox="media/quickstart-dotnet/publish-new-app-service.png" :::
 
 1. Pour **Abonnement**, acceptez l’abonnement qui est listé ou sélectionnez-en un nouveau dans la liste déroulante.
 1. Pour **Groupe de ressources**, sélectionnez **Nouveau**. Dans **Nouveau nom du groupe de ressources**, entrez *myResourceGroup*, puis sélectionnez **OK**.
@@ -309,23 +326,25 @@ Pour créer votre service d’application et publier votre application web, suiv
     | **Lieu**     | *Europe Ouest*            | Centre de données dans lequel l’application web est hébergée.                           |
     | **Taille**         | *Gratuit*                   | Le [niveau tarifaire][app-service-pricing-tier] détermine les fonctionnalités d’hébergement. |
 
-    :::image type="content" source="media/quickstart-dotnetcore/create-new-hosting-plan-vs2019.png" border="true" alt-text="Créer un plan d’hébergement":::
+    :::image type="content" source="media/quickstart-dotnet/create-new-hosting-plan.png" border="true" alt-text="Créer un plan d’hébergement" lightbox="media/quickstart-dotnet/create-new-hosting-plan.png" :::
 
 1. Dans **Nom**, entrez un nom d’application unique qui inclut uniquement les caractères valides `a-z`, `A-Z`, `0-9` et `-`. Vous pouvez accepter le nom unique généré automatiquement. L’URL de l’application web est `http://<app-name>.azurewebsites.net`, où `<app-name>` est le nom de votre application.
 1. Sélectionnez **Créer** pour créer les ressources Azure.
 
-    :::image type="content" source="media/quickstart-dotnetcore/web-app-name-vs2019.png" border="true" alt-text="Visual Studio : boîte de dialogue Créer les ressources d’application.":::
+    :::image type="content" source="media/quickstart-dotnet/web-app-name.png" border="true" alt-text="Visual Studio : boîte de dialogue Créer les ressources d’application." lightbox="media/quickstart-dotnet/web-app-name.png" :::
 
-   Une fois l’Assistant terminé, les ressources Azure sont créées pour vous et vous êtes prêt à publier.
+   Une fois l’Assistant terminé, les ressources Azure sont créées pour vous et vous êtes prêt à publier votre projet ASP.NET Core.
 
-1. Sélectionnez **Terminer** pour fermer l’Assistant.
-1. Dans la page **Publier**, sélectionnez **Publier**. Visual Studio génère, empaquète et publie l’application sur Azure, puis la démarre dans le navigateur par défaut.
+1. Dans la boîte de dialogue **Publier**, assurez-vous que votre nouvelle application App Service est sélectionnée dans **Instance App Service**, puis sélectionnez **Terminer**. Visual Studio crée un profil de publication pour vous pour l’application App Service sélectionnée.
+1. Dans la page **Publier**, sélectionnez **Publier**. Si vous voyez un message d’avertissement, cliquez sur **Continuer**.
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    Visual Studio génère, empaquète et publie l’application sur Azure, puis la démarre dans le navigateur par défaut.
 
-    L’application web ASP.NET Core 5.0 s’affiche sur la page.
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio : Application web ASP.NET Core 5.0 dans Azure.":::
+    L’application web ASP.NET Core 6.0 s’affiche dans la page.
+
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio : application web ASP.NET Core 6.0 dans Azure." :::
 
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -339,38 +358,36 @@ Pour créer votre service d’application et publier votre application web, suiv
 
 :::zone target="docs" pivot="development-environment-vscode"
 
-Pour déployer votre application Web à l’aide de l’extension Azure Tools Visual Studio :
+<!-- :::image type="content" source="media/quickstart-dotnet/vscode-sign-in-to-Azure.png" alt-text="Visual Studio Code - Sign in to Azure." border="true"::: -->
 
 1. Dans Visual Studio Code, ouvrez la [**palette de commandes**](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>P</kbd>.
 1. Recherchez et sélectionnez « Azure App Service : Déployer sur l’application Web ».
 1. Répondez aux invites de la façon suivante :
 
-    - Sélectionnez *MyFirstAzureWebApp* en tant que dossier à déployer.
-    - Lorsque vous y êtes invité, sélectionnez **Ajouter une configuration**.
-    - Si vous y êtes invité, connectez-vous à votre compte Azure existant.
-
-    :::image type="content" source="media/quickstart-dotnet/vscode-sign-in-to-Azure.png" alt-text="Visual Studio Code : connectez-vous à Azure." border="true":::
-
-    - Sélectionnez votre **abonnement**.
-    - Sélectionnez **Créer une application Web...Avancé**.
-    - Pour **Entrer un nom global unique**, utilisez un nom unique dans Azure (*les caractères valides sont `a-z`, `0-9` et `-`* ). Un bon modèle consiste à utiliser une combinaison du nom de votre société et d’un identificateur d’application.
-    - Sélectionnez **Create new resource group** (Créer un groupe de ressources), puis indiquez un nom similaire à `myResourceGroup`.
-    - Lorsque vous êtes invité à **sélectionner une pile d’exécution** :
-      - Pour *.NET 5.0*, sélectionnez **.NET 5**
+    1. Sélectionnez *MyFirstAzureWebApp* en tant que dossier à déployer.
+    1. Lorsque vous y êtes invité, sélectionnez **Ajouter une configuration**.
+    1. Si vous y êtes invité, connectez-vous à votre compte Azure.
+    1. Sélectionnez votre **abonnement**.
+    1. Sélectionnez **Créer une application Web...Avancé**.
+    1. Pour **Entrer un nom global unique**, utilisez un nom unique dans Azure (*les caractères valides sont `a-z`, `0-9` et `-`* ). Un bon modèle consiste à utiliser une combinaison du nom de votre société et d’un identificateur d’application.
+    1. Sélectionnez **Create new resource group** (Créer un groupe de ressources), puis indiquez un nom similaire à `myResourceGroup`.
+    1. Lorsque vous êtes invité à **sélectionner une pile d’exécution** :
+      - Pour *.NET 6.0*, sélectionnez **.NET 6**
       - Pour *.NET Framework 4.8*, sélectionnez **ASP.NET V4.8**
-    - Sélectionnez un système d’exploitation (Windows ou Linux).
+    1. Sélectionnez un système d’exploitation (Windows ou Linux).
         - Pour *.NET Framework 4.8*, Windows est sélectionné implicitement.
-    - Sélectionnez **Créer un plan App Service**, indiquez un nom et sélectionnez le **niveau tarifaire** [F1 Gratuit][app-service-pricing-tier].
-    - Pour la ressource Application Insights, sélectionnez **Skip for now** (Ignorer pour le moment).
-    - Sélectionnez un emplacement près de chez vous.
+    1. Sélectionnez un emplacement près de chez vous.
+    1. Sélectionnez **Créer un plan App Service**, indiquez un nom et sélectionnez le **niveau tarifaire** [F1 Gratuit][app-service-pricing-tier].
+    1. Pour la ressource Application Insights, sélectionnez **Skip for now** (Ignorer pour le moment).
 
+1. Dans le menu contextuel **Toujours déployer l’espace de travail « MyFirstAzureWebApp » sur \<app-name>** , sélectionnez **Oui**. Ainsi, tant que vous êtes dans le même espace de travail, Visual Studio Code se déploie chaque fois sur la même application App Service.
 1. Une fois la publication terminée, sélectionnez **Parcourir le site web** dans la notification et sélectionnez **Ouvrir** lorsque vous y êtes invité.
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-    L’application web ASP.NET Core 5.0 s’affiche sur la page.
+    L’application web ASP.NET Core 6.0 s’affiche dans la page.
 
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code : Application web ASP.NET Core 5.0 dans Azure.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="Visual Studio Code : application web ASP.NET Core 6.0 dans Azure.":::
 
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -412,11 +429,11 @@ Pour déployer votre application Web à l’aide de l’extension Azure Tools Vi
 
 1. Ouvrez un navigateur web et accédez à l’URL :
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
     
-    L’application web ASP.NET Core 5.0 s’affiche sur la page.
+    L’application web ASP.NET Core 6.0 s’affiche dans la page.
     
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI : Application web ASP.NET Core 5.0 dans Azure.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI : application web ASP.NET Core 6.0 dans Azure.":::
     
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
     
@@ -481,10 +498,10 @@ Pour déployer votre application Web à l’aide de l’extension Azure Tools Vi
 
 1. Accédez au répertoire de la version et créez un fichier zip à partir de son contenu :
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
     ```powershell-interactive
-    cd bin\Release\net5.0\publish
+    cd bin\Release\net6.0\publish
     Compress-Archive -Path * -DestinationPath deploy.zip
     ```
 
@@ -508,11 +525,11 @@ Pour déployer votre application Web à l’aide de l’extension Azure Tools Vi
 
 1. Ouvrez un navigateur web et accédez à l’URL :
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
     
-    L’application web ASP.NET Core 5.0 s’affiche sur la page.
+    L’application web ASP.NET Core 6.0 s’affiche dans la page.
     
-    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI : Application web ASP.NET Core 5.0 dans Azure.":::
+    :::image type="content" source="media/quickstart-dotnet/Azure-webapp-net.png" lightbox="media/quickstart-dotnet/Azure-webapp-net.png" border="true" alt-text="CLI : application web ASP.NET Core 6.0 dans Azure.":::
     
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
     
@@ -547,11 +564,11 @@ Pour mettre à jour et redéployer votre application web, suivez ces étapes :
 
     Une fois la publication terminée, Visual Studio lance un navigateur en accédant à l’URL de l’application web.
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-    L’application web mise à jour ASP.NET Core 5.0 s’affiche sur la page.
+    L’application web ASP.NET Core 6.0 mise à jour s’affiche dans la page.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio : Application web mise à jour ASP.NET Core 5.0 dans Azure.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio : application web ASP.NET Core 6.0 mise à jour dans Azure.":::
 
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -577,17 +594,16 @@ Pour mettre à jour et redéployer votre application web, suivez ces étapes :
 
    Enregistrez vos modifications.
 
-1. Ouvrez la **barre latérale** Visual Studio Code, sélectionnez l’icône **Azure** pour développer ses options.
-1. Sous le nœud **APP SERVICE**, développez votre abonnement et cliquez avec le bouton droit sur **MyFirstAzureWebApp**.
-1. Sélectionnez **Déployer sur l’application Web...** .
+1. Dans Visual Studio Code, ouvrez la [**palette de commandes**](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>P</kbd>.
+1. Recherchez et sélectionnez « Azure App Service : Déployer sur l’application Web ». N’oubliez pas que vous avez indiqué à Visual Studio Code de mémoriser l’application sur laquelle déployer votre espace de travail dans une étape antérieure.
 1. Lorsque vous y êtes invité, sélectionnez **Déployer**.
 1. Une fois la publication terminée, sélectionnez **Parcourir le site web** dans la notification et sélectionnez **Ouvrir** lorsque vous y êtes invité.
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-    L’application web mise à jour ASP.NET Core 5.0 s’affiche sur la page.
+    L’application web ASP.NET Core 6.0 mise à jour s’affiche dans la page.
 
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code : Application web mise à jour ASP.NET Core 5.0 dans Azure.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="Visual Studio Code : application web ASP.NET Core 6.0 mise à jour dans Azure.":::
 
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -614,9 +630,9 @@ Dans le répertoire local, ouvrez le fichier *Index.cshtml*. Remplacez le premie
 
 Enregistrez vos modifications, puis redéployez l’application en réexécutant la commande `az webapp up` :
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-ASP.NET Core 5.0 est multiplateforme, selon votre précédent déploiement, remplacez `<os>` par `linux` ou `windows`.
+ASP.NET Core 6.0 est multiplateforme ; selon votre précédent déploiement, remplacez `<os>` par `linux` ou `windows`.
 
 ```azurecli
 az webapp up --os-type <os>
@@ -639,11 +655,11 @@ Cette commande utilise des valeurs qui sont mises en cache localement dans le fi
 
 Une fois le déploiement terminé, revenez à la fenêtre du navigateur ouverte à l’étape **Accéder à l’application**, puis cliquez sur Actualiser.
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
-L’application web mise à jour ASP.NET Core 5.0 s’affiche sur la page.
+L’application web ASP.NET Core 6.0 mise à jour s’affiche dans la page.
 
-:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI : Application web mise à jour ASP.NET Core 5.0 dans Azure.":::
+:::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI : application web ASP.NET Core 6.0 mise à jour dans Azure.":::
 
 ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
 
@@ -676,10 +692,10 @@ L’application web mise à jour ASP.NET Framework 4.8 s’affiche sur la page.
 
 1. Accédez au répertoire de la version et créez un fichier zip à partir de son contenu :
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
     ```powershell-interactive
-    cd bin\Release\net5.0\publish
+    cd bin\Release\net6.0\publish
     Compress-Archive -Path * -DestinationPath deploy.zip
     ```
 
@@ -703,11 +719,11 @@ L’application web mise à jour ASP.NET Framework 4.8 s’affiche sur la page.
 
 1. Une fois le déploiement terminé, revenez à la fenêtre du navigateur ouverte à l’étape **Accéder à l’application**, puis cliquez sur Actualiser.
 
-    ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+    ### <a name="net-60"></a>[.NET 6.0](#tab/net60)
     
-    L’application web mise à jour ASP.NET Core 5.0 s’affiche sur la page.
+    L’application web ASP.NET Core 6.0 mise à jour s’affiche dans la page.
     
-    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI : Application web mise à jour ASP.NET Core 5.0 dans Azure.":::
+    :::image type="content" source="media/quickstart-dotnet/updated-Azure-webapp-net.png" lightbox="media/quickstart-dotnet/updated-Azure-webapp-net.png" border="true" alt-text="CLI : application web ASP.NET Core 6.0 mise à jour dans Azure.":::
     
     ### <a name="net-framework-48"></a>[.NET Framework 4.8](#tab/netframework48)
     
@@ -759,7 +775,7 @@ La page **Vue d’ensemble** de votre application web contient des options de ge
 
 Dans ce guide de démarrage rapide, vous avez créé et déployé une application web ASP.NET dans Azure App Service.
 
-### <a name="net-50"></a>[.NET 5.0](#tab/net50)
+### <a name="net-60"></a>[.NET 6.0](#tab/net60)
 
 Passez à l’article suivant pour savoir comment créer une application .NET Core et la connecter à une base de données SQL :
 

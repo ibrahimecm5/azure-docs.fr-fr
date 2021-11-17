@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 57d211a7a080cc07d30a5810c4e1660c575acff3
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9dabeaa9dd8e22e63b356768e34ebf828ac43632
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123078240"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860689"
 ---
 Cet article liste les versions et les fonctionnalités de l’agent de provisionnement Azure Active Directory Connect qui ont été publiées. L’équipe Azure AD met régulièrement à jour l’agent d’approvisionnement avec de nouvelles fonctions et fonctionnalités. 
 
@@ -12,6 +12,15 @@ Microsoft offre une prise en charge directe de la version la plus récente de l�
 
 ## <a name="download-link"></a>Télécharger le lien
 Vous pouvez télécharger la dernière version de l’agent en utilisant [ce lien](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller).
+
+## <a name="115870"></a>1.1.587.0
+
+2 novembre 2021 – publié pour téléchargement
+
+Améliorations et nouvelles fonctionnalités
+
+- Cmdlet pour configurer la réécriture du mot de passe
+
 
 ## <a name="115840"></a>1.1.584.0 
 

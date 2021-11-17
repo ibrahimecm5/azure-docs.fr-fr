@@ -5,18 +5,14 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 907ae75b17bcb7496c2ad3e76a8e4da1bd44b1fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd68df35eed106edf707a8356e066e736aa913f7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728114"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470924"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Tutoriel : Résoudre les problèmes d’une application App Service avec Azure Monitor
-
-> [!NOTE]
-> L’intégration d’Azure Monitor à App Service est proposée en [préversion](https://aka.ms/appsvcblog-azmon).
->
 
 Ce tutoriel montre comment résoudre les problèmes liés à une application [App Service](overview.md) à l'aide d'[Azure Monitor](../azure-monitor/overview.md). L’exemple d’application inclut le code destiné à saturer la mémoire et à générer des erreurs HTTP 500. Il vous permet ainsi de diagnostiquer et de résoudre le problème à l’aide d’Azure Monitor. Quand vous aurez terminé, vous disposerez d’un exemple d’application s’exécutant dans App Service sur Linux intégré à [Azure Monitor](../azure-monitor/overview.md).
 
@@ -58,7 +54,7 @@ git remote add azure <url-from-app-webapp-create>
 git push azure main
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Configurer Azure Monitor (préversion)
+## <a name="configure-azure-monitor"></a>Configurer Azure Monitor
 
 ### <a name="create-a-log-analytics-workspace"></a>Créer un espace de travail Log Analytics
 
@@ -132,7 +128,7 @@ Dans le portail Azure, sélectionnez votre espace de travail Log Analytics.
 
 ### <a name="log-queries"></a>Requêtes dans les journaux
 
-Les requêtes de journal vous aident à tirer pleinement parti de la valeur des données collectées dans les journaux Azure Monitor. Vous utilisez des requêtes de journal pour identifier les journaux dans AppServiceHTTPLogs et AppServiceConsoleLogs. Pour plus d’informations sur les requêtes de journal, consultez la [vue d’ensemble des requêtes de journal](../azure-monitor/logs/log-query-overview.md).
+Les requêtes de journal vous permettent d’appliquer pleinement la valeur des données collectées dans les journaux d’activité Azure Monitor. Vous utilisez des requêtes de journal pour identifier les journaux dans AppServiceHTTPLogs et AppServiceConsoleLogs. Pour plus d’informations sur les requêtes de journal, consultez la [vue d’ensemble des requêtes de journal](../azure-monitor/logs/log-query-overview.md).
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>Visualiser AppServiceHTTPLogs en utilisant une requête de journal
 

@@ -7,13 +7,13 @@ ms.subservice: fhir
 ms.topic: tutorial
 ms.author: cavoeg
 author: caitlinv39
-ms.date: 08/06/2021
-ms.openlocfilehash: d4b6906cc646d6dd742c15b78feb8af1e83a56ce
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.date: 11/12/2021
+ms.openlocfilehash: 12f7cbac225cfe4e85d2df21c363d4c08fb0b4c6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779855"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494452"
 ---
 # <a name="da-vinci-pdex"></a>Da Vinci PDex
 
@@ -23,7 +23,7 @@ ms.locfileid: "122779855"
 dans ce didacticiel, nous allons passer en revue la configuration du service FHIR dans les api de santé Azure (par le biais du service FHIR) pour transmettre les tests [Touchstone](https://touchstone.aegis.net/touchstone/) pour le Guide d’implémentation de l' [Exchange de données du payeur de vinci Da](http://hl7.org/fhir/us/davinci-pdex/toc.html) (PDex gi).
 
 > [!NOTE]
-> Pour tous ces tests, nous allons les exécuter sur les tests JSON. Le service FHIR prend en charge JSON et XML, mais il n’a pas de points de terminaison distincts pour accéder à JSON ou XML. Pour cette raison, tous les tests XML échouent. Si vous souhaitez afficher l’instruction de fonctionnalité dans XML, vous devez simplement passer le \_ paramètre de format : \` obtenir {fhirurl}/Metadata ? \_ format = XML\`
+> Le service FHIR prend uniquement en charge JSON. Le service FHIR Open source de Microsoft prend en charge JSON et XML, et dans Open source, vous pouvez utiliser le paramètre _format pour afficher l’instruction de fonctionnalité XML : `GET {fhirurl}/metadata?_format=xml`
 
 ## <a name="touchstone-capability-statement"></a>Instruction de fonctionnalité Touchstone
 

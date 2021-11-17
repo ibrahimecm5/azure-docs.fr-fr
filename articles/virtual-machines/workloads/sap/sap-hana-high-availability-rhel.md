@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/08/2021
+ms.date: 11/02/2021
 ms.author: radeltch
-ms.openlocfilehash: fb99396b141ad2d9b8c15e5f250396d32ee9f46e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: e323b39c5164c1263ed12d5fa8965a692b0b952f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708724"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427909"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Haute disponibilité de SAP HANA sur les machines virtuelles Azure dans le système Red Hat Enterprise Linux
 
@@ -722,7 +722,7 @@ Vérifiez que l’état du cluster est OK et que toutes les ressources sont dém
 
 À compter de SAP HANA 2.0 SPS 01, SAP autorise des configurations activées par la lecture/actives pour la réplication système SAP HANA, où les systèmes secondaires de réplication système SAP HANA peuvent être utilisés activement pour les charges de travail à forte intensité de lecture. Pour prendre en charge une telle configuration dans un cluster, une deuxième adresse IP virtuelle est requise, ce qui permet aux clients d’accéder à la base de données SAP HANA activée par la lecture. Pour vous assurer que le site de réplication secondaire est toujours accessible après une prise en charge, le cluster doit déplacer l’adresse IP virtuelle avec le secondaire de la ressource SAPHana.
 
-Cette section décrit les étapes supplémentaires requises pour gérer la réplication système activée par la lecture/active HANA dans un cluster haute disponibilité Red Hat avec la deuxième adresse IP virtuelle.    
+Cette section décrit les étapes supplémentaires requises pour gérer la réplication système activée par la lecture/active HANA dans un cluster haute disponibilité Red Hat avec la deuxième adresse IP virtuelle.
 
 Avant de poursuivre, assurez-vous que le cluster haute disponibilité Red Hat est entièrement configuré en gérant la base de données SAP HANA tel que décrit dans les segments ci-dessus dans la documentation.  
 
@@ -781,10 +781,9 @@ pcs resource create secnc_HN1_03 ocf:heartbeat:azure-lb port=62603
 
 pcs resource group add g_secip_HN1_03 secnc_HN1_03 secvip_HN1_03
 
-RHEL 8.x: 
-pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-clone 4000
-RHEL 7.x:
-pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-master 4000
+pcs constraint location g_secip_HN1_03 rule score=INFINITY hana_hn1_sync_state eq SOK and hana_hn1_roles eq 4:S:master1:master:worker:master
+
+pcs constraint location g_secip_HN1_03 rule score=4000 hana_hn1_sync_state eq PRIM and hana_hn1_roles eq 4:P:master1:master:worker:master
 
 pcs property set maintenance-mode=false
 ```
@@ -814,13 +813,13 @@ Dans la section suivante, vous trouverez l’ensemble typique de tests de bascul
 
 Gardez à l’esprit le comportement de la seconde adresse IP virtuelle, lors du test d’un cluster HANA configuré avec un réplica secondaire accessible en lecture :
 
-1. Lorsque vous migrez la ressource de cluster **SAPHana_HN1_HDB03** vers **hn1-db-1**, la deuxième adresse IP virtuelle est déplacée vers l’autre serveur **hn1-db-0**. Si vous avez configuré AUTOMATED_REGISTER="false" et que la réplication du système HANA n’est pas inscrite automatiquement, la deuxième adresse IP virtuelle s’exécutera sur **hn1-db-0**, car le serveur est disponible et les services de cluster sont en ligne.  
+1. Lorsque vous migrez une ressource de cluster **SAPHana_HN1_03** vers un site secondaire **hn1-db-1**, la deuxième adresse IP virtuelle continue de s’exécuter sur le même site **hn1-db-1**. Si vous avez défini AUTOMATED_REGISTER="true" pour la ressource et que la réplication du système HANA est inscrite automatiquement sur **hn1-db-0**, votre deuxième adresse IP virtuelle est également déplacée vers **hn1-db-0**.
 
-2. Lors du test d’un incident de serveur, les deuxièmes ressources IP virtuelles (**rsc_secip_HN1_HDB03**) et la ressource de port de l’équilibreur de charge Azure (**rsc_secnc_HN1_HDB03**) s’exécutent sur le serveur principal avec les ressources IP virtuelles principales.  Si le serveur secondaire est défaillant, les applications qui sont connectées à la base de données HANA activée par la lecture se connectent à la base de données HANA primaire. Le comportement est normal, car vous ne voulez pas que les applications qui sont connectées à la base de données HANA activée par la lecture soient inaccessibles lorsque le serveur secondaire n’est pas disponible.
-
-3. Lorsque le serveur secondaire est disponible et que les services de cluster sont en ligne, la deuxième adresse IP virtuelle et les ressources de port sont automatiquement déplacées vers le serveur secondaire, même si la réplication du système HANA n’est peut-être pas inscrite comme secondaire. Vous devez vous assurer que vous inscrivez la base de données HANA secondaire comme étant accessible par la lecture avant de démarrer les services de cluster sur ce serveur. Vous pouvez configurer la ressource de cluster d’instance HANA pour enregistrer automatiquement le réplica secondaire en définissant le paramètre AUTOMATED_REGISTER=true.
+2. En cas de panne du serveur de test, les ressources de la deuxième adresse IP virtuelle (**secvip_HN1_03**) et la ressource du port de l’équilibreur de charge Azure (**secnc_HN1_03**) s’exécutent sur le serveur primaire avec les ressources de l’adresse IP virtuelle primaire. Ainsi, jusqu’à ce que le serveur secondaire soit arrêté, une application connectée à une base de données HANA activée en lecture se connecte à une base de données HANA primaire. Le comportement est normal, car vous ne voulez pas que des applications connectées à une base de données HANA activée en lecture soient inaccessibles tant que le serveur secondaire n’est pas disponible.
    
-4. Pendant le basculement et le secours, les connexions existantes pour les applications, à l’aide de la deuxième adresse IP virtuelle pour se connecter à la base de données HANA, peuvent être interrompues.  
+3. Pendant le basculement de la deuxième adresse IP virtuelle, il peut arriver que les connexions existantes sur des applications qui utilisent la deuxième adresse IP virtuelle pour se connecter à la base de données HANA soient interrompues.
+
+Le programme d’installation maximise le temps pendant lequel la deuxième ressource d’adresse IP virtuelle est attribuée à un nœud sur lequel une instance SAP HANA saine s’exécute.
 
 ## <a name="test-the-cluster-setup"></a>Tester la configuration du cluster
 

@@ -10,12 +10,16 @@
   expanded: true
   items:
     - name: Déployer votre première application conteneur
-      href: get-started.md
+      items:
+        - name: Portail Azure
+          href: quickstart-portal.md
+        - name: Azure CLI
+          href: get-started.md
 - name: Concepts
   items:
     - name: Environnement
       href: environment.md
-    - name: Conteneurs
+    - name: Containers
       href: containers.md
     - name: Révisions
       href: revisions.md

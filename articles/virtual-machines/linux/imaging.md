@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 0378c3a8859092f65dca2b8e8147f9be6889e3e6
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d08c55a1449d159438b652bd45bbdc50e02fb126
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251296"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427928"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Intégration et création d’images Linux dans Azure
 
@@ -32,7 +32,7 @@ Azure vous permet d’intégrer un disque dur virtuel à la plateforme, à utili
 
 Les disques managés Azure sont des disques durs virtuels uniques. Vous pouvez soit utiliser un disque dur virtuel existant et créer un disque managé à partir de celui-ci, soit créer un disque managé vide à partir de zéro. Vous pouvez créer des machines virtuelles à partir de disques managés en associant le disque à la machine virtuelle, mais vous pouvez uniquement utiliser un disque dur virtuel avec une seule machine virtuelle. Vous ne pouvez pas modifier les propriétés du système d’exploitation. Azure tente simplement d’activer la machine virtuelle et de démarrer à l’aide de ce disque. 
 
-Les images Azure peuvent être composées de plusieurs disques de système d’exploitation et disques de données. Lorsque vous utilisez une image managée pour créer une machine virtuelle, la plateforme effectue une copie de l’image et l’utilise pour créer la machine virtuelle, de sorte que l’image managée prend en charge la réutilisation de la même image pour plusieurs machines virtuelles. Azure fournit également des fonctionnalités de gestion avancées pour les images, telles que la réplication globale et la gestion de versions via [Shared Image Gallery](../shared-image-galleries.md). 
+Les images Azure peuvent être composées de plusieurs disques de système d’exploitation et disques de données. Lorsque vous utilisez une image managée pour créer une machine virtuelle, la plateforme effectue une copie de l’image et l’utilise pour créer la machine virtuelle, de sorte que l’image managée prend en charge la réutilisation de la même image pour plusieurs machines virtuelles. Azure fournit également des capacités de gestion avancées pour les images, telles que la réplication globale et le contrôle de version par le biais d’[Azure Compute Gallery](../shared-image-galleries.md) (anciennement appelé Shared Image Gallery). 
 
 
 
@@ -42,9 +42,9 @@ Azure offre deux principaux types d’images, généralisées et spécialisées.
 
 | Scénario      | Type d’image  | Options de stockage |
 | ------------- |:-------------:| :-------------:| 
-| Créer une image qui peut être configurée pour une utilisation par plusieurs machines virtuelles, et je peux définir le nom d’hôte, ajouter un utilisateur administrateur et effectuer d’autres tâches lors du premier démarrage. | Généralisée | Shared Image Gallery ou images managées autonomes |
-| Créer une image à partir d’un instantané de machine virtuelle ou d’une sauvegarde | Spécialisée |Shared Image Gallery ou disque managé |
-| Créer rapidement une image qui n’a pas besoin de configuration pour la création de plusieurs machines virtuelles |Spécialisée |Galerie d’images partagées |
+| Créer une image qui peut être configurée pour une utilisation par plusieurs machines virtuelles, et je peux définir le nom d’hôte, ajouter un utilisateur administrateur et effectuer d’autres tâches lors du premier démarrage. | Généralisée | Azure Compute Gallery ou images managées autonomes |
+| Créer une image à partir d’un instantané de machine virtuelle ou d’une sauvegarde | Spécialisée |Azure Compute Gallery ou disque managé |
+| Créer rapidement une image qui n’a pas besoin de configuration pour la création de plusieurs machines virtuelles |Spécialisée |Azure Compute Gallery |
 
 
 ### <a name="generalized-images"></a>Images généralisées
@@ -68,7 +68,7 @@ Les agents de provisionnement ne sont pas requis pour ces images. Toutefois, vou
 Lors de l’intégration de votre image Linux, vous disposez de deux options :
 
 - Images managées pour la création simple de machines virtuelles dans un environnement de développement et de test.
-- [Shared Image Gallery](../shared-image-galleries.md) pour la création et le partage d’images à grande échelle.
+- [Azure Compute Gallery](../shared-image-galleries.md) pour la création et le partage d’images à grande échelle.
 
 
 ### <a name="managed-images"></a>Images managées
@@ -77,9 +77,9 @@ Les images managées peuvent être utilisées pour créer plusieurs machines vir
 
 Les images managées peuvent être utilisées pour les environnements de développement et de test, où vous avez besoin de deux images généralisées simples à utiliser dans une seule région et un seul abonnement. 
 
-### <a name="azure-shared-image-gallery-sig"></a>Azure Shared Image Gallery
+### <a name="azure-compute-gallery"></a>Azure Compute Gallery
 
-Les galeries [Shared Image Gallery](../shared-image-galleries.md) sont recommandées pour la création, la gestion et le partage d’images à grande échelle. Ces galeries vous permettent de structurer et d’organiser vos images.  
+Les galeries [Azure Compute Gallery](../shared-image-galleries.md) (anciennement appelées Shared Image Gallery) sont recommandées pour la création, la gestion et le partage d’images à grande échelle. Ces galeries vous permettent de structurer et d’organiser vos images.  
 
 - Prise en charge des images généralisées et spécialisées.
 - Prise en charge des images de génération 1 et 2.
@@ -89,7 +89,7 @@ Les galeries [Shared Image Gallery](../shared-image-galleries.md) sont recommand
 - Le partage entre différents abonnements, voire entre locataires Active Directory (AD), à l’aide du contrôle d’accès en fonction du rôle (RBAC) Azure.
 - la mise à l’échelle de vos déploiements avec des réplicas d’image dans chaque région.
 
-Globalement, vous créez une galerie Shared Image Gallery, qui est constituée des éléments suivants :
+Globalement, vous créez une galerie, et elle est constituée des éléments suivants :
 - Définitions d’images : il s’agit de conteneurs qui contiennent des groupes d’images.
 - Versions d’images : il s’agit des images réelles
 
@@ -113,4 +113,5 @@ Si vous avez encore besoin de créer votre propre image, vérifiez qu’elle ré
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Découvrez comment créer une galerie [Shared Image Gallery](tutorial-custom-images.md).
+En savoir plus sur la création d’un [galerie Azure Compute Gallery](tutorial-custom-images.md).
+

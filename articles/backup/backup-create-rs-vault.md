@@ -4,12 +4,12 @@ description: Dans cet article, découvrez comment créer et configurer des coffr
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: dde592064c5cd4f42bd8baf94854fa2f95f4945e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: afb8485fe8baca002102f82a6f44f535075cadf8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078272"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062621"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Créer et configurer un coffre Recovery Services
 
@@ -42,35 +42,18 @@ La Sauvegarde Azure gère automatiquement le stockage du coffre. Vous devez spé
 
 ## <a name="set-cross-region-restore"></a>Définir la restauration interrégion
 
-L’option de restauration **Restauration inter-région (CRR)** vous permet de restaurer des données dans une [région jumelée Azure](../best-practices-availability-paired-regions.md) secondaire.
+L’option de restauration Restauration inter-région (CRR) vous permet de restaurer des données dans une région jumelée Azure secondaire. Vous pouvez l’utiliser pour effectuer des explorations en cas d’exigence d’audit ou de conformité (ou) restaurer les données en cas de sinistre dans la région primaire.
 
-Elle prend en charge les sources de données suivantes :
-
-- Machines virtuelles Azure
-- Bases de données SQL hébergées sur des machines virtuelles Azure
-- Bases de données SAP HANA hébergées sur des machines virtuelles Azure
-
-L’utilisation de la restauration inter-région vous permet d’effectuer les opérations suivantes :
-
-- Effectuer des recherches dans le cadre d’un audit ou d’une condition de conformité
-- Restaurer les données en cas de sinistre dans la région primaire
-
-Lors de la restauration d’une machine virtuelle, vous pouvez restaurer la machine virtuelle ou son disque. Si vous effectuez une restauration à partir de bases de données SQL/SAP HANA hébergées sur des machines virtuelles Azure, vous pouvez restaurer des bases de données ou leurs fichiers.
-
-Pour choisir cette fonctionnalité, sélectionnez **Activer la restauration interrégion** dans le volet **Configuration de la sauvegarde**.
-
-Étant donné que ce processus se trouve au niveau du stockage, il y a des [implications en termes de tarification](https://azure.microsoft.com/pricing/details/backup/).
-
->[!NOTE]
->Avant de commencer :
->
->- Examinez la [matrice de prise en charge](backup-support-matrix.md#cross-region-restore) pour obtenir la liste des types et des régions managés pris en charge.
->- La fonctionnalité de restauration inter-région (CRR, Cross Region Restore) pour les machines virtuelles Azure et les bases de données SQL et SAP HANA est désormais en disponibilité générale dans toutes les régions Azure publiques et souveraines. Pour plus d’informations sur la disponibilité par région, consultez la [matrice de prise en charge](backup-support-matrix.md#cross-region-restore).
->- La CRR est une fonctionnalité d’abonnement au niveau du coffre pour tout coffre GRS (désactivé par défaut).
->- Après l’inscription, il peut s’écouler jusqu’à 48 heures avant que les éléments de sauvegarde ne soient disponibles dans les régions secondaires.
->- Actuellement, la CRR pour les machines virtuelles Azure est prise en charge pour les machines virtuelles Azure Azure Resource Manager et les machines virtuelles Azure chiffrées. Les machines virtuelles Azure classiques ne sont pas prises en charge. Lorsque d’autres types de gestion prendront en charge la CRR, ils seront **automatiquement** enregistrés.
->- La restauration inter-région **ne peut actuellement pas être rétablie** pour revenir au geo-redundant storage (GRS) ou au stockage localement redondant (LRS) une fois que la protection a été lancée pour la première fois.
->- Actuellement, la région secondaire [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) est jusqu’à 12 heures de la région primaire, même si la réplication du [stockage géo-redondant avec accès en lecture (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) est de 15 minutes.
+Avant de commencer :
+- La CRR est prise en charge :
+     - Uniquement pour le coffre Recovery Services avec le [type de réplication GRS](#set-storage-redundancy).
+     - Machines virtuelles Azure (vous pouvez restaurer la machine virtuelle ou son disque) qui sont des machines virtuelles Azure basées sur ARM et des machines virtuelles Azure chiffrées. Les machines virtuelles Azure classiques ne sont pas prises en charge.  
+     - Bases de données SQL/SAP HANA hébergées sur des machines virtuelles Azure (vous pouvez restaurer des bases de données ou leurs fichiers)
+     - Examinez la [matrice de prise en charge](backup-support-matrix.md#cross-region-restore) pour obtenir la liste des types et des régions managés pris en charge.
+- L’utilisation de la CRR entraîne des frais supplémentaires, [en savoir plus](https://azure.microsoft.com/pricing/details/backup/)
+- Après l’inscription, il **jusqu’à 48 heures peuvent s’écouler avant que les éléments de sauvegarde soient disponibles dans les régions secondaires**.
+- Une CRR ne peut actuellement pas être inversée pour revenir à un stockage géoredondant (GRS) ou à un stockage localement redondant (LRS) une fois la protection lancée pour la première fois.
+- Actuellement, la région secondaire RPO est jusqu’à 12 heures de la région primaire, même si la réplication du [stockage géo-redondant avec accès en lecture (RA-GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) est de 15 minutes.
 
 ### <a name="configure-cross-region-restore"></a>Configurer la restauration interrégion
 

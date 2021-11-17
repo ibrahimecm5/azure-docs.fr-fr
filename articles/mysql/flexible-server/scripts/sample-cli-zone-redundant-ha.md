@@ -1,5 +1,5 @@
 ---
-title: Script CLI - Configurer la haute disponibilité redondante interzone dans une instance d’Azure Database pour MySQL - Serveur flexible (préversion)
+title: Script CLI - Configurer la haute disponibilité redondante interzone dans une instance d’Azure Database pour MySQL - Serveur flexible
 description: Cet exemple de script Azure CLI montre comment configurer la haute disponibilité redondante interzone sur une instance d’Azure Database pour MySQL - Serveur flexible.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 879cfa3b8c20c466c1aefcc0539109cbdc06cd32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c24871aff30c34398a07604749551bf53b428d36
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701331"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844080"
 ---
-# <a name="configure-zone-redundant-high-availability-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Configurer la haute disponibilité redondante interzone dans une instance d’Azure Database pour MySQL - Serveur flexible (préversion) avec Azure CLI
+# <a name="configure-zone-redundant-high-availability-in-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Configurer la haute disponibilité redondante interzone dans une instance d’Azure Database pour MySQL - Serveur flexible avec Azure CLI
 
 Cet exemple de script CLI montre comment configurer et gérer la [haute disponibilité redondante interzone](../concepts-high-availability.md) sur une instance d’Azure Database pour MySQL - Serveur flexible. La haute disponibilité redondante interzone peut uniquement être activée lors de la création d’un serveur flexible. Toutefois, elle peut être désactivée à tout moment. Vous pouvez également choisir la zone de disponibilité pour le réplica principal et le réplica de secours. 
 
@@ -56,5 +56,5 @@ Ce script utilise les commandes suivantes. Chaque commande du tableau renvoie à
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- Pour essayer d’autres scripts : [Exemples Azure CLI - Azure Database pour MySQL - Serveur flexible (préversion)](../sample-scripts-azure-cli.md)
+- Pour essayer d’autres scripts : [Exemples Azure CLI pour Azure Database pour MySQL - Serveur flexible](../sample-scripts-azure-cli.md)
 - Pour plus d’informations sur l’interface Azure CLI, consultez la [documentation relative à l’interface Azure CLI](/cli/azure).
