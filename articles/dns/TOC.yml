@@ -44,6 +44,12 @@
           href: tutorial-alias-pip.md
         - name: Enregistrements d’alias pour les enregistrements de zone
           href: tutorial-alias-rr.md
+- name: Exemples
+  items:
+    - name: Azure PowerShell
+      items:
+        - name: Rechercher des enregistrements DNS non sains
+          href: ./scripts/find-unhealthy-dns-records.md
 - name: Concepts
   items:
     - name: Sécurité

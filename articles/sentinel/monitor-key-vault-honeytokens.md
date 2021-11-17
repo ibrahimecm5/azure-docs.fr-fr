@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2021
 ms.author: bagol
-ms.openlocfilehash: 23b7ef6b159438bb171ab4326652c81796bcaf91
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 160abcf739cbece61d34cd3db4118fd9f2f0ed9f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131990093"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131479449"
 ---
 # <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel-public-preview"></a>Déployer et surveiller des honeytokens Azure Key Vault avec Azure Sentinel (préversion publique)
 
@@ -48,7 +48,7 @@ Pour commencer à utiliser la solution **Azure Sentinel Deception (Honey Tokens)
 
 ## <a name="install-the-solution"></a>Installer la solution
 
-Installez la solution **Azure Sentinel Deception (Honey Tokens)** comme vous installeriez d’[autres solutions](sentinel-solutions-deploy.md). Sur la page solution de **Azure Sentinel Deception**, sélectionnez **Démarrer** pour commencer.
+Installez la solution **Azure Sentinel Deception (Honey Tokens)** comme vous installeriez d’[autres solutions](monitor-key-vault-honeytokens.md). Sur la page solution de **Azure Sentinel Deception**, sélectionnez **Démarrer** pour commencer.
 
 :::image type="content" source="media/monitor-key-vault-honeytokens/honeytoken-create-solution.png" alt-text="Capture d’écran de la page de création de solution.":::
 
@@ -339,7 +339,7 @@ Pour plus d’informations, consultez la [documentation Azure Security Center](/
 Pour plus d'informations, consultez les pages suivantes :
 
 - [À propos des solutions Azure Sentinel](sentinel-solutions.md)
-- [Découvrir et déployer des solutions Azure Sentinel](sentinel-solutions-deploy.md)
+- [Découvrir et déployer des solutions Azure Sentinel](monitor-key-vault-honeytokens.md)
 - [Catalogue de solutions Azure Sentinel](sentinel-solutions-catalog.md)
 - [Détection des menaces prête à l’emploi](detect-threats-built-in.md)
 - [Classeurs Azure Sentinel courants](top-workbooks.md)

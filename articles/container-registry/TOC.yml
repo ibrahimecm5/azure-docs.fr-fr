@@ -173,7 +173,7 @@
             - name: Analyser des images conteneur
               expanded: false
               items:
-                - name: Analyser avec Azure Defender
+                - name: Analyser avec Microsoft Defender pour le cloud
                   href: scan-images-defender.md
                 - name: Analyser avec GitHub Actions
                   href: github-action-scan.md
@@ -256,7 +256,7 @@
 - name: Registre connecté
   expanded: true
   items:
-    - name: Vue d'ensemble
+    - name: Vue d’ensemble
       expanded: false
       items:
         - name: À propos du registre connecté

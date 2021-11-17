@@ -5,16 +5,16 @@ description: Article de référence sur les commandes az arcdata dc status.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: seanw
-ms.date: 07/30/2021
+ms.date: 11/04/2021
 ms.topic: reference
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: 9e795c71a5316960bfc7f0b1138afce3ecc4b957
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 542f0f9568150abf0646e1a494e14eec2be6e524
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524254"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841633"
 ---
 # <a name="az-arcdata-dc-status"></a>az arcdata dc status
 ## <a name="commands"></a>Commandes
@@ -24,29 +24,25 @@ ms.locfileid: "122524254"
 ## <a name="az-arcdata-dc-status-show"></a>az arcdata dc status show
 Affichez l’état du contrôleur de données.
 ```bash
-az arcdata dc status show [--k8s-namespace -k] 
-                          [--use-k8s]
+az arcdata dc status show 
 ```
 ### <a name="examples"></a>Exemples
 Affichez l’état du contrôleur de données dans un espace de noms kubernetes particulier.
 ```bash
-az arcdata dc status show --k8s-namespace <ns>
+az arcdata dc status show --k8s-namespace namespace --use-k8s
 ```
-### <a name="optional-parameters"></a>Paramètres facultatifs
-#### `--k8s-namespace -k`
-Espace de noms Kubernetes dans lequel le contrôleur de données existe.
-#### `--use-k8s`
-Utilisez les API Kubernetes locales pour effectuer cette action.
+Affichez l’état d’un contrôleur de données connecté directement dans un groupe de ressources particulier.
+```bash
+az arcdata dc status show --resource-group resource-group    
+```
 ### <a name="global-arguments"></a>Arguments globaux
 #### `--debug`
 Augmentez le niveau de détail de la journalisation pour afficher tous les journaux de débogage.
 #### `--help -h`
 Affichez ce message d’aide et quittez.
 #### `--output -o`
-Format de sortie.  Valeurs autorisées : json, jsonc, none, table, tsv, yaml, yamlc.  Valeur par défaut : json.
+Format de sortie.  Valeurs autorisées : json, jsonc, table, tsv.  Valeur par défaut : json.
 #### `--query -q`
-Chaîne de requêtes JMESPath. Pour obtenir plus d’informations et des exemples, consultez [http://jmespath.org](http://jmespath.org).
-#### `--subscription`
-Nom ou ID de l’abonnement. Vous pouvez configurer l’abonnement par défaut en utilisant `az account set -s NAME_OR_ID`.
+Chaîne de requêtes JMESPath. Pour obtenir plus d’informations et des exemples, consultez [http://jmespath.org/](http://jmespath.org).
 #### `--verbose`
-Augmentez le niveau de détail de la journalisation. Utilisez --debug pour des journaux de débogage complets.
+Augmentez le niveau de détail de la journalisation. Utilisez `--debug` pour les journaux de débogage complets.
