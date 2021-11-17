@@ -57,7 +57,6 @@ ms.locfileid: "124806462"
 
 Les sous-versions suivantes des kits de développement logiciel (SDK) .NET sont disponibles sous la version 2.x.x :
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 
 ## <a name="faq"></a>Questions fréquentes (FAQ)
 
