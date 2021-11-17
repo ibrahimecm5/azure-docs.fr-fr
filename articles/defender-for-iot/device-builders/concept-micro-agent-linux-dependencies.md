@@ -2,13 +2,13 @@
 title: Dépendances Linux pour le micro-agent (préversion)
 description: Cet article décrit les différentes dépendances du système d’exploitation Linux pour le micro-agent Defender pour IoT.
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: 102cf31dbe19c068de344f1f7f294a6f3f0a722b
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 11/09/2021
+ms.openlocfilehash: 9fa1d53481e5e7f3b775855e54a0387fc04518ba
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967556"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284110"
 ---
 # <a name="micro-agent-linux-dependencies-preview"></a>Dépendances Linux pour le micro-agent (préversion)
 
@@ -18,7 +18,7 @@ Cet article décrit les différentes dépendances du système d’exploitation L
 
 Le tableau ci-dessous indique les dépendances Linux pour chaque composant. 
 
-| Composant | Dépendance | Type | Requis par le SDK IoT | Remarques |
+| Composant | Dépendance | Type | Requis par le SDK IoT | Notes |
 |--|--|--|--|--|
 | **Base** |  |  |  |  |
 |  | libcurl-openssl (libcurl) | Bibliothèque | ✔ |  |

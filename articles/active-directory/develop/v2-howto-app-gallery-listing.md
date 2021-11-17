@@ -12,12 +12,12 @@ ms.date: 06/23/2021
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev, contperf-fy21q4
-ms.openlocfilehash: 7938e8ffbaca3f069016a445775d9c669f1ad144
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 7602c510ee60b30189e399bd07d624980534dc39
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228065"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336541"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publier votre application dans la galerie d’applications Azure AD
 
@@ -224,7 +224,7 @@ Après avoir testé le bon fonctionnement de l’intégration de votre applicati
 
 La première fois que vous essayez de vous connecter au portail, vous verrez un écran parmi deux options. 
 
-Si vous recevez le message « Cela n’a pas fonctionné », vous devez contacter l’[équipe d’intégration de l’authentification unique Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Indiquez le compte de messagerie que vous souhaitez utiliser pour envoyer la demande. Une adresse de messagerie professionnelle telle que `name@yourbusiness.com` est préférable. L’équipe Azure AD ajoutera le compte dans le portail Application Network Microsoft.
+Si vous recevez le message « Cela n’a pas fonctionné », vous devez contacter l’[équipe d’intégration de l’authentification unique Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com). Indiquez le compte de messagerie que vous souhaitez utiliser pour envoyer la demande. Une adresse de messagerie professionnelle telle que `name@yourbusiness.com` est préférable. L’équipe Azure AD ajoutera le compte dans le portail Application Network Microsoft.
 
 Si vous voyez une page « Demander l’accès », indiquez la justification métier, puis sélectionnez **Demander l’accès**.
 
@@ -253,7 +253,7 @@ L’utilisateur invité est fédéré en locataire de base qui est également un
 * Le risque lié aux utilisateurs invités peut être fermé/ignoré par leurs administrateurs. Une fois encore, cette opération ne nécessite pas Identity Protection. L’administrateur peut accéder à https://aka.ms/RiskyUsers et cliquer sur « Ignorer le risque lié à l’utilisateur ». Toutefois, l’administrateur doit faire preuve de diligence pour garantir qu’il s’agissait d’un faux positif d’évaluation des risques avant de fermer le risque utilisateur. Sinon, il fait courir un risque à ses ressources et à celles de Microsoft en supprimant une évaluation des risques sans investigation.
 
 > [!NOTE]
-> En cas de problème d’accès, contactez l’[équipe d’intégration Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> En cas de problème d’accès, contactez l’[équipe d’intégration Azure AD SSO](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
 ### <a name="implementation-specific-options"></a>Options spécifiques d’implémentation
 Si vous souhaitez ajouter votre application à la liste dans la galerie à l’aide d’OpenID Connect, sélectionnez **OpenID Connect & OAuth 2.0** comme illustré ici.
@@ -279,7 +279,7 @@ Vous pouvez mettre à jour ou supprimer une application de galerie existante dan
 ![Listing d’une application SAML dans la galerie](./media/howto-app-gallery-listing/updateorremove.png)
 
 > [!NOTE]
-> Si vous rencontrez des problèmes d’accès, consultez la section précédente sur la création de votre compte. Si cela ne fonctionne pas, contactez l’[équipe d’intégration de l’authentification unique Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Si vous rencontrez des problèmes d’accès, consultez la section précédente sur la création de votre compte. Si cela ne fonctionne pas, contactez l’[équipe d’intégration de l’authentification unique Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
 ### <a name="timelines"></a>Chronologies
 
@@ -312,7 +312,7 @@ Voici le flux des applications demandées par les clients.
 ![Montre le flux des applications demandées par les clients](./media/howto-app-gallery-listing/customer-request-2.png)
 
 > [!Note]
-> Si vous rencontrez des [problèmes d’accès](#issues-on-logging-into-portal), veuillez envoyer un e-mail à l’[équipe d’intégration d’applications Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Si vous rencontrez des [problèmes d’accès](#issues-on-logging-into-portal), veuillez envoyer un e-mail à l’[équipe d’intégration d’applications Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

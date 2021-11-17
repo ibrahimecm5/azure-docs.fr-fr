@@ -7,18 +7,18 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b67239a973f3ba435aeeb7021d8d4f2faea9c98f
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 7370413d792cbabf1b18db5b70da6260417c04d4
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015633"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157914"
 ---
 # <a name="about-azure-migrate"></a>À propos d’Azure Migrate
 
 Cet article donne une vue d’ensemble du service Azure Migrate.
 
-Azure Migrate fournit un hub centralisé pour évaluer et migrer les serveurs, l’infrastructure, les applications et les données locales vers Azure. Il procure les éléments suivants :
+Azure Migrate fournit un hub centralisé pour évaluer et migrer les serveurs, l’infrastructure, les applications et les données en local vers Azure. Il procure les éléments suivants :
 
 - **Plateforme de migration unifiée** : un portail unique pour démarrer, exécuter et effectuer le suivi de votre migration vers Azure.
 - **Panoplie d’outils** : Panoplie d’outils d’évaluation et de migration. Les outils Azure Migrate incluent Azure Migrate : découverte et évaluation et Azure Migrate : migration de serveur. Azure Migrate s’intègre aussi avec d’autres services et outils Azure, et avec des offres d’éditeur de logiciels indépendant.
