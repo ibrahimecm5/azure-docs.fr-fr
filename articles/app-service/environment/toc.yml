@@ -1,72 +1,51 @@
-- name: Environnement App Service
+- name: App Service Environment
+  href: index.yml
 - name: Vue d’ensemble
   items:
-    - name: À propos d’App Service Environments
-      href: intro.md
-    - name: "App Service Environment\_v3"
+    - name: À propos d’App Service Environment
       href: overview.md
 - name: Démarrages rapides
   expanded: true
   items:
-    - name: "Créer un environnement\_ASE externe"
-      href: create-external-ase.md
-    - name: "Créer un environnement\_ASE interne"
-      href: create-ilb-ase.md
-    - name: Créer un environnement ASEv3
+    - name: Créer App Service Environment dans le portail
       href: creation.md
 - name: Tutoriels
   items:
-    - name: Intégration avec un WAF
+    - name: Intégrer à Application Gateway
       href: integrate-with-application-gateway.md
-    - name: Paramètres personnalisés d’un environnement ASE
-      href: app-service-app-service-environment-custom-settings.md
-- name: Exemples
-  items:
-    - name: Azure CLI
-      href: ../samples-cli.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-    - name: Azure PowerShell
-      href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+    - name: Contrôleurs de domaine géo-distribués
+      href: app-service-app-service-environment-geo-distributed-scale.md
 - name: Concepts
   items:
     - name: Architecture réseau
-      href: network-info.md
-    - name: Contrôleurs de domaine géo-distribués
-      href: app-service-app-service-environment-geo-distributed-scale.md
-    - name: Diagnostics
-      href: ../overview-diagnostics.md
-    - name: Certificats
-      href: certificates.md
-    - name: Mise en réseau d’ASEv3
       href: networking.md
+    - name: Redondance de zone
+      href: overview-zone-redundancy.md
+    - name: Certificats
+      href: overview-certificates.md
+    - name: Diagnostics
+      href: ../overview-diagnostics.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: Guides pratiques
   items:
-    - name: Utiliser un environnement ASE
-      href: using-an-ase.md
-    - name: Intégrer à Application Gateway
-      href: integrate-with-application-gateway.md
-    - name: Créer un environnement ASE à partir d’un modèle
-      href: create-from-template.md
-    - name: Configuration de tunnel forcé
-      href: forced-tunnel-support.md
-    - name: Intégration du pare-feu
-      href: firewall-integration.md
-    - name: Redondance de zone
-      href: zone-redundancy.md
-    - name: Utilisation d’ASEv3
+    - name: Utilisation d’App Service Environment
       href: using.md
+    - name: Provisionner un environnement ASE à partir d’un modèle ARM
+      href: create-from-template.md
+    - name: Paramètres personnalisés d’un environnement ASE
+      href: app-service-app-service-environment-custom-settings.md
 - name: Informations de référence
   items:
     - name: Adresses de gestion
       href: management-addresses.md
     - name: Documentation relative à ASEv1
       items:
-        - name: ASEv1
+        - name: "À propos d’App Service Environment\_v1"
           href: app-service-app-service-environment-intro.md
         - name: Créer ASEv1 depuis un modèle
           href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
         - name: "Configurer un environnement\_ASEv1"
           href: app-service-web-configure-an-app-service-environment.md
-        - name: "Configurer la mise à l’échelle automatique d’un environnement\_ASEv1"
+        - name: Configurer la mise à l’échelle automatique dans ASEv1
           href: app-service-environment-auto-scale.md
         - name: Effectuer un scale-out d’une application dans ASEv1
           href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
@@ -80,6 +59,26 @@
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Utiliser la sécurité par calque
           href: app-service-app-service-environment-layered-security.md
+    - name: Documentation ASEv2
+      items:
+        - name: "À propos d’App Service Environment\_v2"
+          href: intro.md
+        - name: "Créer un environnement\_ASE externe\_v2"
+          href: create-external-ase.md
+        - name: "Créer un environnement\_ASE interne\_v2"
+          href: create-ilb-ase.md
+        - name: "Utiliser un environnement ASE\_v2"
+          href: using-an-ase.md
+        - name: Architecture réseau
+          href: network-info.md
+        - name: Redondance de zone
+          href: zone-redundancy.md
+        - name: Certificats
+          href: certificates.md
+        - name: Configuration de tunnel forcé
+          href: forced-tunnel-support.md
+        - name: Intégration du pare-feu
+          href: firewall-integration.md
 - name: Ressources
   items:
     - name: Feuille de route Azure
@@ -98,12 +97,6 @@
       items:
         - name: Vidéos Azure
           href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
-        - name: Maîtriser le PaaS moderne pour l’entreprise avec Azure App Service
-          href: 'https://channel9.msdn.com/Events/Ignite/2016/BRK3205/player'
-        - name: Déploiement d’applications hautement évolutives et sécurisées
-          href: 'https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player'
-        - name: Exécution d’applications web et mobiles d’entreprise sur Azure App Service
-          href: 'https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player'
     - name: Livres de recettes
       items:
         - name: Scripts de déploiement
@@ -124,7 +117,7 @@
               href: ../faq-availability-performance-application-issues.yml?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
             - name: FAQ sur le déploiement
               href: ../faq-deployment.yml?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-            - name: FAQ sur les technologies open source
+            - name: Questions fréquentes (FAQ) sur les technologies open source
               href: ../faq-open-source-technologies.yml?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
             - name: FAQ sur la configuration et la gestion
               href: ../faq-configuration-and-management.yml?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json

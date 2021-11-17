@@ -96,6 +96,10 @@ items:
             href: associate-public-ip-address-vm.md
           - name: Dissocier l’adresse IP publique d’une machine virtuelle
             href: remove-public-ip-address-vm.md
+          - name: Créer une machine virtuelle - réseau double pile
+            items:
+              - name: Azure CLI
+                href: create-vm-dual-stack-ipv6-cli.md
           - name: Créer une machine virtuelle - IP public statique
             items:
               - name: Portail Azure

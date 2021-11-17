@@ -115,68 +115,72 @@
       href: production-checklist.md
 - name: Guides pratiques
   items:
-    - name: Créer un appareil IoT Edge
+    - name: Installer et provisionner IoT Edge
       items:
-        - name: Provisionner manuellement un seul appareil
+        - name: Créer un appareil IoT Edge
+          href: how-to-create-iot-edge-device.md
+        - name: Conteneurs Linux sur des hôtes Linux
           items:
-            - name: "Attestation de certificat\_X.509"
+            - name: Provisionner un seul appareil
               items:
-                - name: Linux
+                - name: "Attestation de certificat\_X.509"
                   href: how-to-provision-single-device-linux-x509.md
-                - name: Conteneurs Linux sur Windows
-                  href: how-to-provision-single-device-linux-on-windows-x509.md
-                - name: Windows
-                  href: how-to-provision-single-device-windows-x509.md
-            - name: Attestation de clé symétrique
-              items:
-                - name: Linux
+                - name: Attestation de clé symétrique
                   href: how-to-provision-single-device-linux-symmetric.md
-                - name: Conteneurs Linux sur Windows
+            - name: Provisionner des appareils à grande échelle
+              items:
+                - name: "Attestation de certificat\_X.509"
+                  href: how-to-provision-devices-at-scale-linux-x509.md
+                - name: Attestation TPM
+                  href: how-to-provision-devices-at-scale-linux-tpm.md
+                - name: Attestation de clé symétrique
+                  href: how-to-provision-devices-at-scale-linux-symmetric.md
+        - name: Conteneurs Linux sur des hôtes Windows
+          items:
+            - name: Provisionner un seul appareil
+              items:
+                - name: "Attestation de certificat\_X.509"
+                  href: how-to-provision-single-device-linux-on-windows-x509.md
+                - name: Attestation de clé symétrique
                   href: how-to-provision-single-device-linux-on-windows-symmetric.md
-                - name: Windows
+            - name: Provisionner des appareils à grande échelle
+              items:
+                - name: "Attestation de certificat\_X.509"
+                  href: how-to-provision-devices-at-scale-linux-on-windows-x509.md
+                - name: Attestation TPM
+                  href: how-to-provision-devices-at-scale-linux-on-windows-tpm.md
+                - name: Attestation de clé symétrique
+                  href: how-to-provision-devices-at-scale-linux-on-windows-symmetric.md
+            - name: Configurer la virtualisation imbriquée pour les machines virtuelles Windows
+              href: nested-virtualization.md
+            - name: Créer un commutateur virtuel
+              href: how-to-create-virtual-switch.md
+            - name: Configurer l’accélération GPU
+              href: gpu-acceleration.md
+        - name: Conteneurs Windows sur des hôtes Windows
+          items:
+            - name: Provisionner un seul appareil
+              items:
+                - name: Attestation de clé symétrique
                   href: how-to-provision-single-device-windows-symmetric.md
+                - name: "Attestation de certificat\_X.509"
+                  href: how-to-provision-single-device-windows-x509.md
+            - name: Provisionner des appareils à grande échelle
+              items:
+                - name: Attestation de clé symétrique
+                  href: how-to-provision-devices-at-scale-windows-symmetric.md
+                - name: "Attestation de certificat\_X.509"
+                  href: how-to-provision-devices-at-scale-windows-x509.md
+                - name: Attestation TPM
+                  href: how-to-provision-devices-at-scale-windows-tpm.md
         - name: Mettre à jour IoT Edge
           href: how-to-update-iot-edge.md
         - name: Gérer des certificats d’appareils
           href: how-to-manage-device-certificates.md
-        - name: Configurer la virtualisation imbriquée pour les machines virtuelles Windows
-          href: nested-virtualization.md
-        - name: Créer un commutateur virtuel pour Linux sur Windows
-          href: how-to-create-virtual-switch.md
-        - name: Configurer l’accélération GPU pour Linux sur Windows
-          href: gpu-acceleration.md
-    - name: Autres scénarios avec les appareils
-      items:
         - name: Exécuter IoT Edge sur Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
         - name: Déployer une machine virtuelle IoT Edge avec un modèle ARM
           href: how-to-install-iot-edge-ubuntuvm.md
-    - name: Provisionnement automatique avec DPS
-      items:
-        - name: Attestation TPM
-          items:
-            - name: Linux
-              href: how-to-provision-devices-at-scale-linux-tpm.md
-            - name: Conteneurs Linux sur Windows
-              href: how-to-provision-devices-at-scale-linux-on-windows-tpm.md
-            - name: Windows
-              href: how-to-provision-devices-at-scale-windows-tpm.md
-        - name: "Attestation de certificat\_X.509"
-          items:
-            - name: Linux
-              href: how-to-provision-devices-at-scale-linux-x509.md
-            - name: Conteneurs Linux sur Windows
-              href: how-to-provision-devices-at-scale-linux-on-windows-x509.md
-            - name: Windows
-              href: how-to-provision-devices-at-scale-windows-x509.md
-        - name: Attestation de clé symétrique
-          items:
-            - name: Linux
-              href: how-to-provision-devices-at-scale-linux-symmetric.md
-            - name: Conteneurs Linux sur Windows
-              href: how-to-provision-devices-at-scale-linux-on-windows-symmetric.md
-            - name: Windows
-              href: how-to-provision-devices-at-scale-windows-symmetric.md
     - name: Développer des modules personnalisés
       items:
         - name: "Développer avec Visual Studio\_2019"

@@ -118,8 +118,8 @@
       href: front-door-diagnostics.md
     - name: Dépanner
       items:
-        - name: Résoudre les problèmes de routage
-          href: front-door-troubleshoot-routing.md
+        - name: Résolution des problèmes Front Door
+          href: troubleshoot-issues.md
         - name: Autorités de certification autorisées
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: Informations de référence

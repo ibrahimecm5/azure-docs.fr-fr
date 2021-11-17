@@ -87,6 +87,8 @@
               href: container-registry-oci-artifacts.md
             - name: Envoyer (push) et tirer (pull) un graphique Helm
               href: container-registry-helm-repos.md
+            - name: Envoyer (push) et tirer (pull) des artefacts de chaîne logistique (préversion)
+              href: container-registry-oras-artifacts.md
             - name: Afficher les référentiels
               href: container-registry-repositories.md
             - name: Importer les images conteneur
