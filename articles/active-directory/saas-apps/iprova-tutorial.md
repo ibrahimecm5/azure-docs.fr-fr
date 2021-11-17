@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 946aa1a6a177dd89c851e977ac783806e8a9dcc5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25440815a219b353ebd44ba6ce60e504cb1862b4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652222"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346531"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zenya"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Zenya
 
@@ -214,4 +214,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Zenya, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré Zenya, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

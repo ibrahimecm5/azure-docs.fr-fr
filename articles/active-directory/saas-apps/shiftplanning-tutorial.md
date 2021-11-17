@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 52b418ff7b14e939cc61146455c791ef7c143c0b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 518586bb7b0e7ac54e2fa9e0f4ca76e514a5abb1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131462551"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333406"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-humanity"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Humanity
 
@@ -188,4 +188,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Humanity, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré Humanity, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

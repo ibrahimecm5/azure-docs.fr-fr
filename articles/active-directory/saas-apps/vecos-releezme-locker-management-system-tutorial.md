@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 59c3166bbbd5117e084808aaadfa1b1fafaf2dee
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 74d030d4bf5b8a7d4ba16a8d7cc0421af0110b02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056873"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340682"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-vecos-releezme-locker-management-system"></a>Tutoriel : Intégration de l’authentification unique Azure AD à VECOS Releezme Locker management system
 
@@ -161,4 +161,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré VECOS Releezme Locker management system, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré VECOS Releezme Locker management system, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

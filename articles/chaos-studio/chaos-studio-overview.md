@@ -4,20 +4,22 @@ description: Découvrez Azure Chaos Studio, un service Azure qui vous permet de 
 services: chaos-studio
 author: johnkemnetz
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/11/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: template-overview,ignite-fall-2021
-ms.openlocfilehash: 3612a72b13ded7eace24c56f70c722e6cf2270d7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4df530e20733e5f24db930e88bb30894293416a7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030283"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399330"
 ---
 # <a name="what-is-azure-chaos-studio-preview"></a>Qu’est-ce qu’Azure Chaos Studio (préversion) ?
 
 Azure Chaos Studio est un service géré pour améliorer la résilience en injectant des erreurs dans vos applications Azure. L’exécution d’expériences d’injection d’erreurs contrôlées contre vos applications, une pratique connue sous le nom d’ingénierie du chaos, vous aide à mesurer, comprendre et améliorer la résilience par rapport aux incidents réels, tels qu’une panne de région ou des défaillances d’application provoquant une utilisation élevée du processeur sur une machine virtuelle.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Videos/Azure-Chaos-Studio-Curious-to-control-chaos/player]
 
 ## <a name="why-should-i-use-chaos-studio"></a>Pourquoi utiliser Chaos Studio ?
 
@@ -53,5 +55,5 @@ Une expérience de chaos est une ressource Azure qui réside dans un abonnement 
 
 ## <a name="next-steps"></a>Étapes suivantes
 Commencez à créer et à exécuter des expériences de chaos pour améliorer la résilience des applications avec Chaos Studio à l’aide des liens ci-dessous.
-- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct.md)
+- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct-portal.md)
 - [En savoir plus sur l’ingénierie du chaos](chaos-studio-chaos-engineering-overview.md)

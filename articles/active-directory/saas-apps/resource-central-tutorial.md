@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 0db8c8d14dbd3e09ebb798c41ea2d7b526acabc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f77a6d0088d9ee45c1f39a46abbb6f88806b3e57
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124753193"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132329464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central--saml-sso-for-meeting-room-booking-system"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory avec Resource Central – SAML SSO for Meeting Room Booking System
 
@@ -181,4 +181,4 @@ Dans cette section, vous allez tester la configuration de l’authentification u
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Resource Central SAML SSO for Meeting Room Booking System pour l’authentification unique avec Azure AD, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré Resource Central SAML SSO for Meeting Room Booking System pour l’authentification unique avec Azure AD, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

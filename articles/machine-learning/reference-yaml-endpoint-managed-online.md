@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Découvrir les fichiers YAML utilisés pour déployer des modèles en tant que points de terminaison en ligne
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 2fe01750fdce0a3d5c3fcb5211485666caf95bb4
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 462c781ae4f304d2b9cb46b9b89d2ff7fbf7eb22
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132057743"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137827"
 ---
 # <a name="cli-v2-online-endpoint-yaml-schema"></a>Schéma YAML d’un point de terminaison en ligne avec l’interface CLI (v2)
 
@@ -33,7 +33,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 | `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
 | `name` | string | **Obligatoire.** Nom du point de terminaison, Doit être unique au niveau de la région Azure. <br><br> Les règles de nommage sont définies [ici](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview).| | |
 | `description` | string | Description du point de terminaison. | | |
-| `tags` | object | Dictionnaire d’étiquettes pour le point de terminaison. | | |
+| `tags` | object | Dictionnaire d’étiquettes du point de terminaison. | | |
 | `auth_mode` | string | Méthode d’authentification pour le point de terminaison. L’authentification basée sur une clé et l’authentification basée sur un jeton Azure ML sont prises en charge. L’authentification basée sur une clé n’expire pas, contrairement à l’authentification basée sur un jeton Azure ML. | `key`, `aml_token` | `key` |
 | `allow_public_access` | boolean | Indique s’il faut autoriser l’accès public quand Private Link est activé. | | `true` |
 | `identity` | object | Configuration de l’identité managée afin d’accéder aux ressources Azure pour le provisionnement et l’inférence des points de terminaison. | | |

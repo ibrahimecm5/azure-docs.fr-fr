@@ -2,8 +2,8 @@
 title: Gérer la connectivité IoT Hub et la messagerie fiable avec des Kits de développement logiciel (SDK) d’appareils
 description: Découvrez comment améliorer la connectivité et la messagerie de vos appareils lorsque vous utilisez les kits Azure IoT Hub device SDK
 services: iot-hub
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-csharp
-ms.openlocfilehash: 9e73eb677b75fff27d5470b89608e5c490ee83e2
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: f180080580bdf6617ba943089856d2913c86e4bd
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129454883"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552410"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Gérer la connectivité et la messagerie fiable à l’aide des kits SDK d’appareil Azure IoT Hub
 

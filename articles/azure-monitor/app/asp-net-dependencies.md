@@ -4,12 +4,12 @@ description: Supervisez les appels de dépendances entre Application Insights et
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e832da335453151ee60a458cb259d4add15d6e1d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: a2052b4b4d5822d583101d27e873bf19ceeca49c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228172"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486126"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Suivi des dépendances dans Azure Application Insights 
 
@@ -216,7 +216,7 @@ dependencies
 Dans l’affichage des requêtes Log Analytics `timestamp` représente le moment où l’appel TrackDependency() a été lancé, ce qui se produit immédiatement après la réception de la réponse à l’appel de dépendance. Pour calculer l’heure de début de l’appel de dépendance, vous devez prendre `timestamp` et soustraire la `duration` enregistrée de l’appel de dépendance.
 
 ## <a name="open-source-sdk"></a>Kit de développement logiciel (SDK) open source
-Comme chaque SDK Application Insights, le module de collecte des dépendances est également open source. Lisez et contribuez au code, ou signalez les problèmes rencontrés dans le [dépôt GitHub officiel](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+Comme chaque SDK Application Insights, le module de collecte des dépendances est également open source. Lisez et contribuez au code, ou signalez les problèmes rencontrés dans le [dépôt GitHub officiel](https://github.com/Microsoft/ApplicationInsights-dotnet).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

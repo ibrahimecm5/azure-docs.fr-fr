@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb017cd4532d4739b563d4a22a50a731268407f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 15383c9ff24e8d5b9cec0f92f178f37df1618df5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759716"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330936"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planifiez et déployez localement la protection par mot de passe Azure Active Directory
 
@@ -346,7 +346,7 @@ Le service proxy ne prend pas en charge l’utilisation d’informations d’ide
 
 Le logiciel de l’agent DC de protection par mot de passe Azure AD sur utilise RPC sur TCP pour communiquer avec le service proxy. Par défaut, le service proxy de protection par mot de passe Azure AD est à l’écoute sur n’importe quel point de terminaison RPC dynamique disponible. Vous pouvez configurer le service pour qu'il écoute sur un port TCP spécifique, si cela s'avère nécessaire en raison de la topologie du réseau ou de la configuration du pare-feu de votre environnement. Quand vous configurez un port statique, vous devez ouvrir le port 135 et le port statique de votre choix.
 
-<a id="static" /></a>Pour configurer le service afin qu’il s’exécute sous un port statique, utilisez la cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` comme suit :
+<a id="static"></a>Pour configurer le service afin qu’il s’exécute sous un port statique, utilisez la cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` comme suit :
 
 ```powershell
 Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>

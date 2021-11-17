@@ -1,22 +1,22 @@
 ---
 title: Flux d’appareils Azure IoT Hub | Microsoft Docs
 description: Vue d’ensemble des flux d’appareils Azure IoT Hub, qui facilitent la création de tunnels TCP bidirectionnels sécurisés pour divers scénarios de communication cloud-à-appareil.
-author: robinsh
+author: eross-msft
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 37dfd5adcfa00377980933e67c8881aaef6d8dd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2bedbb4e14886e1e16d765f91ad86f7b20989a34
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746102"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555999"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Flux d'appareils IoT Hub (préversion)
 

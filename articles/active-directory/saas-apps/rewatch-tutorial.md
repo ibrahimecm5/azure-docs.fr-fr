@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 37981082581c029550ef4394afd662354b98f51e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9b49f3d7b76e546e55d3cc5f0b9b5a30bbcd1acc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124830339"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320926"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rewatch"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory avec Rewatch
 
@@ -166,4 +166,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Rewatch, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré Rewatch, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

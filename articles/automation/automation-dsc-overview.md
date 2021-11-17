@@ -5,17 +5,14 @@ keywords: PowerShell DSC, Desired State Configuration, configuration d'état sou
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/17/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 898fc7b2574040ef6095178eae9cd8e7ee747ef9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 7c24c3f2381788ef9ddc8da1ed0c4e70bbdddb82
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352905"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489905"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Vue d’ensemble d’Azure Automation State Configuration
 

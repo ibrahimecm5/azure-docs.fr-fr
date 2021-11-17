@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6999b30816f0750657d8c5990291892d3148cbd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e87b1f70df4864a82f13b9e30cf93c2c5ca9eb14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097428"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484259"
 ---
 # <a name="tutorial-analyze-live-video-with-azure-video-analyzer-on-iot-edge-and-azure-custom-vision"></a>Tutoriel : Analyser une vidéo en direct avec Azure Video Analyzer sur IoT Edge et Azure Custom Vision
 
@@ -65,7 +65,7 @@ Lisez les articles suivants avant de commencer :
 
 ## <a name="review-the-sample-video"></a>Réviser l’exemple de vidéo
 
-Ce tutoriel utilise un fichier de [vidéo d’inférence du jouet](https://lvamedia.blob.core.windows.net/public/t2.mkv) pour simuler un stream en direct. Vous pouvez regarder la vidéo grâce à une application telle que [VLC Media Player](https://www.videolan.org/vlc/). Sélectionnez **Ctrl+N**, puis collez un lien vers la [vidéo d’inférence du jouet](https://lvamedia.blob.core.windows.net/public/t2.mkv) pour démarrer la lecture. Lorsque vous regarderez la vidéo, vous verrez qu’un camion jouet apparaît au bout de 36 secondes. Le modèle personnalisé a été entraîné à détecter ce jouet spécifique.
+Ce tutoriel utilise un fichier de [vidéo d’inférence du jouet](https://avamedia.blob.core.windows.net/public/t2.mkv) pour simuler un stream en direct. Vous pouvez regarder la vidéo grâce à une application telle que [VLC Media Player](https://www.videolan.org/vlc/). Sélectionnez **Ctrl+N**, puis collez un lien vers la [vidéo d’inférence du jouet](https://avamedia.blob.core.windows.net/public/t2.mkv) pour démarrer la lecture. Lorsque vous regarderez la vidéo, vous verrez qu’un camion jouet apparaît au bout de 36 secondes. Le modèle personnalisé a été entraîné à détecter ce jouet spécifique.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LPwK]
 
@@ -90,7 +90,7 @@ Pour créer un détecteur de camion jouet, suivez les étapes décrites dans [D�
 
 Informations complémentaires :
 
-- Pour ce tutoriel, n’utilisez pas les exemples d’images fournis dans la [section Prérequis](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) du guide de démarrage rapide. Pour créer le modèle Custom Vision de détection des jouets, nous allons utiliser un autre ensemble d’images. Utilisez [ces images](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) quand vous êtes invité à [choisir vos images d’entraînement](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) dans le [guide de démarrage rapide](../../../cognitive-services/custom-vision-service/get-started-build-detector.md).
+- Pour ce tutoriel, n’utilisez pas les exemples d’images fournis dans la [section Prérequis](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) du guide de démarrage rapide. Pour créer le modèle Custom Vision de détection des jouets, nous allons utiliser un autre ensemble d’images. Utilisez [ces images](https://avamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) quand vous êtes invité à [choisir vos images d’entraînement](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) dans le [guide de démarrage rapide](../../../cognitive-services/custom-vision-service/get-started-build-detector.md).
 - Dans la section Étiquetage des images du guide de démarrage rapide, veillez à étiqueter le camion jouet vu dans l’image avec l’étiquette « delivery truck » (camion de livraison).
 - Sélectionnez l’option Général (compact) pour les domaines pendant la création du projet Custom Vision
 

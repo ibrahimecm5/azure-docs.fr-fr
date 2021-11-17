@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: eeee49a49e4d0c7269056cee9975303c4f22e69b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 563da658ad5ddeb43ad7d8a39bafd15d9627b0b7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124746199"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à SAP Cloud Platform Identity Authentication
 
@@ -213,4 +213,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré SAP Cloud Platform Identity Authentication, vous pouvez appliquer des contrôles de session, qui protègent l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrir comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+Après avoir configuré SAP Cloud Platform Identity Authentication, vous pouvez appliquer des contrôles de session, qui protègent l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

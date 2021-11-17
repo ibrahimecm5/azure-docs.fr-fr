@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ff2ea6b4c230a2156a7a63287e8d940d1cb6f98
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 65cca7c82d37a0fc3684ed2daace201e3c95859f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124752087"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132341043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>Didacticiel : Intégration d’Azure Active Directory à SumTotalCentral
 
@@ -43,7 +43,7 @@ Dans ce didacticiel, vous configurez et testez l’authentification unique Azure
 
 * SumTotalCentral prend en charge l’authentification unique lancée par le **fournisseur de services**
 
-* Après avoir configuré SumTotalCentral, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrir comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* Après avoir configuré SumTotalCentral, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).
     
 > [!NOTE]
 > L’identificateur de cette application étant une valeur de chaîne fixe, une seule instance peut être configurée dans un locataire.

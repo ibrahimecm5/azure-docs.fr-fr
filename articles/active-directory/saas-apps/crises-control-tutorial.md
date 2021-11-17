@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 4f3a79e98d1baae2dc03f528249fc04bbb3b90f6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 43a8e9f32507c88857ae46d2cd3ad3454ae90cc6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802778"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crises-control"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Crises Control
 
@@ -145,4 +145,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Crises Control, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré Crises Control, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

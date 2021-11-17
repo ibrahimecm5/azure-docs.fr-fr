@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 0b936ecbd80ba0b258cea8b043f4bef789b67a35
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0183e56d9bdf0c995dbbcf273914790eb0909e7d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751298"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297542"
 ---
 # <a name="generate-maps"></a>Générer des cartes
 
@@ -43,7 +43,7 @@ Les dépendances suivantes se rapportent à Sentinel :
 
 - Nous dépendons des performances de Sentinel pour le téléchargement des images satellite. Vérifiez les [activités](https://scihub.copernicus.eu/twiki/do/view/SciHubNews/WebHome) de maintenance l’état des performances de Sentinel.
 - Sentinel n’autorise que deux [threads de téléchargement](https://sentinels.copernicus.eu/web/sentinel/sentinel-data-access/typologies-and-services) simultanés par utilisateur.
-- La génération de cartes de précision sera perturbée par [la fréquence de répétitivité et la couverture de Sentinel]( https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage).
+- La génération de cartes de précision sera perturbée par [la fréquence de répétitivité et la couverture de Sentinel](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage).
 
 ## <a name="create-a-sensor-placement-map"></a>Créer une carte d’emplacement des capteurs
 Cette section décrit en détail les procédures de création de cartes d’emplacement des capteurs.

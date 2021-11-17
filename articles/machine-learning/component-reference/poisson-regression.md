@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 3c77b0ac501d6829429cde79ca9165a1df450215
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0ab03efd4ca6bf372b90ba04744c929082e85796
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566947"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339577"
 ---
 # <a name="poisson-regression"></a>Régression de Poisson
 
@@ -95,13 +95,13 @@ La régression de Poisson est un type d'analyse de régression généralement ut
     > 
     > - Si vous sélectionnez l’option **Plage de paramètres** et que vous entrez une valeur unique pour un paramètre, cette valeur unique que vous avez spécifiée est utilisée tout au long du balayage, même si d’autres paramètres changent sur une plage de valeurs.
 
-8.  Envoyez le pipeline.
+8. Envoyez le pipeline.
 
 ## <a name="results"></a>Résultats
 
 Une fois l’apprentissage terminé :
 
-+ Pour enregistrer un instantané du modèle entraîné, sélectionnez le composant d’entraînement, puis basculez vers l’onglet **Sorties** dans le panneau droit. Cliquez sur l’icône **Inscrire le jeu de données**.  Vous pouvez rechercher le modèle enregistré en tant que composant dans l’arborescence des composants. 
+- Pour enregistrer un instantané du modèle entraîné, sélectionnez le composant d’entraînement, puis basculez vers l’onglet **Sorties** dans le panneau droit. Cliquez sur l’icône **Inscrire le jeu de données**.  Vous pouvez rechercher le modèle enregistré en tant que composant dans l’arborescence des composants.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

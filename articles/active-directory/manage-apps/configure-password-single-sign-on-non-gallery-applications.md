@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: f8b32e5adda8d09f928b6fc6b447a9363998017f
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 0d54ba24ee13bc0084dbe6f4a14d54e38c94cded
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074054"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546839"
 ---
-# <a name="add-password-based-single-sign-on-to-an-application-in-azure-active-directory"></a>Ajoutez l’authentification unique basée sur un mot de passe à une application dans le Répertoire actif Azure
+# <a name="add-password-based-single-sign-on-to-an-application"></a>Ajouter l’authentification unique basée sur un mot de passe à une application
 
 Cet article explique comment configurer l’authentification unique (SSO) par mot de passe dans le Répertoire actif Azure (Azure AD). Avec l’authentification unique par mot de passe, un utilisateur se connecte à l’application avec un nom d’utilisateur et un mot de passe la première fois qu’il y accède. Après la première connexion, Azure AD fournit le nom d’utilisateur et le mot de passe à l’application. 
 

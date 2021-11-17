@@ -1,18 +1,18 @@
 ---
 title: Configurer le chargement de fichiers vers IoT Hub à l’aide d’Azure CLI | Microsoft Docs
 description: Découvrez comment configurer le chargement des fichiers vers Azure IoT Hub à l’aide de l’interface Azure CLI multiplateforme.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
-ms.openlocfilehash: ecaae482a0a577efd480610f25d0186502dbeb15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: c3aa2d496151d8c9d9f6ef5acfea6dee55548b2b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562615"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555600"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Configurer les chargements de fichiers IoT Hub à l’aide d’Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "122562615"
 
 Cet article explique comment configurer des chargements de fichiers sur votre hub IoT à l’aide d’Azure CLI. 
 
-Pour utiliser la [fonctionnalité de chargement de fichiers dans IoT Hub](iot-hub-devguide-file-upload.md), vous devez d’abord associer un compte de stockage Azure et un conteneur blob à votre hub IoT. IoT Hub génère automatiquement des URI SAS avec des autorisations d’écriture pour ce conteneur d’objets blob pour les appareils à utiliser lorsqu’ils chargent des fichiers. En plus du compte de stockage et du conteneur blob, vous pouvez définir la durée de vie de l’URI SAS et le type d’authentification que IoT Hub utilise avec le stockage Azure. Vous pouvez également configurer les paramètres des notifications de chargement de fichiers facultatives que IoT Hub peut remettre aux services back-end.
+Pour utiliser la [fonctionnalité de chargement de fichiers dans IoT Hub](iot-hub-devguide-file-upload.md), vous devez d’abord associer un compte de stockage Azure et un conteneur blob à votre hub IoT. IoT Hub génère automatiquement des URI SAS avec des autorisations d’écriture pour ce conteneur d’objets blob pour les appareils à utiliser lorsqu’ils chargent des fichiers. En plus du compte de stockage et du conteneur blob, vous pouvez définir la durée de vie de l’URI SAS et le type d’authentification que IoT Hub utilise avec le stockage Azure. Vous pouvez également configurer les paramètres des notifications de chargement de fichiers facultatives que IoT Hub peut remettre aux services principaux.
 
 ## <a name="prerequisites"></a>Prérequis
 

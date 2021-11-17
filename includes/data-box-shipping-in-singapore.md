@@ -3,14 +3,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/21/2021
+ms.date: 11/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 2f4911df5c8d57f7554ff80f1c0c4b382c0f82c3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 8e9cd4a9d9c29422c9652a815020e12f841e2ea2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247191"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556563"
 ---
 Effectuez les étapes suivantes si vous renvoyez l’appareil à Singapour.
 
@@ -21,7 +21,7 @@ Effectuez les étapes suivantes si vous renvoyez l’appareil à Singapour.
 5. Envoyez un e-mail au service client SingPost en utilisant le modèle d’e-mail suivant avec le numéro de suivi.
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  

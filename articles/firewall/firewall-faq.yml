@@ -6,14 +6,14 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 09/28/2021
+  ms.date: 11/10/2021
   ms.author: victorh
-  ms.openlocfilehash: 98f226f85c9dac3d3ab17396e42759291e5a0007
-  ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+  ms.openlocfilehash: b2eed82256a5f937461944d634f146adc9ef0662
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/18/2021
-  ms.locfileid: "130138372"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132343208"
 title: FAQ Pare-feu Azure
 summary: ''
 sections:
@@ -180,7 +180,7 @@ sections:
     answer: >
       Non. Les règles NAT ajoutent implicitement une règle de réseau correspondante pour autoriser le trafic traduit. Vous pouvez remplacer ce comportement en ajoutant explicitement une collection de règles de réseau avec des règles de refus correspondant au trafic traduit. Pour plus d’informations sur la logique de traitement des règles de Pare-feu Azure, consultez l’article [Logique de traitement des règles du service Pare-feu Azure](rule-processing.md).
   - question: Comment les caractères génériques fonctionnent-ils dans les URL et FQDN cibles dans les règles d’application ?
-    answer: "- **URL** : un astérisque fonctionne quand il est placé sur le côté le plus à droite ou le plus à gauche. S’il est à gauche, il ne peut pas faire partie du FQDN.\n- **FQDN** : un astérisque fonctionne quand il est placé sur le côté le plus à gauche.\n\nExemples :\n\n\n  |Type  |Règle  |Pris en charge ?  |Exemples positifs  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |Oui|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |Oui|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|Oui         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|Oui|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|Oui|`www.contoso.com/test/anything`<br>Remarque : `www.contoso.com/test` ne correspond **pas** (dernière barre oblique)|\n  |TargetURL  |`www.contoso.*/test/*`|Non|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|Non|         |\n  |TargetURL  |`www.contoso.*`|Non|         |\n  |TargetURL  |`www.*contoso.com`|Non|         |\n  |TargetURL   |`www.contoso.com:8080`|Non|         |\n  |TargetURL   |`*.contoso.*`|Non|         |\n  |TargetFQDN    |`www.contoso.com`|Oui|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|Oui|`any.contoso.com`<br><br>Remarque : Si vous voulez autoriser spécifiquement `contoso.com`, vous devez inclure contoso.com dans la règle. Sinon, la connexion est supprimée par défaut, car la demande ne correspond à aucune règle.|\n  |TargetFQDN    |`*contoso.com`|Oui|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|Non|         |\n  |TargetFQDN    |`*.contoso.*`|Non|         |\n \n"
+    answer: "- **URL** : un astérisque fonctionne quand il est placé sur le côté le plus à droite ou le plus à gauche. S’il est à gauche, il ne peut pas faire partie du FQDN.\n- **FQDN** : un astérisque fonctionne quand il est placé sur le côté le plus à gauche.\n\nExemples :\n\n\n  |Type  |Règle  |Pris en charge ?  |Exemples positifs  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |Oui|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |Oui|`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|Oui         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|Oui|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|Oui|`www.contoso.com/test/anything`<br>Remarque : `www.contoso.com/test` ne correspond **pas** (dernière barre oblique)|\n  |TargetURL  |`www.contoso.*/test/*`|Non|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|Non|         |\n  |TargetURL  |`www.contoso.*`|Non|         |\n  |TargetURL  |`www.*contoso.com`|Non|         |\n  |TargetURL   |`www.contoso.com:8080`|Non|         |\n  |TargetURL   |`*.contoso.*`|Non|         |\n  |TargetFQDN    |`www.contoso.com`|Oui|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|Oui|`any.contoso.com`<br><br>Remarque : Si vous voulez autoriser spécifiquement `contoso.com`, vous devez inclure contoso.com dans la règle. Sinon, la connexion est supprimée par défaut, car la demande ne correspond à aucune règle.|\n  |TargetFQDN    |`*contoso.com`|Oui|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|Non|         |\n  |TargetFQDN    |`*.contoso.*`|Non|         |\n \n"
   - question: >
       Que signifie l’*état d’approvisionnement : Échec* ?
     answer: Chaque fois qu’une modification de configuration est appliquée, Pare-feu Azure tente de mettre à jour toutes ses instances de serveur principal sous-jacentes. Dans de rares cas, il se peut qu’une de ces instances de serveur principal ne soit pas mise à jour avec la nouvelle configuration et le processus de mise à jour s’arrête avec un état d’approvisionnement ayant échoué. Votre Pare-feu Azure est toujours opérationnel, mais la configuration appliquée peut se trouver dans un état incohérent, où certaines instances ont toujours la configuration précédente et d’autres ont l’ensemble de règles mis à jour. Si cela se produit, essayez de mettre à jour votre configuration une fois de plus jusqu’à la réussite de l’opération que votre Pare-feu aie l’état d’approvisionnement *Réussite*.

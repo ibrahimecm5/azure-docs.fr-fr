@@ -11,12 +11,12 @@ author: justinha
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, ignite-fall-2021
-ms.openlocfilehash: 1572e029e4ae6b9c89587a32e710162aa53177a6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17bc0c700aee1a351371f35e7c84e95312214088
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029048"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550303"
 ---
 # <a name="tutorial-enable-cloud-sync-self-service-password-reset-writeback-to-an-on-premises-environment-preview"></a>Tutoriel : Activer la réécriture et la réinitialisation de mot de passe en libre-service Azure de la synchronisation cloud dans un environnement local (préversion)
 
@@ -35,7 +35,7 @@ La réécriture de réinitialisation de mot de passe en libre-service de la sync
 - L’activation de la réécriture du mot de passe dans la synchronisation cloud Azure AD Connect nécessite l’exécution de scripts PowerShell signés.
   - Assurez-vous que la stratégie d’exécution de PowerShell autorise l’exécution de scripts. 
   - La stratégie d’exécution recommandée lors de l’installation est « RemoteSigned ». 
-  - Pour plus d’informations sur la définition de la stratégie d’exécution de PowerShell, consultez [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy.md?view=powershell-7.1). 
+  - Pour plus d’informations sur la définition de la stratégie d’exécution de PowerShell, consultez [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy). 
 
 
 ## <a name="deployment-steps"></a>Étapes du déploiement

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 19db011756da7656fda243f9ffc80e555a842ac3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e2eaaf36b75110562f847bf7c3cb795571cb778d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801046"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-azure-ad-sso-for-splunk-enterprise-and-splunk-cloud"></a>Tutoriel : intégration d’Azure Active Directory avec l’authentification unique Azure AD pour Splunk Enterprise et Splunk Cloud
 
@@ -132,4 +132,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré l’authentification unique Azure AD pour Splunk Enterprise et Splunk Cloud, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrir comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app)
+Après avoir configuré l’authentification unique Azure AD pour Splunk Enterprise et Splunk Cloud, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

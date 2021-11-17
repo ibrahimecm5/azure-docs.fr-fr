@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 1ae507e0c730f876448bcd501bdf787bbebd1af0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 68d0b88c994d47a2475e13f6cbf51a188f9b1b40
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124741743"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132280190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nature-research"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Nature Research
 
@@ -138,4 +138,4 @@ Vous pouvez aussi utiliser le panneau d’accès Microsoft pour tester l’appli
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Nature Research, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré Nature Research, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

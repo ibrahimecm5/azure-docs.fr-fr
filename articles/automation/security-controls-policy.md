@@ -3,16 +3,14 @@ title: Contrôles de conformité réglementaire d’Azure Policy pour Azure Auto
 description: Liste les contrôles de conformité réglementaire d’Azure Policy pour Azure Automation. Ces définitions de stratégie intégrées fournissent des approches courantes pour la gestion de la conformité de vos ressources Azure.
 ms.date: 09/17/2021
 ms.topic: sample
-author: mgoedtel
-ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1634a3c4ab2a96aaa74b0cf6fa86a20cca741144
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6818329a3f20cce16ebfc20b2585f497c23db10
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603147"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494226"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>Contrôles de conformité réglementaire d’Azure Policy pour Azure Automation
 

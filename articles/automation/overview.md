@@ -5,12 +5,12 @@ services: automation
 keywords: azure automation, DSC, powershell, configuration de l’état, gestion des mises à jour, suivi des modifications, DSC, inventaire, runbooks, python, graphique
 ms.date: 10/25/2021
 ms.topic: overview
-ms.openlocfilehash: e641908666c081ca66a76999c63a29e73befe6aa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d6a703a04aeec9b764f74a7574cde4baea875604
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030360"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491485"
 ---
 # <a name="what-is-azure-automation"></a>Qu'est-ce qu'Azure Automation ?
 
@@ -116,10 +116,10 @@ Selon vos besoins, un ou plusieurs des services Azure suivants s’intègrent à
 
 Ces services Azure peuvent fonctionner avec les ressources de travail et de runbook Automation à l’aide d’un webhook HTTP ou d’une méthode API :
 
-* [Azure Logic Apps](/connectors/built-in.md)
-* [Azure Power Apps](/connectors/azureautomation.md)
+* [Azure Logic Apps](/azure/connectors/built-in)
+* [Azure Power Apps](/connectors/azureautomation)
 * [Azure Event Grid](../event-grid/handler-webhooks.md)
-* [Azure Power Automate](/connectors/azureautomation.md)
+* [Azure Power Automate](/connectors/azureautomation)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

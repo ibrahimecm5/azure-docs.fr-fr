@@ -2,13 +2,13 @@
 title: Nouveautés d’Azure Defender pour IoT pour les fabricants d’appareils
 description: Découvrez les versions et fonctionnalités les plus récentes de Defender pour IoT pour les fabricants d’appareils.
 ms.topic: overview
-ms.date: 11/02/2021
-ms.openlocfilehash: 4d6d931082f55a08667da20283d28c655a9fb584
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/09/2021
+ms.openlocfilehash: e49dbbdf1cb0000e69157b57d63e86c9d85c5e6f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438585"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278877"
 ---
 # <a name="whats-new-in-azure-defender-for-iot-for-device-builders"></a>Nouveautés d’Azure Defender pour IoT pour les fabricants d’appareils  
 

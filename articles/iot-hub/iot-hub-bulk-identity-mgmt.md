@@ -1,19 +1,19 @@
 ---
 title: Importer/exporter des identités d’appareil Azure IoT Hub | Microsoft Docs
 description: Utilisation du Kit Azure IoT service SDK afin d’exécuter des opérations en bloc dans le registre des identités pour importer et exporter les identités des appareils. Les opérations d’importation vous permettent de créer, de mettre à jour et de supprimer des identités d’appareils en bloc.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7c85b88e2648f41c815d9cd864362f60845116b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 27a84f85f32eaf5fe77ff637d80eb4b3c9587930
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524565"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556151"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importer et exporter des identités d’appareil IoT Hub en bloc
 

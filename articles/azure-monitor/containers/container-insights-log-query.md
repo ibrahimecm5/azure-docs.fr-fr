@@ -3,12 +3,12 @@ title: Comment interroger des journaux à partir de Container Insights
 description: Container Insights collecte des métriques et des données de journal. Cet article décrit les enregistrements correspondants et inclut des exemples de requêtes.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: ff2ce2fa2e70400b4b591f4e8f3dbb50e3dc6415
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: af48255c1895142107e693595c256d2c76fdee65
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240126"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179211"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Comment interroger des journaux à partir de Container Insights
 
@@ -48,12 +48,6 @@ KubeEvents
 | where not(isempty(Namespace))
 | sort by TimeGenerated desc
 | render table
-```
-### <a name="image-inventory"></a>Inventaire des images
-
-``` kusto
-ContainerImageInventory
-| summarize AggregatedValue = count() by Image, ImageTag, Running
 ```
 
 ### <a name="container-cpu"></a>Processeur du conteneur

@@ -2,14 +2,14 @@
 title: Détecter des mouvements et enregistrer des vidéos avec Azure Video Analyzer
 description: Ce guide de démarrage rapide montre comment utiliser le module de périphérie Azure Video Analyzer pour appliquer la détection de mouvement à un stream vidéo en direct et enregistrer une vidéo dans le compte Video Analyzer.
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a62af8ee0ac3859a6d8f7e7d81d7115877afda35
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 48c41b812a4cdbd416d0dd146aba938cce419864
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029176"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484192"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>Démarrage rapide : Détecter des mouvements et enregistrer une vidéo dans Video Analyzer
 
@@ -42,7 +42,7 @@ Vous pouvez obtenir plus de détails [ici](https://github.com/Azure/video-analyz
 
 Sur la machine virtuelle créée par le déploiement ci-dessus se trouvent plusieurs fichiers MKV.  L’un de ces fichiers s’appelle `lots_015.mkv`. Dans les étapes suivantes, nous allons utiliser ce fichier vidéo afin de simuler un stream en direct pour ce tutoriel.
 
-Vous pouvez utiliser une application, telle que [VLC Player](https://www.videolan.org/vlc/), la lancer, appuyer sur `Ctrl+N` et coller le lien de l’[exemple de vidéo d’aire de stationnement](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) pour commencer la lecture. Au repère d’approximativement 5 secondes, une voiture blanche traverse l’aire de stationnement.
+Vous pouvez utiliser une application, telle que [VLC Player](https://www.videolan.org/vlc/), la lancer, appuyer sur `Ctrl+N` et coller le lien de l’[exemple de vidéo d’aire de stationnement](https://avamedia.blob.core.windows.net/public/lots_015.mkv) pour commencer la lecture. Au repère d’approximativement 5 secondes, une voiture blanche traverse l’aire de stationnement.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

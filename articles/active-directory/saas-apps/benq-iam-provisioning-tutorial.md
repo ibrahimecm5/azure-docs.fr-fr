@@ -12,16 +12,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: 7a224a4370bed3ceca50d03091d42151af0408f5
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 3a1b83ecaa35f141563374b560c07b39827078f7
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129621329"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549904"
 ---
 # <a name="tutorial-configure-benq-iam-for-automatic-user-provisioning"></a>Tutoriel : Configurer BenQ IAM pour l’approvisionnement automatique d’utilisateurs
 
-Ce tutoriel décrit les étapes à effectuer dans BenQ IAM et Azure Active Directory (Azure AD) pour configurer l’approvisionnement automatique d’utilisateurs. Une fois configuré, Azure AD approvisionne et déprovisionne automatiquement les utilisateurs et les groupes pour [BenQ IAM](https://service-portaltest.benq.com/login) à l’aide du service d’approvisionnement Azure AD. Pour découvrir les informations importantes sur ce que fait ce service, comment il fonctionne et consulter le forum aux questions, reportez-vous à l’article [Automatiser l’attribution et l’annulation de l’attribution des utilisateurs dans les applications SaaS avec Azure Active Directory](../app-provisioning/user-provisioning.md). 
+Ce tutoriel décrit les étapes à effectuer dans BenQ IAM et Azure Active Directory (Azure AD) pour configurer l’approvisionnement automatique d’utilisateurs. Une fois configuré, Azure AD approvisionne et déprovisionne automatiquement les utilisateurs et les groupes pour [BenQ IAM](https://service-portal.benq.com/login) à l’aide du service d’approvisionnement Azure AD. Pour découvrir les informations importantes sur ce que fait ce service, comment il fonctionne et consulter le forum aux questions, reportez-vous à l’article [Automatiser l’attribution et l’annulation de l’attribution des utilisateurs dans les applications SaaS avec Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: c0502b880d23e9f0a63564f11473f48e1c01b096
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: f92d776239bccb457f6d9fe9b073ea64a56178a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236552"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286428"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostics Azure Standard Load Balancer avec les métriques, les alertes et l’intégrité des ressources
 
@@ -219,7 +219,7 @@ Ce graphique affiche les informations suivantes :
 Le graphique permet aux clients de dépanner eux-mêmes le déploiement sans devoir deviner ou demander de l’aide sur d’autres problèmes. Le service n’était pas disponible, car les sondes d’intégrité ont échoué en raison d’une configuration incorrecte ou de l’échec d’une application.
 </details>
 
-## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Configurer des alertes pour des métriques multidimensionnelles ###
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Configurer des alertes pour des métriques multidimensionnelles
 
 Azure Standard Load Balancer prend en charge des alertes facilement configurables pour les métriques multidimensionnelles. Configurez des seuils personnalisés pour des métriques spécifiques afin de déclencher des alertes avec différents niveaux de gravité et de bénéficier d’une expérience de supervision des ressources sans toucher.
 

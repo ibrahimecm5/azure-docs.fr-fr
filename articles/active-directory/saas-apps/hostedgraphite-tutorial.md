@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: b9230da3c27f17c6f8f2c6b5bb7d0e88b4ec0e84
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 185838b45f656e1b28b25749b215ab992d039131
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772958"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132291362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Didacticiel : Intégration d’Azure Active Directory à Hosted Graphite
 
@@ -150,7 +150,7 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 Dans cette section, un utilisateur appelé Britta Simon est créé dans Hosted Graphite. Hosted Graphite prend en charge l’attribution d’utilisateurs juste-à-temps, qui est une option activée par défaut. Vous n’avez aucune opération à effectuer dans cette section. S’il n’existe pas encore d’utilisateur dans Hosted Graphite, il en est créé un après l’authentification.
 
 > [!NOTE]
-> Si vous devez créer un utilisateur manuellement, contactez l’[équipe du support technique de Hosted Graphite](<mailto:help@hostedgraphite.com>).
+> Si vous devez créer un utilisateur manuellement, contactez l’[équipe du support technique de Hosted Graphite](mailto:help@hostedgraphite.com).
 
 ## <a name="test-sso"></a>Tester l’authentification unique (SSO)
 
@@ -170,4 +170,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Hosted Graphite, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré Hosted Graphite, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

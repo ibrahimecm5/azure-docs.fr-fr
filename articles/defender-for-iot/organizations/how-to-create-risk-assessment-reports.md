@@ -1,14 +1,14 @@
 ---
 title: Créer des rapports d’évaluation des risques
 description: Obtenez des informations sur les risques réseau détectés par des capteurs individuels ou un affichage agrégé des risques détectés par tous les capteurs.
-ms.date: 12/17/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 908a78f659dc17d0207d81613b6be7dd2295a1d2
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: fbd7dc1883c52f9a5b949ac8088a998a23519d14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138609"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278756"
 ---
 # <a name="risk-assessment-reporting"></a>Rapport d’évaluation des risques
 

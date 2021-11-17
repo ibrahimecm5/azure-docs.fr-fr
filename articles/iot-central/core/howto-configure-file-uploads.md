@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/23/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 029571010d80aa6249d91f3d678e273cc5a44279
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 57ee46a9ba0283def1e1c2d3e2fb71bdf44ec08c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468003"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486365"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Charger des fichiers de vos appareils vers le cloud
 
@@ -52,7 +52,7 @@ Si vous souhaitez désactiver les chargements de fichiers d’appareil dans votr
 
 ## <a name="upload-a-file-from-a-device"></a>Charger un fichier à partir d’un appareil
 
-IoT Central utilise la capacité de chargement de fichiers d’IoT Hub pour permettre aux appareils de charger des fichiers. Pour obtenir un exemple de code qui vous montre comment charger des fichiers à partir d’un appareil, consultez l’[exemple de chargement de fichiers d’appareil avec IoT Central](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/).
+IoT Central utilise la capacité de chargement de fichiers d’IoT Hub pour permettre aux appareils de charger des fichiers. Pour obtenir un exemple de code qui vous montre comment charger des fichiers à partir d’un appareil, consultez l’[exemple de chargement de fichiers d’appareil avec IoT Central](/samples/azure-samples/iot-central-file-upload-device/iotc-file-upload-device/).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: f2d31f0a16856f0d1725659477499c309bc243d4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fb2e3eb93e1d9dbb01419d381c02c0a2717d9933
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800628"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à SuccessFactors
 
@@ -227,10 +227,9 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 * Vous pouvez utiliser Mes applications de Microsoft. Un clic sur la vignette SuccessFactors dans Mes applications vous redirige vers l’URL de connexion SuccessFactors. Pour plus d’informations sur Mes applications, consultez [Présentation de Mes applications](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
-
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré SuccessFactors, vous pouvez appliquer des contrôles de session, ce qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrir comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+Après avoir configuré SuccessFactors, vous pouvez appliquer des contrôles de session, ce qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).
 
 <!--Image references-->
 

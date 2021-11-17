@@ -1,18 +1,18 @@
 ---
 title: Bonnes pratiques en matière de configuration d’appareil pour Azure IoT Hub | Microsoft Docs
 description: Découvrez les meilleures pratiques pour l’utilisation de la gestion automatique des périphériques afin de réduire les tâches répétitives et complexes impliquées dans la gestion des appareils IoT à l’échelle.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 2003e4b6f143f9220b9618a57a2894e678014602
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 22417fa8842835ce84377190783567c9727c15a0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130175633"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547664"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bonnes pratiques en matière de configuration d’appareil dans une solution IoT
 

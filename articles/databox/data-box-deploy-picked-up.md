@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/29/2021
+ms.date: 11/16/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 95cce7e79ea8eaf3a542b52ac5c04b954ed56e0e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c3dd0d64542dd9d25643fb811accde5d882af870
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469100"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556564"
 ---
 ::: zone target="docs"
 
@@ -75,7 +75,7 @@ Les étapes suivantes sont déterminées par l’endroit où vous retournez l’
 
 Vérifiez que la copie des données sur l’appareil a été effectuée et que l’exécution de la **préparation de l’expédition** a réussi. 
 
-En fonction de la région où vous expédiez l’appareil, la procédure est différente. Dans de nombreux pays ou régions, vous pouvez utiliser l’expédition managée par Microsoft ou l’expédition automanagée.
+En fonction de la région où vous expédiez l’appareil, la procédure est différente. Dans de nombreux pays ou régions, vous pouvez utiliser l’[expédition gérée par Microsoft](#microsoft-managed-shipping) ou l’[expédition autogérée](#self-managed-shipping).
 
 ### <a name="microsoft-managed-shipping"></a>Expédition gérée par Microsoft
 
@@ -123,11 +123,11 @@ Suivez les instructions applicables à la région à partir de laquelle vous eff
 
 [!INCLUDE [data-box-shipping-in-uae](../../includes/data-box-shipping-in-uae.md)]
 
+---
+
 ### <a name="self-managed-shipping"></a>Expédition autogérée
 
 [!INCLUDE [data-box-shipping-self-managed](../../includes/data-box-shipping-self-managed.md)]
-
----
 
 ::: zone target="chromeless"
 

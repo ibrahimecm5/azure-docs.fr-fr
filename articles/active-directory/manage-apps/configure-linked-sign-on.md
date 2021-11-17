@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: c8404b7ec361c90a6153cadc7ec6a71efb17fd1c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc50777e503c50ca68955b8324b75c7c6aa66c77
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639619"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548479"
 ---
-# <a name="add-linked-single-sign-on-to-an-application-in-azure-active-directory"></a>Ajoutez l’authentification unique liée à une application dans le Répertoire actif Azure
+# <a name="add-linked-single-sign-on-to-an-application"></a>Ajouter l’authentification unique liée à une application
 
 Cet article explique comment configurer l’authentification unique (SSO) liée à votre application dans le Répertoire actif Azure (Azure AD). L’authentification unique liée SSO permet à Azure AD de fournir l’authentification unique à une application qui est déjà configurée pour l’authentification unique dans un autre service. L’option liée vous permet de configurer l’emplacement cible lorsqu’un utilisateur sélectionne l’application dans le portail Mes applications ou Microsoft 365 de votre organisation.
 

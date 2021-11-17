@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 2b75a4d4973a1aed74c1280dfab50753086eee37
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 307161f29a848d98942ff3f67a4584dd687d86c3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807842"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Zscaler Three
 
@@ -177,15 +177,15 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 
    b. Cliquez sur **Activer**.
 
-## <a name="configuring-proxy-settings&quot;></a>Configuration des paramètres de proxy
+## <a name="configuring-proxy-settings"></a>Configuration des paramètres de proxy
 
-### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Pour configurer les paramètres de proxy dans Internet Explorer
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Pour configurer les paramètres de proxy dans Internet Explorer
 
 1. Démarrez **Internet Explorer**.
 
 2. Pour ouvrir la boîte de dialogue **Options Internet**, sélectionnez **Options Internet** dans le menu **Outils**.
 
-   ![Options Internet](./media/zscaler-three-tutorial/tools.png &quot;Options Internet")
+   ![Options Internet](./media/zscaler-three-tutorial/tools.png "Options Internet")
 
 3. Cliquez sur l’onglet **Connexions** .
 
@@ -231,4 +231,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Zscaler Three, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré Zscaler Three, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

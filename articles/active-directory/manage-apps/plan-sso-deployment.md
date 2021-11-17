@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d6daa398c560bf7112539291f76fe4188abb76a1
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 8f8140362a7b2709aaf1ea635e61a43e84eb503a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231612"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546573"
 ---
-# <a name="plan-a-single-sign-on-deployment-in-azure-active-directory"></a>Planifier un déploiement de l’authentification unique dans Azure Active Directory
+# <a name="plan-a-single-sign-on-deployment"></a>Planifier un déploiement de l’authentification unique
 
 Cet article fournit des informations que vous pouvez utiliser pour planifier votre déploiement de l’[authentification unique (SSO)](what-is-single-sign-on.md) dans Azure Active Directory (Azure AD). Lorsque vous planifiez votre déploiement de l’authentification unique avec vos applications dans Azure AD, vous devez prendre en compte les questions suivantes :
 
@@ -92,7 +92,7 @@ Du point de vue de la connexion, les applications avec comptes partagés ne sont
 
 Vous pouvez configurer une application pour l’authentification unique de plusieurs façons. Le choix d’une méthode d’authentification unique dépend de la façon dont l’application est configurée pour l’authentification.
 - Pour l’authentification unique, les applications cloud peuvent utiliser les méthodes suivantes : OpenID Connect, OAuth, SAML, par mot de passe ou liée. L’authentification unique peut également être désactivée.
-- Pour l’authentification unique, les applications locales peuvent utiliser les méthodes suivantes : par mot de passe, Authentification Windows intégrée, par en-tête ou liée. Les choix pour les applications locales fonctionnent quand les applications sont configurées pour le [Proxy d’application](../app-proxy/what-is-application-proxy.md).
+- Pour l’authentification unique, les applications locales peuvent utiliser les méthodes suivantes : par mot de passe, Authentification Windows intégrée, par en-tête ou liée. Les choix pour les applications locales fonctionnent quand les applications sont configurées pour [Proxy d’application](../app-proxy/what-is-application-proxy.md).
 
 Cet organigramme vous permet de décider quelle méthode d’authentification unique est la plus adaptée à votre situation.
 
@@ -114,7 +114,7 @@ Les protocoles d’authentification unique suivants peuvent être utilisés :
 
 - **Désactivée** : Choisissez l’authentification unique désactivée lorsque l’application n’est pas prête à être configurée pour l’authentification unique.
 
-- **Authentification Windows intégrée (IWA)**  : choisissez l’authentification unique IWA pour les applications qui utilisent IWA ou pour les applications prenant en charge les revendications. Pour plus d’informations, consultez [Délégation contrainte Kerberos pour l’authentification unique à vos applications avec Proxy d’application](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md).
+- **Authentification Windows intégrée (IWA)**  : Choisissez l’authentification unique IWA pour les applications qui utilisent IWA ou pour les applications prenant en charge les revendications. Pour plus d’informations, consultez [Délégation contrainte Kerberos pour l’authentification unique à vos applications avec Proxy d’application](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md).
 
 - **Par en-tête** : Choisissez l’authentification unique par en-tête quand l’application utilise des en-têtes pour l’authentification. Pour plus d’informations, consultez [Authentification unique par en-tête](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md).
 

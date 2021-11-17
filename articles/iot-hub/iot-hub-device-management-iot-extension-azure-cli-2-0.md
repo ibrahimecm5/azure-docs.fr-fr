@@ -1,20 +1,20 @@
 ---
 title: Gestion des appareils Azure IoT avec l’extension IoT pour Azure CLI | Microsoft Docs
 description: Utilisez l’outil Extension IoT pour Azure CLI permettant la gestion des appareils Azure IoT Hub, avec les méthodes Direct et les options de gestion des propriétés souhaitées du jumeau.
-author: robinsh
+author: eross-msft
 manager: ''
 keywords: gestion des appareils iot azure, gestion des appareils azure iot hub, gestion des appareils iot, gestion des appareils iot hub
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: robinsh
-ms.openlocfilehash: c67e9fc7cb6a2530c752efee760b2fb7fcb7f277
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.author: lizross
+ms.openlocfilehash: 765dd7f8dd179187c904c5b779609823cd3503af
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727097"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555013"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Utiliser l’extension IoT pour Azure CLI permettant la gestion des appareils Azure IoT Hub
 

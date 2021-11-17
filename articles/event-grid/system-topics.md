@@ -3,12 +3,12 @@ title: Rubriques système dans Azure Event Grid
 description: Décrit les rubriques système d’Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 2c0bf2879ce2b137faf33f1ec00d456ab884ccf8
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7e0354ec2b9aa5c8644998d618db9db693979b62
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035103"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549999"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Rubriques système dans Azure Event Grid
 Une rubrique système dans Event Grid représente un ou plusieurs événements publiés par les services Azure, tels que Stockage Azure et Azure Event Hubs. Par exemple, une rubrique système peut représenter **tous les événements blob** ou uniquement les événements **de création de blob** et **de suppression de blob** publiés pour un **compte de stockage spécifique**. Dans cet exemple, lorsqu’un blob est chargé sur le compte de stockage, le service Stockage Azure publie un événement **de création de blob** dans la rubrique système d’Event Grid, qui transfère ensuite l’événement aux [abonnés](event-handlers.md) de la rubrique qui reçoivent et traitent l’événement. 
@@ -44,7 +44,7 @@ Dans le passé, une rubrique système était implicite et n’était pas exposé
 
 - [Afficher les rubriques système dans le portail Azure](create-view-manage-system-topics.md#view-all-system-topics)
 - Exporter les modèles Resource Manager des rubriques système et des abonnements aux événements dans le portail Azure
-- [Configurer les journaux de diagnostic des rubriques système](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-system-topic)
+- [Configurer les journaux de diagnostic des rubriques système](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-system-topics)
 - Configurer des alertes en cas d’échec de publication et de livraison 
 
 ## <a name="lifecycle-of-system-topics"></a>Cycle de vie des rubriques système

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6ca686a9fcf2b2ba290e14687f090f833714502c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 57eef48a188f07847efcda31b4cd6a6043f2ae2a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225174"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491010"
 ---
 # <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>Restreindre l’accès à l’importation/exportation de disques managés à l’aide d’Azure Private Link
 
@@ -88,32 +88,6 @@ Vous devez ensuite créer un point de terminaison privé et le configurer pour l
 1. Sélectionnez **Enregistrer**.
 
 Vous avez à présent configuré une liaison privée qui vous permet d’importer et d’exporter votre disque managé.
-
-## <a name="frequently-asked-questions"></a>Forum aux questions
-
-**Q : Quel est l’avantage de l’utilisation de liaisons privées pour l’exportation et l’importation de disques managés ?**
-
-**R :** Vous pouvez utiliser Private Link pour limiter le processus d’exportation et d’importation aux disques managés uniquement à partir de votre réseau virtuel Azure.
-
-**Q : Comment s’assurer qu’un disque peut être exporté ou importé uniquement par le biais d’Azure Private Link ?**
-
-**R :** Vous devez définir la propriété **DiskAccessId** sur une instance d’un objet d’accès au disque. En outre, vous pouvez définir la propriété **NetworkAccessPolicy** sur **AllowPrivate**.
-
-**Q : Puis-je lier plusieurs réseaux virtuels au même objet d’accès au disque ?**
-
-**R :** Non. Actuellement, vous pouvez lier un objet d’accès au disque à un seul réseau virtuel.
-
-**Q : Puis-je lier un réseau virtuel à un objet d’accès au disque dans un autre abonnement ?**
-
-**R :** Non. Actuellement, vous pouvez lier un objet d’accès au disque à un seul réseau virtuel dans le même abonnement.
-
-**Q : Combien d’exportations ou d’importations utilisant le même objet d’accès au disque peuvent se produire en même temps ?**
-
-**R :** Vous pouvez avoir cinq exportations ou importations simultanées.
-
-**Q : Puis-je utiliser l’URI SAS d’un disque ou d’une capture instantanée pour télécharger le disque dur virtuel sous-jacent d’une machine virtuelle dans le même sous-réseau que le sous-réseau du point de terminaison privé associé au disque ?**
-
-**R :** Non. Vous pouvez effectuer cette opération uniquement pour une machine virtuelle qui se trouve dans le même sous-réseau que le sous-réseau du point de terminaison privé associé au disque.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

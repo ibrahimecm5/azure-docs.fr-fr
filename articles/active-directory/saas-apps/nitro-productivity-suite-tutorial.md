@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 85c880cc318b025a9ca70a19eaa8c743c3e243e8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3f54e10818bd8fc74730a38d26b948185c56549d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762433"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325977"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Nitro Productivity Suite
 
@@ -166,4 +166,4 @@ Vous pouvez aussi utiliser le panneau d’accès Microsoft pour tester l’appli
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré l’instance de Nitro Productivity Suite, vous pouvez appliquer les contrôles de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré l’instance de Nitro Productivity Suite, vous pouvez appliquer les contrôles de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

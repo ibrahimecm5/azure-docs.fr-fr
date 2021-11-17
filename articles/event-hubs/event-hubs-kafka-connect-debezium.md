@@ -5,12 +5,12 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 10/18/2021
-ms.openlocfilehash: 033f02c2dec0d03e185401d3f4bbe2eadc053758
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b2c39e3b8b408ddb6a3efe6641e8a537a180eb2d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130242233"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278224"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>Intégrer la prise en charge d’Apache Kafka Connect sur Azure Event Hubs avec Debezium pour la capture des changements de données
 
@@ -71,7 +71,8 @@ Suivez les dernières instructions de la [documentation Debezium](https://debezi
 Une reconfiguration minimale est nécessaire pour rediriger le débit Kafka Connect de Kafka vers Event Hubs.  L’exemple `connect-distributed.properties` suivant montre comment configurer Connect pour s’authentifier et communiquer avec le point de terminaison Kafka sur Event Hubs :
 
 > [!IMPORTANT]
-> Debezium crée automatiquement une rubrique par table et une série de rubriques de métadonnées. La **rubrique** Kafka correspond à une instance d’Event Hubs (hub d’événements). Pour connaître les mappages entre Apache Kafka et Azure Event Hubs, consultez [Mappage des concepts Kafka et Event Hubs](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping). Il existe différentes **limites** sur le nombre de hubs d’événements dans un espace de noms Event Hubs en fonction du niveau (De base, Standard, Premium ou Dedicated). Pour connaître ces limites, consultez [Quotas](compare-tiers.md#quotas).
+> - Debezium crée automatiquement une rubrique par table et une série de rubriques de métadonnées. La **rubrique** Kafka correspond à une instance d’Event Hubs (hub d’événements). Pour connaître les mappages entre Apache Kafka et Azure Event Hubs, consultez [Mappage des concepts Kafka et Event Hubs](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping). 
+> - Il existe différentes **limites** sur le nombre de hubs d’événements dans un espace de noms Event Hubs en fonction du niveau (De base, Standard, Premium ou Dedicated). Pour connaître ces limites, consultez [Quotas](compare-tiers.md#quotas).
 
 ```properties
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 # e.g. namespace.servicebus.windows.net:9093

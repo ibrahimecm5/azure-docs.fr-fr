@@ -1,7 +1,6 @@
 ---
 title: Résoudre des problèmes de création d’utilisateurs avec un approvisionnement RH
 description: Découvrez comment résoudre des problèmes de création d’utilisateurs avec un approvisionnement RH
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: 9bdbbc44b07201b4a1e10a42f607df2a43e971ad
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0c660221c230f884b43252cef25626e3d2b1d700
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479204"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324571"
 ---
 # <a name="troubleshoot-hr-user-creation-issues"></a>Résoudre des problèmes de création d’utilisateurs RH
 
@@ -28,7 +27,7 @@ ms.locfileid: "131479204"
 * Approvisionnement d’utilisateurs de SAP SuccessFactors vers Active Directory local
 * Approvisionnement d’utilisateurs de SAP SuccessFactors vers Active Directory
 
-| | |
+| Résolution des problèmes | Détails |
 |-- | -- |
 | **Problème** | Vous avez correctement configuré l’application d’approvisionnement entrant. Vous recevez une valeur Null ou vide de l’application RH. L’opération de création échoue avec le message d’erreur `InvalidAttributeSyntax-LdapErr: The syntax is invalid. The parameter is incorrect. Error in attribute conversion operation, data 0, v3839` |
 | **Cause** | Le service d’approvisionnement n’a pas de logique par défaut pour le traitement des valeurs Null. Lorsque le service d’approvisionnement reçoit une chaîne vide de l’application source, il tente de transmettre la valeur telle quelle à l’application cible. Dans ce cas, l’Active Directory local ne prend pas en charge la définition de valeurs de chaîne vides et vous voyez l’erreur ci-dessus. |

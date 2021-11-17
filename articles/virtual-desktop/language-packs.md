@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9c91032049f1cf36af97e9b0743b753ea6be44c9
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 59ab350f9dd6ce4776d15ffd7e0390bf03ea2c6f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161251"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277298"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Ajouter des modules linguistiques à une image Windows 10 multisession
 
@@ -60,6 +60,7 @@ Pour personnaliser vos images Windows 10 Entreprise multisession afin d’ajout
           - [ISO LXP **5C** Windows 10, version 2004, 20H2 ou 21H1](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2105C.iso)
           - [ISO LXP **7C** Windows 10, version 2004, 20H2 ou 21H1](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2107C.iso)
           - [ISO LXP **9C** Windows 10, version 2004, 20H2 ou 21H1](https://software-download.microsoft.com/download/db/LanguageExperiencePack.2109C.iso)
+          - [ISO LXP **9C** Windows 10, version 2004, 20H2 ou 21H1](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2110C.iso)
 
 - Un partage Azure Files ou un partage de fichiers sur une machine virtuelle de serveur de fichiers Windows
 

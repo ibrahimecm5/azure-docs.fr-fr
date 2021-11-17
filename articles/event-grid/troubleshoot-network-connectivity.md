@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: batrived
-ms.openlocfilehash: c565a465dbab683295cf42248640bbbf8242412c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 38b3834b6c7c20e15f466b7af2fb7aa2b1780547
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229940"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548022"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Résoudre les problèmes de connectivité - Azure Event Grid
 
@@ -71,7 +71,7 @@ Pour plus d'informations, consultez [Configurer des règles de pare-feu IP pour 
 
 #### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>Rechercher les adresses IP bloquées par le pare-feu IP
 
-Activez les journaux de diagnostic pour la rubrique/le domaine Event Grid [Activer les journaux de diagnostic](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-custom-topic). Vous verrez l’adresse IP de la connexion qui est refusée.
+Activez les journaux de diagnostic pour la rubrique/le domaine Event Grid [Activer les journaux de diagnostic](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-topics-and-event-grid-domains). Vous verrez l’adresse IP de la connexion qui est refusée.
 
 ```json
 {

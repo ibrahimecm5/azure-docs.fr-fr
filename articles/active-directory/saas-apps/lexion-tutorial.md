@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 40c01f2a1313d3cc3e8b9400b353ed6ef9ab8399
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 74287037f6a2be06e84184e0d8d4a4fe9b68d6dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124822022"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326243"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lexion"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Lexion
 
@@ -153,4 +153,4 @@ Vous pouvez aussi utiliser le panneau d’accès Microsoft pour tester l’appli
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Lexion, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré Lexion, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

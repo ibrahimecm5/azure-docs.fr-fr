@@ -1,19 +1,19 @@
 ---
 title: Utilisation de Azure PowerShell pour configurer le chargement du fichier | Microsoft Docs
 description: Comment utiliser les applets de commande Azure PowerShell pour configurer votre IoT Hub afin d’activer les téléchargements de fichiers à partir d’appareils connectés. Comprend des informations sur la configuration du compte de stockage Azure de destination.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dd108bfd61a84e4c25b1ab59e9f24e23048ada2d
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: f20236edd7a905f05d59ddafd3132569a851816a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525500"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553930"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Configurer les chargements de fichiers IoT Hub à l’aide de Powershell
 

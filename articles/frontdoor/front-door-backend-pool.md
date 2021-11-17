@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68feb1c2df14c3325ae74ef36874e7008bf9d108
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449287"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371027"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-ends et pools de back-ends dans Azure Front Door
 Cet article décrit des concepts sur la façon de mapper votre déploiement d’application web avec Azure Front Door. Il explique également les différentes terminologies utilisées dans la configuration de Front Door autour des serveurs principaux d’applications.
@@ -45,7 +45,7 @@ Les demandes transférées par Front Door à un back-end incluent un champ En-t�
 
 Par exemple, une demande formulée pour `www.contoso.com` aura l’en-tête d’hôte www.contoso.com. Si vous utilisez le portail Microsoft Azure pour configurer votre back-end, la valeur par défaut pour ce champ sera le nom d’hôte du back-end. Si votre back-end est contoso-westus.azurewebsites.net, dans le portail Microsoft Azure, la valeur remplie automatiquement pour l’en-tête d’hôte du back-end sera contoso-westus.azurewebsites.net. Toutefois, si vous utilisez des modèles Azure Resource Manager ou une autre méthode sans définir explicitement ce champ, Front Door transmet le nom d’hôte entrant comme valeur pour l’en-tête d’hôte. Si la requête a été faite pour www\.contoso.com et que votre back-end est contoso-westus.azurewebsites.net, dont le champ d’en-tête est vide, Front Door définit l’en-tête de l’hôte en tant que www\.contoso.com.
 
-La plupart des back-ends d’application (comme Azure Web Apps, Stockage Blob et Cloud Services) exigent une correspondance entre l’en-tête de l’hôte et le domaine du back-end. Cependant, l’hôte front-end qui route vers votre back-end aura un nom d’hôte différent, comme www.contoso.net.
+La plupart des back-endq d’application (comme Azure Web Apps, Stockage Blob et Cloud Services) exigent une correspondance entre l’en-tête de l’hôte et le domaine du back-end. Cependant, l’hôte front-end qui route vers votre back-end aura un nom d’hôte différent, comme `www.contoso.net`.
 
 Si votre serveur principal requiert une correspondance entre l’en-tête de l’hôte et le nom d’hôte du serveur principal, veuillez vous assurer que l’en-tête de l’hôte principal inclut le nom de l’hôte du serveur principal.
 

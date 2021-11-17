@@ -3,12 +3,12 @@ title: Optimiser les charges de travail Azure à l’aide d’Advisor Score
 description: Utilisez Advisor Score pour tirer le meilleur parti d’Azure.
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: e439e5283f2d311d9efb3b30fe157750d589664e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: fc9bcee7d19d9e8ed7b550e7298d615d397c6f8b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787920"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484717"
 ---
 # <a name="optimize-azure-workloads-by-using-advisor-score"></a>Optimiser les charges de travail Azure à l’aide d’Advisor Score
 
@@ -72,7 +72,7 @@ Le calcul du score Advisor peut être résumé en quatre étapes :
    * Les ressources ayant des recommandations à long terme sont davantage prises en compte dans le calcul du score.
    * Les ressources que vous reportez ou ignorez dans Advisor sont retirées entièrement du calcul de votre score.
 
-Advisor applique ce modèle au niveau de la catégorie Advisor pour fournir un score Advisor pour chaque catégorie. La **sécurité** utilise un [modèle de score sécurisé](../security-center/secure-score-security-controls.md#introduction-to-secure-score). Une moyenne simple produit le score final d’Advisor.
+Advisor applique ce modèle au niveau de la catégorie Advisor pour fournir un score Advisor pour chaque catégorie. La **sécurité** utilise un [modèle de score sécurisé](../defender-for-cloud/secure-score-security-controls.md#introduction-to-secure-score). Une moyenne simple produit le score final d’Advisor.
 
 ## <a name="advisor-score-faqs"></a>FAQ sur le score Advisor
 

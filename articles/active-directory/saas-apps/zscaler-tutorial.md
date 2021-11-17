@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: d7d1e873c6e0a77be3dc780291891b61432bb7c3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 428fde009f0b932d6dbc80e4cbcd986a7aff6aec
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807878"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319887"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Zscaler
 
@@ -87,7 +87,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. En plus, l’application Zscaler s’attend à ce que quelques attributs supplémentaires passent une nouvelle fois dans la réponse SAML. Dans la section **Revendications des utilisateurs** de la boîte de dialogue **Attributs utilisateur**, effectuez les étapes suivantes pour ajouter le jeton SAML comme indiqué dans le tableau ci-dessous :
 
-   | Nom     | Attribut source   |
+   | Name     | Attribut source   |
    | -------- | ------------------ |
    | memberOf | user.assignedroles |
 
@@ -186,15 +186,15 @@ Dans cette section, vous allez permettre à B.Simon d’utiliser l’authentific
 
    b. Cliquez sur **Activer**.
 
-## <a name="configuring-proxy-settings&quot;></a>Configuration des paramètres de proxy
+## <a name="configuring-proxy-settings"></a>Configuration des paramètres de proxy
 
-### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>Pour configurer les paramètres de proxy dans Internet Explorer
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Pour configurer les paramètres de proxy dans Internet Explorer
 
 1. Démarrez **Internet Explorer**.
 
 1. Pour ouvrir la boîte de dialogue **Options Internet**, sélectionnez **Options Internet** dans le menu **Outils**.
 
-   ![Options Internet](./media/zscaler-tutorial/ic769492.png &quot;Options Internet")
+   ![Options Internet](./media/zscaler-tutorial/ic769492.png "Options Internet")
 
 1. Cliquez sur l’onglet **Connexions** .
 
@@ -237,4 +237,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Zscaler, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Zscaler, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

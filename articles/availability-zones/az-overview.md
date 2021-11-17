@@ -8,16 +8,16 @@ ms.date: 10/01/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 48cb14166a229e6bcaf3337f0be92b7d07acb3d6
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: a980cd71f86086a0a0b07354295d12251305bb4f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843116"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369699"
 ---
 # <a name="regions-and-availability-zones"></a>Régions et zones de disponibilité
 
-Les régions et les zones de disponibilité Azure sont conçues pour vous aider à faire en sorte que vos charges de travail stratégiques soient fiables et résilientes. Azure gère plusieurs zones géographiques. Ces démarcations discrètes définissent les limites de la reprise d’activité et de la résidence des données dans une ou plusieurs régions Azure. La maintenance de nombreuses régions garantit la prise en charge des clients dans le monde entier. 
+Les régions et les zones de disponibilité Azure sont conçues pour vous aider à faire en sorte que vos charges de travail stratégiques soient fiables et résilientes. Azure gère plusieurs zones géographiques. Ces démarcations discrètes définissent les limites de la reprise d’activité et de la résidence des données dans une ou plusieurs régions Azure. La maintenance de nombreuses régions garantit la prise en charge des clients dans le monde entier.
 
 ## <a name="regions"></a>Régions
 
@@ -25,7 +25,7 @@ Chaque région Azure propose des centres de données déployés dans un périmè
 
 ## <a name="availability-zones"></a>Zones de disponibilité
 
-Les *zones de disponibilité* sont des emplacements physiquement séparés au sein de chaque région Azure qui tolèrent les défaillances locales. Les défaillances sont aussi bien des défaillances logicielles et matérielles que des événements de type tremblements de terre, inondations et incendies. La tolérance aux défaillances est obtenue grâce à la redondance et à l’isolation logique des services Azure. Pour garantir la résilience, au moins trois zones de disponibilité distinctes sont présentes dans toutes les régions qui ont des zones de disponibilité. 
+Les *zones de disponibilité* sont des emplacements physiquement séparés au sein de chaque région Azure qui tolèrent les défaillances locales. Les défaillances sont aussi bien des défaillances logicielles et matérielles que des événements de type tremblements de terre, inondations et incendies. La tolérance aux défaillances est obtenue grâce à la redondance et à l’isolation logique des services Azure. Pour garantir la résilience, au moins trois zones de disponibilité distinctes sont présentes dans toutes les régions qui ont des zones de disponibilité.
 
 Les zones de disponibilité Azure sont connectées par un réseau hautes performances avec une latence aller-retour de moins de 2 ms. Elles permettent à vos données d’être synchronisées et accessibles en cas de problème. Chaque zone est composée d’un ou de plusieurs centres de données équipés d’une alimentation, d’un système de refroidissement et d’une infrastructure réseau indépendants. Les zones de disponibilité sont conçues de telle sorte que si une zone est affectée, les services, la capacité et la haute disponibilité de la région sont pris en charge par les deux autres zones.
 
@@ -44,6 +44,7 @@ Certaines organisations nécessitent une haute disponibilité des zones de dispo
 ![Image montrant des zones de disponibilité qui protègent contre les catastrophes localisées, et les catastrophes affectant une région ou une grande zone géographique en utilisant une autre région.](media/availability-zones-region-geography.png)
 
 ## <a name="azure-regions-with-availability-zones"></a>Régions Azure avec des zones de disponibilité
+
 Azure fournit l’empreinte mondiale la plus complète de tous les fournisseurs de cloud et ouvre rapidement de nouvelles régions et zones de disponibilité.
 
 | Amérique | Europe | Afrique | Asie-Pacifique |

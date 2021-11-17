@@ -11,12 +11,12 @@ ms.author: amipatel
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 1300a830fb3688c9ebc2b9f43b77e3b9214c731d
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b849293d94b435fa74378d80d8989e6075f78d86
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054312"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493663"
 ---
 # <a name="train-models-with-the-cli-v2-preview"></a>Entraîner des modèles avec l’interface CLI (v2) (préversion)
 
@@ -350,7 +350,7 @@ Pour d’autres options de balayage, consultez la [référence sur la syntaxe YA
 
 Azure Machine Learning prend en charge l’entraînement distribué basé sur PyTorch, TensorFlow et MPI. Pour plus d’informations, consultez la [section des configurations distribuées de la référence sur la syntaxe YAML des travaux de commande](reference-yaml-job-command.md#distribution-configurations) .
 
-Par exemple, vous pouvez entraîner un réseau neuronal convolutif (CNN) sur le jeu de données CIFAR-10 avec un travail PyTorch distribué. Le script complet est [disponible dans le dépôt d’exemples](https://github.com/Azure/azureml-examples/tree/cli-preview/jobs/single-step/pytorch/cifar-distributed/).
+Par exemple, vous pouvez entraîner un réseau neuronal convolutif (CNN) sur le jeu de données CIFAR-10 avec un travail PyTorch distribué. Le script complet est [disponible dans le dépôt d’exemples](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/single-step/pytorch/cifar-distributed).
 
 Le jeu de données CIFAR-10 dans `torchvision` attend en entrée un répertoire contenant le répertoire `cifar-10-batches-py`. Vous pouvez télécharger la source compressée et l’extraire dans un répertoire local :
 

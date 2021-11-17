@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d66b09aac2d03fe81cc38ffb53ac1bb29dae6f8f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fa342712aa07b05570fa119acab1fc30a855ff0b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124813617"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285941"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eccentex-appbase-for-azure"></a>Tutoriel : Intégration entre l’authentification unique Azure Active Directory et Eccentex AppBase pour Azure
 
@@ -102,7 +102,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
     ![Copier les URL de configuration](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Créer un utilisateur de test Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
 Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
 
@@ -114,7 +114,7 @@ Dans cette section, vous allez créer un utilisateur de test appelé B. Simon da
    1. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ **Mot de passe**.
    1. Cliquez sur **Créer**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Affecter l’utilisateur de test Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 
 Dans cette section, vous allez autoriser B.Simon à utiliser l’authentification unique Azure en lui accordant l’accès à Eccentex AppBase pour Azure.
 
@@ -126,13 +126,13 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
-## <a name=&quot;configure-eccentex-appbase-for-azure-sso&quot;></a>Configuration de l’authentification unique Eccentex AppBase pour Azure
+## <a name="configure-eccentex-appbase-for-azure-sso"></a>Configuration de l’authentification unique Eccentex AppBase pour Azure
 
 1. Connectez-vous à votre site d’entreprise Eccentex AppBase pour Azure en tant qu’administrateur.
 
 1. Accédez à l’icône **Engrenage** et cliquez sur **Gérer les utilisateurs**.
 
-    ![Capture d’écran montrant les paramètres du compte SAML.](./media/eccentex-appbase-for-azure-tutorial/settings.png &quot;Compte")
+    ![Capture d’écran montrant les paramètres du compte SAML.](./media/eccentex-appbase-for-azure-tutorial/settings.png "Compte")
 
 1. Accédez à **Gestion des utilisateurs** > **Configurations de l’authentification**, puis cliquez sur le bouton **Ajouter du code SAML**.
 
@@ -203,4 +203,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Eccentex AppBase pour Azure, vous pouvez appliquer le contrôle de session, qui protège votre organisation en temps réel contre l’exfiltration et l’infiltration de données sensibles. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré Eccentex AppBase pour Azure, vous pouvez appliquer le contrôle de session, qui protège votre organisation en temps réel contre l’exfiltration et l’infiltration de données sensibles. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

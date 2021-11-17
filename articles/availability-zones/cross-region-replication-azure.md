@@ -8,12 +8,12 @@ ms.date: 10/21/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 31b1d0b7c4bcc498ba8490fd4edd5c6d13e76cfb
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: aa074d5f745f9a427fe3f4c197d0cd09de660a84
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858624"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325597"
 ---
 # <a name="cross-region-replication-in-azure-business-continuity-and-disaster-recovery"></a>Réplication inter-région dans Azure : continuité d’activité et reprise d’activité
 
@@ -42,7 +42,7 @@ L’architecture de la réplication inter-région des services et données peut 
 - **Séquence de récupération régionale** : si une panne se produit à l’échelle d’une zone géographique, la priorité est donnée à la récupération d’une région pour chaque ensemble de régions compatible. Les applications déployées sur des ensembles de régions compatibles sont assurées de bénéficier d’une région prioritaire pour la récupération. Si une application est déployée dans plusieurs régions, pour lesquelles la réplication inter-région n’est pas activée, la récupération peut être retardée.
 - **Mise à jour séquentielle** : les mises à jour planifiées du système Azure des régions compatibles sont échelonnées par ordre chronologique pour réduire le temps d’arrêt, l’impact des bogues et les défaillances logiques dans le rare cas d’une mise à jour défectueuse.
 - **Isolation physique** : Azure s’efforce de garantir une distance minimale de 300 miles (483 kilomètres) entre les centres de données des régions compatibles, bien que ce ne soit pas possible dans toutes les zones géographiques. La séparation des centres de données réduit la probabilité que des catastrophes naturelles, des conflits civils, des pannes de courant ou des pannes de réseau physique puissent affecter plusieurs régions. L’isolation est soumise aux contraintes de chaque zone géographique (taille, disponibilité de l’alimentation et de l’infrastructure réseau, réglementations, etc.).
-- **Résidence de données** : les régions se trouvent dans la même zone géographique que l’ensemble compatible associé (à l’exception des régions Brésil Sud et Singapour) pour répondre aux exigences de résidence des données à des fins de compétence fiscale et légale.
+- **Résidence de données** : les régions se trouvent dans la même zone géographique que l’ensemble compatible associé (à l’exception des régions Brésil Sud et Singapour) pour répondre aux exigences de résidence des données à des fins de compétence fiscale et légale. 
 
 ## <a name="azure-cross-region-replication-pairings-for-all-geographies"></a>Couplages de réplication inter-région Azure pour toutes les zones géographiques
 
@@ -71,6 +71,7 @@ Dans le cadre de la réplication inter-région, les régions sont couplées en f
 | Amérique du Nord |USA Est 2 |USA Centre |
 | Amérique du Nord |Centre-Nord des États-Unis |États-Unis - partie centrale méridionale |
 | Amérique du Nord |USA Ouest 2 |Centre-USA Ouest |
+| Amérique du Nord |USA Ouest 3 |USA Est |
 | Norvège | Norvège Est | Norvège Ouest\* |
 | Afrique du Sud | Afrique du Sud Nord |Afrique du Sud Ouest\* |
 | Suisse | Suisse Nord |Suisse Ouest\* |

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59b48f00e46a86720d7488a348db66e314c38928
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001522"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279364"
 ---
 # <a name="configure-storage"></a>Configurer le stockage
 
@@ -156,7 +156,7 @@ Pour ajouter le stockage d’objets blob après avoir créé le cluster, effectu
    * Si vous le souhaitez, définissez **Encryption type** (Type de chiffrement) sur **None** (Aucun).  Stockage Azure est chiffré par défaut.
    * Cliquez sur **Add Filer** (Ajouter le système de stockage).
 
-   Pour plus d’informations, consultez [Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) (Ajout d’un nouveau système de stockage principal cloud) dans le guide de configuration des clusters Avere.
+   Pour plus d’informations, consultez [Adding a new cloud core filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html) (Ajout d’un nouveau système de stockage principal cloud) dans le guide de configuration des clusters Avere.
 
 La page est actualisée, ou vous pouvez l’actualiser vous-même : votre nouveau système de stockage principal apparaît alors.
 

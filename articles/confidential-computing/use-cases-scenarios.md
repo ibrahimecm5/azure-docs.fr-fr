@@ -2,19 +2,19 @@
 title: Scénarios et cas d’usage courants de l’informatique confidentielle Azure
 description: Découvrez comment utiliser l’informatique confidentielle dans votre scénario.
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 11/04/2021
-ms.author: jencook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 408f619f34942839bedcc75c6ab66044b4f90323
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 2fd30934f71df8a84bf718445972ab9d0ff2d469
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131852702"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347819"
 ---
 # <a name="use-cases-and-scenarios"></a>Cas d'utilisation et scénarios
 L’informatique confidentielle s’applique à différents cas d’utilisation pour la protection des données dans les secteurs réglementés, tels que les administrations, les services financiers et les établissements de santé. Par exemple, la prévention de l’accès aux données sensibles contribue à protéger l’identité numérique des citoyens de toutes les parties concernées, y compris le fournisseur de Cloud qui les stocke. Les mêmes données sensibles peuvent contenir des données biométriques utilisées pour rechercher et supprimer des images connues de l’exploitation enfant, pour empêcher le trafic humain et pour assister des investigations d’investigation numérique.

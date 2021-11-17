@@ -1,20 +1,20 @@
 ---
 title: Solutions d’informatique confidentielle Azure sur les machines virtuelles
 description: Découvrez les solutions d’informatique confidentielle Azure sur les machines virtuelles.
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0a34994f6f7f97ddd3b97071dcb328d47b41cf61
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1805b153d33915c2ec252c0e4a932eceb710b59f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096269"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331896"
 ---
 # <a name="solutions-on-azure-for-intel-sgx"></a>Solutions sur Azure pour Intel SGX
 

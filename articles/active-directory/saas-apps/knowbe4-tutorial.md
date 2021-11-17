@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 5b4ffdc24a4a1e41d0db0c5e816b67909b125dc4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0ccc0d20937fb3986ccfb26ec179cc2f310a32ec
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676666"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310846"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-knowbe4-security-awareness-training"></a>Tutoriel : Intégration de l’authentification unique Azure AD à KnowBe4 Security Awareness Training
 
@@ -138,4 +138,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré KnowBe4 Security Awareness Training, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré KnowBe4 Security Awareness Training, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

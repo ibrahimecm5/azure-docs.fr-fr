@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 6d7a391bcd90d54c7024da6deeef74849c178039
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bc9a29e97e32ba798b516901d01aea968c93eab1
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232072"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157637"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Facteurs à prendre en compte pour le déploiement SGBD des machines virtuelles Azure pour la charge de travail SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -325,7 +325,7 @@ S’il y a basculement du nœud de base de données, la reconfiguration de l’a
 
 Azure fournit deux [références SKU d’équilibreur de charge](../../../load-balancer/load-balancer-overview.md) différentes : une référence SKU de base et une référence SKU standard. En fonction des avantages de l’installation et des fonctionnalités, vous devez utiliser la référence SKU standard d’Azure Load Balancer. L’un des grands avantages de la version standard de l’équilibreur de charge est que celui-ci ne reçoit pas de trafic de données routé.
 
-Un exemple de configuration d’un équilibreur de charge interne figure dans l’article [Tutoriel : Configurer manuellement un groupe de disponibilité SQL Server sur des machines virtuelles Azure](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)
+Un exemple de configuration d’un équilibreur de charge interne figure dans l’article [Tutoriel : Configurer manuellement un groupe de disponibilité SQL Server sur des machines virtuelles Azure](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial-single-subnet.md#create-an-azure-load-balancer)
 
 > [!NOTE]
 > Il existe des différences de comportement entre la référence SKU de base et la référence SKU standard en ce qui concerne l'accès aux adresses IP publiques. Le contournement des restrictions de la référence SKU standard pour accéder aux adresses IP publiques est décrite dans le document [Connectivité des points de terminaison publics pour les machines virtuelles avec Azure Standard Load Balancer dans les scénarios de haute disponibilité SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md).

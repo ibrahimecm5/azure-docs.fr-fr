@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 9ee57c3de5b0e6166e54c79713e789f2211ffed3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a939ec6093d6c06e9a7aeb0d7c46bdce2d78223a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445006"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335553"
 ---
 # <a name="data-encryption-models"></a>Modèles de chiffrement des données
 
@@ -212,8 +212,8 @@ Services Azure qui prennent en charge chaque modèle de chiffrement :
 | **Média**                        |                    |                    |                    |
 | Media Services                   | Oui                | Oui                | Oui                |
 | **Sécurité**                     |                    |                    |                    |
-| Azure Security Center pour IoT    | Oui                | Oui                | -                  |
-| Azure Sentinel                   | Oui                | Oui                | -                  |
+| Microsoft Defender pour IoT    | Oui                | Oui                | -                  |
+| Microsoft Sentinel                   | Oui                | Oui                | -                  |
 | **Stockage**                      |                    |                    |                    |
 | Stockage Blob                     | Oui                | Oui                | Oui                |
 | Stockage Blob Premium             | Oui                | Oui                | Oui                |

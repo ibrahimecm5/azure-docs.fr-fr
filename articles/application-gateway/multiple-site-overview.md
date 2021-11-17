@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: 5feb112a9d1c9b7eb229c65f8bcce3845a3f23ad
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 5687c4af0321e26d20906932fd9ac3b06b983651
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131844978"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373077"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hébergement de plusieurs sites Application Gateway
 
-L’hébergement de plusieurs sites vous permet de configurer plusieurs applications web sur le même port de passerelles applicatives à l’aide d’écouteurs publics. Vous pouvez ainsi configurer une topologie plus efficace pour vos déploiements en ajoutant plus de 100 sites web à une même passerelle d’application. Chaque site web peut être dirigé vers son propre pool principal. Par exemple, trois domaines (contoso.com, fabrikam.com et adatum.com) pointent vers l’adresse IP de la passerelle d’application. Vous créez trois écouteurs multisites, et vous configurez les paramètres de port et de protocole de chaque écouteur. 
+L’hébergement de plusieurs sites vous permet de configurer plusieurs applications web sur le même port de passerelles applicatives à l’aide d’écouteurs publics. Vous pouvez ainsi configurer une topologie plus efficace pour vos déploiements en ajoutant plus de 100 sites web à une même passerelle d’application. Chaque site web peut être dirigé vers son propre pool principal. Par exemple, trois domaines (contoso.com, fabrikam.com et adatum.com) pointent vers l’adresse IP de la passerelle d’application. Vous créez trois écouteurs multisites, et vous configurez les paramètres de port et de protocole de chaque écouteur.
 
 Vous pouvez également définir des noms d’hôtes avec caractères génériques dans un écouteur multisite et jusqu’à cinq noms d’hôtes par écouteur. Pour plus d’informations, consultez [Noms d’hôtes avec caractères génériques dans l’écouteur](#wildcard-host-names-in-listener-preview).
 
@@ -71,6 +71,8 @@ Dans le portail Azure, sous l’écouteur multisite, vous devez choisir le type 
 * `*` : peut correspondre à plusieurs caractères dans la plage autorisée
 * `?` : peut correspondre à un seul caractère dans la plage autorisée
 
+<!-- docutune:disable -->
+
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Conditions pour utiliser des caractères génériques et plusieurs noms d’hôtes dans un écouteur
 
 * Il n’est possible de spécifier que cinq noms d’hôtes maximum dans un même écouteur.
@@ -78,6 +80,8 @@ Dans le portail Azure, sous l’écouteur multisite, vous devez choisir le type 
 * Un nom d’hôte ne peut contenir que deux astérisques `*` maximum. Par exemple, `*.contoso.*` est valide, `*.contoso.*.*.com` non.
 * Un nom d’hôte ne peut contenir que quatre caractères génériques maximum. Par exemple, `????.contoso.com` et `w??.contoso*.edu.*` sont valides, `????.contoso.*` non.
 * Il n’est pas possible d’utiliser conjointement un astérisque `*` et un point d’interrogation `?` dans un composant de nom d’hôte (`*?`, `?*` ou `**`). Par exemple, ni `*?.contoso.com` ni `**.contoso.com` ne sont valides.
+
+<!-- docutune:enable -->
 
 ### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>Considérations et limitations liées à l’utilisation d’un nom d’hôte avec caractères génériques ou de plusieurs noms d’hôtes dans un écouteur
 

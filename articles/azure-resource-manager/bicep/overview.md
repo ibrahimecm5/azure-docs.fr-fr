@@ -2,13 +2,13 @@
 title: Langage Bicep pour le déploiement de ressources Azure
 description: Décrit le langage Bicep pour le déploiement d’infrastructure sur Azure. Il offre une expérience de création améliorée par rapport à l’utilisation de JSON pour développer des modèles.
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 565f849edafaa6c083a1e7d21bb67f8b3ab8453e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/12/2021
+ms.openlocfilehash: 028ec297aa30bf6bfd397fee83b8b4525a66bdbc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131443487"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484293"
 ---
 # <a name="what-is-bicep"></a>Qu’est-ce que Bicep ?
 
@@ -113,28 +113,6 @@ Lorsque vous êtes prêt, vous pouvez [décompiler les fichiers JSON en langage 
 **Puis-je utiliser Bicep pour effectuer le déploiement sur Azure Stack Hub ?**
 
 Oui, vous pouvez utiliser Bicep pour vos déploiements Azure Stack Hub, mais notez que Bicep peut afficher des types qui ne sont pas encore disponibles dans Azure Stack Hub. Vous pouvez afficher un ensemble d’exemples dans le [référentiel GitHub Modèles de démarrage rapide Azure Stack Hub](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/Bicep). 
-
-## <a name="known-limitations"></a>Limitations connues
-
-- Bicep est sensible aux sauts de ligne. Par exemple :
-
-    ```bicep
-    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
-      ...
-    }
-    ```
-
-    Ne peut pas être écrit sous la forme :
-
-    ```bicep
-    resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' =
-        if (newOrExisting == 'new') {
-          ...
-        }
-    ```
-
-- Aucun support pour le concept d’apiProfile utilisé pour mapper un apiProfile à une apiVersion définie pour chaque type de ressource.
-- Aucun support pour les fonctions définies par l’utilisateur.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

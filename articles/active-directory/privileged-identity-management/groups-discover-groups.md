@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/03/2020
+ms.date: 11/09/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d10ab5c5f1e92a9414cde9b0fffac3c29176cf0
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 72f848dae3eda447edee40b0da18f09fed50462c
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669831"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157046"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Introduire un groupe d’accès privilégié (préversion) dans Privileged Identity Management
 
@@ -31,6 +31,7 @@ Dans Azure Active Directory (Azure AD), vous pouvez attribuer des rôles intég
 Vous pouvez créer un groupe assignable à un rôle dans Azure AD comme décrit dans [Créer un groupe assignable à un rôle dans Azure Active Directory](../roles/groups-create-eligible.md). Vous devez être propriétaire du groupe pour l’amener sous la gestion de Privileged Identity Management.
 
 1. [Connectez-vous à Azure AD](https://aad.portal.azure.com) avec les autorisations du rôle Administrateur de rôle privilégié.
+
 1. Sélectionnez **Groupes**, puis sélectionnez le groupe assignable à un rôle que vous souhaitez gérer dans PIM. Vous pouvez rechercher dans la liste et la filtrer.
 
     ![Rechercher un groupe assignable à un rôle à gérer dans PIM](./media/groups-discover-groups/groups-list-in-azure-ad.png)
@@ -45,12 +46,9 @@ Vous pouvez créer un groupe assignable à un rôle dans Azure AD comme décrit
 
 > [!NOTE]
 > Une fois qu’un groupe d’accès privilégié est géré, il ne peut pas être supprimé de la gestion. Cela empêche tout autre administrateur de ressources de supprimer des paramètres de Privileged Identity Management (PIM).
->
 
 > [!IMPORTANT]
-> Si un groupe d’accès privilégié est supprimé d’Azure Active Directory, la suppression du groupe dans le panneau Groupes d’accès privilégiés (préversion) peut prendre jusqu’à 24 heures. 
->
-
+> Si un groupe d’accès privilégié est supprimé d’Azure Active Directory, la suppression du groupe dans le panneau Groupes d’accès privilégiés (préversion) peut prendre jusqu’à 24 heures.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

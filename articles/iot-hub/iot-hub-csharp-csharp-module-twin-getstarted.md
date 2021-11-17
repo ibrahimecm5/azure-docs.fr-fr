@@ -1,20 +1,20 @@
 ---
 title: Bien démarrer avec l’identité de module et le jumeau de module IoT Hub (.NET)
 description: Découvrez comment créer une identité de module et comment mettre à jour un jumeau de module à l’aide des SDK IoT pour .NET.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 4c6e7fabfd8a95756775bd24b4d946782100aaa0
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 22fb3c9959f3f71df0b95b41bebb9ccc445815fd
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727629"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555180"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Bien démarrer avec l’identité de module et le jumeau de module IoT Hub (.NET)
 

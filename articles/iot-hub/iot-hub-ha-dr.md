@@ -1,18 +1,18 @@
 ---
 title: Haute disponibilité et récupération d’urgence Azure IoT Hub | Microsoft Docs
 description: Décrit les options Azure et IoT Hub qui vous aident à créer des solutions Azure IoT à haute disponibilité dotées de fonctionnalités de récupération d’urgence.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.author: robinsh
-ms.openlocfilehash: 6b7fea611eeb3701bc624be8354b4639966dfaa6
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.author: lizross
+ms.openlocfilehash: 84342a3cc325efbaee5a11167392586cea9c3734
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563347"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552600"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Haute disponibilité et récupération d’urgence IoT Hub :
 

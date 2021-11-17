@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: ab759cf81ce95ca7cf61a3777092fd92040baf6c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ce8cc86727c92f8c0091abafa8f5d91ee1ab21ad
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208473"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347629"
 ---
 # <a name="azure-data-box-disk-limits"></a>Limites d’Azure Data Box Disk
 
@@ -93,7 +93,7 @@ Voici les tailles des objets Azure qui peuvent être écrits. Assurez-vous que t
 
 | Entité | Conventions                                             |
 |-------------------|-----------------------------------------------------------|
-| Noms de disques managés       | <li> Le nom doit contenir de 1 à 80 caractères. </li><li> Le nom doit commencer par une lettre ou un chiffre et se terminer par une lettre, un chiffre ou un trait de soulignement. </li><li> Le nom peut contenir uniquement des lettres, des chiffres, des traits d’union, des traits de soulignement et des points. </li><li>   Le nom ne doit pas contenir d’espaces ni de `/`.                                              |
+| Noms de disques managés       | <li> Le nom doit contenir de 1 à 80 caractères. </li><li> Le nom doit commencer par une lettre ou un chiffre et se terminer par une lettre, un chiffre ou un trait de soulignement. </li><li> Le nom peut contenir uniquement des lettres, des chiffres, des traits d’union, des traits de soulignement et des points. </li><li>     Le nom ne doit pas contenir d’espaces ni de `/`.                     |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

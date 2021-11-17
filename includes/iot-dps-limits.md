@@ -4,12 +4,12 @@ ms.service: iot-dps
 ms.topic: include
 ms.date: 10/10/2021
 ms.author: v-stharr
-ms.openlocfilehash: fa416ff3e3ef5b502b65ac414558692ccd7071b5
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: ac1d2554df675dc055530ab4b721a0510f2fddfb
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129866133"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399393"
 ---
 > [!NOTE]
 > Certaines zones de ce service ont des limites ajustables. Cela est représenté dans les tableaux ci-dessous avec la colonne *Ajustable ?* . Quand la limite peut être ajustée, la valeur *Réglable ?* est *Oui*.
@@ -42,4 +42,3 @@ Le service de provisionnement des appareils a les limites de débit suivantes.
 | Inscriptions d’appareil | 200/min/service | Oui |
 | Opération d’interrogation des appareils | 5/10 s/appareil | Non |
 
-Chaque appel d’API sur DPS est facturable comme une seule *opération*. Cela comprend toutes les API de service et l’API d’inscription d’appareil. L’opération d’interrogation de l’inscription de l’appareil n’est pas facturée.

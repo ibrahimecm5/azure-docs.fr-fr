@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 4e97c8253f73ab264d49cfa24403586ca8d573bd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ecb309362b1c7171e7f3a2782de75f7ebd88b310
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802205"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313638"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Tutoriel : Intégrer Knowledge Anywhere LMS à Azure Active Directory
 
@@ -183,4 +183,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Knowledge Anywhere LMS, vous pouvez appliquer le contrôle de session, qui empêche en temps réel l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré Knowledge Anywhere LMS, vous pouvez appliquer le contrôle de session, qui empêche en temps réel l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

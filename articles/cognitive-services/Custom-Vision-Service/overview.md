@@ -12,16 +12,14 @@ ms.date: 08/25/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: reconnaissance d’image, identificateur d’image, application de reconnaissance d’image, vision personnalisée
-ms.openlocfilehash: febd4b5921beff8f810b411dd1da96ac82b9a64d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 6bf2f9de103416bc9dd35216bf85c609be966a23
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309863"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372508"
 ---
 # <a name="what-is-custom-vision"></a>Qu’est-ce que Custom Vision ?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Custom Vision est un service de reconnaissance d’image qui vous permet de créer, de déployer et d’améliorer vos propres modèles d’identificateurs d’images. Un identificateur d’images applique des étiquettes (représentant des classifications ou des objets) à des images en fonction de leurs caractéristiques visuelles détectées. Contrairement au service [Vision par ordinateur](../computer-vision/overview.md), le service Custom Vision vous permet de spécifier vos propres étiquettes et d’entraîner des modèles personnalisés pour les détecter.
 

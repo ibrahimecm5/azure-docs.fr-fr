@@ -1,20 +1,20 @@
 ---
 title: Bien démarrer avec les jumeaux d’appareil Azure IoT Hub (.NET/.NET) | Microsoft Docs
 description: Guide d’utilisation des jumeaux d’appareils Azure IoT Hub pour ajouter des balises, puis utiliser une requête IoT Hub. Vous utilisez le kit Azure IoT device SDK pour .NET pour implémenter l’application d’appareil simulé et le kit Azure IoT service SDK pour .NET pour implémenter une application de service qui ajoute des balises et exécute la requête IoT Hub.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 53a2d4ef83f20633c227c5d1a0e23de5bb45c81d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ea2b7048d7118afb1f83e524d75a172a478f779e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532090"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554861"
 ---
 # <a name="get-started-with-device-twins-net"></a>Prise en main des représentations d’appareils (.NET)
 

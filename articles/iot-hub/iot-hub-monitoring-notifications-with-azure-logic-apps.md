@@ -1,19 +1,19 @@
 ---
 title: Surveillance à distance IoT et notifications avec Azure Logic Apps | Microsoft Docs
 description: Utilisez Azure Logic Apps pour surveiller la température IoT sur votre hub IoT et envoyer automatiquement des notifications par courrier électronique dans votre boîte aux lettres en cas de détection d’anomalies.
-author: robinsh
+author: eross-msft
 keywords: surveillance iot, notifications iot, surveillance de température iot
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: robinsh
-ms.openlocfilehash: a3a4aa719f4a9c2c7ebc527e0da3eb81307cbe1c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: lizross
+ms.openlocfilehash: 28b0c6720145ce6591f4f62cc89de17907194cf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "122641201"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552543"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Surveillance à distance IoT et notifications avec Azure Logic Apps connectant votre IoT Hub et votre boîte aux lettres
 

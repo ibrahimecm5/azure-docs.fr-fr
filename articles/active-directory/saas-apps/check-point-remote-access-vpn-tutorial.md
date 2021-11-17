@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 33bcb007c1cfd4d09c25fb4abbf9c5fcfb15b58f
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: e958f8b13c01e895aa4d6485aedd64dd155e69b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988739"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Check Point Remote Secure Access VPN
 
@@ -348,4 +348,4 @@ Dans cette section, vous allez créer une utilisatrice appelée Britta Simon dan
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Check Point Remote Secure Access VPN, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Check Point Remote Secure Access VPN, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

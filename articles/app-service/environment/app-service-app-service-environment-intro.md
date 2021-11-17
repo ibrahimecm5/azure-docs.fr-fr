@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: b0ea6176f43a5373eb24437a42972eeced26094b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f64c65dc2f2d6ad46961a3ae00ebc7f1e9471122
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129999774"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518011"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Présentation d’App Service Environment v1
 
 > [!NOTE]
-> Cet article traite de l’environnement App Service Environment v1.  Il existe une version plus récente de l’environnement App Service Environment, plus facile à utiliser et qui s’exécute sur des infrastructures plus puissantes. Pour en savoir plus sur la nouvelle version, commencez par la section [Présentation de l’environnement App Service Environment](intro.md).
+> Cet article traite de l’environnement App Service Environment v1. Il existe une version plus récente de l’environnement App Service Environment, plus facile à utiliser et qui s’exécute sur des infrastructures plus puissantes. Pour en savoir plus sur la nouvelle version, commencez par la [Présentation de l’environnement App Service Environment](overview.md).
 
 ## <a name="overview"></a>Vue d’ensemble
 

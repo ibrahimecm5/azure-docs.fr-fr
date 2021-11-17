@@ -1,7 +1,6 @@
 ---
 title: Informations de référence sur l’écriture d’expressions pour les mappages d’attributs dans l’approvisionnement des applications Azure Active Directory
 description: Découvrez comment utiliser les mappages d’expressions pour transformer des valeurs d’attributs dans un format acceptable lors de l’approvisionnement automatique des objets d’application SaaS dans Azure Active Directory. Contient une liste de références de fonctions.
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.topic: reference
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2962c033ee42b91913324f22dbba3ca3cae49fdf
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 83b6e19a1e67e2e7e018aaa43ba4cf6149940ed7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456363"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292677"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Informations de référence sur l’écriture d’expressions pour les mappages d’attributs dans Azure Active Directory
 
@@ -734,7 +733,7 @@ Supposons que vous approvisionniez les attributs *FirstName* et *LastName* aupr�
 ### <a name="randomstring"></a>RandomString
 **Fonction :** RandomString(Length, MinimumNumbers, MinimumSpecialCharacters , MinimumCapital, MinimumLowerCase, CharactersToAvoid)
 
-**Description :** la fonction RandomString génère une chaîne aléatoire basée sur les conditions spécifiées. Les caractères autorisés sont énumérés [ici](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference).
+**Description :** la fonction RandomString génère une chaîne aléatoire basée sur les conditions spécifiées. Les caractères autorisés sont énumérés [ici](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference).
 
 **Paramètres :** 
 

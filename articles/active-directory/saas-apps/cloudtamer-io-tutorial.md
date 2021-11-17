@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 329121332449316f3582ee38c11ad843b25ab812
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b39616ea0270615db618b8097a28b67f2cff45e5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054122"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311548"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory avec cloudtamer.io
 
@@ -217,4 +217,4 @@ Pour gérer facilement les autorisations de l’utilisateur cloudtamer.io à l�
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré cloudtamer.io, vous pouvez appliquer le contrôle de session, qui protège de l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Après avoir configuré cloudtamer.io, vous pouvez appliquer le contrôle de session, qui protège de l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

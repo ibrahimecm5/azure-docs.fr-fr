@@ -9,12 +9,12 @@ metadata:
   ms.subservice: v1
   ms.topic: conceptual
   ms.date: 10/22/2021
-  ms.openlocfilehash: 1557693510b8db97fc942cdb864de6c9f9527827
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 0a85978ffd2fed13e441bc7109ca013c347b4373
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "131464563"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132301662"
 title: Azure Data Factory : Forum aux Questions
 summary: >
   > [!NOTE]
@@ -198,7 +198,7 @@ sections:
     answer: "Utilisez la propriété **offset** pour spécifier l’heure à laquelle la tranche doit être générée. Pour plus d’informations sur cette propriété, consultez la section [Disponibilité du jeu de données](data-factory-create-datasets.md#dataset-availability) . Voici un exemple rapide :\n\n```json\n\"availability\":\n{\n    \"frequency\": \"Day\",\n    \"interval\": 1,\n    \"offset\": \"06:00:00\"\n}\n```\nLes tranches quotidiennes commencent à **6 h** au lieu de minuit, qui est l’heure par défaut.     \n"
   - question: >
       Comment puis-je réexécuter une tranche ?
-    answer: "Vous pouvez réexécuter une tranche de l'une des manières suivantes :\n\n* Utilisez l’application Surveiller et gérer pour réexécuter une fenêtre d’activité ou une tranche. Pour obtenir des instructions, consultez [Réexécuter les fenêtres d’activité sélectionnées](data-factory-monitor-manage-app.md#perform-batch-actions) .   \n* Cliquez sur **Exécuter** dans la barre de commandes du panneau **TRANCHE DE DONNÉES** de la tranche, dans le portail Azure.\n* Exécutez l’applet de commande **Set-AzRmDataFactorySliceStatus** en ayant affecté la valeur **En attente** à l’état de la tranche.   \n\n    ```powershell\n    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime \"02/26/2015 19:00:00\" -EndDateTime \"02/26/2015 20:00:00\"\n    ```\n  Consultez [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-Azdatafactoryslicestatus) pour plus d’informations sur l’applet de commande.\n"
+    answer: "Vous pouvez réexécuter une tranche de l'une des manières suivantes :\n\n* Utilisez l’application Surveiller et gérer pour réexécuter une fenêtre d’activité ou une tranche. Pour obtenir des instructions, consultez [Réexécuter les fenêtres d’activité sélectionnées](data-factory-monitor-manage-app.md#perform-batch-actions) .   \n* Cliquez sur **Exécuter** dans la barre de commandes du panneau **TRANCHE DE DONNÉES** de la tranche, dans le portail Azure.\n* Exécutez l’applet de commande **Set-AzRmDataFactorySliceStatus** en ayant affecté la valeur **En attente** à l’état de la tranche.   \n\n  ```powershell\n  Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime \"02/26/2015 19:00:00\" -EndDateTime \"02/26/2015 20:00:00\"\n  ```\n  \n  Consultez [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-Azdatafactoryslicestatus) pour plus d’informations sur l’applet de commande.\n"
   - question: >
       Combien de temps dure le traitement d'une tranche ?
     answer: "Utilisez l’Explorateur de fenêtres d’activité dans l’application Surveiller et gérer pour connaître la durée du traitement d’une tranche de données. Pour plus d’informations, consultez [Explorateur de fenêtres d’activité](data-factory-monitor-manage-app.md#activity-window-explorer) .\n\nVous pouvez également faire ce qui suit dans le portail Azure :  \n\n1. Cliquez sur la vignette **Jeux de données** dans le panneau **DATA FACTORY** de votre fabrique de données.\n2. Cliquez sur le jeu de données spécifique dans le panneau **Jeux de données** .\n3. Sélectionnez la tranche qui vous intéresse dans la liste **Tranches récentes** située dans le panneau **TABLE**.\n4. Cliquez sur l'exécution dans la liste **Exécutions d’activité** située dans le panneau **TRANCHE DE DONNÉES**.\n5. Cliquez sur la vignette **Propriétés** dans le panneau **DÉTAILS DE L’EXÉCUTION D’ACTIVITÉ**.\n6. Une valeur doit apparaître dans le champ **DURÉE** . Il s’agit du temps nécessaire pour traiter la tranche.   \n"

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2021
 ms.author: jeedes
-ms.openlocfilehash: f7f6e25b1c276fdda310f394a9b939ea7f860cfa
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 81c56e4656c42901cfa32d5485db5113ecb21bf5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132000623"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132299811"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-r-and-d-tax-credit-services--10-wk-implementation"></a>Tutoriel : Intégration de l’authentification unique Azure AD à R and D Tax Credit Services : 10-wk Implementation
 
@@ -136,4 +136,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré R and D Tax Credit Services, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré R and D Tax Credit Services, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

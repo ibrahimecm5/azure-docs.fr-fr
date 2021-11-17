@@ -4,17 +4,17 @@ description: Cet article fournit une vue d’ensemble de la prise en charge du r
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 95db225c83bb760b0f5de12a39b20d24c1613d62
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f9e405a82b73530cc53ec98f22b2c1f4473b2550
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131449826"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398477"
 ---
 # <a name="azure-schema-registry-in-azure-event-hubs"></a>Azure Schema Registry dans Azure Event Hubs
 Dans de nombreux scénarios de diffusion en continu d’événements et de messagerie, la charge utile de message ou d’événement contient des données structurées. Le format piloté par schéma, par exemple [Apache Avro](https://avro.apache.org/), est souvent utilisé pour sérialiser ou désérialiser ces données structurées. 
 
-:::image type="content" source="./media/schema-registry-overview/schema-driven-ser-de.png" alt-text="Sérialisation/désérialisation pilotée par schéma":::
+:::image type="content" source="./media/schema-registry-overview/schema-driven-ser-de.svg" alt-text="Sérialisation/désérialisation pilotée par schéma":::
 
 Les applications de producteur utilisent un document de schéma pour sérialiser la charge utile d’événement et la publier sur un répartiteur d’événements tel que Event Hubs. De même, les applications de consommateur lisent la charge utile d’événement du répartiteur et la désérialisent à l’aide du même document de schéma. Ainsi, les producteurs et les consommateurs peuvent valider l’intégrité des données à l’aide d’un document de schéma. 
 
@@ -26,7 +26,7 @@ Lorsque vous utilisez des formats pilotés par schéma, les applications de prod
 ## <a name="azure-schema-registry"></a>Azure Schema Registry
 Le **Registre de schéma Azure** est une fonctionnalité de Event Hubs, qui fournit un référentiel central pour les documents de schéma pour les applications pilotées par les événements et les applications axées sur la messagerie. Il offre aux producteurs et aux consommateurs la flexibilité nécessaire pour échanger des données sans qu’ils doivent gérer et partager le schéma entre eux. Le registre de schémas fournit également une infrastructure de gouvernance simple pour les schémas réutilisables et définit la relation entre les schémas par le biais d’une construction de regroupement (groupes de schémas).
 
-:::image type="content" source="./media/schema-registry-overview/schema-registry.png" alt-text="Registre de schémas":::
+:::image type="content" source="./media/schema-registry-overview/schema-registry.svg" alt-text="Registre de schémas":::
 
 Avec les infrastructures de sérialisation basées sur des schémas comme Apache Avro, l’externalisation des métadonnées de sérialisation dans des schémas partagés peut également réduire considérablement la surcharge par message des informations sur le type et des noms de champs inclus avec chaque jeu de données, comme c’est le cas avec des formats étiquetés tels que JSON. Le fait de disposer de schémas stockés avec les événements et à l’intérieur de l’infrastructure d’événements permet de s’assurer que les métadonnées requises pour la sérialisation/désérialisation sont toujours accessibles et que les schémas ne peuvent pas être mal placés. 
 
@@ -36,7 +36,7 @@ Avec les infrastructures de sérialisation basées sur des schémas comme Apache
 ## <a name="schema-registry-information-flow"></a>Flux d’informations de Schema Registry 
 Le flux d’informations lorsque vous utilisez Schema Registry est le même pour tous les protocoles que vous utilisez pour publier ou consommer des événements à partir d’Azure Event Hubs. Le diagramme suivant illustre le flux d’un producteur d’événements Kafka et d’un scénario de consommateur qui utilise Schema Registry. 
 
-:::image type="content" source="./media/schema-registry-overview/information-flow.png" lightbox="./media/schema-registry-overview/information-flow.png" alt-text="Image qui montre le workflow des informations du Registre du schéma.":::
+:::image type="content" source="./media/schema-registry-overview/information-flow.svg" lightbox="./media/schema-registry-overview/information-flow.svg" alt-text="Image qui montre le workflow des informations du Registre du schéma.":::
 
 
 Le workflow part du producteur, où les producteurs Kafka sérialisent les données à l’aide du document de schéma. 

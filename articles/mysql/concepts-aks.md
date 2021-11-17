@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 9d40ea656f74df1083eadc276eea8a109abd44b0
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 0906c255c3fd77be4de670a980bdc0a2f108c121
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294566"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347101"
 ---
 # <a name="best-practices-for-azure-kubernetes-service-and-azure-database-for-mysql"></a>Meilleures pratiques pour Azure Kubernetes Service et Azure Database pour MySQL
 
@@ -24,7 +24,7 @@ Azure Kubernetes Service (AKS) fournit un cluster Kubernetes managé que vous po
 Azure Database pour MySQL a deux options de déploiement :
 
 - Serveur unique
-- Serveur flexible (préversion)
+- Serveur flexible
 
 L’option Serveur unique prend en charge une seule zone de disponibilité et l’option Serveur flexible prend en charge plusieurs zones de disponibilité. En revanche, AKS prend également en charge l’activation de zones de disponibilité uniques ou multiples.  Commencez par créer le serveur de base de données pour afficher la zone de disponibilité dans laquelle se trouve le serveur, puis créez les clusters AKS dans la même zone de disponibilité. Cela permet d’améliorer les performances de l’application en réduisant la latence réseau.
 

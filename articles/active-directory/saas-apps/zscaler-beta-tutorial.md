@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 7670be8fa34a304d0c7bce3f6a6f3d456d2be397
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 96a73d9bba60f14c4f9b70aca9cf546cd3cb7e3f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800284"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Didacticiel : Intégration d’Active Directory à Zscaler Beta
 
@@ -188,7 +188,7 @@ Dans cette section, vous allez permettre à B.Simon d’utiliser l’authentific
 
    b. Sélectionnez **Activer**.
 
-## <a name="configure-proxy-settings&quot;></a>Configuration des paramètres de proxy
+## <a name="configure-proxy-settings"></a>Configuration des paramètres de proxy
 
 Pour configurer les paramètres de proxy dans Internet Explorer, effectuez les étapes suivantes :
 
@@ -196,7 +196,7 @@ Pour configurer les paramètres de proxy dans Internet Explorer, effectuez les 
 
 2. Dans le menu **Outils**, sélectionnez **Options Internet** pour ouvrir la boîte de dialogue **Options Internet**.
 
-   ![Boîte de dialogue Options Internet](./media/zscaler-beta-tutorial/connection.png &quot;Options Internet")
+   ![Boîte de dialogue Options Internet](./media/zscaler-beta-tutorial/connection.png "Options Internet")
 
 3. Sélectionnez l’onglet **Connexions** .
 
@@ -242,4 +242,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Zscaler Beta, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Zscaler Beta, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

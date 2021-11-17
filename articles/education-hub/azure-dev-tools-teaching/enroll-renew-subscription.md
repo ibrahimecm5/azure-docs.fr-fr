@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 01/07/2021
-ms.openlocfilehash: 0ceb9095f15009c150690b67271f4a654cd6110f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad81703bfddccb87915d139d242d0d3c416fc075
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98127751"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312511"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Inscrire ou renouveler un abonnement Azure Dev Tools for Teaching
 
@@ -64,7 +64,7 @@ Vous pouvez effectuer le processus de renouvellement au plus tôt 90 jours avan
 1. Confirmez toutes les informations d’inscription, puis cliquez sur **Passer la commande**. Des e-mails de confirmation sont envoyés à votre boîte de réception, avec des mises à jour sur l’état de l’inscription et les étapes suivantes possibles.
 
 
-## <a name="next-steps"></a>Étapes suivantes   
+## <a name="next-steps"></a>Étapes suivantes
 
 - [Configuration de l’accès pour Azure Dev Tools](set-up-access.md)
 

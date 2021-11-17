@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: ce311ba38ac32c0e6b4d5ba06cbbd64e843b26e5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5e3905c9d15d16641cad8a818719d9335cfcd916
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740184"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324590"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à AWS Single-Account Access
 
@@ -414,12 +414,11 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="change-log"></a>Journal des modifications
 
-* 12/01/2020 : la taille limite des rôles a été portée à 239 caractères (contre 119 auparavant). 
+* 12/01/2020 : la taille limite des rôles a été portée à 239 caractères (contre 119 auparavant).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré AWS Single-Account Access, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrir comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
-
+Après avoir configuré AWS Single-Account Access, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

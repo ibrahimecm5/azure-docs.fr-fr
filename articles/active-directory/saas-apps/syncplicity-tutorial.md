@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 48550bd5fcba087afa7e4c3f860554bc21db9d2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cbb1a53d2cf32ce5b55d1cb304b3ae675ae43d8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751872"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298985"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Tutoriel : Intégrer Syncplicity à Azure Active Directory
 
@@ -195,4 +195,4 @@ Si vous utilisez l’application mobile Syncplicity, contactez le support client
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Syncplicity, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré Syncplicity, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

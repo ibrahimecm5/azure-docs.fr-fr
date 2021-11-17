@@ -3,12 +3,12 @@ title: Configurer un point de terminaison privé avec liaison privée
 description: Configurez un point de terminaison privé sur un registre de conteneurs et activez l’accès sur une liaison privée dans un réseau virtuel local. L’accès à la liaison privée est une fonctionnalité du niveau de service Premium.
 ms.topic: article
 ms.date: 10/26/2021
-ms.openlocfilehash: 36f06efc223ff84efb7cf7d638900a5d018ce149
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ef3f6cd30852f6c2bac5f5e9dce383d8f4501023
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446585"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523407"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Connexion privée à un registre de conteneurs Azure à l’aide d’Azure Private Link
 
@@ -21,7 +21,7 @@ Cet article explique comment configurer un point de terminaison privé pour votr
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 > [!NOTE]
-> À compter d’octobre 2021, les nouveaux registres de conteneurs autorisent un maximum de 200 points de terminaison privés. Les registres créés précédemment autorisent un maximum de 10 points de terminaison privés. Utilisez la commande [az acr show-usage](/cli/az/acr#az_acr_show_usage) pour voir la limite de votre registre.
+> À compter d’octobre 2021, les nouveaux registres de conteneurs autorisent un maximum de 200 points de terminaison privés. Les registres créés précédemment autorisent un maximum de 10 points de terminaison privés. Utilisez la commande [az acr show-usage](/cli/azure/acr#az_acr_show_usage) pour voir la limite de votre registre.
 
 ## <a name="prerequisites"></a>Prérequis
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Documentation de référence pour le schéma YAML de magasin de données Azure Blob avec l’interface CLI (v2).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: reference
 author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: c7c2bc711299ad50dd1c606cb1c8fd41aa5afe7f
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: a2eb42974b64cf3d70422b4fef8d4611639cf826
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062830"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134563"
 ---
 # <a name="cli-v2-azure-blob-datastore-yaml-schema"></a>Schéma YAML de magasin de données Azure Blob avec l’interface CLI (v2)
 

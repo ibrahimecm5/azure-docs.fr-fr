@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/21/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: b13c7ac86ec8d21f143f4069cf1d0c777bde4bda
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 337561853bb34c8ecc67483dc8b94448b0b853a1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058334"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548517"
 ---
-# <a name="quickstart-enable-single-sign-on-for-an-enterprise-application-in-azure-active-directory"></a>Démarrage rapide : Activer l’authentification unique pour une application d’entreprise dans Azure Active Directory
+# <a name="quickstart-enable-single-sign-on-for-an-enterprise-application"></a>Démarrage rapide : Activer l’authentification unique pour une application d’entreprise
 
 Dans ce guide de démarrage rapide, vous utilisez le Centre d’administration Azure Active Directory pour activer l’authentification unique (SSO, Single Sign-On) d’une application d’entreprise que vous avez ajoutée à votre locataire Azure Active Directory (Azure AD). Une fois que l’authentification unique est configurée, vos utilisateurs peuvent se connecter avec leurs informations d’identification Azure AD. 
 

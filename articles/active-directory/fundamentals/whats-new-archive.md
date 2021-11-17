@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 9/30/2021
+ms.date: 10/30/2021
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbd82f4ccf25231b3831ae49c3053b0255459e2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 57d64e8173d969b677faa7a0e4c3dd9d1bf45726
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046353"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132159134"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archive des nouveautés d’Azure Active Directory
 
@@ -31,6 +31,135 @@ Les notes de publication relatives aux nouveautés d’Azure Active Directory fo
 - Résolution des bogues
 - Fonctionnalités dépréciées
 - Modifications planifiées
+
+---
+
+## <a name="april-2021"></a>Avril 2021
+
+### <a name="bug-fixed---azure-ad-will-no-longer-double-encode-the-state-parameter-in-responses"></a>Résolution de bogue : Azure AD n’encodera plus en double le paramètre d’état dans les réponses.
+
+**Type :** Résolution  
+**Catégorie de service :** Authentifications (connexions)  
+**Fonctionnalité de produit :** Authentification utilisateur
+ 
+Azure AD a identifié, testé et publié un correctif pour un bogue dans la réponse `/authorize` à une application cliente.  Azure AD n’a pas pu correctement encoder l’URL du paramètre `state` lors du renvoi de réponses au client.  Ainsi, une application cliente peut rejeter la requête en raison d’une incompatibilité des paramètres d’état. [Plus d’informations](../develop/reference-breaking-changes.md#bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice) 
+
+---
+
+### <a name="users-can-only-create-security-and-microsoft-365-groups-in-azure-portal-being-deprecated"></a>Les utilisateurs peuvent uniquement créer des groupes de sécurité et Microsoft 365 dans le portail Azure (déconseillé)
+
+**Type :** Modification planifiée  
+**Catégorie de service :** Gestion des groupes  
+**Fonctionnalité de produit :** Répertoire
+ 
+Les utilisateurs ne sont plus tenus de créer des groupes de sécurité et Microsoft 365 uniquement dans le portail Azure. Le nouveau paramètre permettra aux utilisateurs de créer des groupes de sécurité dans le portail Azure, PowerShell et l’API. Les utilisateurs doivent vérifier et mettre à jour le nouveau paramètre. [Plus d’informations](../enterprise-users/groups-self-service-management.md)
+
+---
+
+### <a name="public-preview----external-identities-self-service-sign-up-in-aad-using-email-one-time-passcode-accounts"></a>Préversion publique : Inscription en libre service des identités externes dans AAD à l’aide des comptes Code secret à usage unique envoyé par e-mail
+
+**Type :** Nouvelle fonctionnalité  
+**Catégorie de service :** B2B  
+**Fonctionnalité de produit :** B2B/B2C
+ 
+Les utilisateurs externes peuvent désormais utiliser des comptes e-mail à code secret à usage unique pour s’inscrire ou se connecter aux applications internes Azure AD et métier. [Plus d’informations](../external-identities/one-time-passcode.md)
+
+---
+
+### <a name="general-availability---external-identities-self-service-sign-up"></a>Disponibilité générale : Inscription en libre service des identités externes
+
+**Type :** Nouvelle fonctionnalité  
+**Catégorie de service :** B2B  
+**Fonctionnalité de produit :** B2B/B2C
+ 
+L’inscription en libre-service des utilisateurs externes est désormais en disponibilité générale. Cette nouvelle fonctionnalité permet aux utilisateurs externes de s’inscrire en libre-service à une application. 
+
+Vous pouvez créer des expériences personnalisées pour ces utilisateurs externes, notamment la collecte d’informations les concernant lors du processus d’inscription et l’autorisation de fournisseurs d’identité externes tels que Facebook et Google. Vous pouvez également intégrer des fournisseurs de cloud tiers pour diverses fonctionnalités telles que la vérification des identités ou l’approbation des utilisateurs. [Plus d’informations](../external-identities/self-service-sign-up-overview.md)
+ 
+---
+
+### <a name="general-availability---azure-ad-b2c-phone-sign-up-and-sign-in-using-built-in-policy"></a>Disponibilité générale : inscription et connexion par téléphone à Azure AD B2C à l’aide d’une stratégie intégrée
+
+**Type :** Nouvelle fonctionnalité  
+**Catégorie de service :** B2C - Gestion des identités consommateurs  
+**Fonctionnalité de produit :** B2B/B2C
+ 
+L’inscription et la connexion par téléphone B2C à l’aide d’une stratégie intégrée permettent aux administrateurs informatiques et aux développeurs de l’organisation d’autoriser leurs utilisateurs finaux à s’inscrire et à se connecter à l’aide d’un numéro de téléphone dans les flux d’utilisateurs. Avec cette fonctionnalité, des liens d’exclusion de responsabilité tels que la politique de confidentialité et les conditions d’utilisation peuvent être personnalisés et affichés sur la page avant que l’utilisateur final ne reçoive le code secret à usage unique par SMS. [Plus d’informations](../../active-directory-b2c/phone-authentication-user-flows.md)
+ 
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---april-2021"></a>Nouvelles applications fédérées disponibles dans la galerie d’applications Azure AD - Avril 2021
+
+**Type :** Nouvelle fonctionnalité  
+**Catégorie de service :** Applications d’entreprise  
+**Fonctionnalité de produit :** Intégration tierce
+
+En avril 2021, nous avons ajouté les 31 applications suivantes à notre galerie d’applications avec prise en charge de la fédération :
+
+[Zii Travel Azure AD Connect](http://ziitravel.com/), [Cerby](../saas-apps/cerby-tutorial.md), [Selflessly](https://app.selflessly.io/sign-in), [Apollo CX](https://apollo.cxlabs.de/sso/aad), [Pedagoo](https://account.pedagoo.com/), [Measureup](https://account.measureup.com/), [Wistec Education](https://wisteceducation.fi/login/index.php), [ProcessUnity](../saas-apps/processunity-tutorial.md), [Cisco Intersight](../saas-apps/cisco-intersight-tutorial.md), [Codility](../saas-apps/codility-tutorial.md), [H5mag](https://account.h5mag.com/auth/request-access/ms365), [Check Point Identity Awareness](../saas-apps/check-point-identity-awareness-tutorial.md), [Jarvis](https://jarvis.live/login), [desknet's NEO](../saas-apps/desknets-neo-tutorial.md), [SDS & Chemical Information Management](../saas-apps/sds-chemical-information-management-tutorial.md), [Wúru App](../saas-apps/wuru-app-tutorial.md), [Holmes](../saas-apps/holmes-tutorial.md), [Tide Multi Tenant](https://gallery.tideapp.co.uk/), [Telenor](https://admin.smartansatt.telenor.no/), [Yooz US](https://us1.getyooz.com/?kc_idp_hint=microsoft), [Mooncamp](https://app.mooncamp.com/#/login), [inwise SSO](https://app.inwise.com/defaultsso.aspx), [Ecolab Digital Solutions](https://ecolabb2c.b2clogin.com/account.ecolab.com/oauth2/v2.0/authorize?p=B2C_1A_Connect_OIDC_SignIn&client_id=01281626-dbed-4405-a430-66457825d361&nonce=defaultNonce&redirect_uri=https://jwt.ms&scope=openid&response_type=id_token&prompt=login), [Taguchi Digital Marketing System](https://login.taguchi.com.au/), [XpressDox EU Cloud](https://test.xpressdox.com/Authentication/Login.aspx), [EZSSH](https://docs.keytos.io/getting-started/registering-a-new-tenant/registering_app_in_tenant/), [EZSSH Client](https://portal.ezssh.io/signup), [Verto 365](https://www.vertocloud.com/Login/), [KPN Grip](https://www.grip-on-it.com/), [AddressLook](https://portal.bbsonlineservices.net/Manage/AddressLook), [Cornerstone Single Sign-On](../saas-apps/cornerstone-ondemand-tutorial.md)
+
+Pour accéder à la documentation de ces applications, cliquez https://aka.ms/AppsTutorial
+
+Pour référencer votre application dans la Galerie d’applications Azure AD, lisez les informations détaillées ici : https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---april-2021"></a>Nouveaux connecteurs de provisionnement dans la galerie d’applications Azure AD - Avril 2021
+
+**Type :** Nouvelle fonctionnalité  
+**Catégorie de service :** Provisionnement d’applications  
+**Fonctionnalité de produit :** Intégration tierce
+ 
+Vous pouvez désormais automatiser la création, la mise à jour et la suppression de comptes d’utilisateur pour ces applications nouvellement intégrées :
+
+- [Bentley - Automatic User Provisioning](../saas-apps/bentley-automatic-user-provisioning-tutorial.md)
+- [Boxcryptor](../saas-apps/boxcryptor-provisioning-tutorial.md)
+- [BrowserStack Single Sign-on](../saas-apps/browserstack-single-sign-on-provisioning-tutorial.md)
+- [Eletive](../saas-apps/eletive-provisioning-tutorial.md)
+- [Jostle](../saas-apps/jostle-provisioning-tutorial.md)
+- [Olfeo SAAS](../saas-apps/olfeo-saas-provisioning-tutorial.md)
+- [Proware](../saas-apps/proware-provisioning-tutorial.md)
+- [Segment](../saas-apps/segment-provisioning-tutorial.md)
+
+Pour découvrir comment sécuriser plus efficacement votre organisation à l’aide de l’approvisionnement automatique de comptes utilisateur, consultez [Automatisation de l’approvisionnement des utilisateurs pour les applications SaaS avec Azure AD](../app-provisioning/user-provisioning.md).
+ 
+---
+
+### <a name="introducing-new-versions-of-page-layouts-for-b2c"></a>Présentation des nouvelles versions des mises en page pour B2C
+
+**Type :** Fonctionnalité modifiée  
+**Catégorie de service :** B2C - Gestion des identités consommateurs  
+**Fonctionnalité de produit :** B2B/B2C
+ 
+Les [mises en page](../../active-directory-b2c/page-layout.md) pour les scénarios B2C sur Azure AD B2C ont été mises à jour pour réduire les risques de sécurité en introduisant les nouvelles versions de jQuery and Handlebars JS.
+ 
+---
+
+### <a name="updates-to-sign-in-diagnostic"></a>Mises à jour du diagnostic de connexion
+
+**Type :** Fonctionnalité modifiée  
+**Catégorie de service :** Signalement  
+**Fonctionnalité de produit :** Monitoring et création de rapports
+ 
+L’outil Diagnostic de connexion couvre un plus grand nombre de scénarios. 
+
+Avec cette mise à jour, les scénarios liés aux événements suivants sont désormais inclus dans les résultats du diagnostic de connexion : 
+- Événements liés aux problèmes de configuration des applications d’entreprise.
+- Événements du fournisseur de services d’applications d’entreprise (côté application).
+- Événements d’informations d’identification incorrectes. 
+
+Ces résultats affichent des informations contextuelles et pertinentes sur l’événement et les mesures à prendre pour remédier aux problèmes. En outre, en l’absence de diagnostics contextuels détaillés, le diagnostic de connexion propose un contenu plus descriptif sur l’événement d’erreur.
+
+Pour plus d’informations, consultez [Qu’est-ce que le diagnostic de connexion dans Azure Active Directory ?](../reports-monitoring/overview-sign-in-diagnostics.md)
+
+---
+### <a name="azure-ad-connect-cloud-sync-general-availability-refresh"></a>Actualisation de la disponibilité générale de la synchronisation cloud Azure AD Connect 
+**Type :** Fonctionnalité modifiée  
+**Catégorie de service :** synchronisation cloud Azure AD Connect **Fonctionnalité produit :** Directory
+
+La synchronisation cloud Azure AD Connect dispose désormais d’un agent mis à jour (version# - 1.1.359). Pour plus d’informations sur les mises à jour de l’agent, y compris les correctifs de bogues, consultez l'[historique des versions](../cloud-sync/reference-version-history.md). Avec l’agent mis à jour, les clients de la synchronisation cloud peuvent utiliser des cmdlets GMSA pour définir et réinitialiser leur autorisation gMSA à un niveau granulaire. En outre, nous avons modifié la limite de synchronisation des membres à l’aide du filtrage d’étendue de groupe de 1 499 à 50 000 membres. 
+
+Découvrez le nouveau [générateur d’expressions](../cloud-sync/how-to-expression-builder.md#deploy-the-expression) pour la synchronisation cloud, qui vous aide à créer des expressions simples et complexes lorsque vous effectuez des transformations de valeurs d’attribut d’Active directory vers Azure AD à l’aide du mappage d’attributs.
 
 ---
 

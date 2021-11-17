@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Documentation relative à QnA Maker
   description: QnA Maker est un service d’API cloud qui crée une couche de questions-réponses conversationnelle sur vos données. QnA Maker vous permet de mettre en place un service de questions-réponses à partir de votre contenu semi-structuré, comme des documents de questions fréquentes (FAQ), des URL et des manuels de produit. Le service QnA Maker répond aux questions en langage naturel de vos utilisateurs en les faisant correspondre à la meilleure réponse possible à partir des entités QnA de votre base de connaissances.
-  ms.openlocfilehash: 05ea6890e9b02c82bfca563108c92ed00e0f759b
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.openlocfilehash: 8549add9afb9af5d960db241145aad43f3d6b6c1
+  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107766876"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132546858"
 landingContent:
 - title: À propos de QnA Maker
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Utiliser des invites de suivi pour créer plusieurs tours de conversation
-      url: how-to/multiturn-conversation.md
+      url: /azure/cognitive-services/language-service/question-answering/tutorials/guided-conversations
     - text: Ajouter un échange
       url: how-to/chit-chat-knowledge-base.md
     - text: Ajouter une source de données SharePoint sécurisée

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 03dde179ffb1569b03b3949d01f0114081d62b68
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 124efe77ad962e00604e700eec65cc305c10b51c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401158"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324212"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-benefitsolver"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Benefitsolver
 
@@ -90,7 +90,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 6. Dans la section **Revendications des utilisateurs** de la boîte de dialogue **Attributs utilisateur**, modifiez les revendications en utilisant l’icône **Modifier** ou ajoutez des revendications en utilisant l’option **Ajouter une nouvelle revendication** pour configurer l’attribut de jeton SAML comme sur l’image ci-dessus et procédez comme suit : 
 
-    | Nom |  Attribut source|
+    | Name |  Attribut source|
     |---------------|----------------|
     | ClientID | L’[équipe de support technique Benefitsolver](https://www.businessolver.com/contact) doit vous fournir cette valeur.|
     | ClientKey | L’[équipe de support technique Benefitsolver](https://www.businessolver.com/contact) doit vous fournir cette valeur.|
@@ -171,4 +171,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Benefitsolver, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré Benefitsolver, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 952f6655720cf95b12dc0d18837b324ca48422b2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6207fbfe62cc07159c4c5532803d9e19aa7dbdb9
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131434253"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157403"
 ---
 # <a name="whats-new-in-azure-cognitive-service-for-language"></a>Nouveautés d’Azure Cognitive Service for Language
 
@@ -28,7 +28,7 @@ Azure Cognitive Service for Language est constamment mis à jour. Pour vous info
     * [Réponses aux questions (désormais en disponibilité générale)](question-answering/overview.md) 
     * [Analyse des sentiments et Exploration des opinions](sentiment-opinion-mining/overview.md)
     * [Extraction d’expressions clés](key-phrase-extraction/overview.md)
-    * [Reconnaissance d’entité nommée (NER) et Informations d’identification personnelle (PII)](/azure/cognitive-services/named-entity-recognition/overview.md)
+    * [Reconnaissance d’entité nommée (NER) et Informations d’identification personnelle (PII)](named-entity-recognition/overview.md)
     * [Détection de la langue](language-detection/overview.md)
     * [Analyse de texte pour la santé](text-analytics-for-health/overview.md)
     * [Synthèse de texte (préversion)](text-summarization/overview.md)

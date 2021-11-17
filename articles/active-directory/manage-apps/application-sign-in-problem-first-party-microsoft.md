@@ -13,14 +13,14 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 345d5e014631ef4f4a5dc0897face90a6267d032
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d2cf35dccf824f2d1f36f79f1ea833464fef5316
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619082"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548498"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application-in-azure-active-directory"></a>Problèmes de connexion à une application Microsoft dans Azure Active Directory
+# <a name="problems-signing-in-to-a-microsoft-application"></a>Problèmes de connexion à une application Microsoft
 
 Les applications Microsoft (comme Exchange, SharePoint, Yammer, etc.) sont affectées et gérées un peu différemment des applications SaaS tierces et des autres applications que vous intégrez à Azure AD pour l’authentification unique.
 

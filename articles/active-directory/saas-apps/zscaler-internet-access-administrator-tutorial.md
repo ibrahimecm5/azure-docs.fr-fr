@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 12a1505da59763f52da71b94dc3dc1ca8edcc075
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 03ca5536ed373183f48769158e7cdf3686dc2722
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800176"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Tutoriel : Intégration d'Azure Active Directory à Zscaler Internet Access Administrator
 
@@ -106,7 +106,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
 1. Dans la section **Revendications des utilisateurs** de la boîte de dialogue **Attributs utilisateur**, configurez le jeton SAML comme sur l’image ci-dessus et procédez comme suit :
 
-   | Nom | Attribut source   |
+   | Name | Attribut source   |
    | ---- | ------------------ |
    | Role | user.assignedroles |
 
@@ -129,7 +129,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
    ![Copier les URL de configuration](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Créer un utilisateur de test Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
 Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
 
@@ -141,7 +141,7 @@ Dans cette section, vous allez créer un utilisateur de test appelé B. Simon da
    1. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ **Mot de passe**.
    1. Cliquez sur **Créer**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Affecter l’utilisateur de test Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 
 Dans cette section, vous allez permettre à B.Simon d’utiliser l’authentification unique Azure en lui octroyant l’accès à Zscaler Internet Access Administrator.
 
@@ -153,13 +153,13 @@ Dans cette section, vous allez permettre à B.Simon d’utiliser l’authentific
 1. Si vous avez configuré les rôles comme indiqué ci-dessus, vous pouvez en sélectionner un dans la liste déroulante **Sélectionner un rôle**.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
-## <a name=&quot;configure-zscaler-internet-access-administrator-sso&quot;></a>Configurer l’authentification SSO pour Zscaler Internet Access Administrator
+## <a name="configure-zscaler-internet-access-administrator-sso"></a>Configurer l’authentification SSO pour Zscaler Internet Access Administrator
 
 1. Dans une autre fenêtre de navigateur web, connectez-vous à votre UI d’administrateur Zscaler Internet Access.
 
 2. Accédez à **Administration > Administrator Management**, effectuez les étapes suivantes, puis cliquez sur Save :
 
-   ![Capture d’écran montrant Administrator Management avec les options permettant d’activer l’authentification SAML, de charger un certificat SSL et de spécifier un émetteur.](./media/zscaler-internet-access-administrator-tutorial/management.png &quot;Administration")
+   ![Capture d’écran montrant Administrator Management avec les options permettant d’activer l’authentification SAML, de charger un certificat SSL et de spécifier un émetteur.](./media/zscaler-internet-access-administrator-tutorial/management.png "Administration")
 
    a. Cliquez sur **Enable SAML Authentication**.
 
@@ -192,4 +192,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Zscaler Internet Access Administrator, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Zscaler Internet Access Administrator, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

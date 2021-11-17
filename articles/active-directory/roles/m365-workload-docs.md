@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2fd75ab871916dae166b2ead54e7379cb3c972f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b3fa2fbceba39ee6044c252703236c85545e46db
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110781868"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349164"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Rôles pour les services Microsoft 365 dans Azure Active Directory
 
@@ -39,7 +39,7 @@ Tous les produits de Microsoft 365 peuvent être gérés avec des rôles d’adm
 > | Degré de sécurisation | [Rôles intégrés Azure AD](permissions-reference.md) | [API Graph](/graph/api/overview)<br>[Récupérer des attributions de rôles](/graph/api/directoryrole-list) |
 > | Compliance Manager | [Rôles Compliance Manager](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Non disponible |
 > | Azure Information Protection | [Rôles intégrés Azure AD](permissions-reference.md) | [API Graph](/graph/api/overview)<br>[Récupérer des attributions de rôles](/graph/api/directoryrole-list) |
-> | Microsoft Cloud App Security | [Contrôle d’accès en fonction du rôle](/cloud-app-security/manage-admins) | [Informations de référence sur l'API](/cloud-app-security/api-tokens)  |
+> | Microsoft Defender for Cloud Apps | [Contrôle d’accès en fonction du rôle](/cloud-app-security/manage-admins) | [Informations de référence sur l'API](/cloud-app-security/api-tokens)  |
 > | Azure Advanced Threat Protection | [Groupes de rôles Azure ATP](/azure-advanced-threat-protection/atp-role-groups) | Non disponible |
 > | Protection avancée contre les menaces Windows Defender | [Contrôle d’accès en fonction du rôle Windows Defender ATP](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Non disponible |
 > | Privileged Identity Management | [Rôles intégrés Azure AD](permissions-reference.md) | [API Graph](/graph/api/overview)<br>[Récupérer des attributions de rôles](/graph/api/directoryrole-list) |

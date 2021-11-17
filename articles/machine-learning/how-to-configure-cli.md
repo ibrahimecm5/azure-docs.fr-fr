@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Découvrez comment installer et configurer l’extension Azure CLI pour Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 06e623887c1ff503982df19764876cb9e3db2f0e
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 778c58c2a1408ea7beb2a756d5c1700810f4bb63
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132061455"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137589"
 ---
 # <a name="install-and-set-up-the-cli-v2"></a>Installer et configurer l’interface CLI (v2)
 

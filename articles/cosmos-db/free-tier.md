@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: sngun
-ms.openlocfilehash: 55b37ce3f96bc187e4420fc16924b02639c9a7df
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ddc09c428a7779f5e059ead02dbd869a592813e5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563233"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554770"
 ---
 # <a name="azure-cosmos-db-free-tier"></a>Niveau gratuit d’Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,7 +29,7 @@ Vous pouvez avoir un seul compte Azure Cosmos DB de niveau gratuit par abonneme
 
 Dans le modèle de débit partagé, quand vous provisionnez le débit sur une base de données, il est partagé entre tous les conteneurs de la base de données. Quand vous utilisez le niveau gratuit, vous pouvez provisionner gratuitement une base de données partagée avec un maximum de 1 000 RU/s. Tous les conteneurs de la base de données vont partager le débit. 
 
-Tout comme le compte normal, dans le compte de niveau gratuit, une base de données avec débit partagé peut avoir un maximum de 25 conteneurs. Les bases de données supplémentaires avec un débit partagé ou des conteneurs avec un débit dédié au-delà de 1 000 RU/s sont facturées au prix normal. Dans un compte de niveau gratuit, vous pouvez créer un maximum de 5 bases de données avec débit partagé.
+Tout comme le compte normal, dans le compte de niveau gratuit, une base de données avec débit partagé peut avoir un maximum de 25 conteneurs. Les bases de données supplémentaires avec un débit partagé ou des conteneurs avec un débit dédié au-delà de 1 000 RU/s sont facturées au prix normal.
 
 ## <a name="free-tier-with-azure-discount"></a>Niveau gratuit avec remise Azure
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 67ada228d3b4ed95b1247b221f0ad90bbbc74ba0
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: e3932ee9a0683689bd74fb2d912d98cd29715da6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416962"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343038"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Surveiller les demandes de requête dans Recherche cognitive Azure
 
@@ -100,21 +100,21 @@ Dans la capture d'écran suivante, la première valeur correspond au nombre de m
 
 Pour un aperçu rapide des valeurs actuelles, l'onglet **Surveillance** de la page de présentation du service affiche trois mesures (**Latence de recherche**, **Requêtes de recherche par seconde (par unité de recherche)** , **Pourcentage de requêtes de recherche limitées**) sur des intervalles fixes mesurés en heures, jours et semaines, avec la possibilité de modifier le type d'agrégation.
 
-Pour une exploration plus approfondie, ouvrez Metrics Explorer à partir du menu **Surveillance**. Vous pourrez ainsi ajouter des données, effectuer un zoom sur celles-ci et les visualiser afin d'explorer les tendances ou les anomalies. Pour en savoir plus sur Metrics Explorer, suivez ce [tutoriel consacré à la création d'un graphique de métriques](../azure-monitor/essentials/tutorial-metrics-explorer.md).
+Pour une exploration plus approfondie, ouvrez Metrics Explorer à partir du menu **Surveillance**. Vous pourrez ainsi ajouter des données, effectuer un zoom sur celles-ci et les visualiser afin d'explorer les tendances ou les anomalies. Pour en savoir plus sur Metrics Explorer, suivez ce [tutoriel consacré à la création d'un graphique de métriques](../azure-monitor/essentials/tutorial-metrics.md).
 
 1. Dans la section Surveillance, sélectionnez **Métriques** pour ouvrir Metrics Explorer en veillant à ce que l'étendue soit définie en fonction de votre service de recherche.
 
-1. Sous Métriques, choisissez-en une dans la liste déroulante et passez en revue la liste des agrégations disponibles pour sélectionner le type de votre choix. L'agrégation définit la manière dont les valeurs collectées seront échantillonnées sur chaque intervalle de temps.
+2. Sous Métriques, choisissez-en une dans la liste déroulante et passez en revue la liste des agrégations disponibles pour sélectionner le type de votre choix. L'agrégation définit la manière dont les valeurs collectées seront échantillonnées sur chaque intervalle de temps.
 
    ![Metrics Explorer pour la métrique RPS](./media/search-monitor-usage/metrics-explorer-qps.png "Metrics Explorer pour la métrique RPS")
 
-1. Dans le coin supérieur droit, définissez l'intervalle de temps.
+3. Dans le coin supérieur droit, définissez l'intervalle de temps.
 
-1. Choisissez une visualisation. La visualisation par défaut est un graphique en courbes.
+4. Choisissez une visualisation. La visualisation par défaut est un graphique en courbes.
 
-1. Ajoutez des agrégations supplémentaires en choisissant **Ajouter des métriques** et en sélectionnant différentes agrégations.
+5. Ajoutez des agrégations supplémentaires en choisissant **Ajouter des métriques** et en sélectionnant différentes agrégations.
 
-1. Zoomez sur une zone d'intérêt du graphique en courbes. Placez le pointeur de la souris au début de la zone, cliquez et maintenez le bouton gauche de la souris enfoncé, faites glisser de l’autre côté de la zone, puis relâchez le bouton. Cet intervalle de temps sera agrandi dans le graphique.
+6. Zoomez sur une zone d'intérêt du graphique en courbes. Placez le pointeur de la souris au début de la zone, cliquez et maintenez le bouton gauche de la souris enfoncé, faites glisser de l’autre côté de la zone, puis relâchez le bouton. Cet intervalle de temps sera agrandi dans le graphique.
 
 ## <a name="return-query-strings-entered-by-users"></a>Retourner les chaînes de requête entrées par les utilisateurs
 

@@ -3,15 +3,15 @@ title: Analyser une vidéo en direct avec l’extension IA Intel OpenVINO™ Mod
 description: Dans ce tutoriel, vous utilisez un serveur de modèles IA fourni par Intel avec des modèles préentraînés pour analyser le flux vidéo en direct d’une caméra IP (simulée).
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 titleSuffix: Azure
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 29c6771921ca7e37d5825a24e812234fff9e294b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f2e6e14849bfa00862b2fd87a0e42d88b315ab14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096656"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490702"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>Tutoriel : Analyser une vidéo en direct avec l’extension IA Intel OpenVINO™ Model Server 
 
@@ -72,7 +72,7 @@ Ce didacticiel présente les procédures suivantes :
 
 ### <a name="review-the-sample-video"></a>Réviser l’exemple de vidéo
 
-Quand vous configurez les ressources Azure, une courte [vidéo d’un parking](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) est copiée dans Azure sur la machine virtuelle Linux que vous utilisez comme appareil IoT Edge. Ce guide de démarrage rapide utilise le fichier vidéo pour simuler un flux en direct.
+Quand vous configurez les ressources Azure, une courte [vidéo d’un parking](https://avamedia.blob.core.windows.net/public/lots_015.mkv) est copiée dans Azure sur la machine virtuelle Linux que vous utilisez comme appareil IoT Edge. Ce guide de démarrage rapide utilise le fichier vidéo pour simuler un flux en direct.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 

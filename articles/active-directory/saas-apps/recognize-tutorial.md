@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ba91e6c8ab0b1d0881e8c843b0f91cd71f4e43fa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 802376c7cd16df02d4b862a1a8aac82d1a1e5bbe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758804"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Didacticiel : Intégration d’Azure Active Directory à Recognize
 
@@ -161,7 +161,7 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
     
     ![Capture d’écran affichant une zone de texte avec des données XML en texte brut, dans laquelle vous pouvez récupérer l’ID d’entité.](./media/recognize-tutorial/descriptor.png)
 
-### <a name="create-recognize-test-user&quot;></a>Créer un utilisateur de test Recognize
+### <a name="create-recognize-test-user"></a>Créer un utilisateur de test Recognize
 
 Pour se connecter à Recognize, les utilisateurs d’Azure AD doivent être approvisionnés dans Recognize. Dans le cas de Recognize, l’approvisionnement est une tâche manuelle.
 
@@ -177,7 +177,7 @@ Cette application ne prend pas en charge l’approvisionnement SCIM, mais inclut
 
 4. Dans la section **Synchronisation de l’utilisateur**, procédez comme suit.
    
-    ![Nouvel utilisateur](./media/recognize-tutorial/user.png &quot;Nouvel utilisateur")
+    ![Nouvel utilisateur](./media/recognize-tutorial/user.png "Nouvel utilisateur")
    
     a. Pour l’option **Synchronisation activée**, sélectionnez **Activé**.
    
@@ -197,4 +197,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Recognize, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré Recognize, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

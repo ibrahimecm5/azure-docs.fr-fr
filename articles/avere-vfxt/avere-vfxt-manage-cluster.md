@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9913bf8e576af5de6f6cb2e558188aa8517a26e3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85505492"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335990"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Gérer le cluster Avere vFXT
 
@@ -65,11 +65,11 @@ Pour fermer, redémarrer ou supprimer un nœud, recherchez le nœud dans la list
 > [!NOTE]
 > Il est possible que les adresses IP soient déplacées entre les nœuds de cluster lorsque le nombre de nœuds actifs change.
 
-Pour plus d’informations, consultez [Cluster > FXT Nodes](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) dans le guide des paramètres du cluster Avere.
+Pour plus d’informations, consultez [Cluster > FXT Nodes](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes) dans le guide des paramètres du cluster Avere.
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Arrêter ou redémarrer le cluster à l’aide du Panneau de configuration Avere
 
-La page de paramètres **System Maintenance** (Maintenance système) comporte des commandes permettant de redémarrer des services du cluster, de redémarrer le cluster entier ou de mettre le cluster hors tension en toute sécurité. Pour plus d’informations, consultez [Administration > System Maintenance](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) dans le guide des paramètres du cluster Avere.
+La page de paramètres **System Maintenance** (Maintenance système) comporte des commandes permettant de redémarrer des services du cluster, de redémarrer le cluster entier ou de mettre le cluster hors tension en toute sécurité. Pour plus d’informations, consultez [Administration > System Maintenance](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance) dans le guide des paramètres du cluster Avere.
 
 Quand un cluster commence son processus d’arrêt, il publie des messages d’état sous l’onglet **Tableau de bord**. Après quelques instants, les messages cessent et la session du Panneau de configuration Avere cesse finalement de répondre, ce qui signifie que le cluster est fermé.
 
@@ -143,7 +143,7 @@ vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNA
 
 Vous pouvez utiliser l’option ``--quick-destroy`` si vous ne voulez pas enregistrer les données modifiées du cache du cluster.
 
-Pour plus d’informations, consultez le [guide d’utilisation de vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>).
+Pour plus d’informations, consultez le [guide d’utilisation de vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).
 
 ## <a name="manage-cluster-vms-from-the-azure-portal"></a>Gérer des machines virtuelles du cluster à partir du portail Azure
 

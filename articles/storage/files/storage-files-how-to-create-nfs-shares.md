@@ -1,22 +1,22 @@
 ---
-title: Créer un partage NFS (préversion) - Azure Files
+title: Créer un partage NFS - Azure Files
 description: Découvrez comment créer un partage de fichiers Azure qui peut être monté à l’aide du protocole NFS.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f146d51cdd43b8c4a52285476e47d0c6237efe0f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77a8a7d3a210441cea406241ee1f4f776878c826
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046600"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519424"
 ---
-# <a name="how-to-create-an-nfs-share-preview"></a>Guide pratique pour créer un partage NFS (préversion)
-Les partages de fichiers Azure sont des partages de fichiers entièrement gérés qui résident dans le cloud. Cet article explique comment créer un partage de fichiers qui utilise le protocole NFS (préversion).
+# <a name="how-to-create-an-nfs-share"></a>Comment créer un partage NFS
+Les partages de fichiers Azure sont des partages de fichiers entièrement gérés qui résident dans le cloud. Cet article explique comment créer un partage de fichiers qui utilise le protocole NFS.
 
 ## <a name="applies-to"></a>S’applique à
 | Type de partage de fichiers | SMB | NFS |
@@ -41,69 +41,6 @@ Les partages de fichiers Azure sont des partages de fichiers entièrement géré
     - Configurez [ExpressRoute](../../expressroute/expressroute-introduction.md).
 
 - Si vous envisagez d’utiliser Azure CLI, [installez-en la dernière version](/cli/azure/install-azure-cli).
-
-## <a name="register-the-nfs-41-protocol"></a>Inscrire le protocole NFS 4.1
-
-Vous devez d’abord vous inscrire à la fonctionnalité pour pouvoir créer des partages de fichiers Azure NFS. Vous ne pouvez pas créer de partages NFS dans des comptes de stockage qui ont été créés avant l’inscription.
-
-Si vous utilisez le module Azure PowerShell ou Azure CLI, inscrivez votre fonctionnalité à l’aide des commandes suivantes :
-
-# <a name="portal"></a>[Portail](#tab/azure-portal)
-Utilisez Azure PowerShell ou Azure CLI pour inscrire la fonctionnalité NFS 4.1 pour Azure Files.
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-```azurepowershell
-# Connect your PowerShell session to your Azure account, if you have not already done so.
-Connect-AzAccount
-# Set the actively selected subscription, if you have not already done so.
-$subscriptionId = "<yourSubscriptionIDHere>"
-$context = Get-AzSubscription -SubscriptionId $subscriptionId
-Set-AzContext $context
-# Register the NFS 4.1 feature with Azure Files to enable the preview.
-Register-AzProviderFeature `
-    -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowNfsFileShares 
-    
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-```azurecli
-# Connect your Azure CLI to your Azure account, if you have not already done so.
-az login
-# Provide the subscription ID for the subscription where you would like to 
-# register the feature
-subscriptionId="<yourSubscriptionIDHere>"
-az feature register \
-    --name AllowNfsFileShares \
-    --namespace Microsoft.Storage \
-    --subscription $subscriptionId
-az provider register \
-    --namespace Microsoft.Storage
-```
-
----
-
-L’approbation d’inscription peut prendre jusqu’à une heure. Pour vérifier que l’inscription est terminée, utilisez les commandes suivantes :
-
-# <a name="portal"></a>[Portail](#tab/azure-portal)
-Utilisez Azure PowerShell ou Azure CLI pour vérifier l’inscription de la fonctionnalité NFS 4.1 pour Azure Files. 
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-```azurepowershell
-Get-AzProviderFeature `
-    -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowNfsFileShares
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-```azurecli
-az feature show \
-    --name AllowNfsFileShares \
-    --namespace Microsoft.Storage \
-    --subscription $subscriptionId
-```
----
 
 ## <a name="create-a-filestorage-storage-account"></a>Créer un compte de stockage FileStorage
 Actuellement, les partages NFS 4.1 sont uniquement disponibles en tant que partages de fichiers Premium. Pour déployer un partage de fichiers Premium avec prise en charge du protocole NFS 4.1, vous devez d’abord créer un compte de stockage FileStorage. Un compte de stockage est un objet de niveau supérieur dans Azure, qui représente un pool partagé de stockage pouvant être utilisé pour déployer plusieurs partages de fichiers Azure.

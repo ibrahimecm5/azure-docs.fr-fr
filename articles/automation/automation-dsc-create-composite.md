@@ -3,19 +3,15 @@ title: Convertir des configurations en ressources composites pour Azure Automati
 description: Cet article explique comment convertir des configurations en ressources composites pour Azure Automation State Configuration.
 keywords: dsc,powershell,configuration,installation
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgreenegit
-ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 3baf87cc1b14ca4d8d7d3630e777b03801398968
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5c3fc5ece7eac812bdf60a310e7777ea411ab6b6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737546"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493454"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Convertir des configurations en ressources composites
 

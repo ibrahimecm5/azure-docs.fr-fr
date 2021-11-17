@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/25/2021
-ms.openlocfilehash: 8ab0c27f8e27737c9208d77e9d1a1bd50d79afd0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b1ad94c92e1a21e7d636982194608ea6bf1afa43
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566761"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345221"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Exceptions et codes d’erreur pour le concepteur
 
@@ -1094,7 +1094,7 @@ Consultez les articles suivants pour obtenir de l’aide sur les requêtes Hive 
 
 + [Créer des tables Hive et charger des données à partir de Stockage Blob Azure](/azure/architecture/data-science-process/move-hive-tables)
 + [Explorer les données dans des tables avec des requêtes Hive](/azure/architecture/data-science-process/explore-data-hive-tables)
-+ [Créer des fonctionnalités pour les données dans un cluster Hadoop à l’aide de requêtes Hive](/azure/architecture/data-science-process/create-features-hive)
++ [Création de fonctionnalités pour les données dans un cluster Hadoop à l’aide de requêtes Hive](/azure/architecture/data-science-process/create-features-hive)
 + [Aide-mémoire pour les utilisateurs Hive pour SQL (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) (en anglais)
 
   

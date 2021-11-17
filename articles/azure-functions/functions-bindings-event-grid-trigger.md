@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: e61a7084a0dd05468716c7f94fb85b6968faf558
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 6b6efd823d8e89fd481c05d1c02affe8bb557b45
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126551"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372621"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Déclencheur Azure Event Grid pour Azure Functions
 
@@ -196,10 +196,10 @@ Les exemples suivants illustrent la liaison de déclencheur en [Java](functions-
   public void logEvent(
     @EventGridTrigger(
       name = "event"
-    ) 
-    String content, 
+    )
+    String content,
     final ExecutionContext context) {
-      context.getLogger().info("Event content: " + content);      
+      context.getLogger().info("Event content: " + content);
   }
 ```
 
@@ -232,8 +232,8 @@ public class EventSchema {
   public void logEvent(
     @EventGridTrigger(
       name = "event"
-    ) 
-    EventSchema event, 
+    )
+    EventSchema event,
     final ExecutionContext context) {
       context.getLogger().info("Event content: ");
       context.getLogger().info("Subject: " + event.subject);
@@ -428,7 +428,8 @@ Dans Azure Functions 2.x et ultérieur, vous pouvez également utiliser le type 
 > [!NOTE]
 > Si vous essayez de lier à `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`, le compilateur affichera un message « déconseillé » et vous recommandera d’utiliser `Microsoft.Azure.EventGrid.Models.EventGridEvent` à la place. Pour utiliser le type le plus récent, référencez le package NuGet [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) et qualifiez entièrement le nom de type `EventGridEvent` en le faisant précéder de `Microsoft.Azure.EventGrid.Models`. Pour plus d’informations sur la façon de référencer des packages NuGet dans une fonction de script C#, consultez [Utiliser des packages NuGet](functions-reference-csharp.md#using-nuget-packages).
 
-### <a name="additional-types"></a>Autres types 
+### <a name="additional-types"></a>Autres types
+
 Les applications qui utilisent la version 3.0.0 ou une version ultérieure de l’extension Event Grid se servent du type `EventGridEvent` de l’espace de noms [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent). En outre, vous pouvez procéder à une liaison avec le type `CloudEvent` à partir de l'espace de noms [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent).
 
 # <a name="java"></a>[Java](#tab/java)
@@ -638,7 +639,7 @@ Pour simplifier la capture des messages d’événement, vous pouvez déployer u
 
 Sélectionnez **Déployer sur Azure** pour déployer la solution sur votre abonnement. Dans le portail Azure, indiquez des valeurs pour les paramètres.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to deploy to Azure."></a>
 
 Le déploiement peut prendre quelques minutes. Une fois le déploiement réussi, affichez votre application web pour vérifier qu’elle s’exécute. Dans un navigateur web, accédez à : `https://<your-site-name>.azurewebsites.net`
 

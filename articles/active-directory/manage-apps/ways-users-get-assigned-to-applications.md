@@ -12,14 +12,14 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 5a7955a183893540e6c8de3981ad561200e31f70
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 2df43ef2a3bc70398d1d73702e1402e439538d15
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613564"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548289"
 ---
-# <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Comprendre comment les utilisateurs sont affectés aux applications dans Azure Active Directory
+# <a name="understand-how-users-are-assigned-to-apps"></a>Comprendre comment les utilisateurs sont attribués aux applications
 
 Cet article vous explique comment les utilisateurs sont affectés à une application dans votre client.
 

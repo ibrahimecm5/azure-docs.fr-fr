@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/01/2021
 ms.author: ibthampy
-ms.openlocfilehash: 77f6eaf0cbd9478df6659310c61fa4616c17c749
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 244708b6603351ce7b01a6f69f2f19887cc63ea9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458491"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344006"
 ---
 # <a name="azure-guest-os"></a>Système d’exploitation invité d'Azure
 Les tableaux suivants indiquent les mises à jour de MSRC (Microsoft Security Response Center) appliquées au système d’exploitation invité d'Azure. Parcourez cet article pour déterminer si une mise à jour spécifique s'applique au système d’exploitation invité que vous utilisez. Les mises à jour vont toujours de l'avant pour la [famille][family-explain] spécifique avec laquelle elles ont été présentées.
@@ -581,7 +581,7 @@ Les tableaux suivants indiquent les mises à jour de MSRC (Microsoft Security Re
 |  Version 20-12 |  4580325  |  Mise à jour de Flash | [3.92], [4.85], [5.50], [6.26] | 13 octobre 2020 |
 |  Version 20-12 |  [4586768]  |  Mises à jour cumulatives d’IE | [2.105], [3.92], [4.85] | 10 novembre 2020 |
 |  Version 20-12 |  [4593226]  |  Dernière mise à jour cumulative | [5.50] | 8 décembre 2020 |
-|  Version 20-12 |  [4052623]  |  Defender | [5.50], [6.26] | 13 décembre 2020 |
+|  Version 20-12 |  [4052623]  |  Defender pour le cloud | [5.50], [6.26] | 13 décembre 2020 |
 |  Version 20-12 |  [4578952]  |  Cumul de la sécurité et de la qualité de .NET Framework 3.5 | [2.105] | 10 novembre 2020 |
 |  Version 20-12 |  [4578955]  |  Cumul de la sécurité et de la qualité de .NET Framework 4.5.2 | [2.105] | 10 novembre 2020 |
 |  Version 20-12 |  [4578953]  |  Cumul de la sécurité et de la qualité de .NET Framework 3.5 | [4.85] | 10 novembre 2020 |
@@ -1260,11 +1260,11 @@ Les tableaux suivants indiquent les mises à jour de MSRC (Microsoft Security Re
 |  Version 10-19   |  [4516655]  |  SSU   |  [2.91]  |  10 septembre 2019  |
 |  Version 10-19   |  [4516055]  |  Non relatif à la sécurité   |  [3.78]  |  10 septembre 2019  |
 |  Version 10-19   |  [4512939]  |  SSU   |  [3.78]  |  10 septembre 2019  |
-|  Version 10-19   |  [4514370]  |  .NET Framework 3.5   |  [3.78]  |  10 septembre 2019  |
+|  Version 10-19   |  [4514370]  |  .NET Framework 3.5   |  [3.78]  |  10 septembre 2019  |
 |  Version 10-19   |  [4514368]  |  .NET Framework 4.5.2   |  [3.78]  |  10 septembre 2019  |
 |  Version 10-19   |  [4516067]  |  Non liée à la sécurité   |  [4.71]  |  10 septembre 2019  |
 |  Version 10-19   |  [4512938]  |  SSU   |  [4.71]  |  10 septembre 2019  |
-|  Version 10-19   |  [4514371]  |  .NET Framework 3.5   |  [4.71]  |  10 septembre 2019  |
+|  Version 10-19   |  [4514371]  |  .NET Framework 3.5   |  [4.71]  |  10 septembre 2019  |
 |  Version 10-19   |  [4514367]  |  .NET Framework 4.5.2   |  [4.71]  |  10 septembre 2019  |
 |  Version 10-19   |  [4512574]  |  SSU   |  [5.36]  |  10 septembre 2019  |
 |  Version 10-19   |  [4512577]  |  SSU   |  [6.12]  |  10 septembre 2019  |

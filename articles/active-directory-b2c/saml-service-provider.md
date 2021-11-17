@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2021
+ms.date: 11/12/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d0bc55f909fe019dedb92d20cce0584ea5d33768
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4dee0d3730c74218e236c5d6b51afedc496e02fe
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012811"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522799"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Inscrire une application SAML dans Azure AD B2C
 
@@ -331,7 +331,7 @@ L’exemple suivant illustre la valeur `entityID` dans les métadonnées SAML :
 La propriété `identifierUris` accepte des URL uniquement sur le domaine `tenant-name.onmicrosoft.com`.
 
 ```json
-"identifierUris":"https://samltestapp2.azurewebsites.net",
+"identifierUris":"https://tenant-name.onmicrosoft.com",
 ```
 
 #### <a name="share-the-applications-metadata-with-azure-ad-b2c"></a>Partager les métadonnées de l’application avec Azure AD B2C

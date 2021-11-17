@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, references_regions, ignite-fall-2021
-ms.openlocfilehash: 745c75722fc3a431c3f7cc4b5b47a8ebdd1895e7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 06db585531cb3a73b291f2c8d45de18a3d298fb2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097767"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484080"
 ---
 # <a name="custom-text-classification-limits"></a>Limites de la classification de texte personnalisée
 
@@ -45,7 +45,7 @@ Utilisez cet article pour en savoir plus sur les données et les limites de déb
 * La taille maximale des fichiers par demande est de 125 000 caractères. Vous pouvez envoyer jusqu’à 25 fichiers, tant que la taille collective de ces derniers ne dépasse pas 125 000 caractères.
 
 > [!NOTE]
-> Si vous devez envoyer des documents qui dépassent la limite autorisée, vous pouvez scinder le texte en blocs de texte plus petits avant de les envoyer à l’API. Vous pouvez utiliser la [commande Chunk de CLUtils](https://github.com/microsoft/CogSLanguageUtilities/tree/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand) pour ce processus.
+> Si vous devez envoyer des documents qui dépassent la limite autorisée, vous pouvez scinder le texte en blocs de texte plus petits avant de les envoyer à l’API. Vous pouvez utiliser la [commande Chunk de CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ChunkCommand/README.md) pour ce processus.
 
 ## <a name="azure-resource-limits"></a>Limites de ressources Azure
 

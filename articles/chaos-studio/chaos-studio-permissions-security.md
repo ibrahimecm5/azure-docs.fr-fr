@@ -7,12 +7,12 @@ ms.service: chaos-studio
 ms.topic: conceptual
 ms.date: 11/01/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 8502000dde601f6b42a8f770513e13f171dcf5d2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa547771b125b17d05e6a615f01cecc899cba7e0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096918"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372205"
 ---
 # <a name="permissions-and-security-in-azure-chaos-studio"></a>Autorisations et sécurité dans Azure Chaos Studio
 
@@ -65,5 +65,5 @@ Chaos Studio chiffre toutes les données par défaut. Chaos Studio accepte uniqu
 
 ## <a name="next-steps"></a>Étapes suivantes
 Maintenant que vous comprenez comment sécuriser votre expérience de chaos, vous êtes prêt à :
-- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct.md)
-- [Créer et exécuter votre première expérience Azure Kubernetes Service](chaos-studio-tutorial-aks.md)
+- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct-portal.md)
+- [Créer et exécuter votre première expérience Azure Kubernetes Service](chaos-studio-tutorial-aks-portal.md)

@@ -13,14 +13,14 @@ ms.date: 06/01/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2, contperf-fy22q2
-ms.openlocfilehash: cbdf0ed80397d5cd63cd7c38f12f6432e420ec7c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 65cae86cd6183932df20a1642661bc277254fed3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998026"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552030"
 ---
-# <a name="configure-how-end-users-consent-to-applications-using-azure-active-directory"></a>Configurer le consentement de l’utilisateur final pour une application à l’aide d’Azure Active Directory
+# <a name="configure-how-end-users-consent-to-applications"></a>Configurer le consentement de l’utilisateur final pour une application
 
 Vous pouvez intégrer vos applications avec la plateforme d’identités Microsoft pour permettre à des utilisateurs de se connecter à l’aide de leur compte professionnel ou scolaire, et d’accéder aux données de votre organisation afin d’offrir des expériences riches pilotées par les données.
 

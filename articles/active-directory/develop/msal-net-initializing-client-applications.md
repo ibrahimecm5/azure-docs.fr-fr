@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7ff61811e8b736f8f6d104a253cfe5dc5e76c428
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 437de129cec6b8ef6f8d9ca572b18c2a181295b3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771360"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133654"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initialiser des applications clientes avec MSAL.NET
 Cet article décrit l'initialisation d'applications clientes publiques et confidentielles à l'aide de la bibliothèque d'authentification Microsoft pour .NET (MSAL.NET).  Pour plus d’informations sur les types d’application cliente, consultez [Applications clientes publiques et confidentielles](msal-client-applications.md).
@@ -100,7 +100,7 @@ Les modificateurs que vous pouvez définir sur un client public ou un générate
 
 |Modificateur | Description|
 |--------- | --------- |
-|`.WithAuthority()` 7 remplace | Définit l’autorité par défaut de l’application sur une autorité Azure AD, avec la possibilité de choisir le cloud Azure, l’audience, le locataire (ID de locataire ou nom de domaine), ou de fournir directement l’URI de l’autorité.|
+|[`.WithAuthority()`](/dotnet/api/microsoft.identity.client.abstractapplicationbuilder-1.withauthority)  | Définit l’autorité par défaut de l’application sur une autorité Azure AD, avec la possibilité de choisir le cloud Azure, l’audience, le locataire (ID de locataire ou nom de domaine), ou de fournir directement l’URI de l’autorité.|
 |`.WithAdfsAuthority(string)` | Définit l’autorité par défaut de l’application sur une autorité ADFS.|
 |`.WithB2CAuthority(string)` | Définit l’autorité par défaut de l’application sur une autorité Azure AD B2C.|
 |`.WithClientId(string)` | Remplace l’ID client.|

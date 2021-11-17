@@ -5,12 +5,12 @@ ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: f2bb1ebd6e8db80a071dc3f82e1eedded26f6116
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 8e49d85ed4646f337a492ac92be4e31edfa3b9c4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634484"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487077"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Redémarrer des machines virtuelles pour des clusters HDInsight
 
@@ -51,13 +51,13 @@ Deux étapes sont nécessaires pour utiliser l’opération de redémarrage de n
 
 Vous pouvez utiliser la fonctionnalité **Try it** dans la documentation de l’API pour envoyer des requêtes à HDInsight. Deux étapes sont nécessaires pour utiliser l’opération de redémarrage de nœud : répertorier les nœuds et les redémarrer.
 
-1. Répertorier les nœuds. Vous pouvez récupérer la liste des nœuds de cluster à partir de l’API REST ou de Ambari. Pour plus d’informations, consultez [Opération de l’API REST Répertorier les hôtes HDInsight](/rest/api/hdinsight/virtualmachines/listhosts).
+1. Répertorier les nœuds. Vous pouvez récupérer la liste des nœuds de cluster à partir de l’API REST ou de Ambari. Pour plus d’informations, consultez [Opération de l’API REST Répertorier les hôtes HDInsight](/rest/api/hdinsight/2021-06-01/virtual-machines/list-hosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. Redémarrez les ordinateurs hôtes. Après avoir obtenu le nom des nœuds que vous souhaitez redémarrer, utilisez l’API REST pour redémarrer les nœuds. Le nom du nœud suit le modèle *NodeType (wn/hn/zk)*  + *x* + *les six premiers caractères du nom du cluster*. Pour plus d’informations, consultez [Opération de l’API REST Redémarrer des hôtes HDInsight](/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Redémarrez les ordinateurs hôtes. Après avoir obtenu le nom des nœuds que vous souhaitez redémarrer, utilisez l’API REST pour redémarrer les nœuds. Le nom du nœud suit le modèle *NodeType (wn/hn/zk)*  + *x* + *les six premiers caractères du nom du cluster*. Pour plus d’informations, consultez [Opération de l’API REST Redémarrer des hôtes HDInsight](/rest/api/hdinsight/2021-06-01/virtual-machines/restart-hosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -75,5 +75,5 @@ Les noms réels des nœuds que vous souhaitez redémarrer sont spécifiés dans 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * [Restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [API REST des machines virtuelles HDInsight](/rest/api/hdinsight/virtualmachines)
+* [API REST des machines virtuelles HDInsight](/rest/api/hdinsight/2021-06-01/virtual-machines)
 * [API REST de HDInsight](/rest/api/hdinsight/)

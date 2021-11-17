@@ -2,13 +2,13 @@
 title: Examiner un appareil suspect
 description: Ce guide pratique explique comment utiliser Defender pour IoT afin d’examiner un appareil IoT suspect avec Log Analytics.
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 32cc8d82a867ead533cbaa6802bffb4494398412
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: b28a153a8cd6226a91d9ce19161d30e6d20cfbdb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015148"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293513"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Examiner un appareil IoT suspect
 

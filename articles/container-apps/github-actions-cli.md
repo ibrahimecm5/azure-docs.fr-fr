@@ -1,18 +1,18 @@
 ---
 title: Publier des révisions avec GitHub Actions dans la préversion d’Azure Container Apps
 description: En savoir plus sur la création automatique de nouvelles révisions à l’aide de GitHub Actions dans la préversion d’Azure Container Apps
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
-ms.openlocfilehash: d83c6904f721d429488bca50359c3b32877ad50b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f345c3138891cef9d83000d1e64b950cd33747b4
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479118"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179566"
 ---
 # <a name="publish-revisions-with-github-actions-in-azure-container-apps-preview"></a>Publier des révisions avec GitHub Actions dans la préversion d’Azure Container Apps
 
@@ -41,7 +41,7 @@ La première fois que vous joignez GitHub Actions à votre application de conten
 az ad sp create-for-rbac \
   --name <SERVICE_PRINCIPAL_NAME> \
   --role "contributor" \
-  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> /subscriptions/<SUBSCRIPTION_ID> \
+  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> \
   --sdk-auth
 ```
 
@@ -51,7 +51,7 @@ az ad sp create-for-rbac \
 az ad sp create-for-rbac `
   --name <SERVICE_PRINCIPAL_NAME> `
   --role "contributor" `
-  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> /subscriptions/<SUBSCRIPTION_ID> `
+  --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME> `
   --sdk-auth
 ```
 
@@ -127,7 +127,7 @@ Quand vous interagissez avec cet exemple, remplacez les espaces réservés entre
 
 Cette commande retourne une charge utile JSON avec les paramètres de configuration d’intégration de GitHub Actions.
 
-## <a name="delete"></a>DELETE
+## <a name="delete"></a>Supprimer
 
 La commande `containerapp github-action remove` supprime les actions GitHub de l’application de conteneur.
 

@@ -1,19 +1,19 @@
 ---
 title: Créer et approvisionner un appareil IoT Edge sur Linux avec des certificats X.509 – Azure IoT Edge | Microsoft Docs
 description: Créer et approvisionner un appareil IoT Edge dans IoT Hub pour l’approvisionnement manuel avec des certificats X.509
-author: v-tcassi
-ms.reviewer: kgremban
+author: kgremban
+ms.reviewer: v-tcassi
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.author: v-tcassi
-ms.openlocfilehash: 5116774d0ea68f4d78dd0721a3546d9d82cbfdbd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 10/28/2021
+ms.author: kgremban
+ms.openlocfilehash: 1f1d6a627baf4166a34680961e1601307292bb3b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130270706"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845070"
 ---
 # <a name="create-and-provision-an-iot-edge-device-on-linux-using-x509-certificates"></a>Créer et approvisionner un appareil IoT Edge sur Linux avec des certificats X.509
 
@@ -25,7 +25,7 @@ Chaque appareil qui se connecte à un hub IoT possède un ID d’appareil qui se
 
 Les étapes de cet article suivent un processus appelé approvisionnement manuel, qui consiste à connecter un seul appareil à son hub IoT. Avec le provisionnement manuel, vous avez le choix entre deux méthodes d’authentification des appareils IoT Edge :
 
-* **Clés symétriques** : quand vous créez une identité d’appareil dans IoT Hub, le service crée deux clés. Vous placez l’une des clés sur l’appareil, lequel présente la clé à IoT Hub au moment de l’authentification.
+* **Clés symétriques** : quand vous créez une identité d’appareil dans IoT Hub, le service crée deux clés. Vous placez l’une des clés sur l’appareil, lequel présente la clé à IoT Hub au moment de l’authentification.
 
   Cette méthode d’authentification est plus rapide pour commencer, mais moins sûre que l’autre.
 
@@ -36,39 +36,18 @@ Les étapes de cet article suivent un processus appelé approvisionnement manuel
 Cet article traite de l’utilisation de certificats X.509 comme méthode d’authentification. Si vous souhaitez utiliser des clés symétriques, consultez [Créer et provisionner un appareil IoT Edge sur Linux à l’aide de clés symétriques](how-to-provision-single-device-linux-symmetric.md).
 
 > [!NOTE]
-> Si vous avez de nombreux appareils à configurer et que vous ne souhaitez pas les approvisionner manuellement, consultez l’un des articles suivants pour découvrir comment IoT Edge fonctionne avec le service IoT Hub Device Provisioning :
+> Si vous avez de nombreux appareils à configurer et que vous ne souhaitez pas les provisionner manuellement, consultez l’un des articles suivants pour découvrir comment IoT Edge fonctionne avec le service IoT Hub Device Provisioning :
 >
-> * [Créer et approvisionner des appareils IoT Edge à grande échelle à l’aide de certificats X.509](how-to-provision-devices-at-scale-linux-x509.md)
-> * [Créer et approvisionner des appareils IoT Edge à grande échelle avec un module TPM](how-to-auto-provision-simulated-device-linux.md)
-> * [Créer et approvisionner des appareils IoT Edge à grande échelle à l’aide de clés symétriques](how-to-provision-devices-at-scale-linux-symmetric.md)
+> * [Créer et provisionner des appareils IoT Edge à grande échelle à l’aide de certificats X.509](how-to-provision-devices-at-scale-linux-x509.md)
+> * [Créer et provisionner des appareils IoT Edge à grande échelle avec un module TPM](how-to-provision-devices-at-scale-linux-tpm.md)
+> * [Créer et provisionner des appareils IoT Edge à grande échelle à l’aide de clés symétriques](how-to-provision-devices-at-scale-linux-symmetric.md)
 
 ## <a name="prerequisites"></a>Prérequis
 
-Cet article traite de l’inscription de votre appareil IoT Edge et de l’installation d’IoT Edge sur l’appareil. Ces tâches ont plusieurs prérequis et s’effectuent avec différents utilitaires. Assurez-vous que toutes les conditions préalables sont remplies avant de continuer.
+Cet article traite de l’inscription de votre appareil IoT Edge et de l’installation d’IoT Edge sur l’appareil. Ces tâches ont des conditions préalables et différents utilitaires sont utilisés pour les accomplir. Assurez-vous que toutes les conditions préalables sont remplies avant de continuer.
 
-### <a name="device-registration"></a>Enregistrement de l’appareil
-
-Vous avez le choix d’utiliser le **portail Azure**, **Visual Studio Code** ou **Azure CLI** pour inscrire votre appareil. Chaque utilitaire possède sa propre configuration requise :
-
-# <a name="portal"></a>[Portail](#tab/azure-portal)
-
-Un [hub IoT](../iot-hub/iot-hub-create-through-portal.md) gratuit ou standard dans votre abonnement Azure.
-
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-* Un [hub IoT](../iot-hub/iot-hub-create-through-portal.md) gratuit ou standard dans votre abonnement Azure
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) pour Visual Studio Code.
-
-> [!NOTE]
-> Actuellement, l’extension Azure IoT pour Visual Studio Code ne prend pas en charge l’inscription des appareils avec des certificats X.509.
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-* Un [hub IoT](../iot-hub/iot-hub-create-using-cli.md) gratuit ou standard dans votre abonnement Azure.
-* [Azure CLI](/cli/azure/install-azure-cli) dans votre environnement. Vous devez utiliser Azure CLI version 2.0.70 ou ultérieure. Utilisez `az --version` pour valider. Cette version prend en charge les commandes d’extension az et introduit l’infrastructure de la commande Knack.
-
----
+<!-- Device registration prerequisites H3 and content -->
+[!INCLUDE [iot-edge-prerequisites-register-device.md](../../includes/iot-edge-prerequisites-register-device.md)]
 
 ### <a name="iot-edge-installation"></a>Installation d’IoT Edge
 
@@ -76,240 +55,19 @@ Un appareil Linux x64, ARM32 ou ARM64.
 
 Microsoft fournit des packages d’installation pour les systèmes d’exploitation Ubuntu Server 18.04 et Raspberry Pi OS Stretch.
 
-Pour obtenir les informations les plus récentes sur les systèmes d’exploitation actuellement pris en charge pour les scénarios de production, consultez [Systèmes pris en charge par Azure IoT Edge](support.md#operating-systems).
+Pour les dernières informations sur les systèmes d’exploitation actuellement pris en charge pour les scénarios de production, consultez [Systèmes pris en charge par Azure IoT Edge](support.md#operating-systems).
 
 >[!NOTE]
 >La prise en charge des appareils ARM64 est en [préversion publique](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="generate-device-identity-certificates"></a>Générer des certificats d’identité d’appareil
+<!-- Generate device identity certificates H2 and content -->
+[!INCLUDE [iot-edge-generate-device-identity-certs.md](../../includes/iot-edge-generate-device-identity-certs.md)]
 
-L’approvisionnement manuel avec des certificats X.509 requiert IoT Edge version 1.0.10 ou ultérieure.
+<!-- Register your device and View provisioning information H2s and content -->
+[!INCLUDE [iot-edge-register-device-x509.md](../../includes/iot-edge-register-device-x509.md)]
 
-Lorsque vous configurez un appareil IoT Edge avec des certificats X.509, vous utilisez ce que l’on appelle un *certificat d’identité d’appareil*. Ce certificat est utilisé uniquement pour approvisionner un appareil IoT Edge et l’authentifier avec Azure IoT Hub. Il s’agit d’un certificat feuille qui ne signe pas d’autres certificats. Le certificat d’identité d’appareil est distinct des certificats d’autorité de certification que l’appareil IoT Edge présente aux modules ou aux appareils en aval à des fins de vérification.
-
-Pour l’authentification par certificat X.509, les informations d’authentification de chaque appareil sont fournies sous la forme d’*empreintes numériques* extraites de vos certificats d’identité d’appareil. Ces empreintes numériques, fournies à IoT Hub au moment de l’inscription de l’appareil, permettent au service de reconnaître l’appareil qui se connecte.
-
-Pour plus d’informations sur l’utilisation des certificats d’autorité de certification dans les appareils IoT Edge, consultez [Comprendre comment Azure IoT Edge utilise les certificats](iot-edge-certs.md).
-
-Les fichiers suivants sont nécessaires pour le provisionnement manuel avec X.509 :
-
-* Deux des certificats d’identité d’appareil avec leurs certificats de clé privée correspondants au format .cer ou .pem.
-
-  Un ensemble de fichiers de certificat/clé est fourni au runtime IoT Edge. Quand vous créez des certificats d’identité d’appareil, définissez le nom commun du certificat (CN) avec l’ID d’appareil que l’appareil doit avoir dans votre hub IoT.
-
-* Empreintes numériques tirées des deux certificats d’identité d’appareil.
-
-  Les valeurs d’empreinte numérique sont constituées de 40 caractères hexadécimaux pour les hachages SHA-1 ou de 64 caractères hexadécimaux pour les hachages SHA-256. Les deux empreintes numériques sont fournies pour IoT Hub lors de l’enregistrement de l’appareil.
-
-Si vous n’avez pas de certificats disponibles, vous pouvez [créer des certificats de démonstration pour tester les fonctionnalités de l’appareil IoT Edge](how-to-create-test-certificates.md). Suivez les instructions de cet article pour configurer des scripts de création de certificat, créer un certificat d’autorité de certification racine, puis créer deux certificats d’identité d’appareil IoT Edge.
-
-L’une des méthodes permettant de récupérer l’empreinte numérique d’un certificat consiste à utiliser la commande openssl suivante :
-
-```cmd
-openssl x509 -in <certificate filename>.pem -text -fingerprint
-```
-
-## <a name="register-your-device"></a>Inscrire votre appareil
-
-Vous avez le choix d’utiliser le **portail Azure**, **Visual Studio Code** ou **Azure CLI** pour inscrire votre appareil.
-
-# <a name="portal"></a>[Portail](#tab/azure-portal)
-
-Dans votre hub IoT dans le portail Azure, les appareils IoT Edge sont créés et managés séparément des appareils IoT qui ne sont pas compatibles avec Edge.
-
-1. Connectez-vous au [portail Azure](https://portal.azure.com) et accédez à votre IoT Hub.
-
-1. Dans le volet de gauche, sélectionnez **IoT Edge** dans le menu, puis sélectionnez **Ajouter un appareil IoT Edge**.
-
-   ![Ajouter un appareil IoT Edge à partir du portail Azure](./media/how-to-provision-single-device-linux-x509/portal-add-iot-edge-device.png)
-
-1. Dans la page **Créer un appareil**, fournissez les informations suivantes :
-
-   * Créez un ID d’appareil descriptif. Notez cet ID d’appareil, car vous en aurez besoin plus tard.
-   * Sélectionnez **X.509 autosigné** comme type d’authentification.
-   * Fournissez les empreintes numériques des certificats d’identité principal et secondaire. Les valeurs d’empreinte numérique sont constituées de 40 caractères hexadécimaux pour les hachages SHA-1 ou de 64 caractères hexadécimaux pour les hachages SHA-256.
-
-1. Sélectionnez **Enregistrer**.
-
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-Actuellement, l’extension Azure IoT pour Visual Studio Code ne prend pas en charge l’inscription des appareils avec des certificats X.509.
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Utilisez la commande [az iot hub device-identity create](/cli/azure/iot/hub/device-identity) pour créer une identité d’appareil dans votre hub IoT. Par exemple :
-
-   ```azurecli
-   az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
-   ```
-
-Cette commande comprend plusieurs paramètres :
-
-* `--device-id` ou `-d` : fournissez un nom descriptif unique à votre hub IoT. Notez cet ID d’appareil, car vous en aurez besoin dans la prochaine section.
-* `hub-name` ou `-n` : indiquez le nom de votre hub IoT.
-* `--edge-enabled` ou `--ee` : déclarez que l’appareil est un appareil IoT Edge.
-* `--auth-method` ou `--am` : déclarez le type d’autorisation que l’appareil utilisera. Ici, nous utilisons des empreintes numériques de certificat X.509.
-* `--primary-thumbprint` ou `--ptp` : fournissez une empreinte numérique de certificat X.509 à utiliser comme clé primaire.
-* `--secondary-thumbprint` ou `--stp` : fournissez une empreinte numérique de certificat X.509 à utiliser comme clé secondaire.
-
----
-
-Maintenant que vous avez un appareil inscrit dans IoT Hub, récupérez les informations à utiliser pour terminer l’installation et le provisionnement du runtime IoT Edge.
-
-## <a name="view-registered-devices-and-retrieve-provisioning-information"></a>Afficher les appareils inscrits et récupérer les informations de provisionnement
-
-Pour les appareils qui utilisent l’authentification par certificat X.509, vous devez récupérer le nom de leur hub IoT, leur nom d’appareil et leurs fichiers de certificat pour terminer l’installation et le provisionnement du runtime IoT Edge.
-
-# <a name="portal"></a>[Portail](#tab/azure-portal)
-
-Tous les appareils compatibles avec Edge qui se connectent à votre hub IoT sont répertoriés dans la page **IoT Edge**.
-
-![Utiliser le portail Azure pour voir tous les appareils IoT Edge dans votre hub IoT](./media/how-to-provision-single-device-linux-x509/portal-view-devices.png)
-
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-Vous ne pouvez pas inscrire des appareils avec des certificats X.509 par le biais de Visual Studio Code, mais vous pouvez toujours afficher vos appareils IoT Edge si nécessaire.
-
-Tous les appareils qui se connectent à votre hub IoT sont listés dans la section **Azure IoT Hub** de l’Explorateur Visual Studio Code. Les appareils IoT Edge se distinguent des appareils non Edge par leur icône et par le fait que les modules **$edgeAgent** et **$edgeHub** sont développés sur chacun d’eux.
-
-![Utiliser VS Code pour voir tous les appareils IoT Edge dans votre hub IoT](./media/how-to-provision-single-device-linux-x509/view-devices.png)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Utilisez la commande [az iot hub device-identity list](/cli/azure/iot/hub/device-identity) pour voir tous les appareils dans votre hub IoT. Par exemple :
-
-   ```azurecli
-   az iot hub device-identity list --hub-name [hub name]
-   ```
-
-Tout appareil inscrit en tant qu’appareil IoT Edge a la propriété **capabilities.iotEdge** définie sur **true**.
-
----
-
-## <a name="install-iot-edge"></a>Installer IoT Edge
-
-Dans cette section, vous allez préparer votre machine virtuelle ou votre appareil physique Linux à IoT Edge. Ensuite, vous installez IoT Edge.
-
-Vous devez effectuer deux étapes sur votre appareil pour qu’il soit prêt à installer le runtime IoT Edge. Votre appareil a besoin d’un accès aux packages d’installation Microsoft, et un moteur de conteneur doit être installé.
-
-### <a name="prepare-your-device-to-access-the-microsoft-installation-packages"></a>Préparer votre appareil pour accéder aux packages d’installation de Microsoft
-
-1. Installez la configuration du référentiel qui correspond au système d’exploitation de votre appareil.
-
-   * **Ubuntu Server 18.04** :
-
-      ```bash
-      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-      ```
-
-   * **Raspberry Pi OS Stretch** :
-
-      ```bash
-      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
-      ```
-
-1. Copiez la liste générée dans le répertoire sources.list.d.
-
-   ```bash
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-   ```
-
-1. Installez la clé publique Microsoft GPG.
-
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-   ```
-
-Les packages logiciels Azure IoT Edge sont soumis aux termes du contrat de licence situés dans chaque package (`usr/share/doc/{package-name}` ou dans le répertoire `LICENSE`). Lisez les termes du contrat de licence avant d’utiliser un package. Le fait d’installer et d’utiliser un package revient à accepter ces termes. Si vous n’acceptez pas les termes du contrat de licence, n’utilisez pas le package en question.
-
-### <a name="install-a-container-engine-on-your-device"></a>Installer un moteur de conteneur sur votre appareil
-
-Azure IoT Edge s’appuie sur un runtime de conteneur compatible avec OCI. Dans les scénarios de production, nous vous recommandons d’utiliser le moteur Moby. Le moteur Moby est le seul moteur de conteneur officiellement pris en charge avec Azure IoT Edge. Les images conteneur Docker CE/EE sont compatibles avec le runtime Moby.
-
-Mettez à jour les listes de packages sur votre appareil.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-Installez le moteur Moby.
-
-   ```bash
-   sudo apt-get install moby-engine
-   ```
-
-Si des erreurs surviennent lors de l’installation du moteur de conteneur Moby, vérifiez la compatibilité de votre noyau Linux avec Moby. Certains fabricants d’appareils embarqués livrent des images d’appareils qui contiennent des noyaux Linux personnalisés sans les fonctionnalités nécessaires à la compatibilité du moteur de conteneur. Exécutez la commande suivante, qui utilise le [script check-config](https://github.com/moby/moby/blob/master/contrib/check-config.sh) fourni par Moby pour vérifier la configuration de votre noyau :
-
-   ```bash
-   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
-   chmod +x check-config.sh
-   ./check-config.sh
-   ```
-
-Dans la sortie du script, vérifiez que tous les éléments sous `Generally Necessary` et `Network Drivers` sont activés. Si vous ne disposez pas de certaines fonctionnalités, activez-les en régénérant votre noyau à partir des sources et en sélectionnant les modules associés à inclure dans le noyau .config approprié. De même, si vous utilisez un générateur de configuration du noyau comme `defconfig` ou `menuconfig`, trouvez et activez les fonctionnalités respectives et recompilez votre noyau en conséquence. Une fois que vous avez déployé votre nouveau noyau modifié, exécutez à nouveau le script check-config pour vérifier que toutes les fonctionnalités requises ont été activées avec succès.
-
-### <a name="install-the-iot-edge-runtime"></a>Installer le runtime IoT Edge
-
-<!-- 1.1 -->
-::: moniker range="iotedge-2018-06"
-
-Le démon de sécurité IoT Edge fournit et gère les standards de sécurité sur l’appareil IoT Edge. Le démon se lance à chaque démarrage et amorce l’appareil en démarrant le reste du runtime IoT Edge.
-
-La procédure de cette section représente le processus classique d’installation de la dernière version sur un appareil disposant d’une connexion Internet. Si vous devez installer une version spécifique, comme une préversion, ou si vous devez installer en mode hors connexion, suivez les étapes d’[installation d’une version hors connexion ou spécifique](#offline-or-specific-version-installation-optional) plus loin dans cet article.
-
-Mettez à jour les listes de packages sur votre appareil.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-Installez IoT Edge version 1.1.* avec le package **libiothsm-std** :
-
-   ```bash
-   sudo apt-get install iotedge
-   ```
-
->[!NOTE]
->IoT Edge version 1.1 est la branche de support à long terme d’IoT Edge. Si vous exécutez une version antérieure, nous vous recommandons d’installer ou de mettre à jour vers le correctif le plus récent, car les versions antérieures ne sont plus prises en charge.
-
-<!-- end 1.1 -->
-::: moniker-end
-
-<!-- 1.2 -->
-::: moniker range=">=iotedge-2020-11"
-
-Le service IoT Edge fournit et gère les standards de sécurité sur l’appareil IoT Edge. Le service se lance à chaque démarrage et amorce l’appareil en démarrant le reste du runtime IoT Edge.
-
-Le service IoT Identity a été introduit avec la version 1.2 d’IoT Edge. Ce service gère l’approvisionnement et la gestion des identités pour IoT Edge et pour d’autres composants d’appareil qui doivent communiquer avec IoT Hub.
-
-La procédure de cette section représente le processus classique d’installation de la dernière version sur un appareil disposant d’une connexion Internet. Si vous devez installer une version spécifique, comme une préversion, ou si vous devez installer en mode hors connexion, suivez les étapes d’[installation d’une version hors connexion ou spécifique](#offline-or-specific-version-installation-optional) plus loin dans cet article.
-
->[!NOTE]
->Les étapes décrites dans cette section vous indiquent la marche à suivre pour installer IoT Edge version 1.2.
->
->Si vous disposez déjà d’un appareil IoT Edge exécutant une version plus ancienne et que vous souhaitez effectuer une mise à niveau vers la version 1.2, suivez les étapes décrites dans [Mettre à jour le runtime et le démon de sécurité IoT Edge](how-to-update-iot-edge.md). La version 1.2 est si différente des versions précédentes d’IoT Edge que des étapes spécifiques sont nécessaires pour la mise à niveau.
-
-Mettez à jour les listes de packages sur votre appareil.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-Vérifiez les versions d’IoT Edge et le service d’identité IoT disponibles.
-
-   ```bash
-   apt list -a aziot-edge aziot-identity-service
-   ```
-
-Pour installer la dernière version d’IoT Edge et le package du service d’identité IoT, utilisez la commande suivante :
-
-   ```bash
-   sudo apt-get install aziot-edge
-   ```
-
-<!-- end 1.2 -->
-::: moniker-end
+<!-- Install IoT Edge on Linux H2 and content -->
+[!INCLUDE [install-iot-edge-linux.md](../../includes/iot-edge-install-linux.md)]
 
 ## <a name="provision-the-device-with-its-cloud-identity"></a>Provisionnement de l’appareil avec son identité cloud
 
@@ -332,10 +90,10 @@ Recherchez la section des configurations de provisionnement du fichier et suppri
      source: "manual"
      authentication:
        method: "x509"
-       iothub_hostname: "<REQUIRED IOTHUB HOSTNAME>"
-       device_id: "<REQUIRED DEVICE ID PROVISIONED IN IOTHUB>"
-       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+       iothub_hostname: "REQUIRED_IOTHUB_HOSTNAME"
+       device_id: "REQUIRED_DEVICE_ID_PROVISIONED_IN_IOTHUB"
+       identity_cert: "REQUIRED_URI_TO_DEVICE_IDENTITY_CERTIFICATE"
+       identity_pk: "REQUIRED_URI_TO_DEVICE_IDENTITY_PRIVATE_KEY"
    ```
 
 Mettez à jour les champs suivants :
@@ -379,15 +137,15 @@ Recherchez la section **Provisioning** du fichier, et supprimez les marques de c
    # Manual provisioning with x.509 certificates
    [provisioning]
    source = "manual"
-   iothub_hostname = "<REQUIRED IOTHUB HOSTNAME>"
-   device_id = "<REQUIRED DEVICE ID PROVISIONED IN IOTHUB>"
+   iothub_hostname = "REQUIRED_IOTHUB_HOSTNAME"
+   device_id = "REQUIRED_DEVICE_ID_PROVISIONED_IN_IOTHUB"
 
    [provisioning.authentication]
    method = "x509"
 
-   identity_cert = "<REQUIRED URI OR POINTER TO DEVICE IDENTITY CERTIFICATE>"
+   identity_cert = "REQUIRED_URI_OR_POINTER_TO_DEVICE_IDENTITY_CERTIFICATE"
 
-   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   identity_pk = "REQUIRED_URI_TO_DEVICE_IDENTITY_PRIVATE_KEY"
    ```
 
 Mettez à jour les champs suivants :
@@ -501,7 +259,7 @@ Utilisez les étapes de cette section si vous souhaitez installer une version sp
    2. Utilisez le lien copié dans la commande suivante pour installer cette version du hsmlib :
 
       ```bash
-      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo apt-get install ./libiothsm-std.deb
+      curl -L libiothsm-std_link_here -o libiothsm-std.deb && sudo apt-get install ./libiothsm-std.deb
       ```
 
    3. Trouvez le fichier **iotedge** qui correspond à l’architecture de votre périphérique IoT Edge. Cliquez avec le bouton droit de la souris sur le lien de fichier et copiez l’adresse du lien.
@@ -509,7 +267,7 @@ Utilisez les étapes de cette section si vous souhaitez installer une version sp
    4. Utilisez le lien copié dans la commande suivante pour installer cette version du démon de sécurité de l’IoT Edge.
 
       ```bash
-      curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
+      curl -L iotedge_link_here -o iotedge.deb && sudo apt-get install ./iotedge.deb
       ```
 
 <!-- end 1.1 -->

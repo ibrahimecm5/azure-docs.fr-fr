@@ -1,23 +1,23 @@
 ---
 title: 'Tutoriel : Configurer et utiliser des métriques et des journaux avec un hub Azure IoT'
 description: 'Tutoriel : Découvrez comment configurer et utiliser des métriques et des journaux avec un hub Azure IoT. Cela vous permet de disposer de données à analyser pour faciliter le diagnostic des problèmes de votre hub.'
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 10/19/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 8b7e15f6f390b6f8218abe9073e255d2383ba360
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 61b4ee2360d3559120399421ec424f30d6e8ea77
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258966"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550189"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Tutoriel : Configurer et utiliser des métriques et des journaux avec un hub IoT
 

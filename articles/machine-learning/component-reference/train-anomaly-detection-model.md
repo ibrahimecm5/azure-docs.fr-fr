@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 269769c8bc80986230cbbee4225a38523f605724
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 8114492c9740cf706e9d2ba6fbd99f22029ba769
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566864"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289828"
 ---
 # <a name="train-anomaly-detection-model-component"></a>Composant Effectuer l’apprentissage du modèle de détection d’anomalie
 
@@ -48,10 +48,8 @@ Une fois l’apprentissage terminé :
 
 + Pour enregistrer un instantané du modèle entraîné, sélectionnez le composant. Sélectionnez ensuite l’icône **Enregistrer le jeu de données** sous l’onglet **Sorties + journaux** dans le volet droit.   
 
- 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Consultez les [composants disponibles](component-reference.md) pour Azure Machine Learning. 
 
 Pour obtenir la liste des erreurs spécifiques aux composants du concepteur, consultez [Exceptions et codes d’erreur du concepteur](designer-error-codes.md).
-'

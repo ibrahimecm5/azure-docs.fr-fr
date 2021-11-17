@@ -2,13 +2,13 @@
 title: Alertes de sécurité personnalisées pour IoT Hub
 description: Découvrez les alertes de sécurité personnalisables et les actions de correction recommandées en utilisant les fonctionnalités et le service Defender pour IoT Hub.
 ms.topic: conceptual
-ms.date: 10/18/2021
-ms.openlocfilehash: e91587df3dbfb50700f95eaefea3bf80c2e18e04
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: 3d72ee2d4cd91d0a922a7af61fbafd2cdb9a349a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249720"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318994"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>Alertes de sécurité personnalisées Defender pour IoT Hub
 

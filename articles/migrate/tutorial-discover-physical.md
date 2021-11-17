@@ -5,14 +5,14 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/11/2021
+ms.date: 11/12/2021
 ms.custom: mvc
-ms.openlocfilehash: e67bdd11fc07c20d9f9dd660fa6aab936853015f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1a12e8ddf419b4e7b26d82e76a59de43fb73ddb4
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037907"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402406"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutoriel : Découvrir des serveurs physiques avec l’outil de découverte et d’évaluation d’Azure Migrate
 
@@ -185,7 +185,7 @@ Vérifiez que le fichier compressé est sécurisé avant de le déployer.
 
     **Télécharger** | **Valeur de hachage**
     --- | ---
-    [Version la plus récente](https://go.microsoft.com/fwlink/?linkid=2140334) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
+    [Version la plus récente](https://go.microsoft.com/fwlink/?linkid=2140334) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 > [!NOTE]
 > Le même script peut être utilisé pour configurer une appliance physique pour un cloud public Azure ou un cloud Azure Government avec une connectivité de point de terminaison public ou privé.

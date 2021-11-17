@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 39de57ca47dcfcb9fa225e53c82d9b671f7e9f11
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 180c09bbd6f2feff5d99427240c64de69a42ae8b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773091"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132295755"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hopsworksai"></a>Tutoriel : Intégration de l'authentification unique (SSO) Azure Active Directory à Hopsworks.ai
 
@@ -131,4 +131,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Hopsworks.ai, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l'exfiltration et l'infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré Hopsworks.ai, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l'exfiltration et l'infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

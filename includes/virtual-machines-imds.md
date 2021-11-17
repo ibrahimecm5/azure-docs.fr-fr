@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: f61c01c05412ea79aa955c599bd4dacd1eea7297
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c2d566e1ded80ed0d0d7ef33fb7218f77b39fe21
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131571221"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132530083"
 ---
 Azure Instance Metadata Service fournit des informations sur les instances de machine virtuelle en cours d’exécution. Vous pouvez l’utiliser pour gérer et configurer vos machines virtuelles.
 Ces information comprennent la référence SKU, le stockage, les configurations réseau et les événements de maintenance à venir. Pour connaître la liste complète des données disponibles, consultez le [Résumé des catégories de points de terminaison](#endpoint-categories).
@@ -651,7 +651,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "azEnvironment": "AZUREPUBLICCLOUD",
     "extendedLocation": {
       "type": "edgeZone",
-      "location": "microsoftlosangeles"
+      "name": "microsoftlosangeles"
     },
     "evictionPolicy": "",
     "isHostCompatibilityLayerVm": "true",
@@ -769,7 +769,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "azEnvironment": "AZUREPUBLICCLOUD",
     "extendedLocation": {
       "type": "edgeZone",
-      "location": "microsoftlosangeles"
+      "name": "microsoftlosangeles"
     },
     "evictionPolicy": "",
     "isHostCompatibilityLayerVm": "true",

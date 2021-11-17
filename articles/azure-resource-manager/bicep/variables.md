@@ -4,13 +4,13 @@ description: Décrit comment définir des variables dans Bicep
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/19/2021
-ms.openlocfilehash: 13cb7847019e6b8a4e6e00c6be8d5949a03b3072
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/12/2021
+ms.openlocfilehash: 35175cff08b1470725da87015a3faef9f5bc3ed4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219561"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494783"
 ---
 # <a name="variables-in-bicep"></a>Variables dans Bicep
 
@@ -25,6 +25,8 @@ La syntaxe permettant de définir une variable est la suivante :
 ```bicep
 var <variable-name> = <variable-value>
 ```
+
+Une variable ne peut pas avoir le même nom qu’un paramètre, un module ou une ressource.
 
 Notez que vous ne spécifiez pas de [type de données](data-types.md) pour la variable. Le type est déduit de la valeur. Dans l’exemple suivant, la valeur d’une variable est définie sur une chaîne.
 

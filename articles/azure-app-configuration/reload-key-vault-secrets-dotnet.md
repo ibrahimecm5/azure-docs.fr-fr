@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: avgupta
-ms.openlocfilehash: 4edbeadd2615fc8d58761bc5b15a93ae626a6613
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 133c788b3bbe787f87cea3e5c72699c8dd0c4f6f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265590"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316182"
 ---
 # <a name="reload-secrets-and-certificates-from-key-vault-automatically"></a>Recharger automatiquement les secrets et les certificats de Key Vault
 
@@ -26,7 +26,6 @@ Une bonne pratique de sécurité consiste à effectuer régulièrement une rotat
 - Rechargez régulièrement tout ou partie des secrets et certificats à partir de Key Vault.
 
 Dans la première option, vous devez mettre à jour la paire clé-valeur Sentinel dans App Configuration chaque fois que vous faites une rotation des secrets et des certificats dans Key Vault. Cette approche fonctionne bien lorsque vous souhaitez forcer un rechargement immédiat des secrets et des certificats dans votre application. Toutefois, lorsque les secrets et les certificats font l’objet d’une rotation automatique dans Key Vault, votre application peut rencontrer des erreurs si vous ne mettez pas à jour en temps voulu la valeur de clé Sentinel. La deuxième option vous permet d’automatiser complètement ce processus. Vous pouvez configurer votre application pour recharger les secrets et les certificats à partir de Key Vault dans votre délai acceptable à partir du moment de la rotation. Ce tutoriel vous guide tout au long de la deuxième option.
-
 
 ## <a name="prerequisites"></a>Configuration requise
 

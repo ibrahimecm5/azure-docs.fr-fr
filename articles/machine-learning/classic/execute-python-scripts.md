@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 01a8ec38ac6a52a2181834c416431c73285ac191
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 67187d7c472b385e7196cc8d8e3b5f61f5107c3e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581625"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315422"
 ---
 # <a name="execute-python-machine-learning-scripts-in-machine-learning-studio-classic"></a>Exécuter des scripts d’apprentissage automatique Python dans Machine Learning Studio (classique)
 
 **S’APPLIQUE À :**  ![S’applique à ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classique)   ![Ne s’applique pas à ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Python est un précieux outil dans le coffre à outils de nombreux scientifiques de données. Il est utilisé à chaque étape des flux de travail d’apprentissage automatique typiques, y compris l'exploration des données, l'extraction des fonctionnalités, la formation, la validation et le déploiement de modèles.
 

@@ -1,22 +1,22 @@
 ---
 title: Tutoriel - Utiliser des scripts Microsoft afin de créer des certificats de test X.509 pour Azure IoT Hub | Microsoft Docs
 description: Tutoriel - Utiliser des scripts personnalisés afin de créer des certificats d'AC et d'appareil pour Azure IoT Hub
-author: v-gpettibone
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 06/26/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 1d3a024fd46fae80c45e2478e60d6e3eddd92725
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 65d511cabda3595828db9926603b6eb20efd2e83
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747233"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549942"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>Tutoriel : Utiliser les scripts fournis par Microsoft pour créer des certificats de test
 

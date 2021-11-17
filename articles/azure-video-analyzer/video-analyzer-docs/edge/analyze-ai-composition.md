@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 63df94e51b53dde61fd7863ece33b2a9baac2908
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4d54fba6f3b59c0e32286333694fa460cdb07b3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554561"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487540"
 ---
 # <a name="analyze-live-video-streams-with-multiple-ai-models-using-ai-composition"></a>Analyser des flux vidéo en direct avec plusieurs modèles IA à l’aide de la composition IA
 
@@ -44,9 +44,9 @@ Après avoir effectué les étapes de ce guide, vous pourrez exécuter un flux v
 
 Étant donné que vous avez déjà suivi le guide de démarrage rapide indiqué dans la section Prérequis, un appareil périphérique est déjà créé. Le dossier d’entrée de cet appareil périphérique est /home/localedgeuser/samples/input. Il contient certains fichiers vidéo. Connectez-vous à l’appareil IoT Edge, accédez au répertoire /home/localedgeuser/samples/input/ et exécutez la commande suivante pour obtenir le fichier d’entrée que nous utiliserons pour ce guide pratique.
 
-wget https://lvamedia.blob.core.windows.net/public/co-final.mkv
+wget https://avamedia.blob.core.windows.net/public/co-final.mkv
 
-De plus, si vous le souhaitez, sur la machine sur laquelle [VLC media player](https://www.videolan.org/vlc/) est installé, sélectionnez Ctrl+N, puis collez un lien vers l’[exemple de vidéo (.mkv)](https://lvamedia.blob.core.windows.net/public/co-final.mkv) pour commencer la lecture. Vous voyez la séquence vidéo montrant des voitures sur une autoroute.
+De plus, si vous le souhaitez, sur la machine sur laquelle [VLC media player](https://www.videolan.org/vlc/) est installé, sélectionnez Ctrl+N, puis collez un lien vers l’[exemple de vidéo (.mkv)](https://avamedia.blob.core.windows.net/public/co-final.mkv) pour commencer la lecture. Vous voyez la séquence vidéo montrant des voitures sur une autoroute.
 
 ## <a name="create-and-deploy-the-pipeline"></a>Créer et déployer le pipeline
 

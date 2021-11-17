@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: jeedes
-ms.openlocfilehash: eb7d97b5e796ae9433b695c15ef809f7674f53f3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ab0ada258b8df3ccca7086f2d8c84a2b4b1ee336
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032121"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-pool-lms"></a>Didacticiel : intégration d’Azure Active Directory à Learning Pool LMS
 
@@ -141,4 +141,4 @@ Vous serez guidé tout au long du processus de test par l’équipe Learning Poo
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Learning Pool LMS, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Learning Pool LMS, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

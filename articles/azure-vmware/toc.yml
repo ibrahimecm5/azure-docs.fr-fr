@@ -136,14 +136,14 @@
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: Déployer VMware SRM pour la reprise d’activité
           href: disaster-recovery-using-vmware-site-recovery-manager.md
+        - name: Déployer la reprise d’activité Zerto
+          href: deploy-zerto-disaster-recovery.md
     - name: Déployer des bureaux virtuels
       items:
         - name: Déployer Horizon sur Azure VMware Solution
           href: azure-vmware-solution-horizon.md
         - name: Déployer Citrix sur Azure VMware Solution
           href: azure-vmware-solution-citrix.md
-        - name: Déployer la reprise d’activité Zerto
-          href: deploy-zerto-disaster-recovery.md
     - name: Déplacer des ressources
       items:
         - name: Déplacer des abonnements Azure VMware Solution

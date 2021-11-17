@@ -1,18 +1,18 @@
 ---
 title: 'Internet des objets (IoT) : meilleures pratiques en matière de sécurité'
 description: Meilleures pratiques pour sécuriser vos données et votre infrastructure IoT
-author: robinsh
+author: eross-msft
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: c1316f151ef98635eb66898755ea55a68d4fb79e
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.author: lizross
+ms.openlocfilehash: b52c105e65ac4bc1e5613a65675481610ee7fc4c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233942"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547928"
 ---
 # <a name="security-best-practices-for-internet-of-things-iot"></a>Meilleures pratiques de sécurité pour l’Internet des objets (IoT)
 

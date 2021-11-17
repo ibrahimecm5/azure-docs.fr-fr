@@ -2,13 +2,13 @@
 title: Restrictions concernant le nommage des ressources
 description: Affiche les règles et restrictions concernant le nommage des ressources Azure.
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: 12d589088f17e3eeb3bda0fecbb2c1fc24b65203
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 868fa30779048447014fa0e7b048d6de8051931c
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084091"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137547"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Règles de nommage et restrictions pour les ressources Azure
 
@@ -175,7 +175,7 @@ Dans les tableaux suivants, le terme « alphanumérique » fait référence au
 > | --- | --- | --- | --- |
 > | availabilitySets | resource group | 1-80 | Caractères alphanumériques, traits de soulignement, points et traits d’union.<br><br>Doit commencer par un caractère alphanumérique. Doit se terminer par un caractère alphanumérique ou un trait de soulignement. |
 > | cloudservices | resource group | 1-15 <br><br>Voir la remarque ci-dessous. | Impossible d’utiliser des espaces, des caractères de contrôle ou ces caractères :<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Ne peut pas commencer par un trait de soulignement. Ne peut pas se terminer par un point ou un trait d’union. |
-> | diskEncryptionSets | resource group | 1-80 | Caractères alphanumériques et traits de soulignement. |
+> | diskEncryptionSets | resource group | 1-80 | Caractères alphanumériques, traits de soulignement et traits d’union. |
 > | disks | resource group | 1-80 | Caractères alphanumériques, traits de soulignement et traits d’union. |
 > | galleries | resource group | 1-80 | Caractères alphanumériques et points.<br><br>Doit commencer et se terminer par un caractère alphanumérique. |
 > | galleries / applications | galerie | 1-80 | Caractères alphanumériques, traits d’union et points.<br><br>Doit commencer et se terminer par un caractère alphanumérique. |

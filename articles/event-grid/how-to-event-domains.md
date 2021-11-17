@@ -4,12 +4,12 @@ description: Explique comment gérer de grands ensembles de rubriques dans Azure
 ms.topic: conceptual
 ms.date: 09/28/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1e8187f43da38d7986c62a2c154c89f3576cf1ae
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8fd32086adb853380a63c24bc5055ac39e187942
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047793"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343398"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Gérer des rubriques et publier des événements à l’aide de domaines de l’événement
 
@@ -122,7 +122,7 @@ New-AzEventGridSubscription `
 
 Si vous avez besoin d’un point de terminaison de test auquel abonner vos événements, vous pouvez toujours déployer une [application web prédéfinie](https://github.com/Azure-Samples/azure-event-grid-viewer) qui affiche les événements entrants. Vous pouvez envoyer vos événements à votre site web de test à l’adresse `https://<your-site-name>.azurewebsites.net/api/updates`.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to deploy to Azure."></a>
 
 Les autorisations définies pour une rubrique sont stockées dans Azure Active Directory et doivent être supprimées explicitement. La suppression d’un abonnement aux événements ne révoque pas l’accès des utilisateurs à la création d’abonnements aux événements s’ils ont un accès en écriture à une rubrique.
 

@@ -3,12 +3,12 @@ title: Utiliser le linter Bicep
 description: Découvrez comment utiliser le linter Bicep.
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 45d077245e2efb677348d3355ff10d8ff3668b2f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5edf5fbb9553233455e7b24dd482a18d3c7e1c42
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161627"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548099"
 ---
 # <a name="use-bicep-linter"></a>Utiliser le linter Bicep
 
@@ -30,7 +30,7 @@ L’ensemble par défaut des règles du linter est minimal et extrait des [cas d
 - [secure-parameter-default](./linter-rule-secure-parameter-default.md)
 - [simplify-interpolation](./linter-rule-simplify-interpolation.md)
 
-Vous pouvez personnaliser le mode d’application des règles du linter. Pour remplacer les paramètres par défaut, ajoutez un fichier **bicepconfig.json** et appliquez des paramètres personnalisés. Pour plus d’informations sur l’application de ces paramètres, consultez [Ajouter des paramètres personnalisés dans le fichier de configuration Bicep](bicep-config.md).
+Vous pouvez personnaliser le mode d’application des règles du linter. Pour remplacer les paramètres par défaut, ajoutez un fichier **bicepconfig.json** et appliquez des paramètres personnalisés. Pour plus d’informations sur l’application de ces paramètres, consultez [Ajouter des paramètres personnalisés dans le fichier de configuration Bicep](bicep-config-linter.md).
 
 ## <a name="use-in-visual-studio-code"></a>Utiliser dans Visual Studio Code
 
@@ -60,5 +60,5 @@ Vous pouvez intégrer ces vérifications dans le cadre de vos pipelines CI/CD. V
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Pour plus d’informations sur la personnalisation des règles du linter, consultez [Ajouter des paramètres personnalisés dans le fichier de configuration Bicep](bicep-config.md).
+* Pour plus d’informations sur la personnalisation des règles du linter, consultez [Ajouter des paramètres personnalisés dans le fichier de configuration Bicep](bicep-config-linter.md).
 * Pour plus d’informations sur l’utilisation de Visual Studio Code et l’extension Bicep, consultez [Démarrage rapide : Créer des fichiers Bicep avec Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).

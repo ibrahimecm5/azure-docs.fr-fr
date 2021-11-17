@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 4829489cbb3229cdbe4c3d95c0eb44cc2047c585
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: df8bb8b6e15a442c932147d61cd61c2b7727e480
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131504053"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521089"
 ---
 # <a name="troubleshoot-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Résoudre les problèmes des pools SQL dédiés (anciennement SQL DW) dans Azure Synapse Analytics
 
@@ -76,7 +76,6 @@ Cet article répertorie les problèmes courants liés au pool SQL dédié (ancie
 | Types de données de base de données SQL non pris en charge   | Voir [Types de données non pris en charge](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
 | Limitations des procédures stockées          | Consultez [Limitations des procédures stockées](sql-data-warehouse-develop-stored-procedures.md#limitations) pour comprendre certaines limitations des procédures stockées. |
 | Les fonctions définies par l’utilisateur ne prennent pas en charge les instructions SELECT | Il s’agit d’une limitation actuelle de nos fonctions définies par l’utilisateur.  Consultez [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) pour connaître la syntaxe que nous prenons en charge. |
-| `sp_rename` (préversion) pour les colonnes ne fonctionne pas sur les schémas en dehors de `dbo` | Il s’agit d’une limitation actuelle de Synapse [sp_rename (préversion) pour les colonnes](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Les colonnes des objets qui ne font pas partie du schéma `dbo` peuvent être renommées via une instruction CTAS dans une nouvelle table. |
 
 ## <a name="next-steps"></a>Étapes suivantes
 

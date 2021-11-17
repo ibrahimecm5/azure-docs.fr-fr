@@ -8,12 +8,12 @@ ms.date: 10/01/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 58d483c56f27dd346c672f2ec2013dce934993ee
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 2c039bb9cabdd1d4786d4f0d76d591887781e2b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866522"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302118"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Services Azure prenant en charge les zones de disponibilité
 
@@ -180,7 +180,7 @@ Dans le catalogue de produits, les services toujours disponibles sont répertori
 | Azure Blueprints  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Bot Service  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Front Door  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
-| Azure Defender pour IoT  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
+| Microsoft Defender pour IoT  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Front Door  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Information Protection  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Lighthouse  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
@@ -189,7 +189,7 @@ Dans le catalogue de produits, les services toujours disponibles sont répertori
 | Azure Performance Diagnostics  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Policy  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Resource Graph  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
-| Azure Sentinel  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
+| Microsoft Sentinel  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Stack  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Stack Edge  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Cloud Shell  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
@@ -199,9 +199,9 @@ Dans le catalogue de produits, les services toujours disponibles sont répertori
 | Microsoft Intune  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Peering Service  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Portail Azure  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
-| Microsoft Cloud App Security  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
+| Microsoft Defender for Cloud Apps  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Microsoft Graph  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
-| Azure Security Center  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
+| Microsoft Defender pour le cloud  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 | Azure Traffic Manager  | ![Icône indiquant que ce service est toujours disponible.](media/icon-always-available.svg) |
 
 Pour obtenir la liste des services Azure qui prennent en charge les Zones de disponibilité par région Azure, consultez la [documentation sur les zones de disponibilité](az-overview.md).

@@ -1,14 +1,14 @@
 ---
 title: Gérer les protocoles propriétaires (Horizon)
 description: Defender pour IoT Horizon fournit un environnement de développement ouvert (ODE) utilisé pour sécuriser les appareils IoT et ICS exécutant des protocoles propriétaires.
-ms.date: 12/12/2020
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: cf38c79d3703fd1beb3a402587b7d388e89ce14e
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 6a9995ec70f061381f1315e03c3781537733d97f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114673832"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347282"
 ---
 # <a name="defender-for-iot-horizon"></a>Defender pour IoT Horizon
 

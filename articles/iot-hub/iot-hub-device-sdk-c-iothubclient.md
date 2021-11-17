@@ -1,20 +1,20 @@
 ---
 title: Azure IoT device SDK pour C - IoTHubClient | Microsoft Docs
 description: Guide d’utilisation de la bibliothèque IoTHubClient dans Azure IoT device SDK pour C et de création d’applications d’appareil qui communiquent avec un IoT Hub.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
-ms.author: robinsh
+ms.author: lizross
 ms.custom: amqp
-ms.openlocfilehash: aa264c0254ad2b91df0493a439f4dae2456079da
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 7ee5cc4f068eefcf5da13fac7f2cfc1eddee2ca8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295540"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555980"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Kit de développement logiciel d’appareil Azure IoT pour C : en savoir plus sur IoTHubClient
 

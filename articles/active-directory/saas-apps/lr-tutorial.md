@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: f4c0ab8cb09839d208a1508730d9439a0c22ce60
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 1774e5f7099d130fe1692911fbcf1f7794fa7e20
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555701"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Didacticiel : Intégration d’Azure Active Directory avec LoginRadius
 
@@ -187,4 +187,4 @@ Dans cette section, vous allez tester la configuration de l’authentification u
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré LoginRadius, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré LoginRadius, vous pouvez appliquer le contrôle de session, qui protège en temps réel contre l’exfiltration et l’infiltration des données sensibles de votre organisation. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

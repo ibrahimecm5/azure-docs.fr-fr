@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Documentation de référence pour le schéma YAML du travail de balayage CLI (v2).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: reference
 author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 5589bee0b5dbbff8561af4c6ba6efc3a691e79de
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 90a69fceb96067ad92cc4d68f8b3e0929d2622a6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062526"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135108"
 ---
 # <a name="cli-v2-sweep-job-yaml-schema"></a>Schéma YAML du travail de balayage CLI (v2)
 
@@ -186,8 +186,8 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `file` | string | URI vers un fichier unique à utiliser comme entrée. Les types d’URI pris en charge sont `azureml`, `https`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire.**  | | |
-| `folder` | string | URI vers un dossier à utiliser comme entrée. Les types d’URI pris en charge sont `azureml`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire.**   | | |
+| `file` | string | URI vers un fichier unique à utiliser comme entrée. Les types d’URI pris en charge sont `azureml`, `https`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire**.  | | |
+| `folder` | string | URI vers un dossier à utiliser comme entrée. Les types d’URI pris en charge sont `azureml`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire**.   | | |
 | `mode` | string | Mode de remise des données à la cible de calcul. Pour le montage en lecture seule et le montage en lecture-écriture, les données seront consommées en tant que chemin de montage. Un dossier est monté en tant que dossier et un fichier est monté en tant que fichier. Pour le mode de téléchargement, les données seront consommées en tant que chemin d’accès téléchargé. | `ro_mount`, `rw_mount`, `download` | `ro_mount` |
 
 #### <a name="jobinputdataset"></a>JobInputDataset

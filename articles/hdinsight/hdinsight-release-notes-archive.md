@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive, references_regions
 ms.date: 07/27/2021
-ms.openlocfilehash: 732d7ee085fdb7ff91ffe4e90ce8d996b9299b6c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b6c80fca815523cdf4ec61d7e66417999fed5d91
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073032"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484128"
 ---
 # <a name="archived-release-notes"></a>Notes de publication archivées
 
@@ -438,7 +438,7 @@ Cette version s’applique à la fois à HDInsight 3.6 et 4.0. La version HDIn
 HDInsight utilise des machines virtuelles Azure pour provisionner le cluster maintenant. À partir de cette version release, les clusters HDInsight nouvellement créés commencent à utiliser le groupe de machines virtuelles identiques Azure. Le changement est déployé progressivement. Vous ne devez pas vous attendre à des changements cassants. En savoir plus sur les [groupes de machines virtuelles identiques Azure](../virtual-machine-scale-sets/overview.md).
  
 #### <a name="reboot-vms-in-hdinsight-cluster"></a>Redémarrer des machines virtuelles dans le cluster HDInsight
-Dans cette version release, nous prenons en charge le redémarrage des machines virtuelles dans le cluster HDInsight pour redémarrer les nœuds qui ne répondent pas. Actuellement, vous ne pouvez le faire que par le biais de l’API. La prise en charge de PowerShell et de l’interface CLI est en cours. Pour plus d’informations sur l’API, consultez [ce document](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json).
+Dans cette version release, nous prenons en charge le redémarrage des machines virtuelles dans le cluster HDInsight pour redémarrer les nœuds qui ne répondent pas. Actuellement, vous ne pouvez le faire que par le biais de l’API. La prise en charge de PowerShell et de l’interface CLI est en cours. Pour plus d’informations sur l’API, consultez [ce document](https://github.com/Azure/azure-rest-api-specs/blob/main/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/virtualMachines.json).
  
 ### <a name="deprecation"></a>Dépréciation
 #### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Dépréciation de Spark 2.1 et 2.2 dans le cluster Spark HDInsight 3.6

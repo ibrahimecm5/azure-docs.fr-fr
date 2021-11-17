@@ -2,19 +2,19 @@
 title: Outils de développement d’informatique confidentielle Azure
 description: Utilisez des outils et bibliothèques pour développer des applications pour l’informatique confidentielle sur Intel SGX
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 11/01/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6300e0cee2659f767c2d765de5a24591fc962e6f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5faf8807047d0e73029d27f62af8acaab5e80026
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131081312"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347648"
 ---
 # <a name="application-enclave-development"></a>Développement d’une enclave d’application 
 

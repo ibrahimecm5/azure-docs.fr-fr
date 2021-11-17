@@ -3,12 +3,12 @@ title: Configurer votre cluster managé Service Fabric
 description: Découvrez comment configurer votre cluster managé Service Fabric pour les mises à niveau automatiques du système d’exploitation, les règles de groupe de sécurité réseau et bien plus encore.
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 808b7e96778821c695ed5fca08648e95f4290959
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: aad982def0a1dd2e4b6f847a72e270337abcd460
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060627"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286029"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Options de configuration du cluster Service Fabric géré
 
@@ -19,7 +19,7 @@ En plus de sélectionner la [référence SKU du cluster managé Service Fabric](
 * Configuration de [paramètres réseau](how-to-managed-cluster-networking.md) de cluster
 * Configurer un type de nœud pour les [groupes de machines virtuelles identiques de grande taille](how-to-managed-cluster-large-virtual-machine-scale-sets.md)
 * Configuration de l’[identité managée](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) sur des types de nœuds de cluster
-* Activation du [chiffrement du disque de données et du système d’exploitation](how-to-enable-managed-cluster-disk-encryption.md) sur des nœuds de cluster
+* Activation du [chiffrement du disque de données et du système d’exploitation](how-to-managed-cluster-enable-disk-encryption.md) sur des nœuds de cluster
 * Configurer la [mise à l’échelle automatique](how-to-managed-cluster-autoscale.md) sur un type de nœud secondaire
 * [Mettre à l’échelle un type de nœud manuellement](how-to-managed-cluster-modify-node-type.md#scale-a-node-type-manually-with-portal)
 * Activer les [mises à niveau de l’image du système d’exploitation](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades) sur des types de noeud de cluster

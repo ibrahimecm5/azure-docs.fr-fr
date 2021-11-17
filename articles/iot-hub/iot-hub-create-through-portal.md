@@ -1,20 +1,20 @@
 ---
 title: Utiliser le portail Azure pour créer un IoT Hub | Microsoft Azure
 description: Comment créer, gérer et supprimer des IoT Hubs Azure via le portail Azure. Inclut des informations sur les niveaux de tarification, l’évolutivité, la sécurité et la configuration de la messagerie.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: fac663053b964cad2bbfc069fdf2e21efa761c61
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e8a605d5ef8bcb44d03e8464400ba96378cc7f8e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072918"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555316"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Création d’un IoT Hub à l’aide du portail Azure
 

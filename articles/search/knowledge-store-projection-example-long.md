@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 41960e60479bf553eeb92cebb9888e2ae01aae55
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: a820101897ae20dbdeac029187d4ace356ae08af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503069"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491105"
 ---
 # <a name="detailed-example-of-shapes-and-projections-in-a-knowledge-store"></a>Exemple détaillé de formes et de projections dans une base de connaissances
 
@@ -29,7 +29,7 @@ Clonez ou téléchargez [azure-search-postman-samples](https://github.com/Azure-
 
 ## <a name="set-up-sample-data"></a>Configurer les exemples de données
 
-Des exemples de documents ne sont pas spécifiquement inclus avec la collection Projections, mais les [fichiers de données de démonstration d’enrichissement par IA](https://github.com/azure-search-sample-data/tree/master/ai-enrichment-mixed-media) du [référentiel azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) contiennent du texte et des images, et fonctionneront avec les projections décrites dans cet exemple.
+Des exemples de documents ne sont pas spécifiquement inclus avec la collection Projections, mais les [fichiers de données de démonstration d’enrichissement par IA](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/ai-enrichment-mixed-media) du [référentiel azure-search-sample-data](https://github.com/Azure-Samples/azure-search-sample-data) contiennent du texte et des images, et fonctionneront avec les projections décrites dans cet exemple.
 
 Créez un conteneur d’objets blob dans Stockage Azure et chargez les 14 éléments.
 

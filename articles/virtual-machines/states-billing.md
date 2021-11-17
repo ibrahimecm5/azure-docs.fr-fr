@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 38c43b168e4524529139dcb5c0807d8563e484eb
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 7458a35b6227ca620f08a02aaadc5b95e8528141
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132025814"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134350"
 ---
 # <a name="states-and-billing-status-of-azure-virtual-machines"></a>États et statut de facturation des machines virtuelles Azure
 
@@ -93,7 +93,7 @@ Les états d’approvisionnement d’un système d’exploitation s’appliquent
 
 ## <a name="troubleshooting-vm-states"></a>Résolution des problèmes d’état de machine virtuelle
 
-Pour résoudre des problèmes spécifiques d’état de machine virtuelle, consultez [Résoudre les problèmes de déploiement de machine virtuelle Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) et [Résoudre les problèmes de déploiement de machine virtuelle Linux](https://docs.microsoft.comtroubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux).
+Pour résoudre des problèmes spécifiques d’état de machine virtuelle, consultez [Résoudre les problèmes de déploiement de machine virtuelle Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) et [Résoudre les problèmes de déploiement de machine virtuelle Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux).
 
 Pour plus d’informations sur la résolution des problèmes, consultez la [documentation relative à la résolution des problèmes de machines virtuelles Azure](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 

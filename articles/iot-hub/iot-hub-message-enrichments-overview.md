@@ -1,18 +1,18 @@
 ---
 title: Vue d’ensemble des enrichissements de messages Azure IoT Hub
 description: Cet article présente les enrichissements de messages, qui donnent à IoT Hub la capacité de marquer les messages avec des informations supplémentaires avant que ces messages soient envoyés au point de terminaison désigné.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: robinsh
-ms.openlocfilehash: 4edbdca9089cc04d7ba1f9a62216fb3370b787d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: 4b204b8055cbf6cd2f00d3048bb64568cc16a1fb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525351"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554500"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Enrichissements de messages pour les messages IoT Hub appareil-à-cloud
 

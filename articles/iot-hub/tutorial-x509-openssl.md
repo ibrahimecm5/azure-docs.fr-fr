@@ -1,22 +1,22 @@
 ---
 title: Tutoriel - Utiliser OpenSSL afin de créer des certificats de test X.509 pour Azure IoT Hub | Microsoft Docs
 description: Tutoriel - Utiliser OpenSSL afin de créer des certificats d'AC et d'appareil pour Azure IoT Hub
-author: v-gpettibone
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 02/26/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: fffd56c05fc3389a6f10ade5b565a760b842a2ca
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5fd735420ad97934e45160f7d57fdc9029faee6a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358222"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547626"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>Tutoriel : Utiliser OpenSSL pour créer des certificats de test
 

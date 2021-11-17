@@ -10,12 +10,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 11/03/2021
-ms.openlocfilehash: b98730e29dc5cc6e8b2e75781b366b5923adf2ae
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f979651909a2484f6bcdf7b0953c91874bea7cc5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566890"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520652"
 ---
 # <a name="autoscale-a-managed-online-endpoint-preview"></a>Mise à l’échelle automatique d’un point de terminaison en ligne géré (préversion)
 
@@ -41,15 +41,15 @@ Pour activer la mise à l’échelle automatique pour un point de terminaison, v
 
 L’extrait de code suivant définit les noms des points de terminaison et des déploiements :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="set_endpoint_deployment_name" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="set_endpoint_deployment_name" :::
 
 Ensuite, récupérez l’ID d’Azure Resource Manager du déploiement et du point de terminaison :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="set_other_env_variables" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="set_other_env_variables" :::
 
 L’extrait de code suivant crée le profil de mise à l’échelle automatique :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="create_autoscale_profile" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="create_autoscale_profile" :::
 
 > [!NOTE]
 > Pour plus d’informations, consulter la [page de référence pour la mise à l’échelle automatique](/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
@@ -81,7 +81,7 @@ Une règle de scale-out courante consiste à augmenter le nombre d’instances d
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_out_on_cpu_util" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_out_on_cpu_util" :::
 
 La règle fait partie du profil `my-scale-settings` (`autoscale-name` correspond à `name` dans le profil). La valeur de son argument `condition` indique que la règle doit se déclencher quand « la consommation moyenne du processeur entre les instances de machine virtuelle dépasse 70 % pendant cinq minutes. » Quand cette condition est remplie, deux instances de machine virtuelle supplémentaires sont allouées. 
 
@@ -109,7 +109,7 @@ Quand la charge est faible, une règle de scale-in permet de réduire le nombre 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_in_on_cpu_util" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_in_on_cpu_util" :::
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
@@ -136,7 +136,7 @@ Règles précédentes appliquées au déploiement. Ajoutez maintenant une règle
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="scale_up_on_request_latency" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="scale_up_on_request_latency" :::
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
@@ -162,7 +162,7 @@ Vous pouvez également créer des règles qui s’appliquent uniquement à certa
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-moe-autoscale.sh" ID="weekend_profile" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-moe-autoscale.sh" ID="weekend_profile" :::
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
@@ -181,13 +181,13 @@ En bas de la page, sélectionnez __+ Ajouter une condition de mise à l’échel
 
 Si vous ne prévoyez pas d’utiliser vos déploiements, supprimez-les :
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour en savoir plus sur la mise à l’échelle automatique avec Azure Monitor, consultez les articles suivants :
 
-- [Comprendre les paramètres de mise à l’échelle automatique](/autoscale/autoscale-understand-settings)
-- [Vue d’ensemble des modèles courants de mise à l’échelle automatique](/autoscale/autoscale-common-scale-patterns)
-- [Meilleures pratiques en matière de mise à l'échelle automatique](/autoscale/autoscale-best-practices)
-- [Résolution des problèmes de mise à l’échelle automatique Azure](/autoscale/autoscale-troubleshoot)
+- [Comprendre les paramètres de mise à l’échelle automatique](/azure-monitor/autoscale/autoscale-understand-settings)
+- [Vue d’ensemble des modèles courants de mise à l’échelle automatique](/azure-monitor/autoscale/autoscale-common-scale-patterns)
+- [Meilleures pratiques en matière de mise à l'échelle automatique](/azure-monitor/autoscale/autoscale-best-practices)
+- [Résolution des problèmes de mise à l’échelle automatique Azure](/azure-monitor/autoscale/autoscale-troubleshoot)

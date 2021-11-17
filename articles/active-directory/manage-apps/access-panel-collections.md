@@ -13,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610679e7a720f6736b575d2e58bc424de9e96d8d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 62c4659d4784fb539a536131553dac73d8dcc278
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617888"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552049"
 ---
-# <a name="create-collections-on-the-my-apps-portal-in-azure-active-directory"></a>Créer des regroupements sur le portail Mes applications dans Azure Active Directory
+# <a name="create-collections-on-the-my-apps-portal"></a>Créer des collections sur le portail Mes applications
 
 Vos utilisateurs peuvent utiliser le portail Mes applications pour afficher et démarrer les applications cloud auxquelles ils ont accès. Par défaut, toutes les applications auxquelles un utilisateur peut accéder sont répertoriées sur une seule page. Pour mieux organiser cette page pour vos utilisateurs, si vous disposez d’une licence Azure AD Premium P1 ou P2, vous pouvez configurer des collections. Avec une collection, vous pouvez regrouper des applications associées (par exemple, par rôle de travail, tâche ou projet) et les afficher sous un onglet distinct. Une collection applique essentiellement un filtre aux applications auxquelles un utilisateur a déjà accès, de sorte que celui-ci ne voit que les applications de la collection qui lui ont été attribuées.
 

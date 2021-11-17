@@ -4,12 +4,12 @@ description: Cet article fournit une présentation détaillée de l’agent des 
 ms.date: 11/03/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47191595fc5ff74598507b91b8189aa3bb368073
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 30c9a32cabf24e54dd41d45d40a8ff07920fd919
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131867098"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546915"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Présentation de l’agent des serveurs avec Azure Arc
 
@@ -249,8 +249,8 @@ Une fois l’agent Connected Machine pour Windows installé, les modifications d
 
     |Nom |Valeur par défaut |Description |
     |-----|--------------|------------|
-    |IDENTITY_ENDPOINT |<http://localhost:40342/metadata/identity/oauth2/token> ||
-    |IMDS_ENDPOINT |<http://localhost:40342> ||
+    |IDENTITY_ENDPOINT |<`http://localhost:40342/metadata/identity/oauth2/token`> ||
+    |IMDS_ENDPOINT |<`http://localhost:40342`> ||
 
 * Plusieurs fichiers journaux sont disponibles pour la résolution des problèmes. Ils sont décrits dans le tableau suivant.
 
@@ -308,8 +308,8 @@ Une fois l’agent Connected Machine pour Linux installé, les modifications de 
 
     |Nom |Valeur par défaut |Description |
     |-----|--------------|------------|
-    |IDENTITY_ENDPOINT |<http://localhost:40342/metadata/identity/oauth2/token> ||
-    |IMDS_ENDPOINT |<http://localhost:40342> ||
+    |IDENTITY_ENDPOINT |<`http://localhost:40342/metadata/identity/oauth2/token`> ||
+    |IMDS_ENDPOINT |<`http://localhost:40342`> ||
 
 * Lors de la désinstallation de l’agent, les artefacts suivants ne sont pas supprimés.
 

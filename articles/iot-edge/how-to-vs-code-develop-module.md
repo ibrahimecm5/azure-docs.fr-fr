@@ -9,12 +9,12 @@ ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: c65cd9e9e6d80222f60a3ee060ba697743713738
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 28f8abd8c70f826493d3636d422919c066ed8971
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362714"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492262"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Utiliser Visual Studio Code afin de développer et déboguer des modules pour Azure IoT Edge
 
@@ -296,22 +296,22 @@ Lors du débogage de modules à l’aide de cette méthode, vos modules s’exé
       ptvsd.break_into_debugger()
       ```
 
-     Par exemple, si vous souhaitez déboguer la fonction `receive_message_listener`, insérez cette ligne de code comme indiqué ci-dessous :
+     Par exemple, si vous souhaitez déboguer la fonction `receive_message_handler`, insérez cette ligne de code comme indiqué ci-dessous :
 
-      ```python
-      def receive_message_listener(client):
-          ptvsd.break_into_debugger()
-          global RECEIVED_MESSAGES
-          while True:
-              message = client.receive_message_on_input("input1")   # blocking call
-              RECEIVED_MESSAGES += 1
-              print("Message received on input1")
-              print( "    Data: <<{}>>".format(message.data) )
-              print( "    Properties: {}".format(message.custom_properties))
-              print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
-              print("Forwarding message to output1")
-              client.send_message_to_output(message, "output1")
-              print("Message successfully forwarded")
+    ```python
+    def receive_message_handler(message):
+        ptvsd.break_into_debugger()
+        global RECEIVED_MESSAGES
+        RECEIVED_MESSAGES += 1
+        if message.input_name == "input1":
+            print("Message received on input1")
+            print( "    Data: <<{}>>".format(message.data) )
+            print( "    Properties: {}".format(message.custom_properties))
+            print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
+            print("Forwarding message to output1")
+            client.send_message_to_output(message, "output1")
+            print("Message successfully forwarded")
+
       ```
 
 1. Dans la palette de commandes de Visual Studio Code :

@@ -12,16 +12,14 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: détection d’anomalie, Machine Learning, algorithmes
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 24d30a475071667fa9f701776302aa81c652fbe2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 75a040b8c2b480d0c82ef2cab6a953d230f6ffb7
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045044"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371103"
 ---
 # <a name="what-is-the-anomaly-detector-univariate-api"></a>Qu’est-ce que l’API univariée Détecteur d’anomalies ?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 L’API Détecteur d’anomalies vous permet de superviser et de détecter des anomalies dans vos données de séries chronologiques sans avoir à connaître le machine learning. Les algorithmes de l’API Détecteur d’anomalies s’adaptent en identifiant et en appliquant automatiquement les modèles les mieux adaptés à vos données, indépendamment du secteur d’activité, du scénario ou du volume de données. À l’aide de vos données de série chronologique, l’API détermine les limites pour la détection des anomalies, les valeurs attendues et les points de données qui constituent des anomalies.
 

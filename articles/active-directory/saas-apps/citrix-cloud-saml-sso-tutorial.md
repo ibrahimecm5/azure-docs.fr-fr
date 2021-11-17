@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a29b0479c39391256aa6838619eeaa410ae4f283
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: a11b61348d9f9e76d71ca545caeb019d3e123678
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688688"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344728"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-citrix-cloud-saml-sso"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à l’authentification unique SAML Citrix Cloud
 
@@ -107,7 +107,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
     ![Copier les URL de configuration](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Créer un utilisateur de test Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
 Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
 
@@ -122,7 +122,7 @@ Dans cette section, vous allez créer un utilisateur de test appelé B. Simon da
     > [!NOTE]
     > Cet utilisateur doit être synchronisé à partir d’Active Directory. Pour que l’authentification unique fonctionne, vous devez établir un lien entre un utilisateur Azure AD et l’utilisateur de l’authentification unique SAML Citrix Cloud associé.
     
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Affecter l’utilisateur de test Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 
 Dans cette section, vous allez autoriser B.Simon à utiliser l’authentification unique Azure en lui accordant l’accès à l’authentification unique SAML Citrix Cloud.
 
@@ -134,13 +134,13 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
-## <a name=&quot;configure-citrix-cloud-saml-sso&quot;></a>Authentification unique SAML Citrix Cloud
+## <a name="configure-citrix-cloud-saml-sso"></a>Authentification unique SAML Citrix Cloud
 
 1. Connectez-vous à votre site d’entreprise de l’authentification unique SAML Citrix Cloud en tant qu’administrateur.
 
 1. Accédez au menu Cloud Citrix et sélectionnez **Gestion des identités et des accès**.
 
-    ![Compte](./media/citrix-cloud-saml-sso-tutorial/menu.png &quot;Compte") 
+    ![Compte](./media/citrix-cloud-saml-sso-tutorial/menu.png "Compte") 
 
 1. Sous **Authentification**, localisez **SAML 2.0** et sélectionnez **Connecter** dans le menu des points de suspension.
 
@@ -176,4 +176,4 @@ Dans cette section, vous allez tester votre configuration de l’authentificatio
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré l’authentification unique SAML Citrix Cloud, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré l’authentification unique SAML Citrix Cloud, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

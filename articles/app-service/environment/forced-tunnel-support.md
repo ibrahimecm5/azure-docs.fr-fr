@@ -1,18 +1,18 @@
 ---
 title: Configurer un tunneling forcé
 description: Découvrez comment permettre à votre environnement App Service de fonctionner quand le trafic sortant fait l’objet d’un tunneling forcé vers votre réseau virtuel.
-author: ccompy
+author: madsd
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 ms.date: 05/29/2018
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8d05b4f8e69023e1ecec7002f394141fff008f0d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e0d43424e038328f82d3639891aa85397f68d3ad
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432965"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132519607"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Configurer votre environnement App Service avec le tunneling forcé
 > [!NOTE]

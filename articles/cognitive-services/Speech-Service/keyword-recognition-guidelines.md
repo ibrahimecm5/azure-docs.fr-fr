@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09322cb8d5497b2f6ea639955ebd7338e39f2418
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a6b7a9c072951a7010403c9e54dff844eb910d95
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116539"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490657"
 ---
 # <a name="recommendations-and-guidelines-for-keyword-recognition"></a>Recommandations et instructions pour la reconnaissance de mot clé
 
@@ -42,13 +42,13 @@ Il est essentiel de créer un mot clé efficace pour que votre produit réponde 
 
 Avec un scénario de reconnaissance de mot clé en plusieurs étapes dans lequel le service [Vérification du mot clé](keyword-recognition-overview.md#keyword-verification) est utilisé, les applications peuvent choisir à quel moment l’utilisateur final est averti d’une détection de mot clé. Pour le rendu d’un indicateur visuel ou auditif, il est recommandé de s’appuyer sur les réponses faites par le service Vérification du mot clé :
 
-![Instruction pour l’expérience utilisateur lors de l’optimisation de la précision.](media/custom-keyword/keyword-verification-ux-accuracy.png)
+![Instruction pour l’expérience utilisateur lors de l’optimisation de la précision.](media/custom-keyword/kw-verification-ux-accuracy.png)
 
 Ainsi, une expérience optimale est garantie en termes de précision pour réduire l’impact perçu par l’utilisateur des acceptations erronées, mais une latence plus importante est induite.
 
 Les applications qui nécessitent une optimisation de la latence peuvent fournir des indicateurs légers et discrets à l’utilisateur final basés sur la reconnaissance de mot clé sur appareil. Par exemple, le clignotement d’une LED ou la pulsation d’une icône. Les indicateurs peuvent continuer à exister si le service Vérification du mot clé répond par une acceptation ou être masqués si la réponse est un rejet :
 
-![Instruction pour l’expérience utilisateur lors de l’optimisation de la latence.](media/custom-keyword/keyword-verification-ux-latency.png)
+![Instruction pour l’expérience utilisateur lors de l’optimisation de la latence.](media/custom-keyword/kw-verification-ux-latency.png)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

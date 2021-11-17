@@ -1,23 +1,23 @@
 ---
 title: Vérifier l’intégrité des ressources et du service Azure IoT Hub | Microsoft Docs
 description: Utilisez Azure Service Health et Azure Resource Health pour surveiller IoT Hub
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 27fca7b76ab148fc355eb7d52ee0cbcbd3540458
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f370d87f2c17185fb4c340dc0da4f2f7d9027264
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92548399"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555297"
 ---
 # <a name="check-iot-hub-service-and-resource-health"></a>Vérifier le service IoT Hub et l’intégrité des ressources
 

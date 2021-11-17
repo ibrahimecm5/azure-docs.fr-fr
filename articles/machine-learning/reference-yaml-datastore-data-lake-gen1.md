@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Documentation de référence pour le schéma  YAML de magasin de données CLI (v2) Azure Data Lake Gen1.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: reference
 author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: c804d06f7a99590fcc7fd62e8b662e8eaadac2a5
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 847a296fa567d0365508161eafdacc525efd9191
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062015"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133257"
 ---
 # <a name="cli-v2-azure-data-lake-gen1-yaml-schema"></a>Schéma YAML CLI (v2) Azure Data Lake Gen1
 

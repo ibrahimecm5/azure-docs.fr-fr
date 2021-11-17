@@ -1,20 +1,20 @@
 ---
 title: Charger des fichiers sur Azure IoT Hub à partir d’appareils avec .NET | Microsoft Docs
 description: Comment charger des fichiers sur le cloud à partir d’un appareil avec Azure IoT device SDK pour .NET. Les fichiers téléchargés sont stockés dans un conteneur d’objets blob de stockage Azure.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/24/2021
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 91637d6f508eb198345add5ad40fed52a67ec952
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c797c2668a1af750f0cb1ae4a743f1bc4b9f3aac
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457712"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556094"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Charger des fichiers sur le cloud à partir d’un appareil avec IoT Hub (.NET)
 

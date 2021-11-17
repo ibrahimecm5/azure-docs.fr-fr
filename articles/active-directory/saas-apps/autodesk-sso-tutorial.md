@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2021
 ms.author: jeedes
-ms.openlocfilehash: fa207bb2d915ad307a04f633139cd49beddfbb24
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 32e4b30ae95803c898e3189ebdbe9283513dd9e0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110580092"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-autodesk-sso"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Autodesk SSO
 
@@ -147,6 +147,4 @@ Pour tester Autodesk SSO, ouvrez la console Autodesk, cliquez sur le bouton **Te
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Autodesk SSO, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
-
-
+Une fois que vous avez configuré Autodesk SSO, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

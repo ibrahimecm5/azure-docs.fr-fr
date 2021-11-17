@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: 66de4e18f8a6c88ae3c1504197eb6f39632c6425
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f3d9cd36b821b1dca5311c266b84e259eab005c0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058155"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546953"
 ---
-# <a name="quickstart-add-an-enterprise-application-in-azure-active-directory"></a>Démarrage rapide : Ajouter une application d’entreprise dans Azure Active Directory
+# <a name="quickstart-add-an-enterprise-application"></a>Démarrage rapide : Ajouter une application d’entreprise
 
 Dans ce guide de démarrage rapide, vous utilisez le Centre d’administration Azure Active Directory pour ajouter une application d’entreprise à votre locataire Azure Active Directory (Azure AD). Azure AD a une galerie qui contient des milliers d’applications d’entreprise qui ont été préintégrées. De nombreuses applications utilisées par votre organisation sont probablement déjà dans la galerie. Ce guide de démarrage rapide utilise l’application appelée **Azure AD SAML Toolkit** comme exemple, mais les concepts s’appliquent à la plupart des [applications d’entreprise de la galerie](../saas-apps/tutorial-list.md).
 

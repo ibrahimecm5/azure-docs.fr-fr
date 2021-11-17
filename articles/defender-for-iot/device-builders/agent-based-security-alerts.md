@@ -2,13 +2,13 @@
 title: Alertes de sécurité basées sur des agents classiques
 description: Découvrez les alertes de sécurité de la version classique de Defender pour IoT, et les actions de correction recommandées en utilisant les fonctionnalités et le service d’appareil Defender pour IoT.
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: c62a0216a68f685244c1e9ef4e14c4487c9f8b3e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 27e0cebd04ad2c8fbea6d9f42422840a695a184a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081963"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284148"
 ---
 # <a name="classic-defender-for-iot-devices-security-alerts"></a>Alertes de sécurité d’appareil de la version classique de Defender pour IoT
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2021
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb0ad2a2f8a20dc964a66d16f9cff15fad091d5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 384bc97f27db874fc0316715696bffe66fb54f6b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816372"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zylo"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Zylo
 
@@ -170,4 +170,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Zylo, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré Zylo, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

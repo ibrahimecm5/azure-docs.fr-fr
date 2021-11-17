@@ -1,18 +1,18 @@
 ---
 title: Demandes de données client pour les appareils Azure IoT Hub
 description: La plupart des appareils gérés dans Azure IoT Hub ne sont pas personnels, mais certains le sont. Cet article parle de la capacité des administrateurs à exporter ou supprimer des données personnelles d’un appareil.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20a8d6c39b33a60277478605e3b4855aad04b55c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92535788"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555145"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Fonctionnalités de demande de données client pour les appareils Azure IoT Hub
 

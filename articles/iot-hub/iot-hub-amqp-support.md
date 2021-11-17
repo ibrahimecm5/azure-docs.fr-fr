@@ -1,21 +1,21 @@
 ---
 title: Comprendre la prise en charge d’AMQP au niveau d’Azure IoT Hub | Microsoft Docs
 description: 'Guide du développeur : prise en charge des appareils se connectant à des points de terminaison IoT Hub côté service et côté appareil en utilisant le protocole AMQP. Inclut des informations sur la prise en charge intégrée d’AMQP dans les kits Azure IoT device SDK.'
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0aaa996d6520a69f5546976d89c7cc4aa802d38
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ccdf206c9ccd9d91b125af658bf03d3ec40c4b02
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481352"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549980"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Communication avec votre IoT Hub à l’aide du protocole AMQP
 

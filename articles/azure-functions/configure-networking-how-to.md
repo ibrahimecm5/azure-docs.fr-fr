@@ -4,12 +4,12 @@ description: Article qui montre comment effectuer certaines tâches de mise en r
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 91555099c7144d976b5f0b5ef2fe639912857bce
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: db0567456156f8ea74ba048e991000b57ae271b2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048814"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332380"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>Configuration d’Azure Functions avec un réseau virtuel
 
@@ -47,7 +47,7 @@ Pour configurer une fonction avec un compte de stockage limité à un réseau pr
     | `AzureWebJobsStorage`| Chaîne de connexion de stockage | Il s’agit de la chaîne de connexion pour un compte de stockage sécurisé. |
     | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` |  Chaîne de connexion de stockage | Il s’agit de la chaîne de connexion pour un compte de stockage sécurisé. |
     | `WEBSITE_CONTENTSHARE` | Partage de fichiers | Nom du partage de fichiers créé dans le compte de stockage sécurisé où résident les fichiers de déploiement du projet. |
-    | `WEBSITE_CONTENTOVERVNET` | 1 | Nouveau paramètre |
+    | `WEBSITE_CONTENTOVERVNET` | 1 | La valeur 1 permet à votre application de fonction de se mettre à l’échelle lorsque votre compte de stockage est limité à un réseau virtuel. Vous devez activer ce paramètre lorsque vous limitez votre compte de stockage à un réseau virtuel. |
     | `WEBSITE_VNET_ROUTE_ALL` | 1 | Force tout le trafic sortant via le réseau virtuel. Obligatoire lorsque le compte de stockage utilise des connexions de point de terminaison privé. |
 
 1. Sélectionnez **Enregistrer** pour enregistrer les paramètres de l’application. La modification des paramètres de l’application entraîne le redémarrage de l’application.  

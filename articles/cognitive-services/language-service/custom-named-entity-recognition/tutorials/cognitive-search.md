@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: cc7a7c478ada34aeea5815ec937b8442aa2bd98c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 555269beeb5e8b36597998a8941e2b64120691b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097486"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484170"
 ---
 # <a name="tutorial-enrich-a-cognitive-search-index-with-custom-entities-from-your-data"></a>Tutoriel : Enrichir un index Recherche cognitive avec des entités personnalisées à partir de vos données
 
@@ -64,11 +64,11 @@ Dans ce tutoriel, vous allez apprendre à :
 
 1. Dans le menu de gauche, sélectionnez **Entraîner**.
 
-2. Pour entraîner un nouveau modèle, sélectionnez **Entraîner un nouveau modèle** et tapez le nom du modèle dans la zone de texte ci-dessous.
+2. Pour entraîner un nouveau modèle, sélectionnez **Entraîner un nouveau modèle**, puis tapez le nom du modèle dans la zone de texte ci-dessous.
 
     :::image type="content" source="../media/train-model.png" alt-text="Créer un modèle" lightbox="../media/train-model.png":::
 
-3. Sélectionnez le bouton **Entraîner** en bas de la page.
+3. Sélectionnez au bas de la page le bouton **Entraîner**.
 
 4. Une fois l’entraînement effectué, vous pouvez [voir les détails de l’évaluation du modèle](../how-to/view-model-evaluation.md) et [améliorer le modèle](../how-to/improve-model.md)
 
@@ -115,7 +115,7 @@ Dans les sections suivantes, vous allez utiliser l’[outil d’intégration au 
 
 ### <a name="prepare-configuration-file"></a>Préparer le fichier config
 
-1. Dans le dossier que vous venez de télécharger, recherchez l’[exemple de fichier config](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Docs/Assets/configs.json). Ouvrez le fichier dans un éditeur de texte. 
+1. Dans le dossier que vous venez de télécharger, recherchez l’[exemple de fichier config](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Samples/configs.json). Ouvrez le fichier dans un éditeur de texte. 
 
 2. Obtenez la chaîne de connexion de votre compte de stockage en :
     1. Accédant à la page de vue d’ensemble de votre compte de stockage dans le [portail Azure](https://ms.portal.azure.com/#home).
@@ -137,7 +137,7 @@ Dans les sections suivantes, vous allez utiliser l’[outil d’intégration au 
 
 ### <a name="prepare-schema-file"></a>Préparer le fichier de schéma
 
-Dans le dossier que vous avez téléchargé plus tôt, recherchez l’[exemple de fichier de schéma](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Docs/Assets/app-schema.json). Ouvrez le fichier dans un éditeur de texte. 
+Dans le dossier que vous avez téléchargé plus tôt, recherchez l’[exemple de fichier de schéma](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Samples/app-schema.json). Ouvrez le fichier dans un éditeur de texte. 
 
 Les entrées du tableau `entityNames` correspondent aux noms d’entités que vous avez affectés au moment de la création de votre projet. Vous pouvez les copier et les coller à partir de votre projet dans [Language Studio](https://aka.ms/custom-extraction), ou 
 

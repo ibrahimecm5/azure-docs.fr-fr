@@ -1,14 +1,14 @@
 ---
 title: Configurer la haute disponibilité
 description: Augmentez la résilience de votre déploiement de Defender pour IoT en installant une appliance à haute disponibilité de console de gestion locale. Les déploiements à haute disponibilité garantissent que vos capteurs gérés envoient en permanence des rapports à la console de gestion locale active.
-ms.date: 07/11/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: d5ea894188c4801f9ca29379347bb0a737a8ed8f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ee9fa916ef89de4fea2d73bf7fcb9263b31650a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471772"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339646"
 ---
 # <a name="about-high-availability"></a>À propos de la haute disponibilité
 

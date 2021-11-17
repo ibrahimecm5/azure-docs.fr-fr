@@ -4,12 +4,12 @@ description: Répertorie tous les espaces de noms de fournisseurs de ressources 
 ms.topic: conceptual
 ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a8a460407df41e6f80436ffc4e663dacc427d84f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 12a483b7d33e8a3d3b93903c88139105f1aed0e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711609"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310164"
 ---
 # <a name="resource-providers-for-azure-services"></a>Fournisseurs de ressources pour les services Azure
 
@@ -156,7 +156,7 @@ Les fournisseurs de ressources marqués avec **- inscrit** sont inscrits par dé
 | Microsoft.Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft.Search | [Recherche cognitive Azure](../../search/index.yml) |
 | Microsoft.Security | [Security Center](../../security-center/index.yml) |
-| Microsoft.SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
+| Microsoft.SecurityInsights | [Microsoft Sentinel](../../sentinel/index.yml) |
 | Microsoft.SerialConsole - [inscrit](#registration) | [Console série Azure pour Windows](/troubleshoot/azure/virtual-machines/serial-console-windows) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |

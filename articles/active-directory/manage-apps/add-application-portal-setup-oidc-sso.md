@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 24d30dc81b2b2a3da2ac5f172dabe77cf5b01f9c
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 02bbc4d6b0cc6f346111a8cd0145ef099dd33feb
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058232"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552011"
 ---
-# <a name="add-an-openid-connect-based-single-sign-on-application-in-azure-active-directory"></a>Ajouter une application d’authentification unique basée sur OpenID Connect dans Azure Active Directory
+# <a name="add-an-openid-connect-based-single-sign-on-application"></a>Ajouter une application d’authentification unique basée sur OpenID Connect
 
 Ajoutez une application qui prend en charge l’authentification unique basée sur [OpenID Connect (OIDC)](../develop/active-directory-v2-protocols.md) dans votre locataire Azure Active Directory (Azure AD).
 

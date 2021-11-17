@@ -1,20 +1,20 @@
 ---
 title: 'Démarrage rapide : Créer une machine virtuelle Intel SGX dans le portail Azure'
 description: Commencez vos déploiements en découvrant comment créer rapidement une machine virtuelle Intel SGX dans le portail Azure.
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 11/1/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: mode-portal, ignite-fall-2021
-ms.openlocfilehash: ebb48c3c3b0f7273b7ceeebd8a615b19444dab5b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 68eec52333636c54ab9598d4823e4e794e50a3c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508397"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331943"
 ---
 # <a name="quickstart-create-intel-sgx-vm-in-the-azure-portal"></a>Démarrage rapide : Créer une machine virtuelle Intel SGX dans le portail Azure
 

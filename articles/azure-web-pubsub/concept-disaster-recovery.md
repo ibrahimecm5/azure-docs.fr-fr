@@ -4,14 +4,14 @@ description: Présentation de la façon de configurer plusieurs instances du ser
 author: vicancy
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 11/08/2021
 ms.author: lianwei
-ms.openlocfilehash: 3c14294a2a7d2ff2cb2f1f362b0474353c86b7ca
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 14a6661196f7bfa16d3611137d1517c41f21b00d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431006"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156513"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-web-pubsub-service"></a>Résilience et récupération d’urgence dans le service Azure Web PubSub
 
@@ -29,7 +29,7 @@ Dans chaque paire, le serveur d’applications et le service Web PubSub sont sit
 
 Pour mieux illustrer l’architecture, nous appelons le service Web PubSub service **principal** sur le serveur d’applications de la même paire. Dans les autres paires, nous appelons les services Web PubSub les services **secondaires** sur le serveur d’applications.
 
-Le serveur d’applications peut utilise l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/health-api/get-service-status) pour détecter si ses services **principal** et **secondaires** sont sains ou non. Par exemple, pour un service Web PubSub appelé `demo`, le point de terminaison `https://demo.webpubsub.azure.com/api/health` renvoie le code 200 lorsque le service est sain. Le serveur d’applications peut appeler périodiquement les points de terminaison ou il peut les appeler à la demande pour vérifier si les points de terminaison sont sains. En général, les clients WebSocket **négocient** d’abord avec leur serveur d’applications pour obtenir l’URL de connexion au service Web PubSub, et l’application utilise cette étape de **négociation** pour faire basculer les clients vers d’autres services **secondaires** sains. Voici les étapes détaillées :
+Le serveur d’applications peut utilise l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/dataplane/health-api/get-service-status) pour détecter si ses services **principal** et **secondaires** sont sains ou non. Par exemple, pour un service Web PubSub appelé `demo`, le point de terminaison `https://demo.webpubsub.azure.com/api/health` renvoie le code 200 lorsque le service est sain. Le serveur d’applications peut appeler périodiquement les points de terminaison ou il peut les appeler à la demande pour vérifier si les points de terminaison sont sains. En général, les clients WebSocket **négocient** d’abord avec leur serveur d’applications pour obtenir l’URL de connexion au service Web PubSub, et l’application utilise cette étape de **négociation** pour faire basculer les clients vers d’autres services **secondaires** sains. Voici les étapes détaillées :
 
 1. Lorsqu’un client **négocie** avec le serveur d’applications, ce dernier ne DOIT renvoyer que les points de terminaison principaux du service Web PubSub, de sorte que, dans un cas normal, les clients ne se connectent qu’aux points de terminaison principaux.
 1. Lorsque l’instance principale est hors service, la **négociation** DOIT renvoyer un point de terminaison secondaire sain afin que le client puisse toujours établir des connexions, et le client se connecte au point de terminaison secondaire.
@@ -42,7 +42,7 @@ Avec cette topologie, un message provenant d’un serveur peut être livré à t
 Nous n’avons pas encore intégré la stratégie dans le kit de développement logiciel (SDK). Pour l’instant, l’application doit implémenter cette stratégie elle-même. 
 
 En résumé, voici ce que le côté de l’application doit implémenter :
-1. Contrôle d’intégrité. L’application peut vérifier si le service est sain à l’aide de l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/health-api/get-service-status) régulièrement en arrière-plan ou à la demande pour chaque appel **negotiate**.
+1. Contrôle d’intégrité. L’application peut vérifier si le service est sain à l’aide de l’[API de contrôle de l’intégrité du service](/rest/api/webpubsub/dataplane/health-api/get-service-status) régulièrement en arrière-plan ou à la demande pour chaque appel **negotiate**.
 1. Logique de négociation. L’application retourne un point de terminaison **principal** sain par défaut. Lorsque le point de terminaison **principal** est inactif, l’application retourne un point de terminaison **secondaire** sain.
 1. Logique de diffusion. Lors de l’envoi de messages à plusieurs clients, l’application doit s’assurer qu’elle diffuse les messages à tous les points de terminaison **sains**.
 

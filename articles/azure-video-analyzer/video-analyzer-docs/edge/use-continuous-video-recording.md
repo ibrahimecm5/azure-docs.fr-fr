@@ -4,12 +4,12 @@ description: Dans ce tutoriel, vous allez voir comment utiliser Azure Video Anal
 ms.topic: tutorial
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 6a86dac6b242139d406dd6513a70846c57fa1c05
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4b01a1a02e6e9c7901f6b366ff79b1e84891e44d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559349"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493302"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>Tutoriel : Enregistrement et lecture vidéo en continu
 
@@ -59,7 +59,7 @@ Comme l’explique [cet article](../pipeline.md), un pipeline Video Analyzer per
 > :::image type="content" source="../media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Pipeline Azure Video Analyzer pour l’enregistrement vidéo en continu":::
 <!-- ./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg -->
 
-Dans ce tutoriel, vous allez utiliser un module périphérique créé avec le [serveur multimédia Live555](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) pour simuler une caméra RTSP. Dans le pipeline, vous allez utiliser un nœud [source RTSP](../pipeline.md#rtsp-source) pour obtenir le flux en direct, puis envoyer cette vidéo au [nœud récepteur vidéo](../pipeline.md#video-sink) qui enregistrera la vidéo dans votre compte Video Analyzer. La vidéo utilisée dans ce tutoriel est un [exemple de vidéo d’intersection d’autoroute](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv).
+Dans ce tutoriel, vous allez utiliser un module périphérique créé avec le [serveur multimédia Live555](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555) pour simuler une caméra RTSP. Dans le pipeline, vous allez utiliser un nœud [source RTSP](../pipeline.md#rtsp-source) pour obtenir le flux en direct, puis envoyer cette vidéo au [nœud récepteur vidéo](../pipeline.md#video-sink) qui enregistrera la vidéo dans votre compte Video Analyzer. La vidéo utilisée dans ce tutoriel est un [exemple de vidéo d’intersection d’autoroute](https://avamedia.blob.core.windows.net/public/camera-300s.mkv).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
@@ -277,7 +277,7 @@ Comme son nom l’indique, l’événement **RecordingStarted** est envoyé lors
 
 Cet événement indique que suffisamment de données ont été écrites dans la ressource vidéo pour que les lecteurs ou les clients commencent la lecture de la vidéo.
 
-La section subject dans applicationProperties fait référence au nœud récepteur vidéo dans le pipeline en direct qui a généré ce message.
+La section subject dans applicationProperties référence le nœud récepteur vidéo dans le pipeline en direct qui a généré ce message.
 
 La section body contient des informations sur l’emplacement de sortie. Dans ce cas, il s’agit du nom de la ressource Video Analyzer dans laquelle la vidéo est enregistrée.
 
@@ -304,7 +304,7 @@ Quand vous désactivez le pipeline en direct, le nœud récepteur vidéo cesse d
 
 Cet événement indique que l’enregistrement s’est arrêté.
 
-La section subject dans applicationProperties référence le nœud récepteur vidéo dans le pipeline en direct qui a généré ce message.
+La section subject dans applicationProperties fait référence au nœud récepteur vidéo dans le pipeline en direct qui a généré ce message.
 
 La section body contient des informations sur l’emplacement de sortie, qui est dans ce cas le nom de la ressource Video Analyzer dans lequel la vidéo est enregistrée.
 

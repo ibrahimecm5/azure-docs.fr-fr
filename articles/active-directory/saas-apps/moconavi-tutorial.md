@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a5ddfeea3f001669e9f4498bb60e38cb34d027b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9254c7117affd66fe2e46aa943b70e701aa11cc9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427487"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294604"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-moconavi"></a>Tutoriel : Intégration de l’authentification unique Azure AD à moconavi
 
@@ -158,4 +158,4 @@ Dans cette section, vous allez créer un utilisateur nommé Britta Simon dans mo
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré moconavi, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Après avoir configuré moconavi, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.openlocfilehash: 532bb1f9d9c2e612714a178d3c1445f24cd8c6ea
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: eb2e48629e07271fcc151a3de97659c97cbb6719
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552503"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491181"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossaire IoT
 
@@ -114,7 +114,7 @@ S’applique à : IoT Central, IoT Central, Développeur d’appareils
 
 Ces SDK sont disponibles pour plusieurs langages et permettent de créer des [applications principales](#back-end-app) qui interagissent avec un [hub IoT](#iot-hub).
 
-[En savoir plus](/iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)
+[En savoir plus](/azure/iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)
 
 S’applique à : IoT Hub
 

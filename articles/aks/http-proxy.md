@@ -6,12 +6,12 @@ author: nickomang
 ms.topic: article
 ms.date: 09/09/2021
 ms.author: nickoman
-ms.openlocfilehash: 93bcd85c1a0804a6b3335add09d609eac41db98a
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 81631bfea3cc55b52dc95a81cb17c3420cf9638d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866750"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346108"
 ---
 # <a name="http-proxy-support-in-azure-kubernetes-service-preview"></a>Prise en charge du proxy HTTP dans Azure Kubernetes Service (préversion)
 
@@ -81,12 +81,14 @@ Utilisez AKS avec un proxy HTTP au moment de la création du cluster, en utilisa
 Le schéma du fichier config est du type suivant :
 
 ```json
-"httpProxy": "string",
-"httpsProxy": "string",
-"noProxy": [
+{
+  "httpProxy": "string",
+  "httpsProxy": "string",
+  "noProxy": [
     "string"
-],
-"trustedCa&quot;: &quot;string"
+  ],
+  "trustedCa&quot;: &quot;string"
+}
 ```
 
 `httpProxy` : URL de proxy à utiliser pour créer des connexions HTTP à l’extérieur du cluster. Le schéma d’URL doit être `http`.
@@ -97,13 +99,15 @@ Le schéma du fichier config est du type suivant :
 Exemple d’entrée : notez que le certificat de l’autorité de certification doit être la chaîne encodée en base64 du contenu du certificat au format PEM.
 
 ```json
-"httpProxy": "http://myproxy.server.com:8080/", 
-"httpsProxy": "https://myproxy.server.com:8080/", 
-"noProxy": [
-   "localhost",
-   "127.0.0.1"
-],
-"trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
+{
+  "httpProxy": "http://myproxy.server.com:8080/", 
+  "httpsProxy": "https://myproxy.server.com:8080/", 
+  "noProxy": [
+    "localhost",
+    "127.0.0.1"
+  ],
+  "trustedCA": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUgvVENDQmVXZ0F3SUJB...b3Rpbk15RGszaWFyCkYxMFlscWNPbWVYMXVGbUtiZGkvWG9yR2xrQ29NRjNURHg4cm1wOURCaUIvCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
+}
 ```
 
 Créez un fichier et fournissez des valeurs pour *httpProxy*, *HttpsProxy* et *NoProxy*. Si votre environnement l’exige, fournissez également une valeur *trustedCa*. Ensuite, déployez un cluster, en passant votre nom de fichier au moyen de l’indicateur `http-proxy-config`.

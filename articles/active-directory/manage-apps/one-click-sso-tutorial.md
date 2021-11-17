@@ -13,14 +13,14 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: 97cdedac91fa80c45ec8b36bad4a1368e48e3e81
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d0e0a9fcb3052132df33d6988468cb218c3d9fc2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615787"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556607"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on-in-azure-active-directory"></a>Configuration d’application en un clic pour l’authentification unique dans Azure Active Directory
+# <a name="one-click-app-configuration-of-single-sign-on"></a>Configuration en un clic de l’authentification unique pour une application
 
  Ce didacticiel explique comment effectuer en un clic à partir de la Place de marché Azure une configuration de l’authentification unique (SSO) pour des applications Azure Active Directory (Azure AD) prenant en charge SAML.
 

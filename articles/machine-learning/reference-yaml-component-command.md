@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ae71e4423011d5a69945b6bcce8ed73e0f093fc1
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2a512226a507d890963ee9e407c7eb8330e33fc5
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566789"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552315"
 ---
 # <a name="cli-v2-command-component-yaml-schema"></a>Schéma YAML du composant de commande CLI (v2)
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | Le schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
 | `type` | const | Le type de composant. | `command` | `command` |
 | `name` | string | **Obligatoire.** Nom du composant. | | |
 | `version` | string | Numéro de version du composant. En cas d’omission, Azure ML génère automatiquement une version. | | |
@@ -95,11 +95,11 @@ La commande `az ml component` peut être utilisée pour gérer les composants Az
 
 Les exemples de composant de commande sont disponibles dans le référentiel d’exemples GitHub. Certains exemples sont affichés ci-dessous.
 
-Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipeline-with-components). Vous en trouverez plusieurs ci-dessous.
+Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components). Vous en trouverez plusieurs ci-dessous.
 
 ## <a name="hello-world-command-component"></a>Composant de commande Hello World
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/2a_basic_component/component.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/2a_basic_component/component.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

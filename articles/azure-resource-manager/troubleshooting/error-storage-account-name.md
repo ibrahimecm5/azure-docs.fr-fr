@@ -2,13 +2,13 @@
 title: Erreurs de nom de compte de stockage
 description: Décrit les erreurs qui peuvent se produire lors de la spécification d’un nom de compte de stockage dans un modèle Azure Resource Manager (modèle ARM) ou un fichier Bicep.
 ms.topic: troubleshooting
-ms.date: 10/26/2021
-ms.openlocfilehash: 78bf097ccaf5f826dc20a11ee36375111b1a7354
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: 8f26efffac8768abb2279722fb1b5dbf174072f3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096789"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487745"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Résoudre les erreurs liées aux noms de compte de stockage
 
@@ -41,12 +41,7 @@ Ce nom doit comprendre entre 3 et 24 caractères, uniquement des lettres en min
 
 Vous pouvez créer un nom unique en concaténant votre convention d’affectation de noms avec le résultat de la fonction `uniqueString`.
 
-Les modèles ARM utilisent [concat](../templates/template-functions-string.md#concat) avec [uniqueString](../templates/template-functions-string.md#uniquestring).
-
-```json
-"name": "[concat('storage', uniqueString(resourceGroup().id))]",
-"type": "Microsoft.Storage/storageAccounts",
-```
+# <a name="bicep"></a>[Bicep](#tab/bicep)
 
 Bicep utilise l'[interpolation de chaîne](../bicep/bicep-functions-string.md#concat) avec [uniqueString](../bicep/bicep-functions-string.md#uniquestring).
 
@@ -55,9 +50,30 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'storage${uniqueString(resourceGroup().id)}'
 ```
 
+# <a name="json"></a>[JSON](#tab/json)
+
+Les modèles ARM utilisent [concat](../templates/template-functions-string.md#concat) avec [uniqueString](../templates/template-functions-string.md#uniquestring).
+
+```json
+"name": "[concat('storage', uniqueString(resourceGroup().id))]",
+"type": "Microsoft.Storage/storageAccounts",
+```
+
+---
+
 Vérifiez que le nom de votre compte de stockage ne contient pas plus de 24 caractères. La fonction `uniqueString` renvoie 13 caractères. Si vous voulez concaténer un préfixe ou un suffixe, fournissez une valeur de 11 caractères au maximum.
 
 Les exemples suivants utilisent un paramètre qui crée un préfixe avec un maximum de 11 caractères.
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+@description('The prefix value for the storage account name.')
+@maxLength(11)
+param storageNamePrefix string = 'storage'
+```
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -72,18 +88,20 @@ Les exemples suivants utilisent un paramètre qui crée un préfixe avec un maxi
 }
 ```
 
-```bicep
-@description('The prefix value for the storage account name.')
-@maxLength(11)
-param storageNamePrefix string = 'storage'
-```
+---
 
 Vous concaténez ensuite la valeur du paramètre avec la valeur `uniqueString` pour créer un nom de compte de stockage.
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+name: '${storageNamePrefix}${uniqueString(resourceGroup().id)}'
+```
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "name": "[concat(parameters('storageNamePrefix'), uniquestring(resourceGroup().id))]"
 ```
 
-```bicep
-name: '${storageNamePrefix}${uniqueString(resourceGroup().id)}'
-```
+---

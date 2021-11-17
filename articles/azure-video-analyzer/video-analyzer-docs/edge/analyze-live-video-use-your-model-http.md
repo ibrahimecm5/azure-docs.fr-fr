@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 11/04/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 42845d87a8c1679a9b186cf71a9b82a9413fb005
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: c7770c61ce6d768f3fdd3216da94c87466310e74
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563584"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484232"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>Démarrage rapide : Analyser une vidéo en direct avec votre propre modèle (HTTP)
 
@@ -35,7 +35,7 @@ Ce guide de démarrage rapide utilise une machine virtuelle Azure comme appareil
 
 Quand vous configurez les ressources Azure, une courte vidéo du trafic d’une autoroute est copiée dans Azure sur la machine virtuelle Linux que vous utilisez comme appareil IoT Edge. Ce guide de démarrage rapide utilise le fichier vidéo pour simuler un flux en direct.
 
-Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/). Sélectionnez Ctrl+N, puis collez un lien vers [l’exemple de vidéo d’intersection d’autoroute](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) pour démarrer la lecture. Vous voyez la séquence vidéo de nombreux véhicules se déplaçant dans le trafic d’une autoroute.
+Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/). Sélectionnez Ctrl+N, puis collez un lien vers [l’exemple de vidéo d’intersection d’autoroute](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) pour démarrer la lecture. Vous voyez la séquence vidéo de nombreux véhicules se déplaçant dans le trafic d’une autoroute.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LTY4]
 

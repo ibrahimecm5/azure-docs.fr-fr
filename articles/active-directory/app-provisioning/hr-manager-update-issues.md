@@ -1,7 +1,6 @@
 ---
 title: Résoudre des problèmes de mise à jour de gestionnaire avec l’approvisionnement RH
 description: Découvrez comment résoudre des problèmes de mise à jour de gestionnaire avec l’approvisionnement RH
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: 21635b7c7df6639745916aecd207780e6ae5df52
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d67e528420b9907949202c1f597f933a74f7c801
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479205"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324552"
 ---
 # <a name="troubleshoot-hr-manager-update-issues"></a>Résoudre des problèmes de mise à jour de gestionnaire RH
 
@@ -55,14 +54,14 @@ Pour que la *résolution de référence de gestionnaire* fonctionne correctement
 * L’application d’approvisionnement doit avoir traité l’enregistrement du gestionnaire avant de traiter l’enregistrement de l’utilisateur. 
 
 ## <a name="provision-on-demand-does-not-update-manager-attribute"></a>L’approvisionnement à la demande ne met pas à jour l’attribut manager
-| | |
+| Résolution des problèmes | Détails |
 |--|--|
 | **Problème** | Vous avez correctement configuré l’application d’approvisionnement entrant. Vous testez la synchronisation avec l’approvisionnement à la demande. Elle ne met pas à jour l’attribut manager et vous recevez un message d’erreur *« valeur non valide »* .  |
 | **Cause** | Votre travail d’approvisionnement ne répond pas à l’une des [conditions préalables pour une mise à jour réussie du gestionnaire](#prerequisites-for-successful-manager-update)  |
 | **Résolution :** | * Si vous avez modifié le mappage de l’attribut manager par défaut, restaurez le mappage par défaut. <br> * Assurez-vous que l’enregistrement du gestionnaire figure dans l’étendue, et que l’expression d’API du gestionnaire correspond à une valeur valide. <br> * Exécutez l’approvisionnement à la demande pour l’enregistrement du gestionnaire, puis exécutez l’approvisionnement à la demande pour l’enregistrement de l’utilisateur.  |
 
 ## <a name="full-sync-does-not-update-manager-attribute"></a>La synchronisation complète ne met pas à jour l’attribut manager
-| | |
+| Résolution des problèmes | Détails |
 |--|--|
 | **Problème** | Vous avez correctement configuré l’application d’approvisionnement entrant. Vous utilisez un filtre d’étendue pour traiter uniquement certains enregistrements RH. Vous constatez que la résolution du gestionnaire ne se produit pas pour certains utilisateurs.  |
 | **Cause** | Si vous utilisez des filtres d’étendue, le plus probable est que l’enregistrement du gestionnaire ne figure pas dans l’étendue.  |

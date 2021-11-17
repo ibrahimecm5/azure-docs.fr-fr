@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: danlep
-ms.openlocfilehash: ebeca98b2cf3741e83083b0b5eb6d13fdfeb6525
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5acf947fdc4354fe57112cd8c49854e6a27e80a4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629785"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132340378"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Modèles Application dans Gestion des API Azure
 Gestion des API Azure vous offre la possibilité de personnaliser le contenu des pages du portail des développeurs à l’aide d’un ensemble de modèles qui configurent leur contenu. En utilisant la syntaxe [DotLiquid](http://dotliquidmarkup.org/) et l’éditeur de votre choix, comme [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), ainsi qu’un ensemble de [ressources de chaîne](api-management-template-resources.md#strings), de [ressources de glyphe](api-management-template-resources.md#glyphs) et de [contrôles de page](api-management-page-controls.md) localisés, vous disposez d’un large choix pour configurer le contenu des pages selon vos besoins à l’aide de ces modèles.  
@@ -57,7 +57,7 @@ Gestion des API Azure vous offre la possibilité de personnaliser le contenu des
             <li>  
             {% if app.application.icon.url != "" %}  
                 <aside>  
-                    <a href="/applications/details/{{app.application.id}}"><img src="{{app.application.icon.url}}" alt="App Icon" /></a>  
+                    <a href="/applications/details/{{app.application.id}}"><img src="{{app.application.icon.url}}" alt="App Icon"></a>  
                 </aside>  
             {% endif %}  
                 <h3><a href="/applications/details/{{app.application.id}}">{{app.application.title}}</a></h3>  

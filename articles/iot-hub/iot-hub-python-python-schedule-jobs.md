@@ -1,20 +1,20 @@
 ---
 title: Planifier des travaux avec Azure IoT Hub (Python) | Microsoft Docs
 description: Procédure de planification d’une tâche Azure IoT Hub pour appeler une méthode directe sur plusieurs appareils. Vous pouvez utiliser les SDK Azure IoT pour Python afin d’implémenter les applications d’appareil simulé et une application de service pour exécuter le travail.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.author: robinsh
+ms.author: lizross
 ms.custom: devx-track-python
-ms.openlocfilehash: 93374b3cf4f2383039f0a3a670388803511881f2
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: f87caf559815e14cbac4b6404eb255c65a89d83a
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178972"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554994"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planifier et diffuser des travaux (Python)
 

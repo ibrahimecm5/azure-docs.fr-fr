@@ -7,12 +7,12 @@ ms.service: chaos-studio
 ms.topic: conceptual
 ms.date: 11/01/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: c4db4525c3535b0dda7bd8a21c46509f1203b748
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 70d212a7d9677c0068670d2954897d7e1f27b137
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097053"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372432"
 ---
 # <a name="faults-and-actions-in-azure-chaos-studio"></a>Erreurs et actions dans Azure Chaos Studio
 
@@ -40,4 +40,4 @@ Les erreurs incluent également le nom du sélecteur qui décrit les ressources 
 
 ## <a name="next-steps"></a>Étapes suivantes
 Vous savez à présent ce que sont les actions et les erreurs. Vous êtes prêt à :
-- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct.md)
+- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct-portal.md)

@@ -13,14 +13,14 @@ ms.date: 10/06/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07254d54d535616aa3a6b1c17a2b1b81d8fe16bb
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 705a5aa25428378b8031d395b8241b2ac8890828
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659200"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553265"
 ---
-# <a name="configure-the-admin-consent-workflow-in-azure-active-directory"></a>Configurer le workflow du consentement administrateur dans Azure Active Directory
+# <a name="configure-the-admin-consent-workflow"></a>Configurer le workflow du consentement administrateur
 
 Cet article explique comment activer la fonctionnalité de workflow du consentement de l’administrateur, qui donne aux utilisateurs finaux la possibilité de demander l’accès aux applications qui requièrent le consentement de l’administrateur.
 

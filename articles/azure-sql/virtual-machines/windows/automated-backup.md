@@ -15,12 +15,12 @@ ms.date: 05/03/2018
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 047280e5db0ce67a80b44dee224196d2ac6668c4
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5910a432f2dce0afe43506fe8d66cc2c0f09a599
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166245"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550700"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Sauvegarde automatisée v2 pour les machines virtuelles Azure (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,6 @@ ms.locfileid: "130166245"
 > * [SQL Server 2016 +](automated-backup.md)
 
 La sauvegarde automatisée version 2 configure automatiquement une [sauvegarde managée sur Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) pour toutes les bases de données nouvelles et existantes sur une machine virtuelle Azure exécutant les éditions Standard, Entreprise ou Développeur de SQL Server 2016 ou version ultérieure. Cela vous permet de configurer des sauvegardes régulières de base de données utilisant le stockage d’objets blob Azure durable. La sauvegarde automatisée v2 dépend de l’[extension de l’agent IaaS (infrastructure as a service) SQL Server](sql-server-iaas-agent-extension-automate-management.md).
-
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>Prérequis
 Pour utiliser la sauvegarde automatisée version 2, passez en revue les conditions préalables suivantes :

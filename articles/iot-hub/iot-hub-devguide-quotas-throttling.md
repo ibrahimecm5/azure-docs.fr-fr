@@ -1,8 +1,8 @@
 ---
 title: Comprendre les quotas et la limitation d’Azure IoT Hub
 description: Guide du développeur - description des quotas qui s’appliquent à IoT Hub et comportement de limitation attendu.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 - contperf-fy21q4
-ms.openlocfilehash: 2e39a2dcdf0f6e3b56665ca7be415c567ca770e8
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a38d84e6d3e8562278ba6babee5e01e0ec723d3d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866291"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551574"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Référence - Quotas et limitation IoT Hub
 

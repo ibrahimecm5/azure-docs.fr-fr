@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 678090d4c4de0dfd306bd5b91a26787f9ff15db2
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 504ae03ecff532fff5a8343d02fd8bba21524cfd
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455851"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397316"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-by-using-the-azure-cli"></a>Déployer et surveiller des modules IoT Edge à grande échelle à l’aide d’Azure CLI
 
@@ -162,7 +162,7 @@ Par exemple, voici un manifeste de déploiement en couches de base comportant un
 L’exemple précédent illustrait le déploiement en couches définissant `properties.desired` pour un module. Si ce déploiement en couches venait à cibler un appareil sur lequel le même module est déjà appliqué, il remplacerait les propriétés souhaitées existantes. Pour mettre à jour les propriétés souhaitées plutôt que de les remplacer, vous pouvez définir une nouvelle sous-section. Par exemple :
 
 ```json
-"SimulatedTEmperatureSensor": {
+"SimulatedTemperatureSensor": {
   "properties.desired.layeredProperties": {
     "SendData": true,
     "SendInterval": 5
@@ -173,7 +173,7 @@ L’exemple précédent illustrait le déploiement en couches définissant `prop
 Vous pouvez également exprimer cela comme suit :
 
 ```json
-"SimulatedTEmperatureSensor": {
+"SimulatedTemperatureSensor": {
   "properties.desired.layeredProperties.SendData" : true,
   "properties.desired.layeredProperties.SendInterval": 5
 }

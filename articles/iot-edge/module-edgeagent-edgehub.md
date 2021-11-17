@@ -7,12 +7,12 @@ ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 18a1114c3253a9a8debb9289a3749df10ade7d54
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71f7402fbd593d2fc97c2ec9574a48a2c28d53cb
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122531560"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402463"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Propriétés des jumeaux de module de l’agent IoT Edge et du hub IoT Edge
 
@@ -83,7 +83,6 @@ Le tableau suivant n’inclut pas les informations copiées à partir des propri
 | lastDesiredVersion | Cet entier référence la dernière version des propriétés souhaitées traitées par l’agent IoT Edge. |
 | lastDesiredStatus.code | Ce code d’état fait référence aux dernières propriétés souhaitées observées par l’agent IoT Edge. Valeurs autorisées : `200` Réussite, `400` Configuration non valide, `412` Version de schéma non valide, `417` les propriétés souhaitées sont vides, `500` Échec |
 | lastDesiredStatus.description | Texte de description de l’état |
-| configurationHealth.{deploymentId}.health | `healthy` si l’état du runtime de tous les modules définis par le déploiement {deploymentId} est `running` ou `stopped`, sinon, `unhealthy` |
 | runtime.platform.OS | Signalement du système d’exploitation exécuté sur l’appareil |
 | runtime.platform.architecture | Signalement de l’architecture de l’UC sur l’appareil |
 | systemModules.edgeAgent.runtimeStatus | État signalé de l’agent IoT Edge : {"running" \| "unhealthy"} |

@@ -1,14 +1,14 @@
 ---
 title: Collecte d’événements du micro-agent (préversion)
 description: Les agents de sécurité IoT collectent des données et événements système de votre appareil local, puis envoient ces données au cloud Azure à des fins de traitement et d’analyse.
-ms.date: 10/11/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1868df35c05560fd80f6fa619b2d612ba6325d3c
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 36cce317c4e53f7578dace7faba5e2fb567f42cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740433"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289974"
 ---
 # <a name="micro-agent-event-collection-preview"></a>Collecte d’événements du micro-agent (préversion)
 

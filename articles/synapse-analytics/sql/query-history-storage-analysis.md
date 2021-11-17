@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/28/2021
 ms.custom: template-concept
-ms.openlocfilehash: 866ca9439b5fc06f1e869cef6eef4c4adf979558
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 9f6493b2011a06a56f64e47711756b1172300885
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132064004"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490266"
 ---
 # <a name="historical-query-storage-and-analysis-in-azure-synapse-analytics"></a>Analyse et stockage des requêtes historiques dans Azure Synapse Analytics
 
@@ -82,7 +82,7 @@ Limitations connues :
 ## <a name="log-analytics"></a>Log Analytics
 Les espaces de travail Log Analytics peuvent être créés facilement dans le portail Azure. Pour obtenir des instructions supplémentaires sur la connexion de Synapse à Log Analytics, consultez [Superviser une charge de travail dans le portail Azure](../sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md).
 
-Comme Azure Data Explorer, Log Analytics utilise le langage de requête Kusto (KQL). Pour plus d’informations sur la syntaxe Kusto, consultez [Vue d’ensemble des requêtes Kusto](/data-explorer/kusto/query/index.md). 
+Comme Azure Data Explorer, Log Analytics utilise le langage de requête Kusto (KQL). Pour plus d’informations sur la syntaxe Kusto, consultez [Vue d’ensemble des requêtes Kusto](/azure/data-explorer/kusto/query/). 
 
 Avec la période de rétention configurable, vous choisissez l’espace de travail que vous ciblez spécifiquement pour les requêtes dans Log Analytics. Log Analytics vous offre la flexibilité vous permettant de stocker des données, d’exécuter et d’enregistrer des requêtes.
 
@@ -95,7 +95,7 @@ Limitations connues :
 
 ## <a name="azure-data-explorer-adx"></a>Azure Data Explorer (ADX)
 
-Azure Data Explorer (ADX) est un service d’exploration des données majeur. Ce service peut être utilisé pour analyser les requêtes historiques d’Azure Synapse Analytics. Pour configurer un pipeline Azure Data Factory (ADF) afin de copier et stocker les journaux dans ADX, consultez [Copier des données depuis ou vers Azure Data Explorer](/data-factory/connector-azure-data-explorer.md). Dans ADX, vous pouvez exécuter une requête Kusto performante pour analyser vos journaux. Vous pouvez combiner d’autres stratégies, par exemple pour interroger et charger la sortie DMV sur ADX via ADF.
+Azure Data Explorer (ADX) est un service d’exploration des données majeur. Ce service peut être utilisé pour analyser les requêtes historiques d’Azure Synapse Analytics. Pour configurer un pipeline Azure Data Factory (ADF) afin de copier et stocker les journaux dans ADX, consultez [Copier des données depuis ou vers Azure Data Explorer](/azure/data-factory/connector-azure-data-explorer). Dans ADX, vous pouvez exécuter une requête Kusto performante pour analyser vos journaux. Vous pouvez combiner d’autres stratégies, par exemple pour interroger et charger la sortie DMV sur ADX via ADF.
   
 Avantages :
 * ADX fournit une stratégie de rétention de journal personnalisable.

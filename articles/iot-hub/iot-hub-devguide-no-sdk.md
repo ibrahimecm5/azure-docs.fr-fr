@@ -1,8 +1,8 @@
 ---
 title: Développer avec un kit de développement logiciel (SDK) Azure IoT | Microsoft Docs
 description: 'Guide du développeur : informations et liens vers des rubriques que vous pouvez utiliser pour créer des applications d’appareil et des applications back-end sans utiliser de kit de développement logiciel (SDK) Azure IoT.'
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 34476ee99dcf455886a72d3fcef2356ab4e6229f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7da7d19debdf8068004473316985370900f0c7b2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122523995"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555089"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>Développer sans utiliser de kit de développement logiciel (SDK) Azure IoT Hub
 

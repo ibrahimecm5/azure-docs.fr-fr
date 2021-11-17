@@ -12,12 +12,12 @@ metadata:
   ms.date: 03/11/2021
   ms.author: eur
   ms.custom: devx-track-csharp
-  ms.openlocfilehash: 5b896e3f4bbd6cf00d4ee9b7eb2723cc75d07a5b
-  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+  ms.openlocfilehash: 6fec58c20c40371eb1c7226e7dbe6120217657fe
+  ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131508160"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132133915"
 title: Questions fréquentes (FAQ) sur les conteneurs de service Speech
 summary: Lorsque vous utilisez le service Speech avec des conteneurs, consultez cette collection de questions fréquemment posées avant de contacter le support. Cet article regroupe des questions variant du niveau général au niveau technique. Pour développer une réponse, cliquez sur la question.
 sections:
@@ -114,10 +114,7 @@ sections:
       Si vous formez avec le dernier modèle personnalisé, nous ne prenons pas cela en charge. Si vous formez avec une version antérieure, il doit être possible de l’utiliser. Nous travaillons toujours sur la prise en charge des dernières versions.
 
 
-      Essentiellement, les conteneurs personnalisés ne prennent pas en charge les modèles acoustiques basés sur Halide ou ONNX (le comportement par défaut dans le portail de formation personnalisée). Cela est dû au fait que les modèles personnalisés ne sont pas chiffrés et que nous ne souhaitons pas exposer les modèles ONNX ; toutefois, les modèles de langage ne posent pas de problème. Le client devra sélectionner explicitement un ancien modèle hors ONNX pour la formation personnalisée. La précision n’est pas affectée. La taille du modèle peut être supérieure (de 100 Mo).
-
-
-      > Modèle de support > 20190220 (v4.5 unifiée)
+      Essentiellement, les conteneurs personnalisés ne prennent pas en charge les modèles acoustiques basés sur Halide ou ONNX (le comportement par défaut dans le portail de formation personnalisée). Cela est dû au fait que les modèles personnalisés ne sont pas chiffrés et que nous ne souhaitons pas exposer les modèles ONNX ; toutefois, les modèles de langage ne posent pas de problème. La taille du modèle peut être supérieure (de 100 Mo).
 
 
       **Erreur 2 :**

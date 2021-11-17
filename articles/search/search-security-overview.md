@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: c3e6112c1bee8e42f411eaa8d12d873db2657142
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: a4ed9b5a7d33433a14bb7e6800ac54326184a808
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726457"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347082"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Vue d’ensemble de la sécurité dans Recherche cognitive Azure
 
@@ -201,4 +201,4 @@ Regardez cette vidéo rapide pour obtenir une vue d’ensemble de l’architectu
 
 + [Concepts de base de la sécurité Azure](../security/fundamentals/index.yml)
 + [Sécurité Azure](https://azure.microsoft.com/overview/security)
-+ [Centre de sécurité Azure](../security-center/index.yml)
++ [Microsoft Defender pour le cloud](../security-center/index.yml)

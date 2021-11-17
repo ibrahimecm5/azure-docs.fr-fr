@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a147d4ca7b947c6a1cdfeec1587e9ae6b2d27fa0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4e35814e898e35a7ba9251d3eb36f6bde4d086e1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448904"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339988"
 ---
 # <a name="deploy-a-azure-cloud-services-extended-support-using-the-azure-portal"></a>Déployer une instance Azure Cloud Services (support étendu) à l’aide du portail Azure
 Cet article explique comment utiliser le portail Azure pour créer un déploiement de service cloud (support étendu). 

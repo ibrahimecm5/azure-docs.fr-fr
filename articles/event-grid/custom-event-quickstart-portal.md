@@ -3,12 +3,12 @@ title: Envoyer des événements personnalisés à un point de terminaison web - 
 description: 'Démarrage rapide : Utilisez Azure Event Grid et le portail Azure pour publier une rubrique personnalisée et pour vous abonner aux événements de cette rubrique. Les événements sont gérés par une application web.'
 ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: a2d259707e6bfbcc5216b345107507413da71523
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 461d43e2a0210dfd5844beb844c7ae2a48e936f3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113232445"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310069"
 ---
 # <a name="route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Router des événements personnalisés vers un point de terminaison web avec le portail Azure et Event Grid
 Event Grid est un service entièrement géré qui vous permet de facilement gérer des événements dans de nombreux services et applications Azure. Il simplifie la création d’applications pilotées par les événements et serverless. Pour une présentation du service, consultez [Vue d’ensemble d’Event Grid](overview.md).
@@ -54,7 +54,7 @@ Avant de créer un abonnement pour la rubrique personnalisée, créez un point d
 
 1. Dans la page de l’article, sélectionnez **Déployer sur Azure** pour déployer la solution sur votre abonnement. Dans le portail Azure, indiquez des valeurs pour les paramètres.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to deploy to Azure."></a>
 2. Dans la page **Déploiement personnalisé**, procédez comme suit : 
     1. Pour **Groupe de ressources**, sélectionnez le groupe de ressources que vous avez créé lors de la création du compte de stockage. Il sera plus facile pour vous de nettoyer une fois que vous aurez terminé le tutoriel en supprimant le groupe de ressources.  
     2. Pour **Nom du site**, entrez un nom pour l’application web.

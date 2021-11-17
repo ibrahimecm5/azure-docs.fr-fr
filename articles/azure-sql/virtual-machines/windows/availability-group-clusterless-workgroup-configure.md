@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 6eb8af995b733fb796827d508ee003d83e46c67f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 29037a52284bb8af8adb68090f484061db6b9100
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167302"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157024"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Configurer un groupe de disponibilité pour un groupe de travail 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -136,7 +136,7 @@ Au cours de cette étape, vous allez configurer un témoin de partage cloud. Pou
 
 ## <a name="enable-the-availability-group-feature"></a>Activer la fonctionnalité de groupes de disponibilité 
 
-Au cours de cette étape, vous allez activer la fonctionnalité Groupes de disponibilité. Pour en savoir plus sur ces étapes, suivez le [tutoriel consacré aux groupes de disponibilité](availability-group-manually-configure-tutorial.md#enable-availability-groups). 
+Au cours de cette étape, vous allez activer la fonctionnalité Groupes de disponibilité. Pour en savoir plus sur ces étapes, suivez le [tutoriel consacré aux groupes de disponibilité](availability-group-manually-configure-tutorial-single-subnet.md#enable-availability-groups). 
 
 ## <a name="create-keys-and-certificates"></a>Créer des clés et des certificats
 
@@ -281,7 +281,7 @@ Si le cluster comprend d'autres nœuds, répétez-y ces étapes, en modifiant le
 
 ## <a name="configure-an-availability-group"></a>Configurer un groupe de disponibilité
 
-Au cours de cette étape, vous allez configurer votre groupe de disponibilité et y ajouter vos bases de données. Ne créez pas d'écouteur pour le moment. Pour en savoir plus sur ces étapes, suivez le [tutoriel consacré aux groupes de disponibilité](availability-group-manually-configure-tutorial.md#create-the-availability-group). Lancez une procédure de basculement et de restauration automatique pour vérifier que tout fonctionne bien. 
+Au cours de cette étape, vous allez configurer votre groupe de disponibilité et y ajouter vos bases de données. Ne créez pas d'écouteur pour le moment. Pour en savoir plus sur ces étapes, suivez le [tutoriel consacré aux groupes de disponibilité](availability-group-manually-configure-tutorial-single-subnet.md#create-the-availability-group). Lancez une procédure de basculement et de restauration automatique pour vérifier que tout fonctionne bien. 
 
    > [!NOTE]
    > En cas d'échec du processus de synchronisation, vous devrez peut-être accorder temporairement à l'administrateur système `NT AUTHORITY\SYSTEM` les droits nécessaires à la création des ressources de cluster sur le premier nœud, par exemple `AGNode1`. 

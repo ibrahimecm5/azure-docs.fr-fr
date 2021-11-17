@@ -12,14 +12,14 @@ ms.topic: reference
 ms.date: 03/19/2021
 ms.author: davidmu
 ms.reviewer: sureshja, saumadan
-ms.openlocfilehash: 3f94c7eae439303f2954b8ab62f499b789902e79
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e52f06d102c98979005c08f51ef394c29389bbce
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619934"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553303"
 ---
-# <a name="azure-active-directory-application-management-certificates-frequently-asked-questions"></a>Forum aux questions sur les certificats de gestion d’application Azure Active Directory
+# <a name="application-management-certificates-frequently-asked-questions"></a>Forum aux questions sur les certificats de gestion d’application
 
 Cette page contient les réponses du forum aux questions sur la gestion des certificats pour les applications en utilisant Azure Active Directory (Azure AD) en tant que fournisseur d’identité (IdP).
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/1/2021
 ms.author: jol
-ms.openlocfilehash: 6445f26494394e551795390f29d16b59fca877d7
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 2246b54b6831d0e88581c80aedc4e39388c6f377
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511418"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327383"
 ---
 # <a name="smb-over-quic-with-automanage-machine-best-practices"></a>SMB sur QUIC avec les bonnes pratiques des machines Automanage
 
@@ -24,7 +24,7 @@ Par ailleurs, SMB sur QUIC est intégré aux bonnes pratiques des machines Autom
 ## <a name="how-to-get-started"></a>Pour commencer
 
 > [!NOTE]
-> Pour connaître les prérequis de l’utilisation des bonnes pratiques des machines Automanage, consultez [Activer sur les machines virtuelles dans le portail Azure](quick-create-virtual-machines-portal.md). 
+> Pour connaître les prérequis de l’utilisation des bonnes pratiques des machines Automanage, consultez [Activer sur les machines virtuelles dans le portail Azure](quick-create-virtual-machines-portal.md).
 
 > [!NOTE]
 > Pendant la phase de préversion, vous pouvez démarrer dans le portail en utilisant [ce lien](https://aka.ms/automanage-ws-portal-preview).
@@ -34,10 +34,12 @@ Par ailleurs, SMB sur QUIC est intégré aux bonnes pratiques des machines Autom
 Pour activer les bonnes pratiques des machines Automanage pour SMB sur QUIC sur une machine virtuelle, suivez ces étapes :
 
 1. Connectez-vous au portail Azure à l’aide du lien de préversion ci-dessus.
+
 2. Créez une machine virtuelle Azure avec l’image _Windows server 2022 Datacenter : édition Azure_ pour obtenir les fonctionnalités d’Automanage pour Windows Server, notamment SMB sur QUIC.
+
 3. Sous l’onglet **Gestion**, pour le paramètre Environnement Azure Automanage, choisissez **Dev/Test** ou **Production** afin d’activer les bonnes pratiques des machines Automanage.
 
-:::image type="content" source="media\automanage-smb-over-quic\create-vm-automanage-setting.png" alt-text="Activer Automanage pendant la création d’une machine virtuelle.":::
+    :::image type="content" source="media\automanage-smb-over-quic\create-vm-automanage-setting.png" alt-text="Activer Automanage pendant la création d’une machine virtuelle.":::
 
 4. Configurez les paramètres supplémentaires nécessaires et créez la machine virtuelle.
 
@@ -48,7 +50,7 @@ Vous pouvez également activer les bonnes pratiques Automanage pour une machine 
 1. Accédez à la machine virtuelle que vous avez créée précédemment.
 2. Sélectionnez le menu Automanage, choisissez l’environnement **Dev/Test** ou **Production**, puis cliquez sur **Activer**.
 
-:::image type="content" source="media\automanage-smb-over-quic\vm-enable-automanage.png" alt-text="Activer Automanage pour une machine virtuelle existante.":::
+    :::image type="content" source="media\automanage-smb-over-quic\vm-enable-automanage.png" alt-text="Activer Automanage pour une machine virtuelle existante.":::
 
 ## <a name="viewing-automanage-best-practice-compliance"></a>Vérification de la conformité aux bonnes pratiques Automanage
 

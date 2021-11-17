@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/10/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a1cc9d12e6a24820b5b84f8a1a275d8451d6247
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 23146fecfcb27e8f468a693804fff5e559866b38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776934"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522020"
 ---
 # <a name="smb-file-shares-in-azure-files"></a>Partages de fichiers SMB dans Azure Files
-Azure Files offre deux protocoles standard de l’industrie pour le montage du partage de fichiers Azure : le protocole [SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) et le protocole [NFS (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) (préversion). Azure Files vous permet de choisir le protocole de système de fichiers le mieux adapté à votre charge de travail. Les partages de fichiers Azure ne prennent pas en charge l’accès à un partage de fichiers Azure individuel avec les protocoles SMB et NFS, même si vous pouvez créer des partages de fichiers SMB et NFS au sein du même compte de stockage. Pour tous les partages de fichiers, Azure Files propose des partages de fichiers d’entreprise qui peuvent être mis à l’échelle pour répondre à vos besoins de stockage et accessibles simultanément par des milliers de clients.
+Azure Files propose deux protocoles standard pour le montage d’un partage de fichiers Azure : le protocole [SMB](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) et le protocole [NFS](https://en.wikipedia.org/wiki/Network_File_System). Azure Files vous permet de choisir le protocole de système de fichiers le mieux adapté à votre charge de travail. Les partages de fichiers Azure ne prennent pas en charge l’accès à un partage de fichiers Azure individuel avec les protocoles SMB et NFS, même si vous pouvez créer des partages de fichiers SMB et NFS au sein du même compte de stockage. Pour tous les partages de fichiers, Azure Files propose des partages de fichiers d’entreprise qui peuvent être mis à l’échelle pour répondre à vos besoins de stockage et accessibles simultanément par des milliers de clients.
 
 Cet article traite des partages de fichiers Azure SMB. Pour plus d’informations sur les partages de fichiers NFS Azure, consultez [partages de fichiers NFS dans Azure Files](files-nfs-protocol.md).
 

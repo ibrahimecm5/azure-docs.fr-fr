@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/21/2021
+ms.date: 11/05/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: b480b86b75f87232dc5560b620fc11a58a070ae6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ec3a5feefa41a1bd0bb0448321fc87f7e11a55d9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557487"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136288"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sécuriser un environnement d’entraînement Azure Machine Learning à l’aide de réseaux virtuels
 
@@ -28,7 +28,7 @@ Dans cet article, vous allez apprendre à sécuriser les environnements d’entr
 > * [Présentation du réseau virtuel](how-to-network-security-overview.md)
 > * [Sécuriser les ressources d’espace de travail](how-to-secure-workspace-vnet.md)
 > * [Sécuriser l’environnement d’inférence](how-to-secure-inferencing-vnet.md)
-> * [Activer les fonctionnalités du studio](how-to-enable-studio-virtual-network.md)
+> * [Activer les fonctionnalités de Studio](how-to-enable-studio-virtual-network.md)
 > * [Utiliser le DNS personnalisé](how-to-custom-dns.md)
 > * [Utiliser un pare-feu](how-to-access-azureml-behind-firewall.md)
 >
@@ -326,6 +326,6 @@ Cet article fait partie d’une série sur la sécurisation d’un workflow Azur
 * [Présentation du réseau virtuel](how-to-network-security-overview.md)
 * [Sécuriser les ressources d’espace de travail](how-to-secure-workspace-vnet.md)
 * [Sécuriser l’environnement d’inférence](how-to-secure-inferencing-vnet.md)
-* [Activer les fonctionnalités du studio](how-to-enable-studio-virtual-network.md)
+* [Activer les fonctionnalités de Studio](how-to-enable-studio-virtual-network.md)
 * [Utiliser le DNS personnalisé](how-to-custom-dns.md)
 * [Utiliser un pare-feu](how-to-access-azureml-behind-firewall.md)

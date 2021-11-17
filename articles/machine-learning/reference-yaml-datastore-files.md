@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Documentation de référence pour le schéma YAML de magasin de données Azure Files avec l’interface CLI (v2).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: reference
 author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 63d1d2f6be0febea3404431b812e59aea356ac94
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d70634b1df1ab194ef4f52c9b12ac982f023c53a
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062716"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136331"
 ---
 # <a name="cli-v2-azure-files-datastore-yaml-schema"></a>Schéma YAML de magasin de données Azure Files avec l’interface CLI (v2)
 
@@ -32,7 +32,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 | `name` | string | **Obligatoire.** Nom du magasin de données. | | |
 | `description` | string | Description du magasin de données. | | |
 | `tags` | object | Dictionnaire d’étiquettes pour le magasin de données. | | |
-| `account_name` | string | **Obligatoire.** Nom du compte Stockage Azure. | | |
+| `account_name` | string | **Obligatoire.** Nom du compte de stockage Azure. | | |
 | `file_share_name` | string | **Obligatoire.** Nom du partage de fichiers. | | |
 | `endpoint` | string | Suffixe du point de terminaison du service de stockage, utilisé pour créer l’URL du point de terminaison du compte de stockage en combinant le nom du compte de stockage et `endpoint`. Exemple d’URL de compte de stockage : `https://<storage-account-name>.file.core.windows.net`. | | `core.windows.net` |
 | `protocol` | string | Protocole à utiliser pour se connecter au partage de fichiers. | `https` | `https` |

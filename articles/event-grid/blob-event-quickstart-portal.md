@@ -3,12 +3,12 @@ title: Utiliser Azure Event Grid pour envoyer des événements de stockage d’o
 description: 'Démarrage rapide : Utilisez Azure Event Grid et le portail Azure pour créer un compte de stockage d’objets blob, et abonnez-vous à ses événements. Envoyez les événements à un webhook.'
 ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 9f4f552f4f6a796bef0fcfb011c34317500500f2
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 62ab7d3196b00f1d59038928a01f3ba50614cbe2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219089"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278585"
 ---
 # <a name="use-azure-event-grid-to-route-blob-storage-events-to-web-endpoint-azure-portal"></a>Utiliser Azure Event Grid pour acheminer des événements de stockage d’objet blob vers le point de terminaison web (portail Azure)
 Event Grid est un service entièrement géré qui vous permet de facilement gérer des événements dans de nombreux services et applications Azure. Il simplifie la création d’applications pilotées par les événements et serverless. Pour une présentation du service, consultez [Vue d’ensemble d’Event Grid](overview.md).
@@ -53,7 +53,7 @@ Avant de nous abonner aux événements du stockage d’objets blob, nous allons 
 
 1. Sélectionnez **Déployer sur Azure** pour déployer la solution sur votre abonnement. 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to deploy to Azure."></a>
 2. Dans la page **Déploiement personnalisé**, procédez comme suit : 
     1. Pour **Groupe de ressources**, sélectionnez le groupe de ressources que vous avez créé lors de la création du compte de stockage. Il sera plus facile pour vous de nettoyer une fois que vous aurez terminé le tutoriel en supprimant le groupe de ressources.  
     2. Pour **Nom du site**, entrez un nom pour l’application web.

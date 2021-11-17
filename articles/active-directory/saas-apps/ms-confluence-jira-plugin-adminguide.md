@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9716b9d7fc89ba789ef44f44bafbd64340256da1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359155"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300334"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Guide de l’administrateur Atlassian Jira et Confluence pour Azure Active Directory
 
@@ -159,7 +159,7 @@ L’image suivante montre l’écran de configuration dans Jira et Confluence :
 
 * **Erreur « Application introuvable » dans Azure AD** : Vérifiez si l’URL appropriée est mappée à l’application dans Azure AD.
 
-* **Vous avez besoin d’une assistance ?**  : Contactez l’[équipe d’intégration Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Elle répond dans un délai de 24 à 48 heures.
+* **Vous avez besoin d’une assistance ?**  : Contactez l’[équipe d’intégration Azure AD SSO](mailto:SaaSApplicationIntegrations@service.microsoft.com). Elle répond dans un délai de 24 à 48 heures.
 
   Vous pouvez également créer un ticket de support auprès de Microsoft par le biais du portail Azure.
 
@@ -211,7 +211,7 @@ Un redémarrage n’est pas nécessaire. Vous pouvez commencer à utiliser le pl
 
 ### <a name="how-do-i-get-support-for-the-plug-in"></a>Comment obtenir du support pour le plug-in ?
 
-Vous pouvez contacter [l’équipe d’intégration Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) pour tout support nécessaire pour ce plug-in. Elle répond dans un délai de 24 à 48 heures.
+Vous pouvez contacter [l’équipe d’intégration Azure AD SSO](mailto:SaaSApplicationIntegrations@service.microsoft.com) pour tout support nécessaire pour ce plug-in. Elle répond dans un délai de 24 à 48 heures.
 
 Vous pouvez également créer un ticket de support auprès de Microsoft par le biais du portail Azure.
 

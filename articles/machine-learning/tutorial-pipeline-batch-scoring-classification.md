@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Dans ce tutoriel, vous créez un pipeline Machine Learning pour effectuer un scoring par lots. Concentrez-vous sur le machine learning plutôt que sur l’infrastructure et l’automatisation.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: tutorial
 author: lobrien
 ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 0fee13de8a1af520564004f029fa616f5ebb1119
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: db24cbb9bcff2f37969ce61f4101e9b2133800aa
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459475"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133740"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutoriel : Créer un pipeline Azure Machine Learning pour le scoring par lots
 

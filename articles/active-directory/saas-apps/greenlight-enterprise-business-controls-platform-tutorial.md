@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 0bd58a46bc67a7ca67cb262c7d7aeaa19d64b5ed
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3b80c7c8c0a3fa0a61270146d7d3ec79a1d88774
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427719"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311486"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-greenlight-enterprise-business-controls-platform"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Greenlight Enterprise Business Controls Platform
 
@@ -144,4 +144,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Greenlight Enterprise Business Controls Platform, vous pouvez appliquer un contrôle de session qui protège l'exfiltration et l'infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré Greenlight Enterprise Business Controls Platform, vous pouvez appliquer un contrôle de session qui protège l'exfiltration et l'infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

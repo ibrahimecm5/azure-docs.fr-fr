@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: 0fc2b11f924a5ae50cf1f6ae96f0ed82ab1813ad
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 41dfcdf3a30084eafebcda70a4385508a432a3c0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131041066"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279516"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Démarrage rapide : Créer, interroger et parcourir une base de données de graphe Azure Cosmos DB à l’aide de la console Gremlin
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -77,7 +77,7 @@ Vous devez également installer la [console Gremlin](https://tinkerpop.apache.or
    ```yaml
    hosts: [your_database_server.gremlin.cosmos.azure.com] 
    port: 443
-   username: /dbs/your_database_account/colls/your_collection
+   username: /dbs/your_database/colls/your_collection
    password: your_primary_key
    connectionPool: {
      enableSsl: true
@@ -103,7 +103,7 @@ Parfait ! L’installation étant terminée, exécutons quelques commandes de c
 
 Essayons une simple commande count(). Lorsque l’invite de commandes s’affiche, saisissez ce qui suit dans la console :
 
-```java
+```console
 g.V().count()
 ```
 
@@ -113,7 +113,7 @@ Commençons par ajouter des vertex pour cinq personnes : *Thomas*, *Mary Kay*,
 
 Entrée (Thomas) :
 
-```java
+```console
 g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1).property('pk', 'pk')
 ```
 
@@ -125,7 +125,7 @@ Sortie :
 
 Entrée (Mary Kay) :
 
-```java
+```console 
 g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2).property('pk', 'pk')
 
 ```
@@ -139,7 +139,7 @@ Sortie :
 
 Entrée (Robin) :
 
-```java
+```console 
 g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3).property('pk', 'pk')
 ```
 
@@ -151,7 +151,7 @@ Sortie :
 
 Entrée (Ben) :
 
-```java
+```console 
 g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4).property('pk', 'pk')
 
 ```
@@ -164,7 +164,7 @@ Sortie :
 
 Entrée (Jack) :
 
-```java
+```console
 g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5).property('pk', 'pk')
 ```
 
@@ -179,7 +179,7 @@ Ensuite, ajoutons des bords pour les relations entre ces personnes.
 
 Entrée (Thomas -> Mary Kay) :
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
@@ -191,7 +191,7 @@ Sortie :
 
 Entrée (Thomas -> Robin) :
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
@@ -203,7 +203,7 @@ Sortie :
 
 Entrée (Robin -> Ben) :
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
@@ -218,7 +218,7 @@ Sortie :
 Nous allons mettre à jour le vertex *Thomas* avec un nouvel âge : *45*.
 
 Entrée :
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 Sortie :
@@ -235,7 +235,7 @@ Tout d’abord, essayons une requête avec un filtre pour retourner uniquement l
 
 Entrée (requête de filtre) :
 
-```java
+```console
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
@@ -249,7 +249,7 @@ Ensuite, projetons le premier nom parmi les personnes de plus de 40 ans.
 
 Entrée (filtre + requête de projection) :
 
-```java
+```console 
 g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
@@ -265,7 +265,7 @@ Parcourons le graphique pour retourner tous les amis de Thomas.
 
 Entrée (amis de Thomas) :
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
@@ -280,7 +280,7 @@ Ensuite, nous allons obtenir la couche suivante de vertex. Parcourons le graphiq
 
 Entrée (amis des amis de Thomas) :
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 Sortie :
@@ -295,7 +295,7 @@ Nous allons à présent supprimer un vertex de la base de données des graphique
 
 Entrée (suppression du vertex de Jack) :
 
-```java
+```console 
 g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
@@ -305,7 +305,7 @@ Enfin, nous allons supprimer tous les vertex et bords de la base de données.
 
 Entrée :
 
-```java
+```console
 g.E().drop()
 g.V().drop()
 ```

@@ -1,19 +1,19 @@
 ---
 title: Créer un IoT Hub Azure à l’aide d’un modèle (PowerShell) | Microsoft Docs
 description: Comment utiliser un modèle Azure Resource Manager pour créer un hub IoT avec Azure PowerShell.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c2119cbc3d520b1fcf7c5efd094fd26ddb3d1c19
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0efd7f4c8106408a870e90de2f3adebe1c80f2b4
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524783"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552429"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Créer un IoT Hub avec un modèle Azure Resource Manager (PowerShell)
 

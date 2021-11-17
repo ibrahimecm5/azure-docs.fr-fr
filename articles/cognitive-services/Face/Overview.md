@@ -11,19 +11,17 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: reconnaissance faciale, logiciel de reconnaissance faciale, analyse faciale, correspondance de visage, application de reconnaissance faciale, recherche de visage par image, recherche de reconnaissance faciale
-ms.openlocfilehash: 25e79bb8ab2d37c5b32a6519158cd53d79c1d94b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 370d6c17dfaf2d3544506e4e2ab4218f1a48d1fa
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071417"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370799"
 ---
 # <a name="what-is-the-azure-face-service"></a>Présentation du service Visage Azure
 
 > [!WARNING]
 > Le 11 juin 2020, Microsoft a annoncé qu’il ne vendra pas de technologie de reconnaissance faciale aux services de police des États-Unis tant qu’un règlement strict fondé sur les droits de l’homme n’aura pas été promulgué. Par conséquent, les clients ne doivent pas utiliser les fonctionnalités de reconnaissance faciale ni les fonctionnalités comprises dans les services Azure comme Visage ou Video Indexer, s’ils représentent, ou autorisent l’utilisation de ces services par ou pour, un service de police des États-Unis. Lorsque vous créez une ressource Visage, vous devez, dans le portail Azure, indiquer que vous avez compris et que vous acceptez de ne pas utiliser le service par ou pour un service de police aux États-Unis et que vous avez consulté la [documentation sur l’IA responsable (RAI)](../cognitive-services-apis-create-account-cli.md#prerequisites) et que vous utiliserez ce service conformément à cette documentation.
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Le service Visage Azure fournit les algorithmes d’intelligence artificielle qui détectent, reconnaissent et analysent les visages humains dans des images. Le logiciel de reconnaissance faciale est important dans de nombreux scénarios, comme la vérification de l’identité, le contrôle d’accès sans contact et le floutage des visages à des fins de confidentialité.
 

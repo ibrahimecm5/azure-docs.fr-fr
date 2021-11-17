@@ -10,12 +10,12 @@ ms.author: siarora
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 224ee0d4cc789349151bdc75ab164cc123119105
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 809f87ea7d8c4bdf3c6f21fe742ef5a5f2b595d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564857"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335629"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Gérer et augmenter les quotas pour les ressources avec Azure Machine Learning
 
@@ -119,8 +119,8 @@ Pour déterminer l’utilisation actuelle d’un point de terminaison, [affichez
 | Nombre d’instances par déploiement | 20 |
 | Délai d’expiration maximal des demandes au niveau du point de terminaison  | 90 secondes |
 | Nombre total de requêtes par seconde au niveau du point de terminaison pour tous les déploiements  | 500 <sup>2</sup> |
-| Nombre total de connexions par seconde au niveau du point de terminaison pour tous les déploiements  | 100 <sup>2</sup> |
-| Nombre total de connexions actives au niveau du point de terminaison pour tous les déploiements  | 100 <sup>2</sup> |
+| Nombre total de connexions par seconde au niveau du point de terminaison pour tous les déploiements  | 500 <sup>2</sup> |
+| Nombre total de connexions actives au niveau du point de terminaison pour tous les déploiements  | 500 <sup>2</sup> |
 | Bande passante totale au niveau du point de terminaison pour tous les déploiements  | 5 Mbits/s <sup>2</sup> |
 
 <sup>1</sup> Les tirets simples, comme dans `my-endpoint-name`, sont acceptés dans les noms des points de terminaison et des déploiements.

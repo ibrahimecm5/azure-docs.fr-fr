@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 11/03/2021
 ms.author: jehollan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 416acf3e22613f0bffdd0a0e63cad156a2dd891d
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 0ac05794b42e91060e604a9d6921547150eb6706
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028493"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309993"
 ---
 # <a name="comparing-container-apps-with-other-azure-container-options"></a>Comparaison des applications conteneur à d’autres options de conteneur Azure
 
 Les équipes disposent de nombreuses options pour créer et déployer des applications conteneurisées cloud natives sur Azure. Cet article vous aide à comprendre les scénarios et les cas d’utilisation les mieux adaptés à Azure Container Apps et en quoi il diffère d’autres options de conteneur sur Azure, notamment :  
-- [Azure Container Instances](#azure-container-instances)
 - [Azure App Service](#azure-app-service)
-- [Azure Functions](#azure-functions)
+- [Azure Container Instances](#azure-container-instances)
 - [Azure Kubernetes Service](#azure-kubernetes-service)
+- [Azure Functions](#azure-functions)
 - [Azure Spring Cloud](#azure-spring-cloud)
 
 Aucune solution ne convient parfaitement à chaque cas d’utilisation et chaque équipe. L’explication suivante vous fournit des recommandations générales comme point de départ pour rechercher la solution la mieux adaptée à votre équipe et à vos exigences.
@@ -40,7 +40,6 @@ Azure Container Apps vous permet de créer des microservices serverless basés s
 * Prend en charge les applications de type Kubernetes et les microservices avec des fonctionnalités comme la [découverte du service](connect-apps.md) et la [répartition du trafic](revisions.md).
 * Autorise les architectures d’application pilotées par les événements en prenant en charge la mise à l’échelle en fonction du trafic et en tirant des données à partir de [sources d’événements comme les files d’attente](scale-app.md), y compris la [mise à l’échelle sur 0](scale-app.md).
 * Prend en charge les processus de longue durée et peut exécuter des [tâches en arrière-plan](background-processing.md).
-* Toutes les applications conteneur sont compatibles Kubernetes.
 
 Azure Container Apps ne fournit pas d’accès direct aux API Kubernetes sous-jacentes. Si vous avez besoin d’accéder aux API Kubernetes et au plan de contrôle, vous devez utiliser [Azure Kubernetes Service](../aks/intro-kubernetes.md). Toutefois, pour créer des applications de type Kubernetes sans accès direct à l’ensemble des API Kubernetes natives et à la gestion des clusters, Container Apps fournit une expérience complètement managée s’inspirant des bonnes pratiques. Pour ces raisons, de nombreuses équipes peuvent préférer utiliser Azure Container Apps pour commencer à créer des microservices de conteneur.
 

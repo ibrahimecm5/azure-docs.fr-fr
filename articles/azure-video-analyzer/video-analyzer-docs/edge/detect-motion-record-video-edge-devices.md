@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 305bd0f21e9143df5b28998689992a03351b5a8e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 84dbe38e69b9dea259c570ef229927b75aefbe23
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029172"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493417"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Démarrage rapide : Détecter les mouvements et enregistrer des vidéos sur des appareils de périphérie
 
@@ -32,7 +32,7 @@ Ce guide de démarrage rapide vous montre comment utiliser Azure Video Analyzer 
 
 Quand vous configurez les ressources Azure pour ce guide de démarrage rapide, une courte vidéo d’une aire de stationnement est copiée dans Azure sur la machine virtuelle Linux qui est utilisée comme appareil IoT Edge. Ce fichier vidéo permet de simuler un flux en direct pour ce tutoriel.
 
-Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/), sélectionnez Ctrl+N, puis collez [ce lien](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) dans la vidéo de l’aire de stationnement pour commencer la lecture. Au repère d’approximativement 5 secondes, une voiture blanche traverse l’aire de stationnement.
+Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/), sélectionnez Ctrl+N, puis collez [ce lien](https://avamedia.blob.core.windows.net/public/lots_015.mkv) dans la vidéo de l’aire de stationnement pour commencer la lecture. Au repère d’approximativement 5 secondes, une voiture blanche traverse l’aire de stationnement.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

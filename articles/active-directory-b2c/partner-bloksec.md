@@ -12,12 +12,12 @@ ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 15d98a7b24c2312f781f5d1e60721d99cbb2e63a
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 8e955a50ed85710c0a3a33680b1edc4ef5873da6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131988537"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135517"
 ---
 # <a name="tutorial-configure-azure-active-directory-b2c-with-bloksec-for-passwordless-authentication"></a>Tutoriel : configurer Azure Active Directory B2C avec BlokSec pour une authentification sans mot de passe
 
@@ -54,7 +54,7 @@ Le diagramme d’architecture suivant illustre l’implémentation.
 
 ## <a name="onboard-to-bloksec"></a>Intégration à BlokSec
 
-Demandez un locataire de démonstration avec BlokSec en remplissant [le formulaire](https://bloksec.com/request-a-demo/). Dans champ du message, indiquez que vous souhaitez intégrer à Azure AD B2C. Téléchargez et installez l’application mobile BlokSec yuID gratuite depuis l’App Store. Lorsque votre locataire de démonstration est préparé, vous recevez un e-mail. Sur votre appareil mobile sur lequel l’application BlokSec est installée, sélectionnez le lien pour inscrire votre compte administrateur auprès de votre application yuID.
+Demandez un locataire de démonstration avec BlokSec en remplissant [le formulaire](https://bloksec.com/). Dans champ du message, indiquez que vous souhaitez intégrer à Azure AD B2C. Téléchargez et installez l’application mobile BlokSec yuID gratuite depuis l’App Store. Lorsque votre locataire de démonstration est préparé, vous recevez un e-mail. Sur votre appareil mobile sur lequel l’application BlokSec est installée, sélectionnez le lien pour inscrire votre compte administrateur auprès de votre application yuID.
 
 ::: zone pivot="b2c-user-flow"
 

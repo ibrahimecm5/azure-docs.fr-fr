@@ -3,13 +3,13 @@ title: 'Démarrage rapide : Configurer et activer le micro-agent Defender-IoT p
 description: Suivez ce guide de démarrage rapide afin d'apprendre à intégrer et activer le micro-agent Defender-IoT pour le service Azure RTOS dans votre hub Azure IoT.
 services: defender-for-iot
 ms.topic: quickstart
-ms.date: 07/01/2021
-ms.openlocfilehash: 11705b33efcd594296dea087e0aaf914cb494a0c
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.date: 11/09/2021
+ms.openlocfilehash: 1fc60bd489931cd802ccc8f14cdfca12120ec2ff
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138510"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293494"
 ---
 # <a name="quickstart-defender-iot-micro-agent-for-azure-rtos"></a>Démarrage rapide : Micro-agent Defender IoT pour Azure RTOS
 

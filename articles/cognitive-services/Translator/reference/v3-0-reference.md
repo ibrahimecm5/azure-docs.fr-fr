@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 777ee0bcbf139c9edc9e4715133faec3318f692b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5ead71fc6dd4fdbea8db6d4915c145c5a60a071f
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131434500"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135476"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -119,8 +119,6 @@ Quand vous utilisez une clé secrète multiservice, vous devez inclure deux en-t
 |Ocp-Apim-Subscription-Region| La valeur est la région de la ressource multiservice. |
 
 La région est obligatoire pour l’abonnement à l’API Texte multiservice. La région que vous sélectionnez est la seule région que vous pouvez utiliser pour la traduction de texte lors de l’utilisation de la clé d’abonnement multiservice. En outre, il doit s’agir de la même région que celle sélectionnée lors de la souscription à votre abonnement multiservice via le portail Microsoft Azure.
-
-Les régions disponibles sont `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2` et `southafricanorth`.
 
 Si vous passez la clé secrète dans la chaîne de requête avec le paramètre `Subscription-Key`, vous devez spécifier la région avec le paramètre de requête `Subscription-Region`.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: c459db2d895042d9edfa4bada8b730c96b95ed55
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 05fa6b97b571bc76e6ad87485e2fb9d0459671b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129403199"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132311238"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-hiretual-sso"></a>Tutoriel : Intégration de l’authentification unique Azure AD à Hiretual-SSO
 
@@ -103,7 +103,7 @@ Effectuez les étapes suivantes pour activer l’authentification unique Azure A
 
     ![Lien Téléchargement de certificat](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Créer un utilisateur de test Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Créer un utilisateur de test Azure AD
 
 Dans cette section, vous allez créer un utilisateur de test appelé B. Simon dans le portail Azure.
 
@@ -115,7 +115,7 @@ Dans cette section, vous allez créer un utilisateur de test appelé B. Simon da
    1. Cochez la case **Afficher le mot de passe**, puis notez la valeur affichée dans le champ **Mot de passe**.
    1. Cliquez sur **Créer**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Affecter l’utilisateur de test Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Affecter l’utilisateur de test Azure AD
 
 Dans cette section, vous allez autoriser B.Simon à utiliser l’authentification unique Azure en lui accordant l’accès à Hiretual-SSO.
 
@@ -127,7 +127,7 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
-## <a name=&quot;configure-hiretual-sso&quot;></a>Configurer Hiretual-SSO
+## <a name="configure-hiretual-sso"></a>Configurer Hiretual-SSO
 
 1. Connectez-vous à votre site d’entreprise Hiretual-SSO en tant qu’administrateur.
 
@@ -135,7 +135,7 @@ Dans cette section, vous allez autoriser B.Simon à utiliser l’authentificatio
 
 1. Dans la page **SAML2.0 Authentication**, effectuez les étapes suivantes :
 
-    ![Capture d’écran montrant la page configuration SSO.](./media/hiretual-tutorial/configuration.png &quot;SSO Configuration")
+    ![Capture d’écran montrant la page configuration SSO.](./media/hiretual-tutorial/configuration.png "SSO Configuration")
 
     1. Dans la zone de texte **SAML2.0 SSO URL**, collez la valeur **User access URL** que vous avez copiée dans le portail Azure.
 
@@ -174,4 +174,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré l’authentification unique Hiretual-SSO, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad).
+Une fois que vous avez configuré l’authentification unique Hiretual-SSO, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).

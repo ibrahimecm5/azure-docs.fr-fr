@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Documentation de référence sur le schéma YAML de déploiement en ligne géré avec l’interface CLI (v2).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: reference
 author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: bb04bfb69052fab8224b70206b3c4cf680f20769
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 82c215dd0b7bccfcb53da0952cba82f89105c38a
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555885"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137850"
 ---
 # <a name="cli-v2-managed-online-deployment-yaml-schema"></a>Schéma YAML de déploiement en ligne géré avec l’interface CLI (v2)
 
@@ -27,7 +27,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description | Valeurs autorisées | Valeur par défaut |
 | --- | ---- | ----------- | -------------- | ------------- |
-| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code Azure Machine Learning pour créer le fichier YAML, en incluant `$schema` en haut de votre fichier, vous pouvez appeler des complétions de schémas et de ressources. | | |
+| `$schema` | string | Schéma YAML. Si vous utilisez l’extension VS Code d’Azure Machine Learning pour créer le fichier YAML, l’inclusion de `$schema` en haut de votre fichier vous permet d’appeler des exécutions de schéma et de ressource. | | |
 | `name` | string | **Obligatoire.** Nom du déploiement. <br><br> Les règles de nommage sont définies [ici](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview).| | |
 | `description` | string | Description du déploiement. | | |
 | `tags` | object | Dictionnaire d’étiquettes pour le déploiement. | | |
@@ -71,21 +71,21 @@ La commande `az ml online-deployment` peut être utilisée pour gérer les dépl
 
 ## <a name="examples"></a>Exemples
 
-Des exemples sont disponibles dans le [dépôt d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online). Vous en trouverez plusieurs ci-dessous.
+Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online). Vous en trouverez plusieurs ci-dessous.
 
 ## <a name="yaml-basic"></a>YAML : de base
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/blue-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml":::
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/green-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/green-deployment.yml":::
 
 ## <a name="yaml-system-assigned-identity"></a>YAML : identité affectée par le système
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
 ## <a name="yaml-user-assigned-identity"></a>YAML : identité affectée par l’utilisateur
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-uai-deployment.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

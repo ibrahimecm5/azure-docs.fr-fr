@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 220995b286824b2daf2eb79c6b0ec917c5549263
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 243139219259c3b4be95010df988cf30256ca204
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132061960"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484098"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema"></a>Préparer des données et définir un schéma
 
@@ -47,7 +47,7 @@ En guise de prérequis à la création d’un projet de classification de texte 
 * [Créer et charger des fichiers à partir d’Azure](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 * [Créer et charger des fichiers en utilisant l’Explorateur Stockage Azure](/azure/vs-azure-tools-storage-explorer-blobs)
 
-Vous ne pouvez utiliser que des fichiers `.txt` fichiers de texte personnalisé. Si vos données sont dans un autre format, vous pouvez utiliser la [commande d’analyse CLUtils](https://github.com/microsoft/CogSLanguageUtilities/blob/main/CLUtils/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) pour changer de format de fichier.
+Vous ne pouvez utiliser que des fichiers `.txt` fichiers de texte personnalisé. Si vos données sont dans un autre format, vous pouvez utiliser la [commande d’analyse CLUtils](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/main/CustomTextAnalytics.CLUtils/Solution/CogSLanguageUtilities.ViewLayer.CliCommands/Commands/ParseCommand/README.md) pour changer de format de fichier.
 
  Vous pouvez charger un jeu de données annoté, ou charger un jeu non annoté et [étiqueter vos données](../how-to/tag-data.md) dans Language Studio. 
  

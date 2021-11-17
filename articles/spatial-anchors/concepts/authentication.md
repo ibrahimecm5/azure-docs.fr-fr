@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp, subject-rbac-steps
-ms.openlocfilehash: ef49c6ebd356c97466b9b5a744cc58584c42bcb7
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 7006cbf78e7a1a122837e7e2f294b161c230ee29
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126029"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137071"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Autorisation et authentification auprès d’Azure Spatial Anchors
 
@@ -112,7 +112,7 @@ Pour les applications qui ciblent des utilisateurs d’Azure Active Directory, n
         1.    Si votre application prend en charge **Mon organisation uniquement**, remplacez cette valeur par l’**ID de locataire** ou le **Nom du locataire**. Par exemple « contoso.microsoft.com ».
         2.    Si votre application prend en charge les **comptes dans un annuaire organisationnel**, remplacez cette valeur par **Organizations**.
         3.    Si votre application prend en charge **Tous les utilisateurs de compte Microsoft**, remplacez cette valeur par **Common**.
-3.    Sur votre demande de jeton, définissez l’**étendue** sur **« `https://sts.<account-domain>//.default` »** , où `<account-domain>` est remplacé par le **domaine de compte** de votre compte Azure Spatial Anchors. **« `https://sts.mixedreality.azure.com//.default` »** est un exemple d’étendue pour un compte Azure Spatial Anchors dans le domaine de compte USA Est 2. Cette étendue indique à Azure AD que votre application demande un jeton pour le service d’émission de jeton de sécurité (STS) Mixed Reality.
+3.    Sur votre demande de jeton, définissez l’**étendue** sur **`https://sts.mixedreality.azure.com//.default`** . Cette étendue indique à Azure AD que votre application demande un jeton pour le service d’émission de jeton de sécurité (STS) Mixed Reality.
 
 Une fois ces étapes effectuées, votre application devrait être en mesure d’obtenir un jeton Azure AD à partir de MSAL. Vous pouvez définir cette jeton Azure AD comme `authenticationToken` sur votre objet de configuration de session cloud :
 
@@ -181,7 +181,7 @@ Le jeton d’accès Azure AD est récupéré à l’aide de [MSAL](../../active-
 
 1.    Veillez à utiliser l’ID d’application, le secret d’application et l’URI de redirection de votre propre application Azure AD comme paramètres d’**ID client**, de **secret** et d’**URI de redirection** dans la bibliothèque MSAL.
 2.    Définissez comme ID de locataire votre propre ID de locataire Azure AD dans le paramètre d’**autorité** dans la bibliothèque MSAL.
-3.    Sur votre demande de jeton, définissez l’**étendue** sur **« `https://sts.<account-domain>//.default` »** , où `<account-domain>` est remplacé par le **domaine de compte** de votre compte Azure Spatial Anchors. **« `https://sts.mixedreality.azure.com//.default` »** est un exemple d’étendue pour un compte Azure Spatial Anchors dans le domaine de compte USA Est 2.
+3.    Sur votre demande de jeton, définissez l’**étendue** sur **`https://sts.mixedreality.azure.com//.default`** .
 
 Une fois ces étapes effectuées, votre service principal peut récupérer un jeton Azure AD. Il peut ensuite l’échanger contre un jeton MR qu’il renverra au client. L’utilisation d’un jeton Azure AD pour récupérer un jeton MR s’effectue par le biais d’un appel REST. Voici un exemple d’appel :
 

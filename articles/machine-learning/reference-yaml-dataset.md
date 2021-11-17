@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Documentation de référence pour le schéma YAML du modèle CLI (v2).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: reference
 author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b92324d61316ba59f964cff97ebbb9869d01dafb
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4a22fee30a28008fa440d606360623e156c332a0
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557981"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133679"
 ---
 # <a name="cli-v2-dataset-yaml-schema"></a>Schéma YAML du jeu de données CLI (v2)
 
@@ -39,7 +39,7 @@ Le schéma JSON source se trouve à l’adresse https://azuremlschemas.azureedge
 
 | Clé | Type | Description |
 | --- | ---- | ----------- |
-| `file` | string | URI d’un fichier utilisé comme source pour le jeu de données. Les types d’URI pris en charge sont `azureml`, `https`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire.** |
+| `file` | string | URI d’un fichier utilisé comme source pour le jeu de données. Les types d’URI pris en charge sont `azureml`, `https`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire**. |
 | `folder` | string | URI d’un dossier utilisé comme source pour le jeu de données. Les types d’URI pris en charge sont `azureml`, `https`, `wasbs`, `abfss` et `adl`. Pour plus d’informations sur l’utilisation du format d’URI `azureml://`, consultez [Syntaxe YAML fondamentale](reference-yaml-core-syntax.md). **`file` ou `folder` est obligatoire**. |
 
 ## <a name="remarks"></a>Remarques
@@ -52,35 +52,35 @@ Des exemples sont disponibles dans le [référentiel d’exemples GitHub](https:
 
 ## <a name="yaml-datastore-file"></a>YAML : fichier datastore
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file.yml":::
 
 ## <a name="yaml-datastore-folder"></a>YAML : dossier datastore
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder.yml":::
 
 ## <a name="yaml-https-file"></a>YAML : fichier https
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file-https.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file-https.yml":::
 
 ## <a name="yaml-https-folder"></a>YAML : dossier https
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder-https.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder-https.yml":::
 
 ## <a name="yaml-wasbs-file"></a>YAML : fichier wasbs
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file-wasbs.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file-wasbs.yml":::
 
 ## <a name="yaml-wasbs-folder"></a>YAML : dossier wasbs
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder-wasbs.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder-wasbs.yml":::
 
 ## <a name="yaml-local-file"></a>YAML : fichier local
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/local-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/local-file.yml":::
 
 ## <a name="yaml-local-folder"></a>YAML : dossier local
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/local-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/local-folder.yml":::
 
 ## <a name="next-steps"></a>Étapes suivantes
 

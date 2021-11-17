@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-clu, ignite-fall-2021
-ms.openlocfilehash: 697a42d32fd0af80737ad65a8350b719ffc5c7a6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 73ab3df8a7f13ec2c734206772f55bee626b871a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097012"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339931"
 ---
 # <a name="how-to-tag-utterances"></a>Baliser des énoncés
 
-Une fois que vous avez [créé un schéma](build-schema.md) pour votre projet, vous devez ajouter des énoncés d’apprentissage à votre projet. Les énoncés doivent être similaires à ce que vos utilisateurs utiliseront lors de l’interaction avec le projet. Lorsque vous ajoutez un énoncé, vous devez lui assigner l’intention à laquelle il appartient. Une fois l’énoncé ajouté, balisez les mots de votre énoncé avec les entités de votre projet. Vos balises pour les entités doivent être cohérentes entre les différents énoncés. 
+Une fois que vous avez [créé un schéma](build-schema.md) pour votre projet, vous devez ajouter des énoncés d’apprentissage à votre projet. Les énoncés doivent être similaires à ce que vos utilisateurs utiliseront lors de l’interaction avec le projet. Lorsque vous ajoutez un énoncé, vous devez lui assigner l’intention à laquelle il appartient. Une fois l’énoncé ajouté, balisez les mots de votre énoncé avec les entités de votre projet. Vos balises pour les entités doivent être cohérentes entre les différents énoncés.
 
 Le balisage est le processus qui consiste à assigner vos énoncés à des intentions et à les étiqueter avec des entités. Vous souhaiterez passer du temps à baliser vos énoncés, en introduisant et en affinant les données qui vont former les modèles de Machine Learning sous-jacents de votre projet. Les modèles de Machine Learning généralisent en fonction des exemples que vous fournissez. Plus vous fournissez d’exemples, plus il faut de points de données pour améliorer les généralisations.
 

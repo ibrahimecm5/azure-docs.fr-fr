@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 10/11/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 80a9701fb4d7ac3f93d7ba9c35cba2cc34dc7416
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c7e0ddee8e42f76c034ce79c7200e48fcb8bae04
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258541"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555904"
 ---
 # <a name="get-started-with-azure-service-bus-queues-net"></a>Bien démarrer avec les files d’attente Azure Service Bus (.NET)
 Dans ce guide de démarrage rapide, vous allez effectuer les étapes suivantes :
@@ -24,6 +24,7 @@ Dans ce guide de démarrage rapide, vous allez effectuer les étapes suivantes 
 > Ce guide de démarrage rapide fournit des instructions pas à pas pour un scénario simple qui consiste à envoyer et recevoir un lot de messages à une file d’attente Service Bus. Vous trouverez des exemples .NET prédéfinis pour Azure Service Bus dans le [dépôt du kit SDK Azure pour .NET sur GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples). 
 
 ## <a name="prerequisites"></a>Prérequis
+Si vous débutez avec le service, consultez [Vue d’ensemble de Service Bus](service-bus-messaging-overview.md) avant de suivre ce démarrage rapide. 
 
 - **Abonnement Azure**. Pour utiliser des services Azure, dont Azure Service Bus, vous avez besoin d’un abonnement. Si vous n’avez pas de compte Azure existant, vous pouvez demander un [essai gratuit](https://azure.microsoft.com/free/).
 - **Microsoft Visual Studio 2019**. La bibliothèque cliente Azure Service Bus utilise les nouvelles fonctionnalités introduites dans C# 8.0.  Vous pouvez toujours utiliser la bibliothèque avec les versions précédentes du langage C#, mais la nouvelle syntaxe ne sera pas disponible. Pour utiliser la syntaxe complète, nous vous recommandons d’effectuer la compilation avec la version 3.0 ou une version ultérieure du kit SDK .NET Core et la version du langage `latest`. Si vous utilisez Visual Studio, les versions antérieures à Visual Studio 2019 ne sont pas compatibles avec les outils nécessaires à la génération de projets C# 8.0.

@@ -13,14 +13,14 @@ ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c76498e27d7cba32e7129b1fcca57e20ab11cfb
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f80469924b9a4bbc53ac076751026071be2955ad
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061482"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550738"
 ---
-# <a name="hide-an-enterprise-application-in-azure-active-directory"></a>Masquer une application d’entreprise dans Azure Active Directory
+# <a name="hide-an-enterprise-application"></a>Masquer une application d’entreprise
 
 Découvrez comment masquer des applications d’entreprise dans Azure Active Directory. Lorsqu’une application est masquée, les utilisateurs ont toujours les autorisations à celle-ci.
 

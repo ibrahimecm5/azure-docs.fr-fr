@@ -1,21 +1,21 @@
 ---
 title: Création et téléchargement d’un disque dur virtuel Red Hat Enterprise Linux pour une utilisation dans Azure
 description: Apprenez à créer et à télécharger un disque dur virtuel (VHD) Azure contenant un système d'exploitation Red Hat Linux.
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 12/01/2020
-ms.author: danis
-ms.openlocfilehash: 24cccbbd1bed0fc4e1fbe357832095455dae7df8
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 11/10/2021
+ms.author: srijangupta
+ms.openlocfilehash: 11a7931126d451b2fbeff301a337f15fd6aecbf3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220007"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301226"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Préparation d'une machine virtuelle Red Hat pour Azure
 
@@ -349,12 +349,13 @@ Cette section suppose que vous avez déjà obtenu un fichier ISO depuis le site 
     Exécutez les commandes suivantes pour annuler le déploiement de la machine virtuelle et préparer son déploiement sur Azure :
 
     > [!CAUTION]
-    > Si vous migrez une machine virtuelle spécifique et que vous ne souhaitez pas créer d’image généralisée, ignorez l’étape de déprovisionnement. L’exécution de la commande `waagent -force -deprovision` rend la machine source inutilisable, cette étape est destinée uniquement à créer une image généralisée.
+    > Si vous migrez une machine virtuelle spécifique et que vous ne souhaitez pas créer d’image généralisée, ignorez l’étape de déprovisionnement. L’exécution de la commande `waagent -force -deprovision+user` rend la machine source inutilisable, cette étape est destinée uniquement à créer une image généralisée.
     ```console
-    # sudo waagent -force -deprovision
-
+    # sudo rm -f /var/log/waagent.log
+    # sudo cloud-init clean
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
     # export HISTSIZE=0
-
     # logout
     ```
     
@@ -536,14 +537,15 @@ Cette section suppose que vous avez déjà obtenu un fichier ISO depuis le site 
     Exécutez les commandes suivantes pour annuler le déploiement de la machine virtuelle et préparer son déploiement sur Azure :
 
     ```console
-    # sudo waagent -force -deprovision
-
+    # sudo cloud-init clean
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    # sudo rm -f /var/log/waagent.log
     # export HISTSIZE=0
-
     # logout
     ```
     > [!CAUTION]
-    > Si vous migrez une machine virtuelle spécifique et que vous ne souhaitez pas créer d’image généralisée, ignorez l’étape de déprovisionnement. L’exécution de la commande `waagent -force -deprovision` rend la machine source inutilisable, cette étape est destinée uniquement à créer une image généralisée.
+    > Si vous migrez une machine virtuelle spécifique et que vous ne souhaitez pas créer d’image généralisée, ignorez l’étape de déprovisionnement. L’exécution de la commande `waagent -force -deprovision+user` rend la machine source inutilisable, cette étape est destinée uniquement à créer une image généralisée.
 
 
 1. Cliquez sur **Action** > **Arrêter** dans le Gestionnaire Hyper-V. Votre disque dur virtuel Linux est alors prêt pour le téléchargement dans Azure.

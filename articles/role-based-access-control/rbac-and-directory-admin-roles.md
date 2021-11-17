@@ -15,12 +15,12 @@ ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: d339f058e94f27c26b4d5ae9bfcce4c66f279554
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f5e989394b42cb0f880ce6caa5ad069f53445c9e
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463634"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373160"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Rôles d’administrateur d’abonnement classique, rôles Azure et rôles Azure AD
 
@@ -124,7 +124,7 @@ Par défaut, les rôles Azure et les rôles Azure AD ne couvrent pas Azure et Az
 
 Plusieurs rôles Azure AD couvrent Azure AD et Microsoft 365, tels que les rôles d’administrateur général et d’administrateur d’utilisateurs. Par exemple, si vous êtes membre du rôle Administrateur général, vous disposez des fonctionnalités de l’administrateur général dans Azure AD et Microsoft 365, avec par exemple la possibilité d’apporter des changements dans Microsoft Exchange et Microsoft SharePoint. Toutefois, par défaut, l’administrateur général n’a pas accès aux ressources Azure.
 
-![Rôles RBAC Azure et rôles Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
+![Rôles RBAC Azure et rôles Azure AD](./media/rbac-and-directory-admin-roles/azure-roles-azure-ad-roles.png)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
