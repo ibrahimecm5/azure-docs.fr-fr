@@ -11,7 +11,7 @@
 - name: Démarrages rapides
   expanded: true
   items:
-    - name: Sauvegarder une machine virtuelle - Portail
+    - name: Sauvegarder une machine virtuelle - Portail Azure
       href: quick-backup-vm-portal.md
     - name: Sauvegarder une machine virtuelle - PowerShell
       href: quick-backup-vm-powershell.md
@@ -20,6 +20,8 @@
     - name: "Sauvegarder une machine virtuelle\_- Modèle ARM"
       displayName: Resource Manager
       href: quick-backup-vm-template.md
+    - name: Sauvegarder une machine virtuelle - Modèle Bicep
+      href: quick-backup-vm-bicep-template.md
 - name: Tutoriels
   items:
     - name: Sauvegarder plusieurs machines virtuelles Azure

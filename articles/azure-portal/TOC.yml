@@ -50,22 +50,20 @@
           href: supportability/how-to-create-azure-support-request.md
         - name: Gérer une demande de support Azure
           href: supportability/how-to-manage-azure-support-request.md
-        - name: Demander des augmentations de quota
+    - name: Demander des augmentations de quota
+      items:
+        - name: Augmenter les quotas de processeurs virtuels
           items:
-            - name: Augmenter les limites des processeurs virtuels de calcul
-              items:
-                - name: Modèle de déploiement de Resource Manager
-                  items:
-                    - name: Augmenter la limite des processeurs virtuels de séries de machines virtuelles
-                      href: supportability/per-vm-quota-requests.md
-                    - name: Augmenter la limite totale régionale des processeurs virtuels
-                      href: supportability/regional-quota-requests.md
-                    - name: Augmenter la limite de quota Spot
-                      href: supportability/low-priority-quota.md
-                - name: Modèle de déploiement classique
-                  href: supportability/classic-deployment-model-quota-increase-requests.md
-            - name: Augmenter les limites réseau
-              href: supportability/networking-quota-requests.md
+            - name: Augmenter les quotas de processeurs virtuels d’une famille de machines virtuelles
+              href: supportability/per-vm-quota-requests.md
+            - name: Augmenter les quotas de processeurs virtuels régionaux
+              href: supportability/regional-quota-requests.md
+            - name: Augmenter les quotas de processeurs virtuels de machines virtuelles spot
+              href: supportability/spot-quota.md
+        - name: Augmenter les quotas de processeurs virtuels pour un déploiement classique
+          href: supportability/classic-deployment-model-quota-increase-requests.md
+        - name: Augmenter les quotas réseau
+          href: supportability/networking-quota-requests.md
     - name: Résoudre les problèmes du portail Azure
       items:
         - name: Récupérer un tableau de bord supprimé

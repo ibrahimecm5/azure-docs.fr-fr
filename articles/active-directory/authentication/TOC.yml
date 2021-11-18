@@ -162,8 +162,12 @@
           href: howto-password-ban-bad-on-premises-faq.yml
         - name: Historique des versions d’agent
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Encourager l’installation de Microsoft Authenticator (préversion)
-      href: how-to-nudge-authenticator-app.md
+    - name: Exécuter une campagne d’inscription
+      href: how-to-mfa-registration-campaign.md
+    - name: Utiliser la correspondance des nombres (préversion)
+      href: how-to-mfa-number-match.md
+    - name: Utiliser un contexte supplémentaire (préversion)
+      href: how-to-mfa-additional-context.md
     - name: Utiliser les paramètres managés Microsoft
       href: how-to-mfa-microsoft-managed.md
     - name: Utiliser un passe d’accès temporaire (préversion)

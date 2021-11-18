@@ -19,7 +19,7 @@
     - name: Installer le micro-agent Defender pour IoT (préversion)
       displayName: 'package, authentication, methods, certificate, authenticate, version'
       href: quickstart-standalone-agent-binary-installation.md
-    - name: Créer un jumeau de module pour le micro-agent Defender pour le cloud pour IoT (préversion)
+    - name: Créer un jumeau de module pour le micro-agent Defender pour IoT (préversion)
       href: quickstart-create-micro-agent-module-twin.md
     - name: Configurer le micro-agent Defender-IoT pour Azure RTOS
       href: quickstart-azure-rtos-security-module.md
@@ -155,7 +155,7 @@
           href: how-to-investigate-device.md
     - name: Dépanner
       items:
-        - name: Résolution des problèmes du micro-agent Defender pour le cloud pour IoT (préversion)
+        - name: Résolution des problèmes du micro-agent Defender pour IoT (préversion)
           displayName: 'service status, review logs'
           href: troubleshoot-defender-micro-agent.md
 - name: Informations de référence

@@ -51,15 +51,18 @@ conceptualContent:
           text: "AutoML\_: Entraîner un modèle de classification"
     - title: Déployer des modèles
       links:
-        - url: how-to-deploy-and-where.md
-          itemType: how-to-guide
-          text: Déploiement d’un modèle
+        - url: concept-endpoints.md
+          itemType: concept
+          text: Simplifier le déploiement de modèles avec des points de terminaison (préversion)
         - url: how-to-deploy-managed-online-endpoints.md
           itemType: how-to-guide
           text: Scoring en temps réel avec un point de terminaison managé (préversion)
         - url: how-to-use-batch-endpoint.md
           itemType: how-to-guide
           text: Scoring par lots avec des points de terminaison managés (préversion)
+        - url: how-to-deploy-and-where.md
+          itemType: how-to-guide
+          text: Options de déploiement de modèles sans utiliser de points de terminaison
     - title: Gérer le cycle de vie du ML (MLOps)
       links:
         - url: how-to-track-monitor-analyze-runs.md

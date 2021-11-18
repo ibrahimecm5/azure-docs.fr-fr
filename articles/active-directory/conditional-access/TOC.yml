@@ -39,16 +39,14 @@
       href: service-dependencies.md
     - name: Conditions d’emplacement
       href: location-condition.md
+    - name: Identités de charge de travail
+      href: workload-identity.md
     - name: Filtre pour les appareils
       href: concept-condition-filters-for-devices.md
     - name: Outil de simulation
       href: what-if-tool.md
     - name: Évaluation de l’accès continu
       href: concept-continuous-access-evaluation.md
-    - name: Contrôles personnalisés
-      href: controls.md
-    - name: Migrations de stratégies classiques
-      href: policy-migration.md
 - name: Guides pratiques
   expanded: true
   items:
@@ -58,40 +56,34 @@
       href: howto-conditional-access-apis.md
     - name: Stratégies d’accès conditionnel courantes
       items:
-        - name: Bloquer l’authentification héritée
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Exiger MFA pour les administrateurs
           href: howto-conditional-access-policy-admin-mfa.md
-        - name: Exiger MFA pour la gestion Azure
-          href: howto-conditional-access-policy-azure-management.md
-        - name: Exiger MFA pour tous les utilisateurs
-          href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Accès conditionnel basé sur les risques de connexion
-          href: howto-conditional-access-policy-risk.md
-        - name: Accès conditionnel basé sur les risques d’utilisateur
-          href: howto-conditional-access-policy-risk-user.md
         - name: Sécuriser l’inscription des informations de sécurité
           href: howto-conditional-access-policy-registration.md
+        - name: Bloquer l’authentification héritée
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Exiger MFA pour tous les utilisateurs
+          href: howto-conditional-access-policy-all-users-mfa.md
+        - name: Exiger MFA pour la gestion Azure
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Exiger MFA pour les connexions risquées
+          href: howto-conditional-access-policy-risk.md
+        - name: Exiger la modification du mot de passe pour les utilisateurs à risque
+          href: howto-conditional-access-policy-risk-user.md
+        - name: Exiger des appareils conformes ou avec une jointure hybride
+          href: howto-conditional-access-policy-compliant-device.md
+        - name: Exiger une application approuvée ou une stratégie de protection d’application
+          href: howto-policy-approved-app-or-app-protection.md
         - name: Bloquer l’accès par emplacement
           href: howto-conditional-access-policy-location.md
-        - name: Exiger un appareil conforme
-          href: howto-conditional-access-policy-compliant-device.md
         - name: Bloquer l’accès
           href: howto-conditional-access-policy-block-access.md
     - name: Configurer les valeurs de résilience par défaut
       href: resilience-defaults.md
-    - name: Bloquer l’authentification héritée
-      href: block-legacy-authentication.md
     - name: Configurer le mode rapport seul
       href: howto-conditional-access-insights-reporting.md
-    - name: Exiger des applications client approuvées
-      href: app-based-conditional-access.md
-    - name: Exiger une stratégie de protection des applications
-      href: app-protection-based-conditional-access.md
-    - name: Exiger des appareils gérés
-      href: require-managed-devices.md
-    - name: Exiger une authentification multifacteur pour les tentatives d’accès à partir de réseaux non approuvés
-      href: untrusted-networks.md
+    - name: Bloquer l’authentification héritée
+      href: block-legacy-authentication.md
     - name: Exiger des conditions d’utilisation
       href: terms-of-use.md
     - name: Contrôles de la fréquence des connexions et de la persistance du navigateur
@@ -108,8 +100,14 @@
           href: howto-continuous-access-evaluation-troubleshoot.md
         - name: Questions fréquentes (FAQ)
           href: faqs.md
-    - name: Migrer les stratégies classiques
-      href: policy-migration-mfa.md
+    - name: Contrôles personnalisés
+      href: controls.md
+    - name: Stratégies classiques
+      items:
+        - name: Migrations de stratégies classiques
+          href: policy-migration.md
+        - name: Migrer les stratégies classiques
+          href: policy-migration-mfa.md
 - name: Informations de référence
   items:
     - name: API Graph Bêta
