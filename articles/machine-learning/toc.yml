@@ -457,25 +457,20 @@
               href: how-to-migrate-from-estimators-to-scriptrunconfig.md
             - name: Apprentissage par renforcement
               href: how-to-use-reinforcement-learning.md
-            - name: Utiliser MLflow
+            - name: Entraîner des expériences avec des projets MLflow
+              displayName: 'log, monitor, metrics, model registry, register'
+              href: how-to-train-mlflow-projects.md
+            - name: Suivre et superviser l’entraînement
               items:
+                - name: 'Suivre, superviser et analyser des exécutions'
+                  displayName: 'cancel, fail, status, child run'
+                  href: how-to-track-monitor-analyze-runs.md
                 - name: Suivre des expériences avec MLflow
                   displayName: 'log, monitor, metrics, model registry, register'
                   href: how-to-use-mlflow.md
                 - name: Suivre les exécutions Azure Databricks avec MLflow
                   displayName: 'log, monitor, deploy, metrics, databricks'
                   href: how-to-use-mlflow-azure-databricks.md
-                - name: Entraîner des expériences avec des projets MLflow
-                  displayName: 'log, monitor, metrics, model registry, register'
-                  href: how-to-train-mlflow-projects.md
-                - name: Déployer des modèles MLflow
-                  displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
-                  href: how-to-deploy-mlflow-models.md
-            - name: Suivre et superviser l’entraînement
-              items:
-                - name: 'Suivre, superviser et analyser des exécutions'
-                  displayName: 'cancel, fail, status, child run'
-                  href: how-to-track-monitor-analyze-runs.md
                 - name: Journaliser et afficher les métriques et les fichiers journaux
                   displayName: 'troubleshoot, log, files, tracing, metrics'
                   href: how-to-log-view-metrics.md
@@ -545,6 +540,9 @@
         - name: Où et comment déployer
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: Déployer des modèles MLflow
+          displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
+          href: how-to-deploy-mlflow-models.md
         - name: Déployer avec des points de terminaison
           items:
             - name: Temps réel

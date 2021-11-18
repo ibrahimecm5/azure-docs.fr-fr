@@ -624,7 +624,7 @@
               href: sql/change-feed-design-patterns.md
             - name: Lecture du flux de modification
               href: sql/read-change-feed.md
-            - name: sql/Processeur de flux de modification
+            - name: Processeur de flux de modification
               href: sql/change-feed-processor.md
             - name: Déclencher Azure Functions
               displayName: change feed

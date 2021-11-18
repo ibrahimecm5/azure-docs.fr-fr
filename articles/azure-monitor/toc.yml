@@ -650,7 +650,7 @@
         - name: Vue d'ensemble d’Application Insights
           href: app/app-insights-overview.md
         - name: Questions fréquentes (FAQ)
-          href: /azure/azure-monitor/faq#application-insights
+          href: ./faq.yml
         - name: SDK Application Insights
           items:
             - name: .NET

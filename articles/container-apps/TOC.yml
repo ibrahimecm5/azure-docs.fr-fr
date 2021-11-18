@@ -10,6 +10,7 @@
   expanded: true
   items:
     - name: Déployer votre première application conteneur
+      expanded: true
       items:
         - name: Portail Azure
           href: quickstart-portal.md
@@ -19,7 +20,7 @@
   items:
     - name: Environnement
       href: environment.md
-    - name: Containers
+    - name: Conteneurs
       href: containers.md
     - name: Révisions
       href: revisions.md

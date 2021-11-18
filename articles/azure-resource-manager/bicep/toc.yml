@@ -16,6 +16,12 @@
   items:
     - name: "Créer des modèles\_Bicep\_– VS\_Code"
       href: quickstart-create-bicep-use-visual-studio-code.md
+    - name: CI/CD
+      items:
+        - name: Bicep avec des pipelines
+          href: add-template-to-azure-pipelines.md
+        - name: Bicep avec GitHub Actions
+          href: deploy-github-actions.md
 - name: Tutoriels
   items:
     - name: Microsoft Learn - Bicep
@@ -124,12 +130,6 @@
             - name: Transmettre des valeurs sensibles
               displayName: key vault
               href: key-vault-parameter.md
-        - name: CI/CD
-          items:
-            - name: Bicep avec des pipelines
-              href: add-template-to-azure-pipelines.md
-            - name: Bicep avec GitHub Actions
-              href: deploy-github-actions.md
     - name: Configurer les paramètres
       items:
         - name: Fichier de configuration Bicep
