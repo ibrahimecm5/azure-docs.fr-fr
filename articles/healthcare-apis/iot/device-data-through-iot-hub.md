@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: f12c5efe25f48ae16e4f59159936627a27b47212
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 9c4dd42d81374f75beb66f0564a2fb2b0fc38c01
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132283464"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132709212"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Tutoriel : Recevoir des données d’appareil via Azure IoT Hub
 
@@ -93,7 +93,7 @@ Utilisez votre appareil (réel ou simulé) pour envoyer l’exemple de message d
 }
 ```
 > [!IMPORTANT]
-> Veillez à envoyer le message de l’appareil conforme aux modèles de [mappage](how-to-use-fhir-mapping-iot.md) configurés avec votre connecteur IOT.
+> Veillez à envoyer le message de l’appareil conforme aux modèles de [mappage](how-to-use-fhir-mappings.md) configurés avec votre connecteur IOT.
 
 ## <a name="view-device-data-in-fhir-service"></a>Afficher les données de l’appareil dans le service FHIR
 

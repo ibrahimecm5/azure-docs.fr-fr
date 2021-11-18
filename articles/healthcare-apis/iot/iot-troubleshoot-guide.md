@@ -6,24 +6,24 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: troubleshooting
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 3b0d9a946408091f32b950e0daa349ee0f887380
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 6a3af00eaca90c2ecdbbdcc4f6cce5231ffefcc0
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132281794"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719444"
 ---
 # <a name="iot-connector-troubleshooting-guide"></a>Guide de résolution des problèmes du connecteur IoT
 
 > [!IMPORTANT]
-> Les API Azure Healthcare sont actuellement en version préliminaire. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale.
-
-Cet article explique comment résoudre les problèmes courants liés aux messages d’erreur et aux conditions d’un connecteur IoT. Vous apprendrez également à créer des copies des mappages de destination de l’appareil et des ressources FHIR&#174;) du connecteur IoT. En outre, vous pouvez utiliser les copies de mappage de destination Device et FHIR pour la modification et l’archivage en dehors de la Portail Azure.  
+> Les API Azure Healthcare sont actuellement en version préliminaire. L’[Avenant aux conditions d’utilisation pour les préversions de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) contient des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore en disponibilité générale. 
 
 > [!TIP]
 > Lors de l’ouverture d’un ticket de [support technique Azure](https://azure.microsoft.com/support/create-ticket/) pour le connecteur IOT, incluez des copies de votre appareil et des mappages de destination FHIR pour faciliter le processus de dépannage.
+
+Cet article explique comment résoudre les problèmes courants liés aux messages d’erreur et aux conditions d’un connecteur IoT. Vous apprendrez également à créer des copies des mappages de destination de l’appareil et des ressources FHIR&#174;) du connecteur IoT. En outre, vous pouvez utiliser les copies de mappage de destination Device et FHIR pour la modification et l’archivage en dehors de la Portail Azure. 
 
 ## <a name="device-and-fhir-destination-mappings-validations"></a>Validations des mappages de destination des appareils et des FHIR
 
@@ -113,7 +113,7 @@ Cette propriété représente l’opération exécutée par le connecteur IoT lo
 
 Cette propriété représente la gravité de l’erreur qui s’est produite. Vous trouverez ci-dessous une liste des valeurs possibles pour cette propriété.
 
-|severity|Description|
+|Gravité|Description|
 |---------------|-----------|
 |Avertissement|Il existe un problème mineur dans le processus de distribution de données, mais le traitement du message de l’appareil ne s’arrête pas.|
 |Erreur|Ce message s’affiche lorsque le traitement d’un message d’appareil spécifique a rencontré une erreur et que d’autres messages peuvent continuer de s’exécuter comme prévu.|
@@ -159,7 +159,7 @@ Les copies de mappage doivent être fournies au support technique Azure lors de 
 > JSON est le seul format pris en charge pour les mappages de destination appareil et FHIR pour l’instant.
 
 > [!TIP]
-> En savoir plus sur les [mappages d’appareils](how-to-use-device-mapping-iot.md) IOT Connector et les [mappages de destination FHIR](how-to-use-fhir-mapping-iot.md)
+> En savoir plus sur les [mappages d’appareils](how-to-use-device-mappings.md) IOT Connector et les [mappages de destination FHIR](how-to-use-fhir-mappings.md)
 
 1. Sélectionnez **« connecteurs IOT »** sur le côté gauche de l’espace de travail API de santé.
 
