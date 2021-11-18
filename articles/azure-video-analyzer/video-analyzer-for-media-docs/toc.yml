@@ -111,7 +111,7 @@
     - name: API Video Analyzer for Media
       href: 'https://api-portal.videoindexer.ai/'
     - name: API REST ARM Video Analyzer for Media
-      href: 'https://aka.ms/avam-arm-api'
+      href: /rest/api/videoindexer/accounts?branch=videoindex
 - name: Ressources
   items:
     - name: Feuille de route Azure

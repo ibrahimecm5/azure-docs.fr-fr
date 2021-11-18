@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 0e4d6c23be9911fe4d3d073540467fd101e7671e
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: b74b3c1aefe2c7dd05421385e672385196aab15e
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132337259"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719426"
 ---
 # <a name="what-is-iot-connector"></a>Qu’est-ce que le connecteur IoT ?
 
@@ -70,9 +70,9 @@ Une fois la ressource FHIR d’observation générée à l’étape de transform
 Pour plus d’informations sur les mappages de connecteur IoT, consultez les guides suivants :
 
 >[!div class="nextstepaction"]
->[Comment utiliser les mappages de périphérique](how-to-use-device-mapping-iot.md)
+>[Comment utiliser les mappages de périphérique](how-to-use-device-mappings.md)
 
 >[!div class="nextstepaction"]
->[Utilisation des mappages de destination FHIR](how-to-use-fhir-mapping-iot.md)
+>[Utilisation des mappages de destination FHIR](how-to-use-fhir-mappings.md)
 
 (FHIR&#174;) est une marque déposée de [HL7](https://hl7.org/fhir/) qui est utilisée avec l’autorisation de HL7.

@@ -1,7 +1,7 @@
 items:
   - name: Connecteur IoT
     href: index.yml
-  - name: Vue d’ensemble
+  - name: Vue d'ensemble
     expanded: true
     items:
       - name: À propos du connecteur IoT
@@ -31,13 +31,26 @@ items:
       - name: Recevoir des données d’appareil via Azure IoT Hub
         href: device-data-through-iot-hub.md
       - name: Utiliser des mappages d’appareils
-        href: how-to-use-device-mapping-iot.md
+        expanded: true
+        items:
+          - name: Mappages d’appareils
+            href: how-to-use-device-mappings.md
+          - name: Mappages de JsonPathContentTemplate
+            href: how-to-use-jsonpath-content-mappings.md
+          - name: Mappages de fonctions calculées
+            href: how-to-use-calculated-functions-mappings.md
+          - name: Mappages de CollectionContentTemplate
+            href: how-to-use-collection-content-mappings.md
+          - name: Mappages de IotJsonPathContentTemplate
+            href: how-to-use-iot-jsonpath-content-mappings.md
+          - name: Mappages de IotCentralJsonContentTemplate
+            href: how-to-use-iot-central-json-content-mappings.md
       - name: Utiliser des fonctions personnalisées
-        href: iot-connector-custom-functions.md
+        href: how-to-use-custom-functions.md
       - name: Utiliser les mappages de destination FHIR
-        href: how-to-use-fhir-mapping-iot.md
+        href: how-to-use-fhir-mappings.md
       - name: Afficher les métriques
-        href: iot-display-metrics.md
+        href: how-to-display-metrics.md
   - name: Ressources
     expanded: true
     items:

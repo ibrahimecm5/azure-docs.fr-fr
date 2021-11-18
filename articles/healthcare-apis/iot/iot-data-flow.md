@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 11/10/2021
+ms.date: 11/16/2021
 ms.author: jasteppe
-ms.openlocfilehash: 80de5c094175a4c2372befeaedddbe1ac56bba8a
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 14a1668996682179ef0c0beb95383be892a4e693
+ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132308327"
+ms.lasthandoff: 11/17/2021
+ms.locfileid: "132719401"
 ---
 # <a name="iot-connector-data-flow"></a>Workflow de données du connecteur IoT
 
@@ -22,7 +22,11 @@ ms.locfileid: "132308327"
 
 Cet article fournit une vue d’ensemble du processus de données du connecteur IoT. Vous en apprendrez plus sur les différentes étapes de traitement des données dans IoT Connector qui transforment les données des appareils en ressources d' [observation](https://www.hl7.org/fhir/observation.html) FHIR&#174;) rapides.
 
-Voici les différentes étapes que les données passent une fois reçues par le connecteur IoT.
+Les données des appareils liés à l’intégrité ou des appareils médicaux circulent dans un chemin d’accès dans lequel le connecteur IoT transforme les données en FHIR, puis les données sont stockées et accessibles à partir du serveur FHIR. Le chemin d’accès aux données d’intégrité suit ces étapes dans l’ordre suivant : ingérer, normaliser, grouper, transformer et conserver. Dans ce workflow, les données d’intégrité sont récupérées à partir de l’appareil lors de la première étape de l’ingestion. Une fois les données reçues, elles sont traitées ou normalisées par des modèles de schéma sélectionnés par l’utilisateur ou par l’utilisateur, de sorte que les données d’intégrité sont plus simples à traiter et peuvent être regroupées. Les données d’intégrité sont regroupées en trois paramètres Sperate. Une fois les données d’intégrité normalisées et regroupées, elles peuvent être traitées ou transformées via le mappage FHIR, puis enregistrées ou conservées sur le serveur FHIR.
+
+Cet article présente plus en détail chaque étape du Workflow. Les étapes suivantes [expliquent comment déployer un connecteur IOT](deploy-iot-connector-in-azure.md) à l’aide d’un mappeur d’appareil (étape de normalisation) et comment utiliser un mappeur d’appareil FHIR (étape de transformation).
+
+Les sections suivantes décrivent les étapes que les données passent après la réception des données par le connecteur IoT.
 
 ## <a name="ingest"></a>Ingérer
 La réception est la première étape où les données de l’appareil sont reçues dans le connecteur IoT. Le point de terminaison d’ingestion pour les données d’appareils est hébergé sur un [Azure Event Hub](../../event-hubs/index.yml). La plateforme Azure Event Hub prend en charge une échelle et un débit élevés, avec la possibilité de recevoir et de traiter des millions de messages par seconde. Il permet également au connecteur IoT de consommer les messages de manière asynchrone, ce qui évite d’avoir à attendre que les données des appareils soient traitées.
@@ -65,9 +69,9 @@ Une fois la ressource FHIR d’observation générée à l’étape de transform
 Découvrez comment créer des mappages de destination appareil et FHIR.
 
 > [!div class="nextstepaction"]
-> [Mappages d’appareils](how-to-use-device-mapping-iot.md)
+> [Mappages d’appareils](how-to-use-device-mappings.md)
 
 > [!div class="nextstepaction"]
-> [Mappages de destination FHIR](how-to-use-fhir-mapping-iot.md)
+> [Mappages de destination FHIR](how-to-use-fhir-mappings.md)
 
 (FHIR&#174;) est une marque déposée de [HL7](https://hl7.org/fhir/) qui est utilisée avec l’autorisation de HL7.
