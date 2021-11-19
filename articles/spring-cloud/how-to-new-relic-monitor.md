@@ -8,23 +8,23 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 740193a9526bf19efb0e98f937c6f77c30b50b61
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7c0a659effc973737647f3868154be1e5154afba
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258294"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493701"
 ---
 # <a name="how-to-monitor-spring-boot-apps-using-new-relic-java-agent-preview"></a>Guide pratique pour le monitoring d’applications Spring Boot à l’aide de l’agent Java de New Relic (préversion)
 
-Cette fonctionnalité active le monitoring des applications Spring Boot s’exécutant dans Azure Spring Cloud avec l’agent Java de New Relic.
+Cette fonctionnalité active le monitoring des applications Spring Boot dans Azure Spring Cloud avec l’agent Java de New Relic.
 
 Avec l’agent Java New Relic, vous pouvez :
 * Consommer l’agent Java New Relic.
 * Configurer l’agent Java New Relic à l’aide de variables d’environnement.
 * Vérifier toutes les données de surveillance à partir du tableau de bord New Relic.
 
-La vidéo suivante décrit comment activer et surveiller les applications Spring Boot qui s’exécutent dans Azure Spring Cloud à l’aide de New Relic.
+La vidéo suivante décrit comment activer et surveiller les applications Spring Boot dans Azure Spring Cloud à l’aide de New Relic.
 
 <br>
 

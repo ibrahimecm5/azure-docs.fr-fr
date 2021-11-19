@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 251d1a034bafa3a9d77291be63fdc59145b2cc09
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 74a1093f8a084360669c5b436fa56d6ea7aa33d8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131575804"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494574"
 ---
 # <a name="azure-bastion-faq"></a>FAQ sur Azure Bastion
 
@@ -71,7 +71,7 @@ Pour établir une connexion, les rôles suivants sont nécessaires :
 * Rôle de lecteur sur la machine virtuelle.
 * Rôle de lecteur sur la carte réseau avec adresse IP privée de la machine virtuelle.
 * Rôle de lecteur sur la ressource Azure Bastion.
-* Rôle de lecteur sur le réseau virtuel (inutile s’il n’y a pas de réseau virtuel appairé).
+* Rôle de lecteur sur le réseau virtuel de la machine virtuelle cible (dans le cas où le bastion se trouve dans un réseau virtuel homologue).
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Est-ce qu’Azure Bastion nécessite une licence d’accès client aux services Bureau à distance à des fins d’administration sur les machines virtuelles hébergées par Azure ?
 
@@ -96,7 +96,7 @@ Azure Bastion prend actuellement en charge les dispositions de clavier suivantes
 * sv-se-qwerty
 * tr-tr-qwerty
 
-Pour que la correspondance des touches soit correcte pour votre langue cible, vous devez définir la langue locale de votre ordinateur ou la langue distante de la machine virtuelle sur en-us-qwerty. Autrement dit, la langue locale de votre ordinateur doit être réglée sur l’anglais (États-Unis) tandis que la langue distante de votre machine virtuelle est réglée sur votre langue cible, ou vice versa. Vous pouvez ajouter la langue anglaise (États-Unis) à votre machine dans les paramètres de votre ordinateur.
+Pour établir la bonne correspondance des touches pour votre langue cible, vous devez définir la langue de votre ordinateur local ou la langue de la machine virtuelle cible sur Anglais (États-Unis). Autrement dit, la langue locale de votre ordinateur doit être réglée sur l’anglais (États-Unis) tandis que la langue cible de votre machine virtuelle est réglée sur votre langue cible, ou vice versa. Vous pouvez ajouter la langue anglaise (États-Unis) à votre machine dans les paramètres de votre ordinateur.
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Azure Bastion prend-il en charge la configuration du fuseau horaire ou la redirection des fuseaux horaires pour les machines virtuelles cibles ?
 
@@ -166,3 +166,6 @@ Assurez-vous que l’utilisateur dispose d’un accès **en lecture** à la mach
 |Microsoft.Network/virtualNetworks/read|Obtenir la définition de réseau virtuel.|Action|
 |Microsoft.Network/virtualNetworks/subnets/virtualMachines/read|Obtient les références à toutes les machines virtuelles dans un sous-réseau de réseau virtuel.|Action|
 |Microsoft.Network/virtualNetworks/virtualMachines/read|Obtient les références à toutes les machines virtuelles dans un réseau virtuel.|Action|
+
+### <a name="what-is-the-maximum-screen-resolution-supported-via-bastion"></a>Quelle est la résolution d’écran maximale prise en charge via Bastion ?  
+Actuellement, 1920 x 1080 (1080p) est la résolution maximale prise en charge. 

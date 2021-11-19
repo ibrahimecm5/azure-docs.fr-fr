@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b4b291006795728348aa694e56c3e84a88d8e65c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7a4e02461b7ba7eaba82b74cc2191b9528376b51
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469955"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486685"
 ---
 # <a name="speech-service-release-notes"></a>Notes de publication du service Speech
 
@@ -167,8 +167,8 @@ ms.locfileid: "131469955"
 
 #### <a name="new-features"></a>Nouvelles fonctionnalités
 
-- **C++/C#**  : Nouvelle identification de la langue autonome unique/au démarrage et continue par le biais de l’API `SourceLanguageRecognizer`. Si vous voulez uniquement détecter la ou les langues parlées dans le contenu audio, voici l’API dont vous avez besoin.
-- **C++/C#**  : La reconnaissance vocale et la reconnaissance de traduction prennent à présent en charge à la fois une identification de la langue unique et continue. Vous pouvez ainsi déterminer par programmation la ou les langues parlées avant de les transcrire ou traduire. Consultez la documentation disponible [ici pour la reconnaissance vocale](how-to-automatic-language-detection.md) et [ici pour la traduction vocale](get-started-speech-translation.md).
+- **C++/C#**  : Nouvelle identification de la langue autonome au démarrage et continue par le biais de l’API `SourceLanguageRecognizer`. Si vous voulez uniquement détecter la ou les langues parlées dans le contenu audio, voici l’API dont vous avez besoin.
+- **C++/C#**  : La reconnaissance vocale et la reconnaissance de traduction prennent à présent en charge à la fois une identification de la langue au démarrage et continue. Vous pouvez ainsi déterminer par programmation la ou les langues parlées avant de les transcrire ou traduire. Consultez la documentation disponible [ici pour la reconnaissance vocale](how-to-automatic-language-detection.md) et [ici pour la traduction vocale](get-started-speech-translation.md).
 - **C#**  : Ajout de la prise en charge Unity à macOS (x64). Cette prise en charge permet de déverrouiller les cas d’usage de la reconnaissance vocale et de la synthèse vocale pour la réalité mixte et le gaming !
 - **Go** : Nous avons ajouté une prise en charge de la synthèse vocale au langage de programmation Go pour la rendre disponible dans encore plus de cas d’usage. Consultez notre guide de [démarrage rapide](get-started-text-to-speech.md?tabs=windowsinstall&pivots=programming-language-go) ou notre [documentation de référence](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go).
 - **C++/C#/Java/Python/Objective-C/Go** : Le synthétiseur vocal prend maintenant en charge l’objet `connection`. Celui-ci vous permet de gérer et superviser la connexion au service vocal, et s’avère particulièrement utile à la préconnexion pour réduire la latence. Consultez la documentation [ici](how-to-lower-speech-synthesis-latency.md).

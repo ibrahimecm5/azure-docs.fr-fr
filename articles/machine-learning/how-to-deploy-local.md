@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: how-to
 ms.custom: deploy
-ms.openlocfilehash: fa5c362db03af7004751e39708553edf79f5827a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 97b8d6f32b2e59dd2e19b1d41b4fa01f97158325
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446524"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547683"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Déployer des modèles entraînés avec Azure Machine Learning sur vos ordinateurs locaux 
 
@@ -188,7 +188,7 @@ Vous pouvez télécharger le modèle comme suit :
 - À partir de la ligne de commande, à l’aide de `az ml model download` (voir [Téléchargement de modèle](/cli/azure/ml/model#az_ml_model_download)).
 - À l’aide de la méthode `Model.download()` du SDK Python (voir [Classe de modèle](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-)).
 
-Un modèle Azure est constitué d’un ou de plusieurs objets Python sérialisés, empaquetés sous forme de fichier pickle Python (extension .pkl). Le contenu du fichier pickle dépend de la bibliothèque ou technique Machine Learning utilisée pour entraîner le modèle. Par exemple, si vous utilisez le modèle utilisé dans le tutoriel, vous pouvez charger le modèle avec :
+Un modèle Azure peut se présenter sous n’importe quelle forme utilisée par votre infrastructure, mais il s’agit généralement d’un ou de plusieurs objets Python sérialisés, empaquetés en tant que fichier Pickle Python (extension.pkl). Le contenu du fichier pickle dépend de la bibliothèque ou technique Machine Learning utilisée pour entraîner le modèle. Par exemple, si vous utilisez le modèle utilisé dans le tutoriel, vous pouvez charger le modèle avec :
 
 ```python
 import pickle
@@ -250,5 +250,6 @@ Pour plus d’informations sur le chargement et la mise à jour des modèles et 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+- Pour plus d’informations sur l’utilisation de VS Code avec Azure Machine Learning, consultez [Se connecter à l’instance de calcul dans Visual Studio Code (préversion)](how-to-set-up-vs-code-remote.md)
 - Pour plus d’informations sur les environnements de gestion, consultez [Créer et utiliser des environnements logiciels dans Azure Machine Learning](how-to-use-environments.md).
 - Pour en savoir plus sur l’accès aux données à partir de votre magasin de données, consultez [Se connecter à des services de stockage sur Azure](how-to-access-data.md).

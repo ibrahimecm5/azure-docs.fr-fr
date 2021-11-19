@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d9c24868fa847ef3b8be13ca0d7775e24b3116cc
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 001b88e5abe0fc8710d7c87d792de23db4135e16
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563437"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486286"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Gérer et superviser une application avec l’actionneur Azure Spring Boot
 
@@ -22,7 +22,7 @@ Après avoir déployé un nouveau binaire dans votre application, vous pouvez v�
 
 ## <a name="prerequisites"></a>Prérequis
 
-Cet article suppose que vous disposez d’une application Spring Boot 2.x qui peut être déployée et démarrée sur le service Azure Spring Cloud.  Consultez [Démarrage rapide : Lancer une application Azure Spring Cloud existante à partir du portail Azure](./quickstart.md).
+Cet article suppose que vous disposez d’une application Spring Boot 2.x qui peut être déployée et démarrée sur le service Azure Spring Cloud.  Voir [Démarrage rapide : Lancer une application existante dans Azure Spring Cloud en utilisant le portail Azure](./quickstart.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>Vérifier l’application via le point de terminaison de test
 

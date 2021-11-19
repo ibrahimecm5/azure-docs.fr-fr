@@ -11,18 +11,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
 ms.date: 08/28/2021
-ms.openlocfilehash: 8eb49e4d17de5c546278f78e50454db02ee2cfbd
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 884ae5d4677f33a4326ead8daae5d74b20d8596c
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458871"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555164"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>Sauvegardes automatisées - Azure SQL Database et Azurer SQL Managed Instance
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="what-is-a-database-backup"></a>Qu’est-ce qu’une sauvegarde de base de données ?
 
@@ -77,7 +80,7 @@ Ce tableau synthétise les capacités et fonctionnalités de la [récupération 
 | **Objectif de délai de récupération (RTO)** | La restauration prend généralement moins de 12 heures, mais elle peut prendre plus de temps selon la taille et l’activité. Consultez [Temps de récupération](recovery-using-backups.md#recovery-time). | La restauration prend généralement moins de 12 heures, mais elle peut prendre plus de temps selon la taille et l’activité. Consultez [Temps de récupération](recovery-using-backups.md#recovery-time). | La restauration prend généralement moins de 12 heures, mais elle peut prendre plus de temps selon la taille et l’activité. Consultez [Temps de récupération](recovery-using-backups.md#recovery-time). | 
 | **Rétention** | 7 jours par défaut, jusqu’à 35 jours |  Activée par défaut, identique à la source.\*\* | Non activée par défaut, conservation jusqu’à 10 ans. |     
 | **Azure Storage**  | Géoredondant par défaut. Possibilité de configuration d’un stockage localement redondant ou redondant interzone. | Disponible quand la redondance du stockage de sauvegarde avec récupération jusqu’à une date et heure est définie comme géoredondante. Non disponible quand le magasin de sauvegarde avec récupération jusqu’à une date et heure est un stockage localement redondant ou redondant interzone. | Géoredondant par défaut. Possibilité de configuration d’un stockage localement redondant ou redondant interzone. | 
-| **Utilisation pour créer une base de données dans la même région** | Pris en charge | Pris en charge | Pris en charge |
+| **Utilisation pour créer une base de données dans la même région** | Pris en charge | Prise en charge | Pris en charge |
 | **Utilisation pour créer une base de données dans une autre région** | Non pris en charge | Prise en charge dans toutes les régions Azure | Prise en charge dans toutes les régions Azure |
 | **Utilisation pour créer une base de données dans un autre abonnement** |  Non pris en charge  |  Non prise en charge\*\*\* | Non prise en charge\*\*\*  | 
 | **Restauration par le biais du portail Azure**|Oui|Oui|Oui|

@@ -7,17 +7,17 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 0dcc729ea622c42592d1f118f58a831d3a637aea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d4053d64b8a35bf13b10a47a685b838d89a64dc3
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056183"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518141"
 ---
 # <a name="authorize-search-requests-using-azure-ad-preview"></a>Autoriser les demandes de recherche à l’aide d’Azure AD (préversion)
 
 > [!IMPORTANT]
-> Le contrôle d’accès en fonction du rôle pour les opérations du plan de données, telles que la création d’un index ou l’interrogation d’un index, est actuellement en préversion publique et disponible sous [des Conditions d’utilisation supplémentaires](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Cette fonctionnalité est uniquement disponible dans les clouds publics et peut avoir un impact sur la latence de vos opérations pendant la période de préversion. 
+> Le contrôle d’accès en fonction du rôle pour les opérations du plan de données, telles que la création d’un index ou l’interrogation d’un index, est actuellement en préversion publique et disponible sous [des Conditions d’utilisation supplémentaires](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Cette fonctionnalité est uniquement disponible dans les régions de clouds publics et peut avoir un impact sur la latence de vos opérations pendant la période de préversion.
 
 Grâce à Azure Active Directory (Azure AD), vous pouvez utiliser le contrôle d’accès en fonction du rôle (RBAC) pour accorder l’accès à vos services Recherche cognitive Azure. L’un des principaux avantages de l’utilisation d’Azure AD est que vos informations d’identification n’ont plus besoin d’être stockées dans votre code. Azure AD authentifie le principal de sécurité (un utilisateur, un groupe ou un principal de service) qui exécute l’application. Si l’authentification réussit, Azure AD renvoie le jeton d’accès à l’application, et l’application peut ensuite l’utiliser pour autoriser les requêtes adressées à Recherche cognitive Azure. Pour en savoir plus sur les avantages de l’utilisation d’Azure AD dans vos applications, consultez [Intégration à Azure Active Directory](../active-directory/develop/active-directory-how-to-integrate.md#benefits-of-integration).
 
@@ -33,28 +33,28 @@ Les parties des capacités RBAC de Recherche cognitive Azure nécessaires à l�
 
 Pour ajouter votre abonnement à la version préliminaire :
 
-1. Accédez à la page **Abonnements** dans le [portail Azure](https://portal.azure.com/).
-1. Sélectionnez l’abonnement que vous souhaitez utiliser.
-1. Sur le côté gauche de la page d’abonnement, sélectionnez **Fonctionnalités d’évaluation**.
-1. Utilisez la barre de recherche ou les filtres pour rechercher et sélectionner des **Access Control basées sur les rôles pour Search service (version préliminaire)** .
-1. Sélectionnez **Inscrire** pour ajouter la fonctionnalité à votre abonnement.
+1. Accédez à votre service de recherche dans le [portail Azure](https://portal.azure.com/).
+1. Sur le côté gauche de la page, sélectionnez **Clés**.
+1. Dans la bannière bleue qui mentionne la préversion, sélectionnez **Inscrire** pour ajouter la fonctionnalité à votre abonnement.
 
-![s’inscrire à rbac sur afec](media/search-howto-aad/rbac-signup-afec.png)
+![capture d’écran montrant comment s’inscrire à la préversion du contrôle d’accès en fonction du rôle dans le portail](media/search-howto-aad/rbac-signup-portal.png)
 
-Pour plus d’informations sur l’ajout de fonctionnalités en préversion, consultez [Configurer des fonctionnalités d’évaluation dans un abonnement Azure](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+Vous pouvez également vous inscrire à la préversion à l’aide du contrôle d’exposition des fonctionnalités Azure (AFEC) et en recherchant *Contrôle d’accès en fonction du rôle pour le service de recherche (préversion)* . Pour plus d’informations sur l’ajout de fonctionnalités en préversion, consultez [Configurer des fonctionnalités d’évaluation dans un abonnement Azure](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
 
+> [!NOTE]
+> Une fois que vous avez ajouté la préversion à votre abonnement, tous les services de l’abonnement sont inscrits de manière permanente dans la préversion. Si vous ne souhaitez pas de contrôle d’accès en fonction du rôle sur un service donné, vous pouvez le désactiver pour les opérations de plan de données comme illustré à l’étape suivante.
 
 ### <a name="enable-rbac-for-data-plane-operations"></a>Activer le RBAC pour les opérations du plan de données
 
-Une fois votre abonnement intégré à la préversion, vous devrez activer le RBAC pour les opérations du plan de données afin de pouvoir utiliser l’authentification Azure AD. Par défaut, Recherche cognitive Azure utilise l’authentification par clé pour les opérations du plan de données, mais vous pouvez modifier ce paramètre pour autoriser le contrôle d’accès en fonction du rôle. 
+Une fois votre abonnement ajouté à la préversion, vous devrez activer le contrôle d’accès en fonction du rôle pour les opérations du plan de données afin de pouvoir utiliser l’authentification Azure AD. Par défaut, Recherche cognitive Azure utilise l’authentification par clé pour les opérations du plan de données, mais vous pouvez modifier ce paramètre pour autoriser le contrôle d’accès en fonction du rôle. 
 
 Pour activer le contrôle d’accès en fonction du rôle :
 
-1. Accédez au portail Azure à l’aide de ce lien de préversion : [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). 
+1. Accédez à votre service de recherche dans le [portail Azure](https://portal.azure.com/).
 1. Dans le volet de navigation gauche, sélectionnez **Clés**.
 1. Déterminez si vous souhaitez autoriser le contrôle d’accès en fonction de la clé et du rôle ou uniquement le contrôle d’accès en fonction du rôle.
 
-![options d’authentification pour recherche cognitive Azure dans le portail](media/search-howto-aad/portal-api-access-control.png)
+![capture d’écran des options d’authentification pour recherche cognitive Azure dans le portail](media/search-howto-aad/portal-api-access-control.png)
 
 Vous pouvez également modifier ces paramètres par programmation, comme décrit dans la [documentation de Recherche cognitive Azure relative au RBAC](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-2-preview-configuration).
 
@@ -70,7 +70,7 @@ Pour inscrire une application auprès d’Azure AD :
 1. Sélectionnez **Nouvelle inscription**.
 1. Donnez un nom à votre application et sélectionnez un type de compte pris en charge, qui détermine qui peut utiliser l’application. Sélectionnez ensuite **Inscription**.
 
-![Assistant Inscription d’une application](media/search-howto-aad/register-app.png)
+![capture d’écran de l’assistant Inscription d’une application](media/search-howto-aad/register-app.png)
 
 À ce stade, vous avez créé votre application Azure AD et le principal de service. Notez l’ID du locataire (ou du répertoire) et l’ID client (ou de l’application) affichés sur la page de vue d’ensemble de l’inscription de votre application. Vous aurez besoin de ces valeurs dans une étape ultérieure.
 
@@ -78,12 +78,12 @@ Pour inscrire une application auprès d’Azure AD :
 
 L’application aura également besoin d’une clé secrète client pour prouver son identité lors de la demande d’un jeton. Dans ce document, nous allons montrer comment utiliser une clé secrète client.
 
-1. Accédez à l’inscription d’application que vous venez de créer.
+1. Accédez à l’inscription d’application que vous avez créée.
 1. Sélectionnez **Certificats et secrets**.
-1. Sous **Secrets client**, cliquez **+ Nouveau secret client**.
+1. Sous **Secrets client**, sélectionnez **Nouveau secret client**.
 1. Fournissez une description du secret et sélectionnez l’intervalle d’expiration souhaité.
 
-![assistant création d’une clé secrète client](media/search-howto-aad/create-secret.png)
+![capture d’écran de l’Assistant Création d’une clé secrète client](media/search-howto-aad/create-secret.png)
 
 Veillez à enregistrer la valeur du secret dans un endroit sûr, car vous ne pourrez plus y accéder. 
 
@@ -98,11 +98,11 @@ Pour attribuer un rôle à votre inscription d’application :
 1. Ouvrez le portail Azure et accédez à votre service de recherche.
 1. Sélectionnez **Contrôle d’accès (IAM)** dans le menu de navigation de gauche.
 1. Sur le côté droit, sous **Autoriser l’accès à cette ressource**, sélectionnez **Ajouter une attribution de rôle**.
-1. Sélectionnez le rôle que vous souhaitez utiliser, puis cliquez sur **Suivant**.
-1. Sur la page suivante, cliquez sur **Sélectionner les membres** et recherchez l’application que vous avez créée précédemment. 
-1. Enfin, cliquez sur **Vérifier + attribuer**.
+1. Sélectionnez le rôle que vous souhaitez utiliser, puis sélectionnez **Suivant**.
+1. Sur la page suivante, sélectionnez **Sélectionner les membres** et recherchez l’application que vous avez créée précédemment. 
+1. Enfin, sélectionnez **Vérifier + créer**.
 
-![Ajouter une attribution de rôle dans le portail Azure](media/search-howto-aad/role-assignment.png)
+![capture d’écran de la procédure d’ajout d’une attribution de rôle dans le portail Azure.](media/search-howto-aad/role-assignment.png)
 
 Vous pouvez également [attribuer des rôles à l’aide de PowerShell](./search-security-rbac.md?tabs=config-svc-rest%2croles-powershell%2ctest-rest#step-3-assign-roles).
 

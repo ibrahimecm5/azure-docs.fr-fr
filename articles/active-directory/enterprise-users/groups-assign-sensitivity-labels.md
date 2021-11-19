@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c026a571a087008d86e34e8c2806745a06ae89cb
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5b116a4b6a100f8b93d453b95b7c181cde97b572
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986755"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401399"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Attribuer des étiquettes de sensibilité aux groupes Microsoft 365 dans Azure Active Directory
 
@@ -35,7 +35,7 @@ Pour appliquer des étiquettes publiées à des groupes, vous devez d’abord ac
 1. Ouvrez une fenêtre Windows PowerShell sur votre ordinateur. Vous pouvez l’ouvrir sans privilèges élevés.
 1. Exécutez les commandes suivantes pour préparer l’exécution des applets de commande.
 
-    ```PowerShell
+    ```powershell
     Install-Module AzureADPreview
     Import-Module AzureADPreview
     Connect-AzureAD
@@ -44,8 +44,8 @@ Pour appliquer des étiquettes publiées à des groupes, vous devez d’abord ac
     Dans la page **Connectez-vous à votre compte**, entrez votre compte d’administrateur et votre mot de passe pour vous connecter à votre service, puis sélectionnez **Se connecter**.
 1. Récupérez les paramètres de groupe actuels pour l’organisation Azure AD.
 
-    ```PowerShell
-    $setting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    ```powershell
+    $grpUnifiedSetting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
     $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
     $setting = $template.CreateDirectorySetting()
     ```
@@ -55,20 +55,26 @@ Pour appliquer des étiquettes publiées à des groupes, vous devez d’abord ac
 
 1. Ensuite, affichez les paramètres de groupe actuels.
 
-    ```PowerShell
+    ```powershell
     $Setting.Values
     ```
 
-1. Activez ensuite la fonctionnalité :
+1. Activez la fonctionnalité :
 
-    ```PowerShell
+    ```powershell
     $Setting["EnableMIPLabels"] = "True"
     ```
+ 
+1. Vérifiez la nouvelle valeur appliquée :
 
+    ```powershell
+    $Setting.Values
+    ```
+    
 1. Ensuite, enregistrez les modifications et appliquez les paramètres :
 
-    ```PowerShell
-    New-AzureADDirectorySetting -DirectorySetting $setting
+    ```powershell
+    Set-AzureADDirectorySetting -Id $grpUnifiedSetting.Id -DirectorySetting $setting
     ```
 
 Vous devrez également synchroniser vos étiquettes de sensibilité dans Azure AD. Pour obtenir des instructions, consultez [Guide pratique pour activer des étiquettes de sensibilité pour des conteneurs et synchroniser des étiquettes](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).

@@ -3,12 +3,12 @@ title: Présentation d’Azure Advisor
 description: Le conseiller Azure permet d’optimiser vos déploiements Azure.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48423a56983f052e9e048fca111fd77b9188a577
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91405205"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494359"
 ---
 # <a name="introduction-to-azure-advisor"></a>Présentation d’Azure Advisor
 
@@ -57,7 +57,7 @@ Vous pouvez accéder aux recommandations d’Advisor en tant que *propriétaire*
 
 Advisor fournit des recommandations pour Application Gateway, App Services, les groupes à haute disponibilité, le Cache Azure, Azure Data Factory, Azure Database pour MySQL, Azure Database pour PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, les adresses IP publiques Azure, Azure Synapse Analytics, les serveurs SQL, les comptes de stockage, les profils Traffic Manager et les machines virtuelles.
 
-Azure Advisor inclut également vos recommandations de [Azure Security Center](../security-center/security-center-recommendations.md), pouvant inclure des recommandations pour des types de ressources supplémentaires.
+Azure Advisor inclut également vos recommandations de [Microsoft Defender for Cloud](../defender-for-cloud/defender-for-cloud-introduction.md), pouvant inclure des recommandations pour des types de ressources supplémentaires.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Puis-je reporter ou ignorer une recommandation ?
 

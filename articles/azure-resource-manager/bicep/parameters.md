@@ -4,13 +4,13 @@ description: Explique comment définir des paramètres dans un fichier Bicep.
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: b90fb108df58c41578bf9472390574b4bc174111
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 11/12/2021
+ms.openlocfilehash: 4345269d9c1191545a28998a38aeedb14b37e0bc
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363504"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486614"
 ---
 # <a name="parameters-in-bicep"></a>Paramètres dans Bicep
 
@@ -26,7 +26,15 @@ Pour en savoir plus sur les paramètres et pour obtenir des conseils pratiques, 
 
 ## <a name="declaration"></a>Déclaration
 
-Chaque paramètre a besoin d’un nom et d’un type. Un paramètre ne peut pas avoir le même nom qu’une variable, qu’une ressource, qu’une sortie ou qu’un autre paramètre dans la même étendue.
+Chaque paramètre a un nom et un [type de données](data-types.md). Si vous le souhaitez, vous pouvez attribuer une valeur par défaut à un paramètre.
+
+```bicep
+param <parameter-name> <parameter-data-type> = <default-value>
+```
+
+Un paramètre ne peut pas avoir le même nom qu’une variable, qu’une ressource, qu’une sortie ou qu’un autre paramètre dans la même étendue.
+
+L’exemple suivant montre des déclarations de base de paramètres.
 
 ```bicep
 param demoString string
@@ -67,6 +75,19 @@ param demoPassword string
 @description('Must be at least Standard_A3 to support 2 NICs.')
 param virtualMachineSize string = 'Standard_DS1_v2'
 ```
+
+Le tableau suivant décrit les éléments décoratifs disponibles et leur utilisation.
+
+| Élément décoratif | S’applique à | Argument | Description |
+| --------- | ---- | ----------- | ------- |
+| [autorisé](#allowed-values) | all | tableau | Valeurs autorisées pour le paramètre. Utilisez cet élément décoratif pour vérifier que l’utilisateur fournit des valeurs correctes. |
+| [description](#description) | all | string | Texte qui explique comment utiliser le paramètre. La description apparaît aux utilisateurs dans le portail. |
+| [maxLength](#length-constraints) | array, string | int | Longueur maximale des paramètres de type chaîne et tableau. La valeur est inclusive. |
+| [maxValue](#integer-constraints) | int | int | Valeur maximale du paramètre de type entier. Cette valeur est inclusive. |
+| metadata | all | object | Propriétés personnalisées à appliquer au paramètre. Peut inclure une propriété Description qui est équivalente à l’élément décoratif de description. |
+| [minLength](#length-constraints) | array, string | int | Longueur minimale des paramètres de type chaîne et tableau. La valeur est inclusive. |
+| [minValue](#integer-constraints) | int | int | Valeur minimale du paramètre de type entier. Cette valeur est inclusive. |
+| [secure](#secure-parameters) | string, object | Aucun | Marque le paramètre comme sécurisé. La valeur d’un paramètre sécurisé n’est pas enregistrée dans l’historique de déploiement et n’est pas journalisée. Pour plus d’informations, consultez [Sécuriser les chaînes et les objets](data-types.md#secure-strings-and-objects). |
 
 Les éléments décoratifs se trouvent dans l’[espace de noms sys](bicep-functions.md#namespaces-for-functions). Si vous devez différencier un élément décoratif d'un autre élément portant le même nom, faites précéder l’élément décoratif de `sys`. Par exemple, si votre fichier Bicep contient un paramètre nommé `description`, vous devez ajouter l’espace de noms sys lors de l’utilisation de l’élément décoratif **description**.
 

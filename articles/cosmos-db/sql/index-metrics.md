@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/25/2021
 ms.author: tisande
-ms.openlocfilehash: ed60ce6586947f59d9a6c32b08f1c50082db5077
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f10208e83c9c7f23600285444d22ed5b5faf2488
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056679"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551973"
 ---
 # <a name="indexing-metrics-in-azure-cosmos-db"></a>Métriques d'indexation dans Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -137,7 +137,7 @@ Index Utilization Information
     Index Impact Score: High
     ---
 ```
-Ces métriques d’indexation montrent que la requête a utilisé les chemins indexés `/name/?`, `/age/?`, `/town/?` et `/timestamp/?`. Les métriques d’indexation indiquent également qu’il y a une forte probabilité que l’ajout d’index composites (`/name` ASC, `(/town ASC, /age ASC)` et `(/name ASC, /town ASC, /timestamp ASC)` améliorera davantage les performances.
+Ces métriques d’indexation montrent que la requête a utilisé les chemins indexés `/name/?`, `/age/?`, `/town/?` et `/timestamp/?`. Les métriques d’indexation indiquent également qu’il y a une forte probabilité que l’ajout d’index composites `(/name ASC, /town ASC, /age ASC)` et `(/name ASC, /town ASC, /timestamp ASC)` améliorera davantage les performances.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

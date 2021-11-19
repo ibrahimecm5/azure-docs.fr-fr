@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 8f18b4f7c39ba16fbd70301c36d08319c2e3fcf9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5d569598c51429cb12027f3955fa9315a05b16bb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065282"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521982"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Gérer les espaces de travail Azure Machine Learning dans le portail ou avec le SDK Python
 
@@ -185,7 +185,7 @@ Fournie par le SDK Python Azure Machine Learning, la classe [PrivateEndpointConf
 
 ### <a name="vulnerability-scanning"></a>Analyse des vulnérabilités
 
-Azure Security Center fournit des fonctionnalités unifiées de gestion de la sécurité et de protection avancée contre les menaces sur l’ensemble des charges de travail cloud hybrides. Vous devez autoriser Azure Security Center à analyser vos ressources et suivre ses recommandations. Pour plus d’informations, consultez [Analyse d’images Azure Container Registry par Security Center](../security-center/defender-for-container-registries-introduction.md) et [Intégration d’Azure Kubernetes Services à Security Center](../security-center/defender-for-kubernetes-introduction.md).
+Microsoft Defender pour cloud fournit une gestion unifiée de la sécurité et une protection avancée contre les menaces dans les charges de travail cloud hybrides. Vous devez autoriser Microsoft Defender for Cloud à analyser vos ressources et à suivre ses recommandations. Pour plus d’informations, consultez [Analyse d’images Azure Container Registry par Defender for Cloud](../security-center/defender-for-container-registries-introduction.md) et [Intégration d’Azure Kubernetes Service à Defender for Cloud](../security-center/defender-for-kubernetes-introduction.md).
 
 ### <a name="advanced"></a>Avancé
 
@@ -306,13 +306,15 @@ Consultez la liste de tous les espaces de travail que vous pouvez utiliser.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Recherchez vos abonnements dans la [page Abonnements du portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).  Copiez l’ID et utilisez-le dans le code ci-dessous pour afficher tous les espaces de travail disponibles pour cet abonnement.
+Recherchez vos abonnements dans la [page Abonnements du portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Copiez l’ID et utilisez-le dans le code ci-dessous pour afficher tous les espaces de travail disponibles pour cet abonnement.
 
 ```python
 from azureml.core import Workspace
 
 Workspace.list('<subscription-id>')
 ```
+
+La méthode Workspace.list (..) ne retourne pas l’objet espace de travail complet. Il comprend uniquement des informations de base sur les espaces de travail existants dans l’abonnement. Pour obtenir un objet complet pour un espace de travail spécifique, utilisez Workspace.get(..).
 
 # <a name="portal"></a>[Portail](#tab/azure-portal)
 
@@ -337,7 +339,7 @@ Lorsque vous n’avez plus besoin d’un espace de travail, supprimez-le.
 
 [!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
 
-Si vous avez supprimé accidentellement votre espace de travail, vous pouvez toujours récupérer vos blocs-notes. Reportez-vous à [cette documentation](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
+Si vous avez supprimé accidentellement votre espace de travail, vous pouvez toujours récupérer vos blocs-notes. Pour plus de détails, voir [Basculement de la continuité d’activité et reprise d’activité](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
 
 # <a name="python"></a>[Python](#tab/python)
 

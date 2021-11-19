@@ -8,24 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/28/2021
+ms.date: 11/15/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: john.garland, maggie.marxen, ian.bennett, marsma
-ms.openlocfilehash: f1378d1e011deaddf793dea9bebc7b099bedde9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc1154965b037fbc57dcafa30f08fd951721bf6f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532069"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486740"
 ---
 # <a name="role-based-access-control-for-application-developers"></a>Contrôle d’accès en fonction du rôle pour les développeurs d’applications
 
-Le contrôle d’accès en fonction du rôle (RBAC) permet à certains utilisateurs ou groupes de disposer d’autorisations spécifiques concernant les ressources auxquelles ils ont accès, ce qu’ils peuvent faire avec ces ressources et qui gère quelles ressources. Cet article explique le contrôle d’accès en fonction du rôle propre à l’application.
-
-> [!NOTE]
-> Le contrôle d’accès en fonction du rôle à l’application est différent du [Contrôle d’accès en fonction du rôle d’Azure](../../role-based-access-control/overview.md) et du [Contrôle d’accès en fonction du rôle d’Azure AD](../roles/custom-overview.md#understand-azure-ad-role-based-access-control). Les rôles personnalisés Azure et les rôles intégrés font tous deux partie du contrôle d’accès en fonction du rôle Azure, qui vous aide à gérer les ressources Azure. Le contrôle d’accès en fonction du rôle d’Azure AD vous permet de gérer les ressources Azure AD.
-
+Le contrôle d’accès en fonction du rôle (RBAC) permet à certains utilisateurs ou groupes de disposer d’autorisations spécifiques concernant les ressources auxquelles ils ont accès, ce qu’ils peuvent faire avec ces ressources et qui gère quelles ressources. Le contrôle d’accès en fonction du rôle à l’application est différent du [Contrôle d’accès en fonction du rôle d’Azure](../../role-based-access-control/overview.md) et du [Contrôle d’accès en fonction du rôle d’Azure AD](../roles/custom-overview.md#understand-azure-ad-role-based-access-control). Les rôles personnalisés Azure et les rôles intégrés font tous deux partie du contrôle d’accès en fonction du rôle Azure, qui vous aide à gérer les ressources Azure. Le RBAC d’Azure AD vous permet de gérer les ressources Azure AD. Cet article explique le contrôle d’accès en fonction du rôle propre à l’application.
 
 
 ## <a name="what-are-roles"></a>Que sont les rôles ?
@@ -64,8 +60,7 @@ Les rôles d’application et les groupes stockent des informations sur les attr
 
 L’utilisation du stockage personnalisé permet aux développeurs d’appliquer des personnalisations et des contrôles supplémentaires sur la façon d’attribuer des rôles aux utilisateurs et de les représenter. Toutefois, cette flexibilité supplémentaire découle également sur une plus grande responsabilité. Par exemple, aucun mécanisme n’est actuellement disponible pour inclure ces informations dans les jetons retournés par Azure AD. Si les développeurs placent les informations de rôle dans un magasin de données personnalisé, ils doivent faire en sorte que les applications récupèrent ces rôles. Cette opération s’effectue généralement à l’aide de points d’extensibilité définis dans l’intergiciel disponible pour la plateforme utilisée pour développer l’application. En outre, les développeurs sont responsables de la sécurisation du magasin de données personnalisé.
 
-> [!NOTE]
-> Avec les [stratégies personnalisées Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md), il est possible d’interagir avec les magasins de données personnalisés et d’inclure des revendications personnalisées dans un jeton.
+Avec les [stratégies personnalisées Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md), il est possible d’interagir avec les magasins de données personnalisés et d’inclure des revendications personnalisées dans un jeton.
 
 ## <a name="choosing-an-approach"></a>Choix de l’approche
 
@@ -81,12 +76,9 @@ Bien qu’il soit possible d’utiliser des rôles ou des groupes d’applicatio
 |**Les valeurs de rôle sont statiques entre les locataires Azure AD**|Oui  |Non |Dépend de l’implémentation.|
 |**Les valeurs de rôle peuvent être utilisées dans plusieurs applications**|Non. Sauf si la configuration de rôle est dupliquée dans chaque inscription d’application.|Oui |Oui |
 |**Informations stockées dans l’annuaire**|Oui  |Oui |Non |
-|**Informations fournies via des jetons**|Oui (revendication de rôles)  |Oui* (revendication de groupes) |Non. Récupéré au moment de l’exécution via du code personnalisé. |
+|**Informations fournies via des jetons**|Oui (revendication de rôles)  |Oui (en cas de dépassement, les *revendications de groupe* peuvent doivent être récupérées lors de l’exécution.) |Non. Récupéré au moment de l’exécution via du code personnalisé. |
 |**Durée de vie**|Réside dans l’inscription de l’application dans l’annuaire. Supprimé lorsque l’inscription de l’application est supprimée.|Réside dans l’annuaire. Reste intact même lorsque l’inscription de l’application est supprimée. |Réside dans le magasin de données personnalisé. Non lié à l’inscription de l’application.|
 
-
-> [!NOTE]
-> Oui* : en cas de dépassement, les *revendications de groupe* peuvent doivent être récupérées lors de l’exécution.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

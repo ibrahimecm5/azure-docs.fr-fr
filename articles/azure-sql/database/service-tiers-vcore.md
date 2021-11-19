@@ -12,12 +12,12 @@ ms.reviewer: mathoma
 ms.date: 05/18/2021
 ROBOTS: NOINDEX
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6c16e508aa2002aff07df5fc30e0af4c74bdd025
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 67e79d8b307de6327f3bacf2bfd57f95080b50d1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413697"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553189"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Vue d’ensemble du modèle vCore – Azure SQL Database et SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,9 @@ Le modèle d’achat vCore (« cœur virtuel ») utilisé par Azure SQL Databa
 - Dans le cas d’Azure SQL Database, le modèle d’achat vCore fournit des limites de calcul, de mémoire, d’e/s et de stockage plus élevées que le modèle DTU.
 
 Pour plus d’informations sur le choix entre les modèles d’achat vCore et DTU, consultez [choisir entre les modèles d’achat vCore et DTU](purchasing-models.md).
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="service-tiers"></a>Niveaux de service
 

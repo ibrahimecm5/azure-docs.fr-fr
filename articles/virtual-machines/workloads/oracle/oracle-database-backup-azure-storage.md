@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: f30a7fcbc99f6a47574d101e3792d992dc2c1af8
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2c9128f6e03f039ddc6e56ec9672a7a0a18f9889
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260037"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520405"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-files"></a>Sauvegarder et récupérer une base de données Oracle Database 19c sur une machine virtuelle Linux Azure à l’aide d’Azure Files
 
@@ -175,7 +175,7 @@ Pour effectuer une sauvegarde sur Azure Files, procédez comme suit :
 
 ### <a name="set-up-azure-files"></a>Configurer Azure Files
 
-Au cours de cette étape, vous allez sauvegarder la base de données Oracle dans Azure Files à l’aide d’Oracle Recovery Manager (RMAN). Les partages de fichiers Azure sont des partages de fichiers entièrement gérés qui résident dans le cloud. Ils sont accessibles via le protocole SMB (Server Message Block) ou NFS (Network File System). Cette étape couvre la création d'un partage de fichiers qui utilise le protocole SMB pour procéder au montage sur votre machine virtuelle. Pour plus d'informations sur le montage à l'aide du protocole NFS, consultez [Monter le stockage Blob à l'aide du protocole NFS 3.0](../../../storage/blobs/network-file-system-protocol-support-how-to.md).
+Au cours de cette étape, vous allez sauvegarder la base de données Oracle dans Azure Files à l’aide d’Oracle Recovery Manager (RMAN). Les partages de fichiers Azure sont des partages de fichiers entièrement gérés qui résident dans le cloud. Ils sont accessibles via le protocole SMB (Server Message Block) ou NFS (Network File System). Cette étape couvre la création d'un partage de fichiers qui utilise le protocole SMB pour procéder au montage sur votre machine virtuelle. Pour plus d’informations sur le montage à l’aide de NFS, voir [Comment créer un partage NFS](../../../storage/files/storage-files-how-to-create-nfs-shares.md).
 
 Lors du montage d'Azure Files, nous utiliserons `cache=none` pour désactiver la mise en cache des données du partage de fichiers. Et pour veiller à ce que les fichiers créés dans le partage appartiennent à l'utilisateur oracle, définissez également les options `uid=oracle` et `gid=oinstall`. 
 

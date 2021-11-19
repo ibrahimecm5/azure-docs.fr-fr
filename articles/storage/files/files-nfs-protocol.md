@@ -1,27 +1,27 @@
 ---
-title: Partages de fichiers NFS (préversion) dans Azure Files
+title: Partages de fichiers NFS dans Azure Files
 description: Découvrez les partages de fichiers hébergés dans Azure Files avec le protocole NFS (Network File System).
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 11/16/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 0d0fefe0994b0d3d162b8a7d9f802c70ae7b0b3f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 31aec4e32178b2f0ca7905c6d584df298dd2059a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225433"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524338"
 ---
-# <a name="nfs-file-shares-in-azure-files-preview"></a>Partages de fichiers NFS dans Azure Files (préversion)
-Azure Files offre deux protocoles standard pour le montage d’un partage de fichiers Azure : le protocole [SMB (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) et le protocole [NFS (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) en préversion. Azure Files vous permet de choisir le protocole de système de fichiers le mieux adapté à votre charge de travail. Les partages de fichiers Azure ne prennent pas en charge l’accès à un partage de fichiers Azure individuel avec les protocoles SMB et NFS, même si vous pouvez créer des partages de fichiers SMB et NFS au sein du même compte de stockage. Pour tous les partages de fichiers, Azure Files propose des partages de fichiers d’entreprise qui peuvent être mis à l’échelle pour répondre à vos besoins de stockage et accessibles simultanément par des milliers de clients.
+# <a name="nfs-file-shares-in-azure-files"></a>Partages de fichiers NFS dans Azure Files
+Azure Files propose deux protocoles standard pour le montage d’un partage de fichiers Azure : le protocole [SMB](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) et le protocole [NFS](https://en.wikipedia.org/wiki/Network_File_System). Azure Files vous permet de choisir le protocole de système de fichiers le mieux adapté à votre charge de travail. Les partages de fichiers Azure ne prennent pas en charge l’accès à un partage de fichiers Azure individuel avec les protocoles SMB et NFS, même si vous pouvez créer des partages de fichiers SMB et NFS au sein du même compte de stockage. Pour tous les partages de fichiers, Azure Files propose des partages de fichiers d’entreprise qui peuvent être mis à l’échelle pour répondre à vos besoins de stockage et accessibles simultanément par des milliers de clients.
 
 Cet article traite des partages de fichiers Azure NFS. Pour plus d’informations sur les partages de fichiers Azure SMB, consultez [Partages de fichiers SMB dans Azure Files](files-smb-protocol.md).
 
 > [!IMPORTANT]
-> Nous vous déconseillons d’utiliser NFS en production pendant la préversion. Pour obtenir la liste des problèmes connus, consultez [Résoudre les problèmes liés aux partages de fichiers Azure NFS](storage-troubleshooting-files-nfs.md).
+>  Pour obtenir la liste des partages de fichiers NFS pour la production, consultez [Résoudre les problèmes liés aux partages de fichiers Azure NFS](storage-troubleshooting-files-nfs.md).
 
 ## <a name="common-scenarios"></a>Scénarios courants
 Les partages de fichiers NFS sont souvent utilisés dans les scénarios suivants :
@@ -83,8 +83,6 @@ L’état des éléments figurant dans ce tableau peut évoluer au fil du temps,
 | Créer des partages NFS sur des comptes de stockage existants*| ⛔ |
 | Prise en charge de plus de 16 groupes| ⛔ |
 
-\* Si un compte de stockage a été créé avant l’inscription à NFS, vous ne pouvez pas l’utiliser pour NFS. Seuls les comptes de stockage créés après l’inscription à NFS peuvent être utilisés.
-
 ## <a name="regional-availability"></a>Disponibilité régionale
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
@@ -94,9 +92,9 @@ Les partages de fichiers Azure NFS sont uniquement proposés sur des partages de
 
 ## <a name="workloads"></a>Charges de travail
 > [!IMPORTANT]
-> Nous vous déconseillons d’utiliser NFS en production pendant la préversion. Pour obtenir la liste des problèmes connus, consultez [Résoudre les problèmes liés aux partages de fichiers Azure NFS](storage-troubleshooting-files-nfs.md).
+> Pour obtenir la liste des partages de fichiers NFS pour la production, consultez [Résoudre les problèmes liés aux partages de fichiers Azure NFS](storage-troubleshooting-files-nfs.md).
 
-La préversion de NFS a été validée pour fonctionner avec des charges de travail comme les répertoires de base pour les serveurs de fichiers à usage général et les référentiels de contenu pour les charges de travail d’application.
+NFS a été validé pour fonctionner correctement avec les charges de travail telles que la couche Application SAP, les sauvegardes de base de données, la réplication de base de données, les files d’attente de messages, les répertoires de base des serveurs de fichiers à usage général et les référentiels de contenu pour les charges de travail d’application.
 
 Les charges de travail suivantes présentent des problèmes connus. Pour obtenir la liste des problèmes connus, consultez [Résoudre les problèmes liés aux partages de fichiers Azure NFS](storage-troubleshooting-files-nfs.md) :
 - Oracle Database présente une incompatibilité avec sa fonctionnalité dNFS.

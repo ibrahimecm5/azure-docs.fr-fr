@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c18e242694d5f4d02ce9111d852a66bf49e48bcd
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 44cbae10fc83ddbacf9abc8fd6510667c1f27e00
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275484"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524376"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Résoudre les problèmes de performances des partages de fichiers Azure
 
@@ -23,7 +23,7 @@ Cet article répertorie certains problèmes courants liés à des partages de fi
 |-|:-:|:-:|
 | Partages de fichiers Standard (GPv2), LRS/ZRS | ![Oui](../media/icons/yes-icon.png) | ![Non](../media/icons/no-icon.png) |
 | Partages de fichiers Standard (GPv2), GRS/GZRS | ![Oui](../media/icons/yes-icon.png) | ![Non](../media/icons/no-icon.png) |
-| Partages de fichiers Premium (FileStorage), LRS/ZRS | ![Oui](../media/icons/yes-icon.png) | ![Non](../media/icons/no-icon.png) |
+| Partages de fichiers Premium (FileStorage), LRS/ZRS | ![Oui](../media/icons/yes-icon.png) | ![Oui](../media/icons/yes-icon.png) |
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Latence élevée, débit faible et problèmes généraux de niveau de performance
 
@@ -81,8 +81,8 @@ Pour déterminer si la plupart de vos demandes sont centrées sur des métadonn�
 #### <a name="workaround"></a>Solution de contournement
 
 - Vérifiez si l’application peut être modifiée pour réduire le nombre d’opérations sur les métadonnées.
-- Ajoutez un disque dur virtuel (VHD) sur le partage de fichiers, et montez-le sur SMB à partir du client pour effectuer des opérations de fichiers sur les données. Cette approche fonctionne pour des scénarios à un seul rédacteur/lecteur ou des scénarios avec plusieurs lecteurs et aucun rédacteur. Comme le système de fichiers appartient au client plutôt qu’à Azure Files, les opérations sur les métadonnées peuvent être locales. La configuration offre des performances similaires à celles d’un stockage local directement attaché.
-    -   Pour monter un disque dur virtuel (VHD) sur un client Windows, utilisez la cmdlet Powershell [Mount-DiskImage](/powershell/module/storage/mount-diskimage).
+- Ajoutez un disque dur virtuel (VHD) sur le partage de fichiers, et montez-le à partir du client pour effectuer des opérations de fichiers sur les données. Cette approche fonctionne pour des scénarios à un seul rédacteur/lecteur ou des scénarios avec plusieurs lecteurs et aucun rédacteur. Comme le système de fichiers appartient au client plutôt qu’à Azure Files, les opérations sur les métadonnées peuvent être locales. La configuration offre des performances similaires à celles d’un stockage local directement attaché.
+    -   Pour monter un disque dur virtuel (VHD) sur un client Windows, utilisez la cmdlet PowerShell [Mount-DiskImage](/powershell/module/storage/mount-diskimage).
     -   Pour monter un disque dur virtuel (VHD) sur Linux, consultez la documentation de votre distribution Linux.     
 
 ### <a name="cause-3-single-threaded-application"></a>Cause 3 : Application à thread unique
@@ -124,6 +124,7 @@ L’une des causes possibles est l’absence de prise en charge de SMB multicana
 - L’obtention d’une machine virtuelle avec un cœur plus grand pourrait contribuer à améliorer le débit.
 - L’exécution de l’application cliente à partir de plusieurs machines virtuelles augmente le débit.
 - Utilisez les API REST si c’est possible.
+- Pour les partages de fichiers NFS, nconnect est disponible en préversion. Non recommandé pour les charges de travail de production.
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-than-that-of-windows-clients"></a>Le débit sur les clients Linux est sensiblement plus faible que sur des clients Windows
 
@@ -219,7 +220,7 @@ Modifications récentes apportées aux paramètres de configuration de la foncti
 
 ### <a name="cause"></a>Cause  
 
-Un nombre élevé de notifications de modification de fichier sur des partages de fichiers peut entraîner des latences importantes. Cela se produit généralement avec des sites web hébergés sur des partages de fichiers avec une structure de répertoires imbriqués profonde. Un scénario classique est l’application web hébergée par IIS où la notification de modification de fichier est configurée pour chaque répertoire dans la configuration par défaut. Chaque modification ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) sur le partage pour lequel le client SMB est inscrit envoie une notification de modification du service de fichiers au client, ce qui mobilise des ressources du système, et le problème empire avec le nombre de modifications. Cela peut entraîner une limitation du partage et, par conséquent, une latence plus élevée côté client. 
+Un nombre élevé de notifications de modification de fichier sur des partages de fichiers peut entraîner des latences importantes. Cela se produit généralement avec des sites web hébergés sur des partages de fichiers avec une structure de répertoires imbriqués profonde. Un scénario classique est l’application web hébergée par IIS où la notification de modification de fichier est configurée pour chaque répertoire dans la configuration par défaut. Chaque modification ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) sur le partage pour lequel le client est inscrit envoie une notification de modification du service de fichiers au client, ce qui mobilise des ressources du système, et le problème empire avec le nombre de modifications. Cela peut entraîner une limitation du partage et, par conséquent, une latence plus élevée côté client. 
 
 Pour vérifier cela, vous pouvez utiliser les métriques Azure dans le portail : 
 
@@ -227,7 +228,7 @@ Pour vérifier cela, vous pouvez utiliser les métriques Azure dans le portail 
 1. Dans le menu de gauche, sous Supervision, sélectionnez Métriques. 
 1. Sélectionnez Fichier comme espace de noms de métrique pour votre étendue de compte de stockage. 
 1. Sélectionnez Transactions comme métrique. 
-1. Ajoutez un filtre pour ResponseType et vérifiez si toutes les demandes ont un code de réponse SuccessWithThrottling (pour SMB) ou ClientThrottlingError (pour REST).
+1. Ajoutez un filtre pour ResponseType et vérifiez si toutes les demandes ont un code de réponse SuccessWithThrottling (pour SMB ou NFS) ou ClientThrottlingError (pour REST).
 
 ### <a name="solution"></a>Solution 
 

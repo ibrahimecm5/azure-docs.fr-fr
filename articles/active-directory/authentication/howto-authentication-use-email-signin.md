@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 7cee43e911c2713b13f7e8e729a00b4c2379ce22
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e7b34e98776f252c2122d58601c8067df208b2f2
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251088"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486747"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>Se connecter à Azure AD avec un e-mail comme autre ID de connexion (préversion)
 
@@ -30,7 +30,9 @@ Certaines organisations n’ont pas adopté l’authentification hybride pour le
 * Le changement de l’UPN Azure AD provoque une discordance entre les environnements local et Azure AD, ce qui peut entraîner des problèmes avec certains services et applications.
 * Pour des raisons commerciales ou de conformité, l’organisation ne souhaite pas utiliser l’UPN local pour se connecter à Azure AD.
 
-Pour faciliter l’adoption de l’authentification hybride, vous pouvez configurer Azure AD de façon à permettre aux utilisateurs de se connecter en utilisant leur e-mail comme autre ID de connexion. Par exemple, si *Contoso* a été rebaptisé *Fabrikam*, au lieu de continuer à se connecter avec l’UPN `balas@contoso.com` hérité, il est possible d’utiliser une adresse e-mail comme autre ID de connexion. Pour accéder à une application ou un service, les utilisateurs se connectent à Azure AD avec leur e-mail non-UPN (par exemple, `balas@fabrikam.com`).
+Pour faciliter l’adoption de l’authentification hybride, vous pouvez configurer Azure AD de façon à permettre aux utilisateurs de se connecter en utilisant leur e-mail comme autre ID de connexion. Par exemple, si *Contoso* a été rebaptisé *Fabrikam*, au lieu de continuer à se connecter avec l’UPN `ana@contoso.com` hérité, il est possible d’utiliser une adresse e-mail comme autre ID de connexion. Pour accéder à une application ou un service, les utilisateurs se connectent à Azure AD avec leur e-mail non-UPN (par exemple, `ana@fabrikam.com`).
+
+![E-mail utilisé comme autre ID de connexion.](media/howto-authentication-use-email-signin/email-alternate-login-id.png)
 
 Cet article explique comment activer et utiliser une adresse e-mail comme ID de connexion de substitution.
 
@@ -39,7 +41,7 @@ Cet article explique comment activer et utiliser une adresse e-mail comme ID de 
 Voici ce que vous devez savoir sur l’utilisation d’un e-mail comme autre ID de connexion :
 
 * La fonctionnalité est disponible dans l’édition Azure Active Directory Free et éditions supérieures.
-* La fonctionnalité permet aux utilisateurs Azure AD authentifiés dans le cloud de se connecter à l’aide de l’attribut *ProxyAddresses* du domaine vérifié.
+* La fonctionnalité permet aux utilisateurs Azure AD authentifiés dans le cloud de se connecter à l’aide de l’attribut *ProxyAddresses*, en plus du nom d’utilisateur principal (UPN). Pour en savoir plus sur la façon dont cela s’applique aux scénarios Azure AD B2B dans la section [B2B](#b2b-guest-user-sign-in-with-an-email-address).
 * Lorsqu’un utilisateur se connecte avec un e-mail non UPN, les revendications `unique_name` et `preferred_username` (le cas échéant) dans le [jeton d’ID](../develop/id-tokens.md) renvoient l’e-mail non UPN.
 * La fonctionnalité prend en charge l’authentification managée avec la synchronisation de la synthèse du mot de passe (PHS) ou l’authentification directe (PTA).
 * Il y a deux options possibles pour configurer la fonctionnalité :
@@ -57,8 +59,7 @@ Dans la préversion actuelle, les limitations suivantes s’appliquent à l’ut
 
 * **Flux non pris en charge** : certains flux ne sont actuellement pas compatibles avec les e-mails non-UPN, notamment :
     * Identity Protection ne fait pas correspondre les e-mails non-UPN avec la détection du risque *Informations d’identification fuitées*. Cette détection de risque utilise l’UPN pour faire correspondre les informations d’identification qui ont été divulguées. Pour plus d’informations, consultez [Détection et correction des riques Azure AD Identity Protection][identity-protection].
-    * Les invitations B2B envoyées à un e-mail non-UPN ne sont pas entièrement prises en charge. Après qu’une invitation envoyée à un e-mail non-UPN a été acceptée, la connexion avec l’e-mail non-UPN peut ne pas fonctionner pour l’utilisateur invité sur le point de terminaison du locataire de ressource.
-    * Quand un utilisateur s’est connecté avec un e-mail non-UPN, il ne peut pas changer son mot de passe. La réinitialisation de mot de passe en libre-service (SSPR) fonctionne en principe comme prévu. Pendant le processus SSPR, l’utilisateur peut voir son UPN s’il vérifie son identité avec un autre e-mail alternatif.
+    * Quand un utilisateur s’est connecté avec un e-mail non-UPN, il ne peut pas changer son mot de passe. La réinitialisation de mot de passe en libre-service (SSPR) fonctionne en principe comme prévu. Pendant le processus de réinitialisation de mot de passe en libre-service (SSPR), l’utilisateur peut voir son UPN s’il vérifie son identité avec un e-mail non UPN.
 
 * **Scénarios non pris en charge** : les scénarios suivants ne sont pas pris en charge. Connexion avec un e-mail non UPN à :
     * [Appareils joints Azure AD hybrides](../devices/concept-azure-ad-join-hybrid.md)
@@ -68,8 +69,6 @@ Dans la préversion actuelle, les limitations suivantes s’appliquent à l’ut
     * Applications à l’aide de l’authentification héritée telle que POP3 et SMTP
     * Skype Entreprise
     * Microsoft Office sur macOS
-    * Microsoft Teams sur le web
-    * OneDrive, quand le flux de connexion n’implique pas l’authentification multifacteur.
     * Portail d’administration Microsoft 365
 
 * **Applications non prises en charge** : certaines applications tierces peuvent ne pas fonctionner comme prévu si elles partent du principe que les revendications `unique_name` ou `preferred_username` sont immuables ou correspondent toujours à un attribut utilisateur spécifique, tel que UPN.
@@ -123,6 +122,12 @@ L’un des attributs utilisateur automatiquement synchronisés par Azure AD Conn
 > Seuls les adresses e-mail de domaines vérifiés pour le locataire sont synchronisées sur Azure AD. Chaque locataire Azure AD dispose d’un ou plusieurs domaines vérifiés dont vous avez prouvé la propriété, et qui sont liés de manière unique à votre locataire.
 >
 > Pour plus d’informations, consultez [Ajouter et vérifier un nom de domaine personnalisé dans Azure AD][verify-domain].
+
+## <a name="b2b-guest-user-sign-in-with-an-email-address"></a>Connexion B2B des utilisateurs invités avec une adresse e-mail
+
+![Diagramme des adresses e-mail utilisées comme ID de connexion de substitution pour la connexion B2B des utilisateurs invités.](media/howto-authentication-use-email-signin/email-alternate-login-id-b2b.png)
+
+L’utilisation d’une adresse e-mail comme ID de connexion secondaire s’applique à la [collaboration B2B (business-to-business) Azure AD](../external-identities/what-is-b2b.md) selon le modèle « Apportez vos propres identifiants de connexion ». Lorsque l’utilisation d’une adresse e-mail comme ID de connexion secondaire est activée dans le locataire principal, les utilisateurs Azure AD peuvent effectuer des connexions d’invité avec une adresse e-mail non UPN sur le point de terminaison avec locataire de la ressource. Aucune action n’est requise du locataire de ressources pour activer cette fonctionnalité.
 
 ## <a name="enable-user-sign-in-with-an-email-address"></a>Permettre à un utilisateur de se connecter avec une adresse e-mail
 
@@ -316,7 +321,7 @@ Pour tester la possibilité de connexion des utilisateurs au moyen de l’e-mail
 
 ## <a name="troubleshoot"></a>Dépanner
 
-Si des utilisateurs éprouvent des difficultés à se connecter avec leur adresse e-mail, essayez les étapes de dépannage suivantes :
+Si des utilisateurs rencontrent des difficultés à se connecter avec leur adresse e-mail, essayez les étapes de dépannage suivantes :
 
 1. Assurez-vous qu’au moins une heure s’est écoulée depuis l’activation de l’e-mail comme ID de connexion alternatif. Si l’utilisateur a récemment été ajouté à un groupe pour la stratégie de déploiement par étapes, assurez-vous que son ajout date de plus de 24 heures.
 1. Si vous utilisez la stratégie de découverte du domaine d’accueil, vérifiez que la ressource *HomeRealmDiscoveryPolicy* d’Azure AD a sa propriété *AlternateIdLogin* définie sur *"Enabled": true* et sa propriété *IsOrganizationDefault* définie sur *True* :

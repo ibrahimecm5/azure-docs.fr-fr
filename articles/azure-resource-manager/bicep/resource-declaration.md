@@ -4,13 +4,13 @@ description: Explique comment déclarer des ressources en vue de les déployer d
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 10/25/2021
-ms.openlocfilehash: 28f61a3fb3a40cb4db0a06f3c59fe6b07ec7d5bc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/12/2021
+ms.openlocfilehash: 1398215116307cf810d259ac52c30f6588e612ab
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074210"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494000"
 ---
 # <a name="resource-declaration-in-bicep"></a>Déclaration de ressources dans Bicep
 
@@ -34,7 +34,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 }
 ```
 
-Les noms symboliques respectent la casse.  Ils peuvent contenir des lettres, des chiffres et _ ; mais ils ne peuvent pas commencer par un chiffre.
+Les noms symboliques respectent la casse. Ils peuvent contenir des lettres, des chiffres et des traits de soulignement (`_`). Ils ne peuvent pas commencer par un chiffre. Une ressource ne peut pas avoir le même nom qu’un paramètre, un module ou une variable.
 
 Pour obtenir les types et versions des ressources disponibles, consultez les [informations de référence sur les ressources Bicep](/azure/templates/). Bicep ne prend pas en charge `apiProfile`, qui est disponible dans le [JSON des modèles Azure Resource Manager (modèles ARM)](../templates/syntax.md).
 
@@ -46,9 +46,10 @@ resource <symbolic-name> '<full-type-name>@<api-version>' = if (condition) {
 }
 ```
 
-Pour déployer plusieurs instances d’une ressource, utilisez la syntaxe `for`. Pour plus d’informations, consultez [Boucles itératives dans Bicep](loops.md).
+Pour déployer plusieurs instances d’une ressource, utilisez la syntaxe `for`. Vous pouvez utiliser l’élément décoratif `batchSize` pour spécifier si les instances sont déployées en série ou en parallèle. Pour plus d’informations, consultez [Boucles itératives dans Bicep](loops.md).
 
 ```bicep
+@batchSize(int) // optional decorator for serial deployment
 resource <symbolic-name> '<full-type-name>@<api-version>' = [for <item> in <collection>: {
   <properties-to-repeat>
 }]

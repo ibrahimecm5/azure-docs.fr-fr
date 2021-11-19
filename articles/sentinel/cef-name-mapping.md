@@ -1,31 +1,31 @@
 ---
 title: Clé CEF (Common Event format) et mappage de champs CommonSecurityLog
-description: Cet article mappe les clés CEF aux noms de champs correspondants dans le CommonSecurityLog dans Azure Sentinel.
+description: Cet article mappe les clés CEF aux noms de champs correspondants dans le CommonSecurityLog dans Microsoft Sentinel.
 services: sentinel
 author: batamig
 ms.author: bagol
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: reference
-ms.date: 07/26/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ee4aec218ba3969b54531f6f025b84b4909f6b85
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 710b20dcf4f1ac94816881c4851ddfafc0f84872
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064541"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132522096"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>Mappage de champs CEF et CommonSecurityLog
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Les tableaux suivants mappent les noms de champs CEF (Common Event format) aux noms qu’ils utilisent dans le CommonSecurityLog d’Azure Sentinel et peuvent être utiles lorsque vous travaillez avec une source de données CEF dans Azure Sentinel.
+Les tableaux suivants mappent les noms de champs CEF (Common Event format) aux noms qu’ils utilisent dans le CommonSecurityLog de Microsoft Sentinel et peuvent être utiles lorsque vous travaillez avec une source de données CEF dans Microsoft Sentinel.
 
 Pour plus d’informations, consultez [Connecter votre solution externe à l’aide de Common Event Format](connect-common-event-format.md).
 
 > [!NOTE]
-> Un espace de travail Azure Sentinel est requis pour [ingérer des données CEF](connect-common-event-format.md#prerequisites) dans Log Analytics.
+> Un espace de travail Microsoft Sentinel est requis pour  [ingérer des données CEF](connect-common-event-format.md#prerequisites) dans Log Analytics.
 >
 
 ## <a name="a---c"></a>A - C
@@ -239,7 +239,7 @@ Le tableau suivant mappe les noms de clé CEF et CommonSecurityLog pour les cham
 
 ## <a name="enrichment-fields"></a>Champs d’enrichissement
 
-Les champs **CommonSecurityLog** suivants sont ajoutés par Azure Sentinel pour enrichir les événements d’origine reçus à partir des appareils sources. Ils n’ont pas de mappages dans les clés CEF :
+Les champs **CommonSecurityLog** suivants sont ajoutés par Microsoft Sentinel pour enrichir les événements d’origine reçus à partir des appareils sources. Ils n’ont pas de mappages dans les clés CEF :
 
 ### <a name="threat-intelligence-fields"></a>Champs d’informations sur les menaces
 

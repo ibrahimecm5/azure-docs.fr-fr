@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 000daf7c60d0bc823aacdab85de42af3b6cbbf55
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 55445659ef58d073eb8992060b82c76bd08f8e18
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419046"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548308"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrer la passerelle Azure Application Gateway et le pare-feu d’applications web de v1 à v2
 
@@ -43,6 +43,7 @@ Un script Azure PowerShell est disponible qui effectue les opérations suivantes
 * La version 2 ne prend pas en charge IPv6, si bien que les passerelles v1 compatibles IPv6 ne sont pas migrées. Si vous exécutez le script, il peut ne pas se terminer.
 * Si la passerelle v1 a uniquement une adresse IP privée, le script crée une adresse IP publique et une adresse IP privée pour la nouvelle passerelle v2. Les passerelles v2 ne prennent actuellement pas en charge uniquement les adresses IP privées.
 * Les en-têtes dont les noms contiennent autre chose que des lettres, des chiffres, des traits d’union et des traits de soulignement ne sont pas transmis à votre application. Cela s’applique uniquement aux noms des en-têtes, et non aux valeurs des en-têtes. Il s’agit d’un changement cassant par rapport à v1.
+* L’authentification NTLM et Kerberos n’est pas prise en charge par Application Gateway v2. Le script ne peut pas détecter si la passerelle gère ce type de trafic et peut créer un changement cassant des passerelles v1 à v2 s’il est exécuté.
 
 ## <a name="download-the-script"></a>Télécharger le script
 

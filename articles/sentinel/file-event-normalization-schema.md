@@ -1,34 +1,34 @@
 ---
-title: Informations de référence sur le schéma de normalisation des événements de fichier Azure Sentinel | Microsoft Docs
-description: Cet article décrit le schéma de normalisation des événements de fichier Azure Sentinel.
+title: Informations de référence sur le schéma de normalisation des événements de fichier Microsoft Sentinel | Microsoft Docs
+description: Cet article décrit le schéma de normalisation des événements de fichier Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/22/2021
+ms.date: 11/09/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ba1dd4cd4b3552466db55723432f5e9c79593070
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1e5e0752459362dbb3cea63b9adb5f453f40d2fd
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055178"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524471"
 ---
-# <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Informations de référence sur le schéma de normalisation des événements de fichier Azure Sentinel (préversion publique)
+# <a name="microsoft-sentinel-file-event-normalization-schema-reference-public-preview"></a>Informations de référence de schéma de normalisation d’événement du fichier Microsoft Sentinel (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Le schéma de normalisation des événements de fichier est utilisé pour décrire les activités de fichier, telles que la création, la modification ou la suppression de fichiers ou de documents. Ces événements sont signalés par les systèmes d’exploitation, les systèmes de stockage de fichiers tels qu’Azure Files et les systèmes de gestion de documents tels que Microsoft SharePoint.
 
-Pour plus d’informations sur la normalisation dans Azure Sentinel, consultez [Normalisation et le modèle d’informations Azure Sentinel (ASIM)](normalization.md).
+Pour plus d’informations sur la normalisation dans Microsoft Sentinel, consultez [Normalisation et modèle ASIM (Advanced SIEM Information Model)](normalization.md).
 
 > [!IMPORTANT]
 > Le schéma de normalisation des événements de fichier est en préversion. Cette fonctionnalité est fournie sans contrat de niveau de service et n’est pas recommandée pour des charges de travail de production.
@@ -38,16 +38,16 @@ Pour plus d’informations sur la normalisation dans Azure Sentinel, consultez [
 
 ## <a name="parsers"></a>Analyseurs
 
-Azure Sentinel fournit les analyseurs d’événements de fichier intégrés suivants, spécifiques aux produits :
+Microsoft Sentinel fournit les analyseurs d’événements de fichier intégrés suivants, spécifiques aux produits :
 
 - **Événements d’activité de fichier sysmon (événements 11, 23 et 26)** , collectés à l’aide de l’agent Log Analytics ou de l’agent Azure Monitor.
 - **Événements Microsoft Office 365 SharePoint et OneDrive**, collectés à l’aide du connecteur d’activité Office.
-- **Événements de fichier Microsoft 365 Defender pour points de terminaison**
+- **Microsoft 365 Defender pour les événements de points de terminaison**
 - **Stockage Azure**, notamment le Stockage Blob, le Stockage Fichier, le Stockage File d’attente et le Stockage Table.
 
 Pour utiliser l’analyseur indépendant de la source qui unifie tous les analyseurs intégrés et vérifier que votre analyse s’exécute sur toutes les sources configurées, utilisez imFileEvent comme nom de table dans votre requête.
 
-Déployez les [analyseurs indépendants de la source et spécifiques de la source](normalization-about-parsers.md) à partir du [dépôt GitHub Azure Sentinel](https://aka.ms/AzSentinelFileEvent).
+Déployez les [analyseurs indépendants de la source et spécifiques de la source](normalization-about-parsers.md) à partir du [référentiel GitHub Microsoft Sentinel](https://aka.ms/AzSentinelFileEvent).
 
 ## <a name="add-your-own-normalized-parsers"></a>Ajouter vos propres analyseurs normalisés
 
@@ -58,7 +58,7 @@ Ajoutez vos fonctions KQL à l’analyseur `imFileEvent` indépendant de la sour
 
 ## <a name="normalized-content-for-file-activity-data"></a>Contenu normalisé pour les données d’activité de fichier
 
-La prise en charge du schéma ASIM des activités de fichier comprend également la prise en charge des règles d’analytique intégrées suivantes avec des analyseurs d’activité de fichier normalisés. Outre au travers des liens vers le dépôt GitHub Azure Sentinel fournis ci-dessous comme référence, vous pouvez trouver ces règles dans la [galerie de règles Azure Sentinel Analytics](detect-threats-built-in.md). Utilisez les pages GitHub liées pour copier toutes les requêtes de chasse appropriées pour les règles listées.
+La prise en charge du schéma ASIM des activités de fichier comprend également la prise en charge des règles d’analytique intégrées suivantes avec des analyseurs d’activité de fichier normalisés. Outre au travers des liens vers le référentiel GitHub Microsoft Sentinel fournis ci-dessous comme référence, vous pouvez trouver ces règles dans la [galerie de règles Microsoft Sentinel Analytics](detect-threats-built-in.md). Utilisez les pages GitHub liées pour copier toutes les requêtes de chasse appropriées pour les règles listées.
 
 
 - [Hachages de porte dérobée SUNBURST et SUPERNOVA (événements de fichier normalisés)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
@@ -203,9 +203,9 @@ Le chemin doit être normalisée afin de correspondre à un des formats suivants
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [Normalisation dans Azure Sentinel](normalization.md)
-- [Informations de référence sur le schéma de normalisation de l’authentification Azure Sentinel (préversion publique)](authentication-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation du DNS Azure Sentinel](dns-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation du réseau Azure Sentinel](./network-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation des événements de processus Azure Sentinel (préversion publique)](process-events-normalization-schema.md)
-- [Informations de référence sur le schéma de normalisation d’événement du registre Azure Sentinel (préversion publique)](registry-event-normalization-schema.md)
+- [Normalisation dans Microsoft Sentinel](normalization.md)
+- [Informations de référence sur le schéma de normalisation de l’authentification Microsoft Sentinel (préversion publique)](authentication-normalization-schema.md)
+- [Informations de référence de schéma de normalisation du DNS Microsoft Sentinel](dns-normalization-schema.md)
+- [Informations de référence sur le schéma de normalisation du réseau Microsoft Sentinel](./network-normalization-schema.md)
+- [Informations de référence sur le schéma de normalisation des événements de processus Microsoft Sentinel (préversion publique)](process-events-normalization-schema.md)
+- [Informations de référence de schéma de normalisation d’événement du registre Microsoft Sentinel (préversion publique)](registry-event-normalization-schema.md)

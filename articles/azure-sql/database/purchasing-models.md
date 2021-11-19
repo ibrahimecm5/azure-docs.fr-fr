@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a0c499ad15618d874a99be65f6d3af8d11fd88ec
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 30039e687750cbe7f21cea62b117608e41ee4f93
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408944"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553208"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Choisir entre les modèles d’achat vCore et DTU – Azure SQL Database et SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,11 @@ Azure SQL Database et SQL Managed Instance vous permettent d’acheter facilemen
 
 - [Modèle d’achat vCore (basé sur une mémoire à tores magnétiques virtuelle)](service-tiers-vcore.md) (recommandé). Ce modèle d’achat offre le choix entre un niveau de calcul approvisionné et un niveau de calcul serverless (sans serveur). Avec le niveau calcul provisionné, vous choisissez la quantité exacte de ressources de calcul qui sont toujours approvisionnées pour votre charge de travail. Avec le niveau de calcul serverless, vous spécifiez la mise à l’échelle automatique des ressources de calcul sur une plage de calcul configurable. Ce niveau de calcul vous permet également de suspendre et reprendre automatiquement l’activité de la base de données en fonction de l’activité de la charge de travail. Le prix unitaire de vCore par unité de temps du niveau de calcul approvisionné est inférieur à celui du niveau de calcul serverless.
 - [Modèle d’achat DTU (basé sur une unité de transaction de base de données)](service-tiers-dtu.md). Ce modèle d’achat fournit des packages de calcul et de stockage groupés et équilibrés pour les charges de travail courantes.
+
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021) 
+
 
 Il existe deux modèles d’achat :
 

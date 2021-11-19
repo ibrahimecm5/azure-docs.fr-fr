@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01086769e006ee0005665ddde5d7717b8b69a513
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 4d87a78c809791f01745f4406b58832258ea4d36
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858620"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548536"
 ---
 # <a name="connect-to-and-manage-postgresql-in-azure-purview-preview"></a>Se connecter à PostgreSQL et le gérer dans Azure Purview (préversion)
 
@@ -32,7 +32,7 @@ Les versions du serveur PostgreSQL prises en charge sont les versions 8.4 à 12.
 
 Lors de l’analyse de la source PostgreSQL, Purview prend en charge les opérations suivantes :
 
-- Extraction de métadonnées de PostgreSQL, incluant le serveur, les schémas, les bases de données, les tables, les affichages, les colonnes de table/affichage, etc.
+- Extraction de métadonnées incluant le serveur PostgreSQL, les bases de données, les schémas, les tables, les affichages et les colonnes de table/affichage.
 - Récupération de la traçabilité des relations de ressources entre les tables et les affichages.
 
 ## <a name="prerequisites"></a>Prérequis
@@ -45,7 +45,7 @@ Lors de l’analyse de la source PostgreSQL, Purview prend en charge les opérat
 
 * Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717). Pour plus d’informations, consultez [le guide Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
 
-* Vérifiez que [JDK 11](https://www.PostgreSQL.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
+* Vérifiez que [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
 
 * Vérifiez que le package Redistributable Visual C++ pour Visual Studio 2012 Update 4 est installé sur la machine dotée du runtime d’intégration auto-hébergé. Si cette mise à jour n’est pas installée, [vous pouvez la télécharger ici](https://www.microsoft.com/download/details.aspx?id=30679).
 
@@ -122,9 +122,9 @@ Pour créer une analyse et l’exécuter, procédez comme suit :
         
         Les modèles de nom de schéma acceptables utilisant la syntaxe d’expressions de type SQL LIKE incluent l’utilisation de %. Par exemple : `A%; %B; %C%; D`
         * commençant par A ou
-        * Se terminant par B ou
-        * Contenant C ou
-        * Égal à D
+        * se terminant par B ou
+        * contenant C ou
+        * égalant D
 
         L’utilisation de NOT et des caractères spéciaux n’est pas autorisée.
 

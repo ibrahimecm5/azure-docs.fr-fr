@@ -5,22 +5,18 @@ author: msftradford
 ms.author: parkerra
 manager: MehranAzimi-msft
 ms.service: azure-spatial-anchors
-ms.date: 2/4/2021
+ms.date: 11/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6d49864b371599901e8cf5f9945ceae972fe991
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0df8bf579feedf7659c5302e9be82b45335f8af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669597"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490383"
 ---
 # <a name="building-in-unity-with-azure-spatial-anchors"></a>Création dans Unity avec Azure Spatial Anchors
 
-Les développeurs peuvent choisir Unity pour créer et déployer des applications de réalité mixte qui utilisent Azure Spatial Anchors.
-
-[!INCLUDE [Unity Project Requirements](../../includes/spatial-anchors-unity-project-requirements.md)]
-
-Les plateformes suivantes sont prises en charge :
+Les développeurs peuvent choisir Unity pour créer et déployer des applications de réalité mixte qui utilisent Azure Spatial Anchors. Si vous créez votre propre projet, suivez le [Guide de configuration du projet Unity](./how-tos/setup-unity-project.md). Dans le cas contraire, vous pouvez commencer rapidement avec l’un des Démarrages rapides suivants :
 
 **Unity pour HoloLens**
 

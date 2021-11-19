@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/11/2021
+ms.date: 11/13/2021
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd1df757c03552024490b0de13988b4dc63115a7
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 3de8e679cb6c99db4057ec5e5b0ae48b2b4c3500
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859640"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490285"
 ---
 # <a name="use-the-azure-identity-library-to-get-an-access-token-for-authorization"></a>Utiliser la bibliothèque Azure Identity pour obtenir un jeton d’accès pour l’autorisation
 
-La bibliothèque de client Azure Identity simplifie le processus d’obtention d’un jeton d’accès OAuth 2.0 pour l’autorisation avec Azure Active Directory (Azure AD) via le [Kit de développement logiciel (SDK) Azure](https://github.com/Azure/azure-sdk). Les versions les plus récentes des bibliothèques de client Stockage Azure pour .NET, Java, Python et JavaScript s’intègrent aux bibliothèques Azure Identity pour chacun de ces langages afin de fournir un moyen simple et sécurisé d’acquérir un jeton d’accès pour l’autorisation des demandes Stockage Azure.
+La bibliothèque de client Azure Identity simplifie le processus d’obtention d’un jeton d’accès OAuth 2.0 pour l’autorisation avec Azure Active Directory (Azure AD) via le [Kit de développement logiciel (SDK) Azure](https://github.com/Azure/azure-sdk). Les versions les plus récentes des bibliothèques de client Stockage Azure pour .NET, Java, Python, JavaScript et Go s’intègrent aux bibliothèques Azure Identity pour chacun de ces langages afin de fournir un moyen simple et sécurisé d’acquérir un jeton d’accès pour l’autorisation des demandes Stockage Azure.
 
-L’un des avantages de la bibliothèque de client Azure Identity est qu’elle vous permet d’utiliser le même code pour acquérir le jeton d’accès, que votre application soit exécutée dans l’environnement de développement ou dans Azure. La bibliothèque de client Azure Identity pour .NET renvoie un jeton d’accès pour un principal de sécurité. Lorsque votre code s’exécute dans Azure, le principal de sécurité peut être une identité managée pour les ressources Azure, un principal de service, un utilisateur ou un groupe. Dans l’environnement de développement, la bibliothèque de client fournit un jeton d’accès pour un utilisateur ou un principal de service à des fins de test.
+L’un des avantages de la bibliothèque de client Azure Identity est qu’elle vous permet d’utiliser le même code pour acquérir le jeton d’accès, que votre application soit exécutée dans l’environnement de développement ou dans Azure. La bibliothèque de client Azure Identity renvoie un jeton d’accès pour un principal de sécurité. Lorsque votre code s’exécute dans Azure, le principal de sécurité peut être une identité managée pour les ressources Azure, un principal de service, un utilisateur ou un groupe. Dans l’environnement de développement, la bibliothèque de client fournit un jeton d’accès pour un utilisateur ou un principal de service à des fins de test.
 
 Le jeton d’accès renvoyé par la bibliothèque de client Azure Identity est encapsulé dans les informations d’identification d’un jeton. Vous pouvez ensuite utiliser les informations d’identification du jeton pour obtenir un objet client de service à utiliser lors de l’exécution d’opérations autorisées sur Stockage Azure. Un moyen simple d’obtenir le jeton d’accès et les informations d’identification du jeton consiste à utiliser la classe **DefaultAzureCredential** fournie par la bibliothèque de client Azure Identity. Une instance de cette classe tente d’obtenir les informations d’identification du jeton de diverses manières courantes, et elle fonctionne à la fois dans l’environnement de développement et dans Azure.
 
@@ -32,6 +32,7 @@ Pour plus d’informations sur la bibliothèque de client Azure Identity pour vo
 - [Bibliothèque cliente Azure Identity pour Java](/java/api/overview/azure/identity-readme)
 - [Bibliothèque cliente Azure Identity pour Python](/python/api/overview/azure/identity-readme)
 - [Bibliothèque cliente Azure Identity pour JavaScript](/javascript/api/overview/azure/identity-readme)
+- [Bibliothèque cliente Azure Identity pour Go](/javascript/api/overview/azure/identity-readme)
 
 ## <a name="assign-azure-roles-for-access-to-data"></a>Attribuer des rôles Azure pour l’accès aux données
 

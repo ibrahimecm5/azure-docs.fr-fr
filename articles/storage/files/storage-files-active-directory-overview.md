@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: fe8fd05dfc43fc4ff98182f90e3459af28529127
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 43e844380374a8e507325494b67faef1daf85340
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254099"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523939"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Vue d’ensemble des options d’authentification basée sur l’identité Azure Files pour l’accès SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -85,7 +85,7 @@ Le tableau suivant récapitule les scénarios d’authentification de partages d
 - L’authentification Azure AD DS et AD DS en local ne prend pas en charge l’authentification par rapport à des comptes d’ordinateur. Vous pouvez envisager d’utiliser un compte d’ouverture de session de service à la place.
 - Ni l’authentification Azure AD DS, ni l’authentification AD DS locale n’est prise en charge par rapport aux appareils joints à Azure AD ou aux appareils inscrits auprès d’Azure AD.
 - Les partages de fichiers Azure prennent uniquement en charge l’authentification basée sur l’identité par rapport à l’un des services de domaine suivants, [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) ou [Active Directory Domain Services (AD DS) local](#ad-ds).
-- Aucune méthode d’authentification basée sur l’identité n’est prise en charge avec le système NFS (Network File System), qui est en préversion.
+- Aucune méthode d’authentification basée sur l’identité n’est prise en charge avec les partages NFS (Network File System).
 
 ## <a name="advantages-of-identity-based-authentication"></a>Avantages de l’authentification basée sur l’identité
 L’authentification basée sur l’identité pour Azure Files offre plusieurs avantages par rapport à l’utilisation de l’authentification par clé partagée :

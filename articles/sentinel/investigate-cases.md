@@ -1,28 +1,28 @@
 ---
-title: Examiner les incidents avec Azure Sentinel | Microsoft Docs
-description: Dans cet article, découvrez comment utiliser Azure Sentinel pour créer des règles d’alertes avancées qui génèrent des incidents que vous pouvez attribuer et sur lesquels vous pouvez enquêter.
+title: Examiner les incidents avec Microsoft Sentinel | Microsoft Docs
+description: Dans cet article, découvrez comment utiliser Microsoft Sentinel pour créer des règles d’alertes avancées qui génèrent des incidents que vous pouvez attribuer et sur lesquels vous pouvez enquêter.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dec517fae51463f5589b8dfbf39c4ac3e662395c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77cf1b6dd4038613af9d079fc6226ab8c784577a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037071"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520139"
 ---
-# <a name="investigate-incidents-with-azure-sentinel"></a>Examiner les incidents avec Azure Sentinel
+# <a name="investigate-incidents-with-microsoft-sentinel"></a>Examiner les incidents avec Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "131037071"
 > Les fonctionnalités indiquées sont disponibles en préversion. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
 >
 
-Cet article vous aide à enquêter sur les incidents avec Azure Sentinel. Après avoir connecté vos sources de données à Azure Sentinel, vous souhaitez être averti en cas d’activité suspecte. Pour vous permettre de l’être, Azure Sentinel vous permet de créer des règles d’alerte avancées, qui génèrent des incidents que vous pouvez attribuer et examiner.
+Cet article vous aide à enquêter sur les incidents avec Microsoft Sentinel. Après avoir connecté vos sources de données à Microsoft Sentinel, vous souhaitez être averti en cas d’activité suspecte. Pour vous permettre de l’être, Microsoft Sentinel vous permet de créer des règles d’alerte avancées, qui génèrent des incidents que vous pouvez attribuer et examiner.
 
 Cet article couvre les points suivants :
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ Cet article couvre les points suivants :
 > * Utiliser le graphique d’examen
 > * Répondre aux menaces
 
-Un incident peut inclure plusieurs alertes. C’est une agrégation de toutes les preuves pertinentes pour une investigation spécifique. Un incident est créé en fonction des règles d’analytique que vous avez créées sur la page **Analytics**. Les propriétés relatives aux alertes, telles que l’état et la gravité, sont définies au niveau de l’incident. Après avoir informé Azure Sentinel des types de menaces que vous recherchez et de comment les trouver, vous pouvez surveiller les menaces détectées en étudiant des incidents.
+Un incident peut inclure plusieurs alertes. C’est une agrégation de toutes les preuves pertinentes pour une investigation spécifique. Un incident est créé en fonction des règles d’analytique que vous avez créées sur la page **Analytics**. Les propriétés relatives aux alertes, telles que l’état et la gravité, sont définies au niveau de l’incident. Après avoir informé Microsoft Sentinel des types de menaces que vous recherchez et de comment les trouver, vous pouvez surveiller les menaces détectées en étudiant des incidents.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -98,7 +98,7 @@ Pour utiliser le graphique d’examen :
    > [!IMPORTANT] 
    > - Vous ne pourrez examiner l’incident que si vous avez utilisé les champs de mappage d’entité lorsque vous avez configuré votre règle d’analytique. Le graphique d’examen requiert que votre incident d’origine comprenne des entités.
    >
-   > - Azure Sentinel prend actuellement en charge l’examen des **incidents survenus au cours des 30 derniers jours**.
+   > - Microsoft Sentinel prend actuellement en charge l’examen des **incidents survenus au cours des 30 derniers jours**.
 
 
 1. Sélectionnez une entité pour ouvrir le volet **Entités** et consulter les informations y afférentes.
@@ -136,7 +136,7 @@ Une fois que vous avez résolu un incident particulier (par exemple, lorsque vot
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Capture d’écran qui met en évidence les classifications disponibles dans la liste Sélectionner le classification.":::
 
-Pour plus d’informations sur les faux positifs et les positifs bénins, consultez [Gérer les faux positifs dans Azure Sentinel](false-positives.md).
+Pour plus d’informations sur les faux positifs et les positifs bénins, consultez [Gérer les faux positifs dans Microsoft Sentinel](false-positives.md).
 
 Après avoir choisi la classification appropriée, ajoutez un texte descriptif dans le champ **Commentaire**. Cela vous sera utile dans l’éventualité où vous devriez revenir à cet incident. Lorsque vous avez terminé, cliquez sur **Appliquer** pour clôturer l’incident.
 
@@ -181,7 +181,7 @@ L’utilisation des options de recherche avancées modifie le comportement de re
 
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans cet article, vous avez appris à commencer à examiner les incidents à l’aide d’Azure Sentinel. Pour plus d'informations, consultez les pages suivantes :
+Dans cet article, vous avez appris à commencer à examiner les incidents à l’aide de Microsoft Sentinel. Pour plus d'informations, consultez les pages suivantes :
 
-- [Didacticiel : utiliser des règles d’automatisation dans Azure Sentinel](tutorial-respond-threats-playbook.md)
+- [Didacticiel : utiliser des règles d’automatisation dans Microsoft Sentinel](tutorial-respond-threats-playbook.md)
 - [Enquêter sur les incidents à l'aide des données UEBA](investigate-with-ueba.md)

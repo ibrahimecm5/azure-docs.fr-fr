@@ -1,29 +1,29 @@
 ---
-title: Connecter des données Azure Active Directory à Azure Sentinel | Microsoft Docs
-description: Découvrez comment collecter des données à partir d’Azure Active Directory et diffuser des journaux de connexion, d’audit et de provisionement Azure AD dans Azure Sentinel.
+title: Connecter des données Azure Active Directory à Microsoft Sentinel | Microsoft Docs
+description: Découvrez comment collecter des données à partir d’Azure Active Directory et diffuser des journaux de connexion, d’audit et de provisionement Azure AD dans Microsoft Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 0a8f4a58-e96a-4883-adf3-6b8b49208e6a
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/21/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3d0c19fe728f42940502f2cab3496d999ecbb349
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa4673a573138ac3ccbac533e980f36eb148c6f6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060722"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518068"
 ---
-# <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Connecter des données Azure Active Directory (Azure AD) à Azure Sentinel
+# <a name="connect-azure-active-directory-azure-ad-data-to-microsoft-sentinel"></a>Connecter des données Azure Active Directory (Azure AD) à Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "131060722"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Vous pouvez utiliser le connecteur intégré d’Azure Sentinel pour collecter des données à partir d’[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) et de les diffuser en continu vers Azure Sentinel. Le connecteur vous permet de diffuser les types de journaux suivants :
+Vous pouvez utiliser le connecteur intégré de Microsoft Sentinel pour collecter des données à partir d’[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) et de les diffuser en continu vers Microsoft Sentinel. Le connecteur vous permet de diffuser les types de journaux suivants :
 
 - Les [**journaux de connexion**](../active-directory/reports-monitoring/concept-all-sign-ins.md), qui contiennent des informations sur les connexions utilisateur interactives où un utilisateur fournit un facteur d’authentification.
 
@@ -51,9 +51,9 @@ Vous pouvez utiliser le connecteur intégré d’Azure Sentinel pour collecter d
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Une licence Azure Active Directory P1 ou P2 est nécessaire pour ingérer les journaux de connexion dans Azure Sentinel. Toute licence Azure AD (Gratuit/O365/P1/P2) est suffisante pour ingérer les autres types de journaux. Des frais supplémentaires par gigaoctet peuvent s’appliquer pour Azure Monitor (Log Analytics) et Azure Sentinel.
+- Une licence Azure Active Directory P1 ou P2 est nécessaire pour ingérer les journaux de connexion dans Microsoft Sentinel. Toute licence Azure AD (Gratuit/O365/P1/P2) est suffisante pour ingérer les autres types de journaux. Des frais supplémentaires par gigaoctet peuvent s’appliquer pour Azure Monitor (Log Analytics) et Microsoft Sentinel.
 
-- Le rôle Contributeur Azure Sentinel doit être attribué à votre utilisateur sur l’espace de travail.
+- Le rôle Contributeur Microsoft Sentinel doit être attribué à votre utilisateur sur l’espace de travail.
 
 - Les rôles Administrateur général ou Administrateur de sécurité doivent être attribués à votre utilisateur sur le locataire à partir duquel vous souhaitez diffuser les journaux.
 
@@ -61,11 +61,11 @@ Vous pouvez utiliser le connecteur intégré d’Azure Sentinel pour collecter d
 
 ## <a name="connect-to-azure-active-directory"></a>Connexion à Azure Active Directory
 
-1. Dans Azure Sentinel, sélectionnez **Connecteurs de données** dans le menu de navigation.
+1. Dans Microsoft Sentinel, sélectionnez **Connecteurs de données** dans le menu de navigation.
 
 1. Dans la galerie des connecteurs de données, sélectionnez **Azure Active Directory**, puis sélectionnez **Ouvrir la page du connecteur**.
 
-1. Cochez les cases associées aux types de journaux que vous souhaitez diffuser dans Azure Sentinel (voir ci-dessus), puis sélectionnez **Se connecter**.
+1. Activez les cases à cocher associées aux types de journaux que vous souhaitez diffuser dans Microsoft Sentinel (voir ci-dessus), puis sélectionnez **Se connecter**.
 
 ## <a name="find-your-data"></a>Recherche de données
 
@@ -81,6 +81,6 @@ Une fois la connexion établie, les données s’affichent dans **Journaux**, so
 Pour interroger les journaux Azure AD, entrez le nom de table approprié en haut de la fenêtre de requête.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce document, vous avez appris à connecter Azure Active Directory à Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans ce document, vous avez appris à connecter Azure Active Directory à Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](detect-threats-built-in.md).

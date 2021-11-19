@@ -1,52 +1,52 @@
 ---
-title: Connecter Azure Sentinel aux flux de renseignements sur les menaces STIX/TAXII | Microsoft Docs
-description: Découvrez comment connecter Azure Sentinel à des flux de renseignements sur les menaces standard pour importer des indicateurs de menace.
+title: Connecter Microsoft Sentinel aux flux de renseignements sur les menaces STIX/TAXII | Microsoft Docs
+description: Découvrez comment connecter Microsoft Sentinel à des flux de renseignements sur les menaces standard pour importer des indicateurs de menace.
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a3e0381654e8a4d80c9eccffd6e02207b997fad8
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 570d296b7f6f8a2831d4f758be5b85108da5d8a2
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004355"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521773"
 ---
-# <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Connecter Azure Sentinel aux flux de renseignements sur les menaces STIX/TAXII
+# <a name="connect-microsoft-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Connecter Microsoft Sentinel aux flux de renseignements sur les menaces STIX/TAXII
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-**Voir aussi** : [Connecter votre plateforme de renseignement sur les menaces (TIP) à Azure Sentinel](connect-threat-intelligence-tip.md)
+**Voir aussi** : [Connecter votre plateforme de renseignement sur les menaces (TIP) à Microsoft Sentinel](connect-threat-intelligence-tip.md)
 
-La norme du secteur la plus largement adoptée pour la transmission du renseignement sur les menaces est une [combinaison du format de données STIX et du protocole TAXII](https://oasis-open.github.io/cti-documentation/). Si votre organisation reçoit des indicateurs de menace de solutions prenant en charge la version actuelle de STIX/TAXII (2.0 ou 2.1), vous pouvez utiliser le **connecteur de données Threat Intelligence – TAXII** pour transférer vos indicateurs de menace dans Azure Sentinel. Ce connecteur permet à un client TAXII intégré à Azure Sentinel d’importer le renseignement sur les menaces à partir de serveurs TAXII 2.x.
+La norme du secteur la plus largement adoptée pour la transmission du renseignement sur les menaces est une [combinaison du format de données STIX et du protocole TAXII](https://oasis-open.github.io/cti-documentation/). Si votre organisation reçoit des indicateurs de menace de solutions prenant en charge la version actuelle de STIX/TAXII (2.0 ou 2.1), vous pouvez utiliser le **connecteur de données Threat Intelligence – TAXII** pour transférer vos indicateurs de menace dans Microsoft Sentinel. Ce connecteur permet à un client TAXII intégré à Microsoft Sentinel d’importer le renseignement sur les menaces à partir de serveurs TAXII 2.x.
 
 :::image type="content" source="media/connect-threat-intelligence-taxii/threat-intel-taxii-import-path.png" alt-text="Chemin d’importation de TAXII":::
 
-En savoir plus sur le [renseignement sur les menaces](understand-threat-intelligence.md) dans Azure Sentinel, et plus particulièrement sur les [flux de renseignements sur les menaces TAXII](threat-intelligence-integration.md#taxii-threat-intelligence-feeds) qui peuvent être intégrés à Azure Sentinel.
+En savoir plus sur le [renseignement sur les menaces](understand-threat-intelligence.md) dans Microsoft Sentinel, et plus particulièrement sur les [flux de renseignements sur les menaces TAXII](threat-intelligence-integration.md#taxii-threat-intelligence-feeds) qui peuvent être intégrés à Microsoft Sentinel.
 
 ## <a name="prerequisites"></a>Prérequis  
 
-- Vous devez disposer d’autorisations en lecture et en écriture dans l’espace de travail Azure Sentinel pour stocker vos indicateurs de menace.
+- Vous devez disposer d’autorisations en lecture et en écriture sur l’espace de travail Microsoft Sentinel pour stocker vos indicateurs de menace.
 - Vous devez disposer d’un **URI racine d’API** et d’un **ID de collection** pour TAXII 2.0 ou TAXII 2.1.
 
 ## <a name="instructions"></a>Instructions
 
-Effectuez les étapes suivantes pour importer des indicateurs de menace au format STIX dans Azure Sentinel à partir d’un serveur TAXII :
+Effectuez les étapes suivantes pour importer des indicateurs de menace au format STIX dans Microsoft Sentinel à partir d’un serveur TAXII :
 
 1. Obtenir la racine d’API et l’ID de collection du serveur TAXII
 
-1. Activer le connecteur de données Threat Intelligence - TAXII dans Azure Sentinel
+1. Pour activer le connecteur de données Threat Intelligence – TAXII dans Microsoft Sentinel
 
 ### <a name="get-the-taxii-server-api-root-and-collection-id"></a>Obtenir la racine d’API et l’ID de collection du serveur TAXII
 
@@ -55,11 +55,11 @@ Les serveurs TAXII 2.x publient les racines d’API, qui sont des URL hébergea
 > [!NOTE]
 > Dans certains cas, le fournisseur ne publiera qu’une URL appelée « Point de terminaison de détection ». Vous pouvez utiliser l’utilitaire cURL pour parcourir le point de terminaison de détection et demander la racine d’API, comme [indiqué ci-dessous](#find-the-api-root).
 
-### <a name="enable-the-threat-intelligence---taxii-data-connector-in-azure-sentinel"></a>Activer le connecteur de données Threat Intelligence - TAXII dans Azure Sentinel
+### <a name="enable-the-threat-intelligence---taxii-data-connector-in-microsoft-sentinel"></a>Pour activer le connecteur de données Threat Intelligence – TAXII dans Microsoft Sentinel
 
-Pour importer des indicateurs de menace dans Azure Sentinel à partir d’un serveur TAXII, effectuez les étapes suivantes :
+Pour importer des indicateurs de menace dans Microsoft Sentinel à partir d’un serveur TAXII, effectuez les étapes suivantes :
 
-1. Depuis le [portail Azure](https://portal.azure.com/), accédez au service **Azure Sentinel**.
+1. Depuis le [portail Azure](https://portal.azure.com/), accédez au service **Microsoft Sentinel**.
 
 1. Choisissez l’**espace de travail** dans lequel vous voulez importer des indicateurs de menace à partir du serveur TAXII.
 
@@ -71,7 +71,7 @@ Pour importer des indicateurs de menace dans Azure Sentinel à partir d’un ser
  
 Vous devriez recevoir la confirmation qu’une connexion au serveur TAXII a été établie et vous pouvez répéter la dernière étape ci-dessus autant de fois que vous le souhaitez pour vous connecter à plusieurs collections à partir d’un ou plusieurs serveurs TAXII.
 
-Après quelques minutes, les indicateurs de menace doivent commencer à circuler dans cet espace de travail Azure Sentinel. Vous pouvez trouver les nouveaux indicateurs dans le panneau **Renseignement sur les menaces**, accessible depuis le menu de navigation d’Azure Sentinel.
+Après quelques minutes, les indicateurs de menace doivent commencer à circuler dans cet espace de travail Microsoft Sentinel. Vous pouvez trouver les nouveaux indicateurs dans le panneau **Renseignement sur les menaces**, accessible depuis le menu de navigation de Microsoft Sentinel.
 
 ### <a name="find-the-api-root"></a>Rechercher la racine d’API
 
@@ -181,7 +181,7 @@ Voici un exemple d’utilisation de l’utilitaire de ligne de commande [cURL](h
     }
     ```
 
-Vous disposez maintenant de toutes les informations dont vous avez besoin pour connecter Azure Sentinel à une ou plusieurs collections de serveurs TAXII fournies par Anomali Limo.
+Vous disposez maintenant de toutes les informations dont vous avez besoin pour connecter Microsoft Sentinel à une ou plusieurs collections de serveurs TAXII fournies par Anomali Limo.
 
 | **Racine d’API** (https://limo.anomali.com/api/v1/taxii2/feeds/) | ID de la collection |
 | ------------------------------------------------------------ | ------------: |
@@ -199,7 +199,7 @@ Vous disposez maintenant de toutes les informations dont vous avez besoin pour c
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à connecter Azure Sentinel à des flux de renseignements sur les menaces à l’aide du protocole TAXII. Pour en savoir plus sur Azure Sentinel, consultez les articles suivants.
+Dans ce document, vous avez appris à connecter Microsoft Sentinel à des flux de renseignements sur les menaces à l’aide du protocole TAXII. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - Découvrez comment [avoir une visibilité sur vos données et les menaces potentielles](get-visibility.md).
-- Prise en main de la [détection des menaces avec Azure Sentinel](./detect-threats-built-in.md).
+- Prise en main de la [détection des menaces avec Microsoft Sentinel](./detect-threats-built-in.md).

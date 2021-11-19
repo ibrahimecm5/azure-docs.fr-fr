@@ -9,12 +9,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 07891ea9f4f25827c80ac56a2731d4a5393f3b38
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2f0acb894d6bdacef69dcf8adb2088214e094415
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131438718"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517954"
 ---
 # <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics"></a>Exécuter une activité Fail dans Azure Data Factory et Synapse Analytics
 
@@ -77,3 +77,4 @@ Consultez d’autres activités de flux de contrôle prises en charge, à savoir
 - [Activité de recherche](control-flow-lookup-activity.md)
 - [Activité Web](control-flow-web-activity.md)
 - [Activité Until](control-flow-until-activity.md)
+- [Comprendre l’erreur de pipeline](tutorial-pipeline-failure-error-handling.md)

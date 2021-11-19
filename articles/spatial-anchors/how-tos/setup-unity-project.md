@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 03/30/2021
+ms.date: 11/12/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5a3c8c3369890bdbbd30a98f6f76c88b9358dcdf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 945a95054f281e0a5920232a729de4087d1deab6
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791799"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490489"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Configurer des Spatial Anchors Azure dans un projet Unity
 
@@ -33,13 +33,24 @@ Avant d’inclure le Kit de développement logiciel (SDK) Azure Spatial Anchors 
 ### <a name="import-asa-packages"></a>Importer des packages Azure Spatial Anchors
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="hololens-only-configure-your-unity-project-xr-settings"></a>HoloLens uniquement : Configurer les paramètres XR de votre projet Unity
+### <a name="hololens-only"></a>HoloLens uniquement
+
+#### <a name="configure-your-unity-project-xr-settings"></a>Configurer les paramètres XR de votre projet Unity
 Lorsque vous développez des applications MixedReality sur HoloLens, vous devez définir la configuration XR dans Unity. Pour plus d’informations, consultez [Définition de votre configuration XR - Mixed Reality | Microsoft Docs](/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr) et [Choix de la version d’Unity et du plug-in XR - Mixed Reality | Microsoft Docs](/windows/mixed-reality/develop/unity/choosing-unity-version).
 
-La version 2.9 du SDK Azure Spatial Anchors et les versions antérieures prennent uniquement en charge le plug-in XR Windows (com.unity.xr.windowsmr). Par conséquent, le package Azure Spatial Anchors HoloLens Unity a une dépendance explicite au package com.unity.xr.windowsmr.
+La version 2.9.0 du SDK Azure Spatial Anchors et les versions antérieures prennent uniquement en charge le plug-in Windows XR (com.unity.xr.windowsmr), et par conséquent, le package Windows Azure Spatial Anchors a une dépendance explicite sur le plug-in Windows XR.
 
-La version 2.10.0 du SDK Azure Spatial Anchors et les versions ultérieures prennent en charge à la fois le plug-in Mixed Reality OpenXR ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) et le plug-in Windows XR ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)). Vous devez inclure le package com.microsoft.mixedreality.openxr ou le package com.unity.xr.windowsmr à votre projet, selon votre préférence.
+La version 2.10.0 du SDK Azure Spatial Anchors et les versions ultérieures prennent en charge à la fois le plug-in Mixed Reality OpenXR ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) et le plug-in Windows XR ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)). Vous devrez inclure le package com.microsoft.mixedreality.openxr ou le package com.unity.xr.windowsmr à votre projet, selon votre préférence.
 
+#### <a name="configure-your-unity-project-capabilities"></a>Configurer les fonctionnalités de votre projet Unity
+
+Veillez à activer les fonctionnalités suivantes dans votre projet Unity :
+- SpatialPerception
+- InternetClient
+- PrivateNetworkClientServer
+
+> [!WARNING]
+> L’échec de l’activation de la fonctionnalité PrivateNetworkClientServer peut entraîner l’échec de l’interrogation des ancres lorsque l’appareil utilise un réseau configuré pour être privé.
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Android uniquement : Configurer le fichier mainTemplate.gradle
 
 1. Accédez à **Edit** > **Project Settings** > **Player**.

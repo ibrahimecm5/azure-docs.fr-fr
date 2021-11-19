@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f66c1528058fd2d03098c00a54928fb0fbbd4057
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 244261c8b0ba1c5b99ea5add4124c92d1b5c3ae4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225151"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486229"
 ---
 # <a name="share-an-azure-managed-disk"></a>Partager Étendre un disque managé Azure
 
@@ -50,8 +50,8 @@ Voici quelques exemples d’applications bien connues qui s’exécutent sur WSF
 
 - [Création d’une instance FCI avec des disques partagés Azure (SQL Server sur les machines virtuelles Azure)](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
     - [Migration de votre instance de cluster de basculement vers SQL Server sur des machines virtuelles Azure avec des disques partagés](../azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)
-- Serveur de fichiers Scale-out (SoFS) [modèle] (https://aka.ms/azure-shared-disk-sofs-template)
-- SAP ASCS/SCS [modèle] (https://aka.ms/azure-shared-disk-sapacs-template)
+- Serveur de fichiers Scale-out (SoFS) [modèle](https://aka.ms/azure-shared-disk-sofs-template)
+- SAP ASCS/SCS [modèle](https://aka.ms/azure-shared-disk-sapacs-template)
 - Serveur de fichiers pour une utilisation générale (charge de travail IW)
 - Disque de profil utilisateur de serveur Bureau à distance (RDS UPD)
 
@@ -152,44 +152,6 @@ Voici un exemple de cluster Linux à quatre nœuds avec un seul enregistreur et 
 #### <a name="ultra-pricing"></a>Tarifs Ultra
 
 Les disques partagés Ultra sont facturés en fonction de la capacité approvisionnée, du nombre total d’IOPS approvisionnées (diskIOPSReadWrite + diskIOPSReadOnly) et du débit total approvisionné Mbits/s (diskMBpsReadWrite + diskMBpsReadOnly). Il n’y a pas de frais additionnels pour chaque montage de machine virtuelle supplémentaire. Par exemple, un disque ultra partagé avec la configuration suivante (diskSizeGB : 1 024, DiskIOPSReadWrite : 10 000, DiskMBpsReadWrite : 600, DiskIOPSReadOnly : 100, DiskMBpsReadOnly : 1) est facturé avec 1 024 Gio, 10 100 IOPS et 601 Mbits/s, qu’il soit monté sur deux machines virtuelles ou sur cinq machines virtuelles.
-
-## <a name="frequently-asked-questions"></a>Forum aux questions
-
-**Q : La fonctionnalité de disques partagés est-elle prise en charge pour les disques non managés ou les objets blob de pages ?**
-
-**R :** Non. Cette fonctionnalité est prise en charge uniquement pour les disques Ultra et les disques managés SSD Premium.
-
-**Q : Dans quelles régions les disques partagés sont pris en charge ?**
-
-**R :** Pour obtenir des informations régionales, consultez notre [article conceptuel]().
-
-**Q : Les disques partagés peuvent-ils être utilisés comme disque de système d’exploitation ?**
-
-**R :** Non. Les disques partagés sont pris en charge uniquement en tant que disques de données.
-
-**Q : Quelles tailles de disque prennent en charge les disques partagés ?**
-
-**R :** Pour connaître les tailles prises en charge, consultez notre [article conceptuel]().
-
-**Q : Est-il possible d’activer la fonctionnalité de disques partagés sur un disque existant ?**
-
-**R :** Tous les disques managés créés à l’aide de la version 2019-07-01 de l’API ou d’une version ultérieure permettent d’activer les disques partagés. Pour cela, vous devez démonter le disque sur toutes les machines virtuelles auxquelles il est attaché. Ensuite, modifiez ensuite la propriété maxShares sur le disque.
-
-**Q : Si je ne souhaite plus utiliser un disque en mode partagé, que dois-je faire pour le désactiver ?**
-
-**R :** Démontez le disque sur toutes les machines virtuelles auxquelles il est attaché. Modifiez ensuite la propriété maxShare sur le disque en lui attribuant la valeur **1**.
-
-**Q : Est-il possible de redimensionner un disque partagé ?**
-
-**R :** Oui.
-
-**Q : Est-ce que je peux activer l’accélérateur d’écriture pour un disque sur lequel la fonctionnalité de disques partagés est aussi activée ?**
-
-**R :** Non. Vous ne pouvez pas activer l’accélérateur d’écriture pour un disque sur lequel la fonctionnalité de disques partagés est aussi activée.
-
-**Q : Est-ce que je peux activer la mise en cache de l’hôte pour un disque sur lequel la fonctionnalité de disques partagés est activée ?**
-
-**R :** Seule l’option de mise en cache de l’hôte **Aucune** est prise en charge.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

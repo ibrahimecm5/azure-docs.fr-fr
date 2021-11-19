@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 63ab20b16ae41aa48822f1b5c8e733c93d97f581
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 50d924dcb0a6d30b57ab80ab5ea718167a6acf38
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833181"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524205"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Clonage de l’application Azure App Service à l’aide de PowerShell
 
@@ -124,6 +124,7 @@ Voici les restrictions connues du clonage d’application :
 * Les adresses IP sortantes changent si vous clonez vers une unité d’échelle différente
 * Non disponible pour les applications Linux
 * Les identités gérées ne sont pas clonées
+* Non disponible pour les applications de fonction
 
 ### <a name="references"></a>References
 * [Clonage de l’application Azure App Service ](app-service-web-app-cloning.md)

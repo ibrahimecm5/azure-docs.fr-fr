@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: d313f521a13ae49f8701614d1b1331d34960ae77
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: a8a7e16579434ca741916c82fa03287c6955c9d2
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619478"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551992"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Récupération à l’aide de sauvegardes de bases de données automatisées - Azure SQL Database et SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -212,6 +212,9 @@ Vous pouvez également utiliser Azure PowerShell ou l’API REST pour la récup�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
 > Le module PowerShell Azure Resource Manager est toujours pris en charge par SQL Database et SQL Managed Instance, mais tous les développements à venir sont destinés au module Az.Sql. Pour ces cmdlets, voir [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Les arguments des commandes dans le module Az sont très similaires à ceux dans les modules Azure Resource Manager.
+
+> [!NOTE]
+> Les points de restauration représentent une période comprise entre le point de restauration le plus ancien et le point de sauvegarde du journal le plus récent. Les informations sur le dernier point de restauration ne sont actuellement pas disponibles sur Azure PowerShell.
 
 #### <a name="sql-database"></a>SQL Database
 

@@ -6,12 +6,12 @@ ms.author: csugunan
 ms.service: purview
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 7028bb42481c2559d7aa9d044bd25771efc41f31
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: a5b625bfb72e12169162e16f2fbb349d36885600
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213727"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552226"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Métriques d’Azure Purview dans Azure Monitor
 
@@ -63,6 +63,8 @@ Le tableau suivant contient la liste des métriques disponibles à explorer dans
 
 | Nom de métrique | Espace de noms de métrique | Type d’agrégation | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
+| Unité de capacité Data Map | Mappage de données élastique | SUM <br> Nombre | Agréger les unités de capacité de mappage de données élastique sur une période de temps |
+| Taille du stockage Data Map | Mappage de données élastique | SUM <br> Avg | Agréger la taille de stockage de mappage de données élastique sur une période donnée |
 | Analyse annulée | Analyse automatisée | SUM <br> Nombre | Agréger les analyses de sources de données annulées sur une période donnée |
 | Analyse effectuée | Analyse automatisée | SUM <br> Nombre | Agréger les analyses de sources de données terminées sur une période donnée |
 | Analyse ayant échoué | Analyse automatisée | SUM <br> Nombre | Agréger les analyses de sources de données ayant échoué sur une période donnée |

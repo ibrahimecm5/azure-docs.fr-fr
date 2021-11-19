@@ -1,22 +1,23 @@
 ---
 title: Guide pratique pour le monitoring d’applications Spring Boot avec Dynatrace Java OneAgent
-description: Guide pratique pour l’utilisation de Dynatrace Java OneAgent dans le cadre du monitoring d’applications Spring Boot s’exécutant dans Azure Spring Cloud
+description: Guide pratique pour l’utilisation de Dynatrace Java OneAgent dans le cadre du monitoring d’applications Spring Boot dans Azure Spring Cloud
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/31/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 20625461d27108c201f44458eff3f96d77f81132
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 4e84cb9d33e850ed3148c41cff25c3fe17a93ae8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225526"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486241"
 ---
 # <a name="how-to-monitor-spring-boot-apps-with-dynatrace-java-oneagent"></a>Guide pratique pour le monitoring d’applications Spring Boot avec Dynatrace Java OneAgent
 
-Cet article explique comment utiliser Dynatrace OneAgent pour le monitoring d’applications Spring Boot s’exécutant dans Azure Spring Cloud.
+Cet article explique comment utiliser Dynatrace OneAgent pour le monitoring d’applications Spring Boot dans Azure Spring Cloud.
+
 
 Avec Dynatrace OneAgent, vous pouvez :
 

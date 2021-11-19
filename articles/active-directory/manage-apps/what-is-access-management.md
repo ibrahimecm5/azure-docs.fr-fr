@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 89acfa0c1074d170dd0b0b9fb19f227a4e0c21ab
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 0f162e7c14fc2f4c9d123c5beca6a76dc9e6a072
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061045"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553095"
 ---
-# <a name="manage-access-to-apps-in-azure-active-directory"></a>Gérer l’accès aux applications dans Azure Active Directory
+# <a name="manage-access-to-an-application"></a>Gérer l'accès à une application
 
 La gestion de l’accès, l’évaluation de l’utilisation et la création de rapports en continu demeurent un défi quand une application vient d’être intégrée au système d’identité de votre organisation. Dans de nombreux cas, les administrateurs informatiques ou le support technique doivent en permanence jouer un rôle actif dans la gestion de l’accès à vos applications. Parfois, l’affectation est effectuée par une équipe informatique générale ou rattachée à une division. Souvent, il revient au décideur d’entreprise de décider d’une affectation, que l’équipe informatique ne pourra mettre en œuvre qu’avec son approbation.  
 

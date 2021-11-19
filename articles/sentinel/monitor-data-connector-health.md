@@ -1,36 +1,36 @@
 ---
-title: Surveiller l’intégrité de vos connecteurs de données avec ce classeur Azure Sentinel | Microsoft Docs
+title: Surveiller l’intégrité de vos connecteurs de données avec ce classeur Microsoft Sentinel | Microsoft Docs
 description: Utilisez le classeur Analyse du fonctionnement pour suivre la connectivité et les performances de vos connecteurs de données.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 89f18c1a7ab517dde3552e1449d0971f29774f91
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 087ee5a8fd0b3f6337306532525c19db46a2c203
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131037014"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524433"
 ---
-# <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>Surveiller l’intégrité de vos connecteurs de données avec ce classeur Azure Sentinel
+# <a name="monitor-the-health-of-your-data-connectors-with-this-microsoft-sentinel-workbook"></a>Surveiller l’intégrité de vos connecteurs de données avec ce classeur Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Le **classeur de surveillance de l’intégrité des connecteurs de données** vous permet de suivre l’intégrité, la connectivité et les performances de vos connecteurs de données à partir d’Azure Sentinel. Le classeur fournit des analyses supplémentaires, détecte les anomalies et donne un aperçu de l’état d’ingestion des données de l’espace de travail. Vous pouvez utiliser la logique du classeur pour surveiller l’intégrité générale des données ingérées, et créer des vues personnalisées et autres alertes basées sur des règles.
+Le **classeur de surveillance de l’intégrité des connecteurs de données** vous permet de suivre l’intégrité, la connectivité et les performances de vos connecteurs de données à partir de Microsoft Sentinel. Le classeur fournit des analyses supplémentaires, détecte les anomalies et donne un aperçu de l’état d’ingestion des données de l’espace de travail. Vous pouvez utiliser la logique du classeur pour surveiller l’intégrité générale des données ingérées, et créer des vues personnalisées et autres alertes basées sur des règles.
 
 ## <a name="use-the-health-monitoring-workbook"></a>Utiliser le classeur d’analyse du fonctionnement
 
-1. Dans le portail Azure Sentinel, dans le menu **Gestion des menaces**, sélectionnez **Classeurs**.
+1. Dans le portail Microsoft Sentinel, dans le menu **Gestion des menaces**, sélectionnez **Classeurs**.
 
 1. Dans la galerie **Classeurs**, dans la barre de recherche, entrez *intégrité*, puis sélectionnez **Surveillance de l’intégrité de la collecte de données** dans les résultats.
 
@@ -68,4 +68,4 @@ Ce classeur comporte trois sections dotées d’onglets :
     :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-3.png" alt-text="Page d’informations de l’agent du classeur d’analyse du fonctionnement du connecteur de données" lightbox="media/monitor-data-connector-health/data-health-workbook-3.png":::
 
 ## <a name="next-steps"></a>Étapes suivantes
-Découvrez comment [intégrer vos données à Azure Sentinel](quickstart-onboard.md), [connecter des sources de données](connect-data-sources.md) et [obtenir une visibilité de vos données et des menaces potentielles](get-visibility.md).
+Découvrez comment [intégrer vos données à Microsoft Sentinel](quickstart-onboard.md), [connecter des sources de données](connect-data-sources.md) et [obtenir une visibilité de vos données et des menaces potentielles](get-visibility.md).

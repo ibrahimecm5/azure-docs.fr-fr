@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 039461797d9b451703959f43977234278e87827d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e871bfe8f6fa787a3ffffc4fa0efb2df6d920a0e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424056"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548384"
 ---
-# <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>Gérer le consentement pour les applications et évaluer les demandes de consentement dans Azure Active Directory
+# <a name="manage-consent-to-applications-and-evaluate-consent-requests"></a>Gérer le consentement pour les applications et évaluer les demandes de consentement
 
 Microsoft recommande de [limiter le consentement de l’utilisateur](../../active-directory/manage-apps/configure-user-consent.md) afin que les utilisateurs ne puissent consentir qu’aux applications provenant d’éditeurs vérifiés et uniquement pour les autorisations que vous sélectionnez. Pour les applications qui ne respectent pas cette stratégie, le processus décisionnel sera centralisé auprès de l’équipe d’administrateurs de la sécurité et des identités de votre organisation.
 
@@ -42,7 +42,7 @@ Une fois que le consentement de l’utilisateur final est désactivé ou limité
 
 3. Si votre organisation dispose de la licence appropriée :
 
-    * Utilisez d’autres [fonctionnalités d’audit d’application OAuth dans Microsoft Cloud App Security](/cloud-app-security/investigate-risky-oauth).
+    * Utilisez d’autres [fonctionnalités d’audit d’application OAuth dans Microsoft Defender for Cloud Apps](/cloud-app-security/investigate-risky-oauth).
     * Utilisez l’activité connexe [Classeurs Azure Monitor pour superviser les autorisations et le consentement](../reports-monitoring/howto-use-azure-monitor-workbooks.md). Le classeur *Consent Insights* fournit une vue des applications par nombre de demandes de consentement ayant échoué. Il peut être utile de classer par ordre de priorité les applications afin de permettre aux administrateurs de les passer en revue et de décider de leur accorder ou non le consentement de l’administrateur.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Autres points à prendre en considération pour réduire les frictions

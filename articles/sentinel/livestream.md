@@ -1,28 +1,28 @@
 ---
-title: Utiliser le flux temps réel de chasse dans Azure Sentinel pour détecter les menaces | Microsoft Docs
-description: Cet article décrit comment utiliser le flux temps réel de chasse dans Azure Sentinel pour effectuer le suivi des données.
+title: Utiliser le flux temps réel de chasse dans Microsoft Sentinel pour détecter les menaces | Microsoft Docs
+description: Cet article décrit comment utiliser le flux temps réel de chasse dans Microsoft Sentinel pour effectuer le suivi des données.
 services: sentinel
 documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 70a8898b99ffaca2ed6aaa4dd978068bcd9d6c9a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 22e3eafbbae9259ddea56e9927055da08236eedb
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023212"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520082"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Utiliser le livestream de chasse dans Azure Sentinel pour détecter les menaces
+# <a name="use-hunting-livestream-in-microsoft-sentinel-to-detect-threats"></a>Utiliser le flux temps réel de chasse dans Microsoft Sentinel pour détecter les menaces
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -58,7 +58,7 @@ Vous pouvez créer une session de livestream à partir d’une requête de chass
     1. Cliquez avec le bouton droit sur la requête et sélectionnez **Ajouter à livestream**. Par exemple :
     
     > [!div class="mx-imgBorder"]
-    > ![créer une session de flux temps réel à partir d’une requête de chasse Azure Sentinel](./media/livestream/livestream-from-query.png)
+    > ![créer une session de livestream à partir d’une requête de chasse Microsoft Sentinel](./media/livestream/livestream-from-query.png)
 
 1. Pour créer une session de livestream depuis le début : 
     
@@ -78,7 +78,7 @@ Vous pouvez créer une session de livestream à partir d’une requête de chass
     La barre d’état, sous la barre de commandes, indique si votre session de livestream est active ou suspendue. Dans l’exemple suivant, la session est active :
     
     > [!div class="mx-imgBorder"]
-    > ![créer une session de livestream à partir d’une requête de chasse Azure Sentinel](./media/livestream/livestream-session.png)
+    > ![créer une session de livestream à partir d’une chasse Microsoft Sentinel](./media/livestream/livestream-session.png)
 
 1. Dans la barre de commandes, sélectionnez **Enregistrer**.
     
@@ -91,7 +91,7 @@ Vous pouvez créer une session de livestream à partir d’une requête de chass
 1. Sélectionnez la session de livestream que vous souhaitez voir ou modifier. Par exemple :
     
     > [!div class="mx-imgBorder"]
-    > ![créer une session de livestream à partir d’une requête de chasse Azure Sentinel](./media/livestream/livestream-tab.png)
+    > ![créer une session de livestream à partir d’une requête de chasse Microsoft Sentinel](./media/livestream/livestream-tab.png)
     
     La session de livestream sélectionnée s’ouvre. Vous pouvez ensuite la lire, la mettre en pause, la modifier, etc.
 
@@ -114,7 +114,7 @@ Cette action ouvre l’Assistant Création de règle, qui est prérempli avec la
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez appris à utiliser le livestream de chasse dans Azure Sentinel. Pour en savoir plus sur Azure Sentinel, voir les articles suivants :
+Dans cet article, vous avez appris à utiliser le livestream de chasse dans Microsoft Sentinel. Pour en savoir plus sur Microsoft Sentinel, consultez les articles suivants :
 
 - [Hunt for threats with in Azure Sentinel Preview](hunting.md) (Rechercher des menaces dans Azure Sentinel en préversion)
 - [Use notebooks to run automated hunting campaigns](notebooks.md) (Utiliser des notebooks pour exécuter des campagnes de repérage automatisées)

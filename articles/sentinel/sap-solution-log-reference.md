@@ -1,40 +1,40 @@
 ---
-title: Solution SAP Azure Sentinel - Informations de référence disponibles sur les journaux | Microsoft Docs
-description: Découvrez les journaux SAP disponibles dans la solution SAP Azure Sentinel.
+title: Solution SAP Microsoft Sentinel - Informations de référence disponibles sur les journaux | Microsoft Docs
+description: Découvrez les journaux SAP disponibles dans la solution SAP Microsoft Sentinel.
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 07/21/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: 15f057dbbc402ba42f5cdf15342827f14eb3895d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 5d02b40794e226238896b7327a47d9cfb2acbe0e
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064237"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517992"
 ---
-# <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Informations de référence sur les journaux de la solution SAP Azure Sentinel (préversion publique)
+# <a name="microsoft-sentinel-sap-solution-logs-reference-public-preview"></a>Informations de référence sur les journaux de la solution SAP Microsoft Sentinel (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Cet article décrit les journaux SAP disponibles à partir du connecteur de données SAP Azure Sentinel, y compris les noms des tables dans Azure Sentinel, les objectifs des journaux et les schémas de journalisation détaillés. Les descriptions des champs de schéma sont basées sur les descriptions des champs de la [documentation SAP pertinente](https://help.sap.com/).
+Cet article décrit les journaux SAP disponibles à partir du connecteur de données SAP Microsoft Sentinel, y compris les noms des tables dans Microsoft Sentinel, les objectifs des journaux et les schémas de journalisation détaillés. Les descriptions des champs de schéma sont basées sur les descriptions des champs de la [documentation SAP pertinente](https://help.sap.com/).
 
 Cet article s’adresse aux utilisateurs SAP avancés.
 
 > [!NOTE]
-> Lors de l’utilisation de l’interface XBP 3.0, la solution SAP Azure Sentinel utilise des services *non libérés*. Ces services n’affectent pas le comportement du système back-end ou du connecteur.
+> Lors de l’utilisation de l’interface XBP 3.0, la solution SAP Microsoft Sentinel utilise des services *non libérés*. Ces services n’affectent pas le comportement du système back-end ou du connecteur.
 >
 > Pour « libérer » ces services, implémentez [Note SAP 2910263 - Fonctions XBP non libérées](https://launchpad.support.sap.com/#/notes/2910263).
 
 > [!IMPORTANT]
-> La solution SAP Azure Sentinel est actuellement en PRÉVERSION. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
+> La solution SAP Microsoft Sentinel est actuellement en PRÉVERSION. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
 >
 
 ## <a name="abap-application-log"></a>Journal des applications ABAP
 
-- **Nom dans Azure Sentinel** : `ABAPAppLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPAppLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcc9f36611d3a6510000e835363f.html)
 
@@ -82,7 +82,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-change-documents-log"></a>Journal des documents de modification ABAP
 
-- **Nom dans Azure Sentinel** : `ABAPChangeDocsLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPChangeDocsLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/6f51f5216c4b10149358d088a0b7029c/7.01.22/en-US/b8686150ed102f1ae10000000a44176f.html)
 
@@ -130,7 +130,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-cr-log"></a>Journal ABAP CR
 
-- **Nom dans Azure Sentinel** : `ABAPCRLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPCRLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcd5f36611d3a6510000e835363f.html)
 
@@ -166,7 +166,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-db-table-data-log"></a>Journal des données de table ABAP DB
 
-- **Nom dans Azure Sentinel** : `ABAPTableDataLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPTableDataLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcd2f36611d3a6510000e835363f.html)
 
@@ -198,7 +198,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-gateway-log"></a>Journal de passerelle ABAP
 
-- **Nom dans Azure Sentinel** : `ABAPOS_GW_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPOS_GW_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/62b4de4187cb43668d15dac48fc00732/7.5.7/en-US/48b2a710ca1c3079e10000000a42189b.html)
 
@@ -218,7 +218,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-icm-log"></a>Journal ABAP ICM
 
-- **Nom dans Azure Sentinel** : `ABAPOS_ICM_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPOS_ICM_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/683d6a1797a34730a6e005d1e8de6f22/7.52.4/en-US/a10ec40d01e740b58d0a5231736c434e.html)
 
@@ -240,7 +240,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-job-log"></a>Journal des tâches ABAP
 
-- **Nom dans Azure Sentinel** : `ABAPJobLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPJobLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/b07e7195f03f438b8e7ed273099d74f3/7.31.19/en-US/4b2bc0974c594ba2e10000000a42189c.html)
 
@@ -284,7 +284,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-security-audit-log"></a>Journal d’audit de sécurité ABAP
 
-- **Nom dans Azure Sentinel** : `ABAPAuditLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPAuditLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/280f016edb8049e998237fcbd80558e7/7.5.7/en-US/4d41bec4aa601c86e10000000a42189b.html)
 
@@ -334,7 +334,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-spool-log"></a>Journal ABAP Spool
 
-- **Nom dans Azure Sentinel** : `ABAPSpoolLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPSpoolLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/290ce8983cbc4848a9d7b6f5e77491b9/7.52.1/en-US/4eae791c40f72045e10000000a421937.html)
 
@@ -393,7 +393,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="apab-spool-output-log"></a>Journal de sortie APAB Spool
 
-- **Nom dans Azure Sentinel** : `ABAPSpoolOutputLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPSpoolOutputLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/290ce8983cbc4848a9d7b6f5e77491b9/7.52.1/en-US/4eae779e40f72045e10000000a421937.html)
 
@@ -444,7 +444,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-syslog"></a>ABAP SysLog
 
-- **Nom dans Azure Sentinel** : `ABAPOS_Syslog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPOS_Syslog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcbaf36611d3a6510000e835363f.html)
 
@@ -473,7 +473,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-workflow-log"></a>Journal ABAP Workflow
 
-- **Nom dans Azure Sentinel** : `ABAPWorkflowLog_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPWorkflowLog_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcccf36611d3a6510000e835363f.html)
 
@@ -528,7 +528,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="abap-workprocess-log"></a>Journal ABAP WorkProcess
 
-- **Nom dans Azure Sentinel** : `ABAPOS_WP_CL`
+- **Nom dans Microsoft Sentinel** : `ABAPOS_WP_CL`
 
 - **Documentation SAP associée** : [Portail d’aide SAP](https://help.sap.com/viewer/d0739d980ecf42ae9f3b4c19e21a4b6e/7.3.15/en-US/46fb763b6d4c5515e10000000a1553f6.html)
 
@@ -553,7 +553,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="hana-db-audit-trail"></a>Piste d’audit HANA DB
 
-- **Nom dans Azure Sentinel** : `Syslog`
+- **Nom dans Microsoft Sentinel** : `Syslog`
 
 - **Documentation SAP associée** : [Général](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/48fd6586304c4f859bf92d64d0cd8b08.html) |  [Piste d’audit](https://help.sap.com/viewer/b3ee5778bc2e4a089d3299b82ec762a7/2.0.03/en-US/0a57444d217649bf94a19c0b68b470cc.html)
 
@@ -577,7 +577,7 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 ## <a name="java-files"></a>Fichiers JAVA
 
-- **Nom dans Azure Sentinel** : `JavaFilesLogsCL`
+- **Nom dans Microsoft Sentinel** : `JavaFilesLogsCL`
 
 - **Documentation SAP associée** : [Général](https://help.sap.com/viewer/2f8b1599655d4544a3d9c6d1a9b6546b/7.5.9/en-US/485059dfe31672d4e10000000a42189c.html) | [Journal d’audit de sécurité Java](https://help.sap.com/viewer/1531c8a1792f45ab95a4c49ba16dc50b/7.5.9/en-US/4b6013583840584ae10000000a42189c.html)
 
@@ -620,9 +620,9 @@ Cet article s’adresse aux utilisateurs SAP avancés.
 
 Pour plus d'informations, consultez les pages suivantes :
 
-- [Déployer la solution Azure Sentinel pour SAP](sap-deploy-solution.md)
-- [Exigences de SAP détaillées pour la solution SAP Azure Sentinel](sap-solution-detailed-requirements.md)
-- [Déployer le connecteur de données SAP Azure Sentinel avec SNC](sap-solution-deploy-snc.md)
+- [Déployer la solution Microsoft Sentinel pour SAP](sap-deploy-solution.md)
+- [Exigences de SAP détaillées pour la solution SAP Microsoft Sentinel](sap-solution-detailed-requirements.md)
+- [Déployer le connecteur de données SAP Microsoft Sentinel avec SNC](sap-solution-deploy-snc.md)
 - [Options de configuration pour experts, déploiement local et sources de journaux SAPControl](sap-solution-deploy-alternate.md)
-- [Solution SAP Azure Sentinel : contenu de sécurité intégré](sap-solution-security-content.md)
-- [Résolution des problèmes de déploiement de la solution SAP Azure Sentinel](sap-deploy-troubleshoot.md)
+- [Solution SAP Microsoft Sentinel : contenu de sécurité intégré](sap-solution-security-content.md)
+- [Résolution des problèmes de déploiement de votre solution SAP Microsoft Sentinel](sap-deploy-troubleshoot.md)

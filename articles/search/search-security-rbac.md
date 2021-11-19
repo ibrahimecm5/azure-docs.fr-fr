@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 5318ee205c66757409b9e0ffd8de864bcb69689a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b26334c655332810ad1f67ae6799c3919fda4bb4
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064978"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517809"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Utiliser l’autorisation basée sur les rôles dans Azure Recherche cognitive
 
@@ -64,16 +64,16 @@ Les nouveaux rôles intégrés en préversion fournissent un ensemble granulaire
 
 Pour ajouter votre abonnement à la version préliminaire :
 
-1. Accédez à la page **Abonnements** dans le [portail Azure](https://portal.azure.com/).
-1. Sélectionnez l’abonnement que vous souhaitez utiliser.
-1. Sur le côté gauche de la page d’abonnement, sélectionnez **Fonctionnalités d’évaluation**.
-1. Utiliser la barre de recherche ou les filtres pour rechercher et sélectionner des **Access Control basées sur les rôles pour Search service (version préliminaire)**
-1. Sélectionnez **Inscrire** pour ajouter la fonctionnalité à votre abonnement.
+1. Accédez à votre service de recherche dans le [portail Azure](https://portal.azure.com/).
+1. Sur le côté gauche de la page, sélectionnez **Clés**.
+1. Dans la bannière bleue qui mentionne la préversion, sélectionnez **Inscrire** pour ajouter la fonctionnalité à votre abonnement.
 
-![s’inscrire à rbac sur afec](media/search-howto-aad/rbac-signup-afec.png)
+![capture d’écran montrant comment s’inscrire à la préversion du contrôle d’accès en fonction du rôle dans le portail](media/search-howto-aad/rbac-signup-portal.png)
 
-Pour plus d’informations sur l’ajout de fonctionnalités en préversion, consultez [Configurer des fonctionnalités d’évaluation dans un abonnement Azure](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+Vous pouvez également vous inscrire à la préversion à l’aide du contrôle d’exposition des fonctionnalités Azure (AFEC) et en recherchant *Contrôle d’accès en fonction du rôle pour le service de recherche (préversion)* . Pour plus d’informations sur l’ajout de fonctionnalités en préversion, consultez [Configurer des fonctionnalités d’évaluation dans un abonnement Azure](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
 
+> [!NOTE]
+> Une fois que vous avez ajouté la préversion à votre abonnement, tous les services de l’abonnement sont inscrits de manière permanente dans la préversion. Si vous ne souhaitez pas de contrôle d’accès en fonction du rôle sur un service donné, vous pouvez le désactiver pour les opérations de plan de données comme illustré à l’étape suivante.
 
 ## <a name="step-2-preview-configuration"></a>Étape 2 : Aperçu de la configuration
 
@@ -85,7 +85,7 @@ Dans cette étape, configurez votre service de recherche afin qu’il reconnaiss
 
 ### <a name="azure-portal"></a>[**Portail Azure**](#tab/config-svc-portal)
 
-1. Ouvrez le portail avec la syntaxe suivante : [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true).
+1. Ouvrez le [portail Azure](https://ms.portal.azure.com).
 
 1. Accéder à votre service de recherche.
 
@@ -134,7 +134,7 @@ Si vous utilisez le billet ou un autre outil de test Web, consultez le Conseil c
 1. [Assignez des rôles](#assign-roles) sur le service et vérifiez qu’ils fonctionnent correctement dans le plan de données.
 
 > [!TIP]
-> Les appels de l’API REST de gestion sont authentifiés via le Répertoire actif Azure. Pour obtenir des conseils sur la configuration d’un principe de sécurité et d’une demande, consultez ce billet de blog [API REST Azure avec Billet (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). L’exemple précédent a été testé à l’aide des instructions et de la collection de Billets fournies dans le billet de blog.
+> Les appels de l’API REST de gestion sont authentifiés via le Répertoire actif Azure. Pour obtenir des conseils sur la configuration d’un principe de sécurité et d’une demande, consultez ce billet de blog [API REST Azure avec Billet (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). L’exemple précédent a été testé à l’aide des instructions et de la collection de publications fournies dans le billet de blog.
 
 ---
 
@@ -148,10 +148,7 @@ Vous devez être un **Propriétaire** ou avoir des autorisations [Microsoft.Auth
 
 ### <a name="azure-portal"></a>[**Portail Azure**](#tab/roles-portal)
 
-1. Pour les rôles en préversion, ouvrez le portail avec la syntaxe suivante : [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). Vous devriez voir `feature.enableRbac=true` dans l'URL.
-
-   > [!NOTE]
-   > Pour les utilisateurs et les groupes affectés à un rôle de préversion, le contenu du portail, tel que les index et les indexeurs, est visible uniquement si vous ouvrez le portail avec l’indicateur de fonctionnalité. 
+1. Ouvrez le [portail Azure](https://ms.portal.azure.com).
 
 1. Accéder à votre service de recherche.
 
@@ -204,10 +201,7 @@ Rappelez-vous que vous pouvez uniquement limiter l’accès à des ressources de
 
 ### <a name="azure-portal"></a>[**Portail Azure**](#tab/test-portal)
 
-1. Pour les rôles en préversion, ouvrez le portail avec la syntaxe suivante : [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). 
-
-   > [!NOTE]
-   > Pour les utilisateurs et les groupes affectés à un rôle de préversion, le contenu du portail, tel que les index et les indexeurs, est visible uniquement si vous ouvrez le portail avec l’indicateur de fonctionnalité. 
+1. Ouvrez le [portail Azure](https://ms.portal.azure.com).
 
 1. Accéder à votre service de recherche.
 
