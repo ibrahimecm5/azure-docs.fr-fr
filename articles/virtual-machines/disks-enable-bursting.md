@@ -3,23 +3,25 @@ title: Activer le bursting de disque à la demande
 description: Activez le bursting de disque à la demande sur votre disque managé.
 author: roygara
 ms.author: rogarana
-ms.date: 11/03/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f02bab9dc9a2561aeb605d91388151f41fb9a243
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 27a832f7f02fd10cde7f3c9f603f38d0d5e466b6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501492"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136187"
 ---
 # <a name="enable-on-demand-bursting"></a>Activer le bursting à la demande
 
 Deux modèles de bursting sont disponibles pour les disques SSD Premium : le bursting basé sur les crédits et le bursting à la demande. Cet article explique comment basculer vers le bursting à la demande. Pour les disques qui utilisent le modèle à la demande, le bursting peut dépasser les capacités cibles provisionnées à l’origine. Le bursting à la demande se produit aussi souvent que l’exige la charge de travail, jusqu’à ce que la capacité cible maximale soit atteinte. Le bursting à la demande entraîne des frais supplémentaires.
 
-Pour plus d’informations sur le bursting de disque, consultez [Mode rafale des disques managés](disk-bursting.md).
+Pour plus d’informations sur le bursting de disque, consultez [Mode rafale des disques managés](disk-bursting.md). 
+
+Pour les cibles de rafale max sur chaque disque pris en charge, consultez [Objectifs d’évolutivité et de performances pour les disques de machine virtuelle](disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits).
 
 > [!IMPORTANT]
 > Vous n’avez pas besoin de suivre les étapes décrites dans cet article pour utiliser le bursting basé sur les crédits. Le bursting basé sur les crédits est activé par défaut sur tous les disques éligibles.

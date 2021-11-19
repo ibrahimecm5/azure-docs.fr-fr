@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c47f91d9aed9af4c4fbb1a16c27d59b5a5da5d94
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012559"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136272"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimiser le nettoyage automatique sur un serveur Azure Database pour PostgreSQL – Serveur unique
 
@@ -96,7 +96,7 @@ L’exécution du nettoyage automatique est « coûteuse », et il existe des 
 
 Le processus de nettoyage lit les pages physiques et vérifie la présence de tuples morts. Chaque page de shared_buffers a un coût de 1 (vacuum_cost_page_hit). Toutes les autres pages sont considérées comme ayant un coût de 20 (vacuum_cost_page_dirty) s’il existe des tuples morts, ou de 10 (vacuum_cost_page_miss) s’il n’existe aucun tuple mort. L’opération de nettoyage s’arrête quand le processus dépasse la valeur de autovacuum_vacuum_cost_limit.
 
-Une fois la limite atteinte, le processus bascule en veille pendant la durée spécifiée par le paramètre autovacuum_vacuum_cost_delay, avant d’être redémarré. Si la limite n’est pas atteinte, le nettoyage automatique démarre après la valeur spécifiée par le paramètre autovacuum_nap_time.
+Une fois la limite atteinte, le processus bascule en veille pendant la durée spécifiée par le paramètre autovacuum_vacuum_cost_delay, avant d’être redémarré. Si la limite n’est pas atteinte, le nettoyage automatique démarre après la valeur spécifiée par le paramètre autovacuum_naptime.
 
 En résumé, les paramètres autovacuum_vacuum_cost_delay et autovacuum_vacuum_cost_limit contrôlent la quantité de nettoyage de données autorisée par unité de temps. Notez que les valeurs par défaut sont trop faibles pour la plupart des niveaux tarifaires. Les valeurs optimales pour ces paramètres dépendent du niveau de tarification, et doivent être configurées en conséquence.
 

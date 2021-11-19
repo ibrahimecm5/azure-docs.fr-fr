@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1c8f1117053e6076d2281036ecc63f1cbf97d15
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5597ca90a2264d192273ebfd57ecfd51382c3c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352742"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349297"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planifier un déploiement d’authentification sans mot de passe dans Azure Active Directory
 
@@ -299,7 +299,7 @@ Voici les exemples de cas de test pour l’authentification sans mot de passe av
 | L’utilisateur ne peut pas effectuer d’inscription combinée.| Vérifiez que [l’inscription combinée](concept-registration-mfa-sspr-combined.md) est activée. |
 | L’utilisateur ne peut pas ajouter de clé de sécurité dans ses [paramètres de sécurité](https://aka.ms/mysecurityinfo).| Vérifiez que les [clés de sécurité](howto-authentication-passwordless-security-key.md) sont activées. |
 | L’utilisateur ne peut pas ajouter de clé de sécurité dans les options de connexion Windows 10.| [Vérifiez que les clés de sécurité pour la connexion Windows](concept-authentication-passwordless.md) sont activées |
-| **Message d’erreur** : Nous avons détecté que ce navigateur ou ce système d’exploitation ne prend pas en charge les clés de sécurité FIDO2.| Les appareils de sécurité FIDO2 sans mot de passe peuvent être inscrits uniquement dans les navigateurs pris en charge (Microsoft Edge, Firefox version 67) ou sur Windows 10 version 1809 ou ultérieure. |
+| **Message d’erreur** : Nous avons détecté que ce navigateur ou ce système d’exploitation ne prend pas en charge les clés de sécurité FIDO2.| Les appareils de sécurité FIDO2 sans mot de passe ne peuvent être inscrits que dans les navigateurs pris en charge (Microsoft Edge, Firefox version 67) sur Windows 10 version 1809 ou ultérieure. |
 | **Message d’erreur** : La stratégie de votre entreprise vous demande d’utiliser une autre méthode pour vous connecter.| Vérifiez que les clés de sécurité sont activées dans le locataire. |
 | L’utilisateur ne peut pas gérer ma clé de sécurité sur Windows 10 version 1809| La version 1809 vous demande d’utiliser le logiciel de gestion de clés de sécurité fourni par le fournisseur de clés FIDO2. Contactez le fournisseur pour obtenir de l’aide. |
 | Je pense que ma clé de sécurité FIDO2 peut être défectueuse, comment la tester.| Accédez à [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), entrez les informations d’identification d’un compte de test, connectez la clé de sécurité suspecte, sélectionnez le bouton + en haut à droite de l’écran, sélectionnez Créer, puis suivez le processus de création. Si ce scénario échoue, votre appareil est peut-être défectueux. |
@@ -354,7 +354,7 @@ Azure AD ajoute des entrées aux journaux d’audit dans les cas suivants :
 
 * Un utilisateur active ou désactive son compte sur une clé de sécurité, ou réinitialise le deuxième facteur de la clé de sécurité sur sa machine Windows 10. Consultez les ID d’événements 4670 et 5382.
 
-**Azure AD conserve la plupart des données d’audit pendant 30 jours** et rend les données disponibles via l’API ou le portail d’administration Azure afin que vous puissiez les télécharger dans vos systèmes d’analyse. Si vous avez besoin d’une conservation plus longue, exportez et consommez les journaux dans un outil SIEM tel qu’[Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk ou Sumo Logic. Nous recommandons une conservation plus longue pour l’audit, l’analyse des tendances et les autres besoins métier, le cas échéant
+**Azure AD conserve la plupart des données d’audit pendant 30 jours** et rend les données disponibles via l’API ou le portail d’administration Azure afin que vous puissiez les télécharger dans vos systèmes d’analyse. Si vous avez besoin d’une conservation plus longue, exportez et consommez les journaux dans un outil SIEM tel que [Microsoft Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk ou Sumo Logic. Nous recommandons une conservation plus longue pour l’audit, l’analyse des tendances et les autres besoins métier, le cas échéant
 
 Il existe deux onglets dans le tableau de bord d’activité des méthodes d’authentification : Inscription et Utilisation.
 

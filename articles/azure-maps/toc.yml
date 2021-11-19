@@ -281,6 +281,8 @@ items:
         items:
           - name: Bien démarrer avec le contrôle de carte iOS
             href: how-to-use-ios-map-control-library.md
+          - name: Utiliser le module de cartes d’intérieur d’Azure Maps
+            href: how-to-use-indoor-module-ios.md
       - name: Utiliser Azure Maps dans Power BI
         items:
           - name: Prise en main

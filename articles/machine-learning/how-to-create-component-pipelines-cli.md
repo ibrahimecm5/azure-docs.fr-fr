@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 71e611855023becf474337b309f510244507bc96
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 7dafb069419c1ff42d2ec5358fbd8eb37465c88f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131848455"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552338"
 ---
 # <a name="create-and-run-machine-learning-pipelines-using-components-with-the-azure-machine-learning-cli-preview"></a>Créer et exécuter des pipelines Machine Learning à l’aide de composants avec l’interface CLI d’Azure Machine Learning (préversion)
 
@@ -189,13 +189,13 @@ Par défaut, seuls les composants dont les entrées ont été modifiées sont r�
 ## <a name="faq"></a>Forum aux questions
 
 ### <a name="how-do-i-change-the-location-of-the-outputs-generated-by-the-pipeline"></a>Comment modifier l’emplacement des sorties générées par le pipeline ?
-Vous pouvez utiliser la section `settings` du travail de pipeline pour spécifier un magasin de données de travail différent pour tous les travaux dans le pipeline (voir la ligne 25-26 dans [cet exemple](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)). La spécification d’un autre magasin de données pour un travail spécifique ou une sortie spécifique n’est pas prise en charge pour le moment. La spécification de chemins d’accès où les sorties sont inscrites sur le magasin de données n’est pas non plus prise en charge actuellement.
+Vous pouvez utiliser la section `settings` du travail de pipeline pour spécifier un magasin de données de travail différent pour tous les travaux dans le pipeline (voir la ligne 25-26 dans [cet exemple](https://github.com/Azure/azureml-examples/blob/main/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml)). La spécification d’un autre magasin de données pour un travail spécifique ou une sortie spécifique n’est pas prise en charge pour le moment. La spécification de chemins d’accès où les sorties sont inscrites sur le magasin de données n’est pas non plus prise en charge actuellement.
 
 ### <a name="how-do-i-specify-a-compute-that-can-be-used-by-all-jobs"></a>Comment spécifier un calcul qui peut être utilisé par tous les travaux ?
-Vous pouvez spécifier un calcul au niveau du travail de pipeline, qui sera utilisé par les travaux qui ne mentionnent pas explicitement un calcul. (Voir la ligne 28 dans [cet exemple](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml).)
+Vous pouvez spécifier un calcul au niveau du travail de pipeline, qui sera utilisé par les travaux qui ne mentionnent pas explicitement un calcul. (Voir la ligne 28 dans [cet exemple](https://github.com/Azure/azureml-examples/blob/main/cli/jobs/pipelines-with-components/basics/1a_e2e_local_components/pipeline.yml).)
 
 ### <a name="what-job-types-are-supported-in-the-pipeline-job"></a>Quels sont les types de travaux pris en charge dans le travail de pipeline ?
-La version actuelle prend en charge les types de travail de commande et de composant. Pour le type de travail de composant, seul le composant de commande est pris en charge. Nous prendrons en charge d’autres types de travaux, tels que le balayage dans les versions futures.
+La version actuelle prend en charge les types de travaux de commande, de composant et de balayage.
 
 ### <a name="what-are-the-different-modes-that-i-use-with-inputs-or-outputs"></a>Quels sont les différents modes utilisés avec les entrées ou les sorties ?
 | Category | Modes autorisés | Default |
@@ -209,10 +209,10 @@ Vous pouvez effectuer une itération rapide avec les travaux de commande, puis l
 
 ### <a name="im-doing-distributed-training-in-my-component-the-component-which-is-registered-specifies-distributed-training-settings-including-node-count-how-can-i-change-the-number-of-nodes-used-during-runtime-the-optimal-number-of-nodes-is-best-determined-at-runtime-so-i-dont-want-to-update-the-component-and-register-a-new-version"></a>Je fais une formation distribuée dans mon composant. Le composant, qui est inscrit, spécifie les paramètres de formation distribués, y compris le nombre de nœuds. Comment modifier le nombre de nœuds utilisés lors de l’exécution ? Le nombre optimal de nœuds est mieux déterminé au moment de l’exécution, donc je ne souhaite pas mettre à jour le composant et enregistrer une nouvelle version.
 
-Vous pouvez utiliser la section Remplacements du travail de composant pour modifier les paramètres de ressource et de distribution. Consultez [cet exemple utilisant TensorFlow](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/6a_tf_hello_world/) ou [cet exemple utilisant PyTorch](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/6y_pytorch_hello_world).  
+Vous pouvez utiliser la section Remplacements du travail de composant pour modifier les paramètres de ressource et de distribution. Consultez [cet exemple utilisant TensorFlow](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/6a_tf_hello_world) ou [cet exemple utilisant PyTorch](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/6c_pytorch_hello_world).  
 
 ### <a name="how-can-i-define-an-environment-with-conda-dependencies-inside-a-component"></a>Comment puis-je définir un environnement avec des dépendances Conda dans un composant ?
-Consultez [cet exemple](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/jobs/pipelines-with-components/basics/5c_env_conda_file).
+Consultez [cet exemple](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components/basics/5c_env_conda_file).
  
 
 ## <a name="next-steps"></a>Étapes suivantes

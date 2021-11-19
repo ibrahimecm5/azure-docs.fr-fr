@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 807138187e37deef6f23121ce085e62f520ad335
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d102978b12c37033d2d52c7ee749c1e7f7878c7c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524625"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489054"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Prise en charge des protocoles d’en-têtes HTTP dans Azure Front Door
 Cet article décrit le protocole pris en charge par Front Door avec certaines parties du chemin d’appel (voir l’image). Les sections suivantes donnent de plus amples informations sur les en-têtes HTTP pris en charge par Front Door.
@@ -27,7 +27,10 @@ Cet article décrit le protocole pris en charge par Front Door avec certaines pa
 >Front Door ne certifie pas les en-têtes HTTP qui ne sont pas documentés ici.
 
 ## <a name="client-to-front-door"></a>Du client à Front Door
+
 Front Door accepte la plupart des en-têtes pour la requête entrante sans les modifier. Certains en-têtes réservés sont supprimés de la requête entrante en cas d’envoi, y compris les en-têtes avec un préfixe X-FD-*.
+
+L’en-tête de demande de débogage, « X-Azure-DebugInfo », fournit des informations de débogage supplémentaires sur Front Door. Vous devez envoyer l’en-tête de demande « X-Azure-DebugInfo : 1 » du client à Front Door avant pour recevoir des [en-têtes de réponse facultatifs](#optional-debug-response-headers) de Front Door vers le client. 
 
 ## <a name="front-door-to-backend"></a>De la porte d’entrée au backend
 
@@ -55,6 +58,8 @@ Les en-têtes envoyés à Front Door à partir du back-end sont également trans
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Il s’agit d’une chaîne de référence unique qui identifie une requête traitée par Front Door, ce qui est capital pour la résolution des problèmes, car elle est utilisée dans la recherche des journaux d’accès.|
 | Cache X | *X-Cache :* cet en-tête décrit l’état de mise en cache de la requête <br/> - *X-Cache : TCP_HIT* : le premier octet de la requête est une correspondance dans le cache à la périphérie Front Door. <br/> - *X-Cache : TCP_REMOTE_HIT* : le premier octet de la requête est une correspondance dans le cache dans le cache régional (couche de protection d’origine), mais un échec dans le cache de périphérie. <br/> - *X-Cache : TCP_MISS* : le premier octet de la requête est une absence dans le cache, et le contenu est traité à partir de l’origine. <br/> - *X-Cache : PRIVATE_NOSTORE* : la requête ne peut pas être mise en cache car l’en-tête de réponse Cache-Control est défini sur private (privé) ou sur no-store (sans stockage). <br/> - *X-Cache : CONFIG_NOCACHE* : la requête est configurée pour ne pas effectuer de mise en cache dans le profil Front Door. |
+
+### <a name="optional-debug-response-headers"></a>En-têtes de réponse de débogage facultatifs
 
 Vous devez envoyer un en-tête de demande « X-Azure-DebugInfo: 1 » pour activer les en-têtes de réponse facultatifs suivants.
 

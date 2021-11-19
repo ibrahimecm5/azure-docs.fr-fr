@@ -13,14 +13,14 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: dc860dce0f75648488ff692a0024a850bf4c76ad
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: cad0102bf76cd63553049045ea55e0e7fb8f16d0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615692"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550681"
 ---
-# <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>Protection contre le hameçonnage de consentement dans Azure Active Directory
+# <a name="protecting-against-consent-phishing"></a>Protéger contre le hameçonnage de consentement
 
 La productivité n’est plus limitée aux réseaux privés et le travail a été déplacé vers les services Cloud. Alors que les applications Cloud permettent aux employés d’être productifs à distance, les attaquants peuvent également utiliser des attaques basées sur les applications pour accéder à des données d’entreprise précieuses. Vous connaissez peut-être les attaques qui se concentrent sur les utilisateurs, telles que le hameçonnage par e-mail ou la compromission des informations d’identification. Le ***hameçonnage de consentement*** est un autre vecteur de menace à connaître.
 Cet article explore ce qu’est le hameçonnage de consentement, ce que Microsoft fait pour vous protéger et les étapes que les organisations peuvent prendre pour rester en sécurité.
@@ -65,7 +65,7 @@ Chez Microsoft, nous souhaitons placer les administrateurs dans le contrôle en 
     - Vérifiez les erreurs orthographiques et grammaticales. Si un e-mail ou l’écran de consentement de l’application contient des erreurs orthographiques et grammaticales, il est probable qu’il s’agisse d’une application suspecte. Dans ce cas, vous pouvez le rapportez directement sur l’[invite de consentement](../develop/application-consent-experience.md#building-blocks-of-the-consent-prompt) avec le lien « *Le rapporter ici* » et Microsoft examinera s’il s’agit d’une application malveillante et la désactivera le cas échéant.
     - Ne vous fiez pas aux noms d’application et aux URL de domaine comme source d’authenticité. Les attaquants aiment usurper les noms d’application et de domaine qui semblent provenir d’un service ou d’entreprises légitimes, pour que vous donniez votre consentement à une application malveillante. Au lieu de cela, validez la source de l’URL de domaine et utilisez des applications à partir d'[éditeurs vérifiés](../develop/publisher-verification-overview.md) lorsque cela est possible.
     - Bloquez les [e-mails de hameçonnage de consentement à l’aide de Microsoft Defender pour Office 365](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365) en protégeant contre les campagnes de hameçonnage où un attaquant usurpe l’identité d’un utilisateur connu de votre organisation.
-    - Configurez les stratégies de sécurité des applications cloud de Microsoft, telles que les [stratégies d’activité](/cloud-app-security/user-activity-policies), la [détection d’anomalies](/cloud-app-security/anomaly-detection-policy)et les [stratégies d’application OAuth](/cloud-app-security/app-permission-policy)  pour faciliter la gestion et prendre des mesures sur l’activité anormale des applications dans votre organisation.
+    - Configurez les stratégies Microsoft Defender for Cloud Apps, telles que les [stratégies d’activité](/cloud-app-security/user-activity-policies), la [détection d’anomalies](/cloud-app-security/anomaly-detection-policy)et les [stratégies d’application OAuth](/cloud-app-security/app-permission-policy)  pour faciliter la gestion et prendre des mesures sur l’activité anormale des applications dans votre organisation.
     - Examinez et recherchez les attaques par hameçonnage de consentement en suivant les conseils relatifs à la [recherche avancée avec Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview).
 * Autoriser l’accès aux applications de confiance et protégez-vous contre celles auxquelles vous ne faites pas confiance
     - Utilisez des applications qui ont été vérifiées par l’éditeur. La [vérification de l’éditeur](../develop/publisher-verification-overview.md) permet aux administrateurs et aux utilisateurs finaux de s'assurer de l'authenticité des développeurs d'applications à l’aide d’un processus de vérification pris en charge par Microsoft.

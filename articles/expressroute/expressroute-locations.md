@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: 6b4353ad60f8ae2f4238762297d694cde1ae253a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3f29b308f4d0f198d444d874a4f53cf660feb8f9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131473126"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136176"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partenaires de connectivité ExpressRoute et localisations de peering
 
@@ -81,7 +81,7 @@ Le tableau suivant présente les emplacements, en fonction de chaque fournisseur
 | **du datamena** |Prise en charge |Prise en charge | Dubaï2 |
 | **eir** |Prise en charge |Prise en charge |Dublin|
 | **[Communications globales EPSILON](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Prise en charge |Prise en charge |Singapour, Singapour2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Pris en charge |Pris en charge |Amsterdam, Amsterdam2, Atlanta, Berlin, Bogota, Canberra2, Chicago, Dallas, Dubaï2, Dublin, Francfort, Francfort2, Genève, Hong Kong (R.A.S), Londres, Londres2, Los Angeles*, Los Angeles2, Melbourne, Miami, Milan, New York, Osaka, Paris, Québec, Rio de Janeiro, São Paulo, Seattle, Séoul, Silicon Valley, Singapour, Singapour2, Stockholm, Sydney, Tokyo, Toronto, Washington DC, Zurich</br></br> **Les nouveaux circuits ExpressRoute ne sont plus pris en charge avec Equinix à Los Angeles. Créez de nouveaux circuits dans Los Angeles2.* |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Prise en charge |Pris en charge |Amsterdam, Amsterdam2, Atlanta, Berlin, Bogota, Canberra2, Chicago, Dallas, Dubaï2, Dublin, Francfort, Francfort2, Genève, Hong Kong (R.A.S), Londres, Londres2, Los Angeles*, Los Angeles2, Melbourne, Miami, Milan, New York, Osaka, Paris, Québec, Rio de Janeiro, São Paulo, Seattle, Séoul, Silicon Valley, Singapour, Singapour2, Stockholm, Sydney, Tokyo, Toronto, Washington DC, Zurich</br></br> **Les nouveaux circuits ExpressRoute ne sont plus pris en charge avec Equinix à Los Angeles. Créez de nouveaux circuits dans Los Angeles2.* |
 | **Etisalat UAE** |Prise en charge |Prise en charge |Dubaï|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Prise en charge |Prise en charge |Amsterdam, Amsterdam2, Dublin, Francfort, Londres |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |Prise en charge |Prise en charge |Taipei|
@@ -165,6 +165,7 @@ Le tableau suivant présente les emplacements, en fonction de chaque fournisseur
 | **Vodacom** |Pris en charge |Prise en charge |Le Cap, Johannesburg|
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Prise en charge |Prise en charge |Amsterdam2, Londres, Singapour |
 | **[Vodafone Idea](https://www.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | Prise en charge | Prise en charge | Mumbai2 |
+| **[XL Axiata]** | Prise en charge | Prise en charge | Jakarta |
 | **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Prise en charge |Pris en charge |Amsterdam, Chicago, Dallas, Denver, Londres, Los Angeles, Montréal, New York, Paris, Phoenix, Seattle, Silicon Valley, Toronto, Washington DC, Washington DC2 |
 
  **+** = bientôt disponible
@@ -177,13 +178,13 @@ Les clouds nationaux Azure sont isolés les uns des autres et des productions Az
 
 | **Fournisseur de services** | **Microsoft Azure** | **Office 365** | **Emplacements** |
 | --- | --- | --- | --- |
-| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Pris en charge |Prise en charge |Chicago, Phoenix, Silicon Valley, Washington DC |
+| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Prise en charge |Prise en charge |Chicago, Phoenix, Silicon Valley, Washington DC |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Prise en charge |Prise en charge |New York, Phoenix, San Antonio, Washington DC |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Prise en charge |Prise en charge |Atlanta, Chicago, Dallas, New York, Seattle, Silicon Valley, Washington DC |
 | **[Internet2]()** |Prise en charge |Prise en charge |Dallas |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Prise en charge |Prise en charge |Chicago, Silicon Valley, Washington DC |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Prise en charge | Prise en charge | Chicago, Dallas, San Antonio, Seattle, Washington DC |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |Prise en charge |Pris en charge |Chicago, Dallas, New York, Silicon Valley, Washington DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** |Prise en charge |Prise en charge |Chicago, Dallas, New York, Silicon Valley, Washington DC |
 
 ### <a name="china"></a>Chine
 

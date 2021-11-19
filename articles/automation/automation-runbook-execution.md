@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 700c5a9254cbb3ae8fe69ccc0f2ea3b76bb66121
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 11a4892a6cd9a1ddda9cf5857165dd9b52e1392b
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356454"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371856"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Exécution d'un Runbook dans Azure Automation
 
@@ -74,9 +74,9 @@ Vos runbooks doivent inclure une logique pour gérer des [ressources](/rest/api/
 
 ## <a name="security"></a>Sécurité
 
-Azure Automation utilise [Azure Security Center (ASC)](../security-center/security-center-introduction.md) pour garantir la sécurité de vos ressources et détecter les compromissions dans les systèmes Linux. La sécurité est fournie dans vos charges de travail, que les ressources se trouvent dans Azure ou non. Voir [Présentation de l’authentification dans Azure Automation](automation-security-overview.md).
+Azure Automation utilise [Microsoft Defender pour le cloud](../defender-for-cloud/defender-for-cloud-introduction.md) pour assurer la sécurité de vos ressources et détecter les compromissions dans les systèmes Linux. La sécurité est fournie dans vos charges de travail, que les ressources se trouvent dans Azure ou non. Voir [Présentation de l’authentification dans Azure Automation](automation-security-overview.md).
 
-ASC applique des contraintes aux utilisateurs qui peuvent exécuter des scripts, signés ou non, sur une machine virtuelle. Si vous êtes un utilisateur disposant d’un accès racine à une machine virtuelle, vous devez configurer explicitement la machine avec une signature numérique, ou la désactiver. Sinon, vous ne pouvez exécuter un script que pour appliquer des mises à jour du système d’exploitation après avoir créé un compte Automation et activé la fonctionnalité appropriée.
+Defender pour le cloud applique des contraintes aux utilisateurs qui peuvent exécuter des scripts, signés ou non, sur une machine virtuelle. Si vous êtes un utilisateur disposant d’un accès racine à une machine virtuelle, vous devez configurer explicitement la machine avec une signature numérique, ou la désactiver. Sinon, vous ne pouvez exécuter un script que pour appliquer des mises à jour du système d’exploitation après avoir créé un compte Automation et activé la fonctionnalité appropriée.
 
 ## <a name="subscriptions"></a>Abonnements
 

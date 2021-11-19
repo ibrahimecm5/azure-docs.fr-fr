@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 563d49ff66bdcd81a37a0bf1b12e910f16f2f5ff
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 54f164c60a5602bcfe798c98785fca1aa8513279
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036691"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292849"
 ---
 # <a name="understanding-licensing-and-per-user-access-pricing"></a>Compréhension de la tarification des licences et de l’accès par utilisateur
 
@@ -70,7 +70,7 @@ Voici un résumé des deux types de licences pour Azure Virtual Desktop que vous
 
 ## <a name="licensing-other-products-and-services-for-use-with-azure-virtual-desktop"></a>Licences d’autres produits et services à utiliser avec Azure Virtual Desktop
 
-La licence d’accès par utilisateur d’Azure Virtual Desktop n’est pas entièrement remplacée par une licence Windows ou Microsoft 365. Les licences par utilisateur accordent uniquement des droits d’accès à Azure Virtual Desktop et n’incluent pas Microsoft Office, Microsoft Defender ou l’impression universelle. Cela signifie que si vous choisissez une licence par utilisateur, vous devez accorder une licence distincte à d’autres produits et services pour permettre à vos utilisateurs d’y accéder dans votre environnement Azure Virtual Desktop.
+La licence d’accès par utilisateur d’Azure Virtual Desktop n’est pas entièrement remplacée par une licence Windows ou Microsoft 365. Les licences par utilisateur accordent uniquement des droits d’accès à Azure Virtual Desktop et n’incluent pas Microsoft Office, Microsoft 365 Defender ou l’impression universelle. Cela signifie que si vous choisissez une licence par utilisateur, vous devez accorder une licence distincte à d’autres produits et services pour permettre à vos utilisateurs d’y accéder dans votre environnement Azure Virtual Desktop.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

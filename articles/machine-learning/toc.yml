@@ -295,6 +295,8 @@
               href: how-to-manage-rest.md
             - name: Lier à un espace de travail Azure Synapse Analytics
               href: how-to-link-synapse-ml-workspaces.md
+            - name: Diagnostics de l’espace de travail
+              href: how-to-workspace-diagnostic-api.md
         - name: Créer et gérer des ressources de calcul
           items:
             - name: Instance de calcul
@@ -559,7 +561,7 @@
                   href: how-to-use-managed-online-endpoint-studio.md
                 - name: Utilisation de hautes performances avec Triton
                   href: how-to-deploy-with-triton.md
-                - name: Accéder au stockage avec un point de terminaison en ligne managé et une identité managée
+                - name: Accéder aux ressources Azure à partir d’un point de terminaison en ligne managé
                   href: how-to-access-resources-from-endpoints-managed-identities.md
                 - name: Affichage des coûts des points de terminaison en ligne managés
                   href: how-to-view-online-endpoints-costs.md

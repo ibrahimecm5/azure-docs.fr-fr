@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2021
-ms.openlocfilehash: 464e848814da046600b05a1feea632a1ceaa141a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 28bf92ffeb97c65aadae3f61cf471efba943b5b7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713838"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491959"
 ---
 # <a name="monitoring-azure-kubernetes-service-aks-with-azure-monitor"></a>Surveillance d’Azure Kubernetes Service (AKS) avec Azure Monitor
 Ce scénario décrit comment utiliser Azure Monitor pour surveiller l’intégrité et les performances d’Azure Kubernetes Service (AKS). Il comprend la collecte des données de télémétrie critiques pour la surveillance, l’analyse et la visualisation des données collectées pour identifier les tendances, et comment configurer des alertes pour être informé de manière proactive des problèmes critiques.
@@ -25,9 +25,9 @@ Ce scénario est destiné aux clients qui utilisent Azure Monitor pour surveille
 - La surveillance d’AKS avec des outils autres qu’Azure Monitor, sauf pour combler les lacunes d’Azure Monitor et de Container Insights.
 
 > [!NOTE]
-> Azure Monitor a été conçu pour surveiller la disponibilité et les performances des ressources cloud. Bien que les données opérationnelles stockées dans Azure Monitor peuvent être utiles pour l’examen des incidents de sécurité, d’autres services dans Azure ont été conçus pour surveiller la sécurité. La surveillance de la sécurité d’AKS est assurée par [Azure Sentinel](../sentinel/overview.md) et [Azure Security Center](../security-center/security-center-introduction.md). Voir [Surveillance des machines virtuelles avec Azure Monitor - Surveillance de la sécurité](../azure-monitor/vm/monitor-virtual-machine-security.md) pour une description des outils de surveillance de la sécurité dans Azure et de leur relation avec Azure Monitor.
+> Azure Monitor a été conçu pour surveiller la disponibilité et les performances des ressources cloud. Bien que les données opérationnelles stockées dans Azure Monitor peuvent être utiles pour l’examen des incidents de sécurité, d’autres services dans Azure ont été conçus pour surveiller la sécurité. La surveillance de la sécurité pour AKS s’effectue avec [Microsoft Sentinel](../sentinel/overview.md) et [Microsoft Defender pour le cloud](../defender-for-cloud/defender-for-cloud-introduction.md). Voir [Surveillance des machines virtuelles avec Azure Monitor - Surveillance de la sécurité](../azure-monitor/vm/monitor-virtual-machine-security.md) pour une description des outils de surveillance de la sécurité dans Azure et de leur relation avec Azure Monitor.
 >
-> Pour plus d’informations sur l’utilisation des services de sécurité pour surveiller AKS, voir [Azure Defender pour Kubernetes : avantages et fonctionnalités](../security-center/defender-for-kubernetes-introduction.md) et [Connecter des journaux de diagnostic AKS (Azure Kubernetes Service) à Azure Sentinel](../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks).
+> Pour plus d’informations sur l’utilisation des services de sécurité pour surveiller AKS, voir [Microsoft Defender pour Kubernetes : avantages et fonctionnalités](../defender-for-cloud/defender-for-kubernetes-introduction.md) et [Connecter des journaux de diagnostic AKS (Azure Kubernetes Service) à Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks).
 ## <a name="container-insights"></a>Container Insights
 AKS génère des [métriques de plateforme et des journaux de ressources](monitor-aks-reference.md), comme toute autre ressource Azure, que vous pouvez utiliser pour surveiller son intégrité et ses performances de base. Activez [Container Insights](../azure-monitor/containers/container-insights-overview.md) pour développer cette surveillance. Container Insights est une fonctionnalité d’Azure Monitor qui surveille l’intégrité et les performances des clusters Kubernetes gérés hébergés sur AKS, en plus d’autres configurations de cluster. Container Insights fournit des affichages et des classeurs interactifs qui analysent les données collectées pour un large éventail de scénarios d’analyse. 
 
@@ -43,7 +43,7 @@ Les sections suivantes décrivent les étapes nécessaires à la configuration d
 ### <a name="create-log-analytics-workspace"></a>Créer un espace de travail Log Analytics
 Vous avez besoin d’au moins un espace de travail Log Analytics pour prendre en charge Container Insights et collecter et analyser d’autres données de télémétrie sur votre cluster AKS. Il n’y a aucun coût pour l’espace de travail, mais vous encourez des coûts d’ingestion et de rétention lorsque vous collectez des données. Pour plus d'informations, consultez [Gérer l’utilisation et les coûts avec les journaux Azure Monitor](../azure-monitor/logs/manage-cost-storage.md).
 
-Si vous découvrez Azure Monitor, commencez avec un seul espace de travail et envisagez de créer des espaces de travail supplémentaires à métrique que vos besoins évoluent. De nombreux environnements utilisent un espace de travail unique pour toutes les ressources Azure qu’ils contrôlent. Vous pouvez même partager un espace de travail utilisé par [Azure Security Center et Azure Sentinel](../azure-monitor/vm/monitor-virtual-machine-security.md), bien que de nombreux clients choisissent de séparer leurs télémétries de disponibilité et de performances des données de sécurité. 
+Si vous découvrez Azure Monitor, commencez avec un seul espace de travail et envisagez de créer des espaces de travail supplémentaires à métrique que vos besoins évoluent. De nombreux environnements utilisent un espace de travail unique pour toutes les ressources Azure qu’ils contrôlent. Vous pouvez même partager un espace de travail utilisé par [Microsoft Defender pour le cloud et Microsoft Sentinel](../azure-monitor/vm/monitor-virtual-machine-security.md), bien que de nombreux clients choisissent de séparer leurs télémétries de disponibilité et de performances des données de sécurité. 
 
 Voir [Conception de votre déploiement de journaux Azure Monitor](../azure-monitor/logs/design-logs-deployment.md) pour plus de détails sur la logique que vous devez envisager lors de la conception d’une configuration d’espace de travail.
 

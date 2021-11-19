@@ -46,6 +46,8 @@
           href: conditions-prerequisites.md
         - name: FAQ sur les conditions
           href: conditions-faq.md
+        - name: Exemple d’attributs de sécurité personnalisés
+          href: conditions-custom-security-attributes-example.md
     - name: Sécurité
       items:
         - name: Contrôles de sécurité par Azure Policy
@@ -104,6 +106,8 @@
           href: conditions-role-assignments-template.md
         - name: Résoudre les problèmes liés aux conditions
           href: conditions-troubleshoot.md
+        - name: Conditions et attributs de sécurité personnalisés
+          href: conditions-custom-security-attributes.md
     - name: Supprimer les attributions de rôles
       href: role-assignments-remove.md
     - name: Répertorier les affectations de refus

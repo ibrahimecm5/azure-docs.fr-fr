@@ -2,14 +2,17 @@
 title: Vue d’ensemble des points de terminaison privés
 description: Comprenez comment utiliser des points de terminaison privés pour le service Sauvegarde Azure et découvrez les scénarios où l’utilisation des points de terminaison privés contribue à maintenir la sécurité de vos ressources.
 ms.topic: conceptual
-ms.date: 09/28/2021
+ms.date: 11/09/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3070cb72b6e5949b94972f9dad54d4e57e5bf591
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: c9ff432c1de5ebdb44ae8f5fa0d4889026a32252
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154961"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136468"
 ---
 # <a name="overview-and-concepts-of-private-endpoints-for-azure-backup"></a>Vue d’ensemble et concepts des points de terminaison privés pour le service Sauvegarde Azure
 
@@ -73,9 +76,9 @@ L’accès aux noms de domaine complets de stockage dans les deux scénarios est
 >Les points de terminaison privés pour les objets blob et les files d’attente suivent un modèle d’attribution de nom standard. Ils commencent par  **\<the name of the private endpoint>_ecs** ou **\<the name of the private endpoint>_prot**, et se terminent respectivement par  **\_blob** et  **\_queue** .
 
 Les points de terminaison du service Sauvegarde Azure sont modifiés pour les coffres activés pour les points de terminaison privés.  
-Si vous avez configuré un serveur proxy DNS à l’aide de serveurs proxy et de pare-feu tiers, les noms de domaine ci-dessus doivent être autorisés et redirigés vers un DNS personnalisé (avec des mappages d’adresses IP privées) ou vers 169.63.129.16 avec une liaison de réseau virtuel vers une zone DNS privée avec ces mappages d’adresses IP privées.
+Si vous avez configuré un serveur proxy DNS à l’aide de serveurs proxy et de pare-feu tiers, les noms de domaine ci-dessus doivent être autorisés et redirigés vers un DNS personnalisé (avec des mappages d’adresses IP privées) ou vers 168.63.129.16 avec une liaison de réseau virtuel vers une zone DNS privée avec ces mappages d’adresses IP privées.
 
-L’exemple suivant montre le pare-feu Azure utilisé comme proxy DNS pour rediriger vers l’adresse 169.63.129.16 les requêtes de nom de domaine pour le coffre Recovery Services, l’objet BLOB, les files d’attente et AAD.
+L’exemple suivant montre le pare-feu Azure utilisé comme proxy DNS pour rediriger vers l’adresse 168.63.129.16 les requêtes de nom de domaine pour le coffre Recovery Services, l’objet BLOB, les files d’attente et AAD.
 
 :::image type="content" source="./media/private-endpoints-overview/azure-firewall-used-as-dns-proxy-inline.png" alt-text="Diagramme montrant l’utilisation du pare-feu Azure comme proxy DNS pour rediriger les requêtes de nom de domaine." lightbox="./media/private-endpoints-overview/azure-firewall-used-as-dns-proxy-expanded.png":::
 

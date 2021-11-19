@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 32adad7acee7c1dbb75516d4ccaa597f2c69b9fb
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: e4c78fe2037beb23f69700ae7a340a4d5c6cc160
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845069"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490558"
 ---
 ## <a name="install-iot-edge"></a>Installer IoT Edge
 
@@ -20,31 +20,24 @@ Vous devez effectuer deux étapes sur votre appareil pour qu’il soit prêt à 
 
 ### <a name="access-the-microsoft-installation-packages"></a>Accéder aux packages d’installation Microsoft
 
-1. Installez la configuration du référentiel qui correspond au système d’exploitation de votre appareil.
+1. Téléchargez le package de configuration du référentiel correspondant au système d’exploitation de votre appareil.
 
    * **Ubuntu Server 18.04** :
 
       ```bash
-      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/packages-microsoft-prod.deb > ./packages-microsoft-prod.deb
       ```
 
-   * **Raspberry Pi OS Stretch** :
+   * **Raspberry Pi OS Stretch** :
 
       ```bash
-      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+      curl https://packages.microsoft.com/config/debian/stretch/multiarch/packages-microsoft-prod.deb > ./packages-microsoft-prod.deb
       ```
 
-1. Copiez la liste générée dans le répertoire sources.list.d.
+1. Installez le package de configuration pour ajouter le référentiel de packages et la clé publique GPG de Microsoft.
 
    ```bash
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-   ```
-
-1. Installez la clé publique Microsoft GPG.
-
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   sudo apt install ./packages-microsoft-prod.deb
    ```
 
 > [!NOTE]
@@ -75,7 +68,7 @@ Azure IoT Edge s’appuie sur un runtime de conteneur compatible avec OCI. Dans 
    >   ./check-config.sh
    >   ```
    >
-   > Dans la sortie du script, vérifiez que tous les éléments sous `Generally Necessary` et `Network Drivers` sont activés. S’il vous manque des fonctionnalités, activez-les en regénérant votre noyau à partir de la source et en sélectionnant les modules associés à inclure dans le fichier .config du noyau approprié. De la même façon, si vous utilisez un générateur de configuration du noyau comme `defconfig` ou `menuconfig`, recherchez et activez les fonctionnalités respectives, et regénérez votre noyau en conséquence. Une fois que vous avez déployé votre nouveau noyau modifié, réexécutez le script check-config pour vérifier que toutes les fonctionnalités requises ont été activées avec succès.
+   > Dans la sortie du script, vérifiez que tous les éléments sous `Generally Necessary` et `Network Drivers` sont activés. S’il vous manque des fonctionnalités, activez-les en regénérant votre noyau à partir de la source et en sélectionnant les modules associés à inclure dans le fichier .config du noyau approprié. De la même façon, si vous utilisez un générateur de configuration du noyau comme `defconfig` ou `menuconfig`, recherchez et activez les fonctionnalités respectives, et regénérez votre noyau en conséquence. Une fois que vous avez déployé votre nouveau noyau modifié, réexécutez le script check-config pour vérifier que toutes les fonctionnalités requises ont été activées avec succès.
 
 ### <a name="install-the-iot-edge-runtime"></a>Installer le runtime IoT Edge
 

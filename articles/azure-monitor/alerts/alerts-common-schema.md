@@ -3,12 +3,12 @@ title: Schéma d’alerte commun pour les alertes Azure Monitor
 description: Comprendre le schéma d’alerte commun, pourquoi vous devez l’utiliser et comment l’activer
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ea05c010ff9ee732302054a07c8157e02e3e0034
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 60f3017312c8d650085d395e08d92af90ebf3f8d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739796"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327402"
 ---
 # <a name="common-alert-schema"></a>Schéma d’alerte courant
 
@@ -19,8 +19,9 @@ Cet article décrit le schéma d’alerte commun, les avantages que procure son 
 Le schéma d’alerte commun standardise l’expérience de consommation pour les notifications d’alerte dans Azure de nos jours. Les trois types d’alerte actuels dans Azure (métrique, journal et journal d’activité) ont traditionnellement eu leurs propres modèles d’e-mail, schémas de webhook, etc. Avec le schéma d’alerte commun, vous pouvez maintenant recevoir des notifications d’alerte avec un schéma cohérent.
 
 Toute instance d’alerte décrit **la ressource qui a été affectée** et **la cause de l’alerte** ; ces instances sont décrites dans le schéma commun dans les sections suivantes :
-* **Informations de base** : ensemble de **champs standardisés**, commun à tous les types d’alerte, qui décrivent **quelle ressource** est concernée par l’alerte ainsi que des métadonnées d’alerte courantes supplémentaires (par exemple, la gravité ou un description). 
-* **Contexte de l’alerte** : ensemble de champs qui décrivent la **cause de l’alerte**, et qui varient **selon le type d’alerte**. Par exemple, une alerte de métrique aurait des champs tels que le nom de la métrique et la valeur de la métrique dans le contexte de l’alerte, tandis qu’une alerte de journal d’activité aurait des informations sur l’événement à l’origine de l’alerte. 
+
+- **Informations de base** : ensemble de **champs standardisés**, commun à tous les types d’alerte, qui décrivent **quelle ressource** est concernée par l’alerte ainsi que des métadonnées d’alerte courantes supplémentaires (par exemple, la gravité ou un description).
+- **Contexte d’alerte** : ensemble de champs qui décrivent la **cause de l’alerte**, et qui varient **selon le type d’alerte**. Par exemple, une alerte de métrique aurait des champs tels que le nom de la métrique et la valeur de la métrique dans le contexte de l’alerte, tandis qu’une alerte de journal d’activité aurait des informations sur l’événement à l’origine de l’alerte.
 
 Les scénarios d’intégration classiques dont nous font part nos clients impliquent le routage de l’instance d’alerte vers l’équipe concernée en fonction d’une information pivot (par exemple, le groupe de ressources), avant son traitement par cette équipe. Avec le schéma d’alerte commun, vous pouvez avoir une logique de routage standardisée entre les types d’alerte en exploitant les champs essentiels, laissant aux équipes concernées le soin d’approfondir éventuellement les recherches à partir des champs de contexte bruts.
 
@@ -35,7 +36,7 @@ Le schéma d’alerte commun se manifeste principalement dans vos notifications 
 | E-mail | Un modèle d’e-mail cohérent et détaillé, ce qui vous permet de facilement diagnostiquer les problèmes en un clin d’œil. Des liens profonds incorporés vers l’instance d’alerte sur le portail et la ressource affectée vous permettent d’accéder rapidement au processus de correction. |
 | Webhook/application logique/fonction Azure/runbook automation | Une structure JSON cohérente pour tous les types d’alertes, ce qui vous permet de générer facilement des intégrations entre les différents types d’alerte. |
 
-En outre, le nouveau schéma enrichira l’expérience de consommation des alertes dans le portail Azure et Azure mobile app dans un futur proche. 
+En outre, le nouveau schéma enrichira l’expérience de consommation des alertes dans le portail Azure et Azure mobile app dans un futur proche.
 
 [Découvrez-en plus sur les définitions de schéma pour les webhooks/applications logiques/fonctions Azure/runbooks automation.](./alerts-common-schema-definitions.md)
 
@@ -48,16 +49,16 @@ Vous pouvez adhérer ou ne pas adhérer au schéma d’alerte commun par le biai
 
 > [!NOTE]
 > 1. Les types d’alerte suivants prennent en charge le schéma commun par défaut (aucune adhésion requise) :
->     * Alertes de détection intelligente
+>     - Alertes de détection intelligente
 > 1. Les types d’alerte suivants ne prennent pas en charge le schéma commun :
->     * Alertes générées par [VM Insights](../vm/vminsights-overview.md)
->     * Alertes générées par [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md)
+>     - Alertes générées par [VM Insights](../vm/vminsights-overview.md)
+>     - Alertes générées par [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md)
 
 ### <a name="through-the-azure-portal"></a>À l’aide du portail Azure
 
 ![Adhésion au schéma d’alerte commun](media/alerts-common-schema/portal-opt-in.png)
 
-1. Ouvrez n’importe quelle action existante ou une nouvelle action dans un groupe d’actions. 
+1. Ouvrez n’importe quelle action existante ou une nouvelle action dans un groupe d’actions.
 1. Sélectionnez « Oui » pour le bouton bascule pour activer le schéma d’alerte commun, comme indiqué.
 
 ### <a name="through-the-action-groups-rest-api"></a>Par le biais de l’API REST Groupes d’actions
@@ -66,9 +67,9 @@ Vous pouvez également utiliser l’[API Groupes d’actions](/rest/api/monitor/
 
 Par exemple, le corps de demande suivant apporté à l’API REST [Créer ou mettre à jour](/rest/api/monitor/actiongroups/createorupdate) effectue les opérations suivantes :
 
-* Activer le schéma d’alerte commun pour l’action d’e-mail « John Doe's email »
-* Désactiver le schéma d’alerte commun pour l’action d’e-mail « Jane Smith's email »
-* Activer le schéma d’alerte commun pour l’action de webhook « Sample webhook »
+- Activer le schéma d’alerte commun pour l’action d’e-mail « John Doe's email »
+- Désactiver le schéma d’alerte commun pour l’action d’e-mail « Jane Smith's email »
+- Activer le schéma d’alerte commun pour l’action de webhook « Sample webhook »
 
 ```json
 {
@@ -111,10 +112,6 @@ Par exemple, le corps de demande suivant apporté à l’API REST [Créer ou met
   "tags": {}
 }
 ```
-
-
-
-
 
 ## <a name="next-steps"></a>Étapes suivantes
 

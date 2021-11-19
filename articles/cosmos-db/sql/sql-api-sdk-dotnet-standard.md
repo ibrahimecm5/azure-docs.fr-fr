@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d7d06180caedf23fb79b05ca9bbc345038722ea2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 50b032779039ed50a1d0132bfd109394be379636
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123116099"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491902"
 ---
 # <a name="azure-cosmos-db-net-sdk-v3-for-sql-api-download-and-release-notes"></a>SDK .NET v3 Azure Cosmos DB pour l’API SQL : Téléchargement et notes de publication
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "123116099"
 > * [SDK .NET Change Feed v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.JS](sql-api-sdk-node.md)
 > * [Kit SDK Java v4](sql-api-sdk-java-v4.md)
-> * [SDK Java Async v2](sql-api-sdk-async-java.md)
+> * [Kit SDK Java asynchrone v2](sql-api-sdk-async-java.md)
 > * [SDK Java Sync v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
@@ -49,7 +49,17 @@ ms.locfileid: "123116099"
 |**Tutoriel Entity Framework Core**|[Entity Framework Core avec le fournisseur Azure Cosmos DB](/ef/core/providers/cosmos/#get-started)|
 |**Infrastructure actuellement prise en charge**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]
+## <a name="release-history"></a>Historique des mises en production
+
+L’historique des versions est conservé dans le référentiel source du kit de développement logiciel (SDK) .NET Azure Cosmos DB. Pour obtenir une liste détaillée des mises en production de fonctionnalités et des bogues résolus dans chaque version, consultez la [Documentation du journal des modifications du SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md)
+
+## <a name="recommended-version"></a><a name="recommended-version"> </a> Version recommandée
+
+Différentes sous-versions des Kits de développement logiciel (SDK) .NET sont disponibles sous la version 3.x.x. **La version minimale recommandée est la 3.20.1**.
+
+## <a name="known-issues"></a><a name="known-issues"></a> Problèmes connus
+
+Pour obtenir la liste des problèmes connus avec la version minimale recommandée du Kit de développement logiciel (SDK), consultez la [section des problèmes connus](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md#-known-issues).
 
 ## <a name="faq"></a>Questions fréquentes (FAQ)
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]

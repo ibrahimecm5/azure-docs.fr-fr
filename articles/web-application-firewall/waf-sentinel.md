@@ -1,22 +1,22 @@
 ---
-title: Utilisation d’Azure Sentinel avec Azure Web Application Firewall
-description: Cet article explique comment utiliser Azure Sentinel avec Azure Web Application Firewall (WAF).
+title: Utilisation de Microsoft Sentinel avec Azure Web Application Firewall
+description: Cet article explique comment utiliser Microsoft Sentinel avec Azure Web Application Firewall (WAF)
 services: web-application-firewall
 author: TreMansdoerfer
 ms.service: web-application-firewall
 ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c888b364bfac5687996bb88472b5725244ea1bcb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596436"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305462"
 ---
-# <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>Utilisation d’Azure Sentinel avec Azure Web Application Firewall
+# <a name="using-microsoft-sentinel-with-azure-web-application-firewall"></a>Utilisation de Microsoft Sentinel avec Azure Web Application Firewall
 
-Azure Web Application Firewall (WAF), associé à Azure Sentinel, peut assurer la gestion des événements relatifs aux informations de sécurité pour les ressources WAF. Azure Sentinel fournit une analytique de sécurité grâce à Log Analytics, ce qui vous permet de décomposer et d’afficher facilement vos données WAF. À l’aide d’Azure Sentinel, vous pouvez accéder à des classeurs prédéfinis et les modifier pour les adapter aux besoins de votre organisation. Le classeur peut afficher l’analytique pour WAF sur Azure Content Delivery Network (CDN), WAF sur Azure Front Door et WAF sur Application Gateway dans plusieurs abonnements et espaces de travail.
+Azure Web Application Firewall (WAF), associé à Microsoft Sentinel, peut assurer la gestion des événements relatifs aux informations de sécurité pour les ressources WAF. Microsoft Sentinel fournit une analytique de sécurité grâce à Log Analytics, ce qui vous permet de décomposer et d’afficher facilement vos données WAF. À l’aide de Microsoft Sentinel, vous pouvez accéder à des classeurs prédéfinis et les modifier pour les adapter aux besoins de votre organisation. Le classeur peut afficher l’analytique pour WAF sur Azure Content Delivery Network (CDN), WAF sur Azure Front Door et WAF sur Application Gateway dans plusieurs abonnements et espaces de travail.
 
 ## <a name="waf-log-analytics-categories"></a>Catégories d’analytique des journaux d’activité WAF
 
@@ -66,7 +66,7 @@ Afin d’activer l’analytique des journaux d’activité pour chaque ressource
 
    :::image type="content" source="media//waf-sentinel/diagnostics-setting.png" alt-text="Paramètre de diagnostic":::
 
-4. Sur la page d’accueil Azure, saisissez **Azure Sentinel** dans la barre de recherche, puis sélectionnez la ressource **Azure Sentinel**. 
+4. Sur la page d’accueil Azure, saisissez *Microsoft Sentinel* dans la barre de recherche, puis sélectionnez la ressource **Microsoft Sentinel**. 
 2. Sélectionnez un espace de travail déjà actif ou créez-en un. 
 3. Dans le volet gauche, sous **Configuration**, sélectionnez **Connecteurs de données**.
 4. Recherchez **Pare-feu d’applications web Microsoft** et sélectionnez **Pare-feu d’applications web Microsoft (WAF)** . En bas à droite, sélectionnez **Ouvrir la page des connecteurs**.
@@ -81,5 +81,5 @@ Afin d’activer l’analytique des journaux d’activité pour chaque ressource
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [En savoir plus sur Azure Sentinel](../sentinel/overview.md)
+- [En savoir plus sur Microsoft Sentinel](../sentinel/overview.md)
 - [En savoir plus sur les classeurs Azure Monitor](../azure-monitor/visualize/workbooks-overview.md)

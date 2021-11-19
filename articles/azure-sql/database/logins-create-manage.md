@@ -13,12 +13,12 @@ author: AndreasWolter
 ms.author: anwolter
 ms.reviewer: vanto, mathoma
 ms.date: 03/23/2020
-ms.openlocfilehash: c8cbb041c366bd530ac63d622a40e31a931e1fd7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e8b058e18625d20427eb2c26cdc8c20817f640bf
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706216"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546976"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Configurer SQL Database, SQL Managed Instance et Azure Synapse Analytics pour autoriser l'accès aux bases de données
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -33,6 +33,9 @@ Cet article porte sur les points suivants :
 
 > [!IMPORTANT]
 > Dans cet article, les bases de données d'Azure SQL Database, d'Azure SQL Managed Instance et d'Azure Synapse sont collectivement désignées sous le nom de « bases de données », et le terme « serveur » fait référence au [serveur](logical-servers.md) qui gère les bases de données d'Azure SQL Database et d'Azure Synapse.
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="authentication-and-authorization"></a>Authentification et autorisation
 

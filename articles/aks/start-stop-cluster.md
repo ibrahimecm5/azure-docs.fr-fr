@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 08/09/2021
 author: palma21
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fefdb4619c017d7c43e4dfa84c8099450310ca2f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8a19cc69d14e32a20819618efcf60594aef34be9
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524963"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371977"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Arrêter et démarrer un cluster Azure Kubernetes Service (AKS)
 
 Il se peut que vos charges de travail AKS n’aient pas besoin de s’exécuter en continu, par exemple un cluster de développement utilisé uniquement pendant les heures de bureau. Cela se traduit par des heures où votre cluster Azure Kubernetes Service (AKS) peut être inactif et n’exécute plus que les composants système. Vous pouvez réduire l’encombrement du cluster en [mettant à l’échelle tous les pools de nœud `User` sur 0](scale-cluster.md#scale-user-node-pools-to-0), mais votre [pool `System`](use-system-pools.md) est toujours requis pour exécuter les composants système pendant que le cluster est en cours d’exécution.
-Pour optimiser davantage vos coûts pendant ces périodes, vous pouvez complètement désactiver (arrêter) votre cluster. Cette action arrête complètement le plan de contrôle et les nœuds de l’agent, ce qui vous permet d’économiser tous les coûts de calcul, tout en conservant l’ensemble de vos objets et votre état de cluster pour le redémarrage. Vous pouvez ensuite reprendre là où vous aviez laissé les choses après un week-end, ou faire en sorte que votre cluster s’exécute uniquement lorsque vous exécutez vos programmes de traitement par lots.
+Pour optimiser davantage vos coûts pendant ces périodes, vous pouvez complètement désactiver (arrêter) votre cluster. Cette action arrête complètement le plan de contrôle et les nœuds de l’agent, ce qui vous permet d’économiser tous les coûts de calcul, tout en conservant l’ensemble de vos objets (à l’exception des pods autonomes) et votre état de cluster pour le redémarrage. Vous pouvez ensuite reprendre là où vous aviez laissé les choses après un week-end, ou faire en sorte que votre cluster s’exécute uniquement lorsque vous exécutez vos programmes de traitement par lots.
 
 ## <a name="before-you-begin"></a>Avant de commencer
 
@@ -30,6 +30,7 @@ Lorsque vous utilisez la fonctionnalité de démarrage/arrêt du cluster, les re
 - L’état du cluster d’un cluster AKS arrêté est conservé pendant 12 mois au maximum. Si votre cluster est arrêté pendant plus de 12 mois, l’état du cluster ne peut pas être récupéré. Pour plus d’informations, consultez les [Stratégies de support pour AKS](support-policies.md).
 - Vous pouvez uniquement démarrer ou supprimer un cluster AKS arrêté. Pour effectuer une opération telle qu’une mise à l’échelle ou une mise à niveau, commencez par démarrer votre cluster.
 - Les PrivateEndpoints provisionnés par le client qui sont liés à un cluster privé doivent être supprimés et recréés quand vous démarrez un cluster AKS arrêté.
+- Étant donné que le processus d’arrêt draine tous les nœuds, tous les pod autonomes (c’est-à-dire les pods non gérés par un Deployment, StatefulSet, DaemonSet, Job, etc.) seront supprimés.
 
 ## <a name="stop-an-aks-cluster"></a>Arrêter un cluster AKS
 

@@ -5,12 +5,12 @@ ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 77b920f52f699cb4492764aaf5ecb8b5f8ee2a7e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 67331e8b39a7c059da31215dd971988009a0ee36
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559406"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491978"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutoriel : Enregistrer et streamer des métadonnées d’inférence avec une vidéo
 
@@ -51,9 +51,9 @@ Le diagramme est une représentation graphique d’un [pipeline](../pipeline.md)
 
 Comme le montre le diagramme, vous allez utiliser un nœud de [source RTSP](../pipeline.md#rtsp-source) dans le pipeline afin de capturer la simulation de vidéo en direct du trafic sur l’autoroute, puis envoyer cette vidéo vers deux chemins :
 
-* Le premier chemin mène à un nœud d’extension HTTP. Le nœud d’extension HTTP joue le rôle d’un proxy. Il convertit chaque dixième image vidéo en type d’image spécifié. Il relaie ensuite l’image sur HTTP vers un autre module périphérique qui exécute un modèle IA derrière un point de terminaison HTTP. Dans cet exemple, le module de périphérie est généré à l’aide du modèle YOLOv3, qui peut détecter de nombreux types d’objets. Le nœud processeur d’extension HTTP collecte les résultats de la détection et envoie ces résultats et toutes les images vidéo (pas seulement la dixième) au nœud traceur d’objets. Le nœud traceur d’objets utilise des techniques de flux optique pour suivre l’objet dans les 9 images sur lesquelles le modèle IA n’a pas été appliqué. Le nœud traceur publie ses résultats sur le nœud récepteur vidéo et le nœud récepteur IoT Hub. Le nœud [récepteur vidéo](../pipeline.md#video-sink) utilise les métadonnées d’inférence du nœud traceur d’objets pour être lues avec la vidéo enregistrée. Le nœud [récepteur de messages IoT Hub](../pipeline.md#iot-hub-message-sink) envoie ensuite ces événements au [hub IoT Edge](../../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
+* Le premier chemin dirige vers un nœud d’extension HTTP. Le nœud d’extension HTTP joue le rôle d’un proxy. Il convertit chaque dixième image vidéo en type d’image spécifié. Ensuite, il relaie l’image sur HTTP vers un autre module périphérique qui exécute un modèle IA derrière un point de terminaison HTTP. Dans cet exemple, le module de périphérie est généré à l’aide du modèle YOLOv3, qui peut détecter de nombreux types d’objets. Le nœud processeur d’extension HTTP collecte les résultats de la détection et envoie ces résultats et toutes les images vidéo (pas seulement la dixième) au nœud traceur d’objets. Le nœud traceur d’objets utilise des techniques de flux optique pour suivre l’objet dans les 9 images sur lesquelles le modèle IA n’a pas été appliqué. Le nœud traceur publie ses résultats sur le nœud récepteur vidéo et le nœud récepteur IoT Hub. Le nœud [récepteur vidéo](../pipeline.md#video-sink) utilise les métadonnées d’inférence du nœud traceur d’objets pour être lues avec la vidéo enregistrée. Le nœud [récepteur de messages IoT Hub](../pipeline.md#iot-hub-message-sink) envoie ensuite ces événements au [hub IoT Edge](../../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
-* Le deuxième chemin va directement de la source RTSP vers le nœud récepteur vidéo pour effectuer l’enregistrement vidéo continu. La vidéo utilisée dans ce tutoriel est un [exemple de vidéo d’intersection d’autoroute](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv).
+* Le deuxième chemin va directement de la source RTSP vers le nœud récepteur vidéo pour effectuer l’enregistrement vidéo continu. La vidéo utilisée dans ce tutoriel est un [exemple de vidéo d’intersection d’autoroute](https://avamedia.blob.core.windows.net/public/camera-300s.mkv).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 

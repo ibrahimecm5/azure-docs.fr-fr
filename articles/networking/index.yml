@@ -84,6 +84,14 @@ additionalContent:
               url: ../route-server/quickstart-configure-route-server-portal.md
             - text: En savoir plus
               url: ../route-server/index.yml
+        - title: Fournir une connectivité sortante à un réseau virtuel
+          links:
+            - text: Présentation du service NAT de Réseau virtuel Azure
+              url: ../virtual-network/nat-gateway/nat-overview.md
+            - text: Créer et configurer une ressource de passerelle NAT
+              url: ../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md
+            - text: En savoir plus
+              url: ../virtual-network/nat-gateway/index.yml
     - title: Services de livraison d’applications
       items:
         - title: Équilibreur de charge réseau

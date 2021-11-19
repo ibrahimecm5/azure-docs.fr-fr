@@ -6,16 +6,19 @@ keywords: dsc, powershell, azure, extension
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b272993cdb1b89e63190d2c8c9ef80db2327ccc1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3aaadbb6f972838984f4ec01347537f21e244f14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167513"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491466"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Utiliser l’historique des versions de l’extension Azure Desired State Configuration
 
 L’[extension](../virtual-machines/extensions/dsc-overview.md) de machine virtuelle Azure DSC (Desired State Configuration) est mise à jour en fonction des besoins pour prendre en charge les améliorations et les nouvelles fonctionnalités fournies par Azure, par Windows Server et par Windows Management Framework qui inclut Windows PowerShell.
+
+> [!NOTE]
+> Avant d’activer l’extension DSC, nous aimerions que vous sachiez qu’une version plus récente de DSC est désormais disponible en version préliminaire, gérée par une fonctionnalité d’Azure Policy nommée [configuration invité](../governance/policy/concepts/guest-configuration.md). Le service de configuration invité combine les fonctionnalités d’Extension DSC, d’Azure Automation State Configuration, ainsi que les fonctionnalités les plus couramment demandées par les commentaires des clients. La configuration invité comprend également une prise en charge d’ordinateur hybride via des [serveurs avec Arc](../azure-arc/servers/overview.md).
 
 Cet article fournit des informations sur chaque version de l’extension de machine virtuelle Azure DSC et sur les environnements qu’elle prend en charge. Il contient aussi des commentaires et des remarques sur les nouvelles fonctionnalités ou sur les changements.
 

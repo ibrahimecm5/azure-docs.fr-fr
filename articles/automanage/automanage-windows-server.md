@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 86fd1a8a6dbf8ea18d630996dd0d5fc94537f363
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 72ef8193215d3dc35f576a96a005bde8bf40e49f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465741"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371939"
 ---
 # <a name="azure-automanage-for-machines-best-practices---windows-server"></a>Meilleures pratiques Azure Automanage pour les machines – Windows Server
 
@@ -27,7 +27,7 @@ Automanage prend en charge les versions suivantes de Windows Server :
 
 - Windows Server 2012/R2
 - Windows Server 2016
-- Windows Server 2019
+- Windows Server 2019
 - Windows Server 2022
 - Windows Server 2022 Azure Edition
 
@@ -37,7 +37,7 @@ Automanage prend en charge les versions suivantes de Windows Server :
 |-----------|---------------|----------------------|
 |[Supervision des insights de machines](../azure-monitor/vm/vminsights-overview.md)    |Azure Monitor pour les machines surveille les performances et l’intégrité de vos machines virtuelles, y compris de leurs processus en cours d’exécution et de leurs dépendances vis-à-vis d’autres ressources.    |Production    |
 |[Sauvegarde](../backup/backup-overview.md)    |Sauvegarde Azure fournit des sauvegardes indépendantes et isolées pour vous protéger contre la destruction involontaire des données sur vos machines. Les frais sont calculés en fonction du nombre et de la taille des machines virtuelles protégées.    |Production    |
-|[Centre de sécurité Azure](../security-center/security-center-introduction.md)    |Azure Security Center est un système de gestion de la sécurité de l’infrastructure unifié qui renforce la posture de sécurité de vos centres de données et fournit une protection avancée contre les menaces pour vos charges de travail hybrides dans le cloud.  Automanage configure l’abonnement dans lequel votre machine virtuelle réside en offre de niveau gratuit d’Azure Security Center. Si votre abonnement est déjà intégré avec Azure Security Center, Automanage ne le reconfigure pas.    |Production, Dev/Test    |
+|[Microsoft Defender pour le cloud](../defender-for-cloud/defender-for-cloud-introduction.md)    |Microsoft Defender pour le cloud est un système de gestion de la sécurité de l’infrastructure unifié qui renforce la posture de sécurité de vos centres de données et fournit une protection avancée contre les menaces pour vos charges de travail hybrides dans le cloud.  Automanage configure l’abonnement dans lequel votre machine virtuelle réside en offre de niveau gratuit de Microsoft Defender pour le cloud. Si votre abonnement est déjà intégré à Microsoft Defender pour le cloud, Automanage ne le reconfigure pas.    |Production, Dev/Test    |
 |[Microsoft Antimalware](../security/fundamentals/antimalware.md)    |Microsoft Antimalware pour Azure offre une protection en temps réel qui permet d’identifier et de supprimer les virus, logiciels espions et autres logiciels malveillants. Il fournit des alertes lorsqu’un logiciel malveillant ou indésirable connu essaye de s’installer ou de s’exécuter sur vos systèmes Azure. **Remarque :** Pour fonctionner correctement, Microsoft Antimalware requiert qu’aucun autre logiciel anti-programme malveillant ne soit installé. |Production, Dev/Test    |
 |[Gestion des mises à jour](../automation/update-management/overview.md)    |Vous pouvez utiliser la solution Update Management d’Azure Automation pour gérer les mises à jour du système d’exploitation de vos machines. Vous pouvez rapidement évaluer l’état des mises à jour disponibles sur toutes les machines d’agent et gérer le processus d’installation des mises à jour nécessaires pour les serveurs.    |Production, Dev/Test    |
 |[Suivi des modifications et inventaire](../automation/change-tracking/overview.md) |La fonctionnalité Suivi des modifications et inventaire combine les fonctions de suivi des modifications et d’inventaire pour vous permettre d’effectuer le suivi des modifications apportées à l’infrastructure des machines virtuelles et des serveurs. Le service prend en charge le suivi des modifications sur les services, les démons, les logiciels, le registre et les fichiers de votre environnement pour vous aider à diagnostiquer les changements indésirables et à déclencher des alertes. La prise en charge de l’inventaire vous permet d’interroger les ressources intégrées pour voir les applications installées et d’autres éléments de configuration.    |Production, Dev/Test    |

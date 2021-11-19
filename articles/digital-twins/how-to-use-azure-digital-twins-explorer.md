@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 087af92ce70ccb8db37073b6aadb8cf9b83bc57c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f77efc7ab6880db771ea7f53fe9cfb2858c6ecc0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131454282"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327893"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Utiliser Azure Digital Twins Explorer (préversion)
 
@@ -304,9 +304,9 @@ Vous pouvez aussi voir la définition complète d’un modèle en le sélectionn
 
 Vous pouvez réorganiser les modèles selon différentes configurations en cliquant sur ceux-ci et en les faisant glisser dans l’écran Graphe des modèles.
 
-Vous pouvez aussi appliquer un des nombreux algorithmes de mise en page au graphe du modèle à partir des options du menu **Exécuter une disposition**. 
+Vous pouvez également appliquer un des nombreux algorithmes de disposition au graphe de modèles à partir des options du menu **Choisir une disposition**. 
 
-:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Capture d’écran du panneau Graphe des modèles d’Azure Digital Twins Explorer. Le bouton Exécuter une disposition est mis en évidence et montre un menu avec les options de disposition Cola, Dagre, fCoSE, Klay et d3Force." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png" alt-text="Capture d’écran du panneau Graphe des modèles d’Azure Digital Twins Explorer. Le bouton Choisir une disposition est mis en évidence et montre un menu avec les options de disposition Cola, Dagre, fCoSE, Klay et d3Force." lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel-layout.png":::
 
 ### <a name="filter-and-highlight-model-graph-elements"></a>Filtrer et mettre en évidence des éléments du graphe du modèle
 
@@ -554,7 +554,7 @@ Vous pouvez utiliser l’icône **Raccourcis clavier** dans la barre d’outils 
 
 Vous pouvez accéder à plusieurs fonctionnalités avancées sous l’engrenage Paramètres dans la barre d’outils supérieure droite :
 * **Chargement hâtif** : Quand une requête retourne des jumeaux qui ont des relations avec d’autres jumeaux qui **ne sont pas** inclus dans les résultats de la requête, cette fonctionnalité va charger les jumeaux « manquants » avant de rendre le graphe.
-* **Mise en cache** : Quand cette fonctionnalité est activée, Azure Digital Twins Explorer conserve un cache local des relations et des modèles en mémoire pour améliorer les performances des requêtes. Ces caches sont effacés quand il y a des opérations d’écriture sur les éléments concernés et lors de l’actualisation du navigateur.
+* **Mise en cache** : Quand cette fonctionnalité est activée, Azure Digital Twins Explorer conserve un cache local des relations et des modèles en mémoire pour améliorer les performances des requêtes. Ces caches sont effacés quand il y a des opérations d’écriture sur les éléments concernés et lors de l’actualisation du navigateur. Cette fonctionnalité est désactivée par défaut.
 * **Console** : Cette fonctionnalité permet d’afficher une fenêtre de console qui permet d’utiliser des fonctions de shell simples pour travailler sur le graphe.
 * **Sortie** : Cette fonctionnalité permet d’afficher une fenêtre de sortie, qui montre une trace de diagnostic des opérations.
 * **Contraste élevé** : cette fonctionnalité modifie les couleurs d’Azure Digital Twins Explorer pour qu’elles apparaissent avec un contraste plus élevé.

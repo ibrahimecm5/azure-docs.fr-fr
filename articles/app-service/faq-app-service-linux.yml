@@ -9,12 +9,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: msangapu
   ms.custom: seodec18
-  ms.openlocfilehash: 737fcf42e351822da58e5e4c493f120cdfd6c4dd
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 679381acf9ecd5c8b69bf23bbffabeaeea446404
+  ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131462401"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132372602"
 title: FAQ d’Azure App Service sur Linux
 summary: >
   Avec la publication d’App Service sur Linux, nous travaillons à l’ajout de fonctionnalités et à l’amélioration de notre plateforme. Cet article fournit des réponses aux questions que nos clients nous ont posées récemment.
@@ -274,6 +274,16 @@ sections:
       La tarification varie en fonction de la référence et de la région, mais vous pouvez voir plus de détails sur notre page de tarification : [Tarification d’App Service](https://azure.microsoft.com/pricing/details/app-service/linux/).
 - name: Autres questions
   questions:
+  - question: >
+      Comment fonctionne la demande de préparation de conteneur ?
+    answer: >
+      Lorsqu’Azure App Services démarre votre conteneur, la demande de préparation envoie une requête HTTP au point de terminaison [robots933456.txt](configure-custom-container.md?pivots=container-linux#robots933456-in-logs) de votre application. Il s’agit simplement d’un point de terminaison factice, mais votre application doit répondre avec n’importe quel code d’état autre que 5XX. Si votre logique d’application ne répond pas avec un code d’état HTTP à des points de terminaison inexistants, la demande de préparation ne peut pas recevoir de réponse et elle redémarre perpétuellement votre conteneur.
+
+
+      La demande de préparation peut également échouer en raison d’une configuration incorrecte du port. Pour vous assurer que le port est correctement configuré sur Azure App Services, consultez la question *Comment faire spécifier le port dans mon conteneur Linux ?*
+  - question: >
+      Est-il possible d’augmenter le délai d’expiration des demandes de préparation de conteneur ?
+    answer: La demande de préparation par défaut échoue après une attente de 240 secondes d’une réponse du conteneur. Vous pouvez augmenter le délai d’expiration de la demande de préparation de conteneur en ajoutant le paramètre d’application `WEBSITES_CONTAINER_START_TIME_LIMIT` avec une valeur comprise entre 240 et 1 800 secondes.
   - question: >
       Comment spécifier le port dans mon conteneur Linux ?
     answer: >

@@ -3,12 +3,12 @@ title: Sécurisation d’Azure Functions
 description: Découvrez comment exécuter votre code de fonction dans Azure à partir d’attaques courantes.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 97a58c38f08e3b22f25ca2834a26692452fcff9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1901c9f471901c086c99d1c1fff66ab1258bd54
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122525088"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484469"
 ---
 # <a name="securing-azure-functions"></a>Sécurisation d’Azure Functions
 
@@ -22,9 +22,9 @@ Pour obtenir un ensemble de suggestions de sécurité qui suivent le [benchmark 
 
 Cette section vous guide dans la configuration et l’exécution de votre application de fonction de manière aussi sécurisée que possible. 
 
-### <a name="security-center"></a>Security Center
+### <a name="defender-for-cloud"></a>Defender pour le cloud
 
-Security Center s’intègre à votre application de fonction dans le portail. Il évalue rapidement et gratuitement les vulnérabilités potentielles de sécurité liées à la configuration. Les applications de fonction qui s’exécutent dans un plan dédié peuvent également utiliser les fonctionnalités de sécurité en temps réel de Security Center, pour un coût supplémentaire. Pour en savoir plus, consultez [Protéger vos applications Web et API Azure App Service](../security-center/defender-for-app-service-introduction.md). 
+Defender pour le cloud s’intègre à votre application de fonction dans le portail. Il évalue rapidement et gratuitement les vulnérabilités potentielles de sécurité liées à la configuration. Les applications de fonction qui s’exécutent dans un plan dédié peuvent également utiliser les fonctionnalités de sécurité renforcée de Defender pour le cloud pour un coût supplémentaire. Pour en savoir plus, consultez [Protéger vos applications Web et API Azure App Service](../defender-for-cloud/defender-for-app-service-introduction.md). 
 
 ### <a name="log-and-monitor"></a>Journal et surveillance
 
@@ -32,7 +32,7 @@ Pour détecter les attaques, une solution consiste à utiliser la supervision de
 
 Functions s’intègre également aux journaux d’activité d’Azure Monitor pour vous permettre de consolider les journaux des applications de fonction avec des événements système pour faciliter l’analyse. Vous pouvez utiliser les paramètres de diagnostic pour configurer l’exportation en continu des journaux d’activité et des métriques de la plateforme pour vos fonctions vers la destination de votre choix, par exemple un espace de travail Log Analytics. Pour en savoir plus, consultez [Monitorage d’Azure Functions avec Azure Monitor Logs](functions-monitor-log-analytics.md). 
 
-Pour automatiser la détection et la réponse aux menaces à l’échelle de l’entreprise, transmettez en continu vos journaux et événements dans un espace de travail Log Analytics. Vous pouvez ensuite connecter Azure Sentinel à cet espace de travail. Pour en savoir plus, consultez [Présentation d’Azure Sentinel](../sentinel/overview.md).  
+Pour automatiser la détection et la réponse aux menaces à l’échelle de l’entreprise, transmettez en continu vos journaux et événements dans un espace de travail Log Analytics. Vous pouvez ensuite connecter Microsoft Sentinel à cet espace de travail. Pour en savoir plus, consultez [Présentation de Microsoft Sentinel](../sentinel/overview.md).  
 
 Pour plus d’informations sur les recommandations de sécurité pour l’observabilité, consultez la [Base de référence de sécurité Azure pour Azure Functions](security-baseline.md#logging-and-monitoring). 
 

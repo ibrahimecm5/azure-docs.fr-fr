@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 3/18/2021
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 296b2e2a6d006d878036e633c27e9b8c8aec1f95
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 70f4e8627f22b400ee2b890dd05fa886137ff4b2
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112521367"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369737"
 ---
-# <a name="azure-key-vault-backup"></a>Sauvegarde Azure Key Vault
+# <a name="azure-key-vault-backup-and-restore"></a>Sauvegarde et restauration Azure Key Vault
 
 Ce document vous montre comment sauvegarder des secrets, des clés et des certificats stockés dans votre coffre de clés. Une sauvegarde est destinée à vous fournir une copie hors connexion de tous vos secrets dans le cas improbable où vous perdriez l’accès à votre coffre de clés.
 
@@ -152,4 +152,6 @@ Restore-AzKeyVaultSecret -VaultName '{Key Vault Name}' -InputFile '{File Path}'
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Activez [la journalisation et la supervision](./logging.md) pour Key Vault.
+
+- [Déplacer un coffre de clés Azure d’une région à une autre](move-region.md)
+- [Activer la journalisation Key Vault](howto-logging.md) pour Key Vault

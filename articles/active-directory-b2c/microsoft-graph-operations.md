@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/08/2021
-ms.custom: project-no-code, ignite-fall-2021
+ms.custom: project-no-code, ignite-fall-2021, b2c-support
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 19a13d9c2941d9a98cce4415b9266d67a9bb8e53
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7d64e4991a71849f8a0269dcfa8eff32164ef75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028098"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133699"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Gérer Azure AD B2C avec Microsoft Graph
 
@@ -35,6 +35,9 @@ Regardez cette vidéo pour en savoir plus sur la migration des utilisateurs Azur
 Pour utiliser l’API MS Graph et interagir avec les ressources de votre locataire Azure AD B2C, vous avez besoin d’une inscription d’application qui accorde les autorisations nécessaires. Suivez les étapes décrites dans l’article [Gérer Azure AD B2C avec Microsoft Graph](microsoft-graph-get-started.md) pour créer une inscription d’application que votre application de gestion peut utiliser. 
 
 ## <a name="user-management"></a>User Management
+> [!NOTE]
+> Azure AD B2C ne prend actuellement pas en charge les fonctionnalités de requête avancées sur les objets annuaire. Cela signifie qu’il n’existe aucune prise en charge pour `$count`, les paramètres de requête `$search` et les opérateurs Not (`not`), Not equals (`ne`) et Ends with (`endsWith`) dans le paramètre de requête `$filter`. Pour plus d’informations, consultez [paramètres de requête dans Microsoft Graph](/graph/query-parameters) et [fonctionnalités de requête avancées dans Microsoft Graph](/graph/aad-advanced-queries).
+
 
 - [Répertorier les utilisateurs](/graph/api/user-list)
 - [Créer un utilisateur consommateur](/graph/api/user-post-users)

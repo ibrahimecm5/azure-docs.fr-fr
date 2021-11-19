@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: 3c1c6841f7ae25bad16640e11c67080833ac850b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: face052462909e755771f12ff19fed8139675183
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096174"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484601"
 ---
 # <a name="connectivity-configuration-in-azure-virtual-network-manager-preview"></a>Configuration de la connectivité dans Azure Virtual Network Manager (préversion)
 
@@ -39,7 +39,7 @@ Lorsque vous créez une topologie de maillage, une nouvelle construction de conn
 
 > [!NOTE]
 > * Si vous avez des sous-réseaux en conflit dans deux réseaux virtuels ou plus, les ressources de ces sous-réseaux *ne pourront pas* communiquer entre elles, même si elles font partie du même réseau maillé.
-> * Un réseau virtuel peut faire partie d’un maximum de **cinq** configurations de maillage.
+> * Un réseau virtuel peut faire partie d’un maximum de **deux** configurations de maillage.
 
 ## <a name="hub-and-spoke-topology"></a>Topologie hub-and-spoke
 
@@ -60,7 +60,7 @@ Consultez l’exemple de diagramme ci-dessous :
 Lorsque vous regardez les routes effectives sur une machine virtuelle, la route entre le hub et les réseaux virtuels spoke a un tronçon suivant de type *VNetPeering* ou *GlobalVNetPeering*. Les routes entre les réseaux virtuels spoke apparaissent avec le type de tronçon suivant *ConnectedGroup*. Dans l’exemple ci-dessus, seul le groupe réseau *Production* a le type *ConnectedGroup* parce que la *connectivité directe* est activée pour lui.
 
 > [!NOTE]
-> L’espace d’adressage du réseau hub est ajouté au *ConnectedGroup* quand *Transitivité* est **activée**. Par conséquent, si l’appairage de réseaux virtuels entre le hub et le réseau virtuel spoke échoue, ils peuvent quand même communiquer par *ConnectedGroup*.
+> L’espace d’adressage du réseau hub est ajouté au *ConnectedGroup* quand *Connectivité directe* est **activée**. Par conséquent, si l’appairage de réseaux virtuels entre le hub et le réseau virtuel spoke échoue, ils peuvent quand même communiquer par *ConnectedGroup*.
 
 #### <a name="use-cases"></a>Cas d'utilisation
 

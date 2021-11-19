@@ -1,14 +1,14 @@
 ---
 title: Investiguer la recommandation sur le benchmark CIS
 description: Effectuez des investigations de base et avancées à partir des recommandations de base du système d’exploitation.
-ms.date: 08/11/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 295345d43c48736f9f4572c8845f96560ce4f184
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8777b4c134dc92cd8e8a94424f57355239ee32c5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532096"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293570"
 ---
 # <a name="investigate-os-baseline-based-on-cis-benchmark-recommendation"></a>Examiner une recommandation de base du système d’exploitation (basée sur le test d’évaluation CIS)
 
@@ -16,13 +16,13 @@ Effectuez des investigations de base et avancées à partir des recommandations 
 
 ## <a name="basic-os-baseline-security-recommendation-investigation"></a>Investigation d’une recommandation de base de sécurité du système d’exploitation  
 
-Vous pouvez examiner les recommandations de base du système d’exploitation en accédant à votre portail Azure Defender pour IoT, sous **IoT Hub**. Pour plus d’informations, consultez l’article expliquant comment [examiner des recommandations de sécurité](quickstart-investigate-security-recommendations.md).
+Vous pouvez examiner les recommandations de base du système d’exploitation en accédant à [Defender pour IoT dans le Portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started). Pour plus d’informations, consultez l’article expliquant comment [examiner des recommandations de sécurité](quickstart-investigate-security-recommendations.md).
 
 ## <a name="advanced-os-baseline-security-recommendation-investigation"></a>Investigation d’une recommandation avancée de sécurité du système d’exploitation  
 
 Cette section décrit comment mieux comprendre les résultats des tests de base du système d’exploitation et interroger les événements dans Azure Log Analytics.  
 
-L’investigation d’une recommandation avancée de sécurité du système d’exploitation est uniquement prise en charge à l’aide de Log Analytics. Connectez Defender pour IoT à un espace de travail Log Analytics avant de continuer. Pour plus d’informations sur les recommandations avancées de sécurité de base du système d’exploitation, consultez [Configurer une solution basée sur un agent Azure Defender pour IoT](how-to-configure-agent-based-solution.md).
+L’investigation d’une recommandation avancée de sécurité du système d’exploitation est uniquement prise en charge à l’aide de Log Analytics. Connectez Defender pour IoT à un espace de travail Log Analytics avant de continuer. Pour plus d’informations sur les recommandations avancées de sécurité de base du système d’exploitation, consultez [Configurer une solution basée sur un agent Microsoft Defender pour IoT](how-to-configure-agent-based-solution.md).
 
 Pour interroger vos événements de sécurité IoT dans Log Analytics pour des alertes :
 

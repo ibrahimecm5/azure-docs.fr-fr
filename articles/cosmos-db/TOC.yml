@@ -167,8 +167,6 @@
               href: sql/create-sql-api-nodejs.md
             - name: Application Python
               href: sql/create-sql-api-python.md
-            - name: Application Xamarin
-              href: sql/create-sql-api-xamarin-dotnet.md
     - name: Tutoriels
       items:
         - name: "1\_- Créer et gérer des données"
@@ -191,10 +189,6 @@
                   href: sql/sql-api-java-application.md
                 - name: Node.js
                   href: sql/sql-api-nodejs-application.md
-            - name: Générer une application mobile
-              items:
-                - name: Xamarin
-                  href: sql/mobile-apps-with-xamarin.md
         - name: 2 - Migrer les données
           items:
             - name: Utilisation de l’outil de migration de données
@@ -209,10 +203,8 @@
           href: sql/tutorial-global-distribution-sql-api.md
     - name: Exemples
       items:
-        - name: Exemples du kit SDK .NET V2
-          href: sql/sql-api-dotnet-samples.md
         - name: Exemples du kit SDK .NET V3
-          href: sql/sql-api-dotnet-v3sdk-samples.md
+          href: sql/sql-api-dotnet-samples.md
         - name: Exemples du SDK Java v4
           href: sql/sql-api-java-sdk-samples.md
         - name: Exemples Spring Data v3
@@ -229,6 +221,8 @@
           href: sql/templates-samples-sql.md
         - name: Bicep
           href: sql/bicep-samples.md
+        - name: "Exemples du kit SDK .NET\_V2 (hérité)"
+          href: sql/sql-api-dotnet-v2sdk-samples.md
     - name: Concepts
       items:
         - name: Modélisation et partitionnement
@@ -931,13 +925,13 @@
           items:
             - name: SDK .NET v3
               href: sql/sql-api-sdk-dotnet-standard.md
-            - name: SDK .NET v2
+            - name: "SDK .NET\_v2 (hérité)"
               href: sql/sql-api-sdk-dotnet.md
-            - name: SDK .NET Core v2
+            - name: "SDK .NET Core\_v2 (hérité)"
               href: sql/sql-api-sdk-dotnet-core.md
-            - name: Bibliothèque de flux de modification .NET v2
+            - name: "Bibliothèque de flux de modification .NET\_v2 (hérité)"
               href: sql/sql-api-sdk-dotnet-changefeed.md
-            - name: Bibliothèque d’exécuteurs en bloc .NET v2
+            - name: "Bibliothèque d’exécuteurs en bloc .NET\_v2 (hérité)"
               href: sql/sql-api-sdk-bulk-executor-dot-net.md
         - name: Kits SDK et connecteurs Java
           items:
@@ -1506,7 +1500,11 @@
             - name: Migrer vers la sauvegarde continue
               href: migrate-continuous-backup.md
         - name: Gérer la sauvegarde périodique
-          href: configure-periodic-backup-restore.md
+          items:
+            - name: Configurer des sauvegardes périodiques
+              href: configure-periodic-backup-restore.md
+            - name: Mettre à jour la redondance du stockage de sauvegarde
+              href: update-backup-storage-redundancy.md
     - name: Sécurité
       items:
         - name: Configurer le pare-feu IP

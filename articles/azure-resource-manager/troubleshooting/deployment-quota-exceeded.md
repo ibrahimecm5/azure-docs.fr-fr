@@ -2,14 +2,14 @@
 title: Dépassement du quota de déploiement
 description: Explique comment résoudre l'erreur liée à la présence de plus de 800 déploiements dans l'historique du groupe de ressources.
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 11/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 06383a47f2fc7603bdc112d1fe0cd0ca53930bd6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 64845ad3aed7dcccb7623a84552459ac9de78945
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096804"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132489848"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Résoudre l'erreur liée à un nombre de déploiements supérieur à 800
 
@@ -17,23 +17,23 @@ L'historique de déploiement de chaque groupe de ressources est limité à 800 d
 
 Azure Resource Manager supprime automatiquement les déploiements de votre historique lorsque vous vous approchez de la limite. Vous pouvez toujours voir cette erreur pour l’une des raisons suivantes :
 
-1. Vous disposez d’un verrou CanNotDelete sur le groupe de ressources qui empêche les suppressions de l’historique de déploiement.
+1. Vous disposez d’un verrou [CanNotDelete](../management/lock-resources.md) sur le groupe de ressources qui empêche les suppressions de l’historique de déploiement.
 1. Vous avez refusé les suppressions automatiques.
 1. Un grand nombre de déploiements s’exécutent simultanément et les suppressions automatiques ne sont pas assez rapides pour réduire le nombre total.
 
-Pour plus d’informations sur la suppression du verrou ou l’activation des suppressions automatiques, consultez [Suppressions automatiques de l’historique de déploiement](../templates/deployment-history-deletions.md).
+Pour plus d’informations sur la façon de supprimer un verrou ou de choisir des suppressions automatiques, consultez [Suppressions automatiques de l’historique de déploiement](../templates/deployment-history-deletions.md).
 
 Cet article explique comment supprimer manuellement des déploiements de l’historique.
 
 ## <a name="symptom"></a>Symptôme
 
-Pendant un déploiement, vous recevez une erreur indiquant que celui-ci va entraîner un dépassement du quota de 800 déploiements.
+Pendant un déploiement, vous recevez une erreur qui indique que celui-ci va entraîner un dépassement du quota de 800 déploiements.
 
 ## <a name="solution"></a>Solution
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Utilisez la commande [az deployment group delete](/cli/azure/group/deployment) pour supprimer des déploiements de l’historique.
+Utilisez la commande [az deployment group delete](/cli/azure/deployment/group#az_deployment_group_delete) pour supprimer des déploiements de l’historique.
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName
@@ -57,7 +57,7 @@ Pour connaître le nombre de déploiements actuellement contenu dans l'historiqu
 az deployment group list --resource-group exampleGroup --query "length(@)"
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Utilisez la commande [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) pour supprimer des déploiements de l'historique.
 
@@ -68,7 +68,7 @@ Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymen
 Pour supprimer tous les déploiements datant de plus de cinq jours, utilisez :
 
 ```azurepowershell-interactive
-$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object -Property Timestamp -LT -Value ((Get-Date).AddDays(-5))
 
 foreach ($deployment in $deployments) {
   Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName
@@ -81,9 +81,4 @@ Pour connaître le nombre de déploiements actuellement contenu dans l'historiqu
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
-## <a name="third-party-solutions"></a>Solutions tierces
-
-Les solutions externes suivantes s'appliquent à des scénarios spécifiques :
-
-* [Solutions Azure Logic Apps et PowerShell](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
-* [AzureDevOpsExtensionCleanRG](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)
+---

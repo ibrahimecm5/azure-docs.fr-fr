@@ -8,12 +8,12 @@ ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5a898f0c34ed92eaa4a19757e3d017a87c84d491
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 878cec7021ebcd7c3b63ae4af1f29a0793977280
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082699"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277276"
 ---
 # <a name="troubleshoot-azure-disk-pools-preview"></a>Résolution des problèmes des pools de disques Azure (préversion)
 
@@ -40,6 +40,7 @@ Les pools de disques et les cibles iSCSI présentent chacun quatre états : **I
 |DeploymentFailureQuotaExceeded     |L’abonnement utilisé pour déployer le pool de disques est en dehors du quota de cœurs de machines virtuelles dans cette région. Vous pouvez [demander une augmentation des limites de quota des processeurs virtuels de chaque série de machines virtuelles Azure](../azure-portal/supportability/per-vm-quota-requests.md) pour la série Dsv3.         |
 |DeploymentFailurePolicyViolation     |Une stratégie sur l’abonnement a empêché le déploiement des ressources Azure nécessaires à la prise en charge d’un pool de disques. Consultez l’erreur pour plus d’informations.         |
 |DeploymentTimeout     |Cela se produit lorsque le déploiement de l’infrastructure de pools de disques est bloqué et ne se termine pas dans le délai imparti. Recommencez le déploiement. Si le problème persiste, contactez le support Azure et fournissez l’ID de suivi du message d’erreur.         |
+|GoalStateApplicationTimeoutError     |Se produit lorsque l’infrastructure du pool de disques ne répond plus au fournisseur de ressources. Confirmez que vous répondez aux [conditions préalables de mise en réseau](disks-pools-deploy.md#prerequisites), puis recommencez le déploiement. Si le problème persiste, contactez le support Azure et fournissez l’ID de suivi de l’erreur.         |
 |OngoingOperationInProgress     |Une opération est en cours sur le pool de disques. Attendez la fin de l’opération, puis réessayez de relancer le déploiement.         |
 
 ## <a name="common-failure-codes-when-enabling-iscsi-on-disk-pools"></a>Codes d’erreur courants lors de l’activation d’iSCSI sur les pools de disques
@@ -47,7 +48,7 @@ Les pools de disques et les cibles iSCSI présentent chacun quatre états : **I
 |Code  |Description  |
 |---------|---------|
 |GoalStateApplicationError     |Se produit lorsque la configuration de la cible iSCSI n’est pas valide et ne peut pas être appliquée au pool de disques. Recommencez le déploiement. Si le problème persiste, contactez le support Azure et fournissez l’ID de suivi de l’erreur.         |
-|GoalStateApplicationTimeoutError     |Se produit lorsque l’infrastructure du pool de disques ne répond plus au fournisseur de ressources. Recommencez le déploiement. Si le problème persiste, contactez le support Azure et fournissez l’ID de suivi de l’erreur.         |
+|GoalStateApplicationTimeoutError     |Se produit lorsque l’infrastructure du pool de disques ne répond plus au fournisseur de ressources. Confirmez que vous répondez aux [conditions préalables de mise en réseau](disks-pools-deploy.md#prerequisites), puis recommencez le déploiement. Si le problème persiste, contactez le support Azure et fournissez l’ID de suivi de l’erreur.         |
 |OngoingOperationInProgress     |Une opération est en cours sur le pool de disques. Attendez la fin de l’opération, puis réessayez de relancer le déploiement.         |
 
 ## <a name="next-steps"></a>Étapes suivantes

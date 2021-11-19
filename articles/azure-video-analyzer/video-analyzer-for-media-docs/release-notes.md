@@ -5,12 +5,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 115402133ad33b9fa20eb3298db3e342ea2afbbd
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7341112e545e4fc0c74de8d32e9c2d54d3461057
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461681"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491918"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Notes de publication de Video Analyzer for Media
 
@@ -30,6 +30,10 @@ Cet article vise à vous informer sur les derniers développements d’Azure Vid
 Azure Video Analyzer for Media introduit une préversion publique de la gestion de compte basée sur Azure Resource Manager (ARM). Vous pouvez tirer parti des API basées sur ARM pour créer, modifier et supprimer un compte dans le portail Azure.
 
 Pour plus d’informations, consultez [Créer un compte Video Analyzer for Media](https://techcommunity.microsoft.com/t5/azure-ai/azure-video-analyzer-for-media-is-now-available-as-an-azure/ba-p/2912422).
+
+### <a name="peoples-clothing-detection"></a>Détection des vêtements des personnes
+
+Lorsque vous indexez une vidéo via les paramètres vidéo avancés, vous pouvez afficher la nouvelle fonctionnalité de **détection des vêtements** des personnes. Si des personnes sont détectées dans votre fichier multimédia, vous pouvez maintenant afficher le type de vêtements qu’ils utilisent dans le lecteur multimédia. 
 
 ## <a name="october-2021"></a>Octobre 2021
 

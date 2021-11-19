@@ -1,14 +1,14 @@
 ---
 title: Activer et configurer votre console de gestion locale
 description: L’activation de la console de gestion garantit que les capteurs sont inscrits auprès d’Azure et envoient des informations à la console de gestion locale, et que la console de gestion locale effectue des tâches de gestion sur les capteurs connectés.
-ms.date: 05/05/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 84506e9ebd12dab4198d075c6afea8ae23604a42
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 77f2a62cce7da4f9faac62820a85f38c0dd06ce5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122527959"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306222"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Activer et configurer votre console de gestion locale 
 
@@ -78,7 +78,7 @@ Pour les utilisateurs dont la version est antérieure à la version 10.0, il se
 
 **Pour activer votre licence :**
 
-1. Ouvrez un incident auprès du [support](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
+1. Ouvrez un incident auprès du [support](https://portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
 
 1. Indiquez au support votre numéro d’identification d’activation.
 
@@ -135,7 +135,7 @@ Pour plus d’informations sur le chargement d’un nouveau certificat, les fich
 
 Assurez-vous que les capteurs envoient des informations à la console de gestion locale et que la console de gestion locale peut effectuer des sauvegardes, gérer des alertes et effectuer d’autres activités sur les capteurs. Pour ce faire, utilisez les procédures suivantes pour vérifier que vous établissez une connexion initiale entre les capteurs et la console de gestion locale.
 
-Deux options sont disponibles pour connecter des capteurs Azure Defender pour IoT à la console de gestion locale :
+Deux options sont disponibles pour connecter des capteurs Microsoft Defender pour IoT à la console de gestion locale :
 
 - Se connecter à partir de la console du capteur
 

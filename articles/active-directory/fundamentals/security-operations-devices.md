@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe50839beb886d22ad05414e220781f87e5f75b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a80564d341ad6e3fbefe1500a222ad20fc3a482c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045461"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349278"
 ---
 # <a name="azure-active-directory-security-operations-for-devices"></a>Opérations de sécurité Azure Active Directory pour les appareils
 
@@ -60,15 +60,15 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 * [Journaux Azure Key Vault](../..//key-vault/general/logging.md?tabs=Vault)
 
-Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV (valeurs séparées par des virgules) ou JSON (JavaScript Object Notation). Le portail Azure offre plusieurs moyens d’intégrer des journaux Azure AD aux autres outils, ce qui permet une plus grande automatisation de la supervision et des alertes :
+Sur le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV (valeurs séparées par des virgules) ou JSON (JavaScript Object Notation). Le Portail Azure offre plusieurs méthodes d’intégration entre les journaux Azure AD et d’autres outils, ce qui permet une plus grande automatisation du monitoring et des alertes :
 
-* **[Azure Sentinel](../../sentinel/overview.md)** – Permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et de gestion d’événements management (SIEM). 
+* **[Microsoft Sentinel](../../sentinel/overview.md)**  : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d’événements (SIEM, Security Information and Event Management). 
 
 * **[Azure Monitor](../..//azure-monitor/overview.md)** – Permet de créer des alertes et supervisions automatisées de diverses conditions. avec possibilité de créer ou d’utiliser des classeurs pour combiner des données provenant de différentes sources.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) avec intégration SIEM** : permet [d’intégrer les journaux Azure AD à d’autres systèmes SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) comme Splunk, ArcSight, QRadar et Sumo Logic grâce à l’intégration Azure Event Hub.
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)**  : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
+* **[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security)**  : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources, et de vérifier la conformité des applications cloud. 
 
 La majeure partie du monitoring et des alertes est produite par les stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Insights et rapports sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que leur résultat, notamment l’état de l’appareil. Ce classeur permet de voir un résumé de l’impact et d’identifier l’incidence sur une période donnée. Vous pouvez également vous en servir pour examiner les connexions d’un utilisateur spécifique. 
 
@@ -85,7 +85,7 @@ Les appareils inscrits auprès d’Azure AD et les appareils à jointure Azure A
 | Modifications apportées aux stratégies d’accès conditionnel exigeant un appareil joint à un domaine ou conforme| Élevé| Journal d’audit| Modifications apportées aux stratégies d’autorité de certification<br>| Envoyer une alerte lorsque : <br><li> Modification apportée à des stratégies exigeant une jointure de domaine ou la conformité<li>Modifications apportées aux emplacements approuvés<li> Comptes ou appareils ajoutés aux exceptions des stratégies MFA |
 
 
-Vous pouvez créer une alerte qui avertit les administrateurs concernés lorsqu’un appareil est inscrit ou joint sans authentification MFA avec Azure Sentinel.
+Vous pouvez créer une alerte qui avertit les administrateurs concernés lorsqu’un appareil est inscrit ou joint sans authentification MFA avec Microsoft Sentinel.
 
 ```
 Sign-in logs

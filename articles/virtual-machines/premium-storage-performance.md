@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5c6530f138167cbd21ed1b40dee3b056ceb8c638
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0e0f99f4400b07791f65e8525894278ae9f9b9f5
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803859"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133536"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Stockage Azure Premium : conception sous le signe de la haute performance
 
@@ -208,7 +208,7 @@ Ces machines virtuelles sont disponibles en différentes tailles, avec un nombre
 | Standard_DS14 |16 |112 Go |OS = 1023 Go <br> SSD local = 224 Go |32 |576 Go |50 000 E/S par seconde <br> 512 Mo par seconde |4 000 E/S par seconde et 33 Mo par seconde |
 | Standard_GS5 |32 |448 Go |OS = 1023 Go <br> SSD local = 896 Go |64 |4 224 Go |80 000 E/S par seconde <br> 2 000 Mo par seconde |5 000 E/S par seconde et 50 Mo par seconde |
 
-Pour afficher la liste complète de toutes les tailles de machines virtuelles Azure disponibles, consultez [Tailles des machines virtuelles dans Azure](sizes.md) ou . Choisissez une taille de machine virtuelle capable de s’adapter aux exigences de performances souhaitées de votre application. En outre, prenez en compte les considérations suivantes lors du choix de tailles de machine virtuelle.
+Pour afficher la liste complète de toutes les tailles de machines virtuelles Azure disponibles, consultez [Tailles des machines virtuelles dans Azure](sizes.md). Choisissez une taille de machine virtuelle capable de s’adapter aux exigences de performances souhaitées de votre application. En outre, prenez en compte les considérations suivantes lors du choix de tailles de machine virtuelle.
 
 *Limites de mise à l’échelle*  
 Les limites d’E/S par seconde par machine virtuelle et par disque sont différentes et indépendantes les unes des autres. Assurez-vous que l’application génère un nombre d’E/S par seconde dans les limites de la machine virtuelle et des disques premium qui lui sont associés. Dans le cas contraire, les performances de l’application seront limitées.

@@ -18,16 +18,19 @@ ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 76b0353022782aecabd2a7df3e5a920d22119402
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 463b806994364083c22dcfc40fd8b78dae87d8da
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643590"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488769"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Présentation du gestionnaire d’extensions de configuration d’état souhaité Microsoft Azure
 
 L’agent de machine virtuelle Microsoft Azure et les extensions associées font partie des services d’infrastructure Microsoft Azure. Les extensions de machine virtuelle sont des composants logiciels qui étendent les fonctionnalités d’une machine virtuelle et simplifient ses diverses opérations de gestion.
+
+> [!NOTE]
+> Avant d’activer l’extension DSC, nous aimerions que vous sachiez qu’une version plus récente de DSC est désormais disponible en version préliminaire, gérée par une fonctionnalité d’Azure Policy nommée [configuration invité](../../governance/policy/concepts/guest-configuration.md). La fonctionnalité de configuration invité combine les fonctionnalités du gestionnaire d’extension DSC (Desired State Configuration), d’Azure Automation State Configuration, ainsi que les fonctionnalités les plus couramment demandées par les commentaires des clients. La configuration invité comprend également une prise en charge d’ordinateur hybride via des [serveurs avec Arc](../../azure-arc/servers/overview.md).
 
 L’extension Desired State Configuration (DSC) Azure sert principalement à amorcer une machine virtuelle sur le [service Azure Automation State Configuration (DSC)](../../automation/automation-dsc-overview.md).
 Ce service offre divers [avantages](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service), notamment la gestion en continu de la configuration des machines virtuelles et l’intégration à d’autres outils opérationnels, tels que la supervision Azure.

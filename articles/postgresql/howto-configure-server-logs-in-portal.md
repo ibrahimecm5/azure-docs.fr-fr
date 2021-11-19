@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 3e44377ecb734f0036d05a347596f1ff003ae28a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e880c545382da4ad679e40c2625b934981ac2109
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604326"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550416"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Configurer et consulter les journaux Azure Database pour PostgreSQL – Serveur unique à partir du portail Azure
 
@@ -53,7 +53,7 @@ Une fois que la journalisation a commencé, vous pouvez voir la liste des journa
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="Capture d’écran de la page Journaux du serveur, avec la liste des journaux mise en évidence":::
 
    > [!TIP]
-   > La convention d’affectation des noms de journaux est **postgresql-aaaa-mm-dd_hh0000.log**. La date et l’heure utilisées dans le nom de fichier correspondent au moment où le journal a été émis. Les fichiers journaux font l’objet d’une rotation toutes les heures ou par tranche de 100 Mo, selon la limite atteinte en premier.
+   > La convention d’affectation des noms de journaux est **postgresql-aaaa-mm-dd_hhmmss.log**. La date et l’heure utilisées dans le nom de fichier correspondent au moment où le journal a été émis. Les fichiers journaux font l’objet d’une rotation toutes les heures ou par tranche de 100 Mo, selon la limite atteinte en premier.
 
 4. Si nécessaire, utilisez la zone de recherche pour trouver rapidement un journal spécifique en fonction d’une date et d’une heure. La recherche est effectuée sur le nom du journal.
 

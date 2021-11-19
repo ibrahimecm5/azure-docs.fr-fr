@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdff97b2b0325d8c965000a309fb6c3232aee7f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 10f530b703c67192104e3cb6ea553973b8534437
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129985178"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292639"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Révoquer les accès utilisateur dans Azure Active Directory
 
@@ -123,7 +123,7 @@ Une fois que les administrateurs ont effectué les étapes ci-dessus, l’utilis
 > [!NOTE]
 > Après une réinitialisation, les données de l’appareil ne peuvent plus être récupérées.
 
-- Utilisez [Microsoft Cloud App Security (MCAS) pour bloquer le téléchargement de données](/cloud-app-security/use-case-proxy-block-session-aad), le cas échéant. Si les données sont accessibles uniquement en ligne, les organisations peuvent surveiller les sessions et appliquer les stratégies en temps réel.
+- Utilisez [Microsoft Defender for Cloud Apps pour bloquer le téléchargement de données](/cloud-app-security/use-case-proxy-block-session-aad), le cas échéant. Si les données sont accessibles uniquement en ligne, les organisations peuvent surveiller les sessions et appliquer les stratégies en temps réel.
 
 - Activez la fonctionnalité [Évaluation continue de l’accès (CAE) dans Azure AD](../conditional-access/concept-continuous-access-evaluation.md). CAE permet aux administrateurs de révoquer les jetons de session et les jetons d’accès pour les applications qui sont compatibles avec la fonctionnalité.  
 

@@ -3,12 +3,12 @@ title: Déployez la récupération d’urgence avec un site VMware Recovery Mana
 description: Déployez la récupération d’urgence avec VMware Site Recovery Manager (SRM) dans votre cloud privé Azure VMware Solution.
 ms.topic: how-to
 ms.date: 10/04/2021
-ms.openlocfilehash: 2cefe85f71c770ce29a14fb4aad7a91efd91651c
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 116c7b672874c1e012b4d9abadacb10bc4ca895f
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129430095"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547242"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>Déployez la récupération d’urgence avec un site VMware Recovery Manager
 
@@ -213,6 +213,8 @@ Une fois que vous avez créé le jumelage de sites, suivez la documentation VMwa
 
 - [Effectuer une restauration automatique (vmware.com)](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.admin.doc/GUID-556E84C0-F8B7-4F9F-AAB0-0891C084EDE4.html)
 
+   >[!NOTE]
+   >Si des règles de personnalisation des adresses IP ont été définies pour les mappages réseau entre l’environnement AVS et l’environnement local, ces règles ne sont pas appliquées lors de la restauration automatique de l’environnement AVS à l’environnement local en raison d’un [problème connu](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/rn/srm-releasenotes-8-3.html#knownissues) avec SRM 8.3.0. Vous pouvez contourner cette limitation en supprimant la protection de toutes les machines virtuelles du groupe de protection, puis en reconfigurant la protection avant de lancer la restauration automatique.
 
 
 ## <a name="ongoing-management-of-your-srm-solution"></a>Gestion continue de votre solution SRM

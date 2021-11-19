@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: eur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50a046682b8c7c04a8dd11534583c6bb4666432a
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 8b831d1e6c945528b917d7a0b21955e33be52f6d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509240"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484327"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Guide pratique pour reconnaître des intentions vocales avec le SDK Speech pour C#
 
@@ -158,14 +158,14 @@ Au lieu d’ajouter des intentions individuelles, vous pouvez aussi utiliser la 
 
 ## <a name="start-recognition"></a>Démarrer la reconnaissance
 
-Le module de reconnaissance étant créé, et les intentions ajoutées, la reconnaissance peut commencer. Le kit SDK Speech prend en charge la reconnaissance ponctuelle et continue.
+Le module de reconnaissance étant créé, et les intentions ajoutées, la reconnaissance peut commencer. Le kit SDK Speech prend en charge la reconnaissance au démarrage et continue.
 
 | Mode de reconnaissance | Méthodes à appeler | Résultats |
 | ---------------- | --------------- | ------ |
-| Ponctuel | `RecognizeOnceAsync()` | Retourne l’intention reconnue, si elle existe, après un énoncé. |
+| Au démarrage | `RecognizeOnceAsync()` | Retourne l’intention reconnue, si elle existe, après un énoncé. |
 | Continue | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Reconnaît plusieurs énoncés ; émet des événements (par exemple, `IntermediateResultReceived`) lorsque des résultats sont disponibles. |
 
-L’application utilise le mode ponctuel et appelle donc `RecognizeOnceAsync()` pour débuter la reconnaissance. Le résultat est un objet `IntentRecognitionResult` contenant des informations sur l’intention reconnue. Vous extrayez la réponse JSON LUIS à l’aide de l’expression suivante :
+L’application utilise le mode au démarrage et appelle donc `RecognizeOnceAsync()` pour débuter la reconnaissance. Le résultat est un objet `IntentRecognitionResult` contenant des informations sur l’intention reconnue. Vous extrayez la réponse JSON LUIS à l’aide de l’expression suivante :
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)

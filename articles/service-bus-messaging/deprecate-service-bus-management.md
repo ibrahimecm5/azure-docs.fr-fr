@@ -3,18 +3,18 @@ title: Services de messagerie Azure – Service Manager vers Resource Manager
 description: Cet article fournit un mappage de l’API REST Azure Service Manager et des cmdlets PowerShell déconseillées à l’API REST Resource Manager et aux cmdlets PowerShell.
 ms.topic: article
 ms.date: 08/31/2021
-ms.openlocfilehash: 7d5e4ff0748c2b31c0e9a5c7cdaeb8f2d196d915
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fc64aa41ab0ae2b0ecec735c9b9d19575dd9950e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791837"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136217"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Dépréciation de la prise en charge d’Azure Service Manager pour Azure Service Bus, Relay et Event Hubs
 
-Resource Manager, notre nouvelle génération de pile d’infrastructure cloud, remplace entièrement le modèle de management des services Azure « classique » (modèle de déploiement classique). Par conséquent, les API REST du modèle de déploiement classique et la prise en charge de Service Bus, Relay et Event Hubs seront mises hors service le 1er novembre 2021. Cette désapprobation a été annoncée pour la première fois sur une [annonce Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909). Pour faciliter l’identification, ces API ont `management.core.windows.net` dans leur URI. Reportez-vous au tableau suivant pour obtenir la liste des API déconseillées et de leur version d’API Azure Resource Manager que vous devez désormais utiliser.
+Resource Manager, notre nouvelle génération de pile d’infrastructure cloud, remplace entièrement le modèle de management des services Azure « classique » (modèle de déploiement classique). Par conséquent, les API REST du modèle de déploiement classique de Service Bus, Relay et Event Hubs seront mises hors service le 1er décembre 2021. Cette désapprobation a été annoncée pour la première fois sur une [annonce Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909). Pour faciliter l’identification, ces API ont `management.core.windows.net` dans leur URI. Reportez-vous au tableau suivant pour obtenir la liste des API déconseillées et de leur version d’API Azure Resource Manager que vous devez désormais utiliser.
 
-Pour continuer à utiliser Service Bus, Relay et Event Hubs, passez à Resource Manager avant le 31 octobre 2021. Nous encourageons tous les clients qui utilisent encore les anciennes API à passer rapidement à la nouvelle version afin de profiter des avantages supplémentaires de Resource Manager, notamment le regroupement de ressources, les balises, un processus de déploiement et de gestion rationalisé et un contrôle d'accès affiné grâce au Contrôle d'accès en fonction du rôle Azure (Azure RBAC).
+Pour continuer à utiliser Service Bus, Relay et Event Hubs, passez à Resource Manager avant le 30 novembre 2021. Nous encourageons tous les clients qui utilisent encore les anciennes API à passer rapidement à la nouvelle version afin de profiter des avantages supplémentaires de Resource Manager, notamment le regroupement de ressources, les balises, un processus de déploiement et de gestion rationalisé et un contrôle d'accès affiné grâce au Contrôle d'accès en fonction du rôle Azure (Azure RBAC).
 
 Pour plus d’informations sur la comparaison entre Azure Resource Manager et Azure Service Manager, consultez le [blog TechNet](https://blogs.technet.microsoft.com/meamcs/2016/12/22/difference-between-azure-service-manager-and-azure-resource-manager/).
 
