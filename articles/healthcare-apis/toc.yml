@@ -26,16 +26,23 @@ items:
   - name: Guides pratiques
     expanded: true
     items:
-      - name: Authentification et autorisation
-        href: authentication-authorization.md
-      - name: Accéder au service FHIR avec le poster
+      - name: Gérer l’accès et les autorisations des utilisateurs
+        expanded: true
+        items:
+          - name: Authentification et autorisation
+            href: authentication-authorization.md
+          - name: Inscrire une application cliente
+            href: register-application.md
+          - name: Configurer le RBAC Azure
+            href: configure-azure-rbac.md
+          - name: Recevoir un jeton d’accès
+            href: get-access-token.md
+      - name: Accès à l’aide du poste
         href: use-postman.md
       - name: Accès à l’aide de la boucle
         href: using-curl.md
       - name: Accès à l’aide du client REST
         href: using-rest-client.md
-      - name: Inscrire des applications
-        href: register-application.md
       - name: Journalisation
         href: logging.md
   - name: Concepts
@@ -47,7 +54,7 @@ items:
     items:
       - name: Notes de publication
         href: release-notes.md
-      - name: Foire aux questions
+      - name: FAQ
         href: healthcare-apis-faqs.md
       - name: projets GitHub
         href: github-projects.md

@@ -12,6 +12,8 @@
     - name: Installer les outils Bicep
       href: install.md
       displayName: nightly
+    - name: Résoudre les problèmes d'installation
+      href: installation-troubleshoot.md
 - name: Démarrages rapides
   items:
     - name: "Créer des modèles\_Bicep\_– VS\_Code"

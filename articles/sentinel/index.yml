@@ -4,20 +4,16 @@ summary: Cet article présente des cas d’usage pour bien démarrer avec Micros
 metadata:
   title: Documentation Microsoft Sentinel
   description: Cet article présente des cas d’usage et des scénarios pour bien démarrer avec Microsoft Sentinel. Repérez et arrêtez les menaces avant qu’elles occasionnent des dommages, avec une solution SIEM réinventée pour le monde moderne. Microsoft Sentinel vous offre une vue d’ensemble de votre entreprise.# Obligatoire; Description de l’article affichée dans les résultats de la recherche. < 160 caractères.
-  services: sentinel
-  ms.service: sentinel
-  ms.subservice: microsoft-sentinel
   ms.topic: landing-page
-  ms.collection: collection
   author: yelevin
   ms.author: yelevin
   ms.date: 11/09/2021
-  ms.openlocfilehash: d6a4d50dfeceb4769e377b46b35b949d7a890653
-  ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
+  ms.openlocfilehash: 6c3159812641d431ab047fd3084d4f07d18b3a84
+  ms.sourcegitcommit: 1244a72dbec39ac8cf16bb1799d8c46bde749d47
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/16/2021
-  ms.locfileid: "132518467"
+  ms.lasthandoff: 11/18/2021
+  ms.locfileid: "132760197"
 landingContent:
 - title: À propos de Microsoft Sentinel
   linkLists:

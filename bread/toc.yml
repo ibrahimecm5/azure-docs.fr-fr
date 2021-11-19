@@ -286,6 +286,9 @@
         - name: Gestion
           tocHref: /azure/azure-resource-manager/management/
           topicHref: /azure/azure-resource-manager/management/
+        - name: Résolution des problèmes
+          tocHref: /azure/azure-resource-manager/troubleshooting/
+          topicHref: /azure/azure-resource-manager/troubleshooting/
         - name: Applications gérées
           tocHref: /azure/azure-resource-manager/managed-applications/
           topicHref: /azure/azure-resource-manager/managed-applications/
@@ -558,7 +561,7 @@
         - name: Groupes d'administration
           tocHref: /azure/governance/management-groups/
           topicHref: /azure/governance/management-groups/
-        - name: Policy
+        - name: Stratégie
           tocHref: /azure/governance/policy/
           topicHref: /azure/governance/policy/
         - name: Resource Graph

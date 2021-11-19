@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: f4eaee6afb134513da55b7f39e2d1f6df6c547b7
-ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+ms.openlocfilehash: 5d55af3165991c8a6d16596ae9d4e8f9f4e8e3e9
+ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/11/2021
-ms.locfileid: "132345327"
+ms.lasthandoff: 11/19/2021
+ms.locfileid: "132812349"
 ---
 # <a name="deploy-iot-connector-in-the-azure-portal"></a>Déployer IoT Connector dans le Portail Azure
 
@@ -224,7 +224,7 @@ Pour plus d’informations sur la création d’un accès aux ressources Event H
 
    ![Capture d’écran du message d’attribution de rôle ajouté au service FHIR.](media/fhir-service-added-role-assignment.png#lightbox)
 
-   Pour plus d’informations sur l’affectation de rôles au service FHIR, consultez [configurer Azure RBAC pour le service FHIR](../fhir/configure-azure-rbac-for-fhir.md).
+   Pour plus d’informations sur l’affectation de rôles au service FHIR, consultez [configurer Azure RBAC](.././configure-azure-rbac.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

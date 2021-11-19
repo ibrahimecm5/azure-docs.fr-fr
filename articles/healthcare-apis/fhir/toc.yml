@@ -34,6 +34,12 @@ items:
   - name: Guides pratiques
     expanded: true
     items:
+      - name: Accès à l’aide du poste
+        href: ../use-postman.md
+      - name: Accès à l’aide de la boucle
+        href: ../using-curl.md
+      - name: Accès à l’aide du client REST
+        href: ../using-rest-client.md
       - name: Rechercher
         expanded: true
         items:
@@ -57,19 +63,8 @@ items:
       - name: Configurer les paramètres
         expanded: true
         items:
-          - name: Configurer RBAC
-            href: configure-azure-rbac-for-fhir.md
           - name: Configuration de CORS
             href: configure-cross-origin-resource-sharing.md
-      - name: utilisation de Azure Active Directory (AAD) pour le service FHIR
-        expanded: true
-        items:
-          - name: AAD pour le service FHIR
-            href: azure-active-directory-identity-configuration.md
-          - name: Validation du jeton d’accès
-            href: fhir-service-access-token-validation.md
-          - name: Obtient le jeton d’accès à l’aide de l’interface CLI
-            href: get-healthcare-apis-access-token-cli.md
       - name: la journalisation des diagnostics.
         expanded: true
         items:
@@ -77,6 +72,8 @@ items:
             href: fhir-service-diagnostic-logs.md
   - name: Concepts
     items:
+      - name: Mise à l’échelle automatique du service FHIR
+        href: fhir-service-autoscale.md
       - name: Fonctionnalités de l’API REST FHIR
         href: fhir-rest-api-capabilities.md
   - name: Ressources

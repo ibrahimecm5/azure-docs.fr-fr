@@ -2,17 +2,17 @@
 title: inscrire une application cliente dans Azure Active Directory pour les api de santé Azure
 description: comment inscrire une application cliente dans le Azure AD et comment ajouter une clé secrète et des autorisations d’api aux api de santé Azure
 services: healthcare-apis
-author: ginalee-dotcom
+author: SteveWohl
 ms.service: healthcare-apis
 ms.topic: tutorial
-ms.date: 08/25/2021
-ms.author: ginle
-ms.openlocfilehash: b1ac54f71c9c49af5bb8656bdbe05d639b8bca25
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 11/17/2021
+ms.author: zxue
+ms.openlocfilehash: dcb88484144674122f0a108b92f8986084b80b9f
+ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278045"
+ms.lasthandoff: 11/19/2021
+ms.locfileid: "132812595"
 ---
 # <a name="register-a-client-application-in-azure-active-directory"></a>Inscrire une application cliente dans Azure Active Directory
 
@@ -47,7 +47,7 @@ Si vous conservez cette valeur par défaut, l’inscription de l’application e
 
 [![Capture d’écran de l’application cliente confidentielle. ](media/register-application-five.png) ](media/register-application-five.png#lightbox)
 
-Si vous modifiez la valeur par défaut en « Oui », l’inscription de l’application est une **application cliente publique** et un certificat ou une clé secrète n’est pas nécessaire. La valeur « Oui » est utile lorsque vous souhaitez utiliser l’application cliente dans votre application mobile ou une application JavaScript dans laquelle vous ne souhaitez pas stocker de secrets.
+Si vous modifiez la valeur par défaut en « Oui » pour l’option « autoriser les flux de clients publics » dans le paramètre avancé, l’inscription de l’application est une **application cliente publique** et un certificat ou une clé secrète n’est pas requis. La valeur « Oui » est utile lorsque vous souhaitez utiliser l’application cliente dans votre application mobile ou une application JavaScript dans laquelle vous ne souhaitez pas stocker de secrets.
 
 Pour les outils qui nécessitent une URL de redirection, sélectionnez **Ajouter une plateforme** pour configurer la plateforme.
 
@@ -75,10 +75,29 @@ Si vous le souhaitez, vous pouvez télécharger un certificat (clé publique) et
 
 ## <a name="api-permissions"></a>Autorisations des API
 
-Les autorisations pour les API de santé sont gérées par le biais de RBAC. Pour plus d’informations, consultez [configurer Azure RBAC pour le service FHIR](./fhir/configure-azure-rbac-for-fhir.md).
+Les étapes suivantes sont requises pour le service DICOM, mais facultatives pour le service FHIR. En outre, les autorisations d’accès utilisateur ou les attributions de rôles pour les API de santé sont gérées par le biais de RBAC. Pour plus d’informations, consultez [configurer Azure RBAC pour les API de santé](configure-azure-rbac.md).
+
+1. Sélectionnez le panneau **Autorisations d’API**.
+
+   [![Ajouter des autorisations ](dicom/media/dicom-add-api-permissions.png) d’API ](dicom/media/dicom-add-api-permissions.png#lightbox)
+
+2. Sélectionnez **Ajouter une autorisation**.
+
+   Si vous utilisez les API de santé Azure, vous devez ajouter une autorisation au service DICOM en recherchant **API Azure pour DICOM** sous API utilisées par **mon organisation** . 
+
+   [![Rechercher des autorisations ](dicom/media/dicom-search-apis-permissions.png) d’API ](dicom/media/dicom-search-apis-permissions.png#lightbox)
+
+   Le résultat de la recherche pour l’API Azure pour DICOM ne retournera que si vous avez déjà déployé le service DICOM dans l’espace de travail.
+
+   Si vous référencez une autre application de ressource, sélectionnez l’inscription de votre application de ressource d’API DICOM que vous avez créée précédemment sous **API mon organisation**.
+
+3. Sélectionnez les étendues (autorisations) que l’application cliente confidentielle demandera au nom d’un utilisateur. Sélectionnez **user_impersonation**, puis **Ajouter des autorisations**.
+
+   [![Sélectionnez étendues des autorisations. ](dicom/media/dicom-select-scopes.png) ](dicom/media/dicom-select-scopes.png#lightbox)
 
 >[!NOTE]
 >Utilisez grant_type de client_credentials lors de la tentative d’otain d’un jeton d’accès pour le service FHIR à l’aide d’outils tels que poste ou client Rest. Pour plus d’informations, consultez [accès à l’aide du poste de publication](use-postman.md) et accès aux [API de santé à l’aide de l’extension Client Rest dans Visual Studio code](using-rest-client.md).
+>>Utilisez grant_type de client_credentials ou authentication_doe lors de la tentative de otain d’un jeton d’accès pour le service DICOM. Pour plus d’informations, consultez [utilisation de DICOM avec l’boucle](dicom/dicomweb-standard-apis-curl.md).
 
 L’inscription de votre application est maintenant terminée.
 

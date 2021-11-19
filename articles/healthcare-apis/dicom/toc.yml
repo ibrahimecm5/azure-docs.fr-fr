@@ -36,16 +36,6 @@ items:
     items:
       - name: Extraire les modifications DICOM à l’aide du flux de modification
         href: pull-dicom-changes-from-change-feed.md
-      - name: Inscrire une application cliente de service
-        href: dicom-register-service-client-application.md
-      - name: Inscrire une application cliente publique
-        href: dicom-register-public-application.md
-      - name: Inscrire une application cliente confidentielle
-        href: dicom-register-confidential-client-application.md
-      - name: Configurer Azure RBAC pour le service DICOM
-        href: dicom-configure-azure-rbac.md
-      - name: Obtenir un jeton d’accès pour le service DICOM à l’aide de Azure CLI
-        href: dicom-get-access-token-azure-cli.md
   - name: Ressources
     expanded: true
     items:

@@ -1,6 +1,6 @@
 - name: Documentation sur le provisionnement d’applications et de RH
   href: index.yml
-- name: Vue d'ensemble
+- name: Vue d’ensemble
   expanded: true
   items:
     - name: "Qu’est-ce que le provisionnement d’application\_?"
@@ -17,7 +17,7 @@
     - name: Personnaliser des mappages d’attributs
       href: customize-application-attributes.md
     - name: Tutoriels sur le provisionnement spécifique aux applications
-      href: /azure/active-directory/saas-apps
+      href: /azure/active-directory/saas-apps/tutorial-list
     - name: Provisionnement sur les applications SQL
       href: tutorial-ecma-sql-connector.md
 - name: Concepts
@@ -129,7 +129,7 @@
     - name: Page de questions Microsoft Q&A
       href: /answers/topics/azure-active-directory.html
     - name: Tarifs
-      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Mises à jour de service
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
     - name: Stack Overflow
