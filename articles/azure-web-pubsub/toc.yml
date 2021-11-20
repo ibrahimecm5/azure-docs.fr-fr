@@ -134,7 +134,7 @@
         - name: Kit SDK serveur – Python
           href: reference-server-sdk-python.md
     - name: API REST
-      href: /rest/api/webpubsub
+      href: /rest/api/webpubsub/
 - name: Ressources
   items:
     - name: Exemples

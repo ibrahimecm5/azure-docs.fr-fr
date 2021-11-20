@@ -71,7 +71,7 @@
     - name: Limites du service
       href: chaos-studio-service-limits.md
     - name: Documentation des API REST
-      href: /rest/api/chaosstudio
+      href: /rest/api/chaosstudio/
     - name: Kit de développement logiciel (SDK) Python
       href: /python/api/azure-mgmt-chaos/?view=azure-python-preview
 - name: Ressources
@@ -79,10 +79,10 @@
     - name: Feuille de route Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Tarifs
-      href: 'https://azure.microsoft.com/pricing/details/'
+      href: 'https://azure.microsoft.com/pricing/'
     - name: Calculatrice de prix
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Mises à jour de service
       href: 'https://azure.microsoft.com/updates/?product='
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/'
+      href: 'https://stackoverflow.com/questions'

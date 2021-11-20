@@ -222,7 +222,7 @@
     - name: Feuille de route Azure
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Parcours d’apprentissage
-      href: /learn/paths/azure-fundamentals/
+      href: /learn/paths/az-900-describe-cloud-concepts/
     - name: Page de questions Microsoft Q&A
       href: /answers/topics/azure-cloud-services.html
     - name: Tarifs

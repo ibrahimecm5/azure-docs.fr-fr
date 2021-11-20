@@ -170,10 +170,10 @@
           href: search-sku-tier.md
         - name: Créer un service
           href: search-create-service-portal.md
-        - name: Planifier la capacité
-          href: search-capacity-planning.md
         - name: Limites du service
           href: search-limits-quotas-capacity.md
+        - name: Planifier la capacité
+          href: search-capacity-planning.md
         - name: Prévoir et gérer les coûts
           href: search-sku-manage-costs.md
         - name: Disponibilité et récupération

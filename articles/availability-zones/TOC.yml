@@ -116,7 +116,7 @@
     - name: Feuille de route Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Régions Azure
-      href: 'https://azure.microsoft.com/regions/'
+      href: 'https://azure.microsoft.com/global-infrastructure/geographies/'
 - name: Documentation Azure Orbital
   items:
     - name: Présentation d’Azure Orbital

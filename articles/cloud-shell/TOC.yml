@@ -47,9 +47,9 @@
 - name: Informations de référence
   items:
     - name: Azure CLI
-      href: /cli/azure
+      href: /cli/azure/
     - name: Azure PowerShell
-      href: /powershell/azure
+      href: /powershell/azure/
 - name: Ressources
   items:
     - name: Feuille de route Azure

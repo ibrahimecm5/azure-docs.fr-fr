@@ -385,7 +385,7 @@
         - name: Architectures de référence
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Scripts de déploiement
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: Dépannage
       items:
         - name: Résoudre les erreurs intermittentes de connexion sortante

@@ -219,7 +219,7 @@
     - name: Vidéos
       items:
         - name: Sélection
-          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+          href: 'https://www.youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
         - name: Intégration à un service Azure
           href: 'https://youtu.be/m26iLu6DHbU'
         - name: Intégration à Azure Application Gateway
@@ -229,7 +229,7 @@
 - name: Informations de référence
   items:
     - name: API REST
-      href: /rest/api/avs
+      href: /rest/api/avs/
     - name: Azure CLI
       href: /cli/azure/vmware
     - name: Azure PowerShell

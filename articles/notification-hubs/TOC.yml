@@ -90,6 +90,8 @@
       href: uwp-react.md
 - name: Concepts
   items:
+    - name: Zones de disponibilité
+      href: availability-zones.md
     - name: TLS (Transport Layer Security)
       href: notification-hubs-tls12.md
     - name: Guide architectural des notifications Push d’entreprise

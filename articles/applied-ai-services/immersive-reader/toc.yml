@@ -3,11 +3,11 @@
 - name: Vue d’ensemble
   items:
     - name: "Qu’est-ce que le lecteur immersif\_?"
-      href: Overview.md
+      href: overview.md
     - name: Support multilingue
       href: language-support.md
     - name: Tarifs
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+      href: 'https://azure.microsoft.com/pricing/details/immersive-reader/'
     - name: Notes de publication
       href: release-notes.md
 - name: Démarrage rapide

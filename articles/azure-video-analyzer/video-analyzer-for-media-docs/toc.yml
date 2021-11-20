@@ -119,7 +119,7 @@
     - name: Tarifs
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Disponibilité régionale
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Régions
       displayName: location
       href: regions.md

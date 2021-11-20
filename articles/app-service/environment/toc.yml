@@ -100,7 +100,7 @@
     - name: Livres de recettes
       items:
         - name: Scripts de déploiement
-          href: 'https://azure.microsoft.com/documentation/scripts/'
+          href: /azure/automation/automation-runbook-gallery
     - name: Dépannage
       items:
         - name: Résoudre les problèmes à l’aide de Visual Studio

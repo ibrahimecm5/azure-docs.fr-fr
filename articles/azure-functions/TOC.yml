@@ -80,7 +80,7 @@
     - name: Fonctions avec Logic Apps
       href: functions-twitter-email.md
     - name: Développer des fonctions Python avec VS Code
-      href: /azure/python/tutorial-vs-code-serverless-python-01
+      href: /azure/azure-functions/create-first-function-vs-code-python
     - name: Créer des API serverless à l’aide de Visual Studio
       href: openapi-apim-integrate-visual-studio.md
       displayName: 'OpenAPI, Swagger'
@@ -102,7 +102,7 @@
     - name: Redimensionnement d’image avec Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Créer une application web sans serveur
-      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
+      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr/
     - name: Machine learning avec TensorFlow
       href: functions-machine-learning-tensorflow.md
     - name: Classification d’images avec PyTorch
@@ -528,7 +528,7 @@
         - name: Azure Functions Core Tools
           href: functions-core-tools-reference.md
         - name: Azure PowerShell
-          href: /powershell/module/az.functions
+          href: /powershell/module/az.functions/
         - name: Java
           href: /java/api/overview/azure/functions/runtime
         - name: Python
@@ -568,7 +568,7 @@
                 - name: Entrée
                   href: functions-bindings-cosmosdb-v2-input.md
                   displayName: Azure Cosmos DB
-                - name: Output
+                - name: Sortie
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
         - name: Azure SQL
@@ -735,7 +735,7 @@
     - name: Informations sur les quotas
       href: functions-scale.md#service-limits
     - name: Disponibilité régionale
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Vidéos
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Page de questions Microsoft Q&A

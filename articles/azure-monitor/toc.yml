@@ -1179,6 +1179,8 @@
           href: insights/cosmosdb-insights-overview.md
         - name: Explorateur de données Azure
           href: insights/data-explorer.md
+        - name: Azure Service Bus
+          href: insights/service-bus-insights.md
         - name: Espace de travail Log Analytics
           href: logs/log-analytics-workspace-insights-overview.md
         - name: Réseaux
@@ -1435,11 +1437,11 @@
     - name: Azure PowerShell
       items:
         - name: Azure Monitor
-          href: /powershell/module/az.monitor
+          href: /powershell/module/az.monitor/
         - name: Journaux Azure Monitor
-          href: /powershell/module/az.operationalinsights
+          href: /powershell/module/az.operationalinsights/
         - name: Application Insights
-          href: /powershell/module/az.applicationinsights
+          href: /powershell/module/az.applicationinsights/
     - name: Azure CLI
       items:
         - name: Azure Monitor
@@ -1456,7 +1458,7 @@
         - name: Azure Monitor
           href: /rest/api/monitor/
         - name: Journaux Azure Monitor
-          href: /rest/api/loganalytics
+          href: /rest/api/loganalytics/
         - name: Procédure pas à pas de l’API REST
           displayname: 'metrics, analyze'
           href: essentials/rest-api-walkthrough.md
@@ -1512,8 +1514,8 @@
     - name: Mises à jour Azure
       href: 'https://azure.microsoft.com/en-us/updates/?category=management-tools'
     - name: Tarifs
-      href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
+      href: 'https://azure.microsoft.com/pricing/details/monitor/'
     - name: Calculatrice de prix
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Disponibilité régionale
-      href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor'

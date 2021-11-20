@@ -13,7 +13,7 @@ items:
       - name: Créer une application Android
         href: quick-android-map.md
       - name: Créer une application iOS
-        href: quick-iOS-app.md
+        href: quick-ios-app.md
   - name: Tutoriels
     items:
       - name: Tutoriels sur le kit SDK web
@@ -338,7 +338,7 @@ items:
           - name: Render Service
             href: /rest/api/maps/render
           - name: "Render service\_V2"
-            href: /rest/api/maps/renderv2
+            href: /rest/api/maps/render-v2
           - name: Service d’itinéraire
             href: /rest/api/maps/route
           - name: Service de recherche
@@ -366,11 +366,11 @@ items:
               - name: Service WFS
                 href: /rest/api/maps/v2/wfs
           - name: Gestion de compte Maps
-            href: /rest/api/maps-management
+            href: /rest/api/maps-management/
       - name: JavaScript
         items:
           - name: Commandes de la carte
-            href: /javascript/api/azure-maps-javascript/
+            href: /javascript/api/azure-maps-control/
           - name: Outils de dessin
             href: /javascript/api/azure-maps-drawing-tools/
           - name: Module de service
@@ -396,7 +396,7 @@ items:
           - name: Service IoT Hub Device Provisioning
             href: ../iot-dps/index.yml
           - name: IoT Central
-            href: /microsoft-iot-central/
+            href: /azure/iot-central/
           - name: IoT Edge
             href: ../iot-edge/index.yml
           - name: IoT Plug-and-Play
@@ -414,7 +414,7 @@ items:
       - name: Conditions d’utilisation d’Azure Maps
         href: 'https://azure.microsoft.com/support/legal/'
       - name: Prix Azure Maps
-        href: 'https://azure.microsoft.com/pricing/details/azure-maps'
+        href: 'https://azure.microsoft.com/pricing/details/azure-maps/'
       - name: Calculatrice de prix
         href: 'https://azure.microsoft.com/pricing/calculator/'
       - name: Vidéos Azure Maps
@@ -426,9 +426,9 @@ items:
       - name: Glossaire Azure Maps
         href: glossary.md
       - name: Mises à jour de service
-        href: 'https://azure.microsoft.com/updates'
+        href: 'https://azure.microsoft.com/updates/'
       - name: Centre de développement Azure IoT
-        href: 'https://azure.microsoft.com/develop/iot/'
+        href: 'https://azure.microsoft.com/overview/iot/'
       - name: Feuille de route Azure
         href: 'https://azure.microsoft.com/roadmap/?category=iot'
       - name: Études de cas techniques

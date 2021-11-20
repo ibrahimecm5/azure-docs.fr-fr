@@ -366,7 +366,7 @@
     - name: Notes de publication
       href: 'https://aka.ms/apim/releases'
     - name: Disponibilité régionale
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Vidéos
       href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: Page de questions Microsoft Q&A
