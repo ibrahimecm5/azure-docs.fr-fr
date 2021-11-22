@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-insights
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: ff50729dee893caa7a1c38f57cbd23f0470fc84b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 405be2ec031e95a6c59128b5f23310a4c0a711ac
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218847"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157935"
 ---
 # <a name="understand-insights-in-azure-purview"></a>Présentation des insights dans Azure Purview
 
@@ -25,25 +25,30 @@ Les insights sont l’un des piliers dans Purview. Cette fonctionnalité offre a
 
 ## <a name="asset-insights"></a>Insights relatifs aux ressources
 
-Ce rapport donne une vue d’ensemble de votre patrimoine de données et de sa répartition par type de source, par classification et par taille de fichier comme certaines dimensions. Ce rapport s’adresse aux différents types d’utilisateurs qui peuvent gérer le compte Purview et exécuter des analyses, ou à des utilisateurs professionnels susceptibles de connaître le nombre de ressources avec une certaine classification dans le patrimoine de données de leur organisation. 
+Ce rapport donne une vue d’ensemble de votre patrimoine de données et de sa répartition par type de source, par classification et par taille de fichier comme certaines dimensions. Ce rapport s’adresse aux différents types de parties prenantes dans les rôles de gouvernance et de catalogage des données, qui souhaitent connaître l’état de leur DataMap, par classification et extensions de fichier.
 
 Le rapport fournit des insights généraux sur les graphiques et les indicateurs de performance clés, ainsi que des informations détaillées sur des anomalies spécifiques telles que les fichiers mal placés. Le rapport prend également en charge une expérience client de bout en bout, dans laquelle le client peut afficher le nombre de ressources avec une classification spécifique, peut décomposer les informations par types de sources et dossiers principaux, et peut également afficher la liste des ressources en vue d’une investigation plus poussée.
 
+> [!NOTE]
+> Les insights sur les extensions de fichier ont été fusionnés dans les insights relatifs aux ressources avec un rapport de tendance plus poussé qui indique la croissance de la taille des données par extension de fichier. En savoir plus en explorant les [insights relatifs aux ressources](asset-insights.md) 
+>
+>
+
 ## <a name="scan-insights"></a>Insights relatifs aux analyses
 
-Le rapport permet aux administrateurs de comprendre l’intégrité globale des analyses, à savoir le nombre de réussites, le nombre d’échecs et le nombre d’annulations. Ce rapport fournit une mise à jour de l’état des analyses qui ont été exécutées dans le compte Purview au cours des sept derniers jours ou des 30 derniers jours.
+Le rapport permet aux administrateurs de source de données de comprendre l’intégrité globale des analyses, à savoir le nombre de réussites, le nombre d’échecs et le nombre d’annulations. Ce rapport fournit une mise à jour de l’état des analyses qui ont été exécutées dans le compte Purview au cours des sept derniers jours ou des 30 derniers jours.
 
 Le rapport permet également aux administrateurs d’aller en profondeur et d’explorer les analyses qui ont échoué et sur quels types de sources spécifiques. Pour permettre aux utilisateurs d’effectuer des recherches plus poussées, le rapport permet de naviguer dans la page historique d’analyse au sein de l’expérience « Sources ».
 
 ## <a name="glossary-insights"></a>Insights relatifs aux glossaires
 
-Ce rapport permet aux utilisateurs professionnels et aux gestionnaires de données d’obtenir un rapport d’état sur le glossaire. Les utilisateurs peuvent afficher ce rapport pour comprendre la répartition des termes du glossaire par état, savoir combien de termes de glossaire sont attachés aux ressources et combien ne sont pas encore attachés à un élément multimédia. Les utilisateurs professionnels peuvent également en savoir plus sur l’exhaustivité de leurs termes de glossaire. 
+Ce rapport permet aux gestionnaires de données d’obtenir un rapport d’état sur le glossaire. Les gestionnaires de données peuvent afficher ce rapport pour comprendre la répartition des termes du glossaire par état, savoir combien de termes de glossaire sont attachés aux ressources et combien ne sont pas encore attachés à une ressource. Les utilisateurs professionnels peuvent également en savoir plus sur l’exhaustivité de leurs termes de glossaire. 
 
-Ce rapport résume les principaux éléments sur lesquels un utilisateur de l’entreprise ou un gestionnaire de données doit se concentrer pour créer un glossaire complet et utilisable pour son organisation. Les utilisateurs peuvent également naviguer dans l’expérience « Glossaire » à partir de l’expérience « Insights relatifs aux glossaires » pour apporter des modifications à un terme de glossaire spécifique.
+Ce rapport résume les principaux éléments sur lesquels un gestionnaire de données doit se concentrer pour créer un glossaire complet et utilisable pour son organisation. Les gestionnaires peuvent également naviguer dans l’expérience « Glossaire » à partir de l’expérience « Insights relatifs aux glossaires » pour apporter des modifications à un terme de glossaire spécifique.
 
 ## <a name="classification-insights"></a>Insights relatifs aux classifications
 
-Ce rapport fournit des informations sur l’emplacement des données classifiées, les classifications trouvées lors d’une analyse et une exploration hiérarchique des fichiers classifiés eux-mêmes. Il permet aux administrateurs de la sécurité de comprendre les types d’informations trouvés dans le patrimoine de données de leur organisation. 
+Ce rapport fournit des informations sur l’emplacement des données classifiées, les classifications trouvées lors d’une analyse et une exploration hiérarchique des fichiers classifiés eux-mêmes. Il permet aux gestionnaires, conservateurs et administrateurs de la sécurité de comprendre les types d’informations trouvés dans le patrimoine de données de leur organisation. 
 
 Dans Azure Purview, les classifications sont similaires aux étiquettes d’objet et permettent de marquer et identifier le contenu d’un type spécifique dans votre patrimoine de données.
 
@@ -60,14 +65,6 @@ Dans Azure Purview, les étiquettes de confidentialité sont utilisées pour ide
 Utilisez le rapport Insights relatifs à l’étiquetage pour identifier les étiquettes de confidentialité trouvées dans votre contenu et comprendre les actions requises, telles que la gestion de l’accès à des référentiels ou des fichiers spécifiques.
 
 Pour plus d’informations, consultez [Insights relatifs aux étiquettes de confidentialité de vos données dans Azure Purview](sensitivity-insights.md).
-
-## <a name="file-extension-insights"></a>Insights relatifs aux extensions de fichier
-
-Ce rapport fournit des détails sur les extensions de fichiers ou les types de fichiers détectés lors d’une analyse, ainsi qu’une exploration hiérarchique sur les fichiers eux-mêmes. 
-
-Utilisez le rapport Insights relatifs aux extensions de fichier pour comprendre le nombre de fichiers que vous avez à chaque fois, l’emplacement de ces fichiers, et s’ils peuvent être analysés pour les données confidentielles.
-
-Pour plus d’informations, consultez [Insights relatifs aux extensions de fichiers de vos données à partir d’Azure Purview](file-extension-insights.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

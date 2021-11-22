@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
 ms.date: 09/07/2021
-ms.openlocfilehash: afca22d3a0775e470becfbd31a2f67d99552938d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 163fb5cba55248fcc478e219a6b7c014fedbb689
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541666"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397791"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Vue d’ensemble de la migration : SQL Server vers SQL Server sur les machines virtuelles Azure
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -119,13 +119,45 @@ La liste suivante répertorie les points clés à prendre en compte lors de l’
 
 ## <a name="business-intelligence"></a>Business Intelligence 
 
-Il peut y avoir des considérations supplémentaires lors de la migration de services décisionnels SQL Server en dehors du cadre des migrations de base de données utilisateur. 
+Il peut y avoir des considérations supplémentaires lors de la migration de services décisionnels SQL Server en dehors du cadre des migrations de base de données. 
 
-Ces services comprennent :
+### <a name="sql-server-integration-services"></a>SQL Server Integration Services
 
-- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
-- [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
-- [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
+Vous pouvez migrer des packages et des projets SQL Server Integration Services (SSIS) dans SSISDB vers SQL Server sur une machine virtuelle Azure à l’aide de l’une des deux méthodes ci-dessous. 
+
+- Sauvegardez et restaurez SSISDB à partir de l’instance SQL Server source vers SQL Server sur une machine virtuelle Azure. Cela permet de restaurer vos packages dans SSISDB dans le [catalogue Integration Services sur votre serveur SQL Server cible sur la machine virtuelle Azure](/sql/integration-services/catalog/ssis-catalog).
+- Redéployez vos packages SSIS sur votre serveur SQL Server cible sur une machine virtuelle Azure à l’aide de l’une des [options de déploiement](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
+
+Si vous avez déployé des packages SSIS en tant que modèle de déploiement de package, vous pouvez les convertir avant la migration. Pour en savoir plus, consultez le [tutoriel de conversion de projet](/sql/integration-services/lesson-6-2-converting-the-project-to-the-project-deployment-model). 
+
+
+### <a name="sql-server-reporting-services"></a>SQL Server Reporting Services
+Pour migrer vos rapports SQL Server Reporting Services (SSRS) vers votre serveur SQL Server cible sur une machine virtuelle Azure, consultez [Migrer une installation Reporting Services (mode natif)](/sql/reporting-services/install-windows/migrate-a-reporting-services-installation-native-mode).
+
+Vous pouvez également migrer les rapports SSRS vers des rapports paginés dans Power BI. Utilisez l’ [outil de migration RDL](https://github.com/microsoft/RdlMigration) pour préparer et migrer vos rapports. Microsoft a développé cet outil pour aider les clients à migrer les rapports RDL (Report Definition Language) de leurs serveurs SSRS vers Power BI. Il est disponible sur GitHub et fournit une procédure complète pour un scénario de migration. 
+
+### <a name="sql-server-analysis-services"></a>SQL Server Analysis Services
+Les bases de données SQL Server Analysis Services (modèles multidimensionnels ou tabulaires) peuvent être migrées de votre instance SQL Server source vers SQL Server sur une machine virtuelle Azure à l’aide de l’une des options suivantes :
+
+-   Par interaction à l'aide de SSMS
+-   Par programmation à l’aide d’AMO (Analysis Management Objects) (AMO)
+-   Par script à l’aide de XMLA (XML for Analysis)
+
+Pour plus d’informations, consultez [Déplacer une base de données Analysis Services](/analysis-services/multidimensional-models/move-an-analysis-services-database?view=asallproducts-allversions).
+
+Vous pouvez également envisager de migrer vos modèles tabulaires Analysis Services locaux vers [Azure Analysis Services](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/) ou [Power BI Premium à l’aide des nouveaux points de terminaison en lecture/écriture XMLA](/power-bi/admin/service-premium-connect-tools). 
+
+## <a name="server-objects"></a>Objets de serveur
+
+Selon la configuration de votre instance SQL Server source, il peut y avoir des fonctionnalités SQL Server supplémentaires qui nécessitent une intervention manuelle pour les migrer vers SQL Server sur une machine virtuelle Azure en générant des scripts dans Transact-SQL (T-SQL) à l’aide de SQL Server Management Studio, puis en exécutant les scripts sur l’instance SQL Server cible sur la machine virtuelle Azure. Voici quelques-unes des fonctionnalités couramment utilisées :
+
+- Connexions et rôles
+- Serveurs liés
+- Sources de données externes
+- Travaux de l'Agent
+- Alertes
+- Messagerie de base de données
+- Réplication
 
 ## <a name="supported-versions"></a>Versions prises en charge
 

@@ -6,14 +6,14 @@ author: ranvijaykumar
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 05/11/2021
+ms.date: 11/16/2021
 ms.author: ranku
-ms.openlocfilehash: df201cf281fd24ebf288849d5192aa9355f3416d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a40a8f44ebb8e4297544ccd49c75acedfeabf1d1
+ms.sourcegitcommit: 6f30424a4ab8dffc4e690086e898ab52bc4da777
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785135"
+ms.lasthandoff: 11/22/2021
+ms.locfileid: "132902099"
 ---
 # <a name="converting-your-data-to-fhir"></a>Conversion de vos données en FHIR
 
@@ -163,8 +163,7 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 
 Sélectionnez **mise en réseau** du compte de stockage Azure à partir du portail.
 
-   :::image type="content" source="media/convert-data/networking-container-registry.png" alt-text="Registre de conteneurs.":::
-
+![configurer le pare-feu ACR](media/convert-data/networking-container-registry.png)
 
 Sélectionnez **Réseaux sélectionnés**. 
 
@@ -199,6 +198,13 @@ Dans le tableau ci-dessous, vous trouverez l’adresse IP de la région Azure da
 
 > [!NOTE]
 > Les étapes ci-dessus sont similaires aux étapes de configuration décrites dans le document Comment exporter des données FHIR. pour plus d’informations, consultez [secure Export to stockage Azure](./export-data.md#secure-export-to-azure-storage)
+
+Pour un accès réseau privé (par exemple, un lien privé), vous pouvez également désactiver l’accès réseau public de ACR.
+* Sélectionnez le panneau mise en réseau du compte de stockage Azure à partir du portail.
+* Sélectionnez `Disabled`.
+* sélectionnez exception de pare-feu : autoriser les services Microsoft approuvés à accéder à ce registre de conteneurs.
+
+![lien privé pour ACR](media/convert-data/configure-private-network-container-registry.png)
 
 ### <a name="verify"></a>Vérification
 

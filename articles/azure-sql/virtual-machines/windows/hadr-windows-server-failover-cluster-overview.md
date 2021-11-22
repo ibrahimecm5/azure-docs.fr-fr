@@ -11,15 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: dc007e4aeb68d3cecd156a650bd3c04de1fd26e0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 66899b7b4c5a9cb77b7545d671ac27433f927d5a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162200"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156872"
 ---
 # <a name="windows-server-failover-cluster-with-sql-server-on-azure-vms"></a>Cluster de basculement Windows Server avec SQL Server sur des machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -80,9 +80,11 @@ Pour bien démarrer, consultez [Configurer un quorum de cluster](hadr-cluster-qu
 
 ## <a name="virtual-network-name-vnn"></a>Nom de réseau virtuel (VNN)
 
+Pour correspondre à l’expérience locale de connexion à votre écouteur de groupe de disponibilité ou instance de cluster de basculement, déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux au sein du même réseau virtuel. Le fait de disposer de plusieurs sous-réseaux nie la nécessité de la dépendance supplémentaire sur un Azure Load Balancer pour acheminer le trafic vers votre solution HADR.  Pour plus d’informations, consultez [Groupe de disponibilité à plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) et [Instance de cluster de basculement à plusieurs sous-réseaux](failover-cluster-instance-prepare-vm.md#subnets). 
+
 Dans un environnement local traditionnel, les ressources de cluster telles que les instances de cluster de basculement ou les groupes de disponibilité Always On s’appuient sur le nom du réseau virtuel pour router le trafic vers la cible appropriée, soit l’instance de cluster de basculement, soit l’écouteur du groupe de disponibilité Always On. Le nom virtuel lie l’adresse IP dans le système DNS, et les clients peuvent utiliser le nom virtuel ou l’adresse IP pour se connecter à leur cible de haute disponibilité, quel que soit le nœud actuellement propriétaire de la ressource. Le VNN est un nom de réseau et une adresse gérés par le cluster, et le service de cluster déplace l’adresse réseau d’un nœud à un autre pendant un événement de basculement. En cas de défaillance, l’adresse est placée hors connexion sur le réplica principal d’origine et mise en ligne sur le nouveau réplica principal.
 
-Sur les machines virtuelles Azure, un composant supplémentaire est nécessaire pour router le trafic du client vers le nom de réseau virtuel de la ressource de cluster (instance de cluster de basculement ou écouteur d’un groupe de disponibilité). Dans Azure, un équilibreur de charge contient l’adresse IP du VNN sur lequel s’appuient les ressources SQL Server de cluster, et est nécessaire pour router le trafic vers la cible de haute disponibilité appropriée. L’équilibreur de charge détecte également les défaillances au niveau des composants réseau, et déplace l’adresse vers un nouvel hôte. 
+Sur les machines virtuelles Azure dans un seul sous-réseau, un composant supplémentaire est nécessaire pour acheminer le trafic du client vers le nom de réseau virtuel de la ressource de cluster (instance de cluster de basculement ou écouteur d’un groupe de disponibilité). Dans Azure, un équilibreur de charge contient l’adresse IP du VNN sur lequel s’appuient les ressources SQL Server de cluster, et est nécessaire pour router le trafic vers la cible de haute disponibilité appropriée. L’équilibreur de charge détecte également les défaillances au niveau des composants réseau, et déplace l’adresse vers un nouvel hôte. 
 
 L’équilibreur de charge distribue les flux entrants arrivant au frontal, puis achemine ce trafic vers les instances définies par le pool principal. Vous configurez le flux de trafic à l’aide de règles d’équilibrage de charge et de sondes d’intégrité. Avec une instance de cluster de basculement SQL Server, les instances de pool de back-ends sont les machines virtuelles Azure exécutant SQL Server, tandis qu’avec des groupes de disponibilité le pool de back-ends est l’écouteur. Il y a un léger délai de basculement lorsque vous utilisez l’équilibreur de charge, car la sonde d’intégrité effectue des vérifications actives toutes les 10 secondes par défaut. 
 
@@ -92,11 +94,13 @@ Pour commencer, découvrez comment configurer Azure Load Balancer pour une [inst
 **Version de SQL pris en charge** : Tous   
 **Solution HADR prise en charge** : Instance de cluster de basculement et groupes de disponibilité   
 
-La configuration du VNN peut être laborieuse, il s’agit d’une source de défaillance supplémentaire, cela peut entraîner un retard de détection des défaillances, et il existe une surcharge et un coût associés à la gestion de la ressource supplémentaire. Pour répondre à certaines de ces limitations, SQL Server 2019 a introduit la prise en charge de la fonctionnalité Nom du réseau distribué. 
+La configuration du VNN peut être laborieuse, il s’agit d’une source de défaillance supplémentaire, cela peut entraîner un retard de détection des défaillances, et il existe une surcharge et un coût associés à la gestion de la ressource supplémentaire. Pour répondre à certaines de ces limitations, SQL Server a introduit la prise en charge de la fonctionnalité Nom du réseau distribué. 
 
 ## <a name="distributed-network-name-dnn"></a>Nom de réseau distribué (DNN)
 
-À compter de SQL Server 2019, la fonctionnalité Nom du réseau distribué permet aux clients SQL Server de se connecter d’une autre façon à l’instance de cluster de basculement ou au groupe de disponibilité SQL Server sans utiliser d’équilibreur de charge. 
+Pour correspondre à l’expérience locale de connexion à votre écouteur de groupe de disponibilité ou instance de cluster de basculement, déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux au sein du même réseau virtuel. Le fait de disposer de plusieurs sous-réseaux nie la nécessité de la dépendance supplémentaire sur un DNN pour acheminer le trafic vers votre solution HADR. Pour plus d’informations, consultez [Groupe de disponibilité à plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) et [Instance de cluster de basculement à plusieurs sous-réseaux](failover-cluster-instance-prepare-vm.md#subnets). 
+
+Pour les machines virtuelles SQL Server déployées sur un sous-réseau unique, la fonctionnalité de nom du réseau distribué permet aux clients SQL Server de se connecter d’une autre façon à l’instance de cluster de basculement ou au groupe de disponibilité SQL Server sans utiliser d’équilibreur de charge. La fonctionnalité DNN est disponible à partir de [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31), [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) et [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) sur Windows Server 2016 et versions ultérieures.
 
 Quand une ressource DNN est créée, le cluster lie le nom DNS à l’adresse IP de tous les nœuds du cluster. Le client essaiera de se connecter à chaque adresse IP de cette liste pour trouver la ressource à laquelle se connecter. Vous pouvez accélérer ce processus en spécifiant `MultiSubnetFailover=True` dans la chaîne de connexion. Ce paramètre indique au fournisseur d’essayer toutes les adresses IP en parallèle, afin que le client puisse se connecter instantanément à la FCI ou à l’écouteur. 
 

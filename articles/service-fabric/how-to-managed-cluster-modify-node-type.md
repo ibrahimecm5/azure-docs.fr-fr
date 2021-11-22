@@ -1,18 +1,18 @@
 ---
-title: Modifier un type de nœud de cluster managé Service Fabric
+title: Configurer ou modifier un type de nœud de cluster managé Service Fabric
 description: Cet article explique comment modifier un type de nœud de cluster managé.
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: bd39c3810b1ecc1c6174e80a6719f2422aa72bb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 02d332774b98e7097bca0bbea6bc7216af0057fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096366"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277255"
 ---
 # <a name="service-fabric-managed-cluster-node-types"></a>Types de nœuds de cluster managés Service Fabric
 
-Chaque type de nœud d’un cluster managé Service Fabric est adossé à un groupe de machines virtuelles identiques. Avec les clusters managés, vous apportez toutes les modifications requises par le biais du fournisseur de ressources de cluster managé Service Fabric. Toutes les ressources sous-jacentes pour le cluster sont créées et abstraites par le fournisseur de cluster managé en votre nom. Cela permet de simplifier le déploiement et la gestion du type de nœud de cluster, d’éviter des erreurs d’opération telles que la suppression d’un nœud de départ, et l’application de meilleures pratiques, telles que la validation d’une référence SKU de machine virtuelle, peut être utilisée en toute sécurité.
+Chaque type de nœud d’un cluster managé Service Fabric est adossé à un groupe de machines virtuelles identiques. Avec les clusters managés, vous apportez toutes les modifications requises par le biais du fournisseur de ressources de cluster managé Service Fabric. Toutes les ressources sous-jacentes pour le cluster sont créées et abstraites par le fournisseur de cluster managé en votre nom. Le fait que le fournisseur de ressources gère les ressources permet de simplifier le déploiement et la gestion du type de nœud de cluster, d’éviter des erreurs d’opération telles que la suppression d’un nœud de départ, et l’application de meilleures pratiques, telles que la validation d’une référence SKU de machine virtuelle, peut être utilisée en toute sécurité.
 
 Le reste de ce document explique comment ajuster différents paramètres lors de la création d’un type de nœud, de l’ajustement du nombre d’instances du type de nœud, de l’activation des mises à niveau automatiques de l’image du système d’exploitation, de la modification de l’image du système d’exploitation et de la configuration des propriétés de sélection élective. Ce document se concentre également sur l’utilisation du Portail Azure ou de modèles Azure Resource Manager pour apporter des modifications.
 
@@ -256,11 +256,62 @@ Vous pouvez maintenant utiliser cette [propriété de sélection élective pour 
 
 ## <a name="modify-the-vm-sku-for-a-node-type"></a>Modifier la référence SKU de machine virtuelle pour un type de nœud
 
-Le cluster managé Service Fabric ne prend pas en charge la modification sur place de la référence SKU de machine virtuelle, mais il reste très simple. Pour ce faire, vous devez procéder comme suit :
+Le cluster managé Service Fabric ne prend pas en charge la modification sur place de la référence SKU de machine virtuelle, mais il est simple puis classique. Pour ce faire, vous devez procéder comme suit :
 * [Créez un nouveau type de nœud](how-to-managed-cluster-modify-node-type.md#add-or-remove-a-node-type-with-portal) avec la référence SKU de machine virtuelle requise.
 * Migrez votre charge de travail. Vous pouvez utiliser cette [propriété de sélection élective pour vous assurer que certaines charges de travail s’exécutent uniquement sur certains types de nœuds du cluster](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). 
 * [Supprimer l’ancien type de nœud](how-to-managed-cluster-modify-node-type.md#add-or-remove-a-node-type-with-portal)
 
+
+
+## <a name="configure-multiple-managed-disks-preview"></a>Configurer plusieurs disques managés (version préliminaire)
+Les clusters managés Service Fabric par défaut configurent un disque managé. En configurant la propriété et les valeurs facultatives suivantes, vous pouvez ajouter des disques managés supplémentaires aux types de nœuds au sein d’un cluster. Vous pouvez spécifier la lettre de lecteur, le type de disque et la taille par disque.
+
+Configurez des disques managés supplémentaires en déclarant la propriété `additionalDataDisks` et les paramètres requis dans votre modèle Resource Manager comme suit :
+
+**Exigences concernant les fonctionnalités**
+* Le numéro d’unité logique doit être unique par disque et ne peut pas utiliser le numéro d’unité logique réservé 0
+* La lettre de disque ne peut pas utiliser les lettres réservées C ou D et ne peut pas être modifiée une fois créée. S sera utilisé comme valeur par défaut s’il n’est pas spécifié.
+* Vous devez spécifier un [type de disque pris en charge](how-to-managed-cluster-managed-disk.md)
+* La valeur apiVersion de la ressource de cluster managé Service Fabric doit être **2021-11-01-preview** ou ultérieure.
+
+```json
+     {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+            "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+            "location": "[resourcegroup().location]",
+            "properties": {
+                "additionalDataDisks": {
+                    "lun": "1",
+                    "diskSizeGB": "50",
+                    "diskType": "Standard_LRS",
+                    "diskLetter": "S" 
+            }
+        }
+     }
+```
+
+Voir la [liste complète des paramètres disponibles](/azure/templates/microsoft.servicefabric/2021-11-01/managedclusters)
+
+## <a name="configure-the-service-fabric-data-disk-drive-letter-preview"></a>Configurer la lettre de lecteur de disque de données Service Fabric (version préliminaire)
+Les clusters managés Service Fabric par défaut configurent un disque de données Service Fabric et configurent automatiquement la lettre de lecteur sur tous les nœuds d’un type de nœud. Si vous configurez cette propriété et cette valeur facultatives, vous pouvez spécifier et récupérer la lettre de disque de données Service Fabric si vous avez des exigences spécifiques pour le mappage des lettres de lecteur.
+
+**Exigences concernant les fonctionnalités**
+* La lettre de disque ne peut pas utiliser les lettres réservées C ou D et ne peut pas être modifiée une fois créée. S sera utilisé comme valeur par défaut s’il n’est pas spécifié.
+* La valeur apiVersion de la ressource de cluster managé Service Fabric doit être **2021-11-01-preview** ou ultérieure.
+
+```json
+     {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+            "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+            "location": "[resourcegroup().location]",
+            "properties": {
+                "dataDiskLetter": "S"      
+            }
+        }
+     }
+```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

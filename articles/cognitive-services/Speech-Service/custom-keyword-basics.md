@@ -1,27 +1,27 @@
 ---
 title: Guide de démarrage rapide sur la création de mot clé - Service de reconnaissance vocale
 titleSuffix: Azure Cognitive Services
-description: Votre appareil est toujours à l’écoute d’un mot (ou d’une phrase) clé. Quand l’utilisateur prononce le mot clé, l’appareil envoie tous les sons suivants vers le cloud, jusqu’à ce que l’utilisateur arrête de parler. Pour différencier votre appareil et renforcer votre marque, vous pouvez personnaliser votre mot clé.
+description: Votre appareil est toujours à l’écoute d’un mot (ou d’une phrase) clé. Lorsqu’un utilisateur prononce le mot clé, votre appareil envoie sa diction au cloud, jusqu’à ce que l’utilisateur cesse de parler. Pour différencier votre appareil et renforcer votre marque, vous pouvez personnaliser votre mot clé.
 services: cognitive-services
 author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/12/2021
 ms.author: eur
 ms.custom: devx-track-csharp, ignite-fall-2021
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 99c6b58950fa7b40328ff85a07db90104ba17531
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 59756ec624bfc4d716bcf222195f53029be05420
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508607"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493180"
 ---
 # <a name="get-started-with-custom-keyword"></a>Bien démarrer avec Mot clé personnalisé
 
-Dans ce guide de démarrage rapide, vous allez découvrir les principes de base de l’utilisation des mots clés personnalisés, en utilisant Speech Studio et le kit SDK Speech. Un mot clé est un mot ou une expression courte qui permet d’activer la fonction vocale de votre produit. Vous créez des modèles de mots clés dans Speech Studio, puis vous exportez un fichier de modèle que vous utilisez avec le kit SDK Speech dans vos applications.
+Dans ce guide de démarrage rapide, vous allez apprendre les bases de l’utilisation de mots clés personnalisés. Un mot clé est un mot ou une expression courte qui permet d’activer la fonction vocale de votre produit. Vous créez des modèles de mots clés dans Speech Studio. Exportez ensuite un fichier de modèle que vous utilisez avec le kit de développement logiciel (SDK) Speech dans vos applications.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -35,33 +35,38 @@ Avant de pouvoir utiliser un mot clé personnalisé, vous devez créer ce mot cl
 > Les modèles de mots clés personnalisés et les fichiers `.table` résultants peuvent **uniquement** être créés dans Speech Studio.
 > Vous ne pouvez pas créer de mots clés personnalisés à partir du kit SDK ni avec des appels REST.
 
-1. Accédez au [Speech Studio](https://aka.ms/sdsdk-speechportal) et **connectez-vous**, ou, si vous n’avez pas d’abonnement vocal, choisissez [**Créer un abonnement**](https://go.microsoft.com/fwlink/?linkid=2086754).
+1. Connectez-vous à [Speech Studio](https://aka.ms/sdsdk-speechportal), puis cliquez sur **Se connecter**. Si vous n’avez pas d’abonnement Speech, accédez à [**Créer des services vocaux**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
-1. Sur la page [Mot clé personnalisé](https://aka.ms/sdsdk-wakewordportal), créez un **Nouveau projet**. 
+1. Sur la page [Mot clé personnalisé](https://aka.ms/sdsdk-wakewordportal), sélectionnez **Créer un projet**. 
 
-1. Entrez un **Nom** et une **Description** facultative, puis sélectionnez la langue. Vous avez besoin d’un seul projet par langue et le support est actuellement limité à l’anglais (États-Unis) et au chinois (mandarin, simplifié).
+1. Entrez un **nom**, une **description** et une **langue** pour votre projet de mot clé personnalisé. Vous ne pouvez choisir qu’une seule langue par projet, et la prise en charge est actuellement limitée à l’anglais (États-Unis) et au chinois (mandarin, simplifié). 
 
-    ![Décrire votre projet de mot clé](media/custom-keyword/custom-kws-portal-new-project.png)
+    ![Décrire votre projet de mot clé](media/custom-keyword/custom-kw-portal-new-project.png)
 
-1. Sélectionnez votre projet dans la liste. 
+1. Sélectionnez le nom de votre projet dans la liste. 
 
-    ![Sélectionner votre projet de mot clé](media/custom-keyword/custom-kws-portal-project-list.png)
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-project-list.png" alt-text="Sélectionnez votre projet de mot clé.":::
 
-1. Pour créer un nouveau modèle de mot clé, cliquez sur **Entraîner le modèle**.
+1. Pour créer un mot clé personnalisé pour votre assistant virtuel, sélectionnez **Créer un modèle**.
 
-1. Entrez un **nom** pour le modèle, une **description** facultative et le **mot clé** de votre choix, puis cliquez sur **Suivant**. Consultez les [instructions](keyword-recognition-guidelines.md#choosing-an-effective-keyword) sur le choix d’un mot clé efficace.
+1. Entrez un **nom** pour le modèle, une **description** et le **mot clé** de votre choix, puis sélectionnez **Suivant**. Consultez les [instructions](keyword-recognition-guidelines.md#choosing-an-effective-keyword) sur le choix d’un mot clé efficace.
 
-    ![Entrez votre mot clé](media/custom-keyword/custom-kws-portal-new-model.png)
+    ![Entrez votre mot clé](media/custom-keyword/custom-kw-portal-new-model.png)
 
-1. Le portail crée des propositions de prononciation pour votre mot clé. Écoutez chaque prononciation en cliquant sur les boutons de lecture, supprimez les coches en regard des prononciations incorrectes. Une fois que seules les bonnes prononciations sont cochées, cliquez sur **Entraîner** pour commencer à générer le modèle de mot clé. 
+1. Le portail crée des propositions de prononciation pour votre mot clé. Écoutez chaque proposition en sélectionnant les boutons de lecture et supprimez les coches en regard des prononciations incorrectes. Sélectionnez toutes les prononciations correspondant à la façon dont vous pensez que vos utilisateurs disent le mot clé, puis sélectionnez **Suivant** pour commencer à générer le modèle de mot clé. 
 
-    ![Capture d’écran montrant où vous choisissez les bonnes prononciations.](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-choose-prons.png" alt-text="Capture d’écran montrant où vous choisissez les bonnes prononciations.":::
 
-1. La génération du modèle peut prendre jusqu’à trente minutes. La liste de mots clés passe de **Traitement en cours** à **Terminé** lorsque le modèle est terminé. Vous pouvez ensuite télécharger le fichier.
+1. Sélectionnez un type de modèle, puis choisissez **Créer**. Vous pouvez afficher la liste des régions qui prennent en charge le type de modèle **Avancé** dans la documentation de [prise en charge dans les régions de la reconnaissance des mots clés](keyword-recognition-region-support.md). 
 
-    ![Vérifier votre mot clé](media/custom-keyword/custom-kws-portal-download-model.png)
+1. La génération du modèle peut prendre jusqu’à 30 minutes. La liste de mots clés passe de **Traitement en cours** à **Terminé** lorsque le modèle est terminé. 
 
-1. Le fichier téléchargé est une archive `.zip`. Extrayez l’archive et un fichier avec l’extension `.table` apparaît. Il s’agit du fichier que vous allez utiliser avec le kit SDK dans la section suivante. Veillez donc à noter son chemin d’accès. Le nom de fichier reflète votre nom de mot clé. Par exemple, un mot clé **Activate device** (Activer l’appareil) a le nom de fichier `Activate_device.table`.
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-review-keyword.png" alt-text="Vérifiez votre mot clé.":::
+
+1. Dans le menu réductible sur la gauche, sélectionnez **Régler** pour accéder aux options pour régler et télécharger votre modèle. Le fichier téléchargé est une archive `.zip`. Extrayez l’archive et un fichier avec l’extension `.table` apparaît. Si vous utilisez le fichier `.table` avec le kit de développement logiciel (SDK), veillez à noter son chemin d’accès.
+
+    :::image type="content" source="media/custom-keyword/custom-kw-portal-download-model.png" alt-text="Téléchargez votre table de modèle.":::
+
 
 ## <a name="use-a-keyword-model-with-the-speech-sdk"></a>Utiliser un modèle de mot clé avec le SDK Speech
 
