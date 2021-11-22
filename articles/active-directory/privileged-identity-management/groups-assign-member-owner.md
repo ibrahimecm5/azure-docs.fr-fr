@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f2978f2ee0eca3aef438d05f1e8aebbee3eeb1
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 62012b910ad1e08291760a2aea0747bf5d4c024d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667684"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157578"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Attribuer l’éligibilité à l’appartenance ou la propriété d’un groupe d’accès privilégié (préversion) dans Privileged Identity Management
 
@@ -34,7 +34,8 @@ Azure AD PIM (Azure Active Directory Privileged Identity Management) vous permet
 
 Effectuez les étapes suivantes pour rendre un utilisateur éligible à l’appartenance ou à la propriété d’un groupe d’accès privilégié.
 
-1. [Connectez-vous à Azure AD](https://aad.portal.azure.com) avec les autorisations d'administrateur général ou de propriétaire de groupe.
+1. Connectez-vous au [Centre d’administration Azure AD](https://aad.portal.azure.com/) avec un utilisateur ayant le rôle d’[administrateur général](../roles/permissions-reference.md#global-administrator), d’administrateur de rôle privilégié ou de propriétaire de groupe.
+
 1. Sélectionnez **Groupes**, puis sélectionnez le groupe assignable à un rôle que vous souhaitez gérer. Vous pouvez effectuer une recherche dans la liste et filtrer celle-ci.
 
     ![Rechercher un groupe assignable à un rôle à gérer dans PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)

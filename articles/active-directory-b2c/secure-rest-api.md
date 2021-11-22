@@ -12,12 +12,12 @@ ms.date: 10/25/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2166b2c730a6101c59dddc38ad9a09c809f4eab2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a738459e50ed87dbfbdc97838d70f049d998eca5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040487"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326801"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Sécuriser votre API utilisée en tant que connecteur d’API dans Azure AD B2C 
 
@@ -340,8 +340,8 @@ Au niveau de ServiceUrl, remplacez your-tenant-name par le nom de votre locatair
     <Key Id="BasicAuthenticationPassword" StorageReferenceId="B2C_1A_SecureRESTClientSecret" />
   </CryptographicKeys>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" />
+    <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="bearerToken" PartnerClaimType="access_token" />
@@ -349,6 +349,9 @@ Au niveau de ServiceUrl, remplacez your-tenant-name par le nom de votre locatair
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
 ```
+
+> [!NOTE]
+> Si vous utilisez les revendications `grant_type` ou `scope` dans d’autres profils techniques, elles doivent également spécifier `DefaultValue` et utiliser `AlwaysUseDefaultValue="true"` pour éviter d’éventuels conflits de liaison par rapport à la valeur incorrecte.
 
 ### <a name="change-the-rest-technical-profile-to-use-bearer-token-authentication"></a>Modifier le profil technique REST pour utiliser l’authentification par jeton du porteur
 

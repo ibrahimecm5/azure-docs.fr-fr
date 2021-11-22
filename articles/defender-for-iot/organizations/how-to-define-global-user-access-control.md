@@ -1,14 +1,14 @@
 ---
 title: Définir le contrôle d’accès utilisateur global
 description: Dans les grandes organisations, les autorisations utilisateur peuvent être complexes et peuvent être déterminées par une structure organisationnelle globale, en plus du site standard et de la structure de zone.
-ms.date: 12/08/2020
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 8f5f8df56a5dcb4152fc0ae9fcae3d504d6cf3e2
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 70437ceeadba0b1c8af9559037ccf718d7a251d4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017431"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283825"
 ---
 # <a name="define-global-access-control"></a>Définir le contrôle d’accès global
 
@@ -16,7 +16,7 @@ Dans les grandes organisations, les autorisations utilisateur peuvent être comp
 
 Pour prendre en charge la demande d’autorisations d’accès utilisateur globales et plus complexes, vous pouvez créer une topologie d’entreprise globale basée sur les divisions, les régions et les sites. Vous pouvez ensuite définir des autorisations d’accès utilisateur autour de ces entités.
 
-L’utilisation des outils d’accès pour la topologie d’entreprise permet aux organisations d’implémenter des stratégies de « confiance zéro » en contrôlant mieux les emplacements où les utilisateurs gèrent et analysent des appareils dans la plateforme Azure Defender pour IoT.
+L’utilisation des outils d’accès pour la topologie d’entreprise permet aux organisations d’implémenter des stratégies de « confiance zéro » en contrôlant mieux les emplacements où les utilisateurs gèrent et analysent des appareils dans la plateforme Microsoft Defender pour IoT.
 
 ## <a name="about-access-groups"></a>À propos des groupes d’accès
 

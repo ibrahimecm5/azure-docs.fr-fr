@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e86dc602e52fb96b7f9cea3a52079fc80c201b
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c96362b522100d27757618e330f45514e4d442df
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041687"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132349240"
 ---
 # <a name="security-operations-for-infrastructure"></a>Opérations de sécurité pour l’infrastructure
 
@@ -51,13 +51,13 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 Dans le portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV ou JSON. Le Portail Azure offre plusieurs méthodes d’intégration entre les journaux Azure AD et d’autres outils, ce qui permet une plus grande automatisation du monitoring et des alertes :
 
-* [Azure Sentinel](../../sentinel/overview.md) : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d'événements SIEM (Security Information and Event Management). 
+* [Microsoft Sentinel](../../sentinel/overview.md) : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d’événements (SIEM, Security Information and Event Management). 
 
 * [Azure Monitor](../../azure-monitor/overview.md) : permet un monitoring et des alertes automatisés de divers états. Peut créer ou utiliser des classeurs pour combiner des données provenant de différentes sources.
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) avec intégration SIEM[ : permet d’intégrer les journaux Azure AD à d’autres systèmes SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) comme Splunk, ArcSight, QRadar et Sumo Logic grâce à l’intégration Azure Event Hub.
 
-* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources, et de vérifier la conformité des applications cloud. 
+* [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources, et de vérifier la conformité des applications cloud. 
 
 Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies spécifiques, vous trouverez des liens vers ceux-ci à la suite du tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents.
 
@@ -137,7 +137,7 @@ Pour configurer la surveillance pour le proxy d’application, consultez [résou
 
 Pour que l’authentification multifacteur (MFA) soit efficace, vous devez également bloquer l’authentification héritée. Vous devez ensuite surveiller votre environnement et alerter sur toute utilisation de l’authentification héritée. En effet, les protocoles d'authentification traditionnels tels que POP, SMTP, IMAP et MAPI ne peuvent pas appliquer l’authentification multifacteur. Ces protocoles sont donc des points d’entrée préférés pour les attaquants de votre organisation. Pour plus d’informations sur les outils que vous pouvez utiliser pour bloquer l’authentification héritée, consultez [Nouveaux outils pour bloquer l’authentification héritée dans votre organisation](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302). 
 
-L’authentification héritée est capturée dans le journal des connexions Azure AD dans le cadre des détails de l’événement. Vous pouvez utiliser le classeur Azure Monitor pour faciliter l’identification de l’utilisation de l’authentification héritée. Pour plus d'informations, consultez la section [Connexions à l'aide de l'authentification traditionnelle](../reports-monitoring/howto-use-azure-monitor-workbooks.md), qui fait partie de la section [Comment utiliser des classeurs Azure Monitor pour créer des rapports Azure Active Directory](../reports-monitoring/howto-use-azure-monitor-workbooks.md). Vous pouvez également utiliser le classeur protocoles non sécurisés pour Azure Sentinel. Pour plus d’informations, consultez [Guide d’implémentation des classeurs des protocoles non sécurisés Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564). Les activités spécifiques à surveiller sont les suivantes :
+L’authentification héritée est capturée dans le journal des connexions Azure AD dans le cadre des détails de l’événement. Vous pouvez utiliser le classeur Azure Monitor pour faciliter l’identification de l’utilisation de l’authentification héritée. Pour plus d'informations, consultez la section [Connexions à l'aide de l'authentification traditionnelle](../reports-monitoring/howto-use-azure-monitor-workbooks.md), qui fait partie de la section [Comment utiliser des classeurs Azure Monitor pour créer des rapports Azure Active Directory](../reports-monitoring/howto-use-azure-monitor-workbooks.md). Vous pouvez également utiliser le classeur protocoles non sécurisés pour Microsoft Sentinel. Pour plus d’informations, consultez [Guide d’implémentation des classeurs des protocoles non sécurisés Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564). Les activités spécifiques à surveiller sont les suivantes :
 
 | Éléments à analyser| Niveau de risque| Where| Filtre/Sous-filtre| Notes |
 | - | - | - | - | - |
@@ -185,7 +185,7 @@ Pour plus d’informations sur la façon dont les informations de configuration 
 
 * Pour le serveur SQL, voir [Enregistrements SQL Server Audit](/sql/relational-databases/security/auditing/sql-server-audit-records).
 
-* Pour Azure Sentinel, voir [Se connecter aux serveurs Windows pour collecter des événements de sécurité](/sql/relational-databases/security/auditing/sql-server-audit-records). 
+* Pour Microsoft Sentinel, consultez [Se connecter aux serveurs Windows pour collecter des événements de sécurité](/sql/relational-databases/security/auditing/sql-server-audit-records). 
 
 * Pour plus d’informations sur la configuration et l’utilisation de Azure AD Connect, voir [Qu’est-ce que Azure AD Connect ?](../hybrid/whatis-azure-ad-connect.md)
 

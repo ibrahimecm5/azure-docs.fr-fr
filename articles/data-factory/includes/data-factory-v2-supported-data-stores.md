@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/29/2021
 ms.author: jianleishen
 ms.custom: include file
-ms.openlocfilehash: 4bb3c4e2c51323400ca233193c65ba85b3200316
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6bb98eee64707f43e486180f2a221689de1dc774
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725809"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354142"
 ---
 | Category | Banque de données | Prise en charge en tant que source | Prise en charge en tant que récepteur | Prise en charge par [Azure IR](../concepts-integration-runtime.md#azure-integration-runtime) | Prise en charge par [IR auto-hébergé](../concepts-integration-runtime.md#self-hosted-integration-runtime) |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -54,7 +54,7 @@ ms.locfileid: "129725809"
 | &nbsp; |[Presto](../connector-presto.md) |✓ | |✓ |✓  |
 | &nbsp; |[SAP Business Warehouse via Open Hub](../connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
 | &nbsp; |[SAP Business Warehouse via MDX](../connector-sap-business-warehouse.md) |✓ | | |✓  |
-| &nbsp; |[SAP HANA](../connector-sap-hana.md) |✓ |✓ | |✓  |
+| &nbsp; |[SAP HANA](../connector-sap-hana.md) |✓ | Récepteur pris en charge uniquement avec le [connecteur ODBC et le pilote ODBC SAP HANA](../connector-sap-hana.md#sap-hana-sink) | |✓  |
 | &nbsp; |[Table SAP](../connector-sap-table.md) |✓ | | |✓  |
 | &nbsp; |[Snowflake](../connector-snowflake.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Spark](../connector-spark.md) |✓ | |✓ |✓  |

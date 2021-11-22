@@ -1,22 +1,22 @@
 ---
-title: Protocoles pris en charge par Azure Defender pour IoT
-description: Découvrez les protocoles pris en charge par Azure Defender pour IoT.
-ms.date: 09/20/2021
+title: Protocoles pris en charge par Microsoft Defender pour IoT
+description: Découvrez les protocoles pris en charge par Microsoft Defender pour IoT.
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 9320b43cf645e62d68baac39cdf4f06dd1825305
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ebfd983baf2e925fda66c5fc23edc380420db591
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644426"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305957"
 ---
 # <a name="support-for-iot-ot-ics-and-scada-protocols"></a>Prise en charge des protocoles pour IoT, OT, ICS et SCADA
 
-Azure Defender pour IoT offre une plateforme de cybersécurité de technologie opérationnelle (OT, Operational Technology) ouverte et interopérable. Defender pour IoT est déployé dans de nombreux endroits différents et réduit les risques liés à l’IoT, à l’informatique (IT) et au partage de connexion Internet (ICS) avec des déploiements dans des environnements exigeants et complexes dans l’ensemble des secteurs verticaux et géographiques.
+Microsoft Defender pour IoT offre une plateforme de cybersécurité de technologie opérationnelle (OT, Operational Technology) ouverte et interopérable. Defender pour IoT est déployé dans de nombreux endroits différents et réduit les risques liés à l’IoT, à l’informatique (IT) et au partage de connexion Internet (ICS) avec des déploiements dans des environnements exigeants et complexes dans l’ensemble des secteurs verticaux et géographiques.
 
 ## <a name="supported-protocols"></a>Protocoles pris en charge
 
-Azure Defender pour IoT prend en charge un large choix de protocoles dans une entreprise diversifiée et comprend des équipements d’automatisation industrielle pour l’ensemble des secteurs industriels, des réseaux d’entreprise et des environnements BMS (Building Management System). Pour les protocoles personnalisés ou propriétaires, Microsoft offre un SDK qui facilite le développement, le test et le déploiement de dissecteurs de protocoles personnalisés sous forme de plug-ins. Le SDK effectue tout cela sans divulguer les informations propriétaires, comme la façon dont les protocoles sont conçus, ou en partageant des PCAP qui peuvent contenir des informations sensibles. Les protocoles pris en charge sont listés ci-dessous.
+Microsoft Defender pour IoT prend en charge un large choix de protocoles dans une entreprise diversifiée et comprend des équipements d’automatisation industrielle pour l’ensemble des secteurs industriels, des réseaux d’entreprise et des environnements BMS (Building Management System). Pour les protocoles personnalisés ou propriétaires, Microsoft offre un SDK qui facilite le développement, le test et le déploiement de dissecteurs de protocoles personnalisés sous forme de plug-ins. Le SDK effectue tout cela sans divulguer les informations propriétaires, comme la façon dont les protocoles sont conçus, ou en partageant des PCAP qui peuvent contenir des informations sensibles. Les protocoles pris en charge sont listés ci-dessous.
 
 ### <a name="supported-protocols-passive-monitoring"></a>Protocoles pris en charge (supervision passive)
 
@@ -119,4 +119,5 @@ Nous vous invitons à rejoindre notre communauté ici : <horizon-community@micr
 ## <a name="next-steps"></a>Étapes suivantes
 
 En savoir plis sur le [Dissecteur de protocole propriétaire Horizon](references-horizon-sdk.md).
+
 Consultez notre [API Horizon](references-horizon-api.md).

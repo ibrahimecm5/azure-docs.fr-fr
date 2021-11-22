@@ -1,5 +1,5 @@
 ---
-title: Fonctionnalités du Pare-feu Azure
+title: Fonctionnalités du Pare-feu Azure Standard
 description: Découvrir les fonctionnalités du service Pare-feu Azure
 services: firewall
 author: vhorne
@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 348a52aaee7569a4f98a4d67b83d1d957fd89f62
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0c9b871197085a6a220482c3b9d1d35f25d5b427
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130242214"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136754"
 ---
-# <a name="azure-firewall-features"></a>Fonctionnalités du Pare-feu Azure
+# <a name="azure-firewall-standard-features"></a>Fonctionnalités du Pare-feu Azure Standard
 
-Le [Pare-feu Azure](overview.md) est un service de sécurité réseau cloud managé qui protège vos ressources de réseau virtuel Azure.
+Le [Pare-feu Azure](overview.md) Standard est un service de sécurité réseau cloud managé qui protège vos ressources de réseau virtuel Azure.
 
-![Présentation du pare-feu](media/overview/firewall-threat.png)
+:::image type="content" source="media/features/firewall-standard.png" alt-text="Fonctionnalités du Pare-feu Azure Standard":::
 
 Le pare-feu Azure inclut les fonctionnalités suivantes :
 
@@ -30,6 +30,10 @@ Le pare-feu Azure inclut les fonctionnalités suivantes :
 - Balises FQDN
 - Balises de service
 - Informations sur les menaces
+- Proxy DNS
+- Système DNS personnalisé
+- FQDN dans les règles de réseau
+- Déploiement sans adresse IP publique en mode Tunnel forcé
 - Prise en charge du mode SNAT sortant
 - Prise en charge du trafic DNAT entrant
 - Adresses IP publiques multiples
@@ -82,6 +86,30 @@ Une [balise de service](service-tags.md) représente un groupe de préfixes d’
 ## <a name="threat-intelligence"></a>Informations sur les menaces
 
 Le filtrage basé sur [Threat Intelligence](threat-intel.md) peut être activé pour votre pare-feu pour donner l’alerte et rejeter le trafic depuis ou vers des adresses IP et des domaines malveillants connus. Ces adresses IP et domaines proviennent du flux Microsoft Threat Intelligence.
+
+## <a name="dns-proxy"></a>Proxy DNS
+
+Si le proxy DNS est activé, le Pare-feu Azure peut traiter les requêtes DNS d'un ou plusieurs réseaux virtuels et les transférer vers le serveur DNS de votre choix. Cette fonctionnalité essentielle est nécessaire pour disposer d'un filtrage de FQDN fiable dans les règles de réseau. Vous pouvez activer le proxy DNS dans les paramètres du Pare-feu Azure et de la stratégie de pare-feu. Pour en savoir plus sur le proxy DNS, consultez [Paramètres DNS du Pare-feu Azure](dns-settings.md).
+
+## <a name="custom-dns"></a>Système DNS personnalisé
+
+Le système DNS personnalisé vous permet de configurer le Pare-feu Azure pour qu'il utilise votre propre serveur DNS, tout en veillant à ce que les dépendances sortantes du pare-feu soient toujours résolues avec Azure DNS. Vous pouvez configurer un serveur DNS individuel ou plusieurs serveurs dans les paramètres DNS du Pare-feu Azure et de la stratégie de pare-feu. Pour en savoir plus sur le système DNS personnalisé, consultez [Paramètres DNS du Pare-feu Azure](dns-settings.md).
+
+Le Pare-feu Azure peut également résoudre les noms à l’aide du DNS privé Azure. Le réseau virtuel sur lequel réside le Pare-feu Azure doit être lié à la zone privée Azure. Pour en savoir plus, consultez [Utiliser le Pare-feu Azure comme redirecteur DNS avec Private Link](https://github.com/adstuart/azure-privatelink-dns-azurefirewall).
+
+## <a name="fqdn-in-network-rules"></a>FQDN dans les règles de réseau
+
+Vous pouvez utiliser des noms de domaine complets (FQDN) dans les règles de réseau basées sur la résolution DNS dans le Pare-feu Azure et la stratégie de pare-feu. 
+
+Les FQDN spécifiés dans vos regroupements de règles sont traduits en adresses IP en fonction des paramètres DNS de votre pare-feu. Cette fonctionnalité vous permet de filtrer le trafic sortant en utilisant des FQDN avec n'importe quel protocole TCP/UDP (y compris NTP, SSH, RDP, etc.). Étant donné que cette fonctionnalité est basée sur la résolution DNS, il est fortement recommandé d’activer le proxy DNS pour garantir la cohérence de la résolution de noms avec vos machines virtuelles protégées et votre pare-feu.
+
+## <a name="deploy-azure-firewall-without-public-ip-address-in-forced-tunnel-mode"></a>Déployer un Pare-feu Azure sans adresse IP publique en mode de Tunnel forcé
+
+Le service Pare-feu Azure requiert une adresse IP publique à des fins opérationnelles. Bien qu'ils soient sécurisés, certains déploiements préfèrent ne pas exposer une adresse IP publique directement à Internet. 
+
+Dans ce cas, vous pouvez déployer le Pare-feu Azure en mode Tunnel forcé. Cette configuration crée une carte réseau de gestion qui est utilisée par le Pare-feu Azure pour ses opérations. Le réseau Tenant Datapath peut être configuré sans adresse IP publique, et le trafic Internet peut être transféré en mode Tunnel forcé vers un autre pare-feu ou être complètement bloqué.
+
+Le mode de Tunnel forcé ne peut pas être configuré au moment de l’exécution. Vous pouvez soit redéployer le Pare-feu, soit utiliser la fonctionnalité d'arrêt et de démarrage pour reconfigurer un Pare-feu Azure existant en mode Tunnel forcé. Les pare-feu déployés dans les hubs sécurisés sont toujours déployés en mode Tunnel forcé.
 
 ## <a name="outbound-snat-support"></a>Prise en charge du mode SNAT sortant
 

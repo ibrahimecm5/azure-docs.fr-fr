@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d9dff0d6d9d8421e160c19c60efc9e871d7867ed
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3e7ccb16efe21503087dcac035e2ca8f832ef7b7
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443571"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370344"
 ---
 # <a name="integrate-managed-hsm-with-azure-private-link"></a>Intégrer Managed HSM à Azure Private Link
 
@@ -23,6 +23,9 @@ Un point de terminaison privé Azure est une interface réseau qui vous connecte
 
 Pour plus d’informations, consultez [Qu’est-ce qu’Azure Private Link ?](../../private-link/private-link-overview.md)
 
+> [!NOTE]
+> Le module de sécurité matériel (HSM) managé ne prend actuellement pas en charge les règles IP ou les [Points de terminaison de service de réseau virtuel](../../virtual-network/virtual-network-service-endpoints-overview.md). 
+> 
 ## <a name="prerequisites"></a>Prérequis
 
 Pour intégrer un module de sécurité matériel (HSM) managé à Azure Private Link, vous avez besoin des éléments suivants :
@@ -65,7 +68,7 @@ az network private-dns link vnet create --resource-group {RG} --virtual-network 
 
 ### <a name="allow-trusted-services-to-access-managed-hsm"></a>Autoriser les services approuvés à accéder à Managed HSM
 
-Lorsque le pare-feu est activé, tout accès au HSM à partir de n’importe quel emplacement qui n’utilise pas de connexion de points de terminaison privés est refusé, y compris Internet public et les services Azure. Utilisez l'option `--baypss AzureServices` si vous souhaitez autoriser les services Microsoft à accéder à vos clés dans votre HSM géré. Les entités individuelles (par exemple, un compteAzure Storage ou une instance Azure SQL Server) doivent toujours avoir des attributions de rôle spécifiques en place pour pouvoir accéder à une clé. 
+Lorsque le pare-feu est activé, tout accès au HSM à partir de n’importe quel emplacement qui n’utilise pas de connexion de points de terminaison privés est refusé, y compris Internet public et les services Azure. Utilisez l'option `--bypass AzureServices` si vous souhaitez autoriser les services Microsoft à accéder à vos clés dans votre HSM géré. Les entités individuelles (par exemple, un compteAzure Storage ou une instance Azure SQL Server) doivent toujours avoir des attributions de rôle spécifiques en place pour pouvoir accéder à une clé. 
 
 > [!NOTE]
 > Seuls les scénarios d’utilisation de services approuvés spécifiques sont pris en charge. Pour plus d’informations, reportez-vous à la [liste des scénarios d’utilisation des services de confiance](../general/overview-vnet-service-endpoints.md#trusted-services).

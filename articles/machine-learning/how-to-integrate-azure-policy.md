@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 7c9b8d5ef1126d204d4f418bc70100760468bc33
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ea374a6503b2d015ca92d3aee8179b3511c9755f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562368"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289677"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Auditer et gérer Azure Machine Learning
 
@@ -125,7 +125,7 @@ Pour configurer cette stratégie, définissez le paramètre d’effet sur __Modi
 
 * [Documentation Azure Policy](../governance/policy/overview.md)
 * [Stratégies intégrées pour Azure Machine Learning](policy-reference.md)
-* [Utiliser des stratégies de sécurité avec Azure Security Center](../security-center/tutorial-security-policy.md)
+* [Utilisation des stratégies de sécurité avec Microsoft Defender pour le cloud](../security-center/tutorial-security-policy.md)
 * Le [scénario du Cloud Adoption Framework pour la gestion des données et l’analytique](/azure/cloud-adoption-framework/scenarios/data-management/) décrit les points à prendre en compte pour l’exécution des charges de travail liées aux données et à l’analytique dans le cloud.
 * Les [zones d’atterrissage de données du Cloud Adoption Framework](https://github.com/Azure/data-landing-zone) fournissent une implémentation de référence pour la gestion des charges de travail liées aux données et à l’analytique dans Azure.
 * [Découvrez comment utiliser une stratégie permettant d’intégrer Azure Private Link aux zones DNS privées Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale) afin de gérer la configuration des liaisons privées pour l’espace de travail et les ressources dépendantes.

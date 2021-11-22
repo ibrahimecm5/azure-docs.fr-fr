@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1d90ba4fa9d64bfec1fca62320e09ea53842d569
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 11b74530daa08112ca945edfa45595a3aa1cf1f4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122532737"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491750"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Problèmes courants et résolutions pour Azure IoT Edge
 
@@ -395,7 +395,68 @@ Utilisez un seul type de mécanisme de déploiement par appareil, qu’il s’ag
 
 Pour plus d’informations, consultez [Comprendre les déploiements automatiques IoT Edge pour un seul ou de nombreux appareils](module-deployment-monitoring.md).
 
-<!-- <1.2> -->
+## <a name="iot-edge-module-reports-connectivity-errors"></a>Le module IoT Edge signale des erreurs de connectivité
+
+**Comportement observé :**
+
+Les modules IoT Edge qui se connectent directement aux services cloud, y compris les modules de runtime, cessent de fonctionner comme prévu et retournent des erreurs concernant les échecs de connexion ou de mise en réseau.
+
+**Cause racine :**
+
+Les conteneurs s’appuient sur le transfert de paquets IP pour se connecter à Internet afin de pouvoir communiquer avec les services cloud. Le transfert de paquets IP est activé par défaut dans Docker, mais s’il est désactivé, tous les modules qui se connectent aux services cloud ne fonctionneront pas comme prévu. Pour plus d’informations, consultez [Comprendre la communication avec les conteneurs](http://docs.docker.oeynet.com/engine/userguide/networking/default_network/container-communication/) dans la documentation Docker.
+
+**Résolution :**
+
+Pour activer le transfert de paquets IP, procédez comme suit.
+
+<!--1.1-->
+:::moniker range="iotedge-2018-06"
+
+Sur Windows :
+
+1. Ouvrez l’application **Exécuter**.
+
+1. Entrez `regedit` dans la zone de texte et sélectionnez **Ok**.
+
+1. Dans l’**Éditeur du Registre**, accédez à **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters**.
+
+1. Recherchez le paramètre **IPEnableRouter**.
+
+   1. Si le paramètre existe, affectez la valeur **1** au paramètre.
+
+   1. Si le paramètre n’existe pas, ajoutez-le en tant que nouveau paramètre avec les paramètres suivants :
+
+      | Paramètre | Valeur |
+      | ------- | ----- |
+      | Name    | IPEnableRouter |
+      | Type    | REG_DWORD |
+      | Valeur   | 1 |
+
+1. Fermez la fenêtre Éditeur du Registre.
+
+1. Redémarrez votre système pour appliquer les modifications.
+
+Sur Linux :
+:::moniker-end
+<!-- end -->
+
+1. Ouvrez le fichier **sysctl.conf**.
+
+   ```bash
+   sudo nano /etc/sysctl.conf
+   ```
+
+1. Ajoutez la ligne suivante au fichier.
+
+   ```input
+   net.ipv4.ip_forward=1
+   ```
+
+1. Enregistrez et fermez le fichier.
+
+1. Redémarrez le service réseau et le service Docker pour appliquer les modifications.
+
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
 ## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>IoT Edge derrière une passerelle ne peut pas exécuter de requêtes HTTP ni démarrer le module edgeAgent

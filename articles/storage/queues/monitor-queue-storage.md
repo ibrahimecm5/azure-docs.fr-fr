@@ -5,17 +5,17 @@ author: normesta
 services: storage
 ms.author: normesta
 ms.reviewer: fryu
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 05dae168df808cf0abd55b7908f181044fa8651f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dfd31111844bc6969d0d2d61caac53b663b1c05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804388"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346626"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Surveiller le service Stockage File d'attente
 
@@ -71,7 +71,7 @@ Vous pouvez créer un paramètre de diagnostic en utilisant le portail Azure, Po
 Pour obtenir des instructions générales, consultez [Créer un paramètre de diagnostic pour collecter des journaux et métriques de plateforme dans Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 > [!NOTE]
-> Les journaux de stockage Azure dans Azure Monitor sont en préversion publique et sont disponibles pour le test en préversion dans toutes les régions de cloud public et US Government. Cette préversion active les journaux des objets blob (qui incluent Azure Data Lake Storage Gen2), les fichiers, les files d’attente et les tables. Cette fonctionnalité est disponible pour tous les comptes de stockage créés avec le modèle de déploiement Resource Manager. Voir [Vue d’ensemble des comptes de stockage](../common/storage-account-overview.md).
+> Les journaux de stockage Azure dans Azure Monitor sont en préversion publique et sont disponibles pour le test en préversion dans toutes les régions de cloud public et US Government. Cette préversion active les journaux des objets blob (qui incluent Azure Data Lake Storage Gen2), les fichiers, les files d’attente et les tables. Cette fonctionnalité est disponible pour tous les comptes de stockage créés avec le modèle de déploiement Resource Manager. Voir [Vue d’ensemble des comptes de stockage](../common/storage-account-overview.md).
 
 ### <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
@@ -322,6 +322,17 @@ Vous pouvez lire les valeurs des métriques au niveau de votre compte de stockag
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>Lecture des valeurs de métriques avec des dimensions
+
+Lorsqu'une métrique prend en charge les dimensions, vous pouvez lire les valeurs des métriques et les filtrer à l'aide des valeurs des dimensions. Utilisez l’applet de commande [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetMessages" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>Dresser la liste de la définition des métriques de niveau compte
@@ -340,6 +351,14 @@ Vous pouvez lire les valeurs des métriques de votre compte de stockage ou du se
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>Lecture des valeurs de métriques avec des dimensions
+
+Lorsqu'une métrique prend en charge les dimensions, vous pouvez lire les valeurs des métriques et les filtrer à l'aide des valeurs des dimensions. Utilisez la commande [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetMessages' " --aggregation "Total" 
 ```
 
 ### <a name="net-sdk"></a>[Kit de développement logiciel (SDK) .NET](#tab/azure-portal)

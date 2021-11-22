@@ -1,14 +1,14 @@
 ---
 title: Expériences de la gestion multilocataire
 description: Azure Lighthouse autorise et améliore les expériences interlocataires dans de nombreux services Azure.
-ms.date: 10/21/2021
+ms.date: 11/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 115f71148ddd2d18cd99be883bdef77b1c27ad1b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 07a0e2e9a42ace65cc159e0363a8ba86f4291cca
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249682"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492831"
 ---
 # <a name="cross-tenant-management-experiences"></a>Expériences de la gestion multilocataire
 
@@ -54,7 +54,7 @@ La plupart des tâches et des services peuvent être exécutés sur des ressourc
   - [Gérer des machines Windows Server ou Linux en dehors d’Azure, qui sont connectées](../../azure-arc/servers/onboard-portal.md) à des abonnements et/ou à des groupes de ressources délégués dans Azure
   - Gérer des machines connectées à l’aide de constructions Azure, comme Azure Policy et le marquage
   - S’assurer que le même ensemble de stratégies est appliqué dans les environnements hybrides des clients
-  - Utiliser Azure Security Center pour surveiller la conformité des environnements hybrides des clients
+  - Utiliser Microsoft Defender pour le cloud pour surveiller la conformité entre les environnements hybrides des clients
 - Gérer des clusters Kubernetes hybrides à grande échelle – [Kubernetes avec Azure Arc (préversion)](../../azure-arc/kubernetes/overview.md) :
   - [Gérer des clusters Kubernetes connectés](../../azure-arc/kubernetes/quickstart-connect-cluster.md) à des abonnements délégués et/ou à des groupes de ressources dans Azure
   - [Utiliser GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) dans des clusters connectés
@@ -125,30 +125,6 @@ La plupart des tâches et des services peuvent être exécutés sur des ressourc
 
 - Inclut désormais l’ID de locataire dans les résultats de requête renvoyés, ce qui vous permet d’identifier si un abonnement appartient à un locataire géré
 
-[Azure Security Center](../../security-center/index.yml) :
-
-- Visibilité inter-locataire
-  - Superviser la conformité aux stratégies de sécurité et garantir la couverture de sécurité des ressources de tous les locataires
-  - Surveillance continue de la conformité réglementaire de plusieurs locataires dans une seule vue
-  - Surveiller, trier et hiérarchiser les recommandations de sécurité actionnables avec un calcul du degré de sécurisation
-- Gestion d’état de la sécurité inter-locataire
-  - Gérer les stratégies de sécurité
-  - Agir sur des ressources non conformes à l’aide de recommandations de sécurité actionnables
-  - Collecter et stocker des données liées à la sécurité
-- Détection et traitement des menaces inter-locataires
-  - Détecter des menaces pesant sur des ressources inter-locataires
-  - Appliquer des contrôles de protection avancée contre les menaces tels que l’accès à la machine virtuelle juste-à-temps (JIT)
-  - Renforcer la configuration du groupe de sécurité réseau avec le renforcement du réseau adaptatif
-  - S’assurer que les serveurs exécutent uniquement les applications et processus qu’ils doivent exécuter avec des contrôles d’application adaptatifs
-  - Surveiller les modifications apportées aux fichiers et aux entrées de Registre importants avec le monitoring d’intégrité de fichier
-- À savoir : l’intégralité de l’abonnement doit être déléguée au locataire gérant ; les scénarios Azure Security Center ne sont pas pris en charge avec les groupes de ressources délégués.
-
-[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md) :
-
-- Gérer les ressources Azure Sentinel [dans les locataires clients](../../sentinel/multiple-tenants-service-providers.md)
-- [Suivre les attaques et afficher les alertes de sécurité sur plusieurs locataires](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- [Afficher les incidents](../../sentinel/multiple-workspace-view.md) dans plusieurs espaces de travail Azure Sentinel répartis entre les locataires
-
 [Azure Service Health](../../service-health/index.yml) :
 
 - Surveiller l’intégrité des ressources du client avec Azure Resource Health
@@ -165,6 +141,30 @@ La plupart des tâches et des services peuvent être exécutés sur des ressourc
 - Accéder à des machines virtuelles avec la console série
 - Intégrer des machines virtuelles à Azure Key Vault pour les mots de passe, les secrets ou les clés de chiffrement pour le chiffrement de disque à l’aide d’une [identité managée par le biais d’une stratégie](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret), garantissant que les secrets sont stockés dans un coffre Key Vault dans les locataires gérés
 - Notez que vous ne pouvez pas utiliser Azure Active Directory pour l’ouverture de session à distance sur les machines virtuelles
+
+[Microsoft Defender pour le cloud](../../security-center/index.yml) :
+
+- Visibilité inter-locataire
+  - Superviser la conformité aux stratégies de sécurité et garantir la couverture de sécurité des ressources de tous les locataires
+  - Surveillance continue de la conformité réglementaire de plusieurs locataires dans une seule vue
+  - Surveiller, trier et hiérarchiser les recommandations de sécurité actionnables avec un calcul du degré de sécurisation
+- Gestion d’état de la sécurité inter-locataire
+  - Gérer les stratégies de sécurité
+  - Agir sur des ressources non conformes à l’aide de recommandations de sécurité actionnables
+  - Collecter et stocker des données liées à la sécurité
+- Détection et traitement des menaces inter-locataires
+  - Détecter des menaces pesant sur des ressources inter-locataires
+  - Appliquer des contrôles de protection avancée contre les menaces tels que l’accès à la machine virtuelle juste-à-temps (JIT)
+  - Renforcer la configuration du groupe de sécurité réseau avec le renforcement du réseau adaptatif
+  - S’assurer que les serveurs exécutent uniquement les applications et processus qu’ils doivent exécuter avec des contrôles d’application adaptatifs
+  - Surveiller les modifications apportées aux fichiers et aux entrées de Registre importants avec le monitoring d’intégrité de fichier
+- À savoir : l’intégralité de l’abonnement doit être déléguée au locataire gérant ; les scénarios Microsoft Defender pour le cloud ne sont pas pris en charge avec les groupes de ressources délégués.
+
+[Microsoft Sentinel](../../sentinel/multiple-tenants-service-providers.md) :
+
+- Gérer les ressources Microsoft Sentinel [dans les locataires clients](../../sentinel/multiple-tenants-service-providers.md)
+- [Suivre les attaques et afficher les alertes de sécurité sur plusieurs locataires](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Afficher les incidents](../../sentinel/multiple-workspace-view.md) dans plusieurs espaces de travail Microsoft Sentinel répartis entre les locataires
 
 Demandes de support :
 

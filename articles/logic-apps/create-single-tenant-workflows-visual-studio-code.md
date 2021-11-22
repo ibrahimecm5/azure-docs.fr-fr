@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/13/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 08690347f9a0dae5237ad74bfda9ad3eb6c8ef84
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b71edfc5f57779bc96b165f8bdef2436ec9d16b3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072848"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552562"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>Créer un flux de travail d’intégration avec Azure Logic Apps monolocataire (standard) dans Visual Studio Code
 
@@ -81,7 +81,7 @@ Pour plus d’informations, consultez la [documentation Azurite](https://github.
 
   * [Extension C# pour Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), qui permet à la fonctionnalité F5 d’exécuter votre application logique.
 
-  * [Azure Functions Core Tools, dernière version](https://github.com/Azure/azure-functions-core-tools/releases) en utilisant la version Microsoft Installer (MSI), à savoir `func-cli-X.X.XXXX-x*.msi`.
+  * [Azure Functions Core Tools, version 3.x](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3904) en utilisant la version Microsoft Installer (MSI), à savoir `func-cli-X.X.XXXX-x*.msi`. N’installez pas la version 4. x, qui n’est pas prise en charge et ne fonctionnera pas.
 
     Ces outils incluent une version du même runtime qui optimise le runtime d’Azure Functions que l’extension Azure Logic Apps (standard) utilise dans Visual Studio Code.
 
@@ -316,13 +316,13 @@ Dans cet exemple, le workflow utilise le déclencheur et les actions suivantes 
 
 1. En regard du concepteur, dans le volet **Ajouter un déclencheur**, dans la zone de recherche **Choisir une opération**, assurez-vous que l’option **Intégrée** est activée de sorte que vous pouvez sélectionner un déclencheur qui s’exécute en mode natif.
 
-1. Dans la zone de recherche **Choisir une opération**, entrez `when a http request`, puis sélectionnez le déclencheur de demande intégré nommé **Lors de la réception d’une requête HTTP**.
+1. Dans la zone de recherche **Choisir une opération**, entrez `when a http request`, puis sélectionnez le déclencheur de requête intégré nommé **Lors de la réception d’une requête HTTP**.
 
-   ![Capture d’écran montrant le concepteur de workflow et le volet **Ajouter un déclencheur** avec le déclencheur « Lors de la réception d’une requête HTTP » sélectionné.](./media/create-single-tenant-workflows-visual-studio-code/add-request-trigger.png)
+   ![Capture d’écran illustrant le concepteur de workflow et le volet **Ajouter un déclencheur** avec le déclencheur « Lors de la réception d’une requête HTTP » sélectionné.](./media/create-single-tenant-workflows-visual-studio-code/add-request-trigger.png)
 
    Lorsque le déclencheur s’affiche sur le concepteur, le volet d’informations du déclencheur s’ouvre pour afficher les propriétés, les paramètres et d’autres actions du déclencheur.
 
-   ![Capture d’écran montrant le concepteur de workflow avec le déclencheur « Lors de la réception d’une requête HTTP » sélectionné et le volet d’informations du déclencheur ouvert.](./media/create-single-tenant-workflows-visual-studio-code/request-trigger-added-to-designer.png)
+   ![Capture d’écran illustrant le concepteur de workflow avec le déclencheur « Lors de la réception d’une requête HTTP » sélectionné et le volet d’informations du déclencheur ouvert.](./media/create-single-tenant-workflows-visual-studio-code/request-trigger-added-to-designer.png)
 
    > [!TIP]
    > Si le volet d’informations ne s’affiche pas, assurez-vous que le déclencheur est sélectionné sur le concepteur.

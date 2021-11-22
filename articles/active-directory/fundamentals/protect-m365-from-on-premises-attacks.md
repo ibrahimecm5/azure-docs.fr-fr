@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523f0d1907e42f2db5d17ca4bd3cd81bfd7f6ca1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2c8b611b9edb3e4c53b2d40231a6df6c3ccd8a1e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131466064"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346493"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Protéger Microsoft 365 des attaques locales
 
@@ -213,16 +213,16 @@ Surveillez les scénarios clés suivants, en plus des scénarios propres à votr
 
 * **Activité suspecte** 
 
-    Surveillez tous les [événements à risque Azure AD](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) pour détecter toute activité suspecte. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) est intégré en mode natif à Azure Security Center.
+    Surveillez tous les [événements à risque Azure AD](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) pour détecter toute activité suspecte. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) est intégré en mode natif à Microsoft Defender pour le cloud.
 
     Définissez les [emplacements nommés](../conditional-access/location-condition.md) du réseau pour éviter les détections bruyantes sur les signaux basés sur l'emplacement. 
 *  **Alertes d’analyse comportementale des utilisateurs et des entités** 
 
     Utilisez l’analyse comportementale des utilisateurs et des entités pour obtenir des insights sur la détection d’anomalie.
 
-    * Microsoft Cloud App Security (MCAS) fournit [une analyse comportementale des utilisateurs et des entités dans le cloud](/cloud-app-security/tutorial-ueba).
+    * Microsoft Defender for Cloud Apps fournit [une analyse comportementale des utilisateurs et des entités dans le cloud](/cloud-app-security/tutorial-ueba).
 
-    * Vous pouvez [intégrer l’analyse comportementale locale des utilisateurs et des entités à partir d’Azure Advanced Threat Protection (ATP)](/defender-for-identity/install-step2). MCAS lit les signaux d'Azure AD Identity Protection. 
+    * Vous pouvez [intégrer l’analyse comportementale locale des utilisateurs et des entités à partir d’Azure Advanced Threat Protection (ATP)](/defender-for-identity/install-step2). Defender for Cloud Apps lit les signaux d'Azure AD Identity Protection. 
 
 * **Activité des comptes d’accès d’urgence** 
 
@@ -266,7 +266,7 @@ Surveillez les scénarios clés suivants, en plus des scénarios propres à votr
 
 ### <a name="log-management"></a>Gestion du journal
 
-Définissez une stratégie, une conception et une implémentation du stockage et de la rétention des journaux afin de faciliter la mise en place d’un ensemble d’outils cohérents. Par exemple, vous pouvez prendre en compte les systèmes SIEM (Informations de sécurité et gestion d’événements) comme Azure Sentinel, les requêtes courantes et les guides opérationnels d’investigation et de forensique.
+Définissez une stratégie, une conception et une implémentation du stockage et de la rétention des journaux afin de faciliter la mise en place d’un ensemble d’outils cohérents. Par exemple, vous pouvez prendre en compte les systèmes SIEM (Informations de sécurité et gestion d’événements) comme Microsoft Sentinel, les requêtes courantes et les guides opérationnels d’investigation et de forensique.
 
 * **Journaux Azure AD** : Ingérez les signaux et les journaux générés en respectant systématiquement les meilleures pratiques pour les paramètres tels que les diagnostics, la rétention des journaux et l’ingestion SIEM. 
 

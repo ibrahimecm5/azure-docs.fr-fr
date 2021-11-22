@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: reference
 ms.date: 09/09/2021
-ms.openlocfilehash: 99d642a1cd534691e5089ac6956dc023d3a207d0
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: f242521b5ef683a125d86d7109b3e36d4d2e02be
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388847"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136984"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Guide de référence sur l’utilisation des fonctions dans les expressions pour Azure Logic Apps et Power Automate
 
@@ -62,13 +62,25 @@ Vous pouvez également obtenir les valeurs de chaîne à partir des paramètres.
 
 Dans les deux cas, le résultat est affecté à la propriété `customerName`.
 
-## <a name="considerations-for-using-functions"></a>Considérations relatives à l'utilisation des fonctions
+<a name="function-considerations"></a>
 
-* Les paramètres de fonction sont évalués de gauche à droite.
+## <a name="considerations-for-using-functions"></a>Considérations relatives à l'utilisation des fonctions
 
 * Le concepteur n’évalue pas les expressions de runtime utilisées en tant que paramètres de fonction au moment de la conception. Le concepteur exige que toutes les expressions puissent être entièrement évaluées au moment de la conception.
 
+* Les paramètres de fonction sont évalués de gauche à droite.
+ 
 * Dans la syntaxe des définitions de paramètres, un point d’interrogation (?) affiché après un paramètre signifie que ce paramètre est facultatif. Par exemple, consultez [getFutureTime()](#getFutureTime).
+
+* Les expressions de fonction qui s’affichent en ligne avec du texte brut requièrent des accolades ouvrantes ({}) pour utiliser le format interpolé de l’expression à la place. Ce format permet d’éviter les problèmes d’analyse. Si votre expression de fonction n’apparaît pas en ligne avec du texte brut, aucune accolade n’est nécessaire.
+
+  L’exemple suivant illustre la syntaxe correcte et incorrecte :
+
+  **Correcte** : `"<text>/@{<function-name>('<parameter-name>')}/<text>"`
+ 
+  **Incorrecte** : `"<text>/@<function-name>('<parameter-name>')/<text>"`
+ 
+  **OK** : `"@<function-name>('<parameter-name>')"`
 
 Les sections suivantes organisent les fonction de langage selon leur objectif général, ou vous pouvez parcourir ces fonctions par [ordre alphabétique](#alphabetical-list).
 

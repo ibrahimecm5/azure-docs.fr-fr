@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: eur
-ms.openlocfilehash: ae07075b91c21a56cd641d81319b863ced950139
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 34a45c4759954c0c0679dcafec13b5327a82cffd
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506543"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252279"
 ---
 :::row:::
     :::column span="3":::
-        Le SDK Speech prend en charge **Ubuntu 16.04** (jusqu’à septembre), **Ubuntu 18.04/20.04**, **Debian 9/10**, **Red Hat Enterprise Linux (RHEL) 7/8**, et **CentOS 7/8** uniquement sur les architectures cibles suivantes en cas d’utilisation avec Linux :
+        Le SDK Speech prend en charge **Ubuntu 16.04** (jusqu’à septembre 2021), **Ubuntu 2021**, **Debian 18.04/20.04**, **Red Hat Enterprise Linux (RHEL) 9/10**, et **CentOS 7/8** uniquement sur les architectures cibles suivantes en cas d’utilisation avec Linux :
     :::column-end:::
     :::column:::
         <br>
         <div class="icon is-large">
-            <img alt="Linux" src="/media/logos/logo_linux-color.svg" width="60px">
+            <img alt="Linux" src="https://docs.microsoft.com/media/logos/logo_linux.svg" width="60px">
         </div>
     :::column-end:::
 :::row-end:::
@@ -39,28 +39,22 @@ ms.locfileid: "131506543"
 Pour une application native, le Kit de développement logiciel (SDK) Speech s’appuie sur `libMicrosoft.CognitiveServices.Speech.core.so`. Assurez-vous que l’architecture cible (x86, x64) correspond à l’application. Selon la version de Linux, des dépendances supplémentaires peuvent être nécessaires.
 
 - Les bibliothèques partagées de la bibliothèque C de GNU (notamment la bibliothèque de programmation POSIX Threads, `libpthreads`)
-- La bibliothèque OpenSSL (`libssl.so.1.0.0` ou `libssl.so.1.0.2`)
-- La bibliothèque partagée pour les applications ALSA (`libasound.so.2`)
+- La bibliothèque OpenSSL (`libssl`)
+- La bibliothèque partagée pour les applications ALSA (`libasound`)
 
-# <a name="ubuntu-160418042004"></a>[Ubuntu 16.04/18.04/20.04](#tab/ubuntu)
+# <a name="ubuntu-18042004"></a>[Ubuntu 18.04/20.04](#tab/ubuntu)
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
+sudo apt-get install build-essential libssl-dev libasound2 wget
 ```
-
-> [!NOTE]
-> Si libssl1.0.x n’est pas disponible, installez libssl1.1 à la place.
 
 # <a name="debian-910"></a>[Debian 9/10](#tab/debian)
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.2 libasound2 wget
+sudo apt-get install build-essential libssl-dev libasound2 wget
 ```
-
-> [!NOTE]
-> Si libssl1.0.x n’est pas disponible, installez libssl1.1 à la place.
 
 # <a name="rhel-78-and-centos-78"></a>[RHEL 7/8 and CentOS 7/8](#tab/rhel-centos)
 

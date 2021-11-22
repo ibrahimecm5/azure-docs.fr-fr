@@ -2,19 +2,17 @@
 title: Déployer un module de sécurité IoT Edge
 description: Apprenez à déployer un agent de sécurité Defender pour IoT sur IoT Edge.
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: 67c60841d4d1e9080c95cf50a71be6ad4a845ef1
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: deb6a9e458351d512ccda4a1e5ef42fc921e628a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238621"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306146"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Déployer un module de sécurité sur votre appareil IoT Edge
 
-Le module **Defender pour IoT** constitue une solution de sécurité complète pour vos appareils IoT Edge.
-Ce module de sécurité collecte, agrège et analyse des données de sécurité brutes tirées du système d’exploitation et du système de conteneur pour produire des alertes et des suggestions de sécurité actionnables.
-Pour plus d’informations, consultez [Module de sécurité pour IoT Edge](security-edge-architecture.md).
+Le module **Defender pour IoT** constitue une solution de sécurité complète pour vos appareils IoT Edge. Ce module de sécurité collecte, agrège et analyse des données de sécurité brutes tirées du système d’exploitation et du système de conteneur pour produire des alertes et des suggestions de sécurité actionnables. Pour plus d’informations, consultez [Module de sécurité pour IoT Edge](security-edge-architecture.md).
 
 Dans ce article, vous apprendrez à déployer un module de sécurité sur votre appareil IoT Edge.
 
@@ -41,7 +39,7 @@ Procédez comme suit pour déployer un module de sécurité Defender pour IoT su
 
 1. À partir du portail Microsoft Azure, ouvrez la **Place de marché**.
 
-1. Sélectionnez **Internet des objets**, puis recherchez **Azure Security Center pour IoT** et sélectionnez-le.
+1. Sélectionnez **Internet des objets**, puis recherchez **Microsoft Defender pour IoT** et sélectionnez-le.
 
    :::image type="content" source="media/howto/edge-onboarding.png" alt-text="Sélectionnez Defender pour IoT.":::
 

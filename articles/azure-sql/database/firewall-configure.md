@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
 ms.date: 07/14/2021
-ms.openlocfilehash: c1bb51ff65e7239fc758553288c84a4a52f90740
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 86d4a032b914c56518f5106072eb7a6a1634b8ff
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524362"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550719"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Règles de pare-feu IP Azure SQL Database et Azure Synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,6 +28,10 @@ Lorsque vous créez dans Azure SQL Database ou Azure Synapse Analytics un serveu
 > Cet article ne s’applique *pas* à *Azure SQL Managed Instance*. Pour plus d'informations sur la configuration réseau, consultez [Connecter votre application à Azure SQL Managed Instance](../managed-instance/connect-application-instance.md).
 >
 > Azure Synapse ne prend en charge que les règles de pare-feu IP au niveau serveur. Il ne prend pas en charge les règles de pare-feu IP au niveau de la base de données.
+
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 ## <a name="how-the-firewall-works"></a>Fonctionnement du pare-feu
 

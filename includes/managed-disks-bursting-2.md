@@ -1,23 +1,23 @@
 ---
-title: Fichier Include
+title: Fichier include
 description: Fichier Include
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/02/2021
+ms.date: 11/09/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: f7454d26c57795383cc6bc8464e2259b1b29ed38
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7b1ac1f3b2fcb8c999276fecec495cf496108c12
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506319"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134929"
 ---
 ### <a name="on-demand-bursting"></a>Bursting à la demande
 
-Les disques SSD Premium utilisant le modèle de bursting à la demande peuvent pousser leurs capacités au-delà des cibles prévues à l’origine, aussi souvent que leur charge de travail l’exige et dans la limite de la capacité de bursting maximale. Par exemple, pour un disque P30 de 1 Tio, l’IOPS configurée est de 5 000 IOPS. Lorsque le bursting de disque est activé sur ce disque, vos charges de travail peuvent générer des E/S sur ce disque dans la limite des performances de bursting maximales, soit 30 000 IOPS et 1 000 Mbits/s.
+Les disques SSD Premium utilisant le modèle de bursting à la demande peuvent pousser leurs capacités au-delà des cibles prévues à l’origine, aussi souvent que leur charge de travail l’exige et dans la limite de la capacité de bursting maximale. Par exemple, pour un disque P30 de 1 Tio, l’IOPS configurée est de 5 000 IOPS. Lorsque le bursting de disque est activé sur ce disque, vos charges de travail peuvent générer des E/S sur ce disque dans la limite des performances de bursting maximales, soit 30 000 IOPS et 1 000 Mbits/s. Pour les cibles de rafale max sur chaque disque pris en charge, consultez [Objectifs d’évolutivité et de performances pour les disques de machine virtuelle](../articles/virtual-machines/disks-scalability-targets.md#premium-ssd-managed-disks-per-disk-limits).
 
 Si vous souhaitez que vos charges de travail dépassent fréquemment les capacités de performances prévues, le bursting de disque n’est pas la solution la plus rentable. Dans ce cas, nous vous recommandons de changer le niveau de performance de votre disque et de passer à un [niveau supérieur](../articles/virtual-machines/disks-performance-tiers.md) pour améliorer les performances de base. Consultez les détails de vos factures et analysez-les par rapport au modèle de trafic de vos charges de travail.
 

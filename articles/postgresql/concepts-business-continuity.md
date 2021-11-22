@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: f8d8547c2d4900e6258f7360c50d8dfc17157832
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68e046d0a19af2d8a4f6a413b527c9bf49c0e6ec
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517242"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137134"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Vue d’ensemble de la continuité d’activité avec Azure Database pour PostgreSQL - Serveur unique
 
@@ -44,8 +44,7 @@ Vous pouvez vous servir des sauvegardes du service pour récupérer un serveur �
 
 Vous pouvez procéder à une **restauration à un point dans le temps** afin de créer une copie de votre serveur à un point dans le temps valide connu. Ce moment donné doit se situer dans la période de rétention de sauvegarde que vous avez configurée pour votre serveur. Une fois les données restaurées sur le nouveau serveur, vous pouvez remplacer le serveur d’origine par le serveur nouvellement restauré ou copier les données nécessaires du serveur restauré sur le serveur d’origine.
 
-> [!IMPORTANT]
-> Il n’est **pas** possible de restaurer des serveurs supprimés. Si vous supprimez le serveur, toutes les bases de données qui appartiennent au serveur sont également supprimées, sans pouvoir être restaurées. Utilisez le [verrouillage des ressources Azure](../azure-resource-manager/management/lock-resources.md) pour éviter la suppression accidentelle de votre serveur.
+Nous vous recommandons d’utiliser le [verrouillage des ressources Azure](../azure-resource-manager/management/lock-resources.md) pour éviter la suppression accidentelle de votre serveur. Si vous avez accidentellement supprimé votre serveur, vous pourrez peut-être le restaurer si la suppression a eu lieu au cours des cinq derniers jours. Pour plus d’informations, consultez [Restaurer un serveur Azure Database pour PostgreSQL supprimé](howto-restore-dropped-server.md).
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Récupérer après une panne du centre de données Azure
 

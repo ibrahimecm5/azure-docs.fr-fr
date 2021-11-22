@@ -1,18 +1,18 @@
 ---
 title: Vue d’ensemble du portefeuille d’agents et prise en charge des OS (préversion)
-description: Azure Defender pour IoT fournit un vaste portefeuille d’agents en fonction du type d’appareil.
-ms.date: 10/03/2021
+description: Microsoft Defender pour IoT fournit un vaste portefeuille d’agents en fonction du type d’appareil.
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9cd87f9d332ca56da57a823886fa0ebdb93011fa
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: fbad1c486a9bf553b7f7effffe8dcf5e12b5d03a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399562"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319013"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>Vue d’ensemble du portefeuille d’agents et prise en charge des OS (préversion)
 
-Azure Defender pour IoT fournit un vaste portefeuille d’agents en fonction du type d’appareil.
+Microsoft Defender pour IoT fournit un vaste portefeuille d’agents en fonction du type d’appareil.
 
 ## <a name="standalone-agent"></a>Agent autonome
 
@@ -30,9 +30,9 @@ Pour plus d’informations, pour connaître les systèmes d’exploitation pris 
 
 ## <a name="azure-rtos-micro-agent"></a>Micro-agent Azure RTOS
 
-Le micro-agent Azure Defender pour IoT fournit une solution de sécurité complète et légère pour les appareils qui utilisent Azure RTOS. Le micro-agent Azure Defender pour IoT permet de couvrir les menaces courantes et les activités malveillantes potentielles sur les appareils avec un système d’exploitation en temps réel (RTOS). Le micro-agent est intégré au composant Azure RTOS NetX Duo. Il supervise l’activité réseau de l’appareil.
+Le micro-agent Microsoft Defender pour IoT fournit une solution de sécurité complète et légère pour les appareils qui utilisent Azure RTOS. Le micro-agent Microsoft Defender pour IoT permet de couvrir les menaces courantes et les activités malveillantes potentielles sur les appareils avec un système d’exploitation en temps réel (RTOS). Le micro-agent est intégré au composant Azure RTOS NetX Duo. Il supervise l’activité réseau de l’appareil.
 
-Le micro-agent Azure Defender pour IoT est intégré au composant Azure RTOS NetX Duo. Il supervise l’activité réseau de l’appareil. Le micro-agent se compose d’une solution de sécurité complète et légère qui permet de couvrir les menaces courantes et les activités malveillantes potentielles sur les appareils avec un système d’exploitation en temps réel (RTOS).
+Le micro-agent Microsoft Defender pour IoT est intégré au composant Azure RTOS NetX Duo. Il supervise l’activité réseau de l’appareil. Le micro-agent se compose d’une solution de sécurité complète et légère qui permet de couvrir les menaces courantes et les activités malveillantes potentielles sur les appareils avec un système d’exploitation en temps réel (RTOS).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -3,15 +3,15 @@ title: Estimer les coûts de stockage pour Azure Logic Apps monolocataire
 description: Estimez les coûts de stockage de vos workflows en utilisant la calculatrice de stockage Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/13/2021
-ms.openlocfilehash: 860e84bf8e2378d4a9c433df81c5adfb6741169e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 11/10/2021
+ms.openlocfilehash: 995c620eeafc5a627a9f9d94733c80de47f2928d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953828"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369395"
 ---
 # <a name="estimate-storage-costs-for-workflows-in-single-tenant-azure-logic-apps"></a>Estimer les coûts de stockage des workflows dans Azure Logic Apps monolocataire
 
@@ -35,8 +35,11 @@ Les coûts de stockage changent en fonction du contenu de vos workflows. Différ
 Si vous avez un workflow à estimer, récupérez son code JSON :
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/).
+
 1. Accédez au service **Logic Apps**, puis sélectionnez votre workflow.
+
 1. Dans le menu de l’application logique, sous **Outils de développement**, choisissez **Affichage du code de l’application logique**.
+
 1. Copiez le code JSON du workflow.
 
 ## <a name="estimate-storage-needs"></a>Estimer les besoins de stockage
@@ -57,7 +60,9 @@ Si vous avez un workflow à estimer, récupérez son code JSON :
    * Une option permettant de sélectionner toutes les actions avec des charges utiles de plus de 32 Ko.
 
 1. Pour **Monthly runs** (Exécutions mensuelles), entrez le nombre d’exécutions mensuelles de votre workflow.
+
 1. Sélectionnez **Calculate** et attendez que le calcul s’exécute.
+
 1. Sous **Storage operations breakdown and pricing calculation steps** (Détails des opérations de stockage et étapes du calcul du prix), examinez les estimations **Operation Counts** (Nombres d’opérations).
 
     Vous pouvez voir le nombre d’opérations estimé par exécution et par mois dans les deux tableaux. Les opérations suivantes sont indiquées :
@@ -67,7 +72,7 @@ Si vous avez un workflow à estimer, récupérez son code JSON :
     * **Queue** (File d’attente), pour les opérations de files d’attente Azure de classe 2.
     * **Tables**, pour les opérations de Stockage Table Azure.
 
-    Chaque opération a un nombre minimal, maximal et le nombre de « meilleure estimation ». En fonction de votre propre scénario, choisissez le nombre le plus pertinent à utiliser pour [estimer vos coûts d’opérations de stockage](#estimate-storage-costs). En règle générale, nous vous recommandons d’utiliser le nombre de « meilleure estimation » pour plus de précision. Toutefois, vous pouvez également utiliser le nombre maximal pour vous assurer que l’estimation de vos coûts ait une marge.
+    Chaque opération a un nombre minimal, maximal et le nombre de « meilleure estimation ». En fonction de votre propre scénario, choisissez le nombre le plus pertinent à utiliser pour [estimer vos coûts d’opérations de stockage](#estimate-storage-costs). Nous vous recommandons d’utiliser le nombre de « meilleure estimation » pour plus de précision. Toutefois, vous pouvez également utiliser le nombre maximal pour vous assurer que l’estimation de vos coûts ait une marge.
 
     :::image type="content" source="./media/estimate-storage-costs/storage-calculator-results.png" alt-text="Capture d’écran de la calculatrice de stockage Logic Apps, montrant la sortie avec des opérations estimées." lightbox="./media/estimate-storage-costs/storage-calculator-results.png":::
 
@@ -81,22 +86,30 @@ Une fois que vous avez [calculé les besoins de stockage de votre workflow d’a
 
 ### <a name="estimate-blob-storage-operations-costs"></a>Estimer les coûts des opérations de stockage d’objets blob
 
-> [!NOTE]
-> Cette fonctionnalité n’est pas disponible. Pour le moment, vous pouvez toujours utiliser la calculatrice pour estimer le [stockage de file d’attente](#estimate-queue-operations-costs) et le [stockage de table](#estimate-table-operations-costs).
-
 Pour estimer les coûts mensuels des opérations de stockage d’objets blob de votre application logique :
 
 1. Accédez à la [calculatrice de prix Azure](https://azure.microsoft.com/pricing/calculator/).
+
 1. Sous l’onglet **Produits**, sélectionnez **Stockage** &gt; **Comptes de stockage**. Ou, dans la zone de recherche de la **barre de recherche**, entrez **Comptes de stockage** et sélectionnez la vignette.
-    :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Capture d’écran de la calculatrice de prix Azure, avec la vignette permettant d’ajouter une vue Comptes de stockage." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
+   :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Capture d’écran de la calculatrice de prix Azure, avec la vignette permettant d’ajouter une vue Comptes de stockage." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
 1. Sur la notification **Comptes de stockage a été ajouté**, sélectionnez **Afficher** pour afficher la section **Comptes de stockage** de la calculatrice. Ou, accédez à la section **Comptes de stockage** manuellement.
+
 1. Pour **Région**, sélectionnez la région de votre application logique.
+
 1. Pour **Type**, sélectionnez **Stockage d’objets blob de bloc**.
+
 1. Pour **Niveau de performance**, sélectionnez votre niveau de performance.
+
 1. Pour **Redondance**, sélectionnez votre niveau de redondance.
+
 1. Ajustez les autres paramètres en fonction de vos besoins.
-1. Sous **Opérations d’écriture**, entrez le nombre d’opérations **Blob (write)** *tel qu’indiqué* dans la calculatrice de stockage Logic Apps.
-1. Sous **Opérations de lecture**, entrez le nombre d’opérations **Blob (read)** *tel qu’indiqué* dans la calculatrice de stockage Logic Apps.
+
+1. Sous **Opérations d'écriture**, entrez le nombre d'opérations **Blob (write)** tel qu'indiqué dans la calculatrice de stockage Logic Apps *divisé par 10 000*. Cette étape est nécessaire, car la calculatrice fonctionne en unités transactionnelles pour les opérations de stockage.
+
+1. Sous **Opérations de lecture**, entrez le nombre d'opérations **Blob (read)** tel qu'indiqué dans la calculatrice de stockage Logic Apps *divisé par 10 000*. Cette étape est nécessaire, car la calculatrice fonctionne en unités transactionnelles pour les opérations de stockage.
+
 1. Passez en revue les coûts d’opérations de stockage d’objets blob estimés.
 
 ### <a name="estimate-queue-operations-costs"></a>Estimer les coûts des opérations de file d’attente
@@ -104,14 +117,23 @@ Pour estimer les coûts mensuels des opérations de stockage d’objets blob de 
 Pour estimer les coûts mensuels des opérations de file d’attente de votre application logique :
 
 1. Accédez à la [calculatrice de prix Azure](https://azure.microsoft.com/pricing/calculator/).
+
 1. Sous l’onglet **Produits**, sélectionnez **Stockage** &gt; **Comptes de stockage**. Ou, dans la zone de recherche de la **barre de recherche**, entrez **Comptes de stockage** et sélectionnez la vignette.
-    :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Capture d’écran de la calculatrice de prix Azure, avec la vignette permettant d’ajouter une vue Comptes de stockage." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
+   :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Capture d’écran de la calculatrice de prix Azure, avec la vignette permettant d’ajouter une vue Comptes de stockage." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
 1. Sur la notification **Comptes de stockage a été ajouté**, sélectionnez **Afficher** pour afficher la section **Comptes de stockage** de la calculatrice. Ou, accédez à la section **Comptes de stockage** manuellement.
+
 1. Pour **Région**, sélectionnez la région de votre application logique.
+
 1. Pour **Type**, sélectionnez **Stockage File d’attente**.
+
 1. Pour **Type de compte de stockage**, sélectionnez votre type de compte de stockage.
+
 1. Pour **Redondance**, sélectionnez votre niveau de redondance.
+
 1. Sous **Opérations de file d’attente de classe 2**, entrez le nombre d’opérations de **file d’attente** issu de la calculatrice de stockage Logic Apps *divisé par 10 000*. Cette étape est nécessaire, car la calculatrice fonctionne en unités transactionnelles pour les opérations de file d’attente.
+
 1. Passez en revue les coûts d’opérations de file d’attente estimés.
 
 ### <a name="estimate-table-operations-costs"></a>Estimer les coûts d’opérations de table
@@ -119,14 +141,23 @@ Pour estimer les coûts mensuels des opérations de file d’attente de votre ap
 Pour estimer les coûts mensuels des opérations de stockage de table de votre application logique :
 
 1. Accédez à la [calculatrice de prix Azure](https://azure.microsoft.com/pricing/calculator/).
+
 1. Sous l’onglet **Produits**, sélectionnez **Stockage** &gt; **Comptes de stockage**. Ou, dans la zone de recherche de la **barre de recherche**, entrez **Comptes de stockage** et sélectionnez la vignette.
-    :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Capture d’écran de la calculatrice de prix Azure, avec la vignette permettant d’ajouter une vue Comptes de stockage." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
+   :::image type="content" source="./media/estimate-storage-costs/pricing-calculator-storage-tile.png" alt-text="Capture d’écran de la calculatrice de prix Azure, avec la vignette permettant d’ajouter une vue Comptes de stockage." lightbox="./media/estimate-storage-costs/pricing-calculator-storage-tile.png":::
+
 1. Sur la notification **Comptes de stockage a été ajouté**, sélectionnez **Afficher** pour afficher la section **Comptes de stockage** de la calculatrice. Ou, accédez à la section **Comptes de stockage** manuellement.
+
 1. Pour **Région**, sélectionnez la région de votre application logique.
+
 1. Pour **Type**, sélectionnez **Stockage Table**.
+
 1. Pour **Niveau**, sélectionnez votre niveau de performance.
+
 1. Pour **Redondance**, sélectionnez votre niveau de redondance.
+
 1. Sous **Transactions de stockage**, entrez le nombre d’opérations de **table** issu de la calculatrice de stockage Logic Apps *divisé par 10 000*. Cette étape est nécessaire, car la calculatrice fonctionne en unités transactionnelles pour les opérations de file d’attente.
+
 1. Passez en revue les coûts d’opérations de stockage de table estimés.
 
 ## <a name="next-step"></a>Étape suivante

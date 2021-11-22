@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
-ms.openlocfilehash: e1efc37e8bb824a6111987a789b48e805aeb1785
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f11800c1501c0efad6dec18542ecaa912527689a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566846"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491656"
 ---
 # <a name="tune-model-hyperparameters"></a>Optimiser les hyperparamètres du modèle
 
@@ -69,7 +69,7 @@ Cette section décrit comment effectuer un balayage de paramètres de base, qui 
 
     Toutefois, la métrique que vous choisissez détermine la façon dont les modèles sont classés. Seul le premier modèle, tel que classé par la métrique choisie, est généré en tant que modèle entraîné à utiliser pour le scoring.
 
-8.  Pour **Random seed** (Valeur de départ aléatoire), entrez un nombre à utiliser pour commencer le balayage de paramètres. 
+8.  Pour la **valeur de départ aléatoire**, entrez un nombre entier comme pseudo état du générateur de nombres aléatoires utilisé pour la sélection aléatoire des valeurs de paramètre sur une plage prédéfinie. Ce paramètre est effectif uniquement si le **mode Balayage des paramètres** est **Balayage aléatoire**.
 
 9. Envoyez le pipeline.
 

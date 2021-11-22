@@ -1,18 +1,18 @@
 ---
-title: Résolution des problèmes du micro-agent Defender pour IoT (préversion)
+title: Résolution des problèmes du micro-agent Defender pour le cloud pour IoT (préversion)
 description: Découvrez comment gérer les erreurs inattendues ou inexpliquées.
-ms.date: 4/5/2021
+ms.date: 11/09/2021
 ms.topic: reference
-ms.openlocfilehash: 23722195f4a7f7a19f10962ce648bc1a6e2a4012
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 94fd4c75a24b37bbc50ca582ca7bb64de87a042c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015179"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283958"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Résolution des problèmes du micro-agent Defender pour IoT (préversion)
+# <a name="defender-for-cloud-iot-micro-agent-troubleshooting-preview"></a>Résolution des problèmes du micro-agent Defender pour le cloud pour IoT (préversion)
 
-Si une erreur inattendue se produit, vous pouvez utiliser ces méthodes de résolution de problèmes pour tenter de résoudre le problème. Vous pouvez également contacter l’équipe produit d’Azure Defender pour IoT afin d’obtenir de l’aide si nécessaire.   
+Si une erreur inattendue se produit, vous pouvez utiliser ces méthodes de résolution de problèmes pour tenter de résoudre le problème. Vous pouvez également contacter l’équipe produit d’Azure Defender pour le cloud pour IoT afin d’obtenir de l’aide si nécessaire.   
 
 ## <a name="service-status"></a>État du service 
 
@@ -38,7 +38,7 @@ Vous savez que le service plante si la durée de bon fonctionnement du processus
 
 ## <a name="validate-micro-agent-root-privileges"></a>Valider les privilèges racines d’un micro-agent
 
-Utilisez la commande suivante pour vérifier que le service du micro-agent Defender IoT s’exécute avec des privilèges racines.
+Utilisez la commande suivante pour vérifier que le service du micro-agent IoT Defender pour le cloud s’exécute avec des privilèges racines.
 
 ```bash
 ps -aux | grep " defender-iot-micro-agent"

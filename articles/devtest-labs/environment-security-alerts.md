@@ -3,15 +3,21 @@ title: Alertes de sécurité pour les environnements
 description: Cet article explique comment afficher des alertes de sécurité pour un environnement dans DevTest Labs, et prendre les mesures nécessaires.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 437117e29ac09e52d2cd15740d60d942170b9c0d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57f1a0b240035d75746b9d23482446be71d1b1f9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654192"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398038"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Alertes de sécurité concernant les environnements dans Azure DevTest Labs
-En tant qu’utilisateur de laboratoire, vous pouvez désormais afficher les alertes Azure Security Center pour vos environnements lab. Le Centre de sécurité collecte, analyse et intègre automatiquement les données de journaux provenant de vos ressources Azure, du réseau et des solutions partenaires connectées, telles que les solutions de protection des points de terminaison et des pare-feu, pour détecter les menaces réelles et réduire le nombre de faux positifs. Une liste hiérarchisée d’alertes de sécurité est affichée dans le Centre de sécurité, ainsi que les informations nécessaires pour trouver rapidement la cause d’une attaque et des recommandations sur la façon d’y remédier. [Apprenez-en davantage sur les alertes de sécurité dans Azure Security Center](../security-center//security-center-alerts-overview.md).  
+En tant qu’utilisateur du laboratoire, vous pouvez afficher les alertes Microsoft Defender pour le cloud pour vos laboratoires. Defender pour le cloud collecte, analyse et intègre automatiquement les données du journal. Les données proviennent des ressources Azure, du réseau et des solutions connectées, telles que le pare-feu et la protection de point de terminaison. Defender pour le cloud détecte les véritables menaces et réduit le nombre de faux positifs. Defender pour le cloud :
+
+- Répertorie les alertes de sécurité hiérarchisées.
+- Fournit des informations pour examiner rapidement les problèmes.
+- Recommande le mode de résolution des attaques.
+
+[En savoir plus sur les alertes de sécurité dans Microsoft Defender pour le cloud](../security-center//security-center-alerts-overview.md)
 
 
 ## <a name="prerequisites"></a>Conditions préalables requises
@@ -26,7 +32,7 @@ Vous pouvez afficher des alertes de sécurité uniquement pour les environnement
 
     ![Capture d’écran montrant la page Alertes de sécurité avec l’option « Afficher les alertes de sécurité » sélectionnée.](./media/environment-security-alerts/view-security-alerts-menu.png)
     
-3. Vous verrez des informations détaillées sur les alertes et les recommandations Advisor. Apprenez-en davantage sur la [gestion et la résolution des alertes de sécurité dans Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md).
+3. Vous verrez des informations détaillées sur les alertes et les recommandations Advisor. En savoir plus sur la [gestion des alertes de sécurité et les réponses à apporter dans Microsoft Defender pour le cloud](../security-center/security-center-managing-and-responding-alerts.md)
 
     ![Afficher les alertes de sécurité](./media/environment-security-alerts/advisor-recommendations.png)
 

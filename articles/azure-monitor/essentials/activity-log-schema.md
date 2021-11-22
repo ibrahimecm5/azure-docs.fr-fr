@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
-ms.openlocfilehash: 1052ccb854248cb107e6e0b1bf99e2df9156d181
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 86c601cf70265ca6aec4ba620414fed709d756a0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131473791"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297751"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma d’événements du journal d’activité
 Le [journal d’activité Azure](./platform-logs-overview.md) apporte des insights sur les événements liés aux abonnements qui se sont produits dans Azure. Cet article décrit les catégories du journal d’activité et le schéma de chacune d’elles. 
@@ -45,7 +45,7 @@ Chaque événement dans le journal d’activité est associé à l’une des cat
 | [Alert](#alert-category) | Contient l’enregistrement des activations d’alertes Azure. L’événement _Le % processeur sur ma machine virtuelle a dépassé 80 au cours des 5 dernières minutes_.|
 | [Autoscale](#autoscale-category) | Contient l’enregistrement de tous les événements liés au fonctionnement du moteur de mise à l’échelle automatique selon les paramètres d’échelle automatique définis dans votre abonnement. L’événement _Échec de l’action de scale-up de la mise à l’échelle automatique_ est un exemple d’événement de mise à l’échelle automatique. |
 | [Recommandation](#recommendation-category) | Contient les événements de recommandation d’Azure Advisor. |
-| [Sécurité](#security-category) | Contient l’enregistrement de toutes les alertes générées par Azure Security Center. L’événement _Fichier à extension double suspect exécuté_ est un exemple d’événement de sécurité. |
+| [Sécurité](#security-category) | Contient l’enregistrement de toutes les alertes générées par Microsoft Defender pour le cloud. L’événement _Fichier à extension double suspect exécuté_ est un exemple d’événement de sécurité. |
 | [Stratégie](#policy-category) | Contient les enregistrements de toutes les opérations d’action à effet effectuées par Azure Policy. Les événements _Audit_ et _Refuser_ sont des exemples d’événements de stratégie. Chaque action effectuée par Policy est modélisée en tant qu’opération sur une ressource. |
 
 ## <a name="administrative-category"></a>Catégorie Administrative
@@ -517,7 +517,7 @@ Cette catégorie contient l’enregistrement de tous les événements liés au f
 | subscriptionId |ID d’abonnement Azure. |
 
 ## <a name="security-category"></a>Catégorie Security
-Cette catégorie contient l’enregistrement de toutes les alertes générées par Azure Security Center. Voici un exemple du type d’événement que vous pouvez voir dans cette catégorie : « Suspicious double extension file executed. » (Fichier à extension double suspect exécuté.).
+Cette catégorie contient l’enregistrement de toutes les alertes générées par Microsoft Defender pour le cloud. Voici un exemple du type d’événement que vous pouvez voir dans cette catégorie : « Suspicious double extension file executed. » (Fichier à extension double suspect exécuté.).
 
 ### <a name="sample-event"></a>Exemple d’événement
 ```json
@@ -591,12 +591,12 @@ Cette catégorie contient l’enregistrement de toutes les alertes générées p
 | id |URI (Unique Resource Identifier) de l’événement de sécurité. |
 | level |Niveau de l’événement. L’une des valeurs suivantes : « Critique », « Erreur », « Avertissement » ou « Informatif » |
 | resourceGroupName |Nom du groupe de ressources de la ressource. |
-| resourceProviderName |Nom du fournisseur de ressources pour Azure Security Center. Toujours Microsoft.Security. |
+| resourceProviderName |Nom du fournisseur de ressources pour Microsoft Defender pour le cloud. Toujours Microsoft.Security. |
 | resourceType |Type de ressource qui a généré l’événement de sécurité, par exemple « Microsoft.Security/locations/alerts ». |
 | resourceId |ID de ressource de l’alerte de sécurité. |
 | operationId |Un GUID partagé par les événements correspondant à une opération unique. |
 | operationName |Nom de l’opération. |
-| properties |Jeu de paires `<Key, Value>` (c’est-à-dire Dictionary) décrivant les détails de l’événement. Ces propriétés varient selon le type d’alerte de sécurité. Pour obtenir une description des types d’alertes qui proviennent de Security Center, consultez [cette page](../../security-center/security-center-alerts-overview.md). |
+| properties |Jeu de paires `<Key, Value>` (c’est-à-dire Dictionary) décrivant les détails de l’événement. Ces propriétés varient selon le type d’alerte de sécurité. Pour obtenir une description des types d’alertes qui proviennent de Defender pour le cloud, consultez [cette page](../../security-center/security-center-alerts-overview.md). |
 | properties.Severity |Niveau de gravité. Les valeurs possibles sont High (Élevé), Medium (Moyen) ou Low (Bas). |
 | status |Chaîne décrivant l’état de l’opération. Voici plusieurs valeurs courantes : « Started », « In Progress », « Succeeded », « Failed », « Active », « Resolved ». |
 | subStatus | Généralement nul pour les événements de sécurité. |
@@ -832,7 +832,7 @@ Lorsque vous diffusez en continu le contenu du journal d’activité Azure vers 
 
 Voici un exemple d’événement utilisant ce schéma.
 
-``` JSON
+```json
 {
     "records": [
         {

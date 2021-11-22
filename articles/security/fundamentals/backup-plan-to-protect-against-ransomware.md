@@ -9,12 +9,12 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2c75b1ae5112b758282941efb20be245fed4d22d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5affe181185d726432596bfda6dad6f4f041de80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014236"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277920"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>Plan de sauvegarde et de restauration pour la protection contre les ransomware
 
@@ -173,7 +173,7 @@ Microsoft Azure :
 
 - [Protégez vos applications contre les ransomware avec la Sauvegarde Microsoft Azure ](https://www.youtube.com/watch?v=VhLOr2_1MCg) (vidéo de 26 minutes)
 - [Récupération après une compromission de l’identité système](./recover-from-identity-compromise.md)
-- [Détection avancée des attaques multiphases dans Azure Sentinel](../../sentinel/fusion.md#fusion-for-ransomware)
+- [Détection avancée des attaques multiphases dans Microsoft Sentinel](../../sentinel/fusion.md#fusion-for-ransomware)
 
 Microsoft 365 :
 

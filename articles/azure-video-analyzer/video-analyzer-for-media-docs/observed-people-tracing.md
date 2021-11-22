@@ -4,14 +4,14 @@ description: Cette rubrique offre une vue d’ensemble du traçage des personnes
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: juliako
-ms.openlocfilehash: c24d7f4a67afbf194be498e4fcd15779a806a3b9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6726c67cf5274ba252b86ace9165330dc296afb4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605142"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491940"
 ---
-# <a name="trace-observed-people-in-a-video"></a>Tracer les personnes observées dans une vidéo
+# <a name="trace-observed-people-in-a-video-preview"></a>Tracer les personnes observées dans une vidéo (préversion)
 
 Video Indexer détecte les personnes observées dans les vidéos et fournit des informations comme l’emplacement d’une personne dans l’image vidéo et l’horodatage exact (début, fin) indiquant à quel moment elle apparaît. L’API retourne les coordonnées du cadre englobant (en pixels) pour chaque personne détectée avec la confiance de détection.  
  
@@ -25,7 +25,6 @@ Voici quelques exemples de scénarios où cette fonctionnalité peut être utile
 Par exemple, si une vidéo contient une personne, l’opération de détection liste les apparitions de la personne avec les coordonnées dans les images vidéo. Vous pouvez utiliser cette fonctionnalité pour déterminer le parcours de la personne dans une vidéo. Elle vous permet aussi de déterminer s’il existe plusieurs occurrences de la même personne dans une vidéo.
 
 Vous pouvez accéder à la fonctionnalité de **traçage des personnes observées** nouvellement ajoutée pendant que vous indexez votre fichier en choisissant la présélection **Option avancée** -> **Vidéo avancé** ou **Vidéo + audio avancé** (sous **Indexation vidéo + audio**). L’indexation standard n’inclut pas ce nouveau modèle avancé. 
-
 
 :::image type="content" source="./media/observed-people-tracing/youtube-trailer.png" alt-text="Capture d’écran du traçage des personnes observées":::  
  

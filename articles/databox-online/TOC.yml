@@ -404,7 +404,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Notes de publication partagées
       items:
-        - name: 2110 - Actuel
+        - name: 2111 à nos jours
+          href: azure-stack-edge-gpu-2111-release-notes.md
+        - name: 2110
           href: azure-stack-edge-gpu-2110-release-notes.md
         - name: 2106
           href: azure-stack-edge-gpu-2106-release-notes.md

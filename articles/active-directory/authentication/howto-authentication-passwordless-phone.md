@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19e4a99967e8fdc64eb7d10c66649cac59db048a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 11e8af7f7e955e960644f2748087a86e1aa5b61f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456248"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484610"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Activer la connexion sans mot de passe avec l’application Microsoft Authenticator 
 
@@ -61,7 +61,10 @@ Pour activer la méthode d’authentification pour la connexion par téléphone 
 1. Chaque groupe ou utilisateur ajouté est activé par défaut pour utiliser Microsoft Authenticator dans les modes de notifications sans mot de passe et push (mode « Tout »). Pour modifier cela, pour chaque ligne :
    1. Accédez à **...**  > **Configurer**.
    1. Pour le **Mode d’authentification**, choisissez **Tout** ou **Sans mot de passe**. Le choix d’une notification **Push** empêche l’utilisation des informations d’identification de connexion par téléphone. 
-1. Pour appliquer la nouvelle stratégie, sélectionnez **Enregistrer**.
+1. Pour appliquer la nouvelle stratégie, cliquez sur **Enregistrer**. 
+
+   >[!NOTE]
+   >Si une erreur apparaît lors de la tentative d'enregistrement, celle-ci peut être due au nombre d'utilisateurs ou de groupes ajoutés. Pour résoudre ce problème, remplacez les utilisateurs et les groupes que vous essayez d’ajouter par un groupe unique, au cours de la même opération, puis cliquez à nouveau sur **Enregistrer**.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Inscription des utilisateurs et gestion de Microsoft Authenticator
 

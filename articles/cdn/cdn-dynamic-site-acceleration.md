@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: duau
-ms.openlocfilehash: f793d236db1c840e3866c7b8e9856720077e429a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 113232c44be6eb886c61a617d68f63f0a3225a8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131426598"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327459"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Accélération de site dynamique via Azure CDN
 
@@ -179,8 +179,6 @@ Pour accéder au moteur de règles :
 
     ![Moteur de règles pour DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
+Vous pouvez également utiliser deux points de terminaison CDN : un point de terminaison optimisé avec DSA pour fournir des ressources dynamiques et un autre point de terminaison optimisé avec un type d’optimisation statique, tel qu’une livraison web générale, pour fournir les ressources pouvant être mises en cache. Modifiez les URL de vos pages web afin qu’elles pointent directement sur le point de terminaison CDN vers la ressource que vous envisagez d’utiliser.
 
-
-Vous pouvez également utiliser deux points de terminaison CDN : un point de terminaison optimisé avec DSA pour fournir des ressources dynamiques et un autre point de terminaison optimisé avec un type d’optimisation statique, tel qu’une livraison web générale, pour fournir les ressources pouvant être mises en cache. Modifiez les URL de vos pages web afin qu’elles pointent directement sur le point de terminaison CDN vers la ressource que vous envisagez d’utiliser. 
-
-Par exemple : `mydynamic.azureedge.net/index.html` est une page dynamique et est chargée à partir du point de terminaison avec accélération de site dynamique.  La page html fait référence à plusieurs ressources statiques telles que des images ou des bibliothèques JavaScript qui sont chargées à partir du point de terminaison CDN statique, telles que `mystatic.azureedge.net/banner.jpg` et `mystatic.azureedge.net/scripts.js`.
+Par exemple : `mydynamic.azureedge.net/index.html` est une page dynamique et est chargée à partir du point de terminaison avec accélération de site dynamique.  La page HTML fait référence à plusieurs ressources statiques telles que des images ou des bibliothèques JavaScript qui sont chargées à partir du point de terminaison CDN statique, telles que `mystatic.azureedge.net/banner.jpg` et `mystatic.azureedge.net/scripts.js`.

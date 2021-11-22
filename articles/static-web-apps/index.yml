@@ -8,13 +8,13 @@ metadata:
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 05/07/2021
-  ms.openlocfilehash: b41c8a8ed84fc627528f06c8c443fbc112456074
-  ms.sourcegitcommit: 11ca7ba5a017429c22a6b0bc02acb70b83a2984a
+  ms.date: 11/19/2021
+  ms.openlocfilehash: 60ccc61d3783681365de58979263c5ad7e05888f
+  ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/19/2021
-  ms.locfileid: "132814155"
+  ms.lasthandoff: 11/20/2021
+  ms.locfileid: "132871677"
 landingContent:
 - title: À propos de Static Web Apps
   linkLists:
@@ -40,11 +40,15 @@ landingContent:
       url: /learn/modules/publish-app-service-static-web-app-api
     - text: Publier une API
       url: /learn/modules/publish-static-web-app-api-preview-url
+    - text: Créer et déployer une application Gatsby
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Publier une application WebAssembly Blazor et une API .NET
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
   - linkListType: video
     links:
     - text: Créer et déployer une application web statique
       url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
-- title: Déployer à partir d’un framework/d’une bibliothèque
+- title: Générer et déployer
   linkLists:
   - linkListType: tutorial
     links:
@@ -62,29 +66,25 @@ landingContent:
       url: deploy-nextjs.md
     - text: Nuxt.js
       url: deploy-nuxtjs.md
-    - text: Gatsby
-      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
-    - text: Blazor
-      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
+- title: Infrastructure as code
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Créer une application web statique Azure avec un modèle ARM
+      url: publish-azure-resource-manager.md
 - title: Concepts clés
   linkLists:
   - linkListType: concept
     links:
     - text: Configuration
       url: configuration-overview.md
-    - text: API publiques
+    - text: Points de terminaison d’API serverless
       url: apis.md
     - text: Environnements intermédiaires
       url: review-publish-pull-requests.md
-    - text: Restriction de l’accès
+    - text: Authentification et autorisation
       url: authentication-authorization.md
     - text: Configuration de build avec GitHub Actions
       url: publish-devops.md?tabs=github-actions
     - text: Configuration de build avec Azure DevOps
       url: publish-devops.md?tabs=azure-devops
-- title: Software as a Service
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Déployer avec un modèle ARM
-      url: publish-azure-resource-manager.md

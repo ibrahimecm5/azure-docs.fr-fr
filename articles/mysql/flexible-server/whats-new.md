@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: bf12371e786d5d657c5802bf64cdae9bc44f6b4a
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 8333f0086a7d2778fcda1efec64ebca6de94a002
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989695"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398000"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Nouveautés dans Azure Database pour MySQL - Serveur flexible
 
@@ -38,6 +38,14 @@ Cet article résume les nouvelles versions et fonctionnalités d’Azure Databas
 - **Panneau FAQ dans le portail Azure**
 
   Le panneau Sauvegarde et restauration inclut également une section dédiée qui répertorie des réponses aux questions fréquentes. Celle-ci fournit des réponses à la plupart des questions concernant les sauvegardes directement dans le portail Azure. Par ailleurs, il est possible de sélectionner l’icône du FAQ représentant un point d’interrogation dans le menu supérieur pour accéder à des informations plus détaillées.
+
+- **Restaurer un serveur flexible supprimé**
+    
+  Le service vous permet à présent de récupérer une ressource de serveur flexible MySQL supprimée dans un délai de 5 jours à compter de la suppression du serveur. Pour obtenir un guide détaillé sur la restauration d’un serveur supprimé, [reportez-vous aux étapes documentées](../flexible-server/how-to-restore-dropped-server.md). À l'issue du déploiement, pour protéger les ressources du serveur d'une suppression accidentelle ou de changements inattendus, les administrateurs peuvent utiliser des [verrous de gestion](../../azure-resource-manager/management/lock-resources.md).
+
+- **Problèmes connus**
+
+Sur les serveurs sur lesquels l’option de sauvegarde géoredondante et de haute disponibilité est activée, nous avons détecté un problème rare rencontré par une condition de concurrence qui bloque le redémarrage du serveur de secours. En raison de ce problème, lorsque vous basculez la base de données Azure pour MySQL avec haute disponibilité, l’instance MySQL Serveur flexible peut rester bloquée pendant une longue période. Le correctif sera déployé en production au cours du prochain cycle de déploiement.
 
 ## <a name="october-2021"></a>Octobre 2021
 

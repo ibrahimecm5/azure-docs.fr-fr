@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: eric-urban
 ms.custom: devx-track-js
-ms.openlocfilehash: 42e0db662c9eaae08351c12a03e1954372b628d6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7e129d8d7a38b2ba143f89ab4407453f62c75b93
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506846"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530094"
 ---
 L’une des principales fonctionnalités du service Speech est la possibilité de reconnaître la parole humaine et de la traduire dans d’autres langues. Dans ce démarrage rapide, vous allez apprendre à utiliser le Kit de développement logiciel (SDK) Speech dans vos applications et produits afin d’effectuer une traduction vocale de qualité. Ce démarrage rapide couvre les sujets suivants :
 
@@ -114,7 +114,7 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 La [classe TranslationRecognizer](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) pour le kit SDK Speech pour JavaScript expose quelques méthodes que vous pouvez utiliser pour la traduction vocale.
 
-* Traduction unique (async) – Effectue la traduction en mode non bloquant (asynchrone). Cela permet de traduire un énoncé unique. La fin d’un énoncé unique est déterminée par la détection du silence à la fin, ou après que 15 secondes d’audio ont été traitées.
+* Traduction au démarrage (async) – Effectue la traduction en mode non bloquant (asynchrone). Cela permet de traduire un énoncé unique. La fin d’un énoncé unique est déterminée par la détection du silence à la fin, ou après que 15 secondes d’audio ont été traitées.
 * Traduction continue (async) – Lance de façon asynchrone une opération de traduction continue. L’utilisateur s’inscrit à des événements et gère divers états d’application. Pour arrêter la traduction continue asynchrone, appelez [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync).
 
 > [!NOTE]
@@ -129,9 +129,9 @@ speechTranslationConfig.speechRecognitionLanguage = "en-US";
 speechTranslationConfig.addTargetLanguage("de");
 ```
 
-### <a name="single-shot-recognition"></a>Reconnaissance unique
+### <a name="at-start-recognition"></a>Reconnaissance au début
 
-Voici un exemple de traduction asynchrone unique utilisant [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) :
+Voici un exemple de traduction au début asynchrone avec [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) :
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -178,7 +178,7 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>Traduction continue
 
-La traduction continue est un peu plus complexe que la reconnaissance unique. Pour obtenir les résultats de la reconnaissance, vous devez vous abonner aux événements `recognizing`, `recognized` et `canceled`. Pour arrêter la traduction, vous devez appeler [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync). Voici un exemple de traduction continue sur un fichier d’entrée audio.
+La traduction continue est un peu plus complexe que la reconnaissance au début. Pour obtenir les résultats de la reconnaissance, vous devez vous abonner aux événements `recognizing`, `recognized` et `canceled`. Pour arrêter la traduction, vous devez appeler [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync). Voici un exemple de traduction continue sur un fichier d’entrée audio.
 
 Commençons par définir l’entrée et initialiser un [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) :
 

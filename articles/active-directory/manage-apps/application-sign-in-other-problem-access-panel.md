@@ -13,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e4f03e2f7540b4724b7dfe001f5fc77ac3c0706e
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4ea75a7aa9b5a2e06ecce612654604af4db1bdf3
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617831"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546896"
 ---
-# <a name="troubleshoot-application-sign-in-in-azure-active-directory"></a>Résoudre les problèmes liés à la connexion de l’application dans Azure Active Directory
+# <a name="troubleshoot-application-sign-in"></a>Résoudre les problèmes de connexion d’application
 
 Mes applications est un portail web qui permet à un utilisateur disposant d’un compte professionnel ou scolaire dans Azure Active Directory (Azure AD) de visualiser et de démarrer des applications informatiques auxquelles l’administrateur Azure AD lui a donné accès. Pour accéder à Mes applications, ouvrez un navigateur et accédez à l’adresse [https://myapps.microsoft.com](https://myapps.microsoft.com).
 

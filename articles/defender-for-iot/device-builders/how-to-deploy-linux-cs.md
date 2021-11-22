@@ -2,13 +2,13 @@
 title: Installer et déployer l’agent Linux C#
 description: Découvrez comment installer et déployer sur Linux l’agent de sécurité Defender pour IoT basé sur C#.
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 8dd6119d4f1a6e8a738d34521234d2691ba8c883
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 5a403af7f5c0b6f2b8d5d497979be06fee404a19
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015022"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306089"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Déployer l’agent de sécurité Defender pour IoT basé sur C# pour Linux
 
@@ -74,8 +74,7 @@ Pour désinstaller l’agent, exécutez le script avec le paramètre –u : `./
 
     `systemctl status ASCIoTAgent.service`
 
-1. Activez la journalisation.
-   Si l’agent ne parvient pas à démarrer, activez la journalisation pour obtenir plus d’informations.
+1. Activez la journalisation. Si l’agent ne parvient pas à démarrer, activez la journalisation pour obtenir plus d’informations.
 
    Pour activer la journalisation, effectuez les étapes suivantes :
 
@@ -110,7 +109,7 @@ Pour désinstaller l’agent, exécutez le script avec le paramètre –u : `./
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Lire la [vue d’ensemble](overview.md) du service Defender pour IoT
-- Pour en savoir plus sur Defender pour IoT, consultez [Qu’est-ce qu’une solution basée sur agent pour les générateurs d’appareils](architecture-agent-based.md)
+- Pour en savoir plus sur Defender pour IoT, consultez [Présentation de la solution basée sur un agent pour les fabricants d’appareils](architecture-agent-based.md)
 - Activer le [service](quickstart-onboard-iot-hub.md)
-- Lisez le [Forum aux questions sur Azure Defender pour IoT](resources-agent-frequently-asked-questions.md)
+- Consultez le [Forum aux questions sur Microsoft Defender pour IoT](resources-agent-frequently-asked-questions.md)
 - Comprendre les [alertes](concept-security-alerts.md)

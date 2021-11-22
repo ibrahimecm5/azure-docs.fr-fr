@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: eur
-ms.openlocfilehash: 30d913eba160fd68702758695a8efa0547e55a26
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 942bf206454047f54765d096a2ac97fcabb895ab
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506525"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252442"
 ---
 :::row:::
     :::column span="3":::
-        Deux Kits de développement logiciel (SDK) Speech sont disponibles à des fins de développement pour iOS. Le Kit de développement logiciel (SDK) Speech Objective-C est disponible en natif sous forme de package CocoaPod iOS. Vous pouvez également utiliser le Kit de développement logiciel (SDK) Speech .NET avec Xamarin.iOS, car il implémente .NET Standard 2.0.
+        Lors du développement pour iOS, les kits de développement logiciel (SDK) Speech suivants sont disponibles. Le Kit de développement logiciel (SDK) Speech Objective-C/Swift est disponible en natif sous forme de package CocoaPod iOS. Vous pouvez également utiliser le kit de développement logiciel (SDK) Speech .NET avec les infrastructures d’application Xamarin.iOS et Unity.
     :::column-end:::
     :::column:::
         <br>
@@ -58,7 +58,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.iOS expose l’intégralité du Kit de développement logiciel (SDK) iOS pour les développeurs .NET. Générez des applications iOS entièrement natives à l’aide de C# ou F# dans Visual Studio. Pour plus d’informations, consultez <a href="/xamarin/ios/" target="_blank">Xamarin.iOS</a>.
+        Xamarin.iOS expose l’intégralité du Kit de développement logiciel (SDK) iOS pour les développeurs .NET. Générez des applications iOS entièrement natives à l’aide de C# dans Visual Studio. Pour plus d’informations, consultez <a href="/xamarin/ios/" target="_blank">Xamarin.iOS</a>.
     :::column-end:::
     :::column:::
         <br>

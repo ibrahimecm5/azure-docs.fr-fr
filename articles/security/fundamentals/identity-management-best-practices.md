@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e3797e7f78b0938a50e2803f46962b4cacdcd33
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: b2d8dcbee2b8308a78982122aea79c9775580642
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998159"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347044"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Meilleures pratiques en matière de sécurité du contrôle d’accès et de la gestion des identités Azure
 
@@ -218,7 +218,7 @@ Vous pouvez utiliser la [fonction de contrôle d’accès en fonction du rôle A
 **Bonne pratique** : Accordez les autorisations appropriées aux équipes de sécurité ayant des responsabilités opérationnelles directes.
 **Détail** : Passez en revue les rôles intégrés Azure pour l’attribution de rôle appropriée. Si les rôles intégrés ne répondent pas aux besoins de votre organisation, vous pouvez créer des [rôles personnalisés Azure](../../role-based-access-control/custom-roles.md). Comme avec les rôles intégrés, vous pouvez affecter des rôles personnalisés à des utilisateurs, des groupes et des principaux de service dans l’étendue des abonnements, des groupes de ressources et des ressources.
 
-**Bonnes pratiques** : Permettez aux rôles de sécurité qui en ont besoin d’accéder à Azure Security Center. Security Center permet aux équipes de sécurité d’identifier rapidement les risques et d’y remédier.
+**Meilleures pratiques** : accordez à Microsoft Defender pour le cloud l’accès aux rôles de sécurité qui en ont besoin. Defender pour le cloud permet aux équipes de sécurité d’identifier rapidement les risques et d’y remédier.
 **Détail** : Ajoutez des équipes de sécurité qui en ont besoin au rôle [Administrateur de sécurité du RBAC Azure](../../role-based-access-control/built-in-roles.md#security-admin), afin qu’elles puissent afficher des états de sécurité, modifier des stratégies de sécurité, afficher des alertes et des suggestions ainsi qu’ignorer les alertes et les suggestions. Pour ce faire, vous pouvez utiliser le groupe d’administration racine ou le groupe d’administration de segment, selon l’étendue des responsabilités.
 
 Les organisations qui n’appliquent aucun contrôle d’accès aux données en utilisant des fonctionnalités telles que le RBAC Azure risquent d’octroyer plus de privilèges que nécessaire à leurs utilisateurs. Le fait d’autoriser des utilisateurs à accéder à des types de données (par exemple, des données HBI), auxquelles ils ne devraient pas avoir accès, peut conduire à la compromission de celles-ci.

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: eur
-ms.openlocfilehash: 5de18cfe1f187f0531871dedce1ab842934569f2
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 625f980c94536db7d4f23323393e19e0d735437e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131520371"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156686"
 ---
 La gestion d'un contenu audio compressé est implémentée à l’aide de [GStreamer](https://gstreamer.freedesktop.org). Pour une raison liée à la gestion des licences, les fichiers binaires GStreamer ne sont pas compilés et liés avec le Kit de développement logiciel (SDK) Speech. À la place, vous devez utiliser les fichiers binaires prédéfinis pour Android. Pour télécharger les bibliothèques prédéfinies, voir [Installation pour le développement Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
@@ -77,7 +77,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Vous pouvez générer `libgstreamer_android.so` à l'aide de la commande suivante sur Ubuntu 16.04 ou 18.04. Les lignes de commande suivantes ont été testées seulement pour [GSstreamer Android version 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) avec [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+Vous pouvez générer `libgstreamer_android.so` à l'aide de la commande suivante sur Ubuntu 18.04 ou 20.04. Les lignes de commande suivantes ont été testées seulement pour [GSstreamer Android version 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) avec [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # Assuming wget and unzip already installed on the system

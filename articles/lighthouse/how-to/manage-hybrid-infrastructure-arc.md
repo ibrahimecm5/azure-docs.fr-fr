@@ -3,12 +3,12 @@ title: Gérer une infrastructure hybride à grande échelle avec Azure Arc
 description: Azure Lighthouse vous permet de gérer efficacement les machines et les clusters Kubernetes des clients en dehors d’Azure.
 ms.date: 09/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 8761c87daeda97b6c67ce8e79e438ed01d8d3a37
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5acb9cae08795a9c87db0d6353f4870e92849f24
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714734"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293058"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Gérer une infrastructure hybride à grande échelle avec Azure Arc
 
@@ -31,7 +31,7 @@ En tant que fournisseur de services, vous pouvez gérer des machines Windows Ser
 
 Vous pouvez gérer ces machines connectées à l’aide de constructions Azure, telles qu’Azure Policy et le balisage, de la même façon que vous géreriez les ressources Azure du client. Vous pouvez également travailler sur plusieurs locataires client pour gérer ensemble les machines hybrides connectées.
 
-Par exemple, vous pouvez [vous assurer que le même ensemble de stratégies est appliqué sur les machines hybrides des clients](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Vous pouvez également utiliser Azure Security Center pour surveiller la conformité dans tous les environnements hybrides de vos clients ou [utiliser Azure Monitor pour collecter des données directement depuis les machines hybrides](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) et les copier dans un espace de travail Log Analytics. Les [extensions de machine virtuelle](../../azure-arc/servers/manage-vm-extensions.md) peuvent être déployées sur des machines virtuelles Windows et Linux non Azure, ce qui simplifie la gestion des machines hybrides du client.
+Par exemple, vous pouvez [vous assurer que le même ensemble de stratégies est appliqué sur les machines hybrides des clients](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Vous pouvez également utiliser Microsoft Defender pour le cloud afin de surveiller la conformité dans tous les environnements hybrides de vos clients, ou [utiliser Azure Monitor pour collecter des données directement depuis les machines hybrides](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) et les copier dans un espace de travail Log Analytics. Les [extensions de machine virtuelle](../../azure-arc/servers/manage-vm-extensions.md) peuvent être déployées sur des machines virtuelles Windows et Linux non Azure, ce qui simplifie la gestion des machines hybrides du client.
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Gérer des clusters Kubernetes hybrides à grande échelle à l’aide de Kubernetes avec Azure Arc
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 4af1ae8edc94abe3a7bd640ce7562fc86a0655f1
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a1c61f2689bc6bf9d4a11b324aaaa739640b8189
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448611"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305481"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Présentation du pare-feu d’applications web Azure sur Azure Application Gateway
 
@@ -47,7 +47,7 @@ Cette section décrit les principaux avantages qu’offre WAF sur App Gateway.
 
 * Surveillez les attaques dirigées contre vos applications web à l’aide d’un journal WAF en temps réel. Ce journal est intégré avec [Azure Monitor](../../azure-monitor/overview.md) pour effectuer le suivi des alertes WAF et analyser facilement les tendances.
 
-* Le pare-feu d’applications web est intégré avec Azure Security Center. Azure Security Center offre une vue centrale de l’état de sécurité de toutes vos ressources Azure.
+* Le pare-feu d'applications web (WAF) Application Gateway est intégré à Microsoft Defender pour le cloud. Defender pour le cloud fournit une vue centrale de l'état de sécurité de toutes vos ressources Azure, hybrides et multiclouds.
 
 ### <a name="customization"></a>Personnalisation
 
@@ -105,7 +105,7 @@ Pour plus d’informations sur les règles personnalisées, consultez [Règles p
 
 ### <a name="bot-mitigation"></a>Atténuation de robot
 
-Un ensemble de règles de protection de bot managées peut être activé pour votre WAF afin de bloquer ou de journaliser des demandes provenant d’adresses IP malveillantes, à côté de l’ensemble de règles managé. Ces adresses IP proviennent du flux Microsoft Threat Intelligence. Intelligent Security Graph alimente l’intelligence des menaces Microsoft et est utilisé par de nombreux services, dont Azure Security Center.
+Un ensemble de règles de protection de bot managées peut être activé pour votre WAF afin de bloquer ou de journaliser des demandes provenant d’adresses IP malveillantes, à côté de l’ensemble de règles managé. Ces adresses IP proviennent du flux Microsoft Threat Intelligence. Intelligent Security Graph alimente le renseignement sur les menaces de Microsoft et est utilisé par différents services, dont Microsoft Defender pour le cloud.
 
 Si la protection bot est activée, les demandes entrantes qui correspondent à des adresses IP clientes de bots malveillants sont consignées dans le journal du pare-feu. Vous trouverez des informations supplémentaires ci-dessous. Vous pouvez accéder aux journaux WAF à partir du compte de stockage, du hub d’événements ou de l’analytique des journaux d’activité. 
 
@@ -141,7 +141,7 @@ Le score d’anomalie doit atteindre le seuil de 5 pour que le trafic soit bloq
 
 ### <a name="waf-monitoring"></a>Surveillance du pare-feu d’applications web
 
-Il est important de surveiller l’état de votre passerelle d’application. La surveillance de l’intégrité de votre WAF et des applications qu’il protège est prise en charge par l’intégration avec Azure Security Center, Azure Monitor et les journaux Azure Monitor.
+Il est important de surveiller l’état de votre passerelle d’application. La surveillance de l’intégrité de votre WAF et des applications qu’il protège est prise en charge par l’intégration à Microsoft Defender pour le cloud, Azure Monitor et les journaux Azure Monitor.
 
 ![Diagramme des diagnostics du pare-feu d’applications web d’Application Gateway](../media/ag-overview/diagnostics.png)
 
@@ -149,15 +149,15 @@ Il est important de surveiller l’état de votre passerelle d’application. La
 
 Le journaux d’Application Gateway sont intégrés avec [Azure Monitor](../../azure-monitor/overview.md). Cela vous permet d’effectuer le suivi des informations de diagnostic, y compris des alertes et des journaux WAF. Vous pouvez accéder à cette fonctionnalité sous l’onglet **Diagnostics** dans la ressource Application Gateway du portail ou directement via Azure Monitor. Pour en savoir plus sur l’activation des journaux, voir [Diagnostics d’Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-#### <a name="azure-security-center"></a>Azure Security Center
+#### <a name="microsoft-defender-for-cloud"></a>Microsoft Defender pour le cloud
 
-[Azure Security Center](../../security-center/security-center-introduction.md) vous aide à vous empêcher, détecter et traiter les menaces. Il offre une visibilité et un contrôle accrus sur la sécurité de vos ressources Azure. Application Gateway est [intégré avec Azure Security Center](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions). Azure Security Center analyse votre environnement pour détecter les applications web non protégées. Il peut recommander au pare-feu d’applications web d’Application Gateway de protéger ces ressources vulnérables. Vous créez les pare-feux directement à partir de Security Center. Ces instances de pare-feu d’applications web sont intégrées avec Security Center. Elles envoient des alertes et des informations de contrôle d’intégrité au Security Center pour la génération de rapports.
+[Defender pour le cloud](../../security-center/security-center-introduction.md) vous aide à prévenir les menaces, à les détecter et à y répondre. Il offre une visibilité et un contrôle accrus sur la sécurité de vos ressources Azure. Application Gateway est [intégré à Defender pour le cloud](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions). Defender pour le cloud analyse votre environnement pour détecter les applications web non protégées. Il peut recommander au pare-feu d’applications web d’Application Gateway de protéger ces ressources vulnérables. Vous créez les pare-feu directement à partir de Defender pour le cloud. Ces instances WAF sont intégrées à Defender pour le cloud. Elles envoient des alertes et des informations sur l’intégrité à Defender pour le cloud pour la création de rapports.
 
-![Fenêtre Vue d’ensemble de Security Center](../media/ag-overview/figure1.png)
+![Fenêtre Vue d’ensemble de Defender pour le cloud](../media/ag-overview/figure1.png)
 
-#### <a name="azure-sentinel"></a>Azure Sentinel
+#### <a name="microsoft-sentinel"></a>Microsoft Sentinel
 
-Microsoft Azure Sentinel est une solution native cloud et évolutive de type SIEM (Security Information and Event Management) et SOAR (Security Orchestrated Automated Response). Azure Sentinel assure une analyse de sécurité intelligente et fournit des informations sur les menaces dans l’ensemble de l’entreprise. Elle constitue une solution unique pour la détection des alertes, la visibilité des menaces, la chasse proactive et la réponse face aux menaces.
+Microsoft Sentinel est une solution native Cloud et évolutive de type SIEM (Security Information and Event Management) et SOAR (Security Orchestrated Automated Response). Microsoft Sentinel assure une analyse de sécurité intelligente et fournit des renseignements sur les menaces dans l’ensemble de l’entreprise. Elle constitue une solution unique pour la détection des alertes, la visibilité des menaces, la chasse proactive et la réponse aux menaces.
 
 Avec le classeur des événements de pare-feu WAF Azure intégré, vous pouvez avoir une vue d’ensemble des événements de sécurité sur votre pare-feu d’applications web. Ceci inclut les événements, les règles de correspondance et les règles bloquées ainsi que tout le reste de ce qui est consigné dans les journaux du pare-feu. Pour plus d’informations, consultez la section Journalisation ci-dessous. 
 

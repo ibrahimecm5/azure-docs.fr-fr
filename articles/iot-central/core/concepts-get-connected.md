@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 74dea2337bb40469e4d4e94117df080960faca53
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: e35f61d53ead7772743f31acfad686ec62a707af
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858769"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492905"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Se connecter à Azure IoT Central
 
@@ -232,7 +232,9 @@ Le diagramme suivant montre comment, lorsqu’un appareil se connecte, la connex
 
 :::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="Diagramme montrant la fenêtre d’événements pour les événements connecté et déconnecté." border="false":::
 
-Vous pouvez afficher les événements connecté et déconnecté dans la vue **Données brutes** d’un appareil : :::image type="content" source="media/concepts-get-connected/device-connectivity-events.png" alt-text="Capture d’écran de la vue Données brutes filtrée pour afficher les événements connecté d’un appareil.":::
+Regardez la vidéo suivante pour en savoir plus sur la surveillance de l’état de la connexion des appareils :
+
+> [!VIDEO https://www.youtube.com/embed/EUZH_6Ihtto]
 
 Vous pouvez inclure des événements de connexion et de déconnexion dans les [exportations à partir d’IoT Central](howto-export-data.md#set-up-data-export). Pour plus d’informations, consultez [Réagir aux événements IoT Hub > Limitations pour les événements d’état de la connexion et de la déconnexion d’appareils](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events).
 

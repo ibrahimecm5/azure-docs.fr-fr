@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 98c077ff578cfbe70bfe3a871e5a1eb4d5fbd755
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 222c78803e268cef95dc322952874f58346c2919
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584253"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180173"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Meilleures pratiques pour la supervision du Stockage Blob Azure
 
@@ -132,6 +132,8 @@ Pour la partie « comment » de votre audit, le champ `OperationName` indique 
 
 Pour la partie « qui » de votre audit, le champ `AuthenticationType` indique le type d’authentification utilisé pour effectuer une demande. Ce champ peut afficher tout type d’authentification pris en charge par Stockage Azure, y compris l’utilisation d’une clé de compte, d’un jeton de signature d’accès partagé (SAP) ou d’une authentification Azure Active Directory (Azure AD).
 
+#### <a name="identifying-the-security-principal-used-to-authorize-a-request"></a>Identification du principal de sécurité utilisé pour autoriser une demande
+
 Si une demande a été authentifiée à l’aide d’Azure AD, le champ `RequesterObjectId` constitue la méthode la plus fiable pour identifier le principal de sécurité. Vous pouvez trouver le nom convivial de celui-ci en prenant la valeur du champ `RequesterObjectId` et en recherchant le principal de sécurité dans la page Azure AD du portail Azure. La capture d’écran suivante montre un résultat de recherche dans Azure AD.
 
 > [!div class="mx-imgBorder"]
@@ -150,6 +152,34 @@ StorageBlobLogs
 ```
 
 L’authentification avec clé partagée et SAP n’offre aucun moyen d’auditer des identités individuelles. Par conséquent, si vous souhaitez améliorer votre capacité à auditer sur la base de l’identité, nous vous recommandons de passer à Azure AD et d’empêcher l’authentification avec clé partagée et SAP. Pour savoir comment empêcher l’authentification avec clé partagée et SAP, consultez [Empêcher l’autorisation avec clé partagée pour un compte de stockage Azure](../common/shared-key-authorization-prevent.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=portal). Pour commencer à utiliser Azure AD, consultez [Autoriser l’accès aux blobs avec Azure Active Directory](authorize-access-azure-active-directory.md).
+
+#### <a name="identifying-the-sas-token-used-to-authorize-a-request"></a>Identification du jeton SAP utilisé pour autoriser une demande
+
+Vous pouvez interroger les opérations qui ont été autorisées à l’aide d’un jeton SAP. Par exemple, cette requête retourne toutes les opérations d’écriture qui ont été autorisées à l’aide d’un jeton SAP.
+
+```kusto
+StorageBlobLogs
+| where TimeGenerated > ago(3d)
+  and OperationName == "PutBlob"
+  and AuthenticationType == "SAS"
+| project TimeGenerated, AuthenticationType, AuthenticationHash, OperationName, Uri
+```
+
+Pour des raisons de sécurité, les jetons SAP n’apparaissent pas dans les journaux. Toutefois, le hachage SHA-256 du jeton SAP s’affiche dans le champ `AuthenticationHash` retourné par cette requête. 
+
+Si vous avez distribué plusieurs jetons SAP et que vous souhaitez savoir quels jetons SAP sont utilisés, vous devez convertir chacun de vos jetons SAP en hachage SHA-256, puis comparer ce hachage à la valeur de hachage qui s’affiche dans les journaux.
+
+Commencez par décoder chaque chaîne de jeton SAP. L’exemple suivant décode une chaîne de jeton SAP à l’aide de PowerShell.
+
+```powershell
+[uri]::UnescapeDataString("<SAS token goes here>")
+```
+
+Vous pouvez ensuite passer cette chaîne à l’applet de commande PowerShell [Get-FileHash](/powershell/module/microsoft.powershell.utility/get-filehash). Pour obtenir un exemple, consultez [Exemple 4 : Calculer le hachage d’une chaîne](/powershell/module/microsoft.powershell.utility/get-filehash#example-4--compute-the-hash-of-a-string).
+
+Vous pouvez également transmettre la chaîne décodée à la fonction [hash_sha256()](/azure/data-explorer/kusto/query/sha256hashfunction) dans le cadre d’une requête lorsque vous utilisez Azure Data Explorer.
+
+Les jetons SAP ne contiennent pas d’informations d’identité. Une façon d’effectuer le suivi des activités des utilisateurs ou des organisations consiste à conserver un mappage des utilisateurs ou des organisations à différents hachages de jeton SAP.
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>Optimiser les coûts des requêtes peu fréquentes
 

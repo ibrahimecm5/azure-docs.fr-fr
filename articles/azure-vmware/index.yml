@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: suzizuber
   ms.author: v-szuber
-  ms.date: 10/06/2021
-  ms.openlocfilehash: efc7a0083929d6750544c649e18a74cb929d6605
-  ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
+  ms.date: 11/12/2021
+  ms.openlocfilehash: bf6c18fd32288ed99c16dd89314aca7c743a37b3
+  ms.sourcegitcommit: 81a1d2f927cf78e82557a85c7efdf17bf07aa642
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/16/2021
-  ms.locfileid: "132555467"
+  ms.lasthandoff: 11/19/2021
+  ms.locfileid: "132812066"
 landingContent:
 - title: À propos d’Azure VMware Solution
   linkLists:
@@ -74,16 +74,26 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: 8 – Supprimer un cloud privé
       url: tutorial-delete-private-cloud.md
-- title: Récupération d'urgence
+- title: À l’échelle de l’entreprise pour Azure VMware Solution
   linkLists:
-  - linkListType: how-to-guide
+  - linkListType: architecture
     links:
-    - text: Déployer la reprise d’activité JetStream
-      url: deploy-disaster-recovery-using-jetstream.md
-    - text: Déployer VMware HCX pour la reprise d’activité
-      url: deploy-disaster-recovery-using-vmware-hcx.md
-    - text: Déployer VMware SRM pour la reprise d’activité
-      url: disaster-recovery-using-vmware-site-recovery-manager.md
+    - text: À l’échelle de l’entreprise pour Azure VMware Solution
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
+    - text: Gestion de l’identité et de l’accès
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-identity-and-access-management
+    - text: Topologie et connectivité du réseau
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-network-topology-connectivity
+    - text: Gestion et surveillance
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-management-and-monitoring
+    - text: Continuité d’activité et reprise d’activité à l’échelle de l’entreprise
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-business-continuity-and-disaster-recovery
+    - text: Sécurité, gouvernance et conformité à l’échelle de l’entreprise
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-security-governance-and-compliance
+    - text: Automatisation de plateforme et DevOps
+      url: /azure/cloud-adoption-framework/scenarios/azure-vmware/eslz-platform-automation-and-devops
+    - text: Automatisation à l’échelle de l’entreprise pour Azure VMware Solution
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
 - title: Gestion des identités
   linkLists:
   - linkListType: how-to-guide
@@ -152,6 +162,14 @@ landingContent:
       url: set-up-backup-server-for-azure-vmware-solution.md
     - text: Sauvegarder des machines virtuelles de cloud privé avec le serveur de sauvegarde
       url: backup-azure-vmware-solution-virtual-machines.md
+  - linkListType: deploy
+    links:
+    - text: Déployer la reprise d’activité JetStream
+      url: deploy-disaster-recovery-using-jetstream.md
+    - text: Déployer VMware HCX pour la reprise d’activité
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: Déployer VMware SRM pour la reprise d’activité
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
 - title: Solutions VMware
   linkLists:
   - linkListType: how-to-guide
@@ -194,6 +212,8 @@ landingContent:
       url: /azure/templates/microsoft.avs/privateclouds
     - text: Fournisseur Terraform Azure
       url: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud
+    - text: Automatisation à l’échelle de l’entreprise pour Azure VMware Solution
+      url: https://github.com/Azure/Enterprise-Scale-for-AVS
   - linkListType: video
     links:
     - text: Sélection

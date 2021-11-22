@@ -115,6 +115,8 @@
           href: active-directory-architecture.md
         - name: "Intégration de toutes vos applications à Azure\_AD"
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Options d’identités parallèles
+          href: azure-active-directory-parallel-identity-options.md
         - name: Gestion multilocataire des utilisateurs
           items:
             - name: Présentation de la gestion multilocataire des utilisateurs

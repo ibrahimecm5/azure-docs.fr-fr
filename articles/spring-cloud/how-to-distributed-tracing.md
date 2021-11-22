@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 702b2fcd2c5cb88adf7c610287dbb9be7089268b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b796ddccbc561c81d08c0f967c866f7a2ddc65a9
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258313"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484762"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Utiliser le suivi distribué avec Azure Spring Cloud (déconseillé)
 > [!NOTE]
@@ -119,7 +119,7 @@ Pour suivre ces procédures, vous avez besoin d’un service Azure Spring Cloud 
 
    Après cette modification, l’expéditeur Zipkin peut envoyer des données vers le Web.
 
-1. Vous pouvez ignorer l’étape suivante si vous avez suivi notre [guide de préparation d’une application Azure Spring Cloud](how-to-prepare-app-deployment.md). Sinon, accédez à votre environnement de développement local et modifiez votre fichier pom.xml en y ajoutant la dépendance Spring Cloud Sleuth suivante :
+1. Vous pouvez ignorer l’étape suivante si vous avez suivi notre [guide de préparation d’une application dans Azure Spring Cloud](how-to-prepare-app-deployment.md). Sinon, accédez à votre environnement de développement local et modifiez votre fichier pom.xml en y ajoutant la dépendance Spring Cloud Sleuth suivante :
 
     * Version de Spring Boot < 2.4.x.
 
@@ -215,4 +215,4 @@ En plus des fonctionnalités de cartographie d’application et de recherche, Ap
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez appris ce qu’est le suivi distribué dans Azure Spring Cloud et vous avez vu comment l’activer. Pour en savoir plus sur la liaison de services à une application, consultez [Lier une base de données Azure Cosmos DB à une application Azure Spring Cloud](./how-to-bind-cosmos.md).
+Dans cet article, vous avez appris ce qu’est le suivi distribué dans Azure Spring Cloud et vous avez vu comment l’activer. Pour en savoir plus sur la liaison de services à une application, consultez [Lier une base de données Azure Cosmos DB à une application dans Azure Spring Cloud](./how-to-bind-cosmos.md).
