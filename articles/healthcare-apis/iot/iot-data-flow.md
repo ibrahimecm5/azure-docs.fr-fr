@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 11/19/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 31ee65ee1efd3e7576403aacb0aa35e147a4f2aa
-ms.sourcegitcommit: b00a2d931b0d6f1d4ea5d4127f74fc831fb0bca9
+ms.openlocfilehash: e442cad97c01c4cd15c931dea45a849cc723cb76
+ms.sourcegitcommit: 01b678462a4a390c30463c525432ffbbbe0195cf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2021
-ms.locfileid: "132870312"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132954261"
 ---
 # <a name="iot-connector-data-flow"></a>Workflow de données du connecteur IoT
 
@@ -24,18 +24,20 @@ Cet article fournit une vue d’ensemble du processus de données du connecteur 
 
 Les données des appareils liés à l’intégrité ou des appareils médicaux circulent dans un chemin d’accès dans lequel le connecteur IoT transforme les données en FHIR, puis les données sont stockées et accessibles depuis le service FHIR. Le chemin d’accès aux données d’intégrité suit ces étapes dans l’ordre suivant : ingérer, normaliser, grouper, transformer et conserver. Dans ce workflow, les données d’intégrité sont récupérées à partir de l’appareil lors de la première étape de l’ingestion. Une fois les données reçues, elles sont traitées ou normalisées par des modèles de schéma sélectionnés par l’utilisateur ou par l’utilisateur, de sorte que les données d’intégrité sont plus simples à traiter et peuvent être regroupées. Les données d’intégrité sont regroupées en trois paramètres de fonctionnement. Une fois les données d’intégrité normalisées et regroupées, elles peuvent être traitées ou transformées par le biais de mappages de destination FHIR, puis enregistrées ou rendues persistantes sur le service FHIR.
 
-Cet article présente plus en détail chaque étape du Workflow. Les étapes suivantes [expliquent comment déployer un connecteur IOT](deploy-iot-connector-in-azure.md) à l’aide d’un mappeur d’appareil (étape de normalisation) et comment utiliser un mappeur d’appareil FHIR (étape de transformation).
+Cet article présente plus en détail chaque étape du Workflow. Les étapes suivantes [expliquent comment déployer un connecteur IOT](deploy-iot-connector-in-azure.md) à l’aide de mappages d’appareils (étape de normalisation) et de mappages de destination FHIR (étape de transformation).
 
-Les sections suivantes décrivent les étapes que les données passent après la réception des données par le connecteur IoT.
+Les sections suivantes décrivent les étapes que les données IoMT (Internet of Medical Things) passent une fois reçues d’un Event Hub au connecteur IoT.
+
+:::image type="content" source="media/iot-data-flow/iot-data-flow.png" alt-text="IoMT le passage de données à partir d’appareils IoT dans un Event Hub. Les données IoMT ingérées par le connecteur IoT sont normalisées, groupées, transformées et rendues persistantes dans un service FHIR." lightbox="media/iot-data-flow/iot-data-flow.png":::
 
 ## <a name="ingest"></a>Ingérer
-La réception est la première étape où les données de l’appareil sont reçues dans le connecteur IoT. Le point de terminaison d’ingestion pour les données d’appareils est hébergé sur un [Azure Event Hub](../../event-hubs/index.yml). La plateforme Azure Event Hub prend en charge une échelle et un débit élevés, avec la possibilité de recevoir et de traiter des millions de messages par seconde. Il permet également au connecteur IoT de consommer les messages de manière asynchrone, ce qui évite d’avoir à attendre que les données des appareils soient traitées.
+La réception est la première étape où les données de l’appareil sont reçues dans le connecteur IoT. Le point de terminaison d’ingestion pour les données de l’appareil est hébergé sur un [Event hubs Azure](../../event-hubs/index.yml). La plateforme Azure Event Hubs prend en charge une grande échelle et un débit élevé, avec la possibilité de recevoir et de traiter des millions de messages par seconde. Il permet également au connecteur IoT de consommer les messages de manière asynchrone, ce qui évite d’avoir à attendre que les données des appareils soient traitées.
 
 > [!NOTE]
 > JSON est le seul format actuellement pris en charge pour les données d’appareils.
 
 ## <a name="normalize"></a>Normaliser
-Normalize est l’étape suivante dans laquelle les données de l’appareil sont récupérées à partir du hub d’événements Azure ci-dessus et traitées à l’aide du mappage de l’appareil. Ce processus de mappage entraîne une transformation des données d’appareils en un schéma normalisé. 
+Normalize est l’étape suivante dans laquelle les données de l’appareil sont récupérées de la Event Hub ci-dessus et traitées à l’aide des mappages d’appareils. Ce processus de mappage entraîne une transformation des données d’appareils en un schéma normalisé. 
 
 Le processus de normalisation simplifie non seulement le traitement des données à des étapes ultérieures, mais il offre également la possibilité de projeter un message d’entrée en plusieurs messages normalisés. Par exemple, un appareil pourrait envoyer plusieurs signes vitaux pour la température du corps, la fréquence cardiaque, la pression artérielle et la fréquence respiratoire dans un message unique. Ce message d’entrée crée quatre ressources FHIR distinctes. Chaque ressource représente un signe vital différent, avec le message d’entrée projeté dans quatre messages normalisés différents.
 
@@ -62,7 +64,7 @@ Dans l’étape de transformation, les messages normalisés groupés sont trait�
 S’il n’existe aucune ressource d’appareil pour un identificateur d’appareil donné dans le service FHIR, le résultat dépend de la valeur de `Resolution Type` définie au moment de la création. Lorsque la valeur est définie sur `Lookup`, le message spécifique est ignoré et le pipeline continue de traiter d’autres messages entrants. Si la valeur `Create` est, le connecteur IOT crée un appareil nu et des ressources pour les patients sur le service FHIR.  
 
 ## <a name="persist"></a>Conserver
-Une fois la ressource FHIR d’observation générée à l’étape de transformation, la ressource est enregistrée dans le service FHIR. Si la ressource FHIR est nouvelle, elle sera créée sur le service FHIR. Si la ressource FHIR existe déjà, elle est mise à jour.
+Une fois la ressource FHIR d’observation générée à l’étape de transformation, la ressource est enregistrée dans le service FHIR. Si la ressource FHIR d’observation est nouvelle, elle sera créée sur le service FHIR. Si la ressource FHIR d’observation existe déjà, elle sera mise à jour.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
