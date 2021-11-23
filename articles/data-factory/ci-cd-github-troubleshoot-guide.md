@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 10/25/2021
-ms.openlocfilehash: 1c73346cde1eb20f17973b65e43a8d1c4148b41c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.openlocfilehash: d3d792f6b51dc24b17d86d6a6fecc83697445a5a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073241"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157719"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>Résoudre les problèmes de CD-rom, de Azure DevOps et de GitHub dans Azure Data Factory et Synapse Analytics 
 
@@ -322,6 +322,16 @@ Le paramétrage d’une référence d’entité (runtime d’intégration dans l
 #### <a name="resolution"></a>Résolution
 Data Factory s’attend à ce que vous ayez le même nom et le même type de runtime d’intégration dans toutes les phases de CI/CD. 
 
+### <a name="arm-template-deployment-failing-with-error-datafactorypropertyupdatenotsupported"></a>Échec de déploiement de modèle ARM avec l’erreur DataFactoryPropertyUpdateNotSupported
+
+##### <a name="issue"></a>Problème
+Le déploiement de modèle ARM échoue avec une erreur telle que DataFactoryPropertyUpdateNotSupported : La mise à jour du type de propriété n’est pas prise en charge. 
+
+##### <a name="cause"></a>Cause
+Le déploiement de modèle ARM tente de modifier le type d’un runtime d’intégration existant. Cela n’est pas autorisé et entraîne un échec de déploiement, car la fabrique de données requiert les mêmes nom et type de runtime d’intégration à toutes les étapes du processus d’intégration continue et livraison continue (CI/CD).
+
+##### <a name="resolution"></a>Résolution
+Si vous voulez partager les runtimes d’intégration dans toutes les phases, envisagez d’utiliser une fabrique ternaire qui contiendra uniquement les runtimes d’intégration partagés. Vous pouvez utiliser cette fabrique partagée dans tous vos environnements en tant que type de runtime d’intégration lié. Pour plus d’informations, consultez [Intégration continue et livraison continue dans Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-delivery#best-practices-for-cicd).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

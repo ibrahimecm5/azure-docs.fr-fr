@@ -11,14 +11,14 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/01/2021
+ms.date: 11/10/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 592f2ae9b3d09ce84296dca31d68031b7d5fff84
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3eeeb1a2525877cad031d1f0acd38de6c45b2bac
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080913"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157701"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Modifications apportées à la documentation concernant SQL Server sur des machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,9 @@ Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur
 
 | Modifications | Détails |
 | --- | --- |
+| **Éliminer le besoin d’Azure Load Balancer ou de DNN HADR** | Déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux afin d’éliminer la dépendance vis-à-vis de l’Azure Load Balancer ou du DNN (nom du réseau distribué) pour acheminer le trafic vers votre solution de haute disponibilité et récupération d’urgence (HADR). Pour en savoir plus, consultez le didacticiel sur le [groupe de disponibilité à plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) ou [préparez une machine virtuelle SQL Server pour FCI](failover-cluster-instance-prepare-vm.md#subnets). | 
 | **SQL Assessment** | Il est désormais possible d’évaluer l’intégrité de votre machine virtuelle SQL Server dans le portail Azure à l’aide de [SQL Assessment](sql-assessment-for-sql-vm.md) pour détecter les recommandations qui améliorent les performances et identifier les configurations recommandées manquantes. Actuellement, cette fonctionnalité est uniquement disponible en tant que version préliminaire. |
+| &nbsp; | &nbsp; |
 
 
 ## <a name="october-2021"></a>Octobre 2021
@@ -37,6 +39,7 @@ Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur
 | Modifications | Détails |
 | --- | --- |
 | **L’extension SQL IaaS prend désormais en charge Ubuntu** | La prise en charge a été ajoutée pour [inscrire](../linux/sql-iaas-agent-extension-register-vm-linux.md) votre machine virtuelle SQL Server s’exécutant sur Ubuntu Linux avec l’[extension IaaS SQL Server](../linux/sql-server-iaas-agent-extension-linux.md) pour des fonctionnalités limitées. | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="september-2021"></a>Septembre 2021
@@ -44,6 +47,7 @@ Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur
 | Modifications | Détails |
 | --- | --- |
 | **Le mode complet de l’extension SQL IaaS ne nécessite plus de redémarrage** | Le redémarrage du service SQL Server n’est plus nécessaire lors de l’inscription de votre machine virtuelle SQL Server auprès de l’[extension SQL IaaS Agent](sql-server-iaas-agent-extension-automate-management.md) en [mode complet](sql-agent-extension-manually-register-single-vm.md#full-mode). | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="july-2021"></a>Juillet 2021
@@ -51,6 +55,7 @@ Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur
 | Modifications | Détails |
 | --- | --- |
 | **Réparer l’extension IaaS SQL Server dans le portail** | Vous pouvez désormais vérifier l’état de votre extension d’agent IaaS SQL Server directement sur le portail Azure, et [réparer](sql-agent-extension-manually-register-single-vm.md#repair-extension) celle-ci si nécessaire. | 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="june-2021"></a>Juin 2021
@@ -58,12 +63,15 @@ Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur
 | Modifications | Détails |
 | --- | --- |
 | **Améliorations de la sécurité dans le portail Azure** | Une fois [Azure Defender pour SQL](../../../security-center/defender-for-sql-usage.md) activé, vous pouvez afficher les recommandations de Security Center dans la [Ressource Machines virtuelles SQL sur le portail Azure](manage-sql-vm-portal.md#security-center). | 
+| &nbsp; | &nbsp; |
+
 
 ## <a name="may-2021"></a>Mai 2021
 
 | Modifications | Détails |
 | --- | --- |
 | **Actualisation du contenu de haute disponibilité et récupération d'urgence** | Nous avons actualisé et amélioré notre contenu de haute disponibilité et récupération d’urgence (HADR). Il existe désormais une [Vue d’ensemble du cluster de basculement Windows Server](hadr-windows-server-failover-cluster-overview.md), ainsi qu’un quorum consolidé pour [la configuration](hadr-cluster-quorum-configure-how-to.md) des machines virtuelles SQL Server.  En outre, nous avons amélioré les [meilleures pratiques en matière de cluster](hadr-cluster-best-practices.md) à l’aide de recommandations de paramètres plus complètes adoptées dans le cloud.| 
+| &nbsp; | &nbsp; |
 
 
 ## <a name="april-2021"></a>Avril 2021
@@ -71,14 +79,14 @@ Lorsque vous déployez une machine virtuelle Azure avec SQL Server installé sur
 | Modifications | Détails |
 | --- | --- |
 | **Migrer la haute disponibilité vers la machine virtuelle** | Azure Migrate offre la prise en charge pour déplacer votre solution haute disponibilité vers SQL Server sur des machines virtuelles Azure. Déplacez votre [groupe de disponibilité](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md) ou votre [instance de cluster de basculement](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md) sur des machines virtuelles SQL Server à l’aide d’Azure Migrate dès aujourd’hui. | 
-
+| &nbsp; | &nbsp; |
 
 ## <a name="march-2021"></a>Mars 2021
 
 | Modifications | Détails |
 | --- | --- |
 | **Actualisation des meilleures pratiques relatives aux performances** | Nous avons réécrit, actualisé et mis à jour la documentation sur les meilleures pratiques en matière de performances, en fractionnant un article en une série contenant : [une liste de contrôle](performance-guidelines-best-practices-checklist.md), [une aide sur la taille des machines virtuelles](performance-guidelines-best-practices-vm-size.md), [une aide sur le stockage](performance-guidelines-best-practices-storage.md)et [des instructions sur la collecte de références](performance-guidelines-best-practices-collect-baseline.md).   | 
-
+| &nbsp; | &nbsp; |
 
 
 ## <a name="2020"></a>2020

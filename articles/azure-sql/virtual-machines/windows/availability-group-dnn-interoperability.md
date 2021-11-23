@@ -11,20 +11,23 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/08/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: dd8713bcbe96c16e24305e05f693bbf15af327ab
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 79aefd5c4b41e86aeeb2f7f02f2df57397c4b36b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163045"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157481"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>Interopérabilité des fonctionnalités avec un groupe de disponibilité (AG) et un écouteur de DNN 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Certaines fonctionnalités de SQL Server reposent sur un nom de réseau virtuel (VNN) codé en dur. Par conséquent, lors de l’utilisation de l’écouteur de DNN avec votre groupe de disponibilité AlwaysOn et SQL Server sur des machines virtuelles Azure, il peut y avoir des aspects supplémentaires à prendre en considération. 
+> [!TIP]
+> Éliminez la nécessité de disposer d’un nom de réseau distribué pour votre groupe de disponibilité Always On en créant vos machines virtuelles SQL Server dans [plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) au sein du même réseau virtuel Azure.
+
+Certaines fonctionnalités de SQL Server reposent sur un nom de réseau virtuel (VNN) codé en dur. Par conséquent, lors de l’utilisation de l’écouteur de DNN avec votre groupe de disponibilité AlwaysOn et SQL Server sur des machines virtuelles Azure dans un sous-réseau unique, il peut y avoir des aspects supplémentaires à prendre en considération. 
 
 Cet article décrit les fonctionnalités et l’interopérabilité de SQL Server avec l’écouteur de DNN du groupe de disponibilité. 
 

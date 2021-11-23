@@ -11,12 +11,12 @@ ms.subservice: hybrid
 ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d58e688133af9f587e3b2c6d40d9f9cf07e5a60
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: de2b1f3a6eb44802d074c813881702072e61339f
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500884"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132397639"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect : Historique de publication des versions
 L’équipe Azure Active Directory (Azure AD) met régulièrement à jour Azure AD Connect avec de nouvelles fonctions et fonctionnalités. Tous les ajouts ne sont pas applicables à toutes les configurations.
@@ -29,7 +29,7 @@ Vous pouvez mettre à niveau votre serveur AADConnect à partir de toutes les ve
 
  - Si vous utilisez **Windows Server version 2016 ou plus récente**, vous devez utiliser **Azure AD Connect V2.0**. Vous pouvez télécharger la dernière version d’Azure AD Connect 2.0 en cliquant sur [ce lien](https://www.microsoft.com/en-us/download/details.aspx?id=47594). Consultez les [notes de publication](reference-connect-version-history.md#20280) relatives à la version V2.0 la plus récente.
  - Si vous utilisez toujours une **version antérieure de Windows Server**, vous devez utiliser **Azure AD Connect version 1.6**. Vous pouvez télécharger la dernière version d’Azure AD Connect V1 en cliquant sur [ce lien](https://www.microsoft.com/download/details.aspx?id=103336). Consultez les [notes de publication](reference-connect-version-history.md#16160) relatives à la version V1.6 la plus récente.
- - Nous n’appliquons que les modifications critiques apportées aux versions V1.x, et vous pouvez ne pas trouver certaines des fonctionnalités et des correctifs pour V2.0 dans les versions V1.x. Vous devez donc effectuer une mise à niveau vers la version V2.0 dès que possible. Plus particulièrement, la prise en charge du point de terminaison V2 n’est plus disponible pour les versions V1.x. Si vous devez synchroniser des groupes avec plus de 50 000 membres, vous devez effectuer une mise à niveau vers Azure AD Connect V2.0.
+ - Nous n’appliquons que les modifications critiques apportées aux versions V1.x, et vous pouvez ne pas trouver certaines des fonctionnalités et des correctifs pour V2.0 dans les versions V1.x. Vous devez donc effectuer une mise à niveau vers la version V2.0 dès que possible. Plus particulièrement, il existe un problème avec la build 1.16.4.2, qui a pour effet que la mise à niveau vers cette build v1.6 ou toute build plus récente réinitialise la limite du groupe à 50 000. Quand un serveur est mis à niveau vers cette build 1.6 ou toute build plus récente, le client doit réappliquer les modifications de règle appliquées lors de l’augmentation initiale de la limite d’appartenance de groupe à 250 000 avant d’activer la synchronisation pour le serveur. 
 
 Ce tableau présente la liste des rubriques connexes :
 
@@ -65,7 +65,7 @@ Toutefois, si vous souhaitez bénéficier des dernières fonctionnalités et mis
 ## <a name="16160"></a>1.6.16.0
 >[!NOTE] 
 >Il s’agit d’une version de mise à jour de correctif d’Azure AD Connect. Cette version est destinée à être utilisée par les clients qui exécutent une version antérieure du Serveur Windows et qui ne peuvent pas mettre à niveau leur serveur vers le Serveur Windows version 2016 ou plus récente. Vous ne pouvez pas utiliser cette version pour mettre à jour un serveur Azure AD Connect 2.0. Cette version n’est pas prise en charge sur Windows Server 2016 ou une version ultérieure. Cette version comprend des composants SQL Server 2012 et sera mise hors service le 31 août 2022. Vous devrez mettre à niveau le système d’exploitation de votre serveur et la version d’AADConnect avant cette date.
->La prise en charge du point de terminaison V2 n’est plus disponible pour les versions V1.x. Si vous devez synchroniser des groupes avec plus de 50 000 membres, vous devez effectuer une mise à niveau vers Azure AD Connect V2.0.
+>Il existe un problème qui a pour effet que la mise à niveau vers cette build v1.6 ou toute build plus récente réinitialise la limite d’appartenance du groupe à 50 000. Quand un serveur est mis à niveau vers cette build 1.6 ou toute build plus récente, le client doit réappliquer les modifications de règle appliquées lors de l’augmentation initiale de la limite d’appartenance de groupe à 250 000 avant d’activer la synchronisation pour le serveur. 
 
 ### <a name="release-status"></a>État de la version
 13/10/2021 : publié pour le téléchargement et la mise à niveau automatique.
@@ -73,6 +73,9 @@ Toutefois, si vous souhaitez bénéficier des dernières fonctionnalités et mis
 ### <a name="bug-fixes"></a>Résolution des bogues
 - Nous avons corrigé un bogue à cause duquel le processus de mise à niveau automatique tentait de mettre à niveau les serveurs AADConnect qui exécutent les versions antérieures 2008 ou 2008 R2 du système d’exploitation Windows et échouait. Ces versions de Windows Server ne sont plus prises en charge. Dans cette version, nous ne tentons la mise à niveau automatique que sur les machines qui exécutent Windows Server 2012 ou une version ultérieure.
 - Nous avons corrigé un problème où, dans certaines conditions, miisserver se plantait en raison d’une exception de violation d’accès.
+
+### <a name="known-issues"></a>Problèmes connus
+ - Il existe un problème qui a pour effet que la mise à niveau vers cette build v1.6 ou toute build plus récente réinitialise la limite d’appartenance du groupe à 50 000. Quand un serveur est mis à niveau vers cette build 1.6 ou toute build plus récente, le client doit réappliquer les modifications de règle appliquées lors de l’augmentation initiale de la limite d’appartenance de groupe à 250 000 avant d’activer la synchronisation pour le serveur. 
 
 ## <a name="20280"></a>2.0.28.0
 
@@ -98,7 +101,8 @@ Remarque : un objet fantôme est un espace réservé pour un objet qui n’est 
 >[!NOTE] 
 >Il s’agit d’une version de mise à jour de correctif d’Azure AD Connect. Cette version est destinée à être utilisée par les clients qui exécutent une version antérieure du Serveur Windows et qui ne peuvent pas mettre à niveau leur serveur vers le Serveur Windows version 2016 ou plus récente. Vous ne pouvez pas utiliser cette version pour mettre à jour un serveur Azure AD Connect 2.0.
 >Nous allons commencer à mettre à niveau automatiquement les locataires éligibles lorsque cette version sera disponible au téléchargement, l’exécution de la mise à niveau automatique prendra quelques semaines.
->La prise en charge du point de terminaison V2 n’est plus disponible pour les versions V1.x. Si vous devez synchroniser des groupes avec plus de 50 000 membres, vous devez effectuer une mise à niveau vers Azure AD Connect V2.0.
+>Il existe un problème qui a pour effet que la mise à niveau vers cette build v1.6 ou toute build plus récente réinitialise la limite d’appartenance du groupe à 50 000. Quand un serveur est mis à niveau vers cette build 1.6 ou toute build plus récente, le client doit réappliquer les modifications de règle appliquées lors de l’augmentation initiale de la limite d’appartenance de groupe à 250 000 avant d’activer la synchronisation pour le serveur. 
+
 
 ### <a name="release-status"></a>État de la version
 21/09/2021 : publié pour le téléchargement et la mise à niveau automatique.

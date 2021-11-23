@@ -1,6 +1,6 @@
 ---
-title: Fichier include
-description: Fichier include
+title: Inclut le fichier
+description: Inclut le fichier
 services: service-bus-messaging, event-hubs
 author: spelluru
 ms.service: service-bus-messaging, event-hubs
@@ -8,45 +8,45 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3cb87b130b0dd7888664f0bcc1522c99c1c56a4b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 72c98f01224e70febb5ae6189682f1275ca811f6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131571234"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354207"
 ---
 ## <a name="what-is-a-replication-task"></a>Qu’est-ce qu’une tâche de réplication ?
 
-Une tâche de réplication reçoit des événements d’une source et les transfère à une cible. La plupart des tâches de réplication transfèrent des événements non modifiés et, au maximum, effectuent le mappage entre les structures de métadonnées si les protocoles source et cible diffèrent. 
+Une tâche de réplication reçoit des événements d’une source et les transfère à une cible. La plupart des tâches de réplication transfèrent des événements non modifiés et, au maximum, effectuent le mappage entre les structures de métadonnées si les protocoles source et cible diffèrent.
 
-Les tâches de réplication sont généralement sans état. Cela signifie qu’elles ne partagent pas l’état ou d’autres effets secondaires sur les exécutions séquentielles ou parallèles d’une tâche. C’est également vrai pour le traitement par lot et le chaînage, qui peuvent être implémentés, en plus de l’état existant d’un flux. 
+Les tâches de réplication sont généralement sans état. Cela signifie qu’elles ne partagent pas l’état ou d’autres effets secondaires sur les exécutions séquentielles ou parallèles d’une tâche. C’est également vrai pour le traitement par lot et le chaînage, qui peuvent être implémentés, en plus de l’état existant d’un flux.
 
 Cela différencie les tâches de réplication des tâches d’agrégation (généralement associées à un état). Celles-ci relèvent du domaine des infrastructures et services d’analyse tels qu’[Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md).
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Applications et tâches de réplication dans Azure Functions
 
-Dans Azure Functions, une tâche de réplication est implémentée à l’aide d’un [déclencheur](../articles/azure-functions/functions-triggers-bindings.md) qui acquiert un ou plusieurs messages d’entrée à partir d’une source configurée, et d’une [liaison de sortie](../articles/azure-functions/functions-triggers-bindings.md#binding-direction) qui transfère les messages copiés de la source vers une cible configurée. 
+Dans Azure Functions, une tâche de réplication est implémentée à l’aide d’un [déclencheur](../articles/azure-functions/functions-triggers-bindings.md) qui acquiert des messages d’entrée à partir d’une source configurée, et d’une [liaison de sortie](../articles/azure-functions/functions-triggers-bindings.md#binding-direction) qui transfère les messages copiés de la source vers une cible configurée.
 
 | Déclencheur  | Output |
 |----------|--------|
 | [Déclencheur Azure Event Hubs](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=csharp) | [Liaison de sortie Azure Event Hubs](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=csharp) |
-| [Déclencheur Azure Service Bus](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp) | [Liaison de sortie Azure Service Bus](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp)
-| [Déclencheur Azure IoT Hub](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp) | [Liaison de sortie Azure IoT Hub](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp)
-| [Déclencheur Azure Event Grid](../articles/azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp) | [Liaison de sortie Azure Event Grid](../articles/azure-functions/functions-bindings-event-grid-output.md?tabs=csharp)
-| [Déclencheur Stockage File d’attente Azure](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp) | [Liaison de sortie Stockage File d’attente Azure](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp)
-| [Déclencheur Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) | [Liaison de sortie Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
-| [Déclencheur RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) | [Liaison de sortie RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) 
-| | [Liaison de sortie Azure Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md)
-||[Liaison de sortie Azure SignalR Service](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp)
-||[Liaison de sortie Twilio SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp)
+| [Déclencheur Azure Service Bus](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp) | [Liaison de sortie Azure Service Bus](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp) |
+| [Déclencheur Azure IoT Hub](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp) | [Liaison de sortie Azure IoT Hub](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp) |
+| [Déclencheur Azure Event Grid](../articles/azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp) | [Liaison de sortie Azure Event Grid](../articles/azure-functions/functions-bindings-event-grid-output.md?tabs=csharp) |
+| [Déclencheur Stockage File d’attente Azure](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp) | [Liaison de sortie Stockage File d’attente Azure](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp) |
+| [Déclencheur Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) | [Liaison de sortie Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) |
+| [Déclencheur RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) | [Liaison de sortie RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) |
+| | [Liaison de sortie Azure Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |
+| | [Liaison de sortie Azure SignalR Service](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp) |
+| | [Liaison de sortie Twilio SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp) |
 
-Les tâches de réplication sont déployées comme étant dans l’application de réplication à l’aide des mêmes méthodes de déploiement que toute autre application Azure Functions. Vous pouvez configurer plusieurs tâches dans la même application. 
+Les tâches de réplication sont déployées dans l’application de réplication à l’aide des mêmes méthodes de déploiement que toute autre application Azure Functions. Vous pouvez configurer plusieurs tâches dans la même application.
 
-Avec Azure Functions Premium, plusieurs applications de réplication peuvent partager le même pool de ressources sous-jacent (appelé plan App Service). Vous pouvez ainsi facilement colocaliser les tâches de réplication écrites en .NET avec des tâches de réplication écrites en Java, par exemple. Il s’agit d’un aspect important si vous souhaitez tirer parti de bibliothèques spécifiques telles qu’Apache Camel qui ne sont disponibles que pour Java. Il en va de même si celles-ci constituent la meilleure option pour un chemin d’intégration particulier, même si vous préféreriez généralement utiliser d’autres langage et runtime pour vos autres tâches de réplication. 
+Avec Azure Functions Premium, plusieurs applications de réplication peuvent partager le même pool de ressources sous-jacent (appelé plan App Service). Vous pouvez ainsi facilement colocaliser les tâches de réplication écrites en .NET avec des tâches de réplication écrites en Java, par exemple. Il s’agit d’un aspect important si vous souhaitez tirer parti de bibliothèques spécifiques telles qu’Apache Camel qui ne sont disponibles que pour Java. Il en va de même si celles-ci constituent la meilleure option pour un chemin d’intégration particulier, même si vous préféreriez généralement utiliser d’autres langage et runtime pour vos autres tâches de réplication.
 
 Lorsque c’est possible, vous devez préférer les déclencheurs axés sur le traitement par lot aux déclencheurs délivrant des événements ou messages individuels. Vous devez par ailleurs toujours obtenir la structure complète des événements ou messages plutôt que de vous appuyer sur les [expressions de liaison de paramètre](../articles/azure-functions/functions-bindings-expressions-patterns.md) d’Azure Functions.
 
-Le nom de la fonction doit refléter la paire de la source et la cible que vous connectez, et vous devez préfixer les références aux chaînes de connexion ou à d’autres éléments de configuration dans les fichiers de configuration d’application portant ce nom. 
+Le nom de la fonction doit refléter la paire de la source et la cible que vous connectez, et vous devez préfixer les références aux chaînes de connexion ou à d’autres éléments de configuration dans les fichiers de configuration d’application portant ce nom.
 
 ### <a name="data-and-metadata-mapping"></a>Mappage des données et métadonnées
 
@@ -56,33 +56,31 @@ Pour les tâches de réplication simples qui copient des messages entre Event Hu
 
 ### <a name="retry-policy"></a>Stratégie de nouvelles tentatives
 
-Pour éviter de perdre des données pendant l’événement de disponibilité de part et d’autre d’une fonction de réplication, vous devez configurer la stratégie de nouvelles tentatives de façon à ce qu’elle soit robuste. Reportez-vous à la [documentation d’Azure Functions sur les nouvelles tentatives](../articles/azure-functions/functions-bindings-error-pages.md) pour configurer la stratégie de nouvelles tentatives. 
+Pour éviter de perdre des données pendant l’événement de disponibilité de part et d’autre d’une fonction de réplication, vous devez configurer la stratégie de nouvelles tentatives de façon à ce qu’elle soit robuste. Reportez-vous à la [documentation d’Azure Functions sur les nouvelles tentatives](../articles/azure-functions/functions-bindings-error-pages.md) pour configurer la stratégie de nouvelles tentatives.
 
-Les paramètres de stratégie choisis pour les exemples de projets dans le [référentiel d’exemples](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) configurent une stratégie de backoff exponentiel avec des intervalles avant nouvelle tentative de 5 secondes à 15 minutes, et un nombre infini de nouvelles tentatives pour éviter de perdre des données. 
+Les paramètres de stratégie choisis pour les exemples de projets dans le [référentiel d’exemples](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) configurent une stratégie de backoff exponentiel avec des intervalles avant nouvelle tentative de 5 secondes à 15 minutes, et un nombre infini de nouvelles tentatives pour éviter de perdre des données.
 
 Pour Service Bus, consultez la section [Utilisation de la prise en charge des nouvelles tentatives en plus de la résilience de déclencheur](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) pour comprendre l’interaction des déclencheurs et connaître le nombre maximal de remises défini pour la file d’attente.
 
 ### <a name="setting-up-a-replication-application-host"></a>Configuration d’un hôte d’application de réplication
 
-Une application de réplication est un hôte d’exécution pour une ou plusieurs tâches de réplication. 
+Une application de réplication est un hôte d’exécution pour une ou plusieurs tâches de réplication.
 
-Il s’agit d’une application Azure Functions configurée pour s’exécuter sur le plan de consommation ou (recommandé) sur un plan Azure Functions Premium. Toutes les applications de réplication doivent être exécutées sous une [identité managée affectée par le système ou l’utilisateur](../articles/app-service/overview-managed-identity.md). 
+Il s’agit d’une application Azure Functions configurée pour s’exécuter sur le plan de consommation ou (recommandé) sur un plan Azure Functions Premium. Toutes les applications de réplication doivent être exécutées sous une [identité managée affectée par le système ou l’utilisateur](../articles/app-service/overview-managed-identity.md).
 
 Les modèles ARM (Azure Resource Manager) liés créent et configurent une application de réplication avec :
 
-* un compte de stockage Azure pour le suivi de la progression de la réplication et les journaux ;
-* une identité managée affectée par le système ; 
-* une intégration d’Azure Monitor et Application Insights pour la surveillance.
+* Un compte de stockage Azure pour le suivi de la progression de la réplication et les journaux.
+* Une identité managée affectée par le système.
+* Intégration d’Azure Monitor et d’Application Insights pour la surveillance.
 
 Les applications de réplication qui doivent accéder au service Event Hubs lié à un réseau virtuel (VNet) Azure doivent utiliser le plan Azure Functions Premium et être configurées pour rejoindre le même réseau virtuel, qui est également l’une des options disponibles.
 
-
-|       | Déployer | Visualiser  
-|-------|------------------|--------------|---------------|
-| **Plan de consommation Azure Functions** | [![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)|[![Visualiser](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)
-| **Plan Premium Azure Functions** |[![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Visualiser](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json)
-| **Plan Azure Functions Premium avec VNet** | [![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)|[![Visualiser](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)
-
+| | Déployer | Visualiser |
+|--|--|--|
+| **Plan de consommation Azure Functions** | [![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)|[![Visualiser](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json) |
+| **Plan Premium Azure Functions** |[![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Visualiser](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) |
+| **Plan Azure Functions Premium avec VNet** | [![Déployer sur Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)|[![Visualiser](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json) |
 
 ### <a name="examples"></a>Exemples
 
@@ -118,13 +116,12 @@ public static Task JobsTransfer(
 
 Les méthodes d’assistance peuvent faciliter la réplication entre Event Hubs et Service Bus :
 
-| Source      | Cible      | Point d'entrée 
+| Source      | Cible      | Point d'entrée |
 |-------------|-------------|------------------------------------------------------------------------
 | Event Hub   | Event Hub   | `Azure.Messaging.Replication.EventHubReplicationTasks.ForwardToEventHub`
 | Event Hub   | Service Bus | `Azure.Messaging.Replication.EventHubReplicationTasks.ForwardToServiceBus`
 | Service Bus | Event Hub   | `Azure.Messaging.Replication.ServiceBusReplicationTasks.ForwardToEventHub`
 | Service Bus | Service Bus | `Azure.Messaging.Replication.ServiceBusReplicationTasks.ForwardToServiceBus`
-
 
 ### <a name="monitoring"></a>Supervision
 

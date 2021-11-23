@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/2/2021
+ms.date: 11/9/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 33433fe8556befaf2e34424ba35e71a66d433533
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 19e1d5f8eab559114f26d10a15c835cf0758b225
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131452468"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133229"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Notes de publication de l’agent Azure File Sync
 Azure File Sync vous permet de centraliser les partages de fichiers de votre organisation dans Azure Files sans perdre la flexibilité, le niveau de performance et la compatibilité d’un serveur de fichiers local. Il transforme vos installations Windows Server en un cache rapide de votre partage de fichiers Azure. Vous pouvez utiliser tout protocole disponible dans Windows Server pour accéder à vos données localement (notamment SMB, NFS et FTPS). Vous pouvez avoir autant de caches que nécessaire dans le monde entier.
@@ -26,7 +26,7 @@ Les versions prises en charge de l'agent Azure File Sync sont les suivantes :
 | Jalon | Numéro de version de l’agent | Date de publication | Statut |
 |----|----------------------|--------------|------------------|
 | Version V14 - [KB5001872](https://support.microsoft.com/topic/92290aa1-75de-400f-9442-499c44c92a81)| 14.0.0.0 | 29 octobre 2021 | Prise en charge : Distribution de version d’évaluation |
-| Version V13 - [KB4588753](https://support.microsoft.com/topic/632fb833-42ed-4e4d-8abd-746bd01c1064)| 13.0.0.0 | 12 juillet 2021 | Pris en charge |
+| Version V13 - [KB4588753](https://support.microsoft.com/topic/632fb833-42ed-4e4d-8abd-746bd01c1064)| 13.0.0.0 | 12 juillet 2021 | Prise en charge |
 | Version v12.1 – [KB4588751](https://support.microsoft.com/topic/497dc33c-d38b-42ca-8015-01c906b96132)| 12.1.0.0 | 20 mai 2021 | Prise en charge |
 | Mise en production V12 – [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 26 mars 2021 | Prise en charge |
 | Version V11.3 : [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 7 avril 2021 | Prise en charge |
@@ -55,6 +55,9 @@ Les versions suivantes de l'agent Azure File Sync ont expiré et ne sont plus pr
 Les notes de publication suivantes concernent la version 14.0.0.0 de l’agent Azure File Sync (mise en production le 29 octobre 2021).
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Améliorations et problèmes résolus
+- Transactions réduites lors des exécutions de travail d’énumération des modifications cloud 
+    - Azure File Sync inclut un travail d’énumération des modifications cloud qui s’exécute toutes les 24 heures pour détecter les modifications apportées directement au partage de fichiers Azure et synchroniser ces modifications sur les serveurs dans vos groupes de synchronisation. Nous avons apporté des améliorations pour réduire le nombre de transactions lors de l’exécution de ce travail.
+
 - Amélioration des conseils de mise en service des points de terminaison de serveur dans le portail
     - Lors de la suppression d’un point de terminaison de serveur via le portail, nous fournissons désormais des instructions pas à pas basées sur la raison de la suppression du point de terminaison de serveur, afin que vous puissiez éviter la perte de données et vous assurer que vos données sont là où elles doivent être (serveur ou partage de fichiers Azure). Cette fonctionnalité comprend également de nouvelles cmdlets PowerShell (Get-StorageSyncStatus et New-StorageSyncUploadSession) que vous pouvez utiliser sur votre serveur local pour vous aider dans le processus d’annulation de l’approvisionnement.
 
@@ -63,6 +66,7 @@ Les notes de publication suivantes concernent la version 14.0.0.0 de l’agent 
 
 - Améliorations diverses
     - Azure File Sync est désormais pris en charge dans la région USA Ouest 3.
+    - Correction d’un bogue qui avait pour effet que le script FileSyncErrorsReport.ps1 ne fournissait pas la liste de toutes les erreurs par élément.
     - Transactions réduites lorsqu’un fichier ne parvient jamais à se charger en raison d’une erreur de synchronisation par élément.
     - Améliorations diverses de la fiabilité et de la télémétrie de la hiérarchisation cloud et de la synchronisation. 
 
