@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 797f8b3ae5812ce4eaadc410252bd2ba2bc4e706
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046638"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297503"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Introduction
@@ -43,7 +43,7 @@ Azure Operational Security comprend les services, contrôles et fonctionnalités
 Ce livre blanc décrit l’approche de Microsoft en matière de sécurité opérationnelle au sein de la plateforme cloud Microsoft Azure. Il aborde les services ci-dessous :
 1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Centre de sécurité Azure](../../security-center/security-center-introduction.md)
+2.  [Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md)
 
 3.  [Azure Monitor](../../azure-monitor/overview.md)
 
@@ -112,15 +112,15 @@ La [solution Gestion des mises à jour](../../automation/update-management/overv
 
 Lorsque vous créez un déploiement, le système utilise les runbooks d’[Azure Automation](../../automation/automation-intro.md) pour installer les mises à jour requises. Vous gérez la totalité de ce processus dans le portail et n’avez pas à vous soucier des détails sous-jacents.
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender pour le cloud
 
-Azure Security Center vous permet de protéger vos ressources Azure. Il fournit des fonctions intégrées de surveillance de la sécurité et de gestion des stratégies sur vos abonnements Azure. Au sein du service, vous pouvez définir des stratégies non seulement sur vos abonnements Azure, mais également sur les [groupes de ressources](../../azure-resource-manager/management/overview.md#resource-groups), pour une granularité accrue.
+Microsoft Defender pour le cloud vous aide à protéger vos ressources Azure. Il fournit des fonctions intégrées de surveillance de la sécurité et de gestion des stratégies sur vos abonnements Azure. Au sein du service, vous pouvez définir des stratégies non seulement sur vos abonnements Azure, mais également sur les [groupes de ressources](../../azure-resource-manager/management/overview.md#resource-groups), pour une granularité accrue.
 
 ### <a name="security-policies-and-recommendations"></a>Stratégies et recommandations de sécurité
 
 Une stratégie de sécurité définit l’ensemble des contrôles recommandés pour les ressources d’un abonnement ou groupe de ressources spécifique.
 
-Dans le Centre de sécurité, vous devez définir des stratégies en fonction des exigences de sécurité de votre entreprise et du type d’applications ou de sensibilité des données.
+Dans Defender pour le cloud, vous devez définir des stratégies en fonction des exigences de sécurité de votre entreprise et du type d’applications ou de sensibilité des données.
 
 ![Stratégies et recommandations de sécurité](./media/operational-security/azure-operational-security-fig5.png)
 
@@ -130,11 +130,11 @@ Les stratégies qui sont activées au niveau de l’abonnement sont automatiquem
 
 ### <a name="data-collection"></a>Collecte de données
 
-Azure Security Center collecte les données de vos machines virtuelles afin d’évaluer l’état de leur sécurité, de fournir des recommandations en matière de sécurité et de vous avertir des menaces. Lorsque vous accédez à Azure Security Center pour la première fois, la collecte de données est activée sur toutes les machines virtuelles de votre abonnement. La collecte de données est recommandée, mais vous pouvez refuser cette fonctionnalité en la désactivant dans la stratégie d’Azure Security Center.
+Defender pour le cloud collecte les données de vos machines virtuelles afin d’évaluer l’état de leur sécurité, de fournir des recommandations en matière de sécurité et de vous avertir des menaces. Lorsque vous accédez à Defender pour le cloud pour la première fois, la collecte de données est activée sur toutes les machines virtuelles de votre abonnement. La collecte de données est recommandée, mais vous pouvez refuser cette fonctionnalité en la désactivant dans la stratégie Defender pour le cloud.
 
 ### <a name="data-sources"></a>Sources de données
 
-- Pour assurer une visibilité sur l’état de la sécurité, identifier les vulnérabilités, recommander des mesures d’atténuation et détecter les menaces actives, Azure Security Center analyse les données provenant des sources suivantes :
+- Pour assurer une visibilité de l’état de la sécurité, identifier les vulnérabilités, recommander des mesures d’atténuation et détecter des menaces actives, Microsoft Defender pour le cloud analyse les données provenant des sources suivantes :
 
 -   Services Azure : utilise les informations relatives à la configuration des services Azure que vous avez déployés en communiquant avec le fournisseur de ressources de ce service.
 
@@ -146,7 +146,7 @@ Azure Security Center collecte les données de vos machines virtuelles afin d’
 
 ### <a name="data-protection"></a>Protection de données
 
-Pour aider les clients à prévenir, détecter et contrer les menaces, Azure Security Center collecte et traite des données de sécurité, notamment des informations de configuration, des métadonnées, des journaux d’événements et des fichiers de vidage sur incident. Microsoft adhère aux recommandations strictes de conformité et de sécurité, du codage jusqu'à l'exploitation d'un service.
+Pour aider les clients à prévenir, détecter et contrer les menaces, Microsoft Defender pour le cloud collecte et traite des données de sécurité, notamment des informations de configuration, des métadonnées, des fichiers de vidage sur incident et des journaux d’événements. Microsoft adhère aux recommandations strictes de conformité et de sécurité, du codage jusqu'à l'exploitation d'un service.
 
 -   **Ségrégation des données :** les données client sont maintenues séparées logiquement sur chaque composant, dans l'ensemble du service. Toutes les données sont balisées en fonction de l'organisation. Ce balisage est conservé tout au long du cycle de vie des données, et il est appliqué dans chaque couche du service.
 
@@ -156,11 +156,11 @@ Pour aider les clients à prévenir, détecter et contrer les menaces, Azure Se
 
 ### <a name="data-location"></a>Emplacement des données
 
-Le Centre de sécurité Azure collecte des copies éphémères de vos fichiers de vidage sur incident et les analyse pour obtenir des preuves de tentatives d’attaque par le biais de code malveillant exploitant une faille de sécurité et de compromis ayant abouti. Azure Security Center effectue cette analyse dans la même région géographique que l’espace de travail, puis supprime les copies éphémères une fois l’analyse terminée. Les artefacts des ordinateurs sont stockés de manière centralisée dans la même région que la machine virtuelle.
+Microsoft Defender pour le cloud collecte des copies éphémères de vos fichiers de vidage sur incident et les analyse pour obtenir des preuves de tentatives d’attaque par le biais de code malveillant exploitant une faille de sécurité et de compromis ayant abouti. Microsoft Defender pour le cloud effectue cette analyse dans la même région géographique que l’espace de travail, puis supprime les copies éphémères une fois l’analyse terminée. Les artefacts des ordinateurs sont stockés de manière centralisée dans la même région que la machine virtuelle.
 
 -   **Vos comptes de stockage** : un compte de stockage est spécifié pour chacune des régions où des machines virtuelles sont exécutées. Cela vous permet de stocker des données dans la même région que la machine virtuelle à partir de laquelle les données sont collectées.
 
--   **Stockage Azure Security Center** : les informations relatives aux alertes de sécurité, notamment les alertes des partenaires, les recommandations et l'état d'intégrité de la sécurité, sont stockées de manière centralisée (actuellement aux États-Unis). Ces informations peuvent inclure des informations de configuration associées et des événements de sécurité collectés à partir de vos machines virtuelles, le cas échéant, pour vous fournir l’alerte de sécurité, la recommandation ou l’état d’intégrité de la sécurité.
+-   **Stockage Microsoft Defender pour le cloud** : les informations relatives aux alertes de sécurité, notamment les alertes des partenaires, les recommandations et le statut d’intégrité de la sécurité, sont stockées de manière centralisée (actuellement aux États-Unis). Ces informations peuvent inclure des informations de configuration associées et des événements de sécurité collectés à partir de vos machines virtuelles, le cas échéant, pour vous fournir l’alerte de sécurité, la recommandation ou l’état d’intégrité de la sécurité.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -341,4 +341,4 @@ Microsoft place la sécurité au cœur de la conception de ses services et de se
 
 Utilisez les données et les fonctions d’analyse de sécurité de Microsoft pour une détection des menaces plus intelligente et plus efficace.
 
-- [Guide des opérations et de planification du Centre de sécurité Azure](../../security-center/security-center-planning-and-operations-guide.md) : couvre un ensemble d’étapes et de tâches à suivre pour optimiser votre utilisation du Security Center en fonction des critères de sécurité et du modèle de gestion cloud de votre entreprise.
+- [Guide des opérations et de planification de Microsoft Defender pour le cloud](../../security-center/security-center-planning-and-operations-guide.md) : couvre un ensemble d’étapes et de tâches à suivre pour optimiser votre utilisation de Defender pour le cloud en fonction des critères de sécurité et du modèle de gestion cloud de votre entreprise.

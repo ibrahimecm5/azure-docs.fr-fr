@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3bd3e6fc971901bf69c053088678e8f0f718d0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8237e746e6f48640ed1aca8d2637eb128172a297
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206670"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292430"
 ---
 # <a name="secure-standalone-managed-service-accounts"></a>Sécuriser les comptes de service gérés autonomes
 
@@ -61,7 +61,7 @@ Pour savoir comment atténuer les problèmes de sécurité potentiels posés par
 | Problème de sécurité| Limitation des risques |
 | - | - |
 | Le sMSA est membre de groupes privilégiés. | <li>Supprimez le sMSA des groupes avec privilèges élevés, par exemple Administrateurs de domaine.<li>Utilisez le modèle *avec le moins de privilèges* et accordez uniquement au sMSA les droits et autorisations dont il a besoin pour exécuter ses services.<li>Si vous n’êtes pas sûr des autorisations requises, consultez le créateur du service. |
-| Le sMSA dispose d’un accès en lecture/écriture aux ressources sensibles. | <li>Auditez l’accès aux données sensibles.<li>Archivez les journaux d'audit dans un programme SIEM (Security Information and Event Management) tel qu'Azure Log Analytics ou Azure Sentinel à des fins d'analyse.<li>Corrigez les autorisations de ressource si un niveau d’accès indésirable est détecté. |
+| Le sMSA dispose d’un accès en lecture/écriture aux ressources sensibles. | <li>Auditez l’accès aux données sensibles.<li>Archivez les journaux d’audit dans un programme SIEM (Security Information and Event Management) tel qu’Azure Log Analytics ou Microsoft Sentinel à des fins d’analyse.<li>Corrigez les autorisations de ressource si un niveau d’accès indésirable est détecté. |
 | Par défaut, la fréquence de substitution de mot de passe des sMSA est de 30 jours. | Vous pouvez utiliser la stratégie de groupe pour régler la durée, en fonction des exigences de l'entreprise en matière de sécurité. Pour définir la durée d’expiration du mot de passe, utilisez le chemin suivant :<br>*Configuration de l'ordinateur\Stratégies\Paramètres Windows\Paramètres de sécurité\Options de sécurité*. Sous Membre de domaine, choisissez **Ancienneté maximale du mot de passe du compte d'ordinateur**. |
 | | |
 
@@ -95,13 +95,13 @@ Pour ne renvoyer que les sMSA du domaine Active Directory, exécutez la commande
 
 Pour gérer vos sMSA, vous pouvez utiliser les cmdlets PowerShell Active Directory suivantes :
 
-`Get-ADServiceAccount`  
-` Install-ADServiceAccount`  
-` New-ADServiceAccount`  
-` Remove-ADServiceAccount`  
-`Set-ADServiceAccount`  
-`Test-ADServiceAccount`  
-`Ininstall-ADServiceAccount`
+`Get-ADServiceAccount`
+`Install-ADServiceAccount`
+`New-ADServiceAccount`
+`Remove-ADServiceAccount`
+`Set-ADServiceAccount`
+`Test-ADServiceAccount`
+`Uninstall-ADServiceAccount`
 
 ## <a name="move-to-smsas"></a>Passer à des sMSA
 
@@ -111,7 +111,7 @@ L'idéal serait de déplacer les ressources vers Azure et d'utiliser des identit
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour en savoir plus sur la sécurisation des comptes de service, consultez les articles suivants :
+Pour plus d’informations sur la sécurisation des comptes de service, consultez les articles suivants :
 
 * [Présentation des comptes de service locaux](service-accounts-on-premises.md)  
 * [Sécuriser les comptes de service gérés de groupe](service-accounts-group-managed.md)  

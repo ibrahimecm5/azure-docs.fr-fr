@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/27/2021
+ms.date: 11/10/2021
 ms.author: b-juche
-ms.openlocfilehash: fda75ec22d4573a1730d29fc4f9a34c1f4de239a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5b5d2cafbbd70e63e2b3a039e94f1fc66106203c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224252"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319589"
 ---
 # <a name="configure-manual-backups-for-azure-netapp-files"></a>Configurer des sauvegardes manuelles pour les fichiers NetApp Azure 
 
@@ -40,7 +40,7 @@ La liste suivante récapitule les comportements de sauvegarde manuelle :
 
 * Vous pouvez créer des sauvegardes manuelles sur un volume même si le volume est déjà activé pour la sauvegarde et configuré avec des stratégies de sauvegarde.  Toutefois, il ne peut y avoir qu’une seule demande de sauvegarde manuelle en suspens pour le volume. Si vous affectez une stratégie de sauvegarde et si le transfert de ligne de base est toujours en cours, la création d’une sauvegarde manuelle est bloquée jusqu’à ce que le transfert de base de référence soit terminé.
 
-* La création d’une sauvegarde manuelle génère un instantané sur le volume. L’instantané est ensuite transféré vers le stockage Azure. Cet instantané n’est pas supprimé automatiquement. vous devez supprimer manuellement cet instantané.  Toutefois, la suppression de l’instantané généré pour la dernière sauvegarde manuelle n’est pas autorisée.  Par conséquent, après avoir créé une sauvegarde manuelle ultérieure, vous pouvez nettoyer (supprimer) les instantanés générés pour les sauvegardes manuelles précédentes, si vous n’avez pas besoin de les conserver. 
+* À moins que vous ne spécifiiez un instantané existant à utiliser pour une sauvegarde, la création d’une sauvegarde manuelle génère automatiquement un instantané sur le volume. L’instantané est ensuite transféré vers le stockage Azure. L’instantané créé sur le volume est conservé jusqu’à la création de la sauvegarde manuelle suivante. Au cours de l’opération de sauvegarde manuelle suivante, les instantanés plus anciens seront nettoyés. Vous ne pouvez pas supprimer l’instantané généré pour la dernière sauvegarde manuelle. 
 
 ## <a name="enable-backup-functionality"></a>Activer les fonctionnalités de sauvegarde
 
@@ -58,19 +58,22 @@ Si vous ne l’avez pas fait, activez la fonctionnalité de sauvegarde pour le v
 
 1. Allez dans **Volumes** et sélectionnez le volume pour lequel vous voulez créer une sauvegarde manuelle.
 2. Sélectionnez **Ajouter une sauvegarde**.
-3. Entrez un nom de sauvegarde.   
+3. Dans la fenêtre Nouvelle sauvegarde qui s’affiche :   
 
-    * Les noms de sauvegarde manuelle doivent contenir entre 3 et 256 caractères.   
+    1. Spécifiez un nom de sauvegarde dans le champ **Nom**.   
+    
+        * Les noms de sauvegarde manuelle doivent contenir entre 3 et 256 caractères.   
+        * En tant que meilleure pratique, il est recommandé d’ajouter un préfixe au format suivant avant le nom réel de la sauvegarde. Cela vous permet d’identifier la sauvegarde manuelle si le volume est supprimé (avec les sauvegardes conservées).   
 
-    * En tant que meilleure pratique, il est recommandé d’ajouter un préfixe au format suivant avant le nom réel de la sauvegarde. Cela vous permet d’identifier la sauvegarde manuelle si le volume est supprimé (avec les sauvegardes conservées).   
+            `NetAppAccountName-CapacityPoolName-VolumeName`   
 
-        `NetAppAccountName-CapacityPoolName-VolumeName`   
+            Par exemple, supposons que le compte NetApp est `account1` , le pool de capacité est `pool1` , le nom du volume est `vol1` . Une sauvegarde manuelle peut être nommée comme suit :    
 
-        Par exemple, supposons que le compte NetApp est `account1` , le pool de capacité est `pool1` , le nom du volume est `vol1` . Une sauvegarde manuelle peut être nommée comme suit :    
+            `account1-pool1-vol1-backup1`   
 
-        `account1-pool1-vol1-backup1`   
-
-        Si vous utilisez une forme plus petite pour le nom de la sauvegarde, assurez-vous qu’elle contient toujours des informations qui identifient le compte NetApp, le pool de capacité et le nom du volume à afficher dans la liste de sauvegarde.
+            Si vous utilisez une forme plus petite pour le nom de la sauvegarde, assurez-vous qu’elle contient toujours des informations qui identifient le compte NetApp, le pool de capacité et le nom du volume à afficher dans la liste de sauvegarde.
+            
+    2. Si vous souhaitez utiliser un instantané existant pour la sauvegarde, sélectionnez l’option **utiliser un instantané existant**.  Lorsque vous utilisez cette option, assurez-vous que le champ Nom correspond au nom d’instantané existant utilisé pour la sauvegarde. 
 
 4. Cliquez sur **Créer**. 
 

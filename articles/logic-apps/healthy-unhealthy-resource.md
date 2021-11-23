@@ -6,14 +6,14 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 42b33a5b96de7334f8310b040052c633342f5e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aafa0584c03c2e7152ab13c5d2a89eb504ac9a14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712383"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337147"
 ---
-# <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Configurer la journalisation pour superviser des applications logiques dans Azure Security Center
+# <a name="set-up-logging-to-monitor-logic-apps-in-microsoft-defender-for-cloud"></a>Configurer la journalisation pour surveiller les applications logiques dans Microsoft Defender pour le cloud
 
 Lorsque vous supervisez vos ressources Logic Apps dans [Microsoft Azure Security Center](../security-center/security-center-introduction.md), vous pouvez [vérifier si vos applications logiques suivent les stratégies par défaut](#view-logic-apps-health-status). Azure affiche l’état d’intégrité d’une ressource Logic Apps une fois que vous avez activé la journalisation et configuré correctement la destination des journaux. Cet article explique comment configurer la journalisation des diagnostics et s’assurer que toutes vos applications logiques sont des ressources saines.
 
@@ -35,24 +35,24 @@ Avant de pouvoir afficher l’état d’intégrité des ressources pour vos appl
 
 ### <a name="check-diagnostic-logging-setting"></a>Vérifier le paramètre de journalisation des diagnostics
 
-Si vous ne savez pas si la journalisation des diagnostics est activée pour vos applications logiques, vous pouvez le vérifier dans Security Center :
+Si vous ne savez pas si la journalisation des diagnostics est activée pour vos applications logiques, vous pouvez le vérifier dans Defender pour le cloud :
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
-1. Dans la barre de recherche, entrez et sélectionnez **Security Center**.
-1. Dans le menu du tableau de bord de Security Center, sous **Général**, sélectionnez **Recommandations**.
+1. Dans la barre de recherche, entrez et sélectionnez **Defender pour le cloud**.
+1. Dans le menu du tableau de bord de protection de la charge de travail, sous **Général**, sélectionnez **Recommandations**.
 1. Dans le tableau des suggestions de sécurité, recherchez et sélectionnez **Activer l’audit et la journalisation** &gt; **Les journaux de diagnostic dans Logic Apps doivent être activés** dans le tableau des contrôles de sécurité.
 1. Dans la page de recommandation, développez la section **Étapes de correction** et passez en revue les options. Vous pouvez activer les diagnostics Logic Apps en sélectionnant le bouton **Correction rapide !** ou en suivant les instructions de correction manuelle.
 
 ## <a name="view-logic-apps-health-status"></a>Afficher l’état d’intégrité des applications logiques
 
-Une fois que vous avez [activé la journalisation des diagnostics](#enable-diagnostic-logging), vous pouvez voir l’état d’intégrité de vos applications logiques dans Security Center.
+Une fois que vous avez [activé la journalisation des diagnostics](#enable-diagnostic-logging), vous pouvez voir l’état d’intégrité de vos applications logiques dans Defender pour le cloud.
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com).
-1. Dans la barre de recherche, entrez et sélectionnez **Security Center**.
-1. Dans le menu du tableau de bord de Security Center, sous **Général**, sélectionnez **Inventaire**.
+1. Dans la barre de recherche, entrez et sélectionnez **Defender pour le cloud**.
+1. Dans le menu du tableau de bord de protection de la charge de travail, sous **Général**, sélectionnez **Inventaire**.
 1. Dans la page d’inventaire, filtrez votre liste de ressources pour afficher uniquement les ressources Logic Apps. Dans le menu de la page, sélectionnez **Types de ressources** &gt; **Logic Apps**.
 
-   Le compteur **Ressources non intègres** affiche le nombre d’applications logiques que Security Center considère comme non intègres.
+   Le compteur **Ressources non intègres** affiche le nombre d’applications logiques que Defender pour le cloud considère comme non intègres.
 1.  Dans la liste des ressources Logic Apps, examinez la colonne **Recommandations**. Pour consulter les détails d’intégrité d’une application logique spécifique, sélectionnez un nom de ressource ou cliquez sur le bouton de sélection ( **...** ) &gt; **Afficher la ressource**.
 1.  Pour résoudre les problèmes potentiels d’intégrité des ressources, suivez les étapes indiquées pour vos applications logiques.
 
@@ -60,7 +60,7 @@ Si la journalisation des diagnostics est déjà activée, il y a peut-être un p
 
 ## <a name="fix-diagnostic-logging-for-logic-apps"></a>Corriger la journalisation des diagnostics pour les applications logiques
 
-Si vos [applications logiques sont listées comme étant non intègres dans Security Center](#view-logic-apps-health-status), ouvrez votre application logique en mode code dans le portail Azure ou à l’aide d’Azure CLI. Ensuite, vérifiez la configuration de destination de vos journaux de diagnostic : [Azure Log Analytics](#log-analytics-and-event-hubs-destinations), [Azure Event Hubs](#log-analytics-and-event-hubs-destinations) ou [un compte Stockage Azure](#storage-account-destination).
+Si vos [applications logiques sont listées comme étant non intègres dans Defender pour le cloud](#view-logic-apps-health-status), ouvrez votre application logique en mode code dans le portail Azure ou à l’aide d’Azure CLI. Ensuite, vérifiez la configuration de destination de vos journaux de diagnostic : [Azure Log Analytics](#log-analytics-and-event-hubs-destinations), [Azure Event Hubs](#log-analytics-and-event-hubs-destinations) ou [un compte Stockage Azure](#storage-account-destination).
 
 ### <a name="log-analytics-and-event-hubs-destinations"></a>Destinations Log Analytics et Event Hubs
 

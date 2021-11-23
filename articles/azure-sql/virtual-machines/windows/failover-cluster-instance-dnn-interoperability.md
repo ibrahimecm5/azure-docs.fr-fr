@@ -11,18 +11,21 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: b868de74376199fdc173c41e8711575b44e67200
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: adacd4e8264b7fcd4c0389f8d575247a17a664aa
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164796"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158970"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Interopérabilité des fonctionnalités avec l’instance FCI de SQL Server et DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> Éliminez la nécessité de disposer d’un nom de réseau distribué pour votre instance de cluster de basculement en créant vos machines virtuelles SQL Server dans plusieurs sous-réseaux au sein du même réseau virtuel Azure.
 
 Certaines fonctionnalités de SQL Server reposent sur un nom de réseau virtuel (VNN) codé en dur. Par conséquent, lors de l’utilisation de la ressource de nom de réseau distribué (DNN) avec votre instance de cluster de basculement et SQL Server sur des machines virtuelles Azure, certaines considérations supplémentaires doivent être prises en compte. 
 

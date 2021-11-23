@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 665ca1dca46dbfcf1cdc5e07b0c4672f79dc586a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d198a444cfb2c37f4bff815561c5a6dcd95d4a4e
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546811"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135076"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Conditions préalables pour Azure AD Connect
 Cet article décrit les conditions préalables et la configuration matérielle requise pour Azure Active Directory (Azure AD) Connect.
@@ -72,6 +72,7 @@ Pour en savoir plus sur la sécurisation de votre environnement Active Directory
     - Les serveurs sur lesquels AD FS ou le proxy d’application web sont installés doivent être des serveurs Windows Server 2012 R2 ou version ultérieure. La gestion à distance de Windows doit être activée sur ces serveurs pour l’installation à distance. 
     - Vous devez configurer des certificats TLS/SSL. Pour plus d’informations, consultez [Gestion des protocoles SSL/TLS et des suites de chiffrement pour AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) et [Gestion des certificats SSL dans AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Vous devez configurer la résolution de noms. 
+- Le fractionnement et l’analyse du trafic entre Azure AD Connect et Azure AD ne sont pas pris en charge. Cela pourrait perturber le service.
 - Si l’authentification multifacteur est activée pour vos administrateurs généraux, l’URL https://secure.aadcdn.microsoftonline-p.com *doit* figurer dans la liste des sites de confiance. Vous êtes invité à ajouter ce site à la liste des sites de confiance lorsque vous êtes invité à passer un test d’authentification multifacteur et qu’il n’a pas encore été ajouté. Vous pouvez utiliser Internet Explorer pour l’ajouter à vos sites de confiance.
 - Si vous envisagez d'utiliser Azure AD Connect Health pour la synchronisation, assurez-vous que les conditions préalables d'Azure AD Connect Health sont également remplies. Pour plus d'informations, consultez [Installation de l'agent Azure AD Connect Health](how-to-connect-health-agent-install.md).
 

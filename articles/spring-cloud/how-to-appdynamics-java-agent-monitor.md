@@ -1,23 +1,23 @@
 ---
 title: Guide pratique pour monitorer des applications Spring Boot avec l’agent Java AppDynamics (préversion)
 titleSuffix: Azure Spring Cloud
-description: Guide pratique pour l’utilisation de l’agent AppDynamics dans le cadre du monitoring d’applications Spring Boot s’exécutant dans Azure Spring Cloud.
+description: Guide pratique pour l’utilisation de l’agent AppDynamics dans le cadre de la surveillance d’applications Spring Boot dans Azure Spring Cloud.
 author: KarlErickson
 ms.author: jiec
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 308869704426d8b62a92da3b739ce3b9218f860e
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: b549ce3e8e79b7315144f52484fe63f7553982c4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131500846"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492641"
 ---
 # <a name="how-to-monitor-spring-boot-apps-with-the-appdynamics-java-agent-preview"></a>Guide pratique pour monitorer des applications Spring Boot avec l’agent Java AppDynamics (préversion)
 
-Cet article explique comment utiliser l’agent AppDynamics dans le cadre du monitoring d’applications Spring Boot s’exécutant dans Azure Spring Cloud.
+Cet article explique comment utiliser l’agent AppDynamics dans le cadre de la surveillance d’applications Spring Boot dans Azure Spring Cloud.
 
 Avec l’agent Java AppDynamics, vous pouvez :
 

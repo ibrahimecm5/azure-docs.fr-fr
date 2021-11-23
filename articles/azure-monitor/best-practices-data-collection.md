@@ -5,23 +5,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/18/2021
-ms.openlocfilehash: 408103657b3d1485d8807768e83cc1d9721fd22b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: b5522cb26f7f8fe486b4b690938a23c7e75c746a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181692"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315955"
 ---
 # <a name="azure-monitor-best-practices---configure-data-collection"></a>Meilleures pratiques d’Azure Monitor : Configurer la collecte de données
 Cet article fait partie du scénario [Recommandations pour la configuration d’Azure Monitor](best-practices.md). Il décrit les étapes recommandées pour configurer la collecte des données nécessaires à l’activation des fonctionnalités d’Azure Monitor pour vos applications et ressources Azure et hybrides.
 
-
 > [!IMPORTANT]
 > Les fonctionnalités d’Azure Monitor et leur configuration varient selon les besoins de votre entreprise, en fonction du coût des fonctionnalités activées. Chaque étape ci-dessous indiquera s’il existe des coûts potentiels, et vous devez évaluer ces coûts avant de poursuivre. Pour obtenir des détails sur la tarification, consultez [Tarification Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
-> 
 
 ## <a name="create-log-analytics-workspace"></a>Créer un espace de travail Log Analytics
-Vous avez besoin d’au moins un espace de travail Log Analytics pour activer les [Journaux Azure Monitor](logs/data-platform-logs.md), requis pour la collecte de ces données sous forme de journaux à partir de ressources Azure, la collecte de données à partir du système d’exploitation invité des machines virtuelles Azure et la plupart des Azure Monitor Insights. D’autres services tels que Azure Sentinel et Azure Security Center utilisent également un espace de travail Log Analytics et peuvent partager le même que celui utilisé pour Azure Monitor. Vous pouvez commencer avec un seul espace de travail pour prendre en charge cette analyse, mais consultez [Conception de votre déploiement de journaux Azure Monitor](logs/design-logs-deployment.md) pour obtenir des conseils sur l’utilisation de plusieurs espaces de travail.
+Vous avez besoin d’au moins un espace de travail Log Analytics pour activer les [Journaux Azure Monitor](logs/data-platform-logs.md), requis pour la collecte de ces données sous forme de journaux à partir de ressources Azure, la collecte de données à partir du système d’exploitation invité des machines virtuelles Azure et la plupart des Azure Monitor Insights. D’autres services, tels que Microsoft Sentinel et Microsoft Defender pour le cloud, utilisent également un espace de travail Log Analytics et peuvent partager le même que celui utilisé pour Azure Monitor. Vous pouvez commencer avec un seul espace de travail pour prendre en charge cette analyse, mais consultez [Conception de votre déploiement de journaux Azure Monitor](logs/design-logs-deployment.md) pour obtenir des conseils sur l’utilisation de plusieurs espaces de travail.
 
 Il n’y a aucun coût pour créer un espace de travail Log Analytics, mais il y a des frais potentiels une fois que vous avez configuré les données à collecter dans celui-ci. Pour plus d'informations, consultez [Gérer l’utilisation et les coûts avec les journaux Azure Monitor](logs/manage-cost-storage.md).  
 
@@ -30,7 +28,7 @@ Pour créer un espace de travail Log Analytics, consultez [Créer un espace de 
 ## <a name="collect-data-from-azure-resources"></a>Recueillir des données à partir de ressources Azure
 Une analyse des ressources Azure est disponible automatiquement sans aucune configuration requise, tandis que vous devez effectuer des étapes de configuration pour collecter des données d’analyse supplémentaires. Le tableau suivant illustre les étapes de configuration requises pour collecter toutes les données disponibles à partir de vos ressources Azure, notamment les données d’étape envoyées aux métriques Azure Monitor et aux journaux Azure Monitor. Chaque étape est décrite en détail dans les sections ci-dessous.
 
-[ ![Déployer une surveillance des ressources Azure](media/best-practices-data-collection/best-practices-azure-resources.png)](media/best-practices-data-collection/best-practices-azure-resources.png#lightbox)
+[![Déployer une surveillance des ressources Azure](media/best-practices-data-collection/best-practices-azure-resources.png)](media/best-practices-data-collection/best-practices-azure-resources.png#lightbox)
 
 ### <a name="collect-tenant-and-subscription-logs"></a>Collecter les journaux des locataires et des abonnements
 Tandis que les journaux [Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md) pour votre locataire et que le [journal d’activité](essentials/platform-logs-overview.md) pour votre abonnement sont collectées automatiquement, leur envoi à un espace de travail Log Analytics vous permet d’analyser ces événements avec d’autres données de journal à l’aide des requêtes de journal dans Log Analytics. Cela vous permet également de créer des alertes de requête de journal qui sont le seul moyen d’alerter sur les journaux Azure Active Directory et de fournir une logique plus complexe que les alertes du journal d’activité.

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: b24fcbac37288dd3c49fe64fe517dd31bbab03d2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4fd6360d1d549cd5c184dd5a1f3105d238ab9319
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788398"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335800"
 ---
 # <a name="data-discovery--classification"></a>Découverte et classification des données
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,11 +62,11 @@ La classification comprend deux attributs de métadonnées :
 
 La fonctionnalité Découverte et classification des données comprend un ensemble intégré d’étiquettes de sensibilité, ainsi qu’un ensemble intégré de types d’informations et de logiques de découverte. Vous pouvez personnaliser cette taxonomie, et de définir un jeu et un classement de constructions de classification spécialement pour votre environnement.
 
-Vous définissez et personnalisez votre taxonomie de classification dans un emplacement central pour l’ensemble de votre organisation Azure. Cet emplacement se trouve dans [Azure Security Center](../../security-center/security-center-introduction.md), dans la section relative à votre stratégie de sécurité. Seules les personnes disposant de droits d’administration pour le groupe d’administration racine de l’organisation peuvent effectuer cette tâche.
+Vous définissez et personnalisez votre taxonomie de classification dans un emplacement central pour l’ensemble de votre organisation Azure. Cet emplacement se trouve dans [Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md), dans le cadre de votre stratégie de sécurité. Seules les personnes disposant de droits d’administration pour le groupe d’administration racine de l’organisation peuvent effectuer cette tâche.
 
 Dans le cadre de la gestion des stratégies, vous pouvez définir des étiquettes personnalisées, les classer et les associer à un ensemble de types d’informations. Vous pouvez également ajouter vos propres types d’informations personnalisés et les configurer avec des modèles de chaîne. Les modèles sont ajoutés à la logique de détection pour identifier ce type de données dans vos bases de données.
 
-Pour plus d'informations, consultez [Personnaliser la stratégie de protection des informations SQL dans Azure Security Center (préversion)](../../security-center/security-center-info-protection-policy.md).
+Pour plus d’informations, consultez [Personnaliser la stratégie de protection des informations SQL dans Microsoft Defender pour le cloud (préversion)](../../security-center/security-center-info-protection-policy.md).
 
 Une fois la stratégie au niveau de l’organisation définie, vous pouvez continuer à classer les bases de données individuelles à l’aide de votre stratégie personnalisée.
 

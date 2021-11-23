@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/05/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 507e7a97c0ec884580b0a29fd8a8691035221751
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 72e869b1439e5fd9bcb77af57bd4e0d3d8f6a677
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085977"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324799"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Créer un workflow d’intégration avec Azure Logic Apps monolocataire (Standard) dans le Portail Azure
 

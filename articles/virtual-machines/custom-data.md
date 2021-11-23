@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: bf81d49bbbfaae2b96dfb712ae69568695ba6f23
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 729c988bcf64cab30cf7644c85a5749ff9c592b7
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687514"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137009"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Données personnalisées et Cloud-init sur les machines virtuelles Azure
 
@@ -84,7 +84,7 @@ Pour résoudre les problèmes liés à l’exécution de données personnalisée
 
 ## <a name="faq"></a>Questions fréquentes (FAQ)
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Puis-je mettre à jour les données personnalisées après la création de la machine virtuelle ?
-Pour les machines virtuelles uniques, les données personnalisées dans le modèle de machine virtuelle ne peuvent pas être mises à jour, mais pour les VMSS, vous pouvez mettre à jour les données personnalisées des VMSS via l’[REST API](/rest/api/compute/virtualmachinescalesets/update) (non applicable pour les clients PS ou AZ CLI). Quand vous mettez à jour des données personnalisées dans le modèle de VMSS :
+Pour les machines virtuelles uniques, les données personnalisées dans le modèle de machine virtuelle ne peuvent pas être mises à jour, mais pour les VMSS, vous pouvez mettre à jour les données personnalisées des VMSS via l’[REST API](/rest/api/compute/virtualmachinescalesets/update), [Az CLI](/cli/azure/vmss?view=azure-cli-latest#az_vmss_update), ou [Az PowerShell](/powershell/module/az.compute/update-azvmss?view=azps-6.6.0). Quand vous mettez à jour des données personnalisées dans le modèle de VMSS :
 * Les instances existantes dans le VMSS n’obtiendront pas les données personnalisées mises à jour, uniquement jusqu’à ce qu’elles soient réinitialisées.
 * Les instances existantes dans les VMSS qui sont mises à niveau n’obtiendront pas les données personnalisées mises à jour.
 * Les nouvelles instances recevront les nouvelles données personnalisées.

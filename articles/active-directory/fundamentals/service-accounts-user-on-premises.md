@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e0dc10aa9cb5fb67812cca31d2cd892afcccbe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6dc3ec13715fe0c58ffbf23cf377f0ea5d29d6de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208092"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292392"
 ---
 # <a name="secure-user-based-service-accounts-in-active-directory"></a>Sécuriser des comptes de service basés sur l’utilisateur dans Active Directory
 
@@ -81,7 +81,7 @@ Get-ADUser -Filter * -Properties PasswordNeverExpires | where {$_.PasswordNeverE
 
 ```
 
-Vous pouvez également auditer l’accès aux ressources sensibles et archiver les journaux d’audit dans un système SIEM (Informations de sécurité et gestion d’événements). En utilisant des systèmes tels qu’Azure Log Analytics ou Azure Sentinel, vous pouvez rechercher et analyser les comptes de service.
+Vous pouvez également auditer l’accès aux ressources sensibles et archiver les journaux d’audit dans un système SIEM (Informations de sécurité et gestion d’événements). En utilisant des systèmes tels qu’Azure Log Analytics ou Microsoft Sentinel, vous pouvez rechercher et analyser les comptes de service.
 
 ## <a name="assess-the-security-of-on-premises-user-accounts"></a>Évaluer la sécurité des comptes d’utilisateur locaux
 
@@ -99,7 +99,7 @@ Les problèmes de sécurité potentiels et leurs atténuations pour les comptes 
 | - | - |
 | Gestion des mots de passe| <li>Vérifiez que la complexité et la modification des mots de passe sont régies par un processus robuste qui inclut des mises à jour régulières et des exigences strictes en matière de mots de passe.<li>Coordonnez les modifications des mots de passe avec une mise à jour des mots de passe pour réduire les temps d’arrêt du service. |
 | Le compte est membre de groupes privilégiés| <li>Vérifiez les appartenances aux groupes.<li>Supprimez le compte des groupes privilégiés.<li>Accordez au compte uniquement les droits et les autorisations dont il a besoin pour exécuter son service (consultez le fournisseur du service). Par exemple, vous pouvez être en mesure de refuser la connexion locale ou de refuser la connexion interactive. |
-| Le compte dispose d’autorisations d’accès en lecture/écriture sur les ressources sensibles| <li>Auditez l’accès aux données sensibles.<li>Archivez les journaux d’audit dans un système SIEM (Azure Log Analytics ou Azure Sentinel) à des fins d’analyse.<li>Corrigez les autorisations de ressource si un niveau d’accès indésirable est détecté. |
+| Le compte dispose d’autorisations d’accès en lecture/écriture sur les ressources sensibles| <li>Auditez l’accès aux données sensibles.<li>Archivez les journaux d’audit dans un système SIEM (Azure Log Analytics ou Microsoft Sentinel) à des fins d’analyse.<li>Corrigez les autorisations de ressource si un niveau d’accès indésirable est détecté. |
 | | |
 
 

@@ -3,15 +3,15 @@ title: Exécuter des runbooks Azure Automation sur un Runbook Worker hybride
 description: Cet article explique comment exécuter des runbooks sur des machines de votre centre de données local ou d’un autre fournisseur de cloud avec le Runbook Worker hybride.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/01/2021
+ms.date: 11/11/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71f13679a1f19672368a7b72987e28813232f846
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 368622d7f0ea914541ce1385405a40e28ca2576b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465552"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282193"
 ---
 # <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>Exécuter des runbooks Automation sur un Runbook Worker hybride
 
@@ -199,7 +199,9 @@ Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose
 
 Write-Output ("Importing certificate into $env:computername local machine root store from " + $CertPath)
 $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
-Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
+Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword | Write-Verbose
+
+Remove-Item -Path $CertPath -ErrorAction SilentlyContinue | Out-Null
 
 # Test to see if authentication to Azure Resource Manager is working
 $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
@@ -227,6 +229,11 @@ Pour terminer la préparation du compte d’identification :
 1. Publier le runbook.
 1. Exécutez le runbook en ciblant le groupe de runbooks Workers hybrides qui exécute et authentifie les runbooks avec le compte d’identification. 
 1. Examinez le flux des travaux et notez qu’il signale la tentative d’importation du certificat dans le magasin de l’ordinateur local, puis complète par plusieurs lignes. Ce comportement dépend du nombre de comptes Automation définis dans votre abonnement et du résultat de l’authentification.
+
+>[!NOTE]
+>  En cas d’accès illimité, un utilisateur disposant de droits de contributeur de machine virtuelle, ou ayant les autorisations pour exécuter des commandes sur la machine Worker hybride, peut utiliser le compte Automation pour exécuter le certificat à partir de la machine hybride, à l’aide d’autres sources telles que les cmdlets Azure, qui pourraient permettre à un utilisateur malveillant d’accéder en tant que contributeur d’abonnement. Cela peut compromettre la sécurité de votre environnement Azure. </br> </br>
+>  Nous vous recommandons de diviser les tâches au sein de l’équipe et d’accorder les autorisations/accès nécessaires aux utilisateurs en fonction de leur travail. Ne fournissez pas d’autorisations illimitées à la machine hébergeant le rôle de runbook Worker hybride.
+
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Utiliser des runbooks signés sur un runbook Worker hybride Windows
 

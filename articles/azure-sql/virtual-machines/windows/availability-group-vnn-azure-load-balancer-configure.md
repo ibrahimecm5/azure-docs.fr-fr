@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/14/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: cddf36f1bd51b50d1642f92158adc3a3ba46cdc2
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7c749744ef6dcad4ca8f233b1a85e07843ba0406
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161495"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158478"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>Configurer l’équilibreur de charge pour l’écouteur VNN AG
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Sur Machines virtuelles Microsoft Azure, les clusters utilisent un équilibreur de charge pour conserver une adresse IP qui doit se trouver sur un nœud de cluster à la fois. Dans cette solution, l’équilibreur de charge contient l’adresse IP de l’écouteur de nom de réseau virtuel (VNN) pour le groupe de disponibilité Always On. 
+> [!TIP]
+> Éliminez le besoin d’Azure Load Balancer pour votre groupe de disponibilité Always On en créant vos machines virtuelles SQL Server dans [plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) au sein du même réseau virtuel Azure.
+
+Sur Machines virtuelles Microsoft Azure, les clusters utilisent un équilibreur de charge pour conserver une adresse IP qui doit se trouver sur un nœud de cluster à la fois. Dans cette solution, l’équilibreur de charge contient l’adresse IP de l’écouteur de nom de réseau virtuel (VNN) pour le groupe de disponibilité Always On lorsque les machines virtuelles SQL Server se trouvent sur un seul sous-réseau. 
 
 Cet article vous apprend à configurer un équilibreur de charge à l’aide du service Azure Load Balancer. L’équilibreur de charge achemine le trafic vers votre [écouteur de groupe de disponibilité](availability-group-overview.md) avec Microsoft SQL Server sur des machines virtuelles Azure pour la haute disponibilité et la récupération d’urgence (HADR). 
 

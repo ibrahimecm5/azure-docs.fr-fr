@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 61002f3943001dd145cd30593b6972d743f24eec
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 51685da924bc2fab2f936eceeaf13972216ffd77
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472794"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492130"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server"></a>Sauvegarder et restaurer dans un serveur flexible Azure Database pour MySQL
 
@@ -120,7 +120,7 @@ La durée estimée de la récupération dépend de plusieurs facteurs, notamment
 > Si vous restaurez un serveur flexible configuré avec une haute disponibilité redondante interzone, le serveur restauré sera configuré dans la même région et la même zone que votre serveur primaire, et déployé en tant que serveur flexible unique en mode non haute disponibilité. Pour un serveur flexible, consultez [Haute disponibilité redondante interzone](concepts-high-availability.md).
 
 > [!IMPORTANT]
-> Il n’est **pas** possible de restaurer des serveurs supprimés. Si vous supprimez le serveur, toutes les bases de données qui appartiennent au serveur sont également supprimées, sans pouvoir être restaurées. À l'issue du déploiement, pour protéger les ressources du serveur d'une suppression accidentelle ou de changements inattendus, les administrateurs peuvent utiliser des [verrous de gestion](../../azure-resource-manager/management/lock-resources.md).
+> Vous pouvez récupérer une ressource de serveur MySQL flexible supprimée dans un délai de 5 jours à compter de la suppression du serveur. Pour obtenir un guide détaillé sur la restauration d’un serveur supprimé, [reportez-vous aux étapes documentées](../flexible-server/how-to-restore-dropped-server.md). À l’issue du déploiement, pour protéger les ressources du serveur d’une suppression accidentelle ou de changements inattendus, les administrateurs peuvent utiliser des [verrous de gestion](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="geo-restore"></a>La géorestauration
 

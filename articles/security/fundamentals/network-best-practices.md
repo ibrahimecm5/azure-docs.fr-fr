@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5969c015a360d7f1c859070b1fc05df5bd469bbe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735724"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327079"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Meilleures pratiques Azure pour la sécurité réseau
 Cet article présente l’ensemble des meilleures pratiques Azure pour améliorer votre sécurité réseau. Ces meilleures pratiques sont issues de notre expérience dans le domaine de la mise en réseau Azure, mais également de celle des clients, comme vous.
@@ -77,7 +77,7 @@ Les meilleures pratiques sont :
 **Détail** : [L’accès conditionnel Azure AD](../../active-directory/conditional-access/overview.md) vous permet d’appliquer les contrôles d’accès appropriés en implémentant des décisions de contrôle d’accès automatisées, basées sur les conditions exigées. Pour plus informations, consultez [Gérer l’accès à la gestion Azure avec l’accès conditionnel](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).
 
 **Bonne pratique** : Activez l’accès au port uniquement après l’approbation du flux de travail.  
-**Détail** : Vous pouvez utiliser [l’accès juste-à-temps aux machines virtuelles dans Azure Security Center](../../security-center/security-center-just-in-time.md) pour verrouiller le trafic entrant vers vos machines virtuelles Azure, ce qui réduit l’exposition aux attaques et facilite la connexion aux machines virtuelles en cas de besoin.
+**Détail** : Vous pouvez utiliser [l’accès juste-à-temps aux machines virtuelles dans Microsoft Defender pour le cloud](../../security-center/security-center-just-in-time.md) pour verrouiller le trafic entrant vers vos machines virtuelles Azure, ce qui réduit l’exposition aux attaques et facilite la connexion aux machines virtuelles en cas de besoin.
 
 **Bonne pratique** : Accordez des autorisations temporaires pour effectuer des tâches privilégiées. De cette façon, les utilisateurs malveillants ou non autorisés ne peuvent pas accéder aux ressources une fois que les autorisations ont expiré. L’accès est accordé uniquement au moment où les utilisateurs en ont besoin.  
 **Détail** : Utilisez l’accès juste-à-temps dans Azure AD Privileged Identity Management ou dans une solution tierce pour accorder des autorisations en vue d’effectuer des tâches privilégiées.

@@ -8,16 +8,16 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 85dc954dcb352f9bc2447e72322d35e8d5e73cb3
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2313d8b544355dd2bdf5ca528faffbcc17f848e9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552655"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309658"
 ---
 # <a name="azure-purview-scanning-best-practices"></a>Meilleures pratiques pour l’analyse Azure Purview
 
-Azure Purview prend en charge l’analyse automatisée des sources de données en local, multicloud et SaaS. L’exécution d’une « analyse » appelle le processus pour recevoir les métadonnées des sources de données inscrites. Les métadonnées traitées à la fin du processus d’analyse et de traitement incluent des métadonnées techniques comme les noms des ressources de données (noms de tables/noms de fichiers), la taille de fichier, les colonnes, le lignage des données, etc. Pour des sources de données structurées (par exemple, le système de gestion de base de données relationnelle), les détails du schéma sont également capturés. Le processus de traitement applique des étiquettes de classification automatisée sur les attributs de schéma en fonction de l’ensemble de règles d’analyse configuré et des étiquettes de confidentialité si votre compte Purview est connecté à un Centre de sécurité et conformité (SCC) Microsoft 365. 
+Azure Purview prend en charge l’analyse automatisée des sources de données en local, multicloud et SaaS. L’exécution d’une « analyse » appelle le processus pour recevoir les métadonnées des sources de données inscrites. Les métadonnées traitées à la fin du processus d’analyse et de traitement incluent des métadonnées techniques comme les noms des ressources de données (noms de tables/noms de fichiers), la taille de fichier, les colonnes, le lignage des données, etc. Pour des sources de données structurées (par exemple, le système de gestion de base de données relationnelle), les détails du schéma sont également capturés. Le processus de traitement applique des étiquettes de classification automatisée sur les attributs de schéma en fonction de l’ensemble de règles d’analyse configuré et des étiquettes de confidentialité si votre compte Purview est connecté à un Centre de sécurité et conformité Microsoft 365.
 
 ## <a name="intended-audience"></a>Public concerné
 

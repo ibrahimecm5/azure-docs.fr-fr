@@ -1,21 +1,23 @@
 ---
-title: Fonctionnalités de repérage dans Azure Sentinel | Microsoft Docs
-description: Utilisez les requêtes de chasse intégrées à Azure Sentinel pour vous aider à poser les bonnes questions afin de détecter les problèmes dans vos données.
+title: Fonctionnalités de repérage dans Microsoft Sentinel | Microsoft Docs
+description: Utilisez les requêtes de chasse intégrées à Microsoft Sentinel pour vous aider à poser les bonnes questions afin de détecter les problèmes dans vos données.
+services: sentinel
+documentationcenter: na
 author: yelevin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: 88c0b2919b680feb7776e9de63566ad70d885dee
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6e1308b039cc86bbe10fc062138ab76c486ad29a
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475302"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518619"
 ---
-# <a name="hunt-for-threats-with-azure-sentinel"></a>Repérer les menaces avec Azure Sentinel
+# <a name="hunt-for-threats-with-microsoft-sentinel"></a>Recherche de menaces avec Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -26,7 +28,7 @@ ms.locfileid: "131475302"
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-En tant qu’analystes et investigateurs de sécurité, vous souhaitez être proactif dans la recherche des menaces de sécurité, mais vos différents systèmes et appliances de sécurité génèrent de grandes quantités de données qui peuvent être difficiles à analyser et à filtrer pour obtenir des événements explicites. Azure Sentinel dispose d’outils de repérage puissants dédiés à la recherche et la création de requêtes pour repérer les menaces de sécurité dans les sources de données de votre organisation. Afin de faciliter la tâche des analystes de la sécurité dans la recherche proactive des nouvelles anomalies non détectées par vos applications de sécurité ou même par vos règles analytiques planifiées, les requêtes de repérage intégrées d’Azure Sentinel vous aident à poser les bonnes questions pour identifier les problèmes au niveau des données déjà présents dans le réseau. 
+En tant qu’analystes et investigateurs de sécurité, vous souhaitez être proactif dans la recherche des menaces de sécurité, mais vos différents systèmes et appliances de sécurité génèrent de grandes quantités de données qui peuvent être difficiles à analyser et à filtrer pour obtenir des événements explicites. Microsoft Sentinel dispose d’outils de repérage puissants dédiés à la recherche et la création de requêtes pour repérer les menaces de sécurité dans les sources de données de votre organisation. Afin de faciliter la tâche des analystes de la sécurité dans la recherche proactive des nouvelles anomalies non détectées par vos applications de sécurité ou même par vos règles analytiques planifiées, les requêtes de repérage intégrées de Microsoft Sentinel vous aident à poser les bonnes questions pour identifier les problèmes au niveau des données déjà présents dans le réseau.
 
 Par exemple, l’une des requêtes intégrées fournit des données sur les processus qui s’exécutent le moins souvent sur votre infrastructure. Vous ne souhaitez pas recevoir une alerte chaque fois que ces processus s’exécutent, car ils peuvent se révéler totalement inoffensifs, mais vous pouvez examiner cette requête de temps à autre pour vérifier qu’il ne se produit rien d’inhabituel.
 
@@ -46,26 +48,25 @@ Utilisez des requêtes avant, pendant et après une compromission pour effectuer
 
 - **Après une compromission** : Après une compromission ou un incident, veillez à améliorer votre couverture et vos connaissances afin de prévenir des incidents similaires à l’avenir.
 
-    - Modifiez vos requêtes existantes ou créez-en de nouvelles pour faciliter la détection précoce, en vous basant sur les informations que vous avez recueillies lors de la compromission ou de l’incident.
+  - Modifiez vos requêtes existantes ou créez-en de nouvelles pour faciliter la détection précoce, en vous basant sur les informations que vous avez recueillies lors de la compromission ou de l’incident.
 
-    - Si vous avez découvert ou créé une requête de chasse qui fournit des informations de grande valeur sur les attaques possibles, créez des règles de détection personnalisées basées sur cette requête et communiquer ces informations sous forme d’alertes aux gestionnaires des incidents de sécurité.
+  - Si vous avez découvert ou créé une requête de chasse qui fournit des informations de grande valeur sur les attaques possibles, créez des règles de détection personnalisées basées sur cette requête et communiquer ces informations sous forme d’alertes aux gestionnaires des incidents de sécurité.
 
-        Affichez les résultats de la requête, puis sélectionnez **Nouvelle règle d’alerte** > **Créer une alerte Azure Sentinel**. Utilisez l’**Assistant de règle d’analyse** pour créer une nouvelle règle basée sur votre requête. Pour plus d’informations, consultez [Créer des règles analytiques personnalisées pour détecter des menaces](detect-threats-custom.md).
-
+    Affichez les résultats de la requête, puis sélectionnez **Nouvelle règle d’alerte** > **Créer une alerte Microsoft Sentinel**. Utilisez l’**Assistant de règle d’analyse** pour créer une nouvelle règle basée sur votre requête. Pour plus d’informations, consultez [Créer des règles analytiques personnalisées pour détecter des menaces](detect-threats-custom.md).
 
 > [!TIP]
+>
 > - Désormais, dans la préversion publique, vous pouvez également créer des requêtes de chasse et de livestream sur les données stockées dans Azure Data Explorer. Pour plus d’informations, consultez les détails de [construction de requêtes inter-ressources](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md) dans la documentation d’Azure Monitor.
 >
-> - Utilisez les ressources de la communauté, comme le [référentiel GitHub d’Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries), pour trouver des requêtes et des sources de données supplémentaires.
->
+> - Utilisez les ressources de la communauté, comme le [référentiel GitHub de Microsoft Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries), pour trouver des requêtes et des sources de données supplémentaires.
 
 ## <a name="use-the-hunting-dashboard"></a>Utiliser le tableau de bord de chasse
 
-Le tableau de bord de chasse vous permet d’exécuter toutes vos requêtes, ou un sous-ensemble sélectionné, en une seule sélection. Dans le portail Azure Sentinel, sélectionnez **Chasse**.
+Le tableau de bord de chasse vous permet d’exécuter toutes vos requêtes, ou un sous-ensemble sélectionné, en une seule sélection. Dans le portail Microsoft Sentinel, sélectionnez **Chasse**.
 
 Le tableau affiché répertorie toutes les requêtes rédigées par l’équipe d’analystes de la sécurité Microsoft et toute requête supplémentaire que vous avez créée ou modifiée. Chaque requête décrit l’objet du repérage, ainsi que le type de données sur lequel ce processus s’exécute. Ces requêtes sont groupées par **tactiques** MITRE ATT&CK. Les icônes de droite catégorisent le type de menace, telles que l’accès initial, la persistance et l’exfiltration. Les **techniques** MITRE ATT&CK s’affichent dans la colonne **Techniques** et décrivent le comportement spécifique identifié par la requête de chasse.
 
-:::image type="content" source="media/hunting/hunting-start.png" alt-text="Début du repérage par Azure Sentinel" lightbox="media/hunting/hunting-start.png":::
+:::image type="content" source="media/hunting/hunting-start.png" alt-text="Début du repérage par Microsoft Sentinel" lightbox="media/hunting/hunting-start.png":::
 
 Utilisez le tableau de bord de chasse pour identifier où commencer la chasse, en examinant le nombre de résultats, les pics ou l’évolution du nombre de résultats sur une période de 24 heures. Triez et filtrez par favoris, source de données, tactique ou technique MITRE ATT&CK, résultats, delta de résultats pour pourcentage de delta de résultats. Affichez les requêtes qui ont encore besoin de sources de données connectées** et recevez des recommandations sur la façon d’activer ces requêtes.
 
@@ -83,7 +84,6 @@ Le tableau suivant décrit les actions détaillées disponibles dans le tableau 
 | **Passer en revue une requête sous-jacente**                     | Effectuez un examen rapide de la requête sous-jacente dans le volet d’informations de la requête. Vous pouvez voir les résultats en cliquant sur le lien **Afficher les résultats de la requête** (sous la fenêtre de requête) ou sur le bouton **Afficher les résultats** (en bas du volet). La requête s’ouvre dans le panneau **Journaux** (Log Analytics) et sous la requête, vous pouvez examiner les correspondances pour la requête.         |
 |     |         |
 
-
 ## <a name="create-a-custom-hunting-query"></a>Créer une requête de chasse personnalisée
 
 Créez ou modifiez une requête et sauvegardez-la comme votre propre requête ou partagez-la avec des utilisateurs situés dans le même locataire.
@@ -97,7 +97,7 @@ Créez ou modifiez une requête et sauvegardez-la comme votre propre requête ou
 1. Renseignez tous les champs vides, puis sélectionnez **Créer**.
 
     1. **(Préversion)** Créez des mappages d’entités en sélectionnant les types d’entités, les identificateurs et les colonnes.
-    
+
         :::image type="content" source="media/hunting/map-entity-types-hunting.png" alt-text="Capture d’écran pour le mappage des types d’entités dans les requêtes de chasse.":::
 
     1. **(Préversion)** Mappez les techniques MITRE ATT&CK à vos requêtes de chasse en sélectionnant la tactique, la technique et la sous-technique (le cas échéant).
@@ -136,15 +136,14 @@ Au cours du processus de chasse et d’enquête, vous pouvez tomber sur des rés
 
 - Dans vos résultats, cochez les cases des lignes que vous souhaitez conserver, puis sélectionnez **Ajouter un signet**. Cela crée un enregistrement pour chaque ligne marquée (un signet) qui contient les résultats de la ligne ainsi que la requête qui a créé les résultats. Vous pouvez ajouter vos propres étiquettes et des notes à chaque signet.
 
-    - **(Préversion)** Comme avec les requêtes personnalisées, vous pouvez enrichir vos signets avec des mappages d’entités pour extraire plusieurs types d’entités et identificateurs, et des mappages MITRE ATT&CK pour associer des tactiques et des techniques particulières.
-    - **(Préversion)** Les signets utilisent par défaut les mêmes mappages d’entités et de techniques MITRE ATT&CK que la requête de chasse qui a produit les résultats marqués d’un signet. 
+  - **(Préversion)** Comme avec les requêtes personnalisées, vous pouvez enrichir vos signets avec des mappages d’entités pour extraire plusieurs types d’entités et identificateurs, et des mappages MITRE ATT&CK pour associer des tactiques et des techniques particulières.
+  - **(Préversion)** Les signets utilisent par défaut les mêmes mappages d’entités et de techniques MITRE ATT&CK que la requête de chasse qui a produit les résultats marqués d’un signet. 
 
 - Affichez tous les résultats avec un signet en cliquant sur l’onglet **Signets** dans la page **Chasse** principale. Ajoutez des étiquettes aux signets pour les classer à des fins de filtrage. Par exemple, si vous examinez une campagne d’attaque, vous pouvez créer une étiquette pour cette dernière, appliquer l’étiquette aux signets pertinents, puis filtrer tous les signets en fonction de la campagne.
 
 - Examinez un seul résultat avec signet en sélectionnant le signet, puis en cliquant sur **Examiner** dans le volet d’informations pour ouvrir l’expérience d’investigation. Vous pouvez également sélectionner directement une entité dans la liste pour afficher la page d’entité correspondante de cette entité.
 
     Vous pouvez également créer un incident à partir d’un ou plusieurs signets ou ajouter un ou plusieurs signets à un incident existant. Cochez la case située à gauche des signets que vous souhaitez utiliser, puis sélectionnez **Actions relatives aux incidents** > **Créer un nouvel incident** ou **Ajouter à un incident existant**. Triez et examinez l’incident comme pour tout autre incident.
-
 
 > [!TIP]
 > Les signets représentent des événements clés qui sont dignes d’intérêt et qui doivent être transformés en incidents s’ils sont suffisamment graves pour justifier une enquête. Les événements tels que les causes racines potentielles, les indicateurs de compromission ou d’autres événements notables doivent être signalés comme des signets.
@@ -154,11 +153,11 @@ Pour plus d’informations, consultez [Utiliser des signets dans la chasse](book
 
 ## <a name="use-notebooks-to-power-investigations"></a>Utiliser des notebooks pour dynamiser l’investigation
 
-Lorsque votre chasse et vos investigations deviennent plus complexes, utilisez des blocs-notes Azure Sentinel pour améliorer votre activité avec l’apprentissage automatique, les visualisations et l’analyse des données.
+Lorsque votre chasse et vos investigations deviennent plus complexes, utilisez des blocs-notes Microsoft Sentinel pour améliorer votre activité avec l’apprentissage automatique, les visualisations et l’analyse des données.
 
 Les blocs-notes fournissent un type de sandbox virtuel, complet avec son propre noyau, où vous pouvez effectuer une investigation complète. Votre bloc-notes peut inclure les données brutes, le code que vous exécutez sur ces données, les résultats et leurs visualisations. Enregistrez vos blocs-notes pour pouvoir les partager avec d’autres personnes pour les réutiliser dans votre organisation.
 
-Les blocs-notes peuvent être utiles lorsque la chasse ou l’investigation devient trop importante pour vous souvenir facilement, afficher des détails ou lorsque vous devez enregistrer des requêtes et des résultats. Pour vous aider à créer et à partager des blocs-notes, Azure Sentinel fournit des [blocs-notes Jupyter](https://jupyter.org), un environnement de développement et de manipulation de données Open source, interactif et intégré directement dans la page **Notebooks** Azure Sentinel.
+Les blocs-notes peuvent être utiles lorsque la chasse ou l’investigation devient trop importante pour vous souvenir facilement, afficher des détails ou lorsque vous devez enregistrer des requêtes et des résultats. Pour vous aider à créer et à partager des blocs-notes, Microsoft Sentinel fournit des [blocs-notes Jupyter](https://jupyter.org), un environnement de développement et de manipulation de données Open source, interactif et intégré directement dans la page **Notebooks** Microsoft Sentinel.
 
 Pour plus d’informations, consultez :
 
@@ -168,13 +167,13 @@ Pour plus d’informations, consultez :
 - [Le livre Jupyter INFOSEC](https://infosecjupyterbook.com)
 - [Didacticiels python réels](https://realpython.com)
 
-Le tableau suivant décrit certaines méthodes d’utilisation des blocs-notes Juypter pour aider vos processus dans Azure Sentinel :
+Le tableau suivant décrit certaines méthodes d’utilisation des blocs-notes Juypter pour aider vos processus dans Microsoft Sentinel :
 
 |Méthode  |Description  |
 |---------|---------|
 |**Persistance des données, répétabilité et rétroaction**     |  Si vous utilisez de nombreuses requêtes et jeux de résultats, vous risquez d’avoir des terminaisons inactives. Vous devez choisir les requêtes et les résultats à conserver, et comment accumuler les résultats utiles dans un rapport unique. <br><br> Utilisez les blocs-notes Jupyter pour enregistrer les requêtes et les données au fur et à mesure, utilisez des variables pour réexécuter des requêtes avec des valeurs ou des dates différentes, ou enregistrez vos requêtes pour les réexécuter lors des investigations ultérieures.       |
 |**Scripts et programmation**     |    Utilisez les blocs-notes Jupyter pour ajouter de la programmation à vos requêtes, notamment : <br><br>- Langages *déclaratifs* tels que le [langage de requête Kusto (KQL)](/azure/kusto/query/) ou SQL, pour encoder votre logique dans une instruction unique, éventuellement complexe.<br>- Des langages de programmation *procédurale*, pour exécuter la logique dans une série d’étapes. <br><br>Le fractionnement de votre logique en étapes peut vous aider à afficher et à déboguer les résultats intermédiaires, à ajouter des fonctionnalités qui peuvent ne pas être disponibles dans le langage de requête et à réutiliser des résultats partiels dans les étapes de traitement ultérieures.     |
-|**Liens vers des données externes**     | Bien que les tables Azure Sentinel disposent de la plupart des données de télémétrie et d’événement, les blocs-notes Jupyter peuvent être liés à toutes les données accessibles sur votre réseau ou à partir d’un fichier. L’utilisation des blocs-notes Jupyter vous permet d’inclure des données telles que : <br><br>- Données dans des services externes dont vous n’êtes pas propriétaire, tels que des données de géolocalisation ou des sources d’informations sur les menaces<br>- Données sensibles stockées uniquement au sein de votre organisation, telles que des bases de données de ressources humaines ou des listes de ressources à valeur élevée<br>- Données que vous n’avez pas encore migrées vers le Cloud.        |
+|**Liens vers des données externes**     | Bien que les tables Microsoft Sentinel disposent de la plupart des données de télémétrie et d’événement, les blocs-notes Jupyter peuvent être liés à toutes les données accessibles sur votre réseau ou à partir d’un fichier. L’utilisation des blocs-notes Jupyter vous permet d’inclure des données telles que : <br><br>- Données dans des services externes dont vous n’êtes pas propriétaire, tels que des données de géolocalisation ou des sources d’informations sur les menaces<br>- Données sensibles stockées uniquement au sein de votre organisation, telles que des bases de données de ressources humaines ou des listes de ressources à valeur élevée<br>- Données que vous n’avez pas encore migrées vers le Cloud.        |
 |**Outils de traitement des données, d’apprentissage automatique et de visualisation spécialisés**     | Les blocs-notes Jupyter fournissent des visualisations, des bibliothèques d’apprentissage automatique et des fonctionnalités de traitement et de transformation des données supplémentaires. <br><br>Par exemple, utilisez les blocs-notes Jupyter avec les fonctionnalités [Python](https://python.org) suivantes :<br>- [pandas](https://pandas.pydata.org/) pour le traitement des données, le nettoyage et l’ingénierie<br>- [Matplotlib](https://matplotlib.org), [HoloViews](https://holoviews.org)et [Plotly](https://plot.ly) pour la visualisation<br>- [NumPy](https://www.numpy.org) et [SciPy](https://www.scipy.org) pour des traitements numériques et scientifiques avancés<br>- [scikit-learn](https://scikit-learn.org/stable/index.html) pour l’apprentissage automatique<br>- [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org)et [Keras](https://keras.io/) pour l’apprentissage profond<br><br>**Conseil**: les blocs-notes Jupyter prennent en charge plusieurs noyaux de langue. Utilisez *Magic* pour mélanger les langues dans le même bloc-notes, en autorisant l’exécution de cellules individuelles dans une autre langue. Par exemple, vous pouvez récupérer des données à l’aide d’une cellule de script PowerShell, traiter les données dans Python et utiliser JavaScript pour afficher une visualisation.        |
 |     |         |
 
@@ -182,7 +181,7 @@ Le tableau suivant décrit certaines méthodes d’utilisation des blocs-notes J
 
 Le [Microsoft Threat Intelligence Center (MSTIC)](https://msrc-blog.microsoft.com/tag/mstic/) est une équipe d’analystes et d’ingénieurs de la sécurité Microsoft qui créent des détections de sécurité pour plusieurs plates-formes Microsoft et qui travaillent sur l’identification et l’investigation des menaces.
 
-MSTIC a créé [MSTICPy](https://github.com/Microsoft/msticpy), une bibliothèque pour les investigations de sécurité des informations et la chasse dans les blocs-notes Jupyter. MSTICPy fournit des fonctionnalités réutilisables qui visent à accélérer la création de bloc-notes et à permettre aux utilisateurs de lire plus facilement les blocs-notes dans Azure Sentinel.
+MSTIC a créé [MSTICPy](https://github.com/Microsoft/msticpy), une bibliothèque pour les investigations de sécurité des informations et la chasse dans les blocs-notes Jupyter. MSTICPy fournit des fonctionnalités réutilisables qui visent à accélérer la création de bloc-notes et à permettre aux utilisateurs de lire plus facilement les blocs-notes dans Microsoft Sentinel.
 
 Par exemple, MSTICPy peut :
 
@@ -197,17 +196,16 @@ MSTICPy comprend également des outils de bloc-notes permettant de gagner du tem
 Pour plus d’informations, consultez :
 
 - [Documentation MSTICPy](https://msticpy.readthedocs.io/en/latest/)
-- [Didacticiel : prise en main des blocs-notes Jupyter et MSTICPy dans Azure Sentinel](notebook-get-started.md)
-- [Configurations avancées pour les blocs-notes Jupyter et MSTICPy dans Azure Sentinel](notebooks-msticpy-advanced.md)
-
+- [Didacticiel : prise en main des blocs-notes Jupyter et MSTICPy dans Microsoft Sentinel](notebook-get-started.md)
+- [Configurations avancées pour les notebooks Jupyter et MSTICPy dans Microsoft Sentinel](notebooks-msticpy-advanced.md)
 
 ## <a name="useful-operators-and-functions"></a>Opérateurs et fonctions utiles
 
 Les requêtes de chasse sont créées dans le [langage de requête Kusto (KQL)](/azure/data-explorer/kusto/query/), un langage de requête puissant avec IntelliSense qui vous offre la puissance et la flexibilité dont vous avez besoin pour faire passer la chasse au niveau supérieur.
 
-Il s’agit du même langage que celui utilisé par les requêtes dans vos règles analytiques et ailleurs dans Azure Sentinel. Pour plus d’informations, consultez [Informations de référence sur le langage de requête](../azure-monitor/logs/get-started-queries.md).
+Il s’agit du même langage que celui utilisé par les requêtes dans vos règles analytiques et ailleurs dans Microsoft Sentinel. Pour plus d’informations, consultez [Informations de référence sur le langage de requête](../azure-monitor/logs/get-started-queries.md).
 
-Les opérateurs suivants sont particulièrement utiles dans les requêtes de chasse Azure Sentinel :
+Les opérateurs suivants sont particulièrement utiles dans les requêtes de chasse Microsoft Sentinel :
 
 - **where** : filtre une table en fonction du sous-ensemble de lignes correspondant à un prédicat.
 
@@ -229,11 +227,11 @@ Les opérateurs suivants sont particulièrement utiles dans les requêtes de cha
 
 - **find** : recherche les lignes qui correspondent à un prédicat dans un ensemble de tables.
 
-- **adx() (préversion)**  : effectue des requêtes inter-ressources dans les sources de données Azure Data Explorer à partir de l’expérience de chasse Azure Sentinel et de Log Analytics. Pour plus d’informations, consultez [Requête inter-ressources Azure Data Explorer à l’aide d’Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
+- **adx() (préversion)**  : effectue des requêtes inter-ressources dans les sources de données Azure Data Explorer à partir de l’expérience de chasse Microsoft Sentinel et de Log Analytics. Pour plus d’informations, consultez [Requête inter-ressources Azure Data Explorer à l’aide d’Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez appris à effectuer un examen de repérage à l’aide d’Azure Sentinel. 
+Dans cet article, vous avez appris à effectuer un examen de repérage à l’aide de Microsoft Sentinel.
 
 Pour plus d'informations, consultez les pages suivantes :
 

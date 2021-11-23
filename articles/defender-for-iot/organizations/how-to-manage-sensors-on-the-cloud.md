@@ -1,28 +1,28 @@
 ---
-title: Gérer des capteurs dans le portail Defender pour IoT
-description: Découvrez comment intégrer, visualiser et gérer les capteurs dans le portail Defender pour IoT.
-ms.date: 06/03/2021
+title: Gérer les capteurs avec Defender pour IoT dans le portail Azure
+description: Apprenez à intégrer, visualiser et gérer les capteurs dans Defender pour IoT dans le portail Azure.
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 47bdcbdcab807efae9a39383837b6c863ec6fd06
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: c01f5826238a5e4091fbaef58b42205c0bb2d9d2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016968"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339894"
 ---
-# <a name="manage-sensors-in-the-defender-for-iot-portal"></a>Gérer des capteurs dans le portail Defender pour IoT
+# <a name="manage-sensors-with-defender-for-iot-in-the-azure-portal"></a>Gérer les capteurs avec Defender pour IoT dans le portail Azure
 
-Cet article explique comment intégrer, visualiser et gérer les capteurs dans le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
+Cet article explique comment intégrer, visualiser et gérer les capteurs dans [Defender pour IoT dans le portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
 ## <a name="onboard-sensors"></a>Intégrer des capteurs
 
-Vous intégrez un capteur en l’inscrivant auprès d’Azure Defender pour IoT et en téléchargeant un fichier d’activation de capteur.
+Vous intégrez un capteur en l’inscrivant auprès de Microsoft Defender pour IoT et en téléchargeant un fichier d’activation de capteur.
 
 ### <a name="register-the-sensor"></a>Inscrire le capteur
 
 **Pour vous inscrire :**
 
-1. Accédez à la page **Accueil** dans le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
+1. Accédez à la page [Defender pour IoT : Prise en main](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) dans le portail Azure.
 
 1. Sélectionnez **Intégrer un capteur**.
 
@@ -30,7 +30,7 @@ Vous intégrez un capteur en l’inscrivant auprès d’Azure Defender pour IoT 
 
 1. Créez un nom de capteur. 
 
-    Nous vous recommandons d’inclure dans le nom l’adresse IP du capteur que vous avez installé ou d’utiliser un nom facilement identifiable. Cela facilite le suivi et la cohérence du nommage entre le nom d’inscription dans le [portail Azure Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) et l’adresse IP du capteur déployé qui est affichée dans la console du capteur.
+    Nous vous recommandons d’inclure dans le nom l’adresse IP du capteur que vous avez installé ou d’utiliser un nom facilement identifiable. Cela facilite le suivi et la cohérence du nommage entre le nom d’inscription dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) et l’adresse IP du capteur déployé qui est affichée dans la console du capteur.
 
 1. Associez le capteur à un abonnement Azure.
 
@@ -38,13 +38,13 @@ Vous intégrez un capteur en l’inscrivant auprès d’Azure Defender pour IoT 
 
 1. Choisissez un mode de connexion du capteur à l’aide du bouton bascule **Connecté au cloud**. Si le bouton bascule est activé, le capteur est connecté au cloud. Si le bouton bascule est désactivé, le capteur est géré localement.
 
-   - **Capteurs connectés au cloud** : Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations sur les alertes sont transmises par le biais d’un hub IoT et peuvent être partagées avec d’autres services Azure, comme Azure Sentinel. En outre, les packages de renseignement sur les menaces peuvent être envoyés (push) aux capteurs à partir du portail Azure Defender pour IoT. À l’inverse, lorsque le capteur n’est pas connecté au cloud, vous devez télécharger les packages de renseignement sur les menaces, puis les charger sur les capteurs de votre entreprise. Pour autoriser Defender pour IoT à envoyer (push) des packages aux capteurs, activez le bouton bascule **Mises à jour automatiques du renseignement sur les menaces**. Pour plus d’informations, consultez [Recherche et packages de renseignement sur les menaces](how-to-work-with-threat-intelligence-packages.md).
+   - **Capteurs connectés au cloud** : Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations sur les alertes sont transmises par le biais du hub IoT et peuvent être partagées avec d’autres services Azure, comme Microsoft Sentinel. En outre, les packages de renseignement sur les menaces peuvent être envoyés (push) aux capteurs à partir de Defender pour IoT. À l’inverse, lorsque le capteur n’est pas connecté au cloud, vous devez télécharger les packages de renseignement sur les menaces, puis les charger sur les capteurs de votre entreprise. Pour autoriser Defender pour IoT à envoyer (push) des packages aux capteurs, activez le bouton bascule **Mises à jour automatiques du renseignement sur les menaces**. Pour plus d’informations, consultez [Recherche et packages de renseignement sur les menaces](how-to-work-with-threat-intelligence-packages.md).
    
    Pour les capteurs connectés au cloud, le nom défini lors de l’intégration est le nom qui apparaît dans la console de capteur. Vous ne pouvez pas modifier ce nom directement à partir de la console. Pour les capteurs gérés localement, le nom appliqué pendant l’intégration est stocké dans Azure, mais peut être mis à jour dans la console du capteur.
 
    - **Capteurs gérés localement** : Les informations détectées par les capteurs s’affichent dans leur console. Si vous travaillez sur un réseau en air gap et que vous souhaitez une vue unifiée de toutes les informations détectées par plusieurs capteurs gérés localement, utilisez la console de gestion locale.
 
-1. Sélectionnez le site auquel vous souhaitez associer votre capteur dans un hub IoT. Celui-ci servira de passerelle entre ce capteur et Azure Defender pour IoT. Définissez le nom complet et la zone. Vous pouvez également ajouter des étiquettes descriptives. Le nom complet, la zone et les étiquettes constituent des entrées descriptives de la page [Sites et capteurs](#view-onboarded-sensors).
+1. Sélectionnez le site auquel vous souhaitez associer votre capteur dans un hub IoT. Le hub IoT servira de passerelle entre ce capteur et Microsoft Defender pour IoT. Définissez le nom complet et la zone. Vous pouvez également ajouter des étiquettes descriptives. Le nom complet, la zone et les étiquettes constituent des entrées descriptives de la page [Sites et capteurs](#view-onboarded-sensors).
 
 1. Sélectionnez **Inscription**. 
 
@@ -62,7 +62,9 @@ Après avoir inscrit un capteur, vous serez en mesure de télécharger un fichie
 
 ## <a name="view-onboarded-sensors"></a>Afficher les capteurs intégrés
 
-Sur le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started), vous pouvez visualiser des informations opérationnelles importantes sur les capteurs intégrés.
+Pour afficher des informations opérationnelles importantes sur les capteurs intégrés :
+
+1. Accédez à [Defender pour IoT : Prise en main](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) dans le portail Azure.
 
 1. Sélectionnez **Sites et capteurs**. La page affiche le nombre de capteurs intégrés, le nombre de capteurs connectés au cloud et gérés localement, ainsi que les éléments suivants :
 
@@ -77,7 +79,7 @@ Sur le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azu
 
 ## <a name="manage-onboarded-sensors"></a>Gérer les capteurs intégrés
 
-Utilisez le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) pour les tâches de gestion relatives aux capteurs.
+Utilisez le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) pour les tâches de gestion relatives aux capteurs.
 
 Les capteurs intégrés peuvent être affichés sur la page **Sites et capteurs**. Vous pouvez également modifier les informations d’un capteur depuis cette page.
 
@@ -113,7 +115,7 @@ Si vous supprimez un capteur connecté au cloud, les informations ne seront pas 
 
 Vous devrez peut-être réactiver votre capteur car vous souhaitez :
 
-- **Travailler en mode connecté au cloud plutôt qu’en mode géré localement** : Après la réactivation, les détections apparaissent dans le capteur, et les informations d’alerte récemment détectées sont transmises via l’IoT Hub. Ces informations peuvent être partagées avec d’autres services Azure, par exemple Azure Sentinel.
+- **Travailler en mode connecté au cloud plutôt qu’en mode géré localement** : Après la réactivation, les détections apparaissent dans le capteur, et les informations d’alerte récemment détectées sont transmises via l’IoT Hub. Ces informations peuvent être partagées avec d’autres services Azure, par exemple Microsoft Sentinel.
 
 - **Travailler en mode généré localement plutôt qu’en mode connecté** : Après la réactivation, les informations de détection de capteur sont affichées uniquement dans le capteur.
 
@@ -121,7 +123,7 @@ Vous devrez peut-être réactiver votre capteur car vous souhaitez :
 
 **Pour réactiver un capteur :**
 
-1. Accédez à la page **Sites et capteurs** sur le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
+1. Accédez à la page **Sites et capteurs** dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
 1. Sélectionnez le capteur pour lequel vous souhaitez télécharger un nouveau fichier d’activation.
 

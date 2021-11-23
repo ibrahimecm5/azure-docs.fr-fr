@@ -1,18 +1,18 @@
 ---
 title: Installation de Defender pour IoT
-description: Découvrez comment installer un capteur et la console de gestion locale pour Azure Defender pour IoT.
-ms.date: 10/21/2021
+description: Découvrez comment installer un capteur et la console de gestion locale pour Microsoft Defender pour IoT.
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 0548b1caa269431bb27a54e2dcbd297b2d4734a0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 23776a9abf35cc8cdba512517163ab2f723b458d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247585"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343778"
 ---
 # <a name="defender-for-iot-installation"></a>Installation de Defender pour IoT
 
-Cet article explique comment installer les composants suivants d’Azure Defender pour IoT :
+Cet article explique comment installer les composants suivants de Microsoft Defender pour IoT :
 
 - **Capteur** : Les capteurs Defender pour IoT collectent le trafic de partage de connexion Internet (ICS) à l’aide de la surveillance passive (sans agent). Passifs et non intrusifs, les capteurs n’ont aucun impact sur les réseaux et appareils OT et IoT. Le capteur se connecte à un port SPAN ou à un TAP réseau et commence immédiatement à surveiller votre réseau. Les détections s’affichent dans la console du capteur. Dans cette console, vous pouvez les visualiser, les examiner et les analyser dans une carte du réseau, un inventaire des appareils et un large éventail de rapports. Les exemples incluent des rapports d’évaluation des risques, des requêtes d’exploration de données et des vecteurs d’attaque.
 
@@ -73,7 +73,7 @@ Les appliances virtuelles suivantes sont disponibles :
 
 ### <a name="access-the-iso-installation-image"></a>Accéder à l’image d’installation ISO
 
-L’image d’installation est accessible à partir du portail Defender pour IoT.
+L’image d’installation est accessible à partir du portail Defender pour IoT dans le portail Azure.
 
 Pour accéder au fichier :
 
@@ -408,7 +408,7 @@ Pour installer le logiciel :
 
 1. Connectez l’écran et le clavier à l’appliance, puis connectez-vous à l’interface de ligne de commande.
 
-1. Connectez un CD externe ou un disque sur clé sur lequel se trouve l’image ISO que vous avez téléchargée à partir de la page **Mises à jour** du portail Defender pour IoT.
+1. Connectez un CD externe ou un disque sur clé sur lequel se trouve l’image ISO que vous avez téléchargée à partir de la page **Mises à jour** de Defender pour IoT dans le portail Azure.
 
 1. Démarrez l’appliance.
 
@@ -494,7 +494,7 @@ Pour effectuer l’installation :
 
 1. Connectez l’écran et le clavier à l’appliance, puis connectez-vous à l’interface de ligne de commande.
 
-1. Connectez un CD externe ou un disque sur clé sur lequel se trouve l’image ISO que vous avez téléchargée à partir de la page **Mises à jour** du portail Defender pour IoT.
+1. Connectez un CD externe ou un disque sur une clé avec l’image ISO que vous avez téléchargée à partir de la page **Mises à jour** de Defender pour IoT dans le portail Azure.
 
 1. Démarrez l’appliance.
 
@@ -631,7 +631,7 @@ La console de gestion locale prend en charge les options de déploiement de VMwa
 
 - Ressources matérielles disponibles pour la machine virtuelle
 
-- Fichier d’installation ISO pour le capteur Azure Defender pour IoT
+- Fichier d’installation ISO pour le capteur Microsoft Defender pour IoT
 
 Assurez-vous que l’hyperviseur fonctionne.
 
@@ -812,8 +812,7 @@ Vous pouvez renforcer la sécurité de votre console de gestion locale en ajouta
 
 :::image type="content" source="media/tutorial-install-components/secondary-nic.png" alt-text="Architecture globale de la carte réseau secondaire.":::
 
-Les deux cartes réseau prendront en charge l’interface utilisateur (IU).
-Si vous choisissez de ne pas déployer de carte réseau secondaire, toutes les fonctionnalités seront disponibles via la carte réseau principale.
+Les deux cartes réseau prendront en charge l’interface utilisateur (IU). Si vous choisissez de ne pas déployer de carte réseau secondaire, toutes les fonctionnalités seront disponibles via la carte réseau principale.
 
 Si vous avez déjà configuré votre console de gestion locale et que vous souhaitez y ajouter une carte réseau secondaire, procédez comme suit :
 

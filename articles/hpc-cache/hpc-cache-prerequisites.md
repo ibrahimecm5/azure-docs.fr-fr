@@ -1,17 +1,17 @@
 ---
 title: Prérequis pour Azure HPC Cache
 description: Prérequis à l’utilisation d’Azure HPC Cache
-author: femila
+author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2021
-ms.author: femila
-ms.openlocfilehash: b075e41d8bd8865fcb5ed24c4ecba2b9f539d3dd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/03/2021
+ms.author: rohogue
+ms.openlocfilehash: 1929677370ddf6f505f2425f61bfdaf4466223bb
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078595"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137745"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Prérequis pour Azure HPC Cache
 
@@ -79,6 +79,26 @@ Pour utiliser un serveur DNS personnalisé, vous devez effectuer ces étapes de 
 Un simple serveur DNS peut également être utilisé pour équilibrer la charge des connexions clientes entre tous les points de montage du cache disponibles.
 
 Pour plus d’informations sur les réseaux virtuels Azure et les configurations de serveur DNS, consultez [Résolution de noms des ressources dans les réseaux virtuels Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+### <a name="ntp-access"></a>Accès NTP
+
+HPC Cache a besoin d’accéder à un serveur NTP pour un fonctionnement normal. Si vous limitez le trafic sortant à partir de vos réseaux virtuels, assurez-vous d’autoriser le trafic vers au moins un serveur NTP. Le serveur par défaut est time.windows.com et le cache contacte ce serveur sur le port UDP 123.
+
+Créez une règle dans le [groupe de sécurité réseau](../virtual-network/network-security-groups-overview.md) du réseau de votre cache qui autorise le trafic sortant vers votre serveur NTP. La règle peut simplement autoriser tout le trafic sortant sur le port UDP 123, ou avoir des restrictions supplémentaires.
+
+Cet exemple ouvre explicitement le trafic sortant vers l’adresse IP 168.61.215.74, qui est l’adresse utilisée par time.windows.com.
+
+| Priority | Nom | Port | Protocol | Source | Destination   | Action |
+|----------|------|------|----------|--------|---------------|--------|
+| 200      | NTP  | Quelconque  | UDP      | Quelconque    | 168.61.215.74 | Allow  |
+
+Assurez-vous que la règle NTP a une priorité plus élevée que toutes les règles qui refusent largement l’accès sortant.
+
+Conseils supplémentaires pour l’accès NTP :
+
+* Si vous avez des pare-feu entre HPC Cache et le serveur NTP, assurez-vous que ces pare-feu autorisent également l’accès NTP.
+
+* Vous pouvez configurer le serveur NTP utilisé par HPC Cache sur la page **Mise en réseau**. Pour plus d’informations, consultez [Configurer des paramètres supplémentaires](configuration.md#customize-ntp).
 
 ## <a name="permissions"></a>Autorisations
 

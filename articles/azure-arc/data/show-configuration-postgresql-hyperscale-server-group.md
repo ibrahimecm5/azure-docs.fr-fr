@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: bf0972342cf70b542bef01a070f777dec615c13b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0789e9bb28868ce4d75aa48beb956fcb4dd74031
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564363"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345800"
 ---
 # <a name="show-the-configuration-of-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Afficher la configuration d’un groupe de serveurs PostgreSQL Hyperscale avec Azure Arc
 
@@ -55,7 +55,7 @@ kubectl get pods -n <namespace>
 
 La commande retourne la liste des pods. Vous voyez les pods utilisés par vos groupes de serveurs d’après les noms que vous avez donnés à ces groupes de serveurs. Exemple :
 
-```console 
+```console
 NAME                 READY   STATUS    RESTARTS   AGE
 bootstrapper-4jrtl   1/1     Running   0          12d
 control-kz8gh        2/2     Running   0          12d
@@ -78,8 +78,8 @@ postgres01w0-3       3/3     Running   0          2d19h
 
 ### <a name="what-pod-is-used-for-what-role-in-the-server-group"></a>Quel pod est utilisé pour quel rôle dans le groupe de serveurs ?
 
-Les noms des pods avec le suffixe `c` représentent un nœud coordinateur. Tout nom de nœud suffixé par `w` est un nœud Worker.
-Par exemple, les cinq pods qui hébergent le groupe de serveurs :
+Les noms des pods avec le suffixe `c` représentent un nœud coordinateur. Tous les noms de nœuds suffixés par `w` sont des nœuds de travail, comme les cinq pods qui hébergent le groupe de serveurs :
+
 - `postgres01c0-0` sur le nœud coordinateur
 - `postgres01w0-0` : un nœud Worker
 - `postgres01w0-1` : un nœud Worker
@@ -88,14 +88,13 @@ Par exemple, les cinq pods qui hébergent le groupe de serveurs :
 
 Vous pouvez ignorer pour l’instant le caractère `0` affiché après `c` et `w` (ServerGroupName`c0`-x ou ServerGroupName`w0`-x). Il s’agira d’un scoring utilisé lorsque le produit offrira des expériences haute disponibilité.
 
-
 ### <a name="what-is-the-status-of-the-pods"></a>Quel est l’état des pods ?
 
 Exécutez `kubectl get pods -n <namespace>` et examinez la colonne `STATUS`.
 
-### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>Quelles revendications de volume persistant sont utilisées ? 
+### <a name="what-persistent-volume-claims-pvcs-are-being-used"></a>Quelles revendications de volume persistant sont utilisées ?
 
-Pour comprendre quelles revendications de volume persistant sont utilisées, et lesquelles sont utilisées spécifiquement pour les données, les journaux et les sauvegardes, exécutez : 
+Pour comprendre quelles revendications de volume persistant sont utilisées, et lesquelles sont utilisées spécifiquement pour les données, les journaux et les sauvegardes, exécutez :
 
 ```console
 kubectl get pvc -n <namespace>
@@ -379,11 +378,11 @@ Status:
 Events:                      <none>
 ```
 
-####  <a name="interpret-the-configuration-information"></a>Interpréter les informations de configuration
+#### <a name="interpret-the-configuration-information"></a>Interpréter les informations de configuration
 
 Détaillons quelques points d’intérêt spécifiques dans la description du `servergroup` présentée ci-dessus. Que nous dit-elle de ce groupe de serveurs ?
 
-- Il utilise la version 12 de Postgres et exécute l’extension Citus : 
+- Il utilise la version 12 de Postgres et exécute l’extension Citus :
 
    ```output
    Spec:
@@ -410,7 +409,7 @@ Détaillons quelques points d’intérêt spécifiques dans la description du `s
           Workers:        4
    ```
 
-- Configuration des ressources : dans cet exemple, son coordinateur et ses Workers ont 256Mi de mémoire garantie. Le coordinateur et les nœuds Worker ne peuvent pas utiliser plus que 1Gi de mémoire. Le coordinateur et les Workers sont assurés d’un vCore et ne peuvent pas consommer plus de deux vCores. 
+- Configuration des ressources : dans cet exemple, son coordinateur et ses Workers ont 256Mi de mémoire garantie. Le coordinateur et les nœuds Worker ne peuvent pas utiliser plus que 1Gi de mémoire. Le coordinateur et les Workers sont assurés d’un vCore et ne peuvent pas consommer plus de deux vCores.
 
    ```console
         Scheduling:
@@ -437,8 +436,8 @@ Détaillons quelques points d’intérêt spécifiques dans la description du `s
                Memory:  256Mi
    ```
 
- - Quel est l’état du groupe de serveurs ? Est-il disponible pour mes applications ? 
- 
+- Quel est l’état du groupe de serveurs ? Est-il disponible pour mes applications ?
+
    Oui, tous les pods (le nœud coordinateur et les quatre nœuds Worker sont prêts)
 
    ```console
@@ -450,7 +449,8 @@ Détaillons quelques points d’intérêt spécifiques dans la description du `s
 Utilisez les commandes Azure CLI.
 
 ### <a name="what-are-the-postgres-server-groups-deployed-and-how-many-workers-are-they-using"></a>Quels sont les groupes de serveurs Postgres déployés et combien de Workers utilisent-ils ?
-Exécutez la commande suivante : 
+
+Exécutez la commande suivante :
 
    ```azurecli
    az postgres arc-server list --k8s-namespace <namespace> --use-k8s
@@ -488,6 +488,7 @@ az postgres arc-server show -n postgres01 --k8s-namespace arc --use-k8s
 Retourne les informations dans un format et avec un contenu similaire à celui retourné par kubectl. Utilisez l’outil de votre choix pour interagir avec le système.
 
 ## <a name="next-steps"></a>Étapes suivantes
+
 - [Découvrir les concepts de PostgreSQL Hyperscale activé pour Azure Arc](concepts-distributed-postgres-hyperscale.md)
 - [Découvrir le scale-out (ajout des nœuds worker) d’un groupe de serveurs](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Découvrir le scale-up/scale-down (augmentation ou réduction de la mémoire et/ou des vCores) d’un groupe de serveurs](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)

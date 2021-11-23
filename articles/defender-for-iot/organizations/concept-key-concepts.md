@@ -1,18 +1,18 @@
 ---
 title: Principaux avantages
 description: En savoir plus sur les concepts de base de Defender pour IoT.
-ms.date: 09/09/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: be5c7f31cb652bb40f4bae35fa42b76d7a576276
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 271af4bbfe56771576dec32799b19f2c7aebf258
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836470"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293437"
 ---
 # <a name="basic-concepts"></a>Concepts de base
 
-Cet article décrit les principaux avantages d’Azure Defender pour IoT.
+Cet article décrit les principaux avantages de Microsoft Defender pour IoT.
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>Déploiement non invasif rapide et surveillance passive
 
@@ -57,7 +57,7 @@ La plateforme fournit une interface d’exploration de données intuitive pour l
 
 Le mode de gestion Cloud du capteur détermine l’emplacement d’affichage de l’appareil, de l’alerte et d’autres informations détectées par le capteur.
 
-Pour les **capteurs connectés au Cloud**, les informations détectées s’affichent dans la console des capteurs en question. Les informations sur les alertes sont transmises par le biais d’un hub IoT et peuvent être partagées avec d’autres services Azure, comme Azure Sentinel.
+Pour les **capteurs connectés au Cloud**, les informations détectées s’affichent dans la console des capteurs en question. Les informations sur les alertes sont transmises par le biais d’un hub IoT et peuvent être partagées avec d’autres services Azure, comme Microsoft Sentinel.
 
 Pour les **capteurs connectés localement**, les informations détectées s’affichent dans la console des capteurs concernés. Les informations de détection sont également partagées avec la console de gestion locale si le capteur y est connecté.
 
@@ -114,6 +114,20 @@ En outre, l’utilisation des alertes personnalisées Horizon vous permet d’é
 L’utilisation de la messagerie et du déclenchement d’alertes basés sur des conditions personnalisées permet d’identifier l’activité réseau et de mettre à jour efficacement vos équipes de sécurité, informatiques et opérationnelles.
 
 Pour obtenir la liste complète des protocoles pris en charge, consultez [Protocoles pris en charge](concept-supported-protocols.md#supported-protocols).
+
+## <a name="what-is-an-inventory-device"></a>Qu’est-ce qu’un appareil d’inventaire ?
+
+L’inventaire d’appareil Defender pour IoT affiche un vaste éventail d’attributs de ressource qui sont détectés par les capteurs qui contrôlent les réseaux d’organisations et les points de terminaison gérés.
+
+Defender pour IoT identifie et classe les appareils comme un appareil réseau unique dans l’inventaire pour :
+
+1. Appareils IT, OT et IoT autonomes (avec 1 ou plusieurs cartes d’interface réseau)
+1. Appareils composés de plusieurs composants de carte d’insertion (notamment tous les racks/emplacements/modules)
+1. Appareils agissant comme une infrastructure réseau comme commutateur/routeur (avec plusieurs cartes d’interface réseau). 
+
+Les adresses IP Internet publiques, les groupes de multidiffusion et les groupes de diffusion ne sont pas considérés comme des appareils d’inventaire.
+Les appareils qui ont été inactifs depuis plus de 60 jours sont classés en tant qu’appareils d’inventaire inactifs.
+
 
 ## <a name="high-availability"></a>Haute disponibilité
 

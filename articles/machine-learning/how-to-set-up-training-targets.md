@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 61419ec7e3e123ba1ab74a1400ee2c92c0e4c7aa
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 020296957e09743610ab46db74e663d86901d116
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553327"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179584"
 ---
 # <a name="configure-and-submit-training-runs"></a>Configurer et soumettre des exécutions d’entraînement
 
@@ -81,7 +81,7 @@ L’exemple de code fourni dans cet article suppose que vous avez déjà créé 
 
 [!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
-## <a name="create-an-environment"></a>Créer un environnement
+## <a name="create-an-environment"></a><a name="environment"></a> Créer un environnement
 Les [environnements](concept-environments.md) Azure Machine Learning sont une encapsulation de l’environnement dans lequel votre formation Machine Learning se produit. Ils spécifient les packages, image Docker, variables d’environnement et paramètres logiciels Python autour de vos scripts d’entraînement et de scoring. Ils spécifient également les temps d’exécution (Python, Spark ou Docker).
 
 Vous pouvez définir votre propre environnement ou utiliser un environnement organisé Azure ML. Les [environnements organisés](./how-to-use-environments.md#use-a-curated-environment) sont des environnements prédéfinis qui sont disponibles dans votre espace de travail par défaut. Ces environnements s’appuient sur des images Docker mises en cache, ce qui réduit le coût de préparation de l’exécution. Consultez [Environnements organisés Azure Machine Learning](./resource-curated-environments.md) pour obtenir la liste complète des environnements organisés disponibles.
@@ -113,7 +113,7 @@ myenv.python.user_managed_dependencies = True
 
 ## <a name="create-the-script-run-configuration"></a>Créer la configuration d’exécution du script
 
-Maintenant que vous avez une cible de calcul (`my_compute_target`) et un environnement (`myenv`), créez une configuration d’exécution de script qui exécute votre script de formation (`train.py`) situé dans votre répertoire `project_folder` :
+Maintenant que vous avez une cible de calcul (`my_compute_target`, voir [Prérequis](#prerequisites)) et un environnement (`myenv`, voir [Créer un environnement](#environment)), créez une configuration d’exécution de script qui exécute votre script de formation (`train.py`) dans votre répertoire `project_folder` :
 
 ```python
 from azureml.core import ScriptRunConfig

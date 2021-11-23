@@ -1,14 +1,14 @@
 ---
 title: Gérer des capteurs individuels
 description: Découvrez comment gérer des capteurs individuels, y compris comment gérer les fichiers d’activation, exécuter des sauvegardes et mettre à jour un capteur autonome.
-ms.date: 08/25/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: fd708b2ab259b38ea6983c4d4a6dac319e416218
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: dbbf08f1e139a265b947cc99c7287765d6a6d03a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424278"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339950"
 ---
 # <a name="manage-individual-sensors"></a>Gérer des capteurs individuels
 
@@ -20,7 +20,7 @@ Le portail Azure est utilisé pour l’intégration et l’inscription du capteu
 
 ## <a name="manage-sensor-activation-files"></a>Gérer les fichiers d’activation de capteur
 
-Votre capteur a été intégré à Azure Defender pour IoT à partir du portail Azure. Chaque capteur a été intégré en tant que capteur connecté localement ou en tant que capteur connecté au cloud.
+Votre capteur a été intégré à Microsoft Defender pour IoT à partir du portail Azure. Chaque capteur a été intégré en tant que capteur connecté localement ou en tant que capteur connecté au cloud.
 
 Un fichier d’activation unique est chargé sur chaque capteur que vous déployez. Pour plus d’informations sur le moment auquel utiliser un nouveau fichier et la manière de le faire, consultez [Télécharger de nouveaux fichiers d’activation](#upload-new-activation-files). Si vous ne pouvez pas charger le fichier, consultez [Résoudre les problèmes de chargement des fichiers d’activation](#troubleshoot-activation-file-upload).
 
@@ -78,11 +78,11 @@ Dans les cas suivants, il se peut que vous deviez charger un nouveau fichier d�
 
 Vous recevrez un message d’erreur si le chargement du fichier d’activation a échoué. Les événements suivants peuvent s’être produits :
 
-- **Pour les capteurs connectés localement** : Le fichier d’activation n’est pas valide. Si le fichier n’est pas valide, accédez au portail Defender pour IoT. Sur la page **Gestion du capteur**, sélectionnez le capteur contenant le fichier non valide, puis téléchargez un nouveau fichier d’activation.
+- **Pour les capteurs connectés localement** : Le fichier d’activation n’est pas valide. Si le fichier n’est pas valide, accédez à [Defender pour IoT dans le portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started). Sur la page **Gestion du capteur**, sélectionnez le capteur contenant le fichier non valide, puis téléchargez un nouveau fichier d’activation.
 
 - **Pour les capteurs connectés au cloud** : Le capteur ne peut pas se connecter à Internet. Vérifiez la configuration du réseau du capteur. Si votre capteur doit se connecter par le biais d’un proxy web pour accéder à Internet, vérifiez que votre serveur proxy est correctement configuré sur l’écran **Configuration réseau du capteur**. Vérifiez que \*.azure-devices.net:443 est autorisé dans le pare-feu et/ou le proxy. Si les caractères génériques ne sont pas pris en charge ou si vous souhaitez davantage de contrôle, le nom de domaine complet pour votre hub Defender pour IoT spécifique doit être ouvert dans votre pare-feu et/ou proxy. Pour plus d’informations, consultez [Référence - Points de terminaison IoT Hub](../../iot-hub/iot-hub-devguide-endpoints.md).  
 
-- **Pour les capteurs connectés au cloud** : Le fichier d’activation est valide mais Defender pour IoT l’a rejeté. Si vous ne parvenez pas à résoudre ce problème, vous pouvez télécharger un autre fichier d’activation à partir de la page Sites et capteurs du portail Defender pour IoT. Si cela ne fonctionne pas, contactez le support Microsoft.
+- **Pour les capteurs connectés au cloud** : Le fichier d’activation est valide mais Defender pour IoT l’a rejeté. Si vous ne parvenez pas à résoudre ce problème, vous pouvez télécharger un autre fichier d’activation à partir de la page **Sites et capteurs** du [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started). Si cela ne fonctionne pas, contactez le support Microsoft.
 
 ## <a name="manage-certificates"></a>Gérer des certificats
 
@@ -98,17 +98,17 @@ Les administrateurs de capteur peuvent être amenés à mettre à jour les certi
 
     :::image type="content" source="media/how-to-manage-individual-sensors/certificate-upload.png" alt-text="Téléchargement d'un certificat":::
 
-1. Dans la boîte de dialogue certificats SSL/TLS, supprimez le certificat existant et ajoutez-en un nouveau.
+1. Dans la boîte de dialogue Certificats SSL/TLS, supprimez le certificat existant et ajoutez-en un nouveau.
 
     - Ajoutez un nom de certificat.
     - Téléchargez un fichier CRT et un fichier de clé.
     - Chargez un fichier PEM si nécessaire.
 
-Si le téléchargement échoue, contactez votre administrateur informatique ou de sécurité, ou passez en revue les informations contenues dans [à propos des certificats](how-to-deploy-certificates.md).
+Si le téléchargement échoue, contactez votre administrateur informatique ou de sécurité, ou passez en revue les informations figurant dans la section [À propos des certificats](how-to-deploy-certificates.md).
 
 **Pour modifier le paramètre de validation du certificat :**
 
-1. Activez ou désactivez le bouton bascule **Activer la validation du certificat**. Si cette option est activée et que la validation échoue, la communication entre la console de gestion et le capteur est interrompue et une erreur de validation apparaît sur la console. Si elle est désactivée, la validation de certificat n’est pas effectuée. Pour plus d’informations, consultez [à propos de la validation des certificats](how-to-deploy-certificates.md#about-certificate-validation).
+1. Activez ou désactivez le bouton bascule **Activer la validation du certificat**. Si cette option est activée et que la validation échoue, la communication entre les composants concernés est interrompue et une erreur de validation apparaît sur la console. Si elle est désactivée, la validation du certificat n’est pas effectuée. Pour plus d’informations, consultez [À propos de la validation des certificats](how-to-deploy-certificates.md#about-certificate-validation).
 
 1. Sélectionnez **Enregistrer**.
 
@@ -164,7 +164,7 @@ Si votre capteur a été inscrit en tant que capteur connecté au cloud, le nom 
 
 Pour modifier le nom :
 
-1. Dans le portail Azure Defender pour IoT, accédez à la page Sites et capteurs.
+1. Dans le [portail Azure](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started), accédez à la page Sites et capteurs.
 
 1. Supprimez le capteur de la page Sites et capteurs.
 

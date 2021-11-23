@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 90d1233a1374d4ad65410c818ab6e42b36a4e6f9
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: bf3aae99eb62a76885040589560c505ba2a8a2c3
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579647"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487944"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Configurer un Pare-feu Azure dans un hub de réseau étendu virtuel
 
@@ -67,6 +67,9 @@ Pour configurer des paramètres de Pare-feu Azure supplémentaires pour le hub v
 Pour revenir à la page **Vue d’ensemble** du hub, vous pouvez revenir en arrière en cliquant sur le chemin d’accès, comme indiqué par la flèche dans l’illustration suivante.
 
 :::image type="content" source="./media/howto-firewall/arrow.png" alt-text="Capture d'écran montrant comment revenir à la page de présentation." lightbox="./media/howto-firewall/arrow.png":::
+
+## <a name="upgrade-to-azure-firewall-premium"></a>Mise à niveau vers le Pare-feu Azure Premium
+À tout moment, il est possible de procéder à une mise à niveau d’Azure Firewall Standard vers Premium en suivant ces [instructions](https://docs.microsoft.com/azure/firewall/premium-migrate#migrate-a-secure-hub-firewall). Cette opération nécessite une fenêtre de maintenance, car des temps d’arrêt minimes sont générés. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

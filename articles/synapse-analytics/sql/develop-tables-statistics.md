@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 215b9486af06c58cd1e7a6990bfc10ad43d4407f
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 26d2b6123e40f163d261009ff1c2f706f7597825
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563361"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309602"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiques dans SQL Synapse
 
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE 50 PERCENT;
 ```
 
-En présence d'une corrélation entre les éléments *product\_category* et *product\_sub\_category*, un objet de statistiques sur plusieurs colonnes peut être utile quand le système accède à ces colonnes en même temps.
+En présence d'une corrélation entre les éléments *product\_category* et *product\_sub\_category*, un objet de statistiques sur plusieurs colonnes peut être utile quand le système accède à ces colonnes en même temps. Lors de l’interrogation de cette table, les statistiques sur plusieurs colonnes améliorent les estimations de cardinalité pour les jointures, les agrégations GROUP BY, les valeurs distinctes et les filtres WHERE (tant que la colonne principale des statistiques fait partie du filtre).
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Créer des statistiques sur toutes les colonnes d’une table
 

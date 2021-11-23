@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc8ceddce4d41244d72632db058aa58c0d919db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cbdd8f5e69fb21c59be5017a3c28e1067062968
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565170"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292602"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Contrôler l’accès avec des étiquettes de confidentialité 
 
@@ -33,16 +33,13 @@ Les étiquettes de confidentialité vous permettent d’effectuer les tâches su
 Des étiquettes de confidentialité sur un e-mail et d’autres contenus accompagnent ce contenu. Une étiquette de confidentialité sur un conteneur peut limiter l’accès à ce conteneur, mais le contenu du conteneur n’hérite pas de l’étiquette. Par exemple, un utilisateur peut prendre du contenu d’un site protégé, le télécharger, puis le partager sans restrictions, sauf si le contenu contient également une étiquette de confidentialité.
 
  >[!NOTE]
->Pour appliquer des étiquettes de confidentialité, les utilisateurs doivent être connectés à leur compte professionnel ou scolaire Microsoft. 
+>Pour appliquer des étiquettes de confidentialité, les utilisateurs doivent être connectés à leur compte professionnel ou scolaire Microsoft.
 
- 
 ## <a name="permissions-necessary-to-create-and-manage-sensitivity-levels"></a>Autorisations nécessaires pour créer et gérer des niveaux de confidentialité
 
-Les membres de votre équipe de conformité qui créeront des étiquettes de confidentialité ont besoin d’autorisations relatives au Centre de conformité Microsoft 365, au Centre de sécurité Microsoft 365 et au Centre de sécurité et de conformité.
+Les membres de votre équipe de conformité qui créeront des étiquettes de confidentialité ont besoin d’autorisations relatives au Centre de conformité Microsoft 365, au portail Microsoft 365 Defender et au Centre de sécurité et de conformité Office 365.
 
 Par défaut, les administrateurs généraux de votre locataire ont accès à ces centres d’administration et peuvent fournir l’accès aux responsables de la conformité et à d’autres personnes, sans leur donner toutes les autorisations d’un administrateur de locataire. Pour cet accès administrateur limité délégué, ajoutez des utilisateurs au groupe de rôles Administrateur des données de conformité, Administrateur de conformité et Administrateur de la sécurité.
-
- 
 
 ## <a name="determine-your-sensitivity-label-strategy"></a>Déterminer votre stratégie d’étiquettes de confidentialité
 

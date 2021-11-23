@@ -1,19 +1,18 @@
 ---
 title: Utiliser des cartes d’intérieur dans le Créateur Azure Maps
 description: Cet article présente les concepts qui s’appliquent aux services d’Azure Maps Creator.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/26/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 11/11/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: c3e6632f607ca9168f63538e4c2a6d96d6197d8a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0e4f25e140c9b7d2693c94ead25b375e2298adbc
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032138"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400012"
 ---
 # <a name="creator-for-indoor-maps"></a>Créateur pour cartes d’intérieur
 
@@ -30,7 +29,10 @@ Le schéma suivant illustre le workflow entier.
 
 ## <a name="create-azure-maps-creator"></a>Créer un Créateur Azure Maps
 
-Pour utiliser les services d’un Créateur, vous devez créer un Créateur Azure Maps dans un compte Azure Maps. Pour plus d’informations sur la création d’Azure Maps Creator dans Azure Maps, consultez [Gérer Azure Maps Creator](how-to-manage-creator.md).
+Pour utiliser les services d’un Créateur, vous devez créer un Créateur Azure Maps dans un compte Azure Maps avec le niveau tarifaire Gen 2. Pour plus d’informations sur la création d’Azure Maps Creator dans Azure Maps, consultez [Gérer Azure Maps Creator](how-to-manage-creator.md).
+
+> [!TIP]
+> Pour plus d’informations sur la tarification, consultez la section *Créateur* dans [Tarification d’Azure Maps](https://aka.ms/CreatorPricing).
 
 ## <a name="creator-authentication"></a>Authentification de Creator
 
@@ -117,7 +119,7 @@ Une application peut utiliser un stateset de caractéristique pour restituer de 
 
 ### <a name="render-v2-get-map-tile-api"></a>API Render V2-Get Map Tile
 
-L’[API Render V2-Get Map Tile](/rest/api/maps/renderv2/getmaptilepreview) d’Azure Maps a été étendue pour prendre en charge les tilesets de Creator.
+L’[API Render V2-Get Map Tile](/rest/api/maps/render-v2/get-map-tile) d’Azure Maps a été étendue pour prendre en charge les tilesets de Creator.
 
 Les applications peuvent utiliser l’API Render V2-Get Map Tile pour demander des tilesets. Les tilesets peut ensuite être intégré dans un contrôle de carte ou un Kit de développement logiciel (SDK). Pour obtenir un exemple de contrôle de carte utilisant le service Render v2, consultez [Module Cartes d’intérieur](#indoor-maps-module).
 
@@ -146,7 +148,7 @@ Lorsque vous commencez à développer des solutions pour des cartes d’intérie
  Vous pouvez utiliser l’API Azure Maps Creator Lister, Mettre à jour et Supprimer pour répertorier, mettre à jour et supprimer vos jeux de données, tilesets et ensembles d’états de fonctionnalité.
 
 >[!NOTE]
->Lorsque vous examinez une liste d’éléments pour savoir si vous devez les supprimer, pensez à l’impact de cette suppression sur l’ensemble des applications ou API dépendantes. Par exemple, si vous supprimez un tileset utilisé par une application au moyen de l’[API Render V2-Get Map Tile ](/rest/api/maps/renderv2/getmaptilepreview), l’application ne parviendra pas à afficher ce tileset.
+>Lorsque vous examinez une liste d’éléments pour savoir si vous devez les supprimer, pensez à l’impact de cette suppression sur l’ensemble des applications ou API dépendantes. Par exemple, si vous supprimez un tileset utilisé par une application au moyen de l’[API Render V2-Get Map Tile ](/rest/api/maps/render-v2/get-map-tile), l’application ne parviendra pas à afficher ce tileset.
 
 ### <a name="example-updating-a-dataset"></a>Exemple : Mise à jour d’un jeu de données
 

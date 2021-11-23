@@ -1,22 +1,22 @@
 ---
 title: Transférer les informations d’alerte
 description: Vous pouvez envoyer des informations d’alerte à des systèmes partenaires en utilisant des règles de transfert.
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: eb902036a286be50dc1f29ccca894f3d422cc59c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: d863ab9de5e030ddd54ba1b4b40efc01e844f419
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612202"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278851"
 ---
 # <a name="forward-alert-information"></a>Transférer les informations d’alerte
 
-Vous pouvez envoyer des informations d’alerte à des partenaires qui s’intègrent à Azure Defender pour IoT, à des serveurs Syslog, à des adresses e-mail et bien plus encore. L’utilisation de règles de transfert vous permet de transmettre rapidement des informations d’alerte aux parties prenantes de la sécurité.
+Vous pouvez envoyer des informations d’alerte à des partenaires qui s’intègrent à Microsoft Defender pour IoT, à des serveurs Syslog, à des adresses e-mail et bien plus encore. L’utilisation de règles de transfert vous permet de transmettre rapidement des informations d’alerte aux parties prenantes de la sécurité.
 
 Définissez les critères de déclenchement d’une règle de transfert. L’utilisation de critères de règle de transfert permet d’identifier et de gérer le volume d’informations envoyé du capteur aux systèmes externes.
 
-Syslog et d’autres actions de transfert par défaut sont fournis avec votre système. D’autres actions de transfert peuvent être disponibles lorsque vous intégrez des fournisseurs partenaires, par exemple Microsoft Azure Sentinel, ServiceNow ou Splunk.
+Syslog et d’autres actions de transfert par défaut sont fournis avec votre système. D’autres actions de transfert peuvent être disponibles lorsque vous intégrez des fournisseurs partenaires, par exemple Microsoft Sentinel, ServiceNow ou Splunk.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alert-information-screen.png" alt-text="Informations d’alerte.":::
 
@@ -54,7 +54,7 @@ Si la validation est activée et que le certificat ne peut pas être vérifié, 
 
 Les règles de transfert suivantes autorisent le chiffrement et la validation des certificats :
 - Syslog CEF
-- Azure Sentinel
+- Microsoft Sentinel
 - QRadar
 
 ## <a name="create-forwarding-rules"></a>Créer des règles de transfert
@@ -151,14 +151,14 @@ Entrez les paramètres suivants :
 | Date et heure | Date et heure auxquelles le serveur Syslog a reçu les informations. |
 | Priority | User.Alert |
 | HostName | Adresse IP du capteur |
-| Message | CEF:0 <br />Azure Defender pour IoT <br />Nom du capteur : Nom de l’appliance de détection. <br />Version du capteur <br />Titre de l’alerte : Titre de l’alerte. <br />msg : Message de l’alerte. <br />protocole : Protocole de l’alerte. <br />gravité :  **Avertissement**, **Mineur**, **Majeur** ou **Critique**. <br />type :  **Violation de protocole**, **Violation de stratégie**, **Programme malveillant**, **Anomalie** ou **Opérationnelle**. <br /> start : Heure à laquelle l’alerte a été détectée. <br />Peut varier de l’heure du serveur Syslog et dépend de la configuration du fuseau horaire de la règle de transfert. <br />src_ip : Adresse IP de l’appareil source.  <br />dst_ip : Adresse IP de l’appareil de destination.<br />cat : Groupe d’alertes associé à l’alerte.  |
+| Message | CEF:0 <br />Microsoft Defender pour IoT <br />Nom du capteur : Nom de l’appliance de détection. <br />Version du capteur <br />Titre de l’alerte : Titre de l’alerte. <br />msg : Message de l’alerte. <br />protocole : Protocole de l’alerte. <br />gravité :  **Avertissement**, **Mineur**, **Majeur** ou **Critique**. <br />type :  **Violation de protocole**, **Violation de stratégie**, **Programme malveillant**, **Anomalie** ou **Opérationnelle**. <br /> start : Heure à laquelle l’alerte a été détectée. <br />Peut varier de l’heure du serveur Syslog et dépend de la configuration du fuseau horaire de la règle de transfert. <br />src_ip : Adresse IP de l’appareil source.  <br />dst_ip : Adresse IP de l’appareil de destination.<br />cat : Groupe d’alertes associé à l’alerte.  |
 
 | Format de sortie LEEF Syslog | Description |
 |--|--|
 | Date et heure | Date et heure auxquelles le serveur Syslog a reçu les informations. |  
 | Priority | User.Alert |
 | HostName | IP du capteur |
-| Message | Nom du capteur : Nom de l’appliance Azure Defender pour IoT. <br />LEEF:1.0 <br />Azure Defender pour IoT <br />Capteur  <br />Version du capteur <br />Alerte Azure Defender pour IoT <br />titre : Titre de l’alerte. <br />msg : Message de l’alerte. <br />protocole : Protocole de l’alerte.<br />gravité :  **Avertissement**, **Mineur**, **Majeur** ou **Critique**. <br />type : Type de l’alerte : **Violation de protocole**, **Violation de stratégie**, **Programme malveillant**, **Anomalie** ou **Opérationnelle**. <br />start : Heure de l’alerte.Elle peut être différente de l’heure de la machine du serveur Syslog. (Cela dépend de la configuration du fuseau horaire.) <br />src_ip : Adresse IP de l’appareil source.<br />dst_ip : Adresse IP de l’appareil de destination. <br />cat : Groupe d’alertes associé à l’alerte. |
+| Message | Nom du capteur : nom de l’appliance Microsoft Defender pour IoT. <br />LEEF:1.0 <br />Microsoft Defender pour IoT <br />Capteur  <br />Version du capteur <br />Alerte Microsoft Defender pour IoT <br />titre : Titre de l’alerte. <br />msg : Message de l’alerte. <br />protocole : Protocole de l’alerte.<br />gravité :  **Avertissement**, **Mineur**, **Majeur** ou **Critique**. <br />type : Type de l’alerte : **Violation de protocole**, **Violation de stratégie**, **Programme malveillant**, **Anomalie** ou **Opérationnelle**. <br />start : Heure de l’alerte.Elle peut être différente de l’heure de la machine du serveur Syslog. (Cela dépend de la configuration du fuseau horaire.) <br />src_ip : Adresse IP de l’appareil source.<br />dst_ip : Adresse IP de l’appareil de destination. <br />cat : Groupe d’alertes associé à l’alerte. |
 
 Après avoir entré toutes les informations, sélectionnez **Envoyer**.
 

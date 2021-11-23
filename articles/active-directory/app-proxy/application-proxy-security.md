@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/21/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: 96d2fac930b65ffb9bc05330e37e52bc7af3d4dc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 85fb56b125bf1e220fc71bdbe9c2bbb9eaec5b62
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043526"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301094"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-active-directory-application-proxy"></a>Considérations relatives à la sécurité de l’accès à distance aux applications avec le Proxy d’application Azure Active Directory
 
@@ -44,7 +44,7 @@ Appliquez des contrôles de stratégie plus riches avant que les connexions à v
 
 Avec l’[accès conditionnel](../conditional-access/concept-conditional-access-cloud-apps.md), vous pouvez définir des restrictions quant à la façon dont les utilisateurs sont autorisés à accéder à vos applications. Vous pouvez créer des stratégies qui limitent les connexions en fonction de l’emplacement, de la force de l’authentification et du profil de risque de l’utilisateur.
 
-Vous pouvez également utiliser l’accès conditionnel pour configurer des stratégies Multi-Factor Authentication, qui ajoutent une couche de sécurité supplémentaire aux authentifications des utilisateurs. De plus, vos applications peuvent également être acheminées vers Microsoft Cloud App Security via l’accès conditionnel Azure AD pour assurer un contrôle et une surveillance en temps réel par le biais de stratégies [d’accès](/cloud-app-security/access-policy-aad) et de [session](/cloud-app-security/session-policy-aad)
+Vous pouvez également utiliser l’accès conditionnel pour configurer des stratégies Multi-Factor Authentication, qui ajoutent une couche de sécurité supplémentaire aux authentifications des utilisateurs. De plus, vos applications peuvent également être acheminées vers Microsoft Defender for Cloud Apps via l’accès conditionnel Azure AD pour assurer un contrôle et une surveillance en temps réel par le biais de stratégies [d’accès](/cloud-app-security/access-policy-aad) et de [session](/cloud-app-security/session-policy-aad)
 
 ### <a name="traffic-termination"></a>Arrêt du trafic
 
@@ -171,7 +171,6 @@ Après obtention d’une réponse, le connecteur établit une connexion sortante
 #### <a name="5-the-service-streams-data-to-the-user"></a>5. Le service diffuse les données à l’utilisateur. 
 
 Une partie du traitement de l’application peut se produire ici. Si vous avez configuré le proxy d’application pour traduire les en-têtes ou les URL de votre application, cette opération se produit si nécessaire au cours de cette étape.
-
 
 ## <a name="next-steps"></a>Étapes suivantes
 

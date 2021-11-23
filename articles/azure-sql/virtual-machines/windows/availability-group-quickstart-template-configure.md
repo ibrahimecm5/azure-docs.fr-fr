@@ -11,21 +11,24 @@ ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2019
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 612280242c528065c8ba74ccd745cca28e7af1bd
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 28bb5d12d2eb7657a199f902d6ffe6c542c86901
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167056"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158521"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Utiliser des modèles de démarrage rapide Azure afin de configurer un groupe de disponibilité pour SQL Server sur une machine virtuelle Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Cet article explique comment utiliser les modèles de démarrage rapide Azure pour automatiser partiellement le déploiement d’une configuration de groupe de disponibilité Always On pour des machines virtuelles SQL Server dans Azure. Deux modèles de démarrage rapide Azure sont utilisés dans ce processus : 
+> [!TIP]
+> Éliminez le besoin d’Azure Load Balancer pour votre groupe de disponibilité Always On en créant vos machines virtuelles SQL Server dans [plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) au sein du même réseau virtuel Azure.
+
+Cet article explique comment utiliser les modèles de démarrage rapide Azure pour automatiser partiellement le déploiement d’une configuration de groupe de disponibilité Always On pour des machines virtuelles SQL Server dans un sous-réseau unique dans Azure. Deux modèles de démarrage rapide Azure sont utilisés dans ce processus : 
 
    | Modèle | Description |
    | --- | --- |
@@ -35,7 +38,7 @@ Cet article explique comment utiliser les modèles de démarrage rapide Azure po
 
 D’autres étapes de la configuration du groupe de disponibilité sont obligatoirement manuelles, notamment la création du groupe de disponibilité et celle de l’équilibreur de charge interne. Cet article décrit la séquence des étapes automatisées et manuelles.
 
-Bien que cet article utilise les modèles de démarrage rapide Azure pour configurer l’environnement du groupe de disponibilité, il est également possible de le faire à l’aide du [Portail Azure](availability-group-azure-portal-configure.md), [PowerShell ou Azure CLI](availability-group-az-commandline-configure.md), ou [manuellement](availability-group-manually-configure-tutorial.md). 
+Bien que cet article utilise les modèles de démarrage rapide Azure pour configurer l’environnement du groupe de disponibilité, il est également possible de le faire à l’aide du [Portail Azure](availability-group-azure-portal-configure.md), [PowerShell ou Azure CLI](availability-group-az-commandline-configure.md), ou [manuellement](availability-group-manually-configure-tutorial-single-subnet.md). 
 
 > [!NOTE]
 > Il est désormais possible d’effectuer un lift-and-shift de votre solution de groupe de disponibilité vers SQL Server sur des machines virtuelles Azure à l’aide d’Azure Migrate. Pour plus d’informations, consultez [Migrer un groupe de disponibilité](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md). 

@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: danlep
-ms.openlocfilehash: 7bc73c3134d01dd88112dd1564b12ecfe5f710b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fb27e1a96152885446da2e77e0901680affe3569
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639049"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494840"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Exporter des API depuis Gestion des API Azure vers Power Platform 
 
@@ -43,6 +43,9 @@ Cet article présente les étapes à suivre dans le portail Azure pour créer un
 Une fois le connecteur créé, accédez à votre environnement [Power Apps](https://make.powerapps.com) ou [Power Automate](https://flow.microsoft.com). Vous verrez l’API listée sous **Données > Connecteurs personnalisés**.
 
 :::image type="content" source="media/export-api-power-platform/custom-connector-power-app.png" alt-text="Connecteur personnalisé dans Power Platform":::
+
+> [!NOTE]
+> Pour appeler l’API à partir de la console de test PowerApps, vous devez ajouter l’URL « https://flow.microsoft.com  » en tant qu’origine à la [stratégie CORS](api-management-cross-domain-policies.md#CORS) dans votre instance de gestion des API.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aec870e6027d9a6d2e6c3b66363f93c73fad5e78
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 6d3f6163cc8c5f642835562c631d1712f329a788
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064140"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292526"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Gestion des comptes de service Azure
 
@@ -111,7 +111,7 @@ Surveillez de manière proactive vos comptes de service pour vous assurer que le
 
 * Les modèles de connexion des comptes de service changent-ils ?
 
-Nous vous recommandons d’exporter les journaux de connexion Azure AD et de les importer dans vos outils d’informations de sécurité et gestion d’événements (Security Information and Event Management, SIEM) existants, tels qu’Azure Sentinel. Utilisez votre outil SIEM pour créer des alertes et des tableaux de bord.
+Nous vous recommandons d’exporter les journaux de connexion Azure AD et de les importer dans vos outils d’informations de sécurité et gestion d’événements (Security Information and Event Management, SIEM) existants, tels que Microsoft Sentinel. Utilisez votre outil SIEM pour créer des alertes et des tableaux de bord.
 
 ### <a name="review-service-account-permissions"></a>Réviser les autorisations du compte de service
 
@@ -195,4 +195,3 @@ Pour plus d’informations sur la sécurisation des comptes de service Azure, co
 
 
  
-

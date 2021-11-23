@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a0eaee3c6e265063270d5cb3b2ea43d3c22fbb0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4de2ed185b3a4421a06ac9b3c88df68821b61adf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553073"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307988"
 ---
 # <a name="continuous-access-evaluation"></a>Évaluation de l’accès continu
 
@@ -77,7 +77,7 @@ Ce processus permet l’émergence du scénario dans lequel des utilisateurs per
 
 | | Web OneDrive | OneDrive Win32 | IOS OneDrive | Android OneDrive | Mac OneDrive |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Prise en charge | Prise en charge | Prise en charge | Prise en charge | Pris en charge |
+| **SharePoint Online** | Prise en charge | Non pris en charge | Prise en charge | Prise en charge | Non pris en charge |
 
 | | Teams web | Teams Win32 | Teams iOS | Teams Android | Teams Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -136,29 +136,11 @@ Dans l’exemple suivant, un administrateur d’accès conditionnel a configuré
 
 ## <a name="enable-or-disable-cae-preview"></a>Activer ou désactiver l’évaluation continue de l’accès (préversion)
 
-1. Connectez-vous au **portail Azure** en tant qu’administrateur de l’accès conditionnel, administrateur de la sécurité ou administrateur général.
-1. Accédez à **Azure Active Directory** > **Sécurité** > **Évaluation continue de l’accès**.
-1. Choisissez **Activer la préversion**.
-1. Sélectionnez **Enregistrer**.
-
-À partir de cette page, vous pouvez limiter les utilisateurs et les groupes bénéficiaire de la préversion.
-
-> [!NOTE]
-> Vous pouvez interroger Microsoft Graph via [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) pour vérifier la configuration de l’évaluation continue de l’accès dans votre locataire. Une réponse HTTP 200 et le corps de réponse associé indiquent si l’évaluation continue de l’accès est activée ou désactivée dans votre locataire. L’évaluation continue de l’accès n’est pas configurée si Microsoft Graph renvoie une réponse HTTP 404.
-
-![Activation de la préversion de l’évaluation continue de l’accès dans le portail Azure](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
-
-### <a name="available-options"></a>Options disponibles
-
-Les organisations ont des options en matière d’activation de l’EAC.
-
-1. Le fait de laisser l’activation automatique sélectionnée par défaut **après la disponibilité générale** active la fonctionnalité quand IAO est mis à la disposition générale.
-1. Les clients qui sélectionnent l’option **Activer l’aperçu** bénéficient immédiatement de la nouvelle fonctionnalité et n’ont pas à apporter de modifications à la disponibilité générale. 
-1. Les clients qui sélectionnent l’option **Désctiver l’aperçu** de la version préliminaire ont le temps d’adopter IAO au rythme de leur organisation. Ce paramètre est conservé comme étant **Désactivé** au niveau de la disponibilité générale.
+Le paramètre d’évaluation continue de l’accès a été déplacé sous le panneau Accès conditionnel. Les nouveaux clients de l’évaluation continue de l’accès pourront accéder à l’évaluation continue de l’accès et l’activer directement lors de la création de stratégies d’accès conditionnel. Toutefois, certains clients existants devront passer par la migration avant de pouvoir commencer à accéder à l’évaluation continue de l’accès par le biais de l’accès conditionnel.
 
 #### <a name="migration"></a>Migration
 
-Le paramètre d’évaluation continue de l’accès a été déplacé sous Accès conditionnel. Les clients qui ont configuré les paramètres d’évaluation continue de l’accès sous Sécurité doivent migrer ces paramètres vers une stratégie d’accès conditionnel. Effectuez les étapes suivantes pour migrer vos paramètres vers une stratégie d’accès conditionnel.
+Les clients qui ont configuré les paramètres d’évaluation continue de l’accès sous Sécurité avant d’avoir à migrer ces paramètres vers une nouvelle stratégie d’accès conditionnel. Utilisez les étapes suivantes pour migrer vos paramètres d’évaluation continue de l’accès vers une stratégie d’accès conditionnel.
 
 :::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="Vue du portail présentant l’option de migration de l’évaluation continue de l’accès vers une stratégie d’accès conditionnel." lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
 

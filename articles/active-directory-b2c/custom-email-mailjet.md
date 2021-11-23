@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43949ff051357868e6a291436d343332bfec71d3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 93b4487d2bf4d4af1638917f5d88f906dc3b758a
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131424512"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179511"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Vérification des e-mails personnalisée avec Mailjet
 
@@ -177,6 +177,8 @@ Avec un compte Mailjet créé et une Clé API Mailjet stockée dans une clé de 
     1. Sélectionnez **Enregistrer**.
 1. Dans le coin supérieur droit, sélectionnez **Enregistrer et publier**, puis **Oui, publier les modifications**
 1. Enregistrez l’**ID du modèle** que vous avez créé pour l'utiliser à une étape ultérieure. Vous spécifiez cet ID lorsque vous [ajoutez la transformation de revendications](#add-the-claims-transformation).
+
+[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Ajouter des types de revendications Azure AD B2C
 
@@ -401,7 +403,7 @@ Comme pour les profils techniques OTP, ajoutez les profils techniques suivants �
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Faire référence à DisplayControl
 
-Dans l'étape finale, ajoutez une référence à l’élément DisplayControl que vous avez créé. Remplacez vos profils techniques autodéclarés `LocalAccountSignUpWithLogonEmail` et `LocalAccountDiscoveryUsingEmailAddress` existants par les suivants. Si vous avez utilisé une version antérieure de la stratégie Azure AD B2C, ces profils techniques utilisent `DisplayClaims` avec une référence à l’élément DisplayControl.
+Dans l'étape finale, ajoutez une référence à l’élément DisplayControl que vous avez créé. Remplacez vos profils techniques existants `LocalAccountSignUpWithLogonEmail` et `LocalAccountDiscoveryUsingEmailAddress` déclarés automatiquement et qui sont configurés dans la stratégie de base avec l’extrait de code XML suivant. Si vous avez utilisé une version antérieure de la stratégie Azure AD B2C, ces profils techniques utilisent `DisplayClaims` avec une référence à `DisplayControl`.
 
 Pour plus d'informations, voir [Profil technique autodéclaré](restful-technical-profile.md) et [DisplayControl](display-controls.md).
 
@@ -476,7 +478,7 @@ Pour localiser l’e-mail, vous devez envoyer des chaînes localisées à Mailje
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -571,9 +573,7 @@ L’élément Localization vous permet de prendre en charge plusieurs paramètre
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Vous trouverez un exemple de stratégie de vérification d’e-mail personnalisée sur GitHub :
-
-- [Vérification d’e-mail personnalisée - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+- Vous trouverez un exemple de vérification de stratégie personnalisée [Vérification d’e-mail personnalisé - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/Mailjet) sur GitHub.
 - Pour plus d'informations sur l'utilisation d'une API REST personnalisée ou d’un fournisseur de messagerie SMTP basé sur HTTP, voir [Définir un profil technique RESTful dans une stratégie personnalisée Azure AD B2C](restful-technical-profile.md).
 
 ::: zone-end

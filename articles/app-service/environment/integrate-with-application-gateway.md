@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 10/12/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: f52f984b1e72d685dae46002e9ae4bac543c068a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 77e8ec3db7b66fe0c639bfd56942b171b9fc2129
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131447577"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294273"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Intégrer votre environnement App Service ILB à l’aide de la passerelle d’application Azure #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Intégrer votre environnement App Service ILB à l’aide de la passerelle d’application Azure
 
 L’[environnement Azure App Service][AppServiceEnvironmentoverview] est un déploiement d’Azure App Service dans le sous-réseau du réseau virtuel Azure d’un client. Il peut être déployé avec un point de terminaison externe ou interne pour accéder aux applications. Le déploiement de l’environnement App Service avec un point de terminaison interne est appelé environnement App Service (ASE) avec équilibreur de charge interne (ILB).
 
@@ -103,22 +103,22 @@ Dans le portail Azure, sélectionnez **Nouveau** > **Réseau** > **Application G
     
     * Adresse IP publique : vous devez associer une adresse IP publique pour l’accès public de la passerelle applicative. Enregistrez cette adresse IP. Vous devez ajouter un enregistrement dans votre service DNS ultérieurement.
     
-        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="Capture d’écran montrant l’obtention de l’adresse IP publique à partir du paramètre front-end de la passerelle applicative.":::
+        :::image type="content" source="./media/integrate-with-application-gateway/frontends.png" alt-text="Capture d’écran montrant l’obtention d’une adresse IP publique à partir du paramètre front-end de la passerelle applicative.":::
 
 3. Paramètre des serveurs back-end
 
     Entrez un nom de pool back-end et sélectionnez **App Services** ou **Adresse IP ou nom de domaine complet (FQDN)** dans **Type de cible**. Dans ce cas, nous sélectionnons **App Service**, puis le nom App Service dans la liste déroulante de la cible.
-    
+
     :::image type="content" source="./media/integrate-with-application-gateway/add-backend-pool.png" alt-text="Capture d’écran montrant l’ajout d’un nom du pool back-end dans le paramètre back-end.":::
 
 4. Paramètre de configuration
 
     Dans paramètre **Configuration**, vous devez ajouter une règle d’acheminement en cliquant sur l’icône **Ajouter une règle d’acheminement**.
-    
+
     :::image type="content" source="./media/integrate-with-application-gateway/configuration.png" alt-text="Capture d’écran de l’ajout d’une règle d’acheminement dans le paramètre de configuration.":::
-    
+
     Vous devez configurer un **écouteur** et des **cibles back-end** dans une règle d’acheminement. Vous pouvez ajouter un écouteur HTTP pour le déploiement de la preuve de concept ou ajouter un écouteur HTTPS pour l’amélioration de la sécurité.
-    
+
     * Pour vous connecter à la passerelle applicative avec le protocole HTTP, vous pouvez créer un écouteur avec les paramètres suivants,
     
         | Paramètre      | Valeur                             | Description                                                  |
@@ -161,12 +161,12 @@ Dans le portail Azure, sélectionnez **Nouveau** > **Réseau** > **Application G
         | Nom du paramètre HTTP             | Par exemple : `https-setting`                                   | Nom du paramètre HTTP                                            |
         | Protocole back-end              | HTTPS                                                        | Utiliser le chiffrement TLS/SSL                                       |
         | Port principal                  | 443                                                          | Port HTTPS par défaut                                           |
-        | Utiliser le certificat de l’autorité de certification connue | Oui                                                          | Le nom de domaine par défaut de l’environnement ILB ASE est **.appserviceenvironment.net**, le certificat de ce domaine est émis par une autorité racine approuvée publique. Dans le paramètre Certificat racine approuvé, vous pouvez définir d’utiliser un **certificat racine approuvé d’autorité de certification connu**. |
+        | Utiliser le certificat de l’autorité de certification connue | Oui                                                          | Le nom de domaine par défaut de l’environnement ILB ASE est `.appserviceenvironment.net`, le certificat de ce domaine est émis par une autorité racine approuvée publique. Dans le paramètre Certificat racine approuvé, vous pouvez définir d’utiliser un **certificat racine approuvé d’autorité de certification connu**. |
         | Substituer avec le nouveau nom d’hôte   | Oui                                                          | L’en-tête de nom d’hôte est remplacé lors de la connexion à l’application sur l’environnement ILB ASE |
         | Remplacement du nom d’hôte            | Choisir un nom d’hôte à partir d’une cible de back-end | Quand vous définissez le pool back-end sur App Service, vous pouvez choisir l’hôte à partir de la cible de back-end |
         | Créer des sondes personnalisées | Non | Utiliser la sonde d’intégrité par défaut|
         
-        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="Capture d’écran de l’ajout des détails des paramètres HTTP.":::
+        :::image type="content" source="./media/integrate-with-application-gateway/https-setting.png" alt-text="Capture d’écran de la boîte de dialogue **Ajouter un paramètre HTTP**.":::
 
 
 ## <a name="configure-an-application-gateway-integration-with-ilb-ase"></a>Configurer l’intégration de la passerelle applicative à l’environnement ILB ASE

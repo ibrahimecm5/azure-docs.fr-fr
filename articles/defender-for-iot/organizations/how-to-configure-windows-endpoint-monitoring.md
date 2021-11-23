@@ -1,18 +1,18 @@
 ---
 title: Configurer la surveillance des points de terminaison Windows
 description: Enrichissez les données résolues sur les appareils en utilisant la surveillance des points de terminaison Windows (WMI).
-ms.date: 05/03/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 4d701cfda88a2c257b001a52a19853a937661714
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7b59c0b5dcb14b57ee5e4e12c2dc3e925e30d37d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017748"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281832"
 ---
 # <a name="configure-windows-endpoint-monitoring-wmi"></a>Configurer la surveillance des points de terminaison Windows (WMI)
 
-Grâce à la capacité de surveillance des points de terminaison Windows, vous pouvez configurer Azure Defender pour IoT afin que la solution sonde de manière sélective les systèmes Windows. Vous disposez ainsi d’informations plus ciblées et précises sur vos appareils, telles que les niveaux de Service Pack.
+Grâce à la capacité de surveillance des points de terminaison Windows, vous pouvez configurer Microsoft Defender pour IoT afin que la solution sonde de manière sélective les systèmes Windows. Vous disposez ainsi d’informations plus ciblées et précises sur vos appareils, telles que les niveaux de Service Pack.
 
 Vous pouvez configurer la détection avec des plages et des hôtes spécifiques et la configurer pour qu’elle soit exécutée aussi souvent que vous le souhaitez. Effectuez une détection sélective à l’aide de Windows Management Instrumentation (WMI), le langage standard de script de Microsoft pour la gestion des systèmes Windows.
 

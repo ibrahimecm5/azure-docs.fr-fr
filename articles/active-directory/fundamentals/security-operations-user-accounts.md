@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1ee521cdde76284c09f6bf34ad7945e188ee1c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: e386add0cab29ed0570f3b0b72d6e34cbb363849
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042425"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292558"
 ---
 # <a name="azure-active-directory-security-operations-for-user-accounts"></a>Opérations de sécurité Azure Active Directory pour les comptes d’utilisateur
 
@@ -89,19 +89,19 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 * [Journal UserRiskEvents](../identity-protection/howto-identity-protection-investigate-risk.md)
 
-Dans le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV ou JSON. Le portail Azure offre plusieurs moyens d’intégrer des journaux Azure AD aux autres outils, ce qui permet une plus grande automatisation de la supervision et des alertes :
+Dans le Portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV ou JSON. Le Portail Azure offre plusieurs méthodes d’intégration entre les journaux Azure AD et d’autres outils, ce qui permet une plus grande automatisation du monitoring et des alertes :
 
-* **[Azure Sentinel](../../sentinel/overview.md)** – Permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et de gestion d’événements management (SIEM). 
+* **[Microsoft Sentinel](../../sentinel/overview.md)**  : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d’événements (SIEM, Security Information and Event Management). 
 
 * **[Azure Monitor](../../azure-monitor/overview.md)** – Permet de créer des alertes et supervisions automatisées de diverses conditions. Peut créer ou utiliser des classeurs pour combiner des données provenant de différentes sources.
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) avec intégration SIEM**- [Les journaux Azure AD peuvent être intégrés à d’autres SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) comme Splunk, ArcSight, QRadar et Sumo Logic via l’intégration Azure Event Hub Hub.
 
-* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)**  : vous permet de découvrir et de gérer des applications, de gouverner toutes les applications et ressources, et de vérifier la conformité de vos applications cloud. 
+* **[Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security)**  : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources, et de vérifier la conformité des applications cloud. 
 
-La plupart des éléments qui font l’objet d’une supervision et d’alertes sont déterminés par vos stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Rapports et insights sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que les résultats des stratégies, y compris l’état de l’appareil. Ce classeur vous permet de voir un résumé de l’impact et d’identifier l’impact sur une période de temps spécifique. Vous pouvez également utiliser le classeur pour investiguer les connexions d’un utilisateur spécifique. 
+La plupart des éléments qui font l’objet d’une supervision et d’alertes sont déterminés par vos stratégies d’accès conditionnel. Vous pouvez utiliser le [classeur Rapports et insights sur l’accès conditionnel](../conditional-access/howto-conditional-access-insights-reporting.md) pour examiner les effets d’une ou de plusieurs stratégies d’accès conditionnel sur vos connexions, ainsi que les résultats des stratégies, y compris l’état de l’appareil. Ce classeur permet de voir un résumé de l’impact et d’identifier l’incidence sur une période donnée. Vous pouvez également vous en servir pour examiner les connexions d’un utilisateur spécifique. 
 
- Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies, nous fournissons des liens vers celles-ci ou nous en fournissons des exemples après le tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents. 
+ Le reste de cet article comprend des recommandations concernant la supervision et les alertes, qui sont organisées par type de menace. Lorsqu’il existe des solutions prédéfinies spécifiques, nous en indiquons le lien ou donnons des exemples après le tableau. Sinon, vous pouvez créer des alertes à l’aide des outils précédents. 
 
 ## <a name="account-creation"></a>Création d’un compte
 
@@ -201,7 +201,7 @@ Lors de la conception et de la mise en œuvre d’une stratégie de surveillance
 | Détection des risques de connexion du nouveau pays| Variable| Journaux de détection des risques Azure AD| UX : nouveau pays<br><br>API : consultez [type de ressource riskDetection - Microsoft Graph version bêta](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Consultez [Qu’est-ce que le risque ? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Détection des risques de connexion liés à une activité depuis une adresse IP anonyme| Variable| Journaux de détection des risques Azure AD| UX : activité depuis une adresse IP anonyme<br><br>API : consultez [Type de ressource riskDetection - Microsoft Graph version bêta](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Consultez [Qu’est-ce que le risque ? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Détection des risques de connexion de transfert de boîte de réception suspect| Variable| Journaux de détection des risques Azure AD| UX : transfert de boîte de réception suspect<br><br>API : consultez [Type de ressource riskDetection - Microsoft Graph version bêta](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Consultez [Qu’est-ce que le risque ? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
-| Détection des risques de connexion Azure AD Threat Intelligence| Élevé| Journaux de détection des risques Azure AD| UX : Azure AD Threat Intelligence<br>API : consultez [type de ressource riskDetection - Microsoft Graph version bêta](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Consultez [Qu’est-ce que le risque ? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
+| Détection des risques de connexion Azure AD Threat Intelligence| Élevé| Journaux de détection des risques Azure AD| UX : Azure AD Threat Intelligence<br>API : consultez [Type de ressource riskDetection - Microsoft Graph version bêta](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Consultez [Qu’est-ce que le risque ? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 
 Pour plus d’informations, visitez [Qu’est-ce qu’Identity Protection ?](../identity-protection/overview-identity-protection.md). 
 

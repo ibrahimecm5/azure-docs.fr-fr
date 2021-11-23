@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 10/15/2021
+ms.date: 11/10/2021
 ms.author: rolyon
 ms.reviewer: abhijeetsinha
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 768814932b54dab3a8d761d5502310b6b7315f2d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e936e457c03c56ee64edfec8177bb7a565d0fb98
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245459"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132371654"
 ---
 # <a name="azure-ad-built-in-roles"></a>Rôles intégrés Azure AD
 
@@ -243,7 +243,7 @@ Le rôle [Administrateur de la stratégie d’authentification](#authentication-
 >* Les propriétaires d’inscription d’application et d’application d’entreprise, qui peuvent gérer les informations d’identification des applications qu’ils possèdent. Ces applications peuvent disposer d’autorisations privilégiées dans Azure AD et ailleurs qui ne sont pas accordées aux administrateurs d’authentification. Par ce biais, un administrateur d’authentification peut assumer l’identité d’un propriétaire d’application, puis d’assumer l’identité d’une application privilégiée en mettant à jour les identifiants de celle-ci.
 >* Propriétaires d’abonnement Azure, qui peuvent avoir accès à des informations confidentielles ou privées ou à une configuration critique dans Azure.
 >* Propriétaires de groupe de sécurité et de groupe Microsoft 365, qui peuvent gérer l’appartenance à un groupe. Ces groupes peuvent accorder l’accès à des informations sensibles ou privées ou à une configuration critique dans Azure AD et ailleurs.
->* Administrateurs d’autres services en dehors d’Azure AD, tels qu’Exchange Online, le Centre de sécurité et de conformité Office et les systèmes de ressources humaines.
+>* Administrateurs d’autres services en dehors d’Azure AD, tels qu’Exchange Online, le Centre de sécurité et de conformité Office 365 et les systèmes de ressources humaines.
 >* Les non-administrateurs comme les cadres supérieurs, les conseillers juridiques et les employés des ressources humaines qui peuvent avoir accès à des informations sensibles ou privées.
 
 > [!IMPORTANT]
@@ -781,6 +781,8 @@ Les utilisateurs avec ce rôle ont des autorisations générales dans Microsoft 
 > [!div class="mx-tableFixed"]
 > | Actions | Description |
 > | --- | --- |
+> | microsoft.directory/deletedItems.groups/delete | Supprimer définitivement les groupes qui ne peuvent plus être restaurés |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/groups/hiddenMembers/read | Lire la propriété membres masqués des groupes de Sécurité et des groupes Microsoft 365, notamment les groupes à attribution de rôle |
 > | microsoft.directory/groups.unified/create | Créer des groupes Microsoft 365, à l’exclusion des groupes à attribution de rôle |
 > | microsoft.directory/groups.unified/delete | Supprimer des groupes Microsoft 365, à l’exclusion des groupes à attribution de rôle |
@@ -840,7 +842,7 @@ Cet administrateur gère la fédération entre les organisations Azure AD et les
 
 ## <a name="global-administrator"></a>Administrateur général
 
-Les utilisateurs avec ce rôle ont accès à toutes les fonctionnalités d’administration dans Azure Active Directory, ainsi qu’aux services qui utilisent des identités Azure Active Directory comme le centre de sécurité Microsoft 365, le centre de conformité Microsoft 365, Exchange Online, SharePoint Online et Skype Entreprise Online. Par ailleurs, les administrateurs généraux peuvent [élever leur accès](../../role-based-access-control/elevate-access-global-admin.md) pour gérer tous les abonnements et groupes d’administration Azure. Ils obtiennent ainsi un accès complet à toutes les ressources Azure à l’aide du locataire Azure AD correspondant. La personne qui s’inscrit pour l’organisation Azure AD devient administrateur général. Une entreprise peut comprendre plusieurs administrateurs généraux. Les administrateurs généraux peuvent réinitialiser le mot de passe des utilisateurs et de tous les autres administrateurs.
+Les utilisateurs avec ce rôle ont accès à toutes les fonctionnalités d’administration dans Azure Active Directory, ainsi qu’aux services qui utilisent des identités Azure Active Directory comme le portail Microsoft 365 Defender, le centre de conformité Microsoft 365, Exchange Online, SharePoint Online et Skype Entreprise Online. Par ailleurs, les administrateurs généraux peuvent [élever leur accès](../../role-based-access-control/elevate-access-global-admin.md) pour gérer tous les abonnements et groupes d’administration Azure. Ils obtiennent ainsi un accès complet à toutes les ressources Azure à l’aide du locataire Azure AD correspondant. La personne qui s’inscrit pour l’organisation Azure AD devient administrateur général. Une entreprise peut comprendre plusieurs administrateurs généraux. Les administrateurs généraux peuvent réinitialiser le mot de passe des utilisateurs et de tous les autres administrateurs.
 
 > [!NOTE]
 > À titre de meilleure pratique, Microsoft recommande d’attribuer le rôle Administrateur général à moins de cinq personnes dans votre organisation. Pour plus d’informations, consultez [Meilleures pratiques pour les rôles Azure AD](best-practices.md).
@@ -893,7 +895,7 @@ Les utilisateurs avec ce rôle ont accès à toutes les fonctionnalités d’adm
 > | microsoft.directory/organization/allProperties/allTasks | Lire et actualiser toutes les propriétés d’une organisation |
 > | microsoft.directory/policies/allProperties/allTasks | Créer et supprimer des stratégies, ainsi que lire et mettre à jour toutes les propriétés |
 > | microsoft.directory/conditionalAccessPolicies/allProperties/allTasks | Mettre à jour toutes les propriétés de stratégies d’accès conditionnel |
-> | microsoft.directory/crossTenantAccessPolicies/allProperties/allTasks |  |
+> | microsoft.directory/crossTenantAccessPolicies/allProperties/allTasks | Gérer les stratégies d’accès entre locataires |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/read | Lire toutes les ressources dans Privileged Identity Management |
 > | microsoft.directory/provisioningLogs/allProperties/read | Lire toutes les propriétés des journaux de provisionnement. |
 > | microsoft.directory/roleAssignments/allProperties/allTasks | Créer et supprimer des attributions de rôle, et lire et mettre à jour toutes les propriétés des attributions de rôle |
@@ -951,7 +953,7 @@ Les utilisateurs avec ce rôle ont accès à toutes les fonctionnalités d’adm
 > | microsoft.office365.network/performance/allProperties/read | Lire toutes les propriétés de performances réseau dans le Centre d’administration Microsoft 365 |
 > | microsoft.office365.protectionCenter/allEntities/allProperties/allTasks | Gérer tous les aspects des centres de sécurité et de conformité |
 > | microsoft.office365.search/content/manage | Créer et supprimer du contenu, ainsi que lire et mettre à jour toutes les propriétés dans Recherche Microsoft |
-> | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Créer et supprimer toutes les ressources, ainsi que lire et mettre à jour les propriétés standard dans le Centre de sécurité et conformité Microsoft 365 |
+> | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Créer et supprimer toutes les ressources, ainsi que lire et mettre à jour les propriétés standard dans le Centre de sécurité et conformité Office 365 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Lire et configurer Service Health dans le Centre d’administration Microsoft 365 |
 > | microsoft.office365.sharePoint/allEntities/allTasks | Créer et supprimer toutes les ressources, ainsi que lire et mettre à jour les propriétés standard SharePoint |
 > | microsoft.office365.skypeForBusiness/allEntities/allTasks | Gérez tous les aspects de Skype Entreprise Online |
@@ -961,6 +963,7 @@ Les utilisateurs avec ce rôle ont accès à toutes les fonctionnalités d’adm
 > | microsoft.office365.webPortal/allEntities/standard/read | Lire les propriétés de base sur toutes les ressources dans le Centre d’administration Microsoft 365 |
 > | microsoft.powerApps/allEntities/allTasks | Gérez tous les aspects de Power Apps |
 > | microsoft.powerApps.powerBI/allEntities/allTasks | Gérez tous les aspects de Power BI |
+> | microsoft.teams/allEntities/allProperties/allTasks | Gérez toutes les ressources dans Teams |
 > | microsoft.windows.defenderAdvancedThreatProtection/allEntities/allTasks | Gérer tous les aspects de Microsoft Defender pour point de terminaison |
 > | microsoft.windows.updatesDeployments/allEntities/allProperties/allTasks | Lire et configurer tous les aspects du Service Windows Update |
 
@@ -1041,6 +1044,7 @@ Les utilisateurs affectés à ce rôle peuvent lire les paramètres et les infor
 > | microsoft.office365.securityComplianceCenter/allEntities/read | Lire les propriétés standard dans le Centre de conformité et de sécurité Microsoft 365 |
 > | microsoft.office365.usageReports/allEntities/allProperties/read | Lire les rapports d’utilisation d’Office 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lire les propriétés de base sur toutes les ressources dans le Centre d’administration Microsoft 365 |
+> | microsoft.teams/allEntities/allProperties/read | Lire tous les aspects de Microsoft Teams |
 > | microsoft.windows.updatesDeployments/allEntities/allProperties/read | Lire tous les aspects du Service Windows Update |
 
 ## <a name="groups-administrator"></a>Administrateur de groupes
@@ -1050,6 +1054,8 @@ Les utilisateurs de ce rôle peuvent créer/gérer des groupes et ses paramètre
 > [!div class="mx-tableFixed"]
 > | Actions | Description |
 > | --- | --- |
+> | microsoft.directory/deletedItems.groups/delete | Supprimer définitivement les groupes qui ne peuvent plus être restaurés |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/groups/assignLicense | Attribuer des licences de produits à des groupes pour la gestion des licences basée sur un groupe |
 > | microsoft.directory/groups/create | Créer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |
 > | microsoft.directory/groups/delete | Supprimer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |
@@ -1161,7 +1167,6 @@ Les utilisateurs de ce rôle peuvent créer, gérer et déployer la configuratio
 > | microsoft.directory/servicePrincipals/audience/update | Mettre à jour les propriétés d’audience sur les principaux de service |
 > | microsoft.directory/servicePrincipals/authentication/update | Mettre à jour les propriétés d’authentification sur les principaux de service |
 > | microsoft.directory/servicePrincipals/basic/update | Mettre à jour les propriétés de base sur les principaux de service |
-> | microsoft.directory/servicePrincipals/credentials/update | Mettre à jour informations d’identification des principaux de service |
 > | microsoft.directory/servicePrincipals/notes/update | Mettre à jour les notes de principaux de service |
 > | microsoft.directory/servicePrincipals/owners/update | Mettre à jour les propriétaires de principaux de service |
 > | microsoft.directory/servicePrincipals/permissions/update | Mettre à jour les autorisations des principaux de service |
@@ -1422,6 +1427,7 @@ Ne pas utiliser. Ce rôle est déconseillé et sera prochainement supprimé d’
 > | microsoft.directory/contacts/create | Créer des contacts |
 > | microsoft.directory/contacts/delete | Supprimer des contacts |
 > | microsoft.directory/contacts/basic/update | Mettre à jour les propriétés de base sur les contacts |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/groups/create | Créer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |
 > | microsoft.directory/groups/delete | Supprimer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |
 > | microsoft.directory/groups/restore | Restauration de groupes supprimés |
@@ -1470,6 +1476,7 @@ Ne pas utiliser. Ce rôle est déconseillé et sera prochainement supprimé d’
 > | microsoft.directory/contacts/create | Créer des contacts |
 > | microsoft.directory/contacts/delete | Supprimer des contacts |
 > | microsoft.directory/contacts/basic/update | Mettre à jour les propriétés de base sur les contacts |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/domains/allProperties/allTasks | Créer et supprimer des domaines, ainsi que lire et mettre à jour toutes les propriétés |
 > | microsoft.directory/groups/create | Créer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |
 > | microsoft.directory/groups/delete | Supprimer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |
@@ -1676,7 +1683,7 @@ Les utilisateurs dotés de ce rôle peuvent créer, gérer et supprimer du conte
 
 ## <a name="security-administrator"></a>Administrateur de sécurité
 
-Les utilisateurs disposant de ce rôle sont autorisés à gérer les fonctionnalités liées à la sécurité dans le Centre de sécurité Microsoft 365, Azure Active Directory Identity Protection, Azure Active Directory Authentication, Azure Information Protection et le Centre de sécurité et conformité Office 365. Pour plus d’informations sur les autorisations Office 365, consultez [Autorisations dans le Centre de sécurité et de conformité](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+Les utilisateurs disposant de ce rôle sont autorisés à gérer les fonctionnalités liées à la sécurité dans le portail Microsoft 365 Defender, Azure Active Directory Identity Protection, Azure Active Directory Authentication, Azure Information Protection et le Centre de sécurité et conformité Office 365. Pour plus d’informations sur les autorisations Office 365, consultez [Autorisations dans le Centre de sécurité et de conformité](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
 Dans | Peut
 --- | ---
@@ -1766,7 +1773,7 @@ Les utilisateurs dotés de ce rôle peuvent gérer les alertes et disposent d’
 > | microsoft.azure.advancedThreatProtection/allEntities/allTasks | Gérer tous les aspects d’Azure Advanced Threat Protection |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Créer et gérer les tickets de support Azure |
 > | microsoft.intune/allEntities/read | Lire toutes les ressources dans Microsoft Intune |
-> | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Créer et supprimer toutes les ressources, ainsi que lire et mettre à jour les propriétés standard dans le Centre de sécurité et conformité Microsoft 365 |
+> | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Créer et supprimer toutes les ressources, ainsi que lire et mettre à jour les propriétés standard dans le Centre de sécurité et conformité Office 365 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Créer et gérer des demandes de service Microsoft 365 |
 > | microsoft.windows.defenderAdvancedThreatProtection/allEntities/allTasks | Gérer tous les aspects de Microsoft Defender pour point de terminaison |
 
@@ -1840,6 +1847,8 @@ Les utilisateurs avec ce rôle ont des autorisations générales dans Microsoft 
 > [!div class="mx-tableFixed"]
 > | Actions | Description |
 > | --- | --- |
+> | microsoft.directory/deletedItems.groups/delete | Supprimer définitivement les groupes qui ne peuvent plus être restaurés |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/groups.unified/create | Créer des groupes Microsoft 365, à l’exclusion des groupes à attribution de rôle |
 > | microsoft.directory/groups.unified/delete | Supprimer des groupes Microsoft 365, à l’exclusion des groupes à attribution de rôle |
 > | microsoft.directory/groups.unified/restore | Restaurer des groupes Microsoft 365 |
@@ -1881,6 +1890,8 @@ Les utilisateurs dans ce rôle peuvent gérer tous les aspects de la charge de t
 > | Actions | Description |
 > | --- | --- |
 > | microsoft.directory/authorizationPolicy/standard/read | Lire les propriétés standard des stratégies d’application |
+> | microsoft.directory/deletedItems.groups/delete | Supprimer définitivement les groupes qui ne peuvent plus être restaurés |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/groups/hiddenMembers/read | Lire la propriété membres masqués des groupes de Sécurité et des groupes Microsoft 365, notamment les groupes à attribution de rôle |
 > | microsoft.directory/groups.unified/create | Créer des groupes Microsoft 365, à l’exclusion des groupes à attribution de rôle |
 > | microsoft.directory/groups.unified/delete | Supprimer des groupes Microsoft 365, à l’exclusion des groupes à attribution de rôle |
@@ -1993,6 +2004,7 @@ Les utilisateurs dotés de ce rôle peuvent créer des utilisateurs, gérer tous
 > | microsoft.directory/contacts/create | Créer des contacts |
 > | microsoft.directory/contacts/delete | Supprimer des contacts |
 > | microsoft.directory/contacts/basic/update | Mettre à jour les propriétés de base sur les contacts |
+> | microsoft.directory/deletedItems.groups/restore | Restaurer les groupes supprimés de manière réversible à l’état d’origine |
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Créer et supprimer des ressources, ainsi que lire et mettre à jour toutes les propriétés dans la gestion des droits d’utilisation Azure AD |
 > | microsoft.directory/groups/assignLicense | Attribuer des licences de produits à des groupes pour la gestion des licences basée sur un groupe |
 > | microsoft.directory/groups/create | Créer des groupes de Sécurité et des groupes Microsoft 365, à l’exception des groupes à attribution de rôle |

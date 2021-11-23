@@ -3,14 +3,14 @@ title: Connexion des caméras au service Azure Video Analyzer
 description: Cet article explique comment connecter des caméras directement au service Azure Video Analyzer.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 973db00ad3d8b7d0581d74b9de602322c20ac7b3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f463fafb4f11e935d45c42326c23e1a0e4ffb28f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096762"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297694"
 ---
 # <a name="connect-cameras-to-the-cloud"></a>Connecter des caméras au cloud
 
@@ -39,7 +39,7 @@ Cette méthode permet aux caméras ou appareils RTSP de se connecter à Video An
 
 Cette méthode ne doit être utilisée que pour les exercices de preuve de concept contrôlés, où il peut être permis d’autoriser le service Video Analyzer à accéder à l’appareil via Internet, sans pare-feu. 
 
-Un cas d’usage associé se présente quand un module est déployé sur une machine virtuelle Azure pour simuler une caméra RTSP, comme décrit dans ce guide de [démarrage rapide](get-started-livepipelines-portal.md).
+Un cas d’usage associé se présente quand un module est déployé sur une machine virtuelle Azure pour simuler une caméra RTSP, comme décrit dans ce [démarrage rapide](get-started-livepipelines-portal.md).
 
 
 ## <a name="next-steps"></a>Étapes suivantes

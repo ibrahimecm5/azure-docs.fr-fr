@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 12/05/2016
-ms.openlocfilehash: d461be7d760e1e4fc99fe23a9fe2d5529237ebb3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4b21e475856b724fe06e40fc83665443428b30e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949828"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281491"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportation de groupes de ressources contenant des extensions de machine virtuelle
 
@@ -27,7 +27,7 @@ De nombreuses extensions de machine virtuelle sont disponibles. Toutes les exten
 
 Les extensions suivantes peuvent être exportées à l’aide de la fonctionnalité de script Automation.
 
-> Sauvegarde Acronis, Sauvegarde Acronis Linux, Infos Bg, Agent BMC CTM Linux, Agent BMC CTM Windows, Client Chef, Script personnalisé, Extension de script personnalisé, Script personnalisé pour Linux, Agent Datadog Linux, Agent Datadog Windows, Extension Docker, Extension DSC, Dynatrace Linux, Dynatrace Windows, Application de sécurité HPE Defender, Logiciel anti-programme malveillant IaaS, Diagnostics IaaS, Client Chef Linux, Diagnostic Linux, Application de correctifs au système d’exploitation pour Linux, Agent Puppet, Aperçu Apm 24 x 7 de site, Serveur Linux 24 x 7 de site, Windows Server 24 x 7 de site, Trend Micro DSA, Trend Micro DSA Linux, Accès aux machines virtuelles pour Linux, Instantané de machine virtuelle, Instantané de machine virtuelle Linux
+> Sauvegarde Acronis, Sauvegarde Acronis Linux, Infos Bg, Agent BMC CTM Linux, Agent BMC CTM Windows, Client Chef, Script personnalisé, Extension de script personnalisé, Script personnalisé pour Linux, Agent Datadog Linux, Agent Datadog Windows, Extension Docker, Extension DSC, Dynatrace Linux, Dynatrace Windows, Application de sécurité HPE Defender pour le cloud, Logiciel anti-programme malveillant IaaS, Diagnostics IaaS, Client Chef Linux, Diagnostic Linux, Application de correctifs au système d’exploitation pour Linux, Agent Puppet, Aperçu Apm 24 x 7 de site, Serveur Linux 24 x 7 de site, Windows Server 24 x 7 de site, Trend Micro DSA, Trend Micro DSA Linux, Accès aux machines virtuelles pour Linux, Instantané de machine virtuelle, Instantané de machine virtuelle Linux
 
 ## <a name="export-the-resource-group"></a>Exporter le groupe de ressources
 

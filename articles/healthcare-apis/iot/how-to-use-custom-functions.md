@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 37e720e3623105f5d3a6131a1df5d6d53edb6db7
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 2bb0d3c17de870017733291bee4680f740afc1ad
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733429"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132933835"
 ---
 # <a name="how-to-use-custom-functions"></a>Comment utiliser des fonctions personnalisées
 
@@ -193,6 +193,9 @@ Exemples :
 |--------------------------|---------------------------|-------------------------|
 | {"UNIX" : 1626799080000}  | fromUnixTimestampMs (UNIX) | « 2021-07-20T16:38:00 + 0 » |
 | {"UNIX" : 0}              | fromUnixTimestampMs (UNIX) | "1970-01-01T00:00:00 + 0" |
+
+> [!TIP]
+> Pour plus d’informations sur les erreurs et les problèmes courants, consultez le [Guide de dépannage](./iot-troubleshoot-guide.md) du connecteur IOT.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

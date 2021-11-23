@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 10/26/2021
 ms.author: juda
-ms.openlocfilehash: fa93f4d0f72e2c8060a934f177db2dd53b96c7c5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 87edce54391661fe986365ad45d72bfeee41c761
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479083"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179609"
 ---
 # <a name="managed-nat-gateway-preview"></a>NAT Gateway managé (préversion)
 
@@ -60,8 +60,9 @@ az group create --name myresourcegroup --location southcentralus
 ```
 
 ```azurecli-interactive
-az aks create --resource-group myresourcegroup 
-    --name natcluster  \
+az aks create \
+    --resource-group myresourcegroup \
+    --name natcluster \
     --node-count 3 \
     --outbound-type managedNATGateway \ 
     --nat-gateway-managed-outbound-ip-count 2 \
@@ -81,6 +82,76 @@ az aks update \
     --nat-gateway-managed-outbound-ip-count 5
 ```
 
+## <a name="create-an-aks-cluster-with-a-user-assigned-nat-gateway"></a>Créer un cluster AKS avec une passerelle NAT affectée par l’utilisateur
+Pour créer un cluster AKS avec une passerelle NAT affectée par l’utilisateur, utilisez `--outbound-type userAssignedNATGateway` lors de l’exécution de `az aks create`. Cette configuration nécessite une mise en réseau personnalisée (par le biais de [Kubenet][byo-vnet-kubenet] ou d’[Azure CNI][byo-vnet-azure-cni]) et que la passerelle NAT soit préconfigurée sur le sous-réseau. Les commandes suivantes créent les ressources requises pour ce scénario. Veillez à les exécuter toutes dans la même session afin que les valeurs stockées dans les variables soient toujours disponibles pour la commande `az aks create`.
+
+1. Créez le groupe de ressources :
+    ```azurecli-interactive
+    az group create --name myresourcegroup \
+        --location southcentralus
+    ```
+
+2. Créez une identité managée pour les autorisations réseau et stockez l’ID dans `$IDENTITY_ID` pour une utilisation ultérieure :
+    ```azurecli-interactive
+    IDENTITY_ID=$(az identity create \
+        --resource-group myresourcegroup \
+        --name natclusterid \
+        --location southcentralus \
+        --query id \
+        --output tsv)
+    ```
+
+3. Créez une adresse IP publique pour la passerelle NAT :
+    ```azurecli-interactive
+    az network public-ip create \
+        --resource-group myresourcegroup \
+        --name mynatgatewaypip \
+        --location southcentralus \
+        --sku standard
+    ```
+
+4. Créer la passerelle NAT :
+    ```azurecli-interactive
+    az network nat gateway create \
+        --resource-group myresourcegroup \
+        --name mynatgateway \
+        --location southcentralus \
+        --public-ip-addresses mynatgatewaypip
+    ```
+
+5. Créez un réseau virtuel :
+    ```azurecli-interactive
+    az network vnet create \
+        --resource-group myresourcegroup \
+        --name myvnet \
+        --location southcentralus \
+        --address-prefixes 172.16.0.0/20 
+    ```
+
+6. Créez un sous-réseau dans le réseau virtuel à l’aide de la passerelle NAT et stockez l’ID dans `$SUBNET_ID` pour une utilisation ultérieure :
+    ```azurecli-interactive
+    SUBNET_ID=$(az network vnet subnet create \
+        --resource-group myresourcegroup \
+        --vnet-name myvnet \
+        --name natcluster \
+        --address-prefixes 172.16.0.0/22 \
+        --nat-gateway mynatgateway \
+        --query id \
+        --output tsv)
+    ```
+
+7. Créez un cluster AKS à l’aide du sous-réseau avec la passerelle NAT et l’identité managée :
+    ```azurecli-interactive
+    az aks create \
+        --resource-group myresourcegroup \
+        --name natcluster \
+        --location southcentralus \
+        --network-plugin azure \
+        --vnet-subnet-id $SUBNET_ID \
+        --outbound-type userAssignedNATGateway \
+        --enable-managed-identity \
+        --assign-identity $IDENTITY_ID
+    ```
 
 ## <a name="next-steps"></a>Étapes suivantes
 - Pour plus d’informations sur la passerelle NAT Gateway, consultez la documentation relative à [Azure NAT Gateway][nat-docs].
@@ -92,3 +163,5 @@ az aks update \
 [nat-docs]: ../virtual-network/nat-gateway/nat-overview.md
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[byo-vnet-azure-cni]: configure-azure-cni.md
+[byo-vnet-kubenet]: configure-kubenet.md

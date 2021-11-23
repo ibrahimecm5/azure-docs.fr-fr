@@ -10,18 +10,20 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/21/2021
 ms.custom: automl
-ms.openlocfilehash: 32847e60114e86eb8d8571aff4d31c436a2fbd42
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 16d96eb508725e22bc1956a8b78d003f1512487b
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563394"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518657"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Qu’est-ce que le Machine Learning automatisé (AutoML) ?
 
 Le Machine Learning automatisé, également appelé ML automatisé ou AutoML, est le processus d’automatisation des tâches fastidieuses et itératives de développement de modèle Machine Learning. Il permet aux chercheurs de données, analystes et développeurs de créer des modèles ML à grande échelle, efficaces et productifs, tout en maintenant la qualité du modèle. L’apprentissage automatique automatisé dans Azure Machine Learning se base sur une innovation de notre [division Microsoft Research](https://www.microsoft.com/research/project/automl/).
 
 Le développement de modèle Machine Learning traditionnel consomme beaucoup de ressources, nécessitant une connaissance significative du domaine et du temps pour produire et comparer des dizaines de modèles. Le Machine Learning automatisé permet de réduire le temps nécessaire pour obtenir des modèles ML prêts pour la production avec une facilité et une efficacité extraordinaires.
+
+<a name="parity"></a>
 
 ## <a name="ways-to-use-automl-in-azure-machine-learning"></a>Façons d’utiliser AutoML dans Azure Machine Learning
 
@@ -32,10 +34,6 @@ Azure Machine Learning offre les deux expériences suivantes pour utiliser le Ma
 * Pour les clients avec une expérience limitée ou inexistante en codage, Azure Machine Learning studio sur [https://ml.azure.com](https://ml.azure.com/).  Démarrage avec ces tutoriels :
     * [Tutoriel : créer un modèle de classification avec le ML automatisé dans Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
     *  [Tutoriel : Prévoir la demande avec le Machine Learning automatisé](tutorial-automated-ml-forecast.md)
-
-<a name="parity"></a>
-
-## <a name="automl-settings-and-configuration"></a>Paramètres et configuration AutoML
 
 ### <a name="experiment-settings"></a>Paramètres de l’expérience 
 
@@ -70,7 +68,7 @@ Ces paramètres peuvent être appliqués au meilleur modèle à la suite de votr
 |**Activation des modèles de l’ensemble de vote et de l’ensemble d’empilement**| ✓|✓|
 |**Affichage du meilleur modèle selon une métrique non principale**|✓||
 |**Activation/désactivation de la compatibilité du modèle ONNX**|✓||
-|**Tester le modèle** | ✓| |
+|**Tester le modèle** | ✓| ✓ (préversion)|
 
 ### <a name="run-control-settings"></a>Paramètres de contrôle d’exécution
 
@@ -99,7 +97,7 @@ La classification est une tâche Machine Learning courante. Il s’agit d’un t
 
 L’objectif principal des modèles de classification est de prédire les catégories dans lesquelles les nouvelles données seront classées, sur la base des apprentissages de leurs données d’apprentissage. Les exemples de classification courants incluent la détection des fraudes, la reconnaissance de l’écriture manuscrite et la détection d’objets. Pour plus d’informations et voir un exemple, consultez [Créer un modèle de classification avec ML automatisé](tutorial-first-experiment-automated-ml.md).
 
-Pour obtenir des exemples de classification et de Machine Learning automatisé, consultez les notebooks Python suivants : [Détection des fraudes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [Prédictions marketing](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) et [Classification des données de groupe de discussion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+Pour obtenir des exemples de classification et de Machine Learning automatisé, consultez les notebooks Python suivants : [Détection des fraudes](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [Prédictions marketing](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) et [Classification des données de groupe de discussion](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/classification-text-dnn)
 
 ### <a name="regression"></a>régression ;
 
@@ -107,7 +105,7 @@ Pour obtenir des exemples de classification et de Machine Learning automatisé, 
 
 À la différence d’une classification dans laquelle les valeurs de sortie prédites sont catégoriques, les modèles de régression prédisent des valeurs de sortie numériques en fonction de prédictions indépendantes. Dans une régression, l’objectif est d’aider à établir la relation entre ces variables de prédiction indépendantes en estimant l’impact d’une variable sur les autres. Par exemple, le coût de l’automobile basé sur des caractéristiques telles que la consommation de carburant, la cote de sécurité, etc. Apprenez-en davantage et découvrez un exemple de [Régression avec Machine Learning automatisé](tutorial-auto-train-models.md).
 
-Pour obtenir des exemples de régression et de Machine Learning automatisé pour les prédictions, consultez les notebooks Python suivants : [Prédiction des performances du processeur](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb) 
+Pour obtenir des exemples de régression et de Machine Learning automatisé pour les prédictions, consultez les notebooks Python suivants : [Prédiction des performances du processeur](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/regression-explanation-featurization) 
 
 ### <a name="time-series-forecasting"></a>Prévision de série chronologique
 
@@ -124,7 +122,7 @@ La configuration de prévisions avancée inclut les éléments suivants :
 * caractéristiques des agrégations des fenêtres dynamiques
 
 
-Pour obtenir des exemples de régression et de Machine Learning automatisé pour les prédictions, consultez les notebooks Python suivants : [Prévision des ventes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb), [Prévision de la demande](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) et [Prévision de la production de boissons](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
+Pour obtenir des exemples de régression et de Machine Learning automatisé pour les prédictions, consultez les notebooks Python suivants : [Prévision des ventes](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb), [Prévision de la demande](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) et [Prévision de la production de boissons](https://github.com/Azure/azureml-examples/blob/main/python-sdk/tutorials/automl-with-azureml/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
 ### <a name="computer-vision-preview"></a>Vision par ordinateur (préversion)
 
@@ -186,9 +184,65 @@ Vous pouvez également inspecter les informations d’exécution journalisées q
 
 Bien que la création de modèles soit automatisée, vous pouvez également [découvrir l’importance ou la pertinence des fonctionnalités](how-to-configure-auto-train.md#explain) pour les modèles générés.
 
-
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
+<a name="local-remote"></a>
+
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a>Conseils concernant les cibles de calcul de Machine Learning managées locales et distantes
+
+L’interface web pour le Machine Learning automatisé utilise toujours une [cible de calcul](concept-compute-target.md) distante.  Toutefois, lorsque vous utilisez le Kit de développement logiciel (SDK) Python, vous devez choisir une cible de calcul locale ou distante pour un apprentissage de Machine Learning automatisé.
+
+* **Calcul local** : l’apprentissage se produit sur votre ordinateur portable ou votre machine virtuelle locaux. 
+* **Calcul distant** : l’apprentissage se produit sur des clusters de calcul Machine Learning.  
+
+### <a name="choose-compute-target"></a>Choisir une cible de calcul
+Lors du choix de votre cible de calcul, considérez les facteurs suivants :
+
+ * **Choisir un calcul local** : si votre scénario concerne des explorations initiales ou des démonstrations utilisant des données de petite taille et des apprentissages courts (de quelques secondes à quelques minutes par exécution enfant), un apprentissage sur votre ordinateur local peut constituer un meilleur choix.  Il n’y a pas de temps de configuration. Les ressources d’infrastructure (votre PC ou votre machine virtuelle) sont directement disponibles.
+ * **Choisir un cluster de calcul de Machine Learning distant** : si vous effectuez un apprentissage avec des jeux de données plus volumineux, tel un apprentissage de production créant des modèles nécessitant des apprentissages plus longs, un calcul distant offre des performances de temps de bout en bout bien meilleures, car `AutoML` parallélise les apprentissages dans les nœuds du cluster. Sur un calcul distant, le temps de démarrage de l’infrastructure interne ajoute environ 1,5 minute par exécution enfant, et des minutes supplémentaires pour l’infrastructure du cluster si les machines virtuelles ne sont pas encore opérationnelles.
+
+### <a name="pros-and-cons"></a>Avantages et inconvénients
+Tenez compte des avantages et des inconvénients suivants lorsque au moment de choisir entre le calcul local ou distant.
+
+|  | Avantages (avantages)  |Inconvénients (handicaps)  |
+|---------|---------|---------|---------|
+|**Cible de calcul locale** |  <li> Aucune heure de démarrage de l’environnement   | <li>  Sous-ensemble de fonctionnalités<li>  Impossible de paralléliser les exécutions <li> Pire pour des données volumineuses <li>Aucune diffusion de données pendant l’apprentissage <li>  Aucun caractérisation basée sur DNN <li> Kit de développement logiciel (SDK) Python uniquement |
+|**Clusters de calcul ML distants**|  <li> Ensemble complet de fonctionnalités <li> Parallélisation des exécutions enfants <li>   Prise en charge de données volumineuses<li>  Caractérisation basée sur DNN <li>  Extensibilité dynamique du cluster de calcul à la demande <li> Expérience sans code (interface utilisateur web) également disponible  |  <li> Temps de démarrage pour les nœuds de cluster <li> Temps de démarrage pour chaque exécution enfant    |
+
+### <a name="feature-availability"></a>Disponibilité des fonctionnalités 
+
+D’autres fonctionnalités sont disponibles lorsque vous utilisez le calcul distant, comme indiqué dans le tableau ci-dessous. 
+
+| Fonctionnalité                                                    | Remote | Local | 
+|------------------------------------------------------------|--------|-------|
+| Streaming de données (prise en charge de données volumineuses jusqu’à 100 Go)          | ✓      |       | 
+| Caractérisation de texte et apprentissage basés sur DNN-BERT             | ✓      |       |
+| Prise en charge de GPU prêt à l’emploi (apprentissage et inférence)        | ✓      |       |
+| Prise en charge de la classification d’image et de l’étiquetage                  | ✓      |       |
+| Modèles auto-ARIMA, Prophet et ForecastTCN pour les prévisions | ✓      |       | 
+| Exécutions/itérations multiples en parallèle                       | ✓      |       |
+| Créer des modèles avec interprétabilité dans l’interface utilisateur de l’expérience web du studio AutoML      | ✓      |       |
+| Personnalisation de l’ingénierie des fonctionnalités dans l’interface utilisateur de l’expérience web du studio| ✓      |       |
+| Optimisation des hyperparamètres d’Azure Machine Learning                             | ✓      |       |
+| Prise en charge des flux de travail du pipeline Azure Machine Learning                         | ✓      |       |
+| Continuer une exécution                                             | ✓      |       |
+| Prévisions                                                | ✓      | ✓     |
+| Créer et exécuter des expériences dans des blocs-notes                    | ✓      | ✓     |
+| Inscrire et visualiser les informations et les métriques de l’expérience dans l’interface utilisateur | ✓      | ✓     |
+| Garde-fous des données                                            | ✓      | ✓     |
+
+## <a name="training-validation-and-test-data"></a>Formation, validation et test des données 
+
+Avec le ML automatisé, vous fournissez les **données d’apprentissage** pour former des modèles de ML, et vous pouvez spécifier le type de validation de modèle à effectuer. Le ML automatisé effectue une validation de modèle dans le cadre de la formation. Autrement dit, le ML automatisé utilise des **données de validation** pour régler les hyperparamètres de modèle en fonction de l’algorithme appliqué afin de trouver la combinaison la plus appropriée qui correspond le mieux aux données d’apprentissage. Toutefois, les mêmes données de validation sont utilisées pour chaque itération de paramétrage, ce qui introduit le biais de l’évaluation du modèle, puisque le modèle continue à s’améliorer et à s’ajuster par rapport aux données de validation. 
+
+Pour vous aider à confirmer que ce biais n’est pas appliqué au modèle recommandé final, le ML automatisé prend en charge l’utilisation de **données de test** pour évaluer le modèle final que le ML automatisé recommande à la fin de votre expérience. Lorsque vous fournissez des données de test dans le cadre de votre configuration d’expérimentation AutoML, ce modèle recommandé est testé par défaut à la fin de votre expérience (préversion). 
+
+>[!IMPORTANT]
+> Le test de vos modèles avec un jeu de données de test pour évaluer les modèles générés est une fonctionnalité en préversion. Cette capacité est une caractéristique [expérimentale](/python/api/overview/azure/ml/#stable-vs-experimental) en préversion qui peut évoluer à tout moment.
+
+Découvrez comment [Configurer les expériences AutoML pour utiliser des données de test (préversion) avec le kit de développement logiciel (SDK)](how-to-configure-cross-validation-data-splits.md#provide-test-data-preview) ou avec [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+
+Vous pouvez également [tester n’importe quel modèle de ML automatisé (préversion)](how-to-configure-auto-train.md#test-existing-automated-ml-model) existant, y compris les modèles des exécutions enfants, en fournissant vos propres données de test ou en mettant de côté une partie de vos données d’apprentissage. 
 
 ## <a name="feature-engineering"></a>Ingénierie des caractéristiques
 
@@ -234,58 +288,13 @@ L’[algorithme de sélection d’ensemble Caruana](http://www.niculescu-mizil.o
 
 Pour savoir comment modifier les paramètres par défaut de l’ensemble au niveau du Machine Learning automatisé, consultez [cette procédure](how-to-configure-auto-train.md#ensemble).
 
-## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>Conseils concernant les cibles de calcul de Machine Learning managées locales et distantes
-
-L’interface web pour le Machine Learning automatisé utilise toujours une [cible de calcul](concept-compute-target.md) distante.  Toutefois, lorsque vous utilisez le Kit de développement logiciel (SDK) Python, vous devez choisir une cible de calcul locale ou distante pour un apprentissage de Machine Learning automatisé.
-
-* **Calcul local** : l’apprentissage se produit sur votre ordinateur portable ou votre machine virtuelle locaux. 
-* **Calcul distant** : l’apprentissage se produit sur des clusters de calcul Machine Learning.  
-
-### <a name="choose-compute-target"></a>Choisir une cible de calcul
-Lors du choix de votre cible de calcul, considérez les facteurs suivants :
-
- * **Choisir un calcul local** : si votre scénario concerne des explorations initiales ou des démonstrations utilisant des données de petite taille et des apprentissages courts (de quelques secondes à quelques minutes par exécution enfant), un apprentissage sur votre ordinateur local peut constituer un meilleur choix.  Il n’y a pas de temps de configuration. Les ressources d’infrastructure (votre PC ou votre machine virtuelle) sont directement disponibles.
- * **Choisir un cluster de calcul de Machine Learning distant** : si vous effectuez un apprentissage avec des jeux de données plus volumineux, tel un apprentissage de production créant des modèles nécessitant des apprentissages plus longs, un calcul distant offre des performances de temps de bout en bout bien meilleures, car `AutoML` parallélise les apprentissages dans les nœuds du cluster. Sur un calcul distant, le temps de démarrage de l’infrastructure interne ajoute environ 1,5 minute par exécution enfant, et des minutes supplémentaires pour l’infrastructure du cluster si les machines virtuelles ne sont pas encore opérationnelles.
-
-### <a name="pros-and-cons"></a>Avantages et inconvénients
-Tenez compte des avantages et des inconvénients suivants lorsque au moment de choisir entre le calcul local ou distant.
-
-|  | Avantages (avantages)  |Inconvénients (handicaps)  |
-|---------|---------|---------|
-|**Cible de calcul locale** |  <li> Aucune heure de démarrage de l’environnement   | <li>  Sous-ensemble de fonctionnalités<li>  Impossible de paralléliser les exécutions <li> Pire pour des données volumineuses <li>Aucune diffusion de données pendant l’apprentissage <li>  Aucun caractérisation basée sur DNN <li> Kit de développement logiciel (SDK) Python uniquement |
-|**Clusters de calcul ML distants**|  <li> Ensemble complet de fonctionnalités <li> Parallélisation des exécutions enfants <li>   Prise en charge de données volumineuses<li>  Caractérisation basée sur DNN <li>  Extensibilité dynamique du cluster de calcul à la demande <li> Expérience sans code (interface utilisateur web) également disponible  |  <li> Temps de démarrage pour les nœuds de cluster <li> Temps de démarrage pour chaque exécution enfant    |
-
-### <a name="feature-availability"></a>Disponibilité des fonctionnalités 
-
-D’autres fonctionnalités sont disponibles lorsque vous utilisez le calcul distant, comme indiqué dans le tableau ci-dessous. 
-
-| Fonctionnalité                                                    | Remote | Local | 
-|------------------------------------------------------------|--------|-------|
-| Streaming de données (prise en charge de données volumineuses jusqu’à 100 Go)          | ✓      |       | 
-| Caractérisation de texte et apprentissage basés sur DNN-BERT             | ✓      |       |
-| Prise en charge de GPU prêt à l’emploi (apprentissage et inférence)        | ✓      |       |
-| Prise en charge de la classification d’images (préversion) et de l’étiquetage        | ✓      |       |
-| Modèles auto-ARIMA, Prophet et ForecastTCN pour les prévisions | ✓      |       | 
-| Exécutions/itérations multiples en parallèle                       | ✓      |       |
-| Créer des modèles avec interprétabilité dans l’interface utilisateur de l’expérience web du studio AutoML      | ✓      |       |
-| Personnalisation de l’ingénierie des fonctionnalités dans l’interface utilisateur de l’expérience web du studio| ✓      |       |
-| Optimisation des hyperparamètres d’Azure Machine Learning                             | ✓      |       |
-| Prise en charge des flux de travail du pipeline Azure Machine Learning                         | ✓      |       |
-| Continuer une exécution                                             | ✓      |       |
-| Prévisions                                                | ✓      | ✓     |
-| Vision par ordinateur (préversion)                                  | ✓      |       |
-| Créer et exécuter des expériences dans des blocs-notes                    | ✓      | ✓     |
-| Inscrire et visualiser les informations et les métriques de l’expérience dans l’interface utilisateur | ✓      | ✓     |
-| Garde-fous des données                                            | ✓      | ✓     |
-
-
 <a name="use-with-onnx"></a>
 
 ## <a name="automl--onnx"></a>AutoML et ONNX
 
 Avec Azure Machine Learning, vous pouvez utiliser le Machine Learning automatisé pour générer un modèle Python et le convertir au format ONNX. Une fois que les modèles sont au format ONNX, ils peuvent s’exécuter sur une multitude de plateformes et d’appareils. Apprenez-en davantage sur l’[accélération des modèles ML avec ONNX](concept-onnx.md).
 
-Découvrez comment convertir au format ONNX [dans cet exemple de notebook Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). Découvrez quels sont les [algorithmes pris en charge dans ONNX](how-to-configure-auto-train.md#supported-models).
+Découvrez comment convertir au format ONNX [dans cet exemple de notebook Jupyter](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml/classification-bank-marketing-all-features). Découvrez quels sont les [algorithmes pris en charge dans ONNX](how-to-configure-auto-train.md#supported-models).
 
 Le runtime ONNX prenant également en charge C#, vous pouvez utiliser le modèle généré automatiquement dans vos applications C# sans avoir besoin de recodage ou des latences réseau introduites par les points de terminaison REST. En savoir plus sur [l’utilisation d’un modèle ONNX AutoML dans une application .NET avec ML.NET](./how-to-use-automl-onnx-model-dotnet.md) et sur [l’inférence de modèles ONNX avec l’API C# du runtime ONNX](https://onnxruntime.ai/docs/api/csharp-api.html). 
 
@@ -313,7 +322,7 @@ Des articles de guide pratique fournissent des détails supplémentaires sur les
    
 ### <a name="jupyter-notebook-samples"></a>Exemples de blocs-notes Jupyter 
 
-Passez en revue les exemples de code détaillé et les cas d’usage disponibles dans le [dépôt GitHub d’exemples de blocs-notes pour le Machine Learning automatisé](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
+Passez en revue les exemples de code détaillé et les cas d’usage disponibles dans le [dépôt GitHub d’exemples de blocs-notes pour le Machine Learning automatisé](https://github.com/Azure/azureml-examples/tree/main/python-sdk/tutorials/automl-with-azureml).
 
 ### <a name="python-sdk-reference"></a>Référence du Kit de développement logiciel (SDK) Python
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3fede7fbb0f4951633ec74284fad00d2d66257b
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ff2233f6a1b669856084cdd07591d99ee23dbe8c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566700"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331221"
 ---
 # <a name="evaluate-model-component"></a>Composant Évaluer le modèle
 
@@ -138,7 +138,6 @@ Les mesures suivantes sont rapportées lors de l’évaluation de modèles de cl
      Si ce nombre est élevé, cela peut signifier que le cluster est très dispersé. Vous devez examiner cette statistique en même temps que la **distance moyenne au centre du cluster** pour déterminer la répartition du cluster.   
 
 -   Le score **Combined Evaluation** (Évaluation combinée) en bas de chaque section de résultats répertorie les scores moyens pour les clusters créés dans ce modèle particulier.  
-  
 
 ## <a name="next-steps"></a>Étapes suivantes
 

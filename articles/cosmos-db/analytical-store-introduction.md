@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: fd9984d6db66413f3c53d20fa63ffb4e1a106f3d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 712b1d3e7fde41991f9cea2d62e7e0864224509d
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131454539"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135207"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Qu’est-ce que le magasin analytique Azure Cosmos DB ?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -177,6 +177,21 @@ df = spark.read\
 ```
 
 * Azure Synapse Spark prend désormais en charge les propriétés incluant des espaces blancs dans leurs noms.
+
+* Les types de données BSON suivants ne sont pas pris en charge et ne sont pas représentés dans le magasin analytique :
+  * Decimal128
+  * Expression régulière
+  * Pointeur de base de données
+  * JavaScript
+  * Symbole
+  * MinKey/MaxKey 
+
+* Lorsque vous utilisez des chaînes DateTime qui suivent la norme ISO 8601 UTC, attendez-vous au comportement suivant :
+  * Les pools Spark dans Azure Synapse représenteront ces colonnes comme `string`.
+  * Les pools serverless SQL dans Azure Synapse représenteront ces colonnes comme `varchar(8000)`.
+
+* Les pools serverless SQL dans Azure Synapse prennent en charge des ensembles de résultats contenant jusqu’à 1000 colonnes, et l’exposition de colonnes imbriquées est également comptabilisée dans cette limite. Tenez compte de ces informations lors de la conception de votre architecture de données et de la modélisation de vos données transactionnelles.
+
 
 ### <a name="schema-representation"></a>Représentation du schéma
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/21/2021
-ms.openlocfilehash: cc403561784deea26e238063f585873c24cd39d3
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d5034f59cc71352518c0570e525f952f0f657c71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562729"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343132"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sécurité et gouvernance de l’entreprise pour Azure Machine Learning
 
@@ -107,7 +107,7 @@ Lors du déploiement de modèles en tant que services web, vous pouvez activer l
 
 ## <a name="vulnerability-scanning"></a>Analyse des vulnérabilités
 
-[Azure Security Center](../security-center/security-center-introduction.md) fournit une gestion unifiée de la sécurité et une protection avancée contre les menaces pour l'ensemble des charges de travail cloud hybrides. Pour Azure Machine Learning, vous devez activer l’analyse de vos ressources [Azure Container Registry](../container-registry/container-registry-intro.md) et Azure Kubernetes Service. Pour plus d’informations, consultez [Analyse d’images Azure Container Registry par Security Center](../security-center/defender-for-container-registries-introduction.md) et [Intégration d’Azure Kubernetes Service à Security Center](../security-center/defender-for-kubernetes-introduction.md).
+[Microsoft Defender pour le cloud](../security-center/security-center-introduction.md) fournit une gestion unifiée de la sécurité et une protection avancée contre les menaces dans les charges de travail cloud hybrides. Pour Azure Machine Learning, vous devez activer l’analyse de vos ressources [Azure Container Registry](../container-registry/container-registry-intro.md) et Azure Kubernetes Service. Pour plus d’informations, consultez [Analyse d’images Azure Container Registry par Defender pour le cloud](../security-center/defender-for-container-registries-introduction.md) et [Intégration d’Azure Kubernetes Service à Defender pour le cloud](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="audit-and-manage-compliance"></a>Auditer et gérer la conformité
 

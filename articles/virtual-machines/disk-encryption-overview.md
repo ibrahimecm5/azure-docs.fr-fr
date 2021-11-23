@@ -8,12 +8,12 @@ ms.author: mbaldwin
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efc0626c0c5f2c9333e5459d7fb7ce6aa2865cc4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 989a7fcc058284c1c706cbfc30c97a77200de111
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105181"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315309"
 ---
 # <a name="overview-of-managed-disk-encryption-options"></a>Vue d’ensemble des options de chiffrement des disques managés
 
@@ -29,7 +29,7 @@ Il existe plusieurs types de chiffrement disponibles pour vos disques managés, 
 
 Voici une comparaison entre les chiffrements SSE, ADE et sur l’hôte.
 
-| | Chiffrement au repos (disques de système d’exploitation et de données) | Chiffrement de disque temporaire | Chiffrement des caches | Données transmises chiffrées entre le calcul et le stockage | Contrôle des clés par le client | État du chiffrement de disque dans Azure Security Center |
+| | Chiffrement au repos (disques de système d’exploitation et de données) | Chiffrement de disque temporaire | Chiffrement des caches | Données transmises chiffrées entre le calcul et le stockage | Contrôle des clés par le client | État de chiffrement de disque de Microsoft Defender pour le cloud |
 |--|--|--|--|--|--|--|
 | **Chiffrement au repos avec clé gérée par la plateforme (SSE+PMK)** | &#x2705; | &#10060; | &#10060; | &#10060; | &#10060; | Non sain, non applicable en cas d’exemption |
 | **Chiffrement au repos avec clé gérée par le client (SSE+CMK)** | &#x2705; | &#10060; | &#10060; | &#10060; | &#x2705; | Non sain, non applicable en cas d’exemption |
@@ -37,7 +37,7 @@ Voici une comparaison entre les chiffrements SSE, ADE et sur l’hôte.
 | **Chiffrement sur l’hôte**  | &#x2705; | &#x2705; | &#x2705; | &#x2705; | &#x2705; | Non sain, non applicable en cas d’exemption |
 
 > [!Important]
-> Pour le chiffrement sur l’hôte, Azure Security Center ne détecte pas l’état de chiffrement.
+> Pour le chiffrement sur l’hôte, Microsoft Defender pour le cloud ne détecte pas l’état de chiffrement.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

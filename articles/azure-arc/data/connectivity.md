@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: f8e52c61db68aaf85af70b6bfb373bd7b331bd29
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 61dec7d7c6391cacb5f25a2fccbda6b4d97b7033
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131555416"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316144"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Modes et exigences de connectivité
 
@@ -34,7 +34,7 @@ Notez que, si les services de données avec Azure Arc sont directement connecté
 
 En outre, Azure Active Directory et le contrôle d’accès en fonction du rôle Azure peuvent être utilisés en mode connecté directement, car il existe une dépendance d’une connexion continue et directe à Azure pour fournir cette fonctionnalité.
 
-Certains services attachés à Azure sont disponibles uniquement lorsqu’ils peuvent être directement accessibles, tels que les services de sécurité Azure Defender, les Insights de conteneur et la Sauvegarde Azure sur stockage blob.
+Certains services attachés à Azure sont disponibles uniquement lorsqu’ils peuvent être directement accessibles, tels que les services de sécurité Microsoft Defender pour le cloud, les Insights de conteneur et la Sauvegarde Azure sur stockage blob.
 
 ||**Connecté indirectement**|**Connecté directement**|**Jamais connecté**|
 |---|---|---|---|
@@ -57,7 +57,7 @@ Certains services attachés à Azure sont disponibles uniquement lorsqu’ils pe
 |**Monitoring**|Prise en charge<br/>Analyse locale à l’aide des tableaux de bord Grafana et Kibana.|Prise en charge<br/>Outre les tableaux de bord de surveillance locaux, vous pouvez _éventuellement_ envoyer des données et des journaux de surveillance à Azure Monitor pour une surveillance à l’échelle de plusieurs sites dans un même emplacement. |
 |**Authentification**|Utilisez le nom d’utilisateur/mot de passe local pour l’authentification du contrôleur de données et du tableau de bord. Utilisez les connexions SQL et Postgres ou Active Directory (AD n’est pas pris en charge pour le moment, mais sera bientôt en préversion) pour la connectivité aux instances de base de données.  Utilisez les fournisseurs d’authentification K8s pour l’authentification auprès de l’API Kubernetes.|En plus ou à la place des méthodes d’authentification pour le mode connecté indirectement, vous pouvez _éventuellement_ utiliser Azure Active Directory. **Disponibilité en attente en mode de connexion directe**|
 |**Contrôle d’accès en fonction du rôle (RBAC)**|Utilisez le contrôle d’accès en fonction du rôle Kubernetes sur l’API Kubernetes. Utilisez le contrôle d’accès en fonction du rôle SQL et Postgres pour les instances de base de données.|Vous pouvez utiliser Azure Active Directory et Azure RBAC. **Disponibilité en attente en mode de connexion directe**|
-|**Azure Defender**|Non pris en charge|Sortie planifiée|
+|**Microsoft Defender pour le cloud**|Non pris en charge|Sortie planifiée|
 
 ## <a name="connectivity-requirements"></a>Connectivité requise
 
@@ -75,7 +75,7 @@ Certains services attachés à Azure sont disponibles uniquement lorsqu’ils pe
 |**Azure Active Directory (AAD) (à venir)**|Environnement client-> Azure -> environnement client|Facultatif|Peut-être, mais vous payez peut-être déjà pour Azure AD|Directe uniquement|Si vous souhaitez utiliser Azure AD pour l’authentification, la connectivité doit être établie avec Azure à tout moment. Si vous ne souhaitez pas utiliser Azure AD pour l’authentification, vous pouvez utiliser les services de fédération Active Directory (AD FS) sur Active Directory. **Disponibilité en attente en mode de connexion directe**|
 |**Sauvegarde et restauration**|Environnement client -> Environnement client|Obligatoire|Non|Direct ou indirect|Le service de sauvegarde et de restauration peut être configuré pour pointer vers des classes de stockage locales. **Disponibilité en attente en mode de connexion directe**|
 |**Sauvegarde Azure – Conservation à long terme (à venir)**| Environnement client-> Azure | Facultatif| Oui, pour Stockage Azure | Directe uniquement |Vous souhaiterez peut-être envoyer des sauvegardes effectuées localement à Sauvegarde Azure pour la rétention à long terme et hors site des sauvegardes, puis les remettre dans l’environnement local pour la restauration. **Disponibilité en attente en mode de connexion directe**|
-|**Services de sécurité Azure Defender (à venir)**|Environnement client-> Azure -> environnement client|Facultatif|Oui|Directe uniquement|**Disponibilité en attente en mode de connexion directe**|
+|**Microsoft Defender pour les services de sécurité cloud (à venir)**|Environnement client-> Azure -> environnement client|Facultatif|Oui|Directe uniquement|**Disponibilité en attente en mode de connexion directe**|
 |**Mise en service et modification de la configuration à partir du Portail Azure**|Environnement client-> Azure -> environnement client|Facultatif|Non|Directe uniquement|Les modifications de provisionnement et de configuration peuvent être effectuées localement à l’aide d’Azure Data Studio ou de l’interface CLI appropriée.  En mode directement connecté, vous serez également en mesure d’approvisionner et d’apporter des modifications de configuration à partir du portail Azure.|
 
 

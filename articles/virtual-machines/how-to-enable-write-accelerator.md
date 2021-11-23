@@ -6,16 +6,16 @@ manager: markkie
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 2/20/2019
+ms.date: 11/10/2021
 ms.author: raiye
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b6db47d812b13bced9d0e52530ec8c59b58be19
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c76e19101fbf6c325d66af2f14dbdc6e063ace9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770796"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331050"
 ---
 # <a name="enable-write-accelerator"></a>Activer l’Accélérateur des écritures
 
@@ -45,7 +45,7 @@ L’activation de l’Accélérateur des écritures sur les disques système n�
 Quand vous utilisez l’Accélérateur des écritures sur un disque/disque dur virtuel Azure, les restrictions suivantes s’appliquent :
 
 - La mise en cache du disque Premium doit être définie sur Aucune ou Lecture seule. Les autres modes de mise en cache ne sont pas pris en charge.
-- Les instantanés ne sont pas pris en charge pour les disques où l’Accélérateur d’écriture est activé. Durant la sauvegarde, le service Sauvegarde Azure exclut automatiquement les disques avec activation de l’Accélérateur d’écriture, qui sont attachés à la machine virtuelle.
+- Les instantanés sont actuellement pris en charge uniquement pour les disques de données avec accélérateur d’écriture, et non pour le disque du système d’exploitation. Lors de la sauvegarde, le service Sauvegarde Azure sauvegarde et protège automatiquement les disques de données avec accélérateur d’écriture attachés à la machine virtuelle.
 - Seules les tailles d’E/S plus petites (<=512 Kio) prennent le chemin accéléré. Dans les cas de charge de travail où les données sont chargées en bloc ou les tampons de journal des transactions des différents systèmes de gestion de base de données (SGBD) sont davantage remplis avant d’être conservés dans le stockage, les E/S écrites sur le disque risquent de ne pas prendre le chemin d’accès accéléré.
 
 L’Accélérateur des écritures prend en charge un nombre limité de disques durs virtuels de stockage Azure Premium par machine virtuelle. Les limites actuelles sont :

@@ -2,19 +2,19 @@
 title: Supprimer un mode de paiement pour la facturation Azure
 description: Décrit la procédure à suivre pour supprimer un mode de paiement utilisé par un abonnement Azure.
 author: bandersmsft
-ms.reviewer: judupont
+ms.reviewer: lishepar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: banders
-ms.openlocfilehash: 1ba1a97acfe2345ed5632ae6f84caacc525f13e4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 6050b98d54cf46bf83168d7d33b9ca44d2bd6eda
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544808"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180027"
 ---
 # <a name="delete-an-azure-billing-payment-method"></a>Supprimer un mode de paiement pour la facturation Azure
 
@@ -84,8 +84,7 @@ Si votre mode de paiement est utilisé par un abonnement MOSP, effectuez les ét
 1. Accédez à **Cost Management + facturation**.
 1. Si nécessaire, sélectionnez une étendue de facturation.
 1. Dans la liste du menu de gauche, sous **Paramètres**, sélectionnez **Modes de paiement**.
-1. Dans la zone Modes de paiement, sélectionnez la _ligne_ où figure votre mode de paiement. Ne sélectionnez pas le lien du mode de paiement. Vous n’êtes pas nécessairement informé visuellement que vous avez sélectionné le mode de paiement.
-1. Sélectionnez **Supprimer**.  
+1. Dans la zone Modes de paiement, sur la ligne sur laquelle le mode de paiement est activé, sélectionnez le symbole de points de suspension ( **...** ), puis **Supprimer**.
     :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="Exemple montrant l’action corrective nécessaire au détachement d’un mode de paiement pour MOSP" :::
 1. Dans la zone Supprimer un mode de paiement, sélectionnez **Supprimer** si toutes les conditions sont remplies. Si l’option Supprimer n’est pas disponible, passez à l’étape suivante.
 1. Une liste de conditions s’affiche. Effectuez les actions listées. Sélectionnez le lien figurant dans la zone Détacher un mode de paiement.  

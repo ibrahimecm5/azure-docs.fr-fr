@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 31a7ed92f6fbdfc60753b91709738209acc38fc2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9c6fcc3fd0bff46bb3c1665b26502be188a3f83e
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465475"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158698"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Options de configuration – Azure Monitor Application Insights pour Java
 
@@ -39,14 +39,14 @@ Vous trouverez plus de détails, ainsi que des options de configuration supplém
 
 ## <a name="configuration-file-path"></a>Chemin d'accès au fichier de configuration
 
-Par défaut, Application Insights Java 3.x s’attend à ce que le fichier config soit nommé `applicationinsights.json` et se trouve dans le même répertoire que `applicationinsights-agent-3.2.2.jar`.
+Par défaut, Application Insights Java 3.x s’attend à ce que le fichier config soit nommé `applicationinsights.json` et se trouve dans le même répertoire que `applicationinsights-agent-3.2.3.jar`.
 
 Vous pouvez spécifier votre propre chemin d’accès au fichier de configuration à l’aide d'un des éléments suivants :
 
 * variable d’environnement `APPLICATIONINSIGHTS_CONFIGURATION_FILE`, ou
 * propriété système Java `applicationinsights.configuration.file`
 
-Si vous spécifiez un chemin d’accès relatif, il sera résolu par rapport au répertoire où se trouve `applicationinsights-agent-3.2.2.jar`.
+Si vous spécifiez un chemin d’accès relatif, il sera résolu par rapport au répertoire où se trouve `applicationinsights-agent-3.2.3.jar`.
 
 ## <a name="connection-string"></a>Chaîne de connexion
 
@@ -194,7 +194,6 @@ Vous pouvez utiliser `${...}` pour lire la valeur de la variable d’environneme
   ]
 }
 ```
-
 
 ## <a name="telemetry-processors-preview"></a>Processeurs de télémétrie (préversion)
 
@@ -437,6 +436,31 @@ Le paramètre s’applique à toutes ces métriques :
 Elle vous permet de configurer l’agent pour générer les [informations d’identification de jeton](/java/api/overview/azure/identity-readme#credentials) requises pour l’authentification Azure Active Directory.
 Pour plus d’informations, consultez la documentation sur l’[Authentification](./azure-ad-authentication.md).
 
+## <a name="instrumentation-keys-overrides-preview"></a>Remplacements de clés d’instrumentation (préversion)
+
+Cette fonctionnalité est en préversion, à partir de 3.2.3.
+
+Les remplacements de clés d’instrumentation vous permettent de remplacer la [clé d’instrumentation par défaut](#connection-string), par exemple :
+* Définissez une clé d’instrumentation pour un préfixe de chemin d’accès HTTP `/myapp1`.
+* Définissez une autre clé d’instrumentation pour un autre préfixe de chemin d’accès HTTP `/myapp2/`.
+
+```json
+{
+  "preview": {
+    "instrumentationKeyOverrides": [
+      {
+        "httpPathPrefix": "/myapp1",
+        "instrumentationKey": "12345678-0000-0000-0000-0FEEDDADBEEF"
+      },
+      {
+        "httpPathPrefix": "/myapp2",
+        "instrumentationKey": "87654321-0000-0000-0000-0FEEDDADBEEF"
+      }
+    ]
+  }
+}
+```
+
 ## <a name="self-diagnostics"></a>Autodiagnostics
 
 La fonctionnalité « Autodiagnostics » fait référence à la journalisation interne à partir d’Application Insights Java 3.x.
@@ -463,7 +487,7 @@ Par défaut, Application Insights Java 3.x se connecte au niveau `INFO` au fich
 
 `level` peut être `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` ou `TRACE`.
 
-`path` peut être un chemin d’accès absolu ou relatif. Les chemins d’accès relatifs sont résolus par rapport au répertoire où se trouve le fichier `applicationinsights-agent-3.2.2.jar`.
+`path` peut être un chemin d’accès absolu ou relatif. Les chemins d’accès relatifs sont résolus par rapport au répertoire où se trouve le fichier `applicationinsights-agent-3.2.3.jar`.
 
 `maxSizeMb` est la taille maximale du fichier journal avant son remplacement.
 

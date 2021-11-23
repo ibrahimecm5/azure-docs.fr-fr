@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 08/24/2021
+ms.date: 11/09/2021
 ms.author: alexeyo
-ms.openlocfilehash: 2ebd9d6946996535f68b52f0093c2b3199c2e256
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: ae288de8ae05efc22534cfaf87c42261a5e6d59a
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509509"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135803"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>Services Speech dans des clouds souverains
 
@@ -68,12 +68,33 @@ Remplacez `<REGION_IDENTIFIER>` par l'identificateur correspondant à la région
 
 #### <a name="speech-sdk"></a>Kit de développement logiciel (SDK) de reconnaissance vocale
 
-Pour le SDK Speech dans les clouds souverains, vous devez utiliser l’instanciation « à partir de l’hôte » de la classe `SpeechConfig` ou l’option `--host` de l’[interface CLI Speech](spx-overview.md). (Vous pouvez également utiliser l’instanciation « à partir du point de terminaison » et l’option `--endpoint` d’interface CLI Speech).
+Pour le [SDK Speech](speech-sdk.md) dans les clouds souverains, vous devez utiliser l’instanciation « from host / with host » de la classe `SpeechConfig` ou l’option `--host` de l’[interface CLI Speech](spx-overview.md). (Vous pouvez également utiliser l’instanciation « from endpoint / with endpoint » et l’option `--endpoint` d’interface CLI Speech).
 
 La classe `SpeechConfig` doit être instanciée comme suit :
+
+# <a name="c"></a>[C#](#tab/c-sharp)
 ```csharp
 var config = SpeechConfig.FromHost(usGovHost, subscriptionKey);
 ```
+# <a name="c"></a>[C++](#tab/cpp)
+```cpp
+auto config = SpeechConfig::FromHost(usGovHost, subscriptionKey);
+```
+# <a name="java"></a>[Java](#tab/java)
+```java
+SpeechConfig config = SpeechConfig.fromHost(usGovHost, subscriptionKey);
+```
+# <a name="python"></a>[Python](#tab/python)
+```python
+import azure.cognitiveservices.speech as speechsdk
+speech_config = speechsdk.SpeechConfig(host=usGovHost, subscription=subscriptionKey)
+```
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
+```objectivec
+SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:usGovHost subscription:subscriptionKey];
+```
+***
+
 L’interface CLI Speech doit être utilisée comme ceci (notez l’option `--host`) :
 ```dos
 spx recognize --host "usGovHost" --file myaudio.wav
@@ -139,12 +160,33 @@ Remplacez `<REGION_IDENTIFIER>` par l'identificateur correspondant à la région
 
 #### <a name="speech-sdk"></a>Kit de développement logiciel (SDK) de reconnaissance vocale
 
-Pour le SDK Speech dans les clouds souverains, vous devez utiliser l’instanciation « à partir de l’hôte » de la classe `SpeechConfig` ou l’option `--host` de l’[interface CLI Speech](spx-overview.md). (Vous pouvez également utiliser l’instanciation « à partir du point de terminaison » et l’option `--endpoint` d’interface CLI Speech).
+Pour le [SDK Speech](speech-sdk.md) dans les clouds souverains, vous devez utiliser l’instanciation « from host / with host » de la classe `SpeechConfig` ou l’option `--host` de l’[interface CLI Speech](spx-overview.md). (Vous pouvez également utiliser l’instanciation « from endpoint / with endpoint » et l’option `--endpoint` d’interface CLI Speech).
 
 La classe `SpeechConfig` doit être instanciée comme suit :
+
+# <a name="c"></a>[C#](#tab/c-sharp)
 ```csharp
 var config = SpeechConfig.FromHost(azCnHost, subscriptionKey);
 ```
+# <a name="c"></a>[C++](#tab/cpp)
+```cpp
+auto config = SpeechConfig::FromHost(azCnHost, subscriptionKey);
+```
+# <a name="java"></a>[Java](#tab/java)
+```java
+SpeechConfig config = SpeechConfig.fromHost(azCnHost, subscriptionKey);
+```
+# <a name="python"></a>[Python](#tab/python)
+```python
+import azure.cognitiveservices.speech as speechsdk
+speech_config = speechsdk.SpeechConfig(host=azCnHost, subscription=subscriptionKey)
+```
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
+```objectivec
+SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:azCnHost subscription:subscriptionKey];
+```
+***
+
 L’interface CLI Speech doit être utilisée comme ceci (notez l’option `--host`) :
 ```dos
 spx recognize --host "azCnHost" --file myaudio.wav

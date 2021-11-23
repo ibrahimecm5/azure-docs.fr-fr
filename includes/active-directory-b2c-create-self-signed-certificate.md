@@ -3,14 +3,14 @@ author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/27/2021
+ms.date: 11/12/2021
 ms.author: kengaderdus
-ms.openlocfilehash: 90c564956db3cfba02c9adee8c4f2fa2c5bac4fa
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 957a119f1a48c1e79326d80a16763204cd41a669
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130050618"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252501"
 ---
 Si vous n’avez pas encore de certificat, vous pouvez utiliser un certificat auto-signé. Un certificat auto-signé est un certificat de sécurité qui n’est pas signé par une autorité de certification et qui n’offre pas les garanties de sécurité d’un certificat signé par une autorité de certification. 
 
@@ -18,7 +18,7 @@ Si vous n’avez pas encore de certificat, vous pouvez utiliser un certificat au
 
 Sur Windows, utilisez l’applet de commande [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) dans PowerShell pour générer un certificat.
 
-1. Exécutez la commande PowerShell suivante pour générer un certificat auto-signé. Modifiez l’argument `-Subject` comme il convient pour votre application et le nom de locataire Azure AD B2C. Vous pouvez également ajuster la date de `-NotAfter` pour spécifier un délai d’expiration différent pour le certificat.
+1. Exécutez la commande PowerShell suivante pour générer un certificat auto-signé. Modifiez l’argument `-Subject` comme il convient pour votre application et le nom de locataire Azure AD B2C, comme `contosowebapp.contoso.onmicrosoft.com`. Vous pouvez également ajuster la date de `-NotAfter` pour spécifier un délai d’expiration différent pour le certificat.
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -31,11 +31,15 @@ Sur Windows, utilisez l’applet de commande [New-SelfSignedCertificate](/powers
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Ouvrez **Gérer les certificats utilisateur** > **Utilisateur actuel** > **Personnel** > **Certificats** > *yourappname.yourtenant.onmicrosoft.com*.
+1. Sur un ordinateur Windows, recherchez et sélectionnez **Gérer les certificats utilisateur** 
+1. Sous **Certificats - Utilisateur actuel**, sélectionnez **Personnel** > **Certificats**>*votrenomdappli.votrelocataire.onmicrosoft.com*.
 1. Choisissez le certificat, puis sélectionnez **Action** > **Toutes les tâches** > **Exporter**.
-1. Sélectionnez **Oui** > **Suivant** > **Oui, exporter la clé privée** > **Suivant**.
-1. Acceptez les valeurs par défaut pour **Format de fichier d’exportation**.
-1. Fournissez un mot de passe pour le certificat.
+1. Sélectionnez **Suivant** > **Oui, exporter la clé privée** > **Suivant**.
+1. Acceptez les valeurs par défaut pour **Format de fichier d’exportation**, puis sélectionnez **Suivant**.
+1. Activez l’option **Mot de passe**, entrez un mot de passe pour le certificat, puis sélectionnez **Suivant**.
+1. Pour spécifier un emplacement d’enregistrement de votre certificat, sélectionnez **Parcourir** et accédez à un répertoire de votre choix. 
+1. Dans la fenêtre **Enregistrer sous**, entrez un **Nom de fichier**, puis sélectionnez **Enregistrer**.
+1. Sélectionnez **Suivant**>**Terminer**.
 
 Pour qu’Azure AD B2C accepte le mot de passe du fichier .pfx, celui-ci doit être chiffré à l’aide de l’option TripleDES-SHA1 de l’utilitaire d’exportation du magasin de certificats Windows, par opposition à AES256-SHA256.
 

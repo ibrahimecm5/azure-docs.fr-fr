@@ -1,21 +1,20 @@
 ---
 title: Présentation du micro-agent Defender-IoT pour Azure RTOS
-description: En savoir plus sur le micro-agent Defender-IoT pour la prise en charge et l’implémentation d’Azure RTOS dans le cadre d’Azure Defender pour IoT.
+description: En savoir plus sur le micro-agent Defender-IoT pour la prise en charge et l’implémentation d’Azure RTOS dans le cadre de Microsoft Defender pour IoT.
 ms.topic: conceptual
-ms.date: 07/01/2021
-ms.openlocfilehash: cf905eb9cff7840eeaac70e731421ba2252193e6
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.date: 11/14/2021
+ms.openlocfilehash: 138c08e510bbfe66cb52460c96ba70764cd3ce20
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303649"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487120"
 ---
 # <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos"></a>Présentation : Defender pour IoT Defender-IoT-micro-agent pour Azure RTOS
 
-Le micromodule Azure Defender pour IoT constitue une solution de sécurité complète pour les appareils qui utilisent Azure RTOS. Il permet de couvrir les menaces courantes et les activités malveillantes potentielles sur les appareils de système d’exploitation en temps réel (RTOS). Azure RTOS est désormais équipé du micro-agent Defender-IoT d’Azure IoT.
+Le micromodule Microsoft Defender pour IoT constitue une solution de sécurité complète pour les appareils qui utilisent Azure RTOS. Il permet de couvrir les menaces courantes et les activités malveillantes potentielles sur les appareils de système d’exploitation en temps réel (RTOS). Azure RTOS est désormais équipé du micro-agent Defender-IoT d’Azure IoT.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Visualisation de Azure Defender pour IoT Azure RTOS.":::
-
 
 Le micromodule pour Azure RTOS offre les fonctionnalités suivantes :
 
@@ -37,7 +36,7 @@ En utilisant l’infrastructure recommandée par Defender pour IoT, vous pouvez 
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Prise en main de la protection des appareils Azure RTOS
 
-Le micro-agent Defender-IoT pour Azure RTOS est fourni en téléchargement gratuit pour vos appareils. Le service Defender pour IoT est disponible avec un essai gratuit de 30 jours par abonnement Azure. Pour commencer, téléchargez le [micro-agent Defender-IoT pour Azure RTOS](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/device-builders/iot-security-azure-rtos.md). 
+Le micro-agent Defender-IoT pour Azure RTOS est fourni en téléchargement gratuit pour vos appareils. Le service Defender pour IoT est disponible avec un essai gratuit de 30 jours par abonnement Azure. Pour commencer, téléchargez le [micro-agent Defender-IoT pour Azure RTOS](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/device-builders/iot-security-azure-rtos.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

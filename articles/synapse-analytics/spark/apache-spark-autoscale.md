@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca093294cb1782da5adeb02888696b38f57de4c
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93313631"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400107"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Mettre automatiquement à l’échelle des pools Apache Spark d’Azure Synapse Analytics
 
@@ -26,8 +26,8 @@ La mise à l’échelle automatique surveille en permanence l’instance Spark e
 
 |Métrique|Description|
 |---|---|
-|Total Pending CPU|Nombre total de cœurs requis pour commencer l’exécution de tous les nœuds en attente.|
-|Total Pending Memory|Mémoire totale (en Mo) nécessaire pour commencer l’exécution de tous les nœuds en attente.|
+|Total Pending CPU|Nombre total de cœurs requis pour commencer l’exécution de tous les travaux en attente.|
+|Total Pending Memory|Mémoire totale (en Mo) nécessaire pour commencer l’exécution de tous les travaux en attente.|
 |Total Free CPU|Somme de tous les cœurs inutilisés sur les nœuds actifs.|
 |Total Free Memory|Somme de la mémoire inutilisée (en Mo) sur les nœuds actifs.|
 |Used Memory per Node|Charge sur un nœud. Un nœud sur lequel 10 Go de mémoire sont utilisés est considéré comme étant plus sollicité qu’un nœud avec 2 Go de mémoire utilisés.|
@@ -45,7 +45,7 @@ Lorsque les conditions suivantes sont détectées, la mise à l’échelle autom
 
 Pour un scale-up, le service Azure Synapse Analytics calcule combien de nouveaux nœuds sont utiles pour répondre aux besoins actuels en UC et en mémoire, puis il émet une requête de scale-up pour ajouter le nombre de nœuds nécessaires.
 
-Pour un scale-down, selon le nombre d’exécuteurs, de maîtres d’application par nœud et les besoins actuels en UC et en mémoire, la fonction de mise à l’échelle automatique émet une requête de suppression d’un certain nombre de nœuds. Le service détecte également les nœuds à supprimer en fonction de l’exécution des travaux en cours. L’opération de descente en puissance désactive tout d’abord les nœuds, puis les supprime du cluster.
+Pour une montée en puissance, en fonction du nombre d’exécuteurs, des maîtres d’application par nœud, des besoins actuels en mémoire et de l’UC, la mise à l’échelle automatique émet une demande de suppression d’un certain nombre de nœuds. Le service détecte également les nœuds à supprimer en fonction de l’exécution des travaux en cours. L’opération de descente en puissance désactive tout d’abord les nœuds, puis les supprime du cluster.
 
 ## <a name="get-started"></a>Bien démarrer
 
@@ -60,6 +60,26 @@ Pour activer la fonctionnalité de mise à l’échelle automatique, procédez c
     * Nombre **Maximum** de nœuds.
 
 Le nombre initial de nœuds est le nombre minimal. Cette valeur définit la taille initiale de l’instance lors de sa création. Le nombre minimal de nœuds ne peut pas être inférieur à trois.
+
+Si vous le souhaitez, vous pouvez activer l’allocation dynamique des exécuteurs dans les scénarios où les spécifications de l’exécuteur sont très différentes entre les étapes d’un travail Spark ou si le volume de données traitées fluctue avec le temps. En activant l’allocation dynamique des exécuteurs, nous pouvons utiliser la capacité en fonction des besoins.
+
+Lors de l’activation de l’allocation dynamique d’exécuteurs pendant la création d’un pool Spark, le nombre minimal et maximal de nœuds peut être défini en fonction des limites des nœuds disponibles. Ces valeurs sont par défaut toutes les nouvelles sessions créées dans le pool.
+
+Apache Spark permet la configuration de l’allocation dynamique d’exécuteurs à l’aide de code, comme ci-dessous :
+
+```
+    %%configure -f
+    {
+        "conf" : {
+            "spark.dynamicAllocation.maxExecutors" : "6",
+            "spark.dynamicAllocation.enable": "true",
+            "spark.dynamicAllocation.minExecutors": "2"
+     }
+    }
+```
+Les valeurs par défaut spécifiées par le biais du code remplacent les valeurs définies par le biais de l’interface utilisateur.
+
+Lors de l’activation de l’allocation dynamique, les exécuteurs se mettent à l’échelle en fonction de l’utilisation des exécuteurs. Cela garantit que les exécuteurs sont approvisionnés conformément aux besoins du travail en cours d’exécution.
 
 ## <a name="best-practices"></a>Meilleures pratiques
 

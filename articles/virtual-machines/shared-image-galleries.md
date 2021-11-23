@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: fa87bdf9acca99b38f63ec6e9547d5cc5279afc5
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 9dd8978fe61bc8c952e4e06d8569141387caecca
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132060904"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132133508"
 ---
 # <a name="store-and-share-images-in-an-azure-compute-gallery"></a>Stocker et partager des images dans une galerie Azure Compute Gallery
 
@@ -22,7 +22,7 @@ ms.locfileid: "132060904"
 
 Azure Compute Gallery comprend désormais le service existant Shared Image Gallery et les nouvelles fonctionnalités et capacités [d’applications de machine virtuelle](vm-applications.md).  
 
-Une galerie Azure Compute Gallery vous aide à créer une structure et une organisation autour de vos ressources Azure, comme des images et des [applications])(VM-applications.md). Une galerie Azure Compute Gallery fournit :
+Une galerie Azure Compute Gallery vous aide à créer une structure et une organisation autour de vos ressources Azure, comme des images et des [applications](vm-applications.md). Une galerie Azure Compute Gallery fournit :
 - Une réplication globale.
 - Un contrôle de version et un regroupement de ressources pour une gestion simplifiée.
 - Des ressources hautement disponibles avec des comptes de stockage redondant interzone (ZRS, Zone Redundant Storage) dans les régions qui prennent en charge les zones de disponibilité. Le stockage redondant interzone (ZRS) offre une meilleure résilience en cas de défaillances de zones.

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/21/2021
-ms.openlocfilehash: e970108e225ef527b7772573b317272be1a775ce
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: aa24ce0f540137f516b7de8452a0ca85c684100e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557715"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337204"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Déployer un modèle sur un cluster Azure Kubernetes Service
 
@@ -389,7 +389,7 @@ print(token)
 
 ### <a name="vulnerability-scanning"></a>Analyse des vulnérabilités
 
-Azure Security Center fournit des fonctionnalités unifiées de gestion de la sécurité et de protection avancée contre les menaces sur l’ensemble des charges de travail cloud hybrides. Vous devez autoriser Azure Security Center à analyser vos ressources et suivre ses recommandations. Pour plus d’informations, consultez [Intégration d’Azure Kubernetes Service à Security Center](../security-center/defender-for-kubernetes-introduction.md).
+Microsoft Defender pour cloud fournit une gestion unifiée de la sécurité et une protection avancée contre les menaces dans les charges de travail cloud hybrides. Vous devez autoriser Microsoft Defender pour le cloud à analyser vos ressources et à suivre ses recommandations. Pour plus d’informations, consultez [Intégration d’Azure Kubernetes Service à Defender pour le cloud](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

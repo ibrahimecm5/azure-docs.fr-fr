@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: e3fd54dba324ddd8e7340e47d6b7f63ee6b2ea5b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 45dc0c2fdfa8815c2adc1bd3fd0e8a508235c46e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233363"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308026"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Guide de référence des opérations de gestion de l’authentification Azure Active Directory
 
@@ -158,7 +158,7 @@ La fourniture d’un mécanisme d’authentification unique standardisé à l’
 ![Connexion au proxy d’application basée sur des mots de passe](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
-> Si vous n’avez pas de mécanisme pour découvrir des applications non managées dans votre organisation, nous vous recommandons d’implémenter un processus de découverte en utilisant une solution CASB (Cloud Access Security Broker), comme [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security).
+> Si vous n’avez pas de mécanisme pour découvrir des applications non managées dans votre organisation, nous vous recommandons d’implémenter un processus de découverte en utilisant une solution CASB (Cloud Access Security Broker), comme [Microsoft Defender for Cloud Apps](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security).
 
 Enfin, si vous disposez d’une galerie d’applications Azure AD et que vous utilisez des applications qui prennent en charge l’authentification unique avec Azure AD, nous vous recommandons de [placer les applications dans la galerie d’applications](../develop/v2-howto-app-gallery-listing.md).
 

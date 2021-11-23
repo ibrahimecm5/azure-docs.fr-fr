@@ -6,14 +6,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 11/10/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 6718270b7b996813f4503e58cf2609e7eb3add00
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 88e5310a53bfd5fed79ae0a9a6efc06d91fdb0cf
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733405"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132933948"
 ---
 # <a name="how-to-display-iot-connector-metrics"></a>Comment afficher les métriques d’un connecteur IoT
 
@@ -76,6 +76,9 @@ Dans cet article, vous allez apprendre à afficher les métriques de connecteur 
 5. Sélectionnez le tableau de bord auquel vous avez épinglé la vignette mesures. Pour cet exemple, le tableau de bord est `IoT connector Metrics` . Le tableau de bord affiche la vignette des métriques du connecteur IoT que vous avez créée lors des étapes précédentes.
 
     :::image type="content" source="media\iot-metrics\iot-dashboard-with-metrics-tile-displayed.png" alt-text="Tableau de bord avec la vignette des métriques du connecteur IoT épinglé." lightbox="media\iot-metrics\iot-dashboard-with-metrics-tile-displayed.png":::
+
+> [!TIP]
+> Pour plus d’informations sur les erreurs et les problèmes courants, consultez le [Guide de dépannage](./iot-troubleshoot-guide.md) du connecteur IOT.
 
 ## <a name="conclusion"></a>Conclusion 
 

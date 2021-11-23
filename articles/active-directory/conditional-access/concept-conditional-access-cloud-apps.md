@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d56443885c79f6d5aa153695df76156f4f9407
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a0bd64f8e3377b78f276b1b3c4bdef6f43d8c76
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012678"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308045"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>Accès conditionnel : applications, actions et contexte d’authentification cloud
 
@@ -45,7 +45,7 @@ Les administrateurs peuvent affecter une stratégie d’accès conditionnel aux 
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Gestion Microsoft Azure](#microsoft-azure-management)
 - Gestion des abonnements Microsoft Azure
-- Microsoft Cloud App Security
+- Microsoft Defender for Cloud Apps
 - Portail de contrôle des accès aux outils de Microsoft Commerce
 - Service d’authentification des outils Microsoft Commerce
 - Microsoft Forms
@@ -144,7 +144,7 @@ Les actions utilisateur sont des tâches qui peuvent être effectuées par un ut
 
 ## <a name="authentication-context-preview"></a>Contexte d’authentification (préversion)
 
-Un contexte d’authentification permet de renforcer la sécurité des données et des actions dans des applications. Il peut s’agir de vos propres applications personnalisées, d’applications métier personnalisées, d’applications telles que SharePoint, ou d’applications protégées par Microsoft Cloud App Security (MCAS). 
+Un contexte d’authentification permet de renforcer la sécurité des données et des actions dans des applications. Il peut s’agir de vos propres applications personnalisées, d’applications métier personnalisées, d’applications telles que SharePoint, ou d’applications protégées par Microsoft Defender for Cloud Apps. 
 
 Par exemple, une organisation peut conserver dans des sites SharePoint des fichiers tels que le menu du déjeuner ou sa recette secrète de sauce barbecue. Tout le monde peut avoir accès au site du menu du déjeuner, mais les utilisateurs qui ont accès au site de la recette secrète de sauce barbecue peuvent être tenus d’y accéder à partir d’un appareil géré et d’accepter des conditions d’utilisation spécifiques.
 
@@ -176,7 +176,7 @@ Les administrateurs peuvent sélectionner des contextes d’authentification pub
 Pour plus d’informations sur l’utilisation d’un contexte d’authentification dans des applications, consultez les articles suivants.
 
 - [Étiquettes de confidentialité Microsoft Information Protection pour protéger des sites SharePoint](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option)
-- [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
+- [Microsoft Defender for Cloud Apps](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [Applications personnalisées](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>Étapes suivantes

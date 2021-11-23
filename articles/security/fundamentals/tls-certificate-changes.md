@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 09/13/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 01acde63371fea6a8c3f752caf31fa883e5e617e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cc8cdfcfeee8c5deefe64799be7c6ee27cb644f6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641215"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135806"
 ---
 # <a name="azure-tls-certificate-changes"></a>Modification des certificats Azure TLS  
 
@@ -30,7 +30,7 @@ Tous les services Azure sont affectés par cette modification. Voici quelques d�
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) et [DPS](../../iot-dps/index.yml) resteront dans l’autorité de certification racine Baltimore CyberTrust, mais leurs autorités de certification intermédiaires changeront. [Pour plus d’informations, cliquez ici](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 - Pour le [Stockage Azure](../../storage/index.yml), [cliquez ici pour plus d’informations](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581).
 - [Azure Cache pour Redis](../../azure-cache-for-redis/index.yml) restera dans l’autorité de certification racine Baltimore CyberTrust, mais ses autorités de certification intermédiaires changeront. [Pour plus d’informations, cliquez ici](../../azure-cache-for-redis/cache-whats-new.md).
-- Azure Instance Metadata Service restera dans l’autorité de certification racine Baltimore CyberTrust mais ses autorités de certification intermédiaires changeront. [Pour plus d’informations, cliquez ici](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html).
+- Pour les [Azure Instance Metadata Service](../../virtual-machines/linux/instance-metadata-service.md?tabs=linux), consultez [Azure Instance Metadata Service - Données attestées et TLS : des changements critiques seront bientôt appliqués !](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-instance-metadata-service-attested-data-tls-critical/ba-p/2888953) pour plus d’informations.
 
 > [!IMPORTANT]
 > Les clients devront peut-être mettre à jour leurs applications après cette modification pour éviter les échecs de connectivité au Stockage Azure.

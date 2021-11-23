@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/02/2021
-ms.openlocfilehash: 1324c26491e8c6f6368700d41f7f0aa8b12de8c6
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: c1506fe5fae652c198d53b5b354e818ede5c8a46
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122534901"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315783"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor"></a>Analyse des machines virtuelles avec Azure Monitor
 Ce scénario décrit comment utiliser Azure Monitor pour surveiller l’intégrité et les performances des machines virtuelles et de leurs charges de travail. Il comprend la collecte des données de télémétrie critiques pour la surveillance, la surveillance et la visualisation des données collectées pour identifier les tendances, et comment configurer des alertes pour être informé de manière proactive des problèmes critiques.
@@ -59,9 +59,9 @@ Ce scénario se concentre sur [VM Insights](../vm/vminsights-overview.md), qui e
 Tout outil de surveillance comme Azure Monitor requiert qu’un agent soit installé sur une machine pour collecter des données à partir de son système d’exploitation invité. Azure Monitor possède actuellement plusieurs agents qui collectent des données, envoient ces données à différents emplacements et prennent en charge différentes fonctionnalités. VM insights gère le déploiement et la configuration des agents qui seront utilisés par la plupart des clients. Les différents agents sont décrits dans le tableau suivant au cas où vous auriez besoin des scénarios pris en charge. Pour une description détaillée et une comparaison des différents agents, consultez [Vue d’ensemble des agents Azure Monitor](../agents/agents-overview.md).
 
 > [!NOTE]
-> L’agent Azure Monitor remplace complètement l’agent Log Analytics, l’extension de diagnostic et l’agent Telegraf une fois qu’il a obtenu les fonctionnalités requises. Ces autres agents sont toujours requis pour les fonctionnalités telles que VM insights, Azure Security Center et Azure Sentinel.
+> L’agent Azure Monitor remplace complètement l’agent Log Analytics, l’extension de diagnostic et l’agent Telegraf une fois qu’il a obtenu les fonctionnalités requises. Ces autres agents sont toujours requis pour des fonctionnalités comme les insights de machine virtuelle, Microsoft Defender pour le cloud et Microsoft Sentinel.
 
-- [Agent Azure Monitor](../agents/agents-overview.md#log-analytics-agent) : compatible avec les machines virtuelles dans Azure, dans d’autres environnements cloud et localement. Envoie des données, des métriques et des journaux Azure Monitor. Lorsqu’il prend entièrement en charge VM insights, Azure Security Center et Azure Sentinel, il remplace complètement l’agent Log Analytics et l’extension de diagnostic.
+- [Agent Azure Monitor](../agents/agents-overview.md#azure-monitor-agent) : compatible avec les machines virtuelles dans Azure, dans d’autres environnements cloud et localement. Envoie des données, des métriques et des journaux Azure Monitor. Lorsqu’il prend entièrement en charge VM insights, Microsoft Defender pour le cloud et Microsoft Sentinel, il remplace complètement l’agent Log Analytics et l’extension de diagnostic.
 - [Agent Log Analytics](../agents/agents-overview.md#log-analytics-agent) : compatible avec les machines virtuelles dans Azure, dans d’autres environnements cloud et localement. Envoie les données dans les journaux Azure Monitor. Prend en charge les solutions VM Insights et de surveillance. Il s’agit du même agent que celui utilisé pour System Center Operations Manager.
 - [Dependency Agent](../agents/agents-overview.md#dependency-agent) : collecte les données des processus exécutés sur la machine virtuelle et leurs dépendances. S’appuie sur l’agent Log Analytics pour transmettre des données dans Azure, et prend en charge les solutions VM Insights, Service Map et Wire Data 2.0.
 - [Extension de diagnostic Azure](../agents/agents-overview.md#azure-diagnostics-extension) : disponible pour les machines virtuelles Azure Monitor uniquement. Elle peut envoyer des données à Azure Event Hubs et au stockage Azure.

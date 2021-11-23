@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/06/2020
-ms.openlocfilehash: 537163b4a78954443eeb7799dc624837ba03e2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cac077bf962e8d021fb554acb5576d9d5665ebe6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036620"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284737"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Sources des données de surveillance pour Azure Monitor
 Azure Monitor repose sur une [plateforme commune de données de surveillance](../data-platform.md) qui inclut des [journaux](../logs/data-platform-logs.md) et des [métriques](../essentials/data-platform-metrics.md). La collecte des données dans cette plate-forme permet d'analyser ensemble des données provenant de plusieurs ressources à l'aide d'un ensemble commun d'outils dans Azure Monitor. Les données de surveillance peuvent également être envoyées à d'autres endroits pour étayer certains scénarios, et certaines ressources peuvent écrire des données sur d'autres sites afin de consigner ces informations dans des journaux ou des métriques.
@@ -179,7 +179,7 @@ Les [solutions de supervision](../insights/solutions.md) et [Insights](../monito
 |:---|:---|:---|
 | Journaux Azure Monitor | Stocke les données de surveillance pour AKS, y compris l'inventaire, les journaux et les événements. Les données métriques sont également stockées dans les journaux afin de tirer parti de sa fonctionnalité d'analyse dans le portail. | [Comprendre les performances du cluster AKS avec Container Insights](../containers/container-insights-analyze.md) |
 | Métriques Azure Monitor | Les données métriques sont stockées dans la base de données de métriques pour gérer la visualisation et les alertes. | [Afficher les métriques du conteneur dans Metrics Explorer](../containers/container-insights-analyze.md#view-container-metrics-in-metrics-explorer). |
-| Azure Kubernetes Service | Fournit un accès direct à vos journaux de conteneur (stdout/stderror), événements et mesures de pod Azure Kubernetes Service (AKS) dans le portail. | [Comment afficher les journaux, événements et mesures de pod Kubernetes en temps réel ](../containers/container-insights-livedata-overview.md) |
+| Azure Kubernetes Service | Fournit un accès direct à vos journaux de conteneur (stdout/stderror), événements et mesures de pod Azure Kubernetes Service (AKS) dans le portail. | [Comment voir les journaux, métriques de pod et événements Kubernetes en temps réel](../containers/container-insights-livedata-overview.md) |
 
 ### <a name="vm-insights"></a>VM Insights
 [VM Insights](../vm/vminsights-overview.md) fournit une expérience personnalisée pour la surveillance des machines virtuelles. Une description des données recueillies par VM Insights est incluse dans la section [Système d’exploitation (invité)](#operating-system-guest) ci-dessus.
@@ -200,8 +200,8 @@ D'autres services Azure écrivent les données sur la plate-forme de données Az
 
 | Service | Destination | Description | Informations de référence |
 |:---|:---|:---|:---|
-| [Centre de sécurité Azure](../../security-center/index.yml) | Journaux Azure Monitor | Azure Security Center stocke les données de sécurité qu'il collecte dans un espace de travail Log Analytics afin de les analyser avec d'autres données collectées par Azure Monitor.  | [Collecte de données dans Azure Security Center](../../security-center/security-center-enable-data-collection.md) |
-| [Azure Sentinel](../../sentinel/index.yml) | Journaux Azure Monitor | Azure Sentinel stocke dans un espace de travail Log Analytics les données de sécurité qu'il collecte de différentes source de données afin de les analyser avec d'autres données collectées par Azure Monitor.  | [Connecter des sources de données](../../sentinel/quickstart-onboard.md) |
+| [Microsoft Defender pour le cloud](../../security-center/index.yml) | Journaux Azure Monitor | Microsoft Defender pour le cloud stocke les données de sécurité qu’il collecte dans un espace de travail Log Analytics afin de les analyser avec d’autres données collectées par Azure Monitor.  | [Collecte de données dans Microsoft Defender pour le cloud](../../security-center/security-center-enable-data-collection.md) |
+| [Microsoft Sentinel](../../sentinel/index.yml) | Journaux Azure Monitor | Microsoft Sentinel stocke dans un espace de travail Log Analytics les données de sécurité qu’il collecte de différentes sources de données afin de les analyser avec d’autres données collectées par Azure Monitor.  | [Connecter des sources de données](../../sentinel/quickstart-onboard.md) |
 
 
 ## <a name="next-steps"></a>Étapes suivantes

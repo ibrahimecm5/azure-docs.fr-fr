@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: a432f62c3eb01843d20858bc37a5f30fdb437572
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0c3cb5671dfb0a38626e68ba6dd25fb380e70942
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131081103"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294026"
 ---
 # <a name="migrate-availability-group-to-sql-server-on-azure-vm"></a>Migrer un groupe de disponibilité vers SQL Server sur une machine virtuelle Azure
 
@@ -346,10 +346,10 @@ Votre groupe de disponibilité Always On est prêt.
     - Sécurisez les données en sauvegardant les machines virtuelles Azure avec le [service Sauvegarde Azure](../../../backup/quick-backup-vm-portal.md). 
     - Maintenez les charges de travail en cours d’exécution et disponibles en permanence en répliquant les machines virtuelles Azure vers une région secondaire avec [Site Recovery](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pour renforcer la sécurité :
-    - Verrouillez et limitez l’accès du trafic entrant avec l’[administration juste-à-temps d’Azure Security Center](../../../security-center/security-center-just-in-time.md).
+    - Verrouillez et limitez l’accès du trafic entrant avec l’[administration juste-à-temps de Microsoft Defender pour le cloud](../../../security-center/security-center-just-in-time.md).
     - Limitez le trafic réseau vers les points de terminaison de gestion avec des [groupes de sécurité réseau](../../../virtual-network/network-security-groups-overview.md).
     - Déployez [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) pour sécuriser les disques, et protégez les données contre le vol et les accès non autorisés.
-    - Découvrez plus d’informations sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) et visitez [Azure Security Center](https://azure.microsoft.com/services/security-center/).
+    - Pour en savoir plus sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), consultez le site [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/).
 - Pour la surveillance et la gestion :
     - Envisagez de déployer [Azure Cost Management](../../../cost-management-billing/cost-management-billing-overview.md) pour surveiller l’utilisation et les coûts des ressources.
 

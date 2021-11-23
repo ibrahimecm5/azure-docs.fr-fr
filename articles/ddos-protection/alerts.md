@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 1ea079802a2628b8a698e108f6f689ff5e58f08b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 315f97e6c392578e10159c767c56111e6c34f544
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750288"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286924"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Afficher et configurer les alertes de protection DDoS
 
-La norme Azure DDoS Protection fournit une visualisation et des insights détaillés sur les attaques avec l’analyse des attaques DDoS. Les clients qui protègent leurs réseaux virtuels contre les attaques DDoS ont une visibilité détaillée du trafic des attaques et des mesures prises pour leur prévention par le biais de rapports de prévention des attaques et de journaux de flux de prévention des attaques. La télémétrie enrichie est exposée via Azure Monitor et inclut des métriques détaillées pendant la durée d’une attaque DDoS. La génération d’alertes peut être configurée pour l’une des métriques Azure Monitor exposées par DDoS Protection. La journalisation peut être également intégrée à [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics et Stockage Azure pour l’analyse avancée par le biais de l’interface de diagnostic d’Azure Monitor.
+La norme Azure DDoS Protection fournit une visualisation et des insights détaillés sur les attaques avec l’analyse des attaques DDoS. Les clients qui protègent leurs réseaux virtuels contre les attaques DDoS ont une visibilité détaillée du trafic des attaques et des mesures prises pour leur prévention par le biais de rapports de prévention des attaques et de journaux de flux de prévention des attaques. La télémétrie enrichie est exposée via Azure Monitor et inclut des métriques détaillées pendant la durée d’une attaque DDoS. La génération d’alertes peut être configurée pour l’une des métriques Azure Monitor exposées par DDoS Protection. La journalisation peut également être intégrée à [Microsoft Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics et Stockage Azure pour l’analyse avancée par le biais de l’interface de diagnostic d’Azure Monitor.
 
 Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
 > [!div class="checklist"]
 > * Configurer des alertes via Azure Monitor
 > * Configurer des alertes via le portail
-> * Afficher les alertes dans Azure Security Center
+> * Afficher les alertes dans Microsoft Defender pour le cloud
 > * Valider et tester vos alertes
 
 ## <a name="prerequisites"></a>Prérequis
@@ -74,16 +74,16 @@ Dans les minutes qui suivent la détection d’une attaque, vous devez recevoir 
 
 Vous pouvez également découvrir plus en détail la [configuration de webhooks](../azure-monitor/alerts/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) et les [applications logiques](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pour créer des alertes.
 
-## <a name="view-alerts-in-azure-security-center"></a>Afficher les alertes dans Azure Security Center
+## <a name="view-alerts-in-microsoft-defender-for-cloud"></a>Afficher les alertes dans Microsoft Defender pour le cloud
 
-Azure Security Center fournit une liste des [alertes de sécurité](../security-center/security-center-managing-and-responding-alerts.md), accompagnée d’informations pour examiner et corriger les problèmes. Avec cette fonctionnalité, vous obtenez une vue unifiée des alertes, y compris les alertes en rapport avec les attaques DDoS et les actions mises en place pour atténuer l’attaque en temps quasi-réel.
+Microsoft Defender pour le cloud fournit une liste des [alertes de sécurité](../security-center/security-center-managing-and-responding-alerts.md), accompagnée d’informations pour examiner et corriger les problèmes. Avec cette fonctionnalité, vous obtenez une vue unifiée des alertes, y compris les alertes en rapport avec les attaques DDoS et les actions mises en place pour atténuer l’attaque en temps quasi-réel.
 Il existe deux alertes spécifiques qui seront affichées pour toutes les détections et atténuation d’attaque DDoS :
 
 - **DDoS Attack detected for Public IP** (Attaque DDoS détectée pour l’adresse IP publique) : Cette alerte est générée lorsque le service de protection DDoS détecte que l’une de vos adresses IP publiques est la cible d’une attaque DDoS.
 - **DDoS Attack mitigated for Public IP** (Attaque DDoS atténuée pour l’adresse IP publique) : Cette alerte est générée lorsqu’une attaque sur l’adresse IP publique a été atténuée.
-Pour afficher les alertes, ouvrez **Security Center** dans le portail Azure. Sous **Protection contre les menaces**, sélectionnez **Alertes de sécurité**. La capture d’écran suivante présente un exemple des alertes d’attaque DDoS.
+Pour afficher les alertes, ouvrez **Defender pour le cloud** dans le portail Azure. Sous **Protection contre les menaces**, sélectionnez **Alertes de sécurité**. La capture d’écran suivante présente un exemple des alertes d’attaque DDoS.
 
-![Alerte DDoS dans Azure Security Center](./media/manage-ddos-protection/ddos-alert-asc.png)
+![Alerte DDoS dans Microsoft Defender pour le cloud](./media/manage-ddos-protection/ddos-alert-asc.png)
 
 Les alertes incluent des informations générales sur l’adresse IP publique faisant l’objet de l’attaque, des informations géographiques et sur l’intelligence des menaces, ainsi que des étapes de correction.
 
@@ -97,7 +97,7 @@ Dans ce didacticiel, vous avez appris à :
 
 - Configurer des alertes via Azure Monitor
 - Configurer des alertes via le portail
-- Afficher les alertes dans Azure Security Center
+- Afficher les alertes dans Microsoft Defender pour le cloud
 - Valider et tester vos alertes
 
 Pour savoir comment tester et simuler une attaque DDoS, consultez le guide de test de simulation :

@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 7def9d932f36a7720d0da7e19a29cf72f2ef0b98
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9c8ce02be3301bdfaf8d151ef84e1475edaa6b03
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733411"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132937257"
 ---
 # <a name="how-to-use-jsonpathcontenttemplate-mappings"></a>Utilisation des mappages de JsonPathContentTemplate
 
@@ -224,6 +224,9 @@ Le JsonPathContentTemplate permet la correspondance et l’extraction des valeur
     }
 }
 ```
+
+> [!TIP]
+> Pour plus d’informations sur les erreurs et les problèmes courants, consultez le [Guide de dépannage](./iot-troubleshoot-guide.md) du connecteur IOT.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

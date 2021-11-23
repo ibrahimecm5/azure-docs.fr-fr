@@ -1,18 +1,18 @@
 ---
 title: Prise en charge et mise hors service des fonctionnalités
 description: Defender pour IoT continuera à prendre en charge C, C# et Edge jusqu’au 1er mars 2022.
-ms.date: 07/18/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 37848fea276b7925e4e8bd711dd1abe4c0bd338e
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 441f01261ff3f22a39ac6754221fb671a362c387
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114400883"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281870"
 ---
 # <a name="feature-support-and-retirement"></a>Prise en charge et mise hors service des fonctionnalités
 
-Cet article décrit les fonctionnalités Azure Defender pour IoT et la prise en charge de différentes fonctionnalités dans Defender pour IoT.
+Cet article décrit les fonctionnalités Microsoft Defender pour IoT et la prise en charge de différentes fonctionnalités dans Defender pour IoT.
 
 ## <a name="defender-for-iot-c-c-and-edge-defender-iot-micro-agent-deprecation"></a>Dépréciation de Defender for IoT C, C# et du micro-agent Defender-IoT Edge
 
@@ -38,4 +38,4 @@ Pendant la phase de préversion, le micro-agent peut faire l’objet de modifica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Consultez [Forum aux questions sur Azure Defender pour IoT](resources-agent-frequently-asked-questions.md).
+Consultez le [Forum aux questions sur Microsoft Defender pour IoT](resources-agent-frequently-asked-questions.md).

@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 228e0ac6243ae25463a81967c6d5cbcd903ad2ce
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eec377641eca7dd31ab04e9f6cdee949352d4a61
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824167"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491143"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>Modifier les paramètres de l’hôte et de l’application pour les applications logiques dans Azure Logic Apps monolocataire
 
@@ -163,6 +163,15 @@ Ces paramètres affectent le débit et la capacité d’Azure Logic Apps monoloc
 |---------|---------------|-------------|
 | `Runtime.FlowRetentionThreshold` | `90.00:00:00` <br>(90 jours) | Définit la durée de conservation de l’historique des exécutions du workflow après le démarrage d’une exécution. |
 | `Runtime.Backend.FlowRunTimeout` | `90.00:00:00` <br>(90 jours) | Définit la durée pendant laquelle un workflow peut continuer à s’exécuter avant de forcer un délai d’expiration. <p><p>**Important** : Assurez-vous que cette valeur est inférieure ou égale à la valeur `Runtime.FlowRetentionThreshold`. Sinon, les historiques des exécutions peuvent être supprimés avant la fin des travaux associés. |
+||||
+   
+<a name="run-actions"></a>
+
+### <a name="run-actions"></a>Actions d’exécution
+
+| Paramètre | Valeur par défaut | Description |
+|---------|---------------|-------------|
+| `Runtime.FlowRunRetryableActionJobCallback.ActionJobExecutionTimeout` | `00:10:00` <br>(10 minutes) | Définit la durée d’exécution d’un travail d’action de workflow avant expiration et nouvelle tentative. |
 ||||
 
 <a name="inputs-outputs"></a>

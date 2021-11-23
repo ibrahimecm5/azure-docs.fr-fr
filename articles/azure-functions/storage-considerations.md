@@ -2,18 +2,17 @@
 title: Considérations relatives au stockage pour Azure Functions
 description: En savoir plus sur les exigences de stockage d’Azure Functions et sur le chiffrement des données stockées.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: 6dc2bad744118e57b9e958658814f5c194f633ad
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/09/2021
+ms.openlocfilehash: 0e53d2919d8af3f0e8162d4aca9f55f2ec0ab740
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216615"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335876"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Considérations relatives au stockage pour Azure Functions
 
 Azure Functions nécessite un compte Stockage Azure lorsque vous créez une instance d’application de fonction. Les services de stockage suivants peuvent être utilisés par votre application de fonction :
-
 
 |Service de stockage  | Utilisation de Functions  |
 |---------|---------|
@@ -52,6 +51,10 @@ La chaîne de connexion du compte de stockage doit être mise à jour lorsque vo
 ### <a name="shared-storage-accounts"></a>Comptes de stockage partagés
 
 Plusieurs applications de fonction peuvent partager le même compte de stockage sans aucun problème. Par exemple, dans Visual Studio, vous pouvez développer plusieurs applications à l’aide de l’émulateur Stockage Azure. Dans ce cas, l’émulateur agit comme un compte de stockage unique. Le même compte de stockage que celui utilisé par votre application de fonction peut également être utilisé pour stocker vos données d’application. Toutefois, cette approche n’est pas toujours recommandée dans un environnement de production.
+
+### <a name="lifecycle-management-policy-considerations"></a>Considérations relatives à la stratégie de gestion du cycle de vie
+
+Functions utilise le stockage d’objets Blob pour conserver des informations importantes, telles que les [touches d’accès aux fonctions](functions-bindings-http-webhook-trigger.md#authorization-keys). Lorsque vous appliquez une [stratégie de gestion du cycle de vie](../storage/blobs/lifecycle-management-overview.md) à votre compte Stockage Blob, la stratégie peut supprimer les objets Blob requis par l’hôte Functions. Pour cette raison, vous ne devez pas appliquer de telles stratégies au compte de stockage utilisé par Functions. Si vous n’avez pas besoin d’appliquer une telle stratégie, n’oubliez pas d’exclure les conteneurs utilisés par Functions, qui sont généralement préfixés avec `azure-webjobs` ou `scm`.
 
 ### <a name="optimize-storage-performance"></a>Optimiser les performances de stockage
 

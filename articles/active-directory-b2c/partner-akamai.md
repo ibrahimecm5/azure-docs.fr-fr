@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 09f35e9621f6704fb33720a43afb38fd99e9eec6
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: ea95f9194913b4df00f0b75e7e44ab301b000b95
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213912"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283218"
 ---
 # <a name="tutorial-configure-akamai-with-azure-active-directory-b2c"></a>Tutoriel : Configurer Akamai avec Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Avant de commencer, vérifiez que vous disposez des éléments suivants :
 - Un [locataire Azure AD B2C](tutorial-create-tenant.md) lié à votre abonnement Azure.
 
 - Un compte de [pare-feu d’applications web Akamai](https://www.akamai.com/us/en/akamai-free-trials.jsp).
- 
+
 ## <a name="scenario-description"></a>Description du scénario
 
 L’intégration du pare-feu d’applications web Akamai inclut les composants suivants :
@@ -65,25 +65,25 @@ L’intégration du pare-feu d’applications web Akamai inclut les composants s
 
 [Inscrivez-vous](https://www.akamai.com) et créez un compte Akamai.
 
-### <a name="create-and-configure-property"></a>Créer et configurer une propriété 
+### <a name="create-and-configure-property"></a>Créer et configurer une propriété
 
 1. [Créez une nouvelle propriété](https://control.akamai.com/wh/CUSTOMER/AKAMAI/en-US/WEBHELP/property-manager/property-manager-help/GUID-14BB87F2-282F-4C4A-8043-B422344884E6.html).
 
-2. Configurez les paramètres des propriétés comme suit :  
+2. Configurez les paramètres des propriétés comme suit :
 
-| Propriété | Valeur |
-|:---------------|:---------------|
-|Version de la propriété | Sélectionnez le protocole TLS standard ou étendu (recommandé). |
-|Noms d’hôtes de la propriété | Ajoutez un nom d’hôte de la propriété. Il s’agit du nom de votre domaine personnalisé, par exemple : login.domain.com. <BR> Créez ou modifiez un certificat avec les paramètres appropriés pour le nom de domaine personnalisé. Pour plus d’informations, consultez [cette page](https://learn.akamai.com/en-us/webhelp/property-manager/https-delivery-with-property-manager/GUID-9EE0EB6A-E62B-4F5F-9340-60CBD093A429.html). |
+    | Propriété | Valeur |
+    |:---------------|:---------------|
+    |Version de la propriété | Sélectionnez le protocole TLS standard ou étendu (recommandé). |
+    |Noms d’hôtes de la propriété | Ajoutez un nom d’hôte de la propriété. Il s’agit du nom de votre domaine personnalisé, par exemple : login.domain.com. <BR> Créez ou modifiez un certificat avec les paramètres appropriés pour le nom de domaine personnalisé. Pour plus d’informations, consultez [cette page](https://learn.akamai.com/en-us/webhelp/property-manager/https-delivery-with-property-manager/GUID-9EE0EB6A-E62B-4F5F-9340-60CBD093A429.html). |
 
 3. Définissez les paramètres de configuration des propriétés du serveur d’origine comme suit :
 
-|Propriété| Valeur |
-|:-----------|:-----------|
-| Type d’origine | Votre origine |
-| Nom d’hôte du serveur d’origine | yourafddomain.azurefd.net |
-| En-tête de l’hôte de redirection | En-tête d’hôte entrant |
-| Nom d’hôte de la clé de cache| En-tête d’hôte entrant  |
+    |Propriété| Valeur |
+    |:-----------|:-----------|
+    | Type d’origine | Votre origine |
+    | Nom d’hôte du serveur d’origine | yourafddomain.azurefd.net |
+    | En-tête de l’hôte de redirection | En-tête d’hôte entrant |
+    | Nom d’hôte de la clé de cache| En-tête d’hôte entrant |
 
 ### <a name="configure-dns"></a>Configurer DNS
 
@@ -99,13 +99,15 @@ Créez un enregistrement CNAME dans votre DNS, tel que login.domain.com, qui poi
 
 Apprenez-en davantage sur [le fonctionnement du contrôle et les options de configuration](https://control.akamai.com/dl/security/GUID-81C0214B-602A-4663-839D-68BCBFF41292.html).
 
+<!-- docutune:ignore "Security Center" -->
+
 ### <a name="test-the-settings"></a>Tester les paramètres
 
 Vérifiez les éléments suivants pour vous assurer que tout le trafic vers Azure AD B2C passe maintenant par le domaine personnalisé :
 
 - Assurez-vous que toutes les demandes entrantes adressées au domaine personnalisé Azure AD B2C sont acheminées via le pare-feu d’applications web Akamai et utilisent une connexion TLS valide.
 - Assurez-vous que tous les cookies sont correctement définis par Azure AD B2C pour le domaine personnalisé.
-- Le tableau de bord du pare-feu d’applications web Akamai disponible sous la console Security Center affiche des graphiques pour tout le trafic transitant par le pare-feu d’applications web, ainsi que tout trafic d’attaque.
+- Le tableau de bord du pare-feu d’applications web Akamai disponible sous la console Defender pour le cloud affiche des graphiques pour tout le trafic transitant par le pare-feu d’applications web, ainsi que tout trafic d’attaque.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

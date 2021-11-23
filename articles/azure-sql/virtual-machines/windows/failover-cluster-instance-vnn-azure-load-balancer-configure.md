@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 327c030708f37bffab05aa72884422a487b6b729
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0eea2233a2b6b59c92b49ca325378a95301fc962
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166940"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158858"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>Configurer Azure Load Balancer pour un VNN FCI
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> Évitez le recours à une instance Azure Load Balancer pour votre instance de cluster de basculement en créant vos machines virtuelles SQL Server dans plusieurs sous-réseaux au sein du même réseau virtuel Azure.
 
 Sur Machines virtuelles Microsoft Azure, les clusters utilisent un équilibreur de charge pour conserver une adresse IP qui doit se trouver sur un nœud de cluster à la fois. Dans cette solution, l’équilibreur de charge conserve l’adresse IP du nom de réseau virtuel (VNN) utilisé par la ressource en cluster dans Azure. 
 

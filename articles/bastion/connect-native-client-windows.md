@@ -9,20 +9,24 @@ ms.topic: how-to
 ms.date: 11/01/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 18c3165ceee5f76b1148adc59e4013f6de7bba1f
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 6332b7443e3abc36810fc3085f3f2c413a5d7d1c
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132062450"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137802"
 ---
-# <a name="connect-to-a-vm-using-bastion-and-the-native-client-on-your-windows-computer"></a>Se connecter à une machine virtuelle à l’aide de Bastion et du client natif sur votre ordinateur Windows
+# <a name="connect-to-a-vm-using-bastion-and-the-native-client-on-your-windows-computer-preview"></a>Se connecter à une machine virtuelle à l’aide de Bastion et du client natif sur votre ordinateur Windows (préversion)
 
 Azure Bastion offre à présent la prise en charge de la connexion aux machines virtuelles cibles dans Azure à l’aide d’un client natif sur votre station de travail Windows. Cette fonctionnalité vous permet de vous connecter à vos machines virtuelles cibles via Bastion en utilisant Azure CLI et étend vos options de connexion pour inclure la paire de clés SSH locale et Azure Active Directory (Azure AD). Cet article vous aide à configurer Bastion avec les paramètres requis, puis à vous connecter à une machine virtuelle dans le réseau virtuel. Pour plus d’informations, consultez la page [Présentation d’Azure Bastion](bastion-overview.md).
 
 > [!NOTE]
 > Cette configuration nécessite la référence SKU Standard pour Azure Bastion.
 >
+
+> [!IMPORTANT]
+> Cette fonctionnalité est encore en cours de déploiement global. Si vous ne pouvez pas y accéder dans le portail Azure, veuillez patienter quelques jours, puis réessayez.
+
 
 Actuellement, cette fonctionnalité présente les limitations suivantes :
 
@@ -36,7 +40,7 @@ Actuellement, cette fonctionnalité présente les limitations suivantes :
 
 Avant de commencer, vérifiez que vous respectez les critères suivants :
 
-* La dernière version des commandes CLI est installée. Pour plus d’informations sur l’installation des commandes CLI, consultez [Installer l’interface de ligne de commande Microsoft Azure](/cli/azure/install-azure-cli) et [Prise en main d’Azure CLI](/cli/azure/get-started-with-azure-cli).
+* La dernière version des commandes CLI (version 2.30 ou ultérieure) est installée. Pour plus d’informations sur l’installation des commandes CLI, consultez [Installer l’interface de ligne de commande Microsoft Azure](/cli/azure/install-azure-cli) et [Prise en main d’Azure CLI](/cli/azure/get-started-with-azure-cli).
 * Un réseau virtuel Azure.
 * Une machine virtuelle Azure se trouvant dans le réseau virtuel/
 

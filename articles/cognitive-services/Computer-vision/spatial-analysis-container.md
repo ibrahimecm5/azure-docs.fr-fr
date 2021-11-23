@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/14/2021
 ms.author: pafarley
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f866db833381b8dc6c75538265eefdc057445b3a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: beda19bd951cf2750d071286ba066bb3a79c0e94
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057891"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319280"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installer et exécuter le conteneur d’analyse spatiale (préversion)
 
@@ -433,7 +433,7 @@ sudo az group create --name "<resource-group-name>" --location "<your-region>"
 ```
 Consultez [Prise en charge des régions](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) pour les régions disponibles.
 ```bash
-sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<resource-group-name>"
+sudo az iot hub create --name "<iothub-name>" --sku S1 --resource-group "<resource-group-name>"
 ```
 ```bash
 sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled

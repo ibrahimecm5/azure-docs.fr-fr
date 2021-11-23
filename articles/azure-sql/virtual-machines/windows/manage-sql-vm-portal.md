@@ -14,12 +14,12 @@ ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 16b2a041dc384e8c04df077638a51db1a7823da2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 602cb3affc441c92dfa29ac41de893c96a617ff7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072107"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301871"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Gérer des machines virtuelles SQL Server à partir du portail Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,12 +118,13 @@ Utilisez la page **Configuration de la sécurité** de la ressource Machines vir
 
 Pour plus d'informations, consultez [Meilleures pratiques en matière de sécurité](security-considerations-best-practices.md).
 
+<a name="security-center"></a>
 
-## <a name="security-center"></a>Security Center 
+## <a name="defender-for-cloud"></a>Defender pour le cloud 
 
-Utilisez la page **Security Center** de la ressource Machines virtuelles SQL pour afficher les recommandations de Security Center directement sur le panneau Machine virtuelle SQL. Activez [Azure Defender pour SQL](../../../security-center/defender-for-sql-usage.md) pour tirer parti de cette fonctionnalité. 
+Utilisez la page **Defender pour SQL** de la ressource de la machine virtuelle SQL pour afficher les recommandations de Defender pour le cloud dans le panneau SQL de la machine virtuelle. Activez [Microsoft Defender pour SQL](../../../security-center/defender-for-sql-usage.md) pour tirer parti de cette fonctionnalité. 
 
-![Configurer les paramètres de SQL Server Security Center sur le portail Azure à l'aide de la ressource Machines virtuelles SQL](./media/manage-sql-vm-portal/sql-vm-security-center.png)
+![Configurer les paramètres de SQL Server Defender pour le cloud sur le portail Azure à l’aide de la ressource Machines virtuelles SQL](./media/manage-sql-vm-portal/sql-vm-security-center.png)
 
 ## <a name="sql-assessment-preview"></a>SQL Assessment (préversion)
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 204de2d0b3ed6e75d8b599e094a58e0b2e1826b0
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 0501f703ce32df37a755c05240b24b8262ccf314
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576108"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491162"
 ---
 # <a name="azure-load-balancer-skus"></a>Références SKU Azure Load Balancer
 
@@ -35,6 +35,8 @@ Les machines virtuelles autonomes, les groupes à haute disponibilité et les gr
 | --- | --- | --- |
 | **Scénario** |  Equipé pour le trafic de couche réseau d’équilibrage de charge lorsque des performances élevées et une latence très faible sont nécessaires. Achemine le trafic dans et entre les régions et les zones de disponibilité pour une résilience élevée. | Equipé pour des applications à petite échelle qui n’ont pas besoin d’une haute disponibilité ou d’une redondance. Non compatible avec les zones de disponibilité. |
 | **Type de backend** | Basé sur IP, basé sur une carte réseau | Basée sur une carte réseau |
+| **Protocole** | TCP, UDP | TCP, UDP |
+| **[Configurations d’adresses IP frontales](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Prend en charge jusqu’à 600 configurations. | Prend en charge jusqu’à 200 configurations. |
 | **[Taille du pool de back-ends](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Prend en charge jusqu’à 1 000 instances. | Prend en charge jusqu’à 300 instances. |
 | **Points de terminaison du pool de back-ends** | Toutes les machines virtuelles ou tous les groupes de machines virtuelles identiques d’un seul réseau virtuel. | Machines virtuelles dans un groupe à haute disponibilité ou un groupe de machines virtuelles identiques unique. |
 | **[Sondes d’intégrité](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
@@ -49,6 +51,9 @@ Les machines virtuelles autonomes, les groupes à haute disponibilité et les gr
 | **Opérations de gestion** | La plupart des opérations < 30 secondes | Généralement 60 à 90 secondes et plus |
 | **CONTRAT SLA** | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Non disponible | 
 | **Prise en charge du peering de réseaux virtuels mondial** | L’équilibrage de charge interne standard est pris en charge par le biais du peering de réseaux virtuels mondial | Non prise en charge | 
+| **[Prise en charge de la passerelle NAT](https://docs.microsoft.com/azure/virtual-network/nat-gateway/nat-overview)** | L’équilibrage de charge interne Standard et l’équilibrage de charge Standard sont tous deux pris en charge via la passerelle NAT. | Non prise en charge | 
+| **[Une prise Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)** | L’équilibrage de charge interne Standard est pris en charge via une liaison privée. | Non prise en charge | 
+| **[Équilibrage de charge interrégion (préversion)](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)** | L’équilibrage de charge Standard est pris en charge par l’intermédiaire de l’équilibrage de charge interrégion. | Non prise en charge | 
 
 Pour plus d’informations, consultez [Limites de Load balancer](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer). Pour obtenir plus d’informations sur la référence SKU Standard de Load Balancer, consultez également la [présentation](./load-balancer-overview.md), la page relative à la [tarification](https://aka.ms/lbpricing) et la page relative au [SLA](https://aka.ms/lbsla).
 

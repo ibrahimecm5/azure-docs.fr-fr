@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f616fee894c1eb436770cdafbab7b60d7a1417db
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: caa58c1affc9e4a9cc9d3ec5b63e0b396e289144
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537142"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370419"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Ajouter une mise à jour dans Device Update pour IoT Hub
 Découvrez comment ajouter une nouvelle mise à jour dans Device Update pour IoT Hub.
@@ -38,7 +38,7 @@ Si votre organisation crée déjà des logiciels pour les appareils que vous uti
 
 ## <a name="create-a-device-update-import-manifest"></a>Créer un manifeste d’importation Device Update
 
-Si vous ne l’avez pas déjà fait, veillez à vous familiariser avec les [concepts d’importation](import-concepts.md) de base.
+Si vous ne l’avez pas déjà fait, veillez à vous familiariser avec les [concepts d’importation](import-concepts.md) de base, et à essayer au préalable un didacticiel [basé sur une image](device-update-raspberry-pi.md) ou [basé sur un package](device-update-ubuntu-agent.md).
 
 1. Vérifiez que vos fichiers de mise à jour se trouvent dans un répertoire accessible à partir de PowerShell.
 
@@ -78,7 +78,7 @@ Si vous ne l’avez pas déjà fait, veillez à vous familiariser avec les [conc
 
 ## <a name="review-the-generated-import-manifest"></a>Examiner le manifeste d’importation généré
 
-Un exemple de sortie de manifeste est présenté ci-dessous. Si vous avez des questions sur l’un des éléments, consultez le [schéma complet du manifeste d’importation](import-schema.md). 
+Un exemple de sortie de manifeste est présenté ci-dessous. Pour cet exemple, cette mise à jour est composée de deux fichiers : un fichier .json et un fichier .zip. Si vous avez des questions sur l’un des éléments, consultez le [schéma complet du manifeste d’importation](import-schema.md). 
 ```json
 {
   "updateId": {

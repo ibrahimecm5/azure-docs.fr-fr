@@ -1,14 +1,14 @@
 ---
 title: Kit SDK Horizon
-description: Le Kit de développement logiciel (SDK) Horizon permet aux développeurs Azure Defender pour IoT de concevoir des plug-ins de dissecteur qui décodent le trafic réseau afin que les programmes d’analyse de réseau de Defender pour IoT puissent le traiter.
-ms.date: 1/13/2021
+description: Le Kit de développement logiciel (SDK) Horizon permet aux développeurs Microsoft Defender pour IoT de concevoir des plug-ins de dissecteur qui décodent le trafic réseau afin que les programmes d’analyse de réseau de Defender pour IoT puissent le traiter.
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: a6b9f69daeb39b79ccdabea273efe825f6a9d1ff
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 9affe81bc905e2852732b3892aaac26003c1e8f5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114673985"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286751"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Dissecteur de protocole propriétaire Horizon
 
@@ -24,7 +24,7 @@ Cet environnement fournit les solutions suivantes pour les clients et les parten
 
 - La sécurité de permettre un développement propriétaire sans divulguer d’informations sensibles.
 
-Le Kit de développement logiciel (SDK) Horizon permet aux développeurs Azure Defender pour IoT de concevoir des plug-ins de dissecteur qui décodent le trafic réseau afin que les programmes d’analyse de réseau de Defender pour IoT puissent le traiter.
+Le Kit de développement logiciel (SDK) Horizon permet aux développeurs Microsoft Defender pour IoT de concevoir des plug-ins de dissecteur qui décodent le trafic réseau afin que les programmes d’analyse de réseau de Defender pour IoT puissent le traiter.
 
 Les dissecteurs de protocole sont développés en tant que plug-ins externes et intégrés avec une vaste gamme de services Defender pour IoT. Par exemple, les services qui fournissent des fonctionnalités de surveillance, d’alerte et de création de rapports.
 
@@ -1617,7 +1617,7 @@ La fenêtre **Vue d’ensemble** de la console Horizon fournit des informations 
 | Champ | Description |
 |--|--|
 | Application | Nom du plug-in que vous avez chargé. |
-| :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="Commutateur activé et désactivé."::: | **Activez** ou **désactivez** le plug-in. Defender pour IoT ne gère pas le trafic de protocole défini dans le plug-in lorsque vous désactivez celui-ci. |
+| :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="Commutateur activé/désactivé."::: | **Activez** ou **désactivez** le plug-in. Defender pour IoT ne gère pas le trafic de protocole défini dans le plug-in lorsque vous désactivez celui-ci. |
 | Heure | Heure à laquelle les données ont été analysées pour la dernière fois. Actualisée toutes les 5 secondes. |
 | PPS | Nombre de paquets par seconde. |
 | Bande passante | Bande passante moyenne détectée au cours des 5 dernières secondes. |

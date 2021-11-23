@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 96b110b03f211d62a0ed778e40aa7a6ad8c8c3ce
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 4b86742fb3bb5cc5c642b4d97b96c6aebc7c887c
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733414"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132936577"
 ---
 # <a name="how-to-use-device-mappings"></a>Comment utiliser les mappages de périphérique
 
@@ -94,7 +94,10 @@ Différents types de modèles existent et peuvent être utilisés lors de la gé
 |[CollectionContentTemplate](./how-to-use-collection-content-mappings.md) |Modèle utilisé pour représenter une liste de modèles qui seront utilisés pendant la normalisation.                                                            |                                                           
 |[CalculatedContentTemplate](./how-to-use-calculated-functions-mappings.md)|Modèle qui prend en charge l’écriture d’expressions à l’aide de plusieurs langages d’expression. Prend en charge la transformation des données via l’utilisation de fonctions JmesPath.|
 |[IotJsonPathContentTemplate](./how-to-use-iot-jsonpath-content-mappings.md)|Modèle qui prend en charge les messages envoyés à partir d’Azure IOT Hub ou la fonctionnalité d’exportation de données héritée d’Azure IOT central.|
-|[IotCentralJsonPathContentTemplate](./how-to-use-iot-central-json-content-mappings.md)|Modèle qui prend en charge les messages envoyés via la fonctionnalité d’exportation de données d’Azure IOT central.|  
+|[IotCentralJsonPathContentTemplate](./how-to-use-iot-central-json-content-mappings.md)|Modèle qui prend en charge les messages envoyés via la fonctionnalité d’exportation de données d’Azure IOT central.| 
+
+> [!TIP]
+> Pour plus d’informations sur les erreurs et les problèmes courants, consultez le [Guide de dépannage](./iot-troubleshoot-guide.md) du connecteur IOT. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 10/28/2021
+ms.date: 11/11/2021
 ms.author: banders
-ms.openlocfilehash: 932f8bd68ee36d34bb35d2e50acc8ac5954275b7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4632cd70192387da98f62a3ee96fcf0a3650aad1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131425801"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284376"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Créer un abonnement Azure supplémentaire
 
@@ -71,6 +71,21 @@ Pour créer des abonnements, vous avez besoin des autorisations suivantes :
 |Customer    | L’abonnement est créé pour le client que vous sélectionnez. Si vous n’avez qu’un seul client, la sélection est grisée.  |
 |Reseller    | Revendeur qui fournira des services au client. Il s’agit d’un champ facultatif, qui s’applique uniquement aux fournisseurs indirects dans le modèle CSP à deux niveaux. |
 |Nom     | Nom d’affichage qui vous aide à identifier facilement l’abonnement dans le portail Azure.  |
+
+## <a name="create-a-subscription-as-a-partner-for-a-customer"></a>Créer un abonnement en tant que partenaire pour un client
+
+Partenaires disposant d’un Contrat Partenaire Microsoft : suivez les étapes ci-dessous pour créer un nouvel abonnement à une offre Microsoft Azure pour vos clients. L’abonnement est créé sous le compte de facturation et le profil de facturation du partenaire.
+
+1.  Connectez-vous au portail Azure à l’aide de votre compte Espace partenaires.
+Assurez-vous que vous êtes dans votre répertoire de l’Espace partenaires (locataire), et non le locataire d’un client.
+1.  Accédez à **Cost Management + facturation**.
+1.  Sélectionnez l’étendue de facturation pour le compte de facturation dans lequel réside le compte client.
+1.  Dans le menu de gauche, sous **Facturation**, sélectionnez **Clients**.
+1.  Sur la page Clients, sélectionnez le client.
+1.  Dans le menu de gauche, sous **Produits + services**, sélectionnez **Abonnements Azure**.
+1.  Sur la page Abonnements Azure, sélectionnez **+ Ajouter** pour créer un abonnement.
+1.  Entrez les détails de l’abonnement et, lorsque vous avez terminé, sélectionnez **Vérifier + créer**.
+
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Créer programmatiquement un abonnement Azure supplémentaire
 

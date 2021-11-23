@@ -1,18 +1,18 @@
 ---
 title: Importer les informations des appareils
 description: Les capteurs Defender pour IoT surveillent et analysent le trafic en miroir. Dans ces cas, vous pouvez importer des données pour enrichir les informations sur les appareils déjà détectés.
-ms.date: 12/06/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: eb82a3e5d360913acfead06adc03194d80f7fccb
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 3446a82ec71b03c8e1647b6f95db937e7ef7f488
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017268"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293247"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Importer des informations d’appareil sur un capteur
 
-Un capteur Azure Defender pour IoT surveille et analyse le trafic en miroir. Dans certains cas, en raison des stratégies de configuration réseau propres à l’organisation, certaines informations peuvent ne pas être transmises.
+Un capteur Microsoft Defender pour IoT surveille et analyse le trafic en miroir. Dans certains cas, en raison des stratégies de configuration réseau propres à l’organisation, certaines informations peuvent ne pas être transmises.
 
 Dans ces cas, vous pouvez importer des données pour enrichir les informations sur les appareils déjà détectés. Deux options sont disponibles pour importer des informations dans les capteurs :
 

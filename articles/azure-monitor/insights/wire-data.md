@@ -5,24 +5,23 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: 52bb368ccf19c23c04bc062e7db50c07ecebaceb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 74d3544fd7e858a685b669ad826bc17e0eb6e64f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296063"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312917"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Solution Wire Data 2.0 (préversion) dans Azure Monitor (mis hors service)
 
 ![Symbole de Wire Data](media/wire-data/wire-data2-symbol.png)
 
->[!NOTE]
->La solution Wire Data a été remplacée par la solution [VM Insights](../vm/vminsights-overview.md) et [Service Map](../vm/service-map.md).  Toutes deux utilisent l’agent Log Analytics et l’agent de dépendances pour collecter les données de connexion réseau dans Azure Monitor.
+> [!NOTE]
+> La solution Wire Data a été remplacée par la solution [VM Insights](../vm/vminsights-overview.md) et [Service Map](../vm/service-map.md).  Toutes deux utilisent l’agent Log Analytics et l’agent de dépendances pour collecter les données de connexion réseau dans Azure Monitor.
 >
->Le support pour la solution Wire Data prendra fin le **31 mars 2022**.  Jusqu’à la date de mise hors service, les clients actuels qui utilisent la solution Wire Data 2.0 (préversion) peuvent continuer à l’utiliser.
+> Le support pour la solution Wire Data prendra fin le **31 mars 2022**.  Jusqu’à la date de mise hors service, les clients actuels qui utilisent la solution Wire Data 2.0 (préversion) peuvent continuer à l’utiliser.
 >
->Les anciens et nouveaux clients doivent installer la solution [VM Insights](../vm/vminsights-enable-overview.md) ou [Service Map](../vm/service-map.md).  Le jeu de données Map qu’elles collectent est comparable au jeu de données de Wire Data 2.0 (préversion).  VM Insights comprend le jeu de données Service Map ainsi que des fonctionnalités et des données de performances supplémentaires pour l’analyse. Les deux offres sont [connectées à Azure Sentinel](../../sentinel/connect-data-sources.md#map-data-types-with-azure-sentinel-connection-options).
- 
+> Les anciens et nouveaux clients doivent installer la solution [VM Insights](../vm/vminsights-enable-overview.md) ou [Service Map](../vm/service-map.md).  Le jeu de données Map qu’elles collectent est comparable au jeu de données de Wire Data 2.0 (préversion).  VM Insights comprend le jeu de données Service Map ainsi que des fonctionnalités et des données de performances supplémentaires pour l’analyse. Les deux offres sont [connectées à Microsoft Sentinel](../../sentinel/connect-data-sources.md#map-data-types-with-microsoft-sentinel-connection-options).
 
 Les données de communication sont des données de performances et réseau consolidées, collectées à partir d’ordinateurs connectés à Windows et à Linux avec l’agent Log Analytics, notamment les ordinateurs analysés par Operations Manager dans votre environnement. Les données réseau sont associées aux autres données de journaux pour faciliter la mise en corrélation des données.
 
@@ -130,8 +129,8 @@ Pour obtenir d’autres exemples de requêtes, consultez la [documentation relat
 
 Pour désinstaller Wire Data 2.0, il vous suffit de supprimer la solution de vos espaces de travail Log Analytics.  Cette opération aura les conséquences suivantes :
 
-* Le pack d’administration de Wire Data est supprimé des machines virtuelles connectées à l’espace de travail. 
-* Le type de données Wire Data n’apparaît plus dans votre espace de travail.
+- Le pack d’administration de Wire Data est supprimé des machines virtuelles connectées à l’espace de travail.
+- Le type de données Wire Data n’apparaît plus dans votre espace de travail
 
 Suivez [ces instructions](./solutions.md?tabs=portal#remove-a-monitoring-solution) pour supprimer la solution Wire Data.
 
@@ -161,7 +160,7 @@ Un administrateur peut également exécuter %Programfiles%\Microsoft Dependency 
 
 Pour désinstaller complètement l’agent de dépendances de Linux, vous devez supprimer l’agent lui-même et le connecteur qui est installé automatiquement avec lui. Vous pouvez désinstaller les deux à l’aide de la commande ci-dessous :
 
-```
+```bash
 rpm -e dependency-agent dependency-agent-connector
 ```
 

@@ -11,12 +11,12 @@ author: buchananwp
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: data4ml, contperf-fy21q2
-ms.openlocfilehash: 05d7136b48f206cc9d091f5f73ee763cc24135fa
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f80489726617b05e4a4c025893fdb24ec1f2d05c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558817"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335706"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Détecter une dérive de données (préversion) sur des jeux de données
 
@@ -274,7 +274,7 @@ Cette section contient un aperçu de la modification de la distribution de l'él
 
 Le jeu de données cible est également profilé au fil du temps. La distance statistique entre la distribution de ligne de base de chaque fonctionnalité est comparée au fil du jeu de données cible.  Conceptuellement, cela est similaire à l’amplitude de la dérive des données.  Toutefois, cette distance statistique concerne une fonctionnalité individuelle plutôt que toutes les fonctionnalités. Les valeurs minimum, maximum et moyenne sont également disponibles.
 
-Dans Azure Machine Learning Studio, cliquez sur une barre dans le graphique pour afficher les détails de niveau de fonctionnalité de cette date. Par défaut, il affiche la distribution du jeu de données de référence et la distribution de la même caractéristique issue de la dernière exécution.
+Dans Azure Machine Learning Studio, cliquez sur une barre dans le graphique pour afficher les détails de niveau de fonctionnalité pour cette date. Par défaut, il affiche la distribution du jeu de données de référence et la distribution de la même caractéristique issue de la dernière exécution.
 
 :::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Amplitude de la dérive par caractéristiques":::
 

@@ -3,22 +3,30 @@ title: Comprendre les concepts du référentiel des modèles d’appareils | Mic
 description: En tant que développeur de solutions ou professionnel de l’informatique, découvrez les concepts de base du référentiel des modèles d’appareils.
 author: rido-min
 ms.author: rmpablos
-ms.date: 11/17/2020
+ms.date: 11/12/2021
 ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 5a9a2126d8732a2923428efb7e58cc6ec45e9fa5
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 7b32983707f2c23ef6385fc974f4f1d50ac48e50
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406351"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399292"
 ---
 # <a name="device-models-repository"></a>Référentiel des modèles d’appareils
 
 Le référentiel des modèles d’appareils (DMR) permet aux fabricants d’appareils de gérer et de partager les modèles d’appareil IoT Plug-and-Play. Les modèles d’appareil sont des documents LD JSON définis à l’aide du [langage DTDL (Digital Twins Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
-Le système DMR définit un modèle pour stocker les interfaces DTDL dans une structure de dossiers en fonction de l’identificateur de modèle de jumeau d’appareil (DTMI). Vous pouvez localiser une interface dans le DMR en convertissant le DTMI en chemin d’accès relatif. Par exemple, le DTMI `dtmi:com:example:Thermostat;1` se traduit par `/dtmi/com/example/thermostat-1.json`.
+Le système DMR définit un modèle pour stocker les interfaces DTDL dans une structure de dossiers en fonction de l’identificateur de modèle de jumeau d’appareil (DTMI). Vous pouvez localiser une interface dans le DMR en convertissant le DTMI en chemin d’accès relatif. Par exemple, le DTMI `dtmi:com:example:Thermostat;1` se traduit par `/dtmi/com/example/thermostat-1.json` et peut être obtenu à partir de l’URL de base publique `devicemodels.azure.com` à l’URL [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.json).
+
+## <a name="index-expanded-and-metadata"></a>Index, développé et métadonnées
+
+Les conventions de DMR incluent des artefacts supplémentaires pour simplifier la consommation des modèles hébergés. Ces fonctionnalités sont _facultatives_ pour les référentiels personnalisés ou privés.
+
+- _Index_. Tous les DTMI disponibles sont exposés via un *index* composé d’une séquence de fichiers JSON, par exemple : [https://devicemodels.azure.com/index.page.2.json](https://devicemodels.azure.com/index.page.2.json)
+- _Développé_. Un fichier avec toutes les dépendances est disponible pour chaque interface, par exemple : [https://devicemodels.azure.com/dtmi/com/example/temperaturecontroller-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/temperaturecontroller-1.expanded.json)
+- _Metadata_. Ce fichier expose les attributs clés d’un référentiel, et est actualisé régulièrement à l’aide du dernier instantané des modèles publiés. Il comprend des fonctionnalités qu’un référentiel implémente, par exemple si l’index de modèle ou les fichiers de modèle développés sont disponibles. Vous pouvez accéder aux métadonnées DMR à l’adresse [https://devicemodels.azure.com/metadata.json](https://devicemodels.azure.com/metadata.json)
 
 ## <a name="public-device-models-repository"></a>Référentiel des modèles d’appareils publics
 
@@ -71,7 +79,6 @@ Le `ModelsRepositoryClient` peut être configuré pour interroger un référenti
 
 - Désactivé. Retourne l’interface spécifiée uniquement, sans aucune dépendance.
 - Activé. Retourne toutes les interfaces dans la chaîne de dépendance
-- TryFromExpanded. Utilisez le fichier `.expanded.json` pour récupérer les dépendances précalculées 
 
 > [!Tip] 
 > Les référentiels personnalisés peuvent ne pas exposer le fichier `.expanded.json`. Si aucun n’est disponible, le client traitera chaque dépendance localement.
@@ -82,12 +89,13 @@ L’exemple de code suivant montre comment initialiser le `ModelsRepositoryClien
 using AzureEventSourceListener listener = AzureEventSourceListener.CreateConsoleLogger();
 
 var client = new ModelsRepositoryClient(
-    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"),
-    new ModelsRepositoryClientOptions(dependencyResolution: ModelDependencyResolution.Enabled));
+    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"));
 
-IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+ModelResult model = await client.GetModelAsync(
+    "dtmi:com:example:TemperatureController;1", 
+    dependencyResolution: ModelDependencyResolution.Enabled);
 
-models.Keys.ToList().ForEach(k => Console.WriteLine(k));
+model.Content.Keys.ToList().ForEach(k => Console.WriteLine(k));
 ```
 
 D’autres exemples sont disponibles dans le code source du référentiel GitHub du Kit de développement logiciel (SDK) Azure : [Azure.Iot.ModelsRepository/samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/modelsrepository/Azure.IoT.ModelsRepository/samples)
@@ -119,11 +127,7 @@ Les outils utilisés pour valider les modèles lors des vérifications de PR per
 ### <a name="install-dmr-client"></a>Installer `dmr-client`
 
 ```bash
-curl -L https://aka.ms/install-dmr-client-linux | bash
-```
-
-```powershell
-iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+dotnet tool install --global Microsoft.IoT.ModelsRepository.CommandLine --version 1.0.0-beta.5
 ```
 
 ### <a name="import-a-model-to-the-dtmi-folder"></a>Importer un modèle dans le dossier `dtmi/`
@@ -172,6 +176,27 @@ Les modèles peuvent être exportés à partir d’un référentiel donné (loca
 
 ```bash
 dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
+
+### <a name="create-the-repository-index"></a>Créer le référentiel `index`
+
+Le DMR peut inclure un *index* avec une liste de tous les DTMI disponibles au moment de la publication. Ce fichier peut être fractionné en plusieurs fichiers, comme décrit dans le [Wiki DMR Tools](https://github.com/Azure/iot-plugandplay-models-tools/wiki/Model-Index).
+
+Pour générer l’index dans un DMR personnalisé ou privé, utilisez la commande d’index :
+
+```bash
+dmr-client index -r . -o index.json
+```
+
+> [!NOTE]
+> Le DMR public est configuré pour fournir un index mis à jour disponible à l’adresse : https://devicemodels.azure.com/index.json
+
+### <a name="create-expanded-files"></a>Créer des fichiers *développés*
+
+Les fichiers développés peuvent être générés à l’aide de la commande :
+
+```bash
+dmr-client expand -r .
 ```
 
 ## <a name="next-steps"></a>Étapes suivantes

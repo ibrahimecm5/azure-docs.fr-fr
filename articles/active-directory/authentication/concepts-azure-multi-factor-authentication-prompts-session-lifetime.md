@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/12/2021
+ms.date: 11/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93f5af54992189d553c9e5c5c141a6ca08b7018e
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 334ebbecdd9da5bd55eff57f4c170c1a898e6c12
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563353"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486870"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimiser les invites de réauthentification et comprendre le fonctionnement de la durée de vie des sessions Azure AD Multi-Factor Authentication
 
@@ -100,7 +100,11 @@ Ce paramètre permet de configurer la durée de vie des jetons émis par Azure A
 
 ## <a name="review-your-tenant-configuration"></a>Vérifier la configuration de vos locataires  
 
-Maintenant que vous savez comment fonctionnent les différents paramètres et que vous connaissez la configuration recommandée, il est temps de vérifier la configuration de vos locataires et d’apporter les modifications nécessaires :
+Maintenant que vous savez comment fonctionnent les différents paramètres et que vous connaissez la configuration recommandée, il est temps de vérifier la configuration de vos locataires. Vous pouvez commencer par examiner les journaux de connexion pour comprendre quelles stratégies de durée de vie de session ont été appliquées pendant la connexion.
+
+Sous chaque journal de connexion, accédez à l’onglet **Informations sur l’authentification** et explorez **Stratégies de durée de vie de session appliquées**. Pour plus d’informations, consultez [Détails de l’authentification](../reports-monitoring/concept-sign-ins.md#authentication-details).
+
+![Capture d’écran des détails d’authentification.](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/details.png)
 
 Pour configurer ou vérifier l’option *Rester connecté*, effectuez les étapes suivantes :
 

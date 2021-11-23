@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 3/02/2021
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 69724711421182b2a530a2411b6ecc31b95a1388
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 79164bedf91a62508d7455104bbbcf00e2eacbee
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823598"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289430"
 ---
 # <a name="monitoring-azure-files"></a>Supervision d’Azure Files
 
@@ -315,6 +315,21 @@ Vous pouvez lire les valeurs des métriques de niveau compte de votre compte de 
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>Lecture des valeurs de métriques avec des dimensions
+
+Lorsqu’une métrique prend en charge les dimensions, vous pouvez lire les valeurs des métriques et les filtrer à l’aide des valeurs des dimensions. Utilisez l’applet de commande [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+
+```powershell
+   $resourceId = "<resource-ID>"
+   Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
+```
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetFile" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>Dresser la liste de la définition des métriques de niveau compte
@@ -334,7 +349,13 @@ Vous pouvez lire les valeurs des métriques de votre compte de stockage ou du se
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
+#### <a name="reading-metric-values-with-dimensions"></a>Lecture des valeurs de métriques avec des dimensions
 
+Lorsqu’une métrique prend en charge les dimensions, vous pouvez lire les valeurs des métriques et les filtrer à l’aide des valeurs des dimensions. Utilisez la commande [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetFile' " --aggregation "Total" 
+```
 ### <a name="net-sdk"></a>[Kit de développement logiciel (SDK) .NET](#tab/azure-portal)
 
 Azure Monitor fournit des [kits de développement logiciel (SDK) .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) pour lire des définitions et valeurs de mesures. L’[exemple de code](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) montre comment utiliser le kit de développement logiciel (SDK) avec des paramètres différents. Vous devez utiliser `0.18.0-preview` ou une version ultérieure pour les mesures de stockage.

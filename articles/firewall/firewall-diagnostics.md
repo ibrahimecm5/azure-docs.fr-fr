@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 10/22/2021
 ms.author: victorh
-ms.openlocfilehash: d421986ebeb308efb0e076b1a80f537d49082ec5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f39a858b99bf21a17a250d7e62f4af39c7d8213d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130242346"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343246"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Superviser les journaux d’activité et les métriques du Pare-feu Azure
 
@@ -113,7 +113,7 @@ Vous pouvez afficher et analyser les données du journal d’activité en utilis
 
 * **Outils Azure** : récupérez les informations du journal d’activité en utilisant Azure PowerShell, Azure CLI, l’API REST Azure ou le portail Azure. Des instructions pas à pas pour chaque méthode sont détaillées dans l’article [Opérations d’activité avec Resource Manager](../azure-monitor/essentials/activity-log.md).
 * **Power BI** : si vous n’avez pas encore de compte [Power BI](https://powerbi.microsoft.com/pricing), vous pouvez l’essayer gratuitement. À l’aide du [pack de contenus des journaux d’activité Azure pour Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), vous pouvez analyser vos données avec des tableaux de bord préconfigurés à utiliser en l’état ou à personnaliser.
-* **Azure Sentinel** : Vous pouvez connecter des journaux Pare-feu Azure à Azure Sentinel, ce qui vous permet d’afficher les données des journaux dans des classeurs, de les utiliser pour créer des alertes personnalisées et de les incorporer pour améliorer votre investigation. Le connecteur de données Pare-feu Azure dans Azure Sentinel est en préversion publique. Pour plus d’informations, consultez [Connecter des données à partir du Pare-feu Azure](../sentinel/data-connectors-reference.md#azure-firewall).
+* **Microsoft Sentinel** : Vous pouvez connecter des journaux Pare-feu Azure à Microsoft Sentinel, ce qui vous permet d’afficher les données des journaux dans des classeurs, de les utiliser pour créer des alertes personnalisées et de les incorporer pour améliorer votre investigation. Le connecteur de données Pare-feu Azure dans Microsoft Sentinel est disponible en préversion publique. Pour plus d’informations, consultez [Connecter des données à partir du Pare-feu Azure](../sentinel/data-connectors-reference.md#azure-firewall).
 
    Pour obtenir une vue d’ensemble, consultez la vidéo suivante de Mohit Kumar :
    > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWI4nn]

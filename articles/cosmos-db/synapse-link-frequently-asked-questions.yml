@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/02/2021
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: 8dc71afd5e134e1822df027e9b5f51dc33ed3b76
-  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+  ms.openlocfilehash: 0820524698e13e5fe2e73ac3f245232a0a7ac227
+  ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/03/2021
-  ms.locfileid: "131425838"
+  ms.lasthandoff: 11/10/2021
+  ms.locfileid: "132137219"
 title: Foire aux questions sur Azure Synapse Link pour Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -52,16 +52,19 @@ sections:
       Le magasin analytique a-t-il un impact sur les SLA transactionnels Cosmos DB ?
     answer: >
       Non, il n’y a aucun impact.
+  - question: >
+      Puis-je utiliser Synapse Link dans les comptes Azure Cosmos DB serverless ?
+    answer: "Oui, il est pris en charge. Toutefois, les conteneurs existants sont uniquement pris en charge pour les conteneurs d’API SQL et via Azure CLI ou PowerShell.         \n"
 - name: Magasin analytique Azure Cosmos DB
   questions:
   - question: >
       Puis-je activer le magasin analytique sur les conteneurs existants ?
     answer: >
-      Actuellement, le magasin analytique ne peut être activé que pour les nouveaux conteneurs (à la fois dans les comptes nouveaux et existants).
+      Actuellement, vous pouvez uniquement activer le magasin analytique pour les conteneurs d’API SQL existants.
   - question: >
       Puis-je désactiver le magasin analytique sur mes conteneurs Azure Cosmos DB après l’avoir activé lors de la création du conteneur ?
     answer: >
-      Actuellement, le magasin analytique ne peut pas être désactivé sur un conteneur Azure Cosmos DB une fois activé lors de la création du conteneur.
+      Actuellement, le magasin analytique ne peut pas être désactivé sur un conteneur Azure Cosmos DB.
   - question: >
       Le magasin analytique est-il pris en charge pour les conteneurs Azure Cosmos DB avec débit approvisionné par mise à l’échelle automatique ?
     answer: >
@@ -188,9 +191,23 @@ sections:
   questions:
   - question: >
       Dans Azure Synapse Studio, comment puis-je savoir si je suis connecté à un conteneur Azure Cosmos DB avec le magasin d’analytique activé ?
-    answer: "Les conteneurs Azure Cosmos DB activés avec le magasin analytique présentent l’icône suivante :\n\n:::image type=\"content\" source=\"./media/synapse-link-frequently-asked-questions/analytical-store-icon.png\" alt-text=\"Conteneur Azure Cosmos DB activé avec icône de magasin analytique\":::\n\nLe conteneur de magasin transactionnel est représenté par l’icône suivante :\n\n:::image type=\"content\" source=\"./media/synapse-link-frequently-asked-questions/transactional-store-icon.png\" alt-text=\"Conteneur Azure Cosmos DB activé avec l’icône de magasin transactionnel\":::\n \n"
+    answer: >
+      Les conteneurs Azure Cosmos DB activés avec le magasin analytique présentent l’icône suivante :
+
+
+      :::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Conteneur Azure Cosmos DB activé avec icône de magasin analytique":::
+
+
+      Le conteneur de magasin transactionnel est représenté par l’icône suivante :
+
+
+      :::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Conteneur Azure Cosmos DB activé avec l’icône de magasin transactionnel":::
   - question: >
       Comment transmettre les informations d’identification Azure Cosmos DB depuis Azure Synapse Studio ?
     answer: >
       Actuellement, les informations d’identification Azure Cosmos DB sont transmises lors de la création du service lié par l’utilisateur qui a accès aux bases de données Azure Cosmos DB. L’accès à ce magasin est possible pour les autres utilisateurs qui ont accès à l’espace de travail.
+  - question: >
+      Puis-je utiliser SQL Server Management Studio pour interroger le magasin analytique à l’aide d’un pool SQL serverless Synapse ?
+    answer: >
+      Oui.
 additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\n* En savoir plus sur les [avantages de d’Azure Synapse Link](synapse-link.md#synapse-link-benefits)\n\n* En savoir plus sur l’intégration d’[Azure Synapse Link et Azure Cosmos DB](synapse-link.md#synapse-link-integration)."

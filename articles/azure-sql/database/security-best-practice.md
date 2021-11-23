@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 725b483d4da7ce55b3ae9e866aa60a09226be7e9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 47acffc242973e70f9fe89db9304d193307c5695
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233282"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335743"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook pour répondre aux exigences de sécurité courantes avec Azure SQL Database et Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -625,7 +625,7 @@ La protection contre les attaques par déni de service distribué est automatiqu
 - L’alerte **Informations d’identification SQL par force brute** d’Advanced Threat Protection vous aide à détecter les attaques par force brute. Dans certains cas, l’alerte peut même distinguer des charges de travail de tests d’intrusion.
 
 - Pour les applications d’hébergement de machine virtuelle Azure se connectant à SQL Database :
-  - Suivez les recommandations pour restreindre l’accès via des points de terminaison accessibles sur Internet dans Azure Security Center.
+  - Suivez les recommandations pour restreindre l’accès via des points de terminaison accessibles sur Internet dans Microsoft Defender pour le cloud.
   - Utilisez des groupes de machines virtuelles identiques pour exécuter plusieurs instances de votre application sur des machines virtuelles Azure.
   - Désactivez les protocoles RDP et SSH à partir d’Internet pour empêcher les attaques par force brute.
 
@@ -647,7 +647,7 @@ La protection avancée contre les menaces vous permet de détecter et traiter de
 
 **Bonnes pratiques** :
 
-- Configurez [Azure Defender pour SQL](azure-defender-for-sql.md) pour un serveur spécifique ou une instance gérée. Vous pouvez également configurer Azure Defender pour SQL pour tous les serveurs et instances gérées dans un abonnement en activant [Azure Defender](../../security-center/security-center-pricing.md).
+- Configurez [Microsoft Defender pour SQL](azure-defender-for-sql.md) pour un serveur spécifique ou une instance gérée. Vous pouvez également configurer Microsoft Defender pour SQL pour tous les serveurs et instances gérées dans un abonnement en activant [Microsoft Defender pour le cloud](../../security-center/security-center-pricing.md).
 
 - Pour une expérience d’investigation complète, nous vous recommandons d’activer l’ [audit de SQL Database](../../azure-sql/database/auditing-overview.md). Avec l’audit, vous pouvez suivre les événements de base de données et les écrire dans un journal d’audit au sein d’un compte de stockage Azure ou d’un espace de travail Azure Log Analytics.
 
@@ -734,7 +734,7 @@ Découvrez les colonnes susceptibles de contenir des données sensibles. La natu
 
 - Supervisez en permanence l’état des données sensibles recommandées dans l’Évaluation des vulnérabilités SQL. Effectuez le suivi de la règle de découverte des données sensibles et identifiez les dérives dans les colonnes recommandées pour la classification.  
 
-- Utilisez la classification d’une manière adaptée aux besoins spécifiques de votre organisation. Personnalisez votre stratégie de protection des informations (étiquettes de sensibilité, types d’informations la logique de découverte) dans la stratégie [SQL Information Protection](../../security-center/security-center-info-protection-policy.md) dans Azure Security Center.
+- Utilisez la classification d’une manière adaptée aux besoins spécifiques de votre organisation. Personnalisez votre stratégie de protection des informations (étiquettes de sensibilité, types d’informations la logique de découverte) dans la stratégie [SQL Information Protection](../../security-center/security-center-info-protection-policy.md) dans Microsoft Defender pour le cloud.
 
 ### <a name="track-access-to-sensitive-data"></a>Gérer l’accès aux données sensibles
 
@@ -757,7 +757,7 @@ Utilisez un système unifié de gestion de la sécurité de l’infrastructure q
 
 **Mode d’implémentation** :
 
-- Surveillez les recommandations de sécurité liées à SQL et les menaces actives dans [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/).
+- Surveillez les recommandations de sécurité liées à SQL et les menaces actives dans [Microsoft Defender pour le cloud](https://azure.microsoft.com/documentation/services/security-center/).
 
 ## <a name="common-security-threats-and-potential-mitigations"></a>Menaces de sécurité courantes et atténuations potentielles
 

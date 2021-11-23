@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/05/2021
+ms.date: 11/11/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 415f31c0b6627b290c86f3581eee0723ad20bcb9
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8631c5c0852f915596e3b51c76054301eca64c02
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040262"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289189"
 ---
 # <a name="configure-authentication-options-in-an-android-app-by-using-azure-ad-b2c"></a>Configurer les options d'authentification dans une application Android en utilisant Azure AD B2C 
 
@@ -275,7 +275,26 @@ b2cApp.acquireToken(parameters);
 
 --- 
 
+## <a name="embedded-web-view-experience"></a>Expérience de vue web incorporée
 
+Des navigateurs web sont nécessaires pour l’authentification interactive. Par défaut, la bibliothèque MSAL utilise la vue web du système. Pendant la connexion, la bibliothèque MSAL affiche la vue web du système Android avec l’interface utilisateur Azure AD B2C.  
+
+Pour plus d’informations, consultez l’article [Activer l’authentification unique inter-application sur Android avec MSAL](../active-directory/develop/msal-android-single-sign-on.md#sso-through-system-browser).
+
+En fonction de vos besoins, vous pouvez utiliser la vue web incorporée. Il existe des différences de comportement au niveau visuel et de l’authentification unique entre la vue web incorporée et la vue web du système dans MSAL.
+
+![Capture d’écran illustrant les différences entre l’expérience de vue web du système et l’expérience de vue web incorporée.](./media/enable-authentication-android-app-options/system-web-browser-vs-embedded-view.png)
+
+> [!IMPORTANT]
+> Nous vous recommandons d’utiliser la plateforme par défaut, qui correspond généralement au navigateur du système. Le navigateur du système mémorise mieux les utilisateurs déjà connectés. Certains fournisseurs d’identité, tels que Google, ne prennent pas en charge une expérience de vue incorporée.
+
+Pour modifier ce comportement, ouvrez le fichier *app/src/main/res/raw/auth_config_b2c.json*. Ajoutez ensuite l’attribut `authorization_user_agent` avec la valeur `WEBVIEW`. L’exemple suivant montre comment modifier le type de vue web pour le convertir en vue incorporée :
+
+```json
+{
+  "authorization_user_agent": "WEBVIEW" 
+}
+```
 
 ## <a name="next-steps"></a>Étapes suivantes
 

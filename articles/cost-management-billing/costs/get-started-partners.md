@@ -3,18 +3,18 @@ title: Prise en main d’Azure Cost Management pour les partenaires
 description: Cet article explique aux partenaires comment utiliser les fonctionnalités de Cost Management et comment autoriser l’accès à leurs clients.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/13/2021
+ms.date: 11/10/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 747dc5829315091d6a42fbf6c0749af104c5e1ac
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 31d2ceb9d8ae9a93ea15f2bf2f77ed7f05f6021c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984061"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287176"
 ---
 # <a name="get-started-with-cost-management-for-partners"></a>Prise en main de Cost Management pour les partenaires
 
@@ -150,6 +150,18 @@ Quand la stratégie est définie sur **Non**, Cost Management n’est pas dispon
 Quand la stratégie de coût est définie sur **Oui**, les utilisateurs d’abonnement associés au locataire client peuvent voir les frais d’utilisation selon les tarifs de paiement à l’utilisation.
 
 Quand la stratégie de visualisation des coûts est activée, tous les services associés à l’utilisation d’abonnements indiquent les coûts selon les tarifs de paiement à l’utilisation. L’utilisation de réservations apparaît avec des frais nuls pour les coûts réels et amortis. Les achats et les droits ne sont pas associés à un abonnement spécifique. Ainsi, les achats ne sont pas affichés dans l’étendue d’abonnement. L’agent d’administration/administrateur général d’un partenaire direct ou d’un fournisseur indirect peut également utiliser l’[API de mise à jour du client](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) pour définir la stratégie de visibilité des coûts de chaque client à grande échelle.
+
+## <a name="view-and-enable-all-policies"></a>Afficher et activer toutes les stratégies
+
+Vous pouvez également afficher et modifier les stratégies pour les réservations Azure, consulter la Place de marché Azure, afficher les frais Azure et gérer les balises depuis un emplacement unique. Les paramètres de stratégie s’appliquent à tous les clients sous le profil de facturation.
+
+Pour afficher ou modifier des stratégies :
+
+1. Dans le portail Azure, accédez à **Gestion des coûts + facturation** (et non Gestion des coûts + Facturation).
+1. Dans le menu de gauche, sous **Paramètres**, sélectionnez **Configuration**.
+1. La configuration du profil de facturation s’affiche. Les stratégies sont affichées comme étant activées ou désactivées. Si vous souhaitez modifier une stratégie, sélectionnez **Modifier** sous une stratégie.  
+    :::image type="content" source="./media/get-started-partners/configuration-policy-settings.png" alt-text="Capture d’écran montrant la page de configuration du profil de facturation dans laquelle vous pouvez afficher et modifier les paramètres de stratégie." lightbox="./media/get-started-partners/configuration-policy-settings.png" :::
+1. Si nécessaire, modifiez les paramètres de stratégie, puis sélectionnez **Enregistrer**.
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Afficher les coûts d’abonnement dans le locataire du client
 

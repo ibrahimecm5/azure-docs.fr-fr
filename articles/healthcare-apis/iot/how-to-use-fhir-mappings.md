@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: c2c7043cd7dc5f234886144a97228db21a218621
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 9f6374ad6ba021e6f67f1ea9780aa90d49a7f5a2
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733437"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132940293"
 ---
 # <a name="how-to-use-the-fhir-destination-mappings"></a>Comment utiliser les mappages de destination FHIR
 
@@ -270,6 +270,9 @@ Représente le type de données [CodeableConcept](http://hl7.org/fhir/datatypes.
     }
 }
 ```
+
+> [!TIP]
+> Pour plus d’informations sur les erreurs et les problèmes courants, consultez le [Guide de dépannage](./iot-troubleshoot-guide.md) du connecteur IOT.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

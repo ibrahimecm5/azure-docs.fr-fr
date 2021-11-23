@@ -7,12 +7,12 @@ ms.author: karler
 author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 0de08976f0391c995004265ac1b1a33cf4a5c491
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 00411cf37a6f2728d3f8d1d0565e1d836b839192
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835786"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135407"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Configurer une instance de serveur de configuration Spring Cloud pour votre service
 
@@ -107,7 +107,7 @@ Toutes les propriétés configurables servant à configurer un dépôt Git priv�
 > De nombreux serveurs de dépôt `Git` prennent en charge l’utilisation des jetons à la place des mots de passe pour l’authentification de base HTTP. Certains référentiels permettent aux jetons d’être conservés indéfiniment. Toutefois, certains serveurs de référentiel Git, notamment Azure DevOps Server, forcent les jetons à expirer en quelques heures. Les dépôts qui entraînent l’expiration des jetons ne doivent pas utiliser l’authentification par jeton avec Azure Spring Cloud.
 > GitHub a supprimé la prise en charge de l’authentification par mot de passe. vous devez donc utiliser un jeton d’accès personnel au lieu de l’authentification par mot de passe pour GitHub. Pour en savoir plus, consultez [Authentification par jeton](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/).
 
-### <a name="git-repositories-with-pattern"></a>Dépôts Git avec modèle
+### <a name="git-additional-repositories"></a>Référentiels Git supplémentaires
 
 Toutes les propriétés configurables servant à configurer les dépôts Git avec un modèle sont listées ci-dessous.
 
@@ -129,6 +129,16 @@ Toutes les propriétés configurables servant à configurer les dépôts Git ave
 | `repos."host-key-algorithm"`       | Non             | Algorithme de clé d’hôte, doit être *ssh-dss*, *ssh-rsa*, *ecdsa-sha2-nistp256*, *ecdsa-sha2-nistp384* ou *ecdsa-sha2-nistp521*. *Obligatoire* uniquement si `host-key` existe. |
 | `repos."strict-host-key-checking"` | Non             | Indique si l’instance du serveur de configuration ne peut pas démarrer en cas d’utilisation de la `host-key` privée. Doit être *true* (valeur par défaut) ou *false*. |
 
+Le tableau suivant présente quelques exemples pour la section **Référentiels supplémentaires**. Pour plus d’informations, consultez [Correspondance de modèle et référentiels multiples](https://cloud.spring.io/spring-cloud-config/reference/html/#_pattern_matching_and_multiple_repositories) dans la documentation de Spring.
+
+| Modèles                        | Description |
+| :------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| *test-config-server-app-0/\**   | Le modèle et l’URI du référentiel correspondront à une application Spring Boot nommée `test-config-server-app-0` avec n’importe quel profil.  |
+| *test-config-server-app-1/dev*  | Le modèle et l’URI du référentiel correspondront à une application Spring Boot nommée `test-config-server-app-1` avec un profil dev.  |
+| *test-config-server-app-2/prod* | Le modèle et l’URI du référentiel correspondront à une application Spring Boot nommée `test-config-server-app-2` avec un profil prod. |
+
+:::image type="content" source="media/spring-cloud-tutorial-config-server/additional-repositories.png" lightbox="media/spring-cloud-tutorial-config-server/additional-repositories.png" alt-text="Capture d’écran du portail Azure montrant la page de configuration du serveur avec la colonne Modèles de la table « Référentiels supplémentaires » en surbrillance":::
+
 ## <a name="attach-your-config-server-repository-to-azure-spring-cloud"></a>Attacher le dépôt de votre serveur de configuration à Azure Spring Cloud
 
 Maintenant que vous avez enregistré vos fichiers de configuration dans un dépôt, vous devez le connecter à Azure Spring Cloud.
@@ -145,7 +155,7 @@ Maintenant que vous avez enregistré vos fichiers de configuration dans un dép�
 
     ![Accéder au serveur de configuration](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
-6. Une fois la validation terminée, sélectionnez **Appliquer** pour enregistrer vos modifications.
+6. Une fois la validation effectuée, sélectionnez **Appliquer** pour enregistrer vos modifications.
 
     ![Validation du serveur de configuration](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
@@ -175,9 +185,9 @@ Maintenant que vous avez enregistré vos fichiers de configuration dans un dép�
 
     ![Volet Modifier l'authentification - Authentification SSH](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
-#### <a name="pattern-repository"></a>Dépôt de modèles
+#### <a name="additional-repositories"></a>Référentiels supplémentaires
 
-Si vous souhaitez utiliser un **Dépôt de modèles** pour configurer votre service, spécifiez l'**URI** et l'**Authentification** de la même manière que pour le **Dépôt par défaut**. Veillez à inclure un **Nom** pour votre modèle, puis sélectionnez **Appliquer** pour l’attacher à votre instance.
+Si vous souhaitez utiliser des **Référentiels supplémentaires** facultatifs pour configurer votre service, spécifiez l’**URI** et l’**Authentification** de la même manière que pour le **Dépôt par défaut**. Veillez à inclure un **Nom** pour votre modèle, puis sélectionnez **Appliquer** pour l’attacher à votre instance.
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>Entrer les informations de dépôt dans un fichier YAML
 

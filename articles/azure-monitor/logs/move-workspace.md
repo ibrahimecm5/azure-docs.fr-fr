@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 392b9d5b753ff75ab64a2f21a87301ba17de24c3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4962849bb08983bb821d5ffed90a8312a52e9172
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058005"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335781"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Déplacer un espace de travail Log Analytics vers un autre abonnement ou groupe de ressources
 
@@ -23,7 +23,7 @@ Dans cet article, vous découvrirez la procédure permettant de déplacer un esp
 ## <a name="verify-active-directory-tenant"></a>Vérifier le locataire Active Directory
 Les abonnements source et de destination de l’espace de travail doivent exister dans le même locataire Azure Active Directory. Utilisez Azure PowerShell pour vérifier que les deux abonnements ont le même ID de locataire.
 
-``` PowerShell
+```powershell
 (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
@@ -36,11 +36,11 @@ Les abonnements source et de destination de l’espace de travail doivent existe
   - Update Management
   - Suivi des modifications
   - Démarrer/arrêter des machines virtuelles pendant les heures creuses
-  - Azure Security Center
+  - Microsoft Defender pour le cloud
 
 >[!IMPORTANT]
-> **Clients Azure Sentinel**
-> - Actuellement, une fois Azure Sentinel déployé dans un espace de travail, le déplacement de l’espace de travail vers un autre groupe de ressources ou abonnement n’est pas pris en charge. 
+> **Clients Microsoft Sentinel**
+> - Actuellement, une fois Microsoft Sentinel déployé dans un espace de travail, le déplacement de l’espace de travail vers un autre groupe de ressources ou abonnement n’est pas pris en charge. 
 > - Si vous avez déjà déplacé l’espace de travail, désactivez toutes les règles actives dans **Analytics**, puis réactivez-les après cinq minutes. Cette solution s’avère efficace la plupart du temps, mais pour rappel, elle n’est pas prise en charge et relève de votre propre responsabilité.
 > - L’opération peut prendre quelques heures à Azure Resource Manager, et les solutions peuvent ne pas répondre pendant l’opération.
 > 
@@ -69,7 +69,7 @@ Procédez comme suit pour supprimer les solutions via le portail Azure :
 
 Pour supprimer les solutions à l’aide de PowerShell, utilisez la cmdlet [Remove-AzResource](/powershell/module/az.resources/remove-azresource) comme indiqué dans l’exemple suivant :
 
-``` PowerShell
+```powershell
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "ChangeTracking(<workspace-name>)" -ResourceGroupName <resource-group-name>
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Updates(<workspace-name>)" -ResourceGroupName <resource-group-name>
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
@@ -113,7 +113,7 @@ Procédez comme suit pour déplacer votre espace de travail via le portail Azure
 ### <a name="powershell"></a>PowerShell
 Pour déplacer votre espace de travail à l’aide de PowerShell, utilisez la cmdlet [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) comme dans l’exemple suivant :
 
-``` PowerShell
+```powershell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
 

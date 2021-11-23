@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 11/11/2021
 ms.author: makromer
-ms.openlocfilehash: f24bb345442b2320344cf1c9e89d383571447ded
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 5ea0e509f7969c011cb18f99433c85fc97ed5528
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044759"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487199"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Copier et transformer des données depuis et vers un point de terminaison REST à l’aide d’Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -511,6 +511,9 @@ Les **règles de pagination** sont définies en tant que dictionnaire dans un je
 | AbsoluteUrl | Indique l’URL pour l’émission de la requête suivante. Il peut s’agit d’une **URL absolue ou relative**. |
 | QueryParameters.*request_query_parameter* OU QueryParameters[’request_query_parameter’] | « request_query_parameter » est défini par l’utilisateur et fait référence à un nom de paramètre de requête dans l’URL de la requête HTTP suivante. |
 | Headers.*request_header* OR Headers[’request_header’] | « request_header » est défini par l’utilisateur et fait référence à un nom d’en-tête dans la requête HTTP suivante. |
+| EndCondition:*end_condition* | « end_condition » est défini par l’utilisateur, et indique la condition qui mettra fin à la boucle de pagination dans la requête HTTP suivante. |
+| MaxRequestNumber | Indique le numéro de requête de pagination maximal. Laisser vide pour indiquer aucune limite. |
+| SupportRFC5988 | RFC 5988 est pris en charge dans les règles de pagination. Valeur par défaut : true. Elle ne sera honorée que si aucune autre règle de pagination n’est définie.
 
 **Valeurs prises en charge** dans les règles de pagination :
 

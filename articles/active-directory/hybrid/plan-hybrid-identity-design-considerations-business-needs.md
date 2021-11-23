@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f57ae5565e176956cab15586809ad231b776d27
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89660561"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300860"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Déterminer les besoins d’identité pour votre solution d’identités hybrides
 La première étape dans la conception d’une solution d’identités hybrides consiste à déterminer les exigences de l’entreprise qui va exploiter cette solution.  L’identité hybride démarre comme un rôle de support (elle prend en charge toutes les autres solutions cloud en assurant l’authentification), et continue en proposant des fonctionnalités nouvelles et intéressantes qui révèlent de nouvelles charges de travail pour les utilisateurs.  Ces charges de travail ou les services que vous souhaitez adopter pour vos utilisateurs déterminent les exigences pour la conception d’identités hybrides.  Ces services et charges de travail doivent exploiter l’identité hybride à la fois en local et dans le cloud.  
@@ -59,7 +59,7 @@ Vous devez également connaître les services cloud dont votre entreprise dispos
 * Cette intégration est-elle actuellement en production ou s’agit-il d’un pilote ?
 
 > [!NOTE]
-> Cloud Discovery analyse vos journaux d’activité de trafic par rapport au catalogue d’applications cloud de Microsoft Cloud App Security, qui contient plus de 16 000 applications cloud classées et évaluées selon plus de 70 facteurs de risque, pour vous fournir une visibilité permanente sur l’utilisation du cloud, les clichés instantanés et le risque des clichés instantanés dans votre organisation. Pour commencer, consultez la [configuration de Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+> Cloud Discovery analyse vos journaux d’activité de trafic par rapport au catalogue d’applications cloud de Microsoft Defender for Cloud Apps, qui contient plus de 16 000 applications cloud classées et évaluées selon plus de 70 facteurs de risque, pour vous fournir une visibilité permanente sur l’utilisation du cloud, les clichés instantanés et le risque des clichés instantanés dans votre organisation. Pour commencer, consultez la [configuration de Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 
@@ -112,4 +112,3 @@ Vous devez également évaluer les exigences des utilisateurs. Cette évaluation
 
 ## <a name="see-also"></a>Voir aussi
 [Présentation des considérations relatives à la conception](plan-hybrid-identity-design-considerations-overview.md)
-

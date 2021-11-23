@@ -4,12 +4,12 @@ description: Recommandations relatives à la sécurisation des images et des sec
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 721e3f27af768bd3a31d069100d1f3b84fb5e624
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9f0a30095605ae9ff52f5780bdf2f94454cf85a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091447"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315726"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Éléments à prendre en compte en matière de sécurité pour Azure Container Instances
 
@@ -34,7 +34,7 @@ Une image conteneur publique ne garantit pas la sécurité. Les images conteneur
 
 Tirez parti de solutions pour analyser des images conteneur dans un registre privé et identifier les vulnérabilités potentielles. Il est important de comprendre l'ampleur de la détection des menaces par les différentes solutions.
 
-Par exemple, Azure Container Registry peut [s'intégrer à Azure Security Center](../security-center/defender-for-container-registries-introduction.md) pour analyser automatiquement toutes les images Linux envoyées (push) vers un registre. Le scanneur Qualys intégré à Azure Security Center détecte les vulnérabilités des images, les classifie et propose des instructions de correction.
+Par exemple, Azure Container Registry peut [s’intégrer à Microsoft Defender pour le cloud](../security-center/defender-for-container-registries-introduction.md) pour analyser automatiquement toutes les images Linux envoyées (push) vers un registre. Le scanneur Qualys intégré à Microsoft Defender pour le cloud détecte les vulnérabilités des images, les classifie et propose des instructions de correction.
 
 Des solutions de supervision de la sécurité et d'analyse des images telles que [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) et [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) sont également disponibles sur la Place de marché Azure.  
 
@@ -138,7 +138,7 @@ Surveillez l'activité de vos ressources, comme les fichiers, le réseau et les 
 
 Maintenez un journal d'audit précis des accès administratifs à votre écosystème de conteneurs, y compris votre cluster Kubernetes, à votre registre de conteneurs et à vos images conteneur. Ces enregistrements peuvent être nécessaires à des fins d'audit et ils peuvent être utilisés comme preuves médico-légales après un incident de sécurité. Les solutions Azure sont les suivantes :
 
-* [Intégration d'Azure Kubernetes Service à Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) pour superviser la configuration de la sécurité de l’environnement de cluster et générer des recommandations de sécurité
+* [Intégration d’Azure Kubernetes Service à Microsoft Defender pour le cloud](../security-center/defender-for-kubernetes-introduction.md) pour superviser la configuration de la sécurité de l’environnement de cluster et générer des recommandations de sécurité
 * [Solution Azure Container Monitoring](../azure-monitor/containers/containers.md)
 * Journaux de ressources pour [Azure Container Instances](container-instances-log-analytics.md) et [Azure Container Registry](../container-registry/monitor-service.md)
 
@@ -146,6 +146,6 @@ Maintenez un journal d'audit précis des accès administratifs à votre écosyst
 
 * Consultez la [base de référence de la sécurité Azure pour Container Instances](security-baseline.md) pour obtenir des recommandations complètes qui vous aideront à améliorer l’état de la sécurité de votre déploiement.
 
-* Apprenez-en davantage sur l’utilisation d'[Azure Security Center](../security-center/container-security.md) à des fins de détection des menaces en temps réel dans vos environnements conteneurisés.
+* Apprenez-en davantage sur l’utilisation de [Microsoft Defender pour le cloud](../security-center/container-security.md) à des fins de détection des menaces en temps réel dans vos environnements conteneurisés.
 
 * En savoir plus sur la gestion des vulnérabilités des conteneurs avec les solutions de [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) et [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/).

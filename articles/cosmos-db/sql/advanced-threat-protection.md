@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 387a2aa7026dfce04a4d1be495f2dff090ec0709
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ee08e92f7aedaf46733e21839b999369d4944091
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123116299"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324265"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection pour Azure Cosmos DB (préversion)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 Advanced Threat Protection pour Azure Cosmos DB offre une couche supplémentaire de sécurité intelligente qui détecte les tentatives d’accès ou d’exploitation inhabituelles et potentiellement dangereuses des comptes Azure Cosmos DB. Cette couche de protection vous permet de traiter efficacement les menaces sans pour autant être un expert en sécurité et de les intégrer aux systèmes centraux de supervision de la sécurité.
 
-Les alertes de sécurité sont déclenchées lorsque des anomalies se produisent dans l’activité. Ces alertes de sécurité sont intégrées avec [Azure Security Center](https://azure.microsoft.com/services/security-center/) et sont également envoyées par e-mail aux administrateurs d’abonnement, avec les détails des activités suspectes, ainsi que des recommandations sur la façon d’examiner et de corriger les menaces.
+Les alertes de sécurité sont déclenchées lorsque des anomalies se produisent dans l’activité. Ces alertes de sécurité sont intégrées avec [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/) et sont également envoyées par e-mail aux administrateurs d’abonnement, avec les détails des activités suspectes, ainsi que des recommandations sur la façon d’examiner et de corriger les menaces.
 
 > [!NOTE]
 >
@@ -104,7 +104,7 @@ Utilisez Azure Policy pour activer Advanced Threat Protection pour Cosmos DB.
 
 Quand des anomalies d’activité Azure Cosmos DB sont détectées, une alerte est déclenchée. Elle contient des informations sur l’événement de sécurité suspect. 
 
- Dans Azure Security Center, vous pouvez examiner et gérer vos [alertes de sécurité](../../security-center/security-center-alerts-overview.md) actuelles.  Cliquez sur l’alerte spécifiée dans [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) pour voir les causes possibles et les actions recommandées afin d’examiner et d’atténuer la menace potentielle. L’image suivante représente un exemple d’informations d’alerte fournies dans Security Center.
+ À partir de Microsoft Defender pour le cloud, vous pouvez consulter et gérer vos [alertes de sécurité](../../security-center/security-center-alerts-overview.md) actuelles.  Cliquez sur l’alerte spécifiée dans [Defender pour le cloud](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) pour voir les causes possibles et les actions recommandées afin d’examiner et d’atténuer la menace potentielle. L’illustration suivante montre un exemple d’informations d’alerte fournies dans Defender pour le cloud.
 
  :::image type="content" source="./media/advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Détails de la menace":::
 
@@ -114,9 +114,9 @@ Une notification par e-mail est également envoyée avec les détails de l’ale
 
 ## <a name="cosmos-db-atp-alerts"></a>Alertes ATP Cosmos DB
 
- Pour afficher la liste des alertes générées lors de la supervision des comptes Azure Cosmos DB, consultez la section [Alertes Cosmos DB](../../security-center/alerts-reference.md#alerts-azurecosmos) dans la documentation Azure Security Center.
+ Pour afficher la liste des alertes générées lors de la supervision des comptes Azure Cosmos DB, consultez la section [Alertes Cosmos DB](../../security-center/alerts-reference.md#alerts-azurecosmos) dans la documentation Microsoft Defender pour le cloud.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * En savoir plus sur la [Journalisation des diagnostics dans Azure Cosmos DB](../cosmosdb-monitor-resource-logs.md)
-* En savoir plus sur [Azure Security Center](../../security-center/security-center-introduction.md)
+* Découvrez-en plus sur [Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md)

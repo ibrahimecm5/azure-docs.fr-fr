@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: e21cfe528c3cba9c190ba667552deb7070884aa3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9a5a78fc77a2b0f0891bfdd2922ad1cd771aba42
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097513"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322897"
 ---
 # <a name="understand-and-work-with-azure-virtual-network-manager-preview-scopes"></a>Comprendre et utiliser les étendues Azure Virtual Network Manager (préversion)
 
@@ -42,7 +42,7 @@ Dans cet article, vous allez découvrir comment Azure Virtual Network Manager ut
 Une *étendue* dans Azure Virtual Network Manager est un ensemble de ressources où des fonctionnalités peuvent être appliquées. Lorsque vous spécifiez une étendue, vous limitez l’accès à ceux pour lesquels Network Manager peut gérer les ressources. La valeur de l’étendue peut être au niveau du groupe d’administration ou au niveau de l’abonnement. Consultez [Groupes d’administration Azure](../governance/management-groups/overview.md) pour apprendre à gérer votre hiérarchie de ressources. Lorsque vous sélectionnez un groupe d’administration en tant qu’étendue, toutes les ressources enfants sont comprises dans l’étendue. 
 
 > [!NOTE]
-> La création de plusieurs instances de Network Manager avec une étendue qui se chevauche de la même hiérarchie n’est pas prise en charge.
+> Vous ne pouvez pas créer plusieurs instances Azure Virtual Network Manager avec une étendue qui chevauche la même hiérarchie et les mêmes fonctionnalités sélectionnées.
 > 
 
 ## <a name="features"></a>Fonctionnalités

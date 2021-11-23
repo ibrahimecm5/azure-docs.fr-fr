@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 195a0bfa-dff1-429b-b030-19ca95ee6abe
 ms.date: 06/08/2021
-ms.openlocfilehash: 909f3dcff9f8ad5af5f1128d1d067f2430a00525
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: aaaa6fb269178954ade464745c6c640845457612
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730117"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289221"
 ---
 # <a name="red-hat-jboss-eap-on-azure-best-practices"></a>Bonnes pratiques pour Red Hat JBoss EAP sur Azure
 
@@ -104,9 +104,9 @@ Les six plans sont les suivants :
 - Machine virtuelle en cluster JBoss EAP 7.3 sur RHEL 8.3 (PAYG)
 - Machine virtuelle en cluster JBoss EAP 7.3 sur RHEL 8.3 (BYOS)
 - Groupes de machines virtuelles identiques en cluster JBoss EAP 7.3 sur RHEL 8.3 (PAYG)
-- Groupes de machines virtuelles identiques en cluster JBoss EAP 7.3 sur RHEL 8.3 (BYOS)
+- Groupes de machines virtuelles identiques clusterisés JBoss EAP 7.3 sur RHEL 8.3 (BYOS)
 
-:::image type="content" source="./media/red-hat-marketplace-image-1.png" alt-text="Image montrant l’option permettant de déployer l’image Red Hat à l’aide du lien de déploiement GitHub":::
+:::image type="content" source="./media/red-hat-marketplace-image-1.png" alt-text="Image montrant l’option permettant de déployer l’image Red Hat à l’aide du lien de déploiement GitHub.":::
 
 ### <a name="azure-quickstart-templates"></a>Modèles de démarrage rapide Microsoft Azure
 
@@ -187,7 +187,7 @@ Configurez JBoss EAP avec l’environnement d’équilibrage de charge. Assurez-
 
 ## <a name="other-best-practices"></a>Autres bonnes pratiques
 
-- En tant qu’administrateur d’une installation JBoss EAP sur une machine virtuelle, il est important de vous assurer que votre machine virtuelle est sécurisée. Cela réduit de manière significative le risque de voir vos systèmes d’exploitation invités et hôtes infectés par des logiciels malveillants. La sécurisation de votre machine virtuelle réduit les attaques sur JBoss EAP et les dysfonctionnements des applications hébergées sur JBoss EAP. Contrôlez l’accès aux machines virtuelles Azure à l’aide de fonctionnalités telles qu’[Azure Policy](https://azure.microsoft.com/services/azure-policy/) et les [rôles intégrés Azure](../../../role-based-access-control/built-in-roles.md) dans le [Contrôle d’accès en fonction du rôle (RBAC)](../../../role-based-access-control/overview.md). Protégez votre machine virtuelle contre les programmes malveillants en installant Microsoft Antimalware ou une solution de protection de point de terminaison des partenaires Microsoft, et en intégrant votre solution anti-programme malveillant avec [Azure Security Center](https://azure.microsoft.com/services/security-center/) pour surveiller l’état de votre protection. Sur les machines virtuelles RHEL, vous pouvez la protéger en bloquant le transfert de port et la connexion racine, qui peut être désactivée dans */
+- En tant qu’administrateur d’une installation JBoss EAP sur une machine virtuelle, il est important de vous assurer que votre machine virtuelle est sécurisée. Cela réduit de manière significative le risque de voir vos systèmes d’exploitation invités et hôtes infectés par des logiciels malveillants. La sécurisation de votre machine virtuelle réduit les attaques sur JBoss EAP et les dysfonctionnements des applications hébergées sur JBoss EAP. Contrôlez l’accès aux machines virtuelles Azure à l’aide de fonctionnalités telles qu’[Azure Policy](https://azure.microsoft.com/services/azure-policy/) et les [rôles intégrés Azure](../../../role-based-access-control/built-in-roles.md) dans le [Contrôle d’accès en fonction du rôle (RBAC)](../../../role-based-access-control/overview.md). Protégez votre machine virtuelle contre les programmes malveillants en installant Microsoft Antimalware ou une solution de protection de point de terminaison des partenaires Microsoft, et en intégrant votre solution anti-programme malveillant avec [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/) pour surveiller l’état de votre protection. Sur les machines virtuelles RHEL, vous pouvez la protéger en bloquant le transfert de port et la connexion racine, qui peut être désactivée dans */
 
 
 - Utilisez des variables d’environnement pour faciliter et lisser votre expérience avec JBoss EAP sur les machines virtuelles Azure. Par exemple, vous pouvez utiliser EAP_HOME pour désigner le chemin vers l’installation de JBoss EAP, qui sera utilisé plusieurs fois. Dans ce cas, les variables d’environnement sont utiles. Les variables d’environnement sont également un moyen courant de configurer les services et de gérer les secrets des applications web. Lorsqu’une variable d’environnement est définie à partir de l’interpréteur de commandes à l’aide de la commande d’exportation, son existence prend fin quand la session de l’utilisateur se termine. Cela pose problème quand la variable doit être conservée entre les sessions. Pour rendre un environnement persistant pour l’environnement d’un utilisateur, nous exportons la variable à partir du script de profil de l’utilisateur. Ajoutez la commande d’exportation pour chaque variable d’environnement que vous souhaitez conserver dans bash_profile. Si vous souhaitez définir une variable d’environnement globale permanente pour tous les utilisateurs qui ont accès à la machine virtuelle, vous pouvez l’ajouter au profil par défaut. Il est recommandé de stocker les variables d’environnement globales dans un répertoire nommé `/etc/profile.d`. Ce répertoire contient la liste des fichiers utilisés pour définir les variables d’environnement de l’ensemble du système. L’utilisation de la commande set pour définir une variable d’environnement système dans une invite de commandes Windows Server ne définit pas de façon permanente la variable d’environnement. Utilisez la commande *setx* ou l’interface Système dans le Panneau de configuration.

@@ -5,12 +5,12 @@ author: yossiy
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: yossiy
-ms.openlocfilehash: 13633eefff454cc6f2352264d76ea91367442166
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 01d7852e514931a1546a9ab66c3b582bea115f2b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131062223"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319621"
 ---
 # <a name="move-a-log-analytics-workspace-to-another-region-by-using-the-azure-portal"></a>Déplacer un espace de travail Log Analytics vers une autre région à l’aide du portail Azure
 
@@ -77,7 +77,7 @@ Les procédures suivantes montrent comment préparer l’espace de travail et le
 1. Sélectionnez l’espace de travail, les solutions, les recherches enregistrées, les alertes, les packs de requêtes et les autres ressources liées à l’espace de travail dont vous disposez (par exemple, un compte Automation). Sélectionnez ensuite **Exporter le modèle** dans la barre d’outils.
     
     > [!NOTE]
-    > Azure Sentinel ne peut pas être exporté avec un modèle. Vous devez [intégrer Sentinel](../../sentinel/quickstart-onboard.md) à un espace de travail cible.
+    > Microsoft Sentinel ne peut pas être exporté avec un modèle. Vous devez [intégrer Sentinel](../../sentinel/quickstart-onboard.md) à un espace de travail cible.
    
 1. Sélectionnez **Déployer** dans la barre d’outils pour modifier et préparer le modèle pour le déploiement.
 1. Sélectionnez **Modifier les paramètres** dans la barre d’outils pour ouvrir le fichier *parameters.json* dans l’éditeur en ligne.
@@ -286,7 +286,7 @@ Les procédures suivantes montrent comment préparer l’espace de travail et le
 1. Votre espace de travail, y compris les ressources sélectionnées, est maintenant déployé dans la région cible. Vous pouvez terminer la configuration restante dans l’espace de travail pour jumeler les fonctionnalités avec celles de l’espace de travail d’origine.
    - *Connecter des agents* : Utilisez l’une des options disponibles, notamment Règles de collecte de données, pour configurer les agents requis sur les machines virtuelles et les groupes de machines virtuelles identiques et pour spécifier le nouvel espace de travail cible comme destination.
    - *Paramètres de diagnostic* : Mettez à jour les paramètres de diagnostic dans les ressources identifiées, avec l’espace de travail cible comme destination.
-   - *Installer des solutions* : Certaines solutions, comme [Azure Sentinel](../../sentinel/quickstart-onboard.md), nécessitent des procédures d’intégration particulières et n’ont pas été incluses dans le modèle. Vous devez les intégrer séparément au nouvel espace de travail.
+   - *Installer des solutions* : Certaines solutions, comme [Microsoft Sentinel](../../sentinel/quickstart-onboard.md), nécessitent des procédures d’intégration particulières et n’ont pas été incluses dans le modèle. Vous devez les intégrer séparément au nouvel espace de travail.
    - *Configurer l’API de collecte de données* : Configurez les instances de l’API de collecte de données pour envoyer des données à l’espace de travail cible.
    - *Configurer des règles d’alerte* : Lorsque les alertes ne sont pas exportées dans le modèle, vous devez les configurer manuellement dans l’espace de travail cible.
 1. Vérifiez que les nouvelles données ne sont pas ingérées dans l’espace de travail d’origine. Exécutez la requête suivante dans votre espace de travail d’origine, et observez qu’il n’y a pas d’ingestion après la migration :

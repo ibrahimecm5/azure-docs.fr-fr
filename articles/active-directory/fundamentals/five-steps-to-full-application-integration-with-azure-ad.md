@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 7c3e4441289b2b17cf772df73f3c53caa465813e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f2b43fb9b816ff52c3e52bf8c39843c34651aea4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732580"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314996"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Cinq étapes pour l’intégration de toutes vos applications à Azure AD
 
@@ -46,7 +46,7 @@ Enfin, vous pouvez également intégrer les applications que vous développez en
 
 Découvrez ensuite les applications que les employés utilisent fréquemment, et hiérarchisez votre travail pour les intégrer à Azure AD.
 
-Vous pouvez commencer par utiliser les [outils de découverte cloud](/cloud-app-security/tutorial-shadow-it) de Microsoft Cloud App Security pour détecter et gérer l’informatique « fantôme » dans votre réseau (autrement dit, les applications qui ne sont pas gérées par le service informatique). Vous pouvez [utiliser Microsoft Defender - Protection avancée contre les menaces](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) pour simplifier et étendre le processus de découverte.
+Vous pouvez commencer par utiliser les [outils de découverte cloud](/cloud-app-security/tutorial-shadow-it) de Microsoft Defender for Cloud Apps pour détecter et gérer l’informatique « fantôme » dans votre réseau (autrement dit, les applications qui ne sont pas gérées par le service informatique). Vous pouvez [utiliser Microsoft Defender - Protection avancée contre les menaces](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) pour simplifier et étendre le processus de découverte.
 
 En outre, vous pouvez utiliser le [rapport d’activité des applications AD FS](../manage-apps/migrate-adfs-application-activity.md) dans le Portail Azure pour découvrir toutes les applications AD FS de votre organisation, le nombre d’utilisateurs uniques qui s’y sont connectés et la compatibilité pour les intégrer à Azure AD.
 
@@ -88,7 +88,7 @@ Vous pouvez également migrer vers Azure AD, les applications qui utilisent un a
 
 Traditionnellement, les applications étaient sécurisées en n’autorisant l’accès que lorsqu’elles étaient connectées au réseau de l’entreprise. Cependant, dans un monde de plus en plus connecté, nous souhaitons autoriser l’accès aux applications pour les clients, les partenaires et/ou les employés, quel que soit l’endroit où ils se trouvent dans le monde. [Proxy d’application Azure AD](../app-proxy/what-is-application-proxy.md) (AppProxy) est une fonctionnalité d’Azure AD qui connecte vos applications locales existantes à Azure AD et vous évite d’avoir à gérer des serveurs de périphérie ou d’autres infrastructures supplémentaires pour les connexions.
 
-![Le fonctionnement du service Proxy d’application est illustré dans un schéma. Un utilisateur accède à « https://sales.contoso.com  » et la demande est redirigée via « https://sales-contoso.msappproxy.net  » dans Azure Active Directory vers l’adresse locale « http://sales  »](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
+![Le fonctionnement du service Proxy d’application est illustré dans un schéma. Un utilisateur accède à https://sales.contoso.com et la demande est redirigée via https://sales-contoso.msappproxy.net dans Azure Active Directory vers l’adresse locale http://sales](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 
 Vous pouvez vous reporter au [Didacticiel : Ajoutez une application locale pour l’accès distant via Proxy d’application dans Azure Active Directory](../app-proxy/application-proxy-add-on-premises-application.md) afin d’activer Proxy d’application et d’ajouter une application locale à votre locataire Azure AD.
 

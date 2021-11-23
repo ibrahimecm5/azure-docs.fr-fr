@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu, shreyamalik
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93d44065255dcb9f4977e93dd596eb3b80c1faa2
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 292860ed26a39205f221c213f392b4b120006d13
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533163"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344766"
 ---
 # <a name="monitor-and-troubleshoot-continuous-access-evaluation"></a>Résoudre les problèmes rencontrés avec la fonctionnalité Évaluation continue de l’accès
 
@@ -34,7 +34,7 @@ Les administrateurs ont la possibilité de surveiller les connexions des utilisa
 
 À partir de là, les administrateurs obtiennent des informations sur les événements de connexion de leurs utilisateurs. Sélectionnez une connexion pour voir les détails de la session, comme les stratégies d’accès conditionnel qui ont été appliquées et si l’évaluation continue de l’accès est activée. 
 
-Une tentative de connexion donnée peut s’afficher sous l’onglet interactif ou sous celui non interactif. Les administrateurs devront peut-être vérifier les deux onglets lorsqu’ils effectuent le suivi des connexions de leurs utilisateurs.
+Il existe plusieurs requêtes de connexion pour chaque authentification. Certaines s’affichent sous l’onglet interactif, tandis que d’autres s’affichent sous l’onglet non interactif. L’évaluation continue de l’accès s’affichera uniquement avec la valeur true pour l’une des requêtes, et cela peut se produire sur l’onglet interactif ou non interactif. Les administrateurs doivent consulter les deux onglets pour vérifier si l’évaluation continue de l’accès de l’utilisateur est activée. 
 
 ### <a name="searching-for-specific-sign-in-attempts"></a>Recherche de tentatives de connexion spécifiques
 

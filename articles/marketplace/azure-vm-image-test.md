@@ -7,12 +7,12 @@ ms.topic: how-to
 author: ebolton-cyber
 ms.author: edewebolton
 ms.date: 03/10/2021
-ms.openlocfilehash: 876f4b42c77caba27ed94b42d784004b0bfd32ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e3e3b281e90236704ebd50cd8ee1420947c4d56
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598153"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331240"
 ---
 # <a name="test-a-virtual-machine-image"></a>Tester une image de machine virtuelle
 
@@ -20,12 +20,12 @@ Cette rubrique décrit les étapes permettant de tester une image de machine vir
 
 ## <a name="deploy-an-azure-vm"></a>Déployer une machine virtuelle Azure
 
-Pour déployer une machine virtuelle à partir de l’image de Shared Image Gallery :
+Pour déployer une machine virtuelle à partir de l’image Azure Compute Gallery (anciennement Galerie d’images partagées) :
 
-1. Accédez à la version de l’image Shared Image Gallery
-1. Cliquez sur Créer une machine virtuelle
-1. Fournissez un nom de machine virtuelle et sélectionnez une taille de machine virtuelle
-1. Cliquez sur Vérifier + créer. Une fois la validation effectuée, cliquez sur Créer.
+1. Accédez à la version de l’image Azure Compute Gallery.
+1. Sélectionnez **Créer une machine virtuelle**.
+1. Fournissez un nom de machine virtuelle et sélectionnez une taille de machine virtuelle.
+1. Sélectionnez **Revoir + créer**. Une fois la validation réussie, sélectionnez **Créer**.
 
 > [!NOTE]
 > Si vous avez besoin de créer une machine virtuelle à partir d’un fichier VHD, suivez les instructions des articles suivants, [Préparer un modèle de Azure Resource Manager](#connect-the-certification-tool-to-a-vm-image) ou [Déployer une machine virtuelle Azure à l’aide de PowerShell](#how-to-use-powershell-to-consume-the-self-test-api).

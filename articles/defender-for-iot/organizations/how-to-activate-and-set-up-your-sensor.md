@@ -1,14 +1,14 @@
 ---
 title: Activer et configurer votre capteur
 description: Cet article explique comment activer une console de capteur et s’y connecter.
-ms.date: 04/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 256e2b941d0eb2f24331abd892b798014cf0eb5d
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 86c5215e91a32fd67a29e157df2c3ab8606f15b8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017791"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278965"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Activer et configurer votre capteur
 
@@ -20,7 +20,7 @@ Les analystes de sécurité et les utilisateurs en lecture seule ne peuvent pas 
 
 ## <a name="sign-in-and-activation-for-administrator-users"></a>Connexion et activation pour les utilisateurs Administrateurs
 
-Les administrateurs qui se connectent pour la première fois doivent vérifier qu’ils ont accès aux fichiers d’activation et de récupération de mot de passe qui ont été téléchargés lors de l’intégration du capteur. Si ce n’est pas le cas, ils ont besoin des autorisations des rôles Azure Administrateur de la sécurité, Contributeur d’abonnement ou Propriétaire d’abonnement pour générer ces fichiers sur le portail Azure Defender pour IoT.
+Les administrateurs qui se connectent pour la première fois doivent vérifier qu’ils ont accès aux fichiers d’activation et de récupération de mot de passe qui ont été téléchargés lors de l’intégration du capteur. Si ce n’est pas le cas, ils ont besoin des autorisations des rôles Azure Administrateur de la sécurité, Contributeur d’abonnement ou Propriétaire d’abonnement pour générer ces fichiers sur le portail Microsoft Defender pour IoT.
 
 ### <a name="first-time-sign-in-and-activation-checklist"></a>Liste de contrôle pour la première connexion et l’activation
 
@@ -32,22 +32,22 @@ Avant de se connecter à la console du capteur, les utilisateurs Administrateurs
 
 - Un mot de passe initial. Si vous avez acheté un capteur préconfiguré à partir d’Arrow, vous devez générer un mot de passe lorsque vous vous connectez pour la première fois.
 
-- Le fichier d’activation associé à ce capteur. Le fichier a été généré et téléchargé lors de l’intégration du capteur sur le portail Defender pour IoT.
+- Le fichier d’activation associé à ce capteur. Le fichier a été généré et téléchargé lors de l’intégration du capteur sur Defender pour IoT.
 
 - Un certificat SSL/TLS signé par une autorité de certification dont votre entreprise a besoin.
 
 ### <a name="about-activation-files"></a>À propos des fichiers d’activation
 
-Votre capteur a été intégré à Azure Defender pour IoT dans un mode d’administration spécifique :
+Votre capteur a été intégré à Microsoft Defender pour IoT dans un mode d’administration spécifique :
 
 | Type de mode | Description |
 |--|--|
-| **Mode connecté au cloud** | Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations sur les alertes sont également transmises par le biais du hub IoT et peuvent être partagées avec d’autres services Azure, comme Azure Sentinel. Vous pouvez aussi activer les mises à jour automatiques du renseignement sur les menaces. |
+| **Mode connecté au cloud** | Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations sur les alertes sont également transmises par le biais du hub IoT et peuvent être partagées avec d’autres services Azure, comme Microsoft Sentinel. Vous pouvez aussi activer les mises à jour automatiques du renseignement sur les menaces. |
 | **Mode connecté localement** | Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations de détection sont également partagées avec la console de gestion locale, si le capteur y est connecté. |
 
 Un fichier d’activation du mode connecté localement ou connecté au cloud a été généré et téléchargé pour ce capteur pendant l’intégration. Le fichier d’activation contient des instructions pour le mode d’administration du capteur. *Un fichier d’activation unique doit être chargé sur chaque capteur que vous déployez.*  La première fois que vous vous connectez, vous devez télécharger le fichier d’activation approprié pour ce capteur.
 
-:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-activation-file-download-button.png" alt-text="Portail Azure Defender pour IoT, intégrer un capteur.":::
+:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-activation-file-download-button.png" alt-text="Defender pour IoT dans le portail Azure, capteur intégré.":::
 
 ### <a name="about-certificates"></a>À propos des certificats
 
@@ -77,7 +77,7 @@ Pour plus d’informations sur l’utilisation de certificats, consultez [Gérer
 
 1. Accédez à la console du capteur à partir de votre navigateur à l’aide de l’adresse IP définie lors de l’installation. La boîte de dialogue de connexion s’ouvre.
 
-    :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Capteur Azure Defender pour IoT.":::
+    :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Capteur Microsoft Defender pour IoT.":::
 
 1. Entrez les informations d’identification définies lors de l’installation du capteur ou sélectionnez l’option **Récupération du mot de passe**. Si vous avez acheté un capteur préconfiguré auprès d’Arrow, vous devez d’abord générer un mot de passe. Pour plus d’informations sur la récupération du mot de passe, consultez [Examiner l’échec du mot de passe lors de la connexion initiale](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
 
@@ -130,7 +130,7 @@ Pour les utilisateurs dont la version est antérieure à la version 10.0, il se
 
 **Pour activer votre licence :**
 
-1. Ouvrez un incident auprès du [support](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
+1. Ouvrez un incident auprès du [support](https://portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support).
 
 1. Indiquez au support votre numéro d’identification d’activation.
 
@@ -146,15 +146,15 @@ Pour les utilisateurs dont la version est antérieure à la version 10.0, il se
 
 ### <a name="subsequent-sign-ins"></a>Connexions suivantes
 
-Après la première activation, la console du capteur Azure Defender pour IoT s’ouvre après la connexion sans nécessiter de fichier d’activation. Vous n’avez besoin que de vos informations d’identification de connexion.
+Après la première activation, la console du capteur Microsoft Defender pour IoT s’ouvre après la connexion sans nécessiter de fichier d’activation. Vous n’avez besoin que de vos informations d’identification de connexion.
 
-Après votre connexion, la console Azure Defender pour IoT s’ouvre.
+Après votre connexion, la console Microsoft Defender pour IoT s’ouvre.
 
-:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-log-in-screen-dashboard-v2.png" alt-text="Console Azure Defender pour IoT.":::
+:::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-log-in-screen-dashboard-v2.png" alt-text="Console Microsoft Defender pour IoT.":::
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>Configuration initiale et apprentissage (pour les administrateurs)
 
-Après votre première connexion, le capteur Azure Defender pour IoT commence à surveiller automatiquement votre réseau. Les appareils réseau apparaîtront dans les sections de carte et d’inventaire des appareils. Azure Defender pour IoT commencera à détecter tous les incidents de sécurité et d’exploitation qui se produisent dans votre réseau et à vous en avertir. Vous pouvez ensuite créer des rapports et des requêtes basés sur les informations détectées.
+Après votre première connexion, le capteur Microsoft Defender pour IoT commence à surveiller automatiquement votre réseau. Les appareils réseau apparaîtront dans les sections de carte et d’inventaire des appareils. Microsoft Defender pour IoT commencera à détecter tous les incidents de sécurité et d’exploitation qui se produisent dans votre réseau et à vous en avertir. Vous pouvez ensuite créer des rapports et des requêtes basés sur les informations détectées.
 
 Initialement, cette activité est effectuée en mode d’apprentissage, qui demande à votre capteur d’apprendre l’activité habituelle de votre réseau. Par exemple, le capteur apprend les appareils découverts dans votre réseau, les protocoles détectés dans le réseau et les transferts de fichiers qui se produisent entre des appareils spécifiques. Cette activité devient l’activité de ligne de base de votre réseau.
 
@@ -176,7 +176,7 @@ Définissez les paramètres système du capteur. Par exemple :
 
 ### <a name="disable-learning-mode"></a>Désactiver le mode d’apprentissage
 
-Après avoir ajusté les paramètres système, vous pouvez laisser le capteur Azure Defender pour IoT s’exécuter en mode d’apprentissage jusqu’à ce que vous pensiez que les détections du système reflètent avec précision votre activité sur le réseau.
+Après avoir ajusté les paramètres système, vous pouvez laisser le capteur Microsoft Defender pour IoT s’exécuter en mode d’apprentissage jusqu’à ce que vous pensiez que les détections du système reflètent avec précision votre activité sur le réseau.
 
 Le mode d’apprentissage devrait s’exécuter pendant environ deux à six semaines, selon la taille et la complexité de votre réseau. Une fois le mode d’apprentissage désactivé, toute activité qui diffère de votre activité de ligne de base déclenche une alerte.
 
@@ -224,7 +224,7 @@ Vous accédez aux outils de la console à partir du menu latéral.
 | Fenêtre | Icône | Description |
 |---|---|---|
 | Utilisateurs | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Définir des utilisateurs et des rôles avec différents niveaux d’accès. |
-| Transfert | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Transmettre des informations d’alerte aux partenaires, ainsi que les sources internes (par exemple, Azure Sentinel), qui s’intègrent à Defender pour IoT, aux adresses e-mail, aux serveurs webhook, et bien plus encore. <br /> Voir [Transférer les informations d’alerte](how-to-forward-alert-information-to-partners.md) pour plus d’informations. |
+| Transfert | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Transmettre des informations d’alerte aux partenaires, ainsi que les sources internes (par exemple, Microsoft Sentinel), qui s’intègrent à Defender pour IoT, aux adresses e-mail, aux serveurs webhook, et bien plus encore. <br /> Voir [Transférer les informations d’alerte](how-to-forward-alert-information-to-partners.md) pour plus d’informations. |
 | Paramètres système | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Configurer les paramètres système. Par exemple, définir les paramètres DHCP, fournir les détails du serveur de messagerie ou créer des alias de port. |
 | Paramètres d’importation | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Afficher la fenêtre **Importer les paramètres**. Vous pouvez apporter des modifications manuelles dans les informations d’un appareil.<br /> Voir [Importer les informations des appareils](how-to-import-device-information.md) pour plus d’informations. |
 

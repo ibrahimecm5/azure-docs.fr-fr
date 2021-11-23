@@ -3,13 +3,13 @@ title: Gérer une demande de support Azure
 description: Découvrez comment afficher les demandes de support et comment envoyer des messages, charger des fichiers et gérer les options.
 tags: billing
 ms.topic: how-to
-ms.date: 11/02/2021
-ms.openlocfilehash: 361ab4b643dac6fb54fae8d236dfac38ee024701
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.date: 11/10/2021
+ms.openlocfilehash: c74a6245da9023889be151415bce72ba0129881c
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508341"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179925"
 ---
 # <a name="manage-an-azure-support-request"></a>Gérer une demande de support Azure
 
@@ -54,7 +54,7 @@ Sur cette page, vous pouvez rechercher, filtrer et trier des demandes de support
 
 ## <a name="allow-collection-of-advanced-diagnostic-information"></a>Autoriser la collecte d’informations de diagnostic avancées
 
-Lors de la création d’une demande de support, vous pouvez sélectionner **Oui** ou **Non** dans la section **Informations de diagnostic avancées**. Cette option détermine si le support Azure peut collecter des [informations de diagnostic](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) telles que les [fichiers journaux](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs) à partir de vos ressources Azure qui peuvent éventuellement aider à résoudre votre problème.
+Lors de la création d’une demande de support, vous pouvez sélectionner **Oui** ou **Non** dans la section **Informations de diagnostic avancées**. Cette option détermine si le support Azure peut collecter des [informations de diagnostic](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) telles que les [fichiers journaux](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs) à partir de vos ressources Azure qui peuvent éventuellement aider à résoudre votre problème. Le support Azure peut uniquement accéder aux informations de diagnostic avancées si votre cas a été créé via le portail Azure et que vous avez accordé l’autorisation permettant de l’autoriser.
 
 Pour modifier la sélection des **informations de diagnostic avancées** après la création de la demande :
 

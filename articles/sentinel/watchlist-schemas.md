@@ -1,28 +1,28 @@
 ---
-title: Schémas pour les modèles Watchlist Sentinel Azure | Microsoft Docs
-description: En savoir plus sur les schémas utilisés dans chaque modèle Watchlist intégré dans Azure Sentinel.
+title: Schémas pour les modèles Watchlist Microsoft Sentinel | Microsoft Docs
+description: En savoir plus sur les schémas utilisés dans chaque modèle Watchlist intégré dans Microsoft Sentinel.
 author: batamig
 ms.author: bagold
-ms.service: azure-sentinel
+ms.service: microsoft-sentinel
 ms.topic: reference
 ms.custom: mvc, ignite-fall-2021
-ms.date: 08/04/2021
-ms.subservice: azure-sentinel
-ms.openlocfilehash: f531b18dfe94027948f1411372ff72e68b01c933
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/09/2021
+ms.subservice: microsoft-sentinel
+ms.openlocfilehash: 0d322f7412e32de0c668c3dd82341da81eb12738
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054967"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132516890"
 ---
-# <a name="azure-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Schémas de modèle Watchlist Azure Sentinel intégrés (version préliminaire publique)
+# <a name="microsoft-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Schémas de modèle Watchlist Microsoft Sentinel intégrés (préversion publique)
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Cet article détaille les schémas utilisés dans chaque modèle Watchlist intégré fourni par Azure Sentinel. Pour plus d’informations, consultez [créer un nouveau Watchlist à l’aide d’un modèle (version préliminaire publique)](watchlists.md#create-a-new-watchlist-using-a-template-public-preview).
+Cet article détaille les schémas utilisés dans chaque modèle Watchlist intégré fourni par Microsoft Sentinel. Pour plus d’informations, consultez [créer un nouveau Watchlist à l’aide d’un modèle (version préliminaire publique)](watchlists.md#create-a-new-watchlist-using-a-template-public-preview).
 
 > [!IMPORTANT]
-> Les modèles Azure Sentinel Watchlist sont actuellement en version préliminaire. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
+> Les modèles Microsoft Sentinel Watchlist sont actuellement en préversion. Les [Conditions d’utilisation supplémentaires des préversions Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) incluent des conditions légales supplémentaires qui s’appliquent aux fonctionnalités Azure en version bêta, en préversion ou pas encore disponibles dans la version en disponibilité générale.
 >
 
 
@@ -117,4 +117,4 @@ La watchlist de Comptes de service répertorie les comptes de service et leurs p
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Pour plus d’informations, consultez [Utilisation des watchlists Azure Sentinel](watchlists.md).
+Pour plus d’informations, consultez [Utilisation des watchlists Microsoft Sentinel](watchlists.md).

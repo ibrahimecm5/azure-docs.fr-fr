@@ -1,14 +1,14 @@
 ---
 title: Contrôler quel trafic est surveillé
 description: Les capteurs effectuent automatiquement la détection profonde de paquets pour le trafic informatique et le trafic OT et déterminent des informations sur les périphériques réseau, telles que les attributs d’appareil et le comportement réseau. Plusieurs outils sont disponibles pour contrôler le type de trafic détecté par chaque capteur.
-ms.date: 12/07/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: b80ef4a4a1fca7383da80fda6fdf42831913f2bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 76923afc40469ba30e4a2ce8ead6696f056a7580
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017671"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305937"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Contrôler quel trafic est surveillé
 
@@ -230,7 +230,7 @@ Pour définir des serveurs DNS :
 
 ## <a name="configure-windows-endpoint-monitoring"></a>Configuration de la surveillance des points de terminaison Windows
 
-Avec la fonctionnalité de surveillance des points de terminaison Windows, vous pouvez configurer Azure Defender pour IoT afin que la solution sonde de manière sélective les systèmes Windows. Vous disposez ainsi d’informations plus ciblées et précises sur vos appareils, telles que les niveaux de Service Pack.
+La capacité de surveillance des points de terminaison Windows vous permet de configurer Microsoft Defender pour IoT afin que la solution sonde de manière sélective les systèmes Windows. Vous disposez ainsi d’informations plus ciblées et précises sur vos appareils, telles que les niveaux de Service Pack.
 
 Vous pouvez configurer la détection avec des plages et des hôtes spécifiques et la configurer pour qu’elle soit exécutée aussi souvent que vous le souhaitez. Effectuez une détection sélective à l’aide de Windows Management Instrumentation (WMI), le langage standard de script de Microsoft pour la gestion des systèmes Windows.
 

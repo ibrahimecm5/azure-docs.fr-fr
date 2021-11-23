@@ -5,16 +5,16 @@ author: normesta
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/10/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bcfd37ff8c030136e37b4289bc37006012891412
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 656877f04c51b151168065c68cdc5016892f2a7f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617542"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308162"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Supervision du service Stockage Blob Azure
 
@@ -208,10 +208,10 @@ Pour plus d’informations, consultez [Diffuser des journaux de ressources Azure
 
 2. Si votre identité est associée à plusieurs abonnements, définissez l’abonnement du compte de stockage pour lequel vous souhaitez activer les journaux comme abonnement actif.
 
-   ```azurecli-interactive
-   az account set --subscription <subscription-id>
+   ```azurecli
+      az account set --subscription <subscription-id>
    ```
-
+   
    Remplacez la valeur d’espace réservé `<subscription-id>` par l’ID de votre abonnement.
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archiver les journaux dans un compte de stockage
@@ -463,6 +463,17 @@ Vous pouvez lire les valeurs des métriques de niveau compte de votre compte de 
    Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
 ```
 
+#### <a name="reading-metric-values-with-dimensions"></a>Lecture des valeurs de métriques avec des dimensions
+
+Quand une métrique prend en charge les dimensions, vous pouvez lire les valeurs des métriques et les filtrer à l’aide de valeurs de dimension. Utilisez l’applet de commande [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric).
+
+```powershell
+$resourceId = "<resource-ID>"
+$dimFilter = [String](New-AzMetricFilter -Dimension ApiName -Operator eq -Value "GetBlob" 3> $null)
+Get-AzMetric -ResourceId $resourceId -MetricName Transactions -TimeGrain 01:00:00 -MetricFilter $dimFilter -AggregationType "Total"
+```
+
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 #### <a name="list-the-account-level-metric-definition"></a>Dresser la liste de la définition des métriques de niveau compte
@@ -471,7 +482,7 @@ Vous pouvez afficher la définition des métriques de votre compte de stockage o
 
 Dans cet exemple, remplacez l’espace réservé `<resource-ID>` par l’ID de ressource du compte de stockage complet ou par l’ID de ressource du service Stockage Blob. Vous pouvez trouver les ID de ces ressources sur les pages **Points de terminaison** de votre compte de stockage sur le portail Azure.
 
-```azurecli-interactive
+```azurecli
    az monitor metrics list-definitions --resource <resource-ID>
 ```
 
@@ -479,8 +490,16 @@ Dans cet exemple, remplacez l’espace réservé `<resource-ID>` par l’ID de r
 
 Vous pouvez lire les valeurs des métriques de votre compte de stockage ou du service Stockage Blob. Utilisez la commande [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
 
-```azurecli-interactive
+```azurecli
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+
+#### <a name="reading-metric-values-with-dimensions"></a>Lecture des valeurs de métriques avec des dimensions
+
+Quand une métrique prend en charge les dimensions, vous pouvez lire les valeurs des métriques et les filtrer à l’aide de valeurs de dimension. Utilisez la commande [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list).
+
+```azurecli
+az monitor metrics list --resource <resource-ID> --metric "Transactions" --interval PT1H --filter "ApiName eq 'GetBlob' " --aggregation "Total" 
 ```
 
 ### <a name="template"></a>[Modèle](#tab/template)
@@ -622,15 +641,15 @@ Ce tableau montre comment cette fonctionnalité est prise en charge dans votre c
 
 | Type de compte de stockage                | Stockage Blob (prise en charge par défaut)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Usage général v2 Standard | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup> |![Oui](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup> |
-| Objets blob de blocs Premium          | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup>|![Oui](../media/icons/yes-icon.png)  <sup>2</sup> | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup> |
+| Usage général v2 Standard | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup> |![Oui](../media/icons/yes-icon.png)<sup>2</sup>              | ![Oui](../media/icons/yes-icon.png)<sup>2</sup> |
+| Objets blob de blocs Premium          | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup>|![Oui](../media/icons/yes-icon.png)<sup>2</sup> | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup> |
 
 ### <a name="metrics-in-azure-monitor"></a>Mesures dans Azure Monitor
 
 | Type de compte de stockage                | Stockage Blob (prise en charge par défaut)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
 | Usage général v2 Standard | ![Oui](../media/icons/yes-icon.png) |![Oui](../media/icons/yes-icon.png)              | ![Oui](../media/icons/yes-icon.png) |
-| Objets blob de blocs Premium          | ![Oui](../media/icons/yes-icon.png) |![Oui](../media/icons/yes-icon.png)  <sup>2</sup> | ![Oui](../media/icons/yes-icon.png)  <sup>2</sup> |
+| Objets blob de blocs Premium          | ![Oui](../media/icons/yes-icon.png) |![Oui](../media/icons/yes-icon.png)<sup>2</sup> | ![Oui](../media/icons/yes-icon.png)<sup>2</sup> |
 
 <sup>1</sup>    Data Lake Storage Gen2 et le protocole NFS (Network File System) 3.0 requièrent tous deux un compte de stockage avec un espace de noms hiérarchique activé.
 

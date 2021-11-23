@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: 3ad963def4866e7528527400ff259502441c9dbf
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f4a79ae5b1083bf9091486e9f4d87c6fdad14747
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130165637"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156897"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Configurer un écouteur DNN pour un groupe de disponibilité
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Avec Microsoft SQL Server sur des machines virtuelles Azure, le nom de réseau distribué (DNN) achemine le trafic vers la ressource en cluster appropriée. Il permet de se connecter plus facilement à un groupe de disponibilité Always On qu’avec l’écouteur de nom de réseau virtuel (VNN), sans avoir à utiliser Azure Load Balancer.
+> [!TIP]
+> Éliminez la nécessité de disposer d’un nom de réseau distribué pour votre groupe de disponibilité Always On en créant vos machines virtuelles SQL Server dans [plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) au sein du même réseau virtuel Azure.
+
+Avec Microsoft SQL Server sur des machines virtuelles Azure dans un seul sous-réseau, le nom de réseau distribué (DNN) achemine le trafic vers la ressource en cluster appropriée. Il permet de se connecter plus facilement à un groupe de disponibilité Always On qu’avec l’écouteur de nom de réseau virtuel (VNN), sans avoir à utiliser Azure Load Balancer.
 
 Cet article vous apprend à configurer un écouteur DNN pour remplacer l’écouteur VNN et à acheminer le trafic vers votre groupe de disponibilité avec Microsoft SQL Server sur des machines virtuelles Azure pour la haute disponibilité et la récupération d’urgence (HADR).
 

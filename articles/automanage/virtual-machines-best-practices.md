@@ -8,15 +8,14 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: c6dd93bc492c8823f5b97e51fce66196502aa36c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: fedcb0342a9d7aaa202ff491f59a3a09f166a3a6
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769677"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372982"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Meilleures pratiques Azure Automanage pour machines virtuelles
-
 
 Ces services Azure sont automatiquement intégrés pour vous lorsque vous utilisez Automanage pour machines virtuelles. Ils sont essentiels pour notre livre blanc sur les meilleures pratiques, que vous pouvez trouver dans notre [Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/azure-server-management).
 
@@ -29,7 +28,7 @@ Pour tous ces services, nous les intégrons et les configurons automatiquement, 
 |-----------|---------------|----------------------|-------------------------|
 |Surveillance des insights de machine virtuelle    |Azure Monitor pour machines virtuelles surveille les performances et l’intégrité de vos machines virtuelles, y compris de leurs processus en cours d’exécution et de leurs dépendances vis-à-vis d’autres ressources. En savoir [plus](../azure-monitor/vm/vminsights-overview.md).    |Meilleures pratiques pour les machines virtuelles Azure – Production    |Non    |
 |Backup    |Le service Sauvegarde Azure propose des sauvegardes indépendantes et isolées pour éviter une destruction involontaire des données de vos machines virtuelles. En savoir [plus](../backup/backup-azure-vms-introduction.md). Les frais sont calculés en fonction du nombre et de la taille des machines virtuelles protégées. En savoir [plus](https://azure.microsoft.com/pricing/details/backup/).    |Meilleures pratiques pour les machines virtuelles Azure – Production    |Oui    |
-|Azure Security Center    |Azure Security Center est un système de gestion de la sécurité de l’infrastructure unifié qui renforce la posture de sécurité de vos centres de données et fournit une protection avancée contre les menaces pour vos charges de travail hybrides dans le cloud. En savoir [plus](../security-center/security-center-introduction.md).  Automanage configure l’abonnement dans lequel votre machine virtuelle réside en offre de niveau gratuit d’Azure Security Center. Si votre abonnement est déjà intégré à Azure Security Center, Automanage ne le reconfigure pas.    |Meilleures pratiques pour les machines virtuelles Azure – Production, meilleures pratiques pour les machines virtuelles Azure – Dev/Test    |Non    |
+|Microsoft Defender pour le cloud    |Microsoft Defender pour le cloud est un système de gestion de la sécurité de l’infrastructure unifié qui renforce la posture de sécurité de vos centres de données et fournit une protection avancée contre les menaces pour vos charges de travail hybrides dans le cloud. En savoir [plus](../defender-for-cloud/defender-for-cloud-introduction.md).  Automanage configure l’abonnement dans lequel votre machine virtuelle réside en offre de niveau gratuit de Microsoft Defender pour le cloud. Si votre abonnement est déjà intégré à Microsoft Defender pour le cloud, Automanage ne le reconfigure pas.    |Meilleures pratiques pour les machines virtuelles Azure – Production, meilleures pratiques pour les machines virtuelles Azure – Dev/Test    |Non    |
 |Microsoft Antimalware    |Microsoft Antimalware pour Azure offre une protection en temps réel qui permet d’identifier et de supprimer les virus, logiciels espions et autres logiciels malveillants. Il fournit des alertes lorsqu’un logiciel malveillant ou indésirable connu essaye de s’installer ou de s’exécuter sur vos systèmes Azure. En savoir [plus](../security/fundamentals/antimalware.md). |Meilleures pratiques pour les machines virtuelles Azure – Production, meilleures pratiques pour les machines virtuelles Azure – Dev/Test    |Oui    |
 |Update Management    |Vous pouvez utiliser la solution Update Management d’Azure Automation pour gérer les mises à jour du système d’exploitation de vos machines virtuelles. Vous pouvez rapidement évaluer l’état des mises à jour disponibles sur toutes les machines d’agent et gérer le processus d’installation des mises à jour nécessaires pour les serveurs. En savoir [plus](../automation/update-management/overview.md).    |Meilleures pratiques pour les machines virtuelles Azure – Production, meilleures pratiques pour les machines virtuelles Azure – Dev/Test    |Non    |
 |Suivi des modifications et inventaire    |La fonctionnalité Suivi des modifications et inventaire combine les fonctions de suivi des modifications et d’inventaire pour vous permettre d’effectuer le suivi des modifications apportées à l’infrastructure des machines virtuelles et des serveurs. Le service prend en charge le suivi des modifications sur les services, les démons, les logiciels, le registre et les fichiers de votre environnement pour vous aider à diagnostiquer les changements indésirables et à déclencher des alertes. La prise en charge de l’inventaire vous permet d’interroger les ressources intégrées pour voir les applications installées et d’autres éléments de configuration.  En savoir [plus](../automation/change-tracking/overview.md).    |Meilleures pratiques pour les machines virtuelles Azure – Production, meilleures pratiques pour les machines virtuelles Azure – Dev/Test    |Non    |

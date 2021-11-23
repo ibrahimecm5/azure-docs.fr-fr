@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4ea1a6b66980081597f301f22243bfd7397630
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 522e3c3e22730ee038f2a77585b698b3ed89921e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388334"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132321831"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Créer une stratégie de gestion du contrôle d'accès résiliente avec Azure Active Directory
 
@@ -122,7 +122,7 @@ Une stratégie d’accès conditionnel d’urgence est une **stratégie de sauve
 * Déployez la [Réinitialisation du mot de passe libre-service (SSPR) Azure AD](./tutorial-enable-sspr.md) et la [Protection par mot de passe Azure AD](./howto-password-ban-bad-on-premises-deploy.md) pour veiller à ce que les utilisateurs n'utilisent pas les mêmes mots de passe ni les termes que vous choisissez d'interdire.
 * Si un certain niveau d'authentification n'est pas atteint, utilisez des stratégies limitant l'accès au sein des applications plutôt que de revenir à un accès total. Par exemple :
   * Configurez une stratégie de sauvegarde qui envoie la demande de session restreinte à Exchange et SharePoint.
-  * Si votre organisation utilise Microsoft Cloud App Security, n'hésitez pas à avoir recours à une stratégie qui tire parti de MCAS. MCAS autorisera un accès en lecture seule, mais pas les chargements.
+  * Si votre organisation utilise Microsoft Defender for Cloud Apps, pensez à revenir à une stratégie qui fait appel à Defender pour les applications cloud, puis autorisez l’accès en lecture seule, mais pas les téléchargements.
 * Nommez vos stratégies pour être certain qu’il soit facile de les trouver pendant une interruption. Incluez les éléments suivants dans le nom de la stratégie :
   * Un *numéro de libellé* pour la stratégie.
   * Un texte à afficher, cette stratégie n’étant prévue qu’en cas d’urgence. Par exemple : **ACTIVER EN CAS D’URGENCE**

@@ -1,28 +1,28 @@
 ---
-title: Utiliser des règles d’analyse de détection d’anomalie dans Azure Sentinel | Microsoft Docs
-description: Cet article explique comment afficher, créer, gérer, évaluer et affiner des règles d’analyse de détection d’anomalie dans Azure Sentinel.
+title: Utiliser des règles d’analyse de détection d’anomalie dans Microsoft Sentinel | Microsoft Docs
+description: Cet article explique comment afficher, créer, gérer, évaluer et affiner des règles d’analyse de détection d’anomalie dans Microsoft Sentinel.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 11/09/2021
 ms.author: yelevin
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 96de38a38c5e28117916bc2265a943e4064e8fae
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1469f89877c9a20009dd3e1178b77a7f001314ba
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022889"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518771"
 ---
-# <a name="work-with-anomaly-detection-analytics-rules-in-azure-sentinel"></a>Utiliser des règles d’analyse de détection d’anomalie dans Azure Sentinel
+# <a name="work-with-anomaly-detection-analytics-rules-in-microsoft-sentinel"></a>Utiliser des règles d’analyse de détection d’anomalie dans Microsoft Sentinel
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
@@ -32,9 +32,9 @@ ms.locfileid: "131022889"
 
 ## <a name="view-soc-ml-anomaly-rule-templates"></a>Afficher les modèles de règles d’anomalie SOC-ML
 
-La [fonctionnalité d’anomalies SOC-ML](soc-ml-anomalies.md) d’Azure Sentinel fournit des [modèles d’anomalies intégrés](detect-threats-built-in.md#anomaly) pour une valeur immédiate prête à l’emploi. Ces modèles d’anomalies ont été développés pour être robustes en utilisant des milliers de sources de données et des millions d’événements, mais cette fonctionnalité vous permet également de modifier facilement les seuils et les paramètres des anomalies dans l’interface utilisateur. Les règles d’anomalie doivent être activées avant de générer des anomalies, que vous pouvez trouver dans la table **Anomalies** de la section **Journaux**.
+La [fonctionnalité d’anomalies SOC-ML](soc-ml-anomalies.md) de Microsoft Sentinel fournit des [modèles d’anomalies intégrés](detect-threats-built-in.md#anomaly) pour une valeur immédiate prête à l’emploi. Ces modèles d’anomalies ont été développés pour être robustes en utilisant des milliers de sources de données et des millions d’événements, mais cette fonctionnalité vous permet également de modifier facilement les seuils et les paramètres des anomalies dans l’interface utilisateur. Les règles d’anomalie doivent être activées avant de générer des anomalies, que vous pouvez trouver dans la table **Anomalies** de la section **Journaux**.
 
-1. Dans le menu de navigation d'Azure Sentinel, sélectionnez **Analytique**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Analytique**.
 
 1. Dans le panneau **Analytique**, sélectionnez l’onglet **Modèles de règles**.
 
@@ -81,7 +81,7 @@ Procédez comme suit pour activer une règle :
     > [!NOTE]
     > En supposant que les données requises soient disponibles, la nouvelle règle peut prendre jusqu’à 24 heures pour apparaître dans l’onglet **Règles actives**. Pour afficher les nouvelles règles, sélectionnez l’onglet Règles actives et filtrez-le de la même façon que vous avez filtré la liste Modèles de règles ci-dessus.
 
-Une fois la règle d’anomalie activée, les anomalies détectées sont stockées dans la table **Anomalies** de la section **Journaux** de votre espace de travail Azure Sentinel.
+Une fois la règle d’anomalie activée, les anomalies détectées sont stockées dans la table **Anomalies** de la section **Journaux** de votre espace de travail Microsoft Sentinel.
 
 Chaque règle d’anomalie a une période de formation, et les anomalies n’apparaîtront dans la table qu’à la fin de cette période de formation. Vous trouverez la période de formation dans la description de chaque règle d’anomalie.
 
@@ -89,7 +89,7 @@ Chaque règle d’anomalie a une période de formation, et les anomalies n’app
 
 Vous pouvez voir l’efficacité d’une règle d’anomalie en examinant un échantillon des anomalies créées par la règle au cours des dernières 24 heures. 
 
-1. Dans le menu de navigation d'Azure Sentinel, sélectionnez **Analytique**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Analytique**.
 
 1. Dans le panneau **Analytique**, vérifiez que l’onglet **Règles actives** est sélectionné.
 
@@ -97,7 +97,7 @@ Vous pouvez voir l’efficacité d’une règle d’anomalie en examinant un éc
 
 1. Sélectionnez la règle que vous souhaitez évaluer et copiez son nom en haut du volet d’informations à droite.
 
-1. Dans le menu de navigation d’Azure Sentinel, sélectionnez **Journaux**.
+1. Dans le menu de navigation de Microsoft Sentinel, sélectionnez **Journaux**.
 
 1. Si une galerie **Requêtes** apparaît en haut, fermez-la.
 
@@ -149,7 +149,7 @@ Cela est prévu pour vous donner la possibilité de comparer les résultats gén
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce document, vous avez appris à utiliser des règles d’analyse de détection d’anomalie SOC-ML dans Azure Sentinel.
+Dans ce document, vous avez appris à utiliser des règles d’analyse de détection d’anomalie SOC-ML dans Microsoft Sentinel.
 
 - Obtenez des informations générales sur [SOC-ML](soc-ml-anomalies.md).
 - Explorez d’autres [types de règles d’analyse](detect-threats-built-in.md).

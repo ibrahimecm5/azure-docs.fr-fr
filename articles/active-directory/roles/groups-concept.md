@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 09/16/2021
+ms.date: 09/28/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eb59e0579dc6173a3a6cb45ec2713b8f1938aeb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e3826c7a2cc50e90b42ff1a4f0047dc5a6ca1cf6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642545"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520728"
 ---
 # <a name="use-azure-ad-groups-to-manage-role-assignments"></a>Utiliser des groupes Azure AD pour gérer les attributions de rôle
 
@@ -62,8 +62,8 @@ Les groupes assignables à un rôle sont conçus pour aider à prévenir les vio
 
 Si vous ne souhaitez pas que les membres du groupe disposent d’un accès permanent à un rôle, vous pouvez utiliser [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) pour rendre un groupe qualifié pour à une attribution de rôle. Chaque membre du groupe est alors qualifié pour activer l’attribution de rôle pour une durée déterminée.
 
-> [!Note]
-> Vous devez utiliser une version mise à jour de PIM pour pouvoir attribuer un rôle Azure AD à un groupe. Vous pourriez utiliser une version antérieure de PIM parce que votre organisation Azure AD utilise l’API PIM. Envoyez un e-mail à pim_preview@microsoft.com pour déplacer votre organisation et mettre à jour votre API. Pour plus d’informations, consultez [Fonctionnalités et rôles Azure AD dans PIM](../privileged-identity-management/pim-configure.md).
+> [!NOTE]
+> Pour les groupes d’accès privilégiés utilisés pour l’élévation des rôles Azure AD, nous recommandons de demander un processus d’approbation pour les attributions de membres éligibles. Les attributions qui peuvent être activées sans approbation peuvent créer un risque de sécurité pour les administrateurs qui ont un niveau d’autorisations inférieur. Par exemple, l’administrateur du support technique a l’autorisation de réinitialiser le mot de passe d’un utilisateur éligible.
 
 ## <a name="scenarios-not-supported"></a>Scénarios non pris en charge
 

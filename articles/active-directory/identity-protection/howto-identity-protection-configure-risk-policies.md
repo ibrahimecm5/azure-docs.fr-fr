@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9e3bfc88442f495d49116e01cc06e876be95787
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e191603d9508ab921c28e60ae13096e7283dc332
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051588"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401958"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Procédure : Configurer et activer des stratégies de risque
 
@@ -81,8 +81,12 @@ Avant d’activer les stratégies de correction, les organisations peuvent voulo
    1. Sous **Exclure**, sélectionnez **Utilisateurs et groupes**, puis choisissez les comptes d’accès d’urgence ou de secours de votre organisation. 
    1. Sélectionnez **Terminé**.
 1. Sous **Applications ou actions cloud** > **Inclure**, sélectionnez **Toutes les applications cloud**.
-1. Dans **Conditions** > **des risques utilisateur**, définissez **Configurer** sur **Oui**. Dans **Configurer les niveaux de risque des utilisateurs nécessaires à l’application de la stratégie**, sélectionnez **Élevé**, puis **Terminé**.
-1. Dans **Accorder** **les contrôles d’accès** > , sélectionnez **Accorder l’accès**, **Demander la modification du mot de passe**, puis **Sélectionner**.
+1. Dans **Conditions** > **des risques utilisateur**, définissez **Configurer** sur **Oui**. 
+   1. Sous **Configurer les niveaux de risque utilisateur nécessaires à l’application de la stratégie**, sélectionnez **Élevé**.
+   1. Sélectionnez **Terminé**.
+1. Sous **Contrôles d’accès** > **Octroyer**.
+   1. Sélectionnez **Accorder l’accès**, **Nécessite une modification du mot de passe**.
+   1. Sélectionnez **Sélectionner**.
 1. Confirmez vos paramètres et définissez **Activer la stratégie** sur **Activé**.
 1. Sélectionnez **Créer** pour créer votre stratégie.
 
@@ -100,7 +104,9 @@ Avant d’activer les stratégies de correction, les organisations peuvent voulo
 1. Dans **Conditions** > **Risque de connexion**, définissez **Configurer** sur **Oui**. Sous **Sélectionner le niveau de risque de connexion auquel cette stratégie s’applique** 
    1. Sélectionnez **Haut** et **Moyen**.
    1. Sélectionnez **Terminé**.
-1. Sous **Contrôles d’accès** > **Accorder**, sélectionnez **Accorder l'accès**, **Requérir l’authentification multifacteur**, et sélectionnez **Sélectionner**.
+1. Sous **Contrôles d’accès** > **Octroyer**.
+   1. Sélectionnez **Accorder l’accès**, **Exiger l’authentification multifacteur**.
+   1. Sélectionnez **Sélectionner**.
 1. Confirmez vos paramètres et réglez **Activer la stratégie** sur **Activé**.
 1. Sélectionnez **Créer** pour créer votre stratégie.
 

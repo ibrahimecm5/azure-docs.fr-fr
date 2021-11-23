@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54155113920c61d2f32474f0fac2414a6751bcdf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 997b3ec9b784b8b52b826b526102a97bce7d3286
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067410"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301052"
 ---
 # <a name="building-a-conditional-access-policy"></a>Créer une stratégie d’accès conditionnel
 
@@ -44,7 +44,7 @@ Toutes les stratégies sont appliquées en deux phases :
       - Appareil géré (jonction d’Azure AD conforme ou hybride) 
       - Conditions d’utilisation 
       - Contrôles personnalisés  
-   - Une fois que tous les contrôles d’octroi ont été satisfaits, appliquez les contrôles de session (appliqués par l’application, Microsoft Cloud App Security et durée de vie du jeton) 
+   - Une fois que tous les contrôles d’octroi ont été satisfaits, appliquez les contrôles de session (appliqués par l’application, Microsoft Defender for Cloud Apps et durée de vie du jeton) 
    - La phase 2 de l’évaluation de la stratégie se produit pour toutes les stratégies activées. 
 
 ## <a name="assignments"></a>Attributions
@@ -128,7 +128,7 @@ Les [contrôles de session](concept-conditional-access-session.md) peuvent limit
    - Fonctionne actuellement avec Exchange Online et SharePoint Online uniquement.
       - Transmet des informations sur l’appareil pour permettre le contrôle de l’expérience qui octroie un accès total ou limité.
 - Utiliser le contrôle d'application par accès conditionnel
-   - Utilise les signaux de Microsoft Cloud App Security pour effectuer des opérations telles que : 
+   - Utilise les signaux de Microsoft Defender for Cloud Apps pour effectuer des opérations telles que : 
       - Bloquer le téléchargement, couper, copier et imprimer des documents sensibles.
       - Surveiller un comportement de session à risque.
       - Exiger l’étiquetage des fichiers sensibles.
@@ -162,4 +162,4 @@ Dans l’article [Stratégies d’accès conditionnel courantes](concept-conditi
 
 [Gestion de la conformité des appareils avec Intune](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security et accès conditionnel](/cloud-app-security/proxy-intro-aad)
+[Microsoft Defender for Cloud Apps et accès conditionnel](/cloud-app-security/proxy-intro-aad)

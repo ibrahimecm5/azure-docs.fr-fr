@@ -1,16 +1,16 @@
 ---
 title: Vérifications personnalisées et de base de référence
-description: Découvrez le concept de base de référence d'Azure Defender pour IoT.
+description: Découvrez le concept de base de référence de Microsoft Defender pour IoT.
 ms.topic: conceptual
-ms.date: 10/07/2019
-ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 80cb204008c60964ed90c63885ce8b99d23ca30b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015066"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284129"
 ---
-# <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Base de référence d'Azure Defender pour IoT et vérifications personnalisées
+# <a name="microsoft-defender-for-iot-baseline-and-custom-checks"></a>Base de référence de Microsoft Defender pour IoT et vérifications personnalisées
 
 Cet article explique en quoi consiste la base de référence de Defender pour IoT et synthétise toutes les propriétés associées des vérifications personnalisées de base de référence.
 

@@ -2,13 +2,16 @@
 title: Activer la sauvegarde quand vous créez une machine virtuelle Azure
 description: Explique comment activer la sauvegarde quand vous créez une machine virtuelle Azure avec Sauvegarde Azure.
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 48798dc276c10276e0effd458bd15e9cfbab32dd
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 11/09/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: d94faf113fb3d75c1c0f5c878369c1856366b1be
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006056"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332115"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Activer la sauvegarde quand vous créez une machine virtuelle Azure
 
@@ -30,6 +33,9 @@ Si vous n’êtes pas connecté à votre compte, connectez-vous sur le [portail 
 
 2. Dans Place de marché Azure, sélectionnez **Calcul**, puis sélectionnez une image de machine virtuelle.
 
+   >[!Note]
+   >Pour créer une machine virtuelle à partir d’une image hors Place de marché ou permuter le disque du système d’exploitation d’une machine virtuelle avec une image hors Place de marché, supprimez les informations de plan de la machine virtuelle. Cela permet une restauration transparente des machines virtuelles.
+
 3. Configurez la machine virtuelle conformément aux instructions [Windows](../virtual-machines/windows/quick-create-portal.md) ou [Linux](../virtual-machines/linux/quick-create-portal.md).
 
 4. Sous l’onglet **Gestion**, dans **Activer la sauvegarde**, sélectionnez **Activé**.
@@ -49,7 +55,7 @@ Si vous n’êtes pas connecté à votre compte, connectez-vous sur le [portail 
       ![Stratégie de sauvegarde par défaut](./media/backup-during-vm-creation/daily-policy.png)
 
 >[!NOTE]
->[SSE et PMK sont les méthodes de chiffrement par défaut](backup-encryption.md) pour les machines virtuelles Azure. Sauvegarde Azure prend en charge la sauvegarde et la restauration de ces machines virtuelles Azure.
+> [SSE et PMK sont les méthodes de chiffrement par défaut](backup-encryption.md) pour les machines virtuelles Azure. Sauvegarde Azure prend en charge la sauvegarde et la restauration de ces machines virtuelles Azure.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Groupe de ressources Sauvegarde Azure pour les machines virtuelles
 

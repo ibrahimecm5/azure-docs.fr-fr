@@ -9,12 +9,12 @@ ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 367a0b7f231fcdd88a28237e83916995fd58062b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 485ace0d04375a406c8013d60d45635a596964a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219574"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319502"
 ---
 # <a name="manually-promote-a-resource-manager-template-to-each-environment"></a>Promouvoir manuellement un modèle Resource Manager pour chaque environnement
 
@@ -36,7 +36,7 @@ Utilisez les étapes ci-dessous pour promouvoir un modèle de Gestionnaire des r
 
    :::image type="content" source="media/continuous-integration-delivery/custom-deployment-edit-template.png" alt-text="Modifier un modèle":::
 
-1. Dans la section des paramètres, entrez les valeurs de configuration telles que les informations d’identification du service lié. Lorsque vous avez terminé, sélectionnez **Acheter** pour déployer le modèle Resource Manager.
+1. Dans la section des paramètres, entrez les valeurs de configuration telles que les informations d’identification du service lié, requises pour le déploiement. Lorsque vous avez terminé, sélectionnez **Vérifier + créer** pour déployer le modèle Resource Manager.
 
    :::image type="content" source="media/continuous-integration-delivery/continuous-integration-image5.png" alt-text="Section Paramètres":::
 

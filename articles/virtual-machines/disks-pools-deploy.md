@@ -4,16 +4,16 @@ description: Apprenez à déployer un pool de disques Azure.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7230bf83f5ca203aa40cb043b3ea02d983ba7a4a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c4c010d1c142a2f2e09c0a60122f446ab7df6530
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131022185"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135372"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>Déployer un pool de disques Azure (préversion)
 
@@ -33,6 +33,8 @@ Pour déployer correctement un pool de disques, vous devez disposer des élémen
 
 - Un ensemble de disques managés à ajouter à un pool de disques
 - Un réseau virtuel avec un sous-réseau dédié déployé pour votre pool de disques
+    - Les ports sortants 53, 443 et 5671 doivent être ouverts.
+    - Assurez-vous que votre paramètre réseau ne bloque pas les dépendances sortantes requises de votre pool de disques. Vous pouvez utiliser le [module Azure PowerShell](/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint?view=azps-6.6.0) ou [Azure CLI](/cli/azure/disk-pool?view=azure-cli-latest#az_disk_pool_list_outbound_network_dependency_endpoint) pour obtenir la liste complète de toutes les dépendances sortantes.
 
 Si vous comptez utiliser le module Azure PowerShell, installez la [version 6.1.0 ou une version ultérieure](/powershell/module/az.diskpool/?view=azps-6.1.0&preserve-view=true).
 

@@ -1,20 +1,20 @@
 ---
 title: Obtenir des informations sur les menaces locales, régionales et mondiales
 description: Obtenez une vue d’ensemble sur les menaces locales, régionales et globales à l’aide du plan de site dans la console de gestion locale.
-ms.date: 12/07/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: db3b9fbca9acd6c4ce1cfe137a4024f66d8a6292
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 6cef79e708f5aff5eff2c02f2b0fe612aa11a224
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017347"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293228"
 ---
 # <a name="gain-insight-into-global-regional-and-local-threats"></a>Obtenir des informations sur les menaces locales, régionales et mondiales
 
 Le plan de site de la console de gestion locale vous permet d’obtenir une couverture complète de la sécurité en divisant votre réseau en segments géographiques et logiques correspondant à la topologie de votre entreprise :
 
-- **Niveau géographique** : Un site représente un certain nombre d’appareils regroupés en fonction d’un emplacement géographique présenté sur la carte. Par défaut, Azure Defender pour IoT vous fournit une carte du monde. Vous mettez à jour cette carte en fonction de la structure organisationnelle ou commerciale de votre organisation. Par exemple, utilisez une carte qui présente les sites par pays, par ville ou un par site industriel. Lorsque la couleur du site change sur la carte, il fournit à l’équipe SOC une indication de l’état du système critique de cette installation.
+- **Niveau géographique** : Un site représente un certain nombre d’appareils regroupés en fonction d’un emplacement géographique présenté sur la carte. Par défaut, Microsoft Defender pour IoT vous fournit une carte du monde. Vous mettez à jour cette carte en fonction de la structure organisationnelle ou commerciale de votre organisation. Par exemple, utilisez une carte qui présente les sites par pays, par ville ou un par site industriel. Lorsque la couleur du site change sur la carte, il fournit à l’équipe SOC une indication de l’état du système critique de cette installation.
 
   Cette carte est interactive et permet d’ouvrir chaque site et de plonger dans les informations de ce site.
 

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: dbeb1a776aa5d813806cec6622e1ad1e515ccfc5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f6cd42395b0255a7c0bd68285dd532363b2141f
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623681"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179837"
 ---
 # <a name="automatically-renew-reservations"></a>Renouvellement automatique de réservations
 
@@ -89,7 +89,7 @@ Les e-mails de notification de renouvellement sont envoyés 30 jours avant l’
 
 Les e-mails sont envoyés à différentes personnes en fonction de votre méthode d’achat :
 
-- Clients de Contrat Entreprise : les e-mails sont envoyés aux contacts devant recevoir les notifications qui sont définis sur le portail des Contrats Entreprise.
+- Clients Contrat Entreprise : Les e-mails sont envoyés aux contacts de notification définis sur le portail Contrat Entreprise, ou aux administrateurs d’entreprise inscrits automatiquement pour recevoir les notifications d’utilisation.
 - Clients d’abonnement individuels avec paiement à l’utilisation : les e-mails sont envoyés aux utilisateurs configurés en tant qu’administrateurs de compte.
 - Clients du fournisseur de solutions Cloud : les e-mails sont envoyés au contact devant recevoir les notifications du partenaire.
 

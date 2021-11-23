@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.reviewer: mathoma
-ms.openlocfilehash: a0290f85e1f408f9d1ec91cdc353a1acc87faeef
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: bc88b1dcebede150ca912244d482a2e926f13e2b
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130160922"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158153"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Configurer un DNN pour une instance de cluster de basculement
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+
+> [!TIP]
+> Évitez le recours à un nom de réseau distribué pour votre instance de cluster de basculement en créant vos machines virtuelles SQL Server dans plusieurs sous-réseaux au sein du même réseau virtuel Azure.
 
 Sur les machines virtuelles Azure, le nom de réseau distribué (DNN) achemine le trafic vers la ressource en cluster appropriée. Il offre un moyen plus simple de se connecter à l’instance de cluster de basculement (FCI) de Microsoft SQL Server que le nom de réseau virtuel (VNN), sans avoir à utiliser Azure Load Balancer. 
 
@@ -42,7 +45,7 @@ Avec un déploiement FCI, le VNN existe toujours, mais le client se connecte au 
 
 Avant d’effectuer les étapes décrites dans cet article, vous devez déjà disposer des éléments suivants :
 
-- SQL Server à partir de [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) et versions ultérieures, [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) et versions ultérieures ou [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31) et versions ultérieures sur Windows Server 2016 et versions ultérieures.
+- SQL Server à partir de [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) et versions ultérieures, [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) et versions ultérieures, ou [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31) et versions ultérieures sur Windows Server 2016 et versions ultérieures.
 - Avoir décidé que le nom du réseau distribué est l’option de [connectivité appropriée pour votre solution HADR](hadr-cluster-best-practices.md#connectivity).
 - Avoir configuré vos [instances de cluster de basculement](failover-cluster-instance-overview.md). 
 - Avoir installé la version la plus récente de [PowerShell](/powershell/azure/install-az-ps). 

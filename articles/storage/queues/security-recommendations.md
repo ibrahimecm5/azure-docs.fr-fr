@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: security-recommendations
-ms.openlocfilehash: 260f8682766187ba9cedb3b5bf951e06548c0048
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 0fdd17b924fe8588e0ece24fc185456bd5dc3bc5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727937"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312146"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Recommandations de sécurité pour le Stockage File d’attente
 
 Cet article contient des recommandations de sécurité pour le Stockage File d’attente. Mettez en œuvre ces recommandations pour répondre à vos obligations de sécurité comme décrit dans notre modèle de responsabilité partagée. Pour plus d’informations sur les mesures prises par Microsoft pour répondre à ses responsabilités de fournisseur de services, lisez [Responsabilités partagées pour le cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
 
-Certaines recommandations contenues dans cet article peuvent être supervisées automatiquement par Azure Security Center. Azure Security Center est la première ligne de défense dans la protection de vos ressources Azure. Pour plus d’informations sur Azure Security Center, consultez [Présentation d’Azure Security Center](../../security-center/security-center-introduction.md).
+Certaines recommandations contenues dans cet article peuvent être supervisées automatiquement par Microsoft Defender pour le cloud. Microsoft Defender pour le cloud est la première ligne de défense dans la protection de vos ressources dans Azure. Pour en savoir plus sur Microsoft Defender pour le cloud, consultez [Qu’est-ce que Microsoft Defender pour le cloud ?](../../security-center/security-center-introduction.md).
 
-Azure Security Center analyse périodiquement l’état de sécurité de vos ressources Azure pour identifier les vulnérabilités de sécurité potentielles. Il fournit ensuite des recommandations sur la façon de les corriger. Pour plus d’informations sur les recommandations Azure Security Center, consultez [Recommandations de sécurité dans Azure Security Center](../../security-center/security-center-recommendations.md).
+Microsoft Defender pour le cloud analyse périodiquement l’état de sécurité de vos ressources Azure pour identifier les vulnérabilités de sécurité potentielles. Il fournit ensuite des recommandations sur la façon de les corriger. Pour plus d’informations sur la manière d’appliquer des recommandations, consultez [Implémentation des recommandations de sécurité dans Microsoft Defender pour le cloud](../../security-center/security-center-recommendations.md).
 
 ## <a name="data-protection"></a>Protection de données
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Utiliser le Modèle de déploiement Azure Resource Manager | Créez des comptes de stockage en utilisant le modèle de déploiement Azure Resource Manager pour les améliorations de sécurité importantes, notamment les fonctionnalités de contrôle d’accès en fonction du rôle Azure (Azure RBAC) et d’audit de premier plan, le déploiement et la gouvernance basés sur Resource Manager, l’accès aux identités managées, l’accès pour Azure Key Vault pour les secrets, et l’authentification et l’autorisation basées sur Azure AD pour l’accès aux données et aux ressources de Stockage Azure. Si possible, migrez les comptes de stockage existants qui utilisent le Modèle de déploiement classique pour qu’ils utilisent Azure Resource Manager. Pour plus d’informations sur Azure Resource Manager, consultez [Vue d’ensemble d’Azure Resource Manager](../../azure-resource-manager/management/overview.md). | - |
-| Activez Advanced Threat Protection pour tous vos comptes de stockage | La protection avancée contre les menaces pour Stockage Azure offre une couche supplémentaire de veille de sécurité qui détecte les tentatives d’accès ou d’exploitation inhabituelles et potentiellement dangereuses des comptes de stockage. Les alertes de sécurité sont déclenchées dans Azure Security Center quand des anomalies se produisent dans des activités ; elles sont également envoyées par e-mail aux administrateurs d’abonnement, avec les détails des activités suspectes et des recommandations sur la façon d’examiner et de remédier aux menaces. Pour plus d’informations, consultez [Advanced Threat Protection pour Stockage Azure](../common/azure-defender-storage-configure.md). | [Oui](../../security-center/security-center-remediate-recommendations.md) |
+| Activez Advanced Threat Protection pour tous vos comptes de stockage | [Microsoft Defender pour stockage](../../security-center/defender-for-storage-introduction.md) fournit une couche supplémentaire d’informations de sécurité qui détecte les tentatives inhabituelles et potentiellement dangereuses d’accès ou d’exploitation des comptes de stockage. Les alertes de sécurité sont déclenchées dans Microsoft Defender pour le cloud quand des anomalies se produisent dans des activités ; elles sont également envoyées par e-mail aux administrateurs d’abonnement, avec les détails des activités suspectes et des recommandations sur la façon d’examiner et de remédier aux menaces. Pour plus d’informations, consultez [Protection de vos comptes Stockage Azure](../../security-center/defender-for-storage-introduction.md). | [Oui](../../security-center/security-center-remediate-recommendations.md) |
 | Limiter les jetons de signature d’accès partagé (SAS) aux seules connexions HTTPS | Le fait d’exiger HTTPS lorsqu’un client utilise un jeton SAS pour accéder à des données de file d’attente permet de réduire le risque d’écoute. Pour plus d’informations, consultez [Accorder un accès limité aux ressources du Stockage Azure à l’aide des signatures d’accès partagé (SAS)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Gestion de l’identité et de l’accès
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Utiliser Azure Active Directory (Azure AD) pour autoriser l’accès aux données d’objet de file d’attente | Azure AD offre une sécurité et une facilité d’utilisation supérieures à celles de l’autorisation Clé partagée pour l’autorisation des requêtes envoyées au Stockage File d’attente. Pour plus d’informations, consultez [Autoriser l’accès aux données dans Stockage Azure](../common/authorize-data-access.md). | - |
 | Garder à l’esprit le principe du moindre privilège lors de l’attribution d’autorisations à un principal de sécurité Azure AD via Azure RBAC | Quand vous attribuez un rôle à un utilisateur, un groupe ou une application, accordez à ce principal de sécurité seulement les autorisations nécessaires pour effectuer ses tâches. La limitation de l’accès aux ressources permet d’éviter une mauvaise utilisation accidentelle et malveillante de vos données. | - |
@@ -47,7 +47,7 @@ Azure Security Center analyse périodiquement l’état de sécurité de vos res
 
 ## <a name="networking"></a>Mise en réseau
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Configurer la version minimale requise du protocole TLS (Transport Layer Security) pour un compte de stockage.  | Exiger que les clients utilisent une version plus sécurisée de TLS pour effectuer des requêtes sur un compte de stockage Azure en configurant la version minimale de TLS pour ce compte. Pour plus d’informations, consultez [Configure minimum required version of Transport Layer Security (TLS) for a storage account](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) (Configurer la version minimale requise du protocole TLS pour un compte de stockage)| - |
 | Activer l’option **Transfert sécurisé requis** sur tous vos comptes de stockage | Quand vous activez l’option **Transfert sécurisé requis**, toutes les demandes effectuées auprès du compte de stockage doivent se faire via des connexions sécurisées. Toutes les demandes effectuées sur HTTP échouent. Pour plus d’informations, consultez [Exiger un transfert sécurisé dans Stockage Azure](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). | [Oui](../../security-center/security-center-remediate-recommendations.md) |
@@ -59,7 +59,7 @@ Azure Security Center analyse périodiquement l’état de sécurité de vos res
 
 ## <a name="logging-and-monitoring"></a>Enregistrement et surveillance
 
-| Recommandation | Commentaires | Security Center |
+| Recommandation | Commentaires | Defender pour le cloud |
 |-|----|--|
 | Suivre les autorisations des demandes | Activez la journalisation de Stockage Azure pour suivre comment chaque demande effectuée auprès de Stockage Azure était autorisée. Les journaux indiquent si une requête a été effectuée anonymement, en utilisant un jeton OAuth 2.0, avec une clé partagée ou avec une signature d’accès partagé (SAS). Pour plus d’informations, consultez [Journalisation Azure Storage Analytics](../common/storage-analytics-logging.md). | - |
 

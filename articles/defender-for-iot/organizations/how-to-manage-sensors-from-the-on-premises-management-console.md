@@ -1,14 +1,14 @@
 ---
 title: Gérer les capteurs depuis la console de gestion locale
 description: Apprenez à gérer des capteurs à partir de la console de gestion, notamment la mise à jour des versions de capteur, l’envoi (push) des paramètres système aux capteurs et l’activation et la désactivation de moteurs sur les capteurs.
-ms.date: 07/08/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: dbdee98fc1f7e6bc294bd54d72e64fa8f053eb8e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1015810f8999671665cf48d74058e9ad3fc47558
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431185"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278832"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Gérer les capteurs depuis la console de gestion
 
@@ -76,7 +76,7 @@ Quand vous effectuez la mise à niveau d’une console de gestion locale et de c
 
 1. Accédez au [portail Azure](https://portal.azure.com/).
 
-1. Accédez à Azure Defender pour IoT.
+1. Accédez à Microsoft Defender pour IoT.
 
 1. Accédez à la page **Mises à jour**.
 
@@ -129,7 +129,7 @@ Si vous ne parvenez pas à mettre à jour le capteur, contactez le support techn
 
 Le paquet de données pour le renseignement sur les menaces est fourni avec chaque nouvelle version de Defender pour IoT, ou entre deux versions si nécessaire. Le package contient des signatures (y compris des signatures de programmes malveillants), des CVE et d’autres contenus de sécurité. 
 
-Vous pouvez charger ce fichier manuellement à partir de la page **Mises à jour** du portail Defender pour IoT et le mettre automatiquement à jour sur les capteurs. 
+Vous pouvez charger manuellement ce fichier dans le portail Azure et le mettre à jour automatiquement sur des capteurs. 
 
 **Pour mettre à jour les données de renseignement sur les menaces :**
 

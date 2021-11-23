@@ -1,24 +1,24 @@
 ---
 title: Configurer votre réseau
 description: En savoir plus sur l’architecture de la solution, la préparation du réseau, les conditions préalables et d’autres informations nécessaires pour vous assurer que votre réseau est correctement configuré pour fonctionner avec les appliances Azure Defender pour IoT.
-ms.date: 11/07/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 150612e8e9d429e9fc2b8eb74f3ea7167a41495c
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 1e41cc1f8e491e92d2fe4896b90e61b4cd3fe835
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028360"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278813"
 ---
-# <a name="about-azure-defender-for-iot-network-setup"></a>À propos de la configuration du réseau d’Azure Defender pour IoT
+# <a name="about-microsoft-defender-for-iot-network-setup"></a>À propos de la configuration du réseau pour Microsoft Defender pour IoT
 
-Azure Defender pour IoT assure la surveillance continue des menaces ICS et la détection des appareils. La plateforme comprend les composants suivants :
+Microsoft Defender pour IoT assure la surveillance continue des menaces ICS et la détection des appareils. La plateforme comprend les composants suivants :
 
 **Capteurs Defender pour IoT :** Les capteurs collectent le trafic de partage de connexion Internet (ICS) à l’aide de la surveillance passive (sans agent). Passifs et non intrusifs, les capteurs n’ont aucun impact sur les performances des réseaux et appareils OT et IoT. Le capteur se connecte à un port SPAN ou à un TAP réseau et commence immédiatement à surveiller votre réseau. Les détections s’affichent dans la console du capteur. Dans cette console, vous pouvez les visualiser, les examiner et les analyser dans une carte du réseau, un inventaire des appareils et un large éventail de rapports. Les exemples incluent des rapports d’évaluation des risques, des requêtes d’exploration de données et des vecteurs d’attaque.
 
 **Console de gestion locale Defender pour IoT** : La console de gestion locale fournit une vue consolidée de tous les périphériques réseau. Elle fournit une vue en temps réel des principaux indicateurs de risque IoT et OT et des alertes dans toutes vos installations. Étroitement intégrée à vos workflows SOC et à vos guides opérationnels, elle permet de hiérarchiser facilement les activités d’atténuation et de corréler les menaces entre les différents sites.
 
-**Portail Defender pour IoT :** l’application Defender pour IoT peut vous aider à acheter des appliances de solution, à installer et à mettre à jour des logiciels et à mettre à jour les packages TI.
+**Defender pour IoT dans le portail Azure :** l’application Defender pour IoT peut vous aider à acheter des appliances de solution, à installer et à mettre à jour des logiciels et à mettre à jour les packages TI.
 
 Cet article fournit des informations sur l’architecture de la solution, la préparation du réseau, les conditions préalables, et bien plus encore pour vous aider à configurer votre réseau de façon à ce qu’il fonctionne avec les appliances Defender pour IoT. Les lecteurs qui utilisent les informations de cet article doivent maîtriser le fonctionnement et la gestion des réseaux OT et IoT. Par exemple : les ingénieurs en automatisation, les directeurs d’usine, les fournisseurs de services d’infrastructure de réseau OT, les équipes de cybersécurité, les responsables de la sécurité des systèmes d’information ou les directeurs des systèmes d’information.
 
@@ -161,7 +161,7 @@ Pour planifier votre installation de racks :
 
 ## <a name="about-passive-network-monitoring"></a>À propos de la surveillance passive du réseau
 
-L’appliance reçoit le trafic de plusieurs sources, soit par des ports miroirs du commutateur (ports SPAN), soit par des TAP réseau. Le port de gestion est connecté au réseau de gestion de l’entreprise, de la société ou du capteur avec une connectivité à une console de gestion locale ou au portail Defender pour IoT.
+L’appliance reçoit le trafic de plusieurs sources, soit par des ports miroirs du commutateur (ports SPAN), soit par des TAP réseau. Le port de gestion est connecté au réseau de gestion de l’entreprise, de la société ou du capteur avec une connectivité à une console de gestion locale ou à Defender pour IoT dans le portail Azure.
 
 :::image type="content" source="media/how-to-set-up-your-network/switch-with-port-mirroring.png" alt-text="Diagramme d’un commutateur géré avec mise en miroir des ports.":::
 
@@ -605,7 +605,7 @@ Une vue d’ensemble du diagramme du réseau industriel vous permet de définir 
     > [!NOTE]
     > L’appliance Defender pour IoT doit être connectée à un commutateur de niveau inférieur qui voit le trafic entre les ports du commutateur.  
 
-1. **Appareils validés** : Indiquez le nombre approximatif de périphériques réseau qui seront analysés. Vous aurez besoin de ces informations lors de l’intégration de votre abonnement au portail Azure Defender pour IoT. Pendant le processus d’intégration, vous serez invité à entrer le nombre d’appareils par incréments de 1000.
+1. **Appareils validés** : Indiquez le nombre approximatif de périphériques réseau qui seront analysés. Vous aurez besoin de ces informations lors de l’intégration de votre abonnement à Defender pour IoT dans le portail Azure. Pendant le processus d’intégration, vous serez invité à entrer le nombre d’appareils par incréments de 1000.
 
 1. **(Facultatif) Liste des sous-réseaux** : Fournissez une liste de sous-réseaux pour les réseaux de production et une description (facultatif).
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e485efa572dd1b786b714b74b4d6df49d7a44853
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 12f2cc667cc568132eb4e91a1f739f81b075fd80
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236447"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132400088"
 ---
 # <a name="mount-azure-storage-as-a-local-share-in-a-container-app-in-app-service"></a>Monter le Stockage Azure en tant que partage local dans une application de conteneur dans App Service
 
@@ -26,7 +26,7 @@ Ce guide montre comment monter des fichiers Stockage Azure en tant que partage r
 
 ::: zone pivot="container-linux"
 
-Ce guide montre comment monter le Stockage Azure en tant que partage réseau dans un conteneur Linux intégré ou un conteneur Linux personnalisé dans App Service. Voici les avantages du stockage monté personnalisé :
+Ce guide montre comment monter le Stockage Azure en tant que partage réseau dans un conteneur Linux intégré ou un conteneur Linux personnalisé dans App Service. Regardez la vidéo [Comment monter le Stockage Azure en tant que partage local](https://www.youtube.com/watch?v=OJkvpWYr57Y). Voici les avantages du stockage monté personnalisé :
 
 ::: zone-end
 
@@ -99,6 +99,7 @@ Les fonctionnalités suivantes sont prises en charge pour les conteneurs Linux 
 - Accès FTP/FTPS au stockage monté personnalisé non pris en charge (utilisez [Explorateur Stockage Azure](https://azure.microsoft.com/features/storage-explorer/)).
 - La prise en charge d’Azure CLI, d’Azure PowerShell et du kit Azure SDK est en préversion.
 - Le mappage `/` ou `/home` vers le stockage monté personnalisé n’est pas pris en charge.
+- Ne mappez pas le montage de stockage personnalisé sur `/tmp` ou ses sous-répertoires, car cela peut entraîner une expiration de délai lors du démarrage de l’application.
 - Les montages de Stockage ne peuvent pas être utilisés avec l’option de clonage des paramètres lors de la création de [l’emplacement de déploiement](deploy-staging-slots.md).
 - Les montages de Stockage ne sont pas sauvegardés quand vous [sauvegardez votre application](manage-backup.md). Veillez à suivre les meilleures pratiques pour sauvegarder les comptes Stockage Azure. 
 
@@ -248,5 +249,6 @@ Pour valider que le Stockage Azure est correctement monté pour l’application�
 ::: zone pivot="container-linux"
 
 - [Configurer un conteneur personnalisé](configure-custom-container.md?pivots=platform-linux).
+- [Vidéo : Monter le Stockage Azure en tant que partage local](https://www.youtube.com/watch?v=OJkvpWYr57Y).
 
 ::: zone-end

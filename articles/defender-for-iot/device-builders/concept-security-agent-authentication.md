@@ -1,14 +1,14 @@
 ---
 title: Authentification des agents de sécurité (préversion)
 description: Effectuez l’authentification auprès du micro-agent suivant deux méthodes possibles.
-ms.date: 1/20/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8dd8abaedaaababf4d84330c5bf8cb030bac55bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 2323a833d819a45eb3956cb89d155184b34ef058
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015049"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289998"
 ---
 # <a name="micro-agent-authentication-methods-preview"></a>Méthodes d’authentification auprès du micro-agent (préversion)
 
@@ -20,7 +20,7 @@ Il existe deux options d’authentification auprès du micro-agent Defender for 
 
 ## <a name="authentication-using-a-connection-string"></a>Authentification avec une chaîne de connexion 
 
-Pour pouvoir utiliser une chaîne de connexion, vous devez ajouter un fichier nommé `connection_string.txt` qui la comporte au format UTF-8 dans le répertoire de l’agent Defender. Par exemple,
+Pour pouvoir utiliser une chaîne de connexion, vous devez ajouter un fichier nommé `connection_string.txt` qui la comporte au format UTF-8 dans le répertoire de l’agent Defender pour le cloud. Par exemple,
 
 ```azurecli
 echo “<connection string>” > connection_string.txt 
@@ -37,15 +37,15 @@ sudo systemctl restart defender-iot-micro-agent.service
 
 Pour effectuer l’authentification avec un certificat, procédez comme suit : 
 
-1. Placez la partie publique encodée PEM d’un certificat dans un fichier nommé `certificate_public.pem` au sein du répertoire de l’agent Defender.
-1. Placez la clé privée encodée PEM dans un fichier nommé `certificate_private.pem` au sein du répertoire de l’agent Defender.
+1. Placez la partie publique encodée PEM d’un certificat dans un fichier nommé `certificate_public.pem` au sein du répertoire de l’agent Defender pour le cloud.
+1. Placez la clé privée encodée PEM dans un fichier nommé `certificate_private.pem` au sein du répertoire de l’agent Defender pour le cloud.
 1. Placez la chaîne de connexion appropriée dans un fichier nommé `connection_string.txt`. Par exemple,
 
     ```azurecli
     HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true 
     ```
 
-    Du fait de cette action, l’agent Defender s’attend à ce qu’un certificat soit fourni pour l’authentification. 
+    Du fait de cette action, l’agent Defender pour le cloud s’attend à ce qu’un certificat soit fourni pour l’authentification. 
 
 1. Redémarrez le service avec le code suivant : 
 

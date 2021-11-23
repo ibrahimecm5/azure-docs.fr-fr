@@ -3,12 +3,12 @@ title: Résoudre des problèmes de réseau avec un registre
 description: Symptômes, causes et résolution de problèmes courants lors de l’accès à un registre de conteneurs Azure dans un réseau virtuel ou derrière un pare-feu
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: f5c51f14eb5ed5a950272e43e701ec7bcc44b901
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 4d3962a99fd462cfe3b613a4f0a9409b309b462f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446483"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287131"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Résoudre des problèmes de réseau avec un registre
 
@@ -27,7 +27,7 @@ Peuvent inclure un ou plusieurs des symptômes suivants :
 * Impossibilité de consulter ou d’afficher des paramètres du registre dans le portail Azure ou de gérer le registre à l’aide d’Azure CLI.
 * Impossibilité d’ajouter ou de modifier des paramètres de réseau virtuel ou des règles d’accès public.
 * La solution ACR Tasks ne peut pas envoyer ou extraire des images.
-* Azure Security Center ne peut pas analyser les images figurant dans le registre, ou les résultats d’analyse n’apparaissent pas dans Azure Security Center.
+* Microsoft Defender pour le cloud ne peut pas analyser les images dans le registre, ou les résultats d’analyse n’apparaissent pas dans Microsoft Defender pour le cloud
 * Vous recevez une erreur `host is not reachable` lorsque vous tentez d’accéder à un registre configuré avec un point de terminaison privé.
 
 ## <a name="causes"></a>Causes
@@ -35,7 +35,7 @@ Peuvent inclure un ou plusieurs des symptômes suivants :
 * Un pare-feu ou proxy de client empêche l’accès : [solution](#configure-client-firewall-access).
 * Les règles d’accès au réseau public dans le registre empêchent l’accès : [solution](#configure-public-access-to-registry).
 * La configuration du réseau virtuel ou du point de terminaison privé empêche l’accès : [solution](#configure-vnet-access)
-* Vous tentez d’intégrer Azure Security Center ou certains autres services Azure avec un registre qui a un point de terminaison privé, un point de terminaison de service ou des règles d’accès aux IP publiques : [solution](#configure-service-access).
+* Vous tentez d’intégrer Microsoft Defender pour le cloud ou certains autres services Azure avec un registre qui a un point de terminaison privé, un point de terminaison de service ou des règles d’accès aux IP publiques : [solution](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>Diagnostics plus poussés 
 
@@ -114,7 +114,7 @@ Liens connexes :
 
 Actuellement, l’accès à un registre de conteneurs ayant des restrictions réseau n’est pas autorisé à partir de plusieurs services Azure :
 
-* Azure Security Center ne peut pas effectuer l’[analyse de vulnérabilité des images](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) dans un registre qui restreint l’accès aux points de terminaison privés, aux sous-réseaux sélectionnés ou aux adresses IP. 
+* Microsoft Defender pour le cloud ne peut pas effectuer l’[analyse de vulnérabilité des images](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) dans un registre qui restreint l’accès aux points de terminaison privés, aux sous-réseaux sélectionnés ou aux adresses IP. 
 * Les ressources de certains services Azure ne peuvent pas accéder à un registre de conteneurs ayant des restrictions réseau, y compris Azure App Service et Azure Container Instances.
 
 Si l’accès ou l’intégration de ces services Azure à votre registre de conteneurs est nécessaire, supprimez la restriction réseau. Par exemple, supprimez les points de terminaison privés du registre, ou supprimez ou modifiez les règles d’accès publiques du registre.
@@ -123,7 +123,7 @@ Depuis janvier 2021, vous pouvez configurer un registre dont l’accès réseau
 
 Liens connexes :
 
-* [Analyse d’images Azure Container Registry par Security Center](../security-center/defender-for-container-registries-introduction.md)
+* [Analyse d’image Azure Container Registry par Microsoft Defender pour les registres de conteneurs](../security-center/defender-for-container-registries-introduction.md)
 * Fournir des [commentaires](https://feedback.azure.com/d365community/idea/cbe6351a-0525-ec11-b6e6-000d3a4f07b8)
 * [Permettre à des services de confiance d’accéder en toute sécurité à un registre de conteneurs ayant un accès réseau restreint](allow-access-trusted-services.md)
 

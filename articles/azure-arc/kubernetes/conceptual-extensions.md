@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Cet article fournit une vue d’ensemble conceptuelle de la fonctionnalité d’extensions de cluster de Kubernetes avec Azure Arc
-ms.openlocfilehash: 1f6bc02e111041e9a89e8066a57586c331c1a297
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6ae9270822ae16608a2c470ed818bcb8e6c2aa38
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265535"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279269"
 ---
 # <a name="cluster-extensions"></a>Extensions de cluster
 
-Les services de gestion comme Azure Monitor et Azure Defender pour Kubernetes, ou les services comme Azure App, Azure Data peuvent être instanciés sur des clusters Kubernetes avec la fonctionnalité Extensions de cluster. Les [graphiques Helm](https://helm.sh/) vous aident à gérer les applications Kubernetes en fournissant les blocs de construction nécessaires pour définir, installer et mettre à niveau les applications Kubernetes les plus complexes. La fonctionnalité d’extension de cluster s’appuie sur les composants d’empaquetage de Helm en fournissant une expérience pilotée par Azure Resource Manager pour l’installation et la gestion du cycle de vie des instances des services que vous voulez activer sur votre cluster Kubernetes. Un opérateur ou un administrateur de cluster peut utiliser la fonctionnalité d’extensions de cluster pour 
+Les services de gestion comme Azure Monitor et Microsoft Defender pour Kubernetes, ou les services comme Azure App, Azure Data peuvent être instanciés sur des clusters Kubernetes avec la fonctionnalité Extensions de cluster. Les [graphiques Helm](https://helm.sh/) vous aident à gérer les applications Kubernetes en fournissant les blocs de construction nécessaires pour définir, installer et mettre à niveau les applications Kubernetes les plus complexes. La fonctionnalité d’extension de cluster s’appuie sur les composants d’empaquetage de Helm en fournissant une expérience pilotée par Azure Resource Manager pour l’installation et la gestion du cycle de vie des instances des services que vous voulez activer sur votre cluster Kubernetes. Un opérateur ou un administrateur de cluster peut utiliser la fonctionnalité d’extensions de cluster pour 
 
 - Installer différentes extensions pour la fonctionnalité souhaitée, et obtenir un inventaire de tous les clusters et des extensions installées sur ces clusters en utilisant des interfaces Azure comme le portail Azure, l’interface CLI, le SDK, etc. 
 - Comme pour toutes les autres ressources Azure, vous pouvez contrôler l’accès à la ressource d’extension de cluster avec le contrôle d’accès en fonction du rôle (RBAC) Azure
@@ -25,7 +25,7 @@ Les services de gestion comme Azure Monitor et Azure Defender pour Kubernetes, o
 - Gérer les mises à jour en configurant la mise à niveau automatique pour les extensions ou en les épinglant à une version spécifique.
 - Gérer le cycle de vie des extensions, y compris les mises à jour des propriétés d’extension, ou la suppression d’une ou plusieurs instances d’extension.
 
-Une extension peut être limitée à un cluster ou à un espace de noms. Chaque type d’extension (par exemple : Azure Monitor, Azure Defender, les services Azure App) définit l’étendue sur laquelle elle fonctionne sur le cluster. 
+Une extension peut être limitée à un cluster ou à un espace de noms. Chaque type d’extension (par exemple : Azure Monitor, Microsoft Defender pour le cloud, les services Azure App) définit l’étendue sur laquelle elle fonctionne sur le cluster. 
 
 ## <a name="architecture-for-azure-arc-enabled-kubernetes-clusters"></a>Architecture des clusters Kubernetes avec Azure Arc
 

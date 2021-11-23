@@ -17,12 +17,12 @@ ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019, ignite-fall-2021
-ms.openlocfilehash: 2ff6432261915e7200d69bc3b80dba217e5c9285
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 35ea46e4ce2b7c4ebbb6fdfa24bbe1d60e679bb7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131043962"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345697"
 ---
 # <a name="automate-management-with-the-windows-sql-server-iaas-agent-extension"></a>Automatiser la gestion avec l’extension Windows SQL Server IaaS Agent
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -83,7 +83,7 @@ Le tableau suivant détaille ces avantages :
 | **Afficher l’utilisation du disque dans le portail** | Vous permet d’afficher une représentation graphique de l’utilisation du disque par vos fichiers de données SQL dans le portail Azure.  <br/> Mode d’administration : Complète | 
 | **Gestion des licences flexible** | Économisez sur le coût en [passant en toute transparence](licensing-model-azure-hybrid-benefit-ahb-change.md) de votre propre licence (également appelée Azure Hybrid Benefit) au modèle de licence avec paiement à l’utilisation, et inversement. <br/> Mode d’administration : Léger et complet| 
 | **Version/édition flexible** | Si vous décidez de modifier la [version](change-sql-server-version.md) ou l’[édition](change-sql-server-edition.md) de SQL Server, vous pouvez mettre à jour les métadonnées dans le portail Azure sans avoir à redéployer toute la machine virtuelle SQL Server.  <br/> Mode d’administration : Léger et complet| 
-| **Intégration du portail Security Center** | Si vous avez activé [Azure Defender pour SQL](../../../security-center/defender-for-sql-usage.md), vous pouvez afficher les recommandations de Security Center directement dans la ressource de [machines virtuelles SQL](manage-sql-vm-portal.md) du portail Azure. Pour en savoir plus, voir [Meilleures pratiques de sécurité](security-considerations-best-practices.md).  <br/> Mode d’administration : Léger et complet|
+| **Intégration au portail de Defender pour le cloud** | Si vous avez activé [Microsoft Defender pour SQL](../../../security-center/defender-for-sql-usage.md), vous pouvez afficher les recommandations de Defender pour le cloud directement dans la ressource de [machines virtuelles SQL](manage-sql-vm-portal.md) du portail Azure. Pour en savoir plus, voir [Meilleures pratiques de sécurité](security-considerations-best-practices.md).  <br/> Mode d’administration : Léger et complet|
 | **SQL Assessment (préversion)** | Permet d’évaluer l’intégrité de vos machines virtuelles SQL Server à l’aide des meilleures pratiques de configuration. Pour plus d’informations, consultez [SQL Assessment](sql-assessment-for-sql-vm.md).  <br/> Mode d’administration : Complète| 
 
 

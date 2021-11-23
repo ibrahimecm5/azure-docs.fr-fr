@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 11/10/2021
 ms.author: victorh
-ms.openlocfilehash: 7b8dd13c5d2c3c080ca20115dfc41b23dd6e545e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 252a4e71a5fdcc823ab357e8528a50bd737ff1c2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524157"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283557"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Déployer un fournisseur de partenaire de sécurité
 
@@ -102,6 +102,10 @@ Pour que vous puissiez configurer des tunnels vers la passerelle VPN de votre hu
 3. Sélectionnez le hub et accédez à **Configurations de sécurité**.
 
    Quand vous déployez un fournisseur tiers sur le hub, il convertit ce dernier en *hub virtuel sécurisé*. Ainsi, le fournisseur tiers publie une route 0.0.0.0/0 (par défaut) vers le hub. Toutefois, les connexions de réseau virtuel et les sites connectés au hub n’obtiennent pas cette route par défaut, sauf si vous choisissez les connexions qui doivent l’obtenir.
+
+   > [!NOTE]
+   > Ne créez pas manuellement un itinéraire 0.0.0.0/0 (par défaut) sur le protocole BGP pour les publications de branche. Cela s’effectue automatiquement pour les déploiements sécurisés de hub virtuel avec les fournisseurs de sécurité tiers. Cela risque de perturber le processus de déploiement.
+
 4. Configurez la sécurité WAN virtuelle en définissant le **Trafic Internet** via le Pare-feu Azure et le **Trafic privé** via un partenaire de sécurité approuvé. Cela sécurise automatiquement les connexions individuelles dans le WAN virtuel.
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Configuration de la sécurité":::

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 11/10/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 951e2406a387ed2aaedc4cec875c62a14cf5bb2e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 99b7d27ef16414df161b7d6e120084f2b8220f46
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291943"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297522"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Déployer et configurer un pare-feu Azure à l’aide du portail Azure
 
@@ -156,6 +156,10 @@ Déployez le pare-feu dans le réseau virtuel.
 8. Notez les adresses IP privée et publique du pare-feu. Vous les utiliserez plus tard.
 
 ## <a name="create-a-default-route"></a>Créer un itinéraire par défaut
+
+Lorsque vous créez un itinéraire pour une connectivité sortante et entrante via le pare-feu, un itinéraire par défaut vers 0.0.0.0/0 avec l’adresse IP privée de l’appliance virtuelle comme tronçon suivant est suffisant. Cela permet de prendre en charge toutes les connexions entrantes et sortantes pour traverser le pare-feu. Par exemple, si le pare-feu répond à une liaison TCP et répond à une demande entrante, la réponse est dirigée vers l’adresse IP qui a envoyé le trafic. C'est la procédure normale. 
+
+Par conséquent, il n’est pas nécessaire de créer un UDR supplémentaire pour inclure la plage d’adresses IP AzureFirewallSubnet. Cela peut entraîner la suppression de connexions. L’itinéraire par défaut d’origine est suffisant.
 
 Pour le sous-réseau **Workload-SN**, configurez l’itinéraire sortant par défaut pour qu’il traverse le pare-feu.
 

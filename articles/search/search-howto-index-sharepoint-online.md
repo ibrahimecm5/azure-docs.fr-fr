@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 840520f83a3c90a6c63c366e0e56a98d5ab71551
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: f0e5afcc4f0869c4fe12a634e34e7b0669da5c75
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892947"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137796"
 ---
 # <a name="index-data-from-sharepoint-online"></a>indexer des données à partir de SharePoint Online
 
@@ -153,6 +153,9 @@ api-key: [admin key]
 
 ```
 
+> [!IMPORTANT]
+> Seul [`metadata_spo_site_library_item_id`](#metadata) peut être utilisé en tant que champ clé dans un index rempli par l’indexeur SharePoint Online. Si un champ clé n’existe pas dans la source de données, `metadata_spo_site_library_item_id` est automatiquement mappé au champ clé.
+
 Pour plus d’informations, consultez [Créer un index (API REST)](/rest/api/searchservice/create-index).
 
 ### <a name="step-5-create-an-indexer"></a>Étape 5 : Créer un indexeur
@@ -262,6 +265,8 @@ Une fois la source de données mise à jour, effectuez les étapes suivantes :
 1.  Connexion
 
 1.  Lancez manuellement une nouvelle exécution de l’indexeur et vérifiez l’état de l’indexeur. Cette fois, l’exécution de l’indexeur doit démarrer correctement.
+
+<a name="metadata"></a>
 
 ## <a name="indexing-document-metadata"></a>Indexation des métadonnées de document
 Si vous avez défini l’indexeur pour indexer les métadonnées de document, les métadonnées suivantes seront disponibles pour l’indexation.

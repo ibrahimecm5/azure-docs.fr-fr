@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 95830ef00132c7b432b29c033a9d7e7e400b8aad
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 6f798cb4bc1511c0656c697f04e2d1763ca54321
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458852"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308595"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Clusters dédiés pour les journaux Azure Monitor
 
@@ -47,9 +47,9 @@ Il existe deux modes de facturation pour l’utilisation sur un cluster. Ils peu
 
 1. **Cluster (par défaut)**  : la facturation des données ingérées est effectuée au niveau du cluster. Les quantités de données ingérées de chaque espace de travail associé à un cluster sont agrégées pour calculer la facture quotidienne du cluster. 
 
-2. **Espaces de travail** : les coûts de niveau d’engagement pour votre cluster sont attribués proportionnellement aux espaces de travail du cluster, par volume d’ingestion des données (après prise en compte des allocations par nœud depuis [Azure Security Center](../../security-center/index.yml) pour chaque espace de travail). Les détails complets de ce modèle de tarification sont expliqués [ici](./manage-cost-storage.md#log-analytics-dedicated-clusters). 
+2. **Espaces de travail** : les coûts de niveau d’engagement pour votre cluster sont attribués proportionnellement aux espaces de travail du cluster, par volume d’ingestion des données (après prise en compte des allocations par nœud depuis [Microsoft Defender pour le cloud](../../security-center/index.yml) pour chaque espace de travail). Les détails complets de ce modèle de tarification sont expliqués [ici](./manage-cost-storage.md#log-analytics-dedicated-clusters). 
 
-Si votre espace de travail utilise le niveau tarifaire Par nœud hérité, lorsqu’il est lié à un cluster, il sera facturé en fonction des données ingérées par rapport au niveau d’engagement du cluster, et non plus Par nœud. Les allocations de données par nœud d’Azure Security Center continuent à être appliquées.
+Si votre espace de travail utilise le niveau tarifaire Par nœud hérité, lorsqu’il est lié à un cluster, il sera facturé en fonction des données ingérées par rapport au niveau d’engagement du cluster, et non plus Par nœud. Les allocations de données par nœud à partir de Microsoft Defender pour le cloud continuent à être appliquées.
 
 Vous trouverez les détails complets sur la facturation des clusters dédiés Log Analytics [ici](./manage-cost-storage.md#log-analytics-dedicated-clusters).
 

@@ -1,18 +1,18 @@
 ---
 title: Déployer des certificats
 description: Découvrez comment configurer et déployer des certificats pour Defender pour IoT.
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: d6a67a84dab6df165346ff2739d0ac56e2b8eff2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: df2b0484d9f9302443dc37870a6a97de31ded3b1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602818"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343702"
 ---
 # <a name="about-certificates"></a>À propos des certificats
 
-Cet article fournit les informations nécessaires à la création et au déploiement de certificats pour Azure Defender pour IoT. Un responsable sécurité, infrastructure de clé publique ou un autre responsable de certificat qualifié doit gérer la création et le déploiement des certificats.
+Cet article fournit les informations nécessaires à la création et au déploiement de certificats pour Microsoft Defender pour IoT. Un responsable sécurité, infrastructure de clé publique ou un autre responsable de certificat qualifié doit gérer la création et le déploiement des certificats.
 
 Defender pour IoT utilise des certificats SSL/TLS pour sécuriser les communications entre les composants système suivants : 
 
@@ -110,13 +110,17 @@ Certaines stratégies de sécurité de l’organisation peuvent bloquer l’acc�
 
 Defender pour IoT exige que chaque certificat signé par une autorité de certification contienne un fichier .key et un fichier .crt. Ces fichiers sont chargés sur le capteur et la console de gestion locale après la connexion. Certaines organisations peuvent nécessiter un fichier .pem. Defender pour IoT ne nécessite pas ce type de fichier.
 
-**.crt : fichier de conteneur de certificat**  
+**.crt : fichier de conteneur de certificat**
+
 Fichier au format .pem ou .der avec une autre extension. Le fichier est reconnu par l’Explorateur Windows comme un certificat. Le fichier .pem n’est pas reconnu par l’Explorateur Windows.
 
-**.key : fichier de clé privée**  
+**.key : fichier de clé privée**
+
 Un fichier de clé est au même format qu’un fichier PEM, mais son extension est différente.
 
-**. pem – fichier de conteneur de certificat (facultatif)** PEM est un fichier texte qui contient l’encodage en base64 du texte du certificat, un en-tête et un pied de page en texte brut qui marquent le début et la fin du certificat.
+**.pem : fichier de conteneur de certificat (facultatif)**
+
+PEM est un fichier texte qui contient l’encodage en base64 du texte du certificat, un en-tête et un pied de page en texte brut qui marquent le début et la fin du certificat.
 
 Vous devrez peut-être convertir les types de fichiers existants en types de fichiers compatibles. Pour plus de détails, consultez [Convertir des fichiers existants en fichiers pris en charge](#convert-existing-files-to-supported-files).
 

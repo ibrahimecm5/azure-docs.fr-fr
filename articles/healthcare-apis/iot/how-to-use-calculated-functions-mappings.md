@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 11/22/2021
 ms.author: jasteppe
-ms.openlocfilehash: 3e1ccf989bcd67e5e45d381ae681287730cad1d2
-ms.sourcegitcommit: 0415f4d064530e0d7799fe295f1d8dc003f17202
+ms.openlocfilehash: 6e92acd7cc537b9723b1b114b11d8408cf941443
+ms.sourcegitcommit: 3d04177023a3136832adb561da831ccc8e9910c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132733417"
+ms.lasthandoff: 11/23/2021
+ms.locfileid: "132940982"
 ---
 # <a name="how-to-use-calculatedcontenttemplate-mappings"></a>Utilisation des mappages de CalculatedContentTemplate
 
@@ -96,7 +96,7 @@ Le CalculatedContentTemplate permet la correspondance et l’extraction des vale
 
 Lorsque vous spécifiez la langue à utiliser pour l’expression, les valeurs ci-dessous sont valides :
 
-| Langage d’expression | Value        |
+| Langage d’expression | Valeur        |
 |---------------------|--------------|
 | JSONPath            | **JsonPath** |
 | JmesPath            | **JmesPath** |
@@ -204,7 +204,7 @@ Deux correspondances sont extraites à l’aide de l’expression ci-dessus et u
 }
 ```
 
-and
+And
 
 ```json
 {
@@ -547,6 +547,9 @@ Dans l’exemple ci-dessous, les données de hauteur arrivent en pouces ou en m�
       }
     }
 ```
+
+> [!TIP]
+> Pour plus d’informations sur les erreurs et les problèmes courants, consultez le [Guide de dépannage](./iot-troubleshoot-guide.md) du connecteur IOT.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

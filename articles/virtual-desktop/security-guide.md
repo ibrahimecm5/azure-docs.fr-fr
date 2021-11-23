@@ -8,12 +8,12 @@ ms.date: 12/15/2020
 ms.author: helohr
 ms.service: virtual-desktop
 manager: femila
-ms.openlocfilehash: e26a4b60edc413080a34687dbeb136c07ec0f412
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e453f6f104a79ee4d364b7f52ab7c805741e3a22
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131467052"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132326832"
 ---
 # <a name="security-best-practices"></a>Bonnes pratiques de sécurité
 
@@ -50,21 +50,19 @@ Azure Virtual Desktop est un service sous Azure. Pour optimiser la sécurité de
 
 Cette section décrit les meilleures pratiques pour sécuriser votre écosystème Azure.
 
-### <a name="enable-azure-security-center"></a>Activation d’Azure Security Center
+### <a name="enable-microsoft-defender-for-cloud"></a>Activer Microsoft Defender pour le cloud
 
-Nous vous recommandons d’activer Azure Security Center Standard pour les abonnements, les machines virtuelles, les coffres de clés et les comptes de stockage.
+Nous vous recommandons d’activer les fonctionnalités de sécurité renforcée de Microsoft Defender pour le cloud pour :
 
-Avec Azure Security Center Standard, vous pouvez :
+- Gérer les vulnérabilités.
+- Évaluer la conformité avec des infrastructures courantes telles que PCI.
+- Renforcer la sécurité globale de votre environnement.
 
-* Gérer les vulnérabilités.
-* Évaluer la conformité avec des infrastructures courantes telles que PCI.
-* Renforcer la sécurité globale de votre environnement.
-
-Pour plus d’informations, consultez [Intégrer un abonnement Azure à Security Center Standard](../security-center/security-center-get-started.md).
+Pour en savoir plus, consultez [Activer les fonctionnalités de sécurité améliorées](../security-center/enable-enhanced-security.md).
 
 ### <a name="improve-your-secure-score"></a>Améliorer votre score de sécurité
 
-Le Degré de sécurisation fournit des suggestions et des conseils sur les meilleures pratiques pour améliorer votre sécurité globale. Ces suggestions sont hiérarchisées pour vous aider à choisir celles qui sont les plus importantes, et les options de correction rapide vous aident à résoudre rapidement les vulnérabilités potentielles. Ces suggestions sont également mises à jour au fil du temps, ce qui vous permet de mettre à jour la sécurité de votre environnement. Pour plus d’informations, consultez [Amélioration du degré de sécurisation dans Azure Security Center](../security-center/secure-score-security-controls.md).
+Le Degré de sécurisation fournit des suggestions et des conseils sur les meilleures pratiques pour améliorer votre sécurité globale. Ces suggestions sont hiérarchisées pour vous aider à choisir celles qui sont les plus importantes, et les options de correction rapide vous aident à résoudre rapidement les vulnérabilités potentielles. Ces suggestions sont également mises à jour au fil du temps, ce qui vous permet de mettre à jour la sécurité de votre environnement. Pour plus d’informations, consultez [Améliorer votre score de sécurité dans Microsoft Defender pour le cloud](../security-center/secure-score-security-controls.md).
 
 ## <a name="azure-virtual-desktop-security-best-practices"></a>Bonnes pratiques pour la sécurité d’Azure Virtual Desktop
 
@@ -109,11 +107,11 @@ Pour les solutions de profil, telles que FSLogix ou d’autres solutions, qui ef
 
 ### <a name="install-an-endpoint-detection-and-response-product"></a>Installer un produit de détection et de réponse de point de terminaison
 
-Nous vous recommandons d’installer un produit de détection et de réponse de point de terminaison (EDR) pour fournir des fonctionnalités avancées de détection et de réponse. Pour les systèmes d’exploitation serveur sur lesquels [Azure Security Center](../security-center/security-center-services.md) est activé, l’installation d’un produit EDR déploie Defender ATP. Pour les systèmes d’exploitation client, vous pouvez déployer [Defender](/windows/security/threat-protection/microsoft-defender-atp/onboarding) ou un produit tiers sur ces points de terminaison.
+Nous vous recommandons d’installer un produit de détection et de réponse de point de terminaison (EDR) pour fournir des fonctionnalités avancées de détection et de réponse. Pour les systèmes d’exploitation serveur sur lesquels [Microsoft Defender pour le cloud](../security-center/security-center-services.md) est activé, l’installation d’un produit EDR déploie Defender ATP. Pour les systèmes d’exploitation client, vous pouvez déployer [Defender](/windows/security/threat-protection/microsoft-defender-atp/onboarding) ou un produit tiers sur ces points de terminaison.
 
 ### <a name="enable-threat-and-vulnerability-management-assessments"></a>Activer les évaluations de gestion des menaces et des vulnérabilités
 
-L’identification des vulnérabilités logicielles qui existent dans les systèmes d’exploitation et les applications est essentielle pour garantir la sécurité de votre environnement. Azure Security Center peut vous aider à identifier les points posant problème grâce à des évaluations de vulnérabilités pour les systèmes d’exploitation serveur. Vous pouvez également utiliser Defender ATP, qui permet de gérer les menaces et les vulnérabilités pour les systèmes d’exploitation de bureau. Vous pouvez également utiliser des produits tiers si vous le souhaitez, mais nous vous recommandons d'utiliser Azure Security Center et Defender ATP.
+L’identification des vulnérabilités logicielles qui existent dans les systèmes d’exploitation et les applications est essentielle pour garantir la sécurité de votre environnement. Microsoft Defender pour le cloud peut vous aider à identifier les points posant problème grâce à des évaluations de vulnérabilités pour les systèmes d’exploitation serveur. Vous pouvez également utiliser Defender ATP, qui permet de gérer les menaces et les vulnérabilités pour les systèmes d’exploitation de bureau. Vous pouvez également utiliser des produits tiers si vous le souhaitez, mais nous vous recommandons d’utiliser Microsoft Defender pour le cloud et Defender ATP.
 
 ### <a name="patch-software-vulnerabilities-in-your-environment"></a>Corriger les vulnérabilités des logiciels dans votre environnement
 
@@ -195,7 +193,7 @@ Actuellement, Azure Virtual Desktop ne prend pas en charge la configuration auto
 Les systèmes d’exploitation suivants prennent en charge l’exécution de la virtualisation imbriquée sur Azure Virtual Desktop :
 
 - Windows Server 2016
-- Windows Server 2019
+- Windows Server 2019
 - Windows Server 2022
 - Windows 10 Entreprise
 - Windows 10 Entreprise multisession
@@ -205,7 +203,7 @@ Les systèmes d’exploitation suivants prennent en charge l’exécution de la 
 Les systèmes d’exploitation suivants prennent en charge l’utilisation de Windows Defender Application Control avec Azure Virtual Desktop :
 
 - Windows Server 2016
-- Windows Server 2019
+- Windows Server 2019
 - Windows Server 2022
 - Windows 10 Entreprise
 - Windows 10 Entreprise multisession

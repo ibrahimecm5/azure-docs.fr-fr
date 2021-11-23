@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 2010347f2b796a7cac181d0b574401ad34b6f859
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a0f292a3ea3df213c1e9be76da0c2d35ce8554ce
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697257"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345165"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sécuriser et utiliser des stratégies sur des machines virtuelles dans Azure
 
@@ -25,11 +25,11 @@ Il est important de sécuriser votre machine virtuelle pour les applications que
 
 Les menaces vis-à-vis des environnements cloud sont dynamiques et il faut plus que jamais maintenir une protection efficace dans le but de répondre aux exigences de conformité et de sécurité. [Microsoft Antimalware pour Azure](../security/fundamentals/antimalware.md) offre une fonctionnalité de protection en temps réel qui permet d’identifier et de supprimer les virus, logiciels espions et autres logiciels malveillants. Les alertes peuvent être configurées pour vous avertir lorsqu’un logiciel malveillant ou indésirable connu tente de s’installer ou de s’exécuter sur votre machine virtuelle Azure. Elle n’est pas prise en charge sur les machines virtuelles exécutant Linux ou Windows Server 2008.
 
-## <a name="azure-security-center"></a>Azure Security Center
+## <a name="microsoft-defender-for-cloud"></a>Microsoft Defender pour le cloud
 
-[Azure Security Center](../security-center/security-center-introduction.md) vous aide à vous empêcher, détecter et répondre aux menaces pesant sur vos machines virtuelles. Security Center fournit une surveillance de la sécurité et une gestion des stratégies intégrées pour l’ensemble de vos abonnements Azure, vous aidant ainsi à détecter les menaces qui pourraient passer inaperçues. De plus, il est compatible avec un vaste écosystème de solutions de sécurité.
+[Microsoft Defender pour le cloud](../security-center/security-center-introduction.md) vous aide à vous empêcher, détecter et répondre aux menaces pesant sur vos machines virtuelles. Defender pour le cloud fournit une surveillance de la sécurité et une gestion des stratégies intégrées pour l’ensemble de vos abonnements Azure, vous aidant ainsi à détecter les menaces qui pourraient passer inaperçues. De plus, il est compatible avec un vaste écosystème de solutions de sécurité.
 
-L’accès juste-à-temps de Security Center peut être appliqué au déploiement de vos machines virtuelles pour verrouiller le trafic entrant vers vos machines virtuelles Azure, réduire l’exposition aux attaques et faciliter la connexion aux machines virtuelles en cas de nécessité. Lorsque l'accès juste-à-temps est activé et qu'un utilisateur demande à accéder à une machine virtuelle, Security Center vérifie les autorisations de l'utilisateur pour la machine virtuelle en question. S’il dispose des autorisations qui conviennent, la requête est approuvée et Security Center configure automatiquement les Groupes de sécurité réseau (NSG) afin d’autoriser le trafic entrant vers les ports sélectionnés pendant une durée limitée. Après expiration du délai, Security Center restaure les groupes de sécurité réseau à leur état précédent. 
+L’accès juste-à-temps de Defender pour le cloud peut être appliqué au déploiement de vos machines virtuelles pour verrouiller le trafic entrant vers vos machines virtuelles Azure, réduire l’exposition aux attaques et faciliter la connexion aux machines virtuelles en cas de nécessité. Lorsque l’accès juste-à-temps est activé et qu’un utilisateur demande à accéder à une machine virtuelle, Defender pour le cloud vérifie les autorisations de l’utilisateur pour la machine virtuelle en question. S’il dispose des autorisations qui conviennent, la requête est approuvée et Defender pour le cloud configure automatiquement les Groupes de sécurité réseau (NSG) afin d’autoriser le trafic entrant vers les ports sélectionnés pendant une durée limitée. Après expiration du délai, Defender pour le cloud restaure les groupes de sécurité réseau à leur état précédent. 
 
 ## <a name="encryption"></a>Chiffrement
 
@@ -75,4 +75,4 @@ Grâce au [contrôle d’accès en fonction du rôle Azure (Azure RBAC)](../role
 
 
 ## <a name="next-steps"></a>Étapes suivantes
-- Suivez les étapes permettant de surveiller la sécurité de la machine virtuelle à l’aide d’Azure Security Center pour [Linux](../security/fundamentals/overview.md) ou [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security).
+- Suivez les étapes permettant de surveiller la sécurité de la machine virtuelle à l’aide de Microsoft Defender pour le cloud pour [Linux](../security/fundamentals/overview.md) ou [Windows](/previous-versions/azure/virtual-machines/tutorial-azure-security).

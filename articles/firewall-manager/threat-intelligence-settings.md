@@ -7,16 +7,16 @@ ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 819509e08a5604957f01452e5c6ec33c20de2b2a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651717"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297484"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Configuration de la Threat Intelligence du Pare-feu Azure
 
-Le filtrage basé sur Threat Intelligence peut être configuré de manière à ce que votre stratégie de pare-feu Azure donne l’alerte et rejette le trafic depuis ou vers des adresses IP et des domaines malveillants connus. Ces adresses IP et domaines proviennent du flux Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) alimente Microsoft Threat Intelligence et est utilisé par de nombreux services, dont Azure Security Center.<br>
+Le filtrage basé sur Threat Intelligence peut être configuré de manière à ce que votre stratégie de pare-feu Azure donne l’alerte et rejette le trafic depuis ou vers des adresses IP et des domaines malveillants connus. Ces adresses IP et domaines proviennent du flux Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) alimente le renseignement sur les menaces Microsoft et est utilisé par plusieurs services, notamment Microsoft Defender pour le cloud.<br>
 
 Si vous avez configuré le filtrage basé sur la Threat Intelligence, les règles associées sont traitées avant les règles NAT, les règles de réseau ou les règles d’application.
 

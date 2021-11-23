@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 11/10/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5bb6c3aef0476e3da440eb8523d0ccc09491e074
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 7cebff64b67d5ec9f97700929d576ef8dbbc9bf0
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501397"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132180110"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vérification des e-mails personnalisée avec SendGrid
 
@@ -167,6 +167,9 @@ Avec un compte SendGrid créé et une clé API SendGrid stockée dans une clé d
 1. En haut de la page, sélectionnez **Enregistrer**.
 1. Retournez à la page **Modèles transactionnels** en sélectionnant la flèche de retour.
 1. Enregistrez l’**ID** du modèle que vous avez créé pour l'utiliser à une étape ultérieure. Par exemple : `d-989077fbba9746e89f3f6411f596fb96`. Vous spécifiez cet ID lorsque vous [ajoutez la transformation de revendications](#add-the-claims-transformation).
+
+
+[!INCLUDE [active-directory-b2c-important-for-custom-email-provider](../../includes/active-directory-b2c-important-for-custom-email-provider.md)]
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Ajouter des types de revendications Azure AD B2C
 
@@ -388,7 +391,7 @@ Comme pour les profils techniques OTP, ajoutez les profils techniques suivants �
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Faire référence à DisplayControl
 
-Dans l'étape finale, ajoutez une référence à l’élément DisplayControl que vous avez créé. Remplacez vos profils techniques autodéclarés `LocalAccountSignUpWithLogonEmail` et `LocalAccountDiscoveryUsingEmailAddress` existants par les suivants. Si vous avez utilisé une version antérieure de la stratégie Azure AD B2C, ces profils techniques utilisent `DisplayClaims` avec une référence à l’élément DisplayControl.
+Dans l'étape finale, ajoutez une référence à l’élément DisplayControl que vous avez créé. Remplacez vos profils techniques existants `LocalAccountSignUpWithLogonEmail` et `LocalAccountDiscoveryUsingEmailAddress` déclarés automatiquement et qui sont configurés dans la stratégie de base avec l’extrait de code XML suivant. Si vous avez utilisé une version antérieure de la stratégie Azure AD B2C, ces profils techniques utilisent `DisplayClaims` avec une référence à `DisplayControl`.
 
 Pour plus d'informations, voir [Profil technique autodéclaré](restful-technical-profile.md) et [DisplayControl](display-controls.md).
 
@@ -459,7 +462,7 @@ Pour localiser l’e-mail, vous devez envoyer des chaînes localisées à SendGr
     <!--
     <BuildingBlocks> -->
       <Localization Enabled="true">
-        <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+        <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
           <SupportedLanguage>en</SupportedLanguage>
           <SupportedLanguage>es</SupportedLanguage>
         </SupportedLanguages>
@@ -556,9 +559,7 @@ L’élément Localization vous permet de prendre en charge plusieurs paramètre
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Vous trouverez un exemple de stratégie de vérification d’e-mail personnalisée sur GitHub :
-
-- [Vérification d’e-mail personnalisée - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+- Vous trouverez un exemple de stratégie personnalisée [Vérification d’e-mail personnalisée – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol/policy/SendGrid) sur GitHub.
 - Pour plus d'informations sur l'utilisation d'une API REST personnalisée ou d’un fournisseur de messagerie SMTP basé sur HTTP, voir [Définir un profil technique RESTful dans une stratégie personnalisée Azure AD B2C](restful-technical-profile.md).
 
 ::: zone-end

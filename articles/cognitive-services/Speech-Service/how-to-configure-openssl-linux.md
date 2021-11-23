@@ -12,16 +12,16 @@ ms.date: 01/16/2020
 ms.author: jhakulin
 zone_pivot_groups: programming-languages-set-two
 ROBOTS: NOINDEX
-ms.openlocfilehash: 507ade69fc257b52a3fe632fcf652dcd5660d819
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ec2bd2cb46ff96602ed39cf3c9c4e41ddcf5ab33
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104239"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132155986"
 ---
 # <a name="configure-openssl-for-linux"></a>Configurer OpenSSL pour Linux
 
-Quand vous utilisez le kit SDK Speech dans une version antérieure à 1.9.0, [OpenSSL](https://www.openssl.org) est configuré de façon dynamique en fonction de la version du système hôte. Dans les versions ultérieures du kit de développement logiciel (SDK) Speech, OpenSSL est lié de manière statique à la bibliothèque principale du kit de développement logiciel (SDK) Speech. Dans le kit de développement logiciel (SDK) Speech versions 1.9.0 à 1.16.0, [OpenSSL version 1.1.1b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html) est utilisé. Dans le kit de développement logiciel (SDK) Speech version 1.17.0 et ultérieures, [OpenSSL version 1.1.1k](https://mta.openssl.org/pipermail/openssl-announce/2021-March/000197.html) est utilisé.
+Avec le kit SDK Speech dans la version 1.19.0 ou ultérieure, [OpenSSL](https://www.openssl.org) est configuré de façon dynamique en fonction de la version du système hôte. Dans les versions précédentes, OpenSSL était lié de manière statique à la bibliothèque principale du kit de développement logiciel (SDK).
 
 Pour garantir la connectivité, vérifiez que les certificats OpenSSL ont été installés sur votre système. Exécutez une commande :
 ```bash

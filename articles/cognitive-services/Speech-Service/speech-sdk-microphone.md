@@ -3,20 +3,20 @@ title: Recommandations relatives au réseau de microphones du kit SDK Speech
 titleSuffix: Azure Cognitive Services
 description: Découvrez les recommandations relatives au réseau de microphones du kit SDK Speech. Ces géométries de réseau sont recommandées pour une utilisation avec la pile audio Microsoft.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c95ec117ee099c3441bff122fdeeb510309e4b6c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a804e7eb9b98eb462e7a32f49c439afefeaca76f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096704"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312492"
 ---
 # <a name="speech-sdk-microphone-array-recommendations"></a>Recommandations relatives au réseau de microphones du kit SDK Speech
 
@@ -104,7 +104,7 @@ Les directives suivantes concernant l'architecture sont nécessaires lors de l'i
 
 ## <a name="electrical-architecture-considerations"></a>Considérations relatives à l’architecture électrique
 
-Le cas échéant, les réseaux peuvent être connectés à un hôte USB (par exemple un SoC qui exécute la pile audio Microsoft) ainsi qu'à des interfaces vers des services Speech ou d'autres applications.
+Le cas échéant, les réseaux peuvent être connectés à un hôte USB (par exemple un SoC qui exécute la pile audio Microsoft) ainsi qu’à des interfaces vers des services Speech ou d’autres applications.
 
 Les composants matériels tels que la conversion PDM à TDM doivent garantir que la plage dynamique et le rapport signal/bruit des microphones sont préservés dans les rééchantillonneurs.
 

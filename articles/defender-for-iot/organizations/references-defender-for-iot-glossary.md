@@ -1,18 +1,18 @@
 ---
 title: Defender pour le glossaire IoT pour les organisations
 description: Ce glossaire fournit une brève description des termes et concepts importants de la plateforme Defender pour IoT.
-ms.date: 05/27/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 4d3467d6e3a2a4efacd6ed5671e9f2d7614ea143
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 2506ce3e78c7d8b1c5a5b888b8e645e113bdb105
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027762"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331354"
 ---
 # <a name="defender-for-iot-glossary-for-organizations"></a>Defender pour le glossaire IoT pour les organisations
 
-Ce glossaire fournit une brève description des termes et concepts importants pour la plateforme Azure Defender pour IoT. Sélectionnez les liens **En savoir plus** pour accéder aux termes associés dans le glossaire. Cela vous permettra d’apprendre et d’utiliser plus rapidement les outils de produit.
+Ce glossaire fournit une brève description des termes et concepts importants pour la plateforme Microsoft Defender pour IoT. Sélectionnez les liens **En savoir plus** pour accéder aux termes associés dans le glossaire. Cela vous permettra d’apprendre et d’utiliser plus rapidement les outils de produit.
 
 <a name="glossary-a"></a>
 
@@ -114,7 +114,7 @@ Ce glossaire fournit une brève description des termes et concepts importants po
 
 | Terme | Description | En savoir plus |
 |--|--|--|
-| **Console de gestion locale** | La console de gestion locale offre une vue et une gestion centralisées des appareils et des menaces détectés par les déploiements de capteurs Defender pour IoT dans votre organisation. | **[Plateforme Defender pour IoT](#d)<br /><br />[Capteur](#s)** |
+| **Console de gestion locale** | La console de gestion locale offre une vue et une gestion centralisées des appareils et des menaces détectés par Defender pour les déploiements de capteurs IoT dans votre organisation. | **[Plateforme Defender pour IoT](#d)<br /><br />[Capteur](#s)** |
 | **Alerte opérationnelle** | Alertes qui concernent des problèmes réseau opérationnels, par exemple un appareil soupçonné de s’être déconnecté du réseau. | **[Alerte](#glossary-a)<br /><br />[Alerte de sécurité](#s)** |
 
 ## <a name="p"></a>P

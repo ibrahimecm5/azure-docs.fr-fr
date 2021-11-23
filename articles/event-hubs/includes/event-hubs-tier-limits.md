@@ -1,18 +1,18 @@
 ---
-title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 05/25/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 11/04/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
 
 ---
 
 Le tableau suivant indique les limites qui peuvent être différentes pour les niveaux de base, standard et dédié. Dans le tableau, UC signifie [unité de capacité](../event-hubs-dedicated-overview.md), UT [unité de traitement](../event-hubs-scalability.md#processing-units) et UD [unité de débit](../event-hubs-scalability.md#throughput-units). 
 
-| Limite | De base | Standard | Premium |  Dédié |
+| Limite | De base | standard | Premium |  Dédié |
 | ----- | ----- | -------- | -------- | --------- | 
 | Taille maximale d’une publication Event Hubs | 256 KB | 1 Mo | 1 Mo |  1 Mo |
 | Nombre de groupes de consommateurs par Event Hub | 1 | 20 | 100 | 1 000<br/>Aucune limite par UC  |
 | Nombre de connexions réparties par espace de noms | 100 | 5 000 | 10 000 par unité de traitement par UT | 100 000 par UC |
 | Période de rétention maximale des données d’événement | 1 jour | 7 jours | 90 jours<br/>1 To par UT | 90 jours<br/>10 To par UC |
 | Nombre maximal d’UD, d’UT et d’UC | 40 UD | 40 UD | 16 UT | 20 CUS |
-| Nombre de partitions par Event Hub | 32 | 32 | 100 | 1 024 par hub d’événements<br/> 2 000 par unité de capacité |
+| Nombre de partitions par Event Hub | 32 | 32 | 100 par Event Hub, 200 par PU | 1 024 par hub d’événements<br/> 2 000 par unité de capacité |
 | Nombre d’espaces de noms par abonnement | 1 000 | 1 000 | 1 000 | 1 000 (50 per UC) |
 | Nombre d’Event Hubs par espace de noms | 10 | 10 | 100 par UT | 1 000 |
 | Capture | N/A | Paiement par heure | Inclus | Inclus |

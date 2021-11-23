@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da609d7952243c19a3cc6cc9417353965635f0de
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: fd62f1b5974d03e19bd210eec7f8a2cadca0eb22
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131851303"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487899"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Sécurisation de l’accès privilégié pour les déploiements hybrides et cloud dans Azure AD
 
@@ -303,7 +303,7 @@ Si votre Azure Active Directory est connecté à Active Directory en local, suiv
 
 #### <a name="establish-integrated-monitoring"></a>Définir une surveillance intégrée
 
-L’[Azure Security Center](../../security-center/security-center-introduction.md) :
+Le tutoriel [Microsoft Defender pour le cloud](../../defender-for-cloud/defender-for-cloud-introduction.md) :
 
 * Assure une gestion intégrée de la stratégie et de la surveillance de la sécurité dans vos abonnements Azure.
 * Aide à détecter les menaces qui pourraient passer inaperçues.
@@ -322,7 +322,7 @@ Utilisez Privileged Identity Management avec des rôles d’administrateur Azure
 L’intégration des journaux d’activité Azure permet d’intégrer des journaux d’activité bruts de vos ressources Azure dans les systèmes SIEM (Security Information and Event Management) existants de votre organisation. [Azure log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview) collecte des événements Windows à partir de journaux de l’observateur d’événements Windows et de événements Azure à partir des ressources suivantes :
 
 * Journaux d’activité Azure
-* Alertes Azure Security Center
+* Alertes Microsoft Defender pour le cloud
 * Journaux de ressources Azure
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Étapes supplémentaires pour les organisations gérant l’accès à d’autres applications cloud via Azure AD
@@ -333,7 +333,7 @@ Azure AD vous permet d’automatiser la création et la gestion des identités u
 
 #### <a name="integrate-information-protection"></a>Intégrer la protection des informations
 
-Microsoft Cloud App Security vous permet d’analyser des fichiers et de définir des stratégies basées sur des étiquettes de classification d’Azure Information Protection, offrant ainsi une visibilité et un contrôle accrus de vos données dans le cloud. Analysez et classez des fichiers dans le cloud et apposez des étiquettes de protection des informations Azure. Pour plus d’informations, consultez [Azure Information Protection integration](/cloud-app-security/azip-integration) (Intégration d’Azure Information Protection).
+Microsoft Defender for Cloud Apps vous permet d’analyser des fichiers et de définir des stratégies basées sur des étiquettes de classification d’Azure Information Protection, offrant ainsi une visibilité et un contrôle accrus de vos données dans le cloud. Analysez et classez des fichiers dans le cloud et apposez des étiquettes de protection des informations Azure. Pour plus d’informations, consultez [Azure Information Protection integration](/cloud-app-security/azip-integration) (Intégration d’Azure Information Protection).
 
 #### <a name="configure-conditional-access"></a>Configurer un accès conditionnel
 
@@ -341,7 +341,7 @@ Configurez un accès conditionnel en fonction du groupe, de l’emplacement et d
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>Surveiller l’activité dans les applications cloud connectées
 
-Nous vous recommandons d’utiliser [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) pour garantir que l’accès utilisateur est protégé également dans les applications connectées. Cette fonctionnalité sécurise l’accès de l’entreprise aux applications cloud et sécurise vos comptes administrateur, ce qui vous permet d’effectuer les opérations suivantes :
+Nous vous recommandons d’utiliser [Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security) pour garantir que l’accès utilisateur est protégé également dans les applications connectées. Cette fonctionnalité sécurise l’accès de l’entreprise aux applications cloud et sécurise vos comptes administrateur, ce qui vous permet d’effectuer les opérations suivantes :
 
 * Étendre la visibilité et le contrôle aux applications cloud
 * Créer des stratégies d’accès, des activités et le partage de données
@@ -349,7 +349,7 @@ Nous vous recommandons d’utiliser [Microsoft Cloud App Security](/cloud-app-se
 * Empêcher la fuite de données
 * Réduire les risques et prévention des menaces et application de stratégies automatisées
 
-L’agent Cloud App Security SIEM s’intègre à Cloud App Security avec votre serveur SIEM pour permettre la supervision centralisée des alertes et des activités de Microsoft 365. Il s’exécute sur votre serveur et transmet les alertes et les activités de Cloud App Security au serveur SIEM. Pour plus d’informations, consultez [SIEM integration](/cloud-app-security/siem) (Intégration de SIEM).
+L’agent Defender for Cloud Apps SIEM s’intègre à Defender for Cloud Apps avec votre serveur SIEM pour permettre la supervision centralisée des alertes et des activités de Microsoft 365. Il s’exécute sur votre serveur et transmet les alertes et les activités Defender for Cloud Apps au serveur SIEM. Pour plus d’informations, consultez [SIEM integration](/cloud-app-security/siem) (Intégration de SIEM).
 
 ## <a name="stage-4-continue-building-defenses"></a>Étape 4 : Continuer à créer des défenses
 

@@ -1,6 +1,6 @@
 ---
-title: Utiliser Proxy d’application pour intégrer des applications locales avec Cloud App Security – Azure Active Directory
-description: Configurez une application locale dans Azure Active Directory pour utiliser Microsoft Cloud App Security (MCAS). Utilisez le contrôle d’application par accès conditionnel MCAS pour surveiller et contrôler les sessions en temps réel en fonction des stratégies d’accès conditionnel. Vous pouvez appliquer ces stratégies aux applications locales qui utilisent le proxy d’application dans Azure Active Directory (Azure AD).
+title: Utiliser Proxy d’application pour intégrer des applications locales avec Defender for Cloud Apps – Azure Active Directory
+description: Configurez une application locale dans Azure Active Directory pour utiliser Microsoft Defender for Cloud Apps. Utilisez le contrôle d’application par accès conditionnel Defender for Cloud Apps pour surveiller et contrôler les sessions en temps réel en fonction des stratégies d’accès conditionnel. Vous pouvez appliquer ces stratégies aux applications locales qui utilisent le proxy d’application dans Azure Active Directory (Azure AD).
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -10,31 +10,31 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: 2a626d7c26f165d554ec7dcc72e5e5f34c5b58c4
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: e392eb7158a25423e0302846b434cf4d576effbe
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129989320"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331031"
 ---
-# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Configurer la supervision de l’accès aux applications en temps réel avec Microsoft Cloud App Security et Azure Active Directory
-Configurez une application locale dans Azure Active Directory (Azure AD) pour utiliser Microsoft Cloud App Security (MCAS) pour la supervision en temps réel. MCAS utilise le contrôle d’application par accès conditionnel pour surveiller et contrôler les sessions en temps réel en fonction des stratégies d’accès conditionnel. Vous pouvez appliquer ces stratégies aux applications locales qui utilisent le proxy d’application dans Azure Active Directory (Azure AD).
+# <a name="configure-real-time-application-access-monitoring-with-microsoft-defender-for-cloud-apps-and-azure-active-directory"></a>Configurer la supervision de l’accès aux applications en temps réel avec Microsoft Defender for Cloud Apps et Azure Active Directory
+Configurez une application locale dans Azure Active Directory (Azure AD) pour utiliser Microsoft Defender for Cloud Apps pour la supervision en temps réel. Defender for Cloud Apps utilise le contrôle d’application par accès conditionnel pour surveiller et contrôler les sessions en temps réel en fonction des stratégies d’accès conditionnel. Vous pouvez appliquer ces stratégies aux applications locales qui utilisent le proxy d’application dans Azure Active Directory (Azure AD).
 
-Voici quelques exemples de types de stratégies que vous pouvez créer avec MCAS :
+Voici quelques exemples de types de stratégies que vous pouvez créer avec Defender for Cloud Apps :
 
 - Bloquez ou protégez le téléchargement de documents sensibles sur les appareils non gérés.
 - Surveillez à quel moment les utilisateurs à haut risque se connectent aux applications, puis consignez leurs actions dans le cadre de la session. Avec ces informations, vous pouvez analyser le comportement de l’utilisateur pour déterminer comment appliquer les stratégies de session.
 - Utilisez les certificats clients ou la conformité des périphériques pour bloquer l’accès à des applications spécifiques à partir des appareils non gérés.
 - Restreignez les sessions utilisateur des réseaux hors entreprise. Vous pouvez donner un accès restreint aux utilisateurs accédant à une application en dehors de votre réseau d’entreprise. Par exemple, cet accès restreint peut empêcher l’utilisateur de télécharger des documents sensibles.
 
-Pour plus d’informations, consultez [Protéger les applications avec le Contrôle d’accès conditionnel aux applications Microsoft Cloud App Security](/cloud-app-security/proxy-intro-aad).
+Pour plus d’informations, consultez [Protéger les applications avec le Contrôle d’accès conditionnel aux applications Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-intro-aad).
 
 ## <a name="requirements"></a>Spécifications
 
 Licence :
 
-- Licence EMS E5 ou 
-- Azure Active Directory Premium P1 et MCAS Standalone.
+- Licence EMS E5 ou
+- Azure Active Directory Premium P1 et Defender for Cloud Apps autonome.
 
 Application locale :
 
@@ -51,7 +51,7 @@ Intégrez une application locale dans Azure AD. Pour un démarrage rapide, consu
 - **Pré-authentification** : Entrez **Azure Active Directory**.
 - **Traduisez les URL dans le corps de l’application** : Choisissez **Oui**.
 
-Ces deux paramètres sont nécessaires pour que l’application fonctionne avec MCAS.
+Ces deux paramètres sont nécessaires pour que l’application fonctionne avec Defender for Cloud Apps.
 
 ## <a name="test-the-on-premises-application"></a>Tester l’application locale
 
@@ -65,8 +65,3 @@ Pour configurer votre application avec le contrôle d’application à accès co
 ## <a name="test-conditional-access-app-control"></a>Tester le contrôle d’application par accès conditionnel
 
 Pour tester le déploiement des applications Azure AD avec le contrôle d’application à accès conditionnel, suivez les instructions de la section [Tester le déploiement d’applications Azure AD](/cloud-app-security/proxy-deployment-aad).
-
-
-
-
-

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/28/2021
+ms.date: 11/09/2021
 ms.author: victorh
-ms.openlocfilehash: 2dbcb4d42372c97b12d4a71ef43ee1e10f1232bf
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ec914df62c98ea7948c198949b34e37aa3c485d3
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209544"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137347"
 ---
 # <a name="configure-azure-firewall-rules"></a>Configurer des règles de pare-feu Azure
 Vous pouvez configurer des règles NAT, des règles de réseau et des règles d’application sur le Pare-feu Azure à l’aide de règles classiques ou d’une stratégie de pare-feu. Le Pare-feu Azure refuse tout le trafic par défaut, jusqu’à ce que les règles soient configurées manuellement pour autoriser le trafic.
@@ -53,7 +53,9 @@ Voici un exemple de stratégie :
 |ChAppRC2      |     Regroupement de règles d’application    |2000         |7         |-|
 |ChDNATRC3     | Collection de règles DNAT        | 3000        |  2       |-|
 
-Voici l’ordre de traitement de la règle : DNATRC1, DNATRC3, ChDNATRC3, NetworkRC1, NetworkRC2, ChNetRC1, ChNetRC2, AppRC2, ChAppRC1, ChAppRC2
+Voici l’ordre de traitement de la règle : DNATRC1, DNATRC3, ChDNATRC3, NetworkRC1, NetworkRC2, ChNetRC1, ChNetRC2, AppRC2, ChAppRC1, ChAppRC2.
+
+Pour plus d’informations sur les ensembles de règles de stratégie de pare-feu, consultez [Ensembles de règles de stratégie de pare-feu Azure](policy-rule-sets.md).
 
 ### <a name="threat-intelligence"></a>Informations sur les menaces
 

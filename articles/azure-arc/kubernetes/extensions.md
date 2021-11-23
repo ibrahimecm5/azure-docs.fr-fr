@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Déployer des extensions sur Kubernetes avec Azure Arc et gérer leur cycle de vie
-ms.openlocfilehash: 28f82471b13ec798f7c75f6b17d88321dd4f79a9
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 811bced5b0855ffdc44d851459b69a7b6aad6b19
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378067"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312818"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>Déployer et gérer les extensions de cluster Kubernetes avec Azure Arc
 
@@ -28,7 +28,7 @@ Dans cet article, vous apprenez :
 > * Quels sont les paramètres obligatoires et facultatifs.
 > * Comment afficher, lister, mettre à jour et supprimer des instances d’extension. 
 
-Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l’article [Extensions de cluster – Kubernetes avec Azure Arc](conceptual-extensions.md).
+Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l’article [Extensions de cluster - Kubernetes avec Azure Arc](conceptual-extensions.md).
 
 [!INCLUDE [preview features note](./includes/preview/preview-callout.md)]
 
@@ -58,9 +58,9 @@ Une vue d’ensemble conceptuelle de cette fonctionnalité est disponible dans l
 | Extension | Description |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Fournit une visibilité des performances des charges de travail déployées sur le cluster Kubernetes. Collecte les métriques d’utilisation de la mémoire et du processeur à partir de contrôleurs, de nœuds et de conteneurs. |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Collecte des informations liées à la sécurité, telles que les données du journal d'audit du cluster Kubernetes. Fournit des recommandations et des alertes de menace basées sur les données collectées. |
+| [Microsoft Defender pour le cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Collecte des informations liées à la sécurité, telles que les données du journal d'audit du cluster Kubernetes. Fournit des recommandations et des alertes de menace basées sur les données collectées. |
 | [Open Service Mesh avec Azure Arc](tutorial-arc-enabled-open-service-mesh.md) | Déploie Open Service Mesh sur le cluster, et active des fonctionnalités telles que la sécurité mTLS, le contrôle d’accès affiné, le déplacement du trafic, la surveillance avec Azure Monitor ou des modules complémentaires open source de Prometheus et Grafana, le suivi avec Jaeger, et l’intégration avec la solution de gestion de certification externe. |
-| [Data Services avec Azure Arc](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | Vous permet d’exécuter des services de données Azure localement, à la périphérie et dans des clouds publics en utilisant Kubernetes et l’infrastructure de votre choix. |
+| [Data Services avec Azure Arc](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | Vous permet d’exécuter des services de données Azure localement, à la périphérie et dans des clouds publics en utilisant Kubernetes et l’infrastructure de votre choix. |
 | [Azure App Service sur Azure Arc](../../app-service/overview-arc-integration.md) | Vous permet de provisionner un environnement App Service Kubernetes sur des clusters Kubernetes avec Azure Arc. |
 | [Event Grid sur Kubernetes](../../event-grid/kubernetes/overview.md) | Vous permet de créer et gérer des ressources Event Grid (par exemple, des abonnements aux rubriques et aux événements) sur des clusters Kubernetes avec Azure Arc. |
 | [Azure API Management sur Azure Arc](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | Vous permet de déployer et gérer la passerelle API Management sur des clusters Kubernetes avec Azure Arc. |
@@ -266,11 +266,11 @@ En savoir plus sur les extensions de cluster actuellement disponibles pour Kuber
 
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
-> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Microsoft Defender pour le cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
 > [Open Service Mesh avec Azure Arc](tutorial-arc-enabled-open-service-mesh.md)
 > 
 > [!div class="nextstepaction"]
-> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Microsoft Defender pour le cloud](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
 > 
 > [!div class="nextstepaction"]
 > [Azure App Service sur Azure Arc](../../app-service/overview-arc-integration.md)
