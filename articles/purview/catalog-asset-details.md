@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 8004ef319efc08610f9c1a5de16b7c430d51d666
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 6013811622492f476e65c91d3c028007e2802c27
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209176"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485191"
 ---
 # <a name="view-edit-and-delete-assets-in-purview-catalog"></a>Visualiser, modifier et supprimer des ressources dans le catalogue Purview
 
@@ -81,11 +81,16 @@ Vous pouvez accéder à l’onglet Schéma dans l’écran de modification pour 
 
 Vous pouvez accéder à l’onglet Contact de l’écran de modification pour mettre à jour les propriétaires et les experts de la ressource. Vous pouvez effectuer une recherche par nom complet, par e-mail ou par alias de la personne dans votre annuaire Azure Active Directory.
 
-### <a name="edit-behavior-explained"></a>Explication du comportement des modifications
+### <a name="scans-on-edited-assets"></a>Analyses sur des ressources modifiées
 
-Si vous effectuez une mise à jour au niveau de la ressource, comme ajouter une description, une classification au niveau de la ressource, un terme du glossaire ou un contact à une ressource, les analyses suivantes vont mettre à jour le schéma de la ressource (les nouvelles colonnes et les classifications sont détectées par l’analyseur lors exécutions d’analyse suivantes).
+Si vous modifiez une ressource en ajoutant une description, une classification au niveau de la ressource, un terme de glossaire ou un contact, des analyses ultérieures continueront de mettre à jour le schéma de la ressource (nouvelles colonnes et classifications détectées par l’analyseur lors d’analyses subséquentes).
 
-Si vous effectuez une mise à jour au niveau de la colonne, comme ajouter une description, une classification au niveau de la colonne ou un terme du glossaire, ou comme mettre à jour le type de données ou le nom de la colonne, les analyses suivantes ne vont **pas** mettre à jour le schéma de la ressource (les nouvelles colonnes et les classifications **ne seront pas détectées** par l’analyseur lors exécutions d’analyse suivantes).
+Si vous effectuez des mises à jour de niveau de colonne, comme ajouter une description, une classification au niveau de la colonne ou un terme du glossaire, les analyses suivantes continueront également de mettre à jour le schéma de la ressource (les nouvelles colonnes et classifications seront détectées par l’analyseur lors d’analyses subséquentes). 
+
+Même sur des ressources modifiées, après analyse, Azure Purview reflète la vérité du système source. Par exemple, si vous modifiez une colonne et que celle-ci est supprimée de la source, elle est supprimée de votre ressource dans Purview. 
+
+>[!NOTE]
+> Si vous mettez à jour le **nom ou le type de données d’une colonne** dans une ressource Azure Purview, les analyses ultérieures **ne mettent pas** à jour le schéma de la ressource. Les nouvelles colonnes et classifications **ne sont pas** détectées.
 
 ## <a name="deleting-assets"></a>Suppression de ressources
 
@@ -93,11 +98,12 @@ Vous pouvez supprimer une ressource en sélectionnant l’icône Supprimer sous 
 
 ### <a name="delete-behavior-explained"></a>Explication du comportement des suppressions
 
-Les ressources que vous supprimez en utilisant le bouton Supprimer sont définitivement supprimées. Cependant, si vous exécutez une **analyse complète** sur la source à partir de laquelle la ressource a été ingérée dans le catalogue, la ressource est réingérée et vous pouvez la découvrir en utilisant le catalogue Purview.
+Les ressources que vous supprimez en utilisant le bouton Supprimer sont définitivement supprimées dans Azure Purview. Cependant, si vous exécutez une **analyse complète** sur la source à partir de laquelle la ressource a été ingérée dans le catalogue, la ressource est réingérée et vous pouvez la découvrir en utilisant le catalogue Purview.
 
 Si vous avez une analyse planifiée (hebdomadaire ou mensuelle) sur la source, la **ressource supprimée n’est pas réingérée** dans le catalogue à moins que la ressource n’ait été modifiée par un utilisateur final depuis la dernière exécution de l’analyse.   Par exemple, si une table SQL a été supprimée de Purview, mais qu’après la suppression de la table, un utilisateur a ajouté une nouvelle colonne à la table dans SQL, lors de l’analyse suivante, la ressource est réanalysée et ingérée dans le catalogue.
 
 Si vous supprimez une ressource, seule cette ressource est supprimée. Purview ne prend pas actuellement pas en charge les suppressions en cascade. Par exemple, si vous supprimez une ressource de compte de stockage dans votre catalogue, les conteneurs, les dossiers et les fichiers qu’elle contient ne sont pas supprimés. 
+
 
 ## <a name="next-steps"></a>Étapes suivantes
 

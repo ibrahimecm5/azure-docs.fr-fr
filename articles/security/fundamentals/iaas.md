@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 3099ff7525e07a2361a63382eea0d3dc6e689ee7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 55e8caee298d8aab2b724b8c4fb5804e2b58f563
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956843"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132305842"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Meilleures pratiques de sécurité pour les charges de travail IaaS dans Azure
 Cet article décrit les meilleures pratiques en matière de sécurité pour les machines virtuelles et les systèmes d’exploitation.
@@ -50,7 +50,7 @@ Si votre organisation dispose de plusieurs abonnements, vous pouvez avoir besoin
 
 - [Contributeur de machine virtuelle](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) : peut gérer les machines virtuelles, mais pas le réseau virtuel ni le compte de stockage auxquels elles sont connectées.
 - [Contributeur de machine virtuelle Classic](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor) : peut gérer les machines virtuelles créées selon le modèle de déploiement Classic, mais pas le réseau virtuel ni le compte de stockage auxquels elles sont connectées.
-- [Administrateur de la sécurité](../../role-based-access-control/built-in-roles.md#security-admin) : Seulement dans Security Center : peut afficher les stratégies de sécurité, les états de sécurité, les alertes et les recommandations, modifier les stratégies de sécurité et ignorer les alertes et les recommandations.
+- [Administrateur de sécurité](../../role-based-access-control/built-in-roles.md#security-admin) : dans Defender pour le cloud uniquement, peut afficher des stratégies de sécurité, afficher des états de sécurité, modifier des stratégies de sécurité, afficher des alertes et des suggestions, ignorer des alertes et suggestions.
 - [Utilisateur de DevTest Labs](../../role-based-access-control/built-in-roles.md#devtest-labs-user) : peut tout afficher et connecter, démarrer, redémarrer et arrêter les machines virtuelles.
 
 Vos coadministrateurs et administrateurs d’abonnement peuvent modifier ce paramètre. Ils deviennent ainsi administrateurs de toutes les machines virtuelles d’un abonnement. Cela implique que vous autorisez tous vos coadministrateurs et administrateurs d’abonnement à se connecter à n’importe laquelle de vos machines.
@@ -72,13 +72,13 @@ Vous devez installer une solution de protection contre les programmes malveillan
 
 Le logiciel Microsoft Antimalware inclut des fonctionnalités telles que la protection en temps réel, l’analyse planifiée, la correction des logiciels malveillants, la mise à jour des signatures, la mise à jour des moteurs, des exemples de création de rapport et la collecte d’événements d’exclusion. Pour les environnements hébergés séparément de votre environnement de production, vous pouvez utiliser une extension anti-programme malveillant pour protéger vos machines virtuelles et vos services cloud.
 
-Vous pouvez intégrer Microsoft Antimalware et des solutions de partenaires avec [Azure Security Center](../../security-center/index.yml) pour bénéficier d’un déploiement simplifié et de fonctionnalités de détection intégrées (alertes et incidents).
+Vous pouvez intégrer Microsoft Antimalware et des solutions de partenaires avec [Microsoft Defender pour le cloud](../../security-center/index.yml) pour bénéficier d’un déploiement simplifié et de fonctionnalités de détection intégrées (alertes et incidents).
 
 **Bonne pratique** : installer une solution anti-programme malveillant.   
 **Détail** : [Installer une solution partenaire Microsoft ou Microsoft Antimalware](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-).
 
-**Bonne pratique** : intégrer la solution anti-programme malveillant à Security Center pour surveiller l’état de la protection.   
-**Détail** : [Gérer les problèmes de protection des points de terminaison avec Security Center](../../security-center/security-center-partner-integration.md).
+**Meilleure pratique** : intégrer votre solution anti-programme malveillant avec Defender pour le cloud afin de surveiller l’état de votre protection.   
+**Détail** : [gérer les problèmes de protection du point de terminaison avec Defender pour le cloud.](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Gérer les sauvegardes des machines virtuelles
 Les machines virtuelles Azure, comme toutes les machines virtuelles locales, sont destinées à être gérées par l’utilisateur. Azure ne leur envoie donc pas les mises à jour Windows. Vous devez gérer vous-même les mises à jour de vos machines virtuelles.
@@ -102,7 +102,7 @@ Si vous utilisez Windows Update, veillez à ce que la configuration automatique 
 **Détail** : définissez votre machine virtuelle à l’aide d’un [modèle Azure Resource Manager](../../azure-resource-manager/templates/syntax.md) afin de faciliter son redéploiement. L’utilisation d’un modèle vous permet de bénéficier d’une machine virtuelle corrigée et sécurisée lorsque vous en avez besoin.
 
 **Bonne pratique** : appliquer rapidement les mises à jour de sécurité pour les machines virtuelles.   
-**Détail** : activer Azure Security Center (niveau Gratuit ou Standard) pour [identifier les mises à jour de sécurité manquantes et les appliquer](../../security-center/asset-inventory.md).
+**Détail** : activer Microsoft Defender pour le cloud (niveau Gratuit ou Standard) pour [identifier les mises à jour de sécurité manquantes et les appliquer](../../security-center/asset-inventory.md).
 
 **Bonne pratique** : installer les dernières mises à jour de sécurité.   
 **Détail** : Parmi les premières charges de travail que nos clients déplacent vers Azure figurent les labos et les systèmes accessibles de l’extérieur. Si vos machines virtuelles Azure hébergent des applications ou des services qui doivent être accessibles par Internet, soyez vigilant sur les mises à jour correctives. Installez les correctifs au-delà du système d’exploitation. Des vulnérabilités non corrigées sur des applications partenaires peuvent également entraîner des problèmes pouvant être facilement évités avec une gestion efficace des correctifs.
@@ -119,7 +119,7 @@ En matière de mise à jour logicielle, les meilleures pratiques sont relativeme
 ## <a name="manage-your-vm-security-posture"></a>Gérer l’état de sécurité des machines virtuelles
 Les cybermenaces ne cessent d’évoluer. La protection de vos machines virtuelles requiert des fonctionnalités de supervision capables de détecter les menaces, d’empêcher les accès non autorisés à vos ressources, de déclencher des alertes et de limiter les faux positifs.
 
-Pour surveiller l’état de la sécurité de vos [machines virtuelles Windows](../../security-center/security-center-introduction.md) et [Linux](../../security-center/security-center-introduction.md), utilisez [Azure Security Center](../../security-center/security-center-introduction.md). Dans Azure Security Center, protégez vos machines virtuelles grâce aux fonctionnalités suivantes :
+Pour surveiller la sécurité de vos [machines virtuelles Windows](../../security-center/security-center-introduction.md) et [Linux](../../security-center/security-center-introduction.md), utilisez [Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md). Dans Defender pour le cloud, protégez vos machines virtuelles en tirant parti des fonctionnalités suivantes :
 
 - Appliquer les paramètres de sécurité du système d’exploitation avec les règles de configuration recommandées
 - Rechercher et télécharger les mises à jour critiques et les mises à jour de sécurité qui peuvent être manquantes
@@ -128,9 +128,9 @@ Pour surveiller l’état de la sécurité de vos [machines virtuelles Windows](
 - Évaluer et corriger les vulnérabilités
 - Détecter les menaces
 
-Security Center peut surveiller activement les menaces qui apparaissent alors sous la forme d’alertes de sécurité. Les menaces corrélées sont regroupées sous la forme d’un incident de sécurité.
+Defender pour le cloud peut surveiller activement les menaces qui apparaissent alors sous la forme d’alertes de sécurité. Les menaces corrélées sont regroupées sous la forme d’un incident de sécurité.
 
-Security Center stocke les données dans les [journaux Azure Monitor](../../azure-monitor/logs/log-query-overview.md). Les journaux Azure Monitor fournissent un langage de requête et le moteur analytique vous donne des insights sur le fonctionnement de vos applications et de vos ressources. Les données sont également collectées à partir d’[Azure Monitor](../../batch/monitoring-overview.md), de solutions de gestion et d’agents installés sur des machines virtuelles hébergées dans le cloud ou localement. Cette fonctionnalité partagée vous permet de constituer une image complète de votre environnement.
+Defender pour le cloud stocke les données dans des [journaux Azure Monitor](../../azure-monitor/logs/log-query-overview.md). Les journaux Azure Monitor fournissent un langage de requête et le moteur analytique vous donne des insights sur le fonctionnement de vos applications et de vos ressources. Les données sont également collectées à partir d’[Azure Monitor](../../batch/monitoring-overview.md), de solutions de gestion et d’agents installés sur des machines virtuelles hébergées dans le cloud ou localement. Cette fonctionnalité partagée vous permet de constituer une image complète de votre environnement.
 
 Les organisations qui n’appliquent pas une sécurité renforcée à leurs machines virtuelles ne parviennent pas à détecter les actions des utilisateurs non autorisés visant à contourner les contrôles de sécurité mis en place.
 
@@ -175,10 +175,10 @@ Surveillez et limitez la connectivité Internet directe des machines virtuelles.
 **Détail** : utiliser Azure RBAC pour garantir que seul le groupe central de mise en réseau possède l’autorisation d’accès aux ressources réseau.
 
 **Bonne pratique** : identifier les machines virtuelles exposées qui autorisent l’accès à partir de « n’importe quelle » adresse IP source et y remédier.   
-**Détail** : utiliser Azure Security Center. Security Center vous recommande de restreindre l’accès via les points de terminaison accessibles sur Internet si l’un de vos Groupes de sécurité réseau possède une ou plusieurs règles de trafic entrant autorisant l’accès à partir de « n’importe quelle » adresse IP source. Security Center vous recommande de modifier ces règles de trafic entrant afin de [restreindre l’accès](../../security-center/security-center-network-recommendations.md) aux adresses IP source qui en ont réellement besoin.
+**Détails** : utiliser Microsoft Defender pour le cloud. Defender pour le cloud vous recommande de restreindre l’accès via des points de terminaison accessibles sur Internet si l’un de vos Groupes de sécurité réseau possède une ou plusieurs règles de trafic entrant autorisant l’accès à partir de « n’importe quelle » adresse IP source. Defender pour le cloud vous recommande de modifier ces règles de trafic entrant afin de [restreindre l’accès](../../security-center/security-center-network-recommendations.md) aux adresses IP source qui en ont réellement besoin.
 
 **Bonne pratique** : restreindre les ports de gestion (RDP, SSH).   
-**Détail** : [L’accès juste-à-temps (JAT) aux machines virtuelles](../../security-center/security-center-just-in-time.md) peut être utilisé pour verrouiller le trafic entrant vers vos machines virtuelles Azure, ce qui réduit l’exposition aux attaques et facilite la connexion aux machines virtuelles en cas de besoin. Lorsque l’accès JAT est activé, Security Center verrouille le trafic entrant vers vos machines virtuelles Azure en créant une règle de Groupe de sécurité réseau. Vous sélectionnez les ports de la machine virtuelle pour lesquels le trafic entrant sera verrouillé. Ces ports sont contrôlés par la solution JAT.
+**Détail** : [L’accès juste-à-temps (JAT) aux machines virtuelles](../../security-center/security-center-just-in-time.md) peut être utilisé pour verrouiller le trafic entrant vers vos machines virtuelles Azure, ce qui réduit l’exposition aux attaques et facilite la connexion aux machines virtuelles en cas de besoin. Lorsque l’accès JAT est activé, Defender pour le cloud verrouille le trafic entrant vers vos machines virtuelles Azure en créant une règle de groupe de sécurité réseau. Vous sélectionnez les ports de la machine virtuelle pour lesquels le trafic entrant sera verrouillé. Ces ports sont contrôlés par la solution JAT.
 
 ## <a name="next-steps"></a>Étapes suivantes
 Consultez l’article [Bonnes pratiques et tendances Azure relatives à la sécurité](best-practices-and-patterns.md) pour découvrir d’autres bonnes pratiques en matière de sécurité à appliquer dans le cadre de la conception, du déploiement et de la gestion de vos solutions cloud avec Azure.

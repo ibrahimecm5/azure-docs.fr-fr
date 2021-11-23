@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/01/2021
+ms.date: 11/10/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: c978e214e9a3c7e7bef5afc60f11263c1e9efe12
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: b978955c375ff30f677a395ea549276b960a80d9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562482"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132293095"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Utiliser le studio Azure Machine Learning dans un réseau virtuel Azure
 
@@ -71,15 +71,15 @@ Dans cet article, vous apprendrez comment :
 
 ### <a name="azure-storage-account"></a>Compte Stockage Azure
 
-Il existe un problème connu où le magasin de fichiers par défaut ne crée pas automatiquement le dossier `azureml-filestore`, qui est nécessaire pour soumettre des expériences AutoML. Cela se produit lorsque les utilisateurs importent un magasin de fichiers existant et le définissent par défaut lors de la création de l’espace de travail.
+Il existe un problème connu où le magasin de fichiers par défaut ne crée pas automatiquement le dossier `azureml-filestore`, qui est nécessaire pour soumettre des expériences AutoML. Ce problème se produit quand des utilisateurs importent un magasin de fichiers et le définissent comme magasin de fichiers par défaut lors de la création de l’espace de travail.
 
-Pour éviter ce problème, vous avez deux options : 1) Utilisez le magasin de fichiers par défaut qui est automatiquement créé pour vous lors de la création de votre espace de travail. 2) Pour importer votre propre magasin de fichiers, assurez-vous que le magasin de fichiers est en dehors du réseau virtuel pendant la création de l’espace de travail. Une fois l’espace de travail créé, ajoutez le compte de stockage au réseau virtuel.
+Pour éviter ce problème, vous avez deux options : 1) utiliser le magasin de fichiers par défaut créé automatiquement lors de la création de l’espace de travail ; 2) importer votre propre magasin de fichiers en veillant à ce que celui-ci soit à l’extérieur du réseau virtuel pendant la création de l’espace de travail. Une fois l’espace de travail créé, ajoutez le compte de stockage au réseau virtuel.
 
 Pour résoudre ce problème, supprimez le compte de magasin de fichiers du réseau virtuel, puis rajoutez-le au réseau virtuel.
 
 ### <a name="designer-sample-pipeline"></a>Exemple de pipeline de concepteur
 
-Il existe un problème connu à cause duquel l’utilisateur ne peut pas exécuter l’exemple de pipeline dans la page d’accueil du concepteur. L’exemple de jeu de données utilisé dans l’exemple de pipeline est le jeu de données Azure Global, et il ne peut pas satisfaire à tous les environnements de réseau virtuel.
+Il existe un problème connu à cause duquel l’utilisateur ne peut pas exécuter l’exemple de pipeline dans la page d’accueil du concepteur. L’exemple de jeu de données utilisé dans l’exemple de pipeline est le jeu de données Azure Global, qui ne convient pas pour tout environnement de réseau virtuel.
 
 Pour résoudre ce problème, vous pouvez utiliser un espace de travail public pour exécuter un exemple de pipeline afin de savoir comment utiliser le concepteur, puis remplacer l’exemple de jeu de données par votre propre jeu de données dans l’espace de travail au sein du réseau virtuel.
 
@@ -97,7 +97,7 @@ Procédez comme suit pour activer l’accès aux données stockées dans le Stoc
 1. **Accordez à l’identité managée de l’espace de travail le rôle 'Lecteur' pour les points de terminaison privés du stockage**. Si votre service de stockage utilise un __point de terminaison privé__, accordez à l’identité managée de l’espace de travail l’accès **Lecteur** au point de terminaison privé. L’identité mangée de l’espace de travail dans Azure AD a le même nom que votre espace de travail Azure Machine Learning.
 
     > [!TIP]
-    > Votre compte de stockage peut avoir plusieurs points de terminaison privés. Par exemple, un compte de stockage peut avoir un point de terminaison privé distinct pour le Stockage Blob et le Stockage Fichier. Ajoutez l’identité managée aux deux points de terminaison.
+    > Votre compte de stockage peut avoir plusieurs points de terminaison privés. Par exemple, un compte de stockage peut avoir un point de terminaison privé distinct pour les objets blob, les fichiers et les dfs (Azure Data Lake Storage Gen2). Ajoutez l’identité managée à tous ces points de terminaison.
 
     Pour plus d’informations, voir le rôle intégré [Lecteur](../role-based-access-control/built-in-roles.md#reader).
 
@@ -131,13 +131,13 @@ Procédez comme suit pour activer l’accès aux données stockées dans le Stoc
 
 ## <a name="datastore-azure-data-lake-storage-gen1"></a>Magasin de données : Azure Data Lake Storage Gen1
 
-Lorsque vous utilisez Azure Data Lake Storage Gen1 en tant que magasin de données, vous ne pouvez utiliser que des listes de contrôle d’accès de type POSIX. Vous pouvez accorder à l’identité managée de l’espace de travail l’accès aux ressources comme n’importe quel autre principal de sécurité. Pour plus d’informations, consultez [Contrôle d’accès dans Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
+Lorsque vous utilisez Azure Data Lake Storage Gen1 en tant que magasin de données, vous ne pouvez utiliser que des listes de contrôle d’accès de type POSIX. Vous pouvez accorder à l’identité managée de l’espace de travail l’accès aux ressources, comme pour tout autre principal de sécurité. Pour plus d’informations, consultez [Contrôle d’accès dans Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="datastore-azure-data-lake-storage-gen2"></a>Magasin de données : Azure Data Lake Storage Gen2
 
 Lorsque vous utilisez Azure Data Lake Storage Gen2 en tant que magasin de données, vous pouvez utiliser des listes de contrôle d’accès (ACL) de type Azure RBAC et POSIX pour contrôler l’accès aux données au sein d’un réseau virtuel.
 
-**Pour utiliser Azure RBAC**, ajoutez l’identité managée de l’espace de travail au rôle [Lecteur de données blob](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Pour plus d'informations, consultez [Contrôle d'accès en fonction du rôle Azure](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+**Pour utiliser un RBAC Azure**, suivez les étapes décrites dans la section [Magasin de données : compte Stockage Azure](#datastore-azure-storage-account) de cet article. Data Lake Storage Gen2 est basé sur le service Stockage Azure ; par conséquent, les mêmes étapes s’appliquent lorsque vous utilisez Azure RBAC.
 
 **Pour utiliser des listes de contrôle d’accès**, vous pouvez accorder l’accès à l’identité managée de l’espace de travail comme tout autre principal de sécurité. Pour plus d’informations, consultez [Listes de contrôle d’accès sur les fichiers et répertoires](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

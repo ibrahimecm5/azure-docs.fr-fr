@@ -7,13 +7,13 @@ author: arv100kri
 ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 8aac6f90880775c5a1d7002048c79257b4e5ab85
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.date: 11/12/2021
+ms.openlocfilehash: a541eb900648fe33beb76207da956c1489f89cb5
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855894"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132485108"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features"></a>Accès de l’indexeur au contenu protégé par les fonctionnalités de sécurité réseau Azure
 
@@ -63,20 +63,25 @@ Lorsque vous choisissez un mécanisme d’accès sécurisé, prenez en compte le
 
 ## <a name="indexer-execution-environment"></a>Environnement d’exécution des indexeurs
 
-Les indexeurs Recherche cognitive Azure peuvent extraire efficacement du contenu à partir de sources de données, en ajoutant des enrichissements au contenu extrait, voire en générant des projections avant d’écrire les résultats dans l’index de recherche. Selon le nombre de responsabilités attribuées à un indexeur, il peut s’exécuter dans l’un des deux environnements suivants :
+Les indexeurs Recherche cognitive Azure peuvent extraire efficacement du contenu à partir de sources de données, en ajoutant des enrichissements au contenu extrait, voire en générant des projections avant d’écrire les résultats dans l’index de recherche.
+
+Pour un traitement optimal, un service de recherche détermine un environnement d’exécution interne pour configurer l’opération. Vous ne pouvez pas contrôler ou configurer l’environnement, mais il est important de savoir qu’il existe afin d’en tenir compte lors de la configuration de règles de pare-feu IP.
+
+Selon le nombre et les types de tâches affectés, l’indexeur s’exécute dans l’un des deux environnements suivants :
 
 - Environnement privé pour un service de recherche spécifique. Les indexeurs qui s’exécutent dans de tels environnements partagent des ressources avec d’autres charges de travail (par exemple, l’indexation initiée par le client ou l’interrogation de charges de travail). En général, seuls les indexeurs qui effectuent une indexation textuelle (par exemple, n’utilisant pas d’ensemble de compétences) s’exécutent dans cet environnement.
 
 - Environnement multilocataire hébergeant des indexeurs gourmands en ressources, comme ceux ayant des ensembles de compétences. Cet environnement est utilisé pour décharger le traitement gourmand en calculs, en laissant les ressources spécifiques au service disponibles pour les opérations de routine. Cet environnement multilocataire est géré et sécurisé par Microsoft, sans frais supplémentaires pour le client.
 
-Recherche cognitive Azure détermine l’environnement le plus adapté à l’exécution de d’un indexeur donné. Si vous utilisez un pare-feu IP pour contrôler l’accès aux ressources Azure, la connaissance des environnements d’exécution vous aidera à configurer une plage d’adresses IP qui inclut les deux.
+Recherche cognitive Azure détermine l’environnement le plus adapté à l’exécution de d’un indexeur donné. Si vous utilisez un pare-feu IP pour contrôler l’accès aux ressources Azure, la connaissance des environnements d’exécution vous aidera à configurer une plage d’adresses IP qui inclut les deux, comme l’explique la section suivante.
 
 ## <a name="granting-access-to-indexer-ip-ranges"></a>Octroi d’accès aux plages d’adresses IP de l’indexeur
 
-Si la ressource à laquelle votre indexeur tente d’accéder est limitée à un certain nombre de plages d’adresses IP, vous devez développer l’ensemble pour inclure les plages d’adresses IP à partir desquelles une demande d’indexeur peut provenir. Comme indiqué ci-dessus, il existe deux environnements possibles dans lesquels les indexeurs s’exécutent et à partir desquels les demandes d’accès peuvent provenir. Vous devez ajouter les adresses IP des **deux environnements** pour permettre le bon fonctionnement de l’indexeur.
+Si la ressource dont l’indexeur extrait des données existe derrière un pare-feu, assurez-vous que les plages d’adresses IP dans les règles de trafic entrant incluent toutes les adresses IP à partir desquelles une demande d’indexeur peut provenir. Comme indiqué ci-dessus, il existe deux environnements possibles dans lesquels les indexeurs s’exécutent et à partir desquels les demandes d’accès peuvent provenir. Vous devez ajouter les adresses IP des **deux environnements** pour permettre le bon fonctionnement de l’indexeur.
 
-- Pour obtenir l’adresse IP de l’environnement privé spécifique du service de recherche, `nslookup` (ou `ping`) le nom de domaine complet (FQDN) de votre service de recherche. Par exemple, le nom de domaine complet d’un service de recherche dans le cloud public peut être `<service-name>.search.windows.net`. Ces informations sont disponibles sur le portail Azure.
-- Les adresses IP des environnements multilocataires sont disponibles via la balise de service `AzureCognitiveSearch`. Les [étiquettes de service Azure](../virtual-network/service-tags-overview.md) disposent d’une plage publiée d’adresses IP pour chaque service, ce qui est possible via une [API de détection](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) ou un [fichier JSON téléchargeable](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Dans les deux cas, les plages d’adresses IP sont décomposées par région. Vous pouvez choisir uniquement les plages d’adresses IP attribuées à la région dans laquelle votre service de recherche est approvisionné.
+- Pour obtenir l’adresse IP de l’environnement privé spécifique du service de recherche, utilisez `nslookup` (ou `ping`) pour le nom de domaine complet (FQDN) de votre service de recherche. Par exemple, le nom de domaine complet d’un service de recherche dans le cloud public peut être `<service-name>.search.windows.net`. Ces informations sont disponibles sur le portail Azure.
+
+- Pour obtenir les adresses IP des environnements mutualisés dans lesquels un indexeur pourrait s’exécuter, utilisez l’étiquette de service `AzureCognitiveSearch`. Les [balises de service Azure](../virtual-network/service-tags-overview.md) comportent une plage d’adresses IP publiée pour chaque service. Vous pouvez trouver ces adresses IP à l’aide de l’[API de découverte](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) ou d’un [fichier json téléchargeable](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Dans les deux cas, les plages d’adresses IP sont réparties par région. Vous devriez spécifier uniquement les plages d’adresses IP affectées à la région dans laquelle votre service de recherche est approvisionné.
 
 Pour certaines sources de données, la balise de service elle-même peut être utilisée directement plutôt que d’énumérer la liste de plages d’adresses IP (l’adresse IP du service de recherche doit toujours être utilisée explicitement). Ces sources de données restreignent l’accès au moyen de la configuration d’une [règle de groupe de sécurité réseau](../virtual-network/network-security-groups-overview.md), qui prend en charge l’ajout d’une étiquette de service en mode natif, à la différence des règles IP telles que celles proposées par Stockage Azure, Cosmos DB, Azure SQL, etc. Les sources de données qui prennent en charge l’utilisation de l’étiquette de service `AzureCognitiveSearch` directement en plus des adresses IP du service de recherche sont les suivantes :
 
@@ -88,9 +93,9 @@ Pour plus d’informations sur cette option de connectivité, consultez [Connexi
 
 ## <a name="granting-access-via-private-endpoints"></a>Octroi de l’accès via des points de terminaison privés
 
-Les indexeurs peuvent utiliser [des points de terminaison privés](../private-link/private-endpoint-overview.md) afin d’accéder à des ressources dont l’accès est verrouillé pour sélectionner des réseaux virtuels ou pour lesquels aucun accès public n’est activé.
+Des indexeurs peuvent utiliser des [points de terminaison privés](../private-link/private-endpoint-overview.md) sur des connexions à des ressources verrouillées (exécutées sur un réseau virtuel protégé ou simplement indisponibles via une connexion publique).
 
-Cette fonctionnalité est réservée aux services de recherche facturables, avec des limites sur le nombre de points de terminaison privés créés. Pour plus d’informations, consultez [Limites du service](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
+Cette fonctionnalité n’est disponible que dans les services de recherche facturables (de base et ou de niveau supérieur), selon les limites de niveau régissant le nombre de points de terminaison privés pouvant être créés pour une indexation basée sur un texte et une compétence. Pour plus d’informations, consultez la section [Limites de ressource de liaison privée partagée](search-limits-quotas-capacity.md#shared-private-link-resource-limits) dans la documentation relative aux limites de service.
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>Étape 1 : Créer un point de terminaison privé vers la ressource sécurisée
 
@@ -129,16 +134,6 @@ Pour permettre aux indexeurs d’accéder aux ressources par le biais de connexi
 
 Ces étapes sont décrites plus en détail dans [Connexions d’indexeur via un point de terminaison privé](search-indexer-howto-access-private.md).
 Lorsque vous disposez d’un point de terminaison privé approuvé pour une ressource, les indexeurs définis pour être *privés* tentent d’obtenir l’accès via la connexion au point de terminaison privé.
-
-### <a name="limits"></a>Limites
-
-À des fins de performances et de stabilité optimales du service de recherche, des restrictions sont imposées (par niveau de service de recherche) comme suit :
-
-- Types d’indexeurs pouvant être définis comme *privés*.
-- Nombre de ressources de lien privé partagé pouvant être créées.
-- Nombre de types de ressources distincts pour lesquels des ressources de lien privé partagé peuvent être créées.
-
-Ces limites sont documentées dans [Limites de service](search-limits-quotas-capacity.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 
