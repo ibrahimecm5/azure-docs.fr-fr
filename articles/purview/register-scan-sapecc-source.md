@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/04/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: edc70416671e57624b5e36d90de37f0e9cefd74c
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 07aaa62e4e021377ccf247c0a4c058aa9c51d0a1
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850638"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549600"
 ---
 # <a name="connect-to-and-manage-sap-ecc-in-azure-purview"></a>Se connecter à SAP ECC et le gérer dans Azure Purview
 
@@ -36,6 +36,9 @@ Cet article explique comment inscrire SAP ECC et comment s’authentifier et int
 * Vous devez être un administrateur de source de données et un lecteur de données pour inscrire une source et la gérer dans Purview Studio. Pour plus d’informations, consultez notre [page d’autorisations Azure Purview](catalog-permissions.md).
 
 * Configurez le dernier [Runtime d’intégration auto-hébergé](https://www.microsoft.com/download/details.aspx?id=39717). Pour plus d’informations, consultez [le guide Créer et configurer un runtime d’intégration auto-hébergé](../data-factory/create-self-hosted-integration-runtime.md).
+
+    >[!NOTE]
+    >L’analyse de SAP ECC est une opération gourmande en mémoire. Il est recommandé d’installer le runtime d’intégration auto-hébergé sur un ordinateur doté d’au moins 128 Go de RAM.
 
 * Vérifiez que [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) est installé sur la machine virtuelle où est installé le runtime d’intégration auto-hébergé.
 

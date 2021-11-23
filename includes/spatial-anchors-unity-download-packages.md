@@ -2,25 +2,25 @@
 author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 03/30/2021
+ms.date: 11/12/2021
 ms.author: parkerra
-ms.openlocfilehash: 2cd6fff6cc68baa28e85fa0c17294bcfe783ae54
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 96a820f6cc2f0ae41f7b17fc284ba0a2a064b45d
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721795"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490487"
 ---
 L’étape suivante consiste à télécharger les packages Azure Spatial Anchors pour Unity. 
 
-> [!WARNING]
-> Le kit SDK ASA 2.7.0 est la version minimale prise en charge. Si vous utilisez Unity 2020, le kit SDK ASA 2.9.0 est la version minimale prise en charge.
+> [!IMPORTANT]
+> Le kit SDK ASA 2.7.0 est la version minimale prise en charge. Si vous utilisez Unity 2020, le kit SDK ASA 2.9.0 est la version minimale prise en charge. Si vous utilisez le plug-in Mixed Reality OpenXR, le SDK ASA 2.10.0 est la version minimale prise en charge.
 
-Pour utiliser Azure Spatial Anchors dans Unity, vous devez télécharger le package principal ainsi qu’un package spécifique pour chaque plateforme (Android/iOS/HoloLens) que vous envisagez de prendre en charge.
+Pour utiliser Azure Spatial Anchors dans Unity, vous devez télécharger le package principal ainsi qu’un package spécifique pour chaque plateforme (Android/iOS/HoloLens) que vous envisagez de prendre en charge. Cela signifie que vous allez télécharger au moins deux des packages suivants :
 
 | Plateforme | Nom du package                                    |
 |----------|-------------------------------------------------|
-| Android/iOS/HoloLens  | com.microsoft.azure.spatial-anchors-sdk.core@<numéro_de_version> |
+| Toutes les plateformes  | com.microsoft.azure.spatial-anchors-sdk.core@<numéro_de_version> |
 | Android  | com.microsoft.azure.spatial-anchors-sdk.android@<numéro_de_version> |
 | iOS      | com.microsoft.azure.spatial-anchors-sdk.ios@<numéro_de_version>     |
 | HoloLens | com.microsoft.azure.spatial-anchors-sdk.windows@<numéro_de_version> |

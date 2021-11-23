@@ -1,22 +1,22 @@
 ---
-title: Création d’un laboratoire
-description: Cet article vous guide dans le processus de création d’un laboratoire à l’aide du portail Azure et d'Azure DevTest Labs.
-ms.topic: how-to
-ms.date: 10/27/2021
-ms.openlocfilehash: ffec989e93bcd394c175a2b4a19c4cb72978beb0
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+title: 'Démarrage rapide : Créer un labo dans le portail Azure'
+description: Dans ce guide de démarrage rapide, vous créez un labo avec le portail Azure et Azure DevTest Labs.
+ms.topic: quickstart
+ms.date: 11/04/2021
+ms.openlocfilehash: 5f86c09c4f2d6fab4ad590d7e0bf62194c666e10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464453"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286390"
 ---
-# <a name="create-a-lab-in-azure-devtest-labs"></a>Créer un laboratoire dans Azure DevTest Labs
+# <a name="quickstart-create-a-lab-in-azure-devtest-labs-in-azure-portal"></a>Démarrage rapide : Créer un labo dans Azure DevTest Labs dans le portail Azure
 
-Azure DevTest Labs inclut un groupe de ressources, comme des réseaux et des machines virtuelles Azure. Cette infrastructure vous permet de mieux gérer ces ressources en spécifiant des limites et des quotas. Cet article vous guide dans le processus de création d’un laboratoire à l’aide du portail Azure.
+Démarrez avec Azure DevTest Labs en utilisant le portail Azure pour créer un labo. Azure DevTest Labs inclut un groupe de ressources, comme des réseaux et des machines virtuelles Azure. Cette infrastructure vous permet de mieux gérer ces ressources en spécifiant des limites et des quotas. Ce guide de démarrage rapide vous guide dans le processus de création d’un labo avec le portail Azure.
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Prérequis
 
-Un abonnement Azure. Pour en savoir plus sur les options d’achat d’Azure, consultez [Comment acheter Azure](https://azure.microsoft.com/pricing/purchase-options/) ou [Évaluation d’un mois gratuite](https://azure.microsoft.com/pricing/free-trial/). Pour créer le laboratoire, vous devez être le propriétaire de l’abonnement.
+Compte Azure avec un abonnement actif. [Créez un compte gratuitement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Pour créer le laboratoire, vous devez être le propriétaire de l’abonnement.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Connectez-vous au portail Azure.
 
@@ -105,11 +105,24 @@ L’onglet **Vérifier + créer** valide toutes vos configurations. Si tous les 
 
     :::image type="content" source="./media/devtest-lab-create-lab/lab-home-page.png" alt-text="Capture d’écran de la page de présentation de DevTest Labs.":::
 
+## <a name="clean-up-resources"></a>Nettoyer les ressources
+
+Supprimez des ressources pour éviter les frais liés à l’exécution du labo sur Azure. Si vous envisagez de passer à l’article suivant pour ajouter une machine virtuelle au labo, vous pouvez nettoyer les ressources une fois l’article terminé. Dans le cas contraire, procédez ainsi :
+
+1. Revenez à la page d’accueil du lab que vous avez créé.
+
+1. Dans le menu du haut, sélectionnez **Supprimer**.
+
+   :::image type="content" source="./media/devtest-lab-create-lab/portal-lab-delete.png" alt-text="Capture d’écran du bouton Supprimer du lab.":::
+
+1. Dans la page **Voulez-vous vraiment le supprimer**, entrez le nom du lab dans la zone de texte et sélectionnez **Supprimer**.
+
+1. Pendant la suppression, vous pouvez sélectionner **Notifications** en haut de votre écran pour voir la progression. La suppression du lab prend un certain temps. Passez à l’étape suivante une fois le lab supprimé.
+
+1. Si vous avez créé le lab dans un groupe de ressources existant, toutes les ressources de lab ont été supprimées. Si vous avez créé un groupe de ressources pour ce tutoriel, il est maintenant vide et peut être supprimé. Vous ne pouvez pas supprimer le groupe de ressources plus tôt quand le lab y est toujours.
+
 ## <a name="next-steps"></a>Étapes suivantes
+Dans le cadre de ce guide de démarrage rapide, vous avez créé un labo. Pour savoir comment ajouter une machine virtuelle, passez à l’article suivant :
 
-Une fois que vous avez créé votre laboratoire, voici quelques étapes à prendre en compte :
-
-* [Ajouter une machine virtuelle à un laboratoire](devtest-lab-add-vm.md)
-* [Sécuriser l’accès à un laboratoire](devtest-lab-add-devtest-user.md)
-* [Définir des stratégies de laboratoire](devtest-lab-set-lab-policy.md)
-
+> [!div class="nextstepaction"]
+> [Créer et ajouter des machines virtuelles à un lab dans Azure DevTest Labs](devtest-lab-add-vm.md)

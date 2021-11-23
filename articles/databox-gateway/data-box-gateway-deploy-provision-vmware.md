@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 11/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cf0f2f2f970e9082f56a90efb5a6508b0b00e32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727615"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331962"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Tutoriel : Provisionner Azure Data Box Gateway dans VMware
 
@@ -97,7 +97,8 @@ Procédez comme suit pour configurer un appareil virtuel dans votre hyperviseur.
 
 4. Dans le panneau droit, sous **Magasins de données**, sélectionnez le magasin de données dans lequel vous voulez charger le fichier VMDK. 
 
-    - Le magasin de données doit être de type VMFS5. 
+    - Le magasin de données doit être de type VMFS5. Databox Gateway a été testé avec VMWare avec le magasin de données VMFS5. Les versions ultérieures du magasin de données, y compris VMFS6, ne sont pas prises en charge.
+
     - Le magasin de données doit avoir suffisamment d'espace libre pour les disques du système d'exploitation et des données.
    
 5. Cliquez avec le bouton droit et sélectionnez **Parcourir les magasins de données**.

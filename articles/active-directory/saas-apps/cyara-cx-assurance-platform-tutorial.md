@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 07b0ebc327bb4e21d345eb631baa0cc832a6ad45
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08e4bad5b98552da97c63bbea373c4e1ca964a93
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731982"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338456"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cyara-cx-assurance-platform"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Cyara CX Assurance Platform
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Cyara CX Assurance Platform prend en charge l’authentification unique démarrée par le **fournisseur d’identité**
-* Après avoir configuré Cyara CX Assurance Platform, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Cyara CX Assurance Platform, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-cyara-cx-assurance-platform-from-the-gallery"></a>Ajout de Cyara CX Assurance Platform à partir de la galerie
 
@@ -151,6 +151,6 @@ Quand vous cliquez sur la vignette Cyara CX Assurance Platform dans le volet d�
 
 - [Essayer Cyara CX Assurance Platform avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Comment protéger Cyara CX Assurance Platform avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

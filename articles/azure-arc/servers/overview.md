@@ -3,12 +3,12 @@ title: Vue d’ensemble des serveurs avec Azure Arc
 description: Découvrez comment utiliser les serveurs avec Azure Arc afin de gérer les serveurs hébergés en dehors d’Azure comme une ressource Azure.
 ms.date: 09/30/2021
 ms.topic: overview
-ms.openlocfilehash: c064abb4258f36207e8bd4f02f7cb68d8ce1fce1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c390cbbb6f08f4f9082b0764125ab9a14407de95
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355383"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287264"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Qu’est-ce qu’un serveur avec Azure Arc ?
 
@@ -18,7 +18,7 @@ Pour bénéficier de cette expérience avec vos machines hybrides, vous devez in
 
 * Vous souhaitez superviser de manière proactive le système d’exploitation et les charges de travail en cours d’exécution sur la machine.
 * Vous le gérez avec des runbooks Automation ou des solutions comme Update Management.
-* Vous utilisez d’autres services Azure comme [Azure Security Center](../../security-center/security-center-introduction.md).
+* Utilisez d’autres services Azure comme [Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md).
 
 ## <a name="supported-cloud-operations"></a>Opérations cloud prises en charge 
 
@@ -29,8 +29,8 @@ Quand vous connectez votre machine à des serveurs avec Azure Arc, elle vous per
 |**Gouvernance** ||
 | Azure Policy |Attribuez des [configurations d’invité Azure Policy](../../governance/policy/concepts/guest-configuration.md) pour auditer les paramètres à l’intérieur de la machine. Pour comprendre le coût de l’utilisation de stratégies Guest Configuration dans Azure Policy avec des serveurs Arc, consultez le [guide des tarifs](https://azure.microsoft.com/pricing/details/azure-policy/) d’Azure Policy.|
 |**Protéger** ||
-| Azure Security Center | Protégez les serveurs non Azure avec [Microsoft Defender pour point de terminaison](/microsoft-365/security/defender-endpoint), inclus dans [Azure defender](../../security-center/defender-for-servers-introduction.md), à des fins de détection des menaces, de gestion des vulnérabilités et de surveillance proactive des menaces de sécurité potentielles. Azure Security Center présente les alertes et les suggestions de correction à partir des menaces détectées. |
-| Azure Sentinel | Les machines connectées aux serveurs avec Arc peuvent être [configurées avec Azure Sentinel](scenario-onboard-azure-sentinel.md) pour collecter des événements liés à la sécurité et les mettre en corrélation avec d’autres sources de données. |
+| Microsoft Defender pour le cloud | Protégez les serveurs non-Azure avec [Microsoft Defender pour point de terminaison](/microsoft-365/security/defender-endpoint), compris dans [Microsoft Defender pour le cloud](../../security-center/defender-for-servers-introduction.md), afin de détecter les menaces, gérer les vulnérabilités et monitorer de manière proactive les menaces de sécurité potentielles. Microsoft Defender pour le cloud présente les alertes et les suggestions de correction en fonction des menaces détectées. |
+| Microsoft Sentinel | Les machines connectées aux serveurs avec Arc peuvent être [configurées avec Microsoft Sentinel](scenario-onboard-azure-sentinel.md) pour collecter des événements liés à la sécurité et les mettre en corrélation avec d’autres sources de données. |
 |**Configurer** ||
 | Azure Automation |Automatisez les tâches de gestion fréquentes et chronophages à l’aide de [runbooks](../../automation/automation-runbook-execution.md)PowerShell et Python.<br> Évaluez les changements de configuration relatifs aux logiciels installés, aux services Microsoft, au registre et aux fichiers Windows ainsi qu’aux démons Linux avec [Suivi des modifications et inventaire](../../automation/change-tracking/overview.md).<br> Utilisez la fonctionnalité [Update Management](../../automation/update-management/overview.md) pour gérer les mises à jour du système d’exploitation de vos serveurs Windows et Linux. |
 | Azure Automanage (préversion) | Automatisez l’intégration et la configuration d’un ensemble de services Azure quand vous utilisez [Automanage pour les machines pour les serveurs avec Arc](../../automanage/automanage-arc.md). |
@@ -64,16 +64,20 @@ Les métadonnées suivantes concernant la machine connectée sont collectées et
 
 Par exemple, si la machine est inscrite auprès d’Azure Arc dans la région USA Est, ces données sont stockées dans la région USA.
 
-### <a name="supported-environments"></a>Environnements pris en charge
+## <a name="supported-environments"></a>Environnements pris en charge
 
 Les serveurs avec Azure Arc prennent en charge la gestion des serveurs physiques et des machines virtuelles hébergés *en dehors* d’Azure. Pour plus d’informations sur les environnements de cloud hybride hébergeant des machines virtuelles qui sont pris en charge, consultez [Prérequis de l’agent Connected Machine](agent-overview.md#supported-environments).
 
 > [!NOTE]
 > Les serveurs avec Azure Arc ne sont pas conçus ni pris en charge pour permettre la gestion des machines virtuelles s’exécutant dans Azure.
 
-### <a name="agent-status"></a>État de l’agent
+## <a name="agent-status"></a>État de l’agent
 
 L’agent Connected Machine envoie des messages de pulsation au service de façon régulière (toutes les 5 minutes). Si le service cesse de recevoir ces messages de pulsation d’une machine, cette machine est considérée comme étant hors connexion, et l’état dans le portail est automatiquement remplacé par **Déconnectée** au bout de 15 à 30 minutes. À la prochaine réception d’un message de pulsation de l’agent Connected Machine, son état devient automatiquement **Connecté**.
+
+## <a name="service-limits"></a>Limites du service
+
+Les serveurs avec Azure Arc ont une limite pour le nombre d’instances pouvant être créées dans chaque groupe de ressources. Ils n’ont pas de limite au niveau de l’abonnement ou du service. Pour en savoir plus sur les limites de type de ressource qui existent, consultez l’article [Limite des instances de ressource](../../azure-resource-manager/management/resources-without-resource-group-limit.md#microsofthybridcompute).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

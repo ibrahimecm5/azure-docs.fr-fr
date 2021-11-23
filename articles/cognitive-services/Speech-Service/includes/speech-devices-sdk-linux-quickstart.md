@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: eur
-ms.openlocfilehash: 11856bd2b26703b4f1001c1a5223c86f2d2d9a8a
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 07a992a18cf0cf2768a7bbb15dd4a8ad6bafa20a
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509747"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252477"
 ---
 Dans ce guide de démarrage rapide, vous allez découvrir comment utiliser le SDK Speech Devices pour Linux pour créer un produit avec reconnaissance vocale ou pour l’utiliser comme appareil de [transcription de conversation](../conversation-transcription.md). Actuellement, seul [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) est pris en charge.
 
-L’application est générée avec le package du SDK Speech et l’IDE Eclipse Java (v4) sur Linux 64 bits (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 7/8, CentOS 7/8). Elle s’exécute sur un environnement d’exécution Java 8 (JRE) 64 bits.
+L’application est générée avec le package du SDK Speech et l’IDE Eclipse Java (v4) sur Linux 64 bits (Ubuntu 18.04, Debian 9, RHEL 7/8, CentOS 7/8). Elle s’exécute sur un environnement d’exécution Java 8 (JRE) 64 bits.
 
 Ce guide nécessite un compte [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) avec une ressource de service Speech. 
 
@@ -24,7 +24,7 @@ Le code source de l’[exemple d’application](https://aka.ms/sdsdk-download-JR
 
 Ce démarrage rapide nécessite :
 
-* Système d’exploitation : Linux 64 bits (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 7/8, CentOS 7/8)
+* Système d’exploitation : Linux 64 bits (Ubuntu 18.04, Debian 9, RHEL 7/8, CentOS 7/8)
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [IDE Eclipse Java](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) ou [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) uniquement.

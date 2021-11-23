@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 664a63e50b4b0ff1d239317fce653378461a5d4c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 62ba9a8fa578ab12408160d9a6d19243474921fc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798836"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132277217"
 ---
 # <a name="deploy-azure-virtual-desktop-with-the-getting-started-feature"></a>Déployer Azure Virtual Desktop avec la fonctionnalité de prise en main
 
@@ -19,26 +19,26 @@ La nouvelle fonctionnalité de prise en main du Portail Azure est un moyen simpl
 
 ## <a name="requirements"></a>Spécifications
 
-Pour utiliser la prise en main, vous aurez besoin des éléments suivants :
+Pour suivre la prise en main, vous devez respecter les exigences suivantes :
 
-- Un locataire Azure Active Directory (AD)
-- Un compte disposant d’autorisations d’administrateur général sur Azure AD
+- Un locataire Azure Active Directory (AD).
+- Un compte disposant d’autorisations d’administrateur général sur Azure AD.
 
    >[!NOTE]
    >La fonctionnalité de prise en main ne prend pas en charge les comptes MSA, B2B ou invité pour le moment.
 
-- Abonnement Azure actif
+- Un abonnement Azure actif.
 
    >[!NOTE]
    >La fonctionnalité de prise en main ne prend pas actuellement en charge les comptes avec authentification multifacteur.
 
-- Un compte avec des **autorisations Propriétaire** sur l’abonnement
+- Un compte avec des **autorisations Propriétaire** sur l’abonnement.
 
 Si vous utilisez la fonctionnalité de prise en main dans un environnement avec Active Directory Domain Services (AD DS), vous devez également respecter les exigences suivantes :
 
-- Informations d’identification de l’administrateur de domaine AD DS
-- Vous devez configurer Azure AD. Connectez-vous à votre abonnement et assurez-vous que le conteneur « USERS » se synchronise avec Azure AD
-- Le contrôleur de domaine de votre machine virtuelle (VM) ne doit pas avoir d’extensions DSC de type **Microsoft.PowerShell.DSC**
+- Des informations d’identification d’administrateur de domaine AD DS.
+- Vous devez configurer Azure AD Connect sur votre abonnement et vérifier que le conteneur « USERS » se synchronise avec Azure AD.
+- Le contrôleur de domaine de votre machine virtuelle (VM) ne doit pas avoir d’extensions DSC de type **Microsoft.PowerShell.DSC**.
 
 Si vous utilisez la fonctionnalité de prise en main dans un environnement sans fournisseur d’identité, vous devez suivre les exigences supplémentaires suivantes :
 

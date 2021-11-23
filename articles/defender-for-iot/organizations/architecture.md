@@ -1,41 +1,41 @@
 ---
 title: Présentation de l'architecture de solution sans agent
-description: Découvrez l’architecture et le flux d’informations d’Azure Defender pour IoT sans agent.
+description: Découvrez l’architecture sans agent et le flux d’informations de Microsoft Defender pour IoT.
 ms.topic: overview
-ms.date: 07/19/2021
-ms.openlocfilehash: cec373f3848e264b7c9f4b9753315189da77bc0b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 11/09/2021
+ms.openlocfilehash: 9a3a125ea91ccb9649a4bfc70555885b87d59e65
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114455225"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318918"
 ---
-# <a name="azure-defender-for-iot-architecture"></a>Architecture de Azure Defender pour IoT
+# <a name="microsoft-defender-for-iot-architecture"></a>Architecture de Microsoft Defender pour IoT
 
-Cet article décrit l’architecture système fonctionnelle de la solution Defender pour IoT sans agent. Azure Defender pour IoT offre deux ensembles de fonctionnalités pour répondre aux besoins de votre environnement, une solution sans agent pour les organisations, et une solution basée sur un agent pour les fabricants d’appareils.
+Cet article décrit l’architecture système fonctionnelle de la solution Defender pour IoT sans agent. Microsoft Defender pour IoT offre deux ensembles de fonctionnalités pour répondre aux besoins de votre environnement, une solution sans agent pour les organisations, et une solution basée sur un agent pour les fabricants d’appareils.
 
 ## <a name="agentless-solution-architecture-for-organizations"></a>Architecture de la solution sans agent pour les organisations
 ### <a name="defender-for-iot-components"></a>Composants de Defender pour IoT
 
 Defender pour IoT se connecte au cloud Azure et aux composants locaux. La solution est conçue pour offrir une scalabilité dans les environnements de grande taille distribués géographiquement avec plusieurs emplacements distants. Cette solution active une architecture distribuée multicouche par pays, région, unité commerciale ou zone. 
 
-Azure Defender pour IoT comprend les composants suivants : 
+Microsoft Defender pour IoT comprend les composants suivants : 
 
 **Déploiements connectés au cloud**
 
-- Machine virtuelle ou appliance capteur Azure Defender pour IoT
-- Portail Azure pour la gestion cloud et l’intégration à Azure Sentinel
+- Machine virtuelle ou appliance capteur Microsoft Defender pour IoT
+- Portail Azure pour la gestion cloud et l’intégration à Microsoft Sentinel
 - Console de gestion locale pour la gestion de site local
 - Un agent de sécurité incorporé (facultatif)
 
 **Déploiements hermétiques (hors connexion)**
 
-- Machine virtuelle ou appliance capteur Azure Defender pour IoT
+- Machine virtuelle ou appliance capteur Microsoft Defender pour IoT
 - Console de gestion locale pour la gestion de site local
 
 :::image type="content" source="./media/architecture/defender-iot-security-architecture-v3.png" alt-text="Architecture de Defender pour IoT.":::
 
-### <a name="azure-defender-for-iot-sensors"></a>Capteurs Azure Defender pour IoT
+### <a name="microsoft-defender-for-iot-sensors"></a>Capteurs Microsoft Defender pour IoT
 
 Les capteurs Defender pour IoT découvrent et supervisent en permanence les appareils du réseau. Les capteurs collectent le trafic réseau de partage de connexion Internet (ICS) via une surveillance passive (sans agent) des appareils IoT et OT. 
  
@@ -65,7 +65,7 @@ Le moteur de détection d’anomalies détecte les communications et comportemen
 La détection d’incidents opérationnels détecte des problèmes opérationnels, tels qu’une connectivité intermittente, qui peuvent indiquer des signes précoces de défaillance de l’équipement. Par exemple, l’appareil est supposé être déconnecté (ne répondant pas), et la commande PLC d’arrêt Siemens S7 a reçu des alertes.
 
 ### <a name="management-consoles"></a>Consoles de gestion
-La gestion d’Azure Defender pour IoT dans des environnements hybrides s’effectue via deux portails : 
+La gestion de Microsoft Defender pour IoT dans des environnements hybrides s’effectue via deux portails : 
 - Console de capteur
 - Console de gestion locale
 - Le portail Azure
@@ -96,7 +96,7 @@ Il est possible de déployer la console de gestion pour une configuration de hau
 
 ### <a name="azure-portal"></a>Portail Azure
 
-Le portail Defender pour IoT dans Azure est conçu pour vous aider à :
+Defender pour IoT dans le portail Azure dans Azure est conçu pour vous aider à :
 
 - Acheter des appliances de solution
 

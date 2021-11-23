@@ -2,13 +2,13 @@
 title: Investiguer les recommandations de sécurité
 description: Examiner les recommandations de sécurité à l’aide du service de sécurité Defender pour IoT.
 ms.topic: quickstart
-ms.date: 05/26/2021
-ms.openlocfilehash: 29da5747afb36eea9e30d7179d06d69e60556e32
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.date: 11/09/2021
+ms.openlocfilehash: 7f4dab5ed0590d0e2658145f17d657beb5af1177
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062066"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306127"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>Démarrage rapide : Investiguer les recommandations de sécurité
 
@@ -38,11 +38,11 @@ Ouvrez chaque recommandation agrégée pour afficher sa description détaillée,
 
 1. Après avoir vérifié les spécificités de la recommandation, suivez les instructions de l’**étape de correction manuelle** afin d’atténuer et résoudre le problème à l’origine de la recommandation.
 
-    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="Appliquer les recommandations de sécurité avec ASC pour IoT" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
+    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="Appliquer les recommandations de sécurité avec Defender pour IoT" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
 
 1. Explorez les détails de la recommandation pour un appareil spécifique en sélectionnant l’appareil voulu dans la page détaillée.
 
-    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="Examiner les recommandations de sécurité spécifiques pour un appareil à l’aide d’ASC pour IoT" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
+    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="Examiner les recommandations de sécurité spécifiques pour un appareil avec Defender pour IoT" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
 
 1. Si un examen supplémentaire est nécessaire, **examinez la recommandation dans l’Analytique des journaux d’activité** en suivant le lien. 
 

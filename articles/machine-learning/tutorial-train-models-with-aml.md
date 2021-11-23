@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 10/21/2021
 ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 0284a6d0fe7eccf42f43ff7cebc33fe4fcb6fe66
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 4f29290c96b5f9603b4d626a8f87ee1c75168abc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559558"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289715"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>Tutoriel : Entraîner un modèle de classification d’images avec un exemple Jupyter Notebook 
 
@@ -35,7 +35,7 @@ Vous découvrirez comment sélectionner un modèle et le déployer dans la [deux
 
 Si vous n’avez pas d’abonnement Azure, créez un compte gratuit avant de commencer. Essayez la [version gratuite ou payante d’Azure Machine Learning](https://azure.microsoft.com/free/) dès aujourd’hui.
 
->[!NOTE]
+> [!NOTE]
 > Le code présenté dans cet article a été testé avec le kit [SDK Azure Machine Learning](/python/api/overview/azure/ml/intro) version 1.13.0.
 
 ## <a name="prerequisites"></a>Prérequis
@@ -52,6 +52,9 @@ Azure Machine Learning inclut un serveur de notebook cloud dans votre espace de 
  Suivez cette vidéo ou effectuez les étapes détaillées indiquées pour cloner et exécuter le notebook du tutoriel à partir de votre espace de travail.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+> [!NOTE]
+> La vidéo vous aide à comprendre le processus, mais montre l’ouverture d’un fichier différent.  Pour ce tutoriel, une fois que vous avez cloné le dossier **tutorials**, ouvrez le fichier **img-classification-part1-training.ipynb** à partir de votre dossier **tutorials/image-classification-mnist-data**.
 
 ### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Cloner un dossier de notebooks
 

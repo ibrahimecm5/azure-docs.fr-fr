@@ -1,18 +1,18 @@
 ---
-title: Intégrer Palo Alto à Azure Defender pour IoT
+title: Intégrer Palo Alto à Microsoft Defender pour IoT
 description: Defender pour IoT a intégré sa plateforme de surveillance continue des menaces ICS aux pare-feu de nouvelle génération de Palo Alto pour permettre le blocage des menaces critiques plus rapidement et plus efficacement.
-ms.date: 09/29/2021
+ms.date: 11/09/2021
 ms.topic: tutorial
-ms.openlocfilehash: ca6160920a19fc653132d6fdc8cccd878da7cee5
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 5beec75d23fb940f35ded84f2a938dae7e3dd9bc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236788"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301454"
 ---
-# <a name="tutorial-integrate-palo-alto-with-azure-defender-for-iot"></a>Tutoriel : Intégrer Palo Alto à Azure Defender pour IoT
+# <a name="tutorial-integrate-palo-alto-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer Palo Alto à Microsoft Defender pour IoT
 
-Ce tutoriel va vous permettre de découvrir comment intégrer Palo Alto à Azure Defender pour IoT et comment l’utiliser.
+Ce tutoriel va vous permettre de découvrir comment intégrer Palo Alto à Microsoft Defender pour IoT et comment l’utiliser.
 
 Defender pour IoT a intégré sa plateforme de surveillance continue des menaces ICS aux pare-feu de nouvelle génération de Palo Alto pour permettre le blocage des menaces critiques plus rapidement et plus efficacement.
 

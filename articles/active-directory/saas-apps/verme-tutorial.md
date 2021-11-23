@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jeedes
-ms.openlocfilehash: 3328efb612c894eae82c8d13a650d00b0302401e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 47632fdba7287869bdc0c49adee1a55b3dada8a0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820886"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332627"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verme"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Verme
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * Verme prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**.
 
-* Après avoir configuré Verme, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Verme, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-verme-from-the-gallery"></a>Ajout de Verme à partir de la galerie
 
@@ -151,6 +151,6 @@ Quand vous cliquez sur la vignette Verme dans le volet d’accès, vous devez ê
 
 - [Essayer Verme avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Verme avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

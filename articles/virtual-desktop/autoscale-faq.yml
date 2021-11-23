@@ -8,20 +8,21 @@ metadata:
   ms.author: helohr
   ms.custom: devx-track-azurepowershell
   manager: femila
-  ms.openlocfilehash: 7024b24b27e8a33cd79c3ad199dcd9e4040588d5
-  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+  ms.openlocfilehash: 55ed95dbba1e5ee04b1ff9b5e44bb42373846981
+  ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130181762"
+  ms.lasthandoff: 11/12/2021
+  ms.locfileid: "132399573"
 title: Questions fréquentes (FAQ) sur la mise à l’échelle automatique d’Azure Virtual Desktop (préversion)
 summary: Cet article répond aux questions fréquentes sur l’utilisation de la fonctionnalité de mise à l’échelle automatique (en préversion) pour Azure Virtual Desktop.
 sections:
 - name: Ignoré
   questions:
   - question: >
-      Comment puis-je configurer la mise à l’échelle automatique de sorte à ne pas exécuter d’hôtes de session en dehors des heures de travail ?
-    answer: "Le mode ralentissement utilise toujours le plus petit nombre possible d’hôtes de session. Toutefois, s’il existe des sessions actives, le plus petit nombre d’hôtes de session utilisables ne sera pas égal à zéro. Configurez une stratégie de limite de temps pour déconnecter tous les utilisateurs déconnectés afin d’éviter d’avoir des hôtes de session utilisables en dehors des heures de travail.\n \n"
+      Comment puis-je configurer la fonctionnalité de mise à l’échelle automatique de sorte à ne pas exécuter d’hôtes de session en dehors des heures de travail ?
+    answer: >
+      Le mode ralentissement utilise toujours le plus petit nombre possible d’hôtes de session. Toutefois, s’il existe des sessions actives, le plus petit nombre d’hôtes de session utilisables ne sera pas égal à zéro. Configurez une stratégie de limite de temps pour déconnecter tous les utilisateurs déconnectés afin d’éviter d’avoir des hôtes de session utilisables en dehors des heures de travail.
   - question: >
       La mise à l’échelle automatique crée-t-elle ou supprime-t-elle des machines virtuelles en fonction de la charge du service ?
     answer: >
@@ -29,7 +30,36 @@ sections:
   - question: >
       Puis-je configurer une mise à l’échelle pour des dates spécifiques comme celles des vacances ?
     answer: >
-      Non. La mise à l’échelle automatique ne prend actuellement pas en charge un ralentissement à des dates spécifiques.
+      Non. La fonctionnalité de mise à l’échelle automatique ne prend actuellement pas en charge un ralentissement à des dates spécifiques.
   - question: >
       Suis-je facturé pour l’utilisation de la fonctionnalité de mise à l’échelle automatique ?
-    answer: Non. Pour plus d’informations sur les tarifs, consultez [notre page des tarifs](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+    answer: >
+      Non. Pour plus d’informations sur les tarifs, consultez [notre page des tarifs](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+  - question: >
+      Que se passe-t-il si la capacité du pool d’hôtes est égale au seuil de capacité ?
+    answer: >
+      Nothing. La fonctionnalité de mise à l’échelle automatique ne réagit que lorsque la capacité du pool d’hôtes est supérieure ou inférieure au seuil de capacité. La fonctionnalité ne fait rien quand la capacité du pool d’hôtes est identique à celle du seuil de capacité.
+  - question: >
+      Si je définis le mode maintenance sur des hôtes de session, la fonctionnalité de mise à l’échelle automatique va-t-elle modifier mon paramètre configuré ?
+    answer: >
+      Oui, la fonctionnalité de mise à l’échelle automatique va quand même activer ou désactiver le mode maintenance sur les machines virtuelles, quelle que soit la personne qui les met en mode maintenance. La fonctionnalité de mise à l’échelle automatique remplace le mode maintenance sur toutes les machines virtuelles incluses dans la mise à l’échelle. Par conséquent, si vous voulez exclure une machine virtuelle des actions de mise à l’échelle, vous devez utiliser des étiquettes d’exclusion.
+  - question: >
+      À quelle fréquence la fonctionnalité de mise à l’échelle automatique supervise-t-elle les hôtes de session et effectue-t-elle des évaluations de mise à l’échelle ?
+    answer: >
+      La fonctionnalité de mise à l’échelle automatique supervise les connexions des utilisateurs à leurs hôtes de session et leurs déconnexions, puis classe cette activité sous forme d’événements de modification de session. Les événements de modification de session déclenchent une évaluation de mise à l’échelle qui crée des journaux. S’il n’existe aucun événement de modification de session ou si le service d’événement tombe en panne, la fonctionnalité de mise à l’échelle automatique vérifie si des événements ont été manqués. Quand plusieurs événements de modification de session se produisent dans un laps de temps réduit, la fonctionnalité de mise à l’échelle traite par lot les évaluations de mise à l’échelle. Ce traitement par lot permet à la fonctionnalité de mise à l’échelle automatique de traiter rapidement un grand nombre d’événements sans surcharger le système.
+  - question: >
+      Une déconnexion forcée peut-elle se produire lors d’une phase de la journée ?
+    answer: >
+      Non. Si vous avez activé la fonctionnalité de mise à l’échelle automatique, vous pouvez uniquement forcer les utilisateurs à se déconnecter pendant la phase de ralentissement. Cela signifie que si, pendant le ralentissement, un hôte de session est placé en mode maintenance en vue de son arrêt, mais que tous les utilisateurs ne sont pas déconnectés avant que la phase ne passe à l’heure creuse, les sessions utilisateur restantes ne sont pas obligées de se déconnecter de leur session. En effet, pendant les heures creuses, les utilisateurs ne sont pas obligés de se déconnecter de leurs sessions. La fonctionnalité de mise à l’échelle automatique attend plutôt que tous les utilisateurs se soient déconnectés avant de désallouer la machine virtuelle. Par exemple, si la phase de ralentissement dure 15 minutes, et que le délai d’attente avant la déconnexion des utilisateurs et l’arrêt des machines virtuelles est de 20 minutes, la planification va passer à la phase heures creuses et les sessions utilisateur ne seront pas forcées de se déconnecter.
+  - question: >
+      Si je configure la fonctionnalité de mise à l’échelle automatique pour forcer les utilisateurs à se déconnecter lors d’un ralentissement, les utilisateurs avec des sessions actives seront-ils aussi déconnectés ?
+    answer: >
+      Oui. Les sessions inactives, déconnectées et actives seront obligées de se déconnecter si les utilisateurs ne se déconnectent pas pendant le temps d’attente de la phase de ralentissement.
+  - question: >
+      Si une session active est forcée à se déconnecter, mais que l’utilisateur essaie de se reconnecter, existe-t-il un moyen de l’empêcher de démarrer une nouvelle session sur un hôte de session que la fonctionnalité de mise à l’échelle automatique est sur le point de désactiver ?
+    answer: >
+      Une fois que la fonctionnalité de mise à l’échelle automatique a sélectionné un hôte de session à arrêter, elle place l’hôte de session en mode maintenance. Une fois que toutes les sessions utilisateur ont été déconnectées, la fonctionnalité de mise à l’échelle automatique désalloue la machine virtuelle. Une fois la machine virtuelle désallouée, la fonctionnalité de mise à l’échelle automatique définit le paramètre AllowNewSessions sur true, ce qui désactive le mode maintenance. Étant donné que les hôtes de session sur le point d’être arrêtés sont mis en mode maintenance, un utilisateur qui est obligé de se déconnecter de sa session ne pourra pas se connecter à un hôte de session sur le point d’être arrêté s’il tente de se reconnecter.
+  - question: >
+      La fonctionnalité de mise à l’échelle automatique peut-elle désactiver toutes les machines virtuelles dans un pool d’hôtes ou doit-elle conserver au moins quelques machines virtuelles pour fonctionner correctement ?
+    answer: >
+      La fonctionnalité de mise à l’échelle automatique peut désactiver toutes les machines virtuelles dans un pool d’hôtes si le pourcentage minimal d’hôtes est défini sur **0 %** et qu’il n’y a aucune session utilisateur sur l’hôte de session.

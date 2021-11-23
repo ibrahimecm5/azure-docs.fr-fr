@@ -7,18 +7,19 @@ ms.topic: tutorial
 ms.date: 11/03/2021
 ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 863a3fe9ae7b51f347055def7dcaaaa5445293c9
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: c90357a77d8ea95675fb17ecbde5c8dfb94b49ea
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131510040"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132524984"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Paramètres de configuration personnalisés pour les environnements App Service
+
 ## <a name="overview"></a>Vue d’ensemble
 Les environnements App Service (ASE) étant isolés pour chaque client, certains paramètres de configuration peuvent être appliqués exclusivement à des environnements App Service. Cet article décrit les différentes personnalisations pour les environnements App Service disponibles.
 
-Si vous n’avez pas d’instance d’App Service Environment, consultez [Guide pratique pour créer un environnement ASEv1 à partir d’un modèle](app-service-app-service-environment-create-ilb-ase-resourcemanager.md).
+Si vous n’avez pas d’environnement App Service, consultez [Guide pratique pour créer un environnement ASEv3](./creation.md).
 
 Vous pouvez stocker les personnalisations de l’environnement App Service (App Service Environment) à l’aide d’un tableau dans le nouvel attribut **clusterSettings** . Cet attribut se trouve dans le dictionnaire des « Propriétés » de l’entité Azure Resource Manager *hostingEnvironments* .
 
@@ -27,7 +28,7 @@ L’extrait de code abrégé de modèle Resource Manager suivant indique l’att
 ```json
 "resources": [
 {
-    "apiVersion": "2015-08-01",
+    "apiVersion": "2021-03-01",
     "type": "Microsoft.Web/hostingEnvironments",
     "name": ...,
     "location": ...,
@@ -38,7 +39,7 @@ L’extrait de code abrégé de modèle Resource Manager suivant indique l’att
                 "value": "valueOfCustomSetting"
             }
         ],
-        "workerPools": [ ...],
+        "internalLoadBalancingMode": ...,
         etc...
     }
 }
@@ -61,7 +62,7 @@ Par exemple, si un environnement App Service a quatre serveurs frontaux, la mise
 
 ## <a name="enable-internal-encryption"></a>Activer le chiffrement interne
 
-App Service Environment fonctionne comme un système de boîte noire dans laquelle vous ne pouvez pas voir les composants internes ou la communication au sein du système. Pour activer un débit plus élevé, le chiffrement n’est pas activé par défaut entre les composants internes. Le système est sécurisé, car le trafic est inaccessible à des fins de supervision. Si toutefois vous avez une exigence de conformité qui requiert un chiffrement complet du chemin de données de bout en bout, il existe un moyen d’activer le chiffrement du chemin de données complet avec un clusterSetting.  
+App Service Environment fonctionne comme un système de boîte noire dans laquelle vous ne pouvez pas voir les composants internes ou la communication au sein du système. Pour activer un débit plus élevé, le chiffrement n’est pas activé par défaut entre les composants internes. Le système est sécurisé, car le trafic est inaccessible à des fins de supervision. Si toutefois vous avez une exigence de conformité qui requiert un chiffrement complet du chemin de données de bout en bout, il existe un moyen d’activer le chiffrement du chemin de données complet avec un clusterSetting.
 
 ```json
 "clusterSettings": [
@@ -107,8 +108,4 @@ L’ASE prend en charge la modification de la suite de chiffrement par défaut. 
 > Si des valeurs incorrectes sont définies pour la suite de chiffrement et incompréhensibles pour SChannel, l’ensemble de la communication TLS avec votre serveur peut cesser de fonctionner. Dans ce cas, vous devrez supprimer l’entrée *FrontEndSSLCipherSuiteOrder* des **clusterSettings** et envoyer le modèle Resource Manager mis à jour pour rétablir les paramètres de suite de chiffrement par défaut.  Utilisez cette fonctionnalité avec précaution.
 
 ## <a name="get-started"></a>Bien démarrer
-Le site de modèles Azure Quickstart Resource Manager comprend un modèle dont la définition de base permet de [créer un environnement App Service](https://azure.microsoft.com/resources/templates/web-app-ase-create/).
-
-<!-- LINKS -->
-
-<!-- IMAGES -->
+Le site de modèles Azure Quickstart Resource Manager comprend un modèle dont la définition de base permet de [créer un environnement App Service](https://azure.microsoft.com/resources/templates/web-app-asp-app-on-asev3-create/).

@@ -4,16 +4,19 @@ description: Ce guide de démarrage rapide vous aide à commencer à utiliser Az
 ms.topic: quickstart
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c449b86ca4718ad93c2b0c4be0a1623169916ecc
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5c39d6ddae6ad34ad705da8ee2b6de79a8102452
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556518"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398817"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-in-the-portal"></a>Démarrage rapide : Prise en main de Video Analyzer sur le portail
 
-[!INCLUDE [header](includes/edge-env.md)]
+![icône de périphérie](media/env-icon/edge.png)  
+Vous pouvez également consulter [Bien démarrer avec les pipelines en direct Video Analyzer en utilisant le portail](../cloud/get-started-livepipelines-portal.md).
+
+---
 
 Ce guide de démarrage rapide vous guide tout au long des étapes de prise en main d’Azure Video Analyzer. Vous allez créer un compte Azure Video Analyzer et les ressources qui l’accompagnent en utilisant le Portail Azure. Vous allez ensuite déployer le module en périphérie Video Analyzer et un module de simulateur de caméra RTSP (Real Time Streaming Protocol) sur votre périphérique Azure IoT Edge.
 

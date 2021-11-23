@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a345210e8fc2941e58b0dac6dffdfea6830523fb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4394a4c3a910de4d17172556e023e2894cb5bcd7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778739"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313425"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lift"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à LIFT
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * LIFT prend en charge l’authentification unique lancée par le **fournisseur de services**.
-* Après avoir configuré LIFT, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrir comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* Après avoir configuré LIFT, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="adding-lift-from-the-gallery"></a>Ajout de LIFT depuis la galerie
 
@@ -146,4 +146,4 @@ Quand vous cliquez sur la vignette LIFT dans le volet d’accès, vous devez vou
 
 - [Essayer LIFT avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)

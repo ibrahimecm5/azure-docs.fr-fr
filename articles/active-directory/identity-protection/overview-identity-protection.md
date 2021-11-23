@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d472587800c536f6bebe7e0cf41a2b6fdac2606
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b624194285dd5ba7e0a54b8a15d3885a845d64dc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131451537"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283237"
 ---
 # <a name="what-is-identity-protection"></a>Qu’est-ce qu’Identity Protection ?
 
@@ -79,7 +79,7 @@ Bien que Microsoft ne communique pas en détail sur l'évaluation du risque, nou
 
 Les données d’Identity Protection peuvent être exportées vers d’autres outils à des fins d’archivage, d’examen et de mise en corrélation. Les API basées sur Microsoft Graph permettent aux organisations de collecter ces données pour un traitement ultérieur dans un outil tel que SIEM. Pour plus d'informations sur l'accès à l'API Identity Protection, consultez l'article [Prise en main d'Azure Active Directory Identity Protection et de Microsoft Graph](howto-identity-protection-graph-api.md).
 
-Pour en savoir plus sur l'intégration des informations d'Identity Protection dans Azure Sentinel, consultez l'article [Connecter des données depuis Azure AD Identity Protection](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection).
+Pour en savoir plus sur l’intégration des informations Identity Protection à Azure Sentinel, consultez l’article [Connecter des données à partir d’Azure AD Identity Protection](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection).
 
 En outre, les organisations peuvent choisir de stocker des données pour des périodes plus longues en modifiant les paramètres de diagnostic dans Azure AD, de manière à envoyer les données RiskyUsers et UserRiskEvents à un espace de travail Log Analytics, archiver des données dans un compte de stockage, transmettre en continu des données vers un Event Hub ou envoyer des données à une solution partenaire. Pour plus d’informations sur la procédure à suivre, consultez l’article [Guide pratique : Exporter les données liées aux risques](howto-export-risk-data.md).
 

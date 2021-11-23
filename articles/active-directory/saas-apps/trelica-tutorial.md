@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 7aead529824f487b73fc728dafd964567743d60d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b107b14b32417ea6f3da8c7e198a7d6b25497460
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131045954"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298860"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Trelica
 
@@ -43,7 +43,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * Trelica prend en charge l’authentification unique lancée par le fournisseur d’identité.
 * Trelica prend en charge le provisionnement d’utilisateur juste-à-temps.
-* Après avoir configuré Trelica, vous pouvez appliquer le contrôle de session. Ce contrôle protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Trelica, vous pouvez appliquer le contrôle de session. Ce contrôle protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-trelica-from-the-gallery"></a>Ajout de Trelica à partir de la galerie
 
@@ -150,6 +150,6 @@ Quand vous sélectionnez la vignette Trelica dans le portail Mes applications, v
 
 - [Essayer Trelica avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Trelica avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

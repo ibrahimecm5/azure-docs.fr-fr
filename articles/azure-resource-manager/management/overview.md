@@ -4,12 +4,12 @@ description: Explique comment utiliser Azure Resource Manager pour les tâches d
 ms.topic: overview
 ms.date: 08/27/2021
 ms.custom: contperf-fy21q1,contperf-fy21q3-portal
-ms.openlocfilehash: ecb9c163728536b56d119ffa5d67aa6650dbc7e7
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: f83021f35b76dc96c7ae841c2dd636de5b73c107
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106496"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134515"
 ---
 # <a name="what-is-azure-resource-manager"></a>Qu’est-ce qu’Azure Resource Manager ?
 
@@ -81,9 +81,15 @@ Lorsque vous définissez votre groupe de ressources, vous devez prendre en compt
 
 * Les ressources d’un groupe de ressources peuvent se trouver dans des régions autres que celle du groupe de ressources.
 
-* Lorsque vous créez un groupe de ressources, vous devez indiquer un emplacement pour ce groupe. Vous vous demandez peut-être « Pourquoi un groupe de ressources a-t-il besoin un emplacement ? Et, si les ressources peuvent avoir des emplacements différents de celui du groupe de ressources, pourquoi l’emplacement du groupe de ressources a-t-il une importance ? ». Le groupe de ressources stocke des métadonnées sur les ressources. Lorsque vous spécifiez un emplacement pour le groupe de ressources, vous indiquez où stocker ces métadonnées. Pour des raisons de conformité, vous devrez peut-être vous assurer que vos données sont stockées dans une région particulière.
+* Quand vous créez un groupe de ressources, vous devez indiquer une localisation pour ce groupe. 
 
-   Si la région du groupe de ressources est temporairement indisponible, vous ne pourrez pas mettre à jour les ressources du groupe, car les métadonnées ne seront pas disponibles. Les ressources des autres régions continueront de fonctionner comme prévu, mais vous ne pourrez pas les mettre à jour. Pour plus d’informations sur la conception d’applications fiables, consultez [Concevoir des applications Azure fiables](/azure/architecture/checklist/resiliency-per-service).
+  Vous vous demandez peut-être « Pourquoi un groupe de ressources a-t-il besoin un emplacement ? Et, si les ressources peuvent avoir des emplacements différents de celui du groupe de ressources, pourquoi l’emplacement du groupe de ressources a-t-il une importance ? ». 
+
+  Le groupe de ressources stocke des métadonnées sur les ressources. Lorsque vous spécifiez un emplacement pour le groupe de ressources, vous indiquez où stocker ces métadonnées. Pour des raisons de conformité, vous devrez peut-être vous assurer que vos données sont stockées dans une région particulière. 
+  
+  À l’exception des ressources globales comme Azure Content Delivery Network, Azure Traffic Manager et Azure Front Door, si la région d’un groupe de ressources est momentanément indisponible, vous ne pouvez pas mettre à jour les ressources qu’il contient, car les métadonnées ne sont pas disponibles. Les ressources des autres régions continueront de fonctionner comme prévu, mais vous ne pourrez pas les mettre à jour. 
+   
+  Pour plus d’informations sur la conception d’applications fiables, consultez [Concevoir des applications Azure fiables](/azure/architecture/checklist/resiliency-per-service).
 
 * Un groupe de ressources peut être utilisé pour définir l’étendue du contrôle d’accès des actions administratives. Pour gérer un groupe de ressources, vous pouvez affecter des [stratégies Azure](../../governance/policy/overview.md), des [rôles Azure](../../role-based-access-control/role-assignments-portal.md) ou des [verrous de ressources](lock-resources.md).
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: eriklind
-ms.openlocfilehash: a486f8e2f2505470b54c0b0f646794a7789afc09
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b796989cace5631c876809ee94b47c065bb4be71
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256871"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132335838"
 ---
 # <a name="create-an-ios-app-public-preview"></a>Créer une application iOS (préversion publique)
 
@@ -80,7 +80,7 @@ Tout d’abord, créez un nouveau projet d’application iOS. Suivez ces étapes
 
 3. Entrez le nom de l’application, l’ID de bundle, puis sélectionnez **Suivant**.
 
-Pour plus d’informations sur la création d’un nouveau projet, consultez [Creating an Xcode Project for an App](https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app) (Création d’un projet Xcode pour une application).
+Afin d’obtenir de l’aide pour créer un projet, consultez [Creating an Xcode Project for an App](https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app).
 
 ![Créer la première application iOS.](./media/ios-sdk/quick-ios-app/create-app.png)
 

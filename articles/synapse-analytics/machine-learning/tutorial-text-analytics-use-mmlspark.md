@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bbbcad29737b46226c48ac9924e60e400327a518
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f15dfc216b664daf41a090189c29bd8772adc707
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030240"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292943"
 ---
 # <a name="tutorial-text-analytics-with-cognitive-service"></a>Didacticiel : Analyse de texte avec Cognitive Service
 
 [Analyse de texte](../../cognitive-services/text-analytics/index.yml) est un [service Azure Cognitive Services](../../cognitive-services/index.yml) qui vous permet de réaliser des opérations d’exploration de texte et d’analyse de texte avec des fonctionnalités de traitement en langage naturel (NLP). Dans ce tutoriel, vous apprendrez à utiliser l’[analyse de texte](../../cognitive-services/text-analytics/index.yml) pour analyser du texte non structuré sur Azure Synapse Analytics.
 
-Ce tutoriel montre comment utiliser l’analyse de texte avec [MMLSpark](https://github.com/Azure/mmlspark) pour :
+Ce tutoriel montre comment utiliser l’analyse de texte avec [SynapseML](https://github.com/microsoft/SynapseML) pour :
 
 > [!div class="checklist"]
 > - Détecter les étiquettes de sentiment au niveau de la phrase ou du document
@@ -41,10 +41,11 @@ Si vous n’avez pas d’abonnement Azure, [créez un compte gratuit avant de co
 
 
 ## <a name="get-started"></a>Bien démarrer
-Ouvrez Synapse Studio et créez un nouveau notebook. Pour commencer, importez [MMLSpark](https://github.com/Azure/mmlspark). 
+Ouvrez Synapse Studio et créez un nouveau notebook. Pour commencer, importez [SynapseML](https://github.com/microsoft/SynapseML). 
 
 ```python
-from mmlspark.cognitive import *
+import synapse.ml
+from synapse.ml.cognitive import *
 from pyspark.sql.functions import col
 ```
 
@@ -356,4 +357,4 @@ Pour vous assurer que l’instance Spark est arrêtée, mettez fin aux sessions 
 ## <a name="next-steps"></a>Étapes suivantes
 
 * [Consultez les exemples de notebooks Synapse](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [Dépôt GitHub MMLSpark](https://github.com/Azure/mmlspark)
+* [Dépôt GitHub SynapseML](https://github.com/microsoft/SynapseML)

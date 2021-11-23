@@ -1,28 +1,25 @@
 ---
-title: Introduction
-description: Découvrez comment Azure App Service Environment vous permet de mettre à l’échelle, sécuriser et optimiser vos applications dans un environnement totalement isolé et dédié.
-author: ccompy
-ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
+title: Présentation d’ASEv2
+description: Découvrez comment les environnements Azure App Service v2 vous permettent de mettre à l’échelle, de sécuriser et d’optimiser vos applications dans un environnement complètement isolé et dédié.
+author: madsd
 ms.topic: overview
-ms.date: 07/28/2021
-ms.author: ccompy
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 6fdce6c435c86d92f56d1ef6e00c966cabf8a590
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: f704cf8bcd1efdc9a415b8c94662570869787491
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130231491"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132523321"
 ---
-# <a name="introduction-to-the-app-service-environments"></a>Présentation des environnements App Service #
+# <a name="introduction-to-app-service-environment-v2"></a>Présentation d’App Service Environment v2
 > [!NOTE]
-> Cet article concerne la fonctionnalité App Service Environment v2 qui est utilisée avec les plans App Service Isolé
+> Cet article décrit App Service Environment v2 qui est utilisé avec les plans App Service Isolé. Il existe une version plus récente de l’environnement App Service Environment, plus facile à utiliser et qui s’exécute sur des infrastructures plus puissantes. Pour en savoir plus sur la nouvelle version, commencez par la [Présentation de l’environnement App Service Environment](overview.md).
 > 
 
+## <a name="overview"></a>Vue d’ensemble
 
-## <a name="overview"></a>Vue d’ensemble ##
-
-L’environnement Azure App Service est une fonctionnalité d’Azure App Service qui fournit un environnement totalement isolé et dédié pour l’exécution sécurisée de vos applications App Service à grande échelle. Cette fonctionnalité peut héberger vos :
+Azure App Service Environment v2 est une fonctionnalité Azure App Service qui fournit un environnement complètement isolé et dédié pour l’exécution sécurisée de vos applications App Service à grande échelle. Cette fonctionnalité peut héberger vos :
 
 * Applications web Windows
 * Applications web Linux 
@@ -47,7 +44,7 @@ Les environnements ASE hébergent des applications d’un seul client, et le fon
 * L’accès aux applications qui s’exécutent sur des environnements App Service peut être contrôlé par des appareils en amont tels que les pare-feu d’applications web (WAF). Pour plus d’informations, consultez l’article [Pare-feu d’applications web (WAF)][AppGW].
 * Les environnements ASE (App Service Environment) peuvent être déployés dans des zones de disponibilité (AZ) à l’aide de l’épinglage de zone.  Pour plus d’informations, consultez [Prise en charge d’App Service Environment pour les zones de disponibilité][ASEAZ].
 
-## <a name="dedicated-environment"></a>Environnement dédié ##
+## <a name="dedicated-environment"></a>Environnement dédié
 
 Un environnement App Service (ASE) est un environnement dédié qui est exclusif à un seul client et qui peut héberger 200 instances de plan App Service au total. Un plan App Service SKU isolé unique peut avoir jusqu’à 100 instances. Lorsque vous ajoutez toutes les instances de tous les plans App Service dans cet ASE, le total doit être inférieur ou égal à 200.
 
@@ -63,7 +60,7 @@ Les clients n’ont pas besoin de gérer les frontends et les workers. Toute inf
 
 Un tarif fixe mensuel couvre l’infrastructure d’un environnement App Service et ne change pas avec la taille de l’environnement. Chaque processeur virtuel de plan App Service présente aussi un coût. Toutes les applications hébergées dans un environnement App Service sont dans la référence (SKU) de prix Isolée. Pour plus d’informations sur les tarifs d’un environnement App Service, consultez la page de [tarification App Service][Pricing] et passez en revue les options disponibles pour les environnements App Service.
 
-## <a name="virtual-network-support"></a>Prise en charge des réseaux virtuels ##
+## <a name="virtual-network-support"></a>Prise en charge des réseaux virtuels
 
 La fonctionnalité ASE est un déploiement d’Azure App Service effectué directement dans le réseau virtuel Azure Resource Manager d’un client. Pour en savoir plus sur les réseaux virtuels Azure, consultez le [FAQ sur les réseaux virtuels Azure](../../virtual-network/virtual-networks-faq.md). Un environnement App Service existe toujours dans un réseau virtuel, et plus précisément un sous-réseau d’un réseau virtuel. Vous pouvez utiliser les fonctionnalités de sécurité des réseaux virtuels pour contrôler les communications réseau entrantes et sortantes de vos applications.
 
@@ -77,9 +74,9 @@ Pour plus d’informations sur le fonctionnement des environnements App Service 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
-## <a name="app-service-environment-v1"></a>Environnement App Service v1 ##
+## <a name="app-service-environment-v1"></a>Environnement App Service v1
 
-App Service Environment est disponible en deux versions : ASEv1 et ASEv2. Les informations précédentes sont basées sur ASEv2. Cette section montre les différences entre ASEv1 et ASEv2. 
+App Service Environment a trois versions : ASEv1, ASEv2 et ASEv3. Les informations précédentes sont basées sur ASEv2. Cette section montre les différences entre ASEv1 et ASEv2. Pour en savoir plus, consultez [Présentation d’App Service Environment v3](./overview.md)
 
 Dans ASEv1, vous devez gérer toutes les ressources manuellement. Celles-ci incluent les frontends, les workers et les adresses IP utilisées pour le protocole TLS/SSL basé sur IP. Pour pouvoir effectuer un scale-out de votre plan App Service, vous devez d’abord effectuer un scale-out du pool de workers où vous voulez héberger le plan.
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim,azuread-video-2020,contperf-fy21q3-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9b03298049bb374579efd585f9d50b9dfbc29b7
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: abd9a0e11eb58a99623acdf9c8c61656bc32dde6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668995"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285983"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Qu’est-ce qu’Azure AD Privileged Identity Management ?
 
@@ -124,7 +124,7 @@ Privileged Identity Management prend en charge les scénarios suivants :
 Dans Privileged Identity Management (PIM), vous pouvez désormais attribuer l’éligibilité à l’appartenance ou à la propriété de groupes d’accès privilégié. À partir de cette préversion, vous pouvez attribuer des rôles intégrés Azure AD (Azure Active Directory) à des groupes cloud et utiliser PIM pour gérer l’éligibilité à l’appartenance ou à la propriété des groupes et les activer. Pour plus d’informations sur les groupes avec attribution de rôle dans Azure AD, consultez [Utiliser des groupes Azure AD pour gérer les attributions de rôles](../roles/groups-concept.md).
 
 >[!Important]
-> Pour affecter un groupe d’accès privilégié à un rôle pour un accès administratif à Exchange, Security and Compliance Center ou SharePoint, utilisez l’expérience **Rôles et administrateurs** du portail Azure AD, et non l’expérience Groupes d’accès privilégié, afin de rendre l’utilisateur ou le groupe éligible à l’activation dans le groupe.
+> Pour attribuer un groupe d’accès privilégié à un rôle afin d’obtenir un accès administratif à Exchange, au Centre de sécurité et de conformité ou à SharePoint, utilisez l’expérience **Rôles et administrateurs** du portail Azure AD, et non l’expérience Groupes d’accès privilégié pour que l’utilisateur ou le groupe puisse être activé dans le groupe.
 
 ### <a name="different-just-in-time-policies-for-each-group"></a>Stratégies juste-à-temps différentes pour chaque groupe
 

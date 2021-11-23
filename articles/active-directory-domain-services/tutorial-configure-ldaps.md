@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 3cbc6d9b0f51b939a03378c45845c50f91c4549f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a2cb97ce2ddc8e2d8b5921909346f943d955c87d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991980"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370761"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutoriel : Configurer le protocole LDAP sécurisé pour un domaine managé Azure Active Directory Domain Services
 
@@ -39,13 +39,13 @@ Si vous n’avez pas d’abonnement Azure, [créez un compte](https://azure.micr
 Pour effectuer ce tutoriel, vous avez besoin des ressources et des privilèges suivants :
 
 * Un abonnement Azure actif.
-    * Si vous n’avez pas d’abonnement Azure, [créez un compte](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  * Si vous n’avez pas d’abonnement Azure, [créez un compte](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Un locataire Azure Active Directory associé à votre abonnement, synchronisé avec un annuaire local ou un annuaire cloud uniquement.
-    * Si nécessaire, [créez un locataire Azure Active Directory][create-azure-ad-tenant] ou [associez un abonnement Azure à votre compte][associate-azure-ad-tenant].
+  * Si nécessaire, [créez un locataire Azure Active Directory][create-azure-ad-tenant] ou [associez un abonnement Azure à votre compte][associate-azure-ad-tenant].
 * Un domaine managé Azure Active Directory Domain Services activé et configuré dans votre locataire Azure AD.
-    * Si nécessaire, [créez et configurez un domaine managé Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+  * Si nécessaire, [créez et configurez un domaine managé Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 * L’outil *LDP.exe* installé sur votre ordinateur.
-    * Si nécessaire, [installez les outils d’administration de serveur distant (RSAT)][rsat] pour *Active Directory Domain Services et LDAP*.
+  * Si nécessaire, [installez les outils d’administration de serveur distant (RSAT)][rsat] pour *Active Directory Domain Services et LDAP*.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Connectez-vous au portail Azure.
 
@@ -56,17 +56,17 @@ Dans ce tutoriel, vous configurez le protocole LDAP sécurisé pour le domaine m
 Pour utiliser le protocole LDAP sécurisé, un certificat numérique est utilisé pour chiffrer la communication. Ce certificat numérique est appliqué à votre domaine managé et permet à des outils comme *LDP.exe* d’utiliser une communication chiffrée sécurisée lors de l’interrogation des données. Il existe deux manières de créer un certificat pour un accès LDAP sécurisé au domaine managé :
 
 * Un certificat auprès d’une autorité de certification publique ou d’une autorité de certification d’entreprise.
-    * Si votre organisation obtient ses certificats auprès d’une autorité de certification publique, obtenez le certificat LDAP sécurisé auprès de cette dernière. Si vous utilisez dans votre organisation une autorité de certification d’entreprise, obtenez le certificat LDAP sécurisé auprès de cette dernière.
-    * Une autorité de certification publique fonctionne seulement quand vous utilisez un nom DNS personnalisé avec votre domaine managé. Si le nom de domaine DNS de votre domaine managé se termine par *.onmicrosoft.com*, vous ne pouvez pas créer de certificat numérique pour sécuriser la connexion avec ce domaine par défaut. Microsoft détient le domaine *.onmicrosoft.com* : une autorité de certification publique n’émettra donc pas de certificat. Dans ce cas de figure, créez un certificat auto-signé et utilisez-le pour configurer le protocole LDAP sécurisé.
+  * Si votre organisation obtient ses certificats auprès d’une autorité de certification publique, obtenez le certificat LDAP sécurisé auprès de cette dernière. Si vous utilisez dans votre organisation une autorité de certification d’entreprise, obtenez le certificat LDAP sécurisé auprès de cette dernière.
+  * Une autorité de certification publique fonctionne seulement quand vous utilisez un nom DNS personnalisé avec votre domaine managé. Si le nom de domaine DNS de votre domaine managé se termine par *.onmicrosoft.com*, vous ne pouvez pas créer de certificat numérique pour sécuriser la connexion avec ce domaine par défaut. Microsoft détient le domaine *.onmicrosoft.com* : une autorité de certification publique n’émettra donc pas de certificat. Dans ce cas de figure, créez un certificat auto-signé et utilisez-le pour configurer le protocole LDAP sécurisé.
 * Un certificat auto-signé que vous créez vous-même.
-    * Cette approche est adaptée à des fins de test et c’est ce que montre ce tutoriel.
+  * Cette approche est adaptée à des fins de test et c’est ce que montre ce tutoriel.
 
 Le certificat que vous demandez ou que vous créez doit répondre aux exigences suivantes. Votre domaine managé rencontre des problèmes si vous activez le protocole LDAP sécurisé avec un certificat non valide :
 
 * **Émetteur approuvé** : le certificat doit être émis par une autorité approuvée par les ordinateurs qui se connectent au domaine managé à l’aide du protocole LDAP sécurisé. Cette autorité peut être une autorité de certification publique ou une autorité de certification d’entreprise approuvée par ces ordinateurs.
 * **Durée de vie** : le certificat doit être valide pour les 3 à 6 mois à venir. L’accès du protocole LDAP sécurisé à votre domaine géré est interrompu lorsque le certificat expire.
 * **Nom du sujet** : le nom du sujet du certificat doit correspondre à votre domaine managé. Par exemple, si le nom de votre domaine est *aaddscontoso.com*, le nom du sujet du certificat doit être * *.aaddscontoso.com*.
-    * Le nom DNS ou le nom alternatif du sujet du certificat doit être un certificat générique pour garantir le bon fonctionnement du protocole LDAP sécurisé avec Azure AD Domain Services. Les contrôleurs de domaine utilisent des noms aléatoires, et peuvent être supprimés ou ajoutés pour garantir que le service reste disponible.
+  * Le nom DNS ou le nom alternatif du sujet du certificat doit être un certificat générique pour garantir le bon fonctionnement du protocole LDAP sécurisé avec Azure AD Domain Services. Les contrôleurs de domaine utilisent des noms aléatoires, et peuvent être supprimés ou ajoutés pour garantir que le service reste disponible.
 * **Utilisation de la clé** : Le certificat doit être configuré pour les *signatures numériques* et le *chiffrage des clés*.
 * **Rôle du certificat** : le certificat doit être valide pour l’authentification de serveur TLS.
 
@@ -108,12 +108,12 @@ Thumbprint                                Subject
 Pour utiliser le protocole LDAP sécurisé, le trafic réseau est chiffré avec une infrastructure à clé publique (PKI).
 
 * Une clé **privée** est appliquée au domaine managé.
-    * Cette clé privée est utilisée pour *déchiffrer* le trafic LDAP sécurisé. La clé privée doit être appliquée seulement au domaine managé, et ne doit pas être distribuée à grande échelle sur des ordinateurs clients.
-    * Un certificat qui inclut la clé privée utilise le format de fichier *.PFX*.
-    * Au moment de l’exportation du certificat, vous devez spécifier l’algorithme de chiffrement *TripleDES-SHA1*. Cela s’applique uniquement au fichier .pfx et n’a aucun impact sur l’algorithme utilisé par le certificat lui-même. Notez que l’option *TripleDES-SHA1* est disponible uniquement à partir de Windows Server 2016.
+  * Cette clé privée est utilisée pour *déchiffrer* le trafic LDAP sécurisé. La clé privée doit être appliquée seulement au domaine managé, et ne doit pas être distribuée à grande échelle sur des ordinateurs clients.
+  * Un certificat qui inclut la clé privée utilise le format de fichier *.PFX*.
+  * Au moment de l’exportation du certificat, vous devez spécifier l’algorithme de chiffrement *TripleDES-SHA1*. Cela s’applique uniquement au fichier .pfx et n’a aucun impact sur l’algorithme utilisé par le certificat lui-même. Notez que l’option *TripleDES-SHA1* est disponible uniquement à partir de Windows Server 2016.
 * Une clé **publique** est appliquée aux ordinateurs clients.
-    * Cette clé publique est utilisée pour *chiffrer* le trafic LDAP sécurisé. La clé publique peut être distribuée aux ordinateurs clients.
-    * Les certificats sans clé privée utilisent le format de fichier *.CER*.
+  * Cette clé publique est utilisée pour *chiffrer* le trafic LDAP sécurisé. La clé publique peut être distribuée aux ordinateurs clients.
+  * Les certificats sans clé privée utilisent le format de fichier *.CER*.
 
 Ces deux clés, les clés *privées* et *publiques*, permettent de garantir que seuls les ordinateurs appropriés peuvent communiquer entre eux. Si vous utilisez une autorité de certification publique ou une autorité de certification d’entreprise, vous recevez un certificat qui inclut la clé privée et qui peut être appliqué à un domaine managé. La clé publique doit déjà être connue et approuvée par les ordinateurs clients.
 
@@ -222,7 +222,7 @@ Voici quelques raisons d’échec courantes : le nom de domaine est incorrect, 
 
 1. Créez un certificat LDAP sécurisé de remplacement en suivant les étapes de [création d’un certificat pour le protocole LDAP sécurisé](#create-a-certificate-for-secure-ldap).
 1. Pour appliquer le certificat de remplacement à Azure AD DS, dans le menu de gauche d’Azure AD DS dans le portail Azure, sélectionnez **LDAP sécurisé**, puis **Modifier le certificat**.
-1. Distribuez le certificat à tous les clients qui se connectent à l’aide du protocole LDAP sécurisé. 
+1. Distribuez le certificat à tous les clients qui se connectent à l’aide du protocole LDAP sécurisé.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Verrouiller l’accès LDAP sécurisé via Internet
 
@@ -243,7 +243,7 @@ Créons une règle pour autoriser l’accès LDAP sécurisé entrant sur le port
     | Destination                       | Quelconque          |
     | Plages de ports de destination           | 636          |
     | Protocol                          | TCP          |
-    | Action                            | Autoriser        |
+    | Action                            | Allow        |
     | Priority                          | 401          |
     | Nom                              | AllowLDAPS   |
 
@@ -304,14 +304,14 @@ Si vous avez ajouté une entrée DNS au fichier hosts local de votre ordinateur 
 
 ## <a name="troubleshooting"></a>Dépannage
 
-Si vous voyez une erreur indiquant que LDAP.exe ne peut pas se connecter, essayez d’examiner les différentes phases de l’établissement de la connexion : 
+Si vous voyez une erreur indiquant que LDAP.exe ne peut pas se connecter, essayez d’examiner les différentes phases de l’établissement de la connexion :
 
 1. Configuration du contrôleur de domaine
 1. Configuration du client
 1. Réseau
 1. Établissement de la session TLS
 
-Pour le nom d’objet du certificat, le contrôleur de domaine utilise le nom de domaine Azure ADDS (et non le nom de domaine Azure AD) pour rechercher le certificat dans son magasin de certificats. Les fautes d’orthographe, par exemple, empêchent le contrôleur de domaine de sélectionner le bon certificat. 
+Pour que le nom d’objet du certificat corresponde, le contrôleur de domaine utilise le nom de domaine Azure AD DS (et non le nom de domaine Azure AD) pour rechercher le certificat dans son magasin de certificats. Les fautes d’orthographe, par exemple, empêchent le contrôleur de domaine de sélectionner le bon certificat.
 
 Le client tente d’établir la connexion TLS en utilisant le nom que vous avez fourni. Le trafic doit aller jusqu’au bout. Le contrôleur de domaine envoie la clé publique du cert d’authentification serveur. Le cert doit avoir l’utilisation appropriée dans le certificat, le nom signé dans le nom d’objet doit être compatible pour que le client sache que le serveur est le nom DNS auquel vous vous connectez (autrement dit, un caractère générique fonctionne sans faute d’orthographe) et le client doit faire confiance à l’émetteur. Vous pouvez rechercher les problèmes dans cette chaîne dans le journal système de l’observateur d’événements et filtrer les événements où la source est égale à Schannel. Une fois ces éléments en place, ils forment une clé de session.  
 

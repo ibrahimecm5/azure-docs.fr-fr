@@ -16,19 +16,22 @@ ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8300499b722b88b8c8007d8f7e44ed3d5ccc7833
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d8a36c1837273fc3fa173994e2ec3b3465ed4cb6
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459289"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520253"
 ---
 # <a name="management-capabilities-for-privileged-access-groups-preview"></a>Fonctionnalités de gestion pour les groupes d’accès privilégié (préversion)
 
 Dans Privileged Identity Management (PIM), vous pouvez désormais attribuer l’éligibilité à l’appartenance ou à la propriété de groupes d’accès privilégié. À partir de cette préversion, vous pouvez attribuer des rôles intégrés Azure AD (Azure Active Directory) à des groupes cloud et utiliser PIM pour gérer l’éligibilité à l’appartenance ou à la propriété des groupes et les activer. Pour plus d’informations sur les groupes avec attribution de rôle dans Azure AD, consultez [Utiliser des groupes Azure AD pour gérer les attributions de rôles](../roles/groups-concept.md).
 
 >[!Important]
-> Pour affecter un groupe d’accès privilégié à un rôle pour un accès administratif à Exchange, Security and Compliance Center ou SharePoint, utilisez l’expérience **Rôles et administrateurs** du portail Azure AD, et non l’expérience Groupes d’accès privilégié, afin de rendre l’utilisateur ou le groupe éligible à l’activation dans le groupe.
+> Pour attribuer un groupe d’accès privilégié à un rôle afin d’obtenir un accès administratif à Exchange, au Centre de sécurité et de conformité ou à SharePoint, utilisez l’expérience **Rôles et administrateurs** du portail Azure AD, et non l’expérience Groupes d’accès privilégié pour que l’utilisateur ou le groupe puisse être activé dans le groupe.
+
+> [!NOTE]
+> Pour les groupes d’accès privilégiés qui sont utilisés pour obtenir des rôles Azure AD, nous recommandons de demander un processus d’approbation pour les attributions de membres éligibles. Les attributions qui sont activables sans approbation peuvent créer un risque de sécurité pour les administrateurs qui ont un niveau d’autorisations inférieur. Par exemple, l’administrateur du support technique a l’autorisation de réinitialiser le mot de passe d’un utilisateur éligible.
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Imposer des stratégies différentes à chaque groupe avec attribution de rôle
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
-ms.openlocfilehash: 45e8fbf01727f803aa640c5d55bcb9df76e765ac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5dcfb70d5c0e078c30b0c2fcfa59495776b1b40e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763175"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132307866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Anyone Home CRM
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Anyone Home CRM prend en charge l’authentification unique lancée par le **fournisseur d’identité**
-* Après avoir configuré Anyone Home CRM, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Anyone Home CRM, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-anyone-home-crm-from-the-gallery"></a>Ajout d’Anyone Home CRM à partir de la galerie
 
@@ -144,6 +144,6 @@ Quand vous cliquez sur la vignette Anyone Home CRM dans le volet d’accès, vou
 
 - [Essayer Anyone Home CRM avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Anyone Home CRM avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

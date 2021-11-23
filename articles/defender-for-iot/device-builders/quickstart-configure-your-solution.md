@@ -1,16 +1,16 @@
 ---
 title: 'Démarrage rapide : Ajouter des ressources Azure à votre solution IoT'
-description: Dans ce guide de démarrage rapide, vous allez découvrir comment configurer votre solution IoT de bout en bout avec Azure Defender pour IoT.
+description: Dans ce guide de démarrage rapide, vous allez découvrir comment configurer votre solution IoT de bout en bout avec Microsoft Defender pour IoT.
 ms.topic: quickstart
-ms.date: 09/13/2021
-ms.openlocfilehash: e66accdc1ba671941c13433eeca9b3e9c541781b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/09/2021
+ms.openlocfilehash: 2ac4a91870f9a8ed0a0df2d9b4f8e904806eb482
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634821"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283901"
 ---
-# <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Démarrage rapide : Configurer votre solution Azure Defender pour IoT
+# <a name="quickstart-configure-your-microsoft-defender-for-iot-solution"></a>Démarrage rapide : Configurer votre solution Microsoft Defender pour IoT
 
 Cet article explique comment configurer votre solution de sécurité IoT à l’aide de Defender pour IoT pour la première fois.
 
@@ -30,7 +30,7 @@ Vous pouvez également sélectionner d’autres groupes de ressources Azure qui 
 
 Vos sélections vous permettent d’ajouter des abonnements, groupes de ressources ou ressources uniques dans leur intégralité.
 
-Une fois définies toutes les relations de ressources, Defender pour IoT utilise Defender afin de fournir des alertes et des recommandations de sécurité pour ces ressources.
+Une fois définies toutes les relations de ressources, Defender pour IoT utilise Defender pour le cloud afin de fournir des alertes et des recommandations de sécurité pour ces ressources.
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>Ajouter des ressources Azure à votre solution IoT
 

@@ -10,12 +10,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f43d48d4ce0f66fbd1663d58eb92728532833783
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 527bcb71f622cfecba778a496df68476c8d6be3b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563375"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132342639"
 ---
 # <a name="what-is-azure-synapse-data-explorer-preview"></a>Qu’est-ce que l’explorateur de données Azure Synapse ? (Préversion)
 
@@ -72,7 +72,7 @@ Ces fonctionnalités d’indexation efficaces permettent à l’explorateur de d
 
 ### <a name="kusto-query-language"></a>Langage de requête Kusto
 
-Le langage KQL dispose d’une communauté importante et en pleine expansion grâce à l’adoption rapide d’Azure Monitor Log Analytics et d’Application Insights, d’Azure Sentinel, d’Azure Data Explorer et d’autres offres de Microsoft. Le langage est bien conçu avec une syntaxe facile à lire, et permet une transition sans heurt des requêtes de traitement de données simples aux requêtes complexes. Cela permet à l’explorateur de données de fournir une prise en charge riche d’Intellisense et un vaste éventail de fonctionnalités de construction de langage et autres fonctionnalités intégrées pour les agrégations, les séries chronologiques et l’analytique utilisateur, qui ne sont pas disponibles dans SQL pour une exploration rapide des données de télémétrie.
+Le langage KQL dispose d’une communauté importante et en pleine expansion grâce à l’adoption rapide d’Azure Monitor Log Analytics et d’Application Insights, de Microsoft Sentinel, d’Azure Data Explorer et d’autres offres de Microsoft. Le langage est bien conçu avec une syntaxe facile à lire, et permet une transition sans heurt des requêtes de traitement de données simples aux requêtes complexes. Cela permet à l’explorateur de données de fournir une prise en charge riche d’Intellisense et un vaste éventail de fonctionnalités de construction de langage et autres fonctionnalités intégrées pour les agrégations, les séries chronologiques et l’analytique utilisateur, qui ne sont pas disponibles dans SQL pour une exploration rapide des données de télémétrie.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

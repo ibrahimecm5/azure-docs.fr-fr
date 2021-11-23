@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 83d8d6498a5ec4906f7cdd7187ae88e4a2f45126
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 07168ec69046973d4e02c2dc40b3b5e256ea26b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318024"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492110"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Tutoriel : Créer des applications Apache Spark avec VSCode à l’aide d’un espace de travail Synapse
 
@@ -192,6 +192,29 @@ for (word, count) in sortedCollection:
 >2. Basculer vers le noyau Synapse Pyspark. La désactivation de la configuration automatique dans le portail Azure est encouragée. Dans le cas contraire, la relance du cluster et la définition du noyau de Synapse peuvent prendre un certain temps lors de la première utilisation. 
 >
 >    ![paramètres automatiques](./media/vscode-tool-synapse/auto-settings.png)
+
+## <a name="spark-session-config"></a>Configuration de session Spark
+
+Vous pouvez spécifier le délai d’expiration, le nombre et la taille des exécuteurs à transmettre à la session Spark en cours dans **Configurer la session**. Redémarrez la session Spark pour que les modifications apportées à la configuration prennent effet. Toutes les variables du bloc-notes mises en cache sont effacées.
+
+```python
+%%configure -f
+{
+    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
+    "driverMemory":"2g",
+    "driverCores":3,
+    "executorMemory":"2g",
+    "executorCores":2,
+    "jars":[],
+    "conf":{
+        "spark.driver.maxResultSize":"10g"
+    }
+}
+```
+
+> [!NOTE]
+>
+> La fonction d’affichage et Spark SQL peuvent ne pas être rendus correctement dans la cellule de sortie. 
 
 ## <a name="submit-pyspark-batch-job-to-spark-pool"></a>Envoyer le travail de traitement par lots PySpark vers le pool Spark
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 4c5f2be821e43eda1ae611f3300538c7c41d04f4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c6fe1e801578a63df373d67eaa2e81c7e98169ce
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707673"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552809"
 ---
 # <a name="what-is-azure-sql-database"></a>Qu’est-ce qu’Azure SQL Database ?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,11 +30,13 @@ Azure SQL Database repose sur la dernière version stable du [moteur de base de 
 
 SQL Database vous permet de définir et de mettre à l'échelle facilement les performances dans deux modèles d’achat différents : un [modèle d’achat vCore](service-tiers-vcore.md) et un [modèle d’achat DTU](service-tiers-dtu.md). SQL Database est un service complètement managé qui intègre une haute disponibilité, des sauvegardes et d’autres opérations de maintenance courantes. Microsoft gère toutes les applications de correctifs et mises à jour du code SQL et du code du système d’exploitation. Vous n’avez pas à vous soucier de la gestion de l’infrastructure sous-jacente.
 
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
+
 Si vous ne connaissez pas Azure SQL Database, regardez la vidéo *Vue d’ensemble d’Azure SQL Database*, qui fait partie de notre [série de vidéos Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) :
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
-> [!TIP]
-> Comment pouvons-nous améliorer Azure SQL ? [Répondez à l’enquête](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456).
+
 
 ## <a name="deployment-models"></a>Modèles de déploiement
 
@@ -168,7 +170,7 @@ SQL Database fournit toute une gamme de [fonctionnalités intégrées de sécuri
 
 ### <a name="advance-threat-protection"></a>Protection avancée contre les menaces
 
-Azure Defender pour SQL est un package unifié de fonctionnalités de sécurité SQL avancées. Il inclut des fonctions permettant de gérer les vulnérabilités de votre base de données et de détecter les activités anormales pouvant indiquer une menace ciblant votre base de données. Il vous permet d’activer et de gérer ces fonctionnalités à partir d’un seul et même emplacement.
+Microsoft Defender pour SQL est un package unifié de fonctionnalités de sécurité SQL avancées. Il inclut des fonctions permettant de gérer les vulnérabilités de votre base de données et de détecter les activités anormales pouvant indiquer une menace ciblant votre base de données. Il vous permet d’activer et de gérer ces fonctionnalités à partir d’un seul et même emplacement.
 
 - [Évaluation des vulnérabilités](sql-vulnerability-assessment.md) :
 

@@ -1,16 +1,16 @@
 ---
-title: 'Démarrage rapide : Créer un jumeau de module pour le micro-agent Defender pour IoT (préversion)'
+title: 'Démarrage rapide : Créer un jumeau de module pour le micro-agent Defender pour le cloud pour IoT (préversion)'
 description: Suivez ce guide de démarrage rapide afin d'apprendre à créer des jumeaux de module DefenderIotMicroAgent individuels pour les nouveaux appareils.
-ms.date: 05/10/2021
+ms.date: 11/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: cd4ee34d863fdadbf3eebfe5d62854481539f413
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 35480236f6a1fc7457e5af5e8a64e2967d8eaa3e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011167"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331525"
 ---
-# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>Démarrage rapide : Créer un jumeau de module pour le micro-agent Defender pour IoT (préversion)
+# <a name="quickstart-create-a-defender-for-cloud-iot-micro-agent-module-twin-preview"></a>Démarrage rapide : Créer un jumeau de module pour le micro-agent Defender pour le cloud pour IoT (préversion)
 
 Vous pouvez créer des jumeaux de module  **DefenderIotMicroAgent** individuels pour les nouveaux appareils. Vous pouvez également créer des jumeaux de module par lot pour tous les appareils d’un hub IoT. 
 

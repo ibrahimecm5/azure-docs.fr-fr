@@ -1,27 +1,27 @@
 ---
-title: Intégrer Fortinet à Azure Defender pour IoT
-description: Dans ce tutoriel, vous allez découvrir comment intégrer Azure Defender pour IoT à Fortinet.
+title: Intégrer Fortinet à Microsoft Defender pour IoT
+description: Dans ce tutoriel, vous allez découvrir comment intégrer Microsoft Defender pour IoT à Fortinet.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/25/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 81bbedf86c3559b8f668dcfcf26cb0d9dab21af0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0556cab649a87b7c0309671acc60d9756a3d03c6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131070904"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283654"
 ---
-# <a name="tutorial-integrate-fortinet-with-azure-defender-for-iot"></a>Tutoriel : Intégrer Fortinet à Azure Defender pour IoT
+# <a name="tutorial-integrate-fortinet-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer Fortinet à Microsoft Defender pour IoT
 
-Ce tutoriel va vous aider à découvrir comment intégrer Fortinet à Azure Defender pour IoT et comment l’utiliser.
+Ce tutoriel va vous aider à découvrir comment intégrer Fortinet à Microsoft Defender pour IoT et comment l’utiliser.
 
-Azure Defender pour IoT atténue le risque IIoT, ICS et SCADA avec des moteurs d’auto-apprentissage prenant en charge ICS, qui fournissent des insights immédiats sur les appareils, les vulnérabilités et les menaces ICS.  Defender pour IoT réalise cela sans s’appuyer sur des agents, des règles, des signatures, des compétences spécialisées ou une connaissance préalable de l’environnement.
+Microsoft Defender pour IoT atténue le risque IIoT, ICS et SCADA avec des moteurs d’auto-apprentissage prenant en charge ICS, qui fournissent des insights immédiats sur les appareils, les vulnérabilités et les menaces ICS.  Defender pour IoT réalise cela sans s’appuyer sur des agents, des règles, des signatures, des compétences spécialisées ou une connaissance préalable de l’environnement.
 
 Defender pour IoT et Fortinet ont établi un partenariat technologique qui détecte et arrête les attaques sur les réseaux IoT et ICS.
 
-Fortinet et Azure Defender pour IoT empêchent les éléments suivants :
+Fortinet et Microsoft Defender pour IoT empêchent les éléments suivants :
 
 - Changements non autorisés apportés aux contrôleurs logiques programmables (PLC).
 
@@ -58,7 +58,7 @@ Il n’existe aucun prérequis pour ce tutoriel.
 
 ## <a name="create-an-api-key-in-fortinet"></a>Créer une clé API dans Fortinet
 
-Une clé d’interface de programmation d’applications (API) est un code généré de manière unique qui permet à une API d’identifier l’application ou l’utilisateur qui demande l’accès à celle-ci. Une clé API est nécessaire pour qu’Azure Defender pour IoT et Fortinet communiquent correctement.
+Une clé d’interface de programmation d’applications (API) est un code généré de manière unique qui permet à une API d’identifier l’application ou l’utilisateur qui demande l’accès à celle-ci. Une clé API est nécessaire pour que Microsoft Defender pour IoT et Fortinet communiquent correctement.
 
 **Pour créer une clé API dans Fortinet** :
 
@@ -105,7 +105,7 @@ Le pare-feu FortiGate peut être utilisé pour bloquer le trafic suspect.
 
 **Pour définir une règle de transfert afin de bloquer les alertes liées aux programmes malveillants** :
 
-1. Connectez-vous à la console de gestion Azure Defender pour IoT.
+1. Connectez-vous à la console de gestion Microsoft Defender pour IoT.
 
 1. Dans le volet de gauche, sélectionnez **Forwarding** (Transfert).
 
@@ -157,7 +157,7 @@ La source des alertes suspectes peut être bloquée afin d’éviter d’autres 
 
 ## <a name="send-defender-for-iot-alerts-to-fortisiem"></a>Envoyer les alertes Defender pour IoT à FortiSIEM
 
-Les alertes Defenders pour IoT fournissent des informations sur un large éventail d’événements de sécurité, notamment :
+Les alertes Defender pour IoT fournissent des informations sur un large éventail d’événements de sécurité, notamment :
 
 - Écarts par rapport à l’activité réseau de ligne de base acquise
 

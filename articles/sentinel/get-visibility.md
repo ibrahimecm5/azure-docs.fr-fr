@@ -1,45 +1,45 @@
 ---
 title: Visualiser les données collectées
-description: Apprenez rapidement à afficher et superviser ce qui se passe dans votre environnement à l’aide d’Azure Sentinel.
+description: Apprenez rapidement à afficher et superviser ce qui se passe dans votre environnement à l’aide de Microsoft Sentinel.
 services: sentinel
 author: yelevin
 manager: rkarlin
-ms.service: azure-sentinel
-ms.subservice: azure-sentinel
+ms.service: microsoft-sentinel
+ms.subservice: microsoft-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit, ignite-fall-2021
-ms.date: 09/16/2020
+ms.date: 11/09/2021
 ms.author: yelevin
-ms.openlocfilehash: fb01d57a7801b940ba9de2e8c939743070c57eaa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 45128b80c6404a44c475d0d329fe65ab0e760375
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004090"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132517764"
 ---
 # <a name="visualize-collected-data"></a>Visualiser les données collectées
 
 [!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Dans cet article, vous allez apprendre à être rapidement capable d’afficher et de superviser ce qui se passe dans votre environnement à l’aide d’Azure Sentinel. Une fois que vous avez connecté vos sources de données à Azure Sentinel, vous obtenez une visualisation et une analyse instantanées de ces données pour savoir ce qui se passe sur toutes vos sources de données connectées. Sentinel Azure vous propose des classeurs qui vous donnent accès à toute la puissance des outils déjà disponibles dans Azure, ainsi que des tables et des graphiques intégrés pour vous fournir l’analytique pour vos journaux et requêtes. Vous pouvez utiliser les classeurs intégrés ou en créer de nouveaux facilement, soit de toutes pièces ou soit en les basant sur un classeur existant. 
+Dans cet article, vous allez apprendre à être rapidement capable d’afficher et de superviser ce qui se passe dans votre environnement à l’aide de Microsoft Sentinel. Une fois que vous avez connecté vos sources de données à Microsoft Sentinel, vous obtenez une visualisation et une analyse instantanées de ces données pour savoir ce qui se passe sur toutes vos sources de données connectées. Microsoft Sentinel vous propose des classeurs qui vous donnent accès à toute la puissance des outils déjà disponibles dans Azure, ainsi que des tables et des graphiques intégrés pour vous fournir l’analytique pour vos journaux et requêtes. Vous pouvez utiliser les classeurs intégrés ou en créer de nouveaux facilement, soit de toutes pièces ou soit en les basant sur un classeur existant. 
 
 ## <a name="get-visualization"></a>Visualisation
 
-Pour visualiser et bénéficier d’une analyse de ce qui se passe dans votre environnement, examinons tout d’abord le tableau de bord général pour avoir une idée de la sécurité de votre organisation. Vous pouvez cliquer sur chaque élément de ces vignettes pour explorer les données brutes à partir desquelles elles ont été créées. Pour vous aider à réduire le niveau de bruit et à réduire le nombre d’alertes que vous devez examiner, Azure Sentinel utilise une technique de fusion pour mettre en corrélation les alertes et les incidents. Les **incidents** sont des groupes d’alertes liées qui, prises ensemble, constituent un incident actionnable que vous pouvez examiner et résoudre.
+Pour visualiser et bénéficier d’une analyse de ce qui se passe dans votre environnement, examinons tout d’abord le tableau de bord général pour avoir une idée de la sécurité de votre organisation. Vous pouvez cliquer sur chaque élément de ces vignettes pour explorer les données brutes à partir desquelles elles ont été créées. Pour vous aider à réduire le niveau de bruit et à réduire le nombre d’alertes que vous devez examiner, Microsoft Sentinel utilise une technique de fusion pour mettre en corrélation les alertes et les incidents. Les **incidents** sont des groupes d’alertes liées qui, prises ensemble, constituent un incident actionnable que vous pouvez examiner et résoudre.
 
-- Dans le portail Azure, sélectionnez Azure Sentinel, puis sélectionnez l’espace de travail que vous souhaitez surveiller.
+- Dans le portail Azure, sélectionnez Microsoft Sentinel, puis sélectionnez l’espace de travail que vous souhaitez surveiller.
 
-  ![Vue d’ensemble d’Azure Sentinel](./media/qs-get-visibility/overview.png)
+  ![Vue d’ensemble de Microsoft Sentinel](./media/qs-get-visibility/overview.png)
 
-- La barre d’outils en haut vous indique combien d’événements vous avez reçus pendant la période sélectionnée et compare cette information au 24 heures précédentes. La barre d’outils vous informe sur ces événements, sur les alertes qui ont été déclenchées (le petit nombre représente le changement au cours des dernières 24 heures) et elle vous indique ensuite pour ces événements combien sont ouverts, en cours et fermés. Vérifiez s’il n’y a pas d’augmentation ou de réduction importante dans le nombre d’événements. En cas de réduction importante, cela peut être dû au fait qu’une connexion a arrêté d’envoyer des informations à Azure Sentinel. En cas d’augmentation, un événement suspect peut s’être produit. Vérifiez si vous voyez de nouvelles alertes.
+- La barre d’outils en haut vous indique combien d’événements vous avez reçus pendant la période sélectionnée et compare cette information au 24 heures précédentes. La barre d’outils vous informe sur ces événements, sur les alertes qui ont été déclenchées (le petit nombre représente le changement au cours des dernières 24 heures) et elle vous indique ensuite pour ces événements combien sont ouverts, en cours et fermés. Vérifiez s’il n’y a pas d’augmentation ou de réduction importante dans le nombre d’événements. En cas de réduction importante, cela peut être dû au fait qu’une connexion a arrêté d’envoyer des informations à Microsoft Sentinel. En cas d’augmentation, un événement suspect peut s’être produit. Vérifiez si vous voyez de nouvelles alertes.
 
-   ![Compteurs Azure Sentinel](./media/qs-get-visibility/funnel.png)
+   ![Compteurs Microsoft Sentinel](./media/qs-get-visibility/funnel.png)
 
 Le corps de la page de vue d’ensemble donne un aperçu de l’état de la sécurité de votre espace de travail :
 
 - **Événements et alertes au fil du temps** : présente le nombre d’événements et le nombre d’alertes créés à partir de ces événements. Si vous voyez un pic inhabituel, vous devriez voir des alertes. Si vous voyez quelque chose d’inhabituel avec un pic d’événements mais que vous ne voyez pas d’alertes, cela peut indiquer un problème.
 
-- **Événements potentiellement malveillants** : lorsque du trafic est détecté venant de sources considérées comme malveillantes, Azure Sentinel vous alerte sur la carte. Si vous voyez de l’orange, il s’agit de trafic entrant : quelqu’un tente d’accéder à votre organisation depuis une adresse IP malveillante connue. Si vous voyez une activité sortante (en rouge), cela signifie que des données de votre réseau sont diffusées hors de votre organisation vers une adresse IP malveillante connue.
+- **Événements potentiellement malveillants** : Quand du trafic est détecté à partir de sources connues comme étant malveillantes, Microsoft Sentinel vous alerte sur la carte. Si vous voyez de l’orange, il s’agit de trafic entrant : quelqu’un tente d’accéder à votre organisation depuis une adresse IP malveillante connue. Si vous voyez une activité sortante (en rouge), cela signifie que des données de votre réseau sont diffusées hors de votre organisation vers une adresse IP malveillante connue.
 
    ![Carte de trafic malveillant](./media/qs-get-visibility/map.png)
 
@@ -55,7 +55,7 @@ Les classeurs intégrés fournissent des données intégrées provenant de vos s
 
 1. Sous **Paramètres**, sélectionnez **Classeurs**. Sous **Installés**, vous pouvez voir tous vos classeurs installés. Sous **Tous**, vous pouvez voir la galerie complète de classeurs intégrés qu’il est possible d’installer. 
 2. Recherchez un classeur spécifique pour afficher l’intégralité de la liste et la description de ce que chacun de ces classeurs propose. 
-3. En supposant que vous utilisiez Azure AD, pour être opérationnel avec Azure Sentinel, nous vous recommandons d’installer au moins les classeurs suivants :
+3. En supposant que vous utilisiez Azure AD, pour être opérationnel avec Microsoft Sentinel, nous vous recommandons d’installer au moins les classeurs suivants :
    - **Azure AD** : Utilisez une ou plusieurs des actions suivantes :
        - **connexions Azure AD** analyse les connexions pour détecter les anomalies. Ce classeur fournit les connexions ayant échoué à partir d’applications, d’appareils et d’emplacements afin que vous puissiez vérifier, en un clin d’œil, si quelque chose d’inhabituel se produit. Faites attention lorsque plusieurs connexions échouent. 
        - **Journaux d’audit Azure AD** analyse les activités d’administration, comme la modification des utilisateurs (ajout, suppression, etc.), la création de groupe et les modifications.  
@@ -71,7 +71,7 @@ Pour plus d’informations sur l’utilisation des requêtes, consultez [Tutorie
 
 ### <a name="add-a-new-tile"></a>Ajouter une nouvelle vignette
 
-Si vous souhaitez ajouter une nouvelle vignette, vous pouvez l’ajouter à un classeur existant, qu’il s’agisse d’un classeur que vous créez ou d’un classeur intégré d’Azure Sentinel. 
+Si vous souhaitez ajouter une nouvelle vignette, vous pouvez l’ajouter à un classeur existant, qu’il s’agisse d’un classeur que vous créez ou d’un classeur intégré de Microsoft Sentinel. 
 1. Dans Log Analytics, créez une vignette selon les instructions figurant dans [Tutoriel : Données visuelles dans Log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md). 
 2. Une fois la vignette créée, sous **Épingler**, sélectionnez le classeur dans lequel vous voulez que la vignette apparaisse.
 
@@ -113,18 +113,18 @@ Vous pouvez créer différents classeurs en fonction du rôle de la personne qui
 
 ## <a name="create-new-detections"></a>Créer de nouvelles détections
 
-Générez des détections sur les [sources de données que vous avez connectées à Azure Sentinel](connect-data-sources.md) afin d’investiguer les menaces qui pèsent sur votre organisation.
+Générez des détections sur les [sources de données que vous avez connectées à Microsoft Sentinel](connect-data-sources.md) afin d’investiguer les menaces qui pèsent sur votre organisation.
 
 Quand vous créez une détection, tirez parti des détections intégrées élaborées par les chercheurs en sécurité de Microsoft qui sont adaptées aux sources de données que vous avez connectées.
 
-Pour voir toutes les détections prêtes à l’emploi, accédez à **Analytique**, puis à **Modèles de règle**. Cet onglet contient toutes les règles intégrées Azure Sentinel.
+Pour voir toutes les détections prêtes à l’emploi, accédez à **Analytique**, puis à **Modèles de règle**. Cet onglet contient toutes les règles intégrées Microsoft Sentinel.
 
-   ![Utiliser des détections intégrées pour identifier les menaces avec Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
+   ![Utiliser des détections intégrées pour identifier les menaces avec Microsoft Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
 Pour plus d’informations sur l’obtention de détections prêtes à l’emploi, consultez [Obtenir des analyses intégrées](detect-threats-built-in.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
-Dans ce démarrage rapide, vous avez appris à prendre en main Azure Sentinel. Passez à l’article pour savoir [comment détecter les menaces](detect-threats-built-in.md).
+Dans ce démarrage rapide, vous avez appris à prendre en main Microsoft Sentinel. Passez à l’article pour savoir [comment détecter les menaces](detect-threats-built-in.md).
 
 > [!div class="nextstepaction"]
 > [Créez des règles de détection des menaces personnalisées](detect-threats-custom.md) pour automatiser vos réponses aux menaces.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 11/15/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 16eb16d14890ae581bf71ff3998d22055965c336
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f9e296ec4c1b99f6f2a8d23103c8b04fcd16a814
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082585"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132552657"
 ---
 ::: zone target="docs"
 
@@ -140,7 +140,7 @@ Si nécessaire, vous pouvez contacter le support de Quantium Solutions (en langu
 2. Pour demander la collecte, envoyez un e-mail au service client SingPost en utilisant le modèle suivant, avec le numéro de suivi (le numéro de suivi se trouve sur l’étiquette de retour fournie dans le package remis).
 
     ```
-    To: kadcustcare@singpost.com
+    To: g-corpsgcs@singpost.com
     Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
@@ -231,9 +231,11 @@ Si vous retournez l’appareil en Afrique du Sud, procédez comme suit.
 
 5. Si vous rencontrez des problèmes, envoyez un e-mail à l’adresse [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com), en détaillant le ou les problèmes et en indiquant le numéro de lettre de transport dans la ligne Objet. Vous pouvez également appeler le +27(0)119213902.
 
+---
+
 ### <a name="self-managed-shipping"></a>Expédition autogérée
 
-Si vous utilisez Data Box Disk au Japon, à Singapour, en Corée, au Royaume-Uni, en Europe de l’Ouest, en Australie, en Afrique du Sud, en Inde, au Brésil ou dans le cadre d’une offre US Government et que vous avez sélectionné l’option d’expédition autogérée pendant la création de la commande, suivez ces instructions.
+Si vous utilisez Data Box Disk au Japon, à Singapour, en Corée, au Royaume-Uni, en Europe de l’Ouest, en Australie, en Afrique du Sud, en Inde, au Brésil ou dans le cadre d’une offre US Government et que vous avez sélectionné l’option d’expédition autogérée pendant la création de la commande, suivez ces instructions. Pour obtenir des instructions détaillées, consultez [Utiliser l’expédition autogérée](data-box-disk-portal-customer-managed-shipping.md).
 
 1. Accédez au panneau **Vue d’ensemble** de votre commande dans le portail Azure. Parcourez les instructions qui s’affichent lorsque vous sélectionnez **Planifier l’enlèvement**. Un code d’autorisation doit apparaître. Il est utilisé au moment de la remise de la commande.
 

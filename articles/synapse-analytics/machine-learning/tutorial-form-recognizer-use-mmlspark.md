@@ -10,18 +10,18 @@ ms.date: 11/02/2021
 author: ruixinxu
 ms.author: ruxu
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: cb7e8cabf49b528b1174db004f3d22636a13fdfe
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9450ef956fc4d849e47fbf742f032359cffeea61
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029055"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312101"
 ---
 # <a name="tutorial-form-recognizer-with-applied-ai-service"></a>Didacticiel : Form Recognizer avec Applied AI Service
 
 [Azure Form Recognizer](../../applied-ai-services/form-recognizer/index.yml) est un service [Azure Applied AI Services](../../applied-ai-services/index.yml) qui vous permet de générer des applications de traitement de données automatisées à l’aide de la technologie du machine learning. Dans ce didacticiel, vous allez apprendre à enrichir facilement vos données dans Azure Synapse Analytics. Vous allez utiliser [Form Recognizer](../../applied-ai-services/form-recognizer/index.yml) pour analyser vos formulaires et documents, extraire le texte et les données et retourner une sortie JSON structurée. Vous pouvez rapidement obtenir des résultats justes et adaptés à votre contenu en particulier, sans avoir besoin d’une intervention manuelle excessive ou de compétences approfondies en science des données. 
 
-Ce didacticiel montre comment utiliser Form Recognizer avec [MMLSpark](https://github.com/Azure/mmlspark) pour :
+Ce tutoriel montre comment utiliser Form Recognizer avec [SynapseML](https://github.com/microsoft/SynapseML) pour :
 
 > [!div class="checklist"]
 > - Extraire du texte et des informations de disposition à partir d’un document donné
@@ -42,11 +42,11 @@ Si vous n’avez pas d’abonnement Azure, [créez un compte gratuit avant de co
 
 
 ## <a name="get-started"></a>Bien démarrer
-Ouvrez Synapse Studio et créez un nouveau notebook. Pour commencer, importez [MMLSpark](https://github.com/Azure/mmlspark). 
+Ouvrez Synapse Studio et créez un nouveau notebook. Pour commencer, importez [SynapseML](https://github.com/microsoft/SynapseML). 
 
 ```python
-import mmlspark
-from mmlspark.cognitive import *
+import synapse.ml
+from synapse.ml.cognitive import *
 ```
 
 ## <a name="configure-form-recognizer"></a>Configurer Form Recognizer 
@@ -203,4 +203,4 @@ Pour vous assurer que l’instance Spark est arrêtée, mettez fin aux sessions 
 
 * [Effectuer l’apprentissage d’un modèle Form Recognizer personnalisé](../../applied-ai-services/form-recognizer/label-tool.md)
 * [Consultez les exemples de notebooks Synapse](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
-* [Dépôt GitHub MMLSpark](https://github.com/Azure/mmlspark)
+* [Dépôt GitHub SynapseML](https://github.com/microsoft/SynapseML)

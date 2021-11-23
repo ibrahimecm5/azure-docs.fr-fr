@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: dcf09885dab6ba41d545e4105a86c99535786c62
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: edb86a4c264b291516b3cc52d3d5dbfa159ace32
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223136"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312169"
 ---
 # <a name="monitor-apache-spark-applications-with-azure-log-analytics"></a>Monitorer des applications Apache Spark avec Azure Log Analytics
 
@@ -52,7 +52,7 @@ spark.synapse.logAnalytics.secret <LOG_ANALYTICS_WORKSPACE_KEY>
 #### <a name="option-2-configure-with-azure-key-vault"></a>Option 2 : Configuration avec Azure Key Vault
 
 > [!NOTE]
-> Vous devez octroyer une autorisation de lecture des secrets aux utilisateurs qui soumettent des applications Apache Spark. Pour plus d’informations, consultez [Attribution de l’accès aux clés, certificats et secrets Key Vault avec un contrôle d’accès en fonction du rôle Azure](../../key-vault/general/rbac-guide.md).
+> Vous devez octroyer une autorisation de lecture des secrets aux utilisateurs qui soumettent des applications Apache Spark. Pour plus d’informations, consultez [Attribution de l’accès aux clés, certificats et secrets Key Vault avec un contrôle d’accès en fonction du rôle Azure](../../key-vault/general/rbac-guide.md). Quand vous activez cette fonctionnalité dans un pipeline Synapse, vous devez utiliser l’**option 3**. Celle-ci est nécessaire pour obtenir le secret auprès d’Azure Key Vault avec l’identité managée de l’espace de travail.
 
 Pour configurer Azure Key Vault de façon à stocker la clé de l’espace de travail, procédez comme suit :
 
@@ -82,7 +82,7 @@ spark.synapse.logAnalytics.keyVault.key.secret <AZURE_KEY_VAULT_SECRET_KEY_NAME>
 #### <a name="option-3-configure-with-a-linked-service"></a>Option 3. Configuration avec un service lié
 
 > [!NOTE]
-> Vous devez octroyer une autorisation de lecture des secrets aux utilisateurs qui soumettent des applications Apache Spark. Pour plus d’informations, consultez [Attribution de l’accès aux clés, certificats et secrets Key Vault avec un contrôle d’accès en fonction du rôle Azure](../../key-vault/general/rbac-guide.md).
+> Dans cette option, vous devez accorder l’autorisation de lecture du secret à l’identité managée de l’espace de travail. Pour plus d’informations, consultez [Attribution de l’accès aux clés, certificats et secrets Key Vault avec un contrôle d’accès en fonction du rôle Azure](../../key-vault/general/rbac-guide.md).
 
 Pour configurer un service lié Azure Key Vault dans Synapse Studio de façon à stocker la clé de l’espace de travail, procédez comme suit :
 

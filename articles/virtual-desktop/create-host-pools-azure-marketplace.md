@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cf379d2eb5c20c8f8922631d5a467e961ea8f800
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3b95302be3eda412f6941abe359f6da63e235d24
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130228465"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132492035"
 ---
 # <a name="tutorial-create-a-host-pool"></a>Tutoriel : créer un pool d’hôtes
 
@@ -219,7 +219,12 @@ Pour configurer votre machine virtuelle durant le processus de configuration du 
 
 12. Sous **compte d’administrateur de l’ordinateur virtuel**, entrez les informations d’identification du compte administrateur local à ajouter lors de la création de la machine virtuelle. Vous pouvez utiliser ce compte à des fins de gestion à la fois dans les machines virtuelles AD et Azure AD.
 
-13. Sélectionnez **Suivant : Espace de travail >** .
+13. Sous **Configuration personnalisée post-mise à jour**, vous pouvez entrer l’emplacement d’un modèle Azure Resource Manager pour effectuer des configurations personnalisées sur vos hôtes de session une fois que vous les avez créées. Vous devez entrer les URL du fichier de modèle Azure Resource Manager et du fichier de paramètres du modèle Azure Resource Manager. 
+
+      >[!NOTE]
+      >Azure Virtual Desktop ne prend pas en charge le provisionnement de ressources Azure dans le modèle.
+
+14. Sélectionnez **Suivant : Espace de travail >** .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

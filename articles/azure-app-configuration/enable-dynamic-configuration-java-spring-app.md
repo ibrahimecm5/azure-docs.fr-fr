@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 22214c6113d182363ccd86d9e79dac971eb0e432
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 34225576d435f9ff275f74372afa2cc9f7d50b9f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465813"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132287245"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Tutoriel : Utiliser la configuration dynamique dans une application Java Spring
 
@@ -75,7 +75,7 @@ Ensuite, ouvrez le fichier *pom.xml* dans un éditeur de texte, puis ajoutez une
 
     | Clé | Valeur |
     |---|---|
-    | sentinel | 1 |
+    | Sentinel | 1 |
 
     Laissez **Étiquette** et **Type de contenu** vides pour l’instant.
 
@@ -102,11 +102,11 @@ Ensuite, ouvrez le fichier *pom.xml* dans un éditeur de texte, puis ajoutez une
     |---|---|
     | /application/config.message | Hello – Mis à jour |
 
-1. Mettez à jour la clé Sentinel que vous avez créée précédemment avec une nouvelle valeur. Cette modification déclenche l’application afin d’actualiser toutes les clés de configuration une fois que l’intervalle d’actualisation est passé.
+1. Mettez à jour la clé Sentinel que vous avez créée précédemment avec une nouvelle valeur. Ce changement déclenche l’application pour actualiser toutes les clés de configuration une fois l’intervalle d’actualisation passé.
 
     | Clé | Valeur |
     |---|---|
-    | sentinel | 2 |
+    | Sentinel | 2 |
 
 1. Actualisez la page du navigateur pour afficher le nouveau message.
 

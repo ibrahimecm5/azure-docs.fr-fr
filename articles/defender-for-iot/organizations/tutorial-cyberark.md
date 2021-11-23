@@ -1,21 +1,21 @@
 ---
-title: Intégrer CyberArk à Azure Defender pour IoT
-description: Dans ce tutoriel, vous allez découvrir comment intégrer Azure Defender pour IoT à CyberArk.
+title: Intégrer CyberArk à Microsoft Defender pour IoT
+description: Dans ce tutoriel, vous allez découvrir comment intégrer Microsoft Defender pour IoT à CyberArk.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/30/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 3dc47696a820708f3118ff752cfabfce365a5153
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: cbfa178c2e5358503208773109fc53ab3c274be7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129369135"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278376"
 ---
-# <a name="tutorial-integrate-cyberark-with-azure-defender-for-iot"></a>Tutoriel : Intégrer CyberArk à Azure Defender pour IoT
+# <a name="tutorial-integrate-cyberark-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer CyberArk à Microsoft Defender pour IoT
 
-Ce tutoriel va vous permettre de découvrir comment intégrer CyberArk à Azure Defender pour IoT, et comment l’utiliser.
+Ce tutoriel va vous permettre de découvrir comment intégrer CyberArk à Microsoft Defender pour IoT et comment l’utiliser.
 
 Defender pour IoT fournit une plateforme de cybersécurité ICS et IoT prenant en charge des fonctionnalités de machine learning et d’analytique des menaces ICS.
 
@@ -96,7 +96,7 @@ Pour permettre l’intégration, le serveur Syslog doit être activé dans la co
 
 ## <a name="view-and-manage-detections"></a>Voir et gérer les détections
 
-L’intégration entre Azure Defender pour IoT et PSM de CyberArk est effectuée via les messages Syslog. Ces messages sont envoyés par la solution PSM à Defender pour IoT. Ils notifient Defender pour IoT en cas de session à distance ou d’échec de vérification.
+L’intégration entre Microsoft Defender pour IoT et PSM de CyberArk est effectuée via les messages Syslog. Ces messages sont envoyés par la solution PSM à Defender pour IoT. Ils notifient Defender pour IoT en cas de session à distance ou d’échec de vérification.
 
 Une fois que la plateforme Defender pour IoT reçoit ces messages de PSM, elle les met en corrélation avec les données visibles sur le réseau, ce qui lui permet de vérifier que les connexions d’accès à distance au réseau ont été générées par la solution PSM, et non par un utilisateur non autorisé.
 

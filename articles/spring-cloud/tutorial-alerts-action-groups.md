@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 75ca1779ca358d955f9cb7bdb4af5867347ca569
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 98ac612782eff1b304473b12f3c8883a684bff28
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015425"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491676"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutoriel : Superviser les ressources Spring Cloud avec des alertes et des groupes d’actions
 
@@ -111,7 +111,7 @@ Vous pouvez également créer une règle à l’aide de la page **Métriques** 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce tutoriel, vous avez appris à configurer des alertes et des groupes d’actions pour une application Azure Spring Cloud. Pour en savoir plus sur les groupes d’actions, consultez :
+Dans ce tutoriel, vous avez appris à configurer des alertes et des groupes d’actions pour une application dans Azure Spring Cloud. Pour en savoir plus sur les groupes d’actions, consultez :
 
 > [!div class="nextstepaction"]
 > [Créer et gérer des groupes d’actions dans le portail Azure](../azure-monitor/alerts/action-groups.md)

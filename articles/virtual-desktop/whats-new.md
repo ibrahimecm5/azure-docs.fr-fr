@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: a4d451233277b76106f3176a68d451bd0c5847ff
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 1781a566f84825971ac3728a360b52fcd1270e0a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131433020"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490228"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Nouveautés d’Azure Virtual Desktop
 
@@ -42,6 +42,12 @@ L’agent Azure Virtual Desktop est mis à jour au moins une fois par mois.
 
 Voici les modifications apportées à l’agent Azure Virtual Desktop :
 
+- Version 1.0.3719.1700 : Cette mise à jour a été publiée en novembre 2021 et présente les changements suivants :
+    - Mise à jour des messages d’erreur de l’agent.
+    - Corrige un problème de redémarrage de l’agent chaque fois que la pile côte à côte a été mise à jour.
+    - Améliorations générales de l’agent.
+- Version 1.0.3583.2600 : Cette mise à jour a été publiée en octobre 2021 et corrige un problème de mise à niveau de Windows 10 vers Windows 11 qui désactivait la pile côte à côte.
+- Version 1.0.3373.2605 : Cette mise à jour a été publiée en septembre 2021 et corrige un problème de blocage de la désinscription des packages lors de l’utilisation de l’attachement d’application MSIX.
 - Version 1.0.3373.2600 : cette mise à jour a été publiée en septembre 2021 et présente les changements suivants :
     - Améliorations générales de l’agent.
     - Résolution des problèmes liés au redémarrage de l’agent sur les machines virtuelles Windows 7.

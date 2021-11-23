@@ -5,12 +5,12 @@ description: Cette article offre une vue d’ensemble du service Azure Video Ana
 ms.topic: overview
 ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: a6fd02283bbd6304611dab1c6cfbc8a63e01139e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fddcb1cd3562fde14c38c68811b7272a7d710d2b
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658599"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487491"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>Qu’est-ce que Video Analyzer for Media ?
 
@@ -66,7 +66,8 @@ La liste suivante présente les insights que vous pouvez récupérer à partir d
 * **Déploiement de crédits** : Identifie le début et la fin des crédits à la fin des émissions de télévision et des films.
 * **Détection de personnages animés** (préversion) : Détection, regroupement et reconnaissance de personnages dans le contenu animé via l’intégration avec [Cognitive Services Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Pour plus d’informations, consultez [Détection de personnages animés](animated-characters-recognition.md).
 * **Détection du type de plan éditorial** : Marquage de plans en fonction de leur type (par exemple, plan large, plan moyen, gros plan, très gros plan, deux plans, plusieurs personnes, extérieur et intérieur, etc.). Pour plus d’informations, consultez [Détection du type de plan éditorial](scenes-shots-keyframes.md#editorial-shot-type-detection).
-* **Suivi des personnes observées** : Détecte les personnes dans les vidéos et fournit des informations telles que l’emplacement de la personne dans le cadre de la vidéo (à l’aide de zones englobantes) et l’horodatage exact (début, fin) ainsi que la confiance quand une personne apparaît. Pour plus d’informations, consultez [Suivre des personnes dans une vidéo](observed-people-tracing.md).
+* **Suivi des personnes observées** (préversion) : détecte les personnes observées dans les vidéos et fournit des informations comme la position de la personne dans le cadre de la vidéo (en utilisant des zones englobantes) et l’horodatage exact (début, fin) ainsi que le score de confiance quand une personne apparaît. Pour plus d’informations, consultez [Suivre des personnes dans une vidéo](observed-people-tracing.md).
+    * **Vêtements détectés sur les personnes** : détecte le type de vêtement des personnes apparaissant dans la vidéo et fournit des informations pour décrire, par exemple, s’il s’agit de manches longues ou courtes, de pantalons longs ou courts, et d’une jupe ou d’une robe. Les vêtements détectés sont associés aux personnes qui les portent, et l’horodatage exact (début, fin) ainsi qu’un niveau de confiance pour la détection sont fournis.
 
 ### <a name="audio-insights"></a>Insights audio
 

@@ -7,13 +7,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-java
 ms.author: vramasubbu
-ms.date: 10/12/2021
-ms.openlocfilehash: a1e4a03b5a9f2c173bb7a8a301fd20997b738005
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 11/12/2021
+ms.openlocfilehash: 967303cc675ebc6537630f08e6871f5b32cf6af4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003001"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488827"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-azure-cli"></a>Démarrage rapide : Provisionner Azure Spring Cloud avec Azure CLI
 
@@ -208,5 +208,5 @@ Dans ce guide de démarrage rapide, vous avez déployé une instance Azure Sprin
    - [Pet Clinic App with MySQL Integration](https://github.com/azure-samples/spring-petclinic-microservices) (microservices avec un backend mysql).
    - [Hello World simple](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI).
 - Utilisez des [domaines personnalisés](tutorial-custom-domain.md) avec Azure Spring Cloud.
-- Exposez des applications Azure Spring Cloud à Internet à l’aide d’[Azure Application Gateway](expose-apps-gateway-azure-firewall.md).
+- Exposez des applications dans Azure Spring Cloud à Internet à l’aide d’[Azure Application Gateway](expose-apps-gateway-azure-firewall.md).
 - Affichez l’[architecture de référence Azure Spring Cloud](reference-architecture.md) sécurisée de bout en bout, basée sur [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/).

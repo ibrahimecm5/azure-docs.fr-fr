@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-summarization, ignite-fall-2021
-ms.openlocfilehash: 62144ef2181a872327db3e30c0f81192f5a07ca4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 169772593542f502673194012112d56465ae224d
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131028899"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132518638"
 ---
 # <a name="what-is-text-summarization-preview-in-azure-cognitive-service-for-language"></a>Qu’est-ce que la synthèse de texte dans Azure cognitive service pour le langage (version préliminaire) ?
 
@@ -35,6 +35,6 @@ Un système IA comprend non seulement la technologie, mais aussi les personnes q
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Il existe deux façons de commencer à utiliser la fonctionnalité de liaison d’entités :
+Il existe deux façons de commencer à utiliser la fonctionnalité de synthèse de texte :
 * [Language Studio](../language-studio.md), qui est une plateforme basée sur le web qui vous permet d’essayer plusieurs fonctionnalités Azure Cognitive Service for Language sans avoir à écrire de code.
 * L’[article de démarrage rapide](quickstart.md) pour obtenir des instructions sur la création de requêtes au service à l’aide de l’API REST et du kit SDK de la bibliothèque de client.  

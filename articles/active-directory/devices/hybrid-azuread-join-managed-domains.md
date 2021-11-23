@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f83c7a9ac8a910a96a49c2ee354b68a18f4a774
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 0707969fe74714864eb3f92740c911847e21bd92
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131892150"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490191"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutoriel : Configurer la jointure hybride Azure Active Directory pour des domaines managés
 
@@ -128,6 +128,14 @@ Si certains de vos appareils joints à un domaine sont des appareils Windows de 
 - Configurer les paramètres d’intranet local pour l’inscription des appareils
 - Configurer l’authentification unique fluide
 - Installer des ordinateurs de bas niveau Workplace Join for Windows
+
+Les appareils de bas niveau Windows sont des appareils avec des systèmes d’exploitation plus anciens. Les appareils suivants sont des appareils de bas niveau Windows :
+
+- Windows 7
+- Windows 8.1
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
 
 > [!NOTE]
 > Le support pour Windows 7 a pris fin le 14 janvier 2020. Pour plus d’informations, consultez [Le support de Windows 7 a pris fin](https://support.microsoft.com/help/4057281/windows-7-support-ended-on-january-14-2020).

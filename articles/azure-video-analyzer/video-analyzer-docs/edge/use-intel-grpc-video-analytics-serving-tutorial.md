@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ebdbc116e106ab03a9b4ca7b2a56eb4ce19444f9
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0a3436dced8129aa984d30a0f2b4d6bcfecb5913
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554295"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484224"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutoriel : Analyser une vidéo en direct avec l’extension Intel OpenVINO™ DL Streamer – Edge AI 
 
@@ -36,7 +36,7 @@ Ce tutoriel utilise une machine virtuelle Azure comme appareil IoT Edge simulé
 
 Quand vous configurez les ressources Azure, une courte vidéo d’un parking est copiée dans Azure sur la machine virtuelle Linux que vous utilisez comme appareil IoT Edge. Ce tutoriel utilise le fichier vidéo pour simuler un stream en direct.
 
-Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/). Sélectionnez Ctrl+N, puis collez un lien vers [la vidéo](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) pour démarrer la lecture. Vous voyez la séquence vidéo des véhicules sur le parking, la plupart d’entre eux garés et l’un d’eux en déplacement.
+Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/). Sélectionnez Ctrl+N, puis collez un lien vers [la vidéo](https://avamedia.blob.core.windows.net/public/lots_015.mkv) pour démarrer la lecture. Vous voyez la séquence vidéo des véhicules sur le parking, la plupart d’entre eux garés et l’un d’eux en déplacement.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

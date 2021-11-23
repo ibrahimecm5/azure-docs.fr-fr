@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 62068470ef245634788a1b696bb74ca255b61a8c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67e4e9cb9c471d86c68be03f608c99c67812e0de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124747464"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132334793"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudsign"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à CloudSign
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * CloudSign prend en charge l’authentification unique lancée par le **fournisseur de services**
 
-* Après avoir configuré CloudSign, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré CloudSign, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-cloudsign-from-the-gallery"></a>Ajout de CloudSign à partir de la galerie
 
@@ -151,6 +151,6 @@ Quand vous cliquez sur la vignette CloudSign dans le volet d’accès, vous deve
 
 - [Essayer CloudSign avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger CloudSign avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

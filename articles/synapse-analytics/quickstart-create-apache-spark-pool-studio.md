@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14d604a5e15d7ca33cb9b73a41f867016599087d
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462028"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401520"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>Démarrage rapide : Créer un pool Apache Spark serverless avec Synapse Studio
 
@@ -71,7 +71,8 @@ Dans la vue d’ensemble de l’espace de travail, sélectionnez l’**URL web d
     | **Taille du nœud** | Petite (4 processeurs virtuels/32 Go) | Définissez ce paramètre sur la plus petite taille pour réduire les coûts de ce guide de démarrage rapide. |
     | **Autoscale** | Désactivé | Ce guide de démarrage rapide ne nécessite pas de mise à l’échelle automatique |
     | **Nombre de nœuds** | 8 | Utilisez une petite taille pour limiter les coûts de ce guide de démarrage rapide|
-       
+    | **Allouer dynamiquement des exécuteurs** |  Désactivé | Ce paramètre correspond à la propriété d’allocation dynamique dans la configuration Spark pour allouer des exécuteurs d’application Spark. Ce guide de démarrage rapide ne nécessite pas de mise à l’échelle automatique.|
+    
     ![Notions de base pour le nouveau pool Apache Spark pour Synapse Studio](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-24.png)
     
     > [!IMPORTANT]

@@ -1,29 +1,36 @@
 ---
 title: Que sont les connexions marquées d’un indicateur dans Azure Active Directory ?
 description: Présente une vue d’ensemble des connexions marquées d’un indicateur dans Azure Active Directory.
+services: active-directory
+documentationcenter: ''
 author: MarkusVi
 manager: karenhoran
+editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
+ms.devlang: na
 ms.topic: overview
+ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/27/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 518c13780cf7de9e31f3a22e7ecb0440aa0128bc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 056ed3df8e9658b00917680aa2ad291f3529d1c8
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456040"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484577"
 ---
 # <a name="what-are-flagged-sign-ins-in-azure-active-directory"></a>Que sont les connexions marquées d’un indicateur dans Azure Active Directory ?
 
 En tant qu’administrateur informatique, lorsqu’un utilisateur n’arrive pas à se connecter, vous voulez résoudre le problème dès que possible pour débloquer la situation. En raison de la quantité des données disponibles dans le journal des connexions, il peut être difficile de trouver les bonnes informations.
 
 Cet article vous donne une vue d’ensemble d’une fonctionnalité qui améliore considérablement le temps nécessaire pour résoudre les problèmes de connexion utilisateur en les rendant faciles à trouver.
+
+
 
 
 ## <a name="what-it-is"></a>Présentation
@@ -37,7 +44,9 @@ Les connexions marquées d’un indicateur donnent à l’utilisateur la possibi
 En résumé, vous pouvez utiliser des connexions avec indicateur pour :
 
 - **Permettre** aux utilisateurs d’indiquer les erreurs de connexion pour lesquelles ils ont besoin de l’aide de leurs administrateurs de locataires.
+
 - **Simplifier** le processus de localisation des erreurs de connexion qui doivent être résolues pour l’utilisateur.
+
 - **Permettre** au personnel du support technique de trouver les problèmes pour lesquels les utilisateurs souhaitent obtenir de l’aide de manière proactive, sans que les utilisateurs finaux n’aient à faire autre chose que de marquer l’événement.
 
 ## <a name="how-it-works"></a>Fonctionnement
@@ -68,20 +77,24 @@ Après l’activation du marquage, la même application du navigateur et le mêm
 
 ### <a name="admin-or-developer-find-flagged-events-using-ms-graph"></a>Administrateur ou développeur : Trouver les événements avec indicateur en utilisant MS Graph
 
-Vous pouvez trouver les connexions marquées d’un indicateur avec une requête filtrée à l’aide de l’API de rapports de connexions. Voici un exemple de requête :
+Vous pouvez trouver les connexions marquées d’un indicateur avec une requête filtrée à l’aide de l’API de rapports de connexions.
+
+Afficher toutes les connexions avec indicateur : `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true`
+
+Requête de connexions avec indicateur pour un utilisateur spécifique par UPN (par exemple : user@contoso.com) : `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and userPrincipalname eq 'user@contoso.com'`
+
+Requête de connexions avec indicateur pour un utilisateur spécifique et une date supérieure à : `https://graph.microsoft.com/beta/auditLogs/signIns?&$filter=flaggedforReview eq true and createdDateTime ge 2021-10-01 and userPrincipalname eq 'user@contoso.com'`
  
-`https://graph.microsoft.com/beta/auditlogs/signins?&$filter=(flaggedForReview eq true)`
-
-Pour plus d’informations sur l’utilisation de l’API Graph de connexions, consultez [Type de ressource signIn](/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true).
+Pour plus d’informations sur l’utilisation de l’API Graph de connexions, consultez [Type de ressource signIn](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-1.0&preserve-view=true).
 
 
 
  
-## <a name="who-can-create-it"></a>Qui peut les créer ?
+## <a name="who-can-create-flagged-sign-ins"></a>Qui peut créer des connexions marquées d’un indicateur ?
 
 Tout utilisateur qui se connecte à Azure AD via une page web peut utiliser des connexions avec indicateur pour révision. Les utilisateurs membres et invités peuvent marquer des erreurs de connexion pour révision. 
 
-## <a name="who-can-review-it"></a>Qui peut les réviser ?
+## <a name="who-can-review-flagged-sign-ins"></a>Qui peut examiner les connexions marquées d’un indicateur ?
 
 Pour examiner les événements de connexion avec indicateur, vous devez avoir des autorisations pour lire les événements des rapports de connexions dans le portail Azure AD. Pour plus d’informations, consultez [Qui peut y accéder ?](concept-sign-ins.md#who-can-access-it)
 

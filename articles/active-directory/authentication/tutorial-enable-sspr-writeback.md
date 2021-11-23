@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 08/25/2021
+ms.date: 11/11/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: a2b716d2b0187e90e71156f2259a380d6fde7db4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 87537ad4223aad23d9649fb7806d9158b02cb42d
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073256"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370193"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutoriel : Activer la réécriture de la réinitialisation du mot de passe en libre-service Azure Active Directory dans un environnement local
 
@@ -48,7 +48,7 @@ Pour effectuer ce tutoriel, vous avez besoin des ressources et des privilèges s
     * Si nécessaire, [suivez le tutoriel précédent pour activer la réinitialisation de mot de passe en libre-service Azure AD](tutorial-enable-sspr.md).
 * Un environnement AD DS local existant, configuré avec une version actuelle d’Azure AD Connect.
     * Si nécessaire, configurez Azure AD Connect en utilisant la configuration [Rapide](../hybrid/how-to-connect-install-express.md) ou [Personnalisée](../hybrid/how-to-connect-install-custom.md).
-    * Pour utiliser la réécriture du mot de passe, vos contrôleurs de domaine doivent exécuter Windows Server 2016 ou une version ultérieure.
+    * Pour utiliser la réécriture du mot de passe, les contrôleurs de domaine peuvent exécuter n’importe quelle version prise en charge de Windows Server.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Configurer les autorisations de compte pour Azure AD Connect
 

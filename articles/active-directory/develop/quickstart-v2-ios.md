@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: b9576d767e0c5d08d7163de9ded3a7807fb0ba80
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0ced17e1d994f8a21829bf4913a37deff8e68995
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611994"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312074"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Démarrage rapide : Connecter des utilisateurs et appeler l’API Microsoft Graph à partir d’une application iOS ou macOS
 
@@ -90,7 +90,8 @@ Ce guide de démarrage rapide s’applique aux applications iOS et macOS. Certai
 
 #### <a name="step-3-install-dependencies"></a>Étape 3 : Installer des dépendances
 
-Dans une fenêtre de terminal, accédez au dossier à l’aide de l’exemple de code téléchargé et exécutez `pod install` pour installer la bibliothèque MSAL la plus récente.
+1. Extrayez le fichier zip.
+2. Dans une fenêtre de terminal, accédez au dossier à l’aide de l’exemple de code téléchargé et exécutez `pod install` pour installer la bibliothèque MSAL la plus récente.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>Étape 4 : Votre application est configurée et prête à être exécutée
@@ -101,7 +102,7 @@ Dans une fenêtre de terminal, accédez au dossier à l’aide de l’exemple de
 > [!div renderon="docs"]
 > #### <a name="step-4-configure-your-project"></a>Étape 4 : Configurer votre projet
 > Si vous avez sélectionné l’option 1 ci-dessus, vous pouvez ignorer ces étapes.
-> 1. Extrayez le fichier zip et ouvrez le projet dans XCode.
+> 1. Ouvrez le projet dans Xcode.
 > 1. Modifiez **ViewController.swift** et remplacez la ligne commençant par « let kClientID » par l’extrait de code suivant. N’oubliez pas de mettre à jour la valeur de `kClientID` avec l’ID client que vous avez enregistré lors de l’inscription de votre application dans le portail, plus haut dans ce guide de démarrage rapide :
 >
 >    ```swift
@@ -122,9 +123,9 @@ Dans une fenêtre de terminal, accédez au dossier à l’aide de l’exemple de
 >    let kAuthority = "https://login.microsoftonline.de/common"
 >    ```
 
-> 1. Ouvrez les paramètres du projet. Dans la section **Identité**, entrez l’**Identificateur de bundle** que vous avez indiqué dans le portail.
-> 1. Cliquez avec le bouton droit sur **Info.plist** et sélectionnez **Ouvrir en tant que** > **Code source**.
-> 1. Sous le nœud racine du dictionnaire, remplacez `Enter_the_bundle_Id_Here` par l’***ID d’ensemble*** que vous avez utilisé dans le portail.
+> 3. Ouvrez les paramètres du projet. Dans la section **Identité**, entrez l’**Identificateur de bundle** que vous avez indiqué dans le portail.
+> 4. Cliquez avec le bouton droit sur **Info.plist** et sélectionnez **Ouvrir en tant que** > **Code source**.
+> 5. Sous le nœud racine du dictionnaire, remplacez `Enter_the_bundle_Id_Here` par l’***ID d’ensemble*** que vous avez utilisé dans le portail. Notez le préfixe `msauth.` dans la chaîne.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -138,7 +139,7 @@ Dans une fenêtre de terminal, accédez au dossier à l’aide de l’exemple de
 >    </array>
 >    ```
 
-> 1. Générez et exécutez l’application !
+> 6. Générez et exécutez l’application !
 
 ## <a name="more-information"></a>Informations complémentaires
 
@@ -164,7 +165,7 @@ end
 
 Exécutez la commande d’installation de CocoaPods :
 
-`podinstall`
+`pod install`
 
 ### <a name="initialize-msal"></a>Initialiser MSAL
 

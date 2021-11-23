@@ -3,12 +3,12 @@ title: Vue d’ensemble d’Azure Arc
 description: Découvrez ce qu’est le service Azure Arc et comment il permet aux clients d’activer la gestion et la gouvernance de leurs ressources hybrides avec d’autres services et fonctionnalités Azure.
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 7a900a7a0454f4dff5cdfe98f611982c33617c1d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 62395b53fea3f86e42726f1bb2d35b12d8a0bdca
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832355"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345735"
 ---
 # <a name="azure-arc-overview"></a>Vue d’ensemble d’Azure Arc
 
@@ -70,11 +70,11 @@ Les fonctionnalités suivantes du plan de contrôle Azure Arc sont proposées sa
 
 * Gestion des mises à jour.
 
-Tout service Azure utilisé sur des serveurs avec Azure Arc, comme Azure Security Center ou Azure Monitor, est facturé sur la base des tarifs de ce service. Pour plus d’informations, consultez la [page des tarifs Azure](https://azure.microsoft.com/pricing/).
+Tout service Azure utilisé sur des serveurs avec Azure Arc, comme Microsoft Defender pour le cloud ou Azure Monitor, est facturé sur la base des tarifs de ce service. Pour plus d’informations, consultez la [page des tarifs Azure](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes avec Azure Arc
 
-Tout service Azure utilisé sur Kubernetes avec Azure Arc, comme Azure Security Center ou Azure Monitor, est facturé sur la base des tarifs de ce service. Pour plus d’informations sur les tarifs des configurations Kubernetes avec Azure Arc, consultez la [page des tarifs Azure](https://azure.microsoft.com/pricing/).
+Tout service Azure utilisé sur Kubernetes avec Azure Arc, comme Microsoft Defender pour le cloud ou Azure Monitor, est facturé sur la base des tarifs de ce service. Pour plus d’informations sur les tarifs des configurations Kubernetes avec Azure Arc, consultez la [page des tarifs Azure](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-data-services"></a>Services de données avec Azure Arc
 

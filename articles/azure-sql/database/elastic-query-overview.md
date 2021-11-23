@@ -10,13 +10,13 @@ ms.topic: overview
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 12/05/2019
-ms.openlocfilehash: 21e6fec69b1ac02d1ffb37b0aa0f20f54d3c1a05
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/09/2021
+ms.openlocfilehash: fa127df408ce8da080e6e0543f92fbdb001b4547
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727105"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136904"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Vue d’ensemble de la requête élastique Azure SQL Database (préversion)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,9 +29,9 @@ La fonctionnalité de requête élastique, en préversion, vous permet d’exéc
 
 Interrogez plusieurs bases de données dans Azure SQL Database entièrement en T-SQL. Cela permet d’interroger en lecture seule les bases de données distantes et donne aux clients SQL Server actuels la possibilité de migrer des applications en utilisant des noms en trois et quatre parties ou un serveur lié vers SQL Database.
 
-### <a name="available-on-standard-tier"></a>Disponible au niveau standard
+### <a name="available-on-all-service-tiers"></a>Disponible sur tous les niveaux de service
 
-La fonctionnalité de requête élastique est prise en charge dans les niveaux de service Standard et Premium. Consultez la section relative aux limitations de la préversion ci-dessous pour connaître les limitations de performances pour les niveaux de service inférieurs.
+La requête élastique est prise en charge dans tous les niveaux de service d’Azure SQL Database. Consultez la section relative aux limitations de la préversion ci-dessous pour connaître les limitations de performances pour les niveaux de service inférieurs.
 
 ### <a name="push-parameters-to-remote-databases"></a>Distribuer les paramètres Push aux bases de données distantes
 
@@ -139,7 +139,7 @@ La requête élastique est incluse dans le coût d’Azure SQL Database. Notez q
 
 ## <a name="preview-limitations"></a>Limitations de la version préliminaire
 
-* L’exécution de votre première requête élastique peut prendre quelques minutes sur le niveau de service Standard. Ce délai est nécessaire au chargement de la fonctionnalité de requête flexible ; les performances de chargement s’améliorent avec les niveaux de service et les tailles de calcul supérieurs.
+* L’exécution de votre première requête élastique peut prendre quelques minutes sur les ressources plus petites, et les niveaux de service Standard et Usage général. Ce délai est nécessaire au chargement de la fonctionnalité de requête flexible ; les performances de chargement s’améliorent avec les niveaux de service et les tailles de calcul supérieurs.
 * La rédaction de script de sources de données externes ou de tables externes à partir de SSMS ou SSDT n’est pas encore prise en charge.
 * L’importation/exportation pour SQL Database ne prend pas encore en charge les tables et sources de données externes. Si vous devez utiliser importer/exporter, supprimez ces objets avant l’exportation, puis recréez-les après l’importation.
 * Une requête élastique prend actuellement en charge uniquement les accès en lecture seule à des tables externes. Vous pouvez toutefois utiliser des fonctionnalités T-SQL complètes sur la base de données dans laquelle la table externe est définie. Cela peut être utile, par exemple pour conserver les résultats temporaires à l’aide de SELECT <liste_colonnes> INTO <table_locale>, ou pour définir des procédures stockées dans la base de données de requêtes élastiques qui font référence à des tables externes.

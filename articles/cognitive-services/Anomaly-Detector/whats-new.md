@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: 07a47b432470b683680c315f2d1d741cc607774f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9bb87788a12a8ec58e3d9cc0035eeefa0b35656b
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214596"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134709"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Nouveautés du Détecteur d’anomalies
 
@@ -19,6 +19,9 @@ Découvrir les nouveautés du service. Ces éléments incluent des notes de publ
 Nous avons également ajouté des liens vers du contenu généré par les utilisateurs. Ces éléments sont marqués avec l’étiquette **[Contenu utilisateur]** . Certains sont hébergés sur des sites web qui sont externes à Microsoft, et Microsoft n’est pas responsable de leur contenu. Faites preuve de discernement lorsque vous faites référence à ces ressources. Contactez AnomalyDetector@microsoft.com ou créez un problème sur GitHub si vous souhaitez supprimer le contenu.
 
 ## <a name="release-notes"></a>Notes de publication
+
+### <a name="november-2021"></a>Novembre 2021
+* Le détecteur d’anomalies multivarié est disponible dans six régions supplémentaires : Émirats arabes unis Nord, France Centre, USA Centre Nord, Suisse Nord, Afrique du Sud Nord, Inde Ouest Jio. Désormais, 26 régions au total sont prises en charge.
 
 ### <a name="september-2021"></a>Septembre 2021
 * Détecteur d’anomalies (univarié) disponible dans Jio Inde Ouest.

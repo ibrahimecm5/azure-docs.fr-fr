@@ -11,14 +11,14 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 11/10/2021
 ms.author: rsetlem
-ms.openlocfilehash: d86b7b59e05aa923efd3e4d9228d8ac422fc863d
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2bcf10cf3d5e2036a14372d5dd0bacef7e396857
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219529"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132157111"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instances de cluster de basculement avec SQL Server sur des machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ SQL Server sur les machines virtuelles Azure offre différentes options en tant 
 |---------|---------|---------|---------|
 |**Version de système d’exploitation minimale**| Tous |Windows Server 2012|Windows Server 2016|
 |**Version minimale de SQL Server**|Tous|SQL Server 2012|SQL Server 2016|
-|**Disponibilité des machines virtuelles prises en charge** |Groupes à haute disponibilité avec groupes de placement de proximité (pour SSD Premium) </br> Même zone de disponibilité (pour SSD Ultra) |Groupes à haute disponibilité et zones de disponibilité|Groupes à haute disponibilité |
+|**Disponibilité des machines virtuelles prises en charge** |[SSD Premium LRS](../../../virtual-machines/disks-redundancy.md#locally-redundant-storage-for-managed-disks) : groupes à haute disponibilité avec ou sans [groupe de placement de proximité](../../../virtual-machines/windows/proximity-placement-groups-portal.md) </br> [SSD Premium ZRS](../../../virtual-machines/disks-redundancy.md#zone-redundant-storage-for-managed-disks) : zones de disponibilité</br> [Disques Ultra](../../../virtual-machines/disks-enable-ultra-ssd.md) : même zone de disponibilité|Groupes à haute disponibilité et zones de disponibilité|Groupes à haute disponibilité |
 |**Prend en charge FileStream**|Oui|Non|Oui |
 |**Cache d'objets blob Azure**|Non|Non|Oui|
 
@@ -74,16 +74,17 @@ Le reste de cette section répertorie les avantages et les limitations de chaque
 - Peut utiliser un seul disque partagé ou entrelacer plusieurs disques partagés pour créer un pool de stockage partagé. 
 - Prend en charge Filestream.
 - Les disques SSD Premium prennent en charge les groupes à haute disponibilité. 
+- Les disques SSD Premium avec stockage redondant interzone (ZRS) prennent en charge les zones de disponibilité. Les machines virtuelles qui font partie d’une instance FCI peuvent être placées dans différentes zones de disponibilité. 
 
 > [!NOTE]
 > Même si les disques partagés Azure prennent également en charge les [tailles de disque SSD Standard](../../../virtual-machines/disks-shared.md#disk-sizes), nous vous déconseillons d’utiliser des disques SSD Standard pour les charges de travail SQL Server en raison des limitations de performances.
 
 **Limitations** : 
-- Il est recommandé de placer les machines virtuelles dans le même groupe à haute disponibilité et le même groupe de placement de proximité.
-- Les disques Ultra ne prennent pas en charge les groupes à haute disponibilité. 
-- Les zones de disponibilité sont prises en charge pour les disques Ultra, mais les machines virtuelles doivent être dans la même zone de disponibilité, ce qui réduit la disponibilité de la machine virtuelle. 
-- Quelle que soit la solution de disponibilité matérielle choisie, la disponibilité du cluster de basculement est toujours de 99,9 % lorsque vous utilisez des disques partagés Azure. 
+
 - La mise en cache des disques SSD Premium n’est pas prise en charge.
+- Les disques Ultra ne prennent pas en charge les groupes à haute disponibilité. 
+- Les zones de disponibilité sont prises en charge pour les disques Ultra, mais les machines virtuelles doivent être dans la même zone de disponibilité, ce qui réduit à 99,9 % la disponibilité de la machine virtuelle
+- Les disques Ultra ne prennent pas en charge le stockage redondant interzone (ZRS)
 
  
 Pour commencer, consultez [Instance de cluster de basculement SQL Server avec disques partagés Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
@@ -97,11 +98,13 @@ Pour commencer, consultez [Instance de cluster de basculement SQL Server avec di
 
 
 **Avantages :** 
+
 - une bande passante réseau suffisante offre une solution de stockage partagé robuste et hautement performante. 
 - Prend en charge le cache d’objets blob Azure pour que les lectures puissent être effectuées localement à partir du cache. (Les mises à jour sont répliquées simultanément sur les deux nœuds.) 
 - Prend en charge FileStream. 
 
 **Limitations :**
+
 - Disponible uniquement pour Windows Server 2016 et versions ultérieures. 
 - Les zones de disponibilité ne sont pas prises en charge.
 - Requiert la même capacité de disque attachée aux deux machines virtuelles. 
@@ -118,7 +121,7 @@ Pour commencer, consultez [Instance de cluster de basculement SQL Server avec es
 **Version de SQL pris en charge** : SQL Server 2012 et versions ultérieures   
 
 **Avantages :** 
-- Seule une solution de stockage partagé pour les machines virtuelles est répartie sur plusieurs zones de disponibilité. 
+- Une solution de stockage partagé pour les machines virtuelles s’étend sur plusieurs zones de disponibilité. 
 - Système de fichiers complètement managé avec des latences à un chiffre et des performances d’e/s expansibles. 
 
 **Limitations :**
@@ -150,7 +153,9 @@ Pour les solutions de stockage partagé et de réplication de données proposée
 
 ## <a name="connectivity"></a>Connectivité
 
-Vous pouvez configurer un nom de réseau virtuel ou un nom de réseau distribué pour une instance de cluster de basculement. [Passez en revue les différences entre les deux](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn), puis déployez un [nom de réseau distribué](failover-cluster-instance-distributed-network-name-dnn-configure.md) ou un [nom de réseau virtuel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) pour votre instance de cluster de basculement.
+Pour relier l’expérience locale de connexion à votre instance de cluster de basculement, déployez vos machines virtuelles SQL Server sur [plusieurs sous-réseaux](failover-cluster-instance-prepare-vm.md#subnets) au sein du même réseau virtuel. Quand vous avez plusieurs réseaux, vous n’avez pas besoin d’une dépendance supplémentaire sur un équilibreur de charge Azure ou d’un nom de réseau distribué (DNN) pour router votre trafic vers votre FCI. 
+
+Si vous déployez vos machines virtuelles SQL Server dans un même sous-réseau, vous pouvez configurer un nom de réseau virtuel (VNN) et un équilibreur de charge Azure, ou un nom de réseau distribué (DNN) pour router le trafic vers votre instance de cluster de basculement. [Passez en revue les différences entre les deux](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn), puis déployez un [nom de réseau distribué](failover-cluster-instance-distributed-network-name-dnn-configure.md) ou un [nom de réseau virtuel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) pour votre instance de cluster de basculement.
 
 Le nom de réseau distribué est recommandé si c’est possible, car le basculement est plus rapide, et la surcharge et le coût de la gestion de l’équilibreur de charge sont éliminés. 
 
@@ -160,7 +165,7 @@ La plupart des fonctionnalités de SQL Server fonctionnent de façon transparent
 
 Tenez compte des limitations suivantes pour les instances de cluster de basculement avec SQL Server sur des machines virtuelles Azure. 
 
-### <a name="lightweight-extension-support"></a>Prise en charge d’extension légère   
+### <a name="lightweight-extension-support"></a>Prise en charge d’extension légère
 
 Pour le moment, les instances de cluster de basculement SQL Server sur des machines virtuelles Azure sont prises en charge uniquement avec le [mode de gestion léger](sql-server-iaas-agent-extension-automate-management.md#management-modes) de l’extension SQL Server IaaS Agent. Pour passer du mode d’extension complet au mode d’extension léger, supprimez la ressource **Machine virtuelle SQL** pour les machines virtuelles correspondantes, puis inscrivez-les auprès de l’extension SQL IaaS Agent en mode léger. Quand vous supprimez la ressource **Machine virtuelle SQL** à partir du portail Azure, décochez la case à côté de la machine virtuelle appropriée pour éviter de supprimer la machine virtuelle. 
 

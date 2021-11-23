@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffa2b1a4537093f9a612f0e57b7f416ee7ed0012
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963556"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301909"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Tutoriel : Utiliser la configuration dynamique dans une application Azure Functions
 
@@ -55,7 +55,7 @@ Dans ce tutoriel, vous allez apprendre à :
             options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
                    // Load all keys that start with `TestApp:`
                    .Select("TestApp:*")
-                   // Configure to reload configuration if the registered 'Sentinel' key is modified
+                   // Configure to reload configuration if the registered sentinel key is modified
                    .ConfigureRefresh(refreshOptions =>
                       refreshOptions.Register("TestApp:Settings:Sentinel", refreshAll: true));
         });
@@ -63,7 +63,7 @@ Dans ce tutoriel, vous allez apprendre à :
     ```
 
    > [!TIP]
-   > Quand vous modifiez plusieurs paires clé-valeur dans App Configuration, vous ne souhaitez généralement pas que votre application recharge la configuration tant que toutes les modifications n’ont pas été appliquées. Vous pouvez inscrire une clé **Sentinel** et la mettre à jour uniquement quand toutes les autres modifications de configuration sont terminées. Cela permet de garantir la cohérence de la configuration dans votre application.
+   > Quand vous modifiez plusieurs paires clé-valeur dans App Configuration, vous ne souhaitez généralement pas que votre application recharge la configuration tant que toutes les modifications n’ont pas été appliquées. Vous pouvez inscrire une *clé Sentinel* et la mettre à jour uniquement quand tous les autres changements de configuration ont été effectués. Cela permet de garantir la cohérence de la configuration dans votre application.
 
 2. Mettez à jour la méthode `Configure` pour rendre les services Azure App Configuration disponibles via l’injection de dépendances.
 

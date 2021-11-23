@@ -1,26 +1,26 @@
 ---
-title: Intégrer Forescout à Azure Defender pour IoT
-description: Dans ce tutoriel, vous allez découvrir comment intégrer Azure Defender pour IoT à Forescout.
+title: Intégrer Forescout à Microsoft Defender pour IoT
+description: Dans ce tutoriel, vous allez découvrir comment intégrer Microsoft Defender pour IoT à Forescout.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/23/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 6a930671e501940ce7f6d0d22036225e7539eb7f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c395c799b8f6dca602b20cb330f89630f9fb591e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701517"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325233"
 ---
-# <a name="tutorial-integrate-forescout-with-azure-defender-for-iot"></a>Tutoriel : Intégrer Forescout à Azure Defender pour IoT
+# <a name="tutorial-integrate-forescout-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer Forescout à Microsoft Defender pour IoT
 
 > [!Note]
-> Les références à CyberX concernent Azure Defender pour IoT.
+> Les références à CyberX concernent Microsoft Defender pour IoT.
 
-Ce tutoriel va vous aider à découvrir comment intégrer Forescout à Azure Defender pour IoT.
+Ce tutoriel va vous aider à découvrir comment intégrer Forescout à Microsoft Defender pour IoT.
 
-Azure Defender pour IoT offre une plateforme de cybersécurité pour le partage de connexion Internet (ICS) et l’Internet des objets (IoT). Defender pour IoT est la seule plateforme offrant une analytique des menaces prenant en charge ICS et le Machine Learning. Defender pour IoT offre les fonctionnalités suivantes :
+Microsoft Defender pour IoT offre une plateforme de cybersécurité pour le partage de connexion Internet (ICS) et l’Internet des objets (IoT). Defender pour IoT est la seule plateforme offrant une analytique des menaces prenant en charge ICS et le Machine Learning. Defender pour IoT offre les fonctionnalités suivantes :
 
 - Insights immédiats sur ICS dans le paysage de l’appareil avec un large éventail de détails sur les attributs.
 
@@ -32,11 +32,11 @@ Azure Defender pour IoT offre une plateforme de cybersécurité pour le partage 
 
 L’intégration de Forescout vous aide à réduire le temps nécessaire aux organisations dotées d’une infrastructure industrielle et critique pour détecter, examiner et traiter les cybermenaces.
 
-- Utilisez le renseignement sur les appareils OT d’Azure Defender pour IoT afin de clore le cycle de sécurité en déclenchant des actions de stratégie Forescout. Par exemple, vous pouvez envoyer automatiquement un e-mail d’alerte aux administrateurs SOC lorsque des protocoles spécifiques sont détectés ou lorsque des détails du microprogramme changent.
+- Utilisez le renseignement sur les appareils OT de Microsoft Defender pour IoT afin de clore le cycle de sécurité en déclenchant des actions de stratégie Forescout. Par exemple, vous pouvez envoyer automatiquement un e-mail d’alerte aux administrateurs SOC lorsque des protocoles spécifiques sont détectés ou lorsque des détails du microprogramme changent.
 
 - Mettez en corrélation les informations relatives à Defender pour IoT avec d’autres modules *Forescout eyeExtend* qui supervisent la surveillance, la gestion des incidents et le contrôle des appareils.
 
-L’intégration de Defender pour IoT à la plateforme Forescout offre une visibilité, une supervision et un contrôle centralisés pour le paysage IoT et OT. Ces plateformes reliées par un pont activent la visibilité et la gestion automatisées des appareils pour les appareils ICS et les workflows en silo. L’intégration offre aux analystes SOC une visibilité à plusieurs niveaux des protocoles OT déployés dans des environnements industriels. Des informations sont ainsi disponibles, telles que les microprogrammes, les types d’appareils, les systèmes d’exploitation et les scores d’analyse des risques basés sur des technologies Azure Defender pour IoT propriétaires.
+L’intégration de Defender pour IoT à la plateforme Forescout offre une visibilité, une supervision et un contrôle centralisés pour le paysage IoT et OT. Ces plateformes reliées par un pont activent la visibilité et la gestion automatisées des appareils pour les appareils ICS et les workflows en silo. L’intégration offre aux analystes SOC une visibilité à plusieurs niveaux des protocoles OT déployés dans des environnements industriels. Des informations sont ainsi disponibles, telles que les microprogrammes, les types d’appareils, les systèmes d’exploitation et les scores d’analyse des risques basés sur des technologies Microsoft Defender pour IoT propriétaires.
 
 Dans ce tutoriel, vous allez apprendre à :
 
@@ -45,21 +45,21 @@ Dans ce tutoriel, vous allez apprendre à :
 > - Configurer la plateforme Forescout
 > - Vérifier la communication
 > - Afficher les attributs d’appareil dans Forescout
-> - Créer des stratégies Azure Defender pour IoT dans Forescout
+> - Créer des stratégies Microsoft Defender pour IoT dans Forescout
 
 Si vous n’avez pas encore de compte Azure, vous pouvez [créer un compte Azure gratuit dès aujourd’hui](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Azure Defender pour IoT versions 2.4 ou ultérieures
+- Microsoft Defender pour IoT versions 2.4 ou ultérieures
 
 - Forescout versions 8.0 ou ultérieures
 
-- Une licence pour le module Forescout eyeExtend pour la plateforme Azure Defender pour IoT.
+- Une licence pour le module Forescout eyeExtend pour la plateforme Microsoft Defender pour IoT.
 
 ## <a name="generate-an-access-token"></a>Générer un jeton d’accès
 
-Les jetons d’accès permettent à des systèmes externes d’accéder aux données découvertes par Defender pour IoT. Les jetons d’accès permettent d’utiliser ces données pour les API REST externes et via des connexions SSL. Vous pouvez générer des jetons d’accès afin d’accéder à l’API REST Azure Defender pour IoT.
+Les jetons d’accès permettent à des systèmes externes d’accéder aux données découvertes par Defender pour IoT. Les jetons d’accès permettent d’utiliser ces données pour les API REST externes et via des connexions SSL. Vous pouvez générer des jetons d’accès afin d’accéder à l’API REST Microsoft Defender pour IoT.
 
 Pour garantir la communication entre Defender pour IoT et Forescout, vous devez générer un jeton d’accès dans Defender pour IoT.
 
@@ -100,7 +100,7 @@ Vous pouvez à présent configurer la plateforme Forescout pour qu’elle commun
 
 1. Accédez à **Modules** > **CyberX Platform** (Plateforme CyberX).
 
-   :::image type="content" source="media/tutorial-forescout/settings-for-module.png" alt-text="Paramètres du module Azure Defender pour IoT":::
+   :::image type="content" source="media/tutorial-forescout/settings-for-module.png" alt-text="Paramètres du module Microsoft Defender pour IoT":::
 
 1. Dans le champ Server Address (Adresse du serveur), entrez l’adresse IP du capteur Defender pour IoT que l’appliance Forescout interrogera.
 
@@ -150,7 +150,7 @@ Le tableau suivant liste tous les attributs qui sont visibles par le biais de l�
 
 | Élément | Description |
 |--|--|
-| **Autorisé par Azure Defender pour IoT** | Appareil que Defender pour IoT a détecté sur votre réseau pendant la période d’apprentissage du réseau. |
+| **Autorisé par Microsoft Defender pour IoT** | Appareil que Defender pour IoT a détecté sur votre réseau pendant la période d’apprentissage du réseau. |
 | **Microprogramme** | Détails du microprogramme de l’appareil. Par exemple, détails du modèle et de la version. |
 | **Nom** | Nom de l’appareil |
 | **Système d’exploitation** | Système d’exploitation de l’appareil. |
@@ -181,7 +181,7 @@ Après avoir consulté les attributs d’un appareil, vous pouvez voir plus de d
 
 1. Dans la section Device Inventory Hosts (Hôtes d’inventaire des appareils), cliquez avec le bouton droit sur un appareil. La boîte de dialogue Détails de l’hôte s’ouvre, affichant des informations supplémentaires.
 
-## <a name="create-azure-defender-for-iot-policies-in-forescout"></a>Créer des stratégies Azure Defender pour IoT dans Forescout
+## <a name="create-microsoft-defender-for-iot-policies-in-forescout"></a>Créer des stratégies Microsoft Defender pour IoT dans Forescout
 
 Vous pouvez utiliser des stratégies Forescout pour automatiser le contrôle et la gestion des appareils détectés par Defender pour IoT. Par exemple,
 

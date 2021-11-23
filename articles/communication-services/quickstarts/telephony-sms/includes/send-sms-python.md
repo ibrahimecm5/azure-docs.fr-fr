@@ -1,5 +1,5 @@
 ---
-title: Fichier Include
+title: Fichier include
 description: Fichier include
 services: azure-communication-services
 author: lakshmans
@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 9e44cc1f631a56d1948c744a1ecb912208bad11e
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: c6fcc4c63b786af08c48450791a58b4f6f13a6ad
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659610"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529473"
 ---
 Commencez avec Azure Communication Services en utilisant le kit de développement logiciel (SDK) Communication Services SMS Python pour envoyer des SMS.
 
@@ -105,7 +105,7 @@ sms_responses = sms_client.send(
 Vous devez remplacer `<from-phone-number>` par un numéro de téléphone permettant de recevoir des SMS associé à votre service de communication et `<to-phone-number>` par le numéro de téléphone auquel vous souhaitez envoyer un message.
 
 > [!WARNING]
-> Notez que les numéros de téléphone doivent être fournis au format standard international E.164. (par exemple, +14255550123)
+> Notez que les numéros de téléphone doivent être fournis au format standard international E.164 (par exemple , +14255550123). Le numéro de téléphone **From** peut également être un code court (par exemple : 23456).
 
 ## <a name="send-a-1n-sms-message"></a>Envoyer un message SMS 1:N
 
@@ -126,7 +126,7 @@ sms_responses = sms_client.send(
 Vous devez remplacer `<from-phone-number>` par un numéro de téléphone permettant de recevoir des SMS associé à votre service de communication et `<to-phone-number-1>` `<to-phone-number-2>` par le ou les numéros de téléphone auxquels vous souhaitez envoyer un message.
 
 > [!WARNING]
-> Notez que les numéros de téléphone doivent être fournis au format standard international E.164. (par exemple, +14255550123)
+> Notez que les numéros de téléphone doivent être fournis au format standard international E.164 (par exemple , +14255550123). Le numéro de téléphone **From** peut également être un code court (par exemple : 23456).
 
 ## <a name="optional-parameters"></a>Paramètres facultatifs
 

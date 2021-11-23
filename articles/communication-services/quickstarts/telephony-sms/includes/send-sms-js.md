@@ -1,5 +1,5 @@
 ---
-title: Fichier Include
+title: Fichier include
 description: Fichier include
 services: azure-communication-services
 author: bertong
@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 321e9ae3ccfb994a324b653c3e67fbae9b6b6f4c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c63a3859f9ea2fcec88ee220c0abca8429d9b86e
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111979"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132529933"
 ---
 Commencez avec Azure Communication Services en utilisant le kit de développement logiciel (SDK) Communication Services SMS JavaScript pour envoyer des SMS.
 
@@ -120,7 +120,7 @@ main();
 Vous devez remplacer `<from-phone-number>` par un numéro de téléphone permettant de recevoir des SMS et associé à votre ressource Communication Services, et `<to-phone-number-1>` et `<to-phone-number-2>` par le ou les numéros de téléphone auxquels vous souhaitez envoyer un message.
 
 > [!WARNING]
-> Notez que les numéros de téléphone doivent être fournis au format standard international E.164. (par exemple, +14255550123)
+> Notez que les numéros de téléphone doivent être fournis au format standard international E.164 (par exemple , +14255550123). Le numéro de téléphone **From** peut également être un code court (par exemple : 23456).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Envoyer un message SMS 1:N avec des options
 
@@ -156,7 +156,7 @@ main();
 Vous devez remplacer `<from-phone-number>` par un numéro de téléphone permettant de recevoir des SMS et associé à votre ressource Communication Services, et `<to-phone-number-1>` et `<to-phone-number-2>` par le ou les numéros de téléphone auxquels vous souhaitez envoyer un message.
 
 > [!WARNING]
-> Notez que les numéros de téléphone doivent être fournis au format standard international E.164. (par exemple, +14255550123)
+> Notez que les numéros de téléphone doivent être fournis au format standard international E.164 (par exemple , +14255550123). Le numéro de téléphone **From** peut également être un code court (par exemple : 23456).
 
 Le paramètre `enableDeliveryReport` est un paramètre facultatif que vous pouvez utiliser pour configurer la création de rapports de remise. C’est utile pour les scénarios où vous souhaitez émettre des événements quand des SMS sont remis. Consultez le guide de démarrage rapide [Gérer les événements SMS](../handle-sms-events.md) pour configurer la création de rapports de remise pour vos SMS.
 `tag` est un paramètre facultatif que vous pouvez utiliser pour appliquer une balise au rapport de remise.

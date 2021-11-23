@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 1be53ae920fe75616ae406fea6d64886c2ddf7d3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 92041863d72a4d8b62602ca05fac27bc24e17114
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745972"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316505"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à WhosOnLocation
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * WhosOnLocation prend en charge l’authentification unique lancée par le **fournisseur de services**
 
-* Après avoir configuré WhosOnLocation, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré WhosOnLocation, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-whosonlocation-from-the-gallery"></a>Ajout de WhosOnLocation à partir de la galerie
 
@@ -173,6 +173,6 @@ Quand vous cliquez sur la vignette WhosOnLocation dans le volet d’accès, vous
 
 - [Essayer WhosOnLocation avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger WhosOnLocation avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

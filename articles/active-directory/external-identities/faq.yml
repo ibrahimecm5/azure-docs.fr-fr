@@ -13,12 +13,12 @@ metadata:
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: dd15c9412cc9f7b0bed2ac4e0f622c827aaafe17
-  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.openlocfilehash: 661d38755cdaeea830b025fa2747b45d43b4c5d2
+  ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 10/22/2021
-  ms.locfileid: "130227649"
+  ms.lasthandoff: 11/15/2021
+  ms.locfileid: "132490152"
 title: FAQ sur Azure Active Directory B2B Collaboration
 summary: >
   Cette foire aux questions (FAQ) sur la collaboration interentreprises (B2B) Azure Active Directory (Azure AD) est régulièrement complétée par de nouvelles rubriques.
@@ -129,4 +129,8 @@ sections:
       Quelles licences faut-il avoir pour utiliser Azure AD B2B ?
     answer: >
       Pour plus d’informations sur les licences dont votre organisation a besoin pour utiliser Azure AD B2B, consultez [Prix des identités externes](external-identities-pricing.md).
+  - question: >
+      Les utilisateurs B2B Collaboration peuvent-ils se connecter avec leur adresse e-mail non-UPN ?
+    answer: >
+      Oui. Pour plus d’informations sur l’utilisation de l’e-mail comme ID de connexion de remplacement pour B2B Collaboration, consultez [Connexion d’un utilisateur B2B invité avec une adresse e-mail](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-use-email-signin#b2b-guest-user-sign-in-with-an-email-address).
 additionalContent: "\n## <a name=\"next-steps\"></a>Étapes suivantes\n\n[Qu'est-ce que la collaboration B2B d'Azure AD ?](what-is-b2b.md)\n"

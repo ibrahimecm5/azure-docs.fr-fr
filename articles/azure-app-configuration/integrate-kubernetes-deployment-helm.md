@@ -8,16 +8,16 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 6276fc2027e92d5b7baaf9237a928e7828a3b021
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 47782cb59bf751bd9eb38dd3125c3cdf805305d9
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775761"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370704"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Intégrer au déploiement Kubernetes en utilisant Helm
 
-Helm fournit un moyen de définir, d’installer et de mettre à niveau des applications qui s’exécutent dans Kubernetes. Un chart Helm contient les informations nécessaires à la création d’une instance d’une application Kubernetes. La configuration est stockée en dehors du chart lui-même, dans un fichier nommé *values.yaml*. 
+Helm fournit un moyen de définir, d’installer et de mettre à niveau des applications qui s’exécutent dans Kubernetes. Un chart Helm contient les informations nécessaires à la création d’une instance d’une application Kubernetes. La configuration est stockée en dehors du chart lui-même, dans un fichier nommé *values.yaml*.
 
 Pendant le processus de publication, Helm fusionne le chart avec la configuration appropriée pour exécuter l’application. Par exemple, les variables définies dans *values.yaml* peuvent être référencées en tant que variables d’environnement dans les conteneurs en cours d’exécution. Helm prend également en charge la création de secrets Kubernetes, qui peuvent être montés en tant que volumes de données ou exposés en tant que variables d’environnement.
 
@@ -25,8 +25,8 @@ Vous pouvez remplacer les valeurs stockées dans *values.yaml* en fournissant de
 
 Dans ce tutoriel, vous allez apprendre à :
 > [!div class="checklist"]
-> * Utiliser des valeurs d’App Configuration lors du déploiement d’une application sur Kubernetes avec Helm.
-> * Créer un secret Kubernetes basé sur une référence Key Vault dans App Configuration.
+> - Utiliser des valeurs d’App Configuration lors du déploiement d’une application sur Kubernetes avec Helm.
+> - Créer un secret Kubernetes basé sur une référence Key Vault dans App Configuration.
 
 Ce tutoriel suppose une compréhension de base de la gestion de Kubernetes avec Helm. Découvrez plus d’informations sur l’installation d’applications avec Helm dans [Azure Kubernetes Service](../aks/kubernetes-helm.md).
 
@@ -41,34 +41,37 @@ Ce tutoriel suppose une compréhension de base de la gestion de Kubernetes avec 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. Sélectionnez **Explorateur de configurations** > **Créer** pour ajouter les paires clé-valeur suivantes :
+1. Sélectionnez **Explorateur de configurations** > **Créer** pour ajouter les paires clé-valeur suivantes :
 
     | Clé | Valeur |
     |---|---|
     | settings.color | White |
     | settings.message | Data from Azure App Configuration |
 
-    Laissez **Étiquette** et **Type de contenu** vides pour l’instant.
+2. Laissez **Étiquette** et **Type de contenu** vides pour l’instant.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Ajouter une référence Key Vault à App Configuration
-1. Connectez-vous au [portail Azure](https://portal.azure.com) et ajoutez un secret à [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) avec comme nom **Password** et comme valeur **myPassword**. 
+
+1. Connectez-vous au [portail Azure](https://portal.azure.com) et ajoutez un secret à [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) avec comme nom **Password** et comme valeur **myPassword**.
+
 2. Sélectionnez l’instance de magasin App Configuration que vous avez créée dans la section précédente.
 
 3. Sélectionnez **Explorateur de configuration**.
 
 4. Sélectionnez **+ Créer** > **Référence Key Vault**, puis choisissez les valeurs suivantes :
+
     - **Clé** : Sélectionnez **secrets.password**.
     - **Étiquette** : Laissez cette valeur vide.
     - **Abonnement**, **Groupe de ressources** et **Key Vault** : Entrez les valeurs correspondant à ces éléments dans le coffre de clés que vous avez créé dans la section précédente.
     - **Secret** : Sélectionnez le secret nommé **Password** que vous avez créé dans la section précédente.
 
-## <a name="create-helm-chart"></a>Créer un chart Helm ##
-Tout d’abord, créez un exemple de chart Helm avec la commande suivante.
-```console
-helm create mychart
-```
+## <a name="create-helm-chart"></a>Créer un chart Helm
 
-Helm crée un répertoire appelé mychart avec la structure ci-dessous. 
+Commencez par créer un exemple de chart Helm avec la commande suivante :
+
+`helm create mychart`
+
+Helm crée un répertoire appelé mychart avec la structure ci-dessous.
 
 > [!TIP]
 > Pour plus d’informations, consultez ce [guide des charts](https://helm.sh/docs/chart_template_guide/getting_started/).
@@ -94,7 +97,7 @@ env:
     value: {{ .Values.settings.color }}
 - name: Message
     value: {{ .Values.settings.message }}
-``` 
+```
 
 Le fichier *deployment.yaml* complet après la mise à jour doit ressembler à ce qui suit.
 
@@ -177,15 +180,16 @@ Enfin, mettez à jour le fichier *values.yaml* avec le contenu suivant pour four
 ```yaml
 # settings will be overwritten by App Configuration
 settings:
-    color: red
-    message: myMessage
+  color: red
+  message: myMessage
 ```
 
-## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Passer la configuration d’App Configuration dans l’installation Helm ##
-Tout d’abord, téléchargez la configuration depuis App Configuration dans un fichier *myConfig.yaml*. Utilisez un filtre de clé pour télécharger seulement les clés qui commencent par **settings.** . Si dans votre cas, le filtre de clé n’est pas suffisant pour exclure les clés des références Key Vault, vous pouvez utiliser l’argument **--skip-keyvault** pour les exclure. 
+## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Passer la configuration d’App Configuration dans l’installation Helm
+
+Tout d’abord, téléchargez la configuration depuis App Configuration dans un fichier *myConfig.yaml*. Utilisez un filtre de clé pour télécharger seulement les clés qui commencent par **settings.** . Si dans votre cas, le filtre de clé n’est pas suffisant pour exclure les clés des références Key Vault, vous pouvez utiliser l’argument **--skip-keyvault** pour les exclure.
 
 > [!TIP]
-> Découvrez plus d’informations sur la [commande export](/cli/azure/appconfig/kv#az_appconfig_kv_export). 
+> Découvrez plus d’informations sur la [commande export](/cli/azure/appconfig/kv#az_appconfig_kv_export).
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -203,10 +207,10 @@ az appconfig kv export -n myAppConfiguration -d file --path mySecrets.yaml --key
 Utilisez l’argument **-f** de mise à niveau de Helm pour passer les deux fichiers de configuration que vous avez créés. Elles remplacent les valeurs de configuration définies dans *values.yaml* avec les valeurs exportées depuis App Configuration.
 
 ```console
-helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart 
+helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart
 ```
 
-Vous pouvez également utiliser l’argument **--set** pour la mise à niveau de Helm afin de passer des valeurs de clés littérales. L’utilisation de l’argument **--set** est un bon moyen d’éviter de conserver des données sensibles sur le disque. 
+Vous pouvez également utiliser l’argument **--set** pour la mise à niveau de Helm afin de passer des valeurs de clés littérales. L’utilisation de l’argument **--set** est un bon moyen d’éviter de conserver des données sensibles sur le disque.
 
 ```powershell
 $secrets = az appconfig kv list -n myAppConfiguration --key "secrets.*" --resolve-keyvault --query "[*].{name:key, value:value}" | ConvertFrom-Json
@@ -217,10 +221,10 @@ foreach ($secret in $secrets) {
 
 if ($keyvalues){
   $keyvalues = $keyvalues.TrimEnd(',')
-  helm upgrade --install --set $keyvalues "example" ./mychart 
+  helm upgrade --install --set $keyvalues "example" ./mychart
 }
 else{
-  helm upgrade --install "example" ./mychart 
+  helm upgrade --install "example" ./mychart
 }
 
 ```
@@ -229,7 +233,7 @@ Vérifiez que les configurations et les secrets ont été définis correctement 
 
 ![Démarrage rapide du lancement d’application local](./media/kubernetes-dashboard-env-variables.png)
 
-Un secret, **password**, stocké en tant que référence Key Vault dans App Configuration, a également été ajouté aux secrets Kubernetes. 
+Un secret, **password**, stocké en tant que référence Key Vault dans App Configuration, a également été ajouté aux secrets Kubernetes.
 
 ![Capture d’écran mettant en évidence le mot de passe dans la section Data.](./media/kubernetes-dashboard-secrets.png)
 

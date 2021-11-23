@@ -2,14 +2,14 @@
 title: 'Tutoriel : Enregistrement vidéo basé sur les événements et lecture vidéo dans le cloud - Azure'
 description: Dans ce tutoriel, vous allez voir comment utiliser Azure Video Analyzer pour effectuer un enregistrement vidéo basé sur les événements dans le cloud et pour le lire dans le cloud.
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4f5c7bfe4c56eaa5730a408b549723331c969c29
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1edec79cd7baa20819e0599b039fbdfe20f35d92
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097708"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484817"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>Tutoriel : Enregistrement vidéo basé sur les événements et lecture des enregistrements
 
@@ -68,9 +68,9 @@ Le diagramme est une représentation graphique d’un [pipeline](../pipeline.md)
     
 Comme le montre le diagramme, vous allez utiliser un nœud de [source RTSP](../pipeline.md#rtsp-source) dans le pipeline afin de capturer la simulation de vidéo en direct du trafic sur l’autoroute, puis envoyer cette vidéo vers deux chemins :
 
-* Le premier chemin mène à un nœud d’extension HTTP. Le nœud échantillonne les trames vidéo en une valeur que vous définissez à l’aide du champ `samplingOptions`, puis relaie les trames, en tant qu’images, vers le module d’IA YOLOv3, qui est un détecteur d’objets. Le nœud reçoit les résultats, qui correspondent aux objets (véhicules dans le trafic) détectés par le modèle. Le nœud d’extension HTTP publie ensuite les résultats par le biais du nœud récepteur de messages IoT Hub dans le hub IoT Edge.
+* Le premier chemin dirige vers un nœud d’extension HTTP. Le nœud échantillonne les trames vidéo en une valeur que vous définissez à l’aide du champ `samplingOptions`, puis relaie les trames, en tant qu’images, vers le module d’IA YOLOv3, qui est un détecteur d’objets. Le nœud reçoit les résultats, qui correspondent aux objets (véhicules dans le trafic) détectés par le modèle. Le nœud d’extension HTTP publie ensuite les résultats par le biais du nœud récepteur de messages IoT Hub dans le hub IoT Edge.
 
-* Le module objectCounter est configuré pour recevoir des messages du hub IoT Edge, notamment les résultats de la détection des objets (véhicules dans le trafic). Le module vérifie ces messages et recherche des objets d’un certain type, qui ont été configurés par le biais d’un paramètre. Quand un tel objet est trouvé, ce module envoie un message au hub IoT Edge. Les messages « object found » (objet trouvé) sont ensuite routés vers le nœud source IoT Hub du pipeline. Lors de la réception d’un tel message, le nœud source IoT Hub dans le pipeline déclenche le nœud [processeur de porte de signal](../pipeline.md#signal-gate-processor). Le nœud processeur de porte de signal est alors ouvert pour une durée configurée. Pendant cette période, la vidéo passe par la porte pour aller au nœud récepteur vidéo. Cette partie du stream en direct est ensuite enregistrée via le nœud [récepteur vidéo](../pipeline.md#video-sink) dans une [vidéo](../terminology.md#video) de votre compte Video Analyzer. La vidéo utilisée dans ce tutoriel est un [exemple de vidéo d’intersection d’autoroute](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv).
+* Le module objectCounter est configuré pour recevoir des messages du hub IoT Edge, notamment les résultats de la détection des objets (véhicules dans le trafic). Le module vérifie ces messages et recherche des objets d’un certain type, qui ont été configurés par le biais d’un paramètre. Quand un tel objet est trouvé, ce module envoie un message au hub IoT Edge. Les messages « object found » (objet trouvé) sont ensuite routés vers le nœud source IoT Hub du pipeline. Lors de la réception d’un tel message, le nœud source IoT Hub dans le pipeline déclenche le nœud [processeur de porte de signal](../pipeline.md#signal-gate-processor). Le nœud processeur de porte de signal est alors ouvert pour une durée configurée. Pendant cette période, la vidéo passe par la porte pour aller au nœud récepteur vidéo. Cette partie du stream en direct est ensuite enregistrée via le nœud [récepteur vidéo](../pipeline.md#video-sink) dans une [vidéo](../terminology.md#video) de votre compte Video Analyzer. La vidéo utilisée dans ce tutoriel est un [exemple de vidéo d’intersection d’autoroute](https://avamedia.blob.core.windows.net/public/camera-300s.mkv).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
@@ -326,7 +326,7 @@ Comme son nom l’indique, l’événement RecordingStarted est envoyé lorsque 
 }
 ```
 
-Cet événement indique que suffisamment de données ont été écrites dans la ressource vidéo pour que les lecteurs ou les clients commencent la lecture de la vidéo. La section subject dans applicationProperties fait référence au nœud récepteur vidéo dans le pipeline en direct qui a généré ce message. La section body contient des informations sur l’emplacement de sortie. Dans ce cas, il s’agit du nom de la ressource Video Analyzer dans laquelle la vidéo est enregistrée.
+Cet événement indique que suffisamment de données ont été écrites dans la ressource vidéo pour que les lecteurs ou les clients commencent la lecture de la vidéo. La section subject dans applicationProperties référence le nœud récepteur vidéo dans le pipeline en direct qui a généré ce message. La section body contient des informations sur l’emplacement de sortie. Dans ce cas, il s’agit du nom de la ressource Video Analyzer dans laquelle la vidéo est enregistrée.
 
 ### <a name="recordingstopped-event"></a>Événement RecordingStopped
 

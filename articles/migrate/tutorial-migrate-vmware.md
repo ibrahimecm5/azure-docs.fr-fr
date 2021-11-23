@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 8f653f8e41d45310cf6d90aebf0484b2a0ea7360
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 2c0c2017ab4750187d4619761154a2adc6002357
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272976"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324742"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrer des machines virtuelles VMware vers Azure (sans agent)
 
@@ -195,7 +195,7 @@ Après avoir vérifié que la migration de test fonctionne comme prévu, vous po
 1. Une fois la migration terminée, cliquez avec le bouton droit sur la machine virtuelle > **Arrêter la réplication**. Cette action arrête la réplication pour la machine locale et nettoie les informations d’état de la réplication de la machine virtuelle.
 1. Nous installons automatiquement l’agent VM pour les machines virtuelles Windows et Linux pendant la migration.
 1. Examinez et [résolvez tout problème d’activation de Windows sur la machine virtuelle Azure.](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
-1. Effectuez les éventuels ajustements post-migration de l’application, comme la mise à jour des noms d’hôte, des chaînes de connexion de base de données et des configurations du serveur web.
+1. Effectuez les éventuels ajustements post-migration de l’application, comme la mise à jour des noms d’hôte, des chaînes de connexion de base de données et les configurations du serveur web.
 1. Effectuez les tests finaux de réception de l’application et de la migration sur l’application migrée qui s’exécute maintenant dans Azure.
 1. Réduisez le trafic vers l’instance de machine virtuelle Azure migrée.
 1. Supprimez les machines virtuelles locales de votre inventaire des machines virtuelles locales.
@@ -210,10 +210,10 @@ Après avoir vérifié que la migration de test fonctionne comme prévu, vous po
 - Pour obtenir des performances améliorées :
     - Par défaut, les disques de données sont créés avec la mise en cache de l’hôte définie sur « Aucune ». Examinez la mise en cache des disques de données et réglez-la en fonction des besoins de votre charge de travail. [Plus d’informations](../virtual-machines/premium-storage-performance.md#disk-caching)  
 - Pour renforcer la sécurité :
-    - Verrouillez et limitez l’accès du trafic entrant avec l’[administration juste-à-temps d’Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Verrouillez et limitez l’accès du trafic entrant grâce à l’[administration juste-à-temps de Microsoft Defender pour le cloud](../security-center/security-center-just-in-time.md).
     - Limitez le trafic réseau vers les points de terminaison de gestion avec des [groupes de sécurité réseau](../virtual-network/network-security-groups-overview.md).
     - Déployez [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) pour sécuriser les disques, et protégez les données contre le vol et les accès non autorisés.
-    - Découvrez plus d’informations sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) et visitez [Azure Security Center](https://azure.microsoft.com/services/security-center/).
+    - Pour en savoir plus sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), consultez le site [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/).
 - Pour la surveillance et la gestion :
 -  Envisagez de déployer [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) pour surveiller l’utilisation et les coûts des ressources.
 

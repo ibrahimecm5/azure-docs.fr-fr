@@ -1,23 +1,23 @@
 ---
 title: Se connecter à une base de données Azure pour PostgreSQL et la gérer
-description: Ce guide décrit comment se connecter à une base de données Azure pour PostgreSQL dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Azure Database pour PostgreSQL.
-author: evwhite
+description: Ce guide décrit comment se connecter à un serveur unique Azure Database pour PostgreSQL dans Azure Purview, et utiliser les fonctionnalités de Purview pour analyser et gérer votre source Azure Database pour PostgreSQL.
+author: evangelinew
 ms.author: evwhite
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 1f5fa328a7a7a2f61647274eba0ba0282a820ec8
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 46e2f60adc895b60370ed7109305bb8966057fa3
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131841892"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402387"
 ---
 # <a name="connect-to-and-manage-an-azure-database-for-postgresql-in-azure-purview"></a>Se connecter à une base de données Azure pour PostgreSQL et la gérer dans Azure Purview
 
-Cet article décrit comment inscrire une base de données Azure pour PostgreSQL, et comment s’authentifier et interagir avec elle dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
+Cet article explique comment inscrire une base de données Azure pour PostgreSQL déployée avec l’option de déploiement monoserveur, et comment s’authentifier et interagir avec elle dans Azure Purview. Pour plus d’informations sur Azure Purview, consultez l’[article d’introduction](overview.md).
 
 ## <a name="supported-capabilities"></a>Fonctionnalités prises en charge
 
@@ -26,6 +26,9 @@ Cet article décrit comment inscrire une base de données Azure pour PostgreSQL,
 | [Oui](#register) | [Oui](#scan)| [Oui](#scan) | [Oui](#scan) | [Oui](#scan) | Non | Non** |
 
 \** La traçabilité est prise en charge si le jeu de données est utilisé en tant que source/récepteur dans une [activité de copie Data Factory](how-to-link-azure-data-factory.md). 
+
+> [!Important]
+>  Purview prend uniquement en charge l’option de déploiement monoserveur pour une base de données Azure pour PostgreSQL. Versions 8.x à 12.x
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -41,7 +44,7 @@ Cette section décrit comment inscrire une base de données Azure pour PostgreSQ
 
 ### <a name="authentication-for-registration"></a>Authentification pour l’inscription
 
-Actuellement, pour gérer une base de données Azure pour PostgreSQL et interagir avec elle, seule l’authentification SQL est prise en charge.
+Pour gérer un serveur unique Azure Database pour PostgreSQL et interagir avec lui, seule l’authentification SQL est prise en charge.
 
 #### <a name="sql-authentication"></a>Authentification SQL
 

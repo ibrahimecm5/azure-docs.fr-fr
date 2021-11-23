@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: zhenlwa
-ms.openlocfilehash: 94df4c9fb17f94c317e46b2bef9d2208fa592884
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9631d083353382177afbb284cd92de53e44e94a4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130271208"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301928"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-web-application-net-framework"></a>Tutoriel : Utiliser la configuration dynamique dans une application web ASP.NET (.NET Framework)
 
@@ -100,7 +100,7 @@ Dans ce tutoriel, vous allez apprendre à :
     ```
     La méthode `Application_Start` est appelée lors de la première demande adressée à votre application web. Elle est appelée une seule fois pendant le cycle de vie de l’application. Il s’agit donc de l’endroit approprié pour initialiser votre objet `IConfiguration` et charger des données à partir d’App Configuration.
 
-    Dans la méthode `ConfigureRefresh`, une clé de votre magasin App Configuration est inscrite pour la supervision des changements. Le paramètre `refreshAll` de la méthode `Register` indique que toutes les valeurs de configuration doivent être actualisées si la clé inscrite change. Dans cette exemple, la clé *TestApp:Settings:Sentinel* est une clé *Sentinel* que vous mettez à jour une fois la modification de toutes les autres clés terminée. Lorsqu'un changement est détecté, votre application actualise toutes les valeurs de configuration. Cette approche permet de garantir la cohérence de la configuration dans votre application par rapport à la supervision de toutes les clés pour les changements.
+    Dans la méthode `ConfigureRefresh`, une clé de votre magasin App Configuration est inscrite pour la supervision des changements. Le paramètre `refreshAll` de la méthode `Register` indique que toutes les valeurs de configuration doivent être actualisées si la clé inscrite change. Dans cette exemple, la clé *TestApp:Settings:Sentinel* est une *clé Sentinel* que vous mettez à jour après avoir changé toutes les autres clés. Lorsqu'un changement est détecté, votre application actualise toutes les valeurs de configuration. Cette approche permet de garantir la cohérence de la configuration dans votre application par rapport à la supervision de toutes les clés pour les changements.
     
     La méthode `SetCacheExpiration` spécifie le temps minimum qui doit s'écouler avant qu'une nouvelle requête puisse être adressée à App Configuration pour rechercher les changements de configuration. Dans cet exemple, vous modifiez le délai d’expiration en remplaçant 30 secondes par 5 minutes. Cela réduit le nombre potentiel de demandes adressées à votre magasin App Configuration.
 

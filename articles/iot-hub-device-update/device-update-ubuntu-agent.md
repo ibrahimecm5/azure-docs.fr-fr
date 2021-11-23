@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8a43995dd125a658e2efd397745a91d7bd822e00
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1cd4ea0d01299b8e361e65a1f8152c4222df3bf0
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226031"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372167"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Tutoriel Device Update pour Azure IoT Hub avec l’agent de package sur Ubuntu Server 18.04 x64
 
 Device Update pour IoT Hub prend en charge deux formes de mise à jour : l’une basée sur une image et l’autre sur un package.
 
-Les mises à jour basées sur un package sont des mises à jour ciblées qui modifient uniquement un composant ou une application spécifique sur l’appareil. Les mises à jour basées sur un package entraînent une baisse de la consommation de bande passante et favorise une réduction du temps de téléchargement et d’installation des mises à jour. Les mises à jour de package permettent généralement de réduire les temps d’arrêt des appareils lors de l’application d’une mise à jour et d’éviter une surcharge liée à la création d’images.
+Les mises à jour basées sur un package sont des mises à jour ciblées qui modifient uniquement un composant ou une application spécifique sur l’appareil. Elles réduisent la consommation de bande passante et permettent de réduire le temps de téléchargement et d’installation des mises à jour. Les mises à jour basées sur un package permettent généralement de réduire les temps d’arrêt des appareils lors de l’application d’une mise à jour et d’éviter une surcharge liée à la création d’images. Elles utilisent un [manifeste apt](device-update-apt-manifest.md) qui fournit à l’agent Device Update les informations dont il a besoin pour télécharger et installer les packages spécifiés dans le fichier manifeste APT (ainsi que leurs dépendances) à partir d’un dépôt désigné.
 
 Ce tutoriel de bout en bout vous guide tout au long de la mise à jour d’Azure IoT Edge sur Ubuntu Server 18.04 x64 à l’aide de l’agent de package Device Update. Ce tutoriel décrit la mise à jour d’IoT Edge, mais vous pouvez procéder de manière similaire pour mettre à jour d’autres packages, comme le moteur de conteneur qu’il utilise.
 
@@ -128,7 +128,7 @@ Lisez les termes du contrat de licence avant d’utiliser un package. Le fait d�
 
 3. Téléchargez le fichier `Edge.package.update.samples.zip` en cliquant dessus.
 
-5. Extrayez le contenu du dossier pour découvrir un exemple de mise à jour et ses manifestes d’importation correspondants. 
+5. Extrayez le contenu du dossier pour découvrir un exemple de [manifeste APT](device-update-apt-manifest.md) et son [manifeste d’importation](import-concepts.md) correspondant. 
 
 2. Dans le portail Azure, sélectionnez l’option Mises à jour de l’appareil sous Gestion automatique des appareils dans la barre de navigation de gauche de votre hub IoT.
 

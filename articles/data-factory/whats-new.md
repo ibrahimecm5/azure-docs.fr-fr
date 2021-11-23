@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: fdec259dc93e52a8bc1271de8af90f4b864afd49
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 52c59662e1dfa97e779cce0b812bcaf25a8494a1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842052"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132301624"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Nouveautés d’Azure Data Factory
 
@@ -25,6 +25,34 @@ Le service Azure Data Factory fait l’objet d’améliorations continues. Pou
 - Modifications planifiées
 
 Cette page est mise à jour tous les mois. Donc, consultez-la régulièrement. 
+
+## <a name="october-2021"></a>Octobre 2021
+<br>
+<table>
+<tr><td><b>Catégorie de service</b></td><td><b>Améliorations du service</b></td><td><b>Détails</b></td></tr>
+  
+<tr><td rowspan=3><b>Flux de données</b></td><td>Connecteurs Amazon Web Services S3 et Azure Data Explorer</td><td>L’équipe d’intégration de données de Microsoft vient de publier deux nouveaux connecteurs pour les flux de données de mappage. Si vous utilisez Azure Synapse, vous pouvez maintenant vous connecter directement à vos compartiments d’AWS S3 pour les transformations de données. Dans Azure Data Factory et Azure Synapse, vous pouvez désormais vous connecter en mode natif à vos clusters Azure Data Explorer dans les flux de données de mappage.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/mapping-data-flow-gets-new-native-connectors/ba-p/2866754">En savoir plus</a></td></tr>
+<tr><td>L’activité Power Query passe de la préversion à la disponibilité générale (GA)</td><td>Microsoft a publié l’activité de pipeline Azure Data Factory Power Query comme étant en disponibilité générale. Cette nouvelle fonctionnalité fournit la préparation de données et le data wrangling avec scale-out pour les intégrateurs citoyens (citizen integrators) à l’intérieur de l’interface utilisateur du navigateur ADF en vue de procurer une expérience intégrée aux ingénieurs Données. La fonctionnalité de data wrangling de Power Query dans ADF fournit une puissante fonctionnalité de pipeline facile à utiliser pour résoudre vos modèles d’intégration de données et ETL les plus complexes dans un seul service.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/data-wrangling-at-scale-with-adf-s-power-query-activity-now/ba-p/2824207">En savoir plus</a></td></tr>
+<tr><td>Nouveau : Stringifier la transformation des données dans le flux de données de mappage</td><td>Le flux de données de mappage ajoute une nouvelle transformation de données appelée « Stringifier » pour faciliter la conversion de types de données complexes tels que des structs et des tableaux sous forme de chaînes qui peuvent être envoyées à des destinations de sortie structurées.<br><a href="data-flow-stringify.md">En savoir plus</a></td></tr>
+  
+<tr>
+  <td rowspan=2><b>Runtime d’intégration</b></td>
+  <td>Disponibilité générale du VNET managé Azure Data Factory</td>
+  <td>Vous pouvez provisionner Azure Integration Runtime dans un réseau virtuel (VNET) managé et utiliser des points de terminaison privés pour établir des connexions sécurisées aux magasins de données pris en charge. Le trafic de données passe alors par des liaisons privées Azure Private Link qui fournissent une connectivité sécurisée à la source de données. En outre, cela empêche l’exfiltration de données vers l’Internet public.<br><a href="managed-virtual-network-private-endpoint.md">En savoir plus</a></td>
+ </tr>
+ <tr>
+   <td>Injection VNet express pour le runtime d’intégration SSIS (préversion publique)</td>
+   <td>Le runtime d’intégration SSIS prend désormais en charge l’injection VNet express.<br>
+En savoir plus :<br>
+     <a href="join-azure-ssis-integration-runtime-virtual-network.md">Vue d’ensemble de l’injection VNet pour le runtime d’intégration SSIS</a><br>
+     <a href="azure-ssis-integration-runtime-virtual-network-configuration.md">Injection VNet standard ou express pour le runtime d’intégration SSIS</a><br>
+     <a href="azure-ssis-integration-runtime-express-virtual-network-injection.md">Injection VNet express pour le runtime d’intégration SSIS</a>
+   </td>
+ </tr>
+
+<tr><td rowspan=2><b>Sécurité</b></td><td>Amélioration de l’intégration Azure Key Vault</td><td>Nous avons amélioré l’intégration Azure Key Vault en ajoutant des listes déroulantes sélectionnables par l’utilisateur pour sélectionner les valeurs de secret dans le service lié, ce qui augmente la productivité et n’oblige pas les utilisateurs à taper les secrets, ce qui peut entraîner une erreur humaine.</td></tr>
+<tr><td>Prise en charge de l’identité managée affectée par l’utilisateur dans Azure Data Factory</td><td>La sécurité des informations d’identification est essentielle pour toute entreprise. Dans cette optique, l’équipe Azure Data Factory (ADF) s’engage à rendre le processus d’engineering données sécurisé, mais simple pour les ingénieurs Données. Nous sommes ravis d’annoncer la prise en charge de l’identité managée affectée par l’utilisateur (préversion) dans tous les connecteurs/services liés prenant en charge l’authentification basée sur Azure Active Directory (Azure AD).<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/support-for-user-assigned-managed-identity-in-azure-data-factory/ba-p/2841013">En savoir plus</a></td></tr>
+</table>
 
 ## <a name="september-2021"></a>Septembre 2021
 <br>

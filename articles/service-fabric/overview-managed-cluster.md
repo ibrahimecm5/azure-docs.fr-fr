@@ -3,12 +3,12 @@ title: Clusters managés Service Fabric
 description: Les clusters managés Service Fabric sont une évolution du modèle de ressource de cluster Azure Service Fabric qui simplifie le déploiement et la gestion de cluster.
 ms.topic: overview
 ms.date: 10/22/2021
-ms.openlocfilehash: 2b0b0b79899acaf0b4be3b05f52fceadf8acf54d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5c94254e470e625a844b345c452e252fcd69b626
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131055043"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308121"
 ---
 # <a name="service-fabric-managed-clusters"></a>Clusters managés Service Fabric
 
@@ -70,17 +70,8 @@ Les clusters managés Service Fabric sont disponibles la fois dans les SKU de ba
 
 ## <a name="feature-support"></a>Prise en charge des fonctionnalités
 
-Les fonctionnalités des clusters managés vont continuer à évoluer. Actuellement, elles prennent en charge ce qui suit :
+Les fonctionnalités des clusters managés vont continuer à évoluer. Pour plus d’informations, consultez la [documentation sur les options de configuration des clusters managés](how-to-managed-cluster-configuration.md) ou les [modèles Bicep et ARM](/azure/templates/microsoft.servicefabric/allversions).
 
-* [Déploiement d’applications à l’aide de modèles ARM](how-to-managed-cluster-app-deployment-template.md)
-* [Secrets de l’application](how-to-managed-cluster-application-secrets.md)
-* [Mises à niveau automatiques de l’image du système d’exploitation](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades)
-* [Répartition des zones de disponibilité](how-to-managed-cluster-availability-zones.md)
-* Sélection du [chiffrement de disque](how-to-enable-managed-cluster-disk-encryption.md) et du [type de disque managé](how-to-managed-cluster-managed-disk.md)
-* Prise en charge des identités managées pour les [types de nœuds](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) de cluster managés et l’[authentification des applications](how-to-managed-cluster-application-managed-identity.md)
-* [Règles NSG et autres options réseau](how-to-managed-cluster-networking.md)
-* [Types de nœuds sans état uniquement](how-to-managed-cluster-stateless-node-type.md)
-* [Extensions de groupes de machines virtuelles identiques](how-to-managed-cluster-vmss-extension.md) pour les types de nœuds
 
 ## <a name="next-steps"></a>Étapes suivantes
 

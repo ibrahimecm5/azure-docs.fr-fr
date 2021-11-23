@@ -3,15 +3,15 @@ title: Qu’est-ce que le streaming d’applications distantes Azure Virtual Des
 description: Une présentation du streaming d’applications distantes Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/06/2021
+ms.date: 11/12/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e1ff4cba43c1e57c39b5e47e2485a262f66bbb5f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c13996fd5c8373ebe0897fa9caa57a2d94600c1b
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032977"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399520"
 ---
 # <a name="what-is-azure-virtual-desktop-remote-app-streaming"></a>Qu’est-ce que le streaming d’applications distantes Azure Virtual Desktop ?
 
@@ -68,6 +68,7 @@ Une fois que vous avez configuré Azure Virtual Desktop, vous disposez de nombre
 - [Procéder à la mise à l'échelle des hôtes de session à l'aide d'Azure Automation](../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [Configurer l’impression universelle](/universal-print/fundamentals/universal-print-getting-started)
 - [Configurer la fonctionnalité Démarrer la machine virtuelle à la connexion](../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Baliser les ressources Azure Virtual Desktop pour gérer les coûts](../tag-virtual-desktop-resources.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 
 ## <a name="get-to-know-your-azure-virtual-desktop-deployment"></a>Découverte de votre déploiement Azure Virtual Desktop
 

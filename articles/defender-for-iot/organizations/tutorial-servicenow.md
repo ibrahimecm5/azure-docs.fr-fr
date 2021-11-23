@@ -1,21 +1,21 @@
 ---
-title: Intégrer ServiceNow à Azure Defender pour IoT
-description: Dans ce tutoriel, vous allez découvrir comment intégrer ServiceNow à Azure Defender pour IoT.
+title: Intégrer ServiceNow à Microsoft Defender pour IoT
+description: Dans ce tutoriel, vous allez découvrir comment intégrer ServiceNow à Microsoft Defender pour IoT.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 07/27/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 5f4fe7e30fef715bdd09380b7b7bb9ad342571ae
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9b01aa92848bc69bff37dc75be8e59350bc9f3f3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130229348"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343550"
 ---
-# <a name="tutorial-integrate-servicenow-with-azure-defender-for-iot"></a>Tutoriel : Intégrer ServiceNow à Azure Defender pour IoT
+# <a name="tutorial-integrate-servicenow-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer ServiceNow à Microsoft Defender pour IoT
 
-Ce tutoriel va vous permettre de découvrir comment intégrer ServiceNow à Azure Defender pour IoT et comment l’utiliser.
+Ce tutoriel va vous permettre de découvrir comment intégrer ServiceNow à Microsoft Defender pour IoT et comment l’utiliser.
 
 L’intégration de Defender pour IoT avec ServiceNow offre un nouveau niveau de visibilité, de surveillance et de contrôle centralisés pour le paysage IoT et OT. Ces plateformes reliées par un pont activent la visibilité automatisée des appareils et la gestion des menaces pour les appareils ICS et IoT qui n’étaient pas accessibles précédemment.
 
@@ -162,7 +162,7 @@ Vérifiez que la console de gestion locale est connectée à l’instance Servic
 
 :::image type="content" source="media/tutorial-servicenow/sync-confirmation.png" alt-text="Capture d’écran de la communication qui se produit lors de l’examen de la dernière synchronisation.":::
 
-## <a name="set-up-the-integrations-using-a-https-proxy"></a>Configurer les intégrations en utilisant un proxy HTTPS
+## <a name="set-up-the-integrations-using-an-https-proxy"></a>Configurer les intégrations en utilisant un proxy HTTPS
 
 Lors de la configuration de l’intégration de Defender pour IoT et ServiceNow, la console de gestion locale et le serveur ServiceNow communiquent à l’aide du port 443. Si le serveur ServiceNow se trouve derrière le proxy, le port par défaut ne peut pas être utilisé.
 

@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 11/04/2021
-ms.openlocfilehash: a139996e881d38fb9170242196b2139993f501ae
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 94bd9d22876f264ffd438d579c48aa037ed87c3f
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028805"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486627"
 ---
 # <a name="quickstart-purchase-commitment-tier-pricing"></a>Guide de démarrage rapide : acheter avec des tarifs basés sur le niveau d’engagement
 
@@ -97,7 +97,7 @@ Si vous avez besoin d’un plan d’engagement plus important que ceux proposés
 
 ## <a name="end-a-commitment-plan"></a>Mettre fin à un plan d’engagement
 
-Si vous décidez d’arrêter un plan d’engagement, sélectionnez **Ne pas renouveler automatiquement** pour votre ressource. Votre plan d’engagement expire à la date de fin de l’engagement affichée. Après cette date, le plan d’engagement ne vous est plus facturé. Vous pouvez continuer à utiliser la ressource Azure pour effectuer des appels d’API, mais vous êtes facturé au tarif du paiement à l’utilisation.
+Si vous décidez d’arrêter un plan d’engagement, sélectionnez **Ne pas renouveler automatiquement** pour votre ressource. Votre plan d’engagement expire à la date de fin de l’engagement affichée. Après cette date, le plan d’engagement ne vous est plus facturé. Vous pouvez continuer à utiliser la ressource Azure pour effectuer des appels d’API, en étant facturé au tarif du paiement à l’utilisation. Vous avez jusqu’à minuit (UTC) le dernier jour de chaque mois pour mettre fin à un plan d’engagement et ne pas être facturé pour le mois suivant. 
 
 ## <a name="see-also"></a>Voir aussi
 

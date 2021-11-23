@@ -9,20 +9,20 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: jairoc
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c12dea04fe603be370947ef0bae3c9db28335a01
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4b76ade4b47417cb6c3d4f65daa335553c7a4b83
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624004"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179186"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Didacticiel : Joindre un nouvel appareil Windows 10 à Azure AD lors de la première utilisation
 
 La fonction de gestion des appareils intégrée à Azure Active Directory (Azure AD) vous permet de vous assurer que vos utilisateurs accèdent à vos ressources à partir d’appareils qui répondent à vos normes de conformité et de sécurité. Pour plus d’informations, consultez [Présentation de la gestion des appareils dans Azure Active Directory](overview.md).
 
-Dans Windows 10, vous pouvez joindre un nouvel appareil à Azure AD dès la première utilisation.  
+Dans Windows 10, vous pouvez joindre un nouvel appareil à Azure AD pendant la première utilisation OOBE.  
 Ainsi, vous pouvez distribuer des appareils neufs à vos employés ou étudiants.
 
 Si Windows 10 Professionnel ou Windows 10 Entreprise est installé sur un appareil, le processus exécuté par défaut est l’installation pour les appareils d’entreprise.
@@ -48,16 +48,16 @@ De plus, si votre locataire est fédéré, votre fournisseur d’identité DOIT 
 1. Lorsque vous mettez sous tension votre nouveau périphérique et démarrez le processus d'installation, le message **Préparation** s’affiche. Suivez les invites pour configurer votre appareil.
 1. Commencez par personnaliser votre région et votre langue. Ensuite, acceptez les termes du contrat de licence du logiciel Microsoft.
  
-    ![Personnalisation pour votre région](./media/azuread-joined-devices-frx/01.png)
+    <!--![Customize for your region](./media/azuread-joined-devices-frx/01.png)-->
 
 1. Sélectionnez le réseau que vous souhaitez utiliser pour la connexion à Internet.
 1. Cliquez sur **Cet appareil appartient à mon organisation**. 
 
-    ![Écran « À qui appartient cet appareil ? »](./media/azuread-joined-devices-frx/02.png)
+    <!--![Who owns this PC screen](./media/azuread-joined-devices-frx/02.png)-->
 
 1. Entrez les informations d’identification que vous a fournies votre organisation, puis cliquez sur **Se connecter**.
 
-    ![Écran de connexion](./media/azuread-joined-devices-frx/03.png)
+    <!--![Sign-in screen](./media/azuread-joined-devices-frx/03.png)-->
 
 1. Votre appareil localise un locataire correspondant dans Azure AD. Si vous faites partie d’un domaine fédéré, vous êtes redirigé vers votre serveur STS (Secure Token Service) local, par exemple les services de fédération Azure Directory (AD FS).
 1. Si vous êtes un utilisateur dans des domaines non fédérés, entrez vos informations d'identification directement sur la page hébergée sur Azure AD. 

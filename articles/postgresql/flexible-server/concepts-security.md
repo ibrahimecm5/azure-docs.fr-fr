@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/01/2021
-ms.openlocfilehash: 26403d2de9fe0a4235dc1460f13adcd78e595e77
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: f31c013bbdf12f34cd73495e3885e17a35b368ef
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131867016"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312283"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sécurité dans Azure Database pour PostgreSQL - Serveur flexible
 
@@ -81,7 +81,7 @@ oid            | 24827
 La [journalisation d’audit](concepts-audit.md) est également disponible avec le serveur flexible pour suivre l’activité de vos bases de données. 
 
 > [!NOTE]
-> Azure Database pour PostgreSQL - Serveur flexible ne prend pas en charge la [protection Azure Defender](../../security-center/azure-defender.md). 
+> Azure Database pour PostgreSQL - Serveur flexible ne prend pas en charge la [protection Microsoft Defender pour le cloud](../../security-center/azure-defender.md). 
 
 ## <a name="updating-passwords"></a>Mises à jour des mots de passe
 

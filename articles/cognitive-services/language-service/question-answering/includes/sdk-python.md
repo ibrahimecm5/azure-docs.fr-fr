@@ -1,34 +1,38 @@
 ---
-title: 'Démarrage rapide : bibliothèque de client de réponses aux questions personnalisées pour Python'
-description: Ce guide de démarrage rapide montre comment commencer à utiliser la bibliothèque de client QnA Maker pour Python.
+title: 'Démarrage rapide : Bibliothèque de client de réponses aux questions pour Python'
+description: Ce guide de démarrage rapide vous montre comment bien démarrer avec la bibliothèque de client de réponses aux questions pour Python.
 ms.topic: include
-ms.date: 11/02/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: cdca2bce7a2731d4a819bd9e24d8aba5ab61b782
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 11/11/2021
+ms.openlocfilehash: 0aa0f65e9a277cbcb28870b970ead3e357057b2f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029024"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132354064"
 ---
-Utilisez la bibliothèque de client de réponses aux questions personnalisées pour Python afin de :
+Utilisez ce guide de démarrage rapide pour la bibliothèque de client de réponses aux questions pour Python pour :
 
-* Créer une base de connaissances
-* Mettre à jour une base de connaissances
-* Publier une base de connaissances
-* Attendre l’exécution d’une tâche de longue durée
-* Télécharger une base de connaissances
-* Obtenir une réponse d’une base de connaissances
-* Supprimer une base de connaissances
+* Obtenir une réponse d’une base de connaissances.
+* Revoir une réponse à partir d’un corps de texte que vous envoyez avec votre question.
+* Obtenir le score de confiance pour la réponse à votre question.
 
-[Documentation de référence](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker) | [Code source de la bibliothèque](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [Package (PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Exemples Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/QnAMaker/sdk/preview-sdk/quickstart.py)
+[Documentation de référence sur l’API][questionanswering_refdocs] | [Code source][questionanswering_client_src] | [Package (PyPI)][questionanswering_pypi_package] | [Exemples Python][questionanswering_samples] |
+
+[questionanswering_client_class]: https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.html#azure.ai.language.questionanswering.QuestionAnsweringClient
+[questionanswering_client_src]: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/cognitivelanguage/azure-ai-language-questionanswering/
+[questionanswering_pypi_package]: https://pypi.org/project/azure-ai-language-questionanswering/
+[questionanswering_refdocs]: https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.html
+[questionanswering_samples]: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/cognitivelanguage/azure-ai-language-questionanswering/samples/README.md
 
 ## <a name="prerequisites"></a>Prérequis
 
 * Abonnement Azure - [En créer un gratuitement](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
-* * Les questions et réponses personnalisées nécessitent une [ressource Langage](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics) avec la fonctionnalité de réponses aux questions personnalisées activée pour générer une clé d’API et un point de terminaison.
-    * Après le déploiement de votre ressource de langage, sélectionnez **Accéder à la ressource**. Vous aurez besoin de la clé et du point de terminaison de la ressource que vous créez pour connecter votre application à l’API QnA Maker. Collez votre clé et votre point de terminaison dans le code ci-dessous, plus loin dans le guide de démarrage rapide.
+* Les réponses aux questions nécessitent une [ressource Langage](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics) avec la fonctionnalité de réponses aux questions personnalisées activée pour générer une clé d’API et un point de terminaison.
+    * Après le déploiement de votre ressource de langage, sélectionnez **Accéder à la ressource**. Vous avez besoin de la clé et du point de terminaison de la ressource que vous créez pour vous connecter à l’API. Collez votre clé et votre point de terminaison dans le code ci-dessous, plus loin dans le guide de démarrage rapide.
+* Une base de connaissances existante à interroger. Si vous n’avez pas configuré de base de connaissances, vous pouvez suivre les instructions du [**Guide de démarrage rapide de Language Studio**](../quickstart/sdk.md). Ou ajoutez une base de connaissances qui utilise cette [URL du guide d’utilisation de Surface](https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf) comme source de données.
 
 ## <a name="setting-up"></a>Configuration
 
@@ -37,128 +41,142 @@ Utilisez la bibliothèque de client de réponses aux questions personnalisées p
 Après avoir installé Python, vous pouvez installer la bibliothèque de client avec :
 
 ```console
-pip install azure-cognitiveservices-knowledge-qnamaker
+pip install azure-ai-language-questionanswering
 ```
-
-### <a name="create-a-new-python-application"></a>Créer une application Python
-
-Créez un fichier Python nommé `quickstart-file.py` et importez les bibliothèques suivantes.
-
-[!code-python[Dependencies](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=Dependencies)]
-
-Créez des variables pour le point de terminaison et la clé Azure de votre ressource.
-
-<!-- TODO: Replace Link
-
-- We use subscription key and authoring key interchangeably. For more details on authoring key, follow [Keys](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
-
--->
-
-- Le format de la valeur de QNA_MAKER_ENDPOINT est `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Accédez au portail Azure, puis recherchez la ressource linguistique que vous avez créée à l’étape des prérequis. Sélectionnez la page **Clés et point de terminaison**, sous **Gestion des ressources** pour trouver la clé de création (abonnement) et le point de terminaison.
-
-    > [!div class="mx-imgBorder"]
-    > ![Point de terminaison de création de questions-réponses personnalisées](../../../qnamaker/media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
- 
-- Pour la production, envisagez d’utiliser une méthode de stockage et d’accès sécurisée pour vos informations d’identification. Par exemple, [Azure Key Vault](../../../../key-vault/general/overview.md) fournit un stockage de clé sécurisé.
-
-    [!code-python[Resource variables](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=Resourcevariables)]
-
-## <a name="object-models"></a>Modèles objet
-
-[QnA Maker](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker) utilise le modèle objet suivant :
-* **[QnAMakerClient](#qnamakerclient-object-model)** est l’objet utilisé pour créer, gérer, publier, télécharger et interroger la base de connaissances.
-
-[!INCLUDE [Get KBinformation](../../../qnamaker/includes/quickstart-sdk-cognitive-model.md)]
-
-### <a name="qnamakerclient-object-model"></a>Modèle objet QnAMakerClient
-
-Le client QnA Maker de création est un objet [QnAMakerClient](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qn_amaker_client.qnamakerclient) qui s’authentifie auprès d’Azure à l’aide de Microsoft.Rest.ServiceClientCredentials, qui contient votre clé.
-
-Une fois le client créé, utilisez la propriété [Knowledge base](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations) pour créer, gérer et publier votre base de connaissances.
-
-Gérez votre base de connaissances en envoyant un objet JSON. Pour les opérations immédiates, une méthode retourne généralement un objet JSON indiquant l’état. Pour les opérations de longue durée, la réponse est l’ID d’opération. Appelez la méthode [operations.get_details](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations#get-details-kb-id--custom-headers-none--raw-false----operation-config-) avec l’ID d’opération pour déterminer l’[état de la requête](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype).
-
-### <a name="qnamakerruntimeclient-object-model"></a>Modèle objet QnAMakerRuntimeClient
-
-La réponse à une question personnalisée ne nécessite pas l’utilisation de l’objet QnAMakerRuntimeClient. Vous appelez plutôt [generate_answer](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations#generate-answer-kb-id--generate-answer-payload--custom-headers-none--raw-false----operation-config-) directement sur l’objet [QnAMakerClient](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qn_amaker_client.qnamakerclient).
-
-## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Authentifier le client pour la création de la base de connaissances
-
-Instanciez un client avec votre point de terminaison et la clé. Créez un objet CognitiveServicesCredentials avec votre clé et utilisez-le avec votre point de terminaison pour créer un objet [QnAMakerClient](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qn_amaker_client.qnamakerclient).
-
-[!code-python[Authorization to resource key](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=AuthorizationAuthor)]
-
-## <a name="create-a-knowledge-base"></a>Créer une base de connaissances
-
-Utilisez l’objet client pour obtenir un objet [knowledge base operations](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations).
-
-Une base de connaissances stocke des paires de questions et réponses pour l’objet [CreateKbDTO](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.createkbdto) à partir de trois sources :
-
-* Pour le **contenu éditorial**, utilisez l'objet [QnADTO](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.qnadto).
-    * Pour utiliser les métadonnées et les invites de suivi, utilisez le contexte éditorial, car cette donnée est ajoutée au niveau de chaque paire question/réponse.
-* Pour les **fichiers**, utilisez l'objet [FileDTO](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.filedto). FileDTO contient le nom de fichier et l’URL publique d’accès au fichier.
-* Pour les **URL**, utilisez une liste de chaînes pour représenter les URL disponibles publiquement.
-
-Appelez la méthode [create](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations#create-create-kb-payload--custom-headers-none--raw-false----operation-config-), puis passer l’ID d’opération retourné à la méthode [Operations.getDetails](#get-status-of-an-operation) pour interroger l’état.
-
-La dernière ligne du code suivant retourne l’ID de la base de connaissances à partir de la réponse de MonitorOperation.
-
-[!code-python[Create knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=CreateKBMethod)]
-
-Veillez à inclure la fonction [`_monitor_operation`](#get-status-of-an-operation), référencée dans le code ci-dessus, afin de créer une base de connaissances.
-
-## <a name="update-a-knowledge-base"></a>Mettre à jour une base de connaissances
-
-Vous pouvez mettre à jour une base de connaissances en passant l’ID de celle-ci et un [UpdateKbOperationDTO](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdto) contenant des objets DTO [add](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoadd), [update](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoupdate) et [delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtodelete) à la méthode [update](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations). Utilisez la méthode [Operation.getDetail](#get-status-of-an-operation) pour déterminer si la mise à jour a réussi.
-
-[!code-python[Update a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=UpdateKBMethod)]
-
-Veillez à inclure la fonction [`_monitor_operation`](#get-status-of-an-operation), référencée dans le code ci-dessus, afin de mettre à jour une base de connaissances.
-
-## <a name="download-a-knowledge-base"></a>Télécharger une base de connaissances
-
-Utilisez la méthode [download](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations) pour télécharger la base de données sous la forme d’une liste de [QnADocumentsDTO](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto). Ceci n'est _pas_ équivalent à l’exportation à partir de la page **Paramètres** du portail QnA Maker, car le résultat de cette méthode n’est pas un fichier TSV.
-
-[!code-python[Download a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=DownloadKB)]
-
-## <a name="publish-a-knowledge-base"></a>Publier une base de connaissances
-
-Publiez la base de connaissances à l’aide de la méthode [publish](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations#publish-kb-id--custom-headers-none--raw-false----operation-config-). Celle-ci prend le modèle actuel enregistré et entraîné, référencé par l’ID de base de connaissances, et le publie sur un point de terminaison.
-
-[!code-python[Publish a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=PublishKB)]
 
 ## <a name="query-a-knowledge-base"></a>Interroger une base de connaissances
 
-### <a name="generate-an-answer-from-the-knowledge-base"></a>Générer une réponse à partir de la base de connaissances
+### <a name="generate-an-answer-from-a-knowledge-base"></a>Générer une réponse à partir d’une base de connaissances
 
-Générez une réponse à partir d’une base de connaissances publiée en utilisant la méthode [generate_answer](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations#generate-answer-kb-id--generate-answer-payload--custom-headers-none--raw-false----operation-config-). Cette méthode accepte l’ID de la base de connaissances et [QueryDTO](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.querydto). Accédez à des propriétés supplémentaires de QueryDTO comme Top et Context, que vous pouvez utiliser dans votre chat bot.
+L’exemple ci-dessous vous permet d’interroger une base de connaissances avec [get_answers](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.html#azure.ai.language.questionanswering.QuestionAnsweringClient.get_answers) pour obtenir une réponse à votre question. Vous pouvez copier ce code dans un fichier .py dédié ou dans une cellule dans [Jupyter Notebook/Lab](https://jupyter.org/).
 
-[!code-python[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=GenerateAnswer)]
+Vous devrez mettre à jour le code ci-dessous et fournir vos propres valeurs pour les variables suivantes.
 
-<!-- TODO: Replace Link
-This is a simple example of querying the knowledge base. To understand advanced querying scenarios, review [other query examples](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md?pivots=url-test-tool-curl#use-curl-to-query-for-a-chit-chat-answer).
--->
+|Nom de la variable | Valeur |
+|--------------------------|-------------|
+| `endpoint`               | Cette valeur se trouve dans la section **Clés et point de terminaison** quand vous examinez votre ressource à partir du portail Azure. Vous pouvez également trouver la valeur dans **Language Studio** > **Réponses aux questions** > **Déployer la base de connaissances** > **Obtenir une URL de prédiction**. Voici un exemple de point de terminaison : `https://southcentralus.api.cognitive.microsoft.com/`|
+| `credential` | Cette valeur se trouve dans la section **Clés et point de terminaison** quand vous examinez votre ressource à partir du portail Azure. Vous pouvez utiliser Key1 ou Key2. Toujours avoir deux clés valides pour la permutation de clés sécurisée sans temps d’arrêt. Vous pouvez également trouver la valeur dans **Language Studio** > **Réponses aux questions** > **Déployer la base de connaissances** > **Obtenir une URL de prédiction**. La valeur de clé fait partie de l’exemple de demande.|
+| `knowledge_base_project` | Nom de votre projet de réponses aux questions.|
+| `deployment`             | Il existe deux valeurs possibles : `test` et `production`. `production` dépend de la façon dont vous avez déployé votre base de connaissances à partir de **Language Studio** > **Réponses aux questions** > **Déployer la base de connaissances**.|
 
-## <a name="delete-a-knowledge-base"></a>Supprimer une base de connaissances
+```python
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.language.questionanswering import QuestionAnsweringClient
 
-Supprimez la base de connaissances à l’aide de la méthode [delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations#delete-kb-id--custom-headers-none--raw-false----operation-config-) avec comme paramètre l’ID de la base de connaissances.
+endpoint = "https://{YOUR-ENDPOINT}.api.cognitive.microsoft.com/"
+credential = AzureKeyCredential("{YOUR-LANGUAGE-RESOURCE-KEY}")
+knowledge_base_project = "{YOUR-PROJECT-NAME}"
+deployment = "production"
 
-[!code-python[Delete a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=DeleteKB)]
+def main():
+    client = QuestionAnsweringClient(endpoint, credential)
+    with client:
+        question="How much battery life do I have left?"
+        output = client.get_answers(
+            question = question,
+            project_name=knowledge_base_project,
+            deployment_name=deployment
+        )
+    print("Q: {}".format(question))
+    print("A: {}".format(output.answers[0].answer))
 
-## <a name="get-status-of-an-operation"></a>Obtenir l’état d’une opération
-
-Certaines méthodes, telles que Create et Update, peuvent prendre tellement de temps qu’au lieu d’attendre que le processus se termine, une [opération](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)) est retournée. Utilisez l’ID de l’opération pour interroger (avec une logique de nouvelle tentative) afin de déterminer l’état de la méthode d’origine.
-
-L’appel _setTimeout_ dans le bloc de code suivant est utilisé pour simuler le code asynchrone. Remplacez cela par la logique de nouvelle tentative.
-
-[!code-python[Monitor an operation](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/preview-sdk/quickstart.py?name=MonitorOperation)]
-
-## <a name="run-the-application"></a>Exécution de l'application
-
-Exécutez l’application avec la commande python de votre fichier de démarrage rapide.
-
-```console
-python quickstart-file.py
+if __name__ == '__main__':
+    main()
 ```
 
-Le code source de cet exemple est disponible sur [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/QnAMaker/sdk/preview-sdk/quickstart.py).
+Tandis que nous programmons en dur les variables pour notre exemple. Pour la production, envisagez d’utiliser une méthode de stockage et d’accès sécurisée pour vos informations d’identification. Par exemple, [Azure Key Vault](../../../../key-vault/general/overview.md) fournit un stockage de clé sécurisé.
+
+Quand vous exécutez le code ci-dessus, si vous utilisez la source de données à partir des prérequis, vous obtenez une réponse qui se présente comme suit :
+
+```
+Q: How much battery life do I have left?
+A: If you want to see how much battery you have left, go to **Start  **> **Settings  **> **Devices  **> **Bluetooth & other devices  **, then find your pen. The current battery level will appear under the battery icon.
+```
+
+Pour plus d’informations sur la façon de connaître le degré de confiance des réponses aux questions quant au fait qu’il s’agit de la réponse appropriée, ajoutez une instruction print sous les instructions print existantes :
+
+```python
+print("Q: {}".format(question))
+print("A: {}".format(output.answers[0].answer))
+print("Confidence Score: {}".format(output.answers[0].confidence_score)) # add this line 
+```
+
+Vous recevrez maintenant un résultat avec un score de confiance :
+
+```
+Q: How much battery life do I have left?
+A: If you want to see how much battery you have left, go to **Start  **> **Settings  **> **Devices  **> **Bluetooth & other devices  **, then find your pen. The current battery level will appear under the battery icon.
+Confidence Score: 0.9185
+```
+
+Le score de confiance retourne une valeur comprise entre 0 et 1. Vous pouvez considérer cela comme un pourcentage et le multiplier par 100. Ainsi, un score de confiance de 0,9185 signifie que, d’après les réponses aux questions, il existe 91,85 % de chance qu’il s’agisse de la bonne réponse à la question en fonction de la base de connaissances.
+
+Si vous souhaitez exclure les réponses où le score de confiance est inférieur à un certain seuil, vous pouvez modifier [AnswerOptions](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.models.html#azure.ai.language.questionanswering.models.AnswersOptions) pour ajouter le paramètre `confidence_threshold`.
+
+```python
+        output = client.get_answers(
+            confidence_threshold = 0.95, #add this line
+            question = question,
+            project_name=knowledge_base_project,
+            deployment_name=deployment
+        )
+```
+
+Notre score de confiance étant de `.9185` d’après notre précédente exécution du code, la définition du seuil sur `.95` entraînera le retour de la [réponse par défaut](../how-to/change-default-answer.md).
+
+```
+Q: How much battery life do I have left?
+A: No good match found in KB
+Confidence Score: 0.0
+```
+
+## <a name="query-text-without-a-knowledge-base"></a>Interroger un texte sans base de connaissances
+
+Vous pouvez également utiliser les réponses aux questions sans base de connaissances avec [get_answers_from_text](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.html#azure.ai.language.questionanswering.QuestionAnsweringClient.get_answers_from_text). Dans ce cas, vous fournissez aux réponses aux questions une question et les enregistrements de texte dans lesquels vous souhaitez rechercher une réponse au moment où la demande est envoyée.
+
+Pour cet exemple, vous devez uniquement modifier les variables pour `endpoint` et `credential`.
+
+```python
+import os
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.language.questionanswering import QuestionAnsweringClient
+from azure.ai.language.questionanswering import models as qna
+
+endpoint = "https://{YOUR-ENDPOINT}.api.cognitive.microsoft.com/"
+credential = AzureKeyCredential("YOUR-LANGUAGE-RESOURCE-KEY")
+
+def main():
+    client = QuestionAnsweringClient(endpoint, credential)
+    with client:
+        question="How long does it takes to charge a surface?"
+        input = qna.AnswersFromTextOptions(
+            question=question,
+            text_documents=[
+                "Power and charging. It takes two to four hours to charge the Surface Pro 4 battery fully from an empty state. " +
+                "It can take longer if you're using your Surface for power-intensive activities like gaming or video streaming while you're charging it.",
+                "You can use the USB port on your Surface Pro 4 power supply to charge other devices, like a phone, while your Surface charges. " +
+                "The USB port on the power supply is only for charging, not for data transfer. If you want to use a USB device, plug it into the USB port on your Surface.",
+            ]
+        )
+
+
+        output = client.get_answers_from_text(input)
+
+    best_answer = [a for a in output.answers if a.confidence > 0.9][0]
+    print(u"Q: {}".format(input.question))
+    print(u"A: {}".format(best_answer.answer))
+    print("Confidence Score: {}".format(output.answers[0].confidence))
+
+if __name__ == '__main__':
+    main()
+```
+
+Vous pouvez copier ce code dans un fichier .py dédié ou dans une nouvelle cellule dans [Jupyter Notebook/Lab](https://jupyter.org/). Cet exemple retourne le résultat suivant :
+
+```
+Q: How long does it takes to charge surface?
+A: Power and charging. It takes two to four hours to charge the Surface Pro 4 battery fully from an empty state. It can take longer if you're using your Surface for power-intensive activities like gaming or video streaming while you're charging it.
+Confidence Score: 0.9254655838012695
+```
+
+Dans ce cas, nous parcourons toutes les réponses et retournons uniquement la réponse avec le score de confiance le plus élevé qui est supérieur à 0,9. Pour en savoir plus sur les options disponibles avec [get_answers_from_text](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.html#azure.ai.language.questionanswering.QuestionAnsweringClient.get_answers_from_text), passez en revue les [paramètres AnswersFromTextOptions](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-language-questionanswering/1.0.0/azure.ai.language.questionanswering.models.html#azure.ai.language.questionanswering.models.AnswersFromTextOptions).

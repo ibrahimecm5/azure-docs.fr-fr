@@ -5,12 +5,12 @@ ms.author: palatter
 ms.date: 10/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: bc61f84c8ad131fec503ac81b84d70af881dfb02
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d87849dc85264f9a4066acabc55d613e1b47e127
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130288433"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134000"
 ---
 ## <a name="prerequisites"></a>Prérequis
 
@@ -34,8 +34,7 @@ Nommez le projet `UILibraryQuickStart`, puis sélectionnez `Storyboard` dans la 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installer le package et les dépendances avec CocoaPods
 
 1. Créez un Podfile dans le répertoire racine de votre projet en exécutant `pod init`.
-1. 
-1. Ajoutez le code suivant à votre Podfile :
+2. Ajoutez le code suivant à votre Podfile :
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
@@ -64,6 +63,10 @@ Cliquez avec le bouton droit sur l’entrée `Info.plist` de l’arborescence du
 <key>NSMicrophoneUsageDescription</key>
 <string></string>
 ```
+
+Pour vérifier que la demande d’autorisation est correctement ajoutée, affichez `Info.plist` en utilisant **Open As** > **Property List** (Ouvrir en tant que > Liste des propriétés) ; vous devriez voir ce qui suit :
+
+![Capture d’écran montrant la confidentialité liée à l’utilisation de l’appareil photo et du microphone dans Xcode.](../../media/xcode-info-plist.png)
 
 ### <a name="turn-off-bitcode"></a>Désactiver `Bitcode`
 Définissez l’option `Enable Bitcode` sur `No` dans les paramètres `Build Settings` du projet. Pour trouver ce paramètre, vous devez modifier le filtre en remplaçant `Basic` par `All`. Vous pouvez également utiliser la barre de recherche située à droite.
@@ -108,7 +111,7 @@ class ViewController: UIViewController {
 
         let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
                                        displayName: "<DISPLAY_NAME>",
-                                       groupId: "<GROUP_CALL_ID>")
+                                       groupId: UUID(uuidString: "<GROUP_CALL_ID>")!)
         callComposite?.launch(with: options)
     }
 }
@@ -172,8 +175,10 @@ Selon le type d’appel/de réunion que vous souhaitez configurer, utilisez l’
 Initialisez une instance de `GroupCallOptions` dans la fonction `startCallComposite`. Remplacez `<GROUP_CALL_ID>` par votre ID de groupe de l’appel et `<DISPLAY_NAME>` par votre nom.
 
 ```swift
+// let uuid = UUID() to create a new call
+let uuid = UUID(uuidString: "<GROUP_CALL_ID>")!
 let options = GroupCallOptions(communicationTokenCredential: communicationTokenCredential,
-                               displayName: displayName,
+                               displayName: "<DISPLAY_NAME>",
                                groupId: uuid)
 ```
 
@@ -183,8 +188,8 @@ Initialisez une instance de `TeamsMeetingOptions` dans la fonction `startCallCom
 
 ```swift
 let options = TeamsMeetingOptions(communicationTokenCredential: communicationTokenCredential,
-                                  displayName: displayName,
-                                  meetingLink: link)
+                                  displayName: "<DISPLAY_NAME>",
+                                  meetingLink: "<TEAMS_MEETING_LINK>")
 ```
 
 #### <a name="get-a-microsoft-teams-meeting-link"></a>Obtenir un lien de réunion Microsoft Teams

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: overview
-ms.openlocfilehash: 0016e3129a755b86acff2dfb1907f0ffcb62b569
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: cd1c12eaf4c4d5df575c7774386da007c9124712
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131564192"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549828"
 ---
 # <a name="prerequisites-to-deploy-the-data-controller-in-direct-connectivity-mode"></a>Prérequis en vue de déployer le contrôleur de données en mode de connectivité directe
 
@@ -35,7 +35,8 @@ Pour connecter votre cluster kubernetes à Azure, utilisez Azure CLI `az` avec l
 
 ### <a name="install-tools"></a>Installer des outils
 
-- Installez Azure CLI ou mettez-le à niveau vers sa version la plus récente ([installation](/sql/azdata/install/deploy-install-azdata)) 
+- Helm version 3.3+ ([installation](https://helm.sh/docs/intro/install/))
+- Installer la dernière version d’Azure CLI ou effectuer la mise à jour ([télécharger](https://aka.ms/installazurecliwindows))
 
 ### <a name="add-extensions-for-azure-cli"></a>Ajouter des extensions pour Azure CLI
 

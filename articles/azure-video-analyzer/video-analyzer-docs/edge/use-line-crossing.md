@@ -4,12 +4,12 @@ description: Ce guide de démarrage rapide vous montre comment utiliser Azure Vi
 ms.topic: tutorial
 ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: faa8053ed2d6dbc2b1df0917fcb08dd308fb1910
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 163dcc488de80a81b8ab9defdbdb7b84dfdbd302
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131552598"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494593"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>Tutoriel : Détecter quand des objets franchissent une ligne virtuelle dans une vidéo en direct
 
@@ -82,7 +82,7 @@ Ce didacticiel présente les procédures suivantes :
 
 Quand vous configurez les ressources Azure, une courte vidéo du trafic d’une autoroute est copiée dans Azure sur la machine virtuelle Linux que vous utilisez comme appareil IoT Edge. Ce tutoriel utilise le fichier vidéo pour simuler un stream en direct.
 
-Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/). Sélectionnez Ctrl+N, puis collez un lien vers [l’exemple de vidéo d’intersection d’autoroute](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) pour démarrer la lecture. Vous voyez la séquence vidéo de nombreux véhicules se déplaçant dans le trafic d’une autoroute.
+Ouvrez une application comme le [lecteur multimédia VLC](https://www.videolan.org/vlc/). Sélectionnez Ctrl+N, puis collez un lien vers [l’exemple de vidéo d’intersection d’autoroute](https://avamedia.blob.core.windows.net/public/camera-300s.mkv) pour démarrer la lecture. Vous voyez la séquence vidéo de nombreux véhicules se déplaçant dans le trafic d’une autoroute.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LTY4]
 

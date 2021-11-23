@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 99d682cc6d2ae1d7bbdb039953df60aa22dbe00f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eb9e81f48df2661fd07f001bdc3259c13a18c369
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745654"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316334"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wisdom-by-invictus"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Wisdom by Invictus
 
@@ -42,7 +42,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Wisdom by Invictus prend en charge l’authentification unique (SSO) lancée par **le fournisseur de services et le fournisseur d’identité**
-* Après avoir configuré Wisdom by Invictus, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Wisdom by Invictus, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-wisdom-by-invictus-from-the-gallery"></a>Ajout de Wisdom by Invictus à partir de la galerie
 
@@ -144,6 +144,6 @@ Quand vous cliquez sur la vignette Wisdom by Invictus dans le volet d’accès, 
 
 - [Essayer Wisdom by Invictus avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Wisdom by Invictus avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

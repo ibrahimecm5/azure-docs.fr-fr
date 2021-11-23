@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 395866cd2796400a5c357007c7e1081f748cc332
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8c9555ba2f9bff491b18490147fda265c54c2386
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124789557"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320383"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ticketmanager"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à TicketManager
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * TicketManager prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**
 * TicketManager prend en charge le provisionnement d’utilisateurs **juste-à-temps**
-* Après avoir configuré TicketManager, vous pouvez appliquer des contrôles de session qui protègent l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré TicketManager, vous pouvez appliquer des contrôles de session qui protègent l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-ticketmanager-from-the-gallery"></a>Ajout de TicketManager à partir de la galerie
 
@@ -165,6 +165,6 @@ Quand vous cliquez sur la vignette TicketManager dans le volet d’accès, vous 
 
 - [Essayer TicketManager avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger TicketManager avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

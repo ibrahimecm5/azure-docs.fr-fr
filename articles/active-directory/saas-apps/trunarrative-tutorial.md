@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 6cefb7d804ee7ec627c0e8f440a1fef522599674
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0bee5efbc790e4d93b4802d07aaed6fdb21d98c3
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124765092"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132328696"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trunarrative"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory avec TruNarrative
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * TruNarrative prend en charge l’authentification SSO lancée par le **SP (fournisseur de services)**
 
-* Une fois que vous avez configuré TruNarrative, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Une fois que vous avez configuré TruNarrative, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 
 ## <a name="adding-trunarrative-from-the-gallery"></a>Ajout de TruNarrative à partir de la galerie
@@ -153,4 +153,4 @@ Quand vous cliquez sur la vignette TruNarrative dans le volet d’accès, vous �
 
 - [Essayer TruNarrative avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)

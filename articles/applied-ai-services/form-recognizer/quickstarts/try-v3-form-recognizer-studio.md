@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2021
 ms.author: sajagtap
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a14cd140d2bb0d2768c85fa2addca2140ccb1ffa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dc4f54a6ab42089068c3db8b7fe64bfada59adf5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131026730"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290682"
 ---
 # <a name="get-started-form-recognizer-studio--preview"></a>Bien démarrer : Form Recognizer Studio | Préversion
 
@@ -24,12 +24,18 @@ ms.locfileid: "131026730"
 
 [Form Recognizer Studio (préversion)](https://formrecognizer.appliedai.azure.com/) est un outil en ligne permettant d’explorer, de comprendre et d’intégrer visuellement des fonctionnalités du service Form Recognizer dans vos applications. Commencez à explorer les modèles préentraînés avec des exemples de documents ou vos propres documents. Créez des projets pour générer des modèles de formulaire personnalisés et référencez ces modèles dans vos applications à l’aide du [kit SDK Python (préversion)](try-v3-python-sdk.md) et d’autres guides de démarrage rapide.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="migrating-from-the-sample-labeling-tool"></a>Migration à partir de l’outil d’étiquetage des exemples
+
+Si vous avez déjà utilisé l’[outil d’étiquetage des exemples](try-sample-label-tool.md), ignorez les prérequis et [**connectez-vous à la préversion de Studio**](try-v3-form-recognizer-studio.md#sign-into-the-form-recognizer-studio-preview) pour utiliser votre compte Azure existant et les ressources Form Recognizer ou Cognitive Services avec Studio. 
+
+Pour migrer vos projets personnalisés existants vers Studio, passez directement à la section [**Bien démarrer avec un modèle personnalisé**](try-v3-form-recognizer-studio.md#custom-model-basics) pour créer un projet et le pointer vers le même emplacement de stockage Blob Azure, en supposant que vous y ayez accès dans Azure. Une fois que vous avez configuré un nouveau projet, Studio charge tous les documents et les fichiers intermédiaires pour l’étiquetage et l’entraînement.
+
+## <a name="minimum-prerequisites-for-new-users"></a>Prérequis minimum pour les nouveaux utilisateurs
 
 * Un [**compte Azure**](https://azure.microsoft.com/free/cognitive-services/) actif.  Si vous n’en avez pas, vous pouvez [**créer un compte gratuit**](https://azure.microsoft.com/free/).
 * Une ressource [**Form Recognizer**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) ou [**multiservice Cognitive Services**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) dans le portail Azure.
 
-## <a name="additional-steps-for-custom-projects"></a>Étapes supplémentaires pour les projets personnalisés
+## <a name="additional-prerequisites-for-custom-projects"></a>Prérequis supplémentaires pour les projets personnalisés
 
 En plus du compte Azure et d’une ressource Form Recognizer ou Cognitive Services, vous avez besoin des éléments suivants :
 

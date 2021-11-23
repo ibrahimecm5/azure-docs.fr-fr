@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 6/19/2021
-ms.openlocfilehash: dfeea2cfde2f8122891b6fada2eba1e546ed2342
-ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
+ms.openlocfilehash: 4238ac653d6b34294d956ea9ff72fe2184ddd1be
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2021
-ms.locfileid: "131894219"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281643"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database pour MySQL - Serveur unique
 
@@ -28,7 +28,7 @@ Cet article contient une vue d’ensemble et une présentation des concepts de b
 ## <a name="overview"></a>Vue d’ensemble
 Azure Database pour MySQL - Serveur unique est un service de base de données complètement managé conçu pour une personnalisation minimale. La plateforme de serveur unique est conçue pour prendre en charge la plupart des fonctions de gestion de base de données, comme les correctifs, les sauvegardes, la haute disponibilité et la sécurité, avec un minimum de configuration et de contrôle de la part de l’utilisateur. L’architecture est optimisée à des fins de haute disponibilité intégrée avec une disponibilité de 99,99 % sur une seule zone de disponibilité. Elle prend en charge la version de la communauté de MySQL 5.6 (hors service), 5.7 et 8.0. Le service est aujourd'hui généralement disponible dans un grand nombre de [régions Azure](https://azure.microsoft.com/global-infrastructure/services/).
 
-Les serveurs uniques conviennent le mieux **aux applications existantes qui utilisent déjà un serveur unique**. Pour tous les nouveaux développements ou migrations, Serveur flexible est l’option de déploiement recommandée. Pour en savoir plus sur les différences entre les options de déploiement Serveur flexible et Serveur unique, consultez la documentation [expliquant comment choisir l’option de déploiement adaptée à vos besoins](select-right-deployment-type.md).
+Les serveurs uniques ne sont parfaitement adaptés **que pour des applications existantes utilisant déjà un serveur unique**. Pour tous les nouveaux développements ou migrations, Serveur flexible est l’option de déploiement recommandée. Pour en savoir plus sur les différences entre les options de déploiement Serveur flexible et Serveur unique, consultez la documentation [expliquant comment choisir l’option de déploiement adaptée à vos besoins](select-right-deployment-type.md).
 
 ## <a name="high-availability"></a>Haute disponibilité
 
@@ -63,7 +63,7 @@ Trois références SKU sont disponibles pour le serveur unique : De base, Usage
 
 Le serveur unique utilise le module de chiffrement conforme à la norme FIPS 140-2 pour chiffrer le stockage des données au repos. Toutes les données sont chiffrées, y compris les sauvegardes et les fichiers temporaires créés lors de l'exécution des requêtes. Le service utilise le chiffrement AES 256 bits inclus dans le chiffrement du stockage Azure, et les clés peuvent être gérées par le système (par défaut) ou [par le client](concepts-data-encryption-mysql.md). Le service chiffre les données en mouvement avec les protocoles SSL/TLS appliqués par défaut. Le service prend en charge les versions 1.2, 1.1 et 1.0 du protocole TLS, avec la possibilité d'appliquer la [version minimum de TLS](concepts-ssl-connection-security.md). 
 
-Le service autorise l’accès privé aux serveurs avec une [liaison privée](concepts-data-access-security-private-link.md) et offre une protection contre les menaces par le biais du plan facultatif [Azure Defender pour les bases de données relationnelles open source](../security-center/defender-for-databases-introduction.md). Azure Defender détecte les activités anormales indiquant des tentatives inhabituelles et potentiellement dangereuses pour accéder à des bases de données ou les exploiter.
+Le service autorise l’accès privé aux serveurs avec une [liaison privée](concepts-data-access-security-private-link.md) et offre une protection contre les menaces par le biais du plan facultatif [Microsoft Defender pour les bases de données relationnelles open source](../security-center/defender-for-databases-introduction.md). Microsoft Defender pour les bases de données relationnelles détecte les activités anormales indiquant des tentatives d’accès ou d’exploitation inhabituelles et potentiellement dangereuses des bases de données.
 
 Outre l’authentification native, le serveur unique prend en charge l’authentification [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). L'authentification Azure AD est un mécanisme de connexion aux serveurs MySQL utilisant des identités définies et gérées dans Azure AD. Avec l'authentification Azure AD, vous pouvez gérer les identités des utilisateurs de la base de données et d'autres services Azure à un emplacement central, ce qui simplifie et centralise le contrôle d'accès.
 

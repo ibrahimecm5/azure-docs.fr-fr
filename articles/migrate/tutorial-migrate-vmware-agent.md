@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 7e16fd0d1c6370cb0ab973760c988c600f42888c
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: bbb3a3e5356bb522a8ebcc60204f990f23a7193a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129153517"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283502"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrer des machines virtuelles VMware vers Azure (migration basée sur un agent)
 
@@ -116,7 +116,7 @@ L’appliance est utilisée durant la réplication des machines vers Azure. L’
 
 Préparez l’appliance de la façon suivante :
 
-- [Vérifiez la configuration requise de l’appliance](migrate-replication-appliance.md#appliance-requirements). En règle générale, vous configurez l’appliance de réplication en tant que machine virtuelle VMware au moyen d’un fichier OVA préalablement téléchargé. Le modèle crée une appliance qui présente la configuration requise.
+- [Vérifiez la configuration requise de l’appliance](migrate-replication-appliance.md#appliance-requirements). En règle générale, vous configurez l’appliance de réplication en tant que machine virtuelle VMware au moyen d’un fichier OVA téléchargé. Le modèle crée une appliance qui présente la configuration requise.
 - MySQL doit être installé sur l’appliance. [Examinez](migrate-replication-appliance.md#mysql-installation) les méthodes d’installation.
 - Examinez les [URL de cloud public](migrate-replication-appliance.md#url-access) et les [URL Azure Government](migrate-replication-appliance.md#azure-government-url-access) auxquelles la machine de l’appliance doit accéder.
 - [Examinez les ports](migrate-replication-appliance.md#port-access) auxquels la machine de l’appliance de réplication doit accéder.
@@ -384,10 +384,10 @@ Après avoir vérifié que la migration de test fonctionne comme prévu, vous po
     - Sécurisez les données en sauvegardant les machines virtuelles Azure avec le service Sauvegarde Azure. [Plus d’informations](../backup/quick-backup-vm-portal.md)
     - Conservez les charges de travail en cours d’exécution et disponibles en continu en répliquant des machines virtuelles Azure vers une région secondaire avec Site Recovery. [Plus d’informations](../site-recovery/azure-to-azure-tutorial-enable-replication.md)
 - Pour renforcer la sécurité :
-    - Verrouillez et limitez l’accès du trafic entrant avec l’[administration juste-à-temps d’Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Verrouillez et limitez l’accès du trafic entrant grâce à l’[administration juste-à-temps de Microsoft Defender pour le cloud](../security-center/security-center-just-in-time.md).
     - Limitez le trafic réseau vers les points de terminaison de gestion avec des [groupes de sécurité réseau](../virtual-network/network-security-groups-overview.md).
     - Déployez [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) pour sécuriser les disques, et protégez les données contre le vol et les accès non autorisés.
-    - Découvrez plus d’informations sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) et visitez [Azure Security Center](https://azure.microsoft.com/services/security-center/).
+    - Pour en savoir plus sur la [sécurisation des ressources IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/), consultez le site [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/).
 - Pour la surveillance et la gestion :
     - Envisagez de déployer [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) pour surveiller l’utilisation et les coûts des ressources.
 

@@ -8,16 +8,16 @@ ms.date: 10/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: f1b9b83209690031af40c62d478da3890766dfea
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: a8bd62d55dfe4cf85b4af01bb93d9a4ea44a0a40
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181783"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134027"
 ---
 # <a name="quickstart-get-started-with-calling-composite"></a>Démarrage rapide : Bien démarrer avec le composite d’appel 
 
-Découvrez comment bien démarrer avec Azure Communication Services à l’aide de la bibliothèque d’IU pour intégrer rapidement les expériences de communication à vos applications. Dans ce guide de démarrage rapide, vous allez apprendre à intégrer le composite d’appel à votre application Android.
+Découvrez comment bien démarrer avec Azure Communication Services à l’aide de la bibliothèque d’IU pour intégrer rapidement les expériences de communication à vos applications. Dans ce guide de démarrage rapide, vous allez apprendre à intégrer le composite d’appel à votre application Android ou iOS.
 
 La bibliothèque d’IU affiche une expérience de communication complète directement dans votre application. Elle prend en charge la connexion à l’appel souhaité et sa configuration en arrière-plan. En tant que développeur, vous devez simplement vous soucier de l’emplacement où vous souhaitez que l’expérience de communication soit lancée. Le composite permet à l’utilisateur de configurer ses appareils, de se joindre à l’appel et d’y participer ainsi que d’afficher les autres participants.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: eda52a6d3f7dbc7401abf37fedc12b24f20b586e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc69272c70e420cb3b49e1de3674bd4c99a1f2d0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809353"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285942"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elqano-sso"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Elqano SSO
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Elqano SSO prend en charge l’authentification unique lancée par le **fournisseur de services**
-* Après avoir configuré Elqano SSO, vous pouvez appliquer le contrôle de session qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Elqano SSO, vous pouvez appliquer le contrôle de session qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-elqano-sso-from-the-gallery"></a>Ajout d’Elqano SSO à partir de la galerie
 
@@ -151,6 +151,6 @@ Quand vous cliquez sur la vignette Elqano SSO dans le volet d’accès, vous êt
 
 - [Essayer Elqano SSO avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Elqano SSO avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: caaea2fa1549f502a2a84f676409fd5ac7635918
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2a7dd5967a6af6fce08f52fe31044c69fa0d4bcc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802808"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132338475"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crossknowledge-learning-suite"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à CrossKnowledge Learning Suite
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * CrossKnowledge Learning Suite prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**
-* Après avoir configuré CrossKnowledge Learning Suite, vous pouvez appliquer le contrôle de session qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré CrossKnowledge Learning Suite, vous pouvez appliquer le contrôle de session qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-crossknowledge-learning-suite-from-the-gallery"></a>Ajout de CrossKnowledge Learning Suite à partir de la galerie
 
@@ -151,6 +151,6 @@ Lorsque vous cliquez sur la vignette CrossKnowledge Learning Suite dans le volet
 
 - [Essayez CrossKnowledge Learning suite avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger CrossKnowledge Learning Suite avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

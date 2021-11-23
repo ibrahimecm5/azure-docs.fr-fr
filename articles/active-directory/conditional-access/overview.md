@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, azuread-video-2020
-ms.openlocfilehash: 80ba129ae6e945072bea0184445f27e2a724c455
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1c3549ec7dbbba8e45e8b359177460841bec68fd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591985"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283275"
 ---
 # <a name="what-is-conditional-access"></a>Qu’est-ce que l’accès conditionnel ?
 
@@ -58,7 +58,7 @@ Les signaux courants que l’accès conditionnel peut prendre en compte lors d�
    - Les utilisateurs qui tentent d’accéder à des applications spécifiques peuvent déclencher différentes stratégies d’accès conditionnel. 
 - Détection des risques en temps réel et calculés
    - L’intégration de signaux à Azure AD Identity Protection permet aux stratégies d’accès conditionnel d’identifier le comportement des connexions à risque. Les stratégies peuvent ensuite forcer les utilisateurs à changer leur mot de passe ou à utiliser l’authentification multifacteur pour réduire leur niveau de risque ou pour que leur accès soit bloqué jusqu’à ce qu’un administrateur entreprenne une action manuelle.
-- Microsoft Cloud App Security (MCAS)
+- Microsoft Defender for Cloud Apps
    - Permet la supervision et le contrôle des sessions d’application et de l’accès aux applications utilisateur en temps réel, en renforçant la visibilité et le contrôle de l’accès à votre environnement cloud ainsi que des activités effectuées avec celui-ci.
 
 ## <a name="common-decisions"></a>Décisions courantes
@@ -98,5 +98,5 @@ Les clients avec [des licences Microsoft 365 Business Premium](/office365/servi
 - [Génération d’une stratégie d’accès conditionnel élément par élément](concept-conditional-access-policies.md)
 - [Planification d’un déploiement d’accès conditionnel](plan-conditional-access.md)
 - [En savoir plus sur Identity Protection](../identity-protection/overview-identity-protection.md)
-- [En savoir plus sur Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+- [En savoir plus sur Microsoft Defender for Cloud Apps](/cloud-app-security/what-is-cloud-app-security)
 - [En savoir plus sur Microsoft Intune](/intune/index)

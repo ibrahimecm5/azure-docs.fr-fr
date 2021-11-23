@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 665884b2c19b3ecf389065fc2e480cf795ac071b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5f8264e32b2fad1bf42dd93f3f5856ea144614de
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124833547"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132314148"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-greenlight-compliant-access-management"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Greenlight Compliant Access Management
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Greenlight Compliant Access Management prend en charge l’authentification unique initiée par **le fournisseur de services et le fournisseur d’identité**
-* Après avoir configuré Greenlight Compliant Access Management, vous pouvez appliquer des contrôles de session, qui protègent l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Greenlight Compliant Access Management, vous pouvez appliquer des contrôles de session, qui protègent l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-greenlight-compliant-access-management-from-the-gallery"></a>Ajout de Greenlight Compliant Access Management à partir de la galerie
 
@@ -151,6 +151,6 @@ Le fait de cliquer sur la vignette Greenlight Compliant Access Management dans l
 
 - [Essayer Greenlight Compliant Access Management avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Greenlight Compliant Access Management avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: db7a9c7151c93142db9834fc0607f1786bc89aae
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a62feb0ea2aeb96a80002a40aa7bf905690e197c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074760"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132318315"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services"></a>Tutoriel : Analyse des sentiments avec Cognitive Services
 
@@ -91,7 +91,7 @@ Quand vous avez terminé, sélectionnez **Ouvrir le notebook**. Cette opération
 
 ## <a name="run-the-notebook"></a>Exécuter le bloc-notes
 
-Le notebook que vous venez d’ouvrir utilise la [bibliothèque MMLSpark](https://github.com/microsoft/SynapseML) pour se connecter à Cognitive Services. Le service lié Azure Cognitive Services que vous avez fourni vous permet de référencer en toute sécurité votre service cognitif à partir de cette expérience sans divulguer de secrets.
+Le notebook que vous venez d’ouvrir utilise la [bibliothèque SynapseML](https://github.com/microsoft/SynapseML) pour se connecter à Cognitive Services. Le service lié Azure Cognitive Services que vous avez fourni vous permet de référencer en toute sécurité votre service cognitif à partir de cette expérience sans divulguer de secrets.
 
  Vous pouvez maintenant exécuter toutes les cellules pour enrichir vos données avec des sentiments. Sélectionnez **Exécuter tout**. 
 

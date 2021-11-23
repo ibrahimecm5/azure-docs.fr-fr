@@ -1,24 +1,24 @@
 ---
-title: Guide pratique pour encoder et streamer des fichiers vidéo avec Node.JS
-description: Guide pratique pour streamer des fichiers vidéo avec Node.JS Suivez les étapes de tutoriel pour créer un compte Azure Media Services, encoder un fichier et le diffuser en continu sur Lecteur multimédia Azure.
+title: Guide pratique pour encoder et diffuser en streaming des fichiers vidéo avec Node.js
+description: Guide pratique pour diffuser en streaming des fichiers vidéo avec Node.js Suivez les étapes de tutoriel pour créer un compte Azure Media Services, encoder un fichier et le diffuser en continu sur Lecteur multimédia Azure.
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
-keywords: azure media services, streamer, Node.JS
+keywords: azure media services, diffuser en streaming, Node.js
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: f8eafe88168f908025321d1e3ce6304fa34c03ab
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109184"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179950"
 ---
-# <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Guide pratique pour encoder et streamer des fichiers vidéo avec Node.JS
+# <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Guide pratique pour encoder et diffuser en streaming des fichiers vidéo avec Node.js
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -26,10 +26,10 @@ Ce démarrage rapide vous montre combien il est facile de coder et de lancer la 
 
 À la fin de ce guide de démarrage rapide, vous saurez :
 
-- Encoder avec Node.JS
-- Streamer avec Node.JS
-- Charger un fichier à partir d’une URL HTTPS avec Node.JS
-- Utiliser un lecteur client TLS ou DASH avec Node.JS
+- Encoder avec Node.js
+- Diffuser en streaming avec Node.js
+- Charger un fichier à partir d’une URL HTTPS avec Node.js
+- Utiliser un lecteur client TLS ou DASH avec Node.js
 
 Dans cet article, l’exemple encode du contenu que vous mettez à disposition via une URL HTTPS. Notez qu’AMS v3 ne prend pas en charge l’encodage de transfert mémorisé en bloc sur les URL HTTPS.
 

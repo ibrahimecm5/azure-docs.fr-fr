@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 11/10/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d52903efad4b788c3ec4fcafb11053c7826ae4c2
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: d58a136b06093f22cd28e96714a1436277d4ce77
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402297"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132297636"
 ---
 ::: zone target="docs"
 
@@ -120,10 +120,10 @@ Une fois que vous êtes connecté aux partages Data Box, l’étape suivante con
 * Quand vous copiez des données, vérifiez que la taille des données est conforme aux limites de taille spécifiées dans [Limites de taille des comptes de stockage Azure](data-box-limits.md#azure-storage-account-size-limits).
 * Si vous souhaitez conserver les métadonnées (listes de contrôle d’accès, horodatages et attributs de fichier) lors du transfert de données vers Azure Files, suivez les instructions fournies dans [Conservation des listes de contrôle d’accès, des attributs et des horodatages de fichiers avec Azure Data Box](data-box-file-acls-preservation.md).  
 * Si les données qui sont chargées par Data Box sont chargées simultanément par une autre application en dehors de Data Box, cela peut entraîner l’échec du chargement ou une altération des données.
-* Nous vous recommandons :
-  * N’utilisez pas SMB et NFS en même temps.
-  * Copiez les mêmes données à la même destination finale sur Azure.
-  En effet, le résultat final ne pourrait pas être déterminé.
+* Si vous utilisez les protocoles SMB et NFS pour les copies de données, nous vous recommandons ce qui suit :
+  * Utilisez différents comptes de stockage pour SMB et NFS.
+  * Ne copiez pas les mêmes données vers la même destination finale dans Azure en utilisant SMB et NFS. En effet, le résultat final ne pourrait pas être déterminé.
+  * Même si la copie via SMB et NFS en parallèle peut fonctionner, nous vous déconseillons de le faire, car elle est sujette aux erreurs humaines. Attendez la fin de la copie des données SMB avant de démarrer une copie de données NFS.
 
 > [!IMPORTANT]
 > Veillez à conserver une copie des données sources tant que vous n’avez pas la confirmation que le Data Box a transféré vos données dans Stockage Azure.

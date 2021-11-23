@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 2a77b03f4ea72e0cb22c790bbebab5127e4b0375
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 37bc8bdad9a066bb3988cfd03e3c1f857246e5c6
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130220430"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136881"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutoriel : Authentifier et autoriser des utilisateurs de bout en bout dans Azure App Service
 
@@ -299,13 +299,15 @@ Maintenant que vous avez activé l’authentification et l’autorisation pour v
 
 L’application front-end dispose maintenant des autorisations nécessaires pour accéder à l’application back-end en tant qu’utilisateur connecté. Dans cette étape, vous configurez l’authentification et l’autorisation App Service pour obtenir un jeton d’accès utilisable pour accéder au serveur principal. Pour cette étape, vous avez besoin de l’ID de client du back-end, que vous avez copié dans la section [Activer l’authentification et l’autorisation pour l’application back-end](#enable-authentication-and-authorization-for-back-end-app).
 
-Dans Cloud Shell, exécutez la commande suivante sur l’application front-end pour ajouter le paramètre `scope` au paramètre d’authentification `identityProviders.azureActiveDirectory.login.loginParameters`. Remplacez *\<front-end-app-name>* et *\<back-end-client-id>* .
+Dans Cloud Shell, exécutez les commandes suivantes sur l’application front-end pour ajouter le paramètre `scope` au paramètre d’authentification `identityProviders.azureActiveDirectory.login.loginParameters`. Remplacez *\<front-end-app-name>* et *\<back-end-client-id>* .
 
 ```azurecli-interactive
-az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body '{"identityProviders":{"azureActiveDirectory":{"login":{"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}}}}'
+authSettings=$(az webapp auth show -g myAuthResourceGroup -n <front-end-app-name>)
+authSettings=$(echo "$authSettings” | jq '.properties' | jq '.identityProviders.azureActiveDirectory.login += {"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}')
+az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body "$authSettings"
 ```
 
-Voici une explication des étendues demandées :
+Les commandes ajoutent une propriété `loginParameters` avec des étendues personnalisées supplémentaires. Voici une explication des étendues demandées :
 
 - `openid`, `profile` et `email` sont déjà demandés par App Service par défaut. Pour plus d’informations, consultez [Étendues OpenID Connect](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes).
 - `api://<back-end-client-id>/user_impersonation` est une API exposée dans l’inscription de votre application back-end. C’est l’étendue qui vous donne un jeton JWT qui inclut l’application back-end comme [audience de jeton](https://wikipedia.org/wiki/JSON_Web_Token). 

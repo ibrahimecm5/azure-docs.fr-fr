@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 10/19/2021
 ms.author: itnorman
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 55a0a203bb359ca0d5cad44b5e773cee0f65edef
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8411add44f96d38778a589dcb59bf89142e97f80
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131016961"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312639"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>Créer un compte Video Analyzer for Media
 
@@ -18,7 +18,7 @@ Lorsque vous créez un compte Azure Video Analyzer for Media (anciennement Video
 
 * Vous pouvez créer un analyseur vidéo pour le compte Media **Classic** par le biais de notre [API](https://aka.ms/avam-dev-portal).
 
-* Vous pouvez créer un analyseur vidéo pour un compte Media **ARM** à l’aide d’un des éléments suivants :
+* Vous pouvez créer un compte **ARM** Video Analyzer for Media en utilisant une des options suivantes :
 
   1.  [Analyseur vidéo pour portail média](https://aka.ms/vi-portal-link)
 

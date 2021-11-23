@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 11/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 857b9ece50b4852e4d459915f9fd13477628781a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0fd3a8ed38d55580cfe56e6ee4501616771a2b48
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429277"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135761"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutoriel : Utiliser le service de copie des données pour copier des données dans Azure Data Box (préversion)
 
@@ -72,7 +72,7 @@ Pour copier des données par l’intermédiaire du service de copie des données
     |**Type de destination**       |Sélectionnez le type du stockage cible dans la liste : **Objet blob de blocs**, **Objet blob de pages** ou **Azure Files**.        |
     |**Conteneur/partage de destination**    |Entrez le nom du conteneur ou du partage de votre compte de stockage de destination dans lequel vous souhaitez charger les données. Le nom peut être un nom de partage ou un nom de conteneur. Par exemple, utilisez `myshare` ou `mycontainer`. Vous pouvez également entrer le nom au format `sharename\directory_name` ou `containername\virtual_directory_name`.        |
     |**Copier les fichiers correspondant à un modèle**    | Vous pouvez entrer le modèle de correspondance des noms de fichiers de deux façons :<ul><li>**Utiliser des caractères génériques :** seuls `*` et `?` sont pris en charge dans les expressions génériques. Par exemple, l’expression `*.vhd` correspond à tous les fichiers dotés de l’extension `.vhd`. De même, `*.dl?` correspond à tous les fichiers ayant l’extension `.dl` ou qui commencent par `.dl`, tels que `.dll`. De la même façon, `*foo` correspond à tous les fichiers dont le nom se termine par `foo`.<br>Vous pouvez entrer l’expression générique directement dans le champ. Par défaut, la valeur que vous entrez dans le champ est traitée comme une expression générique.</li><li>**Utiliser des expressions régulières :** les expressions régulières POSIX sont prises en charge. Par exemple, l’expression régulière `.*\.vhd` correspond à tous les fichiers dotés de l’extension `.vhd`. Pour les expressions régulières, fournissez le modèle (`<pattern>`) directement au format `regex(<pattern>)`. Pour plus d’informations sur les expressions régulières, consultez [Langage des expressions régulières - Aide-mémoire](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |**Optimisation de fichier**              |Lorsque cette fonctionnalité est activée, les fichiers dont la taille est inférieure à 1 Mo sont compressés au cours de l’ingestion. Cette compression accélère la transmission des petits fichiers. Elle permet également un gain de temps significatif lorsque le nombre de fichiers dépasse largement le nombre de répertoires.</br>Si vous utilisez l’optimisation des fichiers :<ul><li>Après la préparation de l’expédition, vous pouvez [télécharger un fichier de nomenclature](data-box-logs.md#inspect-bom-during-prepare-to-ship) contenant les noms de fichiers d’origine pour vous aider à vérifier que tous les bons fichiers ont été copiés.</li><li>Ne supprimez pas les fichiers compressés, qui sont identifiés par un GUID comme nom de fichier. Si vous supprimez un fichier compressé, le fichier d’origine n’est pas chargé lors des futures copies de données.</li><li>Ne copiez pas les mêmes fichiers que vous copiez avec le service de copie en utilisant d’autres protocoles tels que SMB, NFS ou l’API REST. L’utilisation de différents protocoles peut entraîner des conflits et des échecs au cours des chargements de données.</li></ul>    |
+    |**Optimisation de fichier**              |Lorsque cette fonctionnalité est activée, les fichiers dont la taille est inférieure à 1 Mo sont compressés au cours de l’ingestion. Cette compression accélère la transmission des petits fichiers. Elle permet également un gain de temps significatif lorsque le nombre de fichiers dépasse largement le nombre de répertoires.</br>Si vous utilisez l’optimisation des fichiers :<ul><li>Après la préparation de l’expédition, vous pouvez [télécharger un fichier de nomenclature](data-box-logs.md#inspect-bom-during-prepare-to-ship) contenant les noms de fichiers d’origine pour vous aider à vérifier que tous les bons fichiers ont été copiés.</li><li>Ne supprimez pas les fichiers compressés dont les noms commencent par « ADB_PACK_ ». Si vous supprimez un fichier compressé, le fichier d’origine n’est pas chargé lors des futures copies de données.</li><li>Ne copiez pas les mêmes fichiers que vous copiez avec le service de copie en utilisant d’autres protocoles tels que SMB, NFS ou l’API REST. L’utilisation de différents protocoles peut entraîner des conflits et des échecs au cours des chargements de données. </li></ul>    |
  
 4. Sélectionnez **Démarrer**. Les entrées sont validées, et si la validation aboutit, le travail démarre. Le démarrage du travail peut prendre quelques minutes.
 

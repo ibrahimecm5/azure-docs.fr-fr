@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2020
 ms.author: jeedes
-ms.openlocfilehash: df82c39f228d7c69b4c7cf2c8a4b60e69b86e98a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2cece153ab4e8acf0ae6483a6947c5cd0a51910d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733707"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132333083"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timetabling-solutions"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Timetabling Solutions
 
@@ -43,7 +43,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Les solutions Timetabling prennent en charge l’authentification unique initiée par le **fournisseur de services**
-* Après avoir configuré Timetabling Solutions, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Timetabling Solutions, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-timetabling-solutions-from-the-gallery"></a>Ajout de Timetabling Solutions à partir de la galerie
 
@@ -149,6 +149,6 @@ Quand vous cliquez sur la vignette Timetabling Solutions dans le volet d’accè
 
 - [Essayer Timetabling Solutions avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Timetabling Solutions avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

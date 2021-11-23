@@ -1,5 +1,5 @@
 ---
-title: Fichier Include
+title: Fichier include
 description: Fichier include
 services: azure-communication-services
 author: pvicencio
@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: ea5e7c4c502e7a31fddac78e1931d172acce7b9d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c0225c1193cd7e3664b9a7f21fa0337be8cb384a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111993"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132530043"
 ---
 Commencez avec Azure Communication Services en utilisant le kit de développement logiciel (SDK) Communication Services SMS Java pour envoyer des SMS.
 
@@ -140,7 +140,7 @@ System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 Vous devez remplacer `<from-phone-number>` par un numéro de téléphone permettant de recevoir des SMS et associé à votre ressource Communication Services, et `<to-phone-number>` par un numéro de téléphone auquel vous souhaitez envoyer un message.
 
 > [!WARNING]
-> Notez que les numéros de téléphone doivent être fournis au format standard international E.164. (par exemple, +14255550123)
+> Notez que les numéros de téléphone doivent être fournis au format standard international E.164 (par exemple , +14255550123). Le numéro de téléphone **From** peut également être un code court (par exemple : 23456).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Envoyer un message SMS 1:N avec des options
 Pour envoyer un message SMS à une liste de destinataires, appelez la méthode `send` avec une liste de numéros de téléphone de destinataire. Vous pouvez également transmettre des paramètres facultatifs pour spécifier si le rapport de remise doit être activé et pour définir des balises personnalisées.
@@ -166,7 +166,7 @@ for (SmsSendResult result : sendResults) {
 Vous devez remplacer `<from-phone-number>` par un numéro de téléphone permettant de recevoir des SMS et associé à votre ressource Communication Services, et `<to-phone-number-1>` et `<to-phone-number-2>` par le ou les numéros de téléphone auxquels vous souhaitez envoyer un message.
 
 > [!WARNING]
-> Notez que les numéros de téléphone doivent être fournis au format standard international E.164. (par exemple, +14255550123)
+> Notez que les numéros de téléphone doivent être fournis au format standard international E.164 (par exemple , +14255550123). Le numéro de téléphone **From** peut également être un code court (par exemple : 23456).
 
 La méthode `setDeliveryReportEnabled` est utilisée pour configurer la création de rapports de remise. C’est utile pour les scénarios où vous souhaitez émettre des événements quand des SMS sont remis. Consultez le guide de démarrage rapide [Gérer les événements SMS](../handle-sms-events.md) pour configurer la création de rapports de remise pour vos SMS.
 

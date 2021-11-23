@@ -1,21 +1,21 @@
 ---
-title: Installation d’un essai d’Azure Defender pour IoT
-description: Dans ce tutoriel, vous allez apprendre à intégrer à Azure Defender pour IoT un capteur virtuel, sur une machine virtuelle, en utilisant un abonnement d’essai d’Azure Defender pour IoT.
+title: Installation d’un essai de Microsoft Defender pour IoT
+description: Dans ce tutoriel, vous allez apprendre à intégrer à Microsoft Defender pour IoT un capteur virtuel, sur une machine virtuelle, en utilisant un abonnement d’essai de Microsoft Defender pour IoT.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/07/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e509b3a1c12c7c7d118eca0b3a2adabe01bdc977
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 91e7d217861be41453669ea47525ed563200f54e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660302"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283632"
 ---
-# <a name="tutorial-azure-defender-for-iot-trial-setup"></a>Tutoriel : Installation d’un essai d’Azure Defender pour IoT
+# <a name="tutorial-microsoft-defender-for-iot-trial-setup"></a>Tutoriel : Installation d’un essai de Microsoft Defender pour IoT
 
-Dans ce tutoriel, vous allez apprendre à intégrer à Azure Defender pour IoT un capteur virtuel, sur une machine virtuelle, en utilisant un abonnement d’essai d’Azure Defender pour IoT. Vous verrez la configuration optimale à mettre en place pour une personne qui souhaite tester Azure Defender pour IoT avant de s’inscrire et de l’intégrer à son environnement.
+Ce tutoriel va vous aider à apprendre à intégrer à Microsoft Defender pour IoT un capteur virtuel, sur une machine virtuelle, en utilisant un abonnement d’essai de Microsoft Defender pour IoT. Vous verrez la configuration optimale à mettre en place pour une personne qui souhaite tester Microsoft Defender pour IoT avant de s’inscrire et de l’intégrer à son environnement.
 
 En utilisant des environnements virtuels ainsi que les logiciels nécessaires pour créer un capteur, Defender pour IoT vous permet d’effectuer les opérations suivantes :
 
@@ -25,12 +25,12 @@ En utilisant des environnements virtuels ainsi que les logiciels nécessaires po
 
 - Détecter les activités anormales ou non autorisées grâce au renseignement sur les menaces et à l’analytique comportementale spécialisés tenant compte de l’IoT et de l’OT. Vous pouvez même détecter les menaces avancées ignorées par les IOC statiques, comme les programmes malveillants zero-day, les programmes malveillants sans fichier et les tactiques « Living off the land ».
 
-- Intégrez Azure Sentinel pour avoir une vue d’ensemble de votre organisation. Implémentez une gouvernance unifiée de la sécurité de l’IoT et de l’OT avec intégration à vos workflows existants, notamment des outils tiers tels que Splunk, IBM QRadar et ServiceNow.
+- Effectuez une intégration à Microsoft Sentinel pour avoir une vue d’ensemble de votre organisation. Implémentez une gouvernance unifiée de la sécurité de l’IoT et de l’OT avec intégration à vos workflows existants, notamment des outils tiers tels que Splunk, IBM QRadar et ServiceNow.
 
 Dans ce tutoriel, vous allez apprendre à :
 
 > [!div class="checklist"]
-> * Intégrer à Azure Defender pour IoT
+> * Effectuer l’intégration à Microsoft Defender pour IoT
 > * Télécharger l’ISO du capteur virtuel
 > * Créer une machine virtuelle pour le capteur
 > * Installer le logiciel du capteur virtuel
@@ -47,17 +47,17 @@ Dans ce tutoriel, vous allez apprendre à :
 
 - Un compte Azure. Si vous n’avez pas encore de compte Azure, vous pouvez [créer un compte Azure gratuit dès aujourd’hui](https://azure.microsoft.com/free/).
 
-## <a name="onboard-with-azure-defender-for-iot"></a>Intégrer à Azure Defender pour IoT
+## <a name="onboard-with-microsoft-defender-for-iot"></a>Effectuer l’intégration à Microsoft Defender pour IoT
 
-Pour commencer à utiliser Azure Defender pour IoT, vous devez disposer d’un abonnement Microsoft Azure. Si vous n’avez pas encore d’abonnement, vous pouvez [créer un compte Azure gratuit dès aujourd’hui](https://azure.microsoft.com/free/).
+Pour commencer à utiliser Microsoft Defender pour IoT, vous devez disposer d’un abonnement Microsoft Azure. Si vous n’avez pas encore d’abonnement, vous pouvez [créer un compte Azure gratuit dès aujourd’hui](https://azure.microsoft.com/free/).
 
 Pour évaluer Defender pour IoT, vous pouvez utiliser un abonnement d’essai. L’essai est valable pendant 30 jours et prend en charge jusqu’à 1 000 appareils validés. L’essai vous permet de déployer un capteur virtuel sur votre réseau. Utilisez les capteurs pour surveiller le trafic, analyser des données, générer des alertes, en savoir plus sur les risques et les vulnérabilités du réseau, et bien plus encore. L’essai vous permet également de déployer une console de gestion locale virtuelle pour voir les informations agrégées générées par le capteur.
 
-**Pour intégrer un abonnement à Azure Defender pour IoT** :
+**Pour intégrer un abonnement à Microsoft Defender pour IoT** :
 
-1. Accédez au [portail Azure](https://ms.portal.azure.com/).
+1. Accédez au [portail Azure](https://portal.azure.com/).
 
-1. Recherchez et sélectionnez **Azure Defender pour IoT**.
+1. Recherchez et sélectionnez **Microsoft Defender pour IoT**.
 
 1. Sélectionnez **Intégrer un abonnement**.
 
@@ -85,9 +85,9 @@ Les appliances virtuelles ont des spécifications minimales qui doivent être re
 
 **Pour télécharger le fichier ISO pour le capteur virtuel** :
 
-1. Accédez au [portail Azure](https://ms.portal.azure.com/).
+1. Accédez au [portail Azure](https://portal.azure.com/).
 
-1. Recherchez et sélectionnez **Azure Defender pour IoT**.
+1. Recherchez et sélectionnez **Microsoft Defender pour IoT**.
 
 1. Dans la page de démarrage, sélectionnez l’onglet **Capteur**.
 
@@ -103,7 +103,7 @@ Le capteur virtuel prend en charge les options de déploiement de VMware et Hype
 
 - Ressources matérielles disponibles pour la machine virtuelle.
 
-- Fichier d’installation ISO pour le capteur Azure Defender pour IoT.
+- Fichier d’installation ISO pour le capteur Microsoft Defender pour IoT
 
 - Assurez-vous que l’hyperviseur fonctionne.
 
@@ -246,7 +246,7 @@ Pour la validation post-installation, vous devez effectuer des tests pour vérif
 
 ## <a name="configure-a-span-port"></a>Configurer un port SPAN
 
-Un commutateur virtuel n’a pas de fonctionnalités de mise en miroir. Toutefois, vous pouvez utiliser le mode de proximité dans un environnement de commutateur virtuel. Le mode de proximité est un mode de fonctionnement, ainsi qu’une technique de sécurité, de supervision et d’administration, défini  au niveau du commutateur virtuel, ou des ports. Par défaut, le mode de proximité est désactivé. Lorsque le mode de proximité est activé, les interfaces réseau de la machine virtuelle qui se trouvent dans le même groupe de ports utilisent le mode de proximité pour afficher tout le trafic réseau qui traverse ce commutateur virtuel. Vous pouvez implémenter une solution de contournement avec ESXi ou Hyper-V.
+Un commutateur virtuel n’a pas de fonctionnalités de mise en miroir. Toutefois, vous pouvez utiliser le mode de proximité dans un environnement de commutateur virtuel. Le mode de proximité est un mode de fonctionnement, ainsi qu’une technique de sécurité, de supervision et d’administration, défini au niveau du commutateur virtuel, ou des ports. Par défaut, le mode de proximité est désactivé. Lorsque le mode de proximité est activé, les interfaces réseau de la machine virtuelle qui se trouvent dans le même groupe de ports utilisent le mode de proximité pour afficher tout le trafic réseau qui traverse ce commutateur virtuel. Vous pouvez implémenter une solution de contournement avec ESXi ou Hyper-V.
 
 :::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="Capture d’écran de l’emplacement du capteur dans votre architecture.":::
 
@@ -404,7 +404,7 @@ Avant de commencer à utiliser votre capteur Defender pour IoT, vous devez int�
 
 **Pour intégrer le capteur virtuel :**
 
-1. Accédez à la page **Accueil** dans le [portail Defender pour IoT](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
+1. Accédez à [Defender pour IoT : Prise en main](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) dans le portail Azure.
 
 1. Sélectionnez **Intégrer un capteur**.
 
@@ -420,13 +420,13 @@ Avant de commencer à utiliser votre capteur Defender pour IoT, vous devez int�
 
 1. Choisissez un mode de connexion du capteur à l’aide du bouton bascule **Connecté au cloud**. Si le bouton bascule est activé, le capteur est connecté au cloud. Si le bouton bascule est désactivé, le capteur est géré localement.
 
-   - **Capteurs connectés au cloud** : Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations sur les alertes sont transmises par le biais d’un hub IoT et peuvent être partagées avec d’autres services Azure, comme Azure Sentinel. En outre, les packages de renseignement sur les menaces peuvent être envoyés (push) aux capteurs à partir du portail Azure Defender pour IoT. À l’inverse, lorsque le capteur n’est pas connecté au cloud, vous devez télécharger les packages de renseignement sur les menaces, puis les charger sur les capteurs de votre entreprise. Pour autoriser Defender pour IoT à envoyer (push) des packages aux capteurs, activez le bouton bascule **Mises à jour automatiques du renseignement sur les menaces**. Pour plus d’informations, consultez [Recherche et packages de renseignement sur les menaces](how-to-work-with-threat-intelligence-packages.md).
+   - **Capteurs connectés au cloud** : Les informations détectées par le capteur s’affichent dans la console du capteur. Les informations sur les alertes sont transmises par le biais d’un hub IoT et peuvent être partagées avec d’autres services Azure, comme Microsoft Sentinel. En outre, les packages de renseignement sur les menaces peuvent être envoyés (push) aux capteurs à partir de Defender pour IoT. À l’inverse, lorsque le capteur n’est pas connecté au cloud, vous devez télécharger les packages de renseignement sur les menaces, puis les charger sur les capteurs de votre entreprise. Pour autoriser Defender pour IoT à envoyer (push) des packages aux capteurs, activez le bouton bascule **Mises à jour automatiques du renseignement sur les menaces**. Pour plus d’informations, consultez [Recherche et packages de renseignement sur les menaces](how-to-work-with-threat-intelligence-packages.md).
 
       Pour les capteurs connectés au cloud, le nom défini lors de l’intégration est le nom qui apparaît dans la console de capteur. Vous ne pouvez pas modifier ce nom directement à partir de la console. Pour les capteurs gérés localement, le nom appliqué pendant l’intégration est stocké dans Azure, mais peut être mis à jour dans la console du capteur.
 
    - **Capteurs gérés localement** : Les informations détectées par les capteurs s’affichent dans leur console. Si vous travaillez sur un réseau en air gap et que vous souhaitez une vue unifiée de toutes les informations détectées par plusieurs capteurs gérés localement, utilisez la console de gestion locale.
 
-1. Sélectionnez le site auquel vous souhaitez associer votre capteur dans un hub IoT. Celui-ci servira de passerelle entre ce capteur et Azure Defender pour IoT. Définissez le nom complet et la zone. Vous pouvez également ajouter des étiquettes descriptives. Le nom complet, la zone et les étiquettes constituent des entrées descriptives de la page [Afficher les capteurs intégrés](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors).
+1. Sélectionnez le site auquel vous souhaitez associer votre capteur dans un hub IoT. Le hub IoT servira de passerelle entre ce capteur et Microsoft Defender pour IoT. Définissez le nom complet et la zone. Vous pouvez également ajouter des étiquettes descriptives. Le nom complet, la zone et les étiquettes constituent des entrées descriptives de la page [Afficher les capteurs intégrés](how-to-manage-sensors-on-the-cloud.md#view-onboarded-sensors).
 
 1. Sélectionnez **Inscription**.
 
@@ -448,7 +448,7 @@ Une fois l’inscription du capteur terminée, vous pouvez télécharger un fich
 
 1. Accédez à la console du capteur à partir de votre navigateur à l’aide de l’adresse IP définie lors de l’installation.
 
-    :::image type="content" source="media/tutorial-onboarding/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Capture d’écran du capteur Azure Defender pour IoT.":::
+    :::image type="content" source="media/tutorial-onboarding/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Capture d’écran du capteur Microsoft Defender pour IoT.":::
 
 1. Entrez les informations d’identification définies lors de l’installation du capteur.
 
@@ -477,4 +477,5 @@ Vous devrez peut-être actualiser votre écran après avoir chargé le certifica
 ## <a name="next-steps"></a>Étapes suivantes
 
 Découvrez comment configurer des [appliances supplémentaires](how-to-install-software.md#about-defender-for-iot-appliances).
+
 Découvrez l’[architecture sans agent](architecture.md).

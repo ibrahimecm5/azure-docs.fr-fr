@@ -1,18 +1,18 @@
 ---
 title: 'Démarrage rapide : Vue d’ensemble des agents de sécurité'
-description: Suivez ce guide de démarrage rapide pour vous familiariser avec l'architecture des agents de sécurité utilisés dans le service Azure Defender pour IoT.
+description: Suivez ce guide de démarrage rapide pour vous familiariser avec l’architecture des agents de sécurité utilisés dans le service Microsoft Defender pour IoT.
 ms.topic: quickstart
-ms.date: 4/4/2021
-ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 0fba4f592bdfa0ca055fcccb4808bb8d5dbd37b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011110"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281757"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Démarrage rapide : Architecture de référence des agents de sécurité
 
-Azure Defender pour IoT fournit une architecture de référence pour les agents de sécurité qui consignent, traitent, agrègent et envoient des données de sécurité via IoT Hub.
+Microsoft Defender pour IoT fournit une architecture de référence pour les agents de sécurité qui consignent, traitent, agrègent et envoient des données de sécurité via IoT Hub.
 
 Les agents de sécurité sont conçus pour fonctionner dans un environnement IoT restreint et sont hautement personnalisables quant aux valeurs qu’ils fournissent par rapport aux ressources qu’ils utilisent.
 
@@ -44,11 +44,9 @@ Defender pour IoT propose différents agents d'installation pour les versions 3
 | 32 bit | C | C# |  |
 | 64 bits | C# ou C | C# | Nous vous recommandons d’utiliser l’agent C pour les appareils présentant un nombre de ressources d’appareils minimales ou restreintes. |
 
-
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans cet article, vous avez obtenu une vue d’ensemble de haut niveau de l’architecture du micro-agent Defender IoT et des programmes d’installation disponibles.
-Pour poursuivre votre prise en main du déploiement de Defender pour IoT, consultez : 
+Dans cet article, vous avez obtenu une vue d’ensemble de l’architecture du micro-agent Defender pour IoT et des programmes d’installation disponibles. Pour poursuivre la prise en main du déploiement de Defender pour IoT, passez en revue les méthodes d’authentification de l’agent de sécurité qui sont disponibles.
 
 > [!div class="nextstepaction"]
-> [Méthodes d’authentification des agents de sécurité](concept-security-agent-authentication-methods.md)
+> [Méthode d'authentification des agents de sécurité](concept-security-agent-authentication-methods.md)

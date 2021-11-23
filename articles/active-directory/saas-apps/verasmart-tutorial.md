@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 028dd837b5cfcb9b8055ea4ea6262f7be24cd820
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 329c91a04207541b148fd6c46e4b028cf1ff79af
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820992"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verasmart"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à VeraSMART
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * VeraSMART prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**
 * VeraSMART prend en charge l’attribution d’utilisateurs **juste-à-temps**
-* Une fois que vous avez configuré VeraSMART, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Une fois que vous avez configuré VeraSMART, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-verasmart-from-the-gallery"></a>Ajouter VeraSMART à partir de la galerie
 
@@ -170,4 +170,4 @@ Le fait de cliquer sur la vignette VeraSMART dans le volet d’accès doit vous 
 
 - [Essayer VeraSMART avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)

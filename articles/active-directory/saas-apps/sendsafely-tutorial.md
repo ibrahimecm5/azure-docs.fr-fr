@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 371a9138921e165d1c811a2ec88fbe4450a22a15
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1892d6a4ffbbf42827b9763dc3d63b51a7c539e6
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124821536"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendsafely"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à SendSafely
 
@@ -42,7 +42,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 * SendSafely prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**
 * SendSafely prend en charge l’attribution d’utilisateurs **juste-à-temps**
 
-* Après avoir configuré SendSafely, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré SendSafely, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-sendsafely-from-the-gallery"></a>Ajout de SendSafely à partir de la galerie
 
@@ -156,6 +156,6 @@ Quand vous cliquez sur la vignette SendSafely dans le volet d’accès, vous dev
 
 - [Essayer SendSafely avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger SendSafely avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

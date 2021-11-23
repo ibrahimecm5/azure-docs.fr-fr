@@ -1,21 +1,21 @@
 ---
-title: Intégrer Splunk à Azure Defender pour IoT
-description: Dans ce tutoriel, découvrez comment intégrer Splunk à Azure Defender pour IoT.
+title: Intégrer Splunk à Microsoft Defender pour IoT
+description: Dans ce tutoriel, découvrez comment intégrer Splunk à Microsoft Defender pour IoT.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/12/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 2484de315508310729882e46b5e22669d01ec9f8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4b0f321741d6f07f2ac636d57de31bf02503877
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814708"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283578"
 ---
-# <a name="tutorial-integrate-splunk-with-azure-defender-for-iot"></a>Tutoriel : intégrer Splunk à Azure Defender pour IoT
+# <a name="tutorial-integrate-splunk-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer Splunk à Microsoft Defender pour IoT
 
-Ce tutoriel va vous permettre de découvrir comment intégrer Splunk à Azure Defender pour IoT et comment l’utiliser.
+Ce tutoriel va vous permettre de découvrir comment intégrer Splunk à Microsoft Defender pour IoT et comment l’utiliser.
 
 Defender pour IoT atténue le risque IIoT, ICS et SCADA avec des moteurs d’apprentissage automatique brevetés et prenant en charge ICS, qui fournissent des insights immédiats sur les appareils, les vulnérabilités et les menaces ICS en moins d’une heure et sans s’appuyer sur des agents, des règles ou des signatures, des compétences spécialisées ou une connaissance préalable de l’environnement.
 
@@ -26,7 +26,7 @@ L’application fournit aux analystes SOC une visibilité multidimensionnelle su
 L’application Splunk peut être installée localement ou exécutée sur un cloud. L’intégration à Splunk avec celle à Defender pour IoT prend en charge les deux déploiements.
 
 > [!Note]
-> Les références à CyberX concernent Azure Defender pour IoT.
+> Les références à CyberX concernent Microsoft Defender pour IoT.
 
 Dans ce tutoriel, vous allez apprendre à :
 
@@ -131,7 +131,7 @@ Il n’y a pas de ressources à nettoyer.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce tutoriel, vous avez découvert comment bien démarrer avec l’intégration Splunk. Continuer à découvrir comment [Intégrer ServiceNow à Azure Defender pour IoT](tutorial-servicenow.md).
+Dans ce tutoriel, vous avez découvert comment bien démarrer avec l’intégration Splunk. Découvrez à présent comment [Intégrer ServiceNow à Microsoft Defender pour IoT](tutorial-servicenow.md).
 
 > [!div class="nextstepaction"]
-> [Intégrer ServiceNow à Azure Defender pour IoT](tutorial-servicenow.md)
+> [Intégrer ServiceNow à Microsoft Defender pour IoT](tutorial-servicenow.md)

@@ -4,13 +4,15 @@ metadata:
   description: Cet article fournit des réponses à des questions courantes sur la sauvegarde des machines virtuelles Azure avec le service Sauvegarde Microsoft Azure.
   ms.topic: article
   ms.service: backup
-  ms.date: 08/19/2021
-  ms.openlocfilehash: d9ca7573375e3e6bf584d1b79f8f6a8f9ba64f4d
-  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+  ms.date: 11/09/2021
+  author: v-amallick
+  ms.author: v-amallick
+  ms.openlocfilehash: 6affe7d7e9d0fdeb50da09c80203d01647c46a8e
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 11/09/2021
-  ms.locfileid: "132062887"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132293893"
 title: Forum aux questions - Sauvegarde de machines virtuelles Azure
 summary: >
   Cet article fournit des réponses à des questions courantes sur la sauvegarde des machines virtuelles Azure avec le service [Sauvegarde Azure](./backup-overview.md).
@@ -251,3 +253,5 @@ sections:
   - question: Quels sont les objectifs de point/délai de récupération (RPO/RTO) minimaux pour les sauvegardes de machines virtuelles dans la sauvegarde Azure ?
     answer: >
       **RPO** : le RPO minimal est de 1 jour ou 24 heures.  <br><br>  **RTO** : les instantanés sont stockés dans le compte de stockage. Par conséquent, la restauration à partir du niveau de restauration instantanée se fait immédiatement. Ces données sont ensuite transférées vers le coffre Recovery Services qui est géré par le service Sauvegarde Azure, et le transfert et la restauration prennent quelques heures.
+  - question: Pourquoi l’erreur VMMarketplaceInvalidInputmessage s’affiche-t-elle ?
+    answer: Cette erreur s’affiche quand vous essayez de démarrer une machine virtuelle après avoir créé une machine virtuelle Azure à partir d’une image non-Place de marché ou d’échanger le disque du système d’exploitation d’une machine virtuelle avec une image non-Place de marché, puis que le déploiement de la machine virtuelle échoue. Pour résoudre ce problème, supprimez les informations de plan de la machine virtuelle.

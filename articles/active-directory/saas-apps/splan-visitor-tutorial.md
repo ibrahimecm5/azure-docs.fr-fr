@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: a2c33808be505209ff5eca58480b9fd5f03d9d4f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5c628e67b258d3d51b5f7b05b08c0ac0b2accb9a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785531"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132304089"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutoriel : Intégrer l’authentification unique Azure Active Directory à Splan Visitor
 
@@ -127,4 +127,4 @@ Testez votre configuration de l’authentification unique Azure AD avec l’une 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Après avoir configuré Splan Visitor, vous pouvez [découvrir comment appliquer des contrôles de session dans Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app). Les contrôles de session offrent une protection contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel.
+Après avoir configuré Splan Visitor, vous pouvez [découvrir comment appliquer des contrôles de session dans Microsoft Defender pour Cloud Apps](/cloud-app-security/proxy-deployment-any-app). Les contrôles de session offrent une protection contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel.

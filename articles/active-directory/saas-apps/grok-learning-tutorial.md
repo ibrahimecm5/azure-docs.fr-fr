@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: cdf58b7f6a5be0e91143da346e5326cef4acd20c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d61f9cfb3918c8b3a775f68f71e0d2edd57076a8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124833460"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grok-learning"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à Grok Learning
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * Grok Learning prend en charge l’authentification SSO lancée par le **SP (fournisseur de services) et l’IdP (fournisseur d’identité)**
 * Grok Learning prend en charge l’attribution d’utilisateurs **juste-à-temps**
-* Une fois que vous avez configuré Grok Learning, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Une fois que vous avez configuré Grok Learning, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-grok-learning-from-the-gallery"></a>Ajout de Grok Learning à partir de la galerie
 
@@ -165,4 +165,4 @@ Quand vous cliquez sur la vignette Grok Learning dans le volet d’accès, vous 
 
 - [Essayer Grok Learning avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)

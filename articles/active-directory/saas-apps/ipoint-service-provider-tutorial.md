@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: fa864229529e0302b8968ed5219e700642b63c3e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 000349d0d1b089cfaf84fdec6a82f7f14c1e6df5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809313"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132317331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipoint-service-provider"></a>Tutoriel : Intégration de l’authentification unique (SSO) Azure Active Directory à iPoint Service Provider
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * iPoint Service Provider prend en charge l’authentification unique initiée par le **fournisseur de services et le fournisseur d’identité**
-* Après avoir configuré iPoint Service Provider, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré iPoint Service Provider, vous pouvez appliquer le contrôle de session, qui protège l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-ipoint-service-provider-from-the-gallery"></a>Ajout d’iPoint Service Provider à partir de la galerie
 
@@ -162,6 +162,6 @@ Quand vous cliquez sur la vignette iPoint Service Provider dans le volet d’acc
 
 - [Essayer iPoint Service Provider avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger iPoint Service Provider avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

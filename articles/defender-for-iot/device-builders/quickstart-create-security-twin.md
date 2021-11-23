@@ -1,14 +1,14 @@
 ---
 title: 'Démarrage rapide : Créer un jumeau de module de sécurité'
-description: Dans ce guide de démarrage rapide, vous allez découvrir comment créer un jumeau de module Defender pour IoT en vue d’une utilisation avec Azure Defender pour IoT.
+description: Dans ce guide de démarrage rapide, vous allez découvrir comment créer un jumeau de module Defender pour IoT en vue d’une utilisation avec Microsoft Defender pour IoT.
 ms.topic: quickstart
-ms.date: 05/26/2021
-ms.openlocfilehash: 5f2d6b4e4ab747988fe41322aab61c90b7c15b18
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 34927684fb87b48390479bccd63d7667a6350d14
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011146"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132281889"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Démarrage rapide : Créer un jumeau de module azureiotsecurity
 
@@ -22,8 +22,7 @@ Ce guide de démarrage rapide explique comment créer des jumeaux de module _azu
 
 Pour les solutions IoT intégrées à Azure, les jumeaux d’appareil jouent un rôle essentiel dans la gestion d’appareils et l’automatisation des processus.
 
-Defender pour IoT offre une intégration complète à votre plateforme de gestion d’appareils IoT existante, ce qui vous permet de gérer l’état de sécurité de vos appareils et de tirer parti des fonctionnalités de contrôle d’appareils existantes.
-L’intégration de Defender pour IoT est obtenue par l’utilisation du mécanisme de jumelage IoT Hub.
+Defender pour IoT offre une intégration complète à votre plateforme de gestion d’appareils IoT existante, ce qui vous permet de gérer l’état de sécurité de vos appareils et de tirer parti des fonctionnalités de contrôle d’appareils existantes. L’intégration de Defender pour IoT est obtenue par l’utilisation du mécanisme de jumelage IoT Hub.
 
 Consultez [Jumeaux de module IoT Hub](../../iot-hub/iot-hub-devguide-module-twins.md) [Jumeaux de module IoT] pour en savoir plus sur le concept général des jumeaux de module dans Azure IoT Hub.
 

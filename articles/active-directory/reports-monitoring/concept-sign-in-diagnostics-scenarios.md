@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/08/2021
+ms.date: 11/12/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f530f406f049876ca393610dc7b7fa02433116a
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: ab25e7150f7930f85df846ece50a3013c0e45818
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997150"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399728"
 ---
 # <a name="sign-in-diagnostics-for-azure-ad-scenarios"></a>Diagnostics de connexion pour les scénarios Azure AD
 
@@ -73,8 +73,14 @@ Le diagnostic de connexion pour Azure AD vous offre la prise en charge des scén
     - Insights du code d’erreur  
 
     - Authentification héritée  
+    
+    - Connexion bloquée B2B due à un accès conditionnel
 
     - Bloqué par la stratégie de risque 
+    
+    - Authentification directe
+    
+    - Authentification unique transparente
 
 
 
@@ -285,6 +291,20 @@ Pour plus d’informations, consultez [Comment configurer et activer les straté
 Ce scénario de diagnostic identifie les problèmes de connexion spécifiques à l’utilisateur lorsque la méthode d’authentification utilisée est l’authentification directe (PTA, pass through authentication) et qu’il y a une erreur spécifique à cette authentification. Des erreurs liées à d’autres problèmes, même lorsque l’authentification PTA est utilisée, seront quand même diagnostiquées correctement. 
 
 Le diagnostic affiche des informations contextuelles sur l’échec et l’utilisateur qui se connecte, les raisons supplémentaires de l’échec de la connexion et les actions recommandées que l’administrateur peut entreprendre pour résoudre le problème. Pour plus d’informations, consultez [Azure AD Connect : Résolution des problèmes d’authentification directe](../hybrid/tshoot-connect-pass-through-authentication.md). 
+
+
+### <a name="seamless-single-sign-on"></a>Authentification unique transparente
+
+L’authentification unique transparente intègre l’authentification Kerberos à l’authentification cloud. Comme ce scénario implique deux protocoles d’authentification, vous pouvez avoir du mal à déterminer à quel niveau se situe le point d’échec en cas de problèmes de connexion. Ce diagnostic est conçu pour rendre ces scénarios plus faciles à diagnostiquer et à résoudre.
+ 
+Ce scénario de diagnostic examine le contexte de l’échec de connexion et la cause spécifique de l’échec, les informations contextuelles sur la tentative de connexion, et fournit des actions suggérées que l’administrateur peut mettre en place localement ou dans le cloud pour résoudre le problème. Pour plus d’informations, consultez [Résoudre les problèmes de l’authentification unique transparente Azure Active Directory](../hybrid/tshoot-connect-sso.md). 
+ 
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>Étapes suivantes
 

@@ -1,18 +1,18 @@
 ---
 title: Présentation de l'architecture de solution basée sur un agent
-description: Découvrez l’architecture basée sur un agent et le flux d’informations d’Azure Defender pour IoT.
+description: Découvrez l’architecture basée sur un agent et le flux d’informations de Microsoft Defender pour IoT.
 ms.topic: overview
-ms.date: 1/25/2021
-ms.openlocfilehash: e21dc7c7b0c82378d90335e4d4ceb71373a56267
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: 4bedabced290c16e9172bee58d0f68a995bb5ebd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011091"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331601"
 ---
 # <a name="what-is-agent-based-solution-for-device-builders"></a>Présentation de la solution basée sur un agent pour les fabricants d'appareils
 
-Cet article décrit l’architecture système fonctionnelle de la solution Defender pour IoT basée sur un agent. Azure Defender pour IoT offre deux ensembles de fonctionnalités pour répondre aux besoins de votre environnement, une solution sans agent pour les organisations, et une solution basée sur un agent pour les fabricants d’appareils.
+Cet article décrit l’architecture système fonctionnelle de la solution Defender pour IoT basée sur un agent. Microsoft Defender pour IoT offre deux ensembles de fonctionnalités pour répondre aux besoins de votre environnement, une solution sans agent pour les organisations, et une solution basée sur un agent pour les fabricants d’appareils.
 
 ## <a name="iot-hub-built-in-security"></a>Sécurité intégrée d’IoT Hub
 
@@ -36,4 +36,4 @@ Les recommandations et les alertes Defender pour IoT (sortie du pipeline d’ana
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Consultez [Forum aux questions sur Azure Defender pour IoT](resources-agent-frequently-asked-questions.md).
+Consultez le [Forum aux questions sur Microsoft Defender pour IoT](resources-agent-frequently-asked-questions.md).

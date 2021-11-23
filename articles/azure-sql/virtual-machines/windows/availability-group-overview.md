@@ -12,16 +12,16 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/01/2021
+ms.date: 11/10/2021
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: 4196ab27f5b3f4c6ab4897d2df8ad0b2007f8c2b
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 21aef2227768d49da9a5eab5f4e772441c9f15b0
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162801"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158671"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Groupes de disponibilité Always On sur SQL Server sur les machines virtuelles Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -53,7 +53,9 @@ Si les zones de disponibilité peuvent fournir une meilleure disponibilité que 
 
 ## <a name="connectivity"></a>Connectivité
 
-Vous pouvez configurer un nom de réseau virtuel ou un nom de réseau distribué pour un groupe de disponibilité. [Passez en revue les différences entre les deux](hadr-windows-server-failover-cluster-overview.md), puis déployez un [nom de réseau distribué (DNN)](availability-group-distributed-network-name-dnn-listener-configure.md) ou un [nom de réseau virtuel (VNN)](availability-group-vnn-azure-load-balancer-configure.md) pour votre groupe de disponibilité. 
+Pour relier l’expérience locale de connexion à votre écouteur de groupe de disponibilité, déployez vos machines virtuelles SQL Server sur [plusieurs sous-réseaux](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) au sein du même réseau virtuel. Quand vous avez plusieurs réseaux, vous n’avez pas besoin d’une dépendance supplémentaire sur un équilibreur de charge Azure ou d’un nom de réseau distribué (DNN) pour router votre trafic vers votre écouteur. 
+
+Si vous déployez vos machines virtuelles SQL Server dans un même sous-réseau, vous pouvez configurer un nom de réseau virtuel (VNN) et un équilibreur de charge Azure, ou un nom de réseau distribué (DNN) pour router le trafic vers votre écouteur de groupe de disponibilité. [Passez en revue les différences entre les deux](hadr-windows-server-failover-cluster-overview.md), puis déployez un [nom de réseau distribué (DNN)](availability-group-distributed-network-name-dnn-listener-configure.md) ou un [nom de réseau virtuel (VNN)](availability-group-vnn-azure-load-balancer-configure.md) pour votre groupe de disponibilité. 
 
 La plupart des fonctionnalités de SQL Server fonctionnent de façon transparente avec les groupes de disponibilité lors de l’utilisation du DNN, mais certaines fonctionnalités peuvent nécessiter une attention particulière. Pour plus d’informations, consultez [Interopérabilité des groupes de disponibilité et de DNN](availability-group-dnn-interoperability.md). 
 
@@ -70,7 +72,7 @@ Vous pouvez encore vous connecter à chaque réplica de disponibilité séparém
 * Il y a un réplica principal et un réplica secondaire.
 * Le réplica secondaire est configuré comme non lisible (option **Secondaire accessible en lecture** définie sur **Non**).
 
-Voici un exemple de chaîne de connexion cliente, qui correspond à cette configuration apparentée à une mise en miroir de bases de données, à l’aide d’ADO.NET ou de SQL Server Native Client :
+Voici un exemple de chaîne de connexion cliente, qui correspond à cette configuration de type mise en miroir de bases de données, utilisant ADO.NET ou SQL Server Native Client :
 
 ```console
 Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=AvailabilityDatabase;
@@ -97,7 +99,9 @@ Lors de la configuration d’un groupe de disponibilité dans des machines virtu
 
 ## <a name="network-configuration"></a>Configuration réseau  
 
-Sur un cluster de basculement de machine virtuelle Azure, nous recommandons une seule carte réseau par serveur (nœud de cluster) et un seul sous-réseau. Les réseaux Azure intègrent une redondance physique, ce qui rend inutiles les cartes réseau et les sous-réseaux supplémentaires sur un cluster de basculement de machine virtuelle Azure. Même si le rapport de validation du cluster émet un avertissement indiquant que les nœuds sont accessibles sur un seul réseau, vous pouvez ignorer ce dernier sans problème sur les clusters de basculement de machine virtuelle Azure. 
+Déployez vos machines virtuelles SQL Server sur plusieurs sous-réseaux autant que possible pour éviter la dépendance sur un équilibreur de charge Azure ou un nom de réseau distribué (DNN) afin d’acheminer le trafic vers votre écouteur de groupe de disponibilité. 
+
+Sur un cluster de basculement de machine virtuelle Azure, nous recommandons une seule carte réseau par serveur (nœud de cluster). Le réseau Azure a une redondance physique, ce qui rend inutiles les cartes réseau supplémentaires sur un cluster de basculement de machine virtuelle Azure. Même si le rapport de validation du cluster émet un avertissement indiquant que les nœuds sont accessibles sur un seul réseau, vous pouvez ignorer ce dernier sans problème sur les clusters de basculement de machine virtuelle Azure.
 
 ## <a name="basic-availability-group"></a>Groupe de disponibilité de base
 
@@ -114,26 +118,27 @@ Il existe plusieurs options pour déployer un groupe de disponibilité sur SQL 
 
 Le tableau suivant fournit une comparaison des options disponibles :
 
-| | [Portail Azure](availability-group-azure-portal-configure.md), | [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md) | [Modèles de démarrage rapide](availability-group-quickstart-template-configure.md) | [Manuel](availability-group-manually-configure-prerequisites-tutorial.md) |
+| | [Portail Azure](availability-group-azure-portal-configure.md), | [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md) | [Modèles de démarrage rapide](availability-group-quickstart-template-configure.md) | [Manuel (un seul sous-réseau)](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md) | [Manuel (plusieurs sous-réseaux)](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
 |---------|---------|---------|---------|---------|
-|**Version SQL Server** |2016 + |2016 +|2016 +|2012 +|
-|**Édition de SQL Server** |Entreprise |Entreprise |Entreprise |Entreprise, Standard|
-|**Version de Windows Server**| 2016 + | 2016 + | 2016 + | Tous|
-|**Crée le cluster à votre place**|Oui|Oui | Oui |Non|
-|**Crée le groupe de disponibilité à votre place** |Oui |Non|Non|Non|
-|**Crée un écouteur et un équilibreur de charge de manière indépendante** |Non|Non|Non|Oui|
-|**Possibilité de créer un écouteur DNN à l’aide de cette méthode ?**|Non|Non|Non|Oui|
-|**Configuration de quorum WSFC**|Témoin de cloud|Témoin de cloud|Témoin de cloud|Tous|
-|**Reprise d’activité avec plusieurs régions** |Non|Non|Non|Oui|
-|**Prise en charge de plusieurs sous-réseaux** |Oui|Oui|Oui|Oui|
-|**Prise en charge d'un domaine d'application existant**|Oui|Oui|Oui|Oui|
-|**Reprise d’activité avec plusieurs zones dans la même région**|Oui|Oui|Oui|Oui|
-|**Groupe de disponibilité distribué sans domaine d’application**|Non|Non|Non|Oui|
-|**Groupe de disponibilité distribué sans cluster** |Non|Non|Non|Oui|
+|**Version SQL Server** |2016 + |2016 +|2016 +|2012 +|2012 +| 
+|**Édition de SQL Server** |Entreprise |Entreprise |Entreprise |Entreprise, Standard|Entreprise, Standard|
+|**Version de Windows Server**| 2016 + | 2016 + | 2016 + | Tous| Tous|
+|**Crée le cluster à votre place**|Oui|Oui | Oui |Non| Non| 
+|**Crée le groupe de disponibilité à votre place** |Oui |Non|Non|Non| Non| 
+|**Crée un écouteur et un équilibreur de charge de manière indépendante** |Non|Non|Non|Oui|N/A|
+|**Possibilité de créer un écouteur DNN à l’aide de cette méthode ?**|Non|Non|Non|Oui|N/A|
+|**Configuration de quorum WSFC**|Témoin de cloud|Témoin de cloud|Témoin de cloud|Tous|Tous|
+|**Reprise d’activité avec plusieurs régions** |Non|Non|Non|Oui|Oui|
+|**Prise en charge de plusieurs sous-réseaux** |Non|Non|Non|N/A|Oui|
+|**Prise en charge d'un domaine d'application existant**|Oui|Oui|Oui|Oui|Oui|
+|**Reprise d’activité avec plusieurs zones dans la même région**|Oui|Oui|Oui|Oui|Oui|
+|**Groupe de disponibilité distribué sans domaine d’application**|Non|Non|Non|Oui| Oui| 
+|**Groupe de disponibilité distribué sans cluster** |Non|Non|Non|Oui|Oui|
+|**Nécessite un équilibreur de charge ou DNN**| Oui | Oui | Oui | Oui | Non|
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Passez en revue les [bonnes pratiques pour HADR](hadr-cluster-best-practices.md), puis commencez à déployer votre groupe de disponibilité avec le [portail Azure](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), les [modèles de démarrage rapide](availability-group-quickstart-template-configure.md) ou [manuellement](availability-group-manually-configure-prerequisites-tutorial.md).
+Passez en revue les [bonnes pratiques pour HADR](hadr-cluster-best-practices.md), puis commencez à déployer votre groupe de disponibilité avec le [portail Azure](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), les [modèles de démarrage rapide](availability-group-quickstart-template-configure.md) ou [manuellement](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md).
 
 Vous pouvez également déployer un [groupe de disponibilité sans cluster](availability-group-clusterless-workgroup-configure.md) ou un groupe de disponibilité dans [plusieurs régions](availability-group-manually-configure-multiple-regions.md).
 

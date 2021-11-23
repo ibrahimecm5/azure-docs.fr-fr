@@ -1,23 +1,32 @@
 ---
 title: Superviser des applications mobiles avec Azure Monitor Application Insights
 description: Fournit des instructions permettant de configurer rapidement une application mobile pour sa supervision avec Azure Monitor Application Insights et App Center
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ddc8a10d3f68642a9fa17c02b937a536c150e3b7
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 2a5b33de0095cfe4def9bf766a4838b2869820e2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131711"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327440"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Commencer à analyser votre application mobile avec App Center et Application Insights
 
-Ce démarrage rapide vous guide tout au long de la connexion de l’instance App Center de votre application à Application Insights. Avec Application Insights, vous pouvez interroger, segmenter, filtrer et analyser vos données de télémétrie avec davantage d’outils puissants que ceux disponibles à partir du service [Analytics](/mobile-center/analytics/) d’App Center.
+Ce tutoriel vous guide tout au long de la connexion de l’instance App Center de votre application à Application Insights. Avec Application Insights, vous pouvez interroger, segmenter, filtrer et analyser vos données de télémétrie avec davantage d’outils puissants que ceux disponibles à partir du service [Analytics](/mobile-center/analytics/) d’App Center.
+
+
+Dans ce tutoriel, vous allez apprendre à :
+
+> [!div class="checklist"]
+> * Connecter l’instance App Center d’une application à Application Insights
+> * Modifier votre application pour envoyer des données de télémétrie personnalisées à Application Insights
+> * Interroger des données de télémétrie personnalisées dans Log Analytics
+> * Analyser des modèles de conversion, de conservation et de navigation dans votre application
 
 ## <a name="prerequisites"></a>Prérequis
 
-Pour effectuer ce démarrage rapide, les éléments suivants sont requis :
+Pour suivre ce didacticiel, vous avez besoin des éléments suivants :
 
 - Un abonnement Azure.
 - Une application iOS, Android, Xamarin, Universal Windows ou React Native.

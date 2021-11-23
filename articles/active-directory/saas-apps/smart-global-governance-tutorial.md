@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 54396b54539bcd352d2643c964a5ecc9e3b9f1f7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 025425e3565b4e2fbc30a89b4bb768da1b9eaa8d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124752288"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132320826"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Smart Global Governance
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification SSO Azure
 
 Smart Global Governance prend en charge l’authentification unique lancée par le fournisseur de services et le fournisseur d’identité.
 
-Une fois que vous avez configuré Smart Global Governance, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Smart Global Governance, vous pouvez appliquer le contrôle de session qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Les contrôles de session sont étendus à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-smart-global-governance-from-the-gallery"></a>Ajouter Smart Global Governance à partir de la galerie
 
@@ -158,6 +158,6 @@ Le fait de sélectionner la vignette Smart Global Governance dans le panneau d�
 
 - [Essayer Smart Global Governance avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Smart Global Governance avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

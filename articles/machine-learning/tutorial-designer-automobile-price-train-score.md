@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 10/21/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 15edab4bc16067b866912e1fca899e844ff6e7e0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: e3430ded70d8bba018e2bb28ad48decde82c46c4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554925"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339722"
 ---
 # <a name="tutorial-designer---train-a-no-code-regression-model"></a>Tutoriel : Concepteur – effectuer l’apprentissage d’un modèle de régression sans code
 
@@ -221,7 +221,7 @@ Entraînez le modèle en lui fournissant un jeu de données incluant le prix. L�
 1. Connectez la sortie du composant **Régression linéaire** à l’entrée gauche du composant **Effectuer l’apprentissage du modèle**.
 
 1. Connectez la sortie des données d’entraînement (port gauche) du composant **Fractionner les données** à l’entrée droite du composant **Effectuer l’apprentissage du modèle**.
-    
+
     > [!IMPORTANT]
     > Vérifiez que le port de sortie de gauche de **Split Data** est connecté à **Train Model**. Le port de gauche contient le jeu d’entraînement. Le port de droite contient le jeu de test.
 

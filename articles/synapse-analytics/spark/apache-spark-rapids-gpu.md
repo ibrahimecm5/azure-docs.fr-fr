@@ -9,19 +9,19 @@ ms.subservice: spark
 ms.date: 10/18/2021
 ms.author: nidutta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 072d1481ea1a089db7c02c5bc9af8179dcefccd7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c37e1361a1f0864dc64af3bfb91eb6f8df293949
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097077"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494322"
 ---
-# <a name="apache-spark-gpu-enabled-pool-in-azure-synapse-analytics"></a>Pool compatible GPU Apache Spark dans Azure Synapse Analytics
+# <a name="apache-spark-gpu-accelerated-pools-in-azure-synapse-analytics"></a>Pools Apache Spark accélérés par GPU dans Azure Synapse Analytics
 
 Apache Spark est un framework de traitement parallèle qui prend en charge le traitement en mémoire pour améliorer les performances des applications d’analytique du Big Data. Apache Spark dans Azure Synapse Analytics est l’une des implémentations par Microsoft d’Apache Spark dans le cloud. 
 
-Azure Synapse offre désormais la possibilité de créer des pools compatibles GPU Azure Synapse pour exécuter des charges de travail Spark en utilisant les [bibliothèques RAPIDS](https://nvidia.github.io/spark-rapids/) sous-jacentes qui tirent parti de l’énorme puissance de traitement parallèle des GPU pour accélérer le traitement. L’accélérateur RAPIDS pour Apache Spark vous permet d’exécuter vos applications Spark existantes **sans modification du code** juste en activant un paramètre de configuration, qui est préconfiguré pour un pool compatible GPU.
-Vous pouvez choisir d’activer/de désactiver l’accélération GPU basée sur RAPIDS pour votre charge de travail ou parties de votre charge de travail en définissant cette configuration :
+Azure Synapse offre désormais la possibilité de créer des pools compatibles GPU Azure Synapse pour exécuter des charges de travail Spark en utilisant les [bibliothèques RAPIDS](https://nvidia.github.io/spark-rapids/) sous-jacentes qui utilisent l’énorme puissance de traitement parallèle des GPU pour accélérer le traitement. L’accélérateur RAPIDS pour Apache Spark vous permet d’exécuter vos applications Spark existantes **sans modification du code** juste en activant un paramètre de configuration, qui est préconfiguré pour un pool compatible GPU.
+Vous pouvez choisir d’activer/de désactiver l’accélération GPU basée sur RAPIDS pour votre charge de travail ou des parties de votre charge de travail en définissant cette configuration :
 
 ```
 spark.conf.set('spark.rapids.sql.enabled','true/false')
@@ -50,7 +50,7 @@ Le plug-in de l’accélérateur RAPIDS prend uniquement en charge un mappage un
 Toute charge de travail qui ne répond pas à l’une des configurations ci-dessus ne sera pas acceptée. Cela permet de s’assurer que les travaux Spark sont exécutés avec la configuration la plus efficace et la plus performante en utilisant toutes les ressources disponibles sur le pool.
 
 L’utilisateur peut définir la configuration ci-dessus par le biais de sa charge de travail. Pour les notebooks, l’utilisateur peut utiliser la commande magic `%%configure` pour définir l’une des configurations ci-dessus, comme indiqué ci-après.
-Par exemple, en utilisant un grand pool avec 3 nœuds :
+Par exemple, en utilisant un grand pool avec trois nœuds :
 
 ```
 %%configure -f
@@ -63,9 +63,9 @@ Par exemple, en utilisant un grand pool avec 3 nœuds :
 }
 ```
 
-## <a name="run-a-sample-spark-job-through-notebook-on-an-azure-synapse-gpu-enabled-pool"></a>Exécuter un exemple de travail Spark par le biais d’un notebook sur un pool compatible GPU Azure Synapse
+## <a name="run-a-sample-spark-job-through-notebook-on-an-azure-synapse-gpu-accelerated-pool"></a>Exécuter un exemple de travail Spark par le biais d’un notebook sur un pool Azure Synapse accéléré par GPU
 
-Avant de passer à cette section, il serait judicieux de vous familiariser avec les [concepts de base de l’utilisation d’un notebook](apache-spark-development-using-notebooks.md) dans Azure Synapse Analytics. Passons en revue les étapes permettant d’exécuter une application Spark simple utilisant l’accélération GPU. Vous pouvez écrire une application Spark dans les quatre langages pris en charge dans Synapse, PySpark (Python), Spark (Scala), SparkSQL et .NET pour Spark (C#).
+Avant de passer à cette section, il serait judicieux de vous familiariser avec les [concepts de base de l’utilisation d’un notebook](apache-spark-development-using-notebooks.md) dans Azure Synapse Analytics. Passons en revue les étapes permettant d’exécuter une application Spark utilisant l’accélération GPU. Vous pouvez écrire une application Spark dans les quatre langages pris en charge dans Synapse : PySpark (Python), Spark (Scala), SparkSQL et .NET pour Spark (C#).
 
 1. Créez un pool compatible GPU comme décrit dans ce guide de [démarrage rapide](../quickstart-create-apache-gpu-pool-portal.md).
 
@@ -142,7 +142,7 @@ DataFrame empDF = spark.CreateDataFrame(emp, schema);
 ```
 ---
 
-5. Nous allons maintenant effectuer un agrégat simple en obtenant le salaire maximal par ID de département et afficher le résultat :
+5. Nous allons maintenant effectuer un agrégat en obtenant le salaire maximal par ID de département et afficher le résultat :
 
 ### <a name="scala"></a>[Scala](#tab/scala1)
 
@@ -176,4 +176,7 @@ La plupart des travaux Spark peuvent voir une amélioration des performances en 
 
 ### <a name="workspace-level"></a>Niveau Espace de travail
 
-Chaque espace de travail Azure Synapse vient avec un quota par défaut de 0 vCores de GPU. Pour augmenter votre quota de cœurs de GPU, veuillez envoyer un e-mail à AzureSynapseGPU@microsoft.com avec le nom de votre espace de travail, la région et le quota de GPU total nécessaire à votre charge de travail.
+Chaque espace de travail Azure Synapse est fourni avec un quota par défaut de 50 vCores de GPU. Pour augmenter votre quota de cœurs de GPU, envoyez un e-mail à AzureSynapseGPU@microsoft.com avec le nom de votre espace de travail, la région et le quota de GPU total nécessaire à votre charge de travail.
+
+## <a name="next-steps"></a>Étapes suivantes
+- [Azure Synapse Analytics](../overview-what-is.md)

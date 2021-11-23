@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 196f6da948d90afdbd05fc941b327cfd2b7ab1f9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4a43c088c5e8d92bb1cbbee741a17be2c8ceb590
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816545"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344177"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à pymetrics
 
@@ -42,7 +42,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 * pymetrics prend en charge l’authentification unique lancée par le **fournisseur de services et le fournisseur d’identité**
 * pymetrics prend en charge le provisionnement d’utilisateurs **Juste-à-temps**
 
-* Après avoir configuré pymetrics, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré pymetrics, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-pymetrics-from-the-gallery"></a>Ajout de pymetrics à partir de la galerie
 
@@ -161,6 +161,6 @@ Quand vous cliquez sur la vignette pymetrics dans le volet d’accès, vous deve
 
 - [Essayer pymetrics avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger pymetrics avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

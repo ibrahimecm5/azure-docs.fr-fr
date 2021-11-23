@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: eur
-ms.openlocfilehash: 90c86bbe258ebc73ef0bcb4b0da1b0124333ac46
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 73a6c99b3f35fa43852981edb3343cf9644e9662
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502314"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252500"
 ---
-Ce guide explique comment installer le [Kit de développement logiciel (SDK) Speech](~/articles/cognitive-services/speech-service/speech-sdk.md) pour C++ sur macOS 10.13 et versions ultérieures.
+Ce guide explique comment installer le [Kit de développement logiciel (SDK) Speech](~/articles/cognitive-services/speech-service/speech-sdk.md) pour C++ sur macOS 10.14 et versions ultérieures.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Configuration système requise
 
-macOS 10.13 et versions ultérieures
+macOS 10.14 et versions ultérieures
 
 ## <a name="install-speech-sdk"></a>Installer le kit SDK Speech
 
@@ -52,7 +52,7 @@ macOS 10.13 et versions ultérieures
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   La liste des répertoires doit contenir les fichiers de notification et de licence de tiers, ainsi qu’un répertoire `MicrosoftCognitiveServicesSpeech.framework`.
+   La liste des répertoires doit contenir les fichiers de notification et de licence de tiers, ainsi qu’un répertoire `MicrosoftCognitiveServicesSpeech.xcframework`.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

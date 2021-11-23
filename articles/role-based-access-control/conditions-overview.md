@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: identity
 ms.date: 05/13/2021
 ms.author: rolyon
-ms.openlocfilehash: 6919a5b94d9122f16084933574ffc88f8c9f1249
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 84bcac43d22d1c90ccfe4f674c495d8439fe9536
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847415"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132398323"
 ---
 # <a name="what-is-azure-attribute-based-access-control-azure-abac-preview"></a>Qu’est-ce que le contrôle d’accès en fonction des attributs Azure (Azure ABAC) ? (préversion)
 
@@ -37,7 +37,7 @@ Azure ABAC s’appuie sur Azure RBAC en ajoutant des conditions d’attribution 
 L’utilisation de conditions d’attribution de rôle revêt trois principaux avantages :
 
 - **Fournir un contrôle d’accès plus précis** : Une attribution de rôle utilise une définition de rôle comprenant des actions et des actions de données pour accorder des autorisations à un principal de sécurité. Vous pouvez écrire des conditions pour filtrer ces autorisations à des fins de contrôle d’accès plus précis. Vous pouvez aussi ajouter des conditions à des actions spécifiques. Par exemple, vous pouvez octroyer à John un accès en lecture aux objets blob de votre abonnement uniquement si ces objets blob sont étiquetés Project=Blue. 
-- **Contribuer à réduire le nombre d’attributions de rôle** : Chaque abonnement Azure est actuellement limité à 2 000 attributions de rôle. Dans certains scénarios, des milliers d’attributions de rôle sont nécessaires. Toutes ces attributions de rôle ont besoin d’être gérées. Dans ces scénarios, vous pouvez éventuellement ajouter des conditions pour utiliser considérablement moins d’attributions de rôle. 
+- **Contribuer à réduire le nombre d’attributions de rôle** : Chaque abonnement Azure est soumis à une limite d’attributions de rôle. Dans certains scénarios, des milliers d’attributions de rôle sont nécessaires. Toutes ces attributions de rôle ont besoin d’être gérées. Dans ces scénarios, vous pouvez éventuellement ajouter des conditions pour utiliser considérablement moins d’attributions de rôle. 
 - **Utiliser des attributs qui ont du sens pour votre entreprise** : Les conditions vous permettent d’utiliser des attributs qui ont un intérêt particulier pour vous en termes de contrôle d’accès. Par exemple, les attributs peuvent être le nom du projet, la phase de développement d’un logiciel et des niveaux de classification. Les valeurs de ces attributs de ressource sont dynamiques et évoluent à mesure que les utilisateurs passent d’une équipe à l’autre et d’un projet à l’autre.
 
 ## <a name="example-scenarios-for-conditions"></a>Exemples de scénarios pour les conditions

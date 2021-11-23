@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: johnkem
 ms.service: chaos-studio
-ms.openlocfilehash: d843b91864723fa0195430ac0f293fc7159d2adc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: b4df4b7f06c999bfc29154fbbed4133c2664dad8
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479125"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132372451"
 ---
 # <a name="azure-chaos-studio-preview-limitations-and-known-issues"></a>Limites et problèmes connus d’Azure Chaos Studio (préversion)
 
@@ -32,6 +32,7 @@ Pendant la préversion publique d’Azure Chaos Studio, il existe quelques limit
     * **MacOS :** Safari, Google Chrome, Firefox
 
 ## <a name="known-issues"></a>Problèmes connus
+* En outre, l’expérience **Activer la cible basée sur l’agent** dans le portail Azure n’affecte pas l’identité managée affectée par l’utilisateur à la machine virtuelle ou au groupe de machines virtuelles identiques. Cette opération doit être effectuée manuellement, sinon une erreur basée sur un agent dans une expérience se produit avec le message : « Vérifiez que la cible est correctement intégrée et que des autorisations de lecture appropriées sont fournies à l’expérience msi. » Cette opération peut être faite après l’activation de la cible basée sur l’agent, mais peut nécessiter un redémarrage.
 * L’intégration d’une cible dans le portail Azure peut échouer si vous quittez la vue Cibles avant la fin de l’intégration.
 * Lors de la création d’une expérience, après que vous ayez cliqué sur **Vérifier + créer**, un délai s’écoule avant que l’expérience créée n’apparaisse dans la liste des expériences, et les utilisateurs doivent actualiser la page pour voir l’expérience dans la liste.
 * Lors de la sélection des ressources cibles pour une erreur due à l’agent dans le concepteur d’expériences, il est possible de sélectionner des machines virtuelles ou des groupes de machines virtuelles identiques avec un système d’exploitation non pris en charge par l’erreur sélectionnée.
@@ -39,5 +40,5 @@ Pendant la préversion publique d’Azure Chaos Studio, il existe quelques limit
 
 ## <a name="next-steps"></a>Étapes suivantes
 Commencez à créer et à exécuter des expériences de chaos pour améliorer la résilience des applications avec Chaos Studio à l’aide des liens ci-dessous.
-- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct.md)
+- [Créer et exécuter votre première expérience](chaos-studio-tutorial-service-direct-portal.md)
 - [En savoir plus sur l’ingénierie du chaos](chaos-studio-chaos-engineering-overview.md)

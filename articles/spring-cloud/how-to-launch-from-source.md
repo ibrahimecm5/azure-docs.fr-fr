@@ -1,24 +1,24 @@
 ---
 title: Guide pratique pour lancer votre application Spring Cloud à partir du code source
-description: Dans ce guide de démarrage rapide, vous découvrirez comment lancer votre application Azure Spring Cloud directement à partir de votre code source.
+description: Dans ce guide de démarrage rapide, vous découvrirez comment lancer votre application dans Azure Spring Cloud directement à partir de votre code source.
 author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/03/2020
+ms.date: 11/12/2021
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a4bfa5687c4b552a99b8d4e5a7e5c8f79807d766
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 0815f48fd9b194a84566138b25b4bedc97de1a83
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014914"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132490323"
 ---
-# <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>Guide pratique pour lancer votre application Spring Cloud à partir du code source
+# <a name="how-to-deploy-spring-boot-applications-from-azure-cli"></a>Guide pratique pour déployer des applications Spring Boot à partir d’Azure CLI
 
 **Cet article s’applique à :** ✔️ Java
 
-Azure Spring Cloud permet d’exécuter dans Azure des applications de microservices basées sur Spring Cloud.
+Azure Spring Cloud active les applications Spring Boot sur Azure.
 
 Vous pouvez lancer des applications directement à partir du code source Java ou d’un fichier JAR prédéfini. Cet article explique les procédures de déploiement.
 
@@ -27,8 +27,8 @@ Ce guide de démarrage rapide explique comment :
 > [!div class="checklist"]
 > * Provisionner une instance de service
 > * Définir un serveur de configuration pour une instance
-> * Générer localement une application de microservices
-> * Déployer chaque microservice
+> * Générer une application localement
+> * Déployer chaque application
 > * Affecter un point de terminaison public pour votre application
 
 ## <a name="prerequisites"></a>Prérequis
@@ -62,16 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Créez un groupe de ressources destiné à contenir votre service Azure Spring Cloud. Vous pouvez en apprendre davantage sur les [groupes de ressources Azure](../azure-resource-manager/management/overview.md).
+Créez un groupe de ressources destiné à contenir votre service dans Azure Spring Cloud. Vous pouvez en apprendre davantage sur les [groupes de ressources Azure](../azure-resource-manager/management/overview.md).
 
 ```azurecli
-az group create --location eastus --name <resource group name>
+az group create --location eastus --name <resource-group-name>
 ```
 
-Exécutez les commandes suivantes pour provisionner une instance d’Azure Spring Cloud. Préparez un nom pour votre service Azure Spring Cloud. Le nom doit comporter entre 4 et 32 caractères, et contenir uniquement des lettres minuscules, des chiffres et des traits d’union. Le premier caractère du nom du service doit être une lettre, et le dernier doit être une lettre ou un chiffre.
+Exécutez les commandes suivantes pour provisionner une instance d’Azure Spring Cloud. Préparez un nom pour votre service dans Azure Spring Cloud. Le nom doit comporter entre 4 et 32 caractères, et contenir uniquement des lettres minuscules, des chiffres et des traits d’union. Le premier caractère du nom du service doit être une lettre, et le dernier doit être une lettre ou un chiffre.
 
 ```azurecli
-az spring-cloud create -n <resource name> -g <resource group name>
+az spring-cloud create --resource-group <resource-group-name> --name <resource-name>
 ```
 
 Le déploiement de l’instance de service prend environ cinq minutes.
@@ -79,36 +79,38 @@ Le déploiement de l’instance de service prend environ cinq minutes.
 Définissez le nom du groupe de ressources et le nom de l’instance Azure Spring Cloud par défaut en exécutant les commandes suivantes :
 
 ```azurecli
-az config set defaults.group=<service group name>
-az config set defaults.spring-cloud=<service instance name>
+az config set defaults.group=<service-group-name>
+az config set defaults.spring-cloud=<service-instance-name>
 ```
 
-## <a name="create-the-azure-spring-cloud-application"></a>Créer l’application Azure Spring Cloud
+## <a name="create-the-application-in-azure-spring-cloud"></a>Créer l’application dans Azure Spring Cloud
 
-La commande suivante crée une application Azure Spring Cloud dans votre abonnement.  Elle crée un service vide dans lequel nous pouvons charger notre application.
+La commande suivante crée une application dans Azure Spring Cloud, dans votre abonnement.  Elle crée un service vide dans lequel vous pouvez charger votre application.
 
 ```azurecli
-az spring-cloud app create -n <app-name>
+az spring-cloud app create --name <app-name>
 ```
 
-## <a name="deploy-your-spring-cloud-application"></a>Déployer votre application Spring Cloud
+## <a name="deploy-your-spring-boot-application"></a>Déployer votre application Spring Boot
 
 Vous pouvez déployer votre application à partir d’un fichier JAR prédéfini ou d’un référentiel Gradle ou Maven.  Vous trouverez ci-dessous des instructions pour chaque cas.
 
-### <a name="deploy-a-built-jar"></a>Déployer un fichier JAR généré
+### <a name="deploy-a-pre-built-jar"></a>Déployer un fichier JAR prédéfini
 
 Pour effectuer un déploiement à partir d’un fichier JAR généré sur votre ordinateur local, vérifiez que votre build produit un fichier [fat-JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-build.html#howto-create-an-executable-jar-with-maven).
 
 Pour déployer le fichier fat-JAR dans un déploiement actif :
 
 ```azurecli
-az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR, for example "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deploy --name <app-name> --jar-path <path-to-fat-JAR>
 ```
 
 Pour déployer le fichier fat-JAR dans un déploiement spécifique :
 
 ```azurecli
-az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-fat-JAR, for example "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deployment create --app <app-name> \
+    --name <deployment-name> \
+    --jar-path <path-to-fat-JAR>
 ```
 
 ### <a name="deploy-from-source-code"></a>Déployer à partir de code source
@@ -122,14 +124,15 @@ Pour les projets Maven/Gradle à un seul module :
 
 ```azurecli
 cd <path-to-maven-or-gradle-source-root>
-az spring-cloud app deploy -n <app-name>
+az spring-cloud app deploy --name <app-name>
 ```
 
 Pour les projets Maven/Gradle avec plusieurs modules, répétez cette opération pour chaque module :
 
 ```azurecli
 cd <path-to-maven-or-gradle-source-root>
-az spring-cloud app deploy -n <app-name> --target-module <relative-path-to-module>
+az spring-cloud app deploy --name <app-name> \
+    --target-module <relative-path-to-module>
 ```
 
 ### <a name="show-deployment-logs"></a>Afficher les journaux de déploiement
@@ -137,7 +140,7 @@ az spring-cloud app deploy -n <app-name> --target-module <relative-path-to-modul
 Passez en revue les journaux de génération kpack à l’aide de la commande suivante :
 
 ```azurecli
-az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
+az spring-cloud app show-deploy-log --name <app-name>
 ```
 
 > [!NOTE]
@@ -160,8 +163,8 @@ Dans ce démarrage rapide, vous avez appris comment :
 > [!div class="checklist"]
 > * Provisionner une instance de service
 > * Définir un serveur de configuration pour une instance
-> * Générer localement une application de microservices
-> * Déployer chaque microservice
+> * Générer une application localement
+> * Déployer chaque application
 > * Modifier les variables d’environnement pour les applications
 > * Affecter une adresse IP publique à votre passerelle d’application
 

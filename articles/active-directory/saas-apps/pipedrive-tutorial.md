@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 7713a1a502697a52ed811b8ed41b13485f454877
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 145d7e0f7b9ba1419b47fde3d8a3526f45315c98
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768170"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300068"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Pipedrive
 
@@ -128,6 +128,8 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificat
 1. Si vous attendez qu’un rôle soit attribué aux utilisateurs, vous pouvez le sélectionner dans la liste déroulante **Sélectionner un rôle** . Si aucun rôle n’a été configuré pour cette application, vous voyez le rôle « Accès par défaut » sélectionné.
 1. Dans la boîte de dialogue **Ajouter une attribution**, cliquez sur le bouton **Attribuer**.
 
+<!-- docutune:ignore "Security Center" -->
+
 ## <a name="configure-pipedrive-sso"></a>Configurer l’authentification unique pour Pipedrive
 
 1. Dans une autre fenêtre de navigateur, connectez-vous au site web Pipedrive en tant qu’administrateur.
@@ -136,9 +138,9 @@ Dans cette section, vous allez autoriser B. Simon à utiliser l’authentificat
 
     ![Capture d’écran montrant « Settings » sélectionné dans le menu « User profile »](./media/pipedrive-tutorial/configure-1.png)
 
-1. Faites défiler la page jusqu’à Security Center et sélectionnez **Single sign-on** (Authentification unique).
+1. Faites défiler jusqu’à Defender pour le cloud et sélectionnez **Authentification unique**.
 
-    ![Capture d’écran montrant « Single sign-on » sélectionné dans « Security Center »](./media/pipedrive-tutorial/configure-2.png)
+    ![Capture d’écran montrant « Authentification unique » sélectionné dans « Defender pour le cloud ».](./media/pipedrive-tutorial/configure-2.png)
 
 1. Dans la section **SAML configuration for pipedrive** (Configuration de SAML pour Pipedrive), effectuez les étapes suivantes :
 
@@ -195,4 +197,4 @@ Vous pouvez aussi utiliser Mes applications de Microsoft pour tester l’applica
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Une fois que vous avez configuré Pipedrive, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+Une fois que vous avez configuré Pipedrive, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).

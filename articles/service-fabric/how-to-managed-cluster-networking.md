@@ -2,13 +2,13 @@
 title: Configurer les paramètres réseau pour les clusters Service Fabric managés
 description: Découvrez comment configurer votre cluster géré par Service Fabric pour les règles de groupe de sécurité réseau, l’accès aux port RDP, les règles d’équilibrage de charge, etc.
 ms.topic: how-to
-ms.date: 8/23/2021
-ms.openlocfilehash: 3482f414029c79ceea9c0ee8bcc258ed2fc495e1
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/10/2021
+ms.openlocfilehash: 2334618f11533d285154082e0d1b5dadbc41368f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131558874"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132289382"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Configurer les paramètres réseau pour les clusters Service Fabric managés
 
@@ -20,6 +20,9 @@ Les clusters Service Fabric managés sont créés avec une configuration réseau
 - [Activer IPv6](#ipv6)
 - [Apporter votre propre réseau virtuel](#byovnet)
 - [Apporter votre propre équilibreur de charge](#byolb)
+- [Activer la mise en réseau accélérée](#accelnet)
+- [Configurer des sous-réseaux auxiliaires](#auxsubnet)
+
 
 <a id="nsgrules"></a>
 ## <a name="manage-nsg-rules"></a>Gérer les règles de groupe de sécurité réseau
@@ -199,8 +202,8 @@ Les clusters Service Fabric gérés créent automatiquement des règles NAT de
 
    ![Règles NAT entrantes][Inbound-NAT-Rules]
 
-   Par défaut, pour les clusters Windows, l’allocation du Port frontal démarre à 50000 et le port cible est le port 3389, lequel est mappé au service RDP sur le nœud cible.
-   >[!NOTE]
+   Par défaut, pour les clusters Windows, le port frontend se trouve dans la plage 50000 et plus et le port cible est le port 3389, qui correspond au service RDP sur le nœud cible.
+   > [!NOTE]
    > Si vous utilisez la fonctionnalité BYOLB et que vous souhaitez utiliser le protocole RDP, vous devez configurer un pool NAT séparément. Cela ne crée pas automatiquement de règles NAT pour ces types de nœuds.
 
 4. Connectez-vous à distance au nœud (instance de groupe identique) spécifique. Vous pouvez utiliser le nom d’utilisateur et le mot de passe que vous avez définis lors de la création du cluster ou de toutes autres informations d’identification que vous avez configurées.
@@ -336,7 +339,6 @@ Cette fonctionnalité permet aux clients d’utiliser un réseau virtuel existan
 > [!NOTE]
 > Vous ne pouvez pas modifier ce paramètre après la création du cluster et le cluster géré attribue un groupe de sécurité réseau au sous-réseau fourni. Ne modifiez pas l’attribution du groupe de sécurité réseau, car cela pourrait interrompre le trafic.
 
-
 **Pour apporter votre propre réseau virtuel :**
 
 1. Obtenez l’`Id` de service de votre abonnement pour votre application fournisseur de ressources Service Fabric.
@@ -439,30 +441,38 @@ Cette fonctionnalité permet aux clients d’utiliser un réseau virtuel existan
 
 <a id="byolb"></a>
 ## <a name="bring-your-own-azure-load-balancer-preview"></a>Apporter votre propre Azure Load Balancer (préversion)
-Les clusters gérés créent un Azure Load Balancer et un nom de domaine complet avec une adresse IP publique statique pour les types de nœuds principal et secondaires. Cette fonctionnalité vous permet de créer ou de réutiliser un Azure Load Balancer pour les types de nœuds secondaires pour le trafic tant entrant que sortant. Lorsque vous apportez votre propre Azure Load Balancer, vous pouvez :
+Les clusters gérés créent un Azure Load Balancer public Standard Load Balancer et un nom de domaine complet avec une adresse IP publique statique pour les types de nœuds principal et secondaires. Le fait d’apporter votre propre équilibreur de charge vous permet d’utiliser un Azure Load Balancer existant pour les types de nœuds secondaires pour le trafic entrant et sortant. Lorsque vous apportez votre propre Azure Load Balancer, vous pouvez :
 
 * Utiliser une adresse IP statique d’équilibreur de charge préconfigurée pour le trafic privé ou public
 * Mapper un équilibreur de charge à un type de nœud spécifique
-* Configurer des règles de groupe de sécurité réseau par type de nœud, car chaque type de nœud est déployé dans son propre sous-réseau avec un NSG unique 
+* Configurer des règles de groupe de sécurité réseau par type de nœud, car chaque type de nœud est déployé dans son propre sous-réseau
 * Maintenir les stratégies et contrôles existants que vous avez peut-être mis en place
+* Configurer un équilibreur de charge interne uniquement et utiliser l’équilibreur de charge par défaut pour le trafic externe
 
 > [!NOTE]
 > Lorsque vous utilisez BYOVNET, les ressources de cluster gérées sont déployées dans un sous-réseau avec un NSG, indépendamment des équilibreurs de charge configurés supplémentaires.
 
 > [!NOTE]
-> Après le déploiement d’un cluster pour un type de nœud, vous ne pouvez pas passer de par défaut à personnalisé, mais vous pouvez modifier la configuration de l’équilibreur de charge personnalisé.
+> Vous ne pouvez pas passer de l’équilibreur de charge par défaut à un autre après le déploiement d’un type de nœud, mais vous pouvez modifier la configuration d’équilibrage de charge personnalisée après le déploiement si elle est activée.
 
 **Exigences concernant les fonctionnalités**
  * Les types d’Azure Load Balancer de référence (SKU) De base et Standard sont pris en charge
- * Des pools principal et NAT doivent être configurés sur l’Azure Load Balancer existant. Pour un exemple, consultez l’[exemple complet de création et attribution de rôle ici](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json). 
+ * Des pools principal et NAT doivent être configurés sur l’Azure Load Balancer.
+ * Vous devez activer la connectivité sortante à l’aide d’un équilibreur de charge public fourni ou de l’équilibreur de charge public par défaut.
 
 Voici quelques exemples de scénarios pour lesquels les clients peuvent utiliser ceci :
 
 Dans cet exemple, un client souhaite acheminer le trafic via un Azure Load Balancer existant configuré avec une adresse IP statique existante vers deux types de nœuds.
+
 ![Apporter votre propre équilibreur de charge, exemple 1][sfmc-byolb-example-1]
 
-Dans cet exemple, un client souhaite acheminer le trafic via des équilibreurs de charge Azure existants afin de faciliter la gestion du flux de trafic de manière indépendante vers ses applications résidant sur des types de nœuds distincts. En cas de configuration comme dans cet exemple, chaque type de nœud se trouve derrière son groupe de sécurité réseau que vous pouvez gérer.
+Dans cet exemple, un client souhaite acheminer le trafic via des équilibreurs de charge Azure existants afin de faciliter la gestion du flux de trafic de manière indépendante vers ses applications résidant sur des types de nœuds distincts. En cas de configuration comme dans cet exemple, chaque type de nœud se trouve derrière son propre groupe de sécurité réseau.
+
 ![Apporter votre propre équilibreur de charge, exemple 2][sfmc-byolb-example-2]
+
+Dans cet exemple, un client souhaite router le trafic via des équilibreurs de charge Azure internes existants. Cela lui permet de gérer le flux de trafic vers ses applications indépendamment qui résident sur des types de nœuds distincts. En cas de configuration comme dans cet exemple, chaque type de nœud se trouve derrière son propre groupe de sécurité réseau géré et utilise l’équilibreur de charge par défaut pour le trafic externe.
+
+![Apporter votre propre équilibreur de charge - exemple 3][sfmc-byolb-example-3]
 
 Pour configurer l’apport de votre propre équilibreur de charge :
 
@@ -495,7 +505,7 @@ Pour configurer l’apport de votre propre équilibreur de charge :
 
 2. Ajoutez une attribution de rôle à l’application fournisseur de ressources Service Fabric. L’ajout d’une attribution de rôle est une action ponctuelle. Pour ajouter le rôle, exécutez les commandes PowerShell suivantes ou configurez un modèle Azure Resource Manager (ARM) comme indiqué ci-dessous.
 
-   Dans les étapes suivantes, nous allons commencer avec un équilibreur de charge existant nommé Existing-LoadBalancer1, dans le groupe de ressources Existing-RG.
+   Dans les étapes suivantes, nous allons commencer avec un équilibreur de charge existant nommé Existing-LoadBalancer1, dans le groupe de ressources Existing-RG. 
 
    Obtenez les informations de propriété `Id` requises à partir de l’Azure Load Balancer existant. Nous allons 
 
@@ -517,7 +527,7 @@ Pour configurer l’apport de votre propre équilibreur de charge :
    New-AzRoleAssignment -PrincipalId 00000000-0000-0000-0000-000000000000 -RoleDefinitionName "Network Contributor" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<LoadBalancerName>"
    ```
 
-   Vous pouvez également ajouter l’attribution de rôle à l’aide d’un modèle Azure Resource Manager (ARM) configuré avec les valeurs appropriées pour `principalId` obtenues à l’étape 1, `loadBalancerRoleAssignmentID` et `roleDefinitionId` :
+   Vous pouvez également ajouter l’attribution de rôle à l’aide d’un modèle Azure Resource Manager (ARM) configuré avec les valeurs appropriées pour `principalId`, `roleDefinitionId` :
 
    ```JSON
       "type": "Microsoft.Authorization/roleAssignments",
@@ -535,24 +545,103 @@ Pour configurer l’apport de votre propre équilibreur de charge :
    > [!NOTE]
    > loadBalancerRoleAssignmentID doit être un [GUID](../azure-resource-manager/templates/template-functions-string.md#examples-16). Si vous redéployez un modèle incluant cette attribution de rôle, vérifiez que le GUID est celui utilisé à l’origine. Nous vous suggérons d’exécuter ceci de façon isolée ou de supprimer cette ressource du modèle de cluster après le déploiement, car elle ne doit être créée qu’une seule fois.
 
-3. Configurez la connectivité sortante requise. Tous les nœuds doivent être en mesure d’acheminer le trafic sortant sur le port 443 vers le fournisseur de ressources Service Fabric. Vous pouvez utiliser la balise de service `ServiceFabric` dans votre groupe de sécurité réseau pour limiter la destination du trafic au point de terminaison Azure.
+   Consultez cet exemple de modèle pour [créer un équilibreur de charge public et attribuer un rôle](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json).
+
+
+3. Configurez la connectivité sortante requise pour le type de nœud. Vous devez configurer un équilibreur de charge public pour fournir une connectivité sortante ou utiliser l’équilibreur de charge public par défaut. 
+   
+   Configurez `outboundRules` pour configurer un équilibreur de charge public pour fournir une connectivité sortante. Consultez le [modèle de création d’équilibrage de charge et d’attribution de rôle Azure Resource Manager (ARM)](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json)
+   
+   OR
+   
+   Pour configurer le type de nœud afin d’utiliser l’équilibreur de charge par défaut, définissez ce qui suit dans votre modèle : 
+   
+   * La valeur apiVersion de la ressource de cluster managé Service Fabric doit être **2021-11-01-preview** ou ultérieure.
+
+   ```json
+      {
+      "apiVersion": "[variables('sfApiVersion')]",
+      "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+      ...
+      "properties": {
+          "isPrimary": false,
+          "useDefaultPublicLoadBalancer": true
+          ...
+      }
+   ```
 
 4. Configurez éventuellement un port d’application entrant et une sonde associée sur votre Azure Load Balancer existant.
+   Pour un exemple, consultez le [modèle Azure Resource Manager (ARM) Apporter votre propre équilibreur de charge](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB).
 
 5. Configurez éventuellement les règles de groupe de sécurité réseau de cluster géré appliquées au type de nœud pour autoriser tout trafic requis que vous avez configuré sur l’Azure Load Balancer. Autrement, le trafic sera bloqué.
+   Pour un exemple de configuration de règle de groupe de sécurité réseau entrant, consultez le [modèle Azure Resource Manager (ARM) Apporter votre propre équilibreur de charge](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB). Dans le modèle, recherchez la propriété `networkSecurityRules`.
 
-   Pour un exemple d’ouverture de règles de trafic entrant, consultez le [modèle Azure Resource Manager (ARM) Apporter votre propre équilibreur de charge](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB).
+6. Déployer le modèle ARM de cluster géré configuré Pour cette étape, nous allons utiliser l’[exemple de modèle Azure Resource Manager (ARM) Apporter votre propre équilibrage de charge](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB)
 
-6. Déployer le modèle ARM de cluster géré configuré
-
-   Dans l’exemple suivant, nous allons créer un groupe de ressources nommé `MyResourceGroup` dans `westus`, et déployer un cluster avec cette fonctionnalité activée.
+   La commande suivante permet de créer un groupe de ressources appelé `MyResourceGroup` dans `westus` et de déployer un cluster à l’aide d’un équilibreur de charge existant.
    ```powershell
     New-AzResourceGroup -Name MyResourceGroup -Location westus
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName MyResourceGroup -TemplateFile AzureDeploy.json
    ```
 
-   Après le déploiement, votre type de nœud secondaire est configuré pour utiliser l’équilibreur de charge spécifié pour le trafic entrant et sortant. La connexion client Service Fabric et les points de terminaison de passerelle pointent toujours vers le DNS public de l’adresse IP statique du type de nœud principal de cluster géré.
+   Après le déploiement, le type de nœud secondaire est configuré pour utiliser l’équilibreur de charge spécifié pour le trafic entrant et sortant. La connexion client Service Fabric et les points de terminaison de passerelle pointent toujours vers le DNS public de l’adresse IP statique du type de nœud principal de cluster géré.
 
+
+
+<a id="accelnet"></a>
+## <a name="enable-accelerated-networking-preview"></a>Activer les performances réseau accélérées (préversion)
+Les performances réseau accélérées permettent la virtualisation d’entrée/sortie à racine unique (SR-IOV) sur une machine virtuelle de groupe de machines virtuelles identiques qui est la ressource sous-jacente pour les types de nœuds. Cette voie hautement performante court-circuite l’hôte à partir du chemin d’accès aux données, ce qui réduit la latence, l’instabilité et l’utilisation du processeur pour les charges de travail réseau les plus exigeantes. Les types de nœuds de clusters gérés Service Fabric peuvent être provisionnés avec des performances réseau accélérées sur les [références SKU de machine virtuelle prises en charge](../virtual-machines/sizes.md). Consultez ces [limitations et contraintes](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) pour des considérations supplémentaires. 
+
+* Notez que les performances réseau accélérées sont prises en charge dans la plupart des instances d’usage général et optimisées pour le calcul (2 processeurs virtuels ou plus). Dans des instances qui acceptent l’hyperthreading, la mise en réseau accélérée est prise en charge dans des instances de machine virtuelle comptant au minimum 4 processeurs virtuels.
+
+Activez les performances réseau accélérées en déclarant la propriété `enableAcceleratedNetworking` dans votre modèle Resource Manager comme suit :
+
+* La valeur apiVersion de la ressource de cluster managé Service Fabric doit être **2021-11-01-preview** ou ultérieure.
+
+```json
+   {
+   "apiVersion": "[variables('sfApiVersion')]",
+   "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+   ...
+   "properties": {
+       ...
+       "enableAcceleratedNetworking": true,
+       ...
+   }
+```
+
+Pour activer les performances réseau accélérées sur un cluster Service Fabric existant, vous devez d’abord mettre à l’échelle ce cluster en ajoutant un type de nœud et effectuer ce qui suit :
+
+1) Provisionner un type de nœud avec activation des performances réseau accélérées
+2) Migrer vos services et leur état vers le type de nœud provisionné avec performances réseau accélérées activées
+
+La mise à l’échelle de l’infrastructure est requise pour activer la mise en réseau accélérée sur un cluster existant. En effet, l'activation de la mise en réseau accélérée peut entraîner un temps d’arrêt, car elle implique que toutes les machines virtuelles d'un groupe à haute disponibilité soient arrêtées et libérées avant d'activer la mise en réseau accélérée sur une carte réseau existante.
+
+
+<a id="auxsubnet"></a>
+## <a name="configure-auxiliary-subnets-preview"></a>Configurer des sous-réseaux auxiliaires (préversion)
+Les sous-réseaux auxiliaires permettent de créer des sous-réseaux gérés supplémentaires sans type de nœud pour prendre en charge des scénarios tels que le [service Private Link](../private-link/private-link-service-overview.md) et les [hôtes bastion](../bastion/bastion-overview.md).
+
+Configurez des sous-réseaux auxiliaires en déclarant la propriété `auxiliarySubnets` et les paramètres requis dans votre modèle Resource Manager comme suit :
+
+* La valeur apiVersion de la ressource de cluster managé Service Fabric doit être **2021-11-01-preview** ou ultérieure.
+
+```JSON
+    "resources": [
+        {
+            "apiVersion": "[variables('sfApiVersion')]",
+            "type": "Microsoft.ServiceFabric/managedclusters",
+            ...
+            "properties": {
+                "auxiliarySubnets": [
+                  {
+                  "name" : "mysubnet",
+                  "enableIpv6" : "true"
+                  }
+                ]              
+```
+
+Voir la [liste complète des paramètres disponibles](/azure/templates/microsoft.servicefabric/2021-11-01/managedclusters) 
 
 ## <a name="next-steps"></a>Étapes suivantes
 [Options de configuration de cluster géré Service Fabric](how-to-managed-cluster-configuration.md)
@@ -563,4 +652,5 @@ Pour configurer l’apport de votre propre équilibreur de charge :
 [sfmc-rdp-connect]: ./media/how-to-managed-cluster-networking/sfmc-rdp-connect.png
 [sfmc-byolb-example-1]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-1.png
 [sfmc-byolb-example-2]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-2.png
+[sfmc-byolb-example-3]: ./media/how-to-managed-cluster-networking/sfmc-byolb-scenario-3.png
 

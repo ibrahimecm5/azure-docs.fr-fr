@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: bd4eaa70b456841ae47c6efa9bc3f2b323d0bcf5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42364c1c1fc0f9d2d220b4b9156a4a7ab4a410fa
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131097934"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337351"
 ---
 # <a name="create-replication-tasks-for-azure-resources-using-azure-logic-apps-preview"></a>Créer des tâches de réplication pour les ressources Azure à l’aide d’Azure Logic Apps (préversion)
 
@@ -32,7 +32,7 @@ Cet article fournit une vue d’ensemble des tâches de réplication alimentées
 
 ## <a name="what-is-a-replication-task"></a>Qu’est-ce qu’une tâche de réplication ?
 
-En règle générale, une tâche de réplication reçoit des données, des événements ou des messages d’une source, déplace ce contenu vers une cible, puis supprime ce contenu de la source, sauf lorsque la source est une entité Event Hubs. En règle générale, la tâche de réplication déplace le contenu sans apporter de modifications, mais les tâches de réplication alimentées par Azure Logic Apps ajoutent également des [propriétés de réplication](#replication-properties). Si les protocoles source et cible diffèrent, ces tâches effectuent également des mappages entre les structures de métadonnées. Les tâches de réplication sont généralement sans état. Cela signifie qu’elles ne partagent pas les états ou d’autres effets secondaires sur les exécutions séquentielles ou parallèles d’une tâche.
+En règle générale, une tâche de réplication reçoit des données, des événements ou des messages d’une source, déplace ce contenu vers une cible, puis supprime ce contenu de la source, sauf lorsque la source est une entité Event Hubs. En règle générale, la tâche de réplication déplace le contenu sans apporter de modifications, mais les tâches de réplication alimentées par Azure Logic Apps ajoutent également des [propriétés de réplication](#replication-properties). Si les protocoles source et cible diffèrent, ces tâches effectuent également des mappages entre les structures de métadonnées. Les tâches de réplication sont sans état. Cela signifie qu’elles ne partagent pas les états ou d’autres effets secondaires sur les exécutions séquentielles ou parallèles d’une tâche.
 
 Lorsque vous utilisez les modèles de tâche de réplication disponibles, chaque tâche de réplication que vous créez a un [workflow sans état](single-tenant-overview-compare.md#stateful-stateless) sous-jacent dans une ressource **Application logique (Standard)** , qui peut inclure plusieurs workflows pour les tâches de réplication. Cette ressource est hébergée dans une instance Azure Logic Apps à locataire unique, qui est un environnement d’exécution fiable et évolutif pour la configuration et l’exécution d’applications serverless, y compris les tâches de réplication et de fédération. Le runtime Azure Logic Apps à locataire unique utilise également le [modèle d’extensibilité d’Azure Functions](../azure-functions/functions-bindings-register.md) et est hébergé en tant qu’extension sur le runtime d’Azure Functions. Cette conception offre une portabilité, une flexibilité et des performances accrues pour les workflows d’application logique, ainsi que d’autres fonctionnalités et avantages hérités de la plateforme Azure Functions et de l’écosystème Azure App Service.
 
@@ -52,7 +52,7 @@ Actuellement, les modèles de tâche de réplication sont disponibles pour [Azur
 | Type de ressource | Source et cible de la réplication |
 |---------------|-------------------------------|
 | Espace de noms Azure Event Hubs | - D’instance Event Hubs instance à instance Event Hubs <br>- D’instance Event Hubs instance à file d’attente Service Bus <br>- D’instance Event Hubs instance à rubrique Service Bus |
-| Espace de noms Azure Service Bus | - De file d’attente Service Bus à file d’attente Service Bus <br>- De file d’attente Service Bus à rubrique Service Bus <br>- De file d’attente Service Bus à instance Event Hub <br>- D’abonnement à une rubrique Service Bus à file d’attente Service Bus <br>- D’abonnement à une rubrique Service Bus à instance Event Hubs |
+| Espace de noms Azure Service Bus | - De file d’attente Service Bus à file d’attente Service Bus <br>- De file d’attente Service Bus à rubrique Service Bus <br>- De rubrique Service Bus à rubrique Service Bus <br>- De file d’attente Service Bus à instance Event Hubs <br>- De rubrique Service Bus à file d’attente Service Bus <br>- De rubrique Service Bus à instance Event Hubs |
 |||
 
 ### <a name="replication-topology-and-workflow"></a>Topologie et workflow de réplication
@@ -85,7 +85,7 @@ Pour plus d’informations sur la réplication et la fédération dans Azure Ser
 
 ## <a name="metadata-and-property-mappings"></a>Mappages de propriétés et métadonnées
 
-Pour Event Hubs, les éléments suivants obtenus à partir de l’espace de noms Event Hubs source sont remplacés par les nouvelles valeurs affectées par le service dans l’espace de noms Event Hub cible : les métadonnées affectées par le service d’un événement, le temps de mise en file d’attente d’origine, le numéro de séquence et l’offset. Toutefois, pour les [fonctions d’assistance](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) et les tâches de réplication dans les exemples fournis par Azure, les valeurs d’origine sont conservées dans les propriétés de l’utilisateur : `repl-enqueue-time` (chaîne ISO8601), `repl-sequence` et `repl-offset`. Ces propriétés ont le type `string` et contiennent la valeur convertie en chaîne des propriétés d’origine respectives. Si l’événement est transféré plusieurs fois, les métadonnées attribuées par le service de la source immédiate sont ajoutées aux propriétés déjà existantes, avec des valeurs séparées par des points-virgules. Pour plus d’informations, consultez [Métadonnées attribuées par le service - Modèles de tâches de réplication des événements](../event-hubs/event-hubs-federation-patterns.md#service-assigned-metadata).
+Pour Event Hubs, les éléments suivants obtenus à partir de l’espace de noms Event Hubs source sont remplacés par les nouvelles valeurs affectées par le service dans l’espace de noms Event Hubs cible : les métadonnées affectées par le service d’un événement, le temps de mise en file d’attente d’origine, le numéro de séquence et l’offset. Toutefois, pour les [fonctions d’assistance](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) et les tâches de réplication dans les exemples fournis par Azure, les valeurs d’origine sont conservées dans les propriétés de l’utilisateur : `repl-enqueue-time` (chaîne ISO8601), `repl-sequence` et `repl-offset`. Ces propriétés ont le type `string` et contiennent la valeur convertie en chaîne des propriétés d’origine respectives. Si l’événement est transféré plusieurs fois, les métadonnées attribuées par le service de la source immédiate sont ajoutées aux propriétés déjà existantes, avec des valeurs séparées par des points-virgules. Pour plus d’informations, consultez [Métadonnées attribuées par le service - Modèles de tâches de réplication des événements](../event-hubs/event-hubs-federation-patterns.md#service-assigned-metadata).
 
 Pour Service Bus, les éléments suivants obtenus à partir de la file d’attente ou de la rubrique source Service Bus sont remplacés par les nouvelles valeurs affectées par le service dans la file d’attente ou la rubrique cible Service Bus : les métadonnées affectées au service d’un message, le temps de mise en file d’attente d’origine et le numéro de séquence. Toutefois, pour les tâches de réplication par défaut dans les exemples fournis par Azure, les valeurs d’origine sont conservées dans les propriétés de l’utilisateur : `repl-enqueue-time` (chaîne ISO8601) et `repl-sequence`. Ces propriétés ont le type `string` et contiennent la valeur convertie en chaîne des propriétés d’origine respectives. Si le message est transféré plusieurs fois, les métadonnées attribuées par le service de la source immédiate sont ajoutées aux propriétés existantes, avec des valeurs séparées par des points-virgules. Pour plus d’informations, consultez [Métadonnées attribuées par le service - Modèles de tâches de réplication des messages](../service-bus-messaging/service-bus-federation-patterns.md#service-assigned-metadata).
 
@@ -108,7 +108,7 @@ Lorsqu’une tâche est répliquée de Service Bus à Event Hubs, la tâche mapp
 
 ## <a name="order-preservation"></a>Conservation de l’ordre
 
-Pour Event Hubs, la réplication entre le même nombre de partitions crée des clones 1:1 sans aucune modification dans les événements, mais peut également inclure des doublons. Toutefois, pour la réplication entre différents nombres de partitions, seul l’ordre relatif des événements est conservé en fonction de la clé de partition, mais peut également inclure des doublons. Pour plus d’informations, consultez [Flux et conservation de l’ordre](../event-hubs/event-hubs-federation-patterns.md#streams-and-order-preservation).
+Pour Event Hubs, la réplication entre le même nombre de [partitions](../event-hubs/event-hubs-features.md#partitions) crée des clones 1:1 sans aucune modification dans les événements, mais peut également inclure des doublons. Toutefois, pour la réplication entre différents nombres de partitions, seul l’ordre relatif des événements est conservé en fonction de la clé de partition, mais peut également inclure des doublons. Pour plus d’informations, consultez [Flux et conservation de l’ordre](../event-hubs/event-hubs-federation-patterns.md#streams-and-order-preservation).
 
 Pour Service Bus, vous devez activer les sessions afin que les séquences de messages avec le même ID de session extrait de la source soient soumises à la file d’attente ou à la rubrique cible sous la forme d’un lot dans la séquence d’origine et avec le même ID de session. Pour plus d’informations, consultez [Séquences et conservation de l’ordre](../service-bus-messaging/service-bus-federation-patterns.md#sequences-and-order-preservation).
 
@@ -125,7 +125,68 @@ Pour en savoir plus sur la fédération multisite et multirégion pour les servi
 
 Dessous, une tâche de réplication est alimentée par un workflow sans état dans une ressource **Application logique (Standard)** qui est hébergée dans une instance Azure Logic Apps à un seul locataire. Lorsque vous créez cette tâche de réplication, la facturation de frais commence immédiatement. L’utilisation, la mesure, la facturation et le modèle de tarification suivent le [plan d’hébergement Standard](logic-apps-pricing.md#standard-pricing) et les [niveaux tarifaires de plan Standard](logic-apps-pricing.md#standard-pricing-tiers).
 
-En fonction du nombre d’événements que Event Hubs reçoit ou des messages que Service Bus gère, le plan Standard peut être mis à l’échelle pour maintenir l’utilisation minimale du processeur et une faible latence lors de la réplication active. Ce comportement nécessite de choisir le niveau de tarification de plan Standard approprié pour qu’Azure Logic Apps ne limite pas ou ne commence pas à plafonner l’utilisation de l’UC et puisse toujours garantir une vitesse de réplication rapide.
+<a name="scale-up"></a>
+
+En fonction du nombre d’événements que Event Hubs reçoit ou des messages que Service Bus gère, votre plan d’hébergement peut être mis à l’échelle pour maintenir l’utilisation minimale du processeur virtuel et une faible latence lors de la réplication active. Ce comportement nécessite que lorsque vous créez une ressource d’application logique à utiliser pour votre tâche de réplication, vous devez [choisir le niveau de tarification de plan Standard approprié](#scale-out) pour qu’Azure Logic Apps ne limite pas ou ne commence pas à plafonner l’utilisation de l’UC et puisse toujours garantir une vitesse de réplication rapide.
+
+> [!NOTE]
+> Si votre application démarre avec une instance du plan WS1 et effectue ensuite un scale-out vers deux instances, le coût est le double du coût de WS1, en supposant que les plans s’exécutent toute la journée. Si vous effectuez un scale-up de votre application vers le plan WS2 et que vous utilisez une instance, le coût est le même que pour deux instances de plan WS1. De même, si vous effectuez un scale-up de votre application vers le plan WS3 et que vous utilisez une instance, le coût est le même que pour deux instances de plan WS2 ou quatre instances de plan WS1.
+
+<a name="scale-out"></a>
+
+Les exemples suivants illustrent les options de configuration et de niveau tarifaire du plan d’hébergement qui offrent le meilleur débit et un coût optimal pour des scénarios de tâche de réplication spécifiques, selon que le scénario est Event Hubs ou Service Bus et différentes valeurs de configuration.
+
+> [!NOTE]
+> Les exemples des sections suivantes utilisent 800 comme valeur par défaut pour le nombre de prérécupérations, la taille maximale du lot d’événements pour Event Hubs et le nombre maximal de messages pour Service Bus, en supposant que la taille de l’événement ou du message est de 1 Ko. En fonction de la taille de vos événements, vous pouvez ajuster le nombre de prérécupérations, la taille maximale du lot d’événements ou le nombre maximal de messages. Par exemple, si la taille de votre événement ou message est supérieure à 1 Ko, vous souhaiterez peut-être réduire les valeurs du nombre de prérécupérations, la taille maximale du lot d’événements ou le nombre de messages.
+
+### <a name="event-hubs-scale-out"></a>Scale-out Event Hubs
+
+Les exemples suivants illustrent les options de configuration et de niveau tarifaire du plan d’hébergement pour une tâche de réplication entre deux espaces de noms Event Hubs *dans la même région*, en fonction du nombre de [partitions](../event-hubs/event-hubs-features.md#partitions), du nombre d’événements par seconde et d’autres valeurs de configuration.
+
+Les exemples de cette section utilisent 800 comme valeur par défaut pour le nombre de prérécupérations et la taille maximale du lot d’événements, en supposant que la taille de l’événement est de 1 Ko. En fonction de la taille de vos événements, vous pouvez ajuster le nombre de prérécupérations et la taille maximale du lot d’événements. Par exemple, si la taille de votre événement est supérieure à 1 Ko, vous souhaiterez peut-être réduire les valeurs du nombre de prérécupérations et la taille maximale du lot d’événements.
+
+| Niveau tarifaire | Nombre de partitions | Événements par seconde | Rafales maximales* | Instances toujours prêtes* | Nombre de prérécupérations* | Taille maximale du lot d’événements* |
+|--------------|-----------------|-------------------|----------------|-------------------------|-----------------|-----------------|
+| **WS1** | 1 | 1 000 | 1 | 1 | 800 | 800 |
+| **WS1** | 2 | 2000 | 1 | 1 | 800 | 800 |
+| **WS2** | 4 | 4000 | 2 | 1 | 800 | 800 |
+| **WS2** | 8 | 8000 | 2 | 1 | 800 | 800 |
+| **WS3** | 16 | 16000 | 2 | 1 | 800 | 800 |
+| **WS3** | 32 | 32000 | 3 | 1 | 800 | 800 |
+||||||||
+
+\* Pour plus d’informations sur les valeurs que vous pouvez modifier pour chaque niveau tarifaire, consultez le tableau suivant :
+
+| Valeur | Description |
+|-------|-------------|
+| **Rafales maximales** | Nombre *maximal* de Workers élastiques sur lesquels effectuer un scale-out sous une charge. Si votre application sous-jacente exige un nombre d’instances supérieur au nombre d’*instances toujours prêtes*, dans la ligne de tableau suivante, votre application peut continuer d’effectuer un scale-out tant que le nombre d’instances n’a pas atteint la limite maximale en rafale. Pour modifier cette valeur, consultez [Modifier les paramètres de scale-out du plan d’hébergement](#edit-plan-scale-out-settings) plus loin dans cet article. <p>**Remarque** : toute instance au-delà de la taille de votre plan est facturée *uniquement* quand elle est en cours d’exécution et vous est allouée à la seconde. La plateforme s’efforce d’assurer le scale-out de votre application jusqu’à la limite maximale définie. <p>**Conseil** : en guise de recommandation, sélectionnez une valeur maximale supérieure à celle dont vous pouvez avoir besoin pour que la plateforme puisse effectuer un scale-out afin de gérer une charge plus importante, si nécessaire, car les instances inutilisées ne sont pas facturées. <p>Pour plus d’informations, consultez la documentation suivante car le plan Workflow Standard partage certains aspects en commun avec le plan Azure Functions Premium : <p>- [Paramètres de plan et de référence SKU - Plan Azure Functions Premium](../azure-functions/functions-premium-plan.md#plan-and-sku-settings) <br>- [Qu’est-ce que le cloud bursting](https://azure.microsoft.com/overview/what-is-cloud-bursting/) ? |
+| **Instances toujours prêtes** | Nombre minimal d’instances qui sont toujours prêtes et chaudes pour l’hébergement de votre application. Le nombre minimal est toujours 1. Pour modifier cette valeur, consultez [Modifier les paramètres de scale-out du plan d’hébergement](#edit-plan-scale-out-settings) plus loin dans cet article. <p>**Remarque** : toute instance au-delà de la taille de votre plan est facturée *qu’elle soit ou pas* en cours d’exécution lorsqu’elle vous est allouée. <p>Pour plus d’informations, consultez la documentation suivante car le plan Workflow Standard partage certains aspects en commun avec le plan Azure Functions Premium : [Instances toujours prêtes - Plan Azure Functions Premium](../azure-functions/functions-premium-plan.md#always-ready-instances). |
+| **Nombre de prérécupérations** | La valeur par défaut pour le paramètre d’application `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` dans votre ressource d’application logique qui détermine le nombre de prérécupérations utilisé par la classe sous-jacente `EventProcessorHost`. Pour ajouter ou spécifier une valeur différente pour ce paramètre d’application, consultez [Gérer les paramètres d’application - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), par exemple : <p>- **Nom** : `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` <br>- **Valeur** : `800` (aucune limite maximale) <p>Pour plus d’informations sur la propriété `prefetchCount`, consultez la documentation suivante : <p>- [host.json settings - Déclencheur Azure Event Hubs et liaisons pour Azure Functions](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) <br>- [Propriété EventProcessorOptions.PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount) <br>- [Équilibrer la charge de partition sur plusieurs instances de votre application](../event-hubs/event-processor-balance-partition-load.md). <br>- [Hôte du processeur d’événements](../event-hubs/event-hubs-event-processor-host.md) <br>- [Classe EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) |
+| **Taille maximale du lot d’événements** | La valeur par défaut pour le paramètre d’application `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__maxBatchSize` dans votre ressource d’application logique qui détermine le nombre maximal d’événements reçu par chaque boucle de réception. Pour ajouter ou spécifier une valeur différente pour ce paramètre d’application, consultez [Gérer les paramètres d’application - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), par exemple : <p>- **Nom** : `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__maxBatchSize` <br>- **Valeur** : `800` (aucune limite maximale) <p>Pour plus d’informations sur la propriété `maxBatchSize`, consultez la documentation suivante : <p>- [host.json settings - Déclencheur Azure Event Hubs et liaisons pour Azure Functions](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) <br>- [Propriété EventProcessorOptions.MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize) <br>- [Hôte du processeur d’événements](../event-hubs/event-hubs-event-processor-host.md) |
+|||
+
+### <a name="service-bus-scale-out"></a>Scale-out de Service Bus
+
+Les exemples suivants illustrent les options de configuration et de niveau tarifaire du plan d’hébergement pour une tâche de réplication entre deux espaces de noms Service Bus *dans la même région*, en fonction du nombre de messages par seconde et d’autres valeurs de configuration.
+
+Les exemples de cette section utilisent 800 comme valeur par défaut pour le nombre de prérécupérations et le nombre maximal de messages, en supposant que la taille de message est de 1 Ko. En fonction de la taille de vos messages, vous pouvez ajuster le nombre de prérécupérations et le nombre maximal de messages. Par exemple, si la taille de votre message est supérieure à 1 Ko, vous souhaiterez peut-être réduire les valeurs du nombre de prérécupérations et le nombre maximal de messages.
+
+| Niveau tarifaire | Messages par seconde | Rafales maximales* | Instances toujours prêtes* | Nombre de prérécupérations* | Nombre maximal de messages* |
+|--------------|---------------------|-----------------|-------------------------|-----------------|------------------------|
+| **WS1** | 2000 | 1 | 1 | 800 | 800 |
+| **WS2** | 2 500 | 1 | 1 | 800 | 800 |
+| **WS3** | 3 500 | 1 | 1 | 800 | 800 |
+|||||||
+
+\* Pour plus d’informations sur les valeurs que vous pouvez modifier pour chaque niveau tarifaire, consultez le tableau suivant :
+
+| Valeur | Description |
+|-------|-------------|
+| **Rafales maximales** | Nombre *maximal* de Workers élastiques sur lesquels effectuer un scale-out sous une charge. Si votre application sous-jacente exige un nombre d’instances supérieur au nombre d’*instances toujours prêtes*, dans la ligne de tableau suivante, votre application peut continuer d’effectuer un scale-out tant que le nombre d’instances n’a pas atteint la limite maximale en rafale. Pour modifier cette valeur, consultez [Modifier les paramètres de scale-out du plan d’hébergement](#edit-plan-scale-out-settings) plus loin dans cet article. <p>**Remarque** : toute instance au-delà de la taille de votre plan est facturée *uniquement* quand elle est en cours d’exécution et vous est allouée à la seconde. La plateforme s’efforce d’assurer le scale-out de votre application jusqu’à la limite maximale définie. <p>**Conseil** : en guise de recommandation, sélectionnez une valeur maximale supérieure à celle dont vous pouvez avoir besoin pour que la plateforme puisse effectuer un scale-out afin de gérer une charge plus importante, si nécessaire, car les instances inutilisées ne sont pas facturées. <p>Pour plus d’informations, consultez la documentation suivante car le plan Workflow Standard partage certains aspects en commun avec le plan Azure Functions Premium : <p>- [Paramètres de plan et de référence SKU - Plan Azure Functions Premium](../azure-functions/functions-premium-plan.md#plan-and-sku-settings) <br>- [Qu’est-ce que le cloud bursting](https://azure.microsoft.com/overview/what-is-cloud-bursting/) ? |
+| **Instances toujours prêtes** | Nombre minimal d’instances qui sont toujours prêtes et chaudes pour l’hébergement de votre application. Le nombre minimal est toujours 1. Pour modifier cette valeur, consultez [Modifier les paramètres de scale-out du plan d’hébergement](#edit-plan-scale-out-settings) plus loin dans cet article. <p>**Remarque** : toute instance au-delà de la taille de votre plan est facturée *qu’elle soit ou pas* en cours d’exécution lorsqu’elle vous est allouée. <p>Pour plus d’informations, consultez la documentation suivante car le plan Workflow Standard partage certains aspects en commun avec le plan Azure Functions Premium : [Instances toujours prêtes - Plan Azure Functions Premium](../azure-functions/functions-premium-plan.md#always-ready-instances). |
+| **Nombre de prérécupérations** | La valeur par défaut pour le paramètre d’application `AzureFunctionsJobHost__extensions__serviceBus__prefetchCount` dans votre ressource d’application logique qui détermine le nombre de prérécupérations utilisé par la classe sous-jacente `ServiceBusProcessor`. Pour ajouter ou spécifier une valeur différente pour ce paramètre d’application, consultez [Gérer les paramètres d’application - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), par exemple : <p>- **Nom** : `AzureFunctionsJobHost__extensions__eventHubs__eventProcessorOptions__prefetchCount` <br>- **Valeur** : `800` (aucune limite maximale) <p>Pour plus d’informations sur la propriété `prefetchCount`, consultez la documentation suivante : <p>- [host.json settings - Liaisons Azure Service Bus pour Azure Functions](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) <br>- [Propriété ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount) <br>- [Classe ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) |
+| **Nombre maximal de messages** | La valeur par défaut pour le paramètre d’application `AzureFunctionsJobHost__extensions__serviceBus__batchOptions__maxMessageCount` dans votre ressource d’application logique qui détermine le nombre maximal de messages à envoyer lors du déclenchement. Pour ajouter ou spécifier une valeur différente pour ce paramètre d’application, consultez [Gérer les paramètres d’application - local.settings.json](edit-app-settings-host-settings.md?tabs=azure-portal#manage-app-settings), par exemple : <p>- **Nom** : `AzureFunctionsJobHost__extensions__serviceBus__batchOptions__maxMessageCount` <br>- **Valeur** : `800` (aucune limite maximale) <p>Pour plus d’informations sur la propriété `maxMessageCount`, consultez la documentation suivante : \[host.json settings - Liaisons Azure Event Hubs pour Azure Functions](../azure-functions/functions-bindings-service-bus.md#hostjson-settings).|
+|||
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -133,7 +194,7 @@ En fonction du nombre d’événements que Event Hubs reçoit ou des messages qu
 
 - Les ressources ou entités source et cible, qui doivent exister dans différentes régions Azure afin que vous puissiez tester le scénario de basculement de géo-reprise d’activité après sinistre. Ces entités peuvent varier en fonction du modèle de tâche que vous souhaitez utiliser. L’exemple de cet article utilise deux files d’attente Service Bus, qui se trouvent dans différents espaces de noms et régions Azure.
 
-- Ressource **Application logique (Standard)** que vous pouvez réutiliser lors de la création de la tâche de réplication. De cette façon, vous pouvez personnaliser cette ressource spécifiquement pour votre tâche de réplication, par exemple en choisissant le [plan d’hébergement et le niveau tarifaire](#pricing) en fonction des besoins de votre scénario de réplication, tels que la capacité, le débit et la mise à l’échelle. Bien que vous puissiez créer cette ressource lorsque vous créez la tâche de réplication, vous ne pouvez pas modifier la région, le plan d’hébergement et le niveau tarifaire. La liste suivante fournit d’autres raisons et meilleures pratiques pour une ressource d’application logique précédemment créée :
+- Ressource **Application logique (Standard)** que vous pouvez réutiliser lors de la création de la tâche de réplication. De cette façon, vous pouvez personnaliser cette ressource spécifiquement pour votre tâche de réplication, par exemple en [choisissant le plan d’hébergement et le niveau tarifaire](#pricing) en fonction des besoins de votre scénario de réplication, tels que la capacité, le débit et la mise à l’échelle. Bien que vous puissiez créer cette ressource lorsque vous créez la tâche de réplication, vous ne pouvez pas modifier la région, le plan d’hébergement et le niveau tarifaire. La liste suivante fournit d’autres raisons et meilleures pratiques pour une ressource d’application logique précédemment créée :
 
   - Vous pouvez créer cette ressource d’application logique dans une région qui diffère des entités source et cible dans votre tâche de réplication.
 
@@ -163,7 +224,7 @@ En fonction du nombre d’événements que Event Hubs reçoit ou des messages qu
 
 ## <a name="naming-conventions"></a>Conventions d’affectation de noms
 
-Faites attention à la stratégie de dénomination que vous utilisez pour vos tâches ou entités de réplication, si vous ne les avez pas encore créées. Assurez-vous que les noms sont facilement identifiables et différenciés. Par exemple, si vous utilisez un espace de noms Event Hubs, la tâche de réplication est répliquée à partir de chaque Event Hub de l’espace de noms source. Si vous utilisez des files d’attente Service Bus, le tableau suivant fournit un exemple pour nommer les entités et la tâche de réplication :
+Faites attention à la stratégie de dénomination que vous utilisez pour vos tâches ou entités de réplication, si vous ne les avez pas encore créées. Assurez-vous que les noms sont facilement identifiables et différenciés. Par exemple, si vous utilisez un espace de noms Event Hubs, la tâche de réplication effectue la réplication à partir de chaque instance Event Hubs dans l’espace de noms source. Si vous utilisez des files d’attente Service Bus, le tableau suivant fournit un exemple pour nommer les entités et la tâche de réplication :
 
 | Nom de la source | Exemple | Application de réplication | Exemple | Nom de la cible | Exemple |
 |-------------|---------|-----------------|---------|-------------|---------|
@@ -189,9 +250,9 @@ Cet exemple montre comment créer une tâche de réplication pour des files d’
 
 1. Dans le volet **Ajouter une tâche**, sous **Sélectionner un modèle**, dans le modèle de la tâche de réplication que vous voulez créer, sélectionnez **Sélectionner**. Si la page suivante ne s’affiche pas, sélectionnez **Suivant : Authentifier**.
 
-   Cet exemple se poursuit en sélectionnant le modèle de tâche **Répliquer vers une file d’attente Service Bus**, qui réplique le contenu entre les files d’attente Service Bus.
+   Cet exemple se poursuit en sélectionnant le modèle de tâche **Répliquer à partir d’une file d’attente Service Bus vers une file d’attente**, qui réplique le contenu entre des files d’attente Service Bus.
 
-   ![Capture d’écran montrant le volet « Ajouter une tâche » avec le modèle « Répliquer vers Service Bus » sélectionné.](./media/create-replication-tasks-azure-resources/select-replicate-service-bus-template.png)
+   ![Capture d’écran montrant le volet « Ajouter une tâche » avec le modèle « Répliquer à partir d’une file d’attente Service Bus vers une file d’attente » sélectionné.](./media/create-replication-tasks-azure-resources/select-replicate-service-bus-template.png)
 
 1. Sous l’onglet **Authentifier**, dans la section **Connexions**, sélectionnez **Créer** pour chacune des connexions qui apparaissent dans la tâche afin de pouvoir fournir toutes les informations d’authentification. Les types de connexions varient en fonction de la tâche.
 
@@ -292,8 +353,8 @@ Cet exemple montre comment afficher l’historique d’une tâche de workflow, a
 
    Le tableau suivant décrit les états possibles d’une exécution :
 
-   | Statut | Description |
-   |--------|-------------|
+   | Étiquette État | Description |
+   |--------------|-------------|
    | **Annulé** | La tâche a été annulée pendant son exécution. |
    | **Échec** | Au moins une action de la tâche a échoué, et aucune action ultérieure n'a permis de gérer l'échec. |
    | **Exécution** | La tâche est en cours d'exécution. |
@@ -410,7 +471,7 @@ Vous pouvez modifier le workflow sous-jacent derrière une tâche de réplicatio
 
 Pour la réplication Azure Event Hubs entre les mêmes types d’entités, la géo-reprise d’activité après sinistre requiert un basculement de l’entité source vers l’entité cible, puis indique à tous les consommateurs et producteurs d’événements affectés d’utiliser le point de terminaison pour l’entité cible, qui devient la nouvelle source. Ainsi, si un incident se produit et que l’entité source bascule, les consommateurs et les producteurs, y compris votre tâche de réplication, sont redirigés vers la nouvelle source. Le compte de stockage créé par votre tâche de réplication contient des informations sur le point de contrôle et la position ou le décalage dans le flux où l’entité source s’arrête si la région source est interrompue ou n’est plus disponible.
 
-Pour vous assurer que le compte de stockage ne contient pas d’informations héritées de la source d’origine et que votre tâche de réplication commence à lire et à répliquer les événements à partir du début du nouveau flux source, vous devez reconfigurer manuellement la tâche de réplication :
+Pour vous assurer que le compte de stockage ne contient pas d’informations héritées de la source d’origine et que votre tâche de réplication commence à lire et à répliquer les événements à partir du début du nouveau flux source, vous devez nettoyer manuellement les informations héritées de la source d’origine et reconfigurer la tâche de réplication.
 
 1. Dans le [portail Azure](https://portal.azure.com), ouvrez la ressource d’application logique ou le workflow sous-jacent derrière la tâche de réplication.
 
@@ -419,22 +480,52 @@ Pour vous assurer que le compte de stockage ne contient pas d’informations hé
 
 1. Dans le menu de navigation de la ressource ou du workflow, sélectionnez **Vue d’ensemble**. Dans la barre d’outils **Vue d’ensemble**, sélectionnez **Désactiver** pour le workflow ou **Arrêter** pour la ressource d’application logique.
 
-1. Accédez au groupe de ressources Azure qui contient les ressources de la tâche de réplication.
+1. Pour rechercher le compte de stockage utilisé par la ressource d’application logique sous-jacente de la tâche de réplication afin de stocker les informations sur le point de contrôle et le décalage du flux à partir de l’entité source, procédez comme suit :
 
-   Ce groupe de ressources inclut la ressource d’application logique et le compte de stockage qui stocke les informations de point de contrôle et de décalage de flux de l’entité source.
+   1. Dans le menu de votre ressource d’application logique, sous **Paramètres**, sélectionnez **Configuration**.
 
-1. Accédez au compte de stockage associé à la ressource d’application logique. Pour trouver ce compte de stockage, ouvrez le groupe de ressources qui contient la ressource d’application logique. Pour supprimer le compte de stockage, procédez comme suit :
+   1. Dans le volet **Configuration**, sous l’onglet **Paramètres de l’application**, sélectionnez le paramètre d’application **AzureWebJobsStorage**.
 
-   1. Dans le menu de navigation du compte de stockage, sous **Stockage de données**, sélectionnez **Conteneurs**.
-
-   1. Dans le volet **Conteneurs** qui s’ouvre, pour la source Event hubs, sélectionnez **azure-webjobs-eventhub**.
+      Ce paramètre spécifie la chaîne de connexion et le compte de stockage utilisés par la ressource d’application logique.
 
       > [!NOTE]
-      > Si l’entrée **azure-webjobs-eventhub** n’existe pas, assurez-vous que la tâche s’exécute au moins une fois.
+      > Si le paramètre d’application ne s’affiche pas dans la liste, sélectionnez **Afficher les valeurs**.
 
-   1. Dans le volet **azure-webjobs-eventhub**, sélectionnez le dossier d’espace de noms, dont le nom est au format suivant : `<source-event-hub-name>.servicebus.windows.net`.
+   1. Sélectionnez le paramètre d’application **AzureWebJobsStorage** afin de pouvoir afficher le nom du compte de stockage.
 
-   1. Dans le dossier d’espace de noms, supprimez le dossier de l’ancienne entité source. Ce dossier contient le point de contrôle et les informations de décalage pour l’ancienne source et généralement le nom de cette source.
+   Cet exemple montre comment rechercher le nom de ce compte de stockage, à savoir `storagefabrikamreplb0c` :
+
+   ![Capture d’écran montrant le volet « Configuration » de la ressource d’application logique sous-jacente avec le paramètre d’application « AzureWebJobsStorage » et la chaîne de connexion avec le nom du compte de stockage.](./media/create-replication-tasks-azure-resources/find-storage-account-name.png)
+
+   1. Pour confirmer que la ressource du compte de stockage existe, dans la zone de recherche du portail Azure, entrez le nom, puis sélectionnez le compte de stockage, par exemple :
+
+   ![Capture d’écran montrant la zone de recherche du portail Azure avec le nom du compte de stockage saisi.](./media/create-replication-tasks-azure-resources/find-storage-account.png)
+
+1. Maintenant, supprimez le dossier qui contient les informations sur le point de contrôle et le décalage de l’entité source en procédant comme suit :
+
+   1. Téléchargez, installez et ouvrez la dernière version du [client bureau Explorateur Stockage Azure](https://azure.microsoft.com/features/storage-explorer/), si vous n’avez pas encore la version la plus récente.
+
+      > [!NOTE]
+      > Pour la tâche de nettoyage de suppression, vous devez utiliser le client Explorateur Stockage Azure, et *non* l’explorateur de stockage, le navigateur, l’éditeur ou l’expérience de gestion dans le portail Azure.
+      >
+      > Bien que vous puissiez supprimer des dossiers de conteneur à l’aide de la [commande `Remove-AzStorageDirectory`](/powershell/module/az.storage/remove-azstoragedirectory) PowerShell, cette commande ne fonctionne que sur les dossiers *vides*.
+
+   1. Si ce n’est déjà fait, connectez-vous avec votre compte Azure et assurez-vous que votre abonnement Azure pour votre ressource de compte de stockage est sélectionné. Pour plus d’informations, consultez [Prise en main de l’Explorateur Stockage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+
+   1. Dans la fenêtre de l’explorateur, sous le nom de votre abonnement Azure, accédez à **Comptes de stockage** >  **{*nom de votre compte de stockage*}**  > **Conteneurs Blob** > **azure-webjobs-eventhub**.
+
+      > [!NOTE]
+      > Si le dossier **azure-webjobs-eventhub** n’existe pas, la tâche de réplication n’a pas encore été exécutée. Le dossier s’affiche uniquement une fois que la tâche de réplication s’est exécutée au moins une fois.
+
+      ![Capture d’écran montrant l’Explorateur Stockage Azure avec le compte de stockage et le conteneur blob ouverts pour afficher le dossier « azure-webjobs-eventhub » sélectionné.](./media/create-replication-tasks-azure-resources/azure-webjobs-eventhub-storage-explorer.png)
+
+   1. Dans le volet **azure-webjobs-eventhub** qui s’ouvre, sélectionnez le dossier d’espace de noms Event Hubs, dont le nom est au format suivant : `<source-Event-Hubs-namespace-name>.servicebus.windows.net`.
+
+   1. Une fois le dossier d’espace de noms ouvert, dans le volet **azure-webjobs-eventhub**, sélectionnez le dossier <*nom de l’entité source préalable*>. Dans le menu contextuel de la barre d’outils ou du dossier, sélectionnez **Supprimer**, par exemple :
+
+      ![Capture d’écran montrant l’ancien dossier d’entité Event Hubs source sélectionné avec le bouton « Supprimer » également sélectionné.](./media/create-replication-tasks-azure-resources/delete-former-source-entity-folder-storage-explorer.png)
+
+   1. Confirmez que vous souhaitez supprimer le dossier.
 
 1. Revenez à la ressource ou au workflow de l’application logique derrière la tâche de réplication. Redémarrez l’application logique ou réactivez le workflow.
 
@@ -444,6 +535,38 @@ Pour plus d’informations sur la géo-reprise d’activité après sinistre, co
 
 - [Azure Event Hubs - Géorécupération d’urgence](../event-hubs/event-hubs-geo-dr.md)
 - [Azure Service Bus - Géo-reprise d’activité après sinistre](../service-bus-messaging/service-bus-geo-dr.md)
+
+<a name="edit-plan-scale-out-settings"></a>
+
+## <a name="edit-hosting-plan-scale-out-settings"></a>Modifier les paramètres de scale-out du plan d’hébergement
+
+### <a name="portal"></a>[Portail](#tab/portal)
+
+1. Dans le [portail Azure](https://portal.azure.com), ouvrez la ressource d’application logique sous-jacente pour votre tâche de réplication.
+
+1. Dans le menu de la ressource d’application logique, sous **Paramètres**, sélectionnez **Scale-out (plan App Service)** .
+
+   ![Capture d’écran montrant les paramètres du plan d’hébergement pour les rafales maximales, les instances minimales, les instances toujours prêtes et l’application de la limite de scale-out.](./media/create-replication-tasks-azure-resources/edit-app-service-plan-settings.png)
+
+1. En fonction des besoins de votre scénario, sous **Scale-out du plan** et **Scale-out de l’application**, modifiez les valeurs de rafales maximales et d’instances toujours prêtes, respectivement.
+
+1. Lorsque c’est chose faite, dans la barre d’outils du volet **Scale-out (plan App Service)** , sélectionnez **Enregistrer**.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Vous pouvez aussi configurer des instances toujours prêtes pour une application avec Azure CLI.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <logic-app-app-name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
+```
+
+---
+
+Pour plus d’informations, consultez la documentation suivante car le plan Workflow Standard partage certains aspects en commun avec le plan Azure Functions Premium :
+
+- [Paramètres de plan et de référence SKU - Plan Azure Functions Premium](../azure-functions/functions-premium-plan.md#plan-and-sku-settings)
+- [Qu’est-ce que le cloud bursting](https://azure.microsoft.com/overview/what-is-cloud-bursting/) ?
+- [Instances toujours prêtes - Plan Azure Functions Premium](../azure-functions/functions-premium-plan.md#always-ready-instances)
 
 <a name="problems-failures"></a>
 
@@ -455,7 +578,7 @@ Cette section décrit les différentes façons dont la réplication peut échoue
 
   Veillez à envoyer des messages d’une taille inférieure à 1 Mo, car la tâche de réplication ajoute des [propriétés de réplication](#replication-properties). Dans le cas contraire, si la taille du message est supérieure à la taille des événements qui peuvent être envoyés à une entité Event Hubs une fois que la tâche a ajouté des [propriétés de réplication](#replication-properties), le processus de réplication échoue.
 
-  Par exemple, supposons que la taille de l’événement est de 1 Mo. Une fois que la tâche a ajouté des propriétés de réplication, la taille du message est supérieure à 1 Mo. L’appel sortant qui tente d’envoyer le message échoue.
+  Par exemple, supposons que la taille du message est de 1 Mo. Une fois que la tâche a ajouté des propriétés de réplication, la taille du message est supérieure à 1 Mo. L’appel sortant qui tente d’envoyer le message échoue.
 
 - Clés de partition
 

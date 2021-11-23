@@ -1,20 +1,18 @@
 ---
 title: Liaisons de certificats
-description: Aborde divers aspects sur les certificats dans un environnement App Service. Découvrez comment fonctionnent les liaisons de certificats dans les applications à locataire unique au sein d’un environnement ASE.
-author: ccompy
-ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.topic: article
-ms.date: 08/29/2018
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 604adeb3eeb716027ba821b4e230285602680e00
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+description: Décrit divers aspects des certificats dans un environnement App Service v2. Découvrez comment fonctionnent les liaisons de certificats dans les applications à locataire unique au sein d’un environnement ASE.
+author: madsd
+ms.topic: overview
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: 0ecc9f29ae469cea01c29a23c5491320c37e7cc5
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433163"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520994"
 ---
-# <a name="certificates-and-the-app-service-environment"></a>Certificats et l’environnement App Service 
+# <a name="certificates-and-the-app-service-environment-v2"></a>Certificats et App Service Environment v2
 > [!NOTE]
 > Cet article concerne la fonctionnalité App Service Environment v2 qui est utilisée avec les plans App Service Isolé.
 > 

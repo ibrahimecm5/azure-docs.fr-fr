@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: ee1814d70395be3c084513d7bf59537ba426471a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 79b78af6e0ff1d23ea47b150dfd6c185e3d9df18
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559094"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323117"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Démarrage rapide : Créer une configuration any-to-any à l’aide d’un modèle ARM
 
@@ -67,7 +67,7 @@ Pour obtenir d’autres modèles, consultez [Modèles de démarrage rapide Azure
 
 ## <a name="deploy-the-template"></a><a name="deploy"></a>Déployer le modèle
 
-Pour déployer ce modèle convenablement, vous devez utiliser le bouton Déployer sur Azure et le portail Azure, plutôt que d’autres méthodes, pour les raisons suivantes :
+Pour déployer ce modèle convenablement, vous devez utiliser le bouton **Déployer sur Azure** dans le portail Azure, plutôt que d’autres méthodes, pour les raisons suivantes :
 
 * Pour créer la configuration P2S, vous devez charger les données du certificat racine. Le champ de données n’accepte pas les données de certificat quand PowerShell ou l’interface CLI est utilisé.
 * Ce modèle ne fonctionne pas correctement avec Cloud Shell en raison du chargement des données du certificat.

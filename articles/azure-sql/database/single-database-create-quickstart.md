@@ -11,16 +11,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: b8f609e8e6a12647b929938c97ea974885dc72d2
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 54724f2788813830bf85ff1665291ea3b3b43cc8
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131423695"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132553569"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Démarrage rapide : Créer une base de données Azure SQL
 
 Dans ce guide de démarrage rapide, vous créez une [base de données unique](single-database-overview.md) dans Azure SQL Database en utilisant le portail Azure, un script PowerShell ou un script d’interface de ligne de commande Azure. Vous allez ensuite interroger la base de données à l’aide de l’**éditeur de requête** dans le portail Azure.
+
+> [!div class="nextstepaction"]
+> [Enquête pour améliorer Azure SQL](https://aka.ms/AzureSQLSurveyNov2021)
 
 
 ## <a name="prerequisites"></a>Prérequis
@@ -70,7 +73,7 @@ Pour créer une base de données dans le portail Azure, ce démarrage rapide com
   
 
 1. Sous l’onglet **Paramètres supplémentaires**, dans la section **Source de données**, pour **Utiliser des données existantes**, sélectionnez **Exemple**. Vous créez ainsi un exemple de base de données AdventureWorksLT, de sorte qu’il existe des tables et des données à interroger et expérimenter, par opposition à une base de données vide.
-1. Si vous le souhaitez, activez [Azure Defender pour SQL](../database/azure-defender-for-sql.md).
+1. Vous pouvez aussi activer [Microsoft Defender pour SQL](../database/azure-defender-for-sql.md).
 1. Si vous le souhaitez, définissez la [fenêtre de maintenance](../database/maintenance-window.md) afin que la maintenance planifiée soit effectuée au meilleur moment pour votre base de données.
 1. Au bas de la page, sélectionnez **Vérifier + créer** :
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 11/10/2021
 ms.author: alkohli
-ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bc2c5a75bb62a4318eb3d29f0843954d8393211
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678891"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331810"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Tutoriel : Copier des données sur Azure Data Box Disk par le biais de NFS
 
@@ -87,7 +87,10 @@ Une fois que vous êtes connecté aux partages Data Box, l’étape suivante con
 * Assurez-vous que les données sont copiées vers des partages compatibles avec le format des données. Par exemple, les données d’objet blob de blocs doivent être copiées dans le partage des objets blob de blocs. Copiez les disques durs virtuels dans des objets blob de pages. Si le format des données ne correspond pas au type de partage, les données ne pourront pas être chargées dans Azure.
 *  Quand vous copiez des données, vérifiez que la taille des données est conforme aux limites de taille spécifiées dans [Limites de taille des comptes de stockage Azure](data-box-limits.md#azure-storage-account-size-limits).
 * Si les données, qui sont en cours de chargement par Data Box, sont chargées simultanément par d’autres applications en dehors de Data Box, cela peut entraîner l’échec du chargement ou des corruptions de données.
-* Nous vous recommandons de ne pas utiliser SMB et NFS simultanément et de ne pas copier les mêmes données vers la même destination finale sur Azure. En effet, le résultat final ne pourrait être déterminé.
+* Si vous utilisez les protocoles SMB et NFS pour les copies de données, nous vous recommandons ce qui suit :
+  * Utilisez différents comptes de stockage pour SMB et NFS.
+  * Ne copiez pas les mêmes données vers la même destination finale dans Azure en utilisant SMB et NFS. En effet, le résultat final ne pourrait pas être déterminé.
+  * Même si la copie via SMB et NFS en parallèle peut fonctionner, nous vous déconseillons de le faire, car elle est sujette aux erreurs humaines. Attendez la fin de la copie des données SMB avant de démarrer une copie de données NFS.
 * **Toujours créer un dossier pour les fichiers que vous envisagez de copier sous le partage, puis copier les fichiers dans ce dossier**. Le dossier créé sous les partages d’objets blob de pages et d’objets blob de blocs représente un conteneur dans lequel les données sont chargées en tant qu’objets blob. Vous ne pouvez pas copier de fichiers directement dans le dossier *root* du compte de stockage.
 * Si vous ingérez des noms de répertoires et de fichiers sensibles à la casse à partir d’un partage NFS sur Data Box :
   * La casse est conservée dans le nom.

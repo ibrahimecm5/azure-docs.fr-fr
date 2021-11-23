@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 7ec930256cd8d27ccf1cc4e054761af400ac0c69
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4c8b3d97da8086e57eb75d824047d8ae90f578c0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794991"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-momenta"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Momenta
 
@@ -41,7 +41,7 @@ Dans ce tutoriel, vous allez configurer et tester l’authentification unique Az
 
 * Momenta prend en charge l’authentification unique lancée par **le fournisseur de services et le fournisseur d’identité**.
 
-* Après avoir configuré Momenta, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Momenta, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-momenta-from-the-gallery"></a>Ajout de Momenta à partir de la galerie
 
@@ -149,6 +149,6 @@ Quand vous cliquez sur la vignette Momenta dans le volet d’accès, vous devez 
 
 - [Essayer Momenta avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)
 
 - [Guide pratique pour protéger Momenta avec une visibilité et des contrôles avancés](/cloud-app-security/proxy-intro-aad)

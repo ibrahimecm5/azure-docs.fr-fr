@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: d3ca91c0c427688b0908b798a9f9a5f719aba55e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0eb1531739d28e9be8077b7a3cfa6a9b50896836
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780373"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132346089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mobile-locker"></a>Tutoriel : Intégration de l’authentification unique Azure Active Directory à Mobile Locker
 
@@ -40,7 +40,7 @@ Pour commencer, vous devez disposer de ce qui suit :
 Dans ce tutoriel, vous allez configurer et tester l’authentification unique Azure AD dans un environnement de test.
 
 * Mobile Locker prend en charge l’authentification unique lancée par le **fournisseur de services et le fournisseur d’identité**
-* Après avoir configuré Mobile Locker, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Après avoir configuré Mobile Locker, vous pouvez appliquer le contrôle de session, qui protège contre l’exfiltration et l’infiltration des données sensibles de votre organisation en temps réel. Le contrôle de session est étendu à partir de l’accès conditionnel. [Découvrez comment appliquer un contrôle de session avec Microsoft Defender for Cloud Apps](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-mobile-locker-from-the-gallery"></a>Ajout de Mobile Locker à partir de la galerie
 
@@ -152,4 +152,4 @@ Le fait de cliquer sur la vignette Mobile Locker dans le panneau d’accès doit
 
 - [Essayer Mobile Locker avec Azure AD](https://aad.portal.azure.com/)
 
-- [Qu’est-ce que le contrôle de session dans Microsoft Cloud App Security ?](/cloud-app-security/proxy-intro-aad)
+- [Qu’est-ce que le contrôle de session dans Microsoft Defender for Cloud Apps ?](/cloud-app-security/proxy-intro-aad)

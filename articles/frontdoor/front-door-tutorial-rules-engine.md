@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e64f27480126fdf444f8dd72abc2d66c78b30407
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1eac3238bc5f39915360db2de3b0526ed4f699d7
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868804"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132491847"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Tutoriel : Configurer votre moteur de règles
 
@@ -48,6 +48,14 @@ Dans ce tutoriel, vous allez apprendre à :
     ![Configuration du moteur de règles](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
 1. Déterminez la priorité des règles dans votre configuration en utilisant les boutons Monter, Descendre et Déplacer en haut. La priorité est dans l’ordre croissant, ce qui signifie que la règle listée en premier est la règle la plus importante.
+
+
+    > [!TIP]
+    > Si vous souhaitez vérifier quand les modifications sont propagées vers Azure Front Door, vous pouvez créer un en-tête de réponse personnalisé dans la règle avec l’exemple ci-dessous. Vous pouvez ajouter un en-tête de réponse `_X-<RuleName>-Version_` et changer la valeur chaque fois que la règle est mise à jour.
+    >  
+    > :::image type="content" source="./media/front-door-rules-engine/rules-version.png" alt-text="Capture d’écran de la règle d’en-tête de version personnalisée." lightbox="./media/front-door-rules-engine/rules-version-expanded.png":::
+    > Une fois les modifications mises à jour, vous pouvez accéder à l’URL pour confirmer la version de la règle appelée : :::image type="content" source="./media/front-door-rules-engine/version-output.png" alt-text="Capture d’écran de la sortie de la version de l’en-tête personnalisé.":::
+
 
 1. Une fois que vous avez créé une ou plusieurs règles, appuyez sur **Enregistrer**. Cette action crée la configuration de votre moteur de règles.
 

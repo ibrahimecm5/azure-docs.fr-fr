@@ -1,21 +1,21 @@
 ---
-title: Intégrer ClearPass à Azure Defender pour IoT
-description: Dans ce tutoriel, vous allez découvrir comment intégrer Azure Defender pour IoT à ClearPass.
+title: Intégrer ClearPass à Microsoft Defender pour IoT
+description: Dans ce tutoriel, vous allez découvrir comment intégrer Microsoft Defender pour IoT à ClearPass.
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/04/2021
+ms.date: 11/09/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 7ff16da99f994ff4b708f0fb6f4a40e72f61df78
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: 536e45171d8769980080d81c59c9f07192addab0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129421209"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343626"
 ---
-# <a name="tutorial-integrate-clearpass-with-azure-defender-for-iot"></a>Tutoriel : Intégrer ClearPass à Azure Defender pour IoT
+# <a name="tutorial-integrate-clearpass-with-microsoft-defender-for-iot"></a>Tutoriel : Intégrer ClearPass à Microsoft Defender pour IoT
 
-Ce tutoriel va vous aider à intégrer ClearPass Policy Manager (CPPM) à Azure Defender pour IoT.
+Ce tutoriel va vous aider à intégrer ClearPass Policy Manager (CPPM) à Microsoft Defender pour IoT.
 
 La plateforme Defender pour IoT offre des fonctionnalités de détection d’appareils et de supervision continue des menaces liées aux systèmes ICS. Elle associe une compréhension approfondie des applications, appareils et protocoles du secteur d’activité à la détection d’anomalie comportementale, au renseignement sur les menaces, à l’analyse des risques et à la modélisation automatisée des menaces spécifiques aux systèmes ICS.
 
