@@ -7,12 +7,12 @@ ms.author: msangapu
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: bf48bd5fd5155b7409d3868635ee3529cfd97b92
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 914587d60b5932d2f9af6eef400a1a5067974652
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471057"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290549"
 ---
 # <a name="monitoring-app-service-data-reference"></a>Informations de référence sur les données de surveillance App Service
 
@@ -54,7 +54,7 @@ Cette section répertorie les types de journaux de ressources que vous pouvez co
 | AppServiceAppLogs | ASP.NET | ASP.NET | Images Java SE et Tomcat<sup>1</sup> | Java SE & Tomcat Blessed Images <sup>1</sup> | Journaux d’activité d’application |
 | AppServiceIPSecAuditLogs  | Oui | Oui | Oui | Oui | Demandes à partir de règles IP |
 | AppServicePlatformLogs  | À confirmer | Oui | Oui | Oui | journaux des opérations du conteneur |
-| AppServiceAntivirusScanAuditLogs | Oui | Oui | Oui | Oui | [Journaux de l’analyse antivirus](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) avec Microsoft Defender ; **disponibles seulement pour le niveau Premium** | 
+| AppServiceAntivirusScanAuditLogs | Oui | Oui | Oui | Oui | [Journaux de l’analyse antivirus](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) avec Microsoft Defender pour le cloud ; **disponibles seulement pour le niveau Premium** | 
 
 <sup>1</sup> Pour les applications Java SE, ajoutez « $WEBSITE_AZMON_PREVIEW_ENABLED » aux paramètres de l’application et définissez-le sur 1 ou true.
 

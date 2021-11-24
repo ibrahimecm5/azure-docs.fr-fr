@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/27/2021
+ms.date: 11/09/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: b4344626318799a79fa668784e5674730e1731cd
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 83a4c80b809d2ea127b28d5f562d6c837a16d891
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065487"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132136147"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -244,6 +244,7 @@ Quand le protocole est `SAML`, un élément metadata contient les éléments sui
 | UseDetachedKeys | Non |  Valeurs possibles : `true` ou `false` (par défaut). Lorsque la valeur est définie sur `true`, Azure AD B2C modifie le format des assertions chiffrées. L’utilisation de clés détachées ajoute l’assertion chiffrée comme enfant d’EncrytedAssertion, par opposition à EncryptedData. |
 | WantsSignedResponses| Non | Indique si Azure AD B2C signe la section `Response` de la réponse SAML. Valeurs possibles : `true` (par défaut) ou `false`.  |
 | RemoveMillisecondsFromDateTime| Non | Indique si les millisecondes seront supprimées des valeurs de DateHeure dans la réponse SAML (notamment IssueInstant, NotBefore, NotOnOrAfter et AuthnInstant). Valeurs possibles : `false` (par défaut) ou `true`.  |
+| RequestContextMaximumLengthInBytes| No | Indique la longueur maximale du paramètre des [applications SAML](saml-service-provider.md)`RelayState`. La valeur par défaut est 1000. La valeur maximale est 2048.| 
 
 ### <a name="inputclaims"></a>InputClaims
 

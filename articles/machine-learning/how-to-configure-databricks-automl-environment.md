@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: fcbe52a8c390d41abbaa0a97b88bb360df595d60
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 0e3270c827e25ff13bd53c5a7d7d2610ce36c921
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553991"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286175"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Configurer un environnement de développement avec Azure Databricks et AutoML dans Azure Machine Learning 
 
@@ -53,7 +53,7 @@ Utilisez les paramètres suivants :
 | Paramètre |S’applique à| Valeur |
 |----|---|---|
 | Nom du cluster |toujours| Nom de votre cluster |
-| Version de Databricks Runtime |toujours| Runtime 7.3 LTS ou inférieur - non ML|
+| Version de Databricks Runtime |toujours| Runtime 7.3 LTS - non ML|
 | Version Python |toujours| 3 |
 | Type de Worker <br>(détermine le nombre maximal d’itérations concurrentes) |ML automatisé<br>uniquement| Machine virtuelle à mémoire optimisé, de préférence |
 | Workers |toujours| 2 ou plus |
@@ -97,12 +97,11 @@ Pour utiliser le ML automatisé, passez à [Ajouter le kit de développement log
   ![Kit de développement logiciel (SDK) Azure Machine Learning pour Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>Ajouter le kit de développement logiciel (SDK) Azure ML avec AutoML à Databricks
-Si le cluster a été créé avec Databricks Runtime 7.1 - 7.3 LTS (*non* ML), exécutez la commande suivante dans la première cellule de votre notebook pour installer le Kit SDK AML.
+Si le cluster a été créé avec Databricks Runtime 7.3 LTS (*non* ML), exécutez la commande suivante dans la première cellule de votre notebook pour installer le Kit de développement logiciel (SDK) AML.
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
 ```
-Pour le runtime 7.0 de Databricks et les versions inférieures, installez le Kit de développement logiciel (SDK) Azure Machine Learning à l’aide du [script init](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
 
 ### <a name="automl-config-settings"></a>Paramètres de configuration AutoML
 

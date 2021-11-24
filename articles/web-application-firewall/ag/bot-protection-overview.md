@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 07/30/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 19453e987c276ae2716e06900ea2fc8ecc2a6ba6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cc82630b2f65bdd94e02e71b3c2521fc5734a9e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562366"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132315040"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Vue d'ensemble de la protection bot du pare-feu d'applications web (WAF) sur Azure Application Gateway
 
 Environ 20 % de l'ensemble du trafic Internet provient de mauvais bots. Ceux-ci effectuent des opérations telles que la capture, l'analyse et la recherche de vulnérabilités dans votre application web. Lorsque ces bots sont arrêtés au niveau du pare-feu d'applications Web (WAF), ils ne peuvent pas vous attaquer. Ils ne peuvent pas non plus utiliser vos ressources et services, comme vos serveurs principaux et autres infrastructures sous-jacentes.
 
-Vous pouvez activer un ensemble de règles de protection bot managées pour votre WAF afin de bloquer ou de journaliser des requêtes provenant d’adresses IP malveillantes. Ces adresses IP proviennent du flux Microsoft Threat Intelligence. Intelligent Security Graph alimente l’intelligence des menaces Microsoft et est utilisé par de nombreux services, dont Azure Security Center.
+Vous pouvez activer un ensemble de règles de protection bot managées pour votre WAF afin de bloquer ou de journaliser des requêtes provenant d’adresses IP malveillantes. Ces adresses IP proviennent du flux Microsoft Threat Intelligence. Intelligent Security Graph alimente le renseignement sur les menaces de Microsoft et est utilisé par plusieurs services, notamment Microsoft Defender pour le cloud.
 
 ## <a name="use-with-owasp-rulesets"></a>Utiliser avec des ensembles de règles OWASP
 

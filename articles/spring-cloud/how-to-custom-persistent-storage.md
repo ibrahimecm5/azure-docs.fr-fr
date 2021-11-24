@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2021
 ms.author: xuycao
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 2bf84684851b19665e33af0cbfe902145b8ea565
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 25af6e4fe8ab2aa097812e504b27e8023ee30fc9
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131479430"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402140"
 ---
 # <a name="how-to-enable-your-own-persistent-storage-in-azure-spring-cloud"></a>Guide pratique pour activer votre propre stockage permanent dans Azure Spring Cloud
 
@@ -136,5 +136,5 @@ Les questions fréquemment posées (FAQ) relatives à l’utilisation de votre p
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Découvrez les [quotas d’applications et de services](./quotas.md).
+* Découvrez [comment utiliser Logback pour écrire des journaux dans un stockage persistant personnalisé ](./how-to-write-log-to-custom-persistent-storage.md).
 * Découvrez comment [mettre à l’échelle manuellement votre application](./how-to-scale-manual.md).

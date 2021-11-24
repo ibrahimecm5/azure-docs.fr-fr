@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 0bdd2c517a6bfef059ad89d7c3cbf1a825aba526
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 35738fe541d237b6bf271ea2892a67049f820fbf
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866776"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132402311"
 ---
 # <a name="dv5-and-dsv5-series"></a>Séries Dv5 et Dsv5
 
@@ -38,6 +38,7 @@ Les tailles de machine virtuelle de la série Dv5 n’ont aucun stockage tempora
 [Génération de machine virtuelle prise en charge](generation-2.md) : Générations 1 et 2<br>
 [Accélération réseau](../virtual-network/create-vm-accelerated-networking-cli.md) : Obligatoire <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Non pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Nombre max de cartes réseau|Bande passante réseau maximale (Mbits/s) |
@@ -67,6 +68,7 @@ Les tailles de machine virtuelle de la série Dsv5 n’ont aucun stockage tempor
 [Génération de machine virtuelle prise en charge](generation-2.md) : Générations 1 et 2<br>
 [Accélération réseau](../virtual-network/create-vm-accelerated-networking-cli.md) : Obligatoire <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Non pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit du disque non mis en cache max. : IOPS/Mbits/s | Débit maximal du disque sans mise en cache avec mode rafale : IOPS/Mbits/s<sup>3</sup> | Nombre max de cartes réseau | Bande passante réseau maximale (Mbits/s) |

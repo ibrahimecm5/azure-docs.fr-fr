@@ -1,14 +1,14 @@
 ---
 title: Obtenir des informations sur les appareils découverts par un capteur spécifique
 description: L’inventaire des appareils affiche un large éventail d’attributs d’appareil détectés par un capteur.
-ms.date: 12/06/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 423ddcb9b50be6aa758e28f20291f8d66e58e3f4
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: a218cbb8413728813bc818b73e8292144c01541a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028189"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132312473"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Examiner les détections de capteur dans un inventaire d’appareils
 
@@ -24,7 +24,7 @@ L’inventaire des appareils affiche un large éventail d’attributs d’appare
 
 ## <a name="view-device-attributes-in-the-device-inventory"></a>Afficher les attributs de l’appareil dans l’inventaire des appareils
 
-Les attributs suivants apparaissent dans le tableau d’inventaire des appareils.
+Les attributs suivants apparaissent dans la table d’inventaire des appareils.
 
 | Paramètre | Description |
 |--|--|
@@ -44,6 +44,7 @@ Les attributs suivants apparaissent dans le tableau d’inventaire des appareils
 | Groupes | Groupes auxquels cet appareil participe. |
 | Dernière activité | Dernière activité effectuée par l’appareil. |
 | Discovered | Lorsque cet appareil a été détecté pour la première fois sur le réseau. |
+| **Mode PLC (préversion)** | Le mode de fonctionnement PLC comprend l’état Clé (physique) et l’état Exécution (logique). Les états **Clés** possibles incluent Exécuter, Programme, Distant, Arrêter, Non valide, Programmation, Désactivé. Les états **Exécution** possibles sont Exécuter, Programmer, Arrêter, Suspendu, Exception, Arrêté, Intercepté, Inactif, Hors connexion. Si les deux états sont identiques, seul l’état OE est présenté. |
 
 ## <a name="what-is-an-inventory-device"></a>Qu’est-ce qu’un appareil d’inventaire ?
 
@@ -90,7 +91,7 @@ Vous pouvez enregistrer un filtre ou une combinaison de filtres dont vous avez b
 
 Les filtres que vous enregistrez sont également enregistrés sous forme de groupes de cartes d’appareils. Cette fonctionnalité offre un niveau supplémentaire de granularité lors de l’affichage des périphériques réseau sur la carte.
 
-Pour créer des filtres :
+**Pour créer des filtres :**
 
 1. Dans la colonne que vous souhaitez filtrer, sélectionnez :::image type="icon" source="media/how-to-work-with-asset-inventory-information/filter-icon.png" border="false":::.
 
@@ -184,7 +185,7 @@ Vous pouvez déployer le script une seule fois ou planifier des requêtes en con
 
 - Si vous réexécutez le script dans le même emplacement, ces fichiers sont remplacés.
 
-Pour exécuter le script :  
+**Pour exécuter le script :** 
 
 1. Copiez le script sur un lecteur local et décompressez-le. Les fichiers suivants s’affichent :
 
@@ -212,7 +213,7 @@ Les fichiers générés à partir des requêtes peuvent être placés dans un do
 
 Ne mettez pas à jour les noms de fichiers.
 
-Pour importer :
+**Pour importer :**
 
 1. Sélectionnez **Importer les paramètres** à partir de la boîte de dialogue **Importer la configuration Windows**.
 

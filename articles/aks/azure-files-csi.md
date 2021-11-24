@@ -3,14 +3,14 @@ title: Utiliser des pilotes CSI (Container Storage interface) pour Azure Files s
 description: Découvrez comment utiliser des pilotes CSI (Container Storage interface) pour Azure Files sur un cluster Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/09/2021
 author: palma21
-ms.openlocfilehash: c60b2301e6f0ea2767128224c4e76a677df69e0d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1a0abb0a89ba9e2c913b29ccc17b591c7fa0d39
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122563042"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132137282"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Utiliser des pilotes CSI (Container Storage interface) pour Azure Files dans Azure Kubernetes Service (AKS)
 
@@ -258,7 +258,10 @@ kubectl apply -f private-pvc.yaml
 
 [Azure Files prend en charge le protocole NFS v 4.1](../storage/files/storage-files-how-to-create-nfs-shares.md). La prise en charge du protocole NFS v4.1 pour Azure Files vous offre un système de fichiers NFS complètement managé en tant que service reposant sur une plateforme de stockage résiliente et distribuée hautement disponible et durable.
 
- Cette option est optimisée pour les charges de travail à accès aléatoire avec des mises à jour de données sur place et fournit une prise en charge complète du système de fichiers POSIX. Cette section vous montre comment utiliser des partages NFS avec le pilote CSI d’Azure Files sur un cluster AKS.
+Cette option est optimisée pour les charges de travail à accès aléatoire avec des mises à jour de données sur place et fournit une prise en charge complète du système de fichiers POSIX. Cette section vous montre comment utiliser des partages NFS avec le pilote CSI d’Azure Files sur un cluster AKS.
+
+> [!NOTE]
+> Vérifiez que l'identité `Control plane` du cluster (avec le nom `AKS Cluster Name`) est autorisée `Contributor` sur le groupe de ressources vnet.
 
 ### <a name="create-nfs-file-share-storage-class"></a>Créer une classe de stockage pour les partages de fichiers NFS
 

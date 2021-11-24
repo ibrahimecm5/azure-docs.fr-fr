@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 11/12/2021
 ms.author: rolyon
-ms.openlocfilehash: 21bab82044e3c661ccd797030b43987a60c0cdce
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 667709d8f924556c43a741151c55f5469fb92639
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787560"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399956"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Répertorier les attributions de rôles Azure à l’aide du portail Azure
 
@@ -136,6 +136,8 @@ Vous pouvez répertorier les attributions de rôles pour les identités gérées
 ## <a name="list-number-of-role-assignments"></a>Répertorier le nombre d’attributions de rôles
 
 Vous pouvez avoir jusqu’à **2 000** attributions de rôles dans chaque abonnement. Cette limite comprend les attributions de rôles au niveau de l’abonnement, du groupe de ressources et des étendues de ressources. Pour vous aider à suivre cette limite, l’onglet **Attributions de rôles** comprend un graphe indiquant le nombre d’attributions de rôles de l’abonnement actif.
+
+La limite d’attributions de rôles pour un abonnement est en cours d’augmentation. Pour plus d’informations, consultez [Résoudre les problèmes liés à RBAC Azure](troubleshooting.md#azure-role-assignments-limit).
 
 ![Contrôle d’accès : graphique du nombre d’attributions de rôles](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

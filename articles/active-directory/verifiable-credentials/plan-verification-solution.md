@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: 984b680c207c8c7e6bf404a7ced08f2fdcfd7b71
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 36eb4676c63a539004aba9c000702ba964f05d3c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984437"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332418"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials--verification-solution-preview"></a>Planifier votre solution de vérification Justificatifs vérifiables Azure Active Directory (préversion)
 
@@ -332,7 +332,7 @@ Dans le cadre de votre planification opérationnelle, pensez à surveiller les �
 
    * Activez la journalisation pour Key Vault afin de suivre les opérations de signature, ainsi que pour surveiller les changements de configuration et déclencher des alertes à leur sujet. Référez-vous à [Comment activer la journalisation Key Vault](../../key-vault/general/howto-logging.md) pour plus d’informations.
 
-   * Archivez les journaux dans un système de gestion des informations et des événements de sécurité (SIEM), comme [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) pour une conservation à long terme.
+   * Archivez des journaux dans un système de gestion des informations et des événements de sécurité (SIEM), comme [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel/) pour une conservation à long terme.
 
  
 

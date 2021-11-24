@@ -3,16 +3,16 @@ title: Glossaire sur Defender pour IoT destiné aux fabricants d’appareils
 description: Le glossaire fournit une brève description des termes et concepts importants de la plateforme Defender pour IoT.
 ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 34b1bf4f1c49588326c38915c35132219f34e1b3
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d1f2d77ab73d0ff1c58b9c7cbe3d9e16032cd575
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132056489"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343683"
 ---
 # <a name="defender-for-iot-glossary-for-device-builder"></a>Glossaire sur Defender pour IoT destiné aux fabricants d’appareils
 
-Ce glossaire fournit une brève description des termes et concepts importants pour la plateforme Azure Defender pour IoT. Sélectionnez les liens **En savoir plus** pour accéder aux termes associés dans le glossaire. Cela vous permettra d’apprendre et d’utiliser plus rapidement les outils de produit.
+Ce glossaire fournit une brève description des termes et concepts importants pour la plateforme Microsoft Defender pour IoT. Sélectionnez les liens **En savoir plus** pour accéder aux termes associés dans le glossaire. Cela vous permettra d’apprendre et d’utiliser plus rapidement les outils de produit.
 
 <a name="glossary-a"></a>
 

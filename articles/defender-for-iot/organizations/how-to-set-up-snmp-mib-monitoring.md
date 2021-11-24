@@ -1,14 +1,14 @@
 ---
 title: Configurer la supervision de SNMP MIB
 description: Vous pouvez effectuer une analyse du fonctionnement du capteur à l’aide de SNMP. Le capteur répond aux requêtes SNMP envoyées à partir d’un serveur de supervision autorisé.
-ms.date: 12/14/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 14803fd2f9c088fb4454f97ff1524e8d651ccd05
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: dc9baa68c39ec049f1ca717f1bb34a364d6bad10
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015531"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278718"
 ---
 # <a name="set-up-snmp-mib-monitoring"></a>Configurer la supervision de SNMP MIB
 
@@ -33,7 +33,7 @@ Avant de commencer la configuration de l’analyse SNMP, vous devez ouvrir le p
 | Utilisation du disque | 1.3.6.1.4.1.53313.3.4 | GAUGE32 | Indication de 0 à 100 |
 | État du service | 1.3.6.1.4.1.53313.5  |STRING | En ligne ou hors connexion si l’un des quatre composants essentiels est défaillant |
 | État du service | 1.3.6.1.4.1.53313.5  |STRING | En ligne ou hors connexion si l’un des quatre composants essentiels est défaillant |
-| Connecté localement/au cloud | 1.3.6.1.4.1.53313.6   |STRING | Indique si le capteur est connecté au portail Defender pour IoT ou géré localement uniquement |
+| Connecté localement/au cloud | 1.3.6.1.4.1.53313.6   |STRING | Indique si le capteur est connecté à Defender pour IoT dans Azure ou géré localement uniquement |
 | État de la licence | 1.3.6.1.4.1.53313.5  |STRING | Indique si le fichier d’activation a expiré ou non |
 
    - Les clés non existantes répondent avec la valeur Null, HTTP 200, selon [Stack Overflow](https://stackoverflow.com/questions/51419026/querying-for-non-existing-record-returns-null-with-http-200).

@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/29/2021
+ms.date: 11/09/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2b27fcb43d815a6a2567ebb11c0ea768914582eb
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a6f91fd8de1f208bcbe57a9e541ad1e73340e995
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131440960"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179483"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>Enrichir les jetons avec des revendications provenant de sources externes à l’aide de connecteurs API
 
@@ -149,7 +149,7 @@ Content-type: application/json
 | version     | String | Oui      | Version de votre API.                                                    |
 | action                                             | String            | Oui      | La valeur doit être `Continue`.                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Non       | Elles peuvent être renvoyées dans le jeton si elles sont sélectionnées en tant que **Revendication d’application**.                                        |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Non       | La revendication n’a pas besoin de contenir `_<extensions-app-id>_`, cela est *facultatif*. Elles peuvent être renvoyées dans le jeton si elles sont sélectionnées en tant que **Revendication d’application**.  |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | La revendication n’a pas besoin de contenir `_<extensions-app-id>_`, cela est *facultatif*. Elles peuvent être renvoyées dans le jeton si elles sont sélectionnées en tant que **Revendication d’application**.  |
 
 ::: zone-end
 
@@ -250,8 +250,8 @@ Après avoir déployé votre API REST, définissez les métadonnées du profil t
 
 - **ServiceUrl**. Définissez l’URL du point de terminaison de l’API REST.
 - **SendClaimsIn**. Spécifiez la façon dont les revendications d’entrée sont envoyées au fournisseur de revendications RESTful.
-- **AuthenticationType**. Définissez le type de l’authentification effectuée par le fournisseur de revendications RESTful. 
-- **AllowInsecureAuthInProduction**. Dans un environnement de production, veillez à définir ces métadonnées sur `true`
+- **AuthenticationType**. Définissez le type d’authentification effectué par le fournisseur de revendications RESTful, tel que `Basic` ou `ClientCertificate` 
+- **AllowInsecureAuthInProduction**. Dans un environnement de production, veillez à définir ces métadonnées sur `false`.
     
 Pour plus d’informations sur les configurations, consultez [Métadonnées du profil technique RESTful](restful-technical-profile.md#metadata).
 

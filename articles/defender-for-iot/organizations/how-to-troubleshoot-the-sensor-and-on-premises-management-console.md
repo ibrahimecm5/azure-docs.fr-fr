@@ -1,14 +1,14 @@
 ---
 title: Résoudre les problèmes du capteur et de la console de gestion locale
 description: Dépannez votre capteur et la console de gestion locale pour éliminer les problèmes que vous pourriez rencontrer.
-ms.date: 10/17/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 791df9cc7b95ac32dfcc794136bc53df51e3a0a8
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 66e4d9b221176bb8a1413e679656c6df401459dd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131303"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278642"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Résoudre les problèmes du capteur et de la console de gestion locale
 
@@ -16,7 +16,7 @@ Cet article décrit les outils de dépannage de base pour le capteur et la conso
 
 **Alertes** : Une alerte est créée lorsque l’interface du capteur qui surveille le trafic est défaillante.
 
-**SNMP** : L’intégrité du capteur est analysée via protocole SNMP. Azure Defender pour IoT répond aux requêtes SNMP envoyées à partir d’un serveur de supervision autorisé.
+**SNMP** : L’intégrité du capteur est analysée via protocole SNMP. Microsoft Defender pour IoT répond aux requêtes SNMP envoyées à partir d’un serveur d’analyse autorisé.
 
 **Notifications système** : Quand une console de gestion contrôle le capteur, vous pouvez transférer des alertes concernant les échecs de sauvegarde de capteur et les capteurs déconnectés.
 

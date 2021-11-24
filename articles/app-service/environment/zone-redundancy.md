@@ -1,26 +1,24 @@
 ---
-title: Prise en charge des zones de disponibilité pour les environnements App Service
+title: Prise en charge de la zone de disponibilité pour App Service Environment v2
 description: Apprenez à déployer vos environnements App Service pour que vos applications soient redondantes dans une zone.
-author: ccompy
-ms.assetid: 24e3e7eb-c160-49ff-8d46-e947818ef186
+author: madsd
 ms.topic: article
-ms.date: 07/05/2021
-ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: a60ab8498076eb6380657b9cd57a3f8d0db31da2
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.date: 11/15/2021
+ms.author: madsd
+ms.openlocfilehash: 5c60b2496acb03f52da066e56feab1423ac6ae91
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576412"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520937"
 ---
-# <a name="availability-zone-support-for-app-service-environments"></a>Prise en charge des zones de disponibilité pour les environnements App Service
+# <a name="availability-zone-support-for-app-service-environment-v2"></a>Prise en charge de la zone de disponibilité pour App Service Environment v2
 
 > [!NOTE]
 > Cet article concerne la fonctionnalité App Service Environment v2 qui est utilisée avec les plans App Service Isolé.
 > 
 
-Les environnements App Service Environment (ASE) peuvent être déployés dans des zones de disponibilité (AZ).  Les clients peuvent déployer un ASE d’équilibreur de charge interne (ILB) dans une zone de disponibilité spécifique au sein d’une région Azure. Si vous épinglez votre ASE ILB à une zone de disponibilité spécifique, les ressources utilisées par un ASE ILB seront épinglées à la zone de disponibilité spécifiée ou déployées de manière redondante dans une zone.  
+App Service Environment (ASE) v2 peut être déployé dans des zones de disponibilité (AZ).  Les clients peuvent déployer un ASE d’équilibreur de charge interne (ILB) dans une zone de disponibilité spécifique au sein d’une région Azure. Si vous épinglez votre ASE ILB à une zone de disponibilité spécifique, les ressources utilisées par un ASE ILB seront épinglées à la zone de disponibilité spécifiée ou déployées de manière redondante dans une zone.  
 
 Un ASE ILB déployé explicitement dans une zone de disponibilité est considéré comme une ressource zonale, car l’ASE ILB est épinglé à une zone spécifique. Les dépendances ASE ILB suivantes seront épinglées à la zone spécifiée :
 
@@ -49,7 +47,7 @@ Les ASE ILB zonaux peuvent être créés dans l’une des régions suivantes :
 
 Les applications déployées sur un ASE ILB zonal continuent à s’exécuter et à traiter le trafic sur cet ASE, même si d’autres zones de la même région subissent une panne.  Il est possible que les comportements hors runtime, dont la mise à l’échelle du plan de service d’application, la création de l’application, la configuration de l’application et la publication de l’application soient affectés par une panne dans d’autres zones de disponibilité. Le déploiement épinglé à une zone d’un ASE ILB zonal assure uniquement la continuité de service des applications déjà déployées.
 
-## <a name="how-to-deploy-an-app-service-environment-in-an-availability-zone"></a>Comment déployer App Service Environment dans une zone de disponibilité ##
+## <a name="how-to-deploy-an-app-service-environment-in-an-availability-zone"></a>Comment déployer App Service Environment dans une zone de disponibilité
 
 Les ASE ILB zonaux doivent être créés à l’aide de modèles ARM. Une fois qu’un ASE ILB zonal est créé via un modèle ARM, vous pouvez l’afficher et interagir avec via le portail Azure et l’interface CLI.  Un modèle ARM n’est nécessaire que pour la création initiale d’un ASE ILB zonal.
 
@@ -57,7 +55,7 @@ La seule modification nécessaire dans un modèle ARM pour spécifier un enviro
 
 L’exemple d’extrait de modèle ARM ci-dessous montre la nouvelle propriété ***zones*** spécifiant que l’ASE ILB doit être épinglé à la zone 2.
 
-```
+```json
 "resources": [
     {
         "type": "Microsoft.Web/hostingEnvironments",
@@ -85,7 +83,7 @@ L’exemple d’extrait de modèle ARM ci-dessous montre la nouvelle propriété
 
 Pour que votre zone d’applications soit redondante, vous devez déployer deux ASE ILB zonaux. Les deux ASE ILB zonaux doivent se trouver dans des zones de disponibilité distinctes. Vous devez ensuite déployer vos applications dans chacun des ASE ILB. Une fois vos applications créées, vous devez configurer une solution d’équilibrage de charge. La solution recommandée consiste à déployer une [passerelle applicative avec redondance interzone](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) en amont de l’ASE ILB zonal. 
 
-## <a name="in-region-data-residency"></a>Résidence des données dans la région ##
+## <a name="in-region-data-residency"></a>Résidence des données dans la région
 
 Les ASE ILB déployés dans une zone de disponibilité stockent uniquement les données client dans la région où l’ASE ILB zonal a été déployé. Le contenu du fichier de site web ainsi que les paramètres et secrets fournis par le client stockés dans App Service restent dans la région où l’ASE ILB zonal est déployé.
 

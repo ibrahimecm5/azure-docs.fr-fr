@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 098f9a65af4537dace4f6ac0edb2ff71df34c3d2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5a674141acb3b344ba2436cac3c493843480b62e
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232006"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322167"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimiser votre cloud privé CloudSimple pour l’installation d’Oracle RAC
 
@@ -201,7 +201,7 @@ Pour créer une machine virtuelle pour Oracle, clonez une machine virtuelle exis
 14. Vérifiez les paramètres, puis cliquez sur **OK** pour créer la machine virtuelle.
 15. Mettez la machine virtuelle sous tension. Installez le système d’exploitation et toutes les mises à jour requises.
 
-Une fois le système d’exploitation installé, vous pouvez cloner une deuxième machine virtuelle. Cliquez avec le bouton droit sur l’entrée de machine virtuelle, puis sélectionnez l’option Clone.
+Une fois le système d’exploitation installé, vous pouvez cloner une deuxième machine virtuelle. Cliquez avec le bouton de droite sur l’entrée de machine virtuelle, puis sélectionnez l’option de clone.
 
 ### <a name="create-shared-disks-for-vms"></a>Créer des disques partagés pour les machines virtuelles
 

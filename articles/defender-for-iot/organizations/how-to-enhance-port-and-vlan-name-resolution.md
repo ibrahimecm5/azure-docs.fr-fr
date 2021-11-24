@@ -1,14 +1,14 @@
 ---
 title: Améliorer la résolution des noms de ports et de VLAN
 description: Personnalisez les noms de ports et de VLAN sur vos capteurs afin d’enrichir la résolution d’appareil.
-ms.date: 12/13/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 5c4f29f43534a797c5e8ac7142fd9633830f7859
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017401"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331487"
 ---
 # <a name="enhance-port-vlan-and-os-resolution"></a>Améliorer la résolution de port, de VLAN et de système d’exploitation
 

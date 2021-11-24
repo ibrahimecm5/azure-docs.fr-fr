@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 7e477f3d8df098f53abc4b1ad5f963f019b79ead
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 64a8259f859bb53be6464a9f522c4dcb5491ba21
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470886"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279326"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Activer la journalisation des diagnostics pour les applications dans Azure App Service
 ## <a name="overview"></a>Vue d’ensemble
@@ -203,7 +203,7 @@ Le tableau suivant renseigne sur les types et la descriptions des journaux pris 
 | AppServiceAppLogs | ASP.NET & Tomcat <sup>1</sup> | ASP.NET & Tomcat <sup>1</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Java SE & Tomcat Blessed Images <sup>2</sup> | Journaux d’activité d’application |
 | AppServiceIPSecAuditLogs  | Oui | Oui | Oui | Oui | Demandes à partir de règles IP |
 | AppServicePlatformLogs  | À confirmer | Oui | Oui | Oui | journaux des opérations du conteneur |
-| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Oui | Oui | Oui | Oui | [Journaux de l’analyse antivirus](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) avec Microsoft Defender ; **disponibles seulement pour le niveau Premium** | 
+| AppServiceAntivirusScanAuditLogs <sup>3</sup> | Oui | Oui | Oui | Oui | [Journaux de l’analyse antivirus](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) avec Microsoft Defender pour le cloud ; **disponibles seulement pour le niveau Premium** | 
 
 <sup>1</sup> Pour les applications Tomcat, ajoutez `TOMCAT_USE_STARTUP_BAT` aux paramètres de l’application et définissez-le sur `false` ou `0`. Vous devez disposer de la *dernière* version de Tomcat et utiliser *java.util.logging*.
 

@@ -15,6 +15,8 @@ items:
     items:
       - name: Planifier un déploiement des services de données Azure Arc
         href: plan-azure-arc-data-services.md
+      - name: Créer un cluster AKS
+        href: create-aks-cluster-data-controller.md
   - name: Concepts
     items:
       - name: Modes et exigences de connectivité
@@ -51,8 +53,6 @@ items:
                 href: create-data-controller-direct-prerequisites.md
               - name: Portail Azure
                 href: create-data-controller-direct-azure-portal.md
-              - name: az CLI
-                href: create-data-controller-direct-cli.md
       - name: Expériences courantes dans les services de données avec Azure Arc
         items:
           - name: Superviser à l’aide des tableaux de bord (Azure Data Studio)
@@ -245,7 +245,5 @@ items:
             href: ./reference/reference-az-sql-midb-arc.md
   - name: Ressources
     items:
-      - name: Planifier le déploiement
-        href: plan-azure-arc-data-services.md
       - name: Démarrage rapide avec Azure Arc
         href: 'https://azurearcjumpstart.io'

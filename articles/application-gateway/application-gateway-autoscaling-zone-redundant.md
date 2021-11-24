@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 63cf40d5d7fcea55cd5de27d2b4d65691d9d0311
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 17e50b602bcab7dd3a40e6823bea44eb63603b9d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651994"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132313087"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Application Gateway v2 avec mise à l’échelle automatique et redondance interzone 
 
@@ -107,7 +107,7 @@ Cette section décrit les fonctionnalités et les limitations de la référence 
 |Mode FIPS|Ils ne sont pas pris en charge.|
 |Mode ILB uniquement|Non pris en charge actuellement. Les modes public et ILB sont pris en charge ensemble.|
 |Intégration de l’observateur réseau|Non pris en charge.|
-|Intégration Azure Security Center|Pas encore disponible.
+|Intégration de Microsoft Defender pour le cloud|Pas encore disponible.
 
 ## <a name="migrate-from-v1-to-v2"></a>Effectuer la migration de la version 1 à la version 2
 

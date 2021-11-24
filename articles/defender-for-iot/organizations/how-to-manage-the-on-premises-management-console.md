@@ -1,14 +1,14 @@
 ---
 title: Gérer la console de gestion locale
 description: Découvrez les options de la console de gestion locale, telles que la sauvegarde et la restauration, la définition du nom d’hôte et la configuration d’un proxy pour les capteurs.
-ms.date: 1/12/2021
+ms.date: 11/09/2021
 ms.topic: article
-ms.openlocfilehash: 9b956dbfa640862d10d0e47aef97e5a1727052c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3604b4674a86d719f2fecf841347c0a55f5b9757
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625218"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339703"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Gérer la console de gestion locale
 
@@ -24,7 +24,7 @@ Après l’activation initiale, le nombre d’appareils analysés peut dépasser
 
 **Pour charger un fichier d’activation :**
 
-1. Accédez à la page **Tarification** d’Azure Defender pour IoT.
+1. Accédez à la page **Tarification** de Microsoft Defender pour IoT.
 1. Sélectionnez l’onglet **Télécharger le fichier d’activation de la console de gestion**. Le fichier d’activation est téléchargé.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Télécharger le fichier d’activation.":::

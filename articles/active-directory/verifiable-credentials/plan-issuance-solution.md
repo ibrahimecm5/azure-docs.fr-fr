@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: d724c41fd16ea762fc96c36e67fe4a00a5b5e72d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdf6ef5910e31dc21929cf484b2b1ad580badef7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122562318"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132319717"
 ---
 # <a name="plan-your-azure-active-directory-verifiable-credentials-issuance-solution-preview"></a>Planifier votre solution d’émission de justificatifs vérifiables Azure Active Directory (préversion)
 
@@ -286,7 +286,7 @@ Pour la journalisation et la surveillance de la sécurité, nous recommandons ce
 
 * Activez la journalisation de votre compte Stockage Azure pour surveiller et envoyer une alerte pour les modifications de configuration. Plus d’informations peuvent être trouvées dans [Supervision du service Stockage Blob Azure](../../storage/blobs/monitor-blob-storage.md).
 
-* Archivez les journaux dans un système de gestion des informations et des événements de sécurité (SIEM), comme [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel) pour une conservation à long terme.
+* Archivez des journaux dans un système de gestion des informations et des événements de sécurité (SIEM), comme [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel) pour une conservation à long terme.
 
 * Atténuez les risques d’usurpation d’identité à l’aide des éléments suivants
 

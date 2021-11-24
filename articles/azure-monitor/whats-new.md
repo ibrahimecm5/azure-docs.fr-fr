@@ -2,18 +2,105 @@
 title: Nouveautés dans la documentation Azure Monitor
 description: Nouveautés dans la documentation Azure Monitor
 ms.topic: conceptual
-ms.date: 09/07/2021
-ms.openlocfilehash: 3c7a433ed3c13e7853cab9a72bdd6b7a447bb3a0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/10/2021
+ms.openlocfilehash: 58e5ff2bbb95e14e0a99750004a6b4ca5f17821f
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130219886"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290349"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Nouveautés dans la documentation Azure Monitor
 
 Cet article répertorie les modifications importantes apportées à la documentation Azure Monitor.
 
+## <a name="october-2021"></a>Octobre 2021
+
+### <a name="general"></a>Général
+
+**Nouveaux articles**
+
+- [Déploiement Azure Monitor : Alertes et actions automatisées](best-practices-alerts.md)
+- [Meilleures pratiques d’Azure Monitor : Analyser et visualiser les données](best-practices-analysis.md)
+- [Meilleures pratiques d’Azure Monitor : Configurer la collecte de données](best-practices-data-collection.md)
+- [Meilleures pratiques d’Azure Monitor : Planification de la stratégie et de la configuration de la surveillance](best-practices-plan.md)
+- [Bonnes pratiques Azure Monitor](best-practices.md)
+
+**Articles mis à jour**
+
+- [Quels sont les éléments supervisés par Azure Monitor ?](monitor-reference.md)
+- [Visualiser les données à partir d’Azure Monitor](visualizations.md)
+### <a name="agents"></a>Agents
+
+**Articles mis à jour**
+
+- [Guide pratique pour résoudre les problèmes liés à l’agent Log Analytics pour Linux](agents/agent-linux-troubleshoot.md)
+- [Vue d’ensemble des agents Azure Monitor](agents/agents-overview.md)
+- [Installer l’agent Azure Monitor](agents/azure-monitor-agent-install.md)
+
+### <a name="alerts"></a>Alertes
+
+**Articles mis à jour**
+
+- [Créer, afficher et gérer des alertes de journal d’activité à l’aide d’Azure Monitor](alerts/alerts-activity-log.md)
+- [Créer une alerte de journal avec un modèle Resource Manager](alerts/alerts-log-create-templates.md)
+- [Actions webhook pour les règles d’alerte de journal](alerts/alerts-log-webhook.md)
+- [Exemples de modèle Resource Manager pour les règles d’alerte de journal dans Azure Monitor](alerts/resource-manager-alerts-log.md)
+
+### <a name="application-insights"></a>Application Insights
+
+**Nouveaux articles**
+
+- [Statsbeat dans Azure Application Insights](app/statsbeat.md)
+- [Activer Azure Monitor OpenTelemetry Exporter pour les applications .NET, Node.js et Python (préversion)](app/opentelemetry-enable.md)
+- [Présentation d’OpenTelemetry](app/opentelemetry-overview.md)
+
+**Articles mis à jour**
+
+- [Déployer Azure Monitor Application Insights Agent pour les serveurs locaux](app/status-monitor-v2-overview.md)
+- [Astuces pour la mise à jour de vos arguments JVM - Azure Monitor Application Insights pour Java](app/java-standalone-arguments.md)
+- [Configurer Azure Monitor pour votre application Python](app/opencensus-python.md)
+- [Supervision des applications Java sans code avec Azure Monitor Application Insights](app/java-in-process-agent.md)
+- [Options de configuration – Azure Monitor Application Insights pour Java](app/java-standalone-config.md)
+
+### <a name="containers"></a>Containers
+
+**Articles mis à jour**
+
+- [Résolution de problèmes liés à Container Insights](containers/container-insights-troubleshoot.md)
+- [Alertes métriques recommandées (préversion) de Container Insights](containers/container-insights-metric-alerts.md)
+
+### <a name="essentials"></a>Essentials
+
+**Articles mis à jour**
+
+- [Mesures prises en charge avec Azure Monitor](essentials/metrics-supported.md)
+- [Catégories prises en charge pour les journaux de ressources Azure Monitor](essentials/resource-logs-categories.md)
+- [Vue d’ensemble d’Azure Monitor Metrics](essentials/data-platform-metrics.md)
+- [Métriques personnalisées dans Azure Monitor (préversion)](essentials/metrics-custom-overview.md)
+- [Schémas communs et spécifiques de services pour les journaux de ressources Azure](essentials/resource-logs-schema.md)
+- [Créer des paramètres de diagnostic pour envoyer des journaux et des métriques de plateforme à différentes destinations](essentials/diagnostic-settings.md)
+
+### <a name="logs"></a>Journaux d’activité
+
+**Articles mis à jour**
+
+- [Exportation des données de l’espace de travail Log Analytics dans Azure Monitor (préversion)](logs/logs-data-export.md)
+- [Clé gérée par le client dans Azure Monitor](logs/customer-managed-keys.md)
+- [Clusters dédiés pour les journaux Azure Monitor](logs/logs-dedicated-clusters.md)
+- [Gérer l’utilisation et les coûts avec les journaux Azure Monitor](logs/manage-cost-storage.md)
+
+### <a name="virtual-machines"></a>Machines Virtuelles
+
+**Articles mis à jour**
+
+- [Activer VM Insights à l’aide d’Azure Policy](vm/vminsights-enable-policy.md)
+
+## <a name="visualizations"></a>Visualisations
+
+**Articles mis à jour**
+
+- [Surveiller vos services Azure dans Grafana](visualize/grafana-plugin.md)
 ## <a name="september-2021"></a>Septembre 2021
 ### <a name="general"></a>Général
 

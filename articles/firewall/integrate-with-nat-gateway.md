@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2fa0bef35d6bbc76f30ca1f0dde3199780743a14
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 30d1da573bec205212658fa6aff5ac3b71ad2e50
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044928"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399007"
 ---
 # <a name="scale-snat-ports-with-azure-nat-gateway"></a>Mettre à l’échelle les ports SNAT avec Azure NAT Gateway
 
@@ -28,7 +28,7 @@ Lorsqu’une ressource de passerelle NAT est associée à un sous-réseau de Pa
 Il n’existe pas de double NAT avec cette architecture. Les instances de Pare-feu Azure envoient le trafic à la passerelle NAT à l’aide de leur adresse IP privée plutôt que de l’IP publique de Pare-feu Azure.
 
 > [!NOTE]
-> L’utilisation d’Azure NAT Gateway est actuellement incompatible avec Pare-feu Azure si vous avez déployé votre [pare-feu Azure sur plusieurs zones de disponibilité](deploy-availability-zone-powershell.md). En savoir plus sur [Azure NAT Gateway et les zones de disponibilité](../virtual-network/nat-gateway/nat-gateway-resource.md#cross-zone-outbound-scenarios-not-supported).
+> L’utilisation d’Azure NAT Gateway est actuellement incompatible avec le Pare-feu Azure si vous avez déployé votre [Pare-feu Azure sur plusieurs zones de disponibilité](deploy-availability-zone-powershell.md).
 
 ## <a name="associate-nat-gateway-with-azure-firewall-subnet---azure-powershell"></a>Associer une passerelle NAT à un sous-réseau de Pare-feu Azure (Azure PowerShell)
 

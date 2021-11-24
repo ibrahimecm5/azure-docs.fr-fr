@@ -182,6 +182,8 @@ items:
             items:
               - name: Création
                 href: 'https://aka.ms/clu-authoring-apis'
+              - name: API d'exécution
+                href: 'https://aka.ms/clu-apis'
           - name: Kits SDK
             items:
               - name: .NET
@@ -599,7 +601,7 @@ items:
           - name: Analyse des sentiments sur des données de streaming à l’aide d’Azure Databricks
             href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
           - name: 'Utiliser Flask pour la traduction de texte, l’analyse de sentiments et la synthèse vocale'
-            href: ../translator/tutorial-build-flask-app-translation-synthesis.md?context=%2fazure%2fcognitive-services%2flanguage-service%2fcontext%2fcontext
+            href: /azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
       - name: Informations de référence
         items:
           - name: API REST

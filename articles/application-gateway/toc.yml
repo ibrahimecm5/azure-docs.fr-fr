@@ -280,6 +280,8 @@
           href: application-gateway-backend-health-troubleshooting.md
         - name: Erreurs Key Vault
           href: application-gateway-key-vault-common-errors.md
+    - name: Configuration de la mémoire tampon du proxy
+      href: proxy-buffers.md
     - name: Pages d’erreur personnalisées
       href: custom-error.md
     - name: Effectuer la migration de la version 1 à la version 2

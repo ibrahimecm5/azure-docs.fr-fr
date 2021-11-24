@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b97f7fdfb64f80fa1e132b0bdbd1dbb6d1382de1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731695"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279193"
 ---
 # <a name="azure-monitor-data-platform"></a>Plateforme de données Azure Monitor
 
@@ -72,7 +72,7 @@ Le tableau suivant compare les métriques et les journaux dans Azure Monitor.
 | Structure | Ensemble standard de propriétés, notamment l’heure de l’échantillonnage, la ressource en cours de supervision et une valeur numérique. Certaines métriques incluent plusieurs dimensions pour une définition plus précise. | Ensemble unique de propriétés en fonction du type de journal. |
 | Collection | Collectées à intervalles réguliers. | Peuvent être collectés de façon sporadique à mesure que des événements déclenchent la création d’un enregistrement. |
 | Affichage dans le portail Azure | Metrics Explorer | Log Analytics |
-| Contenu des sources de données | Métriques de plateforme collectées à partir de ressources Azure.<br>Applications supervisées par Application Insights.<br>Personnalisation définie par l’API ou l’application. | Journaux des applications et des ressources.<br>Solutions de supervision.<br>Agents et extensions de machine virtuelle.<br>Demandes d’application et exceptions.<br>Azure Security Center.<br>API du collecteur de données. |
+| Contenu des sources de données | Métriques de plateforme collectées à partir de ressources Azure.<br>Applications supervisées par Application Insights.<br>Personnalisation définie par l’API ou l’application. | Journaux des applications et des ressources.<br>Solutions de supervision.<br>Agents et extensions de machine virtuelle.<br>Demandes d’application et exceptions.<br>Microsoft Defender pour le cloud.<br>API du collecteur de données. |
 
 ## <a name="collect-monitoring-data"></a>Collecter des données de supervision
 Les différentes [sources de données pour Azure Monitor](agents/data-sources.md) écrivent dans un espace de travail Log Analytics (journaux) et/ou dans la base de données de métriques Azure Monitor (métriques). Certaines sources écrivent directement dans ces magasins de données, tandis que d’autres peuvent écrire à un autre emplacement, tel que le stockage Azure, et nécessiter une configuration pour remplir les journaux ou métriques. 
@@ -90,4 +90,3 @@ En plus d’utiliser les outils dans Azure pour analyser les données de supervi
 - Découvrez-en plus sur les [métriques dans Azure Monitor](essentials/data-platform-metrics.md).
 - Découvrez-en plus sur les [journaux dans Azure Monitor](logs/data-platform-logs.md).
 - Découvrez les [données de surveillance disponibles](agents/data-sources.md) pour différentes ressources dans Azure.
-

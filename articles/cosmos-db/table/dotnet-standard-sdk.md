@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/03/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 47d0862eefd713aa814ab7da2737565c33160cd3
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: fdf88bd530eedb37ff2637c7daf43433d9a0e427
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131559292"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284414"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>API .NET Standard Table Azure Cosmos DB : Téléchargement et notes de publication
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -76,6 +76,7 @@ La série 1.0.0 est dépendante de [Microsoft.Azure.DocumentDB.Core](https://www
 * Version en disponibilité générale
 
 ### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0-preview
+
 * Des modifications ont été apportées à la configuration de CloudTableClient. Elle accepte désormais un objet TableClientConfiguration pendant la construction. TableClientConfiguration propose différentes propriétés pour configurer le comportement du client selon que le point de terminaison cible est API Table Cosmos DB ou API Table Stockage Azure.
 * Ajout de la prise en charge de TableQuery pour renvoyer des résultats triés dans une colonne personnalisée. Cette fonctionnalité est uniquement prise en charge sur les points de terminaison Table Cosmos DB.
 * Ajout de la prise en charge d'exposition de RequestCharges sur différents types de résultats. Cette fonctionnalité est uniquement prise en charge sur les points de terminaison Table Cosmos DB.

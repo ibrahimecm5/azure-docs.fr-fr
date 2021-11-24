@@ -11,12 +11,12 @@ author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2, ignite-fall-2021
 ms.date: 10/21/2021
-ms.openlocfilehash: 03d5c93d27587e88ae1f21e12b8a729fab042ac7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 7129286a0a91e27e80ebe4a6f3fc99e2b0e6c9b8
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131554028"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135928"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Que sont les points de terminaison Azure Machine Learning (préversion) ? 
 
@@ -129,7 +129,7 @@ Il existe deux types de points de terminaison en ligne : les **points de termin
 | **Journalisation standard** | [Journaux Azure et Log Analytics au niveau du point de terminaison](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | Prise en charge |
 | **Application Insights** | Pris en charge | Pris en charge |
 | **Identité gérée** | [Pris en charge](how-to-access-resources-from-endpoints-managed-identities.md) | Prise en charge |
-| **Réseau virtuel (VNet)** | Non pris en charge (préversion publique) | Prise en charge |
+| **Réseau virtuel (VNet)** | Pas encore pris en charge (nous travaillons dessus) | Prise en charge |
 | **Visualisation des coûts** | [Au niveau du point de terminaison et du déploiement](how-to-view-online-endpoints-costs.md) | Au niveau du cluster |
 
 ### <a name="managed-online-endpoints"></a>Points de terminaison en ligne managés

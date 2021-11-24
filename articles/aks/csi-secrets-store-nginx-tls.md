@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 10/19/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 28f01a1dccde2049b8dfa20a5d9ebd5b07ef916b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: dd6945da0b3c4170082d20e5481d06048b7c3dde
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511397"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284794"
 ---
 # <a name="set-up-secrets-store-csi-driver-to-enable-nginx-ingress-controller-with-tls"></a>Configurer le pilote CSI du magasin de secrets pour activer le contrôleur d’entrée NGINX avec TLS
 
@@ -29,7 +29,6 @@ L’importation du certificat TLS d’entrée dans le cluster peut être effectu
 - Avant de commencer, vérifiez que votre version d’Azure CLI est >= `2.30.0` ou [installez la dernière version](/cli/azure/install-azure-cli).
 - Un cluster AKS avec le pilote CSI du magasin de secrets configuré.
 - Une instance Azure Key Vault.
-
 
 ## <a name="generate-a-tls-certificate"></a>Générer un certificat TLS
 
@@ -66,13 +65,14 @@ kubectl create ns $NAMESPACE
 ```
 
 Sélectionnez un [mécanisme pour fournir une identité d’accès][csi-ss-identity-access] et configurez votre YAML de SecretProviderClass en conséquence. En outre :
-- Veillez à utiliser `objectType=secret`, car c’est la seule façon d’obtenir la clé privée et le certificat d’AKV.
+
+- Veillez à utiliser `objectType=secret`, qui est la seule façon d’obtenir la clé privée et le certificat d’AKV.
 - Définissez `kubernetes.io/tls` comme `type` dans votre section `secretObjects`.
 
 Pour obtenir un exemple de ce à quoi peut ressembler votre SecretProviderClass, consultez ce qui suit :
 
 ```yml
-apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+apiVersion: secrets-store.csi.x-k8s.io/v1
 kind: SecretProviderClass
 metadata:
   name: azure-tls
@@ -352,6 +352,6 @@ curl -v -k --resolve demo.test.com:443:52.xx.xx.xx https://demo.test.com
 ```
 
 <!-- LINKS INTERNAL -->
-[csi-ss-identity-access]: ./csi-secrets-store-identity-access.md 
+[csi-ss-identity-access]: ./csi-secrets-store-identity-access.md
 <!-- LINKS EXTERNAL -->
 [kubernetes-ingress-tls]: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls

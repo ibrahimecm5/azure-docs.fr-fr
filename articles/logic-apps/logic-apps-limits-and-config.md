@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
 ms.date: 11/02/2021
-ms.openlocfilehash: eda51c5adb4d266e714b3a7ca26523b198dbcbc3
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 68d587888a915ed317b6a31f9000d0086adda21b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131442632"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283483"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Limites et références de configuration pour Azure Logic Apps
 
@@ -418,14 +418,14 @@ Les tableaux suivants répertorient les valeurs possibles en termes de nombre d'
 > [!NOTE]
 > Utilisez le niveau gratuit uniquement pour les scénarios exploratoires, pas pour les scénarios de production. Ce niveau limite le débit et l’utilisation et n’inclut aucun contrat de niveau de service (SLA).
 
-| Artefact | Gratuit | De base | Standard |
+| Artefact | Gratuit | De base | standard |
 |----------|------|-------|----------|
-| Contrats commerciaux EDI | 10 | 1 | 1 000 |
-| Partenaires commerciaux EDI | 25 | 2 | 1 000 |
-| Cartes | 25 | 500 | 1 000 |
-| Schémas | 25 | 500 | 1 000 |
-| Assemblys | 10 | 25 | 1 000 |
-| Certificats | 25 | 2 | 1 000 |
+| Contrats commerciaux EDI | 10 | 1 | 1 000 |
+| Partenaires commerciaux EDI | 25 | 2 | 1 000 |
+| Cartes | 25 | 500 | 1 000 |
+| Schémas | 25 | 500 | 1 000 |
+| Assemblys | 10 | 25 | 1 000 |
+| Certificats | 25 | 2 | 1 000 |
 | Configurations par lots | 5 | 1 | 50 |
 ||||
 
@@ -444,7 +444,7 @@ Les tableaux suivants répertorient les valeurs possibles en termes de nombre d'
 
 ### <a name="throughput-limits"></a>Limites de débit
 
-| Point de terminaison du runtime | Gratuit | De base | Standard | Notes |
+| Point de terminaison du runtime | Gratuit | De base | standard | Notes |
 |------------------|------|-------|----------|-------|
 | Appels de lecture par tranche de 5 minutes | 3 000 | 30,000 | 60 000 | Cette limite s’applique aux appels qui obtiennent les entrées et sorties brutes à partir de l’historique des exécutions d’une application logique. Vous pouvez répartir la charge de travail entre plusieurs comptes si nécessaire. |
 | Appels d'invocation par tranche de 5 minutes | 3 000 | 30,000 | 45,000 | Vous pouvez répartir la charge de travail entre plusieurs comptes si nécessaire. |
@@ -524,7 +524,7 @@ Cette section répertorie les adresses IP entrantes pour le service Azure Logic
 >
 > Les connecteurs suivants effectuent des rappels de webhook entrants au service Logic Apps :
 >
-> Adobe Creative Cloud, Adobe Sign, Démo Adobe Sign Demo, Adobe Sign Preview, Adobe Sign Stage, Azure Sentinel, Business Central, Calendly, Common Data Service, DocuSign, Démo DocuSign, Dynamics 365 for Fin & Ops, LiveChat, Office 365 Outlook, Outlook.com, Parserr, SAP*, Shifts pour Microsoft Teams, Teamwork Projects, Typeform
+> Adobe Creative Cloud, Adobe Sign, version de démonstration Adobe Sign, Adobe Sign préversion, Adobe Sign Stage, Microsoft Sentinel, Business Central, Calendly, Common Data Service, DocuSign, version de démonstration DocuSign, Dynamics 365 for Fin & Ops, LiveChat, Office 365 Outlook, Outlook.com, Parserr, SAP*, Shifts pour Microsoft Teams, Teamwork Projects, Typeform
 >
 > \* **SAP** : L’appelant en retour varie selon que l’environnement de déploiement est multilocataire Azure ou ISE. Dans l’environnement multi-locataire, la passerelle de données locale effectue le rappel au service Logic Apps. Dans un environnement ISE, le connecteur SAP effectue le rappel au service Logic Apps.
 

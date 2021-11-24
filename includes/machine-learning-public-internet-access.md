@@ -1,19 +1,19 @@
 ---
-title: Fichier include
-description: Fichier include
+title: Inclut le fichier
+description: Inclut le fichier
 author: lobrien
 ms.service: machine-learning
 services: machine-learning
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 11/05/2021
 ms.author: larryfr
 ms.custom: include file
-ms.openlocfilehash: e144756e65c0ae4d202333cd2972d9c5a1e3fdc8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e066c97e12f4b8e34f66235f53857c583e4350a9
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740685"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135898"
 ---
 Azure Machine Learning nécessite un accès entrant et sortant à l’Internet public. Les tableaux suivants fournissent une vue d’ensemble de l’accès requis et de son rôle. Le __protocole__ pour l’ensemble des éléments est __TCP__. Pour les balises de service se terminant par `.region`, remplacez `region` par la région Azure qui contient votre espace de travail. Par exemple, `Storage.westus`:
 
@@ -21,7 +21,7 @@ Azure Machine Learning nécessite un accès entrant et sortant à l’Internet p
 | ----- |:-----:| ----- | ----- |
 | Trafic entrant | 29876-29877 | BatchNodeManagement | Créer, mettre à jour et supprimer des instances et clusters de calcul Azure Machine Learning. |
 | Entrant | 44224 | AzureMachineLearning | Créer, mettre à jour et supprimer des instances de calcul Azure Machine Learning. |
-| Règle de trafic sortant | * | AzureActiveDirectory | Authentification à l’aide d’Azure AD. |
+| Règle de trafic sortant | 80, 443 | AzureActiveDirectory | Authentification à l’aide d’Azure AD. |
 | Règle de trafic sortant | 443 | AzureMachineLearning | Utilisation d’Azure Machine Learning Services. |
 | Règle de trafic sortant | 443 | AzureResourceManager | Création de ressources Azure avec Azure Machine Learning. |
 | Règle de trafic sortant | 443 | Storage.region | Accès aux données stockées dans le compte stockage Azure pour le service Azure Batch. |
@@ -48,8 +48,8 @@ Vous devrez peut-être également autoriser le trafic __sortant__ vers des sites
 | **cloud.r-project.org** | Utilisé lors de l’installation des packages CRAN pour le développement R. |
 | **\*pytorch.org** | Utilisé par certains exemples basés sur PyTorch. |
 | **\*.tensorflow.org** | Utilisé par certains exemples basés sur Tensorflow. |
-| **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | Utilisé pour récupérer les bits du serveur VS Code qui sont installés sur l’instance de calcul par le biais d’un script d’installation.|
-| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | Utilisé pour récupérer les bits du serveur WebSocket qui sont installés sur l’instance de calcul. Le serveur websocket est utilisé pour transmettre les requêtes du client Visual Studio Code (application de bureau) au serveur Visual Studio Code s’exécutant sur l’instance de calcul.|
+| **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | Utilisé pour récupérer les bits du serveur VS Code installés sur l’instance de calcul par le biais d’un script d’installation.|
+| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | Utilisé pour récupérer les bits du serveur websocket installés sur l’instance de calcul. Le serveur websocket est utilisé pour transmettre les requêtes du client Visual Studio Code (application de bureau) au serveur Visual Studio Code s’exécutant sur l’instance de calcul.|
 
 Lorsque vous utilisez Azure Kubernetes Service (AKS) avec Azure Machine Learning, le trafic suivant doit être autorisé vers le réseau virtuel AKS :
 

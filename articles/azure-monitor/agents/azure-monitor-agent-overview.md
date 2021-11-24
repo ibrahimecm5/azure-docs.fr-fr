@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 22569277eefafc518f407f06e34a69c061509b96
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c89625bb1ea7a9b2bee53468a09a48073e5516bf
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131458966"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132308652"
 ---
 # <a name="azure-monitor-agent-overview"></a>Vue d’ensemble de l’agent Azure Monitor
 L’agent Azure Monitor (AMA) collecte des données de supervision auprès du système d’exploitation invité des machines virtuelles Azure et les délivre à Azure Monitor. Cet article fournit une vue d’ensemble de l’agent Azure Monitor et inclut des informations sur la façon de l’installer et de configurer la collecte des données.
@@ -33,12 +33,12 @@ En plus de consolider cette fonctionnalité en un seul agent, l’agent Azure Mo
 ### <a name="current-limitations"></a>Limites actuelles
 Comparé aux agents existants, ce nouvel agent n’a pas encore une parité complète.
 - **Comparaison avec les agents Log Analytics (MMA/OMS) :**
-    - Toutes les solutions Log Analytics ne sont pas prises en charge actuellement. Voyez [ce qui est pris en charge](#supported-services-and-features).
-    - Pas de prise en charge des liaisons privées Azure.
-    - Pas de prise en charge de la collecte des journaux basés sur des fichiers ou des journaux IIS.
+  - Toutes les solutions Log Analytics ne sont pas prises en charge actuellement. Voyez [ce qui est pris en charge](#supported-services-and-features).
+  - Pas de prise en charge des liaisons privées Azure.
+  - Pas de prise en charge de la collecte des journaux basés sur des fichiers ou des journaux IIS.
 - **Comparaison avec les extensions Azure Diagnostics (WAD/LAD) :**
-    - Pas de prise en charge des hubs d’événements et des comptes de stockage en tant que destinations.
-    - Pas de prise en charge de la collecte des journaux basés sur des fichiers, des journaux IIS, des événements ETW, des événements .NET et des vidages sur incident.
+  - Pas de prise en charge des hubs d’événements et des comptes de stockage en tant que destinations.
+  - Pas de prise en charge de la collecte des journaux basés sur des fichiers, des journaux IIS, des événements ETW, des événements .NET et des vidages sur incident.
 
 ### <a name="changes-in-data-collection"></a>Modifications de la collecte de données
 Les méthodes permettant de définir la collecte de données pour les agents existants diffèrent les unes des autres. Chaque méthode présente des défis qui sont résolus avec l’agent Azure Monitor.
@@ -77,8 +77,8 @@ Le tableau suivant indique la prise en charge actuelle de l’agent Azure Monito
 
 | Service Azure | Prise en charge actuelle | Informations complémentaires |
 |:---|:---|:---|
-| [Centre de sécurité Azure](../../security-center/security-center-introduction.md) | Préversion privée | [Lien d’inscription](https://aka.ms/AMAgent) |
-| [Azure Sentinel](../../sentinel/overview.md) | <ul><li>WEF (Windows Event Forwarding) : préversion privée</li><li>Événements de sécurité Windows : [préversion publique](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[Lien d’inscription](https://aka.ms/AMAgent) </li><li>Aucune inscription nécessaire</li></ul> |
+| [Microsoft Defender pour le cloud](../../security-center/security-center-introduction.md) | Préversion privée | [Lien d’inscription](https://aka.ms/AMAgent) |
+| [Microsoft Sentinel](../../sentinel/overview.md) | <ul><li>WEF (Windows Event Forwarding) : préversion privée</li><li>Événements de sécurité Windows : [préversion publique](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[Lien d’inscription](https://aka.ms/AMAgent) </li><li>Aucune inscription nécessaire</li></ul> |
 
 Le tableau suivant indique la prise en charge actuelle de l’agent Azure Monitor avec les fonctionnalités Azure Monitor.
 
@@ -93,7 +93,7 @@ Le tableau suivant indique la prise en charge actuelle de l’agent Azure Monito
 
 | Solution | Prise en charge actuelle | Informations complémentaires |
 |:---|:---|:---|
-| [Suivi des modifications](../../automation/change-tracking/overview.md) | Prise en charge en tant que supervision de l’intégrité des fichiers dans la préversion privée d’Azure Security Center.  | [Lien d’inscription](https://aka.ms/AMAgent) |
+| [Suivi des modifications](../../automation/change-tracking/overview.md) | Pris en charge en tant qu’analyse de l’intégrité des fichiers dans Microsoft Defender pour le cloud en préversion privée.  | [Lien d’inscription](https://aka.ms/AMAgent) |
 | [Gestion des mises à jour](../../automation/update-management/overview.md) | Utilisez Update Management v2 (préversion privée) qui ne nécessite pas d’agent. | [Lien d’inscription](https://www.yammer.com/azureadvisors/threads/1064001355087872) |
 
 ## <a name="coexistence-with-other-agents"></a>Coexistence avec d’autres agents
@@ -134,8 +134,7 @@ Les extensions de l’agent Azure Monitor pour Windows et Linux peuvent communiq
 
 1. Utilisez cet organigramme pour déterminer en premier lieu les valeurs des paramètres *setting* et *protectedSetting*.
 
-   ![Organigramme pour déterminer les valeurs des paramètres setting et protectedSetting lorsque vous activez l’extension.](media/azure-monitor-agent-overview/proxy-flowchart.png)
-
+    ![Organigramme pour déterminer les valeurs des paramètres setting et protectedSetting lorsque vous activez l’extension.](media/azure-monitor-agent-overview/proxy-flowchart.png)
 
 2. Une fois que les valeurs des paramètres *setting* et *protectedSetting* sont déterminées, spécifiez ces paramètres supplémentaires lorsque vous déployez l’agent Azure Monitor en utilisant des commandes PowerShell. Les exemples suivants se rapportent aux machines virtuelles Azure.
 
@@ -144,8 +143,8 @@ Les extensions de l’agent Azure Monitor pour Windows et Linux peuvent communiq
     | Paramètre | Objet JSON de l’organigramme précédent converti en chaîne. À ignorer si non applicable. Exemple : {"proxy":{"mode":"application","address":"http://[adresse]:[port]","auth": false}}. |
     | ProtectedSetting | Objet JSON de l’organigramme précédent converti en chaîne. À ignorer si non applicable. Exemple : {"proxy":{"username": "[nom_utilisateur]","password": "[mot_de_passe]"}}. |
 
-
 # <a name="windows-vm"></a>[Machine virtuelle Windows](#tab/PowerShellWindows)
+
 ```powershell
 Set-AzVMExtension -ExtensionName AzureMonitorWindowsAgent -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0 -Setting <settingString> -ProtectedSetting <protectedSettingString>
 ```

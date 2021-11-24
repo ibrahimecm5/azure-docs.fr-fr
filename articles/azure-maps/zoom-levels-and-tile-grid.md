@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: b607037d56ab0c9d9bd119b12f4dc3a7200ff981
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bdda831f07d91ad13553814e198cac743314671a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122524999"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284813"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Niveaux de zoom et grille mosaïque
 
@@ -33,7 +33,7 @@ Chaque niveau de zoom supplémentaire divise en quatre les mosaïques du niveau 
 
 Les contrôles de la carte interactive Azure Maps pour le web et Android prennent en charge 25 niveaux de zoom, numérotés de 0 à 24. Toutefois, les données de route seront disponibles uniquement aux niveaux de zoom avant quand les mosaïques sont disponibles.
 
-Le tableau suivant donne la liste complète des valeurs des niveaux de zoom dont la taille de mosaïque est de 512 pixels carrés à la latitude 0 :
+La table suivante donne la liste complète des valeurs des niveaux de zoom dont la taille de mosaïque est de **512** pixels carrés à la latitude 0 :
 
 |Niveau de zoom|Compteurs/pixel|Compteurs/côté mosaïque|
 |--- |--- |--- |

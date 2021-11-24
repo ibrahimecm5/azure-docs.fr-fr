@@ -4,12 +4,12 @@ description: Cet article fournit des conseils sur l’architecture de référenc
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e76219222db1dbe6aa7cdc7d7a2ef5be995109e1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4714d143fd0f31bfd1c0570c37013fc15c2887cc
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652355"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283541"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Architecture de référence Azure DevTest Labs pour les entreprises
 Cet article décrit l’architecture de référence vous permettant de déployer une solution basée sur Azure DevTest Labs dans une entreprise. Les éléments suivants sont abordés :
@@ -57,7 +57,7 @@ DevTest Labs dispose d’une excellente interface utilisateur d’administration
 - **Restreindre les modifications à un paramètre de labo** : Souvent, un paramètre en particulier doit être restreint (par exemple, un paramètre permettant l’utilisation d’images de la Place de marché). Vous pouvez utiliser Azure Policy pour empêcher la modification d’un type de ressource. Vous pouvez créer un rôle personnalisé et accorder aux utilisateurs ce rôle au lieu du rôle *propriétaire* du labo. Vous pouvez le faire pour la plupart des paramètres du labo (support interne, annonce du labo, tailles de machine virtuelle autorisées, etc.).
 - **Obliger les machines virtuelles à suivre une convention d’affectation de noms** : en général, les gestionnaires souhaitent identifier aisément les machines virtuelles qui font partie d’un environnement de développement et de test basé sur le cloud. Vous pouvez le faire en utilisant [Azure Policy](https://github.com/Azure/azure-policy/tree/master/samples/TextPatterns/allow-multiple-name-patterns).
 
-Il est important de noter que DevTest Labs utilise des ressources Azure sous-jacentes qui sont gérées de la même manière : réseau, disques, calcul, etc. Par exemple, Azure Policy s’applique aux machines virtuelles qui sont créées dans un labo. Azure Security Center peut rendre compte de la conformité des machines virtuelles. Le service Sauvegarde Azure peut fournir des sauvegardes régulières pour les machines virtuelles du labo.
+Il est important de noter que DevTest Labs utilise des ressources Azure sous-jacentes qui sont gérées de la même manière : réseau, disques, calcul, etc. Par exemple, Azure Policy s’applique aux machines virtuelles qui sont créées dans un labo. Microsoft Defender pour le Cloud peut signaler la conformité des machines virtuelles. Le service Sauvegarde Azure peut fournir des sauvegardes régulières pour les machines virtuelles du labo.
 
 ## <a name="security-considerations"></a>Considérations relatives à la sécurité
 Azure DevTest Labs utilise les ressources existantes dans Azure (calcul, mise en réseau, etc.). Il bénéficie donc automatiquement des fonctionnalités de sécurité intégrées à la plateforme. Par exemple, pour exiger que les connexions Bureau à distance entrantes proviennent uniquement du réseau de l’entreprise, il suffit d’ajouter un groupe de sécurité réseau au réseau virtuel sur la passerelle Bureau à distance. Le seul autre point de sécurité à prendre en compte concerne le niveau d’autorisations que vous attribuez aux membres de l’équipe utilisant les labos quotidiennement. Les autorisations les plus courantes sont [*propriétaire* et *utilisateur*](devtest-lab-add-devtest-user.md). Pour plus d’informations sur ces rôles, consultez [Ajouter des propriétaires et des utilisateurs dans Azure DevTest Labs](devtest-lab-add-devtest-user.md).

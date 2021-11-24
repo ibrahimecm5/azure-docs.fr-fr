@@ -8,18 +8,18 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 11/02/2021
-ms.openlocfilehash: b2dd3b61ae3b612879e92b4c5ef8feb79b71b6fe
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 5956f8fb7a1de3baaac0a69ef9e5b63d445416eb
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429911"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327117"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps"></a>Encoder et décoder des fichiers plats dans Azure Logic Apps
 
 Avant de pouvoir envoyer du contenu XML à un partenaire commercial dans un scénario B2B, vous souhaitez peut-être d’abord encoder ce contenu. En générant un workflow d’application logique, vous pouvez encoder et décoder des fichiers plats à l’aide des actions **Fichier plat** [intégrées](../connectors/built-in.md#integration-account-built-in-actions).
 
-Même si aucun déclencheur de **fichier plat** n’est disponible, vous pouvez utiliser un déclencheur ou une action différents pour obtenir ou alimenter le contenu XML à partir de différentes sources dans votre workflow à des fins d’encodage ou de décodage. Par exemple, vous pouvez utiliser le déclencheur de requête, une autre application ou d’autres [connecteurs pris en charge par Azure Logic Apps](../connectors/apis-list.md). Vous pouvez utiliser des actions **Fichier plat** avec des workflows dans les [types de ressources **Application logique (consommation)** et **Application logique (standard)** ](single-tenant-overview-compare.md).
+Même si aucun déclencheur de **fichier plat** n’est disponible, vous pouvez utiliser un déclencheur ou une action différents pour obtenir ou alimenter le contenu XML à partir de différentes sources dans votre workflow à des fins d’encodage ou de décodage. Par exemple, vous pouvez utiliser le déclencheur de requête, une autre application ou d’autres [connecteurs pris en charge par Azure Logic Apps](../connectors/apis-list.md). Vous pouvez utiliser des actions **Fichier plat** avec des workflows dans les [types de ressources **Application logique (consommation)** et **Application logique (standard)**](single-tenant-overview-compare.md).
 
 > [!NOTE]
 > Pour la ressource **Application logique (standard)** , les actions **Fichier plat** sont actuellement en version préliminaire. 
@@ -247,7 +247,7 @@ Vous avez maintenant terminé la configuration de votre action de décodage de f
    ![Capture d’écran montrant le concepteur de workflow standard et la liste « Nom » ouverte avec le schéma sélectionné à utiliser pour le décodage.](./media/logic-apps-enterprise-integration-flatfile/select-decoding-schema-standard.png)
 
    > [!NOTE]
-   > Si aucun schéma n’apparaît dans la liste, votre ressource d’application logique standard ne contient aucun fichier de schéma à utiliser pour le décodage. Découvrez comment [charger le schéma que vous souhaitez utiliser dans votre ressource d’application logique standard](logic-apps-enterprise-integration-schemas.md).
+   > Si aucun schéma n’apparaît dans la liste, votre ressource d’application logique standard ne contient aucun fichier de schéma à utiliser pour le décodage. Découvrez comment [charger le schéma que vous souhaitez utiliser dans votre ressource d’application logique Standard](logic-apps-enterprise-integration-schemas.md).
 
 1. Enregistrez votre flux de travail. Dans la barre d’outils du Concepteur, sélectionnez **Enregistrer**.
 

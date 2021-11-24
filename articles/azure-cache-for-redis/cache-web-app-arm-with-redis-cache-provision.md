@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71648781edd8d202add7ce2a7cc6584173f0451b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ca60db1da300bd0b9576a2f08f9cf28e5cf01b66
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537464"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132298510"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Créer une application web avec un cache Azure pour Redis à l’aide d’un modèle
 
@@ -21,7 +21,7 @@ ms.locfileid: "129537464"
 
 Dans cette rubrique, vous allez apprendre à créer un modèle Azure Resource Manager qui déploie une application web Azure avec Azure Cache pour Redis. Vous découvrirez les informations suivantes sur les déploiements :
 
-- comment définir les ressources à déployer ; 
+- comment définir les ressources à déployer ;
 - comment définir les paramètres spécifiés lors de l’exécution du déploiement.
 
 Vous pouvez utiliser ce modèle pour vos propres déploiements, ou le personnaliser afin qu’il réponde à vos besoins.
@@ -31,10 +31,11 @@ Pour en savoir plus sur la création de modèles, voir [Création de modèles Az
 Pour obtenir l’intégralité du modèle, consultez la page [Application web avec un modèle de cache Azure pour Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/web-app-with-redis-cache/azuredeploy.json).
 
 ## <a name="what-you-will-deploy"></a>Ce que vous allez déployer
+
 Dans ce modèle, vous allez déployer les éléments suivants :
 
-* Application web Azure
-* Cache Azure pour Redis
+- Application web Azure
+- Cache Azure pour Redis
 
 Pour exécuter automatiquement le déploiement, sélectionnez le bouton ci-dessous :
 

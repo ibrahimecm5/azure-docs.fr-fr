@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 10/18/2021
 ms.author: denisgun
-ms.openlocfilehash: d24c1b3bdc6da07b844638157a0ecdfc9eb18843
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 43f4a8a1f467637f3a3703704361db525912f750
+ms.sourcegitcommit: c434baa76153142256d17c3c51f04d902e29a92e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225224"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132179247"
 ---
 # <a name="azure-virtual-desktop-rdp-shortpath-for-managed-networks"></a>Azure Virtual Desktop RDP Shortpath pour les réseaux managés
 
@@ -93,7 +93,7 @@ Afin d’autoriser le trafic réseau entrant pour RDP Shortpath, utilisez le Par
 2. Dans le volet de navigation, sélectionnez **Règles de trafic entrant**.
 3. Sélectionnez **Action**, puis **Nouvelle règle**.
 4. Dans la page **Type de règle** de l’Assistant Nouvelle règle de trafic entrant, sélectionnez **Personnalisée**, puis **Suivant**.
-5. Dans la page **Programme**, sélectionnez **Ce chemin d’accès de programme**, tapez « %SystemRoot%\s ystem32\svchost.exe », puis sélectionnez **Suivant**.
+5. Dans la page **Programme**, sélectionnez **Ce chemin d’accès de programme**, tapez « %SystemRoot%\system32\svchost.exe », puis sélectionnez **Suivant**.
 6. Dans la page **Protocole et ports**, sélectionnez le type de protocole UDP. Dans **Port local**, sélectionnez « Ports spécifiques », puis entrez le port UDP configuré. Si vous avez conservé les paramètres par défaut, le numéro de port sera 3390.
 7. Dans la page **Étendue**, vous pouvez spécifier que la règle s'applique seulement au trafic réseau vers ou depuis les adresses IP entrées sur cette page. Configurez conformément à votre conception, puis sélectionnez **Suivant**.
 8. Dans la page **Action**, sélectionnez **Autoriser la connexion**, puis **Suivant**.
@@ -230,7 +230,7 @@ Pour désactiver les RDP Shortpath pour un client spécifique, vous pouvez utili
 Afin de désactiver RDP Shortpath pour un hôte de session spécifique, vous pouvez utiliser la stratégie de groupe suivante pour désactiver la prise en charge du protocole UDP :
 
 1. Sur l’hôte de la session, exécutez **gpedit.msc**.
-2. Accédez à **Configuration ordinateur > Modèles d’administration > Composants Windows > Services Bureau à distance > Hôte Connexion Bureau à distance > Connexions**.
+2. Accédez à **Configurationd’ ordinateur > Modèles d’administration > Composants Windows > Services Bureau à distance > Hôte Connexion Bureau à distance > Hôte de la session Bureau à distance > Connexions**.
 3. Définissez le paramètre **« Sélectionner des protocoles de transfert RDP »** sur **TCP uniquement**.
 
 ## <a name="next-steps"></a>Étapes suivantes

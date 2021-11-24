@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2b7e51bc2837cdb068f0f9d6704e80d3f41c396e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f5320812be623437099ed0ab587dbbe3d4abe6ef
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538866"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132158760"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>Résoudre les problèmes liés aux appareils hybrides joints Azure AD
 
@@ -32,6 +32,10 @@ Cet article suppose que vous avez [configuré des appareils hybrides joints Azur
 - Accès conditionnel basé sur les appareils
 - [Enterprise State Roaming](./enterprise-state-roaming-overview.md)
 - [Windows Hello Entreprise](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
+
+
+> [!NOTE] 
+> Pour résoudre les problèmes d’inscription d’appareils les plus courants, utilisez [Outil de résolution des problèmes d’inscription des appareils](https://aka.ms/DSRegTool).
 
 
 ## <a name="troubleshoot-join-failures"></a>Résoudre les problèmes d’échecs de jointure
@@ -474,7 +478,7 @@ Utilisez l’Observateur d’événements pour rechercher les entrées de journa
 
 | Code d'erreur | Motif | Résolution |
 | --- | --- | --- |
-| **AADSTS50155 : échec de l’authentification de l’appareil** | <li>Azure AD ne peut pas authentifier l’appareil pour émettre un PRT.<li>Vérifiez que l’appareil n’a pas été supprimé ou désactivé dans le portail Azure. Pour plus d’informations sur ce problème, consultez la [FAQ sur la gestion des appareils du Répertoire actif Azure](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices). | Suivez les instructions pour ce problème dans la [FAQ sur la gestion des appareils du Répertoire actif Azure](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do) pour réinscrire l’appareil en fonction du type de jonction de l’appareil. |
+| **AADSTS50155 : échec de l’authentification de l’appareil** | <li>Azure AD ne peut pas authentifier l’appareil pour émettre un PRT.<li>Vérifiez que l’appareil n’a pas été supprimé ou désactivé dans le portail Azure. Pour plus d’informations sur ce problème, consultez la [FAQ sur la gestion des appareils du Répertoire actif Azure](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-11-devices). | Suivez les instructions pour ce problème dans la [FAQ sur la gestion des appareils du Répertoire actif Azure](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do) pour réinscrire l’appareil en fonction du type de jonction de l’appareil. |
 | **AADSTS50034 : le compte d’utilisateur `Account` n’existe pas dans le répertoire `tenant id`** . | Azure AD ne parvient pas à trouver le compte d’utilisateur dans le locataire. | <li>Assurez-vous que l’utilisateur tape l’UPN correct.<li>Assurez-vous que le compte d’utilisateur local est synchronisé avec Azure AD.<li>L’événement 1144 (journaux d’analyse Azure AD) contient l’UPN fourni. |
 | **AADSTS50126 : erreur de validation des informations d’identification en raison d’un nom d’utilisateur ou d’un mot de passe non valide.** | <li>Le nom d’utilisateur et le mot de passe entrés par l’utilisateur dans le LoginUI Windows sont incorrects.<li>Si le client a activé la synchronisation de hachage de mot de passe, que l’appareil présente une jointure hybride et que l’utilisateur vient de modifier le mot de passe, il est probable que le nouveau mot de passe n’a pas été synchronisé sur Azure AD. | Pour obtenir un PRT actualisé avec les nouvelles informations d’identification, attendez la fin de la synchronisation du mot de passe Azure AD. |
 | | |

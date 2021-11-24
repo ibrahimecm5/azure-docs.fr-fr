@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e171720b3cf36d7ad2b074adadaa0e514779c3b
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 5cc4a93d102cd87097fed198f08240da7ec10e36
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131995385"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132336351"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Intégrer des journaux d’activité Azure AD aux journaux d’activité Azure Monitor
 
@@ -31,7 +31,7 @@ Suivez les étapes dans cet article pour intégrer des journaux d’activité Az
 
 Utilisez l’intégration des journaux d’activité d’Azure AD aux journaux d’activité Azure Monitor pour effectuer des tâches telles que :
 
- * Comparer vos journaux d’activité de connexion Azure AD aux journaux d’activité de sécurité publiés par Azure Security Center.
+ * Comparer vos journaux d’activité de connexion Azure AD aux journaux de sécurité publiés par Microsoft Defender pour le cloud.
   
  * Résoudre les goulots d’étranglement de performances sur la page de connexion de votre application en mettant en corrélation les données de performances d’application à partir d’Azure Application Insights.
 

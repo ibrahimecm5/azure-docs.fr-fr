@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b823fbcc124a67980fcd1f0440ae107de01fc20
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: f934e016f23e988cbe8673f80e96c4583b6aaec5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690412"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132292506"
 ---
 # <a name="secure-group-managed-service-accounts"></a>Sécuriser les comptes de service gérés de groupe
 
@@ -57,7 +57,7 @@ Les problèmes de sécurité potentiels liés à l’utilisation de comptes gMSA
 | Problème de sécurité| Limitation des risques |
 | - | - |
 | Le gMSA est membre de groupes privilégiés. | <li>Vérifiez vos appartenances à des groupes. Pour cela, créez un script PowerShell permettant d’énumérer toutes les appartenances aux groupes. Vous pouvez ensuite filtrer le fichier CSV obtenu en fonction du nom de vos fichiers gMSA.<li>Supprimez le gMSA des groupes privilégiés.<li>Accordez au gMSA uniquement les droits et les autorisations dont il a besoin pour exécuter son service (consultez votre fournisseur de services). 
-| Le gMSA dispose d’un accès en lecture/écriture aux ressources sensibles. | <li>Auditez l’accès aux données sensibles.<li>Archivez les journaux d’audit dans un système SIEM, par exemple Azure Log Analytics ou Azure Sentinel, à des fins d’analyse.<li>Supprimez les autorisations de ressources inutiles si vous détectez un niveau d’accès indésirable. |
+| Le gMSA dispose d’un accès en lecture/écriture aux ressources sensibles. | <li>Auditez l’accès aux données sensibles.<li>Archivez les journaux d’audit dans un système SIEM , tel que Azure Log Analytics ou Microsoft Sentinel, à des fins d’analyse.<li>Supprimez les autorisations de ressources inutiles si vous détectez un niveau d’accès indésirable. |
 | | |
 
 

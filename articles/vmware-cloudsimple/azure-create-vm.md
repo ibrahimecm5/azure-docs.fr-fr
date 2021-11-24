@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cc382f0316f5f7f0d80d2d1fc5cf9612d623e754
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 3403f91c7369fd733abd404b37bd19832fe81981
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129618287"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132322738"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Créez une machine virtuelle dans Azure à l’aide de modèles d’ordinateur virtuel sur l’infrastructure VMware
 
@@ -88,7 +88,7 @@ Connectez-vous au [portail Azure](https://portal.azure.com).
 
 2. Recherchez **Machines virtuelles CloudSimple**.
 
-3. Sélectionnez l’élément sur lequel votre cloud privé a été créé.
+3. Sélectionnez la machine virtuelle sur laquelle votre cloud privé a été créé.
 
     ![Liste des machines virtuelles CloudSimple](media/list-cloudsimple-virtual-machines.png)
 

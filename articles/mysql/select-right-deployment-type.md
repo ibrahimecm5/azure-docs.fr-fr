@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 03799c27173a06ba1ffb25ba117750e65bca6b31
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: f07cb6dc6e5ab01b4c172c660fa971b1ef2a3db9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842508"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286087"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Choisir l’option MySQL Server appropriée dans Azure
 
@@ -59,7 +59,7 @@ Le tableau suivant liste les principales différences entre ces options :
 | SSL/TLS | Activé par défaut avec prise en charge de TLS v1.2, 1.1 et 1.0 | Activé par défaut avec prise en charge de TLS v1.2, 1.1 et 1.0| Pris en charge avec TLS v1.2, 1.1 et 1.0 |
 | Chiffrement des données au repos | Pris en charge avec clés gérées par le client (BYOK) | Pris en charge avec clés gérées par le service | Non pris en charge|
 | Azure AD Authentication | Prise en charge | Non pris en charge | Non pris en charge|
-| Prise en charge Azure Defender | Oui | Non | Non |
+| Support de Microsoft Defender pour le cloud | Oui | Non | Non |
 | Audit du serveur | Prise en charge | Prise en charge | Géré par l’utilisateur |
 | [**Mise à jour corrective et maintenance**](flexible-server/concepts-maintenance.md) | | |
 | Mise à jour corrective du système d’exploitation| Automatique  | Automatique  | Géré par l’utilisateur |

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: femila
-ms.openlocfilehash: e52ee6e3ae9960418a72f7eaf5c4068e31943d4a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cc6846118607e2d6bc50d63035f1ce209758f55c
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005344"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132331278"
 ---
 # <a name="cache-metrics-and-monitoring"></a>Mesures et supervision du cache
 
@@ -36,7 +36,7 @@ La page **Vue d’ensemble** affiche des graphes correspondant aux statistiques
 
 ![capture d’écran de trois graphiques linéaires montrant les statistiques mentionnées ci-dessus pour un exemple de cache](media/hpc-cache-overview-stats.png)
 
-Ces graphiques font partie des outils de surveillance et d’analyse intégrés d’Azure. Découvrez-en plus sur ces capacités dans la [documentation sur la supervision Azure](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+Ces graphiques font partie des outils de surveillance et d’analyse intégrés d’Azure. Découvrez-en plus sur ces capacités dans la [documentation Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).
 
 ## <a name="metrics-page"></a>Page Métriques
 

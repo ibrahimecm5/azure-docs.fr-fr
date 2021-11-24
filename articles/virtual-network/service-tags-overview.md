@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: c51829c8f046f68d3a7d1e47083f18eb7f4c8416
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 2affaf7b66c1a7872e1db2b92871c5d07e77cdd2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858459"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324628"
 ---
 # <a name="virtual-network-service-tags"></a>Balises de service du réseau virtuel
 <a name="network-service-tags"></a>
@@ -105,7 +105,7 @@ Par défaut, les balises de service reflètent les plages pour l’ensemble du C
 | **LogicApps** | Logic Apps. | Les deux | Non | Non |
 | **LogicAppsManagement** | Trafic de gestion pour Logic Apps. | Trafic entrant | Non | Non |
 | **MicrosoftAzureFluidRelay** | Cette étiquette représente les adresses IP utilisées pour Azure Microsoft Fluid Relay Server. | Règle de trafic sortant | Non | Non |
-| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Règle de trafic sortant | Non | Non |
+| **MicrosoftCloudAppSecurity** | Applications Microsoft Defender pour le cloud. | Règle de trafic sortant | Non | Non |
 | **MicrosoftContainerRegistry** | Registre de conteneurs pour les images de conteneur Microsoft. <br/><br/>**Remarque** : cette étiquette est dotée d’une dépendance par rapport à l’étiquette **AzureFrontDoor.FirstParty**. | Règle de trafic sortant | Oui | Oui |
 | **PowerBI** | Power BI. **Remarque** : cette étiquette n’est actuellement pas configurable sur le portail Azure. | Les deux | Non | Non|
 | **PowerPlatformInfra** | Cette étiquette représente les adresses IP utilisées par l’infrastructure pour héberger les services Power Platform. **Remarque** : cette étiquette n’est actuellement pas configurable sur le portail Azure. | Règle de trafic sortant | Non | Non |

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: efd33b95bd1a32c73712c7f094107717b4e5b973
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: db69c781c6b2f78e5ffbd6150d49775eb0c8cfbd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225772"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337185"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Guide pratique pour créer un labo avec une ressource partagée dans Azure Lab Services
 
@@ -42,7 +42,7 @@ Les machines virtuelles ont une adresse IP privée dynamique par défaut. [Avant
 
 #### <a name="control-access"></a>Contrôler l’accès
 Il est essentiel de contrôler l’accès au serveur de licences.  Une fois la machine virtuelle configurée, l’accès sera toujours nécessaire pour la maintenance, la résolution des problèmes et la mise à jour.  Voici les différentes manières de le faire.
-- [Définir l’accès juste-à-temps dans Azure Security Center.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
+- [Configuration de l’accès juste-à-temps (JIT) au sein de Microsoft Defender pour le Cloud.](../security-center/security-center-just-in-time.md?tabs=jit-config-asc%252cjit-request-asc)
 - [Définir un groupe de sécurité réseau pour restreindre l’accès.](../virtual-network/network-security-groups-overview.md)
 - [Configurer Azure Bastion pour permettre un accès sécurisé au serveur de licences.](https://azure.microsoft.com/services/azure-bastion/)
 
@@ -51,7 +51,8 @@ Il est essentiel de contrôler l’accès au serveur de licences.  Une fois la m
 Pour utiliser une ressource partagée, le compte de labo doit être configuré pour utiliser un [réseau virtuel en peering](how-to-connect-peer-virtual-network.md).  Dans ce cas, nous procéderons au peering du réseau virtuel qui contient la ressource partagée.
 
 >[!WARNING]
->Le laboratoire de votre classe doit être créé **après** le peering du compte de labo au réseau virtuel de ressources partagées.  
-Machine modèle
+>Le laboratoire de votre classe doit être créé **après** le peering du compte de labo au réseau virtuel de ressources partagées.
+
+## <a name="template-machine"></a>Machine modèle
 
 Une fois le peering de votre compte de labo au réseau virtuel terminé, la machine de modèle doit maintenant avoir accès à la ressource partagée.  Vous devrez peut-être mettre à jour les règles de pare-feu, en fonction de la ressource partagée dont vous souhaitez partager l’accès.

@@ -2,13 +2,16 @@
 title: Sauvegarder des fichiers dans des machines virtuelles Azure Stack
 description: Utilisez Sauvegarde Azure pour sauvegarder et restaurer des fichiers et applications Azure Stack dans votre environnement Azure Stack.
 ms.topic: conceptual
-ms.date: 06/05/2018
-ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/11/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: a6c92485ec89e06f9bf545181fe7e6341cd7bff4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89180981"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284433"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sauvegarder des fichiers et applications sur Azure Stack
 
@@ -133,5 +136,10 @@ Pour voir les entités du serveur de sauvegarde Azure sur le portail Azure, vous
 
 Pour plus d’informations sur l’utilisation d’un serveur de sauvegarde Azure pour protéger d’autres charges de travail, voir les articles suivants :
 
+* [À propos du service Sauvegarde Azure](./backup-overview.md)
+* [À propos d’Azure AD](../active-directory/fundamentals/active-directory-whatis.md)
+* [À propos du coffre Recovery Services Azure](./backup-azure-recovery-services-vault-overview.md)
+* [À propos des comptes de stockage Azure](../storage/common/storage-introduction.md)
+* [À propos d’Azure Stack Hub](/azure-stack/operator/azure-stack-overview)
 * [Sauvegarder un batterie de serveurs SharePoint](./backup-mabs-sharepoint-azure-stack.md)
 * [Sauvegarder SQL Server](./backup-mabs-sql-azure-stack.md)

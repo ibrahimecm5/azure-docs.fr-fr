@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 8a2fac1ded1cd17d9e47500eda06e58ca21fc6e7
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 496dc7271b3468a106bd6c1dbe25e00bc147c26a
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850049"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132401950"
 ---
 # <a name="edv5-and-edsv5-series"></a>Séries Edv5 et Edsv5
 
@@ -35,19 +35,20 @@ Les machines virtuelles de la série Edv5 prennent en charge les types de disque
 [Génération de machine virtuelle prise en charge](generation-2.md) : Générations 1 et 2<br>
 [Accélération réseau](../virtual-network/create-vm-accelerated-networking-cli.md) : Obligatoire <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Non pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit maximal du stockage temporaire et mis en cache : IOPS/Mbits/s<sup>*</sup>  | Nombre max de cartes réseau|Bande passante réseau maximale (Mbits/s) |
 |---|---|---|---|---|---|---|---|
-| Standard_E2d_v5<sup>1,2</sup>  | 2   | 16  | 75   | 4  | 9 000/125    | 2 | 12 500 |
-| Standard_E4d_v5                | 4   | 32  | 150  | 8  | 19 000/250   | 2 | 12 500 |
-| Standard_E8d_v5                | 8   | 64  | 300  | 16 | 38 000/500   | 4 | 12 500 |
-| Standard_E16d_v5               | 16  | 128 | 600  | 32 | 75 000/1 000  | 8 | 12 500 |
-| Standard_E20d_v5               | 20  | 160 | 750  | 32 | 94 000/1 250  | 8 | 12 500  |
-| Standard_E32d_v5               | 32  | 256 | 1200 | 32 | 150 000/2 000 | 8 | 16000  |
-| Standard_E48d_v5               | 48  | 384 | 1800 | 32 | 225 000/3 000 | 8 | 24 000  |
-| Standard_E64d_v5               | 64  | 512 | 2 400 | 32 | 300 000/4 000 | 8 | 30000  |
-| Standard_E96d_v5               | 96  | 672 | 3600 | 32 | 450 000/4 000 | 8 | 35000  |
+| Standard_E2d_v5<sup>1,2</sup>  | 2   | 16  | 75   | 4  | 9000/125    | 2 | 12 500 |
+| Standard_E4d_v5                | 4   | 32  | 150  | 8  | 19000/250   | 2 | 12 500 |
+| Standard_E8d_v5                | 8   | 64  | 300  | 16 | 38000/500   | 4 | 12 500 |
+| Standard_E16d_v5               | 16  | 128 | 600  | 32 | 75000/1000  | 8 | 12 500 |
+| Standard_E20d_v5               | 20  | 160 | 750  | 32 | 94000/1250  | 8 | 12 500  |
+| Standard_E32d_v5               | 32  | 256 | 1200 | 32 | 150000/2000 | 8 | 16000  |
+| Standard_E48d_v5               | 48  | 384 | 1800 | 32 | 225000/3000 | 8 | 24 000  |
+| Standard_E64d_v5               | 64  | 512 | 2 400 | 32 | 300000/4000 | 8 | 30000  |
+| Standard_E96d_v5               | 96  | 672 | 3600 | 32 | 450 000/4 000 | 8 | 35000  |
 | Standard_E104id_v5<sup>3</sup> | 104 | 672 | 3 800 | 64 | 450 000/4 000 | 8 | 100000 |
 
 <sup>*</sup> Ces valeurs IOPS peuvent être garanties avec des [machines virtuelles de deuxième génération](generation-2.md)<br>
@@ -67,21 +68,22 @@ Les machines virtuelles de la série Edsv5 prennent en charge les types de disqu
 [Migration dynamique](maintenance-and-updates.md) : Pris(e) en charge<br>
 [Mises à jour avec préservation de la mémoire](maintenance-and-updates.md) : Pris(e) en charge<br>
 [Génération de machine virtuelle prise en charge](generation-2.md) : Générations 1 et 2<br>
-[Accélération réseau](../virtual-network/create-vm-accelerated-networking-cli.md) : Obligatoire <br>
+[Accélération réseau](../virtual-network/create-vm-accelerated-networking-cli.md) : Obligatoire <br>
 [Disques de système d’exploitation éphémères](ephemeral-os-disks.md) : Pris en charge <br>
+[Virtualisation imbriquée](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) : prise en charge <br>
 <br>
 
 | Taille | Processeurs virtuels | Mémoire : Gio | Stockage temporaire (SSD) en Gio | Disques de données max. | Débit maximal du stockage temporaire et mis en cache : IOPS/Mbits/s<sup>*</sup> | Débit du disque non mis en cache max. : IOPS/Mbits/s | Débit maximal du disque sans mise en cache avec mode rafale (IOPS/Mbits/s)<sup>5</sup> | Nombre max de cartes réseau | Bande passante réseau maximale (Mbits/s) |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_E2ds_v5<sup>1,2</sup>  | 2   | 16  | 75   | 4  | 9 000/125    | 3 750/85      | 10 000/1 200 | 2 | 12 500 |
-| Standard_E4ds_v5                | 4   | 32  | 150  | 8  | 19 000/250   | 6 400/145     | 20 000/1200 | 2 | 12 500 |
-| Standard_E8ds_v5                | 8   | 64  | 300  | 16 | 38 000/500   | 12 800/290    | 20 000/1200 | 4 | 12 500 |
-| Standard_E16ds_v5               | 16  | 128 | 600  | 32 | 75 000/1 000  | 25 600/600    | 40 000/1 200 | 8 | 12 500 |
+| Standard_E2ds_v5<sup>1,2</sup>  | 2   | 16  | 75   | 4  | 9 000/125    | 3 750/85      | 10 000/1 200 | 2 | 12 500 |
+| Standard_E4ds_v5                | 4   | 32  | 150  | 8  | 19 000/250   | 6 400/145     | 20 000/1 200 | 2 | 12 500 |
+| Standard_E8ds_v5                | 8   | 64  | 300  | 16 | 38 000/500   | 12 800/290    | 20 000/1 200 | 4 | 12 500 |
+| Standard_E16ds_v5               | 16  | 128 | 600  | 32 | 75 000/1 000  | 25 600/600    | 40 000/1 200 | 8 | 12 500 |
 | Standard_E20ds_v5               | 20  | 160 | 750  | 32 | 94 000/1 250  | 32 000/750    | 64 000/1 600 | 8 | 12 500  |
-| Standard_E32ds_v5               | 32  | 256 | 1200 | 32 | 150 000/2 000 | 51 200/865    | 80 000/2 000 | 8 | 16000  |
-| Standard_E48ds_v5               | 48  | 384 | 1800 | 32 | 225 000/3 000 | 76 800/1 315   | 80 000/3 000 | 8 | 24 000  |
-| Standard_E64ds_v5               | 64  | 512 | 2 400 | 32 | 375 000/4 000 | 80 000/1 735   | 80 000/3 000 | 8 | 30000  |
-| Standard_E96ds_v5<sup>3</sup>   | 96  | 672 | 3600 | 32 | 450 000/4 000 | 80 000/2 600   | 80 000/4 000 | 8 | 35000  |
+| Standard_E32ds_v5               | 32  | 256 | 1200 | 32 | 150 000/2 000 | 51 200/865    | 80 000/2 000 | 8 | 16000  |
+| Standard_E48ds_v5               | 48  | 384 | 1800 | 32 | 225 000/3 000 | 76 800/1 315   | 80 000/3 000 | 8 | 24 000  |
+| Standard_E64ds_v5               | 64  | 512 | 2 400 | 32 | 375 000/4 000 | 80 000/1 735   | 80 000/3 000 | 8 | 30000  |
+| Standard_E96ds_v5<sup>3</sup>   | 96  | 672 | 3600 | 32 | 450 000/4 000 | 80 000/2 600   | 80 000/4 000 | 8 | 35000  |
 | Standard_E104ids_v5<sup>4</sup> | 104 | 672 | 3 800 | 64 | 450 000/4 000 | 120 000/4 000  | 120 000/4 000 | 8 | 100000 |
 
 <sup>*</sup> Ces valeurs IOPS peuvent être garanties avec des [machines virtuelles de deuxième génération](generation-2.md)<br>

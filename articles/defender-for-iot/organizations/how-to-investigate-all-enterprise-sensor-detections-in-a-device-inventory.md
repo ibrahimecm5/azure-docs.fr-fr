@@ -1,14 +1,14 @@
 ---
 title: En savoir plus sur les appareils découverts par tous les capteurs d’entreprise
 description: Utilisez l’inventaire des appareils dans la console de gestion locale pour obtenir une vue complète des informations d’appareil obtenues à partir des capteurs connectés. Utilisez les outils d’importation, d’exportation et de filtrage pour gérer ces informations.
-ms.date: 12/02/2020
+ms.date: 11/09/2021
 ms.topic: how-to
-ms.openlocfilehash: 3a92d1950bd1fab5ea6e94a433aad1d74802fb23
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 0025016dd449bf4083c707d4a6db5cd25bf66cfd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132027258"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132343664"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Examiner toutes les détections de capteur d’entreprise dans l’inventaire des appareils
 
@@ -25,7 +25,7 @@ Le tableau suivant décrit les colonnes de table dans l’inventaire des apparei
 | **Région** | Région qui contient cet appareil. |
 | **Site** | Site qui contient cet appareil. |
 | **Zone** | Zone qui contient cet appareil. |
-| **Appliance** | Capteur Azure Defender pour IoT qui protège cet appareil. |
+| **Appliance** | Le capteur Microsoft Defender pour IoT qui protège cet appareil. |
 | **Nom** | Nom de cet appareil tel que Defender pour IoT l’a découvert. |
 | **Type** | Type d’appareil, tel que PLC ou IHM. |
 | **Fournisseur** | Nom du fournisseur de l’appareil, tel que défini dans l’adresse MAC. |

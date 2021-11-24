@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 11/03/2020
-ms.openlocfilehash: e60c675c40345ccd9220453cb66125e2fc55582a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 248234c816cc3341929417282521d30c2105c671
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113089428"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132323250"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Stratégie de prise en charge des versions Azure Database pour MySQL
 
@@ -26,7 +26,7 @@ Azure Database pour MySQL a été développé à partir de [MySQL Community Edit
 
 Azure Database pour MySQL prend actuellement en charge les versions majeures et mineures suivantes de MySQL :
 
-| Version | [Serveur unique](overview.md) <br/> Version mineure actuelle |[Serveur flexible (préversion)](./flexible-server/overview.md) <br/> Version mineure actuelle  |
+| Version | [Serveur unique](overview.md) <br/> Version mineure actuelle |[Serveur flexible](./flexible-server/overview.md) <br/> Version mineure actuelle  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (Mise hors service) | Non pris en charge|
 |MySQL version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
@@ -72,5 +72,5 @@ Après la date de suppression pour chaque version de base de données MySQL, si 
 ## <a name="next-steps"></a>Étapes suivantes
 
 - Consultez Azure Database pour MySQL - Serveur unique [versions prises en charge](./concepts-supported-versions.md)
-- Consultez Azure Database pour MySQL - Serveur flexible (préversion) [versions prises en charge](flexible-server/concepts-supported-versions.md)
+- Consultez Azure DB pour MySQL : [versions prises en charges](flexible-server/concepts-supported-versions.md) des serveurs flexibles
 - Consultez [Vidage et restauration](./concepts-migrate-dump-restore.md) MySQL pour effectuer des mises à niveau.

@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ab8c0d7d1e547d564ddc3329858ddc49d51185b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 845bb5f4830c53b4fc4f6688851775afa908af73
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131448972"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135303"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Disques de système d’exploitation éphémères pour les machines virtuelles Azure
 
@@ -33,18 +33,21 @@ Les principales caractéristiques des disques éphémères sont les suivantes :
  
 Différences clés entre les disques de système d’exploitation persistants et éphémères :
 
-|                             | Disque de système d’exploitation persistant                          | Disque de système d’exploitation éphémère                              |
-|-----------------------------|---------------------------------------------|------------------------------------------------|
-| **Limite de taille du disque de système d’exploitation**      | 2 Tio                                                                                        | 2 Tio, ou la taille du cache correspondant à la taille de la machine virtuelle si elle est plus faible. Pour la **taille du cache en Gio**, consultez [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md), and [GS](sizes-previous-gen.md#gs-series)              |
-| **Tailles de machines virtuelles prises en charge**          | Tous                                                                                          | Tailles de machine virtuelle prenant en charge le Stockage Premium, par exemple DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M, Mdsv2,Bs, Dav4 ou Eav4                                               |
-| **Prise en charge du type de disque**           | Disque de système d’exploitation managé et non managé                                                                | Disque de système d’exploitation managé uniquement                                                               |
-| **Prise en charge des régions**              | Toutes les régions                                                                                  | Toutes les régions                              |
-| **Persistance des données**            | Les données écrites sur le disque de système d’exploitation sont stockées dans le Stockage Azure                                  | Les données écrites sur le disque de système d’exploitation sont stockées sur le stockage local de la machine virtuelle et ne sont pas persistantes dans le Stockage Azure. |
-| **État arrêté/libéré**      | Les machines virtuelles et instances de groupe identique peuvent être arrêtées-libérées et redémarrées à partir de l’état arrêté-libéré | Les machines virtuelles et instances de groupe identique ne peuvent pas être arrêtées-libérées                                  |
-| **Prise en charge des disques de système d’exploitation spécialisés** | Oui                                                                                          | Non                                                                                 |
-| **Redimensionnement du disque de système d’exploitation**              | Pris en charge durant la création de la machine virtuelle et une fois que la machine virtuelle est arrêtée-libérée                                | Prise en charge lors de la création d’une machine virtuelle uniquement                                                  |
-| **Redimensionnement des machines virtuelles**   | Les données du disque de système d’exploitation sont conservées                                                                    | Les données du disque de système d’exploitation sont supprimées, et le système d’exploitation est reprovisionné       
-| **Emplacement du fichier d’échange**   | Pour Windows, le fichier d’échange est stocké sur le disque de ressources                                              | Sur Windows, le fichier d’échange est stocké sur le disque de système d’exploitation (pour le placement dans le cache du système d’exploitation comme sur le disque temporaire).   |
+|   | Disque de système d’exploitation persistant | Disque de système d’exploitation éphémère |
+|---|---|---|
+| **Limite de taille du disque de système d’exploitation** | 2 Tio | 2 Tio, ou la taille du cache correspondant à la taille de la machine virtuelle si elle est plus faible. Pour la **taille du cache en Gio**, consultez [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md), and [GS](sizes-previous-gen.md#gs-series) |
+| **Tailles de machines virtuelles prises en charge** | Tous | Tailles de machine virtuelle prenant en charge le Stockage Premium, par exemple DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M, Mdsv2,Bs, Dav4 ou Eav4 |
+| **Prise en charge du type de disque**| Disque de système d’exploitation managé et non managé| Disque de système d’exploitation managé uniquement|
+| **Prise en charge des régions**| Toutes les régions| Toutes les régions|
+| **Persistance des données**| Les données écrites sur le disque de système d’exploitation sont stockées dans le Stockage Azure| Les données écrites sur le disque de système d’exploitation sont stockées sur le stockage local de la machine virtuelle et ne sont pas persistantes dans le Stockage Azure. |
+| **État arrêté/libéré**| Les machines virtuelles et instances de groupe identique peuvent être arrêtées-libérées et redémarrées à partir de l’état arrêté-libéré | Les machines virtuelles et instances de groupe identique ne peuvent pas être arrêtées-libérées|
+| **Prise en charge des disques de système d’exploitation spécialisés** | Oui| Non|
+| **Redimensionnement du disque de système d’exploitation**| Pris en charge durant la création de la machine virtuelle et une fois que la machine virtuelle est arrêtée-libérée| Prise en charge lors de la création d’une machine virtuelle uniquement|
+| **Redimensionnement des machines virtuelles**| Les données du disque de système d’exploitation sont conservées| Les données du disque de système d’exploitation sont supprimées, et le système d’exploitation est reprovisionné |
+| **Redeploy** | Les données du disque de système d’exploitation sont conservées | Les données du disque de système d’exploitation sont supprimées, et le système d’exploitation est reprovisionné | 
+| **Arrêter/démarrer une machine virtuelle** | Les données du disque de système d’exploitation sont conservées | Les données du disque de système d’exploitation sont supprimées, et le système d’exploitation est reprovisionné | 
+| **Emplacement du fichier d’échange**| Pour Windows, le fichier d’échange est stocké sur le disque de ressources| Sur Windows, le fichier d’échange est stocké sur le disque de système d’exploitation (pour le placement dans le cache du système d’exploitation comme sur le disque temporaire).|
+
 
 ## <a name="size-requirements"></a>Exigences de taille
 

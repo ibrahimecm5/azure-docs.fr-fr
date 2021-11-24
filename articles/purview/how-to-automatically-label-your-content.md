@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 80bb6aac5d6eb80f82372fd90d77fa0c2a082957
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6bcb751c58b4ba14e84f529ec268beacc93fdcf4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166714"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339558"
 ---
 # <a name="how-to-automatically-apply-sensitivity-labels-to-your-data-in-azure-purview"></a>Comment appliquer automatiquement des étiquettes de confidentialité à vos données dans Azure Purview
 
@@ -54,7 +54,7 @@ Une fois que vous avez étendu l’étiquetage aux ressources dans Azure Purview
 
 **Pour créer des étiquettes de confidentialité ou modifier des étiquettes existantes** :
 
-1. Ouvrez le [Centre de sécurité et conformité Microsoft 365](https://compliance.microsoft.com/).
+1. Ouvrez le [Centre de conformité Microsoft 365](https://compliance.microsoft.com/).
 
 1. Sous **Solutions**, sélectionnez **Information Protection**, puis **Créer une étiquette**.
 

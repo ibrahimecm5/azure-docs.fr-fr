@@ -55,6 +55,8 @@ items:
             href: quickstarts/voice-video-calling/call-automation-api-sample.md
           - name: Enregistrer les appels
             href: quickstarts/voice-video-calling/call-recording-sample.md
+          - name: Accès aux médias bruts
+            href: quickstarts/voice-video-calling/get-started-raw-media-access.md
       - name: Bibliothèque d’interface utilisateur
         items:
           - name: Bien démarrer avec les composites

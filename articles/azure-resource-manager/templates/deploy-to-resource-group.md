@@ -4,12 +4,12 @@ description: Explique comment définir des ressources dans un modèle Azure Reso
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 818ace7b20ed1c4a21748c9c734da4bace100523
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: dac7741000465f9678f478555fb55b47c2c44600
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390042"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282117"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Déploiements de groupes de ressources avec des modèles Resource Manager
 
@@ -318,4 +318,4 @@ az deployment group create \
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Pour obtenir un exemple de déploiement des paramètres d’espace de travail pour Azure Security Center, consultez [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Pour obtenir un exemple de déploiement des paramètres d’espace de travail pour Microsoft Defender pour le cloud, consultez [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).

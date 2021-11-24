@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdca219a352527114123cdf0179a5eb7fc486852
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7ef4ca7858e50c43a2ed17656ecdd11c3affef6d
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435888"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300801"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Opérations de sécurité Azure Active Directory pour Privileged Identity Management (PIM)
 
@@ -62,13 +62,13 @@ Les fichiers journaux que vous pouvez utiliser pour l’investigation et la supe
 
 Dans le portail Azure, vous pouvez afficher les journaux d’audit Azure AD et les télécharger sous forme de fichiers CSV ou JSON. Le portail Azure offre plusieurs moyens d’intégrer des journaux Azure AD aux autres outils, ce qui permet une plus grande automatisation de la supervision et des alertes :
 
-* [**Azure Sentinel**](../../sentinel/overview.md) – Permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et de gestion d’événements management (SIEM). 
+* [**Microsoft Sentinel**](../../sentinel/overview.md) : permet une analytique de sécurité intelligente au niveau de l’entreprise en fournissant des fonctionnalités d’informations de sécurité et gestion d’événements (SIEM). 
 
 * [**Azure Monitor**](../../azure-monitor/overview.md) – Permet de créer des alertes et supervisions automatisées de diverses conditions. Peut créer ou utiliser des workbooks pour combiner des données provenant de différentes sources.
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md) **avec intégration SIEM**- [Les journaux Azure AD peuvent être intégrés à d’autres SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) comme Splunk, ArcSight, QRadar et Sumo Logic via l’intégration Azure Event Hub Hub.
 
-* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
+* [**Microsoft Defender for Cloud Apps**](/cloud-app-security/what-is-cloud-app-security) : permet de découvrir et de gérer les applications, de gouverner toutes les applications et ressources et de vérifier la conformité des applications cloud. 
 
 Le reste de cet article fournit des recommandations concernant la définition d’une base de référence pour la supervision et les alertes, qui sont organisées par niveau. Les liens vers les solutions prédéfinies sont listés après le tableau. Vous pouvez également créer des alertes à l’aide des outils précédents. Le contenu est organisé par thème PIM :
 
@@ -104,7 +104,7 @@ Un administrateur de rôle privilégié peut personnaliser PIM dans son organisa
 
 | Éléments à analyser| Niveau de risque| Where| Filtre/Sous-filtre| Notes |
 | - |- |- |- |- |
-| Alerte lors de l’ajout de modifications aux autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Ajout d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Ajout d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Supervisez et signalez systématiquement toute modification apportée aux rôles Administrateur de rôle privilégié et Administrateur général. <li>Cela peut indiquer qu’un attaquant tente d’obtenir un privilège pour modifier les paramètres d’attribution de rôle.<li> Si vous n’avez pas défini de seuil, déclenchez une alerte si 4 modifications ont lieu sur une période de 60 minutes dans les comptes utilisateurs, et si 2 modifications ont lieu en 60 minutes dans les comptes privilégiés. |
+| Alerte lors de l’ajout de modifications aux autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Ajout d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Ajout d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Supervisez et signalez systématiquement toute modification apportée aux rôles Administrateur de rôle privilégié et Administrateur général. <li>Cela peut indiquer qu’un attaquant tente d’obtenir un privilège pour modifier les paramètres d’attribution de rôle.<li> Si vous n’avez pas défini de seuil, déclenchez une alerte si 4 modifications ont lieu sur une période de 60 minutes dans les comptes utilisateurs, et si 2 modifications ont lieu en 60 minutes dans les comptes privilégiés. |
 | Alerte lors de suppressions en bloc des autorisations de compte privilégié| Élevé| Journaux d’audit Azure AD| Catégorie = Gestion des rôles<br>-et-<br>Type d’activité – Suppression d’un membre éligible (permanent) <br>-et-<br>Type d’activité – Suppression d’un membre éligible (éligible) <br>-et-<br>État = Réussite/Échec<br>-et-<br>Propriétés modifiées = Role.DisplayName| Investiguez immédiatement en cas de modification non planifiée. Ce paramètre peut permettre à un attaquant d’accéder aux abonnements Azure de votre environnement. |
 | Modifications apportées aux paramètres PIM| Élevé| Journaux d’audit Azure AD| Service = PIM<br>-et-<br>Catégorie = Gestion des rôles<br>-et-<br>Type d’activité = Mise à jour du paramètre de rôle dans PIM<br>-et-<br>Raison de l’état = MFA à l’activation désactivée (exemple)| Supervisez et signalez systématiquement toute modification apportée aux rôles Administrateur de rôle privilégié et Administrateur général. <li>Cela peut indiquer qu’un attaquant a déjà obtenu l’accès et peut modifier les paramètres d’attribution de rôle.<li>L’une de ces actions est susceptible de réduire le niveau de sécurité de l’élévation PIM et permettre aux attaquants d’obtenir facilement un compte privilégié. |
 | Approbations et refus des demandes d’élévation| Élevé| Journaux d’audit Azure AD| Service = Révision de l’accès<br>-et-<br>Catégorie = UserManagement<br>-et-<br>Type d’activité = Demande approuvée/refusée<br>-et-<br>Initié par (acteur) = UPN| Toutes les élévations doivent être supervisées. Journalisez toutes les élévations, car celles-ci peuvent vous donner une indication claire de la chronologie d’une attaque. |

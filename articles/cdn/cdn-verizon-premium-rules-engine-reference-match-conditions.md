@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: duau
-ms.openlocfilehash: 61576e21bbf8fa260a5003bee62ac40b63d342c7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2c0c509b2e2fedabb779e135fc3234d116df6b57
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446730"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132282060"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Conditions de correspondance du moteur de règles Azure CDN de Verizon Premium
 
@@ -60,7 +60,7 @@ Ces conditions de correspondance sont conçues pour identifier les demandes selo
 | [Smartphone ?](https://docs.vdms.com/cdn/Content/HRE/M/D-Is-Smartphone.htm) | Identifie les demandes en déterminant si l’appareil est un smartphone.
 | [Tablette ?](https://docs.vdms.com/cdn/Content/HRE/M/D-Is-Tablet.htm) | Identifie les demandes en déterminant si l’appareil est une tablette. |
 | [Écran tactile ?](https://docs.vdms.com/cdn/Content/HRE/M/D-Is-Touchscreen.htm) | Identifie les demandes en déterminant si le périphérique de pointage principal de l’appareil est un écran tactile. |
-| [Windows Phone ?](https://docs.vdms.com/cdn/Content/HRE/M/D-Is-Windows-Phone.htm) | Identifie les demandes en déterminant si l’appareil est de type Windows Mobile 6.5 ou Windows Phone 7 ou version ultérieure. |
+| [Windows Phone ?](https://docs.vdms.com/cdn/Content/HRE/M/D-Is-Windows-Phone.htm) | Identifie les requêtes en déterminant si l’appareil est de type Windows Mobile 6.5 /Windows Phone 7 ou version ultérieure. |
 | [Appareil sans fil ?](https://docs.vdms.com/cdn/Content/HRE/M/D-Is-Wireless-Device.htm) | Identifie les demandes en déterminant si l’appareil est sans fil. 
 | Nom marketing | Identifie les demandes en déterminant si le nom marketing de l’appareil correspond à l’un des critères suivants : <br> **-** Valeur spécifique ([littéral fu nom marketing](https://docs.vdms.com/cdn/Content/HRE/M/D-Marketing-Name-Literal.htm)) <br> **-** Expression régulière ([expression régulière du nom marketing](https://docs.vdms.com/cdn/Content/HRE/M/D-Marketing-Name-Regex.htm)) <br> **-** Modèle spécifique ([caractères génériques du nom marketing](https://docs.vdms.com/cdn/Content/HRE/M/D-Marketing-Name-Wildcard.htm)) |
 | Navigateur mobile | Identifie les demandes en déterminant si le navigateur de l’appareil correspond à l’un des critères suivants : <br> **-** Valeur spécifique ([littéral du navigateur mobile](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Literal.htm)) <br> **-** Expression régulière ([expression régulière du navigateur mobile](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Regex.htm)) <br> **-** Modèle spécifique ([caractères génériques du navigateur mobile](https://docs.vdms.com/cdn/Content/HRE/M/D-Mobile-Browser-Wildcard.htm)) |

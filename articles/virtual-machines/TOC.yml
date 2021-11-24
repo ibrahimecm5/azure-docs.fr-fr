@@ -714,6 +714,8 @@
               href: ./windows/ps-template.md
             - name: Sécuriser un serveur web avec TLS\SSL
               href: ./windows/tutorial-secure-web-server.md
+    - name: Supprimer une machine virtuelle et ses ressources
+      item: delete.md
     - name: Se connecter à des machines virtuelles
       items:
         - name: Linux

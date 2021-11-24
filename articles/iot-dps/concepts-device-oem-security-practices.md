@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 140f15f8940f61c14994b8e72a78c1b5b4f360f2
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010539"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327098"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Pratiques de sécurité pour les fabricants d’appareils Azure IoT
 À l’heure où de plus en plus de fabricants mettent en production des appareils IoT, il est utile d’identifier des conseils en lien avec les pratiques courantes. Cet article résume les pratiques de sécurité recommandées à prendre en compte lorsque vous fabriquez des appareils destinés à une utilisation avec le service d’approvisionnement d’appareils Azure IoT.  
@@ -188,6 +188,6 @@ Pour plus d’informations, consultez [Approvisionnement](about-iot-dps.md#provi
 
 En plus des pratiques de sécurité recommandées dans cet article, Azure IoT fournit des ressources pour vous aider à sélectionner du matériel sécurisé et à créer des déploiements IoT sécurisés : 
 - [Recommandations de sécurité](../iot-fundamentals/security-recommendations.md) d’Azure pour guider le processus de déploiement. 
-- L’[Azure Security Center](https://azure.microsoft.com/services/security-center/) offre un service qui vous aide à créer des déploiements IoT sécurisés. 
+- [Microsoft Defender pour le cloud](https://azure.microsoft.com/services/security-center/) offre un service qui vous aide à créer des déploiements IoT sécurisés. 
 - Pour obtenir de l’aide en lien avec l’évaluation de votre environnement matériel, consultez le livre blanc sur l’[évaluation de votre de sécurité IoT](https://download.microsoft.com/download/D/3/9/D3948E3C-D5DC-474E-B22F-81BA8ED7A446/Evaluating_Your_IOT_Security_whitepaper_EN_US.pdf). 
 - Pour obtenir de l’aide sur la sélection de matériel sécurisé, consultez le document concernant [le matériel sécurisé adapté pour votre déploiement IoT](https://download.microsoft.com/download/C/0/5/C05276D6-E602-4BB1-98A4-C29C88E57566/The_right_secure_hardware_for_your_IoT_deployment_EN_US.pdf). 

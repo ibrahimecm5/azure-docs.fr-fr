@@ -3,12 +3,12 @@ title: Configurer un serveur de sauvegarde Azure pour Azure VMware Solution
 description: Configurez votre environnement Azure VMware Solution pour sauvegarder des machines virtuelles à l’aide du serveur de sauvegarde Azure.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: fc82e10093402ffd4a026b0c9bef0d8e5a221647
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: bc82a7774b61132f89a44433145772fd1815f378
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432137"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132332266"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Configurer un serveur de sauvegarde Azure pour Azure VMware Solution
 
@@ -352,14 +352,13 @@ Le serveur de sauvegarde Azure v3 accepte uniquement les volumes de stockage. L
 
 1. Sélectionnez parmi les volumes disponibles à ajouter au pool de stockage. 
 
-1. Après avoir ajouté les volumes disponibles, donnez-leur un nom convivial pour vous aider à les gérer. 
+1. Après avoir ajouté les volumes disponibles, donnez-leur un nom convivial pour vous aider à les gérer.
 
 1. Sélectionnez **OK** pour formater ces volumes au format ReFS de façon à ce que le serveur de sauvegarde Azure puisse tirer parti des avantages du stockage de sauvegarde moderne.
-
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Maintenant que vous savez comment configurer Serveur de sauvegarde Azure pour Azure VMware Solution, vous pouvez en apprendre davantage sur les sujets suivants :
 
 - [Configuration de sauvegardes pour vos machines virtuelles Azure VMware Solution](backup-azure-vmware-solution-virtual-machines.md).
-- [Protection de vos machines virtuelles Azure VMware Solution avec l’intégration Azure Security Center](azure-security-integration.md).
+- [Protection de vos machines virtuelles Azure VMware Solution avec l’intégration de Microsoft Defender pour le cloud](azure-security-integration.md).

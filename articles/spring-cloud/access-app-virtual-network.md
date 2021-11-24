@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7ede1ecbbe86f0ec5ef3a79d38b42ff58b653b0b
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 61d80fb7e187910416958b7e3e0183a875590344
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005350"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399823"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Accéder à votre application sur un réseau privé
 
@@ -212,7 +212,7 @@ Une fois le nom de domaine complet privé attribué à votre application, vous p
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-- [Exposer des applications à Internet à l’aide d’Application Gateway et du Pare-feu Azure](./expose-apps-gateway-azure-firewall.md)
+- [Exposer des applications à Internet, avec Application Gateway](./expose-apps-gateway.md)
 
 ## <a name="see-also"></a>Voir aussi
 
